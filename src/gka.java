@@ -1,20 +1,25 @@
-public class gka {
-   public cpm a = cpm.b;
-   public float b;
-   public float c;
-
-   public void a() {
+public class gka extends gko {
+   gka(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.04F;
+      if ($$5 == 0.0 && ($$4 != 0.0 || $$6 != 0.0)) {
+         this.j = $$4;
+         this.k = 0.1;
+         this.l = $$6;
+      }
    }
 
-   public fbq b() {
-      return new fbq(this.b, this.c);
-   }
+   public static class a implements gjj<lx> {
+      private final gkb a;
 
-   public boolean c() {
-      return this.c > 1.0E-5F;
-   }
+      public a(gkb $$0) {
+         this.a = $$0;
+      }
 
-   public void d() {
-      this.a = new cpm(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gka $$8 = new gka($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

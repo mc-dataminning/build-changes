@@ -1,18 +1,49 @@
-import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class esm implements esn {
-   public static final esm a = new esm();
-   public static final MapCodec<esm> b = MapCodec.unit(a);
-
+public interface esm extends esr {
    @Nullable
-   @Override
-   public um a(bac $$0, @Nullable um $$1) {
-      return $$1;
-   }
+   dyx a(kk var1);
 
-   @Override
-   public eso<?> a() {
-      return eso.b;
+   int b(ji var1);
+
+   public static enum a implements esm {
+      a;
+
+      @Nullable
+      @Override
+      public dyx a(kk $$0) {
+         return null;
+      }
+
+      @Override
+      public int b(ji $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(ji $$0) {
+      }
+
+      @Override
+      public boolean N_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(kk $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(dfo $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(dfo $$0) {
+      }
    }
 }

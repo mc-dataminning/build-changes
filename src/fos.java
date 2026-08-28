@@ -1,139 +1,100 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public interface fos {
-   fos a = new fos() {
-      @Override
-      public void a(fnl $$0, int $$1, int $$2) {
-      }
+public class fos extends foh {
+   public static final int f = 120;
+   public static final int m = 150;
+   public static final int n = 200;
+   public static final int o = 20;
+   public static final int p = 8;
+   protected static final fos.b q = $$0 -> $$0.get();
+   protected final fos.c r;
+   protected final fos.b s;
 
-      @Override
-      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      public void b(fnl $$0, int $$1, int $$2, int $$3, int $$4) {
-      }
-
-      @Override
-      public int c(fnl $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static fos a(fnj $$0, xk... $$1) {
-      return a($$0, Integer.MAX_VALUE, Integer.MAX_VALUE, $$1);
+   public static fos.a a(wo $$0, fos.c $$1) {
+      return new fos.a($$0, $$1);
    }
 
-   static fos a(fnj $$0, int $$1, xk... $$2) {
-      return a($$0, $$1, Integer.MAX_VALUE, $$2);
+   protected fos(int $$0, int $$1, int $$2, int $$3, wo $$4, fos.c $$5, fos.b $$6) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.r = $$5;
+      this.s = $$6;
    }
 
-   static fos a(fnj $$0, xk $$1, int $$2) {
-      return a($$0, $$2, Integer.MAX_VALUE, $$1);
+   @Override
+   public void b() {
+      this.r.onPress(this);
    }
 
-   static fos a(final fnj $$0, final int $$1, final int $$2, final xk... $$3) {
-      return $$3.length == 0 ? a : new fos() {
-         @Nullable
-         private List<fos.a> f;
-         @Nullable
-         private uh g;
-
-         @Override
-         public void a(fnl $$0x, int $$1x, int $$2x) {
-            this.a($$0, $$1, $$2, 9, -1);
-         }
-
-         @Override
-         public void a(fnl $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (fos.a $$6 : this.c()) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-         }
-
-         @Override
-         public void b(fnl $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (fos.a $$6 : this.c()) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-         }
-
-         @Override
-         public int c(fnl $$0x, int $$1x, int $$2x, int $$3x, int $$4) {
-            int $$5 = $$2;
-
-            for (fos.a $$6 : this.c()) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         private List<fos.a> c() {
-            uh $$0 = uh.a();
-            if (this.f != null && $$0 == this.g) {
-               return this.f;
-            } else {
-               this.g = $$0;
-               List<azg> $$1 = new ArrayList<>();
-
-               for (xk $$2 : $$3) {
-                  $$1.addAll($$0.c($$2, $$1));
-               }
-
-               this.f = new ArrayList<>();
-
-               for (azg $$3 : $$1.subList(0, Math.min($$1.size(), $$2))) {
-                  this.f.add(new fos.a($$3, $$0.a($$3)));
-               }
-
-               return this.f;
-            }
-         }
-
-         @Override
-         public int a() {
-            return this.c().size();
-         }
-
-         @Override
-         public int b() {
-            return Math.min($$1, this.c().stream().mapToInt(fos.a::b).max().orElse(0));
-         }
-      };
+   @Override
+   protected xc d() {
+      return this.s.createNarrationMessage(() -> super.d());
    }
 
-   void a(fnl var1, int var2, int var3);
+   @Override
+   public void a(fsp $$0) {
+      this.c($$0);
+   }
 
-   void a(fnl var1, int var2, int var3, int var4, int var5);
+   public static class a {
+      private final wo a;
+      private final fos.c b;
+      @Nullable
+      private fqd c;
+      private int d;
+      private int e;
+      private int f = 150;
+      private int g = 20;
+      private fos.b h = fos.q;
 
-   void b(fnl var1, int var2, int var3, int var4, int var5);
+      public a(wo $$0, fos.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   int c(fnl var1, int var2, int var3, int var4, int var5);
+      public fos.a a(int $$0, int $$1) {
+         this.d = $$0;
+         this.e = $$1;
+         return this;
+      }
 
-   int a();
+      public fos.a a(int $$0) {
+         this.f = $$0;
+         return this;
+      }
 
-   int b();
+      public fos.a b(int $$0, int $$1) {
+         this.f = $$0;
+         this.g = $$1;
+         return this;
+      }
 
-   public static record a(azg a, int b) {
+      public fos.a a(int $$0, int $$1, int $$2, int $$3) {
+         return this.a($$0, $$1).b($$2, $$3);
+      }
+
+      public fos.a a(@Nullable fqd $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fos.a a(fos.b $$0) {
+         this.h = $$0;
+         return this;
+      }
+
+      public fos a() {
+         fos $$0 = new fos(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
+         $$0.a(this.c);
+         return $$0;
+      }
+   }
+
+   public interface b {
+      xc createNarrationMessage(Supplier<xc> var1);
+   }
+
+   public interface c {
+      void onPress(fos var1);
    }
 }

@@ -1,118 +1,69 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import com.mojang.datafixers.util.Pair;
+import javax.annotation.Nullable;
 
-public class dbq extends dbl {
-   private static final Map<cxc, czv.a> c = Map.of(
-      cxk.uV,
-      czv.a.b,
-      cxk.pY,
-      czv.a.e,
-      cxk.tf,
-      czv.a.c,
-      cxk.vk,
-      czv.a.d,
-      cxk.vl,
-      czv.a.d,
-      cxk.vo,
-      czv.a.d,
-      cxk.vm,
-      czv.a.d,
-      cxk.vp,
-      czv.a.d,
-      cxk.vn,
-      czv.a.d,
-      cxk.vq,
-      czv.a.d
-   );
-   private static final dbr d = dbr.a(cxk.pe);
-   private static final dbr e = dbr.a(cxk.rV);
-   private static final dbr f = dbr.a(cxk.pZ);
-
-   public dbq(dbi $$0) {
+public class dbq extends dau {
+   public dbq(dar $$0) {
       super($$0);
    }
 
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() < 2) {
-         return false;
+   @Nullable
+   private static Pair<cwp, cwp> c(das $$0) {
+      if ($$0.e() != 2) {
+         return null;
       } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-         boolean $$4 = false;
-         boolean $$5 = false;
-         boolean $$6 = false;
+         cwp $$1 = null;
 
-         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-            cxg $$8 = $$0.a($$7);
-            if (!$$8.f()) {
-               if (c.containsKey($$8.h())) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else if (e.a($$8)) {
-                  if ($$6) {
-                     return false;
-                  }
-
-                  $$6 = true;
-               } else if (d.a($$8)) {
-                  if ($$5) {
-                     return false;
-                  }
-
-                  $$5 = true;
-               } else if (f.a($$8)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else {
-                  if (!($$8.h() instanceof cwe)) {
-                     return false;
-                  }
-
-                  $$3 = true;
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cwp $$3 = $$0.a($$2);
+            if (!$$3.f()) {
+               if ($$1 != null) {
+                  return a($$1, $$3) ? Pair.of($$1, $$3) : null;
                }
+
+               $$1 = $$3;
             }
          }
 
-         return $$2 && $$3;
+         return null;
       }
    }
 
-   public cxg a(dbj $$0, js.a $$1) {
-      czv.a $$2 = czv.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
+   private static boolean a(cwp $$0, cwp $$1) {
+      return $$1.a($$0.h()) && $$0.M() == 1 && $$1.M() == 1 && $$0.b(kv.d) && $$1.b(kv.d) && $$0.b(kv.e) && $$1.b(kv.e);
+   }
 
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         cxg $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            czv.a $$8 = c.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (e.a($$7)) {
-               $$3 = true;
-            } else if (d.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cwe $$9) {
-               $$5.add($$9.b().f());
-            }
-         }
+   public boolean a(das $$0, dgi $$1) {
+      return c($$0) != null;
+   }
+
+   public cwp a(das $$0, jt.a $$1) {
+      Pair<cwp, cwp> $$2 = c($$0);
+      if ($$2 == null) {
+         return cwp.j;
+      } else {
+         cwp $$3 = (cwp)$$2.getFirst();
+         cwp $$4 = (cwp)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cwp $$9 = new cwp($$3.h());
+         $$9.b(kv.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         ddf $$10 = ddb.b($$3);
+         ddf $$11 = ddb.b($$4);
+         ddb.a($$9, $$3x -> $$1.d(mc.aO).c().filter($$0xx -> $$0xx.a(aws.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
       }
-
-      cxg $$10 = new cxg(cxk.vu);
-      $$10.b(ku.ae, new czv($$2, $$5, IntList.of(), $$4, $$3));
-      return $$10;
    }
 
    @Override
-   public dcf<dbq> a() {
-      return dcf.h;
+   public dbo<dbq> a() {
+      return dbo.n;
    }
 }

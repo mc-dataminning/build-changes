@@ -1,17 +1,34 @@
-public abstract class gse<T extends clv, S extends gyh> extends gsr<T, S, gbv<S>> {
-   protected gse(grl.a $$0, gbv<S> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gve<>(this, $$0.f(), $$0.b()));
+public class gse extends gsb<cpi, gyk> {
+   private static final aku a = aku.b("textures/entity/illager/evoker_fangs.png");
+   private final gcb b;
+
+   public gse(gsc.a $$0) {
+      super($$0);
+      this.b = new gcb($$0.a(gfb.aM));
    }
 
-   public void a(T $$0, S $$1, float $$2) {
+   public void a(gyk $$0, ffu $$1, glx $$2, int $$3) {
+      float $$4 = $$0.b;
+      if ($$4 != 0.0F) {
+         $$1.a();
+         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
+         $$1.b(-1.0F, -1.0F, 1.0F);
+         $$1.a(0.0F, -1.501F, 0.0F);
+         this.b.a($$0);
+         ffy $$5 = $$2.getBuffer(this.b.a(a));
+         this.b.a($$1, $$5, $$3, hea.d);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public gyk a() {
+      return new gyk();
+   }
+
+   public void a(cpi $$0, gyk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.bZ();
-      $$1.d = $$0.fy();
-      $$1.e = $$0.m();
-      $$1.f = $$1.e == clv.a.f ? cvx.b($$0.fB(), $$0) : 0;
-      $$1.g = $$0.fD();
-      $$1.h = $$0.D($$2);
-      $$1.c = $$0.gd();
+      $$1.a = $$0.dM();
+      $$1.b = $$0.a($$2);
    }
 }

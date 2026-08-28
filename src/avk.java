@@ -1,23 +1,52 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.Date;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class avk {
-   private static final Codec<avk> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(bad.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, avk::new)
-   );
-   public static final auk<avk> a = auk.a("filter", b);
-   private final List<bad> c;
-
-   public avk(List<bad> $$0) {
-      this.c = List.copyOf($$0);
+public class avk extends auy<GameProfile> {
+   public avk(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
    }
 
-   public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+   public avk(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+   public avk(JsonObject $$0) {
+      super(b($$0), $$0);
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
+      }
+   }
+
+   @Override
+   public wo e() {
+      GameProfile $$0 = this.g();
+      return $$0 != null ? wo.b($$0.getName()) : wo.c("commands.banlist.entry.unknown");
+   }
+
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

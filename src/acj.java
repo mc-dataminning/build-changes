@@ -1,42 +1,33 @@
-public class acj implements zr<acg> {
-   public static final zi<wh, acj> a = zr.a(acj::a, acj::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
+import java.util.List;
 
-   public acj(bvb $$0, int $$1) {
-      this.g = $$0.ar();
-      this.h = $$1;
+public record acj(acj.a b, List<String> c) implements yv<abk> {
+   public static final ym<vl, acj> a = yv.a(acj::a, acj::new);
+
+   private acj(vl $$0) {
+      this($$0.b(acj.a.class), $$0.a(vl::p));
    }
 
-   private acj(wh $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
-   }
-
-   private void a(wh $$0) {
-      $$0.c(this.g);
-      $$0.l(this.h);
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vl::a);
    }
 
    @Override
-   public zt<acj> a() {
-      return agz.e;
+   public yx<acj> a() {
+      return agd.y;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.g;
+   public List<String> e() {
+      return this.c;
    }
 
-   public int e() {
-      return this.h;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

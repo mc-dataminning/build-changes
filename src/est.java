@@ -1,112 +1,140 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleListIterator;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 
-public class est {
-   private static final double a = 1.0181268882175227;
-   private static final double b = 0.3333333333333333;
-   private final double c;
-   private final esu d;
-   private final esu e;
-   private final double f;
-   private final est.a g;
-
-   @Deprecated
-   public static est a(bac $$0, est.a $$1) {
-      return new est($$0, $$1, false);
+public class est extends esn<est.a> {
+   protected est(dzf $$0) {
+      super(dgr.a, $$0, new est.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
    }
 
-   public static est a(bac $$0, int $$1, double... $$2) {
-      return b($$0, new est.a($$1, new DoubleArrayList($$2)));
+   @Override
+   protected int a(long $$0) {
+      return this.e($$0, false);
    }
 
-   public static est b(bac $$0, est.a $$1) {
-      return new est($$0, $$1, true);
-   }
+   protected int e(long $$0, boolean $$1) {
+      long $$2 = kk.e($$0);
+      int $$3 = kk.c($$2);
+      est.a $$4 = $$1 ? this.d : this.c;
+      int $$5 = $$4.c.get(kk.f($$2));
+      if ($$5 != $$4.b && $$3 < $$5) {
+         dyx $$6 = this.a($$4, $$2);
+         if ($$6 == null) {
+            for ($$0 = ji.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
+               if (++$$3 >= $$5) {
+                  return 15;
+               }
 
-   private est(bac $$0, est.a $$1, boolean $$2) {
-      int $$3 = $$1.c;
-      DoubleList $$4 = $$1.d;
-      this.g = $$1;
-      if ($$2) {
-         this.d = esu.b($$0, $$3, $$4);
-         this.e = esu.b($$0, $$3, $$4);
+               $$2 = kk.a($$2, jn.b);
+            }
+         }
+
+         return $$6.a(kk.b(ji.a($$0)), kk.b(ji.b($$0)), kk.b(ji.c($$0)));
       } else {
-         this.d = esu.a($$0, $$3, $$4);
-         this.e = esu.a($$0, $$3, $$4);
+         return $$1 && !this.j($$2) ? 0 : 15;
+      }
+   }
+
+   @Override
+   protected void h(long $$0) {
+      int $$1 = kk.c($$0);
+      if (this.d.b > $$1) {
+         this.d.b = $$1;
+         this.d.c.defaultReturnValue(this.d.b);
       }
 
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = Integer.MIN_VALUE;
-      DoubleListIterator $$7 = $$4.iterator();
+      long $$2 = kk.f($$0);
+      int $$3 = this.d.c.get($$2);
+      if ($$3 < $$1 + 1) {
+         this.d.c.put($$2, $$1 + 1);
+      }
+   }
 
-      while ($$7.hasNext()) {
-         int $$8 = $$7.nextIndex();
-         double $$9 = $$7.nextDouble();
-         if ($$9 != 0.0) {
-            $$5 = Math.min($$5, $$8);
-            $$6 = Math.max($$6, $$8);
+   @Override
+   protected void i(long $$0) {
+      long $$1 = kk.f($$0);
+      int $$2 = kk.c($$0);
+      if (this.d.c.get($$1) == $$2 + 1) {
+         long $$3;
+         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kk.a($$3, jn.a)) {
+            $$2--;
+         }
+
+         if (this.b($$3)) {
+            this.d.c.put($$1, $$2 + 1);
+         } else {
+            this.d.c.remove($$1);
          }
       }
-
-      this.c = 0.16666666666666666 / a($$6 - $$5);
-      this.f = (this.d.a() + this.e.a()) * this.c;
    }
 
-   public double a() {
-      return this.f;
+   @Override
+   protected dyx g(long $$0) {
+      dyx $$1 = (dyx)this.g.get($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         int $$2 = this.d.c.get(kk.f($$0));
+         if ($$2 != this.d.b && kk.c($$0) < $$2) {
+            long $$3 = kk.a($$0, jn.b);
+
+            dyx $$4;
+            while (($$4 = this.a($$3, true)) == null) {
+               $$3 = kk.a($$3, jn.b);
+            }
+
+            return a($$4);
+         } else {
+            return this.j($$0) ? new dyx(15) : new dyx();
+         }
+      }
    }
 
-   private static double a(int $$0) {
-      return 0.1 * (1.0 + 1.0 / (double)($$0 + 1));
+   private static dyx a(dyx $$0) {
+      if ($$0.c()) {
+         return $$0.b();
+      } else {
+         byte[] $$1 = $$0.a();
+         byte[] $$2 = new byte[2048];
+
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
+         }
+
+         return new dyx($$2);
+      }
    }
 
-   public double a(double $$0, double $$1, double $$2) {
-      double $$3 = $$0 * 1.0181268882175227;
-      double $$4 = $$1 * 1.0181268882175227;
-      double $$5 = $$2 * 1.0181268882175227;
-      return (this.d.a($$0, $$1, $$2) + this.e.a($$3, $$4, $$5)) * this.c;
+   protected boolean a(int $$0) {
+      return $$0 >= this.d.b;
    }
 
-   public est.a b() {
-      return this.g;
+   protected boolean m(long $$0) {
+      long $$1 = kk.f($$0);
+      int $$2 = this.d.c.get($$1);
+      return $$2 == this.d.b || kk.c($$0) >= $$2;
    }
 
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("NormalNoise {");
-      $$0.append("first: ");
-      this.d.a($$0);
-      $$0.append(", second: ");
-      this.e.a($$0);
-      $$0.append("}");
+   protected int n(long $$0) {
+      return this.d.c.get($$0);
    }
 
-   public static record a(int c, DoubleList d) {
-      public static final Codec<est.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.INT.fieldOf("firstOctave").forGetter(est.a::a), Codec.DOUBLE.listOf().fieldOf("amplitudes").forGetter(est.a::b))
-               .apply($$0, est.a::new)
-      );
-      public static final Codec<jq<est.a>> b = all.a(mb.aS, a);
+   protected int c() {
+      return this.d.b;
+   }
 
-      public a(int $$0, List<Double> $$1) {
-         this($$0, new DoubleArrayList($$1));
+   protected static final class a extends esk<est.a> {
+      int b;
+      final Long2IntOpenHashMap c;
+
+      public a(Long2ObjectOpenHashMap<dyx> $$0, Long2IntOpenHashMap $$1, int $$2) {
+         super($$0);
+         this.c = $$1;
+         $$1.defaultReturnValue($$2);
+         this.b = $$2;
       }
 
-      public a(int $$0, double $$1, double... $$2) {
-         this($$0, ae.a(new DoubleArrayList($$2), $$1x -> $$1x.add(0, $$1)));
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public DoubleList b() {
-         return this.d;
+      public est.a a() {
+         return new est.a(this.a.clone(), this.c.clone(), this.b);
       }
    }
 }

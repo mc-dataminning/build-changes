@@ -1,60 +1,43 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.Set;
 
-public class cfd {
-   private static final cfd a = new cfd();
-   private final List<bvx> b;
-   private final Predicate<bvx> c;
-
-   private cfd() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+public class cfd extends cfq<cnf> {
+   @Override
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.h, cek.aw, cek.aq, cek.ap, cek.as, cek.at, new cek[0]);
    }
 
-   public cfd(arx $$0, bvx $$1, List<bvx> $$2) {
-      this.b = $$2;
-      Object2BooleanOpenHashMap<bvx> $$3 = new Object2BooleanOpenHashMap($$2.size());
-      Predicate<bvx> $$4 = $$2x -> cgh.b($$0, $$1, $$2x);
-      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
-   }
+   protected void a(arc $$0, cnf $$1) {
+      bwi<?> $$2 = $$1.ec();
+      $$2.a(cek.aw, this.b($$0, $$1));
+      Optional<cnl> $$3 = Optional.empty();
+      int $$4 = 0;
+      List<cnf> $$5 = Lists.newArrayList();
+      cem $$6 = $$2.c(cek.h).orElse(cem.a());
 
-   public static cfd a() {
-      return a;
-   }
+      for (bvg $$7 : $$6.b($$0x -> !$$0x.e_() && ($$0x instanceof cnl || $$0x instanceof cnf))) {
+         if ($$7 instanceof cnl $$8) {
+            $$4++;
+            if ($$3.isEmpty()) {
+               $$3 = Optional.of($$8);
+            }
+         }
 
-   public Optional<bvx> a(Predicate<bvx> $$0) {
-      for (bvx $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
+         if ($$7 instanceof cnf $$9) {
+            $$5.add($$9);
          }
       }
 
-      return Optional.empty();
+      $$2.a(cek.aq, $$3);
+      $$2.a(cek.ap, $$5);
+      $$2.a(cek.as, $$4);
+      $$2.a(cek.at, $$5.size());
    }
 
-   public Iterable<bvx> b(Predicate<bvx> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public Stream<bvx> c(Predicate<bvx> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
-
-   public boolean a(bvx $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
-
-   public boolean d(Predicate<bvx> $$0) {
-      for (bvx $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
-         }
-      }
-
-      return false;
+   private Optional<ji> b(arc $$0, cnf $$1) {
+      return ji.a($$1.dw(), 8, 4, $$1x -> $$0.a_($$1x).a(awp.aU));
    }
 }

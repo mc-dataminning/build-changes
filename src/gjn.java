@@ -1,45 +1,42 @@
-public abstract class gjn extends gja {
-   protected hbg E;
-
-   protected gjn(gff $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
-
-   protected gjn(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+public class gjn extends gjm {
+   gjn(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   protected void a(hbg $$0) {
-      this.E = $$0;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.c();
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
    @Override
-   protected float d() {
-      return this.E.d();
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
    @Override
-   protected float e() {
-      return this.E.g();
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
+      }
    }
 
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
+   public static class a implements gjj<lx> {
+      private final gkb a;
 
-   public void a(gji $$0) {
-      this.a($$0.a(this.r));
-   }
+      public a(gkb $$0) {
+         this.a = $$0;
+      }
 
-   public void b(gji $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjn $$8 = new gjn($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

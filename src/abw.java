@@ -1,10 +1,14 @@
-public interface abw extends aak {
-   @Override
-   default wf b() {
-      return wf.e;
+public class abw extends yt<abk> {
+   public abw(Iterable<yv<? super abk>> $$0) {
+      super($$0);
    }
 
-   void a(abx var1);
+   @Override
+   public yx<abw> a() {
+      return agd.a;
+   }
 
-   void a(aby var1);
+   public void a(abk $$0) {
+      $$0.a(this);
+   }
 }

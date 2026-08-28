@@ -1,33 +1,17 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cau {
-   private static final int a = 10;
-   private static final int b = 7;
-
-   public static bzb<bwf> a(float $$0) {
-      return a($$0, 10, 7);
+public class cau extends bwz<bvg> {
+   public cau() {
+      super(ImmutableMap.of());
    }
 
-   public static bzb<bwf> a(float $$0, int $$1, int $$2) {
-      return cbd.a((Function<cbd.b<bwf>, ? extends App<cbd.c<bwf>, cbg<bwf>>>)($$3 -> $$3.group($$3.c(cfb.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               jh $$7 = $$5.dw();
-               fbr $$8;
-               if ($$4.c($$7)) {
-                  $$8 = cgv.a($$5, $$1, $$2);
-               } else {
-                  kj $$9 = kj.a($$7);
-                  kj $$10 = bxs.a($$4, $$9, 2);
-                  if ($$10 != $$9) {
-                     $$8 = cgs.a($$5, $$1, $$2, fbr.c($$10.k()), (float) (Math.PI / 2));
-                  } else {
-                     $$8 = cgv.a($$5, $$1, $$2);
-                  }
-               }
+   @Override
+   protected boolean a(arc $$0, bvg $$1) {
+      return $$1.bZ();
+   }
 
-               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cfe($$1xxxx, $$0, 0)));
-               return true;
-            })));
+   @Override
+   protected void d(arc $$0, bvg $$1, long $$2) {
+      $$1.ao();
    }
 }

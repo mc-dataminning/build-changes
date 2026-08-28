@@ -1,20 +1,41 @@
-public class fjs extends fjr {
-   private final fky a;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fjs(ftr $$0, fky $$1) {
-      super($$0, $$1);
-      this.a = $$1;
-   }
+public interface fjs {
+   fjs a = new fjs() {
+      @Override
+      public long a() {
+         return 1L;
+      }
 
-   @Override
-   public void e() {
-      super.e();
-      this.a.c();
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   @Override
-   protected void f() {
-      this.a.b();
-      super.f();
+   long a();
+
+   long b();
+
+   static fjs a(final int $$0) {
+      return new fjs() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

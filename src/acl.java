@@ -1,20 +1,25 @@
-public record acl(int b) implements zr<acg> {
-   public static final zi<wh, acl> a = zr.a(acl::a, acl::new);
+public record acl(long[] b, bnd c) implements yv<abk> {
+   public static final ym<vl, acl> a = yv.a(acl::a, acl::new);
 
-   private acl(wh $$0) {
-      this($$0.l());
+   private acl(vl $$0) {
+      this($$0.d(), $$0.b(bnd.class));
    }
 
-   private void a(wh $$0) {
-      $$0.c(this.b);
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zt<acl> a() {
-      return agz.g;
+   public yx<acl> a() {
+      return agd.A;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   public bnd e() {
+      return this.c;
    }
 }

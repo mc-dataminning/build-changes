@@ -1,45 +1,85 @@
-public class adc implements zr<acg> {
-   public static final zi<wh, adc> a = zr.a(adc::a, adc::new);
-   private final int b;
-   private final int c;
-   private final int d;
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public adc(int $$0, int $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record adc(int b, boolean c, Set<akt<dgi>> d, int e, int f, int g, boolean h, boolean i, boolean j, aga k, boolean l) implements yv<abk> {
+   public static final ym<vz, adc> a = yv.a(adc::a, adc::new);
+
+   private adc(vz $$0) {
+      this(
+         $$0.readInt(),
+         $$0.readBoolean(),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(mc.be)),
+         $$0.l(),
+         $$0.l(),
+         $$0.l(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         $$0.readBoolean(),
+         new aga($$0),
+         $$0.readBoolean()
+      );
    }
 
-   private adc(wh $$0) {
-      this.b = $$0.x();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
-   }
-
-   private void a(wh $$0) {
-      $$0.f(this.b);
-      $$0.m(this.c);
-      $$0.m(this.d);
+   private void a(vz $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d, vl::b);
+      $$0.c(this.e);
+      $$0.c(this.f);
+      $$0.c(this.g);
+      $$0.a(this.h);
+      $$0.a(this.i);
+      $$0.a(this.j);
+      this.k.a($$0);
+      $$0.a(this.l);
    }
 
    @Override
-   public zt<adc> a() {
-      return agz.v;
+   public yx<adc> a() {
+      return agd.O;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
+   public boolean e() {
       return this.c;
    }
 
-   public int f() {
+   public Set<akt<dgi>> f() {
       return this.d;
+   }
+
+   public int g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
+   }
+
+   public boolean k() {
+      return this.i;
+   }
+
+   public boolean l() {
+      return this.j;
+   }
+
+   public aga m() {
+      return this.k;
+   }
+
+   public boolean n() {
+      return this.l;
    }
 }

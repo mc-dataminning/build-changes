@@ -1,23 +1,47 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-public class eyp extends exv {
-   public static final MapCodec<eyp> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxc.e.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, eyp::new));
-   private final jq<cxc> b;
+public record eyp(jr<dcz> b, List<Float> c) implements eza {
+   public static final MapCodec<eyp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dcz.c.fieldOf("enchantment").forGetter(eyp::c), ayi.b(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(eyp::d)).apply($$0, eyp::new)
+   );
 
-   private eyp(List<ezr> $$0, jq<cxc> $$1) {
-      super($$0);
-      this.b = $$1;
+   @Override
+   public ezb b() {
+      return ezc.k;
    }
 
    @Override
-   public exx<eyp> b() {
-      return exy.f;
+   public Set<bai<?>> a() {
+      return Set.of(eyl.i);
    }
 
-   @Override
-   public cxg a(cxg $$0, ewi $$1) {
-      return $$0.a(this.b.a());
+   public boolean a(evr $$0) {
+      cwp $$1 = $$0.c(eyl.i);
+      int $$2 = $$1 != null ? ddb.a(this.b, $$1) : 0;
+      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
+      return $$0.b().i() < $$3;
+   }
+
+   public static eza.a a(jr<dcz> $$0, float... $$1) {
+      List<Float> $$2 = new ArrayList<>($$1.length);
+
+      for (float $$3 : $$1) {
+         $$2.add($$3);
+      }
+
+      return () -> new eyp($$0, $$2);
+   }
+
+   public jr<dcz> c() {
+      return this.b;
+   }
+
+   public List<Float> d() {
+      return this.c;
    }
 }

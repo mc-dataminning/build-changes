@@ -1,55 +1,61 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
-public class pg implements ov {
-   private final ow b;
-   private final jq<cxc> c;
-   private final dbr d;
-   private final dbr e;
-   private final Map<String, ap<?>> f = new LinkedHashMap<>();
-   @Nullable
-   private String g;
+public class pg extends pn<ebt> {
+   @VisibleForTesting
+   static final List<akt<ebt>> d = List.of(
+      ebt.b.h(),
+      ebt.c.h(),
+      ebt.d.h(),
+      ebt.f.h(),
+      ebt.g.h(),
+      ebt.h.h(),
+      ebt.i.h(),
+      ebt.a.h(),
+      ebt.e.h(),
+      ebt.j.h(),
+      ebt.k.h(),
+      ebt.l.h(),
+      ebt.m.h(),
+      ebt.n.h(),
+      ebt.o.h(),
+      ebt.p.h(),
+      ebt.q.h(),
+      ebt.r.h(),
+      ebt.s.h(),
+      ebt.t.h(),
+      ebt.u.h(),
+      ebt.v.h(),
+      ebt.w.h(),
+      ebt.y.h(),
+      ebt.z.h(),
+      ebt.A.h(),
+      ebt.B.h(),
+      ebt.C.h(),
+      ebt.G.h(),
+      ebt.H.h(),
+      ebt.I.h(),
+      ebt.J.h(),
+      ebt.K.h(),
+      ebt.M.h(),
+      ebt.O.h(),
+      ebt.P.h(),
+      ebt.Q.h(),
+      ebt.R.h(),
+      ebt.S.h()
+   );
 
-   private pg(ow $$0, jq<cxc> $$1, dbr $$2, dbr $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   public static pg a(ow $$0, dbr $$1, dbr $$2, cxc $$3) {
-      return new pg($$0, $$3.f(), $$1, $$2);
-   }
-
-   public pg b(String $$0, ap<?> $$1) {
-      this.f.put($$0, $$1);
-      return this;
-   }
-
-   public pg b(@Nullable String $$0) {
-      this.g = $$0;
-      return this;
+   public pg(mk $$0, CompletableFuture<jt.a> $$1) {
+      super($$0, mc.G, $$1);
    }
 
    @Override
-   public cxc a() {
-      return this.c.a();
-   }
-
-   @Override
-   public void a(ox $$0, alo<dbv<?>> $$1) {
-      this.a($$1);
-      ag.a $$2 = $$0.a().a("has_the_recipe", dv.a($$1)).a(al.a.c($$1)).a(ak.a.b);
-      this.f.forEach($$2::a);
-      dcx $$3 = new dcx(Objects.requireNonNullElse(this.g, ""), ov.a(this.b), this.d, this.e, this.c);
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
-   }
-
-   private void a(alo<dbv<?>> $$0) {
-      if (this.f.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
-      }
+   protected void a(jt.a $$0) {
+      this.b(aww.a).a(d).a(ecc.d_).a(ebt.x.h());
+      this.b(aww.c).a(ebt.L.h());
+      this.b(aww.b).a(d).a(ecc.d_).a(ebt.N.h()).b(aww.c);
+      this.b(aww.d).a(ebt.A.h(), ebt.K.h(), ebt.P.h(), ebt.Q.h(), ebt.D.h(), ebt.C.h());
+      this.b(aww.e).a(ebt.H.h());
    }
 }

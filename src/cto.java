@@ -1,72 +1,57 @@
-public class cto extends cst {
-   private static final int m = 9;
-   private static final int n = 9;
-   private static final int o = 36;
-   private static final int p = 36;
-   private static final int q = 45;
-   private final bst r;
+public class cto extends ctz {
+   private final ctm a;
+   private final cox b;
+   private int g;
+   private final dfe h;
 
-   public cto(int $$0, cpn $$1) {
-      this($$0, $$1, new bth(9));
-   }
-
-   public cto(int $$0, cpn $$1, bst $$2) {
-      super(cuc.g, $$0);
-      a($$2, 9);
-      this.r = $$2;
-      $$2.c_($$1.k);
-      this.d($$2, 62, 17);
-      this.c($$1, 8, 84);
-   }
-
-   protected void d(bst $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            int $$5 = $$4 + $$3 * 3;
-            this.a(new cuq($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
-      }
+   public cto(cox $$0, dfe $$1, ctm $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public boolean b(cpo $$0) {
-      return this.r.a($$0);
+   public boolean a(cwp $$0) {
+      return false;
    }
 
    @Override
-   public cxg b(cpo $$0, int $$1) {
-      cxg $$2 = cxg.j;
-      cuq $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxg $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cxg.j;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cxg.j;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cxg.j);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.M() == $$2.M()) {
-            return cxg.j;
-         }
-
-         $$3.a($$0, $$4);
+   public cwp a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().M());
       }
 
-      return $$2;
+      return super.a($$0);
    }
 
    @Override
-   public void a(cpo $$0) {
-      super.a($$0);
-      this.r.c($$0);
+   protected void a(cwp $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b_(cwp $$0) {
+      $$0.a(this.b.dW(), this.b, this.g);
+      this.g = 0;
+   }
+
+   @Override
+   public void a(cox $$0, cwp $$1) {
+      this.b_($$1);
+      dff $$2 = this.a.g();
+      if ($$2 != null) {
+         cwp $$3 = this.a.a(0);
+         cwp $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(awk.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
+
+         this.h.s(this.h.x() + $$2.q());
+      }
    }
 }

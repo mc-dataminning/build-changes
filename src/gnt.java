@@ -1,51 +1,51 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.base.Splitter;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class gnt {
-   private static final Map<dus<?>, gns<?>> a = Maps.newHashMap();
+   private static final Splitter a = Splitter.on(',');
+   private static final Splitter b = Splitter.on('=').limit(2);
 
-   private static <T extends duq> void a(dus<? extends T> $$0, gns<T> $$1) {
-      a.put($$0, $$1);
-   }
+   public static <O, S extends dwz<O, S>> Predicate<dwz<O, S>> a(dwy<O, S> $$0, String $$1) {
+      Map<dxz<?>, Comparable<?>> $$2 = new HashMap<>();
 
-   public static Map<dus<?>, gnr<?>> a(gns.a $$0) {
-      Builder<dus<?>, gnr<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + ma.j.b((dus<?>)$$2), var5);
+      for (String $$3 : a.split($$1)) {
+         Iterator<String> $$4 = b.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            dxz<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((dxz<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
+               }
+
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
+            }
          }
-      });
-      return $$1.build();
+      }
+
+      return $$1x -> {
+         for (Entry<dxz<?>, Comparable<?>> $$2x : $$2.entrySet()) {
+            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   static {
-      a(dus.h, gof::new);
-      a(dus.i, gob::new);
-      a(dus.j, goh::new);
-      a(dus.l, god::new);
-      a(dus.b, gnx::new);
-      a(dus.d, gnx::new);
-      a(dus.c, gnx::new);
-      a(dus.n, goa::new);
-      a(dus.E, goc::new);
-      a(dus.o, gok::new);
-      a(dus.w, goj::new);
-      a(dus.p, gnn::new);
-      a(dus.q, gog::new);
-      a(dus.u, gnm::new);
-      a(dus.v, goi::new);
-      a(dus.y, goe::new);
-      a(dus.z, gno::new);
-      a(dus.A, gny::new);
-      a(dus.F, gnp::new);
-      a(dus.H, gnw::new);
-      a(dus.O, gnv::new);
-      a(dus.P, gnz::new);
-      a(dus.R, gol::new);
-      a(dus.S, gom::new);
+   @Nullable
+   private static <T extends Comparable<T>> T a(dxz<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
    }
 }

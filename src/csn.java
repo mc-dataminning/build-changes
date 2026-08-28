@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface csn {
+public enum csn {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

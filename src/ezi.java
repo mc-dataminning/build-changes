@@ -1,59 +1,61 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.Set;
 
-public record ezi(alo<ezr> b) implements ezr {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<ezi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alo.a(mb.bi).fieldOf("name").forGetter(ezi::c)).apply($$0, ezi::new));
-
-   @Override
-   public ezs b() {
-      return ezt.p;
-   }
+public record ezi(Optional<Long> b, evq c) implements eza {
+   public static final MapCodec<ezi> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(ezi::c), evq.a.fieldOf("value").forGetter(ezi::d)).apply($$0, ezi::new)
+   );
 
    @Override
-   public void a(ewo $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         ezr.super.a($$0);
-         $$0.a()
-            .c(this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+   public ezb b() {
+      return ezc.q;
+   }
+
+   @Override
+   public Set<bai<?>> a() {
+      return this.c.a();
+   }
+
+   public boolean a(evr $$0) {
+      arc $$1 = $$0.d();
+      long $$2 = $$1.ae();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
       }
+
+      return this.c.b($$0, (int)$$2);
    }
 
-   public boolean a(ewi $$0) {
-      ezr $$1 = $$0.a().c(this.b).map(jq.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         ewi.c<?> $$2 = ewi.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   public static ezi.a a(evq $$0) {
+      return new ezi.a($$0);
    }
 
-   public static ezr.a a(alo<ezr> $$0) {
-      return () -> new ezi($$0);
-   }
-
-   public alo<ezr> c() {
+   public Optional<Long> c() {
       return this.b;
+   }
+
+   public evq d() {
+      return this.c;
+   }
+
+   public static class a implements eza.a {
+      private Optional<Long> a = Optional.empty();
+      private final evq b;
+
+      public a(evq $$0) {
+         this.b = $$0;
+      }
+
+      public ezi.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ezi a() {
+         return new ezi(this.a, this.b);
+      }
    }
 }

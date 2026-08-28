@@ -1,72 +1,93 @@
-import java.util.ArrayList;
-import java.util.List;
+public abstract class fqh {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final fob d;
+   protected final bng e;
 
-public class fqh implements fqj {
-   private static final alp a = alp.b("toast/recipe");
-   private static final long e = 5000L;
-   private static final xk f = xk.c("recipe.toast.title");
-   private static final xk g = xk.c("recipe.toast.description");
-   private final List<fqh.a> h = new ArrayList<>();
-   private long i;
-   private boolean j;
-   private fqj.a k = fqj.a.b;
-   private int l;
-
-   private fqh() {
+   protected fqh(fob $$0, bng $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public fqj.a a() {
-      return this.k;
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
    }
 
-   @Override
-   public void a(fqk $$0, long $$1) {
-      if (this.j) {
-         this.i = $$1;
-         this.j = false;
+   public int a() {
+      return 60 + 9;
+   }
+
+   public void a(fod $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(gmh.L(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
 
-      if (this.h.isEmpty()) {
-         this.k = fqj.a.b;
-      } else {
-         this.k = (double)($$1 - this.i) >= 5000.0 * $$0.d() ? fqj.a.b : fqj.a.a;
+      $$0.a(gmh.L(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(gmh.L(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(gmh.L(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(gmh.L(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
       }
 
-      this.l = (int)((double)$$1 / Math.max(1.0, 5000.0 * $$0.d() / (double)this.h.size()) % (double)this.h.size());
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public void a(fnl $$0, fnj $$1, long $$2) {
-      $$0.a(glq::H, a, 0, 0, this.b(), this.c());
-      $$0.a($$1, f, 30, 7, -11534256, false);
-      $$0.a($$1, g, 30, 18, -16777216, false);
-      fqh.a $$3 = this.h.get(this.l);
-      $$0.c().a();
-      $$0.c().b(0.6F, 0.6F, 1.0F);
-      $$0.b($$3.a(), 3, 3);
-      $$0.c().b();
-      $$0.b($$3.b(), 8, 8);
+   protected void a(fod $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   private void a(cxg $$0, cxg $$1) {
-      this.h.add(new fqh.a($$0, $$1));
-      this.j = true;
+   protected void b(fod $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(gmh.L(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   public static void a(fqk $$0, dda $$1) {
-      fqh $$2 = $$0.a(fqh.class, b);
-      if ($$2 == null) {
-         $$2 = new fqh();
-         $$0.a($$2);
-      }
-
-      bbf $$3 = ddh.a($$0.c().s);
-      cxg $$4 = $$1.e().b($$3);
-      cxg $$5 = $$1.d().b($$3);
-      $$2.a($$4, $$5);
+   protected void c(fod $$0, int $$1, int $$2, int $$3) {
    }
 
-   static record a(cxg a, cxg b) {
+   protected long b(int $$0) {
+      return this.e.a($$0);
+   }
+
+   protected void d(fod $$0, int $$1, int $$2, int $$3) {
+   }
+
+   protected void a(fod $$0, String $$1, int $$2, int $$3) {
+      $$0.a(gmh.L(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
+
+   protected abstract String a(double var1);
+
+   protected abstract int b(double var1);
+
+   protected abstract int a(long var1);
+
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = ayz.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axk.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axk.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

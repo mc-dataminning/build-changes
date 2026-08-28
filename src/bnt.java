@@ -1,65 +1,27 @@
-public class bnt extends bnr implements bnx {
-   public static final int c = 240;
-   private final long[][] d;
-   private int e;
-   private int f;
+import java.util.HashMap;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-   public bnt(int $$0) {
-      this($$0, new long[$$0]);
-   }
+public class bnt<S> {
+   private final Map<bnr<?>, bnx<S, ?>> a = new HashMap<>();
 
-   public bnt(int $$0, long[] $$1) {
-      super($$0, $$1);
-      this.d = new long[240][$$0];
-   }
-
-   @Override
-   protected void a() {
-      int $$0 = this.b(this.e + this.f);
-      System.arraycopy(this.b, 0, this.d[$$0], 0, this.b.length);
-      if (this.f < 240) {
-         this.f++;
-      } else {
-         this.e = this.b(this.e + 1);
+   public <T> void a(bnr<T> $$0, bnx<S, T> $$1) {
+      bnx<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
       }
    }
 
-   @Override
-   public int c() {
-      return this.d.length;
+   public <T> void a(bnr<T> $$0, boa<S> $$1, bnx.a<S, T> $$2) {
+      this.a($$0, bnx.a($$1, $$2));
    }
 
-   @Override
-   public int d() {
-      return this.f;
+   public <T> void a(bnr<T> $$0, boa<S> $$1, bnx.b<T> $$2) {
+      this.a($$0, bnx.a($$1, $$2));
    }
 
-   @Override
-   public long a(int $$0) {
-      return this.a($$0, 0);
-   }
-
-   @Override
-   public long a(int $$0, int $$1) {
-      if ($$0 >= 0 && $$0 < this.f) {
-         long[] $$2 = this.d[this.b(this.e + $$0)];
-         if ($$1 >= 0 && $$1 < $$2.length) {
-            return $$2[$$1];
-         } else {
-            throw new IndexOutOfBoundsException($$1 + " out of bounds for dimensions " + $$2.length);
-         }
-      } else {
-         throw new IndexOutOfBoundsException($$0 + " out of bounds for length " + this.f);
-      }
-   }
-
-   private int b(int $$0) {
-      return $$0 % 240;
-   }
-
-   @Override
-   public void e() {
-      this.e = 0;
-      this.f = 0;
+   @Nullable
+   public <T> bnx<S, T> a(bnr<T> $$0) {
+      return (bnx<S, T>)this.a.get($$0);
    }
 }

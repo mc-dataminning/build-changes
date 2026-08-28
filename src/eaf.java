@@ -1,18 +1,32 @@
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import org.apache.commons.io.FileUtils;
 
-public interface eaf {
-   @Nullable
-   eol a(eod var1);
+public class eaf extends eac {
+   private final eae a;
+   private final Path b;
 
-   void a(eod var1, eol var2);
+   public eaf(eal $$0, Path $$1, eal $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new eae($$2, $$3, $$5);
+   }
 
-   LongSet b(eod var1);
+   @Override
+   public CompletableFuture<Void> a(dfo $$0, Supplier<tq> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
 
-   void a(eod var1, long var2);
-
-   Map<eod, LongSet> h();
-
-   void b(Map<eod, LongSet> var1);
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
+   }
 }

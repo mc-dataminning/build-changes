@@ -1,2 +1,8 @@
-public interface fdm<T> extends fdl<T> {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@fdc
+@fdb
+interface fdm {
 }

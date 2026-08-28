@@ -1,51 +1,60 @@
-import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Supplier;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public class bfh extends bev {
-   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(bin.B, "ZombieVillager"));
-
-   public bfh(Schema $$0) {
-      super("EntityZombieSplitFix", $$0, true);
+public class bfh extends DataFix {
+   public bfh(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Zombie")) {
-         return Pair.of($$0, $$1);
-      } else {
-         Dynamic<?> $$2 = (Dynamic<?>)$$1.getOptional(DSL.remainderFinder()).orElseThrow();
-         int $$3 = $$2.get("ZombieType").asInt(0);
-         String $$4;
-         Typed<?> $$5;
-         switch ($$3) {
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-               $$4 = "ZombieVillager";
-               $$5 = this.a($$1, $$3 - 1);
-               break;
-            case 6:
-               $$4 = "Husk";
-               $$5 = $$1;
-               break;
-            default:
-               $$4 = "Zombie";
-               $$5 = $$1;
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhw.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhw.D.typeName(), bjk.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
+      OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
+      return this.fixTypeEverywhereTyped("ItemBannerColorFix", $$0, $$3x -> {
+         Optional<Pair<String, String>> $$4 = $$3x.getOptional($$1);
+         if ($$4.isPresent() && Objects.equals($$4.get().getSecond(), "minecraft:banner")) {
+            Dynamic<?> $$5 = (Dynamic<?>)$$3x.get(DSL.remainderFinder());
+            Optional<? extends Typed<?>> $$6 = $$3x.getOptionalTyped($$2);
+            if ($$6.isPresent()) {
+               Typed<?> $$7 = (Typed<?>)$$6.get();
+               Optional<? extends Typed<?>> $$8 = $$7.getOptionalTyped($$3);
+               if ($$8.isPresent()) {
+                  Typed<?> $$9 = (Typed<?>)$$8.get();
+                  Dynamic<?> $$10 = (Dynamic<?>)$$7.get(DSL.remainderFinder());
+                  Dynamic<?> $$11 = (Dynamic<?>)$$9.getOrCreate(DSL.remainderFinder());
+                  if ($$11.get("Base").asNumber().result().isPresent()) {
+                     $$5 = $$5.set("Damage", $$5.createShort((short)($$11.get("Base").asInt(0) & 15)));
+                     Optional<? extends Dynamic<?>> $$12 = $$10.get("display").result();
+                     if ($$12.isPresent()) {
+                        Dynamic<?> $$13 = (Dynamic<?>)$$12.get();
+                        Dynamic<?> $$14 = $$13.createMap(ImmutableMap.of($$13.createString("Lore"), $$13.createList(Stream.of($$13.createString("(+NBT")))));
+                        if (Objects.equals($$13, $$14)) {
+                           return $$3x.set(DSL.remainderFinder(), $$5);
+                        }
+                     }
+
+                     $$11.remove("Base");
+                     return $$3x.set(DSL.remainderFinder(), $$5).set($$2, $$7.set($$3, $$9.set(DSL.remainderFinder(), $$11)));
+                  }
+               }
+            }
+
+            return $$3x.set(DSL.remainderFinder(), $$5);
+         } else {
+            return $$3x;
          }
-
-         return Pair.of($$4, $$5.update(DSL.remainderFinder(), $$0x -> $$0x.remove("ZombieType")));
-      }
-   }
-
-   private Typed<?> a(Typed<?> $$0, int $$1) {
-      return ae.a($$0, this.b.get(), $$1x -> $$1x.set("Profession", $$1x.createInt($$1)));
+      });
    }
 }

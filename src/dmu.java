@@ -1,39 +1,57 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dmu extends dqr {
-   public static final MapCodec<dmu> b = b(dmu::new);
+public class dmu extends dih {
+   public static final MapCodec<dmu> c = b(dmu::new);
 
    @Override
    public MapCodec<dmu> a() {
-      return b;
+      return c;
    }
 
-   protected dmu(dxn.d $$0) {
+   protected dmu(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(a, jm.b));
    }
 
    @Override
-   public dxo a(dax $$0) {
-      jm $$1 = $$0.k();
-      dxo $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.m().b(a, $$1.g()) : this.m().b(a, $$1);
+   public dtz a(ji $$0, dwx $$1) {
+      return new duy($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return a($$0, $$2, dub.a);
    }
 
    @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
-      jm $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(ls.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   protected void a(dgi $$0, ji $$1, cox $$2) {
+      dtz $$3 = $$0.c_($$1);
+      if ($$3 instanceof duy) {
+         $$2.a((bsl)$$3);
+         $$2.a(awk.am);
       }
    }
 
    @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(a);
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awa.ky, awb.e, 1.0F, 1.0F, false);
+         }
+
+         jn $$7 = $$0.c(a);
+         jn.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jn.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jn.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(lt.ag, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(lt.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

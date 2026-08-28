@@ -1,10 +1,44 @@
-public class gxc extends gxq {
-   public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+import javax.annotation.Nullable;
+
+public class gxc<S extends gyz, M extends gca<S>> extends gwr<S, M> {
+   private final gbw a;
+   private final gbw b;
+   private final gwb c;
+
+   public gxc(gtz<S, M> $$0, gey $$1, gwb $$2) {
+      super($$0);
+      this.a = new gbw($$1.a(gfb.aF));
+      this.b = new gbw($$1.a(gfb.aG));
+      this.c = $$2;
+   }
+
+   public void a(ffu $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
+      cwp $$6 = $$3.W;
+      deu $$7 = $$6.a(kv.D);
+      if ($$7 != null && !$$7.c().isEmpty()) {
+         aku $$8 = a($$3);
+         gbw $$9 = $$3.aj ? this.b : this.a;
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         $$9.a($$3);
+         this.c.a(hgq.d.c, $$7.c().get(), $$9, $$6, $$0, $$1, $$2, $$8);
+         $$0.b();
+      }
+   }
+
+   @Nullable
+   private static aku a(gyz $$0) {
+      if ($$0 instanceof gzu $$1) {
+         hfk $$2 = $$1.a;
+         if ($$2.d() != null) {
+            return $$2.d();
+         }
+
+         if ($$2.c() != null && $$1.ay) {
+            return $$2.c();
+         }
+      }
+
+      return null;
+   }
 }

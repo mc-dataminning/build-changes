@@ -1,56 +1,103 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dnr extends dkd {
-   protected final jm a;
-   protected final boolean b;
-   protected final fcl d;
+public class dnr extends diy {
+   public static final MapCodec<dnr> a = b(dnr::new);
+   public static final dxo b = dxn.r;
 
-   protected dnr(dxn.d $$0, jm $$1, fcl $$2, boolean $$3) {
+   @Override
+   public MapCodec<dnr> a() {
+      return a;
+   }
+
+   protected dnr(dww.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dnr> a();
-
-   @Nullable
-   @Override
-   public dxo a(dax $$0) {
-      dxo $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
-   }
-
-   public dxo b(bac $$0) {
-      return this.m();
-   }
-
-   @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      jh $$3 = $$2.a(this.a.g());
-      dxo $$4 = $$1.a_($$3);
-      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   public void a(dgi $$0, ji $$1, dwx $$2, @Nullable bvg $$3, cwp $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      cyy $$5 = $$4.a(kv.Y, cyy.a);
+      if ($$5.a("RecordItem")) {
+         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
       }
    }
 
-   protected boolean o(dxo $$0) {
+   @Override
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if ($$0.c(b) && $$1.c_($$2) instanceof dvd $$5) {
+         $$5.s();
+         return bsj.a;
+      } else {
+         return bsj.e;
+      }
+   }
+
+   @Override
+   protected bsj a(cwp $$0, dwx $$1, dgi $$2, ji $$3, cox $$4, bsi $$5, faw $$6) {
+      if ($$1.c(b)) {
+         return bsj.f;
+      } else {
+         cwp $$7 = $$4.b($$5);
+         bsj $$8 = cwu.a($$2, $$3, $$7, $$4);
+         return (bsj)(!$$8.a() ? bsj.f : $$8);
+      }
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if ($$1.c_($$2) instanceof dvd $$5) {
+            $$5.s();
+         }
+
+         super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dvd($$0, $$1);
+   }
+
+   @Override
+   public boolean f_(dwx $$0) {
       return true;
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return this.d;
+   public int a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+      if ($$1.c_($$2) instanceof dvd $$4 && $$4.j().a()) {
+         return 15;
+      }
+
+      return 0;
    }
 
-   protected abstract dnt c();
+   @Override
+   protected boolean c_(dwx $$0) {
+      return true;
+   }
 
-   protected abstract dkd b();
+   @Override
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return $$1.c_($$2) instanceof dvd $$3 ? $$3.u() : 0;
+   }
+
+   @Override
+   protected dpx a_(dwx $$0) {
+      return dpx.c;
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return $$1.c(b) ? a($$2, dub.e, dvd::a) : null;
+   }
 }

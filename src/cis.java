@@ -1,76 +1,139 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public final class cis {
-   public static final Codec<cis> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alp.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
-               alp.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
-               alp.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
-               kf.a(mb.aI).fieldOf("biomes").forGetter(cis::d)
+public class cis {
+   private static final float a = 2.0F;
+   private static final float b = 1.0F;
+   private static final float c = 1.0F;
+   private static final float d = 0.75F;
+   private static final bru e = bru.a(100, 140);
+   private static final int f = 2;
+   private static final int g = 4;
+   private static final float h = 3.5714288F;
+   private static final float i = 1.25F;
+
+   protected static void a(cir $$0, azh $$1) {
+      $$0.ec().a(cek.S, e.a($$1));
+   }
+
+   protected static bwi<?> a(bwi<cir> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      g($$0);
+      f($$0);
+      $$0.a(ImmutableSet.of(cqo.a));
+      $$0.b(cqo.b);
+      $$0.f();
+      return $$0;
+   }
+
+   private static void b(bwi<cir> $$0) {
+      $$0.a(cqo.a, 0, ImmutableList.of(new bwu(2.0F), new byf(45, 90), new byj(), new bxf(cek.P), new bxf(cek.S)));
+   }
+
+   private static void c(bwi<cir> $$0) {
+      $$0.a(
+         cqo.b,
+         ImmutableList.of(
+            Pair.of(0, byz.a(bur.bS, 6.0F, bru.a(30, 60))),
+            Pair.of(0, new bwt(bur.ac)),
+            Pair.of(1, new bxm($$0x -> 1.25F)),
+            Pair.of(2, bzl.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cek.B))),
+            Pair.of(3, bzw.a(6, 1.0F)),
+            Pair.of(
+               4,
+               new byw(
+                  ImmutableMap.of(cek.m, cel.b),
+                  ImmutableList.of(Pair.of(byr.a(1.0F), 1), Pair.of(bzg.a(1.0F, 3), 1), Pair.of(new bxg(), 3), Pair.of(cam.a(buk::aJ), 2))
+               )
             )
-            .apply($$0, cis::new)
-   );
-   public static final zi<wv, cis> b = zi.a(alp.b, cis::a, alp.b, cis::b, alp.b, cis::c, zg.c(mb.aI), cis::d, cis::new);
-   public static final Codec<jq<cis>> c = all.a(mb.m, a);
-   public static final zi<wv, jq<cis>> d = zg.a(mb.m, b);
-   private final alp e;
-   private final alp f;
-   private final alp g;
-   private final alp h;
-   private final alp i;
-   private final alp j;
-   private final ju<dib> k;
-
-   public cis(alp $$0, alp $$1, alp $$2, ju<dib> $$3) {
-      this.e = $$0;
-      this.h = a($$0);
-      this.f = $$1;
-      this.i = a($$1);
-      this.g = $$2;
-      this.j = a($$2);
-      this.k = $$3;
+         ),
+         ImmutableSet.of(Pair.of(cek.T, cel.b), Pair.of(cek.X, cel.b))
+      );
    }
 
-   private static alp a(alp $$0) {
-      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
+   private static void d(bwi<cir> $$0) {
+      $$0.a(
+         cqo.t,
+         ImmutableList.of(
+            Pair.of(0, byz.a(bur.bS, 6.0F, bru.a(30, 60))),
+            Pair.of(1, new bxm($$0x -> 1.25F)),
+            Pair.of(2, bzl.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cek.B))),
+            Pair.of(3, bzw.a(8, 1.5F)),
+            Pair.of(
+               5,
+               new bxn(
+                  ImmutableMap.of(cek.m, cel.b),
+                  ImmutableSet.of(),
+                  bxn.a.a,
+                  bxn.b.b,
+                  ImmutableList.of(Pair.of(byr.c(0.75F), 1), Pair.of(byr.a(1.0F, true), 1), Pair.of(bzg.a(1.0F, 3), 1), Pair.of(cam.a(buk::bm), 5))
+               )
+            )
+         ),
+         ImmutableSet.of(Pair.of(cek.T, cel.b), Pair.of(cek.X, cel.a))
+      );
    }
 
-   public alp a() {
-      return this.h;
+   private static void e(bwi<cir> $$0) {
+      $$0.a(
+         cqo.u,
+         ImmutableList.of(
+            Pair.of(0, byz.a(bur.bS, 6.0F, bru.a(30, 60))),
+            Pair.of(1, bzl.a(($$0x, $$1) -> b($$1), ($$0x, $$1) -> $$1.ec().c(cek.B))),
+            Pair.of(2, bzx.a(8, 1.0F)),
+            Pair.of(3, bzz.a(djo.tP)),
+            Pair.of(4, new byw(ImmutableList.of(Pair.of(byr.a(1.0F), 2), Pair.of(bzg.a(1.0F, 3), 1), Pair.of(new bxg(), 2), Pair.of(cam.a(buk::aJ), 1))))
+         ),
+         ImmutableSet.of(Pair.of(cek.T, cel.b), Pair.of(cek.Y, cel.a))
+      );
    }
 
-   public alp b() {
-      return this.i;
+   private static void f(bwi<cir> $$0) {
+      $$0.a(
+         cqo.q,
+         ImmutableList.of(Pair.of(0, new bya(e, awa.kr)), Pair.of(1, new byb<>(e, 2, 4, 3.5714288F, $$0x -> awa.kq, awp.bT, 0.5F, cis::a))),
+         ImmutableSet.of(Pair.of(cek.O, cel.b), Pair.of(cek.r, cel.b), Pair.of(cek.S, cel.b), Pair.of(cek.X, cel.b))
+      );
    }
 
-   public alp c() {
-      return this.j;
+   private static void g(bwi<cir> $$0) {
+      $$0.a(cqo.s, 0, ImmutableList.of(bzo.a(), new cit(awa.ks, awa.kn)), cek.o);
    }
 
-   public ju<dib> d() {
-      return this.k;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
+   private static <E extends bvi> boolean a(E $$0, ji $$1) {
+      dgi $$2 = $$0.dW();
+      ji $$3 = $$1.e();
+      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
+         dwx $$4 = $$2.a_($$1);
+         dwx $$5 = $$2.a_($$3);
+         if (!$$4.a(awp.bT) && !$$5.a(awp.bT)) {
+            ets $$6 = new ets($$0.dW(), $$0);
+            etq $$7 = etv.a($$6, $$1.k());
+            etq $$8 = etv.a($$6, $$3.k());
+            return $$7 != etq.e && (!$$4.l() || $$8 != etq.e) ? byc.a($$0, $$1) : true;
+         } else {
+            return true;
+         }
       } else {
-         return !($$0 instanceof cis $$1)
-            ? false
-            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
+         return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = 1;
-      $$0 = 31 * $$0 + this.e.hashCode();
-      $$0 = 31 * $$0 + this.f.hashCode();
-      $$0 = 31 * $$0 + this.g.hashCode();
-      return 31 * $$0 + this.k.hashCode();
+   private static boolean b(cir $$0) {
+      return !bxb.a($$0);
+   }
+
+   public static void a(cir $$0) {
+      $$0.ec().a(ImmutableList.of(cqo.s, cqo.u, cqo.q, cqo.t, cqo.b));
+   }
+
+   public static Predicate<cwp> a() {
+      return $$0 -> $$0.a(awy.ao);
    }
 }

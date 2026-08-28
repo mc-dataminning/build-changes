@@ -1,96 +1,107 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetSocketAddress;
-import java.util.Objects;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public abstract class hhq implements hii {
+   protected hif a;
+   protected final awb b;
+   protected final aku c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hii.a k = hii.a.b;
+   protected boolean l;
+   protected azh m;
 
-public class hhq {
-   static final Logger a = LogUtils.getLogger();
-   final ftr b;
-   volatile boolean c;
-   @Nullable
-   we d;
-
-   public hhq(ftr $$0) {
-      this.b = $$0;
+   protected hhq(avz $$0, awb $$1, azh $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   public void a(final fic $$0, ggx $$1) {
-      final flz $$2 = flz.Q();
-      $$2.aV();
-      $$2.aZ().c(xk.c("mco.connect.success"));
-      final String $$3 = $$1.a();
-      final int $$4 = $$1.b();
-      (new Thread("Realms-connect-task") {
-         @Override
-         public void run() {
-            InetSocketAddress $$0 = null;
-
-            try {
-               $$0 = new InetSocketAddress($$3, $$4);
-               if (hhq.this.c) {
-                  return;
-               }
-
-               hhq.this.d = we.a($$0, $$2.n.aD(), $$2.aQ().n());
-               if (hhq.this.c) {
-                  return;
-               }
-
-               gfe $$1 = new gfe(hhq.this.d, $$2, $$0.e($$3), hhq.this.b, false, null, $$0xx -> {
-               }, null);
-               if ($$0.i()) {
-                  $$1.a($$0.q);
-               }
-
-               if (hhq.this.c) {
-                  return;
-               }
-
-               hhq.this.d.a($$3, $$4, $$1);
-               if (hhq.this.c) {
-                  return;
-               }
-
-               hhq.this.d.a(new aju($$2.X().c(), $$2.X().b()));
-               $$2.a(ggl.a($$0));
-               $$2.bd().a(gkk.c.c, String.valueOf($$0.a), Objects.requireNonNullElse($$0.c, "unknown"));
-               $$2.af().a(hhq.this.d, hej.c.b);
-            } catch (Exception var5) {
-               $$2.af().i();
-               if (hhq.this.c) {
-                  return;
-               }
-
-               hhq.a.error("Couldn't connect to world", var5);
-               String $$3 = var5.toString();
-               if ($$0 != null) {
-                  String $$4 = $$0 + ":" + $$4;
-                  $$3 = $$3.replaceAll($$4, "");
-               }
-
-               hhp $$5 = new hhp(hhq.this.b, xj.r, xk.a("disconnect.genericReason", $$3));
-               $$2.execute(() -> $$2.a($$5));
-            }
-         }
-      }).start();
+   protected hhq(aku $$0, awb $$1, azh $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
-   public void a() {
-      this.c = true;
-      if (this.d != null && this.d.i()) {
-         this.d.a(xk.c("disconnect.genericReason"));
-         this.d.n();
-      }
+   @Override
+   public aku a() {
+      return this.c;
    }
 
-   public void b() {
-      if (this.d != null) {
-         if (this.d.i()) {
-            this.d.b();
+   @Override
+   public hjp a(hjo $$0) {
+      if (this.c.equals(hjo.c)) {
+         this.a = hjo.e;
+         return hjo.d;
+      } else {
+         hjp $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hjo.b;
          } else {
-            this.d.n();
+            this.a = $$1.a(this.m);
          }
+
+         return $$1;
       }
+   }
+
+   @Override
+   public hif b() {
+      return this.a;
+   }
+
+   @Override
+   public awb c() {
+      return this.b;
+   }
+
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hii.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

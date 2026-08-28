@@ -1,24 +1,13 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gvo extends gwr<gxw, gbk> {
+   private static final gmh a = gmh.r(aku.b("textures/entity/breeze/breeze_eyes.png"));
 
-public class gvo extends gwa<gyf, gbs> {
-   private static final Map<cjw, alp> a = ae.a(Maps.newEnumMap(cjw.class), $$0 -> {
-      $$0.put(cjw.a, null);
-      $$0.put(cjw.b, alp.b("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(cjw.c, alp.b("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(cjw.d, alp.b("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(cjw.e, alp.b("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gvo(gti<gyf, gbs> $$0) {
+   public gvo(gtz<gxw, gbk> $$0) {
       super($$0);
    }
 
-   public void a(fgl $$0, glg $$1, int $$2, gyf $$3, float $$4, float $$5) {
-      alp $$6 = a.get($$3.h);
-      if ($$6 != null && !$$3.u) {
-         fgp $$7 = $$1.getBuffer(glq.j($$6));
-         this.d().a($$0, $$7, $$2, gsm.a($$3, 0.0F));
-      }
+   public void a(ffu $$0, glx $$1, int $$2, gxw $$3, float $$4, float $$5) {
+      ffy $$6 = $$1.getBuffer(a);
+      gbk $$7 = this.d();
+      grh.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hea.d);
    }
 }

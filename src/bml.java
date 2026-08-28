@@ -1,17 +1,22 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bml extends bkb {
+public class bml extends bjk {
    public bml(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("minecraft:brushable_block", $$1.remove("minecraft:suspicious_sand"));
-      $$0.registerSimple($$1, "minecraft:calibrated_sculk_sensor");
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("inBlockState", bhw.u.in($$0), "item", bhw.t.in($$0), "weapon", bhw.t.in($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:spectral_arrow", () -> a($$0));
+      $$0.register($$1, "minecraft:arrow", () -> a($$0));
       return $$1;
    }
 }

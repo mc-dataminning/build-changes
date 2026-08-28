@@ -1,120 +1,162 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
 public class aqe {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.whitelist.alreadyOn"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.whitelist.alreadyOff"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xk.c("commands.whitelist.add.failed"));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xk.c("commands.whitelist.remove.failed"));
+   private final aqs b;
+   private final dfo c;
+   @Nullable
+   private dzt d = null;
+   public final dzt a;
+   private volatile boolean e;
+   private final List<CompletableFuture<aqi<dys>>> f = new ArrayList<>();
+   private final azt<aqt> g;
+   private boolean h;
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a(
-                                 "whitelist"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ex.a("on").executes($$0x -> b((ew)$$0x.getSource()))))
-                        .then(ex.a("off").executes($$0x -> c((ew)$$0x.getSource()))))
-                     .then(ex.a("list").executes($$0x -> d((ew)$$0x.getSource()))))
-                  .then(ex.a("add").then(ex.a("targets", fl.a()).suggests(($$0x, $$1) -> {
-                     avy $$2 = ((ew)$$0x.getSource()).l().ag();
-                     return fb.b($$2.t().stream().filter($$1x -> !$$2.i().a($$1x.gh())).map($$0xx -> $$0xx.gh().getName()), $$1);
-                  }).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"))))))
-               .then(
-                  ex.a("remove")
-                     .then(
-                        ex.a("targets", fl.a())
-                           .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().j(), $$1))
-                           .executes($$0x -> b((ew)$$0x.getSource(), fl.a($$0x, "targets")))
-                     )
-               ))
-            .then(ex.a("reload").executes($$0x -> a((ew)$$0x.getSource())))
-      );
+   private aqe(aqs $$0, dzt $$1, dfo $$2, azt<aqt> $$3) {
+      this.b = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.g = $$3;
    }
 
-   private static int a(ew $$0) {
-      $$0.l().ag().a();
-      $$0.a(() -> xk.c("commands.whitelist.reloaded"), true);
-      $$0.l().a($$0);
-      return 1;
+   public static aqe a(aqs $$0, dzt $$1, dfo $$2) {
+      int $$3 = dzs.a.a($$1).a(dzt.c);
+      azt<aqt> $$4 = azt.a($$2.h, $$2.i, $$3, ($$1x, $$2x) -> $$0.d(dfo.c($$1x, $$2x)));
+      return new aqe($$0, $$1, $$2, $$4);
    }
 
-   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      awg $$2 = $$0.l().ag().i();
-      int $$3 = 0;
+   @Nullable
+   public CompletableFuture<?> a() {
+      while (true) {
+         CompletableFuture<?> $$0 = this.g();
+         if ($$0 != null) {
+            return $$0;
+         }
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.a($$4)) {
-            awh $$5 = new awh($$4);
-            $$2.a($$5);
-            $$0.a(() -> xk.a("commands.whitelist.add.success", xk.b($$4.getName())), true);
-            $$3++;
+         if (this.e || this.d == this.a) {
+            this.e();
+            return null;
+         }
+
+         this.d();
+      }
+   }
+
+   private void d() {
+      dzt $$0;
+      if (this.d == null) {
+         $$0 = dzt.c;
+      } else if (!this.h && this.d == dzt.c && !this.f()) {
+         this.h = true;
+         $$0 = dzt.c;
+      } else {
+         $$0 = dzt.a().get(this.d.b() + 1);
+      }
+
+      this.a($$0, this.h);
+      this.d = $$0;
+   }
+
+   public void b() {
+      this.e = true;
+   }
+
+   private void e() {
+      aqt $$0 = this.g.a(this.c.h, this.c.i);
+      $$0.a(this);
+      this.g.a(this.b::a);
+   }
+
+   private boolean f() {
+      if (this.a == dzt.c) {
+         return true;
+      } else {
+         dzt $$0 = this.g.a(this.c.h, this.c.i).q();
+         if ($$0 != null && !$$0.d(this.a)) {
+            dzr $$1 = dzs.b.a(this.a).c();
+            int $$2 = $$1.c();
+
+            for (int $$3 = this.c.h - $$2; $$3 <= this.c.h + $$2; $$3++) {
+               for (int $$4 = this.c.i - $$2; $$4 <= this.c.i + $$2; $$4++) {
+                  int $$5 = this.c.e($$3, $$4);
+                  dzt $$6 = $$1.a($$5);
+                  dzt $$7 = this.g.a($$3, $$4).q();
+                  if ($$7 == null || $$7.d($$6)) {
+                     return false;
+                  }
+               }
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
+   }
+
+   public aqt c() {
+      return this.g.a(this.c.h, this.c.i);
+   }
+
+   private void a(dzt $$0, boolean $$1) {
+      try (box $$2 = bor.a().d("scheduleLayer")) {
+         $$2.a($$0::f);
+         int $$3 = this.b($$0, $$1);
+
+         for (int $$4 = this.c.h - $$3; $$4 <= this.c.h + $$3; $$4++) {
+            for (int $$5 = this.c.i - $$3; $$5 <= this.c.i + $$3; $$5++) {
+               aqt $$6 = this.g.a($$4, $$5);
+               if (this.e || !this.a($$0, $$1, $$6)) {
+                  return;
+               }
+            }
+         }
+      }
+   }
+
+   private int b(dzt $$0, boolean $$1) {
+      dzs $$2 = $$1 ? dzs.a : dzs.b;
+      return $$2.a(this.a).a($$0);
+   }
+
+   private boolean a(dzt $$0, boolean $$1, aqt $$2) {
+      dzt $$3 = $$2.q();
+      boolean $$4 = $$3 != null && $$0.b($$3);
+      dzs $$5 = $$4 ? dzs.a : dzs.b;
+      if ($$4 && !$$1) {
+         throw new IllegalStateException("Can't load chunk, but didn't expect to need to generate");
+      } else {
+         CompletableFuture<aqi<dys>> $$6 = $$2.a($$5.a($$0), this.b, this.g);
+         aqi<dys> $$7 = $$6.getNow(null);
+         if ($$7 == null) {
+            this.f.add($$6);
+            return true;
+         } else if ($$7.a()) {
+            return true;
+         } else {
+            this.b();
+            return false;
+         }
+      }
+   }
+
+   @Nullable
+   private CompletableFuture<?> g() {
+      while (!this.f.isEmpty()) {
+         CompletableFuture<aqi<dys>> $$0 = this.f.getLast();
+         aqi<dys> $$1 = $$0.getNow(null);
+         if ($$1 == null) {
+            return $$0;
+         }
+
+         this.f.removeLast();
+         if (!$$1.a()) {
+            this.b();
          }
       }
 
-      if ($$3 == 0) {
-         throw c.create();
-      } else {
-         return $$3;
-      }
-   }
-
-   private static int b(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      awg $$2 = $$0.l().ag().i();
-      int $$3 = 0;
-
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            awh $$5 = new awh($$4);
-            $$2.b($$5);
-            $$0.a(() -> xk.a("commands.whitelist.remove.success", xk.b($$4.getName())), true);
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw d.create();
-      } else {
-         $$0.l().a($$0);
-         return $$3;
-      }
-   }
-
-   private static int b(ew $$0) throws CommandSyntaxException {
-      avy $$1 = $$0.l().ag();
-      if ($$1.o()) {
-         throw a.create();
-      } else {
-         $$1.a(true);
-         $$0.a(() -> xk.c("commands.whitelist.enabled"), true);
-         $$0.l().a($$0);
-         return 1;
-      }
-   }
-
-   private static int c(ew $$0) throws CommandSyntaxException {
-      avy $$1 = $$0.l().ag();
-      if (!$$1.o()) {
-         throw b.create();
-      } else {
-         $$1.a(false);
-         $$0.a(() -> xk.c("commands.whitelist.disabled"), true);
-         return 1;
-      }
-   }
-
-   private static int d(ew $$0) {
-      String[] $$1 = $$0.l().ag().j();
-      if ($$1.length == 0) {
-         $$0.a(() -> xk.c("commands.whitelist.none"), false);
-      } else {
-         $$0.a(() -> xk.a("commands.whitelist.list", $$1.length, String.join(", ", $$1)), false);
-      }
-
-      return $$1.length;
+      return null;
    }
 }

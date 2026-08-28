@@ -1,142 +1,382 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import java.util.List;
+import java.util.UUID;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class fyt extends ftr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final xk b = xk.c("selectWorld.enterName").a(n.h);
-   private static final xk c = xk.c("selectWorld.edit.resetIcon");
-   private static final xk d = xk.c("selectWorld.edit.openFolder");
-   private static final xk s = xk.c("selectWorld.edit.backup");
-   private static final xk u = xk.c("selectWorld.edit.backupFolder");
-   private static final xk v = xk.c("selectWorld.edit.optimize");
-   private static final xk w = xk.c("optimizeWorld.confirm.title");
-   private static final xk x = xk.c("optimizeWorld.confirm.description");
-   private static final xk y = xk.c("optimizeWorld.confirm.proceed");
-   private static final xk z = xk.c("selectWorld.edit.save");
-   private static final int A = 200;
-   private static final int B = 4;
-   private static final int C = 98;
-   private final frr D = frr.d().a(5);
-   private final BooleanConsumer E;
-   private final evw.c F;
-   private final foh G;
+public class fyt extends fuk {
+   static final aku a = aku.b("icon/checkmark");
+   private static final wo b = wo.c("gui.chatSelection.title");
+   private static final wo c = wo.c("gui.chatSelection.context");
+   @Nullable
+   private final fuk d;
+   private final ghh s;
+   private fos u;
+   private fpl v;
+   @Nullable
+   private fyt.a w;
+   final gha.a x;
+   private final Consumer<gha.a> y;
+   private fys z;
 
-   public static fyt a(flz $$0, evw.c $$1, BooleanConsumer $$2) throws IOException {
-      evx $$3 = $$1.a($$1.h());
-      return new fyt($$0, $$1, $$3.b(), $$2);
+   public fyt(@Nullable fuk $$0, ghh $$1, gha.a $$2, Consumer<gha.a> $$3) {
+      super(b);
+      this.d = $$0;
+      this.s = $$1;
+      this.x = $$2.d();
+      this.y = $$3;
    }
 
-   private fyt(flz $$0, evw.c $$1, String $$2, BooleanConsumer $$3) {
-      super(xk.c("selectWorld.edit.title"));
-      this.E = $$3;
-      this.F = $$1;
-      fnj $$4 = $$0.h;
-      this.D.a(new frs(200, 20));
-      this.D.a(new fpg(b, $$4));
-      this.G = this.D.a(new foh($$4, 200, 20, b));
-      this.G.a($$2);
-      frr $$5 = frr.e().a(4);
-      fny $$6 = $$5.a(fny.a(z, $$0x -> this.a(this.G.a())).a(98).a());
-      $$5.a(fny.a(xj.e, $$0x -> this.aP_()).a(98).a());
-      this.G.b($$1x -> $$6.j = !bar.h($$1x));
-      this.D.a(fny.a(c, $$1x -> {
-         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
-         $$1x.j = false;
-      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
-      this.D.a(fny.a(d, $$1x -> ae.m().a($$1.a(evu.l))).a(200).a());
-      this.D.a(fny.a(s, $$1x -> {
-         boolean $$2x = a($$1);
-         this.E.accept(!$$2x);
-      }).a(200).a());
-      this.D.a(fny.a(u, $$1x -> {
-         evw $$2x = $$0.m();
-         Path $$3x = $$2x.d();
+   @Override
+   protected void aR_() {
+      this.z = new fys(this.s, this::a);
+      this.v = fpl.a(this.p, c, this.n - 16);
+      this.w = this.c(new fyt.a(this.m, (this.v.a() + 1) * 9));
+      this.c(fos.a(wn.k, $$0 -> this.aO_()).a(this.n / 2 - 155, this.o - 32, 150, 20).a());
+      this.u = this.c(fos.a(wn.d, $$0 -> {
+         this.y.accept(this.x);
+         this.aO_();
+      }).a(this.n / 2 - 155 + 160, this.o - 32, 150, 20).a());
+      this.F();
+      this.m();
+      this.w.a((double)this.w.i());
+   }
 
-         try {
-            v.c($$3x);
-         } catch (IOException var5x) {
-            throw new RuntimeException(var5x);
+   private boolean a(ggw $$0) {
+      return $$0.a(this.x.f());
+   }
+
+   private void m() {
+      int $$0 = this.w.b();
+      this.z.a($$0, this.w);
+   }
+
+   void E() {
+      this.m();
+   }
+
+   void F() {
+      this.u.j = !this.x.a().isEmpty();
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 10, -1);
+      AbuseReportLimits $$4 = this.s.a().b();
+      int $$5 = this.x.a().size();
+      int $$6 = $$4.maxReportedMessageCount();
+      wo $$7 = wo.a("gui.chatSelection.selected", $$5, $$6);
+      $$0.a(this.p, $$7, this.n / 2, 26, -1);
+      this.v.a($$0, this.n / 2, this.w.c());
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.d);
+   }
+
+   @Override
+   public wo i() {
+      return wn.a(super.i(), c);
+   }
+
+   public class a extends fpo<fyt.a.b> implements fys.a {
+      @Nullable
+      private fyt.a.c m;
+
+      public a(final flj $$1, final int $$2) {
+         super($$1, fyt.this.n, fyt.this.o - $$2 - 80, 40, 16);
+      }
+
+      @Override
+      public void a(double $$0) {
+         double $$1 = this.g();
+         super.a($$0);
+         if ((float)this.i() > 1.0E-5F && $$0 <= 1.0E-5F && !ayz.b($$0, $$1)) {
+            fyt.this.E();
+         }
+      }
+
+      @Override
+      public void a(int $$0, ggw.a $$1) {
+         boolean $$2 = $$1.a(fyt.this.x.f());
+         ggu $$3 = $$1.h();
+         fld $$4 = $$3.a($$1.g());
+         fyt.a.b $$5 = new fyt.a.d($$0, $$1.b(), $$1.c(), $$4, $$2, true);
+         this.c($$5);
+         this.a($$1, $$2);
+      }
+
+      private void a(ggw.a $$0, boolean $$1) {
+         fyt.a.b $$2 = new fyt.a.e($$0.f(), $$0.d(), $$1);
+         this.c($$2);
+         fyt.a.c $$3 = new fyt.a.c($$0.e(), $$2);
+         if (this.m != null && this.m.a($$3)) {
+            this.d(this.m.b());
          }
 
-         ae.m().a($$3x);
-      }).a(200).a());
-      this.D.a(fny.a(v, $$2x -> $$0.a(new fsl(() -> $$0.a(this), ($$2xx, $$3x) -> {
-            if ($$2xx) {
-               a($$1);
+         this.m = $$3;
+      }
+
+      @Override
+      public void a(wo $$0) {
+         this.c(new fyt.a.f());
+         this.c(new fyt.a.a($$0));
+         this.c(new fyt.a.f());
+         this.m = null;
+      }
+
+      @Override
+      public int a() {
+         return Math.min(350, this.g - 50);
+      }
+
+      public int b() {
+         return ayz.e(this.h, this.d);
+      }
+
+      @Override
+      protected void a(fod $$0, int $$1, int $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+         fyt.a.b $$9 = this.b($$4);
+         if (this.b($$9)) {
+            boolean $$10 = this.p() == $$9;
+            int $$11 = this.aM_() && $$10 ? -1 : -8355712;
+            this.a($$0, $$6, $$7, $$8, $$11, -16777216);
+         }
+
+         $$9.a($$0, $$4, $$6, $$5, $$7, $$8, $$1, $$2, this.x() == $$9, $$3);
+      }
+
+      private boolean b(fyt.a.b $$0) {
+         if ($$0.c()) {
+            boolean $$1 = this.p() == $$0;
+            boolean $$2 = this.p() == null;
+            boolean $$3 = this.x() == $$0;
+            return $$1 || $$2 && $$3 && $$0.d();
+         } else {
+            return false;
+         }
+      }
+
+      @Nullable
+      protected fyt.a.b c(fsx $$0) {
+         return this.a($$0, fyt.a.b::c);
+      }
+
+      public void a(@Nullable fyt.a.b $$0) {
+         super.a($$0);
+         fyt.a.b $$1 = this.c(fsx.a);
+         if ($$1 == null) {
+            fyt.this.E();
+         }
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, int $$2) {
+         fyt.a.b $$3 = this.p();
+         return $$3 != null && $$3.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+      }
+
+      public int c() {
+         return this.I() + 9;
+      }
+
+      public class a extends fyt.a.b {
+         private final wo b;
+
+         public a(final wo $$1) {
+            this.b = $$1;
+         }
+
+         @Override
+         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$2 + $$5 / 2;
+            int $$11 = $$3 + $$4 - 8;
+            int $$12 = fyt.this.p.a(this.b);
+            int $$13 = ($$3 + $$11 - $$12) / 2;
+            int $$14 = $$10 - 9 / 2;
+            $$0.b(fyt.this.p, this.b, $$13, $$14, -6250336);
+         }
+
+         @Override
+         public wo a() {
+            return this.b;
+         }
+      }
+
+      public abstract static class b extends fpo.a<fyt.a.b> {
+         @Override
+         public wo a() {
+            return wn.a;
+         }
+
+         public boolean b() {
+            return false;
+         }
+
+         public boolean c() {
+            return false;
+         }
+
+         public boolean d() {
+            return this.c();
+         }
+      }
+
+      static record c(UUID a, fyt.a.b b) {
+         public boolean a(fyt.a.c $$0) {
+            return $$0.a.equals(this.a);
+         }
+      }
+
+      public class d extends fyt.a.b {
+         private static final int b = 9;
+         private static final int c = 8;
+         private static final int d = 11;
+         private static final int e = 4;
+         private final int f;
+         private final wt g;
+         private final wo h;
+         @Nullable
+         private final List<ayl> i;
+         @Nullable
+         private final fld.a j;
+         @Nullable
+         private final List<ayl> k;
+         private final boolean l;
+         private final boolean m;
+
+         public d(final int $$1, final wo $$2, final wo $$3, @Nullable final fld $$4, final boolean $$5, final boolean $$6) {
+            this.f = $$1;
+            this.j = x.a($$4, fld::f);
+            this.k = $$4 != null && $$4.g() != null ? fyt.this.p.c($$4.g(), a.this.a()) : null;
+            this.l = $$5;
+            this.m = $$6;
+            wt $$7 = fyt.this.p.a($$2, this.e() - fyt.this.p.a(wn.u));
+            if ($$2 != $$7) {
+               this.g = wt.a($$7, wn.u);
+               this.i = fyt.this.p.c($$2, a.this.a());
+            } else {
+               this.g = $$2;
+               this.i = null;
             }
 
-            $$0.a(fyw.a($$0, this.E, $$0.au(), $$1, $$3x));
-         }, w, x, y, true))).a(200).a());
-      this.D.a(new frs(200, 20));
-      this.D.a($$5);
-      this.D.a($$1x -> {
-         fnw var10000 = this.c($$1x);
-      });
-   }
+            this.h = $$3;
+         }
 
-   @Override
-   protected void aG_() {
-      this.b(this.G);
-   }
+         @Override
+         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            if (this.b() && this.l) {
+               this.a($$0, $$2, $$3, $$5);
+            }
 
-   @Override
-   protected void aT_() {
-      this.c();
-   }
+            int $$10 = $$3 + this.g();
+            int $$11 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fyt.this.p, tl.a().a(this.g), $$10, $$11, this.l ? -1 : -1593835521);
+            if (this.i != null && $$8) {
+               fyt.this.b(this.i);
+            }
 
-   @Override
-   protected void c() {
-      this.D.a();
-      frl.a(this.D, this.H());
-   }
+            int $$12 = fyt.this.p.a(this.g);
+            this.a($$0, $$10 + $$12 + 4, $$2, $$5, $$6, $$7);
+         }
 
-   @Override
-   public void aP_() {
-      this.E.accept(false);
-   }
+         private void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+            if (this.j != null) {
+               int $$6 = $$2 + ($$3 - this.j.d) / 2;
+               this.j.a($$0, $$1, $$6);
+               if (this.k != null && $$4 >= $$1 && $$4 <= $$1 + this.j.c && $$5 >= $$6 && $$5 <= $$6 + this.j.d) {
+                  fyt.this.b(this.k);
+               }
+            }
+         }
 
-   private void a(String $$0) {
-      try {
-         this.F.a($$0);
-      } catch (ux | vd | IOException var3) {
-         a.error("Failed to access world '{}'", this.F.f(), var3);
-         fqi.a(this.m, this.F.f());
+         private void a(fod $$0, int $$1, int $$2, int $$3) {
+            int $$5 = $$1 + ($$3 - 8) / 2;
+            $$0.a(gmh::H, fyt.a, $$2, $$5, 9, 8);
+         }
+
+         private int e() {
+            int $$0 = this.j != null ? this.j.c + 4 : 0;
+            return a.this.a() - this.g() - 4 - $$0;
+         }
+
+         private int g() {
+            return this.m ? 11 : 0;
+         }
+
+         @Override
+         public wo a() {
+            return (wo)(this.b() ? wo.a("narrator.select", this.h) : this.h);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(null);
+            return this.h();
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            return fsu.a($$0) ? this.h() : false;
+         }
+
+         @Override
+         public boolean b() {
+            return fyt.this.x.b(this.f);
+         }
+
+         @Override
+         public boolean c() {
+            return true;
+         }
+
+         @Override
+         public boolean d() {
+            return this.l;
+         }
+
+         private boolean h() {
+            if (this.l) {
+               fyt.this.x.a(this.f);
+               fyt.this.F();
+               return true;
+            } else {
+               return false;
+            }
+         }
       }
 
-      this.E.accept(true);
-   }
+      public class e extends fyt.a.b {
+         private static final int b = 12;
+         private static final int c = 4;
+         private final wo d;
+         private final Supplier<hfk> e;
+         private final boolean f;
 
-   public static boolean a(evw.c $$0) {
-      long $$1 = 0L;
-      IOException $$2 = null;
+         public e(final GameProfile $$1, final wo $$2, final boolean $$3) {
+            this.d = $$2;
+            this.f = $$3;
+            this.e = a.this.c.an().a($$1);
+         }
 
-      try {
-         $$1 = $$0.l();
-      } catch (IOException var6) {
-         $$2 = var6;
+         @Override
+         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 - 12 + 4;
+            int $$11 = $$2 + ($$5 - 12) / 2;
+            fpr.a($$0, this.e.get(), $$10, $$11, 12);
+            int $$12 = $$2 + 1 + ($$5 - 9) / 2;
+            $$0.b(fyt.this.p, this.d, $$10 + 12 + 4, $$12, this.f ? -1 : -1593835521);
+         }
       }
 
-      if ($$2 != null) {
-         xk $$4 = xk.c("selectWorld.edit.backupFailed");
-         xk $$5 = xk.b($$2.getMessage());
-         flz.Q().aA().a(new fqi(fqi.a.b, $$4, $$5));
-         return false;
-      } else {
-         xk $$6 = xk.a("selectWorld.edit.backupCreated", $$0.f());
-         xk $$7 = xk.a("selectWorld.edit.backupSize", azu.c((double)$$1 / 1048576.0));
-         flz.Q().aA().a(new fqi(fqi.a.b, $$6, $$7));
-         return true;
+      public static class f extends fyt.a.b {
+         @Override
+         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         }
       }
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 15, 16777215);
    }
 }

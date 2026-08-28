@@ -1,110 +1,83 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.Objects;
+import java.util.function.Supplier;
 
-public class gnb implements hdx {
-   private final alp a;
-   private final j b;
-   private final boolean c;
-   private final int d;
+public class gnb implements auq {
+   private final gna a;
+   private final gnd b;
+   private final Supplier<gmu> c;
+   private final gnc d;
+   private final azh e = azh.a();
+   private final fml f;
 
-   public gnb(alp $$0, j $$1, boolean $$2, int $$3) {
+   public gnb(gna $$0, Supplier<gmu> $$1, fml $$2) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.f = $$2;
+      this.b = new gnd(this.f);
+      this.d = new gnc();
    }
 
-   public alp a() {
+   public gna a() {
       return this.a;
    }
 
-   @Override
-   public j b() {
+   public void a(dwx $$0, ji $$1, dfk $$2, ffu $$3, ffy $$4) {
+      if ($$0.o() == dpx.c) {
+         hgl $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, hea.d);
+      }
+   }
+
+   public void a(dwx $$0, ji $$1, dfk $$2, ffu $$3, ffy $$4, boolean $$5, azh $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), hea.d);
+      } catch (Throwable var11) {
+         o $$8 = o.a(var11, "Tesselating block in world");
+         p $$9 = $$8.a("Block being tesselated");
+         p.a($$9, $$2, $$1, $$0);
+         throw new z($$8);
+      }
+   }
+
+   public void a(ji $$0, dfk $$1, ffy $$2, dwx $$3, esz $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new z($$6);
+      }
+   }
+
+   public gnd b() {
       return this.b;
    }
 
-   @Override
-   public boolean c() {
-      return this.c;
+   public hgl a(dwx $$0) {
+      return this.a.b($$0);
    }
 
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public String toString() {
-      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof gnb $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
-      return 31 * $$0 + this.d;
-   }
-
-   public static class a implements JsonDeserializer<gnb> {
-      @VisibleForTesting
-      static final boolean a = false;
-      @VisibleForTesting
-      static final int b = 1;
-      @VisibleForTesting
-      static final int c = 0;
-      @VisibleForTesting
-      static final int d = 0;
-
-      public gnb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         alp $$4 = this.b($$3);
-         hdj $$5 = this.a($$3);
-         boolean $$6 = this.d($$3);
-         int $$7 = this.c($$3);
-         return new gnb($$4, $$5.b(), $$6, $$7);
-      }
-
-      private boolean d(JsonObject $$0) {
-         return azk.a($$0, "uvlock", false);
-      }
-
-      protected hdj a(JsonObject $$0) {
-         int $$1 = azk.a($$0, "x", 0);
-         int $$2 = azk.a($$0, "y", 0);
-         hdj $$3 = hdj.a($$1, $$2);
-         if ($$3 == null) {
-            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
-         } else {
-            return $$3;
+   public void a(dwx $$0, ffu $$1, glx $$2, int $$3, int $$4) {
+      dpx $$5 = $$0.o();
+      if ($$5 != dpx.a) {
+         switch ($$5) {
+            case c:
+               hgl $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(glq.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.get().a($$0.b(), cwn.a, $$1, $$2, $$3, $$4);
          }
       }
+   }
 
-      protected alp b(JsonObject $$0) {
-         return alp.a(azk.i($$0, "model"));
-      }
-
-      protected int c(JsonObject $$0) {
-         int $$1 = azk.a($$0, "weight", 1);
-         if ($$1 < 1) {
-            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
-         } else {
-            return $$1;
-         }
-      }
+   @Override
+   public void a(aup $$0) {
+      this.d.a();
    }
 }

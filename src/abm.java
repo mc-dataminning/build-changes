@@ -1,8 +1,62 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class abm implements yv<abk> {
+   public static final ym<vl, abm> a = yv.a(abm::a, abm::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface abm {
+   public abm(buw $$0, ara $$1) {
+      this.b = $$0.ar();
+      fba $$2 = $$1.b();
+      this.c = $$2.a();
+      this.d = $$2.b();
+      this.e = $$2.c();
+      this.f = $$0.l();
+   }
+
+   private abm(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.m(this.f);
+   }
+
+   @Override
+   public yx<abm> a() {
+      return agd.d;
+   }
+
+   public void a(abk $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
+   }
 }

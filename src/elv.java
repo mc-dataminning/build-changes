@@ -1,77 +1,63 @@
-import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public class elv extends elz {
-   public static final MapCodec<elv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elv::new));
+public class elv extends elt {
+   public static final MapCodec<elv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               edm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               edm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, elv::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final edm d;
+   private final edm e;
+   private final int f;
 
-   public elv(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private elv(edm $$0, edm $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static elv a(edm $$0, edm $$1, int $$2) {
+      return new elv($$0, $$1, $$2);
+   }
+
+   public static elv a(edm $$0, edm $$1) {
+      return a($$0, $$1, 0);
    }
 
    @Override
-   protected ema<?> a() {
-      return ema.b;
+   public int a(azh $$0, edp $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return ayz.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + ayz.b($$0, 0, $$6) + ayz.b($$0, 0, $$5);
+         }
+      }
    }
 
    @Override
-   public List<ekf.a> a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, int $$3, jh $$4, ejp $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<ekf.a> $$6 = Lists.newArrayList();
-      jm $$7 = jm.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      jh.a $$10 = new jh.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
+   public elu<?> a() {
+      return elu.e;
+   }
 
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new ekf.a(new jh($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      jm $$16 = jm.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new ekf.a(new jh($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
    }
 }

@@ -1,61 +1,128 @@
-public class cky extends cko {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cgo f = cgo.a().a(150.0);
-   private final cgo g;
-   private int h;
+import java.util.Optional;
 
-   public cky(ckl $$0) {
-      super($$0);
-      this.g = cgo.a().a(20.0).a(($$1, $$2) -> Math.abs($$1.dD() - $$0.dD()) <= 10.0);
+public class cky {
+   public static final akt<ckx> a = a("kebab");
+   public static final akt<ckx> b = a("aztec");
+   public static final akt<ckx> c = a("alban");
+   public static final akt<ckx> d = a("aztec2");
+   public static final akt<ckx> e = a("bomb");
+   public static final akt<ckx> f = a("plant");
+   public static final akt<ckx> g = a("wasteland");
+   public static final akt<ckx> h = a("pool");
+   public static final akt<ckx> i = a("courbet");
+   public static final akt<ckx> j = a("sea");
+   public static final akt<ckx> k = a("sunset");
+   public static final akt<ckx> l = a("creebet");
+   public static final akt<ckx> m = a("wanderer");
+   public static final akt<ckx> n = a("graham");
+   public static final akt<ckx> o = a("match");
+   public static final akt<ckx> p = a("bust");
+   public static final akt<ckx> q = a("stage");
+   public static final akt<ckx> r = a("void");
+   public static final akt<ckx> s = a("skull_and_roses");
+   public static final akt<ckx> t = a("wither");
+   public static final akt<ckx> u = a("fighters");
+   public static final akt<ckx> v = a("pointer");
+   public static final akt<ckx> w = a("pigscene");
+   public static final akt<ckx> x = a("burning_skull");
+   public static final akt<ckx> y = a("skeleton");
+   public static final akt<ckx> z = a("donkey_kong");
+   public static final akt<ckx> A = a("earth");
+   public static final akt<ckx> B = a("wind");
+   public static final akt<ckx> C = a("water");
+   public static final akt<ckx> D = a("fire");
+   public static final akt<ckx> E = a("baroque");
+   public static final akt<ckx> F = a("humble");
+   public static final akt<ckx> G = a("meditative");
+   public static final akt<ckx> H = a("prairie_ride");
+   public static final akt<ckx> I = a("unpacked");
+   public static final akt<ckx> J = a("backyard");
+   public static final akt<ckx> K = a("bouquet");
+   public static final akt<ckx> L = a("cavebird");
+   public static final akt<ckx> M = a("changing");
+   public static final akt<ckx> N = a("cotan");
+   public static final akt<ckx> O = a("endboss");
+   public static final akt<ckx> P = a("fern");
+   public static final akt<ckx> Q = a("finding");
+   public static final akt<ckx> R = a("lowmist");
+   public static final akt<ckx> S = a("orb");
+   public static final akt<ckx> T = a("owlemons");
+   public static final akt<ckx> U = a("passage");
+   public static final akt<ckx> V = a("pond");
+   public static final akt<ckx> W = a("sunflowers");
+   public static final akt<ckx> X = a("tides");
+
+   public static void a(qe<ckx> $$0) {
+      a($$0, a, 1, 1);
+      a($$0, b, 1, 1);
+      a($$0, c, 1, 1);
+      a($$0, d, 1, 1);
+      a($$0, e, 1, 1);
+      a($$0, f, 1, 1);
+      a($$0, g, 1, 1);
+      a($$0, h, 2, 1);
+      a($$0, i, 2, 1);
+      a($$0, j, 2, 1);
+      a($$0, k, 2, 1);
+      a($$0, l, 2, 1);
+      a($$0, m, 1, 2);
+      a($$0, n, 1, 2);
+      a($$0, o, 2, 2);
+      a($$0, p, 2, 2);
+      a($$0, q, 2, 2);
+      a($$0, r, 2, 2);
+      a($$0, s, 2, 2);
+      a($$0, t, 2, 2, false);
+      a($$0, u, 4, 2);
+      a($$0, v, 4, 4);
+      a($$0, w, 4, 4);
+      a($$0, x, 4, 4);
+      a($$0, y, 4, 3);
+      a($$0, A, 2, 2, false);
+      a($$0, B, 2, 2, false);
+      a($$0, C, 2, 2, false);
+      a($$0, D, 2, 2, false);
+      a($$0, z, 4, 3);
+      a($$0, E, 2, 2);
+      a($$0, F, 2, 2);
+      a($$0, G, 1, 1);
+      a($$0, H, 1, 2);
+      a($$0, I, 4, 4);
+      a($$0, J, 3, 4);
+      a($$0, K, 3, 3);
+      a($$0, L, 3, 3);
+      a($$0, M, 4, 2);
+      a($$0, N, 3, 3);
+      a($$0, O, 3, 3);
+      a($$0, P, 3, 3);
+      a($$0, Q, 4, 2);
+      a($$0, R, 4, 2);
+      a($$0, S, 4, 4);
+      a($$0, T, 3, 3);
+      a($$0, U, 4, 2);
+      a($$0, V, 3, 4);
+      a($$0, W, 3, 3);
+      a($$0, X, 3, 3);
    }
 
-   @Override
-   public void a(arx $$0) {
-      this.h++;
-      bvx $$1 = $$0.a(this.g, this.a, this.a.dB(), this.a.dD(), this.a.dH());
-      if ($$1 != null) {
-         if (this.h > 25) {
-            this.a.gk().a(clb.h);
-         } else {
-            fbr $$2 = new fbr($$1.dB() - this.a.dB(), 0.0, $$1.dH() - this.a.dH()).d();
-            fbr $$3 = new fbr((double)azu.a(this.a.dM() * (float) (Math.PI / 180.0)), 0.0, (double)(-azu.b(this.a.dM() * (float) (Math.PI / 180.0)))).d();
-            float $$4 = (float)$$3.b($$2);
-            float $$5 = (float)(Math.acos((double)$$4) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$5 < 0.0F || $$5 > 10.0F) {
-               double $$6 = $$1.dB() - this.a.c.dB();
-               double $$7 = $$1.dH() - this.a.c.dH();
-               double $$8 = azu.a(azu.d(180.0 - azu.d($$6, $$7) * 180.0F / (float)Math.PI - (double)this.a.dM()), -100.0, 100.0);
-               this.a.cb *= 0.8F;
-               float $$9 = (float)Math.sqrt($$6 * $$6 + $$7 * $$7) + 1.0F;
-               float $$10 = $$9;
-               if ($$9 > 40.0F) {
-                  $$9 = 40.0F;
-               }
-
-               this.a.cb += (float)$$8 * (0.7F / $$9 / $$10);
-               this.a.v(this.a.dM() + this.a.cb);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$1 = $$0.a(f, this.a, this.a.dB(), this.a.dD(), this.a.dH());
-         this.a.gk().a(clb.e);
-         if ($$1 != null) {
-            this.a.gk().a(clb.i);
-            this.a.gk().b(clb.i).a(new fbr($$1.dB(), $$1.dD(), $$1.dH()));
-         }
-      }
+   private static void a(qe<ckx> $$0, akt<ckx> $$1, int $$2, int $$3) {
+      a($$0, $$1, $$2, $$3, true);
    }
 
-   @Override
-   public void c() {
-      this.h = 0;
+   private static void a(qe<ckx> $$0, akt<ckx> $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(
+         $$1,
+         new ckx(
+            $$2,
+            $$3,
+            $$1.a(),
+            Optional.of(wo.c($$1.a().c("painting", "title")).a(n.o)),
+            $$4 ? Optional.of(wo.c($$1.a().c("painting", "author")).a(n.h)) : Optional.empty()
+         )
+      );
    }
 
-   @Override
-   public clb<cky> h() {
-      return clb.g;
+   private static akt<ckx> a(String $$0) {
+      return akt.a(mc.X, aku.b($$0));
    }
 }

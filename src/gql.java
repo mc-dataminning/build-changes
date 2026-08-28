@@ -1,22 +1,74 @@
-public class gql extends gsr<chi, gwz, gaj> {
-   private static final alp a = alp.b("textures/entity/bat.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-   public gql(grl.a $$0) {
-      super($$0, new gaj($$0.a(gei.u)), 0.25F);
+public class gql implements gpx.a {
+   private final flj a;
+   private double b = Double.MIN_VALUE;
+   private List<buk> c = Collections.emptyList();
+
+   public gql(flj $$0) {
+      this.a = $$0;
    }
 
-   public alp a(gwz $$0) {
-      return a;
+   @Override
+   public void a(ffu $$0, glx $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)af.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         buk $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dW().a_($$6, $$6.cR().g(16.0)));
+      }
+
+      cox $$7 = this.a.t;
+      if ($$7 != null && $$7.ax.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
+
+      for (buk $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         }
+      }
    }
 
-   public gwz a() {
-      return new gwz();
+   private void a(ffu $$0, glx $$1, double $$2, double $$3, double $$4, buk $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.ax.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         ji $$12 = $$5.aR();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         ji $$13 = $$5.aP();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
    }
 
-   public void a(chi $$0, gwz $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.p();
-      $$1.b.a($$0.c);
-      $$1.c.a($$0.d);
+   private double a(buk $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
+   }
+
+   private void a(ji $$0, ffu $$1, double $$2, double $$3, double $$4, glx $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      gmr.a($$1, $$5.getBuffer(gmh.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      gpx.a(
+         $$1,
+         $$5.getBuffer(gmh.y()),
+         this.a.s.a_($$0).b(this.a.s, $$0, fbf.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
+         -$$2,
+         -$$3,
+         -$$4,
+         $$7,
+         $$8,
+         $$9,
+         1.0F,
+         false
+      );
    }
 }

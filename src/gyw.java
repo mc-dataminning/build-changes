@@ -1,17 +1,4 @@
-public class gyw extends gyo {
-   public cid.a a;
+public class gyw extends gzi {
+   public int a;
    public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float i;
-   public float j;
-   public float k;
-
-   public gyw() {
-      this.a = cid.a.a;
-   }
 }

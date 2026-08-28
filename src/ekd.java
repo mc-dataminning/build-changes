@@ -1,51 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public class ekd extends ekf {
-   public static final MapCodec<ekd> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekd::new));
+public abstract class ekd {
+   public static final Codec<ekd> a = mb.T.q().dispatch(ekd::a, eke::a);
 
-   public ekd(bsf $$0, bsf $$1) {
-      super($$0, $$1);
+   public static ekm a(dwx $$0) {
+      return new ekm($$0);
    }
 
-   @Override
-   protected ekg<?> a() {
-      return ekg.i;
+   public static ekm a(djm $$0) {
+      return new ekm($$0.m());
    }
 
-   @Override
-   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
-      jh $$9 = $$5.a().b($$8);
-      boolean $$10 = $$5.c();
-      if ($$10) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 3, 0, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, 1, $$10);
-         if ($$2.h()) {
-            this.a($$0, $$1, $$2, $$3, $$9, $$7, 2, $$10);
-         }
-      } else {
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 2, -1, $$10);
-         this.a($$0, $$1, $$2, $$3, $$9, $$7 + 1, 0, $$10);
-      }
-   }
+   protected abstract eke<?> a();
 
-   @Override
-   public int a(bac $$0, int $$1, ejp $$2) {
-      return 4;
-   }
-
-   @Override
-   protected boolean b(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$2 != 0 || !$$5 || $$1 != -$$4 && $$1 < $$4 || $$3 != -$$4 && $$3 < $$4 ? super.b($$0, $$1, $$2, $$3, $$4, $$5) : true;
-   }
-
-   @Override
-   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      if ($$2 == -1 && !$$5) {
-         return $$1 == $$4 && $$3 == $$4;
-      } else {
-         return $$2 == 1 ? $$1 + $$3 > $$4 * 2 - 2 : false;
-      }
-   }
+   public abstract dwx a(azh var1, ji var2);
 }

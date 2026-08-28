@@ -1,62 +1,65 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class aqg implements aqh {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.data.block.invalid"));
-   public static final Function<String, aqi.c> a = $$0 -> new aqi.c() {
-         @Override
-         public aqh a(CommandContext<ew> $$0x) throws CommandSyntaxException {
-            jh $$1 = gs.a($$0, $$0 + "Pos");
-            duq $$2 = ((ew)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw aqg.b.create();
-            } else {
-               return new aqg($$2, $$1);
-            }
-         }
+public class aqg {
+   private static final int c = 33;
+   private static final int d = 32;
+   private static final int e = 31;
+   private static final dzw f = dzs.a.a(dzt.n);
+   public static final int a = f.c().c();
+   public static final int b = 33 + a;
 
-         @Override
-         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
-            return $$0.then(ex.a("block").then($$1.apply(ex.a($$0 + "Pos", gs.a()))));
-         }
+   @Nullable
+   public static dzt a(int $$0) {
+      return a($$0 - 33, null);
+   }
+
+   @Nullable
+   @Contract("_,!null->!null;_,_->_")
+   public static dzt a(int $$0, @Nullable dzt $$1) {
+      if ($$0 > a) {
+         return $$1;
+      } else {
+         return $$0 <= 0 ? dzt.n : f.c().a($$0);
+      }
+   }
+
+   public static dzt b(int $$0) {
+      return a($$0, dzt.c);
+   }
+
+   public static int a(dzt $$0) {
+      return 33 + f.a($$0);
+   }
+
+   public static aqr c(int $$0) {
+      if ($$0 <= 31) {
+         return aqr.d;
+      } else if ($$0 <= 32) {
+         return aqr.c;
+      } else {
+         return $$0 <= 33 ? aqr.b : aqr.a;
+      }
+   }
+
+   public static int a(aqr $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> 33;
+         case c -> 32;
+         case d -> 31;
       };
-   private final duq c;
-   private final jh d;
-
-   public aqg(duq $$0, jh $$1) {
-      this.c = $$0;
-      this.d = $$1;
    }
 
-   @Override
-   public void a(um $$0) {
-      dxo $$1 = this.c.i().a_(this.d);
-      this.c.c($$0, this.c.i().K_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
+   public static boolean d(int $$0) {
+      return $$0 <= 31;
    }
 
-   @Override
-   public um a() {
-      return this.c.b(this.c.i().K_());
+   public static boolean e(int $$0) {
+      return $$0 <= 32;
    }
 
-   @Override
-   public xk b() {
-      return xk.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public xk a(vj $$0) {
-      return xk.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), vb.c($$0));
-   }
-
-   @Override
-   public xk a(fo.g $$0, double $$1, int $$2) {
-      return xk.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public static boolean f(int $$0) {
+      return $$0 <= b;
    }
 }

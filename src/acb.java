@@ -1,20 +1,29 @@
-public record acb(alp b) implements zr<aca> {
-   public static final zi<wh, acb> a = zr.a(acb::a, acb::new);
+public class acb implements yv<abk> {
+   public static final ym<vl, acb> a = yv.a(acb::a, acb::new);
+   private final boolean b;
 
-   private acb(wh $$0) {
-      this($$0.q());
+   public acb(boolean $$0) {
+      this.b = $$0;
    }
 
-   private void a(wh $$0) {
+   private acb(vl $$0) {
+      this.b = $$0.readBoolean();
+   }
+
+   private void a(vl $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zt<acb> a() {
-      return acc.a;
+   public yx<acb> a() {
+      return agd.q;
    }
 
-   public void a(aca $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   public boolean b() {
+      return this.b;
    }
 }

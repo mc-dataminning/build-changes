@@ -1,250 +1,262 @@
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
+import org.joml.Matrix4f;
 
-public class glh {
-   private final glh.b a;
-   final jh b;
+public class glh implements AutoCloseable {
+   private static final ffi p = new ffi();
+   private static final int q = -1;
+   private final List<gmq.a> r = new ArrayList<>();
+   private final Object2IntMap<String> s = new Object2IntArrayMap();
+   private final IntList t = new IntArrayList();
+   private final List<ffl> u = new ArrayList<>();
+   private final Map<String, ffl> v = new HashMap<>();
+   private final Map<String, gmq.b> w = new HashMap<>();
+   private final int x;
+   @Nullable
+   public ffl a;
+   @Nullable
+   public ffl b;
+   @Nullable
+   public ffl c;
+   @Nullable
+   public ffl d;
+   @Nullable
+   public ffl e;
+   @Nullable
+   public ffl f;
+   @Nullable
+   public ffl g;
+   @Nullable
+   public ffl h;
+   @Nullable
+   public ffl i;
+   @Nullable
+   public ffl j;
+   @Nullable
+   public ffl k;
+   @Nullable
+   public ffl l;
+   @Nullable
+   public ffl m;
+   @Nullable
+   public ffl n;
+   @Nullable
+   public ffl o;
 
-   public glh(kj $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$1 * 2 + 1;
-      int $$5 = azu.c($$4);
-      int $$6 = $$1 * 16;
-      jh $$7 = $$0.j();
-      this.b = $$0.k();
-      int $$8 = $$7.u() - $$6;
-      int $$9 = $$8 + $$5 * 16 - 1;
-      int $$10 = $$5 >= $$2 ? $$3 : $$7.v() - $$6;
-      int $$11 = $$10 + $$5 * 16 - 1;
-      int $$12 = $$7.w() - $$6;
-      int $$13 = $$12 + $$5 * 16 - 1;
-      this.a = new glh.b(new env($$8, $$10, $$12, $$9, $$11, $$13));
+   private glh(int $$0) {
+      this.x = $$0;
+      this.s.defaultReturnValue(-1);
    }
 
-   public boolean a(got.b $$0) {
-      return this.a.a($$0);
-   }
-
-   public void a(glh.e $$0, gox $$1, int $$2) {
-      this.a.a($$0, false, $$1, 0, $$2, true);
-   }
-
-   boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, int $$6) {
-      int $$7 = this.b.u();
-      int $$8 = this.b.v();
-      int $$9 = this.b.w();
-      return (double)$$7 > $$0 - (double)$$6
-         && (double)$$7 < $$3 + (double)$$6
-         && (double)$$8 > $$1 - (double)$$6
-         && (double)$$8 < $$4 + (double)$$6
-         && (double)$$9 > $$2 - (double)$$6
-         && (double)$$9 < $$5 + (double)$$6;
-   }
-
-   static enum a {
-      a(4, 2, 1),
-      b(4, 1, 2),
-      c(2, 4, 1),
-      d(1, 4, 2),
-      e(2, 1, 4),
-      f(1, 2, 4);
-
-      final int g;
-      final int h;
-      final int i;
-
-      private a(final int $$0, final int $$1, final int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      public static glh.a a(int $$0, int $$1, int $$2) {
-         if ($$0 > $$1 && $$0 > $$2) {
-            return $$1 > $$2 ? a : b;
-         } else if ($$1 > $$0 && $$1 > $$2) {
-            return $$0 > $$2 ? c : d;
+   public static glh a(ffj $$0, ffj $$1, ffz $$2) throws gmo.b {
+      int $$3 = GlStateManager.glCreateProgram();
+      if ($$3 <= 0) {
+         throw new gmo.b("Could not create shader program (returned program ID " + $$3 + ")");
+      } else {
+         $$2.a($$3);
+         GlStateManager.glAttachShader($$3, $$0.b());
+         GlStateManager.glAttachShader($$3, $$1.b());
+         GlStateManager.glLinkProgram($$3);
+         int $$4 = GlStateManager.glGetProgrami($$3, 35714);
+         if ($$4 == 0) {
+            String $$5 = GlStateManager.glGetProgramInfoLog($$3, 32768);
+            throw new gmo.b("Error encountered when linking program containing VS " + $$0.a() + " and FS " + $$1.a() + ". Log output: " + $$5);
          } else {
-            return $$0 > $$1 ? e : f;
+            return new glh($$3);
          }
       }
    }
 
-   class b implements glh.d {
-      private final glh.d[] b = new glh.d[8];
-      private final env c;
-      private final int d;
-      private final int e;
-      private final int f;
-      private final glh.a g;
-      private final boolean h;
-      private final boolean i;
-      private final boolean j;
+   public void a(List<gmq.b> $$0, List<gmq.a> $$1) {
+      RenderSystem.assertOnRenderThread();
 
-      public b(final env $$0) {
-         this.c = $$0;
-         this.d = this.c.h() + this.c.d() / 2;
-         this.e = this.c.i() + this.c.e() / 2;
-         this.f = this.c.j() + this.c.f() / 2;
-         int $$1 = glh.this.b.u() - this.d;
-         int $$2 = glh.this.b.v() - this.e;
-         int $$3 = glh.this.b.w() - this.f;
-         this.g = glh.a.a(Math.abs($$1), Math.abs($$2), Math.abs($$3));
-         this.h = $$1 < 0;
-         this.i = $$2 < 0;
-         this.j = $$3 < 0;
-      }
-
-      public boolean a(got.b $$0) {
-         boolean $$1 = $$0.f().u() - this.d < 0;
-         boolean $$2 = $$0.f().v() - this.e < 0;
-         boolean $$3 = $$0.f().w() - this.f < 0;
-         boolean $$4 = $$1 != this.h;
-         boolean $$5 = $$2 != this.i;
-         boolean $$6 = $$3 != this.j;
-         int $$7 = a(this.g, $$4, $$5, $$6);
-         if (this.c()) {
-            boolean $$8 = this.b[$$7] != null;
-            this.b[$$7] = glh.this.new c($$0);
-            return !$$8;
-         } else if (this.b[$$7] != null) {
-            glh.b $$9 = (glh.b)this.b[$$7];
-            return $$9.a($$0);
-         } else {
-            env $$10 = this.a($$1, $$2, $$3);
-            glh.b $$11 = glh.this.new b($$10);
-            this.b[$$7] = $$11;
-            return $$11.a($$0);
+      for (gmq.b $$2 : $$0) {
+         String $$3 = $$2.a();
+         int $$4 = ffl.a(this.x, $$3);
+         if ($$4 != -1) {
+            ffl $$5 = this.a($$2);
+            $$5.b($$4);
+            this.u.add($$5);
+            this.v.put($$3, $$5);
+            this.w.put($$3, $$2);
          }
       }
 
-      private static int a(glh.a $$0, boolean $$1, boolean $$2, boolean $$3) {
-         int $$4 = 0;
-         if ($$1) {
-            $$4 += $$0.g;
-         }
-
-         if ($$2) {
-            $$4 += $$0.h;
-         }
-
-         if ($$3) {
-            $$4 += $$0.i;
-         }
-
-         return $$4;
-      }
-
-      private boolean c() {
-         return this.c.d() == 32;
-      }
-
-      private env a(boolean $$0, boolean $$1, boolean $$2) {
-         int $$3;
-         int $$4;
-         if ($$0) {
-            $$3 = this.c.h();
-            $$4 = this.d - 1;
-         } else {
-            $$3 = this.d;
-            $$4 = this.c.k();
-         }
-
-         int $$7;
-         int $$8;
-         if ($$1) {
-            $$7 = this.c.i();
-            $$8 = this.e - 1;
-         } else {
-            $$7 = this.e;
-            $$8 = this.c.l();
-         }
-
-         int $$11;
-         int $$12;
-         if ($$2) {
-            $$11 = this.c.j();
-            $$12 = this.f - 1;
-         } else {
-            $$11 = this.f;
-            $$12 = this.c.m();
-         }
-
-         return new env($$3, $$7, $$11, $$4, $$8, $$12);
-      }
-
-      @Override
-      public void a(glh.e $$0, boolean $$1, gox $$2, int $$3, int $$4, boolean $$5) {
-         boolean $$6 = $$1;
-         if (!$$1) {
-            int $$7 = $$2.a(this.c);
-            $$1 = $$7 == -2;
-            $$6 = $$7 == -2 || $$7 == -1;
-         }
-
-         if ($$6) {
-            $$5 = $$5
-               && glh.this.a((double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)this.c.k(), (double)this.c.l(), (double)this.c.m(), $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-
-            for (glh.d $$8 : this.b) {
-               if ($$8 != null) {
-                  $$8.a($$0, $$1, $$2, $$3 + 1, $$4, $$5);
-               }
-            }
+      for (gmq.a $$6 : $$1) {
+         int $$7 = ffl.a(this.x, $$6.a());
+         if ($$7 != -1) {
+            this.r.add($$6);
+            this.t.add($$7);
          }
       }
 
-      @Nullable
-      @Override
-      public got.b a() {
-         return null;
+      this.a = this.a("ModelViewMat");
+      this.b = this.a("ProjMat");
+      this.c = this.a("TextureMat");
+      this.d = this.a("ScreenSize");
+      this.e = this.a("ColorModulator");
+      this.f = this.a("Light0_Direction");
+      this.g = this.a("Light1_Direction");
+      this.h = this.a("GlintAlpha");
+      this.i = this.a("FogStart");
+      this.j = this.a("FogEnd");
+      this.k = this.a("FogColor");
+      this.l = this.a("FogShape");
+      this.m = this.a("LineWidth");
+      this.n = this.a("GameTime");
+      this.o = this.a("ModelOffset");
+   }
+
+   @Override
+   public void close() {
+      this.u.forEach(ffl::close);
+      GlStateManager.glDeleteProgram(this.x);
+   }
+
+   public void a() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram(0);
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
+         gmq.a $$2 = this.r.get($$1);
+         if (!this.s.containsKey($$2.a())) {
+            GlStateManager._activeTexture(33984 + $$1);
+            GlStateManager._bindTexture(0);
+         }
       }
 
-      @Override
-      public fbm b() {
-         return new fbm(
-            (double)this.c.h(), (double)this.c.i(), (double)this.c.j(), (double)(this.c.k() + 1), (double)(this.c.l() + 1), (double)(this.c.m() + 1)
-         );
+      GlStateManager._activeTexture($$0);
+   }
+
+   public void b() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._glUseProgram(this.x);
+      int $$0 = GlStateManager._getActiveTexture();
+
+      for (int $$1 = 0; $$1 < this.t.size(); $$1++) {
+         String $$2 = this.r.get($$1).a();
+         int $$3 = this.s.getInt($$2);
+         if ($$3 != -1) {
+            int $$4 = this.t.getInt($$1);
+            ffl.b($$4, $$1);
+            RenderSystem.activeTexture(33984 + $$1);
+            RenderSystem.bindTexture($$3);
+         }
+      }
+
+      GlStateManager._activeTexture($$0);
+
+      for (ffl $$5 : this.u) {
+         $$5.b();
       }
    }
 
-   final class c implements glh.d {
-      private final got.b b;
-
-      c(final got.b $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(glh.e $$0, boolean $$1, gox $$2, int $$3, int $$4, boolean $$5) {
-         fbm $$6 = this.b.b();
-         if ($$1 || $$2.a(this.a().b())) {
-            $$5 = $$5 && glh.this.a($$6.a, $$6.b, $$6.c, $$6.d, $$6.e, $$6.f, $$4);
-            $$0.visit(this, $$1, $$3, $$5);
-         }
-      }
-
-      @Override
-      public got.b a() {
-         return this.b;
-      }
-
-      @Override
-      public fbm b() {
-         return this.b.b();
-      }
+   @Nullable
+   public ffl a(String $$0) {
+      RenderSystem.assertOnRenderThread();
+      return this.v.get($$0);
    }
 
-   public interface d {
-      void a(glh.e var1, boolean var2, gox var3, int var4, int var5, boolean var6);
-
-      @Nullable
-      got.b a();
-
-      fbm b();
+   @Nullable
+   public gmq.b b(String $$0) {
+      return this.w.get($$0);
    }
 
-   @FunctionalInterface
-   public interface e {
-      void visit(glh.d var1, boolean var2, int var3, boolean var4);
+   public ffi c(String $$0) {
+      ffl $$1 = this.a($$0);
+      return (ffi)($$1 == null ? p : $$1);
+   }
+
+   public void a(String $$0, int $$1) {
+      this.s.put($$0, $$1);
+   }
+
+   private ffl a(gmq.b $$0) {
+      int $$1 = ffl.a($$0.b());
+      int $$2 = $$0.c();
+      int $$3 = $$2 > 1 && $$2 <= 4 && $$1 < 8 ? $$2 - 1 : 0;
+      ffl $$4 = new ffl($$0.a(), $$1 + $$3, $$2);
+      $$4.a($$0);
+      return $$4;
+   }
+
+   public void a(ffz.c $$0, Matrix4f $$1, Matrix4f $$2, fex $$3) {
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         int $$5 = RenderSystem.getShaderTexture($$4);
+         this.a("Sampler" + $$4, $$5);
+      }
+
+      if (this.a != null) {
+         this.a.a($$1);
+      }
+
+      if (this.b != null) {
+         this.b.a($$2);
+      }
+
+      if (this.e != null) {
+         this.e.a(RenderSystem.getShaderColor());
+      }
+
+      if (this.h != null) {
+         this.h.a(RenderSystem.getShaderGlintAlpha());
+      }
+
+      glm $$6 = RenderSystem.getShaderFog();
+      if (this.i != null) {
+         this.i.a($$6.a());
+      }
+
+      if (this.j != null) {
+         this.j.a($$6.b());
+      }
+
+      if (this.k != null) {
+         this.k.a($$6.d(), $$6.e(), $$6.f(), $$6.g());
+      }
+
+      if (this.l != null) {
+         this.l.a($$6.c().a());
+      }
+
+      if (this.c != null) {
+         this.c.a(RenderSystem.getTextureMatrix());
+      }
+
+      if (this.n != null) {
+         this.n.a(RenderSystem.getShaderGameTime());
+      }
+
+      if (this.d != null) {
+         this.d.a((float)$$3.k(), (float)$$3.l());
+      }
+
+      if (this.m != null && ($$0 == ffz.c.a || $$0 == ffz.c.b)) {
+         this.m.a(RenderSystem.getShaderLineWidth());
+      }
+
+      RenderSystem.setupShaderLights(this);
+   }
+
+   @VisibleForTesting
+   public void a(ffl $$0) {
+      this.u.add($$0);
+      this.v.put($$0.a(), $$0);
+   }
+
+   @VisibleForTesting
+   public int c() {
+      return this.x;
    }
 }

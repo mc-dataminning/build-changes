@@ -1,63 +1,73 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.concurrent.Executor;
 
-public class hdu {
-   static final int a = -1;
-   private static final int b = 0;
+public abstract class hdu implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
 
-   public static Object2IntMap<dxo> a(fnb $$0, hdk.c $$1) {
-      Map<dkd, List<dyq<?>>> $$2 = new HashMap<>();
-      Map<hdu.a, Set<dxo>> $$3 = new HashMap<>();
-      $$1.a().forEach(($$3x, $$4x) -> {
-         List<dyq<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hdu.a $$6x = hdu.a.a($$4x.a(), $$4x.b(), $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
-      });
-      int $$4 = 1;
-      Object2IntMap<dxo> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
-
-      for (Set<dxo> $$6 : $$3.values()) {
-         Iterator<dxo> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            dxo $$8 = $$7.next();
-            if ($$8.o() != dqo.c) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
+      } else {
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
       }
 
-      return $$5;
+      this.d();
+      GlStateManager._texParameter(3553, 10241, $$2);
+      GlStateManager._texParameter(3553, 10240, $$3);
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hdu.a a(dxo $$0, heb $$1, List<dyq<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$5 = $$1 instanceof gna $$4 ? $$4.a($$0) : $$1;
-         return new hdu.a($$5, $$3);
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
       }
 
-      private static List<Object> a(dxo $$0, List<dyq<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
+      return this.b;
+   }
 
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
-         }
-
-         return List.of($$2);
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
       }
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public abstract void a(aup var1) throws IOException;
+
+   public void d() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
+      }
+   }
+
+   public void a(hek $$0, aup $$1, aku $$2, Executor $$3) {
+      $$0.a($$2, this);
+   }
+
+   @Override
+   public void close() {
    }
 }

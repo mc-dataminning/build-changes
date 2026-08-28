@@ -1,31 +1,48 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class efi extends ejd {
-   public static final MapCodec<efi> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
-               emk.c.fieldOf("y").forGetter($$0x -> $$0x.e),
-               bsd.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
-               eed.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
-               efj.b.optionalFieldOf("debug_settings", efj.a).forGetter($$0x -> $$0x.h),
-               kf.a(mb.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, efi::new)
-   );
-   public final emk e;
-   public final bsd f;
-   public final eed g;
-   public final efj h;
-   public final ju<dkd> i;
-
-   public efi(float $$0, emk $$1, bsd $$2, eed $$3, efj $$4, ju<dkd> $$5) {
+public class efi extends efy<eij> {
+   public efi(Codec<eij> $$0) {
       super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
+   }
+
+   @Override
+   public boolean a(ega<eij> $$0) {
+      azh $$1 = $$0.d();
+      dhg $$2 = $$0.b();
+      dfo $$3 = new dfo($$0.e());
+      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      ji.a $$6 = new ji.a();
+      IntListIterator var8 = $$4.iterator();
+
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
+
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            ji $$9 = $$2.a(ecs.a.f, $$6);
+            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, djo.cD.m(), 2);
+               bsp.a($$2, $$1, $$9, evn.a);
+               dwx $$10 = djo.cw.m();
+
+               for (jn $$11 : jn.c.a) {
+                  ji $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
    }
 }

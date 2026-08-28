@@ -1,50 +1,51 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public interface box {
-   static bor<StringReader> a(String $$0) {
-      return new box.b($$0);
+public class box implements AutoCloseable {
+   public static final box a = new box(null);
+   @Nullable
+   private final bos b;
+
+   box(@Nullable bos $$0) {
+      this.b = $$0;
    }
 
-   static bor<StringReader> a(char $$0) {
-      return new box.a($$0);
+   public box a(String $$0) {
+      if (this.b != null) {
+         this.b.e($$0);
+      }
+
+      return this;
    }
 
-   public static record a(char a) implements bor<StringReader> {
-      @Override
-      public boolean a(bon<StringReader> $$0, bop $$1, boj $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         if ($$0.b().canRead() && $$0.b().read() == this.a) {
-            return true;
-         } else {
-            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         }
+   public box a(Supplier<String> $$0) {
+      if (this.b != null) {
+         this.b.e($$0.get());
       }
 
-      public char c() {
-         return this.a;
-      }
+      return this;
    }
 
-   public static record b(String a) implements bor<StringReader> {
-      @Override
-      public boolean a(bon<StringReader> $$0, bop $$1, boj $$2) {
-         $$0.b().skipWhitespace();
-         int $$3 = $$0.c();
-         String $$4 = $$0.b().readUnquotedString();
-         if (!$$4.equals(this.a)) {
-            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
-            return false;
-         } else {
-            return true;
-         }
+   public box a(long $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
 
-      public String c() {
-         return this.a;
+      return this;
+   }
+
+   public box a(int $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void close() {
+      if (this.b != null) {
+         this.b.c();
       }
    }
 }

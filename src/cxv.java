@@ -1,74 +1,100 @@
-import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class cxv extends cvs {
-   private static final MapCodec<cio.d> a = cio.d.a.fieldOf("BucketVariantTag");
-   private final bvi<?> b;
-   private final awu c;
+public class cxv extends cwl {
+   private static final n a = n.h;
+   private static final n b = n.j;
+   private static final wo c = wo.c(af.a("item", aku.b("smithing_template.ingredients"))).a(a);
+   private static final wo d = wo.c(af.a("item", aku.b("smithing_template.applies_to"))).a(a);
+   private static final wo m = wo.c(af.a("item", aku.b("smithing_template"))).a(a);
+   private static final wo n = wo.c(af.a("item", aku.b("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final wo o = wo.c(af.a("item", aku.b("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final wo p = wo.c(af.a("item", aku.b("smithing_template.armor_trim.base_slot_description")));
+   private static final wo q = wo.c(af.a("item", aku.b("smithing_template.armor_trim.additions_slot_description")));
+   private static final wo r = wo.c(af.a("item", aku.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final wo s = wo.c(af.a("item", aku.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final wo t = wo.c(af.a("item", aku.b("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final wo u = wo.c(af.a("item", aku.b("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final aku v = aku.b("container/slot/helmet");
+   private static final aku w = aku.b("container/slot/chestplate");
+   private static final aku x = aku.b("container/slot/leggings");
+   private static final aku y = aku.b("container/slot/boots");
+   private static final aku z = aku.b("container/slot/hoe");
+   private static final aku A = aku.b("container/slot/axe");
+   private static final aku B = aku.b("container/slot/sword");
+   private static final aku C = aku.b("container/slot/shovel");
+   private static final aku D = aku.b("container/slot/pickaxe");
+   private static final aku E = aku.b("container/slot/ingot");
+   private static final aku F = aku.b("container/slot/redstone_dust");
+   private static final aku G = aku.b("container/slot/quartz");
+   private static final aku H = aku.b("container/slot/emerald");
+   private static final aku I = aku.b("container/slot/diamond");
+   private static final aku J = aku.b("container/slot/lapis_lazuli");
+   private static final aku K = aku.b("container/slot/amethyst_shard");
+   private final wo L;
+   private final wo M;
+   private final wo N;
+   private final wo O;
+   private final List<aku> P;
+   private final List<aku> Q;
 
-   public cxv(bvi<?> $$0, etp $$1, awu $$2, cxc.a $$3) {
-      super($$1, $$3);
-      this.b = $$0;
-      this.c = $$2;
+   public cxv(wo $$0, wo $$1, wo $$2, wo $$3, List<aku> $$4, List<aku> $$5, cwl.a $$6) {
+      super($$6);
+      this.L = $$0;
+      this.M = $$1;
+      this.N = $$2;
+      this.O = $$3;
+      this.P = $$4;
+      this.Q = $$5;
+   }
+
+   public static cxv a(cwl.a $$0) {
+      return new cxv(n, o, p, q, p(), q(), $$0);
+   }
+
+   public static cxv b(cwl.a $$0) {
+      return new cxv(r, s, t, u, r(), s(), $$0);
+   }
+
+   private static List<aku> p() {
+      return List.of(v, w, x, y);
+   }
+
+   private static List<aku> q() {
+      return List.of(E, F, J, G, I, H, K);
+   }
+
+   private static List<aku> r() {
+      return List.of(v, B, w, D, x, A, y, z, C);
+   }
+
+   private static List<aku> s() {
+      return List.of(E);
    }
 
    @Override
-   public void a(@Nullable cpo $$0, dgz $$1, cxg $$2, jh $$3) {
-      if ($$1 instanceof arx) {
-         this.a((arx)$$1, $$2, $$3);
-         $$1.a($$0, eck.t, $$3);
-      }
+   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$2.add(m);
+      $$2.add(wn.a);
+      $$2.add(d);
+      $$2.add(wn.a().b(this.L));
+      $$2.add(c);
+      $$2.add(wn.a().b(this.M));
    }
 
-   @Override
-   protected void a(@Nullable cpo $$0, dha $$1, jh $$2) {
-      $$1.a($$0, $$2, this.c, aww.g, 1.0F, 1.0F);
+   public wo b() {
+      return this.N;
    }
 
-   private void a(arx $$0, cxg $$1, jh $$2) {
-      bvb $$3 = this.b.b($$0, bvi.a($$0, $$1, null), $$2, bvh.l, true, false);
-      if ($$3 instanceof chq $$4) {
-         czp $$5 = $$1.a(ku.X, czp.a);
-         $$4.h($$5.d());
-         $$4.x(true);
-      }
-
-      if ($$3 != null) {
-         $$0.a_($$3);
-      }
+   public wo c() {
+      return this.O;
    }
 
-   @Override
-   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
-      if (this.b == bvi.bA) {
-         czp $$4 = $$0.a(ku.X, czp.a);
-         if ($$4.c()) {
-            return;
-         }
+   public List<aku> d() {
+      return this.P;
+   }
 
-         Optional<cio.d> $$5 = $$4.a(a).result();
-         if ($$5.isPresent()) {
-            cio.d $$6 = $$5.get();
-            n[] $$7 = new n[]{n.u, n.h};
-            String $$8 = "color.minecraft." + $$6.c();
-            String $$9 = "color.minecraft." + $$6.d();
-            int $$10 = cio.b.indexOf($$6);
-            if ($$10 != -1) {
-               $$2.add(xk.c(cio.b($$10)).a($$7));
-               return;
-            }
-
-            $$2.add($$6.b().d().e().a($$7));
-            xy $$11 = xk.c($$8);
-            if (!$$8.equals($$9)) {
-               $$11.f(", ").b(xk.c($$9));
-            }
-
-            $$11.a($$7);
-            $$2.add($$11);
-         }
-      }
+   public List<aku> o() {
+      return this.Q;
    }
 }

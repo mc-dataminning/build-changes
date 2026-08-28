@@ -1,29 +1,40 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public record hgo(hgs b, hgv c) {
-   public static final Codec<hgo> a = hgs.a.dispatchStable(hgo::a, hgs::c);
+public abstract class hgo implements hgl {
+   protected final hgl a;
 
-   public hgo(hgs b, hgv c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
+   public hgo(hgl $$0) {
+      this.a = $$0;
    }
 
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
+   @Override
+   public List<gne> a(@Nullable dwx $$0, @Nullable jn $$1, azh $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public hgs a() {
-      return this.b;
+   @Override
+   public boolean a() {
+      return this.a.a();
    }
 
-   public hgv b() {
-      return this.c;
+   @Override
+   public boolean b() {
+      return this.a.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.c();
+   }
+
+   @Override
+   public hej d() {
+      return this.a.d();
+   }
+
+   @Override
+   public gno e() {
+      return this.a.e();
    }
 }

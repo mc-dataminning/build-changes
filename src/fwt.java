@@ -1,58 +1,24 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public class fwt extends fwv {
-   private static final xk a = xk.c("options.online.title");
-   @Nullable
-   private fmc<Unit> u;
+public class fwt implements fwu {
+   private final ayl a;
 
-   public fwt(ftr $$0, fmd $$1) {
-      super($$0, $$1, a);
+   public fwt(ayl $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      if (this.u != null) {
-         fnw $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fmc<?>[] a(fmd $$0, flz $$1) {
-      List<fmc<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.W());
-      $$2.add($$0.X());
-      fmc<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            bsx $$1x = $$0x.am();
-            return new fmc<>(
-               "options.difficulty.online",
-               fmc.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fmc.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new fmc[0]);
+   public int b(fob $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   protected void l() {
-      this.d.a(this.a(this.c, this.m));
+   public int a(fob $$0) {
+      return 10;
+   }
+
+   @Override
+   public void a(fob $$0, int $$1, int $$2, Matrix4f $$3, glx.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fob.a.a, 0, 15728880);
    }
 }

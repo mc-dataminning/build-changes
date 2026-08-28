@@ -1,180 +1,32 @@
-public final class axt {
-   public static final aya<cxc> a = a("wool");
-   public static final aya<cxc> b = a("planks");
-   public static final aya<cxc> c = a("stone_bricks");
-   public static final aya<cxc> d = a("wooden_buttons");
-   public static final aya<cxc> e = a("stone_buttons");
-   public static final aya<cxc> f = a("buttons");
-   public static final aya<cxc> g = a("wool_carpets");
-   public static final aya<cxc> h = a("wooden_doors");
-   public static final aya<cxc> i = a("wooden_stairs");
-   public static final aya<cxc> j = a("wooden_slabs");
-   public static final aya<cxc> k = a("wooden_fences");
-   public static final aya<cxc> l = a("fence_gates");
-   public static final aya<cxc> m = a("wooden_pressure_plates");
-   public static final aya<cxc> n = a("wooden_trapdoors");
-   public static final aya<cxc> o = a("doors");
-   public static final aya<cxc> p = a("saplings");
-   public static final aya<cxc> q = a("logs_that_burn");
-   public static final aya<cxc> r = a("logs");
-   public static final aya<cxc> s = a("dark_oak_logs");
-   public static final aya<cxc> t = a("pale_oak_logs");
-   public static final aya<cxc> u = a("oak_logs");
-   public static final aya<cxc> v = a("birch_logs");
-   public static final aya<cxc> w = a("acacia_logs");
-   public static final aya<cxc> x = a("cherry_logs");
-   public static final aya<cxc> y = a("jungle_logs");
-   public static final aya<cxc> z = a("spruce_logs");
-   public static final aya<cxc> A = a("mangrove_logs");
-   public static final aya<cxc> B = a("crimson_stems");
-   public static final aya<cxc> C = a("warped_stems");
-   public static final aya<cxc> D = a("bamboo_blocks");
-   public static final aya<cxc> E = a("wart_blocks");
-   public static final aya<cxc> F = a("banners");
-   public static final aya<cxc> G = a("sand");
-   public static final aya<cxc> H = a("smelts_to_glass");
-   public static final aya<cxc> I = a("stairs");
-   public static final aya<cxc> J = a("slabs");
-   public static final aya<cxc> K = a("walls");
-   public static final aya<cxc> L = a("anvil");
-   public static final aya<cxc> M = a("rails");
-   public static final aya<cxc> N = a("leaves");
-   public static final aya<cxc> O = a("trapdoors");
-   public static final aya<cxc> P = a("small_flowers");
-   public static final aya<cxc> Q = a("beds");
-   public static final aya<cxc> R = a("fences");
-   public static final aya<cxc> S = a("tall_flowers");
-   public static final aya<cxc> T = a("flowers");
-   public static final aya<cxc> U = a("piglin_repellents");
-   public static final aya<cxc> V = a("piglin_loved");
-   public static final aya<cxc> W = a("ignored_by_piglin_babies");
-   public static final aya<cxc> X = a("piglin_safe_armor");
-   public static final aya<cxc> Y = a("duplicates_allays");
-   public static final aya<cxc> Z = a("brewing_fuel");
-   public static final aya<cxc> aa = a("shulker_boxes");
-   public static final aya<cxc> ab = a("meat");
-   public static final aya<cxc> ac = a("sniffer_food");
-   public static final aya<cxc> ad = a("piglin_food");
-   public static final aya<cxc> ae = a("fox_food");
-   public static final aya<cxc> af = a("cow_food");
-   public static final aya<cxc> ag = a("goat_food");
-   public static final aya<cxc> ah = a("sheep_food");
-   public static final aya<cxc> ai = a("wolf_food");
-   public static final aya<cxc> aj = a("cat_food");
-   public static final aya<cxc> ak = a("horse_food");
-   public static final aya<cxc> al = a("horse_tempt_items");
-   public static final aya<cxc> am = a("camel_food");
-   public static final aya<cxc> an = a("armadillo_food");
-   public static final aya<cxc> ao = a("bee_food");
-   public static final aya<cxc> ap = a("chicken_food");
-   public static final aya<cxc> aq = a("frog_food");
-   public static final aya<cxc> ar = a("hoglin_food");
-   public static final aya<cxc> as = a("llama_food");
-   public static final aya<cxc> at = a("llama_tempt_items");
-   public static final aya<cxc> au = a("ocelot_food");
-   public static final aya<cxc> av = a("panda_food");
-   public static final aya<cxc> aw = a("panda_eats_from_ground");
-   public static final aya<cxc> ax = a("pig_food");
-   public static final aya<cxc> ay = a("rabbit_food");
-   public static final aya<cxc> az = a("strider_food");
-   public static final aya<cxc> aA = a("strider_tempt_items");
-   public static final aya<cxc> aB = a("turtle_food");
-   public static final aya<cxc> aC = a("parrot_food");
-   public static final aya<cxc> aD = a("parrot_poisonous_food");
-   public static final aya<cxc> aE = a("axolotl_food");
-   public static final aya<cxc> aF = a("gold_ores");
-   public static final aya<cxc> aG = a("iron_ores");
-   public static final aya<cxc> aH = a("diamond_ores");
-   public static final aya<cxc> aI = a("redstone_ores");
-   public static final aya<cxc> aJ = a("lapis_ores");
-   public static final aya<cxc> aK = a("coal_ores");
-   public static final aya<cxc> aL = a("emerald_ores");
-   public static final aya<cxc> aM = a("copper_ores");
-   public static final aya<cxc> aN = a("non_flammable_wood");
-   public static final aya<cxc> aO = a("soul_fire_base_blocks");
-   public static final aya<cxc> aP = a("candles");
-   public static final aya<cxc> aQ = a("dirt");
-   public static final aya<cxc> aR = a("terracotta");
-   public static final aya<cxc> aS = a("completes_find_tree_tutorial");
-   public static final aya<cxc> aT = a("boats");
-   public static final aya<cxc> aU = a("chest_boats");
-   public static final aya<cxc> aV = a("fishes");
-   public static final aya<cxc> aW = a("signs");
-   public static final aya<cxc> aX = a("creeper_drop_music_discs");
-   public static final aya<cxc> aY = a("coals");
-   public static final aya<cxc> aZ = a("arrows");
-   public static final aya<cxc> ba = a("lectern_books");
-   public static final aya<cxc> bb = a("bookshelf_books");
-   public static final aya<cxc> bc = a("beacon_payment_items");
-   public static final aya<cxc> bd = a("wooden_tool_materials");
-   public static final aya<cxc> be = a("stone_tool_materials");
-   public static final aya<cxc> bf = a("iron_tool_materials");
-   public static final aya<cxc> bg = a("gold_tool_materials");
-   public static final aya<cxc> bh = a("diamond_tool_materials");
-   public static final aya<cxc> bi = a("netherite_tool_materials");
-   public static final aya<cxc> bj = a("repairs_leather_armor");
-   public static final aya<cxc> bk = a("repairs_chain_armor");
-   public static final aya<cxc> bl = a("repairs_iron_armor");
-   public static final aya<cxc> bm = a("repairs_gold_armor");
-   public static final aya<cxc> bn = a("repairs_diamond_armor");
-   public static final aya<cxc> bo = a("repairs_netherite_armor");
-   public static final aya<cxc> bp = a("repairs_turtle_helmet");
-   public static final aya<cxc> bq = a("repairs_wolf_armor");
-   public static final aya<cxc> br = a("stone_crafting_materials");
-   public static final aya<cxc> bs = a("freeze_immune_wearables");
-   public static final aya<cxc> bt = a("dampens_vibrations");
-   public static final aya<cxc> bu = a("cluster_max_harvestables");
-   public static final aya<cxc> bv = a("compasses");
-   public static final aya<cxc> bw = a("hanging_signs");
-   public static final aya<cxc> bx = a("creeper_igniters");
-   public static final aya<cxc> by = a("noteblock_top_instruments");
-   public static final aya<cxc> bz = a("foot_armor");
-   public static final aya<cxc> bA = a("leg_armor");
-   public static final aya<cxc> bB = a("chest_armor");
-   public static final aya<cxc> bC = a("head_armor");
-   public static final aya<cxc> bD = a("skulls");
-   public static final aya<cxc> bE = a("trimmable_armor");
-   public static final aya<cxc> bF = a("trim_materials");
-   public static final aya<cxc> bG = a("trim_templates");
-   public static final aya<cxc> bH = a("decorated_pot_sherds");
-   public static final aya<cxc> bI = a("decorated_pot_ingredients");
-   public static final aya<cxc> bJ = a("swords");
-   public static final aya<cxc> bK = a("axes");
-   public static final aya<cxc> bL = a("hoes");
-   public static final aya<cxc> bM = a("pickaxes");
-   public static final aya<cxc> bN = a("shovels");
-   public static final aya<cxc> bO = a("breaks_decorated_pots");
-   public static final aya<cxc> bP = a("villager_plantable_seeds");
-   public static final aya<cxc> bQ = a("villager_picks_up");
-   public static final aya<cxc> bR = a("dyeable");
-   public static final aya<cxc> bS = a("furnace_minecart_fuel");
-   public static final aya<cxc> bT = a("bundles");
-   public static final aya<cxc> bU = a("enchantable/foot_armor");
-   public static final aya<cxc> bV = a("enchantable/leg_armor");
-   public static final aya<cxc> bW = a("enchantable/chest_armor");
-   public static final aya<cxc> bX = a("enchantable/head_armor");
-   public static final aya<cxc> bY = a("enchantable/armor");
-   public static final aya<cxc> bZ = a("enchantable/sword");
-   public static final aya<cxc> ca = a("enchantable/fire_aspect");
-   public static final aya<cxc> cb = a("enchantable/sharp_weapon");
-   public static final aya<cxc> cc = a("enchantable/weapon");
-   public static final aya<cxc> cd = a("enchantable/mining");
-   public static final aya<cxc> ce = a("enchantable/mining_loot");
-   public static final aya<cxc> cf = a("enchantable/fishing");
-   public static final aya<cxc> cg = a("enchantable/trident");
-   public static final aya<cxc> ch = a("enchantable/durability");
-   public static final aya<cxc> ci = a("enchantable/bow");
-   public static final aya<cxc> cj = a("enchantable/equippable");
-   public static final aya<cxc> ck = a("enchantable/crossbow");
-   public static final aya<cxc> cl = a("enchantable/vanishing");
-   public static final aya<cxc> cm = a("enchantable/mace");
-   public static final aya<cxc> cn = a("map_invisibility_equipment");
-   public static final aya<cxc> co = a("gaze_disguise_equipment");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Locale;
 
-   private axt() {
+public record axt(int b) {
+   private static final String c = "#";
+   public static final Codec<axt> a = Codec.STRING.comapFlatMap($$0 -> {
+      if (!$$0.startsWith("#")) {
+         return DataResult.error(() -> "Not a color code: " + $$0);
+      } else {
+         try {
+            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
+            return DataResult.success(new axt($$1));
+         } catch (NumberFormatException var2) {
+            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
+         }
+      }
+   }, axt::b);
+
+   private String b() {
+      return String.format(Locale.ROOT, "#%08X", this.b);
    }
 
-   private static aya<cxc> a(String $$0) {
-      return aya.a(mb.K, alp.b($$0));
+   @Override
+   public String toString() {
+      return this.b();
+   }
+
+   public int a() {
+      return this.b;
    }
 }

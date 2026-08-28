@@ -1,22 +1,13 @@
-public class fvf extends fug<ctu> {
-   private static final alp G = alp.b("textures/gui/container/hopper.png");
+import java.util.List;
 
-   public fvf(ctu $$0, cpn $$1, xk $$2) {
-      super($$0, $$1, $$2);
-      this.u = 133;
-      this.y = this.u - 94;
-   }
+public class fvf extends fva<csi> {
+   private static final aku G = aku.b("container/blast_furnace/lit_progress");
+   private static final aku H = aku.b("container/blast_furnace/burn_progress");
+   private static final aku I = aku.b("textures/gui/container/blast_furnace.png");
+   private static final wo J = wo.c("gui.recipebook.toggleRecipes.blastable");
+   private static final List<fyh.a> K = List.of(new fyh.a(fyn.c), new fyh.a(cwt.au, dbg.h), new fyh.a(cwt.pH, cwt.qv, dbg.i));
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(glq::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   public fvf(csi $$0, cow $$1, wo $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

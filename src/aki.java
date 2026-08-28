@@ -1,31 +1,12 @@
-import io.netty.buffer.ByteBuf;
+public class aki {
+   public static final akt<djm> a = a("pumpkin");
+   public static final akt<djm> b = a("pumpkin_stem");
+   public static final akt<djm> c = a("attached_pumpkin_stem");
+   public static final akt<djm> d = a("melon");
+   public static final akt<djm> e = a("melon_stem");
+   public static final akt<djm> f = a("attached_melon_stem");
 
-public class aki implements zr<akh> {
-   public static final zi<ByteBuf, aki> a = zr.a(aki::a, aki::new);
-   private final long b;
-
-   public aki(long $$0) {
-      this.b = $$0;
-   }
-
-   private aki(ByteBuf $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(ByteBuf $$0) {
-      $$0.writeLong(this.b);
-   }
-
-   @Override
-   public zt<aki> a() {
-      return akg.b;
-   }
-
-   public void a(akh $$0) {
-      $$0.a(this);
-   }
-
-   public long b() {
-      return this.b;
+   private static akt<djm> a(String $$0) {
+      return akt.a(mc.f, aku.b($$0));
    }
 }

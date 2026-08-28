@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gyu extends gxq {
-   @Nullable
-   public hdi a;
-   public cxg b = cxg.j;
+public class gyu extends gzi {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

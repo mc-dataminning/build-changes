@@ -1,26 +1,15 @@
-public record aaw(alo<eck> c, fbr d) implements aau {
-   public static final zi<wh, aaw> a = aau.a(aaw::a, aaw::new);
-   public static final aau.b<aaw> b = aau.a("debug/game_event");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-   private aaw(wh $$0) {
-      this($$0.a(mb.G), $$0.k());
-   }
-
-   private void a(wh $$0) {
-      $$0.b(this.c);
-      $$0.a(this.d);
-   }
+public record aaw(List<atw> b) implements yv<aas> {
+   public static final ym<ByteBuf, aaw> a = ym.a(atw.a.a(yk.a()), aaw::b, aaw::new);
 
    @Override
-   public aau.b<aaw> a() {
-      return b;
+   public yx<aaw> a() {
+      return aay.d;
    }
 
-   public alo<eck> b() {
-      return this.c;
-   }
-
-   public fbr c() {
-      return this.d;
+   public void a(aas $$0) {
+      $$0.a(this);
    }
 }

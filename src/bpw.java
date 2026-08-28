@@ -1,76 +1,37 @@
-import jdk.jfr.Category;
-import jdk.jfr.Enabled;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.Name;
-import jdk.jfr.StackTrace;
+import com.google.common.base.MoreObjects;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
+import jdk.jfr.consumer.RecordedEvent;
+import jdk.jfr.consumer.RecordedThread;
 
-@Category({"Minecraft", "Storage"})
-@StackTrace(false)
-@Enabled(false)
-public abstract class bpw extends Event {
-   @Name("regionPosX")
-   @Label("Region X Position")
-   public final int regionPosX;
-   @Name("regionPosZ")
-   @Label("Region Z Position")
-   public final int regionPosZ;
-   @Name("localPosX")
-   @Label("Local X Position")
-   public final int localChunkPosX;
-   @Name("localPosZ")
-   @Label("Local Z Position")
-   public final int localChunkPosZ;
-   @Name("chunkPosX")
-   @Label("Chunk X Position")
-   public final int chunkPosX;
-   @Name("chunkPosZ")
-   @Label("Chunk Z Position")
-   public final int chunkPosZ;
-   @Name("level")
-   @Label("Level Id")
-   public final String levelId;
-   @Name("dimension")
-   @Label("Dimension")
-   public final String dimension;
-   @Name("type")
-   @Label("Type")
-   public final String type;
-   @Name("compression")
-   @Label("Compression")
-   public final String compression;
-   @Name("bytes")
-   @Label("Bytes")
-   public final int bytes;
+public record bpw(Instant a, String b, long c) {
+   private static final String d = "unknown";
 
-   public bpw(ebc $$0, dgf $$1, ebb $$2, int $$3) {
-      this.regionPosX = $$1.h();
-      this.regionPosZ = $$1.i();
-      this.localChunkPosX = $$1.j();
-      this.localChunkPosZ = $$1.k();
-      this.chunkPosX = $$1.h;
-      this.chunkPosZ = $$1.i;
-      this.levelId = $$0.a();
-      this.dimension = $$0.b().a().toString();
-      this.type = $$0.c();
-      this.compression = "standard:" + $$2.b();
-      this.bytes = $$3;
+   public static bpw a(RecordedEvent $$0) {
+      RecordedThread $$1 = $$0.getThread("thread");
+      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
+      return new bpw($$0.getStartTime(), $$2, $$0.getLong("allocated"));
    }
 
-   public static class a {
-      public static final String a = "regionPosX";
-      public static final String b = "regionPosZ";
-      public static final String c = "localPosX";
-      public static final String d = "localPosZ";
-      public static final String e = "chunkPosX";
-      public static final String f = "chunkPosZ";
-      public static final String g = "level";
-      public static final String h = "dimension";
-      public static final String i = "type";
-      public static final String j = "compression";
-      public static final String k = "bytes";
+   public static bpw.a a(List<bpw> $$0) {
+      Map<String, Double> $$1 = new TreeMap<>();
+      Map<String, List<bpw>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
+      $$2.forEach(($$1x, $$2x) -> {
+         if ($$2x.size() >= 2) {
+            bpw $$3 = (bpw)$$2x.get(0);
+            bpw $$4 = (bpw)$$2x.get($$2x.size() - 1);
+            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
+            long $$6 = $$4.c - $$3.c;
+            $$1.put($$1x, (double)$$6 / (double)$$5);
+         }
+      });
+      return new bpw.a($$1);
+   }
 
-      private a() {
-      }
+   public static record a(Map<String, Double> a) {
    }
 }

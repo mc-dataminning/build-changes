@@ -1,20 +1,18 @@
-public record ahh(String b) implements zr<ahb> {
-   public static final zi<wh, ahh> a = zr.a(ahh::a, ahh::new);
+import io.netty.buffer.ByteBuf;
 
-   private ahh(wh $$0) {
-      this($$0.p());
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.b);
-   }
+public record ahh(ji b, boolean c) implements yv<agf> {
+   public static final ym<ByteBuf, ahh> a = ym.a(ji.b, ahh::b, yk.b, ahh::e, ahh::new);
 
    @Override
-   public zt<ahh> a() {
-      return agz.bp;
+   public yx<ahh> a() {
+      return agd.bO;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

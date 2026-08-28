@@ -1,19 +1,16 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-
-public record afd(xk b, Optional<byte[]> c) implements zr<acg> {
-   public static final zi<ByteBuf, afd> a = zi.a(xm.f, afd::b, zg.n.a(zg::a), afd::e, afd::new);
+public record afd(int b, cwp c) implements yv<abk> {
+   public static final ym<vz, afd> a = ym.a(yk.h, afd::b, cwp.g, afd::e, afd::new);
 
    @Override
-   public zt<afd> a() {
-      return agz.at;
+   public yx<afd> a() {
+      return agd.cr;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
+   public cwp e() {
       return this.c;
    }
 }

@@ -1,12 +1,15 @@
-public class ald {
-   public static final alo<dkd> a = a("pumpkin");
-   public static final alo<dkd> b = a("pumpkin_stem");
-   public static final alo<dkd> c = a("attached_pumpkin_stem");
-   public static final alo<dkd> d = a("melon");
-   public static final alo<dkd> e = a("melon_stem");
-   public static final alo<dkd> f = a("attached_melon_stem");
+import java.util.List;
 
-   private static alo<dkd> a(String $$0) {
-      return alo.a(mb.f, alp.b($$0));
+public enum ald {
+   a,
+   b,
+   c,
+   d;
+
+   private static final List<ald> e = List.of(values());
+   private static final kf.b f = kf.a(mb.aC);
+
+   public static jy<ald> a() {
+      return new jy<>(e).a(a, f);
    }
 }

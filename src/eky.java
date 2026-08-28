@@ -1,41 +1,45 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class eky extends ekx {
-   public static final MapCodec<eky> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eky::new));
-   protected final List<dxo> h;
+public class eky extends ekw {
+   public static final MapCodec<eky> a = MapCodec.unit(() -> eky.b);
+   public static final eky b = new eky();
 
-   protected static <P extends eky> P4<Mu<P>, Long, est.a, Float, List<dxo>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dxo.a).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public eky(long $$0, est.a $$1, float $$2, List<dxo> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   @Override
+   protected ekx<?> a() {
+      return ekx.a;
    }
 
    @Override
-   protected ekv<?> a() {
-      return ekv.d;
-   }
+   public void a(ekw.a $$0) {
+      azh $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            ji $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dsn.d);
+            }
+         }
 
-   @Override
-   public dxo a(bac $$0, jh $$1) {
-      return this.a(this.h, $$1, (double)this.e);
-   }
+         if ($$1.a(3) > 0) {
+            ji $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dsn.f);
+            }
+         }
 
-   protected dxo a(List<dxo> $$0, jh $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
-   }
+         if ($$1.a(3) > 0) {
+            ji $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dsn.e);
+            }
+         }
 
-   protected dxo a(List<dxo> $$0, double $$1) {
-      double $$2 = azu.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+         if ($$1.a(3) > 0) {
+            ji $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dsn.c);
+            }
+         }
+      });
    }
 }

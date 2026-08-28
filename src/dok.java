@@ -1,40 +1,49 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dok extends dns implements dow {
-   public static final MapCodec<dok> c = b(dok::new);
+public class dok extends djm implements dqs {
+   public static final MapCodec<dok> a = b(dok::new);
+   public static final dxo b = dxn.J;
 
    @Override
    public MapCodec<dok> a() {
-      return c;
+      return a;
    }
 
-   protected dok(dxn.d $$0) {
-      super($$0, jm.b, fci.b(), true);
-   }
-
-   @Override
-   protected dnt c() {
-      return (dnt)dkf.mE;
+   protected dok(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected etq b_(dxo $$0) {
-      return etr.c.a(false);
+   protected boolean b(dwx $$0, dwx $$1, jn $$2) {
+      return $$1.a(djo.ag) && $$2.o() == jn.a.b;
+   }
+
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      esz $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eta.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected boolean o(dxo $$0) {
-      return this.c().o($$0);
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, eta.c, eta.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public boolean a(@Nullable cpo $$0, dge $$1, jh $$2, dxo $$3, etp $$4) {
-      return false;
+   protected esz b_(dwx $$0) {
+      return $$0.c(b) ? eta.c.a(false) : super.b_($$0);
    }
 
    @Override
-   public boolean a(dha $$0, jh $$1, dxo $$2, etq $$3) {
-      return false;
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b);
    }
 }

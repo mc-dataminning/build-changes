@@ -1,116 +1,40 @@
-public abstract class crv {
-   protected final crn a;
+import com.mojang.serialization.Codec;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-   protected crv(crn $$0) {
-      this.a = $$0;
+public class crv {
+   public static final crr a;
+   public static final crr b;
+   public static final crr c;
+   public static final crr d;
+   public static final crs e;
+   public static final Codec<crt> f;
+   public static final crt g;
+   public static final crt h;
+
+   public static String a(crt $$0, crt $$1) {
+      return a(e, $$0, $$1);
    }
 
-   public void a() {
+   public static String a(crs $$0, crt $$1, crt $$2) {
+      Set<aku> $$3 = $$0.b($$2);
+      Set<aku> $$4 = $$0.b($$1);
+      return $$3.stream().filter($$1x -> !$$4.contains($$1x)).map(aku::toString).collect(Collectors.joining(", "));
    }
 
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.c($$0, $$1, $$2);
-      this.b($$3 % 360.0F);
-      this.a($$4 % 360.0F);
+   public static boolean a(crt $$0) {
+      return !$$0.a(g);
    }
 
-   public double b() {
-      return this.l();
+   static {
+      crs.a $$0 = new crs.a("main");
+      a = $$0.a("vanilla");
+      b = $$0.a("trade_rebalance");
+      c = $$0.a("redstone_experiments");
+      d = $$0.a("minecart_improvements");
+      e = $$0.a();
+      f = e.b();
+      g = crt.a(a);
+      h = g;
    }
-
-   public double c() {
-      return this.m();
-   }
-
-   public double d() {
-      return this.n();
-   }
-
-   public float e() {
-      return this.o();
-   }
-
-   public float f() {
-      return this.p();
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
-   }
-
-   public abstract void g();
-
-   public dgz h() {
-      return this.a.dW();
-   }
-
-   public abstract void a(arx var1);
-
-   public abstract double a(jh var1, dyr var2, double var3);
-
-   public abstract boolean i();
-
-   public fbr j() {
-      return this.a.dz();
-   }
-
-   public void a(fbr $$0) {
-      this.a.h($$0);
-   }
-
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
-   }
-
-   public fbr k() {
-      return this.a.du();
-   }
-
-   public double l() {
-      return this.a.dB();
-   }
-
-   public double m() {
-      return this.a.dD();
-   }
-
-   public double n() {
-      return this.a.dH();
-   }
-
-   public void b(fbr $$0) {
-      this.a.b($$0);
-   }
-
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
-   }
-
-   public float o() {
-      return this.a.dO();
-   }
-
-   public void a(float $$0) {
-      this.a.w($$0);
-   }
-
-   public float p() {
-      return this.a.dM();
-   }
-
-   public void b(float $$0) {
-      this.a.v($$0);
-   }
-
-   public jm q() {
-      return this.a.cO();
-   }
-
-   public fbr c(fbr $$0) {
-      return $$0;
-   }
-
-   public abstract double b(arx var1);
-
-   public abstract double r();
 }

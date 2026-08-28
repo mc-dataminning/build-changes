@@ -1,71 +1,32 @@
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
 
-public abstract class fnq extends fnw implements fpv {
-   @Nullable
-   private fpw a;
-   private boolean b;
-
-   public fnq(int $$0, int $$1, int $$2, int $$3, xk $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+public class fnq {
+   @Deprecated
+   public static aku a(String $$0) {
+      return aku.b("block/" + $$0);
    }
 
-   @Override
-   public final boolean aL_() {
-      return this.b;
+   public static aku b(String $$0) {
+      return aku.b("item/" + $$0);
    }
 
-   @Override
-   public final void b_(boolean $$0) {
-      this.b = $$0;
+   public static aku a(djm $$0, String $$1) {
+      aku $$2 = mb.e.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
    }
 
-   @Nullable
-   @Override
-   public fpw aM_() {
-      return this.a;
+   public static aku a(djm $$0) {
+      aku $$1 = mb.e.b($$0);
+      return $$1.f("block/");
    }
 
-   @Override
-   public void a(@Nullable fpw $$0) {
-      if (this.a != null) {
-         this.a.a(false);
-      }
-
-      if ($$0 != null) {
-         $$0.a(true);
-      }
-
-      this.a = $$0;
+   public static aku a(cwl $$0) {
+      aku $$1 = mb.g.b($$0);
+      return $$1.f("item/");
    }
 
-   @Nullable
-   @Override
-   public fni a(fsc $$0) {
-      return fpv.super.a($$0);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return fpv.super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return fpv.super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return fpv.super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   public boolean aN_() {
-      return fpv.super.aN_();
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      fpv.super.a($$0);
+   public static aku a(cwl $$0, String $$1) {
+      aku $$2 = mb.g.b($$0);
+      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
    }
 }

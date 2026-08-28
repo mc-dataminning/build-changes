@@ -1,167 +1,182 @@
-import com.google.common.base.Strings;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fyi extends foe<fyg> {
-   private final fyj a;
-   private final List<fyg> m = Lists.newArrayList();
+public class fyi {
+   public static final int a = 20;
+   private static final fqf b = new fqf(aku.b("recipe_book/page_forward"), aku.b("recipe_book/page_forward_highlighted"));
+   private static final fqf c = new fqf(aku.b("recipe_book/page_backward"), aku.b("recipe_book/page_backward_highlighted"));
+   private final List<fyk> d = Lists.newArrayListWithCapacity(20);
    @Nullable
-   private String n;
+   private fyk e;
+   private final fyg f;
+   private flj g;
+   private final fyh<?> h;
+   private List<fyl> i = ImmutableList.of();
+   private fpy j;
+   private fpy k;
+   private int l;
+   private int m;
+   private fku n;
+   @Nullable
+   private dcl o;
+   @Nullable
+   private fyl p;
+   private boolean q;
 
-   public fyi(fyj $$0, flz $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.a = $$0;
-   }
+   public fyi(fyh<?> $$0, fyo $$1, boolean $$2) {
+      this.h = $$0;
+      this.f = new fyg($$1, $$2);
 
-   @Override
-   protected void b(fnl $$0) {
-   }
-
-   @Override
-   protected void a(fnl $$0) {
-   }
-
-   @Override
-   protected void c(fnl $$0) {
-      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
-   }
-
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fyg> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fyg> $$1) {
-      gfg $$2 = this.c.t.j;
-
-      for (UUID $$3 : $$0) {
-         gfr $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fyg(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         this.d.add(new fyk($$1));
       }
    }
 
-   private void a(Map<UUID, fyg> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.bb().b())) {
-         fyg $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fyg $$2 = new fyg(this.c, this.a, $$3.getId(), $$3.getName(), this.c.an().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
+   public void a(flj $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.n = $$0.t.n();
+
+      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
+         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+      }
+
+      this.j = new fpy($$1 + 93, $$2 + 137, 12, 17, false);
+      this.j.a(b);
+      this.k = new fpy($$1 + 38, $$2 + 137, 12, 17, true);
+      this.k.a(c);
+   }
+
+   public void a(List<fyl> $$0, boolean $$1, boolean $$2) {
+      this.i = $$0;
+      this.q = $$2;
+      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
+      if (this.l <= this.m || $$1) {
+         this.m = 0;
+      }
+
+      this.e();
+   }
+
+   private void e() {
+      int $$0 = 20 * this.m;
+      bak $$1 = dcq.a(this.g.s);
+
+      for (int $$2 = 0; $$2 < this.d.size(); $$2++) {
+         fyk $$3 = this.d.get($$2);
+         if ($$0 + $$2 < this.i.size()) {
+            fyl $$4 = this.i.get($$0 + $$2);
+            $$3.a($$4, this.q, this, $$1);
+            $$3.k = true;
          } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
-         }
-
-         $$4.d(true);
-      }
-   }
-
-   private static Collection<GameProfile> a(gga $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         ggc $$3 = $$0.b($$2);
-         if ($$3 instanceof ggd.a) {
-            ggd.a $$4 = (ggd.a)$$3;
-            if ($$4.g().i()) {
-               $$1.add($$4.f());
-            }
+            $$3.k = false;
          }
       }
 
-      return $$1;
+      this.f();
    }
 
-   private void c() {
-      this.m.sort(Comparator.<fyg, Integer>comparing($$0 -> {
-         if (this.c.b($$0.g())) {
-            return 0;
-         } else if (this.c.bb().a($$0.g())) {
-            return 1;
-         } else if ($$0.g().version() == 2) {
-            return 4;
+   private void f() {
+      this.j.k = this.l > 1 && this.m < this.l - 1;
+      this.k.k = this.l > 1 && this.m > 0;
+   }
+
+   public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      if (this.l > 1) {
+         wo $$6 = wo.a("gui.recipebook.page", this.m + 1, this.l);
+         int $$7 = this.g.h.a($$6);
+         $$0.b(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1);
+      }
+
+      this.e = null;
+
+      for (fyk $$8 : this.d) {
+         $$8.a($$0, $$3, $$4, $$5);
+         if ($$8.k && $$8.D()) {
+            this.e = $$8;
+         }
+      }
+
+      this.k.a($$0, $$3, $$4, $$5);
+      this.j.a($$0, $$3, $$4, $$5);
+      this.f.a($$0, $$3, $$4, $$5);
+   }
+
+   public void a(fod $$0, int $$1, int $$2) {
+      if (this.g.z != null && this.e != null && !this.f.c()) {
+         cwp $$3 = this.e.e();
+         aku $$4 = $$3.a(kv.G);
+         $$0.a(this.g.h, this.e.a($$3), $$1, $$2, $$4);
+      }
+   }
+
+   @Nullable
+   public dcl a() {
+      return this.o;
+   }
+
+   @Nullable
+   public fyl b() {
+      return this.p;
+   }
+
+   public void c() {
+      this.f.b(false);
+   }
+
+   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
+      this.o = null;
+      this.p = null;
+      if (this.f.c()) {
+         if (this.f.a($$0, $$1, $$2)) {
+            this.o = this.f.b();
+            this.p = this.f.a();
          } else {
-            return $$0.j() ? 2 : 3;
+            this.f.b(false);
          }
-      }).thenComparing($$0 -> {
-         if (!$$0.c().isBlank()) {
-            int $$1 = $$0.c().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
+
+         return true;
+      } else if (this.j.a($$0, $$1, $$2)) {
+         this.m++;
+         this.e();
+         return true;
+      } else if (this.k.a($$0, $$1, $$2)) {
+         this.m--;
+         this.e();
+         return true;
+      } else {
+         bak $$7 = dcq.a(this.g.s);
+
+         for (fyk $$8 : this.d) {
+            if ($$8.a($$0, $$1, $$2)) {
+               if ($$2 == 0) {
+                  this.o = $$8.c();
+                  this.p = $$8.a();
+               } else if ($$2 == 1 && !this.f.c() && !$$8.b()) {
+                  this.f.a($$8.a(), $$7, this.q, $$8.F(), $$8.G(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$8.A());
+               }
+
+               return true;
             }
          }
 
-         return 1;
-      }).thenComparing(fyg::c, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fyg> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.c();
-      this.J();
-      this.a(this.m);
-      this.b($$1);
-   }
-
-   private void J() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
+         return false;
       }
    }
 
-   public void a(String $$0) {
-      this.n = $$0;
+   public void a(dcl $$0) {
+      this.h.a($$0);
    }
 
-   public boolean b() {
-      return this.m.isEmpty();
+   public fku d() {
+      return this.n;
    }
 
-   public void a(gfr $$0, fyj.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fyg $$3 : this.m) {
-         if ($$3.g().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
-      }
-
-      if (($$1 == fyj.a.a || this.c.aN().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fyg $$5 = new fyg(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b((fyg)$$5);
-         this.m.add($$5);
-      }
-   }
-
-   public void a(UUID $$0) {
-      for (fyg $$1 : this.m) {
-         if ($$1.g().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
-      }
+   protected void a(Consumer<fop> $$0) {
+      $$0.accept(this.j);
+      $$0.accept(this.k);
+      this.d.forEach($$0);
    }
 }

@@ -1,29 +1,60 @@
-public class ahs implements zr<ahb> {
-   public static final zi<wh, ahs> a = zr.a(ahs::a, ahs::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public ahs(int $$0) {
+public class ahs implements yv<agf> {
+   public static final ym<vl, ahs> a = yv.a(ahs::a, ahs::new);
+   private final ahs.a b;
+   @Nullable
+   private final aku c;
+
+   public ahs(ahs.a $$0, @Nullable aku $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahs(wh $$0) {
-      this.b = $$0.x();
+   public static ahs a(ai $$0) {
+      return new ahs(ahs.a.a, $$0.a());
    }
 
-   private void a(wh $$0) {
-      $$0.f(this.b);
+   public static ahs b() {
+      return new ahs(ahs.a.b, null);
+   }
+
+   private ahs(vl $$0) {
+      this.b = $$0.b(ahs.a.class);
+      if (this.b == ahs.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
+      }
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      if (this.b == ahs.a.a) {
+         $$0.a(this.c);
+      }
    }
 
    @Override
-   public zt<ahs> a() {
-      return agz.bA;
+   public yx<ahs> a() {
+      return agd.bZ;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ahs.a e() {
       return this.b;
+   }
+
+   @Nullable
+   public aku f() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,21 +1,43 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cyl extends cyt {
-   public cyl(dkd $$0, dkd $$1, cxc.a $$2) {
-      super($$0, $$1, jm.a, $$2);
-   }
-
-   public cyl(cxc.a $$0, dkd $$1, dkd $$2, jm $$3) {
-      super($$1, $$2, $$3, $$0);
+public class cyl extends cwl {
+   public cyl(cwl.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(jh $$0, dgz $$1, @Nullable cpo $$2, cxg $$3, dxo $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dwd $$6 && $$1.a_($$0).b() instanceof dri $$7) {
-         $$7.a($$2, $$6, true);
+   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
+      czx $$4 = $$0.a(kv.T);
+      if ($$4 != null) {
+         if (!azw.h($$4.e())) {
+            $$2.add(wo.a("book.byAuthor", $$4.e()).a(n.h));
+         }
+
+         $$2.add(wo.c("book.generation." + $$4.f()).a(n.h));
+      }
+   }
+
+   @Override
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      cwp $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(awk.c.b(this));
+      return bsj.a;
+   }
+
+   public static boolean a(cwp $$0, ex $$1, @Nullable cox $$2) {
+      czx $$3 = $$0.a(kv.T);
+      if ($$3 != null && !$$3.g()) {
+         czx $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(kv.T, $$4);
+            return true;
+         }
+
+         $$0.b(kv.T, $$3.c());
       }
 
-      return $$5;
+      return false;
    }
 }

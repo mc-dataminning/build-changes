@@ -1,97 +1,117 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public final class ecx {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<eak> e = ma.l
-      .q()
-      .comapFlatMap($$0 -> $$0 == eak.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+public record ecx(eda j, dwx k, dwx l, ecy m, edj.o n, List<dht.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
    public static final Codec<ecx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(ecx::a),
-               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+               eda.a.fieldOf("noise").forGetter(ecx::f),
+               dwx.a.fieldOf("default_block").forGetter(ecx::g),
+               dwx.a.fieldOf("default_fluid").forGetter(ecx::h),
+               ecy.a.fieldOf("noise_router").forGetter(ecx::i),
+               edj.o.b.fieldOf("surface_rule").forGetter(ecx::j),
+               dht.d.a.listOf().fieldOf("spawn_target").forGetter(ecx::k),
+               Codec.INT.fieldOf("sea_level").forGetter(ecx::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(ecx::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(ecx::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(ecx::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(ecx::n)
             )
             .apply($$0, ecx::new)
    );
-   private static final Set<alo<dib>> f = Set.of(dii.ab, dii.aa, dii.ac);
-   public static final dhb b = new dhb() {
-      @Override
-      public int M_() {
-         return 64;
-      }
+   public static final Codec<jr<ecx>> b = akq.a(mc.aR, a);
+   public static final akt<ecx> c = akt.a(mc.aR, aku.b("overworld"));
+   public static final akt<ecx> d = akt.a(mc.aR, aku.b("large_biomes"));
+   public static final akt<ecx> e = akt.a(mc.aR, aku.b("amplified"));
+   public static final akt<ecx> f = akt.a(mc.aR, aku.b("nether"));
+   public static final akt<ecx> g = akt.a(mc.aR, aku.b("end"));
+   public static final akt<ecx> h = akt.a(mc.aR, aku.b("caves"));
+   public static final akt<ecx> i = akt.a(mc.aR, aku.b("floating_islands"));
 
-      @Override
-      public int L_() {
-         return -64;
-      }
-   };
-   private final eak g;
-   private final BitSet h;
-
-   private ecx(eak $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
-   }
-
-   @Nullable
-   public static ecx a(um $$0) {
-      eak $$1 = eak.a($$0.l("target_status"));
-      return $$1 == eak.c ? null : new ecx($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
-
-   public static void a(ead $$0) {
-      int $$1 = 4;
-      jh.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dkf.I)) {
-            $$0.a($$1x, dkf.tl.m(), false);
-         }
-      });
-   }
-
-   public void b(ead $$0) {
-      dhb $$1 = $$0.B();
-      int $$2 = $$1.L_();
-      int $$3 = $$1.an();
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               jh.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dkf.a.m(), false));
-            }
-         }
-      }
-   }
-
-   public eak a() {
-      return this.g;
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
    public boolean b() {
-      return !this.h.isEmpty();
+      return this.r;
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   public boolean c() {
+      return this.s;
    }
 
-   public static die a(die $$0, dzj $$1) {
-      if (!$$1.A()) {
-         return $$0;
-      } else {
-         Predicate<alo<dib>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            jq<dib> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
-      }
+   public edr.a d() {
+      return this.t ? edr.a.a : edr.a.b;
+   }
+
+   public static void a(qe<ecx> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static ecx b(qe<?> $$0) {
+      return new ecx(eda.d, djo.fU.m(), djo.a.m(), ecz.a($$0.a(mc.aM)), qr.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static ecx c(qe<?> $$0) {
+      return new ecx(eda.c, djo.ei.m(), djo.K.m(), ecz.a($$0.a(mc.aM), $$0.a(mc.aS)), qr.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static ecx a(qe<?> $$0, boolean $$1, boolean $$2) {
+      return new ecx(eda.b, djo.b.m(), djo.J.m(), ecz.a($$0.a(mc.aM), $$0.a(mc.aS), $$2, $$1), qr.a(), new dia().a(), 63, false, true, true, false);
+   }
+
+   private static ecx d(qe<?> $$0) {
+      return new ecx(eda.e, djo.b.m(), djo.J.m(), ecz.b($$0.a(mc.aM), $$0.a(mc.aS)), qr.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static ecx e(qe<?> $$0) {
+      return new ecx(eda.f, djo.b.m(), djo.J.m(), ecz.c($$0.a(mc.aM), $$0.a(mc.aS)), qr.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static ecx e() {
+      return new ecx(eda.b, djo.b.m(), djo.a.m(), ecz.a(), qr.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public eda f() {
+      return this.j;
+   }
+
+   public dwx g() {
+      return this.k;
+   }
+
+   public dwx h() {
+      return this.l;
+   }
+
+   public ecy i() {
+      return this.m;
+   }
+
+   public edj.o j() {
+      return this.n;
+   }
+
+   public List<dht.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

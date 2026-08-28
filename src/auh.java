@@ -1,29 +1,19 @@
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-interface auh {
-   auh a = new auh() {
-      @Override
-      public String toString() {
-         return "empty";
-      }
-   };
-   auh b = new auh() {
-      @Override
-      public String toString() {
-         return "relative";
-      }
-   };
-
-   public static record a(Map<String, aue> c) implements auh {
-      public Map<String, aue> a() {
-         return this.c;
-      }
+@FunctionalInterface
+public interface auh<T> {
+   static auh<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   public static record b(Path c) implements auh {
-      public Path a() {
-         return this.c;
-      }
+   static auh<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
+
+   T get() throws IOException;
 }

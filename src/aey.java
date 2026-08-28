@@ -1,28 +1,45 @@
-import javax.annotation.Nullable;
+public class aey implements yv<abk> {
+   public static final ym<vl, aey> a = yv.a(aey::a, aey::new);
+   private final float b;
+   private final int c;
+   private final int d;
 
-public record aey(String b, @Nullable String c) implements zr<acg> {
-   public static final zi<wh, aey> a = zr.a(aey::a, aey::new);
-
-   private aey(wh $$0) {
-      this($$0.p(), $$0.c(wh::p));
+   public aey(float $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(wh $$0) {
+   private aey(vl $$0) {
+      this.b = $$0.readFloat();
+      this.d = $$0.l();
+      this.c = $$0.l();
+   }
+
+   private void a(vl $$0) {
       $$0.a(this.b);
-      $$0.a(this.c, wh::a);
+      $$0.c(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public zt<aey> a() {
-      return agz.cm;
+   public yx<aey> a() {
+      return agd.aJ;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public String e() {
+   public float b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

@@ -1,99 +1,120 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collection;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fip extends fiq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "http://";
-   private static final int c = 8080;
-   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-   private final boolean e;
+public class fip extends hkx {
+   private static final wo a = wo.c("mco.selectServer.popup");
+   private static final wo b = wo.c("mco.selectServer.close");
+   private static final aku c = aku.b("popup/background");
+   private static final aku C = aku.b("icon/trial_available");
+   private static final fqf D = new fqf(aku.b("widget/cross_button"), aku.b("widget/cross_button_highlighted"));
+   private static final int E = 236;
+   private static final int F = 34;
+   private static final int G = 6;
+   private static final int H = 195;
+   private static final int I = 152;
+   private static final int J = 4;
+   private static final int K = 10;
+   private static final int L = 320;
+   private static final int M = 172;
+   private static final int N = 100;
+   private static final int O = 99;
+   private static final int P = 100;
+   private static List<aku> Q = List.of();
+   private final fuk R;
+   private final boolean S;
    @Nullable
-   private final String f;
-   private final URI g;
+   private fos T;
+   private int U;
+   private int V;
 
-   private fip(boolean $$0, @Nullable String $$1, URI $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fip(fuk $$0, boolean $$1) {
+      super(a);
+      this.R = $$0;
+      this.S = $$1;
    }
 
-   @Nullable
-   public static fip a(String $$0) {
-      try {
-         JsonParser $$1 = new JsonParser();
-         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-         String $$3 = fkm.b("uploadEndpoint", $$2, null);
-         if ($$3 != null) {
-            int $$4 = fkm.a("port", $$2, -1);
-            URI $$5 = a($$3, $$4);
-            if ($$5 != null) {
-               boolean $$6 = fkm.a("worldClosed", $$2, false);
-               String $$7 = fkm.b("token", $$2, null);
-               return new fip($$6, $$7, $$5);
-            }
-         }
-      } catch (Exception var8) {
-         a.error("Could not parse UploadInfo: {}", var8.getMessage());
+   public static void a(aup $$0) {
+      Collection<aku> $$1 = $$0.b("textures/gui/images", $$0x -> $$0x.a().endsWith(".png")).keySet();
+      Q = $$1.stream().filter($$0x -> $$0x.b().equals("realms")).toList();
+   }
+
+   @Override
+   protected void aR_() {
+      this.R.a(this.m, this.n, this.o);
+      if (this.S) {
+         this.T = this.c(fos.a(wo.c("mco.selectServer.trial"), fth.b(this, axv.q)).a(this.G() - 10 - 99, this.H() - 10 - 4 - 40, 99, 20).a());
       }
 
-      return null;
+      this.c(fos.a(wo.c("mco.selectServer.buy"), fth.b(this, axv.r)).a(this.G() - 10 - 99, this.H() - 10 - 20, 99, 20).a());
+      fpe $$0 = this.c(new fpe(this.E() + 4, this.F() + 4, 14, 14, D, $$0x -> this.aO_(), b));
+      $$0.a(fqd.a(b));
+      int $$1 = 142 - (this.S ? 40 : 20);
+      fpc $$2 = new fpc(this.G() - 10 - 100, this.F() + 10, 100, $$1, a, this.p);
+      if ($$2.q()) {
+         $$2.h(94);
+      }
+
+      this.c($$2);
    }
 
-   @Nullable
-   @VisibleForTesting
-   public static URI a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      String $$3 = a($$0, $$2);
-
-      try {
-         URI $$4 = new URI($$3);
-         int $$5 = a($$1, $$4.getPort());
-         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
-      } catch (URISyntaxException var6) {
-         a.warn("Failed to parse URI {}", $$3, var6);
-         return null;
+   @Override
+   public void e() {
+      super.e();
+      if (++this.V > 100) {
+         this.V = 0;
+         this.U = (this.U + 1) % Q.size();
       }
    }
 
-   private static int a(int $$0, int $$1) {
-      if ($$0 != -1) {
-         return $$0;
-      } else {
-         return $$1 != -1 ? $$1 : 8080;
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.T != null) {
+         a($$0, this.T);
       }
    }
 
-   private static String a(String $$0, Matcher $$1) {
-      return $$1.find() ? $$0 : "http://" + $$0;
+   public static void a(fod $$0, fos $$1) {
+      int $$2 = 8;
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 110.0F);
+      $$0.a(gmh::H, C, $$1.F() + $$1.A() - 8 - 4, $$1.G() + $$1.y() / 2 - 4, 8, 8);
+      $$0.c().b();
    }
 
-   public static String b(@Nullable String $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 != null) {
-         $$1.addProperty("token", $$0);
+   @Override
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      this.R.a($$0, -1, -1, $$3);
+      $$0.d();
+      RenderSystem.clear(256);
+      this.A();
+      this.b($$0);
+      $$0.a(gmh::H, c, this.E(), this.F(), 320, 172);
+      if (!Q.isEmpty()) {
+         $$0.a(gmh::H, Q.get(this.U), this.E() + 10, this.F() + 10, 0.0F, 0.0F, 195, 152, 195, 152);
       }
-
-      return $$1.toString();
    }
 
-   @Nullable
-   public String a() {
-      return this.f;
+   private int E() {
+      return (this.n - 320) / 2;
    }
 
-   public URI b() {
-      return this.g;
+   private int F() {
+      return (this.o - 172) / 2;
    }
 
-   public boolean c() {
-      return this.e;
+   private int G() {
+      return this.E() + 320;
+   }
+
+   private int H() {
+      return this.F() + 172;
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.R);
    }
 }

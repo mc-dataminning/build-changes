@@ -1,30 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public record ejg(int b, int c, int d, jq<enh> e) implements eit {
-   public static final Codec<ejg> a = RecordCodecBuilder.create(
+public class ejg extends ejd {
+   public static final MapCodec<ejg> d = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               azd.m.fieldOf("tries").orElse(128).forGetter(ejg::a),
-               azd.l.fieldOf("xz_spread").orElse(7).forGetter(ejg::b),
-               azd.l.fieldOf("y_spread").orElse(3).forGetter(ejg::c),
-               enh.b.fieldOf("feature").forGetter(ejg::d)
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
             )
             .apply($$0, ejg::new)
    );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   public int a() {
-      return this.b;
+   public ejg(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   public int b() {
-      return this.c;
+   public ejg(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   protected eje<?> b() {
+      return eje.a;
    }
 
-   public jq<enh> d() {
-      return this.e;
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

@@ -1,30 +1,20 @@
-import java.util.Set;
+public record agp(float b) implements yv<agf> {
+   public static final ym<vl, agp> a = yv.a(agp::a, agp::new);
 
-public record agp(int b, bwk c, Set<bwl> d, boolean e) implements zr<acg> {
-   public static final zi<wh, agp> a = zi.a(zg.h, agp::b, bwk.a, agp::e, bwl.m, agp::f, zg.b, agp::g, agp::new);
+   private agp(vl $$0) {
+      this($$0.readFloat());
+   }
 
-   public static agp a(int $$0, bwk $$1, Set<bwl> $$2, boolean $$3) {
-      return new agp($$0, $$1, $$2, $$3);
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zt<agp> a() {
-      return agz.bd;
+   public yx<agp> a() {
+      return agd.bt;
    }
 
-   public void a(acg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
-   }
-
-   public bwk e() {
-      return this.c;
-   }
-
-   public Set<bwl> f() {
-      return this.d;
-   }
-
-   public boolean g() {
-      return this.e;
    }
 }

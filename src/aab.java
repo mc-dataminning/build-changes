@@ -1,29 +1,17 @@
-public class aab implements zr<zx> {
-   public static final zi<wh, aab> a = zr.a(aab::a, aab::new);
-   private final long b;
-
-   public aab(long $$0) {
-      this.b = $$0;
-   }
-
-   private aab(wh $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wh $$0) {
-      $$0.b(this.b);
-   }
+public record aab(ebx c, int d) implements zy {
+   public static final ym<vz, aab> a = ym.a(ebx.d, aab::b, yk.h, aab::c, aab::new);
+   public static final zy.b<aab> b = zy.a("debug/game_event_listeners");
 
    @Override
-   public zt<aab> a() {
-      return aaj.d;
+   public zy.b<aab> a() {
+      return b;
    }
 
-   public void a(zx $$0) {
-      $$0.a(this);
+   public ebx b() {
+      return this.c;
    }
 
-   public long b() {
-      return this.b;
+   public int c() {
+      return this.d;
    }
 }

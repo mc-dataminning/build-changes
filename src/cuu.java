@@ -1,9 +1,10 @@
-public class cuu extends csv {
-   public cuu(int $$0, cpn $$1) {
-      super(cuc.w, dcg.d, dce.g, cuj.d, $$0, $$1);
+public class cuu extends cuv {
+   public cuu(djm $$0, cwl.a $$1) {
+      super($$0, $$1);
    }
 
-   public cuu(int $$0, cpn $$1, bst $$2, ctf $$3) {
-      super(cuc.w, dcg.d, dce.g, cuj.d, $$0, $$1, $$2, $$3);
+   @Override
+   protected boolean a(dag $$0, dwx $$1) {
+      return $$0.q().a($$0.a(), $$1, 26);
    }
 }

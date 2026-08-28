@@ -1,65 +1,28 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class cvu extends cxc {
-   private static final xk a = xk.c("item.minecraft.lodestone_compass");
-
-   public cvu(cxc.a $$0) {
+public class cvu extends cwl implements cxk {
+   public cvu(cwl.a $$0) {
       super($$0);
    }
 
-   @Nullable
-   public static jp a(dgz $$0) {
-      return $$0.G_().j() ? jp.a($$0.ai(), $$0.Z()) : null;
-   }
-
    @Override
-   public boolean c_(cxg $$0) {
-      return $$0.b(ku.ad) || super.c_($$0);
-   }
-
-   @Override
-   public void a(cxg $$0, dgz $$1, bvb $$2, int $$3, boolean $$4) {
-      if ($$1 instanceof arx $$5) {
-         daa $$6 = $$0.a(ku.ad);
-         if ($$6 != null) {
-            daa $$7 = $$6.a($$5);
-            if ($$7 != $$6) {
-               $$0.b(ku.ad, $$7);
-            }
-         }
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      cwp $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awa.jb, awb.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arc $$4) {
+         cpq.a(cqb::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
       }
+
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bsj.a;
    }
 
    @Override
-   public bta a(daz $$0) {
-      jh $$1 = $$0.a();
-      dgz $$2 = $$0.q();
-      if (!$$2.a_($$1).a(dkf.pS)) {
-         return super.a($$0);
-      } else {
-         $$2.a(null, $$1, awv.oL, aww.h, 1.0F, 1.0F);
-         cpo $$3 = $$0.o();
-         cxg $$4 = $$0.n();
-         boolean $$5 = !$$3.fV() && $$4.M() == 1;
-         daa $$6 = new daa(Optional.of(jp.a($$2.ai(), $$1)), true);
-         if ($$5) {
-            $$4.b(ku.ad, $$6);
-         } else {
-            cxg $$7 = $$4.a(cxk.rz, 1);
-            $$4.a(1, $$3);
-            $$7.b(ku.ad, $$6);
-            if (!$$3.gi().f($$7)) {
-               $$3.a($$7, false);
-            }
-         }
-
-         return bta.a;
-      }
+   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
+      return new cqb($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 
    @Override
-   public xk a(cxg $$0) {
-      return $$0.b(ku.ad) ? a : super.a($$0);
+   public cxk.a b() {
+      return cxk.a.a().a(cxk.a.a.c() * 0.5F).b(cxk.a.a.d() * 1.25F).a();
    }
 }

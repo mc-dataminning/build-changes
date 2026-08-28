@@ -1,19 +1,13 @@
 import com.mojang.serialization.MapCodec;
 
-public class erc extends erz {
-   public static final MapCodec<erc> a = MapCodec.unit(() -> erc.b);
-   public static final erc b = new erc();
+public interface erc<P extends erb> {
+   erc<era> a = a("always_true", era.a);
+   erc<eqx> b = a("linear_pos", eqx.a);
+   erc<eqm> c = a("axis_aligned_linear_pos", eqm.a);
 
-   private erc() {
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dxo $$0, bac $$1) {
-      return true;
-   }
-
-   @Override
-   protected esa<?> a() {
-      return esa.a;
+   static <P extends erb> erc<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.o, $$0, () -> $$1);
    }
 }

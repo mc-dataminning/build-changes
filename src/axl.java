@@ -1,11 +1,22 @@
-public class axl {
-   public static final aya<chs> a = a("default_spawns");
-   public static final aya<chs> b = a("full_moon_spawns");
+import java.util.function.Consumer;
 
-   private axl() {
+@FunctionalInterface
+public interface axl<T> {
+   axl.a accept(T var1);
+
+   static <T> axl<T> forConsumer(Consumer<T> $$0) {
+      return $$1 -> {
+         $$0.accept($$1);
+         return axl.a.a;
+      };
    }
 
-   private static aya<chs> a(String $$0) {
-      return aya.a(mb.l, alp.b($$0));
+   public static enum a {
+      a,
+      b;
+
+      public boolean a() {
+         return this == b;
+      }
    }
 }

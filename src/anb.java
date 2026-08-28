@@ -1,46 +1,136 @@
-import com.mojang.authlib.GameProfile;
+import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
 public class anb {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.ban.failed"));
+   private static final int a = 256;
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("commands.forceload.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("commands.forceload.query.failure", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wo.c("commands.forceload.added.failure"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wo.c("commands.forceload.removed.failure"));
 
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("ban").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("forceload").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     ey.a("add")
+                        .then(
+                           ((RequiredArgumentBuilder)ey.a("from", gu.a())
+                                 .executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "from"), gu.a($$0x, "from"), true)))
+                              .then(ey.a("to", gu.a()).executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "from"), gu.a($$0x, "to"), true)))
+                        )
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ey.a("remove")
+                        .then(
+                           ((RequiredArgumentBuilder)ey.a("from", gu.a())
+                                 .executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "from"), gu.a($$0x, "from"), false)))
+                              .then(ey.a("to", gu.a()).executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "from"), gu.a($$0x, "to"), false)))
+                        ))
+                     .then(ey.a("all").executes($$0x -> b((ex)$$0x.getSource())))
+               ))
             .then(
-               ((RequiredArgumentBuilder)ex.a("targets", fl.a()).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"), null)))
-                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets"), fn.a($$0x, "reason"))))
+               ((LiteralArgumentBuilder)ey.a("query").executes($$0x -> a((ex)$$0x.getSource())))
+                  .then(ey.a("pos", gu.a()).executes($$0x -> a((ex)$$0x.getSource(), gu.a($$0x, "pos"))))
             )
       );
    }
 
-   private static int a(ew $$0, Collection<GameProfile> $$1, @Nullable xk $$2) throws CommandSyntaxException {
-      awe $$3 = $$0.l().ag().f();
-      int $$4 = 0;
+   private static int a(ex $$0, aqo $$1) throws CommandSyntaxException {
+      dfo $$2 = $$1.a();
+      arc $$3 = $$0.e();
+      akt<dgi> $$4 = $$3.ai();
+      boolean $$5 = $$3.y().contains($$2.a());
+      if ($$5) {
+         $$0.a(() -> wo.a("commands.forceload.query.success", wo.a($$2), wo.a($$4.a())), false);
+         return 1;
+      } else {
+         throw c.create($$2, $$4.a());
+      }
+   }
 
-      for (GameProfile $$5 : $$1) {
-         if (!$$3.a($$5)) {
-            awf $$6 = new awf($$5, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-            $$3.a($$6);
-            $$4++;
-            $$0.a(() -> xk.a("commands.ban.success", xk.b($$5.getName()), $$6.d()), true);
-            ary $$7 = $$0.l().ag().a($$5.getId());
-            if ($$7 != null) {
-               $$7.f.a(xk.c("multiplayer.disconnect.banned"));
-            }
+   private static int a(ex $$0) {
+      arc $$1 = $$0.e();
+      akt<dgi> $$2 = $$1.ai();
+      LongSet $$3 = $$1.y();
+      int $$4 = $$3.size();
+      if ($$4 > 0) {
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dfo::new).map(dfo::toString).iterator());
+         if ($$4 == 1) {
+            $$0.a(() -> wo.a("commands.forceload.list.single", wo.a($$2.a()), $$5), false);
+         } else {
+            $$0.a(() -> wo.a("commands.forceload.list.multiple", $$4, wo.a($$2.a()), $$5), false);
          }
+      } else {
+         $$0.b(wo.a("commands.forceload.added.none", wo.a($$2.a())));
       }
 
-      if ($$4 == 0) {
-         throw a.create();
+      return $$4;
+   }
+
+   private static int b(ex $$0) {
+      arc $$1 = $$0.e();
+      akt<dgi> $$2 = $$1.ai();
+      LongSet $$3 = $$1.y();
+      $$3.forEach($$1x -> $$1.a(dfo.a($$1x), dfo.b($$1x), false));
+      $$0.a(() -> wo.a("commands.forceload.removed.all", wo.a($$2.a())), true);
+      return 0;
+   }
+
+   private static int a(ex $$0, aqo $$1, aqo $$2, boolean $$3) throws CommandSyntaxException {
+      int $$4 = Math.min($$1.c(), $$2.c());
+      int $$5 = Math.min($$1.d(), $$2.d());
+      int $$6 = Math.max($$1.c(), $$2.c());
+      int $$7 = Math.max($$1.d(), $$2.d());
+      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
+         int $$8 = kk.a($$4);
+         int $$9 = kk.a($$5);
+         int $$10 = kk.a($$6);
+         int $$11 = kk.a($$7);
+         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
+         if ($$12 > 256L) {
+            throw b.create(256, $$12);
+         } else {
+            arc $$13 = $$0.e();
+            akt<dgi> $$14 = $$13.ai();
+            dfo $$15 = null;
+            int $$16 = 0;
+
+            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
+               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
+                  boolean $$19 = $$13.a($$17, $$18, $$3);
+                  if ($$19) {
+                     $$16++;
+                     if ($$15 == null) {
+                        $$15 = new dfo($$17, $$18);
+                     }
+                  }
+               }
+            }
+
+            dfo $$20 = $$15;
+            int $$21 = $$16;
+            if ($$21 == 0) {
+               throw ($$3 ? d : e).create();
+            } else {
+               if ($$21 == 1) {
+                  $$0.a(() -> wo.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wo.a($$20), wo.a($$14.a())), true);
+               } else {
+                  dfo $$22 = new dfo($$8, $$9);
+                  dfo $$23 = new dfo($$10, $$11);
+                  $$0.a(() -> wo.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, wo.a($$14.a()), wo.a($$22), wo.a($$23)), true);
+               }
+
+               return $$21;
+            }
+         }
       } else {
-         return $$4;
+         throw gt.b.create();
       }
    }
 }

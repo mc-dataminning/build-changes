@@ -3,93 +3,97 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class fw<T> implements ArgumentType<alo<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xk.b("commands.place.feature.invalid", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xk.b("commands.place.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xk.b("commands.place.jigsaw.invalid", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xk.b("recipe.notFound", $$0));
-   private static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xk.b("advancement.advancementNotFound", $$0));
-   final alo<? extends kd<T>> g;
+public class fw<T> implements ArgumentType<jr.c<T>> {
+   private static final Collection<String> c = Arrays.asList("foo", "foo:bar", "012");
+   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wo.b("entity.not_summonable", $$0));
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("argument.resource.not_found", $$0, $$1));
+   public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
+      ($$0, $$1, $$2) -> wo.b("argument.resource.invalid_type", $$0, $$1, $$2)
+   );
+   final akt<? extends ke<T>> e;
+   private final jt<T> f;
 
-   public fw(alo<? extends kd<T>> $$0) {
-      this.g = $$0;
+   public fw(et $$0, akt<? extends ke<T>> $$1) {
+      this.e = $$1;
+      this.f = $$0.d($$1);
    }
 
-   public static <T> fw<T> a(alo<? extends kd<T>> $$0) {
-      return new fw<>($$0);
+   public static <T> fw<T> a(et $$0, akt<? extends ke<T>> $$1) {
+      return new fw<>($$0, $$1);
    }
 
-   private static <T> alo<T> a(CommandContext<ew> $$0, String $$1, alo<kd<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      alo<?> $$4 = (alo<?>)$$0.getArgument($$1, alo.class);
-      Optional<alo<T>> $$5 = $$4.d($$2);
-      return $$5.orElseThrow(() -> $$3.create($$4.a()));
-   }
-
-   private static <T> kd<T> a(CommandContext<ew> $$0, alo<? extends kd<T>> $$1) {
-      return ((ew)$$0.getSource()).l().ba().e($$1);
-   }
-
-   private static <T> jq.c<T> b(CommandContext<ew> $$0, String $$1, alo<kd<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      alo<T> $$4 = a($$0, $$1, $$2, $$3);
-      return a($$0, $$2).a($$4).orElseThrow(() -> $$3.create($$4.a()));
-   }
-
-   public static jq.c<egb<?, ?>> a(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mb.aL, b);
-   }
-
-   public static jq.c<eod> b(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mb.aU, c);
-   }
-
-   public static jq.c<epn> c(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, mb.aX, d);
-   }
-
-   public static dca<?> d(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      dcc $$2 = ((ew)$$0.getSource()).l().aI();
-      alo<dbv<?>> $$3 = a($$0, $$1, mb.bk, e);
-      return $$2.b($$3).orElseThrow(() -> e.create($$3.a()));
-   }
-
-   public static ah e(CommandContext<ew> $$0, String $$1) throws CommandSyntaxException {
-      alo<ag> $$2 = a($$0, $$1, mb.bj, f);
-      ah $$3 = ((ew)$$0.getSource()).l().aD().a($$2.a());
-      if ($$3 == null) {
-         throw f.create($$2.a());
-      } else {
+   public static <T> jr.c<T> a(CommandContext<ex> $$0, String $$1, akt<ke<T>> $$2) throws CommandSyntaxException {
+      jr.c<T> $$3 = (jr.c<T>)$$0.getArgument($$1, jr.c.class);
+      akt<?> $$4 = $$3.h();
+      if ($$4.c($$2)) {
          return $$3;
+      } else {
+         throw b.create($$4.a(), $$4.b(), $$2.a());
       }
    }
 
-   public alo<T> a(StringReader $$0) throws CommandSyntaxException {
-      alp $$1 = alp.a($$0);
-      return alo.a(this.g, $$1);
+   public static jr.c<bwj> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mc.c);
+   }
+
+   public static jr.c<efk<?, ?>> b(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mc.aL);
+   }
+
+   public static jr.c<enm> c(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mc.aU);
+   }
+
+   public static jr.c<bur<?>> d(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mc.z);
+   }
+
+   public static jr.c<bur<?>> e(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      jr.c<bur<?>> $$2 = a($$0, $$1, mc.z);
+      if (!$$2.a().c()) {
+         throw d.create($$2.h().a().toString());
+      } else {
+         return $$2;
+      }
+   }
+
+   public static jr.c<btn> f(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mc.W);
+   }
+
+   public static jr.c<dcz> g(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, mc.aO);
+   }
+
+   public jr.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      aku $$1 = aku.a($$0);
+      akt<T> $$2 = akt.a(this.e, $$1);
+      return this.f.a($$2).orElseThrow(() -> a.createWithContext($$0, $$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return $$0.getSource() instanceof fb $$2 ? $$2.a(this.g, fb.a.b, $$1, $$0) : $$1.buildFuture();
+      return fc.a(this.f.c_().map(akt::a), $$1);
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return c;
    }
 
-   public static class a<T> implements is<fw<T>, fw.a<T>.a> {
-      public void a(fw.a<T>.a $$0, wh $$1) {
+   public static class a<T> implements it<fw<T>, fw.a<T>.a> {
+      public void a(fw.a<T>.a $$0, vl $$1) {
          $$1.b($$0.b);
       }
 
-      public fw.a<T>.a a(wh $$0) {
+      public fw.a<T>.a a(vl $$0) {
          return new fw.a.a($$0.r());
       }
 
@@ -98,22 +102,22 @@ public class fw<T> implements ArgumentType<alo<T>> {
       }
 
       public fw.a<T>.a a(fw<T> $$0) {
-         return new fw.a.a($$0.g);
+         return new fw.a.a($$0.e);
       }
 
-      public final class a implements is.a<fw<T>> {
-         final alo<? extends kd<T>> b;
+      public final class a implements it.a<fw<T>> {
+         final akt<? extends ke<T>> b;
 
-         a(final alo<? extends kd<T>> $$1) {
+         a(final akt<? extends ke<T>> $$1) {
             this.b = $$1;
          }
 
-         public fw<T> a(es $$0) {
-            return new fw<>(this.b);
+         public fw<T> a(et $$0) {
+            return new fw<>($$0, this.b);
          }
 
          @Override
-         public is<fw<T>, ?> a() {
+         public it<fw<T>, ?> a() {
             return a.this;
          }
       }

@@ -1,42 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-
-public class qx {
-   public static void a(ra<epn> $$0) {
-      jr<epn> $$1 = $$0.a(mb.aX);
-      jq<epn> $$2 = $$1.b(rh.a);
-      rh.a(
-         $$0,
-         "bastion/mobs/piglin",
-         new epn(
-            $$2,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/mobs/melee_piglin"), 1),
-               Pair.of(epl.b("bastion/mobs/sword_piglin"), 4),
-               Pair.of(epl.b("bastion/mobs/crossbow_piglin"), 4),
-               Pair.of(epl.b("bastion/mobs/empty"), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0, "bastion/mobs/hoglin", new epn($$2, ImmutableList.of(Pair.of(epl.b("bastion/mobs/hoglin"), 2), Pair.of(epl.b("bastion/mobs/empty"), 1)), epn.a.b)
-      );
-      rh.a(
-         $$0, "bastion/blocks/gold", new epn($$2, ImmutableList.of(Pair.of(epl.b("bastion/blocks/air"), 3), Pair.of(epl.b("bastion/blocks/gold"), 1)), epn.a.b)
-      );
-      rh.a(
-         $$0,
-         "bastion/mobs/piglin_melee",
-         new epn(
-            $$2,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/mobs/melee_piglin_always"), 1),
-               Pair.of(epl.b("bastion/mobs/melee_piglin"), 5),
-               Pair.of(epl.b("bastion/mobs/sword_piglin"), 1)
-            ),
-            epn.a.b
-         )
-      );
+public abstract class qx {
+   public static void a(qe<dhk> $$0) {
+      js<emq> $$1 = $$0.a(mc.aT);
+      js<eew<?>> $$2 = $$0.a(mc.aK);
+      $$0.a(dhr.a, ra.i($$1, $$2));
+      $$0.a(dhr.b, ra.a($$1, $$2, false, false, false));
+      $$0.a(dhr.c, ra.a($$1, $$2, true, false, false));
+      $$0.a(dhr.d, ra.a($$1, $$2, false, true, false));
+      $$0.a(dhr.e, ra.a($$1, $$2, false, true, true));
+      $$0.a(dhr.f, ra.d($$1, $$2));
+      $$0.a(dhr.g, ra.g($$1, $$2));
+      $$0.a(dhr.h, ra.h($$1, $$2));
+      $$0.a(dhr.i, ra.b($$1, $$2, false, false, false));
+      $$0.a(dhr.j, ra.b($$1, $$2, false, false, true));
+      $$0.a(dhr.k, ra.b($$1, $$2, true, false, false));
+      $$0.a(dhr.l, ra.i($$1, $$2, false));
+      $$0.a(dhr.m, ra.i($$1, $$2, true));
+      $$0.a(dhr.n, ra.b($$1, $$2, true, true, false));
+      $$0.a(dhr.o, ra.a($$1, $$2, false));
+      $$0.a(dhr.p, ra.a($$1, $$2, true));
+      $$0.a(dhr.q, ra.h($$1, $$2, false));
+      $$0.a(dhr.r, ra.h($$1, $$2, true));
+      $$0.a(dhr.s, ra.a($$1, $$2, false, false));
+      $$0.a(dhr.t, ra.a($$1, $$2, false, true));
+      $$0.a(dhr.u, ra.b($$1, $$2, false));
+      $$0.a(dhr.v, ra.b($$1, $$2, false));
+      $$0.a(dhr.w, ra.b($$1, $$2, true));
+      $$0.a(dhr.x, ra.a($$1, $$2, true, false));
+      $$0.a(dhr.y, ra.b($$1, $$2));
+      $$0.a(dhr.z, ra.a($$1, $$2));
+      $$0.a(dhr.A, ra.c($$1, $$2));
+      $$0.a(dhr.B, ra.c($$1, $$2, false));
+      $$0.a(dhr.C, ra.c($$1, $$2, false));
+      $$0.a(dhr.D, ra.c($$1, $$2, true));
+      $$0.a(dhr.E, ra.k($$1, $$2, false));
+      $$0.a(dhr.F, ra.k($$1, $$2, true));
+      $$0.a(dhr.G, ra.n($$1, $$2));
+      $$0.a(dhr.H, ra.m($$1, $$2));
+      $$0.a(dhr.I, ra.j($$1, $$2));
+      $$0.a(dhr.J, ra.k($$1, $$2));
+      $$0.a(dhr.K, ra.l($$1, $$2));
+      $$0.a(dhr.L, ra.j($$1, $$2, false));
+      $$0.a(dhr.M, ra.j($$1, $$2, true));
+      $$0.a(dhr.N, ra.b($$1, $$2, false, false));
+      $$0.a(dhr.O, ra.b($$1, $$2, true, false));
+      $$0.a(dhr.P, ra.b($$1, $$2, false, true));
+      $$0.a(dhr.Q, ra.f($$1, $$2));
+      $$0.a(dhr.R, ra.f($$1, $$2, false));
+      $$0.a(dhr.S, ra.f($$1, $$2, true));
+      $$0.a(dhr.T, ra.e($$1, $$2, false));
+      $$0.a(dhr.U, ra.e($$1, $$2, true));
+      $$0.a(dhr.V, ra.d($$1, $$2, false));
+      $$0.a(dhr.W, ra.d($$1, $$2, true));
+      $$0.a(dhr.X, ra.g($$1, $$2, false));
+      $$0.a(dhr.Y, ra.g($$1, $$2, true));
+      $$0.a(dhr.Z, ra.e($$1, $$2));
+      $$0.a(dhr.aa, ra.p($$1, $$2));
+      $$0.a(dhr.ab, ra.o($$1, $$2));
+      $$0.a(dhr.ac, ra.q($$1, $$2));
+      $$0.a(dhr.ad, qz.a($$1, $$2));
+      $$0.a(dhr.ae, qz.e($$1, $$2));
+      $$0.a(dhr.af, qz.d($$1, $$2));
+      $$0.a(dhr.ag, qz.b($$1, $$2));
+      $$0.a(dhr.ah, qz.c($$1, $$2));
+      $$0.a(dhr.ai, qy.b($$1, $$2));
+      $$0.a(dhr.aj, qy.d($$1, $$2));
+      $$0.a(dhr.ak, qy.c($$1, $$2));
+      $$0.a(dhr.al, qy.e($$1, $$2));
+      $$0.a(dhr.am, qy.a($$1, $$2));
    }
 }

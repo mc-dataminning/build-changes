@@ -1,30 +1,93 @@
-import java.util.Optional;
+import java.util.UUID;
 
-public record agb(String b, String c, int d, Optional<xk> e, Optional<za> f) implements zr<acg> {
-   public static final zi<wv, agb> a = zi.a(zg.o, agb::b, zg.o, agb::e, zg.h, agb::f, xm.e, agb::g, zc.d, agb::h, agb::new);
+public class agb {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
 
-   @Override
-   public zt<agb> a() {
-      return agz.aP;
+   public static String a(buk $$0) {
+      if ($$0 instanceof cox) {
+         return $$0.al().getString();
+      } else {
+         wo $$1 = $$0.an();
+         return $$1 != null ? $$1.getString() : a($$0.cG());
+      }
    }
 
-   public void a(acg $$0) {
-      $$0.a(this);
+   public static String a(UUID $$0) {
+      azh $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   public String e() {
-      return this.c;
+   private static String a(azh $$0, String[] $$1) {
+      return af.a($$1, $$0);
    }
 
-   public int f() {
-      return this.d;
-   }
-
-   public Optional<xk> g() {
-      return this.e;
-   }
-
-   public Optional<za> h() {
-      return this.f;
+   private static azh b(UUID $$0) {
+      return azh.a((long)($$0.hashCode() >> 2));
    }
 }

@@ -1,74 +1,59 @@
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public class afx implements zr<acg> {
-   public static final zi<wv, afx> a = zr.a(afx::a, afx::new);
-   public static final int b = 0;
-   public static final int c = 1;
-   public static final int d = 2;
-   private final String e;
-   private final xk f;
-   private final fcz.a g;
-   private final Optional<za> h;
-   private final int i;
+public class afx implements yv<abk> {
+   public static final ym<vz, afx> a = ym.a(yk.h, afx::b, afx.a.b.a(yk.a()), afx::e, afx::new);
+   private final int b;
+   private final List<afx.a> c;
 
-   public afx(fco $$0, int $$1) {
-      this.e = $$0.b();
-      this.f = $$0.d();
-      this.g = $$0.h();
-      this.h = Optional.ofNullable($$0.f());
-      this.i = $$1;
-   }
+   public afx(int $$0, Collection<bwk> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
 
-   private afx(wv $$0) {
-      this.e = $$0.p();
-      this.i = $$0.readByte();
-      if (this.i != 0 && this.i != 2) {
-         this.f = xj.a;
-         this.g = fcz.a.a;
-         this.h = Optional.empty();
-      } else {
-         this.f = xm.d.decode($$0);
-         this.g = $$0.b(fcz.a.class);
-         this.h = zc.d.decode($$0);
+      for (bwk $$2 : $$1) {
+         this.c.add(new afx.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
 
-   private void a(wv $$0) {
-      $$0.a(this.e);
-      $$0.l(this.i);
-      if (this.i == 0 || this.i == 2) {
-         xm.d.encode($$0, this.f);
-         $$0.a(this.g);
-         zc.d.encode($$0, this.h);
-      }
+   private afx(int $$0, List<afx.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public zt<afx> a() {
-      return agz.aM;
+   public yx<afx> a() {
+      return agd.bg;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public String b() {
-      return this.e;
+   public int b() {
+      return this.b;
    }
 
-   public xk e() {
-      return this.f;
+   public List<afx.a> e() {
+      return this.c;
    }
 
-   public int f() {
-      return this.i;
-   }
+   public static record a(jr<bwj> c, double d, Collection<bwm> e) {
+      public static final ym<ByteBuf, bwm> a = ym.a(aku.b, bwm::b, yk.m, bwm::c, bwm.a.e, bwm::d, bwm::new);
+      public static final ym<vz, afx.a> b = ym.a(bwj.b, afx.a::a, yk.m, afx.a::b, a.a(yk.a(ArrayList::new)), afx.a::c, afx.a::new);
 
-   public fcz.a g() {
-      return this.g;
-   }
+      public jr<bwj> a() {
+         return this.c;
+      }
 
-   public Optional<za> h() {
-      return this.h;
+      public double b() {
+         return this.d;
+      }
+
+      public Collection<bwm> c() {
+         return this.e;
+      }
    }
 }

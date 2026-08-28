@@ -1,11 +1,45 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class ahc implements yv<agf> {
+   public static final ym<vl, ahc> a = yv.a(ahc::a, ahc::new);
+   private final ji b;
+   private final int c;
+   private final boolean d;
 
-public interface ahc extends ww {
-   Logger a = LogUtils.getLogger();
+   public ahc(ji $$0, int $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   private ahc(vl $$0) {
+      this.b = $$0.e();
+      this.c = $$0.l();
+      this.d = $$0.readBoolean();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+   }
 
    @Override
-   default void a(zr $$0, Exception $$1) throws z {
-      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
+   public yx<ahc> a() {
+      return agd.bG;
+   }
+
+   public void a(agf $$0) {
+      $$0.a(this);
+   }
+
+   public ji b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

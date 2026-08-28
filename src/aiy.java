@@ -1,29 +1,44 @@
-public class aiy implements zr<ahb> {
-   public static final zi<wh, aiy> a = zr.a(aiy::a, aiy::new);
-   private final bsz b;
+import javax.annotation.Nullable;
 
-   public aiy(bsz $$0) {
-      this.b = $$0;
+public record aiy(int b, @Nullable ajc c) implements yv<aix> {
+   public static final ym<vl, aiy> a = yv.a(aiy::c, aiy::a);
+   private static final int d = 1048576;
+
+   private static aiy a(vl $$0) {
+      int $$1 = $$0.l();
+      return new aiy($$1, a($$1, $$0));
    }
 
-   private aiy(wh $$0) {
-      this.b = $$0.b(bsz.class);
+   private static ajc a(int $$0, vl $$1) {
+      return b($$1);
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   private static ajc b(vl $$0) {
+      int $$1 = $$0.readableBytes();
+      if ($$1 >= 0 && $$1 <= 1048576) {
+         $$0.k($$1);
+         return aje.a;
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void c(vl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zt<aiy> a() {
-      return agz.ci;
+   public yx<aiy> a() {
+      return aiv.f;
    }
 
-   public void a(ahb $$0) {
+   public void a(aix $$0) {
       $$0.a(this);
    }
 
-   public bsz b() {
-      return this.b;
+   @Nullable
+   public ajc e() {
+      return this.c;
    }
 }

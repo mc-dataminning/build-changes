@@ -1,52 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Set;
 
 public class aox {
-   public static <T extends ey<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("commands.tag.remove.failed"));
+
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new aox.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new aox.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new aox.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("tag").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("targets", fk.b())
+                        .then(
+                           ey.a("add")
+                              .then(
+                                 ey.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        ey.a("remove")
+                           .then(
+                              ey.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> fc.b(a(fk.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((ex)$$0x.getSource(), fk.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(ey.a("list").executes($$0x -> a((ex)$$0x.getSource(), fk.b($$0x, "targets"))))
+            )
       );
    }
 
-   static class a<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         $$0.p().onFailure();
-         hy $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
+   private static Collection<String> a(Collection<? extends buk> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
+
+      for (buk $$2 : $$0) {
+         $$1.addAll($$2.as());
       }
+
+      return $$1;
    }
 
-   static class b<T extends ey<T>> implements hu.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hr $$3, hx<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(ih.a());
-            }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new ic.a<>($$6, $$5, $$3.d(), $$0, $$1));
+   private static int a(ex $$0, Collection<? extends buk> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (buk $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
          }
       }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wo.a("commands.tag.add.success.single", $$2, $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> wo.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   static class c<T extends ey<T>> implements ht.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hr $$2, hx<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hy $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+   private static int b(ex $$0, Collection<? extends buk> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (buk $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
       }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wo.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> wo.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(ex $$0, Collection<? extends buk> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (buk $$3 : $$1) {
+         $$2.addAll($$3.as());
+      }
+
+      if ($$1.size() == 1) {
+         buk $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> wo.a("commands.tag.list.single.empty", $$4.p_()), false);
+         } else {
+            $$0.a(() -> wo.a("commands.tag.list.single.success", $$4.p_(), $$2.size(), wr.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> wo.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> wo.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), wr.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

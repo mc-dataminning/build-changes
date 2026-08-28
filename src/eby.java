@@ -1,38 +1,14 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface eby<B, T extends B> {
-   static <B, T extends B> eby<B, T> a(final Class<T> $$0) {
-      return new eby<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public interface eby<T extends ebx> {
+   eby<ebp> a = a("block", new ebp.a());
+   eby<ebr> b = a("entity", new ebr.a());
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   MapCodec<T> a();
+
+   ym<? super vz, T> b();
+
+   static <S extends eby<T>, T extends ebx> S a(String $$0, S $$1) {
+      return ke.a(mb.t, $$0, $$1);
    }
-
-   static <B, T extends B> eby<B, T> b(final Class<T> $$0) {
-      return new eby<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
-
-   @Nullable
-   T a(B var1);
-
-   Class<? extends B> a();
 }

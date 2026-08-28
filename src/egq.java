@@ -1,80 +1,73 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class egq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<arx, egq.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<arx, egq.b>() {
-         public egq.b a(arx $$0) {
-            return new egq.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
-
-   public static void a(arx $$0) {
-      try {
-         ((egq.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+public class egq extends efy<eih> {
+   public egq(Codec<eih> $$0) {
+      super($$0);
    }
 
-   public static void a(arx $$0, egb<?, ?> $$1, Optional<enh> $$2) {
-      try {
-         ((egq.b)b.get($$0)).a().computeInt(new egq.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
+   @Override
+   public boolean a(ega<eih> $$0) {
+      dhg $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      eih $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
+         return false;
+      } else {
+         List<jn> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            ji.a $$6 = $$2.k();
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
+            for (jn $$7 : $$5) {
+               $$6.g($$2);
+               List<jn> $$8 = $$4.a($$3, $$7.g());
 
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ai().a().toString();
-               boolean $$3 = $$0.p().x();
-               kd<enh> $$4 = $$0.K_().e(mb.aT);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<alp>map(alo::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  dwx $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
+               }
             }
-         );
+
+            return false;
+         }
+      }
    }
 
-   static record a(egb<?, ?> a, Optional<enh> b) {
+   public static boolean a(dhg $$0, ji $$1, dwx $$2, eih $$3, azh $$4, List<jn> $$5) {
+      ji.a $$6 = $$1.k();
+
+      for (jn $$7 : $$5) {
+         dwx $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            dwx $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   static record b(Object2IntMap<egq.a> a, MutableInt b) {
+   private static boolean c(dwx $$0) {
+      return $$0.l() || $$0.a(djo.J);
    }
 }

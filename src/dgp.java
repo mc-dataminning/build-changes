@@ -1,19 +1,15 @@
-import java.util.Optional;
+public interface dgp extends dgl {
+   long al();
 
-public class dgp extends dgs {
-   private final bvb a;
-
-   public dgp(bvb $$0) {
-      this.a = $$0;
+   default float ar() {
+      return eas.j[this.G_().b(this.al())];
    }
 
-   @Override
-   public Optional<Float> a(dgr $$0, dge $$1, jh $$2, dxo $$3, etq $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   default float f(float $$0) {
+      return this.G_().a(this.al());
    }
 
-   @Override
-   public boolean a(dgr $$0, dge $$1, jh $$2, dxo $$3, float $$4) {
-      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   default int as() {
+      return this.G_().b(this.al());
    }
 }

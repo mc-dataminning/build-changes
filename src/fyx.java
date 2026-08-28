@@ -1,32 +1,57 @@
-import java.util.Map;
-import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public interface fyx {
-   Map<Optional<alo<ens>>, fyx> a = Map.of(Optional.of(ent.b), ($$0, $$1) -> {
-      dzk $$2 = $$1.e().a();
-      ke $$3 = $$1.a();
-      jr<dib> $$4 = $$3.e(mb.aI);
-      jr<eoj> $$5 = $$3.e(mb.aW);
-      jr<enh> $$6 = $$3.e(mb.aT);
-      return new fss($$0, $$1x -> $$0.l().a(a($$1x)), $$2 instanceof ede ? ((ede)$$2).h() : emg.a($$4, $$5, $$6));
-   }, Optional.of(ent.e), ($$0, $$1) -> new fsr($$0, $$1, $$1x -> $$0.l().a(a($$1x))));
+public class fyx extends fyq<ghi.a> {
+   private static final int C = 85;
+   private static final int D = 178;
+   private static final wo E = wo.c("gui.abuseReport.skin.title");
+   private fpk F;
+   private fos G;
 
-   ftr createEditScreen(fyq var1, fza var2);
-
-   static fza.a a(emg $$0) {
-      return ($$1, $$2) -> {
-         dzk $$3 = new ede($$0);
-         return $$2.a($$1, $$3);
-      };
+   private fyx(fuk $$0, ghh $$1, ghi.a $$2) {
+      super(E, $$0, $$1, $$2);
    }
 
-   private static fza.a a(jq<dib> $$0) {
-      return ($$1, $$2) -> {
-         kd<edo> $$3 = $$1.e(mb.aR);
-         jq<edo> $$4 = $$3.b(edo.c);
-         dif $$5 = new dim($$0);
-         dzk $$6 = new edm($$5, $$4);
-         return $$2.a($$1, $$6);
-      };
+   public fyx(fuk $$0, ghh $$1, UUID $$2, Supplier<hfk> $$3) {
+      this($$0, $$1, new ghi.a($$2, $$3, $$1.a().b()));
+   }
+
+   public fyx(fuk $$0, ghh $$1, ghi $$2) {
+      this($$0, $$1, new ghi.a($$2, $$1.a().b()));
+   }
+
+   @Override
+   protected void E() {
+      fsk $$0 = this.z.a(fsk.e().a(8));
+      $$0.c().e();
+      $$0.a(new fps(85, 120, this.m.aS(), this.A.e().a()));
+      fsk $$1 = $$0.a(fsk.d().a(8));
+      this.G = fos.a(c, $$0x -> this.m.a(new fyw(this, this.A.i(), ghg.b, $$0xx -> {
+            this.A.a($$0xx);
+            this.G();
+         }))).a(178).a();
+      $$1.a(fsc.a(this.p, this.G, b));
+      this.F = this.a(178, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.G();
+      });
+      $$1.a(fsc.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
+   }
+
+   @Override
+   protected void G() {
+      ghf $$0 = this.A.i();
+      if ($$0 != null) {
+         this.G.b($$0.b());
+      } else {
+         this.G.b(c);
+      }
+
+      super.G();
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
    }
 }

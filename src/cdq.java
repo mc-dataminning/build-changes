@@ -1,42 +1,16 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdq extends ccv {
-   private final bvz a;
-   private double b;
-   private double c;
-   private int d;
-
-   public cdq(bvz $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccv.a.a, ccv.a.b));
+public class cdq extends cdr {
+   public cdq(bvo $$0, double $$1) {
+      super($$0, $$1);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.a.dZ().i() < 0.02F;
-   }
-
-   @Override
-   public boolean c() {
-      return this.d >= 0;
-   }
-
-   @Override
-   public void d() {
-      double $$0 = (Math.PI * 2) * this.a.dZ().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.dZ().a(20);
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.d--;
-      this.a.H().a(this.a.dB() + this.b, this.a.dF(), this.a.dH() + this.c);
+   protected fba h() {
+      fba $$0 = this.b.g(0.0F);
+      int $$1 = 8;
+      fba $$2 = cgd.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
+      return $$2 != null ? $$2 : cfz.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
    }
 }

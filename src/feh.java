@@ -1,28 +1,22 @@
-import com.mojang.blaze3d.platform.GlStateManager;
+import java.io.File;
+import java.time.Duration;
 
-public class feh implements AutoCloseable {
-   private long a = GlStateManager._glFenceSync(37143, 0);
+public class feh {
+   private static final Duration a = Duration.ofSeconds(15L);
 
-   @Override
-   public void close() {
-      if (this.a != 0L) {
-         GlStateManager._glDeleteSync(this.a);
-         this.a = 0L;
-      }
-   }
-
-   public boolean a(long $$0) {
-      if (this.a == 0L) {
-         return true;
-      } else {
-         int $$1 = GlStateManager._glClientWaitSync(this.a, 0, $$0);
-         if ($$1 == 37147) {
-            return false;
-         } else if ($$1 == 37149) {
-            throw new IllegalStateException("Failed to complete gpu fence");
-         } else {
-            return true;
+   public static void a(File $$0, long $$1) {
+      Thread $$2 = new Thread(() -> {
+         try {
+            Thread.sleep(a);
+         } catch (InterruptedException var4) {
+            return;
          }
-      }
+
+         o $$3 = apw.a("Client shutdown", $$1);
+         flj.a($$0, $$3);
+      });
+      $$2.setDaemon(true);
+      $$2.setName("Client shutdown watchdog");
+      $$2.start();
    }
 }

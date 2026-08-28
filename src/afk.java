@@ -1,32 +1,45 @@
-import javax.annotation.Nullable;
-
-public class afk implements zr<acg> {
-   public static final zi<wh, afk> a = zr.a(afk::a, afk::new);
+public class afk implements yv<abk> {
+   public static final ym<vl, afk> a = yv.a(afk::a, afk::new);
    private final int b;
+   private final int c;
+   private final int d;
 
-   public afk(bvb $$0) {
-      this.b = $$0.ar();
+   public afk(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private afk(wh $$0) {
-      this.b = $$0.l();
+   private afk(vl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(wh $$0) {
-      $$0.c(this.b);
+   private void a(vl $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zt<afk> a() {
-      return agz.aA;
+   public yx<afk> a() {
+      return agd.aU;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bvb a(dgz $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

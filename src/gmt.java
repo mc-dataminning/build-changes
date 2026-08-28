@@ -1,154 +1,181 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
+import org.joml.Vector3f;
 
-public class gmt {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(gmt.class, new gmt.a())
-      .registerTypeAdapter(gnb.class, new gnb.a())
-      .registerTypeAdapter(gmz.class, new gmz.a())
-      .registerTypeAdapter(gng.b.class, new gng.c())
-      .registerTypeAdapter(gni.class, new gni.a())
-      .create();
-   private final Map<String, gmz> c;
-   @Nullable
-   private final gng.b d;
+public class gmt implements AutoCloseable {
+   private static final aku b = aku.b("textures/environment/sun.png");
+   private static final aku c = aku.b("textures/environment/moon_phases.png");
+   public static final aku a = aku.b("textures/environment/end_sky.png");
+   private static final float d = 512.0F;
+   private final ffx e = ffx.a(ffz.c.h, ffs.e, this::a);
+   private final ffx f = ffx.a(ffz.c.g, ffs.e, $$0 -> this.a($$0, 16.0F));
+   private final ffx g = ffx.a(ffz.c.g, ffs.e, $$0 -> this.a($$0, -16.0F));
+   private final ffx h = ffx.a(ffz.c.h, ffs.j, this::b);
 
-   public static gmt a(Reader $$0) {
-      return azk.a(a, $$0, gmt.class);
-   }
+   private void a(ffy $$0) {
+      azh $$1 = azh.a(10842L);
+      int $$2 = 1500;
+      float $$3 = 100.0F;
 
-   public static gmt a(JsonElement $$0) {
-      return (gmt)a.fromJson($$0, gmt.class);
-   }
-
-   public gmt(Map<String, gmz> $$0, @Nullable gng.b $$1) {
-      this.d = $$1;
-      this.c = $$0;
-   }
-
-   @VisibleForTesting
-   public gmz a(String $$0) {
-      gmz $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         throw new gmt.b();
-      } else {
-         return $$1;
+      for (int $$4 = 0; $$4 < 1500; $$4++) {
+         float $$5 = $$1.i() * 2.0F - 1.0F;
+         float $$6 = $$1.i() * 2.0F - 1.0F;
+         float $$7 = $$1.i() * 2.0F - 1.0F;
+         float $$8 = 0.15F + $$1.i() * 0.1F;
+         float $$9 = ayz.k($$5, $$6, $$7);
+         if (!($$9 <= 0.010000001F) && !($$9 >= 1.0F)) {
+            Vector3f $$10 = new Vector3f($$5, $$6, $$7).normalize(100.0F);
+            float $$11 = (float)($$1.j() * (float) Math.PI * 2.0);
+            Matrix3f $$12 = new Matrix3f().rotateTowards(new Vector3f($$10).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$11);
+            $$0.a(new Vector3f($$8, -$$8, 0.0F).mul($$12).add($$10));
+            $$0.a(new Vector3f($$8, $$8, 0.0F).mul($$12).add($$10));
+            $$0.a(new Vector3f(-$$8, $$8, 0.0F).mul($$12).add($$10));
+            $$0.a(new Vector3f(-$$8, -$$8, 0.0F).mul($$12).add($$10));
+         }
       }
+   }
+
+   private void a(ffy $$0, float $$1) {
+      float $$2 = Math.signum($$1) * 512.0F;
+      $$0.a(0.0F, $$1, 0.0F);
+
+      for (int $$3 = -180; $$3 <= 180; $$3 += 45) {
+         $$0.a($$2 * ayz.b((float)$$3 * (float) (Math.PI / 180.0)), $$1, 512.0F * ayz.a((float)$$3 * (float) (Math.PI / 180.0)));
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
+      this.f.a(gmh.G());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   public void a(ffu $$0) {
+      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
+      $$0.a();
+      $$0.a(0.0F, 12.0F, 0.0F);
+      this.g.a(gmh.G());
+      $$0.b();
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+   }
+
+   public void a(ffu $$0, glx.a $$1, float $$2, int $$3, float $$4, float $$5, glm $$6) {
+      $$0.a();
+      $$0.a(a.d.rotationDegrees(-90.0F));
+      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
+      this.a($$4, $$1, $$0);
+      this.a($$3, $$4, $$1, $$0);
+      $$1.b();
+      if ($$5 > 0.0F) {
+         this.a($$6, $$5, $$0);
+      }
+
+      $$0.b();
+   }
+
+   private void a(float $$0, glx $$1, ffu $$2) {
+      float $$3 = 30.0F;
+      float $$4 = 100.0F;
+      ffy $$5 = $$1.getBuffer(gmh.C(b));
+      int $$6 = axk.a($$0);
+      Matrix4f $$7 = $$2.c().a();
+      $$5.a($$7, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F).a($$6);
+      $$5.a($$7, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F).a($$6);
+      $$5.a($$7, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F).a($$6);
+      $$5.a($$7, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F).a($$6);
+   }
+
+   private void a(int $$0, float $$1, glx $$2, ffu $$3) {
+      float $$4 = 20.0F;
+      int $$5 = $$0 % 4;
+      int $$6 = $$0 / 4 % 2;
+      float $$7 = (float)($$5 + 0) / 4.0F;
+      float $$8 = (float)($$6 + 0) / 2.0F;
+      float $$9 = (float)($$5 + 1) / 4.0F;
+      float $$10 = (float)($$6 + 1) / 2.0F;
+      float $$11 = 100.0F;
+      ffy $$12 = $$2.getBuffer(gmh.C(c));
+      int $$13 = axk.a($$1);
+      Matrix4f $$14 = $$3.c().a();
+      $$12.a($$14, -20.0F, -100.0F, 20.0F).a($$9, $$10).a($$13);
+      $$12.a($$14, 20.0F, -100.0F, 20.0F).a($$7, $$10).a($$13);
+      $$12.a($$14, 20.0F, -100.0F, -20.0F).a($$7, $$8).a($$13);
+      $$12.a($$14, -20.0F, -100.0F, -20.0F).a($$9, $$8).a($$13);
+   }
+
+   private void a(glm $$0, float $$1, ffu $$2) {
+      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
+      $$3.pushMatrix();
+      $$3.mul($$2.c().a());
+      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
+      RenderSystem.setShaderFog(glm.a);
+      this.e.a(gmh.J());
+      RenderSystem.setShaderFog($$0);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.popMatrix();
+   }
+
+   public void a(ffu $$0, glx.a $$1, float $$2, int $$3) {
+      $$0.a();
+      $$0.a(a.b.rotationDegrees(90.0F));
+      float $$4 = ayz.a($$2) < 0.0F ? 180.0F : 0.0F;
+      $$0.a(a.f.rotationDegrees($$4));
+      $$0.a(a.f.rotationDegrees(90.0F));
+      Matrix4f $$5 = $$0.c().a();
+      ffy $$6 = $$1.getBuffer(gmh.I());
+      float $$7 = axk.i($$3);
+      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
+      int $$8 = axk.g($$3);
+      int $$9 = 16;
+
+      for (int $$10 = 0; $$10 <= 16; $$10++) {
+         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
+         float $$12 = ayz.a($$11);
+         float $$13 = ayz.b($$11);
+         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
+      }
+
+      $$0.b();
+   }
+
+   private void b(ffy $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         Matrix4f $$2 = new Matrix4f();
+         switch ($$1) {
+            case 1:
+               $$2.rotationX((float) (Math.PI / 2));
+               break;
+            case 2:
+               $$2.rotationX((float) (-Math.PI / 2));
+               break;
+            case 3:
+               $$2.rotationX((float) Math.PI);
+               break;
+            case 4:
+               $$2.rotationZ((float) (Math.PI / 2));
+               break;
+            case 5:
+               $$2.rotationZ((float) (-Math.PI / 2));
+         }
+
+         $$0.a($$2, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
+         $$0.a($$2, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
+         $$0.a($$2, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
+         $$0.a($$2, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
+      }
+   }
+
+   public void a() {
+      this.h.a(gmh.H());
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof gmt $$1) ? false : this.c.equals($$1.c) && Objects.equals(this.d, $$1.d);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return 31 * this.c.hashCode() + (this.d != null ? this.d.hashCode() : 0);
-   }
-
-   @VisibleForTesting
-   public Set<gmz> a() {
-      Set<gmz> $$0 = Sets.newHashSet(this.c.values());
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0;
-   }
-
-   @Nullable
-   public gng.b b() {
-      return this.d;
-   }
-
-   public Map<dxo, gna> a(dxp<dkd, dxo> $$0, String $$1) {
-      Map<dxo, gna> $$2 = new IdentityHashMap<>();
-      List<dxo> $$3 = $$0.a();
-      gng $$4;
-      if (this.d != null) {
-         $$4 = this.d.a($$0);
-         $$3.forEach($$2x -> $$2.put($$2x, $$4));
-      } else {
-         $$4 = null;
-      }
-
-      this.c.forEach(($$5x, $$6) -> {
-         try {
-            $$3.stream().filter(gnc.a($$0, $$5x)).forEach($$3xx -> {
-               heb $$4x = $$2.put($$3xx, $$6);
-               if ($$4x != null && $$4x != $$4) {
-                  String $$5xx = this.c.entrySet().stream().filter($$1xxx -> $$1xxx.getValue() == $$4).findFirst().get().getKey();
-                  throw new RuntimeException("Overlapping definition with: " + $$5xx);
-               }
-            });
-         } catch (Exception var9) {
-            b.warn("Exception loading blockstate definition: '{}' for variant: '{}': {}", new Object[]{$$1, $$5x, var9.getMessage()});
-         }
-      });
-      return $$2;
-   }
-
-   public static class a implements JsonDeserializer<gmt> {
-      public gmt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, gmz> $$4 = this.a($$2, $$3);
-         gng.b $$5 = this.b($$2, $$3);
-         if ($$4.isEmpty() && $$5 == null) {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         } else {
-            return new gmt($$4, $$5);
-         }
-      }
-
-      protected Map<String, gmz> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, gmz> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = azk.u($$1, "variants");
-
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (gmz)$$0.deserialize($$4.getValue(), gmz.class));
-            }
-         }
-
-         return $$2;
-      }
-
-      @Nullable
-      protected gng.b b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = azk.v($$1, "multipart");
-            return (gng.b)$$0.deserialize($$2, gng.b.class);
-         }
-      }
-   }
-
-   protected static class b extends RuntimeException {
+   public void close() {
+      this.e.close();
+      this.f.close();
+      this.g.close();
+      this.h.close();
    }
 }

@@ -1,23 +1,187 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.math.Fraction;
 
-public class fws extends fwv {
-   private static final xk a = xk.c("options.mouse_settings.title");
+public class fws implements fwu {
+   private static final aku a = aku.b("container/bundle/bundle_progressbar_border");
+   private static final aku b = aku.b("container/bundle/bundle_progressbar_fill");
+   private static final aku c = aku.b("container/bundle/bundle_progressbar_full");
+   private static final aku d = aku.b("container/bundle/slot_highlight_back");
+   private static final aku e = aku.b("container/bundle/slot_highlight_front");
+   private static final aku f = aku.b("container/bundle/slot_background");
+   private static final int g = 4;
+   private static final int h = 24;
+   private static final int i = 96;
+   private static final int j = 13;
+   private static final int k = 96;
+   private static final int l = 1;
+   private static final int m = 94;
+   private static final int n = 4;
+   private static final wo o = wo.c("item.minecraft.bundle.full");
+   private static final wo p = wo.c("item.minecraft.bundle.empty");
+   private static final wo q = wo.c("item.minecraft.bundle.empty.description");
+   private final cyt r;
 
-   private static fmc<?>[] a(fmd $$0) {
-      return new fmc[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
-   }
-
-   public fws(ftr $$0, fmd $$1) {
-      super($$0, $$1, a);
+   public fws(cyt $$0) {
+      this.r = $$0;
    }
 
    @Override
-   protected void l() {
-      if (ffg.a()) {
-         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(fmc[]::new));
+   public int a(fob $$0) {
+      return this.r.g() ? c($$0) : this.b();
+   }
+
+   @Override
+   public int b(fob $$0) {
+      return 96;
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   private static int c(fob $$0) {
+      return d($$0) + 13 + 8;
+   }
+
+   private int b() {
+      return this.c() + 13 + 8;
+   }
+
+   private int c() {
+      return this.d() * 24;
+   }
+
+   private int a(int $$0) {
+      return ($$0 - 96) / 2;
+   }
+
+   private int d() {
+      return ayz.e(this.e(), 4);
+   }
+
+   private int e() {
+      return Math.min(12, this.r.e());
+   }
+
+   @Override
+   public void a(fob $$0, int $$1, int $$2, int $$3, int $$4, fod $$5) {
+      if (this.r.g()) {
+         this.b($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         this.d.a(a(this.c));
+         this.c($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   private void b(fob $$0, int $$1, int $$2, int $$3, int $$4, fod $$5) {
+      b($$1 + this.a($$3), $$2, $$0, $$5);
+      this.a($$1 + this.a($$3), $$2 + d($$0) + 4, $$0, $$5);
+   }
+
+   private void c(fob $$0, int $$1, int $$2, int $$3, int $$4, fod $$5) {
+      boolean $$6 = this.r.e() > 12;
+      List<cwp> $$7 = this.b(this.r.a());
+      int $$8 = $$1 + this.a($$3) + 96;
+      int $$9 = $$2 + this.d() * 24;
+      int $$10 = 1;
+
+      for (int $$11 = 1; $$11 <= this.d(); $$11++) {
+         for (int $$12 = 1; $$12 <= 4; $$12++) {
+            int $$13 = $$8 - $$12 * 24;
+            int $$14 = $$9 - $$11 * 24;
+            if (a($$6, $$12, $$11)) {
+               a($$13, $$14, this.a($$7), $$0, $$5);
+            } else if (a($$7, $$10)) {
+               this.a($$10, $$13, $$14, $$7, $$10, $$0, $$5);
+               $$10++;
+            }
+         }
+      }
+
+      this.a($$0, $$5, $$1, $$2, $$3);
+      this.a($$1 + this.a($$3), $$2 + this.c() + 4, $$0, $$5);
+   }
+
+   private List<cwp> b(int $$0) {
+      int $$1 = Math.min(this.r.e(), $$0);
+      return this.r.b().toList().subList(0, $$1);
+   }
+
+   private static boolean a(boolean $$0, int $$1, int $$2) {
+      return $$0 && $$1 * $$2 == 1;
+   }
+
+   private static boolean a(List<cwp> $$0, int $$1) {
+      return $$0.size() >= $$1;
+   }
+
+   private int a(List<cwp> $$0) {
+      return this.r.b().skip((long)$$0.size()).mapToInt(cwp::M).sum();
+   }
+
+   private void a(int $$0, int $$1, int $$2, List<cwp> $$3, int $$4, fob $$5, fod $$6) {
+      int $$7 = $$3.size() - $$0;
+      boolean $$8 = $$7 == this.r.h();
+      cwp $$9 = $$3.get($$7);
+      if ($$8) {
+         $$6.a(gmh::H, d, $$1, $$2, 24, 24);
+      } else {
+         $$6.a(gmh::H, f, $$1, $$2, 24, 24);
+      }
+
+      $$6.a($$9, $$1 + 4, $$2 + 4, $$4);
+      $$6.a($$5, $$9, $$1 + 4, $$2 + 4);
+      if ($$8) {
+         $$6.a(gmh::F, e, $$1, $$2, 24, 24);
+      }
+   }
+
+   private static void a(int $$0, int $$1, int $$2, fob $$3, fod $$4) {
+      $$4.a($$3, "+" + $$2, $$0 + 12, $$1 + 10, 16777215);
+   }
+
+   private void a(fob $$0, fod $$1, int $$2, int $$3, int $$4) {
+      if (this.r.i()) {
+         cwp $$5 = this.r.a(this.r.h());
+         wo $$6 = $$5.B();
+         int $$7 = $$0.a($$6.g());
+         int $$8 = $$2 + $$4 / 2 - 12;
+         $$1.a($$0, $$6, $$8 - $$7 / 2, $$3 - 15, $$5.a(kv.G));
+      }
+   }
+
+   private void a(int $$0, int $$1, fob $$2, fod $$3) {
+      $$3.a(gmh::H, this.g(), $$0 + 1, $$1, this.f(), 13);
+      $$3.a(gmh::H, a, $$0, $$1, 96, 13);
+      wo $$4 = this.h();
+      if ($$4 != null) {
+         $$3.a($$2, $$4, $$0 + 48, $$1 + 3, 16777215);
+      }
+   }
+
+   private static void b(int $$0, int $$1, fob $$2, fod $$3) {
+      $$3.a($$2, q, $$0, $$1, 96, 11184810);
+   }
+
+   private static int d(fob $$0) {
+      return $$0.c(q, 96).size() * 9;
+   }
+
+   private int f() {
+      return ayz.a(ayz.a(this.r.f(), 94), 0, 94);
+   }
+
+   private aku g() {
+      return this.r.f().compareTo(Fraction.ONE) >= 0 ? c : b;
+   }
+
+   @Nullable
+   private wo h() {
+      if (this.r.g()) {
+         return p;
+      } else {
+         return this.r.f().compareTo(Fraction.ONE) >= 0 ? o : null;
       }
    }
 }

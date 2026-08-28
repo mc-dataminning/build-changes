@@ -1,22 +1,14 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pl {
-   public static CompletableFuture<kg.g> a(CompletableFuture<js.a> $$0, kg $$1) {
-      return $$0.thenApply($$1x -> {
-         ke.b $$2 = ke.a(ma.aC);
-         ji.a $$3 = new ji.a();
-         alk.a.forEach($$1xx -> $$1xx.a($$3::a));
-         kg.g $$4 = $$1.a($$2, $$1x, $$3);
-         js.a $$5 = $$4.a();
-         Optional<? extends js.b<dib>> $$6 = $$5.a(mb.aI);
-         Optional<? extends js.b<enh>> $$7 = $$5.a(mb.aT);
-         if ($$6.isPresent() || $$7.isPresent()) {
-            pn.a((jr<enh>)DataFixUtils.orElseGet($$7, () -> $$1x.d(mb.aT)), (js<dib>)DataFixUtils.orElseGet($$6, () -> $$1x.d(mb.aI)));
-         }
+public class pl extends pn<cgn> {
+   public pl(mk $$0, CompletableFuture<jt.a> $$1) {
+      super($$0, mc.aa, $$1);
+   }
 
-         return $$4;
-      });
+   @Override
+   protected void a(jt.a $$0) {
+      this.b(axa.a).a(cgo.a, cgo.b, cgo.c, cgo.d, cgo.e, cgo.f, cgo.g, cgo.h, cgo.i, cgo.j, cgo.k, cgo.l, cgo.m);
+      this.b(axa.b).b(axa.a).a(cgo.n, cgo.o);
+      this.b(axa.c).a(cgo.p, cgo.q);
    }
 }

@@ -1,101 +1,119 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.UUID;
+import com.google.common.base.Suppliers;
+import com.mojang.authlib.GameProfile;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public abstract class ggk {
-   protected final UUID a;
-   protected final Instant b;
-   protected final UUID c;
-   protected String d = "";
+public class ggk {
+   private final GameProfile a;
+   private final Supplier<hfk> b;
+   private dgf c = dgf.e;
+   private int d;
    @Nullable
-   protected ggm e;
-   protected boolean f;
+   private wo e;
+   private boolean f = true;
+   @Nullable
+   private xf g;
+   private xk h;
+   private int i;
 
-   public ggk(UUID $$0, Instant $$1, UUID $$2) {
+   public ggk(GameProfile $$0, boolean $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+      this.h = c($$1);
+      Supplier<Supplier<hfk>> $$2 = Suppliers.memoize(() -> a($$0));
+      this.b = () -> $$2.get().get();
    }
 
-   public boolean a(UUID $$0) {
-      return $$0.equals(this.c);
+   private static Supplier<hfk> a(GameProfile $$0) {
+      flj $$1 = flj.Q();
+      hfl $$2 = $$1.an();
+      CompletableFuture<hfk> $$3 = $$2.c($$0);
+      boolean $$4 = !$$1.b($$0.getId());
+      hfk $$5 = hfb.a($$0);
+      return () -> {
+         hfk $$3x = $$3.getNow($$5);
+         return $$4 && !$$3x.f() ? $$5 : $$3x;
+      };
    }
 
-   public abstract ggk b();
-
-   public abstract ftr a(ftr var1, ggo var2);
-
-   public abstract static class a<R extends ggk> {
-      protected final R a;
-      protected final AbuseReportLimits b;
-
-      protected a(R $$0, AbuseReportLimits $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public R e() {
-         return this.a;
-      }
-
-      public UUID f() {
-         return this.a.c;
-      }
-
-      public String g() {
-         return this.a.d;
-      }
-
-      public boolean h() {
-         return this.e().f;
-      }
-
-      public void a(String $$0) {
-         this.a.d = $$0;
-      }
-
-      @Nullable
-      public ggm i() {
-         return this.a.e;
-      }
-
-      public void a(ggm $$0) {
-         this.a.e = $$0;
-      }
-
-      public void a(boolean $$0) {
-         this.a.f = $$0;
-      }
-
-      public abstract boolean b();
-
-      @Nullable
-      public ggk.b c() {
-         return !this.e().f ? ggk.b.e : null;
-      }
-
-      public abstract Either<ggk.c, ggk.b> a(ggo var1);
+   public GameProfile a() {
+      return this.a;
    }
 
-   public static record b(xk f) {
-      public static final ggk.b a = new ggk.b(xk.c("gui.abuseReport.send.no_reason"));
-      public static final ggk.b b = new ggk.b(xk.c("gui.chatReport.send.no_reported_messages"));
-      public static final ggk.b c = new ggk.b(xk.c("gui.chatReport.send.too_many_messages"));
-      public static final ggk.b d = new ggk.b(xk.c("gui.abuseReport.send.comment_too_long"));
-      public static final ggk.b e = new ggk.b(xk.c("gui.abuseReport.send.not_attested"));
-
-      public fpk a() {
-         return fpk.a(this.f);
-      }
-
-      public xk b() {
-         return this.f;
-      }
+   @Nullable
+   public xf b() {
+      return this.g;
    }
 
-   public static record c(UUID a, ggn b, AbuseReport c) {
+   public xk c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.g != null;
+   }
+
+   protected void a(xf $$0) {
+      this.g = $$0;
+      this.h = $$0.a(cpa.b);
+   }
+
+   protected void a(boolean $$0) {
+      this.g = null;
+      this.h = c($$0);
+   }
+
+   private static xk c(boolean $$0) {
+      return $$0 ? xk.c : xk.b;
+   }
+
+   public dgf e() {
+      return this.c;
+   }
+
+   protected void a(dgf $$0) {
+      this.c = $$0;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   protected void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public hfk g() {
+      return this.b.get();
+   }
+
+   @Nullable
+   public fca h() {
+      return flj.Q().s.R().e(this.a().getName());
+   }
+
+   public void a(@Nullable wo $$0) {
+      this.e = $$0;
+   }
+
+   @Nullable
+   public wo i() {
+      return this.e;
+   }
+
+   public void b(boolean $$0) {
+      this.f = $$0;
+   }
+
+   public boolean j() {
+      return this.f;
+   }
+
+   public void b(int $$0) {
+      this.i = $$0;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

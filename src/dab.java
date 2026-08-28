@@ -1,44 +1,31 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
 
-public record dab(Map<String, dab.a> c) {
-   public static final dab a = new dab(Map.of());
-   public static final Codec<dab> b = Codec.unboundedMap(Codec.STRING, dab.a.a).xmap(dab::new, dab::a);
+public interface dab {
+   Codec<dab> d = mb.ay.q().dispatch(dab::a, dab.a::a);
+   ym<vz, dab> e = yk.a(mc.aE).b(dab::a, dab.a::b);
 
-   public dab a(String $$0, dab.a $$1) {
-      return new dab(ae.a(this.c, $$0, $$1));
-   }
+   dab.a<? extends dab> a();
 
-   public Map<String, dab.a> a() {
-      return this.c;
-   }
+   boolean a(dgi var1, cwp var2, bvg var3);
 
-   public static record a(jq<evf> b, double c, double d, float e) {
-      public static final Codec<dab.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  evf.b.fieldOf("type").forGetter(dab.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(dab.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(dab.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(dab.a::d)
-               )
-               .apply($$0, dab.a::new)
-      );
+   public static record a<T extends dab>(MapCodec<T> f, ym<vz, T> g) {
+      public static final dab.a<czz> a = a("apply_effects", czz.a, czz.b);
+      public static final dab.a<dad> b = a("remove_effects", dad.a, dad.b);
+      public static final dab.a<daa> c = a("clear_all_effects", daa.b, daa.c);
+      public static final dab.a<dae> d = a("teleport_randomly", dae.a, dae.b);
+      public static final dab.a<dac> e = a("play_sound", dac.a, dac.b);
 
-      public jq<evf> a() {
-         return this.b;
+      private static <T extends dab> dab.a<T> a(String $$0, MapCodec<T> $$1, ym<vz, T> $$2) {
+         return ke.a(mb.ay, $$0, new dab.a<>($$1, $$2));
       }
 
-      public double b() {
-         return this.c;
+      public MapCodec<T> a() {
+         return this.f;
       }
 
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
+      public ym<vz, T> b() {
+         return this.g;
       }
    }
 }

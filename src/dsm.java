@@ -1,29 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dsm extends dmm implements dkg {
-   public static final MapCodec<dsm> c = b(dsm::new);
+public class dsm extends diy {
+   public static final MapCodec<dsm> a = b(dsm::new);
+   public static final dxz<dwk> b = dxn.bC;
+   public static final dxu<jn> c = dnk.aF;
+   public static final dxo d = dxn.bD;
 
    @Override
    public MapCodec<dsm> a() {
-      return c;
+      return a;
    }
 
-   public dsm(dxn.d $$0) {
+   public dsm(dww.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, jn.c).b(b, dwk.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
-      return true;
+   public bsj a(cwp $$0, dwx $$1, dgi $$2, ji $$3, cox $$4, bsi $$5, faw $$6) {
+      if (!$$0.f() && $$1.c(b) == dwk.b) {
+         if ($$2 instanceof arc $$7) {
+            if (!($$7.c_($$3) instanceof dwf $$8)) {
+               return bsj.f;
+            }
+
+            dwf.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
+         }
+
+         return bsj.b;
+      } else {
+         return bsj.f;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dwf($$0, $$1);
    }
 
    @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c, b, d);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return $$0 instanceof arc $$3
+         ? a($$2, dub.S, ($$1x, $$2x, $$3x, $$4) -> dwf.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
+         : a($$2, dub.S, ($$0x, $$1x, $$2x, $$3x) -> dwf.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
    }
 
    @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      a($$0, $$2, new cxg(this));
+   public dwx a(dag $$0) {
+      return this.m().b(c, $$0.g().g());
+   }
+
+   @Override
+   public dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dpx a_(dwx $$0) {
+      return dpx.c;
    }
 }

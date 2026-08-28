@@ -1,43 +1,122 @@
-import java.util.function.Supplier;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cgi<U extends cgh<?>> {
-   public static final cgi<cfr> a = a("dummy", cfr::new);
-   public static final cgi<cfz> b = a("nearest_items", cfz::new);
-   public static final cgi<cga<bvx>> c = a("nearest_living_entities", cga::new);
-   public static final cgi<cge> d = a("nearest_players", cge::new);
-   public static final cgi<cfy> e = a("nearest_bed", cfy::new);
-   public static final cgi<cfv> f = a("hurt_by", cfv::new);
-   public static final cgi<cgl> g = a("villager_hostiles", cgl::new);
-   public static final cgi<cgk> h = a("villager_babies", cgk::new);
-   public static final cgi<cgf> i = a("secondary_pois", cgf::new);
-   public static final cgi<cft> j = a("golem_detected", cft::new);
-   public static final cgi<cfx<cix>> k = a("armadillo_scare_detected", () -> new cfx<>(5, cix::j, cix::gA, cfb.G, 80));
-   public static final cgi<cgd> l = a("piglin_specific_sensor", cgd::new);
-   public static final cgi<cgc> m = a("piglin_brute_specific_sensor", cgc::new);
-   public static final cgi<cfu> n = a("hoglin_specific_sensor", cfu::new);
-   public static final cgi<cfo> o = a("nearest_adult", cfo::new);
-   public static final cgi<cfp> p = a("axolotl_attackables", cfp::new);
-   public static final cgi<cgj> q = a("axolotl_temptations", () -> new cgj(cjb.a()));
-   public static final cgi<cgj> r = a("goat_temptations", () -> new cgj(cjp.a()));
-   public static final cgi<cgj> s = a("frog_temptations", () -> new cgj(cjj.a()));
-   public static final cgi<cgj> t = a("camel_temptations", () -> new cgj(cjg.b()));
-   public static final cgi<cgj> u = a("armadillo_temptations", () -> new cgj(ciy.b()));
-   public static final cgi<cfs> v = a("frog_attackables", cfs::new);
-   public static final cgi<cfw> w = a("is_in_water", cfw::new);
-   public static final cgi<cgm> x = a("warden_entity_sensor", cgm::new);
-   public static final cgi<cgj> y = a("sniffer_temptations", () -> new cgj(ckg.a()));
-   public static final cgi<cfq> z = a("breeze_attack_entity_sensor", cfq::new);
-   private final Supplier<U> A;
+public class cgi implements dfu {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private cgi.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   private cgi(Supplier<U> $$0) {
-      this.A = $$0;
+   public cgi() {
+      this.c = cgi.a.c;
    }
 
-   public U a() {
-      return this.A.get();
+   @Override
+   public int a(arc $$0, boolean $$1, boolean $$2) {
+      if (!$$0.V() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.A.a(10) == 0 ? cgi.a.b : cgi.a.c;
+         }
+
+         if (this.c == cgi.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
+
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = cgi.a.c;
+               }
+
+               return 1;
+            }
+         }
+      } else {
+         this.c = cgi.a.c;
+         this.b = false;
+         return 0;
+      }
    }
 
-   private static <U extends cgh<?>> cgi<U> a(String $$0, Supplier<U> $$1) {
-      return kd.a(ma.A, alp.b($$0), new cgi<>($$1));
+   private boolean a(arc $$0) {
+      for (cox $$1 : $$0.z()) {
+         if (!$$1.Z_()) {
+            ji $$2 = $$1.dw();
+            if ($$0.c($$2) && !$$0.t($$2).a(awo.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + ayz.d(ayz.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + ayz.d(ayz.a($$4) * 32.0F);
+                  if (this.a($$0, new ji(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private void b(arc $$0) {
+      fba $$1 = this.a($$0, new ji(this.f, this.g, this.h));
+      if ($$1 != null) {
+         cmq $$2;
+         try {
+            $$2 = new cmq($$0);
+            $$2.a($$0, $$0.d_($$2.dw()), buq.h, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
+   }
+
+   @Nullable
+   private fba a(arc $$0, ji $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.A.a(16) - 8;
+         int $$4 = $$1.w() + $$0.A.a(16) - 8;
+         int $$5 = $$0.a(ecs.a.b, $$3, $$4);
+         ji $$6 = new ji($$3, $$5, $$4);
+         if ($$0.c($$6) && clx.b(bur.bO, $$0, buq.h, $$6, $$0.A)) {
+            return fba.c($$6);
+         }
+      }
+
+      return null;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

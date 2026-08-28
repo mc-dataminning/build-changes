@@ -1,100 +1,177 @@
-public class cqv extends cpw {
-   private static final aks<Boolean> d = akw.a(cqv.class, aku.k);
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public cqv(bvi<? extends cqv> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
+public abstract class cqv extends cqu implements buz, crb {
+   private static final int h = 27;
+   private ka<cwp> i = ka.a(27, cwp.j);
+   @Nullable
+   private akt<evw> j;
+   private long k;
 
-   public cqv(dgz $$0, bvx $$1, fbr $$2) {
-      super(bvi.bL, $$1, $$2, $$0);
-   }
-
-   @Override
-   protected float t() {
-      return this.v() ? 0.73F : super.t();
-   }
-
-   @Override
-   public boolean bY() {
-      return false;
+   public cqv(bur<? extends cqv> $$0, dgi $$1, Supplier<cwl> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public float a(dgr $$0, dge $$1, jh $$2, dxo $$3, etq $$4, float $$5) {
-      return this.v() && clf.c($$3) ? Math.min(0.8F, $$5) : $$5;
+   protected float s() {
+      return 0.15F;
    }
 
    @Override
-   protected void a(fbo $$0) {
-      super.a($$0);
-      if (this.dW() instanceof arx $$1) {
-         bvb var8 = $$0.a();
-         boolean $$7;
-         if (this.p() instanceof bvx $$5) {
-            btr $$6 = this.dX().a(this, $$5);
-            $$7 = var8.a($$1, $$6, 8.0F);
-            if ($$7) {
-               if (var8.bL()) {
-                  dds.a($$1, var8, $$6);
-               } else {
-                  $$5.c(5.0F);
-               }
-            }
-         } else {
-            $$7 = var8.a($$1, this.dX().q(), 5.0F);
-         }
-
-         if ($$7 && var8 instanceof bvx $$9) {
-            int $$10 = 0;
-            if (this.dW().am() == bsx.c) {
-               $$10 = 10;
-            } else if (this.dW().am() == bsx.d) {
-               $$10 = 40;
-            }
-
-            if ($$10 > 0) {
-               $$9.b(new bug(bui.t, 20 * $$10, 1), this.E());
-            }
-         }
-      }
+   protected int t() {
+      return 1;
    }
 
    @Override
-   protected void a(fbp $$0) {
-      super.a($$0);
-      if (!this.dW().C) {
-         this.dW().a(this, this.dB(), this.dD(), this.dH(), 1.0F, false, dgz.a.c);
-         this.at();
-      }
-   }
-
-   @Override
-   protected void a(akw.a $$0) {
-      $$0.a(d, false);
-   }
-
-   public boolean v() {
-      return this.al.a(d);
-   }
-
-   public void a(boolean $$0) {
-      this.al.a(d, $$0);
-   }
-
-   @Override
-   protected boolean m() {
-      return false;
-   }
-
-   @Override
-   public void b(um $$0) {
+   protected void b(tq $$0) {
       super.b($$0);
-      $$0.a("dangerous", this.v());
+      this.a($$0, this.dY());
    }
 
    @Override
-   public void a(um $$0) {
+   protected void a(tq $$0) {
       super.a($$0);
-      this.a($$0.q("dangerous"));
+      this.b($$0, this.dY());
+   }
+
+   @Override
+   public void a(arc $$0, bta $$1) {
+      this.a($$0, this.u());
+      this.a($$1, $$0, this);
+   }
+
+   @Override
+   public void a(buk.d $$0) {
+      if (!this.dW().C && $$0.a()) {
+         bsf.a(this.dW(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public bsj a(cox $$0, bsi $$1) {
+      if (!$$0.fY()) {
+         bsj $$2 = super.a($$0, $$1);
+         if ($$2 != bsj.e) {
+            return $$2;
+         }
+      }
+
+      if (this.r($$0) && !$$0.fY()) {
+         return bsj.e;
+      } else {
+         bsj $$3 = this.b_($$0);
+         if ($$3.a() && $$0.dW() instanceof arc $$4) {
+            this.a(ebt.k, $$0);
+            cnm.a($$4, $$0, true);
+         }
+
+         return $$3;
+      }
+   }
+
+   @Override
+   public void b(cox $$0) {
+      $$0.a(this);
+      if ($$0.dW() instanceof arc $$1) {
+         this.a(ebt.k, $$0);
+         cnm.a($$1, $$0, true);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.f();
+   }
+
+   @Override
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   public cwp a(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public cwp a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cwp b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cwp $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bvy a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cox $$0) {
+      return this.g($$0);
+   }
+
+   @Nullable
+   @Override
+   public csc createMenu(int $$0, cow $$1, cox $$2) {
+      if (this.j != null && $$2.Z_()) {
+         return null;
+      } else {
+         this.e($$1.k);
+         return csl.a($$0, $$1, this);
+      }
+   }
+
+   public void e(@Nullable cox $$0) {
+      this.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public akt<evw> v() {
+      return this.j;
+   }
+
+   @Override
+   public void a(@Nullable akt<evw> $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   public long x() {
+      return this.k;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public ka<cwp> B() {
+      return this.i;
+   }
+
+   @Override
+   public void C() {
+      this.i = ka.a(this.b(), cwp.j);
+   }
+
+   @Override
+   public void c(cox $$0) {
+      this.dW().a(ebt.j, this.du(), ebt.a.a($$0));
    }
 }

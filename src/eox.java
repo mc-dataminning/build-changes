@@ -1,68 +1,25 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class eox extends epa {
-   public static final MapCodec<eox> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eox::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final ju<dib> f;
+record eox(akt<eow> c, akt<eow> d) implements eoy {
+   static MapCodec<eox> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akt.a(mc.aX).fieldOf("alias").forGetter(eox::c), akt.a(mc.aX).fieldOf("target").forGetter(eox::d)).apply($$0, eox::new)
+   );
 
-   private static P9<Mu<eox>, kl, epa.c, Float, Integer, Optional<epa.a>, Integer, Integer, Integer, ju<dib>> b(Instance<eox> $$0) {
-      P5<Mu<eox>, kl, epa.c, Float, Integer, Optional<epa.a>> $$1 = a($$0);
-      P4<Mu<eox>, Integer, Integer, Integer, ju<dib>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(eox::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(eox::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(eox::c),
-         kf.a(mb.aI).fieldOf("preferred_biomes").forGetter(eox::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
-   }
-
-   public eox(kl $$0, epa.c $$1, float $$2, int $$3, Optional<epa.a> $$4, int $$5, int $$6, int $$7, ju<dib> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
-   }
-
-   public eox(int $$0, int $$1, int $$2, ju<dib> $$3) {
-      this(kl.h, epa.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public ju<dib> d() {
-      return this.f;
+   @Override
+   public void a(azh $$0, BiConsumer<akt<eow>, akt<eow>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
    @Override
-   protected boolean a(dzl $$0, int $$1, int $$2) {
-      List<dgf> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new dgf($$1, $$2));
+   public Stream<akt<eow>> a() {
+      return Stream.of(this.d);
    }
 
    @Override
-   public epb<?> e() {
-      return epb.b;
+   public MapCodec<eox> b() {
+      return a;
    }
 }

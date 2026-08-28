@@ -1,136 +1,127 @@
-import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Collection;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class anw {
-   private static final int a = 256;
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("commands.forceload.toobig", $$0, $$1));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("commands.forceload.query.failure", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xk.c("commands.forceload.added.failure"));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xk.c("commands.forceload.removed.failure"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.playsound.failed"));
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("forceload").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ex.a("add")
-                        .then(
-                           ((RequiredArgumentBuilder)ex.a("from", gt.a())
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "from"), true)))
-                              .then(ex.a("to", gt.a()).executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "to"), true)))
-                        )
-                  ))
+   public static void a(CommandDispatcher<ex> $$0) {
+      RequiredArgumentBuilder<ex, aku> $$1 = (RequiredArgumentBuilder<ex, aku>)ey.a("sound", fy.a())
+         .suggests(ix.b)
+         .executes($$0x -> a((ex)$$0x.getSource(), a(((ex)$$0x.getSource()).i()), fy.a($$0x, "sound"), awb.a, ((ex)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
+
+      for (awb $$2 : awb.values()) {
+         $$1.then(a($$2));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
+   }
+
+   private static LiteralArgumentBuilder<ex> a(awb $$0) {
+      return (LiteralArgumentBuilder<ex>)((LiteralArgumentBuilder)ey.a($$0.a())
+            .executes($$1 -> a((ex)$$1.getSource(), a(((ex)$$1.getSource()).i()), fy.a($$1, "sound"), $$0, ((ex)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+         .then(
+            ((RequiredArgumentBuilder)ey.a("targets", fk.d())
+                  .executes($$1 -> a((ex)$$1.getSource(), fk.f($$1, "targets"), fy.a($$1, "sound"), $$0, ((ex)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
                .then(
-                  ((LiteralArgumentBuilder)ex.a("remove")
-                        .then(
-                           ((RequiredArgumentBuilder)ex.a("from", gt.a())
-                                 .executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "from"), false)))
-                              .then(ex.a("to", gt.a()).executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "to"), false)))
-                        ))
-                     .then(ex.a("all").executes($$0x -> b((ew)$$0x.getSource())))
-               ))
-            .then(
-               ((LiteralArgumentBuilder)ex.a("query").executes($$0x -> a((ew)$$0x.getSource())))
-                  .then(ex.a("pos", gt.a()).executes($$0x -> a((ew)$$0x.getSource(), gt.a($$0x, "pos"))))
-            )
-      );
+                  ((RequiredArgumentBuilder)ey.a("pos", ha.a())
+                        .executes($$1 -> a((ex)$$1.getSource(), fk.f($$1, "targets"), fy.a($$1, "sound"), $$0, ha.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
+                     .then(
+                        ((RequiredArgumentBuilder)ey.a("volume", FloatArgumentType.floatArg(0.0F))
+                              .executes(
+                                 $$1 -> a(
+                                       (ex)$$1.getSource(),
+                                       fk.f($$1, "targets"),
+                                       fy.a($$1, "sound"),
+                                       $$0,
+                                       ha.a($$1, "pos"),
+                                       (Float)$$1.getArgument("volume", Float.class),
+                                       1.0F,
+                                       0.0F
+                                    )
+                              ))
+                           .then(
+                              ((RequiredArgumentBuilder)ey.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                                    .executes(
+                                       $$1 -> a(
+                                             (ex)$$1.getSource(),
+                                             fk.f($$1, "targets"),
+                                             fy.a($$1, "sound"),
+                                             $$0,
+                                             ha.a($$1, "pos"),
+                                             (Float)$$1.getArgument("volume", Float.class),
+                                             (Float)$$1.getArgument("pitch", Float.class),
+                                             0.0F
+                                          )
+                                    ))
+                                 .then(
+                                    ey.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                       .executes(
+                                          $$1 -> a(
+                                                (ex)$$1.getSource(),
+                                                fk.f($$1, "targets"),
+                                                fy.a($$1, "sound"),
+                                                $$0,
+                                                ha.a($$1, "pos"),
+                                                (Float)$$1.getArgument("volume", Float.class),
+                                                (Float)$$1.getArgument("pitch", Float.class),
+                                                (Float)$$1.getArgument("minVolume", Float.class)
+                                             )
+                                       )
+                                 )
+                           )
+                     )
+               )
+         );
    }
 
-   private static int a(ew $$0, arj $$1) throws CommandSyntaxException {
-      dgf $$2 = $$1.a();
-      arx $$3 = $$0.e();
-      alo<dgz> $$4 = $$3.ai();
-      boolean $$5 = $$3.y().contains($$2.a());
-      if ($$5) {
-         $$0.a(() -> xk.a("commands.forceload.query.success", xk.a($$2), xk.a($$4.a())), false);
-         return 1;
-      } else {
-         throw c.create($$2, $$4.a());
-      }
+   private static Collection<ard> a(@Nullable ard $$0) {
+      return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(ew $$0) {
-      arx $$1 = $$0.e();
-      alo<dgz> $$2 = $$1.ai();
-      LongSet $$3 = $$1.y();
-      int $$4 = $$3.size();
-      if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dgf::new).map(dgf::toString).iterator());
-         if ($$4 == 1) {
-            $$0.a(() -> xk.a("commands.forceload.list.single", xk.a($$2.a()), $$5), false);
-         } else {
-            $$0.a(() -> xk.a("commands.forceload.list.multiple", $$4, xk.a($$2.a()), $$5), false);
-         }
-      } else {
-         $$0.b(xk.a("commands.forceload.added.none", xk.a($$2.a())));
-      }
+   private static int a(ex $$0, Collection<ard> $$1, aku $$2, awb $$3, fba $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      jr<avz> $$8 = jr.a(avz.a($$2));
+      double $$9 = (double)ayz.l($$8.a().a($$5));
+      int $$10 = 0;
+      long $$11 = $$0.e().H_().g();
 
-      return $$4;
-   }
-
-   private static int b(ew $$0) {
-      arx $$1 = $$0.e();
-      alo<dgz> $$2 = $$1.ai();
-      LongSet $$3 = $$1.y();
-      $$3.forEach($$1x -> $$1.a(dgf.a($$1x), dgf.b($$1x), false));
-      $$0.a(() -> xk.a("commands.forceload.removed.all", xk.a($$2.a())), true);
-      return 0;
-   }
-
-   private static int a(ew $$0, arj $$1, arj $$2, boolean $$3) throws CommandSyntaxException {
-      int $$4 = Math.min($$1.c(), $$2.c());
-      int $$5 = Math.min($$1.d(), $$2.d());
-      int $$6 = Math.max($$1.c(), $$2.c());
-      int $$7 = Math.max($$1.d(), $$2.d());
-      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
-         int $$8 = kj.a($$4);
-         int $$9 = kj.a($$5);
-         int $$10 = kj.a($$6);
-         int $$11 = kj.a($$7);
-         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
-         if ($$12 > 256L) {
-            throw b.create(256, $$12);
-         } else {
-            arx $$13 = $$0.e();
-            alo<dgz> $$14 = $$13.ai();
-            dgf $$15 = null;
-            int $$16 = 0;
-
-            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
-               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
-                  boolean $$19 = $$13.a($$17, $$18, $$3);
-                  if ($$19) {
-                     $$16++;
-                     if ($$15 == null) {
-                        $$15 = new dgf($$17, $$18);
-                     }
-                  }
-               }
+      for (ard $$12 : $$1) {
+         double $$13 = $$4.d - $$12.dB();
+         double $$14 = $$4.e - $$12.dD();
+         double $$15 = $$4.f - $$12.dH();
+         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
+         fba $$17 = $$4;
+         float $$18 = $$5;
+         if ($$16 > $$9) {
+            if ($$7 <= 0.0F) {
+               continue;
             }
 
-            dgf $$20 = $$15;
-            int $$21 = $$16;
-            if ($$21 == 0) {
-               throw ($$3 ? d : e).create();
-            } else {
-               if ($$21 == 1) {
-                  $$0.a(() -> xk.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", xk.a($$20), xk.a($$14.a())), true);
-               } else {
-                  dgf $$22 = new dgf($$8, $$9);
-                  dgf $$23 = new dgf($$10, $$11);
-                  $$0.a(() -> xk.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, xk.a($$14.a()), xk.a($$22), xk.a($$23)), true);
-               }
-
-               return $$21;
-            }
+            double $$19 = Math.sqrt($$16);
+            $$17 = new fba($$12.dB() + $$13 / $$19 * 2.0, $$12.dD() + $$14 / $$19 * 2.0, $$12.dH() + $$15 / $$19 * 2.0);
+            $$18 = $$7;
          }
+
+         $$12.f.b(new afm($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
+         $$10++;
+      }
+
+      if ($$10 == 0) {
+         throw a.create();
       } else {
-         throw gs.b.create();
+         if ($$1.size() == 1) {
+            $$0.a(() -> wo.a("commands.playsound.success.single", wo.a($$2), $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> wo.a("commands.playsound.success.multiple", wo.a($$2), $$1.size()), true);
+         }
+
+         return $$10;
       }
    }
 }

@@ -1,49 +1,72 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiConsumer;
 
-public record elc(eku b, List<elc.a> c) {
-   public static final Codec<elc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eku.a.fieldOf("fallback").forGetter(elc::a), elc.a.a.listOf().fieldOf("rules").forGetter(elc::b)).apply($$0, elc::new)
-   );
+public class elc extends eli {
+   public static final MapCodec<elc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elc::new));
 
-   public static elc a(eku $$0) {
-      return new elc($$0, List.of());
+   public elc(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static elc a(dkd $$0) {
-      return a(eku.a($$0));
+   @Override
+   protected elj<?> a() {
+      return elj.e;
    }
 
-   public dxo a(dhx $$0, bac $$1, jh $$2) {
-      for (elc.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
+   @Override
+   public List<ejo.a> a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, int $$3, ji $$4, eiy $$5) {
+      List<ejo.a> $$6 = Lists.newArrayList();
+      ji $$7 = $$4.e();
+      a($$0, $$1, $$2, $$7, $$5);
+      a($$0, $$1, $$2, $$7.i(), $$5);
+      a($$0, $$1, $$2, $$7.g(), $$5);
+      a($$0, $$1, $$2, $$7.g().i(), $$5);
+      jn $$8 = jn.c.a.a($$2);
+      int $$9 = $$3 - $$2.a(4);
+      int $$10 = 2 - $$2.a(3);
+      int $$11 = $$4.u();
+      int $$12 = $$4.v();
+      int $$13 = $$4.w();
+      int $$14 = $$11;
+      int $$15 = $$13;
+      int $$16 = $$12 + $$3 - 1;
+
+      for (int $$17 = 0; $$17 < $$3; $$17++) {
+         if ($$17 >= $$9 && $$10 > 0) {
+            $$14 += $$8.j();
+            $$15 += $$8.l();
+            $$10--;
+         }
+
+         int $$18 = $$12 + $$17;
+         ji $$19 = new ji($$14, $$18, $$15);
+         if (ehk.b($$0, $$19)) {
+            this.b($$0, $$1, $$2, $$19, $$5);
+            this.b($$0, $$1, $$2, $$19.i(), $$5);
+            this.b($$0, $$1, $$2, $$19.g(), $$5);
+            this.b($$0, $$1, $$2, $$19.i().g(), $$5);
          }
       }
 
-      return this.b.a($$1, $$2);
-   }
+      $$6.add(new ejo.a(new ji($$14, $$16, $$15), 0, true));
 
-   public eku a() {
-      return this.b;
-   }
+      for (int $$20 = -1; $$20 <= 2; $$20++) {
+         for (int $$21 = -1; $$21 <= 2; $$21++) {
+            if (($$20 < 0 || $$20 > 1 || $$21 < 0 || $$21 > 1) && $$2.a(3) <= 0) {
+               int $$22 = $$2.a(3) + 2;
 
-   public List<elc.a> b() {
-      return this.c;
-   }
+               for (int $$23 = 0; $$23 < $$22; $$23++) {
+                  this.b($$0, $$1, $$2, new ji($$11 + $$20, $$16 - $$23 - 1, $$13 + $$21), $$5);
+               }
 
-   public static record a(eeq b, eku c) {
-      public static final Codec<elc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eeq.b.fieldOf("if_true").forGetter(elc.a::a), eku.a.fieldOf("then").forGetter(elc.a::b)).apply($$0, elc.a::new)
-      );
-
-      public eeq a() {
-         return this.b;
+               $$6.add(new ejo.a(new ji($$11 + $$20, $$16, $$13 + $$21), 0, false));
+            }
+         }
       }
 
-      public eku b() {
-         return this.c;
-      }
+      return $$6;
    }
 }

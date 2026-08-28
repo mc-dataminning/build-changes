@@ -1,103 +1,79 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import org.joml.Matrix4f;
 
-public record glw(Map<String, String> c, Set<String> d) {
-   public static final glw a = new glw(Map.of(), Set.of());
-   public static final Codec<glw> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.unboundedMap(Codec.STRING, Codec.STRING).optionalFieldOf("values", Map.of()).forGetter(glw::d),
-               Codec.STRING.listOf().xmap(Set::copyOf, List::copyOf).optionalFieldOf("flags", Set.of()).forGetter(glw::e)
-            )
-            .apply($$0, glw::new)
-   );
+public class glw {
+   private static final float a = -0.01F;
+   private static final float b = -0.001F;
+   private static final int c = 128;
+   private static final int d = 128;
+   private final hfh e;
+   private final hfg f;
 
-   public static glw.a a() {
-      return new glw.a();
+   public glw(hfg $$0, hfh $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public glw a(glw $$0) {
-      if (this.c()) {
-         return $$0;
-      } else if ($$0.c()) {
-         return this;
-      } else {
-         Builder<String, String> $$1 = ImmutableMap.builderWithExpectedSize(this.c.size() + $$0.c.size());
-         $$1.putAll(this.c);
-         $$1.putAll($$0.c);
-         com.google.common.collect.ImmutableSet.Builder<String> $$2 = ImmutableSet.builderWithExpectedSize(this.d.size() + $$0.d.size());
-         $$2.addAll(this.d);
-         $$2.addAll($$0.d);
-         return new glw($$1.buildKeepingLast(), $$2.build());
-      }
-   }
+   public void a(hds $$0, ffu $$1, glx $$2, boolean $$3, int $$4) {
+      Matrix4f $$5 = $$1.c().a();
+      ffy $$6 = $$2.getBuffer(gmh.u($$0.a));
+      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
+      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
+      int $$7 = 0;
 
-   public String b() {
-      StringBuilder $$0 = new StringBuilder();
+      for (hds.a $$8 : $$0.b) {
+         if (!$$3 || $$8.e) {
+            $$1.a();
+            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
+            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
+            $$1.b(4.0F, 4.0F, 3.0F);
+            $$1.a(-0.125F, 0.125F, 0.0F);
+            Matrix4f $$9 = $$1.c().a();
+            hej $$10 = $$8.a;
+            if ($$10 != null) {
+               ffy $$11 = $$2.getBuffer(gmh.u($$10.i()));
+               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
+               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
+               $$1.b();
+            }
 
-      for (Entry<String, String> $$1 : this.c.entrySet()) {
-         String $$2 = $$1.getKey();
-         String $$3 = $$1.getValue();
-         $$0.append("#define ").append($$2).append(" ").append($$3).append('\n');
-      }
+            if ($$8.f != null) {
+               fob $$12 = flj.Q().h;
+               float $$13 = (float)$$12.a($$8.f);
+               float $$14 = ayz.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
+               $$1.a();
+               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
+               $$1.b($$14, $$14, 1.0F);
+               $$1.a(0.0F, 0.0F, -0.1F);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, fob.a.a, Integer.MIN_VALUE, $$4, false);
+               $$1.b();
+            }
 
-      for (String $$4 : this.d) {
-         $$0.append("#define ").append($$4).append('\n');
-      }
-
-      return $$0.toString();
-   }
-
-   public boolean c() {
-      return this.c.isEmpty() && this.d.isEmpty();
-   }
-
-   public Map<String, String> d() {
-      return this.c;
-   }
-
-   public Set<String> e() {
-      return this.d;
-   }
-
-   public static class a {
-      private final Builder<String, String> a = ImmutableMap.builder();
-      private final com.google.common.collect.ImmutableSet.Builder<String> b = ImmutableSet.builder();
-
-      a() {
-      }
-
-      public glw.a a(String $$0, String $$1) {
-         if ($$1.isBlank()) {
-            throw new IllegalArgumentException("Cannot define empty string");
-         } else {
-            this.a.put($$0, b($$1));
-            return this;
+            $$7++;
          }
       }
+   }
 
-      private static String b(String $$0) {
-         return $$0.replaceAll("\n", "\\\\\n");
-      }
+   public void a(eur $$0, eut $$1, hds $$2) {
+      $$2.a = this.e.b($$0, $$1);
+      $$2.b.clear();
 
-      public glw.a a(String $$0, float $$1) {
-         this.a.put($$0, String.valueOf($$1));
-         return this;
+      for (eun $$3 : $$1.h()) {
+         $$2.b.add(this.a($$3));
       }
+   }
 
-      public glw.a a(String $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      public glw a() {
-         return new glw(this.a.build(), this.b.build());
-      }
+   private hds.a a(eun $$0) {
+      hds.a $$1 = new hds.a();
+      $$1.a = this.f.a($$0);
+      $$1.b = $$0.d();
+      $$1.c = $$0.e();
+      $$1.d = $$0.f();
+      $$1.f = $$0.g().orElse(null);
+      $$1.e = $$0.b();
+      return $$1;
    }
 }

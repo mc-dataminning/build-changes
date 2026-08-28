@@ -1,12 +1,22 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dac(int d) {
-   public static final Codec<dac> a = Codec.INT.xmap(dac::new, dac::a);
-   public static final zi<ByteBuf, dac> b = zg.g.a(dac::new, dac::a);
-   public static final dac c = new dac(4603950);
+public record dac(jr<avz> c) implements dab {
+   public static final MapCodec<dac> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(avz.b.fieldOf("sound").forGetter(dac::b)).apply($$0, dac::new));
+   public static final ym<vz, dac> b = ym.a(avz.d, dac::b, dac::new);
 
-   public int a() {
-      return this.d;
+   @Override
+   public dab.a<dac> a() {
+      return dab.a.e;
+   }
+
+   @Override
+   public boolean a(dgi $$0, cwp $$1, bvg $$2) {
+      $$0.a(null, $$2.dw(), this.c.a(), $$2.dn(), 1.0F, 1.0F);
+      return true;
+   }
+
+   public jr<avz> b() {
+      return this.c;
    }
 }

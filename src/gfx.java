@@ -1,92 +1,209 @@
-import java.util.IdentityHashMap;
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.exceptions.AuthenticationException;
+import com.mojang.authlib.exceptions.AuthenticationUnavailableException;
+import com.mojang.authlib.exceptions.ForcedUsernameChangeException;
+import com.mojang.authlib.exceptions.InsufficientPrivilegesException;
+import com.mojang.authlib.exceptions.InvalidCredentialsException;
+import com.mojang.authlib.exceptions.UserBannedException;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.logging.LogUtils;
+import java.math.BigInteger;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import net.minecraft.client.ClientBrandRetriever;
+import org.slf4j.Logger;
 
-public class gfx {
-   private static final gfx.a a = new gfx.a();
-   private static final gfx.a b = new gfx.a();
-   private static final gfx.a c = new gfx.a();
-   private CompletableFuture<hfn<cxg>> d = CompletableFuture.completedFuture(hfn.empty());
-   private CompletableFuture<hfn<cxg>> e = CompletableFuture.completedFuture(hfn.empty());
-   private CompletableFuture<hfn<fxs>> f = CompletableFuture.completedFuture(hfn.empty());
-   private final Map<gfx.a, Runnable> g = new IdentityHashMap<>();
+public class gfx implements aip {
+   private static final Logger a = LogUtils.getLogger();
+   private final flj b;
+   @Nullable
+   private final ggn c;
+   @Nullable
+   private final fuk d;
+   private final Consumer<wo> e;
+   private final vi f;
+   private final boolean g;
+   @Nullable
+   private final Duration h;
+   @Nullable
+   private String i;
+   private final Map<aku, byte[]> j;
+   private final boolean k;
+   private final AtomicReference<gfx.a> l = new AtomicReference<>(gfx.a.a);
 
-   private void a(gfx.a $$0, Runnable $$1) {
-      $$1.run();
-      this.g.put($$0, $$1);
+   public gfx(vi $$0, flj $$1, @Nullable ggn $$2, @Nullable fuk $$3, boolean $$4, @Nullable Duration $$5, Consumer<wo> $$6, @Nullable ggr $$7) {
+      this.f = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$6;
+      this.g = $$4;
+      this.h = $$5;
+      this.j = $$7 != null ? new HashMap<>($$7.a()) : new HashMap<>();
+      this.k = $$7 != null;
    }
 
-   public void a() {
-      for (Runnable $$0 : this.g.values()) {
-         $$0.run();
+   private void a(gfx.a $$0) {
+      gfx.a $$1 = this.l.updateAndGet($$1x -> {
+         if (!$$0.f.contains($$1x)) {
+            throw new IllegalStateException("Tried to switch to " + $$0 + " from " + $$1x + ", but expected one of " + $$0.f);
+         } else {
+            return $$0;
+         }
+      });
+      this.e.accept($$1.e);
+   }
+
+   @Override
+   public void a(air $$0) {
+      this.a(gfx.a.b);
+
+      Cipher $$4;
+      Cipher $$5;
+      String $$3;
+      aja $$7;
+      try {
+         SecretKey $$1 = axx.a();
+         PublicKey $$2 = $$0.e();
+         $$3 = new BigInteger(axx.a($$0.b(), $$2, $$1)).toString(16);
+         $$4 = axx.a(2, $$1);
+         $$5 = axx.a(1, $$1);
+         byte[] $$6 = $$0.f();
+         $$7 = new aja($$1, $$2, $$6);
+      } catch (Exception var9) {
+         throw new IllegalStateException("Protocol error", var9);
+      }
+
+      if ($$0.g()) {
+         af.h().execute(() -> {
+            wo $$4x = this.b($$3);
+            if ($$4x != null) {
+               if (this.c == null || !this.c.d()) {
+                  this.f.a($$4x);
+                  return;
+               }
+
+               a.warn($$4x.getString());
+            }
+
+            this.a($$7, $$4, $$5);
+         });
+      } else {
+         this.a($$7, $$4, $$5);
       }
    }
 
-   private static Stream<String> a(Stream<cxg> $$0, cxc.b $$1, cyy $$2) {
-      return $$0.<xk>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
+   private void a(aja $$0, Cipher $$1, Cipher $$2) {
+      this.a(gfx.a.c);
+      this.f.a($$0, vv.a(() -> this.f.a($$1, $$2)));
    }
 
-   public void a(flk $$0, dgz $$1) {
-      this.a(
-         a,
-         () -> {
-            List<fxs> $$2 = $$0.d();
-            ke $$3 = $$1.K_();
-            kd<cxc> $$4 = $$3.e(mb.K);
-            cxc.b $$5 = cxc.b.a($$3);
-            bbf $$6 = ddh.a($$1);
-            cyy $$7 = cyy.a.a;
-            CompletableFuture<?> $$8 = this.f;
-            this.f = CompletableFuture.supplyAsync(
-               () -> new hfi<>(
-                     $$3xx -> a($$3xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()), $$5, $$7),
-                     $$2xx -> $$2xx.c().stream().flatMap($$1xxxx -> $$1xxxx.a($$6).stream()).map($$1xxxx -> $$4.b($$1xxxx.h())),
-                     $$2
-                  ),
-               ae.g()
-            );
-            $$8.cancel(true);
-         }
-      );
+   @Nullable
+   private wo b(String $$0) {
+      try {
+         this.d().joinServer(this.b.X().b(), this.b.X().d(), $$0);
+         return null;
+      } catch (AuthenticationUnavailableException var3) {
+         return wo.a("disconnect.loginFailedInfo", wo.c("disconnect.loginFailedInfo.serversUnavailable"));
+      } catch (InvalidCredentialsException var4) {
+         return wo.a("disconnect.loginFailedInfo", wo.c("disconnect.loginFailedInfo.invalidSession"));
+      } catch (InsufficientPrivilegesException var5) {
+         return wo.a("disconnect.loginFailedInfo", wo.c("disconnect.loginFailedInfo.insufficientPrivileges"));
+      } catch (ForcedUsernameChangeException | UserBannedException var6) {
+         return wo.a("disconnect.loginFailedInfo", wo.c("disconnect.loginFailedInfo.userBanned"));
+      } catch (AuthenticationException var7) {
+         return wo.a("disconnect.loginFailedInfo", var7.getMessage());
+      }
    }
 
-   public hfn<fxs> b() {
-      return this.f.join();
+   private MinecraftSessionService d() {
+      return this.b.am();
    }
 
-   public void a(List<cxg> $$0) {
-      this.a(c, () -> {
-         CompletableFuture<?> $$1 = this.e;
-         this.e = CompletableFuture.supplyAsync(() -> new hfj<>($$0xxx -> $$0xxx.j().map(aya::b), $$0), ae.g());
-         $$1.cancel(true);
-      });
+   @Override
+   public void a(aiu $$0) {
+      this.a(gfx.a.d);
+      GameProfile $$1 = $$0.b();
+      this.f
+         .a(
+            aaz.d,
+            new gfw(this.b, this.f, new ggd($$1, this.b.u().a(this.g, this.h, this.i), ggb.a().a(), crv.h, null, this.c, this.d, this.j, null, Map.of(), alm.a))
+         );
+      this.f.a(ajb.a);
+      this.f.a(aaz.b);
+      this.f.a(new zq(new zw(ClientBrandRetriever.getClientModName())));
+      this.f.a(new zp(this.b.n.aA()));
    }
 
-   public hfn<cxg> c() {
-      return this.e.join();
+   @Override
+   public void a(vk $$0) {
+      wo $$1 = this.k ? wn.q : wn.r;
+      if (this.c != null && this.c.e()) {
+         this.b.a(new hku(this.d, $$1, $$0.a()));
+      } else {
+         this.b.a(new ftr(this.d, $$1, $$0));
+      }
    }
 
-   public void a(js.a $$0, List<cxg> $$1) {
-      this.a(
-         b,
-         () -> {
-            cxc.b $$2 = cxc.b.a($$0);
-            cyy $$3 = cyy.a.a.c();
-            CompletableFuture<?> $$4 = this.d;
-            this.d = CompletableFuture.supplyAsync(
-               () -> new hfi<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(alo::a).stream(), $$1), ae.g()
-            );
-            $$4.cancel(true);
-         }
-      );
+   @Override
+   public boolean c() {
+      return this.f.i();
    }
 
-   public hfn<cxg> d() {
-      return this.d.join();
+   @Override
+   public void a(ait $$0) {
+      this.f.a($$0.b());
    }
 
-   static class a {
+   @Override
+   public void a(ais $$0) {
+      if (!this.f.e()) {
+         this.f.a($$0.b(), false);
+      }
+   }
+
+   @Override
+   public void a(aiq $$0) {
+      this.e.accept(wo.c("connect.negotiating"));
+      this.f.a(new aiy($$0.b(), null));
+   }
+
+   public void a(@Nullable String $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public void a(abf $$0) {
+      this.f.a(new abi($$0.b(), this.j.get($$0.b())));
+   }
+
+   @Override
+   public void a(o $$0, p $$1) {
+      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<unknown>");
+      $$1.a("Login phase", () -> this.l.get().toString());
+      $$1.a("Is Local", () -> String.valueOf(this.f.e()));
+   }
+
+   static enum a {
+      a(wo.c("connect.connecting"), Set.of()),
+      b(wo.c("connect.authorizing"), Set.of(a)),
+      c(wo.c("connect.encrypting"), Set.of(b)),
+      d(wo.c("connect.joining"), Set.of(c, a));
+
+      final wo e;
+      final Set<gfx.a> f;
+
+      private a(final wo $$0, final Set<gfx.a> $$1) {
+         this.e = $$0;
+         this.f = $$1;
+      }
    }
 }

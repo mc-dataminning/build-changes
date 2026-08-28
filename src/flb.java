@@ -1,13 +1,39 @@
-public class flb extends flc {
-   private final fis b;
+import java.util.function.IntFunction;
 
-   public flb(fis $$0, long $$1, xk $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+public enum flb implements azc {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
+
+   private static final IntFunction<flb> d = axq.a(flb::b, values(), axq.a.b);
+   private final int e;
+   private final String f;
+
+   private flb(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected void a(fhb $$0, long $$1) throws fix {
-      $$0.d($$1, this.b.a);
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.f;
+   }
+
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
+   }
+
+   public static flb a(int $$0) {
+      return d.apply($$0);
    }
 }

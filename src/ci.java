@@ -1,138 +1,62 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public class ci extends dy<ci.a> {
-   @Override
-   public Codec<ci.a> a() {
-      return ci.a.a;
+public record ci(
+   Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f, Optional<Boolean> g, Optional<Boolean> h
+) {
+   public static final Codec<ci> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("forward").forGetter(ci::a),
+               Codec.BOOL.optionalFieldOf("backward").forGetter(ci::b),
+               Codec.BOOL.optionalFieldOf("left").forGetter(ci::c),
+               Codec.BOOL.optionalFieldOf("right").forGetter(ci::d),
+               Codec.BOOL.optionalFieldOf("jump").forGetter(ci::e),
+               Codec.BOOL.optionalFieldOf("sneak").forGetter(ci::f),
+               Codec.BOOL.optionalFieldOf("sprint").forGetter(ci::g)
+            )
+            .apply($$0, ci::new)
+   );
+
+   public boolean a(cov $$0) {
+      return this.a(this.b, $$0.a())
+         && this.a(this.c, $$0.b())
+         && this.a(this.d, $$0.c())
+         && this.a(this.e, $$0.d())
+         && this.a(this.f, $$0.e())
+         && this.a(this.g, $$0.f())
+         && this.a(this.h, $$0.g());
    }
 
-   public void a(ary $$0, cpn $$1, cxg $$2) {
-      int $$3 = 0;
-      int $$4 = 0;
-      int $$5 = 0;
-
-      for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cxg $$7 = $$1.a($$6);
-         if ($$7.f()) {
-            $$4++;
-         } else {
-            $$5++;
-            if ($$7.M() >= $$7.k()) {
-               $$3++;
-            }
-         }
-      }
-
-      this.a($$0, $$1, $$2, $$3, $$4, $$5);
+   private boolean a(Optional<Boolean> $$0, boolean $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x == $$1).orElse(true);
    }
 
-   private void a(ary $$0, cpn $$1, cxg $$2, int $$3, int $$4, int $$5) {
-      this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
+   public Optional<Boolean> a() {
+      return this.b;
    }
 
-   public static record a(Optional<bh> b, ci.a.a c, List<cu> d) implements dy.a {
-      public static final Codec<ci.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bw.b.optionalFieldOf("player").forGetter(ci.a::a),
-                  ci.a.a.a.optionalFieldOf("slots", ci.a.a.b).forGetter(ci.a::b),
-                  cu.a.listOf().optionalFieldOf("items", List.of()).forGetter(ci.a::c)
-               )
-               .apply($$0, ci.a::new)
-      );
+   public Optional<Boolean> b() {
+      return this.c;
+   }
 
-      public static ap<ci.a> a(cu.a... $$0) {
-         return a(Stream.of($$0).map(cu.a::b).toArray(cu[]::new));
-      }
+   public Optional<Boolean> c() {
+      return this.d;
+   }
 
-      public static ap<ci.a> a(cu... $$0) {
-         return ao.f.a(new ci.a(Optional.empty(), ci.a.a.b, List.of($$0)));
-      }
+   public Optional<Boolean> d() {
+      return this.e;
+   }
 
-      public static ap<ci.a> a(dgy... $$0) {
-         cu[] $$1 = new cu[$$0.length];
+   public Optional<Boolean> e() {
+      return this.f;
+   }
 
-         for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            $$1[$$2] = new cu(Optional.of(ju.a($$0[$$2].j().f())), dj.d.c, ks.c, Map.of());
-         }
+   public Optional<Boolean> f() {
+      return this.g;
+   }
 
-         return a($$1);
-      }
-
-      public boolean a(cpn $$0, cxg $$1, int $$2, int $$3, int $$4) {
-         if (!this.c.a($$2, $$3, $$4)) {
-            return false;
-         } else if (this.d.isEmpty()) {
-            return true;
-         } else if (this.d.size() != 1) {
-            List<cu> $$5 = new ObjectArrayList(this.d);
-            int $$6 = $$0.b();
-
-            for (int $$7 = 0; $$7 < $$6; $$7++) {
-               if ($$5.isEmpty()) {
-                  return true;
-               }
-
-               cxg $$8 = $$0.a($$7);
-               if (!$$8.f()) {
-                  $$5.removeIf($$1x -> $$1x.a($$8));
-               }
-            }
-
-            return $$5.isEmpty();
-         } else {
-            return !$$1.f() && this.d.get(0).a($$1);
-         }
-      }
-
-      @Override
-      public Optional<bh> a() {
-         return this.b;
-      }
-
-      public ci.a.a b() {
-         return this.c;
-      }
-
-      public List<cu> c() {
-         return this.d;
-      }
-
-      public static record a(dj.d c, dj.d d, dj.d e) {
-         public static final Codec<ci.a.a> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     dj.d.d.optionalFieldOf("occupied", dj.d.c).forGetter(ci.a.a::a),
-                     dj.d.d.optionalFieldOf("full", dj.d.c).forGetter(ci.a.a::b),
-                     dj.d.d.optionalFieldOf("empty", dj.d.c).forGetter(ci.a.a::c)
-                  )
-                  .apply($$0, ci.a.a::new)
-         );
-         public static final ci.a.a b = new ci.a.a(dj.d.c, dj.d.c, dj.d.c);
-
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (!this.d.d($$0)) {
-               return false;
-            } else {
-               return !this.e.d($$1) ? false : this.c.d($$2);
-            }
-         }
-
-         public dj.d a() {
-            return this.c;
-         }
-
-         public dj.d b() {
-            return this.d;
-         }
-
-         public dj.d c() {
-            return this.e;
-         }
-      }
+   public Optional<Boolean> g() {
+      return this.h;
    }
 }

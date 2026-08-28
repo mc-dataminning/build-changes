@@ -1,4 +1,8 @@
-import java.util.concurrent.Executor;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public record eap(arx a, dzk b, esg c, asa d, Executor e, dzt.e f) {
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface eap {
 }

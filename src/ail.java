@@ -1,12 +1,7 @@
-public record ail(ddc b) implements zr<ahb> {
-   public static final zi<wh, ail> a = zi.a(ddc.a, ail::b, ail::new);
+public class ail {
+   public static final yx<aik> a = a("intention");
 
-   @Override
-   public zt<ail> a() {
-      return agz.bW;
-   }
-
-   public void a(ahb $$0) {
-      $$0.a(this);
+   private static <T extends yv<ain>> yx<T> a(String $$0) {
+      return new yx<>(yw.a, aku.b($$0));
    }
 }

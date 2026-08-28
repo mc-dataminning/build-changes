@@ -1,70 +1,78 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public record fza(eeh a, kd<ebk> b, eee c, jx<aly> d, ama e, dhw f, fyv g) {
-   public fza(eef $$0, jx<aly> $$1, ama $$2, dhw $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3, new fyv(fzc.a.a, Set.of(), null));
+public class fza {
+   private final flj a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+
+   public fza(flj $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public fza(eeh $$0, eee $$1, jx<aly> $$2, ama $$3, dhw $$4, fyv $$5) {
-      this($$0, $$2.a(aly.c).e(mb.bf), $$1, $$2.a(aly.c), $$3, $$4, $$5);
+   public void a(UUID $$0) {
+      this.b.add($$0);
    }
 
-   public fza a(eeh $$0, eee $$1) {
-      return new fza($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   public void b(UUID $$0) {
+      this.b.remove($$0);
    }
 
-   public fza a(fza.b $$0) {
-      return new fza($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
    }
 
-   public fza a(fza.a $$0) {
-      return new fza(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
    }
 
-   public ke.b a() {
-      return this.d.a();
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, af.h());
    }
 
    public void b() {
-      for (ebk $$0 : this.d()) {
-         $$0.b().a();
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
+      } else {
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
    }
 
-   public eeh c() {
-      return this.a;
-   }
-
-   public kd<ebk> d() {
+   public Set<UUID> c() {
       return this.b;
    }
 
-   public eee e() {
-      return this.c;
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, af.e);
    }
 
-   public jx<aly> f() {
-      return this.d;
+   public void a(ggk $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.z instanceof fzc $$2) {
+         $$2.a($$0);
+      }
    }
 
-   public ama g() {
-      return this.e;
-   }
-
-   public dhw h() {
-      return this.f;
-   }
-
-   public fyv i() {
-      return this.g;
-   }
-
-   @FunctionalInterface
-   public interface a extends BiFunction<ke.b, eee, eee> {
-   }
-
-   public interface b extends UnaryOperator<eeh> {
+   public void f(UUID $$0) {
+      if (this.a.z instanceof fzc $$1) {
+         $$1.a($$0);
+      }
    }
 }

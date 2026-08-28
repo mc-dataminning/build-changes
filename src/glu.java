@@ -1,63 +1,81 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class glu {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<glt> b;
-   private volatile int c;
+public class glu implements gmb.a {
+   public static final aku a = gmb.a;
+   public static final aku b = aku.b("translucent");
+   public static final aku c = aku.b("item_entity");
+   public static final aku d = aku.b("particles");
+   public static final aku e = aku.b("weather");
+   public static final aku f = aku.b("clouds");
+   public static final aku g = aku.b("entity_outline");
+   public static final Set<aku> h = Set.of(a);
+   public static final Set<aku> i = Set.of(a, g);
+   public static final Set<aku> j = Set.of(a, b, c, d, e, f);
+   public ffg<fee> k = ffg.a();
+   @Nullable
+   public ffg<fee> l;
+   @Nullable
+   public ffg<fee> m;
+   @Nullable
+   public ffg<fee> n;
+   @Nullable
+   public ffg<fee> o;
+   @Nullable
+   public ffg<fee> p;
+   @Nullable
+   public ffg<fee> q;
 
-   private glu(List<glt> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
-   }
-
-   public static glu a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / glt.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<glt> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new glt());
+   @Override
+   public void a(aku $$0, ffg<fee> $$1) {
+      if ($$0.equals(a)) {
+         this.k = $$1;
+      } else if ($$0.equals(b)) {
+         this.l = $$1;
+      } else if ($$0.equals(c)) {
+         this.m = $$1;
+      } else if ($$0.equals(d)) {
+         this.n = $$1;
+      } else if ($$0.equals(e)) {
+         this.o = $$1;
+      } else if ($$0.equals(f)) {
+         this.p = $$1;
+      } else {
+         if (!$$0.equals(g)) {
+            throw new IllegalArgumentException("No target with id " + $$0);
          }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
+         this.q = $$1;
       }
-
-      return new glu($$3);
    }
 
    @Nullable
-   public glt a() {
-      glt $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
+   @Override
+   public ffg<fee> a(aku $$0) {
+      if ($$0.equals(a)) {
+         return this.k;
+      } else if ($$0.equals(b)) {
+         return this.l;
+      } else if ($$0.equals(c)) {
+         return this.m;
+      } else if ($$0.equals(d)) {
+         return this.n;
+      } else if ($$0.equals(e)) {
+         return this.o;
+      } else if ($$0.equals(f)) {
+         return this.p;
       } else {
-         return null;
+         return $$0.equals(g) ? this.q : null;
       }
    }
 
-   public void a(glt $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
-   }
-
-   public boolean b() {
-      return this.b.isEmpty();
-   }
-
-   public int c() {
-      return this.c;
+   public void a() {
+      this.k = ffg.a();
+      this.l = null;
+      this.m = null;
+      this.n = null;
+      this.o = null;
+      this.p = null;
+      this.q = null;
    }
 }

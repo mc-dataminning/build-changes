@@ -1,16 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 
 public class bcw extends DataFix {
-   public bcw(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bcw(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bin.u), $$0 -> $$0.update(DSL.remainderFinder(), bcv::a)
-      );
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("ContainerBlockEntityLockPredicateFix", this.getInputSchema().findChoiceType(bhw.s), bcw::a);
+   }
+
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("Lock", "lock", bgj::b));
    }
 }

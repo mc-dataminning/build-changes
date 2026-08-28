@@ -1,48 +1,87 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdb extends ccv {
-   private final bvz a;
-   private bvx b;
-   private final float c;
+public class cdb extends cce {
+   public static final int a = 120;
+   protected final bvo b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public cdb(bvz $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(ccv.a.c, ccv.a.a));
+   public cdb(bvo $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public cdb(bvo $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public cdb(bvo $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cce.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.a.cY()) {
+      if (this.b.cY()) {
          return false;
       } else {
-         this.b = this.a.O_();
-         if (this.b == null) {
+         if (!this.h) {
+            if (this.i && this.b.eu() >= 100) {
+               return false;
+            }
+
+            if (this.b.dZ().a(b(this.g)) != 0) {
+               return false;
+            }
+         }
+
+         fba $$0 = this.h();
+         if ($$0 == null) {
             return false;
          } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aJ() ? false : this.a.dZ().a(b(5)) == 0;
-            }
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            this.h = false;
+            return true;
          }
       }
    }
 
+   @Nullable
+   protected fba h() {
+      return cgb.a(this.b, 10, 7);
+   }
+
    @Override
    public boolean c() {
-      return !this.a.aJ();
+      return !this.b.L().k() && !this.b.cY();
    }
 
    @Override
    public void d() {
-      fbr $$0 = this.a.dz();
-      fbr $$1 = new fbr(this.b.dB() - this.a.dB(), 0.0, this.b.dH() - this.a.dH());
-      if ($$1.h() > 1.0E-7) {
-         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
-      }
+      this.b.L().a(this.c, this.d, this.e, this.f);
+   }
 
-      this.a.n($$1.d, (double)this.c, $$1.f);
+   @Override
+   public void e() {
+      this.b.L().m();
+      super.e();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

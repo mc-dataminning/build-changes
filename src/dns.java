@@ -1,73 +1,59 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class dns extends dnr implements dkg {
-   protected dns(dxn.d $$0, jm $$1, fcl $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class dns extends dnc implements dof {
+   public static final MapCodec<dns> c = b(dns::new);
+   protected static final fbu g = djm.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
+
+   @Override
+   public MapCodec<dns> a() {
+      return c;
+   }
+
+   protected dns(dww.d $$0) {
+      super($$0, jn.b, g, true, 0.14);
    }
 
    @Override
-   protected abstract MapCodec<? extends dns> a();
-
-   protected dxo a(dxo $$0, dxo $$1) {
-      return $$1;
+   protected boolean h(dwx $$0) {
+      return $$0.a(djo.J);
    }
 
    @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-      }
-
-      dnt $$8 = this.c();
-      if ($$4 == this.a && !$$6.a(this) && !$$6.a($$8)) {
-         return this.a($$0, $$8.b($$7));
-      } else {
-         if (this.b) {
-            $$2.a($$3, etr.c, etr.c.a($$1));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+   protected djm b() {
+      return djo.mF;
    }
 
    @Override
-   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
-      return new cxg(this.c());
+   protected boolean o(dwx $$0) {
+      return !$$0.a(djo.ll);
    }
 
    @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
-      Optional<jh> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
+   public boolean a(@Nullable cox $$0, dfn $$1, ji $$2, dwx $$3, esy $$4) {
+      return false;
    }
 
    @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
+   public boolean a(dgj $$0, ji $$1, dwx $$2, esz $$3) {
+      return false;
    }
 
    @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      Optional<jh> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dxo $$5 = $$0.a_($$4.get());
-         ((dnt)$$5.b()).a($$0, $$1, $$4.get(), $$5);
-      }
+   protected int a(azh $$0) {
+      return 1;
    }
 
-   private Optional<jh> a(dge $$0, jh $$1, dkd $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      esz $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awv.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected boolean a(dxo $$0, dax $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().j()) ? false : $$2;
-   }
-
-   @Override
-   protected dkd b() {
-      return this;
+   protected esz b_(dwx $$0) {
+      return eta.c.a(false);
    }
 }

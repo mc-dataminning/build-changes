@@ -1,44 +1,48 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class byb implements bze {
-   private final bvb a;
-   private final boolean b;
+public class byb<E extends bvi> extends byc<E> {
+   private final axf<djm> m;
+   private final float n;
+   private final List<byc.a> o = new ArrayList<>();
+   private boolean p;
 
-   public byb(bvb $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public byb(bru $$0, int $$1, int $$2, float $$3, Function<E, avz> $$4, axf<djm> $$5, float $$6, BiPredicate<E, ji> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
    @Override
-   public fbr a() {
-      return this.b ? this.a.du().b(0.0, (double)this.a.cS(), 0.0) : this.a.du();
+   protected void a(arc $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dZ().i() < this.n;
    }
 
    @Override
-   public jh b() {
-      return this.a.dw();
-   }
-
-   @Override
-   public boolean a(bvx $$0) {
-      if (this.a instanceof bvx $$1) {
-         if (!$$1.bL()) {
-            return false;
-         } else {
-            Optional<cfd> $$3 = $$0.ec().c(cfb.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
+   protected Optional<byc.a> a(arc $$0) {
+      if (!this.p) {
+         return super.a($$0);
       } else {
-         return true;
+         ji.a $$1 = new ji.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<byc.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               byc.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), jn.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-   }
-
-   public bvb c() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
    }
 }

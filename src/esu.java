@@ -1,217 +1,213 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
+import java.util.NoSuchElementException;
 
-public class esu {
-   private static final int a = 33554432;
-   private final esr[] b;
-   private final int c;
-   private final DoubleList d;
-   private final double e;
-   private final double f;
-   private final double g;
+public class esu extends LongLinkedOpenHashSet {
+   private final esu.a a;
 
-   @Deprecated
-   public static esu a(bac $$0, IntStream $$1) {
-      return new esu($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
+   public esu(int $$0, float $$1) {
+      super($$0, $$1);
+      this.a = new esu.a($$0 / 64, $$1);
    }
 
-   @Deprecated
-   public static esu a(bac $$0, int $$1, DoubleList $$2) {
-      return new esu($$0, Pair.of($$1, $$2), false);
+   public boolean add(long $$0) {
+      return this.a.c($$0);
    }
 
-   public static esu b(bac $$0, IntStream $$1) {
-      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
+   public boolean rem(long $$0) {
+      return this.a.d($$0);
    }
 
-   public static esu a(bac $$0, List<Integer> $$1) {
-      return new esu($$0, a(new IntRBTreeSet($$1)), true);
+   public long removeFirstLong() {
+      return this.a.a();
    }
 
-   public static esu a(bac $$0, int $$1, double $$2, double... $$3) {
-      DoubleArrayList $$4 = new DoubleArrayList($$3);
-      $$4.add(0, $$2);
-      return new esu($$0, Pair.of($$1, $$4), true);
+   public int size() {
+      throw new UnsupportedOperationException();
    }
 
-   public static esu b(bac $$0, int $$1, DoubleList $$2) {
-      return new esu($$0, Pair.of($$1, $$2), true);
+   public boolean isEmpty() {
+      return this.a.isEmpty();
    }
 
-   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      } else {
-         int $$1 = -$$0.firstInt();
-         int $$2 = $$0.lastInt();
-         int $$3 = $$1 + $$2 + 1;
-         if ($$3 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
-            IntBidirectionalIterator $$5 = $$0.iterator();
+   protected static class a extends Long2LongLinkedOpenHashMap {
+      private static final int a = ayz.f(60000000);
+      private static final int b = ayz.f(60000000);
+      private static final int c = 64 - a - b;
+      private static final int d = 0;
+      private static final int e = c;
+      private static final int g = c + b;
+      private static final long h = 3L << g | 3L | 3L << e;
+      private int i = -1;
+      private long j;
+      private final int k;
 
-            while ($$5.hasNext()) {
-               int $$6 = $$5.nextInt();
-               $$4.set($$6 + $$1, 1.0);
-            }
-
-            return Pair.of(-$$1, $$4);
-         }
+      public a(int $$0, float $$1) {
+         super($$0, $$1);
+         this.k = $$0;
       }
-   }
 
-   protected esu(bac $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
-      this.c = (Integer)$$1.getFirst();
-      this.d = (DoubleList)$$1.getSecond();
-      int $$3 = this.d.size();
-      int $$4 = -this.c;
-      this.b = new esr[$$3];
-      if ($$2) {
-         edw $$5 = $$0.e();
+      static long a(long $$0) {
+         return $$0 & ~h;
+      }
 
-         for (int $$6 = 0; $$6 < $$3; $$6++) {
-            if (this.d.getDouble($$6) != 0.0) {
-               int $$7 = this.c + $$6;
-               this.b[$$6] = new esr($$5.a("octave_" + $$7));
+      static int b(long $$0) {
+         int $$1 = (int)($$0 >>> g & 3L);
+         int $$2 = (int)($$0 >>> 0 & 3L);
+         int $$3 = (int)($$0 >>> e & 3L);
+         return $$1 << 4 | $$3 << 2 | $$2;
+      }
+
+      static long a(long $$0, int $$1) {
+         $$0 |= (long)($$1 >>> 4 & 3) << g;
+         $$0 |= (long)($$1 >>> 2 & 3) << e;
+         return $$0 | (long)($$1 >>> 0 & 3) << 0;
+      }
+
+      public boolean c(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         int $$4;
+         if ($$1 == 0L) {
+            if (this.containsNullKey) {
+               return this.a(this.n, $$3);
             }
-         }
-      } else {
-         esr $$8 = new esr($$0);
-         if ($$4 >= 0 && $$4 < $$3) {
-            double $$9 = this.d.getDouble($$4);
-            if ($$9 != 0.0) {
-               this.b[$$4] = $$8;
-            }
-         }
 
-         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
-            if ($$10 < $$3) {
-               double $$11 = this.d.getDouble($$10);
-               if ($$11 != 0.0) {
-                  this.b[$$10] = new esr($$0);
-               } else {
-                  a($$0);
+            this.containsNullKey = true;
+            $$4 = this.n;
+         } else {
+            if (this.i != -1 && $$1 == this.j) {
+               return this.a(this.i, $$3);
+            }
+
+            long[] $$5 = this.key;
+            $$4 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
+               if ($$7 == $$1) {
+                  this.i = $$4;
+                  this.j = $$1;
+                  return this.a($$4, $$3);
                }
-            } else {
-               a($$0);
+
+               $$4 = $$4 + 1 & this.mask;
             }
          }
 
-         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
-            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
-         }
-
-         if ($$4 < $$3 - 1) {
-            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
-         }
-      }
-
-      this.f = Math.pow(2.0, (double)(-$$4));
-      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
-      this.g = this.c(2.0);
-   }
-
-   protected double a() {
-      return this.g;
-   }
-
-   private static void a(bac $$0) {
-      $$0.b(262);
-   }
-
-   public double a(double $$0, double $$1, double $$2) {
-      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
-   }
-
-   @Deprecated
-   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
-      double $$6 = 0.0;
-      double $$7 = this.f;
-      double $$8 = this.e;
-
-      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
-         esr $$10 = this.b[$$9];
-         if ($$10 != null) {
-            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
-            $$6 += this.d.getDouble($$9) * $$11 * $$8;
-         }
-
-         $$7 *= 2.0;
-         $$8 /= 2.0;
-      }
-
-      return $$6;
-   }
-
-   public double a(double $$0) {
-      return this.c($$0 + 2.0);
-   }
-
-   private double c(double $$0) {
-      double $$1 = 0.0;
-      double $$2 = this.e;
-
-      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
-         esr $$4 = this.b[$$3];
-         if ($$4 != null) {
-            $$1 += this.d.getDouble($$3) * $$0 * $$2;
-         }
-
-         $$2 /= 2.0;
-      }
-
-      return $$1;
-   }
-
-   @Nullable
-   public esr a(int $$0) {
-      return this.b[this.b.length - 1 - $$0];
-   }
-
-   public static double b(double $$0) {
-      return $$0 - (double)azu.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
-   }
-
-   protected int b() {
-      return this.c;
-   }
-
-   protected DoubleList c() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public void a(StringBuilder $$0) {
-      $$0.append("PerlinNoise{");
-      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
-      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
-
-      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
-         $$0.append($$2).append(": ");
-         esr $$3 = this.b[$$2];
-         if ($$3 == null) {
-            $$0.append("null");
+         this.key[$$4] = $$1;
+         this.value[$$4] = $$3;
+         if (this.size == 0) {
+            this.first = this.last = $$4;
+            this.link[$$4] = -1L;
          } else {
-            $$3.a($$0);
+            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
+            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
+            this.last = $$4;
          }
 
-         $$0.append(", ");
+         if (this.size++ >= this.maxFill) {
+            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
+         }
+
+         return false;
       }
 
-      $$0.append("]");
-      $$0.append("}");
+      private boolean a(int $$0, long $$1) {
+         boolean $$2 = (this.value[$$0] & $$1) != 0L;
+         this.value[$$0] = this.value[$$0] | $$1;
+         return $$2;
+      }
+
+      public boolean d(long $$0) {
+         long $$1 = a($$0);
+         int $$2 = b($$0);
+         long $$3 = 1L << $$2;
+         if ($$1 == 0L) {
+            return this.containsNullKey ? this.e($$3) : false;
+         } else if (this.i != -1 && $$1 == this.j) {
+            return this.b(this.i, $$3);
+         } else {
+            long[] $$4 = this.key;
+            int $$5 = (int)HashCommon.mix($$1) & this.mask;
+
+            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
+               if ($$1 == $$6) {
+                  this.i = $$5;
+                  this.j = $$1;
+                  return this.b($$5, $$3);
+               }
+
+               $$5 = $$5 + 1 & this.mask;
+            }
+
+            return false;
+         }
+      }
+
+      private boolean e(long $$0) {
+         if ((this.value[this.n] & $$0) == 0L) {
+            return false;
+         } else {
+            this.value[this.n] = this.value[this.n] & ~$$0;
+            if (this.value[this.n] != 0L) {
+               return true;
+            } else {
+               this.containsNullKey = false;
+               this.size--;
+               this.fixPointers(this.n);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      private boolean b(int $$0, long $$1) {
+         if ((this.value[$$0] & $$1) == 0L) {
+            return false;
+         } else {
+            this.value[$$0] = this.value[$$0] & ~$$1;
+            if (this.value[$$0] != 0L) {
+               return true;
+            } else {
+               this.i = -1;
+               this.size--;
+               this.fixPointers($$0);
+               this.shiftKeys($$0);
+               if (this.size < this.maxFill / 4 && this.n > 16) {
+                  this.rehash(this.n / 2);
+               }
+
+               return true;
+            }
+         }
+      }
+
+      public long a() {
+         if (this.size == 0) {
+            throw new NoSuchElementException();
+         } else {
+            int $$0 = this.first;
+            long $$1 = this.key[$$0];
+            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
+            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
+            if (this.value[$$0] == 0L) {
+               this.removeFirstLong();
+               this.i = -1;
+            }
+
+            return a($$1, $$2);
+         }
+      }
+
+      protected void rehash(int $$0) {
+         if ($$0 > this.k) {
+            super.rehash($$0);
+         }
+      }
    }
 }

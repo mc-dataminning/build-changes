@@ -1,19 +1,33 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dad {
-   a(0),
-   b(1);
+public record dad(jv<btn> c) implements dab {
+   public static final MapCodec<dad> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kg.a(mc.W).fieldOf("effects").forGetter(dad::b)).apply($$0, dad::new));
+   public static final ym<vz, dad> b = ym.a(yk.c(mc.W), dad::b, dad::new);
 
-   public static final IntFunction<dad> c = ayl.a(dad::a, values(), ayl.a.a);
-   public static final zi<ByteBuf, dad> d = zg.a(c, dad::a);
-   private final int e;
-
-   private dad(final int $$0) {
-      this.e = $$0;
+   public dad(jr<btn> $$0) {
+      this(jv.a($$0));
    }
 
-   public int a() {
-      return this.e;
+   @Override
+   public dab.a<dad> a() {
+      return dab.a.b;
+   }
+
+   @Override
+   public boolean a(dgi $$0, cwp $$1, bvg $$2) {
+      boolean $$3 = false;
+
+      for (jr<btn> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   public jv<btn> b() {
+      return this.c;
    }
 }

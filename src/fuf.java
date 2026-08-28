@@ -1,140 +1,168 @@
-public abstract class fuf extends ftr {
-   private static final xk u = xk.c("advMode.setCommand");
-   private static final xk v = xk.c("advMode.command");
-   private static final xk w = xk.c("advMode.previousOutput");
-   protected foh a;
-   protected foh b;
-   protected fny c;
-   protected fny d;
-   protected fof<Boolean> s;
-   fob x;
+import java.net.URI;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   public fuf() {
-      super(flq.a);
+public class fuf extends fuk {
+   private static final aku a = aku.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final wo v = wo.c("menu.returnToGame");
+   private static final wo w = wo.c("gui.advancements");
+   private static final wo x = wo.c("gui.stats");
+   private static final wo y = wo.c("menu.sendFeedback");
+   private static final wo z = wo.c("menu.reportBugs");
+   private static final wo A = wo.c("menu.feedback");
+   private static final wo B = wo.c("menu.server_links");
+   private static final wo C = wo.c("menu.options");
+   private static final wo D = wo.c("menu.shareToLan");
+   private static final wo E = wo.c("menu.playerReporting");
+   private static final wo F = wo.c("menu.returnToMenu");
+   private static final wo G = wo.c("menu.savingLevel");
+   private static final wo H = wo.c("menu.game");
+   private static final wo I = wo.c("menu.paused");
+   private final boolean J;
+   @Nullable
+   private fos K;
+
+   public fuf(boolean $$0) {
+      super($$0 ? H : I);
+      this.J = $$0;
+   }
+
+   public boolean m() {
+      return this.J;
+   }
+
+   @Override
+   protected void aR_() {
+      if (this.J) {
+         this.E();
+      }
+
+      this.c(new fpz(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
+   }
+
+   private void E() {
+      fsf $$0 = new fsf();
+      $$0.c().a(4, 4, 4, 0);
+      fsf.b $$1 = $$0.d(2);
+      $$1.a(fos.a(v, $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new fuu(this.m.t.j.p(), this)));
+      $$1.a(this.a(x, () -> new fuo(this, this.m.t.m())));
+      alm $$2 = this.m.t.j.E();
+      if ($$2.a()) {
+         a(this, $$1);
+      } else {
+         $$1.a(this.a(A, () -> new fuf.a(this)));
+         $$1.a(this.a(B, () -> new fxc(this, $$2)));
+      }
+
+      $$1.a(this.a(C, () -> new fxn(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new ful(this)));
+      } else {
+         $$1.a(this.a(E, () -> new fzc(this)));
+      }
+
+      wo $$3 = this.m.T() ? F : wn.p;
+      this.K = $$1.a(fos.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.ba().a(this.m, this, this::F, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fse.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
+   }
+
+   static void a(fuk $$0, fsf.b $$1) {
+      $$1.a(a($$0, y, ab.b().g() ? axv.i : axv.h));
+      $$1.a(a($$0, z, axv.j)).j = !ab.b().d().a();
+   }
+
+   private void F() {
+      boolean $$0 = this.m.T();
+      ggn $$1 = this.m.S();
+      this.m.s.ac();
+      if ($$0) {
+         this.m.b(new ftv(G));
+      } else {
+         this.m.y();
+      }
+
+      fum $$2 = new fum();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fgf($$2));
+      } else {
+         this.m.a(new fxa($$2));
+      }
    }
 
    @Override
    public void e() {
-      if (!this.l().j()) {
-         this.aP_();
-      }
-   }
-
-   abstract dfz l();
-
-   abstract int E();
-
-   @Override
-   protected void aT_() {
-      this.c = this.c(fny.a(xj.d, $$0x -> this.F()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
-      this.d = this.c(fny.a(xj.e, $$0x -> this.aP_()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
-      boolean $$0 = this.l().p();
-      this.s = this.c(fof.a(xk.b("O"), xk.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.E(), 20, 20, xk.c("advMode.trackOutput"), ($$0x, $$1) -> {
-         dfz $$2 = this.l();
-         $$2.a($$1);
-         this.c($$1);
-      }));
-      this.a = new foh(this.p, this.n / 2 - 150, 50, 300, 20, xk.c("advMode.command")) {
-         @Override
-         protected xy aR_() {
-            return super.aR_().b(fuf.this.x.e());
-         }
-      };
-      this.a.f(32500);
-      this.a.b(this::a);
-      this.d(this.a);
-      this.b = new foh(this.p, this.n / 2 - 150, this.E(), 276, 20, xk.c("advMode.previousOutput"));
-      this.b.f(32500);
-      this.b.e(false);
-      this.b.a("-");
-      this.d(this.b);
-      this.x = new fob(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
-      this.x.a(true);
-      this.x.d();
-      this.c($$0);
+      super.e();
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.a);
-   }
-
-   @Override
-   protected xk z() {
-      return this.x.a() ? this.x.b() : super.z();
-   }
-
-   @Override
-   public void a(flz $$0, int $$1, int $$2) {
-      String $$3 = this.a.a();
-      this.b($$0, $$1, $$2);
-      this.a.a($$3);
-      this.x.d();
-   }
-
-   @Override
-   protected void c(boolean $$0) {
-      this.b.a($$0 ? this.l().l().getString() : "-");
-   }
-
-   protected void F() {
-      dfz $$0 = this.l();
-      this.a($$0);
-      if (!$$0.p()) {
-         $$0.c(null);
-      }
-
-      this.m.a(null);
-   }
-
-   protected abstract void a(dfz var1);
-
-   private void a(String $$0) {
-      this.x.d();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.x.a($$0, $$1, $$2)) {
-         return true;
-      } else if (super.a($$0, $$1, $$2)) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return false;
-      } else {
-         this.F();
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, u, this.n / 2, 20, 16777215);
-      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
-      this.a.a($$0, $$1, $$2, $$3);
-      int $$4 = 75;
-      if (!this.b.a().isEmpty()) {
-         $$4 += 5 * 9 + 1 + this.E() - 135;
-         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
-         this.b.a($$0, $$1, $$2, $$3);
+      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
+         $$0.a(gmh::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
       }
-
-      this.x.a($$0, $$1, $$2);
    }
 
    @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private fos a(wo $$0, Supplier<fuk> $$1) {
+      return fos.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
+   }
+
+   private static fos a(fuk $$0, wo $$1, URI $$2) {
+      return fos.a($$1, fth.b($$0, $$2)).a(98).a();
+   }
+
+   static class a extends fuk {
+      private static final wo b = wo.c("menu.feedback.title");
+      public final fuk a;
+      private final fsg c = new fsg(this);
+
+      protected a(fuk $$0) {
+         super(b);
+         this.a = $$0;
+      }
+
+      @Override
+      protected void aR_() {
+         this.c.a(b, this.p);
+         fsf $$0 = this.c.c(new fsf());
+         $$0.c().a(4, 4, 4, 0);
+         fsf.b $$1 = $$0.d(2);
+         fuf.a(this, $$1);
+         this.c.b(fos.a(wn.k, $$0x -> this.aO_()).a(200).a());
+         this.c.a(this::c);
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void aO_() {
+         this.m.a(this.a);
+      }
    }
 }

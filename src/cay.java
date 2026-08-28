@@ -1,40 +1,35 @@
 import com.google.common.collect.ImmutableMap;
 
-public class cay extends bxq<cpa> {
-   public cay() {
-      super(ImmutableMap.of());
+public class cay<E extends cnz> extends bwz<E> {
+   private static final double c = 6.0;
+   private static final double d = 20.0;
+
+   public cay(int $$0) {
+      super(ImmutableMap.of(cek.aB, cel.a, cek.o, cel.b, cek.m, cel.b, cek.n, cel.c, cek.B, cel.c, cek.az, cel.c, cek.aG, cel.c), $$0);
    }
 
-   protected boolean a(arx $$0, cpa $$1, long $$2) {
-      return c($$1) || b($$1);
+   protected boolean a(arc $$0, E $$1, long $$2) {
+      return true;
    }
 
-   protected void b(arx $$0, cpa $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bwz<?> $$3 = $$1.ec();
-         if (!$$3.c(crf.g)) {
-            $$3.b(cfb.t);
-            $$3.b(cfb.m);
-            $$3.b(cfb.n);
-            $$3.b(cfb.r);
-            $$3.b(cfb.q);
+   protected void b(arc $$0, E $$1, long $$2) {
+      $$1.a(awa.CK, 5.0F, 1.0F);
+   }
+
+   protected void c(arc $$0, E $$1, long $$2) {
+      if ($$1.c(bvs.m)) {
+         $$1.b(bvs.a);
+      }
+
+      $$1.ec().b(cek.aB);
+      $$1.ec().c(cek.B).filter($$1::b).ifPresent($$1x -> {
+         if ($$1.a($$1x, 6.0, 20.0)) {
+            $$1.d($$1x);
          }
 
-         $$3.a(crf.g);
-      }
-   }
-
-   protected void c(arx $$0, cpa $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bvx $$0) {
-      return $$0.ec().a(cfb.A);
-   }
-
-   public static boolean c(bvx $$0) {
-      return $$0.ec().a(cfb.x);
+         if (!$$1.ec().a(cek.az)) {
+            coa.a($$1, $$1x.dw());
+         }
+      });
    }
 }

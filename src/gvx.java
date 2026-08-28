@@ -1,35 +1,23 @@
-public class gvx extends gwa<gzb, gcm> {
-   private final gcf a;
-   private final gyx b = new gyx();
-
-   public gvx(gti<gzb, gcm> $$0, gef $$1) {
+public class gvx extends gwr<gyd, gbt> {
+   public gvx(gtz<gyd, gbt> $$0) {
       super($$0);
-      this.a = new gcf($$1.a(gei.bN));
-      this.b.c = gcf.a.e;
    }
 
-   public void a(fgl $$0, glg $$1, int $$2, gzb $$3, float $$4, float $$5) {
-      cie.b $$6 = $$3.aE;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
-      }
+   public void a(ffu $$0, glx $$1, int $$2, gyd $$3, float $$4, float $$5) {
+      hbl $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         float $$7 = 1.0F;
+         float $$8 = -1.0F;
+         float $$9 = ayz.e($$3.ab) / 60.0F;
+         if ($$3.ab < 0.0F) {
+            $$0.a(0.0F, 1.0F - $$9 * 0.5F, -1.0F + $$9 * 0.5F);
+         } else {
+            $$0.a(0.0F, 1.0F + $$9 * 0.8F, -1.0F + $$9 * 0.2F);
+         }
 
-      cie.b $$7 = $$3.aF;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+         $$6.a($$0, $$1, $$2, hea.d);
+         $$0.b();
       }
-   }
-
-   private void a(fgl $$0, glg $$1, int $$2, gzb $$3, cie.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
-      this.b.p = $$3.p;
-      this.b.X = $$3.X;
-      this.b.Y = $$3.Y;
-      this.b.U = $$5;
-      this.b.V = $$6;
-      this.a.a(this.b);
-      this.a.a($$0, $$1.getBuffer(this.a.a(gsy.a($$4))), $$2, hax.d);
-      $$0.b();
    }
 }

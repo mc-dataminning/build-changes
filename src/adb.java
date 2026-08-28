@@ -1,60 +1,88 @@
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class adb implements zr<acg> {
-   public static final zi<wv, adb> a = zr.a(adb::a, adb::new);
-   private final int b;
-   private final int c;
-   private final List<cxg> d;
-   private final cxg e;
+public class adb {
+   private static final ym<ByteBuf, byte[]> a = yk.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
 
-   public adb(int $$0, int $$1, jz<cxg> $$2, cxg $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = jz.a($$2.size(), cxg.j);
+   public adb(dfo $$0, eso $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
 
-      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
-         this.d.set($$4, $$2.get($$4).v());
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, dgr.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, dgr.b, $$4, this.c, this.e, this.g);
+         }
       }
-
-      this.e = $$3.v();
    }
 
-   private adb(wv $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = cxg.i.decode($$0);
-      this.e = cxg.g.decode($$0);
+   public adb(vl $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   private void a(wv $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      cxg.i.encode($$0, this.d);
-      cxg.g.encode($$0, this.e);
+   public void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   @Override
-   public zt<adb> a() {
-      return agz.u;
+   private void a(dfo $$0, eso $$1, dgr $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dyx $$7 = $$1.a($$2).a(kk.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public void a(acg $$0) {
-      $$0.a(this);
-   }
-
-   public int b() {
+   public BitSet a() {
       return this.b;
    }
 
-   public List<cxg> e() {
+   public BitSet b() {
       return this.d;
    }
 
-   public cxg f() {
+   public List<byte[]> c() {
+      return this.f;
+   }
+
+   public BitSet d() {
+      return this.c;
+   }
+
+   public BitSet e() {
       return this.e;
    }
 
-   public int g() {
-      return this.c;
+   public List<byte[]> f() {
+      return this.g;
    }
 }

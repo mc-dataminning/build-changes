@@ -1,23 +1,40 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ejq(int b, int c, int d) implements eit {
-   public static final Codec<ejq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azd.m.fieldOf("spread_width").forGetter(ejq::a), azd.m.fieldOf("spread_height").forGetter(ejq::b), azd.m.fieldOf("max_height").forGetter(ejq::c)
-            )
-            .apply($$0, ejq::new)
+public class ejq extends ejo {
+   public static final MapCodec<ejq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ejq::new)
    );
+   protected final int b;
 
-   public int a() {
+   public ejq(bro $$0, bro $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
+   }
+
+   @Override
+   protected ejp<?> a() {
+      return ejp.g;
+   }
+
+   @Override
+   protected void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, int $$4, ejo.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
+         int $$11 = $$7 + $$5.b() + 1 - $$10;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
+      }
+   }
+
+   @Override
+   public int a(azh $$0, int $$1, eiy $$2) {
       return this.b;
    }
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   @Override
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

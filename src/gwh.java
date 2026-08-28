@@ -1,17 +1,27 @@
-public class gwh extends gwa<gzb, gcm> {
-   public static final alp a = alp.b("textures/entity/trident_riptide.png");
-   private final gdj b;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   public gwh(gti<gzb, gcm> $$0, gef $$1) {
+public class gwh extends gwr<gzc, gcp> {
+   private static final Map<buh.a, aku> a = ImmutableMap.of(
+      buh.a.b,
+      aku.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
+      buh.a.c,
+      aku.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
+      buh.a.d,
+      aku.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
+   );
+
+   public gwh(gtz<gzc, gcp> $$0) {
       super($$0);
-      this.b = new gdj($$1.a(gei.cn));
    }
 
-   public void a(fgl $$0, glg $$1, int $$2, gzb $$3, float $$4, float $$5) {
-      if ($$3.ag) {
-         fgp $$6 = $$1.getBuffer(this.b.a(a));
-         this.b.a($$3);
-         this.b.a($$0, $$6, $$2, hax.d);
+   public void a(ffu $$0, glx $$1, int $$2, gzc $$3, float $$4, float $$5) {
+      if (!$$3.z) {
+         buh.a $$6 = $$3.c;
+         if ($$6 != buh.a.a) {
+            aku $$7 = a.get($$6);
+            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
+         }
       }
    }
 }

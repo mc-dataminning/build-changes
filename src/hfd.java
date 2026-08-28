@@ -1,47 +1,17 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
 
-public interface hfd {
-   alp a();
+public class hfd extends auu<int[]> {
+   private static final aku a = aku.b("textures/colormap/grass.png");
 
-   @Nullable
-   hgk a(hgj var1);
-
-   hfa b();
-
-   aww c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hfd.a k();
-
-   default boolean r() {
-      return false;
+   protected int[] a(aup $$0, bos $$1) {
+      try {
+         return hff.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
    }
 
-   default boolean s() {
-      return true;
-   }
-
-   static bac t() {
-      return bac.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   protected void a(int[] $$0, aup $$1, bos $$2) {
+      dgg.a($$0);
    }
 }

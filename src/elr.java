@@ -1,69 +1,53 @@
-import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public class elr extends elz {
+public class elr extends elt {
    public static final MapCodec<elr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  azd.m.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bsf.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
+      $$0 -> $$0.group(
+               edm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               edm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
             )
             .apply($$0, elr::new)
    );
-   private final int b;
-   private final bsf h;
+   private static final Logger b = LogUtils.getLogger();
+   private final edm d;
+   private final edm e;
+   private final int f;
 
-   public elr(int $$0, int $$1, int $$2, int $$3, bsf $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   private elr(edm $$0, edm $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static elr a(edm $$0, edm $$1, int $$2) {
+      return new elr($$0, $$1, $$2);
    }
 
    @Override
-   protected ema<?> a() {
-      return ema.g;
+   public int a(azh $$0, edp $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public List<ekf.a> a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, int $$3, jh $$4, ejp $$5) {
-      jm $$6 = jm.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      jh.a $$8 = $$4.k();
-      jh $$9 = $$8.e();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<ekf.a> $$10 = Lists.newArrayList();
+   public elu<?> a() {
+      return elu.c;
+   }
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
-         }
-
-         if (eib.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new ekf.a($$8.j(), 0, false));
-         }
-
-         $$8.c(jm.b);
-      }
-
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (eib.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new ekf.a($$8.j(), 0, false));
-         $$8.c($$6);
-      }
-
-      return $$10;
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

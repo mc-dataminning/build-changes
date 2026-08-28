@@ -1,31 +1,59 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import java.util.List;
 
-public class fin extends fiq {
-   public long a;
-   public List<fim> b = Lists.newArrayList();
+public abstract class fin {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public static fin a(String $$0) {
-      fin $$1 = new fin();
-      JsonParser $$2 = new JsonParser();
+   public fin(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fkm.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               fim $$8 = fim.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
+   public void a(fod $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
+   }
+
+   protected abstract void a(fod var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(fod $$0, List<fin> $$1, fol<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (fin $$7 : $$1) {
+         if ($$2.a() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
+         }
+      }
+   }
+
+   public static void a(fol<?> $$0, fpo.a<?> $$1, List<fin> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aH_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.a($$6);
+         int $$7 = $$0.u();
+         int $$8 = $$0.d($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
+
+         for (fin $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
             }
          }
-      } catch (Exception var10) {
       }
-
-      return $$1;
    }
 }

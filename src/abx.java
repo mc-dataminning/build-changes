@@ -1,23 +1,37 @@
-import io.netty.buffer.ByteBuf;
+public class abx implements yv<abk> {
+   public static final ym<vl, abx> a = yv.a(abx::a, abx::new);
+   private final bsg b;
+   private final boolean c;
 
-public class abx implements zr<abw> {
-   public static final abx a = new abx();
-   public static final zi<ByteBuf, abx> b = zi.a(a);
+   public abx(bsg $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   private abx() {
+   private abx(vl $$0) {
+      this.b = bsg.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(vl $$0) {
+      $$0.l(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zt<abx> a() {
-      return abu.f;
+   public yx<abx> a() {
+      return agd.m;
    }
 
-   public void a(abw $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public boolean b() {
+      return this.c;
+   }
+
+   public bsg e() {
+      return this.b;
    }
 }

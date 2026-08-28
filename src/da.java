@@ -3,63 +3,30 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record da(Optional<be<asp<xk>, da.a>> c, Optional<String> d, Optional<String> e, dj.d f, Optional<Boolean> g) implements dz<dao> {
-   public static final Codec<da> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               be.a(da.a.a).optionalFieldOf("pages").forGetter(da::b),
-               Codec.STRING.optionalFieldOf("author").forGetter(da::c),
-               Codec.STRING.optionalFieldOf("title").forGetter(da::d),
-               dj.d.d.optionalFieldOf("generation", dj.d.c).forGetter(da::e),
-               Codec.BOOL.optionalFieldOf("resolved").forGetter(da::f)
-            )
-            .apply($$0, da::new)
-   );
+public record da(Optional<bf<aru<String>, da.a>> c) implements ea<czw> {
+   public static final Codec<da> a = RecordCodecBuilder.create($$0 -> $$0.group(bf.a(da.a.a).optionalFieldOf("pages").forGetter(da::b)).apply($$0, da::new));
 
    @Override
-   public kt<dao> a() {
-      return ku.T;
+   public ku<czw> a() {
+      return kv.S;
    }
 
-   public boolean a(cxg $$0, dao $$1) {
-      if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
-         return false;
-      } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
-         return false;
-      } else if (!this.f.d($$1.f())) {
-         return false;
-      } else {
-         return this.g.isPresent() && this.g.get() != $$1.g() ? false : !this.c.isPresent() || this.c.get().a($$1.a());
-      }
+   public boolean a(cwp $$0, czw $$1) {
+      return !this.c.isPresent() || this.c.get().a($$1.a());
    }
 
-   public Optional<be<asp<xk>, da.a>> b() {
+   public Optional<bf<aru<String>, da.a>> b() {
       return this.c;
    }
 
-   public Optional<String> c() {
-      return this.d;
-   }
+   public static record a(String b) implements Predicate<aru<String>> {
+      public static final Codec<da.a> a = Codec.STRING.xmap(da.a::new, da.a::a);
 
-   public Optional<String> d() {
-      return this.e;
-   }
-
-   public dj.d e() {
-      return this.f;
-   }
-
-   public Optional<Boolean> f() {
-      return this.g;
-   }
-
-   public static record a(xk b) implements Predicate<asp<xk>> {
-      public static final Codec<da.a> a = xm.a.xmap(da.a::new, da.a::a);
-
-      public boolean a(asp<xk> $$0) {
+      public boolean a(aru<String> $$0) {
          return $$0.a().equals(this.b);
       }
 
-      public xk a() {
+      public String a() {
          return this.b;
       }
    }

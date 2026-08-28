@@ -1,23 +1,23 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.Optional;
 
-public class bjh extends DataFix {
+public class bjh extends bgr {
    public bjh(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "Zombie Villager XP rebuild", bhw.B, "minecraft:zombie_villager");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bin.I.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bin.I))) {
-         throw new IllegalStateException("Team type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere("TeamDisplayNameFix", $$0, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DisplayName", bbh::a)));
-      }
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
+         if ($$1.isEmpty()) {
+            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
+            return $$0x.set("Xp", $$0x.createInt(biy.a($$2)));
+         } else {
+            return $$0x;
+         }
+      });
    }
 }

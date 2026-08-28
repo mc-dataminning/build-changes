@@ -1,54 +1,43 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class ehp extends egp<eji> {
-   public ehp(Codec<eji> $$0) {
+public class ehp extends efy<eij> {
+   private static final ji a = new ji(8, 3, 8);
+   private static final dfo b = new dfo(a);
+   private static final int c = 16;
+   private static final int d = 1;
+
+   public ehp(Codec<eij> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(egr<eji> $$0) {
-      eji $$1 = $$0.f();
-      dhx $$2 = $$0.b();
-      bac $$3 = $$0.d();
-      dkd $$4 = $$1.b.b();
-      jh $$5 = a($$2, $$0.e().k().a(jm.a.b, $$2.L_() + 1, $$2.an()), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (jh $$11 : jh.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dxo $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
-      }
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
-   @Nullable
-   private static jh a(dha $$0, jh.a $$1, dkd $$2) {
-      while ($$1.v() > $$0.L_() + 1) {
-         dxo $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
+   @Override
+   public boolean a(ega<eij> $$0) {
+      dhg $$1 = $$0.b();
+      dfo $$2 = new dfo($$0.e());
+      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
+         return true;
+      } else {
+         ji $$3 = a.h($$0.e().v() + a.v());
+         ji.a $$4 = new ji.a();
+
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, djo.m.m(), 2);
+                  } else {
+                     $$1.a($$4, djo.b.m(), 2);
+                  }
+               }
+            }
          }
 
-         $$1.c(jm.a);
+         return true;
       }
-
-      return null;
    }
 }

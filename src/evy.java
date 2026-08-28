@@ -1,54 +1,81 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import java.util.List;
+import java.util.function.Function;
 
-public class evy {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final evo d;
-   private final boolean e;
+public class evy extends ewa {
+   public static final MapCodec<evy> a = a(evy::new);
 
-   private evy(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new evo($$3, $$4);
-      this.e = $$5;
+   evy(List<ewh> $$0, List<eza> $$1) {
+      super($$0, $$1);
    }
 
-   public static evy a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new evy(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(ab.b().c()),
-            $$3.get("Id").asInt(ab.b().d().c()),
-            $$3.get("Series").asString(evo.a),
-            $$3.get("Snapshot").asBoolean(!ab.b().g())
-         )
-         : new evy($$1, $$2, "", 0, evo.a, false);
+   @Override
+   public ewi a() {
+      return ewf.g;
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   protected evz a(List<? extends evz> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (evz)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (evz $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+      };
    }
 
-   public long b() {
-      return this.b;
+   @Override
+   public void a(evx $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
+      }
    }
 
-   public String c() {
-      return this.c;
+   public static evy.a a(ewh.a<?>... $$0) {
+      return new evy.a($$0);
    }
 
-   public evo d() {
-      return this.d;
+   public static <E> evy.a a(Collection<E> $$0, Function<E, ewh.a<?>> $$1) {
+      return new evy.a($$0.stream().map($$1::apply).toArray(ewh.a[]::new));
    }
 
-   public boolean e() {
-      return this.e;
+   public static class a extends ewh.a<evy.a> {
+      private final Builder<ewh> a = ImmutableList.builder();
+
+      public a(ewh.a<?>... $$0) {
+         for (ewh.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected evy.a a() {
+         return this;
+      }
+
+      @Override
+      public evy.a a(ewh.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public ewh b() {
+         return new evy(this.a.build(), this.f());
+      }
    }
 }

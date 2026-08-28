@@ -1,80 +1,84 @@
-import com.google.common.collect.Lists;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Stream;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class als extends IOException {
-   private final List<als.a> a = Lists.newArrayList();
-   private final String b;
+public class als {
+   private static final Logger a = LogUtils.getLogger();
 
-   public als(String $$0) {
-      this.a.add(new als.a());
-      this.b = $$0;
-   }
-
-   public als(String $$0, Throwable $$1) {
-      super($$1);
-      this.a.add(new als.a());
-      this.b = $$0;
-   }
-
-   public void a(String $$0) {
-      this.a.get(0).a($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.get(0).a = $$0;
-      this.a.add(0, new als.a());
-   }
-
-   @Override
-   public String getMessage() {
-      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
-   }
-
-   public static als a(Exception $$0) {
-      if ($$0 instanceof als) {
-         return (als)$$0;
-      } else {
-         String $$1 = $$0.getMessage();
-         if ($$0 instanceof FileNotFoundException) {
-            $$1 = "File not found";
-         }
-
-         return new als($$1, $$0);
+   public static <D, R> CompletableFuture<R> a(als.c $$0, als.f<D> $$1, als.e<D, R> $$2, Executor $$3, Executor $$4) {
+      try {
+         Pair<dhf, auf> $$5 = $$0.a.a();
+         auf $$6 = (auf)$$5.getSecond();
+         jy<ald> $$7 = ald.a();
+         List<ke.a<?>> $$8 = axg.a($$6, $$7.a(ald.a));
+         kf.b $$9 = $$7.b(ald.b);
+         List<jt.b<?>> $$10 = axg.a($$9, $$8);
+         kf.b $$11 = akp.a($$6, $$10, akp.a);
+         List<jt.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
+         kf.b $$13 = akp.a($$6, $$12, akp.b);
+         dhf $$14 = (dhf)$$5.getFirst();
+         jt.a $$15 = jt.a.a($$12.stream());
+         als.b<D> $$16 = $$1.get(new als.a($$6, $$14, $$15, $$13));
+         jy<ald> $$17 = $$7.a(ald.b, $$11, $$16.b);
+         return alf.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
+            if ($$2x != null) {
+               $$6.close();
+            }
+         }).thenApplyAsync($$4x -> {
+            $$4x.g();
+            return $$2.create($$6, $$4x, $$17, $$16.a);
+         }, $$4);
+      } catch (Exception var18) {
+         return CompletableFuture.failedFuture(var18);
       }
    }
 
-   public static class a {
-      @Nullable
-      String a;
-      private final List<String> b = Lists.newArrayList();
+   public static record a(aup a, dhf b, jt.a c, kf.b d) {
+   }
 
-      a() {
+   public static record b<D>(D a, kf.b b) {
+   }
+
+   public static record c(als.d a, ey.a b, int c) {
+   }
+
+   public static record d(aua a, dhf b, boolean c, boolean d) {
+      public Pair<dhf, auf> a() {
+         dhf $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+         List<atb> $$1 = this.a.h();
+         auf $$2 = new aui(atd.b, $$1);
+         return Pair.of($$0, $$2);
       }
 
-      void a(String $$0) {
-         this.b.add(0, $$0);
-      }
-
-      @Nullable
-      public String a() {
+      public aua b() {
          return this.a;
       }
 
-      public String b() {
-         return StringUtils.join(this.b, "->");
+      public dhf c() {
+         return this.b;
       }
 
-      @Override
-      public String toString() {
-         if (this.a != null) {
-            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
-         } else {
-            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
-         }
+      public boolean d() {
+         return this.c;
       }
+
+      public boolean e() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface e<D, R> {
+      R create(auf var1, alf var2, jy<ald> var3, D var4);
+   }
+
+   @FunctionalInterface
+   public interface f<D> {
+      als.b<D> get(als.a var1);
    }
 }

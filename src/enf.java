@@ -1,38 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface enf {
+   akt<ens> a = a("villages");
+   akt<ens> b = a("desert_pyramids");
+   akt<ens> c = a("igloos");
+   akt<ens> d = a("jungle_temples");
+   akt<ens> e = a("swamp_huts");
+   akt<ens> f = a("pillager_outposts");
+   akt<ens> g = a("ocean_monuments");
+   akt<ens> h = a("woodland_mansions");
+   akt<ens> i = a("buried_treasures");
+   akt<ens> j = a("mineshafts");
+   akt<ens> k = a("ruined_portals");
+   akt<ens> l = a("shipwrecks");
+   akt<ens> m = a("ocean_ruins");
+   akt<ens> n = a("nether_complexes");
+   akt<ens> o = a("nether_fossils");
+   akt<ens> p = a("end_cities");
+   akt<ens> q = a("ancient_cities");
+   akt<ens> r = a("strongholds");
+   akt<ens> s = a("trail_ruins");
+   akt<ens> t = a("trial_chambers");
 
-public class enf extends eno {
-   public static final MapCodec<enf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, enf::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
-
-   private enf(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static enf a(int $$0, double $$1, double $$2) {
-      return new enf($$0, $$1, $$2);
-   }
-
-   @Override
-   protected int a(bac $$0, jh $$1) {
-      double $$2 = dib.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
-   }
-
-   @Override
-   public enl<?> b() {
-      return enl.g;
+   private static akt<ens> a(String $$0) {
+      return akt.a(mc.aW, aku.b($$0));
    }
 }

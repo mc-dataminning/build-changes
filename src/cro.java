@@ -1,147 +1,109 @@
-import javax.annotation.Nullable;
+public abstract class cro extends buk {
+   protected static final ajx<Integer> e = akb.a(cro.class, ajz.b);
+   protected static final ajx<Integer> f = akb.a(cro.class, ajz.b);
+   protected static final ajx<Float> g = akb.a(cro.class, ajz.d);
 
-public abstract class cro extends crn implements crs {
-   private jz<cxg> b = jz.a(36, cxg.j);
-   @Nullable
-   private alo<ewn> c;
-   private long d;
-
-   protected cro(bvi<?> $$0, dgz $$1) {
+   public cro(bur<?> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
    @Override
-   public void a(arx $$0, btr $$1) {
-      super.a($$0, $$1);
-      this.a($$1, $$0, this);
+   public boolean b(bta $$0) {
+      return true;
    }
 
    @Override
-   public cxg a(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public cxg a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cxg b(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cxg $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public bwp a_(int $$0) {
-      return this.h_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cpo $$0) {
-      return this.g($$0);
-   }
-
-   @Override
-   public void a(bvb.d $$0) {
-      if (!this.dW().C && $$0.a()) {
-         bsw.a(this.dW(), this, this);
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   protected void b(um $$0) {
-      super.b($$0);
-      this.a($$0, this.dY());
-   }
-
-   @Override
-   protected void a(um $$0) {
-      super.a($$0);
-      this.b($$0, this.dY());
-   }
-
-   @Override
-   public bta a(cpo $$0, bsz $$1) {
-      return this.b_($$0);
-   }
-
-   @Override
-   protected fbr a(fbr $$0) {
-      float $$1 = 0.98F;
-      if (this.c == null) {
-         int $$2 = 15 - cst.b(this);
-         $$1 += (float)$$2 * 0.001F;
-      }
-
-      if (this.bj()) {
-         $$1 *= 0.95F;
-      }
-
-      return $$0.d((double)$$1, 0.0, (double)$$1);
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   public void a(alo<ewn> $$0, long $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Nullable
-   @Override
-   public cst createMenu(int $$0, cpn $$1, cpo $$2) {
-      if (this.c != null && $$2.aa_()) {
-         return null;
+   public boolean a(arc $$0, bta $$1, float $$2) {
+      if (this.dR()) {
+         return true;
+      } else if (this.d($$1)) {
+         return false;
       } else {
-         this.f($$1.k);
-         return this.a($$0, $$1);
+         boolean var10000;
+         label32: {
+            this.l(-this.O());
+            this.d(10);
+            this.bD();
+            this.b(this.L() + $$2 * 10.0F);
+            this.a(ebt.o, $$1.d());
+            if ($$1.d() instanceof cox $$3 && $$3.gj().d) {
+               var10000 = true;
+               break label32;
+            }
+
+            var10000 = false;
+         }
+
+         boolean $$4 = var10000;
+         if (($$4 || !(this.L() > 40.0F)) && !this.a($$1)) {
+            if ($$4) {
+               this.at();
+            }
+         } else {
+            this.a($$0, $$1);
+         }
+
+         return true;
       }
    }
 
-   protected abstract cst a(int var1, cpn var2);
-
-   @Nullable
-   @Override
-   public alo<ewn> v() {
-      return this.c;
+   boolean a(bta $$0) {
+      return false;
    }
 
    @Override
-   public void a(@Nullable alo<ewn> $$0) {
-      this.c = $$0;
+   public boolean a(dga $$0) {
+      return $$0.c() instanceof bvi && !$$0.a().O().b(dge.c);
+   }
+
+   public void a(arc $$0, cwl $$1) {
+      this.c($$0);
+      if ($$0.O().b(dge.i)) {
+         cwp $$2 = new cwp($$1);
+         $$2.b(kv.g, this.an());
+         this.a($$0, $$2);
+      }
    }
 
    @Override
-   public long x() {
-      return this.d;
+   protected void a(akb.a $$0) {
+      $$0.a(e, 0);
+      $$0.a(f, 1);
+      $$0.a(g, 0.0F);
+   }
+
+   public void d(int $$0) {
+      this.al.a(e, $$0);
+   }
+
+   public void l(int $$0) {
+      this.al.a(f, $$0);
+   }
+
+   public void b(float $$0) {
+      this.al.a(g, $$0);
+   }
+
+   public float L() {
+      return this.al.a(g);
+   }
+
+   public int N() {
+      return this.al.a(e);
+   }
+
+   public int O() {
+      return this.al.a(f);
+   }
+
+   protected void a(arc $$0, bta $$1) {
+      this.a($$0, this.u());
    }
 
    @Override
-   public void a(long $$0) {
-      this.d = $$0;
+   public int bX() {
+      return 10;
    }
 
-   @Override
-   public jz<cxg> B() {
-      return this.b;
-   }
-
-   @Override
-   public void C() {
-      this.b = jz.a(this.b(), cxg.j);
-   }
+   protected abstract cwl u();
 }

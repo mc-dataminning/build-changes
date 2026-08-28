@@ -1,33 +1,27 @@
 import java.util.UUID;
-import javax.annotation.Nullable;
 
-public class aiz implements zr<ahb> {
-   public static final zi<wh, aiz> a = zr.a(aiz::a, aiz::new);
-   private final UUID b;
+public record aiz(String b, UUID c) implements yv<aix> {
+   public static final ym<vl, aiz> a = yv.a(aiz::a, aiz::new);
 
-   public aiz(UUID $$0) {
-      this.b = $$0;
+   private aiz(vl $$0) {
+      this($$0.d(16), $$0.n());
    }
 
-   private aiz(wh $$0) {
-      this.b = $$0.n();
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   private void a(vl $$0) {
+      $$0.a(this.b, 16);
+      $$0.a(this.c);
    }
 
    @Override
-   public zt<aiz> a() {
-      return agz.cj;
+   public yx<aiz> a() {
+      return aiv.g;
    }
 
-   public void a(ahb $$0) {
+   public void a(aix $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bvb a(arx $$0) {
-      return $$0.a(this.b);
+   public UUID e() {
+      return this.c;
    }
 }

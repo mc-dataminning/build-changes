@@ -1,63 +1,50 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.ArrayDeque;
-import java.util.List;
-import java.util.Set;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
 
-public class xx {
-   public static final int a = -1;
-   private static final int b = 128;
-   private final xw[] c;
+public record xx(ho c, Optional<wo> d) implements wp {
+   public static final MapCodec<xx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ho.a.fieldOf("selector").forGetter(xx::b), wq.a.optionalFieldOf("separator").forGetter(xx::c)).apply($$0, xx::new)
+   );
+   public static final wp.a<xx> b = new wp.a<>(a, "selector");
 
-   public xx(int $$0) {
-      this.c = new xw[$$0];
+   @Override
+   public wp.a<?> a() {
+      return b;
    }
 
-   public static xx a() {
-      return new xx(128);
-   }
-
-   public int a(xw $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         if ($$0.equals(this.c[$$1])) {
-            return $$1;
-         }
+   @Override
+   public xc a(@Nullable ex $$0, @Nullable buk $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return wo.i();
+      } else {
+         Optional<? extends wo> $$3 = wr.a($$0, this.d, $$1, $$2);
+         return wr.a(this.c.b().b($$0), $$3, buk::p_);
       }
-
-      return -1;
    }
 
-   @Nullable
-   public xw a(int $$0) {
-      return this.c[$$0];
+   @Override
+   public <T> Optional<T> a(wt.b<T> $$0, xl $$1) {
+      return $$0.accept($$1, this.c.a());
    }
 
-   public void a(yd $$0, @Nullable xw $$1) {
-      List<xw> $$2 = $$0.d().a();
-      ArrayDeque<xw> $$3 = new ArrayDeque<>($$2.size() + 1);
-      $$3.addAll($$2);
-      if ($$1 != null) {
-         $$3.add($$1);
-      }
-
-      this.a($$3);
+   @Override
+   public <T> Optional<T> a(wt.a<T> $$0) {
+      return $$0.accept(this.c.a());
    }
 
-   @VisibleForTesting
-   void a(List<xw> $$0) {
-      this.a(new ArrayDeque<>($$0));
+   @Override
+   public String toString() {
+      return "pattern{" + this.c + "}";
    }
 
-   private void a(ArrayDeque<xw> $$0) {
-      Set<xw> $$1 = new ObjectOpenHashSet($$0);
+   public ho b() {
+      return this.c;
+   }
 
-      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
-         xw $$3 = this.c[$$2];
-         this.c[$$2] = $$0.removeLast();
-         if ($$3 != null && !$$1.contains($$3)) {
-            $$0.addFirst($$3);
-         }
-      }
+   public Optional<wo> c() {
+      return this.d;
    }
 }

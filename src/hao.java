@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hao {
+public class hao extends gyi {
+   public float a;
+   @Nullable
+   public dwx b;
 }

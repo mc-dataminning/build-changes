@@ -1,38 +1,33 @@
-public class fkv extends fky {
-   private static final xk b = xk.c("mco.connect.connecting");
-   private final hhq c;
-   private final fic d;
-   private final fid e;
+import com.mojang.serialization.Codec;
 
-   public fkv(ftr $$0, fic $$1, fid $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hhq($$0);
+public enum fkv implements azc, azv {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
+
+   public static final Codec<fkv> d = azv.a(fkv::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private fkv(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
-   public void run() {
-      if (this.e.a != null) {
-         this.c.a(this.d, ggx.a(this.e.a));
-      } else {
-         this.b();
-      }
+   public String c() {
+      return this.f;
    }
 
    @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      flz.Q().af().i();
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public void c() {
-      this.c.b();
-   }
-
-   @Override
-   public xk a() {
-      return b;
+   public String a() {
+      return this.g;
    }
 }

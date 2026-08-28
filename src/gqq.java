@@ -1,46 +1,55 @@
-public class gqq extends gsr<cnk, gxe, gar> {
-   private static final alp a = alp.b("textures/entity/breeze/breeze.png");
+import org.joml.Quaternionf;
 
-   public gqq(grl.a $$0) {
-      super($$0, new gar($$0.a(gei.K)), 0.5F);
-      this.a(new guy($$0, this));
-      this.a(new gux(this));
+public abstract class gqq extends gsb<cqu, gxu> {
+   public gqq(gsc.a $$0) {
+      super($$0);
+      this.f = 0.8F;
    }
 
-   public void a(gxe $$0, fgl $$1, glg $$2, int $$3) {
-      gar $$4 = this.c();
-      a($$4, $$4.a(), $$4.c());
+   public void a(gxu $$0, ffu $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.375F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
+      float $$4 = $$0.c;
+      if ($$4 > 0.0F) {
+         $$1.a(a.b.rotationDegrees(ayz.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
+      }
+
+      if (!ayz.a($$0.e, 0.0F)) {
+         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      }
+
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      gca<gxu> $$5 = this.a();
+      $$5.a($$0);
+      ffy $$6 = $$2.getBuffer(this.b());
+      $$5.a($$1, $$6, $$3, hea.d);
+      this.b($$0, $$1, $$2, $$3);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
 
-   public alp a(gxe $$0) {
-      return a;
+   protected void b(gxu $$0, ffu $$1, glx $$2, int $$3) {
    }
 
-   public gxe a() {
-      return new gxe();
+   protected abstract gca<gxu> a();
+
+   protected abstract gmh b();
+
+   public gxu c() {
+      return new gxu();
    }
 
-   public void a(cnk $$0, gxe $$1, float $$2) {
+   public void a(cqu $$0, gxu $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a.a($$0.a);
-      $$1.b.a($$0.bZ);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.ca);
-      $$1.f.a($$0.d);
-   }
-
-   public static gar a(gar $$0, gej... $$1) {
-      $$0.a().k = false;
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-
-      for (gej $$2 : $$1) {
-         $$2.k = true;
-      }
-
-      return $$0;
+      $$1.a = $$0.k($$2);
+      $$1.c = (float)$$0.N() - $$2;
+      $$1.b = $$0.O();
+      $$1.d = Math.max($$0.L() - $$2, 0.0F);
+      $$1.e = $$0.a($$2);
+      $$1.f = $$0.bo();
+      $$1.g = $$0.a(0, $$2);
+      $$1.h = $$0.a(1, $$2);
    }
 }

@@ -1,40 +1,68 @@
 import com.mojang.serialization.MapCodec;
 
-public class dox extends dob {
+public class dox extends djm implements djp {
    public static final MapCodec<dox> a = b(dox::new);
-   private static final xk b = xk.c("container.loom");
 
    @Override
    public MapCodec<dox> a() {
       return a;
    }
 
-   protected dox(dxn.d $$0) {
+   public dox(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(axf.ax);
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
+      } else {
+         for (ji $$3 : ji.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(awp.aO)) {
+               return true;
+            }
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (ji $$6 : ji.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         dwx $$7 = $$0.a_($$6);
+         if ($$7.a(djo.oP)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(djo.oY)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
       }
 
-      return bta.a;
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? djo.oP.m() : djo.oY.m(), 3);
+      } else if ($$5) {
+         $$0.a($$2, djo.oP.m(), 3);
+      } else if ($$4) {
+         $$0.a($$2, djo.oY.m(), 3);
+      }
    }
 
    @Override
-   protected btc b(dxo $$0, dgz $$1, jh $$2) {
-      return new bti(($$2x, $$3, $$4) -> new cua($$2x, $$3, ctg.a($$1, $$2)), b);
-   }
-
-   @Override
-   public dxo a(dax $$0) {
-      return this.m().b(aF, $$0.g().g());
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(aF);
+   public djp.a aq_() {
+      return djp.a.a;
    }
 }

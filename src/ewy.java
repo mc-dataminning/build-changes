@@ -1,66 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Set;
 
-public abstract class ewy implements ewq {
-   protected final List<ezr> e;
-   private final Predicate<ewi> a;
+public class ewy extends exe {
+   public static final MapCodec<ewy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(evr.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, ewy::new)
+   );
+   private final evr.b b;
 
-   protected ewy(List<ezr> $$0) {
-      this.e = $$0;
-      this.a = ae.a($$0);
+   public ewy(List<eza> $$0, evr.b $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
-   protected static <T extends ewy> P1<Mu<T>, List<ezr>> a(Instance<T> $$0) {
-      return $$0.group(ezr.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   @Override
+   public exg<ewy> b() {
+      return exh.B;
    }
 
-   public void a(ewo $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   @Override
+   public Set<bai<?>> a() {
+      return Set.of(this.b.a());
    }
 
-   protected final boolean a(ewi $$0) {
-      return this.a.test($$0);
+   @Override
+   public cwp a(cwp $$0, evr $$1) {
+      if ($$0.a(cwt.vm) && $$1.c(this.b.a()) instanceof cox $$2) {
+         $$0.b(kv.ag, new czo($$2.gh()));
+      }
+
+      return $$0;
    }
 
-   public abstract ewz a();
-
-   public abstract static class a<T extends ewy.a<T>> implements ezj<T> {
-      private final Builder<ezr> a = ImmutableList.builder();
-
-      protected abstract T aF_();
-
-      public T a(ezr.a $$0) {
-         this.a.add($$0.build());
-         return this.aF_();
-      }
-
-      public final T e() {
-         return this.aF_();
-      }
-
-      protected List<ezr> f() {
-         return this.a.build();
-      }
-
-      public ewp.a a(ewy.a<?> $$0) {
-         return new ewp.a(this, $$0);
-      }
-
-      public ewu.a b(ewy.a<?> $$0) {
-         return new ewu.a(this, $$0);
-      }
-
-      public exc.a c(ewy.a<?> $$0) {
-         return new exc.a(this, $$0);
-      }
-
-      public abstract ewy b();
+   public static exe.a<?> a(evr.b $$0) {
+      return a($$1 -> new ewy($$1, $$0));
    }
 }

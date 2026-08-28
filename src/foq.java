@@ -1,213 +1,160 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.UUID;
 
-public class foq extends fns {
-   private static final int a = 1;
-   private static final int b = -3092272;
-   private static final String c = "_";
-   private static final int d = -2039584;
-   private static final int e = -857677600;
-   private static final int f = 300;
-   private final fnj m;
-   private final xk n;
-   private final fou o;
-   private long p = ae.c();
+public class foq {
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final aku[] c = new aku[]{
+      aku.b("boss_bar/pink_background"),
+      aku.b("boss_bar/blue_background"),
+      aku.b("boss_bar/red_background"),
+      aku.b("boss_bar/green_background"),
+      aku.b("boss_bar/yellow_background"),
+      aku.b("boss_bar/purple_background"),
+      aku.b("boss_bar/white_background")
+   };
+   private static final aku[] d = new aku[]{
+      aku.b("boss_bar/pink_progress"),
+      aku.b("boss_bar/blue_progress"),
+      aku.b("boss_bar/red_progress"),
+      aku.b("boss_bar/green_progress"),
+      aku.b("boss_bar/yellow_progress"),
+      aku.b("boss_bar/purple_progress"),
+      aku.b("boss_bar/white_progress")
+   };
+   private static final aku[] e = new aku[]{
+      aku.b("boss_bar/notched_6_background"),
+      aku.b("boss_bar/notched_10_background"),
+      aku.b("boss_bar/notched_12_background"),
+      aku.b("boss_bar/notched_20_background")
+   };
+   private static final aku[] f = new aku[]{
+      aku.b("boss_bar/notched_6_progress"), aku.b("boss_bar/notched_10_progress"), aku.b("boss_bar/notched_12_progress"), aku.b("boss_bar/notched_20_progress")
+   };
+   private final flj g;
+   final Map<UUID, fpg> h = Maps.newLinkedHashMap();
 
-   public foq(fnj $$0, int $$1, int $$2, int $$3, int $$4, xk $$5, xk $$6) {
-      super($$1, $$2, $$3, $$4, $$6);
-      this.m = $$0;
-      this.n = $$5;
-      this.o = new fou($$0, $$3 - this.b());
-      this.o.a(this::k);
+   public foq(flj $$0) {
+      this.g = $$0;
    }
 
-   public void a(int $$0) {
-      this.o.a($$0);
-   }
+   public void a(fod $$0) {
+      if (!this.h.isEmpty()) {
+         bos $$1 = bor.a();
+         $$1.a("bossHealth");
+         int $$2 = $$0.a();
+         int $$3 = 12;
 
-   public void b(Consumer<String> $$0) {
-      this.o.a($$0);
-   }
-
-   public void a(String $$0) {
-      this.o.a($$0);
-   }
-
-   public String j() {
-      return this.o.c();
-   }
-
-   @Override
-   public void a(frw $$0) {
-      $$0.a(frv.a, xk.a("gui.narrate.editBox", this.z(), this.j()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(ftr.s());
-         this.e($$0, $$1);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(true);
-         this.e($$0, $$1);
-         this.o.a(ftr.s());
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.o.e($$0);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.k && this.aN_() && bar.a($$0)) {
-         this.o.b(Character.toString($$0));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   protected void c(fnl $$0, int $$1, int $$2, float $$3) {
-      String $$4 = this.o.c();
-      if ($$4.isEmpty() && !this.aN_()) {
-         $$0.a(this.m, (xp)this.n, this.D() + this.a(), this.E() + this.a(), this.g - this.b(), -857677600);
-      } else {
-         int $$5 = this.o.d();
-         boolean $$6 = this.aN_() && (ae.c() - this.p) / 300L % 2L == 0L;
-         boolean $$7 = $$5 < $$4.length();
-         int $$8 = 0;
-         int $$9 = 0;
-         int $$10 = this.E() + this.a();
-
-         for (fou.a $$11 : this.o.h()) {
-            boolean $$12 = this.a($$10, $$10 + 9);
-            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.D() + this.a(), $$10, -2039584) - 1;
-                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
-                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
-               }
-            } else {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.D() + this.a(), $$10, -2039584) - 1;
-               }
-
-               $$9 = $$10;
+         for (fpg $$4 : this.h.values()) {
+            int $$5 = $$2 / 2 - 91;
+            this.a($$0, $$5, $$3, $$4);
+            wo $$7 = $$4.i();
+            int $$8 = this.g.h.a($$7);
+            int $$9 = $$2 / 2 - $$8 / 2;
+            int $$10 = $$3 - 9;
+            $$0.b(this.g.h, $$7, $$9, $$10, 16777215);
+            $$3 += 10 + 9;
+            if ($$3 >= $$0.b() / 3) {
+               break;
             }
-
-            $$10 += 9;
          }
 
-         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
-            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         $$1.c();
+      }
+   }
+
+   private void a(fod $$0, int $$1, int $$2, brz $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = ayz.b($$3.j(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
+   }
+
+   private void a(fod $$0, int $$1, int $$2, brz $$3, int $$4, aku[] $$5, aku[] $$6) {
+      $$0.a(gmh::H, $$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.l() != brz.b.a) {
+         $$0.a(gmh::H, $$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      }
+   }
+
+   public void a(abu $$0) {
+      $$0.a(new abu.b() {
+         @Override
+         public void a(UUID $$0, wo $$1, float $$2, brz.a $$3, brz.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            foq.this.h.put($$0, new fpg($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
          }
 
-         if (this.o.i()) {
-            fou.a $$13 = this.o.e();
-            int $$14 = this.D() + this.a();
-            $$10 = this.E() + this.a();
+         @Override
+         public void a(UUID $$0) {
+            foq.this.h.remove($$0);
+         }
 
-            for (fou.a $$15 : this.o.h()) {
-               if ($$13.a() > $$15.b()) {
-                  $$10 += 9;
-               } else {
-                  if ($$15.a() > $$13.b()) {
-                     break;
-                  }
+         @Override
+         public void a(UUID $$0, float $$1) {
+            foq.this.h.get($$0).a($$1);
+         }
 
-                  if (this.a($$10, $$10 + 9)) {
-                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
-                     int $$17;
-                     if ($$13.b() > $$15.b()) {
-                        $$17 = this.g - this.a();
-                     } else {
-                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
-                     }
+         @Override
+         public void a(UUID $$0, wo $$1) {
+            foq.this.h.get($$0).a($$1);
+         }
 
-                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
-                  }
+         @Override
+         public void a(UUID $$0, brz.a $$1, brz.b $$2) {
+            fpg $$3 = foq.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
 
-                  $$10 += 9;
-               }
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fpg $$4 = foq.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
+   }
+
+   public void a() {
+      this.h.clear();
+   }
+
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (brz $$0 : this.h.values()) {
+            if ($$0.n()) {
+               return true;
             }
          }
       }
+
+      return false;
    }
 
-   @Override
-   protected void a(fnl $$0) {
-      super.a($$0);
-      if (this.o.b()) {
-         int $$1 = this.o.a();
-         xk $$2 = xk.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
-         $$0.b(this.m, $$2, this.D() + this.g - this.m.a($$2), this.E() + this.h + 4, 10526880);
-      }
-   }
-
-   @Override
-   public int h() {
-      return 9 * this.o.f();
-   }
-
-   @Override
-   protected boolean e() {
-      return (double)this.o.f() > this.l();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0 / 2.0;
-   }
-
-   private void b(fnl $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.a(glq.N(), $$1, $$2, $$3, $$4, -16776961);
-   }
-
-   private void k() {
-      double $$0 = this.c();
-      fou.a $$1 = this.o.c((int)($$0 / 9.0));
-      if (this.o.d() <= $$1.a()) {
-         $$0 = (double)(this.o.g() * 9);
-      } else {
-         fou.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
-         if (this.o.d() > $$2.b()) {
-            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (brz $$0 : this.h.values()) {
+            if ($$0.m()) {
+               return true;
+            }
          }
       }
 
-      this.a($$0);
+      return false;
    }
 
-   private double l() {
-      return (double)(this.h - this.b()) / 9.0;
-   }
-
-   private void e(double $$0, double $$1) {
-      double $$2 = $$0 - (double)this.D() - (double)this.a();
-      double $$3 = $$1 - (double)this.E() - (double)this.a() + this.c();
-      this.o.a($$2, $$3);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if ($$0) {
-         this.p = ae.c();
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (brz $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
+            }
+         }
       }
+
+      return false;
    }
 }

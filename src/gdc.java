@@ -1,52 +1,67 @@
-public class gdc<S extends gzl> extends gbu<S> {
-   public gdc(gej $$0) {
+public class gdc extends gap<gzt> {
+   public gdc(gfc $$0) {
       super($$0);
    }
 
-   public static gep c() {
-      ger $$0 = gbu.a(gen.a, 0.0F);
-      get $$1 = $$0.a();
-      a($$1);
-      return gep.a($$0, 64, 32);
-   }
-
-   protected static void a(get $$0) {
-      $$0.a("right_arm", geo.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gel.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", geo.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gel.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", geo.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gel.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", geo.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gel.a(2.0F, 12.0F, 0.0F));
-   }
-
-   protected gbu.a a(S $$0, bvr $$1) {
-      return $$0.aX_().a(cxk.pa) && $$0.b && $$0.ap == $$1 ? gbu.a.d : gbu.a.a;
-   }
-
-   public void a(S $$0) {
+   public void a(gzt $$0) {
       super.a($$0);
-      cxg $$1 = $$0.aX_();
-      if ($$0.b && !$$1.a(cxk.pa)) {
-         float $$2 = $$0.C;
-         float $$3 = azu.a($$2 * (float) Math.PI);
-         float $$4 = azu.a((1.0F - (1.0F - $$2) * (1.0F - $$2)) * (float) Math.PI);
-         this.r.g = 0.0F;
-         this.s.g = 0.0F;
-         this.r.f = -(0.1F - $$3 * 0.6F);
-         this.s.f = 0.1F - $$3 * 0.6F;
-         this.r.e = (float) (-Math.PI / 2);
-         this.s.e = (float) (-Math.PI / 2);
-         this.r.e -= $$3 * 1.2F - $$4 * 0.4F;
-         this.s.e -= $$3 * 1.2F - $$4 * 0.4F;
-         fzz.a(this.r, this.s, $$0.p);
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.H;
+      cnn $$3 = $$0.d;
+      if ($$3 == cnn.e) {
+         float $$4 = $$0.u / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * ayz.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * ayz.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + ayz.a($$4 * 10.0F);
+         this.o.c = this.o.c + ayz.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + ayz.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (ayz.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + ayz.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + ayz.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == cnn.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == cnn.b) {
+         gas.a(this.r, this.s, this.o, $$0.e == bva.b);
+      } else if ($$3 == cnn.c) {
+         gas.a(this.r, this.s, $$0.c, $$0.K, $$0.e == bva.b);
+      } else if ($$3 == cnn.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.e == bva.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
+      }
+   }
+
+   protected void a(gzt $$0, float $$1) {
+      float $$2 = $$0.H;
+      if ($$2 > 0.0F && $$0.d == cnn.a) {
+         gas.a(this.r, this.s, $$0.e, $$2, $$0.u);
+      } else {
+         super.a($$0, $$1);
+      }
+   }
+
+   private void b(gzt $$0) {
+      if ($$0.e == bva.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
       }
    }
 
    @Override
-   public void a(bvr $$0, fgl $$1) {
-      this.e().a($$1);
-      float $$2 = $$0 == bvr.b ? 1.0F : -1.0F;
-      gej $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

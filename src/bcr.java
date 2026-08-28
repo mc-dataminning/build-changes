@@ -1,24 +1,29 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bcr extends bbp {
-   public bcr(Schema $$0) {
-      super($$0, bin.s);
+public class bcr extends DataFix {
+   public bcr(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("BlockEntityUUIDFix", this.getInputSchema().getType(this.a), $$0 -> {
-         $$0 = this.a($$0, "minecraft:conduit", this::c);
-         return this.a($$0, "minecraft:skull", this::b);
-      });
-   }
+      Type<?> $$0 = this.getInputSchema().getType(bhw.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bhw.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
+            String $$2x = $$1xx.get("Status").asString("empty");
+            if (Objects.equals($$2x, "postprocessed")) {
+               $$1xx = $$1xx.set("Status", $$1xx.createString("fullchunk"));
+            }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.get("Owner").get().map($$0x -> a($$0x, "Id", "Id").orElse($$0x)).map($$1 -> $$0.remove("Owner").set("SkullOwner", $$1)).result().orElse($$0);
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return b($$0, "target_uuid", "Target").orElse($$0);
+            return $$0xx.set(DSL.remainderFinder(), $$1xx);
+         }));
    }
 }

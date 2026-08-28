@@ -1,61 +1,36 @@
-public class aed implements zr<acg> {
-   public static final zi<wh, aed> a = zr.a(aed::a, aed::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public record aed(aga e, byte f) implements yv<abk> {
+   public static final ym<vz, aed> a = yv.a(aed::a, aed::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aed(bvb $$0) {
-      this.b = $$0.dB();
-      this.c = $$0.dD();
-      this.d = $$0.dH();
-      this.e = $$0.dM();
-      this.f = $$0.dO();
+   private aed(vz $$0) {
+      this(new aga($$0), $$0.readByte());
    }
 
-   private aed(wh $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   private void a(vz $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public zt<aed> a() {
-      return agz.V;
+   public yx<aed> a() {
+      return agd.ap;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
+   public aga b() {
       return this.e;
    }
 
-   public float h() {
+   public byte e() {
       return this.f;
    }
 }

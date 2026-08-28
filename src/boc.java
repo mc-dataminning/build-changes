@@ -1,44 +1,21 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
-import com.google.gson.stream.JsonReader;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.EOFException;
-import java.io.IOException;
-import java.io.Reader;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public interface boc<T> extends Closeable {
-   static <T> boc<T> a(final Codec<T> $$0, Reader $$1) {
-      final JsonReader $$2 = new JsonReader($$1);
-      $$2.setLenient(true);
-      return new boc<T>() {
-         @Nullable
-         @Override
-         public T a() throws IOException {
-            try {
-               if (!$$2.hasNext()) {
-                  return null;
-               } else {
-                  JsonElement $$0 = JsonParser.parseReader($$2);
-                  return (T)$$0.parse(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-               }
-            } catch (JsonParseException var2) {
-               throw new IOException(var2);
-            } catch (EOFException var3) {
-               return null;
-            }
-         }
+public class boc implements bnx<StringReader, aku> {
+   public static final bnx<StringReader, aku> a = new boc();
 
-         @Override
-         public void close() throws IOException {
-            $$2.close();
-         }
-      };
+   private boc() {
    }
 
-   @Nullable
-   T a() throws IOException;
+   @Override
+   public Optional<aku> a(bnw<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+
+      try {
+         return Optional.of(aku.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
+   }
 }

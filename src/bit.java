@@ -1,27 +1,42 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
-public class bit {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:blue_coral", "minecraft:tube_coral_block")
-      .put("minecraft:pink_coral", "minecraft:brain_coral_block")
-      .put("minecraft:purple_coral", "minecraft:bubble_coral_block")
-      .put("minecraft:red_coral", "minecraft:fire_coral_block")
-      .put("minecraft:yellow_coral", "minecraft:horn_coral_block")
-      .put("minecraft:blue_coral_plant", "minecraft:tube_coral")
-      .put("minecraft:pink_coral_plant", "minecraft:brain_coral")
-      .put("minecraft:purple_coral_plant", "minecraft:bubble_coral")
-      .put("minecraft:red_coral_plant", "minecraft:fire_coral")
-      .put("minecraft:yellow_coral_plant", "minecraft:horn_coral")
-      .put("minecraft:blue_coral_fan", "minecraft:tube_coral_fan")
-      .put("minecraft:pink_coral_fan", "minecraft:brain_coral_fan")
-      .put("minecraft:purple_coral_fan", "minecraft:bubble_coral_fan")
-      .put("minecraft:red_coral_fan", "minecraft:fire_coral_fan")
-      .put("minecraft:yellow_coral_fan", "minecraft:horn_coral_fan")
-      .put("minecraft:blue_dead_coral", "minecraft:dead_tube_coral")
-      .put("minecraft:pink_dead_coral", "minecraft:dead_brain_coral")
-      .put("minecraft:purple_dead_coral", "minecraft:dead_bubble_coral")
-      .put("minecraft:red_dead_coral", "minecraft:dead_fire_coral")
-      .put("minecraft:yellow_dead_coral", "minecraft:dead_horn_coral")
-      .build();
+public class bit extends bgs {
+   public bit(Schema $$0) {
+      super($$0, true, "Trial Spawner config tag fixer", bhw.s, "minecraft:trial_spawner");
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      List<String> $$1 = List.of(
+         "spawn_range",
+         "total_mobs",
+         "simultaneous_mobs",
+         "total_mobs_added_per_player",
+         "simultaneous_mobs_added_per_player",
+         "ticks_between_spawn",
+         "spawn_potentials",
+         "loot_tables_to_eject",
+         "items_to_drop_when_ominous"
+      );
+      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
+
+      for (String $$3 : $$1) {
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
+         if ($$4.isPresent()) {
+            $$2.put($$0.createString($$3), $$4.get());
+            $$0 = $$0.remove($$3);
+         }
+      }
+
+      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
+   }
+
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
+   }
 }

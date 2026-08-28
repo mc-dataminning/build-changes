@@ -1,23 +1,50 @@
-public class fpd {
-   public static final fpd a = new fpd("Merry X-mas!");
-   public static final fpd b = new fpd("Happy new year!");
-   public static final fpd c = new fpd("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+public class fpd extends fpm {
+   private static final int a = 4;
+   private final boolean b;
+   private final int c;
 
-   public fpd(String $$0) {
-      this.f = $$0;
+   public fpd(int $$0, wo $$1, fob $$2) {
+      this($$0, $$1, $$2, 4);
    }
 
-   public void a(fnl $$0, int $$1, fnj $$2, int $$3) {
-      $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - azu.e(azu.a((float)(ae.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
-      $$0.c().b();
+   public fpd(int $$0, wo $$1, fob $$2, int $$3) {
+      this($$0, $$1, $$2, true, $$3);
+   }
+
+   public fpd(int $$0, wo $$1, fob $$2, boolean $$3, int $$4) {
+      super($$1, $$2);
+      this.d($$0);
+      this.b(true);
+      this.j = true;
+      this.b = $$3;
+      this.c = $$4;
+   }
+
+   public void b(int $$0) {
+      this.d($$0 - this.c * 4);
+   }
+
+   @Override
+   protected void a(fsp $$0) {
+      $$0.a(fso.a, this.B());
+   }
+
+   @Override
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      if (this.aM_() || this.b) {
+         int $$4 = this.F() - this.c;
+         int $$5 = this.G() - this.c;
+         int $$6 = this.A() + this.c * 2;
+         int $$7 = this.y() + this.c * 2;
+         int $$8 = this.b ? (this.aM_() ? -1 : -6250336) : -1;
+         $$0.a($$4 + 1, $$5, $$4 + $$6, $$5 + $$7, -16777216);
+         $$0.b($$4, $$5, $$6, $$7, $$8);
+      }
+
+      super.b($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(hjo $$0) {
    }
 }

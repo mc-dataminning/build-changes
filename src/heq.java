@@ -1,65 +1,35 @@
-public abstract class heq extends hem {
-   private static final float o = 0.0F;
-   private static final float p = 1.2F;
-   private static final float q = 0.0F;
-   protected final chp n;
-   private boolean r;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-   public heq(chp $$0, awu $$1, aww $$2) {
-      super($$1, $$2, hfd.t());
-      this.n = $$0;
-      this.f = (double)((float)$$0.dB());
-      this.g = (double)((float)$$0.dD());
-      this.h = (double)((float)$$0.dH());
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-   }
+public class heq {
+   private static final BiMap<aku, hep> i = HashBiMap.create();
+   public static final hep a = a("single", hev.b);
+   public static final hep b = a("directory", hes.b);
+   public static final hep c = a("filter", hew.b);
+   public static final hep d = a("unstitch", hex.b);
+   public static final hep e = a("paletted_permutations", heu.b);
+   public static Codec<hep> f = aku.a.flatXmap($$0 -> {
+      hep $$1 = (hep)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      aku $$1 = (aku)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<hen> g = f.dispatch(hen::a, hep::a);
+   public static Codec<List<hen>> h = g.listOf().fieldOf("sources").codec();
 
-   @Override
-   public void q() {
-      boolean $$0 = this.p();
-      if ($$0 && !this.m()) {
-         flz.Q().ak().a((hfe)this.o());
-         this.r = true;
-      }
-
-      if (!this.n.dR() && !this.r) {
-         this.f = (double)((float)this.n.dB());
-         this.g = (double)((float)this.n.dD());
-         this.h = (double)((float)this.n.dH());
-         float $$1 = (float)this.n.dz().i();
-         if ($$1 >= 0.01F) {
-            this.e = azu.h(azu.a($$1, this.u(), this.v()), this.u(), this.v());
-            this.d = azu.h(azu.a($$1, 0.0F, 0.5F), 0.0F, 1.2F);
-         } else {
-            this.e = 0.0F;
-            this.d = 0.0F;
-         }
+   private static hep a(String $$0, MapCodec<? extends hen> $$1) {
+      hep $$2 = new hep($$1);
+      aku $$3 = aku.b($$0);
+      hep $$4 = (hep)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
       } else {
-         this.n();
+         return $$2;
       }
    }
-
-   private float u() {
-      return this.n.e_() ? 1.1F : 0.7F;
-   }
-
-   private float v() {
-      return this.n.e_() ? 1.5F : 1.1F;
-   }
-
-   @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public boolean s() {
-      return !this.n.bb();
-   }
-
-   protected abstract hem o();
-
-   protected abstract boolean p();
 }

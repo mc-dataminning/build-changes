@@ -1,27 +1,17 @@
-public class gca extends gbh<gxq> {
-   private static final String a = "main";
+import java.util.function.Function;
 
-   public gca(gej $$0) {
-      super($$0);
+public abstract class gca<T extends gyi> extends gcv {
+   public static final float h = -1.501F;
+
+   protected gca(gfc $$0) {
+      this($$0, gmh::g);
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      int $$2 = 2;
-      $$1.a(
-         "main",
-         geo.c()
-            .a(0, 0)
-            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         gel.a
-      );
-      return gep.a($$0, 64, 32);
+   protected gca(gfc $$0, Function<aku, gmh> $$1) {
+      super($$0, $$1);
+   }
+
+   public void a(T $$0) {
+      this.g();
    }
 }

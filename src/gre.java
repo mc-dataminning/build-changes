@@ -1,12 +1,20 @@
-public class gre extends grz {
-   public static final alp a = alp.b("textures/entity/guardian_elder.png");
+public class gre extends gti<clg, gzi, gbg> {
+   private static final aku a = aku.b("textures/entity/blaze.png");
 
-   public gre(grl.a $$0) {
-      super($$0, 1.2F, gei.aE);
+   public gre(gsc.a $$0) {
+      super($$0, new gbg($$0.a(gfb.D)), 0.5F);
+   }
+
+   protected int a(clg $$0, ji $$1) {
+      return 15;
    }
 
    @Override
-   public alp a(gyd $$0) {
+   public aku b(gzi $$0) {
       return a;
+   }
+
+   public gzi a() {
+      return new gzi();
    }
 }

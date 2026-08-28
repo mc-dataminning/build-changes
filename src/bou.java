@@ -1,33 +1,25 @@
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+public final class bou implements Comparable<bou> {
+   public final double a;
+   public final double b;
+   public final long c;
+   public final String d;
 
-public abstract class bou<C, V> implements boo<StringReader, V>, bov {
-   private final boi<alp> b;
-   protected final C a;
-
-   protected bou(boi<alp> $$0, C $$1) {
-      this.b = $$0;
+   public bou(String $$0, double $$1, double $$2, long $$3) {
+      this.d = $$0;
       this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   @Override
-   public Optional<V> a(bon<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-      Optional<alp> $$2 = $$0.b(this.b);
-      if ($$2.isPresent()) {
-         try {
-            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
-         } catch (Exception var5) {
-            $$0.a().a($$1, this, var5);
-            return Optional.empty();
-         }
+   public int a(bou $$0) {
+      if ($$0.a < this.a) {
+         return -1;
       } else {
-         $$0.a().a($$1, this, alp.c.createWithContext((ImmutableStringReader)$$0.b()));
-         return Optional.empty();
+         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
       }
    }
 
-   protected abstract V a(ImmutableStringReader var1, alp var2) throws Exception;
+   public int a() {
+      return (this.d.hashCode() & 11184810) + 4473924;
+   }
 }

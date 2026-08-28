@@ -1,124 +1,61 @@
 import java.util.List;
-import javax.annotation.Nullable;
 
-public class clm extends cli {
-   public static final double b = 0.375;
+public class clm extends clt {
+   public static final float a = bur.N.l() / bur.aj.l();
+   private static final int d = 1200;
+   private static final int bY = 50;
+   private static final int bZ = 6000;
+   private static final int ca = 2;
+   private static final int cb = 1200;
 
-   public clm(bvi<? extends clm> $$0, dgz $$1) {
+   public clm(bur<? extends clm> $$0, dgi $$1) {
       super($$0, $$1);
-   }
-
-   public clm(dgz $$0, jh $$1) {
-      super(bvi.aw, $$0, $$1);
-      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-   }
-
-   @Override
-   protected void a(akw.a $$0) {
-   }
-
-   @Override
-   protected void l() {
-      this.o((double)this.a.u() + 0.5, (double)this.a.v() + 0.375, (double)this.a.w() + 0.5);
-      double $$0 = (double)this.aq().l() / 2.0;
-      double $$1 = (double)this.aq().m();
-      this.a(new fbm(this.dB() - $$0, this.dD(), this.dH() - $$0, this.dB() + $$0, this.dD() + $$1, this.dH() + $$0));
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
-   }
-
-   @Override
-   public void a(arx $$0, @Nullable bvb $$1) {
-      this.a(awv.oq, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(um $$0) {
-   }
-
-   @Override
-   public void a(um $$0) {
-   }
-
-   @Override
-   public bta a(cpo $$0, bsz $$1) {
-      if (this.dW().C) {
-         return bta.a;
-      } else {
-         boolean $$2 = false;
-         List<bvv> $$3 = cxq.a(this.dW(), this.p(), $$1x -> {
-            bvb $$2x = $$1x.A();
-            return $$2x == $$0 || $$2x == this;
-         });
-
-         for (bvv $$4 : $$3) {
-            if ($$4.A() == $$0) {
-               $$4.b(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$5 = false;
-         if (!$$2) {
-            this.at();
-            if ($$0.gj().d) {
-               for (bvv $$6 : $$3) {
-                  if ($$6.P_() && $$6.A() == this) {
-                     $$6.a(true, false);
-                     $$5 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$5) {
-            this.a(eck.b, $$0);
-         }
-
-         return bta.a;
+      this.aj();
+      if (this.c != null) {
+         this.c.c(400);
       }
    }
 
-   @Override
-   public boolean m() {
-      return this.dW().a_(this.a).a(axk.U);
+   public static bwn.a m() {
+      return clt.x().a(bwo.v, 0.3F).a(bwo.c, 8.0).a(bwo.s, 80.0);
    }
 
-   public static clm a(dgz $$0, jh $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
+   @Override
+   public int p() {
+      return 60;
+   }
 
-      for (clm $$6 : $$0.a(clm.class, new fbm((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.p().equals($$1)) {
-            return $$6;
-         }
+   @Override
+   protected avz u() {
+      return this.bm() ? awa.ij : awa.ik;
+   }
+
+   @Override
+   protected avz e(bta $$0) {
+      return this.bm() ? awa.ip : awa.iq;
+   }
+
+   @Override
+   protected avz o_() {
+      return this.bm() ? awa.im : awa.in;
+   }
+
+   @Override
+   protected avz t() {
+      return awa.io;
+   }
+
+   @Override
+   protected void a(arc $$0) {
+      super.a($$0);
+      if ((this.af + this.ar()) % 1200 == 0) {
+         btp $$1 = new btp(btr.d, 6000, 2);
+         List<ard> $$2 = btq.a($$0, this, this.du(), 50.0, $$1, 1200);
+         $$2.forEach($$0x -> $$0x.f.b(new acs(acs.l, this.bb() ? 0.0F : 1.0F)));
       }
 
-      clm $$7 = new clm($$0, $$1);
-      $$0.b($$7);
-      return $$7;
-   }
-
-   public void s() {
-      this.a(awv.or, 1.0F, 1.0F);
-   }
-
-   @Override
-   public zr<acg> a(arv $$0) {
-      return new ach(this, 0, this.p());
-   }
-
-   @Override
-   public fbr u(float $$0) {
-      return this.o($$0).b(0.0, 0.2, 0.0);
-   }
-
-   @Override
-   public cxg dJ() {
-      return new cxg(cxk.vK);
+      if (!this.gb()) {
+         this.a(this.dw(), 16);
+      }
    }
 }

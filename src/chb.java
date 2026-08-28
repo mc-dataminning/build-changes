@@ -1,232 +1,40 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.BooleanSupplier;
-import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+public record chb(aku m) {
+   public static final ym<vz, jr<chb>> a = yk.b(mc.l);
+   public static final akt<chb> b = a("tabby");
+   public static final akt<chb> c = a("black");
+   public static final akt<chb> d = a("red");
+   public static final akt<chb> e = a("siamese");
+   public static final akt<chb> f = a("british_shorthair");
+   public static final akt<chb> g = a("calico");
+   public static final akt<chb> h = a("persian");
+   public static final akt<chb> i = a("ragdoll");
+   public static final akt<chb> j = a("white");
+   public static final akt<chb> k = a("jellie");
+   public static final akt<chb> l = a("all_black");
 
-public class chb extends ebd<chd, chd.a> {
-   public static final int a = 6;
-   public static final int b = 1;
-   private final chb.a d;
-   private final LongSet e = new LongOpenHashSet();
-
-   public chb(ebc $$0, Path $$1, DataFixer $$2, boolean $$3, ke $$4, ear $$5, dhb $$6) {
-      super(new ebf($$0, $$1, $$2, $$3, bbi.q), chd.a.a, chd::a, chd.a::a, chd::new, $$4, $$5, $$6);
-      this.d = new chb.a();
+   private static akt<chb> a(String $$0) {
+      return akt.a(mc.l, aku.b($$0));
    }
 
-   public void a(jh $$0, jq<che> $$1) {
-      this.f(kj.c($$0)).a($$0, $$1);
+   public static chb a(ke<chb> $$0) {
+      a($$0, b, "textures/entity/cat/tabby.png");
+      a($$0, c, "textures/entity/cat/black.png");
+      a($$0, d, "textures/entity/cat/red.png");
+      a($$0, e, "textures/entity/cat/siamese.png");
+      a($$0, f, "textures/entity/cat/british_shorthair.png");
+      a($$0, g, "textures/entity/cat/calico.png");
+      a($$0, h, "textures/entity/cat/persian.png");
+      a($$0, i, "textures/entity/cat/ragdoll.png");
+      a($$0, j, "textures/entity/cat/white.png");
+      a($$0, k, "textures/entity/cat/jellie.png");
+      return a($$0, l, "textures/entity/cat/all_black.png");
    }
 
-   public void a(jh $$0) {
-      this.d(kj.c($$0)).ifPresent($$1 -> $$1.a($$0));
+   private static chb a(ke<chb> $$0, akt<chb> $$1, String $$2) {
+      return ke.a($$0, $$1, new chb(aku.b($$2)));
    }
 
-   public long a(Predicate<jq<che>> $$0, jh $$1, int $$2, chb.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).count();
-   }
-
-   public boolean a(alo<che> $$0, jh $$1) {
-      return this.a($$1, (Predicate<jq<che>>)($$1x -> $$1x.a($$0)));
-   }
-
-   public Stream<chc> b(Predicate<jq<che>> $$0, jh $$1, int $$2, chb.b $$3) {
-      int $$4 = Math.floorDiv($$2, 16) + 1;
-      return dgf.a(new dgf($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
-         jh $$3x = $$2x.g();
-         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
-      });
-   }
-
-   public Stream<chc> c(Predicate<jq<che>> $$0, jh $$1, int $$2, chb.b $$3) {
-      int $$4 = $$2 * $$2;
-      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.g().j($$1) <= (double)$$4);
-   }
-
-   @bbb
-   public Stream<chc> a(Predicate<jq<che>> $$0, dgf $$1, chb.b $$2) {
-      return IntStream.rangeClosed(this.c.ap(), this.c.aq())
-         .boxed()
-         .map($$1x -> this.d(kj.a($$1, $$1x).s()))
-         .filter(Optional::isPresent)
-         .flatMap($$2x -> ((chd)$$2x.get()).a($$0, $$2));
-   }
-
-   public Stream<jh> a(Predicate<jq<che>> $$0, Predicate<jh> $$1, jh $$2, int $$3, chb.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(chc::g).filter($$1);
-   }
-
-   public Stream<Pair<jq<che>, jh>> b(Predicate<jq<che>> $$0, Predicate<jh> $$1, jh $$2, int $$3, chb.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.g())).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
-   }
-
-   public Stream<Pair<jq<che>, jh>> c(Predicate<jq<che>> $$0, Predicate<jh> $$1, jh $$2, int $$3, chb.b $$4) {
-      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((jh)$$1x.getSecond()).j($$2)));
-   }
-
-   public Optional<jh> d(Predicate<jq<che>> $$0, Predicate<jh> $$1, jh $$2, int $$3, chb.b $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
-   }
-
-   public Optional<jh> d(Predicate<jq<che>> $$0, jh $$1, int $$2, chb.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).map(chc::g).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
-   }
-
-   public Optional<Pair<jq<che>, jh>> e(Predicate<jq<che>> $$0, jh $$1, int $$2, chb.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.g().j($$1))).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
-   }
-
-   public Optional<jh> e(Predicate<jq<che>> $$0, Predicate<jh> $$1, jh $$2, int $$3, chb.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(chc::g).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
-   }
-
-   public Optional<jh> a(Predicate<jq<che>> $$0, BiPredicate<jq<che>, jh> $$1, jh $$2, int $$3) {
-      return this.c($$0, $$2, $$3, chb.b.a).filter($$1x -> $$1.test($$1x.h(), $$1x.g())).findFirst().map($$0x -> {
-         $$0x.c();
-         return $$0x.g();
-      });
-   }
-
-   public Optional<jh> a(Predicate<jq<che>> $$0, Predicate<jh> $$1, chb.b $$2, jh $$3, int $$4, bac $$5) {
-      List<chc> $$6 = ae.a(this.c($$0, $$3, $$4, $$2), $$5);
-      return $$6.stream().filter($$1x -> $$1.test($$1x.g())).findFirst().map(chc::g);
-   }
-
-   public boolean b(jh $$0) {
-      return this.d(kj.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> ae.b(new IllegalStateException("POI never registered at " + $$0)));
-   }
-
-   public boolean a(jh $$0, Predicate<jq<che>> $$1) {
-      return this.d(kj.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
-   }
-
-   public Optional<jq<che>> c(jh $$0) {
-      return this.d(kj.c($$0)).flatMap($$1 -> $$1.d($$0));
-   }
-
-   @Deprecated
-   @bbb
-   public int d(jh $$0) {
-      return this.d(kj.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
-   }
-
-   public int a(kj $$0) {
-      this.d.a();
-      return this.d.c($$0.s());
-   }
-
-   boolean g(long $$0) {
-      Optional<chd> $$1 = this.c($$0);
-      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(axv.b), chb.b.b).findAny().isPresent()).orElse(false);
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      this.d.a();
-   }
-
-   @Override
-   protected void a(long $$0) {
-      super.a($$0);
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   @Override
-   protected void b(long $$0) {
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   public void a(kj $$0, dzu $$1) {
-      ae.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
-            if (a($$1)) {
-               this.a($$1, $$0, $$2x);
-            }
-         }), () -> {
-         if (a($$1)) {
-            chd $$2 = this.f($$0.s());
-            this.a($$1, $$0, $$2::a);
-         }
-      });
-   }
-
-   private static boolean a(dzu $$0) {
-      return $$0.a(chf::b);
-   }
-
-   private void a(dzu $$0, kj $$1, BiConsumer<jh, jq<che>> $$2) {
-      $$1.t().forEach($$2x -> {
-         dxo $$3 = $$0.a(kj.b($$2x.u()), kj.b($$2x.v()), kj.b($$2x.w()));
-         chf.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
-      });
-   }
-
-   public void a(dhc $$0, jh $$1, int $$2) {
-      kj.a(new dgf($$1), Math.floorDiv($$2, 16), this.c.ap(), this.c.aq())
-         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
-         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(chd::b).orElse(false))
-         .map($$0x -> ((kj)$$0x.getFirst()).r())
-         .filter($$0x -> this.e.add($$0x.a()))
-         .forEach($$1x -> $$0.a($$1x.h, $$1x.i, eak.c));
-   }
-
-   final class a extends ars {
-      private final Long2ByteMap b = new Long2ByteOpenHashMap();
-
-      protected a() {
-         super(7, 16, 256);
-         this.b.defaultReturnValue((byte)7);
-      }
-
-      @Override
-      protected int b(long $$0) {
-         return chb.this.g($$0) ? 0 : 7;
-      }
-
-      @Override
-      protected int c(long $$0) {
-         return this.b.get($$0);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         if ($$1 > 6) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, (byte)$$1);
-         }
-      }
-
-      public void a() {
-         super.b(Integer.MAX_VALUE);
-      }
-   }
-
-   public static enum b {
-      a(chc::e),
-      b(chc::f),
-      c($$0 -> true);
-
-      private final Predicate<? super chc> d;
-
-      private b(final Predicate<? super chc> $$0) {
-         this.d = $$0;
-      }
-
-      public Predicate<? super chc> a() {
-         return this.d;
-      }
+   public aku a() {
+      return this.m;
    }
 }

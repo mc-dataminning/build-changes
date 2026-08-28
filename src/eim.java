@@ -1,10 +1,13 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eim implements eit {
-   public static final Codec<eim> a = dxo.a.fieldOf("state").xmap(eim::new, $$0 -> $$0.b).codec();
-   public final dxo b;
+public class eim implements eic {
+   public static final Codec<eim> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, eim::new)
+   );
+   public final float l;
 
-   public eim(dxo $$0) {
-      this.b = $$0;
+   public eim(float $$0) {
+      this.l = $$0;
    }
 }

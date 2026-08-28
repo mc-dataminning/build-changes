@@ -1,72 +1,54 @@
-public class gkj {
-   public static final xk a = xk.c("quickplay.error.title");
-   private static final xk b = xk.c("quickplay.error.invalid_identifier");
-   private static final xk c = xk.c("quickplay.error.realm_connect");
-   private static final xk d = xk.c("quickplay.error.realm_permission");
-   private static final xk e = xk.c("gui.toTitle");
-   private static final xk f = xk.c("gui.toWorld");
-   private static final xk g = xk.c("gui.toRealms");
+public class gkj extends gkg {
+   private final fba a;
 
-   public static void a(flz $$0, fzr.c $$1, fhb $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!bar.h($$3)) {
-         a($$0, $$3);
-      } else if (!bar.h($$4)) {
-         b($$0, $$4);
-      } else if (!bar.h($$5)) {
-         a($$0, $$2, $$5);
-      }
+   gkj(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, fba $$7, int $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      $$8 = axk.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
+      this.v = (float)axk.b($$8) / 255.0F;
+      this.w = (float)axk.c($$8) / 255.0F;
+      this.x = (float)axk.d($$8) / 255.0F;
+      this.D = 0.26F;
+      this.a = $$7;
    }
 
-   private static void a(flz $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         ftr $$2 = new fyy(new ftt());
-         $$0.a(new fsy($$2, a, b, f));
+   @Override
+   public gjk b() {
+      return gjk.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         $$0.x().a($$1, () -> $$0.a(new ftt()));
+         int $$0 = this.t - this.s;
+         double $$1 = 1.0 / (double)$$0;
+         this.g = ayz.d($$1, this.g, this.a.a());
+         this.h = ayz.d($$1, this.h, this.a.b());
+         this.i = ayz.d($$1, this.i, this.a.c());
       }
    }
 
-   private static void b(flz $$0, String $$1) {
-      gfv $$2 = new gfv($$0);
-      $$2.a();
-      gfu $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new gfu(hcn.a("selectServer.defaultName"), $$1, gfu.c.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      ggx $$4 = ggx.a($$1);
-      fsq.a(new fwh(new ftt()), $$0, $$4, $$3, true, null);
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 
-   private static void a(flz $$0, fhb $$1, String $$2) {
-      long $$3;
-      fie $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         ftr $$6 = new fgw(new ftt());
-         $$0.a(new fsy($$6, a, b, g));
-         return;
-      } catch (fix var10) {
-         ftr $$8 = new ftt();
-         $$0.a(new fsy($$8, a, c, e));
-         return;
+   public static class a implements gjj<ly> {
+      private final gkb a;
+
+      public a(gkb $$0) {
+         this.a = $$0;
       }
 
-      fic $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         ftr $$12 = new fgw(new ftt());
-         $$0.a(new fsy($$12, a, d, g));
-      } else {
-         ftt $$13 = new ftt();
-         fkx $$14 = new fkx($$13, $$11);
-         $$0.a(new fjr($$13, $$14));
+      public gjg a(ly $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gkj $$8 = new gkj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.a($$0.d());
+         return $$8;
       }
    }
 }

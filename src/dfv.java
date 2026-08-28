@@ -1,43 +1,27 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface dfv {
-   void a(@Nullable cpo var1);
+public class dfv {
+   public static final dfv a = new dfv(ImmutableList.of("vanilla"), ImmutableList.of());
+   public static final Codec<dfv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
+            .apply($$0, dfv::new)
+   );
+   private final List<String> c;
+   private final List<String> d;
 
-   @Nullable
-   cpo go();
-
-   dfx gq();
-
-   void a(dfx var1);
-
-   void a(dfw var1);
-
-   void i(cxg var1);
-
-   int x();
-
-   void s(int var1);
-
-   boolean gr();
-
-   awu gs();
-
-   default boolean gA() {
-      return false;
+   public dfv(List<String> $$0, List<String> $$1) {
+      this.c = ImmutableList.copyOf($$0);
+      this.d = ImmutableList.copyOf($$1);
    }
 
-   default void a(cpo $$0, xk $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new bti(($$0x, $$1x, $$2x) -> new cue($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         dfx $$4 = this.gq();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.x(), this.gr(), this.gA());
-         }
-      }
+   public List<String> a() {
+      return this.c;
    }
 
-   boolean gw();
-
-   boolean f(cpo var1);
+   public List<String> b() {
+      return this.d;
+   }
 }

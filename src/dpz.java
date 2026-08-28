@@ -1,546 +1,177 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dpz extends dkd implements dmz, drj {
+public class dpz extends djm {
    public static final MapCodec<dpz> a = b(dpz::new);
-   public static final dyl<jm> b = dye.bp;
-   public static final dyl<dyk> c = dye.bq;
-   public static final dyf d = dye.J;
-   private static final int e = 11;
-   private static final int f = 2;
-   private static final float g = 0.02F;
-   private static final float h = 0.12F;
-   private static final int i = 11;
-   private static final float j = 0.17578125F;
-   private static final float k = 0.05859375F;
-   private static final double l = 0.6;
-   private static final float m = 1.0F;
-   private static final int n = 40;
-   private static final int o = 6;
-   private static final float G = 2.0F;
-   private static final int H = 2;
-   private static final float I = 5.0F;
-   private static final float J = 0.011377778F;
-   private static final int K = 7;
-   private static final int L = 10;
-   private static final float M = 0.6875F;
-   private static final fcl N = dkd.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
-   private static final fcl O = dkd.a(5.0, 0.0, 5.0, 11.0, 11.0, 11.0);
-   private static final fcl P = dkd.a(5.0, 5.0, 5.0, 11.0, 16.0, 11.0);
-   private static final fcl Q = dkd.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
-   private static final fcl R = dkd.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
-   private static final fcl S = dkd.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
-   private static final float T = 0.125F;
-   private static final fcl U = dkd.a(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
+   public static final int b = 0;
+   public static final int c = 4;
+   public static final dxw d = dxn.bc;
+   private static final ImmutableList<km> e = ImmutableList.of(
+      new km(0, 0, -1), new km(-1, 0, 0), new km(0, 0, 1), new km(1, 0, 0), new km(-1, 0, -1), new km(1, 0, -1), new km(-1, 0, 1), new km(1, 0, 1)
+   );
+   private static final ImmutableList<km> f = new Builder()
+      .addAll(e)
+      .addAll(e.stream().map(km::p).iterator())
+      .addAll(e.stream().map(km::q).iterator())
+      .add(new km(0, 1, 0))
+      .build();
 
    @Override
    public MapCodec<dpz> a() {
       return a;
    }
 
-   public dpz(dxn.d $$0) {
+   public dpz(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, jm.b).b(c, dyk.b).b(d, Boolean.valueOf(false)));
+      this.l(this.F.b().b(d, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b, c, d);
-   }
-
-   @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      return c($$1, $$2, $$0.c(b));
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, etr.c, etr.c.a($$1));
-      }
-
-      if ($$4 != jm.b && $$4 != jm.a) {
-         return $$0;
+   protected bsj a(cwp $$0, dwx $$1, dgi $$2, ji $$3, cox $$4, bsi $$5, faw $$6) {
+      if (a($$0) && o($$1)) {
+         a($$4, $$2, $$3, $$1);
+         $$0.a(1, $$4);
+         return bsj.a;
       } else {
-         jm $$8 = $$0.c(b);
-         if ($$8 == jm.a && $$2.U().a($$3, this)) {
-            return $$0;
-         } else if ($$4 == $$8.g() && !this.a($$0, $$1, $$3)) {
-            if ($$8 == jm.a) {
-               $$2.a($$3, this, 2);
-            } else {
-               $$2.a($$3, this, 1);
-            }
-
-            return $$0;
-         } else {
-            boolean $$9 = $$0.c(c) == dyk.a;
-            dyk $$10 = a($$1, $$3, $$8, $$9);
-            return $$0.b(c, $$10);
-         }
+         return (bsj)($$5 == bsi.a && a($$4.b(bsi.b)) && o($$1) ? bsj.e : bsj.f);
       }
    }
 
    @Override
-   protected void a(dgz $$0, dxo $$1, fbn $$2, cqh $$3) {
-      if (!$$0.C) {
-         jh $$4 = $$2.b();
-         if ($$0 instanceof arx $$5 && $$3.c($$5, $$4) && $$3.a($$5) && $$3 instanceof cqu && $$3.dz().g() > 0.6) {
-            $$0.b($$4, true);
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if ($$0.c(d) == 0) {
+         return bsj.e;
+      } else if (!a($$1)) {
+         if (!$$1.C) {
+            this.e($$0, $$1, $$2);
          }
-      }
-   }
 
-   @Override
-   public void a(dgz $$0, dxo $$1, jh $$2, bvb $$3, float $$4) {
-      if ($$1.c(b) == jm.b && $$1.c(c) == dyk.b) {
-         $$3.a($$4 + 2.0F, 2.0F, $$0.ak().w());
+         return bsj.a;
       } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
-      if (o($$0)) {
-         float $$4 = $$3.i();
-         if (!($$4 > 0.12F)) {
-            b($$1, $$2, $$0).filter($$1x -> $$4 < 0.02F || a($$1x.b)).ifPresent($$3x -> a($$1, $$2, $$0, $$3x.b));
-         }
-      }
-   }
-
-   @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (r($$0) && !this.a($$0, (dhc)$$1, $$2)) {
-         $$1.b($$2, true);
-      } else {
-         a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      a($$0, $$1, $$2, $$3.i());
-      if ($$3.i() < 0.011377778F && b($$0, (dhc)$$1, $$2)) {
-         c($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @VisibleForTesting
-   public static void a(dxo $$0, arx $$1, jh $$2, float $$3) {
-      if (!($$3 > 0.17578125F) || !($$3 > 0.05859375F)) {
-         if (b($$0, (dhc)$$1, $$2)) {
-            Optional<dpz.a> $$4 = b($$1, $$2, $$0);
-            if (!$$4.isEmpty()) {
-               etp $$5 = $$4.get().b;
-               float $$6;
-               if ($$5 == etr.c) {
-                  $$6 = 0.17578125F;
-               } else {
-                  if ($$5 != etr.e) {
-                     return;
-                  }
-
-                  $$6 = 0.05859375F;
-               }
-
-               if (!($$3 >= $$6)) {
-                  jh $$9 = a($$0, $$1, $$2, 11, false);
-                  if ($$9 != null) {
-                     if ($$4.get().c.a(dkf.tk) && $$5 == etr.c) {
-                        dxo $$10 = dkf.ee.m();
-                        $$1.b($$4.get().a, $$10);
-                        dkd.a($$4.get().c, $$10, $$1, $$4.get().a);
-                        $$1.a(eck.c, $$4.get().a, eck.a.a($$10));
-                        $$1.c(1504, $$9, 0);
-                     } else {
-                        jh $$11 = a($$1, $$9, $$5);
-                        if ($$11 != null) {
-                           $$1.c(1504, $$9, 0);
-                           int $$12 = $$9.v() - $$11.v();
-                           int $$13 = 50 + $$12;
-                           dxo $$14 = $$1.a_($$11);
-                           $$1.a($$11, $$14.b(), $$13);
-                        }
-                     }
-                  }
-               }
+         if (!$$1.C) {
+            ard $$5 = (ard)$$3;
+            if ($$5.V() != $$1.ai() || !$$2.equals($$5.T())) {
+               $$5.a($$1.ai(), $$2, 0.0F, false, true);
+               $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, awa.vZ, awb.e, 1.0F, 1.0F);
+               return bsj.b;
             }
          }
+
+         return bsj.c;
       }
    }
 
-   @Nullable
-   @Override
-   public dxo a(dax $$0) {
-      dha $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      jm $$3 = $$0.e().g();
-      jm $$4 = b($$1, $$2, $$3);
-      if ($$4 == null) {
-         return null;
+   private static boolean a(cwp $$0) {
+      return $$0.a(cwt.fJ);
+   }
+
+   private static boolean o(dwx $$0) {
+      return $$0.c(d) < 4;
+   }
+
+   private static boolean a(ji $$0, dgi $$1) {
+      esz $$2 = $$1.b_($$0);
+      if (!$$2.a(awv.a)) {
+         return false;
+      } else if ($$2.b()) {
+         return true;
       } else {
-         boolean $$5 = !$$0.h();
-         dyk $$6 = a($$1, $$2, $$4, $$5);
-         return $$6 == null ? null : this.m().b(b, $$4).b(c, $$6).b(d, Boolean.valueOf($$1.b_($$2).a() == etr.c));
-      }
-   }
-
-   @Override
-   protected etq b_(dxo $$0) {
-      return $$0.c(d) ? etr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected fcl d_(dxo $$0) {
-      return fci.a();
-   }
-
-   @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      dyk $$4 = $$0.c(c);
-      fcl $$5;
-      if ($$4 == dyk.a) {
-         $$5 = N;
-      } else if ($$4 == dyk.b) {
-         if ($$0.c(b) == jm.a) {
-            $$5 = P;
+         float $$3 = (float)$$2.e();
+         if ($$3 < 2.0F) {
+            return false;
          } else {
-            $$5 = O;
+            esz $$4 = $$1.b_($$0.e());
+            return !$$4.a(awv.a);
          }
-      } else if ($$4 == dyk.c) {
-         $$5 = Q;
-      } else if ($$4 == dyk.d) {
-         $$5 = R;
-      } else {
-         $$5 = S;
-      }
-
-      fbr $$11 = $$0.a($$2);
-      return $$5.a($$11.d, 0.0, $$11.f);
-   }
-
-   @Override
-   protected boolean a_(dxo $$0, dge $$1, jh $$2) {
-      return false;
-   }
-
-   @Override
-   protected float as_() {
-      return 0.125F;
-   }
-
-   @Override
-   public void a(dgz $$0, jh $$1, clr $$2) {
-      if (!$$2.bb()) {
-         $$0.c(1045, $$1, 0);
       }
    }
 
-   @Override
-   public btr a(bvb $$0) {
-      return $$0.dX().c($$0);
+   private void e(dwx $$0, dgi $$1, final ji $$2) {
+      $$1.a($$2, false);
+      boolean $$3 = jn.c.a.a().map($$2::a).anyMatch($$1x -> a($$1x, $$1));
+      final boolean $$4 = $$3 || $$1.b_($$2.d()).a(awv.a);
+      dgb $$5 = new dgb() {
+         @Override
+         public Optional<Float> a(dga $$0, dfn $$1, ji $$2x, dwx $$3, esz $$4x) {
+            return $$2.equals($$2) && $$4 ? Optional.of(djo.J.e()) : super.a($$0, $$1, $$2, $$3, $$4);
+         }
+      };
+      fba $$6 = $$2.b();
+      $$1.a(null, $$1.ak().a($$6), $$5, $$6, 5.0F, true, dgi.a.b);
    }
 
-   private static void a(dxo $$0, arx $$1, jh $$2) {
-      jh.a $$3 = $$2.k();
-      dxo $$4 = $$0;
+   public static boolean a(dgi $$0) {
+      return $$0.G_().m();
+   }
 
-      while (q($$4)) {
-         clr $$5 = clr.a($$1, $$3, $$4);
-         if (a($$4, true)) {
-            int $$6 = Math.max(1 + $$2.v() - $$3.v(), 6);
-            float $$7 = 1.0F * (float)$$6;
-            $$5.b($$7, 40);
-            break;
+   public static void a(@Nullable buk $$0, dgi $$1, ji $$2, dwx $$3) {
+      dwx $$4 = $$3.b(d, Integer.valueOf($$3.c(d) + 1));
+      $$1.a($$2, $$4, 3);
+      $$1.a(ebt.c, $$2, ebt.a.a($$0, $$4));
+      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, awa.vX, awb.e, 1.0F, 1.0F);
+   }
+
+   @Override
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      if ($$0.c(d) != 0) {
+         if ($$3.a(100) == 0) {
+            $$1.a($$2, awa.vW, awb.e, 1.0F, 1.0F, false);
          }
 
-         $$3.c(jm.a);
-         $$4 = $$1.a_($$3);
+         double $$4 = (double)$$2.u() + 0.5 + (0.5 - $$3.j());
+         double $$5 = (double)$$2.v() + 1.0;
+         double $$6 = (double)$$2.w() + 0.5 + (0.5 - $$3.j());
+         double $$7 = (double)$$3.i() * 0.04;
+         $$1.a(lt.aJ, $$4, $$5, $$6, 0.0, $$7, 0.0);
       }
    }
 
-   @VisibleForTesting
-   public static void c(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      dxo $$4 = $$1.a_($$2.b(1));
-      dxo $$5 = $$1.a_($$2.b(2));
-      if (a($$4, $$5)) {
-         jh $$6 = a($$0, $$1, $$2, 7, false);
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(d);
+   }
+
+   @Override
+   protected boolean c_(dwx $$0) {
+      return true;
+   }
+
+   public static int a(dwx $$0, int $$1) {
+      return ayz.d((float)($$0.c(d) - 0) / 4.0F * (float)$$1);
+   }
+
+   @Override
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return a($$0, 15);
+   }
+
+   public static Optional<fba> a(bur<?> $$0, dfr $$1, ji $$2) {
+      Optional<fba> $$3 = a($$0, $$1, $$2, true);
+      return $$3.isPresent() ? $$3 : a($$0, $$1, $$2, false);
+   }
+
+   private static Optional<fba> a(bur<?> $$0, dfr $$1, ji $$2, boolean $$3) {
+      ji.a $$4 = new ji.a();
+      UnmodifiableIterator var5 = f.iterator();
+
+      while (var5.hasNext()) {
+         km $$5 = (km)var5.next();
+         $$4.g($$2).h($$5);
+         fba $$6 = crc.a($$0, $$1, $$4, $$3);
          if ($$6 != null) {
-            dxo $$7 = $$1.a_($$6);
-            if (o($$7) && b($$7, $$1, $$6)) {
-               if ($$3.h()) {
-                  a($$1, $$6, jm.a);
-               } else {
-                  b($$1, $$6);
-               }
-            }
-         }
-      }
-   }
-
-   private static void b(arx $$0, jh $$1) {
-      jh.a $$2 = $$1.k();
-
-      for (int $$3 = 0; $$3 < 10; $$3++) {
-         $$2.c(jm.a);
-         dxo $$4 = $$0.a_($$2);
-         if (!$$4.y().c()) {
-            return;
-         }
-
-         if (a($$4, jm.b) && b($$4, $$0, $$2)) {
-            a($$0, $$2, jm.b);
-            return;
-         }
-
-         if (c($$0, $$2, jm.b) && !$$0.z($$2.e())) {
-            a($$0, $$2.e(), jm.b);
-            return;
-         }
-
-         if (!a((dge)$$0, $$2, $$4)) {
-            return;
-         }
-      }
-   }
-
-   private static void a(arx $$0, jh $$1, jm $$2) {
-      jh $$3 = $$1.a($$2);
-      dxo $$4 = $$0.a_($$3);
-      if (a($$4, $$2.g())) {
-         a($$4, (dha)$$0, $$3);
-      } else if ($$4.l() || $$4.a(dkf.J)) {
-         a($$0, $$3, $$2, dyk.b);
-      }
-   }
-
-   private static void a(dha $$0, jh $$1, jm $$2, dyk $$3) {
-      dxo $$4 = dkf.sV.m().b(b, $$2).b(c, $$3).b(d, Boolean.valueOf($$0.b_($$1).a() == etr.c));
-      $$0.a($$1, $$4, 3);
-   }
-
-   private static void a(dxo $$0, dha $$1, jh $$2) {
-      jh $$4;
-      jh $$3;
-      if ($$0.c(b) == jm.b) {
-         $$3 = $$2;
-         $$4 = $$2.d();
-      } else {
-         $$4 = $$2;
-         $$3 = $$2.e();
-      }
-
-      a($$1, $$4, jm.a, dyk.a);
-      a($$1, $$3, jm.b, dyk.a);
-   }
-
-   public static void a(dgz $$0, jh $$1, dxo $$2) {
-      b($$0, $$1, $$2).ifPresent($$3 -> a($$0, $$1, $$2, $$3.b));
-   }
-
-   private static void a(dgz $$0, jh $$1, dxo $$2, etp $$3) {
-      fbr $$4 = $$2.a($$1);
-      double $$5 = 0.0625;
-      double $$6 = (double)$$1.u() + 0.5 + $$4.d;
-      double $$7 = (double)((float)($$1.v() + 1) - 0.6875F) - 0.0625;
-      double $$8 = (double)$$1.w() + 0.5 + $$4.f;
-      etp $$9 = a($$0, $$3);
-      lq $$10 = $$9.a(axq.b) ? ls.aN : ls.aP;
-      $$0.a($$10, $$6, $$7, $$8, 0.0, 0.0, 0.0);
-   }
-
-   @Nullable
-   private static jh a(dxo $$0, dha $$1, jh $$2, int $$3, boolean $$4) {
-      if (a($$0, $$4)) {
-         return $$2;
-      } else {
-         jm $$5 = $$0.c(b);
-         BiPredicate<jh, dxo> $$6 = ($$1x, $$2x) -> $$2x.a(dkf.sV) && $$2x.c(b) == $$5;
-         return a($$1, $$2, $$5.f(), $$6, $$1x -> a($$1x, $$4), $$3).orElse(null);
-      }
-   }
-
-   @Nullable
-   private static jm b(dhc $$0, jh $$1, jm $$2) {
-      jm $$3;
-      if (c($$0, $$1, $$2)) {
-         $$3 = $$2;
-      } else {
-         if (!c($$0, $$1, $$2.g())) {
-            return null;
-         }
-
-         $$3 = $$2.g();
-      }
-
-      return $$3;
-   }
-
-   private static dyk a(dhc $$0, jh $$1, jm $$2, boolean $$3) {
-      jm $$4 = $$2.g();
-      dxo $$5 = $$0.a_($$1.a($$2));
-      if (b($$5, $$4)) {
-         return !$$3 && $$5.c(c) != dyk.a ? dyk.b : dyk.a;
-      } else if (!b($$5, $$2)) {
-         return dyk.b;
-      } else {
-         dyk $$6 = $$5.c(c);
-         if ($$6 != dyk.b && $$6 != dyk.a) {
-            dxo $$7 = $$0.a_($$1.a($$4));
-            return !b($$7, $$2) ? dyk.e : dyk.d;
-         } else {
-            return dyk.c;
-         }
-      }
-   }
-
-   public static boolean o(dxo $$0) {
-      return q($$0) && $$0.c(c) == dyk.b && !$$0.c(d);
-   }
-
-   private static boolean b(dxo $$0, arx $$1, jh $$2) {
-      jm $$3 = $$0.c(b);
-      jh $$4 = $$2.a($$3);
-      dxo $$5 = $$1.a_($$4);
-      if (!$$5.y().c()) {
-         return false;
-      } else {
-         return $$5.l() ? true : a($$5, $$3.g());
-      }
-   }
-
-   private static Optional<jh> a(dgz $$0, jh $$1, dxo $$2, int $$3) {
-      jm $$4 = $$2.c(b);
-      BiPredicate<jh, dxo> $$5 = ($$1x, $$2x) -> $$2x.a(dkf.sV) && $$2x.c(b) == $$4;
-      return a($$0, $$1, $$4.g().f(), $$5, $$0x -> !$$0x.a(dkf.sV), $$3);
-   }
-
-   private static boolean c(dhc $$0, jh $$1, jm $$2) {
-      jh $$3 = $$1.a($$2.g());
-      dxo $$4 = $$0.a_($$3);
-      return $$4.c($$0, $$3, $$2) || b($$4, $$2);
-   }
-
-   private static boolean a(dxo $$0, boolean $$1) {
-      if (!$$0.a(dkf.sV)) {
-         return false;
-      } else {
-         dyk $$2 = $$0.c(c);
-         return $$2 == dyk.b || $$1 && $$2 == dyk.a;
-      }
-   }
-
-   private static boolean a(dxo $$0, jm $$1) {
-      return a($$0, false) && $$0.c(b) == $$1;
-   }
-
-   private static boolean q(dxo $$0) {
-      return b($$0, jm.a);
-   }
-
-   private static boolean r(dxo $$0) {
-      return b($$0, jm.b);
-   }
-
-   private static boolean b(dxo $$0, dhc $$1, jh $$2) {
-      return q($$0) && !$$1.a_($$2.d()).a(dkf.sV);
-   }
-
-   @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      return false;
-   }
-
-   private static boolean b(dxo $$0, jm $$1) {
-      return $$0.a(dkf.sV) && $$0.c(b) == $$1;
-   }
-
-   @Nullable
-   private static jh a(dgz $$0, jh $$1, etp $$2) {
-      Predicate<dxo> $$3 = $$1x -> $$1x.b() instanceof diw && ((diw)$$1x.b()).a($$2);
-      BiPredicate<jh, dxo> $$4 = ($$1x, $$2x) -> a((dge)$$0, $$1x, $$2x);
-      return a($$0, $$1, jm.a.f(), $$4, $$3, 11).orElse(null);
-   }
-
-   @Nullable
-   public static jh a(dgz $$0, jh $$1) {
-      BiPredicate<jh, dxo> $$2 = ($$1x, $$2x) -> a((dge)$$0, $$1x, $$2x);
-      return a($$0, $$1, jm.b.f(), $$2, dpz::o, 11).orElse(null);
-   }
-
-   public static etp a(arx $$0, jh $$1) {
-      return b($$0, $$1, $$0.a_($$1)).map($$0x -> $$0x.b).filter(dpz::a).orElse(etr.a);
-   }
-
-   private static Optional<dpz.a> b(dgz $$0, jh $$1, dxo $$2) {
-      return !q($$2) ? Optional.empty() : a($$0, $$1, $$2, 11).map($$1x -> {
-         jh $$2x = $$1x.d();
-         dxo $$3 = $$0.a_($$2x);
-         etp $$4;
-         if ($$3.a(dkf.tk) && !$$0.G_().i()) {
-            $$4 = etr.c;
-         } else {
-            $$4 = $$0.b_($$2x).a();
-         }
-
-         return new dpz.a($$2x, $$4, $$3);
-      });
-   }
-
-   private static boolean a(etp $$0) {
-      return $$0 == etr.e || $$0 == etr.c;
-   }
-
-   private static boolean a(dxo $$0, dxo $$1) {
-      return $$0.a(dkf.sW) && $$1.a(dkf.J) && $$1.y().b();
-   }
-
-   private static etp a(dgz $$0, etp $$1) {
-      if ($$1.a(etr.a)) {
-         return $$0.G_().i() ? etr.e : etr.c;
-      } else {
-         return $$1;
-      }
-   }
-
-   private static Optional<jh> a(dha $$0, jh $$1, jm.b $$2, BiPredicate<jh, dxo> $$3, Predicate<dxo> $$4, int $$5) {
-      jm $$6 = jm.a($$2, jm.a.b);
-      jh.a $$7 = $$1.k();
-
-      for (int $$8 = 1; $$8 < $$5; $$8++) {
-         $$7.c($$6);
-         dxo $$9 = $$0.a_($$7);
-         if ($$4.test($$9)) {
-            return Optional.of($$7.j());
-         }
-
-         if ($$0.e($$7.v()) || !$$3.test($$7, $$9)) {
-            return Optional.empty();
+            return Optional.of($$6);
          }
       }
 
       return Optional.empty();
    }
 
-   private static boolean a(dge $$0, jh $$1, dxo $$2) {
-      if ($$2.l()) {
-         return true;
-      } else if ($$2.s()) {
-         return false;
-      } else if (!$$2.y().c()) {
-         return false;
-      } else {
-         fcl $$3 = $$2.g($$0, $$1);
-         return !fci.c(U, $$3, fbv.i);
-      }
-   }
-
-   static record a(jh a, etp b, dxo c) {
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

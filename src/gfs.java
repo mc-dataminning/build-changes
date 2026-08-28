@@ -1,26 +1,25 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+public class gfs {
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = af.d();
 
-public interface gfs {
-   gfs a = new gfs() {
-      @Override
-      public CompletableFuture<Optional<cpq>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static gfs a(UserApiService $$0, fml $$1, Path $$2) {
-      return (gfs)($$1.g() == fml.a.c ? new gey($$0, $$1.b(), $$2) : a);
+   public void a() {
+      this.e = af.d();
    }
 
-   CompletableFuture<Optional<cpq>> a();
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(af.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = ayz.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
+      }
+   }
 
-   boolean b();
+   public float b() {
+      return (float)(7000000.0 / this.c);
+   }
 }

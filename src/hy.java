@@ -1,30 +1,37 @@
-public record hy(int a, et b, hy.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
-   }
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.b.onFailure();
-   }
+public interface hy<T> {
+   void a(hw<T> var1);
 
-   public void b() {
-      this.c.discard();
-   }
+   void a(@Nullable ia var1);
 
-   public int c() {
-      return this.a;
-   }
+   @Nullable
+   ia a();
 
-   public et d() {
-      return this.b;
-   }
+   hz b();
 
-   public hy.a e() {
-      return this.c;
-   }
+   static <T extends ez<T>> hy<T> a(final hx<T> $$0, final hz $$1) {
+      return new hy<T>() {
+         @Override
+         public void a(hw<T> $$0x) {
+            $$0.a(new ht<>($$1, $$0));
+         }
 
-   @FunctionalInterface
-   public interface a {
-      void discard();
+         @Override
+         public void a(@Nullable ia $$0x) {
+            $$0.a($$0);
+         }
+
+         @Nullable
+         @Override
+         public ia a() {
+            return $$0.b();
+         }
+
+         @Override
+         public hz b() {
+            return $$1;
+         }
+      };
    }
 }

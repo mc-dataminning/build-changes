@@ -1,59 +1,65 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
-import java.util.Collection;
-import java.util.List;
-
-public class crj {
-   private final List<crg> a = Lists.newArrayList();
-   private int b;
-
-   public ImmutableList<crg> a() {
-      return ImmutableList.copyOf(this.a);
-   }
-
-   public crj a(int $$0, float $$1) {
-      this.a.add(new crg($$0, $$1));
-      this.b();
-      return this;
-   }
-
-   public crj a(Collection<crg> $$0) {
-      this.a.addAll($$0);
-      this.b();
-      return this;
-   }
-
-   private void b() {
-      Int2ObjectSortedMap<crg> $$0 = new Int2ObjectAVLTreeMap();
-      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
-      this.a.clear();
-      this.a.addAll($$0.values());
-      this.b = 0;
-   }
-
-   public float a(int $$0) {
-      if (this.a.size() <= 0) {
-         return 0.0F;
-      } else {
-         crg $$1 = this.a.get(this.b);
-         crg $$2 = this.a.get(this.a.size() - 1);
-         boolean $$3 = $$0 < $$1.a();
-         int $$4 = $$3 ? 0 : this.b;
-         float $$5 = $$3 ? $$2.b() : $$1.b();
-
-         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
-            crg $$7 = this.a.get($$6);
-            if ($$7.a() > $$0) {
-               break;
-            }
-
-            this.b = $$6;
-            $$5 = $$7.b();
-         }
-
-         return $$5;
+public class crj extends cqw {
+   private final dfj b = new dfj() {
+      @Override
+      public void a(dgi $$0, ji $$1, int $$2) {
+         $$0.a(crj.this, (byte)$$2);
       }
+   };
+   private final Runnable c;
+
+   public crj(bur<? extends crj> $$0, dgi $$1) {
+      super($$0, $$1);
+      this.c = this.c($$1);
+   }
+
+   @Override
+   protected cwl u() {
+      return cwt.oo;
+   }
+
+   @Override
+   public cwp dJ() {
+      return new cwp(cwt.oo);
+   }
+
+   private Runnable c(dgi $$0) {
+      return $$0 instanceof arc ? () -> this.b.a((arc)$$0, this.dw()) : () -> this.b.a($$0, this.dw());
+   }
+
+   @Override
+   public dwx w() {
+      return djo.cA.m();
+   }
+
+   @Override
+   protected void a(tq $$0) {
+      super.a($$0);
+      this.b.a(this.dW(), this.dw(), $$0);
+   }
+
+   @Override
+   protected void b(tq $$0) {
+      super.b($$0);
+      this.b.a($$0);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      this.b.a(this.dW(), $$0);
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      this.c.run();
+   }
+
+   public dfj v() {
+      return this.b;
+   }
+
+   @Override
+   public boolean cW() {
+      return true;
    }
 }

@@ -1,80 +1,87 @@
-import java.util.Set;
+import java.util.List;
 
-public class gbr extends gbh<gye> {
-   public static final ges a = new gag(true, 8.0F, 6.0F, 1.9F, 2.0F, 24.0F, Set.of("head"));
-   private static final float b = 0.87266463F;
-   private static final float c = (float) (-Math.PI / 9);
-   private final gej d;
-   private final gej e;
-   private final gej f;
-   private final gej g;
-   private final gej i;
-   private final gej j;
-   private final gej k;
-   private final gej l;
-   private final gej m;
+public class gbr extends gca<gya> {
+   public static final List<gfc> a = List.of();
+   private final gfc b;
+   private final List<gfc> c;
 
-   public gbr(gej $$0) {
+   public gbr(gfc $$0) {
       super($$0);
-      this.g = $$0.b("body");
-      this.m = this.g.b("mane");
-      this.d = $$0.b("head");
-      this.e = this.d.b("right_ear");
-      this.f = this.d.b("left_ear");
-      this.i = $$0.b("right_front_leg");
-      this.j = $$0.b("left_front_leg");
-      this.k = $$0.b("right_hind_leg");
-      this.l = $$0.b("left_hind_leg");
+      gfc $$1 = $$0.b("root");
+      gfc $$2 = $$1.b("upper_body");
+      this.b = $$2.b("head");
+      this.c = List.of(this.b);
    }
 
-   private static ger c() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      get $$2 = $$1.a("body", geo.c().a(1, 1).a(-8.0F, -7.0F, -13.0F, 16.0F, 14.0F, 26.0F), gel.a(0.0F, 7.0F, 0.0F));
-      $$2.a("mane", geo.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new gen(0.001F)), gel.a(0.0F, -14.0F, -7.0F));
-      get $$3 = $$1.a("head", geo.c().a(61, 1).a(-7.0F, -3.0F, -19.0F, 14.0F, 6.0F, 19.0F), gel.a(0.0F, 2.0F, -12.0F, 0.87266463F, 0.0F, 0.0F));
-      $$3.a("right_ear", geo.c().a(1, 1).a(-6.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), gel.a(-6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (-Math.PI * 2.0 / 9.0)));
-      $$3.a("left_ear", geo.c().a(1, 6).a(0.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), gel.a(6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (Math.PI * 2.0 / 9.0)));
-      $$3.a("right_horn", geo.c().a(10, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), gel.a(-7.0F, 2.0F, -12.0F));
-      $$3.a("left_horn", geo.c().a(1, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), gel.a(7.0F, 2.0F, -12.0F));
-      int $$4 = 14;
-      int $$5 = 11;
-      $$1.a("right_front_leg", geo.c().a(66, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), gel.a(-4.0F, 10.0F, -8.5F));
-      $$1.a("left_front_leg", geo.c().a(41, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), gel.a(4.0F, 10.0F, -8.5F));
-      $$1.a("right_hind_leg", geo.c().a(21, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), gel.a(-5.0F, 13.0F, 10.0F));
-      $$1.a("left_hind_leg", geo.c().a(0, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), gel.a(5.0F, 13.0F, 10.0F));
+   private static gfk b() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfm $$2 = $$1.a("root", gfh.c(), gfe.a(0.0F, 24.0F, 0.0F));
+      gfm $$3 = $$2.a("upper_body", gfh.c(), gfe.a(-1.0F, -19.0F, 0.0F));
+      $$3.a(
+         "head",
+         gfh.c()
+            .a(0, 0)
+            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
+            .a(28, 31)
+            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
+            .a(12, 40)
+            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
+            .a(34, 12)
+            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
+         gfe.a(-3.0F, -11.0F, 0.0F)
+      );
+      $$3.a("body", gfh.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gfe.a(0.0F, -7.0F, 1.0F));
+      $$3.a(
+         "right_arm", gfh.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gfe.a(-7.0F, -9.5F, 1.5F)
+      );
+      $$3.a(
+         "left_arm",
+         gfh.c()
+            .a(30, 40)
+            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
+            .a(52, 12)
+            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
+            .a(52, 19)
+            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
+         gfe.a(6.0F, -9.0F, 0.5F)
+      );
+      $$2.a(
+         "left_leg", gfh.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gfe.a(1.5F, -16.0F, 0.5F)
+      );
+      $$2.a(
+         "right_leg",
+         gfh.c()
+            .a(0, 34)
+            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
+            .a(45, 46)
+            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
+            .a(12, 34)
+            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
+         gfe.a(-1.0F, -17.5F, 0.5F)
+      );
       return $$0;
    }
 
-   public static gep a() {
-      ger $$0 = c();
-      return gep.a($$0, 128, 64);
+   public static gfi a() {
+      gfk $$0 = b();
+      return gfi.a($$0, 64, 64);
    }
 
-   public static gep b() {
-      ger $$0 = c();
-      get $$1 = $$0.a().b("body");
-      $$1.a("mane", geo.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new gen(0.001F)), gel.a(0.0F, -14.0F, -3.0F));
-      return gep.a($$0, 128, 64).a(a);
-   }
-
-   public void a(gye $$0) {
+   public void a(gya $$0) {
       super.a($$0);
-      float $$1 = $$0.Y;
-      float $$2 = $$0.X;
-      this.e.g = (float) (-Math.PI * 2.0 / 9.0) - $$1 * azu.a($$2);
-      this.f.g = (float) (Math.PI * 2.0 / 9.0) + $$1 * azu.a($$2);
-      this.d.f = $$0.U * (float) (Math.PI / 180.0);
-      float $$3 = 1.0F - (float)azu.a(10 - 2 * $$0.a) / 10.0F;
-      this.d.e = azu.h($$3, 0.87266463F, (float) (-Math.PI / 9));
-      if ($$0.ae) {
-         this.d.c += $$3 * 2.5F;
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      if ($$0.e) {
+         this.a(fme.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
       }
 
-      float $$4 = 1.2F;
-      this.i.e = azu.b($$2) * 1.2F * $$1;
-      this.j.e = azu.b($$2 + (float) Math.PI) * 1.2F * $$1;
-      this.k.e = this.j.e;
-      this.l.e = this.i.e;
+      this.a($$0.b, fme.b, $$0.u);
+      this.a($$0.a, fme.c, $$0.u);
+      this.a($$0.c, fme.d, $$0.u);
+   }
+
+   public List<gfc> b(gya $$0) {
+      return !$$0.d ? a : this.c;
    }
 }

@@ -1,119 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public class ave implements avb {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, avc> c;
-   private final List<atw> d;
-
-   public ave(aty $$0, List<atw> $$1) {
-      this.d = List.copyOf($$1);
-      Map<String, avc> $$2 = new HashMap<>();
-      List<String> $$3 = $$1.stream().flatMap($$1x -> $$1x.a($$0).stream()).distinct().toList();
-
-      for (atw $$4 : $$1) {
-         avk $$5 = this.a($$4);
-         Set<String> $$6 = $$4.a($$0);
-         Predicate<alp> $$7 = $$5 != null ? $$1x -> $$5.b($$1x.a()) : null;
-
-         for (String $$8 : $$3) {
-            boolean $$9 = $$6.contains($$8);
-            boolean $$10 = $$5 != null && $$5.a($$8);
-            if ($$9 || $$10) {
-               avc $$11 = $$2.get($$8);
-               if ($$11 == null) {
-                  $$11 = new avc($$0, $$8);
-                  $$2.put($$8, $$11);
-               }
-
-               if ($$9 && $$10) {
-                  $$11.a($$4, $$7);
-               } else if ($$9) {
-                  $$11.a($$4);
-               } else {
-                  $$11.a($$4.b(), $$7);
-               }
-            }
-         }
-      }
-
-      this.c = $$2;
-   }
-
-   @Nullable
-   private avk a(atw $$0) {
-      try {
-         return $$0.a(avk.a);
-      } catch (IOException var3) {
-         a.error("Failed to get filter section from pack {}", $$0.b());
-         return null;
-      }
+public class ave extends avi<GameProfile, avf> {
+   public ave(File $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<String> a() {
-      return this.c.keySet();
+   protected avh<GameProfile> a(JsonObject $$0) {
+      return new avf($$0);
    }
 
    @Override
-   public Optional<avj> getResource(alp $$0) {
-      avl $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.getResource($$0) : Optional.empty();
+   public String[] a() {
+      return this.d().stream().map(avh::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
    }
 
-   @Override
-   public List<avj> a(alp $$0) {
-      avl $$1 = this.c.get($$0.b());
-      return $$1 != null ? $$1.a($$0) : List.of();
+   public boolean a(GameProfile $$0) {
+      avf $$1 = this.b($$0);
+      return $$1 != null ? $$1.b() : false;
    }
 
-   @Override
-   public Map<alp, avj> b(String $$0, Predicate<alp> $$1) {
-      a($$0);
-      Map<alp, avj> $$2 = new TreeMap<>();
-
-      for (avc $$3 : this.c.values()) {
-         $$2.putAll($$3.b($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public Map<alp, List<avj>> c(String $$0, Predicate<alp> $$1) {
-      a($$0);
-      Map<alp, List<avj>> $$2 = new TreeMap<>();
-
-      for (avc $$3 : this.c.values()) {
-         $$2.putAll($$3.c($$0, $$1));
-      }
-
-      return $$2;
-   }
-
-   private static void a(String $$0) {
-      if ($$0.endsWith("/")) {
-         throw new IllegalArgumentException("Trailing slash in path " + $$0);
-      }
-   }
-
-   @Override
-   public Stream<atw> b() {
-      return this.d.stream();
-   }
-
-   @Override
-   public void close() {
-      this.d.forEach(atw::close);
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

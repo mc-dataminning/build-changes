@@ -1,22 +1,11 @@
-public enum aww {
-   a("master"),
-   b("music"),
-   c("record"),
-   d("weather"),
-   e("block"),
-   f("hostile"),
-   g("neutral"),
-   h("player"),
-   i("ambient"),
-   j("voice");
+public class aww {
+   public static final axf<ebt> a = a("vibrations");
+   public static final axf<ebt> b = a("warden_can_listen");
+   public static final axf<ebt> c = a("shrieker_can_listen");
+   public static final axf<ebt> d = a("ignore_vibrations_sneaking");
+   public static final axf<ebt> e = a("allay_can_listen");
 
-   private final String k;
-
-   private aww(final String $$0) {
-      this.k = $$0;
-   }
-
-   public String a() {
-      return this.k;
+   private static axf<ebt> a(String $$0) {
+      return axf.a(mc.G, aku.b($$0));
    }
 }

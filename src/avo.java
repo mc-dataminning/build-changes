@@ -1,29 +1,46 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Map;
-import java.util.Optional;
 
-@FunctionalInterface
-public interface avo {
-   avo b = $$0 -> Optional.empty();
+public class avo {
+   private final ByteArrayOutputStream a;
+   private final DataOutputStream b;
 
-   Optional<avj> getResource(alp var1);
-
-   default avj getResourceOrThrow(alp $$0) throws FileNotFoundException {
-      return this.getResource($$0).orElseThrow(() -> new FileNotFoundException($$0.toString()));
+   public avo(int $$0) {
+      this.a = new ByteArrayOutputStream($$0);
+      this.b = new DataOutputStream(this.a);
    }
 
-   default InputStream open(alp $$0) throws IOException {
-      return this.getResourceOrThrow($$0).d();
+   public void a(byte[] $$0) throws IOException {
+      this.b.write($$0, 0, $$0.length);
    }
 
-   default BufferedReader openAsReader(alp $$0) throws IOException {
-      return this.getResourceOrThrow($$0).e();
+   public void a(String $$0) throws IOException {
+      this.b.writeBytes($$0);
+      this.b.write(0);
    }
 
-   static avo fromMap(Map<alp, avj> $$0) {
-      return $$1 -> Optional.ofNullable($$0.get($$1));
+   public void a(int $$0) throws IOException {
+      this.b.write($$0);
+   }
+
+   public void a(short $$0) throws IOException {
+      this.b.writeShort(Short.reverseBytes($$0));
+   }
+
+   public void b(int $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes($$0));
+   }
+
+   public void a(float $$0) throws IOException {
+      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   }
+
+   public byte[] a() {
+      return this.a.toByteArray();
+   }
+
+   public void b() {
+      this.a.reset();
    }
 }

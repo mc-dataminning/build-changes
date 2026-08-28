@@ -1,136 +1,87 @@
-public class gia extends gjn {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final gin.a H;
+public class gia extends gkg {
+   private final float a;
+   private final float b;
 
-   gia(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gin.a.a);
-   }
-
-   gia(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gin.a $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+   gia(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, hbl $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public gir b() {
-      return this.H.a() ? gir.b : gir.c;
+   public gjk b() {
+      return gjk.a;
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
-
-   @Override
-   public int a(float $$0) {
-      if (this.G) {
-         return 240;
+   protected gia(gfy $$0, double $$1, double $$2, double $$3, hbl $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      hej $$5 = $$4.a(this.r);
+      if ($$5 != null) {
+         this.a($$5);
       } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
-         }
-
-         return $$3 | $$4 << 16;
+         this.a(flj.Q().a(hei.d).apply(hdz.b()));
       }
+
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
-      }
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
    @Override
-   public void a(fgp $$0, fli $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
    }
 
-   public static class a implements giq<lw> {
-      private final gji a;
-
-      public a(gji $$0) {
-         this.a = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gia $$8 = new gia($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
    }
 
-   public static class b implements giq<lw> {
-      private final gji a;
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
 
-      public b(gji $$0) {
-         this.a = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gia $$8 = new gia($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class a extends gia.b<lx> {
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gia($$1, $$2, $$3, $$4, this.a(new cwp(cwt.cT), $$1));
       }
    }
 
-   public static class c implements giq<lw> {
-      private final gji a;
+   public abstract static class b<T extends lr> implements gjj<T> {
+      private final hbl a = new hbl();
 
-      public c(gji $$0) {
-         this.a = $$0;
+      protected hbl a(cwp $$0, gfy $$1) {
+         flj.Q().bf().a(this.a, $$0, cwn.h, false, $$1, null, 0);
+         return this.a;
       }
+   }
 
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gia $$8 = new gia($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gin.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         return $$8;
+   public static class c extends gia.b<lp> {
+      public gjg a(lp $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gia($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a($$0.b(), $$1));
+      }
+   }
+
+   public static class d extends gia.b<lx> {
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gia($$1, $$2, $$3, $$4, this.a(new cwp(cwt.rx), $$1));
+      }
+   }
+
+   public static class e extends gia.b<lx> {
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gia($$1, $$2, $$3, $$4, this.a(new cwp(cwt.rj), $$1));
       }
    }
 }

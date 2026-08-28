@@ -1,133 +1,119 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record bu(
-   Optional<Boolean> b, Optional<Boolean> c, Optional<Boolean> d, Optional<Boolean> e, Optional<Boolean> f, Optional<Boolean> g, Optional<Boolean> h
-) {
+public record bu(Optional<cv> b, Optional<cv> c, Optional<cv> d, Optional<cv> e, Optional<cv> f, Optional<cv> g, Optional<cv> h) {
    public static final Codec<bu> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("is_on_ground").forGetter(bu::a),
-               Codec.BOOL.optionalFieldOf("is_on_fire").forGetter(bu::b),
-               Codec.BOOL.optionalFieldOf("is_sneaking").forGetter(bu::c),
-               Codec.BOOL.optionalFieldOf("is_sprinting").forGetter(bu::d),
-               Codec.BOOL.optionalFieldOf("is_swimming").forGetter(bu::e),
-               Codec.BOOL.optionalFieldOf("is_flying").forGetter(bu::f),
-               Codec.BOOL.optionalFieldOf("is_baby").forGetter(bu::g)
+               cv.a.optionalFieldOf("head").forGetter(bu::a),
+               cv.a.optionalFieldOf("chest").forGetter(bu::b),
+               cv.a.optionalFieldOf("legs").forGetter(bu::c),
+               cv.a.optionalFieldOf("feet").forGetter(bu::d),
+               cv.a.optionalFieldOf("body").forGetter(bu::e),
+               cv.a.optionalFieldOf("mainhand").forGetter(bu::f),
+               cv.a.optionalFieldOf("offhand").forGetter(bu::g)
             )
             .apply($$0, bu::new)
    );
 
-   public boolean a(bvb $$0) {
-      if (this.b.isPresent() && $$0.aJ() != this.b.get()) {
-         return false;
-      } else if (this.c.isPresent() && $$0.bY() != this.c.get()) {
-         return false;
-      } else if (this.d.isPresent() && $$0.ci() != this.d.get()) {
-         return false;
-      } else if (this.e.isPresent() && $$0.cj() != this.e.get()) {
-         return false;
-      } else if (this.f.isPresent() && $$0.ck() != this.f.get()) {
-         return false;
-      } else {
-         if (this.g.isPresent()) {
-            boolean var10000;
-            label53: {
-               if ($$0 instanceof bvx $$1 && ($$1.fJ() || $$1 instanceof cpo $$2 && $$2.gj().b)) {
-                  var10000 = true;
-                  break label53;
-               }
+   public static bu a(js<cwl> $$0, js<dtp> $$1) {
+      return bu.a.a().a(cv.a.a().a($$0, cwt.vP).a(kt.a(cqk.a($$1).a(), kv.ai, kv.h))).b();
+   }
 
-               var10000 = false;
-            }
-
-            boolean $$3 = var10000;
-            if ($$3 != this.g.get()) {
-               return false;
-            }
-         }
-
-         if (this.h.isPresent() && $$0 instanceof bvx $$4 && $$4.e_() != this.h.get()) {
+   public boolean a(@Nullable buk $$0) {
+      if ($$0 instanceof bvg $$1) {
+         if (this.b.isPresent() && !this.b.get().a($$1.a(bus.f))) {
             return false;
+         } else if (this.c.isPresent() && !this.c.get().a($$1.a(bus.e))) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1.a(bus.d))) {
+            return false;
+         } else if (this.e.isPresent() && !this.e.get().a($$1.a(bus.c))) {
+            return false;
+         } else if (this.f.isPresent() && !this.f.get().a($$1.a(bus.g))) {
+            return false;
+         } else {
+            return this.g.isPresent() && !this.g.get().a($$1.a(bus.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(bus.b));
          }
-
-         return true;
+      } else {
+         return false;
       }
    }
 
-   public Optional<Boolean> a() {
+   public Optional<cv> a() {
       return this.b;
    }
 
-   public Optional<Boolean> b() {
+   public Optional<cv> b() {
       return this.c;
    }
 
-   public Optional<Boolean> c() {
+   public Optional<cv> c() {
       return this.d;
    }
 
-   public Optional<Boolean> d() {
+   public Optional<cv> d() {
       return this.e;
    }
 
-   public Optional<Boolean> e() {
+   public Optional<cv> e() {
       return this.f;
    }
 
-   public Optional<Boolean> f() {
+   public Optional<cv> f() {
       return this.g;
    }
 
-   public Optional<Boolean> g() {
+   public Optional<cv> g() {
       return this.h;
    }
 
    public static class a {
-      private Optional<Boolean> a = Optional.empty();
-      private Optional<Boolean> b = Optional.empty();
-      private Optional<Boolean> c = Optional.empty();
-      private Optional<Boolean> d = Optional.empty();
-      private Optional<Boolean> e = Optional.empty();
-      private Optional<Boolean> f = Optional.empty();
-      private Optional<Boolean> g = Optional.empty();
+      private Optional<cv> a = Optional.empty();
+      private Optional<cv> b = Optional.empty();
+      private Optional<cv> c = Optional.empty();
+      private Optional<cv> d = Optional.empty();
+      private Optional<cv> e = Optional.empty();
+      private Optional<cv> f = Optional.empty();
+      private Optional<cv> g = Optional.empty();
 
       public static bu.a a() {
          return new bu.a();
       }
 
-      public bu.a a(Boolean $$0) {
-         this.a = Optional.of($$0);
+      public bu.a a(cv.a $$0) {
+         this.a = Optional.of($$0.b());
          return this;
       }
 
-      public bu.a b(Boolean $$0) {
-         this.b = Optional.of($$0);
+      public bu.a b(cv.a $$0) {
+         this.b = Optional.of($$0.b());
          return this;
       }
 
-      public bu.a c(Boolean $$0) {
-         this.c = Optional.of($$0);
+      public bu.a c(cv.a $$0) {
+         this.c = Optional.of($$0.b());
          return this;
       }
 
-      public bu.a d(Boolean $$0) {
-         this.d = Optional.of($$0);
+      public bu.a d(cv.a $$0) {
+         this.d = Optional.of($$0.b());
          return this;
       }
 
-      public bu.a e(Boolean $$0) {
-         this.e = Optional.of($$0);
+      public bu.a e(cv.a $$0) {
+         this.e = Optional.of($$0.b());
          return this;
       }
 
-      public bu.a f(Boolean $$0) {
-         this.f = Optional.of($$0);
+      public bu.a f(cv.a $$0) {
+         this.f = Optional.of($$0.b());
          return this;
       }
 
-      public bu.a g(Boolean $$0) {
-         this.g = Optional.of($$0);
+      public bu.a g(cv.a $$0) {
+         this.g = Optional.of($$0.b());
          return this;
       }
 

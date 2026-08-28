@@ -1,96 +1,148 @@
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class dlj extends dpv {
-   public static final MapCodec<dlj> a = b(dlj::new);
+public abstract class dlj extends djm implements dqs {
+   public static final dxo a = dpe.b;
+   public static final dxo b = dpe.c;
+   public static final dxo c = dpe.d;
+   public static final dxo d = dpe.e;
+   public static final dxo e = dxn.J;
+   protected static final Map<jn, dxo> f = dpe.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(af.a());
+   protected final fbu[] g;
+   protected final fbu[] h;
+   private final Object2IntMap<dwx> i = new Object2IntOpenHashMap();
 
-   @Override
-   public MapCodec<dlj> a() {
-      return a;
-   }
+   protected dlj(float $$0, float $$1, float $$2, float $$3, float $$4, dww.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.F.a().iterator();
 
-   protected dlj(dxn.d $$0) {
-      super(0.3125F, $$0);
-      this.l(
-         this.F
-            .b()
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-            .b(f, Boolean.valueOf(false))
-            .b(g, Boolean.valueOf(false))
-      );
-   }
-
-   @Override
-   public dxo a(dax $$0) {
-      return a($$0.q(), $$0.a(), this.m());
-   }
-
-   public static dxo a(dge $$0, jh $$1, dxo $$2) {
-      dxo $$3 = $$0.a_($$1.e());
-      dxo $$4 = $$0.a_($$1.d());
-      dxo $$5 = $$0.a_($$1.f());
-      dxo $$6 = $$0.a_($$1.i());
-      dxo $$7 = $$0.a_($$1.g());
-      dxo $$8 = $$0.a_($$1.h());
-      dkd $$9 = $$2.b();
-      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dkf.kX) || $$3.a(dkf.fU)))
-         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dkf.kX)))
-         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dkf.kX)))
-         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dkf.kX)))
-         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dkf.kX)))
-         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dkf.kX)));
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if (!$$0.a($$1, $$3)) {
-         $$2.a($$3, this, 1);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      } else {
-         boolean $$8 = $$6.a(this) || $$6.a(dkf.kX) || $$4 == jm.a && $$6.a(dkf.fU);
-         return $$0.b(h.get($$4), Boolean.valueOf($$8));
+      while (var7.hasNext()) {
+         dwx $$6 = (dwx)var7.next();
+         this.h($$6);
       }
    }
 
    @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected abstract MapCodec<? extends dlj> a();
+
+   protected fbu[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      fbu $$9 = djm.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      fbu $$10 = djm.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      fbu $$11 = djm.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      fbu $$12 = djm.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      fbu $$13 = djm.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      fbu $$14 = fbr.a($$10, $$13);
+      fbu $$15 = fbr.a($$11, $$12);
+      fbu[] $$16 = new fbu[]{
+         fbr.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         fbr.a($$11, $$10),
+         fbr.a($$12, $$10),
+         fbr.a($$15, $$10),
+         $$13,
+         fbr.a($$11, $$13),
+         fbr.a($$12, $$13),
+         fbr.a($$15, $$13),
+         $$14,
+         fbr.a($$11, $$14),
+         fbr.a($$12, $$14),
+         fbr.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = fbr.a($$9, $$16[$$17]);
       }
+
+      return $$16;
    }
 
    @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      dxo $$3 = $$1.a_($$2.e());
-      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
+   protected boolean e_(dwx $$0) {
+      return !$$0.c(e);
+   }
 
-      for (jm $$5 : jm.c.a) {
-         jh $$6 = $$2.a($$5);
-         dxo $$7 = $$1.a_($$6);
-         if ($$7.a(this)) {
-            if ($$4) {
-               return false;
-            }
+   @Override
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return this.h[this.h($$0)];
+   }
 
-            dxo $$8 = $$1.a_($$6.e());
-            if ($$8.a(this) || $$8.a(dkf.fU)) {
-               return true;
-            }
+   @Override
+   protected fbu b(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return this.g[this.h($$0)];
+   }
+
+   private static int a(jn $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int h(dwx $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(jn.c);
          }
-      }
 
-      return $$3.a(this) || $$3.a(dkf.fU);
+         if ($$0x.c(b)) {
+            $$1 |= a(jn.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(jn.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(jn.e);
+         }
+
+         return $$1;
+      });
    }
 
    @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b, c, d, e, f, g);
+   protected esz b_(dwx $$0) {
+      return $$0.c(e) ? eta.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected boolean a(dxo $$0, euf $$1) {
+   protected boolean a(dwx $$0, eto $$1) {
       return false;
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
+         case d:
+            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
+         case b:
+            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
+         case c:
+            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
+      }
    }
 }

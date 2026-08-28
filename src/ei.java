@@ -2,52 +2,43 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class ei extends dy<ei.a> {
+public class ei extends dz<ei.a> {
    @Override
    public Codec<ei.a> a() {
       return ei.a.a;
    }
 
-   public void a(ary $$0, bvb $$1, fbr $$2, int $$3) {
-      ewi $$4 = bw.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
+   public void a(ard $$0, cgx $$1) {
+      evr $$2 = bx.b($$0, $$1);
+      this.a($$0, $$1x -> $$1x.a($$2));
    }
 
-   public static record a(Optional<bh> b, dj.d c, Optional<bh> d) implements dy.a {
+   public static record a(Optional<bi> b, Optional<bi> c) implements dz.a {
       public static final Codec<ei.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bw.b.optionalFieldOf("player").forGetter(ei.a::a),
-                  dj.d.d.optionalFieldOf("signal_strength", dj.d.c).forGetter(ei.a::b),
-                  bw.b.optionalFieldOf("projectile").forGetter(ei.a::c)
-               )
-               .apply($$0, ei.a::new)
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(ei.a::a), bx.b.optionalFieldOf("entity").forGetter(ei.a::c)).apply($$0, ei.a::new)
       );
 
-      public static ap<ei.a> a(dj.d $$0, Optional<bh> $$1) {
-         return ao.M.a(new ei.a(Optional.empty(), $$0, $$1));
+      public static aq<ei.a> b() {
+         return ap.y.a(new ei.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(ewi $$0, fbr $$1, int $$2) {
-         return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
+      public static aq<ei.a> a(bx.a $$0) {
+         return ap.y.a(new ei.a(Optional.empty(), Optional.of(bx.a($$0))));
+      }
+
+      public boolean a(evr $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public void a(bi $$0) {
-         dy.a.super.a($$0);
-         $$0.a(this.d, ".projectile");
+      public void a(bj $$0) {
+         dz.a.super.a($$0);
+         $$0.a(this.c, ".entity");
       }
 
       @Override
-      public Optional<bh> a() {
+      public Optional<bi> a() {
          return this.b;
-      }
-
-      public dj.d b() {
-         return this.c;
-      }
-
-      public Optional<bh> c() {
-         return this.d;
       }
    }
 }

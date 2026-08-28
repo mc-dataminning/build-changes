@@ -1,228 +1,280 @@
-import com.google.common.collect.ImmutableList;
-import java.time.Duration;
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class fyg extends foe.a<fyg> {
-   private static final alp f = alp.b("icon/draft_report");
-   private static final Duration g = Duration.ofMillis(500L);
-   private static final fpm h = new fpm(
-      alp.b("social_interactions/report_button"), alp.b("social_interactions/report_button_disabled"), alp.b("social_interactions/report_button_highlighted")
-   );
-   private static final fpm i = new fpm(alp.b("social_interactions/mute_button"), alp.b("social_interactions/mute_button_highlighted"));
-   private static final fpm j = new fpm(alp.b("social_interactions/unmute_button"), alp.b("social_interactions/unmute_button_highlighted"));
-   private final flz k;
-   private final List<fnw> l;
-   private final UUID m;
-   private final String n;
-   private final Supplier<hch> o;
-   private boolean p;
-   private boolean q;
-   private final boolean r;
-   private final boolean s;
-   private final boolean u;
+public class fyg implements fpv, fqp {
+   private static final aku b = aku.b("recipe_book/overlay_recipe");
+   private static final int c = 4;
+   private static final int d = 5;
+   private static final float e = 0.375F;
+   public static final int a = 25;
+   private final List<fyg.b> f = Lists.newArrayList();
+   private boolean g;
+   private int h;
+   private int i;
+   private fyl j;
    @Nullable
-   private fny v;
-   @Nullable
-   private fny w;
-   @Nullable
-   private fny x;
-   private float y;
-   private static final xk z = xk.c("gui.socialInteractions.status_hidden").a(n.u);
-   private static final xk A = xk.c("gui.socialInteractions.status_blocked").a(n.u);
-   private static final xk B = xk.c("gui.socialInteractions.status_offline").a(n.u);
-   private static final xk C = xk.c("gui.socialInteractions.status_hidden_offline").a(n.u);
-   private static final xk D = xk.c("gui.socialInteractions.status_blocked_offline").a(n.u);
-   private static final xk E = xk.c("gui.socialInteractions.tooltip.report.disabled");
-   private static final xk F = xk.c("gui.socialInteractions.tooltip.hide");
-   private static final xk G = xk.c("gui.socialInteractions.tooltip.show");
-   private static final xk H = xk.c("gui.socialInteractions.tooltip.report");
-   private static final int I = 24;
-   private static final int J = 4;
-   public static final int a = ayf.a(190, 0, 0, 0);
-   private static final int K = 20;
-   public static final int b = ayf.a(255, 74, 74, 74);
-   public static final int c = ayf.a(255, 48, 48, 48);
-   public static final int d = ayf.a(255, 255, 255, 255);
-   public static final int e = ayf.a(140, 255, 255, 255);
+   private dcl k;
+   final fyo l;
+   private final boolean m;
 
-   public fyg(flz $$0, fyj $$1, UUID $$2, String $$3, Supplier<hch> $$4, boolean $$5) {
-      this.k = $$0;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = $$4;
-      ggo $$6 = $$0.bb();
-      this.r = $$6.a().a();
-      this.u = $$5;
-      this.s = $$6.a($$2);
-      xk $$7 = xk.a("gui.socialInteractions.narration.hide", $$3);
-      xk $$8 = xk.a("gui.socialInteractions.narration.show", $$3);
-      fyh $$9 = $$0.aN();
-      boolean $$10 = $$0.J().a($$0.T());
-      boolean $$11 = !$$0.t.cG().equals($$2);
-      if ($$11 && $$10 && !$$9.e($$2)) {
-         this.x = new fok(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fyc($$1, $$6, this)), false), xk.c("gui.socialInteractions.report")) {
-            @Override
-            protected xy aR_() {
-               return fyg.this.a(super.aR_());
-            }
-         };
-         this.x.j = this.r;
-         this.x.a(this.l());
-         this.x.a(g);
-         this.v = new fok(0, 0, 20, 20, i, $$3x -> {
-            $$9.a($$2);
-            this.a(true, xk.a("gui.socialInteractions.hidden_in_chat", $$3));
-         }, xk.c("gui.socialInteractions.hide")) {
-            @Override
-            protected xy aR_() {
-               return fyg.this.a(super.aR_());
-            }
-         };
-         this.v.a(fpk.a(F, $$7));
-         this.v.a(g);
-         this.w = new fok(0, 0, 20, 20, j, $$3x -> {
-            $$9.b($$2);
-            this.a(false, xk.a("gui.socialInteractions.shown_in_chat", $$3));
-         }, xk.c("gui.socialInteractions.show")) {
-            @Override
-            protected xy aR_() {
-               return fyg.this.a(super.aR_());
-            }
-         };
-         this.w.a(fpk.a(G, $$8));
-         this.w.a(g);
-         this.l = new ArrayList<>();
-         this.l.add(this.v);
-         this.l.add(this.x);
-         this.e($$9.d(this.m));
-      } else {
-         this.l = ImmutableList.of();
-      }
+   public fyg(fyo $$0, boolean $$1) {
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   private fpk l() {
-      return !this.r ? fpk.a(E) : fpk.a(H, xk.a("gui.socialInteractions.narration.report", this.n));
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-      int $$10 = $$3 + 4;
-      int $$11 = $$2 + ($$5 - 24) / 2;
-      int $$12 = $$10 + 24 + 4;
-      xk $$13 = this.m();
-      int $$14;
-      if ($$13 == xj.a) {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
-         $$14 = $$2 + ($$5 - 9) / 2;
-      } else {
-         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
-         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
-         $$0.b(this.k.h, $$13, $$12, $$14 + 12, e);
+   public void a(fyl $$0, bak $$1, boolean $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
+      this.j = $$0;
+      List<dck> $$8 = $$0.a(fyl.a.b);
+      List<dck> $$9 = $$2 ? Collections.emptyList() : $$0.a(fyl.a.c);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.h = $$3;
+      this.i = $$4;
+      float $$14 = (float)(this.h + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$5 + 50);
+      if ($$14 > $$15) {
+         this.h = (int)((float)this.h - $$7 * (float)((int)(($$14 - $$15) / $$7)));
       }
 
-      foy.a($$0, this.o.get(), $$10, $$11, 24);
-      $$0.b(this.k.h, this.n, $$12, $$14, d);
-      if (this.p) {
-         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
+      float $$16 = (float)(this.i + $$13 * 25);
+      float $$17 = (float)($$6 + 50);
+      if ($$16 > $$17) {
+         this.i = (int)((float)this.i - $$7 * (float)ayz.f(($$16 - $$17) / $$7));
       }
 
-      if (this.v != null && this.w != null && this.x != null) {
-         float $$16 = this.y;
-         this.v.k($$3 + ($$4 - this.v.y() - 4) - 20 - 4);
-         this.v.l($$2 + ($$5 - this.v.w()) / 2);
-         this.v.a($$0, $$6, $$7, $$9);
-         this.w.k($$3 + ($$4 - this.w.y() - 4) - 20 - 4);
-         this.w.l($$2 + ($$5 - this.w.w()) / 2);
-         this.w.a($$0, $$6, $$7, $$9);
-         this.x.k($$3 + ($$4 - this.w.y() - 4));
-         this.x.l($$2 + ($$5 - this.w.w()) / 2);
-         this.x.a($$0, $$6, $$7, $$9);
-         if ($$16 == this.y) {
-            this.y = 0.0F;
+      float $$18 = (float)this.i;
+      float $$19 = (float)($$6 - 100);
+      if ($$18 < $$19) {
+         this.i = (int)((float)this.i - $$7 * (float)ayz.f(($$18 - $$19) / $$7));
+      }
+
+      this.g = true;
+      this.f.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         dck $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.h + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.i + 5 + 25 * ($$20 / $$12);
+         if (this.m) {
+            this.f.add(new fyg.c($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
+         } else {
+            this.f.add(new fyg.a($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
          }
       }
 
-      if (this.s && this.x != null) {
-         $$0.a(glq::H, f, this.x.D() + 5, this.x.E() + 1, 15, 15);
+      this.k = null;
+   }
+
+   public fyl a() {
+      return this.j;
+   }
+
+   @Nullable
+   public dcl b() {
+      return this.k;
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
+      } else {
+         for (fyg.b $$3 : this.f) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.k = $$3.b;
+               return true;
+            }
+         }
+
+         return false;
       }
    }
 
    @Override
-   public List<? extends fpw> aI_() {
-      return this.l;
+   public boolean a_(double $$0, double $$1) {
+      return false;
    }
 
    @Override
-   public List<? extends fru> b() {
-      return this.l;
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      if (this.g) {
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.f.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.f.size(), $$4);
+         int $$6 = ayz.f((float)this.f.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(gmh::H, b, this.h, this.i, $$5 * 25 + 8, $$6 * 25 + 8);
+
+         for (fyg.b $$8 : this.f) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
+      }
    }
 
-   public String c() {
-      return this.n;
+   public void b(boolean $$0) {
+      this.g = $$0;
    }
 
-   public UUID g() {
-      return this.m;
+   public boolean c() {
+      return this.g;
    }
 
-   public Supplier<hch> h() {
-      return this.o;
+   @Override
+   public void a(boolean $$0) {
    }
 
-   public void c(boolean $$0) {
-      this.p = $$0;
+   @Override
+   public boolean aM_() {
+      return false;
    }
 
-   public boolean i() {
-      return this.p;
+   class a extends fyg.b {
+      private static final aku b = aku.b("recipe_book/crafting_overlay");
+      private static final aku c = aku.b("recipe_book/crafting_overlay_highlighted");
+      private static final aku d = aku.b("recipe_book/crafting_overlay_disabled");
+      private static final aku e = aku.b("recipe_book/crafting_overlay_disabled_highlighted");
+      private static final int f = 3;
+      private static final int m = 3;
+
+      public a(final int $$0, final int $$1, final dcl $$2, final dcj $$3, final bak $$4, final boolean $$5) {
+         super($$0, $$1, $$2, $$5, a($$3, $$4));
+      }
+
+      private static List<fyg.b.a> a(dcj $$0, bak $$1) {
+         List<fyg.b.a> $$2 = new ArrayList<>();
+         Objects.requireNonNull($$0);
+         switch ($$0) {
+            case dcn $$3:
+               akf.a(3, 3, $$3.b(), $$3.c(), $$3.f(), ($$2x, $$3x, $$4x, $$5x) -> {
+                  List<cwp> $$6x = $$2x.a($$1);
+                  if (!$$6x.isEmpty()) {
+                     $$2.add(a($$4x, $$5x, $$6x));
+                  }
+               });
+               break;
+            case dco $$4:
+               label19: {
+                  List<dcp> $$5 = $$4.b();
+
+                  for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
+                     List<cwp> $$7 = $$5.get($$6).a($$1);
+                     if (!$$7.isEmpty()) {
+                        $$2.add(a($$6 % 3, $$6 / 3, $$7));
+                     }
+                  }
+                  break label19;
+               }
+         }
+
+         return $$2;
+      }
+
+      @Override
+      protected aku b(boolean $$0) {
+         if ($$0) {
+            return this.D() ? c : b;
+         } else {
+            return this.D() ? e : d;
+         }
+      }
    }
 
-   public void d(boolean $$0) {
-      this.q = $$0;
+   abstract class b extends fop {
+      final dcl b;
+      private final boolean c;
+      private final List<fyg.b.a> d;
+
+      public b(final int $$0, final int $$1, final dcl $$2, final boolean $$3, final List<fyg.b.a> $$4) {
+         super($$0, $$1, 24, 24, wn.a);
+         this.d = $$4;
+         this.b = $$2;
+         this.c = $$3;
+      }
+
+      protected static fyg.b.a a(int $$0, int $$1, List<cwp> $$2) {
+         return new fyg.b.a(3 + $$0 * 7, 3 + $$1 * 7, $$2);
+      }
+
+      protected abstract aku b(boolean var1);
+
+      @Override
+      public void a(fsp $$0) {
+         this.c($$0);
+      }
+
+      @Override
+      public void b(fod $$0, int $$1, int $$2, float $$3) {
+         $$0.a(gmh::H, this.b(this.c), this.F(), this.G(), this.g, this.h);
+         float $$4 = (float)(this.F() + 2);
+         float $$5 = (float)(this.G() + 2);
+         float $$6 = 150.0F;
+
+         for (fyg.b.a $$7 : this.d) {
+            $$0.c().a();
+            $$0.c().a($$4 + (float)$$7.a, $$5 + (float)$$7.b, 150.0F);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0F, -8.0F, 0.0F);
+            $$0.a($$7.a(fyg.this.l.currentIndex()), 0, 0);
+            $$0.c().b();
+         }
+      }
+
+      protected static record a(int a, int b, List<cwp> c) {
+
+         public a(int a, int b, List<cwp> c) {
+            if (c.isEmpty()) {
+               throw new IllegalArgumentException("Ingredient list must be non-empty");
+            } else {
+               this.a = a;
+               this.b = b;
+               this.c = c;
+            }
+         }
+
+         public cwp a(int $$0) {
+            return this.c.get($$0 % this.c.size());
+         }
+      }
    }
 
-   public boolean j() {
-      return this.q;
-   }
+   class c extends fyg.b {
+      private static final aku b = aku.b("recipe_book/furnace_overlay");
+      private static final aku c = aku.b("recipe_book/furnace_overlay_highlighted");
+      private static final aku d = aku.b("recipe_book/furnace_overlay_disabled");
+      private static final aku e = aku.b("recipe_book/furnace_overlay_disabled_highlighted");
 
-   public boolean k() {
-      return this.u;
-   }
+      public c(final int $$0, final int $$1, final dcl $$2, final dcj $$3, final bak $$4, final boolean $$5) {
+         super($$0, $$1, $$2, $$5, a($$3, $$4));
+      }
 
-   private void a(boolean $$0, xk $$1) {
-      this.e($$0);
-      this.k.m.d().a($$1);
-      this.k.aZ().c($$1);
-   }
+      private static List<fyg.b.a> a(dcj $$0, bak $$1) {
+         if ($$0 instanceof dci $$2) {
+            List<cwp> $$3 = $$2.b().a($$1);
+            if (!$$3.isEmpty()) {
+               return List.of(a(1, 1, $$3));
+            }
+         }
 
-   private void e(boolean $$0) {
-      this.w.k = $$0;
-      this.v.k = !$$0;
-      this.l.set(0, $$0 ? this.w : this.v);
-   }
+         return List.of();
+      }
 
-   xy a(xy $$0) {
-      xk $$1 = this.m();
-      return $$1 == xj.a ? xk.b(this.n).f(", ").b($$0) : xk.b(this.n).f(", ").b($$1).f(", ").b($$0);
-   }
-
-   private xk m() {
-      boolean $$0 = this.k.aN().d(this.m);
-      boolean $$1 = this.k.aN().e(this.m);
-      if ($$1 && this.p) {
-         return D;
-      } else if ($$0 && this.p) {
-         return C;
-      } else if ($$1) {
-         return A;
-      } else if ($$0) {
-         return z;
-      } else {
-         return this.p ? B : xj.a;
+      @Override
+      protected aku b(boolean $$0) {
+         if ($$0) {
+            return this.D() ? c : b;
+         } else {
+            return this.D() ? e : d;
+         }
       }
    }
 }

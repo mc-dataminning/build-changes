@@ -1,78 +1,40 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
 
 public class anr {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xk.b("commands.enchant.failed.entity", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xk.b("commands.enchant.failed.itemless", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xk.b("commands.enchant.failed.incompatible", $$0));
-   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("commands.enchant.failed.level", $$0, $$1));
-   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xk.c("commands.enchant.failed"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.pardon.failed"));
 
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("enchant").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("pardon").requires($$0x -> $$0x.c(3)))
             .then(
-               ex.a("targets", fj.b())
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("enchantment", fv.a($$1, mb.aO))
-                           .executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"), fv.g($$0x, "enchantment"), 1)))
-                        .then(
-                           ex.a("level", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a(
-                                       (ew)$$0x.getSource(), fj.b($$0x, "targets"), fv.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
-                                    )
-                              )
-                        )
-                  )
+               ey.a("targets", fm.a())
+                  .suggests(($$0x, $$1) -> fc.a(((ex)$$0x.getSource()).l().ag().f().a(), $$1))
+                  .executes($$0x -> a((ex)$$0x.getSource(), fm.a($$0x, "targets")))
             )
       );
    }
 
-   private static int a(ew $$0, Collection<? extends bvb> $$1, jq<ddq> $$2, int $$3) throws CommandSyntaxException {
-      ddq $$4 = $$2.a();
-      if ($$3 > $$4.e()) {
-         throw d.create($$3, $$4.e());
+   private static int a(ex $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avj $$2 = $$0.l().ag().f();
+      int $$3 = 0;
+
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> wo.a("commands.pardon.success", wo.b($$4.getName())), true);
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         int $$5 = 0;
-
-         for (bvb $$6 : $$1) {
-            if ($$6 instanceof bvx) {
-               bvx $$7 = (bvx)$$6;
-               cxg $$8 = $$7.eZ();
-               if (!$$8.f()) {
-                  if ($$4.c($$8) && dds.a(dds.b($$8).a(), $$2)) {
-                     $$8.a($$2, $$3);
-                     $$5++;
-                  } else if ($$1.size() == 1) {
-                     throw c.create($$8.y().getString());
-                  }
-               } else if ($$1.size() == 1) {
-                  throw b.create($$7.al().getString());
-               }
-            } else if ($$1.size() == 1) {
-               throw a.create($$6.al().getString());
-            }
-         }
-
-         if ($$5 == 0) {
-            throw e.create();
-         } else {
-            if ($$1.size() == 1) {
-               $$0.a(() -> xk.a("commands.enchant.success.single", ddq.a($$2, $$3), $$1.iterator().next().p_()), true);
-            } else {
-               $$0.a(() -> xk.a("commands.enchant.success.multiple", ddq.a($$2, $$3), $$1.size()), true);
-            }
-
-            return $$5;
-         }
+         return $$3;
       }
    }
 }

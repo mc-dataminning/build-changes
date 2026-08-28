@@ -1,15 +1,13 @@
-public interface dhg extends dhc {
-   long al();
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   default float ar() {
-      return ebj.j[this.G_().b(this.al())];
+public interface dhg extends dgz {
+   long E();
+
+   default boolean f_(ji $$0) {
+      return true;
    }
 
-   default float f(float $$0) {
-      return this.G_().a(this.al());
-   }
-
-   default int as() {
-      return this.G_().b(this.al());
+   default void a(@Nullable Supplier<String> $$0) {
    }
 }

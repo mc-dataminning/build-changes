@@ -1,99 +1,78 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public interface xp {
-   Optional<bba> a = Optional.of(bba.a);
-   xp b = new xp() {
-      @Override
-      public <T> Optional<T> a(xp.a<T> $$0) {
-         return Optional.empty();
+public record xp(String d, @Nullable gv e) implements xq {
+   public static final MapCodec<xp> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xp::b)).apply($$0, xp::new));
+   public static final xq.a<xp> b = new xq.a<>(a, "block");
+
+   public xp(String $$0) {
+      this($$0, a($$0));
+   }
+
+   @Nullable
+   private static gv a(String $$0) {
+      try {
+         return gt.a().a(new StringReader($$0));
+      } catch (CommandSyntaxException var2) {
+         return null;
+      }
+   }
+
+   @Override
+   public Stream<tq> a(ex $$0) {
+      if (this.e != null) {
+         arc $$1 = $$0.e();
+         ji $$2 = this.e.c($$0);
+         if ($$1.p($$2)) {
+            dtz $$3 = $$1.c_($$2);
+            if ($$3 != null) {
+               return Stream.of($$3.b($$0.u()));
+            }
+         }
       }
 
-      @Override
-      public <T> Optional<T> a(xp.b<T> $$0, yh $$1) {
-         return Optional.empty();
+      return Stream.empty();
+   }
+
+   @Override
+   public xq.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "block=" + this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xp $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
       }
-   };
-
-   <T> Optional<T> a(xp.a<T> var1);
-
-   <T> Optional<T> a(xp.b<T> var1, yh var2);
-
-   static xp e(final String $$0) {
-      return new xp() {
-         @Override
-         public <T> Optional<T> a(xp.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(xp.b<T> $$0x, yh $$1) {
-            return $$0.accept($$1, $$0);
-         }
-      };
    }
 
-   static xp a(final String $$0, final yh $$1) {
-      return new xp() {
-         @Override
-         public <T> Optional<T> a(xp.a<T> $$0x) {
-            return $$0.accept($$0);
-         }
-
-         @Override
-         public <T> Optional<T> a(xp.b<T> $$0x, yh $$1x) {
-            return $$0.accept($$1.a($$1), $$0);
-         }
-      };
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
    }
 
-   static xp a(xp... $$0) {
-      return a(ImmutableList.copyOf($$0));
+   public String b() {
+      return this.d;
    }
 
-   static xp a(final List<? extends xp> $$0) {
-      return new xp() {
-         @Override
-         public <T> Optional<T> a(xp.a<T> $$0x) {
-            for (xp $$1 : $$0) {
-               Optional<T> $$2 = $$1.a($$0);
-               if ($$2.isPresent()) {
-                  return $$2;
-               }
-            }
-
-            return Optional.empty();
-         }
-
-         @Override
-         public <T> Optional<T> a(xp.b<T> $$0x, yh $$1) {
-            for (xp $$2 : $$0) {
-               Optional<T> $$3 = $$2.a($$0, $$1);
-               if ($$3.isPresent()) {
-                  return $$3;
-               }
-            }
-
-            return Optional.empty();
-         }
-      };
-   }
-
-   default String getString() {
-      StringBuilder $$0 = new StringBuilder();
-      this.a($$1 -> {
-         $$0.append($$1);
-         return Optional.empty();
-      });
-      return $$0.toString();
-   }
-
-   public interface a<T> {
-      Optional<T> accept(String var1);
-   }
-
-   public interface b<T> {
-      Optional<T> accept(yh var1, String var2);
+   @Nullable
+   public gv c() {
+      return this.e;
    }
 }

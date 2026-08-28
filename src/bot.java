@@ -1,21 +1,11 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
 
-public class bot implements boo<StringReader, alp> {
-   public static final boo<StringReader, alp> a = new bot();
+public interface bot {
+   long a();
 
-   private bot() {
-   }
+   long b();
 
-   @Override
-   public Optional<alp> a(bon<StringReader> $$0) {
-      $$0.b().skipWhitespace();
+   long c();
 
-      try {
-         return Optional.of(alp.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
-      }
-   }
+   Object2LongMap<String> d();
 }

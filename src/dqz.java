@@ -1,84 +1,79 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqz extends dmo implements dqy {
-   public static final MapCodec<dqz> b = b(dqz::new);
+public class dqz extends djm {
+   public static final MapCodec<dqz> a = b(dqz::new);
+   public static final int b = 2;
+   public static final dxw c = dxn.aH;
+   private static final int d = 24000;
+   private static final int e = 12000;
+   private static final int f = 300;
+   private static final fbu g = djm.a(1.0, 0.0, 2.0, 15.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dqz> a() {
-      return b;
+      return a;
    }
 
-   public dqz(dxn.d $$0) {
-      super(bsc.a(1), $$0);
+   public dqz(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public int a(drd.a $$0, dha $$1, jh $$2, bac $$3, drd $$4, boolean $$5) {
-      int $$6 = $$0.b();
-      if ($$6 != 0 && $$3.a($$4.f()) == 0) {
-         jh $$7 = $$0.a();
-         boolean $$8 = $$7.a($$2, (double)$$4.e());
-         if (!$$8 && a($$1, $$7)) {
-            int $$9 = $$4.d();
-            if ($$3.a($$9) < $$6) {
-               jh $$10 = $$7.d();
-               dxo $$11 = this.a($$1, $$10, $$3, $$4.h());
-               $$1.a($$10, $$11, 3);
-               $$1.a(null, $$7, $$11.A().e(), aww.e, 1.0F, 1.0F);
-            }
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c);
+   }
 
-            return Math.max(0, $$6 - $$9);
-         } else {
-            return $$3.a($$4.g()) != 0 ? $$6 : $$6 - ($$8 ? 1 : a($$4, $$7, $$2, $$6));
+   @Override
+   public fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return g;
+   }
+
+   public int o(dwx $$0) {
+      return $$0.c(c);
+   }
+
+   private boolean q(dwx $$0) {
+      return this.o($$0) == 2;
+   }
+
+   @Override
+   public void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (!this.q($$0)) {
+         $$1.a(null, $$2, awa.zn, awb.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.a($$2, $$0.b(c, Integer.valueOf(this.o($$0) + 1)), 2);
+      } else {
+         $$1.a(null, $$2, awa.zo, awb.e, 0.7F, 0.9F + $$3.i() * 0.2F);
+         $$1.b($$2, false);
+         cjo $$4 = bur.bj.a($$1, buq.e);
+         if ($$4 != null) {
+            fba $$5 = $$2.b();
+            $$4.a(true);
+            $$4.b($$5.a(), $$5.b(), $$5.c(), ayz.h($$1.A.i() * 360.0F), 0.0F);
+            $$1.b($$4);
          }
-      } else {
-         return $$6;
-      }
-   }
-
-   private static int a(drd $$0, jh $$1, jh $$2, int $$3) {
-      int $$4 = $$0.e();
-      float $$5 = azu.l((float)Math.sqrt($$1.j($$2)) - (float)$$4);
-      int $$6 = azu.h(24 - $$4);
-      float $$7 = Math.min(1.0F, $$5 / (float)$$6);
-      return Math.max(1, (int)((float)$$3 * $$7 * 0.5F));
-   }
-
-   private dxo a(dha $$0, jh $$1, bac $$2, boolean $$3) {
-      dxo $$4;
-      if ($$2.a(11) == 0) {
-         $$4 = dkf.rx.m().b(drc.d, Boolean.valueOf($$3));
-      } else {
-         $$4 = dkf.rs.m();
-      }
-
-      return $$4.b(dye.J) && !$$0.b_($$1).c() ? $$4.b(dye.J, Boolean.valueOf(true)) : $$4;
-   }
-
-   private static boolean a(dha $$0, jh $$1) {
-      dxo $$2 = $$0.a_($$1.d());
-      if ($$2.l() || $$2.a(dkf.J) && $$2.y().b(etr.c)) {
-         int $$3 = 0;
-
-         for (jh $$4 : jh.c($$1.b(-4, 0, -4), $$1.b(4, 2, 4))) {
-            dxo $$5 = $$0.a_($$4);
-            if ($$5.a(dkf.rs) || $$5.a(dkf.rx)) {
-               $$3++;
-            }
-
-            if ($$3 > 2) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
       }
    }
 
    @Override
-   public boolean d() {
+   public void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      boolean $$5 = a($$1, $$2);
+      if (!$$1.B_() && $$5) {
+         $$1.c(3009, $$2, 0);
+      }
+
+      int $$6 = $$5 ? 12000 : 24000;
+      int $$7 = $$6 / 3;
+      $$1.a(ebt.i, $$2, ebt.a.a($$0));
+      $$1.a($$2, this, $$7 + $$1.A.a(300));
+   }
+
+   @Override
+   public boolean a(dwx $$0, eto $$1) {
       return false;
+   }
+
+   public static boolean a(dfn $$0, ji $$1) {
+      return $$0.a_($$1.e()).a(awp.cv);
    }
 }

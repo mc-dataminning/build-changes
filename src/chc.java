@@ -1,108 +1,149 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class chc {
-   private final jh a;
-   private final jq<che> b;
-   private int c;
-   private final Runnable d;
+public class chc extends cgx {
+   private static final bun cg = bur.z.n().a(0.5F).b(0.2975F);
+   public float bY;
+   public float bZ;
+   public float ca;
+   public float cc;
+   public float cd = 1.0F;
+   private float ch = 1.0F;
+   public int ce = this.ae.a(6000) + 6000;
+   public boolean cf;
 
-   chc(jh $$0, jq<che> $$1, int $$2, Runnable $$3) {
-      this.a = $$0.j();
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public chc(jh $$0, jq<che> $$1, Runnable $$2) {
-      this($$0, $$1, $$1.a().b(), $$2);
-   }
-
-   public chc.a a() {
-      return new chc.a(this.a, this.b, this.c);
-   }
-
-   @Deprecated
-   @bbb
-   public int b() {
-      return this.c;
-   }
-
-   protected boolean c() {
-      if (this.c <= 0) {
-         return false;
-      } else {
-         this.c--;
-         this.d.run();
-         return true;
-      }
-   }
-
-   protected boolean d() {
-      if (this.c >= this.b.a().b()) {
-         return false;
-      } else {
-         this.c++;
-         this.d.run();
-         return true;
-      }
-   }
-
-   public boolean e() {
-      return this.c > 0;
-   }
-
-   public boolean f() {
-      return this.c != this.b.a().b();
-   }
-
-   public jh g() {
-      return this.a;
-   }
-
-   public jq<che> h() {
-      return this.b;
+   public chc(bur<? extends chc> $$0, dgi $$1) {
+      super($$0, $$1);
+      this.a(etq.j, 0.0F);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Objects.equals(this.a, ((chc)$$0).a) : false;
+   protected void B() {
+      this.bS.a(0, new cby(this));
+      this.bS.a(1, new ccx(this, 1.4));
+      this.bS.a(2, new cbq(this, 1.0));
+      this.bS.a(3, new cdm(this, 1.0, $$0 -> $$0.a(awy.an), false));
+      this.bS.a(4, new ccd(this, 1.1));
+      this.bS.a(5, new cdr(this, 1.0));
+      this.bS.a(6, new ccm(this, cox.class, 6.0F));
+      this.bS.a(7, new ccz(this));
+   }
+
+   @Override
+   public bun e(bvs $$0) {
+      return this.e_() ? cg : super.e($$0);
+   }
+
+   public static bwn.a p() {
+      return cgx.gu().a(bwo.s, 4.0).a(bwo.v, 0.25);
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      this.cc = this.bY;
+      this.ca = this.bZ;
+      this.bZ = this.bZ + (this.aJ() ? -1.0F : 4.0F) * 0.3F;
+      this.bZ = ayz.a(this.bZ, 0.0F, 1.0F);
+      if (!this.aJ() && this.cd < 1.0F) {
+         this.cd = 1.0F;
+      }
+
+      this.cd *= 0.9F;
+      fba $$0 = this.dz();
+      if (!this.aJ() && $$0.e < 0.0) {
+         this.h($$0.d(1.0, 0.6, 1.0));
+      }
+
+      this.bY = this.bY + this.cd * 2.0F;
+      if (this.dW() instanceof arc $$1 && this.bL() && !this.e_() && !this.t() && --this.ce <= 0) {
+         if (this.a($$1, evn.aI, this::a)) {
+            this.a(awa.eV, 1.0F, (this.ae.i() - this.ae.i()) * 0.2F + 1.0F);
+            this.a(ebt.t);
+         }
+
+         this.ce = this.ae.a(6000) + 6000;
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   protected boolean ba() {
+      return this.Y > this.ch;
    }
 
-   public static record a(jh b, jq<che> c, int d) {
-      public static final Codec<chc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  jh.a.fieldOf("pos").forGetter(chc.a::a),
-                  alm.a(mb.aa).fieldOf("type").forGetter(chc.a::b),
-                  Codec.INT.fieldOf("free_tickets").orElse(0).forGetter(chc.a::c)
-               )
-               .apply($$0, chc.a::new)
-      );
+   @Override
+   protected void aZ() {
+      this.ch = this.Y + this.bZ / 2.0F;
+   }
 
-      public chc a(Runnable $$0) {
-         return new chc(this.b, this.c, this.d, $$0);
-      }
+   @Override
+   protected avz u() {
+      return awa.eT;
+   }
 
-      public jh a() {
-         return this.b;
-      }
+   @Override
+   protected avz e(bta $$0) {
+      return awa.eW;
+   }
 
-      public jq<che> b() {
-         return this.c;
-      }
+   @Override
+   protected avz o_() {
+      return awa.eU;
+   }
 
-      public int c() {
-         return this.d;
+   @Override
+   protected void b(ji $$0, dwx $$1) {
+      this.a(awa.eX, 0.15F, 1.0F);
+   }
+
+   @Nullable
+   public chc b(arc $$0, bub $$1) {
+      return bur.z.a($$0, buq.e);
+   }
+
+   @Override
+   public boolean j(cwp $$0) {
+      return $$0.a(awy.an);
+   }
+
+   @Override
+   protected int e(arc $$0) {
+      return this.t() ? 10 : super.e($$0);
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      this.cf = $$0.q("IsChickenJockey");
+      if ($$0.e("EggLayTime")) {
+         this.ce = $$0.h("EggLayTime");
       }
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("IsChickenJockey", this.cf);
+      $$0.a("EggLayTime", this.ce);
+   }
+
+   @Override
+   public boolean h(double $$0) {
+      return this.t();
+   }
+
+   @Override
+   protected void a(buk $$0, buk.a $$1) {
+      super.a($$0, $$1);
+      if ($$0 instanceof bvg) {
+         ((bvg)$$0).aX = this.aX;
+      }
+   }
+
+   public boolean t() {
+      return this.cf;
+   }
+
+   public void x(boolean $$0) {
+      this.cf = $$0;
    }
 }

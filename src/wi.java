@@ -1,18 +1,22 @@
-public class wi {
-   public static final String a = "decompress";
-   public static final String b = "compress";
-   public static final String c = "decoder";
-   public static final String d = "encoder";
-   public static final String e = "inbound_config";
-   public static final String f = "outbound_config";
-   public static final String g = "splitter";
-   public static final String h = "prepender";
-   public static final String i = "decrypt";
-   public static final String j = "encrypt";
-   public static final String k = "unbundler";
-   public static final String l = "bundler";
-   public static final String m = "packet_handler";
-   public static final String n = "timeout";
-   public static final String o = "legacy_query";
-   public static final String p = "latency";
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelHandler.Sharable;
+import io.netty.handler.codec.EncoderException;
+import io.netty.handler.codec.MessageToByteEncoder;
+
+@Sharable
+public class wi extends MessageToByteEncoder<ByteBuf> {
+   public static final int a = 3;
+
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      int $$4 = wf.a($$3);
+      if ($$4 > 3) {
+         throw new EncoderException("Packet too large: size " + $$3 + " is over 8");
+      } else {
+         $$2.ensureWritable($$4 + $$3);
+         wf.a($$2, $$3);
+         $$2.writeBytes($$1, $$1.readerIndex(), $$3);
+      }
+   }
 }

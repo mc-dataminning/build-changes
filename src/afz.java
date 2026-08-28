@@ -1,16 +1,19 @@
-public record afz(int b, cxg c) implements zr<acg> {
-   public static final zi<wv, afz> a = zi.a(zg.h, afz::b, cxg.g, afz::e, afz::new);
+import java.util.HashMap;
+import java.util.Map;
+
+public record afz(Map<akt<dbn>, dbn> b, dbr.b<dce> c) implements yv<abk> {
+   public static final ym<vz, afz> a = ym.a(yk.a(HashMap::new, akt.b(dbn.a), dbn.i), afz::b, dbr.b.b(), afz::e, afz::new);
 
    @Override
-   public zt<afz> a() {
-      return agz.cq;
+   public yx<afz> a() {
+      return agd.bi;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public cxg e() {
+   public dbr.b<dce> e() {
       return this.c;
    }
 }

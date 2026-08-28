@@ -1,71 +1,118 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public class daz {
-   @Nullable
-   private final cpo a;
-   private final bsz b;
-   private final fbn c;
-   private final dgz d;
-   private final cxg e;
+public class daz extends dau {
+   private static final Map<cwl, cze.a> c = Map.of(
+      cwt.uV,
+      cze.a.b,
+      cwt.pY,
+      cze.a.e,
+      cwt.tf,
+      cze.a.c,
+      cwt.vk,
+      cze.a.d,
+      cwt.vl,
+      cze.a.d,
+      cwt.vo,
+      cze.a.d,
+      cwt.vm,
+      cze.a.d,
+      cwt.vp,
+      cze.a.d,
+      cwt.vn,
+      cze.a.d,
+      cwt.vq,
+      cze.a.d
+   );
+   private static final dba d = dba.a(cwt.pe);
+   private static final dba e = dba.a(cwt.rV);
+   private static final dba f = dba.a(cwt.pZ);
 
-   public daz(cpo $$0, bsz $$1, fbn $$2) {
-      this($$0.dW(), $$0, $$1, $$0.b($$1), $$2);
+   public daz(dar $$0) {
+      super($$0);
    }
 
-   protected daz(dgz $$0, @Nullable cpo $$1, bsz $$2, cxg $$3, fbn $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   public boolean a(das $$0, dgi $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+         boolean $$4 = false;
+         boolean $$5 = false;
+         boolean $$6 = false;
+
+         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+            cwp $$8 = $$0.a($$7);
+            if (!$$8.f()) {
+               if (c.containsKey($$8.h())) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else if (e.a($$8)) {
+                  if ($$6) {
+                     return false;
+                  }
+
+                  $$6 = true;
+               } else if (d.a($$8)) {
+                  if ($$5) {
+                     return false;
+                  }
+
+                  $$5 = true;
+               } else if (f.a($$8)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$8.h() instanceof cvn)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$2 && $$3;
+      }
    }
 
-   protected final fbn j() {
-      return this.c;
+   public cwp a(das $$0, jt.a $$1) {
+      cze.a $$2 = cze.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
+
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cwp $$7 = $$0.a($$6);
+         if (!$$7.f()) {
+            cze.a $$8 = c.get($$7.h());
+            if ($$8 != null) {
+               $$2 = $$8;
+            } else if (e.a($$7)) {
+               $$3 = true;
+            } else if (d.a($$7)) {
+               $$4 = true;
+            } else if ($$7.h() instanceof cvn $$9) {
+               $$5.add($$9.b().f());
+            }
+         }
+      }
+
+      cwp $$10 = new cwp(cwt.vu);
+      $$10.b(kv.ae, new cze($$2, $$5, IntList.of(), $$4, $$3));
+      return $$10;
    }
 
-   public jh a() {
-      return this.c.b();
-   }
-
-   public jm k() {
-      return this.c.c();
-   }
-
-   public fbr l() {
-      return this.c.g();
-   }
-
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public cxg n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cpo o() {
-      return this.a;
-   }
-
-   public bsz p() {
-      return this.b;
-   }
-
-   public dgz q() {
-      return this.d;
-   }
-
-   public jm g() {
-      return this.a == null ? jm.c : this.a.cO();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fY();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dM();
+   @Override
+   public dbo<daz> a() {
+      return dbo.h;
    }
 }

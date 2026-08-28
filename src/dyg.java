@@ -1,24 +1,23 @@
-public enum dyg implements baq {
-   a("single"),
-   b("left"),
-   c("right");
+public enum dyg implements azv {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private final String d;
+   private final String e;
+   private final wo f;
 
    private dyg(final String $$0) {
-      this.d = $$0;
+      this.e = $$0;
+      this.f = wo.c("structure_block.mode_info." + $$0);
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.e;
    }
 
-   public dyg a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
+   public wo a() {
+      return this.f;
    }
 }

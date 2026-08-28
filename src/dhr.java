@@ -1,92 +1,71 @@
-public interface dhr extends dge {
-   jm[] D = jm.values();
+public abstract class dhr {
+   public static final akt<dhk> a = a("the_void");
+   public static final akt<dhk> b = a("plains");
+   public static final akt<dhk> c = a("sunflower_plains");
+   public static final akt<dhk> d = a("snowy_plains");
+   public static final akt<dhk> e = a("ice_spikes");
+   public static final akt<dhk> f = a("desert");
+   public static final akt<dhk> g = a("swamp");
+   public static final akt<dhk> h = a("mangrove_swamp");
+   public static final akt<dhk> i = a("forest");
+   public static final akt<dhk> j = a("flower_forest");
+   public static final akt<dhk> k = a("birch_forest");
+   public static final akt<dhk> l = a("dark_forest");
+   public static final akt<dhk> m = a("pale_garden");
+   public static final akt<dhk> n = a("old_growth_birch_forest");
+   public static final akt<dhk> o = a("old_growth_pine_taiga");
+   public static final akt<dhk> p = a("old_growth_spruce_taiga");
+   public static final akt<dhk> q = a("taiga");
+   public static final akt<dhk> r = a("snowy_taiga");
+   public static final akt<dhk> s = a("savanna");
+   public static final akt<dhk> t = a("savanna_plateau");
+   public static final akt<dhk> u = a("windswept_hills");
+   public static final akt<dhk> v = a("windswept_gravelly_hills");
+   public static final akt<dhk> w = a("windswept_forest");
+   public static final akt<dhk> x = a("windswept_savanna");
+   public static final akt<dhk> y = a("jungle");
+   public static final akt<dhk> z = a("sparse_jungle");
+   public static final akt<dhk> A = a("bamboo_jungle");
+   public static final akt<dhk> B = a("badlands");
+   public static final akt<dhk> C = a("eroded_badlands");
+   public static final akt<dhk> D = a("wooded_badlands");
+   public static final akt<dhk> E = a("meadow");
+   public static final akt<dhk> F = a("cherry_grove");
+   public static final akt<dhk> G = a("grove");
+   public static final akt<dhk> H = a("snowy_slopes");
+   public static final akt<dhk> I = a("frozen_peaks");
+   public static final akt<dhk> J = a("jagged_peaks");
+   public static final akt<dhk> K = a("stony_peaks");
+   public static final akt<dhk> L = a("river");
+   public static final akt<dhk> M = a("frozen_river");
+   public static final akt<dhk> N = a("beach");
+   public static final akt<dhk> O = a("snowy_beach");
+   public static final akt<dhk> P = a("stony_shore");
+   public static final akt<dhk> Q = a("warm_ocean");
+   public static final akt<dhk> R = a("lukewarm_ocean");
+   public static final akt<dhk> S = a("deep_lukewarm_ocean");
+   public static final akt<dhk> T = a("ocean");
+   public static final akt<dhk> U = a("deep_ocean");
+   public static final akt<dhk> V = a("cold_ocean");
+   public static final akt<dhk> W = a("deep_cold_ocean");
+   public static final akt<dhk> X = a("frozen_ocean");
+   public static final akt<dhk> Y = a("deep_frozen_ocean");
+   public static final akt<dhk> Z = a("mushroom_fields");
+   public static final akt<dhk> aa = a("dripstone_caves");
+   public static final akt<dhk> ab = a("lush_caves");
+   public static final akt<dhk> ac = a("deep_dark");
+   public static final akt<dhk> ad = a("nether_wastes");
+   public static final akt<dhk> ae = a("warped_forest");
+   public static final akt<dhk> af = a("crimson_forest");
+   public static final akt<dhk> ag = a("soul_sand_valley");
+   public static final akt<dhk> ah = a("basalt_deltas");
+   public static final akt<dhk> ai = a("the_end");
+   public static final akt<dhk> aj = a("end_highlands");
+   public static final akt<dhk> ak = a("end_midlands");
+   public static final akt<dhk> al = a("small_end_islands");
+   public static final akt<dhk> am = a("end_barrens");
 
-   default int a(jh $$0, jm $$1) {
-      return this.a_($$0).b(this, $$0, $$1);
-   }
-
-   default int e_(jh $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.e(), jm.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.d(), jm.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.f(), jm.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.g(), jm.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.h(), jm.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.i(), jm.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   default int a(jh $$0, jm $$1, boolean $$2) {
-      dxo $$3 = this.a_($$0);
-      if ($$2) {
-         return dmg.n($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(dkf.hx)) {
-         return 15;
-      } else if ($$3.a(dkf.cE)) {
-         return $$3.c(dqk.f);
-      } else {
-         return $$3.p() ? this.a($$0, $$1) : 0;
-      }
-   }
-
-   default boolean b(jh $$0, jm $$1) {
-      return this.c($$0, $$1) > 0;
-   }
-
-   default int c(jh $$0, jm $$1) {
-      dxo $$2 = this.a_($$0);
-      int $$3 = $$2.a(this, $$0, $$1);
-      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
-   }
-
-   default boolean C(jh $$0) {
-      if (this.c($$0.e(), jm.a) > 0) {
-         return true;
-      } else if (this.c($$0.d(), jm.b) > 0) {
-         return true;
-      } else if (this.c($$0.f(), jm.c) > 0) {
-         return true;
-      } else if (this.c($$0.g(), jm.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.h(), jm.e) > 0 ? true : this.c($$0.i(), jm.f) > 0;
-      }
-   }
-
-   default int D(jh $$0) {
-      int $$1 = 0;
-
-      for (jm $$2 : D) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
+   private static akt<dhk> a(String $$0) {
+      return akt.a(mc.aI, aku.b($$0));
    }
 }

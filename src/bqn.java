@@ -1,37 +1,112 @@
-import com.google.common.base.MoreObjects;
-import java.time.Duration;
-import java.time.Instant;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
-import java.util.TreeMap;
+import java.util.Set;
 import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
-import jdk.jfr.consumer.RecordedThread;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public record bqn(Instant a, String b, long c) {
-   private static final String d = "unknown";
+public class bqn {
+   public static final Path a = Paths.get("debug/profiling");
+   public static final String b = "metrics";
+   public static final String c = "deviations";
+   public static final String d = "profiling.txt";
+   private static final Logger e = LogUtils.getLogger();
+   private final String f;
 
-   public static bqn a(RecordedEvent $$0) {
-      RecordedThread $$1 = $$0.getThread("thread");
-      String $$2 = $$1 == null ? "unknown" : (String)MoreObjects.firstNonNull($$1.getJavaName(), "unknown");
-      return new bqn($$0.getStartTime(), $$2, $$0.getLong("allocated"));
+   public bqn(String $$0) {
+      this.f = $$0;
    }
 
-   public static bqn.a a(List<bqn> $$0) {
-      Map<String, Double> $$1 = new TreeMap<>();
-      Map<String, List<bqn>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.b));
-      $$2.forEach(($$1x, $$2x) -> {
-         if ($$2x.size() >= 2) {
-            bqn $$3 = (bqn)$$2x.get(0);
-            bqn $$4 = (bqn)$$2x.get($$2x.size() - 1);
-            long $$5 = Duration.between($$3.a, $$4.a).getSeconds();
-            long $$6 = $$4.c - $$3.c;
-            $$1.put($$1x, (double)$$6 / (double)$$5);
+   public Path a(Set<bqc> $$0, Map<bqc, List<bqo>> $$1, boq $$2) {
+      try {
+         Files.createDirectories(a);
+      } catch (IOException var8) {
+         throw new UncheckedIOException(var8);
+      }
+
+      try {
+         Path $$4 = Files.createTempDirectory("minecraft-profiling");
+         $$4.toFile().deleteOnExit();
+         Files.createDirectories(a);
+         Path $$5 = $$4.resolve(this.f);
+         Path $$6 = $$5.resolve("metrics");
+         this.a($$0, $$6);
+         if (!$$1.isEmpty()) {
+            this.a($$1, $$5.resolve("deviations"));
          }
-      });
-      return new bqn.a($$1);
+
+         this.a($$2, $$5);
+         return $$4;
+      } catch (IOException var7) {
+         throw new UncheckedIOException(var7);
+      }
    }
 
-   public static record a(Map<String, Double> a) {
+   private void a(Set<bqc> $$0, Path $$1) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Expected at least one sampler to persist");
+      } else {
+         Map<bqb, List<bqc>> $$2 = $$0.stream().collect(Collectors.groupingBy(bqc::e));
+         $$2.forEach(($$1x, $$2x) -> this.a($$1x, $$2x, $$1));
+      }
+   }
+
+   private void a(bqb $$0, List<bqc> $$1, Path $$2) {
+      Path $$3 = $$2.resolve(af.a($$0.a(), aku::b) + ".csv");
+      Writer $$4 = null;
+
+      try {
+         Files.createDirectories($$3.getParent());
+         $$4 = Files.newBufferedWriter($$3, StandardCharsets.UTF_8);
+         axz.a $$5 = axz.a();
+         $$5.a("@tick");
+
+         for (bqc $$6 : $$1) {
+            $$5.a($$6.d());
+         }
+
+         axz $$7 = $$5.a($$4);
+         List<bqc.b> $$8 = $$1.stream().map(bqc::f).collect(Collectors.toList());
+         int $$9 = $$8.stream().mapToInt(bqc.b::a).summaryStatistics().getMin();
+         int $$10 = $$8.stream().mapToInt(bqc.b::b).summaryStatistics().getMax();
+
+         for (int $$11 = $$9; $$11 <= $$10; $$11++) {
+            int $$12 = $$11;
+            Stream<String> $$13 = $$8.stream().map($$1x -> String.valueOf($$1x.a($$12)));
+            Object[] $$14 = Stream.concat(Stream.of(String.valueOf($$11)), $$13).toArray(String[]::new);
+            $$7.a($$14);
+         }
+
+         e.info("Flushed metrics to {}", $$3);
+      } catch (Exception var18) {
+         e.error("Could not save profiler results to {}", $$3, var18);
+      } finally {
+         IOUtils.closeQuietly($$4);
+      }
+   }
+
+   private void a(Map<bqc, List<bqo>> $$0, Path $$1) {
+      DateTimeFormatter $$2 = DateTimeFormatter.ofPattern("yyyy-MM-dd_HH.mm.ss.SSS", Locale.UK).withZone(ZoneId.systemDefault());
+      $$0.forEach(($$2x, $$3) -> $$3.forEach($$3x -> {
+            String $$4 = $$2.format($$3x.a);
+            Path $$5 = $$1.resolve(af.a($$2x.d(), aku::b)).resolve(String.format(Locale.ROOT, "%d@%s.txt", $$3x.b, $$4));
+            $$3x.c.a($$5);
+         }));
+   }
+
+   private void a(boq $$0, Path $$1) {
+      $$0.a($$1.resolve("profiling.txt"));
    }
 }

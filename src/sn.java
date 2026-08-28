@@ -1,69 +1,148 @@
-public class sn {
-   public static final alo<enh> a = sq.a("ice_spike");
-   public static final alo<enh> b = sq.a("ice_patch");
-   public static final alo<enh> c = sq.a("forest_rock");
-   public static final alo<enh> d = sq.a("iceberg_packed");
-   public static final alo<enh> e = sq.a("iceberg_blue");
-   public static final alo<enh> f = sq.a("blue_ice");
-   public static final alo<enh> g = sq.a("lake_lava_underground");
-   public static final alo<enh> h = sq.a("lake_lava_surface");
-   public static final alo<enh> i = sq.a("disk_clay");
-   public static final alo<enh> j = sq.a("disk_gravel");
-   public static final alo<enh> k = sq.a("disk_sand");
-   public static final alo<enh> l = sq.a("disk_grass");
-   public static final alo<enh> m = sq.a("freeze_top_layer");
-   public static final alo<enh> n = sq.a("void_start_platform");
-   public static final alo<enh> o = sq.a("desert_well");
-   public static final alo<enh> p = sq.a("spring_lava");
-   public static final alo<enh> q = sq.a("spring_lava_frozen");
-   public static final alo<enh> r = sq.a("spring_water");
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-   public static void a(ra<enh> $$0) {
-      jr<egb<?, ?>> $$1 = $$0.a(mb.aL);
-      jq<egb<?, ?>> $$2 = $$1.b(sc.a);
-      jq<egb<?, ?>> $$3 = $$1.b(sc.b);
-      jq<egb<?, ?>> $$4 = $$1.b(sc.c);
-      jq<egb<?, ?>> $$5 = $$1.b(sc.d);
-      jq<egb<?, ?>> $$6 = $$1.b(sc.e);
-      jq<egb<?, ?>> $$7 = $$1.b(sc.f);
-      jq<egb<?, ?>> $$8 = $$1.b(sc.g);
-      jq<egb<?, ?>> $$9 = $$1.b(sc.h);
-      jq<egb<?, ?>> $$10 = $$1.b(sc.i);
-      jq<egb<?, ?>> $$11 = $$1.b(sc.j);
-      jq<egb<?, ?>> $$12 = $$1.b(sc.l);
-      jq<egb<?, ?>> $$13 = $$1.b(sc.k);
-      jq<egb<?, ?>> $$14 = $$1.b(sc.n);
-      jq<egb<?, ?>> $$15 = $$1.b(sc.o);
-      jq<egb<?, ?>> $$16 = $$1.b(sc.p);
-      jq<egb<?, ?>> $$17 = $$1.b(sc.q);
-      jq<egb<?, ?>> $$18 = $$1.b(sc.r);
-      sq.a($$0, a, $$2, emz.a(3), ene.a(), sq.a, emv.a());
-      sq.a($$0, b, $$3, emz.a(2), ene.a(), sq.a, enm.a(bsc.a(-1)), emw.a(eeq.a(dkf.ec)), emv.a());
-      sq.a($$0, c, $$4, emz.a(2), ene.a(), sq.a, emv.a());
-      sq.a($$0, e, $$6, enn.a(200), ene.a(), emv.a());
-      sq.a($$0, d, $$5, enn.a(16), ene.a(), emv.a());
-      sq.a($$0, f, $$7, emz.a(bsl.a(0, 19)), ene.a(), enc.a(eed.a(30), eed.a(61)), emv.a());
-      sq.a(
-         $$0,
-         g,
-         $$8,
-         enn.a(9),
-         ene.a(),
-         enc.a(emn.a(eed.a(0), eed.b())),
-         ena.a(jm.a, eeq.a(eeq.a(eeq.c), eeq.d(new jh(0, -5, 0))), 32),
-         enp.a(edj.a.c, Integer.MIN_VALUE, -5),
-         emv.a()
-      );
-      sq.a($$0, h, $$8, enn.a(200), ene.a(), sq.d, emv.a());
-      sq.a($$0, i, $$9, ene.a(), sq.c, emw.a(eeq.a(etr.c)), emv.a());
-      sq.a($$0, j, $$10, ene.a(), sq.c, emw.a(eeq.a(etr.c)), emv.a());
-      sq.a($$0, k, $$11, emz.a(3), ene.a(), sq.c, emw.a(eeq.a(etr.c)), emv.a());
-      sq.a($$0, l, $$12, emz.a(1), ene.a(), sq.c, enm.a(bsc.a(-1)), emw.a(eeq.a(dkf.tk)), emv.a());
-      sq.a($$0, m, $$13, emv.a());
-      sq.a($$0, n, $$14, emv.a());
-      sq.a($$0, o, $$15, enn.a(1000), ene.a(), sq.a, emv.a());
-      sq.a($$0, p, $$16, emz.a(20), ene.a(), enc.a(emo.a(eed.a(), eed.c(8), 8)), emv.a());
-      sq.a($$0, q, $$17, emz.a(20), ene.a(), enc.a(emo.a(eed.a(), eed.c(8), 8)), emv.a());
-      sq.a($$0, r, $$18, emz.a(25), ene.a(), enc.a(eed.a(), eed.a(192)), emv.a());
+public class sn {
+   private static final Collection<tf> a = Lists.newArrayList();
+   private static final Set<String> b = Sets.newHashSet();
+   private static final Map<String, Consumer<arc>> c = Maps.newHashMap();
+   private static final Map<String, Consumer<arc>> d = Maps.newHashMap();
+   private static final Set<tf> e = Sets.newHashSet();
+
+   public static void a(Class<?> $$0) {
+      Arrays.stream($$0.getDeclaredMethods()).sorted(Comparator.comparing(Method::getName)).forEach(sn::a);
+   }
+
+   public static void a(Method $$0) {
+      String $$1 = $$0.getDeclaringClass().getSimpleName();
+      sc $$2 = $$0.getAnnotation(sc.class);
+      if ($$2 != null) {
+         a.add(c($$0));
+         b.add($$1);
+      }
+
+      sj $$3 = $$0.getAnnotation(sj.class);
+      if ($$3 != null) {
+         a.addAll(b($$0));
+         b.add($$1);
+      }
+
+      a($$0, sa.class, sa::a, c);
+      a($$0, rz.class, rz::a, d);
+   }
+
+   private static <T extends Annotation> void a(Method $$0, Class<T> $$1, Function<T, String> $$2, Map<String, Consumer<arc>> $$3) {
+      T $$4 = $$0.getAnnotation($$1);
+      if ($$4 != null) {
+         String $$5 = $$2.apply($$4);
+         Consumer<arc> $$6 = $$3.putIfAbsent($$5, (Consumer<arc>)d($$0));
+         if ($$6 != null) {
+            throw new RuntimeException("Hey, there should only be one " + $$1 + " method per batch. Batch '" + $$5 + "' has more than one!");
+         }
+      }
+   }
+
+   public static Stream<tf> a(String $$0) {
+      return a.stream().filter($$1 -> a($$1, $$0));
+   }
+
+   public static Collection<tf> a() {
+      return a;
+   }
+
+   public static Collection<String> b() {
+      return b;
+   }
+
+   public static boolean b(String $$0) {
+      return b.contains($$0);
+   }
+
+   public static Consumer<arc> c(String $$0) {
+      return c.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Consumer<arc> d(String $$0) {
+      return d.getOrDefault($$0, $$0x -> {
+      });
+   }
+
+   public static Optional<tf> e(String $$0) {
+      return a().stream().filter($$1 -> $$1.c().equalsIgnoreCase($$0)).findFirst();
+   }
+
+   public static tf f(String $$0) {
+      Optional<tf> $$1 = e($$0);
+      if ($$1.isEmpty()) {
+         throw new IllegalArgumentException("Can't find the test function for " + $$0);
+      } else {
+         return $$1.get();
+      }
+   }
+
+   private static Collection<tf> b(Method $$0) {
+      try {
+         Object $$1 = $$0.getDeclaringClass().newInstance();
+         return (Collection<tf>)$$0.invoke($$1);
+      } catch (ReflectiveOperationException var2) {
+         throw new RuntimeException(var2);
+      }
+   }
+
+   private static tf c(Method $$0) {
+      sc $$1 = $$0.getAnnotation(sc.class);
+      String $$2 = $$0.getDeclaringClass().getSimpleName();
+      String $$3 = $$2.toLowerCase();
+      String $$4 = $$3 + "." + $$0.getName().toLowerCase();
+      String $$5 = $$1.g().isEmpty() ? $$4 : $$3 + "." + $$1.g();
+      String $$6 = $$1.b();
+      dqe $$7 = tb.a($$1.d());
+      return new tf($$6, $$4, $$5, $$7, $$1.a(), $$1.h(), $$1.e(), $$1.f(), $$1.j(), $$1.i(), $$1.c(), (Consumer<sk>)d($$0));
+   }
+
+   private static Consumer<?> d(Method $$0) {
+      return $$1 -> {
+         try {
+            Object $$2 = $$0.getDeclaringClass().newInstance();
+            $$0.invoke($$2, $$1);
+         } catch (InvocationTargetException var3) {
+            if (var3.getCause() instanceof RuntimeException) {
+               throw (RuntimeException)var3.getCause();
+            } else {
+               throw new RuntimeException(var3.getCause());
+            }
+         } catch (ReflectiveOperationException var4) {
+            throw new RuntimeException(var4);
+         }
+      };
+   }
+
+   private static boolean a(tf $$0, String $$1) {
+      return $$0.c().toLowerCase().startsWith($$1.toLowerCase() + ".");
+   }
+
+   public static Stream<tf> c() {
+      return e.stream();
+   }
+
+   public static void a(tf $$0) {
+      e.add($$0);
+   }
+
+   public static void d() {
+      e.clear();
    }
 }

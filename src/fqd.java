@@ -1,48 +1,47 @@
-import java.util.Objects;
-import java.util.function.Consumer;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fqd {
-   private final Consumer<fnw> a;
-   private final Consumer<fnw> b;
+public class fqd implements fsq {
+   private static final int a = 170;
+   private final wo b;
    @Nullable
-   private fqc c;
+   private List<ayl> c;
    @Nullable
-   private fsg d;
+   private tl d;
+   @Nullable
+   private final wo e;
 
-   public fqd(Consumer<fnw> $$0, Consumer<fnw> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   private fqd(wo $$0, @Nullable wo $$1) {
+      this.b = $$0;
+      this.e = $$1;
    }
 
-   public void a(fsg $$0) {
-      this.d = $$0;
-      fqc $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
+   public static fqd a(wo $$0, @Nullable wo $$1) {
+      return new fqd($$0, $$1);
+   }
+
+   public static fqd a(wo $$0) {
+      return new fqd($$0, $$0);
+   }
+
+   @Override
+   public void b(fsp $$0) {
+      if (this.e != null) {
+         $$0.a(fso.c, this.e);
       }
    }
 
-   public void a(fqc $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
-
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
-
-         if ($$1) {
-            flz.Q().ak().a(hey.a(awv.Bg, 1.0F));
-         }
+   public List<ayl> a(flj $$0) {
+      tl $$1 = tl.a();
+      if (this.c == null || $$1 != this.d) {
+         this.c = a($$0, this.b);
+         this.d = $$1;
       }
-   }
 
-   @Nullable
-   public fqc a() {
       return this.c;
+   }
+
+   public static List<ayl> a(flj $$0, wo $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

@@ -1,32 +1,86 @@
-public class cbz extends cbx {
-   private final int h;
-   private static final int i = 10;
-   private static final int j = 20;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cbz(bvz $$0, int $$1) {
-      super($$0);
-      this.h = $$1;
+public class cbz extends cce {
+   private int a;
+   private final bvo b;
+   @Nullable
+   private cox c;
+   private cbn d;
+
+   public cbz(bvo $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public boolean b() {
+      List<cqu> $$0 = this.b.dW().a(cqu.class, this.b.cR().g(5.0));
+      boolean $$1 = false;
+
+      for (cqu $$2 : $$0) {
+         buk $$3 = $$2.cX();
+         if ($$3 instanceof cox && (ayz.e(((cox)$$3).bn) > 0.0F || ayz.e(((cox)$$3).bp) > 0.0F)) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return this.c != null && (ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F) || $$1;
+   }
+
+   @Override
+   public boolean U_() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c != null && this.c.bZ() && (ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F);
+   }
+
+   @Override
+   public void d() {
+      for (cqu $$1 : this.b.dW().a(cqu.class, this.b.cR().g(5.0))) {
+         if ($$1.cX() instanceof cox $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = cbn.a;
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
    }
 
    @Override
    public void a() {
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0x -> this.a.aZ = this.a(this.a.aZ, $$0x + 20.0F, this.b));
-         this.h().ifPresent($$0x -> this.a.w(this.a(this.a.dO(), $$0x + 10.0F, this.c)));
-      } else {
-         if (this.a.L().m()) {
-            this.a.w(this.a(this.a.dO(), 0.0F, 5.0F));
+      boolean $$0 = ayz.e(this.c.bn) > 0.0F || ayz.e(this.c.bp) > 0.0F;
+      float $$1 = this.d == cbn.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new fba((double)this.b.bn, (double)this.b.bo, (double)this.b.bp));
+      this.b.a(bvk.a, this.b.dz());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == cbn.a) {
+            ji $$2 = this.c.dw().a(this.c.cO().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.L().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = cbn.b;
+            }
+         } else if (this.d == cbn.b) {
+            jn $$3 = this.c.cP();
+            ji $$4 = this.c.dw().a($$3, 10);
+            this.b.L().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = cbn.a;
+            }
          }
-
-         this.a.aZ = this.a(this.a.aZ, this.a.aX, this.b);
-      }
-
-      float $$0 = azu.h(this.a.aZ - this.a.aX);
-      if ($$0 < (float)(-this.h)) {
-         this.a.aX -= 4.0F;
-      } else if ($$0 > (float)this.h) {
-         this.a.aX += 4.0F;
       }
    }
 }

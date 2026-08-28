@@ -1,95 +1,59 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
 public class ame {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alp b = alp.b("tick");
-   private static final alp c = alp.b("load");
-   private final MinecraftServer d;
-   private List<ik<ew>> e = ImmutableList.of();
-   private boolean f;
-   private amd g;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("commands.banip.failed"));
 
-   public ame(MinecraftServer $$0, amd $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("ban-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)ey.a("target", StringArgumentType.word())
+                     .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
+                  .then(ey.a("reason", fo.a()).executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), fo.a($$0x, "reason"))))
+            )
+      );
    }
 
-   public CommandDispatcher<ew> a() {
-      return this.d.aG().a();
+   private static int a(ex $$0, String $$1, @Nullable wo $$2) throws CommandSyntaxException {
+      if (InetAddresses.isInetAddress($$1)) {
+         return b($$0, $$1, $$2);
+      } else {
+         ard $$3 = $$0.l().ag().a($$1);
+         if ($$3 != null) {
+            return b($$0, $$3.B(), $$2);
+         } else {
+            throw a.create();
+         }
+      }
    }
 
-   public void b() {
-      if (this.d.aP().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<ik<ew>> $$0 = this.g.b(c);
-            this.a($$0, c);
+   private static int b(ex $$0, String $$1, @Nullable wo $$2) throws CommandSyntaxException {
+      ava $$3 = $$0.l().ag().g();
+      if ($$3.a($$1)) {
+         throw b.create();
+      } else {
+         List<ard> $$4 = $$0.l().ag().b($$1);
+         avb $$5 = new avb($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         $$3.a($$5);
+         $$0.a(() -> wo.a("commands.banip.success", $$1, $$5.d()), true);
+         if (!$$4.isEmpty()) {
+            $$0.a(() -> wo.a("commands.banip.info", $$4.size(), hm.a($$4)), true);
          }
 
-         this.a(this.e, b);
+         for (ard $$6 : $$4) {
+            $$6.f.a(wo.c("multiplayer.disconnect.ip_banned"));
+         }
+
+         return $$4.size();
       }
-   }
-
-   private void a(Collection<ik<ew>> $$0, alp $$1) {
-      bpi.a().a($$1::toString);
-
-      for (ik<ew> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      bpi.a().c();
-   }
-
-   public void a(ik<ew> $$0, ew $$1) {
-      bpj $$2 = bpi.a();
-      $$2.a(() -> "function " + $$0.a());
-
-      try {
-         im<ew> $$3 = $$0.a(null, this.a());
-         ex.a($$1, $$2x -> hw.a($$2x, $$3, $$1, et.a));
-      } catch (ez var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
-      }
-   }
-
-   public void a(amd $$0) {
-      this.g = $$0;
-      this.b($$0);
-   }
-
-   private void b(amd $$0) {
-      this.e = List.copyOf($$0.b(b));
-      this.f = true;
-   }
-
-   public ew c() {
-      return this.d.aH().a(2).a();
-   }
-
-   public Optional<ik<ew>> a(alp $$0) {
-      return this.g.a($$0);
-   }
-
-   public List<ik<ew>> b(alp $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<alp> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<alp> e() {
-      return this.g.b();
    }
 }

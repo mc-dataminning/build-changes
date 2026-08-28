@@ -1,71 +1,74 @@
-import com.google.common.primitives.Ints;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.Codec;
-import java.security.SignatureException;
-import java.util.ArrayList;
-import java.util.BitSet;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public record xr(List<xw> d) {
-   public static final Codec<xr> a = xw.a.listOf().xmap(xr::new, xr::a);
-   public static xr b = new xr(List.of());
-   public static final int c = 20;
+public record xr(String d, @Nullable hm e) implements xq {
+   public static final MapCodec<xr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("entity").forGetter(xr::b)).apply($$0, xr::new));
+   public static final xq.a<xr> b = new xq.a<>(a, "entity");
 
-   public void a(bag.a $$0) throws SignatureException {
-      $$0.update(Ints.toByteArray(this.d.size()));
+   public xr(String $$0) {
+      this($$0, a($$0));
+   }
 
-      for (xw $$1 : this.d) {
-         $$0.update($$1.b());
+   @Nullable
+   private static hm a(String $$0) {
+      try {
+         hn $$1 = new hn(new StringReader($$0), true);
+         return $$1.t();
+      } catch (CommandSyntaxException var2) {
+         return null;
       }
    }
 
-   public xr.a a(xx $$0) {
-      return new xr.a(this.d.stream().map($$1 -> $$1.a($$0)).toList());
+   @Override
+   public Stream<tq> a(ex $$0) throws CommandSyntaxException {
+      if (this.e != null) {
+         List<? extends buk> $$1 = this.e.b($$0);
+         return $$1.stream().map(dn::b);
+      } else {
+         return Stream.empty();
+      }
    }
 
-   public List<xw> a() {
+   @Override
+   public xq.a<?> a() {
+      return b;
+   }
+
+   @Override
+   public String toString() {
+      return "entity=" + this.d;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof xr $$1 && this.d.equals($$1.d)) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d.hashCode();
+   }
+
+   public String b() {
       return this.d;
    }
 
-   public static record a(List<xw.a> b) {
-      public static final xr.a a = new xr.a(List.of());
-
-      public a(wh $$0) {
-         this($$0.a(wh.a(ArrayList::new, 20), xw.a::a));
-      }
-
-      public void a(wh $$0) {
-         $$0.a(this.b, xw.a::a);
-      }
-
-      public Optional<xr> a(xx $$0) {
-         List<xw> $$1 = new ArrayList<>(this.b.size());
-
-         for (xw.a $$2 : this.b) {
-            Optional<xw> $$3 = $$2.a($$0);
-            if ($$3.isEmpty()) {
-               return Optional.empty();
-            }
-
-            $$1.add($$3.get());
-         }
-
-         return Optional.of(new xr($$1));
-      }
-
-      public List<xw.a> a() {
-         return this.b;
-      }
-   }
-
-   public static record b(int a, BitSet b) {
-      public b(wh $$0) {
-         this($$0.l(), $$0.e(20));
-      }
-
-      public void a(wh $$0) {
-         $$0.c(this.a);
-         $$0.a(this.b, 20);
-      }
+   @Nullable
+   public hm c() {
+      return this.e;
    }
 }

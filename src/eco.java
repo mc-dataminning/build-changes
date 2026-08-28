@@ -1,11 +1,33 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
 
-public interface eco {
-   Codec<eco> c = ma.t.q().dispatch(eco::a, ecp::a);
-   zi<wv, eco> d = zg.a(mb.ab).b(eco::a, ecp::b);
+public class eco {
+   public static enum a implements azv {
+      a("raw_generation"),
+      b("lakes"),
+      c("local_modifications"),
+      d("underground_structures"),
+      e("surface_structures"),
+      f("strongholds"),
+      g("underground_ores"),
+      h("underground_decoration"),
+      i("fluid_springs"),
+      j("vegetal_decoration"),
+      k("top_layer_modification");
 
-   Optional<fbr> a(dgz var1);
+      public static final Codec<eco.a> l = azv.a(eco.a::values);
+      private final String m;
 
-   ecp<? extends eco> a();
+      private a(final String $$0) {
+         this.m = $$0;
+      }
+
+      public String a() {
+         return this.m;
+      }
+
+      @Override
+      public String c() {
+         return this.m;
+      }
+   }
 }

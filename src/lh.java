@@ -1,25 +1,44 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public class lh extends le {
-   private static final Logger c = LogUtils.getLogger();
-
+public class lh extends lf {
    @Override
-   protected cxg a(ky $$0, cxg $$1) {
-      this.a(false);
-      cxc $$2 = $$1.h();
-      if ($$2 instanceof cvm) {
-         jm $$3 = $$0.d().c(dmj.b);
-         jh $$4 = $$0.c().a($$3);
-         jm $$5 = $$0.b().u($$4.e()) ? $$3 : jm.b;
-
-         try {
-            this.a(((cvm)$$2).a((dax)(new day($$0.b(), $$4, $$3, $$1, $$5))).a());
-         } catch (Exception var8) {
-            c.error("Error trying to place shulker box at {}", $$4, var8);
+   protected cwp a(kz $$0, cwp $$1) {
+      arc $$2 = $$0.b();
+      if (!$$2.B_()) {
+         ji $$3 = $$0.c().a($$0.d().c(dls.b));
+         this.a(a($$2, $$3) || a($$2, $$3, $$1));
+         if (this.b()) {
+            $$1.a(1, $$2, null, $$0x -> {
+            });
          }
       }
 
       return $$1;
+   }
+
+   private static boolean a(arc $$0, ji $$1) {
+      dwx $$2 = $$0.a_($$1);
+      if ($$2.a(awp.aJ, $$0x -> $$0x.b(djg.c) && $$0x.b() instanceof djg)) {
+         int $$3 = $$2.c(djg.c);
+         if ($$3 >= 5) {
+            $$0.a(null, $$1, awa.bX, awb.e, 1.0F, 1.0F);
+            djg.a($$0, $$1);
+            ((djg)$$2.b()).a($$0, $$2, $$1, null, dtw.b.b);
+            $$0.a(null, ebt.M, $$1);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean a(arc $$0, ji $$1, cwp $$2) {
+      for (bvg $$4 : $$0.a(bvg.class, new fav($$1), bup.f)) {
+         if ($$4 instanceof bvx $$5 && $$5.a()) {
+            $$5.a($$0, awb.e, $$2);
+            $$0.a(null, ebt.M, $$1);
+            return true;
+         }
+      }
+
+      return false;
    }
 }

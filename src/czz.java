@@ -1,42 +1,54 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Consumer;
 
-public record czz(List<xk> e, List<xk> f) implements daj {
-   public static final czz a = new czz(List.of());
-   public static final int b = 256;
-   private static final yh g = yh.a.a(n.f).b(true);
-   public static final Codec<czz> c = xm.g.sizeLimitedListOf(256).xmap(czz::new, czz::a);
-   public static final zi<wv, czz> d = xm.b.a(zg.c(256)).a(czz::new, czz::a);
+public record czz(List<btp> c, float f) implements dab {
+   public static final MapCodec<czz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(btp.d.listOf().fieldOf("effects").forGetter(czz::b), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(czz::c))
+            .apply($$0, czz::new)
+   );
+   public static final ym<vz, czz> b = ym.a(btp.e.a(yk.a()), czz::b, yk.l, czz::c, czz::new);
 
-   public czz(List<xk> $$0) {
-      this($$0, Lists.transform($$0, $$0x -> xn.a($$0x.f(), g)));
+   public czz(btp $$0, float $$1) {
+      this(List.of($$0), $$1);
    }
 
-   public czz(List<xk> e, List<xk> f) {
-      if (e.size() > 256) {
-         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
-      } else {
-         this.e = e;
-         this.f = f;
-      }
+   public czz(List<btp> $$0) {
+      this($$0, 1.0F);
    }
 
-   public czz a(xk $$0) {
-      return new czz(ae.a(this.e, $$0));
+   public czz(btp $$0) {
+      this($$0, 1.0F);
    }
 
    @Override
-   public void a(cxc.b $$0, Consumer<xk> $$1, cyy $$2) {
-      this.f.forEach($$1);
+   public dab.a<czz> a() {
+      return dab.a.a;
    }
 
-   public List<xk> a() {
-      return this.e;
+   @Override
+   public boolean a(dgi $$0, cwp $$1, bvg $$2) {
+      if ($$2.dZ().i() >= this.f) {
+         return false;
+      } else {
+         boolean $$3 = false;
+
+         for (btp $$4 : this.c) {
+            if ($$2.a(new btp($$4))) {
+               $$3 = true;
+            }
+         }
+
+         return $$3;
+      }
    }
 
-   public List<xk> b() {
+   public List<btp> b() {
+      return this.c;
+   }
+
+   public float c() {
       return this.f;
    }
 }

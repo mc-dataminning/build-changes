@@ -1,54 +1,56 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dna extends dkd implements dmz {
-   public dna(dxn.d $$0) {
+public abstract class dna extends djm {
+   protected final jn a;
+   protected final boolean b;
+   protected final fbu d;
+
+   protected dna(dww.d $$0, jn $$1, fbu $$2, boolean $$3) {
       super($$0);
+      this.a = $$1;
+      this.d = $$2;
+      this.b = $$3;
    }
 
    @Override
    protected abstract MapCodec<? extends dna> a();
 
+   @Nullable
    @Override
-   protected void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   public dwx a(dag $$0) {
+      dwx $$1 = $$0.q().a_($$0.a().a(this.a));
+      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.b($$0.q().A) : this.b().m();
+   }
+
+   public dwx b(azh $$0) {
+      return this.m();
    }
 
    @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      $$2.a($$3, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      ji $$3 = $$2.a(this.a.g());
+      dwx $$4 = $$1.a_($$3);
+      return !this.o($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.c($$1, $$3, this.a);
    }
 
    @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.L_()) {
-         clr $$4 = clr.a($$1, $$2, $$0);
-         this.a($$4);
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
-   protected void a(clr $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(dxo $$0) {
-      return $$0.l() || $$0.a(axk.aN) || $$0.n() || $$0.v();
+   protected boolean o(dwx $$0) {
+      return true;
    }
 
    @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
-      if ($$3.a(16) == 0) {
-         jh $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            azy.a($$1, $$2, $$3, new lk(ls.C, $$0));
-         }
-      }
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return this.d;
    }
 
-   public int b(dxo $$0, dge $$1, jh $$2) {
-      return -16777216;
-   }
+   protected abstract dnc c();
+
+   protected abstract djm b();
 }

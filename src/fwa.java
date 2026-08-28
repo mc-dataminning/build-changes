@@ -1,24 +1,136 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fwa implements fwb {
-   private final azg a;
+public class fwa extends fvb<ctf> {
+   private float G;
+   private float H;
+   private boolean I;
+   private final fvs J;
 
-   public fwa(azg $$0) {
-      this.a = $$0;
+   public fwa(cox $$0) {
+      super($$0.cc, new fyd($$0.cc), $$0.gi(), wo.c("container.crafting"));
+      this.v = 97;
+      this.J = new fvs(this);
    }
 
    @Override
-   public int b(fnj $$0) {
-      return $$0.a(this.a);
+   public void E() {
+      super.E();
+      if (this.m.r.f()) {
+         this.m.a(new fvp(this.m.t, this.m.t.j.y(), this.m.n.L().c()));
+      }
    }
 
    @Override
-   public int a(fnj $$0) {
-      return 10;
+   protected void aR_() {
+      if (this.m.r.f()) {
+         this.m.a(new fvp(this.m.t, this.m.t.j.y(), this.m.n.L().c()));
+      } else {
+         super.aR_();
+      }
    }
 
    @Override
-   public void a(fnj $$0, int $$1, int $$2, Matrix4f $$3, glg.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fnj.a.a, 0, 15728880);
+   protected fsy G() {
+      return new fsy(this.C + 104, this.o / 2 - 22);
+   }
+
+   @Override
+   protected void H() {
+      this.I = true;
+   }
+
+   @Override
+   protected void b(fod $$0, int $$1, int $$2) {
+      $$0.a(this.p, this.l, this.v, this.w, 4210752, false);
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.J.a($$0, $$1, $$2, $$3);
+      this.G = (float)$$1;
+      this.H = (float)$$2;
+   }
+
+   @Override
+   public boolean C() {
+      return this.J.a();
+   }
+
+   @Override
+   protected boolean I() {
+      return false;
+   }
+
+   @Override
+   protected void a(fod $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(gmh::H, a, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      a($$0, $$4 + 26, $$5 + 8, $$4 + 75, $$5 + 78, 30, 0.0625F, this.G, this.H, this.m.t);
+   }
+
+   public static void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, float $$6, float $$7, float $$8, bvg $$9) {
+      float $$10 = (float)($$1 + $$3) / 2.0F;
+      float $$11 = (float)($$2 + $$4) / 2.0F;
+      $$0.c($$1, $$2, $$3, $$4);
+      float $$12 = (float)Math.atan((double)(($$10 - $$7) / 40.0F));
+      float $$13 = (float)Math.atan((double)(($$11 - $$8) / 40.0F));
+      Quaternionf $$14 = new Quaternionf().rotateZ((float) Math.PI);
+      Quaternionf $$15 = new Quaternionf().rotateX($$13 * 20.0F * (float) (Math.PI / 180.0));
+      $$14.mul($$15);
+      float $$16 = $$9.aX;
+      float $$17 = $$9.dM();
+      float $$18 = $$9.dO();
+      float $$19 = $$9.ba;
+      float $$20 = $$9.aZ;
+      $$9.aX = 180.0F + $$12 * 20.0F;
+      $$9.v(180.0F + $$12 * 40.0F);
+      $$9.w(-$$13 * 20.0F);
+      $$9.aZ = $$9.dM();
+      $$9.ba = $$9.dM();
+      float $$21 = $$9.ek();
+      Vector3f $$22 = new Vector3f(0.0F, $$9.ds() / 2.0F + $$6 * $$21, 0.0F);
+      float $$23 = (float)$$5 / $$21;
+      a($$0, $$10, $$11, $$23, $$22, $$14, $$15, $$9);
+      $$9.aX = $$16;
+      $$9.v($$17);
+      $$9.w($$18);
+      $$9.ba = $$19;
+      $$9.aZ = $$20;
+      $$0.e();
+   }
+
+   public static void a(fod $$0, float $$1, float $$2, float $$3, Vector3f $$4, Quaternionf $$5, @Nullable Quaternionf $$6, bvg $$7) {
+      $$0.c().a();
+      $$0.c().a((double)$$1, (double)$$2, 50.0);
+      $$0.c().b($$3, $$3, -$$3);
+      $$0.c().a($$4.x, $$4.y, $$4.z);
+      $$0.c().a($$5);
+      $$0.d();
+      feq.e();
+      gsa $$8 = flj.Q().aq();
+      if ($$6 != null) {
+         $$8.a($$6.conjugate(new Quaternionf()).rotateY((float) Math.PI));
+      }
+
+      $$8.a(false);
+      $$0.a($$3x -> $$8.a($$7, 0.0, 0.0, 0.0, 1.0F, $$0.c(), $$3x, 15728880));
+      $$0.d();
+      $$8.a(true);
+      $$0.c().b();
+      feq.d();
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      if (this.I) {
+         this.I = false;
+         return true;
+      } else {
+         return super.b($$0, $$1, $$2);
+      }
    }
 }

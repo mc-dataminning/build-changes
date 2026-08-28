@@ -1,14 +1,15 @@
-public class cwc extends cvm {
-   public cwc(dkd $$0, cxc.a $$1) {
-      super($$0, $$1);
+public class cwc extends cwl implements cxt {
+   public cwc(cwl.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dax $$0, dxo $$1) {
-      dgz $$2 = $$0.q();
-      jh $$3 = $$0.a().d();
-      dxo $$4 = $$2.z($$3) ? dkf.J.m() : dkf.a.m();
-      $$2.a($$3, $$4, 27);
-      return super.a($$0, $$1);
+   public boolean a(dgi $$0, dvm $$1, boolean $$2, cox $$3) {
+      if ($$1.a($$0x -> $$0x.a(true), $$2)) {
+         $$0.a(null, $$1.aA_(), awa.la, awb.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

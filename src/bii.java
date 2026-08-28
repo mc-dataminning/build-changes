@@ -1,32 +1,40 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
+import java.util.Locale;
+import java.util.Objects;
 
-public class bii extends DataFix {
-   public bii(Schema $$0) {
-      super($$0, true);
+public abstract class bii extends DataFix {
+   private final String a;
+
+   public bii(String $$0, Schema $$1, boolean $$2) {
+      super($$1, $$2);
+      this.a = $$0;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bin.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bin.B);
-      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, bbk.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bhw.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bhw.B);
+      Type<Pair<String, String>> $$2 = DSL.named(bhw.z.typeName(), bjk.a());
+      if (!Objects.equals(this.getOutputSchema().getType(bhw.z), $$2)) {
+         throw new IllegalStateException("Entity name type is not what was expected.");
+      } else {
+         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
+                  String $$3 = this.a($$2xxx);
+                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
+                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
+                  if (!$$5.equals($$4, true, true)) {
+                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
+                  } else {
+                     return $$3;
+                  }
+               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
+      }
    }
 
-   private Function<Typed<?>, Typed<?>> a(String $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bin.B, $$0);
-      Type<?> $$2 = this.getOutputSchema().getChoiceType(bin.B, $$0);
-      return a($$0, $$1, $$2);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
-      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
-      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> ae.a($$1xx, $$2, UnaryOperator.identity()));
-   }
+   protected abstract String a(String var1);
 }

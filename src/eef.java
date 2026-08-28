@@ -1,26 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eef(eeh b, eee c) {
-   public static final Codec<eef> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eeh.a.forGetter(eef::a), eee.a.forGetter(eef::b)).apply($$0, $$0.stable(eef::new))
+class eef extends eek {
+   private final jv<djm> e;
+   public static final MapCodec<eef> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kg.a(mc.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, eef::new)
    );
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, eeh $$1, eee $$2) {
-      return a.encodeStart($$0, new eef($$1, $$2));
+   public eef(km $$0, jv<djm> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public static <T> DataResult<T> a(DynamicOps<T> $$0, eeh $$1, ke $$2) {
-      return a($$0, $$1, new eee($$2.e(mb.bf)));
+   @Override
+   protected boolean a(dwx $$0) {
+      return $$0.a(this.e);
    }
 
-   public eeh a() {
-      return this.b;
-   }
-
-   public eee b() {
-      return this.c;
+   @Override
+   public eea<?> a() {
+      return eea.a;
    }
 }

@@ -1,11 +1,26 @@
-public interface aak extends acd {
-   void a(aan var1);
+public record aak(ji c, int d) implements zy {
+   public static final ym<vl, aak> a = zy.a(aak::a, aak::new);
+   public static final zy.b<aak> b = zy.a("debug/poi_ticket_count");
 
-   void a(aao var1);
+   private aak(vl $$0) {
+      this($$0.e(), $$0.readInt());
+   }
 
-   void a(aam var1);
+   private void a(vl $$0) {
+      $$0.a(this.c);
+      $$0.q(this.d);
+   }
 
-   void a(aap var1);
+   @Override
+   public zy.b<aak> a() {
+      return b;
+   }
 
-   void a(aal var1);
+   public ji b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
+   }
 }

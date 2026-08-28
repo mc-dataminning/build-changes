@@ -1,21 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public class eje implements eit {
-   public static final Codec<eje> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(enh.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), enh.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, eje::new)
-   );
-   public final jq<enh> b;
-   public final jq<enh> c;
+public class eje<P extends ejd> {
+   public static final eje<ejg> a = a("two_layers_feature_size", ejg.d);
+   public static final eje<ejf> b = a("three_layers_feature_size", ejf.d);
+   private final MapCodec<P> c;
 
-   public eje(jq<enh> $$0, jq<enh> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static <P extends ejd> eje<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.Y, $$0, new eje<>($$1));
    }
 
-   @Override
-   public Stream<egb<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   private eje(MapCodec<P> $$0) {
+      this.c = $$0;
+   }
+
+   public MapCodec<P> a() {
+      return this.c;
    }
 }

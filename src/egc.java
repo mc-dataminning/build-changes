@@ -1,57 +1,58 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public class egc extends egd {
-   public egc(Codec<eja> $$0) {
+public class egc extends efy<egd> {
+   public egc(Codec<egd> $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean a(dha $$0, bac $$1, jh $$2, dxo $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
+   public boolean a(ega<egd> $$0) {
+      azh $$1 = $$0.d();
+      dhg $$2 = $$0.b();
+      ji $$3 = $$0.e();
+      dqe $$4 = dqe.a($$1);
+      egd $$5 = $$0.f();
+      int $$6 = $$1.a($$5.b.size());
+      erp $$7 = $$2.a().p().aY();
+      ero $$8 = $$7.a($$5.b.get($$6));
+      ero $$9 = $$7.a($$5.c.get($$6));
+      dfo $$10 = new dfo($$3);
+      ene $$11 = new ene($$10.d() - 16, $$2.L_(), $$10.e() - 16, $$10.f() + 16, $$2.an(), $$10.g() + 16);
+      erk $$12 = new erk().a($$4).a($$11).a($$1);
+      km $$13 = $$8.a($$4);
+      ji $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
+      int $$15 = $$3.v();
+
+      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
+         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
+            $$15 = Math.min($$15, $$2.a(ecs.a.c, $$14.u() + $$16, $$14.w() + $$17));
+         }
+      }
+
+      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.L_() + 10);
+      ji $$19 = $$8.a($$14.h($$18), dol.a, $$4);
+      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
          return false;
       } else {
-         jm $$4 = jm.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jm> $$6 = ae.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
-
-         for (jm $$8 : $$6.subList(0, $$5)) {
-            jh.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jm $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jm.b);
-               jm[] $$13 = new jm[]{$$8, jm.b};
-               $$11 = ae.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
-
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
-
-            $$9.c($$11.g());
-            $$9.c(jm.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jm.b);
-               }
-            }
-         }
-
+         $$12.b();
+         $$5.d.a().a().forEach($$12::a);
+         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
+         $$12.b();
+         $$5.e.a().a().forEach($$12::a);
+         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
          return true;
       }
+   }
+
+   private static int a(dhg $$0, ene $$1) {
+      MutableInt $$2 = new MutableInt(0);
+      $$1.a($$2x -> {
+         dwx $$3 = $$0.a_($$2x);
+         if ($$3.l() || $$3.a(djo.K) || $$3.a(djo.J)) {
+            $$2.add(1);
+         }
+      });
+      return $$2.getValue();
    }
 }

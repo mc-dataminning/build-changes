@@ -1,30 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dtb extends dnt {
-   public static final MapCodec<dtb> c = b(dtb::new);
-   public static final fcl g = dkd.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
+public class dtb extends dqu implements dsw {
+   public static final MapCodec<dtb> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dsw.a.e.fieldOf("weathering_state").forGetter(dko::c), t()).apply($$0, dtb::new)
+   );
+   private final dsw.a g;
 
    @Override
    public MapCodec<dtb> a() {
-      return c;
+      return f;
    }
 
-   public dtb(dxn.d $$0) {
-      super($$0, jm.b, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(bac $$0) {
-      return dpm.a($$0);
+   public dtb(dsw.a $$0, dww.d $$1) {
+      super($$1);
+      this.g = $$0;
    }
 
    @Override
-   protected dkd b() {
-      return dkf.pe;
+   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean h(dxo $$0) {
-      return dpm.a($$0);
+   protected boolean f(dwx $$0) {
+      return dsw.c($$0.b()).isPresent();
+   }
+
+   public dsw.a q() {
+      return this.g;
    }
 }

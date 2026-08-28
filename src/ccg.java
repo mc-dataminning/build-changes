@@ -1,62 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class ccg extends ccv {
-   private final bwf a;
+public class ccg extends cdb {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public ccg(bwf $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccv.a.a, ccv.a.b));
+   public ccg(bvo $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.a.ct() < 140;
-   }
-
-   @Override
-   public boolean c() {
-      return this.b();
-   }
-
-   @Override
-   public boolean U_() {
-      return false;
-   }
-
-   @Override
-   public void d() {
-      this.h();
-   }
-
-   private void h() {
-      Iterable<jh> $$0 = jh.b(
-         azu.a(this.a.dB() - 1.0), this.a.dC(), azu.a(this.a.dH() - 1.0), azu.a(this.a.dB() + 1.0), azu.a(this.a.dD() + 8.0), azu.a(this.a.dH() + 1.0)
-      );
-      jh $$1 = null;
-
-      for (jh $$2 : $$0) {
-         if (this.a(this.a.dW(), $$2)) {
-            $$1 = $$2;
-            break;
+   protected fba h() {
+      float $$0 = this.b.dW().A.i();
+      if (this.b.dW().A.i() < 0.3F) {
+         return this.k();
+      } else {
+         fba $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
+            }
+         } else {
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
+            }
          }
-      }
 
-      if ($$1 == null) {
-         $$1 = jh.a(this.a.dB(), this.a.dD() + 8.0, this.a.dH());
+         return $$1 == null ? this.k() : $$1;
       }
-
-      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
-   @Override
-   public void a() {
-      this.h();
-      this.a.a(0.02F, new fbr((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
-      this.a.a(bwb.a, this.a.dz());
+   @Nullable
+   private fba k() {
+      return cge.a(this.b, 10, 7);
    }
 
-   private boolean a(dhc $$0, jh $$1) {
-      dxo $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dkf.nF)) && $$2.a(euf.a);
+   @Nullable
+   private fba l() {
+      arc $$0 = (arc)this.b.dW();
+      List<coi> $$1 = $$0.a(bur.bD, this.b.cR().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
+      } else {
+         coi $$2 = $$1.get(this.b.dW().A.a($$1.size()));
+         fba $$3 = $$2.du();
+         return cge.a(this.b, 10, 7, $$3);
+      }
+   }
+
+   @Nullable
+   private fba m() {
+      kk $$0 = this.n();
+      if ($$0 == null) {
+         return null;
+      } else {
+         ji $$1 = this.a($$0);
+         return $$1 == null ? null : cge.a(this.b, 10, 7, fba.c($$1));
+      }
+   }
+
+   @Nullable
+   private kk n() {
+      arc $$0 = (arc)this.b.dW();
+      List<kk> $$1 = kk.a(kk.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   }
+
+   @Nullable
+   private ji a(kk $$0) {
+      arc $$1 = (arc)this.b.dW();
+      cgk $$2 = $$1.A();
+      List<ji> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cgk.b.b).map(cgl::g).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
+   }
+
+   private boolean a(coi $$0) {
+      return $$0.a(this.b.dW().ad());
    }
 }

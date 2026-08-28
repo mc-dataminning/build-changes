@@ -1,23 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eer<P extends eeq> {
-   eer<eew> a = a("matching_blocks", eew.a);
-   eer<eev> b = a("matching_block_tag", eev.e);
-   eer<eex> c = a("matching_fluids", eex.a);
-   eer<eet> d = a("has_sturdy_face", eet.a);
-   eer<efa> e = a("solid", efa.a);
-   eer<eez> f = a("replaceable", eez.a);
-   eer<efe> g = a("would_survive", efe.a);
-   eer<eeu> h = a("inside_world_bounds", eeu.a);
-   eer<eep> i = a("any_of", eep.a);
-   eer<eeo> j = a("all_of", eeo.a);
-   eer<eey> k = a("not", eey.a);
-   eer<efc> l = a("true", efc.e);
-   eer<efd> m = a("unobstructed", efd.a);
+public class eer extends eim {
+   public static final MapCodec<eer> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               elt.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               brm.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               edm.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               ees.b.optionalFieldOf("debug_settings", ees.a).forGetter($$0x -> $$0x.h),
+               kg.a(mc.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, eer::new)
+   );
+   public final elt e;
+   public final brm f;
+   public final edm g;
+   public final ees h;
+   public final jv<djm> i;
 
-   MapCodec<P> codec();
-
-   private static <P extends eeq> eer<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.M, $$0, () -> $$1);
+   public eer(float $$0, elt $$1, brm $$2, edm $$3, ees $$4, jv<djm> $$5) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

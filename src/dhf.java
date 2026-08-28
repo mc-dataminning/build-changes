@@ -1,12 +1,25 @@
-import java.util.Optional;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhf {
-   boolean a(jh var1, Predicate<dxo> var2);
+public record dhf(dfv d, crt e) {
+   public static final String a = "enabled_features";
+   public static final Codec<dhf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dfv.b.lenientOptionalFieldOf("DataPacks", dfv.a).forGetter(dhf::a), crv.f.lenientOptionalFieldOf("enabled_features", crv.h).forGetter(dhf::b)
+            )
+            .apply($$0, dhf::new)
+   );
+   public static final dhf c = new dhf(dfv.a, crv.h);
 
-   boolean b(jh var1, Predicate<etq> var2);
+   public dhf a(crt $$0) {
+      return new dhf(this.d, this.e.c($$0));
+   }
 
-   <T extends duq> Optional<T> a(jh var1, dus<T> var2);
+   public dfv a() {
+      return this.d;
+   }
 
-   jh a(edj.a var1, jh var2);
+   public crt b() {
+      return this.e;
+   }
 }

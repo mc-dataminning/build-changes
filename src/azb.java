@@ -1,65 +1,192 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.MapLike;
+import com.mojang.serialization.RecordBuilder;
+import com.mojang.serialization.RecordBuilder.AbstractUniversalBuilder;
+import java.nio.ByteBuffer;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-public class azb {
-   final LoadingCache<azb.a<?, ?>, DataResult<?>> a;
+public class azb implements DynamicOps<baf> {
+   public static final azb a = new azb();
 
-   public azb(int $$0) {
-      this.a = CacheBuilder.newBuilder().maximumSize((long)$$0).concurrencyLevel(1).softValues().build(new CacheLoader<azb.a<?, ?>, DataResult<?>>() {
-         public DataResult<?> a(azb.a<?, ?> $$0) {
-            return $$0.a();
-         }
-      });
+   private azb() {
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0) {
-      return new Codec<A>() {
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
-            return $$0.decode($$0, $$1);
-         }
-
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
-            return ((DataResult)azb.this.a.getUnchecked(new azb.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof vj $$1x ? $$1x.d() : $$0xx);
-         }
-      };
+   public <U> U a(DynamicOps<U> $$0, baf $$1) {
+      return (U)$$0.empty();
    }
 
-   static record a<A, T>(Codec<A> a, A b, DynamicOps<T> c) {
-      public DataResult<T> a() {
-         return this.a.encodeStart(this.c, this.b);
+   public baf a() {
+      return baf.a;
+   }
+
+   public baf b() {
+      return baf.a;
+   }
+
+   public baf c() {
+      return baf.a;
+   }
+
+   public baf a(Number $$0) {
+      return baf.a;
+   }
+
+   public baf a(byte $$0) {
+      return baf.a;
+   }
+
+   public baf a(short $$0) {
+      return baf.a;
+   }
+
+   public baf a(int $$0) {
+      return baf.a;
+   }
+
+   public baf a(long $$0) {
+      return baf.a;
+   }
+
+   public baf a(float $$0) {
+      return baf.a;
+   }
+
+   public baf a(double $$0) {
+      return baf.a;
+   }
+
+   public baf a(boolean $$0) {
+      return baf.a;
+   }
+
+   public baf a(String $$0) {
+      return baf.a;
+   }
+
+   public DataResult<Number> a(baf $$0) {
+      return DataResult.error(() -> "Not a number");
+   }
+
+   public DataResult<Boolean> b(baf $$0) {
+      return DataResult.error(() -> "Not a boolean");
+   }
+
+   public DataResult<String> c(baf $$0) {
+      return DataResult.error(() -> "Not a string");
+   }
+
+   public DataResult<baf> a(baf $$0, baf $$1) {
+      return DataResult.success(baf.a);
+   }
+
+   public DataResult<baf> a(baf $$0, List<baf> $$1) {
+      return DataResult.success(baf.a);
+   }
+
+   public DataResult<baf> a(baf $$0, baf $$1, baf $$2) {
+      return DataResult.success(baf.a);
+   }
+
+   public DataResult<baf> a(baf $$0, Map<baf, baf> $$1) {
+      return DataResult.success(baf.a);
+   }
+
+   public DataResult<baf> a(baf $$0, MapLike<baf> $$1) {
+      return DataResult.success(baf.a);
+   }
+
+   public DataResult<Stream<Pair<baf, baf>>> d(baf $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Consumer<BiConsumer<baf, baf>>> e(baf $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<MapLike<baf>> f(baf $$0) {
+      return DataResult.error(() -> "Not a map");
+   }
+
+   public DataResult<Stream<baf>> g(baf $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<Consumer<Consumer<baf>>> h(baf $$0) {
+      return DataResult.error(() -> "Not a list");
+   }
+
+   public DataResult<ByteBuffer> i(baf $$0) {
+      return DataResult.error(() -> "Not a byte list");
+   }
+
+   public DataResult<IntStream> j(baf $$0) {
+      return DataResult.error(() -> "Not an int list");
+   }
+
+   public DataResult<LongStream> k(baf $$0) {
+      return DataResult.error(() -> "Not a long list");
+   }
+
+   public baf a(Stream<Pair<baf, baf>> $$0) {
+      return baf.a;
+   }
+
+   public baf a(Map<baf, baf> $$0) {
+      return baf.a;
+   }
+
+   public baf b(Stream<baf> $$0) {
+      return baf.a;
+   }
+
+   public baf a(ByteBuffer $$0) {
+      return baf.a;
+   }
+
+   public baf a(IntStream $$0) {
+      return baf.a;
+   }
+
+   public baf a(LongStream $$0) {
+      return baf.a;
+   }
+
+   public baf a(baf $$0, String $$1) {
+      return $$0;
+   }
+
+   public RecordBuilder<baf> mapBuilder() {
+      return new azb.a(this);
+   }
+
+   @Override
+   public String toString() {
+      return "Null";
+   }
+
+   static final class a extends AbstractUniversalBuilder<baf, baf> {
+      public a(DynamicOps<baf> $$0) {
+         super($$0);
       }
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof azb.a<?, ?> $$1) ? false : this.a == $$1.a && this.b.equals($$1.b) && this.c.equals($$1.c);
-         }
+      protected baf a() {
+         return baf.a;
       }
 
-      @Override
-      public int hashCode() {
-         int $$0 = System.identityHashCode(this.a);
-         $$0 = 31 * $$0 + this.b.hashCode();
-         return 31 * $$0 + this.c.hashCode();
+      protected baf a(baf $$0, baf $$1, baf $$2) {
+         return $$2;
       }
 
-      public Codec<A> b() {
-         return this.a;
-      }
-
-      public A c() {
-         return this.b;
-      }
-
-      public DynamicOps<T> d() {
-         return this.c;
+      protected DataResult<baf> a(baf $$0, baf $$1) {
+         return DataResult.success($$1);
       }
    }
 }

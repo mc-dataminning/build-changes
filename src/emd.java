@@ -1,29 +1,8 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class emd {
-   public static final Codec<emd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, ebj.c).fieldOf("height").forGetter(emd::a), ma.e.q().fieldOf("block").orElse(dkf.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, emd::new)
-   );
-   private final dkd b;
-   private final int c;
-
-   public emd(int $$0, dkd $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public dxo b() {
-      return this.b.m();
-   }
-
-   @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + ma.e.b(this.b);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface emd {
 }

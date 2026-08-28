@@ -1,34 +1,59 @@
-public class cqs extends cqo {
-   public cqs(bvi<? extends cqs> $$0, dgz $$1) {
-      super($$0, $$1);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.ints.Int2ObjectAVLTreeMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectSortedMap;
+import java.util.Collection;
+import java.util.List;
+
+public class cqs {
+   private final List<cqp> a = Lists.newArrayList();
+   private int b;
+
+   public ImmutableList<cqp> a() {
+      return ImmutableList.copyOf(this.a);
    }
 
-   public cqs(dgz $$0, bvx $$1, cxg $$2) {
-      super(bvi.V, $$1, $$0, $$2);
+   public cqs a(int $$0, float $$1) {
+      this.a.add(new cqp($$0, $$1));
+      this.b();
+      return this;
    }
 
-   public cqs(dgz $$0, double $$1, double $$2, double $$3, cxg $$4) {
-      super(bvi.V, $$1, $$2, $$3, $$0, $$4);
+   public cqs a(Collection<cqp> $$0) {
+      this.a.addAll($$0);
+      this.b();
+      return this;
    }
 
-   @Override
-   protected cxc m() {
-      return cxk.uU;
+   private void b() {
+      Int2ObjectSortedMap<cqp> $$0 = new Int2ObjectAVLTreeMap();
+      this.a.forEach($$1 -> $$0.put($$1.a(), $$1));
+      this.a.clear();
+      this.a.addAll($$0.values());
+      this.b = 0;
    }
 
-   @Override
-   protected double bd() {
-      return 0.07;
-   }
+   public float a(int $$0) {
+      if (this.a.size() <= 0) {
+         return 0.0F;
+      } else {
+         cqp $$1 = this.a.get(this.b);
+         cqp $$2 = this.a.get(this.a.size() - 1);
+         boolean $$3 = $$0 < $$1.a();
+         int $$4 = $$3 ? 0 : this.b;
+         float $$5 = $$3 ? $$2.b() : $$1.b();
 
-   @Override
-   protected void a(fbp $$0) {
-      super.a($$0);
-      if (this.dW() instanceof arx) {
-         this.dW().c(2002, this.dw(), czf.c(czg.a));
-         int $$1 = 3 + this.dW().A.a(5) + this.dW().A.a(5);
-         bvn.a((arx)this.dW(), this.du(), $$1);
-         this.at();
+         for (int $$6 = $$4; $$6 < this.a.size(); $$6++) {
+            cqp $$7 = this.a.get($$6);
+            if ($$7.a() > $$0) {
+               break;
+            }
+
+            this.b = $$6;
+            $$5 = $$7.b();
+         }
+
+         return $$5;
       }
    }
 }

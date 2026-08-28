@@ -1,27 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class emw extends enj {
-   public static final MapCodec<emw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eeq.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, emw::new)
-   );
-   private final eeq c;
+public class emw extends ems {
+   public static final MapCodec<emw> a = ayi.m.fieldOf("chance").xmap(emw::new, $$0 -> $$0.c);
+   private final int c;
 
-   private emw(eeq $$0) {
+   private emw(int $$0) {
       this.c = $$0;
    }
 
-   public static emw a(eeq $$0) {
+   public static emw a(int $$0) {
       return new emw($$0);
    }
 
    @Override
-   protected boolean a(eni $$0, bac $$1, jh $$2) {
-      return this.c.test($$0.d(), $$2);
+   protected boolean a(emr $$0, azh $$1, ji $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
    }
 
    @Override
-   public enl<?> b() {
-      return enl.a;
+   public emu<?> b() {
+      return emu.b;
    }
 }

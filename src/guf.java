@@ -1,18 +1,19 @@
-public class guf extends gqb<cjs, gxr, fzv<gxr>> {
-   private static final alp a = alp.b("textures/entity/horse/horse_zombie.png");
-   private static final alp b = alp.b("textures/entity/horse/horse_skeleton.png");
-   private final alp k;
+public class guf extends gqu<cmf, hae> {
+   private static final aku a = aku.b("textures/entity/skeleton/skeleton.png");
 
-   public guf(grl.a $$0, geh $$1, geh $$2, boolean $$3) {
-      super($$0, new gbs($$0.a($$1)), new gbs($$0.a($$2)));
-      this.k = $$3 ? b : a;
+   public guf(gsc.a $$0) {
+      super($$0, gfb.cI, gfb.cL, gfb.cM);
    }
 
-   public alp a(gxr $$0) {
-      return this.k;
+   public aku b(hae $$0) {
+      return a;
    }
 
-   public gxr b() {
-      return new gxr();
+   public hae b() {
+      return new hae();
+   }
+
+   protected gcn.a a(cmf $$0, bva $$1) {
+      return $$0.fy() == $$1 && $$0.ge() && $$0.eZ().a(cwt.pa) ? gcn.a.d : gcn.a.a;
    }
 }

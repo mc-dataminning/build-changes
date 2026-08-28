@@ -1,66 +1,61 @@
-public class fsl extends ftr {
-   private static final xk s = xk.c("selectWorld.backupJoinSkipButton");
-   public static final xk a = xk.c("selectWorld.backupJoinConfirmButton");
-   private final Runnable u;
-   protected final fsl.a b;
-   private final xk v;
-   private final boolean w;
-   private fos x = fos.a;
-   final xk c;
-   protected int d;
-   private foa y;
+import java.util.function.Consumer;
 
-   public fsl(Runnable $$0, fsl.a $$1, xk $$2, xk $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, a, $$4);
+public class fsl implements fsi {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
+
+   public fsl(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public fsl(Runnable $$0, fsl.a $$1, xk $$2, xk $$3, xk $$4, boolean $$5) {
-      super($$2);
-      this.u = $$0;
+   public fsl(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
       this.b = $$1;
-      this.v = $$3;
-      this.w = $$5;
-      this.c = $$4;
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   public static fsl a(int $$0) {
+      return new fsl($$0, 0);
+   }
+
+   public static fsl b(int $$0) {
+      return new fsl(0, $$0);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.x = fos.a(this.p, this.v, this.n - 50);
-      int $$0 = (this.x.a() + 1) * 9;
-      this.y = foa.a(xk.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.w) {
-         this.c(this.y);
-      }
-
-      this.c(fny.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fny.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fny.a(xj.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+   public void j(int $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.x.a($$0, this.n / 2, 70);
+   public void k(int $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   public int F() {
+      return this.a;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.u.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public int G() {
+      return this.b;
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   @Override
+   public int A() {
+      return this.c;
+   }
+
+   @Override
+   public int y() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fop> $$0) {
    }
 }

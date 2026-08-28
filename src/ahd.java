@@ -1,29 +1,29 @@
-public class ahd implements zr<ahb> {
-   public static final zi<wh, ahd> a = zr.a(ahd::a, ahd::new);
-   private final int b;
+public class ahd implements yv<agf> {
+   public static final ym<vl, ahd> a = yv.a(ahd::a, ahd::new);
+   private final boolean b;
 
-   public ahd(int $$0) {
+   public ahd(boolean $$0) {
       this.b = $$0;
    }
 
-   private ahd(wh $$0) {
-      this.b = $$0.l();
+   private ahd(vl $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(wh $$0) {
-      $$0.c(this.b);
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zt<ahd> a() {
-      return agz.bk;
+   public yx<ahd> a() {
+      return agd.bH;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
    }
 }

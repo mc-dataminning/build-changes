@@ -1,3 +1,5 @@
 public interface asi {
-   ash create(int var1);
+   ard o();
+
+   void b(yv<?> var1);
 }

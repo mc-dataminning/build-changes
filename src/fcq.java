@@ -1,46 +1,46 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Set;
 
-class fcq {
-   private final Reference2ObjectOpenHashMap<fco, fct> a = new Reference2ObjectOpenHashMap(16, 0.5F);
+public class fcq<T> implements fct<T>, fcv<T> {
+   private final List<fcr<T>> a = Lists.newArrayList();
+   private final Set<fcr<?>> b = new ObjectOpenCustomHashSet(fcr.a);
 
-   @Nullable
-   public fct a(fco $$0) {
-      return (fct)this.a.get($$0);
+   @Override
+   public void a(fcs<T> $$0) {
+      fcr<T> $$1 = new fcr<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public fct a(fco $$0, Consumer<fct> $$1) {
-      return (fct)this.a.computeIfAbsent($$0, $$1x -> {
-         fct $$2 = new fct();
-         $$1.accept($$2);
-         return $$2;
-      });
+   private void a(fcr<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
+      }
    }
 
-   public boolean b(fco $$0) {
-      return this.a.remove($$0) != null;
+   @Override
+   public boolean a(ji $$0, T $$1) {
+      return this.b.contains(fcr.a($$1, $$0));
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
+   @Override
+   public int a() {
+      return this.a.size();
    }
 
-   public Object2IntMap<fco> b() {
-      Object2IntMap<fco> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
+   @Override
+   public List<fcr<T>> a(long $$0) {
+      return this.a;
    }
 
-   void a(fco $$0, fct $$1) {
-      this.a.put($$0, $$1);
+   public List<fcr<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   Map<fco, fct> c() {
-      return Collections.unmodifiableMap(this.a);
+   public static <T> fcq<T> a(List<fcr<T>> $$0) {
+      fcq<T> $$1 = new fcq<>();
+      $$0.forEach($$1::a);
+      return $$1;
    }
 }

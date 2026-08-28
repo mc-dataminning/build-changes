@@ -1,70 +1,77 @@
-public class ghl extends gjn {
-   ghl(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
-      this.u = 3.0E-6F;
-      this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
-      this.l = $$6;
+public class ghl implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<ghl.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(ji $$0, dwx $$1, gkv $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new ghl.a(this.b, $$1, $$2.du()));
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
+   public boolean a(ji $$0, dwx $$1) {
+      ghl.a $$2 = (ghl.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
+   }
+
+   public void a(int $$0, gfy $$1) {
+      ObjectIterator<Entry<ghl.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+
+      while ($$2.hasNext()) {
+         Entry<ghl.a> $$3 = (Entry<ghl.a>)$$2.next();
+         ghl.a $$4 = (ghl.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            ji $$5 = ji.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
          }
-      } else {
-         this.k();
       }
+   }
+
+   public ghl a() {
+      this.b++;
+      this.c = true;
+      return this;
    }
 
    @Override
-   public gir b() {
-      return gir.c;
+   public void close() {
+      this.c = false;
    }
 
-   public static class a implements giq<lw> {
-      private final gji a;
-
-      public a(gji $$0) {
-         this.a = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghl $$8 = new ghl($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public int b() {
+      return this.b;
    }
 
-   public static class b implements giq<lw> {
-      private final gji a;
+   public boolean c() {
+      return this.c;
+   }
 
-      public b(gji $$0) {
-         this.a = $$0;
+   static class a {
+      final fba a;
+      int b;
+      dwx c;
+
+      a(int $$0, dwx $$1, fba $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         ghl $$8 = new ghl($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
+      ghl.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(dwx $$0) {
+         this.c = $$0;
       }
    }
 }

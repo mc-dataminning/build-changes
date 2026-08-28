@@ -1,15 +1,20 @@
-public class dvp extends due {
-   public dvp(jh $$0, dxo $$1) {
-      super(dus.a, $$0, $$1, dcg.b);
+public class dvp extends dtn {
+   public dvp(ji $$0, dwx $$1) {
+      super(dub.C, $$0, $$1, dbp.d);
    }
 
    @Override
-   protected xk j() {
-      return xk.c("container.furnace");
+   protected wo j() {
+      return wo.c("container.smoker");
    }
 
    @Override
-   protected cst a(int $$0, cpn $$1) {
-      return new ctr($$0, $$1, this, this.n);
+   protected int a(dux $$0, cwp $$1) {
+      return super.a($$0, $$1) / 2;
+   }
+
+   @Override
+   protected csc a(int $$0, cow $$1) {
+      return new cud($$0, $$1, this, this.n);
    }
 }

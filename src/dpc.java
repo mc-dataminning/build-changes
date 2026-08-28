@@ -1,57 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public enum dpc implements baq {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dpc extends dss {
+   public static final MapCodec<dpc> b = b(dpc::new);
+   private static final Map<jn, fbu> e = Maps.immutableEnumMap(
+      Map.of(
+         jn.c,
+         djm.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
+         jn.d,
+         djm.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
+         jn.f,
+         djm.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
+         jn.e,
+         djm.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
+      )
+   );
 
-   public static final Codec<dpc> d = baq.a(dpc::values);
-   private final String e;
-   private final xk f;
-   private final h g;
-
-   private dpc(final String $$0, final h $$1) {
-      this.e = $$0;
-      this.f = xk.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<dpc> a() {
+      return b;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dqv a(jm $$0) {
-      jm.a $$1 = $$0.o();
-      return (this != b || $$1 != jm.a.c) && (this != c || $$1 != jm.a.a) ? dqv.a : dqv.c;
-   }
-
-   public jm b(jm $$0) {
-      if (this == c && $$0.o() == jm.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == jm.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public xk b() {
-      return this.f;
+   public dpc(dww.d $$0) {
+      super(dqt.b.h, $$0);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return e.get($$0.c(d));
    }
 }

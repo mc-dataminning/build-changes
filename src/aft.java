@@ -1,59 +1,30 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Set;
 
-public class aft implements zr<acg> {
-   public static final zi<wv, aft> a = zr.a(aft::a, aft::new);
-   private static final byte b = -128;
-   private final int c;
-   private final List<Pair<bvj, cxg>> d;
+public record aft(int b, bvt c, Set<bvu> d, boolean e) implements yv<abk> {
+   public static final ym<vl, aft> a = ym.a(yk.h, aft::b, bvt.a, aft::e, bvu.m, aft::f, yk.b, aft::g, aft::new);
 
-   public aft(int $$0, List<Pair<bvj, cxg>> $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   private aft(wv $$0) {
-      this.c = $$0.l();
-      this.d = Lists.newArrayList();
-
-      int $$1;
-      do {
-         $$1 = $$0.readByte();
-         bvj $$2 = bvj.i.get($$1 & 127);
-         cxg $$3 = cxg.g.decode($$0);
-         this.d.add(Pair.of($$2, $$3));
-      } while (($$1 & -128) != 0);
-   }
-
-   private void a(wv $$0) {
-      $$0.c(this.c);
-      int $$1 = this.d.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<bvj, cxg> $$3 = this.d.get($$2);
-         bvj $$4 = (bvj)$$3.getFirst();
-         boolean $$5 = $$2 != $$1 - 1;
-         int $$6 = $$4.ordinal();
-         $$0.l($$5 ? $$6 | -128 : $$6);
-         cxg.g.encode($$0, (cxg)$$3.getSecond());
-      }
+   public static aft a(int $$0, bvt $$1, Set<bvu> $$2, boolean $$3) {
+      return new aft($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public zt<aft> a() {
-      return agz.aI;
+   public yx<aft> a() {
+      return agd.bd;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public bvt e() {
       return this.c;
    }
 
-   public List<Pair<bvj, cxg>> e() {
+   public Set<bvu> f() {
       return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

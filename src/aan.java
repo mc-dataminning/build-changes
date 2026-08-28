@@ -1,29 +1,57 @@
-public class aan implements zr<aak> {
-   public static final zi<wh, aan> a = zr.a(aan::a, aan::new);
-   private final long b;
+import java.util.List;
 
-   public aan(long $$0) {
-      this.b = $$0;
+public record aan(akt<dgi> c, ene d, List<aan.a> e) implements zy {
+   public static final ym<vl, aan> a = zy.a(aan::a, aan::new);
+   public static final zy.b<aan> b = zy.a("debug/structures");
+
+   private aan(vl $$0) {
+      this($$0.a(mc.be), b($$0), $$0.a(aan.a::new));
    }
 
-   private aan(wh $$0) {
-      this.b = $$0.readLong();
-   }
-
-   private void a(wh $$0) {
-      $$0.b(this.b);
+   private void a(vl $$0) {
+      $$0.b(this.c);
+      a($$0, this.d);
+      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
    }
 
    @Override
-   public zt<aan> a() {
-      return aaj.n;
+   public zy.b<aan> a() {
+      return b;
    }
 
-   public void a(aak $$0) {
-      $$0.a(this);
+   static ene b(vl $$0) {
+      return new ene($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   public long b() {
-      return this.b;
+   static void a(vl $$0, ene $$1) {
+      $$0.q($$1.h());
+      $$0.q($$1.i());
+      $$0.q($$1.j());
+      $$0.q($$1.k());
+      $$0.q($$1.l());
+      $$0.q($$1.m());
+   }
+
+   public akt<dgi> b() {
+      return this.c;
+   }
+
+   public ene c() {
+      return this.d;
+   }
+
+   public List<aan.a> d() {
+      return this.e;
+   }
+
+   public static record a(ene a, boolean b) {
+      public a(vl $$0) {
+         this(aan.b($$0), $$0.readBoolean());
+      }
+
+      public void a(vl $$0) {
+         aan.a($$0, this.a);
+         $$0.a(this.b);
+      }
    }
 }

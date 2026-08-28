@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class fkt {
+   private static volatile boolean a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fkt {
+   public static void a() {
+      if (!a) {
+         a = true;
+         hbk.a();
+         hdp.a();
+         fmu.a();
+         hda.a();
+         hbt.a();
+         hco.a();
+      }
+   }
 }

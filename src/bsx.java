@@ -1,49 +1,142 @@
-import java.util.function.IntFunction;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
-public enum bsx implements baq {
-   a(0, "peaceful"),
-   b(1, "easy"),
-   c(2, "normal"),
-   d(3, "hard");
+public class bsx {
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final xl c = xl.a.a(new wm(wm.a.a, "https://bugs.mojang.com/browse/MCPE-28723")).a(new wu(wu.a.a, wo.b("MCPE-28723")));
+   private final List<bsv> d = Lists.newArrayList();
+   private final bvg e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
 
-   public static final baq.a<bsx> e = baq.a(bsx::values);
-   private static final IntFunction<bsx> f = ayl.a(bsx::a, values(), ayl.a.b);
-   private final int g;
-   private final String h;
-
-   private bsx(final int $$0, final String $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public bsx(bvg $$0) {
+      this.e = $$0;
    }
 
-   public int a() {
-      return this.g;
+   public void a(bta $$0, float $$1) {
+      this.c();
+      btf $$2 = btf.a(this.e);
+      bsv $$3 = new bsv($$0, $$1, $$2, this.e.Z);
+      this.d.add($$3);
+      this.f = this.e.af;
+      this.j = true;
+      if (!this.i && this.e.bL() && a($$0)) {
+         this.i = true;
+         this.g = this.e.af;
+         this.h = this.g;
+         this.e.i_();
+      }
    }
 
-   public xk b() {
-      return xk.c("options.difficulty." + this.h);
+   private static boolean a(bta $$0) {
+      return $$0.d() instanceof bvg;
    }
 
-   public xk d() {
-      return xk.c("options.difficulty." + this.h + ".info");
+   private wo a(buk $$0, wo $$1, String $$2, String $$3) {
+      cwp $$5 = $$0 instanceof bvg $$4 ? $$4.eZ() : cwp.j;
+      return !$$5.f() && $$5.b(kv.g) ? wo.a($$2, this.e.p_(), $$1, $$5.K()) : wo.a($$3, this.e.p_(), $$1);
    }
 
-   public static bsx a(int $$0) {
-      return f.apply($$0);
+   private wo a(bsv $$0, @Nullable buk $$1) {
+      bta $$2 = $$0.a();
+      if (!$$2.a(awr.m) && !$$2.a(awr.s)) {
+         wo $$4 = a($$1);
+         buk $$5 = $$2.d();
+         wo $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (wo)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : wo.a("death.fell.killer", this.e.p_()));
+         }
+      } else {
+         btf $$3 = Objects.requireNonNullElse($$0.c(), btf.a);
+         return wo.a($$3.a(), this.e.p_());
+      }
    }
 
    @Nullable
-   public static bsx a(String $$0) {
-      return e.a($$0);
+   private static wo a(@Nullable buk $$0) {
+      return $$0 == null ? null : $$0.p_();
    }
 
-   public String e() {
-      return this.h;
+   public wo a() {
+      if (this.d.isEmpty()) {
+         return wo.a("death.attack.generic", this.e.p_());
+      } else {
+         bsv $$0 = this.d.get(this.d.size() - 1);
+         bta $$1 = $$0.a();
+         bsv $$2 = this.d();
+         bte $$3 = $$1.k().e();
+         if ($$3 == bte.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == bte.c) {
+            String $$4 = "death.attack." + $$1.f();
+            wo $$5 = wr.a((wo)wo.c($$4 + ".link")).c(c);
+            return wo.a($$4 + ".message", this.e.p_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
+      }
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   @Nullable
+   private bsv d() {
+      bsv $$0 = null;
+      bsv $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         bsv $$5 = this.d.get($$4);
+         bsv $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         bta $$7 = $$5.a();
+         boolean $$8 = $$7.a(awr.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(awr.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
+   }
+
+   public int b() {
+      return this.i ? this.e.af - this.g : this.h - this.g;
+   }
+
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bL() || this.e.af - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.af;
+         if ($$1) {
+            this.e.j_();
+         }
+
+         this.d.clear();
+      }
    }
 }

@@ -1,110 +1,423 @@
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import com.google.gson.JsonArray;
+import com.mojang.logging.LogUtils;
+import com.mojang.util.UndashedUuid;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public class fgk implements AutoCloseable {
-   private final fgi.a a;
-   @Nullable
-   private fgi.a b;
-   private final fgk.a c;
+public class fgk {
+   public static final fgk.b a = Optional.ofNullable(System.getenv("realms.environment"))
+      .or(() -> Optional.ofNullable(System.getProperty("realms.environment")))
+      .flatMap(fgk.b::a)
+      .orElse(fgk.b.a);
+   private static final Logger b = LogUtils.getLogger();
+   private final String c;
+   private final String d;
+   private final flj e;
+   private static final String f = "worlds";
+   private static final String g = "invites";
+   private static final String h = "mco";
+   private static final String i = "subscriptions";
+   private static final String j = "activities";
+   private static final String k = "ops";
+   private static final String l = "regions/ping/stat";
+   private static final String m = "trial";
+   private static final String n = "notifications";
+   private static final String o = "/listUserWorldsOfType/any";
+   private static final String p = "/$PARENT_WORLD_ID/createPrereleaseRealm";
+   private static final String q = "/listPrereleaseEligibleWorlds";
+   private static final String r = "/$WORLD_ID/initialize";
+   private static final String s = "/$WORLD_ID";
+   private static final String t = "/liveplayerlist";
+   private static final String u = "/$WORLD_ID";
+   private static final String v = "/$WORLD_ID/$PROFILE_UUID";
+   private static final String w = "/minigames/$MINIGAME_ID/$WORLD_ID";
+   private static final String x = "/available";
+   private static final String y = "/templates/$WORLD_TYPE";
+   private static final String z = "/v1/$ID/join/pc";
+   private static final String A = "/$ID";
+   private static final String B = "/$WORLD_ID";
+   private static final String C = "/$WORLD_ID/invite/$UUID";
+   private static final String D = "/count/pending";
+   private static final String E = "/pending";
+   private static final String F = "/accept/$INVITATION_ID";
+   private static final String G = "/reject/$INVITATION_ID";
+   private static final String H = "/$WORLD_ID";
+   private static final String I = "/$WORLD_ID";
+   private static final String J = "/$WORLD_ID/slot/$SLOT_ID";
+   private static final String K = "/$WORLD_ID/open";
+   private static final String L = "/$WORLD_ID/close";
+   private static final String M = "/$WORLD_ID/reset";
+   private static final String N = "/$WORLD_ID";
+   private static final String O = "/$WORLD_ID/backups";
+   private static final String P = "/$WORLD_ID/slot/$SLOT_ID/download";
+   private static final String Q = "/$WORLD_ID/backups/upload";
+   private static final String R = "/client/compatible";
+   private static final String S = "/tos/agreed";
+   private static final String T = "/v1/news";
+   private static final String U = "/seen";
+   private static final String V = "/dismiss";
+   private static final fhc W = new fhc();
 
-   public fgk(fgi.a $$0, fgk.a $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   public static fgk a() {
+      flj $$0 = flj.Q();
+      return a($$0);
    }
 
-   private static Vector3f[] a(ByteBuffer $$0, int $$1, fgq $$2) {
-      int $$3 = $$2.a(fgr.b);
-      if ($$3 == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
-      } else {
-         FloatBuffer $$4 = $$0.asFloatBuffer();
-         int $$5 = $$2.b() / 4;
-         int $$6 = $$5 * 4;
-         int $$7 = $$1 / 4;
-         Vector3f[] $$8 = new Vector3f[$$7];
+   public static fgk a(flj $$0) {
+      String $$1 = $$0.X().c();
+      String $$2 = $$0.X().a();
+      return new fgk($$2, $$1, $$0);
+   }
 
-         for (int $$9 = 0; $$9 < $$7; $$9++) {
-            int $$10 = $$9 * $$6 + $$3;
-            int $$11 = $$10 + $$5 * 2;
-            float $$12 = $$4.get($$10 + 0);
-            float $$13 = $$4.get($$10 + 1);
-            float $$14 = $$4.get($$10 + 2);
-            float $$15 = $$4.get($$11 + 0);
-            float $$16 = $$4.get($$11 + 1);
-            float $$17 = $$4.get($$11 + 2);
-            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+   public fgk(String $$0, String $$1, flj $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      fgl.a($$2.Z());
+   }
+
+   public fhn b() throws fig {
+      String $$0 = this.c("worlds");
+      if (fgf.b()) {
+         $$0 = $$0 + "/listUserWorldsOfType/any";
+      }
+
+      String $$1 = this.a(fgn.a($$0));
+      return fhn.a($$1);
+   }
+
+   public List<fhl> c() throws fig {
+      String $$0 = this.c("worlds/listPrereleaseEligibleWorlds");
+      String $$1 = this.a(fgn.a($$0));
+      return fhn.a($$1).a;
+   }
+
+   public fhl a(Long $$0) throws fig {
+      String $$1 = String.valueOf($$0);
+      String $$2 = this.c("worlds" + "/$PARENT_WORLD_ID/createPrereleaseRealm".replace("$PARENT_WORLD_ID", $$1));
+      return fhl.c(this.a(fgn.b($$2, $$1)));
+   }
+
+   public List<fhk> d() throws fig {
+      String $$0 = this.c("notifications");
+      String $$1 = this.a(fgn.a($$0));
+      return fhk.a($$1);
+   }
+
+   private static JsonArray c(List<UUID> $$0) {
+      JsonArray $$1 = new JsonArray();
+
+      for (UUID $$2 : $$0) {
+         if ($$2 != null) {
+            $$1.add($$2.toString());
          }
+      }
 
-         return $$8;
+      return $$1;
+   }
+
+   public void a(List<UUID> $$0) throws fig {
+      String $$1 = this.c("notifications/seen");
+      this.a(fgn.b($$1, W.a(c($$0))));
+   }
+
+   public void b(List<UUID> $$0) throws fig {
+      String $$1 = this.c("notifications/dismiss");
+      this.a(fgn.b($$1, W.a(c($$0))));
+   }
+
+   public fhl a(long $$0) throws fig {
+      String $$1 = this.c("worlds" + "/$ID".replace("$ID", String.valueOf($$0)));
+      String $$2 = this.a(fgn.a($$1));
+      return fhl.c($$2);
+   }
+
+   public fhw b(long $$0) throws fig {
+      String $$1 = this.c("activities" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgn.a($$1));
+      return fhw.a($$2);
+   }
+
+   public fho e() throws fig {
+      String $$0 = this.c("activities/liveplayerlist");
+      String $$1 = this.a(fgn.a($$0));
+      return fho.a($$1);
+   }
+
+   public fhm c(long $$0) throws fig {
+      String $$1 = this.c("worlds" + "/v1/$ID/join/pc".replace("$ID", $$0 + ""));
+      String $$2 = this.a(fgn.a($$1, 5000, 30000));
+      return fhm.a($$2);
+   }
+
+   public void a(long $$0, String $$1, String $$2) throws fig {
+      fhi $$3 = new fhi($$1, $$2);
+      String $$4 = this.c("worlds" + "/$WORLD_ID/initialize".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$5 = W.a($$3);
+      this.a(fgn.a($$4, $$5, 5000, 10000));
+   }
+
+   public boolean f() throws fig {
+      String $$0 = this.c("mco/available");
+      String $$1 = this.a(fgn.a($$0));
+      return Boolean.parseBoolean($$1);
+   }
+
+   public fgk.a g() throws fig {
+      String $$0 = this.c("mco/client/compatible");
+      String $$1 = this.a(fgn.a($$0));
+
+      try {
+         return fgk.a.valueOf($$1);
+      } catch (IllegalArgumentException var5) {
+         throw new fig(fgm.b.a($$1));
       }
    }
 
-   public ByteBuffer a() {
-      return this.a.a();
+   public void a(long $$0, UUID $$1) throws fig {
+      String $$2 = this.c("invites" + "/$WORLD_ID/invite/$UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$UUID", UndashedUuid.toString($$1)));
+      this.a(fgn.b($$2));
+   }
+
+   public void d(long $$0) throws fig {
+      String $$1 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      this.a(fgn.b($$1));
+   }
+
+   public fhl a(long $$0, String $$1) throws fig {
+      fhh $$2 = new fhh();
+      $$2.a($$1);
+      String $$3 = this.c("invites" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$4 = this.a(fgn.b($$3, W.a($$2)));
+      return fhl.c($$4);
+   }
+
+   public fhb e(long $$0) throws fig {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgn.a($$1));
+      return fhb.a($$2);
+   }
+
+   public void b(long $$0, String $$1, String $$2) throws fig {
+      fhi $$3 = new fhi($$1, $$2);
+      String $$4 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      this.a(fgn.b($$4, W.a($$3)));
+   }
+
+   public void a(long $$0, int $$1, fhr $$2) throws fig {
+      String $$3 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
+      String $$4 = $$2.c();
+      this.a(fgn.b($$3, $$4));
+   }
+
+   public boolean a(long $$0, int $$1) throws fig {
+      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
+      String $$3 = this.a(fgn.c($$2, ""));
+      return Boolean.valueOf($$3);
+   }
+
+   public void b(long $$0, String $$1) throws fig {
+      String $$2 = this.a("worlds" + "/$WORLD_ID/backups".replace("$WORLD_ID", String.valueOf($$0)), "backupId=" + $$1);
+      this.a(fgn.b($$2, "", 40000, 600000));
+   }
+
+   public fic a(int $$0, int $$1, fhl.d $$2) throws fig {
+      String $$3 = this.a(
+         "worlds" + "/templates/$WORLD_TYPE".replace("$WORLD_TYPE", $$2.toString()), String.format(Locale.ROOT, "page=%d&pageSize=%d", $$0, $$1)
+      );
+      String $$4 = this.a(fgn.a($$3));
+      return fic.a($$4);
+   }
+
+   public Boolean c(long $$0, String $$1) throws fig {
+      String $$2 = "/minigames/$MINIGAME_ID/$WORLD_ID".replace("$MINIGAME_ID", $$1).replace("$WORLD_ID", String.valueOf($$0));
+      String $$3 = this.c("worlds" + $$2);
+      return Boolean.valueOf(this.a(fgn.c($$3, "")));
+   }
+
+   public fhd b(long $$0, UUID $$1) throws fig {
+      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
+      String $$3 = this.c("ops" + $$2);
+      return fhd.a(this.a(fgn.b($$3, "")));
+   }
+
+   public fhd c(long $$0, UUID $$1) throws fig {
+      String $$2 = "/$WORLD_ID/$PROFILE_UUID".replace("$WORLD_ID", String.valueOf($$0)).replace("$PROFILE_UUID", UndashedUuid.toString($$1));
+      String $$3 = this.c("ops" + $$2);
+      return fhd.a(this.a(fgn.b($$3)));
+   }
+
+   public Boolean f(long $$0) throws fig {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/open".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgn.c($$1, ""));
+      return Boolean.valueOf($$2);
+   }
+
+   public Boolean g(long $$0) throws fig {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/close".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgn.c($$1, ""));
+      return Boolean.valueOf($$2);
+   }
+
+   public Boolean d(long $$0, String $$1) throws fig {
+      fhs $$2 = new fhs(null, Long.valueOf($$1), -1, false, Set.of());
+      String $$3 = this.c("worlds" + "/$WORLD_ID/reset".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$4 = this.a(fgn.a($$3, W.a($$2), 30000, 80000));
+      return Boolean.valueOf($$4);
+   }
+
+   public fhx h(long $$0) throws fig {
+      String $$1 = this.c("subscriptions" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = this.a(fgn.a($$1));
+      return fhx.a($$2);
+   }
+
+   public int h() throws fig {
+      return this.i().a.size();
+   }
+
+   public fhf i() throws fig {
+      String $$0 = this.c("invites/pending");
+      String $$1 = this.a(fgn.a($$0));
+      fhf $$2 = fhf.a($$1);
+      $$2.a.removeIf(this::a);
+      return $$2;
+   }
+
+   private boolean a(fhe $$0) {
+      return this.e.aN().e($$0.d);
+   }
+
+   public void a(String $$0) throws fig {
+      String $$1 = this.c("invites" + "/accept/$INVITATION_ID".replace("$INVITATION_ID", $$0));
+      this.a(fgn.c($$1, ""));
+   }
+
+   public fia b(long $$0, int $$1) throws fig {
+      String $$2 = this.c("worlds" + "/$WORLD_ID/slot/$SLOT_ID/download".replace("$WORLD_ID", String.valueOf($$0)).replace("$SLOT_ID", String.valueOf($$1)));
+      String $$3 = this.a(fgn.a($$2));
+      return fia.a($$3);
    }
 
    @Nullable
-   public ByteBuffer b() {
-      return this.b != null ? this.b.a() : null;
+   public fhy i(long $$0) throws fig {
+      String $$1 = this.c("worlds" + "/$WORLD_ID/backups/upload".replace("$WORLD_ID", String.valueOf($$0)));
+      String $$2 = fkb.a($$0);
+      fhy $$3 = fhy.a(this.a(fgn.c($$1, fhy.b($$2))));
+      if ($$3 != null) {
+         fkb.a($$0, $$3.a());
+      }
+
+      return $$3;
    }
 
-   public fgk.a c() {
-      return this.c;
+   public void b(String $$0) throws fig {
+      String $$1 = this.c("invites" + "/reject/$INVITATION_ID".replace("$INVITATION_ID", $$0));
+      this.a(fgn.c($$1, ""));
    }
 
-   @Nullable
-   public fgk.b a(fgi $$0, fgt $$1) {
-      if (this.c.d() != fgq.c.h) {
-         return null;
-      } else {
-         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
-         fgk.b $$3 = new fgk.b($$2, this.c.e());
-         this.b = $$3.a($$0, $$1);
-         return $$3;
+   public void j() throws fig {
+      String $$0 = this.c("mco/tos/agreed");
+      this.a(fgn.b($$0, ""));
+   }
+
+   public fhj k() throws fig {
+      String $$0 = this.c("mco/v1/news");
+      String $$1 = this.a(fgn.a($$0, 5000, 10000));
+      return fhj.a($$1);
+   }
+
+   public void a(fhg $$0) throws fig {
+      String $$1 = this.c("regions/ping/stat");
+      this.a(fgn.b($$1, W.a($$0)));
+   }
+
+   public Boolean l() throws fig {
+      String $$0 = this.c("trial");
+      String $$1 = this.a(fgn.a($$0));
+      return Boolean.valueOf($$1);
+   }
+
+   public void j(long $$0) throws fig {
+      String $$1 = this.c("worlds" + "/$WORLD_ID".replace("$WORLD_ID", String.valueOf($$0)));
+      this.a(fgn.b($$1));
+   }
+
+   private String c(String $$0) {
+      return this.a($$0, null);
+   }
+
+   private String a(String $$0, @Nullable String $$1) {
+      try {
+         return new URI(a.e, a.d, "/" + $$0, $$1, null).toASCIIString();
+      } catch (URISyntaxException var4) {
+         throw new IllegalArgumentException($$0, var4);
       }
    }
 
-   @Override
-   public void close() {
-      this.a.close();
-      if (this.b != null) {
-         this.b.close();
-      }
-   }
+   private String a(fgn<?> $$0) throws fig {
+      $$0.a("sid", this.c);
+      $$0.a("user", this.d);
+      $$0.a("version", ab.b().c());
+      $$0.a(fgf.b());
 
-   public static record a(fgq a, int b, int c, fgq.c d, fgq.b e) {
-   }
-
-   public static record b(Vector3f[] a, fgq.b b) {
-      @Nullable
-      public fgi.a a(fgi $$0, fgt $$1) {
-         int[] $$2 = $$1.sort(this.a);
-         long $$3 = $$0.a($$2.length * 6 * this.b.d);
-         IntConsumer $$4 = this.a($$3, this.b);
-
-         for (int $$5 : $$2) {
-            $$4.accept($$5 * 4 + 0);
-            $$4.accept($$5 * 4 + 1);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 3);
-            $$4.accept($$5 * 4 + 0);
+      try {
+         int $$1 = $$0.b();
+         if ($$1 != 503 && $$1 != 277) {
+            String $$3 = $$0.c();
+            if ($$1 >= 200 && $$1 < 300) {
+               return $$3;
+            } else if ($$1 == 401) {
+               String $$4 = $$0.c("WWW-Authenticate");
+               b.info("Could not authorize you against Realms server: {}", $$4);
+               throw new fig(new fgm.a($$4));
+            } else {
+               fgm $$5 = fgm.a($$1, $$3);
+               throw new fig($$5);
+            }
+         } else {
+            int $$2 = $$0.a();
+            throw new fih($$2, $$1);
          }
+      } catch (fif var5) {
+         throw new fig(fgm.b.a(var5));
+      }
+   }
 
-         return $$0.a();
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public static enum b {
+      a("pc.realms.minecraft.net", "https"),
+      b("pc-stage.realms.minecraft.net", "https"),
+      c("localhost:8080", "http");
+
+      public final String d;
+      public final String e;
+
+      private b(final String $$0, final String $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      private IntConsumer a(long $$0, fgq.b $$1) {
-         MutableLong $$2 = new MutableLong($$0);
+      public static Optional<fgk.b> a(String $$0) {
+         String var1 = $$0.toLowerCase(Locale.ROOT);
 
-         return switch ($$1) {
-            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
-            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
+         return switch (var1) {
+            case "production" -> Optional.of(a);
+            case "local" -> Optional.of(c);
+            case "stage", "staging" -> Optional.of(b);
+            default -> Optional.empty();
          };
       }
    }

@@ -1,54 +1,98 @@
-import com.mojang.logging.LogUtils;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class zu {
-   private static final Logger a = LogUtils.getLogger();
+public record zu(zu.a c) implements zy {
+   public static final ym<vl, zu> a = zy.a(zu::a, zu::new);
+   public static final zy.b<zu> b = zy.a("debug/bee");
 
-   public static <T extends wq> void a(zr<T> $$0, T $$1, arx $$2) throws amb {
-      a($$0, $$1, $$2.p());
+   private zu(vl $$0) {
+      this(new zu.a($$0));
    }
 
-   public static <T extends wq> void a(zr<T> $$0, T $$1, brp<?> $$2) throws amb {
-      if (!$$2.bx()) {
-         $$2.c(() -> {
-            if ($$1.a($$0)) {
-               try {
-                  $$0.a($$1);
-               } catch (Exception var4) {
-                  if (var4 instanceof z $$3 && $$3.getCause() instanceof OutOfMemoryError) {
-                     throw a(var4, $$0, $$1);
-                  }
-
-                  $$1.a($$0, var4);
-               }
-            } else {
-               a.debug("Ignoring packet due to disconnection: {}", $$0);
-            }
-         });
-         throw amb.a;
-      }
+   private void a(vl $$0) {
+      this.c.a($$0);
    }
 
-   public static <T extends wq> z a(Exception $$0, zr<T> $$1, T $$2) {
-      if ($$0 instanceof z $$3) {
-         a($$3.a(), $$2, $$1);
-         return $$3;
-      } else {
-         o $$4 = o.a($$0, "Main thread packet handler");
-         a($$4, $$2, $$1);
-         return new z($$4);
-      }
+   @Override
+   public zy.b<zu> a() {
+      return b;
    }
 
-   public static <T extends wq> void a(o $$0, T $$1, @Nullable zr<T> $$2) {
-      if ($$2 != null) {
-         p $$3 = $$0.a("Incoming Packet");
-         $$3.a("Type", () -> $$2.a().toString());
-         $$3.a("Is Terminal", () -> Boolean.toString($$2.d()));
-         $$3.a("Is Skippable", () -> Boolean.toString($$2.c()));
+   public zu.a b() {
+      return this.c;
+   }
+
+   public static record a(UUID a, int b, fba c, @Nullable etn d, @Nullable ji e, @Nullable ji f, int g, Set<String> h, List<ji> i) {
+      public a(vl $$0) {
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(etn::b), $$0.c(ji.b), $$0.c(ji.b), $$0.readInt(), $$0.a(HashSet::new, vl::p), $$0.a(ji.b));
       }
 
-      $$1.a($$0);
+      public void a(vl $$0) {
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d, ($$0x, $$1) -> $$1.a($$0x));
+         $$0.a(this.e, ji.b);
+         $$0.a(this.f, ji.b);
+         $$0.q(this.g);
+         $$0.a(this.h, vl::a);
+         $$0.a(this.i, ji.b);
+      }
+
+      public boolean a(ji $$0) {
+         return Objects.equals($$0, this.e);
+      }
+
+      public String a() {
+         return agb.a(this.a);
+      }
+
+      @Override
+      public String toString() {
+         return this.a();
+      }
+
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public fba d() {
+         return this.c;
+      }
+
+      @Nullable
+      public etn e() {
+         return this.d;
+      }
+
+      @Nullable
+      public ji f() {
+         return this.e;
+      }
+
+      @Nullable
+      public ji g() {
+         return this.f;
+      }
+
+      public int h() {
+         return this.g;
+      }
+
+      public Set<String> i() {
+         return this.h;
+      }
+
+      public List<ji> j() {
+         return this.i;
+      }
    }
 }

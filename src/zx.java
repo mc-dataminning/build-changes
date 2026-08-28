@@ -1,23 +1,61 @@
-public interface zx extends aca {
-   void a(aab var1);
+import java.util.UUID;
 
-   void a(aac var1);
+public record zx(zx.a c) implements zy {
+   public static final ym<vl, zx> a = zy.a(zx::a, zx::new);
+   public static final zy.b<zx> b = zy.a("debug/breeze");
 
-   void a(zy var1);
+   private zx(vl $$0) {
+      this(new zx.a($$0));
+   }
 
-   void a(aaa var1);
+   private void a(vl $$0) {
+      this.c.a($$0);
+   }
 
-   void a(aae var1);
+   @Override
+   public zy.b<zx> a() {
+      return b;
+   }
 
-   void a(aad var1);
+   public zx.a b() {
+      return this.c;
+   }
 
-   void a(aai var1);
+   public static record a(UUID a, int b, Integer c, ji d) {
+      public a(vl $$0) {
+         this($$0.n(), $$0.readInt(), $$0.c(vl::readInt), $$0.c(ji.b));
+      }
 
-   void a(aag var1);
+      public void a(vl $$0) {
+         $$0.a(this.a);
+         $$0.q(this.b);
+         $$0.a(this.c, vl::q);
+         $$0.a(this.d, ji.b);
+      }
 
-   void a(aah var1);
+      public String a() {
+         return agb.a(this.a);
+      }
 
-   void a(zz var1);
+      @Override
+      public String toString() {
+         return this.a();
+      }
 
-   void a(aaf var1);
+      public UUID b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public Integer d() {
+         return this.c;
+      }
+
+      public ji e() {
+         return this.d;
+      }
+   }
 }

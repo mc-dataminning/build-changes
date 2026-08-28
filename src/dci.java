@@ -1,61 +1,55 @@
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dci<T extends dbv<?>>(ddg a, Optional<dca<T>> b) {
-   public static <T extends dbv<?>> zi<wv, dci<T>> a() {
-      return zi.a(ddg.b, dci::b, $$0 -> new dci<>($$0, Optional.empty()));
+public record dci(dcp f, dcp g, dcp h, dcp i, int j, float k) implements dcj {
+   public static final MapCodec<dci> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dcp.a.fieldOf("ingredient").forGetter(dci::b),
+               dcp.a.fieldOf("fuel").forGetter(dci::c),
+               dcp.a.fieldOf("result").forGetter(dci::d),
+               dcp.a.fieldOf("crafting_station").forGetter(dci::e),
+               Codec.INT.fieldOf("duration").forGetter(dci::f),
+               Codec.FLOAT.fieldOf("experience").forGetter(dci::g)
+            )
+            .apply($$0, dci::new)
+   );
+   public static final ym<vz, dci> b = ym.a(dcp.b, dci::b, dcp.b, dci::c, dcp.b, dci::d, dcp.b, dci::e, yk.h, dci::f, yk.l, dci::g, dci::new);
+   public static final dcj.a<dci> c = new dcj.a<>(a, b);
+
+   @Override
+   public dcj.a<dci> a() {
+      return c;
    }
 
-   public ddg b() {
-      return this.a;
+   @Override
+   public boolean a(crt $$0) {
+      return this.f.a($$0) && this.c().a($$0) && dcj.super.a($$0);
    }
 
-   public Optional<dca<T>> c() {
-      return this.b;
+   public dcp b() {
+      return this.f;
    }
 
-   public static record a<T extends dbv<?>>(dbr a, dci<T> b) {
-
-      public static <T extends dbv<?>> zi<wv, dci.a<T>> a() {
-         return zi.a(dbr.a, dci.a::b, dci.a(), dci.a::c, dci.a::new);
-      }
-
-      public dbr b() {
-         return this.a;
-      }
-
-      public dci<T> c() {
-         return this.b;
-      }
+   public dcp c() {
+      return this.g;
    }
 
-   public static record b<T extends dbv<?>>(List<dci.a<T>> a) {
-      public static <T extends dbv<?>> dci.b<T> a() {
-         return new dci.b<>(List.of());
-      }
+   @Override
+   public dcp d() {
+      return this.h;
+   }
 
-      public static <T extends dbv<?>> zi<wv, dci.b<T>> b() {
-         return zi.a(dci.a.<T>a().a(zg.a()), dci.b::e, dci.b::new);
-      }
+   @Override
+   public dcp e() {
+      return this.i;
+   }
 
-      public boolean a(cxg $$0) {
-         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
-      }
+   public int f() {
+      return this.j;
+   }
 
-      public dci.b<T> b(cxg $$0) {
-         return new dci.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
-      }
-
-      public boolean c() {
-         return this.a.isEmpty();
-      }
-
-      public int d() {
-         return this.a.size();
-      }
-
-      public List<dci.a<T>> e() {
-         return this.a;
-      }
+   public float g() {
+      return this.k;
    }
 }

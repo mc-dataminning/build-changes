@@ -1,64 +1,113 @@
+import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface dwp {
-   dwp a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.b() && !$$2x.aa_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
-         .map(bvb::cG)
-         .toList();
-   dwp b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.aa_())
-         .stream()
-         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
-         .map(bvb::cG)
-         .toList();
-   dwp c = ($$0, $$1, $$2, $$3, $$4) -> {
-      fbm $$5 = new fbm($$2).g($$3);
-      return $$1.a($$0, bvi.bb, $$5, bvx::bL).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF())).map(bvb::cG).toList();
-   };
+public class dwp extends diy {
+   public static final MapCodec<dwp> a = b(dwp::new);
+   public static final dxu<jn> b = dwr.a;
+   public static final dxu<dxy> c = dwr.c;
 
-   List<UUID> detect(arx var1, dwp.a var2, jh var3, double var4, boolean var6);
-
-   private static boolean a(dgz $$0, fbr $$1, fbr $$2) {
-      fbn $$3 = $$0.a(new dgh($$2, $$1, dgh.a.c, dgh.b.a, fbw.a()));
-      return $$3.b().equals(jh.a((ka)$$1)) || $$3.d() == fbp.a.a;
+   @Override
+   public MapCodec<dwp> a() {
+      return a;
    }
 
-   public interface a {
-      dwp.a a = new dwp.a() {
-         @Override
-         public List<ary> a(arx $$0, Predicate<? super cpo> $$1) {
-            return $$0.a($$1);
+   public dwp(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jn.c).b(c, dxy.a));
+   }
+
+   @Nullable
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return null;
+   }
+
+   public static dtz a(ji $$0, dwx $$1, dwx $$2, jn $$3, boolean $$4, boolean $$5) {
+      return new dwt($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return a($$2, dub.l, dwt::a);
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dtz $$5 = $$1.c_($$2);
+         if ($$5 instanceof dwt) {
+            ((dwt)$$5).k();
          }
-
-         @Override
-         public <T extends bvb> List<T> a(arx $$0, eby<bvb, T> $$1, fbm $$2, Predicate<? super T> $$3) {
-            return $$0.a($$1, $$2, $$3);
-         }
-      };
-
-      List<? extends cpo> a(arx var1, Predicate<? super cpo> var2);
-
-      <T extends bvb> List<T> a(arx var1, eby<bvb, T> var2, fbm var3, Predicate<? super T> var4);
-
-      static dwp.a a(cpo $$0) {
-         return a(List.of($$0));
       }
+   }
 
-      static dwp.a a(final List<cpo> $$0) {
-         return new dwp.a() {
-            @Override
-            public List<cpo> a(arx $$0x, Predicate<? super cpo> $$1) {
-               return $$0.stream().filter($$1).toList();
-            }
-
-            @Override
-            public <T extends bvb> List<T> a(arx $$0x, eby<bvb, T> $$1, fbm $$2, Predicate<? super T> $$3) {
-               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
-            }
-         };
+   @Override
+   public void a(dgj $$0, ji $$1, dwx $$2) {
+      ji $$3 = $$1.a($$2.c(b).g());
+      dwx $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof dwq && $$4.c(dwq.c)) {
+         $$0.a($$3, false);
       }
+   }
+
+   @Override
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if (!$$1.C && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return bsj.c;
+      } else {
+         return bsj.e;
+      }
+   }
+
+   @Override
+   protected List<cwp> a(dwx $$0, evu.a $$1) {
+      dwt $$2 = this.a($$1.a(), ji.a($$1.a(eyl.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   }
+
+   @Override
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return fbr.a();
+   }
+
+   @Override
+   protected fbu b(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      dwt $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : fbr.a();
+   }
+
+   @Nullable
+   private dwt a(dfn $$0, ji $$1) {
+      dtz $$2 = $$0.c_($$1);
+      return $$2 instanceof dwt ? (dwt)$$2 : null;
+   }
+
+   @Override
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return cwp.j;
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

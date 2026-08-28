@@ -1,68 +1,49 @@
-import org.joml.Quaternionf;
+public class giy extends gkg {
+   private final gkb a;
 
-public class giy extends gjn {
-   private static final float a = 1.0472F;
-   private int b;
-
-   giy(gff $$0, double $$1, double $$2, double $$3, int $$4) {
+   protected giy(gfy $$0, double $$1, double $$2, double $$3, double $$4, gkb $$5) {
       super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.D = 0.85F;
-      this.b = $$4;
-      this.t = 30;
-      this.u = 0.0F;
-      this.j = 0.0;
-      this.k = 0.1;
-      this.l = 0.0;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * azu.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a(fgp $$0, fli $$1, float $$2) {
-      if (this.b <= 0) {
-         this.y = 1.0F - azu.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
-         Quaternionf $$3 = new Quaternionf();
-         $$3.rotationX(-1.0472F);
-         this.a($$0, $$1, $$3, $$2);
-         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
-         this.a($$0, $$1, $$3, $$2);
-      }
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gir b() {
-      return gir.c;
+      return 15728880;
    }
 
    @Override
    public void a() {
-      if (this.b > 0) {
-         this.b--;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         super.a();
+         this.b(this.a);
       }
    }
 
-   public static class a implements giq<lv> {
-      private final gji a;
+   @Override
+   public gjk b() {
+      return gjk.b;
+   }
 
-      public a(gji $$0) {
+   public static class a implements gjj<lx> {
+      private final gkb a;
+
+      public a(gkb $$0) {
          this.a = $$0;
       }
 
-      public gin a(lv $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         giy $$8 = new giy($$1, $$2, $$3, $$4, $$0.b());
-         $$8.a(this.a);
-         $$8.e(1.0F);
-         return $$8;
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new giy($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

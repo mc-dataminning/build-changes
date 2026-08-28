@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.stream.Stream;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface bnz {
+public interface bnz<S> {
+   Stream<String> possibleValues(bnw<S> var1);
+
+   static <S> bnz<S> b() {
+      return $$0 -> Stream.empty();
+   }
 }

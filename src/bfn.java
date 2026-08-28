@@ -1,13 +1,37 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class bfn extends bgg {
-   public bfn(Schema $$0) {
-      super($$0, "FireResistantToDamageResistantComponentFix", "minecraft:fire_resistant", "minecraft:damage_resistant");
+public abstract class bfn extends DataFix {
+   private final String a;
+
+   public bfn(Schema $$0, String $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.emptyMap().set("types", $$0.createString("#minecraft:is_fire"));
+   public TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = DSL.named(bhw.D.typeName(), bjk.a());
+      if (!Objects.equals(this.getInputSchema().getType(bhw.D), $$0)) {
+         throw new IllegalStateException("item name type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
+      }
+   }
+
+   protected abstract String a(String var1);
+
+   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
+      return new bfn($$0, $$1) {
+         @Override
+         protected String a(String $$0) {
+            return $$2.apply($$0);
+         }
+      };
    }
 }

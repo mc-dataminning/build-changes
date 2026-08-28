@@ -1,78 +1,76 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.tuple.Pair;
+import jdk.jfr.Category;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public class bpf implements bpg {
-   public static final bpf a = new bpf();
+@Category({"Minecraft", "Storage"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class bpf extends Event {
+   @Name("regionPosX")
+   @Label("Region X Position")
+   public final int regionPosX;
+   @Name("regionPosZ")
+   @Label("Region Z Position")
+   public final int regionPosZ;
+   @Name("localPosX")
+   @Label("Local X Position")
+   public final int localChunkPosX;
+   @Name("localPosZ")
+   @Label("Local Z Position")
+   public final int localChunkPosZ;
+   @Name("chunkPosX")
+   @Label("Chunk X Position")
+   public final int chunkPosX;
+   @Name("chunkPosZ")
+   @Label("Chunk Z Position")
+   public final int chunkPosZ;
+   @Name("level")
+   @Label("Level Id")
+   public final String levelId;
+   @Name("dimension")
+   @Label("Dimension")
+   public final String dimension;
+   @Name("type")
+   @Label("Type")
+   public final String type;
+   @Name("compression")
+   @Label("Compression")
+   public final String compression;
+   @Name("bytes")
+   @Label("Bytes")
+   public final int bytes;
 
-   private bpf() {
+   public bpf(eal $$0, dfo $$1, eak $$2, int $$3) {
+      this.regionPosX = $$1.h();
+      this.regionPosZ = $$1.i();
+      this.localChunkPosX = $$1.j();
+      this.localChunkPosZ = $$1.k();
+      this.chunkPosX = $$1.h;
+      this.chunkPosZ = $$1.i;
+      this.levelId = $$0.a();
+      this.dimension = $$0.b().a().toString();
+      this.type = $$0.c();
+      this.compression = "standard:" + $$2.b();
+      this.bytes = $$3;
    }
 
-   @Override
-   public void a() {
-   }
+   public static class a {
+      public static final String a = "regionPosX";
+      public static final String b = "regionPosZ";
+      public static final String c = "localPosX";
+      public static final String d = "localPosZ";
+      public static final String e = "chunkPosX";
+      public static final String f = "chunkPosZ";
+      public static final String g = "level";
+      public static final String h = "dimension";
+      public static final String i = "type";
+      public static final String j = "compression";
+      public static final String k = "bytes";
 
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void a(String $$0) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0) {
-   }
-
-   @Override
-   public void a(bqs $$0) {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public void b(String $$0) {
-   }
-
-   @Override
-   public void b(Supplier<String> $$0) {
-   }
-
-   @Override
-   public bpo d(String $$0) {
-      return bpo.a;
-   }
-
-   @Override
-   public bpo c(Supplier<String> $$0) {
-      return bpo.a;
-   }
-
-   @Override
-   public void a(String $$0, int $$1) {
-   }
-
-   @Override
-   public void a(Supplier<String> $$0, int $$1) {
-   }
-
-   @Override
-   public bph d() {
-      return bpd.a;
-   }
-
-   @Nullable
-   @Override
-   public bpb.a c(String $$0) {
-      return null;
-   }
-
-   @Override
-   public Set<Pair<String, bqs>> e() {
-      return ImmutableSet.of();
+      private a() {
+      }
    }
 }

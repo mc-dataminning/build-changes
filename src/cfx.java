@@ -1,53 +1,93 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiPredicate;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cfx<T extends bvx> extends cgh<T> {
-   private final BiPredicate<T, bvx> a;
-   private final Predicate<T> b;
-   private final cfb<Boolean> c;
-   private final int d;
+public class cfx {
+   public static final cfx a = a();
+   private static final double b = 2.0;
+   private final boolean c;
+   private double d = -1.0;
+   private boolean e = true;
+   private boolean f = true;
+   @Nullable
+   private cfx.a g;
 
-   public cfx(int $$0, BiPredicate<T, bvx> $$1, Predicate<T> $$2, cfb<Boolean> $$3, int $$4) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
+   private cfx(boolean $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(arx $$0, T $$1) {
-      if (!this.b.test($$1)) {
-         this.c($$1);
+   public static cfx a() {
+      return new cfx(true);
+   }
+
+   public static cfx b() {
+      return new cfx(false);
+   }
+
+   public cfx c() {
+      cfx $$0 = this.c ? a() : b();
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      return $$0;
+   }
+
+   public cfx a(double $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public cfx d() {
+      this.e = false;
+      return this;
+   }
+
+   public cfx e() {
+      this.f = false;
+      return this;
+   }
+
+   public cfx a(@Nullable cfx.a $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean a(arc $$0, @Nullable bvg $$1, bvg $$2) {
+      if ($$1 == $$2) {
+         return false;
+      } else if (!$$2.ey()) {
+         return false;
+      } else if (this.g != null && !this.g.test($$2, $$0)) {
+         return false;
       } else {
-         this.a($$1);
-      }
-   }
+         if ($$1 == null) {
+            if (this.c && (!$$2.ex() || $$0.am() == bsg.a)) {
+               return false;
+            }
+         } else {
+            if (this.c && (!$$1.c($$2) || !$$1.a($$2.aq()) || $$1.s($$2))) {
+               return false;
+            }
 
-   @Override
-   public Set<cfb<?>> a() {
-      return Set.of(cfb.g);
-   }
+            if (this.d > 0.0) {
+               double $$3 = this.f ? $$2.C($$1) : 1.0;
+               double $$4 = Math.max(this.d * $$3, 2.0);
+               double $$5 = $$1.i($$2.dB(), $$2.dD(), $$2.dH());
+               if ($$5 > $$4 * $$4) {
+                  return false;
+               }
+            }
 
-   @Override
-   public void a(T $$0) {
-      Optional<List<bvx>> $$1 = $$0.ec().c(cfb.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$1x -> this.a.test($$0, $$1x));
-         if ($$2) {
-            this.b($$0);
+            if (this.e && $$1 instanceof bvi $$6 && !$$6.N().a($$2)) {
+               return false;
+            }
          }
+
+         return true;
       }
    }
 
-   public void b(T $$0) {
-      $$0.ec().a(this.c, true, (long)this.d);
-   }
-
-   public void c(T $$0) {
-      $$0.ec().b(this.c);
+   @FunctionalInterface
+   public interface a {
+      boolean test(bvg var1, arc var2);
    }
 }

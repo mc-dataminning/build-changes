@@ -1,57 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class dnl extends diy {
-   public static final MapCodec<dnl> c = b(dnl::new);
+public class dnl extends djm {
+   public static final MapCodec<dnl> a = b(dnl::new);
+   public static final dxo b = dpe.b;
+   public static final dxo c = dpe.c;
+   public static final dxo d = dpe.d;
+   public static final dxo e = dpe.e;
+   public static final dxo f = dpe.f;
+   public static final dxo g = dpe.g;
+   private static final Map<jn, dxo> h = dpe.h;
 
    @Override
    public MapCodec<dnl> a() {
-      return c;
+      return a;
    }
 
-   protected dnl(dxn.d $$0) {
+   public dnl(dww.d $$0) {
       super($$0);
+      this.l(
+         this.F
+            .b()
+            .b(b, Boolean.valueOf(true))
+            .b(c, Boolean.valueOf(true))
+            .b(d, Boolean.valueOf(true))
+            .b(e, Boolean.valueOf(true))
+            .b(f, Boolean.valueOf(true))
+            .b(g, Boolean.valueOf(true))
+      );
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dvp($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
-      return a($$0, $$2, dus.a);
-   }
-
-   @Override
-   protected void a(dgz $$0, jh $$1, cpo $$2) {
-      duq $$3 = $$0.c_($$1);
-      if ($$3 instanceof dvp) {
-         $$2.a((btc)$$3);
-         $$2.a(axf.am);
-      }
+   public dwx a(dag $$0) {
+      dfn $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      return this.m()
+         .b(g, Boolean.valueOf(!$$1.a_($$2.e()).a(this)))
+         .b(f, Boolean.valueOf(!$$1.a_($$2.d()).a(this)))
+         .b(b, Boolean.valueOf(!$$1.a_($$2.f()).a(this)))
+         .b(c, Boolean.valueOf(!$$1.a_($$2.i()).a(this)))
+         .b(d, Boolean.valueOf(!$$1.a_($$2.g()).a(this)))
+         .b(e, Boolean.valueOf(!$$1.a_($$2.h()).a(this)));
    }
 
    @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awv.ky, aww.e, 1.0F, 1.0F, false);
-         }
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      return $$6.a(this) ? $$0.b(h.get($$4), Boolean.valueOf(false)) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-         jm $$7 = $$0.c(a);
-         jm.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jm.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 6.0 / 16.0;
-         double $$13 = $$8 == jm.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ls.ag, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-         $$1.a(ls.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(h.get($$1.a(jn.c)), $$0.c(b))
+         .b(h.get($$1.a(jn.d)), $$0.c(d))
+         .b(h.get($$1.a(jn.f)), $$0.c(c))
+         .b(h.get($$1.a(jn.e)), $$0.c(e))
+         .b(h.get($$1.a(jn.b)), $$0.c(f))
+         .b(h.get($$1.a(jn.a)), $$0.c(g));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.b(h.get($$1.b(jn.c)), $$0.c(b))
+         .b(h.get($$1.b(jn.d)), $$0.c(d))
+         .b(h.get($$1.b(jn.f)), $$0.c(c))
+         .b(h.get($$1.b(jn.e)), $$0.c(e))
+         .b(h.get($$1.b(jn.b)), $$0.c(f))
+         .b(h.get($$1.b(jn.a)), $$0.c(g));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(f, g, b, c, d, e);
    }
 }

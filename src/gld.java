@@ -1,81 +1,125 @@
-import java.util.Set;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gld implements glk.a {
-   public static final alp a = glk.a;
-   public static final alp b = alp.b("translucent");
-   public static final alp c = alp.b("item_entity");
-   public static final alp d = alp.b("particles");
-   public static final alp e = alp.b("weather");
-   public static final alp f = alp.b("clouds");
-   public static final alp g = alp.b("entity_outline");
-   public static final Set<alp> h = Set.of(a);
-   public static final Set<alp> i = Set.of(a, g);
-   public static final Set<alp> j = Set.of(a, b, c, d, e, f);
-   public ffx<fev> k = ffx.a();
-   @Nullable
-   public ffx<fev> l;
-   @Nullable
-   public ffx<fev> m;
-   @Nullable
-   public ffx<fev> n;
-   @Nullable
-   public ffx<fev> o;
-   @Nullable
-   public ffx<fev> p;
-   @Nullable
-   public ffx<fev> q;
+public class gld {
+   private static final gld a = new gld("") {
+      @Override
+      public void a(flj $$0) {
+      }
 
-   @Override
-   public void a(alp $$0, ffx<fev> $$1) {
-      if ($$0.equals(a)) {
-         this.k = $$1;
-      } else if ($$0.equals(b)) {
-         this.l = $$1;
-      } else if ($$0.equals(c)) {
-         this.m = $$1;
-      } else if ($$0.equals(d)) {
-         this.n = $$1;
-      } else if ($$0.equals(e)) {
-         this.o = $$1;
-      } else if ($$0.equals(f)) {
-         this.p = $$1;
+      @Override
+      public void a(gld.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private gld.b e;
+
+   gld(String $$0) {
+      this.d = flj.Q().q.toPath().resolve($$0);
+   }
+
+   public static gld a(@Nullable String $$0) {
+      return $$0 == null ? a : new gld($$0);
+   }
+
+   public void a(gld.c $$0, String $$1, String $$2) {
+      this.e = new gld.b($$0, $$1, $$2);
+   }
+
+   public void a(flj $$0) {
+      if ($$0.r != null && this.e != null) {
+         af.h().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
+            }
+
+            gld.a $$2 = new gld.a(this.e, Instant.now(), $$0.r.j());
+            Codec.list(gld.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(af.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
       } else {
-         if (!$$0.equals(g)) {
-            throw new IllegalArgumentException("No target with id " + $$0);
-         }
-
-         this.q = $$1;
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
       }
    }
 
-   @Nullable
-   @Override
-   public ffx<fev> a(alp $$0) {
-      if ($$0.equals(a)) {
-         return this.k;
-      } else if ($$0.equals(b)) {
-         return this.l;
-      } else if ($$0.equals(c)) {
-         return this.m;
-      } else if ($$0.equals(d)) {
-         return this.n;
-      } else if ($$0.equals(e)) {
-         return this.o;
-      } else if ($$0.equals(f)) {
-         return this.p;
-      } else {
-         return $$0.equals(g) ? this.q : null;
+   static record a(gld.b b, Instant c, dgf d) {
+      public static final Codec<gld.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gld.b.a.forGetter(gld.a::a), ayi.q.fieldOf("lastPlayedTime").forGetter(gld.a::b), dgf.f.fieldOf("gamemode").forGetter(gld.a::c))
+               .apply($$0, gld.a::new)
+      );
+
+      public gld.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public dgf c() {
+         return this.d;
       }
    }
 
-   public void a() {
-      this.k = ffx.a();
-      this.l = null;
-      this.m = null;
-      this.n = null;
-      this.o = null;
-      this.p = null;
-      this.q = null;
+   static record b(gld.c b, String c, String d) {
+      public static final MapCodec<gld.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gld.c.d.fieldOf("type").forGetter(gld.b::a), ayi.s.fieldOf("id").forGetter(gld.b::b), Codec.STRING.fieldOf("name").forGetter(gld.b::c)
+               )
+               .apply($$0, gld.b::new)
+      );
+
+      public gld.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements azv {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gld.c> d = azv.a(gld.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

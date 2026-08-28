@@ -1,27 +1,14 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class erx extends erz {
-   public static final MapCodec<erx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dxo.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, erx::new)
-   );
-   private final dxo b;
-   private final float d;
+public interface erx<P extends erw> {
+   erx<eru> a = a("clear", eru.a);
+   erx<erv> b = a("passthrough", erv.b);
+   erx<ert> c = a("append_static", ert.a);
+   erx<ers> d = a("append_loot", ers.a);
 
-   public erx(dxo $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dxo $$0, bac $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
-   }
-
-   @Override
-   protected esa<?> a() {
-      return esa.f;
+   private static <P extends erw> erx<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.n, $$0, () -> $$1);
    }
 }

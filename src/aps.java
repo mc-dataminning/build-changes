@@ -1,116 +1,127 @@
-import com.google.common.collect.Sets;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
-public class aps {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.tag.remove.failed"));
+public class aps extends avd {
+   private static final Logger h = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("tag").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ex.a("targets", fj.b())
-                        .then(
-                           ex.a("add")
-                              .then(
-                                 ex.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
-                     .then(
-                        ex.a("remove")
-                           .then(
-                              ex.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> fb.b(a(fj.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((ew)$$0x.getSource(), fj.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(ex.a("list").executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"))))
-            )
-      );
-   }
-
-   private static Collection<String> a(Collection<? extends bvb> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bvb $$2 : $$0) {
-         $$1.addAll($$2.as());
-      }
-
-      return $$1;
-   }
-
-   private static int a(ew $$0, Collection<? extends bvb> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bvb $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xk.a("commands.tag.add.success.single", $$2, $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> xk.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
+   public aps(apt $$0, jy<ald> $$1, evi $$2) {
+      super($$0, $$1, $$2, $$0.a().G);
+      apu $$3 = $$0.a();
+      this.a($$3.E);
+      this.b($$3.F);
+      super.a($$3.W.get());
+      this.z();
+      this.x();
+      this.y();
+      this.w();
+      this.A();
+      this.C();
+      this.B();
+      if (!this.i().b().exists()) {
+         this.D();
       }
    }
 
-   private static int b(ew $$0, Collection<? extends bvb> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.b().i($$0);
+   }
 
-      for (bvb $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
+   @Override
+   public void a(GameProfile $$0) {
+      super.a($$0);
+      this.B();
+   }
 
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xk.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> xk.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
+   @Override
+   public void b(GameProfile $$0) {
+      super.b($$0);
+      this.B();
+   }
 
-         return $$3;
+   @Override
+   public void a() {
+      this.C();
+   }
+
+   private void w() {
+      try {
+         this.g().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save ip banlist: ", var2);
       }
    }
 
-   private static int a(ew $$0, Collection<? extends bvb> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bvb $$3 : $$1) {
-         $$2.addAll($$3.as());
+   private void x() {
+      try {
+         this.f().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save user banlist: ", var2);
       }
+   }
 
-      if ($$1.size() == 1) {
-         bvb $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> xk.a("commands.tag.list.single.empty", $$4.p_()), false);
-         } else {
-            $$0.a(() -> xk.a("commands.tag.list.single.success", $$4.p_(), $$2.size(), xn.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> xk.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> xk.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xn.a($$2)), false);
+   private void y() {
+      try {
+         this.g().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load ip banlist: ", var2);
       }
+   }
 
-      return $$2.size();
+   private void z() {
+      try {
+         this.f().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load user banlist: ", var2);
+      }
+   }
+
+   private void A() {
+      try {
+         this.k().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load operators list: ", var2);
+      }
+   }
+
+   private void B() {
+      try {
+         this.k().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save operators list: ", var2);
+      }
+   }
+
+   private void C() {
+      try {
+         this.i().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load white-list: ", var2);
+      }
+   }
+
+   private void D() {
+      try {
+         this.i().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save white-list: ", var2);
+      }
+   }
+
+   @Override
+   public boolean c(GameProfile $$0) {
+      return !this.o() || this.f($$0) || this.i().a($$0);
+   }
+
+   public apt b() {
+      return (apt)super.c();
+   }
+
+   @Override
+   public boolean d(GameProfile $$0) {
+      return this.k().a($$0);
    }
 }

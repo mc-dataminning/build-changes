@@ -1,43 +1,48 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ejs implements eit {
-   public static final Codec<ejs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               aya.b(mb.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               eku.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               enh.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               emx.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               bsf.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               bsf.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
-            )
-            .apply($$0, ejs::new)
+public class ejs extends ejo {
+   public static final MapCodec<ejs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bro.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ejs::new)
    );
-   public final aya<dkd> b;
-   public final eku c;
-   public final jq<enh> d;
-   public final emx e;
-   public final bsf f;
-   public final float g;
-   public final int h;
-   public final float i;
-   public final bsf j;
-   public final float k;
+   private final bro b;
 
-   public ejs(aya<dkd> $$0, eku $$1, jq<enh> $$2, emx $$3, bsf $$4, float $$5, int $$6, float $$7, bsf $$8, float $$9) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+   public ejs(bro $$0, bro $$1, bro $$2) {
+      super($$0, $$1);
+      this.b = $$2;
+   }
+
+   @Override
+   protected ejp<?> a() {
+      return ejp.c;
+   }
+
+   @Override
+   protected void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, int $$4, ejo.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
+      }
+   }
+
+   @Override
+   public int a(azh $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(azh $$0, int $$1, eiy $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

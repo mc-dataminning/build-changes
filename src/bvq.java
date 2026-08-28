@@ -1,3 +1,13 @@
-public interface bvq {
-   void b(cpo var1);
+public interface bvq extends bvp {
+   void b(int var1);
+
+   boolean a();
+
+   void c(int var1);
+
+   void b();
+
+   default int c() {
+      return 0;
+   }
 }

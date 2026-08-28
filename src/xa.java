@@ -1,52 +1,104 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.EncoderException;
-import java.nio.charset.StandardCharsets;
+import com.google.common.base.Preconditions;
+import com.mojang.serialization.Codec;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class xa {
-   public static String a(ByteBuf $$0, int $$1) {
-      int $$2 = ByteBufUtil.utf8MaxBytes($$1);
-      int $$3 = xb.a($$0);
-      if ($$3 > $$2) {
-         throw new DecoderException("The received encoded string buffer length is longer than maximum allowed (" + $$3 + " > " + $$2 + ")");
-      } else if ($$3 < 0) {
-         throw new DecoderException("The received encoded string buffer length is less than zero! Weird string!");
+public record xa(byte[] c) {
+   public static final Codec<xa> a = ayi.r.xmap(xa::new, xa::b);
+   public static final int b = 256;
+
+   public xa(byte[] c) {
+      Preconditions.checkState(c.length == 256, "Invalid message signature size");
+      this.c = c;
+   }
+
+   public static xa a(vl $$0) {
+      byte[] $$1 = new byte[256];
+      $$0.b($$1);
+      return new xa($$1);
+   }
+
+   public static void a(vl $$0, xa $$1) {
+      $$0.c($$1.c);
+   }
+
+   public boolean a(azm $$0, azl $$1) {
+      return $$0.validate($$1, this.c);
+   }
+
+   public ByteBuffer a() {
+      return ByteBuffer.wrap(this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         int $$4 = $$0.readableBytes();
-         if ($$3 > $$4) {
-            throw new DecoderException("Not enough bytes in buffer, expected " + $$3 + ", but got " + $$4);
-         } else {
-            String $$5 = $$0.toString($$0.readerIndex(), $$3, StandardCharsets.UTF_8);
-            $$0.readerIndex($$0.readerIndex() + $$3);
-            if ($$5.length() > $$1) {
-               throw new DecoderException("The received string length is longer than maximum allowed (" + $$5.length() + " > " + $$1 + ")");
-            } else {
-               return $$5;
-            }
+         if ($$0 instanceof xa $$1 && Arrays.equals(this.c, $$1.c)) {
+            return true;
          }
+
+         return false;
       }
    }
 
-   public static void a(ByteBuf $$0, CharSequence $$1, int $$2) {
-      if ($$1.length() > $$2) {
-         throw new EncoderException("String too big (was " + $$1.length() + " characters, max " + $$2 + ")");
-      } else {
-         int $$3 = ByteBufUtil.utf8MaxBytes($$1);
-         ByteBuf $$4 = $$0.alloc().buffer($$3);
+   @Override
+   public int hashCode() {
+      return Arrays.hashCode(this.c);
+   }
 
-         try {
-            int $$5 = ByteBufUtil.writeUtf8($$4, $$1);
-            int $$6 = ByteBufUtil.utf8MaxBytes($$2);
-            if ($$5 > $$6) {
-               throw new EncoderException("String too big (was " + $$5 + " bytes encoded, max " + $$6 + ")");
-            }
+   @Override
+   public String toString() {
+      return Base64.getEncoder().encodeToString(this.c);
+   }
 
-            xb.a($$0, $$5);
-            $$0.writeBytes($$4);
-         } finally {
-            $$4.release();
+   public xa.a a(xb $$0) {
+      int $$1 = $$0.a(this);
+      return $$1 != -1 ? new xa.a($$1) : new xa.a(this);
+   }
+
+   public byte[] b() {
+      return this.c;
+   }
+
+   public static record a(int b, @Nullable xa c) {
+      public static final int a = -1;
+
+      public a(xa $$0) {
+         this(-1, $$0);
+      }
+
+      public a(int $$0) {
+         this($$0, null);
+      }
+
+      public static xa.a a(vl $$0) {
+         int $$1 = $$0.l() - 1;
+         return $$1 == -1 ? new xa.a(xa.a($$0)) : new xa.a($$1);
+      }
+
+      public static void a(vl $$0, xa.a $$1) {
+         $$0.c($$1.a() + 1);
+         if ($$1.b() != null) {
+            xa.a($$0, $$1.b());
          }
+      }
+
+      public Optional<xa> a(xb $$0) {
+         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      @Nullable
+      public xa b() {
+         return this.c;
       }
    }
 }

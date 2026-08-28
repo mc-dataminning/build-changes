@@ -1,28 +1,56 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record yu(alp d) implements ym {
-   public static final MapCodec<yu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alp.a.fieldOf("storage").forGetter(yu::b)).apply($$0, yu::new));
-   public static final ym.a<yu> b = new ym.a<>(a, "storage");
+public interface yu {
+   int a = 4096;
 
-   @Override
-   public Stream<um> a(ew $$0) {
-      um $$1 = $$0.l().aK().a(this.d);
-      return Stream.of($$1);
+   static <T extends vu, P extends yt<? super T>> yu a(final yx<P> $$0, final Function<Iterable<yv<? super T>>, P> $$1, final ys<? super T> $$2) {
+      return new yu() {
+         @Override
+         public void a(yv<?> $$0x, Consumer<yv<?>> $$1x) {
+            if ($$0.a() == $$0) {
+               P $$2 = (P)$$0;
+               $$1.accept($$2);
+               $$2.b().forEach($$1);
+               $$1.accept($$2);
+            } else {
+               $$1.accept($$0);
+            }
+         }
+
+         @Nullable
+         @Override
+         public yu.a a(yv<?> $$0x) {
+            return $$0 == $$2 ? new yu.a() {
+               private final List<yv<? super T>> b = new ArrayList<>();
+
+               @Nullable
+               @Override
+               public yv<?> a(yv<?> $$0x) {
+                  if ($$0 == $$2) {
+                     return $$1.apply(this.b);
+                  } else if (this.b.size() >= 4096) {
+                     throw new IllegalStateException("Too many packets in a bundle");
+                  } else {
+                     this.b.add((yv<? super T>)$$0);
+                     return null;
+                  }
+               }
+            } : null;
+         }
+      };
    }
 
-   @Override
-   public ym.a<?> a() {
-      return b;
-   }
+   void a(yv<?> var1, Consumer<yv<?>> var2);
 
-   @Override
-   public String toString() {
-      return "storage=" + this.d;
-   }
+   @Nullable
+   yu.a a(yv<?> var1);
 
-   public alp b() {
-      return this.d;
+   public interface a {
+      @Nullable
+      yv<?> a(yv<?> var1);
    }
 }

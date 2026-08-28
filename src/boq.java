@@ -1,9 +1,32 @@
-import java.util.stream.Stream;
+import java.nio.file.Path;
+import java.util.List;
 
-public interface boq<S> {
-   Stream<String> possibleValues(bon<S> var1);
+public interface boq {
+   char d = '\u001e';
 
-   static <S> boq<S> b() {
-      return $$0 -> Stream.empty();
+   List<bou> a(String var1);
+
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
+   }
+
+   default int f() {
+      return this.d() - this.b();
+   }
+
+   String e();
+
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

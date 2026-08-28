@@ -1,69 +1,64 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
+import java.util.Calendar;
 
-public class goo {
-   private static final int a = 2;
-   private int b = 2;
-   private final List<got.b.a> c = new ObjectArrayList();
+public class goo<T extends dtz & dvf> implements goi<T> {
+   private final gbn a;
+   private final gbn b;
+   private final gbn c;
+   private final boolean d = b();
 
-   public synchronized void a(got.b.a $$0) {
-      this.c.add($$0);
+   public goo(goj.a $$0) {
+      this.a = new gbn($$0.a(gfb.V));
+      this.b = new gbn($$0.a(gfb.at));
+      this.c = new gbn($$0.a(gfb.au));
    }
 
-   @Nullable
-   public synchronized got.b.a a(fbr $$0) {
-      int $$1 = -1;
-      int $$2 = -1;
-      double $$3 = Double.MAX_VALUE;
-      double $$4 = Double.MAX_VALUE;
-      ListIterator<got.b.a> $$5 = this.c.listIterator();
+   public static boolean b() {
+      Calendar $$0 = Calendar.getInstance();
+      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
+   }
 
-      while ($$5.hasNext()) {
-         int $$6 = $$5.nextIndex();
-         got.b.a $$7 = $$5.next();
-         if ($$7.a.get()) {
-            $$5.remove();
+   @Override
+   public void a(T $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
+      dgi $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dwx $$8 = $$7 ? $$0.m() : djo.cD.m().b(dkp.c, jn.d);
+      dxp $$9 = $$8.b(dkp.d) ? $$8.c(dkp.d) : dxp.a;
+      if ($$8.b() instanceof dig<?> $$11) {
+         boolean $$12 = $$9 != dxp.a;
+         $$2.a();
+         float $$13 = $$8.c(dkp.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         dlu.c<? extends dug> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.aA_(), true);
          } else {
-            double $$8 = $$7.d().b($$0);
-            if (!$$7.c() && $$8 < $$3) {
-               $$3 = $$8;
-               $$1 = $$6;
-            }
-
-            if ($$7.c() && $$8 < $$4) {
-               $$4 = $$8;
-               $$2 = $$6;
-            }
+            $$14 = dlu.b::b;
          }
-      }
 
-      boolean $$9 = $$2 >= 0;
-      boolean $$10 = $$1 >= 0;
-      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
-         this.b = 2;
-         return this.a($$1);
-      } else {
-         this.b--;
-         return this.a($$2);
+         float $$16 = $$14.apply(dkp.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new gol<>()).applyAsInt($$4);
+         hgs $$18 = gms.a($$0, $$9, this.d);
+         ffy $$19 = $$18.a($$3, gmh::f);
+         if ($$12) {
+            if ($$9 == dxp.b) {
+               this.a($$2, $$19, this.b, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.c, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.a, $$16, $$17, $$5);
+         }
+
+         $$2.b();
       }
    }
 
-   public int a() {
-      return this.c.size();
-   }
-
-   @Nullable
-   private got.b.a a(int $$0) {
-      return $$0 >= 0 ? this.c.remove($$0) : null;
-   }
-
-   public synchronized void b() {
-      for (got.b.a $$0 : this.c) {
-         $$0.a();
-      }
-
-      this.c.clear();
+   private void a(ffu $$0, ffy $$1, gbn $$2, float $$3, int $$4, int $$5) {
+      $$2.a($$3);
+      $$2.a($$0, $$1, $$4, $$5);
    }
 }

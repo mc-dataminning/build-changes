@@ -1,70 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.Function;
+import java.util.function.LongFunction;
 
-public record edr(int g, int h, int i, int j) {
-   public static final Codec<edr> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.intRange(ebj.e, ebj.d).fieldOf("min_y").forGetter(edr::c),
-                  Codec.intRange(0, ebj.c).fieldOf("height").forGetter(edr::d),
-                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(edr::e),
-                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(edr::f)
-               )
-               .apply($$0, edr::new)
-      )
-      .comapFlatMap(edr::a, Function.identity());
-   protected static final edr b = a(-64, 384, 1, 2);
-   protected static final edr c = a(0, 128, 1, 2);
-   protected static final edr d = a(0, 128, 2, 1);
-   protected static final edr e = a(-64, 192, 1, 2);
-   protected static final edr f = a(0, 256, 2, 1);
+public class edr extends ect {
+   private final azh d;
+   private int e;
 
-   private static DataResult<edr> a(edr $$0) {
-      if ($$0.c() + $$0.d() > ebj.d + 1) {
-         return DataResult.error(() -> "min_y + height cannot be higher than: " + (ebj.d + 1));
-      } else if ($$0.d() % 16 != 0) {
-         return DataResult.error(() -> "height has to be a multiple of 16");
-      } else {
-         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+   public edr(azh $$0) {
+      super(0L);
+      this.d = $$0;
+   }
+
+   public int l() {
+      return this.e;
+   }
+
+   @Override
+   public azh d() {
+      return this.d.d();
+   }
+
+   @Override
+   public edf e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof ect $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
       }
    }
 
-   public static edr a(int $$0, int $$1, int $$2, int $$3) {
-      edr $$4 = new edr($$0, $$1, $$2, $$3);
-      a($$4).error().ifPresent($$0x -> {
-         throw new IllegalStateException($$0x.message());
-      });
-      return $$4;
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
    }
 
-   public int a() {
-      return kb.c(this.f());
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
    }
 
-   public int b() {
-      return kb.c(this.e());
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
    }
 
-   public edr a(dhb $$0) {
-      int $$1 = Math.max(this.g, $$0.L_());
-      int $$2 = Math.min(this.g + this.h, $$0.an() + 1) - $$1;
-      return new edr($$1, $$2, this.i, this.j);
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
    }
 
-   public int c() {
-      return this.g;
+   public static azh a(int $$0, int $$1, long $$2, long $$3) {
+      return azh.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
    }
 
-   public int d() {
-      return this.h;
-   }
+   public static enum a {
+      a(ect::new),
+      b(edt::new);
 
-   public int e() {
-      return this.i;
-   }
+      private final LongFunction<azh> c;
 
-   public int f() {
-      return this.j;
+      private a(final LongFunction<azh> $$0) {
+         this.c = $$0;
+      }
+
+      public azh a(long $$0) {
+         return this.c.apply($$0);
+      }
    }
 }

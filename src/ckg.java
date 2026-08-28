@@ -1,264 +1,100 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class ckg {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 6;
-   static final List<cgi<? extends cgh<? super ckf>>> a = ImmutableList.of(cgi.c, cgi.f, cgi.d, cgi.y);
-   static final List<cfb<?>> b = ImmutableList.of(
-      cfb.n, cfb.m, cfb.E, cfb.t, cfb.Z, cfb.aR, cfb.aS, cfb.aT, cfb.aG, cfb.aQ, cfb.h, cfb.r, new cfb[]{cfb.O, cfb.P, cfb.R}
-   );
-   private static final int e = 9600;
-   private static final float f = 1.0F;
-   private static final float g = 2.0F;
-   private static final float h = 1.25F;
-   private static final float i = 1.25F;
+public class ckg extends cjx {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bud g;
 
-   public static Predicate<cxg> a() {
-      return $$0 -> $$0.a(axt.ac);
+   public ckg(cju $$0) {
+      super($$0);
    }
 
-   protected static bwz<?> a(bwz<ckf> $$0) {
-      b($$0);
-      e($$0);
-      c($$0);
-      d($$0);
-      $$0.a(Set.of(crf.a));
-      $$0.b(crf.b);
-      $$0.f();
-      return $$0;
-   }
+   @Override
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         fba $$0 = this.a.J(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.c.dB();
+         double $$2 = this.a.c.e(0.5);
+         double $$3 = this.a.c.dH();
 
-   static ckf b(ckf $$0) {
-      $$0.ec().b(cfb.aS);
-      $$0.ec().b(cfb.aR);
-      return $$0.a(ckf.a.a);
-   }
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.dZ().k() / 2.0;
+            double $$6 = $$2 + this.a.dZ().k() / 2.0;
+            double $$7 = $$3 + this.a.dZ().k() / 2.0;
 
-   private static void b(bwz<ckf> $$0) {
-      $$0.a(crf.a, 0, ImmutableList.of(new cak(0.8F), new bxl<ckf>(2.0F) {
-         protected void a(arx $$0, ckf $$1, long $$2) {
-            ckg.b($$1);
-            super.b($$0, $$1, $$2);
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dW().a(lt.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
          }
-      }, new bza(500, 700), new bxw(cfb.P)));
-   }
-
-   private static void c(bwz<ckf> $$0) {
-      $$0.a(crf.v, ImmutableList.of(Pair.of(0, new ckg.e())), Set.of(Pair.of(cfb.Z, cfc.b), Pair.of(cfb.aR, cfc.a), Pair.of(cfb.m, cfc.a)));
-   }
-
-   private static void d(bwz<ckf> $$0) {
-      $$0.a(
-         crf.z,
-         ImmutableList.of(Pair.of(0, new ckg.a(160, 180)), Pair.of(0, new ckg.c(40))),
-         Set.of(Pair.of(cfb.Z, cfc.b), Pair.of(cfb.m, cfc.b), Pair.of(cfb.aS, cfc.a))
-      );
-   }
-
-   private static void e(bwz<ckf> $$0) {
-      $$0.a(
-         crf.b,
-         ImmutableList.of(
-            Pair.of(0, new bxk(bvi.bj) {
-               @Override
-               protected void a(arx $$0, cho $$1, long $$2) {
-                  ckg.b((ckf)$$1);
-                  super.a($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(1, new byd($$0x -> 1.25F, $$0x -> $$0x.e_() ? 2.5 : 3.5) {
-               @Override
-               protected void b(arx $$0, bwf $$1, long $$2) {
-                  ckg.b((ckf)$$1);
-                  super.b($$0, $$1, $$2);
-               }
-            }),
-            Pair.of(2, new byw(45, 90)),
-            Pair.of(3, new ckg.b(40, 100)),
-            Pair.of(
-               4,
-               new bzn(
-                  ImmutableList.of(
-                     Pair.of(bzx.a(1.0F, 3), 2),
-                     Pair.of(new ckg.d(40, 80), 1),
-                     Pair.of(new ckg.f(40, 80), 1),
-                     Pair.of(bzp.a(bvi.bS, 6.0F), 1),
-                     Pair.of(bzi.a(1.0F), 1),
-                     Pair.of(new bya(5, 20), 2)
-                  )
-               )
-            )
-         ),
-         Set.of(Pair.of(cfb.aS, cfc.b))
-      );
-   }
-
-   static void a(ckf $$0) {
-      $$0.ec().a(ImmutableList.of(crf.z, crf.v, crf.b));
-   }
-
-   static class a extends bxq<ckf> {
-      a(int $$0, int $$1) {
-         super(Map.of(cfb.Z, cfc.b, cfb.m, cfc.b, cfb.aS, cfc.a, cfb.aG, cfc.b), $$0, $$1);
       }
+   }
 
-      protected boolean a(arx $$0, ckf $$1) {
-         return $$1.go();
-      }
-
-      protected boolean a(arx $$0, ckf $$1, long $$2) {
-         return $$1.ec().c(cfb.aS).isPresent() && $$1.gr() && !$$1.gy();
-      }
-
-      protected void b(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.f);
-      }
-
-      protected void c(arx $$0, ckf $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         if ($$3) {
-            $$1.ec().a(cfb.aG, bba.a, 9600L);
+   @Override
+   public void a(arc $$0) {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gl().a(ckk.e);
          } else {
-            ckg.b($$1);
+            this.a.gl().a(ckk.g);
          }
-      }
-   }
+      } else if (this.e == 10) {
+         fba $$1 = new fba(this.a.c.dB() - this.a.dB(), 0.0, this.a.c.dH() - this.a.dH()).d();
+         float $$2 = 5.0F;
+         double $$3 = this.a.c.dB() + $$1.d * 5.0 / 2.0;
+         double $$4 = this.a.c.dH() + $$1.f * 5.0 / 2.0;
+         double $$5 = this.a.c.e(0.5);
+         double $$6 = $$5;
+         ji.a $$7 = new ji.a($$3, $$5, $$4);
 
-   static class b extends bxq<ckf> {
-      b(int $$0, int $$1) {
-         super(Map.of(cfb.aT, cfc.a), $$0, $$1);
-      }
+         while ($$0.u($$7)) {
+            if (--$$6 < 0.0) {
+               $$6 = $$5;
+               break;
+            }
 
-      protected boolean a(arx $$0, ckf $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.b);
-      }
-
-      protected void c(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.a);
-         $$1.ec().b(cfb.aT);
-      }
-   }
-
-   static class c extends bxq<ckf> {
-      c(int $$0) {
-         super(Map.of(cfb.Z, cfc.b, cfb.m, cfc.b, cfb.aS, cfc.a, cfb.aG, cfc.a), $$0, $$0);
-      }
-
-      protected boolean a(arx $$0, ckf $$1) {
-         return true;
-      }
-
-      protected boolean a(arx $$0, ckf $$1, long $$2) {
-         return $$1.ec().c(cfb.aS).isPresent();
-      }
-
-      protected void b(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.g);
-      }
-
-      protected void c(arx $$0, ckf $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(ckf.a.a).x($$3);
-         $$1.ec().b(cfb.aS);
-         $$1.ec().a(cfb.aT, true);
-      }
-   }
-
-   static class d extends bxq<ckf> {
-      d(int $$0, int $$1) {
-         super(Map.of(cfb.Z, cfc.b, cfb.aS, cfc.b, cfb.aR, cfc.b, cfb.aT, cfc.b, cfb.r, cfc.b), $$0, $$1);
-      }
-
-      protected boolean a(arx $$0, ckf $$1) {
-         return !$$1.x();
-      }
-
-      protected boolean a(arx $$0, ckf $$1, long $$2) {
-         return true;
-      }
-
-      protected void b(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.c);
-      }
-
-      protected void c(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.a);
-      }
-   }
-
-   static class e extends bxq<ckf> {
-      e() {
-         super(Map.of(cfb.m, cfc.a, cfb.Z, cfc.b, cfb.aR, cfc.a), 600);
-      }
-
-      protected boolean a(arx $$0, ckf $$1) {
-         return $$1.go();
-      }
-
-      protected boolean a(arx $$0, ckf $$1, long $$2) {
-         if (!$$1.go()) {
-            $$1.a(ckf.a.a);
-            return false;
-         } else {
-            Optional<jh> $$3 = $$1.ec().c(cfb.m).map(cfe::a).map(bze::b);
-            Optional<jh> $$4 = $$1.ec().c(cfb.aR);
-            return !$$3.isEmpty() && !$$4.isEmpty() ? $$4.get().equals($$3.get()) : false;
-         }
-      }
-
-      protected void b(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.e);
-      }
-
-      protected void c(arx $$0, ckf $$1, long $$2) {
-         if ($$1.gr() && $$1.go()) {
-            $$1.ec().a(cfb.aS, true);
+            $$7.b($$3, $$6, $$4);
          }
 
-         $$1.ec().b(cfb.m);
-         $$1.ec().b(cfb.aR);
+         $$6 = (double)(ayz.a($$6) + 1);
+         this.g = new bud($$0, $$3, $$6, $$4);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(lt.h);
+         this.g.a(new btp(btr.g));
+         $$0.b(this.g);
       }
    }
 
-   static class f extends bxq<ckf> {
-      f(int $$0, int $$1) {
-         super(Map.of(cfb.m, cfc.b, cfb.aR, cfc.b, cfb.aG, cfc.b), $$0, $$1);
-      }
+   @Override
+   public void c() {
+      this.e = 0;
+      this.f++;
+   }
 
-      protected boolean a(arx $$0, ckf $$1) {
-         return !$$1.e_() && $$1.go();
+   @Override
+   public void d() {
+      if (this.g != null) {
+         this.g.at();
+         this.g = null;
       }
+   }
 
-      protected boolean a(arx $$0, ckf $$1, long $$2) {
-         return $$1.go();
-      }
+   @Override
+   public ckk<ckg> h() {
+      return ckk.f;
+   }
 
-      protected void b(arx $$0, ckf $$1, long $$2) {
-         $$1.a(ckf.a.d);
-      }
-
-      protected void c(arx $$0, ckf $$1, long $$2) {
-         boolean $$3 = this.a($$2);
-         $$1.a(ckf.a.a);
-         if ($$3) {
-            $$1.gq().ifPresent($$1x -> {
-               $$1.ec().a(cfb.aR, $$1x);
-               $$1.ec().a(cfb.m, new cfe($$1x, 1.25F, 0));
-            });
-         }
-      }
+   public void i() {
+      this.f = 0;
    }
 }

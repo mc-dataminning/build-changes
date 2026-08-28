@@ -1,50 +1,83 @@
-@FunctionalInterface
-public interface gns<T extends duq> {
-   gnr<T> create(gns.a var1);
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public static class a {
-      private final gnq a;
-      private final gmj b;
-      private final gsj c;
-      private final grj d;
-      private final gef e;
-      private final fnj f;
+public record gns(aku a, j b, boolean c, int d) implements hhb {
+   @Override
+   public j a() {
+      return this.b;
+   }
 
-      public a(gnq $$0, gmj $$1, gsj $$2, grj $$3, gef $$4, fnj $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
+   @Override
+   public boolean b() {
+      return this.c;
+   }
+
+   public aku c() {
+      return this.a;
+   }
+
+   public j d() {
+      return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public static class a implements JsonDeserializer<gns> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public gns a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         aku $$4 = this.b($$3);
+         hgm $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new gns($$4, $$5.a(), $$6, $$7);
       }
 
-      public gnq a() {
-         return this.a;
+      private boolean d(JsonObject $$0) {
+         return ayp.a($$0, "uvlock", false);
       }
 
-      public gmj b() {
-         return this.b;
+      protected hgm a(JsonObject $$0) {
+         int $$1 = ayp.a($$0, "x", 0);
+         int $$2 = ayp.a($$0, "y", 0);
+         hgm $$3 = hgm.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
+         }
       }
 
-      public grj c() {
-         return this.d;
+      protected aku b(JsonObject $$0) {
+         return aku.a(ayp.i($$0, "model"));
       }
 
-      public gsj d() {
-         return this.c;
-      }
-
-      public gef e() {
-         return this.e;
-      }
-
-      public gej a(geh $$0) {
-         return this.e.a($$0);
-      }
-
-      public fnj f() {
-         return this.f;
+      protected int c(JsonObject $$0) {
+         int $$1 = ayp.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
       }
    }
 }

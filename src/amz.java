@@ -1,59 +1,123 @@
-import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Either;
+import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class amz {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.banip.invalid"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.banip.failed"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("argument.pos.unloaded"));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("commands.fillbiome.toobig", $$0, $$1));
 
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("ban-ip").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("fillbiome").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)ex.a("target", StringArgumentType.word())
-                     .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
-                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), fn.a($$0x, "reason"))))
+               ey.a("from", gt.a())
+                  .then(
+                     ey.a("to", gt.a())
+                        .then(
+                           ((RequiredArgumentBuilder)ey.a("biome", fw.a($$1, mc.aI))
+                                 .executes($$0x -> a((ex)$$0x.getSource(), gt.a($$0x, "from"), gt.a($$0x, "to"), fw.a($$0x, "biome", mc.aI), $$0xx -> true)))
+                              .then(
+                                 ey.a("replace")
+                                    .then(
+                                       ey.a("filter", ga.a($$1, mc.aI))
+                                          .executes(
+                                             $$0x -> a(
+                                                   (ex)$$0x.getSource(),
+                                                   gt.a($$0x, "from"),
+                                                   gt.a($$0x, "to"),
+                                                   fw.a($$0x, "biome", mc.aI),
+                                                   ga.a($$0x, "filter", mc.aI)::test
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ew $$0, String $$1, @Nullable xk $$2) throws CommandSyntaxException {
-      if (InetAddresses.isInetAddress($$1)) {
-         return b($$0, $$1, $$2);
-      } else {
-         ary $$3 = $$0.l().ag().a($$1);
-         if ($$3 != null) {
-            return b($$0, $$3.B(), $$2);
+   private static int a(int $$0) {
+      return kc.c(kc.a($$0));
+   }
+
+   private static ji a(ji $$0) {
+      return new ji(a($$0.u()), a($$0.v()), a($$0.w()));
+   }
+
+   private static dhn a(MutableInt $$0, dys $$1, ene $$2, jr<dhk> $$3, Predicate<jr<dhk>> $$4) {
+      return ($$5, $$6, $$7, $$8) -> {
+         int $$9 = kc.c($$5);
+         int $$10 = kc.c($$6);
+         int $$11 = kc.c($$7);
+         jr<dhk> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
+            $$0.increment();
+            return $$3;
          } else {
-            throw a.create();
+            return $$12;
          }
+      };
+   }
+
+   public static Either<Integer, CommandSyntaxException> a(arc $$0, ji $$1, ji $$2, jr<dhk> $$3) {
+      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
+      });
+   }
+
+   public static Either<Integer, CommandSyntaxException> a(arc $$0, ji $$1, ji $$2, jr<dhk> $$3, Predicate<jr<dhk>> $$4, Consumer<Supplier<wo>> $$5) {
+      ji $$6 = a($$1);
+      ji $$7 = a($$2);
+      ene $$8 = ene.a($$6, $$7);
+      int $$9 = $$8.d() * $$8.e() * $$8.f();
+      int $$10 = $$0.O().c(dge.A);
+      if ($$9 > $$10) {
+         return Either.right(b.create($$10, $$9));
+      } else {
+         List<dys> $$11 = new ArrayList<>();
+
+         for (int $$12 = kk.a($$8.j()); $$12 <= kk.a($$8.m()); $$12++) {
+            for (int $$13 = kk.a($$8.h()); $$13 <= kk.a($$8.k()); $$13++) {
+               dys $$14 = $$0.a($$13, $$12, dzt.n, false);
+               if ($$14 == null) {
+                  return Either.right(a.create());
+               }
+
+               $$11.add($$14);
+            }
+         }
+
+         MutableInt $$15 = new MutableInt(0);
+
+         for (dys $$16 : $$11) {
+            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
+            $$16.i();
+         }
+
+         $$0.m().a.a($$11);
+         $$5.accept(() -> wo.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
+         return Either.left($$15.getValue());
       }
    }
 
-   private static int b(ew $$0, String $$1, @Nullable xk $$2) throws CommandSyntaxException {
-      avv $$3 = $$0.l().ag().g();
-      if ($$3.a($$1)) {
-         throw b.create();
+   private static int a(ex $$0, ji $$1, ji $$2, jr.c<dhk> $$3, Predicate<jr<dhk>> $$4) throws CommandSyntaxException {
+      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
+      Optional<CommandSyntaxException> $$6 = $$5.right();
+      if ($$6.isPresent()) {
+         throw (CommandSyntaxException)$$6.get();
       } else {
-         List<ary> $$4 = $$0.l().ag().b($$1);
-         avw $$5 = new avw($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
-         $$3.a($$5);
-         $$0.a(() -> xk.a("commands.banip.success", $$1, $$5.d()), true);
-         if (!$$4.isEmpty()) {
-            $$0.a(() -> xk.a("commands.banip.info", $$4.size(), hl.a($$4)), true);
-         }
-
-         for (ary $$6 : $$4) {
-            $$6.f.a(xk.c("multiplayer.disconnect.ip_banned"));
-         }
-
-         return $$4.size();
+         return (Integer)$$5.left().get();
       }
    }
 }

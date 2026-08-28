@@ -1,128 +1,233 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
+import java.util.Set;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class aln<T> extends alg<T> {
-   private final aln.c b;
+public class aln extends fcf {
+   private final MinecraftServer b;
+   private final Set<fbx> c = Sets.newHashSet();
+   private final List<Runnable> d = Lists.newArrayList();
 
-   public static <T> aln<T> a(DynamicOps<T> $$0, js.a $$1) {
-      return a($$0, new aln.a($$1));
-   }
-
-   public static <T> aln<T> a(DynamicOps<T> $$0, aln.c $$1) {
-      return new aln<>($$0, $$1);
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, js.a $$1) {
-      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
-   }
-
-   private aln(DynamicOps<T> $$0, aln.c $$1) {
-      super($$0);
-      this.b = $$1;
-   }
-
-   public <U> aln<U> a(DynamicOps<U> $$0) {
-      return (aln<U>)($$0 == this.a ? this : new aln((DynamicOps<T>)$$0, this.b));
-   }
-
-   public <E> Optional<jt<E>> a(alo<? extends kd<? extends E>> $$0) {
-      return this.b.a($$0).map(aln.b::a);
-   }
-
-   public <E> Optional<jr<E>> b(alo<? extends kd<? extends E>> $$0) {
-      return this.b.a($$0).map(aln.b::b);
+   public aln(MinecraftServer $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
+   protected void a(fce $$0, fbx $$1, fcc $$2) {
+      super.a($$0, $$1, $$2);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new aff($$0.cI(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+      }
+
+      this.a();
+   }
+
+   @Override
+   protected void a(fce $$0, fbx $$1) {
+      super.a($$0, $$1);
+      this.a();
+   }
+
+   @Override
+   public void a(fce $$0) {
+      super.a($$0);
+      this.b.ag().a(new aec($$0.cI(), null));
+      this.a();
+   }
+
+   @Override
+   public void b(fce $$0, fbx $$1) {
+      super.b($$0, $$1);
+      if (this.c.contains($$1)) {
+         this.b.ag().a(new aec($$0.cI(), $$1.b()));
+      }
+
+      this.a();
+   }
+
+   @Override
+   public void a(fbw $$0, @Nullable fbx $$1) {
+      fbx $$2 = this.a($$0);
+      super.a($$0, $$1);
+      if ($$2 != $$1 && $$2 != null) {
+         if (this.h($$2) > 0) {
+            this.b.ag().a(new aet($$0, $$1));
+         } else {
+            this.g($$2);
+         }
+      }
+
+      if ($$1 != null) {
+         if (this.c.contains($$1)) {
+            this.b.ag().a(new aet($$0, $$1));
+         } else {
+            this.e($$1);
+         }
+      }
+
+      this.a();
+   }
+
+   @Override
+   public boolean a(String $$0, fca $$1) {
+      if (super.a($$0, $$1)) {
+         this.b.ag().a(afe.a($$1, $$0, afe.a.a));
+         this.a();
          return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aln<?> $$1 = (aln<?>)$$0;
-         return this.a.equals($$1.a) && this.b.equals($$1.b);
       } else {
          return false;
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.a.hashCode() * 31 + this.b.hashCode();
+   public void b(String $$0, fca $$1) {
+      super.b($$0, $$1);
+      this.b.ag().a(afe.a($$1, $$0, afe.a.b));
+      this.a();
    }
 
-   public static <E, O> RecordCodecBuilder<O, jr<E>> c(alo<? extends kd<? extends E>> $$0) {
-      return azd.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof aln<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   @Override
+   public void a(fbx $$0) {
+      super.a($$0);
+      this.a();
    }
 
-   public static <E, O> RecordCodecBuilder<O, jq.c<E>> d(alo<E> $$0) {
-      alo<? extends kd<E>> $$1 = alo.a($$0.b());
-      return azd.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof aln<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   @Override
+   public void b(fbx $$0) {
+      super.b($$0);
+      if (this.c.contains($$0)) {
+         this.b.ag().a(new afb($$0, 2));
+      }
+
+      this.a();
    }
 
-   static final class a implements aln.c {
-      private final js.a a;
-      private final Map<alo<? extends kd<?>>, Optional<? extends aln.b<?>>> b = new ConcurrentHashMap<>();
-
-      public a(js.a $$0) {
-         this.a = $$0;
+   @Override
+   public void c(fbx $$0) {
+      super.c($$0);
+      if (this.c.contains($$0)) {
+         this.g($$0);
       }
 
-      @Override
-      public <E> Optional<aln.b<E>> a(alo<? extends kd<? extends E>> $$0) {
-         return (Optional<aln.b<E>>)this.b.computeIfAbsent($$0, this::b);
+      this.a();
+   }
+
+   @Override
+   public void a(fca $$0) {
+      super.a($$0);
+      this.b.ag().a(afe.a($$0, true));
+      this.a();
+   }
+
+   @Override
+   public void b(fca $$0) {
+      super.b($$0);
+      this.b.ag().a(afe.a($$0, false));
+      this.a();
+   }
+
+   @Override
+   public void c(fca $$0) {
+      super.c($$0);
+      this.b.ag().a(afe.a($$0));
+      this.a();
+   }
+
+   public void a(Runnable $$0) {
+      this.d.add($$0);
+   }
+
+   protected void a() {
+      for (Runnable $$0 : this.d) {
+         $$0.run();
       }
+   }
 
-      private Optional<aln.b<Object>> b(alo<? extends kd<?>> $$0) {
-         return this.a.a($$0).map(aln.b::a);
-      }
+   public List<yv<?>> d(fbx $$0) {
+      List<yv<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afb($$0, 0));
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            if ($$0 instanceof aln.a $$1 && this.a.equals($$1.a)) {
-               return true;
-            }
-
-            return false;
+      for (fbw $$2 : fbw.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aet($$2, $$0));
          }
       }
 
-      @Override
-      public int hashCode() {
-         return this.a.hashCode();
+      for (fby $$3 : this.i($$0)) {
+         $$1.add(new aff($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
       }
+
+      return $$1;
    }
 
-   public static record b<T>(jt<T> a, jr<T> b, Lifecycle c) {
-      public static <T> aln.b<T> a(js.b<T> $$0) {
-         return new aln.b<>($$0, $$0, $$0.h());
+   public void e(fbx $$0) {
+      List<yv<?>> $$1 = this.d($$0);
+
+      for (ard $$2 : this.b.ag().t()) {
+         for (yv<?> $$3 : $$1) {
+            $$2.f.b($$3);
+         }
       }
+
+      this.c.add($$0);
    }
 
-   public interface c {
-      <T> Optional<aln.b<T>> a(alo<? extends kd<? extends T>> var1);
+   public List<yv<?>> f(fbx $$0) {
+      List<yv<?>> $$1 = Lists.newArrayList();
+      $$1.add(new afb($$0, 1));
+
+      for (fbw $$2 : fbw.values()) {
+         if (this.a($$2) == $$0) {
+            $$1.add(new aet($$2, $$0));
+         }
+      }
+
+      return $$1;
+   }
+
+   public void g(fbx $$0) {
+      List<yv<?>> $$1 = this.f($$0);
+
+      for (ard $$2 : this.b.ag().t()) {
+         for (yv<?> $$3 : $$1) {
+            $$2.f.b($$3);
+         }
+      }
+
+      this.c.remove($$0);
+   }
+
+   public int h(fbx $$0) {
+      int $$1 = 0;
+
+      for (fbw $$2 : fbw.values()) {
+         if (this.a($$2) == $$0) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   public eul.a<fcg> b() {
+      return new eul.a<>(this::h, this::a, ban.n);
+   }
+
+   private fcg h() {
+      fcg $$0 = new fcg(this);
+      this.a($$0::c);
+      return $$0;
+   }
+
+   private fcg a(tq $$0, jt.a $$1) {
+      return this.h().b($$0, $$1);
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

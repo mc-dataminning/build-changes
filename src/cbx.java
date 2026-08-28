@@ -1,102 +1,70 @@
-import java.util.Optional;
+import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbx implements cbu {
-   protected final bvz a;
-   protected float b;
-   protected float c;
-   protected int d;
-   protected double e;
-   protected double f;
-   protected double g;
+public class cbx extends cce {
+   protected final bvo a;
+   private double b;
+   private double c;
+   private double d;
+   private final double e;
+   private final dgi f;
 
-   public cbx(bvz $$0) {
+   public cbx(bvo $$0, double $$1) {
       this.a = $$0;
+      this.e = $$1;
+      this.f = $$0.dW();
+      this.a(EnumSet.of(cce.a.a));
    }
 
-   public void a(fbr $$0) {
-      this.a($$0.d, $$0.e, $$0.f);
-   }
-
-   public void a(bvb $$0) {
-      this.a($$0.dB(), b($$0), $$0.dH());
-   }
-
-   public void a(bvb $$0, float $$1, float $$2) {
-      this.a($$0.dB(), b($$0), $$0.dH(), $$1, $$2);
-   }
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.a($$0, $$1, $$2, (float)this.a.ac(), (float)this.a.Z());
-   }
-
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = 2;
-   }
-
-   public void a() {
-      if (this.c()) {
-         this.a.w(0.0F);
-      }
-
-      if (this.d > 0) {
-         this.d--;
-         this.i().ifPresent($$0 -> this.a.aZ = this.a(this.a.aZ, $$0, this.b));
-         this.h().ifPresent($$0 -> this.a.w(this.a(this.a.dO(), $$0, this.c)));
+   @Override
+   public boolean b() {
+      if (this.a.O_() != null) {
+         return false;
+      } else if (!this.f.V()) {
+         return false;
+      } else if (!this.a.bY()) {
+         return false;
+      } else if (!this.f.h(this.a.dw())) {
+         return false;
       } else {
-         this.a.aZ = this.a(this.a.aZ, this.a.aX, 10.0F);
-      }
-
-      this.b();
-   }
-
-   protected void b() {
-      if (!this.a.L().m()) {
-         this.a.aZ = azu.c(this.a.aZ, this.a.aX, (float)this.a.aa());
+         return !this.a.a(bus.f).f() ? false : this.h();
       }
    }
 
-   protected boolean c() {
-      return true;
+   protected boolean h() {
+      fba $$0 = this.i();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0.d;
+         this.c = $$0.e;
+         this.d = $$0.f;
+         return true;
+      }
    }
 
-   public boolean d() {
-      return this.d > 0;
+   @Override
+   public boolean c() {
+      return !this.a.L().k();
    }
 
-   public double e() {
-      return this.e;
+   @Override
+   public void d() {
+      this.a.L().a(this.b, this.c, this.d, this.e);
    }
 
-   public double f() {
-      return this.f;
-   }
+   @Nullable
+   protected fba i() {
+      azh $$0 = this.a.dZ();
+      ji $$1 = this.a.dw();
 
-   public double g() {
-      return this.g;
-   }
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         ji $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
+         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
+            return fba.c($$3);
+         }
+      }
 
-   protected Optional<Float> h() {
-      double $$0 = this.e - this.a.dB();
-      double $$1 = this.f - this.a.dF();
-      double $$2 = this.g - this.a.dH();
-      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(azu.d($$1, $$3) * 180.0F / (float)Math.PI)));
-   }
-
-   protected Optional<Float> i() {
-      double $$0 = this.e - this.a.dB();
-      double $$1 = this.g - this.a.dH();
-      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
-         ? Optional.empty()
-         : Optional.of((float)(azu.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
-   }
-
-   private static double b(bvb $$0) {
-      return $$0 instanceof bvx ? $$0.dF() : ($$0.cR().b + $$0.cR().e) / 2.0;
+      return null;
    }
 }

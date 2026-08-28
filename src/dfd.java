@@ -1,78 +1,57 @@
-public interface dfd {
-   alo<dey> a = dfe.a("trades/desert_armorer_boots_4");
-   alo<dey> b = dfe.a("trades/desert_armorer_leggings_4");
-   alo<dey> c = dfe.a("trades/desert_armorer_chestplate_4");
-   alo<dey> d = dfe.a("trades/desert_armorer_helmet_4");
-   alo<dey> e = dfe.a("trades/desert_armorer_leggings_5");
-   alo<dey> f = dfe.a("trades/desert_armorer_chestplate_5");
-   alo<dey> g = dfe.a("trades/plains_armorer_boots_4");
-   alo<dey> h = dfe.a("trades/plains_armorer_leggings_4");
-   alo<dey> i = dfe.a("trades/plains_armorer_chestplate_4");
-   alo<dey> j = dfe.a("trades/plains_armorer_helmet_4");
-   alo<dey> k = dfe.a("trades/plains_armorer_boots_5");
-   alo<dey> l = dfe.a("trades/plains_armorer_leggings_5");
-   alo<dey> m = dfe.a("trades/savanna_armorer_boots_4");
-   alo<dey> n = dfe.a("trades/savanna_armorer_leggings_4");
-   alo<dey> o = dfe.a("trades/savanna_armorer_chestplate_4");
-   alo<dey> p = dfe.a("trades/savanna_armorer_helmet_4");
-   alo<dey> q = dfe.a("trades/savanna_armorer_chestplate_5");
-   alo<dey> r = dfe.a("trades/savanna_armorer_helmet_5");
-   alo<dey> s = dfe.a("trades/snow_armorer_boots_4");
-   alo<dey> t = dfe.a("trades/snow_armorer_helmet_4");
-   alo<dey> u = dfe.a("trades/snow_armorer_boots_5");
-   alo<dey> v = dfe.a("trades/snow_armorer_helmet_5");
-   alo<dey> w = dfe.a("trades/jungle_armorer_boots_4");
-   alo<dey> x = dfe.a("trades/jungle_armorer_leggings_4");
-   alo<dey> y = dfe.a("trades/jungle_armorer_chestplate_4");
-   alo<dey> z = dfe.a("trades/jungle_armorer_helmet_4");
-   alo<dey> A = dfe.a("trades/jungle_armorer_boots_5");
-   alo<dey> B = dfe.a("trades/jungle_armorer_helmet_5");
-   alo<dey> C = dfe.a("trades/swamp_armorer_boots_4");
-   alo<dey> D = dfe.a("trades/swamp_armorer_leggings_4");
-   alo<dey> E = dfe.a("trades/swamp_armorer_chestplate_4");
-   alo<dey> F = dfe.a("trades/swamp_armorer_helmet_4");
-   alo<dey> G = dfe.a("trades/swamp_armorer_boots_5");
-   alo<dey> H = dfe.a("trades/swamp_armorer_helmet_5");
-   alo<dey> I = dfe.a("trades/taiga_armorer_leggings_5");
-   alo<dey> J = dfe.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-   static void a(ra<dey> $$0) {
-      jr<ddq> $$1 = $$0.a(mb.aO);
-      $$0.a(a, new dfc($$1.b(ddv.h), bsc.a(1)));
-      $$0.a(b, new dfc($$1.b(ddv.h), bsc.a(1)));
-      $$0.a(c, new dfc($$1.b(ddv.h), bsc.a(1)));
-      $$0.a(d, new dfc($$1.b(ddv.h), bsc.a(1)));
-      $$0.a(e, new dfc($$1.b(ddv.h), bsc.a(1)));
-      $$0.a(f, new dfc($$1.b(ddv.h), bsc.a(1)));
-      $$0.a(g, new dfc($$1.b(ddv.a), bsc.a(1)));
-      $$0.a(h, new dfc($$1.b(ddv.a), bsc.a(1)));
-      $$0.a(i, new dfc($$1.b(ddv.a), bsc.a(1)));
-      $$0.a(j, new dfc($$1.b(ddv.a), bsc.a(1)));
-      $$0.a(k, new dfc($$1.b(ddv.a), bsc.a(1)));
-      $$0.a(l, new dfc($$1.b(ddv.a), bsc.a(1)));
-      $$0.a(m, new dfc($$1.b(ddv.k), bsc.a(1)));
-      $$0.a(n, new dfc($$1.b(ddv.k), bsc.a(1)));
-      $$0.a(o, new dfc($$1.b(ddv.k), bsc.a(1)));
-      $$0.a(p, new dfc($$1.b(ddv.k), bsc.a(1)));
-      $$0.a(q, new dfc($$1.b(ddv.k), bsc.a(1)));
-      $$0.a(r, new dfc($$1.b(ddv.k), bsc.a(1)));
-      $$0.a(s, new dfc($$1.b(ddv.j), bsc.a(1)));
-      $$0.a(t, new dfc($$1.b(ddv.g), bsc.a(1)));
-      $$0.a(u, new dfc($$1.b(ddv.j), bsc.a(1)));
-      $$0.a(v, new dfc($$1.b(ddv.g), bsc.a(1)));
-      $$0.a(w, new dfc($$1.b(ddv.w), bsc.a(1)));
-      $$0.a(x, new dfc($$1.b(ddv.w), bsc.a(1)));
-      $$0.a(y, new dfc($$1.b(ddv.w), bsc.a(1)));
-      $$0.a(z, new dfc($$1.b(ddv.w), bsc.a(1)));
-      $$0.a(A, new dfc($$1.b(ddv.c), bsc.a(1)));
-      $$0.a(B, new dfc($$1.b(ddv.e), bsc.a(1)));
-      $$0.a(C, new dfc($$1.b(ddv.O), bsc.a(1)));
-      $$0.a(D, new dfc($$1.b(ddv.O), bsc.a(1)));
-      $$0.a(E, new dfc($$1.b(ddv.O), bsc.a(1)));
-      $$0.a(F, new dfc($$1.b(ddv.O), bsc.a(1)));
-      $$0.a(G, new dfc($$1.b(ddv.i), bsc.a(1)));
-      $$0.a(H, new dfc($$1.b(ddv.f), bsc.a(1)));
-      $$0.a(I, new dfc($$1.b(ddv.d), bsc.a(1)));
-      $$0.a(J, new dfc($$1.b(ddv.d), bsc.a(1)));
+public record dfd(jr<cwl> d, int e, kt f, cwp g) {
+   public static final Codec<dfd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cwl.e.fieldOf("id").forGetter(dfd::a),
+               ayi.m.fieldOf("count").orElse(1).forGetter(dfd::b),
+               kt.a.optionalFieldOf("components", kt.c).forGetter(dfd::c)
+            )
+            .apply($$0, dfd::new)
+   );
+   public static final ym<vz, dfd> b = ym.a(yk.b(mc.K), dfd::a, yk.h, dfd::b, kt.b, dfd::c, dfd::new);
+   public static final ym<vz, Optional<dfd>> c = b.a(yk::a);
+
+   public dfd(dgh $$0) {
+      this($$0, 1);
+   }
+
+   public dfd(dgh $$0, int $$1) {
+      this($$0.j().f(), $$1, kt.c);
+   }
+
+   public dfd(jr<cwl> $$0, int $$1, kt $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   }
+
+   public dfd a(UnaryOperator<kt.a> $$0) {
+      return new dfd(this.d, this.e, $$0.apply(kt.a()).a());
+   }
+
+   private static cwp a(jr<cwl> $$0, int $$1, kt $$2) {
+      return new cwp($$0, $$1, $$2.c());
+   }
+
+   public boolean a(cwp $$0) {
+      return $$0.a(this.d) && this.f.a($$0);
+   }
+
+   public jr<cwl> a() {
+      return this.d;
+   }
+
+   public int b() {
+      return this.e;
+   }
+
+   public kt c() {
+      return this.f;
+   }
+
+   public cwp d() {
+      return this.g;
    }
 }

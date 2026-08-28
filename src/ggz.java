@@ -1,30 +1,47 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ggz {
-   public static final ggz a = new ggz(ggy.b, gha.createDnsSrvRedirectHandler(), ggv.a());
-   private final ggy b;
-   private final gha c;
-   private final ggv d;
+public enum ggz {
+   a("generic_violation"),
+   b("false_reporting"),
+   c("hate_speech"),
+   d("hate_terrorism_notorious_figure"),
+   e("harassment_or_bullying"),
+   f("defamation_impersonation_false_information"),
+   g("drugs"),
+   h("fraud"),
+   i("spam_or_advertising"),
+   j("nudity_or_pornography"),
+   k("sexually_inappropriate"),
+   l("extreme_violence_or_gore"),
+   m("imminent_harm_to_person_or_property");
 
-   @VisibleForTesting
-   ggz(ggy $$0, gha $$1, ggv $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private final wo n;
+
+   private ggz(final String $$0) {
+      this.n = wo.c("gui.banned.reason." + $$0);
    }
 
-   public Optional<ggw> a(ggx $$0) {
-      Optional<ggw> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<ggx> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
+   public wo a() {
+      return this.n;
+   }
 
-         return $$1;
-      } else {
-         return Optional.empty();
-      }
+   @Nullable
+   public static ggz a(int $$0) {
+      return switch ($$0) {
+         case 2 -> b;
+         default -> null;
+         case 5 -> c;
+         case 16, 25 -> d;
+         case 17, 19, 23, 31 -> a;
+         case 21 -> e;
+         case 27 -> f;
+         case 28 -> g;
+         case 29 -> h;
+         case 30 -> i;
+         case 32 -> j;
+         case 33 -> k;
+         case 34 -> l;
+         case 53 -> m;
+      };
    }
 }

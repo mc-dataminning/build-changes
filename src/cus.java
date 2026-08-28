@@ -1,89 +1,29 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import org.apache.commons.lang3.Validate;
 
-public class cus {
-   private static final List<cur> b = ae.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = bvj.a.a(98);
-      int $$2 = bvj.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = bvj.f.a(100);
-      $$2 = bvj.e.a(100);
-      int $$5 = bvj.d.a(100);
-      int $$6 = bvj.c.a(100);
-      int $$7 = bvj.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cur> a = baq.b(() -> b.toArray(new cur[0]));
-   private static final Function<String, cur> c = baq.a(b.toArray(new cur[0]), $$0 -> $$0);
-
-   private static cur a(String $$0, int $$1) {
-      return cur.a($$0, IntLists.singleton($$1));
+public class cus extends cyc {
+   public cus(djm $$0, djm $$1, cwl.a $$2) {
+      super($$0, $$1, jn.a, $$2);
+      Validate.isInstanceOf(did.class, $$0);
+      Validate.isInstanceOf(did.class, $$1);
    }
 
-   private static cur a(String $$0, IntList $$1) {
-      return cur.a($$0, IntLists.unmodifiable($$1));
-   }
-
-   private static cur a(String $$0, int... $$1) {
-      return cur.a($$0, IntList.of($$1));
-   }
-
-   private static void a(List<cur> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<cur> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   public static void a(cwp $$0, List<wo> $$1) {
+      dtq $$2 = $$0.a(kv.ai);
+      if ($$2 != null) {
+         for (int $$3 = 0; $$3 < Math.min($$2.b().size(), 6); $$3++) {
+            dtq.b $$4 = $$2.b().get($$3);
+            $$1.add($$4.a().a(n.h));
+         }
       }
-
-      $$0.add(a($$1 + "*", $$4));
    }
 
-   private static void a(List<cur> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   public cvm b() {
+      return ((did)this.d()).b();
    }
 
-   @Nullable
-   public static cur a(String $$0) {
-      return c.apply($$0);
-   }
-
-   public static Stream<String> a() {
-      return b.stream().map(baq::c);
-   }
-
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(baq::c);
+   @Override
+   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
+      a($$0, $$2);
    }
 }

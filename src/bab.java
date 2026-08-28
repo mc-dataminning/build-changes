@@ -1,11 +1,13 @@
-public interface bab {
-   void a(xk var1);
+import java.util.concurrent.TimeUnit;
 
-   void b(xk var1);
+public class bab {
+   public static final long a = TimeUnit.SECONDS.toNanos(1L);
+   public static final long b = TimeUnit.MILLISECONDS.toNanos(1L);
+   public static final long c = TimeUnit.SECONDS.toMillis(1L);
+   public static final long d = TimeUnit.HOURS.toSeconds(1L);
+   public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   void c(xk var1);
-
-   void a(int var1);
-
-   void a();
+   public static bru a(int $$0, int $$1) {
+      return bru.a($$0 * 20, $$1 * 20);
+   }
 }

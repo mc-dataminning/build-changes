@@ -1,63 +1,34 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import com.mojang.serialization.MapCodec;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public enum hdj implements hdx {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public class hdj implements hdo<dvg> {
+   private final goq a;
 
-   private static final int q = 360;
-   private static final Map<Integer, hdj> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hdj)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public hdj(goq $$0) {
+      this.a = $$0;
    }
 
-   private hdj(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
+   @Nullable
+   public dvg a(cwp $$0) {
+      return $$0.a(kv.ak);
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
+   public void a(@Nullable dvg $$0, cwn $$1, ffu $$2, glx $$3, int $$4, int $$5, boolean $$6) {
+      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dvg.a));
+   }
+
+   public static record a() implements hdo.a {
+      public static final MapCodec<hdj.a> a = MapCodec.unit(new hdj.a());
+
+      @Override
+      public MapCodec<hdj.a> a() {
+         return a;
       }
 
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
+      @Override
+      public hdo<?> a(gey $$0) {
+         return new hdj(new goq($$0));
       }
-
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
-   }
-
-   @Override
-   public j b() {
-      return this.s;
-   }
-
-   public static hdj a(int $$0, int $$1) {
-      return r.get(b(azu.b($$0, 360), azu.b($$1, 360)));
-   }
-
-   public h a() {
-      return this.t;
    }
 }

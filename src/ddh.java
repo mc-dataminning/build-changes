@@ -1,9 +1,15 @@
-public class ddh {
-   public static final bbd<dvo> a = bbd.a("fuel_values");
-   public static final bbd<js.a> b = bbd.a("registries");
-   public static final bbe c = new bbe.a().b(a).b(b).a();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public static bbf a(dgz $$0) {
-      return new bbf.a().a(a, $$0.M()).a(b, $$0.K_()).a(c);
+public record ddh(jv<cwl> c) {
+   public static final Codec<ddh> a = RecordCodecBuilder.create($$0 -> $$0.group(kg.a(mc.K).fieldOf("items").forGetter(ddh::a)).apply($$0, ddh::new));
+   public static final ym<vz, ddh> b = ym.a(yk.c(mc.K), ddh::a, ddh::new);
+
+   public boolean a(cwp $$0) {
+      return $$0.a(this.c);
+   }
+
+   public jv<cwl> a() {
+      return this.c;
    }
 }

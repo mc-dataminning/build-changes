@@ -1,53 +1,29 @@
-import com.google.common.collect.Sets;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import net.minecraft.server.MinecraftServer;
 
-public record faj(fan b, fan c) implements fan {
-   public static final MapCodec<faj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fao.a.fieldOf("n").forGetter(faj::c), fao.a.fieldOf("p").forGetter(faj::d)).apply($$0, faj::new)
-   );
+public class faj implements fal<MinecraftServer> {
+   final aku a;
 
-   @Override
-   public fam b() {
-      return fao.d;
+   public faj(aku $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a(ewi $$0) {
-      int $$1 = this.b.a($$0);
-      float $$2 = this.c.b($$0);
-      bac $$3 = $$0.b();
-      int $$4 = 0;
+   public void a(MinecraftServer $$0, fan<MinecraftServer> $$1, long $$2) {
+      alj $$3 = $$0.aE();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   }
 
-      for (int $$5 = 0; $$5 < $$1; $$5++) {
-         if ($$3.i() < $$2) {
-            $$4++;
-         }
+   public static class a extends fal.a<MinecraftServer, faj> {
+      public a() {
+         super(aku.b("function"), faj.class);
       }
 
-      return $$4;
-   }
+      public void a(tq $$0, faj $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   @Override
-   public float b(ewi $$0) {
-      return (float)this.a($$0);
-   }
-
-   public static faj a(int $$0, float $$1) {
-      return new faj(fak.a((float)$$0), fak.a($$1));
-   }
-
-   @Override
-   public Set<bbd<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public fan c() {
-      return this.b;
-   }
-
-   public fan d() {
-      return this.c;
+      public faj a(tq $$0) {
+         aku $$1 = aku.a($$0.l("Name"));
+         return new faj($$1);
+      }
    }
 }

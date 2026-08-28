@@ -1,95 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public final class dbr implements Predicate<cxg> {
-   public static final zi<wv, dbr> a = zg.c(mb.K).a(dbr::new, $$0 -> $$0.e);
-   public static final zi<wv, Optional<dbr>> b = zg.c(mb.K)
-      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dbr((ju<cxc>)$$0)), $$0 -> $$0.<ju.a<cxc>>map($$0x -> $$0x.e).orElse(ju.a()));
-   public static final Codec<ju<cxc>> c = alj.a(mb.K, cxc.e, false);
-   public static final Codec<dbr> d = azd.b(c).xmap(dbr::new, $$0 -> $$0.e);
-   private final ju<cxc> e;
-   @Nullable
-   private List<jq<cxc>> f;
-
-   private dbr(ju<cxc> $$0) {
-      $$0.d().ifRight($$0x -> {
-         if ($$0x.isEmpty()) {
-            throw new UnsupportedOperationException("Ingredients can't be empty");
-         } else if ($$0x.contains(cxk.a.f())) {
-            throw new UnsupportedOperationException("Ingredient can't contain air");
-         }
-      });
-      this.e = $$0;
+public record dbr<T extends dbe<?>>(dcp a, Optional<dbj<T>> b) {
+   public static <T extends dbe<?>> ym<vz, dbr<T>> a() {
+      return ym.a(dcp.b, dbr::b, $$0 -> new dbr<>($$0, Optional.empty()));
    }
 
-   public static boolean a(Optional<dbr> $$0, cxg $$1) {
-      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
+   public dcp b() {
+      return this.a;
    }
 
-   public List<jq<cxc>> a() {
-      if (this.f == null) {
-         this.f = ImmutableList.copyOf(this.e);
+   public Optional<dbj<T>> c() {
+      return this.b;
+   }
+
+   public static record a<T extends dbe<?>>(dba a, dbr<T> b) {
+
+      public static <T extends dbe<?>> ym<vz, dbr.a<T>> a() {
+         return ym.a(dba.a, dbr.a::b, dbr.a(), dbr.a::c, dbr.a::new);
       }
 
-      return this.f;
-   }
-
-   public boolean a(cxg $$0) {
-      List<jq<cxc>> $$1 = this.a();
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         if ($$0.a($$1.get($$2))) {
-            return true;
-         }
+      public dba b() {
+         return this.a;
       }
 
-      return false;
+      public dbr<T> c() {
+         return this.b;
+      }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      return $$0 instanceof dbr $$1 ? Objects.equals(this.e, $$1.e) : false;
-   }
+   public static record b<T extends dbe<?>>(List<dbr.a<T>> a) {
+      public static <T extends dbe<?>> dbr.b<T> a() {
+         return new dbr.b<>(List.of());
+      }
 
-   public static dbr a(dgy $$0) {
-      return new dbr(ju.a($$0.j().f()));
-   }
+      public static <T extends dbe<?>> ym<vz, dbr.b<T>> b() {
+         return ym.a(dbr.a.<T>a().a(yk.a()), dbr.b::e, dbr.b::new);
+      }
 
-   public static dbr a(dgy... $$0) {
-      return a(Arrays.stream($$0));
-   }
+      public boolean a(cwp $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
 
-   public static dbr a(Stream<? extends dgy> $$0) {
-      return new dbr(ju.a($$0.map($$0x -> $$0x.j().f()).toList()));
-   }
+      public dbr.b<T> b(cwp $$0) {
+         return new dbr.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
 
-   public static dbr a(ju<cxc> $$0) {
-      return new dbr($$0);
-   }
+      public boolean c() {
+         return this.a.isEmpty();
+      }
 
-   public ddg b() {
-      return (ddg)this.e.d().map(ddg.h::new, $$0 -> new ddg.b($$0.stream().map(dbr::a).toList()));
-   }
+      public int d() {
+         return this.a.size();
+      }
 
-   public static ddg a(Optional<dbr> $$0) {
-      return $$0.<ddg>map(dbr::b).orElse(ddg.c.c);
-   }
-
-   private static ddg a(jq<cxc> $$0) {
-      ddg $$1 = new ddg.d($$0);
-      cxg $$2 = $$0.a().k();
-      if (!$$2.f()) {
-         ddg $$3 = new ddg.f($$2);
-         return new ddg.j($$1, $$3);
-      } else {
-         return $$1;
+      public List<dbr.a<T>> e() {
+         return this.a;
       }
    }
 }

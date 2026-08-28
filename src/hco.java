@@ -1,17 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record hco(String b, String c, boolean d) {
-   public static final Codec<hco> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azd.A.fieldOf("region").forGetter(hco::b),
-               azd.A.fieldOf("name").forGetter(hco::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(hco::d)
-            )
-            .apply($$0, hco::new)
-   );
+public class hco {
+   private static final ayi.b<aku, MapCodec<? extends hcp>> b = new ayi.b<>();
+   public static final MapCodec<hcp> a = b.a(aku.a).dispatchMap("property", hcp::a, $$0 -> $$0);
 
-   public xk a() {
-      return xk.b(this.c + " (" + this.b + ")");
+   public static void a() {
+      b.a(aku.b("custom_model_data"), hcl.a);
+      b.a(aku.b("bundle/fullness"), hcf.a);
+      b.a(aku.b("damage"), hcm.a);
+      b.a(aku.b("cooldown"), hci.a);
+      b.a(aku.b("time"), hcq.a);
+      b.a(aku.b("compass"), hcg.a);
+      b.a(aku.b("crossbow/pull"), hck.a);
+      b.a(aku.b("use_cycle"), hcr.a);
+      b.a(aku.b("use_duration"), hcs.a);
+      b.a(aku.b("count"), hcj.a);
    }
 }

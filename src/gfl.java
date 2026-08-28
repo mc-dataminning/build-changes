@@ -1,28 +1,9 @@
-import java.util.EnumMap;
-
-public class gfl {
-   public static final int a = 5000;
-   private final gfg b;
-   private final fog c;
-   private final EnumMap<bnu, Long> d;
-
-   public gfl(gfg $$0, fog $$1) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = new EnumMap<>(bnu.class);
+@FunctionalInterface
+public interface gfl {
+   static gfl scaling(float $$0) {
+      float $$1 = 24.016F * (1.0F - $$0);
+      return $$2 -> $$2.a($$2x -> $$2x.b($$0).c(0.0F, $$1, 0.0F));
    }
 
-   public void a() {
-      if (this.c.g()) {
-         this.a(bnu.a);
-      }
-   }
-
-   private void a(bnu $$0) {
-      long $$1 = ae.c();
-      if ($$1 > this.d.getOrDefault($$0, Long.valueOf(0L)) + 5000L) {
-         this.b.b(new ahu($$0));
-         this.d.put($$0, $$1);
-      }
-   }
+   gfk apply(gfk var1);
 }

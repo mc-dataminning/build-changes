@@ -1,70 +1,76 @@
-import java.util.Optional;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Set;
 
-public class ban {
-   public static <T extends bvz> Optional<T> a(bvi<T> $$0, bvh $$1, arx $$2, jh $$3, int $$4, int $$5, int $$6, ban.a $$7, boolean $$8) {
-      jh.a $$9 = $$3.k();
+public enum ban {
+   a(bhw.a),
+   b(bhw.b),
+   c(bhw.c),
+   d(bhw.d),
+   e(bhw.e),
+   f(bhw.f),
+   g(bhw.g),
+   h(bhw.h),
+   i(bhw.i),
+   j(bhw.j),
+   k(bhw.k),
+   l(bhw.l),
+   m(bhw.m),
+   n(bhw.o),
+   o(bhw.n),
+   p(bhw.p),
+   q(bhw.q),
+   r(bhw.M),
+   s(bhw.r);
 
-      for (int $$10 = 0; $$10 < $$4; $$10++) {
-         int $$11 = azu.b($$2.A, -$$5, $$5);
-         int $$12 = azu.b($$2.A, -$$5, $$5);
-         $$9.a($$3, $$11, $$6, $$12);
-         if ($$2.F_().a($$9) && a($$2, $$6, $$9, $$7) && (!$$8 || $$2.b($$0.a((double)$$9.u() + 0.5, (double)$$9.v(), (double)$$9.w() + 0.5)))) {
-            T $$13 = (T)$$0.b($$2, null, $$9, $$1, false, false);
-            if ($$13 != null) {
-               if ($$13.a($$2, $$1) && $$13.a((dhc)$$2)) {
-                  $$2.a_($$13);
-                  return Optional.of($$13);
-               }
+   public static final Set<TypeReference> t;
+   private final TypeReference u;
 
-               $$13.at();
-            }
-         }
-      }
-
-      return Optional.empty();
+   private ban(final TypeReference $$0) {
+      this.u = $$0;
    }
 
-   private static boolean a(arx $$0, int $$1, jh.a $$2, ban.a $$3) {
-      jh.a $$4 = new jh.a().g($$2);
-      dxo $$5 = $$0.a_($$4);
-
-      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
-         $$2.c(jm.a);
-         $$4.a($$2, jm.b);
-         dxo $$7 = $$0.a_($$2);
-         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
-            $$2.c(jm.b);
-            return true;
-         }
-
-         $$5 = $$7;
-      }
-
-      return false;
+   static int a() {
+      return ab.b().d().c();
    }
 
-   public interface a {
-      @Deprecated
-      ban.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dkf.bz)
-               && !$$2.a(dkf.ed)
-               && !$$2.a(dkf.fm)
-               && !($$2.b() instanceof dsb)
-               && !($$2.b() instanceof dsa)
-               && !($$2.b() instanceof dop)
-               && !$$2.a(dkf.nz)
-               && !$$2.a(dkf.eb)
-               && !$$2.a(dkf.cr)
-               && !$$2.a(dkf.ep)
-               && !$$2.a(dkf.gj)
-               && !$$2.a(dkf.iG)
-               && !$$2.a(dkf.lk)
-               && !$$2.a(dkf.rq)
-               && !$$2.a(dkf.aX)
-            ? ($$4.l() || $$4.n()) && ($$2.e() || $$2.a(dkf.rr))
-            : false;
-      ban.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.g($$0, $$3).c() && dkd.a($$2.g($$0, $$1), jm.b);
-      ban.a c = ($$0, $$1, $$2, $$3, $$4) -> $$4.g($$0, $$3).c() && !$$2.a(axk.Q) && dkd.a($$2.g($$0, $$1), jm.b);
+   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
+      return new Codec<A>() {
+         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
+            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(ban.a())));
+         }
 
-      boolean canSpawnOn(arx var1, jh var2, dxo var3, jh var4, dxo var5);
+         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
+            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
+            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
+            Dynamic<T> $$4 = ban.this.a($$1, $$3, $$2);
+            return $$0.decode($$4);
+         }
+      };
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
+      return $$0.update(this.u, $$1, $$2, $$3);
+   }
+
+   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   public tq a(DataFixer $$0, tq $$1, int $$2, int $$3) {
+      return (tq)this.a($$0, new Dynamic(ue.a, $$1), $$2, $$3).getValue();
+   }
+
+   public tq a(DataFixer $$0, tq $$1, int $$2) {
+      return this.a($$0, $$1, $$2, a());
+   }
+
+   static {
+      t = Set.of(a.u);
    }
 }

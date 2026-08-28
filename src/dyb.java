@@ -1,20 +1,25 @@
-public enum dyb implements baq {
-   a("head"),
-   b("foot");
+public enum dyb implements azv {
+   a("up"),
+   b("side"),
+   c("none");
 
-   private final String c;
+   private final String d;
 
    private dyb(final String $$0) {
-      this.c = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.c;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.c;
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
    }
 }

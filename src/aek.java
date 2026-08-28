@@ -1,29 +1,45 @@
-public class aek implements zr<acg> {
-   public static final zi<wh, aek> a = zr.a(aek::a, aek::new);
-   private final int b;
+public class aek implements yv<abk> {
+   public static final ym<vl, aek> a = yv.a(aek::a, aek::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public aek(bto $$0) {
-      this($$0.b());
+   public aek(dyn $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   public aek(int $$0) {
-      this.b = $$0;
+   private aek(vl $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private aek(wh $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(wh $$0) {
-      $$0.c(this.b);
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zt<aek> a() {
-      return agz.ac;
+   public yx<aek> a() {
+      return agd.aw;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   public double b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

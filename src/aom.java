@@ -1,40 +1,60 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class aom {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.pardon.failed"));
-
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("pardon").requires($$0x -> $$0x.c(3)))
-            .then(
-               ex.a("targets", fl.a())
-                  .suggests(($$0x, $$1) -> fb.a(((ew)$$0x.getSource()).l().ag().f().a(), $$1))
-                  .executes($$0x -> a((ew)$$0x.getSource(), fl.a($$0x, "targets")))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ey.a("push")
+                     .then(
+                        ((RequiredArgumentBuilder)ey.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)ey.a("uuid", gn.a())
+                                       .then(
+                                          ey.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(gn.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ex)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gn.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(ey.a("pop").then(ey.a("uuid", gn.a()).executes($$0x -> a((ex)$$0x.getSource(), gn.a($$0x, "uuid")))))
       );
    }
 
-   private static int a(ew $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      awe $$2 = $$0.l().ag().f();
-      int $$3 = 0;
+   private static void a(ex $$0, yv<?> $$1) {
+      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if ($$2.a($$4)) {
-            $$2.c($$4);
-            $$3++;
-            $$0.a(() -> xk.a("commands.pardon.success", xk.b($$4.getName())), true);
-         }
-      }
+   private static int a(ex $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      zi $$6 = new zi($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
+   }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   private static int a(ex $$0, UUID $$1) {
+      zh $$2 = new zh(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

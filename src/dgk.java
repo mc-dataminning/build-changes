@@ -1,25 +1,59 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public interface dgk {
+   int M_();
 
-public interface dgk extends dgq, dhc, dhe {
-   @Override
-   default <T extends duq> Optional<T> a(jh $$0, dus<T> $$1) {
-      return dhc.super.a($$0, $$1);
+   int L_();
+
+   default int an() {
+      return this.L_() + this.M_() - 1;
    }
 
-   @Override
-   default List<fcl> c(@Nullable bvb $$0, fbm $$1) {
-      return dgq.super.c($$0, $$1);
+   default int ao() {
+      return this.aq() - this.ap() + 1;
    }
 
-   @Override
-   default boolean a(@Nullable bvb $$0, fcl $$1) {
-      return dgq.super.a($$0, $$1);
+   default int ap() {
+      return kk.a(this.L_());
    }
 
-   @Override
-   default jh a(edj.a $$0, jh $$1) {
-      return dhc.super.a($$0, $$1);
+   default int aq() {
+      return kk.a(this.an());
+   }
+
+   default boolean d(int $$0) {
+      return $$0 >= this.L_() && $$0 <= this.an();
+   }
+
+   default boolean s(ji $$0) {
+      return this.e($$0.v());
+   }
+
+   default boolean e(int $$0) {
+      return $$0 < this.L_() || $$0 > this.an();
+   }
+
+   default int f(int $$0) {
+      return this.g(kk.a($$0));
+   }
+
+   default int g(int $$0) {
+      return $$0 - this.ap();
+   }
+
+   default int h(int $$0) {
+      return $$0 + this.ap();
+   }
+
+   static dgk e(final int $$0, final int $$1) {
+      return new dgk() {
+         @Override
+         public int M_() {
+            return $$1;
+         }
+
+         @Override
+         public int L_() {
+            return $$0;
+         }
+      };
    }
 }

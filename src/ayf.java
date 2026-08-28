@@ -1,137 +1,100 @@
-import org.joml.Vector3f;
+import com.google.common.base.Charsets;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
+import java.nio.file.AccessDeniedException;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
-public class ayf {
-   public static int a(int $$0) {
-      return $$0 >>> 24;
-   }
+public class ayf implements AutoCloseable {
+   public static final String a = "session.lock";
+   private final FileChannel b;
+   private final FileLock c;
+   private static final ByteBuffer d;
 
-   public static int b(int $$0) {
-      return $$0 >> 16 & 0xFF;
-   }
+   public static ayf a(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+      v.c($$0);
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
-   public static int c(int $$0) {
-      return $$0 >> 8 & 0xFF;
-   }
+      try {
+         $$2.write(d.duplicate());
+         $$2.force(true);
+         FileLock $$3 = $$2.tryLock();
+         if ($$3 == null) {
+            throw ayf.a.a($$1);
+         } else {
+            return new ayf($$2, $$3);
+         }
+      } catch (IOException var6) {
+         try {
+            $$2.close();
+         } catch (IOException var5) {
+            var6.addSuppressed(var5);
+         }
 
-   public static int d(int $$0) {
-      return $$0 & 0xFF;
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-   }
-
-   public static int a(int $$0, int $$1, int $$2) {
-      return a(255, $$0, $$1, $$2);
-   }
-
-   public static int a(fbr $$0) {
-      return a(b((float)$$0.a()), b((float)$$0.b()), b((float)$$0.c()));
-   }
-
-   public static int a(int $$0, int $$1) {
-      if ($$0 == -1) {
-         return $$1;
-      } else {
-         return $$1 == -1 ? $$0 : a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+         throw var6;
       }
    }
 
-   public static int a(int $$0, float $$1) {
-      return a($$0, $$1, $$1, $$1);
+   private ayf(FileChannel $$0, FileLock $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static int a(int $$0, float $$1, float $$2, float $$3) {
-      return a(
-         a($$0),
-         Math.clamp((long)((int)((float)b($$0) * $$1)), 0, 255),
-         Math.clamp((long)((int)((float)c($$0) * $$2)), 0, 255),
-         Math.clamp((long)((int)((float)d($$0) * $$3)), 0, 255)
-      );
+   @Override
+   public void close() throws IOException {
+      try {
+         if (this.c.isValid()) {
+            this.c.release();
+         }
+      } finally {
+         if (this.b.isOpen()) {
+            this.b.close();
+         }
+      }
    }
 
-   public static int b(int $$0, int $$1) {
-      return a(
-         a($$0),
-         Math.clamp((long)b($$0) * (long)$$1 / 255L, 0, 255),
-         Math.clamp((long)c($$0) * (long)$$1 / 255L, 0, 255),
-         Math.clamp((long)d($$0) * (long)$$1 / 255L, 0, 255)
-      );
+   public boolean a() {
+      return this.c.isValid();
    }
 
-   public static int e(int $$0) {
-      int $$1 = (int)((float)b($$0) * 0.3F + (float)c($$0) * 0.59F + (float)d($$0) * 0.11F);
-      return a($$1, $$1, $$1);
+   public static boolean b(Path $$0) throws IOException {
+      Path $$1 = $$0.resolve("session.lock");
+
+      try {
+         boolean var4;
+         try (
+            FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE);
+            FileLock $$3 = $$2.tryLock();
+         ) {
+            var4 = $$3 == null;
+         }
+
+         return var4;
+      } catch (AccessDeniedException var10) {
+         return true;
+      } catch (NoSuchFileException var11) {
+         return false;
+      }
    }
 
-   public static int a(float $$0, int $$1, int $$2) {
-      int $$3 = azu.a($$0, a($$1), a($$2));
-      int $$4 = azu.a($$0, b($$1), b($$2));
-      int $$5 = azu.a($$0, c($$1), c($$2));
-      int $$6 = azu.a($$0, d($$1), d($$2));
-      return a($$3, $$4, $$5, $$6);
+   static {
+      byte[] $$0 = "☃".getBytes(Charsets.UTF_8);
+      d = ByteBuffer.allocateDirect($$0.length);
+      d.put($$0);
+      d.flip();
    }
 
-   public static int f(int $$0) {
-      return $$0 | 0xFF000000;
-   }
+   public static class a extends IOException {
+      private a(Path $$0, String $$1) {
+         super($$0.toAbsolutePath() + ": " + $$1);
+      }
 
-   public static int g(int $$0) {
-      return $$0 & 16777215;
-   }
-
-   public static int c(int $$0, int $$1) {
-      return $$0 << 24 | $$1 & 16777215;
-   }
-
-   public static int a(float $$0) {
-      return b($$0) << 24 | 16777215;
-   }
-
-   public static int a(float $$0, float $$1, float $$2, float $$3) {
-      return a(b($$0), b($$1), b($$2), b($$3));
-   }
-
-   public static Vector3f h(int $$0) {
-      float $$1 = (float)b($$0) / 255.0F;
-      float $$2 = (float)c($$0) / 255.0F;
-      float $$3 = (float)d($$0) / 255.0F;
-      return new Vector3f($$1, $$2, $$3);
-   }
-
-   public static int d(int $$0, int $$1) {
-      return a((a($$0) + a($$1)) / 2, (b($$0) + b($$1)) / 2, (c($$0) + c($$1)) / 2, (d($$0) + d($$1)) / 2);
-   }
-
-   public static int b(float $$0) {
-      return azu.d($$0 * 255.0F);
-   }
-
-   public static float i(int $$0) {
-      return o(a($$0));
-   }
-
-   public static float j(int $$0) {
-      return o(b($$0));
-   }
-
-   public static float k(int $$0) {
-      return o(c($$0));
-   }
-
-   public static float l(int $$0) {
-      return o(d($$0));
-   }
-
-   private static float o(int $$0) {
-      return (float)$$0 / 255.0F;
-   }
-
-   public static int m(int $$0) {
-      return $$0 & -16711936 | ($$0 & 0xFF0000) >> 16 | ($$0 & 0xFF) << 16;
-   }
-
-   public static int n(int $$0) {
-      return m($$0);
+      public static ayf.a a(Path $$0) {
+         return new ayf.a($$0, "already locked (possibly by other Minecraft instance?)");
+      }
    }
 }

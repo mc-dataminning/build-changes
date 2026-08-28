@@ -1,56 +1,18 @@
-public class gje extends giv {
-   private final gji b;
-   protected boolean a;
+public class gje extends gjg {
+   protected gje(gfy $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
 
-   gje(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
+   protected gje(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
-      this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
+   public final void a(ffy $$0, fkr $$1, float $$2) {
    }
 
    @Override
-   public gir b() {
-      return gir.c;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements giq<lw> {
-      private final gji a;
-
-      public a(gji $$0) {
-         this.a = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gje $$8 = new gje($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements giq<lw> {
-      private final gji a;
-
-      public b(gji $$0) {
-         this.a = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gje $$8 = new gje($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         return $$8;
-      }
+   public gjk b() {
+      return gjk.e;
    }
 }

@@ -1,28 +1,43 @@
-public class gut extends gsc<cni, hag, gea<hag>> {
-   private static final alp a = alp.b("textures/entity/zombie_villager/zombie_villager.png");
+public class gut extends gsb<clc, hao> {
+   private final gnb a;
 
-   public gut(grl.a $$0) {
-      super($$0, new gea<>($$0.a(gei.dW)), new gea<>($$0.a(gei.dX)), 0.5F, guh.a);
-      this.a(new gvp<>(this, new gea($$0.a(gei.ea)), new gea($$0.a(gei.eb)), new gea($$0.a(gei.dY)), new gea($$0.a(gei.dZ)), $$0.h()));
-      this.a(new gwk<>(this, $$0.e(), "zombie_villager"));
+   public gut(gsc.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public alp a(hag $$0) {
-      return a;
+   public void a(hao $$0, ffu $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = ayz.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
+      }
+
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         gus.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public hag b() {
-      return new hag();
+   public hao a() {
+      return new hao();
    }
 
-   public void a(cni $$0, hag $$1, float $$2) {
+   public void a(clc $$0, hao $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.gx();
-      $$1.c = $$0.gy();
-      $$1.a = $$0.gd();
-   }
-
-   protected boolean b(hag $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.a = (float)$$0.m() - $$2 + 1.0F;
+      $$1.b = $$0.s();
    }
 }

@@ -1,29 +1,17 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Objects;
-import java.util.Optional;
 
-public class bee extends DataFix {
-   public bee(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class bee extends bgr {
+   public bee(Schema $$0) {
+      super($$0, false, "EntitySalmonSizeFix", bhw.B, "minecraft:salmon");
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bkb.a());
-      return this.fixTypeEverywhereTyped(
-         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bin.B), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
-               Optional<String> $$3 = $$1.getOptional($$0);
-               return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
-            })
-      );
-   }
-
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      String $$1 = $$0.get("CustomName").asString("");
-      return $$1.isEmpty() ? $$0.remove("CustomName") : $$0.set("CustomName", bbh.a($$0.getOps(), $$1));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         String $$1 = $$0x.get("type").asString("medium");
+         return $$1.equals("large") ? $$0x : $$0x.set("type", $$0x.createString("medium"));
+      });
    }
 }

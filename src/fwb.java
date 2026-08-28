@@ -1,32 +1,51 @@
-import java.util.Objects;
-import org.joml.Matrix4f;
+public abstract class fwb<T extends ctg> extends fuz<T> implements csq {
+   private final aku G;
 
-public interface fwb {
-   static fwb a(azg $$0) {
-      return new fwa($$0);
+   public fwb(T $$0, cow $$1, wo $$2, aku $$3) {
+      super($$0, $$1, $$2);
+      this.G = $$3;
    }
 
-   static fwb a(cva $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fwb)(switch ($$0) {
-         case cuz $$1 -> new fvz($$1.a());
-         case fvy.a $$2 -> new fvy($$2);
-         default -> throw new IllegalArgumentException("Unknown TooltipComponent");
-      });
+   @Override
+   protected void G() {
    }
 
-   int a(fnj var1);
-
-   int b(fnj var1);
-
-   default boolean a() {
-      return false;
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.G();
+      this.z.a(this);
    }
 
-   default void a(fnj $$0, int $$1, int $$2, Matrix4f $$3, glg.a $$4) {
+   @Override
+   public void aI_() {
+      super.aI_();
+      this.z.b(this);
    }
 
-   default void a(fnj $$0, int $$1, int $$2, int $$3, int $$4, fnl $$5) {
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(fod $$0, int $$1, int $$2, float $$3) {
+   }
+
+   @Override
+   protected void a(fod $$0, float $$1, int $$2, int $$3) {
+      $$0.a(gmh::H, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      this.c($$0, this.C, this.D);
+   }
+
+   protected abstract void c(fod var1, int var2, int var3);
+
+   @Override
+   public void a(csc $$0, int $$1, int $$2) {
+   }
+
+   @Override
+   public void a(csc $$0, int $$1, cwp $$2) {
    }
 }

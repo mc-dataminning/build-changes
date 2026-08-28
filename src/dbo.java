@@ -1,70 +1,35 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public class dbo extends dbl {
-   private static final dbr c = dbr.a(cxk.rv);
-   private static final dbr d = dbr.a(cxk.pZ);
-   private static final dbr e = dbr.a(cxk.vu);
+public interface dbo<T extends dbe<?>> {
+   dbo<dbs> a = a("crafting_shaped", new dbs.a());
+   dbo<dbu> b = a("crafting_shapeless", new dbu.a());
+   dbo<dal> c = a("crafting_special_armordye", new dau.a<>(dal::new));
+   dbo<dao> d = a("crafting_special_bookcloning", new dau.a<>(dao::new));
+   dbo<dbb> e = a("crafting_special_mapcloning", new dau.a<>(dbb::new));
+   dbo<dbc> f = a("crafting_special_mapextending", new dau.a<>(dbc::new));
+   dbo<dax> g = a("crafting_special_firework_rocket", new dau.a<>(dax::new));
+   dbo<daz> h = a("crafting_special_firework_star", new dau.a<>(daz::new));
+   dbo<day> i = a("crafting_special_firework_star_fade", new dau.a<>(day::new));
+   dbo<dcf> j = a("crafting_special_tippedarrow", new dau.a<>(dcf::new));
+   dbo<dam> k = a("crafting_special_bannerduplicate", new dau.a<>(dam::new));
+   dbo<dbv> l = a("crafting_special_shielddecoration", new dau.a<>(dbv::new));
+   dbo<dcg> m = a("crafting_transmute", new dcg.a());
+   dbo<dbq> n = a("crafting_special_repairitem", new dau.a<>(dbq::new));
+   dbo<dby> o = a("smelting", new dak.b<>(dby::new, 200));
+   dbo<dan> p = a("blasting", new dak.b<>(dan::new, 100));
+   dbo<dcd> q = a("smoking", new dak.b<>(dcd::new, 100));
+   dbo<dap> r = a("campfire_cooking", new dak.b<>(dap::new, 100));
+   dbo<dce> s = a("stonecutting", new dbw.b<>(dce::new));
+   dbo<dcb> t = a("smithing_transform", new dcb.a());
+   dbo<dcc> u = a("smithing_trim", new dcc.a());
+   dbo<dav> v = a("crafting_decorated_pot", new dau.a<>(dav::new));
 
-   public dbo(dbi $$0) {
-      super($$0);
-   }
+   MapCodec<T> a();
 
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         int $$3 = 0;
+   @Deprecated
+   ym<vz, T> b();
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            cxg $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (c.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (d.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!e.a($$5)) {
-                  return false;
-               }
-            }
-         }
-
-         return $$2 && $$3 >= 1;
-      }
-   }
-
-   public cxg a(dbj $$0, js.a $$1) {
-      List<czv> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cxg $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (d.a($$5)) {
-               $$3++;
-            } else if (e.a($$5)) {
-               czv $$6 = $$5.a(ku.ae);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cxg $$7 = new cxg(cxk.vt, 3);
-      $$7.b(ku.af, new czw($$3, $$2));
-      return $$7;
-   }
-
-   @Override
-   public dcf<dbo> a() {
-      return dcf.g;
+   static <S extends dbo<T>, T extends dbe<?>> S a(String $$0, S $$1) {
+      return ke.a(mb.r, $$0, $$1);
    }
 }

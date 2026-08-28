@@ -1,468 +1,389 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.Long2FloatLinkedOpenHashMap;
 import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
 public final class dhk {
-   private static final Logger c = LogUtils.getLogger();
-   private static final int d = 24;
-   public static final int a = 8;
-   public static final int b = 128;
-   static final int e = (int)Math.pow(17.0, 2.0);
-   private static final bwa[] f = Stream.of(bwa.values()).filter($$0 -> $$0 != bwa.h).toArray(bwa[]::new);
+   public static final Codec<dhk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dhk.b.a.forGetter($$0x -> $$0x.i),
+               dhq.a.fieldOf("effects").forGetter($$0x -> $$0x.l),
+               dhl.b.forGetter($$0x -> $$0x.j),
+               dhw.c.forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, dhk::new)
+   );
+   public static final Codec<dhk> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dhk.b.a.forGetter($$0x -> $$0x.i), dhq.a.fieldOf("effects").forGetter($$0x -> $$0x.l))
+            .apply($$0, ($$0x, $$1) -> new dhk($$0x, $$1, dhl.a, dhw.b))
+   );
+   public static final Codec<jr<dhk>> c = akq.a(mc.aI, a);
+   public static final Codec<jv<dhk>> d = kg.a(mc.aI, a);
+   private static final ese f = new ese(new edr(new ect(1234L)), ImmutableList.of(0));
+   static final ese g = new ese(new edr(new ect(3456L)), ImmutableList.of(-2, -1, 0));
+   @Deprecated(
+      forRemoval = true
+   )
+   public static final ese e = new ese(new edr(new ect(2345L)), ImmutableList.of(0));
+   private static final int h = 1024;
+   private final dhk.b i;
+   private final dhl j;
+   private final dhw k;
+   private final dhq l;
+   private final ThreadLocal<Long2FloatLinkedOpenHashMap> m = ThreadLocal.withInitial(() -> af.a(() -> {
+         Long2FloatLinkedOpenHashMap $$0x = new Long2FloatLinkedOpenHashMap(1024, 0.25F) {
+            protected void rehash(int $$0) {
+            }
+         };
+         $$0x.defaultReturnValue(Float.NaN);
+         return $$0x;
+      }));
 
-   private dhk() {
+   dhk(dhk.b $$0, dhq $$1, dhl $$2, dhw $$3) {
+      this.i = $$0;
+      this.j = $$2;
+      this.k = $$3;
+      this.l = $$1;
    }
 
-   public static dhk.d a(int $$0, Iterable<bvb> $$1, dhk.b $$2, dhj $$3) {
-      dhn $$4 = new dhn();
-      Object2IntOpenHashMap<bwa> $$5 = new Object2IntOpenHashMap();
+   public int a() {
+      return this.l.d();
+   }
 
-      for (bvb $$6 : $$1) {
-         if ($$6 instanceof bvz $$7 && ($$7.aj() || $$7.W())) {
-            continue;
+   public dhw b() {
+      return this.k;
+   }
+
+   public boolean c() {
+      return this.i.a();
+   }
+
+   public dhk.c a(ji $$0, int $$1) {
+      if (!this.c()) {
+         return dhk.c.a;
+      } else {
+         return this.b($$0, $$1) ? dhk.c.c : dhk.c.b;
+      }
+   }
+
+   private float e(ji $$0, int $$1) {
+      float $$2 = this.i.d.a($$0, this.g());
+      int $$3 = $$1 + 17;
+      if ($$0.v() > $$3) {
+         float $$4 = (float)(f.a((double)((float)$$0.u() / 8.0F), (double)((float)$$0.w() / 8.0F), false) * 8.0);
+         return $$2 - ($$4 + (float)$$0.v() - (float)$$3) * 0.05F / 40.0F;
+      } else {
+         return $$2;
+      }
+   }
+
+   @Deprecated
+   private float f(ji $$0, int $$1) {
+      long $$2 = $$0.a();
+      Long2FloatLinkedOpenHashMap $$3 = this.m.get();
+      float $$4 = $$3.get($$2);
+      if (!Float.isNaN($$4)) {
+         return $$4;
+      } else {
+         float $$5 = this.e($$0, $$1);
+         if ($$3.size() == 1024) {
+            $$3.removeFirstFloat();
          }
 
-         bwa $$8 = $$6.aq().f();
-         if ($$8 != bwa.h) {
-            jh $$9 = $$6.dw();
-            $$2.query(dgf.a($$9), $$6x -> {
-               din.b $$7 = a($$9, $$6x).b().a($$6.aq());
-               if ($$7 != null) {
-                  $$4.a($$6.dw(), $$7.b());
+         $$3.put($$2, $$5);
+         return $$5;
+      }
+   }
+
+   public boolean a(dgl $$0, ji $$1) {
+      return this.a($$0, $$1, true);
+   }
+
+   public boolean a(dgl $$0, ji $$1, boolean $$2) {
+      if (this.c($$1, $$0.P())) {
+         return false;
+      } else {
+         if ($$0.d($$1.v()) && $$0.a(dgr.b, $$1) < 10) {
+            dwx $$3 = $$0.a_($$1);
+            esz $$4 = $$0.b_($$1);
+            if ($$4.a() == eta.c && $$3.b() instanceof doe) {
+               if (!$$2) {
+                  return true;
                }
 
-               if ($$6 instanceof bvz) {
-                  $$3.a($$6x.f(), $$8);
-               }
-
-               $$5.addTo($$8, 1);
-            });
-         }
-      }
-
-      return new dhk.d($$0, $$5, $$4, $$3);
-   }
-
-   static dib a(jh $$0, dzj $$1) {
-      return $$1.getNoiseBiome(kb.a($$0.u()), kb.a($$0.v()), kb.a($$0.w())).a();
-   }
-
-   public static List<bwa> a(dhk.d $$0, boolean $$1, boolean $$2, boolean $$3) {
-      List<bwa> $$4 = new ArrayList<>(f.length);
-
-      for (bwa $$5 : f) {
-         if (($$1 || !$$5.d()) && ($$2 || $$5.d()) && ($$3 || !$$5.e()) && $$0.a($$5)) {
-            $$4.add($$5);
-         }
-      }
-
-      return $$4;
-   }
-
-   public static void a(arx $$0, dzt $$1, dhk.d $$2, List<bwa> $$3) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:241)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.DoStatement.toJava(DoStatement.java:148)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: invokestatic bpi.a ()Lbpj;
-      // 03: astore 4
-      // 05: aload 4
-      // 07: ldc "spawner"
-      // 09: invokeinterface bpj.a (Ljava/lang/String;)V 2
-      // 0e: aload 3
-      // 0f: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
-      // 14: astore 5
-      // 16: aload 5
-      // 18: invokeinterface java/util/Iterator.hasNext ()Z 1
-      // 1d: ifeq 59
-      // 20: aload 5
-      // 22: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
-      // 27: checkcast bwa
-      // 2a: astore 6
-      // 2c: aload 2
-      // 2d: aload 6
-      // 2f: aload 1
-      // 30: invokevirtual dzt.f ()Ldgf;
-      // 33: invokevirtual dhk$d.a (Lbwa;Ldgf;)Z
-      // 36: ifeq 56
-      // 39: aload 6
-      // 3b: aload 0
-      // 3c: aload 1
-      // 3d: aload 2
-      // 3e: dup
-      // 3f: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 42: pop
-      // 43: invokedynamic test (Ldhk$d;)Ldhk$c; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbvi;Ljh;Ldzj;)Z, dhk$d.a (Lbvi;Ljh;Ldzj;)Z, (Lbvi;Ljh;Ldzj;)Z ]
-      // 48: aload 2
-      // 49: dup
-      // 4a: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 4d: pop
-      // 4e: invokedynamic run (Ldhk$d;)Ldhk$a; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Lbvz;Ldzj;)V, dhk$d.a (Lbvz;Ldzj;)V, (Lbvz;Ldzj;)V ]
-      // 53: invokestatic dhk.a (Lbwa;Larx;Ldzt;Ldhk$c;Ldhk$a;)V
-      // 56: goto 16
-      // 59: aload 4
-      // 5b: invokeinterface bpj.c ()V 1
-      // 60: return
-   }
-
-   public static void a(bwa $$0, arx $$1, dzt $$2, dhk.c $$3, dhk.a $$4) {
-      jh $$5 = a($$1, $$2);
-      if ($$5.v() >= $$1.L_() + 1) {
-         a($$0, $$1, $$2, $$5, $$3, $$4);
-      }
-   }
-
-   @bbb
-   public static void a(bwa $$0, arx $$1, jh $$2) {
-      a($$0, $$1, $$1.y($$2), $$2, ($$0x, $$1x, $$2x) -> true, ($$0x, $$1x) -> {
-      });
-   }
-
-   public static void a(bwa $$0, arx $$1, dzj $$2, jh $$3, dhk.c $$4, dhk.a $$5) {
-      dhv $$6 = $$1.b();
-      dzk $$7 = $$1.m().g();
-      int $$8 = $$3.v();
-      dxo $$9 = $$2.a_($$3);
-      if (!$$9.d($$2, $$3)) {
-         jh.a $$10 = new jh.a();
-         int $$11 = 0;
-
-         for (int $$12 = 0; $$12 < 3; $$12++) {
-            int $$13 = $$3.u();
-            int $$14 = $$3.w();
-            int $$15 = 6;
-            din.c $$16 = null;
-            bwq $$17 = null;
-            int $$18 = azu.f($$1.A.i() * 4.0F);
-            int $$19 = 0;
-
-            for (int $$20 = 0; $$20 < $$18; $$20++) {
-               $$13 += $$1.A.a(6) - $$1.A.a(6);
-               $$14 += $$1.A.a(6) - $$1.A.a(6);
-               $$10.d($$13, $$8, $$14);
-               double $$21 = (double)$$13 + 0.5;
-               double $$22 = (double)$$14 + 0.5;
-               cpo $$23 = $$1.a($$21, (double)$$8, $$22, -1.0, false);
-               if ($$23 != null) {
-                  double $$24 = $$23.i($$21, (double)$$8, $$22);
-                  if (a($$1, $$2, $$10, $$24)) {
-                     if ($$16 == null) {
-                        Optional<din.c> $$25 = a($$1, $$6, $$7, $$0, $$1.A, $$10);
-                        if ($$25.isEmpty()) {
-                           break;
-                        }
-
-                        $$16 = $$25.get();
-                        $$18 = $$16.c + $$1.A.a(1 + $$16.d - $$16.c);
-                     }
-
-                     if (a($$1, $$0, $$6, $$7, $$16, $$10, $$24) && $$4.test($$16.b, $$10, $$2)) {
-                        bvz $$26 = a($$1, $$16.b);
-                        if ($$26 == null) {
-                           return;
-                        }
-
-                        $$26.b($$21, (double)$$8, $$22, $$1.A.i() * 360.0F, 0.0F);
-                        if (a($$1, $$26, $$24)) {
-                           $$17 = $$26.a($$1, $$1.d_($$26.dw()), bvh.a, $$17);
-                           $$11++;
-                           $$19++;
-                           $$1.a_($$26);
-                           $$5.run($$26, $$2);
-                           if ($$11 >= $$26.ad()) {
-                              return;
-                           }
-
-                           if ($$26.q($$19)) {
-                              break;
-                           }
-                        }
-                     }
-                  }
+               boolean $$5 = $$0.z($$1.h()) && $$0.z($$1.i()) && $$0.z($$1.f()) && $$0.z($$1.g());
+               if (!$$5) {
+                  return true;
                }
             }
          }
+
+         return false;
       }
    }
 
-   private static boolean a(arx $$0, dzj $$1, jh.a $$2, double $$3) {
-      if ($$3 <= 576.0) {
+   public boolean b(ji $$0, int $$1) {
+      return !this.c($$0, $$1);
+   }
+
+   public boolean c(ji $$0, int $$1) {
+      return this.f($$0, $$1) >= 0.15F;
+   }
+
+   public boolean d(ji $$0, int $$1) {
+      return this.f($$0, $$1) > 0.1F;
+   }
+
+   public boolean b(dgl $$0, ji $$1) {
+      if (this.c($$1, $$0.P())) {
          return false;
       } else {
-         return $$0.Z().a(new fbr((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5), 24.0)
-            ? false
-            : Objects.equals(new dgf($$2), $$1.f()) || $$0.g($$2);
-      }
-   }
-
-   private static boolean a(arx $$0, bwa $$1, dhv $$2, dzk $$3, din.c $$4, jh.a $$5, double $$6) {
-      bvi<?> $$7 = $$4.b;
-      if ($$7.f() == bwa.h) {
-         return false;
-      } else if (!$$7.e() && $$6 > (double)($$7.f().f() * $$7.f().f())) {
-         return false;
-      } else if (!$$7.c() || !a($$0, $$2, $$3, $$1, $$4, $$5)) {
-         return false;
-      } else if (!bwt.a($$7, $$0, $$5)) {
-         return false;
-      } else {
-         return !bwt.a($$7, $$0, bvh.a, $$5, $$0.A) ? false : $$0.b($$7.a((double)$$5.u() + 0.5, (double)$$5.v(), (double)$$5.w() + 0.5));
-      }
-   }
-
-   @Nullable
-   private static bvz a(arx $$0, bvi<?> $$1) {
-      try {
-         bvb var3 = $$1.a($$0, bvh.a);
-         if (var3 instanceof bvz) {
-            return (bvz)var3;
-         }
-
-         c.warn("Can't spawn entity of type: {}", ma.f.b($$1));
-      } catch (Exception var4) {
-         c.warn("Failed to create mob", var4);
-      }
-
-      return null;
-   }
-
-   private static boolean a(arx $$0, bvz $$1, double $$2) {
-      return $$2 > (double)($$1.aq().f().f() * $$1.aq().f().f()) && $$1.h($$2) ? false : $$1.a($$0, bvh.a) && $$1.a((dhc)$$0);
-   }
-
-   private static Optional<din.c> a(arx $$0, dhv $$1, dzk $$2, bwa $$3, bac $$4, jh $$5) {
-      jq<dib> $$6 = $$0.t($$5);
-      return $$3 == bwa.g && $$6.a(axj.am) && $$4.i() < 0.98F ? Optional.empty() : a($$0, $$1, $$2, $$3, $$5, $$6).b($$4);
-   }
-
-   private static boolean a(arx $$0, dhv $$1, dzk $$2, bwa $$3, din.c $$4, jh $$5) {
-      return a($$0, $$1, $$2, $$3, $$5, null).e().contains($$4);
-   }
-
-   private static brm<din.c> a(arx $$0, dhv $$1, dzk $$2, bwa $$3, jh $$4, @Nullable jq<dib> $$5) {
-      return a($$4, $$0, $$3, $$1) ? eqk.d : $$2.a($$5 != null ? $$5 : $$0.t($$4), $$1, $$3, $$4);
-   }
-
-   public static boolean a(jh $$0, arx $$1, bwa $$2, dhv $$3) {
-      if ($$2 == bwa.a && $$1.a_($$0.e()).a(dkf.fI)) {
-         eod $$4 = $$3.b().e(mb.aU).c(enx.o);
-         return $$4 == null ? false : $$3.a($$0, $$4).b();
-      } else {
-         return false;
-      }
-   }
-
-   private static jh a(dgz $$0, dzt $$1) {
-      dgf $$2 = $$1.f();
-      int $$3 = $$2.d() + $$0.A.a(16);
-      int $$4 = $$2.e() + $$0.A.a(16);
-      int $$5 = $$1.a(edj.a.b, $$3, $$4) + 1;
-      int $$6 = azu.b($$0.A, $$0.L_(), $$5);
-      return new jh($$3, $$6, $$4);
-   }
-
-   public static boolean a(dge $$0, jh $$1, dxo $$2, etq $$3, bvi<?> $$4) {
-      if ($$2.m($$0, $$1)) {
-         return false;
-      } else if ($$2.p()) {
-         return false;
-      } else if (!$$3.c()) {
-         return false;
-      } else {
-         return $$2.a(axk.aZ) ? false : !$$4.a($$2);
-      }
-   }
-
-   public static void a(dhq $$0, jq<dib> $$1, dgf $$2, bac $$3) {
-      din $$4 = $$1.a().b();
-      brm<din.c> $$5 = $$4.a(bwa.b);
-      if (!$$5.d()) {
-         int $$6 = $$2.d();
-         int $$7 = $$2.e();
-
-         while ($$3.i() < $$4.a()) {
-            Optional<din.c> $$8 = $$5.b($$3);
-            if (!$$8.isEmpty()) {
-               din.c $$9 = $$8.get();
-               int $$10 = $$9.c + $$3.a(1 + $$9.d - $$9.c);
-               bwq $$11 = null;
-               int $$12 = $$6 + $$3.a(16);
-               int $$13 = $$7 + $$3.a(16);
-               int $$14 = $$12;
-               int $$15 = $$13;
-
-               for (int $$16 = 0; $$16 < $$10; $$16++) {
-                  boolean $$17 = false;
-
-                  for (int $$18 = 0; !$$17 && $$18 < 4; $$18++) {
-                     jh $$19 = a($$0, $$9.b, $$12, $$13);
-                     if ($$9.b.c() && bwt.a($$9.b, $$0, $$19)) {
-                        float $$20 = $$9.b.l();
-                        double $$21 = azu.a((double)$$12, (double)$$6 + (double)$$20, (double)$$6 + 16.0 - (double)$$20);
-                        double $$22 = azu.a((double)$$13, (double)$$7 + (double)$$20, (double)$$7 + 16.0 - (double)$$20);
-                        if (!$$0.b($$9.b.a($$21, (double)$$19.v(), $$22)) || !bwt.a($$9.b, $$0, bvh.b, jh.a($$21, (double)$$19.v(), $$22), $$0.H_())) {
-                           continue;
-                        }
-
-                        bvb $$23;
-                        try {
-                           $$23 = $$9.b.a($$0.a(), bvh.a);
-                        } catch (Exception var27) {
-                           c.warn("Failed to create mob", var27);
-                           continue;
-                        }
-
-                        if ($$23 == null) {
-                           continue;
-                        }
-
-                        $$23.b($$21, (double)$$19.v(), $$22, $$3.i() * 360.0F, 0.0F);
-                        if ($$23 instanceof bvz $$26 && $$26.a($$0, bvh.b) && $$26.a($$0)) {
-                           $$11 = $$26.a($$0, $$0.d_($$26.dw()), bvh.b, $$11);
-                           $$0.a_($$26);
-                           $$17 = true;
-                        }
-                     }
-
-                     $$12 += $$3.a(5) - $$3.a(5);
-
-                     for ($$13 += $$3.a(5) - $$3.a(5); $$12 < $$6 || $$12 >= $$6 + 16 || $$13 < $$7 || $$13 >= $$7 + 16; $$13 = $$15 + $$3.a(5) - $$3.a(5)) {
-                        $$12 = $$14 + $$3.a(5) - $$3.a(5);
-                     }
-                  }
-               }
+         if ($$0.d($$1.v()) && $$0.a(dgr.b, $$1) < 10) {
+            dwx $$2 = $$0.a_($$1);
+            if (($$2.l() || $$2.a(djo.ea)) && djo.ea.m().a($$0, $$1)) {
+               return true;
             }
          }
+
+         return false;
       }
    }
 
-   private static jh a(dhc $$0, bvi<?> $$1, int $$2, int $$3) {
-      int $$4 = $$0.a(bwt.b($$1), $$2, $$3);
-      jh.a $$5 = new jh.a($$2, $$4, $$3);
-      if ($$0.G_().h()) {
-         do {
-            $$5.c(jm.a);
-         } while (!$$0.a_($$5).l());
-
-         do {
-            $$5.c(jm.a);
-         } while ($$0.a_($$5).l() && $$5.v() > $$0.L_());
-      }
-
-      return bwt.a($$1).a($$0, $$5.j());
+   public dhl d() {
+      return this.j;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void run(bvz var1, dzj var2);
+   public int e() {
+      return this.l.a();
    }
 
-   @FunctionalInterface
-   public interface b {
-      void query(long var1, Consumer<dzt> var3);
+   public int a(double $$0, double $$1) {
+      int $$2 = this.l.f().orElseGet(this::q);
+      return this.l.g().a($$0, $$1, $$2);
    }
 
-   @FunctionalInterface
-   public interface c {
-      boolean test(bvi<?> var1, jh var2, dzj var3);
+   private int q() {
+      double $$0 = (double)ayz.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)ayz.a(this.i.e, 0.0F, 1.0F);
+      return dgg.a($$0, $$1);
    }
 
-   public static class d {
-      private final int a;
-      private final Object2IntOpenHashMap<bwa> b;
-      private final dhn c;
-      private final Object2IntMap<bwa> d;
-      private final dhj e;
+   public int f() {
+      return this.l.e().orElseGet(this::r);
+   }
+
+   private int r() {
+      double $$0 = (double)ayz.a(this.i.c, 0.0F, 1.0F);
+      double $$1 = (double)ayz.a(this.i.e, 0.0F, 1.0F);
+      return dgc.a($$0, $$1);
+   }
+
+   public float g() {
+      return this.i.c;
+   }
+
+   public dhq h() {
+      return this.l;
+   }
+
+   public int i() {
+      return this.l.b();
+   }
+
+   public int j() {
+      return this.l.c();
+   }
+
+   public Optional<dhj> k() {
+      return this.l.h();
+   }
+
+   public Optional<jr<avz>> l() {
+      return this.l.i();
+   }
+
+   public Optional<dhi> m() {
+      return this.l.j();
+   }
+
+   public Optional<dhh> n() {
+      return this.l.k();
+   }
+
+   public Optional<bqr<avx>> o() {
+      return this.l.l();
+   }
+
+   public float p() {
+      return this.l.m();
+   }
+
+   public static class a {
+      private boolean a = true;
       @Nullable
-      private jh f;
+      private Float b;
+      private dhk.d c = dhk.d.a;
       @Nullable
-      private bvi<?> g;
-      private double h;
+      private Float d;
+      @Nullable
+      private dhq e;
+      @Nullable
+      private dhw f;
+      @Nullable
+      private dhl g;
 
-      d(int $$0, Object2IntOpenHashMap<bwa> $$1, dhn $$2, dhj $$3) {
+      public dhk.a a(boolean $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.e = $$3;
-         this.d = Object2IntMaps.unmodifiable($$1);
+         return this;
       }
 
-      private boolean a(bvi<?> $$0, jh $$1, dzj $$2) {
-         this.f = $$1;
+      public dhk.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public dhk.a b(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public dhk.a a(dhq $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public dhk.a a(dhw $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public dhk.a a(dhl $$0) {
          this.g = $$0;
-         din.b $$3 = dhk.a($$1, $$2).b().a($$0);
-         if ($$3 == null) {
-            this.h = 0.0;
-            return true;
+         return this;
+      }
+
+      public dhk.a a(dhk.d $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dhk a() {
+         if (this.b != null && this.d != null && this.e != null && this.f != null && this.g != null) {
+            return new dhk(new dhk.b(this.a, this.b, this.c, this.d), this.e, this.g, this.f);
          } else {
-            double $$4 = $$3.b();
-            this.h = $$4;
-            double $$5 = this.c.b($$1, $$4);
-            return $$5 <= $$3.a();
+            throw new IllegalStateException("You are missing parameters to build a proper biome\n" + this);
          }
       }
 
-      private void a(bvz $$0, dzj $$1) {
-         bvi<?> $$2 = $$0.aq();
-         jh $$3 = $$0.dw();
-         double $$4;
-         if ($$3.equals(this.f) && $$2 == this.g) {
-            $$4 = this.h;
-         } else {
-            din.b $$5 = dhk.a($$3, $$1).b().a($$2);
-            if ($$5 != null) {
-               $$4 = $$5.b();
-            } else {
-               $$4 = 0.0;
-            }
-         }
+      @Override
+      public String toString() {
+         return "BiomeBuilder{\nhasPrecipitation="
+            + this.a
+            + ",\ntemperature="
+            + this.b
+            + ",\ntemperatureModifier="
+            + this.c
+            + ",\ndownfall="
+            + this.d
+            + ",\nspecialEffects="
+            + this.e
+            + ",\nmobSpawnSettings="
+            + this.f
+            + ",\ngenerationSettings="
+            + this.g
+            + ",\n}";
+      }
+   }
 
-         this.c.a($$3, $$4);
-         bwa $$8 = $$2.f();
-         this.b.addTo($$8, 1);
-         this.e.a(new dgf($$3), $$8);
+   static record b(boolean b, float c, dhk.d d, float e) {
+      public static final MapCodec<dhk.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.BOOL.fieldOf("has_precipitation").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("temperature").forGetter($$0x -> $$0x.c),
+                  dhk.d.c.optionalFieldOf("temperature_modifier", dhk.d.a).forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("downfall").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, dhk.b::new)
+      );
+
+      public boolean a() {
+         return this.b;
       }
 
-      public int a() {
-         return this.a;
+      public float b() {
+         return this.c;
       }
 
-      public Object2IntMap<bwa> b() {
+      public dhk.d c() {
          return this.d;
       }
 
-      boolean a(bwa $$0) {
-         int $$1 = $$0.b() * this.a / dhk.e;
-         return this.b.getInt($$0) < $$1;
+      public float d() {
+         return this.e;
+      }
+   }
+
+   public static enum c implements azv {
+      a("none"),
+      b("rain"),
+      c("snow");
+
+      public static final Codec<dhk.c> d = azv.a(dhk.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
       }
 
-      boolean a(bwa $$0, dgf $$1) {
-         return this.e.a($$0, $$1);
+      @Override
+      public String c() {
+         return this.e;
+      }
+   }
+
+   public static enum d implements azv {
+      a("none") {
+         @Override
+         public float a(ji $$0, float $$1) {
+            return $$1;
+         }
+      },
+      b("frozen") {
+         @Override
+         public float a(ji $$0, float $$1) {
+            double $$2 = dhk.g.a((double)$$0.u() * 0.05, (double)$$0.w() * 0.05, false) * 7.0;
+            double $$3 = dhk.e.a((double)$$0.u() * 0.2, (double)$$0.w() * 0.2, false);
+            double $$4 = $$2 + $$3;
+            if ($$4 < 0.3) {
+               double $$5 = dhk.e.a((double)$$0.u() * 0.09, (double)$$0.w() * 0.09, false);
+               if ($$5 < 0.8) {
+                  return 0.2F;
+               }
+            }
+
+            return $$1;
+         }
+      };
+
+      private final String d;
+      public static final Codec<dhk.d> c = azv.a(dhk.d::values);
+
+      public abstract float a(ji var1, float var2);
+
+      d(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
       }
    }
 }

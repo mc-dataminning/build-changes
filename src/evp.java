@@ -1,184 +1,69 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class evp implements ewb {
-   private final ewc a;
-   private final ewb b;
+public interface evp {
+   evo<czh> a = new evo<czh>() {
+      @Override
+      public ku<czh> a() {
+         return kv.al;
+      }
 
-   public evp(ewc $$0, ewb $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+      public Stream<cwp> a(czh $$0) {
+         return $$0.b();
+      }
 
-   @Override
-   public jh a() {
-      return this.b.a();
-   }
+      public czh c() {
+         return czh.a;
+      }
 
-   @Override
-   public float b() {
-      return this.b.b();
-   }
+      public czh a(czh $$0, Stream<cwp> $$1) {
+         return czh.a($$1.toList());
+      }
+   };
+   evo<cyt> b = new evo<cyt>() {
+      @Override
+      public ku<cyt> a() {
+         return kv.P;
+      }
 
-   @Override
-   public long c() {
-      return this.b.c();
-   }
+      public cyt c() {
+         return cyt.a;
+      }
 
-   @Override
-   public long d() {
-      return this.b.d();
-   }
+      public Stream<cwp> a(cyt $$0) {
+         return $$0.b();
+      }
 
-   @Override
-   public String e() {
-      return this.a.e();
-   }
+      public cyt a(cyt $$0, Stream<cwp> $$1) {
+         cyt.a $$2 = new cyt.a($$0).a();
+         $$1.forEach($$2::a);
+         return $$2.d();
+      }
+   };
+   evo<cyu> c = new evo<cyu>() {
+      @Override
+      public ku<cyu> a() {
+         return kv.O;
+      }
 
-   @Override
-   public int f() {
-      return this.b.f();
-   }
+      public cyu c() {
+         return cyu.a;
+      }
 
-   @Override
-   public void a(int $$0) {
-   }
+      public Stream<cwp> a(cyu $$0) {
+         return $$0.a().stream();
+      }
 
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public dgw k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(jh $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(dgw $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public dgv o() {
-      return this.a.o();
-   }
-
-   @Override
-   public dze.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(dze.c $$0) {
-   }
-
-   @Override
-   public bsx q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public fbe<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, dhb $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
-   }
+      public cyu a(cyu $$0, Stream<cwp> $$1) {
+         return cyu.a($$1.toList());
+      }
+   };
+   Map<ku<?>, evo<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(evo::a, $$0 -> (evo<?>)$$0));
+   Codec<evo<?>> e = mb.ao.q().comapFlatMap($$0 -> {
+      evo<?> $$1 = d.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
+   }, evo::a);
 }

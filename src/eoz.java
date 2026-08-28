@@ -1,25 +1,15 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public enum eoz implements baq {
-   a("linear"),
-   b("triangular");
-
-   public static final Codec<eoz> c = baq.a(eoz::values);
-   private final String d;
-
-   private eoz(final String $$0) {
-      this.d = $$0;
+public class eoz {
+   public static MapCodec<? extends eoy> a(ke<MapCodec<? extends eoy>> $$0) {
+      ke.a($$0, "random", epb.a);
+      ke.a($$0, "random_group", epc.a);
+      return ke.a($$0, "direct", eox.a);
    }
 
-   @Override
-   public String c() {
-      return this.d;
-   }
-
-   public int a(bac $$0, int $$1) {
-      return switch (this) {
-         case a -> $$0.a($$1);
-         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
-      };
+   public static void a(qe<eow> $$0, jr<eow> $$1, List<eoy> $$2) {
+      $$2.stream().flatMap(eoy::a).map($$0x -> $$0x.a().a()).forEach($$2x -> ql.a($$0, $$2x, new eow($$1, List.of(Pair.of(eou.b($$2x), 1)), eow.a.b)));
    }
 }

@@ -1,83 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+public class geo extends gca<gyi> {
+   private static final int a = 16;
+   private final gfc b;
+   private final gfc c;
+   private final gfc d;
 
-public class geo {
-   private static final Set<jm> a = EnumSet.allOf(jm.class);
-   private final List<gem> b = Lists.newArrayList();
-   private int c;
-   private int d;
-   private boolean e;
-
-   public geo a(int $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      return this;
+   public geo(gfc $$0) {
+      super($$0, gmh::j);
+      this.b = $$0.b("bone");
+      this.d = this.b.b("wind");
+      this.c = this.b.b("wind_charge");
    }
 
-   public geo a() {
-      return this.a(true);
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfm $$2 = $$1.a("bone", gfh.c(), gfe.a(0.0F, 0.0F, 0.0F));
+      $$2.a(
+         "wind",
+         gfh.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new gfg(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new gfg(0.0F)),
+         gfe.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+      );
+      $$2.a("wind_charge", gfh.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new gfg(0.0F)), gfe.a(0.0F, 0.0F, 0.0F));
+      return gfi.a($$0, 64, 32);
    }
 
-   public geo a(boolean $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public geo a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, gen $$7, int $$8, int $$9) {
-      this.a($$8, $$9);
-      this.b.add(new gem($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public geo a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      this.a($$7, $$8);
-      this.b.add(new gem($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, gen.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public geo a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.add(new gem(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gen.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public geo a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<jm> $$6) {
-      this.b.add(new gem(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gen.a, this.e, 1.0F, 1.0F, $$6));
-      return this;
-   }
-
-   public geo a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.b.add(new gem($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, gen.a, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public geo a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, gen $$7) {
-      this.b.add(new gem($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public geo a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
-      this.b.add(new gem(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gen.a, $$6, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public geo a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gen $$6, float $$7, float $$8) {
-      this.b.add(new gem(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
-      return this;
-   }
-
-   public geo a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gen $$6) {
-      this.b.add(new gem(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
-      return this;
-   }
-
-   public List<gem> b() {
-      return ImmutableList.copyOf(this.b);
-   }
-
-   public static geo c() {
-      return new geo();
+   @Override
+   public void a(gyi $$0) {
+      super.a($$0);
+      this.c.f = -$$0.u * 16.0F * (float) (Math.PI / 180.0);
+      this.d.f = $$0.u * 16.0F * (float) (Math.PI / 180.0);
    }
 }

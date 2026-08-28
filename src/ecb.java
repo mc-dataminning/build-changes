@@ -1,45 +1,60 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
-public class ecb<T extends ebr> implements eca<T> {
-   private final ebt<T> a;
-   private final ebw<T> b;
+public class ecb {
+   public static final Codec<ecb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eca.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
+            )
+            .apply($$0, ecb::new)
+   );
+   private Optional<Pair<eca, Long>> b;
 
-   public ecb(ebt<T> $$0, ebw<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public ecb(Optional<eca> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
    }
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
+   public ecb() {
+      this.b = Optional.empty();
    }
 
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
+   public void a(eca $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
+      }
    }
 
-   @Override
-   public Iterable<T> a() {
-      return this.a.a();
+   private boolean b(eca $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
+      } else {
+         Pair<eca, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
+         } else {
+            eca $$4 = (eca)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
+            } else {
+               return $$0.b() > $$4.b() ? false : ecc.a_($$0.a()) > ecc.a_($$4.a());
+            }
+         }
+      }
    }
 
-   @Override
-   public <U extends T> void a(eby<T, U> $$0, ayg<U> $$1) {
-      this.a.a($$0, $$1);
+   public Optional<eca> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
+      } else {
+         return this.b.get().getRight() < $$0 ? Optional.of((eca)this.b.get().getLeft()) : Optional.empty();
+      }
    }
 
-   @Override
-   public void a(fbm $$0, Consumer<T> $$1) {
-      this.b.b($$0, ayg.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(eby<T, U> $$0, fbm $$1, ayg<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   public void a() {
+      this.b = Optional.empty();
    }
 }

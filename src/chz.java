@@ -1,24 +1,58 @@
-public record chz(alp e) {
-   public static final zi<wv, jq<chz>> a = zg.b(mb.F);
-   public static final alo<chz> b = a("temperate");
-   public static final alo<chz> c = a("warm");
-   public static final alo<chz> d = a("cold");
+public abstract class chz extends bvo {
+   public static final int d = 120;
 
-   private static alo<chz> a(String $$0) {
-      return alo.a(mb.F, alp.b($$0));
+   protected chz(bur<? extends chz> $$0, dgi $$1) {
+      super($$0, $$1);
+      this.a(etq.j, 0.0F);
    }
 
-   public static chz a(kd<chz> $$0) {
-      a($$0, b, "textures/entity/frog/temperate_frog.png");
-      a($$0, c, "textures/entity/frog/warm_frog.png");
-      return a($$0, d, "textures/entity/frog/cold_frog.png");
+   @Override
+   public boolean a(dgl $$0) {
+      return $$0.f(this);
    }
 
-   private static chz a(kd<chz> $$0, alo<chz> $$1, String $$2) {
-      return kd.a($$0, $$1, new chz(alp.b($$2)));
+   @Override
+   public int Q() {
+      return 120;
    }
 
-   public alp a() {
-      return this.e;
+   @Override
+   protected int e(arc $$0) {
+      return 1 + this.ae.a(3);
+   }
+
+   protected void t(int $$0) {
+      if (this.bL() && !this.bm()) {
+         this.j($$0 - 1);
+         if (this.ct() == -20) {
+            this.j(0);
+            this.a(this.dX().i(), 2.0F);
+         }
+      } else {
+         this.j(300);
+      }
+   }
+
+   @Override
+   public void az() {
+      int $$0 = this.ct();
+      super.az();
+      this.t($$0);
+   }
+
+   @Override
+   public boolean cJ() {
+      return false;
+   }
+
+   @Override
+   public boolean y() {
+      return false;
+   }
+
+   public static boolean c(bur<? extends chz> $$0, dgj $$1, buq $$2, ji $$3, azh $$4) {
+      int $$5 = $$1.P();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(awv.a) && $$1.a_($$3.d()).a(djo.J);
    }
 }

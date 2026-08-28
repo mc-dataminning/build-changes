@@ -1,88 +1,143 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Map;
+import java.util.WeakHashMap;
+import javax.annotation.Nullable;
 
-public abstract class dpv extends dkd {
-   private static final jm[] a = jm.values();
-   public static final dyf b = dye.O;
-   public static final dyf c = dye.P;
-   public static final dyf d = dye.Q;
-   public static final dyf e = dye.R;
-   public static final dyf f = dye.M;
-   public static final dyf g = dye.N;
-   public static final Map<jm, dyf> h = ImmutableMap.copyOf(ae.a(Maps.newEnumMap(jm.class), $$0 -> {
-      $$0.put(jm.c, b);
-      $$0.put(jm.f, c);
-      $$0.put(jm.d, d);
-      $$0.put(jm.e, e);
-      $$0.put(jm.b, f);
-      $$0.put(jm.a, g);
-   }));
-   protected final fcl[] i;
+public class dpv extends djc {
+   public static final MapCodec<dpv> c = b(dpv::new);
+   public static final dxo d = dxn.v;
+   private static final Map<dfn, List<dpv.a>> h = new WeakHashMap<>();
+   public static final int e = 60;
+   public static final int f = 8;
+   public static final int g = 160;
+   private static final int i = 2;
 
-   protected dpv(float $$0, dxn.d $$1) {
-      super($$1);
-      this.i = this.a($$0);
+   @Override
+   public MapCodec<? extends dpv> a() {
+      return c;
+   }
+
+   protected dpv(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dpv> a();
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      this.b($$1, $$2, $$0);
+   }
 
-   private fcl[] a(float $$0) {
-      float $$1 = 0.5F - $$0;
-      float $$2 = 0.5F + $$0;
-      fcl $$3 = dkd.a((double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$1 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F), (double)($$2 * 16.0F));
-      fcl[] $$4 = new fcl[a.length];
+   private void b(dgi $$0, ji $$1, dwx $$2) {
+      euh $$3 = this.a($$0, $$2);
 
-      for (int $$5 = 0; $$5 < a.length; $$5++) {
-         jm $$6 = a[$$5];
-         $$4[$$5] = fci.a(
-            0.5 + Math.min((double)(-$$0), (double)$$6.j() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.k() * 0.5),
-            0.5 + Math.min((double)(-$$0), (double)$$6.l() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.j() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.k() * 0.5),
-            0.5 + Math.max((double)$$0, (double)$$6.l() * 0.5)
-         );
+      for (jn $$4 : jn.values()) {
+         $$0.a($$1.a($$4), this, eud.a($$3, $$4));
+      }
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$4) {
+         this.b($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected int a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+      return $$0.c(d) && jn.b != $$3 ? 15 : 0;
+   }
+
+   protected boolean a(dgi $$0, ji $$1, dwx $$2) {
+      return $$0.b($$1.e(), jn.a);
+   }
+
+   @Override
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dpv.a> $$5 = h.get($$1);
+
+      while ($$5 != null && !$$5.isEmpty() && $$1.ad() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
       }
 
-      fcl[] $$7 = new fcl[64];
-
-      for (int $$8 = 0; $$8 < 64; $$8++) {
-         fcl $$9 = $$3;
-
-         for (int $$10 = 0; $$10 < a.length; $$10++) {
-            if (($$8 & 1 << $$10) != 0) {
-               $$9 = fci.a($$9, $$4[$$10]);
+      if ($$0.c(d)) {
+         if ($$4) {
+            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
             }
          }
-
-         $$7[$$8] = $$9;
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 3);
       }
-
-      return $$7;
    }
 
    @Override
-   protected boolean e_(dxo $$0) {
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.U().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
+   }
+
+   @Override
+   protected int b(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+      return $$3 == jn.a ? $$0.a($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected boolean f_(dwx $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      if ($$0.c(d)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(lo.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(d);
+   }
+
+   private static boolean a(dgi $$0, ji $$1, boolean $$2) {
+      List<dpv.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dpv.a($$1.j(), $$0.ad()));
+      }
+
+      int $$4 = 0;
+
+      for (dpv.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
       return false;
    }
 
-   @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return this.i[this.o($$0)];
+   @Nullable
+   protected euh a(dgi $$0, dwx $$1) {
+      return eud.a($$0, null, jn.b);
    }
 
-   protected int o(dxo $$0) {
-      int $$1 = 0;
+   public static class a {
+      final ji a;
+      final long b;
 
-      for (int $$2 = 0; $$2 < a.length; $$2++) {
-         if ($$0.c(h.get(a[$$2]))) {
-            $$1 |= 1 << $$2;
-         }
+      public a(ji $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-
-      return $$1;
    }
 }

@@ -1,167 +1,66 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fki {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bav d;
+public class fki extends fkh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wo c = wo.c("mco.configure.world.opening");
+   private final fhl d;
+   private final fuk e;
+   private final boolean f;
+   private final flj g;
 
-   public fki(Executor $$0, TimeUnit $$1, bav $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public fki(fhl $$0, fuk $$1, boolean $$2, flj $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public <T> fki.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fkj $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
-      } else {
-         return new fki.e<>($$0, $$1, $$4, $$3);
-      }
-   }
+   @Override
+   public void run() {
+      fgk $$0 = fgk.a();
 
-   public fki.c a() {
-      return new fki.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fki.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fki.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fki.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
          }
-      }
 
-      void b() {
-         fki.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
+         try {
+            boolean $$2 = $$0.f(this.d.a);
+            if ($$2) {
+               this.g.execute(() -> {
+                  if (this.e instanceof fiu) {
+                     ((fiu)this.e).f();
+                  }
 
-      void c() {
-         this.a.a();
-         this.c = -1L;
-      }
-   }
-
-   public class c {
-      private final List<fki.b<?>> b = new ArrayList<>();
-
-      public <T> void a(fki.e<T> $$0, Consumer<T> $$1) {
-         fki.b<T> $$2 = fki.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
-      }
-
-      public void a() {
-         for (fki.b<?> $$0 : this.b) {
-            $$0.b();
-         }
-      }
-
-      public void b() {
-         for (fki.b<?> $$0 : this.b) {
-            $$0.a(fki.this.d.get(fki.this.c));
-         }
-      }
-
-      public void c() {
-         for (fki.b<?> $$0 : this.b) {
-            $$0.c();
-         }
-      }
-   }
-
-   static record d<T>(T a, long b) {
-   }
-
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fkj e;
-      @Nullable
-      private CompletableFuture<fki.a<T>> f;
-      @Nullable
-      fki.d<T> g;
-      private long h = -1L;
-
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fkj $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fki.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
+                  this.d.e = fhl.c.b;
+                  if (this.f) {
+                     fgf.a(this.d, this.e);
+                  } else {
+                     this.g.a(this.e);
+                  }
+               });
+               break;
+            }
+         } catch (fih var4) {
+            if (this.d()) {
                return;
             }
 
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fki.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fki.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
-         }
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fki.this.d.get(fki.this.c);
-                  return new fki.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fki.this.d.get(fki.this.c);
-                  return new fki.a<>(Either.right(var4x), $$3);
-               }
-            }, fki.this.b);
+            b.error("Failed to open server", var5);
+            this.a(var5);
          }
       }
+   }
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+   @Override
+   public wo a() {
+      return c;
    }
 }

@@ -1,26 +1,36 @@
-public class gug extends gsr<cnc, gzx, gdr> {
-   private static final alp a = alp.b("textures/entity/illager/vex.png");
-   private static final alp b = alp.b("textures/entity/illager/vex_charging.png");
+public class gug extends gti<cmg, haf, gdy> {
+   public static final aku a = aku.b("textures/entity/slime/slime.png");
 
-   public gug(grl.a $$0) {
-      super($$0, new gdr($$0.a(gei.ds)), 0.3F);
-      this.a(new gvs<>(this, $$0.b()));
+   public gug(gsc.a $$0) {
+      super($$0, new gdy($$0.a(gfb.cO)), 0.25F);
+      this.a(new gwv(this, $$0.f()));
    }
 
-   protected int a(cnc $$0, jh $$1) {
-      return 15;
+   protected float a(haf $$0) {
+      return (float)$$0.b * 0.25F;
    }
 
-   public alp a(gzx $$0) {
-      return $$0.a ? b : a;
+   protected void a(haf $$0, ffu $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
    }
 
-   public gzx b() {
-      return new gzx();
+   public aku b(haf $$0) {
+      return a;
    }
 
-   public void a(cnc $$0, gzx $$1, float $$2) {
+   public haf b() {
+      return new haf();
+   }
+
+   public void a(cmg $$0, haf $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.go();
+      $$1.a = ayz.h($$2, $$0.bY, $$0.bX);
+      $$1.b = $$0.gp();
    }
 }

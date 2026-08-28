@@ -1,280 +1,124 @@
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fxn implements fpc, fpw {
-   private static final alp b = alp.b("recipe_book/overlay_recipe");
-   private static final int c = 4;
-   private static final int d = 5;
-   private static final float e = 0.375F;
-   public static final int a = 25;
-   private final List<fxn.b> f = Lists.newArrayList();
-   private boolean g;
-   private int h;
-   private int i;
-   private fxs j;
+public class fxn extends fuk {
+   private static final wo a = wo.c("options.title");
+   private static final wo b = wo.c("options.skinCustomisation");
+   private static final wo c = wo.c("options.sounds");
+   private static final wo d = wo.c("options.video");
+   private static final wo s = wo.c("options.controls");
+   private static final wo u = wo.c("options.language");
+   private static final wo v = wo.c("options.chat");
+   private static final wo w = wo.c("options.resourcepack");
+   private static final wo x = wo.c("options.accessibility");
+   private static final wo y = wo.c("options.telemetry");
+   private static final fqd z = fqd.a(wo.c("options.telemetry.disabled"));
+   private static final wo A = wo.c("options.credits_and_attribution");
+   private static final int B = 2;
+   private final fsg C = new fsg(this, 61, 33);
+   private final fuk D;
+   private final fln E;
    @Nullable
-   private ddc k;
-   final fxv l;
-   private final boolean m;
-
-   public fxn(fxv $$0, boolean $$1) {
-      this.l = $$0;
-      this.m = $$1;
-   }
-
-   public void a(fxs $$0, bbf $$1, boolean $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      this.j = $$0;
-      List<ddb> $$8 = $$0.a(fxs.a.b);
-      List<ddb> $$9 = $$2 ? Collections.emptyList() : $$0.a(fxs.a.c);
-      int $$10 = $$8.size();
-      int $$11 = $$10 + $$9.size();
-      int $$12 = $$11 <= 16 ? 4 : 5;
-      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
-      this.h = $$3;
-      this.i = $$4;
-      float $$14 = (float)(this.h + Math.min($$11, $$12) * 25);
-      float $$15 = (float)($$5 + 50);
-      if ($$14 > $$15) {
-         this.h = (int)((float)this.h - $$7 * (float)((int)(($$14 - $$15) / $$7)));
-      }
-
-      float $$16 = (float)(this.i + $$13 * 25);
-      float $$17 = (float)($$6 + 50);
-      if ($$16 > $$17) {
-         this.i = (int)((float)this.i - $$7 * (float)azu.f(($$16 - $$17) / $$7));
-      }
-
-      float $$18 = (float)this.i;
-      float $$19 = (float)($$6 - 100);
-      if ($$18 < $$19) {
-         this.i = (int)((float)this.i - $$7 * (float)azu.f(($$18 - $$19) / $$7));
-      }
-
-      this.g = true;
-      this.f.clear();
-
-      for (int $$20 = 0; $$20 < $$11; $$20++) {
-         boolean $$21 = $$20 < $$10;
-         ddb $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
-         int $$23 = this.h + 4 + 25 * ($$20 % $$12);
-         int $$24 = this.i + 5 + 25 * ($$20 / $$12);
-         if (this.m) {
-            this.f.add(new fxn.c($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
-         } else {
-            this.f.add(new fxn.a($$23, $$24, $$22.a(), $$22.b(), $$1, $$21));
-         }
-      }
-
-      this.k = null;
-   }
-
-   public fxs a() {
-      return this.j;
-   }
-
+   private foz<bsg> F;
    @Nullable
-   public ddc b() {
-      return this.k;
+   private fpi G;
+
+   public fxn(fuk $$0, fln $$1) {
+      super(a);
+      this.D = $$0;
+      this.E = $$1;
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if ($$2 != 0) {
-         return false;
+   protected void aR_() {
+      fsk $$0 = this.C.a(fsk.d().a(8));
+      $$0.a(new fpz(a, this.p), fsj::b);
+      fsk $$1 = $$0.a(fsk.e()).a(8);
+      $$1.a(this.E.ak().a(this.m.n));
+      $$1.a(this.m());
+      fsf $$2 = new fsf();
+      $$2.c().f(4).e(4).b();
+      fsf.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new fxp(this, this.E)));
+      $$3.a(this.a(c, () -> new fxq(this, this.E)));
+      $$3.a(this.a(d, () -> new fxs(this, this.m, this.E)));
+      $$3.a(this.a(s, () -> new fxt(this, this.E)));
+      $$3.a(this.a(u, () -> new fxk(this, this.E, this.m.ah())));
+      $$3.a(this.a(v, () -> new fxi(this, this.E)));
+      $$3.a(this.a(w, () -> new fya(this.m.ad(), this::a, this.m.ag(), wo.c("resourcePack.title"))));
+      $$3.a(this.a(x, () -> new fxh(this, this.E)));
+      fos $$4 = $$3.a(this.a(y, () -> new fzf(this, this.E)));
+      if (!this.m.E()) {
+         $$4.j = false;
+         $$4.a(z);
+      }
+
+      $$3.a(this.a(A, () -> new ftm(this)));
+      this.C.c($$2);
+      this.C.b(fos.a(wn.d, $$0x -> this.aO_()).a(200).a());
+      this.C.a($$1x -> {
+         fop var10000 = this.c($$1x);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.C.a();
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.D);
+   }
+
+   private void a(aua $$0) {
+      this.E.a($$0);
+      this.m.a(this);
+   }
+
+   private fsi m() {
+      if (this.m.s != null && this.m.U()) {
+         this.F = a(0, 0, "options.difficulty", this.m);
+         if (!this.m.s.k().l()) {
+            this.G = new fpi(0, 0, $$0x -> this.m.a(new fti(this::c, wo.c("difficulty.lock.title"), wo.a("difficulty.lock.question", this.m.s.k().q().b()))));
+            this.F.h(this.F.A() - this.G.A());
+            this.G.b(this.m.s.k().r());
+            this.G.j = !this.G.a();
+            this.F.j = !this.G.a();
+            fsd $$0 = new fsd(150, 0, fsd.b.a);
+            $$0.a(this.F);
+            $$0.a(this.G);
+            return $$0;
+         } else {
+            this.F.j = false;
+            return this.F;
+         }
       } else {
-         for (fxn.b $$3 : this.f) {
-            if ($$3.a($$0, $$1, $$2)) {
-               this.k = $$3.b;
-               return true;
-            }
-         }
+         return fos.a(wo.c("options.online"), $$0x -> this.m.a(new fxm(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
+      }
+   }
 
-         return false;
+   public static foz<bsg> a(int $$0, int $$1, String $$2, flj $$3) {
+      return foz.a(bsg::b).a(bsg.values()).a($$3.s.am()).a($$0, $$1, 150, 20, wo.c($$2), ($$1x, $$2x) -> $$3.L().b(new agj($$2x)));
+   }
+
+   private void c(boolean $$0) {
+      this.m.a(this);
+      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
+         this.m.L().b(new ahd(true));
+         this.G.b(true);
+         this.G.j = false;
+         this.F.j = false;
       }
    }
 
    @Override
-   public boolean c(double $$0, double $$1) {
-      return false;
+   public void aI_() {
+      this.E.az();
    }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      if (this.g) {
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1000.0F);
-         int $$4 = this.f.size() <= 16 ? 4 : 5;
-         int $$5 = Math.min(this.f.size(), $$4);
-         int $$6 = azu.f((float)this.f.size() / (float)$$4);
-         int $$7 = 4;
-         $$0.a(glq::H, b, this.h, this.i, $$5 * 25 + 8, $$6 * 25 + 8);
-
-         for (fxn.b $$8 : this.f) {
-            $$8.a($$0, $$1, $$2, $$3);
-         }
-
-         $$0.c().b();
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.g = $$0;
-   }
-
-   public boolean c() {
-      return this.g;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public boolean aN_() {
-      return false;
-   }
-
-   class a extends fxn.b {
-      private static final alp b = alp.b("recipe_book/crafting_overlay");
-      private static final alp c = alp.b("recipe_book/crafting_overlay_highlighted");
-      private static final alp d = alp.b("recipe_book/crafting_overlay_disabled");
-      private static final alp e = alp.b("recipe_book/crafting_overlay_disabled_highlighted");
-      private static final int f = 3;
-      private static final int m = 3;
-
-      public a(final int $$0, final int $$1, final ddc $$2, final dda $$3, final bbf $$4, final boolean $$5) {
-         super($$0, $$1, $$2, $$5, a($$3, $$4));
-      }
-
-      private static List<fxn.b.a> a(dda $$0, bbf $$1) {
-         List<fxn.b.a> $$2 = new ArrayList<>();
-         Objects.requireNonNull($$0);
-         switch ($$0) {
-            case dde $$3:
-               ala.a(3, 3, $$3.b(), $$3.c(), $$3.f(), ($$2x, $$3x, $$4x, $$5x) -> {
-                  List<cxg> $$6x = $$2x.a($$1);
-                  if (!$$6x.isEmpty()) {
-                     $$2.add(a($$4x, $$5x, $$6x));
-                  }
-               });
-               break;
-            case ddf $$4:
-               label19: {
-                  List<ddg> $$5 = $$4.b();
-
-                  for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-                     List<cxg> $$7 = $$5.get($$6).a($$1);
-                     if (!$$7.isEmpty()) {
-                        $$2.add(a($$6 % 3, $$6 / 3, $$7));
-                     }
-                  }
-                  break label19;
-               }
-         }
-
-         return $$2;
-      }
-
-      @Override
-      protected alp b(boolean $$0) {
-         if ($$0) {
-            return this.B() ? c : b;
-         } else {
-            return this.B() ? e : d;
-         }
-      }
-   }
-
-   abstract class b extends fnw {
-      final ddc b;
-      private final boolean c;
-      private final List<fxn.b.a> d;
-
-      public b(final int $$0, final int $$1, final ddc $$2, final boolean $$3, final List<fxn.b.a> $$4) {
-         super($$0, $$1, 24, 24, xj.a);
-         this.d = $$4;
-         this.b = $$2;
-         this.c = $$3;
-      }
-
-      protected static fxn.b.a a(int $$0, int $$1, List<cxg> $$2) {
-         return new fxn.b.a(3 + $$0 * 7, 3 + $$1 * 7, $$2);
-      }
-
-      protected abstract alp b(boolean var1);
-
-      @Override
-      public void a(frw $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public void b(fnl $$0, int $$1, int $$2, float $$3) {
-         $$0.a(glq::H, this.b(this.c), this.D(), this.E(), this.g, this.h);
-         float $$4 = (float)(this.D() + 2);
-         float $$5 = (float)(this.E() + 2);
-         float $$6 = 150.0F;
-
-         for (fxn.b.a $$7 : this.d) {
-            $$0.c().a();
-            $$0.c().a($$4 + (float)$$7.a, $$5 + (float)$$7.b, 150.0F);
-            $$0.c().b(0.375F, 0.375F, 1.0F);
-            $$0.c().a(-8.0F, -8.0F, 0.0F);
-            $$0.a($$7.a(fxn.this.l.currentIndex()), 0, 0);
-            $$0.c().b();
-         }
-      }
-
-      protected static record a(int a, int b, List<cxg> c) {
-
-         public a(int a, int b, List<cxg> c) {
-            if (c.isEmpty()) {
-               throw new IllegalArgumentException("Ingredient list must be non-empty");
-            } else {
-               this.a = a;
-               this.b = b;
-               this.c = c;
-            }
-         }
-
-         public cxg a(int $$0) {
-            return this.c.get($$0 % this.c.size());
-         }
-      }
-   }
-
-   class c extends fxn.b {
-      private static final alp b = alp.b("recipe_book/furnace_overlay");
-      private static final alp c = alp.b("recipe_book/furnace_overlay_highlighted");
-      private static final alp d = alp.b("recipe_book/furnace_overlay_disabled");
-      private static final alp e = alp.b("recipe_book/furnace_overlay_disabled_highlighted");
-
-      public c(final int $$0, final int $$1, final ddc $$2, final dda $$3, final bbf $$4, final boolean $$5) {
-         super($$0, $$1, $$2, $$5, a($$3, $$4));
-      }
-
-      private static List<fxn.b.a> a(dda $$0, bbf $$1) {
-         if ($$0 instanceof dcz $$2) {
-            List<cxg> $$3 = $$2.b().a($$1);
-            if (!$$3.isEmpty()) {
-               return List.of(a(1, 1, $$3));
-            }
-         }
-
-         return List.of();
-      }
-
-      @Override
-      protected alp b(boolean $$0) {
-         if ($$0) {
-            return this.B() ? c : b;
-         } else {
-            return this.B() ? e : d;
-         }
-      }
+   private fos a(wo $$0, Supplier<fuk> $$1) {
+      return fos.a($$0, $$1x -> this.m.a($$1.get())).a();
    }
 }

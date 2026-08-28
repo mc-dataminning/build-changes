@@ -1,44 +1,33 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Map;
 
-public record dep(kl d, Optional<eeq> e, eku f, Optional<jq<eck>> g) implements deh {
-   public static final MapCodec<dep> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kl.g.optionalFieldOf("offset", kl.h).forGetter(dep::b),
-               eeq.b.optionalFieldOf("predicate").forGetter(dep::c),
-               eku.a.fieldOf("block_state").forGetter(dep::d),
-               eck.aj.optionalFieldOf("trigger_game_event").forGetter(dep::e)
-            )
-            .apply($$0, dep::new)
-   );
+public record dep(int a, Map<der, Integer> b, int c, jr<avz> d, float e, float f, axf<cwl> g, akt<des> h) {
+   public cwl.a a(cwl.a $$0, der $$1) {
+      return $$0.b($$1.a(this.a)).a(this.a($$1)).c(this.c).a(kv.D, deu.a($$1.a()).a(this.d).a(this.h).a()).a(this.g);
+   }
 
-   @Override
-   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
-      jh $$5 = jh.a((ka)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dZ(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+   public cwl.a a(cwl.a $$0, jv<bur<?>> $$1) {
+      return $$0.b(der.e.a(this.a)).a(this.a(der.e)).a(this.g).a(kv.D, deu.a(bus.g).a(this.d).a(this.h).a($$1).a());
+   }
+
+   public cwl.a a(cwl.a $$0, jr<avz> $$1, boolean $$2, jv<bur<?>> $$3) {
+      if ($$2) {
+         $$0 = $$0.b(der.e.a(this.a)).a(this.g);
       }
+
+      return $$0.a(this.a(der.e)).a(kv.D, deu.a(bus.g).a($$1).a(this.h).a($$3).c($$2).a());
    }
 
-   @Override
-   public MapCodec<dep> a() {
-      return a;
-   }
+   private czg a(der $$0) {
+      int $$1 = this.b.getOrDefault($$0, 0);
+      czg.a $$2 = czg.a();
+      but $$3 = but.a($$0.a());
+      aku $$4 = aku.b("armor." + $$0.b());
+      $$2.a(bwo.a, new bwm($$4, (double)$$1, bwm.a.a), $$3);
+      $$2.a(bwo.b, new bwm($$4, (double)this.e, bwm.a.a), $$3);
+      if (this.f > 0.0F) {
+         $$2.a(bwo.p, new bwm($$4, (double)this.f, bwm.a.a), $$3);
+      }
 
-   public kl b() {
-      return this.d;
-   }
-
-   public Optional<eeq> c() {
-      return this.e;
-   }
-
-   public eku d() {
-      return this.f;
-   }
-
-   public Optional<jq<eck>> e() {
-      return this.g;
+      return $$2.a();
    }
 }

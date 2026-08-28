@@ -1,144 +1,103 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
+import java.util.Optional;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gft {
+   private static final Logger a = LogUtils.getLogger();
+   private final flj b;
+   private final hkb c;
+   private final an d = new an();
+   private final Map<ai, ak> e = new Object2ObjectOpenHashMap();
    @Nullable
-   private gft.a a;
+   private gft.a f;
    @Nullable
-   private gft.b b;
+   private ai g;
 
-   public void a(alo<? extends kd<?>> $$0, List<kh.a> $$1) {
-      if (this.a == null) {
-         this.a = new gft.a();
+   public gft(flj $$0, hkb $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public void a(afw $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
 
-      this.a.a($$0, $$1);
-   }
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-   public void a(Map<alo<? extends kd<?>>, ayc.a> $$0) {
-      if (this.b == null) {
-         this.b = new gft.b();
-      }
+      for (Entry<aku, ak> $$1 : $$0.f().entrySet()) {
+         aj $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ak $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
 
-      $$0.forEach(this.b::a);
-   }
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
 
-   private static <T> kd.a<T> a(ke.b $$0, alo<? extends kd<? extends T>> $$1, ayc.a $$2) {
-      kd<T> $$3 = $$0.e($$1);
-      return $$3.a($$2.a($$3));
-   }
-
-   private ke a(avo $$0, gft.a $$1, boolean $$2) {
-      jx<gfi> $$3 = gfi.a();
-      ke.b $$4 = $$3.b(gfi.b);
-      Map<alo<? extends kd<?>>, alk.c> $$5 = new HashMap<>();
-      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new alk.c($$2x, ayc.a.a)));
-      List<kd.a<?>> $$6 = new ArrayList<>();
-      if (this.b != null) {
-         this.b.a(($$4x, $$5x) -> {
-            if (!$$5x.a()) {
-               if (kh.a($$4x)) {
-                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
-                     List<kh.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
-                     return new alk.c($$3xx, $$5x);
-                  });
-               } else if (!$$2) {
-                  $$6.add(a($$4, $$4x, $$5x));
+               Optional<au> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.aA().a(new fqz($$2.b()));
                }
             }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
+         }
+      }
+   }
+
+   public an a() {
+      return this.d;
+   }
+
+   public void a(@Nullable ai $$0, boolean $$1) {
+      gfz $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(ahs.a($$0));
+      }
+
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
+      }
+   }
+
+   public void a(@Nullable gft.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            aj $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
          });
-      }
-
-      List<js.b<?>> $$7 = ayb.a($$4, $$6);
-
-      ke.b $$8;
-      try {
-         $$8 = alk.a($$5, $$0, $$7, alk.c).e();
-      } catch (Exception var13) {
-         o $$10 = o.a(var13, "Network Registry Load");
-         a($$10, $$5, $$6);
-         throw new z($$10);
-      }
-
-      ke $$12 = $$3.a(gfi.b, $$8).a();
-      $$6.forEach(kd.a::d);
-      return $$12;
-   }
-
-   private static void a(o $$0, Map<alo<? extends kd<?>>, alk.c> $$1, List<kd.a<?>> $$2) {
-      p $$3 = $$0.a("Received Elements and Tags");
-      $$3.a(
-         "Dynamic Registries",
-         () -> $$1.entrySet()
-               .stream()
-               .sorted(Comparator.comparing($$0xx -> ((alo)$$0xx.getKey()).a()))
-               .map(
-                  $$0xx -> String.format(
-                        Locale.ROOT,
-                        "\n\t\t%s: elements=%d tags=%d",
-                        ((alo)$$0xx.getKey()).a(),
-                        ((alk.c)$$0xx.getValue()).a().size(),
-                        ((alk.c)$$0xx.getValue()).b().b()
-                     )
-               )
-               .collect(Collectors.joining())
-      );
-      $$3.a(
-         "Static Registries",
-         () -> $$2.stream()
-               .sorted(Comparator.comparing($$0xx -> $$0xx.a().a()))
-               .map($$0xx -> String.format(Locale.ROOT, "\n\t\t%s: tags=%d", $$0xx.a().a(), $$0xx.b()))
-               .collect(Collectors.joining())
-      );
-   }
-
-   private void a(gft.b $$0, ke.b $$1, boolean $$2) {
-      $$0.a(($$2x, $$3) -> {
-         if ($$2 || kh.a($$2x)) {
-            a($$1, $$2x, $$3).d();
-         }
-      });
-   }
-
-   public ke.b a(avo $$0, ke.b $$1, boolean $$2) {
-      ke $$3;
-      if (this.a != null) {
-         $$3 = this.a($$0, this.a, $$2);
-      } else {
-         if (this.b != null) {
-            this.a(this.b, $$1, !$$2);
-         }
-
-         $$3 = $$1;
-      }
-
-      return $$3.e();
-   }
-
-   static class a {
-      final Map<alo<? extends kd<?>>, List<kh.a>> a = new HashMap<>();
-
-      public void a(alo<? extends kd<?>> $$0, List<kh.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
+         $$0.a(this.g);
       }
    }
 
-   static class b {
-      private final Map<alo<? extends kd<?>>, ayc.a> a = new HashMap<>();
+   @Nullable
+   public ai a(aku $$0) {
+      aj $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
 
-      public void a(alo<? extends kd<?>> $$0, ayc.a $$1) {
-         this.a.put($$0, $$1);
-      }
+   public interface a extends an.a {
+      void a(aj var1, ak var2);
 
-      public void a(BiConsumer<? super alo<? extends kd<?>>, ? super ayc.a> $$0) {
-         this.a.forEach($$0);
-      }
+      void a(@Nullable ai var1);
    }
 }

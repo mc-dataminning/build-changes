@@ -1,43 +1,19 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
 
-public class czc extends cxc {
-   public czc(cxc.a $$0) {
-      super($$0);
+public record czc(Map<jr<djm>, dxz<?>> c) {
+   public static final czc a = new czc(Map.of());
+   public static final Codec<czc> b = Codec.dispatchedMap(mb.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
+         dxz<?> $$2 = ((djm)$$0.a()).l().a($$1);
+         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
+      }, dxz::f)).xmap(czc::new, czc::a);
+
+   public czc a(jr<djm> $$0, dxz<?> $$1) {
+      return new czc(af.a(this.c, $$0, $$1));
    }
 
-   @Override
-   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
-      dao $$4 = $$0.a(ku.T);
-      if ($$4 != null) {
-         if (!bar.h($$4.e())) {
-            $$2.add(xk.a("book.byAuthor", $$4.e()).a(n.h));
-         }
-
-         $$2.add(xk.c("book.generation." + $$4.f()).a(n.h));
-      }
-   }
-
-   @Override
-   public bta a(dgz $$0, cpo $$1, bsz $$2) {
-      cxg $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(axf.c.b(this));
-      return bta.a;
-   }
-
-   public static boolean a(cxg $$0, ew $$1, @Nullable cpo $$2) {
-      dao $$3 = $$0.a(ku.T);
-      if ($$3 != null && !$$3.g()) {
-         dao $$4 = $$3.a($$1, $$2);
-         if ($$4 != null) {
-            $$0.b(ku.T, $$4);
-            return true;
-         }
-
-         $$0.b(ku.T, $$3.c());
-      }
-
-      return false;
+   public Map<jr<djm>, dxz<?>> a() {
+      return this.c;
    }
 }

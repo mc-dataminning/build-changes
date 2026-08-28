@@ -1,84 +1,71 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record dai(List<dai.a> c, float d, int e) {
-   public static final Codec<dai> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dai.a.a.listOf().fieldOf("rules").forGetter(dai::a),
-               Codec.FLOAT.optionalFieldOf("default_mining_speed", 1.0F).forGetter(dai::b),
-               azd.l.optionalFieldOf("damage_per_block", 1).forGetter(dai::c)
-            )
-            .apply($$0, dai::new)
-   );
-   public static final zi<wv, dai> b = zi.a(dai.a.b.a(zg.a()), dai::a, zg.l, dai::b, zg.h, dai::c, dai::new);
+public class dai {
+   @Nullable
+   private final cox a;
+   private final bsi b;
+   private final faw c;
+   private final dgi d;
+   private final cwp e;
 
-   public float a(dxo $$0) {
-      for (dai.a $$1 : this.c) {
-         if ($$1.d.isPresent() && $$0.a($$1.c)) {
-            return $$1.d.get();
-         }
-      }
-
-      return this.d;
+   public dai(cox $$0, bsi $$1, faw $$2) {
+      this($$0.dW(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean b(dxo $$0) {
-      for (dai.a $$1 : this.c) {
-         if ($$1.e.isPresent() && $$0.a($$1.c)) {
-            return $$1.e.get();
-         }
-      }
-
-      return false;
+   protected dai(dgi $$0, @Nullable cox $$1, bsi $$2, cwp $$3, faw $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public List<dai.a> a() {
+   protected final faw j() {
       return this.c;
    }
 
-   public float b() {
-      return this.d;
+   public ji a() {
+      return this.c.b();
    }
 
-   public int c() {
+   public jn k() {
+      return this.c.c();
+   }
+
+   public fba l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cwp n() {
       return this.e;
    }
 
-   public static record a(ju<dkd> c, Optional<Float> d, Optional<Boolean> e) {
-      public static final Codec<dai.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  kf.a(mb.f).fieldOf("blocks").forGetter(dai.a::a),
-                  azd.o.optionalFieldOf("speed").forGetter(dai.a::b),
-                  Codec.BOOL.optionalFieldOf("correct_for_drops").forGetter(dai.a::c)
-               )
-               .apply($$0, dai.a::new)
-      );
-      public static final zi<wv, dai.a> b = zi.a(zg.c(mb.f), dai.a::a, zg.l.a(zg::a), dai.a::b, zg.b.a(zg::a), dai.a::c, dai.a::new);
+   @Nullable
+   public cox o() {
+      return this.a;
+   }
 
-      public static dai.a a(ju<dkd> $$0, float $$1) {
-         return new dai.a($$0, Optional.of($$1), Optional.of(true));
-      }
+   public bsi p() {
+      return this.b;
+   }
 
-      public static dai.a a(ju<dkd> $$0) {
-         return new dai.a($$0, Optional.empty(), Optional.of(false));
-      }
+   public dgi q() {
+      return this.d;
+   }
 
-      public static dai.a b(ju<dkd> $$0, float $$1) {
-         return new dai.a($$0, Optional.of($$1), Optional.empty());
-      }
+   public jn g() {
+      return this.a == null ? jn.c : this.a.cO();
+   }
 
-      public ju<dkd> a() {
-         return this.c;
-      }
+   public boolean h() {
+      return this.a != null && this.a.fY();
+   }
 
-      public Optional<Float> b() {
-         return this.d;
-      }
-
-      public Optional<Boolean> c() {
-         return this.e;
-      }
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dM();
    }
 }

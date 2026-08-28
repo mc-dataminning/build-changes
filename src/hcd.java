@@ -1,9 +1,20 @@
-public class hcd extends hck {
-   public hcd(hbh $$0) {
-      super($$0, alp.b("textures/atlas/map_decorations.png"), alp.b("map_decorations"));
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public record hcd(boolean b) implements hbu {
+   public static final MapCodec<hcd> a = MapCodec.unit(hcd::new);
+
+   public hcd() {
+      this(goo.b());
    }
 
-   public hbg a(eve $$0) {
-      return this.a($$0.a());
+   @Override
+   public boolean a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      return this.b;
+   }
+
+   @Override
+   public MapCodec<hcd> a() {
+      return a;
    }
 }

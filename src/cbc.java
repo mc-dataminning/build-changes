@@ -1,67 +1,59 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
+public class cbc implements cbd {
+   private final bvi a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-public class cbc {
-   public static bxr<cpa> a(float $$0) {
-      return cbd.a(
-         (Function<cbd.b<cpa>, ? extends App<cbd.c<cpa>, cbg<cpa>>>)($$1 -> $$1.group($$1.b(cfb.d), $$1.c(cfb.c), $$1.b(cfb.g), $$1.a(cfb.m), $$1.a(cfb.n))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.e_()) {
-                           return false;
-                        } else if ($$7.gy().b() != cpd.b) {
-                           return false;
-                        } else {
-                           jh $$9 = $$1.<jp>b($$2).b();
-                           Optional<jq<che>> $$10 = $$6x.A().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<bvx>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof cpa && $$1xxx != $$7)
-                                 .map($$0xxxx -> (cpa)$$0xxxx)
-                                 .filter(bvx::bL)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.ec().c(cfb.c).isEmpty()) {
-                                       bxs.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.ec().a(cfb.d, jp.a($$6x.ai(), $$9));
-                                       agy.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+   public cbc(bvi $$0) {
+      this.a = $$0;
    }
 
-   private static boolean a(jq<che> $$0, cpa $$1, jh $$2) {
-      boolean $$3 = $$1.ec().c(cfb.d).isPresent();
-      if ($$3) {
-         return false;
+   public void a() {
+      if (this.f()) {
+         this.a.aX = this.a.dM();
+         this.c();
+         this.f = this.a.aZ;
+         this.e = 0;
       } else {
-         Optional<jp> $$4 = $$1.ec().c(cfb.c);
-         cpd $$5 = $$1.gy().b();
-         if ($$5.b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
+         if (this.e()) {
+            if (Math.abs(this.a.aZ - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aZ;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
       }
    }
 
-   private static boolean a(bwf $$0, jh $$1, che $$2) {
-      eue $$3 = $$0.L().a($$1, $$2.c());
-      return $$3 != null && $$3.j();
+   private void b() {
+      this.a.aX = ayz.c(this.a.aX, this.a.aZ, (float)this.a.ab());
+   }
+
+   private void c() {
+      this.a.aZ = ayz.c(this.a.aZ, this.a.aX, (float)this.a.ab());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = ayz.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ab() * (1.0F - $$1);
+      this.a.aX = ayz.c(this.a.aX, this.a.aZ, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.da() instanceof bvi);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dB() - this.a.K;
+      double $$1 = this.a.dH() - this.a.M;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

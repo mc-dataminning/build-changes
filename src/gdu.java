@@ -1,139 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+import java.util.Arrays;
 
-public class gdu extends gbh<haa> {
-   private static final float m = 13.0F;
-   private static final float n = 1.0F;
-   protected final gej a;
-   protected final gej b;
-   protected final gej c;
-   protected final gej d;
-   protected final gej e;
-   protected final gej f;
-   protected final gej g;
-   protected final gej i;
-   protected final gej j;
-   protected final gej k;
-   protected final gej l;
-   private final List<gej> o;
-   private final List<gej> p;
-   private final List<gej> q;
-   private final List<gej> r;
+public class gdu extends gca<gyi> {
+   private static final int a = 7;
+   private final gfc[] b = new gfc[7];
+   private final gfc[] c = new gfc[3];
+   private static final int[][] d = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
+   private static final int[][] e = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
 
-   public gdu(gej $$0) {
-      super($$0, glq::g);
-      this.a = $$0.b("bone");
-      this.b = this.a.b("body");
-      this.c = this.b.b("head");
-      this.k = this.a.b("right_leg");
-      this.f = this.a.b("left_leg");
-      this.j = this.b.b("right_arm");
-      this.g = this.b.b("left_arm");
-      this.d = this.c.b("right_tendril");
-      this.e = this.c.b("left_tendril");
-      this.l = this.b.b("right_ribcage");
-      this.i = this.b.b("left_ribcage");
-      this.o = ImmutableList.of(this.e, this.d);
-      this.p = ImmutableList.of(this.b);
-      this.q = ImmutableList.of(this.c, this.g, this.j, this.f, this.k);
-      this.r = ImmutableList.of(this.b, this.c, this.g, this.j, this.f, this.k);
+   public gdu(gfc $$0) {
+      super($$0);
+      Arrays.setAll(this.b, $$1 -> $$0.b(b($$1)));
+      Arrays.setAll(this.c, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      get $$2 = $$1.a("bone", geo.c(), gel.a(0.0F, 24.0F, 0.0F));
-      get $$3 = $$2.a("body", geo.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), gel.a(0.0F, -21.0F, 0.0F));
-      $$3.a("right_ribcage", geo.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), gel.a(-7.0F, -2.0F, -4.0F));
-      $$3.a("left_ribcage", geo.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), gel.a(7.0F, -2.0F, -4.0F));
-      get $$4 = $$3.a("head", geo.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), gel.a(0.0F, -13.0F, 0.0F));
-      $$4.a("right_tendril", geo.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), gel.a(-8.0F, -12.0F, 0.0F));
-      $$4.a("left_tendril", geo.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), gel.a(8.0F, -12.0F, 0.0F));
-      $$3.a("right_arm", geo.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), gel.a(-13.0F, -13.0F, 1.0F));
-      $$3.a("left_arm", geo.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), gel.a(13.0F, -13.0F, 1.0F));
-      $$2.a("right_leg", geo.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), gel.a(-5.9F, -13.0F, 0.0F));
-      $$2.a("left_leg", geo.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), gel.a(5.9F, -13.0F, 0.0F));
-      return gep.a($$0, 128, 128);
+   private static String a(int $$0) {
+      return "layer" + $$0;
    }
 
-   public void a(haa $$0) {
+   private static String b(int $$0) {
+      return "segment" + $$0;
+   }
+
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      float[] $$2 = new float[7];
+      float $$3 = -3.5F;
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         $$1.a(
+            b($$4),
+            gfh.c().a(e[$$4][0], e[$$4][1]).a((float)d[$$4][0] * -0.5F, 0.0F, (float)d[$$4][2] * -0.5F, (float)d[$$4][0], (float)d[$$4][1], (float)d[$$4][2]),
+            gfe.a(0.0F, (float)(24 - d[$$4][1]), $$3)
+         );
+         $$2[$$4] = $$3;
+         if ($$4 < 6) {
+            $$3 += (float)(d[$$4][2] + d[$$4 + 1][2]) * 0.5F;
+         }
+      }
+
+      $$1.a(a(0), gfh.c().a(20, 0).a(-5.0F, 0.0F, (float)d[2][2] * -0.5F, 10.0F, 8.0F, (float)d[2][2]), gfe.a(0.0F, 16.0F, $$2[2]));
+      $$1.a(a(1), gfh.c().a(20, 11).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 4.0F, (float)d[4][2]), gfe.a(0.0F, 20.0F, $$2[4]));
+      $$1.a(a(2), gfh.c().a(20, 18).a(-3.0F, 0.0F, (float)d[4][2] * -0.5F, 6.0F, 5.0F, (float)d[1][2]), gfe.a(0.0F, 19.0F, $$2[1]));
+      return gfi.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(gyi $$0) {
       super.a($$0);
-      this.a($$0.U, $$0.V);
-      this.b($$0.X, $$0.Y);
-      this.a($$0.p);
-      this.a($$0, $$0.p);
-      this.a($$0.g, fmx.e, $$0.p);
-      this.a($$0.h, fmx.f, $$0.p);
-      this.a($$0.f, fmx.b, $$0.p);
-      this.a($$0.e, fmx.a, $$0.p);
-      this.a($$0.c, fmx.c, $$0.p);
-      this.a($$0.d, fmx.d, $$0.p);
-   }
 
-   private void a(float $$0, float $$1) {
-      this.c.e = $$1 * (float) (Math.PI / 180.0);
-      this.c.f = $$0 * (float) (Math.PI / 180.0);
-   }
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1].f = ayz.b($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$1 - 2));
+         this.b[$$1].b = ayz.a($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$1 - 2);
+      }
 
-   private void a(float $$0) {
-      float $$1 = $$0 * 0.1F;
-      float $$2 = azu.b($$1);
-      float $$3 = azu.a($$1);
-      this.c.g += 0.06F * $$2;
-      this.c.e += 0.06F * $$3;
-      this.b.g += 0.025F * $$3;
-      this.b.e += 0.025F * $$2;
-   }
-
-   private void b(float $$0, float $$1) {
-      float $$2 = Math.min(0.5F, 3.0F * $$1);
-      float $$3 = $$0 * 0.8662F;
-      float $$4 = azu.b($$3);
-      float $$5 = azu.a($$3);
-      float $$6 = Math.min(0.35F, $$2);
-      this.c.g += 0.3F * $$5 * $$2;
-      this.c.e = this.c.e + 1.2F * azu.b($$3 + (float) (Math.PI / 2)) * $$6;
-      this.b.g = 0.1F * $$5 * $$2;
-      this.b.e = 1.0F * $$4 * $$6;
-      this.f.e = 1.0F * $$4 * $$2;
-      this.k.e = 1.0F * azu.b($$3 + (float) Math.PI) * $$2;
-      this.g.e = -(0.8F * $$4 * $$2);
-      this.g.g = 0.0F;
-      this.j.e = -(0.8F * $$5 * $$2);
-      this.j.g = 0.0F;
-      this.b();
-   }
-
-   private void b() {
-      this.g.f = 0.0F;
-      this.g.d = 1.0F;
-      this.g.b = 13.0F;
-      this.g.c = -13.0F;
-      this.j.f = 0.0F;
-      this.j.d = 1.0F;
-      this.j.b = -13.0F;
-      this.j.c = -13.0F;
-   }
-
-   private void a(haa $$0, float $$1) {
-      float $$2 = $$0.a * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
-      this.e.e = $$2;
-      this.d.e = -$$2;
-   }
-
-   public List<gej> b(haa $$0) {
-      return this.o;
-   }
-
-   public List<gej> c(haa $$0) {
-      return this.p;
-   }
-
-   public List<gej> d(haa $$0) {
-      return this.q;
-   }
-
-   public List<gej> e(haa $$0) {
-      return this.r;
+      this.c[0].f = this.b[2].f;
+      this.c[1].f = this.b[4].f;
+      this.c[1].b = this.b[4].b;
+      this.c[2].f = this.b[1].f;
+      this.c[2].b = this.b[1].b;
    }
 }

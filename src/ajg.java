@@ -1,7 +1,8 @@
-public class ajg {
-   public static final zt<ajf> a = a("intention");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private static <T extends zr<aji>> zt<T> a(String $$0) {
-      return new zt<>(zs.a, alp.b($$0));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajg {
 }

@@ -1,11 +1,7 @@
-public class gyf extends gxr {
-   public ckb a;
-   public cjw h;
-   public cxg i;
+import javax.annotation.Nullable;
 
-   public gyf() {
-      this.a = ckb.a;
-      this.h = cjw.a;
-      this.i = cxg.j;
-   }
+public class gyf extends gyi {
+   public boolean a = true;
+   @Nullable
+   public fba b;
 }

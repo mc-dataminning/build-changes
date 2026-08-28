@@ -1,29 +1,20 @@
-public class ahz implements zr<ahb> {
-   public static final zi<wh, ahz> a = zr.a(ahz::a, ahz::new);
-   private final boolean b;
+public record ahz(short b, cwp c) implements yv<agf> {
+   public static final ym<vz, ahz> a = ym.a(yk.e, ahz::b, cwp.a(cwp.g), ahz::e, ahz::new);
 
-   public ahz(boolean $$0) {
-      this.b = $$0;
-   }
-
-   private ahz(wh $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   public ahz(int $$0, cwp $$1) {
+      this((short)$$0, $$1);
    }
 
    @Override
-   public zt<ahz> a() {
-      return agz.bH;
+   public yx<ahz> a() {
+      return agd.cf;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.b;
+   public cwp e() {
+      return this.c;
    }
 }

@@ -1,10 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public class dig {
-   public static MapCodec<? extends dif> a(kd<MapCodec<? extends dif>> $$0) {
-      kd.a($$0, "fixed", dim.b);
-      kd.a($$0, "multi_noise", dio.c);
-      kd.a($$0, "checkerboard", dij.b);
-      return kd.a($$0, "the_end", dis.b);
+public abstract class dig<E extends dtz> extends diy {
+   protected final Supplier<dub<? extends E>> a;
+
+   protected dig(dww.d $$0, Supplier<dub<? extends E>> $$1) {
+      super($$0);
+      this.a = $$1;
    }
+
+   @Override
+   protected abstract MapCodec<? extends dig<E>> a();
+
+   public abstract dlu.c<? extends dug> a(dwx var1, dgi var2, ji var3, boolean var4);
 }

@@ -1,18 +1,34 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public final class fby extends fcl {
-   protected fby(fca $$0) {
-      super($$0);
+public record fby(String a, int b, @Nullable wo c, @Nullable ye d) {
+   public boolean a() {
+      return this.a.startsWith("#");
    }
 
-   @Override
-   public DoubleList a(jm.a $$0) {
-      return new fbx(this.a.c($$0));
+   public wo b() {
+      return (wo)(this.c != null ? this.c : wo.b(this.c()));
    }
 
-   @Override
-   protected int a(jm.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return azu.a(azu.a($$1 * (double)$$2, -1.0, (double)$$2));
+   public xc a(ye $$0) {
+      return Objects.requireNonNullElse(this.d, $$0).a(this.b);
+   }
+
+   public String c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   @Nullable
+   public wo e() {
+      return this.c;
+   }
+
+   @Nullable
+   public ye f() {
+      return this.d;
    }
 }

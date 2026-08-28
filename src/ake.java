@@ -1,3 +1,8 @@
-public interface ake extends wq {
-   void a(akf var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ake {
 }

@@ -1,18 +1,41 @@
-import java.util.Optional;
+public record aiq(int b, ajd c) implements yv<aip> {
+   public static final ym<vl, aiq> a = yv.a(aiq::a, aiq::new);
+   private static final int d = 1048576;
 
-public record aiq(Optional<jq<bue>> b, Optional<jq<bue>> c) implements zr<ahb> {
-   public static final zi<wv, aiq> a = zi.a(bue.b.a(zg::a), aiq::b, bue.b.a(zg::a), aiq::e, aiq::new);
-
-   @Override
-   public zt<aiq> a() {
-      return agz.ca;
+   private aiq(vl $$0) {
+      this($$0.l(), a($$0.q(), $$0));
    }
 
-   public void a(ahb $$0) {
+   private static ajd a(aku $$0, vl $$1) {
+      return b($$0, $$1);
+   }
+
+   private static ajf b(aku $$0, vl $$1) {
+      int $$2 = $$1.readableBytes();
+      if ($$2 >= 0 && $$2 <= 1048576) {
+         $$1.k($$2);
+         return new ajf($$0);
+      } else {
+         throw new IllegalArgumentException("Payload may not be larger than 1048576 bytes");
+      }
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c.a());
+      this.c.a($$0);
+   }
+
+   @Override
+   public yx<aiq> a() {
+      return aiv.a;
+   }
+
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   public Optional<jq<bue>> e() {
+   public ajd e() {
       return this.c;
    }
 }

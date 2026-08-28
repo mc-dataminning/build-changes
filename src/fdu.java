@@ -1,27 +1,35 @@
-import org.joml.Matrix4f;
+public interface fdu {
+   int a();
 
-public enum fdu {
-   a(fgt.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
-   b(fgt.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
+   int b();
 
-   private final fgt c;
-   private final fdu.a d;
+   void a(int var1, int var2);
 
-   private fdu(final fgt $$0, final fdu.a $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   boolean c();
+
+   float d();
+
+   default float e() {
+      return this.i();
    }
 
-   public fgt a() {
-      return this.c;
+   default float f() {
+      return this.e() + (float)this.a() / this.d();
    }
 
-   public void a(Matrix4f $$0, float $$1) {
-      this.d.apply($$0, $$1);
+   default float g() {
+      return 7.0F - this.j();
    }
 
-   @FunctionalInterface
-   interface a {
-      void apply(Matrix4f var1, float var2);
+   default float h() {
+      return this.g() + (float)this.b() / this.d();
+   }
+
+   default float i() {
+      return 0.0F;
+   }
+
+   default float j() {
+      return 7.0F;
    }
 }

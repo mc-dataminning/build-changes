@@ -1,24 +1,18 @@
-public class cdy extends ccv {
-   private final bwf a;
+import javax.annotation.Nullable;
 
-   public cdy(bwf $$0) {
-      this.a = $$0;
+public class cdy<T extends bvg> extends cdx<T> {
+   private boolean i = true;
+
+   public cdy(cql $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cfx.a $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public void a(boolean $$0) {
+      this.i = $$0;
    }
 
    @Override
    public boolean b() {
-      return this.a.dW().V() && this.a.a(bvj.f).f() && cgt.a(this.a);
-   }
-
-   @Override
-   public void d() {
-      ((cfi)this.a.L()).d(true);
-   }
-
-   @Override
-   public void e() {
-      if (cgt.a(this.a)) {
-         ((cfi)this.a.L()).d(false);
-      }
+      return this.i && super.b();
    }
 }

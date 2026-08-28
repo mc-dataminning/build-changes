@@ -1,18 +1,8 @@
-import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.ArgumentType;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface is<A extends ArgumentType<?>, T extends is.a<A>> {
-   void a(T var1, wh var2);
-
-   T b(wh var1);
-
-   void a(T var1, JsonObject var2);
-
-   T a(A var1);
-
-   public interface a<A extends ArgumentType<?>> {
-      A b(es var1);
-
-      is<A, ?> a();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface is {
 }

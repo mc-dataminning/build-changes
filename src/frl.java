@@ -1,111 +1,115 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.blaze3d.platform.TextureUtil;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public class frl extends fri {
-   private final List<frl.a> c = new ArrayList<>();
-   private int d;
-   private int e;
-   private final frq f = frq.i().a(0.5F, 0.5F);
+public class frl extends hdu implements hdv {
+   private static final int d = 256;
+   private final frm e;
+   private final boolean f;
+   private final frl.a g;
 
-   public frl() {
-      this(0, 0, 0, 0);
-   }
-
-   public frl(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public frl(int $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$2, $$3);
-   }
-
-   public frl a(int $$0, int $$1) {
-      return this.b($$0).a($$1);
-   }
-
-   public frl a(int $$0) {
+   public frl(frm $$0, boolean $$1) {
+      this.f = $$1;
+      this.g = new frl.a(0, 0, 256, 256);
+      TextureUtil.prepareImage($$1 ? feu.b.a : feu.b.d, this.a(), 256, 256);
       this.e = $$0;
-      return this;
-   }
-
-   public frl b(int $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public frq b() {
-      return this.f.g();
-   }
-
-   public frq c() {
-      return this.f;
    }
 
    @Override
-   public void a() {
-      super.a();
-      int $$0 = this.d;
-      int $$1 = this.e;
-
-      for (frl.a $$2 : this.c) {
-         $$0 = Math.max($$0, $$2.b());
-         $$1 = Math.max($$1, $$2.a());
-      }
-
-      for (frl.a $$3 : this.c) {
-         $$3.a(this.D(), $$0);
-         $$3.b(this.E(), $$1);
-      }
-
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public <T extends frp> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends frp> T a(T $$0, frq $$1) {
-      this.c.add(new frl.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends frp> T a(T $$0, Consumer<frq> $$1) {
-      return this.a($$0, ae.a(this.b(), $$1));
+   public void a(aup $$0) {
    }
 
    @Override
-   public void b(Consumer<frp> $$0) {
-      this.c.forEach($$1 -> $$0.accept($$1.a));
+   public void close() {
+      this.b();
    }
 
-   public static void a(frp $$0, int $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
+   @Nullable
+   public fro a(fdu $$0) {
+      if ($$0.c() != this.f) {
+         return null;
+      } else {
+         frl.a $$1 = this.g.a($$0);
+         if ($$1 != null) {
+            this.d();
+            $$0.a($$1.a, $$1.b);
+            float $$2 = 256.0F;
+            float $$3 = 256.0F;
+            float $$4 = 0.01F;
+            return new fro(
+               this.e,
+               ((float)$$1.a + 0.01F) / 256.0F,
+               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
+               ((float)$$1.b + 0.01F) / 256.0F,
+               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
+               $$0.e(),
+               $$0.f(),
+               $$0.g(),
+               $$0.h()
+            );
+         } else {
+            return null;
+         }
+      }
    }
 
-   public static void a(frp $$0, fsg $$1) {
-      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   @Override
+   public void a(aku $$0, Path $$1) {
+      String $$2 = $$0.c();
+      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
    }
 
-   public static void a(frp $$0, fsg $$1, float $$2, float $$3) {
-      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
-   }
+   static class a {
+      final int a;
+      final int b;
+      private final int c;
+      private final int d;
+      @Nullable
+      private frl.a e;
+      @Nullable
+      private frl.a f;
+      private boolean g;
 
-   public static void a(frp $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
-      a($$1, $$3, $$0.y(), $$0::k, $$5);
-      a($$2, $$4, $$0.w(), $$0::l, $$6);
-   }
+      a(int $$0, int $$1, int $$2, int $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
 
-   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
-      int $$5 = (int)azu.h($$4, 0.0F, (float)($$1 - $$2));
-      $$3.accept($$0 + $$5);
-   }
+      @Nullable
+      frl.a a(fdu $$0) {
+         if (this.e != null && this.f != null) {
+            frl.a $$1 = this.e.a($$0);
+            if ($$1 == null) {
+               $$1 = this.f.a($$0);
+            }
 
-   static class a extends fri.a {
-      protected a(frp $$0, frq $$1) {
-         super($$0, $$1);
+            return $$1;
+         } else if (this.g) {
+            return null;
+         } else {
+            int $$2 = $$0.a();
+            int $$3 = $$0.b();
+            if ($$2 > this.c || $$3 > this.d) {
+               return null;
+            } else if ($$2 == this.c && $$3 == this.d) {
+               this.g = true;
+               return this;
+            } else {
+               int $$4 = this.c - $$2;
+               int $$5 = this.d - $$3;
+               if ($$4 > $$5) {
+                  this.e = new frl.a(this.a, this.b, $$2, this.d);
+                  this.f = new frl.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
+               } else {
+                  this.e = new frl.a(this.a, this.b, this.c, $$3);
+                  this.f = new frl.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
+               }
+
+               return this.e.a($$0);
+            }
+         }
       }
    }
 }

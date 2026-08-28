@@ -1,17 +1,23 @@
-public record aax(eco c, int d) implements aau {
-   public static final zi<wv, aax> a = zi.a(eco.d, aax::b, zg.h, aax::c, aax::new);
-   public static final aau.b<aax> b = aau.a("debug/game_event_listeners");
+import java.util.HashSet;
+import java.util.Set;
+
+public record aax(Set<aku> b) implements yv<aas> {
+   public static final ym<vl, aax> a = yv.a(aax::a, aax::new);
+
+   private aax(vl $$0) {
+      this($$0.a(HashSet::new, vl::q));
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b, vl::a);
+   }
 
    @Override
-   public aau.b<aax> a() {
-      return b;
+   public yx<aax> a() {
+      return aay.c;
    }
 
-   public eco b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public void a(aas $$0) {
+      $$0.a(this);
    }
 }

@@ -1,51 +1,71 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Predicate;
 
-public class ekw extends eky {
-   public static final MapCodec<ekw> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               azm.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               est.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               azd.o.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, ekw::new)
-   );
-   private final azm<Integer> i;
-   private final est.a j;
-   private final float k;
-   private final est l;
+public abstract class ekw {
+   public static final Codec<ekw> h = mb.X.q().dispatch(ekw::a, ekx::a);
 
-   public ekw(azm<Integer> $$0, est.a $$1, float $$2, long $$3, est.a $$4, float $$5, List<dxo> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = est.b(new eei(new edk($$3)), $$1);
-   }
+   protected abstract ekx<?> a();
 
-   @Override
-   protected ekv<?> a() {
-      return ekv.e;
-   }
+   public abstract void a(ekw.a var1);
 
-   @Override
-   public dxo a(bac $$0, jh $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)azu.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dxo> $$4 = Lists.newArrayListWithCapacity($$3);
+   public static final class a {
+      private final dgo a;
+      private final BiConsumer<ji, dwx> b;
+      private final azh c;
+      private final ObjectArrayList<ji> d;
+      private final ObjectArrayList<ji> e;
+      private final ObjectArrayList<ji> f;
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      public a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, Set<ji> $$3, Set<ji> $$4, Set<ji> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(km::v));
+         this.e.sort(Comparator.comparingInt(km::v));
+         this.f.sort(Comparator.comparingInt(km::v));
       }
 
-      return this.a($$4, $$1, (double)this.e);
-   }
+      public void a(ji $$0, dxo $$1) {
+         this.a($$0, djo.ft.m().b($$1, Boolean.valueOf(true)));
+      }
 
-   protected double a(jh $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+      public void a(ji $$0, dwx $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(ji $$0) {
+         return this.a.a($$0, dww.a::l);
+      }
+
+      public boolean a(ji $$0, Predicate<dwx> $$1) {
+         return this.a.a($$0, $$1);
+      }
+
+      public dgo a() {
+         return this.a;
+      }
+
+      public azh b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ji> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ji> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ji> e() {
+         return this.f;
+      }
    }
 }

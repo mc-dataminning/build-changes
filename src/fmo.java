@@ -1,4 +1,21 @@
-import org.joml.Vector3f;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record fmo(float a, Vector3f b, fmm.a c) {
+public record fmo(int b) implements fmt {
+   public static final MapCodec<fmo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayi.i.fieldOf("value").forGetter(fmo::b)).apply($$0, fmo::new));
+
+   public fmo(int b) {
+      b = axk.f(b);
+      this.b = b;
+   }
+
+   @Override
+   public int a(cwp $$0) {
+      return this.b;
+   }
+
+   @Override
+   public MapCodec<fmo> a() {
+      return a;
+   }
 }

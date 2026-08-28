@@ -1,88 +1,164 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dnj extends dod {
+public class dnj extends diy {
    public static final MapCodec<dnj> a = b(dnj::new);
-   public static final int b = 3;
-   public static final dyn c = dye.av;
-   private static final int f = 4;
-   private static final int g = 2;
+   public static final dxu<jn> b = dxn.T;
+   public static final dxo c = dxn.j;
+   private static final fbu d = djm.a(0.0, 10.0, 0.0, 16.0, 16.0, 16.0);
+   private static final fbu e = djm.a(4.0, 4.0, 4.0, 12.0, 10.0, 12.0);
+   private static final fbu f = fbr.a(e, d);
+   private static final fbu g = a(2.0, 11.0, 2.0, 14.0, 16.0, 14.0);
+   private static final fbu h = fbr.a(f, g, fbe.e);
+   private static final fbu i = fbr.a(h, djm.a(6.0, 0.0, 6.0, 10.0, 4.0, 10.0));
+   private static final fbu j = fbr.a(h, djm.a(12.0, 4.0, 6.0, 16.0, 8.0, 10.0));
+   private static final fbu k = fbr.a(h, djm.a(6.0, 4.0, 0.0, 10.0, 8.0, 4.0));
+   private static final fbu l = fbr.a(h, djm.a(6.0, 4.0, 12.0, 10.0, 8.0, 16.0));
+   private static final fbu m = fbr.a(h, djm.a(0.0, 4.0, 6.0, 4.0, 8.0, 10.0));
+   private static final fbu n = g;
+   private static final fbu o = fbr.a(g, djm.a(12.0, 8.0, 6.0, 16.0, 10.0, 10.0));
+   private static final fbu G = fbr.a(g, djm.a(6.0, 8.0, 0.0, 10.0, 10.0, 4.0));
+   private static final fbu H = fbr.a(g, djm.a(6.0, 8.0, 12.0, 10.0, 10.0, 16.0));
+   private static final fbu I = fbr.a(g, djm.a(0.0, 8.0, 6.0, 4.0, 10.0, 10.0));
 
    @Override
    public MapCodec<dnj> a() {
       return a;
    }
 
-   public dnj(dxn.d $$0) {
+   public dnj(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(0)));
+      this.l(this.F.b().b(b, jn.a).b(c, Boolean.valueOf(true)));
    }
 
    @Override
-   public void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      $$1.a($$2, this, azu.a($$1.H_(), 60, 120));
-   }
-
-   @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
-         jh.a $$4 = new jh.a();
-
-         for (jm $$5 : jm.values()) {
-            $$4.a($$2, $$5);
-            dxo $$6 = $$1.a_($$4);
-            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
-               $$1.a($$4, this, azu.a($$3, 20, 40));
-            }
-         }
-      } else {
-         $$1.a($$2, this, azu.a($$3, 20, 40));
-      }
-   }
-
-   private boolean f(dxo $$0, dgz $$1, jh $$2) {
-      int $$3 = $$0.c(c);
-      if ($$3 < 3) {
-         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
-         return false;
-      } else {
-         this.e($$0, $$1, $$2);
-         return true;
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      switch ((jn)$$0.c(b)) {
+         case a:
+            return i;
+         case c:
+            return k;
+         case d:
+            return l;
+         case e:
+            return m;
+         case f:
+            return j;
+         default:
+            return h;
       }
    }
 
    @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
-      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
-         this.e($$0, $$1, $$2);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2) {
+      switch ((jn)$$0.c(b)) {
+         case a:
+            return n;
+         case c:
+            return G;
+         case d:
+            return H;
+         case e:
+            return I;
+         case f:
+            return o;
+         default:
+            return g;
       }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private boolean a(dge $$0, jh $$1, int $$2) {
-      int $$3 = 0;
-      jh.a $$4 = new jh.a();
+   @Override
+   public dwx a(dag $$0) {
+      jn $$1 = $$0.k().g();
+      return this.m().b(b, $$1.o() == jn.a.b ? jn.a : $$1).b(c, Boolean.valueOf(true));
+   }
 
-      for (jm $$5 : jm.values()) {
-         $$4.a($$1, $$5);
-         if ($$0.a_($$4).a(this)) {
-            if (++$$3 >= $$2) {
-               return false;
-            }
-         }
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dvb($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return $$0.C ? null : a($$2, dub.s, dvb::a);
+   }
+
+   @Override
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2, $$0);
+      }
+   }
+
+   @Override
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dvb $$5) {
+         $$3.a($$5);
+         $$3.a(awk.ad);
       }
 
+      return bsj.a;
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      this.a($$1, $$2, $$0);
+   }
+
+   private void a(dgi $$0, ji $$1, dwx $$2) {
+      boolean $$3 = !$$0.C($$1);
+      if ($$3 != $$2.c(c)) {
+         $$0.a($$1, $$2.b(c, Boolean.valueOf($$3)), 2);
+      }
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      bsf.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected dpx a_(dwx $$0) {
+      return dpx.c;
+   }
+
+   @Override
+   protected boolean c_(dwx $$0) {
       return true;
    }
 
    @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(c);
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return csc.a($$1.c_($$2));
    }
 
    @Override
-   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
-      return cxg.j;
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, buk $$3) {
+      dtz $$4 = $$1.c_($$2);
+      if ($$4 instanceof dvb) {
+         dvb.a($$1, $$2, $$0, $$3, (dvb)$$4);
+      }
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

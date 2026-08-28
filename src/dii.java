@@ -1,71 +1,63 @@
-public abstract class dii {
-   public static final alo<dib> a = a("the_void");
-   public static final alo<dib> b = a("plains");
-   public static final alo<dib> c = a("sunflower_plains");
-   public static final alo<dib> d = a("snowy_plains");
-   public static final alo<dib> e = a("ice_spikes");
-   public static final alo<dib> f = a("desert");
-   public static final alo<dib> g = a("swamp");
-   public static final alo<dib> h = a("mangrove_swamp");
-   public static final alo<dib> i = a("forest");
-   public static final alo<dib> j = a("flower_forest");
-   public static final alo<dib> k = a("birch_forest");
-   public static final alo<dib> l = a("dark_forest");
-   public static final alo<dib> m = a("pale_garden");
-   public static final alo<dib> n = a("old_growth_birch_forest");
-   public static final alo<dib> o = a("old_growth_pine_taiga");
-   public static final alo<dib> p = a("old_growth_spruce_taiga");
-   public static final alo<dib> q = a("taiga");
-   public static final alo<dib> r = a("snowy_taiga");
-   public static final alo<dib> s = a("savanna");
-   public static final alo<dib> t = a("savanna_plateau");
-   public static final alo<dib> u = a("windswept_hills");
-   public static final alo<dib> v = a("windswept_gravelly_hills");
-   public static final alo<dib> w = a("windswept_forest");
-   public static final alo<dib> x = a("windswept_savanna");
-   public static final alo<dib> y = a("jungle");
-   public static final alo<dib> z = a("sparse_jungle");
-   public static final alo<dib> A = a("bamboo_jungle");
-   public static final alo<dib> B = a("badlands");
-   public static final alo<dib> C = a("eroded_badlands");
-   public static final alo<dib> D = a("wooded_badlands");
-   public static final alo<dib> E = a("meadow");
-   public static final alo<dib> F = a("cherry_grove");
-   public static final alo<dib> G = a("grove");
-   public static final alo<dib> H = a("snowy_slopes");
-   public static final alo<dib> I = a("frozen_peaks");
-   public static final alo<dib> J = a("jagged_peaks");
-   public static final alo<dib> K = a("stony_peaks");
-   public static final alo<dib> L = a("river");
-   public static final alo<dib> M = a("frozen_river");
-   public static final alo<dib> N = a("beach");
-   public static final alo<dib> O = a("snowy_beach");
-   public static final alo<dib> P = a("stony_shore");
-   public static final alo<dib> Q = a("warm_ocean");
-   public static final alo<dib> R = a("lukewarm_ocean");
-   public static final alo<dib> S = a("deep_lukewarm_ocean");
-   public static final alo<dib> T = a("ocean");
-   public static final alo<dib> U = a("deep_ocean");
-   public static final alo<dib> V = a("cold_ocean");
-   public static final alo<dib> W = a("deep_cold_ocean");
-   public static final alo<dib> X = a("frozen_ocean");
-   public static final alo<dib> Y = a("deep_frozen_ocean");
-   public static final alo<dib> Z = a("mushroom_fields");
-   public static final alo<dib> aa = a("dripstone_caves");
-   public static final alo<dib> ab = a("lush_caves");
-   public static final alo<dib> ac = a("deep_dark");
-   public static final alo<dib> ad = a("nether_wastes");
-   public static final alo<dib> ae = a("warped_forest");
-   public static final alo<dib> af = a("crimson_forest");
-   public static final alo<dib> ag = a("soul_sand_valley");
-   public static final alo<dib> ah = a("basalt_deltas");
-   public static final alo<dib> ai = a("the_end");
-   public static final alo<dib> aj = a("end_highlands");
-   public static final alo<dib> ak = a("end_midlands");
-   public static final alo<dib> al = a("small_end_islands");
-   public static final alo<dib> am = a("end_barrens");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   private static alo<dib> a(String $$0) {
-      return alo.a(mb.aI, alp.b($$0));
+public abstract class dii extends diy {
+   public static final dxo a = dxn.B;
+   private final dqt.a b;
+
+   public dii(dqt.a $$0, dww.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.l(this.F.b().b(a, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected abstract MapCodec<? extends dii> a();
+
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dvo($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      if ($$0.C) {
+         boolean $$3 = $$1.a(djo.hl) || $$1.a(djo.hm) || $$1.a(djo.hn) || $$1.a(djo.ho);
+         if ($$3) {
+            return a($$2, dub.q, dvo::a);
+         }
+      }
+
+      return null;
+   }
+
+   public dqt.a b() {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public dwx a(dag $$0) {
+      return this.m().b(a, Boolean.valueOf($$0.q().C($$0.a())));
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

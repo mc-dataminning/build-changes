@@ -1,51 +1,23 @@
-import java.util.List;
+import java.util.Arrays;
+import java.util.stream.Stream;
 
-public class fxl extends fxo<csv> {
-   private static final fpm h = new fpm(
-      alp.b("recipe_book/furnace_filter_enabled"),
-      alp.b("recipe_book/furnace_filter_disabled"),
-      alp.b("recipe_book/furnace_filter_enabled_highlighted"),
-      alp.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final xk i;
+public class fxl extends fxo {
+   private static final wo a = wo.c("options.mouse_settings.title");
 
-   public fxl(csv $$0, xk $$1, List<fxo.a> $$2) {
-      super($$0, $$2);
-      this.i = $$1;
+   private static flm<?>[] a(fln $$0) {
+      return new flm[]{$$0.d(), $$0.U(), $$0.H(), $$0.V(), $$0.ac()};
+   }
+
+   public fxl(fuk $$0, fln $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   protected void a() {
-      this.e.a(h);
-   }
-
-   @Override
-   protected boolean a(cuq $$0) {
-      return switch ($$0.d) {
-         case 0, 1, 2 -> true;
-         default -> false;
-      };
-   }
-
-   @Override
-   protected void a(fxm $$0, dda $$1, bbf $$2) {
-      $$0.b(this.f.l(), $$2, $$1.d());
-      if ($$1 instanceof dcz $$3) {
-         $$0.a(this.f.k.get(0), $$2, $$3.b());
-         cuq $$4 = this.f.k.get(1);
-         if ($$4.g().f()) {
-            $$0.a($$4, $$2, $$3.c());
-         }
+   protected void m() {
+      if (fep.a()) {
+         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.I())).toArray(flm[]::new));
+      } else {
+         this.d.a(a(this.c));
       }
-   }
-
-   @Override
-   protected xk b() {
-      return this.i;
-   }
-
-   @Override
-   protected void a(fxs $$0, cpt $$1) {
-      $$0.a($$1, $$0x -> $$0x instanceof dcz);
    }
 }

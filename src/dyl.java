@@ -1,92 +1,58 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+public interface dyl {
+   void a(dyn var1, double var2);
 
-public final class dyl<T extends Enum<T> & baq> extends dyq<T> {
-   private final List<T> a;
-   private final Map<String, T> b;
-   private final int[] c;
+   void a(dyn var1, double var2, double var4, long var6);
 
-   private dyl(String $$0, Class<T> $$1, List<T> $$2) {
-      super($$0, $$1);
-      if ($$2.isEmpty()) {
-         throw new IllegalArgumentException("Trying to make empty EnumProperty '" + $$0 + "'");
-      } else {
-         this.a = List.copyOf($$2);
-         T[] $$3 = $$1.getEnumConstants();
-         this.c = new int[$$3.length];
+   void a(dyn var1, double var2, double var4);
 
-         for (T $$4 : $$3) {
-            this.c[$$4.ordinal()] = $$2.indexOf($$4);
-         }
+   void a(dyn var1, int var2);
 
-         Builder<String, T> $$5 = ImmutableMap.builder();
+   void b(dyn var1, int var2);
 
-         for (T $$6 : $$2) {
-            String $$7 = $$6.c();
-            $$5.put($$7, $$6);
-         }
+   void b(dyn var1, double var2);
 
-         this.b = $$5.buildOrThrow();
+   void c(dyn var1, double var2);
+
+   public static class a implements dyl {
+      private final dyn a;
+
+      public a(dyn $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public List<T> a() {
-      return this.a;
-   }
-
-   @Override
-   public Optional<T> b(String $$0) {
-      return Optional.ofNullable(this.b.get($$0));
-   }
-
-   public String a(T $$0) {
-      return $$0.c();
-   }
-
-   public int b(T $$0) {
-      return this.c[$$0.ordinal()];
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dyl<?> $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
+      @Override
+      public void a(dyn $$0, double $$1) {
+         this.a.a($$1);
       }
-   }
 
-   @Override
-   public int b() {
-      int $$0 = super.b();
-      return 31 * $$0 + this.a.hashCode();
-   }
+      @Override
+      public void a(dyn $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
+      @Override
+      public void a(dyn $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
 
-   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
-      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
-   }
+      @Override
+      public void a(dyn $$0, int $$1) {
+         this.a.b($$1);
+      }
 
-   @SafeVarargs
-   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1, T... $$2) {
-      return a($$0, $$1, List.of($$2));
-   }
+      @Override
+      public void b(dyn $$0, int $$1) {
+         this.a.c($$1);
+      }
 
-   public static <T extends Enum<T> & baq> dyl<T> a(String $$0, Class<T> $$1, List<T> $$2) {
-      return new dyl<>($$0, $$1, $$2);
+      @Override
+      public void b(dyn $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dyn $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

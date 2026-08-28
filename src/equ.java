@@ -1,45 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class equ extends eod {
-   public static final MapCodec<equ> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, equ::new)
+public class equ extends erl {
+   public static final MapCodec<equ> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ecs.a.g.fieldOf("heightmap").orElse(ecs.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
+            .apply($$0, equ::new)
    );
-   public final boolean e;
+   private final ecs.a b;
+   private final int c;
 
-   public equ(eod.c $$0, boolean $$1) {
-      super($$0);
-      this.e = $$1;
+   public equ(ecs.a $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
+   @Nullable
    @Override
-   public Optional<eod.b> a(eod.a $$0) {
-      edj.a $$1 = this.e ? edj.a.a : edj.a.c;
-      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
-   }
-
-   private void a(eov $$0, eod.a $$1) {
-      dqv $$2 = dqv.a($$1.f());
-      jh $$3 = new jh($$1.h().d(), 90, $$1.h().e());
-      eqt.a $$4 = eqt.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
-      if ($$4.l()) {
-         env $$5 = $$4.f();
-         int $$7;
-         if (this.e) {
-            int $$6 = eod.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
-            $$7 = $$4.a($$6, $$1.f());
+   public ero.d a(dgl $$0, ji $$1, ji $$2, ero.d $$3, ero.d $$4, erk $$5) {
+      ecs.a $$6;
+      if ($$0 instanceof arc) {
+         if (this.b == ecs.a.a) {
+            $$6 = ecs.a.b;
+         } else if (this.b == ecs.a.c) {
+            $$6 = ecs.a.d;
          } else {
-            $$7 = eod.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+            $$6 = this.b;
          }
-
-         $$4.c($$7);
+      } else {
+         $$6 = this.b;
       }
+
+      ji $$10 = $$4.a();
+      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
+      int $$12 = $$3.a().v();
+      return new ero.d(new ji($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
    }
 
    @Override
-   public eom<?> e() {
-      return eom.m;
+   protected ern<?> a() {
+      return ern.g;
    }
 }

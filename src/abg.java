@@ -1,26 +1,12 @@
-public record abg(jh c, int d) implements aau {
-   public static final zi<wh, abg> a = aau.a(abg::a, abg::new);
-   public static final aau.b<abg> b = aau.a("debug/poi_ticket_count");
+public class abg {
+   public static final yx<abf> a = a("cookie_request");
+   public static final yx<abi> b = b("cookie_response");
 
-   private abg(wh $$0) {
-      this($$0.e(), $$0.readInt());
+   private static <T extends yv<abe>> yx<T> a(String $$0) {
+      return new yx<>(yw.b, aku.b($$0));
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
-   }
-
-   @Override
-   public aau.b<abg> a() {
-      return b;
-   }
-
-   public jh b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   private static <T extends yv<abh>> yx<T> b(String $$0) {
+      return new yx<>(yw.a, aku.b($$0));
    }
 }

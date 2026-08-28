@@ -1,352 +1,243 @@
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
 import java.util.List;
 
-public class epy extends eob {
-   public static final int h = 21;
-   public static final int i = 21;
-   private final boolean[] j = new boolean[4];
-   private final List<jh> k = new ArrayList<>();
-   private jh l = jh.c;
+public class epy {
+   static final erl a = a(djo.L, djo.M, evn.bb);
+   static final erl b = a(djo.O, djo.P, evn.bc);
+   private static final aku[] c = new aku[]{
+      aku.b("underwater_ruin/warm_1"),
+      aku.b("underwater_ruin/warm_2"),
+      aku.b("underwater_ruin/warm_3"),
+      aku.b("underwater_ruin/warm_4"),
+      aku.b("underwater_ruin/warm_5"),
+      aku.b("underwater_ruin/warm_6"),
+      aku.b("underwater_ruin/warm_7"),
+      aku.b("underwater_ruin/warm_8")
+   };
+   private static final aku[] d = new aku[]{
+      aku.b("underwater_ruin/brick_1"),
+      aku.b("underwater_ruin/brick_2"),
+      aku.b("underwater_ruin/brick_3"),
+      aku.b("underwater_ruin/brick_4"),
+      aku.b("underwater_ruin/brick_5"),
+      aku.b("underwater_ruin/brick_6"),
+      aku.b("underwater_ruin/brick_7"),
+      aku.b("underwater_ruin/brick_8")
+   };
+   private static final aku[] e = new aku[]{
+      aku.b("underwater_ruin/cracked_1"),
+      aku.b("underwater_ruin/cracked_2"),
+      aku.b("underwater_ruin/cracked_3"),
+      aku.b("underwater_ruin/cracked_4"),
+      aku.b("underwater_ruin/cracked_5"),
+      aku.b("underwater_ruin/cracked_6"),
+      aku.b("underwater_ruin/cracked_7"),
+      aku.b("underwater_ruin/cracked_8")
+   };
+   private static final aku[] f = new aku[]{
+      aku.b("underwater_ruin/mossy_1"),
+      aku.b("underwater_ruin/mossy_2"),
+      aku.b("underwater_ruin/mossy_3"),
+      aku.b("underwater_ruin/mossy_4"),
+      aku.b("underwater_ruin/mossy_5"),
+      aku.b("underwater_ruin/mossy_6"),
+      aku.b("underwater_ruin/mossy_7"),
+      aku.b("underwater_ruin/mossy_8")
+   };
+   private static final aku[] g = new aku[]{
+      aku.b("underwater_ruin/big_brick_1"), aku.b("underwater_ruin/big_brick_2"), aku.b("underwater_ruin/big_brick_3"), aku.b("underwater_ruin/big_brick_8")
+   };
+   private static final aku[] h = new aku[]{
+      aku.b("underwater_ruin/big_mossy_1"), aku.b("underwater_ruin/big_mossy_2"), aku.b("underwater_ruin/big_mossy_3"), aku.b("underwater_ruin/big_mossy_8")
+   };
+   private static final aku[] i = new aku[]{
+      aku.b("underwater_ruin/big_cracked_1"),
+      aku.b("underwater_ruin/big_cracked_2"),
+      aku.b("underwater_ruin/big_cracked_3"),
+      aku.b("underwater_ruin/big_cracked_8")
+   };
+   private static final aku[] j = new aku[]{
+      aku.b("underwater_ruin/big_warm_4"), aku.b("underwater_ruin/big_warm_5"), aku.b("underwater_ruin/big_warm_6"), aku.b("underwater_ruin/big_warm_7")
+   };
 
-   public epy(bac $$0, int $$1, int $$2) {
-      super(eou.L, $$1, 64, $$2, 21, 15, 21, a($$0));
+   private static erl a(djm $$0, djm $$1, akt<evw> $$2) {
+      return new eqt(new erh(List.of(new erd(new eqq($$0), eql.b, era.b, $$1.m(), new ers($$2)))), brl.a(5));
    }
 
-   public epy(um $$0) {
-      super(eou.L, $$0);
-      this.j[0] = $$0.q("hasPlacedChest0");
-      this.j[1] = $$0.q("hasPlacedChest1");
-      this.j[2] = $$0.q("hasPlacedChest2");
-      this.j[3] = $$0.q("hasPlacedChest3");
+   private static aku a(azh $$0) {
+      return af.a(c, $$0);
    }
 
-   @Override
-   protected void a(eot $$0, um $$1) {
-      super.a($$0, $$1);
-      $$1.a("hasPlacedChest0", this.j[0]);
-      $$1.a("hasPlacedChest1", this.j[1]);
-      $$1.a("hasPlacedChest2", this.j[2]);
-      $$1.a("hasPlacedChest3", this.j[3]);
+   private static aku b(azh $$0) {
+      return af.a(j, $$0);
    }
 
-   @Override
-   public void a(dhx $$0, dhv $$1, dzk $$2, bac $$3, env $$4, dgf $$5, jh $$6) {
-      if (this.a($$0, -$$3.a(3))) {
-         this.a($$0, $$4, 0, -4, 0, this.a - 1, 0, this.c - 1, dkf.bc.m(), dkf.bc.m(), false);
-
-         for (int $$7 = 1; $$7 <= 9; $$7++) {
-            this.a($$0, $$4, $$7, $$7, $$7, this.a - 1 - $$7, $$7, this.c - 1 - $$7, dkf.bc.m(), dkf.bc.m(), false);
-            this.a($$0, $$4, $$7 + 1, $$7, $$7 + 1, this.a - 2 - $$7, $$7, this.c - 2 - $$7, dkf.a.m(), dkf.a.m(), false);
-         }
-
-         for (int $$8 = 0; $$8 < this.a; $$8++) {
-            for (int $$9 = 0; $$9 < this.c; $$9++) {
-               int $$10 = -5;
-               this.b($$0, dkf.bc.m(), $$8, -5, $$9, $$4);
-            }
-         }
-
-         dxo $$11 = dkf.fY.m().b(dsc.b, jm.c);
-         dxo $$12 = dkf.fY.m().b(dsc.b, jm.d);
-         dxo $$13 = dkf.fY.m().b(dsc.b, jm.f);
-         dxo $$14 = dkf.fY.m().b(dsc.b, jm.e);
-         this.a($$0, $$4, 0, 0, 0, 4, 9, 4, dkf.bc.m(), dkf.a.m(), false);
-         this.a($$0, $$4, 1, 10, 1, 3, 10, 3, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$11, 2, 10, 0, $$4);
-         this.a($$0, $$12, 2, 10, 4, $$4);
-         this.a($$0, $$13, 0, 10, 2, $$4);
-         this.a($$0, $$14, 4, 10, 2, $$4);
-         this.a($$0, $$4, this.a - 5, 0, 0, this.a - 1, 9, 4, dkf.bc.m(), dkf.a.m(), false);
-         this.a($$0, $$4, this.a - 4, 10, 1, this.a - 2, 10, 3, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$11, this.a - 3, 10, 0, $$4);
-         this.a($$0, $$12, this.a - 3, 10, 4, $$4);
-         this.a($$0, $$13, this.a - 5, 10, 2, $$4);
-         this.a($$0, $$14, this.a - 1, 10, 2, $$4);
-         this.a($$0, $$4, 8, 0, 0, 12, 4, 4, dkf.bc.m(), dkf.a.m(), false);
-         this.a($$0, $$4, 9, 1, 0, 11, 3, 4, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, dkf.be.m(), 9, 1, 1, $$4);
-         this.a($$0, dkf.be.m(), 9, 2, 1, $$4);
-         this.a($$0, dkf.be.m(), 9, 3, 1, $$4);
-         this.a($$0, dkf.be.m(), 10, 3, 1, $$4);
-         this.a($$0, dkf.be.m(), 11, 3, 1, $$4);
-         this.a($$0, dkf.be.m(), 11, 2, 1, $$4);
-         this.a($$0, dkf.be.m(), 11, 1, 1, $$4);
-         this.a($$0, $$4, 4, 1, 1, 8, 3, 3, dkf.bc.m(), dkf.a.m(), false);
-         this.a($$0, $$4, 4, 1, 2, 8, 2, 2, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, $$4, 12, 1, 1, 16, 3, 3, dkf.bc.m(), dkf.a.m(), false);
-         this.a($$0, $$4, 12, 1, 2, 16, 2, 2, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, $$4, 5, 4, 5, this.a - 6, 4, this.c - 6, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, 9, 4, 9, 11, 4, 11, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, $$4, 8, 1, 8, 8, 3, 8, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, $$4, 12, 1, 8, 12, 3, 8, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, $$4, 8, 1, 12, 8, 3, 12, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, $$4, 12, 1, 12, 12, 3, 12, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, $$4, 1, 1, 5, 4, 4, 11, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, this.a - 5, 1, 5, this.a - 2, 4, 11, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, 6, 7, 9, 6, 7, 11, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, this.a - 7, 7, 9, this.a - 7, 7, 11, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, 5, 5, 9, 5, 7, 11, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, $$4, this.a - 6, 5, 9, this.a - 6, 7, 11, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, dkf.a.m(), 5, 5, 10, $$4);
-         this.a($$0, dkf.a.m(), 5, 6, 10, $$4);
-         this.a($$0, dkf.a.m(), 6, 6, 10, $$4);
-         this.a($$0, dkf.a.m(), this.a - 6, 5, 10, $$4);
-         this.a($$0, dkf.a.m(), this.a - 6, 6, 10, $$4);
-         this.a($$0, dkf.a.m(), this.a - 7, 6, 10, $$4);
-         this.a($$0, $$4, 2, 4, 4, 2, 6, 4, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, $$4, this.a - 3, 4, 4, this.a - 3, 6, 4, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, $$11, 2, 4, 5, $$4);
-         this.a($$0, $$11, 2, 3, 4, $$4);
-         this.a($$0, $$11, this.a - 3, 4, 5, $$4);
-         this.a($$0, $$11, this.a - 3, 3, 4, $$4);
-         this.a($$0, $$4, 1, 1, 3, 2, 2, 3, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, this.a - 3, 1, 3, this.a - 2, 2, 3, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, dkf.bc.m(), 1, 1, 2, $$4);
-         this.a($$0, dkf.bc.m(), this.a - 2, 1, 2, $$4);
-         this.a($$0, dkf.ke.m(), 1, 2, 2, $$4);
-         this.a($$0, dkf.ke.m(), this.a - 2, 2, 2, $$4);
-         this.a($$0, $$14, 2, 1, 2, $$4);
-         this.a($$0, $$13, this.a - 3, 1, 2, $$4);
-         this.a($$0, $$4, 4, 3, 5, 4, 3, 17, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, this.a - 5, 3, 5, this.a - 5, 3, 17, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, 3, 1, 5, 4, 2, 16, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, $$4, this.a - 6, 1, 5, this.a - 5, 2, 16, dkf.a.m(), dkf.a.m(), false);
-
-         for (int $$15 = 5; $$15 <= 17; $$15 += 2) {
-            this.a($$0, dkf.be.m(), 4, 1, $$15, $$4);
-            this.a($$0, dkf.bd.m(), 4, 2, $$15, $$4);
-            this.a($$0, dkf.be.m(), this.a - 5, 1, $$15, $$4);
-            this.a($$0, dkf.bd.m(), this.a - 5, 2, $$15, $$4);
-         }
-
-         this.a($$0, dkf.hH.m(), 10, 0, 7, $$4);
-         this.a($$0, dkf.hH.m(), 10, 0, 8, $$4);
-         this.a($$0, dkf.hH.m(), 9, 0, 9, $$4);
-         this.a($$0, dkf.hH.m(), 11, 0, 9, $$4);
-         this.a($$0, dkf.hH.m(), 8, 0, 10, $$4);
-         this.a($$0, dkf.hH.m(), 12, 0, 10, $$4);
-         this.a($$0, dkf.hH.m(), 7, 0, 10, $$4);
-         this.a($$0, dkf.hH.m(), 13, 0, 10, $$4);
-         this.a($$0, dkf.hH.m(), 9, 0, 11, $$4);
-         this.a($$0, dkf.hH.m(), 11, 0, 11, $$4);
-         this.a($$0, dkf.hH.m(), 10, 0, 12, $$4);
-         this.a($$0, dkf.hH.m(), 10, 0, 13, $$4);
-         this.a($$0, dkf.hR.m(), 10, 0, 10, $$4);
-
-         for (int $$16 = 0; $$16 <= this.a - 1; $$16 += this.a - 1) {
-            this.a($$0, dkf.be.m(), $$16, 2, 1, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 2, 2, $$4);
-            this.a($$0, dkf.be.m(), $$16, 2, 3, $$4);
-            this.a($$0, dkf.be.m(), $$16, 3, 1, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 3, 2, $$4);
-            this.a($$0, dkf.be.m(), $$16, 3, 3, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 4, 1, $$4);
-            this.a($$0, dkf.bd.m(), $$16, 4, 2, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 4, 3, $$4);
-            this.a($$0, dkf.be.m(), $$16, 5, 1, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 5, 2, $$4);
-            this.a($$0, dkf.be.m(), $$16, 5, 3, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 6, 1, $$4);
-            this.a($$0, dkf.bd.m(), $$16, 6, 2, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 6, 3, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 7, 1, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 7, 2, $$4);
-            this.a($$0, dkf.hH.m(), $$16, 7, 3, $$4);
-            this.a($$0, dkf.be.m(), $$16, 8, 1, $$4);
-            this.a($$0, dkf.be.m(), $$16, 8, 2, $$4);
-            this.a($$0, dkf.be.m(), $$16, 8, 3, $$4);
-         }
-
-         for (int $$17 = 2; $$17 <= this.a - 3; $$17 += this.a - 3 - 2) {
-            this.a($$0, dkf.be.m(), $$17 - 1, 2, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17, 2, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17 + 1, 2, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17 - 1, 3, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17, 3, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17 + 1, 3, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17 - 1, 4, 0, $$4);
-            this.a($$0, dkf.bd.m(), $$17, 4, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17 + 1, 4, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17 - 1, 5, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17, 5, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17 + 1, 5, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17 - 1, 6, 0, $$4);
-            this.a($$0, dkf.bd.m(), $$17, 6, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17 + 1, 6, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17 - 1, 7, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17, 7, 0, $$4);
-            this.a($$0, dkf.hH.m(), $$17 + 1, 7, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17 - 1, 8, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17, 8, 0, $$4);
-            this.a($$0, dkf.be.m(), $$17 + 1, 8, 0, $$4);
-         }
-
-         this.a($$0, $$4, 8, 4, 0, 12, 6, 0, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, dkf.a.m(), 8, 6, 0, $$4);
-         this.a($$0, dkf.a.m(), 12, 6, 0, $$4);
-         this.a($$0, dkf.hH.m(), 9, 5, 0, $$4);
-         this.a($$0, dkf.bd.m(), 10, 5, 0, $$4);
-         this.a($$0, dkf.hH.m(), 11, 5, 0, $$4);
-         this.a($$0, $$4, 8, -14, 8, 12, -11, 12, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, $$4, 8, -10, 8, 12, -10, 12, dkf.bd.m(), dkf.bd.m(), false);
-         this.a($$0, $$4, 8, -9, 8, 12, -9, 12, dkf.be.m(), dkf.be.m(), false);
-         this.a($$0, $$4, 8, -8, 8, 12, -1, 12, dkf.bc.m(), dkf.bc.m(), false);
-         this.a($$0, $$4, 9, -11, 9, 11, -1, 11, dkf.a.m(), dkf.a.m(), false);
-         this.a($$0, dkf.dJ.m(), 10, -11, 10, $$4);
-         this.a($$0, $$4, 9, -13, 9, 11, -13, 11, dkf.cr.m(), dkf.a.m(), false);
-         this.a($$0, dkf.a.m(), 8, -11, 10, $$4);
-         this.a($$0, dkf.a.m(), 8, -10, 10, $$4);
-         this.a($$0, dkf.bd.m(), 7, -10, 10, $$4);
-         this.a($$0, dkf.be.m(), 7, -11, 10, $$4);
-         this.a($$0, dkf.a.m(), 12, -11, 10, $$4);
-         this.a($$0, dkf.a.m(), 12, -10, 10, $$4);
-         this.a($$0, dkf.bd.m(), 13, -10, 10, $$4);
-         this.a($$0, dkf.be.m(), 13, -11, 10, $$4);
-         this.a($$0, dkf.a.m(), 10, -11, 8, $$4);
-         this.a($$0, dkf.a.m(), 10, -10, 8, $$4);
-         this.a($$0, dkf.bd.m(), 10, -10, 7, $$4);
-         this.a($$0, dkf.be.m(), 10, -11, 7, $$4);
-         this.a($$0, dkf.a.m(), 10, -11, 12, $$4);
-         this.a($$0, dkf.a.m(), 10, -10, 12, $$4);
-         this.a($$0, dkf.bd.m(), 10, -10, 13, $$4);
-         this.a($$0, dkf.be.m(), 10, -11, 13, $$4);
-
-         for (jm $$18 : jm.c.a) {
-            if (!this.j[$$18.e()]) {
-               int $$19 = $$18.j() * 2;
-               int $$20 = $$18.l() * 2;
-               this.j[$$18.e()] = this.a($$0, $$4, $$3, 10 + $$19, -11, 10 + $$20, ewe.y);
-            }
-         }
-
-         this.a($$0, $$4);
+   public static void a(erp $$0, ji $$1, dqe $$2, enr $$3, azh $$4, epz $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
       }
    }
 
-   private void a(dhx $$0, env $$1) {
-      jh $$2 = new jh(16, -4, 13);
-      this.a($$2, $$0, $$1);
-      this.b($$2, $$0, $$1);
-   }
+   private static void a(erp $$0, azh $$1, dqe $$2, ji $$3, epz $$4, enr $$5) {
+      ji $$6 = new ji($$3.u(), 90, $$3.w());
+      ji $$7 = ero.a(new ji(15, 0, 15), dol.a, $$2, ji.c).a((km)$$6);
+      ene $$8 = ene.a($$6, $$7);
+      ji $$9 = new ji(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<ji> $$10 = a($$1, $$9);
+      int $$11 = ayz.a($$1, 4, 8);
 
-   private void a(jh $$0, dhx $$1, env $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      dxo $$6 = dkf.fY.m();
-      this.a($$1, $$6.a(dqv.d), 13, -1, 17, $$2);
-      this.a($$1, $$6.a(dqv.d), 14, -2, 17, $$2);
-      this.a($$1, $$6.a(dqv.d), 15, -3, 17, $$2);
-      dxo $$7 = dkf.L.m();
-      dxo $$8 = dkf.bc.m();
-      boolean $$9 = $$1.H_().h();
-      this.a($$1, $$7, $$3 - 4, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 3, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 2, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 1, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3, $$4 + 4, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 2, $$4 + 3, $$5 + 4, $$2);
-      this.a($$1, $$9 ? $$7 : $$8, $$3 - 1, $$4 + 3, $$5 + 4, $$2);
-      this.a($$1, !$$9 ? $$7 : $$8, $$3, $$4 + 3, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3 - 1, $$4 + 2, $$5 + 4, $$2);
-      this.a($$1, $$8, $$3, $$4 + 2, $$5 + 4, $$2);
-      this.a($$1, $$7, $$3, $$4 + 1, $$5 + 4, $$2);
-   }
-
-   private void b(jh $$0, dhx $$1, env $$2) {
-      int $$3 = $$0.u();
-      int $$4 = $$0.v();
-      int $$5 = $$0.w();
-      dxo $$6 = dkf.be.m();
-      dxo $$7 = dkf.bd.m();
-      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 - 3, $$3 - 3, $$4 + 1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 + 3, $$4 + 1, $$5 - 3, $$3 + 3, $$4 + 1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 - 3, $$3 + 3, $$4 + 1, $$5 - 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 1, $$5 + 3, $$3 + 3, $$4 + 1, $$5 + 3, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 - 3, $$3 - 3, $$4 + 2, $$5 + 2, $$7, $$7, true);
-      this.a($$1, $$2, $$3 + 3, $$4 + 2, $$5 - 3, $$3 + 3, $$4 + 2, $$5 + 2, $$7, $$7, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 - 3, $$3 + 3, $$4 + 2, $$5 - 2, $$7, $$7, true);
-      this.a($$1, $$2, $$3 - 3, $$4 + 2, $$5 + 3, $$3 + 3, $$4 + 2, $$5 + 3, $$7, $$7, true);
-      this.a($$1, $$2, $$3 - 3, -1, $$5 - 3, $$3 - 3, -1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 + 3, -1, $$5 - 3, $$3 + 3, -1, $$5 + 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, -1, $$5 - 3, $$3 + 3, -1, $$5 - 2, $$6, $$6, true);
-      this.a($$1, $$2, $$3 - 3, -1, $$5 + 3, $$3 + 3, -1, $$5 + 3, $$6, $$6, true);
-      this.a($$3 - 2, $$4 + 1, $$5 - 2, $$3 + 2, $$4 + 3, $$5 + 2);
-      this.a($$1, $$2, $$3 - 2, $$4 + 4, $$5 - 2, $$3 + 2, $$5 + 2);
-      dxo $$8 = dkf.hH.m();
-      dxo $$9 = dkf.hR.m();
-      this.a($$1, $$9, $$3, $$4, $$5, $$2);
-      this.a($$1, $$8, $$3 + 1, $$4, $$5 - 1, $$2);
-      this.a($$1, $$8, $$3 + 1, $$4, $$5 + 1, $$2);
-      this.a($$1, $$8, $$3 - 1, $$4, $$5 - 1, $$2);
-      this.a($$1, $$8, $$3 - 1, $$4, $$5 + 1, $$2);
-      this.a($$1, $$8, $$3 + 2, $$4, $$5, $$2);
-      this.a($$1, $$8, $$3 - 2, $$4, $$5, $$2);
-      this.a($$1, $$8, $$3, $$4, $$5 + 2, $$2);
-      this.a($$1, $$8, $$3, $$4, $$5 - 2, $$2);
-      this.a($$1, $$8, $$3 + 3, $$4, $$5, $$2);
-      this.c($$3 + 3, $$4 + 1, $$5);
-      this.c($$3 + 3, $$4 + 2, $$5);
-      this.a($$1, $$6, $$3 + 4, $$4 + 1, $$5, $$2);
-      this.a($$1, $$7, $$3 + 4, $$4 + 2, $$5, $$2);
-      this.a($$1, $$8, $$3 - 3, $$4, $$5, $$2);
-      this.c($$3 - 3, $$4 + 1, $$5);
-      this.c($$3 - 3, $$4 + 2, $$5);
-      this.a($$1, $$6, $$3 - 4, $$4 + 1, $$5, $$2);
-      this.a($$1, $$7, $$3 - 4, $$4 + 2, $$5, $$2);
-      this.a($$1, $$8, $$3, $$4, $$5 + 3, $$2);
-      this.c($$3, $$4 + 1, $$5 + 3);
-      this.c($$3, $$4 + 2, $$5 + 3);
-      this.a($$1, $$8, $$3, $$4, $$5 - 3, $$2);
-      this.c($$3, $$4 + 1, $$5 - 3);
-      this.c($$3, $$4 + 2, $$5 - 3);
-      this.a($$1, $$6, $$3, $$4 + 1, $$5 - 4, $$2);
-      this.a($$1, $$7, $$3, -2, $$5 - 4, $$2);
-   }
-
-   private void c(int $$0, int $$1, int $$2) {
-      jh $$3 = this.b($$0, $$1, $$2);
-      this.k.add($$3);
-   }
-
-   private void a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      for (int $$6 = $$1; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$0; $$7 <= $$3; $$7++) {
-            for (int $$8 = $$2; $$8 <= $$5; $$8++) {
-               this.c($$7, $$6, $$8);
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            ji $$14 = $$10.remove($$13);
+            dqe $$15 = dqe.a($$1);
+            ji $$16 = ero.a(new ji(5, 0, 6), dol.a, $$15, ji.c).a((km)$$14);
+            ene $$17 = ene.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
          }
       }
    }
 
-   private void a(dhx $$0, int $$1, int $$2, int $$3, env $$4) {
-      if ($$0.H_().i() < 0.33F) {
-         dxo $$5 = dkf.bc.m();
-         this.a($$0, $$5, $$1, $$2, $$3, $$4);
-      } else {
-         dxo $$6 = dkf.L.m();
-         this.a($$0, $$6, $$1, $$2, $$3, $$4);
+   private static List<ji> a(azh $$0, ji $$1) {
+      List<ji> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + ayz.a($$0, 1, 8), 0, 16 + ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayz.a($$0, 1, 8), 0, ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayz.a($$0, 1, 8), 0, -16 + ayz.a($$0, 4, 8)));
+      $$2.add($$1.b(ayz.a($$0, 1, 7), 0, 16 + ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(ayz.a($$0, 1, 7), 0, -16 + ayz.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + ayz.a($$0, 1, 7), 0, 16 + ayz.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + ayz.a($$0, 1, 7), 0, ayz.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + ayz.a($$0, 1, 7), 0, -16 + ayz.a($$0, 4, 8)));
+      return $$2;
+   }
+
+   private static void a(erp $$0, ji $$1, dqe $$2, enr $$3, azh $$4, epz $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            aku $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new epy.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            aku[] $$9 = $$6 ? g : d;
+            aku[] $$10 = $$6 ? i : e;
+            aku[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new epy.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new epy.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new epy.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
       }
    }
 
-   private void a(dhx $$0, env $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (int $$7 = $$2; $$7 <= $$5; $$7++) {
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            this.a($$0, $$7, $$3, $$8, $$1);
+   public static class a extends enw {
+      private final epz.a h;
+      private final float i;
+      private final boolean j;
+
+      public a(erp $$0, aku $$1, ji $$2, dqe $$3, float $$4, epz.a $$5, boolean $$6) {
+         super(eod.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
+      }
+
+      private a(erp $$0, tq $$1, dqe $$2, float $$3, epz.a $$4, boolean $$5) {
+         super(eod.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
+      }
+
+      private static erk a(dqe $$0, float $$1, epz.a $$2) {
+         erl $$3 = $$2 == epz.a.b ? epy.b : epy.a;
+         return new erk().a($$0).a(dol.a).a(new eqr($$1)).a(eqp.d).a($$3);
+      }
+
+      public static epy.a a(erp $$0, tq $$1) {
+         dqe $$2 = dqe.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         epz.a $$4 = epz.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new epy.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void a(eoc $$0, tq $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
+      }
+
+      @Override
+      protected void a(String $$0, ji $$1, dgz $$2, azh $$3, ene $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, djo.cD.m().b(dkp.e, Boolean.valueOf($$2.b_($$1).a(awv.a))), 2);
+            dtz $$5 = $$2.c_($$1);
+            if ($$5 instanceof dug) {
+               ((dug)$$5).a(this.j ? evn.E : evn.D, $$3.g());
+            }
+         } else if ("drowned".equals($$0)) {
+            cll $$6 = bur.L.a($$2.a(), buq.d);
+            if ($$6 != null) {
+               $$6.aj();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), buq.d, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.P()) {
+                  $$2.a($$1, djo.a.m(), 2);
+               } else {
+                  $$2.a($$1, djo.J.m(), 2);
+               }
+            }
          }
       }
 
-      bac $$9 = bac.a($$0.E()).e().a(this.b($$2, $$3, $$4));
-      int $$10 = $$9.a($$2, $$5);
-      int $$11 = $$9.a($$4, $$6);
-      this.l = new jh(this.a($$10, $$11), this.b($$3), this.b($$10, $$11));
-   }
+      @Override
+      public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5, ji $$6) {
+         int $$7 = $$0.a(ecs.a.c, this.d.u(), this.d.w());
+         this.d = new ji(this.d.u(), $$7, this.d.w());
+         ji $$8 = ero.a(new ji(this.b.a().u() - 1, 0, this.b.a().w() - 1), dol.a, this.c.d(), ji.c).a((km)this.d);
+         this.d = new ji(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
 
-   public List<jh> b() {
-      return this.k;
-   }
+      private int a(ji $$0, dfn $$1, ji $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
 
-   public jh c() {
-      return this.l;
+         for (ji $$7 : ji.c($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            ji.a $$11 = new ji.a($$8, $$10, $$9);
+            dwx $$12 = $$1.a_($$11);
+
+            for (esz $$13 = $$1.b_($$11); ($$12.l() || $$13.a(awv.a) || $$12.a(awp.ap)) && $$10 > $$1.L_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
+            }
+
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
+            }
+         }
+
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
+         }
+
+         return $$3;
+      }
    }
 }

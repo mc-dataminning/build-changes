@@ -1,45 +1,49 @@
-public class aik implements zr<ahb> {
-   public static final zi<wh, aik> a = zr.a(aik::a, aik::new);
-   private final cuj b;
-   private final boolean c;
-   private final boolean d;
+public record aik(int b, String c, int d, aij e) implements yv<ain> {
+   public static final ym<vl, aik> a = yv.a(aik::a, aik::new);
+   private static final int f = 255;
 
-   public aik(cuj $$0, boolean $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Deprecated
+   public aik(int b, String c, int d, aij e) {
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
-   private aik(wh $$0) {
-      this.b = $$0.b(cuj.class);
-      this.c = $$0.readBoolean();
-      this.d = $$0.readBoolean();
+   private aik(vl $$0) {
+      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aij.a($$0.l()));
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   private void a(vl $$0) {
+      $$0.c(this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
+      $$0.m(this.d);
+      $$0.c(this.e.a());
    }
 
    @Override
-   public zt<aik> a() {
-      return agz.bV;
+   public yx<aik> a() {
+      return ail.a;
    }
 
-   public void a(ahb $$0) {
+   public void a(ain $$0) {
       $$0.a(this);
    }
 
-   public cuj b() {
-      return this.b;
+   @Override
+   public boolean d() {
+      return true;
    }
 
-   public boolean e() {
+   public String e() {
       return this.c;
    }
 
-   public boolean f() {
+   public int f() {
       return this.d;
+   }
+
+   public aij g() {
+      return this.e;
    }
 }

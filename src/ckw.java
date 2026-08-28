@@ -1,30 +1,163 @@
-public class ckw extends cko {
-   private static final int b = 40;
-   private int c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public ckw(ckl $$0) {
-      super($$0);
+public class ckw extends ckt implements bwg<jr<ckx>> {
+   private static final ajx<jr<ckx>> g = akb.a(ckw.class, ajz.A);
+   public static final MapCodec<jr<ckx>> d = ckx.c.fieldOf("variant");
+   public static final Codec<jr<ckx>> e = d.codec();
+   public static final float f = 0.0625F;
+
+   public ckw(bur<? extends ckw> $$0, dgi $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void b() {
-      this.a.dW().a(this.a.dB(), this.a.dD(), this.a.dH(), awv.iz, this.a.dn(), 2.5F, 0.8F + this.a.dZ().i() * 0.3F, false);
+   protected void a(akb.a $$0) {
+      $$0.a(g, this.dY().e(mc.X).a().orElseThrow());
    }
 
    @Override
-   public void a(arx $$0) {
-      if (this.c++ >= 40) {
-         this.a.gk().a(clb.f);
+   public void a(ajx<?> $$0) {
+      if (g.equals($$0)) {
+         this.l();
+      }
+   }
+
+   public void b(jr<ckx> $$0) {
+      this.al.a(g, $$0);
+   }
+
+   public jr<ckx> s() {
+      return this.al.a(g);
+   }
+
+   public static Optional<ckw> a(dgi $$0, ji $$1, jn $$2) {
+      ckw $$3 = new ckw($$0, $$1);
+      List<jr<ckx>> $$4 = new ArrayList<>();
+      $$0.K_().e(mc.X).c(awz.a).forEach($$4::add);
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         $$3.a($$2);
+         $$4.removeIf($$1x -> {
+            $$3.b($$1x);
+            return !$$3.m();
+         });
+         if ($$4.isEmpty()) {
+            return Optional.empty();
+         } else {
+            int $$5 = $$4.stream().mapToInt(ckw::c).max().orElse(0);
+            $$4.removeIf($$1x -> c($$1x) < $$5);
+            Optional<jr<ckx>> $$6 = af.b($$4, $$3.ae);
+            if ($$6.isEmpty()) {
+               return Optional.empty();
+            } else {
+               $$3.b($$6.get());
+               $$3.a($$2);
+               return Optional.of($$3);
+            }
+         }
+      }
+   }
+
+   private static int c(jr<ckx> $$0) {
+      return $$0.a().a();
+   }
+
+   private ckw(dgi $$0, ji $$1) {
+      super(bur.aL, $$0, $$1);
+   }
+
+   public ckw(dgi $$0, ji $$1, jn $$2, jr<ckx> $$3) {
+      this($$0, $$1);
+      this.b($$3);
+      this.a($$2);
+   }
+
+   @Override
+   public void b(tq $$0) {
+      e.encodeStart(this.dY().a(ue.a), this.s()).ifSuccess($$1 -> $$0.a((tq)$$1));
+      $$0.a("facing", (byte)this.c.e());
+      super.b($$0);
+   }
+
+   @Override
+   public void a(tq $$0) {
+      e.parse(this.dY().a(ue.a), $$0).ifSuccess(this::b);
+      this.c = jn.b($$0.f("facing"));
+      super.a($$0);
+      this.a(this.c);
+   }
+
+   @Override
+   protected fav a(ji $$0, jn $$1) {
+      float $$2 = 0.46875F;
+      fba $$3 = fba.b($$0).a($$1, -0.46875);
+      ckx $$4 = this.s().a();
+      double $$5 = this.b($$4.b());
+      double $$6 = this.b($$4.c());
+      jn $$7 = $$1.i();
+      fba $$8 = $$3.a($$7, $$5).a(jn.b, $$6);
+      jn.a $$9 = $$1.o();
+      double $$10 = $$9 == jn.a.a ? 0.0625 : (double)$$4.b();
+      double $$11 = (double)$$4.c();
+      double $$12 = $$9 == jn.a.c ? 0.0625 : (double)$$4.b();
+      return fav.a($$8, $$10, $$11, $$12);
+   }
+
+   private double b(int $$0) {
+      return $$0 % 2 == 0 ? 0.5 : 0.0;
+   }
+
+   @Override
+   public void a(arc $$0, @Nullable buk $$1) {
+      if ($$0.O().b(dge.i)) {
+         this.a(awa.sQ, 1.0F, 1.0F);
+         if ($$1 instanceof cox $$2 && $$2.fV()) {
+            return;
+         }
+
+         this.a($$0, cwt.qE);
       }
    }
 
    @Override
-   public void c() {
-      this.c = 0;
+   public void z() {
+      this.a(awa.sR, 1.0F, 1.0F);
    }
 
    @Override
-   public clb<ckw> h() {
-      return clb.h;
+   public void b(double $$0, double $$1, double $$2, float $$3, float $$4) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
+      this.a_($$0, $$1, $$2);
+   }
+
+   @Override
+   public fba dv() {
+      return fba.a(this.a);
+   }
+
+   @Override
+   public yv<abk> a(ara $$0) {
+      return new abl(this, this.c.d(), this.p());
+   }
+
+   @Override
+   public void a(abl $$0) {
+      super.a($$0);
+      this.a(jn.a($$0.p()));
+   }
+
+   @Override
+   public cwp dJ() {
+      return new cwp(cwt.qE);
    }
 }

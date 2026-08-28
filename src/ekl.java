@@ -1,48 +1,49 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class ekl extends ekf {
-   public static final MapCodec<ekl> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bsf.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ekl::new)
+public record ekl(ekd b, List<ekl.a> c) {
+   public static final Codec<ekl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ekd.a.fieldOf("fallback").forGetter(ekl::a), ekl.a.a.listOf().fieldOf("rules").forGetter(ekl::b)).apply($$0, ekl::new)
    );
-   private final bsf b;
 
-   public ekl(bsf $$0, bsf $$1, bsf $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public static ekl a(ekd $$0) {
+      return new ekl($$0, List.of());
    }
 
-   @Override
-   protected ekg<?> a() {
-      return ekg.b;
+   public static ekl a(djm $$0) {
+      return a(ekd.a($$0));
    }
 
-   @Override
-   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
-      jh $$9 = $$5.a();
-      int $$10 = $$2.a(2);
-      int $$11 = 1;
-      int $$12 = 0;
-
-      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
-         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
-         if ($$10 >= $$11) {
-            $$10 = $$12;
-            $$12 = 1;
-            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
-         } else {
-            $$10++;
+   public dwx a(dhg $$0, azh $$1, ji $$2) {
+      for (ekl.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
       }
+
+      return this.b.a($$1, $$2);
    }
 
-   @Override
-   public int a(bac $$0, int $$1, ejp $$2) {
-      return Math.max(4, $$1 - this.b.a($$0));
+   public ekd a() {
+      return this.b;
    }
 
-   @Override
-   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
+   public List<ekl.a> b() {
+      return this.c;
+   }
+
+   public static record a(edz b, ekd c) {
+      public static final Codec<ekl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(edz.b.fieldOf("if_true").forGetter(ekl.a::a), ekd.a.fieldOf("then").forGetter(ekl.a::b)).apply($$0, ekl.a::new)
+      );
+
+      public edz a() {
+         return this.b;
+      }
+
+      public ekd b() {
+         return this.c;
+      }
    }
 }

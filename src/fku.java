@@ -1,53 +1,91 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.google.common.collect.HashBasedTable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Table;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.OptionalInt;
+import java.util.Set;
 
-public class fku extends fky {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xk c = xk.c("mco.configure.world.closing");
-   private final fic d;
-   private final fjl e;
+public class fku extends awd {
+   private final Map<dcl, dck> b = new HashMap<>();
+   private final Set<dcl> c = new HashSet<>();
+   private Map<daw, List<fyl>> d = Map.of();
+   private List<fyl> e = List.of();
 
-   public fku(fic $$0, fjl $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public void a(dck $$0) {
+      this.b.put($$0.a(), $$0);
    }
 
-   @Override
-   public void run() {
-      fhb $$0 = fhb.a();
+   public void a(dcl $$0) {
+      this.b.remove($$0);
+      this.c.remove($$0);
+   }
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
+   public void b() {
+      this.b.clear();
+      this.c.clear();
+   }
 
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.f();
-               this.d.e = fic.c.a;
-               a(this.e);
-               break;
+   public boolean b(dcl $$0) {
+      return this.c.contains($$0);
+   }
+
+   public void c(dcl $$0) {
+      this.c.remove($$0);
+   }
+
+   public void d(dcl $$0) {
+      this.c.add($$0);
+   }
+
+   public void c() {
+      Map<dbh, List<List<dck>>> $$0 = a(this.b.values());
+      Map<daw, List<fyl>> $$1 = new HashMap<>();
+      Builder<fyl> $$2 = ImmutableList.builder();
+      $$0.forEach(($$2x, $$3x) -> $$1.put($$2x, $$3x.stream().map(fyl::new).peek($$2::add).collect(ImmutableList.toImmutableList())));
+
+      for (fyn $$3 : fyn.values()) {
+         $$1.put($$3, $$3.a().stream().flatMap($$1x -> $$1.getOrDefault($$1x, List.of()).stream()).collect(ImmutableList.toImmutableList()));
+      }
+
+      this.d = Map.copyOf($$1);
+      this.e = $$2.build();
+   }
+
+   private static Map<dbh, List<List<dck>>> a(Iterable<dck> $$0) {
+      Map<dbh, List<List<dck>>> $$1 = new HashMap<>();
+      Table<dbh, Integer, List<dck>> $$2 = HashBasedTable.create();
+
+      for (dck $$3 : $$0) {
+         dbh $$4 = $$3.d();
+         OptionalInt $$5 = $$3.c();
+         if ($$5.isEmpty()) {
+            $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add(List.of($$3));
+         } else {
+            List<dck> $$6 = (List<dck>)$$2.get($$4, $$5.getAsInt());
+            if ($$6 == null) {
+               $$6 = new ArrayList<>();
+               $$2.put($$4, $$5.getAsInt(), $$6);
+               $$1.computeIfAbsent($$4, $$0x -> new ArrayList<>()).add($$6);
             }
-         } catch (fiy var4) {
-            if (this.d()) {
-               return;
-            }
 
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
+            $$6.add($$3);
          }
       }
+
+      return $$1;
    }
 
-   @Override
-   public xk a() {
-      return c;
+   public List<fyl> d() {
+      return this.e;
+   }
+
+   public List<fyl> a(daw $$0) {
+      return this.d.getOrDefault($$0, Collections.emptyList());
    }
 }

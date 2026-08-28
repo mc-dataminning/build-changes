@@ -1,13 +1,34 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import javax.annotation.Nullable;
 
-interface fcd {
-   DoubleList a();
+public interface fcd {
+   int a();
 
-   boolean a(fcd.a var1);
+   void a(int var1);
 
-   int size();
-
-   public interface a {
-      boolean merge(int var1, int var2, int var3);
+   default int b(int $$0) {
+      int $$1 = this.a() + $$0;
+      this.a($$1);
+      return $$1;
    }
+
+   default int b() {
+      return this.b(1);
+   }
+
+   default void c() {
+      this.a(0);
+   }
+
+   boolean d();
+
+   void e();
+
+   void f();
+
+   @Nullable
+   wo g();
+
+   void a(@Nullable wo var1);
+
+   void a(@Nullable ye var1);
 }

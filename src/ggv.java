@@ -1,33 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
 public interface ggv {
-   boolean a(ggw var1);
+   Codec<ggv> a = azv.a(ggv.a::values).dispatch(ggv::a, ggv.a::a);
 
-   boolean a(ggx var1);
+   ggv.a a();
 
-   static ggv a() {
-      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new ggv() {
-         @Override
-         public boolean a(ggw $$0x) {
-            String $$1 = $$0.a();
-            String $$2 = $$0.b();
-            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
-         }
+   public static enum a implements azv {
+      a("player", () -> ggw.a.b),
+      b("system", () -> ggw.b.b);
 
-         @Override
-         public boolean a(ggx $$0x) {
-            String $$1 = $$0.a();
-            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
-         }
-      };
+      private final String c;
+      private final Supplier<MapCodec<? extends ggv>> d;
+
+      private a(final String $$0, final Supplier<MapCodec<? extends ggv>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      private MapCodec<? extends ggv> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
    }
 }

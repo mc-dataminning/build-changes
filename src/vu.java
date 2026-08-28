@@ -1,89 +1,31 @@
-public interface vu extends vg {
-   vu a = new vu() {
-   };
+public interface vu {
+   yw a();
 
-   @Override
-   default vg.b a() {
-      return vg.b.a;
+   vj b();
+
+   void a(vk var1);
+
+   default void a(yv $$0, Exception $$1) throws z {
+      throw yy.a($$1, $$0, this);
    }
 
-   @Override
-   default vg.b a(String $$0) {
-      return vg.b.a;
+   default vk a(wo $$0, Throwable $$1) {
+      return new vk($$0);
    }
 
-   @Override
-   default vg.b a(byte $$0) {
-      return vg.b.a;
+   boolean c();
+
+   default boolean a(yv<?> $$0) {
+      return this.c();
    }
 
-   @Override
-   default vg.b a(short $$0) {
-      return vg.b.a;
+   default void a(o $$0) {
+      p $$1 = $$0.a("Connection");
+      $$1.a("Protocol", () -> this.b().a());
+      $$1.a("Flow", () -> this.a().toString());
+      this.a($$0, $$1);
    }
 
-   @Override
-   default vg.b a(int $$0) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b a(long $$0) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b a(float $$0) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b a(double $$0) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b a(byte[] $$0) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b a(int[] $$0) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b a(long[] $$0) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b a(vl<?> $$0, int $$1) {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.a b(vl<?> $$0, int $$1) {
-      return vg.a.b;
-   }
-
-   @Override
-   default vg.a a(vl<?> $$0) {
-      return vg.a.b;
-   }
-
-   @Override
-   default vg.a a(vl<?> $$0, String $$1) {
-      return vg.a.b;
-   }
-
-   @Override
-   default vg.b b() {
-      return vg.b.a;
-   }
-
-   @Override
-   default vg.b b(vl<?> $$0) {
-      return vg.b.a;
+   default void a(o $$0, p $$1) {
    }
 }

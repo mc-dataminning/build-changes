@@ -1,38 +1,30 @@
-public class gdj extends gbh<gzb> {
-   private static final int a = 2;
-   private final gej[] b = new gej[2];
+public class gdj extends gca<gyi> {
+   private final gfc a;
+   private final gfc b;
 
-   public gdj(gej $$0) {
+   public gdj(gfc $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
+      this.a = $$0.b("left_fin");
+      this.b = $$0.b("right_fin");
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", gfh.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), gfe.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", gfh.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gfe.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", gfh.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gfe.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", gfh.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), gfe.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", gfh.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gfe.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", gfh.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gfe.a(1.5F, 22.0F, -1.5F));
+      return gfi.a($$0, 32, 32);
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), geo.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gel.a.a($$4));
-      }
-
-      return gep.a($$0, 64, 64);
-   }
-
-   public void a(gzb $$0) {
+   @Override
+   public void a(gyi $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.p * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = azu.h($$2) * (float) (Math.PI / 180.0);
-      }
+      this.b.g = -0.2F + 0.4F * ayz.a($$0.u * 0.2F);
+      this.a.g = 0.2F - 0.4F * ayz.a($$0.u * 0.2F);
    }
 }

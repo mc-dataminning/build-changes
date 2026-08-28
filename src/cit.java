@@ -1,48 +1,132 @@
-public class cit {
-   public static final alo<cis> a = a("pale");
-   public static final alo<cis> b = a("spotted");
-   public static final alo<cis> c = a("snowy");
-   public static final alo<cis> d = a("black");
-   public static final alo<cis> e = a("ashen");
-   public static final alo<cis> f = a("rusty");
-   public static final alo<cis> g = a("woods");
-   public static final alo<cis> h = a("chestnut");
-   public static final alo<cis> i = a("striped");
-   public static final alo<cis> j = a;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-   private static alo<cis> a(String $$0) {
-      return alo.a(mb.m, alp.b($$0));
+public class cit extends bwz<cir> {
+   public static final int c = 100;
+   public static final int d = 6;
+   public static final int e = 10;
+   private static final float h = 1.75F;
+   private static final float i = 0.75F;
+   public static final int f = 100;
+   public static final int g = 5;
+   private int j;
+   private int k;
+   private final avz l;
+   private final avz m;
+   private fba n;
+   private cit.a o = cit.a.d;
+
+   public cit(avz $$0, avz $$1) {
+      super(ImmutableMap.of(cek.m, cel.b, cek.n, cel.c, cek.o, cel.a, cek.Z, cel.b), 100);
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   static void a(ra<cis> $$0, alo<cis> $$1, String $$2, alo<dib> $$3) {
-      a($$0, $$1, $$2, ju.a($$0.a(mb.aI).b($$3)));
+   protected boolean a(arc $$0, cir $$1) {
+      bvg $$2 = $$1.ec().c(cek.o).get();
+      boolean $$3 = this.a($$1, $$2);
+      if (!$$3) {
+         $$1.ec().b(cek.o);
+         this.b($$1, $$2);
+      }
+
+      return $$3 && $$1.aw() != bvs.i && cir.j($$2);
    }
 
-   static void a(ra<cis> $$0, alo<cis> $$1, String $$2, aya<dib> $$3) {
-      a($$0, $$1, $$2, $$0.a(mb.aI).b($$3));
+   protected boolean a(arc $$0, cir $$1, long $$2) {
+      return $$1.ec().a(cek.o) && this.o != cit.a.d && !$$1.ec().a(cek.Z);
    }
 
-   static void a(ra<cis> $$0, alo<cis> $$1, String $$2, ju<dib> $$3) {
-      alp $$4 = alp.b("entity/wolf/" + $$2);
-      alp $$5 = alp.b("entity/wolf/" + $$2 + "_tame");
-      alp $$6 = alp.b("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cis($$4, $$5, $$6, $$3));
+   protected void b(arc $$0, cir $$1, long $$2) {
+      bvg $$3 = $$1.ec().c(cek.o).get();
+      bxb.a($$1, $$3);
+      $$1.b($$3);
+      $$1.ec().a(cek.m, new cen($$3.du(), 2.0F, 0));
+      this.k = 10;
+      this.o = cit.a.a;
    }
 
-   public static jq<cis> a(ke $$0, jq<dib> $$1) {
-      kd<cis> $$2 = $$0.e(mb.m);
-      return $$2.c().filter($$1x -> ((cis)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.a(j)).or($$2::a).orElseThrow();
+   protected void c(arc $$0, cir $$1, long $$2) {
+      $$1.ec().b(cek.o);
+      $$1.p();
+      $$1.b(bvs.a);
    }
 
-   public static void a(ra<cis> $$0) {
-      a($$0, a, "wolf", dii.q);
-      a($$0, b, "wolf_spotted", axj.k);
-      a($$0, c, "wolf_snowy", dii.G);
-      a($$0, d, "wolf_black", dii.o);
-      a($$0, e, "wolf_ashen", dii.r);
-      a($$0, f, "wolf_rusty", axj.i);
-      a($$0, g, "wolf_woods", dii.i);
-      a($$0, h, "wolf_chestnut", dii.p);
-      a($$0, i, "wolf_striped", axj.f);
+   private void b(arc $$0, cir $$1) {
+      $$0.a(null, $$1, this.m, awb.g, 2.0F, 1.0F);
+      Optional<buk> $$2 = $$1.t();
+      if ($$2.isPresent()) {
+         buk $$3 = $$2.get();
+         if ($$3.bL()) {
+            $$1.c($$0, $$3);
+            if (!$$3.bL()) {
+               $$3.a(buk.d.a);
+            }
+         }
+      }
+   }
+
+   protected void d(arc $$0, cir $$1, long $$2) {
+      bvg $$3 = $$1.ec().c(cek.o).get();
+      $$1.b($$3);
+      switch (this.o) {
+         case a:
+            if ($$3.f($$1) < 1.75F) {
+               $$0.a(null, $$1, this.l, awb.g, 2.0F, 1.0F);
+               $$1.b(bvs.j);
+               $$3.h($$3.du().a($$1.du()).d().c(0.75));
+               this.n = $$3.du();
+               this.j = 0;
+               this.o = cit.a.b;
+            } else if (this.k <= 0) {
+               $$1.ec().a(cek.m, new cen($$3.du(), 2.0F, 0));
+               this.k = 10;
+            } else {
+               this.k--;
+            }
+            break;
+         case b:
+            if (this.j++ >= 6) {
+               this.o = cit.a.c;
+               this.b($$0, $$1);
+            }
+            break;
+         case c:
+            if (this.j >= 10) {
+               this.o = cit.a.d;
+            } else {
+               this.j++;
+            }
+         case d:
+      }
+   }
+
+   private boolean a(cir $$0, bvg $$1) {
+      etn $$2 = $$0.L().a($$1, 0);
+      return $$2 != null && $$2.m() < 1.75F;
+   }
+
+   private void b(cir $$0, bvg $$1) {
+      List<UUID> $$2 = $$0.ec().c(cek.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.cG());
+      if ($$2.size() == 5 && $$3) {
+         $$2.remove(0);
+      }
+
+      if ($$3) {
+         $$2.add($$1.cG());
+      }
+
+      $$0.ec().a(cek.aa, $$2, 100L);
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

@@ -1,32 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class efl extends efi {
-   public static final Codec<efl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               efi.d.forGetter($$0x -> $$0x),
-               bsd.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
-               bsd.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
-               bsd.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, efl::new)
-   );
-   public final bsd b;
-   public final bsd c;
-   final bsd j;
-
-   public efl(float $$0, emk $$1, bsd $$2, eed $$3, efj $$4, ju<dkd> $$5, bsd $$6, bsd $$7, bsd $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
-      this.j = $$8;
+public class efl extends efm {
+   public efl(Codec<eij> $$0) {
+      super($$0);
    }
 
-   public efl(float $$0, emk $$1, bsd $$2, eed $$3, ju<dkd> $$4, bsd $$5, bsd $$6, bsd $$7) {
-      this($$0, $$1, $$2, $$3, efj.a, $$4, $$5, $$6, $$7);
-   }
+   @Override
+   protected boolean a(dgj $$0, azh $$1, ji $$2, dwx $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jn $$4 = jn.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jn> $$6 = af.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   public efl(efi $$0, bsd $$1, bsd $$2, bsd $$3) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
+         for (jn $$8 : $$6.subList(0, $$5)) {
+            ji.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jn $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jn.b);
+               jn[] $$13 = new jn[]{$$8, jn.b};
+               $$11 = af.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
+            }
+
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
+
+            $$9.c($$11.g());
+            $$9.c(jn.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jn.b);
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

@@ -1,84 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class dsg extends djp implements dnm {
+public class dsg extends diy {
    public static final MapCodec<dsg> a = b(dsg::new);
-   public static final dyl<dyx> b = dye.bm;
+   public static final dxu<dwd> b = dxn.bB;
+   public static final dxo c = dxn.bD;
 
    @Override
    public MapCodec<dsg> a() {
       return a;
    }
 
-   protected dsg(dxn.d $$0) {
+   public dsg(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, dyx.b));
+      this.l(this.F.b().b(b, dwd.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dwi($$0, $$1);
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, c);
    }
 
    @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      duq $$5 = $$1.c_($$2);
-      if ($$5 instanceof dwi) {
-         return (bta)(((dwi)$$5).a($$3) ? bta.a : bta.e);
-      } else {
-         return bta.e;
-      }
+   protected dpx a_(dwx $$0) {
+      return dpx.c;
+   }
+
+   @Nullable
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dvw($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return $$0 instanceof arc $$3
+         ? a($$2, dub.R, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dxn.bD).orElse(false)))
+         : a($$2, dub.R, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dxn.bD).orElse(false)));
    }
 
    @Override
-   public void a(dgz $$0, jh $$1, dxo $$2, @Nullable bvx $$3, cxg $$4) {
-      if (!$$0.C) {
-         if ($$3 != null) {
-            duq $$5 = $$0.c_($$1);
-            if ($$5 instanceof dwi) {
-               ((dwi)$$5).a($$3);
-            }
-         }
-      }
-   }
-
-   @Override
-   protected dqo a_(dxo $$0) {
-      return dqo.c;
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
-      if ($$1 instanceof arx) {
-         if ($$1.c_($$2) instanceof dwi $$7) {
-            boolean $$8 = $$1.C($$2);
-            boolean $$9 = $$7.C();
-            if ($$8 && !$$9) {
-               $$7.c(true);
-               this.a((arx)$$1, $$7);
-            } else if (!$$8 && $$9) {
-               $$7.c(false);
-            }
-         }
-      }
-   }
-
-   private void a(arx $$0, dwi $$1) {
-      switch ($$1.u()) {
-         case a:
-            $$1.b(false);
-            break;
-         case b:
-            $$1.c($$0);
-            break;
-         case c:
-            $$1.A();
-         case d:
-      }
+   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dhd.a($$0, $$2, "spawn_data");
    }
 }

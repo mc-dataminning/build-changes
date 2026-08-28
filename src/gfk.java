@@ -1,18 +1,22 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.function.UnaryOperator;
 
-public record gfk(
-   GameProfile a,
-   hgw b,
-   ke.b c,
-   csk d,
-   @Nullable String e,
-   @Nullable gfu f,
-   @Nullable ftr g,
-   Map<alp, byte[]> h,
-   @Nullable fnz.b i,
-   Map<String, String> j,
-   amh k
-) {
+public class gfk {
+   private final gfm a;
+
+   public gfk() {
+      this(new gfm(ImmutableList.of(), gfe.a));
+   }
+
+   private gfk(gfm $$0) {
+      this.a = $$0;
+   }
+
+   public gfm a() {
+      return this.a;
+   }
+
+   public gfk a(UnaryOperator<gfe> $$0) {
+      return new gfk(this.a.a($$0));
+   }
 }

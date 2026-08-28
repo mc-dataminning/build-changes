@@ -1,6 +1,5 @@
-import java.util.concurrent.CompletableFuture;
-
-@FunctionalInterface
-public interface eal {
-   CompletableFuture<dzj> doWork(eap var1, ean var2, bao<aro> var3, dzj var4);
+public record eal(String a, akt<dgi> b, String c) {
+   public eal a(String $$0) {
+      return new eal(this.a, this.b, this.c + $$0);
+   }
 }

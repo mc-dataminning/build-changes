@@ -1,62 +1,71 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dkz extends diw {
-   public static final MapCodec<dkz> d = b(dkz::new);
-   private static final float e = 0.05F;
-   private static final float f = 0.1F;
+public class dkz extends diy implements dqs {
+   public static final MapCodec<dkz> a = b(dkz::new);
+   public static final dxo b = dxn.J;
+   private static final int d = 3;
+   protected static final fbu c = djm.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
    public MapCodec<dkz> a() {
-      return d;
+      return a;
    }
 
-   public dkz(dxn.d $$0) {
-      super($$0, kn.c);
+   public dkz(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   public boolean d(dxo $$0) {
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dul($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return a($$2, dub.A, $$0.C ? dul::a : dul::b);
+   }
+
+   @Override
+   protected dpx a_(dwx $$0) {
+      return dpx.b;
+   }
+
+   @Override
+   protected esz b_(dwx $$0) {
+      return $$0.c(b) ? eta.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, eta.c, eta.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return c;
+   }
+
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      esz $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.a(awv.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
       return false;
-   }
-
-   protected static boolean a(dgz $$0, dib.c $$1) {
-      if ($$1 == dib.c.b) {
-         return $$0.H_().i() < 0.05F;
-      } else {
-         return $$1 == dib.c.c ? $$0.H_().i() < 0.1F : false;
-      }
-   }
-
-   @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, dib.c $$3) {
-      if (a($$1, $$3)) {
-         if ($$3 == dib.c.b) {
-            $$1.b($$2, dkf.fP.m());
-            $$1.a(null, eck.c, $$2);
-         } else if ($$3 == dib.c.c) {
-            $$1.b($$2, dkf.fR.m());
-            $$1.a(null, eck.c, $$2);
-         }
-      }
-   }
-
-   @Override
-   protected boolean a(etp $$0) {
-      return true;
-   }
-
-   @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, etp $$3) {
-      if ($$3 == etr.c) {
-         dxo $$4 = dkf.fP.m();
-         $$1.b($$2, $$4);
-         $$1.a(eck.c, $$2, eck.a.a($$4));
-         $$1.c(1047, $$2, 0);
-      } else if ($$3 == etr.e) {
-         dxo $$5 = dkf.fQ.m();
-         $$1.b($$2, $$5);
-         $$1.a(eck.c, $$2, eck.a.a($$5));
-         $$1.c(1046, $$2, 0);
-      }
    }
 }

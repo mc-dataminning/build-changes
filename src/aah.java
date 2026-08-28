@@ -1,25 +1,31 @@
-public record aah(String b, int c) implements zr<zx> {
-   public static final zi<wh, aah> a = zr.a(aah::a, aah::new);
+public record aah(int c, etn d, float e) implements zy {
+   public static final ym<vl, aah> a = zy.a(aah::a, aah::new);
+   public static final zy.b<aah> b = zy.a("debug/path");
 
-   private aah(wh $$0) {
-      this($$0.p(), $$0.l());
+   private aah(vl $$0) {
+      this($$0.readInt(), etn.b($$0), $$0.readFloat());
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
+   private void a(vl $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public zt<aah> a() {
-      return aaj.j;
+   public zy.b<aah> a() {
+      return b;
    }
 
-   public void a(zx $$0) {
-      $$0.a(this);
-   }
-
-   public int e() {
+   public int b() {
       return this.c;
+   }
+
+   public etn c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

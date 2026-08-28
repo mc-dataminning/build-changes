@@ -1,29 +1,48 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public abstract class eju {
-   public static final Codec<eju> a = ma.Y.q().dispatch(eju::b, ejv::a);
-   protected static final int b = 16;
-   protected final OptionalInt c;
+public class eju extends ejo {
+   public static final MapCodec<eju> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bro.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, eju::new)
+   );
+   private final bro b;
 
-   protected static <S extends eju> RecordCodecBuilder<S, OptionalInt> a() {
-      return Codec.intRange(0, 80)
-         .optionalFieldOf("min_clipped_height")
-         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
-         .forGetter($$0 -> $$0.c);
+   public eju(bro $$0, bro $$1, bro $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public eju(OptionalInt $$0) {
-      this.c = $$0;
+   @Override
+   protected ejp<?> a() {
+      return ejp.b;
    }
 
-   protected abstract ejv<?> b();
+   @Override
+   protected void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, int $$4, ejo.a $$5, int $$6, int $$7, int $$8) {
+      ji $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
 
-   public abstract int a(int var1, int var2);
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
+   }
 
-   public OptionalInt c() {
-      return this.c;
+   @Override
+   public int a(azh $$0, int $$1, eiy $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

@@ -1,54 +1,91 @@
-import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-public class gcs extends gbh<gze> {
-   private static final float a = 50.0F;
-   private static final float b = -40.0F;
-   private static final float c = 0.6F;
-   private static final ges d = ges.scaling(0.6F);
-   private static final ges e = new gag(true, 22.0F, 2.0F, 2.65F, 2.5F, 36.0F, Set.of("head", "left_ear", "right_ear", "nose"));
-   private static final String f = "left_haunch";
-   private static final String g = "right_haunch";
-   private final gej i;
-   private final gej j;
-   private final gej k;
-   private final gej l;
-   private final gej m;
+public class gcs extends gca<gzj> {
+   public static final gfl a = gcs::a;
+   private final gfc b;
+   private final gfc c;
+   private final gfc d;
+   private final gfc e;
+   private final gfc f;
+   private final gfc g;
+   private final gfc i;
 
-   public gcs(gej $$0) {
+   public gcs(gfc $$0) {
       super($$0);
-      this.i = $$0.b("left_haunch");
-      this.j = $$0.b("right_haunch");
-      this.k = $$0.b("left_front_leg");
-      this.l = $$0.b("right_front_leg");
-      this.m = $$0.b("head");
+      this.b = $$0.b("head");
+      this.g = $$0.b("right_chest");
+      this.i = $$0.b("left_chest");
+      this.c = $$0.b("right_hind_leg");
+      this.d = $$0.b("left_hind_leg");
+      this.e = $$0.b("right_front_leg");
+      this.f = $$0.b("left_front_leg");
    }
 
-   public static gep a(boolean $$0) {
-      ger $$1 = new ger();
-      get $$2 = $$1.a();
-      get $$3 = $$2.a("left_haunch", geo.c().a(30, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gel.a(3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F));
-      get $$4 = $$2.a("right_haunch", geo.c().a(16, 15).a(-1.0F, 0.0F, 0.0F, 2.0F, 4.0F, 5.0F), gel.a(-3.0F, 17.5F, 3.7F, -0.36651915F, 0.0F, 0.0F));
-      $$3.a("left_hind_foot", geo.c().a(26, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gel.b(0.36651915F, 0.0F, 0.0F));
-      $$4.a("right_hind_foot", geo.c().a(8, 24).a(-1.0F, 5.5F, -3.7F, 2.0F, 1.0F, 7.0F), gel.b(0.36651915F, 0.0F, 0.0F));
-      $$2.a("body", geo.c().a(0, 0).a(-3.0F, -2.0F, -10.0F, 6.0F, 5.0F, 10.0F), gel.a(0.0F, 19.0F, 8.0F, (float) (-Math.PI / 9), 0.0F, 0.0F));
-      $$2.a("left_front_leg", geo.c().a(8, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gel.a(3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F));
-      $$2.a("right_front_leg", geo.c().a(0, 15).a(-1.0F, 0.0F, -1.0F, 2.0F, 7.0F, 2.0F), gel.a(-3.0F, 17.0F, -1.0F, -0.19198622F, 0.0F, 0.0F));
-      get $$5 = $$2.a("head", geo.c().a(32, 0).a(-2.5F, -4.0F, -5.0F, 5.0F, 4.0F, 5.0F), gel.a(0.0F, 16.0F, -1.0F));
-      $$5.a("right_ear", geo.c().a(52, 0).a(-2.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gel.a(0.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 12), 0.0F));
-      $$5.a("left_ear", geo.c().a(58, 0).a(0.5F, -9.0F, -1.0F, 2.0F, 5.0F, 1.0F), gel.a(0.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F));
-      $$2.a("tail", geo.c().a(52, 6).a(-1.5F, -1.5F, 0.0F, 3.0F, 3.0F, 2.0F), gel.a(0.0F, 20.0F, 7.0F, -0.3490659F, 0.0F, 0.0F));
-      $$5.a("nose", geo.c().a(32, 9).a(-0.5F, -2.5F, -5.5F, 1.0F, 1.0F, 1.0F), gel.a);
-      return gep.a($$1, 64, 32).a($$0 ? e : d);
+   public static gfi a(gfg $$0) {
+      gfk $$1 = new gfk();
+      gfm $$2 = $$1.a();
+      $$2.a(
+         "head",
+         gfh.c()
+            .a(0, 0)
+            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
+            .a(0, 14)
+            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
+            .a(17, 0)
+            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
+            .a(17, 0)
+            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
+         gfe.a(0.0F, 7.0F, -6.0F)
+      );
+      $$2.a("body", gfh.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), gfe.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$2.a("right_chest", gfh.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gfe.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$2.a("left_chest", gfh.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gfe.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      int $$3 = 4;
+      int $$4 = 14;
+      gfh $$5 = gfh.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
+      $$2.a("right_hind_leg", $$5, gfe.a(-3.5F, 10.0F, 6.0F));
+      $$2.a("left_hind_leg", $$5, gfe.a(3.5F, 10.0F, 6.0F));
+      $$2.a("right_front_leg", $$5, gfe.a(-3.5F, 10.0F, -5.0F));
+      $$2.a("left_front_leg", $$5, gfe.a(3.5F, 10.0F, -5.0F));
+      return gfi.a($$1, 128, 64);
    }
 
-   public void a(gze $$0) {
+   private static gfk a(gfk $$0) {
+      float $$1 = 2.0F;
+      float $$2 = 0.7F;
+      float $$3 = 1.1F;
+      UnaryOperator<gfe> $$4 = $$0x -> $$0x.c(0.0F, 21.0F, 3.52F).d(0.71428573F, 0.64935064F, 0.7936508F);
+      UnaryOperator<gfe> $$5 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.625F, 0.45454544F, 0.45454544F);
+      UnaryOperator<gfe> $$6 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.45454544F, 0.41322312F, 0.45454544F);
+      gfk $$7 = new gfk();
+
+      for (Entry<String, gfm> $$8 : $$0.a().a()) {
+         String $$9 = $$8.getKey();
+         gfm $$10 = $$8.getValue();
+
+         UnaryOperator<gfe> $$11 = switch ($$9) {
+            case "head" -> $$4;
+            case "body" -> $$5;
+            default -> $$6;
+         };
+         $$7.a().a($$9, $$10.a($$11));
+      }
+
+      return $$7;
+   }
+
+   public void a(gzj $$0) {
       super.a($$0);
-      this.m.e = $$0.V * (float) (Math.PI / 180.0);
-      this.m.f = $$0.U * (float) (Math.PI / 180.0);
-      float $$1 = azu.a($$0.a * (float) Math.PI);
-      this.i.e += $$1 * 50.0F * (float) (Math.PI / 180.0);
-      this.j.e += $$1 * 50.0F * (float) (Math.PI / 180.0);
-      this.k.e += $$1 * -40.0F * (float) (Math.PI / 180.0);
-      this.l.e += $$1 * -40.0F * (float) (Math.PI / 180.0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ae;
+      float $$2 = $$0.ad;
+      this.c.e = ayz.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.d.e = ayz.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.e.e = ayz.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
+      this.f.e = ayz.b($$2 * 0.6662F) * 1.4F * $$1;
+      this.g.k = $$0.b;
+      this.i.k = $$0.b;
    }
 }

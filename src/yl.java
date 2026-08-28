@@ -1,78 +1,90 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 
-public record yl(String d, @Nullable gu e) implements ym {
-   public static final MapCodec<yl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(yl::b)).apply($$0, yl::new));
-   public static final ym.a<yl> b = new ym.a<>(a, "block");
+public class yl<B extends ByteBuf, V, T> implements ym<B, V> {
+   private static final int a = -1;
+   private final Function<V, ? extends T> b;
+   private final List<yl.b<B, V, T>> c;
+   private final Object2IntMap<T> d;
 
-   public yl(String $$0) {
-      this($$0, a($$0));
+   yl(Function<V, ? extends T> $$0, List<yl.b<B, V, T>> $$1, Object2IntMap<T> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Nullable
-   private static gu a(String $$0) {
-      try {
-         return gs.a().a(new StringReader($$0));
-      } catch (CommandSyntaxException var2) {
-         return null;
+   public V a(B $$0) {
+      int $$1 = wf.a($$0);
+      if ($$1 >= 0 && $$1 < this.c.size()) {
+         yl.b<B, V, T> $$2 = this.c.get($$1);
+
+         try {
+            return (V)$$2.a.decode($$0);
+         } catch (Exception var5) {
+            throw new DecoderException("Failed to decode packet '" + $$2.b + "'", var5);
+         }
+      } else {
+         throw new DecoderException("Received unknown packet id " + $$1);
       }
    }
 
-   @Override
-   public Stream<um> a(ew $$0) {
-      if (this.e != null) {
-         arx $$1 = $$0.e();
-         jh $$2 = this.e.c($$0);
-         if ($$1.p($$2)) {
-            duq $$3 = $$1.c_($$2);
-            if ($$3 != null) {
-               return Stream.of($$3.b($$0.u()));
+   public void a(B $$0, V $$1) {
+      T $$2 = (T)this.b.apply($$1);
+      int $$3 = this.d.getOrDefault($$2, -1);
+      if ($$3 == -1) {
+         throw new EncoderException("Sending unknown packet '" + $$2 + "'");
+      } else {
+         wf.a($$0, $$3);
+         yl.b<B, V, T> $$4 = this.c.get($$3);
+
+         try {
+            ym<? super B, V> $$5 = (ym<? super B, V>)$$4.a;
+            $$5.encode($$0, $$1);
+         } catch (Exception var7) {
+            throw new EncoderException("Failed to encode packet '" + $$2 + "'", var7);
+         }
+      }
+   }
+
+   public static <B extends ByteBuf, V, T> yl.a<B, V, T> a(Function<V, ? extends T> $$0) {
+      return new yl.a<>($$0);
+   }
+
+   public static class a<B extends ByteBuf, V, T> {
+      private final List<yl.b<B, V, T>> a = new ArrayList<>();
+      private final Function<V, ? extends T> b;
+
+      a(Function<V, ? extends T> $$0) {
+         this.b = $$0;
+      }
+
+      public yl.a<B, V, T> a(T $$0, ym<? super B, ? extends V> $$1) {
+         this.a.add(new yl.b<>($$1, $$0));
+         return this;
+      }
+
+      public yl<B, V, T> a() {
+         Object2IntOpenHashMap<T> $$0 = new Object2IntOpenHashMap();
+         $$0.defaultReturnValue(-2);
+
+         for (yl.b<B, V, T> $$1 : this.a) {
+            int $$2 = $$0.size();
+            int $$3 = $$0.putIfAbsent($$1.b, $$2);
+            if ($$3 != -2) {
+               throw new IllegalStateException("Duplicate registration for type " + $$1.b);
             }
          }
-      }
 
-      return Stream.empty();
-   }
-
-   @Override
-   public ym.a<?> a() {
-      return b;
-   }
-
-   @Override
-   public String toString() {
-      return "block=" + this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof yl $$1 && this.d.equals($$1.d)) {
-            return true;
-         }
-
-         return false;
+         return new yl<>(this.b, List.copyOf(this.a), $$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.d.hashCode();
-   }
-
-   public String b() {
-      return this.d;
-   }
-
-   @Nullable
-   public gu c() {
-      return this.e;
+   static record b<B, V, T>(ym<? super B, ? extends V> a, T b) {
    }
 }

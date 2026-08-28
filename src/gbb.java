@@ -1,39 +1,22 @@
-public class gbb extends fzv<gxm> {
-   public static final float e = 0.87F;
-   public static final float f = 0.92F;
-   private final gej g = this.c.b("left_chest");
-   private final gej i = this.c.b("right_chest");
+public class gbb extends gcv {
+   public static final int a = 20;
+   public static final int b = 40;
+   public static final String c = "flag";
+   private static final String d = "pole";
+   private static final String e = "bar";
 
-   public gbb(gej $$0) {
-      super($$0);
+   public gbb(gfc $$0) {
+      super($$0, gmh::d);
    }
 
-   public static gep a(float $$0) {
-      ger $$1 = fzv.a(gen.a);
-      a($$1.a());
-      return gep.a($$1, 64, 64).a(ges.scaling($$0));
-   }
+   public static gfi a(boolean $$0) {
+      gfk $$1 = new gfk();
+      gfm $$2 = $$1.a();
+      if ($$0) {
+         $$2.a("pole", gfh.c().a(44, 0).a(-1.0F, -42.0F, -1.0F, 2.0F, 42.0F, 2.0F), gfe.a);
+      }
 
-   public static gep b(float $$0) {
-      ger $$1 = fzv.c(gen.a);
-      a($$1.a());
-      return gep.a(fzv.b.apply($$1), 64, 64).a(ges.scaling($$0));
-   }
-
-   private static void a(get $$0) {
-      get $$1 = $$0.b("body");
-      geo $$2 = geo.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$1.a("left_chest", $$2, gel.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("right_chest", $$2, gel.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      get $$3 = $$0.b("head_parts").b("head");
-      geo $$4 = geo.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$3.a("left_ear", $$4, gel.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$3.a("right_ear", $$4, gel.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-   }
-
-   public void a(gxm $$0) {
-      super.a($$0);
-      this.g.k = $$0.a;
-      this.i.k = $$0.a;
+      $$2.a("bar", gfh.c().a(0, 42).a(-10.0F, $$0 ? -44.0F : -20.5F, $$0 ? -1.0F : 9.5F, 20.0F, 2.0F, 2.0F), gfe.a);
+      return gfi.a($$1, 64, 64);
    }
 }

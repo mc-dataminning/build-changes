@@ -1,53 +1,22 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class btt extends btn {
+   public static final int c = 25;
 
-public record btt(String d, btq e, float f, btp g, btv h) {
-   public static final Codec<btt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.STRING.fieldOf("message_id").forGetter(btt::a),
-               btq.d.fieldOf("scaling").forGetter(btt::b),
-               Codec.FLOAT.fieldOf("exhaustion").forGetter(btt::c),
-               btp.g.optionalFieldOf("effects", btp.a).forGetter(btt::d),
-               btv.d.optionalFieldOf("death_message_type", btv.a).forGetter(btt::e)
-            )
-            .apply($$0, btt::new)
-   );
-   public static final Codec<jq<btt>> b = alm.a(mb.s);
-   public static final zi<wv, jq<btt>> c = zg.b(mb.s);
-
-   public btt(String $$0, btq $$1, float $$2) {
-      this($$0, $$1, $$2, btp.a, btv.a);
+   protected btt(bto $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   public btt(String $$0, btq $$1, float $$2, btp $$3) {
-      this($$0, $$1, $$2, $$3, btv.a);
+   @Override
+   public boolean a(arc $$0, bvg $$1, int $$2) {
+      if ($$1.eE() > 1.0F) {
+         $$1.a($$0, $$1.dX().q(), 1.0F);
+      }
+
+      return true;
    }
 
-   public btt(String $$0, float $$1, btp $$2) {
-      this($$0, btq.b, $$1, $$2);
-   }
-
-   public btt(String $$0, float $$1) {
-      this($$0, btq.b, $$1);
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public btq b() {
-      return this.e;
-   }
-
-   public float c() {
-      return this.f;
-   }
-
-   public btp d() {
-      return this.g;
-   }
-
-   public btv e() {
-      return this.h;
+   @Override
+   public boolean a(int $$0, int $$1) {
+      int $$2 = 25 >> $$1;
+      return $$2 > 0 ? $$0 % $$2 == 0 : true;
    }
 }

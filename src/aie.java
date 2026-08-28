@@ -1,18 +1,33 @@
-import io.netty.buffer.ByteBuf;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record aie(int b, boolean c) implements zr<ahb> {
-   public static final zi<ByteBuf, aie> a = zi.a(zg.h, aie::b, zg.b, aie::e, aie::new);
+public class aie implements yv<agf> {
+   public static final ym<vl, aie> a = yv.a(aie::a, aie::new);
+   private final UUID b;
 
-   @Override
-   public zt<aie> a() {
-      return agz.bP;
+   public aie(UUID $$0) {
+      this.b = $$0;
    }
 
-   public void a(ahb $$0) {
+   private aie(vl $$0) {
+      this.b = $$0.n();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public yx<aie> a() {
+      return agd.ck;
+   }
+
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
-      return this.c;
+   @Nullable
+   public buk a(arc $$0) {
+      return $$0.a(this.b);
    }
 }

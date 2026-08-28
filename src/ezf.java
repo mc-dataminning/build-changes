@@ -1,36 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ezf extends ezh {
-   public static final MapCodec<ezf> a = a(ezf::new);
-
-   ezf(List<ezr> $$0) {
-      super($$0, ae.b($$0));
-   }
+public record ezf(ezw b) implements eza {
+   public static final MapCodec<ezf> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezx.a.fieldOf("chance").forGetter(ezf::c)).apply($$0, ezf::new));
 
    @Override
-   public ezs b() {
-      return ezt.b;
+   public ezb b() {
+      return ezc.d;
    }
 
-   public static ezf.a a(ezr.a... $$0) {
-      return new ezf.a($$0);
+   public boolean a(evr $$0) {
+      float $$1 = this.b.b($$0);
+      return $$0.b().i() < $$1;
    }
 
-   public static class a extends ezh.a {
-      public a(ezr.a... $$0) {
-         super($$0);
-      }
+   public static eza.a a(float $$0) {
+      return () -> new ezf(ezt.a($$0));
+   }
 
-      @Override
-      public ezf.a or(ezr.a $$0) {
-         this.a($$0);
-         return this;
-      }
+   public static eza.a a(ezw $$0) {
+      return () -> new ezf($$0);
+   }
 
-      @Override
-      protected ezr a(List<ezr> $$0) {
-         return new ezf($$0);
-      }
+   public ezw c() {
+      return this.b;
    }
 }

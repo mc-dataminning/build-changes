@@ -1,106 +1,38 @@
-import com.google.common.annotations.VisibleForTesting;
+public class gsh extends gsb<cla, gyn> {
+   private final gnb a;
 
-public class gsh extends grk<cls, gyl> {
-   private static final float a = 0.15F;
-   private static final float b = 0.0F;
-   private static final float h = 0.0F;
-   private static final float i = 0.09375F;
-   private final gsj j;
-   private final bac k = bac.a();
-
-   public gsh(grl.a $$0) {
+   public gsh(gsc.a $$0) {
       super($$0);
-      this.j = $$0.b();
-      this.f = 0.15F;
-      this.g = 0.75F;
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   public gyl a() {
-      return new gyl();
+   public boolean a(cla $$0, gpo $$1, double $$2, double $$3, double $$4) {
+      return !super.a($$0, $$1, $$2, $$3, $$4) ? false : $$0.p() != $$0.dW().a_($$0.dw());
    }
 
-   public void a(cls $$0, gyl $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.p = (float)$$0.m() + $$2;
-      $$1.a = $$0.b;
-      cxg $$3 = $$0.l();
-      $$1.c = $$3.v();
-      $$1.b = this.j.a($$3, $$0.dW(), null, $$0.ar());
-   }
-
-   public void a(gyl $$0, fgl $$1, glg $$2, int $$3) {
-      hdi $$4 = $$0.b;
-      if ($$4 != null) {
+   public void a(gyn $$0, ffu $$1, glx $$2, int $$3) {
+      dwx $$4 = $$0.c;
+      if ($$4.o() == dpx.c) {
          $$1.a();
-         cxg $$5 = $$0.c;
-         this.k.b((long)a($$5));
-         boolean $$6 = $$4.b();
-         float $$7 = 0.25F;
-         float $$8 = azu.a($$0.p / 10.0F + $$0.a) * 0.1F + 0.1F;
-         float $$9 = $$4.f().a(cxe.h).d.y();
-         $$1.a(0.0F, $$8 + 0.25F * $$9, 0.0F);
-         float $$10 = cls.f($$0.p, $$0.a);
-         $$1.a(a.d.rotation($$10));
-         a(this.j, $$1, $$2, $$3, $$5, $$4, $$6, this.k);
+         $$1.a(-0.5, 0.0, -0.5);
+         this.a.b().a($$0, this.a.a($$4), $$4, $$0.b, $$1, $$2.getBuffer(glq.b($$4)), false, azh.a(), $$4.b($$0.a), hea.d);
          $$1.b();
          super.a($$0, $$1, $$2, $$3);
       }
    }
 
-   public static int a(cxg $$0) {
-      return $$0.f() ? 187 : cxc.a($$0.h()) + $$0.o();
+   public gyn a() {
+      return new gyn();
    }
 
-   @VisibleForTesting
-   static int a(int $$0) {
-      if ($$0 <= 1) {
-         return 1;
-      } else if ($$0 <= 16) {
-         return 2;
-      } else if ($$0 <= 32) {
-         return 3;
-      } else {
-         return $$0 <= 48 ? 4 : 5;
-      }
-   }
-
-   public static void a(gsj $$0, fgl $$1, glg $$2, int $$3, cxg $$4, bac $$5, dgz $$6) {
-      hdi $$7 = $$0.a($$4, $$6, null, 0);
-      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
-   }
-
-   public static void a(gsj $$0, fgl $$1, glg $$2, int $$3, cxg $$4, hdi $$5, boolean $$6, bac $$7) {
-      int $$8 = a($$4.M());
-      float $$9 = $$5.f().h.d.x();
-      float $$10 = $$5.f().h.d.y();
-      float $$11 = $$5.f().h.d.z();
-      if (!$$6) {
-         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
-         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
-         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
-         $$1.a($$12, $$13, $$14);
-      }
-
-      for (int $$15 = 0; $$15 < $$8; $$15++) {
-         $$1.a();
-         if ($$15 > 0) {
-            if ($$6) {
-               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
-               $$1.a($$16, $$17, $$18);
-            } else {
-               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
-               $$1.a($$19, $$20, 0.0F);
-            }
-         }
-
-         $$0.a($$4, cxe.h, false, $$1, $$2, $$3, hax.d, $$5);
-         $$1.b();
-         if (!$$6) {
-            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
-         }
-      }
+   public void a(cla $$0, gyn $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      ji $$3 = ji.a($$0.dB(), $$0.cR().e, $$0.dH());
+      $$1.a = $$0.l();
+      $$1.b = $$3;
+      $$1.c = $$0.p();
+      $$1.d = $$0.dW().t($$3);
+      $$1.e = $$0.dW();
    }
 }

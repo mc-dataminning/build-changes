@@ -1,56 +1,87 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.List;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
-public class aqk implements aqh {
-   static final SuggestionProvider<ew> b = ($$0, $$1) -> fb.a(a($$0).a(), $$1);
-   public static final Function<String, aqi.c> a = $$0 -> new aqi.c() {
-         @Override
-         public aqh a(CommandContext<ew> $$0x) {
-            return new aqk(aqk.a($$0), fx.a($$0, $$0));
+public class aqk {
+   public static final int a = aqg.b + 2;
+   private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> b = IntStream.range(0, a).mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap()).toList();
+   private volatile int c = a;
+   private final String d;
+
+   public aqk(String $$0) {
+      this.d = $$0;
+   }
+
+   protected void a(int $$0, dfo $$1, int $$2) {
+      if ($$0 < a) {
+         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$3 = this.b.get($$0);
+         List<Runnable> $$4 = (List<Runnable>)$$3.remove($$1.a());
+         if ($$0 == this.c) {
+            while (this.b() && this.b.get(this.c).isEmpty()) {
+               this.c++;
+            }
          }
 
-         @Override
-         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
-            return $$0.then(ex.a("storage").then($$1.apply(ex.a($$0, fx.a()).suggests(aqk.b))));
+         if ($$4 != null && !$$4.isEmpty()) {
+            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
+            this.c = Math.min(this.c, $$2);
          }
-      };
-   private final evn c;
-   private final alp d;
-
-   static evn a(CommandContext<ew> $$0) {
-      return ((ew)$$0.getSource()).l().aK();
+      }
    }
 
-   aqk(evn $$0, alp $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   protected void a(Runnable $$0, long $$1, int $$2) {
+      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
+      this.c = Math.min(this.c, $$2);
+   }
+
+   protected void a(long $$0, boolean $$1) {
+      for (Long2ObjectLinkedOpenHashMap<List<Runnable>> $$2 : this.b) {
+         List<Runnable> $$3 = (List<Runnable>)$$2.get($$0);
+         if ($$3 != null) {
+            if ($$1) {
+               $$3.clear();
+            }
+
+            if ($$3.isEmpty()) {
+               $$2.remove($$0);
+            }
+         }
+      }
+
+      while (this.b() && this.b.get(this.c).isEmpty()) {
+         this.c++;
+      }
+   }
+
+   @Nullable
+   public aqk.a a() {
+      if (!this.b()) {
+         return null;
+      } else {
+         int $$0 = this.c;
+         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$1 = this.b.get($$0);
+         long $$2 = $$1.firstLongKey();
+         List<Runnable> $$3 = (List<Runnable>)$$1.removeFirst();
+
+         while (this.b() && this.b.get(this.c).isEmpty()) {
+            this.c++;
+         }
+
+         return new aqk.a($$2, $$3);
+      }
+   }
+
+   public boolean b() {
+      return this.c < a;
    }
 
    @Override
-   public void a(um $$0) {
-      this.c.a(this.d, $$0);
+   public String toString() {
+      return this.d + " " + this.c + "...";
    }
 
-   @Override
-   public um a() {
-      return this.c.a(this.d);
-   }
-
-   @Override
-   public xk b() {
-      return xk.a("commands.data.storage.modified", xk.a(this.d));
-   }
-
-   @Override
-   public xk a(vj $$0) {
-      return xk.a("commands.data.storage.query", xk.a(this.d), vb.c($$0));
-   }
-
-   @Override
-   public xk a(fo.g $$0, double $$1, int $$2) {
-      return xk.a("commands.data.storage.get", $$0.a(), xk.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public static record a(long a, List<Runnable> b) {
    }
 }

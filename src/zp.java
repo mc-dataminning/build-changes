@@ -1,14 +1,20 @@
-public abstract class zp<T extends wq> implements zr<T> {
-   private final Iterable<zr<? super T>> a;
+public record zp(aqn b) implements yv<zo> {
+   public static final ym<vl, zp> a = yv.a(zp::a, zp::new);
 
-   protected zp(Iterable<zr<? super T>> $$0) {
-      this.a = $$0;
+   private zp(vl $$0) {
+      this(new aqn($$0));
    }
 
-   public final Iterable<zr<? super T>> b() {
-      return this.a;
+   private void a(vl $$0) {
+      this.b.a($$0);
    }
 
    @Override
-   public abstract zt<? extends zp<T>> a();
+   public yx<zp> a() {
+      return zn.l;
+   }
+
+   public void a(zo $$0) {
+      $$0.a(this);
+   }
 }

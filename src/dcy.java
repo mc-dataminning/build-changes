@@ -1,19 +1,8 @@
-import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public interface dcy<T> {
-   public interface a<T> extends dcy<T> {
-      T a(T var1, List<T> var2);
-   }
-
-   public interface b<T> extends dcy<T> {
-      default T a(jq<cxc> $$0) {
-         return this.a(new cxg($$0));
-      }
-
-      default T a(cxc $$0) {
-         return this.a(new cxg($$0));
-      }
-
-      T a(cxg var1);
+public record dcy(cwp a, @Nullable bus b, @Nullable bvg c, Consumer<cwl> d) {
+   public dcy(cwp $$0, bus $$1, bvg $$2) {
+      this($$0, $$1, $$2, $$2x -> $$2.a($$2x, $$1));
    }
 }

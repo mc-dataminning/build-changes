@@ -1,16 +1,24 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dmw {
-   @Nullable
-   duq a(jh var1, dxo var2);
+public class dmw extends dnk {
+   public static final MapCodec<dmw> a = b(dmw::new);
 
-   @Nullable
-   default <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
-      return null;
+   @Override
+   public MapCodec<dmw> a() {
+      return a;
    }
 
-   @Nullable
-   default <T extends duq> ecm a(arx $$0, T $$1) {
-      return $$1 instanceof ecm.b<?> $$2 ? $$2.c() : null;
+   public dmw(dww.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(aF);
+   }
+
+   @Override
+   public dwx a(dag $$0) {
+      return this.m().b(aF, $$0.g().g());
    }
 }

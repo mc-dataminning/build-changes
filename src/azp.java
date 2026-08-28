@@ -1,9 +1,24 @@
-public class azp {
-   private static final long a = 6364136223846793005L;
-   private static final long b = 1442695040888963407L;
+import java.util.Objects;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public static long a(long $$0, long $$1) {
-      $$0 *= $$0 * 6364136223846793005L + 1442695040888963407L;
-      return $$0 + $$1;
+public class azp<K, V> {
+   private final Function<K, V> a;
+   @Nullable
+   private K b = (K)null;
+   @Nullable
+   private V c;
+
+   public azp(Function<K, V> $$0) {
+      this.a = $$0;
+   }
+
+   public V a(K $$0) {
+      if (this.c == null || !Objects.equals(this.b, $$0)) {
+         this.c = this.a.apply($$0);
+         this.b = $$0;
+      }
+
+      return this.c;
    }
 }

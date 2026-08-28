@@ -1,211 +1,80 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletionException;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fgq {
-   public static final int a = -1;
-   private final List<fgr> b;
-   private final List<String> c;
-   private final int d;
-   private final int e;
-   private final int[] f = new int[32];
-   @Nullable
-   private fgo g;
+   private static final Logger a = LogUtils.getLogger();
 
-   fgq(List<fgr> $$0, List<String> $$1, IntList $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$0.stream().mapToInt(fgr::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
-
-      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
-         fgr $$5 = fgr.a($$4);
-         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
-         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
-      }
-   }
-
-   public static fgq.a a() {
-      return new fgq.a();
-   }
-
-   public void a(int $$0) {
-      int $$1 = 0;
-
-      for (String $$2 : this.d()) {
-         GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-         $$1++;
-      }
-   }
-
-   @Override
-   public String toString() {
-      return "VertexFormat" + this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public List<fgr> c() {
-      return this.b;
-   }
-
-   public List<String> d() {
-      return this.c;
-   }
-
-   public int[] e() {
-      return this.f;
-   }
-
-   public int a(fgr $$0) {
-      return this.f[$$0.c()];
-   }
-
-   public boolean b(fgr $$0) {
-      return (this.e & $$0.a()) != 0;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public String c(fgr $$0) {
-      int $$1 = this.b.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException($$0 + " is not contained in format");
-      } else {
-         return this.c.get($$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fgq $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
+   public static void a(flj $$0, fuk $$1, fuk $$2, int $$3, fhl $$4, @Nullable fkj $$5) {
+      fzj.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
+         Path $$10;
+         try {
+            $$10 = a($$7, $$8, $$9);
+         } catch (IOException var13) {
+            a.warn("Failed to create temporary world folder.");
+            $$0.a(new fiy(wo.c("mco.create.world.failed"), $$2));
             return true;
          }
 
-         return false;
-      }
+         fhr $$13 = fhr.a($$8.J(), ab.b().c());
+         fgx $$14 = new fgx($$10, $$13, $$0.X(), $$4.a, $$3, fgy.f());
+         $$0.d(new ftd($$14::b, wo.c("mco.create.world.reset.title"), wo.i(), wn.e, false));
+         if ($$5 != null) {
+            $$5.run();
+         }
+
+         $$14.a().handleAsync(($$5xx, $$6x) -> {
+            if ($$6x != null) {
+               if ($$6x instanceof CompletionException $$7x) {
+                  $$6x = $$7x.getCause();
+               }
+
+               if ($$6x instanceof fgr) {
+                  $$0.d($$2);
+               } else {
+                  if ($$6x instanceof fgt $$8x) {
+                     a.warn("Failed to create realms world {}", $$8x.a());
+                  } else {
+                     a.warn("Failed to create realms world {}", $$6x.getMessage());
+                  }
+
+                  $$0.d(new fiy(wo.c("mco.create.world.failed"), $$2));
+               }
+            } else {
+               if ($$1 instanceof fiu $$9x) {
+                  $$9x.a($$4.a);
+               }
+
+               if ($$5 != null) {
+                  fgf.a($$4, $$1, true);
+               } else {
+                  $$0.d($$1);
+               }
+
+               fgf.g();
+            }
+
+            return null;
+         }, $$0);
+         return true;
+      });
    }
 
-   @Override
-   public int hashCode() {
-      return this.e * 31 + Arrays.hashCode(this.f);
-   }
-
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = this.b();
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         GlStateManager._enableVertexAttribArray($$1);
-         fgr $$2 = this.b.get($$1);
-         $$2.a($$1, (long)this.a($$2), $$0);
-      }
-   }
-
-   public void h() {
-      RenderSystem.assertOnRenderThread();
-
-      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
-         GlStateManager._disableVertexAttribArray($$0);
-      }
-   }
-
-   public fgo i() {
-      fgo $$0 = this.g;
-      if ($$0 == null) {
-         this.g = $$0 = new fgo(fef.a);
+   private static Path a(jy<ald> $$0, evj $$1, @Nullable Path $$2) throws IOException {
+      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
+      if ($$2 != null) {
+         Files.move($$2, $$3.resolve("datapacks"));
       }
 
-      return $$0;
-   }
-
-   public static class a {
-      private final Builder<String, fgr> a = ImmutableMap.builder();
-      private final IntList b = new IntArrayList();
-      private int c;
-
-      a() {
-      }
-
-      public fgq.a a(String $$0, fgr $$1) {
-         this.a.put($$0, $$1);
-         this.b.add(this.c);
-         this.c = this.c + $$1.b();
-         return this;
-      }
-
-      public fgq.a a(int $$0) {
-         this.c += $$0;
-         return this;
-      }
-
-      public fgq a() {
-         ImmutableMap<String, fgr> $$0 = this.a.buildOrThrow();
-         ImmutableList<fgr> $$1 = $$0.values().asList();
-         ImmutableList<String> $$2 = $$0.keySet().asList();
-         return new fgq($$1, $$2, this.b, this.c);
-      }
-   }
-
-   public static enum b {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private b(final int $$0, final int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static fgq.b a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
-      }
-   }
-
-   public static enum c {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
-
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
-
-      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
-      }
-
-      public int a(int $$0) {
-         return switch (this) {
-            case a, h -> $$0 / 4 * 6;
-            case b, c, d, e, f, g -> $$0;
-            default -> 0;
-         };
-      }
+      tq $$4 = $$1.a($$0.a(), null);
+      tq $$5 = new tq();
+      $$5.a("Data", $$4);
+      Path $$6 = Files.createFile($$3.resolve("level.dat"));
+      ud.a($$5, $$6);
+      return $$3;
    }
 }

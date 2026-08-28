@@ -1,43 +1,30 @@
-public class cfl extends cfj {
-   private boolean p;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-   public cfl(bvz $$0, dgz $$1) {
-      super($$0, $$1);
+public class cfl extends cfq<bvg> {
+   @Override
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.h, cek.M, cek.an);
    }
 
    @Override
-   protected eug a(int $$0) {
-      this.p = this.a.aq() == bvi.I;
-      this.o = new euk(this.p);
-      return new eug(this.o, $$0);
-   }
+   protected void a(arc $$0, bvg $$1) {
+      bwi<?> $$2 = $$1.ec();
+      List<cnk> $$3 = Lists.newArrayList();
+      cem $$4 = $$2.c(cek.h).orElse(cem.a());
+      Optional<bvi> $$5 = $$4.a($$0x -> $$0x instanceof cmo || $$0x instanceof cko).map(bvi.class::cast);
 
-   @Override
-   protected boolean a() {
-      return this.p || this.a.bn();
-   }
+      for (bvg $$7 : $$2.c(cek.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cnk && ((cnk)$$7).gp()) {
+            $$3.add((cnk)$$7);
+         }
+      }
 
-   @Override
-   protected fbr b() {
-      return new fbr(this.a.dB(), this.a.e(0.5), this.a.dH());
-   }
-
-   @Override
-   protected double a(fbr $$0) {
-      return $$0.e;
-   }
-
-   @Override
-   protected boolean a(fbr $$0, fbr $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(jh $$0) {
-      return !this.b.a_($$0).s();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+      $$2.a(cek.M, $$5);
+      $$2.a(cek.an, $$3);
    }
 }

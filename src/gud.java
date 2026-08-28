@@ -1,52 +1,60 @@
-public class gud extends gsr<cio, gzv, gbh<gzv>> {
-   private final gbh<gzv> a = this.c();
-   private final gbh<gzv> b;
-   private static final alp k = alp.b("textures/entity/fish/tropical_a.png");
-   private static final alp l = alp.b("textures/entity/fish/tropical_b.png");
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-   public gud(grl.a $$0) {
-      super($$0, new gdo($$0.a(gei.do)), 0.15F);
-      this.b = new gdp($$0.a(gei.dm));
-      this.a(new gwj(this, $$0.f()));
+public class gud extends gti<cmd, had, gdt> {
+   private static final aku a = gms.i.b().a((UnaryOperator<String>)($$0 -> "textures/" + $$0 + ".png"));
+   private static final aku[] b = gms.j.stream().map($$0 -> $$0.b().a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).toArray(aku[]::new);
+
+   public gud(gsc.a $$0) {
+      super($$0, new gdt($$0.a(gfb.cE)), 0.0F);
    }
 
-   public alp a(gzv $$0) {
-      return switch ($$0.a.a()) {
-         case a -> k;
-         case b -> l;
-      };
+   public fba a(had $$0) {
+      return $$0.a;
    }
 
-   public gzv b() {
-      return new gzv();
-   }
-
-   public void a(cio $$0, gzv $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gy();
-      $$1.b = $$0.gw().d();
-      $$1.c = $$0.gx().d();
-   }
-
-   public void a(gzv $$0, fgl $$1, glg $$2, int $$3) {
-      this.h = switch ($$0.a.a()) {
-         case a -> this.a;
-         case b -> this.b;
-      };
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected int b(gzv $$0) {
-      return $$0.b;
-   }
-
-   protected void a(gzv $$0, fgl $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = 4.3F * azu.a(0.6F * $$0.p);
-      $$1.a(a.d.rotationDegrees($$4));
-      if (!$$0.af) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   public boolean a(cmd $$0, gpo $$1, double $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else {
+         fba $$5 = $$0.K(0.0F);
+         if ($$5 == null) {
+            return false;
+         } else {
+            bur<?> $$6 = $$0.aq();
+            float $$7 = $$6.m() / 2.0F;
+            float $$8 = $$6.l() / 2.0F;
+            fba $$9 = fba.c($$0.dw());
+            return $$1.a(new fav($$5.d, $$5.e + (double)$$7, $$5.f, $$9.d, $$9.e + (double)$$7, $$9.f).c((double)$$8, (double)$$7, (double)$$8));
+         }
       }
+   }
+
+   public aku b(had $$0) {
+      return a($$0.b);
+   }
+
+   public had b() {
+      return new had();
+   }
+
+   public void a(cmd $$0, had $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = Objects.requireNonNullElse($$0.K($$2), fba.c);
+      $$1.b = $$0.gp();
+      $$1.c = $$0.J($$2);
+      $$1.d = $$0.aZ;
+      $$1.e = $$0.aX;
+      $$1.f = $$0.t();
+   }
+
+   public static aku a(@Nullable cvm $$0) {
+      return $$0 == null ? a : b[$$0.a()];
+   }
+
+   protected void a(had $$0, ffu $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2 + 180.0F, $$3);
+      $$1.a($$0.f.g().b(), 0.0F, 0.5F, 0.0F);
    }
 }

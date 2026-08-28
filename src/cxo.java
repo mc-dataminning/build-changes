@@ -1,51 +1,60 @@
-public interface cxo {
-   alo<cxm> a = a("13");
-   alo<cxm> b = a("cat");
-   alo<cxm> c = a("blocks");
-   alo<cxm> d = a("chirp");
-   alo<cxm> e = a("far");
-   alo<cxm> f = a("mall");
-   alo<cxm> g = a("mellohi");
-   alo<cxm> h = a("stal");
-   alo<cxm> i = a("strad");
-   alo<cxm> j = a("ward");
-   alo<cxm> k = a("11");
-   alo<cxm> l = a("wait");
-   alo<cxm> m = a("pigstep");
-   alo<cxm> n = a("otherside");
-   alo<cxm> o = a("5");
-   alo<cxm> p = a("relic");
-   alo<cxm> q = a("precipice");
-   alo<cxm> r = a("creator");
-   alo<cxm> s = a("creator_music_box");
+import javax.annotation.Nullable;
 
-   private static alo<cxm> a(String $$0) {
-      return alo.a(mb.L, alp.b($$0));
+public class cxo extends cuv {
+   public cxo(djm $$0, cwl.a $$1) {
+      super($$0, $$1);
    }
 
-   private static void a(ra<cxm> $$0, alo<cxm> $$1, jq.c<awu> $$2, int $$3, int $$4) {
-      $$0.a($$1, new cxm($$2, xk.c(ae.a("jukebox_song", $$1.a())), (float)$$3, $$4));
+   @Nullable
+   @Override
+   public dag b(dag $$0) {
+      ji $$1 = $$0.a();
+      dgi $$2 = $$0.q();
+      dwx $$3 = $$2.a_($$1);
+      djm $$4 = this.d();
+      if (!$$3.a($$4)) {
+         return dqg.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         jn $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == jn.b ? $$0.g() : jn.b;
+         }
+
+         int $$7 = 0;
+         ji.a $$8 = $$1.k().c($$5);
+
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               cox $$9 = $$0.o();
+               int $$10 = $$2.an();
+               if ($$9 instanceof ard && $$8.v() > $$10) {
+                  ((ard)$$9).b(wo.a("build.tooHigh", $$10).a(n.m), true);
+               }
+               break;
+            }
+
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.d())) {
+               if ($$3.a($$0)) {
+                  return dag.a($$0, $$8, $$5);
+               }
+               break;
+            }
+
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
+
+         return null;
+      }
    }
 
-   static void a(ra<cxm> $$0) {
-      a($$0, a, awv.qg, 178, 1);
-      a($$0, b, awv.qi, 185, 2);
-      a($$0, c, awv.qh, 345, 3);
-      a($$0, d, awv.qj, 185, 4);
-      a($$0, e, awv.qk, 174, 5);
-      a($$0, f, awv.ql, 197, 6);
-      a($$0, g, awv.qm, 96, 7);
-      a($$0, h, awv.qo, 150, 8);
-      a($$0, i, awv.qp, 188, 9);
-      a($$0, j, awv.qr, 251, 10);
-      a($$0, k, awv.qf, 71, 11);
-      a($$0, l, awv.qq, 238, 12);
-      a($$0, m, awv.qn, 149, 13);
-      a($$0, n, awv.qs, 195, 14);
-      a($$0, o, awv.qe, 178, 15);
-      a($$0, p, awv.qt, 218, 14);
-      a($$0, q, awv.qw, 299, 13);
-      a($$0, r, awv.qu, 176, 12);
-      a($$0, s, awv.qv, 73, 11);
+   @Override
+   protected boolean c() {
+      return false;
    }
 }

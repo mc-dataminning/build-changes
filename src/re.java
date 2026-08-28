@@ -1,72 +1,19 @@
+import com.google.common.collect.ImmutableList;
+
 public class re {
-   @Deprecated
-   public static final est.a a = new est.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final akt<efk<?, ?>> a = rf.a("end_platform");
+   public static final akt<efk<?, ?>> b = rf.a("end_spike");
+   public static final akt<efk<?, ?>> c = rf.a("end_gateway_return");
+   public static final akt<efk<?, ?>> d = rf.a("end_gateway_delayed");
+   public static final akt<efk<?, ?>> e = rf.a("chorus_plant");
+   public static final akt<efk<?, ?>> f = rf.a("end_island");
 
-   public static void a(ra<est.a> $$0) {
-      a($$0, 0, eds.a, eds.b, eds.c, eds.d);
-      a($$0, -2, eds.e, eds.f, eds.g, eds.h);
-      a($$0, eds.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(eds.j, a);
-      a($$0, eds.k, -3, 1.0);
-      a($$0, eds.l, -7, 1.0);
-      a($$0, eds.m, -1, 1.0);
-      a($$0, eds.n, -5, 1.0);
-      a($$0, eds.o, -7, 1.0, 1.0);
-      a($$0, eds.p, -8, 1.0);
-      a($$0, eds.q, -8, 1.0);
-      a($$0, eds.r, -7, 1.0);
-      a($$0, eds.s, -8, 1.0);
-      a($$0, eds.t, -11, 1.0);
-      a($$0, eds.u, -11, 1.0);
-      a($$0, eds.v, -7, 1.0);
-      a($$0, eds.w, -7, 1.0);
-      a($$0, eds.x, -11, 1.0);
-      a($$0, eds.y, -8, 1.0);
-      a($$0, eds.z, -5, 1.0);
-      a($$0, eds.A, -8, 1.0);
-      a($$0, eds.B, -7, 0.4, 0.5, 1.0);
-      a($$0, eds.C, -8, 1.0);
-      a($$0, eds.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, eds.E, -8, 1.0);
-      a($$0, eds.F, -7, 1.0);
-      a($$0, eds.G, -7, 1.0);
-      a($$0, eds.H, -5, 1.0);
-      a($$0, eds.I, -8, 1.0);
-      a($$0, eds.J, -8, 1.0);
-      a($$0, eds.K, -7, 1.0);
-      a($$0, eds.L, -7, 1.0);
-      a($$0, eds.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.N, -6, 1.0, 1.0, 1.0);
-      a($$0, eds.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, eds.P, -8, 1.0);
-      a($$0, eds.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.R, -8, 1.0);
-      a($$0, eds.S, -6, 1.0, 1.0, 1.0);
-      a($$0, eds.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.U, -3, 1.0);
-      a($$0, eds.V, -6, 1.0, 1.0, 1.0);
-      a($$0, eds.W, -2, 1.0);
-      a($$0, eds.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, eds.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eds.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eds.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, eds.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, eds.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, eds.ah, -4, 1.0);
-   }
-
-   private static void a(ra<est.a> $$0, int $$1, alo<est.a> $$2, alo<est.a> $$3, alo<est.a> $$4, alo<est.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(ra<est.a> $$0, alo<est.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new est.a($$2, $$3, $$4));
+   public static void a(qe<efk<?, ?>> $$0) {
+      rf.a($$0, a, efy.J);
+      rf.a($$0, b, efy.K, new eiw(false, ImmutableList.of(), null));
+      rf.a($$0, c, efy.M, eib.a(arc.a, true));
+      rf.a($$0, d, efy.M, eib.a());
+      rf.a($$0, e, efy.l);
+      rf.a($$0, f, efy.L);
    }
 }

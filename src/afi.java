@@ -1,29 +1,20 @@
-public class afi implements zr<acg> {
-   public static final zi<wh, afi> a = zr.a(afi::a, afi::new);
-   private final int b;
-
-   public afi(dze $$0) {
-      this.b = $$0.q();
-   }
-
-   private afi(wh $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(wh $$0) {
-      $$0.c(this.b);
-   }
+public record afi(long b, long c, boolean d) implements yv<abk> {
+   public static final ym<vl, afi> a = ym.a(yk.j, afi::b, yk.j, afi::e, yk.b, afi::f, afi::new);
 
    @Override
-   public zt<afi> a() {
-      return agz.ay;
+   public yx<afi> a() {
+      return agd.aS;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public long e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

@@ -1,9 +1,6 @@
-public class alt {
-   public final String a;
-   public final ew b;
-
-   public alt(String $$0, ew $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public record alt(auf a, alf b, jy<ald> c, evl d) implements AutoCloseable {
+   @Override
+   public void close() {
+      this.a.close();
    }
 }

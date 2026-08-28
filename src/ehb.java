@@ -1,89 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class ehb extends egp<eja> {
-   public ehb(Codec<eja> $$0) {
+public class ehb extends efy<eik> {
+   private static final int a = 7;
+
+   ehb(Codec<eik> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egr<eja> $$0) {
-      jh $$1 = $$0.e();
-      bac $$2 = $$0.d();
-      dhx $$3 = $$0.b();
+   public boolean a(ega<eik> $$0) {
+      dhg $$1 = $$0.b();
+      azh $$2 = $$0.d();
+      eik $$3 = $$0.f();
+      ji $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      ji.a $$6 = new ji.a();
 
-      while ($$3.u($$1) && $$1.v() > $$3.L_() + 2) {
-         $$1 = $$1.e();
-      }
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dwx $$8 = $$1.a_($$6);
 
-      if (!$$3.a_($$1).a(dkf.ec)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
-         }
-
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = azu.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)azu.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)azu.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dxo $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.l() || b($$13) || $$13.a(dkf.ec) || $$13.a(dkf.eb)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dkf.ja.m());
-                     }
-
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.l() || b($$13) || $$13.a(dkf.ec) || $$13.a(dkf.eb)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dkf.ja.m());
-                        }
-                     }
-                  }
-               }
+         for (eik.a $$9 : $$3.b) {
+            if (egt.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
             }
          }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               jh $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dxo $$19 = $$3.a_($$17);
-                  if (!$$19.l() && !b($$19) && !$$19.a(dkf.ec) && !$$19.a(dkf.eb) && !$$19.a(dkf.ja)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dkf.ja.m());
-                  $$17 = $$17.e();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
-               }
-            }
-         }
-
-         return true;
       }
+
+      return true;
+   }
+
+   private void a(ji.a $$0, azh $$1, ji $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
+   }
+
+   private int a(azh $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

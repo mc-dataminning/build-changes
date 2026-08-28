@@ -28,6 +28,9 @@ import org.slf4j.Logger;
 public class Main {
    private static final Logger a = LogUtils.getLogger();
 
+   @ac(
+      a = "System.out needed before bootstrap"
+   )
    @DontObfuscate
    public static void main(String[] $$0) {
       ab.a();
@@ -63,18 +66,18 @@ public class Main {
 
          o.g();
          if ($$18.has($$15)) {
-            bpr.f.a(bpp.b);
+            bpa.f.a(boy.b);
          }
 
-         alr.a();
-         alr.c();
-         ae.o();
+         akw.a();
+         akw.c();
+         af.o();
          Path $$20 = Paths.get("server.properties");
-         aqq $$21 = new aqq($$20);
+         apv $$21 = new apv($$20);
          $$21.b();
-         ebb.a($$21.a().M);
+         eak.a($$21.a().M);
          Path $$22 = Paths.get("eula.txt");
-         alv $$23 = new alv($$22);
+         ala $$23 = new ala($$22);
          if ($$18.has($$3)) {
             a.info("Initialized '{}' and '{}'", $$20.toAbsolutePath(), $$22.toAbsolutePath());
             return;
@@ -86,25 +89,25 @@ public class Main {
          }
 
          File $$24 = new File((String)$$18.valueOf($$11));
-         amk $$25 = amk.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
+         alp $$25 = alp.a(new YggdrasilAuthenticationService(Proxy.NO_PROXY), $$24);
          String $$26 = (String)Optional.ofNullable((String)$$18.valueOf($$12)).orElse($$21.a().l);
-         evw $$27 = evw.b($$24.toPath());
-         evw.c $$28 = $$27.d($$26);
+         evf $$27 = evf.b($$24.toPath());
+         evf.c $$28 = $$27.d($$26);
          Dynamic<?> $$29;
          if ($$28.m()) {
-            evx $$30;
+            evg $$30;
             try {
                $$29 = $$28.h();
                $$30 = $$28.a($$29);
-            } catch (ux | vd | IOException var41) {
-               evw.b $$32 = $$28.e();
+            } catch (ub | uh | IOException var41) {
+               evf.b $$32 = $$28.e();
                a.warn("Failed to load world data from {}", $$32.b(), var41);
                a.info("Attempting to use fallback");
 
                try {
                   $$29 = $$28.i();
                   $$30 = $$28.a($$29);
-               } catch (ux | vd | IOException var40) {
+               } catch (ub | uh | IOException var40) {
                   a.error("Failed to load world data from {}", $$32.c(), var40);
                   a.error("Failed to load world data from {} and {}. World files may be corrupted. Shutting down.", $$32.b(), $$32.c());
                   return;
@@ -132,52 +135,52 @@ public class Main {
             a.warn("Safe mode active, only vanilla datapack will be loaded");
          }
 
-         auv $$41 = auz.a($$28);
+         aua $$41 = aud.a($$28);
 
-         amo $$43;
+         alt $$43;
          try {
-            amn.c $$42 = a($$21.a(), $$39, $$40, $$41);
-            $$43 = ae.<amo>c($$6x -> amn.a($$42, $$5xx -> {
-                  kd<ebk> $$6xx = $$5xx.d().e(mb.bf);
+            als.c $$42 = a($$21.a(), $$39, $$40, $$41);
+            $$43 = af.<alt>c($$6x -> als.a($$42, $$5xx -> {
+                  ke<eat> $$6xx = $$5xx.d().e(mc.bf);
                   if ($$39 != null) {
-                     evt $$7x = evw.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
-                     return new amn.b<>($$7x.a(), $$7x.b().b());
+                     evc $$7x = evf.a($$39, $$5xx.b(), $$6xx, $$5xx.c());
+                     return new als.b<>($$7x.a(), $$7x.b().b());
                   } else {
                      a.info("No existing world data, creating new world");
-                     dhd $$8x;
-                     eeh $$9x;
-                     eee $$10x;
+                     dgm $$8x;
+                     edq $$9x;
+                     edn $$10x;
                      if ($$18.has($$4)) {
                         $$8x = MinecraftServer.d;
-                        $$9x = eeh.b;
-                        $$10x = ent.a($$5xx.c());
+                        $$9x = edq.b;
+                        $$10x = enc.a($$5xx.c());
                      } else {
-                        aqp $$11x = $$21.a();
-                        $$8x = new dhd($$11x.l, $$11x.k, $$11x.t, $$11x.j, false, new dgv($$5xx.b().b()), $$5xx.b());
+                        apu $$11x = $$21.a();
+                        $$8x = new dgm($$11x.l, $$11x.k, $$11x.t, $$11x.j, false, new dge($$5xx.b().b()), $$5xx.b());
                         $$9x = $$18.has($$5) ? $$11x.aa.a(true) : $$11x.aa;
                         $$10x = $$11x.a($$5xx.c());
                      }
 
-                     eee.b $$15x = $$10x.a($$6xx);
+                     edn.b $$15x = $$10x.a($$6xx);
                      Lifecycle $$16x = $$15x.a().add($$5xx.c().d());
-                     return new amn.b<>(new ewa($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
+                     return new als.b<>(new evj($$8x, $$9x, $$15x.d(), $$16x), $$15x.b());
                   }
-               }, amo::new, ae.g(), $$6x)).get();
+               }, alt::new, af.g(), $$6x)).get();
          } catch (Exception var39) {
             a.warn("Failed to load datapacks, can't proceed with server load. You can either fix your datapacks or reset to vanilla with --safeMode", var39);
             return;
          }
 
-         ke.b $$46 = $$43.c().a();
+         kf.b $$46 = $$43.c().a();
          boolean $$47 = $$18.has($$8);
          if ($$18.has($$6) || $$47) {
-            a($$28, bbj.a(), $$18.has($$7), () -> true, $$46, $$47);
+            a($$28, bao.a(), $$18.has($$7), () -> true, $$46, $$47);
          }
 
-         ewc $$48 = $$43.d();
+         evl $$48 = $$43.d();
          $$28.a($$46, $$48);
-         final aqo $$49 = MinecraftServer.a((Function<Thread, aqo>)($$11x -> {
-            aqo $$12x = new aqo($$11x, $$28, $$41, $$43, $$21, bbj.a(), $$25, asj::b);
+         final apt $$49 = MinecraftServer.a((Function<Thread, apt>)($$11x -> {
+            apt $$12x = new apt($$11x, $$28, $$41, $$43, $$21, bao.a(), $$25, aro::b);
             $$12x.a((Integer)$$18.valueOf($$13));
             $$12x.c($$18.has($$4));
             $$12x.b((String)$$18.valueOf($$14));
@@ -210,30 +213,30 @@ public class Main {
       }
    }
 
-   private static amn.c a(aqp $$0, @Nullable Dynamic<?> $$1, boolean $$2, auv $$3) {
+   private static als.c a(apu $$0, @Nullable Dynamic<?> $$1, boolean $$2, aua $$3) {
       boolean $$5;
-      dhw $$6;
+      dhf $$6;
       if ($$1 != null) {
-         dhw $$4 = evw.a($$1);
+         dhf $$4 = evf.a($$1);
          $$5 = false;
          $$6 = $$4;
       } else {
          $$5 = true;
-         $$6 = new dhw($$0.U, csm.h);
+         $$6 = new dhf($$0.U, crv.h);
       }
 
-      amn.d $$9 = new amn.d($$3, $$6, $$2, $$5);
-      return new amn.c($$9, ex.a.b, $$0.A);
+      als.d $$9 = new als.d($$3, $$6, $$2, $$5);
+      return new als.c($$9, ey.a.b, $$0.A);
    }
 
-   private static void a(evw.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, ke $$4, boolean $$5) {
+   private static void a(evf.c $$0, DataFixer $$1, boolean $$2, BooleanSupplier $$3, kf $$4, boolean $$5) {
       a.info("Forcing world upgrade!");
 
-      try (bso $$6 = new bso($$0, $$1, $$4, $$2, $$5)) {
-         xk $$7 = null;
+      try (brx $$6 = new brx($$0, $$1, $$4, $$2, $$5)) {
+         wo $$7 = null;
 
          while (!$$6.b()) {
-            xk $$8 = $$6.h();
+            wo $$8 = $$6.h();
             if ($$7 != $$8) {
                $$7 = $$8;
                a.info($$6.h().getString());
@@ -242,7 +245,7 @@ public class Main {
             int $$9 = $$6.e();
             if ($$9 > 0) {
                int $$10 = $$6.f() + $$6.g();
-               a.info("{}% completed ({} / {} chunks)...", new Object[]{azu.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
+               a.info("{}% completed ({} / {} chunks)...", new Object[]{ayz.d((float)$$10 / (float)$$9 * 100.0F), $$10, $$9});
             }
 
             if (!$$3.getAsBoolean()) {

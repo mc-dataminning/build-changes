@@ -1,317 +1,347 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.stream.Stream;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public abstract class gfc implements zx {
-   private static final xk k = xk.c("disconnect.lost");
-   private static final Logger l = LogUtils.getLogger();
-   protected final flz a;
-   protected final we b;
-   @Nullable
-   protected final gfu c;
-   @Nullable
-   protected String d;
-   protected final hgw e;
-   @Nullable
-   protected final ftr f;
-   protected boolean g;
-   private final List<gfc.a> m = new ArrayList<>();
-   protected final Map<alp, byte[]> h;
-   protected Map<String, String> i;
-   protected amh j;
+public final class gfc {
+   public static final float a = 1.0F;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h = 1.0F;
+   public float i = 1.0F;
+   public float j = 1.0F;
+   public boolean k = true;
+   public boolean l;
+   private final List<gfc.a> m;
+   private final Map<String, gfc> n;
+   private gfe o = gfe.a;
 
-   protected gfc(flz $$0, we $$1, gfk $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2.f();
-      this.d = $$2.e();
-      this.e = $$2.b();
-      this.f = $$2.g();
-      this.h = $$2.h();
-      this.i = $$2.j();
-      this.j = $$2.k();
+   public gfc(List<gfc.a> $$0, Map<String, gfc> $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   @Override
-   public void a(zr $$0, Exception $$1) {
-      l.error("Failed to handle packet {}, disconnecting", $$0, $$1);
-      zx.super.a($$0, $$1);
-      Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
-      Optional<URI> $$3 = this.j.a(amh.b.a).map(amh.a::c);
-      this.b.a(new wg(xk.c("disconnect.packetError"), $$2, $$3));
+   public gfe a() {
+      return gfe.a(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public wg a(xk $$0, Throwable $$1) {
-      Optional<Path> $$2 = this.a(null, $$1);
-      Optional<URI> $$3 = this.j.a(amh.b.a).map(amh.a::c);
-      return new wg($$0, $$2, $$3);
+   public gfe b() {
+      return this.o;
    }
 
-   private Optional<Path> a(@Nullable zr $$0, Throwable $$1) {
-      o $$2 = o.a($$1, "Packet handling error");
-      zu.a($$2, this, $$0);
-      Path $$3 = this.a.q.toPath().resolve("debug");
-      Path $$4 = $$3.resolve("disconnect-" + ae.f() + "-client.txt");
-      Optional<amh.a> $$5 = this.j.a(amh.b.a);
-      List<String> $$6 = $$5.<List<String>>map($$0x -> List.of("Server bug reporting link: " + $$0x.c())).orElse(List.of());
-      return $$2.a($$4, y.d, $$6) ? Optional.of($$4) : Optional.empty();
+   public void a(gfe $$0) {
+      this.o = $$0;
    }
 
-   @Override
-   public boolean a(zr<?> $$0) {
-      return zx.super.a($$0) ? true : this.g && ($$0 instanceof aag || $$0 instanceof aah);
+   public void c() {
+      this.b(this.o);
    }
 
-   @Override
-   public void a(aab $$0) {
-      this.a(new aan($$0.b()), () -> !RenderSystem.isFrozenAtPollEvents(), Duration.ofMinutes(1L));
+   public void b(gfe $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
+      this.d = $$0.c();
+      this.e = $$0.d();
+      this.f = $$0.e();
+      this.g = $$0.f();
+      this.h = $$0.g();
+      this.i = $$0.h();
+      this.j = $$0.i();
    }
 
-   @Override
-   public void a(aac $$0) {
-      zu.a($$0, this, this.a);
-      this.b(new aao($$0.b()));
+   public void a(gfc $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.j = $$0.j;
+      this.e = $$0.e;
+      this.f = $$0.f;
+      this.g = $$0.g;
+      this.b = $$0.b;
+      this.c = $$0.c;
+      this.d = $$0.d;
    }
 
-   @Override
-   public void a(zy $$0) {
-      aau $$1 = $$0.b();
-      if (!($$1 instanceof aav)) {
-         zu.a($$0, this, this.a);
-         if ($$1 instanceof aas $$2) {
-            this.d = $$2.b();
-            this.e.a($$2.b());
-         } else {
-            this.a($$1);
-         }
-      }
+   public boolean a(String $$0) {
+      return this.n.containsKey($$0);
    }
 
-   protected abstract void a(aau var1);
-
-   @Override
-   public void a(aae $$0) {
-      zu.a($$0, this, this.a);
-      UUID $$1 = $$0.b();
-      URL $$2 = a($$0.e());
-      if ($$2 == null) {
-         this.b.a(new aap($$1, aap.a.f));
+   public gfc b(String $$0) {
+      gfc $$1 = this.n.get($$0);
+      if ($$1 == null) {
+         throw new NoSuchElementException("Can't find part " + $$0);
       } else {
-         String $$3 = $$0.f();
-         boolean $$4 = $$0.g();
-         gfu.a $$5 = this.c != null ? this.c.b() : gfu.a.c;
-         if ($$5 != gfu.a.c && (!$$4 || $$5 != gfu.a.b)) {
-            this.a.af().a($$1, $$2, $$3);
-         } else {
-            this.a.a(this.a($$1, $$2, $$3, $$4, $$0.h().orElse(null)));
+         return $$1;
+      }
+   }
+
+   public void a(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public void b(float $$0, float $$1, float $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+   }
+
+   public void a(ffu $$0, ffy $$1, int $$2, int $$3) {
+      this.a($$0, $$1, $$2, $$3, -1);
+   }
+
+   public void a(ffu $$0, ffy $$1, int $$2, int $$3, int $$4) {
+      if (this.k) {
+         if (!this.m.isEmpty() || !this.n.isEmpty()) {
+            $$0.a();
+            this.a($$0);
+            if (!this.l) {
+               this.a($$0.c(), $$1, $$2, $$3, $$4);
+            }
+
+            for (gfc $$5 : this.n.values()) {
+               $$5.a($$0, $$1, $$2, $$3, $$4);
+            }
+
+            $$0.b();
          }
       }
    }
 
-   @Override
-   public void a(aad $$0) {
-      zu.a($$0, this, this.a);
-      $$0.b().ifPresentOrElse($$0x -> this.a.af().a($$0x), () -> this.a.af().e());
+   public void a(Quaternionf $$0) {
+      Matrix3f $$1 = new Matrix3f().rotationZYX(this.g, this.f, this.e);
+      Matrix3f $$2 = $$1.rotate($$0);
+      Vector3f $$3 = $$2.getEulerAnglesZYX(new Vector3f());
+      this.b($$3.x, $$3.y, $$3.z);
    }
 
-   static xk a(xk $$0, @Nullable xk $$1) {
-      return (xk)($$1 == null ? $$0 : xk.a("multiplayer.texturePrompt.serverPrompt", $$0, $$1));
+   public void a(ffu $$0, gfc.d $$1) {
+      this.a($$0, $$1, "");
    }
 
-   @Nullable
-   private static URL a(String $$0) {
-      try {
-         URL $$1 = new URL($$0);
-         String $$2 = $$1.getProtocol();
-         return !"http".equals($$2) && !"https".equals($$2) ? null : $$1;
-      } catch (MalformedURLException var3) {
-         return null;
+   private void a(ffu $$0, gfc.d $$1, String $$2) {
+      if (!this.m.isEmpty() || !this.n.isEmpty()) {
+         $$0.a();
+         this.a($$0);
+         ffu.a $$3 = $$0.c();
+
+         for (int $$4 = 0; $$4 < this.m.size(); $$4++) {
+            $$1.visit($$3, $$2, $$4, this.m.get($$4));
+         }
+
+         String $$5 = $$2 + "/";
+         this.n.forEach(($$3x, $$4) -> $$4.a($$0, $$1, $$5 + $$3x));
+         $$0.b();
       }
    }
 
-   @Override
-   public void a(acb $$0) {
-      zu.a($$0, this, this.a);
-      this.b.a(new ace($$0.b(), this.h.get($$0.b())));
+   public void a(ffu $$0) {
+      $$0.a(this.b / 16.0F, this.c / 16.0F, this.d / 16.0F);
+      if (this.e != 0.0F || this.f != 0.0F || this.g != 0.0F) {
+         $$0.a(new Quaternionf().rotationZYX(this.g, this.f, this.e));
+      }
+
+      if (this.h != 1.0F || this.i != 1.0F || this.j != 1.0F) {
+         $$0.b(this.h, this.i, this.j);
+      }
    }
 
-   @Override
-   public void a(aag $$0) {
-      zu.a($$0, this, this.a);
-      this.h.put($$0.b(), $$0.e());
+   private void a(ffu.a $$0, ffy $$1, int $$2, int $$3, int $$4) {
+      for (gfc.a $$5 : this.m) {
+         $$5.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   @Override
-   public void a(zz $$0) {
-      zu.a($$0, this, this.a);
-      this.i = $$0.b();
+   public gfc.a a(azh $$0) {
+      return this.m.get($$0.a(this.m.size()));
    }
 
-   @Override
-   public void a(aaf $$0) {
-      zu.a($$0, this, this.a);
-      List<amh.c> $$1 = $$0.b();
-      Builder<amh.a> $$2 = ImmutableList.builderWithExpectedSize($$1.size());
+   public boolean d() {
+      return this.m.isEmpty();
+   }
 
-      for (amh.c $$3 : $$1) {
-         try {
-            URI $$4 = ae.a($$3.b());
-            $$2.add(new amh.a($$3.a(), $$4));
-         } catch (Exception var7) {
-            l.warn("Received invalid link for type {}:{}", new Object[]{$$3.a(), $$3.b(), var7});
+   public void a(Vector3f $$0) {
+      this.b = this.b + $$0.x();
+      this.c = this.c + $$0.y();
+      this.d = this.d + $$0.z();
+   }
+
+   public void b(Vector3f $$0) {
+      this.e = this.e + $$0.x();
+      this.f = this.f + $$0.y();
+      this.g = this.g + $$0.z();
+   }
+
+   public void c(Vector3f $$0) {
+      this.h = this.h + $$0.x();
+      this.i = this.i + $$0.y();
+      this.j = this.j + $$0.z();
+   }
+
+   public Stream<gfc> e() {
+      return Stream.concat(Stream.of(this), this.n.values().stream().flatMap(gfc::e));
+   }
+
+   public static class a {
+      public final gfc.b[] a;
+      public final float b;
+      public final float c;
+      public final float d;
+      public final float e;
+      public final float f;
+      public final float g;
+
+      public a(
+         int $$0,
+         int $$1,
+         float $$2,
+         float $$3,
+         float $$4,
+         float $$5,
+         float $$6,
+         float $$7,
+         float $$8,
+         float $$9,
+         float $$10,
+         boolean $$11,
+         float $$12,
+         float $$13,
+         Set<jn> $$14
+      ) {
+         this.b = $$2;
+         this.c = $$3;
+         this.d = $$4;
+         this.e = $$2 + $$5;
+         this.f = $$3 + $$6;
+         this.g = $$4 + $$7;
+         this.a = new gfc.b[$$14.size()];
+         float $$15 = $$2 + $$5;
+         float $$16 = $$3 + $$6;
+         float $$17 = $$4 + $$7;
+         $$2 -= $$8;
+         $$3 -= $$9;
+         $$4 -= $$10;
+         $$15 += $$8;
+         $$16 += $$9;
+         $$17 += $$10;
+         if ($$11) {
+            float $$18 = $$15;
+            $$15 = $$2;
+            $$2 = $$18;
+         }
+
+         gfc.c $$19 = new gfc.c($$2, $$3, $$4, 0.0F, 0.0F);
+         gfc.c $$20 = new gfc.c($$15, $$3, $$4, 0.0F, 8.0F);
+         gfc.c $$21 = new gfc.c($$15, $$16, $$4, 8.0F, 8.0F);
+         gfc.c $$22 = new gfc.c($$2, $$16, $$4, 8.0F, 0.0F);
+         gfc.c $$23 = new gfc.c($$2, $$3, $$17, 0.0F, 0.0F);
+         gfc.c $$24 = new gfc.c($$15, $$3, $$17, 0.0F, 8.0F);
+         gfc.c $$25 = new gfc.c($$15, $$16, $$17, 8.0F, 8.0F);
+         gfc.c $$26 = new gfc.c($$2, $$16, $$17, 8.0F, 0.0F);
+         float $$27 = (float)$$0;
+         float $$28 = (float)$$0 + $$7;
+         float $$29 = (float)$$0 + $$7 + $$5;
+         float $$30 = (float)$$0 + $$7 + $$5 + $$5;
+         float $$31 = (float)$$0 + $$7 + $$5 + $$7;
+         float $$32 = (float)$$0 + $$7 + $$5 + $$7 + $$5;
+         float $$33 = (float)$$1;
+         float $$34 = (float)$$1 + $$7;
+         float $$35 = (float)$$1 + $$7 + $$6;
+         int $$36 = 0;
+         if ($$14.contains(jn.a)) {
+            this.a[$$36++] = new gfc.b(new gfc.c[]{$$24, $$23, $$19, $$20}, $$28, $$33, $$29, $$34, $$12, $$13, $$11, jn.a);
+         }
+
+         if ($$14.contains(jn.b)) {
+            this.a[$$36++] = new gfc.b(new gfc.c[]{$$21, $$22, $$26, $$25}, $$29, $$34, $$30, $$33, $$12, $$13, $$11, jn.b);
+         }
+
+         if ($$14.contains(jn.e)) {
+            this.a[$$36++] = new gfc.b(new gfc.c[]{$$19, $$23, $$26, $$22}, $$27, $$34, $$28, $$35, $$12, $$13, $$11, jn.e);
+         }
+
+         if ($$14.contains(jn.c)) {
+            this.a[$$36++] = new gfc.b(new gfc.c[]{$$20, $$19, $$22, $$21}, $$28, $$34, $$29, $$35, $$12, $$13, $$11, jn.c);
+         }
+
+         if ($$14.contains(jn.f)) {
+            this.a[$$36++] = new gfc.b(new gfc.c[]{$$24, $$20, $$21, $$25}, $$29, $$34, $$31, $$35, $$12, $$13, $$11, jn.f);
+         }
+
+         if ($$14.contains(jn.d)) {
+            this.a[$$36] = new gfc.b(new gfc.c[]{$$23, $$24, $$25, $$26}, $$31, $$34, $$32, $$35, $$12, $$13, $$11, jn.d);
          }
       }
 
-      this.j = new amh($$2.build());
-   }
+      public void a(ffu.a $$0, ffy $$1, int $$2, int $$3, int $$4) {
+         Matrix4f $$5 = $$0.a();
+         Vector3f $$6 = new Vector3f();
 
-   @Override
-   public void a(aah $$0) {
-      this.g = true;
-      zu.a($$0, this, this.a);
-      if (this.c == null) {
-         throw new IllegalStateException("Cannot transfer to server from singleplayer");
-      } else {
-         this.b.a(xk.c("disconnect.transfer"));
-         this.b.m();
-         this.b.n();
-         ggx $$1 = new ggx($$0.b(), $$0.e());
-         fsq.a(Objects.requireNonNullElseGet(this.f, ftt::new), this.a, $$1, this.c, false, new gfy(this.h));
-      }
-   }
+         for (gfc.b $$7 : this.a) {
+            Vector3f $$8 = $$0.a($$7.b, $$6);
+            float $$9 = $$8.x();
+            float $$10 = $$8.y();
+            float $$11 = $$8.z();
 
-   @Override
-   public void a(aaa $$0) {
-      this.b.a($$0.b());
-   }
-
-   protected void e() {
-      Iterator<gfc.a> $$0 = this.m.iterator();
-
-      while ($$0.hasNext()) {
-         gfc.a $$1 = $$0.next();
-         if ($$1.b().getAsBoolean()) {
-            this.b($$1.a);
-            $$0.remove();
-         } else if ($$1.c() <= ae.c()) {
-            $$0.remove();
+            for (gfc.c $$12 : $$7.a) {
+               float $$13 = $$12.a.x() / 16.0F;
+               float $$14 = $$12.a.y() / 16.0F;
+               float $$15 = $$12.a.z() / 16.0F;
+               Vector3f $$16 = $$5.transformPosition($$13, $$14, $$15, $$6);
+               $$1.a($$16.x(), $$16.y(), $$16.z(), $$4, $$12.b, $$12.c, $$3, $$2, $$9, $$10, $$11);
+            }
          }
       }
    }
 
-   public void b(zr<?> $$0) {
-      this.b.a($$0);
-   }
+   public static record b(gfc.c[] a, Vector3f b) {
 
-   @Override
-   public void a(wg $$0) {
-      this.e.c();
-      this.a.a(this.b($$0), this.g);
-      l.warn("Client disconnected with reason: {}", $$0.a().getString());
-   }
+      public b(gfc.c[] $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, boolean $$7, jn $$8) {
+         this($$0, $$8.m());
+         float $$9 = 0.0F / $$5;
+         float $$10 = 0.0F / $$6;
+         $$0[0] = $$0[0].a($$3 / $$5 - $$9, $$2 / $$6 + $$10);
+         $$0[1] = $$0[1].a($$1 / $$5 + $$9, $$2 / $$6 + $$10);
+         $$0[2] = $$0[2].a($$1 / $$5 + $$9, $$4 / $$6 - $$10);
+         $$0[3] = $$0[3].a($$3 / $$5 - $$9, $$4 / $$6 - $$10);
+         if ($$7) {
+            int $$11 = $$0.length;
 
-   @Override
-   public void a(o $$0, p $$1) {
-      $$1.a("Is Local", () -> String.valueOf(this.b.e()));
-      $$1.a("Server type", () -> this.c != null ? this.c.f().toString() : "<none>");
-      $$1.a("Server brand", () -> this.d);
-      if (!this.i.isEmpty()) {
-         p $$2 = $$0.a("Custom Server Details");
-         this.i.forEach($$2::a);
+            for (int $$12 = 0; $$12 < $$11 / 2; $$12++) {
+               gfc.c $$13 = $$0[$$12];
+               $$0[$$12] = $$0[$$11 - 1 - $$12];
+               $$0[$$11 - 1 - $$12] = $$13;
+            }
+         }
+
+         if ($$7) {
+            this.b.mul(-1.0F, 1.0F, 1.0F);
+         }
       }
    }
 
-   protected ftr b(wg $$0) {
-      ftr $$1 = Objects.requireNonNullElseGet(this.f, () -> new fwh(new ftt()));
-      return (ftr)(this.c != null && this.c.e() ? new hhp($$1, k, $$0.a()) : new fsy($$1, k, $$0));
-   }
+   public static record c(Vector3f a, float b, float c) {
 
-   @Nullable
-   public String f() {
-      return this.d;
-   }
+      public c(float $$0, float $$1, float $$2, float $$3, float $$4) {
+         this(new Vector3f($$0, $$1, $$2), $$3, $$4);
+      }
 
-   private void a(zr<? extends ww> $$0, BooleanSupplier $$1, Duration $$2) {
-      if ($$1.getAsBoolean()) {
-         this.b($$0);
-      } else {
-         this.m.add(new gfc.a($$0, $$1, ae.c() + $$2.toMillis()));
+      public gfc.c a(float $$0, float $$1) {
+         return new gfc.c(this.a, $$0, $$1);
       }
    }
 
-   private ftr a(UUID $$0, URL $$1, String $$2, boolean $$3, @Nullable xk $$4) {
-      ftr $$5 = this.a.z;
-      return $$5 instanceof gfc.b $$6 ? $$6.a(this.a, $$0, $$1, $$2, $$3, $$4) : new gfc.b(this.a, $$5, List.of(new gfc.b.a($$0, $$1, $$2)), $$3, $$4);
-   }
-
-   static record a(zr<? extends ww> a, BooleanSupplier b, long c) {
-   }
-
-   class b extends fsp {
-      private final List<gfc.b.a> s;
-      @Nullable
-      private final ftr u;
-
-      b(final flz $$0, @Nullable final ftr $$1, final List<gfc.b.a> $$2, final boolean $$3, @Nullable final xk $$4) {
-         super(
-            $$5 -> {
-               $$0.a($$1);
-               hef $$6 = $$0.af();
-               if ($$5) {
-                  if (gfc.this.c != null) {
-                     gfc.this.c.a(gfu.a.a);
-                  }
-
-                  $$6.g();
-               } else {
-                  $$6.h();
-                  if ($$3) {
-                     gfc.this.b.a(xk.c("multiplayer.requiredTexturePrompt.disconnect"));
-                  } else if (gfc.this.c != null) {
-                     gfc.this.c.a(gfu.a.b);
-                  }
-               }
-
-               for (gfc.b.a $$7 : $$2) {
-                  $$6.a($$7.a, $$7.b, $$7.c);
-               }
-
-               if (gfc.this.c != null) {
-                  gfv.b(gfc.this.c);
-               }
-            },
-            $$3 ? xk.c("multiplayer.requiredTexturePrompt.line1") : xk.c("multiplayer.texturePrompt.line1"),
-            gfc.a($$3 ? xk.c("multiplayer.requiredTexturePrompt.line2").a(n.o, n.r) : xk.c("multiplayer.texturePrompt.line2"), $$4),
-            $$3 ? xj.i : xj.f,
-            $$3 ? xj.p : xj.g
-         );
-         this.s = $$2;
-         this.u = $$1;
-      }
-
-      public gfc.b a(flz $$0, UUID $$1, URL $$2, String $$3, boolean $$4, @Nullable xk $$5) {
-         List<gfc.b.a> $$6 = ImmutableList.builderWithExpectedSize(this.s.size() + 1).addAll(this.s).add(new gfc.b.a($$1, $$2, $$3)).build();
-         return gfc.this.new b($$0, this.u, $$6, $$4, $$5);
-      }
-
-      static record a(UUID a, URL b, String c) {
-      }
+   @FunctionalInterface
+   public interface d {
+      void visit(ffu.a var1, String var2, int var3, gfc.a var4);
    }
 }

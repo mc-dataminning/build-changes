@@ -1,43 +1,45 @@
-public class gid extends gil {
-   private final double a;
-   private final int b;
+public class gid extends gkg {
+   private final gkb a;
 
-   gid(gff $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$4;
-      this.t = $$5;
-      this.b = $$6;
+   gid(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkb $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$7;
+      this.t = 4;
+      this.u = 0.008F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.b($$7);
    }
 
    @Override
    public void a() {
-      if (this.s % (this.b + 1) == 0) {
-         for (int $$0 = 0; $$0 < 3; $$0++) {
-            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
-            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
-            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
-            this.c.a(ls.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
-         }
-      }
-
-      if (this.s++ == this.t) {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
          this.k();
+      } else {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.b(this.a);
       }
    }
 
-   public static class a implements giq<lw> {
-      private final double a;
-      private final int b;
-      private final int c;
+   @Override
+   public gjk b() {
+      return gjk.b;
+   }
 
-      public a(double $$0, int $$1, int $$2) {
+   public static class a implements gjj<lx> {
+      private final gkb a;
+
+      public a(gkb $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gid($$1, $$2, $$3, $$4, this.a, this.b, this.c);
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gid($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

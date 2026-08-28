@@ -1,23 +1,24 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.List;
+import com.mojang.serialization.Dynamic;
 
-public class bbv extends bbx {
-   private static final List<String> a = List.of("generic.", "horse.", "player.", "zombie.");
-
-   public bbv(Schema $$0) {
-      super($$0, "AttributeIdPrefixFix", bbv::a);
+public class bbv extends bgr {
+   public bbv(Schema $$0, boolean $$1) {
+      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bhw.s, "Sign");
    }
 
-   private static String a(String $$0) {
-      String $$1 = bkb.a($$0);
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update($$1, bam::b);
+   }
 
-      for (String $$2 : a) {
-         String $$3 = bkb.a($$2);
-         if ($$1.startsWith($$3)) {
-            return "minecraft:" + $$1.substring($$3.length());
-         }
-      }
-
-      return $$0;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), $$0x -> {
+         $$0x = this.a($$0x, "Text1");
+         $$0x = this.a($$0x, "Text2");
+         $$0x = this.a($$0x, "Text3");
+         return this.a($$0x, "Text4");
+      });
    }
 }

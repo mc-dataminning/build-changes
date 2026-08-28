@@ -1,30 +1,52 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class epi extends epk {
-   public static final MapCodec<epi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, epi::new));
+public class epi extends enl {
+   public static final MapCodec<epi> d = a(epi::new);
 
-   protected epi(Either<alp, esf> $$0, jq<esd> $$1, epn.a $$2, Optional<erp> $$3) {
-      super($$0, $$1, $$2, $$3);
+   public epi(enm.c $$0) {
+      super(eph::new, 21, 21, $$0);
    }
 
    @Override
-   protected esb a(dqv $$0, env $$1, erp $$2, boolean $$3) {
-      esb $$4 = super.a($$0, $$1, $$2, $$3);
-      $$4.b(erg.b);
-      $$4.a(erg.d);
-      return $$4;
+   public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5, eob $$6) {
+      Set<ji> $$7 = azr.a(km::i);
+
+      for (enq $$8 : $$6.c()) {
+         if ($$8 instanceof eph $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
+      }
+
+      ObjectArrayList<ji> $$10 = new ObjectArrayList($$7.stream().toList());
+      azh $$11 = azh.a($$0.E()).e().a($$6.b().g());
+      af.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         ji $$13 = (ji)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, djo.L.m(), 2);
+         }
+      }
+   }
+
+   private static void a(ene $$0, dhg $$1, ji $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, djo.M.m(), 2);
+         $$1.a($$2, dub.O).ifPresent($$1x -> $$1x.a(evn.aY, $$2.a()));
+      }
    }
 
    @Override
-   public epm<?> a() {
-      return epm.e;
-   }
-
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public env<?> e() {
+      return env.b;
    }
 }

@@ -1,24 +1,15 @@
-public record agr(int b) implements zr<acg> {
-   public static final zi<wh, agr> a = zr.a(agr::a, agr::new);
+import io.netty.buffer.ByteBuf;
 
-   private agr(wh $$0) {
-      this($$0.l());
-   }
-
-   public static agr a(btj $$0) {
-      return new agr($$0.k());
-   }
-
-   private void a(wh $$0) {
-      $$0.c(this.b);
-   }
+public record agr() implements yv<agf> {
+   public static final agr a = new agr();
+   public static final ym<ByteBuf, agr> b = ym.a(a);
 
    @Override
-   public zt<agr> a() {
-      return agz.co;
+   public yx<agr> a() {
+      return agd.bv;
    }
 
-   public void a(acg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 }

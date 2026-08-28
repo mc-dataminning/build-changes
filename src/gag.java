@@ -1,30 +1,49 @@
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-public record gag(boolean a, float b, float c, float d, float e, float f, Set<String> g) implements ges {
-   public gag(Set<String> $$0) {
-      this(false, 5.0F, 2.0F, $$0);
+public class gag implements gac, gad {
+   private static final aku a = aku.b("spectator/teleport_to_player");
+   private static final Comparator<ggk> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final wo c = wo.c("spectatorMenu.teleport");
+   private static final wo d = wo.c("spectatorMenu.teleport.prompt");
+   private final List<gad> e;
+
+   public gag() {
+      this(flj.Q().L().l());
    }
 
-   public gag(boolean $$0, float $$1, float $$2, Set<String> $$3) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
+   public gag(Collection<ggk> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != dgf.d).sorted(b).map($$0x -> new fzz($$0x.a())).toList();
    }
 
    @Override
-   public ger apply(ger $$0) {
-      float $$1 = this.a ? 1.5F / this.d : 1.0F;
-      float $$2 = 1.0F / this.e;
-      UnaryOperator<gel> $$3 = $$1x -> $$1x.c(0.0F, this.b, this.c).b($$1);
-      UnaryOperator<gel> $$4 = $$1x -> $$1x.c(0.0F, this.f, 0.0F).b($$2);
-      ger $$5 = new ger();
+   public List<gad> a() {
+      return this.e;
+   }
 
-      for (Entry<String, get> $$6 : $$0.a().a()) {
-         String $$7 = $$6.getKey();
-         get $$8 = $$6.getValue();
-         $$5.a().a($$7, $$8.a(this.g.contains($$7) ? $$3 : $$4));
-      }
+   @Override
+   public wo b() {
+      return d;
+   }
 
-      return $$5;
+   @Override
+   public void a(gab $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wo aS_() {
+      return c;
+   }
+
+   @Override
+   public void a(fod $$0, float $$1, float $$2) {
+      $$0.a(gmh::H, a, 0, 0, 16, 16, axk.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aT_() {
+      return !this.e.isEmpty();
    }
 }

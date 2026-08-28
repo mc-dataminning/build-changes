@@ -1,59 +1,27 @@
-public interface fdd extends bst {
-   cxg f();
+import org.joml.Matrix4f;
 
-   default cxg c(int $$0) {
-      return this.f().a($$0);
+public enum fdd {
+   a(fgc.a, ($$0, $$1) -> $$0.scale(1.0F - $$1 / 4096.0F)),
+   b(fgc.b, ($$0, $$1) -> $$0.translate(0.0F, 0.0F, $$1 / 512.0F));
+
+   private final fgc c;
+   private final fdd.a d;
+
+   private fdd(final fgc $$0, final fdd.a $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   void b(cxg var1);
-
-   default cxg h() {
-      return this.c(this.ao_());
+   public fgc a() {
+      return this.c;
    }
 
-   @Override
-   default int b() {
-      return 1;
+   public void a(Matrix4f $$0, float $$1) {
+      this.d.apply($$0, $$1);
    }
 
-   @Override
-   default boolean c() {
-      return this.f().f();
-   }
-
-   @Override
-   default void a() {
-      this.h();
-   }
-
-   @Override
-   default cxg b(int $$0) {
-      return this.a($$0, this.ao_());
-   }
-
-   @Override
-   default cxg a(int $$0) {
-      return $$0 == 0 ? this.f() : cxg.j;
-   }
-
-   @Override
-   default cxg a(int $$0, int $$1) {
-      return $$0 != 0 ? cxg.j : this.c($$1);
-   }
-
-   @Override
-   default void a(int $$0, cxg $$1) {
-      if ($$0 == 0) {
-         this.b($$1);
-      }
-   }
-
-   public interface a extends fdd {
-      duq u();
-
-      @Override
-      default boolean a(cpo $$0) {
-         return bst.a(this.u(), $$0);
-      }
+   @FunctionalInterface
+   interface a {
+      void apply(Matrix4f var1, float var2);
    }
 }

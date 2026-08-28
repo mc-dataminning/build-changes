@@ -1,15 +1,10 @@
-import java.util.List;
-
-public class cwo extends cxc {
-   public cwo(cxc.a $$0) {
-      super($$0);
+public class cwo extends cwd {
+   public cwo(bur<? extends ckt> $$0, cwl.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
-      czv $$4 = $$0.a(ku.ae);
-      if ($$4 != null) {
-         $$4.a($$1, $$2::add, $$3);
-      }
+   protected boolean a(cox $$0, jn $$1, cwp $$2, ji $$3) {
+      return !$$0.dW().s($$3) && $$0.a($$3, $$1, $$2);
    }
 }

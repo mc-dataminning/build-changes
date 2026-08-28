@@ -1,38 +1,37 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bfi extends bhi {
-   private static final int a = 6;
-
+public class bfi extends DataFix {
    public bfi(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bin.B, "Zombie");
+      super($$0, $$1);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      if ($$0.get("IsVillager").asBoolean(false)) {
-         if ($$0.get("ZombieType").result().isEmpty()) {
-            int $$1 = this.a($$0.get("VillagerProfession").asInt(-1));
-            if ($$1 == -1) {
-               $$1 = this.a(bac.a().a(6));
-            }
-
-            $$0 = $$0.set("ZombieType", $$0.createInt($$1));
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<? extends Dynamic<?>> $$1 = $$0.get("display").result();
+      if ($$1.isPresent()) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get();
+         Optional<String> $$3 = $$2.get("Name").asString().result();
+         if ($$3.isPresent()) {
+            $$2 = $$2.set("Name", bam.a($$2.getOps(), $$3.get()));
          }
 
-         $$0 = $$0.remove("IsVillager");
+         return $$0.set("display", $$2);
+      } else {
+         return $$0;
       }
-
-      return $$0;
    }
 
-   private int a(int $$0) {
-      return $$0 >= 0 && $$0 < 6 ? $$0 : -1;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhw.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(
+         "ItemCustomNameToComponentFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
+      );
    }
 }

@@ -1,62 +1,40 @@
-public class fjp extends hhs {
-   private final ftr a;
-   private final fjp.a b;
-   private fos c = fos.a;
+import javax.annotation.Nullable;
 
-   public fjp(fix $$0, ftr $$1) {
-      super(flq.a);
-      this.a = $$1;
-      this.b = a($$0);
+public class fjp {
+   public final int a;
+   @Nullable
+   public final String b;
+
+   fjp(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public fjp(xk $$0, ftr $$1) {
-      super(flq.a);
-      this.a = $$1;
-      this.b = a($$0);
+   @Nullable
+   public String a() {
+      if (this.a >= 200 && this.a < 300) {
+         return null;
+      } else {
+         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
+      }
    }
 
-   public fjp(xk $$0, xk $$1, ftr $$2) {
-      super(flq.a);
-      this.a = $$2;
-      this.b = a($$0, $$1);
-   }
+   public static class a {
+      private int a = -1;
+      private String b;
 
-   private static fjp.a a(fix $$0) {
-      fhd $$1 = $$0.a;
-      return a(xk.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
-   }
+      public fjp.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   private static fjp.a a(xk $$0) {
-      return a(xk.c("mco.errorMessage.generic"), $$0);
-   }
+      public fjp.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   private static fjp.a a(xk $$0, xk $$1) {
-      return new fjp.a($$0, $$1);
-   }
-
-   @Override
-   public void aT_() {
-      this.c(fny.a(xj.h, $$0 -> this.aP_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
-      this.c = fos.a(this.p, this.b.b, this.n * 3 / 4);
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.a);
-   }
-
-   @Override
-   public xk i() {
-      return xk.i().b(this.b.a).f(": ").b(this.b.b);
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
-      this.c.a($$0, this.n / 2, 100, 9, -2142128);
-   }
-
-   static record a(xk a, xk b) {
+      public fjp a() {
+         return new fjp(this.a, this.b);
+      }
    }
 }

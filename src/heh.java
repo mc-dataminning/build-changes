@@ -1,20 +1,15 @@
-import java.util.UUID;
+import java.util.Collection;
+import java.util.Locale;
 
-public interface heh {
-   void a(UUID var1, heh.b var2);
+public class heh extends RuntimeException {
+   private final Collection<heg.a> a;
 
-   void a(UUID var1, heh.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   public heh(heg.a $$0, Collection<heg.a> $$1) {
+      super(String.format(Locale.ROOT, "Unable to fit: %s - size: %dx%d - Maybe try a lower resolution resourcepack?", $$0.c(), $$0.a(), $$0.b()));
+      this.a = $$1;
    }
 
-   public static enum b {
-      a,
-      b;
+   public Collection<heg.a> a() {
+      return this.a;
    }
 }

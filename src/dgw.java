@@ -1,108 +1,41 @@
-import java.util.Arrays;
-import java.util.function.IntFunction;
-import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public enum dgw implements baq {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public class dgw {
+   private final List<dgw.a> a = Lists.newArrayList();
 
-   public static final dgw e = a;
-   public static final baq.a<dgw> f = baq.a(dgw::values);
-   private static final IntFunction<dgw> g = ayl.a(dgw::a, values(), ayl.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final xk k;
-   private final xk l;
-
-   private dgw(final int $$0, final String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = xk.c("selectWorld.gameMode." + $$1);
-      this.l = xk.c("gameMode." + $$1);
+   public void a(ji $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new dgw.a($$0, $$1));
+      }
    }
 
-   public int a() {
-      return this.i;
-   }
-
-   public String b() {
-      return this.j;
-   }
-
-   @Override
-   public String c() {
-      return this.j;
-   }
-
-   public xk d() {
-      return this.l;
-   }
-
-   public xk e() {
-      return this.k;
-   }
-
-   public void a(cpk $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+   public double b(ji $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         double $$2 = 0.0;
+
+         for (dgw.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
+   }
+
+   static class a {
+      private final ji a;
+      private final double b;
+
+      public a(ji $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      $$0.e = !this.f();
-   }
-
-   public boolean f() {
-      return this == c || this == d;
-   }
-
-   public boolean g() {
-      return this == b;
-   }
-
-   public boolean h() {
-      return this == a || this == c;
-   }
-
-   public static dgw a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static dgw a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static dgw a(String $$0, @Nullable dgw $$1) {
-      dgw $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable dgw $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static dgw b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
-   }
-
-   public static boolean c(int $$0) {
-      return Arrays.stream(values()).anyMatch($$1 -> $$1.i == $$0);
+      public double a(ji $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      }
    }
 }

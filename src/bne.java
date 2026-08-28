@@ -1,40 +1,19 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+public class bne extends bna {
+   private final bnb c;
+   private final bnd d;
 
-public class bne extends bkb {
-   public bne(int $$0, Schema $$1) {
-      super($$0, $$1);
+   public bne(int $$0, bnb $$1, bnd $$2) {
+      this($$0, $$1, $$2, new long[$$0]);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("minecraft:boat");
-      $$1.remove("minecraft:chest_boat");
-      this.registerSimple($$1, "minecraft:oak_boat");
-      this.registerSimple($$1, "minecraft:spruce_boat");
-      this.registerSimple($$1, "minecraft:birch_boat");
-      this.registerSimple($$1, "minecraft:jungle_boat");
-      this.registerSimple($$1, "minecraft:acacia_boat");
-      this.registerSimple($$1, "minecraft:cherry_boat");
-      this.registerSimple($$1, "minecraft:dark_oak_boat");
-      this.registerSimple($$1, "minecraft:mangrove_boat");
-      this.registerSimple($$1, "minecraft:bamboo_raft");
-      this.a($$1, "minecraft:oak_chest_boat");
-      this.a($$1, "minecraft:spruce_chest_boat");
-      this.a($$1, "minecraft:birch_chest_boat");
-      this.a($$1, "minecraft:jungle_chest_boat");
-      this.a($$1, "minecraft:acacia_chest_boat");
-      this.a($$1, "minecraft:cherry_chest_boat");
-      this.a($$1, "minecraft:dark_oak_chest_boat");
-      this.a($$1, "minecraft:mangrove_chest_boat");
-      this.a($$1, "minecraft:bamboo_chest_raft");
-      return $$1;
+   public bne(int $$0, bnb $$1, bnd $$2, long[] $$3) {
+      super($$0, $$3);
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(Map<String, Supplier<TypeTemplate>> $$0, String $$1) {
-      this.register($$0, $$1, $$0x -> DSL.optionalFields("Items", DSL.list(bin.t.in(this))));
+   @Override
+   protected void a() {
+      this.c.a(new acl((long[])this.b.clone(), this.d));
    }
 }

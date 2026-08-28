@@ -1,33 +1,59 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.Predicate;
 
-public record cwz(jq<awu> e, float f, float g, xk h) {
-   public static final Codec<cwz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awu.b.fieldOf("sound_event").forGetter(cwz::a),
-               azd.o.fieldOf("use_duration").forGetter(cwz::b),
-               azd.o.fieldOf("range").forGetter(cwz::c),
-               xm.a.fieldOf("description").forGetter(cwz::d)
-            )
-            .apply($$0, cwz::new)
-   );
-   public static final zi<wv, cwz> b = zi.a(awu.d, cwz::a, zg.l, cwz::b, zg.l, cwz::c, xm.b, cwz::d, cwz::new);
-   public static final Codec<jq<cwz>> c = all.a(mb.I, a);
-   public static final zi<wv, jq<cwz>> d = zg.a(mb.I, b);
-
-   public jq<awu> a() {
-      return this.e;
+public class cwz extends cwl {
+   public cwz(cwl.a $$0) {
+      super($$0);
    }
 
-   public float b() {
-      return this.f;
+   @Override
+   public bsj a(dai $$0) {
+      dgi $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwx $$3 = $$1.a_($$2);
+      if ($$3.a(awp.U)) {
+         cox $$4 = $$0.o();
+         if (!$$1.C && $$4 != null) {
+            return a($$4, $$1, $$2);
+         }
+      }
+
+      return bsj.e;
    }
 
-   public float c() {
-      return this.g;
+   public static bsj a(cox $$0, dgi $$1, ji $$2) {
+      ckv $$3 = null;
+      List<bve> $$4 = a($$1, $$2, $$1x -> $$1x.A() == $$0);
+
+      for (bve $$5 : $$4) {
+         if ($$3 == null) {
+            $$3 = ckv.a($$1, $$2);
+            $$3.s();
+         }
+
+         $$5.b($$3, true);
+      }
+
+      if (!$$4.isEmpty()) {
+         $$1.a(ebt.b, $$2, ebt.a.a($$0));
+         return bsj.b;
+      } else {
+         return bsj.e;
+      }
    }
 
-   public xk d() {
-      return this.h;
+   public static List<bve> a(dgi $$0, ji $$1, Predicate<bve> $$2) {
+      double $$3 = 7.0;
+      int $$4 = $$1.u();
+      int $$5 = $$1.v();
+      int $$6 = $$1.w();
+      fav $$7 = new fav((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
+      return $$0.a(buk.class, $$7, $$1x -> {
+         if ($$1x instanceof bve $$2x && $$2.test($$2x)) {
+            return true;
+         }
+
+         return false;
+      }).stream().map(bve.class::cast).toList();
    }
 }

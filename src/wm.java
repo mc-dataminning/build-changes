@@ -1,43 +1,81 @@
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.DecoderException;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class wm extends MessageToMessageDecoder<zr<?>> {
-   private final zq a;
-   @Nullable
-   private zq.a b;
+public class wm {
+   public static final Codec<wm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(wm.a.h.forGetter($$0x -> $$0x.b), Codec.STRING.fieldOf("value").forGetter($$0x -> $$0x.c)).apply($$0, wm::new)
+   );
+   private final wm.a b;
+   private final String c;
 
-   public wm(zq $$0) {
-      this.a = $$0;
+   public wm(wm.a $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   protected void a(ChannelHandlerContext $$0, zr<?> $$1, List<Object> $$2) throws Exception {
-      if (this.b != null) {
-         a($$1);
-         zr<?> $$3 = this.b.a($$1);
-         if ($$3 != null) {
-            this.b = null;
-            $$2.add($$3);
-         }
+   public wm.a a() {
+      return this.b;
+   }
+
+   public String b() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         wm $$1 = (wm)$$0;
+         return this.b == $$1.b && this.c.equals($$1.c);
       } else {
-         zq.a $$4 = this.a.a($$1);
-         if ($$4 != null) {
-            a($$1);
-            this.b = $$4;
-         } else {
-            $$2.add($$1);
-            if ($$1.d()) {
-               $$0.pipeline().remove($$0.name());
-            }
-         }
+         return false;
       }
    }
 
-   private static void a(zr<?> $$0) {
-      if ($$0.d()) {
-         throw new DecoderException("Terminal message received in bundle");
+   @Override
+   public String toString() {
+      return "ClickEvent{action=" + this.b + ", value='" + this.c + "'}";
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      return 31 * $$0 + this.c.hashCode();
+   }
+
+   public static enum a implements azv {
+      a("open_url", true),
+      b("open_file", false),
+      c("run_command", true),
+      d("suggest_command", true),
+      e("change_page", true),
+      f("copy_to_clipboard", true);
+
+      public static final MapCodec<wm.a> g = azv.a(wm.a::values).fieldOf("action");
+      public static final MapCodec<wm.a> h = g.validate(wm.a::a);
+      private final boolean i;
+      private final String j;
+
+      private a(final String $$0, final boolean $$1) {
+         this.j = $$0;
+         this.i = $$1;
+      }
+
+      public boolean a() {
+         return this.i;
+      }
+
+      @Override
+      public String c() {
+         return this.j;
+      }
+
+      public static DataResult<wm.a> a(wm.a $$0) {
+         return !$$0.a() ? DataResult.error(() -> "Action not allowed: " + $$0) : DataResult.success($$0, Lifecycle.stable());
       }
    }
 }

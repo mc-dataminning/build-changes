@@ -1,98 +1,48 @@
-public class axf {
-   public static final axe<dkd> a = a("mined", ma.e);
-   public static final axe<cxc> b = a("crafted", ma.g);
-   public static final axe<cxc> c = a("used", ma.g);
-   public static final axe<cxc> d = a("broken", ma.g);
-   public static final axe<cxc> e = a("picked_up", ma.g);
-   public static final axe<cxc> f = a("dropped", ma.g);
-   public static final axe<bvi<?>> g = a("killed", ma.f);
-   public static final axe<bvi<?>> h = a("killed_by", ma.f);
-   public static final axe<alp> i = a("custom", ma.k);
-   public static final alp j = a("leave_game", axd.b);
-   public static final alp k = a("play_time", axd.e);
-   public static final alp l = a("total_world_time", axd.e);
-   public static final alp m = a("time_since_death", axd.e);
-   public static final alp n = a("time_since_rest", axd.e);
-   public static final alp o = a("sneak_time", axd.e);
-   public static final alp p = a("walk_one_cm", axd.d);
-   public static final alp q = a("crouch_one_cm", axd.d);
-   public static final alp r = a("sprint_one_cm", axd.d);
-   public static final alp s = a("walk_on_water_one_cm", axd.d);
-   public static final alp t = a("fall_one_cm", axd.d);
-   public static final alp u = a("climb_one_cm", axd.d);
-   public static final alp v = a("fly_one_cm", axd.d);
-   public static final alp w = a("walk_under_water_one_cm", axd.d);
-   public static final alp x = a("minecart_one_cm", axd.d);
-   public static final alp y = a("boat_one_cm", axd.d);
-   public static final alp z = a("pig_one_cm", axd.d);
-   public static final alp A = a("horse_one_cm", axd.d);
-   public static final alp B = a("aviate_one_cm", axd.d);
-   public static final alp C = a("swim_one_cm", axd.d);
-   public static final alp D = a("strider_one_cm", axd.d);
-   public static final alp E = a("jump", axd.b);
-   public static final alp F = a("drop", axd.b);
-   public static final alp G = a("damage_dealt", axd.c);
-   public static final alp H = a("damage_dealt_absorbed", axd.c);
-   public static final alp I = a("damage_dealt_resisted", axd.c);
-   public static final alp J = a("damage_taken", axd.c);
-   public static final alp K = a("damage_blocked_by_shield", axd.c);
-   public static final alp L = a("damage_absorbed", axd.c);
-   public static final alp M = a("damage_resisted", axd.c);
-   public static final alp N = a("deaths", axd.b);
-   public static final alp O = a("mob_kills", axd.b);
-   public static final alp P = a("animals_bred", axd.b);
-   public static final alp Q = a("player_kills", axd.b);
-   public static final alp R = a("fish_caught", axd.b);
-   public static final alp S = a("talked_to_villager", axd.b);
-   public static final alp T = a("traded_with_villager", axd.b);
-   public static final alp U = a("eat_cake_slice", axd.b);
-   public static final alp V = a("fill_cauldron", axd.b);
-   public static final alp W = a("use_cauldron", axd.b);
-   public static final alp X = a("clean_armor", axd.b);
-   public static final alp Y = a("clean_banner", axd.b);
-   public static final alp Z = a("clean_shulker_box", axd.b);
-   public static final alp aa = a("interact_with_brewingstand", axd.b);
-   public static final alp ab = a("interact_with_beacon", axd.b);
-   public static final alp ac = a("inspect_dropper", axd.b);
-   public static final alp ad = a("inspect_hopper", axd.b);
-   public static final alp ae = a("inspect_dispenser", axd.b);
-   public static final alp af = a("play_noteblock", axd.b);
-   public static final alp ag = a("tune_noteblock", axd.b);
-   public static final alp ah = a("pot_flower", axd.b);
-   public static final alp ai = a("trigger_trapped_chest", axd.b);
-   public static final alp aj = a("open_enderchest", axd.b);
-   public static final alp ak = a("enchant_item", axd.b);
-   public static final alp al = a("play_record", axd.b);
-   public static final alp am = a("interact_with_furnace", axd.b);
-   public static final alp an = a("interact_with_crafting_table", axd.b);
-   public static final alp ao = a("open_chest", axd.b);
-   public static final alp ap = a("sleep_in_bed", axd.b);
-   public static final alp aq = a("open_shulker_box", axd.b);
-   public static final alp ar = a("open_barrel", axd.b);
-   public static final alp as = a("interact_with_blast_furnace", axd.b);
-   public static final alp at = a("interact_with_smoker", axd.b);
-   public static final alp au = a("interact_with_lectern", axd.b);
-   public static final alp av = a("interact_with_campfire", axd.b);
-   public static final alp aw = a("interact_with_cartography_table", axd.b);
-   public static final alp ax = a("interact_with_loom", axd.b);
-   public static final alp ay = a("interact_with_stonecutter", axd.b);
-   public static final alp az = a("bell_ring", axd.b);
-   public static final alp aA = a("raid_trigger", axd.b);
-   public static final alp aB = a("raid_win", axd.b);
-   public static final alp aC = a("interact_with_anvil", axd.b);
-   public static final alp aD = a("interact_with_grindstone", axd.b);
-   public static final alp aE = a("target_hit", axd.b);
-   public static final alp aF = a("interact_with_smithing_table", axd.b);
+import com.google.common.collect.Interner;
+import com.google.common.collect.Interners;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   private static alp a(String $$0, axd $$1) {
-      alp $$2 = alp.b($$0);
-      kd.a(ma.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public record axf<T>(akt<? extends ke<T>> a, aku b) {
+   private static final Interner<axf<?>> c = Interners.newWeakInterner();
+
+   @Deprecated
+   public axf(akt<? extends ke<T>> a, aku b) {
+      this.a = a;
+      this.b = b;
    }
 
-   private static <T> axe<T> a(String $$0, kd<T> $$1) {
-      xk $$2 = xk.c("stat_type.minecraft." + $$0);
-      return kd.a(ma.v, $$0, new axe<>($$1, $$2));
+   public static <T> Codec<axf<T>> a(akt<? extends ke<T>> $$0) {
+      return aku.a.xmap($$1 -> a($$0, $$1), axf::b);
+   }
+
+   public static <T> Codec<axf<T>> b(akt<? extends ke<T>> $$0) {
+      return Codec.STRING
+         .comapFlatMap(
+            $$1 -> $$1.startsWith("#") ? aku.d($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
+         );
+   }
+
+   public static <T> ym<ByteBuf, axf<T>> c(akt<? extends ke<T>> $$0) {
+      return aku.b.a($$1 -> a($$0, $$1), axf::b);
+   }
+
+   public static <T> axf<T> a(akt<? extends ke<T>> $$0, aku $$1) {
+      return (axf<T>)c.intern(new axf<>($$0, $$1));
+   }
+
+   public boolean d(akt<? extends ke<?>> $$0) {
+      return this.a == $$0;
+   }
+
+   public <E> Optional<axf<E>> e(akt<? extends ke<E>> $$0) {
+      return this.d($$0) ? Optional.of((axf<E>)this) : Optional.empty();
+   }
+
+   @Override
+   public String toString() {
+      return "TagKey[" + this.a.a() + " / " + this.b + "]";
    }
 }

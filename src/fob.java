@@ -1,528 +1,324 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.context.ParsedArgument;
-import com.mojang.brigadier.context.SuggestionContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.brigadier.tree.CommandNode;
-import com.mojang.brigadier.tree.LiteralCommandNode;
-import java.util.Collection;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.ArabicShapingException;
+import com.ibm.icu.text.Bidi;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.stream.Stream;
+import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class fob {
-   private static final Pattern a = Pattern.compile("(\\s+)");
-   private static final yh b = yh.a.a(n.m);
-   private static final yh c = yh.a.a(n.h);
-   private static final List<yh> d = Stream.of(n.l, n.o, n.k, n.n, n.g).map(yh.a::a).collect(ImmutableList.toImmutableList());
-   final flz e;
-   private final ftr f;
-   final foh g;
-   final fnj h;
-   private final boolean i;
-   private final boolean j;
-   final int k;
-   final int l;
-   final boolean m;
-   final int n;
-   private final List<azg> o = Lists.newArrayList();
-   private int p;
-   private int q;
-   @Nullable
-   private ParseResults<fb> r;
-   @Nullable
-   private CompletableFuture<Suggestions> s;
-   @Nullable
-   private fob.a t;
-   private boolean u;
-   boolean v;
-   private boolean w = true;
+   private static final float f = 0.01F;
+   public static final float a = 0.03F;
+   public static final int b = 0;
+   public static final int c = 8;
+   public final int d = 9;
+   public final azh e = azh.a();
+   private final Function<aku, frk> g;
+   final boolean h;
+   private final flt i;
 
-   public fob(flz $$0, ftr $$1, foh $$2, fnj $$3, boolean $$4, boolean $$5, int $$6, int $$7, boolean $$8, int $$9) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.k = $$6;
-      this.l = $$7;
-      this.m = $$8;
-      this.n = $$9;
-      $$2.a(this::a);
+   public fob(Function<aku, frk> $$0, boolean $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = new flt(($$0x, $$1x) -> this.a($$1x.l()).a($$0x, this.h).a($$1x.c()));
    }
 
-   public void a(boolean $$0) {
-      this.u = $$0;
-      if (!$$0) {
-         this.t = null;
+   frk a(aku $$0) {
+      return this.g.apply($$0);
+   }
+
+   public String a(String $$0) {
+      try {
+         Bidi $$1 = new Bidi(new ArabicShaping(8).shape($$0), 127);
+         $$1.setReorderingMode(0);
+         return $$1.writeReordered(2);
+      } catch (ArabicShapingException var3) {
+         return $$0;
       }
    }
 
-   public void b(boolean $$0) {
-      this.w = $$0;
-   }
-
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = this.t != null;
-      if ($$3 && this.t.b($$0, $$1, $$2)) {
-         return true;
-      } else if (this.f.aM_() != this.g || $$0 != 258 || this.w && !$$3) {
-         return false;
-      } else {
-         this.c(true);
-         return true;
+   public int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9) {
+      if (this.a()) {
+         $$0 = this.a($$0);
       }
+
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
    }
 
-   public boolean a(double $$0) {
-      return this.t != null && this.t.a(azu.a($$0, -1.0, 1.0));
+   public int a(wo $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
    }
 
-   public boolean a(double $$0, double $$1, int $$2) {
-      return this.t != null && this.t.a((int)$$0, (int)$$1, $$2);
+   public int a(wo $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9, boolean $$10) {
+      return this.a($$0.g(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
    }
 
-   public void c(boolean $$0) {
-      if (this.s != null && this.s.isDone()) {
-         Suggestions $$1 = this.s.join();
-         if (!$$1.isEmpty()) {
-            int $$2 = 0;
+   public int a(ayl $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9) {
+      return this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, true);
+   }
 
-            for (Suggestion $$3 : $$1.getList()) {
-               $$2 = Math.max($$2, this.h.b($$3.getText()));
+   public void a(ayl $$0, float $$1, float $$2, int $$3, int $$4, Matrix4f $$5, glx $$6, int $$7) {
+      int $$8 = a($$4);
+      fob.b $$9 = new fob.b(this, $$6, 0.0F, 0.0F, $$8, false, $$5, fob.a.a, $$7);
+
+      for (int $$10 = -1; $$10 <= 1; $$10++) {
+         for (int $$11 = -1; $$11 <= 1; $$11++) {
+            if ($$10 != 0 || $$11 != 0) {
+               float[] $$12 = new float[]{$$1};
+               int $$13 = $$10;
+               int $$14 = $$11;
+               $$0.accept(($$6x, $$7x, $$8x) -> {
+                  boolean $$9x = $$7x.c();
+                  frk $$10x = this.a($$7x.l());
+                  fds $$11x = $$10x.a($$8x, this.h);
+                  $$9.j = $$12[0] + (float)$$13 * $$11x.b();
+                  $$9.k = $$2 + (float)$$14 * $$11x.b();
+                  $$12[0] += $$11x.a($$9x);
+                  return $$9.accept($$6x, $$7x.a($$8), $$8x);
+               });
             }
-
-            int $$4 = azu.a(this.g.p($$1.getRange().getStart()), 0, this.g.p(0) + this.g.h() - $$2);
-            int $$5 = this.m ? this.f.o - 12 : 72;
-            this.t = new fob.a($$4, $$5, $$2, this.a($$1), $$0);
          }
       }
+
+      $$9.a();
+      fob.b $$15 = new fob.b(this, $$6, $$1, $$2, a($$3), false, $$5, fob.a.c, $$7);
+      $$0.accept($$15);
+      $$15.a($$1);
+   }
+
+   private static int a(int $$0) {
+      return ($$0 & -67108864) == 0 ? axk.f($$0) : $$0;
+   }
+
+   private int a(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9, boolean $$10) {
+      $$3 = a($$3);
+      $$1 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private int a(ayl $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9, boolean $$10) {
+      $$3 = a($$3);
+      $$1 = this.b($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      return (int)$$1 + ($$4 ? 1 : 0);
+   }
+
+   private float b(String $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9, boolean $$10) {
+      fob.b $$11 = new fob.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      azu.c($$0, xl.a, $$11);
+      return $$11.a($$1);
+   }
+
+   private float b(ayl $$0, float $$1, float $$2, int $$3, boolean $$4, Matrix4f $$5, glx $$6, fob.a $$7, int $$8, int $$9, boolean $$10) {
+      fob.b $$11 = new fob.b(this, $$6, $$1, $$2, $$3, $$8, $$4, $$5, $$7, $$9, $$10);
+      $$0.accept($$11);
+      return $$11.a($$1);
+   }
+
+   public int b(String $$0) {
+      return ayz.f(this.i.a($$0));
+   }
+
+   public int a(wt $$0) {
+      return ayz.f(this.i.a($$0));
+   }
+
+   public int a(ayl $$0) {
+      return ayz.f(this.i.a($$0));
+   }
+
+   public String a(String $$0, int $$1, boolean $$2) {
+      return $$2 ? this.i.c($$0, $$1, xl.a) : this.i.b($$0, $$1, xl.a);
+   }
+
+   public String a(String $$0, int $$1) {
+      return this.i.b($$0, $$1, xl.a);
+   }
+
+   public wt a(wt $$0, int $$1) {
+      return this.i.a($$0, $$1, xl.a);
+   }
+
+   public int b(String $$0, int $$1) {
+      return 9 * this.i.g($$0, $$1, xl.a).size();
+   }
+
+   public int b(wt $$0, int $$1) {
+      return 9 * this.i.b($$0, $$1, xl.a).size();
+   }
+
+   public List<ayl> c(wt $$0, int $$1) {
+      return tl.a().a(this.i.b($$0, $$1, xl.a));
    }
 
    public boolean a() {
-      return this.t != null;
+      return tl.a().b();
    }
 
-   public xk b() {
-      if (this.t != null && this.t.h) {
-         return this.w ? xk.c("narration.suggestion.usage.cycle.hidable") : xk.c("narration.suggestion.usage.cycle.fixed");
-      } else {
-         return this.w ? xk.c("narration.suggestion.usage.fill.hidable") : xk.c("narration.suggestion.usage.fill.fixed");
-      }
+   public flt b() {
+      return this.i;
    }
 
-   public void c() {
-      this.t = null;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 
-   private List<Suggestion> a(Suggestions $$0) {
-      String $$1 = this.g.a().substring(0, this.g.e());
-      int $$2 = a($$1);
-      String $$3 = $$1.substring($$2).toLowerCase(Locale.ROOT);
-      List<Suggestion> $$4 = Lists.newArrayList();
-      List<Suggestion> $$5 = Lists.newArrayList();
+   class b implements aym {
+      final glx a;
+      private final boolean c;
+      private final int d;
+      private final int e;
+      private final Matrix4f f;
+      private final fob.a g;
+      private final int h;
+      private final boolean i;
+      float j;
+      float k;
+      private final List<fro.b> l;
+      @Nullable
+      private List<fro.a> m;
 
-      for (Suggestion $$6 : $$0.getList()) {
-         if (!$$6.getText().startsWith($$3) && !$$6.getText().startsWith("minecraft:" + $$3)) {
-            $$5.add($$6);
-         } else {
-            $$4.add($$6);
-         }
-      }
-
-      $$4.addAll($$5);
-      return $$4;
-   }
-
-   public void d() {
-      String $$0 = this.g.a();
-      if (this.r != null && !this.r.getReader().getString().equals($$0)) {
-         this.r = null;
-      }
-
-      if (!this.v) {
-         this.g.c(null);
-         this.t = null;
-      }
-
-      this.o.clear();
-      StringReader $$1 = new StringReader($$0);
-      boolean $$2 = $$1.canRead() && $$1.peek() == '/';
-      if ($$2) {
-         $$1.skip();
-      }
-
-      boolean $$3 = this.i || $$2;
-      int $$4 = this.g.e();
-      if ($$3) {
-         CommandDispatcher<fb> $$5 = this.e.t.j.q();
-         if (this.r == null) {
-            this.r = $$5.parse($$1, this.e.t.j.g());
+      private void a(fro.a $$0) {
+         if (this.m == null) {
+            this.m = Lists.newArrayList();
          }
 
-         int $$6 = this.j ? $$1.getCursor() : 1;
-         if ($$4 >= $$6 && (this.t == null || !this.v)) {
-            this.s = $$5.getCompletionSuggestions(this.r, $$4);
-            this.s.thenRun(() -> {
-               if (this.s.isDone()) {
-                  this.f();
-               }
-            });
+         this.m.add($$0);
+      }
+
+      public b(
+         final fob param1,
+         final glx $$0,
+         final float $$1,
+         final float $$2,
+         final int $$3,
+         final boolean $$4,
+         final Matrix4f $$5,
+         final fob.a $$6,
+         final int $$7
+      ) {
+         this(var1, $$0, $$1, $$2, $$3, 0, $$4, $$5, $$6, $$7, true);
+      }
+
+      public b(
+         final fob param1,
+         final glx $$0,
+         final float $$1,
+         final float $$2,
+         final int $$3,
+         final int $$4,
+         final boolean $$5,
+         final Matrix4f $$6,
+         final fob.a $$7,
+         final int $$8,
+         final boolean $$9
+      ) {
+         this.b = var1;
+         this.l = new ArrayList<>();
+         this.a = $$0;
+         this.j = $$1;
+         this.k = $$2;
+         this.c = $$5;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$6;
+         this.g = $$7;
+         this.h = $$8;
+         this.i = $$9;
+      }
+
+      @Override
+      public boolean accept(int $$0, xl $$1, int $$2) {
+         frk $$3 = this.b.a($$1.l());
+         fds $$4 = $$3.a($$2, this.b.h);
+         fro $$5 = $$1.g() && $$2 != 32 ? $$3.a($$4) : $$3.a($$2);
+         boolean $$6 = $$1.c();
+         xn $$7 = $$1.a();
+         int $$8 = this.a($$7);
+         int $$9 = this.a($$1, $$8);
+         float $$10 = $$4.a($$6);
+         float $$11 = $$0 == 0 ? this.j - 1.0F : this.j;
+         float $$12 = $$4.b();
+         if (!($$5 instanceof frp)) {
+            float $$13 = $$6 ? $$4.a() : 0.0F;
+            this.l.add(new fro.b(this.j, this.k, $$8, $$9, $$5, $$1, $$13, $$12));
          }
-      } else {
-         String $$7 = $$0.substring(0, $$4);
-         int $$8 = a($$7);
-         Collection<String> $$9 = this.e.t.j.g().y();
-         this.s = fb.b($$9, new SuggestionsBuilder($$7, $$8));
-      }
-   }
 
-   private static int a(String $$0) {
-      if (Strings.isNullOrEmpty($$0)) {
-         return 0;
-      } else {
-         int $$1 = 0;
-         Matcher $$2 = a.matcher($$0);
-
-         while ($$2.find()) {
-            $$1 = $$2.end();
+         if ($$1.e()) {
+            this.a(new fro.a($$11, this.k + 4.5F, this.j + $$10, this.k + 4.5F - 1.0F, this.b(), $$8, $$9, $$12));
          }
 
-         return $$1;
-      }
-   }
-
-   private static azg a(CommandSyntaxException $$0) {
-      xk $$1 = xn.a($$0.getRawMessage());
-      String $$2 = $$0.getContext();
-      return $$2 == null ? $$1.g() : xk.a("command.context.parse_error", $$1, $$0.getCursor(), $$2).g();
-   }
-
-   private void f() {
-      boolean $$0 = false;
-      if (this.g.e() == this.g.a().length()) {
-         if (this.s.join().isEmpty() && !this.r.getExceptions().isEmpty()) {
-            int $$1 = 0;
-
-            for (Entry<CommandNode<fb>, CommandSyntaxException> $$2 : this.r.getExceptions().entrySet()) {
-               CommandSyntaxException $$3 = $$2.getValue();
-               if ($$3.getType() == CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect()) {
-                  $$1++;
-               } else {
-                  this.o.add(a($$3));
-               }
-            }
-
-            if ($$1 > 0) {
-               this.o.add(a(CommandSyntaxException.BUILT_IN_EXCEPTIONS.dispatcherUnknownCommand().create()));
-            }
-         } else if (this.r.getReader().canRead()) {
-            $$0 = true;
+         if ($$1.f()) {
+            this.a(new fro.a($$11, this.k + 9.0F, this.j + $$10, this.k + 9.0F - 1.0F, this.b(), $$8, $$9, $$12));
          }
-      }
 
-      this.p = 0;
-      this.q = this.f.n;
-      if (this.o.isEmpty() && !this.a(n.h) && $$0) {
-         this.o.add(a(ex.b(this.r)));
-      }
-
-      this.t = null;
-      if (this.u && this.e.n.M().c()) {
-         this.c(false);
-      }
-   }
-
-   private boolean a(n $$0) {
-      CommandContextBuilder<fb> $$1 = this.r.getContext();
-      SuggestionContext<fb> $$2 = $$1.findSuggestionContext(this.g.e());
-      Map<CommandNode<fb>, String> $$3 = this.e.t.j.q().getSmartUsage($$2.parent, this.e.t.j.g());
-      List<azg> $$4 = Lists.newArrayList();
-      int $$5 = 0;
-      yh $$6 = yh.a.a($$0);
-
-      for (Entry<CommandNode<fb>, String> $$7 : $$3.entrySet()) {
-         if (!($$7.getKey() instanceof LiteralCommandNode)) {
-            $$4.add(azg.forward($$7.getValue(), $$6));
-            $$5 = Math.max($$5, this.h.b($$7.getValue()));
-         }
-      }
-
-      if (!$$4.isEmpty()) {
-         this.o.addAll($$4);
-         this.p = azu.a(this.g.p($$2.startPos), 0, this.g.p(0) + this.g.h() - $$5);
-         this.q = $$5;
+         this.j += $$10;
          return true;
-      } else {
-         return false;
       }
-   }
 
-   private azg a(String $$0, int $$1) {
-      return this.r != null ? a(this.r, $$0, $$1) : azg.forward($$0, yh.a);
-   }
-
-   @Nullable
-   static String a(String $$0, String $$1) {
-      return $$1.startsWith($$0) ? $$1.substring($$0.length()) : null;
-   }
-
-   private static azg a(ParseResults<fb> $$0, String $$1, int $$2) {
-      List<azg> $$3 = Lists.newArrayList();
-      int $$4 = 0;
-      int $$5 = -1;
-      CommandContextBuilder<fb> $$6 = $$0.getContext().getLastChild();
-
-      for (ParsedArgument<fb, ?> $$7 : $$6.getArguments().values()) {
-         if (++$$5 >= d.size()) {
-            $$5 = 0;
+      float a(float $$0) {
+         fro $$1 = null;
+         if (this.e != 0) {
+            fro.a $$2 = new fro.a($$0 - 1.0F, this.k + 9.0F, this.j, this.k - 1.0F, this.c(), this.e);
+            $$1 = this.b.a(xl.b).b();
+            ffy $$3 = this.a.getBuffer($$1.a(this.g));
+            $$1.a($$2, this.f, $$3, this.h);
          }
 
-         int $$8 = Math.max($$7.getRange().getStart() - $$2, 0);
-         if ($$8 >= $$1.length()) {
-            break;
-         }
-
-         int $$9 = Math.min($$7.getRange().getEnd() - $$2, $$1.length());
-         if ($$9 > 0) {
-            $$3.add(azg.forward($$1.substring($$4, $$8), c));
-            $$3.add(azg.forward($$1.substring($$8, $$9), d.get($$5)));
-            $$4 = $$9;
-         }
-      }
-
-      if ($$0.getReader().canRead()) {
-         int $$10 = Math.max($$0.getReader().getCursor() - $$2, 0);
-         if ($$10 < $$1.length()) {
-            int $$11 = Math.min($$10 + $$0.getReader().getRemainingLength(), $$1.length());
-            $$3.add(azg.forward($$1.substring($$4, $$10), c));
-            $$3.add(azg.forward($$1.substring($$10, $$11), b));
-            $$4 = $$11;
-         }
-      }
-
-      $$3.add(azg.forward($$1.substring($$4), c));
-      return azg.composite($$3);
-   }
-
-   public void a(fnl $$0, int $$1, int $$2) {
-      if (!this.b($$0, $$1, $$2)) {
-         this.a($$0);
-      }
-   }
-
-   public boolean b(fnl $$0, int $$1, int $$2) {
-      if (this.t != null) {
-         this.t.a($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(fnl $$0) {
-      int $$1 = 0;
-
-      for (azg $$2 : this.o) {
-         int $$3 = this.m ? this.f.o - 14 - 13 - 12 * $$1 : 72 + 12 * $$1;
-         $$0.a(this.p - 1, $$3, this.p + this.q + 1, $$3 + 12, this.n);
-         $$0.b(this.h, $$2, this.p, $$3 + 2, -1);
-         $$1++;
-      }
-   }
-
-   public xk e() {
-      return (xk)(this.t != null ? xj.s.f().b(this.t.b()) : xj.a);
-   }
-
-   public class a {
-      private final gln b;
-      private final String c;
-      private final List<Suggestion> d;
-      private int e;
-      private int f;
-      private fbq g = fbq.a;
-      boolean h;
-      private int i;
-
-      a(final int $$1, final int $$2, final int $$3, final List<Suggestion> $$4, final boolean $$5) {
-         int $$6 = $$1 - (fob.this.g.g() ? 0 : 1);
-         int $$7 = fob.this.m ? $$2 - 3 - Math.min($$4.size(), fob.this.l) * 12 : $$2 - (fob.this.g.g() ? 1 : 0);
-         this.b = new gln($$6, $$7, $$3 + 1, Math.min($$4.size(), fob.this.l) * 12);
-         this.c = fob.this.g.a();
-         this.i = $$5 ? -1 : 0;
-         this.d = $$4;
-         this.b(0);
-      }
-
-      public void a(fnl $$0, int $$1, int $$2) {
-         int $$3 = Math.min(this.d.size(), fob.this.l);
-         int $$4 = -5592406;
-         boolean $$5 = this.e > 0;
-         boolean $$6 = this.d.size() > this.e + $$3;
-         boolean $$7 = $$5 || $$6;
-         boolean $$8 = this.g.i != (float)$$1 || this.g.j != (float)$$2;
-         if ($$8) {
-            this.g = new fbq((float)$$1, (float)$$2);
-         }
-
-         if ($$7) {
-            $$0.a(this.b.a(), this.b.b() - 1, this.b.a() + this.b.c(), this.b.b(), fob.this.n);
-            $$0.a(this.b.a(), this.b.b() + this.b.d(), this.b.a() + this.b.c(), this.b.b() + this.b.d() + 1, fob.this.n);
-            if ($$5) {
-               for (int $$9 = 0; $$9 < this.b.c(); $$9++) {
-                  if ($$9 % 2 == 0) {
-                     $$0.a(this.b.a() + $$9, this.b.b() - 1, this.b.a() + $$9 + 1, this.b.b(), -1);
-                  }
-               }
+         this.a();
+         if (this.m != null) {
+            if ($$1 == null) {
+               $$1 = this.b.a(xl.b).b();
             }
 
-            if ($$6) {
-               for (int $$10 = 0; $$10 < this.b.c(); $$10++) {
-                  if ($$10 % 2 == 0) {
-                     $$0.a(this.b.a() + $$10, this.b.b() + this.b.d(), this.b.a() + $$10 + 1, this.b.b() + this.b.d() + 1, -1);
-                  }
-               }
+            ffy $$4 = this.a.getBuffer($$1.a(this.g));
+
+            for (fro.a $$5 : this.m) {
+               $$1.a($$5, this.f, $$4, this.h);
             }
          }
 
-         boolean $$11 = false;
-
-         for (int $$12 = 0; $$12 < $$3; $$12++) {
-            Suggestion $$13 = this.d.get($$12 + this.e);
-            $$0.a(this.b.a(), this.b.b() + 12 * $$12, this.b.a() + this.b.c(), this.b.b() + 12 * $$12 + 12, fob.this.n);
-            if ($$1 > this.b.a() && $$1 < this.b.a() + this.b.c() && $$2 > this.b.b() + 12 * $$12 && $$2 < this.b.b() + 12 * $$12 + 12) {
-               if ($$8) {
-                  this.b($$12 + this.e);
-               }
-
-               $$11 = true;
-            }
-
-            $$0.b(fob.this.h, $$13.getText(), this.b.a() + 1, this.b.b() + 2 + 12 * $$12, $$12 + this.e == this.f ? -256 : -5592406);
-         }
-
-         if ($$11) {
-            Message $$14 = this.d.get(this.f).getTooltip();
-            if ($$14 != null) {
-               $$0.a(fob.this.h, xn.a($$14), $$1, $$2);
-            }
-         }
+         return this.j;
       }
 
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (!this.b.b($$0, $$1)) {
-            return false;
+      private int a(@Nullable xn $$0) {
+         if ($$0 != null) {
+            int $$1 = axk.a(this.d);
+            int $$2 = $$0.a();
+            return axk.c($$1, $$2);
          } else {
-            int $$3 = ($$1 - this.b.b()) / 12 + this.e;
-            if ($$3 >= 0 && $$3 < this.d.size()) {
-               this.b($$3);
-               this.a();
-            }
-
-            return true;
+            return this.d;
          }
       }
 
-      public boolean a(double $$0) {
-         int $$1 = (int)(fob.this.e.o.e() * (double)fob.this.e.aO().o() / (double)fob.this.e.aO().m());
-         int $$2 = (int)(fob.this.e.o.f() * (double)fob.this.e.aO().p() / (double)fob.this.e.aO().n());
-         if (this.b.b($$1, $$2)) {
-            this.e = azu.a((int)((double)this.e - $$0), 0, Math.max(this.d.size() - fob.this.l, 0));
-            return true;
+      private int a(xl $$0, int $$1) {
+         Integer $$2 = $$0.b();
+         if ($$2 != null) {
+            float $$3 = axk.i($$1);
+            float $$4 = axk.i($$2);
+            return $$3 != 1.0F ? axk.c(axk.b($$3 * $$4), $$2) : $$2;
          } else {
-            return false;
+            return this.c ? axk.a($$1, 0.25F) : 0;
          }
       }
 
-      public boolean b(int $$0, int $$1, int $$2) {
-         if ($$0 == 265) {
-            this.a(-1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 264) {
-            this.a(1);
-            this.h = false;
-            return true;
-         } else if ($$0 == 258) {
-            if (this.h) {
-               this.a(ftr.s() ? -1 : 1);
-            }
-
-            this.a();
-            return true;
-         } else if ($$0 == 256) {
-            fob.this.c();
-            fob.this.g.c(null);
-            return true;
-         } else {
-            return false;
+      void a() {
+         for (fro.b $$0 : this.l) {
+            fro $$1 = $$0.e();
+            ffy $$2 = this.a.getBuffer($$1.a(this.g));
+            $$1.a($$0, this.f, $$2, this.h);
          }
       }
 
-      public void a(int $$0) {
-         this.b(this.f + $$0);
-         int $$1 = this.e;
-         int $$2 = this.e + fob.this.l - 1;
-         if (this.f < $$1) {
-            this.e = azu.a(this.f, 0, Math.max(this.d.size() - fob.this.l, 0));
-         } else if (this.f > $$2) {
-            this.e = azu.a(this.f + fob.this.k - fob.this.l, 0, Math.max(this.d.size() - fob.this.l, 0));
-         }
+      private float b() {
+         return this.i ? 0.01F : -0.01F;
       }
 
-      public void b(int $$0) {
-         this.f = $$0;
-         if (this.f < 0) {
-            this.f = this.f + this.d.size();
-         }
-
-         if (this.f >= this.d.size()) {
-            this.f = this.f - this.d.size();
-         }
-
-         Suggestion $$1 = this.d.get(this.f);
-         fob.this.g.c(fob.a(fob.this.g.a(), $$1.apply(this.c)));
-         if (this.i != this.f) {
-            fob.this.e.aZ().c(this.b());
-         }
-      }
-
-      public void a() {
-         Suggestion $$0 = this.d.get(this.f);
-         fob.this.v = true;
-         fob.this.g.a($$0.apply(this.c));
-         int $$1 = $$0.getRange().getStart() + $$0.getText().length();
-         fob.this.g.e($$1);
-         fob.this.g.o($$1);
-         this.b(this.f);
-         fob.this.v = false;
-         this.h = true;
-      }
-
-      xk b() {
-         this.i = this.f;
-         Suggestion $$0 = this.d.get(this.f);
-         Message $$1 = $$0.getTooltip();
-         return $$1 != null
-            ? xk.a("narration.suggestion.tooltip", this.f + 1, this.d.size(), $$0.getText(), xk.a($$1))
-            : xk.a("narration.suggestion", this.f + 1, this.d.size(), $$0.getText());
+      private float c() {
+         return this.i ? -0.01F : 0.01F;
       }
    }
 }

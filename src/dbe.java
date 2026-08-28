@@ -1,28 +1,35 @@
-public class dbe extends dbb {
-   public dbe(String $$0, dbh $$1, dbr $$2, cxg $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+import com.mojang.serialization.Codec;
+import java.util.List;
+
+public interface dbe<T extends dbk> {
+   Codec<dbe<?>> a = mb.r.q().dispatch(dbe::a, dbo::a);
+   ym<vz, dbe<?>> b = yk.a(mc.ae).b(dbe::a, dbo::b);
+
+   boolean a(T var1, dgi var2);
+
+   cwp a(T var1, jt.a var2);
+
+   default boolean ap_() {
+      return false;
    }
 
-   @Override
-   protected cxc f() {
-      return cxk.xm;
+   default boolean i() {
+      return true;
    }
 
-   @Override
-   public dcf<dbe> a() {
-      return dcf.p;
+   default String j() {
+      return "";
    }
 
-   @Override
-   public dcg<dbe> b() {
-      return dcg.c;
+   dbo<? extends dbe<T>> a();
+
+   dbp<? extends dbe<T>> b();
+
+   dbd ao_();
+
+   default List<dcj> g() {
+      return List.of();
    }
 
-   @Override
-   public dby h() {
-      return switch (this.e()) {
-         case b -> dbx.h;
-         case a, c -> dbx.i;
-      };
-   }
+   dbh h();
 }

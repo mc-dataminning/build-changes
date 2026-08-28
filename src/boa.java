@@ -1,271 +1,156 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
-import java.nio.channels.FileLock;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class boa {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 4096;
-   private static final String c = ".gz";
-   private final Path d;
-   private final String e;
+public interface boa<S> {
+   boolean a(bnw<S> var1, bny var2, bns var3);
 
-   private boa(Path $$0, String $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   static <S> boa<S> a(bnr<?> $$0) {
+      return new boa.d<>($$0);
    }
 
-   public static boa a(Path $$0, String $$1) throws IOException {
-      Files.createDirectories($$0);
-      return new boa($$0, $$1);
+   static <S, T> boa<S> a(bnr<T> $$0, T $$1) {
+      return new boa.b<>($$0, $$1);
    }
 
-   public boa.d a() throws IOException {
-      boa.d var2;
-      try (Stream<Path> $$0 = Files.list(this.d)) {
-         var2 = new boa.d($$0.filter($$0x -> Files.isRegularFile($$0x)).map(this::a).filter(Objects::nonNull).toList());
-      }
-
-      return var2;
+   @SafeVarargs
+   static <S> boa<S> a(boa<S>... $$0) {
+      return new boa.e<>(List.of($$0));
    }
 
-   @Nullable
-   private boa.b a(Path $$0) {
-      String $$1 = $$0.getFileName().toString();
-      int $$2 = $$1.indexOf(46);
-      if ($$2 == -1) {
-         return null;
-      } else {
-         boa.c $$3 = boa.c.a($$1.substring(0, $$2));
-         if ($$3 != null) {
-            String $$4 = $$1.substring($$2);
-            if ($$4.equals(this.e)) {
-               return new boa.e($$0, $$3);
-            }
+   @SafeVarargs
+   static <S> boa<S> b(boa<S>... $$0) {
+      return new boa.a<>(List.of($$0));
+   }
 
-            if ($$4.equals(this.e + ".gz")) {
-               return new boa.a($$0, $$3);
-            }
+   static <S> boa<S> a(boa<S> $$0) {
+      return new boa.c<>($$0);
+   }
+
+   static <S> boa<S> a() {
+      return new boa<S>() {
+         @Override
+         public boolean a(bnw<S> $$0, bny $$1, bns $$2) {
+            $$2.cut();
+            return true;
          }
 
-         return null;
-      }
+         @Override
+         public String toString() {
+            return "↑";
+         }
+      };
    }
 
-   static void a(Path $$0, Path $$1) throws IOException {
-      if (Files.exists($$1)) {
-         throw new IOException("Compressed target file already exists: " + $$1);
-      } else {
-         try (FileChannel $$2 = FileChannel.open($$0, StandardOpenOption.WRITE, StandardOpenOption.READ)) {
-            FileLock $$3 = $$2.tryLock();
-            if ($$3 == null) {
-               throw new IOException("Raw log file is already locked, cannot compress: " + $$0);
+   static <S> boa<S> b() {
+      return new boa<S>() {
+         @Override
+         public boolean a(bnw<S> $$0, bny $$1, bns $$2) {
+            return true;
+         }
+
+         @Override
+         public String toString() {
+            return "ε";
+         }
+      };
+   }
+
+   public static record a<S>(List<boa<S>> a) implements boa<S> {
+      @Override
+      public boolean a(bnw<S> $$0, bny $$1, bns $$2) {
+         MutableBoolean $$3 = new MutableBoolean();
+         bns $$4 = $$3::setTrue;
+         int $$5 = $$0.c();
+
+         for (boa<S> $$6 : this.a) {
+            if ($$3.isTrue()) {
+               break;
             }
 
-            a($$2, $$1);
-            $$2.truncate(0L);
+            bny $$7 = new bny();
+            if ($$6.a($$0, $$7, $$4)) {
+               $$1.a($$7);
+               return true;
+            }
+
+            $$0.a($$5);
          }
 
-         Files.delete($$0);
+         return false;
+      }
+
+      public List<boa<S>> c() {
+         return this.a;
       }
    }
 
-   private static void a(ReadableByteChannel $$0, Path $$1) throws IOException {
-      try (OutputStream $$2 = new GZIPOutputStream(Files.newOutputStream($$1))) {
-         byte[] $$3 = new byte[4096];
-         ByteBuffer $$4 = ByteBuffer.wrap($$3);
-
-         while ($$0.read($$4) >= 0) {
-            $$4.flip();
-            $$2.write($$3, 0, $$4.limit());
-            $$4.clear();
-         }
-      }
-   }
-
-   public boa.e a(LocalDate $$0) throws IOException {
-      int $$1 = 1;
-      Set<boa.c> $$2 = this.a().c();
-
-      boa.c $$3;
-      do {
-         $$3 = new boa.c($$0, $$1++);
-      } while ($$2.contains($$3));
-
-      boa.e $$4 = new boa.e(this.d.resolve($$3.b(this.e)), $$3);
-      Files.createFile($$4.c());
-      return $$4;
-   }
-
-   public static record a(Path a, boa.c b) implements boa.b {
-      @Nullable
+   public static record b<S, T>(bnr<T> a, T b) implements boa<S> {
       @Override
-      public Reader a() throws IOException {
-         return !Files.exists(this.a) ? null : new BufferedReader(new InputStreamReader(new GZIPInputStream(Files.newInputStream(this.a))));
+      public boolean a(bnw<S> $$0, bny $$1, bns $$2) {
+         $$1.a(this.a, this.b);
+         return true;
       }
 
-      @Override
-      public boa.a b() {
-         return this;
-      }
-
-      @Override
-      public Path c() {
+      public bnr<T> c() {
          return this.a;
       }
 
-      @Override
-      public boa.c d() {
+      public T d() {
          return this.b;
       }
    }
 
-   public interface b {
-      Path c();
-
-      boa.c d();
-
-      @Nullable
-      Reader a() throws IOException;
-
-      boa.a b() throws IOException;
-   }
-
-   public static record c(LocalDate a, int b) {
-      private static final DateTimeFormatter c = DateTimeFormatter.BASIC_ISO_DATE;
-
-      @Nullable
-      public static boa.c a(String $$0) {
-         int $$1 = $$0.indexOf("-");
-         if ($$1 == -1) {
-            return null;
-         } else {
-            String $$2 = $$0.substring(0, $$1);
-            String $$3 = $$0.substring($$1 + 1);
-
-            try {
-               return new boa.c(LocalDate.parse($$2, c), Integer.parseInt($$3));
-            } catch (DateTimeParseException | NumberFormatException var5) {
-               return null;
-            }
-         }
-      }
-
+   public static record c<S>(boa<S> a) implements boa<S> {
       @Override
-      public String toString() {
-         return c.format(this.a) + "-" + this.b;
+      public boolean a(bnw<S> $$0, bny $$1, bns $$2) {
+         int $$3 = $$0.c();
+         if (!this.a.a($$0, $$1, $$2)) {
+            $$0.a($$3);
+         }
+
+         return true;
       }
 
-      public String b(String $$0) {
-         return this + $$0;
+      public boa<S> c() {
+         return this.a;
       }
    }
 
-   public static class d implements Iterable<boa.b> {
-      private final List<boa.b> a;
-
-      d(List<boa.b> $$0) {
-         this.a = new ArrayList<>($$0);
-      }
-
-      public boa.d a(LocalDate $$0, int $$1) {
-         this.a.removeIf($$2 -> {
-            boa.c $$3 = $$2.d();
-            LocalDate $$4 = $$3.a().plusDays((long)$$1);
-            if (!$$0.isBefore($$4)) {
-               try {
-                  Files.delete($$2.c());
-                  return true;
-               } catch (IOException var6) {
-                  boa.a.warn("Failed to delete expired event log file: {}", $$2.c(), var6);
-               }
-            }
-
+   public static record d<S, T>(bnr<T> a) implements boa<S> {
+      @Override
+      public boolean a(bnw<S> $$0, bny $$1, bns $$2) {
+         Optional<T> $$3 = $$0.b(this.a);
+         if ($$3.isEmpty()) {
             return false;
-         });
-         return this;
-      }
-
-      public boa.d a() {
-         ListIterator<boa.b> $$0 = this.a.listIterator();
-
-         while ($$0.hasNext()) {
-            boa.b $$1 = $$0.next();
-
-            try {
-               $$0.set($$1.b());
-            } catch (IOException var4) {
-               boa.a.warn("Failed to compress event log file: {}", $$1.c(), var4);
-            }
+         } else {
+            $$1.a(this.a, $$3.get());
+            return true;
          }
-
-         return this;
       }
 
-      @Override
-      public Iterator<boa.b> iterator() {
-         return this.a.iterator();
-      }
-
-      public Stream<boa.b> b() {
-         return this.a.stream();
-      }
-
-      public Set<boa.c> c() {
-         return this.a.stream().map(boa.b::d).collect(Collectors.toSet());
+      public bnr<T> c() {
+         return this.a;
       }
    }
 
-   public static record e(Path a, boa.c b) implements boa.b {
-      public FileChannel e() throws IOException {
-         return FileChannel.open(this.a, StandardOpenOption.WRITE, StandardOpenOption.READ);
+   public static record e<S>(List<boa<S>> a) implements boa<S> {
+      @Override
+      public boolean a(bnw<S> $$0, bny $$1, bns $$2) {
+         int $$3 = $$0.c();
+
+         for (boa<S> $$4 : this.a) {
+            if (!$$4.a($$0, $$1, $$2)) {
+               $$0.a($$3);
+               return false;
+            }
+         }
+
+         return true;
       }
 
-      @Nullable
-      @Override
-      public Reader a() throws IOException {
-         return Files.exists(this.a) ? Files.newBufferedReader(this.a) : null;
-      }
-
-      @Override
-      public boa.a b() throws IOException {
-         Path $$0 = this.a.resolveSibling(this.a.getFileName().toString() + ".gz");
-         boa.a(this.a, $$0);
-         return new boa.a($$0, this.b);
-      }
-
-      @Override
-      public Path c() {
+      public List<boa<S>> c() {
          return this.a;
-      }
-
-      @Override
-      public boa.c d() {
-         return this.b;
       }
    }
 }

@@ -1,141 +1,172 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Queues;
+import com.mojang.jtracy.TracyClient;
+import com.mojang.jtracy.Zone;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.Queue;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
+import java.util.concurrent.locks.LockSupport;
+import java.util.function.BooleanSupplier;
+import java.util.function.Supplier;
+import javax.annotation.CheckReturnValue;
+import org.slf4j.Logger;
 
-public class bqy implements bra {
-   public static final int a = 10;
-   @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<bqt, List<brf>> c = new Object2ObjectOpenHashMap();
-   private final bpc d;
-   private final Executor e;
-   private final bre f;
-   private final Consumer<bph> g;
-   private final Consumer<Path> h;
-   private final bqv i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bpg m;
-   private volatile boolean n;
-   private Set<bqt> o = ImmutableSet.of();
+public abstract class bqy<R extends Runnable> implements bqf, bre<R>, Executor {
+   public static final long k = 100000L;
+   private final String b;
+   private static final Logger c = LogUtils.getLogger();
+   private final Queue<R> d = Queues.newConcurrentLinkedQueue();
+   private int e;
 
-   private bqy(bqv $$0, LongSupplier $$1, Executor $$2, bre $$3, Consumer<bph> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bpc($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bpb(this.j, () -> this.l, false);
-      this.d.c();
+   protected bqy(String $$0) {
+      this.b = $$0;
+      bqd.a.a(this);
    }
 
-   public static bqy a(bqv $$0, LongSupplier $$1, Executor $$2, bre $$3, Consumer<bph> $$4, Consumer<Path> $$5) {
-      return new bqy($$0, $$1, $$2, $$3, $$4, $$5);
+   protected abstract boolean e(R var1);
+
+   public boolean bx() {
+      return Thread.currentThread() == this.ay();
+   }
+
+   protected abstract Thread ay();
+
+   protected boolean ax() {
+      return !this.bx();
+   }
+
+   public int by() {
+      return this.d.size();
    }
 
    @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
+   public String A_() {
+      return this.b;
+   }
+
+   public <V> CompletableFuture<V> a(Supplier<V> $$0) {
+      return this.ax() ? CompletableFuture.supplyAsync($$0, this) : CompletableFuture.completedFuture($$0.get());
+   }
+
+   private CompletableFuture<Void> b(Runnable $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.run();
+         return null;
+      }, this);
+   }
+
+   @CheckReturnValue
+   public CompletableFuture<Void> g(Runnable $$0) {
+      if (this.ax()) {
+         return this.b($$0);
+      } else {
+         $$0.run();
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   public void h(Runnable $$0) {
+      if (!this.bx()) {
+         this.b($$0).join();
+      } else {
+         $$0.run();
       }
    }
 
    @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = bpf.a;
-         this.g.accept(bpd.a);
-         this.a(this.o);
-      }
+   public void a_(R $$0) {
+      this.d.add($$0);
+      LockSupport.unpark(this.ay());
    }
 
    @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
-
-      for (bqt $$0 : this.o) {
-         $$0.a();
+   public void execute(Runnable $$0) {
+      if (this.ax()) {
+         this.a_(this.f($$0));
+      } else {
+         $$0.run();
       }
-
-      this.l++;
    }
 
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (bqt $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               brf $$1 = new brf(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
+   public void c(Runnable $$0) {
+      this.execute($$0);
+   }
+
+   protected void bz() {
+      this.d.clear();
+   }
+
+   protected void bA() {
+      while (this.B()) {
+      }
+   }
+
+   public boolean B() {
+      R $$0 = this.d.peek();
+      if ($$0 == null) {
+         return false;
+      } else if (this.e == 0 && !this.e($$0)) {
+         return false;
+      } else {
+         this.d(this.d.remove());
+         return true;
+      }
+   }
+
+   public void b(BooleanSupplier $$0) {
+      this.e++;
+
+      try {
+         while (!$$0.getAsBoolean()) {
+            if (!this.B()) {
+               this.A();
             }
          }
+      } finally {
+         this.e--;
+      }
+   }
 
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bpb(this.j, () -> this.l, false);
-         } else {
-            this.n = false;
-            bph $$2 = this.d.e();
-            this.m = bpf.a;
-            this.g.accept($$2);
-            this.a($$2);
+   protected void A() {
+      Thread.yield();
+      LockSupport.parkNanos("waiting for tasks", 100000L);
+   }
+
+   protected void d(R $$0) {
+      try {
+         Zone $$1 = TracyClient.beginZone("Task", ab.aU);
+
+         try {
+            $$0.run();
+         } catch (Throwable var6) {
+            if ($$1 != null) {
+               try {
+                  $$1.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
          }
+
+         if ($$1 != null) {
+            $$1.close();
+         }
+      } catch (Exception var7) {
+         c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.A_(), var7);
+         throw var7;
       }
    }
 
    @Override
-   public boolean e() {
-      return this.d.a();
+   public List<bqc> bw() {
+      return ImmutableList.of(bqc.a(this.b + "-pending-tasks", bqb.b, this::by));
    }
 
-   @Override
-   public bpj f() {
-      return bpj.a(this.d.d(), this.m);
-   }
-
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
-      }
-   }
-
-   private void a(bph $$0) {
-      HashSet<bqt> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
-   }
-
-   private void a(Collection<bqt> $$0) {
-      for (bqt $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
-   }
-
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
+   public static boolean a(Throwable $$0) {
+      return $$0 instanceof z $$1 ? a($$1.getCause()) : $$0 instanceof OutOfMemoryError || $$0 instanceof StackOverflowError;
    }
 }

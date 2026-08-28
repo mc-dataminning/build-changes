@@ -1,19 +1,8 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
+import javax.annotation.Nullable;
 
-public class wj extends ChannelInboundHandlerAdapter {
-   private final vx a;
+@FunctionalInterface
+public interface wj {
+   wj a = ($$0, $$1) -> $$1;
 
-   public wj(vx $$0) {
-      this.a = $$0;
-   }
-
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      if ($$1 instanceof ByteBuf $$2) {
-         this.a.a($$2.readableBytes());
-      }
-
-      $$0.fireChannelRead($$1);
-   }
+   wo decorate(@Nullable ard var1, wo var2);
 }

@@ -1,37 +1,61 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class hhc {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+public class hhc extends hgo {
+   private final List<hhc.a> b;
+   private final Map<dwx, BitSet> c = new Reference2ObjectOpenHashMap();
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
+   private static hgl a(List<hhc.a> $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Model must have at least one selector");
+      } else {
+         return $$0.getFirst().b();
       }
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
+   public hhc(List<hhc.a> $$0) {
+      super(a($$0));
+      this.b = $$0;
+   }
+
+   @Override
+   public List<gne> a(@Nullable dwx $$0, @Nullable jn $$1, azh $$2) {
+      if ($$0 == null) {
+         return Collections.emptyList();
+      } else {
+         BitSet $$3 = this.c.get($$0);
+         if ($$3 == null) {
+            $$3 = new BitSet();
+
+            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
+               if (this.b.get($$4).a.test($$0)) {
+                  $$3.set($$4);
+               }
+            }
+
+            this.c.put($$0, $$3);
+         }
+
+         List<gne> $$5 = new ArrayList<>();
+         long $$6 = $$2.g();
+
+         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
+            if ($$3.get($$7)) {
+               $$2.b($$6);
+               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
+            }
+         }
+
+         return $$5;
       }
-
-      this.d = $$0;
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(hgr $$0) {
-      this.b.ifPresent($$1 -> $$0.send(hgs.e, $$1x -> {
-            $$1x.a(hgu.p, this.a($$1));
-            $$1x.a(hgu.q, (int)this.c);
-         }));
+   public static record a(Predicate<dwx> a, hgl b) {
    }
 }

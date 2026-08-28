@@ -1,34 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dqb extends dlz {
+public class dqb extends djm implements djp {
    public static final MapCodec<dqb> a = b(dqb::new);
-   private static final fcl[] b = new fcl[]{
-      dkd.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
 
    @Override
    public MapCodec<dqb> a() {
       return a;
    }
 
-   public dqb(dxn.d $$0) {
+   public dqb(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   protected dgy d() {
-      return cxk.vf;
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      return $$0.a_($$1.e()).l();
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return b[this.h($$0)];
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      $$0.b($$2.e(), djo.ti.m());
+   }
+
+   @Override
+   public ji a(ji $$0) {
+      return $$0.e();
    }
 }

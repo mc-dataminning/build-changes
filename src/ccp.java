@@ -1,28 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class ccp extends ccv {
-   private final bvz a;
+public class ccp extends cdb {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public ccp(bvz $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(ccv.a.c));
-      $$0.L().a(true);
+   public ccp(bvo $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean b() {
-      return this.a.bj() && this.a.b(axq.a) > this.a.dq() || this.a.bx();
+      arc $$0 = (arc)this.b.dW();
+      ji $$1 = this.b.dw();
+      return $$0.c($$1) ? false : super.b();
    }
 
+   @Nullable
    @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      if (this.a.dZ().i() < 0.8F) {
-         this.a.J().a();
-      }
+   protected fba h() {
+      arc $$0 = (arc)this.b.dW();
+      ji $$1 = this.b.dw();
+      kk $$2 = kk.a($$1);
+      kk $$3 = bxb.a($$0, $$2, 2);
+      return $$3 != $$2 ? cgb.a(this.b, 10, 7, fba.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

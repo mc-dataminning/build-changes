@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Consumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface mm {
+public interface mm {
+   void a(jt.a var1, Consumer<ai> var2);
+
+   static ai a(String $$0) {
+      return ah.a.a().b(aku.a($$0));
+   }
 }

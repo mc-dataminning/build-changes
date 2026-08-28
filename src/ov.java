@@ -1,40 +1,122 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public interface ov {
-   alp a = alp.b("recipes/root");
+public class ov implements mi {
+   private static final Logger d = LogUtils.getLogger();
+   private final mk e;
+   private final Iterable<Path> f;
+   private final List<ov.a> g = Lists.newArrayList();
 
-   ov a(String var1, ap<?> var2);
-
-   ov a(@Nullable String var1);
-
-   cxc a();
-
-   void a(ox var1, alo<dbv<?>> var2);
-
-   default void a(ox $$0) {
-      this.a($$0, alo.a(mb.bk, a(this.a())));
+   public ov(mk $$0, Iterable<Path> $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   default void a(ox $$0, String $$1) {
-      alp $$2 = a(this.a());
-      alp $$3 = alp.a($$1);
-      if ($$3.equals($$2)) {
-         throw new IllegalStateException("Recipe " + $$1 + " should remove its 'save' argument as it is equal to default one");
-      } else {
-         this.a($$0, alo.a(mb.bk, $$3));
+   public ov a(ov.a $$0) {
+      this.g.add($$0);
+      return this;
+   }
+
+   private tq a(String $$0, tq $$1) {
+      tq $$2 = $$1;
+
+      for (ov.a $$3 : this.g) {
+         $$2 = $$3.apply($$0, $$2);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public CompletableFuture<?> a(mg $$0) {
+      Path $$1 = this.e.a();
+      List<CompletableFuture<?>> $$2 = Lists.newArrayList();
+
+      for (Path $$3 : this.f) {
+         $$2.add(CompletableFuture.<CompletableFuture>supplyAsync(() -> {
+            try {
+               CompletableFuture var5x;
+               try (Stream<Path> $$3x = Files.walk($$3)) {
+                  var5x = CompletableFuture.allOf($$3x.filter($$0xx -> $$0xx.toString().endsWith(".snbt")).map($$3xx -> CompletableFuture.runAsync(() -> {
+                        ov.c $$4 = this.a($$3xx, this.a($$3, $$3xx));
+                        this.a($$0, $$4, $$1);
+                     }, af.g().a("SnbtToNbt"))).toArray(CompletableFuture[]::new));
+               }
+
+               return var5x;
+            } catch (Exception var9) {
+               throw new RuntimeException("Failed to read structure input directory, aborting", var9);
+            }
+         }, af.g().a("SnbtToNbt")).thenCompose($$0x -> $$0x));
+      }
+
+      return af.e($$2);
+   }
+
+   @Override
+   public final String a() {
+      return "SNBT -> NBT";
+   }
+
+   private String a(Path $$0, Path $$1) {
+      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
+      return $$2.substring(0, $$2.length() - ".snbt".length());
+   }
+
+   private ov.c a(Path $$0, String $$1) {
+      try {
+         ov.c var10;
+         try (BufferedReader $$2 = Files.newBufferedReader($$0)) {
+            String $$3 = IOUtils.toString($$2);
+            tq $$4 = this.a($$1, uf.a($$3));
+            ByteArrayOutputStream $$5 = new ByteArrayOutputStream();
+            HashingOutputStream $$6 = new HashingOutputStream(Hashing.sha1(), $$5);
+            ud.a($$4, $$6);
+            byte[] $$7 = $$5.toByteArray();
+            HashCode $$8 = $$6.hash();
+            var10 = new ov.c($$1, $$7, $$8);
+         }
+
+         return var10;
+      } catch (Throwable var13) {
+         throw new ov.b($$0, var13);
       }
    }
 
-   static alp a(dgy $$0) {
-      return ma.g.b($$0.j());
+   private void a(mg $$0, ov.c $$1, Path $$2) {
+      Path $$3 = $$2.resolve($$1.a + ".nbt");
+
+      try {
+         $$0.writeIfNeeded($$3, $$1.b, $$1.c);
+      } catch (IOException var6) {
+         d.error("Couldn't write structure {} at {}", new Object[]{$$1.a, $$3, var6});
+      }
    }
 
-   static dbi a(ow $$0) {
-      return switch ($$0) {
-         case a -> dbi.a;
-         case e, f -> dbi.c;
-         case c -> dbi.b;
-         default -> dbi.d;
-      };
+   @FunctionalInterface
+   public interface a {
+      tq apply(String var1, tq var2);
+   }
+
+   static class b extends RuntimeException {
+      public b(Path $$0, Throwable $$1) {
+         super($$0.toAbsolutePath().toString(), $$1);
+      }
+   }
+
+   static record c(String a, byte[] b, HashCode c) {
    }
 }

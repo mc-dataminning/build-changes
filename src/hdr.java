@@ -1,3 +1,8 @@
-public interface hdr {
-   hdi a(alp var1, hdx var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface hdr {
 }

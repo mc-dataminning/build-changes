@@ -1,57 +1,31 @@
-public class grf extends grk<ckk, gxn> {
-   private static final alp a = alp.b("textures/entity/end_crystal/end_crystal.png");
-   private static final glq b = glq.g(a);
-   private final gbe h;
+import java.util.function.UnaryOperator;
 
-   public grf(grl.a $$0) {
+public class grf extends gqq {
+   private final gcv a;
+   private final aku b;
+   private final gca<gxu> h;
+
+   public grf(gsc.a $$0, gfa $$1) {
       super($$0);
-      this.f = 0.5F;
-      this.h = new gbe($$0.a(gei.aK));
+      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gcv.a($$0.a(gfb.E), $$0x -> gmh.i());
+      this.h = new gbh($$0.a($$1));
    }
 
-   public void a(gxn $$0, fgl $$1, glg $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(0.0F, -0.5F, 0.0F);
-      this.h.a($$0);
-      this.h.a($$1, $$2.getBuffer(b), $$3, hax.d);
-      $$1.b();
-      fbr $$4 = $$0.b;
-      if ($$4 != null) {
-         float $$5 = a($$0.p);
-         float $$6 = (float)$$4.d;
-         float $$7 = (float)$$4.e;
-         float $$8 = (float)$$4.f;
-         $$1.a($$4);
-         grg.a(-$$6, -$$7 + $$5, -$$8, $$0.p, $$1, $$2, $$3);
+   @Override
+   protected gca<gxu> a() {
+      return this.h;
+   }
+
+   @Override
+   protected gmh b() {
+      return this.h.a(this.b);
+   }
+
+   @Override
+   protected void b(gxu $$0, ffu $$1, glx $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hea.d);
       }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public static float a(float $$0) {
-      float $$1 = azu.a($$0 * 0.2F) / 2.0F + 0.5F;
-      $$1 = ($$1 * $$1 + $$1) * 0.4F;
-      return $$1 - 1.4F;
-   }
-
-   public gxn a() {
-      return new gxn();
-   }
-
-   public void a(ckk $$0, gxn $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.p = (float)$$0.a + $$2;
-      $$1.a = $$0.m();
-      jh $$3 = $$0.l();
-      if ($$3 != null) {
-         $$1.b = fbr.b($$3).d($$0.o($$2));
-      } else {
-         $$1.b = null;
-      }
-   }
-
-   public boolean a(ckk $$0, gox $$1, double $$2, double $$3, double $$4) {
-      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.l() != null;
    }
 }

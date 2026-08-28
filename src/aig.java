@@ -1,36 +1,53 @@
-public class aig implements zr<ahb> {
-   public static final zi<wh, aig> a = zr.a(aig::a, aig::new);
-   private static final int b = 2;
-   private final boolean c;
+public class aig implements yv<agf> {
+   public static final ym<vl, aig> a = yv.a(aig::a, aig::new);
+   private final bsi b;
+   private final int c;
+   private final float d;
+   private final float e;
 
-   public aig(cpk $$0) {
-      this.c = $$0.b;
+   public aig(bsi $$0, int $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   private aig(wh $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+   private aig(vl $$0) {
+      this.b = $$0.b(bsi.class);
+      this.c = $$0.l();
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
    }
 
-   private void a(wh $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.l($$1);
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zt<aig> a() {
-      return agz.bR;
+   public yx<aig> a() {
+      return agd.cm;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public bsi b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public float g() {
+      return this.e;
    }
 }

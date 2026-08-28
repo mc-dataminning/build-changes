@@ -1,41 +1,54 @@
-import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import org.slf4j.Logger;
 
-public class elx extends elw {
-   public static final MapCodec<elx> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, elx::new));
+public class elx extends elt {
+   public static final MapCodec<elx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               edm.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               edm.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, elx::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final edm d;
+   private final edm e;
+   private final int f;
 
-   public elx(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private elx(edm $$0, edm $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
+
+   public static elx a(edm $$0, edm $$1, int $$2) {
+      return new elx($$0, $$1, $$2);
    }
 
    @Override
-   protected ema<?> a() {
-      return ema.d;
-   }
-
-   @Override
-   public List<ekf.a> a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, int $$3, jh $$4, ejp $$5) {
-      List<ekf.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + azu.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + azu.a($$8) * (float)$$11);
-            jh $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
-         }
-
-         $$6.add(new ekf.a($$4.b($$9, $$7, $$10), -2, false));
+   public int a(azh $$0, edp $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = ayz.a($$0, $$2 + this.f, $$3);
+         int $$5 = ayz.a($$0, $$2, $$4 - 1);
+         return ayz.a($$0, $$2, $$5 - 1 + this.f);
       }
+   }
 
-      return $$6;
+   @Override
+   public elu<?> a() {
+      return elu.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

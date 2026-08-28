@@ -1,59 +1,59 @@
 import java.util.List;
-import java.util.function.Predicate;
 
-public class cxq extends cxc {
-   public cxq(cxc.a $$0) {
+public class cxq extends cwl {
+   public cxq(cwl.a $$0) {
       super($$0);
    }
 
+   public static czr b() {
+      js<djm> $$0 = mb.a(mb.e);
+      return new czr(
+         List.of(czr.a.a(jv.a(djo.bz.p()), 15.0F), czr.a.b($$0.b(awp.Q), 15.0F), czr.a.b($$0.b(awp.a), 5.0F), czr.a.b(jv.a(djo.ft.p(), djo.fu.p()), 2.0F)),
+         1.0F,
+         1
+      );
+   }
+
    @Override
-   public bta a(daz $$0) {
-      dgz $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dxo $$3 = $$1.a_($$2);
-      if ($$3.a(axk.U)) {
-         cpo $$4 = $$0.o();
-         if (!$$1.C && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
+   public boolean a(cwp $$0, dgi $$1, dwx $$2, ji $$3, bvg $$4) {
+      if (!$$1.C && !$$2.a(awp.aN)) {
+         $$0.a(1, $$4, bus.a);
       }
 
-      return bta.e;
+      return $$2.a(awp.Q)
+         || $$2.a(djo.bz)
+         || $$2.a(djo.bA)
+         || $$2.a(djo.bB)
+         || $$2.a(djo.bC)
+         || $$2.a(djo.ti)
+         || $$2.a(djo.ft)
+         || $$2.a(djo.gd)
+         || $$2.a(awp.a);
    }
 
-   public static bta a(cpo $$0, dgz $$1, jh $$2) {
-      clm $$3 = null;
-      List<bvv> $$4 = a($$1, $$2, $$1x -> $$1x.A() == $$0);
-
-      for (bvv $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = clm.a($$1, $$2);
-            $$3.s();
+   @Override
+   public bsj a(dai $$0) {
+      dgi $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwx $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dnc $$5 && !$$5.q($$3)) {
+         cox $$6 = $$0.o();
+         cwp $$7 = $$0.n();
+         if ($$6 instanceof ard) {
+            ap.N.a((ard)$$6, $$2, $$7);
          }
 
-         $$5.b($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(eck.b, $$2, eck.a.a($$0));
-         return bta.b;
-      } else {
-         return bta.e;
-      }
-   }
-
-   public static List<bvv> a(dgz $$0, jh $$1, Predicate<bvv> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      fbm $$7 = new fbm((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(bvb.class, $$7, $$1x -> {
-         if ($$1x instanceof bvv $$2x && $$2.test($$2x)) {
-            return true;
+         $$1.a($$6, $$2, awa.lN, awb.e, 1.0F, 1.0F);
+         dwx $$8 = $$5.p($$3);
+         $$1.b($$2, $$8);
+         $$1.a(ebt.c, $$2, ebt.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, bvg.d($$0.p()));
          }
 
-         return false;
-      }).stream().map(bvv.class::cast).toList();
+         return bsj.a;
+      }
+
+      return super.a($$0);
    }
 }

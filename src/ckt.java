@@ -1,80 +1,102 @@
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.Validate;
 
-public class ckt extends ckn {
-   private static final cgo b = cgo.a().d();
-   @Nullable
-   private eue c;
-   @Nullable
-   private fbr d;
+public abstract class ckt extends ckr {
+   protected static final Predicate<buk> b = $$0 -> $$0 instanceof ckt;
+   protected jn c = jn.d;
 
-   public ckt(ckl $$0) {
-      super($$0);
+   protected ckt(bur<? extends ckt> $$0, dgi $$1) {
+      super($$0, $$1);
+   }
+
+   protected ckt(bur<? extends ckt> $$0, dgi $$1, ji $$2) {
+      this($$0, $$1);
+      this.a = $$2;
+   }
+
+   protected void a(jn $$0) {
+      Objects.requireNonNull($$0);
+      Validate.isTrue($$0.o().d());
+      this.c = $$0;
+      this.v((float)(this.c.e() * 90));
+      this.N = this.dM();
+      this.l();
    }
 
    @Override
-   public clb<ckt> h() {
-      return clb.c;
-   }
-
-   @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Override
-   public void a(arx $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
+   protected final void l() {
+      if (this.c != null) {
+         fav $$0 = this.a(this.a, this.c);
+         fba $$1 = $$0.f();
+         this.o($$1.d, $$1.e, $$1.f);
+         this.a($$0);
       }
    }
 
-   @Nullable
+   protected abstract fav a(ji var1, jn var2);
+
    @Override
-   public fbr f() {
-      return this.d;
+   public boolean m() {
+      if (!this.dW().g(this)) {
+         return false;
+      } else {
+         boolean $$0 = ji.b(this.y()).allMatch($$0x -> {
+            dwx $$1 = this.dW().a_($$0x);
+            return $$1.e() || dlp.n($$1);
+         });
+         return !$$0 ? false : this.dW().a(this, this.cR(), b).isEmpty();
+      }
    }
 
-   private void b(arx $$0) {
-      if (this.c == null || this.c.c()) {
-         int $$1 = this.a.t();
-         jh $$2 = $$0.a(edj.a.f, ego.a(this.a.m()));
-         cpo $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
-         int $$5;
-         if ($$3 != null) {
-            fbr $$4 = new fbr($$3.dB(), 0.0, $$3.dH()).d();
-            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
-         } else {
-            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
+   protected fav y() {
+      return this.cR().a(this.c.m().mul(-0.5F)).h(1.0E-7);
+   }
+
+   @Override
+   public jn cO() {
+      return this.c;
+   }
+
+   public abstract void z();
+
+   @Override
+   public clb a(arc $$0, cwp $$1, float $$2) {
+      clb $$3 = new clb(
+         this.dW(), this.dB() + (double)((float)this.c.j() * 0.15F), this.dD() + (double)$$2, this.dH() + (double)((float)this.c.l() * 0.15F), $$1
+      );
+      $$3.s();
+      this.dW().b($$3);
+      return $$3;
+   }
+
+   @Override
+   public float a(dqe $$0) {
+      if (this.c.o() != jn.a.b) {
+         switch ($$0) {
+            case c:
+               this.c = this.c.g();
+               break;
+            case d:
+               this.c = this.c.i();
+               break;
+            case b:
+               this.c = this.c.h();
          }
-
-         euc $$7 = new euc($$2.u(), $$2.v(), $$2.w());
-         this.c = this.a.a($$1, $$5, $$7);
-         if (this.c != null) {
-            this.c.a();
-         }
       }
 
-      this.i();
-      if (this.c != null && this.c.c()) {
-         this.a.gk().a(clb.d);
-      }
+      float $$1 = ayz.h(this.dM());
+
+      return switch ($$0) {
+         case c -> $$1 + 180.0F;
+         case d -> $$1 + 90.0F;
+         case b -> $$1 + 270.0F;
+         default -> $$1;
+      };
    }
 
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         kl $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new fbr($$1, $$3, $$2);
-      }
+   @Override
+   public float a(dol $$0) {
+      return this.a($$0.a(this.c));
    }
 }

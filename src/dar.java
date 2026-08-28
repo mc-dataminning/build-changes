@@ -1,17 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public record dar() implements das {
-   public static final dar a = new dar();
-   public static final MapCodec<dar> b = MapCodec.unit(a);
-   public static final zi<wv, dar> c = zi.a(a);
+public enum dar implements azv {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   @Override
-   public das.a<dar> a() {
-      return das.a.c;
+   public static final Codec<dar> e = azv.a(dar::values);
+   public static final IntFunction<dar> f = axq.a(dar::a, values(), axq.a.a);
+   public static final ym<ByteBuf, dar> g = yk.a(f, dar::a);
+   private final String h;
+   private final int i;
+
+   private dar(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public boolean a(dgz $$0, cxg $$1, bvx $$2) {
-      return $$2.eA();
+   public String c() {
+      return this.h;
+   }
+
+   private int a() {
+      return this.i;
    }
 }

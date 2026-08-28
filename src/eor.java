@@ -1,26 +1,30 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-@FunctionalInterface
-public interface eor<C extends eit> {
-   Optional<eoq<C>> createGenerator(eor.a<C> var1);
+public class eor extends eot {
+   public static final MapCodec<eor> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, eor::new));
 
-   static <C extends eit> eor<C> simple(Predicate<eor.a<C>> $$0, eoq<C> $$1) {
-      Optional<eoq<C>> $$2 = Optional.of($$1);
-      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
+   protected eor(Either<aku, ero> $$0, jr<erm> $$1, eow.a $$2, Optional<eqy> $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   static <C extends eit> Predicate<eor.a<C>> checkForBiomeOnTop(edj.a $$0) {
-      return $$1 -> $$1.a($$0);
+   @Override
+   protected erk a(dqe $$0, ene $$1, eqy $$2, boolean $$3) {
+      erk $$4 = super.a($$0, $$1, $$2, $$3);
+      $$4.b(eqp.b);
+      $$4.a(eqp.d);
+      return $$4;
    }
 
-   public static record a<C extends eit>(dzk a, dif b, edx c, long d, dgf e, C f, dhb g, Predicate<jq<dib>> h, esg i, ke j) {
-      public boolean a(edj.a $$0) {
-         int $$1 = this.e.b();
-         int $$2 = this.e.c();
-         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
-         jq<dib> $$4 = this.a.d().getNoiseBiome(kb.a($$1), kb.a($$3), kb.a($$2), this.c.b());
-         return this.h.test($$4);
-      }
+   @Override
+   public eov<?> a() {
+      return eov.e;
+   }
+
+   @Override
+   public String toString() {
+      return "LegacySingle[" + this.c + "]";
    }
 }

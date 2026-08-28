@@ -1,104 +1,99 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import com.mojang.text2speech.Narrator;
-import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class flq {
-   public static final xk a = xj.a;
-   private static final Logger b = LogUtils.getLogger();
-   private final flz c;
-   private final Narrator d = Narrator.getNarrator();
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private flq.c b;
+   private int c;
 
-   public flq(flz $$0) {
-      this.c = $$0;
-   }
-
-   public void a(xk $$0) {
-      if (this.d().c()) {
-         String $$1 = $$0.getString();
-         this.b($$1);
-         this.d.say($$1, false);
+   public void a(flq.b $$0, List<atb> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
       }
+
+      this.b = new flq.c($$0, $$1.stream().map(atb::b).collect(ImmutableList.toImmutableList()));
    }
 
-   public void b(xk $$0) {
-      String $$1 = $$0.getString();
-      if (this.d().d() && !$$1.isEmpty()) {
-         this.b($$1);
-         this.d.say($$1, false);
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new flq.c(flq.b.c, ImmutableList.of());
       }
+
+      this.b.c = new flq.a($$0);
    }
 
-   public void c(xk $$0) {
-      this.a($$0.getString());
-   }
-
-   public void a(String $$0) {
-      if (this.d().d() && !$$0.isEmpty()) {
-         this.b($$0);
-         if (this.d.active()) {
-            this.d.clear();
-            this.d.say($$0, true);
-         }
-      }
-   }
-
-   private fmb d() {
-      return this.c.n.av().c();
-   }
-
-   private void b(String $$0) {
-      if (ab.aU) {
-         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
-      }
-   }
-
-   public void a(fmb $$0) {
-      this.b();
-      this.d.say(xk.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
-      fqk $$1 = flz.Q().aA();
-      if (this.d.active()) {
-         if ($$0 == fmb.a) {
-            fqi.b($$1, fqi.a.a, xk.c("narrator.toast.disabled"), null);
-         } else {
-            fqi.b($$1, fqi.a.a, xk.c("narrator.toast.enabled"), $$0.b());
-         }
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
       } else {
-         fqi.b($$1, fqi.a.a, xk.c("narrator.toast.disabled"), xk.c("options.narrator.notavailable"));
+         this.b.d = true;
       }
    }
 
-   public boolean a() {
-      return this.d.active();
-   }
-
-   public void b() {
-      if (this.d() != fmb.a && this.d.active()) {
-         this.d.clear();
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
       }
    }
 
-   public void c() {
-      this.d.destroy();
-   }
+   static class a {
+      private final Throwable a;
 
-   public void a(boolean $$0) {
-      if ($$0
-         && !this.a()
-         && !TinyFileDialogs.tinyfd_messageBox(
-            "Minecraft",
-            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
-            "yesno",
-            "error",
-            true
-         )) {
-         throw new flq.a("Narrator library is not active");
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
       }
    }
 
-   public static class a extends fzs {
-      public a(String $$0) {
-         super($$0);
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final flq.b a;
+      private final List<String> b;
+      @Nullable
+      flq.a c;
+      boolean d;
+
+      c(flq.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
       }
    }
 }

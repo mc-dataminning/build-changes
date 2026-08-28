@@ -1,69 +1,127 @@
-public class dvn extends duq implements dvw {
-   private final duy a = new duy();
-   private final dvd b = new dvd() {
-      @Override
-      protected void a(dgz $$0, jh $$1, dxo $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awv.iu, aww.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(dgz $$0, jh $$1, dxo $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awv.it, aww.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
-      }
+public class dvn {
+   private static final Codec<wo[]> c = wq.g
+      .listOf()
+      .comapFlatMap(
+         $$0 -> af.a($$0, 4).map($$0x -> new wo[]{(wo)$$0x.get(0), (wo)$$0x.get(1), (wo)$$0x.get(2), (wo)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dvn> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dvn::d),
+               cvm.q.fieldOf("color").orElse(cvm.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dvn::a)
+   );
+   public static final int b = 4;
+   private final wo[] d;
+   private final wo[] e;
+   private final cvm f;
+   private final boolean g;
+   @Nullable
+   private ayl[] h;
+   private boolean i;
 
-      @Override
-      protected void a(dgz $$0, jh $$1, dxo $$2, int $$3, int $$4) {
-         $$0.a(dvn.this.p, dkf.gb, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cpo $$0) {
-         return $$0.gw().b(dvn.this);
-      }
-   };
-
-   public dvn(jh $$0, dxo $$1) {
-      super(dus.d, $$0, $$1);
+   public dvn() {
+      this(c(), c(), cvm.p, false);
    }
 
-   public static void a(dgz $$0, jh $$1, dxo $$2, dvn $$3) {
-      $$3.a.a();
+   public dvn(wo[] $$0, wo[] $$1, cvm $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
-      } else {
-         return super.a_($$0, $$1);
+   private static wo[] c() {
+      return new wo[]{wn.a, wn.a, wn.a, wn.a};
+   }
+
+   private static dvn a(wo[] $$0, Optional<wo[]> $$1, cvm $$2, boolean $$3) {
+      return new dvn($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public dvn a(boolean $$0) {
+      return $$0 == this.g ? this : new dvn(this.d, this.e, this.f, $$0);
+   }
+
+   public cvm b() {
+      return this.f;
+   }
+
+   public dvn a(cvm $$0) {
+      return $$0 == this.b() ? this : new dvn(this.d, this.e, $$0, this.g);
+   }
+
+   public wo a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
+   }
+
+   public dvn a(int $$0, wo $$1) {
+      return this.a($$0, $$1, $$1);
+   }
+
+   public dvn a(int $$0, wo $$1, wo $$2) {
+      wo[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      wo[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dvn($$3, $$4, this.f, this.g);
+   }
+
+   public boolean a(cox $$0) {
+      return Arrays.stream(this.b($$0.aa())).anyMatch($$0x -> !$$0x.getString().isEmpty());
+   }
+
+   public wo[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
+   }
+
+   public ayl[] a(boolean $$0, Function<wo, ayl> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new ayl[4];
+
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
+         }
       }
+
+      return this.h;
    }
 
-   public void a(cpo $$0) {
-      if (!this.q && !$$0.aa_()) {
-         this.b.a($$0, this.i(), this.aB_(), this.m());
+   private Optional<wo[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
+         }
       }
+
+      return Optional.empty();
    }
 
-   public void b(cpo $$0) {
-      if (!this.q && !$$0.aa_()) {
-         this.b.b($$0, this.i(), this.aB_(), this.m());
+   public boolean b(cox $$0) {
+      for (wo $$1 : this.b($$0.aa())) {
+         xl $$2 = $$1.a();
+         wm $$3 = $$2.i();
+         if ($$3 != null && $$3.a() == wm.a.c) {
+            return true;
+         }
       }
-   }
 
-   public boolean c(cpo $$0) {
-      return bst.a(this, $$0);
-   }
-
-   public void b() {
-      if (!this.q) {
-         this.b.c(this.i(), this.aB_(), this.m());
-      }
-   }
-
-   @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+      return false;
    }
 }

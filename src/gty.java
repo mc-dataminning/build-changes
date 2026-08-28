@@ -1,44 +1,26 @@
-public class gty<T extends bvb & cqe> extends grk<T, gzr> {
-   private final gsj a;
-   private final float b;
-   private final boolean h;
+public class gty extends gti<cmc, gzy, gdn> {
+   private static final aku a = aku.b("textures/entity/illager/ravager.png");
 
-   public gty(grl.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.a = $$0.b();
-      this.b = $$1;
-      this.h = $$2;
+   public gty(gsc.a $$0) {
+      super($$0, new gdn($$0.a(gfb.cv)), 1.1F);
    }
 
-   public gty(grl.a $$0) {
-      this($$0, 1.0F, false);
+   public aku a(gzy $$0) {
+      return a;
    }
 
-   @Override
-   protected int a(T $$0, jh $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   public gzy b() {
+      return new gzy();
    }
 
-   public void a(gzr $$0, fgl $$1, glg $$2, int $$3) {
-      $$1.a();
-      $$1.b(this.b, this.b, this.b);
-      $$1.a(this.e.b());
-      if ($$0.a != null) {
-         this.a.a($$0.b, cxe.h, false, $$1, $$2, $$3, hax.d, $$0.a);
-      }
-
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public gzr a() {
-      return new gzr();
-   }
-
-   public void a(T $$0, gzr $$1, float $$2) {
+   public void a(cmc $$0, gzy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      cxg $$3 = $$0.l();
-      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dW(), null, $$0.ar()) : null;
-      $$1.b = $$3.v();
+      $$1.a = (float)$$0.x() > 0.0F ? (float)$$0.x() - $$2 : 0.0F;
+      $$1.b = (float)$$0.p() > 0.0F ? (float)$$0.p() - $$2 : 0.0F;
+      if ($$0.gy() > 0) {
+         $$1.c = ((float)(20 - $$0.gy()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

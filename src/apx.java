@@ -1,158 +1,205 @@
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
-import java.util.Locale;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
+import java.util.function.Function;
+import java.util.function.IntFunction;
+import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class apx {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
+public abstract class apx<T extends apx<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties ac;
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(ex.a("query").executes($$0x -> a((ew)$$0x.getSource()))))
-                        .then(
-                           ex.a("rate")
-                              .then(
-                                 ex.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> fb.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((ew)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("step").executes($$0x -> b((ew)$$0x.getSource(), 1)))
-                              .then(ex.a("stop").executes($$0x -> b((ew)$$0x.getSource()))))
-                           .then(
-                              ex.a("time", gl.a(1))
-                                 .suggests(($$0x, $$1) -> fb.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
-                  .then(
-                     ((LiteralArgumentBuilder)ex.a("sprint").then(ex.a("stop").executes($$0x -> c((ew)$$0x.getSource()))))
-                        .then(
-                           ex.a("time", gl.a(1))
-                              .suggests(($$0x, $$1) -> fb.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((ew)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  ))
-               .then(ex.a("unfreeze").executes($$0x -> a((ew)$$0x.getSource(), false))))
-            .then(ex.a("freeze").executes($$0x -> a((ew)$$0x.getSource(), true)))
-      );
+   public apx(Properties $$0) {
+      this.ac = $$0;
    }
 
-   private static String a(long $$0) {
-      return String.format(Locale.ROOT, "%.1f", (float)$$0 / (float)baw.b);
-   }
+   public static Properties b(Path $$0) {
+      try {
+         try {
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
+            }
 
-   private static int a(ew $$0, float $$1) {
-      amj $$2 = $$0.l().aP();
-      $$2.a($$1);
-      String $$3 = String.format(Locale.ROOT, "%.1f", $$1);
-      $$0.a(() -> xk.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
 
-   private static int a(ew $$0) {
-      amj $$1 = $$0.l().aP();
-      String $$2 = a($$0.l().aQ());
-      float $$3 = $$1.f();
-      String $$4 = String.format(Locale.ROOT, "%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> xk.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> xk.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
-      } else {
-         if ($$1.l()) {
-            $$0.a(() -> xk.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aQ()) {
-            $$0.a(() -> xk.c("commands.tick.status.lagging"), false);
-         } else {
-            $$0.a(() -> xk.c("commands.tick.status.running"), false);
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
+
+            return var4;
          }
-
-         String $$5 = a($$1.h());
-         $$0.a(() -> xk.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
       }
-
-      long[] $$6 = Arrays.copyOf($$0.l().aR(), $$0.l().aR().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> xk.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
    }
 
-   private static int a(ew $$0, int $$1) {
-      boolean $$2 = $$0.l().aP().b($$1);
-      if ($$2) {
-         $$0.a(() -> xk.c("commands.tick.sprint.stop.success"), true);
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.ac.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
       }
-
-      $$0.a(() -> xk.c("commands.tick.status.sprinting"), true);
-      return 1;
    }
 
-   private static int a(ew $$0, boolean $$1) {
-      amj $$2 = $$0.l().aP();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
+            return null;
          }
+      };
+   }
 
-         if ($$2.j()) {
-            $$2.b();
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
          }
-      }
-
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> xk.c("commands.tick.status.frozen"), true);
-      } else {
-         $$0.a(() -> xk.c("commands.tick.status.running"), true);
-      }
-
-      return $$1 ? 1 : 0;
+      };
    }
 
-   private static int b(ew $$0, int $$1) {
-      amj $$2 = $$0.l().aP();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> xk.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(xk.c("commands.tick.step.fail"));
-      }
-
-      return 1;
+   @Nullable
+   private String c(String $$0) {
+      return (String)this.ac.get($$0);
    }
 
-   private static int b(ew $$0) {
-      amj $$1 = $$0.l().aP();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> xk.c("commands.tick.step.stop.success"), true);
-         return 1;
+   @Nullable
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
+         return null;
       } else {
-         $$0.b(xk.c("commands.tick.step.stop.fail"));
-         return 0;
+         this.ac.remove($$0);
+         return $$1.apply($$2);
       }
    }
 
-   private static int c(ew $$0) {
-      amj $$1 = $$0.l().aP();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> xk.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(xk.c("commands.tick.sprint.stop.fail"));
-         return 0;
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return $$5;
+   }
+
+   protected <V> apx<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return new apx.a<>($$0, $$5, $$2);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> apx<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
+   }
+
+   @Nullable
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
+   }
+
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected apx<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected apx<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
+   }
+
+   @Nullable
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.ac);
+      return $$0;
+   }
+
+   protected abstract T b(kf var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(final String $$1, final V $$2, final Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public V get() {
+         return this.c;
+      }
+
+      public T a(kf $$0, V $$1) {
+         Properties $$2 = apx.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return apx.this.b($$0, $$2);
       }
    }
 }

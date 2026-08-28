@@ -3,9 +3,9 @@ import javax.annotation.Nullable;
 
 public interface faf {
    @Nullable
-   vj a(ewi var1);
-
-   Set<bbd<?>> b();
+   fce a(evr var1);
 
    fae a();
+
+   Set<bai<?>> b();
 }

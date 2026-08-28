@@ -1,43 +1,35 @@
-import org.joml.Vector3f;
+import java.net.InetSocketAddress;
 
-public class ghp extends ghr<lm> {
-   private final Vector3f a;
-   private final Vector3f b;
+public interface ghp {
+   String a();
 
-   protected ghp(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lm $$7, gji $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
+   String b();
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
+   int c();
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
-   }
+   InetSocketAddress d();
 
-   @Override
-   public void a(fgp $$0, fli $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
+   static ghp a(final InetSocketAddress $$0) {
+      return new ghp() {
+         @Override
+         public String a() {
+            return $$0.getAddress().getHostName();
+         }
 
-   public static class a implements giq<lm> {
-      private final gji a;
+         @Override
+         public String b() {
+            return $$0.getAddress().getHostAddress();
+         }
 
-      public a(gji $$0) {
-         this.a = $$0;
-      }
+         @Override
+         public int c() {
+            return $$0.getPort();
+         }
 
-      public gin a(lm $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghp($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
-      }
+         @Override
+         public InetSocketAddress d() {
+            return $$0;
+         }
+      };
    }
 }

@@ -1,9 +1,8 @@
-public interface dwl {
-   void a();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   boolean b();
-
-   jh c();
-
-   String d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dwl {
 }

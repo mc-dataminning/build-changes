@@ -1,28 +1,29 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class aof {
-   public static void a(CommandDispatcher<ew> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.save.failed"));
+
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ew)$$0x.getSource(), ImmutableList.of(((ew)$$0x.getSource()).g()))))
-            .then(ex.a("targets", fj.b()).executes($$0x -> a((ew)$$0x.getSource(), fj.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("save-all").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ex)$$0x.getSource(), false)))
+            .then(ey.a("flush").executes($$0x -> a((ex)$$0x.getSource(), true)))
       );
    }
 
-   private static int a(ew $$0, Collection<? extends bvb> $$1) {
-      for (bvb $$2 : $$1) {
-         $$2.c($$0.e());
-      }
-
-      if ($$1.size() == 1) {
-         $$0.a(() -> xk.a("commands.kill.success.single", $$1.iterator().next().p_()), true);
+   private static int a(ex $$0, boolean $$1) throws CommandSyntaxException {
+      $$0.a(() -> wo.c("commands.save.saving"), false);
+      MinecraftServer $$2 = $$0.l();
+      boolean $$3 = $$2.b(true, $$1, true);
+      if (!$$3) {
+         throw a.create();
       } else {
-         $$0.a(() -> xk.a("commands.kill.success.multiple", $$1.size()), true);
+         $$0.a(() -> wo.c("commands.save.success"), true);
+         return 1;
       }
-
-      return $$1.size();
    }
 }

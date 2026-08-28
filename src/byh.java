@@ -2,36 +2,26 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class byh {
-   public static bxr<cpa> a(float $$0, int $$1) {
-      return cbd.a((Function<cbd.b<cpa>, ? extends App<cbd.c<cpa>, cbg<cpa>>>)($$2 -> $$2.group($$2.c(cfb.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               if ($$3.c($$4.dw())) {
-                  return false;
-               } else {
-                  chb $$6 = $$3.A();
-                  int $$7 = $$6.a(kj.a($$4.dw()));
-                  fbr $$8 = null;
+   private static final int a = 1;
 
-                  for (int $$9 = 0; $$9 < 5; $$9++) {
-                     fbr $$10 = cgv.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kj.a($$1xxxx))));
-                     if ($$10 != null) {
-                        int $$11 = $$6.a(kj.a(jh.a((ka)$$10)));
-                        if ($$11 < $$7) {
-                           $$8 = $$10;
-                           break;
+   public static bxa<bvg> a(float $$0) {
+      return cam.a(
+         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$1 -> $$1.group($$1.a(cek.n), $$1.c(cek.m), $$1.b(cek.s))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bZ()) {
+                        return false;
+                     } else {
+                        buk $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bxk($$8, true));
+                           $$3.a(new cen(new bxk($$8, false), $$0, 1));
                         }
 
-                        if ($$11 == $$7) {
-                           $$8 = $$10;
-                        }
+                        return true;
                      }
-                  }
-
-                  if ($$8 != null) {
-                     $$2x.a(new cfe($$8, $$0, $$1));
-                  }
-
-                  return true;
-               }
-            })));
+                  }))
+      );
    }
 }

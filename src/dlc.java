@@ -1,55 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlc extends dns implements dla {
-   public static final MapCodec<dlc> c = b(dlc::new);
+public class dlc extends diu {
+   public static final MapCodec<dlc> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dlb.a.forGetter($$0x -> $$0x.c), t()).apply($$0, dlc::new));
+   private final djm c;
 
    @Override
    public MapCodec<dlc> a() {
-      return c;
+      return b;
    }
 
-   public dlc(dxn.d $$0) {
-      super($$0, jm.a, s_, false);
-      this.l(this.F.b().b(t_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected dnt c() {
-      return (dnt)dkf.sX;
+   protected dlc(djm $$0, dww.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected dxo a(dxo $$0, dxo $$1) {
-      return $$1.b(t_, $$0.c(t_));
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
    }
 
    @Override
-   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
-      return new cxg(cxk.xw);
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.m().b(d, Boolean.valueOf(false)), 2);
+      }
    }
 
    @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      return dla.a($$3, $$0, $$1, $$2);
-   }
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$4 == jn.a && !$$0.a($$1, $$3)) {
+         return djo.a.m();
+      } else {
+         this.a($$0, $$1, $$2, $$7, $$3);
+         if ($$0.c(d)) {
+            $$2.a($$3, eta.c, eta.c.a($$1));
+         }
 
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(t_);
-   }
-
-   @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
-      return !$$2.c(t_);
-   }
-
-   @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

@@ -1,27 +1,35 @@
 import com.google.common.collect.Maps;
 import java.util.Map;
 
-public class gss extends gqf<cib, gyt, gax> {
-   private static final Map<cib.a, alp> a = ae.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cib.a.b, alp.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cib.a.a, alp.b("textures/entity/cow/red_mooshroom.png"));
+public final class gss extends gqs<cjd, gyy, gcl> {
+   private static final Map<cjk, aku> a = af.a(Maps.newEnumMap(cjk.class), $$0 -> {
+      $$0.put(cjk.a, aku.b("textures/entity/horse/horse_white.png"));
+      $$0.put(cjk.b, aku.b("textures/entity/horse/horse_creamy.png"));
+      $$0.put(cjk.c, aku.b("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(cjk.d, aku.b("textures/entity/horse/horse_brown.png"));
+      $$0.put(cjk.e, aku.b("textures/entity/horse/horse_black.png"));
+      $$0.put(cjk.f, aku.b("textures/entity/horse/horse_gray.png"));
+      $$0.put(cjk.g, aku.b("textures/entity/horse/horse_darkbrown.png"));
    });
 
-   public gss(grl.a $$0) {
-      super($$0, new gax($$0.a(gei.bB)), new gax($$0.a(gei.bC)), 0.7F);
-      this.a(new gvv(this, $$0.d()));
+   public gss(gsc.a $$0) {
+      super($$0, new gcl($$0.a(gfb.bd)), new gcl($$0.a(gfb.bf)));
+      this.a(new gwf(this));
+      this.a(new gwe(this, $$0.f(), $$0.h()));
    }
 
-   public alp a(gyt $$0) {
+   public aku a(gyy $$0) {
       return a.get($$0.a);
    }
 
-   public gyt b() {
-      return new gyt();
+   public gyy b() {
+      return new gyy();
    }
 
-   public void a(cib $$0, gyt $$1, float $$2) {
+   public void a(cjd $$0, gyy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.p();
+      $$1.h = $$0.t();
+      $$1.i = $$0.ag().v();
    }
 }

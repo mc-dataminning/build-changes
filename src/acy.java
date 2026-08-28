@@ -1,33 +1,42 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
-import java.util.Optional;
+public class acy implements yv<abk> {
+   public static final ym<vl, acy> a = yv.a(acy::a, acy::new);
+   private final int b;
+   private final ji c;
+   private final int d;
+   private final boolean e;
 
-public record acy(int b, int c, int d, List<acy.a> e) implements zr<acg> {
-   public static final zi<wv, acy> a = zi.a(zg.h, acy::e, zg.h, acy::f, zg.h, acy::g, acy.a.a.a(zg.a()), acy::h, acy::new);
+   public acy(int $$0, ji $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.j();
+      this.d = $$2;
+      this.e = $$3;
+   }
 
-   public acy(int $$0, Suggestions $$1) {
-      this(
-         $$0,
-         $$1.getRange().getStart(),
-         $$1.getRange().getLength(),
-         $$1.getList().stream().map($$0x -> new acy.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xn::a))).toList()
-      );
+   private acy(vl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
+   }
+
+   private void a(vl $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zt<acy> a() {
-      return agz.r;
+   public yx<acy> a() {
+      return agd.L;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public Suggestions b() {
-      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
-      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
+   public boolean b() {
+      return this.e;
    }
 
    public int e() {
@@ -35,26 +44,10 @@ public record acy(int b, int c, int d, List<acy.a> e) implements zr<acg> {
    }
 
    public int f() {
-      return this.c;
-   }
-
-   public int g() {
       return this.d;
    }
 
-   public List<acy.a> h() {
-      return this.e;
-   }
-
-   public static record a(String b, Optional<xk> c) {
-      public static final zi<wv, acy.a> a = zi.a(zg.o, acy.a::a, xm.e, acy.a::b, acy.a::new);
-
-      public String a() {
-         return this.b;
-      }
-
-      public Optional<xk> b() {
-         return this.c;
-      }
+   public ji g() {
+      return this.c;
    }
 }

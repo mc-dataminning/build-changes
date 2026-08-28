@@ -1,48 +1,79 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-public record faq(alp b, fo.g c) implements fan {
-   public static final MapCodec<faq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alp.a.fieldOf("storage").forGetter(faq::c), fo.g.a.fieldOf("path").forGetter(faq::d)).apply($$0, faq::new)
-   );
+public class faq {
+   private final PathMatcher a;
 
-   @Override
-   public fam b() {
-      return fao.f;
+   public faq(PathMatcher $$0) {
+      this.a = $$0;
    }
 
-   private Optional<vc> c(ewi $$0) {
-      um $$1 = $$0.d().p().aK().a(this.b);
+   public void a(Path $$0, List<far> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new far($$0, $$2));
+      }
+   }
 
+   public List<far> a(Path $$0) throws IOException {
+      List<far> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
+   }
+
+   public List<far> a(Path $$0, boolean $$1) throws IOException {
+      List<far> $$2 = new ArrayList<>();
+
+      BasicFileAttributes $$3;
       try {
-         List<vj> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof vc $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
       }
 
-      return Optional.empty();
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
+      } else {
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
+            }
+
+            $$0 = Files.readSymbolicLink($$0);
+         }
+
+         this.b($$0, $$2);
+         return $$2;
+      }
    }
 
-   @Override
-   public float b(ewi $$0) {
-      return this.c($$0).map(vc::k).orElse(0.0F);
-   }
+   public void b(Path $$0, final List<far> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               faq.this.a($$0, $$1);
+            }
+         }
 
-   @Override
-   public int a(ewi $$0) {
-      return this.c($$0).map(vc::g).orElse(0);
-   }
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
 
-   public alp c() {
-      return this.b;
-   }
-
-   public fo.g d() {
-      return this.c;
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
+      });
    }
 }

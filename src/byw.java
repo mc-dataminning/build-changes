@@ -1,19 +1,15 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class byw extends bxq<bvz> {
-   public byw(int $$0, int $$1) {
-      super(ImmutableMap.of(cfb.n, cfc.a), $$0, $$1);
+public class byw<E extends bvg> extends bxn<E> {
+   public byw(List<Pair<? extends bxa<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
    }
 
-   protected boolean a(arx $$0, bvz $$1, long $$2) {
-      return $$1.ec().c(cfb.n).filter($$1x -> $$1x.a($$1)).isPresent();
-   }
-
-   protected void b(arx $$0, bvz $$1, long $$2) {
-      $$1.ec().b(cfb.n);
-   }
-
-   protected void c(arx $$0, bvz $$1, long $$2) {
-      $$1.ec().c(cfb.n).ifPresent($$1x -> $$1.H().a($$1x.a()));
+   public byw(Map<cek<?>, cel> $$0, List<Pair<? extends bxa<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), bxn.a.b, bxn.b.a, $$1);
    }
 }

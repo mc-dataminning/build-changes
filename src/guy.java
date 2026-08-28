@@ -1,19 +1,31 @@
-public class guy extends gwa<gxe, gar> {
-   private static final alp a = alp.b("textures/entity/breeze/breeze_wind.png");
-   private final gar b;
+public class guy extends gqw<coi, hat, gem> {
+   private static final aku b = aku.b("textures/entity/villager/villager.png");
+   public static final gvv.a a = new gvv.a(-0.1171875F, -0.07421875F, 1.0F);
 
-   public guy(grl.a $$0, gti<gxe, gar> $$1) {
-      super($$1);
-      this.b = new gar($$0.a(gei.L));
+   public guy(gsc.a $$0) {
+      super($$0, new gem($$0.a(gfb.dt)), new gem($$0.a(gfb.du)), 0.5F);
+      this.a(new gvv<>(this, $$0.f(), a));
+      this.a(new gxb<>(this, $$0.e(), "villager"));
+      this.a(new gvu<>(this));
    }
 
-   public void a(fgl $$0, glg $$1, int $$2, gxe $$3, float $$4, float $$5) {
-      fgp $$6 = $$1.getBuffer(glq.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gqq.a(this.b, this.b.d()).a($$0, $$6, $$2, hax.d);
+   public aku a(hat $$0) {
+      return b;
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   protected float b(hat $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
+   }
+
+   public hat b() {
+      return new hat();
+   }
+
+   public void a(coi $$0, hat $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gyx.a($$0, $$1, this.i);
+      $$1.a = $$0.p() > 0;
+      $$1.b = $$0.gz();
    }
 }

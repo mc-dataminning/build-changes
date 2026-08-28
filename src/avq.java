@@ -1,13 +1,45 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class avq<T> implements avf {
-   @Override
-   public final CompletableFuture<Void> a(avf.a $$0, avl $$1, Executor $$2, Executor $$3) {
-      return CompletableFuture.<T>supplyAsync(() -> this.b($$1, bpi.a()), $$2).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a((T)$$1x, $$1, bpi.a()), $$3);
+public class avq implements ew {
+   private static final String b = "Rcon";
+   private static final wo c = wo.b("Rcon");
+   private final StringBuffer d = new StringBuffer();
+   private final MinecraftServer e;
+
+   public avq(MinecraftServer $$0) {
+      this.e = $$0;
    }
 
-   protected abstract T b(avl var1, bpj var2);
+   public void e() {
+      this.d.setLength(0);
+   }
 
-   protected abstract void a(T var1, avl var2, bpj var3);
+   public String f() {
+      return this.d.toString();
+   }
+
+   public ex g() {
+      arc $$0 = this.e.J();
+      return new ex(this, fba.a($$0.Z()), faz.a, $$0, 4, "Rcon", c, this.e, null);
+   }
+
+   @Override
+   public void a(wo $$0) {
+      this.d.append($$0.getString());
+   }
+
+   @Override
+   public boolean y_() {
+      return true;
+   }
+
+   @Override
+   public boolean z_() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.e.m();
+   }
 }

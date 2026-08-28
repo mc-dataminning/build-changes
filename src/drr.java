@@ -1,124 +1,87 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class drr extends dkd {
+public class drr extends djm {
    public static final MapCodec<drr> a = b(drr::new);
-   public static final int b = 8;
-   public static final dyn c = dye.aI;
-   protected static final fcl[] d = new fcl[]{
-      fci.a(),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dkd.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+   public static final dxw b = dxn.az;
+   protected static final float c = 6.0F;
+   protected static final fbu d = djm.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<drr> a() {
       return a;
    }
 
-   protected drr(dxn.d $$0) {
+   protected drr(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(c, Integer.valueOf(1)));
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      switch ($$1) {
-         case a:
-            return $$0.c(c) < 5;
-         case b:
-            return false;
-         case c:
-            return false;
-         default:
-            return false;
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return d;
+   }
+
+   @Override
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
       }
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return d[$$0.c(c)];
+   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if ($$1.u($$2.d())) {
+         int $$4 = 1;
+
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
+
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.d(), this.m());
+               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 4);
+            }
+         }
+      }
    }
 
    @Override
-   protected fcl b(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return d[$$0.c(c) - 1];
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected fcl b_(dxo $$0, dge $$1, jh $$2) {
-      return d[$$0.c(c)];
-   }
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      dwx $$3 = $$1.a_($$2.e());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(awp.ah) || $$3.a(awp.J)) {
+            ji $$4 = $$2.e();
 
-   @Override
-   protected fcl c(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return d[$$0.c(c)];
-   }
+            for (jn $$5 : jn.c.a) {
+               dwx $$6 = $$1.a_($$4.a($$5));
+               esz $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(awv.a) || $$6.a(djo.lk)) {
+                  return true;
+               }
+            }
+         }
 
-   @Override
-   protected boolean g_(dxo $$0) {
-      return true;
-   }
-
-   @Override
-   protected float c(dxo $$0, dge $$1, jh $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      dxo $$3 = $$1.a_($$2.e());
-      if ($$3.a(axk.cr)) {
          return false;
-      } else {
-         return $$3.a(axk.cs) ? true : dkd.a($$3.g($$1, $$2.e()), jm.b) || $$3.a(this) && $$3.c(c) == 8;
       }
    }
 
    @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      return !$$0.a($$1, $$3) ? dkf.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if ($$1.a(dhi.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dxo $$0, dax $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.j()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == jm.b : true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dxo a(dax $$0) {
-      dxo $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(c);
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b);
    }
 }

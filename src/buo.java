@@ -1,39 +1,61 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
-import java.util.function.ToIntFunction;
-
-class buo extends bue {
-   private final ToIntFunction<bac> c;
-
-   protected buo(buf $$0, int $$1, ToIntFunction<bac> $$2) {
-      super($$0, $$1, ls.X);
-      this.c = $$2;
-   }
-
-   @Override
-   public void a(arx $$0, bvx $$1, int $$2, bvb.d $$3) {
-      if ($$3 == bvb.d.a && ($$1 instanceof cpo || $$0.O().b(dgv.c))) {
-         this.a($$0, $$1.dZ(), $$1.dw());
-      }
-   }
-
-   private void a(arx $$0, bac $$1, jh $$2) {
-      Set<jh> $$3 = Sets.newHashSet();
-      int $$4 = this.c.applyAsInt($$1);
-
-      for (jh $$5 : jh.a($$1, 15, $$2, 1)) {
-         jh $$6 = $$5.e();
-         if (!$$3.contains($$5) && $$0.a_($$5).v() && $$0.a_($$6).c($$0, $$6, jm.b)) {
-            $$3.add($$5.j());
-            if ($$3.size() >= $$4) {
-               break;
-            }
-         }
-      }
-
-      for (jh $$7 : $$3) {
-         $$0.a($$7, dkf.bz.m(), 3);
-         $$0.c(3018, $$7, 0);
-      }
-   }
+public class buo {
+   public static final byte a = 1;
+   public static final byte b = 3;
+   public static final byte c = 4;
+   public static final byte d = 5;
+   public static final byte e = 6;
+   public static final byte f = 7;
+   public static final byte g = 8;
+   public static final byte h = 9;
+   public static final byte i = 10;
+   public static final byte j = 11;
+   public static final byte k = 12;
+   public static final byte l = 13;
+   public static final byte m = 14;
+   public static final byte n = 15;
+   public static final byte o = 16;
+   public static final byte p = 17;
+   public static final byte q = 18;
+   public static final byte r = 19;
+   public static final byte s = 20;
+   public static final byte t = 21;
+   public static final byte u = 22;
+   public static final byte v = 23;
+   public static final byte w = 24;
+   public static final byte x = 25;
+   public static final byte y = 26;
+   public static final byte z = 27;
+   public static final byte A = 28;
+   public static final byte B = 29;
+   public static final byte C = 30;
+   public static final byte D = 31;
+   public static final byte E = 32;
+   public static final byte F = 34;
+   public static final byte G = 35;
+   public static final byte H = 38;
+   public static final byte I = 39;
+   public static final byte J = 40;
+   public static final byte K = 41;
+   public static final byte L = 42;
+   public static final byte M = 45;
+   public static final byte N = 46;
+   public static final byte O = 47;
+   public static final byte P = 48;
+   public static final byte Q = 49;
+   public static final byte R = 50;
+   public static final byte S = 51;
+   public static final byte T = 52;
+   public static final byte U = 53;
+   public static final byte V = 54;
+   public static final byte W = 55;
+   public static final byte X = 56;
+   public static final byte Y = 58;
+   public static final byte Z = 59;
+   public static final byte aa = 60;
+   public static final byte ab = 61;
+   public static final byte ac = 62;
+   public static final byte ad = 63;
+   public static final byte ae = 64;
+   public static final byte af = 65;
+   public static final byte ag = 66;
 }

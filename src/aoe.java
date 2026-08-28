@@ -1,44 +1,52 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
 
 public class aoe {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.kick.owner.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.kick.singleplayer.failed"));
-
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("kick").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("rotate").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)ex.a("targets", fj.d())
-                     .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), xk.c("multiplayer.disconnect.kicked"))))
-                  .then(ex.a("reason", fn.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), fn.a($$0x, "reason"))))
+               ((RequiredArgumentBuilder)ey.a("target", fk.a())
+                     .then(ey.a("rotation", gx.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), gx.a($$0x, "rotation")))))
+                  .then(
+                     ((LiteralArgumentBuilder)ey.a("facing")
+                           .then(
+                              ey.a("entity")
+                                 .then(
+                                    ((RequiredArgumentBuilder)ey.a("facingEntity", fk.a())
+                                          .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), new ann.a(fk.a($$0x, "facingEntity"), fj.a.a))))
+                                       .then(
+                                          ey.a("facingAnchor", fj.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      fk.a($$0x, "target"),
+                                                      new ann.a(fk.a($$0x, "facingEntity"), fj.a($$0x, "facingAnchor"))
+                                                   )
+                                             )
+                                       )
+                                 )
+                           ))
+                        .then(
+                           ey.a("facingLocation", ha.a())
+                              .executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), new ann.b(ha.a($$0x, "facingLocation"))))
+                        )
+                  )
             )
       );
    }
 
-   private static int a(ew $$0, Collection<ary> $$1, xk $$2) throws CommandSyntaxException {
-      if (!$$0.l().r()) {
-         throw b.create();
-      } else {
-         int $$3 = 0;
+   private static int a(ex $$0, buk $$1, gv $$2) {
+      faz $$3 = $$2.b($$0);
+      $$1.a($$3.j, $$3.i);
+      $$0.a(() -> wo.a("commands.rotate.success", $$1.p_()), true);
+      return 1;
+   }
 
-         for (ary $$4 : $$1) {
-            if (!$$0.l().a($$4.gh())) {
-               $$4.f.a($$2);
-               $$0.a(() -> xk.a("commands.kick.success", $$4.p_(), $$2), true);
-               $$3++;
-            }
-         }
-
-         if ($$3 == 0) {
-            throw a.create();
-         } else {
-            return $$3;
-         }
-      }
+   private static int a(ex $$0, buk $$1, ann $$2) {
+      $$2.perform($$0, $$1);
+      $$0.a(() -> wo.a("commands.rotate.success", $$1.p_()), true);
+      return 1;
    }
 }

@@ -1,45 +1,46 @@
-public class aja implements zr<ahb> {
-   public static final zi<wh, aja> a = zr.a(aja::a, aja::new);
-   private final fbn b;
-   private final bsz c;
-   private final int d;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.util.Arrays;
+import javax.crypto.SecretKey;
 
-   public aja(bsz $$0, fbn $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
+public class aja implements yv<aix> {
+   public static final ym<vl, aja> a = yv.a(aja::a, aja::new);
+   private final byte[] b;
+   private final byte[] c;
+
+   public aja(SecretKey $$0, PublicKey $$1, byte[] $$2) throws axy {
+      this.b = axx.a($$1, $$0.getEncoded());
+      this.c = axx.a($$1, $$2);
    }
 
-   private aja(wh $$0) {
-      this.c = $$0.b(bsz.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
+   private aja(vl $$0) {
+      this.b = $$0.b();
+      this.c = $$0.b();
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.c);
+   private void a(vl $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
+      $$0.a(this.c);
    }
 
    @Override
-   public zt<aja> a() {
-      return agz.ck;
+   public yx<aja> a() {
+      return aiv.h;
    }
 
-   public void a(ahb $$0) {
+   public void a(aix $$0) {
       $$0.a(this);
    }
 
-   public bsz b() {
-      return this.c;
+   public SecretKey a(PrivateKey $$0) throws axy {
+      return axx.a($$0, this.b);
    }
 
-   public fbn e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
+   public boolean a(byte[] $$0, PrivateKey $$1) {
+      try {
+         return Arrays.equals($$0, axx.b($$1, this.c));
+      } catch (axy var4) {
+         return false;
+      }
    }
 }

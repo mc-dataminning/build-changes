@@ -1,25 +1,24 @@
-public record adh(long[] b, bnu c) implements zr<acg> {
-   public static final zi<wh, adh> a = zr.a(adh::a, adh::new);
+public record adh(fba b, float c, float d) implements yv<abk> {
+   public static final ym<vl, adh> a = ym.a(fba.b, adh::b, yk.l, adh::e, yk.l, adh::f, adh::new);
 
-   private adh(wh $$0) {
-      this($$0.d(), $$0.b(bnu.class));
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   public static adh a(buk $$0) {
+      return new adh($$0.du(), $$0.dM(), $$0.dO());
    }
 
    @Override
-   public zt<adh> a() {
-      return agz.A;
+   public yx<adh> a() {
+      return agd.V;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public bnu e() {
+   public float e() {
       return this.c;
+   }
+
+   public float f() {
+      return this.d;
    }
 }

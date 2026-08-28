@@ -1,113 +1,112 @@
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class drn extends dmm implements dkg, drj {
-   public static final MapCodec<drn> c = b(drn::new);
-   private static final dyf g = dye.J;
-   public static final dyl<jm> d = dye.U;
-   protected static final float e = 6.0F;
-   protected static final fcl f = dkd.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class drn extends djw implements djp {
+   public static final MapCodec<drn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               akt.a(mc.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
+               akt.a(mc.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
+               akt.a(mc.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
+               t()
+            )
+            .apply($$0, drn::new)
+   );
+   public static final int b = 7;
+   public static final dxw c = dxn.ay;
+   protected static final float d = 1.0F;
+   protected static final fbu[] e = new fbu[]{
+      djm.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
+      djm.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
+      djm.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
+      djm.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
+      djm.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
+      djm.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
+      djm.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
+      djm.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private final akt<djm> f;
+   private final akt<djm> g;
+   private final akt<cwl> h;
 
    @Override
    public MapCodec<drn> a() {
-      return c;
+      return a;
    }
 
-   public drn(dxn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, dyj.b).b(g, Boolean.valueOf(false)).b(d, jm.c));
-   }
-
-   @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return f;
-   }
-
-   @Override
-   protected boolean b(dxo $$0, dge $$1, jh $$2) {
-      return $$0.a(axk.bz) || $$1.b_($$2.d()).a(etr.c) && super.b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dxo a(dax $$0) {
-      dxo $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.b(d, $$0.g().g())) : null;
+   protected drn(akt<djm> $$0, akt<djm> $$1, akt<cwl> $$2, dww.d $$3) {
+      super($$3);
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dgz $$0, jh $$1, dxo $$2, bvx $$3, cxg $$4) {
-      if (!$$0.B_()) {
-         jh $$5 = $$1.d();
-         dxo $$6 = dmm.c($$0, $$5, this.m().b(b, dyj.a).b(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return e[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return $$0.a(djo.cK);
+   }
+
+   @Override
+   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         float $$4 = dli.a(this, $$1, $$2);
+         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
+            int $$5 = $$0.c(c);
+            if ($$5 < 7) {
+               $$0 = $$0.b(c, Integer.valueOf($$5 + 1));
+               $$1.a($$2, $$0, 2);
+            } else {
+               jn $$6 = jn.c.a.a($$3);
+               ji $$7 = $$2.a($$6);
+               dwx $$8 = $$1.a_($$7.e());
+               if ($$1.a_($$7).l() && ($$8.a(djo.cK) || $$8.a(awp.ah))) {
+                  ke<djm> $$9 = $$1.K_().e(mc.f);
+                  Optional<djm> $$10 = $$9.f(this.f);
+                  Optional<djm> $$11 = $$9.f(this.g);
+                  if ($$10.isPresent() && $$11.isPresent()) {
+                     $$1.b($$7, $$10.get().m());
+                     $$1.b($$2, $$11.get().m().b(dnk.aF, $$6));
+                  }
+               }
+            }
+         }
       }
    }
 
    @Override
-   protected etq b_(dxo $$0) {
-      return $$0.c(g) ? etr.c.a(false) : super.b_($$0);
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return new cwp((dgh)DataFixUtils.orElse($$0.K_().e(mc.K).f(this.h), this));
    }
 
    @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      if ($$0.c(b) == dyj.a) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         jh $$3 = $$2.e();
-         dxo $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
-      }
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      return $$2.c(c) != 7;
    }
 
    @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$0.c(g)) {
-         $$2.a($$3, etr.c, etr.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b, g, d);
-   }
-
-   @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
       return true;
    }
 
    @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      if ($$3.c(dmm.b) == dyj.b) {
-         jh $$4 = $$2.d();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         dka.a($$0, $$1, $$2, $$3.c(d));
-      } else {
-         jh $$5 = $$2.e();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      int $$4 = Math.min(7, $$3.c(c) + ayz.a($$0.A, 2, 5));
+      dwx $$5 = $$3.b(c, Integer.valueOf($$4));
+      $$0.a($$2, $$5, 2);
+      if ($$4 == 7) {
+         $$5.b($$0, $$2, $$0.A);
       }
    }
 
    @Override
-   protected dxo a(dxo $$0, dqv $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dpc $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float au_() {
-      return 0.1F;
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c);
    }
 }

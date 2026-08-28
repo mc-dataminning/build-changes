@@ -1,41 +1,41 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzw {
-   public static bzb<cpa> a(cfb<jp> $$0, float $$1, int $$2, int $$3, int $$4) {
-      return cbd.a(
-         (Function<cbd.b<cpa>, ? extends App<cbd.c<cpa>, cbg<cpa>>>)($$5 -> $$5.group($$5.a(cfb.E), $$5.c(cfb.m), $$5.b($$0))
-               .apply($$5, ($$6, $$7, $$8) -> ($$9, $$10, $$11) -> {
-                     jp $$12 = $$5.b($$8);
-                     Optional<Long> $$13 = $$5.a($$6);
-                     if ($$12.a() == $$9.ai() && (!$$13.isPresent() || $$9.ad() - $$13.get() <= (long)$$4)) {
-                        if ($$12.b().k($$10.dw()) > $$3) {
-                           fbr $$14 = null;
-                           int $$15 = 0;
-                           int $$16 = 1000;
+   private static final int a = 60;
 
-                           while ($$14 == null || jh.a((ka)$$14).k($$10.dw()) > $$3) {
-                              $$14 = cgs.a($$10, 15, 7, fbr.c($$12.b()), (float) (Math.PI / 2));
-                              if (++$$15 == 1000) {
-                                 $$10.a($$0);
-                                 $$8.b();
-                                 $$6.a($$11);
-                                 return true;
+   public static bxa<bvo> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return cam.a(
+         (Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$3 -> $$3.group($$3.c(cek.o), $$3.c(cek.m), $$3.a(cek.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if (!$$5x.b_($$6.dw()).a(awv.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     } else {
+                        ji $$8 = $$6.dw();
+                        ji.a $$9 = new ji.a();
+                        fbf $$10 = fbf.a($$6);
+
+                        for (ji $$11 : ji.a($$8, $$0, $$0, $$0)) {
+                           if ($$11.u() != $$8.u() || $$11.w() != $$8.w()) {
+                              dwx $$12 = $$5x.a_($$11);
+                              dwx $$13 = $$5x.a_($$9.a($$11, jn.a));
+                              if (!$$12.a(djo.J) && $$5x.b_($$11).c() && $$12.b($$5x, $$11, $$10).c() && $$13.c($$5x, $$9, jn.b)) {
+                                 ji $$14 = $$11.j();
+                                 $$5.a(new bxc($$14));
+                                 $$4.a(new cen(new bxc($$14), $$1, 1));
+                                 break;
                               }
                            }
-
-                           $$7.a(new cfe($$14, $$1, $$2));
-                        } else if ($$12.b().k($$10.dw()) > $$2) {
-                           $$7.a(new cfe($$12.b(), $$1, $$2));
                         }
-                     } else {
-                        $$10.a($$0);
-                        $$8.b();
-                        $$6.a($$11);
-                     }
 
-                     return true;
+                        $$2.setValue($$7 + 60L);
+                        return true;
+                     }
                   }))
       );
    }

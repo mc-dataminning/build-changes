@@ -1,105 +1,49 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dqv implements baq {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dqv extends dnd {
+   public static final MapCodec<dqv> a = b(dqv::new);
 
-   public static final Codec<dqv> e = baq.a(dqv::values);
-   private final String f;
-   private final h g;
-
-   private dqv(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<dqv> a() {
+      return a;
    }
 
-   public dqv a(dqv $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public jm a(jm $$0) {
-      if ($$0.o() == jm.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dqv a(bac $$0) {
-      return ae.a(values(), $$0);
-   }
-
-   public static List<dqv> b(bac $$0) {
-      return ae.b(values(), $$0);
+   public dqv(dww.d $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public void a(dgi $$0, dwx $$1, ji $$2, buk $$3, float $$4) {
+      if (!$$3.cf()) {
+         $$3.a($$4, 0.0F, $$0.ak().l());
+      }
+   }
+
+   @Override
+   public void a(dfn $$0, buk $$1) {
+      if ($$1.cf()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(buk $$0) {
+      fba $$1 = $$0.dz();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bvg ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+      }
+   }
+
+   @Override
+   public void a(dgi $$0, ji $$1, dwx $$2, buk $$3) {
+      double $$4 = Math.abs($$3.dz().e);
+      if ($$4 < 0.1 && !$$3.ce()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.h($$3.dz().d($$5, 1.0, $$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

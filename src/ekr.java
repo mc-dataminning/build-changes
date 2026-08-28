@@ -1,61 +1,47 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class ekr {
-   public static final Codec<ekr> d = ma.W.q().dispatch(ekr::a, eks::a);
-   protected final bsf e;
-   protected final eku f;
-   protected final Optional<eko> g;
+public class ekr extends ekw {
+   public static final MapCodec<ekr> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ekr::new, $$0 -> $$0.d);
+   private static final jn b = jn.d;
+   private static final jn[] c = jn.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jn[]::new);
+   private final float d;
 
-   protected static <P extends ekr> P3<Mu<P>, bsf, eku, Optional<eko>> a(Instance<P> $$0) {
-      return $$0.group(
-         bsf.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
-         eku.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
-         eko.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
-      );
+   public ekr(float $$0) {
+      this.d = $$0;
    }
 
-   public ekr(bsf $$0, eku $$1, Optional<eko> $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected ekx<?> a() {
+      return ekx.f;
    }
 
-   protected abstract eks<?> a();
+   @Override
+   public void a(ekw.a $$0) {
+      azh $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<ji> $$2 = $$0.d();
+         List<ji> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<ji> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            af.c($$5, $$1);
+            Optional<ji> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), djo.pG.m().b(djg.b, b));
+               $$0.a().a($$6.get(), dub.I).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
 
-   public abstract boolean a(dhf var1, BiConsumer<jh, dxo> var2, bac var3, jh var4, jh var5, ejp var6);
-
-   protected boolean a(dhf $$0, jh $$1) {
-      return eib.c($$0, $$1);
-   }
-
-   protected void a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, jh $$3, ejp $$4) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
-         if (this.g.isPresent()) {
-            eko $$5 = this.g.get();
-            jh $$6 = $$3.d();
-            if ($$2.i() < $$5.b() && $$0.a($$6, dxn.a::l)) {
-               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(dtw.c.a($$1.a(599)));
+                  }
+               });
             }
          }
       }
-   }
-
-   protected dxo a(dhf $$0, jh $$1, dxo $$2) {
-      if ($$2.b(dye.J)) {
-         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(axq.a));
-         return $$2.b(dye.J, Boolean.valueOf($$3));
-      } else {
-         return $$2;
-      }
-   }
-
-   public jh a(jh $$0, bac $$1) {
-      return $$0.b(this.e.a($$1));
    }
 }

@@ -1,36 +1,65 @@
-import javax.annotation.Nullable;
-
-public class ceq<T extends bvx> extends ceo<T> {
-   private static final int i = 200;
-   private int j = 0;
-
-   public ceq(crc $$0, Class<T> $$1, boolean $$2, @Nullable cgo.a $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
-   }
-
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+public class ceq extends ces {
+   public ceq(bvi $$0, dgi $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean b() {
-      if (this.j > 0 || !this.e.dZ().h()) {
-         return false;
-      } else if (!((crc)this.e).gE()) {
-         return false;
-      } else {
+   protected etp a(int $$0) {
+      this.o = new etk();
+      return new etp(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a(fba $$0, fba $$1) {
+      return a(this.a, $$0, $$1, true);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.o() && this.a.bn() || !this.a.bZ();
+   }
+
+   @Override
+   protected fba b() {
+      return this.a.du();
+   }
+
+   @Override
+   public etn a(buk $$0, int $$1) {
+      return this.a($$0.dw(), $$1);
+   }
+
+   @Override
+   public void c() {
+      this.e++;
+      if (this.m) {
          this.h();
-         return this.c != null;
+      }
+
+      if (!this.k()) {
+         if (this.a()) {
+            this.j();
+         } else if (this.c != null && !this.c.c()) {
+            fba $$0 = this.c.a(this.a);
+            if (this.a.dA() == ayz.a($$0.d) && this.a.dC() == ayz.a($$0.e) && this.a.dG() == ayz.a($$0.f)) {
+               this.c.a();
+            }
+         }
+
+         agc.a(this.b, this.a, this.c, this.l);
+         if (!this.k()) {
+            fba $$1 = this.c.a(this.a);
+            this.a.I().a($$1.d, $$1.e, $$1.f, this.d);
+         }
       }
    }
 
+   public void b(boolean $$0) {
+      this.o.b($$0);
+   }
+
    @Override
-   public void d() {
-      this.j = b(200);
-      super.d();
+   public boolean a(ji $$0) {
+      return this.b.a_($$0).a(this.b, $$0, this.a);
    }
 }

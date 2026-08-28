@@ -1,875 +1,385 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalDouble;
-import java.util.function.BiFunction;
-import java.util.function.Function;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public abstract class glq extends glp {
-   private static final int be = 1048576;
-   public static final int aY = 4194304;
-   public static final int aZ = 786432;
-   public static final int ba = 1536;
-   private static final glq bf = a("solid", fgj.b, fgq.c.h, 4194304, true, false, glq.b.a().a(aw).a(v).a(aq).a(true));
-   private static final glq bg = a("cutout_mipped", fgj.b, fgq.c.h, 4194304, true, false, glq.b.a().a(aw).a(w).a(aq).a(true));
-   private static final glq bh = a("cutout", fgj.b, fgq.c.h, 786432, true, false, glq.b.a().a(aw).a(x).a(ar).a(true));
-   private static final glq bi = a("translucent", fgj.b, fgq.c.h, 786432, true, true, a(y));
-   private static final glq bj = a("translucent_moving_block", fgj.b, fgq.c.h, 786432, false, true, Z());
-   private static final Function<alp, glq> bk = ae.b($$0 -> a("armor_cutout_no_cull", $$0, false));
-   private static final Function<alp, glq> bl = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(B).a(new glp.n($$0, bay.b, false)).a(i).a(aB).a(aw).a(ay).a(aL).a(true);
-      return a("armor_translucent", fgj.c, fgq.c.h, 1536, true, true, $$1);
+public class glq {
+   private static final Map<djm, gmh> a = af.a(Maps.newHashMap(), $$0 -> {
+      gmh $$1 = gmh.s();
+      $$0.put(djo.gd, $$1);
+      gmh $$2 = gmh.d();
+      $$0.put(djo.i, $$2);
+      $$0.put(djo.fk, $$2);
+      $$0.put(djo.fm, $$2);
+      $$0.put(djo.gc, $$2);
+      $$0.put(djo.hz, $$2);
+      $$0.put(djo.fl, $$2);
+      $$0.put(djo.aN, $$2);
+      $$0.put(djo.aK, $$2);
+      $$0.put(djo.aL, $$2);
+      $$0.put(djo.aO, $$2);
+      $$0.put(djo.aP, $$2);
+      $$0.put(djo.aM, $$2);
+      $$0.put(djo.aQ, $$2);
+      $$0.put(djo.aR, $$2);
+      $$0.put(djo.aT, $$2);
+      $$0.put(djo.aU, $$2);
+      $$0.put(djo.ag, $$2);
+      $$0.put(djo.aS, $$2);
+      gmh $$3 = gmh.e();
+      $$0.put(djo.z, $$3);
+      $$0.put(djo.A, $$3);
+      $$0.put(djo.B, $$3);
+      $$0.put(djo.C, $$3);
+      $$0.put(djo.D, $$3);
+      $$0.put(djo.E, $$3);
+      $$0.put(djo.F, $$3);
+      $$0.put(djo.G, $$3);
+      $$0.put(djo.aX, $$3);
+      $$0.put(djo.bg, $$3);
+      $$0.put(djo.bh, $$3);
+      $$0.put(djo.bi, $$3);
+      $$0.put(djo.bj, $$3);
+      $$0.put(djo.bk, $$3);
+      $$0.put(djo.bl, $$3);
+      $$0.put(djo.bm, $$3);
+      $$0.put(djo.bn, $$3);
+      $$0.put(djo.bo, $$3);
+      $$0.put(djo.bp, $$3);
+      $$0.put(djo.bq, $$3);
+      $$0.put(djo.br, $$3);
+      $$0.put(djo.bs, $$3);
+      $$0.put(djo.bt, $$3);
+      $$0.put(djo.bu, $$3);
+      $$0.put(djo.bv, $$3);
+      $$0.put(djo.bw, $$3);
+      $$0.put(djo.bx, $$3);
+      $$0.put(djo.bz, $$3);
+      $$0.put(djo.bA, $$3);
+      $$0.put(djo.bB, $$3);
+      $$0.put(djo.bC, $$3);
+      $$0.put(djo.bD, $$3);
+      $$0.put(djo.bE, $$3);
+      $$0.put(djo.bY, $$3);
+      $$0.put(djo.tZ, $$3);
+      $$0.put(djo.ua, $$3);
+      $$0.put(djo.ca, $$3);
+      $$0.put(djo.cb, $$3);
+      $$0.put(djo.cc, $$3);
+      $$0.put(djo.cd, $$3);
+      $$0.put(djo.ce, $$3);
+      $$0.put(djo.cf, $$3);
+      $$0.put(djo.cg, $$3);
+      $$0.put(djo.ch, $$3);
+      $$0.put(djo.ci, $$3);
+      $$0.put(djo.cj, $$3);
+      $$0.put(djo.ck, $$3);
+      $$0.put(djo.cl, $$3);
+      $$0.put(djo.cm, $$3);
+      $$0.put(djo.cn, $$3);
+      $$0.put(djo.cw, $$3);
+      $$0.put(djo.cx, $$3);
+      $$0.put(djo.en, $$3);
+      $$0.put(djo.eo, $$3);
+      $$0.put(djo.cy, $$3);
+      $$0.put(djo.cz, $$3);
+      $$0.put(djo.cA, $$3);
+      $$0.put(djo.tT, $$3);
+      $$0.put(djo.tU, $$3);
+      $$0.put(djo.cE, $$3);
+      $$0.put(djo.cJ, $$3);
+      $$0.put(djo.cW, $$3);
+      $$0.put(djo.cX, $$3);
+      $$0.put(djo.cY, $$3);
+      $$0.put(djo.dK, $$3);
+      $$0.put(djo.dX, $$3);
+      $$0.put(djo.dY, $$3);
+      $$0.put(djo.ed, $$3);
+      $$0.put(djo.ef, $$3);
+      $$0.put(djo.eu, $$3);
+      $$0.put(djo.eL, $$3);
+      $$0.put(djo.eM, $$3);
+      $$0.put(djo.eN, $$3);
+      $$0.put(djo.eO, $$3);
+      $$0.put(djo.eP, $$3);
+      $$0.put(djo.eQ, $$3);
+      $$0.put(djo.eR, $$3);
+      $$0.put(djo.eS, $$3);
+      $$0.put(djo.po, $$3);
+      $$0.put(djo.pp, $$3);
+      $$0.put(djo.eT, $$3);
+      $$0.put(djo.eU, $$3);
+      $$0.put(djo.sw, $$3);
+      $$0.put(djo.sx, $$3);
+      $$0.put(djo.sz, $$3);
+      $$0.put(djo.sy, $$3);
+      $$0.put(djo.sA, $$3);
+      $$0.put(djo.sB, $$3);
+      $$0.put(djo.sD, $$3);
+      $$0.put(djo.sC, $$3);
+      $$0.put(djo.fp, $$3);
+      $$0.put(djo.fq, $$3);
+      $$0.put(djo.fr, $$3);
+      $$0.put(djo.fs, $$3);
+      $$0.put(djo.ft, $$3);
+      $$0.put(djo.tX, $$3);
+      $$0.put(djo.tY, $$3);
+      $$0.put(djo.fu, $$3);
+      $$0.put(djo.fv, $$3);
+      $$0.put(djo.fB, $$3);
+      $$0.put(djo.fL, $$3);
+      $$0.put(djo.fN, $$3);
+      $$0.put(djo.fX, $$3);
+      $$0.put(djo.gj, $$3);
+      $$0.put(djo.gm, $$3);
+      $$0.put(djo.go, $$3);
+      $$0.put(djo.gp, $$3);
+      $$0.put(djo.gq, $$3);
+      $$0.put(djo.gr, $$3);
+      $$0.put(djo.gs, $$3);
+      $$0.put(djo.gt, $$3);
+      $$0.put(djo.gu, $$3);
+      $$0.put(djo.gv, $$3);
+      $$0.put(djo.gw, $$3);
+      $$0.put(djo.gx, $$3);
+      $$0.put(djo.gy, $$3);
+      $$0.put(djo.gz, $$3);
+      $$0.put(djo.ub, $$3);
+      $$0.put(djo.uc, $$3);
+      $$0.put(djo.gA, $$3);
+      $$0.put(djo.gB, $$3);
+      $$0.put(djo.gC, $$3);
+      $$0.put(djo.gD, $$3);
+      $$0.put(djo.gE, $$3);
+      $$0.put(djo.gF, $$3);
+      $$0.put(djo.gG, $$3);
+      $$0.put(djo.gH, $$3);
+      $$0.put(djo.gI, $$3);
+      $$0.put(djo.gJ, $$3);
+      $$0.put(djo.gK, $$3);
+      $$0.put(djo.gL, $$3);
+      $$0.put(djo.gM, $$3);
+      $$0.put(djo.gN, $$3);
+      $$0.put(djo.gO, $$3);
+      $$0.put(djo.tK, $$3);
+      $$0.put(djo.tL, $$3);
+      $$0.put(djo.gn, $$3);
+      $$0.put(djo.gP, $$3);
+      $$0.put(djo.gQ, $$3);
+      $$0.put(djo.hv, $$3);
+      $$0.put(djo.hE, $$3);
+      $$0.put(djo.iw, $$3);
+      $$0.put(djo.jb, $$3);
+      $$0.put(djo.jc, $$3);
+      $$0.put(djo.jd, $$3);
+      $$0.put(djo.je, $$3);
+      $$0.put(djo.jf, $$3);
+      $$0.put(djo.jg, $$3);
+      $$0.put(djo.kM, $$3);
+      $$0.put(djo.kN, $$3);
+      $$0.put(djo.kO, $$3);
+      $$0.put(djo.kP, $$3);
+      $$0.put(djo.kQ, $$3);
+      $$0.put(djo.kR, $$3);
+      $$0.put(djo.kS, $$3);
+      $$0.put(djo.kT, $$3);
+      $$0.put(djo.kU, $$3);
+      $$0.put(djo.so, $$3);
+      $$0.put(djo.sp, $$3);
+      $$0.put(djo.sr, $$3);
+      $$0.put(djo.sq, $$3);
+      $$0.put(djo.ss, $$3);
+      $$0.put(djo.st, $$3);
+      $$0.put(djo.sv, $$3);
+      $$0.put(djo.su, $$3);
+      $$0.put(djo.kV, $$3);
+      $$0.put(djo.kW, $$3);
+      $$0.put(djo.kX, $$3);
+      $$0.put(djo.bZ, $$3);
+      $$0.put(djo.lc, $$3);
+      $$0.put(djo.le, $$3);
+      $$0.put(djo.ld, $$3);
+      $$0.put(djo.lf, $$3);
+      $$0.put(djo.mE, $$3);
+      $$0.put(djo.mF, $$3);
+      $$0.put(djo.mH, $$3);
+      $$0.put(djo.mT, $$3);
+      $$0.put(djo.mU, $$3);
+      $$0.put(djo.mV, $$3);
+      $$0.put(djo.mW, $$3);
+      $$0.put(djo.mX, $$3);
+      $$0.put(djo.mY, $$3);
+      $$0.put(djo.mZ, $$3);
+      $$0.put(djo.na, $$3);
+      $$0.put(djo.nb, $$3);
+      $$0.put(djo.nc, $$3);
+      $$0.put(djo.nd, $$3);
+      $$0.put(djo.ne, $$3);
+      $$0.put(djo.nf, $$3);
+      $$0.put(djo.ng, $$3);
+      $$0.put(djo.nh, $$3);
+      $$0.put(djo.ni, $$3);
+      $$0.put(djo.nj, $$3);
+      $$0.put(djo.nk, $$3);
+      $$0.put(djo.nl, $$3);
+      $$0.put(djo.nm, $$3);
+      $$0.put(djo.nn, $$3);
+      $$0.put(djo.no, $$3);
+      $$0.put(djo.np, $$3);
+      $$0.put(djo.nq, $$3);
+      $$0.put(djo.nr, $$3);
+      $$0.put(djo.ns, $$3);
+      $$0.put(djo.nt, $$3);
+      $$0.put(djo.nu, $$3);
+      $$0.put(djo.nv, $$3);
+      $$0.put(djo.nw, $$3);
+      $$0.put(djo.nx, $$3);
+      $$0.put(djo.nz, $$3);
+      $$0.put(djo.nA, $$3);
+      $$0.put(djo.nB, $$3);
+      $$0.put(djo.nC, $$3);
+      $$0.put(djo.ou, $$3);
+      $$0.put(djo.oE, $$3);
+      $$0.put(djo.oG, $$3);
+      $$0.put(djo.oH, $$3);
+      $$0.put(djo.oI, $$3);
+      $$0.put(djo.oJ, $$3);
+      $$0.put(djo.oK, $$3);
+      $$0.put(djo.pb, $$3);
+      $$0.put(djo.pc, $$3);
+      $$0.put(djo.pd, $$3);
+      $$0.put(djo.pe, $$3);
+      $$0.put(djo.oT, $$3);
+      $$0.put(djo.oZ, $$3);
+      $$0.put(djo.oQ, $$3);
+      $$0.put(djo.pf, $$3);
+      $$0.put(djo.oS, $$3);
+      $$0.put(djo.pO, $$3);
+      $$0.put(djo.pP, $$3);
+      $$0.put(djo.pQ, $$3);
+      $$0.put(djo.pR, $$3);
+      $$0.put(djo.pw, $$3);
+      $$0.put(djo.px, $$3);
+      $$0.put(djo.sV, $$3);
+      $$0.put(djo.ra, $$3);
+      $$0.put(djo.qZ, $$3);
+      $$0.put(djo.qY, $$3);
+      $$0.put(djo.qX, $$3);
+      $$0.put(djo.sU, $$3);
+      $$0.put(djo.sX, $$3);
+      $$0.put(djo.sY, $$3);
+      $$0.put(djo.sZ, $$3);
+      $$0.put(djo.tb, $$3);
+      $$0.put(djo.ta, $$3);
+      $$0.put(djo.td, $$3);
+      $$0.put(djo.tf, $$3);
+      $$0.put(djo.tg, $$3);
+      $$0.put(djo.th, $$3);
+      $$0.put(djo.ti, $$3);
+      $$0.put(djo.rs, $$3);
+      $$0.put(djo.rt, $$3);
+      $$0.put(djo.rv, $$3);
+      $$0.put(djo.rx, $$3);
+      $$0.put(djo.H, $$3);
+      $$0.put(djo.tP, $$3);
+      $$0.put(djo.sE, $$3);
+      $$0.put(djo.sF, $$3);
+      $$0.put(djo.sG, $$3);
+      $$0.put(djo.sH, $$3);
+      $$0.put(djo.sI, $$3);
+      $$0.put(djo.sJ, $$3);
+      $$0.put(djo.sK, $$3);
+      $$0.put(djo.sL, $$3);
+      gmh $$4 = gmh.f();
+      $$0.put(djo.eb, $$4);
+      $$0.put(djo.eq, $$4);
+      $$0.put(djo.ev, $$4);
+      $$0.put(djo.ew, $$4);
+      $$0.put(djo.ex, $$4);
+      $$0.put(djo.ey, $$4);
+      $$0.put(djo.ez, $$4);
+      $$0.put(djo.eA, $$4);
+      $$0.put(djo.eB, $$4);
+      $$0.put(djo.eC, $$4);
+      $$0.put(djo.eD, $$4);
+      $$0.put(djo.eE, $$4);
+      $$0.put(djo.eF, $$4);
+      $$0.put(djo.eG, $$4);
+      $$0.put(djo.eH, $$4);
+      $$0.put(djo.eI, $$4);
+      $$0.put(djo.eJ, $$4);
+      $$0.put(djo.eK, $$4);
+      $$0.put(djo.hW, $$4);
+      $$0.put(djo.hX, $$4);
+      $$0.put(djo.hY, $$4);
+      $$0.put(djo.hZ, $$4);
+      $$0.put(djo.ia, $$4);
+      $$0.put(djo.ib, $$4);
+      $$0.put(djo.ic, $$4);
+      $$0.put(djo.id, $$4);
+      $$0.put(djo.ie, $$4);
+      $$0.put(djo.if, $$4);
+      $$0.put(djo.ig, $$4);
+      $$0.put(djo.ih, $$4);
+      $$0.put(djo.ii, $$4);
+      $$0.put(djo.ij, $$4);
+      $$0.put(djo.ik, $$4);
+      $$0.put(djo.il, $$4);
+      $$0.put(djo.it, $$4);
+      $$0.put(djo.pI, $$4);
+      $$0.put(djo.lk, $$4);
+      $$0.put(djo.nF, $$4);
+      $$0.put(djo.rq, $$4);
    });
-   private static final Function<alp, glq> bm = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(C).a(new glp.n($$0, bay.b, false)).a(c).a(aw).a(ay).a(true);
-      return a("entity_solid", fgj.c, fgq.c.h, 1536, true, false, $$1);
+   private static final Map<esy, gmh> b = af.a(Maps.newHashMap(), $$0 -> {
+      gmh $$1 = gmh.f();
+      $$0.put(eta.b, $$1);
+      $$0.put(eta.c, $$1);
    });
-   private static final Function<alp, glq> bn = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(C).a(new glp.n($$0, bay.b, false)).a(c).a(aw).a(ay).a(aM).a(true);
-      return a("entity_solid_z_offset_forward", fgj.c, fgq.c.h, 1536, true, false, $$1);
-   });
-   private static final Function<alp, glq> bo = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(D).a(new glp.n($$0, bay.b, false)).a(c).a(aw).a(ay).a(true);
-      return a("entity_cutout", fgj.c, fgq.c.h, 1536, true, false, $$1);
-   });
-   private static final BiFunction<alp, Boolean, glq> bp = ae.a(($$0, $$1) -> {
-      glq.b $$2 = glq.b.a().a(E).a(new glp.n($$0, bay.b, false)).a(c).a(aB).a(aw).a(ay).a($$1);
-      return a("entity_cutout_no_cull", fgj.c, fgq.c.h, 1536, true, false, $$2);
-   });
-   private static final BiFunction<alp, Boolean, glq> bq = ae.a(($$0, $$1) -> {
-      glq.b $$2 = glq.b.a().a(F).a(new glp.n($$0, bay.b, false)).a(c).a(aB).a(aw).a(ay).a(aL).a($$1);
-      return a("entity_cutout_no_cull_z_offset", fgj.c, fgq.c.h, 1536, true, false, $$2);
-   });
-   private static final Function<alp, glq> br = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(G).a(new glp.n($$0, bay.b, false)).a(i).a(aU).a(aw).a(ay).a(aG).a(true);
-      return a("item_entity_translucent_cull", fgj.c, fgq.c.h, 1536, true, true, $$1);
-   });
-   private static final BiFunction<alp, Boolean, glq> bs = ae.a(($$0, $$1) -> {
-      glq.b $$2 = glq.b.a().a(H).a(new glp.n($$0, bay.b, false)).a(i).a(aB).a(aw).a(ay).a($$1);
-      return a("entity_translucent", fgj.c, fgq.c.h, 1536, true, true, $$2);
-   });
-   private static final BiFunction<alp, Boolean, glq> bt = ae.a(($$0, $$1) -> {
-      glq.b $$2 = glq.b.a().a(I).a(new glp.n($$0, bay.b, false)).a(i).a(aB).a(aH).a(ay).a($$1);
-      return a("entity_translucent_emissive", fgj.c, fgq.c.h, 1536, true, true, $$2);
-   });
-   private static final Function<alp, glq> bu = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(J).a(new glp.n($$0, bay.b, false)).a(aB).a(aw).a(true);
-      return a("entity_smooth_cutout", fgj.c, fgq.c.h, 1536, $$1);
-   });
-   private static final BiFunction<alp, Boolean, glq> bv = ae.a(($$0, $$1) -> {
-      glq.b $$2 = glq.b.a().a(K).a(new glp.n($$0, bay.b, false)).a($$1 ? i : c).a($$1 ? aH : aG).a(false);
-      return a("beacon_beam", fgj.b, fgq.c.h, 1536, false, true, $$2);
-   });
-   private static final Function<alp, glq> bw = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(L).a(new glp.n($$0, bay.b, false)).a(aD).a(aB).a(aw).a(ay).a(false);
-      return a("entity_decal", fgj.c, fgq.c.h, 1536, $$1);
-   });
-   private static final Function<alp, glq> bx = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(M).a(new glp.n($$0, bay.b, false)).a(i).a(aB).a(aw).a(ay).a(aH).a(false);
-      return a("entity_no_outline", fgj.c, fgq.c.h, 1536, false, true, $$1);
-   });
-   private static final Function<alp, glq> by = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(N).a(new glp.n($$0, bay.b, false)).a(i).a(aA).a(aw).a(ay).a(aH).a(aE).a(aL).a(false);
-      return a("entity_shadow", fgj.c, fgq.c.h, 1536, false, false, $$1);
-   });
-   private static final Function<alp, glq> bz = ae.b($$0 -> {
-      glq.b $$1 = glq.b.a().a(O).a(new glp.n($$0, bay.b, false)).a(aB).a(true);
-      return a("entity_alpha", fgj.c, fgq.c.h, 1536, $$1);
-   });
-   private static final BiFunction<alp, glp.p, glq> bA = ae.a(($$0, $$1) -> {
-      glp.n $$2 = new glp.n($$0, bay.b, false);
-      return a("eyes", fgj.c, fgq.c.h, 1536, false, true, glq.b.a().a(P).a($$2).a($$1).a(aH).a(false));
-   });
-   private static final glq bB = a("leash", fgj.h, fgq.c.f, 1536, glq.b.a().a(R).a(as).a(aB).a(aw).a(false));
-   private static final glq bC = a("water_mask", fgj.e, fgq.c.h, 1536, glq.b.a().a(S).a(as).a(aI).a(false));
-   private static final glq bD = a(
-      "armor_entity_glint", fgj.i, fgq.c.h, 1536, glq.b.a().a(U).a(new glp.n(gsj.a, bay.c, false)).a(aH).a(aB).a(aD).a(f).a(av).a(aL).a(false)
-   );
-   private static final glq bE = a(
-      "glint_translucent", fgj.i, fgq.c.h, 1536, glq.b.a().a(V).a(new glp.n(gsj.b, bay.c, false)).a(aH).a(aB).a(aD).a(f).a(au).a(aU).a(false)
-   );
-   private static final glq bF = a("glint", fgj.i, fgq.c.h, 1536, glq.b.a().a(W).a(new glp.n(gsj.b, bay.c, false)).a(aH).a(aB).a(aD).a(f).a(au).a(false));
-   private static final glq bG = a("entity_glint", fgj.i, fgq.c.h, 1536, glq.b.a().a(X).a(new glp.n(gsj.a, bay.c, false)).a(aH).a(aB).a(aD).a(f).a(av).a(false));
-   private static final Function<alp, glq> bH = ae.b($$0 -> {
-      glp.n $$1 = new glp.n($$0, bay.b, false);
-      return a("crumbling", fgj.b, fgq.c.h, 1536, false, true, glq.b.a().a(Y).a($$1).a(g).a(aH).a(aK).a(false));
-   });
-   private static final Function<alp, glq> bI = ae.b(
-      $$0 -> a("text", fgj.k, fgq.c.h, 786432, false, false, glq.b.a().a(Z).a(new glp.n($$0, bay.b, false)).a(i).a(aw).a(false))
-   );
-   private static final glq bJ = a("text_background", fgj.h, fgq.c.h, 1536, false, true, glq.b.a().a(aa).a(as).a(i).a(aw).a(false));
-   private static final Function<alp, glq> bK = ae.b(
-      $$0 -> a("text_intensity", fgj.k, fgq.c.h, 786432, false, false, glq.b.a().a(ab).a(new glp.n($$0, bay.b, false)).a(i).a(aw).a(false))
-   );
-   private static final Function<alp, glq> bL = ae.b(
-      $$0 -> a("text_polygon_offset", fgj.k, fgq.c.h, 1536, false, true, glq.b.a().a(Z).a(new glp.n($$0, bay.b, false)).a(i).a(aw).a(aK).a(false))
-   );
-   private static final Function<alp, glq> bM = ae.b(
-      $$0 -> a("text_intensity_polygon_offset", fgj.k, fgq.c.h, 1536, false, true, glq.b.a().a(ab).a(new glp.n($$0, bay.b, false)).a(i).a(aw).a(aK).a(false))
-   );
-   private static final Function<alp, glq> bN = ae.b(
-      $$0 -> a("text_see_through", fgj.k, fgq.c.h, 1536, false, false, glq.b.a().a(ac).a(new glp.n($$0, bay.b, false)).a(i).a(aw).a(aC).a(aH).a(false))
-   );
-   private static final glq bO = a("text_background_see_through", fgj.h, fgq.c.h, 1536, false, true, glq.b.a().a(ad).a(as).a(i).a(aw).a(aC).a(aH).a(false));
-   private static final Function<alp, glq> bP = ae.b(
-      $$0 -> a("text_intensity_see_through", fgj.k, fgq.c.h, 1536, false, true, glq.b.a().a(ae).a(new glp.n($$0, bay.b, false)).a(i).a(aw).a(aC).a(aH).a(false))
-   );
-   private static final glq bQ = a("lightning", fgj.f, fgq.c.h, 1536, false, true, glq.b.a().a(af).a(aG).a(e).a(aS).a(false));
-   private static final glq bR = a("dragon_rays", fgj.f, fgq.c.e, 1536, false, false, glq.b.a().a(af).a(aH).a(e).a(false));
-   private static final glq bS = a("dragon_rays_depth", fgj.e, fgq.c.e, 1536, false, false, glq.b.a().a(p).a(aI).a(false));
-   private static final glq bT = a("tripwire", fgj.b, fgq.c.h, 1536, true, true, aa());
-   private static final glq bU = a(
-      "end_portal", fgj.e, fgq.c.h, 1536, false, false, glq.b.a().a(ah).a(glp.i.d().a(gok.a, false, false).a(gok.b, false, false).a()).a(false)
-   );
-   private static final glq bV = a(
-      "end_gateway", fgj.e, fgq.c.h, 1536, false, false, glq.b.a().a(ai).a(glp.i.d().a(gok.a, false, false).a(gok.b, false, false).a()).a(false)
-   );
-   private static final glq bW = a(false, false);
-   private static final glq bX = a(false, true);
-   private static final glq bY = a(true, true);
-   public static final glq.a bb = a("lines", fgj.g, fgq.c.a, 1536, glq.b.a().a(ak).a(new glp.h(OptionalDouble.empty())).a(aL).a(i).a(aU).a(aG).a(aB).a(false));
-   public static final glq.a bc = a(
-      "secondary_block_outline", fgj.g, fgq.c.a, 1536, glq.b.a().a(ak).a(new glp.h(OptionalDouble.of(7.0))).a(aL).a(glp.i).a(aU).a(aH).a(aB).a(false)
-   );
-   public static final glq.a bd = a(
-      "line_strip", fgj.g, fgq.c.b, 1536, glq.b.a().a(ak).a(new glp.h(OptionalDouble.empty())).a(aL).a(i).a(aU).a(aG).a(aB).a(false)
-   );
-   private static final Function<Double, glq.a> bZ = ae.b(
-      $$0 -> a("debug_line_strip", fgj.f, fgq.c.d, 1536, glq.b.a().a(s).a(new glp.h(OptionalDouble.of($$0))).a(c).a(aB).a(false))
-   );
-   private static final glq.a ca = a("debug_filled_box", fgj.f, fgq.c.f, 1536, false, true, glq.b.a().a(s).a(aL).a(i).a(false));
-   private static final glq.a cb = a("debug_quads", fgj.f, fgq.c.h, 1536, false, true, glq.b.a().a(s).a(i).a(aB).a(false));
-   private static final glq.a cc = a("debug_triangle_fan", fgj.f, fgq.c.g, 1536, false, true, glq.b.a().a(s).a(i).a(aB).a(false));
-   private static final glq.a cd = a("debug_structure_quads", fgj.f, fgq.c.h, 1536, false, true, glq.b.a().a(s).a(i).a(aB).a(aE).a(aH).a(false));
-   private static final glq.a ce = a("debug_section_quads", fgj.f, fgq.c.h, 1536, false, true, glq.b.a().a(s).a(aL).a(i).a(aA).a(false));
-   private static final glq cf = b(false);
-   private static final glq cg = b(true);
-   private static final Function<alp, glq> ch = ae.b(
-      $$0 -> a("opaque_particle", fgj.d, fgq.c.h, 1536, false, false, glq.b.a().a(u).a(new glp.n($$0, bay.b, false)).a(aw).a(aG).a(false))
-   );
-   private static final Function<alp, glq> ci = ae.b(
-      $$0 -> a("translucent_particle", fgj.d, fgq.c.h, 1536, false, false, glq.b.a().a(u).a(new glp.n($$0, bay.b, false)).a(i).a(aR).a(aw).a(aG).a(false))
-   );
-   private static final Function<alp, glq> cj = c(true);
-   private static final Function<alp, glq> ck = c(false);
-   private static final glq cl = a("sky", fgj.e, fgq.c.h, 1536, false, false, glq.b.a().a(p).a(aH).a(false));
-   private static final glq cm = a("end_sky", fgj.j, fgq.c.h, 1536, false, false, glq.b.a().a(t).a(new glp.n(gmc.a, bay.b, false)).a(i).a(aH).a(false));
-   private static final glq cn = a("sunrise_sunset", fgj.f, fgq.c.g, 1536, false, false, glq.b.a().a(s).a(i).a(aH).a(false));
-   private static final glq co = a("stars", fgj.e, fgq.c.h, 1536, false, false, glq.b.a().a(p).a(h).a(aH).a(false));
-   private static final Function<alp, glq> cp = ae.b(
-      $$0 -> a("celestial", fgj.j, fgq.c.h, 1536, false, false, glq.b.a().a(t).a(new glp.n($$0, bay.b, false)).a(h).a(aH).a(false))
-   );
-   private static final Function<alp, glq> cq = ae.b(
-      $$0 -> a("block_screen_effect", fgj.j, fgq.c.h, 1536, false, false, glq.b.a().a(t).a(new glp.n($$0, bay.b, false)).a(aC).a(aH).a(i).a(false))
-   );
-   private static final Function<alp, glq> cr = ae.b(
-      $$0 -> a("fire_screen_effect", fgj.j, fgq.c.h, 1536, false, false, glq.b.a().a(t).a(new glp.n($$0, bay.b, false)).a(aC).a(aH).a(i).a(false))
-   );
-   private static final glq.a cs = a("gui", fgj.f, fgq.c.h, 786432, glq.b.a().a(al).a(i).a(aE).a(false));
-   private static final glq.a ct = a("gui_overlay", fgj.f, fgq.c.h, 1536, glq.b.a().a(am).a(i).a(aC).a(aH).a(false));
-   private static final Function<alp, glq> cu = ae.b(
-      $$0 -> a("gui_textured_overlay", fgj.j, fgq.c.h, 1536, glq.b.a().a(new glp.n($$0, bay.c, false)).a(t).a(i).a(aC).a(aH).a(false))
-   );
-   private static final Function<alp, glq> cv = ae.b(
-      $$0 -> a("gui_opaque_textured_background", fgj.j, fgq.c.h, 786432, glq.b.a().a(new glp.n($$0, bay.b, false)).a(t).a(c).a(aE).a(false))
-   );
-   private static final glq.a cw = a("gui_nausea_overlay", fgj.j, fgq.c.h, 1536, glq.b.a().a(new glp.n(fnk.a, bay.c, false)).a(t).a(m).a(aC).a(aH).a(false));
-   private static final glq.a cx = a("gui_text_highlight", fgj.f, fgq.c.h, 1536, glq.b.a().a(an).a(i).a(aC).a(aX).a(false));
-   private static final glq.a cy = a("gui_ghost_recipe_overlay", fgj.f, fgq.c.h, 1536, glq.b.a().a(ao).a(i).a(aF).a(aH).a(false));
-   private static final Function<alp, glq> cz = ae.b(
-      $$0 -> a("gui_textured", fgj.j, fgq.c.h, 786432, glq.b.a().a(new glp.n($$0, bay.b, false)).a(t).a(i).a(aE).a(false))
-   );
-   private static final Function<alp, glq> cA = ae.b(
-      $$0 -> a("vignette", fgj.j, fgq.c.h, 786432, glq.b.a().a(new glp.n($$0, bay.c, false)).a(t).a(j).a(aC).a(aH).a(false))
-   );
-   private static final Function<alp, glq> cB = ae.b(
-      $$0 -> a("crosshair", fgj.j, fgq.c.h, 786432, glq.b.a().a(new glp.n($$0, bay.b, false)).a(t).a(k).a(false))
-   );
-   private static final glq.a cC = a("mojang_logo", fgj.j, fgq.c.h, 786432, glq.b.a().a(new glp.n(fth.a, bay.c, false)).a(t).a(l).a(aC).a(aH).a(false));
-   private static final ImmutableList<glq> cD = ImmutableList.of(c(), d(), e(), f(), s());
-   private final fgq cE;
-   private final fgq.c cF;
-   private final int cG;
-   private final boolean cH;
-   private final boolean cI;
-
-   public static glq c() {
-      return bf;
-   }
-
-   public static glq d() {
-      return bg;
-   }
-
-   public static glq e() {
-      return bh;
-   }
-
-   private static glq.b a(glp.m $$0) {
-      return glq.b.a().a(aw).a($$0).a(aq).a(i).a(aQ).a(true);
-   }
-
-   public static glq f() {
-      return bi;
-   }
-
-   private static glq.b Z() {
-      return glq.b.a().a(aw).a(z).a(aq).a(i).a(aU).a(true);
-   }
-
-   public static glq g() {
-      return bj;
-   }
-
-   private static glq.a a(String $$0, alp $$1, boolean $$2) {
-      glq.b $$3 = glq.b.a().a(A).a(new glp.n($$1, bay.b, false)).a(c).a(aB).a(aw).a(ay).a(aL).a($$2 ? aD : aE).a(true);
-      return a($$0, fgj.c, fgq.c.h, 1536, true, false, $$3);
-   }
-
-   public static glq a(alp $$0) {
-      return bk.apply($$0);
-   }
-
-   public static glq b(alp $$0) {
-      return a("armor_decal_cutout_no_cull", $$0, true);
-   }
-
-   public static glq c(alp $$0) {
-      return bl.apply($$0);
-   }
-
-   public static glq d(alp $$0) {
-      return bm.apply($$0);
-   }
-
-   public static glq e(alp $$0) {
-      return bn.apply($$0);
-   }
-
-   public static glq f(alp $$0) {
-      return bo.apply($$0);
-   }
-
-   public static glq a(alp $$0, boolean $$1) {
-      return bp.apply($$0, $$1);
-   }
-
-   public static glq g(alp $$0) {
-      return a($$0, true);
-   }
-
-   public static glq b(alp $$0, boolean $$1) {
-      return bq.apply($$0, $$1);
-   }
-
-   public static glq h(alp $$0) {
-      return b($$0, true);
-   }
-
-   public static glq i(alp $$0) {
-      return br.apply($$0);
-   }
-
-   public static glq c(alp $$0, boolean $$1) {
-      return bs.apply($$0, $$1);
-   }
-
-   public static glq j(alp $$0) {
-      return c($$0, true);
-   }
-
-   public static glq d(alp $$0, boolean $$1) {
-      return bt.apply($$0, $$1);
-   }
-
-   public static glq k(alp $$0) {
-      return d($$0, true);
-   }
-
-   public static glq l(alp $$0) {
-      return bu.apply($$0);
-   }
-
-   public static glq e(alp $$0, boolean $$1) {
-      return bv.apply($$0, $$1);
-   }
-
-   public static glq m(alp $$0) {
-      return bw.apply($$0);
-   }
-
-   public static glq n(alp $$0) {
-      return bx.apply($$0);
-   }
-
-   public static glq o(alp $$0) {
-      return by.apply($$0);
-   }
-
-   public static glq p(alp $$0) {
-      return bz.apply($$0);
-   }
-
-   public static glq q(alp $$0) {
-      return bA.apply($$0, i);
-   }
-
-   public static glq r(alp $$0) {
-      return bt.apply($$0, false);
-   }
-
-   public static glq a(alp $$0, float $$1, float $$2) {
-      return a(
-         "breeze_wind",
-         fgj.c,
-         fgq.c.h,
-         1536,
-         false,
-         true,
-         glq.b.a().a(ap).a(new glp.n($$0, bay.b, false)).a(new glp.j($$1, $$2)).a(i).a(aB).a(aw).a(az).a(false)
-      );
-   }
-
-   public static glq b(alp $$0, float $$1, float $$2) {
-      return a(
-         "energy_swirl",
-         fgj.c,
-         fgq.c.h,
-         1536,
-         false,
-         true,
-         glq.b.a().a(Q).a(new glp.n($$0, bay.b, false)).a(new glp.j($$1, $$2)).a(d).a(aB).a(aw).a(ay).a(false)
-      );
-   }
-
-   public static glq h() {
-      return bB;
-   }
-
-   public static glq i() {
-      return bC;
-   }
-
-   public static glq s(alp $$0) {
-      return glq.a.be.apply($$0, aB);
-   }
-
-   public static glq j() {
-      return bD;
-   }
-
-   public static glq k() {
-      return bE;
-   }
-
-   public static glq l() {
-      return bF;
-   }
-
-   public static glq m() {
-      return bG;
-   }
-
-   public static glq t(alp $$0) {
-      return bH.apply($$0);
-   }
-
-   public static glq u(alp $$0) {
-      return bI.apply($$0);
-   }
-
-   public static glq n() {
-      return bJ;
-   }
-
-   public static glq v(alp $$0) {
-      return bK.apply($$0);
-   }
-
-   public static glq w(alp $$0) {
-      return bL.apply($$0);
-   }
-
-   public static glq x(alp $$0) {
-      return bM.apply($$0);
-   }
-
-   public static glq y(alp $$0) {
-      return bN.apply($$0);
-   }
-
-   public static glq o() {
-      return bO;
-   }
-
-   public static glq z(alp $$0) {
-      return bP.apply($$0);
-   }
-
-   public static glq p() {
-      return bQ;
-   }
-
-   public static glq q() {
-      return bR;
-   }
-
-   public static glq r() {
-      return bS;
-   }
-
-   private static glq.b aa() {
-      return glq.b.a().a(aw).a(ag).a(aq).a(i).a(aS).a(true);
-   }
-
-   public static glq s() {
-      return bT;
-   }
-
-   public static glq t() {
-      return bU;
-   }
-
-   public static glq u() {
-      return bV;
-   }
-
-   private static glq.a a(boolean $$0, boolean $$1) {
-      return a("clouds", fgj.f, fgq.c.h, 786432, false, false, glq.b.a().a(aj).a(i).a($$1 ? aA : aB).a($$0 ? aI : aG).a(aT).a(true));
-   }
-
-   public static glq v() {
-      return bW;
-   }
-
-   public static glq w() {
-      return bX;
-   }
-
-   public static glq x() {
-      return bY;
-   }
-
-   public static glq y() {
-      return bb;
-   }
-
-   public static glq z() {
-      return bc;
-   }
-
-   public static glq A() {
-      return bd;
-   }
-
-   public static glq a(double $$0) {
-      return bZ.apply($$0);
-   }
-
-   public static glq B() {
-      return ca;
-   }
-
-   public static glq C() {
-      return cb;
-   }
-
-   public static glq D() {
-      return cc;
-   }
-
-   public static glq E() {
-      return cd;
-   }
-
-   public static glq F() {
-      return ce;
-   }
-
-   private static glq b(boolean $$0) {
-      return a(
-         "world_border",
-         fgj.i,
-         fgq.c.h,
-         1536,
-         false,
-         false,
-         glq.b.a().a(q).a(new glp.n(gmh.a, bay.b, false)).a(h).a(aw).a(aS).a($$0 ? aG : aH).a(aN).a(aB).a(false)
-      );
-   }
-
-   public static glq a(boolean $$0) {
-      return $$0 ? cg : cf;
-   }
-
-   public static glq A(alp $$0) {
-      return ch.apply($$0);
-   }
-
-   public static glq B(alp $$0) {
-      return ci.apply($$0);
-   }
-
-   private static Function<alp, glq> c(boolean $$0) {
-      return ae.b(
-         $$1 -> a(
-               "weather", fgj.d, fgq.c.h, 1536, false, false, glq.b.a().a(u).a(new glp.n($$1, bay.b, false)).a(i).a(aS).a(aw).a($$0 ? aG : aH).a(aB).a(false)
-            )
-      );
-   }
-
-   public static glq f(alp $$0, boolean $$1) {
-      return ($$1 ? cj : ck).apply($$0);
-   }
-
-   public static glq G() {
-      return cl;
-   }
-
-   public static glq H() {
-      return cm;
-   }
-
-   public static glq I() {
-      return cn;
-   }
-
-   public static glq J() {
-      return co;
-   }
-
-   public static glq C(alp $$0) {
-      return cp.apply($$0);
-   }
-
-   public static glq D(alp $$0) {
-      return cq.apply($$0);
-   }
-
-   public static glq E(alp $$0) {
-      return cr.apply($$0);
-   }
-
-   public static glq K() {
-      return cs;
-   }
-
-   public static glq L() {
-      return ct;
-   }
-
-   public static glq F(alp $$0) {
-      return cu.apply($$0);
-   }
-
-   public static glq G(alp $$0) {
-      return cv.apply($$0);
-   }
-
-   public static glq M() {
-      return cw;
-   }
-
-   public static glq N() {
-      return cx;
-   }
-
-   public static glq O() {
-      return cy;
-   }
-
-   public static glq H(alp $$0) {
-      return cz.apply($$0);
-   }
-
-   public static glq I(alp $$0) {
-      return cA.apply($$0);
-   }
-
-   public static glq J(alp $$0) {
-      return cB.apply($$0);
-   }
-
-   public static glq P() {
-      return cC;
-   }
-
-   public glq(String $$0, fgq $$1, fgq.c $$2, int $$3, boolean $$4, boolean $$5, Runnable $$6, Runnable $$7) {
-      super($$0, $$6, $$7);
-      this.cE = $$1;
-      this.cF = $$2;
-      this.cG = $$3;
-      this.cH = $$4;
-      this.cI = $$5;
-   }
-
-   static glq.a a(String $$0, fgq $$1, fgq.c $$2, int $$3, glq.b $$4) {
-      return a($$0, $$1, $$2, $$3, false, false, $$4);
-   }
-
-   private static glq.a a(String $$0, fgq $$1, fgq.c $$2, int $$3, boolean $$4, boolean $$5, glq.b $$6) {
-      return new glq.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
-
-   public void a(fgk $$0) {
-      this.a();
-      fgh.a($$0);
-      this.b();
-   }
-
-   @Override
-   public String toString() {
-      return this.b;
-   }
-
-   public static List<glq> Q() {
-      return cD;
-   }
-
-   public int R() {
-      return this.cG;
-   }
-
-   public fgq S() {
-      return this.cE;
-   }
-
-   public fgq.c T() {
-      return this.cF;
-   }
-
-   public Optional<glq> U() {
-      return Optional.empty();
-   }
-
-   public boolean V() {
-      return false;
-   }
-
-   public boolean W() {
-      return this.cH;
-   }
-
-   public boolean X() {
-      return !this.cF.l;
-   }
-
-   public boolean Y() {
-      return this.cI;
-   }
-
-   static final class a extends glq {
-      static final BiFunction<alp, glp.c, glq> be = ae.a(
-         ($$0, $$1) -> glq.a("outline", fgj.j, fgq.c.h, 1536, glq.b.a().a(T).a(new glp.n($$0, bay.b, false)).a($$1).a(aC).a(aP).a(glq.c.b))
-      );
-      private final glq.b bf;
-      private final Optional<glq> bg;
-      private final boolean bh;
-
-      a(String $$0, fgq $$1, fgq.c $$2, int $$3, boolean $$4, boolean $$5, glq.b $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, () -> $$6.o.forEach(glp::a), () -> $$6.o.forEach(glp::b));
-         this.bf = $$6;
-         this.bg = $$6.n == glq.c.c ? $$6.a.c().map($$1x -> be.apply($$1x, $$6.e)) : Optional.empty();
-         this.bh = $$6.n == glq.c.b;
-      }
-
-      @Override
-      public Optional<glq> U() {
-         return this.bg;
-      }
-
-      @Override
-      public boolean V() {
-         return this.bh;
-      }
-
-      protected final glq.b Z() {
-         return this.bf;
-      }
-
-      @Override
-      public String toString() {
-         return "RenderType[" + this.b + ":" + this.bf + "]";
+   private static boolean c;
+
+   public static gmh a(dwx $$0) {
+      djm $$1 = $$0.b();
+      if ($$1 instanceof dny) {
+         return c ? gmh.d() : gmh.c();
+      } else {
+         gmh $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gmh.c();
       }
    }
 
-   protected static final class b {
-      final glp.e a;
-      private final glp.m b;
-      private final glp.p c;
-      private final glp.d d;
-      final glp.c e;
-      private final glp.g f;
-      private final glp.l g;
-      private final glp.f h;
-      private final glp.k i;
-      private final glp.o j;
-      private final glp.q k;
-      private final glp.h l;
-      private final glp.b m;
-      final glq.c n;
-      final ImmutableList<glp> o;
-
-      b(
-         glp.e $$0,
-         glp.m $$1,
-         glp.p $$2,
-         glp.d $$3,
-         glp.c $$4,
-         glp.g $$5,
-         glp.l $$6,
-         glp.f $$7,
-         glp.k $$8,
-         glp.o $$9,
-         glp.q $$10,
-         glp.h $$11,
-         glp.b $$12,
-         glq.c $$13
-      ) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-         this.j = $$9;
-         this.k = $$10;
-         this.l = $$11;
-         this.m = $$12;
-         this.n = $$13;
-         this.o = ImmutableList.of(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.m, new glp[]{this.l});
-      }
-
-      @Override
-      public String toString() {
-         return "CompositeState[" + this.o + ", outlineProperty=" + this.n + "]";
-      }
-
-      public static glq.b.a a() {
-         return new glq.b.a();
-      }
-
-      public static class a {
-         private glp.e a = glp.as;
-         private glp.m b = glp.n;
-         private glp.p c;
-         private glp.d d;
-         private glp.c e;
-         private glp.g f;
-         private glp.l g;
-         private glp.f h;
-         private glp.k i;
-         private glp.o j;
-         private glp.q k;
-         private glp.h l;
-         private glp.b m;
-
-         a() {
-            this.c = glp.c;
-            this.d = glp.aE;
-            this.e = glp.aA;
-            this.f = glp.ax;
-            this.g = glp.az;
-            this.h = glp.aJ;
-            this.i = glp.aO;
-            this.j = glp.at;
-            this.k = glp.aG;
-            this.l = glp.aV;
-            this.m = glp.aW;
-         }
-
-         public glq.b.a a(glp.e $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.m $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.p $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.d $$0) {
-            this.d = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.c $$0) {
-            this.e = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.g $$0) {
-            this.f = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.l $$0) {
-            this.g = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.f $$0) {
-            this.h = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.k $$0) {
-            this.i = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.o $$0) {
-            this.j = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.q $$0) {
-            this.k = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.h $$0) {
-            this.l = $$0;
-            return this;
-         }
-
-         public glq.b.a a(glp.b $$0) {
-            this.m = $$0;
-            return this;
-         }
-
-         public glq.b a(boolean $$0) {
-            return this.a($$0 ? glq.c.c : glq.c.a);
-         }
-
-         public glq.b a(glq.c $$0) {
-            return new glq.b(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m, $$0);
+   public static gmh b(dwx $$0) {
+      djm $$1 = $$0.b();
+      if ($$1 instanceof dny) {
+         return c ? gmh.d() : gmh.c();
+      } else {
+         gmh $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gmh.f() ? gmh.g() : $$2;
+         } else {
+            return gmh.c();
          }
       }
    }
 
-   static enum c {
-      a("none"),
-      b("is_outline"),
-      c("affects_outline");
+   public static gmh c(dwx $$0) {
+      gmh $$1 = a($$0);
+      return $$1 == gmh.f() ? gms.j() : gms.i();
+   }
 
-      private final String d;
-
-      private c(final String $$0) {
-         this.d = $$0;
+   public static gmh a(cwp $$0) {
+      if ($$0.h() instanceof cuv $$2) {
+         djm $$3 = $$2.d();
+         return c($$3.m());
+      } else {
+         return gms.j();
       }
+   }
 
-      @Override
-      public String toString() {
-         return this.d;
-      }
+   public static gmh a(esz $$0) {
+      gmh $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gmh.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

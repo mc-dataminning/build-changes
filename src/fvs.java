@@ -1,137 +1,109 @@
+import com.google.common.collect.Ordering;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class fvs extends fvi<cut> {
-   private static final alp G = alp.b("container/smithing/error");
-   private static final alp H = alp.b("container/slot/smithing_template_armor_trim");
-   private static final alp I = alp.b("container/slot/smithing_template_netherite_upgrade");
-   private static final xk J = xk.c("container.upgrade.missing_template_tooltip");
-   private static final xk K = xk.c("container.upgrade.error_tooltip");
-   private static final List<alp> L = List.of(H, I);
-   private static final int M = 44;
-   private static final int N = 15;
-   private static final int O = 28;
-   private static final int P = 21;
-   private static final int Q = 65;
-   private static final int R = 46;
-   private static final int S = 115;
-   private static final int T = 210;
-   private static final int U = 25;
-   private static final Vector3f V = new Vector3f();
-   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
-   private static final int X = 25;
-   private static final int Y = 75;
-   private static final int Z = 141;
-   private final fux aa = new fux(0);
-   private final fux ab = new fux(1);
-   private final fux ac = new fux(2);
-   @Nullable
-   private clh ad;
+public class fvs {
+   private static final aku a = aku.b("container/inventory/effect_background_large");
+   private static final aku b = aku.b("container/inventory/effect_background_small");
+   private final fuz<?> c;
+   private final flj d;
 
-   public fvs(cut $$0, cpn $$1, xk $$2) {
-      super($$0, $$1, $$2, alp.b("textures/gui/container/smithing.png"));
-      this.v = 44;
-      this.w = 15;
+   public fvs(fuz<?> $$0) {
+      this.c = $$0;
+      this.d = flj.Q();
    }
 
-   @Override
-   protected void G() {
-      this.ad = new clh(this.m.s, 0.0, 0.0, 0.0);
-      this.ad.b(true);
-      this.ad.a(true);
-      this.ad.aX = 210.0F;
-      this.ad.w(25.0F);
-      this.ad.aZ = this.ad.dM();
-      this.ad.ba = this.ad.dM();
-      this.b(this.z.b(3).g());
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$1, $$2);
    }
 
-   @Override
-   public void E() {
-      super.E();
-      Optional<cym> $$0 = this.J();
-      this.aa.a(L);
-      this.ab.a($$0.map(cym::d).orElse(List.of()));
-      this.ac.a($$0.map(cym::o).orElse(List.of()));
+   public boolean a() {
+      int $$0 = this.c.C + this.c.s + 2;
+      int $$1 = this.c.n - $$0;
+      return $$1 >= 32;
    }
 
-   private Optional<cym> J() {
-      cxg $$0 = this.z.b(0).g();
-      return !$$0.f() && $$0.h() instanceof cym $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.aa.a(this.z, $$0, $$1, this.C, this.D);
-      this.ab.a(this.z, $$0, $$1, this.C, this.D);
-      this.ac.a(this.z, $$0, $$1, this.C, this.D);
-      fvh.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
-   }
-
-   @Override
-   public void a(cst $$0, int $$1, cxg $$2) {
-      if ($$1 == 3) {
-         this.b($$2);
-      }
-   }
-
-   private void b(cxg $$0) {
-      if (this.ad != null) {
-         for (bvj $$1 : bvj.i) {
-            this.ad.a($$1, cxg.j);
+   private void a(fod $$0, int $$1, int $$2) {
+      int $$3 = this.c.C + this.c.s + 2;
+      int $$4 = this.c.n - $$3;
+      Collection<btp> $$5 = this.d.t.eB();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
          }
 
-         if (!$$0.f()) {
-            dfl $$2 = $$0.a(ku.D);
-            bvj $$3 = $$2 != null ? $$2.a() : bvj.b;
-            this.ad.a($$3, $$0.v());
-         }
-      }
-   }
+         Iterable<btp> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.c.D;
+            btp $$10 = null;
 
-   @Override
-   protected void c(fnl $$0, int $$1, int $$2) {
-      if (this.K()) {
-         $$0.a(glq::H, G, $$1 + 65, $$2 + 46, 28, 21);
-      }
-   }
+            for (btp $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
 
-   private void d(fnl $$0, int $$1, int $$2) {
-      Optional<xk> $$3 = Optional.empty();
-      if (this.K() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
-         $$3 = Optional.of(K);
-      }
-
-      if (this.B != null) {
-         cxg $$4 = this.z.b(0).g();
-         cxg $$5 = this.B.g();
-         if ($$4.f()) {
-            if (this.B.d == 0) {
-               $$3 = Optional.of(J);
+               $$9 += $$7;
             }
-         } else if ($$4.h() instanceof cym $$6 && $$5.f()) {
-            if (this.B.d == 1) {
-               $$3 = Optional.of($$6.b());
-            } else if (this.B.d == 2) {
-               $$3 = Optional.of($$6.c());
+
+            if ($$10 != null) {
+               List<wo> $$12 = List.of(this.a($$10), btq.a($$10, 1.0F, this.d.s.u().f()));
+               $$0.a(this.c.B(), $$12, Optional.empty(), $$1, $$2);
             }
          }
       }
-
-      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
    }
 
-   private boolean K() {
-      return this.z.m();
+   private void a(fod $$0, int $$1, int $$2, Iterable<btp> $$3, boolean $$4) {
+      int $$5 = this.c.D;
+
+      for (btp $$6 : $$3) {
+         if ($$4) {
+            $$0.a(gmh::H, a, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(gmh::H, b, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
+      }
+   }
+
+   private void b(fod $$0, int $$1, int $$2, Iterable<btp> $$3, boolean $$4) {
+      hfi $$5 = this.d.aG();
+      int $$6 = this.c.D;
+
+      for (btp $$7 : $$3) {
+         jr<btn> $$8 = $$7.c();
+         hej $$9 = $$5.a($$8);
+         $$0.a(gmh::H, $$9, $$1 + ($$4 ? 6 : 7), $$6 + 7, 18, 18);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(fod $$0, int $$1, int $$2, Iterable<btp> $$3) {
+      int $$4 = this.c.D;
+
+      for (btp $$5 : $$3) {
+         wo $$6 = this.a($$5);
+         $$0.b(this.c.B(), $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         wo $$7 = btq.a($$5, 1.0F, this.d.s.u().f());
+         $$0.b(this.c.B(), $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private wo a(btp $$0) {
+      xc $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(wn.v).b(wo.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

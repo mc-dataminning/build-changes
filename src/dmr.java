@@ -1,89 +1,111 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public class dmr extends djp implements dqa {
+public class dmr extends djm {
    public static final MapCodec<dmr> a = b(dmr::new);
+   private static final int c = 2;
+   private static final int d = 5;
+   private static final int e = 3600;
+   private static final int f = 12000;
+   protected static final fbu b = djm.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int g = 3600;
+   private static int h = 12000;
 
    @Override
    public MapCodec<dmr> a() {
       return a;
    }
 
-   protected dmr(dxn.d $$0) {
+   public dmr(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dwj($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
-      return a($$2, dus.w, $$0.C ? dwj::a : dwj::b);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b;
    }
 
    @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
-      duq $$4 = $$1.c_($$2);
-      if ($$4 instanceof dwj) {
-         int $$5 = ((dwj)$$4).f();
-
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
-
-            $$1.a(ls.ae, $$7, $$8, $$9, $$10, $$11, $$12);
-         }
-      }
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      return a($$1, $$2.e());
    }
 
    @Override
-   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
-      return cxg.j;
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.H_()));
+   }
+
+   private static int a(azh $$0) {
+      return $$0.b(g, h);
    }
 
    @Override
-   protected boolean a(dxo $$0, etp $$1) {
-      return false;
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      return !this.a($$0, $$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, bvb $$3) {
-      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dwj $$5 && !$$5.c()) {
-         $$3.a(this, $$2);
-         dwj.c($$1, $$2, $$0, $$5);
-      }
-   }
-
-   @Nullable
-   @Override
-   public euq a(arx $$0, bvb $$1, jh $$2) {
-      if ($$0.c_($$2) instanceof dwj $$4) {
-         fbr $$6 = $$4.a($$0, $$2);
-         if ($$6 == null) {
-            return null;
-         } else {
-            return $$1 instanceof cqr
-               ? new euq($$0, $$6, fbr.c, 0.0F, 0.0F, Set.of(), euq.c)
-               : new euq($$0, $$6, fbr.c, 0.0F, 0.0F, bwl.a(bwl.l, bwl.k), euq.c);
-         }
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((dgi)$$1, $$2);
       } else {
-         return null;
+         this.a($$1, $$2, $$3);
       }
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, buk $$3) {
+      if ($$3.aq().equals(bur.Y)) {
+         this.a($$1, $$2);
+      }
+   }
+
+   private static boolean a(dfn $$0, ji $$1) {
+      esz $$2 = $$0.b_($$1);
+      esz $$3 = $$0.b_($$1.d());
+      return $$2.a() == eta.c && $$3.a() == eta.a;
+   }
+
+   private void a(arc $$0, ji $$1, azh $$2) {
+      this.a((dgi)$$0, $$1);
+      $$0.a(null, $$1, awa.ki, awb.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
+   }
+
+   private void a(dgi $$0, ji $$1) {
+      $$0.b($$1, false);
+   }
+
+   private void b(arc $$0, ji $$1, azh $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         ciu $$5 = bur.bu.a($$0, buq.e);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.aj();
+            $$0.b($$5);
+         }
+      }
+   }
+
+   private double b(azh $$0) {
+      double $$1 = 0.2F;
+      return ayz.a($$0.j(), 0.2F, 0.7999999970197678);
+   }
+
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
+   }
+
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

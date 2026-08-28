@@ -1,42 +1,44 @@
 import java.util.EnumSet;
 
-public class cdj extends ccv {
-   private final bwf a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
+public class cdj extends cce {
+   private final bwd a;
 
-   public cdj(bwf $$0, double $$1) {
+   public cdj(bwd $$0) {
       this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(ccv.a.a));
+      this.a(EnumSet.of(cce.a.c, cce.a.a));
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.gp();
    }
 
    @Override
    public boolean b() {
-      if (this.a.ak()) {
+      if (!this.a.p()) {
+         return false;
+      } else if (this.a.bm()) {
+         return false;
+      } else if (!this.a.aJ()) {
          return false;
       } else {
-         fbr $$0 = cgs.a(this.a, 16, 7, fbr.c(this.a.fX()), (float) (Math.PI / 2));
+         bvg $$0 = this.a.ag_();
          if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
             return true;
+         } else {
+            return this.a.g((buk)$$0) < 144.0 && $$0.eq() != null ? false : this.a.gp();
          }
       }
    }
 
    @Override
-   public boolean c() {
-      return !this.a.L().m();
+   public void d() {
+      this.a.L().m();
+      this.a.y(true);
    }
 
    @Override
-   public void d() {
-      this.a.L().a(this.b, this.c, this.d, this.e);
+   public void e() {
+      this.a.y(false);
    }
 }

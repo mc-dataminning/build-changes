@@ -1,78 +1,8 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hcp implements avm {
-   private static final Logger a = LogUtils.getLogger();
-   private static final hco b = new hco("US", "English", false);
-   private Map<String, hco> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<hcl> e;
+public interface hcp {
+   float a(cwp var1, @Nullable gfy var2, @Nullable bvg var3, int var4);
 
-   public hcp(String $$0, Consumer<hcl> $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   private static Map<String, hco> a(Stream<atw> $$0) {
-      Map<String, hco> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            hdb $$2 = $$1x.a(hdb.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(avl $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         hco $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
-      }
-
-      hcl $$4 = hcl.a($$0, $$1, $$2);
-      hcn.a($$4);
-      uh.a($$4);
-      this.e.accept($$4);
-   }
-
-   public void a(String $$0) {
-      this.d = $$0;
-   }
-
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, hco> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public hco b(String $$0) {
-      return this.c.get($$0);
-   }
+   MapCodec<? extends hcp> a();
 }

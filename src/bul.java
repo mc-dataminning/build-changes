@@ -1,24 +1,27 @@
-class bul extends bue {
-   protected bul(buf $$0, int $$1, lq $$2) {
-      super($$0, $$1, $$2);
+import java.util.List;
+
+public enum bul {
+   a(bul.a.c),
+   b(bul.a.b),
+   c(bul.a.c),
+   d(bul.a.d);
+
+   private final bul.a e;
+
+   private bul(final bul.a $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 1;
+   public List<fba> a(float $$0, float $$1) {
+      return this.e.create($$0, $$1);
    }
 
-   @Override
-   public boolean a(arx $$0, bvx $$1, int $$2) {
-      if ($$1 instanceof ary $$3 && !$$1.aa_()) {
-         jh $$4 = $$3.ag();
-         if ($$4 != null) {
-            $$0.B().a($$3, $$4);
-            $$3.af();
-            return false;
-         }
-      }
+   public interface a {
+      List<fba> a = List.of(fba.c);
+      bul.a b = ($$0, $$1) -> a;
+      bul.a c = ($$0, $$1) -> List.of(new fba(0.0, (double)$$1, 0.0));
+      bul.a d = ($$0, $$1) -> List.of(new fba(0.0, (double)$$1 / 2.0, 0.0));
 
-      return true;
+      List<fba> create(float var1, float var2);
    }
 }

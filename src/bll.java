@@ -1,17 +1,17 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bll extends bkb {
+public class bll extends bjk {
    public bll(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("minecraft:zombie_pigman");
-      $$0.register($$1, "minecraft:zombified_piglin", () -> bkc.a($$0));
+      $$0.register($$1, "minecraft:chest_boat", $$1x -> DSL.optionalFields("Items", DSL.list(bhw.t.in($$0))));
       return $$1;
    }
 }

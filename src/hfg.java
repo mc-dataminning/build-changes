@@ -1,52 +1,9 @@
-public class hfg {
-   public static class a extends hem {
-      private final gkc n;
-
-      protected a(gkc $$0, awu $$1) {
-         super($$1, aww.i, hfd.t());
-         this.n = $$0;
-         this.i = false;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (this.n.dR() || !this.n.bo()) {
-            this.n();
-         }
-      }
+public class hfg extends hfn {
+   public hfg(hek $$0) {
+      super($$0, aku.b("textures/atlas/map_decorations.png"), aku.b("map_decorations"));
    }
 
-   public static class b extends hem {
-      public static final int n = 40;
-      private final gkc o;
-      private int p;
-
-      public b(gkc $$0) {
-         super(awv.z, aww.i, hfd.t());
-         this.o = $$0;
-         this.i = true;
-         this.j = 0;
-         this.d = 1.0F;
-         this.l = true;
-      }
-
-      @Override
-      public void q() {
-         if (!this.o.dR() && this.p >= 0) {
-            if (this.o.bo()) {
-               this.p++;
-            } else {
-               this.p -= 2;
-            }
-
-            this.p = Math.min(this.p, 40);
-            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
-         } else {
-            this.n();
-         }
-      }
+   public hej a(eun $$0) {
+      return this.a($$0.a());
    }
 }

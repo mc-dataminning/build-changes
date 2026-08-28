@@ -1,8 +1,8 @@
-public interface aji extends ahc {
-   @Override
-   default wf b() {
-      return wf.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ajf var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aji {
 }

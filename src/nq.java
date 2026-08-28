@@ -1,85 +1,61 @@
 import java.util.function.BiConsumer;
 
-public record nq(js.a a) implements nf {
+public record nq(jt.a a) implements ng {
    @Override
-   public void generate(BiConsumer<alo<ewn>, ewn.a> $$0) {
+   public void generate(BiConsumer<akt<evw>, evw.a> $$0) {
+      jt.b<dhk> $$1 = this.a.d(mc.aI);
       $$0.accept(
-         ewe.aq,
-         ewn.b()
+         evn.am,
+         evw.b()
             .a(
-               ewm.a()
-                  .a(fak.a(1.0F))
-                  .a(ewv.a(cxk.vE).a(10))
-                  .a(ewv.a(cxk.vD).a(10))
-                  .a(ewv.a(cxk.sZ).a(10))
-                  .a(ewv.a(cxk.pY).a(10))
-                  .a(ewv.a(cxk.tb).a(10))
-                  .a(ewv.a(cxk.pX).a(10))
-                  .a(ewv.a(cxk.ov).a(2))
+               evv.a()
+                  .a(ezt.a(1.0F))
+                  .a(ewk.a(evn.an).a(10).b(-2))
+                  .a(ewk.a(evn.ao).a(5).b(2).a(ezd.a(evr.b.a, bx.a.a().a(cd.a(true)))))
+                  .a(ewk.a(evn.ap).a(85).b(-1))
             )
       );
-      $$0.accept(ewe.ar, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.qh)).a(ewv.a(cxk.qi)).a(ewv.a(cxk.qj)).a(ewv.a(cxk.qk))));
-      $$0.accept(ewe.as, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.vB)).a(ewv.a(cxk.ta)).a(ewv.a(cxk.qD)).a(ewv.a(cxk.sY)).a(ewv.a(cxk.vO))));
-      $$0.accept(ewe.at, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.vi)).a(ewv.a(cxk.rv))));
-      $$0.accept(ewe.au, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.me)).a(ewv.a(cxk.pg))));
-      $$0.accept(ewe.av, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.qc)).a(ewv.a(cxk.vs)).a(ewv.a(cxk.sP))));
-      $$0.accept(ewe.aw, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.rW)).a(ewv.a(cxk.rX))));
+      $$0.accept(evn.ap, a());
       $$0.accept(
-         ewe.ax,
-         ewn.b()
+         evn.an,
+         evw.b()
             .a(
-               ewm.a()
-                  .a(fak.a(1.0F))
-                  .a(ewv.a(cxk.pb).a(26))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.n)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.q)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.I)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.y)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.A)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.i)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.F)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.l)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.w)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.g)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.e)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.L)))
-                  .a(ewv.a(cxk.wq).a(eyn.a(far.a(0.0F, 1.0F))).a(eyt.a(czg.C)))
+               evv.a()
+                  .a(ewe.a(djo.fB).a(17))
+                  .a(ewe.a(cwt.qg).a(10).a(exx.a(faa.a(0.0F, 0.9F))))
+                  .a(ewe.a(cwt.rk).a(10))
+                  .a(ewe.a(cwt.sw).a(10))
+                  .a(ewe.a(cwt.ti).a(10).a(eyc.a(cyp.a)))
+                  .a(ewe.a(cwt.pX).a(5))
+                  .a(ewe.a(cwt.rS).a(2).a(exx.a(faa.a(0.0F, 0.9F))))
+                  .a(ewe.a(cwt.oY).a(10))
+                  .a(ewe.a(cwt.pV).a(5))
+                  .a(ewe.a(cwt.sc).a(1).a(exw.a(ezt.a(10.0F))))
+                  .a(ewe.a(djo.gc).a(10))
+                  .a(ewe.a(cwt.tb).a(10))
+                  .a(ewe.a(djo.nB).a(eyy.a(di.a.a().a(jv.a($$1.b(dhr.y), $$1.b(dhr.z), $$1.b(dhr.A))))).a(10))
             )
       );
-      $$0.accept(ewe.ay, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.rk))));
-      $$0.accept(ewe.az, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.rw))));
-      $$0.accept(ewe.aA, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.fl))));
       $$0.accept(
-         ewe.aB,
-         ewn.b()
+         evn.ao,
+         evw.b()
             .a(
-               ewm.a()
-                  .a(fak.a(1.0F))
-                  .a(ewv.a(cxk.db))
-                  .a(ewv.a(cxk.dc))
-                  .a(ewv.a(cxk.dd))
-                  .a(ewv.a(cxk.de))
-                  .a(ewv.a(cxk.df))
-                  .a(ewv.a(cxk.dg))
-                  .a(ewv.a(cxk.dh))
-                  .a(ewv.a(cxk.di))
-                  .a(ewv.a(cxk.dj))
-                  .a(ewv.a(cxk.dk))
-                  .a(ewv.a(cxk.dl))
-                  .a(ewv.a(cxk.dm))
-                  .a(ewv.a(cxk.dn))
-                  .a(ewv.a(cxk.do))
-                  .a(ewv.a(cxk.dp))
-                  .a(ewv.a(cxk.dq))
+               evv.a()
+                  .a(ewe.a(cwt.vL))
+                  .a(ewe.a(cwt.on))
+                  .a(ewe.a(cwt.pa).a(exx.a(faa.a(0.0F, 0.25F))).a(ewv.a(this.a, ezt.a(30.0F))))
+                  .a(ewe.a(cwt.rS).a(exx.a(faa.a(0.0F, 0.25F))).a(ewv.a(this.a, ezt.a(30.0F))))
+                  .a(ewe.a(cwt.rw).a(ewv.a(this.a, ezt.a(30.0F))))
+                  .a(ewe.a(cwt.wT))
             )
       );
-      $$0.accept(ewe.aC, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.py)).a(ewv.a(cxk.pz)).a(ewv.a(cxk.pA)).a(ewv.a(cxk.px))));
-      $$0.accept(ewe.aD, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.pz)).a(ewv.a(cxk.pE)).a(ewv.a(cxk.pJ))));
-      $$0.accept(ewe.aE, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.qa))));
-      $$0.accept(ewe.aF, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.du))));
-      $$0.accept(ewe.aG, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.wi)).a(ewv.a(cxk.wj))));
-      $$0.accept(ewe.aH, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.rx).a(1)).a(ewt.b().a(699))));
-      $$0.accept(ewe.aI, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.ry))));
-      $$0.accept(ewe.aJ, ewn.b().a(ewm.a().a(fak.a(1.0F)).a(ewv.a(cxk.oV))));
+   }
+
+   public static evw.a a() {
+      return evw.b().a(evv.a().a(ewe.a(cwt.rW).a(60)).a(ewe.a(cwt.rX).a(25)).a(ewe.a(cwt.rY).a(2)).a(ewe.a(cwt.rZ).a(13)));
+   }
+
+   public jt.a b() {
+      return this.a;
    }
 }

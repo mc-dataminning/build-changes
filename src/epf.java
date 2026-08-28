@@ -1,58 +1,53 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class epf {
+   public static class a extends enq {
+      public a(ji $$0) {
+         super(eod.aa, 0, new ene($$0));
+      }
 
-public class epf extends epl {
-   public static final MapCodec<epf> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(enh.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, epf::new)
-   );
-   private final jq<enh> b;
-   private final um c;
+      public a(tq $$0) {
+         super(eod.aa, $$0);
+      }
 
-   protected epf(jq<enh> $$0, epn.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
-   }
+      @Override
+      protected void a(eoc $$0, tq $$1) {
+      }
 
-   private um b() {
-      um $$0 = new um();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dvt.a.a.c());
-      return $$0;
-   }
+      @Override
+      public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5, ji $$6) {
+         int $$7 = $$0.a(ecs.a.c, this.f.h(), this.f.j());
+         ji.a $$8 = new ji.a(this.f.h(), $$7, this.f.j());
 
-   @Override
-   public kl a(esg $$0, dqv $$1) {
-      return kl.h;
-   }
+         while ($$8.v() > $$0.L_()) {
+            dwx $$9 = $$0.a_($$8);
+            dwx $$10 = $$0.a_($$8.e());
+            if ($$10 == djo.bc.m() || $$10 == djo.b.m() || $$10 == djo.g.m() || $$10 == djo.c.m() || $$10 == djo.e.m()) {
+               dwx $$11 = !$$9.l() && !this.b($$9) ? $$9 : djo.L.m();
 
-   @Override
-   public List<esf.a> a(esg $$0, jh $$1, dqv $$2, bac $$3) {
-      return List.of(esf.a.a(new esf.d($$1, dkf.pD.m().b(doh.b, jo.a(jm.a, jm.d)), this.c)));
-   }
+               for (jn $$12 : jn.values()) {
+                  ji $$13 = $$8.a($$12);
+                  dwx $$14 = $$0.a_($$13);
+                  if ($$14.l() || this.b($$14)) {
+                     ji $$15 = $$13.e();
+                     dwx $$16 = $$0.a_($$15);
+                     if (($$16.l() || this.b($$16)) && $$12 != jn.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
 
-   @Override
-   public env a(esg $$0, jh $$1, dqv $$2) {
-      kl $$3 = this.a($$0, $$2);
-      return new env($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
+               this.f = new ene($$8);
+               this.a($$0, $$4, $$3, $$8, evn.F, null);
+               return;
+            }
 
-   @Override
-   public boolean a(esg $$0, dhx $$1, dhv $$2, dzk $$3, jh $$4, jh $$5, dqv $$6, env $$7, bac $$8, erp $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
+            $$8.e(0, -1, 0);
+         }
+      }
 
-   @Override
-   public epm<?> a() {
-      return epm.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+      private boolean b(dwx $$0) {
+         return $$0 == djo.J.m() || $$0 == djo.K.m();
+      }
    }
 }

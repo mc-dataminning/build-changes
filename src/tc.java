@@ -1,53 +1,41 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Streams;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.util.concurrent.CompletableFuture;
 
-public class tc {
-   private static final int a = 50;
+public class tc implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
 
-   public static Collection<tb> a(Collection<ub> $$0, arx $$1) {
-      Map<String, List<ub>> $$2 = $$0.stream().collect(Collectors.groupingBy(ub::b));
-      return $$2.entrySet()
-         .stream()
-         .flatMap(
-            $$1x -> {
-               String $$2x = (String)$$1x.getKey();
-               List<ub> $$3 = (List<ub>)$$1x.getValue();
-               return Streams.mapWithIndex(
-                  Lists.partition($$3, 50).stream(), ($$2xx, $$3x) -> a($$2xx.stream().map($$1xxx -> a($$1xxx, 0, $$1)).toList(), $$2x, $$3x)
-               );
-            }
-         )
-         .toList();
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (sn.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = wo.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+      }
    }
 
-   public static th a(ub $$0, int $$1, arx $$2) {
-      return new th($$0, tx.a($$1), $$2, tu.a());
+   public static tc a() {
+      return new tc();
    }
 
-   public static tk.b a() {
-      return a(50);
+   public static String a(CommandContext<ex> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
-   public static tk.b a(int $$0) {
-      return $$1 -> {
-         Map<String, List<th>> $$2 = $$1.stream().filter(Objects::nonNull).collect(Collectors.groupingBy($$0xx -> $$0xx.v().b()));
-         return $$2.entrySet().stream().flatMap($$1x -> {
-            String $$2x = (String)$$1x.getKey();
-            List<th> $$3 = (List<th>)$$1x.getValue();
-            return Streams.mapWithIndex(Lists.partition($$3, $$0).stream(), ($$1xx, $$2xx) -> a(List.copyOf($$1xx), $$2x, $$2xx));
-         }).toList();
-      };
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return fc.b(sn.b().stream(), $$1);
    }
 
-   public static tb a(Collection<th> $$0, String $$1, long $$2) {
-      Consumer<arx> $$3 = tj.c($$1);
-      Consumer<arx> $$4 = tj.d($$1);
-      return new tb($$1 + ":" + $$2, $$0, $$3, $$4);
+   public Collection<String> getExamples() {
+      return a;
    }
 }

@@ -1,10 +1,7 @@
-public class gyx extends gyo {
-   public cie.b a;
-   public float b;
-   public gcf.a c;
+public class gyx extends gzi {
+   public final hbl i = new hbl();
 
-   public gyx() {
-      this.a = cie.b.a;
-      this.c = gcf.a.a;
+   public static void a(bvg $$0, gyx $$1, hbj $$2) {
+      $$2.a($$1.i, $$0.eZ(), cwn.h, false, $$0);
    }
 }

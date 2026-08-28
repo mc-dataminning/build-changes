@@ -1,27 +1,36 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ezt {
-   public static final ezs a = a("inverted", ezo.a);
-   public static final ezs b = a("any_of", ezf.a);
-   public static final ezs c = a("all_of", eze.a);
-   public static final ezs d = a("random_chance", ezw.a);
-   public static final ezs e = a("random_chance_with_enchanted_bonus", ezx.a);
-   public static final ezs f = a("entity_properties", ezu.a);
-   public static final ezs g = a("killed_by_player", ezv.a);
-   public static final ezs h = a("entity_scores", ezm.a);
-   public static final ezs i = a("block_state_property", ezq.a);
-   public static final ezs j = a("match_tool", ezy.a);
-   public static final ezs k = a("table_bonus", ezg.a);
-   public static final ezs l = a("survives_explosion", ezn.a);
-   public static final ezs m = a("damage_source_properties", ezk.a);
-   public static final ezs n = a("location_check", ezp.a);
-   public static final ezs o = a("weather_check", fab.a);
-   public static final ezs p = a("reference", ezi.a);
-   public static final ezs q = a("time_check", ezz.a);
-   public static final ezs r = a("value_check", faa.a);
-   public static final ezs s = a("enchantment_active_check", ezl.a);
+public record ezt(float c) implements ezw {
+   public static final MapCodec<ezt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(ezt::c)).apply($$0, ezt::new));
+   public static final Codec<ezt> b = Codec.FLOAT.xmap(ezt::new, ezt::c);
 
-   private static ezs a(String $$0, MapCodec<? extends ezr> $$1) {
-      return kd.a(ma.F, alp.b($$0), new ezs($$1));
+   @Override
+   public ezv b() {
+      return ezx.b;
+   }
+
+   @Override
+   public float b(evr $$0) {
+      return this.c;
+   }
+
+   public static ezt a(float $$0) {
+      return new ezt($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((ezt)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

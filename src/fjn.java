@@ -1,104 +1,76 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fjn extends hhs {
-   private static final xk a = xk.c("mco.selectServer.create");
-   private static final xk b = xk.c("mco.configure.world.name");
-   private static final xk c = xk.c("mco.configure.world.description");
-   private static final int C = 10;
-   private static final int D = 210;
-   private final fgw E;
-   private final frn F = new frn(this);
-   private foh G;
-   private foh H;
-   private final Runnable I;
+public class fjn extends hkx {
+   private static final Logger a = LogUtils.getLogger();
+   private static final wo b = wo.c("mco.terms.title");
+   private static final wo c = wo.c("mco.terms.sentence.1");
+   private static final wo C = wn.a().b(wo.c("mco.terms.sentence.2").c(xl.a.c(true)));
+   private final fuk D;
+   private final fhl E;
+   private boolean F;
 
-   public fjn(fgw $$0, fic $$1, boolean $$2) {
-      super(a);
-      this.E = $$0;
-      this.I = () -> this.a($$1, $$2);
+   public fjn(fuk $$0, fhl $$1) {
+      super(b);
+      this.D = $$0;
+      this.E = $$1;
    }
 
    @Override
-   public void aT_() {
-      this.F.a(this.l, this.p);
-      frr $$0 = this.F.c(frr.d()).a(10);
-      fny $$1 = fny.a(xj.j, $$0x -> this.I.run()).a();
-      $$1.j = false;
-      this.G = new foh(this.p, 210, 20, b);
-      this.G.b($$1x -> $$1.j = !bar.h($$1x));
-      this.H = new foh(this.p, 210, 20, c);
-      $$0.a(frj.a(this.p, this.G, b));
-      $$0.a(frj.a(this.p, this.H, c));
-      frr $$2 = this.F.b(frr.e().a(10));
-      $$2.a($$1);
-      $$2.a(fny.a(xj.k, $$0x -> this.aP_()).a());
-      this.F.a($$1x -> {
-         fnw var10000 = this.c($$1x);
-      });
-      this.c();
+   public void aR_() {
+      int $$0 = this.n / 4 - 2;
+      this.c(fos.a(wo.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.n / 4, g(12), $$0, 20).a());
+      this.c(fos.a(wo.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.D)).a(this.n / 2 + 4, g(12), $$0, 20).a());
    }
 
    @Override
-   protected void aG_() {
-      this.b(this.G);
-   }
-
-   @Override
-   protected void c() {
-      this.F.a();
-   }
-
-   private void a(fic $$0, boolean $$1) {
-      if (!$$0.h() && $$1) {
-         AtomicBoolean $$2 = new AtomicBoolean();
-         this.m.a(new fsk(() -> {
-            $$2.set(true);
-            this.E.h();
-            this.m.a(this.E);
-         }, xk.c("mco.upload.preparing"), xk.i()));
-         CompletableFuture.<fic>supplyAsync(() -> a($$0), ae.g()).thenAcceptAsync($$1x -> {
-            if (!$$2.get()) {
-               this.b($$1x);
-            }
-         }, this.m).exceptionallyAsync($$0x -> {
-            this.E.h();
-            xk $$3;
-            if ($$0x.getCause() instanceof fix $$2x) {
-               $$3 = $$2x.a.b();
-            } else {
-               $$3 = xk.c("mco.errorMessage.initialize.failed");
-            }
-
-            this.m.a(new fjp($$3, this.E));
-            return null;
-         }, this.m);
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.a(this.D);
+         return true;
       } else {
-         this.b($$0);
+         return super.a($$0, $$1, $$2);
       }
    }
 
-   private static fic a(fic $$0) {
-      fhb $$1 = fhb.a();
+   private void E() {
+      fgk $$0 = fgk.a();
 
       try {
-         return $$1.a(Long.valueOf($$0.a));
-      } catch (fix var3) {
-         throw new RuntimeException(var3);
+         $$0.j();
+         this.m.a(new fja(this.D, new fkg(this.D, this.E)));
+      } catch (fig var3) {
+         a.error("Couldn't agree to TOS", var3);
       }
    }
 
-   private void b(fic $$0) {
-      fla $$1 = new fla($$0.a, this.G.a(), this.H.a());
-      fjy $$2 = fjy.a(this, $$0, $$1, () -> this.m.execute(() -> {
-            fgw.g();
-            this.m.a(this.E);
-         }));
-      this.m.a($$2);
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.F) {
+         this.m.p.a(axv.s.toString());
+         af.m().a(axv.s);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.E);
+   public wo i() {
+      return wn.a(super.i(), c).b(wn.v).b(C);
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, c, this.n / 2 - 120, g(5), -1);
+      int $$4 = this.p.a(c);
+      int $$5 = this.n / 2 - 121 + $$4;
+      int $$6 = g(5);
+      int $$7 = $$5 + this.p.a(C) + 1;
+      int $$8 = $$6 + 1 + 9;
+      this.F = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
+      $$0.b(this.p, C, this.n / 2 - 120 + $$4, g(5), this.F ? 7107012 : 3368635);
    }
 }

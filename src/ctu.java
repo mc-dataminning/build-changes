@@ -1,57 +1,68 @@
-public class ctu extends cst {
-   public static final int m = 5;
-   private final bst n;
+import javax.annotation.Nullable;
 
-   public ctu(int $$0, cpn $$1) {
-      this($$0, $$1, new bth(5));
-   }
+public class ctu implements bsc, ctt {
+   private final ka<cwp> b = ka.a(1, cwp.j);
+   @Nullable
+   private dbj<?> c;
 
-   public ctu(int $$0, cpn $$1, bst $$2) {
-      super(cuc.q, $$0);
-      this.n = $$2;
-      a($$2, 5);
-      $$2.c_($$1.k);
-
-      for (int $$3 = 0; $$3 < 5; $$3++) {
-         this.a(new cuq($$2, $$3, 44 + $$3 * 18, 20));
-      }
-
-      this.c($$1, 8, 51);
+   @Override
+   public int b() {
+      return 1;
    }
 
    @Override
-   public boolean b(cpo $$0) {
-      return this.n.a($$0);
-   }
-
-   @Override
-   public cxg b(cpo $$0, int $$1) {
-      cxg $$2 = cxg.j;
-      cuq $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cxg $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return cxg.j;
-            }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return cxg.j;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cxg.j);
-         } else {
-            $$3.c();
+   public boolean c() {
+      for (cwp $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
          }
       }
 
-      return $$2;
+      return true;
    }
 
    @Override
-   public void a(cpo $$0) {
-      super.a($$0);
-      this.n.c($$0);
+   public cwp a(int $$0) {
+      return this.b.get(0);
+   }
+
+   @Override
+   public cwp a(int $$0, int $$1) {
+      return bsd.a(this.b, 0);
+   }
+
+   @Override
+   public cwp b(int $$0) {
+      return bsd.a(this.b, 0);
+   }
+
+   @Override
+   public void a(int $$0, cwp $$1) {
+      this.b.set(0, $$1);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cox $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(@Nullable dbj<?> $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public dbj<?> d() {
+      return this.c;
    }
 }

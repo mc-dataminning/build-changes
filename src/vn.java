@@ -1,27 +1,19 @@
-public interface vn {
-   void a(vh var1);
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-   void a(uk var1);
+public class vn extends ChannelInboundHandlerAdapter {
+   private final vb a;
 
-   void a(ve var1);
+   public vn(vb $$0) {
+      this.a = $$0;
+   }
 
-   void a(ur var1);
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      if ($$1 instanceof ByteBuf $$2) {
+         this.a.a($$2.readableBytes());
+      }
 
-   void a(uu var1);
-
-   void a(up var1);
-
-   void a(un var1);
-
-   void a(uj var1);
-
-   void a(uq var1);
-
-   void a(ut var1);
-
-   void a(us var1);
-
-   void a(um var1);
-
-   void a(uo var1);
+      $$0.fireChannelRead($$1);
+   }
 }

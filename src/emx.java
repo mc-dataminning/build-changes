@@ -1,30 +1,11 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
-public enum emx implements baq {
-   a(jm.b, 1, "ceiling"),
-   b(jm.a, -1, "floor");
-
-   public static final Codec<emx> c = baq.a(emx::values);
-   private final jm d;
-   private final int e;
-   private final String f;
-
-   private emx(final jm $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public jm a() {
-      return this.d;
-   }
-
-   public int b() {
-      return this.e;
-   }
+public abstract class emx extends emt {
+   protected abstract int a(azh var1, ji var2);
 
    @Override
-   public String c() {
-      return this.f;
+   public Stream<ji> a_(emr $$0, azh $$1, ji $$2) {
+      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
    }
 }

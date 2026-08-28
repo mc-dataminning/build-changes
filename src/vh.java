@@ -1,148 +1,48 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
-import java.util.Objects;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToByteEncoder;
+import java.util.zip.Deflater;
 
-public class vh implements vj {
-   private static final int b = 36;
-   public static final vl<vh> a = new vl.b<vh>() {
-      public vh a(DataInput $$0, uv $$1) throws IOException {
-         return vh.a(d($$0, $$1));
-      }
+public class vh extends MessageToByteEncoder<ByteBuf> {
+   private final byte[] a = new byte[8192];
+   private final Deflater b;
+   private int c;
 
-      @Override
-      public vg.b a(DataInput $$0, vg $$1, uv $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static String d(DataInput $$0, uv $$1) throws IOException {
-         $$1.b(36L);
-         String $$2 = $$0.readUTF();
-         $$1.a(2L, (long)$$2.length());
-         return $$2;
-      }
-
-      @Override
-      public void b(DataInput $$0, uv $$1) throws IOException {
-         vh.a($$0);
-      }
-
-      @Override
-      public String a() {
-         return "STRING";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_String";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private static final vh c = new vh("");
-   private static final char w = '"';
-   private static final char x = '\'';
-   private static final char y = '\\';
-   private static final char z = '\u0000';
-   private final String A;
-
-   public static void a(DataInput $$0) throws IOException {
-      $$0.skipBytes($$0.readUnsignedShort());
+   public vh(int $$0) {
+      this.c = $$0;
+      this.b = new Deflater();
    }
 
-   private vh(String $$0) {
-      Objects.requireNonNull($$0, "Null string not allowed");
-      this.A = $$0;
-   }
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
+      int $$3 = $$1.readableBytes();
+      if ($$3 > 8388608) {
+         throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
+      } else {
+         if ($$3 < this.c) {
+            wf.a($$2, 0);
+            $$2.writeBytes($$1);
+         } else {
+            byte[] $$4 = new byte[$$3];
+            $$1.readBytes($$4);
+            wf.a($$2, $$4.length);
+            this.b.setInput($$4, 0, $$3);
+            this.b.finish();
 
-   public static vh a(String $$0) {
-      return $$0.isEmpty() ? c : new vh($$0);
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeUTF(this.A);
-   }
-
-   @Override
-   public int a() {
-      return 36 + 2 * this.A.length();
-   }
-
-   @Override
-   public byte b() {
-      return 8;
-   }
-
-   @Override
-   public vl<vh> c() {
-      return a;
-   }
-
-   @Override
-   public String toString() {
-      return vj.super.u_();
-   }
-
-   public vh e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof vh && Objects.equals(this.A, ((vh)$$0).A);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.A.hashCode();
-   }
-
-   @Override
-   public String u_() {
-      return this.A;
-   }
-
-   @Override
-   public void a(vn $$0) {
-      $$0.a(this);
-   }
-
-   public static String b(String $$0) {
-      StringBuilder $$1 = new StringBuilder(" ");
-      char $$2 = 0;
-
-      for (int $$3 = 0; $$3 < $$0.length(); $$3++) {
-         char $$4 = $$0.charAt($$3);
-         if ($$4 == '\\') {
-            $$1.append('\\');
-         } else if ($$4 == '"' || $$4 == '\'') {
-            if ($$2 == 0) {
-               $$2 = (char)($$4 == '"' ? 39 : 34);
+            while (!this.b.finished()) {
+               int $$5 = this.b.deflate(this.a);
+               $$2.writeBytes(this.a, 0, $$5);
             }
 
-            if ($$2 == $$4) {
-               $$1.append('\\');
-            }
+            this.b.reset();
          }
-
-         $$1.append($$4);
       }
-
-      if ($$2 == 0) {
-         $$2 = '"';
-      }
-
-      $$1.setCharAt(0, $$2);
-      $$1.append($$2);
-      return $$1.toString();
    }
 
-   @Override
-   public vg.b a(vg $$0) {
-      return $$0.a(this.A);
+   public int a() {
+      return this.c;
+   }
+
+   public void a(int $$0) {
+      this.c = $$0;
    }
 }

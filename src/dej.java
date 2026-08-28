@@ -1,19 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dej {
-   Codec<dej> b = ma.aw.q().dispatch(dej::a, Function.identity());
+public record dej(jv<dcz> c, bro d) implements deh {
+   public static final MapCodec<dej> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kg.a(mc.aO).fieldOf("enchantments").forGetter(dej::b), bro.c.fieldOf("cost").forGetter(dej::c)).apply($$0, dej::new)
+   );
 
-   static MapCodec<? extends dej> a(kd<MapCodec<? extends dej>> $$0) {
-      kd.a($$0, "add", dea.a);
-      kd.a($$0, "all_of", deb.c.a);
-      kd.a($$0, "multiply", dem.a);
-      kd.a($$0, "remove_binomial", deo.a);
-      return kd.a($$0, "set", det.a);
+   @Override
+   public void a(cwp $$0, ddf.a $$1, azh $$2, bsh $$3) {
+      for (ddc $$5 : ddb.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.a, $$5.b);
+      }
    }
 
-   float a(int var1, bac var2, float var3);
+   @Override
+   public MapCodec<dej> a() {
+      return b;
+   }
 
-   MapCodec<? extends dej> a();
+   public jv<dcz> b() {
+      return this.c;
+   }
+
+   public bro c() {
+      return this.d;
+   }
 }

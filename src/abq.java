@@ -1,20 +1,45 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public class abq implements yv<abk> {
+   public static final ym<vl, abq> a = yv.a(abq::a, abq::new);
+   private final int b;
+   private final ji c;
+   private final int d;
 
-public record abq(alo<? extends kd<?>> b, List<kh.a> c) implements zr<abo> {
-   private static final zi<ByteBuf, alo<? extends kd<?>>> d = alp.b.a(alo::a, alo::a);
-   public static final zi<wh, abq> a = zi.a(d, abq::b, kh.a.a.a(zg.a()), abq::e, abq::new);
-
-   @Override
-   public zt<abq> a() {
-      return abu.b;
+   public abq(int $$0, ji $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(abo $$0) {
+   private abq(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
+      this.d = $$0.readUnsignedByte();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.l(this.d);
+   }
+
+   @Override
+   public yx<abq> a() {
+      return agd.h;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public List<kh.a> e() {
+   public int b() {
+      return this.b;
+   }
+
+   public ji e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

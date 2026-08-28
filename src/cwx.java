@@ -1,92 +1,51 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Optional;
-import java.util.function.Supplier;
+public interface cwx {
+   akt<cwv> a = a("13");
+   akt<cwv> b = a("cat");
+   akt<cwv> c = a("blocks");
+   akt<cwv> d = a("chirp");
+   akt<cwv> e = a("far");
+   akt<cwv> f = a("mall");
+   akt<cwv> g = a("mellohi");
+   akt<cwv> h = a("stal");
+   akt<cwv> i = a("strad");
+   akt<cwv> j = a("ward");
+   akt<cwv> k = a("11");
+   akt<cwv> l = a("wait");
+   akt<cwv> m = a("pigstep");
+   akt<cwv> n = a("otherside");
+   akt<cwv> o = a("5");
+   akt<cwv> p = a("relic");
+   akt<cwv> q = a("precipice");
+   akt<cwv> r = a("creator");
+   akt<cwv> s = a("creator_music_box");
 
-public class cwx extends cxc implements cyk {
-   public static final Supplier<BiMap<dkd, dkd>> a = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dkf.ry, dkf.rY)
-            .put(dkf.rz, dkf.sa)
-            .put(dkf.rA, dkf.rZ)
-            .put(dkf.rB, dkf.sb)
-            .put(dkf.rH, dkf.sf)
-            .put(dkf.rG, dkf.se)
-            .put(dkf.rF, dkf.sd)
-            .put(dkf.rE, dkf.sc)
-            .put(dkf.rX, dkf.sn)
-            .put(dkf.rW, dkf.sm)
-            .put(dkf.rV, dkf.sl)
-            .put(dkf.rU, dkf.sk)
-            .put(dkf.rT, dkf.sj)
-            .put(dkf.rS, dkf.si)
-            .put(dkf.rR, dkf.sh)
-            .put(dkf.rQ, dkf.sg)
-            .put(dkf.rL, dkf.rP)
-            .put(dkf.rK, dkf.rO)
-            .put(dkf.rJ, dkf.rN)
-            .put(dkf.rI, dkf.rM)
-            .put(dkf.so, dkf.ss)
-            .put(dkf.sp, dkf.st)
-            .put(dkf.sr, dkf.sv)
-            .put(dkf.sq, dkf.su)
-            .put(dkf.sw, dkf.sA)
-            .put(dkf.sx, dkf.sB)
-            .put(dkf.sz, dkf.sD)
-            .put(dkf.sy, dkf.sC)
-            .put(dkf.sE, dkf.sI)
-            .put(dkf.sF, dkf.sJ)
-            .put(dkf.sG, dkf.sK)
-            .put(dkf.sH, dkf.sL)
-            .put(dkf.sM, dkf.sQ)
-            .put(dkf.sN, dkf.sR)
-            .put(dkf.sO, dkf.sS)
-            .put(dkf.sP, dkf.sT)
-            .build()
-   );
-   public static final Supplier<BiMap<dkd, dkd>> b = Suppliers.memoize(() -> a.get().inverse());
-
-   public cwx(cxc.a $$0) {
-      super($$0);
+   private static akt<cwv> a(String $$0) {
+      return akt.a(mc.L, aku.b($$0));
    }
 
-   @Override
-   public bta a(daz $$0) {
-      dgz $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dxo $$3 = $$1.a_($$2);
-      return a($$3).map($$3x -> {
-         cpo $$4 = $$0.o();
-         cxg $$5 = $$0.n();
-         if ($$4 instanceof ary $$6) {
-            ao.N.a($$6, $$2, $$5);
-         }
-
-         $$5.h(1);
-         $$1.a($$2, $$3x, 11);
-         $$1.a(eck.c, $$2, eck.a.a($$4, $$3x));
-         $$1.a($$4, 3003, $$2, 0);
-         return bta.a;
-      }).orElse(bta.e);
+   private static void a(qe<cwv> $$0, akt<cwv> $$1, jr.c<avz> $$2, int $$3, int $$4) {
+      $$0.a($$1, new cwv($$2, wo.c(af.a("jukebox_song", $$1.a())), (float)$$3, $$4));
    }
 
-   public static Optional<dxo> a(dxo $$0) {
-      return Optional.ofNullable((dkd)a.get().get($$0.b())).map($$1 -> ((dkd)$$1).m($$0));
-   }
-
-   @Override
-   public boolean a(dgz $$0, dwd $$1, boolean $$2, cpo $$3) {
-      if ($$1.b(true)) {
-         $$0.a(null, 3003, $$1.aB_(), 0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(dwe $$0, cpo $$1) {
-      return true;
+   static void a(qe<cwv> $$0) {
+      a($$0, a, awa.qg, 178, 1);
+      a($$0, b, awa.qi, 185, 2);
+      a($$0, c, awa.qh, 345, 3);
+      a($$0, d, awa.qj, 185, 4);
+      a($$0, e, awa.qk, 174, 5);
+      a($$0, f, awa.ql, 197, 6);
+      a($$0, g, awa.qm, 96, 7);
+      a($$0, h, awa.qo, 150, 8);
+      a($$0, i, awa.qp, 188, 9);
+      a($$0, j, awa.qr, 251, 10);
+      a($$0, k, awa.qf, 71, 11);
+      a($$0, l, awa.qq, 238, 12);
+      a($$0, m, awa.qn, 149, 13);
+      a($$0, n, awa.qs, 195, 14);
+      a($$0, o, awa.qe, 178, 15);
+      a($$0, p, awa.qt, 218, 14);
+      a($$0, q, awa.qw, 299, 13);
+      a($$0, r, awa.qu, 176, 12);
+      a($$0, s, awa.qv, 73, 11);
    }
 }

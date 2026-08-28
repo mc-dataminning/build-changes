@@ -1,39 +1,130 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dkh extends dkd implements dkg {
-   public static final MapCodec<dkh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alo.a(mb.aL).fieldOf("feature").forGetter($$0x -> $$0x.b), t()).apply($$0, dkh::new)
-   );
-   private final alo<egb<?, ?>> b;
+public class dkh extends dnk {
+   public static final MapCodec<dkh> a = b(dkh::new);
+   public static final dxu<jn> b = dnk.aF;
+   @Nullable
+   private dxc c;
+   @Nullable
+   private dxc d;
+   @Nullable
+   private dxc e;
+   @Nullable
+   private dxc f;
+   private static final Predicate<dwx> g = $$0 -> $$0 != null && ($$0.a(djo.er) || $$0.a(djo.es));
 
    @Override
-   public MapCodec<dkh> a() {
+   public MapCodec<? extends dkh> a() {
       return a;
    }
 
-   public dkh(alo<egb<?, ?>> $$0, dxn.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected dkh(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jn.c));
    }
 
    @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
-      return $$0.a_($$1.d()).l();
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
+      }
+   }
+
+   public boolean a(dgl $$0, ji $$1) {
+      return this.b().a($$0, $$1) != null || this.r().a($$0, $$1) != null;
+   }
+
+   private void a(dgi $$0, ji $$1) {
+      dxc.b $$2 = this.q().a($$0, $$1);
+      if ($$2 != null) {
+         chv $$3 = bur.bl.a($$0, buq.k);
+         if ($$3 != null) {
+            a($$0, $$2, $$3, $$2.a(0, 2, 0).d());
+         }
+      } else {
+         dxc.b $$4 = this.y().a($$0, $$1);
+         if ($$4 != null) {
+            chj $$5 = bur.aq.a($$0, buq.k);
+            if ($$5 != null) {
+               $$5.y(true);
+               a($$0, $$4, $$5, $$4.a(1, 2, 0).d());
+            }
+         }
+      }
+   }
+
+   private static void a(dgi $$0, dxc.b $$1, buk $$2, ji $$3) {
+      a($$0, $$1);
+      $$2.b((double)$$3.u() + 0.5, (double)$$3.v() + 0.05, (double)$$3.w() + 0.5, 0.0F, 0.0F);
+      $$0.b($$2);
+
+      for (ard $$4 : $$0.a(ard.class, $$2.cR().g(5.0))) {
+         ap.o.a($$4, $$2);
+      }
+
+      b($$0, $$1);
+   }
+
+   public static void a(dgi $$0, dxc.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dxb $$4 = $$1.a($$2, $$3, 0);
+            $$0.a($$4.d(), djo.a.m(), 2);
+            $$0.c(2001, $$4.d(), djm.j($$4.a()));
+         }
+      }
+   }
+
+   public static void b(dgi $$0, dxc.b $$1) {
+      for (int $$2 = 0; $$2 < $$1.d(); $$2++) {
+         for (int $$3 = 0; $$3 < $$1.e(); $$3++) {
+            dxb $$4 = $$1.a($$2, $$3, 0);
+            $$0.b($$4.d(), djo.a);
+         }
+      }
    }
 
    @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
+   public dwx a(dag $$0) {
+      return this.m().b(b, $$0.g().g());
    }
 
    @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      $$0.K_().a(mb.aL).flatMap($$0x -> $$0x.a(this.b)).ifPresent($$3x -> ((egb)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2.d()));
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   public dkg.a ar_() {
-      return dkg.a.a;
+   private dxc b() {
+      if (this.c == null) {
+         this.c = dxd.a().a(" ", "#", "#").a('#', dxb.a(dxg.a(djo.ec))).b();
+      }
+
+      return this.c;
+   }
+
+   private dxc q() {
+      if (this.d == null) {
+         this.d = dxd.a().a("^", "#", "#").a('^', dxb.a(g)).a('#', dxb.a(dxg.a(djo.ec))).b();
+      }
+
+      return this.d;
+   }
+
+   private dxc r() {
+      if (this.e == null) {
+         this.e = dxd.a().a("~ ~", "###", "~#~").a('#', dxb.a(dxg.a(djo.cp))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.e;
+   }
+
+   private dxc y() {
+      if (this.f == null) {
+         this.f = dxd.a().a("~^~", "###", "~#~").a('^', dxb.a(g)).a('#', dxb.a(dxg.a(djo.cp))).a('~', $$0 -> $$0.a().l()).b();
+      }
+
+      return this.f;
    }
 }

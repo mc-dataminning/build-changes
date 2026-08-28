@@ -1,26 +1,5 @@
-import javax.annotation.Nullable;
-
-public class hae extends gyo {
-   private static final alp j = alp.b("textures/entity/wolf/wolf.png");
-   public boolean a;
+public class hae extends gyz {
    public boolean b;
-   public float c = (float) (Math.PI / 5);
-   public float d;
-   public float e;
-   public float f = 1.0F;
-   public alp g = j;
-   @Nullable
-   public cwd h;
-   public cxg i = cxg.j;
-
-   public float a(float $$0) {
-      float $$1 = (this.e + $$0) / 1.8F;
-      if ($$1 < 0.0F) {
-         $$1 = 0.0F;
-      } else if ($$1 > 1.0F) {
-         $$1 = 1.0F;
-      }
-
-      return azu.a($$1 * (float) Math.PI) * azu.a($$1 * (float) Math.PI * 11.0F) * 0.15F * (float) Math.PI;
-   }
+   public boolean c;
+   public boolean d;
 }

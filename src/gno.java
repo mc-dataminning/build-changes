@@ -1,53 +1,84 @@
-public class gno implements gnr<dum> {
-   private final gcc a;
-   private final gcc b;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 
-   public gno(gns.a $$0) {
-      this.a = new gcc.a($$0.a(gei.w), glq::d);
-      this.b = new gcc.a($$0.a(gei.v), glq::d);
+public record gno(gnn b, gnn c, gnn d, gnn e, gnn f, gnn g, gnn h, gnn i) {
+   public static final gno a = new gno(gnn.a, gnn.a, gnn.a, gnn.a, gnn.a, gnn.a, gnn.a, gnn.a);
+
+   public gnn a(cwn $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gnn.a;
+      };
    }
 
-   public static gep b() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      $$1.a("main", geo.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gel.a);
-      $$1.a("left_leg", geo.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gel.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
-      $$1.a("right_leg", geo.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), gel.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
-      return gep.a($$0, 64, 64);
+   public gnn a() {
+      return this.b;
    }
 
-   public static gep c() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      $$1.a("main", geo.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), gel.a);
-      $$1.a("left_leg", geo.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gel.b((float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("right_leg", geo.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), gel.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
-      return gep.a($$0, 64, 64);
+   public gnn b() {
+      return this.c;
    }
 
-   public void a(dum $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      hdp $$6 = gmb.r[$$0.c().a()];
-      dgz $$7 = $$0.i();
-      if ($$7 != null) {
-         dxo $$8 = $$0.m();
-         dml.c<? extends dum> $$9 = dml.a(dus.z, djw::i, djw::h, dlg.c, $$8, $$7, $$0.aB_(), ($$0x, $$1x) -> false);
-         int $$10 = $$9.apply(new gnu<>()).get($$4);
-         this.a($$2, $$3, $$8.c(djw.b) == dyb.a ? this.a : this.b, $$8.c(djw.aF), $$6, $$10, $$5, false);
-      } else {
-         this.a($$2, $$3, this.a, jm.d, $$6, $$4, $$5, false);
-         this.a($$2, $$3, this.b, jm.d, $$6, $$4, $$5, true);
+   public gnn c() {
+      return this.d;
+   }
+
+   public gnn d() {
+      return this.e;
+   }
+
+   public gnn e() {
+      return this.f;
+   }
+
+   public gnn f() {
+      return this.g;
+   }
+
+   public gnn g() {
+      return this.h;
+   }
+
+   public gnn h() {
+      return this.i;
+   }
+
+   protected static class a implements JsonDeserializer<gno> {
+      public gno a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         gnn $$4 = this.a($$2, $$3, cwn.c);
+         gnn $$5 = this.a($$2, $$3, cwn.b);
+         if ($$5 == gnn.a) {
+            $$5 = $$4;
+         }
+
+         gnn $$6 = this.a($$2, $$3, cwn.e);
+         gnn $$7 = this.a($$2, $$3, cwn.d);
+         if ($$7 == gnn.a) {
+            $$7 = $$6;
+         }
+
+         gnn $$8 = this.a($$2, $$3, cwn.f);
+         gnn $$9 = this.a($$2, $$3, cwn.g);
+         gnn $$10 = this.a($$2, $$3, cwn.h);
+         gnn $$11 = this.a($$2, $$3, cwn.i);
+         return new gno($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
-   }
 
-   private void a(fgl $$0, glg $$1, gcc $$2, jm $$3, hdp $$4, int $$5, int $$6, boolean $$7) {
-      $$0.a();
-      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
-      $$0.a(a.b.rotationDegrees(90.0F));
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
-      $$0.a(-0.5F, -0.5F, -0.5F);
-      fgp $$8 = $$4.a($$1, glq::d);
-      $$2.a($$0, $$8, $$5, $$6);
-      $$0.b();
+      private gnn a(JsonDeserializationContext $$0, JsonObject $$1, cwn $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gnn)$$0.deserialize($$1.get($$3), gnn.class) : gnn.a;
+      }
    }
 }

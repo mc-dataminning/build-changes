@@ -1,26 +1,13 @@
-import java.util.function.Consumer;
+import org.joml.Matrix4f;
 
-public interface frp {
-   void k(int var1);
+public class frp extends fro {
+   public static final frp b = new frp();
 
-   void l(int var1);
-
-   int D();
-
-   int E();
-
-   int y();
-
-   int w();
-
-   default fsg H() {
-      return new fsg(this.D(), this.E(), this.y(), this.w());
+   public frp() {
+      super(frm.b(aku.b("")), 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
    }
 
-   default void c(int $$0, int $$1) {
-      this.k($$0);
-      this.l($$1);
+   @Override
+   public void a(fro.b $$0, Matrix4f $$1, ffy $$2, int $$3) {
    }
-
-   void a(Consumer<fnw> var1);
 }

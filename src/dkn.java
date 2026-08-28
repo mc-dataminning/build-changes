@@ -1,35 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public abstract class dkn extends dkd {
-   protected dkn(dxn.d $$0) {
+public class dkn extends dqd implements dqs {
+   public static final MapCodec<dkn> a = b(dkn::new);
+   public static final dxo b = dxn.J;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final fbu e = djm.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final fbu f = djm.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final fbu g = djm.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+
+   @Override
+   public MapCodec<dkn> a() {
+      return a;
+   }
+
+   public dkn(dww.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(i, jn.a.b));
    }
 
    @Override
-   protected abstract MapCodec<? extends dkn> a();
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      switch ((jn.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
+      }
+   }
 
-   protected boolean b(dxo $$0, dge $$1, jh $$2) {
-      return $$0.a(axk.ah) || $$0.a(dkf.cK);
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      esz $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eta.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
    }
 
    @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      return !$$0.a($$1, $$3) ? dkf.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, eta.c, eta.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return this.b($$1.a_($$3), $$1, $$3);
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b).a(i);
    }
 
    @Override
-   protected boolean e_(dxo $$0) {
-      return $$0.y().c();
+   protected esz b_(dwx $$0) {
+      return $$0.c(b) ? eta.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      return $$1 == euf.c && !this.aH ? true : super.a($$0, $$1);
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

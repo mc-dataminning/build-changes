@@ -1,53 +1,55 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public class but {
-   private static final int a = Integer.MIN_VALUE;
-   private int b = Integer.MIN_VALUE;
+public enum but implements azv {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bus.a),
+   c(2, "offhand", bus.b),
+   d(3, "hand", $$0 -> $$0.a() == bus.a.a),
+   e(4, "feet", bus.c),
+   f(5, "legs", bus.d),
+   g(6, "chest", bus.e),
+   h(7, "head", bus.f),
+   i(8, "armor", bus::f),
+   j(9, "body", bus.g);
 
-   public void a(int $$0) {
-      this.b = $$0;
+   public static final IntFunction<but> k = axq.a($$0 -> $$0.n, values(), axq.a.a);
+   public static final Codec<but> l = azv.a(but::values);
+   public static final ym<ByteBuf, but> m = yk.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<bus> p;
+
+   private but(final int $$0, final String $$1, final Predicate<bus> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   public void b(int $$0) {
-      if (!this.b()) {
-         this.a($$0);
-      }
+   private but(final int $$0, final String $$1, final bus $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   public void a(boolean $$0, int $$1) {
-      if ($$0) {
-         this.b($$1);
-      } else {
-         this.a();
-      }
+   public static but a(bus $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
-   public void a() {
-      this.b = Integer.MIN_VALUE;
+   @Override
+   public String c() {
+      return this.o;
    }
 
-   public void a(Consumer<but> $$0) {
-      if (this.b()) {
-         $$0.accept(this);
-      }
-   }
-
-   public void a(int $$0, float $$1) {
-      if (this.b()) {
-         this.b -= (int)((float)$$0 * $$1);
-      }
-   }
-
-   public long a(float $$0) {
-      float $$1 = $$0 - (float)this.b;
-      return (long)($$1 * 50.0F);
-   }
-
-   public boolean b() {
-      return this.b != Integer.MIN_VALUE;
-   }
-
-   public void a(but $$0) {
-      this.b = $$0.b;
+   public boolean b(bus $$0) {
+      return this.p.test($$0);
    }
 }

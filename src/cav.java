@@ -1,22 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cav {
-   private static final int a = 36;
+public class cav extends bwz<cnz> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public static bxr<bvx> a() {
-      return cbd.a(
-         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$0 -> $$0.group($$0.a(cfb.x), $$0.a(cfb.y), $$0.a(cfb.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<bvx>a($$2).filter($$1xx -> $$1xx.g((bvb)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.ec().a($$4.ae(), $$4.ad());
-                     }
+   public cav() {
+      super(ImmutableMap.of(cek.ay, cel.a, cek.o, cel.b, cek.aF, cel.c, cek.aD, cel.c), coa.b);
+   }
 
-                     return true;
-                  }))
-      );
+   protected void a(arc $$0, cnz $$1, long $$2) {
+      bwi<cnz> $$3 = $$1.ec();
+      $$3.a(cek.aD, baf.a, 25L);
+      $$3.b(cek.m);
+      bvg $$4 = $$1.ec().c(cek.ay).get();
+      bxb.a($$1, $$4);
+      $$1.b(bvs.l);
+      $$1.a($$4, 20, false);
+   }
+
+   protected boolean b(arc $$0, cnz $$1, long $$2) {
+      return true;
+   }
+
+   protected void c(arc $$0, cnz $$1, long $$2) {
+      if (!$$1.ec().a(cek.aD) && !$$1.ec().a(cek.aF)) {
+         $$1.ec().a(cek.aF, baf.a, (long)(coa.b - 25));
+         $$1.a(awa.CJ, 3.0F, 1.0F);
+      }
+   }
+
+   protected void d(arc $$0, cnz $$1, long $$2) {
+      if ($$1.c(bvs.l)) {
+         $$1.b(bvs.a);
+      }
+
+      $$1.ec().c(cek.ay).ifPresent($$1::j);
+      $$1.ec().b(cek.ay);
    }
 }

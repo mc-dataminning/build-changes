@@ -1,20 +1,17 @@
-public class gqw extends gqf<chv, gyo, gax> {
-   private static final alp a = alp.b("textures/entity/cow/cow.png");
+@Deprecated
+public abstract class gqw<T extends bvi, S extends gzi, M extends gca<? super S>> extends gti<T, S, M> {
+   private final M a;
+   private final M b;
 
-   public gqw(grl.a $$0) {
-      super($$0, new gax($$0.a(gei.af)), new gax($$0.a(gei.ag)), 0.7F);
+   public gqw(gsc.a $$0, M $$1, M $$2, float $$3) {
+      super($$0, $$1, $$3);
+      this.a = $$1;
+      this.b = $$2;
    }
 
    @Override
-   public alp b(gyo $$0) {
-      return a;
-   }
-
-   public gyo a() {
-      return new gyo();
-   }
-
-   public void a(chv $$0, gyo $$1, float $$2) {
-      super.a($$0, $$1, $$2);
+   public void a(S $$0, ffu $$1, glx $$2, int $$3) {
+      this.h = $$0.aj ? this.b : this.a;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

@@ -1,14 +1,26 @@
-import io.netty.buffer.ByteBuf;
+public record aaa(akt<ebt> c, fba d) implements zy {
+   public static final ym<vl, aaa> a = zy.a(aaa::a, aaa::new);
+   public static final zy.b<aaa> b = zy.a("debug/game_event");
 
-public record aaa(xk b) implements zr<zx> {
-   public static final zi<ByteBuf, aaa> a = xm.f.a(aaa::new, aaa::b);
-
-   @Override
-   public zt<aaa> a() {
-      return aaj.c;
+   private aaa(vl $$0) {
+      this($$0.a(mc.G), $$0.k());
    }
 
-   public void a(zx $$0) {
-      $$0.a(this);
+   private void a(vl $$0) {
+      $$0.b(this.c);
+      $$0.a(this.d);
+   }
+
+   @Override
+   public zy.b<aaa> a() {
+      return b;
+   }
+
+   public akt<ebt> b() {
+      return this.c;
+   }
+
+   public fba c() {
+      return this.d;
    }
 }

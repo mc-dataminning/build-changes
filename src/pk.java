@@ -1,46 +1,60 @@
-import com.google.gson.JsonElement;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pk implements mh {
-   private final mj d;
-   private final CompletableFuture<js.a> e;
-
-   public pk(mj $$0, CompletableFuture<js.a> $$1) {
-      this.e = $$1;
-      this.d = $$0;
+public class pk extends pn<ckx> {
+   public pk(mk $$0, CompletableFuture<jt.a> $$1) {
+      super($$0, mc.X, $$1);
    }
 
    @Override
-   public CompletableFuture<?> a(mf $$0) {
-      return this.e.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(alk.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (alk.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
-      });
-   }
-
-   private <T> Optional<CompletableFuture<?>> a(mf $$0, js.a $$1, DynamicOps<JsonElement> $$2, alk.d<T> $$3) {
-      alo<? extends kd<T>> $$4 = $$3.a();
-      return $$1.a($$4).map($$4x -> {
-         mj.a $$5 = this.d.a($$4);
-         return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
-      });
-   }
-
-   private static <E> CompletableFuture<?> a(Path $$0, mf $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
-         .mapOrElse(
-            $$2x -> mh.a($$1, $$2x, $$0),
-            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
+   protected void a(jt.a $$0) {
+      this.b(awz.a)
+         .a(
+            cky.a,
+            cky.b,
+            cky.c,
+            cky.d,
+            cky.e,
+            cky.f,
+            cky.g,
+            cky.h,
+            cky.i,
+            cky.j,
+            cky.k,
+            cky.l,
+            cky.m,
+            cky.n,
+            cky.o,
+            cky.p,
+            cky.q,
+            cky.r,
+            cky.s,
+            cky.t,
+            cky.u,
+            cky.v,
+            cky.w,
+            cky.x,
+            cky.y,
+            cky.z,
+            cky.E,
+            cky.F,
+            cky.G,
+            cky.H,
+            cky.I,
+            cky.J,
+            cky.K,
+            cky.L,
+            cky.M,
+            cky.N,
+            cky.O,
+            cky.P,
+            cky.Q,
+            cky.R,
+            cky.S,
+            cky.T,
+            cky.U,
+            cky.V,
+            cky.W,
+            cky.X
          );
-   }
-
-   @Override
-   public final String a() {
-      return "Registries";
    }
 }

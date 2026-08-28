@@ -1,90 +1,71 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.lwjgl.opengl.ARBTimerQuery;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.opengl.GL32C;
+import org.slf4j.Logger;
 
 public class fge {
-   private int a;
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private static CompletableFuture<fge.a> b;
 
-   public static Optional<fge> a() {
-      return fge.b.a;
-   }
-
-   public void b() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a != 0) {
-         throw new IllegalStateException("Current profile not ended");
-      } else {
-         this.a = GL32C.glGenQueries();
-         GL32C.glBeginQuery(35007, this.a);
-      }
-   }
-
-   public fge.a c() {
-      RenderSystem.assertOnRenderThread();
-      if (this.a == 0) {
-         throw new IllegalStateException("endProfile called before beginProfile");
-      } else {
-         GL32C.glEndQuery(35007);
-         fge.a $$0 = new fge.a(this.a);
-         this.a = 0;
-         return $$0;
-      }
-   }
-
-   public static class a {
-      private static final long a = 0L;
-      private static final long b = -1L;
-      private final int c;
-      private long d;
-
-      a(int $$0) {
-         this.c = $$0;
+   public static CompletableFuture<fge.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      public void a() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = -1L;
-            GL32C.glDeleteQueries(this.c);
+      return b;
+   }
+
+   private static boolean a(CompletableFuture<fge.a> $$0) {
+      fge.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
+
+   private static CompletableFuture<fge.a> b() {
+      flv $$0 = flj.Q().X();
+      return $$0.g() != flv.a.c ? CompletableFuture.completedFuture(new fge.a(fge.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fgk $$0x = fgk.a();
+
+         try {
+            if ($$0x.g() != fgk.a.a) {
+               return new fge.a(fge.b.b);
+            } else {
+               return !$$0x.f() ? new fge.a(fge.b.c) : new fge.a(fge.b.a);
+            }
+         } catch (fig var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fge.a(fge.b.d) : new fge.a(var2);
          }
-      }
-
-      public boolean b() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d != 0L) {
-            return true;
-         } else if (1 == GL32C.glGetQueryObjecti(this.c, 34919)) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      public long c() {
-         RenderSystem.assertOnRenderThread();
-         if (this.d == 0L) {
-            this.d = ARBTimerQuery.glGetQueryObjecti64(this.c, 34918);
-            GL32C.glDeleteQueries(this.c);
-         }
-
-         return this.d;
-      }
+      }, af.h());
    }
 
-   static class b {
-      static final Optional<fge> a = Optional.ofNullable(a());
+   public static record a(fge.b a, @Nullable fig b) {
+      public a(fge.b $$0) {
+         this($$0, null);
+      }
 
-      private b() {
+      public a(fig $$0) {
+         this(fge.b.e, $$0);
       }
 
       @Nullable
-      private static fge a() {
-         return !GL.getCapabilities().GL_ARB_timer_query ? null : new fge();
+      public fuk a(fuk $$0) {
+         return (fuk)(switch (this.a) {
+            case a -> null;
+            case b -> new fit($$0);
+            case c -> new fjd($$0);
+            case d -> new fiy(wo.c("mco.error.invalid.session.title"), wo.c("mco.error.invalid.session.message"), $$0);
+            case e -> new fiy(Objects.requireNonNull(this.b), $$0);
+         });
       }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

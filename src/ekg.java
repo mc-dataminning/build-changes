@@ -1,28 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ekg<P extends ekf> {
-   public static final ekg<eka> a = a("blob_foliage_placer", eka.a);
-   public static final ekg<ekl> b = a("spruce_foliage_placer", ekl.a);
-   public static final ekg<ekj> c = a("pine_foliage_placer", ekj.a);
-   public static final ekg<ejz> d = a("acacia_foliage_placer", ejz.a);
-   public static final ekg<ekb> e = a("bush_foliage_placer", ekb.c);
-   public static final ekg<eke> f = a("fancy_foliage_placer", eke.c);
-   public static final ekg<ekh> g = a("jungle_foliage_placer", ekh.a);
-   public static final ekg<eki> h = a("mega_pine_foliage_placer", eki.a);
-   public static final ekg<ekd> i = a("dark_oak_foliage_placer", ekd.a);
-   public static final ekg<ekk> j = a("random_spread_foliage_placer", ekk.a);
-   public static final ekg<ekc> k = a("cherry_foliage_placer", ekc.a);
-   private final MapCodec<P> l;
+public abstract class ekg extends ekd {
+   protected final long c;
+   protected final esc.a d;
+   protected final float e;
+   protected final esc f;
 
-   private static <P extends ekf> ekg<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.U, $$0, new ekg<>($$1));
+   protected static <P extends ekg> P3<Mu<P>, Long, esc.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         esc.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ayi.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   private ekg(MapCodec<P> $$0) {
-      this.l = $$0;
+   protected ekg(long $$0, esc.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = esc.b(new edr(new ect($$0)), $$1);
    }
 
-   public MapCodec<P> a() {
-      return this.l;
+   protected double a(ji $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

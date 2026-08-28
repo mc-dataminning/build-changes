@@ -1,25 +1,19 @@
-import java.util.function.Predicate;
-
 public class dgg {
-   private final fbr a;
-   private final fbr b;
-   private final Predicate<dxo> c;
+   private static int[] a = new int[65536];
 
-   public dgg(fbr $$0, fbr $$1, Predicate<dxo> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   public fbr a() {
-      return this.b;
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? -65281 : a[$$4];
    }
 
-   public fbr b() {
-      return this.a;
-   }
-
-   public Predicate<dxo> c() {
-      return this.c;
+   public static int a() {
+      return a(0.5, 1.0);
    }
 }

@@ -1,97 +1,28 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public class ejp implements eit {
-   public static final Codec<ejp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eku.a.fieldOf("trunk_provider").forGetter($$0x -> $$0x.b),
-               elz.c.fieldOf("trunk_placer").forGetter($$0x -> $$0x.d),
-               eku.a.fieldOf("foliage_provider").forGetter($$0x -> $$0x.e),
-               ekf.d.fieldOf("foliage_placer").forGetter($$0x -> $$0x.f),
-               ekr.d.optionalFieldOf("root_placer").forGetter($$0x -> $$0x.g),
-               eku.a.fieldOf("dirt_provider").forGetter($$0x -> $$0x.c),
-               eju.a.fieldOf("minimum_size").forGetter($$0x -> $$0x.h),
-               eln.h.listOf().fieldOf("decorators").forGetter($$0x -> $$0x.i),
-               Codec.BOOL.fieldOf("ignore_vines").orElse(false).forGetter($$0x -> $$0x.j),
-               Codec.BOOL.fieldOf("force_dirt").orElse(false).forGetter($$0x -> $$0x.k)
-            )
-            .apply($$0, ejp::new)
-   );
-   public final eku b;
-   public final eku c;
-   public final elz d;
-   public final eku e;
-   public final ekf f;
-   public final Optional<ekr> g;
-   public final eju h;
-   public final List<eln> i;
-   public final boolean j;
-   public final boolean k;
+public class ejp<P extends ejo> {
+   public static final ejp<ejj> a = a("blob_foliage_placer", ejj.a);
+   public static final ejp<eju> b = a("spruce_foliage_placer", eju.a);
+   public static final ejp<ejs> c = a("pine_foliage_placer", ejs.a);
+   public static final ejp<eji> d = a("acacia_foliage_placer", eji.a);
+   public static final ejp<ejk> e = a("bush_foliage_placer", ejk.c);
+   public static final ejp<ejn> f = a("fancy_foliage_placer", ejn.c);
+   public static final ejp<ejq> g = a("jungle_foliage_placer", ejq.a);
+   public static final ejp<ejr> h = a("mega_pine_foliage_placer", ejr.a);
+   public static final ejp<ejm> i = a("dark_oak_foliage_placer", ejm.a);
+   public static final ejp<ejt> j = a("random_spread_foliage_placer", ejt.a);
+   public static final ejp<ejl> k = a("cherry_foliage_placer", ejl.a);
+   private final MapCodec<P> l;
 
-   protected ejp(eku $$0, elz $$1, eku $$2, ekf $$3, Optional<ekr> $$4, eku $$5, eju $$6, List<eln> $$7, boolean $$8, boolean $$9) {
-      this.b = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.c = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+   private static <P extends ejo> ejp<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.U, $$0, new ejp<>($$1));
    }
 
-   public static class a {
-      public final eku a;
-      private final elz c;
-      public final eku b;
-      private final ekf d;
-      private final Optional<ekr> e;
-      private eku f;
-      private final eju g;
-      private List<eln> h = ImmutableList.of();
-      private boolean i;
-      private boolean j;
+   private ejp(MapCodec<P> $$0) {
+      this.l = $$0;
+   }
 
-      public a(eku $$0, elz $$1, eku $$2, ekf $$3, Optional<ekr> $$4, eju $$5) {
-         this.a = $$0;
-         this.c = $$1;
-         this.b = $$2;
-         this.f = eku.a(dkf.j);
-         this.d = $$3;
-         this.e = $$4;
-         this.g = $$5;
-      }
-
-      public a(eku $$0, elz $$1, eku $$2, ekf $$3, eju $$4) {
-         this($$0, $$1, $$2, $$3, Optional.empty(), $$4);
-      }
-
-      public ejp.a a(eku $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public ejp.a a(List<eln> $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public ejp.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public ejp.a b() {
-         this.j = true;
-         return this;
-      }
-
-      public ejp c() {
-         return new ejp(this.a, this.c, this.b, this.d, this.e, this.f, this.g, this.h, this.i, this.j);
-      }
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

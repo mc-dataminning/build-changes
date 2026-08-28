@@ -1,27 +1,22 @@
-public class gwn extends gvj<hac, gdx> {
-   private static final alp a = alp.b("textures/entity/wither/wither_armor.png");
-   private final gdx b;
-
-   public gwn(gti<hac, gdx> $$0, gef $$1) {
+public class gwn extends gwr<gzp, gcx> {
+   public gwn(gtz<gzp, gcx> $$0) {
       super($$0);
-      this.b = new gdx($$1.a(gei.dB));
    }
 
-   protected boolean a(hac $$0) {
-      return $$0.d;
-   }
+   public void a(ffu $$0, glx $$1, int $$2, gzp $$3, float $$4, float $$5) {
+      hbl $$6 = $$3.i;
+      if (!$$6.c() && $$3.g && !$$3.f) {
+         float $$7 = -0.6F;
+         float $$8 = 1.4F;
+         if ($$3.e) {
+            $$7 -= 0.2F * ayz.a($$3.u * 0.6F) + 0.2F;
+            $$8 -= 0.09F * ayz.a($$3.u * 0.6F);
+         }
 
-   @Override
-   protected float a(float $$0) {
-      return azu.b($$0 * 0.02F) * 3.0F;
-   }
-
-   @Override
-   protected alp a() {
-      return a;
-   }
-
-   protected gdx b() {
-      return this.b;
+         $$0.a();
+         $$0.a(0.1F, $$8, $$7);
+         $$6.a($$0, $$1, $$2, hea.d);
+         $$0.b();
+      }
    }
 }

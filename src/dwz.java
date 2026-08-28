@@ -1,124 +1,157 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dwz {
-   static final String a = "server_data";
-   static Codec<dwz> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kk.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cxg.a.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dwz::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cxg> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
-
-   dwz(Set<UUID> $$0, long $$1, List<cxg> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
-   }
-
-   dwz() {
-   }
-
-   void a(long $$0) {
-      this.h = $$0;
-   }
-
-   long a() {
-      return this.h;
-   }
-
-   Set<UUID> b() {
-      return this.e;
-   }
-
-   boolean a(cpo $$0) {
-      return this.e.contains($$0.cG());
-   }
-
-   @VisibleForTesting
-   public void b(cpo $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+public abstract class dwz<O, S> {
+   public static final String b = "Name";
+   public static final String c = "Properties";
+   private static final Function<Entry<dxz<?>, Comparable<?>>, String> a = new Function<Entry<dxz<?>, Comparable<?>>, String>() {
+      public String a(@Nullable Entry<dxz<?>, Comparable<?>> $$0) {
+         if ($$0 == null) {
+            return "<NULL>";
+         } else {
+            dxz<?> $$1 = $$0.getKey();
+            return $$1.f() + "=" + this.a($$1, $$0.getValue());
          }
       }
 
-      this.i();
+      private <T extends Comparable<T>> String a(dxz<T> $$0, Comparable<?> $$1) {
+         return $$0.b((T)$$1);
+      }
+   };
+   protected final O d;
+   private final Reference2ObjectArrayMap<dxz<?>, Comparable<?>> f;
+   private Map<dxz<?>, S[]> g;
+   protected final MapCodec<S> e;
+
+   protected dwz(O $$0, Reference2ObjectArrayMap<dxz<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
+      this.d = $$0;
+      this.f = $$1;
+      this.e = $$2;
    }
 
-   long c() {
-      return this.f;
+   public <T extends Comparable<T>> S a(dxz<T> $$0) {
+      return this.b($$0, a($$0.a(), this.c($$0)));
    }
 
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
+   protected static <T> T a(List<T> $$0, T $$1) {
+      int $$2 = $$0.indexOf($$1) + 1;
+      return $$2 == $$0.size() ? $$0.getFirst() : $$0.get($$2);
    }
 
-   List<cxg> d() {
-      return this.g;
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(this.d);
+      if (!this.G().isEmpty()) {
+         $$0.append('[');
+         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
+         $$0.append(']');
+      }
+
+      return $$0.toString();
    }
 
-   void e() {
-      this.i = 0;
-      this.i();
+   public Collection<dxz<?>> F() {
+      return Collections.unmodifiableCollection(this.f.keySet());
    }
 
-   void a(List<cxg> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
+   public <T extends Comparable<T>> boolean b(dxz<T> $$0) {
+      return this.f.containsKey($$0);
    }
 
-   cxg f() {
-      return this.g.isEmpty() ? cxg.j : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cxg.j);
-   }
-
-   cxg g() {
-      if (this.g.isEmpty()) {
-         return cxg.j;
+   public <T extends Comparable<T>> T c(dxz<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
       } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cxg.j);
+         return $$0.g().cast($$1);
       }
    }
 
-   void a(dwz $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
+   public <T extends Comparable<T>> Optional<T> d(dxz<T> $$0) {
+      return Optional.ofNullable(this.e($$0));
    }
 
-   private void i() {
-      this.c = true;
+   public <T extends Comparable<T>> T a(dxz<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.e($$0), $$1);
    }
 
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - azu.f((float)this.d().size(), 1.0F, (float)this.i);
+   @Nullable
+   public <T extends Comparable<T>> T e(dxz<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
+      return $$1 == null ? null : $$0.g().cast($$1);
+   }
+
+   public <T extends Comparable<T>, V extends T> S b(dxz<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
+      } else {
+         return this.a($$0, $$1, $$2);
+      }
+   }
+
+   public <T extends Comparable<T>, V extends T> S c(dxz<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
+      return (S)($$2 == null ? this : this.a($$0, $$1, $$2));
+   }
+
+   private <T extends Comparable<T>, V extends T> S a(dxz<T> $$0, V $$1, Comparable<?> $$2) {
+      if ($$2.equals($$1)) {
+         return (S)this;
+      } else {
+         int $$3 = $$0.a((T)$$1);
+         if ($$3 < 0) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
+         } else {
+            return (S)this.g.get($$0)[$$3];
+         }
+      }
+   }
+
+   public void a(Map<Map<dxz<?>, Comparable<?>>, S> $$0) {
+      if (this.g != null) {
+         throw new IllegalStateException();
+      } else {
+         Map<dxz<?>, S[]> $$1 = new Reference2ObjectArrayMap(this.f.size());
+         ObjectIterator var3 = this.f.entrySet().iterator();
+
+         while (var3.hasNext()) {
+            Entry<dxz<?>, Comparable<?>> $$2 = (Entry<dxz<?>, Comparable<?>>)var3.next();
+            dxz<?> $$3 = $$2.getKey();
+            $$1.put($$3, $$3.a().stream().map($$2x -> $$0.get(this.d($$3, $$2x))).toArray());
+         }
+
+         this.g = $$1;
+      }
+   }
+
+   private Map<dxz<?>, Comparable<?>> d(dxz<?> $$0, Comparable<?> $$1) {
+      Map<dxz<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
+      $$2.put($$0, $$1);
+      return $$2;
+   }
+
+   public Map<dxz<?>, Comparable<?>> G() {
+      return this.f;
+   }
+
+   protected static <O, S extends dwz<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
+      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
+         S $$2 = $$1.apply((O)$$1x);
+         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
+      });
    }
 }

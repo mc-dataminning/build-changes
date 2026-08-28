@@ -1,5 +1,6 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
@@ -9,13 +10,22 @@ public class bhc extends DataFix {
       super($$0, false);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("banners", $$0x -> $$0x.createList($$0x.asStream().map($$0xx -> $$0xx.update("Pos", bbk::a))));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsAmbientOcclusionFix",
+         this.getInputSchema().getType(bhw.e),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)
+            )
+      );
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix", this.getInputSchema().getType(bin.j), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bhc::a))
-      );
+   private static String a(String $$0) {
+      return switch ($$0) {
+         case "0" -> "false";
+         case "1", "2" -> "true";
+         default -> $$0;
+      };
    }
 }

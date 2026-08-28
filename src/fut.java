@@ -1,100 +1,38 @@
-public class fut extends fug<ctj> {
-   private static final alp G = alp.b("container/crafter/disabled_slot");
-   private static final alp H = alp.b("container/crafter/powered_redstone");
-   private static final alp I = alp.b("container/crafter/unpowered_redstone");
-   private static final alp J = alp.b("textures/gui/container/crafter.png");
-   private static final xk K = xk.c("gui.togglable_slot");
-   private final cpo L;
+public enum fut {
+   a(
+      aku.b("advancements/box_obtained"),
+      aku.b("advancements/task_frame_obtained"),
+      aku.b("advancements/challenge_frame_obtained"),
+      aku.b("advancements/goal_frame_obtained")
+   ),
+   b(
+      aku.b("advancements/box_unobtained"),
+      aku.b("advancements/task_frame_unobtained"),
+      aku.b("advancements/challenge_frame_unobtained"),
+      aku.b("advancements/goal_frame_unobtained")
+   );
 
-   public fut(ctj $$0, cpn $$1, xk $$2) {
-      super($$0, $$1, $$2);
-      this.L = $$1.k;
+   private final aku c;
+   private final aku d;
+   private final aku e;
+   private final aku f;
+
+   private fut(final aku $$0, final aku $$1, final aku $$2, final aku $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   public aku a() {
+      return this.c;
    }
 
-   @Override
-   protected void a(cuq $$0, int $$1, int $$2, cte $$3) {
-      if ($$0 instanceof ctk && !$$0.h() && !this.L.aa_()) {
-         switch ($$3) {
-            case a:
-               if (this.z.e($$1)) {
-                  this.a($$1);
-               } else if (this.z.g().f()) {
-                  this.b($$1);
-               }
-               break;
-            case c:
-               cxg $$4 = this.L.gi().a($$2);
-               if (this.z.e($$1) && !$$4.f()) {
-                  this.a($$1);
-               }
-         }
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(int $$0) {
-      this.a($$0, true);
-   }
-
-   private void b(int $$0) {
-      this.a($$0, false);
-   }
-
-   private void a(int $$0, boolean $$1) {
-      this.z.a($$0, $$1);
-      super.a($$0, this.z.l, $$1);
-      float $$2 = $$1 ? 1.0F : 0.75F;
-      this.L.a(awv.Bg.a(), 0.4F, $$2);
-   }
-
-   @Override
-   public void a(fnl $$0, cuq $$1) {
-      if ($$1 instanceof ctk $$2 && this.z.e($$1.d)) {
-         this.a($$0, $$2);
-         return;
-      }
-
-      super.a($$0, $$1);
-   }
-
-   private void a(fnl $$0, ctk $$1) {
-      $$0.a(glq::H, G, $$1.e - 1, $$1.f - 1, 18, 18);
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d($$0);
-      this.a($$0, $$1, $$2);
-      if (this.B instanceof ctk && !this.z.e(this.B.d) && this.z.g().f() && !this.B.h() && !this.L.aa_()) {
-         $$0.a(this.p, K, $$1, $$2);
-      }
-   }
-
-   private void d(fnl $$0) {
-      int $$1 = this.n / 2 + 9;
-      int $$2 = this.o / 2 - 48;
-      alp $$3;
-      if (this.z.l()) {
-         $$3 = H;
-      } else {
-         $$3 = I;
-      }
-
-      $$0.a(glq::H, $$3, $$1, $$2, 16, 16);
-   }
-
-   @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(glq::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   public aku a(ao $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

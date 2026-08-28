@@ -1,60 +1,38 @@
-public class bva {
-   private static final float a = (float) (Math.PI / 12);
-   private static final float b = (float) (-Math.PI / 12);
-   private float c;
-   private float d;
-   private float e;
-   private float f;
-   private float g;
-   private float h;
-   private final bvx i;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-   public bva(bvx $$0) {
-      this.i = $$0;
+public enum bva implements azc, azv {
+   a(0, "left", "options.mainHand.left"),
+   b(1, "right", "options.mainHand.right");
+
+   public static final Codec<bva> c = azv.a(bva::values);
+   public static final IntFunction<bva> d = axq.a(bva::b, values(), axq.a.a);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private bva(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a() {
-      this.f = this.c;
-      this.g = this.d;
-      this.h = this.e;
-      float $$3;
-      float $$4;
-      float $$5;
-      if (this.i.fJ()) {
-         float $$0 = 1.0F;
-         fbr $$1 = this.i.dz();
-         if ($$1.e < 0.0) {
-            fbr $$2 = $$1.d();
-            $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
-         }
-
-         $$3 = azu.h($$0, (float) (Math.PI / 12), (float) (Math.PI / 9));
-         $$4 = azu.h($$0, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
-         $$5 = 0.0F;
-      } else if (this.i.ci()) {
-         $$3 = (float) (Math.PI * 2.0 / 9.0);
-         $$4 = (float) (-Math.PI / 4);
-         $$5 = 0.08726646F;
-      } else {
-         $$3 = (float) (Math.PI / 12);
-         $$4 = (float) (-Math.PI / 12);
-         $$5 = 0.0F;
-      }
-
-      this.c = this.c + ($$3 - this.c) * 0.3F;
-      this.d = this.d + ($$5 - this.d) * 0.3F;
-      this.e = this.e + ($$4 - this.e) * 0.3F;
+   public bva e() {
+      return this == a ? b : a;
    }
 
-   public float a(float $$0) {
-      return azu.h($$0, this.f, this.c);
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   public float b(float $$0) {
-      return azu.h($$0, this.g, this.d);
+   @Override
+   public String a() {
+      return this.g;
    }
 
-   public float c(float $$0) {
-      return azu.h($$0, this.h, this.e);
+   @Override
+   public String c() {
+      return this.f;
    }
 }

@@ -1,43 +1,103 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public class clo extends clx {
+   private static final int a = 2400;
+   private int b;
 
-public record clo(int e, int f, alp g, Optional<xk> h, Optional<xk> i) {
-   public static final Codec<clo> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               azd.a(1, 16).fieldOf("width").forGetter(clo::b),
-               azd.a(1, 16).fieldOf("height").forGetter(clo::c),
-               alp.a.fieldOf("asset_id").forGetter(clo::d),
-               xm.a.optionalFieldOf("title").forGetter(clo::e),
-               xm.a.optionalFieldOf("author").forGetter(clo::f)
-            )
-            .apply($$0, clo::new)
-   );
-   public static final zi<wv, clo> b = zi.a(zg.h, clo::b, zg.h, clo::c, alp.b, clo::d, xm.e, clo::e, xm.e, clo::f, clo::new);
-   public static final Codec<jq<clo>> c = all.a(mb.X, a);
-   public static final zi<wv, jq<clo>> d = zg.a(mb.X, b);
-
-   public int a() {
-      return this.b() * this.c();
+   public clo(bur<? extends clo> $$0, dgi $$1) {
+      super($$0, $$1);
+      this.bN = 3;
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   protected void B() {
+      this.bS.a(1, new cby(this));
+      this.bS.a(1, new cbt(this, this.dW()));
+      this.bS.a(2, new cco(this, 1.0, false));
+      this.bS.a(3, new cdr(this, 1.0));
+      this.bS.a(7, new ccm(this, cox.class, 8.0F));
+      this.bS.a(8, new ccz(this));
+      this.bT.a(1, new cdw(this).a());
+      this.bT.a(2, new cdx<>(this, cox.class, true));
    }
 
-   public int c() {
-      return this.f;
+   public static bwn.a m() {
+      return clx.gu().a(bwo.s, 8.0).a(bwo.v, 0.25).a(bwo.c, 2.0);
    }
 
-   public alp d() {
-      return this.g;
+   @Override
+   protected buk.c bg() {
+      return buk.c.c;
    }
 
-   public Optional<xk> e() {
-      return this.h;
+   @Override
+   protected avz u() {
+      return awa.iK;
    }
 
-   public Optional<xk> f() {
-      return this.i;
+   @Override
+   protected avz e(bta $$0) {
+      return awa.iM;
+   }
+
+   @Override
+   protected avz o_() {
+      return awa.iL;
+   }
+
+   @Override
+   protected void b(ji $$0, dwx $$1) {
+      this.a(awa.iN, 0.15F, 1.0F);
+   }
+
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      this.b = $$0.h("Lifetime");
+   }
+
+   @Override
+   public void b(tq $$0) {
+      super.b($$0);
+      $$0.a("Lifetime", this.b);
+   }
+
+   @Override
+   public void h() {
+      this.aX = this.dM();
+      super.h();
+   }
+
+   @Override
+   public void r(float $$0) {
+      this.v($$0);
+      super.r($$0);
+   }
+
+   @Override
+   public void d_() {
+      super.d_();
+      if (this.dW().C) {
+         for (int $$0 = 0; $$0 < 2; $$0++) {
+            this.dW().a(lt.ae, this.d(0.5), this.dE(), this.g(0.5), (this.ae.j() - 0.5) * 2.0, -this.ae.j(), (this.ae.j() - 0.5) * 2.0);
+         }
+      } else {
+         if (!this.ak()) {
+            this.b++;
+         }
+
+         if (this.b >= 2400) {
+            this.at();
+         }
+      }
+   }
+
+   public static boolean b(bur<clo> $$0, dgj $$1, buq $$2, ji $$3, azh $$4) {
+      if (!c($$0, $$1, $$2, $$3, $$4)) {
+         return false;
+      } else if (buq.a($$2)) {
+         return true;
+      } else {
+         cox $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
+         return $$5 == null;
+      }
    }
 }

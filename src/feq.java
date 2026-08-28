@@ -1,13 +1,36 @@
-public interface feq {
-   <T> ffx<T> a(String var1, ffw<T> var2);
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   <T> void a(ffx<T> var1);
+public class feq {
+   private static final Vector3f a = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f b = new Vector3f(-0.2F, 1.0F, 0.7F).normalize();
+   private static final Vector3f c = new Vector3f(0.2F, 1.0F, -0.7F).normalize();
+   private static final Vector3f d = new Vector3f(-0.2F, -1.0F, 0.7F).normalize();
+   private static final Vector3f e = new Vector3f(0.2F, -1.0F, 1.0F).normalize();
+   private static final Vector3f f = new Vector3f(-0.2F, -1.0F, 0.0F).normalize();
 
-   <T> ffx<T> b(ffx<T> var1);
+   public static void a() {
+      RenderSystem.setupLevelDiffuseLighting(c, d);
+   }
 
-   void a(feq var1);
+   public static void b() {
+      RenderSystem.setupLevelDiffuseLighting(a, b);
+   }
 
-   void a();
+   public static void c() {
+      RenderSystem.setupGuiFlatDiffuseLighting(a, b);
+   }
 
-   void a(Runnable var1);
+   public static void d() {
+      RenderSystem.setupGui3DDiffuseLighting(a, b);
+   }
+
+   public static void e() {
+      RenderSystem.setShaderLights(e, f);
+   }
+
+   public static void a(Quaternionf $$0) {
+      RenderSystem.setShaderLights($$0.transform(e, new Vector3f()), $$0.transform(f, new Vector3f()));
+   }
 }

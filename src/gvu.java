@@ -1,28 +1,23 @@
-public class gvu extends gwa<gyp, gbz> {
-   private final gbz a;
-   private final gbz b;
-   private final gvk c;
-
-   public gvu(gti<gyp, gbz> $$0, gef $$1, gvk $$2) {
+public class gvu<S extends gyx, M extends gca<S> & gel> extends gwr<S, M> {
+   public gvu(gtz<S, M> $$0) {
       super($$0);
-      this.c = $$2;
-      this.a = new gbz($$1.a(gei.bv));
-      this.b = new gbz($$1.a(gei.bu));
    }
 
-   public void a(fgl $$0, glg $$1, int $$2, gyp $$3, float $$4, float $$5) {
-      cxg $$6 = $$3.c;
-      dfl $$7 = $$6.a(ku.D);
-      if ($$7 != null && $$7.c().isPresent()) {
-         this.a($$0, $$1, $$3, $$6, $$7.c().get(), $$2);
-      } else if ($$3.d) {
-         this.a($$0, $$1, $$3, cxg.j, dfk.k, $$2);
+   public void a(ffu $$0, glx $$1, int $$2, S $$3, float $$4, float $$5) {
+      hbl $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         this.a($$3, $$0);
+         $$6.a($$0, $$1, $$2, hea.d);
+         $$0.b();
       }
    }
 
-   private void a(fgl $$0, glg $$1, gyp $$2, cxg $$3, alp $$4, int $$5) {
-      gbz $$6 = $$2.ae ? this.b : this.a;
-      $$6.a($$2);
-      this.c.a(dfj.d.f, $$4, $$6, $$3, $$0, $$1, $$5);
+   protected void a(S $$0, ffu $$1) {
+      this.d().a($$1);
+      $$1.a(a.b.rotation(0.75F));
+      $$1.b(1.07F, 1.07F, 1.07F);
+      $$1.a(0.0F, 0.13F, -0.34F);
+      $$1.a(a.b.rotation((float) Math.PI));
    }
 }

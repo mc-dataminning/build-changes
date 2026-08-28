@@ -1,14 +1,65 @@
-public class gnp implements gnr<duo> {
-   public static final hdp a = new hdp(hbf.d, alp.b("entity/bell/bell_body"));
-   private final gam b;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
 
-   public gnp(gns.a $$0) {
-      this.b = new gam($$0.a(gei.A));
+public record gnp(List<gns> a) implements gnr {
+   public gnp(List<gns> a) {
+      if (a.isEmpty()) {
+         throw new IllegalArgumentException("Variant list must contain at least one element");
+      } else {
+         this.a = a;
+      }
    }
 
-   public void a(duo $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      fgp $$6 = a.a($$3, glq::d);
-      this.b.a($$0, $$1);
-      this.b.a($$2, $$6, $$4, $$5);
+   @Override
+   public Object a(dwx $$0) {
+      return this;
+   }
+
+   @Override
+   public void a(hhd.a $$0) {
+      this.a.forEach($$1 -> $$0.a($$1.c()));
+   }
+
+   @Override
+   public hgl a(hgu $$0) {
+      if (this.a.size() == 1) {
+         gns $$1 = this.a.getFirst();
+         return $$0.a($$1.c(), $$1);
+      } else {
+         bqr.a<hgl> $$2 = bqr.a();
+
+         for (gns $$3 : this.a) {
+            hgl $$4 = $$0.a($$3.c(), $$3);
+            $$2.a($$4, $$3.f());
+         }
+
+         return new hhh($$2.a());
+      }
+   }
+
+   public static class a implements JsonDeserializer<gnp> {
+      public gnp a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         List<gns> $$3 = Lists.newArrayList();
+         if ($$0.isJsonArray()) {
+            JsonArray $$4 = $$0.getAsJsonArray();
+            if ($$4.isEmpty()) {
+               throw new JsonParseException("Empty variant array");
+            }
+
+            for (JsonElement $$5 : $$4) {
+               $$3.add((gns)$$2.deserialize($$5, gns.class));
+            }
+         } else {
+            $$3.add((gns)$$2.deserialize($$0, gns.class));
+         }
+
+         return new gnp($$3);
+      }
    }
 }

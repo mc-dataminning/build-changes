@@ -1,72 +1,73 @@
-public class ghh extends gjn {
-   private final float a;
-   private final float b;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   ghh(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cxg $$7) {
-      this($$0, $$1, $$2, $$3, $$7);
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
+public final class ghh {
+   private static final int a = 1024;
+   private final ggy b;
+   private final ghe c;
+   private final ggt d;
+   @Nullable
+   private ghd e;
+
+   public ghh(ggy $$0, ghe $$1, ggt $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public gir b() {
-      return gir.a;
+   public static ghh a(ghe $$0, UserApiService $$1) {
+      ggt $$2 = new ggt(1024);
+      ggy $$3 = ggy.a($$0, $$1);
+      return new ghh($$3, $$0, $$2);
    }
 
-   protected ghh(gff $$0, double $$1, double $$2, double $$3, cxg $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a(flz.Q().as().a($$4, $$0, null, 0).e());
-      this.u = 1.0F;
-      this.D /= 2.0F;
-      this.a = this.r.i() * 3.0F;
-      this.b = this.r.i() * 3.0F;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.a + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.a / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.b / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.b + 1.0F) / 4.0F);
-   }
-
-   public static class a implements giq<lw> {
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghh($$1, $$2, $$3, $$4, new cxg(cxk.cT));
+   public void a(flj $$0, fuk $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         ghd $$4 = this.e.b();
+         $$0.a(
+            new fti(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               wo.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               wo.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               wo.c("gui.abuseReport.draft.edit"),
+               wo.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
    }
 
-   public static class b implements giq<lo> {
-      public gin a(lo $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghh($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
-      }
+   public ggy a() {
+      return this.b;
    }
 
-   public static class c implements giq<lw> {
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghh($$1, $$2, $$3, $$4, new cxg(cxk.rx));
-      }
+   public ggt b() {
+      return this.d;
    }
 
-   public static class d implements giq<lw> {
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghh($$1, $$2, $$3, $$4, new cxg(cxk.rj));
-      }
+   public boolean a(ghe $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable ghd $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

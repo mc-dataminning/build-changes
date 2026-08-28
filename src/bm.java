@@ -1,43 +1,87 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bm extends dy<bm.a> {
-   @Override
-   public Codec<bm.a> a() {
-      return bm.a.a;
+public record bm(List<eh<btc>> b, Optional<bx> c, Optional<bx> d, Optional<Boolean> e) {
+   public static final Codec<bm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eh.a(mc.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bm::a),
+               bx.a.optionalFieldOf("direct_entity").forGetter(bm::b),
+               bx.a.optionalFieldOf("source_entity").forGetter(bm::c),
+               Codec.BOOL.optionalFieldOf("is_direct").forGetter(bm::d)
+            )
+            .apply($$0, bm::new)
+   );
+
+   public boolean a(ard $$0, bta $$1) {
+      return this.a($$0.y(), $$0.du(), $$1);
    }
 
-   public void a(ary $$0, jh $$1) {
-      arx $$2 = $$0.y();
-      dxo $$3 = $$2.a_($$1);
-      ewl $$4 = new ewl.a($$2).a(ezc.f, $$1.b()).a(ezc.a, $$0).a(ezc.g, $$3).a(ezb.p);
-      ewi $$5 = new ewi.a($$4).a(Optional.empty());
-      this.a($$0, $$1x -> $$1x.a($$5));
+   public boolean a(arc $$0, fba $$1, bta $$2) {
+      for (eh<btc> $$3 : this.b) {
+         if (!$$3.a($$2.l())) {
+            return false;
+         }
+      }
+
+      if (this.c.isPresent() && !this.c.get().a($$0, $$1, $$2.c())) {
+         return false;
+      } else {
+         return this.d.isPresent() && !this.d.get().a($$0, $$1, $$2.d()) ? false : !this.e.isPresent() || this.e.get() == $$2.b();
+      }
    }
 
-   public static record a(Optional<bh> b, Optional<bh> c) implements dy.a {
-      public static final Codec<bm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(bm.a::a), bh.a.optionalFieldOf("location").forGetter(bm.a::b)).apply($$0, bm.a::new)
-      );
+   public List<eh<btc>> a() {
+      return this.b;
+   }
 
-      public boolean a(ewi $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+   public Optional<bx> b() {
+      return this.c;
+   }
+
+   public Optional<bx> c() {
+      return this.d;
+   }
+
+   public Optional<Boolean> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private final Builder<eh<btc>> a = ImmutableList.builder();
+      private Optional<bx> b = Optional.empty();
+      private Optional<bx> c = Optional.empty();
+      private Optional<Boolean> d = Optional.empty();
+
+      public static bm.a a() {
+         return new bm.a();
       }
 
-      @Override
-      public void a(bi $$0) {
-         dy.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, ezb.p, ".location"));
+      public bm.a a(eh<btc> $$0) {
+         this.a.add($$0);
+         return this;
       }
 
-      @Override
-      public Optional<bh> a() {
-         return this.b;
+      public bm.a a(bx.a $$0) {
+         this.b = Optional.of($$0.b());
+         return this;
       }
 
-      public Optional<bh> b() {
-         return this.c;
+      public bm.a b(bx.a $$0) {
+         this.c = Optional.of($$0.b());
+         return this;
+      }
+
+      public bm.a a(boolean $$0) {
+         this.d = Optional.of($$0);
+         return this;
+      }
+
+      public bm b() {
+         return new bm(this.a.build(), this.b, this.c, this.d);
       }
    }
 }

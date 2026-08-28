@@ -1,89 +1,112 @@
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
-public class crt {
-   public static int[][] a(jm $$0) {
-      jm $$1 = $$0.h();
-      jm $$2 = $$1.g();
-      jm $$3 = $$0.g();
-      return new int[][]{
-         {$$1.j(), $$1.l()},
-         {$$2.j(), $$2.l()},
-         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
-         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
-         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
-         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
-         {$$3.j(), $$3.l()},
-         {$$0.j(), $$0.l()}
-      };
-   }
-
-   public static boolean a(double $$0) {
-      return !Double.isInfinite($$0) && $$0 < 1.0;
-   }
-
-   public static boolean a(dgi $$0, bvx $$1, fbm $$2) {
-      for (fcl $$4 : $$0.e($$1, $$2)) {
-         if (!$$4.c()) {
-            return false;
-         }
-      }
-
-      return $$0.F_().a($$2);
-   }
-
-   public static boolean a(dgi $$0, fbr $$1, bvx $$2, bwj $$3) {
-      return a($$0, $$2, $$2.f($$3).c($$1));
-   }
-
-   public static fcl a(dge $$0, jh $$1) {
-      dxo $$2 = $$0.a_($$1);
-      return !$$2.a(axk.aS) && (!($$2.b() instanceof dsv) || !$$2.c(dsv.b)) ? $$2.g($$0, $$1) : fci.a();
-   }
-
-   public static double a(jh $$0, int $$1, Function<jh, fcl> $$2) {
-      jh.a $$3 = $$0.k();
-      int $$4 = 0;
-
-      while ($$4 < $$1) {
-         fcl $$5 = $$2.apply($$3);
-         if (!$$5.c()) {
-            return (double)($$0.v() + $$4) + $$5.b(jm.a.b);
-         }
-
-         $$4++;
-         $$3.c(jm.b);
-      }
-
-      return Double.POSITIVE_INFINITY;
-   }
-
+public final class crt {
+   private static final crt b = new crt(null, 0L);
+   public static final int a = 64;
    @Nullable
-   public static fbr a(bvi<?> $$0, dgi $$1, jh $$2, boolean $$3) {
-      if ($$3 && $$0.a($$1.a_($$2))) {
-         return null;
+   private final cru c;
+   private final long d;
+
+   private crt(@Nullable cru $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   static crt a(cru $$0, Collection<crr> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
       } else {
-         double $$4 = $$1.a(a((dge)$$1, $$2), () -> a((dge)$$1, $$2.e()));
-         if (!a($$4)) {
-            return null;
-         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
-            return null;
-         } else {
-            fbr $$5 = fbr.a($$2, $$4);
-            fbm $$6 = $$0.n().a($$5);
-
-            for (fcl $$8 : $$1.e(null, $$6)) {
-               if (!$$8.c()) {
-                  return null;
-               }
-            }
-
-            if ($$0 != bvi.bS || !$$1.a_($$2).a(axk.ct) && !$$1.a_($$2.d()).a(axk.ct)) {
-               return !$$1.F_().a($$6) ? null : $$5;
-            } else {
-               return null;
-            }
-         }
+         long $$2 = a($$0, 0L, $$1);
+         return new crt($$0, $$2);
       }
+   }
+
+   public static crt a() {
+      return b;
+   }
+
+   public static crt a(crr $$0) {
+      return new crt($$0.a, $$0.b);
+   }
+
+   public static crt a(crr $$0, crr... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new crt($$0.a, $$2);
+   }
+
+   private static long a(cru $$0, long $$1, Iterable<crr> $$2) {
+      for (crr $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
+   }
+
+   public boolean b(crr $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean b() {
+      return this.equals(b);
+   }
+
+   public boolean a(crt $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public boolean b(crt $$0) {
+      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
+   }
+
+   public crt c(crt $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new crt(this.c, this.d | $$0.d);
+      }
+   }
+
+   public crt d(crt $$0) {
+      if (this.c == null || $$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         long $$1 = this.d & ~$$0.d;
+         return $$1 == 0L ? b : new crt(this.c, $$1);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof crt $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

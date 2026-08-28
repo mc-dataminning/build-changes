@@ -1,15 +1,18 @@
-import java.util.Locale;
+public enum yw {
+   a("serverbound"),
+   b("clientbound");
 
-public class yw extends IllegalArgumentException {
-   public yw(yv $$0, String $$1) {
-      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+   private final String c;
+
+   private yw(final String $$0) {
+      this.c = $$0;
    }
 
-   public yw(yv $$0, int $$1) {
-      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   public yw a() {
+      return this == b ? a : b;
    }
 
-   public yw(yv $$0, Throwable $$1) {
-      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   public String b() {
+      return this.c;
    }
 }

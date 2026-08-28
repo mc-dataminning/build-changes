@@ -1,85 +1,9 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
 
-public class dcl implements dbk {
-   final String c;
-   final dbi d;
-   final cxg e;
-   final List<dbr> f;
-   @Nullable
-   private dbu g;
+public record dcl(int b) {
+   public static final ym<ByteBuf, dcl> a = ym.a(yk.h, dcl::a, dcl::new);
 
-   public dcl(String $$0, dbi $$1, cxg $$2, List<dbr> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   @Override
-   public dcf<dcl> a() {
-      return dcf.b;
-   }
-
-   @Override
-   public String j() {
-      return this.c;
-   }
-
-   @Override
-   public dbi c() {
-      return this.d;
-   }
-
-   @Override
-   public dbu ap_() {
-      if (this.g == null) {
-         this.g = dbu.b(this.f);
-      }
-
-      return this.g;
-   }
-
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() != this.f.size()) {
-         return false;
-      } else {
-         return $$0.a() == 1 && this.f.size() == 1 ? this.f.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
-      }
-   }
-
-   public cxg a(dbj $$0, js.a $$1) {
-      return this.e.v();
-   }
-
-   @Override
-   public List<dda> g() {
-      return List.of(new ddf(this.f.stream().map(dbr::b).toList(), new ddg.f(this.e), new ddg.d(cxk.fc)));
-   }
-
-   public static class a implements dcf<dcl> {
-      private static final MapCodec<dcl> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.c),
-                  dbi.e.fieldOf("category").orElse(dbi.d).forGetter($$0x -> $$0x.d),
-                  cxg.c.fieldOf("result").forGetter($$0x -> $$0x.e),
-                  dbr.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, dcl::new)
-      );
-      public static final zi<wv, dcl> w = zi.a(zg.o, $$0 -> $$0.c, dbi.g, $$0 -> $$0.d, cxg.h, $$0 -> $$0.e, dbr.a.a(zg.a()), $$0 -> $$0.f, dcl::new);
-
-      @Override
-      public MapCodec<dcl> a() {
-         return x;
-      }
-
-      @Override
-      public zi<wv, dcl> b() {
-         return w;
-      }
+   public int a() {
+      return this.b;
    }
 }

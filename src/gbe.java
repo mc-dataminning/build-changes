@@ -1,43 +1,14 @@
-import org.joml.Quaternionf;
-
-public class gbe extends gbh<gxn> {
-   private static final String e = "outer_glass";
-   private static final String f = "inner_glass";
-   private static final String g = "base";
-   private static final float i = (float)Math.sin(Math.PI / 4);
-   public final gej a;
-   public final gej b;
-   public final gej c;
-   public final gej d;
-
-   public gbe(gej $$0) {
-      super($$0);
-      this.a = $$0.b("base");
-      this.b = $$0.b("outer_glass");
-      this.c = this.b.b("inner_glass");
-      this.d = this.c.b("cube");
+public class gbe extends gcv {
+   public gbe(gfc $$0) {
+      super($$0, gmh::f);
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      float $$2 = 0.875F;
-      geo $$3 = geo.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
-      get $$4 = $$1.a("outer_glass", $$3, gel.a(0.0F, 24.0F, 0.0F));
-      get $$5 = $$4.a("inner_glass", $$3, gel.a.a(0.875F));
-      $$5.a("cube", geo.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gel.a.a(0.765625F));
-      $$1.a("base", geo.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gel.a);
-      return gep.a($$0, 64, 32);
-   }
-
-   public void a(gxn $$0) {
-      super.a($$0);
-      this.a.k = $$0.a;
-      float $$1 = $$0.p * 3.0F;
-      float $$2 = grf.a($$0.p) * 16.0F;
-      this.b.c += $$2 / 2.0F;
-      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
-      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
-      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfh $$2 = gfh.c().a(0, 0).a(-1.0F, -0.5F, 0.0F, 2.0F, 1.0F, 0.0F);
+      $$1.a("cross_1", $$2, gfe.b((float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("cross_2", $$2, gfe.b((float) (Math.PI * 3.0 / 4.0), 0.0F, 0.0F));
+      return gfi.a($$0, 16, 16);
    }
 }

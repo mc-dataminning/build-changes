@@ -1,33 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class byq {
-   public static bzb<bvx> a(int $$0, float $$1, int $$2) {
-      return cbd.a(
-         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$3 -> $$3.group(
-                  $$3.c(cfb.m), $$3.a(cfb.b), $$3.a(cfb.C), $$3.a(cfb.t), $$3.a(cfb.n), $$3.a(cfb.r), $$3.a(cfb.q)
-               )
-               .apply(
-                  $$3,
-                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
-                        $$11.A()
-                           .d($$0xxxx -> $$0xxxx.a(chf.n), $$0xxxx -> true, $$12.dw(), $$2 + 1, chb.b.c)
-                           .filter($$2xxxx -> $$2xxxx.a($$12.du(), (double)$$2))
-                           .or(() -> $$11.A().a($$0xxxxx -> $$0xxxxx.a(chf.n), $$0xxxxx -> true, chb.b.c, $$12.dw(), $$0, $$12.dZ()))
-                           .or(() -> $$3.<jp>a($$5).map(jp::b))
-                           .ifPresent($$10xx -> {
-                              $$7.b();
-                              $$8.b();
-                              $$9.b();
-                              $$10.b();
-                              $$6.a(jp.a($$11.ai(), $$10xx));
-                              if (!$$10xx.a($$12.du(), (double)$$2)) {
-                                 $$4.a(new cfe($$10xx, $$1, $$2));
-                              }
-                           });
-                        return true;
-                     }
-               ))
-      );
+public class byq extends bwz<bvi> {
+   private final bro c;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public byq(bro $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cek.n, cel.b, cek.Q, cel.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
+
+   protected void a(arc $$0, bvi $$1, long $$2) {
+      azh $$3 = $$1.dZ();
+      float $$4 = ayz.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = ayz.h($$1.dM() + 2.0F * $$3.i() * this.d - this.d);
+      fba $$6 = fba.a($$4, $$5);
+      $$1.ec().a(cek.n, new bxc($$1.bF().e($$6)));
+      $$1.ec().a(cek.Q, this.c.a($$3));
    }
 }

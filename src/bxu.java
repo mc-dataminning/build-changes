@@ -1,48 +1,122 @@
 import com.google.common.collect.ImmutableMap;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.Lists;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class bxu extends bxq<cpa> {
+public class bxu extends bwz<coi> {
+   private static final int d = 200;
+   public static final float c = 0.5F;
    @Nullable
-   private crb c;
+   private ji e;
+   private long f;
+   private int g;
+   private final List<ji> h = Lists.newArrayList();
 
-   public bxu(int $$0, int $$1) {
-      super(ImmutableMap.of(), $$0, $$1);
+   public bxu() {
+      super(ImmutableMap.of(cek.n, cel.b, cek.m, cel.b, cek.f, cel.a));
    }
 
-   protected boolean a(arx $$0, cpa $$1) {
-      jh $$2 = $$1.dw();
-      this.c = $$0.d($$2);
-      return this.c != null && this.c.e() && byz.a($$0, $$1, $$2);
-   }
+   protected boolean a(arc $$0, coi $$1) {
+      if (!$$0.O().b(dge.c)) {
+         return false;
+      } else if ($$1.gz().b() != col.g) {
+         return false;
+      } else {
+         ji.a $$2 = $$1.dw().k();
+         this.h.clear();
 
-   protected boolean a(arx $$0, cpa $$1, long $$2) {
-      return this.c != null && !this.c.d();
-   }
+         for (int $$3 = -1; $$3 <= 1; $$3++) {
+            for (int $$4 = -1; $$4 <= 1; $$4++) {
+               for (int $$5 = -1; $$5 <= 1; $$5++) {
+                  $$2.b($$1.dB() + (double)$$3, $$1.dD() + (double)$$4, $$1.dH() + (double)$$5);
+                  if (this.a($$2, $$0)) {
+                     this.h.add(new ji($$2));
+                  }
+               }
+            }
+         }
 
-   protected void b(arx $$0, cpa $$1, long $$2) {
-      this.c = null;
-      $$1.ec().a($$0.ae(), $$0.ad());
-   }
-
-   protected void c(arx $$0, cpa $$1, long $$2) {
-      bac $$3 = $$1.dZ();
-      if ($$3.a(100) == 0) {
-         $$1.gt();
+         this.e = this.a($$0);
+         return this.e != null;
       }
+   }
 
-      if ($$3.a(200) == 0 && byz.a($$0, $$1, $$1.dw())) {
-         cwd $$4 = ae.a(cwd.values(), $$3);
-         int $$5 = $$3.a(3);
-         cxg $$6 = this.a($$4, $$5);
-         cqh.a(new cqc($$1.dW(), $$1, $$1.dB(), $$1.dF(), $$1.dH(), $$6), $$0, $$6);
+   @Nullable
+   private ji a(arc $$0) {
+      return this.h.isEmpty() ? null : this.h.get($$0.H_().a(this.h.size()));
+   }
+
+   private boolean a(ji $$0, arc $$1) {
+      dwx $$2 = $$1.a_($$0);
+      djm $$3 = $$2.b();
+      djm $$4 = $$1.a_($$0.e()).b();
+      return $$3 instanceof dli && ((dli)$$3).i($$2) || $$2.l() && $$4 instanceof dmk;
+   }
+
+   protected void a(arc $$0, coi $$1, long $$2) {
+      if ($$2 > this.f && this.e != null) {
+         $$1.ec().a(cek.n, new bxc(this.e));
+         $$1.ec().a(cek.m, new cen(new bxc(this.e), 0.5F, 1));
       }
    }
 
-   private cxg a(cwd $$0, int $$1) {
-      cxg $$2 = new cxg(cxk.vt);
-      $$2.b(ku.af, new czw((byte)$$1, List.of(new czv(czv.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
-      return $$2;
+   protected void b(arc $$0, coi $$1, long $$2) {
+      $$1.ec().b(cek.n);
+      $$1.ec().b(cek.m);
+      this.g = 0;
+      this.f = $$2 + 40L;
+   }
+
+   protected void c(arc $$0, coi $$1, long $$2) {
+      if (this.e == null || this.e.a($$1.du(), 1.0)) {
+         if (this.e != null && $$2 > this.f) {
+            dwx $$3 = $$0.a_(this.e);
+            djm $$4 = $$3.b();
+            djm $$5 = $$0.a_(this.e.e()).b();
+            if ($$4 instanceof dli && ((dli)$$4).i($$3)) {
+               $$0.a(this.e, true, $$1);
+            }
+
+            if ($$3.l() && $$5 instanceof dmk && $$1.gI()) {
+               bsq $$6 = $$1.t();
+
+               for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
+                  cwp $$8 = $$6.a($$7);
+                  boolean $$9 = false;
+                  if (!$$8.f() && $$8.a(awy.bN) && $$8.h() instanceof cuv $$10) {
+                     dwx $$11 = $$10.d().m();
+                     $$0.b(this.e, $$11);
+                     $$0.a(ebt.i, this.e, ebt.a.a($$1, $$11));
+                     $$9 = true;
+                  }
+
+                  if ($$9) {
+                     $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), awa.gH, awb.e, 1.0F, 1.0F);
+                     $$8.h(1);
+                     if ($$8.f()) {
+                        $$6.a($$7, cwp.j);
+                     }
+                     break;
+                  }
+               }
+            }
+
+            if ($$4 instanceof dli && !((dli)$$4).i($$3)) {
+               this.h.remove(this.e);
+               this.e = this.a($$0);
+               if (this.e != null) {
+                  this.f = $$2 + 20L;
+                  $$1.ec().a(cek.m, new cen(new bxc(this.e), 0.5F, 1));
+                  $$1.ec().a(cek.n, new bxc(this.e));
+               }
+            }
+         }
+
+         this.g++;
+      }
+   }
+
+   protected boolean d(arc $$0, coi $$1, long $$2) {
+      return this.g < 200;
    }
 }

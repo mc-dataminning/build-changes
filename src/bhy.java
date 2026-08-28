@@ -1,26 +1,21 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bhy extends DataFix {
+public class bhy extends bgs {
    public bhy(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "RemoveEmptyItemInSuspiciousBlockFix", bhw.s, "minecraft:brushable_block");
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "OptionsMenuBlurrinessFix",
-         this.getInputSchema().getType(bin.e),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("menuBackgroundBlurriness", $$0xx -> $$0xx.createInt(this.a($$0xx.asString("0.5")))))
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("item").result();
+      return $$1.isPresent() && b($$1.get()) ? $$0.remove("item") : $$0;
    }
 
-   private int a(String $$0) {
-      try {
-         return Math.round(Float.parseFloat($$0) * 10.0F);
-      } catch (NumberFormatException var3) {
-         return 5;
-      }
+   private static boolean b(Dynamic<?> $$0) {
+      String $$1 = bjk.a($$0.get("id").asString("minecraft:air"));
+      int $$2 = $$0.get("count").asInt(0);
+      return $$1.equals("minecraft:air") || $$2 == 0;
    }
 }

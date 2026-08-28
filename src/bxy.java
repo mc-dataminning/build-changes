@@ -1,81 +1,101 @@
 import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class bxy<E extends bvz & cmb, T extends bvx> extends bxq<E> {
-   private static final int c = 1200;
-   private int d;
-   private bxy.a e = bxy.a.a;
+public class bxy extends bwz<bvi> {
+   private static final int c = 100;
+   private static final int d = 3;
+   private static final int e = 6;
+   private static final int f = 5;
+   private final float g;
+   @Nullable
+   private ji h;
+   private int i;
+   private int j;
+   private int k;
 
-   public bxy() {
-      super(ImmutableMap.of(cfb.n, cfc.c, cfb.o, cfc.a), 1200);
+   public bxy(float $$0) {
+      super(ImmutableMap.of(cek.w, cel.a, cek.m, cel.b));
+      this.g = $$0;
    }
 
-   protected boolean a(arx $$0, E $$1) {
-      bvx $$2 = b($$1);
-      return $$1.b(cxk.wV) && bxs.b($$1, $$2) && bxs.a($$1, $$2, 0);
+   protected boolean a(arc $$0, bvi $$1) {
+      return $$1.e_() && this.b($$0, $$1);
    }
 
-   protected boolean a(arx $$0, E $$1, long $$2) {
-      return $$1.ec().a(cfb.o) && this.a($$0, $$1);
+   protected void a(arc $$0, bvi $$1, long $$2) {
+      super.d($$0, $$1, $$2);
+      this.a($$1).ifPresent($$2x -> {
+         this.h = $$2x;
+         this.i = 100;
+         this.j = 3 + $$0.A.a(4);
+         this.k = 0;
+         this.a($$1, $$2x);
+      });
    }
 
-   protected void b(arx $$0, E $$1, long $$2) {
-      bvx $$3 = b($$1);
-      this.b($$1, $$3);
-      this.a($$1, $$3);
+   protected void b(arc $$0, bvi $$1, long $$2) {
+      super.b($$0, $$1, $$2);
+      this.h = null;
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
    }
 
-   protected void c(arx $$0, E $$1, long $$2) {
-      if ($$1.fz()) {
-         $$1.fF();
-      }
-
-      if ($$1.b(cxk.wV)) {
-         $$1.b(false);
-         $$1.fB().b(ku.O, czl.a);
-      }
+   protected boolean c(arc $$0, bvi $$1, long $$2) {
+      return $$1.e_() && this.h != null && this.a($$0, this.h) && !this.e($$0, $$1) && !this.f($$0, $$1);
    }
 
-   private void a(E $$0, bvx $$1) {
-      if (this.e == bxy.a.a) {
-         $$0.c(cqj.a($$0, cxk.wV));
-         this.e = bxy.a.b;
-         $$0.b(true);
-      } else if (this.e == bxy.a.b) {
-         if (!$$0.fz()) {
-            this.e = bxy.a.a;
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   protected void d(arc $$0, bvi $$1, long $$2) {
+      if (!this.c($$0, $$1)) {
+         this.i--;
+      } else if (this.k > 0) {
+         this.k--;
+      } else {
+         if (this.d($$0, $$1)) {
+            $$1.J().a();
+            this.j--;
+            this.k = 5;
          }
-
-         int $$2 = $$0.fD();
-         cxg $$3 = $$0.fB();
-         if ($$2 >= cvx.b($$3, $$0)) {
-            $$0.fE();
-            this.e = bxy.a.c;
-            this.d = 20 + $$0.dZ().a(20);
-            $$0.b(false);
-         }
-      } else if (this.e == bxy.a.c) {
-         this.d--;
-         if (this.d == 0) {
-            this.e = bxy.a.d;
-         }
-      } else if (this.e == bxy.a.d) {
-         $$0.a($$1, 1.0F);
-         this.e = bxy.a.a;
       }
    }
 
-   private void b(bvz $$0, bvx $$1) {
-      $$0.ec().a(cfb.n, new byb($$1, true));
+   private void a(bvi $$0, ji $$1) {
+      $$0.ec().a(cek.m, new cen($$1, this.g, 0));
    }
 
-   private static bvx b(bvx $$0) {
-      return $$0.ec().c(cfb.o).get();
+   private boolean b(arc $$0, bvi $$1) {
+      return this.c($$0, $$1) || this.a($$1).isPresent();
    }
 
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   private boolean c(arc $$0, bvi $$1) {
+      ji $$2 = $$1.dw();
+      ji $$3 = $$2.e();
+      return this.a($$0, $$2) || this.a($$0, $$3);
+   }
+
+   private boolean d(arc $$0, bvi $$1) {
+      return this.a($$0, $$1.dw());
+   }
+
+   private boolean a(arc $$0, ji $$1) {
+      return $$0.a_($$1).a(awp.T);
+   }
+
+   private Optional<ji> a(bvi $$0) {
+      return $$0.ec().c(cek.w);
+   }
+
+   private boolean e(arc $$0, bvi $$1) {
+      return !this.c($$0, $$1) && this.i <= 0;
+   }
+
+   private boolean f(arc $$0, bvi $$1) {
+      return this.c($$0, $$1) && this.j <= 0;
    }
 }

@@ -1,8 +1,8 @@
-public class hag extends haf implements gzy {
-   public cpb c = new cpb(cpf.c, cpd.b, 1);
-
-   @Override
-   public cpb a() {
-      return this.c;
-   }
+public class hag extends gzi {
+   public boolean a;
+   public final buc b = new buc();
+   public final buc c = new buc();
+   public final buc d = new buc();
+   public final buc e = new buc();
+   public final buc f = new buc();
 }

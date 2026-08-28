@@ -1,57 +1,84 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.Optional;
 
-public record ce(Optional<ju<etp>> b, Optional<ee> c) {
-   public static final Codec<ce> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kf.a(mb.D).optionalFieldOf("fluids").forGetter(ce::a), ee.a.optionalFieldOf("state").forGetter(ce::b)).apply($$0, ce::new)
-   );
-
-   public boolean a(arx $$0, jh $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         etq $$2 = $$0.b_($$1);
-         return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
-      }
+public class ce extends dz<ce.a> {
+   @Override
+   public Codec<ce.a> a() {
+      return ce.a.a;
    }
 
-   public Optional<ju<etp>> a() {
-      return this.b;
+   public void a(ard $$0, cwp $$1, cpm $$2, Collection<cwp> $$3) {
+      evr $$4 = bx.b($$0, (buk)($$2.s() != null ? $$2.s() : $$2));
+      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
    }
 
-   public Optional<ee> b() {
-      return this.c;
-   }
+   public static record a(Optional<bi> b, Optional<cv> c, Optional<bi> d, Optional<cv> e) implements dz.a {
+      public static final Codec<ce.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  bx.b.optionalFieldOf("player").forGetter(ce.a::a),
+                  cv.a.optionalFieldOf("rod").forGetter(ce.a::b),
+                  bx.b.optionalFieldOf("entity").forGetter(ce.a::c),
+                  cv.a.optionalFieldOf("item").forGetter(ce.a::d)
+               )
+               .apply($$0, ce.a::new)
+      );
 
-   public static class a {
-      private Optional<ju<etp>> a = Optional.empty();
-      private Optional<ee> b = Optional.empty();
-
-      private a() {
+      public static aq<ce.a> a(Optional<cv> $$0, Optional<bx> $$1, Optional<cv> $$2) {
+         return ap.E.a(new ce.a(Optional.empty(), $$0, bx.a($$1), $$2));
       }
 
-      public static ce.a a() {
-         return new ce.a();
+      public boolean a(cwp $$0, evr $$1, Collection<cwp> $$2) {
+         if (this.c.isPresent() && !this.c.get().a($$0)) {
+            return false;
+         } else if (this.d.isPresent() && !this.d.get().a($$1)) {
+            return false;
+         } else {
+            if (this.e.isPresent()) {
+               boolean $$3 = false;
+               buk $$4 = $$1.c(eyl.a);
+               if ($$4 instanceof clb $$5 && this.e.get().a($$5.l())) {
+                  $$3 = true;
+               }
+
+               for (cwp $$6 : $$2) {
+                  if (this.e.get().a($$6)) {
+                     $$3 = true;
+                     break;
+                  }
+               }
+
+               if (!$$3) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
       }
 
-      public ce.a a(etp $$0) {
-         this.a = Optional.of(ju.a($$0.k()));
-         return this;
+      @Override
+      public void a(bj $$0) {
+         dz.a.super.a($$0);
+         $$0.a(this.d, ".entity");
       }
 
-      public ce.a a(ju<etp> $$0) {
-         this.a = Optional.of($$0);
-         return this;
+      @Override
+      public Optional<bi> a() {
+         return this.b;
       }
 
-      public ce.a a(ee $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      public Optional<cv> b() {
+         return this.c;
       }
 
-      public ce b() {
-         return new ce(this.a, this.b);
+      public Optional<bi> c() {
+         return this.d;
+      }
+
+      public Optional<cv> d() {
+         return this.e;
       }
    }
 }

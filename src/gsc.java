@@ -1,57 +1,72 @@
-public abstract class gsc<T extends bvz, S extends gyg, M extends gbu<S>> extends gqf<T, S, M> {
-   public gsc(grl.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$1, $$2);
-   }
+@FunctionalInterface
+public interface gsc<T extends buk> {
+   gsb<T, ?> create(gsc.a var1);
 
-   public gsc(grl.a $$0, M $$1, M $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, gve.a.a);
-   }
+   public static class a {
+      private final gsa a;
+      private final hbj b;
+      private final glw c;
+      private final gnb d;
+      private final aup e;
+      private final gey f;
+      private final hgp g;
+      private final fob h;
+      private final gwb i;
 
-   public gsc(grl.a $$0, M $$1, M $$2, float $$3, gve.a $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(new gve<>(this, $$0.f(), $$4, $$0.b()));
-      this.a(new gwl<>(this, $$0.f(), $$0.h()));
-      this.a(new gvs<>(this, $$0.b()));
-   }
-
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      a($$0, $$1, $$2);
-   }
-
-   public static void a(bvx $$0, gyg $$1, float $$2) {
-      $$1.I = $$0.ci();
-      $$1.J = $$0.fJ();
-      $$1.K = $$0.cl();
-      $$1.L = $$0.bZ();
-      $$1.D = 1.0F;
-      if ($$1.J) {
-         $$1.D = (float)$$0.dz().h();
-         $$1.D /= 0.2F;
-         $$1.D = $$1.D * $$1.D * $$1.D;
+      public a(gsa $$0, hbj $$1, glw $$2, gnb $$3, aup $$4, gey $$5, hgp $$6, fob $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new gwb($$6, this.i().b(gms.g));
       }
 
-      if ($$1.D < 1.0F) {
-         $$1.D = 1.0F;
+      public gsa a() {
+         return this.a;
       }
 
-      $$1.C = $$0.D($$2);
-      $$1.B = $$0.a($$2);
-      $$1.G = c($$0);
-      $$1.H = $$0.fA();
-      $$1.E = (float)cvx.b($$0.fB(), $$0);
-      $$1.F = $$0.fD();
-      $$1.M = $$0.fz();
-      $$1.N = $$0.bb.a($$2);
-      $$1.O = $$0.bb.b($$2);
-      $$1.P = $$0.bb.c($$2);
-      $$1.Q = $$0.a(bvj.e).v();
-      $$1.R = $$0.a(bvj.d).v();
-      $$1.S = $$0.a(bvj.c).v();
-   }
+      public hbj b() {
+         return this.b;
+      }
 
-   private static bvr c(bvx $$0) {
-      bvr $$1 = $$0.fy();
-      return $$0.aJ == bsz.a ? $$1 : $$1.e();
+      public glw c() {
+         return this.c;
+      }
+
+      public gnb d() {
+         return this.d;
+      }
+
+      public aup e() {
+         return this.e;
+      }
+
+      public gey f() {
+         return this.f;
+      }
+
+      public hgp g() {
+         return this.g;
+      }
+
+      public gwb h() {
+         return this.i;
+      }
+
+      public hgz i() {
+         return this.d.a().a();
+      }
+
+      public gfc a(gfa $$0) {
+         return this.f.a($$0);
+      }
+
+      public fob j() {
+         return this.h;
+      }
    }
 }

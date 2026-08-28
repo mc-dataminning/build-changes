@@ -1,5 +1,4 @@
-public class dzy extends RuntimeException {
-   public dzy(int $$0) {
-      super("Missing Palette entry for index " + $$0 + ".");
-   }
+import java.util.concurrent.Executor;
+
+public record dzy(arc a, dyt b, erp c, arf d, Executor e, dzc.e f) {
 }

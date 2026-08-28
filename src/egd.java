@@ -1,52 +1,35 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public abstract class egd extends egp<eja> {
-   public egd(Codec<eja> $$0) {
-      super($$0);
-   }
+public class egd implements eic {
+   public static final Codec<egd> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aku.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               aku.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               ern.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               ern.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, egd::new)
+   );
+   public final List<aku> b;
+   public final List<aku> c;
+   public final jr<erm> d;
+   public final jr<erm> e;
+   public final int f;
 
-   @Override
-   public boolean a(egr<eja> $$0) {
-      bac $$1 = $$0.d();
-      dhx $$2 = $$0.b();
-      jh $$3 = $$0.e();
-      Optional<dkd> $$4 = ma.e.a(axk.at, $$1).map(jq::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().m());
-   }
-
-   protected abstract boolean a(dha var1, bac var2, jh var3, dxo var4);
-
-   protected boolean b(dha $$0, bac $$1, jh $$2, dxo $$3) {
-      jh $$4 = $$2.d();
-      dxo $$5 = $$0.a_($$2);
-      if (($$5.a(dkf.J) || $$5.a(axk.aw)) && $$0.a_($$4).a(dkf.J)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            ma.e.a(axk.aw, $$1).map(jq::a).ifPresent($$2x -> $$0.a($$4, $$2x.m(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dkf.nx.m().b(drf.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
-
-         for (jm $$6 : jm.c.a) {
-            if ($$1.i() < 0.2F) {
-               jh $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dkf.J)) {
-                  ma.e.a(axk.au, $$1).map(jq::a).ifPresent($$3x -> {
-                     dxo $$4x = $$3x.m();
-                     if ($$4x.b(djo.c)) {
-                        $$4x = $$4x.b(djo.c, $$6);
-                     }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
-               }
-            }
-         }
-
-         return true;
+   public egd(List<aku> $$0, List<aku> $$1, jr<erm> $$2, jr<erm> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
       } else {
-         return false;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
    }
 }

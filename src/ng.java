@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.BiConsumer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ng {
+@FunctionalInterface
+public interface ng {
+   void generate(BiConsumer<akt<evw>, evw.a> var1);
 }

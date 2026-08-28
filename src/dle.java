@@ -1,67 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dle extends dqu implements drj {
-   public static final MapCodec<dle> a = b(dle::new);
-   public static final dyf b = dye.J;
-   protected static final float c = 6.5F;
-   protected static final float d = 9.5F;
-   protected static final fcl e = dkd.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
-   protected static final fcl f = dkd.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
-   protected static final fcl g = dkd.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
+public class dle extends dix {
+   public static final MapCodec<dle> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dlb.a.forGetter($$0x -> $$0x.f), t()).apply($$0, dle::new));
+   private final djm f;
 
    @Override
    public MapCodec<dle> a() {
-      return a;
+      return e;
    }
 
-   public dle(dxn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(i, jm.a.b));
+   protected dle(djm $$0, dww.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      switch ((jm.a)$$0.c(i)) {
-         case a:
-         default:
-            return g;
-         case c:
-            return f;
-         case b:
-            return e;
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
+   }
+
+   @Override
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.f.m().b(d, Boolean.valueOf(false)).b(c, $$0.c(c)), 2);
       }
    }
 
-   @Nullable
    @Override
-   public dxo a(dax $$0) {
-      etq $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == etr.c;
-      return super.a($$0).b(b, Boolean.valueOf($$2));
-   }
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$4.g() == $$0.c(c) && !$$0.a($$1, $$3)) {
+         return djo.a.m();
+      } else {
+         if ($$0.c(d)) {
+            $$2.a($$3, eta.c, eta.c.a($$1));
+         }
 
-   @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, etr.c, etr.c.a($$1));
+         this.a($$0, $$1, $$2, $$7, $$3);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b).a(i);
-   }
-
-   @Override
-   protected etq b_(dxo $$0) {
-      return $$0.c(b) ? etr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      return false;
    }
 }

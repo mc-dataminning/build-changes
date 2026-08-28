@@ -1,135 +1,270 @@
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.UUID;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class aku {
-   private static final ayr<akt<?>> F = ayr.c(16);
-   public static final akt<Byte> a = akt.a(zg.c);
-   public static final akt<Integer> b = akt.a(zg.h);
-   public static final akt<Long> c = akt.a(zg.k);
-   public static final akt<Float> d = akt.a(zg.l);
-   public static final akt<String> e = akt.a(zg.o);
-   public static final akt<xk> f = akt.a(xm.d);
-   public static final akt<Optional<xk>> g = akt.a(xm.e);
-   public static final akt<cxg> h = new akt<cxg>() {
-      @Override
-      public zi<? super wv, cxg> codec() {
-         return cxg.g;
-      }
+public final class aku implements Comparable<aku> {
+   public static final Codec<aku> a = Codec.STRING.comapFlatMap(aku::d, aku::toString).stable();
+   public static final ym<ByteBuf, aku> b = yk.o.a(aku::a, aku::toString);
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wo.c("argument.id.invalid"));
+   public static final char d = ':';
+   public static final String e = "minecraft";
+   public static final String f = "realms";
+   private final String h;
+   private final String i;
 
-      public cxg a(cxg $$0) {
-         return $$0.v();
-      }
-   };
-   public static final akt<dxo> i = akt.a(zg.a(dkd.q));
-   private static final zi<ByteBuf, Optional<dxo>> G = new zi<ByteBuf, Optional<dxo>>() {
-      public void a(ByteBuf $$0, Optional<dxo> $$1) {
-         if ($$1.isPresent()) {
-            xb.a($$0, dkd.j($$1.get()));
-         } else {
-            xb.a($$0, 0);
-         }
-      }
+   private aku(String $$0, String $$1) {
+      assert j($$0);
 
-      public Optional<dxo> a(ByteBuf $$0) {
-         int $$1 = xb.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dkd.a($$1));
-      }
-   };
-   public static final akt<Optional<dxo>> j = akt.a(G);
-   public static final akt<Boolean> k = akt.a(zg.b);
-   public static final akt<lq> l = akt.a(ls.bj);
-   public static final akt<List<lq>> m = akt.a(ls.bj.a(zg.a()));
-   public static final akt<ki> n = akt.a(ki.a);
-   public static final akt<jh> o = akt.a(jh.b);
-   public static final akt<Optional<jh>> p = akt.a(jh.b.a(zg::a));
-   public static final akt<jm> q = akt.a(jm.j);
-   public static final akt<Optional<UUID>> r = akt.a(kk.g.a(zg::a));
-   public static final akt<Optional<jp>> s = akt.a(jp.c.a(zg::a));
-   public static final akt<um> t = new akt<um>() {
-      @Override
-      public zi<? super wv, um> codec() {
-         return zg.s;
-      }
+      assert i($$1);
 
-      public um a(um $$0) {
-         return $$0.i();
-      }
-   };
-   public static final akt<cpb> u = akt.a(cpb.d);
-   private static final zi<ByteBuf, OptionalInt> H = new zi<ByteBuf, OptionalInt>() {
-      public OptionalInt a(ByteBuf $$0) {
-         int $$1 = xb.a($$0);
-         return $$1 == 0 ? OptionalInt.empty() : OptionalInt.of($$1 - 1);
-      }
+      this.h = $$0;
+      this.i = $$1;
+   }
 
-      public void a(ByteBuf $$0, OptionalInt $$1) {
-         xb.a($$0, $$1.orElse(-1) + 1);
-      }
-   };
-   public static final akt<OptionalInt> v = akt.a(H);
-   public static final akt<bwj> w = akt.a(bwj.t);
-   public static final akt<jq<chs>> x = akt.a(chs.a);
-   public static final akt<jq<cis>> y = akt.a(cis.d);
-   public static final akt<jq<chz>> z = akt.a(chz.a);
-   public static final akt<jq<clo>> A = akt.a(clo.d);
-   public static final akt<cix.a> B = akt.a(cix.a.e);
-   public static final akt<ckf.a> C = akt.a(ckf.a.i);
-   public static final akt<Vector3f> D = akt.a(zg.u);
-   public static final akt<Quaternionf> E = akt.a(zg.v);
+   private static aku d(String $$0, String $$1) {
+      return new aku(e($$0, $$1), f($$0, $$1));
+   }
 
-   public static void a(akt<?> $$0) {
-      F.d($$0);
+   public static aku a(String $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   public static aku a(String $$0) {
+      return a($$0, ':');
+   }
+
+   public static aku b(String $$0) {
+      return new aku("minecraft", f("minecraft", $$0));
    }
 
    @Nullable
-   public static akt<?> a(int $$0) {
-      return F.a($$0);
+   public static aku c(String $$0) {
+      return b($$0, ':');
    }
 
-   public static int b(akt<?> $$0) {
-      return F.a($$0);
+   @Nullable
+   public static aku b(String $$0, String $$1) {
+      return j($$0) && i($$1) ? new aku($$0, $$1) : null;
    }
 
-   private aku() {
+   public static aku a(String $$0, char $$1) {
+      int $$2 = $$0.indexOf($$1);
+      if ($$2 >= 0) {
+         String $$3 = $$0.substring($$2 + 1);
+         if ($$2 != 0) {
+            String $$4 = $$0.substring(0, $$2);
+            return d($$4, $$3);
+         } else {
+            return b($$3);
+         }
+      } else {
+         return b($$0);
+      }
    }
 
-   static {
-      a(a);
-      a(b);
-      a(c);
-      a(d);
-      a(e);
-      a(f);
-      a(g);
-      a(h);
-      a(k);
-      a(n);
-      a(o);
-      a(p);
-      a(q);
-      a(r);
-      a(i);
-      a(j);
-      a(t);
-      a(l);
-      a(m);
-      a(u);
-      a(v);
-      a(w);
-      a(x);
-      a(y);
-      a(z);
-      a(s);
-      a(A);
-      a(C);
-      a(B);
-      a(D);
-      a(E);
+   @Nullable
+   public static aku b(String $$0, char $$1) {
+      int $$2 = $$0.indexOf($$1);
+      if ($$2 >= 0) {
+         String $$3 = $$0.substring($$2 + 1);
+         if (!i($$3)) {
+            return null;
+         } else if ($$2 != 0) {
+            String $$4 = $$0.substring(0, $$2);
+            return j($$4) ? new aku($$4, $$3) : null;
+         } else {
+            return new aku("minecraft", $$3);
+         }
+      } else {
+         return i($$0) ? new aku("minecraft", $$0) : null;
+      }
+   }
+
+   public static DataResult<aku> d(String $$0) {
+      try {
+         return DataResult.success(a($$0));
+      } catch (aa var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.i;
+   }
+
+   public String b() {
+      return this.h;
+   }
+
+   public aku e(String $$0) {
+      return new aku(this.h, f(this.h, $$0));
+   }
+
+   public aku a(UnaryOperator<String> $$0) {
+      return this.e($$0.apply(this.i));
+   }
+
+   public aku f(String $$0) {
+      return this.e($$0 + this.i);
+   }
+
+   public aku g(String $$0) {
+      return this.e(this.i + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.h + ":" + this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof aku $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.h.hashCode() + this.i.hashCode();
+   }
+
+   public int a(aku $$0) {
+      int $$1 = this.i.compareTo($$0.i);
+      if ($$1 == 0) {
+         $$1 = this.h.compareTo($$0.h);
+      }
+
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.h + "." + this.i;
+   }
+
+   public String e() {
+      return this.h.equals("minecraft") ? this.i : this.d();
+   }
+
+   public String h(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String c(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   private static String c(StringReader $$0) {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
+      }
+
+      return $$0.getString().substring($$1, $$0.getCursor());
+   }
+
+   public static aku a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+
+      try {
+         return a($$2);
+      } catch (aa var4) {
+         $$0.setCursor($$1);
+         throw c.createWithContext($$0);
+      }
+   }
+
+   public static aku b(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+      if ($$2.isEmpty()) {
+         throw c.createWithContext($$0);
+      } else {
+         try {
+            return a($$2);
+         } catch (aa var4) {
+            $$0.setCursor($$1);
+            throw c.createWithContext($$0);
+         }
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean i(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public static boolean j(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   private static String e(String $$0, String $$1) {
+      if (!j($$0)) {
+         throw new aa("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   private static String f(String $$0, String $$1) {
+      if (!i($$1)) {
+         throw new aa("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   public static class a implements JsonDeserializer<aku>, JsonSerializer<aku> {
+      public aku a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return aku.a(ayp.a($$0, "location"));
+      }
+
+      public JsonElement a(aku $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
+      }
    }
 }

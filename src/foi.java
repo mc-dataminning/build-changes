@@ -1,72 +1,74 @@
-public class foi extends fns {
-   private final fnj a;
-   private final fot b;
+import javax.annotation.Nullable;
 
-   public foi(int $$0, int $$1, int $$2, int $$3, xk $$4, fnj $$5) {
+public abstract class foi extends fok implements fqo {
+   @Nullable
+   private fqp a;
+   private boolean c;
+
+   public foi(int $$0, int $$1, int $$2, int $$3, wo $$4) {
       super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
-      this.b = new fot($$4, $$5).d(this.y() - this.b());
-   }
-
-   public foi a(int $$0) {
-      this.b.c($$0);
-      return this;
    }
 
    @Override
-   public void i(int $$0) {
-      super.i($$0);
-      this.b.d(this.y() - this.b());
+   public final boolean aK_() {
+      return this.c;
    }
 
    @Override
-   protected int h() {
-      return this.b.w();
+   public final void b_(boolean $$0) {
+      this.c = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fqp aL_() {
+      return this.a;
    }
 
    @Override
-   protected double i() {
-      return 9.0;
-   }
-
-   @Override
-   protected void b(fnl $$0) {
-      if (this.e()) {
-         super.b($$0);
-      } else if (this.aN_()) {
-         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
+   public void a(@Nullable fqp $$0) {
+      if (this.a != null) {
+         this.a.a(false);
       }
-   }
 
-   @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         if (!this.e()) {
-            this.b($$0);
-            $$0.c().a();
-            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
-            this.b.a($$0, $$1, $$2, $$3);
-            $$0.c().b();
-         } else {
-            super.b($$0, $$1, $$2, $$3);
-         }
+      if ($$0 != null) {
+         $$0.a(true);
       }
+
+      this.a = $$0;
    }
 
-   public boolean j() {
-      return super.e();
+   @Nullable
+   @Override
+   public foa a(fsv $$0) {
+      return fqo.super.a($$0);
    }
 
    @Override
-   protected void c(fnl $$0, int $$1, int $$2, float $$3) {
-      $$0.c().a();
-      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
-      this.b.a($$0, $$1, $$2, $$3);
-      $$0.c().b();
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return fqo.super.a($$0, $$1, $$2) || $$3;
    }
 
    @Override
-   protected void a(frw $$0) {
-      $$0.a(frv.a, this.z());
+   public boolean b(double $$0, double $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      return fqo.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      return fqo.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aM_() {
+      return fqo.super.aM_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      fqo.super.a($$0);
    }
 }

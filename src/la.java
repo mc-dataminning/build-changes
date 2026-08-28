@@ -1,75 +1,46 @@
-public class la implements lb {
-   private static final int c = 6;
+public class la extends lb {
+   private final lb c = new lb();
+   private final bur<? extends cqu> d;
 
-   @Override
-   public final cxg dispense(ky $$0, cxg $$1) {
-      cxg $$2 = this.a($$0, $$1);
-      this.a($$0);
-      this.a($$0, $$0.d().c(dmj.b));
-      return $$2;
+   public la(bur<? extends cqu> $$0) {
+      this.d = $$0;
    }
 
-   protected cxg a(ky $$0, cxg $$1) {
-      jm $$2 = $$0.d().c(dmj.b);
-      ka $$3 = dmj.a($$0);
-      cxg $$4 = $$1.a(1);
-      a($$0.b(), $$4, 6, $$2, $$3);
+   @Override
+   public cwp a(kz $$0, cwp $$1) {
+      jn $$2 = $$0.d().c(dls.b);
+      arc $$3 = $$0.b();
+      fba $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)this.d.l() / 2.0;
+      double $$6 = $$4.a() + (double)$$2.j() * $$5;
+      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
+      double $$8 = $$4.c() + (double)$$2.l() * $$5;
+      ji $$9 = $$0.c().a($$2);
+      double $$10;
+      if ($$3.b_($$9).a(awv.a)) {
+         $$10 = 1.0;
+      } else {
+         if (!$$3.a_($$9).l() || !$$3.b_($$9.e()).a(awv.a)) {
+            return this.c.dispense($$0, $$1);
+         }
+
+         $$10 = 0.0;
+      }
+
+      cqu $$13 = this.d.a($$3, buq.o);
+      if ($$13 != null) {
+         $$13.p($$6, $$7 + $$10, $$8);
+         bur.<cqu>a($$3, $$1, null).accept($$13);
+         $$13.v($$2.p());
+         $$3.b($$13);
+         $$1.h(1);
+      }
+
       return $$1;
    }
 
-   public static void a(dgz $$0, cxg $$1, int $$2, jm $$3, ka $$4) {
-      double $$5 = $$4.a();
-      double $$6 = $$4.b();
-      double $$7 = $$4.c();
-      if ($$3.o() == jm.a.b) {
-         $$6 -= 0.125;
-      } else {
-         $$6 -= 0.15625;
-      }
-
-      cls $$8 = new cls($$0, $$5, $$6, $$7, $$1);
-      double $$9 = $$0.A.j() * 0.1 + 0.2;
-      $$8.n(
-         $$0.A.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
-         $$0.A.a(0.2, 0.0172275 * (double)$$2),
-         $$0.A.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
-      );
-      $$0.b($$8);
-   }
-
-   protected void a(ky $$0) {
-      b($$0);
-   }
-
-   protected void a(ky $$0, jm $$1) {
-      b($$0, $$1);
-   }
-
-   private static void b(ky $$0) {
+   @Override
+   protected void a(kz $$0) {
       $$0.b().c(1000, $$0.c(), 0);
-   }
-
-   private static void b(ky $$0, jm $$1) {
-      $$0.b().c(2000, $$0.c(), $$1.d());
-   }
-
-   protected cxg a(ky $$0, cxg $$1, cxg $$2) {
-      $$1.h(1);
-      if ($$1.f()) {
-         return $$2;
-      } else {
-         this.b($$0, $$2);
-         return $$1;
-      }
-   }
-
-   private void b(ky $$0, cxg $$1) {
-      cxg $$2 = $$0.e().b($$1);
-      if (!$$2.f()) {
-         jm $$3 = $$0.d().c(dmj.b);
-         a($$0.b(), $$2, 6, $$3, dmj.a($$0));
-         b($$0);
-         b($$0, $$3);
-      }
    }
 }

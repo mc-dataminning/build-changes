@@ -1,47 +1,21 @@
-public class cxu extends cxc {
-   private final bvi<? extends crn> a;
+import javax.annotation.Nullable;
 
-   public cxu(bvi<? extends crn> $$0, cxc.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cxu extends cyc {
+   public cxu(djm $$0, djm $$1, cwl.a $$2) {
+      super($$0, $$1, jn.a, $$2);
+   }
+
+   public cxu(cwl.a $$0, djm $$1, djm $$2, jn $$3) {
+      super($$1, $$2, $$3, $$0);
    }
 
    @Override
-   public bta a(daz $$0) {
-      dgz $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dxo $$3 = $$1.a_($$2);
-      if (!$$3.a(axk.P)) {
-         return bta.d;
-      } else {
-         cxg $$4 = $$0.n();
-         dyr $$5 = $$3.b() instanceof djs ? $$3.c(((djs)$$3.b()).c()) : dyr.a;
-         double $$6 = 0.0;
-         if ($$5.b()) {
-            $$6 = 0.5;
-         }
-
-         fbr $$7 = new fbr((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
-         crn $$8 = crn.a($$1, $$7.d, $$7.e, $$7.f, this.a, bvh.o, $$4, $$0.o());
-         if ($$8 == null) {
-            return bta.d;
-         } else {
-            if (crn.b($$1)) {
-               for (bvb $$10 : $$1.a_(null, $$8.cR())) {
-                  if ($$10 instanceof crn) {
-                     return bta.d;
-                  }
-               }
-            }
-
-            if ($$1 instanceof arx $$11) {
-               $$11.b($$8);
-               $$11.a(eck.t, $$2, eck.a.a($$0.o(), $$11.a_($$2.e())));
-            }
-
-            $$4.h(1);
-            return bta.a;
-         }
+   protected boolean a(ji $$0, dgi $$1, @Nullable cox $$2, cwp $$3, dwx $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dvm $$6 && $$1.a_($$0).b() instanceof dqr $$7) {
+         $$7.a($$2, $$6, true);
       }
+
+      return $$5;
    }
 }

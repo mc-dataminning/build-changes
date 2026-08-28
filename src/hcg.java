@@ -1,15 +1,25 @@
-public class hcg extends hck {
-   private static final alp a = alp.b("back");
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   public hcg(hbh $$0) {
-      super($$0, alp.b("textures/atlas/paintings.png"), alp.b("paintings"));
+public class hcg implements hcp {
+   public static final MapCodec<hcg> a = hch.a.xmap(hcg::new, $$0 -> $$0.b);
+   private final hch b;
+
+   public hcg(boolean $$0, hch.a $$1) {
+      this(new hch($$0, $$1));
    }
 
-   public hbg a(clo $$0) {
-      return this.a($$0.d());
+   private hcg(hch $$0) {
+      this.b = $$0;
    }
 
-   public hbg a() {
-      return this.a(a);
+   @Override
+   public float a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      return this.b.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public MapCodec<hcg> a() {
+      return a;
    }
 }

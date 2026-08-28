@@ -1,164 +1,132 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
 
-public class fnc {
-   private static final int a = 256;
-   private final ThreadLocal<fnc.b> b = ThreadLocal.withInitial(fnc.b::new);
-   private final Long2ObjectLinkedOpenHashMap<fnc.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<jh> e;
+public class fnc implements mi {
+   private final mk.a d;
+   private final mk.a e;
+   private final mk.a f;
 
-   public fnc(ToIntFunction<jh> $$0) {
-      this.e = $$0;
+   public fnc(mk $$0) {
+      this.d = $$0.a(mk.b.b, "blockstates");
+      this.e = $$0.a(mk.b.b, "items");
+      this.f = $$0.a(mk.b.b, "models");
    }
 
-   public int a(jh $$0) {
-      int $$1 = kj.a($$0.u());
-      int $$2 = kj.a($$0.w());
-      fnc.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
+   @Override
+   public CompletableFuture<?> a(mg $$0) {
+      fnc.b $$1 = new fnc.b();
+      fnc.a $$2 = new fnc.a();
+      fnc.c $$3 = new fnc.c();
+      new fmy($$2, $$1, $$3).a();
+      new fna($$1, $$3).a();
+      $$2.a();
+      $$1.a();
+      return CompletableFuture.allOf($$2.a($$0, this.d), $$3.a($$0, this.f), $$1.a($$0, this.e));
+   }
+
+   static <T> CompletableFuture<?> a(mg $$0, Function<T, Path> $$1, Map<T, ? extends Supplier<JsonElement>> $$2) {
+      return mi.a($$0, Supplier::get, $$1, $$2);
+   }
+
+   @Override
+   public final String a() {
+      return "Model Definitions";
+   }
+
+   static class a implements Consumer<fnd> {
+      private final Map<djm, fnd> a = new HashMap<>();
+
+      public void a(fnd $$0) {
+         djm $$1 = $$0.a();
+         fnd $$2 = this.a.put($$1, $$0);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate blockstate definition for " + $$1);
+         }
       }
 
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
+      public void a() {
+         Stream<jr.c<djm>> $$0 = mb.e.c().filter($$0x -> true);
+         List<aku> $$1 = $$0.filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
+         if (!$$1.isEmpty()) {
+            throw new IllegalStateException("Missing blockstate definitions for: " + $$1);
+         }
+      }
+
+      public CompletableFuture<?> a(mg $$0, mk.a $$1) {
+         return fnc.a($$0, $$1x -> $$1.a($$1x.p().h().a()), this.a);
       }
    }
 
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
+   static class b implements fnb {
+      private final Map<cwl, hbf> a = new HashMap<>();
+      private final Map<cwl, cwl> b = new HashMap<>();
 
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = dgf.c($$0 + $$2, $$1 + $$3);
-               fnc.a $$5 = (fnc.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
+      @Override
+      public void a(cwl $$0, hbi.b $$1) {
+         this.a($$0, new hbf($$1));
+      }
+
+      private void a(cwl $$0, hbf $$1) {
+         hbf $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate item model definition for " + $$0);
+         }
+      }
+
+      @Override
+      public void a(cwl $$0, cwl $$1) {
+         this.b.put($$1, $$0);
+      }
+
+      public void a() {
+         mb.g.forEach($$0x -> {
+            if (!this.b.containsKey($$0x)) {
+               if ($$0x instanceof cuv $$1 && !this.a.containsKey($$1)) {
+                  aku $$2 = fnq.a($$1.d());
+                  this.a($$1, fno.a($$2));
                }
             }
-         }
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(fnc.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   private fnc.a b(int $$0, int $$1) {
-      long $$2 = dgf.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         fnc.a $$3 = (fnc.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
-      }
-
-      this.d.writeLock().lock();
-
-      fnc.a $$5;
-      try {
-         fnc.a $$4 = (fnc.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new fnc.a();
-            if (this.c.size() >= 256) {
-               fnc.a $$6 = (fnc.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
+         });
+         this.b.forEach(($$0x, $$1) -> {
+            hbf $$2 = this.a.get($$1);
+            if ($$2 == null) {
+               throw new IllegalStateException("Missing donor: " + $$1 + " -> " + $$0x);
+            } else {
+               this.a($$0x, $$2);
             }
-
-            this.c.put($$2, $$5);
-            return $$5;
+         });
+         List<aku> $$0 = mb.g.c().filter($$0x -> !this.a.containsKey($$0x.a())).map($$0x -> $$0x.h().a()).toList();
+         if (!$$0.isEmpty()) {
+            throw new IllegalStateException("Missing item model definitions for: " + $$0);
          }
-
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
       }
 
-      return $$5;
-   }
-
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = azu.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
-         }
-
-         this.b.writeLock().lock();
-
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
-         }
-
-         return var12;
-      }
-
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
+      public CompletableFuture<?> a(mg $$0, mk.a $$1) {
+         return mi.a($$0, hbf.a, $$1x -> $$1.a($$1x.f().h().a()), this.a);
       }
    }
 
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      fnc.a c;
+   static class c implements BiConsumer<aku, fnp> {
+      private final Map<aku, fnp> a = new HashMap<>();
 
-      private b() {
+      public void a(aku $$0, fnp $$1) {
+         Supplier<JsonElement> $$2 = this.a.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicate model definition for " + $$0);
+         }
+      }
+
+      public CompletableFuture<?> a(mg $$0, mk.a $$1) {
+         return fnc.a($$0, $$1::a, this.a);
       }
    }
 }

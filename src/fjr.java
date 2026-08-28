@@ -1,95 +1,167 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fjr extends hhs {
-   private static final Logger a = LogUtils.getLogger();
-   private static final hht b = new hht(Duration.ofSeconds(5L));
-   private final List<fky> c;
-   private final ftr C;
-   private final frr D = frr.d();
-   private volatile xk E;
-   @Nullable
-   private fon F;
+public class fjr {
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final baa d;
 
-   public fjr(ftr $$0, fky... $$1) {
-      super(flq.a);
-      this.C = $$0;
-      this.c = List.of($$1);
-      if (this.c.isEmpty()) {
-         throw new IllegalArgumentException("No tasks added");
+   public fjr(Executor $$0, TimeUnit $$1, baa $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public <T> fjr.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fjs $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         this.E = this.c.get(0).a();
-         Runnable $$2 = () -> {
-            for (fky $$1x : $$1) {
-               this.a($$1x.a());
-               if ($$1x.d()) {
-                  break;
-               }
+         return new fjr.e<>($$0, $$1, $$4, $$3);
+      }
+   }
 
-               $$1x.run();
-               if ($$1x.d()) {
-                  return;
-               }
+   public fjr.c a() {
+      return new fjr.c();
+   }
+
+   static record a<T>(Either<T, Exception> a, long b) {
+   }
+
+   class b<T> {
+      private final fjr.e<T> a;
+      private final Consumer<T> b;
+      private long c = -1L;
+
+      b(final fjr.e<T> $$0, final Consumer<T> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      void a(long $$0) {
+         this.a.a($$0);
+         this.a();
+      }
+
+      void a() {
+         fjr.d<T> $$0 = this.a.g;
+         if ($$0 != null && this.c < $$0.b) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void b() {
+         fjr.d<T> $$0 = this.a.g;
+         if ($$0 != null) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
+         }
+      }
+
+      void c() {
+         this.a.a();
+         this.c = -1L;
+      }
+   }
+
+   public class c {
+      private final List<fjr.b<?>> b = new ArrayList<>();
+
+      public <T> void a(fjr.e<T> $$0, Consumer<T> $$1) {
+         fjr.b<T> $$2 = fjr.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (fjr.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (fjr.b<?> $$0 : this.b) {
+            $$0.a(fjr.this.d.get(fjr.this.c));
+         }
+      }
+
+      public void c() {
+         for (fjr.b<?> $$0 : this.b) {
+            $$0.c();
+         }
+      }
+   }
+
+   static record d<T>(T a, long b) {
+   }
+
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final fjs e;
+      @Nullable
+      private CompletableFuture<fjr.a<T>> f;
+      @Nullable
+      fjr.d<T> g;
+      private long h = -1L;
+
+      e(final String $$1, final Callable<T> $$2, final long $$3, final fjs $$4) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      void a(long $$0) {
+         if (this.f != null) {
+            fjr.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
             }
-         };
-         Thread $$3 = new Thread($$2, "Realms-long-running-task");
-         $$3.setUncaughtExceptionHandler(new fiv(a));
-         $$3.start();
-      }
-   }
 
-   @Override
-   public void e() {
-      super.e();
-      if (this.F != null) {
-         b.a(this.m.aZ(), this.F.z());
-      }
-   }
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new fjr.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               fjr.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.f();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public void aT_() {
-      this.D.c().b();
-      this.F = new fon(this.p, this.E);
-      this.D.a(this.F, $$0 -> $$0.e(30));
-      this.D.a(fny.a(xj.e, $$0 -> this.f()).a());
-      this.D.a($$1 -> {
-         fnw var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.D.a();
-      frl.a(this.D, this.H());
-   }
-
-   protected void f() {
-      for (fky $$0 : this.c) {
-         $$0.b();
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = fjr.this.d.get(fjr.this.c);
+                  return new fjr.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = fjr.this.d.get(fjr.this.c);
+                  return new fjr.a<>(Either.right(var4x), $$3);
+               }
+            }, fjr.this.b);
+         }
       }
 
-      this.m.a(this.C);
-   }
-
-   public void a(xk $$0) {
-      if (this.F != null) {
-         this.F.b($$0);
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
       }
-
-      this.E = $$0;
    }
 }

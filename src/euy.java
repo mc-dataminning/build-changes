@@ -1,196 +1,184 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public class euy {
-   public static final zi<ByteBuf, euy> a = zg.a(euy::a, euy::i);
-   private static final euy[] b = ae.a(() -> {
-      euy[] $$0 = new euy[48];
-      a(new euy(jm.b, jm.c, euy.a.a), $$0);
-      return $$0;
-   });
-   private final jm c;
-   private final jm d;
-   private final jm e;
-   private final euy.a f;
-   private final int g;
-   private final List<jm> h;
-   private final List<jm> i;
-   private final List<jm> j;
-   private final Map<jm, euy> k = new EnumMap<>(jm.class);
-   private final Map<jm, euy> l = new EnumMap<>(jm.class);
-   private final Map<euy.a, euy> m = new EnumMap<>(euy.a.class);
+public class euy implements evk {
+   private final evl a;
+   private final evk b;
 
-   private euy(jm $$0, jm $$1, euy.a $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      kl $$3 = $$1.q().d($$0.q());
-      jm $$4 = jm.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == euy.a.b) {
-         this.e = $$4;
-      } else {
-         this.e = $$4.g();
-      }
-
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
-   }
-
-   public static euy a(jm $$0, jm $$1, euy.a $$2) {
-      return b[b($$0, $$1, $$2)];
-   }
-
-   public euy a(jm $$0) {
-      return this.l.get($$0);
-   }
-
-   public euy b(jm $$0) {
-      return this.k.get($$0);
-   }
-
-   public euy c(jm $$0) {
-      return $$0.o() == this.c.o() ? this : this.k.get($$0);
-   }
-
-   public euy d(jm $$0) {
-      euy $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
-   }
-
-   public euy a(euy.a $$0) {
-      return this.m.get($$0);
-   }
-
-   public euy a() {
-      return this.a(this.f.a());
-   }
-
-   public jm b() {
-      return this.d;
-   }
-
-   public jm c() {
-      return this.c;
-   }
-
-   public jm d() {
-      return this.e;
-   }
-
-   public euy.a e() {
-      return this.f;
-   }
-
-   public List<jm> f() {
-      return this.h;
-   }
-
-   public List<jm> g() {
-      return this.i;
-   }
-
-   public List<jm> h() {
-      return this.j;
+   public euy(evl $$0, evk $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+   public ji a() {
+      return this.b.a();
    }
 
-   public int i() {
-      return this.g;
+   @Override
+   public float b() {
+      return this.b.b();
    }
 
-   public static euy a(int $$0) {
-      return b[$$0];
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   public static euy a(bac $$0) {
-      return ae.a(b, $$0);
+   @Override
+   public long d() {
+      return this.b.d();
    }
 
-   private static euy a(euy $$0, euy[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
-      } else {
-         $$1[$$0.i()] = $$0;
-
-         for (euy.a $$2 : euy.a.values()) {
-            $$0.m.put($$2, a(new euy($$0.c, $$0.d, $$2), $$1));
-         }
-
-         for (jm $$3 : jm.values()) {
-            jm $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
-
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
-            }
-
-            $$0.k.put($$3, a(new euy($$4, $$3, $$0.f), $$1));
-         }
-
-         for (jm $$5 : jm.values()) {
-            jm $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
-
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
-
-            $$0.l.put($$5, a(new euy($$5, $$6, $$0.f), $$1));
-         }
-
-         return $$0;
-      }
+   @Override
+   public String e() {
+      return this.a.e();
    }
 
-   @VisibleForTesting
-   protected static int b(jm $$0, jm $$1, euy.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == jm.a.b) {
-            $$3 = $$1.o() == jm.a.a ? 1 : 0;
-         } else {
-            $$3 = $$1.o() == jm.a.b ? 1 : 0;
-         }
-
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
-      }
+   @Override
+   public int f() {
+      return this.b.f();
    }
 
-   public static enum a {
-      a("left"),
-      b("right");
+   @Override
+   public void a(int $$0) {
+   }
 
-      private final String c;
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public int h() {
+      return this.b.h();
+   }
 
-      public euy.a a() {
-         return this == a ? b : a;
-      }
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
 
-      @Override
-      public String toString() {
-         return this.c;
-      }
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public dgf k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(ji $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(dgf $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public dge o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dyn.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dyn.c $$0) {
+   }
+
+   @Override
+   public bsg q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public fan<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, dgk $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

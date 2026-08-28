@@ -1,80 +1,92 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public interface dha extends dfn {
+   jn[] D = jn.values();
 
-public interface dha extends dgk, dhg, dho {
-   @Override
-   default long al() {
-      return this.D_().d();
+   default int a(ji $$0, jn $$1) {
+      return this.a_($$0).b(this, $$0, $$1);
    }
 
-   long J_();
-
-   @Override
-   default <T> fdj<T> a(jh $$0, T $$1, int $$2, fdn $$3) {
-      return new fdj<>($$1, $$0, this.D_().c() + (long)$$2, $$3, this.J_());
+   default int e_(ji $$0) {
+      int $$1 = 0;
+      $$1 = Math.max($$1, this.a($$0.e(), jn.a));
+      if ($$1 >= 15) {
+         return $$1;
+      } else {
+         $$1 = Math.max($$1, this.a($$0.d(), jn.b));
+         if ($$1 >= 15) {
+            return $$1;
+         } else {
+            $$1 = Math.max($$1, this.a($$0.f(), jn.c));
+            if ($$1 >= 15) {
+               return $$1;
+            } else {
+               $$1 = Math.max($$1, this.a($$0.g(), jn.d));
+               if ($$1 >= 15) {
+                  return $$1;
+               } else {
+                  $$1 = Math.max($$1, this.a($$0.h(), jn.e));
+                  if ($$1 >= 15) {
+                     return $$1;
+                  } else {
+                     $$1 = Math.max($$1, this.a($$0.i(), jn.f));
+                     return $$1 >= 15 ? $$1 : $$1;
+                  }
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   default <T> fdj<T> a(jh $$0, T $$1, int $$2) {
-      return new fdj<>($$1, $$0, this.D_().c() + (long)$$2, this.J_());
+   default int a(ji $$0, jn $$1, boolean $$2) {
+      dwx $$3 = this.a_($$0);
+      if ($$2) {
+         return dlp.n($$3) ? this.a($$0, $$1) : 0;
+      } else if ($$3.a(djo.hx)) {
+         return 15;
+      } else if ($$3.a(djo.cE)) {
+         return $$3.c(dpt.f);
+      } else {
+         return $$3.p() ? this.a($$0, $$1) : 0;
+      }
    }
 
-   evs D_();
-
-   bsy d_(jh var1);
-
-   @Nullable
-   MinecraftServer p();
-
-   default bsx am() {
-      return this.D_().q();
+   default boolean b(ji $$0, jn $$1) {
+      return this.c($$0, $$1) > 0;
    }
 
-   dzn S();
-
-   @Override
-   default boolean b(int $$0, int $$1) {
-      return this.S().b($$0, $$1);
+   default int c(ji $$0, jn $$1) {
+      dwx $$2 = this.a_($$0);
+      int $$3 = $$2.a(this, $$0, $$1);
+      return $$2.d(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
    }
 
-   bac H_();
-
-   default void b(jh $$0, dkd $$1) {
+   default boolean C(ji $$0) {
+      if (this.c($$0.e(), jn.a) > 0) {
+         return true;
+      } else if (this.c($$0.d(), jn.b) > 0) {
+         return true;
+      } else if (this.c($$0.f(), jn.c) > 0) {
+         return true;
+      } else if (this.c($$0.g(), jn.d) > 0) {
+         return true;
+      } else {
+         return this.c($$0.h(), jn.e) > 0 ? true : this.c($$0.i(), jn.f) > 0;
+      }
    }
 
-   default void a(jm $$0, jh $$1, jh $$2, dxo $$3, int $$4, int $$5) {
-      eux.a(this, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
-   }
+   default int D(ji $$0) {
+      int $$1 = 0;
 
-   default void a(@Nullable cpo $$0, jh $$1, awu $$2, aww $$3) {
-      this.a($$0, $$1, $$2, $$3, 1.0F, 1.0F);
-   }
+      for (jn $$2 : D) {
+         int $$3 = this.c($$0.a($$2), $$2);
+         if ($$3 >= 15) {
+            return 15;
+         }
 
-   void a(@Nullable cpo var1, jh var2, awu var3, aww var4, float var5, float var6);
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
 
-   void a(lq var1, double var2, double var4, double var6, double var8, double var10, double var12);
-
-   void a(@Nullable cpo var1, int var2, jh var3, int var4);
-
-   default void c(int $$0, jh $$1, int $$2) {
-      this.a(null, $$0, $$1, $$2);
-   }
-
-   void a(jq<eck> var1, fbr var2, eck.a var3);
-
-   default void a(@Nullable bvb $$0, jq<eck> $$1, fbr $$2) {
-      this.a($$1, $$2, new eck.a($$0, null));
-   }
-
-   default void a(@Nullable bvb $$0, jq<eck> $$1, jh $$2) {
-      this.a($$1, $$2, new eck.a($$0, null));
-   }
-
-   default void a(jq<eck> $$0, jh $$1, eck.a $$2) {
-      this.a($$0, fbr.b($$1), $$2);
-   }
-
-   default void a(alo<eck> $$0, jh $$1, eck.a $$2) {
-      this.a(this.K_().e(mb.G).b($$0), $$1, $$2);
+      return $$1;
    }
 }

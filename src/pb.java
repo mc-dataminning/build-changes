@@ -1,101 +1,77 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
 
-public class pb implements ov {
-   private final ow b;
-   private final dbh c;
-   private final cxc d;
-   private final dbr e;
-   private final float f;
-   private final int g;
-   private final Map<String, ap<?>> h = new LinkedHashMap<>();
-   @Nullable
-   private String i;
-   private final dbb.a<?> j;
-
-   private pb(ow $$0, dbh $$1, dgy $$2, dbr $$3, float $$4, int $$5, dbb.a<?> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.j();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
-   }
-
-   public static <T extends dbb> pb a(dbr $$0, ow $$1, dgy $$2, float $$3, int $$4, dcf<T> $$5, dbb.a<T> $$6) {
-      return new pb($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
-   }
-
-   public static pb a(dbr $$0, ow $$1, dgy $$2, float $$3, int $$4) {
-      return new pb($$1, dbh.a, $$2, $$0, $$3, $$4, dbg::new);
-   }
-
-   public static pb b(dbr $$0, ow $$1, dgy $$2, float $$3, int $$4) {
-      return new pb($$1, c($$2), $$2, $$0, $$3, $$4, dbe::new);
-   }
-
-   public static pb c(dbr $$0, ow $$1, dgy $$2, float $$3, int $$4) {
-      return new pb($$1, b($$2), $$2, $$0, $$3, $$4, dcp::new);
-   }
-
-   public static pb d(dbr $$0, ow $$1, dgy $$2, float $$3, int $$4) {
-      return new pb($$1, dbh.a, $$2, $$0, $$3, $$4, dcu::new);
-   }
-
-   public pb b(String $$0, ap<?> $$1) {
-      this.h.put($$0, $$1);
-      return this;
-   }
-
-   public pb b(@Nullable String $$0) {
-      this.i = $$0;
-      return this;
+public class pb extends pn<btc> {
+   public pb(mk $$0, CompletableFuture<jt.a> $$1) {
+      super($$0, mc.s, $$1);
    }
 
    @Override
-   public cxc a() {
-      return this.d;
-   }
-
-   @Override
-   public void a(ox $$0, alo<dbv<?>> $$1) {
-      this.a($$1);
-      ag.a $$2 = $$0.a().a("has_the_recipe", dv.a($$1)).a(al.a.c($$1)).a(ak.a.b);
-      this.h.forEach($$2::a);
-      dbb $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new cxg(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
-   }
-
-   private static dbh b(dgy $$0) {
-      if ($$0.j().g().b(ku.w)) {
-         return dbh.a;
-      } else {
-         return $$0.j() instanceof cvm ? dbh.b : dbh.c;
-      }
-   }
-
-   private static dbh c(dgy $$0) {
-      return $$0.j() instanceof cvm ? dbh.b : dbh.c;
-   }
-
-   private static dbh a(dcf<? extends dbb> $$0, dgy $$1) {
-      if ($$0 == dcf.o) {
-         return b($$1);
-      } else if ($$0 == dcf.p) {
-         return c($$1);
-      } else if ($$0 != dcf.q && $$0 != dcf.r) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return dbh.a;
-      }
-   }
-
-   private void a(alo<dbv<?>> $$0) {
-      if (this.h.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
-      }
+   protected void a(jt.a $$0) {
+      this.b(awr.a).a(btd.y, btd.x, btd.z);
+      this.b(awr.b).a(btd.d, btd.g, btd.h, btd.i, btd.n, btd.p, btd.r, btd.s, btd.j, btd.l, btd.m, btd.v, btd.w, btd.q, btd.O, btd.o, btd.V, btd.S, btd.U);
+      this.b(awr.c).b(awr.b).a(btd.y, btd.z);
+      this.b(awr.d).a(btd.o, btd.V);
+      this.b(awr.f).a(btd.j);
+      this.b(awr.g).a(btd.o, btd.V);
+      this.b(awr.h).a(btd.S);
+      this.b(awr.i).a(btd.a, btd.b, btd.d, btd.e, btd.f, btd.L, btd.K);
+      this.b(awr.j).a(btd.E, btd.F, btd.G, btd.L, btd.K, btd.M, btd.N, btd.I);
+      this.b(awr.k).a(btd.q, btd.O, btd.S, btd.P);
+      this.b(awr.l).a(btd.J, btd.Q, btd.R, btd.T);
+      this.b(awr.m).a(btd.l, btd.m, btd.w);
+      this.b(awr.n).a(btd.i);
+      this.b(awr.o).a(btd.v);
+      this.b(awr.p).a(btd.c);
+      this.b(awr.q).a(btd.C);
+      this.b(awr.r).a(btd.i);
+      this.b(awr.s).a(btd.o);
+      this.b(awr.t).a(btd.i);
+      this.b(awr.u).a(btd.a, btd.b);
+      this.b(awr.v).a(btd.d);
+      this.b(awr.w).a(btd.q, btd.P).b(awr.l);
+      this.b(awr.x).a(btd.q);
+      this.b(awr.y).b(awr.l);
+      this.b(awr.z)
+         .a(
+            btd.Q,
+            btd.R,
+            btd.T,
+            btd.a,
+            btd.c,
+            btd.d,
+            btd.e,
+            btd.f,
+            btd.g,
+            btd.h,
+            btd.i,
+            btd.j,
+            btd.k,
+            btd.l,
+            btd.m,
+            btd.n,
+            btd.o,
+            btd.p,
+            btd.q,
+            btd.r,
+            btd.s,
+            btd.t,
+            btd.u,
+            btd.v,
+            btd.w,
+            btd.U,
+            btd.V,
+            btd.b
+         );
+      this.b(awr.A).a(btd.E, btd.F, btd.K, btd.M, btd.I);
+      this.b(awr.B).a(btd.R).b(awr.D);
+      this.b(awr.C).b(awr.d).a(btd.h, btd.i, btd.t, btd.v, btd.g, btd.O, btd.q, btd.U, btd.j, btd.P, btd.r);
+      this.b(awr.D).a(btd.D, btd.W);
+      this.b(awr.E).a(btd.b, btd.f);
+      this.b(awr.G).a(btd.k, btd.v, btd.f, btd.a, btd.e, btd.c, btd.d);
+      this.b(awr.F)
+         .b(awr.G)
+         .a(btd.E, btd.s, btd.Q, btd.K, btd.J, btd.O, btd.q, btd.B, btd.G, btd.R, btd.S, btd.A, btd.N, btd.F, btd.L, btd.I, btd.r, btd.M)
+         .b(awr.D);
+      this.b(awr.H).a(btd.W);
    }
 }

@@ -1,32 +1,69 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
-public record dal(float c, Optional<alp> d) {
-   public static final Codec<dal> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(azd.o.fieldOf("seconds").forGetter(dal::b), alp.a.optionalFieldOf("cooldown_group").forGetter(dal::c)).apply($$0, dal::new)
-   );
-   public static final zi<wv, dal> b = zi.a(zg.l, dal::b, alp.b.a(zg::a), dal::c, dal::new);
-
-   public dal(float $$0) {
-      this($$0, Optional.empty());
+public class dal extends dau {
+   public dal(dar $$0) {
+      super($$0);
    }
 
-   public int a() {
-      return (int)(this.c * 20.0F);
-   }
+   public boolean a(das $$0, dgi $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-   public void a(cxg $$0, bvx $$1) {
-      if ($$1 instanceof cpo $$2) {
-         $$2.gE().a($$0, this.a());
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cwp $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.a(awy.bP)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else {
+                  if (!($$5.h() instanceof cvn)) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
       }
    }
 
-   public float b() {
-      return this.c;
+   public cwp a(das $$0, jt.a $$1) {
+      List<cvn> $$2 = new ArrayList<>();
+      cwp $$3 = cwp.j;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwp $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(awy.bP)) {
+               if (!$$3.f()) {
+                  return cwp.j;
+               }
+
+               $$3 = $$5.v();
+            } else {
+               if (!($$5.h() instanceof cvn $$6)) {
+                  return cwp.j;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.f() && !$$2.isEmpty() ? czd.a($$3, $$2) : cwp.j;
    }
 
-   public Optional<alp> c() {
-      return this.d;
+   @Override
+   public dbo<dal> a() {
+      return dbo.c;
    }
 }

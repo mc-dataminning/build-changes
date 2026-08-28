@@ -1,16 +1,49 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public interface bsg<P extends bsf> {
-   bsg<bsc> a = a("constant", bsc.b);
-   bsg<bsl> b = a("uniform", bsl.a);
-   bsg<brx> c = a("biased_to_bottom", brx.a);
-   bsg<bry> d = a("clamped", bry.a);
-   bsg<bsm> e = a("weighted_list", bsm.a);
-   bsg<bsa> f = a("clamped_normal", bsa.a);
+public enum bsg implements azv {
+   a(0, "peaceful"),
+   b(1, "easy"),
+   c(2, "normal"),
+   d(3, "hard");
 
-   MapCodec<P> codec();
+   public static final azv.a<bsg> e = azv.a(bsg::values);
+   private static final IntFunction<bsg> f = axq.a(bsg::a, values(), axq.a.b);
+   private final int g;
+   private final String h;
 
-   static <P extends bsf> bsg<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.K, $$0, () -> $$1);
+   private bsg(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   public int a() {
+      return this.g;
+   }
+
+   public wo b() {
+      return wo.c("options.difficulty." + this.h);
+   }
+
+   public wo d() {
+      return wo.c("options.difficulty." + this.h + ".info");
+   }
+
+   public static bsg a(int $$0) {
+      return f.apply($$0);
+   }
+
+   @Nullable
+   public static bsg a(String $$0) {
+      return e.a($$0);
+   }
+
+   public String e() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

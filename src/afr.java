@@ -1,31 +1,32 @@
 import javax.annotation.Nullable;
 
-public class afr implements zr<acg> {
-   public static final zi<wh, afr> a = zr.a(afr::a, afr::new);
+public class afr implements yv<abk> {
+   public static final ym<vl, afr> a = yv.a(afr::a, afr::new);
    private final int b;
-   private final int c;
+   @Nullable
+   private final tq c;
 
-   public afr(bvb $$0, @Nullable bvb $$1) {
-      this.b = $$0.ar();
-      this.c = $$1 != null ? $$1.ar() : 0;
+   public afr(int $$0, @Nullable tq $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private afr(wh $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
+   private afr(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
    }
 
-   private void a(wh $$0) {
-      $$0.q(this.b);
-      $$0.q(this.c);
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.a((un)this.c);
    }
 
    @Override
-   public zt<afr> a() {
-      return agz.aG;
+   public yx<afr> a() {
+      return agd.bb;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
@@ -33,7 +34,13 @@ public class afr implements zr<acg> {
       return this.b;
    }
 
-   public int e() {
+   @Nullable
+   public tq e() {
       return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

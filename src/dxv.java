@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dxv implements azv {
+   a("top"),
+   b("bottom");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dxv {
+   private final String c;
+
+   private dxv(final String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

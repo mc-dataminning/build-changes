@@ -1,51 +1,38 @@
-public enum jo implements baq {
-   a("down_east", jm.a, jm.f),
-   b("down_north", jm.a, jm.c),
-   c("down_south", jm.a, jm.d),
-   d("down_west", jm.a, jm.e),
-   e("up_east", jm.b, jm.f),
-   f("up_north", jm.b, jm.c),
-   g("up_south", jm.b, jm.d),
-   h("up_west", jm.b, jm.e),
-   i("west_up", jm.e, jm.b),
-   j("east_up", jm.f, jm.b),
-   k("north_up", jm.c, jm.b),
-   l("south_up", jm.d, jm.b);
+import com.google.common.collect.Sets;
+import java.util.Arrays;
+import java.util.Set;
 
-   private static final int m = jm.values().length;
-   private static final jo[] n = ae.a(new jo[m * m], $$0 -> {
-      for (jo $$1 : values()) {
-         $$0[b($$1.q, $$1.p)] = $$1;
+public enum jo {
+   a(jn.c),
+   b(jn.c, jn.f),
+   c(jn.f),
+   d(jn.d, jn.f),
+   e(jn.d),
+   f(jn.d, jn.e),
+   g(jn.e),
+   h(jn.c, jn.e);
+
+   private final Set<jn> i;
+   private final km j;
+
+   private jo(final jn... $$0) {
+      this.i = Sets.immutableEnumSet(Arrays.asList($$0));
+      this.j = new km(0, 0, 0);
+
+      for (jn $$1 : $$0) {
+         this.j.u(this.j.u() + $$1.j()).t(this.j.v() + $$1.k()).s(this.j.w() + $$1.l());
       }
-   });
-   private final String o;
-   private final jm p;
-   private final jm q;
-
-   private static int b(jm $$0, jm $$1) {
-      return $$0.ordinal() * m + $$1.ordinal();
    }
 
-   private jo(final String $$0, final jm $$1, final jm $$2) {
-      this.o = $$0;
-      this.q = $$1;
-      this.p = $$2;
+   public Set<jn> a() {
+      return this.i;
    }
 
-   @Override
-   public String c() {
-      return this.o;
+   public int b() {
+      return this.j.u();
    }
 
-   public static jo a(jm $$0, jm $$1) {
-      return n[b($$0, $$1)];
-   }
-
-   public jm a() {
-      return this.q;
-   }
-
-   public jm b() {
-      return this.p;
+   public int c() {
+      return this.j.w();
    }
 }

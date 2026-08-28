@@ -1,26 +1,53 @@
-import java.util.List;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-public class czo {
-   public static final czm a = a().a();
-   public static final czm b = b().a();
-   public static final czm c = b().a(2.0F).a(awv.nb).a(new dau(bui.s)).a();
-   public static final czm d = b().b(awv.sP).a();
-   public static final czm e = a().a(0.8F).a();
-   public static final czm f = a().a(new daq(new bug(bui.q, 600, 0), 0.3F)).a();
-   public static final czm g = a().a(new daq(List.of(new bug(bui.j, 400, 1), new bug(bui.k, 6000, 0), new bug(bui.l, 6000, 0), new bug(bui.v, 2400, 3)))).a();
-   public static final czm h = a().a(new daq(List.of(new bug(bui.j, 100, 1), new bug(bui.v, 2400, 0)))).a();
-   public static final czm i = a().a(new daq(new bug(bui.s, 100, 0), 0.6F)).a();
-   public static final czm j = a().a(new daq(List.of(new bug(bui.s, 1200, 1), new bug(bui.q, 300, 2), new bug(bui.i, 300, 0)))).a();
-   public static final czm k = a().a(new daq(new bug(bui.q, 600, 0), 0.8F)).a();
-   public static final czm l = a().a(new daq(new bug(bui.s, 100, 0))).a();
-   public static final czm m = b().a(dar.a).a();
-   public static final czm n = a().a(new dav()).a();
+public record czo(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<czo> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.y.optionalFieldOf("name").forGetter(czo::c),
+               kl.a.optionalFieldOf("id").forGetter(czo::d),
+               ayi.x.optionalFieldOf("properties", new PropertyMap()).forGetter(czo::e)
+            )
+            .apply($$0, czo::new)
+   );
+   public static final Codec<czo> a = Codec.withAlternative(g, ayi.y, $$0 -> new czo(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final ym<ByteBuf, czo> b = ym.a(yk.b(16).a(yk::a), czo::c, kl.g.a(yk::a), czo::d, yk.x, czo::e, czo::new);
 
-   public static czm.a a() {
-      return czm.b().a(1.6F).a(cxi.b).a(awv.kD).a(true);
+   public czo(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   public static czm.a b() {
-      return czm.b().a(1.6F).a(cxi.c).a(awv.kC).a(false);
+   public czo(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   }
+
+   public CompletableFuture<czo> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
+      } else {
+         return this.d.isPresent() ? dvo.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new czo($$1);
+         }) : dvo.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(af.e, this.c.get()));
+            return new czo($$1);
+         });
+      }
+   }
+
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(af.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
+   }
+
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

@@ -1,124 +1,101 @@
-public class cry extends crn {
-   private static final aks<Boolean> c = akw.a(cry.class, aku.k);
-   private static final int d = 3600;
-   private static final int h = 32000;
-   private int i;
-   public fbr b = fbr.c;
+public class cry {
+   private int a = 20;
+   private float b = 5.0F;
+   private float c;
+   private int d;
 
-   public cry(bvi<? extends cry> $$0, dgz $$1) {
-      super($$0, $$1);
+   private void b(int $$0, float $$1) {
+      this.a = ayz.a($$0 + this.a, 0, 20);
+      this.b = ayz.a($$1 + this.b, 0.0F, (float)this.a);
    }
 
-   @Override
-   public boolean E() {
-      return true;
+   public void a(int $$0, float $$1) {
+      this.b($$0, crx.a($$0, $$1));
    }
 
-   @Override
-   protected void a(akw.a $$0) {
-      super.a($$0);
-      $$0.a(c, false);
+   public void a(crz $$0) {
+      this.b($$0.a(), $$0.b());
    }
 
-   @Override
-   public void h() {
-      super.h();
-      if (!this.dW().B_()) {
-         if (this.i > 0) {
-            this.i--;
+   public void a(ard $$0) {
+      arc $$1 = $$0.y();
+      bsg $$2 = $$1.am();
+      if (this.c > 4.0F) {
+         this.c -= 4.0F;
+         if (this.b > 0.0F) {
+            this.b = Math.max(this.b - 1.0F, 0.0F);
+         } else if ($$2 != bsg.a) {
+            this.a = Math.max(this.a - 1, 0);
          }
-
-         if (this.i <= 0) {
-            this.b = fbr.c;
-         }
-
-         this.s(this.i > 0);
       }
 
-      if (this.v() && this.ae.a(4) == 0) {
-         this.dW().a(ls.Z, this.dB(), this.dD() + 0.8, this.dH(), 0.0, 0.0, 0.0);
-      }
-   }
+      boolean $$3 = $$1.O().b(dge.k);
+      if ($$3 && this.b > 0.0F && $$0.gu() && this.a >= 20) {
+         this.d++;
+         if (this.d >= 10) {
+            float $$4 = Math.min(this.b, 6.0F);
+            $$0.c($$4 / 6.0F);
+            this.a($$4);
+            this.d = 0;
+         }
+      } else if ($$3 && this.a >= 18 && $$0.gu()) {
+         this.d++;
+         if (this.d >= 80) {
+            $$0.c(1.0F);
+            this.a(6.0F);
+            this.d = 0;
+         }
+      } else if (this.a <= 0) {
+         this.d++;
+         if (this.d >= 80) {
+            if ($$0.eE() > 10.0F || $$2 == bsg.d || $$0.eE() > 1.0F && $$2 == bsg.c) {
+               $$0.a($$1, $$0.dX().j(), 1.0F);
+            }
 
-   @Override
-   protected double a(arx $$0) {
-      return this.bj() ? super.a($$0) * 0.75 : super.a($$0) * 0.5;
-   }
-
-   @Override
-   protected cxc u() {
-      return cxk.oq;
-   }
-
-   @Override
-   public cxg dJ() {
-      return new cxg(cxk.oq);
-   }
-
-   @Override
-   protected fbr a(fbr $$0) {
-      fbr $$1;
-      if (this.b.h() > 1.0E-7) {
-         this.b = this.j($$0);
-         $$1 = $$0.d(0.8, 0.0, 0.8).e(this.b);
-         if (this.bj()) {
-            $$1 = $$1.c(0.1);
+            this.d = 0;
          }
       } else {
-         $$1 = $$0.d(0.98, 0.0, 0.98);
+         this.d = 0;
       }
-
-      return super.a($$1);
    }
 
-   private fbr j(fbr $$0) {
-      double $$1 = 1.0E-4;
-      double $$2 = 0.001;
-      return this.b.j() > 1.0E-4 && $$0.j() > 0.001 ? this.b.i($$0).d().c(this.b.g()) : this.b;
-   }
-
-   @Override
-   public bta a(cpo $$0, bsz $$1) {
-      cxg $$2 = $$0.b($$1);
-      if ($$2.a(axt.bS) && this.i + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.i += 3600;
+   public void a(tq $$0) {
+      if ($$0.b("foodLevel", 99)) {
+         this.a = $$0.h("foodLevel");
+         this.d = $$0.h("foodTickTimer");
+         this.b = $$0.j("foodSaturationLevel");
+         this.c = $$0.j("foodExhaustionLevel");
       }
-
-      if (this.i > 0) {
-         this.b = this.du().d($$0.du()).f();
-      }
-
-      return bta.a;
    }
 
-   @Override
-   protected void b(um $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.b.d);
-      $$0.a("PushZ", this.b.f);
-      $$0.a("Fuel", (short)this.i);
+   public void b(tq $$0) {
+      $$0.a("foodLevel", this.a);
+      $$0.a("foodTickTimer", this.d);
+      $$0.a("foodSaturationLevel", this.b);
+      $$0.a("foodExhaustionLevel", this.c);
    }
 
-   @Override
-   protected void a(um $$0) {
-      super.a($$0);
-      double $$1 = $$0.k("PushX");
-      double $$2 = $$0.k("PushZ");
-      this.b = new fbr($$1, 0.0, $$2);
-      this.i = $$0.g("Fuel");
+   public int a() {
+      return this.a;
    }
 
-   protected boolean v() {
-      return this.al.a(c);
+   public boolean b() {
+      return this.a < 20;
    }
 
-   protected void s(boolean $$0) {
-      this.al.a(c, $$0);
+   public void a(float $$0) {
+      this.c = Math.min(this.c + $$0, 40.0F);
    }
 
-   @Override
-   public dxo w() {
-      return dkf.cL.m().b(dnl.a, jm.c).b(dnl.b, Boolean.valueOf(this.v()));
+   public float c() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(float $$0) {
+      this.b = $$0;
    }
 }

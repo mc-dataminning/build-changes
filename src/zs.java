@@ -1,18 +1,29 @@
-public enum zs {
-   a("serverbound"),
-   b("clientbound");
+public class zs implements yv<zo> {
+   public static final ym<vl, zs> a = yv.a(zs::a, zs::new);
+   private final int b;
 
-   private final String c;
-
-   private zs(final String $$0) {
-      this.c = $$0;
+   public zs(int $$0) {
+      this.b = $$0;
    }
 
-   public zs a() {
-      return this == b ? a : b;
+   private zs(vl $$0) {
+      this.b = $$0.readInt();
    }
 
-   public String b() {
-      return this.c;
+   private void a(vl $$0) {
+      $$0.q(this.b);
+   }
+
+   @Override
+   public yx<zs> a() {
+      return zn.o;
+   }
+
+   public void a(zo $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

@@ -1,17 +1,17 @@
-public class gjb extends ghf {
-   protected gjb(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gji $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+public class gjb extends gju {
+   protected gjb(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkb $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   public static class a implements giq<lw> {
-      private final gji a;
+   public static class a implements gjj<lx> {
+      private final gkb a;
 
-      public a(gji $$0) {
+      public a(gkb $$0) {
          this.a = $$0;
       }
 
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gjb($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gjb($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

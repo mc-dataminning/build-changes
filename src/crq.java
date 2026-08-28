@@ -1,12 +1,11 @@
-import java.util.function.Supplier;
+import java.util.Set;
 
-public class crq extends crm {
-   public crq(bvi<? extends crq> $$0, dgz $$1, Supplier<cxc> $$2) {
-      super($$0, $$1, $$2);
-   }
+public interface crq {
+   Set<akt<? extends ke<? extends crq>>> bU = Set.of(mc.K, mc.f, mc.z, mc.V, mc.ad, mc.W);
 
-   @Override
-   protected double b(bve $$0) {
-      return (double)($$0.b() / 3.0F);
+   crt i();
+
+   default boolean a(crt $$0) {
+      return this.i().a($$0);
    }
 }

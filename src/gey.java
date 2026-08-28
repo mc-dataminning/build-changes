@@ -1,138 +1,24 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonParser;
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
-import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.security.PublicKey;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class gey implements gfs {
-   private static final Logger b = LogUtils.getLogger();
-   private static final Duration c = Duration.ofHours(1L);
-   private static final Path d = Path.of("profilekeys");
-   private final UserApiService e;
-   private final Path f;
-   private CompletableFuture<Optional<cpq>> g = CompletableFuture.completedFuture(Optional.empty());
-   private Instant h = Instant.EPOCH;
+public class gey {
+   public static final gey a = new gey(Map.of());
+   private final Map<gfa, gfi> b;
 
-   public gey(UserApiService $$0, UUID $$1, Path $$2) {
-      this.e = $$0;
-      this.f = $$2.resolve(d).resolve($$1 + ".json");
+   public gey(Map<gfa, gfi> $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public CompletableFuture<Optional<cpq>> a() {
-      this.h = Instant.now().plus(c);
-      this.g = this.g.thenCompose(this::a);
-      return this.g;
-   }
-
-   @Override
-   public boolean b() {
-      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cpq::a).orElse(true) : false;
-   }
-
-   private CompletableFuture<Optional<cpq>> a(Optional<cpq> $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         if ($$0.isPresent() && !$$0.get().a()) {
-            if (!ab.aU) {
-               this.a(null);
-            }
-
-            return $$0;
-         } else {
-            try {
-               cpq $$1 = this.a(this.e);
-               this.a($$1);
-               return Optional.ofNullable($$1);
-            } catch (ayt | MinecraftClientException | IOException var3) {
-               b.error("Failed to retrieve profile key pair", var3);
-               this.a(null);
-               return $$0;
-            }
-         }
-      }, ae.i());
-   }
-
-   private Optional<cpq> c() {
-      if (Files.notExists(this.f)) {
-         return Optional.empty();
+   public gfc a(gfa $$0) {
+      gfi $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
       } else {
-         try {
-            Optional var2;
-            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
-               var2 = cpq.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
-            }
-
-            return var2;
-         } catch (Exception var6) {
-            b.error("Failed to read profile key pair file {}", this.f, var6);
-            return Optional.empty();
-         }
+         return $$1.a();
       }
    }
 
-   private void a(@Nullable cpq $$0) {
-      try {
-         Files.deleteIfExists(this.f);
-      } catch (IOException var3) {
-         b.error("Failed to delete profile key pair file {}", this.f, var3);
-      }
-
-      if ($$0 != null) {
-         if (ab.aU) {
-            cpq.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
-               try {
-                  Files.createDirectories(this.f.getParent());
-                  Files.writeString(this.f, $$0x.toString());
-               } catch (Exception var3x) {
-                  b.error("Failed to write profile key pair file {}", this.f, var3x);
-               }
-            });
-         }
-      }
-   }
-
-   @Nullable
-   private cpq a(UserApiService $$0) throws ayt, IOException {
-      KeyPairResponse $$1 = $$0.getKeyPair();
-      if ($$1 != null) {
-         cpr.a $$2 = a($$1);
-         return new cpq(ays.a($$1.keyPair().privateKey()), new cpr($$2), Instant.parse($$1.refreshedAfter()));
-      } else {
-         return null;
-      }
-   }
-
-   private static cpr.a a(KeyPairResponse $$0) throws ayt {
-      KeyPair $$1 = $$0.keyPair();
-      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
-         try {
-            Instant $$2 = Instant.parse($$0.expiresAt());
-            PublicKey $$3 = ays.b($$1.publicKey());
-            ByteBuffer $$4 = $$0.publicKeySignature();
-            return new cpr.a($$2, $$3, $$4.array());
-         } catch (IllegalArgumentException | DateTimeException var5) {
-            throw new ayt(var5);
-         }
-      } else {
-         throw new ayt(new MissingException("Missing public key"));
-      }
+   public static gey a() {
+      return new gey(ImmutableMap.copyOf(gez.a()));
    }
 }

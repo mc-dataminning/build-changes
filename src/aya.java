@@ -1,48 +1,44 @@
-import com.google.common.collect.Interner;
-import com.google.common.collect.Interners;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+public class aya {
+   private static final int a = 2;
+   private static final int b = 6;
+   private static final double[] c = new double[]{0.0, 1.0, 4.0, 6.0, 4.0, 1.0, 0.0};
 
-public record aya<T>(alo<? extends kd<T>> a, alp b) {
-   private static final Interner<aya<?>> c = Interners.newWeakInterner();
-
-   @Deprecated
-   public aya(alo<? extends kd<T>> a, alp b) {
-      this.a = a;
-      this.b = b;
+   private aya() {
    }
 
-   public static <T> Codec<aya<T>> a(alo<? extends kd<T>> $$0) {
-      return alp.a.xmap($$1 -> a($$0, $$1), aya::b);
+   public static fba a(fba $$0, aya.a $$1) {
+      int $$2 = ayz.a($$0.a());
+      int $$3 = ayz.a($$0.b());
+      int $$4 = ayz.a($$0.c());
+      double $$5 = $$0.a() - (double)$$2;
+      double $$6 = $$0.b() - (double)$$3;
+      double $$7 = $$0.c() - (double)$$4;
+      double $$8 = 0.0;
+      fba $$9 = fba.c;
+
+      for (int $$10 = 0; $$10 < 6; $$10++) {
+         double $$11 = ayz.d($$5, c[$$10 + 1], c[$$10]);
+         int $$12 = $$2 - 2 + $$10;
+
+         for (int $$13 = 0; $$13 < 6; $$13++) {
+            double $$14 = ayz.d($$6, c[$$13 + 1], c[$$13]);
+            int $$15 = $$3 - 2 + $$13;
+
+            for (int $$16 = 0; $$16 < 6; $$16++) {
+               double $$17 = ayz.d($$7, c[$$16 + 1], c[$$16]);
+               int $$18 = $$4 - 2 + $$16;
+               double $$19 = $$11 * $$14 * $$17;
+               $$8 += $$19;
+               $$9 = $$9.e($$1.fetch($$12, $$15, $$18).c($$19));
+            }
+         }
+      }
+
+      return $$9.c(1.0 / $$8);
    }
 
-   public static <T> Codec<aya<T>> b(alo<? extends kd<T>> $$0) {
-      return Codec.STRING
-         .comapFlatMap(
-            $$1 -> $$1.startsWith("#") ? alp.d($$1.substring(1)).map($$1x -> a($$0, $$1x)) : DataResult.error(() -> "Not a tag id"), $$0x -> "#" + $$0x.b
-         );
-   }
-
-   public static <T> zi<ByteBuf, aya<T>> c(alo<? extends kd<T>> $$0) {
-      return alp.b.a($$1 -> a($$0, $$1), aya::b);
-   }
-
-   public static <T> aya<T> a(alo<? extends kd<T>> $$0, alp $$1) {
-      return (aya<T>)c.intern(new aya<>($$0, $$1));
-   }
-
-   public boolean d(alo<? extends kd<?>> $$0) {
-      return this.a == $$0;
-   }
-
-   public <E> Optional<aya<E>> e(alo<? extends kd<E>> $$0) {
-      return this.d($$0) ? Optional.of((aya<E>)this) : Optional.empty();
-   }
-
-   @Override
-   public String toString() {
-      return "TagKey[" + this.a.a() + " / " + this.b + "]";
+   @FunctionalInterface
+   public interface a {
+      fba fetch(int var1, int var2, int var3);
    }
 }

@@ -1,82 +1,81 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record glz(alp b, alp c, List<glz.a> d, List<glz.b> e, glw f) {
-   public static final Codec<glz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alp.a.fieldOf("vertex").forGetter(glz::a),
-               alp.a.fieldOf("fragment").forGetter(glz::b),
-               glz.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(glz::c),
-               glz.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(glz::d),
-               glw.b.optionalFieldOf("defines", glw.a).forGetter(glz::e)
-            )
-            .apply($$0, glz::new)
-   );
+public class glz implements glx {
+   private final glx.a a;
+   private final glx.a b = glx.a(new ffr(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   public alp a() {
-      return this.b;
+   public glz(glx.a $$0) {
+      this.a = $$0;
    }
 
-   public alp b() {
-      return this.c;
-   }
-
-   public List<glz.a> c() {
-      return this.d;
-   }
-
-   public List<glz.b> d() {
-      return this.e;
-   }
-
-   public glw e() {
-      return this.f;
-   }
-
-   public static record a(String b) {
-      public static final Codec<glz.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(glz.a::a)).apply($$0, glz.a::new));
-
-      public String a() {
-         return this.b;
+   @Override
+   public ffy getBuffer(gmh $$0) {
+      if ($$0.V()) {
+         ffy $$1 = this.b.getBuffer($$0);
+         return new glz.a($$1, this.c, this.d, this.e, this.f);
+      } else {
+         ffy $$2 = this.a.getBuffer($$0);
+         Optional<gmh> $$3 = $$0.U();
+         if ($$3.isPresent()) {
+            ffy $$4 = this.b.getBuffer($$3.get());
+            glz.a $$5 = new glz.a($$4, this.c, this.d, this.e, this.f);
+            return fgb.a($$5, $$2);
+         } else {
+            return $$2;
+         }
       }
    }
 
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<glz.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(glz.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(glz.b::b),
-                     Codec.INT.fieldOf("count").forGetter(glz.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(glz.b::d)
-                  )
-                  .apply($$0, glz.b::new)
-         )
-         .validate(glz.b::a);
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
 
-      private static DataResult<glz.b> a(glz.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
+   public void a() {
+      this.b.b();
+   }
+
+   static record a(ffy a, int b) implements ffy {
+      public a(ffy $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axk.a($$4, $$1, $$2, $$3));
       }
 
-      public String a() {
-         return this.b;
+      @Override
+      public ffy a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
       }
 
-      public String b() {
-         return this.c;
+      @Override
+      public ffy a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
       }
 
-      public int c() {
-         return this.d;
+      @Override
+      public ffy a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
       }
 
-      public List<Float> d() {
-         return this.e;
+      @Override
+      public ffy a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ffy b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public ffy b(float $$0, float $$1, float $$2) {
+         return this;
       }
    }
 }

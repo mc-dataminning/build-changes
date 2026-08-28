@@ -1,62 +1,60 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.EnumMap;
 
-public record deq(ddx d, ddx e, kl f, Optional<eeq> g, eku h, Optional<jq<eck>> i) implements deh {
-   public static final MapCodec<deq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ddx.b.fieldOf("radius").forGetter(deq::b),
-               ddx.b.fieldOf("height").forGetter(deq::c),
-               kl.g.optionalFieldOf("offset", kl.h).forGetter(deq::d),
-               eeq.b.optionalFieldOf("predicate").forGetter(deq::e),
-               eku.a.fieldOf("block_state").forGetter(deq::f),
-               eck.aj.optionalFieldOf("trigger_game_event").forGetter(deq::g)
-            )
-            .apply($$0, deq::new)
-   );
-
-   @Override
-   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
-      jh $$5 = jh.a((ka)$$4).a(this.f);
-      bac $$6 = $$3.dZ();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
-
-      for (jh $$9 : jh.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azu.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
-         }
-      }
-   }
-
-   @Override
-   public MapCodec<deq> a() {
-      return a;
-   }
-
-   public ddx b() {
-      return this.d;
-   }
-
-   public ddx c() {
-      return this.e;
-   }
-
-   public kl d() {
-      return this.f;
-   }
-
-   public Optional<eeq> e() {
-      return this.g;
-   }
-
-   public eku f() {
-      return this.h;
-   }
-
-   public Optional<jq<eck>> g() {
-      return this.i;
-   }
+public interface deq {
+   dep a = new dep(5, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 1);
+      $$0.put(der.c, 2);
+      $$0.put(der.b, 3);
+      $$0.put(der.a, 1);
+      $$0.put(der.e, 3);
+   }), 15, awa.av, 0.0F, 0.0F, awy.bh, det.b);
+   dep b = new dep(15, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 1);
+      $$0.put(der.c, 4);
+      $$0.put(der.b, 5);
+      $$0.put(der.a, 2);
+      $$0.put(der.e, 4);
+   }), 12, awa.ap, 0.0F, 0.0F, awy.bi, det.c);
+   dep c = new dep(15, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 2);
+      $$0.put(der.c, 5);
+      $$0.put(der.b, 6);
+      $$0.put(der.a, 2);
+      $$0.put(der.e, 5);
+   }), 9, awa.au, 0.0F, 0.0F, awy.bj, det.d);
+   dep d = new dep(7, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 1);
+      $$0.put(der.c, 3);
+      $$0.put(der.b, 5);
+      $$0.put(der.a, 2);
+      $$0.put(der.e, 7);
+   }), 25, awa.at, 0.0F, 0.0F, awy.bk, det.e);
+   dep e = new dep(33, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 3);
+      $$0.put(der.c, 6);
+      $$0.put(der.b, 8);
+      $$0.put(der.a, 3);
+      $$0.put(der.e, 11);
+   }), 10, awa.aq, 2.0F, 0.0F, awy.bl, det.f);
+   dep f = new dep(25, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 2);
+      $$0.put(der.c, 5);
+      $$0.put(der.b, 6);
+      $$0.put(der.a, 2);
+      $$0.put(der.e, 5);
+   }), 9, awa.ax, 0.0F, 0.0F, awy.bn, det.g);
+   dep g = new dep(37, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 3);
+      $$0.put(der.c, 6);
+      $$0.put(der.b, 8);
+      $$0.put(der.a, 3);
+      $$0.put(der.e, 11);
+   }), 15, awa.aw, 3.0F, 0.1F, awy.bm, det.h);
+   dep h = new dep(4, af.a(new EnumMap<>(der.class), $$0 -> {
+      $$0.put(der.d, 3);
+      $$0.put(der.c, 6);
+      $$0.put(der.b, 8);
+      $$0.put(der.a, 3);
+      $$0.put(der.e, 11);
+   }), 10, awa.ay, 0.0F, 0.0F, awy.bo, det.i);
 }

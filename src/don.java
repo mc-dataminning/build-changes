@@ -1,36 +1,40 @@
 import com.mojang.serialization.MapCodec;
 
-public class don extends diw {
-   public static final MapCodec<don> d = b(don::new);
+public class don extends djm {
+   public static final MapCodec<don> a = b(don::new);
+   protected static final fbu b = djm.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<don> a() {
-      return d;
+      return a;
    }
 
-   public don(dxn.d $$0) {
-      super($$0, kn.e);
-   }
-
-   @Override
-   protected double b(dxo $$0) {
-      return 0.9375;
+   public don(dww.d $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean d(dxo $$0) {
-      return true;
+   protected fbu b(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, bvb $$3) {
-      if (this.a($$0, $$2, $$3)) {
-         $$3.aE();
-      }
+   protected fbu b_(dwx $$0, dfn $$1, ji $$2) {
+      return fbr.b();
    }
 
    @Override
-   protected int a(dxo $$0, dgz $$1, jh $$2) {
-      return 3;
+   protected fbu c(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return fbr.b();
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(dwx $$0, dfn $$1, ji $$2) {
+      return 0.2F;
    }
 }

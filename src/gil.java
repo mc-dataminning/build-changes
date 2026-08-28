@@ -1,18 +1,30 @@
-public class gil extends gin {
-   protected gil(gff $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-   }
+public class gil extends ghy {
+   private static final int a = 12235202;
 
-   protected gil(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   protected gil(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gkb $$8) {
+      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
+      float $$9 = (float)Math.random() * 0.2F;
+      this.v = (float)axk.b(12235202) / 255.0F - $$9;
+      this.w = (float)axk.c(12235202) / 255.0F - $$9;
+      this.x = (float)axk.d(12235202) / 255.0F - $$9;
    }
 
    @Override
-   public final void a(fgp $$0, fli $$1, float $$2) {
+   public void a() {
+      this.u = 0.88F * this.u;
+      this.B = 0.92F * this.B;
+      super.a();
    }
 
-   @Override
-   public gir b() {
-      return gir.e;
+   public static class a implements gjj<lx> {
+      private final gkb a;
+
+      public a(gkb $$0) {
+         this.a = $$0;
+      }
+
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gil($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

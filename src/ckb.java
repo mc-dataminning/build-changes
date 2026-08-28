@@ -1,35 +1,43 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum ckb implements baq {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
+public class ckb extends cjw {
+   @Nullable
+   private fba b;
 
-   public static final Codec<ckb> h = baq.a(ckb::values);
-   private static final IntFunction<ckb> i = ayl.a(ckb::a, values(), ayl.a.b);
-   private final int j;
-   private final String k;
-
-   private ckb(final int $$0, final String $$1) {
-      this.j = $$0;
-      this.k = $$1;
-   }
-
-   public int a() {
-      return this.j;
-   }
-
-   public static ckb a(int $$0) {
-      return i.apply($$0);
+   public ckb(cju $$0) {
+      super($$0);
    }
 
    @Override
-   public String c() {
-      return this.k;
+   public void a(arc $$0) {
+      if (this.b == null) {
+         this.b = this.a.du();
+      }
+   }
+
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   @Override
+   public void c() {
+      this.b = null;
+   }
+
+   @Override
+   public float e() {
+      return 1.0F;
+   }
+
+   @Nullable
+   @Override
+   public fba f() {
+      return this.b;
+   }
+
+   @Override
+   public ckk<ckb> h() {
+      return ckk.k;
    }
 }

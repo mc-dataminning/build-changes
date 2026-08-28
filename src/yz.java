@@ -1,33 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import io.netty.buffer.ByteBuf;
 
-public class yz implements za {
-   public static final zb<yz> a = new zb<yz>() {
-      private static final MapCodec<yz> a = xm.a.fieldOf("value").xmap(yz::new, $$0 -> $$0.b);
-      private static final zi<wv, yz> b = zi.a(xm.d, $$0 -> $$0.b, yz::new);
+public class yz<B extends ByteBuf, L extends vu> {
+   private final yl.a<B, yv<? super L>, yx<? extends yv<? super L>>> a = yl.a(yv::a);
+   private final yw b;
 
-      @Override
-      public MapCodec<yz> a() {
-         return a;
-      }
-
-      @Override
-      public zi<wv, yz> b() {
-         return b;
-      }
-   };
-   final xk b;
-
-   public yz(xk $$0) {
+   public yz(yw $$0) {
       this.b = $$0;
    }
 
-   @Override
-   public xy a(int $$0) {
-      return this.b.f();
+   public <T extends yv<? super L>> yz<B, L> a(yx<T> $$0, ym<? super B, T> $$1) {
+      if ($$0.a() != this.b) {
+         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
+      } else {
+         this.a.a($$0, $$1);
+         return this;
+      }
    }
 
-   @Override
-   public zb<yz> a() {
-      return a;
+   public ym<B, yv<? super L>> a() {
+      return this.a.a();
    }
 }

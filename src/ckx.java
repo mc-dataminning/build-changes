@@ -1,100 +1,43 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ckx extends cko {
-   private static final int b = 200;
-   private static final int c = 4;
-   private static final int d = 10;
-   private int e;
-   private int f;
-   @Nullable
-   private buu g;
+public record ckx(int e, int f, aku g, Optional<wo> h, Optional<wo> i) {
+   public static final Codec<ckx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.a(1, 16).fieldOf("width").forGetter(ckx::b),
+               ayi.a(1, 16).fieldOf("height").forGetter(ckx::c),
+               aku.a.fieldOf("asset_id").forGetter(ckx::d),
+               wq.a.optionalFieldOf("title").forGetter(ckx::e),
+               wq.a.optionalFieldOf("author").forGetter(ckx::f)
+            )
+            .apply($$0, ckx::new)
+   );
+   public static final ym<vz, ckx> b = ym.a(yk.h, ckx::b, yk.h, ckx::c, aku.b, ckx::d, wq.e, ckx::e, wq.e, ckx::f, ckx::new);
+   public static final Codec<jr<ckx>> c = akq.a(mc.X, a);
+   public static final ym<vz, jr<ckx>> d = yk.a(mc.X, b);
 
-   public ckx(ckl $$0) {
-      super($$0);
+   public int a() {
+      return this.b() * this.c();
    }
 
-   @Override
-   public void b() {
-      this.e++;
-      if (this.e % 2 == 0 && this.e < 10) {
-         fbr $$0 = this.a.J(1.0F).d();
-         $$0.b((float) (-Math.PI / 4));
-         double $$1 = this.a.c.dB();
-         double $$2 = this.a.c.e(0.5);
-         double $$3 = this.a.c.dH();
-
-         for (int $$4 = 0; $$4 < 8; $$4++) {
-            double $$5 = $$1 + this.a.dZ().k() / 2.0;
-            double $$6 = $$2 + this.a.dZ().k() / 2.0;
-            double $$7 = $$3 + this.a.dZ().k() / 2.0;
-
-            for (int $$8 = 0; $$8 < 6; $$8++) {
-               this.a.dW().a(ls.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
-            }
-
-            $$0.b((float) (Math.PI / 16));
-         }
-      }
+   public int b() {
+      return this.e;
    }
 
-   @Override
-   public void a(arx $$0) {
-      this.e++;
-      if (this.e >= 200) {
-         if (this.f >= 4) {
-            this.a.gk().a(clb.e);
-         } else {
-            this.a.gk().a(clb.g);
-         }
-      } else if (this.e == 10) {
-         fbr $$1 = new fbr(this.a.c.dB() - this.a.dB(), 0.0, this.a.c.dH() - this.a.dH()).d();
-         float $$2 = 5.0F;
-         double $$3 = this.a.c.dB() + $$1.d * 5.0 / 2.0;
-         double $$4 = this.a.c.dH() + $$1.f * 5.0 / 2.0;
-         double $$5 = this.a.c.e(0.5);
-         double $$6 = $$5;
-         jh.a $$7 = new jh.a($$3, $$5, $$4);
-
-         while ($$0.u($$7)) {
-            if (--$$6 < 0.0) {
-               $$6 = $$5;
-               break;
-            }
-
-            $$7.b($$3, $$6, $$4);
-         }
-
-         $$6 = (double)(azu.a($$6) + 1);
-         this.g = new buu($$0, $$3, $$6, $$4);
-         this.g.a(this.a);
-         this.g.a(5.0F);
-         this.g.a(200);
-         this.g.a(ls.h);
-         this.g.a(new bug(bui.g));
-         $$0.b(this.g);
-      }
+   public int c() {
+      return this.f;
    }
 
-   @Override
-   public void c() {
-      this.e = 0;
-      this.f++;
+   public aku d() {
+      return this.g;
    }
 
-   @Override
-   public void d() {
-      if (this.g != null) {
-         this.g.at();
-         this.g = null;
-      }
+   public Optional<wo> e() {
+      return this.h;
    }
 
-   @Override
-   public clb<ckx> h() {
-      return clb.f;
-   }
-
-   public void i() {
-      this.f = 0;
+   public Optional<wo> f() {
+      return this.i;
    }
 }

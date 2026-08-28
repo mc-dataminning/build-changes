@@ -1,83 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
-import java.security.PublicKey;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Arrays;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record cpr(cpr.a d) {
-   public static final xk a = xk.c("multiplayer.disconnect.expired_public_key");
-   private static final xk e = xk.c("multiplayer.disconnect.invalid_public_key_signature");
-   public static final Duration b = Duration.ofHours(8L);
-   public static final Codec<cpr> c = cpr.a.a.xmap(cpr::new, cpr::b);
-
-   public static cpr a(bah $$0, UUID $$1, cpr.a $$2) throws cpr.b {
-      if (!$$2.a($$0, $$1)) {
-         throw new cpr.b(e);
-      } else {
-         return new cpr($$2);
+@FunctionalInterface
+public interface cpr {
+   cpr a = ($$0, $$1, $$2) -> {
+   };
+   cpr b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.h($$0.dz().c(-0.5));
+      $$0.v($$0.dM() + $$3);
+      $$0.N += $$3;
+      $$0.ar = true;
+   };
+   cpr c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         fba $$3 = $$1.bT().d();
+         $$0.h($$3);
+         $$0.ar = true;
       }
-   }
-
-   public bah a() {
-      return bah.a(this.d.c, "SHA256withRSA");
-   }
-
-   public cpr.a b() {
-      return this.d;
-   }
-
-   public static record a(Instant b, PublicKey c, byte[] d) {
-      private static final int e = 4096;
-      public static final Codec<cpr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  azd.q.fieldOf("expires_at").forGetter(cpr.a::b), ays.f.fieldOf("key").forGetter(cpr.a::c), azd.r.fieldOf("signature_v2").forGetter(cpr.a::d)
-               )
-               .apply($$0, cpr.a::new)
-      );
-
-      public a(wh $$0) {
-         this($$0.t(), $$0.u(), $$0.a(4096));
+   };
+   cpr d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         fba $$3 = $$1.dz().d();
+         $$0.h($$3);
+         $$0.ar = true;
       }
+   };
 
-      public void a(wh $$0) {
-         $$0.a(this.b);
-         $$0.a(this.c);
-         $$0.a(this.d);
-      }
-
-      boolean a(bah $$0, UUID $$1) {
-         return $$0.a(this.a($$1), this.d);
-      }
-
-      private byte[] a(UUID $$0) {
-         byte[] $$1 = this.c.getEncoded();
-         byte[] $$2 = new byte[24 + $$1.length];
-         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
-         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
-         return $$2;
-      }
-
-      public boolean a() {
-         return this.b.isBefore(Instant.now());
-      }
-
-      public boolean a(Duration $$0) {
-         return this.b.plus($$0).isBefore(Instant.now());
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cpr.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
-      }
-   }
-
-   public static class b extends yk {
-      public b(xk $$0) {
-         super($$0);
-      }
-   }
+   void deflect(cpq var1, @Nullable buk var2, azh var3);
 }

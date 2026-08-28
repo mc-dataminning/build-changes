@@ -1,94 +1,52 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public abstract class aup implements auy {
-   private static final Logger c = LogUtils.getLogger();
-   public static final String a = "vanilla";
-   public static final aur b = aur.a("core");
-   private final aty d;
-   private final aua e;
-   private final alp f;
-   private final fbh g;
+public interface aup extends aus {
+   Set<String> a();
 
-   public aup(aty $$0, aua $$1, alp $$2, fbh $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
+   List<aun> a(aku var1);
 
-   @Override
-   public void loadPacks(Consumer<aus> $$0) {
-      aus $$1 = this.a(this.e);
-      if ($$1 != null) {
-         $$0.accept($$1);
+   Map<aku, aun> b(String var1, Predicate<aku> var2);
+
+   Map<aku, List<aun>> c(String var1, Predicate<aku> var2);
+
+   Stream<atb> b();
+
+   public static enum a implements aup {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
       }
 
-      this.a($$0);
-   }
-
-   @Nullable
-   protected abstract aus a(atw var1);
-
-   protected abstract xk a(String var1);
-
-   public aua a() {
-      return this.e;
-   }
-
-   private void a(Consumer<aus> $$0) {
-      Map<String, Function<String, aus>> $$1 = new HashMap<>();
-      this.a($$1::put);
-      $$1.forEach(($$1x, $$2) -> {
-         aus $$3 = $$2.apply($$1x);
-         if ($$3 != null) {
-            $$0.accept($$3);
-         }
-      });
-   }
-
-   protected void a(BiConsumer<String, Function<String, aus>> $$0) {
-      this.e.a(this.d, this.f, $$1 -> this.a($$1, $$0));
-   }
-
-   protected void a(@Nullable Path $$0, BiConsumer<String, Function<String, aus>> $$1) {
-      if ($$0 != null && Files.isDirectory($$0)) {
-         try {
-            auq.a($$0, this.g, ($$1x, $$2) -> $$1.accept(a($$1x), $$1xx -> this.a($$1xx, $$2, this.a($$1xx))));
-         } catch (IOException var4) {
-            c.warn("Failed to discover packs in {}", $$0, var4);
-         }
+      @Override
+      public Optional<aun> getResource(aku $$0) {
+         return Optional.empty();
       }
-   }
 
-   private static String a(Path $$0) {
-      return StringUtils.removeEnd($$0.getFileName().toString(), ".zip");
-   }
+      @Override
+      public List<aun> a(aku $$0) {
+         return List.of();
+      }
 
-   @Nullable
-   protected abstract aus a(String var1, aus.c var2, xk var3);
+      @Override
+      public Map<aku, aun> b(String $$0, Predicate<aku> $$1) {
+         return Map.of();
+      }
 
-   protected static aus.c b(final atw $$0) {
-      return new aus.c() {
-         @Override
-         public atw a(atv $$0x) {
-            return $$0;
-         }
+      @Override
+      public Map<aku, List<aun>> c(String $$0, Predicate<aku> $$1) {
+         return Map.of();
+      }
 
-         @Override
-         public atw a(atv $$0x, aus.a $$1) {
-            return $$0;
-         }
-      };
+      @Override
+      public Stream<atb> b() {
+         return Stream.of();
+      }
    }
 }

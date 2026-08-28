@@ -9,13 +9,13 @@ import java.util.Date;
 import java.util.UUID;
 import org.slf4j.Logger;
 
-public class t implements af {
+public class t implements ag {
    private static final Logger b = LogUtils.getLogger();
-   public static final af a = new t();
+   public static final ag a = new t();
    private final String c;
    private final String d;
    private final boolean e;
-   private final evo f;
+   private final eux f;
    private final int g;
    private final int h;
    private final int i;
@@ -23,28 +23,28 @@ public class t implements af {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "24w44a";
+      this.d = "24w45a";
       this.e = false;
-      this.f = new evo(4174, "main");
+      this.f = new eux(4177, "main");
       this.g = ab.c();
-      this.h = 43;
-      this.i = 58;
+      this.h = 44;
+      this.i = 59;
       this.j = new Date();
    }
 
    private t(JsonObject $$0) {
-      this.c = azk.i($$0, "id");
-      this.d = azk.i($$0, "name");
-      this.e = azk.k($$0, "stable");
-      this.f = new evo(azk.o($$0, "world_version"), azk.a($$0, "series_id", evo.a));
-      this.g = azk.o($$0, "protocol_version");
-      JsonObject $$1 = azk.u($$0, "pack_version");
-      this.h = azk.o($$1, "resource");
-      this.i = azk.o($$1, "data");
-      this.j = Date.from(ZonedDateTime.parse(azk.i($$0, "build_time")).toInstant());
+      this.c = ayp.i($$0, "id");
+      this.d = ayp.i($$0, "name");
+      this.e = ayp.k($$0, "stable");
+      this.f = new eux(ayp.o($$0, "world_version"), ayp.a($$0, "series_id", eux.a));
+      this.g = ayp.o($$0, "protocol_version");
+      JsonObject $$1 = ayp.u($$0, "pack_version");
+      this.h = ayp.o($$1, "resource");
+      this.i = ayp.o($$1, "data");
+      this.j = Date.from(ZonedDateTime.parse(ayp.i($$0, "build_time")).toInstant());
    }
 
-   public static af a() {
+   public static ag a() {
       try {
          t var2;
          try (InputStream $$0 = t.class.getResourceAsStream("/version.json")) {
@@ -54,7 +54,7 @@ public class t implements af {
             }
 
             try (InputStreamReader $$1 = new InputStreamReader($$0)) {
-               var2 = new t(azk.a($$1));
+               var2 = new t(ayp.a($$1));
             }
          }
 
@@ -75,7 +75,7 @@ public class t implements af {
    }
 
    @Override
-   public evo d() {
+   public eux d() {
       return this.f;
    }
 
@@ -85,8 +85,8 @@ public class t implements af {
    }
 
    @Override
-   public int a(aty $$0) {
-      return $$0 == aty.b ? this.i : this.h;
+   public int a(atd $$0) {
+      return $$0 == atd.b ? this.i : this.h;
    }
 
    @Override

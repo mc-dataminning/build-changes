@@ -1,71 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class bzi {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+public class bzi<U> implements Iterable<U> {
+   protected final List<bzi.a<U>> a;
+   private final azh b = azh.a();
 
-   public static bzb<bwf> a(float $$0) {
-      return a($$0, true);
+   public bzi() {
+      this.a = Lists.newArrayList();
    }
 
-   public static bzb<bwf> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> cgv.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bm());
+   private bzi(List<bzi.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
    }
 
-   public static bxr<bwf> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> cgv.a($$2x, $$1, $$2), $$0x -> true);
+   public static <U> Codec<bzi<U>> a(Codec<U> $$0) {
+      return bzi.a.a($$0).listOf().xmap(bzi::new, $$0x -> $$0x.a);
    }
 
-   public static bxr<bwf> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
+   public bzi<U> a(U $$0, int $$1) {
+      this.a.add(new bzi.a<>($$0, $$1));
+      return this;
    }
 
-   public static bxr<bwf> c(float $$0) {
-      return a($$0, bzi::a, bvb::bm);
+   public bzi<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(bzi.a::c));
+      return this;
    }
 
-   private static bzb<bwf> a(float $$0, Function<bwf, fbr> $$1, Predicate<bwf> $$2) {
-      return cbd.a((Function<cbd.b<bwf>, ? extends App<cbd.c<bwf>, cbg<bwf>>>)($$3 -> $$3.group($$3.c(cfb.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<fbr> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new cfe($$1xxxx, $$0, 0)));
-                  return true;
-               }
-            })));
+   public Stream<U> b() {
+      return this.a.stream().map(bzi.a::a);
    }
 
-   @Nullable
-   private static fbr a(bwf $$0) {
-      fbr $$1 = null;
-      fbr $$2 = null;
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), bzi.a::a);
+   }
 
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bxs.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.du().e($$0.du().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
-         }
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
 
-         if ($$2 == null || $$0.dW().b_(jh.a((ka)$$2)).c()) {
-            return $$1;
-         }
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
 
-         $$1 = $$2;
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
       }
 
-      return $$2;
-   }
+      private double c() {
+         return this.c;
+      }
 
-   @Nullable
-   private static fbr a(bwf $$0, int $$1, int $$2) {
-      fbr $$3 = $$0.g(0.0F);
-      return cgq.a($$0, $$1, $$2, -2, $$3.d, $$3.f, (float) (Math.PI / 2));
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<bzi.a<E>> a(final Codec<E> $$0) {
+         return new Codec<bzi.a<E>>() {
+            public <T> DataResult<Pair<bzi.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new bzi.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(bzi.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

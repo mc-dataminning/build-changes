@@ -1,21 +1,13 @@
-import java.util.function.Function;
+import java.util.concurrent.CompletableFuture;
 
-public class pf {
-   private final Function<dbi, dbv<?>> a;
-
-   public pf(Function<dbi, dbv<?>> $$0) {
-      this.a = $$0;
+public class pf extends pi<esy> {
+   public pf(mk $$0, CompletableFuture<jt.a> $$1) {
+      super($$0, mc.D, $$1, $$0x -> $$0x.k().h());
    }
 
-   public static pf a(Function<dbi, dbv<?>> $$0) {
-      return new pf($$0);
-   }
-
-   public void a(ox $$0, String $$1) {
-      this.a($$0, alo.a(mb.bk, alp.a($$1)));
-   }
-
-   public void a(ox $$0, alo<dbv<?>> $$1) {
-      $$0.a($$1, this.a.apply(dbi.d), null);
+   @Override
+   protected void a(jt.a $$0) {
+      this.a(awv.a).a(eta.c, eta.b);
+      this.a(awv.b).a(eta.e, eta.d);
    }
 }

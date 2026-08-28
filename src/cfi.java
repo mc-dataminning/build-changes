@@ -1,138 +1,24 @@
-public class cfi extends cfj {
-   private boolean p;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-   public cfi(bvz $$0, dgz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected eug a(int $$0) {
-      this.o = new eum();
-      this.o.a(true);
-      return new eug(this.o, $$0);
-   }
+public class cfi extends cfq<bvi> {
+   private static final long b = 32L;
+   private static final long c = 16L;
+   public static final int a = 32;
 
    @Override
-   protected boolean a() {
-      return this.a.aJ() || this.a.bn() || this.a.bZ();
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.L);
    }
 
-   @Override
-   protected fbr b() {
-      return new fbr(this.a.dB(), (double)this.t(), this.a.dH());
-   }
-
-   @Override
-   public eue a(jh $$0, int $$1) {
-      dzt $$2 = this.b.S().a(kj.a($$0.u()), kj.a($$0.w()));
-      if ($$2 == null) {
-         return null;
-      } else {
-         if ($$2.a_($$0).l()) {
-            jh.a $$3 = $$0.k().c(jm.a);
-
-            while ($$3.v() > this.b.L_() && $$2.a_($$3).l()) {
-               $$3.c(jm.a);
-            }
-
-            if ($$3.v() > this.b.L_()) {
-               return super.a($$3.d(), $$1);
-            }
-
-            $$3.q($$0.v() + 1);
-
-            while ($$3.v() <= this.b.an() && $$2.a_($$3).l()) {
-               $$3.c(jm.b);
-            }
-
-            $$0 = $$3;
-         }
-
-         if (!$$2.a_($$0).e()) {
-            return super.a($$0, $$1);
-         } else {
-            jh.a $$4 = $$0.k().c(jm.b);
-
-            while ($$4.v() <= this.b.an() && $$2.a_($$4).e()) {
-               $$4.c(jm.b);
-            }
-
-            return super.a($$4.j(), $$1);
-         }
-      }
-   }
-
-   @Override
-   public eue a(bvb $$0, int $$1) {
-      return this.a($$0.dw(), $$1);
-   }
-
-   private int t() {
-      if (this.a.bj() && this.q()) {
-         int $$0 = this.a.dC();
-         dxo $$1 = this.b.a_(jh.a(this.a.dB(), (double)$$0, this.a.dH()));
-         int $$2 = 0;
-
-         while ($$1.a(dkf.J)) {
-            $$1 = this.b.a_(jh.a(this.a.dB(), (double)(++$$0), this.a.dH()));
-            if (++$$2 > 16) {
-               return this.a.dC();
-            }
-         }
-
-         return $$0;
-      } else {
-         return azu.a(this.a.dD() + 0.5);
-      }
-   }
-
-   @Override
-   protected void W_() {
-      super.W_();
-      if (this.p) {
-         if (this.b.h(jh.a(this.a.dB(), this.a.dD() + 0.5, this.a.dH()))) {
-            return;
-         }
-
-         for (int $$0 = 0; $$0 < this.c.e(); $$0++) {
-            euc $$1 = this.c.a($$0);
-            if (this.b.h(new jh($$1.a, $$1.b, $$1.c))) {
-               this.c.b($$0);
-               return;
-            }
-         }
-      }
-   }
-
-   protected boolean a(euh $$0) {
-      if ($$0 == euh.j) {
-         return false;
-      } else {
-         return $$0 == euh.i ? false : $$0 != euh.b;
-      }
-   }
-
-   public void b(boolean $$0) {
-      this.o.b($$0);
-   }
-
-   public boolean e() {
-      return this.o.d();
-   }
-
-   public void c(boolean $$0) {
-      this.o.a($$0);
-   }
-
-   public boolean f() {
-      return this.o.d();
-   }
-
-   public void d(boolean $$0) {
-      this.p = $$0;
-   }
-
-   public void e(boolean $$0) {
-      this.o.d($$0);
+   protected void a(arc $$0, bvi $$1) {
+      bwi<?> $$2 = $$1.ec();
+      List<clb> $$3 = $$0.a(clb.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<clb> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.l())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
+      $$2.a(cek.L, $$4);
    }
 }

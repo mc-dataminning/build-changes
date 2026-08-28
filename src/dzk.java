@@ -1,479 +1,379 @@
-import com.google.common.base.Suppliers;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
 import it.unimi.dsi.fastutil.ints.IntArraySet;
 import it.unimi.dsi.fastutil.ints.IntSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.ObjectArraySet;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
+import java.util.function.Consumer;
+import java.util.function.IntUnaryOperator;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
+import java.util.stream.LongStream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class dzk {
-   public static final Codec<dzk> a = ma.aa.q().dispatchStable(dzk::b, Function.identity());
-   protected final dif b;
-   private final Supplier<List<dil.b>> c;
-   private final Function<jq<dib>, dic> d;
-
-   public dzk(dif $$0) {
-      this($$0, $$0x -> ((dib)$$0x.a()).d());
-   }
-
-   public dzk(dif $$0, Function<jq<dib>, dic> $$1) {
-      this.b = $$0;
-      this.d = $$1;
-      this.c = Suppliers.memoize(() -> dil.a(List.copyOf($$0.c()), $$1xx -> $$1.apply($$1xx).c(), true));
-   }
+public class dzk<T> implements dzj<T>, dzl<T> {
+   private static final int a = 0;
+   private final dzj<T> b = ($$0x, $$1x) -> 0;
+   private final jw<T> c;
+   private volatile dzk.c<T> d;
+   private final dzk.d e;
+   private final azy f = new azy("PalettedContainer");
 
    public void a() {
-      this.c.get();
+      this.f.a();
    }
 
-   protected abstract MapCodec<? extends dzk> b();
-
-   public dzl a(js<eoj> $$0, edx $$1, long $$2) {
-      return dzl.a($$1, $$2, this.b, $$0);
+   public void b() {
+      this.f.b();
    }
 
-   public Optional<alo<MapCodec<? extends dzk>>> c() {
-      return ma.aa.d(this.b());
+   public static <T> Codec<dzk<T>> a(jw<T> $$0, Codec<T> $$1, dzk.d $$2, T $$3) {
+      dzl.b<T, dzk<T>> $$4 = dzk::a;
+      return a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public CompletableFuture<dzj> a(edx $$0, eel $$1, dhv $$2, dzj $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         $$3.a(this.b, $$0.b());
-         return $$3;
-      }, ae.g().a("init_biomes"));
+   public static <T> Codec<dzl<T>> b(jw<T> $$0, Codec<T> $$1, dzk.d $$2, T $$3) {
+      dzl.b<T, dzl<T>> $$4 = ($$0x, $$1x, $$2x) -> a($$0x, $$1x, $$2x).map($$0xx -> $$0xx);
+      return a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public abstract void a(asf var1, long var2, edx var4, did var5, dhv var6, dzj var7);
+   private static <T, C extends dzl<T>> Codec<C> a(jw<T> $$0, Codec<T> $$1, dzk.d $$2, T $$3, dzl.b<T, C> $$4) {
+      return RecordCodecBuilder.create(
+            $$2x -> $$2x.group(
+                     $$1.mapResult(ayi.a($$3)).listOf().fieldOf("palette").forGetter(dzl.a::a),
+                     Codec.LONG_STREAM.lenientOptionalFieldOf("data").forGetter(dzl.a::b)
+                  )
+                  .apply($$2x, dzl.a::new)
+         )
+         .comapFlatMap($$3x -> $$4.read($$0, $$2, $$3x), $$2x -> $$2x.a($$0, $$2));
+   }
 
-   @Nullable
-   public Pair<jh, jq<eod>> a(arx $$0, ju<eod> $$1, jh $$2, int $$3, boolean $$4) {
-      dzl $$5 = $$0.m().h();
-      Map<epa, Set<jq<eod>>> $$6 = new Object2ObjectArrayMap();
+   public dzk(jw<T> $$0, dzk.d $$1, dzk.a<T> $$2, axo $$3, List<T> $$4) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = new dzk.c<>($$2, $$3, $$2.a().create($$2.b(), $$0, this, $$4));
+   }
 
-      for (jq<eod> $$7 : $$1) {
-         for (epa $$8 : $$5.a($$7)) {
-            $$6.computeIfAbsent($$8, $$0x -> new ObjectArraySet()).add($$7);
-         }
+   private dzk(jw<T> $$0, dzk.d $$1, dzk.c<T> $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$2;
+   }
+
+   private dzk(dzk<T> $$0) {
+      this.c = $$0.c;
+      this.e = $$0.e;
+      this.d = $$0.d.a(this);
+   }
+
+   public dzk(jw<T> $$0, T $$1, dzk.d $$2) {
+      this.e = $$2;
+      this.c = $$0;
+      this.d = this.a(null, 0);
+      this.d.c.a($$1);
+   }
+
+   private dzk.c<T> a(@Nullable dzk.c<T> $$0, int $$1) {
+      dzk.a<T> $$2 = this.e.a(this.c, $$1);
+      return $$0 != null && $$2.equals($$0.b()) ? $$0 : $$2.a(this.c, this, this.e.a());
+   }
+
+   @Override
+   public int onResize(int $$0, T $$1) {
+      dzk.c<T> $$2 = this.d;
+      dzk.c<T> $$3 = this.a($$2, $$0);
+      $$3.a($$2.c, $$2.b);
+      this.d = $$3;
+      return $$3.c.a($$1);
+   }
+
+   public T a(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      Object var5;
+      try {
+         var5 = this.a(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
       }
 
-      if ($$6.isEmpty()) {
-         return null;
+      return (T)var5;
+   }
+
+   public T b(int $$0, int $$1, int $$2, T $$3) {
+      return this.a(this.e.a($$0, $$1, $$2), $$3);
+   }
+
+   private T a(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      int $$3 = this.d.b.a($$0, $$2);
+      return this.d.c.a($$3);
+   }
+
+   public void c(int $$0, int $$1, int $$2, T $$3) {
+      this.a();
+
+      try {
+         this.b(this.e.a($$0, $$1, $$2), $$3);
+      } finally {
+         this.b();
+      }
+   }
+
+   private void b(int $$0, T $$1) {
+      int $$2 = this.d.c.a($$1);
+      this.d.b.b($$0, $$2);
+   }
+
+   @Override
+   public T a(int $$0, int $$1, int $$2) {
+      return this.a(this.e.a($$0, $$1, $$2));
+   }
+
+   protected T a(int $$0) {
+      dzk.c<T> $$1 = this.d;
+      return $$1.c.a($$1.b.a($$0));
+   }
+
+   @Override
+   public void a(Consumer<T> $$0) {
+      dzi<T> $$1 = this.d.d();
+      IntSet $$2 = new IntArraySet();
+      this.d.b.a($$2::add);
+      $$2.forEach($$2x -> $$0.accept($$1.a($$2x)));
+   }
+
+   public void a(vl $$0) {
+      this.a();
+
+      try {
+         int $$1 = $$0.readByte();
+         dzk.c<T> $$2 = this.a(this.d, $$1);
+         $$2.c.a($$0);
+         $$0.b($$2.b.a());
+         this.d = $$2;
+      } finally {
+         this.b();
+      }
+   }
+
+   @Override
+   public void b(vl $$0) {
+      this.a();
+
+      try {
+         this.d.a($$0);
+      } finally {
+         this.b();
+      }
+   }
+
+   private static <T> DataResult<dzk<T>> a(jw<T> $$0, dzk.d $$1, dzl.a<T> $$2) {
+      List<T> $$3 = $$2.a();
+      int $$4 = $$1.a();
+      int $$5 = $$1.b($$0, $$3.size());
+      dzk.a<T> $$6 = $$1.a($$0, $$5);
+      axo $$7;
+      if ($$5 == 0) {
+         $$7 = new bah($$4);
       } else {
-         Pair<jh, jq<eod>> $$9 = null;
-         double $$10 = Double.MAX_VALUE;
-         dhv $$11 = $$0.b();
-         List<Entry<epa, Set<jq<eod>>>> $$12 = new ArrayList<>($$6.size());
-
-         for (Entry<epa, Set<jq<eod>>> $$13 : $$6.entrySet()) {
-            epa $$14 = $$13.getKey();
-            if ($$14 instanceof eox) {
-               eox $$15 = (eox)$$14;
-               Pair<jh, jq<eod>> $$16 = this.a($$13.getValue(), $$0, $$11, $$2, $$4, $$15);
-               if ($$16 != null) {
-                  jh $$17 = (jh)$$16.getFirst();
-                  double $$18 = $$2.j($$17);
-                  if ($$18 < $$10) {
-                     $$10 = $$18;
-                     $$9 = $$16;
-                  }
-               }
-            } else if ($$14 instanceof eoy) {
-               $$12.add($$13);
-            }
+         Optional<LongStream> $$8 = $$2.b();
+         if ($$8.isEmpty()) {
+            return DataResult.error(() -> "Missing values for non-zero storage");
          }
 
-         if (!$$12.isEmpty()) {
-            int $$19 = kj.a($$2.u());
-            int $$20 = kj.a($$2.w());
-
-            for (int $$21 = 0; $$21 <= $$3; $$21++) {
-               boolean $$22 = false;
-
-               for (Entry<epa, Set<jq<eod>>> $$23 : $$12) {
-                  eoy $$24 = (eoy)$$23.getKey();
-                  Pair<jh, jq<eod>> $$25 = a($$23.getValue(), $$0, $$11, $$19, $$20, $$21, $$4, $$5.d(), $$24);
-                  if ($$25 != null) {
-                     $$22 = true;
-                     double $$26 = $$2.j((kl)$$25.getFirst());
-                     if ($$26 < $$10) {
-                        $$10 = $$26;
-                        $$9 = $$25;
-                     }
-                  }
-               }
-
-               if ($$22) {
-                  return $$9;
-               }
-            }
-         }
-
-         return $$9;
-      }
-   }
-
-   @Nullable
-   private Pair<jh, jq<eod>> a(Set<jq<eod>> $$0, arx $$1, dhv $$2, jh $$3, boolean $$4, eox $$5) {
-      List<dgf> $$6 = $$1.m().h().a($$5);
-      if ($$6 == null) {
-         throw new IllegalStateException("Somehow tried to find structures for a placement that doesn't exist");
-      } else {
-         Pair<jh, jq<eod>> $$7 = null;
-         double $$8 = Double.MAX_VALUE;
-         jh.a $$9 = new jh.a();
-
-         for (dgf $$10 : $$6) {
-            $$9.d(kj.a($$10.h, 8), 32, kj.a($$10.i, 8));
-            double $$11 = $$9.j($$3);
-            boolean $$12 = $$7 == null || $$11 < $$8;
-            if ($$12) {
-               Pair<jh, jq<eod>> $$13 = a($$0, $$1, $$2, $$4, $$5, $$10);
-               if ($$13 != null) {
-                  $$7 = $$13;
-                  $$8 = $$11;
-               }
-            }
-         }
-
-         return $$7;
-      }
-   }
-
-   @Nullable
-   private static Pair<jh, jq<eod>> a(Set<jq<eod>> $$0, dhc $$1, dhv $$2, int $$3, int $$4, int $$5, boolean $$6, long $$7, eoy $$8) {
-      int $$9 = $$8.a();
-
-      for (int $$10 = -$$5; $$10 <= $$5; $$10++) {
-         boolean $$11 = $$10 == -$$5 || $$10 == $$5;
-
-         for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-            boolean $$13 = $$12 == -$$5 || $$12 == $$5;
-            if ($$11 || $$13) {
-               int $$14 = $$3 + $$9 * $$10;
-               int $$15 = $$4 + $$9 * $$12;
-               dgf $$16 = $$8.a($$7, $$14, $$15);
-               Pair<jh, jq<eod>> $$17 = a($$0, $$1, $$2, $$6, $$8, $$16);
-               if ($$17 != null) {
-                  return $$17;
-               }
-            }
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private static Pair<jh, jq<eod>> a(Set<jq<eod>> $$0, dhc $$1, dhv $$2, boolean $$3, epa $$4, dgf $$5) {
-      for (jq<eod> $$6 : $$0) {
-         eof $$7 = $$2.a($$5, $$6.a(), $$4, $$3);
-         if ($$7 != eof.b) {
-            if (!$$3 && $$7 == eof.a) {
-               return Pair.of($$4.a($$5), $$6);
-            }
-
-            dzj $$8 = $$1.a($$5.h, $$5.i, eak.d);
-            eol $$9 = $$2.a(kj.a($$8), $$6.a(), $$8);
-            if ($$9 != null && $$9.b() && (!$$3 || a($$2, $$9))) {
-               return Pair.of($$4.a($$9.c()), $$6);
-            }
-         }
-      }
-
-      return null;
-   }
-
-   private static boolean a(dhv $$0, eol $$1) {
-      if ($$1.d()) {
-         $$0.a($$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(dhx $$0, dzj $$1, dhv $$2) {
-      dgf $$3 = $$1.f();
-      if (!ab.a($$3)) {
-         kj $$4 = kj.a($$3, $$0.ap());
-         jh $$5 = $$4.j();
-         kd<eod> $$6 = $$0.K_().e(mb.aU);
-         Map<Integer, List<eod>> $$7 = $$6.s().collect(Collectors.groupingBy($$0x -> $$0x.c().ordinal()));
-         List<dil.b> $$8 = this.c.get();
-         eei $$9 = new eei(new eek(edy.a()));
-         long $$10 = $$9.a($$0.E(), $$5.u(), $$5.w());
-         Set<jq<dib>> $$11 = new ObjectArraySet();
-         dgf.a($$4.r(), 1).forEach($$2x -> {
-            dzj $$3x = $$0.a($$2x.h, $$2x.i);
-
-            for (dzu $$4x : $$3x.d()) {
-               $$4x.i().a($$11::add);
-            }
-         });
-         $$11.retainAll(this.b.c());
-         int $$12 = $$8.size();
+         long[] $$9 = $$8.get().toArray();
 
          try {
-            kd<enh> $$13 = $$0.K_().e(mb.aT);
-            int $$14 = Math.max(edf.a.values().length, $$12);
-
-            for (int $$15 = 0; $$15 < $$14; $$15++) {
-               int $$16 = 0;
-               if ($$2.a()) {
-                  for (eod $$18 : $$7.getOrDefault($$15, Collections.emptyList())) {
-                     $$9.b($$10, $$16, $$15);
-                     Supplier<String> $$19 = () -> $$6.d($$18).map(Object::toString).orElseGet($$18::toString);
-
-                     try {
-                        $$0.a($$19);
-                        $$2.a($$4, $$18).forEach($$5x -> $$5x.a($$0, $$2, this, $$9, a($$1), $$3));
-                     } catch (Exception var29) {
-                        o $$21 = o.a(var29, "Feature placement");
-                        $$21.a("Feature").a("Description", $$19::get);
-                        throw new z($$21);
-                     }
-
-                     $$16++;
-                  }
-               }
-
-               if ($$15 < $$12) {
-                  IntSet $$22 = new IntArraySet();
-
-                  for (jq<dib> $$23 : $$11) {
-                     List<ju<enh>> $$24 = this.d.apply($$23).c();
-                     if ($$15 < $$24.size()) {
-                        ju<enh> $$25 = $$24.get($$15);
-                        dil.b $$26 = $$8.get($$15);
-                        $$25.a().map(jq::a).forEach($$2x -> $$22.add($$26.b().applyAsInt($$2x)));
-                     }
-                  }
-
-                  int $$27 = $$22.size();
-                  int[] $$28 = $$22.toIntArray();
-                  Arrays.sort($$28);
-                  dil.b $$29 = $$8.get($$15);
-
-                  for (int $$30 = 0; $$30 < $$27; $$30++) {
-                     int $$31 = $$28[$$30];
-                     enh $$32 = $$29.a().get($$31);
-                     Supplier<String> $$33 = () -> $$13.d($$32).map(Object::toString).orElseGet($$32::toString);
-                     $$9.b($$10, $$31, $$15);
-
-                     try {
-                        $$0.a($$33);
-                        $$32.b($$0, this, $$9, $$5);
-                     } catch (Exception var30) {
-                        o $$35 = o.a(var30, "Feature placement");
-                        $$35.a("Feature").a("Description", $$33::get);
-                        throw new z($$35);
-                     }
-                  }
-               }
-            }
-
-            $$0.a(null);
-         } catch (Exception var31) {
-            o $$37 = o.a(var31, "Biome decoration");
-            $$37.a("Generation").a("CenterX", $$3.h).a("CenterZ", $$3.i).a("Decoration Seed", $$10);
-            throw new z($$37);
-         }
-      }
-   }
-
-   private static env a(dzj $$0) {
-      dgf $$1 = $$0.f();
-      int $$2 = $$1.d();
-      int $$3 = $$1.e();
-      dhb $$4 = $$0.B();
-      int $$5 = $$4.L_() + 1;
-      int $$6 = $$4.an();
-      return new env($$2, $$5, $$3, $$2 + 15, $$6, $$3 + 15);
-   }
-
-   public abstract void a(asf var1, dhv var2, edx var3, dzj var4);
-
-   public abstract void a(asf var1);
-
-   public int a(dhb $$0) {
-      return 64;
-   }
-
-   public dif d() {
-      return this.b;
-   }
-
-   public abstract int e();
-
-   public brm<din.c> a(jq<dib> $$0, dhv $$1, bwa $$2, jh $$3) {
-      Map<eod, LongSet> $$4 = $$1.b($$3);
-
-      for (Entry<eod, LongSet> $$5 : $$4.entrySet()) {
-         eod $$6 = $$5.getKey();
-         eok $$7 = $$6.b().get($$2);
-         if ($$7 != null) {
-            MutableBoolean $$8 = new MutableBoolean(false);
-            Predicate<eol> $$9 = $$7.a() == eok.a.a ? $$2x -> $$1.a($$3, $$2x) : $$1x -> $$1x.a().b($$3);
-            $$1.a($$6, $$5.getValue(), $$2x -> {
-               if ($$8.isFalse() && $$9.test($$2x)) {
-                  $$8.setTrue();
-               }
-            });
-            if ($$8.isTrue()) {
-               return $$7.b();
-            }
-         }
-      }
-
-      return $$0.a().b().a($$2);
-   }
-
-   public void a(ke $$0, dzl $$1, dhv $$2, dzj $$3, esg $$4, alo<dgz> $$5) {
-      dgf $$6 = $$3.f();
-      kj $$7 = kj.a($$3);
-      edx $$8 = $$1.c();
-      $$1.a().forEach($$9 -> {
-         epa $$10 = $$9.a().b();
-         List<eoj.a> $$11 = $$9.a().a();
-
-         for (eoj.a $$12 : $$11) {
-            eol $$13 = $$2.a($$7, $$12.a().a(), $$3);
-            if ($$13 != null && $$13.b()) {
-               return;
-            }
-         }
-
-         if ($$10.b($$1, $$6.h, $$6.i)) {
-            if ($$11.size() == 1) {
-               this.a($$11.get(0), $$2, $$0, $$8, $$4, $$1.d(), $$3, $$6, $$7, $$5);
+            if ($$6.a() == dzk.d.f) {
+               dzi<T> $$10 = new dza<>($$0, $$5, ($$0x, $$1x) -> 0, $$3);
+               azo $$11 = new azo($$5, $$4, $$9);
+               int[] $$12 = new int[$$4];
+               $$11.a($$12);
+               a($$12, $$2x -> $$0.a($$10.a($$2x)));
+               $$7 = new azo($$6.b(), $$4, $$12);
             } else {
-               ArrayList<eoj.a> $$14 = new ArrayList<>($$11.size());
-               $$14.addAll($$11);
-               eei $$15 = new eei(new edk(0L));
-               $$15.c($$1.d(), $$6.h, $$6.i);
-               int $$16 = 0;
-
-               for (eoj.a $$17 : $$14) {
-                  $$16 += $$17.b();
-               }
-
-               while (!$$14.isEmpty()) {
-                  int $$18 = $$15.a($$16);
-                  int $$19 = 0;
-
-                  for (eoj.a $$20 : $$14) {
-                     $$18 -= $$20.b();
-                     if ($$18 < 0) {
-                        break;
-                     }
-
-                     $$19++;
-                  }
-
-                  eoj.a $$21 = $$14.get($$19);
-                  if (this.a($$21, $$2, $$0, $$8, $$4, $$1.d(), $$3, $$6, $$7, $$5)) {
-                     return;
-                  }
-
-                  $$14.remove($$19);
-                  $$16 -= $$21.b();
-               }
+               $$7 = new azo($$6.b(), $$4, $$9);
             }
+         } catch (azo.a var13) {
+            return DataResult.error(() -> "Failed to read PalettedContainer: " + var13.getMessage());
          }
-      });
+      }
+
+      return DataResult.success(new dzk<>($$0, $$1, $$6, $$7, $$3));
    }
 
-   private boolean a(eoj.a $$0, dhv $$1, ke $$2, edx $$3, esg $$4, long $$5, dzj $$6, dgf $$7, kj $$8, alo<dgz> $$9) {
-      eod $$10 = $$0.a().a();
-      int $$11 = a($$1, $$6, $$8, $$10);
-      ju<dib> $$12 = $$10.a();
-      Predicate<jq<dib>> $$13 = $$12::a;
-      eol $$14 = $$10.a($$0.a(), $$9, $$2, this, this.b, $$3, $$4, $$5, $$7, $$11, $$6, $$13);
-      if ($$14.b()) {
-         $$1.a($$8, $$10, $$14, $$6);
-         return true;
+   @Override
+   public dzl.a<T> a(jw<T> $$0, dzk.d $$1) {
+      this.a();
+
+      dzl.a var12;
+      try {
+         dza<T> $$2 = new dza<>($$0, this.d.b.c(), this.b);
+         int $$3 = $$1.a();
+         int[] $$4 = new int[$$3];
+         this.d.b.a($$4);
+         a($$4, $$1x -> $$2.a(this.d.c.a($$1x)));
+         int $$5 = $$1.b($$0, $$2.b());
+         Optional<LongStream> $$7;
+         if ($$5 != 0) {
+            azo $$6 = new azo($$5, $$3, $$4);
+            $$7 = Optional.of(Arrays.stream($$6.a()));
+         } else {
+            $$7 = Optional.empty();
+         }
+
+         var12 = new dzl.a<>($$2.c(), $$7);
+      } finally {
+         this.b();
+      }
+
+      return var12;
+   }
+
+   private static <T> void a(int[] $$0, IntUnaryOperator $$1) {
+      int $$2 = -1;
+      int $$3 = -1;
+
+      for (int $$4 = 0; $$4 < $$0.length; $$4++) {
+         int $$5 = $$0[$$4];
+         if ($$5 != $$2) {
+            $$2 = $$5;
+            $$3 = $$1.applyAsInt($$5);
+         }
+
+         $$0[$$4] = $$3;
+      }
+   }
+
+   @Override
+   public int c() {
+      return this.d.a();
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      return this.d.c.a($$0);
+   }
+
+   @Override
+   public dzk<T> d() {
+      return new dzk<>(this);
+   }
+
+   @Override
+   public dzk<T> e() {
+      return new dzk<>(this.c, this.d.c.a(0), this.e);
+   }
+
+   @Override
+   public void a(dzk.b<T> $$0) {
+      if (this.d.c.b() == 1) {
+         $$0.accept(this.d.c.a(0), this.d.b.b());
       } else {
-         return false;
+         Int2IntOpenHashMap $$1 = new Int2IntOpenHashMap();
+         this.d.b.a($$1x -> $$1.addTo($$1x, 1));
+         $$1.int2IntEntrySet().forEach($$1x -> $$0.accept(this.d.c.a($$1x.getIntKey()), $$1x.getIntValue()));
       }
    }
 
-   private static int a(dhv $$0, dzj $$1, kj $$2, eod $$3) {
-      eol $$4 = $$0.a($$2, $$3, $$1);
-      return $$4 != null ? $$4.f() : 0;
+   static record a<T>(dzi.a a, int b) {
+      public dzk.c<T> a(jw<T> $$0, dzj<T> $$1, int $$2) {
+         axo $$3 = (axo)(this.b == 0 ? new bah($$2) : new azo(this.b, $$2));
+         dzi<T> $$4 = this.a.create(this.b, $$0, $$1, List.of());
+         return new dzk.c<>(this, $$3, $$4);
+      }
    }
 
-   public void a(dhx $$0, dhv $$1, dzj $$2) {
-      int $$3 = 8;
-      dgf $$4 = $$2.f();
-      int $$5 = $$4.h;
-      int $$6 = $$4.i;
-      int $$7 = $$4.d();
-      int $$8 = $$4.e();
-      kj $$9 = kj.a($$2);
+   @FunctionalInterface
+   public interface b<T> {
+      void accept(T var1, int var2);
+   }
 
-      for (int $$10 = $$5 - 8; $$10 <= $$5 + 8; $$10++) {
-         for (int $$11 = $$6 - 8; $$11 <= $$6 + 8; $$11++) {
-            long $$12 = dgf.c($$10, $$11);
+   static record c<T>(dzk.a<T> a, axo b, dzi<T> c) {
 
-            for (eol $$13 : $$0.a($$10, $$11).g().values()) {
-               try {
-                  if ($$13.b() && $$13.a().a($$7, $$8, $$7 + 15, $$8 + 15)) {
-                     $$1.a($$9, $$13.h(), $$12, $$2);
-                     agy.a($$0, $$13);
-                  }
-               } catch (Exception var21) {
-                  o $$15 = o.a(var21, "Generating structure reference");
-                  p $$16 = $$15.a("Structure");
-                  Optional<? extends kd<eod>> $$17 = $$0.K_().a(mb.aU);
-                  $$16.a("Id", () -> $$17.<String>map($$1xx -> $$1xx.b($$13.h()).toString()).orElse("UNKNOWN"));
-                  $$16.a("Name", () -> ma.R.b($$13.h().e()).toString());
-                  $$16.a("Class", () -> $$13.h().getClass().getCanonicalName());
-                  throw new z($$15);
-               }
-            }
+      public void a(dzi<T> $$0, axo $$1) {
+         for (int $$2 = 0; $$2 < $$1.b(); $$2++) {
+            T $$3 = $$0.a($$1.a($$2));
+            this.b.b($$2, this.c.a($$3));
          }
       }
+
+      public int a() {
+         return 1 + this.c.a() + wf.a(this.b.a().length) + this.b.a().length * 8;
+      }
+
+      public void a(vl $$0) {
+         $$0.l(this.b.c());
+         this.c.b($$0);
+         $$0.a(this.b.a());
+      }
+
+      public dzk.c<T> a(dzj<T> $$0) {
+         return new dzk.c<>(this.a, this.b.d(), this.c.a($$0));
+      }
+
+      public dzk.a<T> b() {
+         return this.a;
+      }
+
+      public axo c() {
+         return this.b;
+      }
+
+      public dzi<T> d() {
+         return this.c;
+      }
    }
 
-   public abstract CompletableFuture<dzj> a(eel var1, edx var2, dhv var3, dzj var4);
+   public abstract static class d {
+      public static final dzi.a a = dzn::a;
+      public static final dzi.a b = dzg::a;
+      public static final dzi.a c = dza::a;
+      static final dzi.a f = dyz::a;
+      public static final dzk.d d = new dzk.d(4) {
+         @Override
+         public <A> dzk.a<A> a(jw<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dzk.a(a, $$1);
+               case 1, 2, 3, 4 -> new dzk.a(b, 4);
+               case 5, 6, 7, 8 -> new dzk.a(c, $$1);
+               default -> new dzk.a(dzk.d.f, ayz.e($$0.d()));
+            };
+         }
+      };
+      public static final dzk.d e = new dzk.d(2) {
+         @Override
+         public <A> dzk.a<A> a(jw<A> $$0, int $$1) {
+            return switch ($$1) {
+               case 0 -> new dzk.a(a, $$1);
+               case 1, 2, 3 -> new dzk.a(b, $$1);
+               default -> new dzk.a(dzk.d.f, ayz.e($$0.d()));
+            };
+         }
+      };
+      private final int g;
 
-   public abstract int f();
+      d(int $$0) {
+         this.g = $$0;
+      }
 
-   public abstract int g();
+      public int a() {
+         return 1 << this.g * 3;
+      }
 
-   public abstract int a(int var1, int var2, edj.a var3, dhb var4, edx var5);
+      public int a(int $$0, int $$1, int $$2) {
+         return ($$1 << this.g | $$2) << this.g | $$0;
+      }
 
-   public abstract dhl a(int var1, int var2, dhb var3, edx var4);
+      public abstract <A> dzk.a<A> a(jw<A> var1, int var2);
 
-   public int b(int $$0, int $$1, edj.a $$2, dhb $$3, edx $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public int c(int $$0, int $$1, edj.a $$2, dhb $$3, edx $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4) - 1;
-   }
-
-   public abstract void a(List<String> var1, edx var2, jh var3);
-
-   @Deprecated
-   public dic a(jq<dib> $$0) {
-      return this.d.apply($$0);
+      <A> int b(jw<A> $$0, int $$1) {
+         int $$2 = ayz.e($$1);
+         dzk.a<A> $$3 = this.a($$0, $$2);
+         return $$3.a() == f ? $$2 : $$3.b();
+      }
    }
 }

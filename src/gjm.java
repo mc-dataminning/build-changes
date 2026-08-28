@@ -1,101 +1,91 @@
-import javax.annotation.Nullable;
+public class gjm extends gkg {
+   private final double a;
+   private final double b;
+   private final double F;
 
-public class gjm extends gjn {
-   private final jh a;
-   private final float b;
-   private final float F;
-
-   public gjm(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dxo $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, jh.a($$1, $$2, $$3));
-   }
-
-   public gjm(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dxo $$7, jh $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(flz.Q().ap().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dkf.i)) {
-         int $$9 = flz.Q().aw().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
-      }
-
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+   protected gjm(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.a = this.g;
+      this.b = this.h;
+      this.F = this.i;
+      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
+      float $$7 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$7 * 0.9F;
+      this.w = $$7 * 0.3F;
+      this.x = $$7;
+      this.t = (int)(Math.random() * 10.0) + 40;
    }
 
    @Override
-   public gir b() {
-      return gir.a;
+   public gjk b() {
+      return gjk.b;
    }
 
    @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = 1.0F - $$1;
+      $$1 *= $$1;
+      $$1 = 1.0F - $$1;
+      return this.D * $$1;
    }
 
    @Override
    public int a(float $$0) {
       int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? glc.a(this.c, this.a) : $$1;
+      float $$2 = (float)this.s / (float)this.t;
+      $$2 *= $$2;
+      $$2 *= $$2;
+      int $$3 = $$1 & 0xFF;
+      int $$4 = $$1 >> 16 & 0xFF;
+      $$4 += (int)($$2 * 15.0F * 16.0F);
+      if ($$4 > 240) {
+         $$4 = 240;
+      }
+
+      return $$3 | $$4 << 16;
    }
 
-   @Nullable
-   static gjm a(lk $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      dxo $$8 = $$0.b();
-      return !$$8.l() && !$$8.a(dkf.bX) && $$8.D() ? new gjm($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
-   }
-
-   public static class a implements giq<lk> {
-      @Nullable
-      public gin a(lk $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gin $$8 = gjm.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b(0.0, 0.0, 0.0);
-            $$8.a($$1.A.a(10) + 1);
-         }
-
-         return $$8;
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         float var3 = -$$0 + $$0 * $$0 * 2.0F;
+         float var4 = 1.0F - var3;
+         this.g = this.a + this.j * (double)var4;
+         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
+         this.i = this.F + this.l * (double)var4;
       }
    }
 
-   public static class b implements giq<lk> {
-      @Nullable
-      public gin a(lk $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gin $$8 = gjm.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.A.k() / 30.0, $$6 + $$1.A.k() / 2.0, $$1.A.k() / 30.0);
-            $$8.a($$1.A.a(20) + 20);
-         }
+   public static class a implements gjj<lx> {
+      private final gkb a;
 
-         return $$8;
+      public a(gkb $$0) {
+         this.a = $$0;
       }
-   }
 
-   public static class c implements giq<lk> {
-      @Nullable
-      public gin a(lk $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return gjm.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjm $$8 = new gjm($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

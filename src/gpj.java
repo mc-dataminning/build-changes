@@ -1,52 +1,107 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public class gpj implements gpg.a {
-   private static final int a = 160;
-   private final flz b;
-   private final Int2ObjectMap<gpj.a> c = new Int2ObjectOpenHashMap();
+public class gpj {
+   private final gnb a;
+   private final goh b;
 
-   @Override
-   public void a() {
-      this.c.clear();
+   public gpj(gnb $$0, goh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(int $$0, jh $$1, List<aba.a> $$2) {
-      this.c.put($$0, new gpj.a($$1, $$2));
-   }
+   public gpj.a a(kk $$0, gph $$1, fgc $$2, gmk $$3) {
+      gpj.a $$4 = new gpj.a();
+      ji $$5 = $$0.j();
+      ji $$6 = $$5.b(15, 15, 15);
+      gpl $$7 = new gpl();
+      ffu $$8 = new ffu();
+      gnd.a();
+      Map<gmh, ffp> $$9 = new Reference2ObjectArrayMap(gmh.Q().size());
+      azh $$10 = azh.a();
 
-   public void a(int $$0) {
-      this.c.remove($$0);
-   }
+      for (ji $$11 : ji.c($$5, $$6)) {
+         dwx $$12 = $$1.a_($$11);
+         if ($$12.s()) {
+            $$7.a($$11);
+         }
 
-   public gpj(flz $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
-      fli $$5 = this.b.j.k();
-      jh $$6 = jh.a($$5.b().d, 0.0, $$5.b().f);
-      ObjectIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         gpj.a $$7 = (gpj.a)var11.next();
-         jh $$8 = $$7.a;
-         if ($$6.a($$8, 160.0)) {
-            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
-               aba.a $$10 = $$7.b.get($$9);
-               double $$11 = (double)$$8.u() + 0.5;
-               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
-               double $$13 = (double)$$8.w() + 0.5;
-               int $$14 = $$10.b() ? -16711936 : -3355444;
-               gpg.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+         if ($$12.x()) {
+            dtz $$13 = $$1.c_($$11);
+            if ($$13 != null) {
+               this.a($$4, $$13);
             }
+         }
+
+         esz $$14 = $$12.y();
+         if (!$$14.c()) {
+            gmh $$15 = glq.a($$14);
+            ffp $$16 = this.a($$9, $$3, $$15);
+            this.a.a($$11, $$1, $$16, $$12, $$14);
+         }
+
+         if ($$12.o() == dpx.c) {
+            gmh $$17 = glq.a($$12);
+            ffp $$18 = this.a($$9, $$3, $$17);
+            $$8.a();
+            $$8.a((float)kk.b($$11.u()), (float)kk.b($$11.v()), (float)kk.b($$11.w()));
+            this.a.a($$12, $$11, $$1, $$8, $$18, true, $$10);
+            $$8.b();
+         }
+      }
+
+      for (Entry<gmh, ffp> $$19 : $$9.entrySet()) {
+         gmh $$20 = $$19.getKey();
+         fft $$21 = $$19.getValue().a();
+         if ($$21 != null) {
+            if ($$20 == gmh.f()) {
+               $$4.e = $$21.a($$3.a(gmh.f()), $$2);
+            }
+
+            $$4.c.put($$20, $$21);
+         }
+      }
+
+      gnd.b();
+      $$4.d = $$7.a();
+      return $$4;
+   }
+
+   private ffp a(Map<gmh, ffp> $$0, gmk $$1, gmh $$2) {
+      ffp $$3 = $$0.get($$2);
+      if ($$3 == null) {
+         ffr $$4 = $$1.a($$2);
+         $$3 = new ffp($$4, ffz.c.h, ffs.b);
+         $$0.put($$2, $$3);
+      }
+
+      return $$3;
+   }
+
+   private <E extends dtz> void a(gpj.a $$0, E $$1) {
+      goi<E> $$2 = this.b.a($$1);
+      if ($$2 != null) {
+         $$0.b.add($$1);
+         if ($$2.a($$1)) {
+            $$0.a.add($$1);
          }
       }
    }
 
-   static record a(jh a, List<aba.a> b) {
+   public static final class a {
+      public final List<dtz> a = new ArrayList<>();
+      public final List<dtz> b = new ArrayList<>();
+      public final Map<gmh, fft> c = new Reference2ObjectArrayMap();
+      public gpm d = new gpm();
+      @Nullable
+      public fft.b e;
+
+      public void a() {
+         this.c.values().forEach(fft::close);
+      }
    }
 }

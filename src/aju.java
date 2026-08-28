@@ -1,27 +1,12 @@
-import java.util.UUID;
+public class aju {
+   public static final yx<ajq> a = a("status_response");
+   public static final yx<ajt> b = b("status_request");
 
-public record aju(String b, UUID c) implements zr<ajs> {
-   public static final zi<wh, aju> a = zr.a(aju::a, aju::new);
-
-   private aju(wh $$0) {
-      this($$0.d(16), $$0.n());
+   private static <T extends yv<ajp>> yx<T> a(String $$0) {
+      return new yx<>(yw.b, aku.b($$0));
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b, 16);
-      $$0.a(this.c);
-   }
-
-   @Override
-   public zt<aju> a() {
-      return ajq.g;
-   }
-
-   public void a(ajs $$0) {
-      $$0.a(this);
-   }
-
-   public UUID e() {
-      return this.c;
+   private static <T extends yv<ajs>> yx<T> b(String $$0) {
+      return new yx<>(yw.a, aku.b($$0));
    }
 }

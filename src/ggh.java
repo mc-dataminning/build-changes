@@ -1,121 +1,41 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportChatMessage;
-import com.mojang.authlib.minecraft.report.ReportEvidence;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.nio.ByteBuffer;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+public class ggh {
+   private final gkv a;
+   private final gfy b;
+   private final glt c;
+   private ggh.a d = ggh.a.a;
 
-public class ggh extends ggk {
-   final IntSet g = new IntOpenHashSet();
-
-   ggh(UUID $$0, Instant $$1, UUID $$2) {
-      super($$0, $$1, $$2);
+   public ggh(gkv $$0, gfy $$1, glt $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public void a(int $$0, AbuseReportLimits $$1) {
-      if (this.g.contains($$0)) {
-         this.g.remove($$0);
-      } else if (this.g.size() < $$1.maxReportedMessageCount()) {
-         this.g.add($$0);
+   public void a() {
+      switch (this.d) {
+         case b:
+            ji $$0 = this.a.dw();
+            boolean $$1 = this.b.e($$0.v());
+            if ($$1 || this.c.a($$0) || this.a.Z_() || !this.a.bL()) {
+               this.d = ggh.a.c;
+            }
+         case a:
+         case c:
       }
    }
 
-   public ggh a() {
-      ggh $$0 = new ggh(this.a, this.b, this.c);
-      $$0.g.addAll(this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
+   public boolean b() {
+      return this.d == ggh.a.c;
    }
 
-   @Override
-   public ftr a(ftr $$0, ggo $$1) {
-      return new fxy($$0, $$1, this);
+   public void c() {
+      if (this.d == ggh.a.a) {
+         this.d = ggh.a.b;
+      }
    }
 
-   public static class a extends ggk.a<ggh> {
-      public a(ggh $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, AbuseReportLimits $$1) {
-         super(new ggh(UUID.randomUUID(), Instant.now(), $$0), $$1);
-      }
-
-      public IntSet a() {
-         return this.a.g;
-      }
-
-      public void a(int $$0) {
-         this.a.a($$0, this.b);
-      }
-
-      public boolean b(int $$0) {
-         return this.a.g.contains($$0);
-      }
-
-      @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || !this.a().isEmpty() || this.i() != null;
-      }
-
-      @Nullable
-      @Override
-      public ggk.b c() {
-         if (this.a.g.isEmpty()) {
-            return ggk.b.b;
-         } else if (this.a.g.size() > this.b.maxReportedMessageCount()) {
-            return ggk.b.c;
-         } else if (this.a.e == null) {
-            return ggk.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? ggk.b.d : super.c();
-         }
-      }
-
-      @Override
-      public Either<ggk.c, ggk.b> a(ggo $$0) {
-         ggk.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportEvidence $$3 = this.b($$0);
-            ReportedEntity $$4 = new ReportedEntity(this.a.c);
-            AbuseReport $$5 = AbuseReport.chat(this.a.d, $$2, $$3, $$4, this.a.b);
-            return Either.left(new ggk.c(this.a.a, ggn.a, $$5));
-         }
-      }
-
-      private ReportEvidence b(ggo $$0) {
-         List<ReportChatMessage> $$1 = new ArrayList<>();
-         ggi $$2 = new ggi(this.b.leadingContextMessageCount());
-         $$2.a($$0.b(), this.a.g, ($$1x, $$2x) -> $$1.add(this.a($$2x, this.b($$1x))));
-         return new ReportEvidence(Lists.reverse($$1));
-      }
-
-      private ReportChatMessage a(ggd.a $$0, boolean $$1) {
-         yf $$2 = $$0.g().k();
-         yd $$3 = $$0.g().m();
-         List<ByteBuffer> $$4 = $$3.d().a().stream().map(xw::a).toList();
-         ByteBuffer $$5 = x.a($$0.g().l(), xw::a);
-         return new ReportChatMessage($$2.b(), $$2.c(), $$2.d(), $$3.b(), $$3.c(), $$4, $$3.a(), $$5, $$1);
-      }
-
-      public ggh.a d() {
-         return new ggh.a(this.a.a(), this.b);
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

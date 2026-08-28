@@ -1,36 +1,61 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+public class aew implements yv<abk> {
+   public static final ym<vl, aew> a = yv.a(aew::a, aew::new);
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
 
-public class aew implements zr<acg> {
-   public static final zi<wh, aew> a = zr.a(aew::a, aew::new);
-   private final IntList b;
-
-   public aew(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   public aew(buk $$0) {
+      this($$0.ar(), $$0.dz());
    }
 
-   public aew(int... $$0) {
-      this.b = new IntArrayList($$0);
+   public aew(int $$0, fba $$1) {
+      this.b = $$0;
+      double $$2 = 3.9;
+      double $$3 = ayz.a($$1.d, -3.9, 3.9);
+      double $$4 = ayz.a($$1.e, -3.9, 3.9);
+      double $$5 = ayz.a($$1.f, -3.9, 3.9);
+      this.c = (int)($$3 * 8000.0);
+      this.d = (int)($$4 * 8000.0);
+      this.e = (int)($$5 * 8000.0);
    }
 
-   private aew(wh $$0) {
-      this.b = $$0.a();
+   private aew(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+      this.e = $$0.readShort();
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
+      $$0.m(this.e);
    }
 
    @Override
-   public zt<aew> a() {
-      return agz.an;
+   public yx<aew> a() {
+      return agd.aH;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public IntList b() {
+   public int b() {
       return this.b;
+   }
+
+   public double e() {
+      return (double)this.c / 8000.0;
+   }
+
+   public double f() {
+      return (double)this.d / 8000.0;
+   }
+
+   public double g() {
+      return (double)this.e / 8000.0;
    }
 }

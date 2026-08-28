@@ -1,34 +1,41 @@
-public class gtw extends gqf<cnb, gzp, gdl> {
-   private static final alp a = alp.b("textures/entity/strider/strider.png");
-   private static final alp b = alp.b("textures/entity/strider/strider_cold.png");
-   private static final float k = 0.5F;
+public class gtw extends gqw<chr, gzx, gdl> {
+   private static final aku a = aku.b("textures/entity/rabbit/brown.png");
+   private static final aku b = aku.b("textures/entity/rabbit/white.png");
+   private static final aku k = aku.b("textures/entity/rabbit/black.png");
+   private static final aku l = aku.b("textures/entity/rabbit/gold.png");
+   private static final aku m = aku.b("textures/entity/rabbit/salt.png");
+   private static final aku n = aku.b("textures/entity/rabbit/white_splotched.png");
+   private static final aku o = aku.b("textures/entity/rabbit/toast.png");
+   private static final aku p = aku.b("textures/entity/rabbit/caerbannog.png");
 
-   public gtw(grl.a $$0) {
-      super($$0, new gdl($$0.a(gei.dd)), new gdl($$0.a(gei.df)), 0.5F);
-      this.a(new gwb<>(this, new gdl($$0.a(gei.de)), new gdl($$0.a(gei.dg)), alp.b("textures/entity/strider/strider_saddle.png")));
+   public gtw(gsc.a $$0) {
+      super($$0, new gdl($$0.a(gfb.ct)), new gdl($$0.a(gfb.cu)), 0.3F);
    }
 
-   public alp a(gzp $$0) {
-      return $$0.b ? b : a;
+   public aku a(gzx $$0) {
+      if ($$0.b) {
+         return o;
+      } else {
+         return switch ($$0.c) {
+            case a -> a;
+            case b -> b;
+            case c -> k;
+            case e -> l;
+            case f -> m;
+            case d -> n;
+            case g -> p;
+         };
+      }
    }
 
-   protected float b(gzp $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
+   public gzx b() {
+      return new gzx();
    }
 
-   public gzp b() {
-      return new gzp();
-   }
-
-   public void a(cnb $$0, gzp $$1, float $$2) {
+   public void a(chr $$0, gzx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.j();
-      $$1.b = $$0.p();
-      $$1.c = $$0.ca();
-   }
-
-   protected boolean c(gzp $$0) {
-      return super.a($$0) || $$0.b;
+      $$1.a = $$0.J($$2);
+      $$1.b = "Toast".equals(n.a($$0.al().getString()));
+      $$1.c = $$0.gp();
    }
 }

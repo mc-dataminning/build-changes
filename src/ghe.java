@@ -1,49 +1,67 @@
-public class ghe extends gjn {
-   private final gji a;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   ghe(gff $$0, double $$1, double $$2, double $$3, double $$4, gji $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public record ghe(String a, @Nullable ghe.a b) {
+   public static ghe a() {
+      return a(null);
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   public static ghe a(String $$0) {
+      return a(new ghe.a.b($$0));
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+   public static ghe a(fhl $$0) {
+      return a(new ghe.a.a($$0));
+   }
+
+   public static ghe a(@Nullable ghe.a $$0) {
+      return new ghe(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof ghe.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof ghe.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w45a");
+      if (flj.e().a()) {
+         $$0.append(" (modded)");
       }
+
+      return $$0.toString();
    }
 
-   @Override
-   public gir b() {
-      return gir.b;
+   public String e() {
+      return this.a;
    }
 
-   public static class a implements giq<lw> {
-      private final gji a;
+   @Nullable
+   public ghe.a f() {
+      return this.b;
+   }
 
-      public a(gji $$0) {
-         this.a = $$0;
+   public interface a {
+      public static record a(long a, int b) implements ghe.a {
+         public a(fhl $$0) {
+            this($$0.a, $$0.p);
+         }
       }
 
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ghe($$1, $$2, $$3, $$4, $$5, this.a);
+      public static record b(String a) implements ghe.a {
       }
    }
 }

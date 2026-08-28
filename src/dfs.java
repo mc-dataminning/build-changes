@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dfs {
+@FunctionalInterface
+public interface dfs {
+   int getColor(dhk var1, double var2, double var4);
 }

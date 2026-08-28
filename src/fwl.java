@@ -1,477 +1,137 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
-import com.mojang.logging.LogUtils;
-import java.net.UnknownHostException;
-import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fwl extends fov<fwl.a> {
-   static final alp a = alp.b("server_list/incompatible");
-   static final alp m = alp.b("server_list/unreachable");
-   static final alp n = alp.b("server_list/ping_1");
-   static final alp o = alp.b("server_list/ping_2");
-   static final alp p = alp.b("server_list/ping_3");
-   static final alp q = alp.b("server_list/ping_4");
-   static final alp r = alp.b("server_list/ping_5");
-   static final alp s = alp.b("server_list/pinging_1");
-   static final alp u = alp.b("server_list/pinging_2");
-   static final alp v = alp.b("server_list/pinging_3");
-   static final alp w = alp.b("server_list/pinging_4");
-   static final alp x = alp.b("server_list/pinging_5");
-   static final alp y = alp.b("server_list/join_highlighted");
-   static final alp z = alp.b("server_list/join");
-   static final alp A = alp.b("server_list/move_up_highlighted");
-   static final alp B = alp.b("server_list/move_up");
-   static final alp C = alp.b("server_list/move_down_highlighted");
-   static final alp D = alp.b("server_list/move_down");
-   static final Logger E = LogUtils.getLogger();
-   static final ThreadPoolExecutor F = new ScheduledThreadPoolExecutor(
-      5, new ThreadFactoryBuilder().setNameFormat("Server Pinger #%d").setDaemon(true).setUncaughtExceptionHandler(new r(E)).build()
-   );
-   static final xk G = xk.c("lanServer.scanning");
-   static final xk H = xk.c("multiplayer.status.cannot_resolve").b(-65536);
-   static final xk I = xk.c("multiplayer.status.cannot_connect").b(-65536);
-   static final xk J = xk.c("multiplayer.status.incompatible");
-   static final xk K = xk.c("multiplayer.status.no_connection");
-   static final xk L = xk.c("multiplayer.status.pinging");
-   static final xk M = xk.c("multiplayer.status.online");
-   private final fwh N;
-   private final List<fwl.d> O = Lists.newArrayList();
-   private final fwl.a P = new fwl.b();
-   private final List<fwl.c> Q = Lists.newArrayList();
+public class fwl extends fwb<cuc> {
+   private static final aku G = aku.b("container/smithing/error");
+   private static final aku H = aku.b("container/slot/smithing_template_armor_trim");
+   private static final aku I = aku.b("container/slot/smithing_template_netherite_upgrade");
+   private static final wo J = wo.c("container.upgrade.missing_template_tooltip");
+   private static final wo K = wo.c("container.upgrade.error_tooltip");
+   private static final List<aku> L = List.of(H, I);
+   private static final int M = 44;
+   private static final int N = 15;
+   private static final int O = 28;
+   private static final int P = 21;
+   private static final int Q = 65;
+   private static final int R = 46;
+   private static final int S = 115;
+   private static final int T = 210;
+   private static final int U = 25;
+   private static final Vector3f V = new Vector3f();
+   private static final Quaternionf W = new Quaternionf().rotationXYZ(0.43633232F, 0.0F, (float) Math.PI);
+   private static final int X = 25;
+   private static final int Y = 75;
+   private static final int Z = 141;
+   private final fvq aa = new fvq(0);
+   private final fvq ab = new fvq(1);
+   private final fvq ac = new fvq(2);
+   @Nullable
+   private ckq ad;
 
-   public fwl(fwh $$0, flz $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.N = $$0;
-   }
-
-   private void c() {
-      this.j();
-      this.O.forEach($$1 -> this.b($$1));
-      this.b(this.P);
-      this.Q.forEach($$1 -> this.b($$1));
-   }
-
-   public void a(@Nullable fwl.a $$0) {
-      super.a($$0);
-      this.N.E();
+   public fwl(cuc $$0, cow $$1, wo $$2) {
+      super($$0, $$1, $$2, aku.b("textures/gui/container/smithing.png"));
+      this.v = 44;
+      this.w = 15;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      fwl.a $$3 = this.g();
-      return $$3 != null && $$3.a($$0, $$1, $$2) || super.a($$0, $$1, $$2);
+   protected void G() {
+      this.ad = new ckq(this.m.s, 0.0, 0.0, 0.0);
+      this.ad.b(true);
+      this.ad.a(true);
+      this.ad.aX = 210.0F;
+      this.ad.w(25.0F);
+      this.ad.aZ = this.ad.dM();
+      this.ad.ba = this.ad.dM();
+      this.b(this.z.b(3).g());
    }
 
-   public void a(gfv $$0) {
-      this.O.clear();
-
-      for (int $$1 = 0; $$1 < $$0.c(); $$1++) {
-         this.O.add(new fwl.d(this.N, $$0.a($$1)));
-      }
-
-      this.c();
+   @Override
+   public void E() {
+      super.E();
+      Optional<cxv> $$0 = this.H();
+      this.aa.a(L);
+      this.ab.a($$0.map(cxv::d).orElse(List.of()));
+      this.ac.a($$0.map(cxv::o).orElse(List.of()));
    }
 
-   public void a(List<hfs> $$0) {
-      int $$1 = $$0.size() - this.Q.size();
-      this.Q.clear();
+   private Optional<cxv> H() {
+      cwp $$0 = this.z.b(0).g();
+      return !$$0.f() && $$0.h() instanceof cxv $$1 ? Optional.of($$1) : Optional.empty();
+   }
 
-      for (hfs $$2 : $$0) {
-         this.Q.add(new fwl.c(this.N, $$2));
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fod $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.aa.a(this.z, $$0, $$1, this.C, this.D);
+      this.ab.a(this.z, $$0, $$1, this.C, this.D);
+      this.ac.a(this.z, $$0, $$1, this.C, this.D);
+      fwa.a($$0, (float)(this.C + 141), (float)(this.D + 75), 25.0F, V, W, null, this.ad);
+   }
+
+   @Override
+   public void a(csc $$0, int $$1, cwp $$2) {
+      if ($$1 == 3) {
+         this.b($$2);
       }
+   }
 
-      this.c();
+   private void b(cwp $$0) {
+      if (this.ad != null) {
+         for (bus $$1 : bus.i) {
+            this.ad.a($$1, cwp.j);
+         }
 
-      for (int $$3 = this.Q.size() - $$1; $$3 < this.Q.size(); $$3++) {
-         fwl.c $$4 = this.Q.get($$3);
-         int $$5 = $$3 - this.Q.size() + this.aI_().size();
-         int $$6 = this.e($$5);
-         int $$7 = this.f($$5);
-         if ($$7 >= this.E() && $$6 <= this.G()) {
-            this.c.aZ().b(xk.a("multiplayer.lan.server_found", $$4.c()));
+         if (!$$0.f()) {
+            deu $$2 = $$0.a(kv.D);
+            bus $$3 = $$2 != null ? $$2.a() : bus.b;
+            this.ad.a($$3, $$0.v());
          }
       }
    }
 
    @Override
-   public int a() {
-      return 305;
-   }
-
-   public void b() {
-   }
-
-   public abstract static class a extends fov.a<fwl.a> implements AutoCloseable {
-      @Override
-      public void close() {
+   protected void c(fod $$0, int $$1, int $$2) {
+      if (this.I()) {
+         $$0.a(gmh::H, G, $$1 + 65, $$2 + 46, 28, 21);
       }
    }
 
-   public static class b extends fwl.a {
-      private final flz a = flz.Q();
-
-      @Override
-      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = $$2 + $$5 / 2 - 9 / 2;
-         $$0.b(this.a.h, fwl.G, this.a.z.n / 2 - this.a.h.a(fwl.G) / 2, $$10, -1);
-         String $$11 = ftg.a(ae.c());
-         $$0.b(this.a.h, $$11, this.a.z.n / 2 - this.a.h.b($$11) / 2, $$10 + 9, -8355712);
+   private void d(fod $$0, int $$1, int $$2) {
+      Optional<wo> $$3 = Optional.empty();
+      if (this.I() && this.a(65, 46, 28, 21, (double)$$1, (double)$$2)) {
+         $$3 = Optional.of(K);
       }
 
-      @Override
-      public xk a() {
-         return fwl.G;
+      if (this.B != null) {
+         cwp $$4 = this.z.b(0).g();
+         cwp $$5 = this.B.g();
+         if ($$4.f()) {
+            if (this.B.d == 0) {
+               $$3 = Optional.of(J);
+            }
+         } else if ($$4.h() instanceof cxv $$6 && $$5.f()) {
+            if (this.B.d == 1) {
+               $$3 = Optional.of($$6.b());
+            } else if (this.B.d == 2) {
+               $$3 = Optional.of($$6.c());
+            }
+         }
       }
+
+      $$3.ifPresent($$3x -> $$0.b(this.p, this.p.c($$3x, 115), $$1, $$2));
    }
 
-   public static class c extends fwl.a {
-      private static final int c = 32;
-      private static final xk d = xk.c("lanServer.title");
-      private static final xk e = xk.c("selectServer.hiddenAddress");
-      private final fwh f;
-      protected final flz a;
-      protected final hfs b;
-      private long g;
-
-      protected c(fwh $$0, hfs $$1) {
-         this.f = $$0;
-         this.b = $$1;
-         this.a = flz.Q();
-      }
-
-      @Override
-      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.b(this.a.h, d, $$3 + 32 + 3, $$2 + 1, -1);
-         $$0.b(this.a.h, this.b.a(), $$3 + 32 + 3, $$2 + 12, -8355712);
-         if (this.a.n.l) {
-            $$0.b(this.a.h, e, $$3 + 32 + 3, $$2 + 12 + 11, 3158064);
-         } else {
-            $$0.b(this.a.h, this.b.b(), $$3 + 32 + 3, $$2 + 12 + 11, 3158064);
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         this.f.a(this);
-         if (ae.c() - this.g < 250L) {
-            this.f.l();
-         }
-
-         this.g = ae.c();
-         return super.a($$0, $$1, $$2);
-      }
-
-      public hfs b() {
-         return this.b;
-      }
-
-      @Override
-      public xk a() {
-         return xk.a("narrator.select", this.c());
-      }
-
-      public xk c() {
-         return xk.i().b(d).b(xj.v).f(this.b.a());
-      }
-   }
-
-   public class d extends fwl.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private static final int d = 5;
-      private static final int e = 10;
-      private static final int f = 8;
-      private final fwh g;
-      private final flz h;
-      private final gfu i;
-      private final ftb j;
-      @Nullable
-      private byte[] k;
-      private long l;
-      @Nullable
-      private List<xk> m;
-      @Nullable
-      private alp n;
-      @Nullable
-      private xk o;
-
-      protected d(final fwh $$1, final gfu $$2) {
-         this.g = $$1;
-         this.i = $$2;
-         this.h = flz.Q();
-         this.j = ftb.b(this.h.aa(), $$2.b);
-         this.d();
-      }
-
-      @Override
-      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         if (this.i.g() == gfu.b.a) {
-            this.i.a(gfu.b.b);
-            this.i.d = xj.a;
-            this.i.c = xj.a;
-            fwl.F.submit(() -> {
-               try {
-                  this.g.F().a(this.i, () -> this.h.execute(this::b), () -> {
-                     this.i.a(this.i.g == ab.b().e() ? gfu.b.e : gfu.b.d);
-                     this.h.execute(this::d);
-                  });
-               } catch (UnknownHostException var2x) {
-                  this.i.a(gfu.b.c);
-                  this.i.d = fwl.H;
-                  this.h.execute(this::d);
-               } catch (Exception var3x) {
-                  this.i.a(gfu.b.c);
-                  this.i.d = fwl.I;
-                  this.h.execute(this::d);
-               }
-            });
-         }
-
-         $$0.b(this.h.h, this.i.a, $$3 + 32 + 3, $$2 + 1, -1);
-         List<azg> $$10 = this.h.h.c(this.i.d, $$4 - 32 - 2);
-
-         for (int $$11 = 0; $$11 < Math.min($$10.size(), 2); $$11++) {
-            $$0.b(this.h.h, $$10.get($$11), $$3 + 32 + 3, $$2 + 12 + 9 * $$11, -8355712);
-         }
-
-         this.a($$0, $$3, $$2, this.j.b());
-         if (this.i.g() == gfu.b.b) {
-            int $$12 = (int)(ae.c() / 100L + (long)($$1 * 2) & 7L);
-            if ($$12 > 4) {
-               $$12 = 8 - $$12;
-            }
-            this.n = switch ($$12) {
-               case 1 -> fwl.u;
-               case 2 -> fwl.v;
-               case 3 -> fwl.w;
-               case 4 -> fwl.x;
-               default -> fwl.s;
-            };
-         }
-
-         int $$13 = $$3 + $$4 - 10 - 5;
-         if (this.n != null) {
-            $$0.a(glq::H, this.n, $$13, $$2, 10, 8);
-         }
-
-         byte[] $$14 = this.i.c();
-         if (!Arrays.equals($$14, this.k)) {
-            if (this.a($$14)) {
-               this.k = $$14;
-            } else {
-               this.i.a(null);
-               this.b();
-            }
-         }
-
-         xk $$15 = (xk)(this.i.g() == gfu.b.d ? this.i.h.f().a(n.m) : this.i.c);
-         int $$16 = this.h.h.a($$15);
-         int $$17 = $$13 - $$16 - 5;
-         $$0.b(this.h.h, $$15, $$17, $$2 + 1, -8355712);
-         if (this.o != null && $$6 >= $$13 && $$6 <= $$13 + 10 && $$7 >= $$2 && $$7 <= $$2 + 8) {
-            this.g.d(this.o);
-         } else if (this.m != null && $$6 >= $$17 && $$6 <= $$17 + $$16 && $$7 >= $$2 && $$7 <= $$2 - 1 + 9) {
-            this.g.b(Lists.transform(this.m, xk::g));
-         }
-
-         if (this.h.n.ac().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$18 = $$6 - $$3;
-            int $$19 = $$7 - $$2;
-            if (this.e()) {
-               if ($$18 < 32 && $$18 > 16) {
-                  $$0.a(glq::H, fwl.y, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(glq::H, fwl.z, $$3, $$2, 32, 32);
-               }
-            }
-
-            if ($$1 > 0) {
-               if ($$18 < 16 && $$19 < 16) {
-                  $$0.a(glq::H, fwl.A, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(glq::H, fwl.B, $$3, $$2, 32, 32);
-               }
-            }
-
-            if ($$1 < this.g.G().c() - 1) {
-               if ($$18 < 16 && $$19 > 16) {
-                  $$0.a(glq::H, fwl.C, $$3, $$2, 32, 32);
-               } else {
-                  $$0.a(glq::H, fwl.D, $$3, $$2, 32, 32);
-               }
-            }
-         }
-      }
-
-      private void d() {
-         this.m = null;
-         switch (this.i.g()) {
-            case a:
-            case b:
-               this.n = fwl.n;
-               this.o = fwl.L;
-               break;
-            case d:
-               this.n = fwl.a;
-               this.o = fwl.J;
-               this.m = this.i.i;
-               break;
-            case c:
-               this.n = fwl.m;
-               this.o = fwl.K;
-               break;
-            case e:
-               if (this.i.f < 150L) {
-                  this.n = fwl.r;
-               } else if (this.i.f < 300L) {
-                  this.n = fwl.q;
-               } else if (this.i.f < 600L) {
-                  this.n = fwl.p;
-               } else if (this.i.f < 1000L) {
-                  this.n = fwl.o;
-               } else {
-                  this.n = fwl.n;
-               }
-
-               this.o = xk.a("multiplayer.status.ping", this.i.f);
-               this.m = this.i.i;
-         }
-      }
-
-      public void b() {
-         this.g.G().b();
-      }
-
-      protected void a(fnl $$0, int $$1, int $$2, alp $$3) {
-         $$0.a(glq::H, $$3, $$1, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-      }
-
-      private boolean e() {
-         return true;
-      }
-
-      private boolean a(@Nullable byte[] $$0) {
-         if ($$0 == null) {
-            this.j.a();
-         } else {
-            try {
-               this.j.a(ffl.a($$0));
-            } catch (Throwable var3) {
-               fwl.E.error("Invalid icon for server {} ({})", new Object[]{this.i.a, this.i.b, var3});
-               return false;
-            }
-         }
-
-         return true;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1, int $$2) {
-         if (ftr.s()) {
-            fwl $$3 = this.g.s;
-            int $$4 = $$3.aI_().indexOf(this);
-            if ($$4 == -1) {
-               return true;
-            }
-
-            if ($$0 == 264 && $$4 < this.g.G().c() - 1 || $$0 == 265 && $$4 > 0) {
-               this.a($$4, $$0 == 264 ? $$4 + 1 : $$4 - 1);
-               return true;
-            }
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
-
-      private void a(int $$0, int $$1) {
-         this.g.G().a($$0, $$1);
-         this.g.s.a(this.g.G());
-         fwl.a $$2 = this.g.s.aI_().get($$1);
-         this.g.s.a($$2);
-         fwl.this.f($$2);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         double $$3 = $$0 - (double)fwl.this.s();
-         double $$4 = $$1 - (double)fwl.this.e(fwl.this.aI_().indexOf(this));
-         if ($$3 <= 32.0) {
-            if ($$3 < 32.0 && $$3 > 16.0 && this.e()) {
-               this.g.a(this);
-               this.g.l();
-               return true;
-            }
-
-            int $$5 = this.g.s.aI_().indexOf(this);
-            if ($$3 < 16.0 && $$4 < 16.0 && $$5 > 0) {
-               this.a($$5, $$5 - 1);
-               return true;
-            }
-
-            if ($$3 < 16.0 && $$4 > 16.0 && $$5 < this.g.G().c() - 1) {
-               this.a($$5, $$5 + 1);
-               return true;
-            }
-         }
-
-         this.g.a(this);
-         if (ae.c() - this.l < 250L) {
-            this.g.l();
-         }
-
-         this.l = ae.c();
-         return super.a($$0, $$1, $$2);
-      }
-
-      public gfu c() {
-         return this.i;
-      }
-
-      @Override
-      public xk a() {
-         xy $$0 = xk.i();
-         $$0.b(xk.a("narrator.select", this.i.a));
-         $$0.b(xj.t);
-         switch (this.i.g()) {
-            case b:
-               $$0.b(fwl.L);
-               break;
-            case d:
-               $$0.b(fwl.J);
-               $$0.b(xj.t);
-               $$0.b(xk.a("multiplayer.status.version.narration", this.i.h));
-               $$0.b(xj.t);
-               $$0.b(xk.a("multiplayer.status.motd.narration", this.i.d));
-               break;
-            case c:
-               $$0.b(fwl.K);
-               break;
-            default:
-               $$0.b(fwl.M);
-               $$0.b(xj.t);
-               $$0.b(xk.a("multiplayer.status.ping.narration", this.i.f));
-               $$0.b(xj.t);
-               $$0.b(xk.a("multiplayer.status.motd.narration", this.i.d));
-               if (this.i.e != null) {
-                  $$0.b(xj.t);
-                  $$0.b(xk.a("multiplayer.status.player_count.narration", this.i.e.b(), this.i.e.a()));
-                  $$0.b(xj.t);
-                  $$0.b(xn.a(this.i.i, xk.b(", ")));
-               }
-         }
-
-         return $$0;
-      }
-
-      @Override
-      public void close() {
-         this.j.close();
-      }
+   private boolean I() {
+      return this.z.m();
    }
 }

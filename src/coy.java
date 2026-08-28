@@ -1,36 +1,37 @@
-public interface coy {
-   String c_ = "Inventory";
+public enum coy {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-   bth t();
+   private final int h;
+   private final int i;
+   private final String j;
+   private final wo k;
 
-   static void a(arx $$0, bvz $$1, coy $$2, cls $$3) {
-      cxg $$4 = $$3.l();
-      if ($$1.c($$0, $$4)) {
-         bth $$5 = $$2.t();
-         boolean $$6 = $$5.c($$4);
-         if (!$$6) {
-            return;
-         }
-
-         $$1.a($$3);
-         int $$7 = $$4.M();
-         cxg $$8 = $$5.b($$4);
-         $$1.a($$3, $$7 - $$8.M());
-         if ($$8.f()) {
-            $$3.at();
-         } else {
-            $$4.e($$8.M());
-         }
-      }
+   private coy(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = wo.c("options.modelPart." + $$1);
    }
 
-   default void a(um $$0, js.a $$1) {
-      if ($$0.b("Inventory", 9)) {
-         this.t().a($$0.c("Inventory", 10), $$1);
-      }
+   public int a() {
+      return this.i;
    }
 
-   default void b(um $$0, js.a $$1) {
-      $$0.a("Inventory", this.t().a($$1));
+   public int b() {
+      return this.h;
+   }
+
+   public String c() {
+      return this.j;
+   }
+
+   public wo d() {
+      return this.k;
    }
 }

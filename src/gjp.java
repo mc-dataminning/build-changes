@@ -1,42 +1,40 @@
-public class gjp extends gil {
-   private final bvb a;
-   private int b;
-   private final int D;
-   private final lq E;
+public class gjp extends gkg {
+   private final gkb a;
 
-   public gjp(gff $$0, bvb $$1, lq $$2) {
-      this($$0, $$1, $$2, 3);
+   gjp(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gkb $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public gjp(gff $$0, bvb $$1, lq $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dz());
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   private gjp(gff $$0, bvb $$1, lq $$2, int $$3, fbr $$4) {
-      super($$0, $$1.dB(), $$1.e(0.5), $$1.dH(), $$4.d, $$4.e, $$4.f);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   @Override
+   public gjk b() {
+      return gjk.c;
    }
 
    @Override
    public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
-      }
+      super.a();
+      this.b(this.a);
+   }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+   public static record a(gkb a) implements gjj<lv> {
+      public gjg a(lv $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gjp $$8 = new gjp($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.A.a(12) + 8);
+         return $$8;
       }
    }
 }

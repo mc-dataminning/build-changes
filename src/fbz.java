@@ -1,38 +1,46 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import java.util.Collections;
+import java.util.Map;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public final class fbz implements fcd {
-   private final fbx a;
-   private final int b;
-   private final int c;
+class fbz {
+   private final Reference2ObjectOpenHashMap<fbx, fcc> a = new Reference2ObjectOpenHashMap(16, 0.5F);
 
-   fbz(int $$0, int $$1) {
-      this.a = new fbx((int)fci.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
+   @Nullable
+   public fcc a(fbx $$0) {
+      return (fcc)this.a.get($$0);
    }
 
-   @Override
-   public boolean a(fcd.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   public fcc a(fbx $$0, Consumer<fcc> $$1) {
+      return (fcc)this.a.computeIfAbsent($$0, $$1x -> {
+         fcc $$2 = new fcc();
+         $$1.accept($$2);
+         return $$2;
+      });
    }
 
-   @Override
-   public int size() {
-      return this.a.size();
+   public boolean b(fbx $$0) {
+      return this.a.remove($$0) != null;
    }
 
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public boolean a() {
+      return !this.a.isEmpty();
+   }
+
+   public Object2IntMap<fbx> b() {
+      Object2IntMap<fbx> $$0 = new Object2IntOpenHashMap();
+      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
+      return $$0;
+   }
+
+   void a(fbx $$0, fcc $$1) {
+      this.a.put($$0, $$1);
+   }
+
+   Map<fbx, fcc> c() {
+      return Collections.unmodifiableMap(this.a);
    }
 }

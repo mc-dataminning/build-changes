@@ -1,245 +1,216 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public class dve extends dvy implements ctl {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jz<cxg> n = jz.a(9, cxg.j);
-   private int r = 0;
-   protected final ctf k = new ctf() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public class dve extends dtz implements bsa, bsl {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 0;
+   public static final int d = 1;
+   private final bsc e = new bsc() {
+      @Override
+      public int b() {
+         return 1;
+      }
 
       @Override
+      public boolean c() {
+         return dve.this.g.f();
+      }
+
+      @Override
+      public cwp a(int $$0) {
+         return $$0 == 0 ? dve.this.g : cwp.j;
+      }
+
+      @Override
+      public cwp a(int $$0, int $$1) {
+         if ($$0 == 0) {
+            cwp $$2 = dve.this.g.a($$1);
+            if (dve.this.g.f()) {
+               dve.this.k();
+            }
+
+            return $$2;
+         } else {
+            return cwp.j;
+         }
+      }
+
+      @Override
+      public cwp b(int $$0) {
+         if ($$0 == 0) {
+            cwp $$1 = dve.this.g;
+            dve.this.g = cwp.j;
+            dve.this.k();
+            return $$1;
+         } else {
+            return cwp.j;
+         }
+      }
+
+      @Override
+      public void a(int $$0, cwp $$1) {
+      }
+
+      @Override
+      public int an_() {
+         return 1;
+      }
+
+      @Override
+      public void e() {
+         dve.this.e();
+      }
+
+      @Override
+      public boolean a(cox $$0) {
+         return bsc.a(dve.this, $$0) && dve.this.c();
+      }
+
+      @Override
+      public boolean b(int $$0, cwp $$1) {
+         return false;
+      }
+
+      @Override
+      public void a() {
+      }
+   };
+   private final cso f = new cso() {
+      @Override
       public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
+         return $$0 == 0 ? dve.this.h : 0;
       }
 
       @Override
       public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
-         } else {
-            this.a[$$0] = $$1;
+         if ($$0 == 0) {
+            dve.this.a($$1);
          }
       }
 
       @Override
       public int a() {
-         return 10;
+         return 1;
       }
    };
+   cwp g = cwp.j;
+   int h;
+   private int i;
 
-   public dve(jh $$0, dxo $$1) {
-      super(dus.Q, $$0, $$1);
+   public dve(ji $$0, dwx $$1) {
+      super(dub.E, $$0, $$1);
    }
 
-   @Override
-   protected xk j() {
-      return xk.c("container.crafter");
+   public cwp b() {
+      return this.g;
    }
 
-   @Override
-   protected cst a(int $$0, cpn $$1) {
-      return new ctj($$0, $$1, this, this.k);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
-   }
-
-   @Override
-   public boolean b(int $$0, cxg $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         cxg $$2 = this.n.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.k()) {
-            return false;
-         } else {
-            return $$2.f() ? true : !this.a($$3, $$2, $$0);
-         }
-      }
-   }
-
-   private boolean a(int $$0, cxg $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cxg $$4 = this.a($$3);
-            if ($$4.f() || $$4.M() < $$0 && cxg.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   protected void a(um $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.n = jz.a(this.b(), cxg.j);
-      if (!this.b_($$0)) {
-         bsu.b($$0, this.n, $$1);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(um $$0, js.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.c_($$0)) {
-         bsu.a($$0, this.n, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
    public boolean c() {
-      for (cxg $$0 : this.n) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
+      return this.g.b(kv.S) || this.g.b(kv.T);
    }
 
-   @Override
-   public cxg a(int $$0) {
-      return this.n.get($$0);
+   public void b(cwp $$0) {
+      this.a($$0, null);
    }
 
-   @Override
-   public void a(int $$0, cxg $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
+   void k() {
+      this.h = 0;
+      this.i = 0;
+      dnz.a(null, this.i(), this.aA_(), this.m(), false);
    }
 
-   @Override
-   public boolean a(cpo $$0) {
-      return bst.a(this, $$0);
+   public void a(cwp $$0, @Nullable cox $$1) {
+      this.g = this.b($$0, $$1);
+      this.h = 0;
+      this.i = c(this.g);
+      this.e();
    }
 
-   @Override
-   public jz<cxg> f() {
-      return this.n;
-   }
-
-   @Override
-   protected void a(jz<cxg> $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public int az_() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void fillStackedContents(cpt $$0) {
-      for (cxg $$1 : this.n) {
-         $$0.a($$1);
+   void a(int $$0) {
+      int $$1 = ayz.a($$0, 0, this.i - 1);
+      if ($$1 != this.h) {
+         this.h = $$1;
+         this.e();
+         dnz.a(this.i(), this.aA_(), this.m());
       }
    }
 
-   private void c(um $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
+   public int f() {
+      return this.h;
    }
 
-   private void d(um $$0) {
-      $$0.a("triggered", this.k.a(9));
+   public int j() {
+      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
+      return ayz.d($$0 * 14.0F) + (this.c() ? 1 : 0);
    }
 
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean k() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(dgz $$0, jh $$1, dxo $$2, dve $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.b(dlw.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cxg $$2 = this.a($$1);
-         if (!$$2.f() || this.c($$1)) {
-            $$0++;
-         }
+   private cwp b(cwp $$0, @Nullable cox $$1) {
+      if (this.o instanceof arc $$2) {
+         cyl.a($$0, this.a($$1, $$2), $$1);
       }
 
       return $$0;
    }
 
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.n.get($$0).f();
+   private ex a(@Nullable cox $$0, arc $$1) {
+      String $$2;
+      wo $$3;
+      if ($$0 == null) {
+         $$2 = "Lectern";
+         $$3 = wo.b("Lectern");
+      } else {
+         $$2 = $$0.al().getString();
+         $$3 = $$0.p_();
+      }
+
+      fba $$6 = fba.b(this.p);
+      return new ex(ew.a, $$6, faz.a, $$1, 2, $$2, $$3, $$1.p(), $$0);
+   }
+
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("Book", 10)) {
+         this.g = this.b(cwp.a($$1, (un)$$0.p("Book")).orElse(cwp.j), null);
+      } else {
+         this.g = cwp.j;
+      }
+
+      this.i = c(this.g);
+      this.h = ayz.a($$0.h("Page"), 0, this.i - 1);
+   }
+
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      if (!this.b().f()) {
+         $$0.a("Book", this.b().a($$1));
+         $$0.a("Page", this.h);
+      }
+   }
+
+   @Override
+   public void a() {
+      this.b(cwp.j);
+   }
+
+   @Override
+   public csc createMenu(int $$0, cow $$1, cox $$2) {
+      return new cti($$0, this.e, this.f);
+   }
+
+   @Override
+   public wo p_() {
+      return wo.c("container.lectern");
+   }
+
+   private static int c(cwp $$0) {
+      czx $$1 = $$0.a(kv.T);
+      if ($$1 != null) {
+         return $$1.a().size();
+      } else {
+         czw $$2 = $$0.a(kv.S);
+         return $$2 != null ? $$2.a().size() : 0;
+      }
    }
 }

@@ -1,28 +1,29 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+public record sy(int a, boolean b) {
+   private static final sy c = new sy(1, true);
 
-@Target({ElementType.METHOD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface sy {
-   int a() default 100;
+   public static sy a() {
+      return c;
+   }
 
-   String b() default "defaultBatch";
+   public boolean b() {
+      return this.a < 1;
+   }
 
-   boolean c() default false;
+   public boolean a(int $$0, int $$1) {
+      boolean $$2 = $$0 != $$1;
+      boolean $$3 = this.b() || $$0 < this.a;
+      return $$3 && (!$$2 || !this.b);
+   }
 
-   int d() default 0;
+   public boolean c() {
+      return this.a != 1;
+   }
 
-   boolean e() default true;
+   public int d() {
+      return this.a;
+   }
 
-   boolean f() default false;
-
-   String g() default "";
-
-   long h() default 0L;
-
-   int i() default 1;
-
-   int j() default 1;
+   public boolean e() {
+      return this.b;
+   }
 }

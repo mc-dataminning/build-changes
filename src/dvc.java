@@ -1,256 +1,137 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class dvc extends dtz {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private aku h = aku.b("empty");
+   private aku i = aku.b("empty");
+   private akt<eow> j = akt.a(mc.aX, aku.b("empty"));
+   private dvc.a k = dvc.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-public class dvc extends duq {
-   private static final int b = 2;
-   private static final int c = 13;
-   private static final float d = -0.0375F;
-   private static final int e = 16;
-   private static final int f = 42;
-   private static final int g = 8;
-   private static final dkd[] h = new dkd[]{dkf.ix, dkf.iy, dkf.iG, dkf.iz};
-   public int a;
-   private float i;
-   private boolean j;
-   private boolean k;
-   private final List<jh> l = Lists.newArrayList();
-   @Nullable
-   private bvx m;
-   @Nullable
-   private UUID n;
-   private long r;
-
-   public dvc(jh $$0, dxo $$1) {
-      super(dus.A, $$0, $$1);
+   public dvc(ji $$0, dwx $$1) {
+      super(dub.G, $$0, $$1);
    }
 
-   @Override
-   protected void a(um $$0, js.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("Target")) {
-         this.n = $$0.a("Target");
-      } else {
-         this.n = null;
-      }
+   public aku b() {
+      return this.h;
    }
 
-   @Override
-   protected void b(um $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (this.m != null) {
-         $$0.a("Target", this.m.cG());
-      }
+   public aku c() {
+      return this.i;
    }
 
-   public acn b() {
-      return acn.a(this);
-   }
-
-   @Override
-   public um a(js.a $$0) {
-      return this.e($$0);
-   }
-
-   public static void a(dgz $$0, jh $$1, dxo $$2, dvc $$3) {
-      $$3.a++;
-      long $$4 = $$0.ad();
-      List<jh> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         $$3.j = a($$0, $$1, $$5);
-         a($$3, $$5);
-      }
-
-      a($$0, $$1, $$3);
-      a($$0, $$1, $$5, $$3.m, $$3.a);
-      if ($$3.c()) {
-         $$3.i++;
-      }
-   }
-
-   public static void b(dgz $$0, jh $$1, dxo $$2, dvc $$3) {
-      $$3.a++;
-      long $$4 = $$0.ad();
-      List<jh> $$5 = $$3.l;
-      if ($$4 % 40L == 0L) {
-         boolean $$6 = a($$0, $$1, $$5);
-         if ($$6 != $$3.j) {
-            awu $$7 = $$6 ? awv.fy : awv.fC;
-            $$0.a(null, $$1, $$7, aww.e, 1.0F, 1.0F);
-         }
-
-         $$3.j = $$6;
-         a($$3, $$5);
-         if ($$6) {
-            b($$0, $$1, $$5);
-            a($$0, $$1, $$2, $$5, $$3);
-         }
-      }
-
-      if ($$3.c()) {
-         if ($$4 % 80L == 0L) {
-            $$0.a(null, $$1, awv.fz, aww.e, 1.0F, 1.0F);
-         }
-
-         if ($$4 > $$3.r) {
-            $$3.r = $$4 + 60L + (long)$$0.H_().a(40);
-            $$0.a(null, $$1, awv.fA, aww.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   private static void a(dvc $$0, List<jh> $$1) {
-      $$0.a($$1.size() >= 42);
-   }
-
-   private static boolean a(dgz $$0, jh $$1, List<jh> $$2) {
-      $$2.clear();
-
-      for (int $$3 = -1; $$3 <= 1; $$3++) {
-         for (int $$4 = -1; $$4 <= 1; $$4++) {
-            for (int $$5 = -1; $$5 <= 1; $$5++) {
-               jh $$6 = $$1.b($$3, $$4, $$5);
-               if (!$$0.z($$6)) {
-                  return false;
-               }
-            }
-         }
-      }
-
-      for (int $$7 = -2; $$7 <= 2; $$7++) {
-         for (int $$8 = -2; $$8 <= 2; $$8++) {
-            for (int $$9 = -2; $$9 <= 2; $$9++) {
-               int $$10 = Math.abs($$7);
-               int $$11 = Math.abs($$8);
-               int $$12 = Math.abs($$9);
-               if (($$10 > 1 || $$11 > 1 || $$12 > 1)
-                  && ($$7 == 0 && ($$11 == 2 || $$12 == 2) || $$8 == 0 && ($$10 == 2 || $$12 == 2) || $$9 == 0 && ($$10 == 2 || $$11 == 2))) {
-                  jh $$13 = $$1.b($$7, $$8, $$9);
-                  dxo $$14 = $$0.a_($$13);
-
-                  for (dkd $$15 : h) {
-                     if ($$14.a($$15)) {
-                        $$2.add($$13);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      return $$2.size() >= 16;
-   }
-
-   private static void b(dgz $$0, jh $$1, List<jh> $$2) {
-      int $$3 = $$2.size();
-      int $$4 = $$3 / 7 * 16;
-      int $$5 = $$1.u();
-      int $$6 = $$1.v();
-      int $$7 = $$1.w();
-      fbm $$8 = new fbm((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1))
-         .g((double)$$4)
-         .b(0.0, (double)$$0.M_(), 0.0);
-      List<cpo> $$9 = $$0.a(cpo.class, $$8);
-      if (!$$9.isEmpty()) {
-         for (cpo $$10 : $$9) {
-            if ($$1.a($$10.dw(), (double)$$4) && $$10.bk()) {
-               $$10.a(new bug(bui.C, 260, 0, true, true));
-            }
-         }
-      }
-   }
-
-   private static void a(dgz $$0, jh $$1, dxo $$2, List<jh> $$3, dvc $$4) {
-      bvx $$5 = $$4.m;
-      int $$6 = $$3.size();
-      if ($$6 < 42) {
-         $$4.m = null;
-      } else if ($$4.m == null && $$4.n != null) {
-         $$4.m = a($$0, $$1, $$4.n);
-         $$4.n = null;
-      } else if ($$4.m == null) {
-         List<bvx> $$7 = $$0.a(bvx.class, a($$1), $$0x -> $$0x instanceof cmg && $$0x.bk());
-         if (!$$7.isEmpty()) {
-            $$4.m = $$7.get($$0.A.a($$7.size()));
-         }
-      } else if (!$$4.m.bL() || !$$1.a($$4.m.dw(), 8.0)) {
-         $$4.m = null;
-      }
-
-      if ($$4.m != null) {
-         $$0.a(null, $$4.m.dB(), $$4.m.dD(), $$4.m.dH(), awv.fB, aww.e, 1.0F, 1.0F);
-         $$4.m.a($$0.ak().q(), 4.0F);
-      }
-
-      if ($$5 != $$4.m) {
-         $$0.a($$1, $$2, $$2, 2);
-      }
-   }
-
-   private static void a(dgz $$0, jh $$1, dvc $$2) {
-      if ($$2.n == null) {
-         $$2.m = null;
-      } else if ($$2.m == null || !$$2.m.cG().equals($$2.n)) {
-         $$2.m = a($$0, $$1, $$2.n);
-         if ($$2.m == null) {
-            $$2.n = null;
-         }
-      }
-   }
-
-   private static fbm a(jh $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      return new fbm((double)$$1, (double)$$2, (double)$$3, (double)($$1 + 1), (double)($$2 + 1), (double)($$3 + 1)).g(8.0);
-   }
-
-   @Nullable
-   private static bvx a(dgz $$0, jh $$1, UUID $$2) {
-      List<bvx> $$3 = $$0.a(bvx.class, a($$1), $$1x -> $$1x.cG().equals($$2));
-      return $$3.size() == 1 ? $$3.get(0) : null;
-   }
-
-   private static void a(dgz $$0, jh $$1, List<jh> $$2, @Nullable bvb $$3, int $$4) {
-      bac $$5 = $$0.A;
-      double $$6 = (double)(azu.a((float)($$4 + 35) * 0.1F) / 2.0F + 0.5F);
-      $$6 = ($$6 * $$6 + $$6) * 0.3F;
-      fbr $$7 = new fbr((double)$$1.u() + 0.5, (double)$$1.v() + 1.5 + $$6, (double)$$1.w() + 0.5);
-
-      for (jh $$8 : $$2) {
-         if ($$5.a(50) == 0) {
-            jh $$9 = $$8.b($$1);
-            float $$10 = -0.5F + $$5.i() + (float)$$9.u();
-            float $$11 = -2.0F + $$5.i() + (float)$$9.v();
-            float $$12 = -0.5F + $$5.i() + (float)$$9.w();
-            $$0.a(ls.at, $$7.d, $$7.e, $$7.f, (double)$$10, (double)$$11, (double)$$12);
-         }
-      }
-
-      if ($$3 != null) {
-         fbr $$13 = new fbr($$3.dB(), $$3.dF(), $$3.dH());
-         float $$14 = (-0.5F + $$5.i()) * (3.0F + $$3.dr());
-         float $$15 = -1.0F + $$5.i() * $$3.ds();
-         float $$16 = (-0.5F + $$5.i()) * (3.0F + $$3.dr());
-         fbr $$17 = new fbr((double)$$14, (double)$$15, (double)$$16);
-         $$0.a(ls.at, $$13.d, $$13.e, $$13.f, $$17.d, $$17.e, $$17.f);
-      }
-   }
-
-   public boolean c() {
+   public akt<eow> d() {
       return this.j;
    }
 
-   public boolean d() {
+   public String f() {
+      return this.l;
+   }
+
+   public dvc.a j() {
       return this.k;
    }
 
-   private void a(boolean $$0) {
+   public int k() {
+      return this.m;
+   }
+
+   public int s() {
+      return this.n;
+   }
+
+   public void a(aku $$0) {
+      this.h = $$0;
+   }
+
+   public void b(aku $$0) {
+      this.i = $$0;
+   }
+
+   public void a(akt<eow> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dvc.a $$0) {
       this.k = $$0;
    }
 
-   public float a(float $$0) {
-      return (this.i + $$0) * -0.0375F;
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
+   }
+
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.h = aku.a($$0.l("name"));
+      this.i = aku.a($$0.l("target"));
+      this.j = akt.a(mc.aX, aku.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = ero.a($$0, this.m());
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public abr t() {
+      return abr.a(this);
+   }
+
+   @Override
+   public tq a(jt.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(arc $$0, int $$1, boolean $$2) {
+      ji $$3 = this.aA_().a(this.m().c(dnq.b).a());
+      ke<eow> $$4 = $$0.K_().e(mc.aX);
+      jr<eow> $$5 = $$4.b(this.j);
+      eoq.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements azv {
+      a("rollable"),
+      b("aligned");
+
+      public static final azv.a<dvc.a> c = azv.a(dvc.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      public wo a() {
+         return wo.c("jigsaw_block.joint." + this.d);
+      }
    }
 }

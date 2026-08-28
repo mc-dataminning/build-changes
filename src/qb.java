@@ -1,13 +1,42 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public class qb extends qe<etp> {
-   public qb(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.D, $$1, $$0x -> $$0x.k().h());
-   }
-
-   @Override
-   protected void a(js.a $$0) {
-      this.a(axq.a).a(etr.c, etr.b);
-      this.a(axq.b).a(etr.e, etr.d);
+public class qb {
+   public static void a(qe<eow> $$0) {
+      js<eow> $$1 = $$0.a(mc.aX);
+      jr<eow> $$2 = $$1.b(ql.a);
+      ql.a(
+         $$0,
+         "bastion/mobs/piglin",
+         new eow(
+            $$2,
+            ImmutableList.of(
+               Pair.of(eou.b("bastion/mobs/melee_piglin"), 1),
+               Pair.of(eou.b("bastion/mobs/sword_piglin"), 4),
+               Pair.of(eou.b("bastion/mobs/crossbow_piglin"), 4),
+               Pair.of(eou.b("bastion/mobs/empty"), 1)
+            ),
+            eow.a.b
+         )
+      );
+      ql.a(
+         $$0, "bastion/mobs/hoglin", new eow($$2, ImmutableList.of(Pair.of(eou.b("bastion/mobs/hoglin"), 2), Pair.of(eou.b("bastion/mobs/empty"), 1)), eow.a.b)
+      );
+      ql.a(
+         $$0, "bastion/blocks/gold", new eow($$2, ImmutableList.of(Pair.of(eou.b("bastion/blocks/air"), 3), Pair.of(eou.b("bastion/blocks/gold"), 1)), eow.a.b)
+      );
+      ql.a(
+         $$0,
+         "bastion/mobs/piglin_melee",
+         new eow(
+            $$2,
+            ImmutableList.of(
+               Pair.of(eou.b("bastion/mobs/melee_piglin_always"), 1),
+               Pair.of(eou.b("bastion/mobs/melee_piglin"), 5),
+               Pair.of(eou.b("bastion/mobs/sword_piglin"), 1)
+            ),
+            eow.a.b
+         )
+      );
    }
 }

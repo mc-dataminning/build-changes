@@ -1,12 +1,17 @@
-public class gwy extends gyo {
-   public cja.e a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
+public class gwy extends gwr<gzu, gdf> {
+   public static final aku a = aku.b("textures/entity/trident_riptide.png");
+   private final gec b;
 
-   public gwy() {
-      this.a = cja.e.a;
-      this.d = 1.0F;
+   public gwy(gtz<gzu, gdf> $$0, gey $$1) {
+      super($$0);
+      this.b = new gec($$1.a(gfb.cn));
+   }
+
+   public void a(ffu $$0, glx $$1, int $$2, gzu $$3, float $$4, float $$5) {
+      if ($$3.al) {
+         ffy $$6 = $$1.getBuffer(this.b.a(a));
+         this.b.a($$3);
+         this.b.a($$0, $$6, $$2, hea.d);
+      }
    }
 }

@@ -1,18 +1,18 @@
-import java.util.concurrent.atomic.AtomicInteger;
+import io.netty.channel.ChannelHandlerContext;
 
-public class vx {
-   private final AtomicInteger a = new AtomicInteger();
-   private final bnt b;
-
-   public vx(bnt $$0) {
-      this.b = $$0;
+public interface vx {
+   static void a(ChannelHandlerContext $$0, yv<?> $$1) {
+      if ($$1.d()) {
+         $$0.channel().config().setAutoRead(false);
+         $$0.pipeline().addBefore($$0.name(), "inbound_config", new wd.a());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 
-   public void a(int $$0) {
-      this.a.getAndAdd($$0);
-   }
-
-   public void a() {
-      this.b.a((long)this.a.getAndSet(0));
+   static void b(ChannelHandlerContext $$0, yv<?> $$1) {
+      if ($$1.d()) {
+         $$0.pipeline().addAfter($$0.name(), "outbound_config", new wd.c());
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

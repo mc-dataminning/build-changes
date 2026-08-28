@@ -1,8 +1,8 @@
-public class gxw extends gyo {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class gxw extends gzi {
+   public final buc a = new buc();
+   public final buc b = new buc();
+   public final buc c = new buc();
+   public final buc d = new buc();
+   public final buc e = new buc();
+   public final buc f = new buc();
 }

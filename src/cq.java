@@ -1,52 +1,63 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.List;
+import java.util.function.Function;
 
-public record cq(cq.a c) implements dz<czv> {
-   public static final Codec<cq> a = cq.a.a.xmap(cq::new, cq::b);
+public abstract class cq implements ea<ddf> {
+   private final List<bs> a;
 
-   @Override
-   public kt<czv> a() {
-      return ku.ae;
+   protected cq(List<bs> $$0) {
+      this.a = $$0;
    }
 
-   public boolean a(cxg $$0, czv $$1) {
-      return this.c.a($$1);
+   public static <T extends cq> Codec<T> a(Function<List<bs>, T> $$0) {
+      return bs.a.listOf().xmap($$0, cq::b);
    }
 
-   public cq.a b() {
-      return this.c;
+   protected List<bs> b() {
+      return this.a;
    }
 
-   public static record a(Optional<czv.a> b, Optional<Boolean> c, Optional<Boolean> d) implements Predicate<czv> {
-      public static final Codec<cq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  czv.a.g.optionalFieldOf("shape").forGetter(cq.a::a),
-                  Codec.BOOL.optionalFieldOf("has_twinkle").forGetter(cq.a::b),
-                  Codec.BOOL.optionalFieldOf("has_trail").forGetter(cq.a::c)
-               )
-               .apply($$0, cq.a::new)
-      );
-
-      public boolean a(czv $$0) {
-         if (this.b.isPresent() && this.b.get() != $$0.a()) {
+   public boolean a(cwp $$0, ddf $$1) {
+      for (bs $$2 : this.a) {
+         if (!$$2.a($$1)) {
             return false;
-         } else {
-            return this.c.isPresent() && this.c.get() != $$0.e() ? false : !this.d.isPresent() || this.d.get() == $$0.d();
          }
       }
 
-      public Optional<czv.a> a() {
-         return this.b;
+      return true;
+   }
+
+   public static cq.a a(List<bs> $$0) {
+      return new cq.a($$0);
+   }
+
+   public static cq.b b(List<bs> $$0) {
+      return new cq.b($$0);
+   }
+
+   public static class a extends cq {
+      public static final Codec<cq.a> a = a(cq.a::new);
+
+      protected a(List<bs> $$0) {
+         super($$0);
       }
 
-      public Optional<Boolean> b() {
-         return this.c;
+      @Override
+      public ku<ddf> a() {
+         return kv.l;
+      }
+   }
+
+   public static class b extends cq {
+      public static final Codec<cq.b> a = a(cq.b::new);
+
+      protected b(List<bs> $$0) {
+         super($$0);
       }
 
-      public Optional<Boolean> c() {
-         return this.d;
+      @Override
+      public ku<ddf> a() {
+         return kv.I;
       }
    }
 }

@@ -1,29 +1,77 @@
-import com.mojang.serialization.DataResult;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.OptionalInt;
+import java.util.function.BiConsumer;
 
-public class ele extends eku {
-   public static final MapCodec<ele> b = bri.b(dxo.a).comapFlatMap(ele::a, $$0 -> $$0.c).fieldOf("entries");
-   private final bri<dxo> c;
+public class ele extends eli {
+   public static final MapCodec<ele> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ele::new));
 
-   private static DataResult<ele> a(bri<dxo> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ele($$0));
-   }
-
-   public ele(bri<dxo> $$0) {
-      this.c = $$0;
-   }
-
-   public ele(bri.a<dxo> $$0) {
-      this($$0.a());
+   public ele(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected ekv<?> a() {
-      return ekv.b;
+   protected elj<?> a() {
+      return elj.b;
    }
 
    @Override
-   public dxo a(bac $$0, jh $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public List<ejo.a> a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, int $$3, ji $$4, eiy $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+      List<ejo.a> $$6 = Lists.newArrayList();
+      jn $$7 = jn.c.a.a($$2);
+      int $$8 = $$3 - $$2.a(4) - 1;
+      int $$9 = 3 - $$2.a(3);
+      ji.a $$10 = new ji.a();
+      int $$11 = $$4.u();
+      int $$12 = $$4.w();
+      OptionalInt $$13 = OptionalInt.empty();
+
+      for (int $$14 = 0; $$14 < $$3; $$14++) {
+         int $$15 = $$4.v() + $$14;
+         if ($$14 >= $$8 && $$9 > 0) {
+            $$11 += $$7.j();
+            $$12 += $$7.l();
+            $$9--;
+         }
+
+         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
+            $$13 = OptionalInt.of($$15 + 1);
+         }
+      }
+
+      if ($$13.isPresent()) {
+         $$6.add(new ejo.a(new ji($$11, $$13.getAsInt(), $$12), 1, false));
+      }
+
+      $$11 = $$4.u();
+      $$12 = $$4.w();
+      jn $$16 = jn.c.a.a($$2);
+      if ($$16 != $$7) {
+         int $$17 = $$8 - $$2.a(2) - 1;
+         int $$18 = 1 + $$2.a(3);
+         $$13 = OptionalInt.empty();
+
+         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
+            if ($$19 >= 1) {
+               int $$20 = $$4.v() + $$19;
+               $$11 += $$16.j();
+               $$12 += $$16.l();
+               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
+                  $$13 = OptionalInt.of($$20 + 1);
+               }
+            }
+
+            $$19++;
+         }
+
+         if ($$13.isPresent()) {
+            $$6.add(new ejo.a(new ji($$11, $$13.getAsInt(), $$12), 0, false));
+         }
+      }
+
+      return $$6;
    }
 }

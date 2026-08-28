@@ -1,31 +1,29 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class efk extends eeg {
-   private final ke a;
-   private final edn b;
-   private final edx c;
-   private final eea.o d;
+public record efk<FC extends eic, F extends efy<FC>>(F d, FC e) {
+   public static final Codec<efk<?, ?>> a = mb.O.q().dispatch($$0 -> $$0.d, efy::a);
+   public static final Codec<jr<efk<?, ?>>> b = akq.a(mc.aL, a);
+   public static final Codec<jv<efk<?, ?>>> c = kg.a(mc.aL, a);
 
-   public efk(edm $$0, ke $$1, dhb $$2, edn $$3, edx $$4, eea.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public boolean a(dhg $$0, dyt $$1, azh $$2, ji $$3) {
+      return this.d.a(this.e, $$0, $$1, $$2, $$3);
    }
 
-   @Deprecated
-   public Optional<dxo> a(Function<jh, jq<dib>> $$0, dzj $$1, jh $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public Stream<efk<?, ?>> a() {
+      return Stream.concat(Stream.of(this), this.e.e());
    }
 
-   @Deprecated
-   public ke c() {
-      return this.a;
+   @Override
+   public String toString() {
+      return "Configured: " + this.d + ": " + this.e;
    }
 
-   public edx d() {
-      return this.c;
+   public F b() {
+      return this.d;
+   }
+
+   public FC c() {
+      return this.e;
    }
 }

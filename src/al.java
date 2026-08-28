@@ -1,119 +1,119 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import com.mojang.serialization.DataResult;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public record al(int c, List<alo<ewn>> d, List<alo<dbv<?>>> e, Optional<er> f) {
-   public static final Codec<al> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("experience", 0).forGetter(al::a),
-               alo.a(mb.bg).listOf().optionalFieldOf("loot", List.of()).forGetter(al::b),
-               alo.a(mb.bk).listOf().optionalFieldOf("recipes", List.of()).forGetter(al::c),
-               er.a.optionalFieldOf("function").forGetter(al::d)
-            )
-            .apply($$0, al::new)
-   );
-   public static final al b = new al(0, List.of(), List.of(), Optional.empty());
+public record al(List<List<String>> c) {
+   public static final Codec<al> a = Codec.STRING.listOf().listOf().xmap(al::new, al::d);
+   public static final al b = new al(List.of());
 
-   public void a(ary $$0) {
-      $$0.d(this.c);
-      ewl $$1 = new ewl.a($$0.y()).a(ezc.a, $$0).a(ezc.f, $$0.du()).a(ezb.m);
-      boolean $$2 = false;
+   public al(vl $$0) {
+      this($$0.a((yn<? super vl, List<String>>)($$0x -> $$0x.a(vl::p))));
+   }
 
-      for (alo<ewn> $$3 : this.d) {
-         ObjectListIterator var6 = $$0.g.bc().b($$3).a($$1).iterator();
+   public void a(vl $$0) {
+      $$0.a(this.c, ($$0x, $$1) -> $$0x.a($$1, vl::a));
+   }
 
-         while (var6.hasNext()) {
-            cxg $$4 = (cxg)var6.next();
-            if ($$0.i($$4)) {
-               $$0.dW().a(null, $$0.dB(), $$0.dD(), $$0.dH(), awv.oa, aww.h, 0.2F, (($$0.dZ().i() - $$0.dZ().i()) * 0.7F + 1.0F) * 2.0F);
-               $$2 = true;
-            } else {
-               cls $$5 = $$0.a($$4, false);
-               if ($$5 != null) {
-                  $$5.t();
-                  $$5.b($$0.cG());
-               }
-            }
-         }
-      }
+   public static al a(Collection<String> $$0) {
+      return new al($$0.stream().map(List::of).toList());
+   }
 
-      if ($$2) {
-         $$0.cd.d();
-      }
-
-      if (!this.e.isEmpty()) {
-         $$0.b(this.e);
-      }
-
-      MinecraftServer $$6 = $$0.g;
-      this.f.flatMap($$1x -> $$1x.a($$6.aE())).ifPresent($$2x -> $$6.aE().a($$2x, $$0.A().a().a(2)));
+   public static al b(Collection<String> $$0) {
+      return new al(List.of(List.copyOf($$0)));
    }
 
    public int a() {
+      return this.c.size();
+   }
+
+   public boolean a(Predicate<String> $$0) {
+      if (this.c.isEmpty()) {
+         return false;
+      } else {
+         for (List<String> $$1 : this.c) {
+            if (!a($$1, $$0)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   public int b(Predicate<String> $$0) {
+      int $$1 = 0;
+
+      for (List<String> $$2 : this.c) {
+         if (a($$2, $$0)) {
+            $$1++;
+         }
+      }
+
+      return $$1;
+   }
+
+   private static boolean a(List<String> $$0, Predicate<String> $$1) {
+      for (String $$2 : $$0) {
+         if ($$1.test($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public DataResult<al> a(Set<String> $$0) {
+      Set<String> $$1 = new ObjectOpenHashSet();
+
+      for (List<String> $$2 : this.c) {
+         if ($$2.isEmpty() && $$0.isEmpty()) {
+            return DataResult.error(() -> "Requirement entry cannot be empty");
+         }
+
+         $$1.addAll($$2);
+      }
+
+      if (!$$0.equals($$1)) {
+         Set<String> $$3 = Sets.difference($$0, $$1);
+         Set<String> $$4 = Sets.difference($$1, $$0);
+         return DataResult.error(() -> "Advancement completion requirements did not exactly match specified criteria. Missing: " + $$3 + ". Unknown: " + $$4);
+      } else {
+         return DataResult.success(this);
+      }
+   }
+
+   public boolean b() {
+      return this.c.isEmpty();
+   }
+
+   @Override
+   public String toString() {
+      return this.c.toString();
+   }
+
+   public Set<String> c() {
+      Set<String> $$0 = new ObjectOpenHashSet();
+
+      for (List<String> $$1 : this.c) {
+         $$0.addAll($$1);
+      }
+
+      return $$0;
+   }
+
+   public List<List<String>> d() {
       return this.c;
    }
 
-   public List<alo<ewn>> b() {
-      return this.d;
-   }
+   public interface a {
+      al.a a = al::a;
+      al.a b = al::b;
 
-   public List<alo<dbv<?>>> c() {
-      return this.e;
-   }
-
-   public Optional<er> d() {
-      return this.f;
-   }
-
-   public static class a {
-      private int a;
-      private final Builder<alo<ewn>> b = ImmutableList.builder();
-      private final Builder<alo<dbv<?>>> c = ImmutableList.builder();
-      private Optional<alp> d = Optional.empty();
-
-      public static al.a a(int $$0) {
-         return new al.a().b($$0);
-      }
-
-      public al.a b(int $$0) {
-         this.a += $$0;
-         return this;
-      }
-
-      public static al.a a(alo<ewn> $$0) {
-         return new al.a().b($$0);
-      }
-
-      public al.a b(alo<ewn> $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      public static al.a c(alo<dbv<?>> $$0) {
-         return new al.a().d($$0);
-      }
-
-      public al.a d(alo<dbv<?>> $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public static al.a a(alp $$0) {
-         return new al.a().b($$0);
-      }
-
-      public al.a b(alp $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public al a() {
-         return new al(this.a, this.b.build(), this.c.build(), this.d.map(er::new));
-      }
+      al create(Collection<String> var1);
    }
 }

@@ -1,47 +1,40 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import javax.annotation.Nullable;
 
-public class drw extends djp {
+public class drw extends djw implements djp {
    public static final MapCodec<drw> a = b(drw::new);
+   protected static final float b = 6.0F;
+   protected static final fbu c = djm.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<drw> a() {
       return a;
    }
 
-   protected drw(dxn.d $$0) {
+   protected drw(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dwh($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
-      return a($$2, dus.j, $$0.C ? dwh::a : dwh::b);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, cxg $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         int $$5 = 15 + $$1.A.a(15) + $$1.A.a(15);
-         this.a($$1, $$2, $$5);
-      }
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.u($$1.d());
    }
 
    @Override
-   protected dqo a_(dxo $$0) {
-      return dqo.c;
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return true;
    }
 
    @Override
-   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      dhu.a($$0, $$2, "SpawnData");
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      dlv.a($$0, o($$3).m(), $$2, 2);
+   }
+
+   private static dlv o(dwx $$0) {
+      return (dlv)($$0.a(djo.bB) ? djo.jg : djo.jf);
    }
 }

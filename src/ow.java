@@ -1,21 +1,25 @@
-public enum ow {
-   a("building_blocks"),
-   b("decorations"),
-   c("redstone"),
-   d("transportation"),
-   e("tools"),
-   f("combat"),
-   g("food"),
-   h("brewing"),
-   i("misc");
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private final String j;
+public class ow implements ov.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = atd.b.a() + "/minecraft/structure/";
 
-   private ow(final String $$0) {
-      this.j = $$0;
+   @Override
+   public tq apply(String $$0, tq $$1) {
+      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
    }
 
-   public String a() {
-      return this.j;
+   public static tq a(String $$0, tq $$1) {
+      ero $$2 = new ero();
+      int $$3 = uf.b($$1, 500);
+      int $$4 = 4173;
+      if ($$3 < 4173) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4173, $$0});
+      }
+
+      tq $$5 = ban.f.a(bao.a(), $$1, $$3);
+      $$2.a(mb.e, $$5);
+      return $$2.a(new tq());
    }
 }

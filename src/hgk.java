@@ -1,58 +1,70 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class hgk implements hgl<hfa> {
-   private final List<hgl<hfa>> a = Lists.newArrayList();
-   @Nullable
-   private final xk b;
+public class hgk implements AutoCloseable {
+   private final Map<aku, hgk.a> a;
 
-   public hgk(alp $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : xk.c($$1);
+   public hgk(Map<aku, aku> $$0, hek $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         hei $$2 = new hei((aku)$$1x.getKey());
+         $$1.a((aku)$$1x.getKey(), $$2);
+         return new hgk.a($$2, (aku)$$1x.getValue());
+      }));
+   }
+
+   public hei a(aku $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (hgl<hfa> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
+   public void close() {
+      this.a.values().forEach(hgk.a::close);
+      this.a.clear();
    }
 
-   public hfa a(bac $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
+   public Map<aku, CompletableFuture<hgk.b>> a(aup $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         hgk.a $$4 = $$3.getValue();
+         return hee.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new hgk.b($$4.a, $$1xx));
+      }));
+   }
 
-         for (hgl<hfa> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
-            }
-         }
+   static record a(hei a, aku b) implements AutoCloseable {
 
-         return hgj.b;
-      } else {
-         return hgj.b;
+      @Override
+      public void close() {
+         this.a.g();
       }
    }
 
-   public void a(hgl<hfa> $$0) {
-      this.a.add($$0);
-   }
+   public static class b {
+      private final hei a;
+      private final hee.a b;
 
-   @Nullable
-   public xk a() {
-      return this.b;
-   }
+      public b(hei $$0, hee.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public void a(hgg $$0) {
-      for (hgl<hfa> $$1 : this.a) {
-         $$1.a($$0);
+      @Nullable
+      public hej a(aku $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public hej a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
       }
    }
 }

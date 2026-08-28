@@ -1,151 +1,96 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.lang.reflect.Array;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
-public final class dxd {
-   private static final Map<String, dxd> l = new Object2ObjectArrayMap();
-   public static final Codec<dxd> a = Codec.stringResolver($$0 -> $$0.m, l::get);
-   public static final dxd b = new dxd(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(sg.g), Optional.of(sg.q), Optional.of(sg.F), Optional.of(sg.L)
-   );
-   public static final dxd c = new dxd(
-      "spruce", 0.5F, Optional.of(sg.t), Optional.of(sg.u), Optional.of(sg.n), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final dxd d = new dxd(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(sg.A), Optional.of(sg.B), Optional.empty(), Optional.empty()
-   );
-   public static final dxd e = new dxd("azalea", Optional.empty(), Optional.of(sg.z), Optional.empty());
-   public static final dxd f = new dxd("birch", Optional.empty(), Optional.of(sg.l), Optional.of(sg.I));
-   public static final dxd g = new dxd("jungle", Optional.of(sg.s), Optional.of(sg.r), Optional.empty());
-   public static final dxd h = new dxd("acacia", Optional.empty(), Optional.of(sg.m), Optional.empty());
-   public static final dxd i = new dxd("cherry", Optional.empty(), Optional.of(sg.C), Optional.of(sg.N));
-   public static final dxd j = new dxd("dark_oak", Optional.of(sg.h), Optional.empty(), Optional.empty());
-   public static final dxd k = new dxd("pale_oak", Optional.of(sg.j), Optional.empty(), Optional.empty());
-   private final String m;
-   private final float n;
-   private final Optional<alo<egb<?, ?>>> o;
-   private final Optional<alo<egb<?, ?>>> p;
-   private final Optional<alo<egb<?, ?>>> q;
-   private final Optional<alo<egb<?, ?>>> r;
-   private final Optional<alo<egb<?, ?>>> s;
-   private final Optional<alo<egb<?, ?>>> t;
+public class dxd {
+   private static final Joiner a = Joiner.on(",");
+   private final List<String[]> b = Lists.newArrayList();
+   private final Map<Character, Predicate<dxb>> c = Maps.newHashMap();
+   private int d;
+   private int e;
 
-   public dxd(String $$0, Optional<alo<egb<?, ?>>> $$1, Optional<alo<egb<?, ?>>> $$2, Optional<alo<egb<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
+   private dxd() {
+      this.c.put(' ', $$0 -> true);
    }
 
-   public dxd(
-      String $$0,
-      float $$1,
-      Optional<alo<egb<?, ?>>> $$2,
-      Optional<alo<egb<?, ?>>> $$3,
-      Optional<alo<egb<?, ?>>> $$4,
-      Optional<alo<egb<?, ?>>> $$5,
-      Optional<alo<egb<?, ?>>> $$6,
-      Optional<alo<egb<?, ?>>> $$7
-   ) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
-      this.s = $$6;
-      this.t = $$7;
-      l.put($$0, this);
-   }
-
-   @Nullable
-   private alo<egb<?, ?>> a(bac $$0, boolean $$1) {
-      if ($$0.i() < this.n) {
-         if ($$1 && this.t.isPresent()) {
-            return this.t.get();
+   public dxd a(String... $$0) {
+      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
+         if (this.b.isEmpty()) {
+            this.d = $$0.length;
+            this.e = $$0[0].length();
          }
 
-         if (this.r.isPresent()) {
-            return this.r.get();
-         }
-      }
+         if ($$0.length != this.d) {
+            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
+         } else {
+            for (String $$1 : $$0) {
+               if ($$1.length() != this.e) {
+                  throw new IllegalArgumentException(
+                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
+                  );
+               }
 
-      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
-   }
-
-   @Nullable
-   private alo<egb<?, ?>> a(bac $$0) {
-      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
-   }
-
-   public boolean a(arx $$0, dzk $$1, jh $$2, dxo $$3, bac $$4) {
-      alo<egb<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         jq<egb<?, ?>> $$6 = $$0.K_().e(mb.aL).a($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     egb<?, ?> $$9 = $$6.a();
-                     dxo $$10 = dkf.a.m();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 4);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
-
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 4);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 4);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 4);
-                     return false;
+               for (char $$2 : $$1.toCharArray()) {
+                  if (!this.c.containsKey($$2)) {
+                     this.c.put($$2, null);
                   }
                }
             }
+
+            this.b.add($$0);
+            return this;
          }
-      }
-
-      alo<egb<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
       } else {
-         jq<egb<?, ?>> $$12 = $$0.K_().e(mb.aL).a($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            egb<?, ?> $$13 = $$12.a();
-            dxo $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 4);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
+         throw new IllegalArgumentException("Empty pattern for aisle");
+      }
+   }
 
-               return true;
-            } else {
-               $$0.a($$2, $$3, 4);
-               return false;
+   public static dxd a() {
+      return new dxd();
+   }
+
+   public dxd a(char $$0, Predicate<dxb> $$1) {
+      this.c.put($$0, $$1);
+      return this;
+   }
+
+   public dxc b() {
+      return new dxc(this.c());
+   }
+
+   private Predicate<dxb>[][][] c() {
+      this.d();
+      Predicate<dxb>[][][] $$0 = (Predicate<dxb>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
+
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         for (int $$2 = 0; $$2 < this.d; $$2++) {
+            for (int $$3 = 0; $$3 < this.e; $$3++) {
+               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
             }
          }
       }
+
+      return $$0;
    }
 
-   private static boolean a(dxo $$0, dge $$1, jh $$2, int $$3, int $$4) {
-      dkd $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
+   private void d() {
+      List<Character> $$0 = Lists.newArrayList();
 
-   private boolean a(dha $$0, jh $$1) {
-      for (jh $$2 : jh.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
-         if ($$0.a_($$2).a(axk.W)) {
-            return true;
+      for (Entry<Character, Predicate<dxb>> $$1 : this.c.entrySet()) {
+         if ($$1.getValue() == null) {
+            $$0.add($$1.getKey());
          }
       }
 
-      return false;
+      if (!$$0.isEmpty()) {
+         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+      }
    }
 }

@@ -1,42 +1,36 @@
-public class grt extends gqf<chy, gxz, gbk> {
-   private static final alp a = alp.b("textures/entity/fox/fox.png");
-   private static final alp b = alp.b("textures/entity/fox/fox_sleep.png");
-   private static final alp k = alp.b("textures/entity/fox/snow_fox.png");
-   private static final alp l = alp.b("textures/entity/fox/snow_fox_sleep.png");
+public class grt extends gsb<cph, gyi> {
+   private static final aku a = aku.b("textures/entity/enderdragon/dragon_fireball.png");
+   private static final gmh b = gmh.g(a);
 
-   public grt(grl.a $$0) {
-      super($$0, new gbk($$0.a(gei.aN)), new gbk($$0.a(gei.aO)), 0.4F);
-      this.a(new gvm(this, $$0.b()));
+   public grt(gsc.a $$0) {
+      super($$0);
    }
 
-   protected void a(gxz $$0, fgl $$1, float $$2, float $$3) {
+   protected int a(cph $$0, ji $$1) {
+      return 15;
+   }
+
+   @Override
+   public void a(gyi $$0, ffu $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(this.e.b());
+      ffu.a $$4 = $$1.c();
+      ffy $$5 = $$2.getBuffer(b);
+      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
+      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
+      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
+      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
+      $$1.b();
       super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.V));
-      }
    }
 
-   public alp a(gxz $$0) {
-      if ($$0.h == chy.v.a) {
-         return $$0.d ? b : a;
-      } else {
-         return $$0.d ? l : k;
-      }
+   private static void a(ffy $$0, ffu.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hea.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
    }
 
-   public gxz b() {
-      return new gxz();
-   }
-
-   public void a(chy $$0, gxz $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.ci();
-      $$1.b = $$0.K($$2);
-      $$1.d = $$0.fR();
-      $$1.e = $$0.x();
-      $$1.f = $$0.go();
-      $$1.g = $$0.gp();
-      $$1.h = $$0.t();
+   @Override
+   public gyi d() {
+      return new gyi();
    }
 }

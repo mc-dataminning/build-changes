@@ -1,41 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
 public class gfm {
-   private final auv a = auz.c();
-   private final Map<aur, String> b;
+   private final List<gff> a;
+   private final gfe b;
+   private final Map<String, gfm> c = Maps.newHashMap();
 
-   public gfm() {
-      this.a.a();
-      Builder<aur, String> $$0 = ImmutableMap.builder();
-      this.a.d().forEach($$1 -> {
-         atv $$2 = $$1.a();
-         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
-      });
-      this.b = $$0.build();
+   gfm(List<gff> $$0, gfe $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public List<aur> a(List<aur> $$0) {
-      List<aur> $$1 = new ArrayList<>($$0.size());
-      List<String> $$2 = new ArrayList<>($$0.size());
+   public gfm a(String $$0, gfh $$1, gfe $$2) {
+      gfm $$3 = new gfm($$1.b(), $$2);
+      return this.a($$0, $$3);
+   }
 
-      for (aur $$3 : $$0) {
-         String $$4 = this.b.get($$3);
-         if ($$4 != null) {
-            $$2.add($$4);
-            $$1.add($$3);
-         }
+   public gfm a(String $$0, gfm $$1) {
+      gfm $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
       }
 
-      this.a.b($$2);
       return $$1;
    }
 
-   public avb a() {
-      List<atw> $$0 = this.a.h();
-      return new ave(aty.b, $$0);
+   public gfm a(String $$0) {
+      return this.a($$0, gfh.c(), gfe.a);
+   }
+
+   public gfc a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, gfc> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gfm)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<gfc.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      gfc $$4 = new gfc($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
+   }
+
+   public gfm b(String $$0) {
+      return this.c.get($$0);
+   }
+
+   public Set<Entry<String, gfm>> a() {
+      return this.c.entrySet();
+   }
+
+   public gfm a(UnaryOperator<gfe> $$0) {
+      gfm $$1 = new gfm(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

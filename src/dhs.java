@@ -1,50 +1,35 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dhs extends dgs {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<ju<dkd>> d;
+public class dhs extends dho {
+   public static final MapCodec<dhs> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dhk.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
+            .apply($$0, dhs::new)
+   );
+   private final jv<dhk> c;
+   private final int d;
+   private final int e;
 
-   public dhs(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<ju<dkd>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public dhs(jv<dhk> $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1 + 2;
+      this.e = $$1;
    }
 
    @Override
-   public Optional<Float> a(dgr $$0, dge $$1, jh $$2, dxo $$3, etq $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   protected Stream<jr<dhk>> b() {
+      return this.c.a();
    }
 
    @Override
-   public boolean a(dgr $$0, dge $$1, jh $$2, dxo $$3, float $$4) {
-      return this.a;
+   protected MapCodec<? extends dho> a() {
+      return b;
    }
 
    @Override
-   public boolean a(dgr $$0, bvb $$1) {
-      return this.b;
-   }
-
-   @Override
-   public float a(bvb $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof cpo $$1 && $$1.gj().b) {
-            var10000 = true;
-            break label17;
-         }
-
-         var10000 = false;
-      }
-
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
+   public jr<dhk> getNoiseBiome(int $$0, int $$1, int $$2, dht.f $$3) {
+      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
    }
 }

@@ -1,40 +1,93 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class exz extends exv {
+public class exz extends exe {
    public static final MapCodec<exz> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and($$0.group(ewg.e.fieldOf("component").forGetter($$0x -> $$0x.b), exy.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .and(
+               $$0.group(
+                  wq.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
+                  exd.a(256).forGetter($$0x -> $$0x.c),
+                  evr.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+               )
+            )
             .apply($$0, exz::new)
    );
-   private final ewf<?> b;
-   private final exw c;
+   private final List<wo> b;
+   private final exd c;
+   private final Optional<evr.b> d;
 
-   private exz(List<ezr> $$0, ewf<?> $$1, exw $$2) {
+   public exz(List<eza> $$0, List<wo> $$1, exd $$2, Optional<evr.b> $$3) {
       super($$0);
-      this.b = $$1;
+      this.b = List.copyOf($$1);
       this.c = $$2;
+      this.d = $$3;
    }
 
    @Override
-   public exx<exz> b() {
-      return exy.u;
+   public exg<exz> b() {
+      return exh.A;
    }
 
    @Override
-   public cxg a(cxg $$0, ewi $$1) {
-      if ($$0.f()) {
-         return $$0;
+   public Set<bai<?>> a() {
+      return this.d.<Set<bai<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   }
+
+   @Override
+   public cwp a(cwp $$0, evr $$1) {
+      $$0.a(kv.j, czi.a, $$1x -> new czi(this.a($$1x, $$1)));
+      return $$0;
+   }
+
+   private List<wo> a(@Nullable czi $$0, evr $$1) {
+      if ($$0 == null && this.b.isEmpty()) {
+         return List.of();
       } else {
-         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
-         return $$0;
+         UnaryOperator<wo> $$2 = eya.a($$1, this.d.orElse(null));
+         List<wo> $$3 = this.b.stream().map($$2).toList();
+         return this.c.a($$0.a(), $$3, 256);
       }
    }
 
-   @Override
-   public void a(ewo $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public static exz.a c() {
+      return new exz.a();
+   }
+
+   public static class a extends exe.a<exz.a> {
+      private Optional<evr.b> a = Optional.empty();
+      private final Builder<wo> b = ImmutableList.builder();
+      private exd c = exd.a.b;
+
+      public exz.a a(exd $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public exz.a a(evr.b $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public exz.a a(wo $$0) {
+         this.b.add($$0);
+         return this;
+      }
+
+      protected exz.a a() {
+         return this;
+      }
+
+      @Override
+      public exf b() {
+         return new exz(this.g(), this.b.build(), this.c, this.a);
+      }
    }
 }

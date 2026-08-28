@@ -1,40 +1,18 @@
-import java.util.Locale;
+public class fpq extends fos {
+   private final fob a;
+   private final wo b;
+   private final wo c;
 
-public class fpq extends fpo {
-   private static final int f = 30;
-   private static final double g = 33.333333333333336;
-
-   public fpq(fnj $$0, bnx $$1) {
-      super($$0, $$1);
+   public fpq(int $$0, int $$1, int $$2, int $$3, wo $$4, fos.c $$5, fob $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, q);
+      this.a = $$6;
+      this.b = $$4;
+      this.c = wr.a($$4.f(), xl.a.c(true));
    }
 
    @Override
-   protected void d(fnl $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(glq.L(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = flz.Q().n.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(glq.L(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
-      }
-   }
-
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      wo $$4 = this.D() ? this.c : this.b;
+      $$0.b(this.a, $$4, this.F(), this.G(), 16777215 | ayz.f(this.l * 255.0F) << 24);
    }
 }

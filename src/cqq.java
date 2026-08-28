@@ -1,75 +1,39 @@
-public class cqq extends cqo {
-   private static final bve a = bve.c(0.0F, 0.0F);
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-   public cqq(bvi<? extends cqq> $$0, dgz $$1) {
-      super($$0, $$1);
+public class cqq {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final cqq c = a("empty").a(0, cqo.b).a();
+   public static final cqq d = a("simple").a(5000, cqo.c).a(11000, cqo.e).a();
+   public static final cqq e = a("villager_baby").a(10, cqo.b).a(3000, cqo.d).a(6000, cqo.b).a(10000, cqo.d).a(12000, cqo.e).a();
+   public static final cqq f = a("villager_default").a(10, cqo.b).a(2000, cqo.c).a(9000, cqo.f).a(11000, cqo.b).a(12000, cqo.e).a();
+   private final Map<cqo, cqs> g = Maps.newHashMap();
+
+   protected static cqr a(String $$0) {
+      cqq $$1 = ke.a(mb.B, $$0, new cqq());
+      return new cqr($$1);
    }
 
-   public cqq(dgz $$0, bvx $$1, cxg $$2) {
-      super(bvi.M, $$1, $$0, $$2);
-   }
-
-   public cqq(dgz $$0, double $$1, double $$2, double $$3, cxg $$4) {
-      super(bvi.M, $$1, $$2, $$3, $$0, $$4);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dW()
-               .a(
-                  new lo(ls.T, this.l()),
-                  this.dB(),
-                  this.dD(),
-                  this.dH(),
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08,
-                  ((double)this.ae.i() - 0.5) * 0.08
-               );
-         }
+   protected void a(cqo $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cqs());
       }
    }
 
-   @Override
-   protected void a(fbo $$0) {
-      super.a($$0);
-      $$0.a().a(this.dX().b(this, this.p()), 0.0F);
+   protected cqs b(cqo $$0) {
+      return this.g.get($$0);
    }
 
-   @Override
-   protected void a(fbp $$0) {
-      super.a($$0);
-      if (!this.dW().C) {
-         if (this.ae.a(8) == 0) {
-            int $$1 = 1;
-            if (this.ae.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cht $$3 = bvi.z.a(this.dW(), bvh.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dB(), this.dD(), this.dH(), this.dM(), 0.0F);
-                  if (!$$3.a(a)) {
-                     break;
-                  }
-
-                  this.dW().b($$3);
-               }
-            }
-         }
-
-         this.dW().a(this, (byte)3);
-         this.at();
-      }
+   protected List<cqs> c(cqo $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
    }
 
-   @Override
-   protected cxc m() {
-      return cxk.ry;
+   public cqo a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(cqo.b);
    }
 }

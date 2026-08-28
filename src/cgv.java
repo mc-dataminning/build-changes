@@ -1,58 +1,110 @@
-import java.util.function.ToDoubleFunction;
+import java.util.List;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class cgv {
+public abstract class cgv extends cgt {
    @Nullable
-   public static fbr a(bwf $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::c);
+   private cgv a;
+   private int b = 1;
+
+   public cgv(bur<? extends cgv> $$0, dgi $$1) {
+      super($$0, $$1);
    }
 
-   @Nullable
-   public static fbr a(bwf $$0, int $$1, int $$2, ToDoubleFunction<jh> $$3) {
-      boolean $$4 = cgt.a($$0, $$1);
-      return cgw.a(() -> {
-         jh $$4x = cgw.a($$0.dZ(), $$1, $$2);
-         jh $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
+   @Override
+   protected void B() {
+      super.B();
+      this.bS.a(5, new cca(this));
    }
 
-   @Nullable
-   public static fbr a(bwf $$0, int $$1, int $$2, fbr $$3) {
-      fbr $$4 = $$3.a($$0.dB(), $$0.dD(), $$0.dH());
-      boolean $$5 = cgt.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   @Override
+   public int af() {
+      return this.gq();
    }
 
-   @Nullable
-   public static fbr b(bwf $$0, int $$1, int $$2, fbr $$3) {
-      fbr $$4 = $$0.du().d($$3);
-      boolean $$5 = cgt.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
+   public int gq() {
+      return super.af();
    }
 
-   @Nullable
-   private static fbr a(bwf $$0, int $$1, int $$2, fbr $$3, boolean $$4) {
-      return cgw.a($$0, () -> {
-         jh $$5 = cgw.a($$0.dZ(), $$1, $$2, 0, $$3.d, $$3.f, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            jh $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
+   @Override
+   protected boolean x() {
+      return !this.gr();
+   }
+
+   public boolean gr() {
+      return this.a != null && this.a.bL();
+   }
+
+   public cgv a(cgv $$0) {
+      this.a = $$0;
+      $$0.gx();
+      return $$0;
+   }
+
+   public void gs() {
+      this.a.gy();
+      this.a = null;
+   }
+
+   private void gx() {
+      this.b++;
+   }
+
+   private void gy() {
+      this.b--;
+   }
+
+   public boolean gt() {
+      return this.gu() && this.b < this.gq();
+   }
+
+   @Override
+   public void h() {
+      super.h();
+      if (this.gu() && this.dW().A.a(200) == 1) {
+         List<? extends cgt> $$0 = this.dW().a((Class<? extends cgt>)this.getClass(), this.cR().c(8.0, 8.0, 8.0));
+         if ($$0.size() <= 1) {
+            this.b = 1;
          }
-      });
+      }
+   }
+
+   public boolean gu() {
+      return this.b > 1;
+   }
+
+   public boolean gv() {
+      return this.g(this.a) <= 121.0;
+   }
+
+   public void gw() {
+      if (this.gr()) {
+         this.L().a(this.a, 1.0);
+      }
+   }
+
+   public void a(Stream<? extends cgv> $$0) {
+      $$0.limit((long)(this.gq() - this.b)).filter($$0x -> $$0x != this).forEach($$0x -> $$0x.a(this));
    }
 
    @Nullable
-   public static jh a(bwf $$0, jh $$1) {
-      $$1 = cgw.a($$1, $$0.dW().an(), $$1x -> cgt.c($$0, $$1x));
-      return !cgt.a($$0, $$1) && !cgt.b($$0, $$1) ? $$1 : null;
+   @Override
+   public bvz a(dgz $$0, bsh $$1, buq $$2, @Nullable bvz $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3 == null) {
+         $$3 = new cgv.a(this);
+      } else {
+         this.a(((cgv.a)$$3).a);
+      }
+
+      return $$3;
    }
 
-   @Nullable
-   public static jh a(bwf $$0, int $$1, boolean $$2, jh $$3) {
-      jh $$4 = cgw.a($$0, $$1, $$0.dZ(), $$3);
-      return !cgt.a($$4, $$0) && !cgt.a($$2, $$0, $$4) && !cgt.a($$0.L(), $$4) ? $$4 : null;
+   public static class a implements bvz {
+      public final cgv a;
+
+      public a(cgv $$0) {
+         this.a = $$0;
+      }
    }
 }

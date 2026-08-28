@@ -1,62 +1,66 @@
-public class day extends dax {
-   private final jm b;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public day(dgz $$0, jh $$1, jm $$2, cxg $$3, jm $$4) {
-      super($$0, null, bsz.a, $$3, new fbn(fbr.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class day extends dau {
+   private static final dba c = dba.a(cwt.vu);
+
+   public day(dar $$0) {
+      super($$0);
    }
 
-   @Override
-   public jh a() {
-      return this.j().b();
+   public boolean a(das $$0, dgi $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cwp $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.h() instanceof cvn) {
+                  $$2 = true;
+               } else {
+                  if (!c.a($$5)) {
+                     return false;
+                  }
+
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.q().a_(this.j().b()).a(this);
-   }
+   public cwp a(das $$0, jt.a $$1) {
+      IntList $$2 = new IntArrayList();
+      cwp $$3 = null;
 
-   @Override
-   public boolean c() {
-      return this.b();
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwp $$5 = $$0.a($$4);
+         if ($$5.h() instanceof cvn $$7) {
+            $$2.add($$7.b().f());
+         } else if (c.a($$5)) {
+            $$3 = $$5.c(1);
+         }
+      }
 
-   @Override
-   public jm d() {
-      return jm.a;
-   }
-
-   @Override
-   public jm[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jm[]{jm.a, jm.c, jm.f, jm.d, jm.e, jm.b};
-         case b:
-            return new jm[]{jm.a, jm.b, jm.c, jm.f, jm.d, jm.e};
-         case c:
-            return new jm[]{jm.a, jm.c, jm.f, jm.e, jm.b, jm.d};
-         case d:
-            return new jm[]{jm.a, jm.d, jm.f, jm.e, jm.b, jm.c};
-         case e:
-            return new jm[]{jm.a, jm.e, jm.d, jm.b, jm.c, jm.f};
-         case f:
-            return new jm[]{jm.a, jm.f, jm.d, jm.b, jm.c, jm.e};
+      if ($$3 != null && !$$2.isEmpty()) {
+         $$3.a(kv.ae, cze.a, $$2, cze::a);
+         return $$3;
+      } else {
+         return cwp.j;
       }
    }
 
    @Override
-   public jm g() {
-      return this.b.o() == jm.a.b ? jm.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
+   public dbo<day> a() {
+      return dbo.i;
    }
 }

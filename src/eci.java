@@ -1,70 +1,181 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
 import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class eci implements eco {
-   public static final MapCodec<eci> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kk.a.fieldOf("source_entity").forGetter(eci::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
-            .apply($$0, ($$0x, $$1) -> new eci(Either.right(Either.left($$0x)), $$1))
-   );
-   public static final zi<ByteBuf, eci> b = zi.a(zg.h, eci::c, zg.l, $$0 -> $$0.f, ($$0, $$1) -> new eci(Either.right(Either.right($$0)), $$1));
-   private Either<bvb, Either<UUID, Integer>> e;
-   private final float f;
-
-   public eci(bvb $$0, float $$1) {
-      this(Either.left($$0), $$1);
+public abstract class eci {
+   public static eci.b a(int $$0, int $$1) {
+      return new eci.b($$0 - 1, $$1 + 1);
    }
 
-   private eci(Either<bvb, Either<UUID, Integer>> $$0, float $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static eci.b b(int $$0, int $$1) {
+      return new eci.b($$0, $$1);
    }
 
-   @Override
-   public Optional<fbr> a(dgz $$0) {
-      if (this.e.left().isEmpty()) {
-         this.b($$0);
+   public static eci a(int $$0) {
+      return new eci.c($$0, false);
+   }
+
+   public static eci b(int $$0) {
+      return new eci.c($$0 + 1, false);
+   }
+
+   public static eci c(int $$0) {
+      return new eci.c($$0, true);
+   }
+
+   public static eci d(int $$0) {
+      return new eci.c($$0 - 1, true);
+   }
+
+   public static eci a() {
+      return eci.a.a;
+   }
+
+   public static eci a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
+
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public eci a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public eci b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<eci> a(dgo $$0, ji $$1, int $$2, Predicate<dwx> $$3, Predicate<dwx> $$4) {
+      ji.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jn.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jn.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(dgo $$0, int $$1, Predicate<dwx> $$2, Predicate<dwx> $$3, ji.a $$4, int $$5, jn $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
       }
 
-      return this.e.left().map($$0x -> $$0x.du().b(0.0, (double)this.f, 0.0));
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   private void b(dgz $$0) {
-      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((bvb)$$1.map($$1x -> $$0 instanceof arx $$2 ? $$2.a($$1x) : null, $$0::a))))
-         .ifPresent($$0x -> this.e = Either.left($$0x));
-   }
+   public static final class a extends eci {
+      static final eci.a a = new eci.a();
 
-   private UUID b() {
-      return (UUID)this.e.map(bvb::cG, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
-            throw new RuntimeException("Unable to get entityId from uuid");
-         }));
-   }
-
-   private int c() {
-      return (Integer)this.e.map(bvb::ar, $$0 -> (Integer)$$0.map($$0x -> {
-            throw new IllegalStateException("Unable to get entityId from uuid");
-         }, Function.identity()));
-   }
-
-   @Override
-   public ecp<eci> a() {
-      return ecp.b;
-   }
-
-   public static class a implements ecp<eci> {
-      @Override
-      public MapCodec<eci> a() {
-         return eci.a;
+      private a() {
       }
 
       @Override
-      public zi<ByteBuf, eci> b() {
-         return eci.b;
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends eci {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends eci {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
       }
    }
 }

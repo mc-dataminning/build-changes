@@ -1,46 +1,120 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public record bvl(alo<ewn> c, Map<bvj, Float> d) {
-   public static final Codec<Map<bvj, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bvj.k, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(bvl::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(bvj.i);
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<bvl> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alo.a(mb.bg).fieldOf("loot_table").forGetter(bvl::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bvl::b))
-            .apply($$0, bvl::new)
-   );
+public interface bvl {
+   String a_ = "AngerTime";
+   String b_ = "AngryAt";
 
-   public bvl(alo<ewn> $$0, float $$1) {
-      this($$0, a($$1));
-   }
+   int a();
 
-   private static Map<bvj, Float> a(float $$0) {
-      return a(List.of(bvj.values()), $$0);
-   }
+   void a(int var1);
 
-   private static Map<bvj, Float> a(List<bvj> $$0, float $$1) {
-      Map<bvj, Float> $$2 = Maps.newHashMap();
+   @Nullable
+   UUID b();
 
-      for (bvj $$3 : $$0) {
-         $$2.put($$3, $$1);
+   void a(@Nullable UUID var1);
+
+   void c();
+
+   default void a_(tq $$0) {
+      $$0.a("AngerTime", this.a());
+      if (this.b() != null) {
+         $$0.a("AngryAt", this.b());
       }
-
-      return $$2;
    }
 
-   public alo<ewn> a() {
-      return this.c;
+   default void a(dgi $$0, tq $$1) {
+      this.a($$1.h("AngerTime"));
+      if ($$0 instanceof arc) {
+         if (!$$1.b("AngryAt")) {
+            this.a(null);
+         } else {
+            UUID $$2 = $$1.a("AngryAt");
+            this.a($$2);
+            buk $$3 = ((arc)$$0).a($$2);
+            if ($$3 != null) {
+               if ($$3 instanceof bvi $$4) {
+                  this.h($$4);
+                  this.a($$4);
+               }
+
+               if ($$3 instanceof cox $$5) {
+                  this.h($$5);
+                  this.c($$5);
+               }
+            }
+         }
+      }
    }
 
-   public Map<bvj, Float> b() {
-      return this.d;
+   default void a(arc $$0, boolean $$1) {
+      bvg $$2 = this.O_();
+      UUID $$3 = this.b();
+      if (($$2 == null || $$2.eF()) && $$3 != null && $$0.a($$3) instanceof bvi) {
+         this.ae_();
+      } else {
+         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
+            this.a($$2.cG());
+            this.c();
+         }
+
+         if (this.a() > 0 && ($$2 == null || $$2.aq() != bur.bS || !$$1)) {
+            this.a(this.a() - 1);
+            if (this.a() == 0) {
+               this.ae_();
+            }
+         }
+      }
    }
+
+   default boolean a(bvg $$0, arc $$1) {
+      if (!this.c($$0)) {
+         return false;
+      } else {
+         return $$0.aq() == bur.bS && this.a_($$1) ? true : $$0.cG().equals(this.b());
+      }
+   }
+
+   default boolean a_(arc $$0) {
+      return $$0.O().b(dge.P) && this.ac_() && this.b() == null;
+   }
+
+   default boolean ac_() {
+      return this.a() > 0;
+   }
+
+   default void a_(arc $$0, cox $$1) {
+      if ($$0.O().b(dge.O)) {
+         if ($$1.cG().equals(this.b())) {
+            this.ae_();
+         }
+      }
+   }
+
+   default void ad_() {
+      this.ae_();
+      this.c();
+   }
+
+   default void ae_() {
+      this.a(null);
+      this.a(null);
+      this.h(null);
+      this.a(0);
+   }
+
+   @Nullable
+   bvg eq();
+
+   void a(@Nullable bvg var1);
+
+   void c(@Nullable cox var1);
+
+   void h(@Nullable bvg var1);
+
+   boolean c(bvg var1);
+
+   @Nullable
+   bvg O_();
 }

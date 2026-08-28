@@ -1,8 +1,19 @@
 import javax.annotation.Nullable;
 
-public class gyv extends gxq {
-   public jm a = jm.c;
+public class gyv extends gzi {
+   public float a;
+   public float b;
+   public fba c;
    @Nullable
-   public clo b;
-   public int[] c = new int[0];
+   public fba d;
+   @Nullable
+   public fba e;
+   @Nullable
+   public fba f;
+   public float g;
+   public float h;
+
+   public gyv() {
+      this.c = fba.c;
+   }
 }

@@ -1,8 +1,26 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cke {
+public interface cke {
+   boolean a();
+
+   void b();
+
+   void a(arc var1);
+
+   void a(cjt var1, ji var2, bta var3, @Nullable cox var4);
+
+   void c();
+
+   void d();
+
+   float e();
+
+   float g();
+
+   ckk<? extends cke> h();
+
+   @Nullable
+   fba f();
+
+   float a(bta var1, float var2);
 }

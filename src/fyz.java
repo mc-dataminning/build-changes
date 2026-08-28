@@ -1,173 +1,228 @@
+import com.google.common.collect.ImmutableList;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
+import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-class fyz {
-   private static final int a = 44;
-   private final List<fyz.c> b;
+public class fyz extends foy.a<fyz> {
+   private static final aku f = aku.b("icon/draft_report");
+   private static final Duration g = Duration.ofMillis(500L);
+   private static final fqf h = new fqf(
+      aku.b("social_interactions/report_button"), aku.b("social_interactions/report_button_disabled"), aku.b("social_interactions/report_button_highlighted")
+   );
+   private static final fqf i = new fqf(aku.b("social_interactions/mute_button"), aku.b("social_interactions/mute_button_highlighted"));
+   private static final fqf j = new fqf(aku.b("social_interactions/unmute_button"), aku.b("social_interactions/unmute_button_highlighted"));
+   private final flj k;
+   private final List<fop> l;
+   private final UUID m;
+   private final String n;
+   private final Supplier<hfk> o;
+   private boolean p;
+   private boolean q;
+   private final boolean r;
+   private final boolean s;
+   private final boolean u;
+   @Nullable
+   private fos v;
+   @Nullable
+   private fos w;
+   @Nullable
+   private fos x;
+   private float y;
+   private static final wo z = wo.c("gui.socialInteractions.status_hidden").a(n.u);
+   private static final wo A = wo.c("gui.socialInteractions.status_blocked").a(n.u);
+   private static final wo B = wo.c("gui.socialInteractions.status_offline").a(n.u);
+   private static final wo C = wo.c("gui.socialInteractions.status_hidden_offline").a(n.u);
+   private static final wo D = wo.c("gui.socialInteractions.status_blocked_offline").a(n.u);
+   private static final wo E = wo.c("gui.socialInteractions.tooltip.report.disabled");
+   private static final wo F = wo.c("gui.socialInteractions.tooltip.hide");
+   private static final wo G = wo.c("gui.socialInteractions.tooltip.show");
+   private static final wo H = wo.c("gui.socialInteractions.tooltip.report");
+   private static final int I = 24;
+   private static final int J = 4;
+   public static final int a = axk.a(190, 0, 0, 0);
+   private static final int K = 20;
+   public static final int b = axk.a(255, 74, 74, 74);
+   public static final int c = axk.a(255, 48, 48, 48);
+   public static final int d = axk.a(255, 255, 255, 255);
+   public static final int e = axk.a(140, 255, 255, 255);
 
-   fyz(List<fyz.c> $$0) {
-      this.b = $$0;
+   public fyz(flj $$0, fzc $$1, UUID $$2, String $$3, Supplier<hfk> $$4, boolean $$5) {
+      this.k = $$0;
+      this.m = $$2;
+      this.n = $$3;
+      this.o = $$4;
+      ghh $$6 = $$0.ba();
+      this.r = $$6.a().a();
+      this.u = $$5;
+      this.s = $$6.a($$2);
+      wo $$7 = wo.a("gui.socialInteractions.narration.hide", $$3);
+      wo $$8 = wo.a("gui.socialInteractions.narration.show", $$3);
+      fza $$9 = $$0.aN();
+      boolean $$10 = $$0.J().a($$0.T());
+      boolean $$11 = !$$0.t.cG().equals($$2);
+      if ($$11 && $$10 && !$$9.e($$2)) {
+         this.x = new fpe(0, 0, 20, 20, h, $$3x -> $$6.a($$0, $$1, () -> $$0.a(new fyv($$1, $$6, this)), false), wo.c("gui.socialInteractions.report")) {
+            @Override
+            protected xc d() {
+               return fyz.this.a(super.d());
+            }
+         };
+         this.x.j = this.r;
+         this.x.a(this.m());
+         this.x.a(g);
+         this.v = new fpe(0, 0, 20, 20, i, $$3x -> {
+            $$9.a($$2);
+            this.a(true, wo.a("gui.socialInteractions.hidden_in_chat", $$3));
+         }, wo.c("gui.socialInteractions.hide")) {
+            @Override
+            protected xc d() {
+               return fyz.this.a(super.d());
+            }
+         };
+         this.v.a(fqd.a(F, $$7));
+         this.v.a(g);
+         this.w = new fpe(0, 0, 20, 20, j, $$3x -> {
+            $$9.b($$2);
+            this.a(false, wo.a("gui.socialInteractions.shown_in_chat", $$3));
+         }, wo.c("gui.socialInteractions.show")) {
+            @Override
+            protected xc d() {
+               return fyz.this.a(super.d());
+            }
+         };
+         this.w.a(fqd.a(G, $$8));
+         this.w.a(g);
+         this.l = new ArrayList<>();
+         this.l.add(this.v);
+         this.l.add(this.x);
+         this.e($$9.d(this.m));
+      } else {
+         this.l = ImmutableList.of();
+      }
    }
 
-   public void a() {
-      this.b.forEach(fyz.c::a);
+   private fqd m() {
+      return !this.r ? fqd.a(E) : fqd.a(H, wo.a("gui.socialInteractions.narration.report", this.n));
    }
 
-   public static fyz.a a(int $$0) {
-      return new fyz.a($$0);
-   }
-
-   public static class a {
-      final int a;
-      private final List<fyz.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fyz.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
+   @Override
+   public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+      int $$10 = $$3 + 4;
+      int $$11 = $$2 + ($$5 - 24) / 2;
+      int $$12 = $$10 + 24 + 4;
+      wo $$13 = this.n();
+      int $$14;
+      if ($$13 == wn.a) {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, b);
+         $$14 = $$2 + ($$5 - 9) / 2;
+      } else {
+         $$0.a($$3, $$2, $$3 + $$4, $$2 + $$5, c);
+         $$14 = $$2 + ($$5 - (9 + 9)) / 2;
+         $$0.b(this.k.h, $$13, $$12, $$14 + 12, e);
       }
 
-      void a() {
-         this.e++;
+      fpr.a($$0, this.o.get(), $$10, $$11, 24);
+      $$0.b(this.k.h, this.n, $$12, $$14, d);
+      if (this.p) {
+         $$0.a($$10, $$11, $$10 + 24, $$11 + 24, a);
       }
 
-      public fyz.d a(xk $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fyz.d $$3 = new fyz.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fyz.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fyz.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fyz a(Consumer<frp> $$0) {
-         frm $$1 = new frm().b(this.d);
-         $$1.a(frs.a(this.a - 44), 0, 0);
-         $$1.a(frs.a(44), 0, 1);
-         List<fyz.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fyz.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
+      if (this.v != null && this.w != null && this.x != null) {
+         float $$16 = this.y;
+         this.v.j($$3 + ($$4 - this.v.A() - 4) - 20 - 4);
+         this.v.k($$2 + ($$5 - this.v.y()) / 2);
+         this.v.a($$0, $$6, $$7, $$9);
+         this.w.j($$3 + ($$4 - this.w.A() - 4) - 20 - 4);
+         this.w.k($$2 + ($$5 - this.w.y()) / 2);
+         this.w.a($$0, $$6, $$7, $$9);
+         this.x.j($$3 + ($$4 - this.w.A() - 4));
+         this.x.k($$2 + ($$5 - this.w.y()) / 2);
+         this.x.a($$0, $$6, $$7, $$9);
+         if ($$16 == this.y) {
+            this.y = 0.0F;
          }
-
-         $$1.a();
-         $$0.accept($$1);
-         fyz $$4 = new fyz($$2);
-         $$4.a();
-         return $$4;
       }
 
-      public fyz.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fyz.b($$0, $$1));
-         return this;
+      if (this.s && this.x != null) {
+         $$0.a(gmh::H, f, this.x.F() + 5, this.x.G() + 1, 15, 15);
       }
    }
 
-   static record b(int a, boolean b) {
+   @Override
+   public List<? extends fqp> aH_() {
+      return this.l;
    }
 
-   static record c(fof<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public fof<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
+   @Override
+   public List<? extends fsn> b() {
+      return this.l;
    }
 
-   public static class d {
-      private final xk a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private xk d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   public String c() {
+      return this.n;
+   }
 
-      d(xk $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
+   public UUID g() {
+      return this.m;
+   }
 
-      public fyz.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
+   public Supplier<hfk> h() {
+      return this.o;
+   }
 
-      public fyz.d a(xk $$0) {
-         this.d = $$0;
-         return this;
-      }
+   public void c(boolean $$0) {
+      this.p = $$0;
+   }
 
-      fyz.c a(fyz.a $$0, frm $$1, int $$2) {
-         $$0.a();
-         fpg $$3 = new fpg(this.a, flz.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fyz.b> $$4 = $$0.f;
-         fof.a<Boolean> $$5 = fof.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fpk $$7 = fpk.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
+   public boolean i() {
+      return this.p;
+   }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> xj.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> xj.a(this.a, $$0x.c()));
-         }
+   public void d(boolean $$0) {
+      this.q = $$0;
+   }
 
-         fof<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xk.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
+   public boolean k() {
+      return this.q;
+   }
 
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               xk $$4x = this.d.f().a(n.h);
-               fnj $$5x = flz.Q().h;
-               fot $$6x = new fot($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
+   public boolean l() {
+      return this.u;
+   }
 
-         return new fyz.c($$8, this.b, this.e);
+   private void a(boolean $$0, wo $$1) {
+      this.e($$0);
+      this.k.m.d().a($$1);
+      this.k.aY().c($$1);
+   }
+
+   private void e(boolean $$0) {
+      this.w.k = $$0;
+      this.v.k = !$$0;
+      this.l.set(0, $$0 ? this.w : this.v);
+   }
+
+   xc a(xc $$0) {
+      wo $$1 = this.n();
+      return $$1 == wn.a ? wo.b(this.n).f(", ").b($$0) : wo.b(this.n).f(", ").b($$1).f(", ").b($$0);
+   }
+
+   private wo n() {
+      boolean $$0 = this.k.aN().d(this.m);
+      boolean $$1 = this.k.aN().e(this.m);
+      if ($$1 && this.p) {
+         return D;
+      } else if ($$0 && this.p) {
+         return C;
+      } else if ($$1) {
+         return A;
+      } else if ($$0) {
+         return z;
+      } else {
+         return this.p ? B : wn.a;
       }
    }
 }

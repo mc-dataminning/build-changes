@@ -1,220 +1,81 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import java.util.AbstractSet;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public class bam<T> extends AbstractSet<T> {
-   private static final int a = 10;
-   private final Comparator<T> b;
-   T[] c;
-   int d;
+public class bam {
+   private static final String a = b("");
 
-   private bam(int $$0, Comparator<T> $$1) {
-      this.b = $$1;
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
-      } else {
-         this.c = (T[])a(new Object[$$0]);
-      }
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   public static <T extends Comparable<T>> bam<T> a() {
-      return a(10);
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
    }
 
-   public static <T extends Comparable<T>> bam<T> a(int $$0) {
-      return new bam<>($$0, Comparator.naturalOrder());
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return ayp.e($$1);
    }
 
-   public static <T> bam<T> a(Comparator<T> $$0) {
-      return a($$0, 10);
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(ayp.e($$2)));
    }
 
-   public static <T> bam<T> a(Comparator<T> $$0, int $$1) {
-      return new bam<>($$1, $$0);
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
    }
 
-   private static <T> T[] a(Object[] $$0) {
-      return (T[])$$0;
-   }
-
-   private int c(T $$0) {
-      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
-   }
-
-   private static int b(int $$0) {
-      return -$$0 - 1;
-   }
-
-   @Override
-   public boolean add(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         this.a($$0, $$2);
-         return true;
-      }
-   }
-
-   private void c(int $$0) {
-      if ($$0 > this.c.length) {
-         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
-            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
-         } else if ($$0 < 10) {
-            $$0 = 10;
-         }
-
-         Object[] $$1 = new Object[$$0];
-         System.arraycopy(this.c, 0, $$1, 0, this.d);
-         this.c = (T[])a($$1);
-      }
-   }
-
-   private void a(T $$0, int $$1) {
-      this.c(this.d + 1);
-      if ($$1 != this.d) {
-         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
-      }
-
-      this.c[$$1] = $$0;
-      this.d++;
-   }
-
-   void d(int $$0) {
-      this.d--;
-      if ($$0 != this.d) {
-         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
-      }
-
-      this.c[this.d] = null;
-   }
-
-   private T e(int $$0) {
-      return this.c[$$0];
-   }
-
-   public T a(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return this.e($$1);
-      } else {
-         this.a($$0, b($$1));
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
          return $$0;
-      }
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      if ($$1 >= 0) {
-         this.d($$1);
-         return true;
       } else {
-         return false;
-      }
-   }
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
 
-   @Nullable
-   public T b(T $$0) {
-      int $$1 = this.c($$0);
-      return $$1 >= 0 ? this.e($$1) : null;
-   }
+                  return $$0.createString(ayp.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
 
-   public T b() {
-      return this.e(0);
-   }
-
-   public T c() {
-      return this.e(this.d - 1);
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      return $$1 >= 0;
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return new bam.a();
-   }
-
-   @Override
-   public int size() {
-      return this.d;
-   }
-
-   @Override
-   public Object[] toArray() {
-      return Arrays.copyOf(this.c, this.d, Object[].class);
-   }
-
-   @Override
-   public <U> U[] toArray(U[] $$0) {
-      if ($$0.length < this.d) {
-         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
-      } else {
-         System.arraycopy(this.c, 0, $$0, 0, this.d);
-         if ($$0.length > this.d) {
-            $$0[this.d] = null;
-         }
-
-         return $$0;
-      }
-   }
-
-   @Override
-   public void clear() {
-      Arrays.fill(this.c, 0, this.d, null);
-      this.d = 0;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof bam<?> $$1 && this.b.equals($$1.b)) {
-            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
-         }
-
-         return super.equals($$0);
-      }
-   }
-
-   class a implements Iterator<T> {
-      private int b;
-      private int c = -1;
-
-      @Override
-      public boolean hasNext() {
-         return this.b < bam.this.d;
-      }
-
-      @Override
-      public T next() {
-         if (this.b >= bam.this.d) {
-            throw new NoSuchElementException();
+            return a($$0.getOps(), $$2);
          } else {
-            this.c = this.b++;
-            return bam.this.c[this.c];
+            return a($$0.getOps());
          }
+      }
+   }
+
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
+         }
+      } catch (JsonParseException var4) {
       }
 
-      @Override
-      public void remove() {
-         if (this.c == -1) {
-            throw new IllegalStateException();
-         } else {
-            bam.this.d(this.c);
-            this.b--;
-            this.c = -1;
-         }
-      }
+      return Optional.empty();
    }
 }

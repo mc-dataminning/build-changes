@@ -1,30 +1,16 @@
-public class fvo extends fuf {
-   private final dfz u;
+public class fvo implements csq {
+   private final flj a;
 
-   public fvo(dfz $$0) {
-      this.u = $$0;
+   public fvo(flj $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public dfz l() {
-      return this.u;
+   public void a(csc $$0, int $$1, cwp $$2) {
+      this.a.r.a($$2, $$1);
    }
 
    @Override
-   int E() {
-      return 150;
-   }
-
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.a.a(this.l().m());
-   }
-
-   @Override
-   protected void a(dfz $$0) {
-      if ($$0 instanceof crx.a $$1) {
-         this.m.L().b(new ait($$1.h().ar(), this.a.a(), $$0.p()));
-      }
+   public void a(csc $$0, int $$1, int $$2) {
    }
 }

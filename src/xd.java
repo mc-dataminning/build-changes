@@ -1,57 +1,35 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.CorruptedFrameException;
-import java.util.List;
-import javax.annotation.Nullable;
+public interface xd {
+   wo a();
 
-public class xd extends ByteToMessageDecoder {
-   private static final int a = 3;
-   private final ByteBuf b = Unpooled.directBuffer(3);
-   @Nullable
-   private final vx c;
+   void a(ard var1, boolean var2, wk.a var3);
 
-   public xd(@Nullable vx $$0) {
-      this.c = $$0;
+   static xd a(xe $$0) {
+      return (xd)($$0.h() ? new xd.a($$0.d()) : new xd.b($$0));
    }
 
-   protected void handlerRemoved0(ChannelHandlerContext $$0) {
-      this.b.release();
+   public static record a(wo a) implements xd {
+      @Override
+      public void a(ard $$0, boolean $$1, wk.a $$2) {
+         $$0.f.a(this.a, $$2);
+      }
    }
 
-   private static boolean a(ByteBuf $$0, ByteBuf $$1) {
-      for (int $$2 = 0; $$2 < 3; $$2++) {
-         if (!$$0.isReadable()) {
-            return false;
-         }
+   public static record b(xe a) implements xd {
+      @Override
+      public wo a() {
+         return this.a.d();
+      }
 
-         byte $$3 = $$0.readByte();
-         $$1.writeByte($$3);
-         if (!xb.a($$3)) {
-            return true;
+      @Override
+      public void a(ard $$0, boolean $$1, wk.a $$2) {
+         xe $$3 = this.a.a($$1);
+         if (!$$3.j()) {
+            $$0.f.a($$3, $$2);
          }
       }
 
-      throw new CorruptedFrameException("length wider than 21-bit");
-   }
-
-   protected void decode(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) {
-      $$1.markReaderIndex();
-      this.b.clear();
-      if (!a($$1, this.b)) {
-         $$1.resetReaderIndex();
-      } else {
-         int $$3 = xb.a(this.b);
-         if ($$1.readableBytes() < $$3) {
-            $$1.resetReaderIndex();
-         } else {
-            if (this.c != null) {
-               this.c.a($$3 + xb.a($$3));
-            }
-
-            $$2.add($$1.readBytes($$3));
-         }
+      public xe b() {
+         return this.a;
       }
    }
 }

@@ -1,68 +1,16 @@
-import com.mojang.logging.LogUtils;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-@FunctionalInterface
-public interface yg {
-   Logger a = LogUtils.getLogger();
-   yg b = ya::b;
-   yg c = $$0 -> {
-      a.error("Received chat message from {}, but they have no chat session initialized and secure chat is enforced", $$0.g());
-      return null;
-   };
+public class yg {
+   public static final MapCodec<ye> a = mb.an.q().dispatchMap(ye::a, yf::a);
+   public static final Codec<ye> b = a.codec();
+   public static final ym<vz, ye> c = yk.a(mc.ay).b(ye::a, yf::b);
+   public static final ym<vz, Optional<ye>> d = c.a(yk::a);
 
-   @Nullable
-   ya updateAndValidate(ya var1);
-
-   public static class a implements yg {
-      private final bah d;
-      private final BooleanSupplier e;
-      @Nullable
-      private ya f;
-      private boolean g = true;
-
-      public a(bah $$0, BooleanSupplier $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      private boolean a(ya $$0) {
-         if ($$0.equals(this.f)) {
-            return true;
-         } else if (this.f != null && !$$0.k().a(this.f.k())) {
-            a.error(
-               "Received out-of-order chat message from {}: expected index > {} for session {}, but was {} for session {}",
-               new Object[]{$$0.g(), this.f.k().b(), this.f.k().d(), $$0.k().b(), $$0.k().d()}
-            );
-            return false;
-         } else {
-            return true;
-         }
-      }
-
-      private boolean b(ya $$0) {
-         if (this.e.getAsBoolean()) {
-            a.error("Received message from player with expired profile public key: {}", $$0);
-            return false;
-         } else if (!$$0.a(this.d)) {
-            a.error("Received message with invalid signature from {}", $$0.g());
-            return false;
-         } else {
-            return this.a($$0);
-         }
-      }
-
-      @Nullable
-      @Override
-      public ya updateAndValidate(ya $$0) {
-         this.g = this.g && this.b($$0);
-         if (!this.g) {
-            return null;
-         } else {
-            this.f = $$0;
-            return $$0;
-         }
-      }
+   public static yf<?> a(ke<yf<?>> $$0) {
+      ke.a($$0, "blank", yc.b);
+      ke.a($$0, "styled", yh.a);
+      return ke.a($$0, "fixed", yd.a);
    }
 }

@@ -1,23 +1,23 @@
-public class gvr extends gwa<gyj, gbw> {
-   private final gmj a;
+public class gvr extends gwr<gyh, gby<gyh>> {
+   private final gnb a;
 
-   public gvr(gti<gyj, gbw> $$0, gmj $$1) {
+   public gvr(gtz<gyh, gby<gyh>> $$0, gnb $$1) {
       super($$0);
       this.a = $$1;
    }
 
-   public void a(fgl $$0, glg $$1, int $$2, gyj $$3, float $$4, float $$5) {
-      if ($$3.b != 0) {
+   public void a(ffu $$0, glx $$1, int $$2, gyh $$3, float $$4, float $$5) {
+      dwx $$6 = $$3.b;
+      if ($$6 != null) {
          $$0.a();
-         gej $$6 = this.d().b();
-         $$6.a($$0);
-         $$0.a(-1.1875F, 1.0625F, -0.9375F);
-         $$0.a(0.5F, 0.5F, 0.5F);
+         $$0.a(0.0F, 0.6875F, -0.75F);
+         $$0.a(a.b.rotationDegrees(20.0F));
+         $$0.a(a.d.rotationDegrees(45.0F));
+         $$0.a(0.25F, 0.1875F, 0.25F);
          float $$7 = 0.5F;
-         $$0.b(0.5F, 0.5F, 0.5F);
-         $$0.a(a.b.rotationDegrees(-90.0F));
-         $$0.a(-0.5F, -0.5F, -0.5F);
-         this.a.a(dkf.ca.m(), $$0, $$1, $$2, hax.d);
+         $$0.b(-0.5F, -0.5F, 0.5F);
+         $$0.a(a.d.rotationDegrees(90.0F));
+         this.a.a($$6, $$0, $$1, $$2, hea.d);
          $$0.b();
       }
    }

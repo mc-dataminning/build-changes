@@ -1,5 +1,8 @@
-public class gze extends gyo {
-   public float a;
-   public boolean b;
-   public cii.g c = cii.g.a;
+public class gze extends gyc {
+   public final hbl a = new hbl();
+
+   @Override
+   public boolean a() {
+      return !this.a.c();
+   }
 }

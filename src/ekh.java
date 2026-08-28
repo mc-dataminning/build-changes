@@ -1,40 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
 
-public class ekh extends ekf {
-   public static final MapCodec<ekh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ekh::new)
-   );
-   protected final int b;
+public class ekh extends ekg {
+   public static final MapCodec<ekh> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ekh::new));
+   protected final List<dwx> h;
 
-   public ekh(bsf $$0, bsf $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   protected static <P extends ekh> P4<Mu<P>, Long, esc.a, Float, List<dwx>> b(Instance<P> $$0) {
+      return a($$0).and(ayi.b(dwx.a.listOf()).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public ekh(long $$0, esc.a $$1, float $$2, List<dwx> $$3) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected ekg<?> a() {
-      return ekg.g;
+   protected eke<?> a() {
+      return eke.d;
    }
 
    @Override
-   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
-      }
+   public dwx a(azh $$0, ji $$1) {
+      return this.a(this.h, $$1, (double)this.e);
    }
 
-   @Override
-   public int a(bac $$0, int $$1, ejp $$2) {
-      return this.b;
+   protected dwx a(List<dwx> $$0, ji $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
    }
 
-   @Override
-   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   protected dwx a(List<dwx> $$0, double $$1) {
+      double $$2 = ayz.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

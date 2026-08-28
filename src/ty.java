@@ -1,41 +1,145 @@
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.arguments.ArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class ty implements ArgumentType<String> {
-   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
-
-   public String a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = $$0.readUnquotedString();
-      if (tj.b($$1)) {
-         return $$1;
-      } else {
-         Message $$2 = xk.b("No such test class: " + $$1);
-         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+public class ty extends ug {
+   private static final int b = 16;
+   public static final up<ty> a = new up.a<ty>() {
+      public ty a(DataInput $$0, tz $$1) throws IOException {
+         return ty.a(d($$0, $$1));
       }
+
+      @Override
+      public uk.b a(DataInput $$0, uk $$1, tz $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static long d(DataInput $$0, tz $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readLong();
+      }
+
+      @Override
+      public int c() {
+         return 8;
+      }
+
+      @Override
+      public String a() {
+         return "LONG";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Long";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final long c;
+
+   ty(long $$0) {
+      this.c = $$0;
    }
 
-   public static ty a() {
-      return new ty();
+   public static ty a(long $$0) {
+      return $$0 >= -128L && $$0 <= 1024L ? ty.a.a[(int)$$0 - -128] : new ty($$0);
    }
 
-   public static String a(CommandContext<ew> $$0, String $$1) {
-      return (String)$$0.getArgument($$1, String.class);
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeLong(this.c);
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return fb.b(tj.b().stream(), $$1);
+   @Override
+   public int a() {
+      return 16;
    }
 
-   public Collection<String> getExamples() {
+   @Override
+   public byte b() {
+      return 4;
+   }
+
+   @Override
+   public up<ty> c() {
       return a;
+   }
+
+   public ty e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ty && this.c == ((ty)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)(this.c ^ this.c >>> 32);
+   }
+
+   @Override
+   public void a(ur $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public long f() {
+      return this.c;
+   }
+
+   @Override
+   public int g() {
+      return (int)(this.c & -1L);
+   }
+
+   @Override
+   public short h() {
+      return (short)((int)(this.c & 65535L));
+   }
+
+   @Override
+   public byte i() {
+      return (byte)((int)(this.c & 255L));
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c;
+   }
+
+   @Override
+   public float k() {
+      return (float)this.c;
+   }
+
+   @Override
+   public Number l() {
+      return this.c;
+   }
+
+   @Override
+   public uk.b a(uk $$0) {
+      return $$0.a(this.c);
+   }
+
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ty[] a = new ty[1153];
+
+      private a() {
+      }
+
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ty((long)(-128 + $$0));
+         }
+      }
    }
 }

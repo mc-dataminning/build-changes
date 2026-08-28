@@ -1,19 +1,29 @@
-public class cye extends cxc {
-   public cye(cxc.a $$0) {
+public class cye extends cxj implements cxk {
+   public static float a = 0.5F;
+
+   public cye(cwl.a $$0) {
       super($$0);
    }
 
    @Override
-   public bta a(cxg $$0, cpo $$1, bvx $$2, bsz $$3) {
-      if ($$2 instanceof bwn $$4 && $$2.bL() && !$$4.j() && $$4.f()) {
-         if (!$$1.dW().C) {
-            $$4.a($$0.a(1), aww.g);
-            $$2.dW().a($$2, eck.v, $$2.du());
-         }
-
-         return bta.a;
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      cwp $$3 = $$1.b($$2);
+      if ($$0 instanceof arc $$4) {
+         cpq.a(cqc::new, $$4, $$3, $$1, -20.0F, a, 1.0F);
       }
 
-      return bta.e;
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bsj.a;
+   }
+
+   @Override
+   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
+      return new cqc($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   }
+
+   @Override
+   public cxk.a b() {
+      return cxk.a.a().a(cxk.a.a.c() * 0.5F).b(cxk.a.a.d() * 1.25F).a();
    }
 }

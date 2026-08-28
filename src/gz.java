@@ -10,14 +10,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
-public class gz implements ArgumentType<gu> {
-   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("argument.pos3d.incomplete"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("argument.pos.mixed"));
-   private final boolean d;
+public class gz implements ArgumentType<gv> {
+   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("argument.pos2d.incomplete"));
+   private final boolean c;
 
    public gz(boolean $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    public static gz a() {
@@ -28,35 +27,45 @@ public class gz implements ArgumentType<gu> {
       return new gz($$0);
    }
 
-   public static fbr a(CommandContext<ew> $$0, String $$1) {
-      return ((gu)$$0.getArgument($$1, gu.class)).a((ew)$$0.getSource());
+   public static faz a(CommandContext<ex> $$0, String $$1) {
+      fba $$2 = ((gv)$$0.getArgument($$1, gv.class)).a((ex)$$0.getSource());
+      return new faz((float)$$2.d, (float)$$2.f);
    }
 
-   public static gu b(CommandContext<ew> $$0, String $$1) {
-      return (gu)$$0.getArgument($$1, gu.class);
-   }
-
-   public gu a(StringReader $$0) throws CommandSyntaxException {
-      return (gu)($$0.canRead() && $$0.peek() == '^' ? gv.a($$0) : hb.a($$0, this.d));
+   public gv a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         hb $$2 = hb.a($$0, this.c);
+         if ($$0.canRead() && $$0.peek() == ' ') {
+            $$0.skip();
+            hb $$3 = hb.a($$0, this.c);
+            return new hc($$2, new hb(true, 0.0), $$3);
+         } else {
+            $$0.setCursor($$1);
+            throw a.createWithContext($$0);
+         }
+      }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof fb)) {
+      if (!($$0.getSource() instanceof fc)) {
          return Suggestions.empty();
       } else {
          String $$2 = $$1.getRemaining();
-         Collection<fb.b> $$3;
+         Collection<fc.b> $$3;
          if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(fb.b.a);
+            $$3 = Collections.singleton(fc.b.a);
          } else {
-            $$3 = ((fb)$$0.getSource()).B();
+            $$3 = ((fc)$$0.getSource()).B();
          }
 
-         return fb.a($$2, $$3, $$1, ex.a(this::a));
+         return fc.b($$2, $$3, $$1, ey.a(this::a));
       }
    }
 
    public Collection<String> getExamples() {
-      return c;
+      return b;
    }
 }

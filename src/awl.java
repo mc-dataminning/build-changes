@@ -1,45 +1,28 @@
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-public class awl implements ev {
-   private static final String b = "Rcon";
-   private static final xk c = xk.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
+public class awl {
+   protected final Object2IntMap<awh<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
 
-   public awl(MinecraftServer $$0) {
-      this.e = $$0;
+   public awl() {
+      this.a.defaultReturnValue(0);
    }
 
-   public void e() {
-      this.d.setLength(0);
+   public void b(cox $$0, awh<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
    }
 
-   public String f() {
-      return this.d.toString();
+   public void a(cox $$0, awh<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
    }
 
-   public ew g() {
-      arx $$0 = this.e.J();
-      return new ew(this, fbr.a($$0.Z()), fbq.a, $$0, 4, "Rcon", c, this.e, null);
+   public <T> int a(awj<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
    }
 
-   @Override
-   public void a(xk $$0) {
-      this.d.append($$0.getString());
-   }
-
-   @Override
-   public boolean y_() {
-      return true;
-   }
-
-   @Override
-   public boolean z_() {
-      return true;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e.m();
+   public int a(awh<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

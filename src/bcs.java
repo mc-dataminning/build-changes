@@ -1,28 +1,41 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Map;
 import java.util.Objects;
 
 public class bcs extends DataFix {
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("structure_references", "empty")
+      .put("biomes", "empty")
+      .put("base", "surface")
+      .put("carved", "carvers")
+      .put("liquid_carved", "liquid_carvers")
+      .put("decorated", "features")
+      .put("lighted", "light")
+      .put("mobs_spawned", "spawn")
+      .put("finalized", "heightmaps")
+      .put("fullchunk", "full")
+      .build();
+
    public bcs(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bin.C);
-      Type<?> $$1 = this.getOutputSchema().getType(bin.C);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bin.C.typeName(), DSL.or(DSL.intType(), bkb.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(bin.C.typeName(), bkb.a());
-      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bcv::a, $$0xxxx -> bcv.a(bkb.a($$0xxxx))))
-         );
-      } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
-      }
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhw.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
+      return this.fixTypeEverywhereTyped("ChunkStatusFix2", $$0, this.getOutputSchema().getType(bhw.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+            Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
+            String $$2x = $$1xx.get("Status").asString("empty");
+            String $$3 = a.getOrDefault($$2x, "empty");
+            return Objects.equals($$2x, $$3) ? $$0xx : $$0xx.set(DSL.remainderFinder(), $$1xx.set("Status", $$1xx.createString($$3)));
+         }));
    }
 }

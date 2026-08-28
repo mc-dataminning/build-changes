@@ -1,33 +1,98 @@
-import java.nio.charset.StandardCharsets;
-
 public class awk {
-   public static final int a = 1460;
-   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+   public static final awj<djm> a = a("mined", mb.e);
+   public static final awj<cwl> b = a("crafted", mb.g);
+   public static final awj<cwl> c = a("used", mb.g);
+   public static final awj<cwl> d = a("broken", mb.g);
+   public static final awj<cwl> e = a("picked_up", mb.g);
+   public static final awj<cwl> f = a("dropped", mb.g);
+   public static final awj<bur<?>> g = a("killed", mb.f);
+   public static final awj<bur<?>> h = a("killed_by", mb.f);
+   public static final awj<aku> i = a("custom", mb.k);
+   public static final aku j = a("leave_game", awi.b);
+   public static final aku k = a("play_time", awi.e);
+   public static final aku l = a("total_world_time", awi.e);
+   public static final aku m = a("time_since_death", awi.e);
+   public static final aku n = a("time_since_rest", awi.e);
+   public static final aku o = a("sneak_time", awi.e);
+   public static final aku p = a("walk_one_cm", awi.d);
+   public static final aku q = a("crouch_one_cm", awi.d);
+   public static final aku r = a("sprint_one_cm", awi.d);
+   public static final aku s = a("walk_on_water_one_cm", awi.d);
+   public static final aku t = a("fall_one_cm", awi.d);
+   public static final aku u = a("climb_one_cm", awi.d);
+   public static final aku v = a("fly_one_cm", awi.d);
+   public static final aku w = a("walk_under_water_one_cm", awi.d);
+   public static final aku x = a("minecart_one_cm", awi.d);
+   public static final aku y = a("boat_one_cm", awi.d);
+   public static final aku z = a("pig_one_cm", awi.d);
+   public static final aku A = a("horse_one_cm", awi.d);
+   public static final aku B = a("aviate_one_cm", awi.d);
+   public static final aku C = a("swim_one_cm", awi.d);
+   public static final aku D = a("strider_one_cm", awi.d);
+   public static final aku E = a("jump", awi.b);
+   public static final aku F = a("drop", awi.b);
+   public static final aku G = a("damage_dealt", awi.c);
+   public static final aku H = a("damage_dealt_absorbed", awi.c);
+   public static final aku I = a("damage_dealt_resisted", awi.c);
+   public static final aku J = a("damage_taken", awi.c);
+   public static final aku K = a("damage_blocked_by_shield", awi.c);
+   public static final aku L = a("damage_absorbed", awi.c);
+   public static final aku M = a("damage_resisted", awi.c);
+   public static final aku N = a("deaths", awi.b);
+   public static final aku O = a("mob_kills", awi.b);
+   public static final aku P = a("animals_bred", awi.b);
+   public static final aku Q = a("player_kills", awi.b);
+   public static final aku R = a("fish_caught", awi.b);
+   public static final aku S = a("talked_to_villager", awi.b);
+   public static final aku T = a("traded_with_villager", awi.b);
+   public static final aku U = a("eat_cake_slice", awi.b);
+   public static final aku V = a("fill_cauldron", awi.b);
+   public static final aku W = a("use_cauldron", awi.b);
+   public static final aku X = a("clean_armor", awi.b);
+   public static final aku Y = a("clean_banner", awi.b);
+   public static final aku Z = a("clean_shulker_box", awi.b);
+   public static final aku aa = a("interact_with_brewingstand", awi.b);
+   public static final aku ab = a("interact_with_beacon", awi.b);
+   public static final aku ac = a("inspect_dropper", awi.b);
+   public static final aku ad = a("inspect_hopper", awi.b);
+   public static final aku ae = a("inspect_dispenser", awi.b);
+   public static final aku af = a("play_noteblock", awi.b);
+   public static final aku ag = a("tune_noteblock", awi.b);
+   public static final aku ah = a("pot_flower", awi.b);
+   public static final aku ai = a("trigger_trapped_chest", awi.b);
+   public static final aku aj = a("open_enderchest", awi.b);
+   public static final aku ak = a("enchant_item", awi.b);
+   public static final aku al = a("play_record", awi.b);
+   public static final aku am = a("interact_with_furnace", awi.b);
+   public static final aku an = a("interact_with_crafting_table", awi.b);
+   public static final aku ao = a("open_chest", awi.b);
+   public static final aku ap = a("sleep_in_bed", awi.b);
+   public static final aku aq = a("open_shulker_box", awi.b);
+   public static final aku ar = a("open_barrel", awi.b);
+   public static final aku as = a("interact_with_blast_furnace", awi.b);
+   public static final aku at = a("interact_with_smoker", awi.b);
+   public static final aku au = a("interact_with_lectern", awi.b);
+   public static final aku av = a("interact_with_campfire", awi.b);
+   public static final aku aw = a("interact_with_cartography_table", awi.b);
+   public static final aku ax = a("interact_with_loom", awi.b);
+   public static final aku ay = a("interact_with_stonecutter", awi.b);
+   public static final aku az = a("bell_ring", awi.b);
+   public static final aku aA = a("raid_trigger", awi.b);
+   public static final aku aB = a("raid_win", awi.b);
+   public static final aku aC = a("interact_with_anvil", awi.b);
+   public static final aku aD = a("interact_with_grindstone", awi.b);
+   public static final aku aE = a("target_hit", awi.b);
+   public static final aku aF = a("interact_with_smithing_table", awi.b);
 
-   public static String a(byte[] $$0, int $$1, int $$2) {
-      int $$3 = $$2 - 1;
-      int $$4 = $$1 > $$3 ? $$3 : $$1;
-
-      while (0 != $$0[$$4] && $$4 < $$3) {
-         $$4++;
-      }
-
-      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
+   private static aku a(String $$0, awi $$1) {
+      aku $$2 = aku.b($$0);
+      ke.a(mb.k, $$0, $$2);
+      i.a($$2, $$1);
+      return $$2;
    }
 
-   public static int a(byte[] $$0, int $$1) {
-      return b($$0, $$1, $$0.length);
-   }
-
-   public static int b(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
-   }
-
-   public static int c(byte[] $$0, int $$1, int $$2) {
-      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
-   }
-
-   public static String a(byte $$0) {
-      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
+   private static <T> awj<T> a(String $$0, ke<T> $$1) {
+      wo $$2 = wo.c("stat_type.minecraft." + $$0);
+      return ke.a(mb.v, $$0, new awj<>($$1, $$2));
    }
 }

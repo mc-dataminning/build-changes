@@ -1,12 +1,18 @@
-public class guw<M extends gcm> extends gwi<M> {
-   private static final alp a = alp.b("textures/entity/bee/bee_stinger.png");
+public class guw extends gqs<cjb, gyj, gao<gyj>> {
+   private static final aku a = aku.b("textures/entity/horse/horse_zombie.png");
+   private static final aku b = aku.b("textures/entity/horse/horse_skeleton.png");
+   private final aku k;
 
-   public guw(gsm<?, gzb, M> $$0, grl.a $$1) {
-      super($$0, new gal($$1.a(gei.z)), a, gwi.a.b);
+   public guw(gsc.a $$0, gfa $$1, gfa $$2, boolean $$3) {
+      super($$0, new gcl($$0.a($$1)), new gcl($$0.a($$2)));
+      this.k = $$3 ? b : a;
    }
 
-   @Override
-   protected int a(gzb $$0) {
-      return $$0.f;
+   public aku a(gyj $$0) {
+      return this.k;
+   }
+
+   public gyj b() {
+      return new gyj();
    }
 }

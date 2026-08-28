@@ -1,74 +1,73 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class drx extends dkd {
-   public static final MapCodec<drx> a = b(drx::new);
-   public static final int b = 6;
-   public static final int c = 64;
-   private static final jm[] d = jm.values();
+public class drx extends dlv implements dof {
+   public static final MapCodec<drx> c = b(drx::new);
+   public static final dxu<dxs> d = dlv.b;
+   protected static final float e = 6.0F;
+   protected static final fbu f = djm.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<drx> a() {
-      return a;
+      return c;
    }
 
-   protected drx(dxn.d $$0) {
+   public drx(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   protected void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return f;
+   }
+
+   @Override
+   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return $$0.c($$1, $$2, jn.b) && !$$0.a(djo.ll);
+   }
+
+   @Override
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return new cwp(djo.bD);
+   }
+
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      dwx $$1 = super.a($$0);
+      if ($$1 != null) {
+         esz $$2 = $$0.q().b_($$0.a().d());
+         if ($$2.a(awv.a) && $$2.e() == 8) {
+            return $$1;
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      if ($$0.c(d) == dxs.a) {
+         dwx $$3 = $$1.a_($$2.e());
+         return $$3.a(this) && $$3.c(d) == dxs.b;
+      } else {
+         esz $$4 = $$1.b_($$2);
+         return super.a($$0, $$1, $$2) && $$4.a(awv.a) && $$4.e() == 8;
       }
    }
 
    @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
-      this.a($$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected esz b_(dwx $$0) {
+      return eta.c.a(false);
    }
 
-   protected void a(dgz $$0, jh $$1) {
-      if (this.b($$0, $$1)) {
-         $$0.a($$1, dkf.aW.m(), 2);
-         $$0.a(null, $$1, awv.zL, aww.e, 1.0F, 1.0F);
-      }
+   @Override
+   public boolean a(@Nullable cox $$0, dfn $$1, ji $$2, dwx $$3, esy $$4) {
+      return false;
    }
 
-   private boolean b(dgz $$0, jh $$1) {
-      return jh.a($$1, 6, 65, ($$0x, $$1x) -> {
-         for (jm $$2 : d) {
-            $$1x.accept($$0x.a($$2));
-         }
-      }, $$2 -> {
-         if ($$2.equals($$1)) {
-            return jh.b.a;
-         } else {
-            dxo $$3 = $$0.a_($$2);
-            etq $$4 = $$0.b_($$2);
-            if (!$$4.a(axq.a)) {
-               return jh.b.b;
-            } else {
-               if ($$3.b() instanceof dkl $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
-                  return jh.b.a;
-               }
-
-               if ($$3.b() instanceof dov) {
-                  $$0.a($$2, dkf.a.m(), 3);
-               } else {
-                  if (!$$3.a(dkf.mE) && !$$3.a(dkf.mF) && !$$3.a(dkf.bD) && !$$3.a(dkf.bE)) {
-                     return jh.b.b;
-                  }
-
-                  duq $$7 = $$3.x() ? $$0.c_($$2) : null;
-                  a($$3, $$0, $$2, $$7);
-                  $$0.a($$2, dkf.a.m(), 3);
-               }
-
-               return jh.b.a;
-            }
-         }
-      }) > 1;
+   @Override
+   public boolean a(dgj $$0, ji $$1, dwx $$2, esz $$3) {
+      return false;
    }
 }

@@ -1,67 +1,36 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdz extends ccv {
-   private final cjs a;
-   private final double b;
-   private double c;
-   private double d;
-   private double e;
+public class cdz<T extends bvg> extends cdx<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cdz(cjs $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(ccv.a.a));
+   public cdz(cql $$0, Class<T> $$1, boolean $$2, @Nullable cfx.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gF() && this.a.ca()) {
-         fbr $$0 = cgs.a(this.a, 5, 4);
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
-         }
-      } else {
+      if (this.j > 0 || !this.e.dZ().h()) {
          return false;
+      } else if (!((cql)this.e).gF()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public void d() {
-      this.a.L().a(this.c, this.d, this.e, this.b);
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.gF() && !this.a.L().m() && this.a.ca();
-   }
-
-   @Override
-   public void a() {
-      if (!this.a.gF() && this.a.dZ().a(this.a(50)) == 0) {
-         bvb $$0 = this.a.da();
-         if ($$0 == null) {
-            return;
-         }
-
-         if ($$0 instanceof cpo $$1) {
-            int $$2 = this.a.gL();
-            int $$3 = this.a.gR();
-            if ($$3 > 0 && this.a.dZ().a($$3) < $$2) {
-               this.a.g($$1);
-               return;
-            }
-
-            this.a.u(5);
-         }
-
-         this.a.bP();
-         this.a.gV();
-         this.a.dW().a(this.a, (byte)6);
-      }
+      this.j = b(200);
+      super.d();
    }
 }

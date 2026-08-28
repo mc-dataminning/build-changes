@@ -1,52 +1,48 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.List;
 
 public class aoz {
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("rotate").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("target", fj.a())
-                     .then(ex.a("rotation", gw.a()).executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), gw.a($$0x, "rotation")))))
-                  .then(
-                     ((LiteralArgumentBuilder)ex.a("facing")
-                           .then(
-                              ex.a("entity")
-                                 .then(
-                                    ((RequiredArgumentBuilder)ex.a("facingEntity", fj.a())
-                                          .executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), new aoi.a(fj.a($$0x, "facingEntity"), fi.a.a))))
-                                       .then(
-                                          ex.a("facingAnchor", fi.a())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ew)$$0x.getSource(),
-                                                      fj.a($$0x, "target"),
-                                                      new aoi.a(fj.a($$0x, "facingEntity"), fi.a($$0x, "facingAnchor"))
-                                                   )
-                                             )
-                                       )
-                                 )
-                           ))
-                        .then(
-                           ex.a("facingLocation", gz.a())
-                              .executes($$0x -> a((ew)$$0x.getSource(), fj.a($$0x, "target"), new aoi.b(gz.a($$0x, "facingLocation"))))
-                        )
-                  )
-            )
-      );
+   private static final xl a = xl.a.a(new wu(wu.a.a, wo.c("chat.type.team.hover"))).a(new wm(wm.a.d, "/teammsg "));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("commands.teammsg.failed.noteam"));
+
+   public static void a(CommandDispatcher<ex> $$0) {
+      LiteralCommandNode<ex> $$1 = $$0.register((LiteralArgumentBuilder)ey.a("teammsg").then(ey.a("message", fo.a()).executes($$0x -> {
+         ex $$1x = (ex)$$0x.getSource();
+         buk $$2 = $$1x.g();
+         fca $$3 = $$2.cr();
+         if ($$3 == null) {
+            throw b.create();
+         } else {
+            List<ard> $$4 = $$1x.l().ag().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cr() == $$3).toList();
+            if (!$$4.isEmpty()) {
+               fo.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
+            }
+
+            return $$4.size();
+         }
+      })));
+      $$0.register((LiteralArgumentBuilder)ey.a("tm").redirect($$1));
    }
 
-   private static int a(ew $$0, bvb $$1, gu $$2) {
-      fbq $$3 = $$2.b($$0);
-      $$1.a($$3.j, $$3.i);
-      $$0.a(() -> xk.a("commands.rotate.success", $$1.p_()), true);
-      return 1;
-   }
+   private static void a(ex $$0, buk $$1, fca $$2, List<ard> $$3, xe $$4) {
+      wo $$5 = $$2.d().c(a);
+      wk.a $$6 = wk.a(wk.i, $$0).c($$5);
+      wk.a $$7 = wk.a(wk.j, $$0).c($$5);
+      xd $$8 = xd.a($$4);
+      boolean $$9 = false;
 
-   private static int a(ew $$0, bvb $$1, aoi $$2) {
-      $$2.perform($$0, $$1);
-      $$0.a(() -> xk.a("commands.rotate.success", $$1.p_()), true);
-      return 1;
+      for (ard $$10 : $$3) {
+         wk.a $$11 = $$10 == $$1 ? $$7 : $$6;
+         boolean $$12 = $$0.a($$10);
+         $$10.a($$8, $$12, $$11);
+         $$9 |= $$12 && $$4.j();
+      }
+
+      if ($$9) {
+         $$0.a(avd.e);
+      }
    }
 }

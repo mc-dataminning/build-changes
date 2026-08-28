@@ -1,75 +1,159 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
 public class hbl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ali b = new ali("atlases", ".json");
-   private final List<hbk> c;
+   cwn a;
+   boolean b;
+   private int c;
+   private hbl.b[] d;
 
-   private hbl(List<hbk> $$0) {
-      this.c = $$0;
+   public hbl() {
+      this.a = cwn.a;
+      this.d = new hbl.b[]{new hbl.b()};
    }
 
-   public List<Function<hbj, hba>> a(avl $$0) {
-      final Map<alp, hbk.b> $$1 = new HashMap<>();
-      hbk.a $$2 = new hbk.a() {
-         @Override
-         public void a(alp $$0, hbk.b $$1x) {
-            hbk.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
-            }
-         }
+   public void a(int $$0) {
+      int $$1 = this.d.length;
+      int $$2 = this.c + $$0;
+      if ($$2 > $$1) {
+         this.d = Arrays.copyOf(this.d, $$2);
 
-         @Override
-         public void a(Predicate<alp> $$0) {
-            Iterator<Entry<alp, hbk.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<alp, hbk.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<hbj, hba>> $$3 = ImmutableList.builder();
-      $$3.add((Function<hbj, hba>)$$0x -> haw.a());
-      $$3.addAll($$1.values());
-      return $$3.build();
-   }
-
-   public static hbl a(avl $$0, alp $$1) {
-      alp $$2 = b.a($$1);
-      List<hbk> $$3 = new ArrayList<>();
-
-      for (avj $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends hbk>)hbn.h.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         for (int $$3 = $$1; $$3 < $$2; $$3++) {
+            this.d[$$3] = new hbl.b();
          }
       }
+   }
 
-      return new hbl($$3);
+   public hbl.b a() {
+      this.a(1);
+      return this.d[this.c++];
+   }
+
+   public void b() {
+      this.a = cwn.a;
+      this.b = false;
+
+      for (int $$0 = 0; $$0 < this.c; $$0++) {
+         this.d[$$0].a();
+      }
+
+      this.c = 0;
+   }
+
+   private hbl.b g() {
+      return this.d[0];
+   }
+
+   public boolean c() {
+      return this.c == 0;
+   }
+
+   public boolean d() {
+      return this.g().c();
+   }
+
+   public boolean e() {
+      return this.g().d();
+   }
+
+   @Nullable
+   public hej a(azh $$0) {
+      if (this.c == 0) {
+         return null;
+      } else {
+         hgl $$1 = this.d[$$0.a(this.c)].b;
+         return $$1 == null ? null : $$1.d();
+      }
+   }
+
+   public gnn f() {
+      return this.g().b();
+   }
+
+   public void a(ffu $$0, glx $$1, int $$2, int $$3) {
+      for (int $$4 = 0; $$4 < this.c; $$4++) {
+         this.d[$$4].a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public class b {
+      @Nullable
+      hgl b;
+      @Nullable
+      private gmh c;
+      private hbl.a d = hbl.a.a;
+      private int[] e = new int[0];
+      @Nullable
+      private hdo<Object> f;
+      @Nullable
+      private Object g;
+
+      public void a() {
+         this.b = null;
+         this.c = null;
+         this.d = hbl.a.a;
+         this.f = null;
+         this.g = null;
+         Arrays.fill(this.e, -1);
+      }
+
+      public void a(hgl $$0, gmh $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public <T> void a(hdo<T> $$0, @Nullable T $$1, hgl $$2) {
+         this.b = $$2;
+         this.f = a($$0);
+         this.g = $$1;
+      }
+
+      private static hdo<Object> a(hdo<?> $$0) {
+         return (hdo<Object>)$$0;
+      }
+
+      public void a(hbl.a $$0) {
+         this.d = $$0;
+      }
+
+      public int[] a(int $$0) {
+         if ($$0 > this.e.length) {
+            this.e = new int[$$0];
+            Arrays.fill(this.e, -1);
+         }
+
+         return this.e;
+      }
+
+      gnn b() {
+         return this.b != null ? this.b.e().a(hbl.this.a) : gnn.a;
+      }
+
+      void a(ffu $$0, glx $$1, int $$2, int $$3) {
+         $$0.a();
+         this.b().a(hbl.this.b, $$0);
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         if (this.f != null) {
+            this.f.a(this.g, hbl.this.a, $$0, $$1, $$2, $$3, this.d != hbl.a.a);
+         } else if (this.b != null) {
+            gta.a(hbl.this.a, $$0, $$1, $$2, $$3, this.e, this.b, this.c, this.d);
+         }
+
+         $$0.b();
+      }
+
+      boolean c() {
+         return this.b != null && this.b.b();
+      }
+
+      boolean d() {
+         return this.b != null && this.b.c();
+      }
    }
 }

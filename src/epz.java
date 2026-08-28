@@ -1,52 +1,63 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.Set;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class epz extends eoc {
-   public static final MapCodec<epz> d = a(epz::new);
+public class epz extends enm {
+   public static final MapCodec<epz> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               a($$0),
+               epz.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, epz::new)
+   );
+   public final epz.a e;
+   public final float f;
+   public final float g;
 
-   public epz(eod.c $$0) {
-      super(epy::new, 21, 21, $$0);
+   public epz(enm.c $$0, epz.a $$1, float $$2, float $$3) {
+      super($$0);
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
    @Override
-   public void a(dhx $$0, dhv $$1, dzk $$2, bac $$3, env $$4, dgf $$5, eos $$6) {
-      Set<jh> $$7 = bam.a(kl::i);
-
-      for (eoh $$8 : $$6.c()) {
-         if ($$8 instanceof epy $$9) {
-            $$7.addAll($$9.b());
-            a($$4, $$0, $$9.c());
-         }
-      }
-
-      ObjectArrayList<jh> $$10 = new ObjectArrayList($$7.stream().toList());
-      bac $$11 = bac.a($$0.E()).e().a($$6.b().g());
-      ae.c($$10, $$11);
-      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
-      ObjectListIterator var12 = $$10.iterator();
-
-      while (var12.hasNext()) {
-         jh $$13 = (jh)var12.next();
-         if ($$12 > 0) {
-            $$12--;
-            a($$4, $$0, $$13);
-         } else if ($$4.b($$13)) {
-            $$0.a($$13, dkf.L.m(), 2);
-         }
-      }
+   public Optional<enm.b> a(enm.a $$0) {
+      return a($$0, ecs.a.c, $$1 -> this.a($$1, $$0));
    }
 
-   private static void a(env $$0, dhx $$1, jh $$2) {
-      if ($$0.b($$2)) {
-         $$1.a($$2, dkf.M.m(), 2);
-         $$1.a($$2, dus.O).ifPresent($$1x -> $$1x.a(ewe.aY, $$2.a()));
-      }
+   private void a(eoe $$0, enm.a $$1) {
+      ji $$2 = new ji($$1.h().d(), 90, $$1.h().e());
+      dqe $$3 = dqe.a($$1.f());
+      epy.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
    }
 
    @Override
-   public eom<?> e() {
-      return eom.b;
+   public env<?> e() {
+      return env.k;
+   }
+
+   public static enum a implements azv {
+      a("warm"),
+      b("cold");
+
+      public static final Codec<epz.a> c = azv.a(epz.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public String a() {
+         return this.d;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

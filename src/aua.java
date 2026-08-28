@@ -1,144 +1,125 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class aua implements atw {
-   private static final Logger c = LogUtils.getLogger();
-   private final atv d;
-   private final ato e;
-   private final Set<String> f;
-   private final List<Path> g;
-   private final Map<aty, List<Path>> h;
+public class aua {
+   private final Set<auc> a;
+   private Map<String, atx> b = ImmutableMap.of();
+   private List<atx> c = ImmutableList.of();
 
-   aua(atv $$0, ato $$1, Set<String> $$2, List<Path> $$3, Map<aty, List<Path>> $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
+   public aua(auc... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
    }
 
-   @Nullable
-   @Override
-   public avd<InputStream> a(String... $$0) {
-      v.a($$0);
-      List<String> $$1 = List.of($$0);
+   public static String a(Collection<atx> $$0) {
+      return $$0.stream().map($$0x -> $$0x.g() + ($$0x.d().a() ? "" : " (incompatible)")).collect(Collectors.joining(", "));
+   }
 
-      for (Path $$2 : this.g) {
-         Path $$3 = v.a($$2, $$1);
-         if (Files.exists($$3) && atz.a($$3)) {
-            return avd.create($$3);
+   public void a() {
+      List<String> $$0 = this.c.stream().map(atx::g).collect(ImmutableList.toImmutableList());
+      this.b = this.i();
+      this.c = this.c($$0);
+   }
+
+   private Map<String, atx> i() {
+      Map<String, atx> $$0 = Maps.newTreeMap();
+
+      for (auc $$1 : this.a) {
+         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
+   }
+
+   public boolean b() {
+      List<atx> $$0 = this.c(List.of());
+      return !this.c.equals($$0);
+   }
+
+   public void b(Collection<String> $$0) {
+      this.c = this.c($$0);
+   }
+
+   public boolean a(String $$0) {
+      atx $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<atx> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public boolean b(String $$0) {
+      atx $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<atx> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<atx> c(Collection<String> $$0) {
+      List<atx> $$1 = this.d($$0).collect(af.b());
+
+      for (atx $$2 : this.b.values()) {
+         if ($$2.i() && !$$1.contains($$2)) {
+            $$2.k().a($$1, $$2, atx::h, false);
          }
       }
 
-      return null;
+      return ImmutableList.copyOf($$1);
    }
 
-   public void a(aty $$0, alp $$1, Consumer<Path> $$2) {
-      v.d($$1.a()).ifSuccess($$3 -> {
-         String $$4 = $$1.b();
-
-         for (Path $$5 : this.h.get($$0)) {
-            Path $$6 = $$5.resolve($$4);
-            $$2.accept(v.a($$6, $$3));
-         }
-      }).ifError($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
+   private Stream<atx> d(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
    }
 
-   @Override
-   public void a(aty $$0, String $$1, String $$2, atw.a $$3) {
-      v.d($$2).ifSuccess($$3x -> {
-         List<Path> $$4 = this.h.get($$0);
-         int $$5 = $$4.size();
-         if ($$5 == 1) {
-            a($$3, $$1, $$4.get(0), $$3x);
-         } else if ($$5 > 1) {
-            Map<alp, avd<InputStream>> $$6 = new HashMap<>();
-
-            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
-               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
-            }
-
-            Path $$8 = $$4.get($$5 - 1);
-            if ($$6.isEmpty()) {
-               a($$3, $$1, $$8, $$3x);
-            } else {
-               a($$6::putIfAbsent, $$1, $$8, $$3x);
-               $$6.forEach($$3);
-            }
-         }
-      }).ifError($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
+   public Collection<String> c() {
+      return this.b.keySet();
    }
 
-   private static void a(atw.a $$0, String $$1, Path $$2, List<String> $$3) {
-      Path $$4 = $$2.resolve($$1);
-      atz.a($$1, $$4, $$3, $$0);
+   public Collection<atx> d() {
+      return this.b.values();
+   }
+
+   public Collection<String> e() {
+      return this.c.stream().map(atx::g).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public crt f() {
+      return this.g().stream().map(atx::e).reduce(crt::c).orElse(crt.a());
+   }
+
+   public Collection<atx> g() {
+      return this.c;
    }
 
    @Nullable
-   @Override
-   public avd<InputStream> a(aty $$0, alp $$1) {
-      return (avd<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
-         String $$3 = $$1.b();
-
-         for (Path $$4 : this.h.get($$0)) {
-            Path $$5 = v.a($$4.resolve($$3), $$2);
-            if (Files.exists($$5) && atz.a($$5)) {
-               return avd.create($$5);
-            }
-         }
-
-         return null;
-      }, $$1x -> {
-         c.error("Invalid path {}: {}", $$1, $$1x.message());
-         return null;
-      });
+   public atx c(String $$0) {
+      return this.b.get($$0);
    }
 
-   @Override
-   public Set<String> a(aty $$0) {
-      return this.f;
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
    }
 
-   @Nullable
-   @Override
-   public <T> T a(auj<T> $$0) {
-      avd<InputStream> $$1 = this.a("pack.mcmeta");
-      if ($$1 != null) {
-         try (InputStream $$2 = $$1.get()) {
-            T $$3 = atn.a($$0, $$2);
-            if ($$3 != null) {
-               return $$3;
-            }
-
-            return this.e.a($$0);
-         } catch (IOException var8) {
-         }
-      }
-
-      return this.e.a($$0);
-   }
-
-   @Override
-   public atv a() {
-      return this.d;
-   }
-
-   @Override
-   public void close() {
-   }
-
-   public avo d() {
-      return $$0 -> Optional.ofNullable(this.a(aty.a, $$0)).map($$0x -> new avj(this, $$0x));
+   public List<atb> h() {
+      return this.c.stream().map(atx::f).collect(ImmutableList.toImmutableList());
    }
 }

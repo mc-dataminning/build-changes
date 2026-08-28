@@ -1,61 +1,188 @@
-import java.net.URI;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ftj extends ftr {
-   private static final xk a = xk.c("symlink_warning.title.world").a(n.r);
-   private static final xk b = xk.a("symlink_warning.message.world", xk.a(ayq.p));
-   private static final xk c = xk.c("symlink_warning.title.pack").a(n.r);
-   private static final xk d = xk.a("symlink_warning.message.pack", xk.a(ayq.p));
-   private final xk s;
-   private final URI u;
-   private final Runnable v;
-   private final frm w = new frm().b(10);
+public class ftj extends fuk {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger d = LogUtils.getLogger();
+   private static final long s = 2000L;
+   public static final wo a = wo.c("connect.aborted");
+   public static final wo b = wo.a("disconnect.genericReason", wo.c("disconnect.unknownHost"));
+   @Nullable
+   volatile vi u;
+   @Nullable
+   ChannelFuture v;
+   volatile boolean w;
+   final fuk x;
+   private wo y = wo.c("connect.connecting");
+   private long z = -1L;
+   final wo A;
 
-   public ftj(xk $$0, xk $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
-      this.u = $$2;
-      this.v = $$3;
+   private ftj(fuk $$0, wo $$1) {
+      super(fla.a);
+      this.x = $$0;
+      this.A = $$1;
    }
 
-   public static ftr a(Runnable $$0) {
-      return new ftj(a, b, ayq.p, $$0);
+   public static void a(fuk $$0, flj $$1, ghq $$2, ggn $$3, boolean $$4, @Nullable ggr $$5) {
+      if ($$1.z instanceof ftj) {
+         d.error("Attempt to connect while already connecting");
+      } else {
+         wo $$6;
+         if ($$5 != null) {
+            $$6 = wn.q;
+         } else if ($$4) {
+            $$6 = glc.a;
+         } else {
+            $$6 = wn.r;
+         }
+
+         ftj $$9 = new ftj($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(wo.c("connect.transferring"));
+         }
+
+         $$1.y();
+         $$1.aU();
+         $$1.a(ghe.a($$3.b));
+         $$1.bc().a(gld.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
    }
 
-   public static ftr b(Runnable $$0) {
-      return new ftj(c, d, ayq.p, $$0);
+   private void a(final flj $$0, final ghq $$1, final ggn $$2, @Nullable final ggr $$3) {
+      d.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (ftj.this.w) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = ghs.a.a($$1).map(ghp::d);
+               if (ftj.this.w) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new ftr(ftj.this.x, ftj.this.A, ftj.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               vi $$2;
+               synchronized (ftj.this) {
+                  if (ftj.this.w) {
+                     return;
+                  }
+
+                  $$2 = new vi(yw.b);
+                  $$2.a($$0.aQ().n());
+                  ftj.this.v = vi.a($$0, $$0.n.aD(), $$2);
+               }
+
+               ftj.this.v.syncUninterruptibly();
+               synchronized (ftj.this) {
+                  if (ftj.this.w) {
+                     $$2.a(ftj.a);
+                     return;
+                  }
+
+                  ftj.this.u = $$2;
+                  $$0.af().a($$2, a($$2.b()));
+               }
+
+               ftj.this.u
+                  .a($$0.getHostName(), $$0.getPort(), aiw.b, aiw.d, new gfx(ftj.this.u, $$0, $$2, ftj.this.x, false, null, ftj.this::a, $$3), $$3 != null);
+               ftj.this.u.a(new aiz($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (ftj.this.w) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               ftj.d.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new ftr(ftj.this.x, ftj.this.A, wo.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static hho.c a(ggn.a $$0x) {
+            return switch ($$0) {
+               case a -> hho.c.b;
+               case b -> hho.c.c;
+               case c -> hho.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(d));
+      $$4.start();
+   }
+
+   private void a(wo $$0) {
+      this.y = $$0;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.w.c().b();
-      frm.b $$0 = this.w.d(1);
-      $$0.a(new fpg(this.l, this.p));
-      $$0.a(new fot(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      frm $$2 = new frm().a(5);
-      frm.b $$3 = $$2.d(3);
-      $$3.a(fny.a(xj.n, $$0x -> ae.m().a(this.u)).b(120, 20).a());
-      $$3.a(fny.a(xj.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fny.a(xj.k, $$0x -> this.aP_()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.w.a(this::c);
+   public void e() {
+      if (this.u != null) {
+         if (this.u.i()) {
+            this.u.b();
+         } else {
+            this.u.n();
+         }
+      }
    }
 
    @Override
-   protected void c() {
-      this.w.a();
-      frl.a(this.w, this.H());
+   public boolean aG_() {
+      return false;
    }
 
    @Override
-   public xk i() {
-      return xj.a(super.i(), this.s);
+   protected void aR_() {
+      this.c(fos.a(wn.e, $$0 -> {
+         synchronized (this) {
+            this.w = true;
+            if (this.v != null) {
+               this.v.cancel(true);
+               this.v = null;
+            }
+
+            if (this.u != null) {
+               this.u.a(a);
+            }
+         }
+
+         this.m.a(this.x);
+      }).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
    }
 
    @Override
-   public void aP_() {
-      this.v.run();
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = af.c();
+      if ($$4 - this.z > 2000L) {
+         this.z = $$4;
+         this.m.aY().c(wo.c("narrator.joining"));
+      }
+
+      $$0.a(this.p, this.y, this.n / 2, this.o / 2 - 50, 16777215);
    }
 }

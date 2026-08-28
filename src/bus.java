@@ -1,194 +1,88 @@
-import com.google.common.annotations.VisibleForTesting;
-import javax.annotation.Nullable;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.IntFunction;
 
-public abstract class bus extends bwf {
-   private static final aks<Boolean> bZ = akw.a(bus.class, aku.k);
-   public static final int a = -24000;
-   private static final int ca = 40;
-   protected int b;
-   protected int c;
-   protected int d;
+public enum bus implements azv {
+   a(bus.a.a, 0, 0, "mainhand"),
+   b(bus.a.a, 1, 5, "offhand"),
+   c(bus.a.b, 0, 1, 1, "feet"),
+   d(bus.a.b, 1, 1, 2, "legs"),
+   e(bus.a.b, 2, 1, 3, "chest"),
+   f(bus.a.b, 3, 1, 4, "head"),
+   g(bus.a.c, 0, 1, 6, "body");
 
-   protected bus(bvi<? extends bus> $$0, dgz $$1) {
-      super($$0, $$1);
+   public static final int h = 0;
+   public static final List<bus> i = List.of(values());
+   public static final IntFunction<bus> j = axq.a($$0 -> $$0.p, values(), axq.a.a);
+   public static final azv.a<bus> k = azv.a(bus::values);
+   public static final ym<ByteBuf, bus> l = yk.a(j, $$0 -> $$0.p);
+   private final bus.a m;
+   private final int n;
+   private final int o;
+   private final int p;
+   private final String q;
+
+   private bus(final bus.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
+      this.q = $$4;
+   }
+
+   private bus(final bus.a $$0, final int $$1, final int $$2, final String $$3) {
+      this($$0, $$1, 0, $$2, $$3);
+   }
+
+   public bus.a a() {
+      return this.m;
+   }
+
+   public int b() {
+      return this.n;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.n;
+   }
+
+   public cwp a(cwp $$0) {
+      return this.o > 0 ? $$0.a(this.o) : $$0;
+   }
+
+   public int d() {
+      return this.p;
+   }
+
+   public int b(int $$0) {
+      return this.p + $$0;
+   }
+
+   public String e() {
+      return this.q;
+   }
+
+   public boolean f() {
+      return this.m == bus.a.b || this.m == bus.a.c;
    }
 
    @Override
-   public bwq a(dhq $$0, bsy $$1, bvh $$2, @Nullable bwq $$3) {
-      if ($$3 == null) {
-         $$3 = new bus.a(true);
-      }
-
-      bus.a $$4 = (bus.a)$$3;
-      if ($$4.c() && $$4.a() > 0 && $$0.H_().i() <= $$4.d()) {
-         this.c_(-24000);
-      }
-
-      $$4.b();
-      return super.a($$0, $$1, $$2, $$3);
+   public String c() {
+      return this.q;
    }
 
-   @Nullable
-   public abstract bus a(arx var1, bus var2);
-
-   @Override
-   protected void a(akw.a $$0) {
-      super.a($$0);
-      $$0.a(bZ, false);
-   }
-
-   public boolean Y_() {
-      return false;
-   }
-
-   public int Z_() {
-      if (this.dW().C) {
-         return this.al.a(bZ) ? -1 : 1;
+   public static bus a(String $$0) {
+      bus $$1 = k.a($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         return this.b;
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
       }
    }
 
-   public void a(int $$0, boolean $$1) {
-      int $$2 = this.Z_();
-      $$2 += $$0 * 20;
-      if ($$2 > 0) {
-         $$2 = 0;
-      }
-
-      int $$4 = $$2 - $$2;
-      this.c_($$2);
-      if ($$1) {
-         this.c += $$4;
-         if (this.d == 0) {
-            this.d = 40;
-         }
-      }
-
-      if (this.Z_() == 0) {
-         this.c_(this.c);
-      }
-   }
-
-   public void b_(int $$0) {
-      this.a($$0, false);
-   }
-
-   public void c_(int $$0) {
-      int $$1 = this.Z_();
-      this.b = $$0;
-      if ($$1 < 0 && $$0 >= 0 || $$1 >= 0 && $$0 < 0) {
-         this.al.a(bZ, $$0 < 0);
-         this.i();
-      }
-   }
-
-   @Override
-   public void b(um $$0) {
-      super.b($$0);
-      $$0.a("Age", this.Z_());
-      $$0.a("ForcedAge", this.c);
-   }
-
-   @Override
-   public void a(um $$0) {
-      super.a($$0);
-      this.c_($$0.h("Age"));
-      this.c = $$0.h("ForcedAge");
-   }
-
-   @Override
-   public void a(aks<?> $$0) {
-      if (bZ.equals($$0)) {
-         this.m_();
-      }
-
-      super.a($$0);
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.dW().C) {
-         if (this.d > 0) {
-            if (this.d % 4 == 0) {
-               this.dW().a(ls.P, this.d(1.0), this.dE() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-            }
-
-            this.d--;
-         }
-      } else if (this.bL()) {
-         int $$0 = this.Z_();
-         if ($$0 < 0) {
-            this.c_(++$$0);
-         } else if ($$0 > 0) {
-            this.c_(--$$0);
-         }
-      }
-   }
-
-   protected void i() {
-      if (!this.e_() && this.bZ() && this.dl() instanceof crl $$0 && !$$0.b((bvb)this)) {
-         this.ae();
-      }
-   }
-
-   @Override
-   public boolean e_() {
-      return this.Z_() < 0;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.c_($$0 ? -24000 : 0);
-   }
-
-   public static int d_(int $$0) {
-      return (int)((float)($$0 / 20) * 0.1F);
-   }
-
-   @VisibleForTesting
-   public int l() {
-      return this.c;
-   }
-
-   @VisibleForTesting
-   public int m() {
-      return this.d;
-   }
-
-   public static class a implements bwq {
-      private int a;
-      private final boolean b;
-      private final float c;
-
-      public a(boolean $$0, float $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public a(boolean $$0) {
-         this($$0, 0.05F);
-      }
-
-      public a(float $$0) {
-         this(true, $$0);
-      }
-
-      public int a() {
-         return this.a;
-      }
-
-      public void b() {
-         this.a++;
-      }
-
-      public boolean c() {
-         return this.b;
-      }
-
-      public float d() {
-         return this.c;
-      }
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

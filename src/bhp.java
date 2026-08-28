@@ -1,52 +1,19 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class bhp extends DataFix {
-   public bhp(Schema $$0) {
-      super($$0, false);
+public class bhp extends bat {
+   private final Function<String, String> a;
+
+   public bhp(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bin.s);
-      Type<?> $$1 = this.getInputSchema().getType(bin.t);
-      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(bin.s);
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bin.D.typeName(), bkb.a()));
-      OpticFinder<?> $$4 = $$0.findField("components");
-      OpticFinder<?> $$5 = $$1.findField("components");
-      return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", $$0, $$2x -> {
-         Object $$3x = ((Pair)$$2x.get($$2.finder())).getFirst();
-         return $$3x.equals("minecraft:banner") ? this.a($$2x, $$4) : $$2x;
-      }), this.fixTypeEverywhereTyped("Ominous Banner item stack common rarity to uncommon rarity fix", $$1, $$2x -> {
-         String $$3x = $$2x.getOptional($$3).<String>map(Pair::getSecond).orElse("");
-         return $$3x.equals("minecraft:white_banner") ? this.a($$2x, $$5) : $$2x;
-      }));
-   }
-
-   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
-      return $$0.updateTyped(
-         $$1,
-         $$0x -> $$0x.update(
-               DSL.remainderFinder(),
-               $$0xx -> {
-                  boolean $$1x = $$0xx.get("minecraft:item_name")
-                     .asString()
-                     .result()
-                     .flatMap(bbh::a)
-                     .filter($$0xxx -> $$0xxx.equals("block.minecraft.ominous_banner"))
-                     .isPresent();
-                  return $$1x
-                     ? $$0xx.set("minecraft:rarity", $$0xx.createString("uncommon"))
-                        .set("minecraft:item_name", bbh.b($$0xx.getOps(), "block.minecraft.ominous_banner"))
-                     : $$0xx;
-               }
-            )
-      );
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
    }
 }

@@ -1,40 +1,57 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class enp extends enj {
-   public static final MapCodec<enp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               edj.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, enp::new)
-   );
-   private final edj.a c;
-   private final int d;
-   private final int e;
+public class enp extends eul {
+   private static final String a = "Remaining";
+   private static final String b = "All";
+   private final LongSet c;
+   private final LongSet d;
 
-   private enp(edj.a $$0, int $$1, int $$2) {
+   public static eul.a<enp> a() {
+      return new eul.a<>(enp::new, enp::b, ban.o);
+   }
+
+   private enp(LongSet $$0, LongSet $$1) {
       this.c = $$0;
       this.d = $$1;
-      this.e = $$2;
    }
 
-   public static enp a(edj.a $$0, int $$1, int $$2) {
-      return new enp($$0, $$1, $$2);
+   public enp() {
+      this(new LongOpenHashSet(), new LongOpenHashSet());
    }
 
-   @Override
-   protected boolean a(eni $$0, bac $$1, jh $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public static enp b(tq $$0, jt.a $$1) {
+      return new enp(new LongOpenHashSet($$0.o("All")), new LongOpenHashSet($$0.o("Remaining")));
    }
 
    @Override
-   public enl<?> b() {
-      return enl.c;
+   public tq a(tq $$0, jt.a $$1) {
+      $$0.a("All", this.c.toLongArray());
+      $$0.a("Remaining", this.d.toLongArray());
+      return $$0;
+   }
+
+   public void a(long $$0) {
+      this.c.add($$0);
+      this.d.add($$0);
+      this.c();
+   }
+
+   public boolean b(long $$0) {
+      return this.c.contains($$0);
+   }
+
+   public boolean c(long $$0) {
+      return this.d.contains($$0);
+   }
+
+   public void d(long $$0) {
+      if (this.d.remove($$0)) {
+         this.c();
+      }
+   }
+
+   public LongSet b() {
+      return this.c;
    }
 }

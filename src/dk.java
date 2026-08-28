@@ -1,105 +1,253 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 import java.util.Optional;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public record dk(Map<jq<bue>, dk.b> b) {
-   public static final Codec<dk> a = Codec.unboundedMap(bue.a, dk.b.a).xmap(dk::new, dk::a);
+public interface dk<T extends Number> {
+   SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("argument.range.empty"));
+   SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("argument.range.swapped"));
 
-   public boolean a(bvb $$0) {
-      if ($$0 instanceof bvx $$1 && this.a($$1.eC())) {
+   Optional<T> a();
+
+   Optional<T> b();
+
+   default boolean c() {
+      return this.a().isEmpty() && this.b().isEmpty();
+   }
+
+   default Optional<T> d() {
+      Optional<T> $$0 = this.a();
+      Optional<T> $$1 = this.b();
+      return $$0.equals($$1) ? $$0 : Optional.empty();
+   }
+
+   static <T extends Number, R extends dk<T>> Codec<R> a(Codec<T> $$0, dk.a<T, R> $$1) {
+      Codec<R> $$2 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group($$0.optionalFieldOf("min").forGetter(dk::a), $$0.optionalFieldOf("max").forGetter(dk::b)).apply($$2x, $$1::create)
+      );
+      return Codec.either($$2, $$0).xmap($$1x -> (dk)$$1x.map($$0xx -> $$0xx, $$1xx -> $$1.create(Optional.of((T)$$1xx), Optional.of((T)$$1xx))), $$0x -> {
+         Optional<T> $$1x = $$0x.d();
+         return $$1x.isPresent() ? Either.right($$1x.get()) : Either.left($$0x);
+      });
+   }
+
+   static <T extends Number, R extends dk<T>> R a(
+      StringReader $$0, dk.b<T, R> $$1, Function<String, T> $$2, Supplier<DynamicCommandExceptionType> $$3, Function<T, T> $$4
+   ) throws CommandSyntaxException {
+      if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         int $$5 = $$0.getCursor();
+
+         try {
+            Optional<T> $$6 = a($$0, $$2, $$3).map($$4);
+            Optional<T> $$7;
+            if ($$0.canRead(2) && $$0.peek() == '.' && $$0.peek(1) == '.') {
+               $$0.skip();
+               $$0.skip();
+               $$7 = a($$0, $$2, $$3).map($$4);
+               if ($$6.isEmpty() && $$7.isEmpty()) {
+                  throw a.createWithContext($$0);
+               }
+            } else {
+               $$7 = $$6;
+            }
+
+            if ($$6.isEmpty() && $$7.isEmpty()) {
+               throw a.createWithContext($$0);
+            } else {
+               return $$1.create($$0, $$6, $$7);
+            }
+         } catch (CommandSyntaxException var8) {
+            $$0.setCursor($$5);
+            throw new CommandSyntaxException(var8.getType(), var8.getRawMessage(), var8.getInput(), $$5);
+         }
+      }
+   }
+
+   private static <T extends Number> Optional<T> a(StringReader $$0, Function<String, T> $$1, Supplier<DynamicCommandExceptionType> $$2) throws CommandSyntaxException {
+      int $$3 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0)) {
+         $$0.skip();
+      }
+
+      String $$4 = $$0.getString().substring($$3, $$0.getCursor());
+      if ($$4.isEmpty()) {
+         return Optional.empty();
+      } else {
+         try {
+            return Optional.of($$1.apply($$4));
+         } catch (NumberFormatException var6) {
+            throw $$2.get().createWithContext($$0, $$4);
+         }
+      }
+   }
+
+   private static boolean a(StringReader $$0) {
+      char $$1 = $$0.peek();
+      if (($$1 < '0' || $$1 > '9') && $$1 != '-') {
+         return $$1 != '.' ? false : !$$0.canRead(2) || $$0.peek(1) != '.';
+      } else {
          return true;
       }
-
-      return false;
    }
 
-   public boolean a(bvx $$0) {
-      return this.a($$0.eC());
+   @FunctionalInterface
+   public interface a<T extends Number, R extends dk<T>> {
+      R create(Optional<T> var1, Optional<T> var2);
    }
 
-   public boolean a(Map<jq<bue>, bug> $$0) {
-      for (Entry<jq<bue>, dk.b> $$1 : this.b.entrySet()) {
-         bug $$2 = $$0.get($$1.getKey());
-         if (!$$1.getValue().a($$2)) {
-            return false;
-         }
-      }
-
-      return true;
+   @FunctionalInterface
+   public interface b<T extends Number, R extends dk<T>> {
+      R create(StringReader var1, Optional<T> var2, Optional<T> var3) throws CommandSyntaxException;
    }
 
-   public Map<jq<bue>, dk.b> a() {
-      return this.b;
-   }
+   public static record c(Optional<Double> e, Optional<Double> f, Optional<Double> g, Optional<Double> h) implements dk<Double> {
+      public static final dk.c c = new dk.c(Optional.empty(), Optional.empty());
+      public static final Codec<dk.c> d = dk.a(Codec.DOUBLE, dk.c::new);
 
-   public static class a {
-      private final Builder<jq<bue>, dk.b> a = ImmutableMap.builder();
-
-      public static dk.a a() {
-         return new dk.a();
+      private c(Optional<Double> $$0, Optional<Double> $$1) {
+         this($$0, $$1, a($$0), a($$1));
       }
 
-      public dk.a a(jq<bue> $$0) {
-         this.a.put($$0, new dk.b());
-         return this;
-      }
-
-      public dk.a a(jq<bue> $$0, dk.b $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public Optional<dk> b() {
-         return Optional.of(new dk(this.a.build()));
-      }
-   }
-
-   public static record b(dj.d b, dj.d c, Optional<Boolean> d, Optional<Boolean> e) {
-      public static final Codec<dk.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  dj.d.d.optionalFieldOf("amplifier", dj.d.c).forGetter(dk.b::a),
-                  dj.d.d.optionalFieldOf("duration", dj.d.c).forGetter(dk.b::b),
-                  Codec.BOOL.optionalFieldOf("ambient").forGetter(dk.b::c),
-                  Codec.BOOL.optionalFieldOf("visible").forGetter(dk.b::d)
-               )
-               .apply($$0, dk.b::new)
-      );
-
-      public b() {
-         this(dj.d.c, dj.d.c, Optional.empty(), Optional.empty());
-      }
-
-      public boolean a(@Nullable bug $$0) {
-         if ($$0 == null) {
-            return false;
-         } else if (!this.b.d($$0.e())) {
-            return false;
-         } else if (!this.c.d($$0.d())) {
-            return false;
+      private static dk.c a(StringReader $$0, Optional<Double> $$1, Optional<Double> $$2) throws CommandSyntaxException {
+         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
+            throw b.createWithContext($$0);
          } else {
-            return this.d.isPresent() && this.d.get() != $$0.f() ? false : !this.e.isPresent() || this.e.get() == $$0.g();
+            return new dk.c($$1, $$2);
          }
       }
 
-      public dj.d a() {
-         return this.b;
+      private static Optional<Double> a(Optional<Double> $$0) {
+         return $$0.map($$0x -> $$0x * $$0x);
       }
 
-      public dj.d b() {
-         return this.c;
+      public static dk.c a(double $$0) {
+         return new dk.c(Optional.of($$0), Optional.of($$0));
       }
 
-      public Optional<Boolean> c() {
-         return this.d;
+      public static dk.c a(double $$0, double $$1) {
+         return new dk.c(Optional.of($$0), Optional.of($$1));
       }
 
-      public Optional<Boolean> d() {
+      public static dk.c b(double $$0) {
+         return new dk.c(Optional.of($$0), Optional.empty());
+      }
+
+      public static dk.c c(double $$0) {
+         return new dk.c(Optional.empty(), Optional.of($$0));
+      }
+
+      public boolean d(double $$0) {
+         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || !(this.f.get() < $$0);
+      }
+
+      public boolean e(double $$0) {
+         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || !(this.h.get() < $$0);
+      }
+
+      public static dk.c a(StringReader $$0) throws CommandSyntaxException {
+         return a($$0, $$0x -> $$0x);
+      }
+
+      public static dk.c a(StringReader $$0, Function<Double, Double> $$1) throws CommandSyntaxException {
+         return dk.a($$0, dk.c::a, Double::parseDouble, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidDouble, $$1);
+      }
+
+      @Override
+      public Optional<Double> a() {
          return this.e;
+      }
+
+      @Override
+      public Optional<Double> b() {
+         return this.f;
+      }
+
+      public Optional<Double> e() {
+         return this.g;
+      }
+
+      public Optional<Double> f() {
+         return this.h;
+      }
+   }
+
+   public static record d(Optional<Integer> e, Optional<Integer> f, Optional<Long> g, Optional<Long> h) implements dk<Integer> {
+      public static final dk.d c = new dk.d(Optional.empty(), Optional.empty());
+      public static final Codec<dk.d> d = dk.a(Codec.INT, dk.d::new);
+
+      private d(Optional<Integer> $$0, Optional<Integer> $$1) {
+         this($$0, $$1, $$0.map($$0x -> $$0x.longValue() * $$0x.longValue()), a($$1));
+      }
+
+      private static dk.d a(StringReader $$0, Optional<Integer> $$1, Optional<Integer> $$2) throws CommandSyntaxException {
+         if ($$1.isPresent() && $$2.isPresent() && $$1.get() > $$2.get()) {
+            throw b.createWithContext($$0);
+         } else {
+            return new dk.d($$1, $$2);
+         }
+      }
+
+      private static Optional<Long> a(Optional<Integer> $$0) {
+         return $$0.map($$0x -> $$0x.longValue() * $$0x.longValue());
+      }
+
+      public static dk.d a(int $$0) {
+         return new dk.d(Optional.of($$0), Optional.of($$0));
+      }
+
+      public static dk.d a(int $$0, int $$1) {
+         return new dk.d(Optional.of($$0), Optional.of($$1));
+      }
+
+      public static dk.d b(int $$0) {
+         return new dk.d(Optional.of($$0), Optional.empty());
+      }
+
+      public static dk.d c(int $$0) {
+         return new dk.d(Optional.empty(), Optional.of($$0));
+      }
+
+      public boolean d(int $$0) {
+         return this.e.isPresent() && this.e.get() > $$0 ? false : this.f.isEmpty() || this.f.get() >= $$0;
+      }
+
+      public boolean a(long $$0) {
+         return this.g.isPresent() && this.g.get() > $$0 ? false : this.h.isEmpty() || this.h.get() >= $$0;
+      }
+
+      public static dk.d a(StringReader $$0) throws CommandSyntaxException {
+         return a($$0, $$0x -> $$0x);
+      }
+
+      public static dk.d a(StringReader $$0, Function<Integer, Integer> $$1) throws CommandSyntaxException {
+         return dk.a($$0, dk.d::a, Integer::parseInt, CommandSyntaxException.BUILT_IN_EXCEPTIONS::readerInvalidInt, $$1);
+      }
+
+      @Override
+      public Optional<Integer> a() {
+         return this.e;
+      }
+
+      @Override
+      public Optional<Integer> b() {
+         return this.f;
+      }
+
+      public Optional<Long> e() {
+         return this.g;
+      }
+
+      public Optional<Long> f() {
+         return this.h;
       }
    }
 }

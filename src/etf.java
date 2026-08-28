@@ -1,160 +1,117 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class etf implements eti {
-   public static final int b = 1;
-   public static final etf c = new etf();
-   protected final dhb d;
+public abstract class etf extends esx {
+   @Override
+   public esy d() {
+      return eta.b;
+   }
+
+   @Override
+   public esy e() {
+      return eta.c;
+   }
+
+   @Override
+   public cwl a() {
+      return cwt.rg;
+   }
+
+   @Override
+   public void a(dgi $$0, ji $$1, esz $$2, azh $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awa.CR, awb.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+         }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(lt.an, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
+      }
+   }
+
    @Nullable
-   private final eth<?, ?> a;
-   @Nullable
-   private final eth<?, ?> e;
-
-   public etf(dzw $$0, boolean $$1, boolean $$2) {
-      this.d = $$0.q();
-      this.a = $$1 ? new esy($$0) : null;
-      this.e = $$2 ? new etj($$0) : null;
-   }
-
-   private etf() {
-      this.d = dhb.e(0, 0);
-      this.a = null;
-      this.e = null;
+   @Override
+   public lr h() {
+      return lt.l;
    }
 
    @Override
-   public void a(jh $$0) {
-      if (this.a != null) {
-         this.a.a($$0);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0);
-      }
+   protected boolean a(arc $$0) {
+      return $$0.O().b(dge.V);
    }
 
    @Override
-   public boolean N_() {
-      return this.e != null && this.e.N_() ? true : this.a != null && this.a.N_();
+   protected void a(dgj $$0, ji $$1, dwx $$2) {
+      dtz $$3 = $$2.x() ? $$0.c_($$1) : null;
+      djm.a($$2, $$0, $$1, $$3);
    }
 
    @Override
-   public int a() {
-      int $$0 = 0;
-      if (this.a != null) {
-         $$0 += this.a.a();
-      }
-
-      if (this.e != null) {
-         $$0 += this.e.a();
-      }
-
-      return $$0;
+   public int b(dgl $$0) {
+      return 4;
    }
 
    @Override
-   public void a(kj $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
+   public dwx b(esz $$0) {
+      return djo.J.m().b(doe.b, Integer.valueOf(e($$0)));
    }
 
    @Override
-   public void a(dgf $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.a($$0, $$1);
-      }
-
-      if (this.e != null) {
-         this.e.a($$0, $$1);
-      }
+   public boolean a(esy $$0) {
+      return $$0 == eta.c || $$0 == eta.b;
    }
 
    @Override
-   public void b(dgf $$0) {
-      if (this.a != null) {
-         this.a.b($$0);
-      }
-
-      if (this.e != null) {
-         this.e.b($$0);
-      }
+   public int c(dgl $$0) {
+      return 1;
    }
 
-   public etd a(dhi $$0) {
-      if ($$0 == dhi.b) {
-         return (etd)(this.a == null ? etd.a.a : this.a);
-      } else {
-         return (etd)(this.e == null ? etd.a.a : this.e);
-      }
+   @Override
+   public int a(dgl $$0) {
+      return 5;
    }
 
-   public String a(dhi $$0, kj $$1) {
-      if ($$0 == dhi.b) {
-         if (this.a != null) {
-            return this.a.b($$1.s());
-         }
-      } else if (this.e != null) {
-         return this.e.b($$1.s());
-      }
-
-      return "n/a";
+   @Override
+   public boolean a(esz $$0, dfn $$1, ji $$2, esy $$3, jn $$4) {
+      return $$4 == jn.a && !$$3.a(awv.a);
    }
 
-   public ete.b b(dhi $$0, kj $$1) {
-      if ($$0 == dhi.b) {
-         if (this.a != null) {
-            return this.a.c($$1.s());
-         }
-      } else if (this.e != null) {
-         return this.e.c($$1.s());
-      }
-
-      return ete.b.a;
+   @Override
+   protected float c() {
+      return 100.0F;
    }
 
-   public void a(dhi $$0, kj $$1, @Nullable dzo $$2) {
-      if ($$0 == dhi.b) {
-         if (this.a != null) {
-            this.a.a($$1.s(), $$2);
-         }
-      } else if (this.e != null) {
-         this.e.a($$1.s(), $$2);
+   @Override
+   public Optional<avz> j() {
+      return Optional.of(awa.dj);
+   }
+
+   public static class a extends etf {
+      @Override
+      protected void a(dwy.a<esy, esz> $$0) {
+         super.a($$0);
+         $$0.a(b);
+      }
+
+      @Override
+      public int d(esz $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(esz $$0) {
+         return false;
       }
    }
 
-   public void b(dgf $$0, boolean $$1) {
-      if (this.a != null) {
-         this.a.b($$0, $$1);
+   public static class b extends etf {
+      @Override
+      public int d(esz $$0) {
+         return 8;
       }
 
-      if (this.e != null) {
-         this.e.b($$0, $$1);
+      @Override
+      public boolean c(esz $$0) {
+         return true;
       }
-   }
-
-   public int a(jh $$0, int $$1) {
-      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
-      int $$3 = this.a == null ? 0 : this.a.b($$0);
-      return Math.max($$3, $$2);
-   }
-
-   public boolean a(long $$0) {
-      return this.a == null || this.a.f.k($$0) && (this.e == null || this.e.f.k($$0));
-   }
-
-   public int c() {
-      return this.d.ao() + 2;
-   }
-
-   public int d() {
-      return this.d.ap() - 1;
-   }
-
-   public int e() {
-      return this.d() + this.c();
    }
 }

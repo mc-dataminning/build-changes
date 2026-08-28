@@ -1,35 +1,30 @@
-public class cfe {
-   private final bze a;
-   private final float b;
-   private final int c;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
 
-   public cfe(jh $$0, float $$1, int $$2) {
-      this(new bxt($$0), $$1, $$2);
+public class cfe extends cfq<bvg> {
+   @Override
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.x, cek.y);
    }
 
-   public cfe(fbr $$0, float $$1, int $$2) {
-      this(new bxt(jh.a((ka)$$0)), $$1, $$2);
-   }
+   @Override
+   protected void a(arc $$0, bvg $$1) {
+      bwi<?> $$2 = $$1.ec();
+      bta $$3 = $$1.eG();
+      if ($$3 != null) {
+         $$2.a(cek.x, $$1.eG());
+         buk $$4 = $$3.d();
+         if ($$4 instanceof bvg) {
+            $$2.a(cek.y, (bvg)$$4);
+         }
+      } else {
+         $$2.b(cek.x);
+      }
 
-   public cfe(bvb $$0, float $$1, int $$2) {
-      this(new byb($$0, false), $$1, $$2);
-   }
-
-   public cfe(bze $$0, float $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public bze a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
+      $$2.c(cek.y).ifPresent($$2x -> {
+         if (!$$2x.bL() || $$2x.dW() != $$0) {
+            $$2.b(cek.y);
+         }
+      });
    }
 }

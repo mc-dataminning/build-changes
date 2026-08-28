@@ -1,25 +1,32 @@
-import com.mojang.datafixers.util.Either;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import org.joml.Vector3f;
+import com.mojang.serialization.MapCodec;
 
-public class hdq {
-   public static final String a = "missing";
-   public static final alp b = hea.a("missing");
-   public static final hdw c = new hdw(b, "missing");
+public class hdq implements hdk {
+   private final geg a;
 
-   public static heb a() {
-      gmr $$0 = new gmr(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
-      Map<jm, gmp> $$1 = new EnumMap<>(jm.class);
+   public hdq(geg $$0) {
+      this.a = $$0;
+   }
 
-      for (jm $$2 : jm.values()) {
-         $$1.put($$2, new gmp($$2, 0, haw.b().a(), $$0));
+   @Override
+   public void a(cwn $$0, ffu $$1, glx $$2, int $$3, int $$4, boolean $$5) {
+      $$1.a();
+      $$1.b(1.0F, -1.0F, -1.0F);
+      ffy $$6 = gta.a($$2, this.a.a(geg.a), false, $$5);
+      this.a.a($$1, $$6, $$3, $$4);
+      $$1.b();
+   }
+
+   public static record a() implements hdo.a {
+      public static final MapCodec<hdq.a> a = MapCodec.unit(new hdq.a());
+
+      @Override
+      public MapCodec<hdq.a> a() {
+         return a;
       }
 
-      gmo $$3 = new gmo(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
-      gms $$4 = new gms(null, List.of($$3), Map.of("particle", Either.left(gms.c)), null, null, gmy.a, List.of());
-      $$4.d = "missingno";
-      return $$4;
+      @Override
+      public hdo<?> a(gey $$0) {
+         return new hdq(new geg($$0.a(gfb.dl)));
+      }
    }
 }

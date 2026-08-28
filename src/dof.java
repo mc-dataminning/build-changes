@@ -1,31 +1,7 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dof extends doe {
-   public static final MapCodec<dof> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ma.e.q().fieldOf("host").forGetter(doe::b), t()).apply($$0, dof::new));
+public interface dof {
+   boolean a(@Nullable cox var1, dfn var2, ji var3, dwx var4, esy var5);
 
-   @Override
-   public MapCodec<dof> a() {
-      return b;
-   }
-
-   public dof(dkd $$0, dxn.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(dqu.i, jm.a.b));
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dqv $$1) {
-      return dqu.b($$0, $$1);
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(dqu.i);
-   }
-
-   @Override
-   public dxo a(dax $$0) {
-      return this.m().b(dqu.i, $$0.k().o());
-   }
+   boolean a(dgj var1, ji var2, dwx var3, esz var4);
 }

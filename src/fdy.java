@@ -1,376 +1,350 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.nio.IntBuffer;
-import java.util.Collections;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.OptionalLong;
-import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.openal.ALUtil;
-import org.lwjgl.openal.SOFTHRTF;
-import org.lwjgl.system.MemoryStack;
-import org.slf4j.Logger;
 
 public class fdy {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 0;
-   private static final int c = 30;
-   private long d;
-   private long e;
-   private boolean f;
-   @Nullable
-   private String g;
-   private static final fdy.a h = new fdy.a() {
-      @Nullable
-      @Override
-      public fdx a() {
-         return null;
-      }
+   private final List<fdy.d<?>> a = new ArrayList<>();
+   private final List<fdy.a<?>> b = new ArrayList<>();
+   private final List<fdy.e> c = new ArrayList<>();
 
-      @Override
-      public boolean a(fdx $$0) {
-         return false;
-      }
-
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public int c() {
-         return 0;
-      }
-
-      @Override
-      public int d() {
-         return 0;
-      }
-   };
-   private fdy.a i = h;
-   private fdy.a j = h;
-   private final fdz k = new fdz();
-
-   public fdy() {
-      this.g = a();
+   public fdz a(String $$0) {
+      fdy.e $$1 = new fdy.e(this.c.size(), $$0);
+      this.c.add($$1);
+      return $$1;
    }
 
-   public void a(@Nullable String $$0, boolean $$1) {
-      this.d = a($$0);
-      this.f = false;
-      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (feb.a(this.d, "Get capabilities")) {
-         throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!$$2.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
-      } else {
-         this.a($$2.ALC_SOFT_HRTF && $$1);
-         MemoryStack $$3 = MemoryStack.stackPush();
+   public <T> ffg<T> a(String $$0, T $$1) {
+      fdy.a<T> $$2 = new fdy.a<>($$0, null, $$1);
+      this.b.add($$2);
+      return $$2.b;
+   }
 
-         try {
-            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
-            this.e = ALC10.alcCreateContext(this.d, $$4);
-         } catch (Throwable var9) {
-            if ($$3 != null) {
-               try {
-                  $$3.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
+   public <T> ffg<T> a(String $$0, fff<T> $$1) {
+      return this.a($$0, $$1, null).b;
+   }
 
-            throw var9;
+   <T> fdy.d<T> a(String $$0, fff<T> $$1, @Nullable fdy.e $$2) {
+      int $$3 = this.a.size();
+      fdy.d<T> $$4 = new fdy.d<>($$3, $$0, $$2, $$1);
+      this.a.add($$4);
+      return $$4;
+   }
+
+   public void a(ffd $$0) {
+      this.a($$0, fdy.c.a);
+   }
+
+   public void a(ffd $$0, fdy.c $$1) {
+      BitSet $$2 = this.a();
+      List<fdy.e> $$3 = new ArrayList<>($$2.cardinality());
+      BitSet $$4 = new BitSet(this.c.size());
+
+      for (fdy.e $$5 : this.c) {
+         this.a($$5, $$2, $$4, $$3);
+      }
+
+      this.a($$3);
+
+      for (fdy.e $$6 : $$3) {
+         for (fdy.d<?> $$7 : $$6.h) {
+            $$1.a($$7.a);
+            $$7.a($$0);
          }
 
+         $$1.c($$6.c);
+         $$6.g.run();
+         $$1.d($$6.c);
+
+         for (int $$8 = $$6.i.nextSetBit(0); $$8 >= 0; $$8 = $$6.i.nextSetBit($$8 + 1)) {
+            fdy.d<?> $$9 = this.a.get($$8);
+            $$1.b($$9.a);
+            $$9.b($$0);
+         }
+      }
+   }
+
+   private BitSet a() {
+      Deque<fdy.e> $$0 = new ArrayDeque<>(this.c.size());
+      BitSet $$1 = new BitSet(this.c.size());
+
+      for (fdy.f<?> $$2 : this.b) {
+         fdy.e $$3 = $$2.b.d;
          if ($$3 != null) {
-            $$3.close();
+            this.a($$3, $$1, $$0);
+         }
+      }
+
+      for (fdy.e $$4 : this.c) {
+         if ($$4.j) {
+            this.a($$4, $$1, $$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   private void a(fdy.e $$0, BitSet $$1, Deque<fdy.e> $$2) {
+      $$2.add($$0);
+
+      while (!$$2.isEmpty()) {
+         fdy.e $$3 = $$2.poll();
+         if (!$$1.get($$3.b)) {
+            $$1.set($$3.b);
+
+            for (int $$4 = $$3.f.nextSetBit(0); $$4 >= 0; $$4 = $$3.f.nextSetBit($$4 + 1)) {
+               $$2.add(this.c.get($$4));
+            }
+         }
+      }
+   }
+
+   private void a(fdy.e $$0, BitSet $$1, BitSet $$2, List<fdy.e> $$3) {
+      if ($$2.get($$0.b)) {
+         String $$4 = $$2.stream().mapToObj($$0x -> this.c.get($$0x).c).collect(Collectors.joining(", "));
+         throw new IllegalStateException("Frame graph cycle detected between " + $$4);
+      } else if ($$1.get($$0.b)) {
+         $$2.set($$0.b);
+         $$1.clear($$0.b);
+
+         for (int $$5 = $$0.f.nextSetBit(0); $$5 >= 0; $$5 = $$0.f.nextSetBit($$5 + 1)) {
+            this.a(this.c.get($$5), $$1, $$2, $$3);
          }
 
-         if (feb.a(this.d, "Create context")) {
-            throw new IllegalStateException("Unable to create OpenAL context");
-         } else {
-            ALC10.alcMakeContextCurrent(this.e);
-            int $$5 = this.i();
-            int $$6 = azu.a((int)azu.c((float)$$5), 2, 8);
-            int $$7 = azu.a($$5 - $$6, 8, 255);
-            this.i = new fdy.b($$7);
-            this.j = new fdy.b($$6);
-            ALCapabilities $$8 = AL.createCapabilities($$2);
-            feb.a("Initialization");
-            if (!$$8.AL_EXT_source_distance_model) {
-               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+         for (fdy.b<?> $$6 : $$0.d) {
+            for (int $$7 = $$6.e.nextSetBit(0); $$7 >= 0; $$7 = $$6.e.nextSetBit($$7 + 1)) {
+               if ($$7 != $$0.b) {
+                  this.a(this.c.get($$7), $$1, $$2, $$3);
+               }
+            }
+         }
+
+         $$3.add($$0);
+         $$2.clear($$0.b);
+      }
+   }
+
+   private void a(Collection<fdy.e> $$0) {
+      fdy.e[] $$1 = new fdy.e[this.a.size()];
+
+      for (fdy.e $$2 : $$0) {
+         for (int $$3 = $$2.e.nextSetBit(0); $$3 >= 0; $$3 = $$2.e.nextSetBit($$3 + 1)) {
+            fdy.d<?> $$4 = this.a.get($$3);
+            fdy.e $$5 = $$1[$$3];
+            $$1[$$3] = $$2;
+            if ($$5 == null) {
+               $$2.h.add($$4);
             } else {
-               AL10.alEnable(512);
-               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
-                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-               } else {
-                  feb.a("Enable per-source distance models");
-                  a.info("OpenAL initialized on device {}", this.b());
-                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
-               }
+               $$5.i.clear($$3);
             }
+
+            $$2.i.set($$3);
          }
       }
    }
 
-   private void a(boolean $$0) {
-      int $$1 = ALC10.alcGetInteger(this.d, 6548);
-      if ($$1 > 0) {
-         MemoryStack $$2 = MemoryStack.stackPush();
+   static class a<T> extends fdy.f<T> {
+      private final T c;
 
-         try {
-            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
-            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
-               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
-            }
-         } catch (Throwable var7) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var6) {
-                  var7.addSuppressed(var6);
-               }
-            }
+      public a(String $$0, @Nullable fdy.e $$1, T $$2) {
+         super($$0, $$1);
+         this.c = $$2;
+      }
 
-            throw var7;
+      @Override
+      public T a() {
+         return this.c;
+      }
+   }
+
+   static class b<T> implements ffg<T> {
+      final fdy.f<T> b;
+      private final int c;
+      @Nullable
+      final fdy.e d;
+      final BitSet e = new BitSet();
+      @Nullable
+      private fdy.b<T> f;
+
+      b(fdy.f<T> $$0, int $$1, @Nullable fdy.e $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      @Override
+      public T get() {
+         return this.b.a();
+      }
+
+      fdy.b<T> a(fdy.e $$0) {
+         if (this.b.b != this) {
+            throw new IllegalStateException("Handle " + this + " is no longer valid, as its contents were moved into " + this.f);
+         } else {
+            fdy.b<T> $$1 = new fdy.b<>(this.b, this.c + 1, $$0);
+            this.b.b = $$1;
+            this.f = $$1;
+            return $$1;
          }
+      }
 
-         if ($$2 != null) {
-            $$2.close();
+      @Override
+      public String toString() {
+         return this.d != null ? this.b + "#" + this.c + " (from " + this.d + ")" : this.b + "#" + this.c;
+      }
+   }
+
+   public interface c {
+      fdy.c a = new fdy.c() {
+      };
+
+      default void a(String $$0) {
+      }
+
+      default void b(String $$0) {
+      }
+
+      default void c(String $$0) {
+      }
+
+      default void d(String $$0) {
+      }
+   }
+
+   static class d<T> extends fdy.f<T> {
+      final int c;
+      private final fff<T> d;
+      @Nullable
+      private T e;
+
+      public d(int $$0, String $$1, @Nullable fdy.e $$2, fff<T> $$3) {
+         super($$1, $$2);
+         this.c = $$0;
+         this.d = $$3;
+      }
+
+      @Override
+      public T a() {
+         return Objects.requireNonNull(this.e, "Resource is not currently available");
+      }
+
+      public void a(ffd $$0) {
+         if (this.e != null) {
+            throw new IllegalStateException("Tried to acquire physical resource, but it was already assigned");
+         } else {
+            this.e = $$0.a(this.d);
+         }
+      }
+
+      public void b(ffd $$0) {
+         if (this.e == null) {
+            throw new IllegalStateException("Tried to release physical resource that was not allocated");
+         } else {
+            $$0.a(this.d, this.e);
+            this.e = null;
          }
       }
    }
 
-   private int i() {
-      MemoryStack $$0 = MemoryStack.stackPush();
+   class e implements fdz {
+      final int b;
+      final String c;
+      final List<fdy.b<?>> d = new ArrayList<>();
+      final BitSet e = new BitSet();
+      final BitSet f = new BitSet();
+      Runnable g = () -> {
+      };
+      final List<fdy.d<?>> h = new ArrayList<>();
+      final BitSet i = new BitSet();
+      boolean j;
 
-      int var7;
-      label58: {
-         try {
-            int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (feb.a(this.d, "Get attributes size")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
+      public e(final int $$0, final String $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
 
-            IntBuffer $$2 = $$0.mallocInt($$1);
-            ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (feb.a(this.d, "Get attributes")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
+      private <T> void a(fdy.b<T> $$0) {
+         if ($$0.b instanceof fdy.d<?> $$1) {
+            this.e.set($$1.c);
+         }
+      }
 
-            int $$3 = 0;
+      private void a(fdy.e $$0) {
+         this.f.set($$0.b);
+      }
 
-            while ($$3 < $$1) {
-               int $$4 = $$2.get($$3++);
-               if ($$4 == 0) {
-                  break;
-               }
+      @Override
+      public <T> ffg<T> a(String $$0, fff<T> $$1) {
+         fdy.d<T> $$2 = fdy.this.a($$0, $$1, this);
+         this.e.set($$2.c);
+         return $$2.b;
+      }
 
-               int $$5 = $$2.get($$3++);
-               if ($$4 == 4112) {
-                  var7 = $$5;
-                  break label58;
-               }
-            }
-         } catch (Throwable var9) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
+      @Override
+      public <T> void a(ffg<T> $$0) {
+         this.b((fdy.b<T>)$$0);
+      }
 
-            throw var9;
+      private <T> void b(fdy.b<T> $$0) {
+         this.a($$0);
+         if ($$0.d != null) {
+            this.a($$0.d);
          }
 
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return 30;
+         $$0.e.set(this.b);
       }
 
-      if ($$0 != null) {
-         $$0.close();
+      @Override
+      public <T> ffg<T> b(ffg<T> $$0) {
+         return this.c((fdy.b<T>)$$0);
       }
 
-      return var7;
-   }
-
-   @Nullable
-   public static String a() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return null;
-      } else {
-         ALUtil.getStringList(0L, 4115);
-         return ALC10.alcGetString(0L, 4114);
-      }
-   }
-
-   public String b() {
-      String $$0 = ALC10.alcGetString(this.d, 4115);
-      if ($$0 == null) {
-         $$0 = ALC10.alcGetString(this.d, 4101);
+      @Override
+      public void a(fdz $$0) {
+         this.f.set(((fdy.e)$$0).b);
       }
 
-      if ($$0 == null) {
-         $$0 = "Unknown";
+      @Override
+      public void a() {
+         this.j = true;
       }
 
-      return $$0;
-   }
+      private <T> fdy.b<T> c(fdy.b<T> $$0) {
+         this.d.add($$0);
+         this.b($$0);
+         return $$0.a(this);
+      }
 
-   public synchronized boolean c() {
-      String $$0 = a();
-      if (Objects.equals(this.g, $$0)) {
-         return false;
-      } else {
+      @Override
+      public void a(Runnable $$0) {
          this.g = $$0;
-         return true;
+      }
+
+      @Override
+      public String toString() {
+         return this.c;
       }
    }
 
-   private static long a(@Nullable String $$0) {
-      OptionalLong $$1 = OptionalLong.empty();
-      if ($$0 != null) {
-         $$1 = b($$0);
-      }
+   abstract static class f<T> {
+      public final String a;
+      public fdy.b<T> b;
 
-      if ($$1.isEmpty()) {
-         $$1 = b(a());
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(null);
-      }
-
-      if ($$1.isEmpty()) {
-         throw new IllegalStateException("Failed to open OpenAL device");
-      } else {
-         return $$1.getAsLong();
-      }
-   }
-
-   private static OptionalLong b(@Nullable String $$0) {
-      long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !feb.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
-   }
-
-   public void d() {
-      this.i.b();
-      this.j.b();
-      ALC10.alcDestroyContext(this.e);
-      if (this.d != 0L) {
-         ALC10.alcCloseDevice(this.d);
-      }
-   }
-
-   public fdz e() {
-      return this.k;
-   }
-
-   @Nullable
-   public fdx a(fdy.c $$0) {
-      return ($$0 == fdy.c.b ? this.j : this.i).a();
-   }
-
-   public void a(fdx $$0) {
-      if (!this.i.a($$0) && !this.j.a($$0)) {
-         throw new IllegalStateException("Tried to release unknown channel");
-      }
-   }
-
-   public String f() {
-      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
-   }
-
-   public List<String> g() {
-      List<String> $$0 = ALUtil.getStringList(0L, 4115);
-      return $$0 == null ? Collections.emptyList() : $$0;
-   }
-
-   public boolean h() {
-      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
-   }
-
-   interface a {
-      @Nullable
-      fdx a();
-
-      boolean a(fdx var1);
-
-      void b();
-
-      int c();
-
-      int d();
-   }
-
-   static class b implements fdy.a {
-      private final int a;
-      private final Set<fdx> b = Sets.newIdentityHashSet();
-
-      public b(int $$0) {
+      public f(String $$0, @Nullable fdy.e $$1) {
          this.a = $$0;
+         this.b = new fdy.b<>(this, 0, $$1);
       }
 
-      @Nullable
-      @Override
-      public fdx a() {
-         if (this.b.size() >= this.a) {
-            if (ab.aU) {
-               fdy.a.warn("Maximum sound pool size {} reached", this.a);
-            }
-
-            return null;
-         } else {
-            fdx $$0 = fdx.a();
-            if ($$0 != null) {
-               this.b.add($$0);
-            }
-
-            return $$0;
-         }
-      }
+      public abstract T a();
 
       @Override
-      public boolean a(fdx $$0) {
-         if (!this.b.remove($$0)) {
-            return false;
-         } else {
-            $$0.b();
-            return true;
-         }
-      }
-
-      @Override
-      public void b() {
-         this.b.forEach(fdx::b);
-         this.b.clear();
-      }
-
-      @Override
-      public int c() {
+      public String toString() {
          return this.a;
       }
-
-      @Override
-      public int d() {
-         return this.b.size();
-      }
-   }
-
-   public static enum c {
-      a,
-      b;
    }
 }

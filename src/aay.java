@@ -1,36 +1,17 @@
-public record aay(jh c, int d, String e, int f) implements aau {
-   public static final zi<wh, aay> a = aau.a(aay::a, aay::new);
-   public static final aau.b<aay> b = aau.a("debug/game_test_add_marker");
+public class aay {
+   public static final yx<aat> a = a("finish_configuration");
+   public static final yx<aau> b = a("registry_data");
+   public static final yx<aax> c = a("update_enabled_features");
+   public static final yx<aaw> d = a("select_known_packs");
+   public static final yx<aav> e = a("reset_chat");
+   public static final yx<abb> f = b("finish_configuration");
+   public static final yx<abc> g = b("select_known_packs");
 
-   private aay(wh $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+   private static <T extends yv<aas>> yx<T> a(String $$0) {
+      return new yx<>(yw.b, aku.b($$0));
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.c);
-      $$0.q(this.d);
-      $$0.a(this.e);
-      $$0.q(this.f);
-   }
-
-   @Override
-   public aau.b<aay> a() {
-      return b;
-   }
-
-   public jh b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
+   private static <T extends yv<aba>> yx<T> b(String $$0) {
+      return new yx<>(yw.a, aku.b($$0));
    }
 }

@@ -1,107 +1,113 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
+import java.util.Arrays;
 import java.util.Map;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public class gos {
-   private final gmj a;
-   private final gnq b;
+public class gos extends gow {
+   private static final String a = "plank";
+   private static final String b = "vChains";
+   private static final String c = "normalChains";
+   private static final String d = "chainL1";
+   private static final String e = "chainL2";
+   private static final String f = "chainR1";
+   private static final String g = "chainR2";
+   private static final String h = "board";
+   private static final float i = 1.0F;
+   private static final float j = 0.9F;
+   private static final fba k = new fba(0.0, -0.32F, 0.073F);
+   private final Map<gos.b, gcv> l;
 
-   public gos(gmj $$0, gnq $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gos(goj.a $$0) {
+      super($$0);
+      Stream<gos.b> $$1 = dyj.a().flatMap($$0x -> Arrays.stream(gos.a.values()).map($$1x -> new gos.b($$0x, $$1x)));
+      this.l = $$1.collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1x -> new gcv.a($$0.a(gfb.a($$1x.a, $$1x.b)), gmh::g)));
    }
 
-   public gos.a a(kj $$0, goq $$1, fgt $$2, glt $$3) {
-      gos.a $$4 = new gos.a();
-      jh $$5 = $$0.j();
-      jh $$6 = $$5.b(15, 15, 15);
-      gou $$7 = new gou();
-      fgl $$8 = new fgl();
-      gml.a();
-      Map<glq, fgg> $$9 = new Reference2ObjectArrayMap(glq.Q().size());
-      bac $$10 = bac.a();
-
-      for (jh $$11 : jh.c($$5, $$6)) {
-         dxo $$12 = $$1.a_($$11);
-         if ($$12.s()) {
-            $$7.a($$11);
-         }
-
-         if ($$12.x()) {
-            duq $$13 = $$1.c_($$11);
-            if ($$13 != null) {
-               this.a($$4, $$13);
-            }
-         }
-
-         etq $$14 = $$12.y();
-         if (!$$14.c()) {
-            glq $$15 = gky.a($$14);
-            fgg $$16 = this.a($$9, $$3, $$15);
-            this.a.a($$11, $$1, $$16, $$12, $$14);
-         }
-
-         if ($$12.o() == dqo.c) {
-            glq $$17 = gky.a($$12);
-            fgg $$18 = this.a($$9, $$3, $$17);
-            $$8.a();
-            $$8.a((float)kj.b($$11.u()), (float)kj.b($$11.v()), (float)kj.b($$11.w()));
-            this.a.a($$12, $$11, $$1, $$8, $$18, true, $$10);
-            $$8.b();
-         }
-      }
-
-      for (Entry<glq, fgg> $$19 : $$9.entrySet()) {
-         glq $$20 = $$19.getKey();
-         fgk $$21 = $$19.getValue().a();
-         if ($$21 != null) {
-            if ($$20 == glq.f()) {
-               $$4.e = $$21.a($$3.a(glq.f()), $$2);
-            }
-
-            $$4.c.put($$20, $$21);
-         }
-      }
-
-      gml.b();
-      $$4.d = $$7.a();
-      return $$4;
+   @Override
+   public float b() {
+      return 1.0F;
    }
 
-   private fgg a(Map<glq, fgg> $$0, glt $$1, glq $$2) {
-      fgg $$3 = $$0.get($$2);
-      if ($$3 == null) {
-         fgi $$4 = $$1.a($$2);
-         $$3 = new fgg($$4, fgq.c.h, fgj.b);
-         $$0.put($$2, $$3);
-      }
-
-      return $$3;
+   @Override
+   public float c() {
+      return 0.9F;
    }
 
-   private <E extends duq> void a(gos.a $$0, E $$1) {
-      gnr<E> $$2 = this.b.a($$1);
-      if ($$2 != null) {
-         $$0.b.add($$1);
-         if ($$2.a($$1)) {
-            $$0.a.add($$1);
+   @Override
+   public void a(dvm $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
+      dwx $$6 = $$0.m();
+      dqr $$7 = (dqr)$$6.b();
+      dyj $$8 = dqr.a($$7);
+      gos.a $$9 = gos.a.a($$6);
+      gcv $$10 = this.l.get(new gos.b($$8, $$9));
+      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$10);
+   }
+
+   @Override
+   void a(ffu $$0, float $$1, dwx $$2) {
+      $$0.a(0.5, 0.9375, 0.5);
+      $$0.a(a.d.rotationDegrees($$1));
+      $$0.a(0.0F, -0.3125F, 0.0F);
+   }
+
+   @Override
+   hgs a(dyj $$0) {
+      return gms.b($$0);
+   }
+
+   @Override
+   fba d() {
+      return k;
+   }
+
+   public static gfi a(gos.a $$0) {
+      gfk $$1 = new gfk();
+      gfm $$2 = $$1.a();
+      $$2.a("board", gfh.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gfe.a);
+      if ($$0 == gos.a.a) {
+         $$2.a("plank", gfh.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gfe.a);
+      }
+
+      if ($$0 == gos.a.a || $$0 == gos.a.b) {
+         gfm $$3 = $$2.a("normalChains", gfh.c(), gfe.a);
+         $$3.a("chainL1", gfh.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+         $$3.a("chainL2", gfh.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+         $$3.a("chainR1", gfh.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+         $$3.a("chainR2", gfh.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gfe.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      }
+
+      if ($$0 == gos.a.c) {
+         $$2.a("vChains", gfh.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gfe.a);
+      }
+
+      return gfi.a($$1, 64, 32);
+   }
+
+   public static enum a implements azv {
+      a("wall"),
+      b("ceiling"),
+      c("ceiling_middle");
+
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      public static gos.a a(dwx $$0) {
+         if ($$0.b() instanceof dkm) {
+            return $$0.c(dxn.b) ? c : b;
+         } else {
+            return a;
          }
       }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 
-   public static final class a {
-      public final List<duq> a = new ArrayList<>();
-      public final List<duq> b = new ArrayList<>();
-      public final Map<glq, fgk> c = new Reference2ObjectArrayMap();
-      public gov d = new gov();
-      @Nullable
-      public fgk.b e;
-
-      public void a() {
-         this.c.values().forEach(fgk::close);
-      }
+   public static record b(dyj a, gos.a b) {
    }
 }

@@ -1,60 +1,148 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class uv {
-   private static final int a = 512;
-   private final long b;
-   private long c;
-   private final int d;
-   private int e;
+public class uv implements uk {
+   private String a = "";
+   @Nullable
+   private un b;
+   private final Deque<Consumer<un>> c = new ArrayDeque<>();
 
-   public uv(long $$0, int $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   @Nullable
+   public un d() {
+      return this.b;
    }
 
-   public static uv a(long $$0) {
-      return new uv($$0, 512);
+   protected int e() {
+      return this.c.size();
    }
 
-   public static uv a() {
-      return new uv(Long.MAX_VALUE, 512);
+   private void a(un $$0) {
+      this.c.getLast().accept($$0);
    }
 
-   public void a(long $$0, long $$1) {
-      this.b($$0 * $$1);
+   @Override
+   public uk.b a() {
+      this.a(ts.b);
+      return uk.b.a;
    }
 
-   public void b(long $$0) {
-      if (this.c + $$0 > this.b) {
-         throw new uw("Tried to read NBT tag that was too big; tried to allocate: " + this.c + " + " + $$0 + " bytes where max allowed: " + this.b);
-      } else {
-         this.c += $$0;
+   @Override
+   public uk.b a(String $$0) {
+      this.a(ul.a($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(byte $$0) {
+      this.a(to.a($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(short $$0) {
+      this.a(ui.a($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(int $$0) {
+      this.a(tv.a($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(long $$0) {
+      this.a(ty.a($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(float $$0) {
+      this.a(tt.a($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(double $$0) {
+      this.a(tr.a($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(byte[] $$0) {
+      this.a(new tn($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(int[] $$0) {
+      this.a(new tu($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(long[] $$0) {
+      this.a(new tx($$0));
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b a(up<?> $$0, int $$1) {
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.a b(up<?> $$0, int $$1) {
+      this.c($$0);
+      return uk.a.a;
+   }
+
+   @Override
+   public uk.a a(up<?> $$0) {
+      return uk.a.a;
+   }
+
+   @Override
+   public uk.a a(up<?> $$0, String $$1) {
+      this.a = $$1;
+      this.c($$0);
+      return uk.a.a;
+   }
+
+   private void c(up<?> $$0) {
+      if ($$0 == tw.a) {
+         tw $$1 = new tw();
+         this.a($$1);
+         this.c.addLast($$1::add);
+      } else if ($$0 == tq.b) {
+         tq $$2 = new tq();
+         this.a($$2);
+         this.c.addLast($$1 -> $$2.a(this.a, $$1));
       }
    }
 
-   public void b() {
-      if (this.e >= this.d) {
-         throw new uw("Tried to read NBT tag with too high complexity, depth > " + this.d);
+   @Override
+   public uk.b b() {
+      this.c.removeLast();
+      return uk.b.a;
+   }
+
+   @Override
+   public uk.b b(up<?> $$0) {
+      if ($$0 == tw.a) {
+         tw $$1 = new tw();
+         this.b = $$1;
+         this.c.addLast($$1::add);
+      } else if ($$0 == tq.b) {
+         tq $$2 = new tq();
+         this.b = $$2;
+         this.c.addLast($$1 -> $$2.a(this.a, $$1));
       } else {
-         this.e++;
+         this.c.addLast($$0x -> this.b = $$0x);
       }
-   }
 
-   public void c() {
-      if (this.e <= 0) {
-         throw new uw("NBT-Accounter tried to pop stack-depth at top-level");
-      } else {
-         this.e--;
-      }
-   }
-
-   @VisibleForTesting
-   public long d() {
-      return this.c;
-   }
-
-   @VisibleForTesting
-   public int e() {
-      return this.e;
+      return uk.b.a;
    }
 }

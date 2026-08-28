@@ -1,30 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-public class cgc extends cgh<bvx> {
-   @Override
-   public Set<cfb<?>> a() {
-      return ImmutableSet.of(cfb.h, cfb.M, cfb.an);
+public class cgc {
+   public static boolean a(bvi $$0) {
+      return $$0.L() instanceof cer;
    }
 
-   @Override
-   protected void a(arx $$0, bvx $$1) {
-      bwz<?> $$2 = $$1.ec();
-      List<cob> $$3 = Lists.newArrayList();
-      cfd $$4 = $$2.c(cfb.h).orElse(cfd.a());
-      Optional<bvz> $$5 = $$4.a($$0x -> $$0x instanceof cnf || $$0x instanceof clf).map(bvz.class::cast);
+   public static boolean a(bvo $$0, int $$1) {
+      return $$0.gb() && $$0.fY().a($$0.du(), (double)($$0.fZ() + (float)$$1) + 1.0);
+   }
 
-      for (bvx $$7 : $$2.c(cfb.g).orElse(ImmutableList.of())) {
-         if ($$7 instanceof cob && ((cob)$$7).go()) {
-            $$3.add((cob)$$7);
-         }
-      }
+   public static boolean a(ji $$0, bvo $$1) {
+      return $$1.dW().e($$0.v());
+   }
 
-      $$2.a(cfb.M, $$5);
-      $$2.a(cfb.an, $$3);
+   public static boolean a(boolean $$0, bvo $$1, ji $$2) {
+      return $$0 && !$$1.a($$2);
+   }
+
+   public static boolean a(ces $$0, ji $$1) {
+      return !$$0.a($$1);
+   }
+
+   public static boolean a(bvo $$0, ji $$1) {
+      return $$0.dW().b_($$1).a(awv.a);
+   }
+
+   public static boolean b(bvo $$0, ji $$1) {
+      return $$0.a(etv.b($$0, $$1)) != 0.0F;
+   }
+
+   public static boolean c(bvo $$0, ji $$1) {
+      return $$0.dW().a_($$1).e();
    }
 }

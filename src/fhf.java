@@ -1,50 +1,33 @@
-public class fhf {
-   private volatile long a;
-   private volatile long b;
-   private long c = ae.c();
-   private long d;
-   private long e;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-   public void a(long $$0) {
-      this.b = $$0;
-   }
+public class fhf extends fhz {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fhe> a = Lists.newArrayList();
 
-   public long a() {
-      return this.b;
-   }
+   public static fhf a(String $$0) {
+      fhf $$1 = new fhf();
 
-   public long b() {
-      return this.a;
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         if ($$3.get("invites").isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
 
-   public void b(long $$0) {
-      this.a += $$0;
-   }
-
-   public boolean c() {
-      return this.a != 0L;
-   }
-
-   public boolean d() {
-      return this.a == this.a();
-   }
-
-   public double e() {
-      return Math.min((double)this.b() / (double)this.a(), 1.0);
-   }
-
-   public void f() {
-      long $$0 = ae.c();
-      long $$1 = $$0 - this.c;
-      if ($$1 >= 1000L) {
-         long $$2 = this.a;
-         this.e = 1000L * ($$2 - this.d) / $$1;
-         this.d = $$2;
-         this.c = $$0;
+            while ($$4.hasNext()) {
+               $$1.a.add(fhe.a($$4.next().getAsJsonObject()));
+            }
+         }
+      } catch (Exception var5) {
+         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
       }
-   }
 
-   public long g() {
-      return this.e;
+      return $$1;
    }
 }

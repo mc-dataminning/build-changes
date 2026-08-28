@@ -1,6 +1,4 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
@@ -9,48 +7,34 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import javax.annotation.Nullable;
 
 public class aos {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xk.b("commands.publish.alreadyPublished", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wo.b("commands.spectate.not_spectator", $$0));
 
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ew)$$0x.getSource(), azl.a(), false, null)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ex)$$0x.getSource(), null, ((ex)$$0x.getSource()).h())))
             .then(
-               ((RequiredArgumentBuilder)ex.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ew)$$0x.getSource(), azl.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("gamemode", fk.a())
-                           .executes($$0x -> a((ew)$$0x.getSource(), azl.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fk.a($$0x, "gamemode"))))
-                        .then(
-                           ex.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (ew)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       fk.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
+               ((RequiredArgumentBuilder)ey.a("target", fk.a()).executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), ((ex)$$0x.getSource()).h())))
+                  .then(ey.a("player", fk.c()).executes($$0x -> a((ex)$$0x.getSource(), fk.a($$0x, "target"), fk.e($$0x, "player"))))
             )
       );
    }
 
-   private static int a(ew $$0, int $$1, boolean $$2, @Nullable dgw $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().S());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
+   private static int a(ex $$0, @Nullable buk $$1, ard $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
          throw a.create();
+      } else if ($$2.h.b() != dgf.d) {
+         throw b.create($$2.p_());
       } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
-      }
-   }
+         $$2.d($$1);
+         if ($$1 != null) {
+            $$0.a(() -> wo.a("commands.spectate.success.started", $$1.p_()), false);
+         } else {
+            $$0.a(() -> wo.c("commands.spectate.success.stopped"), false);
+         }
 
-   public static xy a(int $$0) {
-      xk $$1 = xn.a(String.valueOf($$0));
-      return xk.a("commands.publish.started", $$1);
+         return 1;
+      }
    }
 }

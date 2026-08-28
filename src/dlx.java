@@ -1,30 +1,27 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dlx extends dkd {
-   public static final MapCodec<dlx> a = b(dlx::new);
-   private static final xk b = xk.c("container.crafting");
+public class dlx extends djm {
+   public static final MapCodec<dlx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bro.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), t()).apply($$0, dlx::new)
+   );
+   private final bro b;
 
    @Override
    public MapCodec<? extends dlx> a() {
       return a;
    }
 
-   protected dlx(dxn.d $$0) {
-      super($$0);
+   public dlx(bro $$0, dww.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(axf.an);
+   protected void a(dwx $$0, arc $$1, ji $$2, cwp $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.b);
       }
-
-      return bta.a;
-   }
-
-   @Override
-   protected btc b(dxo $$0, dgz $$1, jh $$2) {
-      return new bti(($$2x, $$3, $$4) -> new ctm($$2x, $$3, ctg.a($$1, $$2)), b);
    }
 }

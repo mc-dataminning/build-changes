@@ -1,70 +1,40 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import org.joml.Vector3f;
 
-public class gqi extends gsm<clh, gww, gac> {
-   public static final alp a = alp.b("textures/entity/armorstand/wood.png");
-   private final gac b = this.c();
-   private final gac k;
+public class gqi implements gpx.a {
+   public static final int a = 200;
+   private final flj b;
+   private final List<aam> c = Lists.newArrayList();
 
-   public gqi(grl.a $$0) {
-      super($$0, new gad($$0.a(gei.f)), 0.0F);
-      this.k = new gad($$0.a(gei.i));
-      this.a(new gvp<>(this, new gac($$0.a(gei.g)), new gac($$0.a(gei.h)), new gac($$0.a(gei.j)), new gac($$0.a(gei.k)), $$0.h()));
-      this.a(new gvs<>(this, $$0.b()));
-      this.a(new gwl<>(this, $$0.f(), $$0.h()));
-      this.a(new gve<>(this, $$0.f(), $$0.b()));
+   gqi(flj $$0) {
+      this.b = $$0;
    }
 
-   public alp a(gww $$0) {
-      return a;
+   public void a(aam $$0) {
+      this.c.add($$0);
    }
 
-   public gww a() {
-      return new gww();
-   }
+   @Override
+   public void a(ffu $$0, glx $$1, double $$2, double $$3, double $$4) {
+      ffy $$5 = $$1.getBuffer(gmh.y());
+      long $$6 = this.b.s.ad();
+      Iterator<aam> $$7 = this.c.iterator();
 
-   public void a(clh $$0, gww $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gsc.a((bvx)$$0, (gyg)$$1, $$2);
-      $$1.a = azu.i($$2, $$0.N, $$0.dM());
-      $$1.c = $$0.x();
-      $$1.d = $$0.p();
-      $$1.e = $$0.t();
-      $$1.f = $$0.u();
-      $$1.h = $$0.z();
-      $$1.g = $$0.y();
-      $$1.i = $$0.A();
-      $$1.j = $$0.B();
-      $$1.k = $$0.C();
-      $$1.l = $$0.D();
-      $$1.b = (float)($$0.dW().ad() - $$0.bQ) + $$2;
-   }
-
-   public void a(gww $$0, fgl $$1, glg $$2, int $$3) {
-      this.h = $$0.d ? this.k : this.b;
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(gww $$0, fgl $$1, float $$2, float $$3) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      if ($$0.b < 5.0F) {
-         $$1.a(a.d.rotationDegrees(azu.a($$0.b / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean a(clh $$0, double $$1) {
-      return $$0.cL();
-   }
-
-   @Nullable
-   protected glq a(gww $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.c) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         alp $$4 = this.a($$0);
-         if ($$2) {
-            return glq.c($$4, false);
+      while ($$7.hasNext()) {
+         aam $$8 = $$7.next();
+         long $$9 = $$6 - $$8.b();
+         if ($$9 > 200L) {
+            $$7.remove();
          } else {
-            return $$1 ? glq.a($$4, false) : null;
+            for (aam.a $$10 : $$8.c()) {
+               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
+               euh $$12 = $$10.b();
+               gmr.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
+               gmr.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
+               gmr.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+            }
          }
       }
    }

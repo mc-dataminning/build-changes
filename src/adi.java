@@ -1,20 +1,29 @@
-public record adi(xw.a b) implements zr<acg> {
-   public static final zi<wh, adi> a = zr.a(adi::a, adi::new);
+public class adi implements yv<abk> {
+   public static final ym<vl, adi> a = yv.a(adi::a, adi::new);
+   private final bsi b;
 
-   private adi(wh $$0) {
-      this(xw.a.a($$0));
+   public adi(bsi $$0) {
+      this.b = $$0;
    }
 
-   private void a(wh $$0) {
-      xw.a.a($$0, this.b);
+   private adi(vl $$0) {
+      this.b = $$0.b(bsi.class);
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zt<adi> a() {
-      return agz.B;
+   public yx<adi> a() {
+      return agd.W;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   public bsi b() {
+      return this.b;
    }
 }

@@ -1,33 +1,20 @@
-import com.mojang.serialization.Codec;
+import com.google.common.annotations.VisibleForTesting;
 
-public class edf {
-   public static enum a implements baq {
-      a("raw_generation"),
-      b("lakes"),
-      c("local_modifications"),
-      d("underground_structures"),
-      e("surface_structures"),
-      f("strongholds"),
-      g("underground_ores"),
-      h("underground_decoration"),
-      i("fluid_springs"),
-      j("vegetal_decoration"),
-      k("top_layer_modification");
-
-      public static final Codec<edf.a> l = baq.a(edf.a::values);
-      private final String m;
-
-      private a(final String $$0) {
-         this.m = $$0;
-      }
-
-      public String a() {
-         return this.m;
-      }
-
-      @Override
-      public String c() {
-         return this.m;
-      }
+public interface edf {
+   default azh a(ji $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
+
+   default azh a(aku $$0) {
+      return this.a($$0.toString());
+   }
+
+   azh a(String var1);
+
+   azh a(long var1);
+
+   azh a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

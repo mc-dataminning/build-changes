@@ -1,38 +1,23 @@
-import java.util.List;
-import java.util.Optional;
+public enum dyf implements azv {
+   a("straight"),
+   b("inner_left"),
+   c("inner_right"),
+   d("outer_left"),
+   e("outer_right");
 
-public final class dyf extends dyq<Boolean> {
-   private static final List<Boolean> a = List.of(true, false);
-   private static final int b = 0;
-   private static final int c = 1;
+   private final String f;
 
-   private dyf(String $$0) {
-      super($$0, Boolean.class);
+   private dyf(final String $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public List<Boolean> a() {
-      return a;
-   }
-
-   public static dyf a(String $$0) {
-      return new dyf($$0);
+   public String toString() {
+      return this.f;
    }
 
    @Override
-   public Optional<Boolean> b(String $$0) {
-      return switch ($$0) {
-         case "true" -> Optional.of(true);
-         case "false" -> Optional.of(false);
-         default -> Optional.empty();
-      };
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   public int b(Boolean $$0) {
-      return $$0 ? 0 : 1;
+   public String c() {
+      return this.f;
    }
 }

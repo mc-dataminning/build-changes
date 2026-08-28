@@ -1,140 +1,276 @@
-import it.unimi.dsi.fastutil.longs.Long2IntOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class etk extends ete<etk.a> {
-   protected etk(dzw $$0) {
-      super(dhi.a, $$0, new etk.a(new Long2ObjectOpenHashMap(), new Long2IntOpenHashMap(), Integer.MAX_VALUE));
+public class etk extends etv {
+   private final Long2ObjectMap<etq> a = new Long2ObjectOpenHashMap();
+   private static final float m = 1.0F;
+   private static final float n = 1.1F;
+   private static final int o = 10;
+
+   @Override
+   public void a(dgv $$0, bvi $$1) {
+      super.a($$0, $$1);
+      this.a.clear();
+      $$1.E();
    }
 
    @Override
-   protected int a(long $$0) {
-      return this.e($$0, false);
+   public void b() {
+      this.c.F();
+      this.a.clear();
+      super.b();
    }
 
-   protected int e(long $$0, boolean $$1) {
-      long $$2 = kj.e($$0);
-      int $$3 = kj.c($$2);
-      etk.a $$4 = $$1 ? this.d : this.c;
-      int $$5 = $$4.c.get(kj.f($$2));
-      if ($$5 != $$4.b && $$3 < $$5) {
-         dzo $$6 = this.a($$4, $$2);
-         if ($$6 == null) {
-            for ($$0 = jh.e($$0); $$6 == null; $$6 = this.a($$4, $$2)) {
-               if (++$$3 >= $$5) {
-                  return 15;
-               }
+   @Override
+   public etl a() {
+      int $$0;
+      if (this.f() && this.c.bj()) {
+         $$0 = this.c.dC();
+         ji.a $$1 = new ji.a(this.c.dB(), (double)$$0, this.c.dH());
 
-               $$2 = kj.a($$2, jm.b);
+         for (dwx $$2 = this.b.a($$1); $$2.a(djo.J); $$2 = this.b.a($$1)) {
+            $$1.b(this.c.dB(), (double)(++$$0), this.c.dH());
+         }
+      } else {
+         $$0 = ayz.a(this.c.dD() + 0.5);
+      }
+
+      ji $$4 = ji.a(this.c.dB(), (double)$$0, this.c.dH());
+      if (!this.a($$4)) {
+         for (ji $$5 : this.a(this.c)) {
+            if (this.a($$5)) {
+               return super.c($$5);
             }
          }
-
-         return $$6.a(kj.b(jh.a($$0)), kj.b(jh.b($$0)), kj.b(jh.c($$0)));
-      } else {
-         return $$1 && !this.j($$2) ? 0 : 15;
       }
+
+      return super.c($$4);
    }
 
    @Override
-   protected void h(long $$0) {
-      int $$1 = kj.c($$0);
-      if (this.d.b > $$1) {
-         this.d.b = $$1;
-         this.d.c.defaultReturnValue(this.d.b);
-      }
-
-      long $$2 = kj.f($$0);
-      int $$3 = this.d.c.get($$2);
-      if ($$3 < $$1 + 1) {
-         this.d.c.put($$2, $$1 + 1);
-      }
+   protected boolean a(ji $$0) {
+      etq $$1 = this.b($$0.u(), $$0.v(), $$0.w());
+      return this.c.a($$1) >= 0.0F;
    }
 
    @Override
-   protected void i(long $$0) {
-      long $$1 = kj.f($$0);
-      int $$2 = kj.c($$0);
-      if (this.d.c.get($$1) == $$2 + 1) {
-         long $$3;
-         for ($$3 = $$0; !this.b($$3) && this.a($$2); $$3 = kj.a($$3, jm.a)) {
-            $$2--;
+   public etu a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public int a(etl[] $$0, etl $$1) {
+      int $$2 = 0;
+      etl $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
+      if (this.c($$3)) {
+         $$0[$$2++] = $$3;
+      }
+
+      etl $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
+      if (this.c($$4)) {
+         $$0[$$2++] = $$4;
+      }
+
+      etl $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
+      if (this.c($$5)) {
+         $$0[$$2++] = $$5;
+      }
+
+      etl $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
+      if (this.c($$6)) {
+         $$0[$$2++] = $$6;
+      }
+
+      etl $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
+      if (this.c($$7)) {
+         $$0[$$2++] = $$7;
+      }
+
+      etl $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
+      if (this.c($$8)) {
+         $$0[$$2++] = $$8;
+      }
+
+      etl $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
+      if (this.c($$9) && this.b($$3) && this.b($$7)) {
+         $$0[$$2++] = $$9;
+      }
+
+      etl $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
+      if (this.c($$10) && this.b($$4) && this.b($$7)) {
+         $$0[$$2++] = $$10;
+      }
+
+      etl $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
+      if (this.c($$11) && this.b($$5) && this.b($$7)) {
+         $$0[$$2++] = $$11;
+      }
+
+      etl $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
+      if (this.c($$12) && this.b($$6) && this.b($$7)) {
+         $$0[$$2++] = $$12;
+      }
+
+      etl $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
+      if (this.c($$13) && this.b($$3) && this.b($$8)) {
+         $$0[$$2++] = $$13;
+      }
+
+      etl $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
+      if (this.c($$14) && this.b($$4) && this.b($$8)) {
+         $$0[$$2++] = $$14;
+      }
+
+      etl $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
+      if (this.c($$15) && this.b($$5) && this.b($$8)) {
+         $$0[$$2++] = $$15;
+      }
+
+      etl $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
+      if (this.c($$16) && this.b($$6) && this.b($$8)) {
+         $$0[$$2++] = $$16;
+      }
+
+      etl $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
+      if (this.c($$17) && this.b($$6) && this.b($$5)) {
+         $$0[$$2++] = $$17;
+      }
+
+      etl $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
+      if (this.c($$18) && this.b($$3) && this.b($$5)) {
+         $$0[$$2++] = $$18;
+      }
+
+      etl $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
+      if (this.c($$19) && this.b($$6) && this.b($$4)) {
+         $$0[$$2++] = $$19;
+      }
+
+      etl $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
+      if (this.c($$20) && this.b($$3) && this.b($$4)) {
+         $$0[$$2++] = $$20;
+      }
+
+      etl $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
+         $$0[$$2++] = $$21;
+      }
+
+      etl $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
+         $$0[$$2++] = $$22;
+      }
+
+      etl $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
+         $$0[$$2++] = $$23;
+      }
+
+      etl $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
+         $$0[$$2++] = $$24;
+      }
+
+      etl $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
+         $$0[$$2++] = $$25;
+      }
+
+      etl $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
+         $$0[$$2++] = $$26;
+      }
+
+      etl $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
+         $$0[$$2++] = $$27;
+      }
+
+      etl $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
+         $$0[$$2++] = $$28;
+      }
+
+      return $$2;
+   }
+
+   private boolean b(@Nullable etl $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
+
+   private boolean c(@Nullable etl $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   @Nullable
+   @Override
+   protected etl a(int $$0, int $$1, int $$2) {
+      etl $$3 = null;
+      etq $$4 = this.b($$0, $$1, $$2);
+      float $$5 = this.c.a($$4);
+      if ($$5 >= 0.0F) {
+         $$3 = this.c($$0, $$1, $$2);
+         $$3.l = $$4;
+         $$3.k = Math.max($$3.k, $$5);
+         if ($$4 == etq.c) {
+            $$3.k++;
          }
-
-         if (this.b($$3)) {
-            this.d.c.put($$1, $$2 + 1);
-         } else {
-            this.d.c.remove($$1);
-         }
       }
+
+      return $$3;
    }
 
    @Override
-   protected dzo g(long $$0) {
-      dzo $$1 = (dzo)this.g.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         int $$2 = this.d.c.get(kj.f($$0));
-         if ($$2 != this.d.b && kj.c($$0) < $$2) {
-            long $$3 = kj.a($$0, jm.b);
+   protected etq b(int $$0, int $$1, int $$2) {
+      return (etq)this.a.computeIfAbsent(ji.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2, this.c));
+   }
 
-            dzo $$4;
-            while (($$4 = this.a($$3, true)) == null) {
-               $$3 = kj.a($$3, jm.b);
+   @Override
+   public etq a(ets $$0, int $$1, int $$2, int $$3) {
+      etq $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == etq.b && $$2 >= $$0.a().L_() + 1) {
+         ji $$5 = new ji($$1, $$2 - 1, $$3);
+         etq $$6 = $$0.a($$5.u(), $$5.v(), $$5.w());
+         if ($$6 == etq.o || $$6 == etq.i) {
+            $$4 = etq.o;
+         } else if ($$6 == etq.q) {
+            $$4 = etq.q;
+         } else if ($$6 == etq.x) {
+            $$4 = etq.x;
+         } else if ($$6 == etq.h) {
+            if (!$$5.equals($$0.b())) {
+               $$4 = etq.h;
             }
-
-            return a($$4);
          } else {
-            return this.j($$0) ? new dzo(15) : new dzo();
+            $$4 = $$6 != etq.c && $$6 != etq.b && $$6 != etq.j ? etq.c : etq.b;
          }
       }
+
+      if ($$4 == etq.c || $$4 == etq.b) {
+         $$4 = a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      return $$4;
    }
 
-   private static dzo a(dzo $$0) {
-      if ($$0.c()) {
-         return $$0.b();
+   private Iterable<ji> a(bvi $$0) {
+      fav $$1 = $$0.cR();
+      boolean $$2 = $$1.a() < 1.0;
+      if (!$$2) {
+         return List.of(
+            ji.a($$1.a, (double)$$0.dC(), $$1.c),
+            ji.a($$1.a, (double)$$0.dC(), $$1.f),
+            ji.a($$1.d, (double)$$0.dC(), $$1.c),
+            ji.a($$1.d, (double)$$0.dC(), $$1.f)
+         );
       } else {
-         byte[] $$1 = $$0.a();
-         byte[] $$2 = new byte[2048];
-
-         for (int $$3 = 0; $$3 < 16; $$3++) {
-            System.arraycopy($$1, 0, $$2, $$3 * 128, 128);
-         }
-
-         return new dzo($$2);
-      }
-   }
-
-   protected boolean a(int $$0) {
-      return $$0 >= this.d.b;
-   }
-
-   protected boolean m(long $$0) {
-      long $$1 = kj.f($$0);
-      int $$2 = this.d.c.get($$1);
-      return $$2 == this.d.b || kj.c($$0) >= $$2;
-   }
-
-   protected int n(long $$0) {
-      return this.d.c.get($$0);
-   }
-
-   protected int c() {
-      return this.d.b;
-   }
-
-   protected static final class a extends etb<etk.a> {
-      int b;
-      final Long2IntOpenHashMap c;
-
-      public a(Long2ObjectOpenHashMap<dzo> $$0, Long2IntOpenHashMap $$1, int $$2) {
-         super($$0);
-         this.c = $$1;
-         $$1.defaultReturnValue($$2);
-         this.b = $$2;
-      }
-
-      public etk.a a() {
-         return new etk.a(this.a.clone(), this.c.clone(), this.b);
+         double $$3 = Math.max(0.0, 1.1F - $$1.d());
+         double $$4 = Math.max(0.0, 1.1F - $$1.b());
+         double $$5 = Math.max(0.0, 1.1F - $$1.c());
+         fav $$6 = $$1.c($$4, $$5, $$3);
+         return ji.a($$0.dZ(), 10, ayz.a($$6.a), ayz.a($$6.b), ayz.a($$6.c), ayz.a($$6.d), ayz.a($$6.e), ayz.a($$6.f));
       }
    }
 }

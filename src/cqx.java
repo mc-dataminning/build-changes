@@ -1,134 +1,147 @@
-import java.util.Optional;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public abstract class cqx extends cpw implements cqe {
-   public static final dgs d = new dhs(true, false, Optional.empty(), ma.e.a(axk.cB).map(Function.identity()));
-   public static final double e = 0.25;
+public abstract class cqx extends cqw implements crb {
+   private ka<cwp> b = ka.a(36, cwp.j);
+   @Nullable
+   private akt<evw> c;
+   private long d;
 
-   public cqx(bvi<? extends cqx> $$0, dgz $$1) {
+   protected cqx(bur<?> $$0, dgi $$1) {
       super($$0, $$1);
-      this.c = 0.0;
-   }
-
-   public cqx(bvi<? extends cqx> $$0, dgz $$1, bvb $$2, double $$3, double $$4, double $$5) {
-      super($$0, $$3, $$4, $$5, $$1);
-      this.c($$2);
-      this.c = 0.0;
-   }
-
-   cqx(bvi<? extends cqx> $$0, double $$1, double $$2, double $$3, fbr $$4, dgz $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.c = 0.0;
    }
 
    @Override
-   protected fbm ax() {
-      float $$0 = this.aq().n().a() / 2.0F;
-      float $$1 = this.aq().n().b();
-      float $$2 = 0.15F;
-      return new fbm(
-         this.du().d - (double)$$0,
-         this.du().e - 0.15F,
-         this.du().f - (double)$$0,
-         this.du().d + (double)$$0,
-         this.du().e - 0.15F + (double)$$1,
-         this.du().f + (double)$$0
-      );
+   public void a(arc $$0, bta $$1) {
+      super.a($$0, $$1);
+      this.a($$1, $$0, this);
    }
 
    @Override
-   public boolean i(bvb $$0) {
-      return $$0 instanceof cqx ? false : super.i($$0);
+   public cwp a(int $$0) {
+      return this.g_($$0);
    }
 
    @Override
-   protected boolean b(bvb $$0) {
-      if ($$0 instanceof cqx) {
-         return false;
-      } else {
-         return $$0.aq() == bvi.S ? false : super.b($$0);
+   public cwp a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public cwp b(int $$0) {
+      return this.f_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cwp $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bvy a_(int $$0) {
+      return this.h_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cox $$0) {
+      return this.g($$0);
+   }
+
+   @Override
+   public void a(buk.d $$0) {
+      if (!this.dW().C && $$0.a()) {
+         bsf.a(this.dW(), this, this);
       }
-   }
 
-   @Override
-   protected void a(fbo $$0) {
       super.a($$0);
-      if (this.dW() instanceof arx $$1) {
-         bvx $$4 = this.p() instanceof bvx $$3 ? $$3 : null;
-         bvb $$5 = $$0.a();
-         if ($$4 != null) {
-            $$4.B($$5);
-         }
-
-         btr $$6 = this.dX().c(this, $$4);
-         if ($$5.a($$1, $$6, 1.0F) && $$5 instanceof bvx $$7) {
-            dds.a($$1, (bvb)$$7, $$6);
-         }
-
-         this.a(this.du());
-      }
    }
 
    @Override
-   public void j(double $$0, double $$1, double $$2) {
+   protected void b(tq $$0) {
+      super.b($$0);
+      this.a($$0, this.dY());
    }
 
-   protected abstract void a(fbr var1);
-
    @Override
-   protected void a(fbn $$0) {
+   protected void a(tq $$0) {
       super.a($$0);
-      if (!this.dW().C) {
-         kl $$1 = $$0.c().q();
-         fbr $$2 = fbr.a($$1).d(0.25, 0.25, 0.25);
-         fbr $$3 = $$0.g().e($$2);
-         this.a($$3);
-         this.at();
+      this.b($$0, this.dY());
+   }
+
+   @Override
+   public bsj a(cox $$0, bsi $$1) {
+      return this.b_($$0);
+   }
+
+   @Override
+   protected fba a(fba $$0) {
+      float $$1 = 0.98F;
+      if (this.c == null) {
+         int $$2 = 15 - csc.b(this);
+         $$1 += (float)$$2 * 0.001F;
       }
-   }
 
-   @Override
-   protected void a(fbp $$0) {
-      super.a($$0);
-      if (!this.dW().C) {
-         this.at();
+      if (this.bj()) {
+         $$1 *= 0.95F;
       }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
    }
 
    @Override
-   protected boolean m() {
-      return false;
+   public void a() {
+      this.f();
    }
 
-   @Override
-   public cxg l() {
-      return cxg.j;
-   }
-
-   @Override
-   protected float t() {
-      return 1.0F;
-   }
-
-   @Override
-   protected float u() {
-      return this.t();
+   public void a(akt<evw> $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Nullable
    @Override
-   protected lq s() {
-      return null;
+   public csc createMenu(int $$0, cow $$1, cox $$2) {
+      if (this.c != null && $$2.Z_()) {
+         return null;
+      } else {
+         this.f($$1.k);
+         return this.a($$0, $$1);
+      }
+   }
+
+   protected abstract csc a(int var1, cow var2);
+
+   @Nullable
+   @Override
+   public akt<evw> v() {
+      return this.c;
    }
 
    @Override
-   public void h() {
-      if (!this.dW().C && this.dC() > this.dW().an() + 30) {
-         this.a(this.du());
-         this.at();
-      } else {
-         super.h();
-      }
+   public void a(@Nullable akt<evw> $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public long x() {
+      return this.d;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public ka<cwp> B() {
+      return this.b;
+   }
+
+   @Override
+   public void C() {
+      this.b = ka.a(this.b(), cwp.j);
    }
 }

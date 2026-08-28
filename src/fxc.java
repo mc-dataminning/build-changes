@@ -1,88 +1,86 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class fxc extends fwv {
-   private static final xk v = xk.c("controls.keybinds.title");
+public class fxc extends fuk {
+   private static final int a = 310;
+   private static final int b = 25;
+   private static final wo c = wo.c("menu.server_links.title");
+   private final fuk d;
    @Nullable
-   public flx a;
-   public long u;
-   private fxb w;
-   private fny x;
+   private fxc.a s;
+   final fsg u = new fsg(this);
+   final alm v;
 
-   public fxc(ftr $$0, fmd $$1) {
-      super($$0, $$1, v);
+   public fxc(fuk $$0, alm $$1) {
+      super(c);
+      this.d = $$0;
+      this.v = $$1;
    }
 
    @Override
-   protected void F() {
-      this.w = this.s.c(new fxb(this, this.m));
-   }
-
-   @Override
-   protected void l() {
-   }
-
-   @Override
-   protected void E() {
-      this.x = fny.a(xk.c("controls.resetAll"), $$0x -> {
-         for (flx $$1 : this.c.V) {
-            $$1.b($$1.i());
-         }
-
-         this.w.b();
-      }).a();
-      frr $$0 = this.s.b(frr.e().a(8));
-      $$0.a(this.x);
-      $$0.a(fny.a(xj.d, $$0x -> this.aP_()).a());
+   protected void aR_() {
+      this.u.a(this.l, this.p);
+      this.s = this.u.c(new fxc.a(this.m, this.n, this));
+      this.u.b(fos.a(wn.k, $$0 -> this.aO_()).a(200).a());
+      this.u.a($$1 -> {
+         fop var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
    protected void c() {
-      this.s.a();
-      this.w.a(this.n, this.s);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.a != null) {
-         this.a.b(ffg.b.c.a($$2));
-         this.a = null;
-         this.w.b();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      this.u.a();
+      if (this.s != null) {
+         this.s.a(this.n, this.u);
       }
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (this.a != null) {
-         if ($$0 == 256) {
-            this.a.b(ffg.bv);
-         } else {
-            this.a.b(ffg.a($$0, $$1));
-         }
+   public void aO_() {
+      this.m.a(this.d);
+   }
 
-         this.a = null;
-         this.u = ae.c();
-         this.w.b();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+   static class a extends foy<fxc.b> {
+      public a(flj $$0, int $$1, fxc $$2) {
+         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
+         $$2.v.c().forEach($$1x -> this.b(new fxc.b($$2, $$1x)));
+      }
+
+      @Override
+      public int a() {
+         return 310;
+      }
+
+      @Override
+      public void a(int $$0, fsg $$1) {
+         super.a($$0, $$1);
+         int $$2 = $$0 / 2 - 155;
+         this.aH_().forEach($$1x -> $$1x.a.j($$2));
       }
    }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      boolean $$4 = false;
+   static class b extends foy.a<fxc.b> {
+      final fop a;
 
-      for (flx $$5 : this.c.V) {
-         if (!$$5.l()) {
-            $$4 = true;
-            break;
-         }
+      b(fuk $$0, alm.a $$1) {
+         this.a = fos.a($$1.a(), fth.b($$0, $$1.c(), false)).a(310).a();
       }
 
-      this.x.j = $$4;
+      @Override
+      public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a.k($$2);
+         this.a.a($$0, $$6, $$7, $$9);
+      }
+
+      @Override
+      public List<? extends fqp> aH_() {
+         return List.of(this.a);
+      }
+
+      @Override
+      public List<? extends fsn> b() {
+         return List.of(this.a);
+      }
    }
 }

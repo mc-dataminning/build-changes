@@ -1,72 +1,10 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class xt {
-   private final int a;
-   private final ObjectList<xu> b = new ObjectArrayList();
-   @Nullable
-   private xw c;
+   static Function<String, Supplier<wo>> a = $$0 -> () -> wo.b($$0);
 
-   public xt(int $$0) {
-      this.a = $$0;
-
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.b.add(null);
-      }
-   }
-
-   public void a(xw $$0) {
-      if (!$$0.equals(this.c)) {
-         this.b.add(new xu($$0, true));
-         this.c = $$0;
-      }
-   }
-
-   public int a() {
-      return this.b.size();
-   }
-
-   public boolean a(int $$0) {
-      int $$1 = this.b.size() - this.a;
-      if ($$0 >= 0 && $$0 <= $$1) {
-         this.b.removeElements(0, $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public Optional<xr> a(xr.b $$0) {
-      if (!this.a($$0.a())) {
-         return Optional.empty();
-      } else {
-         ObjectList<xw> $$1 = new ObjectArrayList($$0.b().cardinality());
-         if ($$0.b().length() > this.a) {
-            return Optional.empty();
-         } else {
-            for (int $$2 = 0; $$2 < this.a; $$2++) {
-               boolean $$3 = $$0.b().get($$2);
-               xu $$4 = (xu)this.b.get($$2);
-               if ($$3) {
-                  if ($$4 == null) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, $$4.a());
-                  $$1.add($$4.b());
-               } else {
-                  if ($$4 != null && !$$4.c()) {
-                     return Optional.empty();
-                  }
-
-                  this.b.set($$2, null);
-               }
-            }
-
-            return Optional.of(new xr($$1));
-         }
-      }
+   public static void a(Function<String, Supplier<wo>> $$0) {
+      a = $$0;
    }
 }

@@ -1,46 +1,30 @@
-public class dcw extends dbl {
-   public dcw(dbi $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cxg $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
-
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cxk.wr)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cxk.pb)) {
-                  return false;
-               }
+public record dcw<T>(T a, Optional<eza> b) {
+   public static Codec<eza> a(baj $$0) {
+      return eza.e
+         .validate(
+            $$1 -> {
+               azf.a $$2 = new azf.a();
+               evx $$3 = new evx($$2, $$0);
+               $$1.a($$3);
+               return $$2.b()
+                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
+                  .orElseGet(() -> DataResult.success($$1));
             }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+         );
    }
 
-   public cxg a(dbj $$0, js.a $$1) {
-      cxg $$2 = $$0.a(1, 1);
-      if (!$$2.a(cxk.wr)) {
-         return cxg.j;
-      } else {
-         cxg $$3 = new cxg(cxk.wq, 8);
-         $$3.b(ku.Q, $$2.a(ku.Q));
-         return $$3;
-      }
+   public static <T> Codec<dcw<T>> a(Codec<T> $$0, baj $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(dcw::a), a($$1).optionalFieldOf("requirements").forGetter(dcw::b)).apply($$2, dcw::new)
+      );
    }
 
-   @Override
-   public dcf<dcw> a() {
-      return dcf.j;
+   public boolean a(evr $$0) {
+      return this.b.isEmpty() ? true : this.b.get().test($$0);
    }
 }

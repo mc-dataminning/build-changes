@@ -1,30 +1,25 @@
-public record aht(int b, int c, boolean d) implements zr<ahb> {
-   public static final zi<wh, aht> a = zr.a(aht::a, aht::new);
+public record aht(int b, int c) implements yv<agf> {
+   public static final ym<vl, aht> a = yv.a(aht::a, aht::new);
 
-   private aht(wh $$0) {
-      this($$0.l(), $$0.x(), $$0.readBoolean());
+   private aht(vl $$0) {
+      this($$0.l(), $$0.l());
    }
 
-   private void a(wh $$0) {
+   private void a(vl $$0) {
       $$0.c(this.b);
-      $$0.f(this.c);
-      $$0.a(this.d);
+      $$0.c(this.c);
    }
 
    @Override
-   public zt<aht> a() {
-      return agz.bB;
+   public yx<aht> a() {
+      return agd.bm;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
    public int e() {
       return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

@@ -1,25 +1,30 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dsk {
-   dah c();
+public class dsk extends dnc {
+   public static final MapCodec<dsk> c = b(dsk::new);
+   public static final fbu g = djm.a(4.0, 0.0, 4.0, 12.0, 15.0, 12.0);
 
-   static List<dsk> d() {
-      return ma.g.s().map(dsk::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<dsk> a() {
+      return c;
    }
 
-   @Nullable
-   static dsk a(dgy $$0) {
-      if ($$0.j() instanceof cvm $$1) {
-         dkd var6 = $$1.d();
-         if (var6 instanceof dsk) {
-            return (dsk)var6;
-         }
-      }
+   public dsk(dww.d $$0) {
+      super($$0, jn.b, g, false, 0.1);
+   }
 
-      cxc $$2 = $$0.j();
-      return $$2 instanceof dsk ? (dsk)$$2 : null;
+   @Override
+   protected int a(azh $$0) {
+      return dov.a($$0);
+   }
+
+   @Override
+   protected djm b() {
+      return djo.pe;
+   }
+
+   @Override
+   protected boolean h(dwx $$0) {
+      return dov.a($$0);
    }
 }

@@ -1,106 +1,99 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dsr extends dkd {
-   public static final MapCodec<dsr> a = b(dsr::new);
-   public static final dyf b = dye.I;
+public class dsr extends dqr {
+   public static final MapCodec<dsr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dyj.a.fieldOf("wood_type").forGetter(dqr::d), t()).apply($$0, dsr::new));
+   public static final dxu<jn> b = dnk.aF;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<jn, fbu> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         jn.c,
+         djm.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         jn.d,
+         djm.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         jn.f,
+         djm.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         jn.e,
+         djm.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
+   );
 
    @Override
    public MapCodec<dsr> a() {
       return a;
    }
 
-   public dsr(dxn.d $$0) {
-      super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+   public dsr(dyj $$0, dww.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.F.b().b(b, jn.c).b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if ($$1.C($$2)) {
-            a($$1, $$2);
-            $$1.a($$2, false);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return i.get($$0.c(b));
+   }
+
+   @Override
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Nullable
+   @Override
+   public dwx a(dag $$0) {
+      dwx $$1 = this.m();
+      esz $$2 = $$0.q().b_($$0.a());
+      dgl $$3 = $$0.q();
+      ji $$4 = $$0.a();
+      jn[] $$5 = $$0.f();
+
+      for (jn $$6 : $$5) {
+         if ($$6.o().d()) {
+            jn $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(f, Boolean.valueOf($$2.a() == eta.c));
+            }
          }
       }
+
+      return null;
    }
 
    @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
-      if ($$1.C($$2)) {
-         a($$1, $$2);
-         $$1.a($$2, false);
-      }
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      return $$4.g() == $$0.c(b) && !$$0.a($$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public dxo a(dgz $$0, jh $$1, dxo $$2, cpo $$3) {
-      if (!$$0.B_() && !$$3.b() && $$2.c(b)) {
-         a($$0, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
+   public float h(dwx $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   public void a(arx $$0, jh $$1, dgr $$2) {
-      clt $$3 = new clt($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.c());
-      int $$4 = $$3.m();
-      $$3.b((short)($$0.A.a($$4 / 4) + $$4 / 8));
-      $$0.b($$3);
-   }
-
-   public static void a(dgz $$0, jh $$1) {
-      a($$0, $$1, null);
-   }
-
-   private static void a(dgz $$0, jh $$1, @Nullable bvx $$2) {
-      if (!$$0.C) {
-         clt $$3 = new clt($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
-         $$0.b($$3);
-         $$0.a(null, $$3.dB(), $$3.dD(), $$3.dH(), awv.An, aww.e, 1.0F, 1.0F);
-         $$0.a($$2, eck.I, $$1);
-      }
+   public fba o(dwx $$0) {
+      fbu $$1 = i.get($$0.c(b));
+      return $$1.a().f();
    }
 
    @Override
-   protected bta a(cxg $$0, dxo $$1, dgz $$2, jh $$3, cpo $$4, bsz $$5, fbn $$6) {
-      if (!$$0.a(cxk.oX) && !$$0.a(cxk.uV)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else {
-         a($$2, $$3, $$4);
-         $$2.a($$3, dkf.a.m(), 11);
-         cxc $$7 = $$0.h();
-         if ($$0.a(cxk.oX)) {
-            $$0.a(1, $$4, bvx.d($$5));
-         } else {
-            $$0.a(1, $$4);
-         }
-
-         $$4.b(axf.c.b($$7));
-         return bta.a;
-      }
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(dgz $$0, dxo $$1, fbn $$2, cqh $$3) {
-      if ($$0 instanceof arx $$4) {
-         jh $$5 = $$2.b();
-         bvb $$6 = $$3.p();
-         if ($$3.bY() && $$3.c($$4, $$5)) {
-            a($$0, $$5, $$6 instanceof bvx ? (bvx)$$6 : null);
-            $$0.a($$5, false);
-         }
-      }
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public boolean a(dgr $$0) {
-      return false;
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b);
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, f);
    }
 }

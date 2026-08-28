@@ -1,43 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class cac {
-   public static <E extends bvz> bxr<E> a(cac.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
-   }
+   private static final int a = 16;
 
-   public static <E extends bvz> bxr<E> a(cac.a<E> $$0, cac.b<E> $$1) {
-      return cbd.a(
-         (Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$2 -> $$2.group($$2.c(cfb.o), $$2.a(cfb.E)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
-                     return false;
-                  } else {
-                     Optional<? extends bvx> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bvx $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
-                     }
+   public static bxa<bvg> a(Predicate<jr<cgn>> $$0, cek<jq> $$1) {
+      return cam.a((Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               jq $$6 = $$2.b($$2x);
+               ji $$7 = $$6.b();
+               if ($$3.ai() == $$6.a() && $$7.a($$4.du(), 16.0)) {
+                  arc $$8 = $$3.p().a($$6.a());
+                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     $$3.A().b($$7);
+                     agc.c($$3, $$7);
                   }
-               }))
-      );
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(arx var1, E var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bvx> get(arx var1, E var2);
+   private static boolean a(arc $$0, ji $$1, bvg $$2) {
+      dwx $$3 = $$0.a_($$1);
+      return $$3.a(awp.T) && $$3.c(djf.c) && !$$2.fR();
    }
 }

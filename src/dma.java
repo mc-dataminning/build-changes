@@ -1,148 +1,89 @@
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public abstract class dma extends dkd implements drj {
-   public static final dyf a = dpv.b;
-   public static final dyf b = dpv.c;
-   public static final dyf c = dpv.d;
-   public static final dyf d = dpv.e;
-   public static final dyf e = dye.J;
-   protected static final Map<jm, dyf> f = dpv.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ae.a());
-   protected final fcl[] g;
-   protected final fcl[] h;
-   private final Object2IntMap<dxo> i = new Object2IntOpenHashMap();
+public class dma extends diy implements dpj {
+   public static final MapCodec<dma> a = b(dma::new);
 
-   protected dma(float $$0, float $$1, float $$2, float $$3, float $$4, dxn.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
-      UnmodifiableIterator var7 = this.F.a().iterator();
+   @Override
+   public MapCodec<dma> a() {
+      return a;
+   }
 
-      while (var7.hasNext()) {
-         dxo $$6 = (dxo)var7.next();
-         this.h($$6);
+   protected dma(dww.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dvs($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dtz> dua<T> a(dgi $$0, dwx $$1, dub<T> $$2) {
+      return a($$2, dub.w, $$0.C ? dvs::a : dvs::b);
+   }
+
+   @Override
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      dtz $$4 = $$1.c_($$2);
+      if ($$4 instanceof dvs) {
+         int $$5 = ((dvs)$$4).f();
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(lt.ae, $$7, $$8, $$9, $$10, $$11, $$12);
+         }
       }
    }
 
    @Override
-   protected abstract MapCodec<? extends dma> a();
-
-   protected fcl[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      float $$5 = 8.0F - $$0;
-      float $$6 = 8.0F + $$0;
-      float $$7 = 8.0F - $$1;
-      float $$8 = 8.0F + $$1;
-      fcl $$9 = dkd.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
-      fcl $$10 = dkd.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
-      fcl $$11 = dkd.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
-      fcl $$12 = dkd.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
-      fcl $$13 = dkd.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
-      fcl $$14 = fci.a($$10, $$13);
-      fcl $$15 = fci.a($$11, $$12);
-      fcl[] $$16 = new fcl[]{
-         fci.a(),
-         $$11,
-         $$12,
-         $$15,
-         $$10,
-         fci.a($$11, $$10),
-         fci.a($$12, $$10),
-         fci.a($$15, $$10),
-         $$13,
-         fci.a($$11, $$13),
-         fci.a($$12, $$13),
-         fci.a($$15, $$13),
-         $$14,
-         fci.a($$11, $$14),
-         fci.a($$12, $$14),
-         fci.a($$15, $$14)
-      };
-
-      for (int $$17 = 0; $$17 < 16; $$17++) {
-         $$16[$$17] = fci.a($$9, $$16[$$17]);
-      }
-
-      return $$16;
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return cwp.j;
    }
 
    @Override
-   protected boolean e_(dxo $$0) {
-      return !$$0.c(e);
-   }
-
-   @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return this.h[this.h($$0)];
-   }
-
-   @Override
-   protected fcl b(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return this.g[this.h($$0)];
-   }
-
-   private static int a(jm $$0) {
-      return 1 << $$0.e();
-   }
-
-   protected int h(dxo $$0) {
-      return this.i.computeIntIfAbsent($$0, $$0x -> {
-         int $$1 = 0;
-         if ($$0x.c(a)) {
-            $$1 |= a(jm.c);
-         }
-
-         if ($$0x.c(b)) {
-            $$1 |= a(jm.f);
-         }
-
-         if ($$0x.c(c)) {
-            $$1 |= a(jm.d);
-         }
-
-         if ($$0x.c(d)) {
-            $$1 |= a(jm.e);
-         }
-
-         return $$1;
-      });
-   }
-
-   @Override
-   protected etq b_(dxo $$0) {
-      return $$0.c(e) ? etr.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dxo $$0, euf $$1) {
+   protected boolean a(dwx $$0, esy $$1) {
       return false;
    }
 
    @Override
-   protected dxo a(dxo $$0, dqv $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.b(a, $$0.c(c)).b(b, $$0.c(d)).b(c, $$0.c(a)).b(d, $$0.c(b));
-         case d:
-            return $$0.b(a, $$0.c(b)).b(b, $$0.c(c)).b(c, $$0.c(d)).b(d, $$0.c(a));
-         case b:
-            return $$0.b(a, $$0.c(d)).b(b, $$0.c(a)).b(c, $$0.c(b)).b(d, $$0.c(c));
-         default:
-            return $$0;
+   protected void a(dwx $$0, dgi $$1, ji $$2, buk $$3) {
+      if ($$3.o(false) && !$$1.C && $$1.c_($$2) instanceof dvs $$5 && !$$5.c()) {
+         $$3.a(this, $$2);
+         dvs.c($$1, $$2, $$0, $$5);
       }
    }
 
+   @Nullable
    @Override
-   protected dxo a(dxo $$0, dpc $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.b(a, $$0.c(c)).b(c, $$0.c(a));
-         case c:
-            return $$0.b(b, $$0.c(d)).b(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
+   public etz a(arc $$0, buk $$1, ji $$2) {
+      if ($$0.c_($$2) instanceof dvs $$4) {
+         fba $$6 = $$4.a($$0, $$2);
+         if ($$6 == null) {
+            return null;
+         } else {
+            return $$1 instanceof cqa
+               ? new etz($$0, $$6, fba.c, 0.0F, 0.0F, Set.of(), etz.c)
+               : new etz($$0, $$6, fba.c, 0.0F, 0.0F, bvu.a(bvu.l, bvu.k), etz.c);
+         }
+      } else {
+         return null;
       }
    }
 }

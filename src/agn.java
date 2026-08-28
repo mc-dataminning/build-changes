@@ -1,46 +1,44 @@
+import java.time.Instant;
 import javax.annotation.Nullable;
 
-public class agn implements zr<acg> {
-   public static final zi<wh, agn> a = zr.a(agn::a, agn::new);
-   private final int b;
-   @Nullable
-   private final um c;
+public record agn(String b, Instant c, long d, @Nullable xa e, wv.b f) implements yv<agf> {
+   public static final ym<vl, agn> a = yv.a(agn::a, agn::new);
 
-   public agn(int $$0, @Nullable um $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private agn(vl $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xa::a), new wv.b($$0));
    }
 
-   private agn(wh $$0) {
-      this.b = $$0.l();
-      this.c = $$0.o();
-   }
-
-   private void a(wh $$0) {
-      $$0.c(this.b);
-      $$0.a((vj)this.c);
+   private void a(vl $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xa::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zt<agn> a() {
-      return agz.bb;
+   public yx<agn> a() {
+      return agd.br;
    }
 
-   public void a(acg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
-
-   @Nullable
-   public um e() {
+   public Instant e() {
       return this.c;
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xa g() {
+      return this.e;
+   }
+
+   public wv.b h() {
+      return this.f;
    }
 }

@@ -1,100 +1,82 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmc extends djp {
+public class dmc extends djm {
    public static final MapCodec<dmc> a = b(dmc::new);
-   public static final dyn b = dye.aW;
-   public static final dyf c = dye.t;
-   protected static final fcl d = dkd.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+   public static final dxu<jn> b = dnk.aF;
+   public static final dxo c = dxn.l;
+   protected static final fbu d = djm.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final fbu e = djm.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final fbu f = fbr.a(d, e);
+   private static dxc g;
 
    @Override
    public MapCodec<dmc> a() {
       return a;
    }
 
-   public dmc(dxn.d $$0) {
+   public dmc(dww.d $$0) {
       super($$0);
-      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean g_(dxo $$0) {
+   protected boolean g_(dwx $$0) {
       return true;
    }
 
    @Override
-   protected int a(dxo $$0, dge $$1, jh $$2, jm $$3) {
-      return $$0.c(b);
-   }
-
-   private static void e(dxo $$0, dgz $$1, jh $$2) {
-      int $$3 = $$1.a(dhi.a, $$2) - $$1.E_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * azu.b($$4));
-      }
-
-      $$3 = azu.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
-      }
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return $$0.c(c) ? f : d;
    }
 
    @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      if (!$$3.gv()) {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         if (!$$1.C) {
-            dxo $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(eck.c, $$2, eck.a.a($$3, $$5));
-            e($$5, $$1, $$2);
-         }
-
-         return bta.a;
-      }
+   public dwx a(dag $$0) {
+      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
    }
 
    @Override
-   protected dqo a_(dxo $$0) {
-      return dqo.c;
-   }
-
-   @Override
-   protected boolean f_(dxo $$0) {
+   protected boolean c_(dwx $$0) {
       return true;
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dvg($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
-      return !$$0.C && $$0.G_().g() ? a($$2, dus.r, dmc::a) : null;
-   }
-
-   private static void a(dgz $$0, jh $$1, dxo $$2, dvg $$3) {
-      if ($$0.ad() % 20L == 0L) {
-         e($$2, $$0, $$1);
-      }
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return $$0.c(c) ? 15 : 0;
    }
 
    @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
       $$0.a(b, c);
+   }
+
+   public static dxc b() {
+      if (g == null) {
+         g = dxd.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dxb.a(dxg.a))
+            .a('^', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.d))))
+            .a('>', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.e))))
+            .a('v', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.c))))
+            .a('<', dxb.a(dxg.a(djo.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jn.f))))
+            .b();
+      }
+
+      return g;
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

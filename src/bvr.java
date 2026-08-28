@@ -1,38 +1,65 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum bvr implements azx, baq {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
+public class bvr {
+   private final dpj a;
+   private ji b;
+   private int c;
+   private boolean d;
 
-   public static final Codec<bvr> c = baq.a(bvr::values);
-   public static final IntFunction<bvr> d = ayl.a(bvr::b, values(), ayl.a.a);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private bvr(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public bvr(dpj $$0, ji $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = true;
    }
 
-   public bvr e() {
-      return this == a ? b : a;
+   public boolean a(arc $$0, buk $$1, boolean $$2) {
+      if (!this.d) {
+         this.f();
+         return false;
+      } else {
+         this.d = false;
+         return $$2 && this.c++ >= this.a.a($$0, $$1);
+      }
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   @Nullable
+   public etz a(arc $$0, buk $$1) {
+      return this.a.a($$0, $$1, this.b);
    }
 
-   @Override
-   public String a() {
-      return this.g;
+   public dpj.a a() {
+      return this.a.b();
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   private void f() {
+      this.c = Math.max(this.c - 4, 0);
+   }
+
+   public boolean b() {
+      return this.c <= 0;
+   }
+
+   public ji c() {
+      return this.b;
+   }
+
+   public void a(ji $$0) {
+      this.b = $$0;
+   }
+
+   public int d() {
+      return this.c;
+   }
+
+   public boolean e() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean a(dpj $$0) {
+      return this.a == $$0;
    }
 }

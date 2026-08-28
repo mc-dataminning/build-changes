@@ -1,25 +1,8 @@
-public class dcu extends dbb {
-   public dcu(String $$0, dbh $$1, dbr $$2, cxg $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   protected cxc f() {
-      return cxk.xl;
-   }
-
-   @Override
-   public dcg<dcu> b() {
-      return dcg.d;
-   }
-
-   @Override
-   public dcf<dcu> a() {
-      return dcf.q;
-   }
-
-   @Override
-   public dby h() {
-      return dbx.j;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dcu {
 }

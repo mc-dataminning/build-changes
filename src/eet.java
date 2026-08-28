@@ -1,26 +1,31 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class eet implements eeq {
-   private final kl e;
-   private final jm f;
-   public static final MapCodec<eet> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kl.v(16).optionalFieldOf("offset", kl.h).forGetter($$0x -> $$0x.e), jm.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
-            .apply($$0, eet::new)
-   );
+public class eet extends edp {
+   private final kf a;
+   private final ecw b;
+   private final edg c;
+   private final edj.o d;
 
-   public eet(kl $$0, jm $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public eet(ecv $$0, kf $$1, dgk $$2, ecw $$3, edg $$4, edj.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   public boolean a(dhx $$0, jh $$1) {
-      jh $$2 = $$1.a(this.e);
-      return $$0.a_($$2).c($$0, $$2, this.f);
+   @Deprecated
+   public Optional<dwx> a(Function<ji, jr<dhk>> $$0, dys $$1, ji $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
    }
 
-   @Override
-   public eer<?> a() {
-      return eer.d;
+   @Deprecated
+   public kf c() {
+      return this.a;
+   }
+
+   public edg d() {
+      return this.c;
    }
 }

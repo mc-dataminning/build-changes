@@ -1,58 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class dmy extends dob {
-   public static final dyl<dxz> L = dye.X;
+public class dmy extends dri implements djp {
+   public static final MapCodec<dmy> a = b(dmy::new);
 
-   protected dmy(dxn.d $$0) {
+   @Override
+   public MapCodec<dmy> a() {
+      return a;
+   }
+
+   public dmy(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dmy> a();
-
-   @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      return b($$1, $$2, n($$0).g());
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
-   public static boolean b(dhc $$0, jh $$1, jm $$2) {
-      jh $$3 = $$1.a($$2);
-      return $$0.a_($$3).c($$0, $$3, $$2.g());
+   @Override
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return true;
    }
 
-   @Nullable
    @Override
-   public dxo a(dax $$0) {
-      for (jm $$1 : $$0.f()) {
-         dxo $$2;
-         if ($$1.o() == jm.a.b) {
-            $$2 = this.m().b(L, $$1 == jm.b ? dxz.c : dxz.a).b(aF, $$0.g());
-         } else {
-            $$2 = this.m().b(L, dxz.b).b(aF, $$1.g());
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      ji $$4 = $$2.d();
+      dwx $$5 = djo.bA.m();
+      Optional<jr.c<emq>> $$6 = $$0.K_().e(mc.aT).a(rw.n);
+
+      label51:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         ji $$8 = $$4;
+
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
+               continue label51;
+            }
          }
 
-         if ($$2.a((dhc)$$0.q(), $$0.a())) {
-            return $$2;
+         dwx $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            djp $$11 = (djp)$$5.b();
+            if ($$11.a($$0, $$8, $$10)) {
+               $$11.a($$0, $$1, $$8, $$10);
+            }
+         }
+
+         if ($$10.l()) {
+            jr<emq> $$13;
+            if ($$1.a(8) == 0) {
+               List<efk<?, ?>> $$12 = $$0.t($$8).a().d().b();
+               if ($$12.isEmpty()) {
+                  continue;
+               }
+
+               $$13 = ((eip)$$12.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$13 = $$6.get();
+            }
+
+            $$13.a().a($$0, $$0.m().g(), $$1, $$8);
          }
       }
-
-      return null;
    }
 
    @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      return n($$0).g() == $$4 && !$$0.a($$1, $$3) ? dkf.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   protected static jm n(dxo $$0) {
-      switch ((dxz)$$0.c(L)) {
-         case c:
-            return jm.a;
-         case a:
-            return jm.b;
-         default:
-            return $$0.c(aF);
-      }
+   public djp.a aq_() {
+      return djp.a.a;
    }
 }

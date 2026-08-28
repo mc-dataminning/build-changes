@@ -1,39 +1,31 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdl extends ccv {
-   private final bvz a;
-   private bvx b;
-   private int c;
+public class cdl extends cce {
+   private final clj a;
+   @Nullable
+   private bvg b;
 
-   public cdl(bvz $$0) {
+   public cdl(clj $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(ccv.a.a, ccv.a.b));
+      this.a(EnumSet.of(cce.a.a));
    }
 
    @Override
    public boolean b() {
-      bvx $$0 = this.a.O_();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
+      bvg $$0 = this.a.O_();
+      return this.a.t() > 0 || $$0 != null && this.a.g((buk)$$0) < 9.0;
    }
 
    @Override
-   public boolean c() {
-      if (!this.b.bL()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.L().m() || this.b();
-      }
+   public void d() {
+      this.a.L().m();
+      this.b = this.a.O_();
    }
 
    @Override
    public void e() {
       this.b = null;
-      this.a.L().o();
    }
 
    @Override
@@ -43,23 +35,14 @@ public class cdl extends ccv {
 
    @Override
    public void a() {
-      this.a.H().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dr() * 2.0F * this.a.dr() * 2.0F);
-      double $$1 = this.a.i(this.b.dB(), this.b.dD(), this.b.dH());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.L().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.c(a(this.a), this.b);
-         }
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((buk)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.N().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
       }
    }
 }

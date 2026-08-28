@@ -1,34 +1,22 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bzp {
-   public static bxr<bvx> a(bwa $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
-   }
-
-   public static bzb<bvx> a(bvi<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq()), $$1);
-   }
-
-   public static bzb<bvx> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bzb<bvx> a(Predicate<bvx> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return cbd.a(
-         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$2x -> $$2x.group($$2x.c(cfb.n), $$2x.b(cfb.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bvx> $$8 = $$2x.<cfd>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bvb)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new byb($$8.get(), true));
+   public static bxa<bvg> a() {
+      return cam.a(
+         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.group($$0.b(cek.ab))
+               .apply(
+                  $$0,
+                  $$1 -> ($$2, $$3, $$4) -> {
+                        Optional.ofNullable($$2.a($$0.b($$1)))
+                           .map($$0xxx -> $$0xxx instanceof bvg $$1xx ? $$1xx : null)
+                           .filter(bvg::eF)
+                           .filter($$1xx -> $$1xx.aq() != bur.bS || $$2.O().b(dge.O))
+                           .ifPresent($$1xx -> $$1.b());
                         return true;
                      }
-                  }))
+               ))
       );
    }
 }

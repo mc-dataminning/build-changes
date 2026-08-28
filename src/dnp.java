@@ -1,78 +1,82 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
 
-public class dnp extends drz implements dkg {
-   public static final MapCodec<dnp> a = b(dnp::new);
+public class dnp extends dlj {
+   public static final MapCodec<dnp> i = b(dnp::new);
 
    @Override
-   public MapCodec<dnp> a() {
-      return a;
+   public MapCodec<? extends dnp> a() {
+      return i;
    }
 
-   public dnp(dxn.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
-      return $$0.a_($$1.d()).l();
-   }
-
-   @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
+   protected dnp(dww.d $$0) {
+      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
+      this.l(
+         this.F
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      jh $$4 = $$2.d();
-      dxo $$5 = dkf.bA.m();
-      Optional<jq.c<enh>> $$6 = $$0.K_().e(mb.aT).a(ss.n);
+   public dwx a(dag $$0) {
+      dfn $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      esz $$3 = $$0.q().b_($$0.a());
+      ji $$4 = $$2.f();
+      ji $$5 = $$2.g();
+      ji $$6 = $$2.h();
+      ji $$7 = $$2.i();
+      dwx $$8 = $$1.a_($$4);
+      dwx $$9 = $$1.a_($$5);
+      dwx $$10 = $$1.a_($$6);
+      dwx $$11 = $$1.a_($$7);
+      return this.m()
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jn.d))))
+         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jn.c))))
+         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jn.f))))
+         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jn.e))))
+         .b(e, Boolean.valueOf($$3.a() == eta.c));
+   }
 
-      label51:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         jh $$8 = $$4;
+   @Override
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, eta.c, eta.c.a($$1));
+      }
 
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
-               continue label51;
-            }
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected fbu c(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return fbr.a();
+   }
+
+   @Override
+   protected boolean b(dwx $$0, dwx $$1, jn $$2) {
+      if ($$1.a(this)) {
+         if (!$$2.o().d()) {
+            return true;
          }
 
-         dxo $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            dkg $$11 = (dkg)$$5.b();
-            if ($$11.b($$0, $$8, $$10)) {
-               $$11.a($$0, $$1, $$8, $$10);
-            }
-         }
-
-         if ($$10.l()) {
-            jq<enh> $$13;
-            if ($$1.a(8) == 0) {
-               List<egb<?, ?>> $$12 = $$0.t($$8).a().d().b();
-               if ($$12.isEmpty()) {
-                  continue;
-               }
-
-               $$13 = ((ejg)$$12.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$13 = $$6.get();
-            }
-
-            $$13.a().a($$0, $$0.m().g(), $$1, $$8);
+         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
+            return true;
          }
       }
+
+      return super.b($$0, $$1, $$2);
+   }
+
+   public final boolean a(dwx $$0, boolean $$1) {
+      return !k($$0) && $$1 || $$0.b() instanceof dnp || $$0.a(awp.N);
    }
 
    @Override
-   public dkg.a ar_() {
-      return dkg.a.a;
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

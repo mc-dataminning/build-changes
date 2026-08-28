@@ -1,22 +1,20 @@
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import net.minecraft.server.MinecraftServer;
 
-public class boy implements boo<StringReader, vj> {
-   public static final boo<StringReader, vj> a = new boy();
+public enum boy {
+   a("client"),
+   b("server");
 
-   private boy() {
+   private final String c;
+
+   private boy(final String $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public Optional<vj> a(bon<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
+   public static boy a(MinecraftServer $$0) {
+      return $$0.n() ? b : a;
+   }
 
-      try {
-         return Optional.of(new vk($$0.b()).d());
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
-         return Optional.empty();
-      }
+   public String a() {
+      return this.c;
    }
 }

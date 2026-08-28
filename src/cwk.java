@@ -1,20 +1,32 @@
-public class cwk extends cxc {
-   public static float a = 1.5F;
+public interface cwk {
+   int a = 256;
+   float b = 7.0F;
+   akt<cwi> c = a("ponder_goat_horn");
+   akt<cwi> d = a("sing_goat_horn");
+   akt<cwi> e = a("seek_goat_horn");
+   akt<cwi> f = a("feel_goat_horn");
+   akt<cwi> g = a("admire_goat_horn");
+   akt<cwi> h = a("call_goat_horn");
+   akt<cwi> i = a("yearn_goat_horn");
+   akt<cwi> j = a("dream_goat_horn");
 
-   public cwk(cxc.a $$0) {
-      super($$0);
+   private static akt<cwi> a(String $$0) {
+      return akt.a(mc.I, aku.b($$0));
    }
 
-   @Override
-   public bta a(dgz $$0, cpo $$1, bsz $$2) {
-      cxg $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awv.iO, aww.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arx $$4) {
-         cqh.a(cqr::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
-      }
+   static void a(qe<cwi> $$0) {
+      a($$0, c, (jr<avz>)awa.nd.get(0), 7.0F, 256.0F);
+      a($$0, d, (jr<avz>)awa.nd.get(1), 7.0F, 256.0F);
+      a($$0, e, (jr<avz>)awa.nd.get(2), 7.0F, 256.0F);
+      a($$0, f, (jr<avz>)awa.nd.get(3), 7.0F, 256.0F);
+      a($$0, g, (jr<avz>)awa.nd.get(4), 7.0F, 256.0F);
+      a($$0, h, (jr<avz>)awa.nd.get(5), 7.0F, 256.0F);
+      a($$0, i, (jr<avz>)awa.nd.get(6), 7.0F, 256.0F);
+      a($$0, j, (jr<avz>)awa.nd.get(7), 7.0F, 256.0F);
+   }
 
-      $$1.b(axf.c.b(this));
-      $$3.a(1, $$1);
-      return bta.a;
+   static void a(qe<cwi> $$0, akt<cwi> $$1, jr<avz> $$2, float $$3, float $$4) {
+      xc $$5 = wo.c(af.a("instrument", $$1.a()));
+      $$0.a($$1, new cwi($$2, $$3, $$4, $$5));
    }
 }

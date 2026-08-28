@@ -1,123 +1,60 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import javax.annotation.Nullable;
 
-public class cyz extends cxc implements cyb {
-   public static final int a = 10;
-   public static final float b = 8.0F;
-   public static final float c = 2.5F;
+public record cyz(List<Float> d, List<Boolean> e, List<String> f, List<Integer> g) {
+   public static final cyz a = new cyz(List.of(), List.of(), List.of(), List.of());
+   public static final Codec<cyz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.FLOAT.listOf().optionalFieldOf("floats", List.of()).forGetter(cyz::a),
+               Codec.BOOL.listOf().optionalFieldOf("flags", List.of()).forGetter(cyz::b),
+               Codec.STRING.listOf().optionalFieldOf("strings", List.of()).forGetter(cyz::c),
+               ayi.i.listOf().optionalFieldOf("colors", List.of()).forGetter(cyz::d)
+            )
+            .apply($$0, cyz::new)
+   );
+   public static final ym<ByteBuf, cyz> c = ym.a(yk.l.a(yk.a()), cyz::a, yk.b.a(yk.a()), cyz::b, yk.o.a(yk.a()), cyz::c, yk.g.a(yk.a()), cyz::d, cyz::new);
 
-   public cyz(cxc.a $$0) {
-      super($$0);
+   @Nullable
+   private static <T> T a(List<T> $$0, int $$1) {
+      return $$1 >= 0 && $$1 < $$0.size() ? $$0.get($$1) : null;
    }
 
-   public static czx c() {
-      return czx.a().a(bxf.c, new bxd(g, 8.0, bxd.a.a), bvk.b).a(bxf.e, new bxd(h, -2.9F, bxd.a.a), bvk.b).a();
+   @Nullable
+   public Float a(int $$0) {
+      return a(this.d, $$0);
    }
 
-   public static dai d() {
-      return new dai(List.of(), 1.0F, 2);
+   @Nullable
+   public Boolean b(int $$0) {
+      return a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(dxo $$0, dgz $$1, jh $$2, cpo $$3) {
-      return !$$3.b();
+   @Nullable
+   public String c(int $$0) {
+      return a(this.f, $$0);
    }
 
-   @Override
-   public cxi b(cxg $$0) {
-      return cxi.f;
+   @Nullable
+   public Integer d(int $$0) {
+      return a(this.g, $$0);
    }
 
-   @Override
-   public int a(cxg $$0, bvx $$1) {
-      return 72000;
+   public List<Float> a() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(cxg $$0, dgz $$1, bvx $$2, int $$3) {
-      if ($$2 instanceof cpo $$4) {
-         int $$6 = this.a($$0, $$2) - $$3;
-         if ($$6 < 10) {
-            return false;
-         } else {
-            float $$7 = dds.a($$0, $$4);
-            if ($$7 > 0.0F && !$$4.bk()) {
-               return false;
-            } else if ($$0.r()) {
-               return false;
-            } else {
-               jq<awu> $$8 = dds.b($$0, ddr.C).orElse(awv.Av);
-               if ($$1 instanceof arx $$9) {
-                  $$0.a(1, $$4);
-                  if ($$7 == 0.0F) {
-                     cqu $$10 = cqh.a(cqu::new, $$9, $$0, $$4, 0.0F, 2.5F, 1.0F);
-                     if ($$4.fV()) {
-                        $$10.b = cpv.a.c;
-                     } else {
-                        $$4.gi().h($$0);
-                     }
-
-                     $$1.a(null, $$10, $$8.a(), aww.h, 1.0F, 1.0F);
-                     return true;
-                  }
-               }
-
-               $$4.b(axf.c.b(this));
-               if ($$7 > 0.0F) {
-                  float $$11 = $$4.dM();
-                  float $$12 = $$4.dO();
-                  float $$13 = -azu.a($$11 * (float) (Math.PI / 180.0)) * azu.b($$12 * (float) (Math.PI / 180.0));
-                  float $$14 = -azu.a($$12 * (float) (Math.PI / 180.0));
-                  float $$15 = azu.b($$11 * (float) (Math.PI / 180.0)) * azu.b($$12 * (float) (Math.PI / 180.0));
-                  float $$16 = azu.c($$13 * $$13 + $$14 * $$14 + $$15 * $$15);
-                  $$13 *= $$7 / $$16;
-                  $$14 *= $$7 / $$16;
-                  $$15 *= $$7 / $$16;
-                  $$4.j((double)$$13, (double)$$14, (double)$$15);
-                  $$4.a(20, 8.0F, $$0);
-                  if ($$4.aJ()) {
-                     float $$17 = 1.1999999F;
-                     $$4.a(bwb.a, new fbr(0.0, 1.1999999F, 0.0));
-                  }
-
-                  $$1.a(null, $$4, $$8.a(), aww.h, 1.0F, 1.0F);
-                  return true;
-               } else {
-                  return false;
-               }
-            }
-         }
-      } else {
-         return false;
-      }
+   public List<Boolean> b() {
+      return this.e;
    }
 
-   @Override
-   public bta a(dgz $$0, cpo $$1, bsz $$2) {
-      cxg $$3 = $$1.b($$2);
-      if ($$3.r()) {
-         return bta.d;
-      } else if (dds.a($$3, $$1) > 0.0F && !$$1.bk()) {
-         return bta.d;
-      } else {
-         $$1.c($$2);
-         return bta.c;
-      }
+   public List<String> c() {
+      return this.f;
    }
 
-   @Override
-   public boolean a(cxg $$0, bvx $$1, bvx $$2) {
-      return true;
-   }
-
-   @Override
-   public void b(cxg $$0, bvx $$1, bvx $$2) {
-      $$0.a(1, $$2, bvj.a);
-   }
-
-   @Override
-   public cqh a(dgz $$0, ka $$1, cxg $$2, jm $$3) {
-      cqu $$4 = new cqu($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1));
-      $$4.b = cpv.a.b;
-      return $$4;
+   public List<Integer> d() {
+      return this.g;
    }
 }

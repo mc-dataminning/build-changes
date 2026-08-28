@@ -1,63 +1,95 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ay extends dy<ay.a> {
-   @Override
-   public Codec<ay.a> a() {
-      return ay.a.a;
+public record ay(Optional<jv<djm>> c, Optional<ef> d, Optional<dn> e) {
+   public static final Codec<ay> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kg.a(mc.f).optionalFieldOf("blocks").forGetter(ay::b),
+               ef.a.optionalFieldOf("state").forGetter(ay::c),
+               dn.a.optionalFieldOf("nbt").forGetter(ay::d)
+            )
+            .apply($$0, ay::new)
+   );
+   public static final ym<vz, ay> b = ym.a(yk.a(yk.c(mc.f)), ay::b, yk.a(ef.b), ay::c, yk.a(dn.b), ay::d, ay::new);
+
+   public boolean a(arc $$0, ji $$1) {
+      if (!$$0.p($$1)) {
+         return false;
+      } else {
+         return !this.a($$0.a_($$1)) ? false : !this.e.isPresent() || a($$0, $$0.c_($$1), this.e.get());
+      }
    }
 
-   public void a(ary $$0, cho $$1, cho $$2, @Nullable bus $$3) {
-      ewi $$4 = bw.b($$0, $$1);
-      ewi $$5 = bw.b($$0, $$2);
-      ewi $$6 = $$3 != null ? bw.b($$0, $$3) : null;
-      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
+   public boolean a(dxb $$0) {
+      return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   public static record a(Optional<bh> b, Optional<bh> c, Optional<bh> d, Optional<bh> e) implements dy.a {
-      public static final Codec<ay.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bw.b.optionalFieldOf("player").forGetter(ay.a::a),
-                  bw.b.optionalFieldOf("parent").forGetter(ay.a::c),
-                  bw.b.optionalFieldOf("partner").forGetter(ay.a::d),
-                  bw.b.optionalFieldOf("child").forGetter(ay.a::e)
-               )
-               .apply($$0, ay.a::new)
-      );
+   private boolean a(dwx $$0) {
+      return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+   }
 
-      public static ap<ay.a> b() {
-         return ao.p.a(new ay.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
+   private static boolean a(dgl $$0, @Nullable dtz $$1, dn $$2) {
+      return $$1 != null && $$2.a($$1.b($$0.K_()));
+   }
+
+   public boolean a() {
+      return this.e.isPresent();
+   }
+
+   public Optional<jv<djm>> b() {
+      return this.c;
+   }
+
+   public Optional<ef> c() {
+      return this.d;
+   }
+
+   public Optional<dn> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private Optional<jv<djm>> a = Optional.empty();
+      private Optional<ef> b = Optional.empty();
+      private Optional<dn> c = Optional.empty();
+
+      private a() {
       }
 
-      public static ap<ay.a> a(bw.a $$0) {
-         return ao.p.a(new ay.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(bw.a($$0))));
+      public static ay.a a() {
+         return new ay.a();
       }
 
-      public static ap<ay.a> a(Optional<bw> $$0, Optional<bw> $$1, Optional<bw> $$2) {
-         return ao.p.a(new ay.a(Optional.empty(), bw.a($$0), bw.a($$1), bw.a($$2)));
+      public ay.a a(js<djm> $$0, djm... $$1) {
+         return this.a($$0, Arrays.asList($$1));
       }
 
-      public boolean a(ewi $$0, ewi $$1, @Nullable ewi $$2) {
-         return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
+      public ay.a a(js<djm> $$0, Collection<djm> $$1) {
+         this.a = Optional.of(jv.a(djm::p, $$1));
+         return this;
       }
 
-      private static boolean a(Optional<bh> $$0, ewi $$1) {
-         return $$0.isEmpty() || $$0.get().a($$1);
+      public ay.a a(js<djm> $$0, axf<djm> $$1) {
+         this.a = Optional.of($$0.b($$1));
+         return this;
       }
 
-      @Override
-      public void a(bi $$0) {
-         dy.a.super.a($$0);
-         $$0.a(this.c, ".parent");
-         $$0.a(this.d, ".partner");
-         $$0.a(this.e, ".child");
+      public ay.a a(tq $$0) {
+         this.c = Optional.of(new dn($$0));
+         return this;
       }
 
-      @Override
-      public Optional<bh> a() {
-         return this.b;
+      public ay.a a(ef.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      public ay b() {
+         return new ay(this.a, this.b, this.c);
       }
    }
 }

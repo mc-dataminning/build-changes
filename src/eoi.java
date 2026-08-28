@@ -1,8 +1,25 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public interface eoi {
-   void a(eoh var1);
+public enum eoi implements azv {
+   a("linear"),
+   b("triangular");
 
-   @Nullable
-   eoh a(env var1);
+   public static final Codec<eoi> c = azv.a(eoi::values);
+   private final String d;
+
+   private eoi(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public int a(azh $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
+   }
 }

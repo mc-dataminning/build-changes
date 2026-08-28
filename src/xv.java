@@ -1,23 +1,53 @@
-import java.util.UUID;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record xv(UUID a, cpq b) {
-   public static xv a(cpq $$0) {
-      return new xv(UUID.randomUUID(), $$0);
+public interface xv extends wp {
+   MapCodec<xv> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("text").forGetter(xv::b)).apply($$0, xv::a));
+   wp.a<xv> b = new wp.a<>(a, "text");
+   xv c = new xv() {
+      @Override
+      public String toString() {
+         return "empty";
+      }
+
+      @Override
+      public String b() {
+         return "";
+      }
+   };
+
+   static xv a(String $$0) {
+      return (xv)($$0.isEmpty() ? c : new xv.a($$0));
    }
 
-   public ye.c a(UUID $$0) {
-      return new ye($$0, this.a).a(bai.a(this.b.b(), "SHA256withRSA"));
+   String b();
+
+   @Override
+   default wp.a<?> a() {
+      return b;
    }
 
-   public yb a() {
-      return new yb(this.a, this.b.c());
-   }
+   public static record a(String d) implements xv {
+      @Override
+      public <T> Optional<T> a(wt.a<T> $$0) {
+         return $$0.accept(this.d);
+      }
 
-   public UUID b() {
-      return this.a;
-   }
+      @Override
+      public <T> Optional<T> a(wt.b<T> $$0, xl $$1) {
+         return $$0.accept($$1, this.d);
+      }
 
-   public cpq c() {
-      return this.b;
+      @Override
+      public String toString() {
+         return "literal{" + this.d + "}";
+      }
+
+      @Override
+      public String b() {
+         return this.d;
+      }
    }
 }

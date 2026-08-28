@@ -1,39 +1,44 @@
-import java.util.List;
+public class ceu extends ces {
+   private boolean p;
 
-public class ceu<T extends bvz & bwc> extends ccv {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
-
-   public ceu(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ceu(bvi $$0, dgi $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean b() {
-      return a(this.b).O().b(dgv.P) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.eq() != null && this.b.eq().aq() == bvi.bS && this.b.er() > this.d;
+   protected etp a(int $$0) {
+      this.p = this.a.aq() == bur.I;
+      this.o = new ett(this.p);
+      this.o.a(false);
+      return new etp(this.o, $$0);
    }
 
    @Override
-   public void d() {
-      this.d = this.b.er();
-      this.b.ae_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bwc)$$0).forEach(bwc::ae_);
-      }
-
-      super.d();
+   protected boolean a() {
+      return this.p || this.a.bn();
    }
 
-   private List<? extends bvz> i() {
-      double $$0 = this.b.h(bxf.m);
-      fbm $$1 = fbm.a(this.b.du()).c($$0, 10.0, $$0);
-      return this.b.dW().a((Class<? extends bvz>)this.b.getClass(), $$1, bvg.f);
+   @Override
+   protected fba b() {
+      return new fba(this.a.dB(), this.a.e(0.5), this.a.dH());
+   }
+
+   @Override
+   protected double a(fba $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fba $$0, fba $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(ji $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

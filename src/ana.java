@@ -1,33 +1,162 @@
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class ana {
-   public static void a(CommandDispatcher<ew> $$0) {
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wo.b("commands.fill.toobig", $$0, $$1));
+   static final go b = new go(djo.a.m(), Collections.emptySet(), null);
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wo.c("commands.fill.failed"));
+
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("banlist").requires($$0x -> $$0x.c(3)))
-                  .executes($$0x -> {
-                     avy $$1 = ((ew)$$0x.getSource()).l().ag();
-                     return a((ew)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
-                  }))
-               .then(ex.a("ips").executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).l().ag().g().d()))))
-            .then(ex.a("players").executes($$0x -> a((ew)$$0x.getSource(), ((ew)$$0x.getSource()).l().ag().f().d())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("fill").requires($$0x -> $$0x.c(2)))
+            .then(
+               ey.a("from", gt.a())
+                  .then(
+                     ey.a("to", gt.a())
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a(
+                                                "block", gq.a($$1)
+                                             )
+                                             .executes(
+                                                $$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.a, null)
+                                             ))
+                                          .then(
+                                             ((LiteralArgumentBuilder)ey.a("replace")
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (ex)$$0x.getSource(),
+                                                            ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
+                                                            gq.a($$0x, "block"),
+                                                            ana.a.a,
+                                                            null
+                                                         )
+                                                   ))
+                                                .then(
+                                                   ey.a("filter", gp.a($$1))
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ex)$$0x.getSource(),
+                                                               ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
+                                                               gq.a($$0x, "block"),
+                                                               ana.a.a,
+                                                               gp.a($$0x, "filter")
+                                                            )
+                                                      )
+                                                )
+                                          ))
+                                       .then(
+                                          ey.a("keep")
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")),
+                                                      gq.a($$0x, "block"),
+                                                      ana.a.a,
+                                                      $$0xx -> $$0xx.c().u($$0xx.d())
+                                                   )
+                                             )
+                                       ))
+                                    .then(
+                                       ey.a("outline")
+                                          .executes(
+                                             $$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.b, null)
+                                          )
+                                    ))
+                                 .then(
+                                    ey.a("hollow")
+                                       .executes(
+                                          $$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.c, null)
+                                       )
+                                 ))
+                              .then(
+                                 ey.a("destroy")
+                                    .executes($$0x -> a((ex)$$0x.getSource(), ene.a(gt.a($$0x, "from"), gt.a($$0x, "to")), gq.a($$0x, "block"), ana.a.d, null))
+                              )
+                        )
+                  )
+            )
       );
    }
 
-   private static int a(ew $$0, Collection<? extends avt<?>> $$1) {
-      if ($$1.isEmpty()) {
-         $$0.a(() -> xk.c("commands.banlist.none"), false);
+   private static int a(ex $$0, ene $$1, go $$2, ana.a $$3, @Nullable Predicate<dxb> $$4) throws CommandSyntaxException {
+      int $$5 = $$1.d() * $$1.e() * $$1.f();
+      int $$6 = $$0.e().O().c(dge.A);
+      if ($$5 > $$6) {
+         throw a.create($$6, $$5);
       } else {
-         $$0.a(() -> xk.a("commands.banlist.list", $$1.size()), false);
+         List<ji> $$7 = Lists.newArrayList();
+         arc $$8 = $$0.e();
+         int $$9 = 0;
 
-         for (avt<?> $$2 : $$1) {
-            $$0.a(() -> xk.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
+         for (ji $$10 : ji.b($$1.h(), $$1.i(), $$1.j(), $$1.k(), $$1.l(), $$1.m())) {
+            if ($$4 == null || $$4.test(new dxb($$8, $$10, true))) {
+               go $$11 = $$3.e.filter($$1, $$10, $$2, $$8);
+               if ($$11 != null) {
+                  dtz $$12 = $$8.c_($$10);
+                  bsa.a($$12);
+                  if ($$11.a($$8, $$10, 2)) {
+                     $$7.add($$10.j());
+                     $$9++;
+                  }
+               }
+            }
+         }
+
+         for (ji $$13 : $$7) {
+            djm $$14 = $$8.a_($$13).b();
+            $$8.b($$13, $$14);
+         }
+
+         if ($$9 == 0) {
+            throw c.create();
+         } else {
+            int $$15 = $$9;
+            $$0.a(() -> wo.a("commands.fill.success", $$15), true);
+            return $$9;
          }
       }
+   }
 
-      return $$1.size();
+   static enum a {
+      a(($$0, $$1, $$2, $$3) -> $$2),
+      b(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? null
+               : $$2
+      ),
+      c(
+         ($$0, $$1, $$2, $$3) -> $$1.u() != $$0.h()
+                  && $$1.u() != $$0.k()
+                  && $$1.v() != $$0.i()
+                  && $$1.v() != $$0.l()
+                  && $$1.w() != $$0.j()
+                  && $$1.w() != $$0.m()
+               ? ana.b
+               : $$2
+      ),
+      d(($$0, $$1, $$2, $$3) -> {
+         $$3.b($$1, true);
+         return $$2;
+      });
+
+      public final aon.a e;
+
+      private a(final aon.a $$0) {
+         this.e = $$0;
+      }
    }
 }

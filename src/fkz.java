@@ -1,66 +1,120 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public class fkz extends fky {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xk c = xk.c("mco.configure.world.opening");
-   private final fic d;
-   private final ftr e;
-   private final boolean f;
-   private final flz g;
+public interface fkz {
+   fkz a = new fkz.a(0.0F);
+   fkz b = new fkz.a(1.0F);
 
-   public fkz(fic $$0, ftr $$1, boolean $$2, flz $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-   }
+   float a();
 
-   @Override
-   public void run() {
-      fhb $$0 = fhb.a();
+   float a(boolean var1);
 
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
+   float b();
 
-         try {
-            boolean $$2 = $$0.f(this.d.a);
-            if ($$2) {
-               this.g.execute(() -> {
-                  if (this.e instanceof fjl) {
-                     ((fjl)this.e).f();
-                  }
+   public static class a implements fkz {
+      private final float c;
 
-                  this.d.e = fic.c.b;
-                  if (this.f) {
-                     fgw.a(this.d, this.e);
-                  } else {
-                     this.g.a(this.e);
-                  }
-               });
-               break;
-            }
-         } catch (fiy var4) {
-            if (this.d()) {
-               return;
-            }
+      a(float $$0) {
+         this.c = $$0;
+      }
 
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
+      @Override
+      public float a() {
+         return this.c;
+      }
 
-            b.error("Failed to open server", var5);
-            this.a(var5);
-         }
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
       }
    }
 
-   @Override
-   public xk a() {
-      return c;
+   public static class b implements fkz {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
+
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
+      }
+
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
+      }
+
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
+      }
+
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
+         } else {
+            this.d();
+         }
+      }
+
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
+         }
+
+         this.k = true;
+      }
+
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
+         }
+
+         this.k = false;
+      }
+
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
+         }
+      }
+
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
+      }
    }
 }

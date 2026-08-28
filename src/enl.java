@@ -1,25 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public interface enl<P extends enk> {
-   enl<emw> a = a("block_predicate_filter", emw.a);
-   enl<enn> b = a("rarity_filter", enn.a);
-   enl<enp> c = a("surface_relative_threshold_filter", enp.a);
-   enl<enq> d = a("surface_water_depth_filter", enq.a);
-   enl<emv> e = a("biome", emv.a);
-   enl<emz> f = a("count", emz.a);
-   enl<enf> g = a("noise_based_count", enf.a);
-   enl<eng> h = a("noise_threshold_count", eng.a);
-   enl<emy> i = a("count_on_every_layer", emy.a);
-   enl<ena> j = a("environment_scan", ena.a);
-   enl<end> k = a("heightmap", end.a);
-   enl<enc> l = a("height_range", enc.a);
-   enl<ene> m = a("in_square", ene.a);
-   enl<enm> n = a("random_offset", enm.a);
-   enl<enb> o = a("fixed_placement", enb.a);
+public abstract class enl extends enm {
+   private final enl.a d;
+   private final int e;
+   private final int f;
 
-   MapCodec<P> codec();
+   protected enl(enl.a $$0, int $$1, int $$2, enm.c $$3) {
+      super($$3);
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+   }
 
-   private static <P extends enk> enl<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.S, $$0, () -> $$1);
+   @Override
+   public Optional<enm.b> a(enm.a $$0) {
+      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, ecs.a.a, $$1 -> this.a($$1, $$0));
+   }
+
+   private void a(eoe $$0, enm.a $$1) {
+      dfo $$2 = $$1.h();
+      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
+   }
+
+   @FunctionalInterface
+   protected interface a {
+      enq construct(edr var1, int var2, int var3);
    }
 }

@@ -1,77 +1,70 @@
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class dax extends daz {
-   private final jh b;
-   protected boolean a = true;
+public class dax extends dau {
+   private static final dba c = dba.a(cwt.rv);
+   private static final dba d = dba.a(cwt.pZ);
+   private static final dba e = dba.a(cwt.vu);
 
-   public dax(cpo $$0, bsz $$1, cxg $$2, fbn $$3) {
-      this($$0.dW(), $$0, $$1, $$2, $$3);
+   public dax(dar $$0) {
+      super($$0);
    }
 
-   public dax(daz $$0) {
-      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   public boolean a(das $$0, dgi $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            cwp $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if (c.a($$5)) {
+                  if ($$2) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               } else if (d.a($$5)) {
+                  if (++$$3 > 3) {
+                     return false;
+                  }
+               } else if (!e.a($$5)) {
+                  return false;
+               }
+            }
+         }
+
+         return $$2 && $$3 >= 1;
+      }
    }
 
-   protected dax(dgz $$0, @Nullable cpo $$1, bsz $$2, cxg $$3, fbn $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.b = $$4.b().a($$4.c());
-      this.a = $$0.a_($$4.b()).a(this);
-   }
+   public cwp a(das $$0, jt.a $$1) {
+      List<cze> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
-   public static dax a(dax $$0, jh $$1, jm $$2) {
-      return new dax(
-         $$0.q(),
-         $$0.o(),
-         $$0.p(),
-         $$0.n(),
-         new fbn(
-            new fbr((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
-            $$2,
-            $$1,
-            false
-         )
-      );
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cwp $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (d.a($$5)) {
+               $$3++;
+            } else if (e.a($$5)) {
+               cze $$6 = $$5.a(kv.ae);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
+         }
+      }
+
+      cwp $$7 = new cwp(cwt.vt, 3);
+      $$7.b(kv.af, new czf($$3, $$2));
+      return $$7;
    }
 
    @Override
-   public jh a() {
-      return this.a ? super.a() : this.b;
-   }
-
-   public boolean b() {
-      return this.a || this.q().a_(this.a()).a(this);
-   }
-
-   public boolean c() {
-      return this.a;
-   }
-
-   public jm d() {
-      return jm.a(this.o())[0];
-   }
-
-   public jm e() {
-      return jm.a(this.o(), jm.a.b);
-   }
-
-   public jm[] f() {
-      jm[] $$0 = jm.a(this.o());
-      if (this.a) {
-         return $$0;
-      } else {
-         jm $$1 = this.k();
-         int $$2 = 0;
-
-         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
-            $$2++;
-         }
-
-         if ($$2 > 0) {
-            System.arraycopy($$0, 0, $$0, 1, $$2);
-            $$0[0] = $$1.g();
-         }
-
-         return $$0;
-      }
+   public dbo<dax> a() {
+      return dbo.g;
    }
 }

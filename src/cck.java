@@ -1,34 +1,48 @@
 import java.util.EnumSet;
 
-public class cck extends ccv {
-   private final bvz a;
-   private final dgz b;
+public class cck extends cce {
+   private final bvi a;
+   private bvg b;
+   private final float c;
 
-   public cck(bvz $$0, dgz $$1) {
+   public cck(bvi $$0, float $$1) {
       this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(ccv.a.c));
+      this.c = $$1;
+      this.a(EnumSet.of(cce.a.c, cce.a.a));
    }
 
    @Override
    public boolean b() {
-      boolean $$0 = this.a.aw || this.a.av;
-      if ($$0 && this.a.aq().a(axo.h)) {
-         jh $$1 = this.a.dw().d();
-         dxo $$2 = this.b.a_($$1);
-         return $$2.a(dkf.rr) || $$2.g(this.b, $$1) == fci.a();
-      } else {
+      if (this.a.cY()) {
          return false;
+      } else {
+         this.b = this.a.O_();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.g(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aJ() ? false : this.a.dZ().a(b(5)) == 0;
+            }
+         }
       }
    }
 
    @Override
-   public boolean V_() {
-      return true;
+   public boolean c() {
+      return !this.a.aJ();
    }
 
    @Override
-   public void a() {
-      this.a.J().a();
+   public void d() {
+      fba $$0 = this.a.dz();
+      fba $$1 = new fba(this.b.dB() - this.a.dB(), 0.0, this.b.dH() - this.a.dH());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+      }
+
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

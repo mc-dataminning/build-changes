@@ -1,19 +1,23 @@
-public class gol implements gnr<dwn> {
-   private final grj a;
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public gol(gns.a $$0) {
-      this.a = $$0.c();
+public class gol<S extends dtz> implements dlu.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = glt.a($$0.i(), $$0.aA_());
+         int $$4 = glt.a($$1.i(), $$1.aA_());
+         int $$5 = glv.a($$3);
+         int $$6 = glv.a($$4);
+         int $$7 = glv.b($$3);
+         int $$8 = glv.b($$4);
+         return glv.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public void a(dwn $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      dgz $$6 = $$0.i();
-      if ($$6 != null) {
-         dwq $$7 = $$0.c();
-         dwt $$8 = $$7.f();
-         bvb $$9 = $$8.a($$7, $$6, $$7.i());
-         if ($$9 != null) {
-            goh.a($$1, $$2, $$3, $$4, $$9, this.a, $$8.e(), $$8.d());
-         }
-      }
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
+   }
+
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

@@ -1,60 +1,53 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eht extends egp<ejk> {
-   public eht(Codec<ejk> $$0) {
-      super($$0);
+public record eht(List<eht.a> b, jn c, edz d, boolean e) implements eic {
+   public static final Codec<eht> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eht.a.a.listOf().fieldOf("layers").forGetter(eht::a),
+               jn.g.fieldOf("direction").forGetter(eht::b),
+               edz.b.fieldOf("allowed_placement").forGetter(eht::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eht::d)
+            )
+            .apply($$0, eht::new)
+   );
+
+   public static eht.a a(bro $$0, ekd $$1) {
+      return new eht.a($$0, $$1);
    }
 
-   @Override
-   public boolean a(egr<ejk> $$0) {
-      dhx $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      if (!this.a($$1, $$2)) {
-         return false;
-      } else {
-         ejk $$3 = $$0.f();
-         bac $$4 = $$0.d();
-         drd $$5 = drd.b();
-         int $$6 = $$3.f() + $$3.d();
+   public static eht b(bro $$0, ekd $$1) {
+      return new eht(List.of(a($$0, $$1)), jn.b, edz.c, false);
+   }
 
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
-               $$5.a($$2, $$3.b());
-            }
+   public List<eht.a> a() {
+      return this.b;
+   }
 
-            boolean $$9 = $$7 < $$3.f();
+   public jn b() {
+      return this.c;
+   }
 
-            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
-               $$5.a($$1, $$2, $$4, $$9);
-            }
+   public edz c() {
+      return this.d;
+   }
 
-            $$5.j();
-         }
+   public boolean d() {
+      return this.e;
+   }
 
-         jh $$11 = $$2.e();
-         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
-            $$1.a($$2, dkf.rw.m(), 3);
-         }
+   public static record a(bro b, ekd c) {
+      public static final Codec<eht.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bro.d.fieldOf("height").forGetter(eht.a::a), ekd.a.fieldOf("provider").forGetter(eht.a::b)).apply($$0, eht.a::new)
+      );
 
-         int $$12 = $$3.g().a($$4);
-
-         for (int $$13 = 0; $$13 < $$12; $$13++) {
-            jh $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
-            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jm.b)) {
-               $$1.a($$14, dkf.rx.m().b(drc.d, Boolean.valueOf(true)), 3);
-            }
-         }
-
-         return true;
+      public bro a() {
+         return this.b;
       }
-   }
 
-   private boolean a(dha $$0, jh $$1) {
-      dxo $$2 = $$0.a_($$1);
-      if ($$2.b() instanceof dqy) {
-         return true;
-      } else {
-         return !$$2.l() && (!$$2.a(dkf.J) || !$$2.y().b()) ? false : jm.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
+      public ekd b() {
+         return this.c;
       }
    }
 }

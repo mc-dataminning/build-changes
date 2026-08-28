@@ -1,73 +1,167 @@
-import com.mojang.authlib.minecraft.UserApiService;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Objects;
-import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class ggo {
-   private static final int a = 1024;
-   private final ggf b;
-   private final ggl c;
-   private final gga d;
-   @Nullable
-   private ggk e;
+public class ggo {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bqz b = new bqz(af.g(), "server-list-io");
+   private static final int c = 16;
+   private final flj d;
+   private final List<ggn> e = Lists.newArrayList();
+   private final List<ggn> f = Lists.newArrayList();
 
-   public ggo(ggf $$0, ggl $$1, gga $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ggo(flj $$0) {
+      this.d = $$0;
    }
 
-   public static ggo a(ggl $$0, UserApiService $$1) {
-      gga $$2 = new gga(1024);
-      ggf $$3 = ggf.a($$0, $$1);
-      return new ggo($$3, $$0, $$2);
-   }
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         tq $$0 = ud.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-   public void a(flz $$0, ftr $$1, Runnable $$2, boolean $$3) {
-      if (this.e != null) {
-         ggk $$4 = this.e.b();
-         $$0.a(
-            new fsp(
-               $$4x -> {
-                  this.a(null);
-                  if ($$4x) {
-                     $$0.a($$4.a($$1, this));
-                  } else {
-                     $$2.run();
-                  }
-               },
-               xk.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
-               xk.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
-               xk.c("gui.abuseReport.draft.edit"),
-               xk.c("gui.abuseReport.draft.discard")
-            )
-         );
-      } else {
-         $$2.run();
+         tw $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            tq $$3 = $$1.a($$2);
+            ggn $$4 = ggn.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
       }
    }
 
-   public ggf a() {
-      return this.b;
+   public void b() {
+      try {
+         tw $$0 = new tw();
+
+         for (ggn $$1 : this.e) {
+            tq $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (ggn $$3 : this.f) {
+            tq $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         tq $$5 = new tq();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         ud.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         af.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
    }
 
-   public gga b() {
-      return this.d;
+   public ggn a(int $$0) {
+      return this.e.get($$0);
    }
 
-   public boolean a(ggl $$0) {
-      return Objects.equals(this.c, $$0);
+   @Nullable
+   public ggn a(String $$0) {
+      for (ggn $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
+      }
+
+      for (ggn $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   public void a(@Nullable ggk $$0) {
-      this.e = $$0;
+   @Nullable
+   public ggn b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         ggn $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
    }
 
-   public boolean c() {
-      return this.e != null;
+   public void a(ggn $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
    }
 
-   public boolean a(UUID $$0) {
-      return this.c() && this.e.a($$0);
+   public void a(ggn $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      ggn $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, ggn $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(ggn $$0, List<ggn> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         ggn $$3 = $$1.get($$2);
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(ggn $$0) {
+      b.a_(() -> {
+         ggo $$1 = new ggo(flj.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

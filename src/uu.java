@@ -1,145 +1,77 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.Set;
 
-public class uu extends vc {
-   private static final int b = 16;
-   public static final vl<uu> a = new vl.a<uu>() {
-      public uu a(DataInput $$0, uv $$1) throws IOException {
-         return uu.a(d($$0, $$1));
+public class uu extends uv {
+   private int a;
+   private final Set<up<?>> b;
+   private final Deque<ux> c = new ArrayDeque<>();
+
+   public uu(uw... $$0) {
+      this.a = $$0.length;
+      Builder<up<?>> $$1 = ImmutableSet.builder();
+      ux $$2 = ux.a();
+
+      for (uw $$3 : $$0) {
+         $$2.a($$3);
+         $$1.add($$3.b());
       }
 
-      @Override
-      public vg.b a(DataInput $$0, vg $$1, uv $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
+      this.c.push($$2);
+      $$1.add(tq.b);
+      this.b = $$1.build();
+   }
+
+   @Override
+   public uk.b b(up<?> $$0) {
+      return $$0 != tq.b ? uk.b.c : super.b($$0);
+   }
+
+   @Override
+   public uk.a a(up<?> $$0) {
+      ux $$1 = this.c.element();
+      if (this.e() > $$1.b()) {
+         return super.a($$0);
+      } else if (this.a <= 0) {
+         return uk.a.d;
+      } else {
+         return !this.b.contains($$0) ? uk.a.b : super.a($$0);
       }
-
-      private static long d(DataInput $$0, uv $$1) throws IOException {
-         $$1.b(16L);
-         return $$0.readLong();
-      }
-
-      @Override
-      public int c() {
-         return 8;
-      }
-
-      @Override
-      public String a() {
-         return "LONG";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Long";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   private final long c;
-
-   uu(long $$0) {
-      this.c = $$0;
-   }
-
-   public static uu a(long $$0) {
-      return $$0 >= -128L && $$0 <= 1024L ? uu.a.a[(int)$$0 - -128] : new uu($$0);
    }
 
    @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeLong(this.c);
-   }
-
-   @Override
-   public int a() {
-      return 16;
-   }
-
-   @Override
-   public byte b() {
-      return 4;
-   }
-
-   @Override
-   public vl<uu> c() {
-      return a;
-   }
-
-   public uu e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof uu && this.c == ((uu)$$0).c;
-   }
-
-   @Override
-   public int hashCode() {
-      return (int)(this.c ^ this.c >>> 32);
-   }
-
-   @Override
-   public void a(vn $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return this.c;
-   }
-
-   @Override
-   public int g() {
-      return (int)(this.c & -1L);
-   }
-
-   @Override
-   public short h() {
-      return (short)((int)(this.c & 65535L));
-   }
-
-   @Override
-   public byte i() {
-      return (byte)((int)(this.c & 255L));
-   }
-
-   @Override
-   public double j() {
-      return (double)this.c;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.c;
-   }
-
-   @Override
-   public Number l() {
-      return this.c;
-   }
-
-   @Override
-   public vg.b a(vg $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final uu[] a = new uu[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new uu((long)(-128 + $$0));
+   public uk.a a(up<?> $$0, String $$1) {
+      ux $$2 = this.c.element();
+      if (this.e() > $$2.b()) {
+         return super.a($$0, $$1);
+      } else if ($$2.c().remove($$1, $$0)) {
+         this.a--;
+         return super.a($$0, $$1);
+      } else {
+         if ($$0 == tq.b) {
+            ux $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.c.push($$3);
+               return super.a($$0, $$1);
+            }
          }
+
+         return uk.a.b;
       }
+   }
+
+   @Override
+   public uk.b b() {
+      if (this.e() == this.c.element().b()) {
+         this.c.pop();
+      }
+
+      return super.b();
+   }
+
+   public int c() {
+      return this.a;
    }
 }

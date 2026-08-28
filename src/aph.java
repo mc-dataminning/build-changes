@@ -1,60 +1,51 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.Collection;
 
 public class aph {
-   public static void a(CommandDispatcher<ew> $$0) {
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("serverpack").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ex.a("push")
-                     .then(
-                        ((RequiredArgumentBuilder)ex.a("url", StringArgumentType.string())
-                              .then(
-                                 ((RequiredArgumentBuilder)ex.a("uuid", gm.a())
-                                       .then(
-                                          ex.a("hash", StringArgumentType.word())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (ew)$$0x.getSource(),
-                                                      StringArgumentType.getString($$0x, "url"),
-                                                      Optional.of(gm.a($$0x, "uuid")),
-                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
-                                                   )
-                                             )
-                                       ))
-                                    .executes(
-                                       $$0x -> a(
-                                             (ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gm.a($$0x, "uuid")), Optional.empty()
-                                          )
-                                    )
-                              ))
-                           .executes($$0x -> a((ew)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
-                     )
-               ))
-            .then(ex.a("pop").then(ex.a("uuid", gm.a()).executes($$0x -> a((ew)$$0x.getSource(), gm.a($$0x, "uuid")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(ey.a("clear").executes($$0x -> a((ex)$$0x.getSource(), ImmutableList.of(((ex)$$0x.getSource()).h())))))
+            .then(
+               ey.a("set")
+                  .then(
+                     ey.a("warning_level", IntegerArgumentType.integer(0, 4))
+                        .executes(
+                           $$0x -> a((ex)$$0x.getSource(), ImmutableList.of(((ex)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                        )
+                  )
+            )
       );
    }
 
-   private static void a(ew $$0, zr<?> $$1) {
-      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
+   private static int a(ex $$0, Collection<? extends cox> $$1, int $$2) {
+      for (cox $$3 : $$1) {
+         $$3.ac().ifPresent($$1x -> $$1x.a($$2));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> wo.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().p_()), true);
+      } else {
+         $$0.a(() -> wo.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   private static int a(ew $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
-      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
-      String $$5 = $$3.orElse("");
-      aae $$6 = new aae($$4, $$1, $$5, false, null);
-      a($$0, $$6);
-      return 0;
-   }
+   private static int a(ex $$0, Collection<? extends cox> $$1) {
+      for (cox $$2 : $$1) {
+         $$2.ac().ifPresent(cob::b);
+      }
 
-   private static int a(ew $$0, UUID $$1) {
-      aad $$2 = new aad(Optional.of($$1));
-      a($$0, $$2);
-      return 0;
+      if ($$1.size() == 1) {
+         $$0.a(() -> wo.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().p_()), true);
+      } else {
+         $$0.a(() -> wo.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

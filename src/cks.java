@@ -1,43 +1,39 @@
-import javax.annotation.Nullable;
+public class cks extends cku {
+   public cks(bur<? extends cku> $$0, dgi $$1) {
+      super($$0, $$1);
+   }
 
-public class cks extends ckn {
-   @Nullable
-   private fbr b;
-
-   public cks(ckl $$0) {
-      super($$0);
+   public cks(dgi $$0, ji $$1, jn $$2) {
+      super(bur.ag, $$0, $$1, $$2);
    }
 
    @Override
-   public void a(arx $$0) {
-      if (this.b == null) {
-         this.b = this.a.du();
-      }
+   public avz s() {
+      return awa.le;
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public avz t() {
+      return awa.lc;
    }
 
    @Override
-   public void c() {
-      this.b = null;
+   public avz u() {
+      return awa.ld;
    }
 
    @Override
-   public float e() {
-      return 1.0F;
-   }
-
-   @Nullable
-   @Override
-   public fbr f() {
-      return this.b;
+   public avz v() {
+      return awa.lb;
    }
 
    @Override
-   public clb<cks> h() {
-      return clb.k;
+   public avz w() {
+      return awa.lf;
+   }
+
+   @Override
+   protected cwp x() {
+      return new cwp(cwt.vc);
    }
 }

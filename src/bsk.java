@@ -1,56 +1,35 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bsk extends bsd {
-   public static final MapCodec<bsk> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, bsk::new)
-      )
-      .validate(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0)
-      );
-   private final float b;
-   private final float d;
+public record bsk(cv d) {
+   public static final bsk a = new bsk(cv.a.a().b());
+   public static final Codec<bsk> b = cv.a.xmap(bsk::new, bsk::a);
+   public static final String c = "lock";
 
-   private bsk(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
+   public boolean a(cwp $$0) {
+      return this.d.a($$0);
    }
 
-   public static bsk b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new bsk($$0, $$1);
+   public void a(tq $$0, jt.a $$1) {
+      if (this != a) {
+         DataResult<un> $$2 = b.encode(this, $$1.a(ue.a), new tq());
+         $$2.result().ifPresent($$1x -> $$0.a("lock", $$1x));
       }
    }
 
-   @Override
-   public float a(bac $$0) {
-      return azu.b($$0, this.b, this.d);
+   public static bsk b(tq $$0, jt.a $$1) {
+      if ($$0.b("lock", 10)) {
+         DataResult<Pair<bsk, un>> $$2 = b.decode($$1.a(ue.a), $$0.c("lock"));
+         if ($$2.isSuccess()) {
+            return (bsk)((Pair)$$2.getOrThrow()).getFirst();
+         }
+      }
+
+      return a;
    }
 
-   @Override
-   public float a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
+   public cv a() {
       return this.d;
-   }
-
-   @Override
-   public bse<?> c() {
-      return bse.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
    }
 }

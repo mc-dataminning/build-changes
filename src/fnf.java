@@ -1,64 +1,97 @@
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class fnf {
-   private static final int a = -1;
-   private final jw<fne> b = new jw<>(32);
+public class fnf implements fnd {
+   private final djm a;
+   private final List<fnf.b> b = Lists.newArrayList();
 
-   public static fnf a(fnb $$0) {
-      fnf $$1 = new fnf();
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : czu.a($$0x, -6265536), cxk.qd, cxk.qe, cxk.qf, cxk.qg, cxk.vJ);
-      $$1.a(($$0x, $$1x) -> $$1x != 1 ? -1 : czu.a($$0x, 0), cxk.oW);
-      $$1.a(($$0x, $$1x) -> dgx.a(0.5, 1.0), dkf.jf, dkf.jg);
-      $$1.a(($$0x, $$1x) -> {
-         if ($$1x != 1) {
-            return -1;
-         } else {
-            czv $$2x = $$0x.a(ku.ae);
-            IntList $$3 = $$2x != null ? $$2x.b() : IntList.of();
-            int $$4 = $$3.size();
-            if ($$4 == 0) {
-               return -7697782;
-            } else if ($$4 == 1) {
-               return ayf.f($$3.getInt(0));
-            } else {
-               int $$5 = 0;
-               int $$6 = 0;
-               int $$7 = 0;
+   private fnf(djm $$0) {
+      this.a = $$0;
+   }
 
-               for (int $$8 = 0; $$8 < $$4; $$8++) {
-                  int $$9 = $$3.getInt($$8);
-                  $$5 += ayf.b($$9);
-                  $$6 += ayf.c($$9);
-                  $$7 += ayf.d($$9);
-               }
+   @Override
+   public djm a() {
+      return this.a;
+   }
 
-               return ayf.a($$5 / $$4, $$6 / $$4, $$7 / $$4);
-            }
-         }
-      }, cxk.vu);
-      $$1.a(($$0x, $$1x) -> $$1x > 0 ? -1 : ayf.f($$0x.a(ku.Q, czf.a).b()), cxk.ti, cxk.wo, cxk.wr, cxk.wq);
+   public static fnf a(djm $$0) {
+      return new fnf($$0);
+   }
 
-      for (cyp $$2 : cyp.b()) {
-         $$1.a(($$1x, $$2x) -> ayf.f($$2.a($$2x)), $$2);
+   public fnf a(List<fnj> $$0) {
+      this.b.add(new fnf.b($$0));
+      return this;
+   }
+
+   public fnf a(fnj $$0) {
+      return this.a(ImmutableList.of($$0));
+   }
+
+   public fnf a(fne $$0, List<fnj> $$1) {
+      this.b.add(new fnf.a($$0, $$1));
+      return this;
+   }
+
+   public fnf a(fne $$0, fnj... $$1) {
+      return this.a($$0, ImmutableList.copyOf($$1));
+   }
+
+   public fnf a(fne $$0, fnj $$1) {
+      return this.a($$0, ImmutableList.of($$1));
+   }
+
+   public JsonElement b() {
+      dwy<djm, dwx> $$0 = this.a.l();
+      this.b.forEach($$1x -> $$1x.a($$0));
+      JsonArray $$1 = new JsonArray();
+      this.b.stream().map(fnf.b::a).forEach($$1::add);
+      JsonObject $$2 = new JsonObject();
+      $$2.add("multipart", $$1);
+      return $$2;
+   }
+
+   static class a extends fnf.b {
+      private final fne a;
+
+      a(fne $$0, List<fnj> $$1) {
+         super($$1);
+         this.a = $$0;
       }
 
-      $$1.a(($$1x, $$2x) -> {
-         dxo $$3 = ((cvm)$$1x.h()).d().m();
-         return $$0.a($$3, null, null, $$2x);
-      }, dkf.i, dkf.bA, dkf.bB, dkf.ft, dkf.aK, dkf.aL, dkf.aM, dkf.aN, dkf.aO, dkf.aQ, dkf.fB);
-      $$1.a(($$0x, $$1x) -> dgt.d(), dkf.aS);
-      $$1.a(($$0x, $$1x) -> $$1x == 0 ? -1 : ayf.f($$0x.a(ku.K, dac.c).a()), cxk.sR);
-      return $$1;
+      @Override
+      public void a(dwy<?, ?> $$0) {
+         this.a.a($$0);
+      }
+
+      @Override
+      public void a(JsonObject $$0) {
+         $$0.add("when", this.a.get());
+      }
    }
 
-   public int a(cxg $$0, int $$1) {
-      fne $$2 = this.b.a(ma.g.a($$0.h()));
-      return $$2 == null ? -1 : $$2.getColor($$0, $$1);
-   }
+   static class b implements Supplier<JsonElement> {
+      private final List<fnj> a;
 
-   public void a(fne $$0, dgy... $$1) {
-      for (dgy $$2 : $$1) {
-         this.b.a($$0, cxc.a($$2.j()));
+      b(List<fnj> $$0) {
+         this.a = $$0;
+      }
+
+      public void a(dwy<?, ?> $$0) {
+      }
+
+      public void a(JsonObject $$0) {
+      }
+
+      public JsonElement a() {
+         JsonObject $$0 = new JsonObject();
+         this.a($$0);
+         $$0.add("apply", fnj.a(this.a));
+         return $$0;
       }
    }
 }

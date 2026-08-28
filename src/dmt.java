@@ -1,82 +1,55 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dmt extends dkd {
-   public static final MapCodec<dmt> a = b(dmt::new);
-   public static final dyl<jm> b = dob.aF;
-   public static final dyf c = dye.l;
-   protected static final fcl d = dkd.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final fcl e = dkd.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final fcl f = fci.a(d, e);
-   private static dxt g;
+public class dmt extends djw implements djp {
+   public static final MapCodec<dmt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akt.a(mc.aL).fieldOf("feature").forGetter($$0x -> $$0x.e), mb.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
+            .apply($$0, dmt::new)
+   );
+   protected static final fbu b = djm.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final djm d;
+   private final akt<efk<?, ?>> e;
 
    @Override
    public MapCodec<dmt> a() {
       return a;
    }
 
-   public dmt(dxn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jm.c).b(c, Boolean.valueOf(false)));
+   protected dmt(akt<efk<?, ?>> $$0, djm $$1, dww.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected boolean g_(dxo $$0) {
-      return true;
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b;
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return $$0.c(c) ? f : d;
+   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return $$0.a(awp.aO) || $$0.a(djo.fA) || $$0.a(djo.ek) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends jr<efk<?, ?>>> a(dgl $$0) {
+      return $$0.K_().e(mc.aL).a(this.e);
    }
 
    @Override
-   public dxo a(dax $$0) {
-      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      dwx $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected boolean c_(dxo $$0) {
-      return true;
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   protected int a(dxo $$0, dgz $$1, jh $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dqv $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dpc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dxt b() {
-      if (g == null) {
-         g = dxu.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dxs.a(dxx.a))
-            .a('^', dxs.a(dxx.a(dkf.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.d))))
-            .a('>', dxs.a(dxx.a(dkf.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.e))))
-            .a('v', dxs.a(dxx.a(dkf.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.c))))
-            .a('<', dxs.a(dxx.a(dkf.fT).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jm.f))))
-            .b();
-      }
-
-      return g;
-   }
-
-   @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      return false;
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      this.a($$0).ifPresent($$3x -> ((efk)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
    }
 }

@@ -1,29 +1,34 @@
-public record agq(float b, boolean c) implements zr<acg> {
-   public static final zi<wh, agq> a = zr.a(agq::a, agq::new);
+public class agq implements yv<agf> {
+   public static final ym<vl, agq> a = yv.a(agq::a, agq::new);
+   private final agq.a b;
 
-   private agq(wh $$0) {
-      this($$0.readFloat(), $$0.readBoolean());
+   public agq(agq.a $$0) {
+      this.b = $$0;
    }
 
-   public static agq a(btj $$0) {
-      return new agq($$0.f(), $$0.l());
+   private agq(vl $$0) {
+      this.b = $$0.b(agq.a.class);
    }
 
-   private void a(wh $$0) {
+   private void a(vl $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
    }
 
    @Override
-   public zt<agq> a() {
-      return agz.cn;
+   public yx<agq> a() {
+      return agd.bu;
    }
 
-   public void a(acg $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
-      return this.c;
+   public agq.a b() {
+      return this.b;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

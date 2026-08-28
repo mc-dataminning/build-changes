@@ -1,30 +1,25 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
 
-public abstract class ekx extends eku {
-   protected final long c;
-   protected final est.a d;
-   protected final float e;
-   protected final est f;
+public class ekx<P extends ekw> {
+   public static final ekx<eky> a = a("trunk_vine", eky.a);
+   public static final ekx<eku> b = a("leave_vine", eku.a);
+   public static final ekx<ekv> c = a("pale_moss", ekv.a);
+   public static final ekx<ekt> d = a("creaking_heart", ekt.a);
+   public static final ekx<eks> e = a("cocoa", eks.a);
+   public static final ekx<ekr> f = a("beehive", ekr.a);
+   public static final ekx<ekp> g = a("alter_ground", ekp.a);
+   public static final ekx<ekq> h = a("attached_to_leaves", ekq.a);
+   private final MapCodec<P> i;
 
-   protected static <P extends ekx> P3<Mu<P>, Long, est.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         est.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         azd.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   private static <P extends ekw> ekx<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.X, $$0, new ekx<>($$1));
    }
 
-   protected ekx(long $$0, est.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = est.b(new eei(new edk($$0)), $$1);
+   private ekx(MapCodec<P> $$0) {
+      this.i = $$0;
    }
 
-   protected double a(jh $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   public MapCodec<P> a() {
+      return this.i;
    }
 }

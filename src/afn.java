@@ -1,12 +1,23 @@
-public record afn(cxg b) implements zr<acg> {
-   public static final zi<wv, afn> a = zi.a(cxg.g, afn::b, afn::new);
+import io.netty.buffer.ByteBuf;
 
-   @Override
-   public zt<afn> a() {
-      return agz.cp;
+public class afn implements yv<abk> {
+   public static final afn a = new afn();
+   public static final ym<ByteBuf, afn> b = ym.a(a);
+
+   private afn() {
    }
 
-   public void a(acg $$0) {
+   @Override
+   public yx<afn> a() {
+      return agd.aX;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,122 +1,90 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class cgz implements dgl {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cgz.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public interface cgz {
+   boolean p();
 
-   public cgz() {
-      this.c = cgz.a.c;
+   void x(boolean var1);
+
+   void i(cwp var1);
+
+   void h(tq var1);
+
+   cwp W_();
+
+   avz t();
+
+   @Deprecated
+   static void a(bvi $$0, cwp $$1) {
+      $$1.b(kv.g, $$0.an());
+      cyy.a(kv.X, $$1, $$1x -> {
+         if ($$0.gc()) {
+            $$1x.a("NoAI", $$0.gc());
+         }
+
+         if ($$0.bb()) {
+            $$1x.a("Silent", $$0.bb());
+         }
+
+         if ($$0.bc()) {
+            $$1x.a("NoGravity", $$0.bc());
+         }
+
+         if ($$0.cn()) {
+            $$1x.a("Glowing", $$0.cn());
+         }
+
+         if ($$0.cC()) {
+            $$1x.a("Invulnerable", $$0.cC());
+         }
+
+         $$1x.a("Health", $$0.eE());
+      });
    }
 
-   @Override
-   public int a(arx $$0, boolean $$1, boolean $$2) {
-      if (!$$0.V() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.A.a(10) == 0 ? cgz.a.b : cgz.a.c;
+   @Deprecated
+   static void a(bvi $$0, tq $$1) {
+      if ($$1.e("NoAI")) {
+         $$0.u($$1.q("NoAI"));
+      }
+
+      if ($$1.e("Silent")) {
+         $$0.e($$1.q("Silent"));
+      }
+
+      if ($$1.e("NoGravity")) {
+         $$0.f($$1.q("NoGravity"));
+      }
+
+      if ($$1.e("Glowing")) {
+         $$0.j($$1.q("Glowing"));
+      }
+
+      if ($$1.e("Invulnerable")) {
+         $$0.n($$1.q("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.x($$1.j("Health"));
+      }
+   }
+
+   static <T extends bvg & cgz> Optional<bsj> a(cox $$0, bsi $$1, T $$2) {
+      cwp $$3 = $$0.b($$1);
+      if ($$3.h() == cwt.rg && $$2.bL()) {
+         $$2.a($$2.t(), 1.0F, 1.0F);
+         cwp $$4 = $$2.W_();
+         $$2.i($$4);
+         cwp $$5 = cws.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         dgi $$6 = $$2.dW();
+         if (!$$6.C) {
+            ap.k.a((ard)$$0, $$4);
          }
 
-         if (this.c == cgz.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cgz.a.c;
-               }
-
-               return 1;
-            }
-         }
+         $$2.at();
+         return Optional.of(bsj.a);
       } else {
-         this.c = cgz.a.c;
-         this.b = false;
-         return 0;
+         return Optional.empty();
       }
-   }
-
-   private boolean a(arx $$0) {
-      for (cpo $$1 : $$0.z()) {
-         if (!$$1.aa_()) {
-            jh $$2 = $$1.dw();
-            if ($$0.c($$2) && !$$0.t($$2).a(axj.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + azu.d(azu.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + azu.d(azu.a($$4) * 32.0F);
-                  if (this.a($$0, new jh(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private void b(arx $$0) {
-      fbr $$1 = this.a($$0, new jh(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cnh $$2;
-         try {
-            $$2 = new cnh($$0);
-            $$2.a($$0, $$0.d_($$2.dw()), bvh.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
-      }
-   }
-
-   @Nullable
-   private fbr a(arx $$0, jh $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.A.a(16) - 8;
-         int $$4 = $$1.w() + $$0.A.a(16) - 8;
-         int $$5 = $$0.a(edj.a.b, $$3, $$4);
-         jh $$6 = new jh($$3, $$5, $$4);
-         if ($$0.c($$6) && cmo.b(bvi.bO, $$0, bvh.h, $$6, $$0.A)) {
-            return fbr.c($$6);
-         }
-      }
-
-      return null;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
    }
 }

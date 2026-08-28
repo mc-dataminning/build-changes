@@ -1,90 +1,80 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public abstract class epl {
-   public static final Codec<epl> f = ma.ag.q().dispatch("element_type", epl::a, epm::codec);
-   private static final jq<esd> a = jq.a(new esd(List.of()));
-   @Nullable
-   private volatile epn.a b;
+public class epl {
+   public static final int a = 90;
+   static final aku b = aku.b("igloo/top");
+   private static final aku c = aku.b("igloo/middle");
+   private static final aku d = aku.b("igloo/bottom");
+   static final Map<aku, ji> e = ImmutableMap.of(b, new ji(3, 5, 5), c, new ji(1, 3, 1), d, new ji(3, 6, 7));
+   static final Map<aku, ji> f = ImmutableMap.of(b, ji.c, c, new ji(2, -3, 4), d, new ji(0, -3, -2));
 
-   protected static <E extends epl> RecordCodecBuilder<E, epn.a> e() {
-      return epn.a.c.fieldOf("projection").forGetter(epl::f);
-   }
+   public static void a(erp $$0, ji $$1, dqe $$2, enr $$3, azh $$4) {
+      if ($$4.j() < 0.5) {
+         int $$5 = $$4.a(8) + 4;
+         $$3.a(new epl.a($$0, d, $$1, $$2, $$5 * 3));
 
-   protected epl(epn.a $$0) {
-      this.b = $$0;
-   }
-
-   public abstract kl a(esg var1, dqv var2);
-
-   public abstract List<esf.a> a(esg var1, jh var2, dqv var3, bac var4);
-
-   public abstract env a(esg var1, jh var2, dqv var3);
-
-   public abstract boolean a(esg var1, dhx var2, dhv var3, dzk var4, jh var5, jh var6, dqv var7, env var8, bac var9, erp var10, boolean var11);
-
-   public abstract epm<?> a();
-
-   public void a(dha $$0, esf.d $$1, jh $$2, dqv $$3, bac $$4, env $$5) {
-   }
-
-   public epl a(epn.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public epn.a f() {
-      epn.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
-      } else {
-         return $$0;
+         for (int $$6 = 0; $$6 < $$5 - 1; $$6++) {
+            $$3.a(new epl.a($$0, c, $$1, $$2, $$6 * 3));
+         }
       }
+
+      $$3.a(new epl.a($$0, b, $$1, $$2, 0));
    }
 
-   public int g() {
-      return 1;
-   }
+   public static class a extends enw {
+      public a(erp $$0, aku $$1, ji $$2, dqe $$3, int $$4) {
+         super(eod.I, 0, $$0, $$1, $$1.toString(), a($$3, $$1), a($$1, $$2, $$4));
+      }
 
-   public static Function<epn.a, epe> h() {
-      return $$0 -> epe.b;
-   }
+      public a(erp $$0, tq $$1) {
+         super(eod.I, $$1, $$0, $$1x -> a(dqe.valueOf($$1.l("Rot")), $$1x));
+      }
 
-   public static Function<epn.a, epi> a(String $$0) {
-      return $$1 -> new epi(Either.left(alp.a($$0)), a, $$1, Optional.empty());
-   }
+      private static erk a(dqe $$0, aku $$1) {
+         return new erk().a($$0).a(dol.a).a(epl.e.get($$1)).a(eqp.b).a(eqy.a);
+      }
 
-   public static Function<epn.a, epi> a(String $$0, jq<esd> $$1) {
-      return $$2 -> new epi(Either.left(alp.a($$0)), $$1, $$2, Optional.empty());
-   }
+      private static ji a(aku $$0, ji $$1, int $$2) {
+         return $$1.a(epl.f.get($$0)).c($$2);
+      }
 
-   public static Function<epn.a, epk> b(String $$0) {
-      return $$1 -> new epk(Either.left(alp.a($$0)), a, $$1, Optional.empty());
-   }
+      @Override
+      protected void a(eoc $$0, tq $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
 
-   public static Function<epn.a, epk> b(String $$0, jq<esd> $$1) {
-      return $$2 -> new epk(Either.left(alp.a($$0)), $$1, $$2, Optional.empty());
-   }
+      @Override
+      protected void a(String $$0, ji $$1, dgz $$2, azh $$3, ene $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, djo.a.m(), 3);
+            dtz $$5 = $$2.c_($$1.e());
+            if ($$5 instanceof dug) {
+               ((dug)$$5).a(evn.B, $$3.g());
+            }
+         }
+      }
 
-   public static Function<epn.a, epk> a(String $$0, erp $$1) {
-      return $$2 -> new epk(Either.left(alp.a($$0)), a, $$2, Optional.of($$1));
-   }
+      @Override
+      public void a(dhg $$0, dhe $$1, dyt $$2, azh $$3, ene $$4, dfo $$5, ji $$6) {
+         aku $$7 = aku.a(this.a);
+         erk $$8 = a(this.c.d(), $$7);
+         ji $$9 = epl.f.get($$7);
+         ji $$10 = this.d.a((km)ero.a($$8, new ji(3 - $$9.u(), 0, -$$9.w())));
+         int $$11 = $$0.a(ecs.a.a, $$10.u(), $$10.w());
+         ji $$12 = this.d;
+         this.d = this.d.b(0, $$11 - 90 - 1, 0);
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         if ($$7.equals(epl.b)) {
+            ji $$13 = this.d.a((km)ero.a($$8, new ji(3, 0, 5)));
+            dwx $$14 = $$0.a_($$13.e());
+            if (!$$14.l() && !$$14.a(djo.cX)) {
+               $$0.a($$13, djo.ec.m(), 3);
+            }
+         }
 
-   public static Function<epn.a, epk> a(String $$0, jq<esd> $$1, erp $$2) {
-      return $$3 -> new epk(Either.left(alp.a($$0)), $$1, $$3, Optional.of($$2));
-   }
-
-   public static Function<epn.a, epf> a(jq<enh> $$0) {
-      return $$1 -> new epf($$0, $$1);
-   }
-
-   public static Function<epn.a, epj> b(List<Function<epn.a, ? extends epl>> $$0) {
-      return $$1 -> new epj($$0.stream().map($$1x -> (epl)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+         this.d = $$12;
+      }
    }
 }

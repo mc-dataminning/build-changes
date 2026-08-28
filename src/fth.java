@@ -1,159 +1,109 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-public class fth extends ftl {
-   public static final alp a = alp.b("textures/gui/title/mojangstudios.png");
-   private static final int d = ayf.a(255, 239, 50, 61);
-   private static final int e = ayf.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> flz.Q().n.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long b = 1000L;
-   public static final long c = 500L;
-   private final flz m;
-   private final avh n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class fth extends fti {
+   private static final wo d = wo.c("chat.copy");
+   private static final wo s = wo.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
 
-   public fth(flz $$0, avh $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
+   public fth(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), wo.b($$1), $$1, $$2 ? wn.e : wn.g, $$2);
    }
 
-   public static void a(flz $$0) {
-      $$0.aa().a(a, new fth.a());
+   public fth(BooleanConsumer $$0, wo $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wn.e : wn.g, $$3);
    }
 
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public fth(BooleanConsumer $$0, wo $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
+
+   public fth(BooleanConsumer $$0, wo $$1, wo $$2, URI $$3, wo $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fth(BooleanConsumer $$0, wo $$1, wo $$2, String $$3, wo $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (wo)($$5 ? wo.c("chat.link.open") : wn.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static xc a(boolean $$0, String $$1) {
+      return c($$0).b(wn.v).b(wo.b($$1));
+   }
+
+   protected static xc c(boolean $$0) {
+      return wo.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = ae.c();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
-
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.z != null) {
-            this.m.z.a($$0, 0, 0, $$3);
-         }
-
-         int $$9 = azu.f((1.0F - azu.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(glq.L(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - azu.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.z != null && $$8 < 1.0F) {
-            this.m.z.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = azu.c(azu.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(glq.L(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = azu.a($$8, 0.0F, 1.0F);
-      } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      int $$24 = ayf.a($$10);
-      $$0.a($$0x -> glq.P(), a, $$18 - $$23, $$19 - $$21, -0.0625F, 0.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      $$0.a($$0x -> glq.P(), a, $$18, $$19 - $$21, 0.0625F, 60.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      int $$25 = (int)((double)$$0.b() * 0.8325);
-      float $$26 = this.n.b();
-      this.q = azu.a(this.q * 0.95F + $$26 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$25 - 5, $$4 / 2 + $$23, $$25 + 5, 1.0F - azu.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var24) {
-            this.o.accept(Optional.of(var24));
-         }
-
-         this.r = ae.c();
-         if (this.m.z != null) {
-            this.m.z.b(this.m, $$0.a(), $$0.b());
-         }
-      }
+   protected void a(int $$0) {
+      this.c(fos.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fos.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fos.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
    }
 
-   private void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = azu.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = ayf.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   public void l() {
+      this.m.p.a(this.u);
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      }
    }
 
-   static class a extends haz {
-      public a() {
-         super(fth.a);
-      }
-
-      @Override
-      protected haz.a b(avl $$0) {
-         aua $$1 = flz.Q().ae();
-         avd<InputStream> $$2 = $$1.a(aty.a, fth.a);
-         if ($$2 == null) {
-            return new haz.a(new FileNotFoundException(fth.a.toString()));
-         } else {
-            try {
-               haz.a var5;
-               try (InputStream $$3 = $$2.get()) {
-                  var5 = new haz.a(new hde(true, true), ffl.a($$3));
-               }
-
-               return var5;
-            } catch (IOException var9) {
-               return new haz.a(var9);
-            }
+   public static void a(fuk $$0, String $$1, boolean $$2) {
+      flj $$3 = flj.Q();
+      $$3.a(new fth($$3x -> {
+         if ($$3x) {
+            af.m().a($$1);
          }
-      }
+
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
+
+   public static void a(fuk $$0, URI $$1, boolean $$2) {
+      flj $$3 = flj.Q();
+      $$3.a(new fth($$3x -> {
+         if ($$3x) {
+            af.m().a($$1);
+         }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
+   }
+
+   public static void a(fuk $$0, URI $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static void a(fuk $$0, String $$1) {
+      a($$0, $$1, true);
+   }
+
+   public static fos.c b(fuk $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fos.c b(fuk $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
+   }
+
+   public static fos.c b(fuk $$0, String $$1) {
+      return b($$0, $$1, true);
+   }
+
+   public static fos.c b(fuk $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

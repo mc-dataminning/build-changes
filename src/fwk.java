@@ -1,50 +1,48 @@
-public class fwk extends ftr {
-   private static final int a = 600;
-   private final we b;
-   private fny c;
-   private int d;
-   private final frr s = frr.d();
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public fwk(xk $$0, we $$1) {
-      super($$0);
-      this.b = $$1;
+public class fwk extends fvc {
+   public static final float c = 62.500004F;
+   public static final float d = 0.9765628F;
+   private static final Vector3f s = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
+   @Nullable
+   private gcv u;
+
+   public fwk(dvm $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public boolean aH_() {
-      return false;
+   protected void aR_() {
+      super.aR_();
+      boolean $$0 = this.a.m().b() instanceof drm;
+      this.u = gow.a(this.m.aS(), this.b, $$0);
    }
 
    @Override
-   protected void aT_() {
-      this.s.c().b().a(10);
-      this.s.a(new fpg(this.l, this.p));
-      this.c = this.s.a(fny.a(xj.p, $$0 -> this.b.a(fsq.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         fnw var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      frl.a(this.s, this.H());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
+   protected void a(fod $$0, dwx $$1) {
+      super.a($$0, $$1);
+      boolean $$2 = $$1.b() instanceof drm;
+      if (!$$2) {
+         $$0.c().a(0.0F, 35.0F, 0.0F);
       }
+   }
 
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+   @Override
+   protected void c(fod $$0) {
+      if (this.u != null) {
+         $$0.c().a(0.0F, 31.0F, 0.0F);
+         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
+         $$0.a($$1 -> {
+            hgs $$2 = gms.a(this.b);
+            ffy $$3 = $$2.a($$1, this.u::a);
+            this.u.a($$0.c(), $$3, 15728880, hea.d);
+         });
       }
+   }
+
+   @Override
+   protected Vector3f m() {
+      return s;
    }
 }

@@ -1,34 +1,35 @@
-public class hev extends hem {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cmk r;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public hev(cmk $$0) {
-      super(awv.lQ, aww.f, hfd.t());
-      this.r = $$0;
-      this.k = hfd.a.a;
-      this.i = true;
-      this.j = 0;
+public class hev implements hen {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<hev> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(aku.a.fieldOf("resource").forGetter($$0x -> $$0x.d), aku.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, hev::new)
+   );
+   private final aku d;
+   private final Optional<aku> e;
+
+   public hev(aku $$0, Optional<aku> $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public boolean s() {
-      return !this.r.bb();
-   }
-
-   @Override
-   public void q() {
-      if (!this.r.dR() && this.r.O_() == null) {
-         this.f = (double)((float)this.r.dB());
-         this.g = (double)((float)this.r.dD());
-         this.h = (double)((float)this.r.dH());
-         float $$0 = this.r.L(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
+   public void a(aup $$0, hen.a $$1) {
+      aku $$2 = a.a(this.d);
+      Optional<aun> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         $$1.a(this.e.orElse(this.d), $$3.get());
       } else {
-         this.n();
+         c.warn("Missing sprite: {}", $$2);
       }
+   }
+
+   @Override
+   public hep a() {
+      return heq.a;
    }
 }

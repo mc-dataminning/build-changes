@@ -1,46 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class eyn extends exv {
-   public static final MapCodec<eyn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(fao.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
-            .apply($$0, eyn::new)
-   );
-   private final fan b;
-   private final boolean c;
+public class eyn extends eyq {
+   public static final MapCodec<eyn> a = a(eyn::new);
+   public static final Codec<eyn> b = b(eyn::new);
 
-   private eyn(List<ezr> $$0, fan $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   eyn(List<eza> $$0) {
+      super($$0, af.a($$0));
+   }
+
+   public static eyn a(List<eza> $$0) {
+      return new eyn(List.copyOf($$0));
    }
 
    @Override
-   public exx<eyn> b() {
-      return exy.e;
+   public ezb b() {
+      return ezc.c;
    }
 
-   @Override
-   public Set<bbd<?>> a() {
-      return this.b.a();
+   public static eyn.a a(eza.a... $$0) {
+      return new eyn.a($$0);
    }
 
-   @Override
-   public cxg a(cxg $$0, ewi $$1) {
-      int $$2 = this.c ? $$0.M() : 0;
-      $$0.e($$2 + this.b.a($$1));
-      return $$0;
-   }
+   public static class a extends eyq.a {
+      public a(eza.a... $$0) {
+         super($$0);
+      }
 
-   public static exv.a<?> a(fan $$0) {
-      return a($$1 -> new eyn($$1, $$0, false));
-   }
+      @Override
+      public eyn.a and(eza.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public static exv.a<?> a(fan $$0, boolean $$1) {
-      return a($$2 -> new eyn($$2, $$0, $$1));
+      @Override
+      protected eza a(List<eza> $$0) {
+         return new eyn($$0);
+      }
    }
 }

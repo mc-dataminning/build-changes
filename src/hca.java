@@ -1,17 +1,20 @@
-import java.io.IOException;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hca extends avq<int[]> {
-   private static final alp a = alp.b("textures/colormap/grass.png");
+public record hca() implements hbu {
+   public static final MapCodec<hca> a = MapCodec.unit(new hca());
 
-   protected int[] a(avl $$0, bpj $$1) {
-      try {
-         return hcc.a($$0, a);
-      } catch (IOException var4) {
-         throw new IllegalStateException("Failed to load grass color texture", var4);
+   @Override
+   public boolean a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      if ($$2 instanceof gkv $$4 && $$4.gi().f() == $$0) {
+         return true;
       }
+
+      return false;
    }
 
-   protected void a(int[] $$0, avl $$1, bpj $$2) {
-      dgx.a($$0);
+   @Override
+   public MapCodec<hca> a() {
+      return a;
    }
 }

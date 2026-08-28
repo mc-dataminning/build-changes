@@ -1,31 +1,24 @@
-public class acp implements zr<acg> {
-   public static final zi<wv, acp> a = zi.a(jh.b, acp::e, zg.a(dkd.q), acp::b, acp::new);
-   private final jh b;
-   private final dxo c;
+public record acp(int b, bvt c, boolean d) implements yv<abk> {
+   public static final ym<vl, acp> a = ym.a(yk.h, acp::b, bvt.a, acp::e, yk.b, acp::f, acp::new);
 
-   public acp(jh $$0, dxo $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public acp(dge $$0, jh $$1) {
-      this($$1, $$0.a_($$1));
+   public static acp a(buk $$0) {
+      return new acp($$0.ar(), new bvt($$0.dv(), $$0.dz(), $$0.dM(), $$0.dO()), $$0.aJ());
    }
 
    @Override
-   public zt<acp> a() {
-      return agz.k;
+   public yx<acp> a() {
+      return agd.be;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public dxo b() {
+   public bvt e() {
       return this.c;
    }
 
-   public jh e() {
-      return this.b;
+   public boolean f() {
+      return this.d;
    }
 }

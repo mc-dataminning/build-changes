@@ -1,48 +1,130 @@
-import io.netty.buffer.ByteBuf;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class xc {
-   private static final int a = 10;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+public class xc implements wo {
+   private final wp c;
+   private final List<wo> d;
+   private xl e;
+   private ayl f = ayl.a;
+   @Nullable
+   private tl g;
 
-   public static int a(long $$0) {
-      for (int $$1 = 1; $$1 < 10; $$1++) {
-         if (($$0 & -1L << $$1 * 7) == 0L) {
-            return $$1;
-         }
+   xc(wp $$0, List<wo> $$1, xl $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static xc a(wp $$0) {
+      return new xc($$0, Lists.newArrayList(), xl.a);
+   }
+
+   @Override
+   public wp b() {
+      return this.c;
+   }
+
+   @Override
+   public List<wo> c() {
+      return this.d;
+   }
+
+   public xc b(xl $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   @Override
+   public xl a() {
+      return this.e;
+   }
+
+   public xc f(String $$0) {
+      return $$0.isEmpty() ? this : this.b(wo.b($$0));
+   }
+
+   public xc b(wo $$0) {
+      this.d.add($$0);
+      return this;
+   }
+
+   public xc a(UnaryOperator<xl> $$0) {
+      this.b($$0.apply(this.a()));
+      return this;
+   }
+
+   public xc c(xl $$0) {
+      this.b($$0.a(this.a()));
+      return this;
+   }
+
+   public xc a(n... $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   public xc a(n $$0) {
+      this.b(this.a().b($$0));
+      return this;
+   }
+
+   public xc b(int $$0) {
+      this.b(this.a().a($$0));
+      return this;
+   }
+
+   @Override
+   public ayl g() {
+      tl $$0 = tl.a();
+      if (this.g != $$0) {
+         this.f = $$0.a(this);
+         this.g = $$0;
       }
 
-      return 10;
+      return this.f;
    }
 
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof xc $$1) ? false : this.c.equals($$1.c) && this.e.equals($$1.e) && this.d.equals($$1.d);
+      }
    }
 
-   public static long a(ByteBuf $$0) {
-      long $$1 = 0L;
-      int $$2 = 0;
+   @Override
+   public int hashCode() {
+      return Objects.hash(this.c, this.e, this.d);
+   }
 
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= (long)($$3 & 127) << $$2++ * 7;
-         if ($$2 > 10) {
-            throw new RuntimeException("VarLong too big");
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder(this.c.toString());
+      boolean $$1 = !this.e.h();
+      boolean $$2 = !this.d.isEmpty();
+      if ($$1 || $$2) {
+         $$0.append('[');
+         if ($$1) {
+            $$0.append("style=");
+            $$0.append(this.e);
          }
-      } while (a($$3));
 
-      return $$1;
-   }
+         if ($$1 && $$2) {
+            $$0.append(", ");
+         }
 
-   public static ByteBuf a(ByteBuf $$0, long $$1) {
-      while (($$1 & -128L) != 0L) {
-         $$0.writeByte((int)($$1 & 127L) | 128);
-         $$1 >>>= 7;
+         if ($$2) {
+            $$0.append("siblings=");
+            $$0.append(this.d);
+         }
+
+         $$0.append(']');
       }
 
-      $$0.writeByte((int)$$1);
-      return $$0;
+      return $$0.toString();
    }
 }

@@ -1,37 +1,37 @@
-public class aes implements zr<acg> {
-   public static final zi<wh, aes> a = zr.a(aes::a, aes::new);
-   private final int b;
-   private final double c;
+public class aes implements yv<abk> {
+   public static final ym<vl, aes> a = yv.a(aes::a, aes::new);
+   private final ji b;
+   private final float c;
 
-   public aes(int $$0, double $$1) {
+   public aes(ji $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   private aes(wh $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
+   private aes(vl $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(wh $$0) {
-      $$0.c(this.b);
+   private void a(vl $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
    }
 
    @Override
-   public zt<aes> a() {
-      return agz.bj;
+   public yx<aes> a() {
+      return agd.aD;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public ji b() {
       return this.b;
    }
 
-   public double e() {
+   public float e() {
       return this.c;
    }
 }

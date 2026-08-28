@@ -1,64 +1,35 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class exc extends ewr {
-   public static final MapCodec<exc> a = a(exc::new);
+public class exc extends exe {
+   public static final MapCodec<exc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(evq.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, exc::new));
+   private final evq b;
 
-   exc(List<ewy> $$0, List<ezr> $$1) {
-      super($$0, $$1);
+   private exc(List<eza> $$0, evq $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public ewz a() {
-      return eww.h;
+   public exg<exc> b() {
+      return exh.w;
    }
 
    @Override
-   protected ewq a(List<? extends ewq> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ewq)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ewq $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public Set<bai<?>> a() {
+      return this.b.a();
    }
 
-   public static exc.a a(ewy.a<?>... $$0) {
-      return new exc.a($$0);
+   @Override
+   public cwp a(cwp $$0, evr $$1) {
+      int $$2 = this.b.a($$1, $$0.M());
+      $$0.e($$2);
+      return $$0;
    }
 
-   public static class a extends ewy.a<exc.a> {
-      private final Builder<ewy> a = ImmutableList.builder();
-
-      public a(ewy.a<?>... $$0) {
-         for (ewy.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected exc.a a() {
-         return this;
-      }
-
-      @Override
-      public exc.a c(ewy.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ewy b() {
-         return new exc(this.a.build(), this.f());
-      }
+   public static exe.a<?> a(evq $$0) {
+      return a($$1 -> new exc($$1, $$0));
    }
 }

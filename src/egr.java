@@ -1,43 +1,37 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
 
-public class egr<FC extends eit> {
-   private final Optional<egb<?, ?>> a;
-   private final dhx b;
-   private final dzk c;
-   private final bac d;
-   private final jh e;
-   private final FC f;
-
-   public egr(Optional<egb<?, ?>> $$0, dhx $$1, dzk $$2, bac $$3, jh $$4, FC $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+public class egr extends efy<eii> {
+   public egr(Codec<eii> $$0) {
+      super($$0);
    }
 
-   public Optional<egb<?, ?>> a() {
-      return this.a;
-   }
+   @Override
+   public boolean a(ega<eii> $$0) {
+      dhg $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      dwx $$3 = $$1.a_($$2.e());
+      eii $$4 = $$0.f();
+      azh $$5 = $$0.d();
+      if (!$$3.a(awp.aO)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.L_() + 1 && $$6 + 1 <= $$1.an()) {
+            int $$7 = 0;
 
-   public dhx b() {
-      return this.b;
-   }
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               ji $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               dwx $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.L_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
+            }
 
-   public dzk c() {
-      return this.c;
-   }
-
-   public bac d() {
-      return this.d;
-   }
-
-   public jh e() {
-      return this.e;
-   }
-
-   public FC f() {
-      return this.f;
+            return $$7 > 0;
+         } else {
+            return false;
+         }
+      }
    }
 }

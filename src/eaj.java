@@ -1,63 +1,110 @@
-import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.io.DataInput;
+import java.io.DataInputStream;
+import java.io.DataOutput;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
 
-public record eaj(ImmutableList<ean> c) {
-   public static final eaj a = new eaj.a()
-      .a(eak.c, $$0 -> $$0)
-      .a(eak.d, $$0 -> $$0.a(eam::b))
-      .a(eak.e, $$0 -> $$0.a(eak.d, 8).a(eam::d))
-      .a(eak.f, $$0 -> $$0.a(eak.d, 8).a(eam::e))
-      .a(eak.g, $$0 -> $$0.a(eak.d, 8).a(eak.f, 1).a(0).a(eam::f))
-      .a(eak.h, $$0 -> $$0.a(eak.d, 8).a(eak.f, 1).a(0).a(eam::g))
-      .a(eak.i, $$0 -> $$0.a(eak.d, 8).a(0).a(eam::h))
-      .a(eak.j, $$0 -> $$0.a(eak.d, 8).a(eak.i, 1).a(1).a(eam::i))
-      .a(eak.k, $$0 -> $$0.a(eam::j))
-      .a(eak.l, $$0 -> $$0.a(eak.k, 1).a(eam::k))
-      .a(eak.m, $$0 -> $$0.a(eak.f, 1).a(eam::l))
-      .a(eak.n, $$0 -> $$0.a(eam::m))
-      .a();
-   public static final eaj b = new eaj.a()
-      .a(eak.c, $$0 -> $$0)
-      .a(eak.d, $$0 -> $$0.a(eam::c))
-      .a(eak.e, $$0 -> $$0)
-      .a(eak.f, $$0 -> $$0)
-      .a(eak.g, $$0 -> $$0)
-      .a(eak.h, $$0 -> $$0)
-      .a(eak.i, $$0 -> $$0)
-      .a(eak.j, $$0 -> $$0)
-      .a(eak.k, $$0 -> $$0.a(eam::j))
-      .a(eak.l, $$0 -> $$0.a(eak.k, 1).a(eam::k))
-      .a(eak.m, $$0 -> $$0)
-      .a(eak.n, $$0 -> $$0.a(eam::m))
-      .a();
+public final class eaj implements AutoCloseable {
+   public static final String a = ".mca";
+   private static final int b = 256;
+   private final Long2ObjectLinkedOpenHashMap<eai> c = new Long2ObjectLinkedOpenHashMap();
+   private final eal d;
+   private final Path e;
+   private final boolean f;
 
-   public ean a(eak $$0) {
-      return (ean)this.c.get($$0.b());
+   eaj(eal $$0, Path $$1, boolean $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.d = $$0;
    }
 
-   public ImmutableList<ean> a() {
-      return this.c;
-   }
-
-   public static class a {
-      private final List<ean> a = new ArrayList<>();
-
-      public eaj a() {
-         return new eaj(ImmutableList.copyOf(this.a));
-      }
-
-      public eaj.a a(eak $$0, UnaryOperator<ean.a> $$1) {
-         ean.a $$2;
-         if (this.a.isEmpty()) {
-            $$2 = new ean.a($$0);
-         } else {
-            $$2 = new ean.a($$0, this.a.getLast());
+   private eai b(dfo $$0) throws IOException {
+      long $$1 = dfo.c($$0.h(), $$0.i());
+      eai $$2 = (eai)this.c.getAndMoveToFirst($$1);
+      if ($$2 != null) {
+         return $$2;
+      } else {
+         if (this.c.size() >= 256) {
+            ((eai)this.c.removeLast()).close();
          }
 
-         this.a.add($$1.apply($$2).a());
-         return this;
+         v.c(this.e);
+         Path $$3 = this.e.resolve("r." + $$0.h() + "." + $$0.i() + ".mca");
+         eai $$4 = new eai(this.d, $$3, this.e, this.f);
+         this.c.putAndMoveToFirst($$1, $$4);
+         return $$4;
       }
+   }
+
+   @Nullable
+   public tq a(dfo $$0) throws IOException {
+      eai $$1 = this.b($$0);
+
+      tq var4;
+      try (DataInputStream $$2 = $$1.a($$0)) {
+         if ($$2 == null) {
+            return null;
+         }
+
+         var4 = ud.a($$2);
+      }
+
+      return var4;
+   }
+
+   public void a(dfo $$0, uk $$1) throws IOException {
+      eai $$2 = this.b($$0);
+
+      try (DataInputStream $$3 = $$2.a($$0)) {
+         if ($$3 != null) {
+            ud.a((DataInput)$$3, $$1, tz.a());
+         }
+      }
+   }
+
+   protected void a(dfo $$0, @Nullable tq $$1) throws IOException {
+      eai $$2 = this.b($$0);
+      if ($$1 == null) {
+         $$2.d($$0);
+      } else {
+         try (DataOutputStream $$3 = $$2.c($$0)) {
+            ud.a($$1, (DataOutput)$$3);
+         }
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      ayh<IOException> $$0 = new ayh<>();
+      ObjectIterator var2 = this.c.values().iterator();
+
+      while (var2.hasNext()) {
+         eai $$1 = (eai)var2.next();
+
+         try {
+            $$1.close();
+         } catch (IOException var5) {
+            $$0.a(var5);
+         }
+      }
+
+      $$0.a();
+   }
+
+   public void a() throws IOException {
+      ObjectIterator var1 = this.c.values().iterator();
+
+      while (var1.hasNext()) {
+         eai $$0 = (eai)var1.next();
+         $$0.b();
+      }
+   }
+
+   public eal b() {
+      return this.d;
    }
 }

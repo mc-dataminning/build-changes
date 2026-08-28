@@ -1,20 +1,21 @@
-public class dwg extends due {
-   public dwg(jh $$0, dxo $$1) {
-      super(dus.C, $$0, $$1, dcg.d);
+public class dwg {
+   public static final float a = 10.0F;
+   private float b;
+   private float c;
+
+   dwg() {
    }
 
-   @Override
-   protected xk j() {
-      return xk.c("container.smoker");
+   public float a() {
+      return this.b;
    }
 
-   @Override
-   protected int a(dvo $$0, cxg $$1) {
-      return super.a($$0, $$1) / 2;
+   public float b() {
+      return this.c;
    }
 
-   @Override
-   protected cst a(int $$0, cpn $$1) {
-      return new cuu($$0, $$1, this, this.n);
+   void c() {
+      this.c = this.b;
+      this.b = ayz.h(this.b + 10.0F);
    }
 }

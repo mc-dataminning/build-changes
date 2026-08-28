@@ -1,103 +1,64 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import java.util.function.Predicate;
 
-public abstract class dvy extends duk implements btg {
-   @Nullable
-   protected alo<ewn> l;
-   protected long m = 0L;
+public interface dvy {
+   dvy a = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.b() && !$$2x.Z_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
+         .map(buk::cG)
+         .toList();
+   dvy b = ($$0, $$1, $$2, $$3, $$4) -> $$1.a($$0, $$2x -> $$2x.dw().a($$2, $$3) && !$$2x.Z_())
+         .stream()
+         .filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF()))
+         .map(buk::cG)
+         .toList();
+   dvy c = ($$0, $$1, $$2, $$3, $$4) -> {
+      fav $$5 = new fav($$2).g($$3);
+      return $$1.a($$0, bur.bb, $$5, bvg::bL).stream().filter($$3x -> !$$4 || a($$0, $$2.b(), $$3x.bF())).map(buk::cG).toList();
+   };
 
-   protected dvy(dus<?> $$0, jh $$1, dxo $$2) {
-      super($$0, $$1, $$2);
+   List<UUID> detect(arc var1, dvy.a var2, ji var3, double var4, boolean var6);
+
+   private static boolean a(dgi $$0, fba $$1, fba $$2) {
+      faw $$3 = $$0.a(new dfq($$2, $$1, dfq.a.c, dfq.b.a, fbf.a()));
+      return $$3.b().equals(ji.a((kb)$$1)) || $$3.d() == fay.a.a;
    }
 
-   @Nullable
-   @Override
-   public alo<ewn> ax_() {
-      return this.l;
-   }
+   public interface a {
+      dvy.a a = new dvy.a() {
+         @Override
+         public List<ard> a(arc $$0, Predicate<? super cox> $$1) {
+            return $$0.a($$1);
+         }
 
-   @Override
-   public void a(@Nullable alo<ewn> $$0) {
-      this.l = $$0;
-   }
+         @Override
+         public <T extends buk> List<T> a(arc $$0, ebh<buk, T> $$1, fav $$2, Predicate<? super T> $$3) {
+            return $$0.a($$1, $$2, $$3);
+         }
+      };
 
-   @Override
-   public long aA_() {
-      return this.m;
-   }
+      List<? extends cox> a(arc var1, Predicate<? super cox> var2);
 
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
+      <T extends buk> List<T> a(arc var1, ebh<buk, T> var2, fav var3, Predicate<? super T> var4);
 
-   @Override
-   public boolean c() {
-      this.d_(null);
-      return super.c();
-   }
-
-   @Override
-   public cxg a(int $$0) {
-      this.d_(null);
-      return super.a($$0);
-   }
-
-   @Override
-   public cxg a(int $$0, int $$1) {
-      this.d_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public cxg b(int $$0) {
-      this.d_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cxg $$1) {
-      this.d_(null);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(cpo $$0) {
-      return super.d($$0) && (this.l == null || !$$0.aa_());
-   }
-
-   @Nullable
-   @Override
-   public cst createMenu(int $$0, cpn $$1, cpo $$2) {
-      if (this.d($$2)) {
-         this.d_($$1.k);
-         return this.a($$0, $$1);
-      } else {
-         return null;
+      static dvy.a a(cox $$0) {
+         return a(List.of($$0));
       }
-   }
 
-   @Override
-   protected void a(duq.b $$0) {
-      super.a($$0);
-      dag $$1 = $$0.a(ku.ap);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
+      static dvy.a a(final List<cox> $$0) {
+         return new dvy.a() {
+            @Override
+            public List<cox> a(arc $$0x, Predicate<? super cox> $$1) {
+               return $$0.stream().filter($$1).toList();
+            }
+
+            @Override
+            public <T extends buk> List<T> a(arc $$0x, ebh<buk, T> $$1, fav $$2, Predicate<? super T> $$3) {
+               return $$0.stream().map($$1::a).filter(Objects::nonNull).filter($$3).toList();
+            }
+         };
       }
-   }
-
-   @Override
-   protected void a(kq.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(ku.ap, new dag(this.l, this.m));
-      }
-   }
-
-   @Override
-   public void a(um $$0) {
-      super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
    }
 }

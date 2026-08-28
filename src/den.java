@@ -1,38 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface den {
+   akt<deh> a = a("mob_spawn_equipment");
+   akt<deh> b = a("pillager_spawn_crossbow");
+   akt<deh> c = a("raid/pillager_post_wave_3");
+   akt<deh> d = a("raid/pillager_post_wave_5");
+   akt<deh> e = a("raid/vindicator");
+   akt<deh> f = a("raid/vindicator_post_wave_5");
+   akt<deh> g = a("enderman_loot_drop");
 
-public record den(jq<awu> d, bsd e, bsd f) implements deh {
-   public static final MapCodec<den> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               awu.b.fieldOf("sound").forGetter(den::b),
-               bsd.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(den::c),
-               bsd.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(den::d)
-            )
-            .apply($$0, den::new)
-   );
-
-   @Override
-   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
-      bac $$5 = $$3.dZ();
-      if (!$$3.bb()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.dn(), this.e.a($$5), this.f.a($$5));
-      }
+   static void a(qe<deh> $$0) {
+      js<dcz> $$1 = $$0.a(mc.aO);
+      $$0.a(a, new dek($$1.b(aws.l), 5, 17));
+      $$0.a(b, new del($$1.b(dde.K), brl.a(1)));
+      $$0.a(c, new del($$1.b(dde.J), brl.a(1)));
+      $$0.a(d, new del($$1.b(dde.J), brl.a(2)));
+      $$0.a(e, new del($$1.b(dde.n), brl.a(1)));
+      $$0.a(f, new del($$1.b(dde.n), brl.a(2)));
+      $$0.a(g, new del($$1.b(dde.v), brl.a(1)));
    }
 
-   @Override
-   public MapCodec<den> a() {
-      return a;
-   }
-
-   public jq<awu> b() {
-      return this.d;
-   }
-
-   public bsd c() {
-      return this.e;
-   }
-
-   public bsd d() {
-      return this.f;
+   static akt<deh> a(String $$0) {
+      return akt.a(mc.aP, aku.b($$0));
    }
 }

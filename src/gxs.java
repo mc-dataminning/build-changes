@@ -1,4 +1,7 @@
-public class gxs extends gxq {
+public class gxs extends gzi {
    public float a;
-   public float b;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

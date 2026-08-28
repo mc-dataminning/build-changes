@@ -1,42 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import java.util.Set;
 
-public class eze extends ezh {
-   public static final MapCodec<eze> a = a(eze::new);
-   public static final Codec<eze> b = b(eze::new);
+public class eze implements eza {
+   private static final eze b = new eze();
+   public static final MapCodec<eze> a = MapCodec.unit(b);
 
-   eze(List<ezr> $$0) {
-      super($$0, ae.a($$0));
-   }
-
-   public static eze a(List<ezr> $$0) {
-      return new eze(List.copyOf($$0));
+   private eze() {
    }
 
    @Override
-   public ezs b() {
-      return ezt.c;
+   public ezb b() {
+      return ezc.g;
    }
 
-   public static eze.a a(ezr.a... $$0) {
-      return new eze.a($$0);
+   @Override
+   public Set<bai<?>> a() {
+      return Set.of(eyl.b);
    }
 
-   public static class a extends ezh.a {
-      public a(ezr.a... $$0) {
-         super($$0);
-      }
+   public boolean a(evr $$0) {
+      return $$0.a(eyl.b);
+   }
 
-      @Override
-      public eze.a and(ezr.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected ezr a(List<ezr> $$0) {
-         return new eze($$0);
-      }
+   public static eza.a c() {
+      return () -> b;
    }
 }

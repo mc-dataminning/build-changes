@@ -1,41 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eip implements eit {
+public record eip(int b, int c, int d, jr<emq> e) implements eic {
    public static final Codec<eip> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dxo.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
-               dxo.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
-               bsf.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
-               bsf.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+               ayi.m.fieldOf("tries").orElse(128).forGetter(eip::a),
+               ayi.l.fieldOf("xz_spread").orElse(7).forGetter(eip::b),
+               ayi.l.fieldOf("y_spread").orElse(3).forGetter(eip::c),
+               emq.b.fieldOf("feature").forGetter(eip::d)
             )
             .apply($$0, eip::new)
    );
-   private final dxo b;
-   private final dxo c;
-   private final bsf d;
-   private final bsf e;
 
-   public eip(dxo $$0, dxo $$1, bsf $$2, bsf $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   public dxo a() {
+   public int a() {
       return this.b;
    }
 
-   public dxo b() {
+   public int b() {
       return this.c;
    }
 
-   public bsf c() {
+   public int c() {
       return this.d;
    }
 
-   public bsf d() {
+   public jr<emq> d() {
       return this.e;
    }
 }

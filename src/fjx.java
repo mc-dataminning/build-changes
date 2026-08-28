@@ -1,19 +1,58 @@
-import java.util.function.Consumer;
+import com.google.gson.annotations.SerializedName;
+import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
 public class fjx {
-   private static final int a = 8226750;
-   private static final xk b = xk.c("mco.info").b(8226750);
-   private static final xk c = xk.c("mco.warning").b(-65536);
+   private static final String a = "realms_persistence.json";
+   private static final fhc b = new fhc();
+   private static final Logger c = LogUtils.getLogger();
 
-   public static fpb a(ftr $$0, xk $$1, Consumer<fpb> $$2) {
-      return new fpb.a($$0, b).a($$1).a(xj.j, $$2).a(xj.e, fpb::aP_).a();
+   public fjx.a a() {
+      return b();
    }
 
-   public static fpb b(ftr $$0, xk $$1, Consumer<fpb> $$2) {
-      return new fpb.a($$0, c).a($$1).a(xj.j, $$2).a(xj.e, fpb::aP_).a();
+   public void a(fjx.a $$0) {
+      b($$0);
    }
 
-   public static fpb c(ftr $$0, xk $$1, Consumer<fpb> $$2) {
-      return new fpb.a($$0, c).a($$1).a(xj.h, $$2).a();
+   public static fjx.a b() {
+      Path $$0 = c();
+
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fjx.a $$2 = b.a($$1, fjx.a.class);
+         if ($$2 != null) {
+            return $$2;
+         }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fjx.a();
+   }
+
+   public static void b(fjx.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
+      }
+   }
+
+   private static Path c() {
+      return flj.Q().q.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements fht {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

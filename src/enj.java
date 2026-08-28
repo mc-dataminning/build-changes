@@ -1,10 +1,7 @@
-import java.util.stream.Stream;
+@FunctionalInterface
+public interface enj {
+   enj a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
+   };
 
-public abstract class enj extends enk {
-   @Override
-   public final Stream<jh> a_(eni $$0, bac $$1, jh $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
-   }
-
-   protected abstract boolean a(eni var1, bac var2, jh var3);
+   void afterPlace(dhg var1, dhe var2, dyt var3, azh var4, ene var5, dfo var6, eob var7);
 }

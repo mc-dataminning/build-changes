@@ -1,60 +1,31 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Optional;
+import java.util.Set;
 
-public abstract class ezh implements ezr {
-   protected final List<ezr> c;
-   private final Predicate<ewi> a;
+public record ezh(Optional<cv> b) implements eza {
+   public static final MapCodec<ezh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.a.optionalFieldOf("predicate").forGetter(ezh::c)).apply($$0, ezh::new));
 
-   protected ezh(List<ezr> $$0, Predicate<ewi> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends ezh> MapCodec<T> a(Function<List<ezr>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ezr.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends ezh> Codec<T> b(Function<List<ezr>, T> $$0) {
-      return ezr.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(ewi $$0) {
-      return this.a.test($$0);
+   @Override
+   public ezb b() {
+      return ezc.j;
    }
 
    @Override
-   public void a(ewo $$0) {
-      ezr.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   public Set<bai<?>> a() {
+      return Set.of(eyl.i);
    }
 
-   public abstract static class a implements ezr.a {
-      private final Builder<ezr> a = ImmutableList.builder();
+   public boolean a(evr $$0) {
+      cwp $$1 = $$0.c(eyl.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   }
 
-      protected a(ezr.a... $$0) {
-         for (ezr.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
+   public static eza.a a(cv.a $$0) {
+      return () -> new ezh(Optional.of($$0.b()));
+   }
 
-      public void a(ezr.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public ezr build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract ezr a(List<ezr> var1);
+   public Optional<cv> c() {
+      return this.b;
    }
 }

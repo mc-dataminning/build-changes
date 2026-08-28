@@ -1,55 +1,121 @@
-public class cuc<T extends cst> implements csh {
-   public static final cuc<ctc> a = a("generic_9x1", ctc::a);
-   public static final cuc<ctc> b = a("generic_9x2", ctc::b);
-   public static final cuc<ctc> c = a("generic_9x3", ctc::c);
-   public static final cuc<ctc> d = a("generic_9x4", ctc::d);
-   public static final cuc<ctc> e = a("generic_9x5", ctc::e);
-   public static final cuc<ctc> f = a("generic_9x6", ctc::f);
-   public static final cuc<cto> g = a("generic_3x3", cto::new);
-   public static final cuc<ctj> h = a("crafter_3x3", ctj::new);
-   public static final cuc<csw> i = a("anvil", csw::new);
-   public static final cuc<csy> j = a("beacon", csy::new);
-   public static final cuc<csz> k = a("blast_furnace", csz::new);
-   public static final cuc<cta> l = a("brewing_stand", cta::new);
-   public static final cuc<ctm> m = a("crafting", ctm::new);
-   public static final cuc<ctp> n = a("enchantment", ctp::new);
-   public static final cuc<ctr> o = a("furnace", ctr::new);
-   public static final cuc<ctt> p = a("grindstone", ctt::new);
-   public static final cuc<ctu> q = a("hopper", ctu::new);
-   public static final cuc<ctz> r = a("lectern", ($$0, $$1) -> new ctz($$0));
-   public static final cuc<cua> s = a("loom", cua::new);
-   public static final cuc<cue> t = a("merchant", cue::new);
-   public static final cuc<cun> u = a("shulker_box", cun::new);
-   public static final cuc<cut> v = a("smithing", cut::new);
-   public static final cuc<cuu> w = a("smoker", cuu::new);
-   public static final cuc<ctb> x = a("cartography_table", ctb::new);
-   public static final cuc<cuw> y = a("stonecutter", cuw::new);
-   private final csk z;
-   private final cuc.a<T> A;
+import java.util.List;
+import java.util.Optional;
 
-   private static <T extends cst> cuc<T> a(String $$0, cuc.a<T> $$1) {
-      return kd.a(ma.p, $$0, new cuc<>($$1, csm.g));
+public class cuc extends ctg {
+   public static final int m = 0;
+   public static final int n = 1;
+   public static final int o = 2;
+   public static final int p = 3;
+   public static final int u = 8;
+   public static final int v = 26;
+   public static final int w = 44;
+   private static final int y = 98;
+   public static final int x = 48;
+   private final dgi z;
+   private final dbn A;
+   private final dbn B;
+   private final dbn C;
+   private final csw D = csw.a();
+
+   public cuc(int $$0, cow $$1) {
+      this($$0, $$1, csp.a);
    }
 
-   private static <T extends cst> cuc<T> a(String $$0, cuc.a<T> $$1, csi... $$2) {
-      return kd.a(ma.p, $$0, new cuc<>($$1, csm.e.a($$2)));
+   public cuc(int $$0, cow $$1, csp $$2) {
+      this($$0, $$1, $$2, $$1.k.dW());
    }
 
-   private cuc(cuc.a<T> $$0, csk $$1) {
-      this.A = $$0;
-      this.z = $$1;
+   private cuc(int $$0, cow $$1, csp $$2, dgi $$3) {
+      super(ctl.v, $$0, $$1, $$2, a($$3.Q()));
+      this.z = $$3;
+      this.A = $$3.Q().a(dbn.b);
+      this.B = $$3.Q().a(dbn.c);
+      this.C = $$3.Q().a(dbn.d);
+      this.a(this.D).a(0);
    }
 
-   public T a(int $$0, cpn $$1) {
-      return this.A.create($$0, $$1);
+   private static cth a(dbf $$0) {
+      dbn $$1 = $$0.a(dbn.b);
+      dbn $$2 = $$0.a(dbn.c);
+      dbn $$3 = $$0.a(dbn.d);
+      return cth.a().a(0, 8, 48, $$2::a).a(1, 26, 48, $$1::a).a(2, 44, 48, $$3::a).a(3, 98, 48).a();
    }
 
    @Override
-   public csk i() {
-      return this.z;
+   protected boolean a(dwx $$0) {
+      return $$0.a(djo.oD);
    }
 
-   interface a<T extends cst> {
-      T create(int var1, cpn var2);
+   @Override
+   protected void a(cox $$0, cwp $$1) {
+      $$1.a($$0.dW(), $$0, $$1.M());
+      this.t.a($$0, this.o());
+      this.e(0);
+      this.e(1);
+      this.e(2);
+      this.q.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
+   }
+
+   private List<cwp> o() {
+      return List.of(this.s.a(0), this.s.a(1), this.s.a(2));
+   }
+
+   private dca p() {
+      return new dca(this.s.a(0), this.s.a(1), this.s.a(2));
+   }
+
+   private void e(int $$0) {
+      cwp $$1 = this.s.a($$0);
+      if (!$$1.f()) {
+         $$1.h(1);
+         this.s.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public void a(bsc $$0) {
+      super.a($$0);
+      if (this.z instanceof arc) {
+         boolean $$1 = this.b(0).h() && this.b(1).h() && this.b(2).h() && !this.b(this.n()).h();
+         this.D.a($$1 ? 1 : 0);
+      }
+   }
+
+   @Override
+   public void l() {
+      dca $$0 = this.p();
+      Optional<dbj<dbz>> $$2;
+      if (this.z instanceof arc $$1) {
+         $$2 = $$1.t().a(dbp.g, $$0, $$1);
+      } else {
+         $$2 = Optional.empty();
+      }
+
+      $$2.ifPresentOrElse($$1x -> {
+         cwp $$2x = ((dbz)$$1x.b()).a($$0, this.z.K_());
+         this.t.a($$1x);
+         this.t.a(0, $$2x);
+      }, () -> {
+         this.t.a(null);
+         this.t.a(0, cwp.j);
+      });
+   }
+
+   @Override
+   public boolean a(cwp $$0, ctz $$1) {
+      return $$1.c != this.t && super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean c(cwp $$0) {
+      if (this.B.a($$0) && !this.b(0).h()) {
+         return true;
+      } else {
+         return this.A.a($$0) && !this.b(1).h() ? true : this.C.a($$0) && !this.b(2).h();
+      }
+   }
+
+   public boolean m() {
+      return this.D.b() > 0;
    }
 }

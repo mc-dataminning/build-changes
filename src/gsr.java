@@ -1,14 +1,20 @@
-public abstract class gsr<T extends bvz, S extends gyo, M extends gbh<? super S>> extends gsm<T, S, M> {
-   public gsr(grl.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+public class gsr extends gqr<cnf> {
+   private static final aku a = aku.b("textures/entity/hoglin/hoglin.png");
+
+   public gsr(gsc.a $$0) {
+      super($$0, gfb.ba, gfb.bb, 0.7F);
    }
 
-   protected boolean a(T $$0, double $$1) {
-      return super.a($$0, $$1) && ($$0.cM() || $$0.l_() && $$0 == this.e.c);
+   public aku a(gyw $$0) {
+      return a;
    }
 
-   @Override
-   protected float g(S $$0) {
-      return super.g($$0) * $$0.ab;
+   public void a(cnf $$0, gyw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gp();
+   }
+
+   protected boolean b(gyw $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

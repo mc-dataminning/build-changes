@@ -1,30 +1,38 @@
-public class evo {
-   private final int b;
-   private final String c;
-   public static String a = "main";
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-   public evo(int $$0) {
-      this($$0, a);
+public interface evo<T> {
+   ku<T> a();
+
+   T b();
+
+   T a(T var1, Stream<cwp> var2);
+
+   Stream<cwp> a(T var1);
+
+   default void a(cwp $$0, T $$1, Stream<cwp> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
    }
 
-   public evo(int $$0, String $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default void a(cwp $$0, Stream<cwp> $$1) {
+      this.a($$0, this.b(), $$1);
    }
 
-   public boolean a() {
-      return !this.c.equals(a);
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public boolean a(evo $$0) {
-      return this.b().equals($$0.b());
+   default void a(cwp $$0, UnaryOperator<cwp> $$1) {
+      T $$2 = $$0.a(this.a());
+      if ($$2 != null) {
+         UnaryOperator<cwp> $$3 = $$1x -> {
+            if ($$1x.f()) {
+               return $$1x;
+            } else {
+               cwp $$2x = $$1.apply($$1x);
+               $$2x.f($$2x.k());
+               return $$2x;
+            }
+         };
+         this.a($$0, this.a($$2).map($$3));
+      }
    }
 }

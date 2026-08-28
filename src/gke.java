@@ -1,64 +1,118 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-public class gke {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cpn.g();
-   public static final Codec<gke> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ae.a($$0, c)).xmap(gke::new, $$0 -> $$0.f);
-   private static final DynamicOps<vj> d = va.a;
-   private static final Dynamic<?> e = new Dynamic(d, (vj)cxg.e.encodeStart(d, cxg.j).getOrThrow());
-   private List<Dynamic<?>> f;
-
-   private gke(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+public class gke extends gkg {
+   gke(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      float $$7 = this.r.i() * 0.1F + 0.2F;
+      this.v = $$7;
+      this.w = $$7;
+      this.x = $$7;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.5F);
+      this.j *= 0.02F;
+      this.k *= 0.02F;
+      this.l *= 0.02F;
+      this.t = (int)(20.0 / (Math.random() * 0.8 + 0.2));
    }
 
-   public gke() {
-      this(Collections.nCopies(c, e));
+   @Override
+   public gjk b() {
+      return gjk.b;
    }
 
-   public List<cxg> a(js.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cxg.e.parse(aln.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cxg.j))
-         .toList();
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   public void a(cpn $$0, ke $$1) {
-      aln<vj> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.t-- <= 0) {
+         this.k();
+      } else {
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.99;
+         this.k *= 0.99;
+         this.l *= 0.99;
+      }
+   }
 
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cxg $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cxg.e
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+   public static class a implements gjj<lx> {
+      private final gkb a;
+
+      public a(gkb $$0) {
+         this.a = $$0;
       }
 
-      this.f = $$3.build();
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         $$8.a(3 + $$1.H_().a(5));
+         return $$8;
+      }
    }
 
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
+   public static class b implements gjj<lx> {
+      private final gkb a;
+
+      public b(gkb $$0) {
+         this.a = $$0;
       }
 
-      return true;
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(0.3F, 0.5F, 1.0F);
+         $$8.a(this.a);
+         $$8.e(1.0F - $$1.A.i() * 0.7F);
+         $$8.a($$8.j() / 2);
+         return $$8;
+      }
    }
 
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+   public static class c implements gjj<lx> {
+      private final gkb a;
+
+      public c(gkb $$0) {
+         this.a = $$0;
+      }
+
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class d implements gjj<lx> {
+      private final gkb a;
+
+      public d(gkb $$0) {
+         this.a = $$0;
+      }
+
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class e implements gjj<lx> {
+      private final gkb a;
+
+      public e(gkb $$0) {
+         this.a = $$0;
+      }
+
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gke $$8 = new gke($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

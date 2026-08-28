@@ -1,121 +1,69 @@
-public class gas extends gbh<gxf> {
-   private static final float b = 2.0F;
-   private static final float c = 2.5F;
-   public static final ges a = ges.scaling(0.45F);
-   private static final String d = "saddle";
-   private static final String e = "bridle";
-   private static final String f = "reins";
-   private final gej g;
-   private final gej[] i;
-   private final gej[] j;
-
-   public gas(gej $$0) {
-      super($$0);
-      gej $$1 = $$0.b("body");
-      this.g = $$1.b("head");
-      this.i = new gej[]{$$1.b("saddle"), this.g.b("bridle")};
-      this.j = new gej[]{this.g.b("reins")};
+public class gas {
+   public static void a(gfc $$0, gfc $$1, gfc $$2, boolean $$3) {
+      gfc $$4 = $$3 ? $$0 : $$1;
+      gfc $$5 = $$3 ? $$1 : $$0;
+      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
+      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
+      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
+      $$5.e = -1.5F + $$2.e;
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      gen $$2 = new gen(0.05F);
-      get $$3 = $$1.a("body", geo.c().a(0, 25).a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F), gel.a(0.0F, 4.0F, 9.5F));
-      $$3.a("hump", geo.c().a(74, 0).a(-4.5F, -5.0F, -5.5F, 9.0F, 5.0F, 11.0F), gel.a(0.0F, -12.0F, -10.0F));
-      $$3.a("tail", geo.c().a(122, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 14.0F, 0.0F), gel.a(0.0F, -9.0F, 3.5F));
-      get $$4 = $$3.a(
-         "head",
-         geo.c()
-            .a(60, 24)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F)
-            .a(21, 0)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F)
-            .a(50, 0)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F),
-         gel.a(0.0F, -3.0F, -19.5F)
-      );
-      $$4.a("left_ear", geo.c().a(45, 0).a(-0.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gel.a(2.5F, -21.0F, -9.5F));
-      $$4.a("right_ear", geo.c().a(67, 0).a(-2.5F, 0.5F, -1.0F, 3.0F, 1.0F, 2.0F), gel.a(-2.5F, -21.0F, -9.5F));
-      $$1.a("left_hind_leg", geo.c().a(58, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(4.9F, 1.0F, 9.5F));
-      $$1.a("right_hind_leg", geo.c().a(94, 16).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(-4.9F, 1.0F, 9.5F));
-      $$1.a("left_front_leg", geo.c().a(0, 0).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(4.9F, 1.0F, -10.5F));
-      $$1.a("right_front_leg", geo.c().a(0, 26).a(-2.5F, 2.0F, -2.5F, 5.0F, 21.0F, 5.0F), gel.a(-4.9F, 1.0F, -10.5F));
-      $$3.a(
-         "saddle",
-         geo.c()
-            .a(74, 64)
-            .a(-4.5F, -17.0F, -15.5F, 9.0F, 5.0F, 11.0F, $$2)
-            .a(92, 114)
-            .a(-3.5F, -20.0F, -15.5F, 7.0F, 3.0F, 11.0F, $$2)
-            .a(0, 89)
-            .a(-7.5F, -12.0F, -23.5F, 15.0F, 12.0F, 27.0F, $$2),
-         gel.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "reins",
-         geo.c()
-            .a(98, 42)
-            .a(3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F)
-            .a(84, 57)
-            .a(-3.5F, -18.0F, -2.0F, 7.0F, 7.0F, 0.0F)
-            .a(98, 42)
-            .a(-3.51F, -18.0F, -17.0F, 0.0F, 7.0F, 15.0F),
-         gel.a(0.0F, 0.0F, 0.0F)
-      );
-      $$4.a(
-         "bridle",
-         geo.c()
-            .a(60, 87)
-            .a(-3.5F, -7.0F, -15.0F, 7.0F, 8.0F, 19.0F, $$2)
-            .a(21, 64)
-            .a(-3.5F, -21.0F, -15.0F, 7.0F, 14.0F, 7.0F, $$2)
-            .a(50, 64)
-            .a(-2.5F, -21.0F, -21.0F, 5.0F, 5.0F, 6.0F, $$2)
-            .a(74, 70)
-            .a(2.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F)
-            .a(74, 70)
-            .a()
-            .a(-3.5F, -19.0F, -18.0F, 1.0F, 2.0F, 2.0F),
-         gel.a(0.0F, 0.0F, 0.0F)
-      );
-      return gep.a($$0, 128, 128);
+   public static void a(gfc $$0, gfc $$1, float $$2, int $$3, boolean $$4) {
+      gfc $$5 = $$4 ? $$0 : $$1;
+      gfc $$6 = $$4 ? $$1 : $$0;
+      $$5.f = $$4 ? -0.8F : 0.8F;
+      $$5.e = -0.97079635F;
+      $$6.e = $$5.e;
+      float $$7 = ayz.a((float)$$3, 0.0F, $$2);
+      float $$8 = $$7 / $$2;
+      $$6.f = ayz.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
+      $$6.e = ayz.h($$8, $$6.e, (float) (-Math.PI / 2));
    }
 
-   public void a(gxf $$0) {
-      super.a($$0);
-      this.a($$0, $$0.U, $$0.V);
-      this.b($$0);
-      this.a(fmt.a, $$0.X, $$0.Y, 2.0F, 2.5F);
-      this.a($$0.d, fmt.b, $$0.p, 1.0F);
-      this.a($$0.e, fmt.c, $$0.p, 1.0F);
-      this.a($$0.f, fmt.d, $$0.p, 1.0F);
-      this.a($$0.g, fmt.f, $$0.p, 1.0F);
-      this.a($$0.h, fmt.e, $$0.p, 1.0F);
-   }
-
-   private void a(gxf $$0, float $$1, float $$2) {
-      $$1 = azu.a($$1, -30.0F, 30.0F);
-      $$2 = azu.a($$2, -25.0F, 45.0F);
-      if ($$0.c > 0.0F) {
-         float $$3 = 45.0F * $$0.c / 55.0F;
-         $$2 = azu.a($$2 + $$3, -25.0F, 70.0F);
+   public static void a(gfc $$0, gfc $$1, bva $$2, float $$3, float $$4) {
+      float $$5 = ayz.a($$3 * (float) Math.PI);
+      float $$6 = ayz.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$0.g = 0.0F;
+      $$1.g = 0.0F;
+      $$0.f = (float) (Math.PI / 20);
+      $$1.f = (float) (-Math.PI / 20);
+      if ($$2 == bva.b) {
+         $$0.e = -1.8849558F + ayz.b($$4 * 0.09F) * 0.15F;
+         $$1.e = -0.0F + ayz.b($$4 * 0.19F) * 0.5F;
+         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      } else {
+         $$0.e = -0.0F + ayz.b($$4 * 0.19F) * 0.5F;
+         $$1.e = -1.8849558F + ayz.b($$4 * 0.09F) * 0.15F;
+         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
       }
 
-      this.g.f = $$1 * (float) (Math.PI / 180.0);
-      this.g.e = $$2 * (float) (Math.PI / 180.0);
+      a($$0, $$1, $$4);
    }
 
-   private void b(gxf $$0) {
-      boolean $$1 = $$0.a;
-      boolean $$2 = $$0.b;
+   public static void a(gfc $$0, float $$1, float $$2) {
+      $$0.g = $$0.g + $$2 * (ayz.b($$1 * 0.09F) * 0.05F + 0.05F);
+      $$0.e = $$0.e + $$2 * ayz.a($$1 * 0.067F) * 0.05F;
+   }
 
-      for (gej $$3 : this.i) {
-         $$3.k = $$1;
-      }
+   public static void a(gfc $$0, gfc $$1, float $$2) {
+      a($$0, $$2, 1.0F);
+      a($$1, $$2, -1.0F);
+   }
 
-      for (gej $$4 : this.j) {
-         $$4.k = $$2 && $$1;
-      }
+   public static void a(gfc $$0, gfc $$1, boolean $$2, float $$3, float $$4) {
+      float $$5 = ayz.a($$3 * (float) Math.PI);
+      float $$6 = ayz.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
+      $$1.g = 0.0F;
+      $$0.g = 0.0F;
+      $$1.f = -(0.1F - $$5 * 0.6F);
+      $$0.f = 0.1F - $$5 * 0.6F;
+      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
+      $$1.e = $$7;
+      $$0.e = $$7;
+      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
+      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
+      a($$1, $$0, $$4);
    }
 }

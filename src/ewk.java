@@ -1,41 +1,63 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public record ewk<T>(alo<kd<T>> d, Codec<T> e, ewk.a<T> f) {
-   public static final ewk<ezr> a = new ewk<>(mb.bi, ezr.e, e());
-   public static final ewk<exw> b = new ewk<>(mb.bh, exy.c, e());
-   public static final ewk<ewn> c = new ewk<>(mb.bg, ewn.d, f());
+public class ewk extends ewj {
+   public static final MapCodec<ewk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.either(akt.a(mc.bg), evw.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ewk::new)
+   );
+   private final Either<akt<evw>, evw> j;
 
-   public void a(ewo $$0, alo<T> $$1, T $$2) {
-      this.f.run($$0, $$1, $$2);
+   private ewk(Either<akt<evw>, evw> $$0, int $$1, int $$2, List<eza> $$3, List<exf> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
-   public static Stream<ewk<?>> a() {
-      return Stream.of(a, b, c);
+   @Override
+   public ewi a() {
+      return ewf.d;
    }
 
-   private static <T extends ewj> ewk.a<T> e() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   @Override
+   public void a(Consumer<cwp> $$0, evr $$1) {
+      ((evw)this.j.map($$1x -> $$1.a().c($$1x).map(jr::a).orElse(evw.a), $$0x -> $$0x)).a($$1, $$0);
    }
 
-   private static ewk.a<ewn> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   @Override
+   public void a(evx $$0) {
+      Optional<akt<evw>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         akt<evw> $$2 = $$1.get();
+         if (!$$0.b()) {
+            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
+            return;
+         }
+
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
+         }
+      }
+
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .c($$1x)
+                  .ifPresentOrElse($$2x -> ((evw)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
    }
 
-   public alo<kd<T>> b() {
-      return this.d;
+   public static ewj.a<?> a(akt<evw> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ewk(Either.left($$0), $$1, $$2, $$3, $$4));
    }
 
-   public Codec<T> c() {
-      return this.e;
-   }
-
-   public ewk.a<T> d() {
-      return this.f;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void run(ewo var1, alo<T> var2, T var3);
+   public static ewj.a<?> a(evw $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new ewk(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

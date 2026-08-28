@@ -1,76 +1,83 @@
-public class cwj extends cxc {
-   public cwj(cxc.a $$0) {
-      super($$0);
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+
+public class cwj extends cwl {
+   private final axf<cwi> a;
+
+   public cwj(axf<cwi> $$0, cwl.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public bta a(daz $$0) {
-      dgz $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dxo $$3 = $$1.a_($$2);
-      if (!$$3.a(dkf.fT) || $$3.c(dmt.c)) {
-         return bta.e;
-      } else if ($$1.C) {
-         return bta.a;
-      } else {
-         dxo $$4 = $$3.b(dmt.c, Boolean.valueOf(true));
-         dkd.a($$3, $$4, $$1, $$2);
-         $$1.a($$2, $$4, 2);
-         $$1.c($$2, dkf.fT);
-         $$0.n().h(1);
-         $$1.c(1503, $$2, 0);
-         dxt.b $$5 = dmt.b().a($$1, $$2);
-         if ($$5 != null) {
-            jh $$6 = $$5.a().b(-3, 0, -3);
-
-            for (int $$7 = 0; $$7 < 3; $$7++) {
-               for (int $$8 = 0; $$8 < 3; $$8++) {
-                  $$1.a($$6.b($$7, 0, $$8), dkf.fS.m(), 2);
-               }
-            }
-
-            $$1.b(1038, $$6.b(1, 0, 1), 0);
+   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      jt.a $$4 = $$1.a();
+      if ($$4 != null) {
+         Optional<jr<cwi>> $$5 = this.a($$0, $$4);
+         if ($$5.isPresent()) {
+            xc $$6 = $$5.get().a().d().f();
+            wr.a($$6, xl.a.a(n.h));
+            $$2.add($$6);
          }
-
-         return bta.a;
       }
    }
 
-   @Override
-   public int a(cxg $$0, bvx $$1) {
-      return 0;
+   public static cwp a(cwl $$0, jr<cwi> $$1) {
+      cwp $$2 = new cwp($$0);
+      $$2.b(kv.Z, $$1);
+      return $$2;
    }
 
    @Override
-   public bta a(dgz $$0, cpo $$1, bsz $$2) {
-      cxg $$3 = $$1.b($$2);
-      fbn $$4 = a($$0, $$1, dgh.b.a);
-      if ($$4.d() == fbp.a.b && $$0.a_($$4.b()).a(dkf.fT)) {
-         return bta.e;
-      } else {
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      cwp $$3 = $$1.b($$2);
+      Optional<? extends jr<cwi>> $$4 = this.a($$3, $$1.dY());
+      if ($$4.isPresent()) {
+         cwi $$5 = $$4.get().a();
          $$1.c($$2);
-         if ($$0 instanceof arx $$5) {
-            jh $$6 = $$5.a(axw.a, $$1.dw(), 100, false);
-            if ($$6 == null) {
-               return bta.c;
-            }
+         a($$0, $$1, $$5);
+         $$1.gE().a($$3, ayz.d($$5.b() * 20.0F));
+         $$1.b(awk.c.b(this));
+         return bsj.c;
+      } else {
+         return bsj.d;
+      }
+   }
 
-            cqa $$7 = new cqa($$0, $$1.dB(), $$1.e(0.5), $$1.dH());
-            $$7.a($$3);
-            $$7.a($$6);
-            $$0.a(eck.K, $$7.du(), eck.a.a($$1));
-            $$0.b($$7);
-            if ($$1 instanceof ary $$8) {
-               ao.n.a($$8, $$6);
-            }
+   @Override
+   public int a(cwp $$0, bvg $$1) {
+      Optional<jr<cwi>> $$2 = this.a($$0, $$1.dY());
+      return $$2.<Integer>map($$0x -> ayz.d(((cwi)$$0x.a()).b() * 20.0F)).orElse(0);
+   }
 
-            float $$9 = azu.h($$0.A.i(), 0.33F, 0.5F);
-            $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awv.iD, aww.g, 1.0F, $$9);
-            $$3.a(1, $$1);
-            $$1.b(axf.c.b(this));
+   private Optional<jr<cwi>> a(cwp $$0, jt.a $$1) {
+      jr<cwi> $$2 = $$0.a(kv.Z);
+      if ($$2 != null) {
+         return Optional.of($$2);
+      } else {
+         Optional<jv.c<cwi>> $$3 = $$1.d(mc.I).a(this.a);
+         if ($$3.isPresent()) {
+            Iterator<jr<cwi>> $$4 = $$3.get().iterator();
+            if ($$4.hasNext()) {
+               return Optional.of($$4.next());
+            }
          }
 
-         return bta.b;
+         return Optional.empty();
       }
+   }
+
+   @Override
+   public cwr b(cwp $$0) {
+      return cwr.i;
+   }
+
+   private static void a(dgi $$0, cox $$1, cwi $$2) {
+      avz $$3 = $$2.a().a();
+      float $$4 = $$2.c() / 16.0F;
+      $$0.a($$1, $$1, $$3, awb.c, $$4, 1.0F);
+      $$0.a(ebt.B, $$1.du(), ebt.a.a($$1));
    }
 }

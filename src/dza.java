@@ -1,58 +1,111 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-public record dza(String n, dyd o, drv p, drv q, awu r, awu s) {
-   private static final Map<String, dza> t = new Object2ObjectArrayMap();
-   public static final Codec<dza> a = Codec.stringResolver(dza::b, t::get);
-   public static final dza b = a(new dza("oak", dyd.g));
-   public static final dza c = a(new dza("spruce", dyd.h));
-   public static final dza d = a(new dza("birch", dyd.i));
-   public static final dza e = a(new dza("acacia", dyd.j));
-   public static final dza f = a(new dza("cherry", dyd.k, drv.aU, drv.aX, awv.eO, awv.eP));
-   public static final dza g = a(new dza("jungle", dyd.l));
-   public static final dza h = a(new dza("dark_oak", dyd.m));
-   public static final dza i = a(new dza("pale_oak", dyd.n));
-   public static final dza j = a(new dza("crimson", dyd.o, drv.aT, drv.aQ, awv.ru, awv.rv));
-   public static final dza k = a(new dza("warped", dyd.p, drv.aT, drv.aQ, awv.ru, awv.rv));
-   public static final dza l = a(new dza("mangrove", dyd.q));
-   public static final dza m = a(new dza("bamboo", dyd.r, drv.aS, drv.aR, awv.bw, awv.bx));
+public class dza<T> implements dzi<T> {
+   private final jw<T> a;
+   private final axw<T> b;
+   private final dzj<T> c;
+   private final int d;
 
-   public dza(String $$0, dyd $$1) {
-      this($$0, $$1, drv.b, drv.aP, awv.ji, awv.jj);
+   public dza(jw<T> $$0, int $$1, dzj<T> $$2, List<T> $$3) {
+      this($$0, $$1, $$2);
+      $$3.forEach(this.b::d);
    }
 
-   private static dza a(dza $$0) {
-      t.put($$0.b(), $$0);
+   public dza(jw<T> $$0, int $$1, dzj<T> $$2) {
+      this($$0, $$1, $$2, axw.c(1 << $$1));
+   }
+
+   private dza(jw<T> $$0, int $$1, dzj<T> $$2, axw<T> $$3) {
+      this.a = $$0;
+      this.d = $$1;
+      this.c = $$2;
+      this.b = $$3;
+   }
+
+   public static <A> dzi<A> a(int $$0, jw<A> $$1, dzj<A> $$2, List<A> $$3) {
+      return new dza<>($$1, $$0, $$2, $$3);
+   }
+
+   @Override
+   public int a(T $$0) {
+      int $$1 = this.b.a($$0);
+      if ($$1 == -1) {
+         $$1 = this.b.d($$0);
+         if ($$1 >= 1 << this.d) {
+            $$1 = this.c.onResize(this.d + 1, $$0);
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public boolean a(Predicate<T> $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         if ($$0.test(this.b.a($$1))) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public T a(int $$0) {
+      T $$1 = this.b.a($$0);
+      if ($$1 == null) {
+         throw new dzh($$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   @Override
+   public void a(vl $$0) {
+      this.b.a();
+      int $$1 = $$0.l();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.b.d(this.a.b($$0.l()));
+      }
+   }
+
+   @Override
+   public void b(vl $$0) {
+      int $$1 = this.b();
+      $$0.c($$1);
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0.c(this.a.a(this.b.a($$2)));
+      }
+   }
+
+   @Override
+   public int a() {
+      int $$0 = wf.a(this.b());
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         $$0 += wf.a(this.a.a(this.b.a($$1)));
+      }
+
       return $$0;
    }
 
-   public static Stream<dza> a() {
-      return t.values().stream();
+   public List<T> c() {
+      ArrayList<T> $$0 = new ArrayList<>();
+      this.b.iterator().forEachRemaining($$0::add);
+      return $$0;
    }
 
-   public String b() {
-      return this.n;
+   @Override
+   public int b() {
+      return this.b.d();
    }
 
-   public dyd c() {
-      return this.o;
-   }
-
-   public drv d() {
-      return this.p;
-   }
-
-   public drv e() {
-      return this.q;
-   }
-
-   public awu f() {
-      return this.r;
-   }
-
-   public awu g() {
-      return this.s;
+   @Override
+   public dzi<T> a(dzj<T> $$0) {
+      return new dza<>(this.a, this.d, $$0, this.b.b());
    }
 }

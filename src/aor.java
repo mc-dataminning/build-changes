@@ -1,127 +1,80 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Objects;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
 
 public class aor {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.playsound.failed"));
+   private static final List<akt<dez>> a = List.of(
+      dfa.a, dfa.b, dfa.c, dfa.d, dfa.e, dfa.f, dfa.g, dfa.h, dfa.i, dfa.j, dfa.k, dfa.l, dfa.m, dfa.n, dfa.o, dfa.p, dfa.q, dfa.r
+   );
+   private static final List<akt<dex>> b = List.of(dey.a, dey.b, dey.c, dey.d, dey.e, dey.f, dey.g, dey.h, dey.i, dey.j, dey.k);
+   private static final ToIntFunction<akt<dez>> c = af.g(a);
+   private static final ToIntFunction<akt<dex>> d = af.g(b);
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      RequiredArgumentBuilder<ew, alp> $$1 = (RequiredArgumentBuilder<ew, alp>)ex.a("sound", fx.a())
-         .suggests(iw.b)
-         .executes($$0x -> a((ew)$$0x.getSource(), a(((ew)$$0x.getSource()).i()), fx.a($$0x, "sound"), aww.a, ((ew)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
-
-      for (aww $$2 : aww.values()) {
-         $$1.then(a($$2));
-      }
-
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("spawn_armor_trims").requires($$0x -> $$0x.c(2)))
+            .executes($$0x -> a((ex)$$0x.getSource(), ((ex)$$0x.getSource()).h()))
+      );
    }
 
-   private static LiteralArgumentBuilder<ew> a(aww $$0) {
-      return (LiteralArgumentBuilder<ew>)((LiteralArgumentBuilder)ex.a($$0.a())
-            .executes($$1 -> a((ew)$$1.getSource(), a(((ew)$$1.getSource()).i()), fx.a($$1, "sound"), $$0, ((ew)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
-         .then(
-            ((RequiredArgumentBuilder)ex.a("targets", fj.d())
-                  .executes($$1 -> a((ew)$$1.getSource(), fj.f($$1, "targets"), fx.a($$1, "sound"), $$0, ((ew)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
-               .then(
-                  ((RequiredArgumentBuilder)ex.a("pos", gz.a())
-                        .executes($$1 -> a((ew)$$1.getSource(), fj.f($$1, "targets"), fx.a($$1, "sound"), $$0, gz.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
-                     .then(
-                        ((RequiredArgumentBuilder)ex.a("volume", FloatArgumentType.floatArg(0.0F))
-                              .executes(
-                                 $$1 -> a(
-                                       (ew)$$1.getSource(),
-                                       fj.f($$1, "targets"),
-                                       fx.a($$1, "sound"),
-                                       $$0,
-                                       gz.a($$1, "pos"),
-                                       (Float)$$1.getArgument("volume", Float.class),
-                                       1.0F,
-                                       0.0F
-                                    )
-                              ))
-                           .then(
-                              ((RequiredArgumentBuilder)ex.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
-                                    .executes(
-                                       $$1 -> a(
-                                             (ew)$$1.getSource(),
-                                             fj.f($$1, "targets"),
-                                             fx.a($$1, "sound"),
-                                             $$0,
-                                             gz.a($$1, "pos"),
-                                             (Float)$$1.getArgument("volume", Float.class),
-                                             (Float)$$1.getArgument("pitch", Float.class),
-                                             0.0F
-                                          )
-                                    ))
-                                 .then(
-                                    ex.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
-                                       .executes(
-                                          $$1 -> a(
-                                                (ew)$$1.getSource(),
-                                                fj.f($$1, "targets"),
-                                                fx.a($$1, "sound"),
-                                                $$0,
-                                                gz.a($$1, "pos"),
-                                                (Float)$$1.getArgument("volume", Float.class),
-                                                (Float)$$1.getArgument("pitch", Float.class),
-                                                (Float)$$1.getArgument("minVolume", Float.class)
-                                             )
-                                       )
-                                 )
-                           )
-                     )
-               )
+   private static int a(ex $$0, cox $$1) {
+      dgi $$2 = $$1.dW();
+      ka<dew> $$3 = ka.a();
+      ke<dez> $$4 = $$2.K_().e(mc.ba);
+      ke<dex> $$5 = $$2.K_().e(mc.aZ);
+      jt<cwl> $$6 = $$2.a(mc.K);
+      Map<akt<des>, List<cwl>> $$7 = $$6.c().map(jr.c::a).filter($$0x -> {
+         deu $$1x = $$0x.g().a(kv.D);
+         return $$1x != null && $$1x.a().a() == bus.a.b && $$1x.c().isPresent();
+      }).collect(Collectors.groupingBy($$0x -> $$0x.g().a(kv.D).c().get()));
+      $$4.s()
+         .sorted(Comparator.comparing($$1x -> c.applyAsInt($$4.d($$1x).orElse(null))))
+         .forEachOrdered(
+            $$3x -> $$5.s()
+                  .sorted(Comparator.comparing($$1xx -> d.applyAsInt($$5.d($$1xx).orElse(null))))
+                  .forEachOrdered($$4x -> $$3.add(new dew($$5.e($$4x), $$4.e($$3x))))
          );
-   }
+      ji $$8 = $$1.dw().a($$1.cO(), 5);
+      int $$9 = $$7.size() - 1;
+      double $$10 = 3.0;
+      int $$11 = 0;
+      int $$12 = 0;
 
-   private static Collection<ary> a(@Nullable ary $$0) {
-      return $$0 != null ? List.of($$0) : List.of();
-   }
+      for (dew $$13 : $$3) {
+         for (List<cwl> $$14 : $$7.values()) {
+            double $$15 = (double)$$8.u() + 0.5 - (double)($$11 % $$5.d()) * 3.0;
+            double $$16 = (double)$$8.v() + 0.5 + (double)($$12 % $$9) * 3.0;
+            double $$17 = (double)$$8.w() + 0.5 + (double)($$11 / $$5.d() * 10);
+            ckq $$18 = new ckq($$2, $$15, $$16, $$17);
+            $$18.v(180.0F);
+            $$18.f(true);
 
-   private static int a(ew $$0, Collection<ary> $$1, alp $$2, aww $$3, fbr $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
-      jq<awu> $$8 = jq.a(awu.a($$2));
-      double $$9 = (double)azu.l($$8.a().a($$5));
-      int $$10 = 0;
-      long $$11 = $$0.e().H_().g();
-
-      for (ary $$12 : $$1) {
-         double $$13 = $$4.d - $$12.dB();
-         double $$14 = $$4.e - $$12.dD();
-         double $$15 = $$4.f - $$12.dH();
-         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         fbr $$17 = $$4;
-         float $$18 = $$5;
-         if ($$16 > $$9) {
-            if ($$7 <= 0.0F) {
-               continue;
+            for (cwl $$19 : $$14) {
+               deu $$20 = Objects.requireNonNull($$19.g().a(kv.D));
+               cwp $$21 = new cwp($$19);
+               $$21.b(kv.U, $$13);
+               $$18.a($$20.a(), $$21);
+               if ($$21.a(cwt.oT)) {
+                  $$18.b($$13.b().a().a($$13.a()).f().f(" ").b($$13.a().a().d()));
+                  $$18.p(true);
+               } else {
+                  $$18.k(true);
+               }
             }
 
-            double $$19 = Math.sqrt($$16);
-            $$17 = new fbr($$12.dB() + $$13 / $$19 * 2.0, $$12.dD() + $$14 / $$19 * 2.0, $$12.dH() + $$15 / $$19 * 2.0);
-            $$18 = $$7;
+            $$2.b($$18);
+            $$12++;
          }
 
-         $$12.f.b(new agi($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
-         $$10++;
+         $$11++;
       }
 
-      if ($$10 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xk.a("commands.playsound.success.single", xk.a($$2), $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> xk.a("commands.playsound.success.multiple", xk.a($$2), $$1.size()), true);
-         }
-
-         return $$10;
-      }
+      $$0.a(() -> wo.b("Armorstands with trimmed armor spawned around you"), true);
+      return 1;
    }
 }

@@ -1,22 +1,27 @@
-import java.util.ArrayList;
-import java.util.List;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fww extends fwv {
-   private static final xk a = xk.c("options.skinCustomisation.title");
+public class fww implements fwv {
+   public static final fwv a = new fww();
 
-   public fww(ftr $$0, fmd $$1) {
-      super($$0, $$1, a);
+   private fww() {
    }
 
    @Override
-   protected void l() {
-      List<fnw> $$0 = new ArrayList<>();
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
+      this.a($$0, $$1, $$6, $$4, $$5);
+      return $$6;
+   }
 
-      for (cpp $$1 : cpp.values()) {
-         $$0.add(fof.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
+      if ($$2.x + $$3 > $$0) {
+         $$2.x = Math.max($$2.x - 24 - $$3, 4);
       }
 
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+      int $$5 = $$4 + 3;
+      if ($$2.y + $$5 > $$1) {
+         $$2.y = $$1 - $$5;
+      }
    }
 }

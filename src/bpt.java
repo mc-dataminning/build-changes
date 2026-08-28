@@ -1,58 +1,56 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.Comparator;
+import java.util.List;
 
-public class bpt {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+public final class bpt<T> {
+   private final bpt.a a;
+   private final List<Pair<T, bpt.a>> b;
+   private final Duration c;
 
-   protected bpt(Runnable $$0) {
-      this.b = $$0;
+   public bpt(Duration $$0, List<Pair<T, bpt.a>> $$1) {
+      this.c = $$0;
+      this.a = $$1.stream().<bpt.a>map(Pair::getSecond).reduce(new bpt.a(0L, 0L), bpt.a::a);
+      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, bpt.a.c)).limit(10L).toList();
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
+   public double a() {
+      return (double)this.a.a / (double)this.c.getSeconds();
+   }
 
-         bqb $$1;
-         try {
-            $$1 = bqa.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
+   public double b() {
+      return (double)this.a.b / (double)this.c.getSeconds();
+   }
 
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
+   public long c() {
+      return this.a.a;
+   }
+
+   public long d() {
+      return this.a.b;
+   }
+
+   public List<Pair<T, bpt.a>> e() {
+      return this.b;
+   }
+
+   public static record a(long a, long b) {
+      static final Comparator<bpt.a> c = Comparator.comparing(bpt.a::c).thenComparing(bpt.a::b).reversed();
+
+      bpt.a a(bpt.a $$0) {
+         return new bpt.a(this.a + $$0.a, this.b + $$0.b);
       }
-   }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
-      } else {
-         alr.a($$0.get());
+      public float a() {
+         return (float)this.b / (float)this.a;
       }
-   }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         alr.a($$0.get());
-         $$1.printStackTrace(alr.a);
+      public long b() {
+         return this.a;
+      }
+
+      public long c() {
+         return this.b;
       }
    }
 }

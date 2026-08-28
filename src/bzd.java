@@ -1,54 +1,48 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
 public class bzd {
-   public static bxr<cpa> a() {
-      return cbd.a(
-         (Function<cbd.b<cpa>, ? extends App<cbd.c<cpa>, cbg<cpa>>>)($$0 -> $$0.group($$0.b(cfb.c), $$0.b(cfb.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jp $$6 = $$0.b($$1);
-                        $$3.A()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bvx>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cpa && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cpa)$$0xxxx)
-                                    .filter(bvx::bL)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, bzd::a)
-                           );
+   public static bxa<bvo> a(cek<ji> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, fba::c);
+   }
+
+   public static byk<bvo> b(cek<? extends buk> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, buk::du);
+   }
+
+   private static <T> byk<bvo> a(cek<T> $$0, float $$1, int $$2, boolean $$3, Function<T, fba> $$4) {
+      return cam.a(
+         (Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$5 -> $$5.group($$5.a(cek.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cen> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     fba $$11 = $$8.du();
+                     fba $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((kb)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           fba $$13 = $$10.get().a().a().d($$11);
+                           fba $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
+
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           fba $$16 = cge.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cen($$16, $$1, 0));
+                              break;
+                           }
+                        }
+
                         return true;
                      }
-               ))
+                  }
+               }))
       );
-   }
-
-   private static cpa a(cpa $$0, cpa $$1) {
-      cpa $$2;
-      cpa $$3;
-      if ($$0.x() > $$1.x()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
-      }
-
-      $$3.ec().b(cfb.c);
-      return $$2;
-   }
-
-   private static boolean a(jp $$0, jq<che> $$1, cpa $$2) {
-      Optional<jp> $$3 = $$2.ec().c(cfb.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
-   }
-
-   private static boolean a(jq<che> $$0, cpd $$1) {
-      return $$1.b().test($$0);
    }
 }

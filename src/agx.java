@@ -1,93 +1,30 @@
-import java.util.UUID;
+public record agx(int b, int c, boolean d) implements yv<agf> {
+   public static final ym<vl, agx> a = yv.a(agx::a, agx::new);
 
-public class agx {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bvb $$0) {
-      if ($$0 instanceof cpo) {
-         return $$0.al().getString();
-      } else {
-         xk $$1 = $$0.an();
-         return $$1 != null ? $$1.getString() : a($$0.cG());
-      }
+   private agx(vl $$0) {
+      this($$0.l(), $$0.x(), $$0.readBoolean());
    }
 
-   public static String a(UUID $$0) {
-      bac $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.f(this.c);
+      $$0.a(this.d);
    }
 
-   private static String a(bac $$0, String[] $$1) {
-      return ae.a($$1, $$0);
+   @Override
+   public yx<agx> a() {
+      return agd.bB;
    }
 
-   private static bac b(UUID $$0) {
-      return bac.a((long)($$0.hashCode() >> 2));
+   public void a(agf $$0) {
+      $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

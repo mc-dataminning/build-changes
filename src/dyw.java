@@ -1,23 +1,49 @@
-public enum dyw implements baq {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+import java.io.IOException;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-   private final String f;
-
-   private dyw(final String $$0) {
-      this.f = $$0;
+public abstract class dyw implements dzf, AutoCloseable {
+   @Nullable
+   public dzc a(int $$0, int $$1, boolean $$2) {
+      return (dzc)this.a($$0, $$1, dzt.n, $$2);
    }
 
-   @Override
-   public String toString() {
-      return this.f;
+   @Nullable
+   public dzc a(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
+   @Nullable
    @Override
-   public String c() {
-      return this.f;
+   public dze c(int $$0, int $$1) {
+      return this.a($$0, $$1, dzt.c, false);
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, dzt.n, false) != null;
+   }
+
+   @Nullable
+   public abstract dys a(int var1, int var2, dzt var3, boolean var4);
+
+   public abstract void a(BooleanSupplier var1, boolean var2);
+
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+   }
+
+   public abstract String e();
+
+   public abstract int j();
+
+   @Override
+   public void close() throws IOException {
+   }
+
+   public abstract eso p();
+
+   public void b(boolean $$0) {
+   }
+
+   public void a(dfo $$0, boolean $$1) {
    }
 }

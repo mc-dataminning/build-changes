@@ -1,132 +1,79 @@
-import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.time.Instant;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ftq extends ftr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 25;
-   private static final xk c = xk.c("recover_world.title").a(n.r);
-   private static final xk d = xk.c("recover_world.bug_tracker");
-   private static final xk s = xk.c("recover_world.restore");
-   private static final xk u = xk.c("recover_world.no_fallback");
-   private static final xk v = xk.c("recover_world.done.title");
-   private static final xk w = xk.c("recover_world.done.success");
-   private static final xk x = xk.c("recover_world.done.failed");
-   private static final xk y = xk.c("recover_world.issue.none").a(n.k);
-   private static final xk z = xk.c("recover_world.issue.missing_file").a(n.m);
-   private final BooleanConsumer A;
-   private final frr B = frr.d().a(8);
-   private final xk C;
-   private final fot D;
-   private final fot E;
-   private final evw.c F;
+public class ftq extends fuk {
+   private static final wo a = wo.c("addServer.enterIp");
+   private fos b;
+   private final ggn c;
+   private fpb d;
+   private final BooleanConsumer s;
+   private final fuk u;
 
-   public ftq(flz $$0, BooleanConsumer $$1, evw.c $$2) {
-      super(c);
-      this.A = $$1;
-      this.C = xk.a("recover_world.message", xk.b($$2.f()).a(n.h));
-      this.D = new fot(this.C, $$0.h);
-      this.F = $$2;
-      Exception $$3 = this.a($$2, false);
-      Exception $$4 = this.a($$2, true);
-      xk $$5 = xk.i().b(this.a($$2, false, $$3)).f("\n").b(this.a($$2, true, $$4));
-      this.E = new fot($$5, $$0.h);
-      boolean $$6 = $$3 != null && $$4 == null;
-      this.B.c().b();
-      this.B.a(new fpg(this.l, $$0.h));
-      this.B.a(this.D.b(true));
-      this.B.a(this.E);
-      frr $$7 = frr.e().a(5);
-      $$7.a(fny.a(d, fso.b(this, ayq.j)).b(120, 20).a());
-      $$7.a(fny.a(s, $$1x -> this.a($$0)).b(120, 20).a($$6 ? null : fpk.a(u)).a()).j = $$6;
-      this.B.a($$7);
-      this.B.a(fny.a(xj.k, $$0x -> this.aP_()).b(120, 20).a());
-      this.B.a(this::c);
+   public ftq(fuk $$0, BooleanConsumer $$1, ggn $$2) {
+      super(wo.c("selectServer.direct"));
+      this.u = $$0;
+      this.c = $$2;
+      this.s = $$1;
    }
 
-   private void a(flz $$0) {
-      Exception $$1 = this.a(this.F, false);
-      Exception $$2 = this.a(this.F, true);
-      if ($$1 != null && $$2 == null) {
-         $$0.d(new ftc(xk.c("recover_world.restoring")));
-         fyt.a(this.F);
-         if (this.F.n()) {
-            $$0.a(new fsp(this.A, v, w, xj.j, xj.k));
-         } else {
-            $$0.a(new fsk(() -> this.A.accept(false), v, x));
-         }
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.b.j || this.aL_() != this.d || $$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
       } else {
-         a.error(
-            "Failed to recover world, files not as expected. level.dat: {}, level.dat_old: {}",
-            $$1 != null ? $$1.getMessage() : "no issues",
-            $$2 != null ? $$2.getMessage() : "no issues"
-         );
-         $$0.a(new fsk(() -> this.A.accept(false), v, x));
-      }
-   }
-
-   private xk a(evw.c $$0, boolean $$1, @Nullable Exception $$2) {
-      if ($$1 && $$2 instanceof FileNotFoundException) {
-         return xk.i();
-      } else {
-         xy $$3 = xk.i();
-         Instant $$4 = $$0.a($$1);
-         xy $$5 = $$4 != null ? xk.b(fze.a.format($$4)) : xk.c("recover_world.state_entry.unknown");
-         $$3.b(xk.a("recover_world.state_entry", $$5.a(n.h)));
-         if ($$2 == null) {
-            $$3.b(y);
-         } else if ($$2 instanceof FileNotFoundException) {
-            $$3.b(z);
-         } else if ($$2 instanceof vd) {
-            $$3.b(xk.b($$2.getCause().toString()).a(n.m));
-         } else {
-            $$3.b(xk.b($$2.toString()).a(n.m));
-         }
-
-         return $$3;
-      }
-   }
-
-   @Nullable
-   private Exception a(evw.c $$0, boolean $$1) {
-      try {
-         if (!$$1) {
-            $$0.a($$0.h());
-         } else {
-            $$0.a($$0.i());
-         }
-
-         return null;
-      } catch (ux | vd | IOException var4) {
-         return var4;
+         this.m();
+         return true;
       }
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.c();
+   protected void aR_() {
+      this.d = new fpb(this.p, this.n / 2 - 100, 116, 200, 20, wo.c("addServer.enterIp"));
+      this.d.f(128);
+      this.d.a(this.m.n.Y);
+      this.d.b($$0 -> this.E());
+      this.d(this.d);
+      this.b = this.c(fos.a(wo.c("selectServer.select"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 12, 200, 20).a());
+      this.c(fos.a(wn.e, $$0 -> this.s.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 12, 200, 20).a());
+      this.E();
    }
 
    @Override
-   protected void c() {
-      this.E.d(this.n - 50);
-      this.D.d(this.n - 50);
-      this.B.a();
-      frl.a(this.B, this.H());
+   protected void aF_() {
+      this.b(this.d);
    }
 
    @Override
-   public xk i() {
-      return xj.a(super.i(), this.C);
+   public void a(flj $$0, int $$1, int $$2) {
+      String $$3 = this.d.a();
+      this.b($$0, $$1, $$2);
+      this.d.a($$3);
+   }
+
+   private void m() {
+      this.c.b = this.d.a();
+      this.s.accept(true);
    }
 
    @Override
-   public void aP_() {
-      this.A.accept(false);
+   public void aO_() {
+      this.m.a(this.u);
+   }
+
+   @Override
+   public void aI_() {
+      this.m.n.Y = this.d.a();
+      this.m.n.az();
+   }
+
+   private void E() {
+      this.b.j = ghq.b(this.d.a());
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 100, 10526880);
+      this.d.a($$0, $$1, $$2, $$3);
    }
 }

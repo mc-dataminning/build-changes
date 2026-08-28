@@ -1,168 +1,21 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-
 public class rq {
-   public static final alo<epn> a = rh.a("trail_ruins/tower");
+   public static final akt<emq> a = ru.a("end_platform");
+   public static final akt<emq> b = ru.a("end_spike");
+   public static final akt<emq> c = ru.a("end_gateway_return");
+   public static final akt<emq> d = ru.a("chorus_plant");
+   public static final akt<emq> e = ru.a("end_island_decorated");
 
-   public static void a(ra<epn> $$0) {
-      jr<epn> $$1 = $$0.a(mb.aX);
-      jq<epn> $$2 = $$1.b(rh.a);
-      jr<esd> $$3 = $$0.a(mb.aV);
-      jq<esd> $$4 = $$3.b(ri.J);
-      jq<esd> $$5 = $$3.b(ri.K);
-      jq<esd> $$6 = $$3.b(ri.L);
-      $$0.a(
-         a,
-         new epn(
-            $$2,
-            List.of(
-               Pair.of(epl.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_5", $$4), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "trail_ruins/tower/tower_top",
-         new epn(
-            $$2,
-            List.of(
-               Pair.of(epl.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(epl.b("trail_ruins/tower/tower_top_5", $$6), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "trail_ruins/tower/additions",
-         new epn(
-            $$2,
-            List.of(
-               Pair.of(epl.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/tower/stable_5", $$4), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "trail_ruins/roads",
-         new epn(
-            $$2,
-            List.of(
-               Pair.of(epl.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(epl.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(epl.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(epl.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(epl.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(epl.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(epl.b("trail_ruins/roads/road_spacer_1", $$5), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "trail_ruins/buildings",
-         new epn(
-            $$2,
-            List.of(
-               Pair.of(epl.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/one_room_5", $$4), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "trail_ruins/buildings/grouped",
-         new epn(
-            $$2,
-            List.of(
-               Pair.of(epl.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/buildings/group_room_5", $$4), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "trail_ruins/decor",
-         new epn(
-            $$2,
-            List.of(
-               Pair.of(epl.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(epl.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(epl.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(epl.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(epl.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(epl.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(epl.b("trail_ruins/decor/decor_7", $$4), 1)
-            ),
-            epn.a.b
-         )
-      );
+   public static void a(qe<emq> $$0) {
+      js<efk<?, ?>> $$1 = $$0.a(mc.aL);
+      jr<efk<?, ?>> $$2 = $$1.b(re.a);
+      jr<efk<?, ?>> $$3 = $$1.b(re.b);
+      jr<efk<?, ?>> $$4 = $$1.b(re.c);
+      jr<efk<?, ?>> $$5 = $$1.b(re.e);
+      jr<efk<?, ?>> $$6 = $$1.b(re.f);
+      ru.a($$0, a, $$2, emk.a(arc.a.e()), eme.a());
+      ru.a($$0, b, $$3, eme.a());
+      ru.a($$0, c, $$4, emw.a(700), emn.a(), ru.a, emv.a(bru.a(3, 9)), eme.a());
+      ru.a($$0, d, $$5, emi.a(bru.a(0, 4)), emn.a(), ru.a, eme.a());
+      ru.a($$0, e, $$6, emw.a(14), ru.a(1, 0.25F, 1), emn.a(), eml.a(edm.a(55), edm.a(70)), eme.a());
    }
 }

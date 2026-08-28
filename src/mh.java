@@ -1,87 +1,86 @@
-import com.google.common.hash.Hashing;
-import com.google.common.hash.HashingOutputStream;
-import com.google.gson.JsonElement;
-import com.google.gson.stream.JsonWriter;
+import com.google.common.base.Stopwatch;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.ToIntFunction;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 
-public interface mh {
-   ToIntFunction<String> a = ae.a(new Object2IntOpenHashMap(), $$0 -> {
-      $$0.put("type", 0);
-      $$0.put("parent", 1);
-      $$0.defaultReturnValue(2);
-   });
-   Comparator<String> b = Comparator.comparingInt(a).thenComparing($$0 -> (String)$$0);
-   Logger c = LogUtils.getLogger();
+public class mh {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final mk c;
+   final Set<String> d = new HashSet<>();
+   final Map<String, mi> e = new LinkedHashMap<>();
+   private final ag f;
+   private final boolean g;
 
-   CompletableFuture<?> a(mf var1);
-
-   String a();
-
-   static <T> CompletableFuture<?> a(mf $$0, Codec<T> $$1, mj.a $$2, Map<alp, T> $$3) {
-      return CompletableFuture.allOf(
-         $$3.entrySet().stream().map($$3x -> a($$0, $$1, $$3x.getValue(), $$2.a((alp)$$3x.getKey()))).toArray(CompletableFuture[]::new)
-      );
+   public mh(Path $$0, ag $$1, boolean $$2) {
+      this.b = $$0;
+      this.c = new mk(this.b);
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   static <T> CompletableFuture<?> a(mf $$0, js.a $$1, Codec<T> $$2, T $$3, Path $$4) {
-      aln<JsonElement> $$5 = $$1.a(JsonOps.INSTANCE);
-      return a($$0, $$5, $$2, $$3, $$4);
+   public void a() throws IOException {
+      mj $$0 = new mj(this.b, this.d, this.f);
+      Stopwatch $$1 = Stopwatch.createStarted();
+      Stopwatch $$2 = Stopwatch.createUnstarted();
+      this.e.forEach(($$2x, $$3) -> {
+         if (!this.g && !$$0.a($$2x)) {
+            a.debug("Generator {} already run for version {}", $$2x, this.f.c());
+         } else {
+            a.info("Starting provider: {}", $$2x);
+            $$2.start();
+            $$0.a($$0.a($$2x, $$3::a).join());
+            $$2.stop();
+            a.info("{} finished after {} ms", $$2x, $$2.elapsed(TimeUnit.MILLISECONDS));
+            $$2.reset();
+         }
+      });
+      a.info("All providers took: {} ms", $$1.elapsed(TimeUnit.MILLISECONDS));
+      $$0.a();
    }
 
-   static <T> CompletableFuture<?> a(mf $$0, Codec<T> $$1, T $$2, Path $$3) {
-      return a($$0, JsonOps.INSTANCE, $$1, $$2, $$3);
+   public mh.a a(boolean $$0) {
+      return new mh.a($$0, "vanilla", this.c);
    }
 
-   private static <T> CompletableFuture<?> a(mf $$0, DynamicOps<JsonElement> $$1, Codec<T> $$2, T $$3, Path $$4) {
-      JsonElement $$5 = (JsonElement)$$2.encodeStart($$1, $$3).getOrThrow();
-      return a($$0, $$5, $$4);
+   public mh.a a(boolean $$0, String $$1) {
+      Path $$2 = this.c.a(mk.b.a).resolve("minecraft").resolve("datapacks").resolve($$1);
+      return new mh.a($$0, $$1, new mk($$2));
    }
 
-   static CompletableFuture<?> a(mf $$0, JsonElement $$1, Path $$2) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
-            HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
-            JsonWriter $$5 = new JsonWriter(new OutputStreamWriter($$4, StandardCharsets.UTF_8));
+   static {
+      akw.a();
+   }
 
-            try {
-               $$5.setSerializeNulls(false);
-               $$5.setIndent("  ");
-               azk.a($$5, $$1, b);
-            } catch (Throwable var9) {
-               try {
-                  $$5.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
+   public class a {
+      private final boolean b;
+      private final String c;
+      private final mk d;
 
-               throw var9;
+      a(final boolean $$1, final String $$2, final mk $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public <T extends mi> T a(mi.a<T> $$0) {
+         T $$1 = $$0.create(this.d);
+         String $$2 = this.c + "/" + $$1.a();
+         if (!mh.this.d.add($$2)) {
+            throw new IllegalStateException("Duplicate provider: " + $$2);
+         } else {
+            if (this.b) {
+               mh.this.e.put($$2, $$1);
             }
 
-            $$5.close();
-            $$0.writeIfNeeded($$2, $$3.toByteArray(), $$4.hash());
-         } catch (IOException var10) {
-            c.error("Failed to save file to {}", $$2, var10);
+            return $$1;
          }
-      }, ae.g().a("saveStable"));
-   }
-
-   @FunctionalInterface
-   public interface a<T extends mh> {
-      T create(mj var1);
+      }
    }
 }

@@ -1,65 +1,14 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Optional;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.concurrent.TimeUnit;
+import java.util.function.LongSupplier;
 
+@FunctionalInterface
 public interface baa {
-   baa a(String var1);
+   long get(TimeUnit var1);
 
-   void b(String var1);
-
-   public static class a implements baa {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
-
-      public a() {
-         this(HashMultimap.create(), () -> "");
-      }
-
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      private String c() {
-         if (this.c == null) {
-            this.c = this.b.get();
-         }
-
-         return this.c;
-      }
-
+   public interface a extends baa, LongSupplier {
       @Override
-      public baa a(String $$0) {
-         return new baa.a(this.a, () -> this.c() + $$0);
-      }
-
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.c(), $$0);
-      }
-
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
-
-      public Optional<String> b() {
-         Multimap<String, String> $$0 = this.a();
-         if (!$$0.isEmpty()) {
-            String $$1 = $$0.asMap()
-               .entrySet()
-               .stream()
-               .map($$0x -> " at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-               .collect(Collectors.joining("\n"));
-            return Optional.of($$1);
-         } else {
-            return Optional.empty();
-         }
+      default long get(TimeUnit $$0) {
+         return $$0.convert(this.getAsLong(), TimeUnit.NANOSECONDS);
       }
    }
 }

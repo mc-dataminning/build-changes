@@ -1,56 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public abstract class fky implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
+public class fky {
+   private final gfz a;
+   private int b = -1;
+   @Nullable
+   private Consumer<tq> c;
 
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public fky(gfz $$0) {
+      this.a = $$0;
    }
 
-   public static void a(ftr $$0) {
-      flz $$1 = flz.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(xk $$0) {
-      this.b();
-      flz $$1 = flz.Q();
-      $$1.execute(() -> $$1.a(new fjp($$0, new fgw(new ftt()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fix $$1) {
-         this.a($$1.a.b());
+   public boolean a(int $$0, @Nullable tq $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
       } else {
-         this.a(xk.b($$0.getMessage()));
+         return false;
       }
    }
 
-   protected void a(fix $$0) {
-      this.a($$0.a.b());
+   private int a(Consumer<tq> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   public abstract xk a();
-
-   public boolean d() {
-      return this.c;
+   public void a(int $$0, Consumer<tq> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new aha($$2, $$0));
    }
 
-   public void c() {
-   }
-
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+   public void a(ji $$0, Consumer<tq> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agi($$2, $$0));
    }
 }

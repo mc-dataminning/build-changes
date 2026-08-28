@@ -1,16 +1,12 @@
-public class cqy extends cqx {
-   private static final float f = 3.0F;
+import java.util.function.Supplier;
 
-   public cqy(bvi<? extends cqx> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
-
-   public cqy(cnk $$0, dgz $$1) {
-      super(bvi.s, $$1, $$0, $$0.dB(), $$0.gp(), $$0.dH());
+public class cqy extends cqu {
+   public cqy(bur<? extends cqy> $$0, dgi $$1, Supplier<cwl> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fbr $$0) {
-      this.dW().a(this, null, d, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dgz.a.e, ls.A, ls.z, awv.cQ);
+   protected double b(bun $$0) {
+      return (double)($$0.b() / 3.0F);
    }
 }

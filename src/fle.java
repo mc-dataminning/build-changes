@@ -1,52 +1,66 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fle extends fky {
+public class fle {
    private static final Logger b = LogUtils.getLogger();
-   private static final xk c = xk.c("mco.minigame.world.starting.screen.title");
-   private final long d;
-   private final fis e;
-   private final fjl f;
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gkx[] e = new gkx[9];
+   private boolean f;
 
-   public fle(long $$0, fis $$1, fjl $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
+   public fle(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   @Override
-   public void run() {
-      fhb $$0 = fhb.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.c(this.d, this.e.a)) {
-               a(this.f);
-               break;
-            }
-         } catch (fiy var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't start mini game!");
-            this.a(var5);
-         }
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gkx();
       }
    }
 
-   @Override
-   public xk a() {
-      return c;
+   private void b() {
+      try {
+         tq $$0 = ud.a(this.c);
+         if ($$0 == null) {
+            return;
+         }
+
+         int $$1 = uf.b($$0, 1343);
+         $$0 = ban.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gkx.a.parse(ue.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gkx::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
+   }
+
+   public void a() {
+      try {
+         tq $$0 = uf.e(new tq());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gkx $$2 = this.a($$1);
+            DataResult<un> $$3 = gkx.a.encodeStart(ue.a, $$2);
+            $$0.a(String.valueOf($$1), (un)$$3.getOrThrow());
+         }
+
+         ud.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public gkx a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
+      }
+
+      return this.e[$$0];
    }
 }

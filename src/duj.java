@@ -1,108 +1,161 @@
-public class duj extends dvy {
-   private jz<cxg> d = jz.a(27, cxg.j);
-   private final dvd e = new dvd() {
+public class duj extends dtz {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final dfi d = new dfi() {
       @Override
-      protected void a(dgz $$0, jh $$1, dxo $$2) {
-         duj.this.a($$2, awv.bz);
-         duj.this.a($$2, true);
+      public void a(String $$0) {
+         super.a($$0);
+         duj.this.e();
       }
 
       @Override
-      protected void b(dgz $$0, jh $$1, dxo $$2) {
-         duj.this.a($$2, awv.by);
-         duj.this.a($$2, false);
+      public arc e() {
+         return (arc)duj.this.o;
       }
 
       @Override
-      protected void a(dgz $$0, jh $$1, dxo $$2, int $$3, int $$4) {
+      public void f() {
+         dwx $$0 = duj.this.o.a_(duj.this.p);
+         this.e().a(duj.this.p, $$0, $$0, 3);
       }
 
       @Override
-      protected boolean a(cpo $$0) {
-         if ($$0.cd instanceof ctc) {
-            bst $$1 = ((ctc)$$0.cd).l();
-            return $$1 == duj.this;
-         } else {
-            return false;
-         }
+      public fba g() {
+         return fba.b(duj.this.p);
+      }
+
+      @Override
+      public ex i() {
+         jn $$0 = duj.this.m().c(dkv.b);
+         return new ex(this, fba.b(duj.this.p), new faz(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().p(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !duj.this.n();
       }
    };
 
-   public duj(jh $$0, dxo $$1) {
-      super(dus.B, $$0, $$1);
+   public duj(ji $$0, dwx $$1) {
+      super(dub.x, $$0, $$1);
    }
 
    @Override
-   protected void b(um $$0, js.a $$1) {
+   protected void b(tq $$0, jt.a $$1) {
       super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsu.a($$0, this.d, $$1);
-      }
+      this.d.a($$0, $$1);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
    @Override
-   protected void a(um $$0, js.a $$1) {
+   protected void a(tq $$0, jt.a $$1) {
       super.a($$0, $$1);
-      this.d = jz.a(this.b(), cxg.j);
-      if (!this.b_($$0)) {
-         bsu.b($$0, this.d, $$1);
-      }
+      this.d.b($$0, $$1);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
    }
 
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   protected jz<cxg> f() {
+   public dfi b() {
       return this.d;
    }
 
-   @Override
-   protected void a(jz<cxg> $$0) {
-      this.d = $$0;
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected xk j() {
-      return xk.c("container.barrel");
+   public boolean c() {
+      return this.a;
    }
 
-   @Override
-   protected cst a(int $$0, cpn $$1) {
-      return ctc.a($$0, $$1, this);
+   public boolean d() {
+      return this.b;
    }
 
-   @Override
-   public void c_(cpo $$0) {
-      if (!this.q && !$$0.aa_()) {
-         this.e.a($$0, this.i(), this.aB_(), this.m());
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.s() != duj.a.a) {
+         this.u();
       }
    }
 
+   public void f() {
+      duj.a $$0 = this.s();
+      if ($$0 == duj.a.b && (this.a || this.b) && this.o != null) {
+         this.u();
+      }
+   }
+
+   private void u() {
+      djm $$0 = this.m().b();
+      if ($$0 instanceof dkv) {
+         this.k();
+         this.o.a(this.p, $$0, 1);
+      }
+   }
+
+   public boolean j() {
+      return this.c;
+   }
+
+   public boolean k() {
+      this.c = true;
+      if (this.t()) {
+         ji $$0 = this.p.a(this.o.a_(this.p).c(dkv.b).g());
+         if (this.o.a_($$0).b() instanceof dkv) {
+            dtz $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof duj && ((duj)$$1).b().k() > 0;
+         } else {
+            this.c = false;
+         }
+      }
+
+      return this.c;
+   }
+
+   public duj.a s() {
+      dwx $$0 = this.m();
+      if ($$0.a(djo.gi)) {
+         return duj.a.c;
+      } else if ($$0.a(djo.li)) {
+         return duj.a.b;
+      } else {
+         return $$0.a(djo.lj) ? duj.a.a : duj.a.c;
+      }
+   }
+
+   public boolean t() {
+      dwx $$0 = this.o.a_(this.aA_());
+      return $$0.b() instanceof dkv ? $$0.c(dkv.c) : false;
+   }
+
    @Override
-   public void c(cpo $$0) {
-      if (!this.q && !$$0.aa_()) {
-         this.e.b($$0, this.i(), this.aB_(), this.m());
-      }
+   protected void a(dtz.b $$0) {
+      super.a($$0);
+      this.d.b($$0.a(kv.g));
    }
 
-   public void k() {
-      if (!this.q) {
-         this.e.c(this.i(), this.aB_(), this.m());
-      }
+   @Override
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.g, this.d.o());
    }
 
-   void a(dxo $$0, boolean $$1) {
-      this.o.a(this.aB_(), $$0.b(djj.c, Boolean.valueOf($$1)), 3);
+   @Override
+   public void a(tq $$0) {
+      super.a($$0);
+      $$0.r("CustomName");
+      $$0.r("conditionMet");
+      $$0.r("powered");
    }
 
-   void a(dxo $$0, awu $$1) {
-      kl $$2 = $$0.c(djj.b).q();
-      double $$3 = (double)this.p.u() + 0.5 + (double)$$2.u() / 2.0;
-      double $$4 = (double)this.p.v() + 0.5 + (double)$$2.v() / 2.0;
-      double $$5 = (double)this.p.w() + 0.5 + (double)$$2.w() / 2.0;
-      this.o.a(null, $$3, $$4, $$5, $$1, aww.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

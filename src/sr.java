@@ -1,101 +1,40 @@
-import java.util.List;
+import com.google.common.collect.Lists;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
 public class sr {
-   public static final alo<enh> a = sq.a("crimson_fungi");
-   public static final alo<enh> b = sq.a("warped_fungi");
-   public static final alo<enh> c = sq.a("oak_checked");
-   public static final alo<enh> d = sq.a("dark_oak_checked");
-   public static final alo<enh> e = sq.a("pale_oak_checked");
-   public static final alo<enh> f = sq.a("pale_oak_creaking_checked");
-   public static final alo<enh> g = sq.a("birch_checked");
-   public static final alo<enh> h = sq.a("acacia_checked");
-   public static final alo<enh> i = sq.a("spruce_checked");
-   public static final alo<enh> j = sq.a("mangrove_checked");
-   public static final alo<enh> k = sq.a("cherry_checked");
-   public static final alo<enh> l = sq.a("pine_on_snow");
-   public static final alo<enh> m = sq.a("spruce_on_snow");
-   public static final alo<enh> n = sq.a("pine_checked");
-   public static final alo<enh> o = sq.a("jungle_tree");
-   public static final alo<enh> p = sq.a("fancy_oak_checked");
-   public static final alo<enh> q = sq.a("mega_jungle_tree_checked");
-   public static final alo<enh> r = sq.a("mega_spruce_checked");
-   public static final alo<enh> s = sq.a("mega_pine_checked");
-   public static final alo<enh> t = sq.a("tall_mangrove_checked");
-   public static final alo<enh> u = sq.a("jungle_bush");
-   public static final alo<enh> v = sq.a("super_birch_bees_0002");
-   public static final alo<enh> w = sq.a("super_birch_bees");
-   public static final alo<enh> x = sq.a("oak_bees_0002");
-   public static final alo<enh> y = sq.a("oak_bees_002");
-   public static final alo<enh> z = sq.a("birch_bees_0002");
-   public static final alo<enh> A = sq.a("birch_bees_002");
-   public static final alo<enh> B = sq.a("fancy_oak_bees_0002");
-   public static final alo<enh> C = sq.a("fancy_oak_bees_002");
-   public static final alo<enh> D = sq.a("fancy_oak_bees");
-   public static final alo<enh> E = sq.a("cherry_bees_005");
+   public static final sr a = new sr();
+   private final Collection<sl> b = Lists.newCopyOnWriteArrayList();
+   @Nullable
+   private so c;
 
-   public static void a(ra<enh> $$0) {
-      jr<egb<?, ?>> $$1 = $$0.a(mb.aL);
-      jq<egb<?, ?>> $$2 = $$1.b(sg.a);
-      jq<egb<?, ?>> $$3 = $$1.b(sg.c);
-      jq<egb<?, ?>> $$4 = $$1.b(sg.g);
-      jq<egb<?, ?>> $$5 = $$1.b(sg.h);
-      jq<egb<?, ?>> $$6 = $$1.b(sg.i);
-      jq<egb<?, ?>> $$7 = $$1.b(sg.k);
-      jq<egb<?, ?>> $$8 = $$1.b(sg.l);
-      jq<egb<?, ?>> $$9 = $$1.b(sg.m);
-      jq<egb<?, ?>> $$10 = $$1.b(sg.n);
-      jq<egb<?, ?>> $$11 = $$1.b(sg.A);
-      jq<egb<?, ?>> $$12 = $$1.b(sg.C);
-      jq<egb<?, ?>> $$13 = $$1.b(sg.o);
-      jq<egb<?, ?>> $$14 = $$1.b(sg.p);
-      jq<egb<?, ?>> $$15 = $$1.b(sg.q);
-      jq<egb<?, ?>> $$16 = $$1.b(sg.s);
-      jq<egb<?, ?>> $$17 = $$1.b(sg.t);
-      jq<egb<?, ?>> $$18 = $$1.b(sg.u);
-      jq<egb<?, ?>> $$19 = $$1.b(sg.B);
-      jq<egb<?, ?>> $$20 = $$1.b(sg.y);
-      jq<egb<?, ?>> $$21 = $$1.b(sg.v);
-      jq<egb<?, ?>> $$22 = $$1.b(sg.w);
-      jq<egb<?, ?>> $$23 = $$1.b(sg.D);
-      jq<egb<?, ?>> $$24 = $$1.b(sg.E);
-      jq<egb<?, ?>> $$25 = $$1.b(sg.G);
-      jq<egb<?, ?>> $$26 = $$1.b(sg.H);
-      jq<egb<?, ?>> $$27 = $$1.b(sg.J);
-      jq<egb<?, ?>> $$28 = $$1.b(sg.K);
-      jq<egb<?, ?>> $$29 = $$1.b(sg.M);
-      jq<egb<?, ?>> $$30 = $$1.b(sg.N);
-      sq.a($$0, a, $$2, emy.a(8), emv.a());
-      sq.a($$0, b, $$3, emy.a(8), emv.a());
-      sq.a($$0, c, $$4, sq.a(dkf.z));
-      sq.a($$0, d, $$5, sq.a(dkf.F));
-      sq.a($$0, e, $$6, sq.a(dkf.G));
-      sq.a($$0, f, $$7, sq.a(dkf.G));
-      sq.a($$0, g, $$8, sq.a(dkf.B));
-      sq.a($$0, h, $$9, sq.a(dkf.D));
-      sq.a($$0, i, $$10, sq.a(dkf.A));
-      sq.a($$0, j, $$11, sq.a(dkf.H));
-      sq.a($$0, k, $$12, sq.a(dkf.E));
-      eeq $$31 = eeq.a(jm.a.q(), dkf.ec, dkf.rr);
-      List<enk> $$32 = List.of(ena.a(jm.b, eeq.a(eeq.a(dkf.rr)), 8), emw.a($$31));
-      sq.a($$0, l, $$13, $$32);
-      sq.a($$0, m, $$10, $$32);
-      sq.a($$0, n, $$13, sq.a(dkf.A));
-      sq.a($$0, o, $$14, sq.a(dkf.C));
-      sq.a($$0, p, $$15, sq.a(dkf.z));
-      sq.a($$0, q, $$16, sq.a(dkf.C));
-      sq.a($$0, r, $$17, sq.a(dkf.A));
-      sq.a($$0, s, $$18, sq.a(dkf.A));
-      sq.a($$0, t, $$19, sq.a(dkf.H));
-      sq.a($$0, u, $$20, sq.a(dkf.z));
-      sq.a($$0, v, $$21, sq.a(dkf.B));
-      sq.a($$0, w, $$22, sq.a(dkf.B));
-      sq.a($$0, x, $$23, sq.a(dkf.z));
-      sq.a($$0, y, $$24, sq.a(dkf.z));
-      sq.a($$0, z, $$25, sq.a(dkf.B));
-      sq.a($$0, A, $$26, sq.a(dkf.B));
-      sq.a($$0, B, $$27, sq.a(dkf.z));
-      sq.a($$0, C, $$28, sq.a(dkf.z));
-      sq.a($$0, D, $$29, sq.a(dkf.z));
-      sq.a($$0, E, $$30, sq.a(dkf.E));
+   private sr() {
+   }
+
+   public void a(sl $$0) {
+      this.b.add($$0);
+   }
+
+   public void a() {
+      this.b.clear();
+      if (this.c != null) {
+         this.c.c();
+         this.c = null;
+      }
+   }
+
+   public void a(so $$0) {
+      if (this.c != null) {
+         af.b("The runner was already set in GameTestTicker");
+      }
+
+      this.c = $$0;
+   }
+
+   public void b() {
+      if (this.c != null) {
+         this.b.forEach($$0 -> $$0.a(this.c));
+         this.b.removeIf(sl::k);
+      }
    }
 }

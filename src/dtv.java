@@ -1,24 +1,20 @@
-import com.mojang.serialization.MapCodec;
+public class dtv extends dtz {
+   private final cvm a;
 
-public class dtv extends dkd {
-   public static final MapCodec<dtv> a = b(dtv::new);
-
-   @Override
-   public MapCodec<dtv> a() {
-      return a;
+   public dtv(ji $$0, dwx $$1) {
+      this($$0, $$1, ((djf)$$1.b()).b());
    }
 
-   public dtv(dxn.d $$0) {
-      super($$0);
+   public dtv(ji $$0, dwx $$1, cvm $$2) {
+      super(dub.z, $$0, $$1);
+      this.a = $$2;
    }
 
-   @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, bvb $$3) {
-      fbr $$4 = new fbr(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bvx $$5 && $$5.b(bui.K)) {
-         $$4 = new fbr(0.5, 0.25, 0.5);
-      }
+   public abr b() {
+      return abr.a(this);
+   }
 
-      $$3.a($$0, $$4);
+   public cvm c() {
+      return this.a;
    }
 }

@@ -1,11 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public abstract class gxk extends gxq {
-   @Nullable
-   public buz.k b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gxk {
 }

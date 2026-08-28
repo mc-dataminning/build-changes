@@ -1,158 +1,377 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class fme extends avq<Map<String, List<fme.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<fme.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fme.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(fme.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(fme.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(fme.a::d)
-                  )
-                  .apply($$0, fme.a::new)
+public class fme {
+   public static final flx a = flx.a.a(1.125F)
+      .a()
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(26.8802F, -23.399F, -9.0616F), flw.b.a),
+            new fly(0.125F, flz.b(-2.2093F, 5.9119F, 0.0675F), flw.b.a),
+            new fly(0.5417F, flz.b(23.0778F, 14.2906F, 4.6066F), flw.b.a),
+            new fly(0.7083F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.875F, flz.b(7.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.125F, flz.b(26.8802F, -23.399F, -9.0616F), flw.b.a)
          )
-         .listOf()
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final alp c;
-   private final Object2BooleanFunction<String> d;
-   @Nullable
-   private Timer e;
-   @Nullable
-   private fme.b f;
-
-   public fme(alp $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   protected Map<String, List<fme.a>> a(avl $$0, bpj $$1) {
-      try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
-         }
-
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
-      }
-   }
-
-   protected void a(Map<String, List<fme.a>> $$0, avl $$1, bpj $$2) {
-      List<fme.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ae.b("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
-         }
-
-         if (this.f == null) {
-            this.f = new fme.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
-
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
-      }
-   }
-
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
-      }
-   }
-
-   private long a(List<fme.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
-
-   private long a(List<fme.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(final long a, final long b, final String c, final String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final flz a = flz.Q();
-      private final List<fme.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<fme.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
-      }
-
-      public fme.b a(List<fme.a> $$0, long $$1) {
-         this.cancel();
-         return new fme.b($$0, this.d.get(), $$1);
-      }
-
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (fme.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fqi.a(flz.Q().aA(), fqi.a.g, xk.a($$2.c, $$3), xk.a($$2.d, $$3)));
-                  return;
-               }
-            }
-         }
-      }
-   }
+      )
+      .a(
+         "head",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0417F, flz.b(-17.5F, -62.5F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.4167F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.4583F, flz.b(0.0F, 15.0F, 0.0F), flw.b.a),
+            new fly(0.5F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.0417F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.0833F, flz.b(-37.1532F, 81.1131F, -28.3621F), flw.b.a),
+            new fly(1.125F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(12.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(-32.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.875F, flz.b(12.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.125F, flz.b(-15.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(-15.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.125F, flz.b(10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5417F, flz.b(-25.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.75F, flz.b(-9.0923F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7917F, flz.b(-15.137F, -66.7758F, 13.9603F), flw.b.a),
+            new fly(0.8333F, flz.b(-9.0923F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.0F, flz.b(10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.125F, flz.b(-15.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(30.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.375F, flz.b(49.8924F, -3.8282F, 3.2187F), flw.b.a),
+            new fly(0.5F, flz.b(17.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.b(-56.5613F, -12.2403F, -8.7374F), flw.b.a),
+            new fly(0.9167F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.125F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 2.0F), flw.b.a),
+            new fly(0.25F, flz.a(0.0F, 0.1846F, 0.5979F), flw.b.a),
+            new fly(0.375F, flz.a(0.0F, -0.0665F, -2.2177F), flw.b.a),
+            new fly(0.5F, flz.a(0.0F, 1.3563F, -4.3474F), flw.b.a),
+            new fly(0.625F, flz.a(0.0F, 0.1047F, -1.6556F), flw.b.a),
+            new fly(0.9167F, flz.a(0.0F, 0.0F, -1.0F), flw.b.a),
+            new fly(1.125F, flz.a(0.0F, 0.0F, 2.0F), flw.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(25.5305F, 11.3125F, 5.3525F), flw.b.a),
+            new fly(0.125F, flz.b(-49.5628F, 7.3556F, 6.7933F), flw.b.a),
+            new fly(0.25F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.4583F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.9167F, flz.b(30.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.0417F, flz.b(55.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.125F, flz.b(25.5305F, 11.3125F, 5.3525F), flw.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.9674F, -3.6578F), flw.b.a),
+            new fly(0.125F, flz.a(0.0F, -0.2979F, -0.9411F), flw.b.a),
+            new fly(0.25F, flz.a(0.0F, -0.3F, -0.94F), flw.b.a),
+            new fly(0.4583F, flz.a(0.0F, -0.3F, 1.06F), flw.b.a),
+            new fly(1.125F, flz.a(0.0F, 0.9674F, -3.6578F), flw.b.a)
+         )
+      )
+      .b();
+   public static final flx b = flx.a.a(0.7083F)
+      .a()
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.b(0.0F, 45.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(-115.0F, 67.5F, -90.0F), flw.b.a),
+            new fly(0.375F, flz.b(67.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5417F, flz.b(0.0F, 45.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.2917F, flz.a(0.0F, -2.7716F, -1.1481F), flw.b.a),
+            new fly(0.375F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5417F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a("upper_body", new flw(flw.d.c, new fly(0.0F, flz.a(1.0, 1.0, 1.0), flw.b.a), new fly(0.7083F, flz.a(1.0, 1.0, 1.0), flw.b.a)))
+      .a(
+         "head",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(0.0F, -45.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(-11.25F, -45.0F, 0.0F), flw.b.a),
+            new fly(0.2917F, flz.b(-117.3939F, 76.6331F, -130.1483F), flw.b.a),
+            new fly(0.4167F, flz.b(-45.0F, -45.0F, 0.0F), flw.b.a),
+            new fly(0.5F, flz.b(60.0F, -45.0F, 0.0F), flw.b.a),
+            new fly(0.5833F, flz.b(60.0F, -45.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.b(0.0F, -45.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "head",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.4167F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5F, flz.a(0.3827F, 0.5133F, -0.7682F), flw.b.a),
+            new fly(0.5833F, flz.a(0.3827F, 0.5133F, -0.7682F), flw.b.a),
+            new fly(0.625F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "head",
+         new flw(
+            flw.d.c,
+            new fly(0.1667F, flz.a(1.0, 1.0, 1.0), flw.b.a),
+            new fly(0.4167F, flz.a(1.0, 1.0, 1.0), flw.b.a),
+            new fly(0.5F, flz.a(1.0, 1.3F, 1.0), flw.b.a),
+            new fly(0.625F, flz.a(1.0, 1.0, 1.0), flw.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(7.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.4583F, flz.b(55.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "left_leg",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.a(0.0F, 0.0F, -2.0F), flw.b.a),
+            new fly(0.625F, flz.a(0.0F, 0.0F, -2.0F), flw.b.a),
+            new fly(0.7083F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(0.0F, 45.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.b(0.0F, 45.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "right_leg",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.a(0.7071F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.a(0.7071F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "left_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(10.3453F, 14.7669F, 2.664F), flw.b.a),
+            new fly(0.4583F, flz.b(57.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.625F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.7083F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a("left_arm", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.7083F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
+      .b();
+   public static final flx c = flx.a.a(0.2917F)
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.b(-5.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(5.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.b(17.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(-15.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a("right_arm", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.25F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
+      .a(
+         "left_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.b(20.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(-15.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.25F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a("left_arm", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.25F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
+      .b();
+   public static final flx d = flx.a.a(2.25F)
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.b(-40.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.1667F, flz.b(-5.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.2917F, flz.b(7.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5833F, flz.b(16.25F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.6667F, flz.b(29.0814F, 62.5516F, 26.5771F), flw.b.a),
+            new fly(0.75F, flz.b(12.2115F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.0F, flz.b(10.25F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.0417F, flz.b(-47.64F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.125F, flz.b(21.96F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.25F, flz.b(12.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(2.25F, flz.b(17.3266F, 7.9022F, -0.1381F), flw.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.a,
+            new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.a(0.0F, 0.557F, 1.2659F), flw.b.a),
+            new fly(0.1667F, flz.a(0.0F, -2.0889F, -0.3493F), flw.b.a),
+            new fly(0.2917F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a(
+         "upper_body",
+         new flw(
+            flw.d.c,
+            new fly(0.0F, flz.a(1.0, 1.0, 1.0), flw.b.a),
+            new fly(0.0833F, flz.a(1.0, 1.1F, 1.0), flw.b.a),
+            new fly(0.1667F, flz.a(1.0, 0.9F, 1.0), flw.b.a),
+            new fly(0.2917F, flz.a(1.0, 1.0, 1.0), flw.b.a)
+         )
+      )
+      .a(
+         "right_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.2917F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.25F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.5417F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.5833F, flz.b(-12.1479F, -34.3927F, 6.9326F), flw.b.a),
+            new fly(1.6667F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a("right_arm", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.2917F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
+      .a(
+         "left_arm",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.2917F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.8333F, flz.b(-4.4444F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.875F, flz.b(-26.7402F, -78.831F, 26.3025F), flw.b.a),
+            new fly(0.9583F, flz.b(-5.5556F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.25F, flz.b(-10.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a("left_arm", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.2917F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
+      .a(
+         "head",
+         new flw(
+            flw.d.b,
+            new fly(0.0F, flz.b(0.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.0833F, flz.b(-5.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.2917F, flz.b(10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5F, flz.b(2.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5417F, flz.b(5.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(0.5833F, flz.b(-67.4168F, -12.9552F, -8.0231F), flw.b.a),
+            new fly(0.6667F, flz.b(8.5F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.0F, flz.b(10.773F, -29.5608F, -5.3627F), flw.b.a),
+            new fly(1.25F, flz.b(10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.7917F, flz.b(10.0F, 0.0F, 0.0F), flw.b.a),
+            new fly(1.8333F, flz.b(12.9625F, 39.2735F, 8.2901F), flw.b.a),
+            new fly(1.9167F, flz.b(10.0F, 0.0F, 0.0F), flw.b.a)
+         )
+      )
+      .a("head", new flw(flw.d.a, new fly(0.0F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a), new fly(0.2917F, flz.a(0.0F, 0.0F, 0.0F), flw.b.a)))
+      .b();
 }

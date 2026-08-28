@@ -1,51 +1,24 @@
-import java.util.BitSet;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class dzi {
-   private final int a;
-   private final BitSet b;
-   private dzi.a c = ($$0x, $$1x, $$2) -> false;
+public interface dzi<T> {
+   int a(T var1);
 
-   public dzi(int $$0, int $$1) {
-      this.a = $$1;
-      this.b = new BitSet(256 * $$0);
-   }
+   boolean a(Predicate<T> var1);
 
-   public void a(dzi.a $$0) {
-      this.c = $$0;
-   }
+   T a(int var1);
 
-   public dzi(long[] $$0, int $$1) {
-      this.a = $$1;
-      this.b = BitSet.valueOf($$0);
-   }
+   void a(vl var1);
 
-   private int c(int $$0, int $$1, int $$2) {
-      return $$0 & 15 | ($$2 & 15) << 4 | $$1 - this.a << 8;
-   }
+   void b(vl var1);
 
-   public void a(int $$0, int $$1, int $$2) {
-      this.b.set(this.c($$0, $$1, $$2));
-   }
+   int a();
 
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.c.test($$0, $$1, $$2) || this.b.get(this.c($$0, $$1, $$2));
-   }
+   int b();
 
-   public Stream<jh> a(dgf $$0) {
-      return this.b.stream().mapToObj($$1 -> {
-         int $$2 = $$1 & 15;
-         int $$3 = $$1 >> 4 & 15;
-         int $$4 = $$1 >> 8;
-         return $$0.a($$2, $$4 + this.a, $$3);
-      });
-   }
-
-   public long[] a() {
-      return this.b.toLongArray();
-   }
+   dzi<T> a(dzj<T> var1);
 
    public interface a {
-      boolean test(int var1, int var2, int var3);
+      <A> dzi<A> create(int var1, jw<A> var2, dzj<A> var3, List<A> var4);
    }
 }

@@ -1,108 +1,101 @@
-import com.google.common.base.Suppliers;
-import java.util.List;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.hash.Hashing;
 
-public class dhm implements dgi {
-   protected final int a;
-   protected final int b;
-   protected final dzj[][] c;
-   protected boolean d;
-   protected final dgz e;
-   private final Supplier<jq<dib>> f;
+public class dhm {
+   public static final int a = kc.a(8);
+   private static final int b = 2;
+   private static final int c = 4;
+   private static final int d = 3;
+   private final dhm.a e;
+   private final long f;
 
-   public dhm(dgz $$0, jh $$1, jh $$2) {
+   public dhm(dhm.a $$0, long $$1) {
       this.e = $$0;
-      this.f = Suppliers.memoize(() -> $$0.K_().e(mb.aI).b(dii.b));
-      this.a = kj.a($$1.u());
-      this.b = kj.a($$1.w());
-      int $$3 = kj.a($$2.u());
-      int $$4 = kj.a($$2.w());
-      this.c = new dzj[$$3 - this.a + 1][$$4 - this.b + 1];
-      dzn $$5 = $$0.S();
-      this.d = true;
+      this.f = $$1;
+   }
 
-      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
-         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
-            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
+   public static long a(long $$0) {
+      return Hashing.sha256().hashLong($$0).asLong();
+   }
+
+   public dhm a(dhm.a $$0) {
+      return new dhm($$0, this.f);
+   }
+
+   public jr<dhk> a(ji $$0) {
+      int $$1 = $$0.u() - 2;
+      int $$2 = $$0.v() - 2;
+      int $$3 = $$0.w() - 2;
+      int $$4 = $$1 >> 2;
+      int $$5 = $$2 >> 2;
+      int $$6 = $$3 >> 2;
+      double $$7 = (double)($$1 & 3) / 4.0;
+      double $$8 = (double)($$2 & 3) / 4.0;
+      double $$9 = (double)($$3 & 3) / 4.0;
+      int $$10 = 0;
+      double $$11 = Double.POSITIVE_INFINITY;
+
+      for (int $$12 = 0; $$12 < 8; $$12++) {
+         boolean $$13 = ($$12 & 4) == 0;
+         boolean $$14 = ($$12 & 2) == 0;
+         boolean $$15 = ($$12 & 1) == 0;
+         int $$16 = $$13 ? $$4 : $$4 + 1;
+         int $$17 = $$14 ? $$5 : $$5 + 1;
+         int $$18 = $$15 ? $$6 : $$6 + 1;
+         double $$19 = $$13 ? $$7 : $$7 - 1.0;
+         double $$20 = $$14 ? $$8 : $$8 - 1.0;
+         double $$21 = $$15 ? $$9 : $$9 - 1.0;
+         double $$22 = a(this.f, $$16, $$17, $$18, $$19, $$20, $$21);
+         if ($$11 > $$22) {
+            $$10 = $$12;
+            $$11 = $$22;
          }
       }
 
-      for (int $$8 = kj.a($$1.u()); $$8 <= kj.a($$2.u()); $$8++) {
-         for (int $$9 = kj.a($$1.w()); $$9 <= kj.a($$2.w()); $$9++) {
-            dzj $$10 = this.c[$$8 - this.a][$$9 - this.b];
-            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
-               this.d = false;
-               return;
-            }
-         }
-      }
+      int $$23 = ($$10 & 4) == 0 ? $$4 : $$4 + 1;
+      int $$24 = ($$10 & 2) == 0 ? $$5 : $$5 + 1;
+      int $$25 = ($$10 & 1) == 0 ? $$6 : $$6 + 1;
+      return this.e.getNoiseBiome($$23, $$24, $$25);
    }
 
-   private dzj d(jh $$0) {
-      return this.a(kj.a($$0.u()), kj.a($$0.w()));
+   public jr<dhk> a(double $$0, double $$1, double $$2) {
+      int $$3 = kc.a(ayz.a($$0));
+      int $$4 = kc.a(ayz.a($$1));
+      int $$5 = kc.a(ayz.a($$2));
+      return this.a($$3, $$4, $$5);
    }
 
-   private dzj a(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
-         dzj $$4 = this.c[$$2][$$3];
-         return (dzj)($$4 != null ? $$4 : new dzp(this.e, new dgf($$0, $$1), this.f.get()));
-      } else {
-         return new dzp(this.e, new dgf($$0, $$1), this.f.get());
-      }
+   public jr<dhk> b(ji $$0) {
+      int $$1 = kc.a($$0.u());
+      int $$2 = kc.a($$0.v());
+      int $$3 = kc.a($$0.w());
+      return this.a($$1, $$2, $$3);
    }
 
-   @Override
-   public dze F_() {
-      return this.e.F_();
+   public jr<dhk> a(int $$0, int $$1, int $$2) {
+      return this.e.getNoiseBiome($$0, $$1, $$2);
    }
 
-   @Override
-   public dge c(int $$0, int $$1) {
-      return this.a($$0, $$1);
+   private static double a(long $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      long $$7 = ayu.a($$0, (long)$$1);
+      $$7 = ayu.a($$7, (long)$$2);
+      $$7 = ayu.a($$7, (long)$$3);
+      $$7 = ayu.a($$7, (long)$$1);
+      $$7 = ayu.a($$7, (long)$$2);
+      $$7 = ayu.a($$7, (long)$$3);
+      double $$8 = b($$7);
+      $$7 = ayu.a($$7, $$0);
+      double $$9 = b($$7);
+      $$7 = ayu.a($$7, $$0);
+      double $$10 = b($$7);
+      return ayz.k($$6 + $$10) + ayz.k($$5 + $$9) + ayz.k($$4 + $$8);
    }
 
-   @Override
-   public List<fcl> c(@Nullable bvb $$0, fbm $$1) {
-      return List.of();
+   private static double b(long $$0) {
+      double $$1 = (double)Math.floorMod($$0 >> 24, 1024) / 1024.0;
+      return ($$1 - 0.5) * 0.9;
    }
 
-   @Nullable
-   @Override
-   public duq c_(jh $$0) {
-      dzj $$1 = this.d($$0);
-      return $$1.c_($$0);
-   }
-
-   @Override
-   public dxo a_(jh $$0) {
-      if (this.s($$0)) {
-         return dkf.a.m();
-      } else {
-         dzj $$1 = this.d($$0);
-         return $$1.a_($$0);
-      }
-   }
-
-   @Override
-   public etq b_(jh $$0) {
-      if (this.s($$0)) {
-         return etr.a.g();
-      } else {
-         dzj $$1 = this.d($$0);
-         return $$1.b_($$0);
-      }
-   }
-
-   @Override
-   public int L_() {
-      return this.e.L_();
-   }
-
-   @Override
-   public int M_() {
-      return this.e.M_();
+   public interface a {
+      jr<dhk> getNoiseBiome(int var1, int var2, int var3);
    }
 }

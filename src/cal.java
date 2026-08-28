@@ -1,95 +1,67 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class cal extends bxq<cpa> {
-   private Set<cxc> c = ImmutableSet.of();
-
-   public cal() {
-      super(ImmutableMap.of(cfb.q, cfc.a, cfb.h, cfc.a));
+public class cal {
+   public static bxa<coi> a(float $$0) {
+      return cam.a(
+         (Function<cam.b<coi>, ? extends App<cam.c<coi>, cap<coi>>>)($$1 -> $$1.group($$1.b(cek.d), $$1.c(cek.c), $$1.b(cek.g), $$1.a(cek.m), $$1.a(cek.n))
+               .apply(
+                  $$1,
+                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                        if ($$7.e_()) {
+                           return false;
+                        } else if ($$7.gz().b() != col.b) {
+                           return false;
+                        } else {
+                           ji $$9 = $$1.<jq>b($$2).b();
+                           Optional<jr<cgn>> $$10 = $$6x.A().c($$9);
+                           if ($$10.isEmpty()) {
+                              return true;
+                           } else {
+                              $$1.<List<bvg>>b($$4)
+                                 .stream()
+                                 .filter($$1xxx -> $$1xxx instanceof coi && $$1xxx != $$7)
+                                 .map($$0xxxx -> (coi)$$0xxxx)
+                                 .filter(bvg::bL)
+                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
+                                 .findFirst()
+                                 .ifPresent($$6xx -> {
+                                    $$5.b();
+                                    $$6.b();
+                                    $$2.b();
+                                    if ($$6xx.ec().c(cek.c).isEmpty()) {
+                                       bxb.a($$6xx, $$9, $$0, 1);
+                                       $$6xx.ec().a(cek.d, jq.a($$6x.ai(), $$9));
+                                       agc.c($$6x, $$9);
+                                    }
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 
-   protected boolean a(arx $$0, cpa $$1) {
-      return bxs.a($$1.ec(), cfb.q, bvi.bD);
-   }
-
-   protected boolean a(arx $$0, cpa $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arx $$0, cpa $$1, long $$2) {
-      cpa $$3 = (cpa)$$1.ec().c(cfb.q).get();
-      bxs.a($$1, $$3, 0.5F, 2);
-      this.c = a($$1, $$3);
-   }
-
-   protected void c(arx $$0, cpa $$1, long $$2) {
-      cpa $$3 = (cpa)$$1.ec().c(cfb.q).get();
-      if (!($$1.g($$3) > 5.0)) {
-         bxs.a($$1, $$3, 0.5F, 2);
-         $$1.a($$0, $$3, $$2);
-         if ($$1.gF() && ($$1.gy().b() == cpd.g || $$3.gG())) {
-            a($$1, cpa.cc.keySet(), $$3);
-         }
-
-         if ($$3.gy().b() == cpd.g && $$1.t().a_(cxk.qb) > cxk.qb.h() / 2) {
-            a($$1, ImmutableSet.of(cxk.qb), $$3);
-         }
-
-         if (!this.c.isEmpty() && $$1.t().a(this.c)) {
-            a($$1, this.c, $$3);
+   private static boolean a(jr<cgn> $$0, coi $$1, ji $$2) {
+      boolean $$3 = $$1.ec().c(cek.d).isPresent();
+      if ($$3) {
+         return false;
+      } else {
+         Optional<jq> $$4 = $$1.ec().c(cek.c);
+         col $$5 = $$1.gz().b();
+         if ($$5.b().test($$0)) {
+            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
+         } else {
+            return false;
          }
       }
    }
 
-   protected void d(arx $$0, cpa $$1, long $$2) {
-      $$1.ec().b(cfb.q);
-   }
-
-   private static Set<cxc> a(cpa $$0, cpa $$1) {
-      ImmutableSet<cxc> $$2 = $$1.gy().b().d();
-      ImmutableSet<cxc> $$3 = $$0.gy().b().d();
-      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
-   }
-
-   private static void a(cpa $$0, Set<cxc> $$1, bvx $$2) {
-      bth $$3 = $$0.t();
-      cxg $$4 = cxg.j;
-      int $$5 = 0;
-
-      while ($$5 < $$3.b()) {
-         cxg $$6;
-         cxc $$7;
-         int $$8;
-         label28: {
-            $$6 = $$3.a($$5);
-            if (!$$6.f()) {
-               $$7 = $$6.h();
-               if ($$1.contains($$7)) {
-                  if ($$6.M() > $$6.k() / 2) {
-                     $$8 = $$6.M() / 2;
-                     break label28;
-                  }
-
-                  if ($$6.M() > 24) {
-                     $$8 = $$6.M() - 24;
-                     break label28;
-                  }
-               }
-            }
-
-            $$5++;
-            continue;
-         }
-
-         $$6.h($$8);
-         $$4 = new cxg($$7, $$8);
-         break;
-      }
-
-      if (!$$4.f()) {
-         bxs.a($$0, $$4, $$2.du());
-      }
+   private static boolean a(bvo $$0, ji $$1, cgn $$2) {
+      etn $$3 = $$0.L().a($$1, $$2.c());
+      return $$3 != null && $$3.j();
    }
 }

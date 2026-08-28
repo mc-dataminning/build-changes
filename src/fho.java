@@ -1,96 +1,81 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.ProfileResult;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import org.slf4j.Logger;
 
-public class fho {
+public class fho extends fhz {
    private static final Logger b = LogUtils.getLogger();
-   public static final int a = 20;
-   private final fhb c = fhb.a();
-   private final Path d;
-   private final fii e;
-   private final fml f;
-   private final long g;
-   private final int h;
-   private final fhp i;
-   private volatile boolean j;
-   @Nullable
-   private fgz k;
+   public Map<Long, List<ProfileResult>> a = Map.of();
 
-   public fho(Path $$0, fii $$1, fml $$2, long $$3, int $$4, fhp $$5) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-   }
+   public static fho a(String $$0) {
+      fho $$1 = new fho();
+      Builder<Long, List<ProfileResult>> $$2 = ImmutableMap.builder();
 
-   public CompletableFuture<?> a() {
-      return CompletableFuture.runAsync(() -> {
-         File $$0 = null;
-
-         try {
-            fip $$1 = this.c();
-            $$0 = fhn.a(this.d, () -> this.j);
-            this.i.d();
-            fgz $$2 = new fgz($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
-            this.k = $$2;
-            fkg $$3 = $$2.a();
-            String $$4 = $$3.a();
-            if ($$4 != null) {
-               throw new fhk($$4);
-            }
-
-            fks.b(this.g);
-            this.c.a(this.g, this.h, this.e);
-         } catch (IOException var11) {
-            throw new fhk(var11.getMessage());
-         } catch (fix var12) {
-            throw new fhk(var12.a.b());
-         } catch (CancellationException | InterruptedException var13) {
-            throw new fhi();
-         } finally {
-            if ($$0 != null) {
-               b.debug("Deleting file {}", $$0.getAbsolutePath());
-               $$0.delete();
-            }
-         }
-      }, ae.g());
-   }
-
-   public void b() {
-      this.j = true;
-      if (this.k != null) {
-         this.k.b();
-         this.k = null;
-      }
-   }
-
-   private fip c() throws fix, InterruptedException {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         try {
-            fip $$1 = this.c.i(this.g);
-            if (this.j) {
-               throw new fhi();
-            }
-
-            if ($$1 != null) {
-               if (!$$1.c()) {
-                  throw new fhm();
+      try {
+         JsonObject $$3 = ayp.a($$0);
+         if (ayp.d($$3, "lists")) {
+            for (JsonElement $$5 : $$3.getAsJsonArray("lists")) {
+               JsonObject $$6 = $$5.getAsJsonObject();
+               String $$7 = fjv.b("playerList", $$6, null);
+               List<ProfileResult> $$9;
+               if ($$7 != null) {
+                  JsonElement $$8 = JsonParser.parseString($$7);
+                  if ($$8.isJsonArray()) {
+                     $$9 = a($$8.getAsJsonArray());
+                  } else {
+                     $$9 = Lists.newArrayList();
+                  }
+               } else {
+                  $$9 = Lists.newArrayList();
                }
 
-               return $$1;
+               $$2.put(fjv.a("serverId", $$6, -1L), $$9);
             }
-         } catch (fiy var3) {
-            Thread.sleep((long)var3.c * 1000L);
+         }
+      } catch (Exception var11) {
+         b.error("Could not parse RealmsServerPlayerLists: {}", var11.getMessage());
+      }
+
+      $$1.a = $$2.build();
+      return $$1;
+   }
+
+   private static List<ProfileResult> a(JsonArray $$0) {
+      List<ProfileResult> $$1 = new ArrayList<>($$0.size());
+      MinecraftSessionService $$2 = flj.Q().am();
+
+      for (JsonElement $$3 : $$0) {
+         if ($$3.isJsonObject()) {
+            UUID $$4 = fjv.a("playerId", $$3.getAsJsonObject(), null);
+            if ($$4 != null && !flj.Q().b($$4)) {
+               try {
+                  ProfileResult $$5 = $$2.fetchProfile($$4, false);
+                  if ($$5 != null) {
+                     $$1.add($$5);
+                  }
+               } catch (Exception var7) {
+                  b.error("Could not get name for {}", $$4, var7);
+               }
+            }
          }
       }
 
-      throw new fhm();
+      return $$1;
+   }
+
+   public List<ProfileResult> a(long $$0) {
+      List<ProfileResult> $$1 = this.a.get($$0);
+      return $$1 != null ? $$1 : List.of();
    }
 }

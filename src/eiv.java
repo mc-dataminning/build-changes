@@ -1,22 +1,16 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class eiv implements eit {
-   public static final Codec<eiv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eku.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               eku.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eiv::new)
-   );
-   public final eku b;
-   public final eku c;
-   public final int d;
+public class eiv implements eic {
+   public static final Codec<eiv> a = ayi.c(emq.c).fieldOf("features").xmap(eiv::new, $$0 -> $$0.b).codec();
+   public final jv<emq> b;
 
-   public eiv(eku $$0, eku $$1, int $$2) {
+   public eiv(jv<emq> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   @Override
+   public Stream<efk<?, ?>> e() {
+      return this.b.a().flatMap($$0 -> $$0.a().a());
    }
 }

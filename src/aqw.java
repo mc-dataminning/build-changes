@@ -1,63 +1,52 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.Locale;
-import javax.swing.JComponent;
-import javax.swing.Timer;
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.Nullable;
 
-public class aqw extends JComponent {
-   private static final DecimalFormat a = ae.a(
-      new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
-   );
-   private final int[] b = new int[256];
-   private int c;
-   private final String[] d = new String[11];
-   private final MinecraftServer e;
-   private final Timer f;
+public class aqw {
+   @Nullable
+   protected static ji a(arc $$0, int $$1, int $$2) {
+      boolean $$3 = $$0.G_().h();
+      dzc $$4 = $$0.d(kk.a($$1), kk.a($$2));
+      int $$5 = $$3 ? $$0.m().g().a($$0) : $$4.a(ecs.a.e, $$1 & 15, $$2 & 15);
+      if ($$5 < $$0.L_()) {
+         return null;
+      } else {
+         int $$6 = $$4.a(ecs.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(ecs.a.d, $$1 & 15, $$2 & 15)) {
+            return null;
+         } else {
+            ji.a $$7 = new ji.a();
 
-   public aqw(MinecraftServer $$0) {
-      this.e = $$0;
-      this.setPreferredSize(new Dimension(456, 246));
-      this.setMinimumSize(new Dimension(456, 246));
-      this.setMaximumSize(new Dimension(456, 246));
-      this.f = new Timer(500, $$0x -> this.b());
-      this.f.start();
-      this.setBackground(Color.BLACK);
-   }
+            for (int $$8 = $$5 + 1; $$8 >= $$0.L_(); $$8--) {
+               $$7.d($$1, $$8, $$2);
+               dwx $$9 = $$0.a_($$7);
+               if (!$$9.y().c()) {
+                  break;
+               }
 
-   private void b() {
-      long $$0 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-      this.d[0] = "Memory use: " + $$0 / 1024L / 1024L + " mb (" + Runtime.getRuntime().freeMemory() * 100L / Runtime.getRuntime().maxMemory() + "% free)";
-      this.d[1] = "Avg tick: " + a.format((double)this.e.aQ() / (double)baw.b) + " ms";
-      this.b[this.c++ & 0xFF] = (int)($$0 * 100L / Runtime.getRuntime().maxMemory());
-      this.repaint();
-   }
+               if (djm.a($$9.g($$0, $$7), jn.b)) {
+                  return $$7.d().j();
+               }
+            }
 
-   @Override
-   public void paint(Graphics $$0) {
-      $$0.setColor(new Color(16777215));
-      $$0.fillRect(0, 0, 456, 246);
-
-      for (int $$1 = 0; $$1 < 256; $$1++) {
-         int $$2 = this.b[$$1 + this.c & 0xFF];
-         $$0.setColor(new Color($$2 + 28 << 16));
-         $$0.fillRect($$1, 100 - $$2, 1, $$2);
-      }
-
-      $$0.setColor(Color.BLACK);
-
-      for (int $$3 = 0; $$3 < this.d.length; $$3++) {
-         String $$4 = this.d[$$3];
-         if ($$4 != null) {
-            $$0.drawString($$4, 32, 116 + $$3 * 16);
+            return null;
          }
       }
    }
 
-   public void a() {
-      this.f.stop();
+   @Nullable
+   public static ji a(arc $$0, dfo $$1) {
+      if (ab.a($$1)) {
+         return null;
+      } else {
+         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
+            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
+               ji $$4 = a($$0, $$2, $$3);
+               if ($$4 != null) {
+                  return $$4;
+               }
+            }
+         }
+
+         return null;
+      }
    }
 }

@@ -1,30 +1,30 @@
-public class chu extends chm {
-   public chu(bvi<? extends chu> $$0, dgz $$1) {
+public abstract class chu extends bwd {
+   private static final int cc = 100;
+   private int cd;
+
+   protected chu(bur<? extends chu> $$0, dgi $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   public cxg X_() {
-      return new cxg(cxk.ro);
+   public boolean b(ard $$0) {
+      tq $$1 = new tq();
+      $$1.a("id", this.bK());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.at();
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   protected awu u() {
-      return awv.fp;
+   public void h() {
+      this.cd++;
+      super.h();
    }
 
-   @Override
-   protected awu o_() {
-      return awv.fq;
-   }
-
-   @Override
-   protected awu e(btr $$0) {
-      return awv.fs;
-   }
-
-   @Override
-   protected awu go() {
-      return awv.fr;
+   public boolean gF() {
+      return this.cd > 100;
    }
 }

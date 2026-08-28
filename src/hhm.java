@@ -1,25 +1,20 @@
+import java.util.UUID;
+
 public interface hhm {
-   default void b() {
+   void a(UUID var1, hhm.b var2);
+
+   void a(UUID var1, hhm.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   default void a() {
-   }
-
-   default void a(gka $$0) {
-   }
-
-   default void a(double $$0, double $$1) {
-   }
-
-   default void a(gff $$0, fbp $$1) {
-   }
-
-   default void a(gff $$0, jh $$1, dxo $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(cxg $$0) {
+   public static enum b {
+      a,
+      b;
    }
 }

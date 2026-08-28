@@ -1,49 +1,99 @@
-public class foo extends fny {
-   private boolean a;
+public abstract class foo extends fok {
+   private static final fqf a = new fqf(aku.b("widget/text_field"), aku.b("widget/text_field_highlighted"));
+   private static final int c = 4;
 
-   public foo(int $$0, int $$1, fny.c $$2) {
-      super($$0, $$1, 20, 20, xk.c("narrator.button.difficulty_lock"), $$2, q);
+   public foo(int $$0, int $$1, int $$2, int $$3, wo $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   protected xy aR_() {
-      return xj.a(super.aR_(), this.a() ? xk.c("narrator.button.difficulty_lock.locked") : xk.c("narrator.button.difficulty_lock.unlocked"));
-   }
-
-   public boolean a() {
-      return this.a;
-   }
-
-   public void b(boolean $$0) {
-      this.a = $$0;
+   public boolean a(double $$0, double $$1, int $$2) {
+      boolean $$3 = this.c($$0, $$1, $$2);
+      return super.a($$0, $$1, $$2) || $$3;
    }
 
    @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      foo.a $$4;
-      if (!this.j) {
-         $$4 = this.a ? foo.a.c : foo.a.f;
-      } else if (this.B()) {
-         $$4 = this.a ? foo.a.b : foo.a.e;
-      } else {
-         $$4 = this.a ? foo.a.a : foo.a.d;
+   public boolean a(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 == 265;
+      boolean $$4 = $$0 == 264;
+      if ($$3 || $$4) {
+         double $$5 = this.g();
+         this.a(this.g() + (double)($$3 ? -1 : 1) * this.o());
+         if ($$5 != this.g()) {
+            return true;
+         }
       }
 
-      $$0.a(glq::H, $$4.g, this.D(), this.E(), this.g, this.h);
+      return super.a($$0, $$1, $$2);
    }
 
-   static enum a {
-      a(alp.b("widget/locked_button")),
-      b(alp.b("widget/locked_button_highlighted")),
-      c(alp.b("widget/locked_button_disabled")),
-      d(alp.b("widget/unlocked_button")),
-      e(alp.b("widget/unlocked_button_highlighted")),
-      f(alp.b("widget/unlocked_button_disabled"));
-
-      final alp g;
-
-      private a(final alp $$0) {
-         this.g = $$0;
+   @Override
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         this.c($$0);
+         $$0.c(this.F() + 1, this.G() + 1, this.F() + this.g - 1, this.G() + this.h - 1);
+         $$0.c().a();
+         $$0.c().a(0.0, -this.g(), 0.0);
+         this.c($$0, $$1, $$2, $$3);
+         $$0.c().b();
+         $$0.e();
+         this.b($$0);
       }
+   }
+
+   protected void b(fod $$0) {
+      this.a($$0);
+   }
+
+   protected int a() {
+      return 4;
+   }
+
+   protected int b() {
+      return this.a() * 2;
+   }
+
+   @Override
+   public boolean a_(double $$0, double $$1) {
+      return this.j && this.k && $$0 >= (double)this.F() && $$1 >= (double)this.G() && $$0 < (double)(this.H() + 6) && $$1 < (double)this.I();
+   }
+
+   @Override
+   protected int l() {
+      return this.H();
+   }
+
+   @Override
+   protected int n() {
+      return this.c() + this.b();
+   }
+
+   protected void c(fod $$0) {
+      this.a($$0, this.F(), this.G(), this.A(), this.y());
+   }
+
+   protected void a(fod $$0, int $$1, int $$2, int $$3, int $$4) {
+      aku $$5 = a.a(this.E(), this.aM_());
+      $$0.a(gmh::H, $$5, $$1, $$2, $$3, $$4);
+   }
+
+   protected boolean a(int $$0, int $$1) {
+      return (double)$$1 - this.g() >= (double)this.G() && (double)$$0 - this.g() <= (double)(this.G() + this.h);
+   }
+
+   protected abstract int c();
+
+   protected abstract void c(fod var1, int var2, int var3, float var4);
+
+   protected int e() {
+      return this.F() + this.a();
+   }
+
+   protected int p() {
+      return this.G() + this.a();
+   }
+
+   @Override
+   public void a(hjo $$0) {
    }
 }

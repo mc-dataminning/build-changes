@@ -1,56 +1,31 @@
-public class fpg extends fnv {
-   private float a = 0.5F;
+import java.util.UUID;
 
-   public fpg(xk $$0, fnj $$1) {
-      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
-   }
+public class fpg extends brz {
+   private static final long j = 100L;
+   protected float h;
+   protected long i;
 
-   public fpg(int $$0, int $$1, xk $$2, fnj $$3) {
-      this(0, 0, $$0, $$1, $$2, $$3);
-   }
-
-   public fpg(int $$0, int $$1, int $$2, int $$3, xk $$4, fnj $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.j = false;
-   }
-
-   public fpg b(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   private fpg b(float $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public fpg c() {
-      return this.b(0.0F);
-   }
-
-   public fpg e() {
-      return this.b(0.5F);
-   }
-
-   public fpg g() {
-      return this.b(1.0F);
+   public fpg(UUID $$0, wo $$1, float $$2, brz.a $$3, brz.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      super($$0, $$1, $$3, $$4);
+      this.h = $$2;
+      this.b = $$2;
+      this.i = af.c();
+      this.a($$5);
+      this.b($$6);
+      this.c($$7);
    }
 
    @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      xk $$4 = this.z();
-      fnj $$5 = this.a();
-      int $$6 = this.y();
-      int $$7 = $$5.a($$4);
-      int $$8 = this.D() + Math.round(this.a * (float)($$6 - $$7));
-      int $$9 = this.E() + (this.w() - 9) / 2;
-      azg $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
-      $$0.b($$5, $$10, $$8, $$9, this.b());
+   public void a(float $$0) {
+      this.b = this.j();
+      this.h = $$0;
+      this.i = af.c();
    }
 
-   private azg a(xk $$0, int $$1) {
-      fnj $$2 = this.a();
-      xp $$3 = $$2.a($$0, $$1 - $$2.a(xj.u));
-      return uh.a().a(xp.a($$3, xj.u));
+   @Override
+   public float j() {
+      long $$0 = af.c() - this.i;
+      float $$1 = ayz.a((float)$$0 / 100.0F, 0.0F, 1.0F);
+      return ayz.h($$1, this.b, this.h);
    }
 }

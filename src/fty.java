@@ -1,125 +1,101 @@
-enum fty {
-   a(
-      new fty.a(alp.b("advancements/tab_above_left_selected"), alp.b("advancements/tab_above_middle_selected"), alp.b("advancements/tab_above_right_selected")),
-      new fty.a(alp.b("advancements/tab_above_left"), alp.b("advancements/tab_above_middle"), alp.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fty.a(alp.b("advancements/tab_below_left_selected"), alp.b("advancements/tab_below_middle_selected"), alp.b("advancements/tab_below_right_selected")),
-      new fty.a(alp.b("advancements/tab_below_left"), alp.b("advancements/tab_below_middle"), alp.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fty.a(alp.b("advancements/tab_left_top_selected"), alp.b("advancements/tab_left_middle_selected"), alp.b("advancements/tab_left_bottom_selected")),
-      new fty.a(alp.b("advancements/tab_left_top"), alp.b("advancements/tab_left_middle"), alp.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fty.a(alp.b("advancements/tab_right_top_selected"), alp.b("advancements/tab_right_middle_selected"), alp.b("advancements/tab_right_bottom_selected")),
-      new fty.a(alp.b("advancements/tab_right_top"), alp.b("advancements/tab_right_middle"), alp.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private final fty.a e;
-   private final fty.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fty extends fuk {
+   private static final long a = 2000L;
+   private final arq b;
+   private long c = -1L;
+   private boolean d;
+   private static final Object2IntMap<dzt> s = af.a(new Object2IntOpenHashMap(), $$0 -> {
+      $$0.defaultReturnValue(0);
+      $$0.put(dzt.c, 5526612);
+      $$0.put(dzt.d, 10066329);
+      $$0.put(dzt.e, 6250897);
+      $$0.put(dzt.f, 8434258);
+      $$0.put(dzt.g, 13750737);
+      $$0.put(dzt.h, 7497737);
+      $$0.put(dzt.i, 3159410);
+      $$0.put(dzt.j, 2213376);
+      $$0.put(dzt.k, 13421772);
+      $$0.put(dzt.l, 16769184);
+      $$0.put(dzt.m, 15884384);
+      $$0.put(dzt.n, 16777215);
+   });
 
-   private fty(final fty.a $$0, final fty.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fty(arq $$0) {
+      super(fla.a);
+      this.b = $$0;
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public boolean aG_() {
+      return false;
    }
 
-   public void a(fnl $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fty.a $$5 = $$3 ? this.e : this.f;
-      alp $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   protected boolean aQ_() {
+      return false;
+   }
+
+   @Override
+   public void aI_() {
+      this.d = true;
+      this.d(true);
+   }
+
+   @Override
+   protected void b(fsp $$0) {
+      if (this.d) {
+         $$0.a(fso.a, wo.c("narrator.loading.done"));
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a(glq::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fnl $$0, int $$1, int $$2, int $$3, cxg $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         $$0.a(fso.a, this.m());
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   private wo m() {
+      return wo.a("loading.progress", ayz.a(this.b.f(), 0, 100));
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      long $$4 = af.c();
+      if ($$4 - this.c > 2000L) {
+         this.c = $$4;
+         this.d(true);
       }
+
+      int $$5 = this.n / 2;
+      int $$6 = this.o / 2;
+      a($$0, this.b, $$5, $$6, 2, 0);
+      int $$7 = this.b.e() + 9 + 2;
+      $$0.a(this.p, this.m(), $$5, $$6 - $$7, 16777215);
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
-   }
+   public static void a(fod $$0, arq $$1, int $$2, int $$3, int $$4, int $$5) {
+      int $$6 = $$4 + $$5;
+      int $$7 = $$1.d();
+      int $$8 = $$7 * $$6 - $$5;
+      int $$9 = $$1.e();
+      int $$10 = $$9 * $$6 - $$5;
+      int $$11 = $$2 - $$10 / 2;
+      int $$12 = $$3 - $$10 / 2;
+      int $$13 = $$8 / 2 + 1;
+      int $$14 = -16772609;
+      if ($$5 != 0) {
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 - $$13 + 1, $$3 + $$13, -16772609);
+         $$0.a($$2 + $$13 - 1, $$3 - $$13, $$2 + $$13, $$3 + $$13, -16772609);
+         $$0.a($$2 - $$13, $$3 - $$13, $$2 + $$13, $$3 - $$13 + 1, -16772609);
+         $$0.a($$2 - $$13, $$3 + $$13 - 1, $$2 + $$13, $$3 + $$13, -16772609);
+      }
 
-   static record a(alp a, alp b, alp c) {
+      for (int $$15 = 0; $$15 < $$9; $$15++) {
+         for (int $$16 = 0; $$16 < $$9; $$16++) {
+            dzt $$17 = $$1.a($$15, $$16);
+            int $$18 = $$11 + $$15 * $$6;
+            int $$19 = $$12 + $$16 * $$6;
+            $$0.a($$18, $$19, $$18 + $$4, $$19 + $$4, axk.f(s.getInt($$17)));
+         }
+      }
    }
 }

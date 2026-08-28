@@ -1,36 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import io.netty.buffer.ByteBuf;
+import java.util.HashMap;
+import java.util.Map;
 
-public class zd implements za {
-   public static final zb<zd> a = new zb<zd>() {
-      private static final MapCodec<zd> a = yh.b.a.xmap(zd::new, $$0 -> $$0.e);
-      private static final zi<wv, zd> b = zi.a(yh.b.c, $$0 -> $$0.e, zd::new);
-
-      @Override
-      public MapCodec<zd> a() {
-         return a;
-      }
-
-      @Override
-      public zi<wv, zd> b() {
-         return b;
-      }
-   };
-   public static final zd b = new zd(yh.a);
-   public static final zd c = new zd(yh.a.a(n.m));
-   public static final zd d = new zd(yh.a.a(n.o));
-   final yh e;
-
-   public zd(yh $$0) {
-      this.e = $$0;
-   }
+public record zd(Map<String, String> b) implements yv<zb> {
+   private static final int c = 128;
+   private static final int d = 4096;
+   private static final int e = 32;
+   private static final ym<ByteBuf, Map<String, String>> f = yk.a(HashMap::new, yk.b(128), yk.b(4096), 32);
+   public static final ym<ByteBuf, zd> a = ym.a(f, zd::b, zd::new);
 
    @Override
-   public xy a(int $$0) {
-      return xk.b(Integer.toString($$0)).c(this.e);
+   public yx<zd> a() {
+      return zn.b;
    }
 
-   @Override
-   public zb<zd> a() {
-      return a;
+   public void a(zb $$0) {
+      $$0.a(this);
    }
 }

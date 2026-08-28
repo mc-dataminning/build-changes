@@ -1,27 +1,61 @@
-import java.util.List;
+public class bvc {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akb c;
+   private final ajx<Integer> d;
+   private final ajx<Boolean> e;
+   private boolean f;
+   private int g;
 
-public enum bvc {
-   a(bvc.a.c),
-   b(bvc.a.b),
-   c(bvc.a.c),
-   d(bvc.a.d);
-
-   private final bvc.a e;
-
-   private bvc(final bvc.a $$0) {
-      this.e = $$0;
+   public bvc(akb $$0, ajx<Integer> $$1, ajx<Boolean> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public List<fbr> a(float $$0, float $$1) {
-      return this.e.create($$0, $$1);
+   public void a() {
+      this.f = true;
+      this.g = 0;
    }
 
-   public interface a {
-      List<fbr> a = List.of(fbr.c);
-      bvc.a b = ($$0, $$1) -> a;
-      bvc.a c = ($$0, $$1) -> List.of(new fbr(0.0, (double)$$1, 0.0));
-      bvc.a d = ($$0, $$1) -> List.of(new fbr(0.0, (double)$$1 / 2.0, 0.0));
+   public boolean a(azh $$0) {
+      if (this.f) {
+         return false;
+      } else {
+         this.f = true;
+         this.g = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
+      }
+   }
 
-      List<fbr> create(float var1, float var2);
+   public void b() {
+      if (this.f && this.g++ > this.e()) {
+         this.f = false;
+      }
+   }
+
+   public float c() {
+      return this.f ? 1.0F + 1.15F * ayz.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   }
+
+   private int e() {
+      return this.c.a(this.d);
+   }
+
+   public void a(tq $$0) {
+      $$0.a("Saddle", this.d());
+   }
+
+   public void b(tq $$0) {
+      this.a($$0.q("Saddle"));
+   }
+
+   public void a(boolean $$0) {
+      this.c.a(this.e, $$0);
+   }
+
+   public boolean d() {
+      return this.c.a(this.e);
    }
 }

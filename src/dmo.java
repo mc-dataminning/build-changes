@@ -1,27 +1,19 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmo extends dkd {
-   public static final MapCodec<dmo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bsf.b(0, 10).fieldOf("experience").forGetter($$0x -> $$0x.b), t()).apply($$0, dmo::new)
-   );
-   private final bsf b;
+public class dmo extends dlg {
+   public static final MapCodec<dmo> b = b(dmo::new);
 
    @Override
-   public MapCodec<? extends dmo> a() {
-      return a;
+   public MapCodec<dmo> a() {
+      return b;
    }
 
-   public dmo(bsf $$0, dxn.d $$1) {
-      super($$1);
-      this.b = $$0;
+   protected dmo(dww.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, cxg $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$4) {
-         this.a($$1, $$2, $$3, this.b);
-      }
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      return bsj.e;
    }
 }

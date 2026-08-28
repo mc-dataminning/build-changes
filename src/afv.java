@@ -1,45 +1,24 @@
-public class afv implements zr<acg> {
-   public static final zi<wh, afv> a = zr.a(afv::a, afv::new);
-   private final float b;
-   private final int c;
-   private final float d;
+public record afv(int b) implements yv<abk> {
+   public static final ym<vl, afv> a = yv.a(afv::a, afv::new);
 
-   public afv(float $$0, int $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private afv(vl $$0) {
+      this($$0.l());
    }
 
-   private afv(wh $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   public static afv a(bss $$0) {
+      return new afv($$0.k());
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(vl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zt<afv> a() {
-      return agz.aK;
+   public yx<afv> a() {
+      return agd.cp;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
    }
 }

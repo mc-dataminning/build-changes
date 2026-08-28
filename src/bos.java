@@ -1,65 +1,148 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.function.Supplier;
 
-public record bos<T>(bok<StringReader> a, boi<T> b) {
-   public Optional<T> a(bon<StringReader> $$0) {
-      return $$0.a(this.b);
+public interface bos {
+   String b = "root";
+
+   void a();
+
+   void b();
+
+   void a(String var1);
+
+   void a(Supplier<String> var1);
+
+   void c();
+
+   void b(String var1);
+
+   void b(Supplier<String> var1);
+
+   default void e(String $$0) {
    }
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bol.a<StringReader> $$1 = new bol.a<>();
-      bow $$2 = new bow(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
+   default void a(long $$0) {
+   }
+
+   default void a(int $$0) {
+   }
+
+   default box d(String $$0) {
+      this.a($$0);
+      return new box(this);
+   }
+
+   default box c(Supplier<String> $$0) {
+      this.a($$0);
+      return new box(this);
+   }
+
+   void a(bqb var1);
+
+   default void f(String $$0) {
+      this.a($$0, 1);
+   }
+
+   void a(String var1, int var2);
+
+   default void d(Supplier<String> $$0) {
+      this.a($$0, 1);
+   }
+
+   void a(Supplier<String> var1, int var2);
+
+   static bos a(bos $$0, bos $$1) {
+      if ($$0 == boo.a) {
+         return $$1;
       } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
-
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
-         }
-
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
-         } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bom::toString).collect(Collectors.joining(", ")));
-         }
+         return (bos)($$1 == boo.a ? $$0 : new bos.a($$0, $$1));
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bol.a<StringReader> $$2 = new bol.a<>();
-      bow $$3 = new bow(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bom<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   public static class a implements bos {
+      private final bos a;
+      private final bos c;
 
-         for (bom<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bov $$7) {
-               fb.a($$7.a(), $$5);
-            } else {
-               fb.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
+      public a(bos $$0, bos $$1) {
+         this.a = $$0;
+         this.c = $$1;
+      }
 
-         return $$5.buildFuture();
+      @Override
+      public void a() {
+         this.a.a();
+         this.c.a();
+      }
+
+      @Override
+      public void b() {
+         this.a.b();
+         this.c.b();
+      }
+
+      @Override
+      public void a(String $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(Supplier<String> $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(bqb $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void c() {
+         this.a.c();
+         this.c.c();
+      }
+
+      @Override
+      public void b(String $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
+      }
+
+      @Override
+      public void b(Supplier<String> $$0) {
+         this.a.b($$0);
+         this.c.b($$0);
+      }
+
+      @Override
+      public void a(String $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
+      }
+
+      @Override
+      public void a(Supplier<String> $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.c.a($$0, $$1);
+      }
+
+      @Override
+      public void e(String $$0) {
+         this.a.e($$0);
+         this.c.e($$0);
+      }
+
+      @Override
+      public void a(long $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
+      }
+
+      @Override
+      public void a(int $$0) {
+         this.a.a($$0);
+         this.c.a($$0);
       }
    }
 }

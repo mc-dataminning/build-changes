@@ -1,24 +1,72 @@
-import java.util.concurrent.CompletableFuture;
+public class qi {
+   @Deprecated
+   public static final esc.a a = new esc.a(-3, 1.0, 1.0, 1.0, 0.0);
 
-public class qi extends qj<eod> {
-   public qi(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.aU, $$1);
+   public static void a(qe<esc.a> $$0) {
+      a($$0, 0, edb.a, edb.b, edb.c, edb.d);
+      a($$0, -2, edb.e, edb.f, edb.g, edb.h);
+      a($$0, edb.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
+      $$0.a(edb.j, a);
+      a($$0, edb.k, -3, 1.0);
+      a($$0, edb.l, -7, 1.0);
+      a($$0, edb.m, -1, 1.0);
+      a($$0, edb.n, -5, 1.0);
+      a($$0, edb.o, -7, 1.0, 1.0);
+      a($$0, edb.p, -8, 1.0);
+      a($$0, edb.q, -8, 1.0);
+      a($$0, edb.r, -7, 1.0);
+      a($$0, edb.s, -8, 1.0);
+      a($$0, edb.t, -11, 1.0);
+      a($$0, edb.u, -11, 1.0);
+      a($$0, edb.v, -7, 1.0);
+      a($$0, edb.w, -7, 1.0);
+      a($$0, edb.x, -11, 1.0);
+      a($$0, edb.y, -8, 1.0);
+      a($$0, edb.z, -5, 1.0);
+      a($$0, edb.A, -8, 1.0);
+      a($$0, edb.B, -7, 0.4, 0.5, 1.0);
+      a($$0, edb.C, -8, 1.0);
+      a($$0, edb.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
+      a($$0, edb.E, -8, 1.0);
+      a($$0, edb.F, -7, 1.0);
+      a($$0, edb.G, -7, 1.0);
+      a($$0, edb.H, -5, 1.0);
+      a($$0, edb.I, -8, 1.0);
+      a($$0, edb.J, -8, 1.0);
+      a($$0, edb.K, -7, 1.0);
+      a($$0, edb.L, -7, 1.0);
+      a($$0, edb.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.N, -6, 1.0, 1.0, 1.0);
+      a($$0, edb.O, -6, 1.0, 1.0, 0.0, 1.0);
+      a($$0, edb.P, -8, 1.0);
+      a($$0, edb.Q, -2, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.R, -8, 1.0);
+      a($$0, edb.S, -6, 1.0, 1.0, 1.0);
+      a($$0, edb.T, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.U, -3, 1.0);
+      a($$0, edb.V, -6, 1.0, 1.0, 1.0);
+      a($$0, edb.W, -2, 1.0);
+      a($$0, edb.X, -9, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.Y, -8, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.Z, -6, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.aa, -7, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.ab, -4, 1.0, 1.0, 1.0, 1.0);
+      a($$0, edb.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, edb.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, edb.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
+      a($$0, edb.af, -3, 1.0, 0.0, 0.0, 0.35);
+      a($$0, edb.ag, -3, 1.0, 0.0, 0.0, 0.9);
+      a($$0, edb.ah, -4, 1.0);
    }
 
-   @Override
-   protected void a(js.a $$0) {
-      this.b(axw.p).a(enx.t).a(enx.u).a(enx.v).a(enx.w).a(enx.x);
-      this.b(axw.q).a(enx.b).a(enx.c);
-      this.b(axw.t).a(enx.m).a(enx.n);
-      this.b(axw.r).a(enx.h).a(enx.i);
-      this.b(axw.s).a(enx.z).a(enx.A).a(enx.C).a(enx.E).a(enx.D).a(enx.y).a(enx.B);
-      this.b(axw.n).a(enx.j);
-      this.b(axw.o).a(enx.j);
-      this.b(axw.a).a(enx.k);
-      this.b(axw.b).b(axw.t).b(axw.r);
-      this.b(axw.c).a(enx.d);
-      this.b(axw.d).a(enx.l);
-      this.b(axw.l).a(enx.r);
-      this.b(axw.m).a(enx.H);
+   private static void a(qe<esc.a> $$0, int $$1, akt<esc.a> $$2, akt<esc.a> $$3, akt<esc.a> $$4, akt<esc.a> $$5) {
+      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
+      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
+      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
+   }
+
+   private static void a(qe<esc.a> $$0, akt<esc.a> $$1, int $$2, double $$3, double... $$4) {
+      $$0.a($$1, new esc.a($$2, $$3, $$4));
    }
 }

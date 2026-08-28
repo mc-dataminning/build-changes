@@ -1,20 +1,7 @@
-import net.minecraft.server.MinecraftServer;
+import jdk.jfr.consumer.RecordedEvent;
 
-public enum bpp {
-   a("client"),
-   b("server");
-
-   private final String c;
-
-   private bpp(final String $$0) {
-      this.c = $$0;
-   }
-
-   public static bpp a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
-   }
-
-   public String a() {
-      return this.c;
+public record bpp(String a, String b, int c, int d) {
+   public static bpp a(RecordedEvent $$0) {
+      return new bpp($$0.getString("level"), $$0.getString("dimension"), $$0.getInt("chunkPosX"), $$0.getInt("chunkPosZ"));
    }
 }

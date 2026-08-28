@@ -1,31 +1,12 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public enum dgo implements dge {
-   a;
+public interface dgo {
+   boolean a(ji var1, Predicate<dwx> var2);
 
-   @Nullable
-   @Override
-   public duq c_(jh $$0) {
-      return null;
-   }
+   boolean b(ji var1, Predicate<esz> var2);
 
-   @Override
-   public dxo a_(jh $$0) {
-      return dkf.a.m();
-   }
+   <T extends dtz> Optional<T> a(ji var1, dub<T> var2);
 
-   @Override
-   public etq b_(jh $$0) {
-      return etr.a.g();
-   }
-
-   @Override
-   public int L_() {
-      return 0;
-   }
-
-   @Override
-   public int M_() {
-      return 0;
-   }
+   ji a(ecs.a var1, ji var2);
 }

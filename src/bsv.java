@@ -1,3 +1,4 @@
-public interface bsv {
-   void a(bst var1);
+import javax.annotation.Nullable;
+
+public record bsv(bta a, float b, @Nullable btf c, float d) {
 }

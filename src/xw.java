@@ -1,104 +1,81 @@
-import com.google.common.base.Preconditions;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.Base64;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record xw(byte[] c) {
-   public static final Codec<xw> a = azd.r.xmap(xw::new, xw::b);
-   public static final int b = 256;
-
-   public xw(byte[] c) {
-      Preconditions.checkState(c.length == 256, "Invalid message signature size");
-      this.c = c;
-   }
-
-   public static xw a(wh $$0) {
-      byte[] $$1 = new byte[256];
-      $$0.b($$1);
-      return new xw($$1);
-   }
-
-   public static void a(wh $$0, xw $$1) {
-      $$0.c($$1.c);
-   }
-
-   public boolean a(bah $$0, bag $$1) {
-      return $$0.validate($$1, this.c);
-   }
-
-   public ByteBuffer a() {
-      return ByteBuffer.wrap(this.c);
-   }
+public record xw(Either<ho, String> d, String e) implements wp {
+   public static final MapCodec<xw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.either(ho.a, Codec.STRING).fieldOf("name").forGetter(xw::b), Codec.STRING.fieldOf("objective").forGetter(xw::c))
+            .apply($$0, xw::new)
+   );
+   public static final MapCodec<xw> b = a.fieldOf("score");
+   public static final wp.a<xw> c = new wp.a<>(b, "score");
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof xw $$1 && Arrays.equals(this.c, $$1.c)) {
-            return true;
-         }
+   public wp.a<?> a() {
+      return c;
+   }
 
-         return false;
+   private fce a(ex $$0) throws CommandSyntaxException {
+      Optional<ho> $$1 = this.d.left();
+      if ($$1.isPresent()) {
+         List<? extends buk> $$2 = $$1.get().b().b($$0);
+         if (!$$2.isEmpty()) {
+            if ($$2.size() != 1) {
+               throw fk.a.create();
+            } else {
+               return $$2.getFirst();
+            }
+         } else {
+            return fce.c($$1.get().a());
+         }
+      } else {
+         return fce.c((String)this.d.right().orElseThrow());
       }
    }
 
+   private xc a(fce $$0, ex $$1) {
+      MinecraftServer $$2 = $$1.l();
+      if ($$2 != null) {
+         fcf $$3 = $$2.aJ();
+         fbx $$4 = $$3.a(this.e);
+         if ($$4 != null) {
+            fcb $$5 = $$3.d($$0, $$4);
+            if ($$5 != null) {
+               return $$5.a($$4.a(yh.b));
+            }
+         }
+      }
+
+      return wo.i();
+   }
+
    @Override
-   public int hashCode() {
-      return Arrays.hashCode(this.c);
+   public xc a(@Nullable ex $$0, @Nullable buk $$1, int $$2) throws CommandSyntaxException {
+      if ($$0 == null) {
+         return wo.i();
+      } else {
+         fce $$3 = this.a($$0);
+         fce $$4 = (fce)($$1 != null && $$3.equals(fce.cB) ? $$1 : $$3);
+         return this.a($$4, $$0);
+      }
    }
 
    @Override
    public String toString() {
-      return Base64.getEncoder().encodeToString(this.c);
+      return "score{name='" + this.d + "', objective='" + this.e + "'}";
    }
 
-   public xw.a a(xx $$0) {
-      int $$1 = $$0.a(this);
-      return $$1 != -1 ? new xw.a($$1) : new xw.a(this);
+   public Either<ho, String> b() {
+      return this.d;
    }
 
-   public byte[] b() {
-      return this.c;
-   }
-
-   public static record a(int b, @Nullable xw c) {
-      public static final int a = -1;
-
-      public a(xw $$0) {
-         this(-1, $$0);
-      }
-
-      public a(int $$0) {
-         this($$0, null);
-      }
-
-      public static xw.a a(wh $$0) {
-         int $$1 = $$0.l() - 1;
-         return $$1 == -1 ? new xw.a(xw.a($$0)) : new xw.a($$1);
-      }
-
-      public static void a(wh $$0, xw.a $$1) {
-         $$0.c($$1.a() + 1);
-         if ($$1.b() != null) {
-            xw.a($$0, $$1.b());
-         }
-      }
-
-      public Optional<xw> a(xx $$0) {
-         return this.c != null ? Optional.of(this.c) : Optional.ofNullable($$0.a(this.b));
-      }
-
-      public int a() {
-         return this.b;
-      }
-
-      @Nullable
-      public xw b() {
-         return this.c;
-      }
+   public String c() {
+      return this.e;
    }
 }

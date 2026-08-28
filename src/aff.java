@@ -1,37 +1,30 @@
-public class aff implements zr<acg> {
-   public static final zi<wh, aff> a = zr.a(aff::a, aff::new);
-   private final double b;
-   private final double c;
+import java.util.Optional;
 
-   public aff(dze $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-   }
-
-   private aff(wh $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-   }
+public record aff(String b, String c, int d, Optional<wo> e, Optional<ye> f) implements yv<abk> {
+   public static final ym<vz, aff> a = ym.a(yk.o, aff::b, yk.o, aff::e, yk.h, aff::f, wq.e, aff::g, yg.d, aff::h, aff::new);
 
    @Override
-   public zt<aff> a() {
-      return agz.av;
+   public yx<aff> a() {
+      return agd.aP;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public String e() {
       return this.c;
    }
 
-   public double e() {
-      return this.b;
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<wo> g() {
+      return this.e;
+   }
+
+   public Optional<ye> h() {
+      return this.f;
    }
 }

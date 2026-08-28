@@ -1,32 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class diu extends djp {
-   private final cwd a;
+public class diu extends diw {
+   public static final MapCodec<diu> a = b(diu::new);
+   private static final fbu b = djm.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
 
-   protected diu(cwd $$0, dxn.d $$1) {
-      super($$1);
-      this.a = $$0;
+   @Override
+   public MapCodec<? extends diu> a() {
+      return a;
+   }
+
+   protected diu(dww.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends diu> a();
-
-   @Override
-   public boolean a(dxo $$0) {
-      return true;
-   }
-
-   @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new duf($$0, $$1, this.a);
-   }
-
-   @Override
-   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
-      return $$0.c_($$1) instanceof duf $$3 ? $$3.c() : super.a($$0, $$1, $$2);
-   }
-
-   public cwd b() {
-      return this.a;
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return b;
    }
 }

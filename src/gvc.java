@@ -1,27 +1,26 @@
-public class gvc extends gvj<gxj, gaz> {
-   private static final alp a = alp.b("textures/entity/creeper/creeper_armor.png");
-   private final gaz b;
+public class gvc extends gsb<cqg, gyi> {
+   private static final aku a = aku.b("textures/entity/projectiles/wind_charge.png");
+   private final geo b;
 
-   public gvc(gti<gxj, gaz> $$0, gef $$1) {
+   public gvc(gsc.a $$0) {
       super($$0);
-      this.b = new gaz($$1.a(gei.aj));
-   }
-
-   protected boolean a(gxj $$0) {
-      return $$0.b;
+      this.b = new geo($$0.a(gfb.dy));
    }
 
    @Override
+   public void a(gyi $$0, ffu $$1, glx $$2, int $$3) {
+      ffy $$4 = $$2.getBuffer(gmh.a(a, this.a($$0.u) % 1.0F, 0.0F));
+      this.b.a($$0);
+      this.b.a($$1, $$4, $$3, hea.d);
+      super.a($$0, $$1, $$2, $$3);
+   }
+
    protected float a(float $$0) {
-      return $$0 * 0.01F;
+      return $$0 * 0.03F;
    }
 
    @Override
-   protected alp a() {
-      return a;
-   }
-
-   protected gaz b() {
-      return this.b;
+   public gyi d() {
+      return new gyi();
    }
 }

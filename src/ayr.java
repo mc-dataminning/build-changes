@@ -1,176 +1,65 @@
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
-import java.util.Arrays;
-import java.util.Iterator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public class ayr<K> implements jv<K> {
-   private static final int b = -1;
-   private static final Object c = null;
-   private static final float d = 0.8F;
-   private K[] e;
-   private int[] f;
-   private K[] g;
-   private int h;
-   private int i;
+public record ayr<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<ayr<Integer>> a = a(Codec.INT);
 
-   private ayr(int $$0) {
-      this.e = (K[])(new Object[$$0]);
-      this.f = new int[$$0];
-      this.g = (K[])(new Object[$$0]);
+   public ayr(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+      } else {
+         this.b = b;
+         this.c = c;
+      }
    }
 
-   private ayr(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public ayr(T $$0) {
+      this($$0, $$0);
    }
 
-   public static <A> ayr<A> c(int $$0) {
-      return new ayr((int)((float)$$0 / 0.8F));
+   public static <T extends Comparable<T>> Codec<ayr<T>> a(Codec<T> $$0) {
+      return ayi.a($$0, "min_inclusive", "max_inclusive", ayr::a, ayr::a, ayr::b);
+   }
+
+   public static <T extends Comparable<T>> Codec<ayr<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return a($$0)
+         .validate(
+            $$2x -> {
+               if ($$2x.a().compareTo($$1) < 0) {
+                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+               } else {
+                  return $$2x.b().compareTo($$2) > 0
+                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                     : DataResult.success($$2x);
+               }
+            }
+         );
+   }
+
+   public static <T extends Comparable<T>> DataResult<ayr<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new ayr($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
+
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
+
+   public boolean a(ayr<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
    }
 
    @Override
-   public int a(@Nullable K $$0) {
-      return this.e(this.b($$0, this.e($$0)));
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
    }
 
-   @Nullable
-   @Override
-   public K a(int $$0) {
-      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
+   public T a() {
+      return this.b;
    }
 
-   private int e(int $$0) {
-      return $$0 == -1 ? -1 : this.f[$$0];
-   }
-
-   public boolean b(K $$0) {
-      return this.a($$0) != -1;
-   }
-
-   public boolean d(int $$0) {
-      return this.a($$0) != null;
-   }
-
-   public int d(K $$0) {
-      int $$1 = this.c();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   private int c() {
-      while (this.h < this.g.length && this.g[this.h] != null) {
-         this.h++;
-      }
-
-      return this.h;
-   }
-
-   private void f(int $$0) {
-      K[] $$1 = this.e;
-      int[] $$2 = this.f;
-      ayr<K> $$3 = new ayr<>($$0);
-
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$1[$$4] != null) {
-            $$3.a($$1[$$4], $$2[$$4]);
-         }
-      }
-
-      this.e = $$3.e;
-      this.f = $$3.f;
-      this.g = $$3.g;
-      this.h = $$3.h;
-      this.i = $$3.i;
-   }
-
-   public void a(K $$0, int $$1) {
-      int $$2 = Math.max($$1, this.i + 1);
-      if ((float)$$2 >= (float)this.e.length * 0.8F) {
-         int $$3 = this.e.length << 1;
-
-         while ($$3 < $$1) {
-            $$3 <<= 1;
-         }
-
-         this.f($$3);
-      }
-
-      int $$4 = this.g(this.e($$0));
-      this.e[$$4] = $$0;
-      this.f[$$4] = $$1;
-      this.g[$$1] = $$0;
-      this.i++;
-      if ($$1 == this.h) {
-         this.h++;
-      }
-   }
-
-   private int e(@Nullable K $$0) {
-      return (azu.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
-   }
-
-   private int b(@Nullable K $$0, int $$1) {
-      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
-         if (this.e[$$2] == $$0) {
-            return $$2;
-         }
-
-         if (this.e[$$2] == c) {
-            return -1;
-         }
-      }
-
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         if (this.e[$$3] == $$0) {
-            return $$3;
-         }
-
-         if (this.e[$$3] == c) {
-            return -1;
-         }
-      }
-
-      return -1;
-   }
-
-   private int g(int $$0) {
-      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
-         if (this.e[$$1] == c) {
-            return $$1;
-         }
-      }
-
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         if (this.e[$$2] == c) {
-            return $$2;
-         }
-      }
-
-      throw new RuntimeException("Overflowed :(");
-   }
-
-   @Override
-   public Iterator<K> iterator() {
-      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
-   }
-
-   public void a() {
-      Arrays.fill(this.e, null);
-      Arrays.fill(this.g, null);
-      this.h = 0;
-      this.i = 0;
-   }
-
-   @Override
-   public int d() {
-      return this.i;
-   }
-
-   public ayr<K> b() {
-      return new ayr<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
+   public T b() {
+      return this.c;
    }
 }

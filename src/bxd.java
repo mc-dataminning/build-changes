@@ -1,78 +1,48 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.DataResult.Error;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public record bxd(alp d, double e, bxd.a f) {
-   private static final Logger g = LogUtils.getLogger();
-   public static final MapCodec<bxd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alp.a.fieldOf("id").forGetter(bxd::b), Codec.DOUBLE.fieldOf("amount").forGetter(bxd::c), bxd.a.f.fieldOf("operation").forGetter(bxd::d))
-            .apply($$0, bxd::new)
-   );
-   public static final Codec<bxd> b = a.codec();
-   public static final zi<ByteBuf, bxd> c = zi.a(alp.b, bxd::b, zg.m, bxd::c, bxd.a.e, bxd::d, bxd::new);
-
-   public um a() {
-      DataResult<vj> $$0 = b.encode(this, va.a, new um());
-      return (um)$$0.getOrThrow();
-   }
-
+public class bxd extends bwz<coi> {
    @Nullable
-   public static bxd a(um $$0) {
-      DataResult<bxd> $$1 = b.parse(va.a, $$0);
-      if ($$1.isSuccess()) {
-         return (bxd)$$1.getOrThrow();
-      } else {
-         g.warn("Unable to create attribute: {}", ((Error)$$1.error().get()).message());
-         return null;
+   private cqk c;
+
+   public bxd(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
+   }
+
+   protected boolean a(arc $$0, coi $$1) {
+      ji $$2 = $$1.dw();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && byi.a($$0, $$1, $$2);
+   }
+
+   protected boolean a(arc $$0, coi $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(arc $$0, coi $$1, long $$2) {
+      this.c = null;
+      $$1.ec().a($$0.ae(), $$0.ad());
+   }
+
+   protected void c(arc $$0, coi $$1, long $$2) {
+      azh $$3 = $$1.dZ();
+      if ($$3.a(100) == 0) {
+         $$1.gu();
+      }
+
+      if ($$3.a(200) == 0 && byi.a($$0, $$1, $$1.dw())) {
+         cvm $$4 = af.a(cvm.values(), $$3);
+         int $$5 = $$3.a(3);
+         cwp $$6 = this.a($$4, $$5);
+         cpq.a(new cpl($$1.dW(), $$1, $$1.dB(), $$1.dF(), $$1.dH(), $$6), $$0, $$6);
       }
    }
 
-   public boolean a(alp $$0) {
-      return $$0.equals(this.d);
-   }
-
-   public alp b() {
-      return this.d;
-   }
-
-   public double c() {
-      return this.e;
-   }
-
-   public bxd.a d() {
-      return this.f;
-   }
-
-   public static enum a implements baq {
-      a("add_value", 0),
-      b("add_multiplied_base", 1),
-      c("add_multiplied_total", 2);
-
-      public static final IntFunction<bxd.a> d = ayl.a(bxd.a::a, values(), ayl.a.a);
-      public static final zi<ByteBuf, bxd.a> e = zg.a(d, bxd.a::a);
-      public static final Codec<bxd.a> f = baq.a(bxd.a::values);
-      private final String g;
-      private final int h;
-
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
-
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+   private cwp a(cvm $$0, int $$1) {
+      cwp $$2 = new cwp(cwt.vt);
+      $$2.b(kv.af, new czf((byte)$$1, List.of(new cze(cze.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

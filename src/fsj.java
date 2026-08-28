@@ -1,107 +1,143 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+public interface fsj {
+   fsj a(int var1);
 
-public class fsj extends ftr {
-   private static final xk a = xk.c("accessibility.onboarding.screen.title");
-   private static final xk b = xk.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fop s;
-   private final fmd u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
-   @Nullable
-   private foj z;
-   private final frn A = new frn(this, this.l(), 33);
+   fsj a(int var1, int var2);
 
-   public fsj(fmd $$0, Runnable $$1) {
-      super(a);
-      this.u = $$0;
-      this.y = $$1;
-      this.s = new fop(true);
-      this.v = flz.Q().aZ().a();
+   fsj a(int var1, int var2, int var3, int var4);
+
+   fsj b(int var1);
+
+   fsj c(int var1);
+
+   fsj d(int var1);
+
+   fsj e(int var1);
+
+   fsj f(int var1);
+
+   fsj g(int var1);
+
+   fsj a(float var1, float var2);
+
+   fsj a(float var1);
+
+   fsj b(float var1);
+
+   default fsj a() {
+      return this.a(0.0F);
    }
 
-   @Override
-   public void aT_() {
-      frr $$0 = this.A.c(frr.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new foj(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      if (this.u.av().a(this.u) instanceof fof $$1) {
-         this.q = $$1;
-         this.q.j = this.v;
-         $$0.a(this.q);
+   default fsj b() {
+      return this.a(0.5F);
+   }
+
+   default fsj c() {
+      return this.a(1.0F);
+   }
+
+   default fsj d() {
+      return this.b(0.0F);
+   }
+
+   default fsj e() {
+      return this.b(0.5F);
+   }
+
+   default fsj f() {
+      return this.b(1.0F);
+   }
+
+   fsj g();
+
+   fsj.a h();
+
+   static fsj i() {
+      return new fsj.a();
+   }
+
+   public static class a implements fsj {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
+
+      public a() {
       }
 
-      $$0.a(foc.b(150, $$0x -> this.a(new fwo(this, this.m.n)), false));
-      $$0.a(foc.a(150, $$0x -> this.a(new fwr(this, this.m.n, this.m.ah())), false));
-      this.A.b(fny.a(xj.j, $$0x -> this.aP_()).a());
-      this.A.a(this::c);
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.b(this.n);
+      public a(fsj.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
       }
 
-      this.A.a();
-   }
-
-   @Override
-   protected void aG_() {
-      if (this.v && this.q != null) {
-         this.b(this.q);
-      } else {
-         super.aG_();
-      }
-   }
-
-   private int l() {
-      return 90;
-   }
-
-   @Override
-   public void aP_() {
-      this.a(true, this.y);
-   }
-
-   private void a(ftr $$0) {
-      this.a(false, () -> this.m.a($$0));
-   }
-
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.ax();
+      public fsj.a h(int $$0) {
+         return this.b($$0, $$0);
       }
 
-      Narrator.getNarrator().clear();
-      $$1.run();
-   }
+      public fsj.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.E();
-      this.s.a($$0, this.n, 1.0F);
-   }
+      public fsj.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
 
-   @Override
-   protected void a(fnl $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
+      public fsj.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   private void E() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.m.aC()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.w = true;
-         }
+      public fsj.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fsj.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public fsj.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fsj.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public fsj.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public fsj.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public fsj.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fsj.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fsj.a j() {
+         return new fsj.a(this);
+      }
+
+      @Override
+      public fsj.a h() {
+         return this;
       }
    }
 }

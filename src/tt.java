@@ -1,173 +1,131 @@
-import com.google.common.base.MoreObjects;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-class tt implements ti {
-   private int a = 0;
-   private int b = 0;
+public class tt extends ug {
+   private static final int c = 12;
+   public static final tt a = new tt(0.0F);
+   public static final up<tt> b = new up.a<tt>() {
+      public tt a(DataInput $$0, tz $$1) throws IOException {
+         return tt.a(d($$0, $$1));
+      }
 
-   public tt() {
+      @Override
+      public uk.b a(DataInput $$0, uk $$1, tz $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static float d(DataInput $$0, tz $$1) throws IOException {
+         $$1.b(12L);
+         return $$0.readFloat();
+      }
+
+      @Override
+      public int c() {
+         return 4;
+      }
+
+      @Override
+      public String a() {
+         return "FLOAT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Float";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final float w;
+
+   private tt(float $$0) {
+      this.w = $$0;
+   }
+
+   public static tt a(float $$0) {
+      return $$0 == 0.0F ? a : new tt($$0);
    }
 
    @Override
-   public void a(th $$0) {
-      a($$0, dkf.eD);
-      this.a++;
-   }
-
-   private void a(th $$0, tk $$1, boolean $$2) {
-      tu $$3 = $$0.A();
-      String $$4 = String.format("[Run: %4d, Ok: %4d, Fail: %4d", this.a, this.b, this.a - this.b);
-      if (!$$3.b()) {
-         $$4 = $$4 + String.format(", Left: %4d", $$3.d() - this.a);
-      }
-
-      $$4 = $$4 + "]";
-      String $$5 = $$0.b() + " " + ($$2 ? "passed" : "failed") + "! " + $$0.l() + "ms";
-      String $$6 = String.format("%-53s%s", $$4, $$5);
-      if ($$2) {
-         a($$0, $$6);
-      } else {
-         a($$0.g(), n.m, $$6);
-      }
-
-      if ($$3.a(this.a, this.b)) {
-         $$1.a($$0);
-      }
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeFloat(this.w);
    }
 
    @Override
-   public void a(th $$0, tk $$1) {
-      this.b++;
-      if ($$0.A().c()) {
-         this.a($$0, $$1, true);
-      } else if (!$$0.x()) {
-         a($$0, $$0.b() + " passed! (" + $$0.l() + "ms)");
-      } else {
-         if (this.b >= $$0.z()) {
-            a($$0, $$0 + " passed " + this.b + " times of " + this.a + " attempts.");
-         } else {
-            a($$0.g(), n.k, "Flaky test " + $$0 + " succeeded, attempt: " + this.a + " successes: " + this.b);
-            $$1.a($$0);
-         }
-      }
+   public int a() {
+      return 12;
    }
 
    @Override
-   public void b(th $$0, tk $$1) {
-      if (!$$0.x()) {
-         a($$0, $$0.n());
-         if ($$0.A().c()) {
-            this.a($$0, $$1, false);
-         }
-      } else {
-         ub $$2 = $$0.v();
-         String $$3 = "Flaky test " + $$0 + " failed, attempt: " + this.a + "/" + $$2.j();
-         if ($$2.k() > 1) {
-            $$3 = $$3 + ", successes: " + this.b + " (" + $$2.k() + " required)";
-         }
-
-         a($$0.g(), n.o, $$3);
-         if ($$0.y() - this.a + this.b >= $$0.z()) {
-            $$1.a($$0);
-         } else {
-            a($$0, new sx(this.a, this.b, $$0));
-         }
-      }
+   public byte b() {
+      return 5;
    }
 
    @Override
-   public void a(th $$0, th $$1, tk $$2) {
-      $$1.a(this);
+   public up<tt> c() {
+      return b;
    }
 
-   public static void a(th $$0, String $$1) {
-      b($$0, dkf.eA);
-      b($$0, $$1);
+   public tt e() {
+      return this;
    }
 
-   private static void b(th $$0, String $$1) {
-      a($$0.g(), n.k, $$1);
-      tp.b($$0);
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof tt && this.w == ((tt)$$0).w;
    }
 
-   protected static void a(th $$0, Throwable $$1) {
-      b($$0, $$0.r() ? dkf.eJ : dkf.ew);
-      c($$0, ae.c($$1));
-      b($$0, $$1);
+   @Override
+   public int hashCode() {
+      return Float.floatToIntBits(this.w);
    }
 
-   protected static void b(th $$0, Throwable $$1) {
-      String $$2 = $$1.getMessage() + ($$1.getCause() == null ? "" : " cause: " + ae.c($$1.getCause()));
-      String $$3 = ($$0.r() ? "" : "(optional) ") + $$0.b() + " failed! " + $$2;
-      a($$0.g(), $$0.r() ? n.m : n.o, $$3);
-      Throwable $$4 = (Throwable)MoreObjects.firstNonNull(ExceptionUtils.getRootCause($$1), $$1);
-      if ($$4 instanceof ta $$5) {
-         a($$0.g(), $$5.c(), $$5.a());
-      }
-
-      tp.a($$0);
+   @Override
+   public void a(ur $$0) {
+      $$0.a(this);
    }
 
-   protected static void a(th $$0, dkd $$1) {
-      arx $$2 = $$0.g();
-      jh $$3 = b($$0);
-      $$2.b($$3, dkf.gj.m().a($$0.u()));
-      b($$0, $$1);
-
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            jh $$6 = $$3.b($$4, -1, $$5);
-            $$2.b($$6, dkf.cp.m());
-         }
-      }
+   @Override
+   public long f() {
+      return (long)this.w;
    }
 
-   private static jh b(th $$0) {
-      jh $$1 = $$0.c();
-      jh $$2 = new jh(-1, -2, -1);
-      return esf.a($$1.a((kl)$$2), dpc.a, $$0.u(), $$1);
+   @Override
+   public int g() {
+      return ayz.d(this.w);
    }
 
-   private static void b(th $$0, dkd $$1) {
-      arx $$2 = $$0.g();
-      jh $$3 = b($$0);
-      if ($$2.a_($$3).a(dkf.gj)) {
-         jh $$4 = $$3.b(0, 1, 0);
-         $$2.b($$4, $$1.m());
-      }
+   @Override
+   public short h() {
+      return (short)(ayz.d(this.w) & 65535);
    }
 
-   private static void c(th $$0, String $$1) {
-      arx $$2 = $$0.g();
-      jh $$3 = $$0.c();
-      jh $$4 = new jh(-1, 0, -1);
-      jh $$5 = esf.a($$3.a((kl)$$4), dpc.a, $$0.u(), $$3);
-      $$2.b($$5, dkf.oC.m().a($$0.u()));
-      dxo $$6 = $$2.a_($$5);
-      cxg $$7 = a($$0.b(), $$0.r(), $$1);
-      doq.a(null, $$2, $$5, $$6, $$7);
+   @Override
+   public byte i() {
+      return (byte)(ayz.d(this.w) & 0xFF);
    }
 
-   private static cxg a(String $$0, boolean $$1, String $$2) {
-      StringBuffer $$3 = new StringBuffer();
-      Arrays.stream($$0.split("\\.")).forEach($$1x -> $$3.append($$1x).append('\n'));
-      if (!$$1) {
-         $$3.append("(optional)\n");
-      }
-
-      $$3.append("-------------------\n");
-      cxg $$4 = new cxg(cxk.uX);
-      $$4.b(ku.S, new dan(List.of(asp.a($$3 + $$2))));
-      return $$4;
+   @Override
+   public double j() {
+      return (double)this.w;
    }
 
-   protected static void a(arx $$0, n $$1, String $$2) {
-      $$0.a($$0x -> true).forEach($$2x -> $$2x.a(xk.b($$2).a($$1)));
+   @Override
+   public float k() {
+      return this.w;
    }
 
-   private static void a(arx $$0, jh $$1, String $$2) {
-      agy.a($$0, $$1, $$2, -2130771968, Integer.MAX_VALUE);
+   @Override
+   public Number l() {
+      return this.w;
+   }
+
+   @Override
+   public uk.b a(uk $$0) {
+      return $$0.a(this.w);
    }
 }

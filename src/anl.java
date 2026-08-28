@@ -1,19 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.List;
+import java.util.function.Function;
 
 public class anl {
-   public static void a(CommandDispatcher<ew> $$0) {
-      LiteralArgumentBuilder<ew> $$1 = (LiteralArgumentBuilder<ew>)ex.a("debugmobspawning").requires($$0x -> $$0x.c(2));
-
-      for (bwa $$2 : bwa.values()) {
-         $$1.then(ex.a($$2.a()).then(ex.a("at", gs.a()).executes($$1x -> a((ew)$$1x.getSource(), $$2, gs.a($$1x, "at")))));
-      }
-
-      $$0.register($$1);
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("list").executes($$0x -> a((ex)$$0x.getSource())))
+            .then(ey.a("uuids").executes($$0x -> b((ex)$$0x.getSource())))
+      );
    }
 
-   private static int a(ew $$0, bwa $$1, jh $$2) {
-      dhk.a($$1, $$0.e(), $$2);
-      return 1;
+   private static int a(ex $$0) {
+      return a($$0, cox::p_);
+   }
+
+   private static int b(ex $$0) {
+      return a($$0, $$0x -> wo.a("commands.list.nameAndId", $$0x.al(), wo.a($$0x.gh().getId())));
+   }
+
+   private static int a(ex $$0, Function<ard, wo> $$1) {
+      avd $$2 = $$0.l().ag();
+      List<ard> $$3 = $$2.t();
+      wo $$4 = wr.b($$3, $$1);
+      $$0.a(() -> wo.a("commands.list.players", $$3.size(), $$2.n(), $$4), false);
+      return $$3.size();
    }
 }

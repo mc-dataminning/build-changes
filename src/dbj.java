@@ -1,150 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class dbj implements dcb {
-   public static final dbj a = new dbj(0, 0, List.of());
-   private final int b;
-   private final int c;
-   private final List<cxg> d;
-   private final cpt e = new cpt();
-   private final int f;
-
-   private dbj(int $$0, int $$1, List<cxg> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      int $$3 = 0;
-
-      for (cxg $$4 : $$2) {
-         if (!$$4.f()) {
-            $$3++;
-            this.e.a($$4, 1);
-         }
-      }
-
-      this.f = $$3;
-   }
-
-   public static dbj a(int $$0, int $$1, List<cxg> $$2) {
-      return b($$0, $$1, $$2).a();
-   }
-
-   public static dbj.a b(int $$0, int $$1, List<cxg> $$2) {
-      if ($$0 != 0 && $$1 != 0) {
-         int $$3 = $$0 - 1;
-         int $$4 = 0;
-         int $$5 = $$1 - 1;
-         int $$6 = 0;
-
-         for (int $$7 = 0; $$7 < $$1; $$7++) {
-            boolean $$8 = true;
-
-            for (int $$9 = 0; $$9 < $$0; $$9++) {
-               cxg $$10 = $$2.get($$9 + $$7 * $$0);
-               if (!$$10.f()) {
-                  $$3 = Math.min($$3, $$9);
-                  $$4 = Math.max($$4, $$9);
-                  $$8 = false;
-               }
-            }
-
-            if (!$$8) {
-               $$5 = Math.min($$5, $$7);
-               $$6 = Math.max($$6, $$7);
-            }
-         }
-
-         int $$11 = $$4 - $$3 + 1;
-         int $$12 = $$6 - $$5 + 1;
-         if ($$11 <= 0 || $$12 <= 0) {
-            return dbj.a.a;
-         } else if ($$11 == $$0 && $$12 == $$1) {
-            return new dbj.a(new dbj($$0, $$1, $$2), $$3, $$5);
-         } else {
-            List<cxg> $$13 = new ArrayList<>($$11 * $$12);
-
-            for (int $$14 = 0; $$14 < $$12; $$14++) {
-               for (int $$15 = 0; $$15 < $$11; $$15++) {
-                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
-                  $$13.add($$2.get($$16));
-               }
-            }
-
-            return new dbj.a(new dbj($$11, $$12, $$13), $$3, $$5);
-         }
-      } else {
-         return dbj.a.a;
-      }
-   }
-
-   @Override
-   public cxg a(int $$0) {
-      return this.d.get($$0);
-   }
-
-   public cxg a(int $$0, int $$1) {
-      return this.d.get($$0 + $$1 * this.b);
-   }
-
-   @Override
-   public int a() {
-      return this.d.size();
-   }
-
-   @Override
-   public boolean b() {
-      return this.f == 0;
-   }
-
-   public cpt c() {
-      return this.e;
-   }
-
-   public List<cxg> d() {
-      return this.d;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.b;
-   }
-
-   public int g() {
-      return this.c;
-   }
+public record dbj<T extends dbe<?>>(akt<dbe<?>> b, T c) {
+   public static final ym<vz, dbj<?>> a = ym.a(akt.b(mc.bk), dbj::a, dbe.b, dbj::b, dbj::new);
 
    @Override
    public boolean equals(Object $$0) {
-      if ($$0 == this) {
+      if (this == $$0) {
          return true;
       } else {
-         return !($$0 instanceof dbj $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && cxg.a(this.d, $$1.d);
+         if ($$0 instanceof dbj<?> $$1 && this.b == $$1.b) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      int $$0 = cxg.a(this.d);
-      $$0 = 31 * $$0 + this.b;
-      return 31 * $$0 + this.c;
+      return this.b.hashCode();
    }
 
-   public static record a(dbj b, int c, int d) {
-      public static final dbj.a a = new dbj.a(dbj.a, 0, 0);
+   @Override
+   public String toString() {
+      return this.b.toString();
+   }
 
-      public dbj a() {
-         return this.b;
-      }
+   public akt<dbe<?>> a() {
+      return this.b;
+   }
 
-      public int b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
+   public T b() {
+      return this.c;
    }
 }

@@ -1,63 +1,77 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cbq extends bxq<cor> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = azu.c(34.0);
-   private static final int i = azu.f(60.0F);
+public class cbq extends cce {
+   private static final cfx d = cfx.b().a(8.0).d();
+   protected final cgx a;
+   private final Class<? extends cgx> e;
+   protected final arc b;
+   @Nullable
+   protected cgx c;
+   private int f;
+   private final double g;
 
-   public cbq() {
-      super(ImmutableMap.of(cfb.o, cfc.a, cfb.aJ, cfc.b, cfb.aK, cfc.c, cfb.aL, cfc.c), i);
+   public cbq(cgx $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cgx>)$$0.getClass());
    }
 
-   protected boolean a(arx $$0, cor $$1) {
-      return $$1.a($$1.ec().c(cfb.o).get(), 15.0, 20.0);
+   public cbq(cgx $$0, double $$1, Class<? extends cgx> $$2) {
+      this.a = $$0;
+      this.b = a($$0);
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cce.a.a, cce.a.b));
    }
 
-   protected boolean a(arx $$0, cor $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(arx $$0, cor $$1, long $$2) {
-      $$1.ec().a(cfb.p, true, (long)i);
-      $$1.ec().a(cfb.aL, bba.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(awv.CM, 3.0F, 1.0F);
-   }
-
-   protected void c(arx $$0, cor $$1, long $$2) {
-      $$1.ec().c(cfb.o).ifPresent($$1x -> $$1.H().a($$1x.du()));
-      if (!$$1.ec().a(cfb.aL) && !$$1.ec().a(cfb.aK)) {
-         $$1.ec().a(cfb.aK, bba.a, (long)(i - h));
-         $$1.ec().c(cfb.o).filter($$1::b).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            fbr $$3 = $$1.du().e($$1.dt().b(bvc.d, 0, $$1.dM()));
-            fbr $$4 = $$2x.bF().d($$3);
-            fbr $$5 = $$4.d();
-            int $$6 = azu.a($$4.g()) + 7;
-
-            for (int $$7 = 1; $$7 < $$6; $$7++) {
-               fbr $$8 = $$3.e($$5.c((double)$$7));
-               $$0.a(ls.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.a(awv.CL, 3.0F, 1.0F);
-            if ($$2x.a($$0, $$0.ak().e($$1), 10.0F)) {
-               double $$9 = 0.5 * (1.0 - $$2x.h(bxf.p));
-               double $$10 = 2.5 * (1.0 - $$2x.h(bxf.p));
-               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
-            }
-         });
+   @Override
+   public boolean b() {
+      if (!this.a.gz()) {
+         return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
       }
    }
 
-   protected void d(arx $$0, cor $$1, long $$2) {
-      a($$1, 40);
+   @Override
+   public boolean c() {
+      return this.c.bL() && this.c.gz() && this.f < 60 && !this.c.gm();
    }
 
-   public static void a(bvx $$0, int $$1) {
-      $$0.ec().a(cfb.aJ, bba.a, (long)$$1);
+   @Override
+   public void e() {
+      this.c = null;
+      this.f = 0;
+   }
+
+   @Override
+   public void a() {
+      this.a.H().a(this.c, 10.0F, (float)this.a.aa());
+      this.a.L().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private cgx h() {
+      List<? extends cgx> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cgx $$2 = null;
+
+      for (cgx $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gm() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a(this.b, this.c);
    }
 }

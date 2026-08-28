@@ -1,46 +1,45 @@
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-public class awj {
-   private final ByteArrayOutputStream a;
-   private final DataOutputStream b;
+public class awj<T> implements Iterable<awh<T>> {
+   private final ke<T> a;
+   private final Map<T, awh<T>> b = new IdentityHashMap<>();
+   private final wo c;
+   private final ym<vz, awh<T>> d;
 
-   public awj(int $$0) {
-      this.a = new ByteArrayOutputStream($$0);
-      this.b = new DataOutputStream(this.a);
+   public awj(ke<T> $$0, wo $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = yk.a($$0.g()).a(this::b, awh::b);
    }
 
-   public void a(byte[] $$0) throws IOException {
-      this.b.write($$0, 0, $$0.length);
+   public ym<vz, awh<T>> a() {
+      return this.d;
    }
 
-   public void a(String $$0) throws IOException {
-      this.b.writeBytes($$0);
-      this.b.write(0);
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
    }
 
-   public void a(int $$0) throws IOException {
-      this.b.write($$0);
+   public awh<T> a(T $$0, awi $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new awh<>(this, (T)$$1x, $$1));
    }
 
-   public void a(short $$0) throws IOException {
-      this.b.writeShort(Short.reverseBytes($$0));
+   public ke<T> b() {
+      return this.a;
    }
 
-   public void b(int $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes($$0));
+   @Override
+   public Iterator<awh<T>> iterator() {
+      return this.b.values().iterator();
    }
 
-   public void a(float $$0) throws IOException {
-      this.b.writeInt(Integer.reverseBytes(Float.floatToIntBits($$0)));
+   public awh<T> b(T $$0) {
+      return this.a($$0, awi.b);
    }
 
-   public byte[] a() {
-      return this.a.toByteArray();
-   }
-
-   public void b() {
-      this.a.reset();
+   public wo c() {
+      return this.c;
    }
 }

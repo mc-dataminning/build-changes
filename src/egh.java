@@ -1,99 +1,31 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egh extends egp<eja> {
-   private static final dxx a = dxx.a(dkf.L);
-   private final dxo b = dkf.L.m();
-   private final dxo c = dkf.ke.m();
-   private final dxo d = dkf.bc.m();
-   private final dxo ao = dkf.J.m();
+public class egh implements eic {
+   public static final Codec<egh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dwx.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
+               dwx.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
+               dwx.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
+               dwx.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
+               edz.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, egh::new)
+   );
+   public final dwx b;
+   public final dwx c;
+   public final dwx d;
+   public final dwx e;
+   public final edz f;
+   public final boolean g;
 
-   public egh(Codec<eja> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(egr<eja> $$0) {
-      dhx $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      $$2 = $$2.d();
-
-      while ($$1.u($$2) && $$2.v() > $$1.L_() + 2) {
-         $$2 = $$2.e();
-      }
-
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.ao, 2);
-
-         for (jm $$8 : jm.c.a) {
-            $$1.a($$2.a($$8), this.ao, 2);
-         }
-
-         jh $$9 = $$2.e();
-         $$1.a($$9, this.b, 2);
-
-         for (jm $$10 : jm.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<jh> $$17 = List.of($$2, $$2.i(), $$2.g(), $$2.h(), $$2.f());
-         bac $$18 = $$0.d();
-         b($$1, ae.a($$17, $$18).c(1));
-         b($$1, ae.a($$17, $$18).c(2));
-         return true;
-      }
-   }
-
-   private static void b(dhx $$0, jh $$1) {
-      $$0.a($$1, dkf.M.m(), 3);
-      $$0.a($$1, dus.O).ifPresent($$1x -> $$1x.a(ewe.aX, $$1.a()));
+   public egh(dwx $$0, dwx $$1, dwx $$2, dwx $$3, edz $$4, boolean $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 }

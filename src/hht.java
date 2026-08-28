@@ -1,29 +1,16 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
-
-public class hht {
-   private final float a;
-   private final AtomicReference<hht.a> b = new AtomicReference<>();
-
-   public hht(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
+public class hht extends hhv {
+   public hht(cgy $$0) {
+      super($$0, awa.bQ, awb.g);
+      this.j = 0;
    }
 
-   public void a(flq $$0, xk $$1) {
-      hht.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new hht.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
+   @Override
+   protected hhr o() {
+      return new hhu(this.n);
    }
 
-   static class a {
-      final xk a;
-      final RateLimiter b;
-
-      a(xk $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   protected boolean p() {
+      return !this.n.ac_();
    }
 }

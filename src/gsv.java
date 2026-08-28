@@ -1,37 +1,18 @@
-public class gsv extends grk<bwd, gyu> {
-   private static final float a = 40.0F;
-   private static final int b = 50;
-   private final gsj h;
-
-   protected gsv(grl.a $$0) {
-      super($$0);
-      this.h = $$0.b();
+public abstract class gsv<T extends cle, S extends gza> extends gti<T, S, gco<S>> {
+   protected gsv(gsc.a $$0, gco<S> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gvv<>(this, $$0.f()));
    }
 
-   public gyu a() {
-      return new gyu();
-   }
-
-   public void a(bwd $$0, gyu $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      cxg $$3 = $$0.m();
-      $$1.b = $$3.v();
-      $$1.a = !$$3.f() ? this.h.a($$3, $$0.dW(), null, 0) : null;
-   }
-
-   public void a(gyu $$0, fgl $$1, glg $$2, int $$3) {
-      hdi $$4 = $$0.a;
-      if ($$4 != null) {
-         $$1.a();
-         if ($$0.p <= 50.0F) {
-            float $$5 = Math.min($$0.p, 50.0F) / 50.0F;
-            $$1.b($$5, $$5, $$5);
-         }
-
-         float $$6 = azu.h($$0.p * 40.0F);
-         $$1.a(a.d.rotationDegrees($$6));
-         gsh.a(this.h, $$1, $$2, 15728880, $$0.b, $$4, $$4.b(), bac.a());
-         $$1.b();
-      }
+      gxn.a($$0, $$1, this.i);
+      $$1.b = $$0.bZ();
+      $$1.d = $$0.fy();
+      $$1.j = $$0.m();
+      $$1.k = $$1.j == cle.a.f ? cvg.b($$0.fB(), $$0) : 0;
+      $$1.l = $$0.fD();
+      $$1.m = $$0.D($$2);
+      $$1.c = $$0.ge();
    }
 }

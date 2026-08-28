@@ -1,20 +1,15 @@
-public enum dym implements baq {
-   a("top"),
-   b("bottom");
+public enum dym {
+   a(4259712),
+   b(16724016),
+   c(2138367);
 
-   private final String c;
+   private final int d;
 
-   private dym(final String $$0) {
-      this.c = $$0;
+   private dym(final int $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
+   public int a() {
+      return this.d;
    }
 }

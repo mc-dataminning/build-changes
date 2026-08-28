@@ -1,22 +1,20 @@
-public class geu {
-   private final float a;
-   private final float b;
-
-   public geu(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class geu extends gap<hbb> {
+   public geu(gfc $$0) {
+      super($$0);
    }
 
-   public float a() {
-      return this.a;
-   }
-
-   public float b() {
-      return this.b;
+   public void a(hbb $$0) {
+      super.a($$0);
+      gas.a(this.s, this.r, $$0.a, $$0.H, $$0.u);
    }
 
    @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

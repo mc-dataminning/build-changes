@@ -1,43 +1,60 @@
-import java.util.EnumSet;
+import com.google.common.collect.Iterables;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class cem extends cev {
-   private final cia a;
-   @Nullable
-   private bvx b;
-   private final cgo c = cgo.a().a(64.0);
+public class cem {
+   private static final cem a = new cem();
+   private final List<bvg> b;
+   private final Predicate<bvg> c;
 
-   public cem(cia $$0) {
-      super($$0, false, true);
-      this.a = $$0;
-      this.a(EnumSet.of(ccv.a.d));
+   private cem() {
+      this.b = List.of();
+      this.c = $$0 -> false;
    }
 
-   @Override
-   public boolean b() {
-      fbm $$0 = this.a.cR().c(10.0, 8.0, 10.0);
-      arx $$1 = a(this.a);
-      List<? extends bvx> $$2 = $$1.a(cpa.class, this.c, this.a, $$0);
-      List<cpo> $$3 = $$1.a(this.c, this.a, $$0);
+   public cem(arc $$0, bvg $$1, List<bvg> $$2) {
+      this.b = $$2;
+      Object2BooleanOpenHashMap<bvg> $$3 = new Object2BooleanOpenHashMap($$2.size());
+      Predicate<bvg> $$4 = $$2x -> cfq.b($$0, $$1, $$2x);
+      this.c = $$2x -> $$3.computeIfAbsent($$2x, $$4);
+   }
 
-      for (bvx $$4 : $$2) {
-         cpa $$5 = (cpa)$$4;
+   public static cem a() {
+      return a;
+   }
 
-         for (cpo $$6 : $$3) {
-            int $$7 = $$5.g($$6);
-            if ($$7 <= -100) {
-               this.b = $$6;
-            }
+   public Optional<bvg> a(Predicate<bvg> $$0) {
+      for (bvg $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return Optional.of($$1);
          }
       }
 
-      return this.b == null ? false : !(this.b instanceof cpo) || !this.b.aa_() && !((cpo)this.b).b();
+      return Optional.empty();
    }
 
-   @Override
-   public void d() {
-      this.a.h(this.b);
-      super.d();
+   public Iterable<bvg> b(Predicate<bvg> $$0) {
+      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public Stream<bvg> c(Predicate<bvg> $$0) {
+      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
+   }
+
+   public boolean a(bvg $$0) {
+      return this.b.contains($$0) && this.c.test($$0);
+   }
+
+   public boolean d(Predicate<bvg> $$0) {
+      for (bvg $$1 : this.b) {
+         if ($$0.test($$1) && this.c.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

@@ -1,82 +1,102 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
 
-public class fti {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<cuc<?>, fti.a<?, ?>> b = Maps.newHashMap();
+public class fti extends fuk {
+   private static final int d = 20;
+   private final wo s;
+   private fpl u = fpl.a;
+   protected wo a;
+   protected wo b;
+   private int v;
+   protected final BooleanConsumer c;
+   private final List<fos> w = Lists.newArrayList();
 
-   public static <T extends cst> void a(cuc<T> $$0, flz $$1, int $$2, xk $$3) {
-      fti.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", ma.p.b($$0));
-      } else {
-         $$4.a($$3, $$0, $$1, $$2);
+   public fti(BooleanConsumer $$0, wo $$1, wo $$2) {
+      this($$0, $$1, $$2, wn.f, wn.g);
+   }
+
+   public fti(BooleanConsumer $$0, wo $$1, wo $$2, wo $$3, wo $$4) {
+      super($$1);
+      this.c = $$0;
+      this.s = $$2;
+      this.a = $$3;
+      this.b = $$4;
+   }
+
+   @Override
+   public wo i() {
+      return wn.a(super.i(), this.s);
+   }
+
+   @Override
+   protected void aR_() {
+      super.aR_();
+      this.u = fpl.a(this.p, this.s, this.n - 50);
+      int $$0 = ayz.a(this.E() + this.F() + 20, this.o / 6 + 96, this.o - 24);
+      this.w.clear();
+      this.a($$0);
+   }
+
+   protected void a(int $$0) {
+      this.a(fos.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 155, $$0, 150, 20).a());
+      this.a(fos.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 155 + 160, $$0, 150, 20).a());
+   }
+
+   protected void a(fos $$0) {
+      this.w.add(this.c($$0));
+   }
+
+   @Override
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.m(), 16777215);
+      this.u.a($$0, this.n / 2, this.E());
+   }
+
+   private int m() {
+      int $$0 = (this.o - this.F()) / 2;
+      return ayz.a($$0 - 20 - 9, 10, 80);
+   }
+
+   private int E() {
+      return this.m() + 20;
+   }
+
+   private int F() {
+      return this.u.a() * 9;
+   }
+
+   public void b(int $$0) {
+      this.v = $$0;
+
+      for (fos $$1 : this.w) {
+         $$1.j = false;
       }
    }
 
-   @Nullable
-   private static <T extends cst> fti.a<T, ?> a(cuc<T> $$0) {
-      return (fti.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends cst, U extends ftr & fvm<M>> void a(cuc<? extends M> $$0, fti.a<M, U> $$1) {
-      fti.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + ma.p.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (cuc<?> $$1 : ma.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", ma.p.b($$1));
-            $$0 = true;
+   @Override
+   public void e() {
+      super.e();
+      if (--this.v == 0) {
+         for (fos $$0 : this.w) {
+            $$0.j = true;
          }
       }
-
-      return $$0;
    }
 
-   static {
-      a(cuc.a, fus::new);
-      a(cuc.b, fus::new);
-      a(cuc.c, fus::new);
-      a(cuc.d, fus::new);
-      a(cuc.e, fus::new);
-      a(cuc.f, fus::new);
-      a(cuc.g, fuy::new);
-      a(cuc.h, fut::new);
-      a(cuc.i, fuk::new);
-      a(cuc.j, ful::new);
-      a(cuc.k, fum::new);
-      a(cuc.l, fup::new);
-      a(cuc.m, fuu::new);
-      a(cuc.n, fvb::new);
-      a(cuc.o, fvc::new);
-      a(cuc.p, fvd::new);
-      a(cuc.q, fvf::new);
-      a(cuc.r, fvk::new);
-      a(cuc.s, fvl::new);
-      a(cuc.t, fvn::new);
-      a(cuc.u, fvq::new);
-      a(cuc.v, fvs::new);
-      a(cuc.w, fvt::new);
-      a(cuc.x, fuq::new);
-      a(cuc.y, fvu::new);
+   @Override
+   public boolean aG_() {
+      return false;
    }
 
-   interface a<T extends cst, U extends ftr & fvm<T>> {
-      default void a(xk $$0, cuc<T> $$1, flz $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gi()), $$2.t.gi(), $$0);
-         $$2.t.cd = $$4.F();
-         $$2.a($$4);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.c.accept(false);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
-
-      U create(T var1, cpn var2, xk var3);
    }
 }

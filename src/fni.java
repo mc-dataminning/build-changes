@@ -1,54 +1,49 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public interface fni {
-   static fni a(fpw $$0) {
-      return new fni.a($$0);
+public final class fni {
+   private static final fni a = new fni(ImmutableList.of());
+   private static final Comparator<dxz.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dxz.a<?>> c;
+
+   public fni a(dxz.a<?> $$0) {
+      return new fni(ImmutableList.builder().addAll(this.c).add($$0).build());
    }
 
-   @Nullable
-   static fni a(fpv $$0, @Nullable fni $$1) {
-      return $$1 == null ? null : new fni.b($$0, $$1);
+   public fni a(fni $$0) {
+      return new fni(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
    }
 
-   static fni a(fpw $$0, fpv... $$1) {
-      fni $$2 = a($$0);
-
-      for (fpv $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
+   private fni(List<dxz.a<?>> $$0) {
+      this.c = $$0;
    }
 
-   fpw a();
-
-   void a(boolean var1);
-
-   public static record a(fpw a) implements fni {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
-      }
+   public static fni a() {
+      return a;
    }
 
-   public static record b(fpv a, fni b) implements fni {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
-         }
+   public static fni a(dxz.a<?>... $$0) {
+      return new fni(ImmutableList.copyOf($$0));
+   }
 
-         this.b.a($$0);
-      }
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof fni && this.c.equals(((fni)$$0).c);
+   }
 
-      public fpv b() {
-         return this.a;
-      }
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
 
-      public fni c() {
-         return this.b;
-      }
+   public String b() {
+      return this.c.stream().sorted(b).map(dxz.a::toString).collect(Collectors.joining(","));
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
    }
 }

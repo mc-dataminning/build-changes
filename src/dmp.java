@@ -1,62 +1,46 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dmp extends dmj {
-   private static final Logger f = LogUtils.getLogger();
-   public static final MapCodec<dmp> e = b(dmp::new);
-   private static final lb g = new la();
-
-   @Override
-   public MapCodec<dmp> a() {
-      return e;
-   }
-
-   public dmp(dxn.d $$0) {
-      super($$0);
-   }
+public class dmp extends djw implements drt {
+   protected static final MapCodec<czq> b = czq.c.fieldOf("suspicious_stew_effects");
+   public static final MapCodec<dmp> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dmp::c), t()).apply($$0, dmp::new));
+   protected static final float d = 3.0F;
+   protected static final fbu e = djm.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+   private final czq a;
 
    @Override
-   protected lb a(dgz $$0, cxg $$1) {
-      return g;
+   public MapCodec<? extends dmp> a() {
+      return c;
+   }
+
+   public dmp(jr<btn> $$0, float $$1, dww.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dmp(czq $$0, dww.d $$1) {
+      super($$1);
+      this.a = $$0;
+   }
+
+   protected static czq a(jr<btn> $$0, float $$1) {
+      return new czq(List.of(new czq.a($$0, ayz.d($$1 * 20.0F))));
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dvl($$0, $$1);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      fba $$4 = $$0.a($$2);
+      return e.a($$4.d, $$4.e, $$4.f);
    }
 
    @Override
-   protected void a(arx $$0, dxo $$1, jh $$2) {
-      dvk $$3 = $$0.a($$2, dus.g).orElse(null);
-      if ($$3 == null) {
-         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         ky $$4 = new ky($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            cxg $$6 = $$3.a($$5);
-            if (!$$6.f()) {
-               jm $$7 = $$0.a_($$2).c(b);
-               bst $$8 = dvs.a($$0, $$2.a($$7));
-               cxg $$9;
-               if ($$8 == null) {
-                  $$9 = g.dispense($$4, $$6);
-               } else {
-                  $$9 = dvs.a($$3, $$8, $$6.c(1), $$7.g());
-                  if ($$9.f()) {
-                     $$9 = $$6.v();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.v();
-                  }
-               }
+   public czq c() {
+      return this.a;
+   }
 
-               $$3.a($$5, $$9);
-            }
-         }
-      }
+   @Nullable
+   public btp b() {
+      return null;
    }
 }

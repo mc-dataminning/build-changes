@@ -1,48 +1,49 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class eqm extends eod {
-   public static final MapCodec<eqm> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), emk.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, eqm::new)
+public class eqm extends erb {
+   public static final MapCodec<eqm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               jn.a.e.fieldOf("axis").orElse(jn.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eqm::new)
    );
-   public final emk e;
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final jn.a g;
 
-   public eqm(eod.c $$0, emk $$1) {
-      super($$0);
-      this.e = $$1;
-   }
-
-   @Override
-   public Optional<eod.b> a(eod.a $$0) {
-      eei $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().f();
-      eeg $$5 = new eeg($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dhl $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      jh.a $$8 = new jh.a($$2, $$6, $$3);
-
-      while ($$6 > $$4) {
-         dxo $$9 = $$7.a($$6);
-         dxo $$10 = $$7.a(--$$6);
-         if ($$9.l() && ($$10.a(dkf.ej) || $$10.c(dgo.a, $$8.q($$6), jm.b))) {
-            break;
-         }
-      }
-
-      if ($$6 <= $$4) {
-         return Optional.empty();
+   public eqm(float $$0, float $$1, int $$2, int $$3, jn.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         jh $$11 = new jh($$2, $$6, $$3);
-         return Optional.of(new eod.b($$11, (Consumer<eov>)($$3x -> eql.a($$0.e(), $$3x, $$1, $$11))));
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
       }
    }
 
    @Override
-   public eom<?> e() {
-      return eom.i;
+   public boolean a(ji $$0, ji $$1, ji $$2, azh $$3) {
+      jn $$4 = jn.a(jn.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= ayz.b(this.b, this.d, ayz.f((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected erc<?> a() {
+      return erc.c;
    }
 }

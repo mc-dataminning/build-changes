@@ -1,76 +1,60 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public enum bbi {
-   a(bin.a),
-   b(bin.b),
-   c(bin.c),
-   d(bin.d),
-   e(bin.e),
-   f(bin.f),
-   g(bin.g),
-   h(bin.h),
-   i(bin.i),
-   j(bin.j),
-   k(bin.k),
-   l(bin.l),
-   m(bin.m),
-   n(bin.o),
-   o(bin.n),
-   p(bin.p),
-   q(bin.q),
-   r(bin.M),
-   s(bin.r);
-
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private bbi(final TypeReference $$0) {
-      this.u = $$0;
-   }
-
-   static int a() {
-      return ab.b().d().c();
-   }
-
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(bbi.a())));
-         }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = bbi.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
-   }
-
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   public um a(DataFixer $$0, um $$1, int $$2, int $$3) {
-      return (um)this.a($$0, new Dynamic(va.a, $$1), $$2, $$3).getValue();
-   }
-
-   public um a(DataFixer $$0, um $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
-   }
-
-   static {
-      t = Set.of(a.u);
-   }
+public class bbi {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:extreme_hills", "minecraft:mountains")
+      .put("minecraft:swampland", "minecraft:swamp")
+      .put("minecraft:hell", "minecraft:nether_wastes")
+      .put("minecraft:sky", "minecraft:the_end")
+      .put("minecraft:ice_flats", "minecraft:snowy_tundra")
+      .put("minecraft:ice_mountains", "minecraft:snowy_mountains")
+      .put("minecraft:mushroom_island", "minecraft:mushroom_fields")
+      .put("minecraft:mushroom_island_shore", "minecraft:mushroom_field_shore")
+      .put("minecraft:beaches", "minecraft:beach")
+      .put("minecraft:forest_hills", "minecraft:wooded_hills")
+      .put("minecraft:smaller_extreme_hills", "minecraft:mountain_edge")
+      .put("minecraft:stone_beach", "minecraft:stone_shore")
+      .put("minecraft:cold_beach", "minecraft:snowy_beach")
+      .put("minecraft:roofed_forest", "minecraft:dark_forest")
+      .put("minecraft:taiga_cold", "minecraft:snowy_taiga")
+      .put("minecraft:taiga_cold_hills", "minecraft:snowy_taiga_hills")
+      .put("minecraft:redwood_taiga", "minecraft:giant_tree_taiga")
+      .put("minecraft:redwood_taiga_hills", "minecraft:giant_tree_taiga_hills")
+      .put("minecraft:extreme_hills_with_trees", "minecraft:wooded_mountains")
+      .put("minecraft:savanna_rock", "minecraft:savanna_plateau")
+      .put("minecraft:mesa", "minecraft:badlands")
+      .put("minecraft:mesa_rock", "minecraft:wooded_badlands_plateau")
+      .put("minecraft:mesa_clear_rock", "minecraft:badlands_plateau")
+      .put("minecraft:sky_island_low", "minecraft:small_end_islands")
+      .put("minecraft:sky_island_medium", "minecraft:end_midlands")
+      .put("minecraft:sky_island_high", "minecraft:end_highlands")
+      .put("minecraft:sky_island_barren", "minecraft:end_barrens")
+      .put("minecraft:void", "minecraft:the_void")
+      .put("minecraft:mutated_plains", "minecraft:sunflower_plains")
+      .put("minecraft:mutated_desert", "minecraft:desert_lakes")
+      .put("minecraft:mutated_extreme_hills", "minecraft:gravelly_mountains")
+      .put("minecraft:mutated_forest", "minecraft:flower_forest")
+      .put("minecraft:mutated_taiga", "minecraft:taiga_mountains")
+      .put("minecraft:mutated_swampland", "minecraft:swamp_hills")
+      .put("minecraft:mutated_ice_flats", "minecraft:ice_spikes")
+      .put("minecraft:mutated_jungle", "minecraft:modified_jungle")
+      .put("minecraft:mutated_jungle_edge", "minecraft:modified_jungle_edge")
+      .put("minecraft:mutated_birch_forest", "minecraft:tall_birch_forest")
+      .put("minecraft:mutated_birch_forest_hills", "minecraft:tall_birch_hills")
+      .put("minecraft:mutated_roofed_forest", "minecraft:dark_forest_hills")
+      .put("minecraft:mutated_taiga_cold", "minecraft:snowy_taiga_mountains")
+      .put("minecraft:mutated_redwood_taiga", "minecraft:giant_spruce_taiga")
+      .put("minecraft:mutated_redwood_taiga_hills", "minecraft:giant_spruce_taiga_hills")
+      .put("minecraft:mutated_extreme_hills_with_trees", "minecraft:modified_gravelly_mountains")
+      .put("minecraft:mutated_savanna", "minecraft:shattered_savanna")
+      .put("minecraft:mutated_savanna_rock", "minecraft:shattered_savanna_plateau")
+      .put("minecraft:mutated_mesa", "minecraft:eroded_badlands")
+      .put("minecraft:mutated_mesa_rock", "minecraft:modified_wooded_badlands_plateau")
+      .put("minecraft:mutated_mesa_clear_rock", "minecraft:modified_badlands_plateau")
+      .put("minecraft:warm_deep_ocean", "minecraft:deep_warm_ocean")
+      .put("minecraft:lukewarm_deep_ocean", "minecraft:deep_lukewarm_ocean")
+      .put("minecraft:cold_deep_ocean", "minecraft:deep_cold_ocean")
+      .put("minecraft:frozen_deep_ocean", "minecraft:deep_frozen_ocean")
+      .build();
 }

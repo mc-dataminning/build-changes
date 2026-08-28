@@ -1,59 +1,45 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
 
-public class avg extends avr<avg.a> {
-   private static final Logger c = LogUtils.getLogger();
-   private final Stopwatch d = Stopwatch.createUnstarted();
+public class avg {
+   private int a;
+   private int b;
 
-   public avg(avl $$0, List<avf> $$1, Executor $$2, Executor $$3, CompletableFuture<bba> $$4) {
-      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
-         AtomicLong $$6 = new AtomicLong();
-         AtomicLong $$7 = new AtomicLong();
-         CompletableFuture<Void> $$8 = $$3x.a($$1x, $$2x, a($$4x, $$6, $$3x.c()), a($$5, $$7, $$3x.c()));
-         return $$8.thenApplyAsync($$3xx -> {
-            c.debug("Finished reloading {}", $$3x.c());
-            return new avg.a($$3x.c(), $$6, $$7);
-         }, $$3);
-      }, $$4);
-      this.d.start();
-      this.b = this.b.thenApplyAsync(this::a, $$3);
+   public boolean a(int $$0) {
+      return this.b >= this.b($$0);
    }
 
-   private static Executor a(Executor $$0, AtomicLong $$1, String $$2) {
-      return $$3 -> $$0.execute(() -> {
-            bpj $$3x = bpi.a();
-            $$3x.a($$2);
-            long $$4 = ae.d();
-            $$3.run();
-            $$1.addAndGet(ae.d() - $$4);
-            $$3x.c();
-         });
+   public boolean a(int $$0, List<ard> $$1) {
+      int $$2 = (int)$$1.stream().filter(cox::gm).count();
+      return $$2 >= this.b($$0);
    }
 
-   private List<avg.a> a(List<avg.a> $$0) {
-      this.d.stop();
-      long $$1 = 0L;
-      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
+   public int b(int $$0) {
+      return Math.max(1, ayz.f((float)(this.a * $$0) / 100.0F));
+   }
 
-      for (avg.a $$2 : $$0) {
-         long $$3 = TimeUnit.NANOSECONDS.toMillis($$2.b.get());
-         long $$4 = TimeUnit.NANOSECONDS.toMillis($$2.c.get());
-         long $$5 = $$3 + $$4;
-         String $$6 = $$2.a;
-         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$6, $$5, $$3, $$4});
-         $$1 += $$4;
+   public void a() {
+      this.b = 0;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean a(List<ard> $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      this.a = 0;
+      this.b = 0;
+
+      for (ard $$3 : $$0) {
+         if (!$$3.Z_()) {
+            this.a++;
+            if ($$3.fR()) {
+               this.b++;
+            }
+         }
       }
 
-      c.info("Total blocking time: {} ms", $$1);
-      return $$0;
-   }
-
-   public static record a(String a, AtomicLong b, AtomicLong c) {
+      return ($$2 > 0 || this.b > 0) && ($$1 != this.a || $$2 != this.b);
    }
 }

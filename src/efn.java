@@ -1,24 +1,34 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
 
-public record efn<WC extends efi>(efp<WC> d, WC e) {
-   public static final Codec<efn<?>> a = ma.N.q().dispatch($$0 -> $$0.d, efp::c);
-   public static final Codec<jq<efn<?>>> b = all.a(mb.aK, a);
-   public static final Codec<ju<efn<?>>> c = kf.a(mb.aK, a);
-
-   public boolean a(bac $$0) {
-      return this.d.a(this.e, $$0);
+public class efn extends efm {
+   public efn(Codec<eij> $$0) {
+      super($$0);
    }
 
-   public boolean a(efk $$0, dzj $$1, Function<jh, jq<dib>> $$2, bac $$3, ecv $$4, dgf $$5, dzi $$6) {
-      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
+   @Override
+   protected boolean a(dgj $$0, azh $$1, ji $$2, dwx $$3) {
+      int $$4 = $$1.a(3) + 3;
+      int $$5 = $$1.a(3) + 3;
+      int $$6 = $$1.a(3) + 3;
+      int $$7 = $$1.a(3) + 1;
+      ji.a $$8 = $$2.k();
 
-   public efp<WC> a() {
-      return this.d;
-   }
+      for (int $$9 = 0; $$9 <= $$5; $$9++) {
+         for (int $$10 = 0; $$10 <= $$4; $$10++) {
+            for (int $$11 = 0; $$11 <= $$6; $$11++) {
+               $$8.d($$9 + $$2.u(), $$10 + $$2.v(), $$11 + $$2.w());
+               $$8.c(jn.a, $$7);
+               if (($$9 != 0 && $$9 != $$5 || $$10 != 0 && $$10 != $$4)
+                  && ($$11 != 0 && $$11 != $$6 || $$10 != 0 && $$10 != $$4)
+                  && ($$9 != 0 && $$9 != $$5 || $$11 != 0 && $$11 != $$6)
+                  && ($$9 == 0 || $$9 == $$5 || $$10 == 0 || $$10 == $$4 || $$11 == 0 || $$11 == $$6)
+                  && !($$1.i() < 0.1F)
+                  && !this.b($$0, $$1, $$8, $$3)) {
+               }
+            }
+         }
+      }
 
-   public WC b() {
-      return this.e;
+      return true;
    }
 }

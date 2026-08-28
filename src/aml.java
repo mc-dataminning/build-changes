@@ -1,78 +1,89 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Queue;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
 public class aml {
-   private static final int a = 8;
-   private final Queue<aml.a> b = new ayh<>();
-   private final Object2IntLinkedOpenHashMap<aml.b> c = new Object2IntLinkedOpenHashMap();
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.damage.invulnerable"));
 
-   private static long b() {
-      return System.currentTimeMillis();
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("damage").requires($$0x -> $$0x.c(2)))
+            .then(
+               ey.a("target", fk.a())
+                  .then(
+                     ((RequiredArgumentBuilder)ey.a("amount", FloatArgumentType.floatArg(0.0F))
+                           .executes(
+                              $$0x -> a(
+                                    (ex)$$0x.getSource(), fk.a($$0x, "target"), FloatArgumentType.getFloat($$0x, "amount"), ((ex)$$0x.getSource()).e().ak().p()
+                                 )
+                           ))
+                        .then(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ey.a("damageType", fw.a($$1, mc.s))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ex)$$0x.getSource(),
+                                             fk.a($$0x, "target"),
+                                             FloatArgumentType.getFloat($$0x, "amount"),
+                                             new bta(fw.a($$0x, "damageType", mc.s))
+                                          )
+                                    ))
+                                 .then(
+                                    ey.a("at")
+                                       .then(
+                                          ey.a("location", ha.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      fk.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bta(fw.a($$0x, "damageType", mc.s), ha.a($$0x, "location"))
+                                                   )
+                                             )
+                                       )
+                                 ))
+                              .then(
+                                 ey.a("by")
+                                    .then(
+                                       ((RequiredArgumentBuilder)ey.a("entity", fk.a())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (ex)$$0x.getSource(),
+                                                      fk.a($$0x, "target"),
+                                                      FloatArgumentType.getFloat($$0x, "amount"),
+                                                      new bta(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"))
+                                                   )
+                                             ))
+                                          .then(
+                                             ey.a("from")
+                                                .then(
+                                                   ey.a("cause", fk.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (ex)$$0x.getSource(),
+                                                               fk.a($$0x, "target"),
+                                                               FloatArgumentType.getFloat($$0x, "amount"),
+                                                               new bta(fw.a($$0x, "damageType", mc.s), fk.a($$0x, "entity"), fk.a($$0x, "cause"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   public synchronized void a(String $$0, Throwable $$1) {
-      long $$2 = b();
-      String $$3 = $$1.getMessage();
-      this.b.add(new aml.a($$2, $$0, (Class<? extends Throwable>)$$1.getClass(), $$3));
-
-      while (this.b.size() > 8) {
-         this.b.remove();
+   private static int a(ex $$0, buk $$1, float $$2, bta $$3) throws CommandSyntaxException {
+      if ($$1.a($$0.e(), $$3, $$2)) {
+         $$0.a(() -> wo.a("commands.damage.success", $$2, $$1.p_()), true);
+         return 1;
+      } else {
+         throw a.create();
       }
-
-      aml.b $$4 = new aml.b($$0, (Class<? extends Throwable>)$$1.getClass());
-      int $$5 = this.c.getInt($$4);
-      this.c.putAndMoveToFirst($$4, $$5 + 1);
-   }
-
-   public synchronized String a() {
-      long $$0 = b();
-      StringBuilder $$1 = new StringBuilder();
-      if (!this.b.isEmpty()) {
-         $$1.append("\n\t\tLatest entries:\n");
-
-         for (aml.a $$2 : this.b) {
-            $$1.append("\t\t\t")
-               .append($$2.b)
-               .append(":")
-               .append($$2.c)
-               .append(": ")
-               .append($$2.d)
-               .append(" (")
-               .append($$0 - $$2.a)
-               .append("ms ago)")
-               .append("\n");
-         }
-      }
-
-      if (!this.c.isEmpty()) {
-         if ($$1.isEmpty()) {
-            $$1.append("\n");
-         }
-
-         $$1.append("\t\tEntry counts:\n");
-         ObjectIterator var6 = Object2IntMaps.fastIterable(this.c).iterator();
-
-         while (var6.hasNext()) {
-            Entry<aml.b> $$3 = (Entry<aml.b>)var6.next();
-            $$1.append("\t\t\t")
-               .append(((aml.b)$$3.getKey()).a)
-               .append(":")
-               .append(((aml.b)$$3.getKey()).b)
-               .append(" x ")
-               .append($$3.getIntValue())
-               .append("\n");
-         }
-      }
-
-      return $$1.isEmpty() ? "~~NONE~~" : $$1.toString();
-   }
-
-   static record a(long a, String b, Class<? extends Throwable> c, String d) {
-   }
-
-   static record b(String a, Class<? extends Throwable> b) {
    }
 }

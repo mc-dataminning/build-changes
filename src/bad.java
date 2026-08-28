@@ -1,37 +1,13 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.regex.Pattern;
+public enum bad {
+   a,
+   b,
+   c;
 
-public class bad {
-   public static final Codec<bad> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(azd.p.optionalFieldOf("namespace").forGetter($$0x -> $$0x.b), azd.p.optionalFieldOf("path").forGetter($$0x -> $$0x.d))
-            .apply($$0, bad::new)
-   );
-   private final Optional<Pattern> b;
-   private final Predicate<String> c;
-   private final Optional<Pattern> d;
-   private final Predicate<String> e;
-   private final Predicate<alp> f;
-
-   private bad(Optional<Pattern> $$0, Optional<Pattern> $$1) {
-      this.b = $$0;
-      this.c = $$0.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.d = $$1;
-      this.e = $$1.map(Pattern::asPredicate).orElse($$0x -> true);
-      this.f = $$0x -> this.c.test($$0x.b()) && this.e.test($$0x.a());
-   }
-
-   public Predicate<String> a() {
-      return this.c;
-   }
-
-   public Predicate<String> b() {
-      return this.e;
-   }
-
-   public Predicate<alp> c() {
-      return this.f;
+   public boolean a(boolean $$0) {
+      return switch (this) {
+         case a -> true;
+         case b -> false;
+         default -> $$0;
+      };
    }
 }

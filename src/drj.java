@@ -1,42 +1,22 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface drj extends dkl, dow {
+public class drj extends dsd implements djd {
+   public static final MapCodec<drj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cvm.q.fieldOf("color").forGetter(drj::b), t()).apply($$0, drj::new));
+   private final cvm c;
+
    @Override
-   default boolean a(@Nullable cpo $$0, dge $$1, jh $$2, dxo $$3, etp $$4) {
-      return $$4 == etr.c;
+   public MapCodec<drj> a() {
+      return a;
+   }
+
+   public drj(cvm $$0, dww.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   default boolean a(dha $$0, jh $$1, dxo $$2, etq $$3) {
-      if (!$$2.c(dye.J) && $$3.a() == etr.c) {
-         if (!$$0.B_()) {
-            $$0.a($$1, $$2.b(dye.J, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   default cxg a(@Nullable cpo $$0, dha $$1, jh $$2, dxo $$3) {
-      if ($$3.c(dye.J)) {
-         $$1.a($$2, $$3.b(dye.J, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
-
-         return new cxg(cxk.rg);
-      } else {
-         return cxg.j;
-      }
-   }
-
-   @Override
-   default Optional<awu> at_() {
-      return etr.c.j();
+   public cvm b() {
+      return this.c;
    }
 }

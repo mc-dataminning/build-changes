@@ -1,23 +1,16 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import com.google.common.collect.Streams;
+import java.util.function.Predicate;
 
-public class gnu<S extends duq> implements dml.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = glc.a($$0.i(), $$0.aB_());
-         int $$4 = glc.a($$1.i(), $$1.aB_());
-         int $$5 = gle.a($$3);
-         int $$6 = gle.a($$4);
-         int $$7 = gle.b($$3);
-         int $$8 = gle.b($$4);
-         return gle.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class gnu implements gnv {
+   public static final String a = "AND";
+   private final Iterable<? extends gnv> d;
+
+   public gnu(Iterable<? extends gnv> $$0) {
+      this.d = $$0;
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
-
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   @Override
+   public Predicate<dwx> getPredicate(dwy<djm, dwx> $$0) {
+      return af.a(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
    }
 }

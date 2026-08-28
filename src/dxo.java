@@ -1,16 +1,38 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.List;
+import java.util.Optional;
 
-public class dxo extends dxn.a {
-   public static final Codec<dxo> a = a(ma.e.q(), dkd::m).stable();
+public final class dxo extends dxz<Boolean> {
+   private static final List<Boolean> a = List.of(true, false);
+   private static final int b = 0;
+   private static final int c = 1;
 
-   public dxo(dkd $$0, Reference2ObjectArrayMap<dyq<?>, Comparable<?>> $$1, MapCodec<dxo> $$2) {
-      super($$0, $$1, $$2);
+   private dxo(String $$0) {
+      super($$0, Boolean.class);
    }
 
    @Override
-   protected dxo B() {
-      return this;
+   public List<Boolean> a() {
+      return a;
+   }
+
+   public static dxo a(String $$0) {
+      return new dxo($$0);
+   }
+
+   @Override
+   public Optional<Boolean> b(String $$0) {
+      return switch ($$0) {
+         case "true" -> Optional.of(true);
+         case "false" -> Optional.of(false);
+         default -> Optional.empty();
+      };
+   }
+
+   public String a(Boolean $$0) {
+      return $$0.toString();
+   }
+
+   public int b(Boolean $$0) {
+      return $$0 ? 0 : 1;
    }
 }

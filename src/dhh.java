@@ -1,25 +1,23 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhh {
-   boolean a(jh var1, dxo var2, int var3, int var4);
+public class dhh {
+   public static final Codec<dhh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(avz.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dhh::new)
+   );
+   private final jr<avz> b;
+   private final double c;
 
-   default boolean a(jh $$0, dxo $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public dhh(jr<avz> $$0, double $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   boolean a(jh var1, boolean var2);
-
-   default boolean b(jh $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   public jr<avz> a() {
+      return this.b;
    }
 
-   default boolean a(jh $$0, boolean $$1, @Nullable bvb $$2) {
-      return this.a($$0, $$1, $$2, 512);
-   }
-
-   boolean a(jh var1, boolean var2, @Nullable bvb var3, int var4);
-
-   default boolean b(bvb $$0) {
-      return false;
+   public double b() {
+      return this.c;
    }
 }

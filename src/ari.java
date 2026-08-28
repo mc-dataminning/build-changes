@@ -1,33 +1,41 @@
-public record ari(String b, int c, cpl d, boolean e, int f, bvr g, boolean h, boolean i, arp j) {
-   public static final int a = 16;
+import java.util.Comparator;
 
-   public ari(wh $$0) {
-      this(
-         $$0.d(16),
-         $$0.readByte(),
-         $$0.b(cpl.class),
-         $$0.readBoolean(),
-         $$0.readUnsignedByte(),
-         $$0.b(bvr.class),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(arp.class)
-      );
+public class ari<T> {
+   private final String h;
+   private final Comparator<T> i;
+   private final long j;
+   public static final ari<baf> a = a("start", ($$0, $$1) -> 0);
+   public static final ari<baf> b = a("dragon", ($$0, $$1) -> 0);
+   public static final ari<dfo> c = a("player", Comparator.comparingLong(dfo::a));
+   public static final ari<dfo> d = a("forced", Comparator.comparingLong(dfo::a));
+   public static final ari<ji> e = a("portal", km::i, 300);
+   public static final ari<dfo> f = a("ender_pearl", Comparator.comparingLong(dfo::a), 40);
+   public static final ari<dfo> g = a("unknown", Comparator.comparingLong(dfo::a), 1);
+
+   public static <T> ari<T> a(String $$0, Comparator<T> $$1) {
+      return new ari<>($$0, $$1, 0L);
    }
 
-   public void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.l(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.l(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
+   public static <T> ari<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new ari<>($$0, $$1, (long)$$2);
    }
 
-   public static ari a() {
-      return new ari("en_us", 2, cpl.a, true, 0, cpo.bH, false, false, arp.a);
+   protected ari(String $$0, Comparator<T> $$1, long $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   @Override
+   public String toString() {
+      return this.h;
+   }
+
+   public Comparator<T> a() {
+      return this.i;
+   }
+
+   public long b() {
+      return this.j;
    }
 }

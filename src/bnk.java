@@ -1,18 +1,82 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public class bnk extends Schema {
-   public bnk(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bnk<T> implements Closeable {
+   private static final Gson a = new Gson();
+   private final Codec<T> b;
+   final FileChannel c;
+   private final AtomicInteger d = new AtomicInteger(1);
+
+   public bnk(Codec<T> $$0, FileChannel $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "ZombieVillager", $$1x -> DSL.optionalFields("Offers", DSL.optionalFields("Recipes", DSL.list(bin.x.in($$0))), bkc.a($$0)));
-      $$0.register($$1, "Husk", () -> bkc.a($$0));
-      return $$1;
+   public static <T> bnk<T> a(Codec<T> $$0, Path $$1) throws IOException {
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+      return new bnk<>($$0, $$2);
+   }
+
+   public void a(T $$0) throws IOException {
+      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
+      this.c.position(this.c.size());
+      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
+      a.toJson($$1, a.newJsonWriter($$2));
+      $$2.write(10);
+      $$2.flush();
+   }
+
+   public bnl<T> a() throws IOException {
+      if (this.d.get() <= 0) {
+         throw new IOException("Event log has already been closed");
+      } else {
+         this.d.incrementAndGet();
+         final bnl<T> $$0 = bnl.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
+         return new bnl<T>() {
+            private volatile long c;
+
+            @Nullable
+            @Override
+            public T a() throws IOException {
+               Object var1;
+               try {
+                  bnk.this.c.position(this.c);
+                  var1 = $$0.a();
+               } finally {
+                  this.c = bnk.this.c.position();
+               }
+
+               return (T)var1;
+            }
+
+            @Override
+            public void close() throws IOException {
+               bnk.this.b();
+            }
+         };
+      }
+   }
+
+   @Override
+   public void close() throws IOException {
+      this.b();
+   }
+
+   void b() throws IOException {
+      if (this.d.decrementAndGet() <= 0) {
+         this.c.close();
+      }
    }
 }

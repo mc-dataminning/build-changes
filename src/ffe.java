@@ -1,31 +1,21 @@
-import com.mojang.blaze3d.platform.GLX;
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
-import org.lwjgl.system.MemoryUtil;
-
-public class ffe {
-   public static ByteBuffer a(int $$0) {
-      return MemoryUtil.memAlloc($$0);
+public record ffe(int a, int b, boolean c) implements fff<fee> {
+   public fee a() {
+      return new fef(this.a, this.b, this.c);
    }
 
-   public static void a(Buffer $$0) {
-      MemoryUtil.memFree($$0);
+   public void a(fee $$0) {
+      $$0.a();
    }
 
-   public static String a() {
-      return GlStateManager._getString(7936);
+   public int b() {
+      return this.a;
    }
 
-   public static String b() {
-      return GLX._getCpuInfo();
+   public int c() {
+      return this.b;
    }
 
-   public static String c() {
-      return GlStateManager._getString(7937);
-   }
-
-   public static String d() {
-      return GlStateManager._getString(7938);
+   public boolean d() {
+      return this.c;
    }
 }

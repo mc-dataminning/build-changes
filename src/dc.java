@@ -1,109 +1,102 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class dc extends dy<dc.a> {
+public class dc extends dz<dc.a> {
    @Override
    public Codec<dc.a> a() {
       return dc.a.a;
    }
 
-   public void a(ary $$0, bvb $$1, btr $$2) {
-      ewi $$3 = bw.b($$0, $$1);
-      this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
+   public void a(ard $$0, Collection<buk> $$1, @Nullable cwp $$2) {
+      List<evr> $$3 = Lists.newArrayList();
+      Set<bur<?>> $$4 = Sets.newHashSet();
+
+      for (buk $$5 : $$1) {
+         $$4.add($$5.aq());
+         $$3.add(bx.b($$0, $$5));
+      }
+
+      this.a($$0, $$3x -> $$3x.a($$3, $$4.size(), $$2));
    }
 
-   public static record a(Optional<bh> b, Optional<bh> c, Optional<bl> d) implements dy.a {
+   public static record a(Optional<bi> b, List<bi> c, dk.d d, Optional<cv> e) implements dz.a {
       public static final Codec<dc.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bw.b.optionalFieldOf("player").forGetter(dc.a::a),
-                  bw.b.optionalFieldOf("entity").forGetter(dc.a::e),
-                  bl.a.optionalFieldOf("killing_blow").forGetter(dc.a::f)
+                  bx.b.optionalFieldOf("player").forGetter(dc.a::a),
+                  bx.b.listOf().optionalFieldOf("victims", List.of()).forGetter(dc.a::b),
+                  dk.d.d.optionalFieldOf("unique_entity_types", dk.d.c).forGetter(dc.a::c),
+                  cv.a.optionalFieldOf("fired_from_weapon").forGetter(dc.a::d)
                )
                .apply($$0, dc.a::new)
       );
 
-      public static ap<dc.a> a(Optional<bw> $$0) {
-         return ao.c.a(new dc.a(Optional.empty(), bw.a($$0), Optional.empty()));
+      public static aq<dc.a> a(js<cwl> $$0, bx.a... $$1) {
+         return ap.H.a(new dc.a(Optional.empty(), bx.a($$1), dk.d.c, Optional.of(cv.a.a().a($$0, cwt.wV).b())));
       }
 
-      public static ap<dc.a> a(bw.a $$0) {
-         return ao.c.a(new dc.a(Optional.empty(), Optional.of(bw.a($$0)), Optional.empty()));
+      public static aq<dc.a> a(js<cwl> $$0, dk.d $$1) {
+         return ap.H.a(new dc.a(Optional.empty(), List.of(), $$1, Optional.of(cv.a.a().a($$0, cwt.wV).b())));
       }
 
-      public static ap<dc.a> b() {
-         return ao.c.a(new dc.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+      public boolean a(Collection<evr> $$0, int $$1, @Nullable cwp $$2) {
+         if (!this.e.isPresent() || $$2 != null && this.e.get().a($$2)) {
+            if (!this.c.isEmpty()) {
+               List<evr> $$3 = Lists.newArrayList($$0);
 
-      public static ap<dc.a> a(Optional<bw> $$0, Optional<bl> $$1) {
-         return ao.c.a(new dc.a(Optional.empty(), bw.a($$0), $$1));
-      }
+               for (bi $$4 : this.c) {
+                  boolean $$5 = false;
+                  Iterator<evr> $$6 = $$3.iterator();
 
-      public static ap<dc.a> a(bw.a $$0, Optional<bl> $$1) {
-         return ao.c.a(new dc.a(Optional.empty(), Optional.of(bw.a($$0)), $$1));
-      }
+                  while ($$6.hasNext()) {
+                     evr $$7 = $$6.next();
+                     if ($$4.a($$7)) {
+                        $$6.remove();
+                        $$5 = true;
+                        break;
+                     }
+                  }
 
-      public static ap<dc.a> a(Optional<bw> $$0, bl.a $$1) {
-         return ao.c.a(new dc.a(Optional.empty(), bw.a($$0), Optional.of($$1.b())));
-      }
+                  if (!$$5) {
+                     return false;
+                  }
+               }
+            }
 
-      public static ap<dc.a> a(bw.a $$0, bl.a $$1) {
-         return ao.c.a(new dc.a(Optional.empty(), Optional.of(bw.a($$0)), Optional.of($$1.b())));
-      }
-
-      public static ap<dc.a> c() {
-         return ao.Z.a(new dc.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static ap<dc.a> b(Optional<bw> $$0) {
-         return ao.d.a(new dc.a(Optional.empty(), bw.a($$0), Optional.empty()));
-      }
-
-      public static ap<dc.a> b(bw.a $$0) {
-         return ao.d.a(new dc.a(Optional.empty(), Optional.of(bw.a($$0)), Optional.empty()));
-      }
-
-      public static ap<dc.a> d() {
-         return ao.d.a(new dc.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
-
-      public static ap<dc.a> b(Optional<bw> $$0, Optional<bl> $$1) {
-         return ao.d.a(new dc.a(Optional.empty(), bw.a($$0), $$1));
-      }
-
-      public static ap<dc.a> b(bw.a $$0, Optional<bl> $$1) {
-         return ao.d.a(new dc.a(Optional.empty(), Optional.of(bw.a($$0)), $$1));
-      }
-
-      public static ap<dc.a> b(Optional<bw> $$0, bl.a $$1) {
-         return ao.d.a(new dc.a(Optional.empty(), bw.a($$0), Optional.of($$1.b())));
-      }
-
-      public static ap<dc.a> b(bw.a $$0, bl.a $$1) {
-         return ao.d.a(new dc.a(Optional.empty(), Optional.of(bw.a($$0)), Optional.of($$1.b())));
-      }
-
-      public boolean a(ary $$0, ewi $$1, btr $$2) {
-         return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
+            return this.d.d($$1);
+         } else {
+            return false;
+         }
       }
 
       @Override
-      public void a(bi $$0) {
-         dy.a.super.a($$0);
-         $$0.a(this.c, ".entity");
+      public void a(bj $$0) {
+         dz.a.super.a($$0);
+         $$0.a(this.c, ".victims");
       }
 
       @Override
-      public Optional<bh> a() {
+      public Optional<bi> a() {
          return this.b;
       }
 
-      public Optional<bh> e() {
+      public List<bi> b() {
          return this.c;
       }
 
-      public Optional<bl> f() {
+      public dk.d c() {
          return this.d;
+      }
+
+      public Optional<cv> d() {
+         return this.e;
       }
    }
 }

@@ -1,40 +1,34 @@
-public class gun extends gsr<clf, hac, gdx> {
-   private static final alp a = alp.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alp b = alp.b("textures/entity/wither/wither.png");
+public class gun extends gqw<cmk, haj, gee> {
+   private static final aku a = aku.b("textures/entity/strider/strider.png");
+   private static final aku b = aku.b("textures/entity/strider/strider_cold.png");
+   private static final float k = 0.5F;
 
-   public gun(grl.a $$0) {
-      super($$0, new gdx($$0.a(gei.dA)), 1.0F);
-      this.a(new gwn(this, $$0.f()));
+   public gun(gsc.a $$0) {
+      super($$0, new gee($$0.a(gfb.dd)), new gee($$0.a(gfb.df)), 0.5F);
+      this.a(new gws<>(this, new gee($$0.a(gfb.de)), new gee($$0.a(gfb.dg)), aku.b("textures/entity/strider/strider_saddle.png")));
    }
 
-   protected int a(clf $$0, jh $$1) {
-      return 15;
+   public aku a(haj $$0) {
+      return $$0.b ? b : a;
    }
 
-   public alp a(hac $$0) {
-      int $$1 = azu.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : b;
+   protected float b(haj $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
    }
 
-   public hac b() {
-      return new hac();
+   public haj b() {
+      return new haj();
    }
 
-   protected void a(hac $$0, fgl $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
-      }
-
-      $$1.b($$2, $$2, $$2);
-   }
-
-   public void a(clf $$0, hac $$1, float $$2) {
+   public void a(cmk $$0, haj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.go();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.x(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.t(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.gp();
+      $$1.a = $$0.j();
+      $$1.b = $$0.p();
+      $$1.c = $$0.ca();
+   }
+
+   protected boolean c(haj $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

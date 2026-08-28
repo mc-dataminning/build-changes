@@ -1,16 +1,34 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public interface eml<P extends emk> {
-   eml<emj> a = a("constant", emj.b);
-   eml<emn> b = a("uniform", emn.a);
-   eml<emi> c = a("biased_to_bottom", emi.a);
-   eml<emo> d = a("very_biased_to_bottom", emo.a);
-   eml<emm> e = a("trapezoid", emm.a);
-   eml<emp> f = a("weighted_list", emp.a);
+public class eml extends emt {
+   public static final MapCodec<eml> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(elt.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eml::new));
+   private final elt c;
 
-   MapCodec<P> codec();
+   private eml(elt $$0) {
+      this.c = $$0;
+   }
 
-   private static <P extends emk> eml<P> a(String $$0, MapCodec<P> $$1) {
-      return kd.a(ma.L, $$0, () -> $$1);
+   public static eml a(elt $$0) {
+      return new eml($$0);
+   }
+
+   public static eml a(edm $$0, edm $$1) {
+      return a(elw.a($$0, $$1));
+   }
+
+   public static eml b(edm $$0, edm $$1) {
+      return a(elv.a($$0, $$1));
+   }
+
+   @Override
+   public Stream<ji> a_(emr $$0, azh $$1, ji $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public emu<?> b() {
+      return emu.l;
    }
 }

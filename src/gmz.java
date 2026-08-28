@@ -1,66 +1,100 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public record gmz(List<gnb> a) implements gna {
-   public gmz(List<gnb> a) {
-      if (a.isEmpty()) {
-         throw new IllegalArgumentException("Variant list must contain at least one element");
-      } else {
-         this.a = a;
-      }
-   }
+public class gmz {
+   public static final aku a = aku.b("textures/misc/forcefield.png");
 
-   @Override
-   public Object a(dxo $$0) {
-      return this;
-   }
+   public void a(dyn $$0, fba $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = ayz.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         gmh $$12 = gmh.a(flj.O());
+         $$12.a();
+         int $$13 = $$0.d().a();
+         float $$14 = (float)axk.b($$13) / 255.0F;
+         float $$15 = (float)axk.c($$13) / 255.0F;
+         float $$16 = (float)axk.d($$13) / 255.0F;
+         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
+         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
+         float $$18 = (float)(-ayz.e($$1.e * 0.5));
+         float $$19 = $$18 + $$11;
+         ffp $$20 = ffw.b().a(ffz.c.h, ffs.i);
+         double $$21 = Math.max((double)ayz.a($$10 - $$2), $$6);
+         double $$22 = Math.min((double)ayz.c($$10 + $$2), $$7);
+         float $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$24 = $$23;
 
-   @Override
-   public void a(heb.a $$0) {
-      this.a.forEach($$1 -> $$0.a($$1.a()));
-   }
-
-   @Override
-   public hdi a(hdr $$0, Function<hdp, hbg> $$1, hdx $$2) {
-      if (this.a.size() == 1) {
-         gnb $$3 = this.a.getFirst();
-         return $$0.a($$3.a(), $$3);
-      } else {
-         bri.a<hdi> $$4 = bri.a();
-
-         for (gnb $$5 : this.a) {
-            hdi $$6 = $$0.a($$5.a(), $$5);
-            $$4.a($$6, $$5.d());
+            for (double $$25 = $$21; $$25 < $$22; $$24 += 0.5F) {
+               double $$26 = Math.min(1.0, $$22 - $$25);
+               float $$27 = (float)$$26 * 0.5F;
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$19);
+               $$20.a((float)($$5 - $$9), -$$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$19);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 + $$26 - $$10)).a($$17 - ($$27 + $$24), $$17 + $$18);
+               $$20.a((float)($$5 - $$9), $$11, (float)($$25 - $$10)).a($$17 - $$24, $$17 + $$18);
+               $$25++;
+            }
          }
 
-         return new hec($$4.a());
-      }
-   }
+         if ($$9 < $$4 + $$2) {
+            float $$28 = $$23;
 
-   public static class a implements JsonDeserializer<gmz> {
-      public gmz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<gnb> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.isEmpty()) {
-               throw new JsonParseException("Empty variant array");
+            for (double $$29 = $$21; $$29 < $$22; $$28 += 0.5F) {
+               double $$30 = Math.min(1.0, $$22 - $$29);
+               float $$31 = (float)$$30 * 0.5F;
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), -$$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$19);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 + $$30 - $$10)).a($$17 + $$31 + $$28, $$17 + $$18);
+               $$20.a((float)($$4 - $$9), $$11, (float)($$29 - $$10)).a($$17 + $$28, $$17 + $$18);
+               $$29++;
             }
-
-            for (JsonElement $$5 : $$4) {
-               $$3.add((gnb)$$2.deserialize($$5, gnb.class));
-            }
-         } else {
-            $$3.add((gnb)$$2.deserialize($$0, gnb.class));
          }
 
-         return new gmz($$3);
+         $$21 = Math.max((double)ayz.a($$9 - $$2), $$4);
+         $$22 = Math.min((double)ayz.c($$9 + $$2), $$5);
+         $$23 = (float)(ayz.a($$21) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$32 = $$23;
+
+            for (double $$33 = $$21; $$33 < $$22; $$32 += 0.5F) {
+               double $$34 = Math.min(1.0, $$22 - $$33);
+               float $$35 = (float)$$34 * 0.5F;
+               $$20.a((float)($$33 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), -$$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$19);
+               $$20.a((float)($$33 + $$34 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$35 + $$32, $$17 + $$18);
+               $$20.a((float)($$33 - $$9), $$11, (float)($$7 - $$10)).a($$17 + $$32, $$17 + $$18);
+               $$33++;
+            }
+         }
+
+         if ($$10 < $$6 + $$2) {
+            float $$36 = $$23;
+
+            for (double $$37 = $$21; $$37 < $$22; $$36 += 0.5F) {
+               double $$38 = Math.min(1.0, $$22 - $$37);
+               float $$39 = (float)$$38 * 0.5F;
+               $$20.a((float)($$37 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), -$$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$19);
+               $$20.a((float)($$37 + $$38 - $$9), $$11, (float)($$6 - $$10)).a($$17 - ($$39 + $$36), $$17 + $$18);
+               $$20.a((float)($$37 - $$9), $$11, (float)($$6 - $$10)).a($$17 - $$36, $$17 + $$18);
+               $$37++;
+            }
+         }
+
+         fft $$40 = $$20.a();
+         if ($$40 != null) {
+            ffq.a($$40);
+         }
+
+         $$12.b();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

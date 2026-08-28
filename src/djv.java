@@ -1,46 +1,44 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djv extends djp implements dju {
-   public static final MapCodec<djv> a = b(djv::new);
+public class djv extends dik {
+   public static final MapCodec<djv> b = b(djv::new);
+   public static final int c = 5;
+   private static final jn[] d = jn.values();
 
    @Override
    public MapCodec<djv> a() {
-      return a;
+      return b;
    }
 
-   public djv(dxn.d $$0) {
+   public djv(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   public cwd b() {
-      return cwd.a;
-   }
+   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if ($$3.a(5) == 0) {
+         jn $$4 = d[$$3.a(d.length)];
+         ji $$5 = $$2.a($$4);
+         dwx $$6 = $$1.a_($$5);
+         djm $$7 = null;
+         if (h($$6)) {
+            $$7 = djo.ra;
+         } else if ($$6.a(djo.ra) && $$6.c(dil.d) == $$4) {
+            $$7 = djo.qZ;
+         } else if ($$6.a(djo.qZ) && $$6.c(dil.d) == $$4) {
+            $$7 = djo.qY;
+         } else if ($$6.a(djo.qY) && $$6.c(dil.d) == $$4) {
+            $$7 = djo.qX;
+         }
 
-   @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dul($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
-      return a($$2, dus.p, dul::a);
-   }
-
-   @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      if (!$$1.C && $$1.c_($$2) instanceof dul $$5) {
-         $$3.a($$5);
-         $$3.a(axf.ab);
+         if ($$7 != null) {
+            dwx $$8 = $$7.m().b(dil.d, $$4).b(dil.c, Boolean.valueOf($$6.y().a() == eta.c));
+            $$1.b($$5, $$8);
+         }
       }
-
-      return bta.a;
    }
 
-   @Override
-   protected dqo a_(dxo $$0) {
-      return dqo.c;
+   public static boolean h(dwx $$0) {
+      return $$0.l() || $$0.a(djo.J) && $$0.y().e() == 8;
    }
 }

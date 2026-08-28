@@ -1,113 +1,130 @@
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import java.util.function.Consumer;
 
-public record fsg(fsf a, int b, int c) {
-   private static final fsg d = new fsg(0, 0, 0, 0);
+public class fsg implements fsh {
+   public static final int a = 33;
+   private static final int b = 30;
+   private final fse c = new fse();
+   private final fse d = new fse();
+   private final fse e = new fse();
+   private final fuk f;
+   private int g;
+   private int h;
 
-   public fsg(int $$0, int $$1, int $$2, int $$3) {
-      this(new fsf($$0, $$1), $$2, $$3);
+   public fsg(fuk $$0) {
+      this($$0, 33);
    }
 
-   public static fsg a() {
-      return d;
+   public fsg(fuk $$0, int $$1) {
+      this($$0, $$1, $$1);
    }
 
-   public static fsg a(fsd $$0, int $$1, int $$2, int $$3, int $$4) {
-      return switch ($$0) {
-         case a -> new fsg($$1, $$2, $$3, $$4);
-         case b -> new fsg($$2, $$1, $$4, $$3);
-      };
+   public fsg(fuk $$0, int $$1, int $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.c.c().a(0.5F, 0.5F);
+      this.d.c().a(0.5F, 0.5F);
    }
 
-   public fsg a(fse $$0) {
-      return new fsg(this.a.a($$0), this.b, this.c);
+   @Override
+   public void j(int $$0) {
    }
 
-   public int a(fsd $$0) {
-      return switch ($$0) {
-         case a -> this.b;
-         case b -> this.c;
-      };
+   @Override
+   public void k(int $$0) {
    }
 
-   public int b(fse $$0) {
-      fsd $$1 = $$0.a();
-      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   @Override
+   public int F() {
+      return 0;
    }
 
-   public fsg c(fse $$0) {
-      int $$1 = this.b($$0);
-      fsd $$2 = $$0.a().a();
-      int $$3 = this.b($$2.c());
-      int $$4 = this.a($$2);
-      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   @Override
+   public int G() {
+      return 0;
    }
 
-   public boolean a(fsg $$0) {
-      return this.a($$0, fsd.a) && this.a($$0, fsd.b);
+   @Override
+   public int A() {
+      return this.f.n;
    }
 
-   public boolean a(fsg $$0, fsd $$1) {
-      int $$2 = this.b($$1.c());
-      int $$3 = $$0.b($$1.c());
-      int $$4 = this.b($$1.b());
-      int $$5 = $$0.b($$1.b());
-      return Math.max($$2, $$3) <= Math.min($$4, $$5);
-   }
-
-   public int b(fsd $$0) {
-      return (this.b($$0.b()) + this.b($$0.c())) / 2;
-   }
-
-   @Nullable
-   public fsg b(fsg $$0) {
-      int $$1 = Math.max(this.d(), $$0.d());
-      int $$2 = Math.max(this.b(), $$0.b());
-      int $$3 = Math.min(this.e(), $$0.e());
-      int $$4 = Math.min(this.c(), $$0.c());
-      return $$1 < $$3 && $$2 < $$4 ? new fsg($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
+   @Override
+   public int y() {
+      return this.f.o;
    }
 
    public int b() {
-      return this.a.b();
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public void b(int $$0) {
+      this.g = $$0;
    }
 
    public int c() {
-      return this.a.b() + this.c;
+      return this.g;
    }
 
    public int d() {
-      return this.a.a();
+      return this.f.o - this.c() - this.b();
    }
 
-   public int e() {
-      return this.a.a() + this.b;
+   @Override
+   public void b(Consumer<fsi> $$0) {
+      this.c.b($$0);
+      this.e.b($$0);
+      this.d.b($$0);
    }
 
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   @Override
+   public void a() {
+      int $$0 = this.c();
+      int $$1 = this.b();
+      this.c.b(this.f.n);
+      this.c.a($$0);
+      this.c.c(0, 0);
+      this.c.a();
+      this.d.b(this.f.n);
+      this.d.a($$1);
+      this.d.a();
+      this.d.k(this.f.o - $$1);
+      this.e.b(this.f.n);
+      this.e.a();
+      int $$2 = $$0 + 30;
+      int $$3 = this.f.o - $$1 - this.e.y();
+      this.e.c(0, Math.min($$2, $$3));
    }
 
-   public fsg a(Matrix4f $$0) {
-      if (f.a($$0)) {
-         return this;
-      } else {
-         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
-         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
-         return new fsg(azu.d($$1.x), azu.d($$1.y), azu.d($$2.x - $$1.x), azu.d($$2.y - $$1.y));
-      }
+   public <T extends fsi> T a(T $$0) {
+      return this.c.a($$0);
    }
 
-   public fsf f() {
-      return this.a;
+   public <T extends fsi> T a(T $$0, Consumer<fsj> $$1) {
+      return this.c.a($$0, $$1);
    }
 
-   public int g() {
-      return this.b;
+   public void a(wo $$0, fob $$1) {
+      this.c.a(new fpz($$0, $$1));
    }
 
-   public int h() {
-      return this.c;
+   public <T extends fsi> T b(T $$0) {
+      return this.d.a($$0);
+   }
+
+   public <T extends fsi> T b(T $$0, Consumer<fsj> $$1) {
+      return this.d.a($$0, $$1);
+   }
+
+   public <T extends fsi> T c(T $$0) {
+      return this.e.a($$0);
+   }
+
+   public <T extends fsi> T c(T $$0, Consumer<fsj> $$1) {
+      return this.e.a($$0, $$1);
    }
 }

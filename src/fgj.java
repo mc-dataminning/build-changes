@@ -1,15 +1,73 @@
+import com.google.common.collect.Lists;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
+import java.util.Comparator;
+import java.util.List;
+import org.apache.commons.io.IOUtils;
+
 public class fgj {
-   public static final fgq a = fgq.a().a("Position", fgr.b).a();
-   public static final fgq b = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV2", fgr.g).a("Normal", fgr.h).a(1).a();
-   public static final fgq c = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV1", fgr.f).a("UV2", fgr.g).a("Normal", fgr.h).a(1).a();
-   public static final fgq d = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a("UV2", fgr.g).a();
-   public static final fgq e = fgq.a().a("Position", fgr.b).a();
-   public static final fgq f = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a();
-   public static final fgq g = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("Normal", fgr.h).a(1).a();
-   public static final fgq h = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV2", fgr.g).a();
-   public static final fgq i = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a();
-   public static final fgq j = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a();
-   public static final fgq k = fgq.a().a("Position", fgr.b).a("Color", fgr.c).a("UV0", fgr.d).a("UV2", fgr.g).a();
-   public static final fgq l = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("UV2", fgr.g).a("Color", fgr.c).a();
-   public static final fgq m = fgq.a().a("Position", fgr.b).a("UV0", fgr.d).a("Color", fgr.c).a("Normal", fgr.h).a(1).a();
+   public static List<fhu> a(fgj.a... $$0) {
+      for (fgj.a $$1 : $$0) {
+         a($$1.j);
+      }
+
+      List<fhu> $$2 = Lists.newArrayList();
+
+      for (fgj.a $$3 : $$0) {
+         $$2.add(new fhu($$3.i, a($$3.j)));
+      }
+
+      $$2.sort(Comparator.comparingInt(fhu::a));
+      return $$2;
+   }
+
+   private static int a(String $$0) {
+      int $$1 = 700;
+      long $$2 = 0L;
+      Socket $$3 = null;
+
+      for (int $$4 = 0; $$4 < 5; $$4++) {
+         try {
+            SocketAddress $$5 = new InetSocketAddress($$0, 80);
+            $$3 = new Socket();
+            long $$6 = b();
+            $$3.connect($$5, 700);
+            $$2 += b() - $$6;
+         } catch (Exception var12) {
+            $$2 += 700L;
+         } finally {
+            IOUtils.closeQuietly($$3);
+         }
+      }
+
+      return (int)((double)$$2 / 5.0);
+   }
+
+   private static long b() {
+      return af.c();
+   }
+
+   public static List<fhu> a() {
+      return a(fgj.a.values());
+   }
+
+   static enum a {
+      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
+      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
+      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
+      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
+      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
+      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
+      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
+      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+
+      final String i;
+      final String j;
+
+      private a(final String $$0, final String $$1) {
+         this.i = $$0;
+         this.j = $$1;
+      }
+   }
 }

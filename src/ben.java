@@ -3,31 +3,17 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class ben extends bhi {
+public class ben extends bgr {
    public ben(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", bin.B, "minecraft:item_frame");
+      super($$0, $$1, "EntityWolfColorFix", bhw.B, "minecraft:wolf");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("Facing", $$0.createByte(a($$0.get("Facing").asByte((byte)0))));
+      return $$0.update("CollarColor", $$0x -> $$0x.createByte((byte)(15 - $$0x.asInt(0))));
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
       return $$0.update(DSL.remainderFinder(), this::a);
-   }
-
-   private static byte a(byte $$0) {
-      switch ($$0) {
-         case 0:
-            return 3;
-         case 1:
-            return 4;
-         case 2:
-         default:
-            return 2;
-         case 3:
-            return 5;
-      }
    }
 }

@@ -1,5 +1,6 @@
-public class sz extends RuntimeException {
-   public sz(String $$0) {
-      super($$0);
-   }
+import java.util.stream.Stream;
+
+@FunctionalInterface
+public interface sz {
+   Stream<ji> findStructureBlockPos();
 }

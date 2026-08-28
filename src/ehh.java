@@ -1,73 +1,39 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ehh extends egp<eiy> {
-   public ehh(Codec<eiy> $$0) {
+public class ehh extends efy<eij> {
+   public ehh(Codec<eij> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egr<eiy> $$0) {
-      dhx $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      bac $$3 = $$0.d();
-      eiy $$4 = $$0.f();
-      if (!c($$1.a_($$2))) {
-         return false;
-      } else {
-         List<jm> $$5 = $$4.a($$3);
-         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
-            return true;
-         } else {
-            jh.a $$6 = $$2.k();
+   public boolean a(ega<eij> $$0) {
+      dhg $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      ji.a $$3 = new ji.a();
+      ji.a $$4 = new ji.a();
 
-            for (jm $$7 : $$5) {
-               $$6.g($$2);
-               List<jm> $$8 = $$4.a($$3, $$7.g());
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(ecs.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(jn.a, 1);
+            dhk $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, djo.eb.m(), 2);
+            }
 
-               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
-                  $$6.a($$2, $$7);
-                  dxo $$10 = $$1.a_($$6);
-                  if (!c($$10) && !$$10.a($$4.b)) {
-                     break;
-                  }
-
-                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
-                     return true;
-                  }
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, djo.ea.m(), 2);
+               dwx $$11 = $$1.a_($$4);
+               if ($$11.b(drb.c)) {
+                  $$1.a($$4, $$11.b(drb.c, Boolean.valueOf(true)), 2);
                }
             }
-
-            return false;
-         }
-      }
-   }
-
-   public static boolean a(dhx $$0, jh $$1, dxo $$2, eiy $$3, bac $$4, List<jm> $$5) {
-      jh.a $$6 = $$1.k();
-
-      for (jm $$7 : $$5) {
-         dxo $$8 = $$0.a_($$6.a($$1, $$7));
-         if ($$8.a($$3.h)) {
-            dxo $$9 = $$3.b.c($$2, $$0, $$1, $$7);
-            if ($$9 == null) {
-               return false;
-            }
-
-            $$0.a($$1, $$9, 3);
-            $$0.y($$1).e($$1);
-            if ($$4.i() < $$3.g) {
-               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
-            }
-
-            return true;
          }
       }
 
-      return false;
-   }
-
-   private static boolean c(dxo $$0) {
-      return $$0.l() || $$0.a(dkf.J);
+      return true;
    }
 }

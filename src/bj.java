@@ -1,47 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bj extends dy<bj.a> {
-   @Override
-   public Codec<bj.a> a() {
-      return bj.a.a;
+public class bj {
+   private final azf a;
+   private final js.a b;
+
+   public bj(azf $$0, js.a $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(ary $$0, cnh $$1, cpa $$2) {
-      ewi $$3 = bw.b($$0, $$1);
-      ewi $$4 = bw.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
+   public void a(Optional<bi> $$0, String $$1) {
+      $$0.ifPresent($$1x -> this.a($$1x, $$1));
    }
 
-   public static record a(Optional<bh> b, Optional<bh> c, Optional<bh> d) implements dy.a {
-      public static final Codec<bj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bw.b.optionalFieldOf("player").forGetter(bj.a::a),
-                  bw.b.optionalFieldOf("zombie").forGetter(bj.a::c),
-                  bw.b.optionalFieldOf("villager").forGetter(bj.a::d)
-               )
-               .apply($$0, bj.a::new)
-      );
+   public void a(List<bi> $$0, String $$1) {
+      this.a($$0, eyk.n, $$1);
+   }
 
-      public static ap<bj.a> b() {
-         return ao.s.a(new bj.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+   public void a(bi $$0, String $$1) {
+      this.a($$0, eyk.n, $$1);
+   }
 
-      public boolean a(ewi $$0, ewi $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
+   public void a(bi $$0, baj $$1, String $$2) {
+      $$0.a(new evx(this.a.a($$2), $$1, this.b));
+   }
 
-      @Override
-      public void a(bi $$0) {
-         dy.a.super.a($$0);
-         $$0.a(this.c, ".zombie");
-         $$0.a(this.d, ".villager");
-      }
-
-      @Override
-      public Optional<bh> a() {
-         return this.b;
+   public void a(List<bi> $$0, baj $$1, String $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         bi $$4 = $$0.get($$3);
+         $$4.a(new evx(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

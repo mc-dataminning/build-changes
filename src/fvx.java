@@ -1,26 +1,30 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import org.joml.Vector3f;
 
-public class fvx implements fwc {
-   private final fsg a;
+public class fvx extends fvc {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final aku v = aku.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
 
-   public fvx(fsg $$0) {
-      this.a = $$0;
+   public fvx(dvm $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, wo.c("hanging_sign.edit"));
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i();
-      $$6.x = this.a.d() + 3;
-      $$6.y = this.a.c() + 3 + 1;
-      if ($$6.y + $$5 + 3 > $$1) {
-         $$6.y = this.a.b() - $$5 - 3 - 1;
-      }
+   protected void a(fod $$0, dwx $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
+   }
 
-      if ($$6.x + $$4 > $$0) {
-         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
-      }
+   @Override
+   protected void c(fod $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(gmh::H, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   }
 
-      return $$6;
+   @Override
+   protected Vector3f m() {
+      return d;
    }
 }

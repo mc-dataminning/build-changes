@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface ev {
    ev a = new ev() {
+      @Nullable
       @Override
-      public void a(xk $$0) {
-      }
-
-      @Override
-      public boolean y_() {
-         return false;
-      }
-
-      @Override
-      public boolean z_() {
-         return false;
-      }
-
-      @Override
-      public boolean c() {
-         return false;
+      public xe a(String $$0) {
+         return null;
       }
    };
 
-   void a(xk var1);
+   @Nullable
+   xe a(String var1);
 
-   boolean y_();
+   public static record a(Map<String, xe> b) implements ev {
+      @Nullable
+      @Override
+      public xe a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean z_();
-
-   boolean c();
-
-   default boolean t_() {
-      return false;
+      public Map<String, xe> a() {
+         return this.b;
+      }
    }
 }

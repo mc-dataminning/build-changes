@@ -1,24 +1,57 @@
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum cjw {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
+public abstract class cjw implements cke {
+   protected final cju a;
 
-   private static final IntFunction<cjw> f = ayl.a(cjw::a, values(), ayl.a.b);
-   private final int g;
-
-   private cjw(final int $$0) {
-      this.g = $$0;
+   public cjw(cju $$0) {
+      this.a = $$0;
    }
 
-   public int a() {
-      return this.g;
+   @Override
+   public boolean a() {
+      return false;
    }
 
-   public static cjw a(int $$0) {
-      return f.apply($$0);
+   @Override
+   public void b() {
+   }
+
+   @Override
+   public void a(arc $$0) {
+   }
+
+   @Override
+   public void a(cjt $$0, ji $$1, bta $$2, @Nullable cox $$3) {
+   }
+
+   @Override
+   public void c() {
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public float e() {
+      return 0.6F;
+   }
+
+   @Nullable
+   @Override
+   public fba f() {
+      return null;
+   }
+
+   @Override
+   public float a(bta $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dz().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

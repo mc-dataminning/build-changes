@@ -1,23 +1,74 @@
-public enum dyy implements baq {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+import javax.annotation.Nullable;
 
-   private final String e;
-   private final boolean f;
+public class dyy extends dzc {
+   private final jr<dhk> n;
 
-   private dyy(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public dyy(dgi $$0, dfo $$1, jr<dhk> $$2) {
+      super($$0, $$1);
+      this.n = $$2;
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public dwx a_(ji $$0) {
+      return djo.nD.m();
    }
 
-   public boolean a() {
-      return this.f;
+   @Nullable
+   @Override
+   public dwx a(ji $$0, dwx $$1, boolean $$2) {
+      return null;
+   }
+
+   @Override
+   public esz b_(ji $$0) {
+      return eta.a.g();
+   }
+
+   @Override
+   public int i(ji $$0) {
+      return 0;
+   }
+
+   @Nullable
+   @Override
+   public dtz a(ji $$0, dzc.b $$1) {
+      return null;
+   }
+
+   @Override
+   public void b(dtz $$0) {
+   }
+
+   @Override
+   public void a(dtz $$0) {
+   }
+
+   @Override
+   public void d(ji $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return true;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      return true;
+   }
+
+   @Override
+   public aqr F() {
+      return aqr.b;
+   }
+
+   @Override
+   public jr<dhk> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.n;
    }
 }

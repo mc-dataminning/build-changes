@@ -1,21 +1,16 @@
-public record aas(String c) implements aau {
-   public static final zi<wh, aas> a = aau.a(aas::a, aas::new);
-   public static final aau.b<aas> b = aau.a("brand");
-
-   private aas(wh $$0) {
-      this($$0.p());
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.c);
-   }
-
+public interface aas extends zb {
    @Override
-   public aau.b<aas> a() {
-      return b;
+   default vj b() {
+      return vj.e;
    }
 
-   public String b() {
-      return this.c;
-   }
+   void a(aat var1);
+
+   void a(aau var1);
+
+   void a(aax var1);
+
+   void a(aaw var1);
+
+   void a(aav var1);
 }

@@ -1,6 +1,2 @@
-public enum cuj {
-   a,
-   b,
-   c,
-   d;
+public interface cuj {
 }

@@ -1,53 +1,40 @@
-public class aco implements zr<acg> {
-   public static final zi<wv, aco> a = zr.a(aco::a, aco::new);
-   private final jh b;
-   private final int c;
-   private final int d;
-   private final dkd e;
+import javax.annotation.Nullable;
 
-   public aco(jh $$0, dkd $$1, int $$2, int $$3) {
-      this.b = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public class aco implements yv<abk> {
+   public static final ym<vl, aco> a = yv.a(aco::a, aco::new);
+   private final int b;
+   private final byte c;
+
+   public aco(buk $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   private aco(wv $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readUnsignedByte();
-      this.d = $$0.readUnsignedByte();
-      this.e = zg.a(mb.f).decode($$0);
+   private aco(vl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   private void a(wv $$0) {
-      $$0.a(this.b);
+   private void a(vl $$0) {
+      $$0.q(this.b);
       $$0.l(this.c);
-      $$0.l(this.d);
-      zg.a(mb.f).encode($$0, this.e);
    }
 
    @Override
-   public zt<aco> a() {
-      return agz.j;
+   public yx<aco> a() {
+      return agd.D;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
+   @Nullable
+   public buk a(dgi $$0) {
+      return $$0.a(this.b);
    }
 
-   public int e() {
+   public byte b() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public dkd g() {
-      return this.e;
    }
 }

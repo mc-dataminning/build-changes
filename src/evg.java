@@ -1,52 +1,313 @@
-public class evg {
-   private static final int J = 12741452;
-   public static final jq<evf> a = a("player", "player", false, true);
-   public static final jq<evf> b = a("frame", "frame", true, true);
-   public static final jq<evf> c = a("red_marker", "red_marker", false, true);
-   public static final jq<evf> d = a("blue_marker", "blue_marker", false, true);
-   public static final jq<evf> e = a("target_x", "target_x", true, false);
-   public static final jq<evf> f = a("target_point", "target_point", true, false);
-   public static final jq<evf> g = a("player_off_map", "player_off_map", false, true);
-   public static final jq<evf> h = a("player_off_limits", "player_off_limits", false, true);
-   public static final jq<evf> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
-   public static final jq<evf> j = a("monument", "ocean_monument", true, 3830373, false, true);
-   public static final jq<evf> k = a("banner_white", "white_banner", true, true);
-   public static final jq<evf> l = a("banner_orange", "orange_banner", true, true);
-   public static final jq<evf> m = a("banner_magenta", "magenta_banner", true, true);
-   public static final jq<evf> n = a("banner_light_blue", "light_blue_banner", true, true);
-   public static final jq<evf> o = a("banner_yellow", "yellow_banner", true, true);
-   public static final jq<evf> p = a("banner_lime", "lime_banner", true, true);
-   public static final jq<evf> q = a("banner_pink", "pink_banner", true, true);
-   public static final jq<evf> r = a("banner_gray", "gray_banner", true, true);
-   public static final jq<evf> s = a("banner_light_gray", "light_gray_banner", true, true);
-   public static final jq<evf> t = a("banner_cyan", "cyan_banner", true, true);
-   public static final jq<evf> u = a("banner_purple", "purple_banner", true, true);
-   public static final jq<evf> v = a("banner_blue", "blue_banner", true, true);
-   public static final jq<evf> w = a("banner_brown", "brown_banner", true, true);
-   public static final jq<evf> x = a("banner_green", "green_banner", true, true);
-   public static final jq<evf> y = a("banner_red", "red_banner", true, true);
-   public static final jq<evf> z = a("banner_black", "black_banner", true, true);
-   public static final jq<evf> A = a("red_x", "red_x", true, false);
-   public static final jq<evf> B = a("village_desert", "desert_village", true, etu.w.ak, false, true);
-   public static final jq<evf> C = a("village_plains", "plains_village", true, etu.w.ak, false, true);
-   public static final jq<evf> D = a("village_savanna", "savanna_village", true, etu.w.ak, false, true);
-   public static final jq<evf> E = a("village_snowy", "snowy_village", true, etu.w.ak, false, true);
-   public static final jq<evf> F = a("village_taiga", "taiga_village", true, etu.w.ak, false, true);
-   public static final jq<evf> G = a("jungle_temple", "jungle_temple", true, etu.w.ak, false, true);
-   public static final jq<evf> H = a("swamp_hut", "swamp_hut", true, etu.w.ak, false, true);
-   public static final jq<evf> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   public static jq<evf> a(kd<evf> $$0) {
+public class evg implements Comparable<evg> {
+   public static final wo a = wo.c("selectWorld.select");
+   private final dgm b;
+   private final evh c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
+   @Nullable
+   private wo i;
+
+   public evg(dgm $$0, evh $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(evg $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+      }
+   }
+
+   public dgm g() {
+      return this.b;
+   }
+
+   public dgf h() {
+      return this.b.b();
+   }
+
+   public boolean i() {
+      return this.b.c();
+   }
+
+   public boolean j() {
+      return this.b.e();
+   }
+
+   public xc k() {
+      return azw.b(this.c.c()) ? wo.c("selectWorld.versionUnknown") : wo.b(this.c.c());
+   }
+
+   public evh l() {
+      return this.c;
+   }
+
+   public boolean m() {
+      return this.o().a();
+   }
+
+   public boolean n() {
+      return this.o() == evg.a.b;
+   }
+
+   public evg.a o() {
+      ag $$0 = ab.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return evg.a.c;
+      } else {
+         return $$2 > $$1 ? evg.a.b : evg.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return ab.b().d().a(this.c.d());
+   }
+
+   public wo s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
+
+      return this.i;
+   }
+
+   private wo z() {
+      if (this.p()) {
+         return wo.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return wo.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return wo.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         xc $$0 = this.i() ? wo.i().b(wo.c("gameMode.hardcore").b(-65536)) : wo.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(wo.c("selectWorld.commands"));
+         }
+
+         if (this.e()) {
+            $$0.f(", ").b(wo.c("selectWorld.experimental").a(n.o));
+         }
+
+         xc $$1 = this.k();
+         xc $$2 = wo.b(", ").b(wo.c("selectWorld.version")).b(wn.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
+         return $$0;
+      }
+   }
+
+   public wo t() {
       return a;
    }
 
-   private static jq<evf> a(String $$0, String $$1, boolean $$2, boolean $$3) {
-      return a($$0, $$1, $$2, -1, $$3, false);
+   public boolean u() {
+      return !this.q();
    }
 
-   private static jq<evf> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
-      alo<evf> $$6 = alo.a(mb.aC, alp.b($$0));
-      evf $$7 = new evf(alp.b($$1), $$2, $$3, $$5, $$4);
-      return kd.b(ma.ar, $$6, $$7);
+   public boolean v() {
+      return !this.d() && !this.p();
+   }
+
+   public boolean w() {
+      return !this.q();
+   }
+
+   public boolean x() {
+      return !this.q();
+   }
+
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(final boolean $$0, final boolean $$1, final String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends evg {
+      private static final wo b = wo.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final wo c = wo.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wo s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wo t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends evg {
+      private static final wo b = wo.c("symlink_warning.more_info");
+      private static final wo c = wo.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wo s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wo t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
    }
 }

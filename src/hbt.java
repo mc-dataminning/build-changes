@@ -1,21 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hbt implements hbk {
-   public static final MapCodec<hbt> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(bad.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, hbt::new));
-   private final bad c;
+public class hbt {
+   private static final ayi.b<aku, MapCodec<? extends hbu>> b = new ayi.b<>();
+   public static final MapCodec<hbu> a = b.a(aku.a).dispatchMap("property", hbu::a, $$0 -> $$0);
 
-   public hbt(bad $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a(avl $$0, hbk.a $$1) {
-      $$1.a(this.c.c());
-   }
-
-   @Override
-   public hbm a() {
-      return hbn.c;
+   public static void a() {
+      b.a(aku.b("custom_model_data"), hbv.a);
+      b.a(aku.b("using_item"), hcc.a);
+      b.a(aku.b("broken"), hbr.a);
+      b.a(aku.b("damaged"), hbw.a);
+      b.a(aku.b("fishing_rod/cast"), hbx.a);
+      b.a(aku.b("has_component"), hby.a);
+      b.a(aku.b("bundle/has_selected_item"), hbs.a);
+      b.a(aku.b("xmas"), hcd.a);
+      b.a(aku.b("selected"), hca.a);
+      b.a(aku.b("carried"), hbz.a);
+      b.a(aku.b("shift_down"), hcb.a);
    }
 }

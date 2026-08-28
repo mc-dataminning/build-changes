@@ -1,37 +1,68 @@
-public class afo implements zr<acg> {
-   public static final zi<wh, afo> a = zr.a(afo::a, afo::new);
-   private final jh b;
-   private final float c;
+import javax.annotation.Nullable;
 
-   public afo(jh $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class afo implements yv<abk> {
+   public static final ym<vl, afo> a = yv.a(afo::a, afo::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   @Nullable
+   private final aku d;
+   @Nullable
+   private final awb e;
+
+   public afo(@Nullable aku $$0, @Nullable awb $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private afo(wh $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private afo(vl $$0) {
+      int $$1 = $$0.readByte();
+      if (($$1 & 1) > 0) {
+         this.e = $$0.b(awb.class);
+      } else {
+         this.e = null;
+      }
+
+      if (($$1 & 2) > 0) {
+         this.d = $$0.q();
+      } else {
+         this.d = null;
+      }
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vl $$0) {
+      if (this.e != null) {
+         if (this.d != null) {
+            $$0.l(3);
+            $$0.a(this.e);
+            $$0.a(this.d);
+         } else {
+            $$0.l(1);
+            $$0.a(this.e);
+         }
+      } else if (this.d != null) {
+         $$0.l(2);
+         $$0.a(this.d);
+      } else {
+         $$0.l(0);
+      }
    }
 
    @Override
-   public zt<afo> a() {
-      return agz.aD;
+   public yx<afo> a() {
+      return agd.aY;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
-      return this.b;
+   @Nullable
+   public aku b() {
+      return this.d;
    }
 
-   public float e() {
-      return this.c;
+   @Nullable
+   public awb e() {
+      return this.e;
    }
 }

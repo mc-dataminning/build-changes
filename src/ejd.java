@@ -1,13 +1,29 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class ejd implements eit {
-   public static final Codec<ejd> k = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, ejd::new)
-   );
-   public final float l;
+public abstract class ejd {
+   public static final Codec<ejd> a = mb.Y.q().dispatch(ejd::b, eje::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public ejd(float $$0) {
-      this.l = $$0;
+   protected static <S extends ejd> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
+   }
+
+   public ejd(OptionalInt $$0) {
+      this.c = $$0;
+   }
+
+   protected abstract eje<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

@@ -1,68 +1,119 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class cul implements bst, cuk {
-   private final jz<cxg> b = jz.a(1, cxg.j);
+public class cul {
+   private static final Codec<cul> e = ay.a.flatComapMap($$0 -> new cul(List.of($$0), true), $$0 -> DataResult.error(() -> "Cannot encode"));
+   private static final Codec<cul> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.b(ay.a.listOf()).fieldOf("predicates").forGetter($$0x -> $$0x.h), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cul::a)
+            )
+            .apply($$0, cul::new)
+   );
+   public static final Codec<cul> a = Codec.withAlternative(f, e);
+   public static final ym<vz, cul> b = ym.a(ay.b.a(yk.a()), $$0 -> $$0.h, yk.b, cul::a, cul::new);
+   public static final wo c = wo.c("item.canBreak").a(n.h);
+   public static final wo d = wo.c("item.canPlace").a(n.h);
+   private static final wo g = wo.c("item.canUse.unknown").a(n.h);
+   private final List<ay> h;
+   private final boolean i;
    @Nullable
-   private dca<?> c;
+   private List<wo> j;
+   @Nullable
+   private dxb k;
+   private boolean l;
+   private boolean m;
 
-   @Override
-   public int b() {
-      return 1;
+   public cul(List<ay> $$0, boolean $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   @Override
-   public boolean c() {
-      for (cxg $$0 : this.b) {
-         if (!$$0.f()) {
-            return false;
+   private static boolean a(dxb $$0, @Nullable dxb $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
+         return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         kf $$3 = $$0.c().K_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
+      } else {
+         return false;
+      }
+   }
+
+   public boolean a(dxb $$0) {
+      if (a($$0, this.k, this.m)) {
+         return this.l;
+      } else {
+         this.k = $$0;
+         this.m = false;
+
+         for (ay $$1 : this.h) {
+            if ($$1.a($$0)) {
+               this.m = this.m | $$1.a();
+               this.l = true;
+               return true;
+            }
+         }
+
+         this.l = false;
+         return false;
+      }
+   }
+
+   private List<wo> b() {
+      if (this.j == null) {
+         this.j = a(this.h);
+      }
+
+      return this.j;
+   }
+
+   public void a(Consumer<wo> $$0) {
+      this.b().forEach($$0);
+   }
+
+   public cul a(boolean $$0) {
+      return new cul(this.h, $$0);
+   }
+
+   private static List<wo> a(List<ay> $$0) {
+      for (ay $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(g);
          }
       }
 
-      return true;
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((djm)$$0x.a()).f().a(n.i)).toList();
+   }
+
+   public boolean a() {
+      return this.i;
    }
 
    @Override
-   public cxg a(int $$0) {
-      return this.b.get(0);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof cul $$1) ? false : this.h.equals($$1.h) && this.i == $$1.i;
+      }
    }
 
    @Override
-   public cxg a(int $$0, int $$1) {
-      return bsu.a(this.b, 0);
+   public int hashCode() {
+      return this.h.hashCode() * 31 + (this.i ? 1 : 0);
    }
 
    @Override
-   public cxg b(int $$0) {
-      return bsu.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cxg $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cpo $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable dca<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public dca<?> d() {
-      return this.c;
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.h + ", showInTooltip=" + this.i + "}";
    }
 }

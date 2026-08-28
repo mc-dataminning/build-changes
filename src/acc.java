@@ -1,12 +1,60 @@
-public class acc {
-   public static final zt<acb> a = a("cookie_request");
-   public static final zt<ace> b = b("cookie_response");
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import java.util.List;
+import java.util.Optional;
 
-   private static <T extends zr<aca>> zt<T> a(String $$0) {
-      return new zt<>(zs.b, alp.b($$0));
+public record acc(int b, int c, int d, List<acc.a> e) implements yv<abk> {
+   public static final ym<vz, acc> a = ym.a(yk.h, acc::e, yk.h, acc::f, yk.h, acc::g, acc.a.a.a(yk.a()), acc::h, acc::new);
+
+   public acc(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new acc.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(wr::a))).toList()
+      );
    }
 
-   private static <T extends zr<acd>> zt<T> b(String $$0) {
-      return new zt<>(zs.a, alp.b($$0));
+   @Override
+   public yx<acc> a() {
+      return agd.r;
+   }
+
+   public void a(abk $$0) {
+      $$0.a(this);
+   }
+
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
+   }
+
+   public int e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public int g() {
+      return this.d;
+   }
+
+   public List<acc.a> h() {
+      return this.e;
+   }
+
+   public static record a(String b, Optional<wo> c) {
+      public static final ym<vz, acc.a> a = ym.a(yk.o, acc.a::a, wq.e, acc.a::b, acc.a::new);
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<wo> b() {
+         return this.c;
+      }
    }
 }

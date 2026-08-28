@@ -1,20 +1,44 @@
-public class gcb extends gbh<gyr> {
-   public gcb(gej $$0) {
+public class gcb extends gca<gyk> {
+   private static final String a = "base";
+   private static final String b = "upper_jaw";
+   private static final String c = "lower_jaw";
+   private final gfc d;
+   private final gfc e;
+   private final gfc f;
+
+   public gcb(gfc $$0) {
       super($$0);
+      this.d = $$0.b("base");
+      this.e = this.d.b("upper_jaw");
+      this.f = this.d.b("lower_jaw");
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      int $$2 = 20;
-      int $$3 = 8;
-      int $$4 = 16;
-      int $$5 = 4;
-      $$1.a("bottom", geo.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), gel.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$1.a("front", geo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gel.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$1.a("back", geo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gel.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$1.a("left", geo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gel.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$1.a("right", geo.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gel.a(0.0F, 4.0F, 7.0F));
-      return gep.a($$0, 64, 32);
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfm $$2 = $$1.a("base", gfh.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gfe.a(-5.0F, 24.0F, -5.0F));
+      gfh $$3 = gfh.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
+      $$2.a("upper_jaw", $$3, gfe.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
+      $$2.a("lower_jaw", $$3, gfe.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
+      return gfi.a($$0, 64, 32);
+   }
+
+   public void a(gyk $$0) {
+      super.a($$0);
+      float $$1 = $$0.b;
+      float $$2 = Math.min($$1 * 2.0F, 1.0F);
+      $$2 = 1.0F - $$2 * $$2 * $$2;
+      this.e.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
+      this.f.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
+      this.d.c = this.d.c - ($$1 + ayz.a($$1 * 2.7F)) * 7.2F;
+      float $$3 = 1.0F;
+      if ($$1 > 0.9F) {
+         $$3 *= (1.0F - $$1) / 0.1F;
+      }
+
+      this.v.c = 24.0F - 20.0F * $$3;
+      this.v.h = $$3;
+      this.v.i = $$3;
+      this.v.j = $$3;
    }
 }

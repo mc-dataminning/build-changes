@@ -1,35 +1,37 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+import javax.annotation.Nullable;
 
-public class hfk<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
+public record hfk(aku a, @Nullable String b, @Nullable aku c, @Nullable aku d, hfk.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public hfk(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
-   }
+      private final String c;
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+      private a(final String $$0) {
+         this.c = $$0;
+      }
 
-         if ($$0 < 0) {
-            this.a.next();
+      public static hfk.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
          } else {
-            this.b.next();
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
          }
       }
 
-      return (T)this.endOfData();
+      public String a() {
+         return this.c;
+      }
    }
 }

@@ -1,72 +1,274 @@
-public class gnm implements gnr<duf> {
-   private static final int a = 16;
-   private final gai b;
-   private final gai c;
-   private final gah d;
-   private final gah e;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   public gnm(gns.a $$0) {
-      this.b = new gai($$0.a(gei.q));
-      this.c = new gai($$0.a(gei.s));
-      this.d = new gah($$0.a(gei.r));
-      this.e = new gah($$0.a(gei.t));
+public class gnm implements hhg {
+   public static final aku a = aku.b("builtin/generated");
+   public static final List<String> b = List.of("layer0", "layer1", "layer2", "layer3", "layer4");
+   private static final float e = 7.5F;
+   private static final float f = 8.5F;
+   private static final gnq.a g = new gnq.a.a().a("particle", "layer0").a();
+
+   @Override
+   public gnq.a d() {
+      return g;
    }
 
-   public void a(duf $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      float $$6 = 0.6666667F;
-      boolean $$7 = $$0.i() == null;
-      long $$8;
-      gai $$10;
-      gah $$11;
-      float $$9;
-      if ($$7) {
-         $$8 = 0L;
-         $$9 = 0.0F;
-         $$10 = this.b;
-         $$11 = this.d;
-      } else {
-         $$8 = $$0.i().ad();
-         dxo $$13 = $$0.m();
-         if ($$13.b() instanceof dji) {
-            $$9 = -dyt.b($$13.c(dji.b));
-            $$10 = this.b;
-            $$11 = this.d;
-         } else {
-            $$9 = -$$13.c(dtf.b).p();
-            $$10 = this.c;
-            $$11 = this.e;
+   @Override
+   public void a(hhd.a $$0) {
+   }
+
+   @Nullable
+   @Override
+   public hhg.a b() {
+      return hhg.a.a;
+   }
+
+   @Override
+   public hgl a(gnq $$0, hgu $$1, hhb $$2, boolean $$3, boolean $$4, gno $$5) {
+      return this.a($$0, $$1.a(), $$2, $$3, $$4, $$5);
+   }
+
+   private hgl a(gnq $$0, hhf $$1, hhb $$2, boolean $$3, boolean $$4, gno $$5) {
+      gnq.a.a $$6 = new gnq.a.a();
+      List<gnf> $$7 = new ArrayList<>();
+
+      for (int $$8 = 0; $$8 < b.size(); $$8++) {
+         String $$9 = b.get($$8);
+         hgs $$10 = $$0.a($$9);
+         if ($$10 == null) {
+            break;
+         }
+
+         $$6.a($$9, $$10);
+         hed $$11 = $$1.a($$10).e();
+         $$7.addAll(this.a($$8, $$9, $$11));
+      }
+
+      return hhe.a($$7, $$0, $$1, $$2, $$3, $$4, false, $$5);
+   }
+
+   private List<gnf> a(int $$0, String $$1, hed $$2) {
+      Map<jn, gng> $$3 = Map.of(
+         jn.d,
+         new gng(null, $$0, $$1, new gni(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0)),
+         jn.c,
+         new gng(null, $$0, $$1, new gni(new float[]{16.0F, 0.0F, 0.0F, 16.0F}, 0))
+      );
+      List<gnf> $$4 = new ArrayList<>();
+      $$4.add(new gnf(new Vector3f(0.0F, 0.0F, 7.5F), new Vector3f(16.0F, 16.0F, 8.5F), $$3));
+      $$4.addAll(this.a($$2, $$1, $$0));
+      return $$4;
+   }
+
+   private List<gnf> a(hed $$0, String $$1, int $$2) {
+      float $$3 = (float)$$0.a();
+      float $$4 = (float)$$0.b();
+      List<gnf> $$5 = new ArrayList<>();
+
+      for (gnm.a $$6 : this.a($$0)) {
+         float $$7 = 0.0F;
+         float $$8 = 0.0F;
+         float $$9 = 0.0F;
+         float $$10 = 0.0F;
+         float $$11 = 0.0F;
+         float $$12 = 0.0F;
+         float $$13 = 0.0F;
+         float $$14 = 0.0F;
+         float $$15 = 16.0F / $$3;
+         float $$16 = 16.0F / $$4;
+         float $$17 = (float)$$6.b();
+         float $$18 = (float)$$6.c();
+         float $$19 = (float)$$6.d();
+         gnm.b $$20 = $$6.a();
+         switch ($$20) {
+            case a:
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$13 = $$19;
+               $$8 = $$19;
+               $$10 = $$19;
+               $$14 = $$19 + 1.0F;
+               break;
+            case b:
+               $$13 = $$19;
+               $$14 = $$19 + 1.0F;
+               $$11 = $$17;
+               $$7 = $$17;
+               $$9 = $$12 = $$18 + 1.0F;
+               $$8 = $$19 + 1.0F;
+               $$10 = $$19 + 1.0F;
+               break;
+            case c:
+               $$11 = $$19;
+               $$7 = $$19;
+               $$9 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+               break;
+            case d:
+               $$11 = $$19;
+               $$12 = $$19 + 1.0F;
+               $$7 = $$19 + 1.0F;
+               $$9 = $$19 + 1.0F;
+               $$14 = $$17;
+               $$8 = $$17;
+               $$10 = $$13 = $$18 + 1.0F;
+         }
+
+         $$7 *= $$15;
+         $$9 *= $$15;
+         $$8 *= $$16;
+         $$10 *= $$16;
+         $$8 = 16.0F - $$8;
+         $$10 = 16.0F - $$10;
+         $$11 *= $$15;
+         $$12 *= $$15;
+         $$13 *= $$16;
+         $$14 *= $$16;
+         Map<jn, gng> $$21 = Map.of($$20.a(), new gng(null, $$2, $$1, new gni(new float[]{$$11, $$13, $$12, $$14}, 0)));
+         switch ($$20) {
+            case a:
+               $$5.add(new gnf(new Vector3f($$7, $$8, 7.5F), new Vector3f($$9, $$8, 8.5F), $$21));
+               break;
+            case b:
+               $$5.add(new gnf(new Vector3f($$7, $$10, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
+               break;
+            case c:
+               $$5.add(new gnf(new Vector3f($$7, $$8, 7.5F), new Vector3f($$7, $$10, 8.5F), $$21));
+               break;
+            case d:
+               $$5.add(new gnf(new Vector3f($$9, $$8, 7.5F), new Vector3f($$9, $$10, 8.5F), $$21));
          }
       }
 
-      $$2.a();
-      $$2.a(0.5F, 0.0F, 0.5F);
-      $$2.a(a.d.rotationDegrees($$9));
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      $$10.a($$2, hds.f.a($$3, glq::d), $$4, $$5);
-      jh $$20 = $$0.aB_();
-      float $$21 = ((float)Math.floorMod((long)($$20.u() * 7 + $$20.v() * 9 + $$20.w() * 13) + $$8, 100L) + $$1) / 100.0F;
-      $$11.a($$21);
-      a($$2, $$3, $$4, $$5, $$11.e(), hds.f, true, $$0.f(), $$0.b());
-      $$2.b();
+      return $$5;
    }
 
-   public static void a(fgl $$0, glg $$1, int $$2, int $$3, gej $$4, hdp $$5, boolean $$6, cwd $$7, duh $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   private List<gnm.a> a(hed $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      List<gnm.a> $$3 = new ArrayList<>();
+      $$0.d().forEach($$4 -> {
+         for (int $$5 = 0; $$5 < $$2; $$5++) {
+            for (int $$6 = 0; $$6 < $$1; $$6++) {
+               boolean $$7 = !this.a($$0, $$4, $$6, $$5, $$1, $$2);
+               this.a(gnm.b.a, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gnm.b.b, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gnm.b.c, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+               this.a(gnm.b.d, $$3, $$0, $$4, $$6, $$5, $$1, $$2, $$7);
+            }
+         }
+      });
+      return $$3;
    }
 
-   public static void a(fgl $$0, glg $$1, int $$2, int $$3, gej $$4, hdp $$5, boolean $$6, cwd $$7, duh $$8, boolean $$9, boolean $$10) {
-      $$4.a($$0, $$5.a($$1, glq::d, $$10, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? gmb.m : gmb.n, $$7);
-
-      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
-         duh.b $$12 = $$8.b().get($$11);
-         hdp $$13 = $$6 ? gmb.a($$12.b()) : gmb.b($$12.b());
-         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
+   private void a(gnm.b $$0, List<gnm.a> $$1, hed $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8) {
+      boolean $$9 = this.a($$2, $$3, $$4 + $$0.b(), $$5 + $$0.c(), $$6, $$7) && $$8;
+      if ($$9) {
+         this.a($$1, $$0, $$4, $$5);
       }
    }
 
-   private static void a(fgl $$0, glg $$1, int $$2, int $$3, gej $$4, hdp $$5, cwd $$6) {
-      int $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, glq::n), $$2, $$3, $$7);
+   private void a(List<gnm.a> $$0, gnm.b $$1, int $$2, int $$3) {
+      gnm.a $$4 = null;
+
+      for (gnm.a $$5 : $$0) {
+         if ($$5.a() == $$1) {
+            int $$6 = $$1.d() ? $$3 : $$2;
+            if ($$5.d() == $$6) {
+               $$4 = $$5;
+               break;
+            }
+         }
+      }
+
+      int $$7 = $$1.d() ? $$3 : $$2;
+      int $$8 = $$1.d() ? $$2 : $$3;
+      if ($$4 == null) {
+         $$0.add(new gnm.a($$1, $$8, $$7));
+      } else {
+         $$4.a($$8);
+      }
+   }
+
+   private boolean a(hed $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      return $$2 >= 0 && $$3 >= 0 && $$2 < $$4 && $$3 < $$5 ? $$0.a($$1, $$2, $$3) : true;
+   }
+
+   static class a {
+      private final gnm.b a;
+      private int b;
+      private int c;
+      private final int d;
+
+      public a(gnm.b $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$1;
+         this.d = $$2;
+      }
+
+      public void a(int $$0) {
+         if ($$0 < this.b) {
+            this.b = $$0;
+         } else if ($$0 > this.c) {
+            this.c = $$0;
+         }
+      }
+
+      public gnm.b a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      public int c() {
+         return this.c;
+      }
+
+      public int d() {
+         return this.d;
+      }
+   }
+
+   static enum b {
+      a(jn.b, 0, -1),
+      b(jn.a, 0, 1),
+      c(jn.f, -1, 0),
+      d(jn.e, 1, 0);
+
+      private final jn e;
+      private final int f;
+      private final int g;
+
+      private b(final jn $$0, final int $$1, final int $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+      }
+
+      public jn a() {
+         return this.e;
+      }
+
+      public int b() {
+         return this.f;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      boolean d() {
+         return this == b || this == a;
+      }
    }
 }

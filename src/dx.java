@@ -1,41 +1,37 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dx extends dy<dx.a> {
+public record dx(Optional<Boolean> c, Optional<cvm> d) implements by {
+   public static final MapCodec<dx> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dx::b), cvm.q.optionalFieldOf("color").forGetter(dx::c)).apply($$0, dx::new)
+   );
+
    @Override
-   public Codec<dx.a> a() {
-      return dx.a.a;
+   public MapCodec<dx> a() {
+      return bz.f;
    }
 
-   public void a(ary $$0, cxg $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   @Override
+   public boolean a(buk $$0, arc $$1, @Nullable fba $$2) {
+      if ($$0 instanceof cht $$3) {
+         return this.c.isPresent() && $$3.x() != this.c.get() ? false : !this.d.isPresent() || $$3.t() == this.d.get();
+      } else {
+         return false;
+      }
    }
 
-   public static record a(Optional<bh> b, Optional<cu> c) implements dy.a {
-      public static final Codec<dx.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bw.b.optionalFieldOf("player").forGetter(dx.a::a), cu.a.optionalFieldOf("item").forGetter(dx.a::b)).apply($$0, dx.a::new)
-      );
+   public static dx a(cvm $$0) {
+      return new dx(Optional.of(false), Optional.of($$0));
+   }
 
-      public static ap<dx.a> a(Optional<cu> $$0) {
-         return ao.G.a(new dx.a(Optional.empty(), $$0));
-      }
+   public Optional<Boolean> b() {
+      return this.c;
+   }
 
-      public static ap<dx.a> a(jr<cxc> $$0, dgy $$1) {
-         return ao.G.a(new dx.a(Optional.empty(), Optional.of(cu.a.a().a($$0, $$1).b())));
-      }
-
-      public boolean a(cxg $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public Optional<bh> a() {
-         return this.b;
-      }
-
-      public Optional<cu> b() {
-         return this.c;
-      }
+   public Optional<cvm> c() {
+      return this.d;
    }
 }

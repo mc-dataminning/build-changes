@@ -1,6 +1,13 @@
-public enum dyi implements baq {
-   a,
-   b;
+public enum dyi implements azv {
+   a("none"),
+   b("low"),
+   c("tall");
+
+   private final String d;
+
+   private dyi(final String $$0) {
+      this.d = $$0;
+   }
 
    @Override
    public String toString() {
@@ -9,6 +16,6 @@ public enum dyi implements baq {
 
    @Override
    public String c() {
-      return this == a ? "left" : "right";
+      return this.d;
    }
 }

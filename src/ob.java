@@ -1,6 +1,9 @@
-import com.google.gson.JsonElement;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public interface ob extends Supplier<JsonElement> {
-   dkd a();
+public interface ob {
+   void a(akt<dbe<?>> var1, dbe<?> var2, @Nullable ai var3);
+
+   ah.a a();
+
+   void b();
 }

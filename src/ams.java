@@ -1,60 +1,29 @@
-import com.google.common.collect.Maps;
-import java.util.Collection;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import net.minecraft.server.MinecraftServer;
 
 public class ams {
-   private final Map<alp, amr> a = Maps.newHashMap();
-
-   @Nullable
-   public amr a(alp $$0) {
-      return this.a.get($$0);
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
+            .then(ey.a("gamemode", fl.a()).executes($$0x -> a((ex)$$0x.getSource(), fl.a($$0x, "gamemode"))))
+      );
    }
 
-   public amr a(alp $$0, xk $$1) {
-      amr $$2 = new amr($$0, $$1);
-      this.a.put($$0, $$2);
+   private static int a(ex $$0, dgf $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      $$3.a($$1);
+      dgf $$4 = $$3.bd();
+      if ($$4 != null) {
+         for (ard $$5 : $$3.ag().t()) {
+            if ($$5.a($$4)) {
+               $$2++;
+            }
+         }
+      }
+
+      $$0.a(() -> wo.a("commands.defaultgamemode.success", $$1.d()), true);
       return $$2;
-   }
-
-   public void a(amr $$0) {
-      this.a.remove($$0.a());
-   }
-
-   public Collection<alp> a() {
-      return this.a.keySet();
-   }
-
-   public Collection<amr> b() {
-      return this.a.values();
-   }
-
-   public um a(js.a $$0) {
-      um $$1 = new um();
-
-      for (amr $$2 : this.a.values()) {
-         $$1.a($$2.a().toString(), $$2.a($$0));
-      }
-
-      return $$1;
-   }
-
-   public void a(um $$0, js.a $$1) {
-      for (String $$2 : $$0.e()) {
-         alp $$3 = alp.a($$2);
-         this.a.put($$3, amr.a($$0.p($$2), $$3, $$1));
-      }
-   }
-
-   public void a(ary $$0) {
-      for (amr $$1 : this.a.values()) {
-         $$1.c($$0);
-      }
-   }
-
-   public void b(ary $$0) {
-      for (amr $$1 : this.a.values()) {
-         $$1.d($$0);
-      }
    }
 }

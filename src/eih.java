@@ -1,52 +1,62 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public class eih extends eie {
-   public eih(Codec<ejs> $$0) {
-      super($$0);
+public class eih implements eic {
+   public static final Codec<eih> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               mb.e.q().fieldOf("block").flatXmap(eih::a, DataResult::success).orElse((dop)djo.fu).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               kg.a(mc.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, eih::new)
+   );
+   public final dop b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final jv<djm> h;
+   private final ObjectArrayList<jn> i;
+
+   private static DataResult<dop> a(djm $$0) {
+      return $$0 instanceof dop $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface spreadeable block");
    }
 
-   @Override
-   protected Set<jh> a(dhx $$0, ejs $$1, bac $$2, jh $$3, Predicate<dxo> $$4, int $$5, int $$6) {
-      Set<jh> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<jh> $$8 = new HashSet<>();
-      jh.a $$9 = new jh.a();
-
-      for (jh $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
+   public eih(dop $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jv<djm> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(jn.b);
       }
 
-      for (jh $$11 : $$8) {
-         $$0.a($$11, dkf.J.m(), 2);
+      if ($$2) {
+         this.i.add(jn.a);
       }
 
-      return $$8;
-   }
-
-   private static boolean a(dhx $$0, Set<jh> $$1, jh $$2, jh.a $$3) {
-      return a($$0, $$2, $$3, jm.c) || a($$0, $$2, $$3, jm.f) || a($$0, $$2, $$3, jm.d) || a($$0, $$2, $$3, jm.e) || a($$0, $$2, $$3, jm.a);
-   }
-
-   private static boolean a(dhx $$0, jh $$1, jh.a $$2, jm $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).c($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(dhx $$0, ejs $$1, dzk $$2, bac $$3, jh $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
-         dxo $$5 = $$0.a_($$4);
-         if ($$5.b(dye.J) && !$$5.c(dye.J)) {
-            $$0.a($$4, $$5.b(dye.J, Boolean.valueOf(true)), 2);
-         }
-
-         return true;
-      } else {
-         return false;
+      if ($$4) {
+         jn.c.a.forEach(this.i::add);
       }
+   }
+
+   public List<jn> a(azh $$0, jn $$1) {
+      return af.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   }
+
+   public List<jn> a(azh $$0) {
+      return af.a(this.i, $$0);
    }
 }

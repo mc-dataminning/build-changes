@@ -1,3 +1,4 @@
-public interface bsi {
-   float a(bac var1);
+public enum bsi {
+   a,
+   b;
 }

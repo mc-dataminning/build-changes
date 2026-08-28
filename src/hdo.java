@@ -1,44 +1,16 @@
-import java.util.List;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hdo implements heb {
-   private final alp a;
-   private List<gmw> b = List.of();
+public interface hdo<T> {
+   void a(@Nullable T var1, cwn var2, ffu var3, glx var4, int var5, int var6, boolean var7);
 
-   public hdo(alp $$0) {
-      this.a = $$0;
-   }
+   @Nullable
+   T b(cwp var1);
 
-   @Override
-   public void a(heb.a $$0) {
-      if ($$0.a(this.a) instanceof gms $$2) {
-         this.b = $$2.e();
-         this.b.forEach($$1 -> $$0.a($$1.a()));
-      }
-   }
+   public interface a {
+      @Nullable
+      hdo<?> a(gey var1);
 
-   @Override
-   public hdi a(hdr $$0, Function<hdp, hbg> $$1, hdx $$2) {
-      hdi $$3 = $$0.a(this.a, $$2);
-      if (this.b.isEmpty()) {
-         return $$3;
-      } else {
-         gmm $$4 = new gmm($$0, this.b);
-         return new hdo.a($$3, $$4);
-      }
-   }
-
-   static class a extends hdm {
-      private final gmm b;
-
-      public a(hdi $$0, gmm $$1) {
-         super($$0);
-         this.b = $$1;
-      }
-
-      @Override
-      public gmm g() {
-         return this.b;
-      }
+      MapCodec<? extends hdo.a> a();
    }
 }

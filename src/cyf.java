@@ -1,60 +1,28 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cyf extends cvm {
-   public cyf(dkd $$0, cxc.a $$1) {
-      super($$0, $$1);
+public class cyf extends cuq {
+   public cyf(cwl.a $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public dax b(dax $$0) {
-      jh $$1 = $$0.a();
-      dgz $$2 = $$0.q();
-      dxo $$3 = $$2.a_($$1);
-      dkd $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dqx.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         jm $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == jm.b ? $$0.g() : jm.b;
-         }
+   public cwp n() {
+      cwp $$0 = super.n();
+      $$0.b(kv.Q, new cyo(cyp.C));
+      return $$0;
+   }
 
-         int $$7 = 0;
-         jh.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.C && !$$2.k($$8)) {
-               cpo $$9 = $$0.o();
-               int $$10 = $$2.an();
-               if ($$9 instanceof ary && $$8.v() > $$10) {
-                  ((ary)$$9).b(xk.a("build.tooHigh", $$10).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return dax.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
+   @Override
+   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
+      cyo $$4 = $$0.a(kv.Q);
+      if ($$4 != null) {
+         $$4.a($$2::add, 0.125F, $$1.b());
       }
    }
 
    @Override
-   protected boolean c() {
-      return false;
+   public wo a(cwp $$0) {
+      cyo $$1 = $$0.a(kv.Q);
+      return $$1 != null ? $$1.a(this.l + ".effect.") : super.a($$0);
    }
 }

@@ -1,78 +1,74 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class drg extends dkn implements dkg, dow {
+public class drg extends djm {
    public static final MapCodec<drg> a = b(drg::new);
-   protected static final float b = 6.0F;
-   protected static final fcl c = dkd.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   public static final int b = 6;
+   public static final int c = 64;
+   private static final jn[] d = jn.values();
 
    @Override
    public MapCodec<drg> a() {
       return a;
    }
 
-   protected drg(dxn.d $$0) {
+   protected drg(dww.d $$0) {
       super($$0);
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean b(dxo $$0, dge $$1, jh $$2) {
-      return $$0.c($$1, $$2, jm.b) && !$$0.a(dkf.ll);
-   }
-
-   @Nullable
-   @Override
-   public dxo a(dax $$0) {
-      etq $$1 = $$0.q().b_($$0.a());
-      return $$1.a(axq.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      dxo $$8 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      if (!$$8.l()) {
-         $$2.a($$3, etr.c, etr.c.a($$1));
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         this.a($$1, $$2);
       }
-
-      return $$8;
    }
 
    @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
-      return $$0.a_($$1.d()).a(dkf.J);
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      this.a($$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
+   protected void a(dgi $$0, ji $$1) {
+      if (this.b($$0, $$1)) {
+         $$0.a($$1, djo.aW.m(), 2);
+         $$0.a(null, $$1, awa.zL, awb.e, 1.0F, 1.0F);
+      }
    }
 
-   @Override
-   protected etq b_(dxo $$0) {
-      return etr.c.a(false);
-   }
+   private boolean b(dgi $$0, ji $$1) {
+      return ji.a($$1, 6, 65, ($$0x, $$1x) -> {
+         for (jn $$2 : d) {
+            $$1x.accept($$0x.a($$2));
+         }
+      }, $$2 -> {
+         if ($$2.equals($$1)) {
+            return ji.b.a;
+         } else {
+            dwx $$3 = $$0.a_($$2);
+            esz $$4 = $$0.b_($$2);
+            if (!$$4.a(awv.a)) {
+               return ji.b.b;
+            } else {
+               if ($$3.b() instanceof dju $$6 && !$$6.a(null, $$0, $$2, $$3).f()) {
+                  return ji.b.a;
+               }
 
-   @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      dxo $$4 = dkf.bE.m();
-      dxo $$5 = $$4.b(dso.d, dyj.a);
-      jh $$6 = $$2.d();
-      $$0.a($$2, $$4, 2);
-      $$0.a($$6, $$5, 2);
-   }
+               if ($$3.b() instanceof doe) {
+                  $$0.a($$2, djo.a.m(), 3);
+               } else {
+                  if (!$$3.a(djo.mE) && !$$3.a(djo.mF) && !$$3.a(djo.bD) && !$$3.a(djo.bE)) {
+                     return ji.b.b;
+                  }
 
-   @Override
-   public boolean a(@Nullable cpo $$0, dge $$1, jh $$2, dxo $$3, etp $$4) {
-      return false;
-   }
+                  dtz $$7 = $$3.x() ? $$0.c_($$2) : null;
+                  a($$3, $$0, $$2, $$7);
+                  $$0.a($$2, djo.a.m(), 3);
+               }
 
-   @Override
-   public boolean a(dha $$0, jh $$1, dxo $$2, etq $$3) {
-      return false;
+               return ji.b.a;
+            }
+         }
+      }) > 1;
    }
 }

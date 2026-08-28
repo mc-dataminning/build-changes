@@ -1,42 +1,54 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
 public class rf {
-   public static final alo<epn> a = rh.a("pillager_outpost/base_plates");
+   public static void a(qe<efk<?, ?>> $$0) {
+      rc.a($$0);
+      rd.a($$0);
+      re.a($$0);
+      rg.a($$0);
+      rh.a($$0);
+      ri.a($$0);
+      rj.a($$0);
+      rk.a($$0);
+      rl.a($$0);
+   }
 
-   public static void a(ra<epn> $$0) {
-      jr<esd> $$1 = $$0.a(mb.aV);
-      jq<esd> $$2 = $$1.b(ri.q);
-      jr<epn> $$3 = $$0.a(mb.aX);
-      jq<epn> $$4 = $$3.b(rh.a);
-      $$0.a(a, new epn($$4, ImmutableList.of(Pair.of(epl.a("pillager_outpost/base_plate"), 1)), epn.a.b));
-      rh.a(
-         $$0,
-         "pillager_outpost/towers",
-         new epn(
-            $$4,
-            ImmutableList.of(Pair.of(epl.b(ImmutableList.of(epl.a("pillager_outpost/watchtower"), epl.a("pillager_outpost/watchtower_overgrown", $$2))), 1)),
-            epn.a.b
-         )
-      );
-      rh.a($$0, "pillager_outpost/feature_plates", new epn($$4, ImmutableList.of(Pair.of(epl.a("pillager_outpost/feature_plate"), 1)), epn.a.a));
-      rh.a(
-         $$0,
-         "pillager_outpost/features",
-         new epn(
-            $$4,
-            ImmutableList.of(
-               Pair.of(epl.a("pillager_outpost/feature_cage1"), 1),
-               Pair.of(epl.a("pillager_outpost/feature_cage2"), 1),
-               Pair.of(epl.a("pillager_outpost/feature_cage_with_allays"), 1),
-               Pair.of(epl.a("pillager_outpost/feature_logs"), 1),
-               Pair.of(epl.a("pillager_outpost/feature_tent1"), 1),
-               Pair.of(epl.a("pillager_outpost/feature_tent2"), 1),
-               Pair.of(epl.a("pillager_outpost/feature_targets"), 1),
-               Pair.of(epl.h(), 6)
-            ),
-            epn.a.b
-         )
-      );
+   private static edz a(List<djm> $$0) {
+      edz $$1;
+      if (!$$0.isEmpty()) {
+         $$1 = edz.a(edz.c, edz.a(jn.a.q(), $$0));
+      } else {
+         $$1 = edz.c;
+      }
+
+      return $$1;
+   }
+
+   public static eip a(int $$0, jr<emq> $$1) {
+      return new eip($$0, 7, 3, $$1);
+   }
+
+   public static <FC extends eic, F extends efy<FC>> eip a(F $$0, FC $$1, List<djm> $$2, int $$3) {
+      return a($$3, ru.a($$0, $$1, a($$2)));
+   }
+
+   public static <FC extends eic, F extends efy<FC>> eip a(F $$0, FC $$1, List<djm> $$2) {
+      return a($$0, $$1, $$2, 96);
+   }
+
+   public static <FC extends eic, F extends efy<FC>> eip a(F $$0, FC $$1) {
+      return a($$0, $$1, List.of(), 96);
+   }
+
+   public static akt<efk<?, ?>> a(String $$0) {
+      return akt.a(mc.aL, aku.b($$0));
+   }
+
+   public static void a(qe<efk<?, ?>> $$0, akt<efk<?, ?>> $$1, efy<eij> $$2) {
+      a($$0, $$1, $$2, eic.m);
+   }
+
+   public static <FC extends eic, F extends efy<FC>> void a(qe<efk<?, ?>> $$0, akt<efk<?, ?>> $$1, F $$2, FC $$3) {
+      $$0.a($$1, new efk($$2, $$3));
    }
 }

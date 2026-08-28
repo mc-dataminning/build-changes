@@ -1,53 +1,109 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public class eha extends efr {
-   public eha(Codec<eiv> $$0) {
+public class eha extends efy<eis> {
+   public eha(Codec<eis> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(dha $$0, bac $$1, jh $$2, int $$3, jh.a $$4, eiv $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
-
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).s()) {
-                     dxo $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(doc.e) && $$17.b(doc.c) && $$17.b(doc.b) && $$17.b(doc.d) && $$17.b(doc.f)) {
-                        $$17 = $$17.b(doc.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .b(doc.e, Boolean.valueOf($$9 < -$$8))
-                           .b(doc.c, Boolean.valueOf($$9 > $$8))
-                           .b(doc.b, Boolean.valueOf($$10 < -$$8))
-                           .b(doc.d, Boolean.valueOf($$10 > $$8));
-                     }
-
-                     this.a($$0, $$4, $$17);
-                  }
-               }
-            }
+   public boolean a(ega<eis> $$0) {
+      dhg $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      if (!$$1.a_($$2).l()) {
+         return false;
+      } else {
+         azh $$3 = $$0.d();
+         ji $$4 = $$0.e();
+         eis $$5 = $$0.f();
+         ji.a $$6 = $$4.k();
+         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
+            a($$1, $$5, $$3, $$4, $$6);
          }
+
+         return true;
       }
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
+   private static boolean a(dhg $$0, eis $$1, ji $$2) {
+      ji.a $$3 = $$2.k();
+
+      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
+         $$3.c(jn.b);
+         dwx $$5 = $$0.a_($$3);
+         if (!a($$5, $$4, $$1.n)) {
+            return false;
+         }
       }
 
-      return $$4;
+      return true;
+   }
+
+   private static boolean a(dwx $$0, int $$1, int $$2) {
+      if ($$0.l()) {
+         return true;
+      } else {
+         int $$3 = $$1 + 1;
+         return $$3 <= $$2 && $$0.y().a(awv.a);
+      }
+   }
+
+   private static boolean a(dhg $$0, dyt $$1, eis $$2, azh $$3, ji.a $$4, ji $$5) {
+      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
+         $$4.c(jn.b);
+         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
+            ji $$7 = $$4.e();
+            if ($$0.b_($$7).a(awv.b) || !$$0.a_($$7).e()) {
+               return false;
+            }
+
+            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
+               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private static void a(ji $$0, int $$1, dhg $$2, eis $$3, azh $$4) {
+      int $$5 = $$0.u();
+      int $$6 = $$0.w();
+      ji.a $$7 = $$0.k();
+
+      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
+         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
+      }
+   }
+
+   private static void a(dhg $$0, eis $$1, azh $$2, int $$3, int $$4, ji.a $$5) {
+      int $$6 = $$1.d;
+      Predicate<dwx> $$7 = $$1x -> $$1x.a($$1.e);
+
+      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
+         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
+         if ($$7.test($$0.a_($$5))) {
+            $$0.a($$5, $$1.f.a($$2, $$5), 2);
+         }
+
+         $$5.p($$3);
+         $$5.r($$4);
+      }
+   }
+
+   private static void a(dhg $$0, eis $$1, azh $$2, ji $$3, ji.a $$4) {
+      int $$5 = $$1.i;
+      int $$6 = $$1.j;
+
+      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
+         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
+         if ($$0.u($$4)) {
+            dwx $$8 = $$1.k.a($$2, $$4);
+            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jn.a)) {
+               $$0.a($$4, $$8, 2);
+            }
+         }
+      }
    }
 }

@@ -1,122 +1,91 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
 
-public class eau implements ebu<bvb> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arx d;
-   private final ebf e;
-   private final LongSet f = new LongOpenHashSet();
-   private final brq g;
+public enum eau {
+   a {
+      @Override
+      public void a(arc $$0, eav $$1, List<cjt> $$2, int $$3, ji $$4) {
+         ji $$5 = new ji(0, 128, 0);
 
-   public eau(ebf $$0, arx $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = new brq($$2, "entity-deserializer");
-   }
-
-   @Override
-   public CompletableFuture<ebp<bvb>> a(dgf $$0) {
-      if (this.f.contains($$0.a())) {
-         return CompletableFuture.completedFuture(b($$0));
-      } else {
-         CompletableFuture<Optional<um>> $$1 = this.e.a($$0);
-         this.b($$1, $$0);
-         return $$1.thenApplyAsync($$1x -> {
-            if ($$1x.isEmpty()) {
-               this.f.add($$0.a());
-               return b($$0);
-            } else {
-               try {
-                  dgf $$2 = a((um)$$1x.get());
-                  if (!Objects.equals($$0, $$2)) {
-                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-                     this.d.p().a($$2, $$0, this.e.a());
-                  }
-               } catch (Exception var6) {
-                  a.warn("Failed to parse chunk {} position info", $$0, var6);
-                  this.d.p().a(var6, this.e.a(), $$0);
-               }
-
-               um $$4 = this.e.a((um)$$1x.get(), -1);
-               us $$5 = $$4.c("Entities", 10);
-               List<bvb> $$6 = bvi.a($$5, this.d, bvh.r).collect(ImmutableList.toImmutableList());
-               return new ebp<>($$0, $$6);
-            }
-         }, this.g::a_);
-      }
-   }
-
-   private static dgf a(um $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dgf($$1[0], $$1[1]);
-   }
-
-   private static void a(um $$0, dgf $$1) {
-      $$0.a("Position", new uq(new int[]{$$1.h, $$1.i}));
-   }
-
-   private static ebp<bvb> b(dgf $$0) {
-      return new ebp<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(ebp<bvb> $$0) {
-      dgf $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.a(this.e.a($$1, null), $$1);
+         for (cjt $$6 : $$2) {
+            $$6.a($$5);
          }
-      } else {
-         us $$2 = new us();
-         $$0.b().forEach($$1x -> {
-            um $$2x = new um();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         um $$3 = vb.e(new um());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.a(this.e.a($$1, $$3), $$1);
-         this.f.remove($$1.a());
+
+         $$1.a(b);
       }
-   }
+   },
+   b {
+      @Override
+      public void a(arc $$0, eav $$1, List<cjt> $$2, int $$3, ji $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new ji(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
+      }
+   },
+   c {
+      @Override
+      public void a(arc $$0, eav $$1, List<cjt> $$2, int $$3, ji $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<ehi.a> $$8 = ehi.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               ehi.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (cjt $$11 : $$2) {
+                     $$11.a(new ji($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-   private void a(CompletableFuture<?> $$0, dgf $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to store entity chunk {}", $$1, $$1x);
-         this.d.p().b($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
+                  for (ji $$13 : ji.c(new ji($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new ji($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   private void b(CompletableFuture<?> $$0, dgf $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to load entity chunk {}", $$1, $$1x);
-         this.d.p().a($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dgi.a.b);
+                  eiw $$14 = new eiw(true, ImmutableList.of($$10), new ji(0, 128, 0));
+                  efy.K.a($$14, $$0, $$0.m().g(), azh.a(), new ji($$10.a(), 45, $$10.b()));
+               }
+            } else if ($$6) {
+               $$1.a(d);
+            }
+         }
+      }
+   },
+   d {
+      @Override
+      public void a(arc $$0, eav $$1, List<cjt> $$2, int $$3, ji $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
-   }
+            for (cjt $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dB(), $$5.dD(), $$5.dH(), 6.0F, dgi.a.a);
+               $$5.at();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new ji(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (cjt $$6 : $$2) {
+               $$6.a(new ji(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new ji(0, 128, 0), 0);
+         }
+      }
+   },
+   e {
+      @Override
+      public void a(arc $$0, eav $$1, List<cjt> $$2, int $$3, ji $$4) {
+      }
+   };
 
-   @Override
-   public void close() throws IOException {
-      this.e.close();
-   }
+   public abstract void a(arc var1, eav var2, List<cjt> var3, int var4, ji var5);
 }

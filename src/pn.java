@@ -1,64 +1,162 @@
+import com.google.common.collect.Maps;
+import java.nio.file.Path;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class pn {
-   private static final kg a = new kg()
-      .a(mb.aN, rd::a)
-      .a(mb.aK, rb::a)
-      .a(mb.aL, sb::a)
-      .a(mb.aT, sq::a)
-      .a(mb.aU, rm::a)
-      .a(mb.aW, rl::a)
-      .a(mb.aV, ri::a)
-      .a(mb.aX, rh::a)
-      .a(mb.aI, rt::a)
-      .a(mb.bc, diq::a)
-      .a(mb.aS, re::a)
-      .a(mb.aM, edq::a)
-      .a(mb.aR, edo::a)
-      .a(mb.bb, ent::a)
-      .a(mb.aQ, emf::a)
-      .a(mb.aJ, xg::a)
-      .a(mb.ba, dfr::a)
-      .a(mb.aZ, dfp::a)
-      .a(mb.bd, dws::a)
-      .a(mb.m, cit::a)
-      .a(mb.X, clp::a)
-      .a(mb.s, btu::a)
-      .a(mb.d, dui::a)
-      .a(mb.aO, ddv::a)
-      .a(mb.aP, dfe::a)
-      .a(mb.L, cxo::a)
-      .a(mb.I, cxb::a);
+public abstract class pn<T> implements mi {
+   protected final mk.a e;
+   private final CompletableFuture<jt.a> d;
+   private final CompletableFuture<Void> g = new CompletableFuture<>();
+   private final CompletableFuture<pn.c<T>> h;
+   protected final akt<? extends ke<T>> f;
+   private final Map<aku, axc> i = Maps.newLinkedHashMap();
 
-   private static void a(js.a $$0) {
-      a($$0.d(mb.aT), $$0.d(mb.aI));
+   protected pn(mk $$0, akt<? extends ke<T>> $$1, CompletableFuture<jt.a> $$2) {
+      this($$0, $$1, $$2, CompletableFuture.completedFuture(pn.c.empty()));
    }
 
-   public static void a(jr<enh> $$0, js<dib> $$1) {
-      $$1.c().forEach($$1x -> {
-         alp $$2 = $$1x.h().a();
-         List<ju<enh>> $$3 = ((dib)$$1x.a()).d().c();
-         $$3.stream().flatMap(ju::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               jq.c<enh> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ae.b("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ae.b("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
+   protected pn(mk $$0, akt<? extends ke<T>> $$1, CompletableFuture<jt.a> $$2, CompletableFuture<pn.c<T>> $$3) {
+      this.e = $$0.b($$1);
+      this.f = $$1;
+      this.h = $$3;
+      this.d = $$2;
+   }
+
+   @Override
+   public final String a() {
+      return "Tags for " + this.f.a();
+   }
+
+   protected abstract void a(jt.a var1);
+
+   @Override
+   public CompletableFuture<?> a(mg $$0) {
+      record a<T>(jt.a a, pn.c<T> b) {
+      }
+
+      return this.b()
+         .thenApply($$0x -> {
+            this.g.complete(null);
+            return $$0x;
+         })
+         .thenCombineAsync(this.h, ($$0x, $$1) -> new a<>($$0x, (pn.c<T>)$$1), af.g())
+         .thenCompose(
+            $$1 -> {
+               jt.b<T> $$2 = $$1.a.d(this.f);
+               Predicate<aku> $$3 = $$1x -> $$2.a(akt.a(this.f, $$1x)).isPresent();
+               Predicate<aku> $$4 = $$1x -> this.i.containsKey($$1x) || $$1.b.contains(axf.a(this.f, $$1x));
+               return CompletableFuture.allOf(
+                  this.i
+                     .entrySet()
+                     .stream()
+                     .map(
+                        $$4x -> {
+                           aku $$5 = (aku)$$4x.getKey();
+                           axc $$6 = (axc)$$4x.getValue();
+                           List<axd> $$7 = $$6.b();
+                           List<axd> $$8 = $$7.stream().filter($$2xx -> !$$2xx.a($$3, $$4)).toList();
+                           if (!$$8.isEmpty()) {
+                              throw new IllegalArgumentException(
+                                 String.format(
+                                    Locale.ROOT,
+                                    "Couldn't define tag %s as it is missing following references: %s",
+                                    $$5,
+                                    $$8.stream().map(Objects::toString).collect(Collectors.joining(","))
+                                 )
+                              );
+                           } else {
+                              Path $$9 = this.e.a($$5);
+                              return mi.a($$0, $$1.a, axe.a, new axe($$7, false), $$9);
+                           }
+                        }
+                     )
+                     .toArray(CompletableFuture[]::new)
+               );
+            }
+         );
+   }
+
+   protected pn.b<T> b(axf<T> $$0) {
+      axc $$1 = this.c($$0);
+      return new pn.b<>($$1);
+   }
+
+   protected axc c(axf<T> $$0) {
+      return this.i.computeIfAbsent($$0.b(), $$0x -> axc.a());
+   }
+
+   public CompletableFuture<pn.c<T>> c() {
+      return this.g.thenApply($$0 -> $$0x -> Optional.ofNullable(this.i.get($$0x.b())));
+   }
+
+   protected CompletableFuture<jt.a> b() {
+      return this.d.thenApply($$0 -> {
+         this.i.clear();
+         this.a($$0);
+         return (jt.a)$$0;
       });
    }
 
-   private static boolean a(enh $$0) {
-      return $$0.c().contains(emv.a());
+   protected static class b<T> {
+      private final axc a;
+
+      protected b(axc $$0) {
+         this.a = $$0;
+      }
+
+      public final pn.b<T> a(akt<T> $$0) {
+         this.a.a($$0.a());
+         return this;
+      }
+
+      @SafeVarargs
+      public final pn.b<T> a(akt<T>... $$0) {
+         for (akt<T> $$1 : $$0) {
+            this.a.a($$1.a());
+         }
+
+         return this;
+      }
+
+      public final pn.b<T> a(List<akt<T>> $$0) {
+         for (akt<T> $$1 : $$0) {
+            this.a.a($$1.a());
+         }
+
+         return this;
+      }
+
+      public pn.b<T> a(aku $$0) {
+         this.a.b($$0);
+         return this;
+      }
+
+      public pn.b<T> b(axf<T> $$0) {
+         this.a.c($$0.b());
+         return this;
+      }
+
+      public pn.b<T> b(aku $$0) {
+         this.a.d($$0);
+         return this;
+      }
    }
 
-   public static js.a a() {
-      ke.b $$0 = ke.a(ma.aC);
-      js.a $$1 = a.a($$0);
-      a($$1);
-      return $$1;
+   @FunctionalInterface
+   public interface c<T> extends Function<axf<T>, Optional<axc>> {
+      static <T> pn.c<T> empty() {
+         return $$0 -> Optional.empty();
+      }
+
+      default boolean contains(axf<T> $$0) {
+         return this.apply($$0).isPresent();
+      }
    }
 }

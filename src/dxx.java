@@ -1,51 +1,62 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public enum dxx implements azv {
+   a("harp", awa.sw, dxx.a.a),
+   b("basedrum", awa.sq, dxx.a.a),
+   c("snare", awa.sz, dxx.a.a),
+   d("hat", awa.sx, dxx.a.a),
+   e("bass", awa.sr, dxx.a.a),
+   f("flute", awa.su, dxx.a.a),
+   g("bell", awa.ss, dxx.a.a),
+   h("guitar", awa.sv, dxx.a.a),
+   i("chime", awa.st, dxx.a.a),
+   j("xylophone", awa.sA, dxx.a.a),
+   k("iron_xylophone", awa.sB, dxx.a.a),
+   l("cow_bell", awa.sC, dxx.a.a),
+   m("didgeridoo", awa.sD, dxx.a.a),
+   n("bit", awa.sE, dxx.a.a),
+   o("banjo", awa.sF, dxx.a.a),
+   p("pling", awa.sy, dxx.a.a),
+   q("zombie", awa.sG, dxx.a.b),
+   r("skeleton", awa.sH, dxx.a.b),
+   s("creeper", awa.sI, dxx.a.b),
+   t("dragon", awa.sJ, dxx.a.b),
+   u("wither_skeleton", awa.sK, dxx.a.b),
+   v("piglin", awa.sL, dxx.a.b),
+   w("custom_head", awa.Bg, dxx.a.c);
 
-public class dxx implements Predicate<dxo> {
-   public static final Predicate<dxo> a = $$0 -> true;
-   private final dxp<dkd, dxo> b;
-   private final Map<dyq<?>, Predicate<Object>> c = Maps.newHashMap();
+   private final String x;
+   private final jr<avz> y;
+   private final dxx.a z;
 
-   private dxx(dxp<dkd, dxo> $$0) {
-      this.b = $$0;
+   private dxx(final String $$0, final jr<avz> $$1, final dxx.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
    }
 
-   public static dxx a(dkd $$0) {
-      return new dxx($$0.l());
+   @Override
+   public String c() {
+      return this.x;
    }
 
-   public boolean a(@Nullable dxo $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
-         } else {
-            for (Entry<dyq<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+   public jr<avz> a() {
+      return this.y;
    }
 
-   protected <T extends Comparable<T>> boolean a(dxo $$0, dyq<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
+   public boolean b() {
+      return this.z == dxx.a.a;
    }
 
-   public <V extends Comparable<V>> dxx a(dyq<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
-      } else {
-         this.c.put($$0, $$1);
-         return this;
-      }
+   public boolean d() {
+      return this.z == dxx.a.c;
+   }
+
+   public boolean e() {
+      return this.z != dxx.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,46 +1,18 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class erm extends esc {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<erm> a = MapCodec.unit(() -> erm.b);
-   public static final erm b = new erm();
+public class erm {
+   private final List<erl> a;
 
-   private erm() {
+   public erm(List<erl> $$0) {
+      this.a = $$0;
    }
 
-   @Nullable
-   @Override
-   public esf.d a(dhc $$0, jh $$1, jh $$2, esf.d $$3, esf.d $$4, esb $$5) {
-      dxo $$6 = $$4.b();
-      if ($$6.a(dkf.pD)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
-
-            dxo $$9;
-            try {
-               gq.a $$8 = gq.a($$0.a(mb.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
-
-            return $$9.a(dkf.lp) ? null : new esf.d($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
-      }
+   public List<erl> a() {
+      return this.a;
    }
 
    @Override
-   protected ese<?> a() {
-      return ese.h;
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

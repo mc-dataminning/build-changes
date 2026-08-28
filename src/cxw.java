@@ -1,24 +1,25 @@
-public class cxw extends cxc {
-   public cxw(cxc.a $$0) {
+public class cxw extends cwl implements cxk {
+   public static float a = 1.5F;
+
+   public cxw(cwl.a $$0) {
       super($$0);
    }
 
    @Override
-   public bta a(cxg $$0, cpo $$1, bvx $$2, bsz $$3) {
-      xk $$4 = $$0.a(ku.g);
-      if ($$4 != null && $$2.aq().b()) {
-         if (!$$1.dW().C && $$2.bL()) {
-            $$2.b($$4);
-            if ($$2 instanceof bvz $$5) {
-               $$5.ai();
-            }
-
-            $$0.h(1);
-         }
-
-         return bta.a;
-      } else {
-         return bta.e;
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      cwp $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awa.zp, awb.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arc $$4) {
+         cpq.a(cpv::new, $$4, $$3, $$1, 0.0F, a, 1.0F);
       }
+
+      $$1.b(awk.c.b(this));
+      $$3.a(1, $$1);
+      return bsj.a;
+   }
+
+   @Override
+   public cpq a(dgi $$0, kb $$1, cwp $$2, jn $$3) {
+      return new cpv($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
    }
 }

@@ -1,94 +1,88 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class dms extends djp implements dqa {
+public class dms extends dnm {
    public static final MapCodec<dms> a = b(dms::new);
-   protected static final fcl b = dkd.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+   public static final int b = 3;
+   public static final dxw c = dxn.av;
+   private static final int f = 4;
+   private static final int g = 2;
 
    @Override
    public MapCodec<dms> a() {
       return a;
    }
 
-   protected dms(dxn.d $$0) {
+   public dms(dww.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dwk($$0, $$1);
+   public void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      $$1.a($$2, this, ayz.a($$1.H_(), 60, 120));
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return b;
-   }
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (($$3.a(3) == 0 || this.a($$1, $$2, 4)) && $$1.A($$2) > 11 - $$0.c(c) - $$0.g() && this.f($$0, $$1, $$2)) {
+         ji.a $$4 = new ji.a();
 
-   @Override
-   protected fcl a_(dxo $$0, dgz $$1, jh $$2) {
-      return $$0.f($$1, $$2);
-   }
-
-   @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, bvb $$3) {
-      if ($$3.o(false)) {
-         if (!$$1.C && $$1.ai() == dgz.k && $$3 instanceof ary $$4 && !$$4.i) {
-            $$4.n();
-            return;
+         for (jn $$5 : jn.values()) {
+            $$4.a($$2, $$5);
+            dwx $$6 = $$1.a_($$4);
+            if ($$6.a(this) && !this.f($$6, $$1, $$4)) {
+               $$1.a($$4, this, ayz.a($$3, 20, 40));
+            }
          }
-
-         $$3.a(this, $$2);
-      }
-   }
-
-   @Override
-   public euq a(arx $$0, bvb $$1, jh $$2) {
-      alo<dgz> $$3 = $$0.ai() == dgz.k ? dgz.i : dgz.k;
-      arx $$4 = $$0.p().a($$3);
-      if ($$4 == null) {
-         return null;
       } else {
-         boolean $$5 = $$3 == dgz.k;
-         jh $$6 = $$5 ? arx.a : $$4.Z();
-         fbr $$7 = $$6.c();
-         float $$8;
-         Set<bwl> $$9;
-         if ($$5) {
-            egn.a($$4, jh.a((ka)$$7).e(), true);
-            $$8 = jm.e.p();
-            $$9 = bwl.a(bwl.l, Set.of(bwl.e));
-            if ($$1 instanceof ary) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            $$8 = 0.0F;
-            $$9 = bwl.a(bwl.l, bwl.k);
-            if ($$1 instanceof ary $$12) {
-               return $$12.a(false, euq.a);
-            }
+         $$1.a($$2, this, ayz.a($$3, 20, 40));
+      }
+   }
 
-            $$7 = $$1.a($$4, $$6).c();
-         }
-
-         return new euq($$4, $$7, fbr.c, $$8, 0.0F, $$9, euq.b.then(euq.c));
+   private boolean f(dwx $$0, dgi $$1, ji $$2) {
+      int $$3 = $$0.c(c);
+      if ($$3 < 3) {
+         $$1.a($$2, $$0.b(c, Integer.valueOf($$3 + 1)), 2);
+         return false;
+      } else {
+         this.e($$0, $$1, $$2);
+         return true;
       }
    }
 
    @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(ls.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      if ($$3.m().a(this) && this.a($$1, $$2, 2)) {
+         this.e($$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private boolean a(dfn $$0, ji $$1, int $$2) {
+      int $$3 = 0;
+      ji.a $$4 = new ji.a();
+
+      for (jn $$5 : jn.values()) {
+         $$4.a($$1, $$5);
+         if ($$0.a_($$4).a(this)) {
+            if (++$$3 >= $$2) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 
    @Override
-   protected cxg a(dhc $$0, jh $$1, dxo $$2) {
-      return cxg.j;
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected boolean a(dxo $$0, etp $$1) {
-      return false;
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return cwp.j;
    }
 }

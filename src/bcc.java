@@ -4,45 +4,74 @@ import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
 public class bcc extends DataFix {
    public bcc(Schema $$0) {
       super($$0, true);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.remove("Bees");
+   private static boolean a(String $$0) {
+      return $$0.equals("minecraft:boat");
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      $$0 = $$0.remove("EntityData");
-      $$0 = $$0.renameField("TicksInHive", "ticks_in_hive");
-      return $$0.renameField("MinOccupationTicks", "min_ticks_in_hive");
+   private static boolean b(String $$0) {
+      return $$0.equals("minecraft:chest_boat");
+   }
+
+   private static boolean c(String $$0) {
+      return a($$0) || b($$0);
+   }
+
+   private static String d(String $$0) {
+      return switch ($$0) {
+         case "spruce" -> "minecraft:spruce_boat";
+         case "birch" -> "minecraft:birch_boat";
+         case "jungle" -> "minecraft:jungle_boat";
+         case "acacia" -> "minecraft:acacia_boat";
+         case "cherry" -> "minecraft:cherry_boat";
+         case "dark_oak" -> "minecraft:dark_oak_boat";
+         case "mangrove" -> "minecraft:mangrove_boat";
+         case "bamboo" -> "minecraft:bamboo_raft";
+         default -> "minecraft:oak_boat";
+      };
+   }
+
+   private static String e(String $$0) {
+      return switch ($$0) {
+         case "spruce" -> "minecraft:spruce_chest_boat";
+         case "birch" -> "minecraft:birch_chest_boat";
+         case "jungle" -> "minecraft:jungle_chest_boat";
+         case "acacia" -> "minecraft:acacia_chest_boat";
+         case "cherry" -> "minecraft:cherry_chest_boat";
+         case "dark_oak" -> "minecraft:dark_oak_chest_boat";
+         case "mangrove" -> "minecraft:mangrove_chest_boat";
+         case "bamboo" -> "minecraft:bamboo_chest_raft";
+         default -> "minecraft:oak_chest_boat";
+      };
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bin.s, "minecraft:beehive");
-      OpticFinder<?> $$1 = DSL.namedChoice("minecraft:beehive", $$0);
-      ListType<?> $$2 = (ListType<?>)$$0.findFieldType("Bees");
-      Type<?> $$3 = $$2.getElement();
-      OpticFinder<?> $$4 = DSL.fieldFinder("Bees", $$2);
-      OpticFinder<?> $$5 = DSL.typeFinder($$3);
-      Type<?> $$6 = this.getInputSchema().getType(bin.s);
-      Type<?> $$7 = this.getOutputSchema().getType(bin.s);
-      return this.fixTypeEverywhereTyped(
-         "BeehiveFieldRenameFix",
-         $$6,
-         $$7,
-         $$4x -> bbk.a(
-               $$7,
-               $$4x.updateTyped(
-                  $$1,
-                  $$2xx -> $$2xx.update(DSL.remainderFinder(), this::a)
-                        .updateTyped($$4, $$1xxx -> $$1xxx.updateTyped($$5, $$0xxxx -> $$0xxxx.update(DSL.remainderFinder(), this::b)))
-               )
-            )
-      );
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bjk.a());
+      Type<?> $$1 = this.getInputSchema().getType(bhw.B);
+      Type<?> $$2 = this.getOutputSchema().getType(bhw.B);
+      return this.fixTypeEverywhereTyped("BoatSplitFix", $$1, $$2, $$2x -> {
+         Optional<String> $$3 = $$2x.getOptional($$0);
+         if ($$3.isPresent() && c($$3.get())) {
+            Dynamic<?> $$4 = (Dynamic<?>)$$2x.getOrCreate(DSL.remainderFinder());
+            Optional<String> $$5 = $$4.get("Type").asString().result();
+            String $$6;
+            if (b($$3.get())) {
+               $$6 = $$5.map(bcc::e).orElse("minecraft:oak_chest_boat");
+            } else {
+               $$6 = $$5.map(bcc::d).orElse("minecraft:oak_boat");
+            }
+
+            return bap.a($$2, $$2x).update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("Type")).set($$0, $$6);
+         } else {
+            return bap.a($$2, $$2x);
+         }
+      });
    }
 }

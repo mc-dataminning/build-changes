@@ -1,12 +1,8 @@
-public class cvk extends cxc {
-   private final aya<dug> a;
+import javax.annotation.Nullable;
 
-   public cvk(aya<dug> $$0, cxc.a $$1) {
-      super($$1);
-      this.a = $$0;
+public interface cvk {
+   default void a(@Nullable cox $$0, dgi $$1, cwp $$2, ji $$3) {
    }
 
-   public aya<dug> b() {
-      return this.a;
-   }
+   boolean a(@Nullable cox var1, dgi var2, ji var3, @Nullable faw var4);
 }

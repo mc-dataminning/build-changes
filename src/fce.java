@@ -1,85 +1,53 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleLists;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class fce implements fcd {
-   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
-   private final double[] b;
-   private final int[] c;
-   private final int[] d;
-   private final int e;
+public interface fce {
+   String cA = "*";
+   fce cB = new fce() {
+      @Override
+      public String cI() {
+         return "*";
+      }
+   };
 
-   public fce(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
-      double $$4 = Double.NaN;
-      int $$5 = $$0.size();
-      int $$6 = $$1.size();
-      int $$7 = $$5 + $$6;
-      this.b = new double[$$7];
-      this.c = new int[$$7];
-      this.d = new int[$$7];
-      boolean $$8 = !$$2;
-      boolean $$9 = !$$3;
-      int $$10 = 0;
-      int $$11 = 0;
-      int $$12 = 0;
+   String cI();
 
-      while (true) {
-         boolean $$13 = $$11 >= $$5;
-         boolean $$14 = $$12 >= $$6;
-         if ($$13 && $$14) {
-            this.e = Math.max(1, $$10);
-            return;
-         }
+   @Nullable
+   default wo p_() {
+      return null;
+   }
 
-         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
-         if ($$15) {
-            $$11++;
-            if ($$8 && ($$12 == 0 || $$14)) {
-               continue;
+   default wo hd() {
+      wo $$0 = this.p_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new wu(wu.a.a, wo.b(this.cI())))) : wo.b(this.cI());
+   }
+
+   static fce c(final String $$0) {
+      if ($$0.equals("*")) {
+         return cB;
+      } else {
+         final wo $$1 = wo.b($$0);
+         return new fce() {
+            @Override
+            public String cI() {
+               return $$0;
             }
-         } else {
-            $$12++;
-            if ($$9 && ($$11 == 0 || $$13)) {
-               continue;
-            }
-         }
 
-         int $$16 = $$11 - 1;
-         int $$17 = $$12 - 1;
-         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
-         if (!($$4 >= $$18 - 1.0E-7)) {
-            this.c[$$10] = $$16;
-            this.d[$$10] = $$17;
-            this.b[$$10] = $$18;
-            $$10++;
-            $$4 = $$18;
-         } else {
-            this.c[$$10 - 1] = $$16;
-            this.d[$$10 - 1] = $$17;
-         }
+            @Override
+            public wo hd() {
+               return $$1;
+            }
+         };
       }
    }
 
-   @Override
-   public boolean a(fcd.a $$0) {
-      int $$1 = this.e - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
-            return false;
+   static fce a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new fce() {
+         @Override
+         public String cI() {
+            return $$1;
          }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.e;
-   }
-
-   @Override
-   public DoubleList a() {
-      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
+      };
    }
 }

@@ -1,51 +1,48 @@
-public abstract class fvi<T extends ctx> extends fug<T> implements cth {
-   private final alp G;
+public class fvi extends fuz<csj> {
+   private static final aku G = aku.b("container/brewing_stand/fuel_length");
+   private static final aku H = aku.b("container/brewing_stand/brew_progress");
+   private static final aku I = aku.b("container/brewing_stand/bubbles");
+   private static final aku J = aku.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   public fvi(T $$0, cpn $$1, xk $$2, alp $$3) {
+   public fvi(csj $$0, cow $$1, wo $$2) {
       super($$0, $$1, $$2);
-      this.G = $$3;
    }
 
    @Override
-   protected void G() {
+   protected void aR_() {
+      super.aR_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.G();
-      this.z.a(this);
-   }
-
-   @Override
-   public void aJ_() {
-      super.aJ_();
-      this.z.b(this);
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.d($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
-   protected void d(fnl $$0, int $$1, int $$2, float $$3) {
-   }
-
    @Override
-   protected void a(fnl $$0, float $$1, int $$2, int $$3) {
-      $$0.a(glq::H, this.G, this.C, this.D, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      this.c($$0, this.C, this.D);
-   }
+   protected void a(fod $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gmh::H, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = ayz.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(gmh::H, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
 
-   protected abstract void c(fnl var1, int var2, int var3);
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(gmh::H, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
 
-   @Override
-   public void a(cst $$0, int $$1, int $$2) {
-   }
-
-   @Override
-   public void a(cst $$0, int $$1, cxg $$2) {
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(gmh::H, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

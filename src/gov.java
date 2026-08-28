@@ -1,57 +1,53 @@
-import java.util.BitSet;
-import java.util.Set;
+public class gov implements goi<dvl> {
+   private final gov.a a;
 
-public class gov {
-   private static final int a = jm.values().length;
-   private final BitSet b = new BitSet(a * a);
-
-   public void a(Set<jm> $$0) {
-      for (jm $$1 : $$0) {
-         for (jm $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
-      }
+   public gov(goj.a $$0) {
+      this($$0.f());
    }
 
-   public void a(jm $$0, jm $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   public gov(gey $$0) {
+      this.a = new gov.a($$0.a(gfb.cF));
    }
 
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(jm $$0, jm $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
-
-      for (jm $$1 : jm.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
+   public void a(dvl $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
+      jn $$6 = $$0.m().a(dqq.b, jn.b);
+      cvm $$7 = $$0.s();
+      hgs $$8;
+      if ($$7 == null) {
+         $$8 = gms.i;
+      } else {
+         $$8 = gms.d($$7);
       }
 
-      $$0.append('\n');
+      float $$10 = $$0.a($$1);
+      this.a($$2, $$3, $$4, $$5, $$6, $$10, $$8);
+   }
 
-      for (jm $$2 : jm.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
+   public void a(ffu $$0, glx $$1, int $$2, int $$3, jn $$4, float $$5, hgs $$6) {
+      $$0.a();
+      $$0.a(0.5F, 0.5F, 0.5F);
+      float $$7 = 0.9995F;
+      $$0.b(0.9995F, 0.9995F, 0.9995F);
+      $$0.a($$4.b());
+      $$0.b(1.0F, -1.0F, -1.0F);
+      $$0.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$5);
+      ffy $$8 = $$6.a($$1, this.a::a);
+      this.a.a($$0, $$8, $$2, $$3);
+      $$0.b();
+   }
 
-         for (jm $$3 : jm.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
-         }
+   static class a extends gcv {
+      private final gfc a;
 
-         $$0.append('\n');
+      public a(gfc $$0) {
+         super($$0, gmh::g);
+         this.a = $$0.b("lid");
       }
 
-      return $$0.toString();
+      public void a(float $$0) {
+         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      }
    }
 }

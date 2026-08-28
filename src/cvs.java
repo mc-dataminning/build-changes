@@ -1,136 +1,76 @@
-import javax.annotation.Nullable;
-
-public class cvs extends cxc implements cwb {
-   private final etp a;
-
-   public cvs(etp $$0, cxc.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class cvs extends cwl {
+   public cvs(cwl.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bta a(dgz $$0, cpo $$1, bsz $$2) {
-      cxg $$3 = $$1.b($$2);
-      fbn $$4 = a($$0, $$1, this.a == etr.a ? dgh.b.b : dgh.b.a);
-      if ($$4.d() == fbp.a.a) {
-         return bta.e;
-      } else if ($$4.d() != fbp.a.b) {
-         return bta.e;
+   public bsj a(dai $$0) {
+      dgi $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwx $$3 = $$1.a_($$2);
+      if (!$$3.a(djo.fT) || $$3.c(dmc.c)) {
+         return bsj.e;
+      } else if ($$1.C) {
+         return bsj.a;
       } else {
-         jh $$5 = $$4.b();
-         jm $$6 = $$4.c();
-         jh $$7 = $$5.a($$6);
-         if (!$$0.a($$1, $$5) || !$$1.a($$7, $$6, $$3)) {
-            return bta.d;
-         } else if (this.a == etr.a) {
-            dxo $$8 = $$0.a_($$5);
-            if ($$8.b() instanceof dkl $$9) {
-               cxg $$10 = $$9.a($$1, $$0, $$5, $$8);
-               if (!$$10.f()) {
-                  $$1.b(axf.c.b(this));
-                  $$9.at_().ifPresent($$1x -> $$1.a($$1x, 1.0F, 1.0F));
-                  $$0.a($$1, eck.y, $$5);
-                  cxg $$11 = cxj.a($$3, $$1, $$10);
-                  if (!$$0.C) {
-                     ao.k.a((ary)$$1, $$10);
-                  }
+         dwx $$4 = $$3.b(dmc.c, Boolean.valueOf(true));
+         djm.a($$3, $$4, $$1, $$2);
+         $$1.a($$2, $$4, 2);
+         $$1.c($$2, djo.fT);
+         $$0.n().h(1);
+         $$1.c(1503, $$2, 0);
+         dxc.b $$5 = dmc.b().a($$1, $$2);
+         if ($$5 != null) {
+            ji $$6 = $$5.a().b(-3, 0, -3);
 
-                  return bta.a.a($$11);
+            for (int $$7 = 0; $$7 < 3; $$7++) {
+               for (int $$8 = 0; $$8 < 3; $$8++) {
+                  $$1.a($$6.b($$7, 0, $$8), djo.fS.m(), 2);
                }
             }
 
-            return bta.d;
-         } else {
-            dxo $$12 = $$0.a_($$5);
-            jh $$13 = $$12.b() instanceof dow && this.a == etr.c ? $$5 : $$7;
-            if (this.a($$1, $$0, $$13, $$4)) {
-               this.a($$1, $$0, $$3, $$13);
-               if ($$1 instanceof ary) {
-                  ao.z.a((ary)$$1, $$13, $$3);
-               }
-
-               $$1.b(axf.c.b(this));
-               cxg $$14 = cxj.a($$3, $$1, a($$3, $$1));
-               return bta.a.a($$14);
-            } else {
-               return bta.d;
-            }
+            $$1.b(1038, $$6.b(1, 0, 1), 0);
          }
+
+         return bsj.a;
       }
    }
 
-   public static cxg a(cxg $$0, cpo $$1) {
-      return !$$1.fV() ? new cxg(cxk.rf) : $$0;
+   @Override
+   public int a(cwp $$0, bvg $$1) {
+      return 0;
    }
 
    @Override
-   public void a(@Nullable cpo $$0, dgz $$1, cxg $$2, jh $$3) {
-   }
-
-   @Override
-   public boolean a(@Nullable cpo $$0, dgz $$1, jh $$2, @Nullable fbn $$3) {
-      if (!(this.a instanceof eto $$4)) {
-         return false;
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      cwp $$3 = $$1.b($$2);
+      faw $$4 = a($$0, $$1, dfq.b.a);
+      if ($$4.d() == fay.a.b && $$0.a_($$4.b()).a(djo.fT)) {
+         return bsj.e;
       } else {
-         dkd $$7;
-         boolean $$8;
-         dxo $$6;
-         boolean var10000;
-         label82: {
-            $$6 = $$1.a_($$2);
-            $$7 = $$6.b();
-            $$8 = $$6.a(this.a);
-            label70:
-            if (!$$6.l() && !$$8) {
-               if ($$7 instanceof dow $$9 && $$9.a($$0, $$1, $$2, $$6, this.a)) {
-                  break label70;
-               }
-
-               var10000 = false;
-               break label82;
+         $$1.c($$2);
+         if ($$0 instanceof arc $$5) {
+            ji $$6 = $$5.a(axb.a, $$1.dw(), 100, false);
+            if ($$6 == null) {
+               return bsj.c;
             }
 
-            var10000 = true;
+            cpj $$7 = new cpj($$0, $$1.dB(), $$1.e(0.5), $$1.dH());
+            $$7.a($$3);
+            $$7.a($$6);
+            $$0.a(ebt.K, $$7.du(), ebt.a.a($$1));
+            $$0.b($$7);
+            if ($$1 instanceof ard $$8) {
+               ap.n.a($$8, $$6);
+            }
+
+            float $$9 = ayz.h($$0.A.i(), 0.33F, 0.5F);
+            $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awa.iD, awb.g, 1.0F, $$9);
+            $$3.a(1, $$1);
+            $$1.b(awk.c.b(this));
          }
 
-         boolean $$10 = var10000;
-         if (!$$10) {
-            return $$3 != null && this.a($$0, $$1, $$3.b().a($$3.c()), null);
-         } else if ($$1.G_().i() && this.a.a(axq.a)) {
-            int $$11 = $$2.u();
-            int $$12 = $$2.v();
-            int $$13 = $$2.w();
-            $$1.a($$0, $$2, awv.ju, aww.e, 0.5F, 2.6F + ($$1.A.i() - $$1.A.i()) * 0.8F);
-
-            for (int $$14 = 0; $$14 < 8; $$14++) {
-               $$1.a(ls.Z, (double)$$11 + Math.random(), (double)$$12 + Math.random(), (double)$$13 + Math.random(), 0.0, 0.0, 0.0);
-            }
-
-            return true;
-         } else {
-            if ($$7 instanceof dow $$15 && this.a == etr.c) {
-               $$15.a($$1, $$2, $$6, $$4.a(false));
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-
-            if (!$$1.C && $$8 && !$$6.n()) {
-               $$1.b($$2, true);
-            }
-
-            if (!$$1.a($$2, this.a.g().g(), 11) && !$$6.y().b()) {
-               return false;
-            } else {
-               this.a($$0, $$1, $$2);
-               return true;
-            }
-         }
+         return bsj.b;
       }
-   }
-
-   protected void a(@Nullable cpo $$0, dha $$1, jh $$2) {
-      awu $$3 = this.a.a(axq.b) ? awv.dg : awv.dd;
-      $$1.a($$0, $$2, $$3, aww.e, 1.0F, 1.0F);
-      $$1.a($$0, eck.z, $$2);
    }
 }

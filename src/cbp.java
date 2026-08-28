@@ -1,35 +1,62 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.EnumSet;
 
-public class cbp<E extends cor> extends bxq<E> {
-   private static final double c = 6.0;
-   private static final double d = 20.0;
+public class cbp extends cce {
+   private final bvo a;
 
-   public cbp(int $$0) {
-      super(ImmutableMap.of(cfb.aB, cfc.a, cfb.o, cfc.b, cfb.m, cfc.b, cfb.n, cfc.c, cfb.B, cfc.c, cfb.az, cfc.c, cfb.aG, cfc.c), $$0);
+   public cbp(bvo $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cce.a.a, cce.a.b));
    }
 
-   protected boolean a(arx $$0, E $$1, long $$2) {
-      return true;
+   @Override
+   public boolean b() {
+      return this.a.ct() < 140;
    }
 
-   protected void b(arx $$0, E $$1, long $$2) {
-      $$1.a(awv.CK, 5.0F, 1.0F);
+   @Override
+   public boolean c() {
+      return this.b();
    }
 
-   protected void c(arx $$0, E $$1, long $$2) {
-      if ($$1.c(bwj.m)) {
-         $$1.b(bwj.a);
+   @Override
+   public boolean U_() {
+      return false;
+   }
+
+   @Override
+   public void d() {
+      this.h();
+   }
+
+   private void h() {
+      Iterable<ji> $$0 = ji.b(
+         ayz.a(this.a.dB() - 1.0), this.a.dC(), ayz.a(this.a.dH() - 1.0), ayz.a(this.a.dB() + 1.0), ayz.a(this.a.dD() + 8.0), ayz.a(this.a.dH() + 1.0)
+      );
+      ji $$1 = null;
+
+      for (ji $$2 : $$0) {
+         if (this.a(this.a.dW(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
       }
 
-      $$1.ec().b(cfb.aB);
-      $$1.ec().c(cfb.B).filter($$1::b).ifPresent($$1x -> {
-         if ($$1.a($$1x, 6.0, 20.0)) {
-            $$1.d($$1x);
-         }
+      if ($$1 == null) {
+         $$1 = ji.a(this.a.dB(), this.a.dD() + 8.0, this.a.dH());
+      }
 
-         if (!$$1.ec().a(cfb.az)) {
-            cos.a($$1, $$1x.dw());
-         }
-      });
+      this.a.L().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   }
+
+   @Override
+   public void a() {
+      this.h();
+      this.a.a(0.02F, new fba((double)this.a.bn, (double)this.a.bo, (double)this.a.bp));
+      this.a.a(bvk.a, this.a.dz());
+   }
+
+   private boolean a(dgl $$0, ji $$1) {
+      dwx $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(djo.nF)) && $$2.a(eto.a);
    }
 }

@@ -1,29 +1,29 @@
-public class aao implements zr<aak> {
-   public static final zi<wh, aao> a = zr.a(aao::a, aao::new);
-   private final int b;
+import java.util.HashSet;
+import java.util.Set;
 
-   public aao(int $$0) {
-      this.b = $$0;
+public record aao(Set<kk> c, Set<kk> d) implements zy {
+   public static final ym<vl, aao> a = zy.a(aao::a, aao::new);
+   public static final zy.b<aao> b = zy.a("debug/village_sections");
+
+   private aao(vl $$0) {
+      this($$0.a(HashSet::new, vl::g), $$0.a(HashSet::new, vl::g));
    }
 
-   private aao(wh $$0) {
-      this.b = $$0.readInt();
-   }
-
-   private void a(wh $$0) {
-      $$0.q(this.b);
+   private void a(vl $$0) {
+      $$0.a(this.c, vl::a);
+      $$0.a(this.d, vl::a);
    }
 
    @Override
-   public zt<aao> a() {
-      return aaj.o;
+   public zy.b<aao> a() {
+      return b;
    }
 
-   public void a(aak $$0) {
-      $$0.a(this);
+   public Set<kk> b() {
+      return this.c;
    }
 
-   public int b() {
-      return this.b;
+   public Set<kk> c() {
+      return this.d;
    }
 }

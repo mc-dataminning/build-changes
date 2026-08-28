@@ -1,35 +1,57 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public class egu implements eit {
-   public static final Codec<egu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alp.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               alp.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               ese.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               ese.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, egu::new)
-   );
-   public final List<alp> b;
-   public final List<alp> c;
-   public final jq<esd> d;
-   public final jq<esd> e;
-   public final int f;
+public class egu extends efy<eil> {
+   public egu(Codec<eil> $$0) {
+      super($$0);
+   }
 
-   public egu(List<alp> $$0, List<alp> $$1, jq<esd> $$2, jq<esd> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+   @Override
+   public boolean a(ega<eil> $$0) {
+      dgj $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      eil $$4 = $$0.f();
+      Optional<jn> $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
       } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+         ji $$6 = $$2.a($$5.get().g());
+         a($$1, $$3, $$6, $$4);
+         int $$7 = $$3.i() < $$4.b && eft.c($$1.a_($$2.a($$5.get()))) ? 2 : 1;
+         eft.a($$1, $$2, $$5.get(), $$7, false);
+         return true;
+      }
+   }
+
+   private static Optional<jn> a(dgj $$0, ji $$1, azh $$2) {
+      boolean $$3 = eft.b($$0.a_($$1.d()));
+      boolean $$4 = eft.b($$0.a_($$1.e()));
+      if ($$3 && $$4) {
+         return Optional.of($$2.h() ? jn.a : jn.b);
+      } else if ($$3) {
+         return Optional.of(jn.a);
+      } else {
+         return $$4 ? Optional.of(jn.b) : Optional.empty();
+      }
+   }
+
+   private static void a(dgj $$0, azh $$1, ji $$2, eil $$3) {
+      eft.c($$0, $$2);
+
+      for (jn $$4 : jn.c.a) {
+         if (!($$1.i() > $$3.c)) {
+            ji $$5 = $$2.a($$4);
+            eft.c($$0, $$5);
+            if (!($$1.i() > $$3.d)) {
+               ji $$6 = $$5.a(jn.b($$1));
+               eft.c($$0, $$6);
+               if (!($$1.i() > $$3.e)) {
+                  ji $$7 = $$6.a(jn.b($$1));
+                  eft.c($$0, $$7);
+               }
+            }
+         }
       }
    }
 }

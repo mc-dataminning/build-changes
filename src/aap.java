@@ -1,42 +1,46 @@
-import java.util.UUID;
+public record aap(ji c, float d, float e, float f, float g, float h) implements zy {
+   public static final ym<vl, aap> a = zy.a(aap::a, aap::new);
+   public static final zy.b<aap> b = zy.a("debug/worldgen_attempt");
 
-public record aap(UUID b, aap.a c) implements zr<aak> {
-   public static final zi<wh, aap> a = zr.a(aap::a, aap::new);
-
-   private aap(wh $$0) {
-      this($$0.n(), $$0.b(aap.a.class));
+   private aap(vl $$0) {
+      this($$0.e(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   private void a(vl $$0) {
       $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g);
+      $$0.a(this.h);
    }
 
    @Override
-   public zt<aap> a() {
-      return aaj.p;
+   public zy.b<aap> a() {
+      return b;
    }
 
-   public void a(aak $$0) {
-      $$0.a(this);
-   }
-
-   public aap.a e() {
+   public ji b() {
       return this.c;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
+   public float c() {
+      return this.d;
+   }
 
-      public boolean a() {
-         return this != d && this != e;
-      }
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
    }
 }

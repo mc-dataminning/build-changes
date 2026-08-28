@@ -1,31 +1,31 @@
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dsb extends dog implements dju {
-   public static final MapCodec<dsb> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cwd.q.fieldOf("color").forGetter(dsb::b), t()).apply($$0, dsb::new));
-   private final cwd k;
+public class dsb extends djc {
+   protected static final MapCodec<lx> c = mb.i
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof lx $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a SimpleParticleType: " + $$0), $$0 -> $$0)
+      .fieldOf("particle_options");
+   public static final MapCodec<dsb> d = RecordCodecBuilder.mapCodec($$0 -> $$0.group(c.forGetter($$0x -> $$0x.e), t()).apply($$0, dsb::new));
+   protected final lx e;
 
    @Override
-   public MapCodec<dsb> a() {
-      return j;
+   public MapCodec<? extends dsb> a() {
+      return d;
    }
 
-   public dsb(cwd $$0, dxn.d $$1) {
+   protected dsb(lx $$0, dww.d $$1) {
       super($$1);
-      this.k = $$0;
-      this.l(
-         this.F
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
+      this.e = $$0;
    }
 
    @Override
-   public cwd b() {
-      return this.k;
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + 0.7;
+      double $$6 = (double)$$2.w() + 0.5;
+      $$1.a(lt.ag, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      $$1.a(this.e, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 }

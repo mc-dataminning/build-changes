@@ -1,97 +1,82 @@
-import java.util.Objects;
+public class fvk extends fuy {
+   private final duj u;
+   private foz<duj.a> v;
+   private foz<Boolean> w;
+   private foz<Boolean> x;
+   private duj.a y = duj.a.c;
+   private boolean z;
+   private boolean A;
 
-public class fvk extends fuo implements fvm<ctz> {
-   private final ctz y;
-   private final cth z = new cth() {
-      @Override
-      public void a(cst $$0, int $$1, cxg $$2) {
-         fvk.this.M();
-      }
-
-      @Override
-      public void a(cst $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fvk.this.N();
-         }
-      }
-   };
-
-   public fvk(ctz $$0, cpn $$1, xk $$2) {
-      this.y = $$0;
-   }
-
-   public ctz L() {
-      return this.y;
+   public fvk(duj $$0) {
+      this.u = $$0;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.y.a(this.z);
+   dfi m() {
+      return this.u.b();
    }
 
    @Override
-   public void aP_() {
-      this.m.t.p();
-      super.aP_();
+   int E() {
+      return 135;
    }
 
    @Override
-   public void aJ_() {
-      super.aJ_();
-      this.y.b(this.z);
+   protected void aR_() {
+      super.aR_();
+      this.v = this.c(foz.<duj.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> wo.c("advMode.mode.sequence");
+            case b -> wo.c("advMode.mode.auto");
+            case c -> wo.c("advMode.mode.redstone");
+         };
+      }).a(duj.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, wo.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
+      this.w = this.c(
+         foz.a(wo.c("advMode.mode.conditional"), wo.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.z)
+            .a(this.n / 2 - 50, 165, 100, 20, wo.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
+      );
+      this.x = this.c(
+         foz.a(wo.c("advMode.mode.autoexec.bat"), wo.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.A)
+            .a(this.n / 2 + 50 + 4, 165, 100, 20, wo.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
+      );
+      this.f(false);
+   }
+
+   private void f(boolean $$0) {
+      this.c.j = $$0;
+      this.s.j = $$0;
+      this.v.j = $$0;
+      this.w.j = $$0;
+      this.x.j = $$0;
+   }
+
+   public void G() {
+      dfi $$0 = this.u.b();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.p();
+      this.y = this.u.s();
+      this.z = this.u.t();
+      this.A = this.u.d();
+      this.s.a($$1);
+      this.v.a(this.y);
+      this.w.a(this.z);
+      this.x.a(this.A);
+      this.c($$1);
+      this.f(true);
    }
 
    @Override
-   protected void l() {
-      if (this.m.t.gv()) {
-         this.c(fny.a(xj.d, $$0 -> this.aP_()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(fny.a(xk.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.l();
-      }
+   public void a(flj $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.f(true);
    }
 
    @Override
-   protected void G() {
-      this.g(1);
-   }
-
-   @Override
-   protected void J() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.y.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.m.r.a(this.y.l, $$0);
-   }
-
-   @Override
-   public boolean j() {
-      return false;
-   }
-
-   void M() {
-      cxg $$0 = this.y.l();
-      this.a(Objects.requireNonNullElse(fuo.a.a($$0), fuo.d));
-   }
-
-   void N() {
-      this.a(this.y.m());
-   }
-
-   @Override
-   protected void K() {
-      this.m.t.p();
+   protected void a(dfi $$0) {
+      this.m.L().b(new ahx(ji.a((kb)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
    }
 }

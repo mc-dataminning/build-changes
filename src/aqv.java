@@ -1,25 +1,35 @@
-import java.util.Vector;
-import javax.swing.JList;
-import net.minecraft.server.MinecraftServer;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.Set;
 
-public class aqv extends JList<String> {
-   private final MinecraftServer a;
-   private int b;
+public final class aqv {
+   private final Object2BooleanMap<ard> a = new Object2BooleanOpenHashMap();
 
-   public aqv(MinecraftServer $$0) {
-      this.a = $$0;
-      $$0.b(this::a);
+   public Set<ard> a() {
+      return this.a.keySet();
    }
 
-   public void a() {
-      if (this.b++ % 20 == 0) {
-         Vector<String> $$0 = new Vector<>();
+   public void a(ard $$0, boolean $$1) {
+      this.a.put($$0, $$1);
+   }
 
-         for (int $$1 = 0; $$1 < this.a.ag().t().size(); $$1++) {
-            $$0.add(this.a.ag().t().get($$1).gh().getName());
-         }
+   public void a(ard $$0) {
+      this.a.removeBoolean($$0);
+   }
 
-         this.setListData($$0);
-      }
+   public void b(ard $$0) {
+      this.a.replace($$0, true);
+   }
+
+   public void c(ard $$0) {
+      this.a.replace($$0, false);
+   }
+
+   public boolean d(ard $$0) {
+      return this.a.getOrDefault($$0, true);
+   }
+
+   public boolean e(ard $$0) {
+      return this.a.getBoolean($$0);
    }
 }

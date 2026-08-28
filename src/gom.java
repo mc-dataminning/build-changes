@@ -1,30 +1,58 @@
-public class gom implements gnr<dww> {
-   private final gsj a;
-   private final bac b = bac.a();
+public class gom implements goi<dud> {
+   private final gta a;
 
-   public gom(gns.a $$0) {
-      this.a = $$0.d();
+   public gom(goj.a $$0) {
+      this.a = $$0.e();
    }
 
-   public void a(dww $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      if (dww.a.a($$0.c())) {
-         dgz $$6 = $$0.i();
-         if ($$6 != null) {
-            cxg $$7 = $$0.c().a();
-            if (!$$7.f()) {
-               this.b.b((long)gsh.a($$7));
-               dwx $$8 = $$0.d();
-               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
+   public void a(dud $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.m().c(dxn.by);
+         if ($$6 > 0) {
+            jn $$7 = $$0.c();
+            if ($$7 != null) {
+               cwp $$8 = $$0.d();
+               if (!$$8.f()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == jn.f || $$7 == jn.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = glt.a($$0.i(), $$0.m(), $$0.aA_().a($$7));
+                  this.a.a($$8, cwn.i, $$11, hea.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
             }
          }
       }
    }
 
-   public static void a(float $$0, dgz $$1, fgl $$2, glg $$3, int $$4, cxg $$5, gsj $$6, float $$7, float $$8, bac $$9) {
-      $$2.a();
-      $$2.a(0.5F, 0.4F, 0.5F);
-      $$2.a(a.d.rotationDegrees(azu.i($$0, $$7, $$8)));
-      gsh.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
-      $$2.b();
+   private float[] a(jn $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
+
+      return $$2;
    }
 }

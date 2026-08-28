@@ -1,120 +1,122 @@
-import java.util.Objects;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public interface bwc {
-   String a_ = "AngerTime";
-   String b_ = "AngryAt";
+public class bwc {
+   private static final Map<bur<?>, bwc.a> a = Maps.newHashMap();
 
-   int a();
-
-   void a(int var1);
-
-   @Nullable
-   UUID b();
-
-   void a(@Nullable UUID var1);
-
-   void c();
-
-   default void a_(um $$0) {
-      $$0.a("AngerTime", this.a());
-      if (this.b() != null) {
-         $$0.a("AngryAt", this.b());
+   private static <T extends bvi> void a(bur<T> $$0, bwa $$1, ecs.a $$2, bwc.b<T> $$3) {
+      bwc.a $$4 = a.put($$0, new bwc.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + mb.f.b($$0));
       }
    }
 
-   default void a(dgz $$0, um $$1) {
-      this.a($$1.h("AngerTime"));
-      if ($$0 instanceof arx) {
-         if (!$$1.b("AngryAt")) {
-            this.a(null);
-         } else {
-            UUID $$2 = $$1.a("AngryAt");
-            this.a($$2);
-            bvb $$3 = ((arx)$$0).a($$2);
-            if ($$3 != null) {
-               if ($$3 instanceof bvz $$4) {
-                  this.h($$4);
-                  this.a($$4);
-               }
-
-               if ($$3 instanceof cpo $$5) {
-                  this.h($$5);
-                  this.c($$5);
-               }
-            }
-         }
-      }
+   public static bwa a(bur<?> $$0) {
+      bwc.a $$1 = a.get($$0);
+      return $$1 == null ? bwb.a : $$1.b;
    }
 
-   default void a(arx $$0, boolean $$1) {
-      bvx $$2 = this.O_();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.eF()) && $$3 != null && $$0.a($$3) instanceof bvz) {
-         this.af_();
-      } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cG())) {
-            this.a($$2.cG());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.aq() != bvi.bS || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.af_();
-            }
-         }
-      }
+   public static boolean a(bur<?> $$0, dgl $$1, ji $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   default boolean a(bvx $$0, arx $$1) {
-      if (!this.c($$0)) {
-         return false;
-      } else {
-         return $$0.aq() == bvi.bS && this.a_($$1) ? true : $$0.cG().equals(this.b());
-      }
+   public static ecs.a b(@Nullable bur<?> $$0) {
+      bwc.a $$1 = a.get($$0);
+      return $$1 == null ? ecs.a.f : $$1.a;
    }
 
-   default boolean a_(arx $$0) {
-      return $$0.O().b(dgv.P) && this.ad_() && this.b() == null;
+   public static <T extends buk> boolean a(bur<T> $$0, dgz $$1, buq $$2, ji $$3, azh $$4) {
+      bwc.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   default boolean ad_() {
-      return this.a() > 0;
+   static {
+      a(bur.h, bwb.b, ecs.a.f, cij::a);
+      a(bur.A, bwb.b, ecs.a.f, chz::c);
+      a(bur.I, bwb.b, ecs.a.f, cgw::b);
+      a(bur.L, bwb.b, ecs.a.f, cll::a);
+      a(bur.aj, bwb.b, ecs.a.f, clt::b);
+      a(bur.aX, bwb.b, ecs.a.f, chz::c);
+      a(bur.ba, bwb.b, ecs.a.f, chz::c);
+      a(bur.br, bwb.b, ecs.a.f, cgw::b);
+      a(bur.bA, bwb.b, ecs.a.f, chx::b);
+      a(bur.e, bwb.d, ecs.a.f, cig::c);
+      a(bur.k, bwb.d, ecs.a.f, cgr::b);
+      a(bur.o, bwb.d, ecs.a.f, clx::c);
+      a(bur.q, bwb.d, ecs.a.f, clx::b);
+      a(bur.r, bwb.d, ecs.a.f, clx::c);
+      a(bur.v, bwb.d, ecs.a.f, clx::b);
+      a(bur.z, bwb.d, ecs.a.f, cgx::b);
+      a(bur.C, bwb.d, ecs.a.f, cgx::b);
+      a(bur.F, bwb.d, ecs.a.f, clx::b);
+      a(bur.J, bwb.d, ecs.a.f, cgx::b);
+      a(bur.O, bwb.d, ecs.a.f, clx::b);
+      a(bur.P, bwb.d, ecs.a.f, clo::b);
+      a(bur.Q, bwb.d, ecs.a.f, bvi::a);
+      a(bur.ac, bwb.d, ecs.a.f, cir::c);
+      a(bur.ae, bwb.d, ecs.a.f, clr::b);
+      a(bur.af, bwb.d, ecs.a.f, clx::b);
+      a(bur.ah, bwb.b, ecs.a.f, buy::a);
+      a(bur.ai, bwb.d, ecs.a.f, cix::c);
+      a(bur.am, bwb.d, ecs.a.f, cgx::b);
+      a(bur.an, bwb.d, ecs.a.f, clu::a);
+      a(bur.aq, bwb.d, ecs.a.f, bvi::a);
+      a(bur.ay, bwb.d, ecs.a.f, cgx::b);
+      a(bur.aA, bwb.d, ecs.a.f, clw::b);
+      a(bur.aF, bwb.d, ecs.a.f, chk::c);
+      a(bur.aG, bwb.d, ecs.a.f, cgx::b);
+      a(bur.aJ, bwb.d, ecs.a.e, chl::c);
+      a(bur.aP, bwb.d, ecs.a.e, chn::c);
+      a(bur.aR, bwb.d, ecs.a.f, cgx::b);
+      a(bur.ak, bwb.d, ecs.a.f, cnf::c);
+      a(bur.aS, bwb.d, ecs.a.f, cnl::b);
+      a(bur.aU, bwb.d, ecs.a.f, cly::b);
+      a(bur.aV, bwb.d, ecs.a.f, chp::c);
+      a(bur.aY, bwb.d, ecs.a.f, chr::c);
+      a(bur.bb, bwb.d, ecs.a.f, cgx::b);
+      a(bur.be, bwb.d, ecs.a.f, cme::b);
+      a(bur.bf, bwb.d, ecs.a.f, clx::b);
+      a(bur.bg, bwb.d, ecs.a.f, cjh::c);
+      a(bur.bh, bwb.d, ecs.a.f, cmg::c);
+      a(bur.bl, bwb.d, ecs.a.f, bvi::a);
+      a(bur.bo, bwb.d, ecs.a.f, clx::b);
+      a(bur.bs, bwb.d, ecs.a.f, cmj::a);
+      a(bur.bt, bwb.c, ecs.a.f, cmk::c);
+      a(bur.bB, bwb.d, ecs.a.f, chy::c);
+      a(bur.bD, bwb.d, ecs.a.f, bvi::a);
+      a(bur.bI, bwb.d, ecs.a.f, clx::b);
+      a(bur.bJ, bwb.d, ecs.a.f, clx::b);
+      a(bur.bK, bwb.d, ecs.a.f, clx::b);
+      a(bur.bM, bwb.d, ecs.a.f, cia::c);
+      a(bur.bN, bwb.d, ecs.a.f, clx::c);
+      a(bur.D, bwb.d, ecs.a.f, clx::b);
+      a(bur.E, bwb.d, ecs.a.f, clx::b);
+      a(bur.bO, bwb.d, ecs.a.f, clx::b);
+      a(bur.bP, bwb.d, ecs.a.f, cjl::c);
+      a(bur.bR, bwb.d, ecs.a.f, cms::b);
+      a(bur.bQ, bwb.d, ecs.a.f, clx::b);
+      a(bur.u, bwb.d, ecs.a.f, cgx::b);
+      a(bur.N, bwb.b, ecs.a.f, clt::b);
+      a(bur.T, bwb.a, ecs.a.f, clx::b);
+      a(bur.ab, bwb.a, ecs.a.f, chh::c);
+      a(bur.ao, bwb.a, ecs.a.f, clx::b);
+      a(bur.aO, bwb.a, ecs.a.f, cgx::b);
+      a(bur.aQ, bwb.a, ecs.a.f, bvi::a);
+      a(bur.aZ, bwb.d, ecs.a.f, clx::b);
+      a(bur.bc, bwb.a, ecs.a.f, bvi::a);
+      a(bur.by, bwb.a, ecs.a.f, cgx::b);
+      a(bur.bC, bwb.a, ecs.a.f, clx::b);
+      a(bur.bE, bwb.a, ecs.a.f, clx::b);
+      a(bur.bF, bwb.d, ecs.a.f, bvi::a);
+      a(bur.bG, bwb.a, ecs.a.f, clx::b);
    }
 
-   default void a_(arx $$0, cpo $$1) {
-      if ($$0.O().b(dgv.O)) {
-         if ($$1.cG().equals(this.b())) {
-            this.af_();
-         }
-      }
+   static record a(ecs.a a, bwa b, bwc.b<?> c) {
    }
 
-   default void ae_() {
-      this.af_();
-      this.c();
+   @FunctionalInterface
+   public interface b<T extends buk> {
+      boolean test(bur<T> var1, dgz var2, buq var3, ji var4, azh var5);
    }
-
-   default void af_() {
-      this.a(null);
-      this.a(null);
-      this.h(null);
-      this.a(0);
-   }
-
-   @Nullable
-   bvx eq();
-
-   void a(@Nullable bvx var1);
-
-   void c(@Nullable cpo var1);
-
-   void h(@Nullable bvx var1);
-
-   boolean c(bvx var1);
-
-   @Nullable
-   bvx O_();
 }

@@ -1,60 +1,173 @@
-import java.util.Objects;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public final class asc<T> implements Comparable<asc<?>> {
-   private final asd<T> a;
-   private final int b;
-   private final T c;
-   private long d;
+public abstract class asc implements zo {
+   private static final Logger f = LogUtils.getLogger();
+   public static final int b = 15000;
+   private static final int g = 15000;
+   private static final wo h = wo.c("disconnect.timeout");
+   static final wo c = wo.c("multiplayer.disconnect.unexpected_query_response");
+   protected final MinecraftServer d;
+   protected final vi e;
+   private final boolean i;
+   private long j;
+   private boolean k;
+   private long l;
+   private long m;
+   private boolean n = false;
+   private int o;
+   private volatile boolean p = false;
 
-   protected asc(asd<T> $$0, int $$1, T $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public int a(asc<?> $$0) {
-      int $$1 = Integer.compare(this.b, $$0.b);
-      if ($$1 != 0) {
-         return $$1;
-      } else {
-         int $$2 = Integer.compare(System.identityHashCode(this.a), System.identityHashCode($$0.a));
-         return $$2 != 0 ? $$2 : this.a.a().compare(this.c, (T)$$0.c);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof asc<?> $$1) ? false : this.b == $$1.b && Objects.equals(this.a, $$1.a) && Objects.equals(this.c, $$1.c);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Ticket[" + this.a + " " + this.b + " (" + this.c + ")] at " + this.d;
-   }
-
-   public asd<T> a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   protected void a(long $$0) {
+   public asc(MinecraftServer $$0, vi $$1, ars $$2) {
       this.d = $$0;
+      this.e = $$1;
+      this.j = af.c();
+      this.o = $$2.b();
+      this.i = $$2.d();
    }
 
-   protected boolean b(long $$0) {
-      long $$1 = this.a.b();
-      return $$1 != 0L && $$0 - this.d > $$1;
+   private void l() {
+      if (!this.n) {
+         this.m = af.c();
+         this.n = true;
+      }
+   }
+
+   @Override
+   public void a(vk $$0) {
+      if (this.h()) {
+         f.info("Stopping singleplayer server as player logged out");
+         this.d.a(false);
+      }
+   }
+
+   @Override
+   public void a(yv $$0, Exception $$1) throws z {
+      zo.super.a($$0, $$1);
+      this.d.a($$1, $$0.a());
+   }
+
+   @Override
+   public void a(zr $$0) {
+      if (this.k && $$0.b() == this.l) {
+         int $$1 = (int)(af.c() - this.j);
+         this.o = (this.o * 3 + $$1) / 4;
+         this.k = false;
+      } else if (!this.h()) {
+         this.a(h);
+      }
+   }
+
+   @Override
+   public void a(zs $$0) {
+   }
+
+   @Override
+   public void a(zq $$0) {
+   }
+
+   @Override
+   public void a(zt $$0) {
+      yy.a($$0, this, this.d);
+      if ($$0.e() == zt.a.b && this.d.Z()) {
+         f.info("Disconnecting {} due to resource pack {} rejection", this.i().getName(), $$0.b());
+         this.a(wo.c("multiplayer.requiredTexturePrompt.disconnect"));
+      }
+   }
+
+   @Override
+   public void a(abi $$0) {
+      this.a(c);
+   }
+
+   protected void e() {
+      bor.a().a("keepAlive");
+      long $$0 = af.c();
+      if (!this.h() && $$0 - this.j >= 15000L) {
+         if (this.k) {
+            this.a(h);
+         } else if (this.a($$0)) {
+            this.k = true;
+            this.j = $$0;
+            this.l = $$0;
+            this.b(new zf(this.l));
+         }
+      }
+
+      bor.a().c();
+   }
+
+   private boolean a(long $$0) {
+      if (this.n) {
+         if ($$0 - this.m >= 15000L) {
+            this.a(h);
+         }
+
+         return false;
+      } else {
+         return true;
+      }
+   }
+
+   public void f() {
+      this.p = true;
+   }
+
+   public void g() {
+      this.p = false;
+      this.e.a();
+   }
+
+   public void b(yv<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(yv<?> $$0, @Nullable vv $$1) {
+      if ($$0.d()) {
+         this.l();
+      }
+
+      boolean $$2 = !this.p || !this.d.bx();
+
+      try {
+         this.e.a($$0, $$1, $$2);
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Sending packet");
+         p $$5 = $$4.a("Packet being sent");
+         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
+         throw new z($$4);
+      }
+   }
+
+   public void a(wo $$0) {
+      this.b(new vk($$0));
+   }
+
+   public void b(vk $$0) {
+      this.e.a(new ze($$0.a()), vv.a(() -> this.e.a($$0)));
+      this.e.m();
+      this.d.h(this.e::n);
+   }
+
+   protected boolean h() {
+      return this.d.a(this.i());
+   }
+
+   protected abstract GameProfile i();
+
+   @bag
+   public GameProfile j() {
+      return this.i();
+   }
+
+   public int k() {
+      return this.o;
+   }
+
+   protected ars a(aqn $$0) {
+      return new ars(this.i(), this.o, $$0, this.i);
    }
 }

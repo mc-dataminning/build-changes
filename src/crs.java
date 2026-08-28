@@ -1,145 +1,107 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public interface crs extends bst, btc {
-   fbr du();
+public class crs {
+   private static final Logger a = LogUtils.getLogger();
+   private final cru b;
+   private final Map<aku, crr> c;
+   private final crt d;
 
-   fbm cR();
-
-   @Nullable
-   alo<ewn> v();
-
-   void a(@Nullable alo<ewn> var1);
-
-   long x();
-
-   void a(long var1);
-
-   jz<cxg> B();
-
-   void C();
-
-   dgz dW();
-
-   boolean dR();
-
-   @Override
-   default boolean c() {
-      return this.g();
+   crs(cru $$0, crt $$1, Map<aku, crr> $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   default void a(um $$0, js.a $$1) {
-      if (this.v() != null) {
-         $$0.a("LootTable", this.v().a().toString());
-         if (this.x() != 0L) {
-            $$0.a("LootTableSeed", this.x());
-         }
-      } else {
-         bsu.a($$0, this.B(), $$1);
-      }
+   public boolean a(crt $$0) {
+      return $$0.a(this.d);
    }
 
-   default void b(um $$0, js.a $$1) {
-      this.C();
-      if ($$0.b("LootTable", 8)) {
-         this.a(alo.a(mb.bg, alp.a($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bsu.b($$0, this.B(), $$1);
-      }
+   public crt a() {
+      return this.d;
    }
 
-   default void a(btr $$0, arx $$1, bvb $$2) {
-      if ($$1.O().b(dgv.i)) {
-         bsw.a($$1, $$2, this);
-         bvb $$3 = $$0.c();
-         if ($$3 != null && $$3.aq() == bvi.bS) {
-            cod.a($$1, (cpo)$$3, true);
-         }
-      }
+   public crt a(Iterable<aku> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
    }
 
-   default bta b_(cpo $$0) {
-      $$0.a(this);
-      return bta.a;
+   public crt a(crr... $$0) {
+      return crt.a(this.b, Arrays.asList($$0));
    }
 
-   default void f(@Nullable cpo $$0) {
-      MinecraftServer $$1 = this.dW().p();
-      if (this.v() != null && $$1 != null) {
-         ewn $$2 = $$1.bc().b(this.v());
-         if ($$0 != null) {
-            ao.Q.a((ary)$$0, this.v());
-         }
+   public crt a(Iterable<aku> $$0, Consumer<aku> $$1) {
+      Set<crr> $$2 = Sets.newIdentityHashSet();
 
-         this.a(null);
-         ewl.a $$3 = new ewl.a((arx)this.dW()).a(ezc.f, this.du());
-         if ($$0 != null) {
-            $$3.a($$0.gF()).a(ezc.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(ezb.c), this.x());
-      }
-   }
-
-   default void f() {
-      this.f(null);
-      this.B().clear();
-   }
-
-   default boolean g() {
-      for (cxg $$0 : this.B()) {
-         if (!$$0.f()) {
-            return false;
+      for (aku $$3 : $$0) {
+         crr $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
+         } else {
+            $$2.add($$4);
          }
       }
 
-      return true;
+      return crt.a(this.b, $$2);
    }
 
-   default cxg f_(int $$0) {
-      this.f(null);
-      cxg $$1 = this.B().get($$0);
-      if ($$1.f()) {
-         return cxg.j;
-      } else {
-         this.B().set($$0, cxg.j);
-         return $$1;
+   public Set<aku> b(crt $$0) {
+      Set<aku> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
+         }
+      });
+      return $$1;
+   }
+
+   public Codec<crt> b() {
+      return aku.a.listOf().comapFlatMap($$0 -> {
+         Set<aku> $$1 = new HashSet<>();
+         crt $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
+   }
+
+   public static class a {
+      private final cru a;
+      private int b;
+      private final Map<aku, crr> c = new LinkedHashMap<>();
+
+      public a(String $$0) {
+         this.a = new cru($$0);
       }
-   }
 
-   default cxg g_(int $$0) {
-      this.f(null);
-      return this.B().get($$0);
-   }
+      public crr a(String $$0) {
+         return this.a(aku.b($$0));
+      }
 
-   default cxg b(int $$0, int $$1) {
-      this.f(null);
-      return bsu.a(this.B(), $$0, $$1);
-   }
-
-   default void c(int $$0, cxg $$1) {
-      this.f(null);
-      this.B().set($$0, $$1);
-      $$1.f(this.e_($$1));
-   }
-
-   default bwp h_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bwp() {
-         @Override
-         public cxg a() {
-            return crs.this.g_($$0);
+      public crr a(aku $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            crr $$1 = new crr(this.a, this.b++);
+            crr $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
+            } else {
+               return $$1;
+            }
          }
+      }
 
-         @Override
-         public boolean a(cxg $$0x) {
-            crs.this.c($$0, $$0);
-            return true;
-         }
-      } : bwp.a;
-   }
-
-   default boolean g(cpo $$0) {
-      return !this.dR() && $$0.a(this.cR(), 4.0);
+      public crs a() {
+         crt $$0 = crt.a(this.a, this.c.values());
+         return new crs(this.a, $$0, Map.copyOf(this.c));
+      }
    }
 }

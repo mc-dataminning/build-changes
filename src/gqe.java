@@ -1,22 +1,59 @@
-public abstract class gqe<T extends cnh, S extends haf, M extends gdz<S>> extends gsc<T, S, M> {
-   private static final alp a = alp.b("textures/entity/zombie/zombie.png");
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   protected gqe(grl.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
-      super($$0, $$1, $$2, 0.5F);
-      this.a(new gvp<>(this, $$3, $$4, $$5, $$6, $$0.h()));
+public class gqe implements gpx.a {
+   private final flj a;
+   private final Map<Long, Map<ji, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   gqe(flj $$0) {
+      this.a = $$0;
    }
 
-   public alp a(S $$0) {
-      return a;
+   public void a(long $$0, ji $$1) {
+      Map<ji, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gd();
-      $$1.b = $$0.gu();
-   }
+   @Override
+   public void a(ffu $$0, glx $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.ad();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<ji> $$8 = Sets.newHashSet();
+      Map<ji, Integer> $$9 = Maps.newHashMap();
+      ffy $$10 = $$1.getBuffer(gmh.y());
+      Iterator<Entry<Long, Map<ji, Integer>>> $$11 = this.b.entrySet().iterator();
 
-   protected boolean b(S $$0) {
-      return super.a($$0) || $$0.b;
+      while ($$11.hasNext()) {
+         Entry<Long, Map<ji, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<ji, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<ji, Integer> $$16 : $$14.entrySet()) {
+               ji $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  fav $$19 = new fav(ji.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  gmr.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
+      }
+
+      for (Entry<ji, Integer> $$20 : $$9.entrySet()) {
+         ji $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         gpx.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+      }
    }
 }

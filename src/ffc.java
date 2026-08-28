@@ -1,46 +1,79 @@
-public class ffc {
-   private static final int a = 60;
-   private static final int b = 10;
-   private static final int c = 30;
-   private static final int d = 10;
-   private static final long e = 60000L;
-   private static final long f = 600000L;
-   private final fmd g;
-   private final flz h;
-   private int i;
-   private long j;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-   public ffc(fmd $$0, flz $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$0.h().c();
+public class ffc implements ffd, AutoCloseable {
+   private final int b;
+   private final Deque<ffc.a<?>> c = new ArrayDeque<>();
+
+   public ffc(int $$0) {
+      this.b = $$0;
    }
 
-   public int a() {
-      flv $$0 = this.g.i().c();
-      if (this.h.aO().j()) {
-         return 10;
-      } else {
-         if ($$0 == flv.b) {
-            long $$1 = ae.c() - this.j;
-            if ($$1 > 600000L) {
-               return 10;
-            }
+   public void a() {
+      Iterator<? extends ffc.a<?>> $$0 = this.c.iterator();
 
-            if ($$1 > 60000L) {
-               return Math.min(this.i, 30);
-            }
+      while ($$0.hasNext()) {
+         ffc.a<?> $$1 = (ffc.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
          }
-
-         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
       }
    }
 
-   public void a(int $$0) {
-      this.i = $$0;
+   @Override
+   public <T> T a(fff<T> $$0) {
+      Iterator<? extends ffc.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         ffc.a<?> $$2 = (ffc.a<?>)$$1.next();
+         if ($$2.a.equals($$0)) {
+            $$1.remove();
+            return (T)$$2.b;
+         }
+      }
+
+      return $$0.e();
+   }
+
+   @Override
+   public <T> void a(fff<T> $$0, T $$1) {
+      this.c.addFirst(new ffc.a<>($$0, $$1, this.b));
    }
 
    public void b() {
-      this.j = ae.c();
+      this.c.forEach(ffc.a::close);
+      this.c.clear();
+   }
+
+   @Override
+   public void close() {
+      this.b();
+   }
+
+   @VisibleForTesting
+   protected Collection<ffc.a<?>> c() {
+      return this.c;
+   }
+
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final fff<T> a;
+      final T b;
+      int c;
+
+      a(fff<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public void close() {
+         this.a.a(this.b);
+      }
    }
 }

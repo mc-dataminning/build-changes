@@ -1,24 +1,28 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public record aec(int b, List<csc.a> c) implements zr<acg> {
-   public static final zi<wh, aec> a = zi.a(zg.h, aec::b, csc.a.a.a(zg.a()), aec::e, aec::new);
+public record aec(String b, @Nullable String c) implements yv<abk> {
+   public static final ym<vl, aec> a = yv.a(aec::a, aec::new);
 
-   @Override
-   public zt<aec> a() {
-      return agz.T;
+   private aec(vl $$0) {
+      this($$0.p(), $$0.c(vl::p));
    }
 
-   public void a(acg $$0) {
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, vl::a);
+   }
+
+   @Override
+   public yx<aec> a() {
+      return agd.cn;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
    @Nullable
-   public bvb a(dgz $$0) {
-      return $$0.a(this.b);
-   }
-
-   public List<csc.a> e() {
+   public String e() {
       return this.c;
    }
 }

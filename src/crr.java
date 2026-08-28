@@ -1,12 +1,9 @@
-import java.util.function.Supplier;
+public class crr {
+   final cru a;
+   final long b;
 
-public class crr extends crm {
-   public crr(bvi<? extends crr> $$0, dgz $$1, Supplier<cxc> $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   protected double b(bve $$0) {
-      return (double)($$0.b() * 0.8888889F);
+   crr(cru $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
    }
 }

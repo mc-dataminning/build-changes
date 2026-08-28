@@ -1,14 +1,24 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.OptionalLong;
 
-public class qh extends qj<che> {
-   public qh(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.aa, $$1);
-   }
-
-   @Override
-   protected void a(js.a $$0) {
-      this.b(axv.a).a(chf.a, chf.b, chf.c, chf.d, chf.e, chf.f, chf.g, chf.h, chf.i, chf.j, chf.k, chf.l, chf.m);
-      this.b(axv.b).b(axv.a).a(chf.n, chf.o);
-      this.b(axv.c).a(chf.p, chf.q);
+public class qh {
+   public static void a(qe<eas> $$0) {
+      $$0.a(
+         eaq.a,
+         new eas(OptionalLong.empty(), true, false, false, true, 1.0, true, false, -64, 384, 384, awp.bd, eaq.e, 0.0F, new eas.a(false, true, bru.a(0, 7), 0))
+      );
+      $$0.a(
+         eaq.b,
+         new eas(OptionalLong.of(18000L), false, true, true, false, 8.0, false, true, 0, 256, 128, awp.be, eaq.f, 0.1F, new eas.a(true, false, brl.a(7), 15))
+      );
+      $$0.a(
+         eaq.c,
+         new eas(
+            OptionalLong.of(6000L), false, false, false, false, 1.0, false, false, 0, 256, 256, awp.bf, eaq.g, 0.0F, new eas.a(false, true, bru.a(0, 7), 0)
+         )
+      );
+      $$0.a(
+         eaq.d,
+         new eas(OptionalLong.empty(), true, true, false, true, 1.0, true, false, -64, 384, 384, awp.bd, eaq.e, 0.0F, new eas.a(false, true, bru.a(0, 7), 0))
+      );
    }
 }

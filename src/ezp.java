@@ -1,51 +1,16 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record ezp(Optional<dh> b, jh c) implements ezr {
-   private static final MapCodec<jh> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kl::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kl::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kl::w)
-            )
-            .apply($$0, jh::new)
+public class ezp {
+   private static final Codec<ezo> d = mb.H.q().dispatch(ezo::a, ezn::a);
+   public static final Codec<ezo> a = Codec.lazyInitialized(
+      () -> Codec.either(ezm.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof ezm $$1 ? Either.left($$1) : Either.right($$0))
    );
-   public static final MapCodec<ezp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dh.a.optionalFieldOf("predicate").forGetter(ezp::c), g.forGetter(ezp::d)).apply($$0, ezp::new)
-   );
+   public static final ezn b = a("storage", ezq.a);
+   public static final ezn c = a("context", ezm.b);
 
-   @Override
-   public ezs b() {
-      return ezt.n;
-   }
-
-   public boolean a(ewi $$0) {
-      fbr $$1 = $$0.c(ezc.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
-   }
-
-   @Override
-   public Set<bbd<?>> a() {
-      return Set.of(ezc.f);
-   }
-
-   public static ezr.a a(dh.a $$0) {
-      return () -> new ezp(Optional.of($$0.b()), jh.c);
-   }
-
-   public static ezr.a a(dh.a $$0, jh $$1) {
-      return () -> new ezp(Optional.of($$0.b()), $$1);
-   }
-
-   public Optional<dh> c() {
-      return this.b;
-   }
-
-   public jh d() {
-      return this.c;
+   private static ezn a(String $$0, MapCodec<? extends ezo> $$1) {
+      return ke.a(mb.H, aku.b($$0), new ezn($$1));
    }
 }

@@ -1,23 +1,32 @@
-public interface dkg {
-   boolean b(dhc var1, jh var2, dxo var3);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   boolean a(dgz var1, bac var2, jh var3, dxo var4);
+public class dkg extends djm {
+   public static final MapCodec<dkg> a = b(dkg::new);
+   private static final wo b = wo.c("container.cartography_table");
 
-   void a(arx var1, bac var2, jh var3, dxo var4);
-
-   default jh a(jh $$0) {
-      return switch (this.ar_()) {
-         case a -> $$0.d();
-         case b -> $$0;
-      };
+   @Override
+   public MapCodec<dkg> a() {
+      return a;
    }
 
-   default dkg.a ar_() {
-      return dkg.a.b;
+   protected dkg(dww.d $$0) {
+      super($$0);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.c($$1, $$2));
+         $$3.a(awk.aw);
+      }
+
+      return bsj.a;
+   }
+
+   @Nullable
+   @Override
+   protected bsl b(dwx $$0, dgi $$1, ji $$2) {
+      return new bsr(($$2x, $$3, $$4) -> new csk($$2x, $$3, csp.a($$1, $$2)), b);
    }
 }

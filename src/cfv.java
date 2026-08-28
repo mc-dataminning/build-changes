@@ -1,30 +1,25 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
 
-public class cfv extends cgh<bvx> {
+public class cfv extends cfj<cnz> {
    @Override
-   public Set<cfb<?>> a() {
-      return ImmutableSet.of(cfb.x, cfb.y);
+   public Set<cek<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cek.B)));
    }
 
-   @Override
-   protected void a(arx $$0, bvx $$1) {
-      bwz<?> $$2 = $$1.ec();
-      btr $$3 = $$1.eG();
-      if ($$3 != null) {
-         $$2.a(cfb.x, $$1.eG());
-         bvb $$4 = $$3.d();
-         if ($$4 instanceof bvx) {
-            $$2.a(cfb.y, (bvx)$$4);
-         }
-      } else {
-         $$2.b(cfb.x);
-      }
+   protected void a(arc $$0, cnz $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.aq() == bur.bS)
+         .or(() -> a($$1, $$0xx -> $$0xx.aq() != bur.bS))
+         .ifPresentOrElse($$1x -> $$1.ec().a(cek.B, $$1x), () -> $$1.ec().b(cek.B));
+   }
 
-      $$2.c(cfb.y).ifPresent($$2x -> {
-         if (!$$2x.bL() || $$2x.dW() != $$0) {
-            $$2.b(cfb.y);
-         }
-      });
+   private static Optional<bvg> a(cnz $$0, Predicate<bvg> $$1) {
+      return $$0.ec().c(cek.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
    }
 }

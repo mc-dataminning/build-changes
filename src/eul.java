@@ -1,38 +1,31 @@
-public class eul extends euc {
-   private float m = Float.MAX_VALUE;
-   private euc n;
-   private boolean o;
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
-   public eul(euc $$0) {
-      super($$0.a, $$0.b, $$0.c);
+public abstract class eul {
+   private boolean a;
+
+   public abstract tq a(tq var1, jt.a var2);
+
+   public void c() {
+      this.a(true);
    }
 
-   public eul(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public void a(boolean $$0) {
+      this.a = $$0;
    }
 
-   public void a(float $$0, euc $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
-      }
+   public boolean d() {
+      return this.a;
    }
 
-   public euc d() {
-      return this.n;
-   }
-
-   public void e() {
-      this.o = true;
-   }
-
-   public boolean f() {
-      return this.o;
-   }
-
-   public static eul c(wh $$0) {
-      eul $$1 = new eul($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
+   public tq a(jt.a $$0) {
+      tq $$1 = new tq();
+      $$1.a("data", this.a(new tq(), $$0));
+      uf.e($$1);
+      this.a(false);
       return $$1;
+   }
+
+   public static record a<T extends eul>(Supplier<T> a, BiFunction<tq, jt.a, T> b, ban c) {
    }
 }

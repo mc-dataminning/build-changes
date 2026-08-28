@@ -1,26 +1,5 @@
-import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
 
-public class fmk extends flx {
-   private final BooleanSupplier h;
-
-   public fmk(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, ffg.b.a, $$1, $$2);
-      this.h = $$3;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
-   }
-
-   @Override
-   protected void n() {
-      super.a(false);
-   }
+public interface fmk {
+   int getColor(dwx var1, @Nullable dfk var2, @Nullable ji var3, int var4);
 }

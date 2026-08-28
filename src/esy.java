@@ -1,113 +1,93 @@
-import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public final class esy extends eth<esz.a, esz> {
-   private final jh.a g = new jh.a();
+public abstract class esy {
+   public static final jx<esz> c = new jx<>();
+   protected final dwy<esy, esz> d;
+   private esz a;
+   private final jr.c<esy> b = mb.c.f(this);
 
-   public esy(dzw $$0) {
-      this($$0, new esz($$0));
+   protected esy() {
+      dwy.a<esy, esz> $$0 = new dwy.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(esy::g, esz::new);
+      this.f(this.d.b());
    }
 
-   @VisibleForTesting
-   public esy(dzw $$0, esz $$1) {
-      super($$0, $$1);
+   protected void a(dwy.a<esy, esz> $$0) {
    }
 
-   @Override
-   protected void a(long $$0) {
-      long $$1 = kj.e($$0);
-      if (this.f.b($$1)) {
-         dxo $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, eth.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
-
-         if ($$3 > 0) {
-            this.c($$0, eth.a.a($$3, a($$2)));
-         }
-      }
+   public dwy<esy, esz> f() {
+      return this.d;
    }
 
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dxo $$3 = null;
-
-      for (jm $$4 : d) {
-         if (eth.a.a($$1, $$4)) {
-            long $$5 = jh.a($$0, $$4);
-            if (this.f.b(kj.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dxo $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.b($$8);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = eth.a.b($$1) ? dkf.a.m() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$3, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, eth.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   protected final void f(esz $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = eth.a.a($$1);
-
-      for (jm $$3 : d) {
-         if (eth.a.a($$1, $$3)) {
-            long $$4 = jh.a($$0, $$3);
-            if (this.f.b(kj.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dxo $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, eth.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, eth.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, eth.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
+   public final esz g() {
+      return this.a;
    }
 
-   private int a(long $$0, dxo $$1) {
-      int $$2 = $$1.k();
-      return $$2 > 0 && this.f.j(kj.e($$0)) ? $$2 : 0;
+   public abstract cwl a();
+
+   protected void a(dgi $$0, ji $$1, esz $$2, azh $$3) {
    }
 
-   @Override
-   public void b(dgf $$0) {
-      this.a($$0, true);
-      dzv $$1 = this.e.c($$0.h, $$0.i);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.k();
-            this.c($$0x.a(), eth.a.a($$2, a($$1x)));
-         });
-      }
+   protected void b(arc $$0, ji $$1, dwx $$2, esz $$3) {
+   }
+
+   protected void a(arc $$0, ji $$1, esz $$2, azh $$3) {
+   }
+
+   @Nullable
+   protected lr h() {
+      return null;
+   }
+
+   protected abstract boolean a(esz var1, dfn var2, ji var3, esy var4, jn var5);
+
+   protected abstract fba a(dfn var1, ji var2, esz var3);
+
+   public abstract int a(dgl var1);
+
+   protected boolean i() {
+      return false;
+   }
+
+   protected boolean b() {
+      return false;
+   }
+
+   protected abstract float c();
+
+   public abstract float a(esz var1, dfn var2, ji var3);
+
+   public abstract float a(esz var1);
+
+   protected abstract dwx b(esz var1);
+
+   public abstract boolean c(esz var1);
+
+   public abstract int d(esz var1);
+
+   public boolean a(esy $$0) {
+      return $$0 == this;
+   }
+
+   @Deprecated
+   public boolean a(axf<esy> $$0) {
+      return this.b.a($$0);
+   }
+
+   public abstract fbu b(esz var1, dfn var2, ji var3);
+
+   public Optional<avz> j() {
+      return Optional.empty();
+   }
+
+   @Deprecated
+   public jr.c<esy> k() {
+      return this.b;
    }
 }

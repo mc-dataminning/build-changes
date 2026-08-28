@@ -1,16 +1,38 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public interface avm extends avf {
-   @Override
-   default CompletableFuture<Void> a(avf.a $$0, avl $$1, Executor $$2, Executor $$3) {
-      return $$0.a(bba.a).thenRunAsync(() -> {
-         bpj $$1x = bpi.a();
-         $$1x.a("listener");
-         this.a($$1);
-         $$1x.c();
-      }, $$3);
+public class avm extends avh<GameProfile> {
+   public avm(GameProfile $$0) {
+      super($$0);
    }
 
-   void a(avl var1);
+   public avm(JsonObject $$0) {
+      super(b($$0));
+   }
+
+   @Override
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId() == null ? "" : this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+      }
+   }
+
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
+   }
 }

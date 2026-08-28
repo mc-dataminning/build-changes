@@ -1,181 +1,189 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
 
-public class gmc implements AutoCloseable {
-   private static final alp b = alp.b("textures/environment/sun.png");
-   private static final alp c = alp.b("textures/environment/moon_phases.png");
-   public static final alp a = alp.b("textures/environment/end_sky.png");
-   private static final float d = 512.0F;
-   private final fgo e = fgo.a(fgq.c.h, fgj.e, this::a);
-   private final fgo f = fgo.a(fgq.c.g, fgj.e, $$0 -> this.a($$0, 16.0F));
-   private final fgo g = fgo.a(fgq.c.g, fgj.e, $$0 -> this.a($$0, -16.0F));
-   private final fgo h = fgo.a(fgq.c.h, fgj.j, this::b);
+public record gmc(Map<aku, gmc.d> b, List<gmc.e> c) {
+   public static final Codec<gmc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.unboundedMap(aku.a, gmc.d.b).optionalFieldOf("targets", Map.of()).forGetter(gmc::a),
+               gmc.e.a.listOf().optionalFieldOf("passes", List.of()).forGetter(gmc::b)
+            )
+            .apply($$0, gmc::new)
+   );
 
-   private void a(fgp $$0) {
-      bac $$1 = bac.a(10842L);
-      int $$2 = 1500;
-      float $$3 = 100.0F;
+   public Map<aku, gmc.d> a() {
+      return this.b;
+   }
 
-      for (int $$4 = 0; $$4 < 1500; $$4++) {
-         float $$5 = $$1.i() * 2.0F - 1.0F;
-         float $$6 = $$1.i() * 2.0F - 1.0F;
-         float $$7 = $$1.i() * 2.0F - 1.0F;
-         float $$8 = 0.15F + $$1.i() * 0.1F;
-         float $$9 = azu.k($$5, $$6, $$7);
-         if (!($$9 <= 0.010000001F) && !($$9 >= 1.0F)) {
-            Vector3f $$10 = new Vector3f($$5, $$6, $$7).normalize(100.0F);
-            float $$11 = (float)($$1.j() * (float) Math.PI * 2.0);
-            Matrix3f $$12 = new Matrix3f().rotateTowards(new Vector3f($$10).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$11);
-            $$0.a(new Vector3f($$8, -$$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f($$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, -$$8, 0.0F).mul($$12).add($$10));
-         }
+   public List<gmc.e> b() {
+      return this.c;
+   }
+
+   public static record a(int c, int d) implements gmc.d {
+      public static final Codec<gmc.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ayi.m.fieldOf("width").forGetter(gmc.a::a), ayi.m.fieldOf("height").forGetter(gmc.a::b)).apply($$0, gmc.a::new)
+      );
+
+      public int a() {
+         return this.c;
+      }
+
+      public int b() {
+         return this.d;
       }
    }
 
-   private void a(fgp $$0, float $$1) {
-      float $$2 = Math.signum($$1) * 512.0F;
-      $$0.a(0.0F, $$1, 0.0F);
-
-      for (int $$3 = -180; $$3 <= 180; $$3 += 45) {
-         $$0.a($$2 * azu.b((float)$$3 * (float) (Math.PI / 180.0)), $$1, 512.0F * azu.a((float)$$3 * (float) (Math.PI / 180.0)));
-      }
+   public static record b() implements gmc.d {
+      public static final Codec<gmc.b> a = Codec.unit(gmc.b::new);
    }
 
-   public void a(float $$0, float $$1, float $$2) {
-      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
-      this.f.a(glq.G());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+   public sealed interface c permits gmc.g, gmc.f {
+      Codec<gmc.c> a = Codec.xor(gmc.g.b, gmc.f.b).xmap($$0 -> (gmc.c)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
+
+         return switch ($$0) {
+            case gmc.g $$3 -> Either.left($$3);
+            case gmc.f $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
+
+      String a();
+
+      Set<aku> b();
    }
 
-   public void a(fgl $$0) {
-      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-      $$0.a();
-      $$0.a(0.0F, 12.0F, 0.0F);
-      this.g.a(glq.G());
-      $$0.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+   public sealed interface d permits gmc.b, gmc.a {
+      Codec<gmc.d> b = Codec.either(gmc.a.a, gmc.b.a).xmap($$0 -> (gmc.d)$$0.map(Function.identity(), Function.identity()), $$0 -> {
+         Objects.requireNonNull($$0);
+
+         return switch ($$0) {
+            case gmc.a $$3 -> Either.left($$3);
+            case gmc.b $$4 -> Either.right($$4);
+            default -> throw new MatchException(null, null);
+         };
+      });
    }
 
-   public void a(fgl $$0, glg.a $$1, float $$2, int $$3, float $$4, float $$5, gku $$6) {
-      $$0.a();
-      $$0.a(a.d.rotationDegrees(-90.0F));
-      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
-      this.a($$4, $$1, $$0);
-      this.a($$3, $$4, $$1, $$0);
-      $$1.b();
-      if ($$5 > 0.0F) {
-         this.a($$6, $$5, $$0);
-      }
+   public static record e(aku b, List<gmc.c> c, aku d, List<gmc.h> e) {
+      private static final Codec<List<gmc.c>> f = gmc.c.a.listOf().validate($$0 -> {
+         Set<String> $$1 = new ObjectArraySet($$0.size());
 
-      $$0.b();
-   }
-
-   private void a(float $$0, glg $$1, fgl $$2) {
-      float $$3 = 30.0F;
-      float $$4 = 100.0F;
-      fgp $$5 = $$1.getBuffer(glq.C(b));
-      int $$6 = ayf.a($$0);
-      Matrix4f $$7 = $$2.c().a();
-      $$5.a($$7, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F).a($$6);
-      $$5.a($$7, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F).a($$6);
-   }
-
-   private void a(int $$0, float $$1, glg $$2, fgl $$3) {
-      float $$4 = 20.0F;
-      int $$5 = $$0 % 4;
-      int $$6 = $$0 / 4 % 2;
-      float $$7 = (float)($$5 + 0) / 4.0F;
-      float $$8 = (float)($$6 + 0) / 2.0F;
-      float $$9 = (float)($$5 + 1) / 4.0F;
-      float $$10 = (float)($$6 + 1) / 2.0F;
-      float $$11 = 100.0F;
-      fgp $$12 = $$2.getBuffer(glq.C(c));
-      int $$13 = ayf.a($$1);
-      Matrix4f $$14 = $$3.c().a();
-      $$12.a($$14, -20.0F, -100.0F, 20.0F).a($$9, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, 20.0F).a($$7, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, -20.0F).a($$7, $$8).a($$13);
-      $$12.a($$14, -20.0F, -100.0F, -20.0F).a($$9, $$8).a($$13);
-   }
-
-   private void a(gku $$0, float $$1, fgl $$2) {
-      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
-      $$3.pushMatrix();
-      $$3.mul($$2.c().a());
-      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
-      RenderSystem.setShaderFog(gku.a);
-      this.e.a(glq.J());
-      RenderSystem.setShaderFog($$0);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.popMatrix();
-   }
-
-   public void a(fgl $$0, glg.a $$1, float $$2, int $$3) {
-      $$0.a();
-      $$0.a(a.b.rotationDegrees(90.0F));
-      float $$4 = azu.a($$2) < 0.0F ? 180.0F : 0.0F;
-      $$0.a(a.f.rotationDegrees($$4));
-      $$0.a(a.f.rotationDegrees(90.0F));
-      Matrix4f $$5 = $$0.c().a();
-      fgp $$6 = $$1.getBuffer(glq.I());
-      float $$7 = ayf.i($$3);
-      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
-      int $$8 = ayf.g($$3);
-      int $$9 = 16;
-
-      for (int $$10 = 0; $$10 <= 16; $$10++) {
-         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
-         float $$12 = azu.a($$11);
-         float $$13 = azu.b($$11);
-         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
-      }
-
-      $$0.b();
-   }
-
-   private void b(fgp $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         Matrix4f $$2 = new Matrix4f();
-         switch ($$1) {
-            case 1:
-               $$2.rotationX((float) (Math.PI / 2));
-               break;
-            case 2:
-               $$2.rotationX((float) (-Math.PI / 2));
-               break;
-            case 3:
-               $$2.rotationX((float) Math.PI);
-               break;
-            case 4:
-               $$2.rotationZ((float) (Math.PI / 2));
-               break;
-            case 5:
-               $$2.rotationZ((float) (-Math.PI / 2));
+         for (gmc.c $$2 : $$0) {
+            if (!$$1.add($$2.a())) {
+               return DataResult.error(() -> "Encountered repeated sampler name: " + $$2.a());
+            }
          }
 
-         $$0.a($$2, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
-         $$0.a($$2, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
+         return DataResult.success($$0);
+      });
+      public static final Codec<gmc.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  aku.a.fieldOf("program").forGetter(gmc.e::b),
+                  f.optionalFieldOf("inputs", List.of()).forGetter(gmc.e::c),
+                  aku.a.fieldOf("output").forGetter(gmc.e::d),
+                  gmc.h.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gmc.e::e)
+               )
+               .apply($$0, gmc.e::new)
+      );
+
+      public gmp a() {
+         return new gmp(this.b, ffs.e, gmn.a);
       }
    }
 
-   public void a() {
-      this.h.a(glq.H());
+   public static record f(String c, aku d, boolean e, boolean f) implements gmc.c {
+      public static final Codec<gmc.f> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(gmc.f::a),
+                  aku.a.fieldOf("target").forGetter(gmc.f::c),
+                  Codec.BOOL.optionalFieldOf("use_depth_buffer", false).forGetter(gmc.f::d),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gmc.f::e)
+               )
+               .apply($$0, gmc.f::new)
+      );
+
+      @Override
+      public Set<aku> b() {
+         return Set.of(this.d);
+      }
+
+      @Override
+      public String a() {
+         return this.c;
+      }
+
+      public aku c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
    }
 
-   @Override
-   public void close() {
-      this.e.close();
-      this.f.close();
-      this.g.close();
-      this.h.close();
+   public static record g(String c, aku d, int e, int f, boolean g) implements gmc.c {
+      public static final Codec<gmc.g> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.STRING.fieldOf("sampler_name").forGetter(gmc.g::a),
+                  aku.a.fieldOf("location").forGetter(gmc.g::c),
+                  ayi.m.fieldOf("width").forGetter(gmc.g::d),
+                  ayi.m.fieldOf("height").forGetter(gmc.g::e),
+                  Codec.BOOL.optionalFieldOf("bilinear", false).forGetter(gmc.g::f)
+               )
+               .apply($$0, gmc.g::new)
+      );
+
+      @Override
+      public Set<aku> b() {
+         return Set.of();
+      }
+
+      @Override
+      public String a() {
+         return this.c;
+      }
+
+      public aku c() {
+         return this.d;
+      }
+
+      public int d() {
+         return this.e;
+      }
+
+      public int e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+   }
+
+   public static record h(String b, List<Float> c) {
+      public static final Codec<gmc.h> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gmc.h::a), Codec.FLOAT.sizeLimitedListOf(4).fieldOf("values").forGetter(gmc.h::b))
+               .apply($$0, gmc.h::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public List<Float> b() {
+         return this.c;
+      }
    }
 }

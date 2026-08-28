@@ -1,228 +1,475 @@
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.BiFunction;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.arguments.BoolArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DynamicLike;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public interface dge extends dhb {
-   int g = 16;
+public class dge {
+   public static final int a = 3;
+   static final Logger ac = LogUtils.getLogger();
+   private static final Map<dge.e<?>, dge.f<?>> ad = Maps.newTreeMap(Comparator.comparing($$0 -> $$0.a));
+   public static final dge.e<dge.a> b = a("doFireTick", dge.b.e, dge.a.a(true));
+   public static final dge.e<dge.a> c = a("mobGriefing", dge.b.b, dge.a.a(true));
+   public static final dge.e<dge.a> d = a("keepInventory", dge.b.a, dge.a.a(false));
+   public static final dge.e<dge.a> e = a("doMobSpawning", dge.b.c, dge.a.a(true));
+   public static final dge.e<dge.a> f = a("doMobLoot", dge.b.d, dge.a.a(true));
+   public static final dge.e<dge.a> g = a("projectilesCanBreakBlocks", dge.b.d, dge.a.a(true));
+   public static final dge.e<dge.a> h = a("doTileDrops", dge.b.d, dge.a.a(true));
+   public static final dge.e<dge.a> i = a("doEntityDrops", dge.b.d, dge.a.a(true));
+   public static final dge.e<dge.a> j = a("commandBlockOutput", dge.b.f, dge.a.a(true));
+   public static final dge.e<dge.a> k = a("naturalRegeneration", dge.b.a, dge.a.a(true));
+   public static final dge.e<dge.a> l = a("doDaylightCycle", dge.b.e, dge.a.a(true));
+   public static final dge.e<dge.a> m = a("logAdminCommands", dge.b.f, dge.a.a(true));
+   public static final dge.e<dge.a> n = a("showDeathMessages", dge.b.f, dge.a.a(true));
+   public static final dge.e<dge.d> o = a("randomTickSpeed", dge.b.e, dge.d.a(3));
+   public static final dge.e<dge.a> p = a("sendCommandFeedback", dge.b.f, dge.a.a(true));
+   public static final dge.e<dge.a> q = a("reducedDebugInfo", dge.b.g, dge.a.a(false, ($$0, $$1) -> {
+      byte $$2 = (byte)($$1.a() ? 22 : 23);
 
-   @Nullable
-   duq c_(jh var1);
-
-   default <T extends duq> Optional<T> a(jh $$0, dus<T> $$1) {
-      duq $$2 = this.c_($$0);
-      return $$2 != null && $$2.p() == $$1 ? Optional.of((T)$$2) : Optional.empty();
-   }
-
-   dxo a_(jh var1);
-
-   etq b_(jh var1);
-
-   default int i(jh $$0) {
-      return this.a_($$0).k();
-   }
-
-   default Stream<dxo> a(fbm $$0) {
-      return jh.b($$0).map(this::a_);
-   }
-
-   default fbn a(dgg $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dxo $$2 = this.a_($$1);
-         fbr $$3 = $$0x.b().d($$0x.a());
-         return $$0x.c().test($$2) ? new fbn($$0x.a(), jm.a($$3.d, $$3.e, $$3.f), jh.a((ka)$$0x.a()), false) : null;
-      }, $$0x -> {
-         fbr $$1 = $$0x.b().d($$0x.a());
-         return fbn.a($$0x.a(), jm.a($$1.d, $$1.e, $$1.f), jh.a((ka)$$0x.a()));
-      });
-   }
-
-   default fbn a(dgh $$0) {
-      return a($$0.b(), $$0.a(), $$0, ($$0x, $$1) -> {
-         dxo $$2 = this.a_($$1);
-         etq $$3 = this.b_($$1);
-         fbr $$4 = $$0x.b();
-         fbr $$5 = $$0x.a();
-         fcl $$6 = $$0x.a($$2, this, $$1);
-         fbn $$7 = this.a($$4, $$5, $$1, $$6, $$2);
-         fcl $$8 = $$0x.a($$3, this, $$1);
-         fbn $$9 = $$8.a($$4, $$5, $$1);
-         double $$10 = $$7 == null ? Double.MAX_VALUE : $$0x.b().g($$7.g());
-         double $$11 = $$9 == null ? Double.MAX_VALUE : $$0x.b().g($$9.g());
-         return $$10 <= $$11 ? $$7 : $$9;
-      }, $$0x -> {
-         fbr $$1 = $$0x.b().d($$0x.a());
-         return fbn.a($$0x.a(), jm.a($$1.d, $$1.e, $$1.f), jh.a((ka)$$0x.a()));
-      });
-   }
-
-   @Nullable
-   default fbn a(fbr $$0, fbr $$1, jh $$2, fcl $$3, dxo $$4) {
-      fbn $$5 = $$3.a($$0, $$1, $$2);
-      if ($$5 != null) {
-         fbn $$6 = $$4.i(this, $$2).a($$0, $$1, $$2);
-         if ($$6 != null && $$6.g().d($$0).h() < $$5.g().d($$0).h()) {
-            return $$5.a($$6.c());
-         }
+      for (ard $$3 : $$0.ag().t()) {
+         $$3.f.b(new aco($$3, $$2));
       }
+   }));
+   public static final dge.e<dge.a> r = a("spectatorsGenerateChunks", dge.b.a, dge.a.a(true));
+   public static final dge.e<dge.d> s = a("spawnRadius", dge.b.a, dge.d.a(10));
+   public static final dge.e<dge.a> t = a("disablePlayerMovementCheck", dge.b.a, dge.a.a(false));
+   public static final dge.e<dge.a> u = a("disableElytraMovementCheck", dge.b.a, dge.a.a(false));
+   public static final dge.e<dge.d> v = a("maxEntityCramming", dge.b.b, dge.d.a(24));
+   public static final dge.e<dge.a> w = a("doWeatherCycle", dge.b.e, dge.a.a(true));
+   public static final dge.e<dge.a> x = a("doLimitedCrafting", dge.b.a, dge.a.a(false, ($$0, $$1) -> {
+      for (ard $$2 : $$0.ag().t()) {
+         $$2.f.b(new acs(acs.n, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final dge.e<dge.d> y = a("maxCommandChainLength", dge.b.g, dge.d.a(65536));
+   public static final dge.e<dge.d> z = a("maxCommandForkCount", dge.b.g, dge.d.a(65536));
+   public static final dge.e<dge.d> A = a("commandModificationBlockLimit", dge.b.g, dge.d.a(32768));
+   public static final dge.e<dge.a> B = a("announceAdvancements", dge.b.f, dge.a.a(true));
+   public static final dge.e<dge.a> C = a("disableRaids", dge.b.b, dge.a.a(false));
+   public static final dge.e<dge.a> D = a("doInsomnia", dge.b.c, dge.a.a(true));
+   public static final dge.e<dge.a> E = a("doImmediateRespawn", dge.b.a, dge.a.a(false, ($$0, $$1) -> {
+      for (ard $$2 : $$0.ag().t()) {
+         $$2.f.b(new acs(acs.m, $$1.a() ? 1.0F : 0.0F));
+      }
+   }));
+   public static final dge.e<dge.d> F = a("playersNetherPortalDefaultDelay", dge.b.a, dge.d.a(80));
+   public static final dge.e<dge.d> G = a("playersNetherPortalCreativeDelay", dge.b.a, dge.d.a(0));
+   public static final dge.e<dge.a> H = a("drowningDamage", dge.b.a, dge.a.a(true));
+   public static final dge.e<dge.a> I = a("fallDamage", dge.b.a, dge.a.a(true));
+   public static final dge.e<dge.a> J = a("fireDamage", dge.b.a, dge.a.a(true));
+   public static final dge.e<dge.a> K = a("freezeDamage", dge.b.a, dge.a.a(true));
+   public static final dge.e<dge.a> L = a("doPatrolSpawning", dge.b.c, dge.a.a(true));
+   public static final dge.e<dge.a> M = a("doTraderSpawning", dge.b.c, dge.a.a(true));
+   public static final dge.e<dge.a> N = a("doWardenSpawning", dge.b.c, dge.a.a(true));
+   public static final dge.e<dge.a> O = a("forgiveDeadPlayers", dge.b.b, dge.a.a(true));
+   public static final dge.e<dge.a> P = a("universalAnger", dge.b.b, dge.a.a(false));
+   public static final dge.e<dge.d> Q = a("playersSleepingPercentage", dge.b.a, dge.d.a(100));
+   public static final dge.e<dge.a> R = a("blockExplosionDropDecay", dge.b.d, dge.a.a(true));
+   public static final dge.e<dge.a> S = a("mobExplosionDropDecay", dge.b.d, dge.a.a(true));
+   public static final dge.e<dge.a> T = a("tntExplosionDropDecay", dge.b.d, dge.a.a(false));
+   public static final dge.e<dge.d> U = a("snowAccumulationHeight", dge.b.e, dge.d.a(1));
+   public static final dge.e<dge.a> V = a("waterSourceConversion", dge.b.e, dge.a.a(true));
+   public static final dge.e<dge.a> W = a("lavaSourceConversion", dge.b.e, dge.a.a(false));
+   public static final dge.e<dge.a> X = a("globalSoundEvents", dge.b.g, dge.a.a(true));
+   public static final dge.e<dge.a> Y = a("doVinesSpread", dge.b.e, dge.a.a(true));
+   public static final dge.e<dge.a> Z = a("enderPearlsVanishOnDeath", dge.b.a, dge.a.a(true));
+   public static final dge.e<dge.d> aa = a("minecartMaxSpeed", dge.b.g, dge.d.a(8, 1, 1000, crt.a(crv.d), ($$0, $$1) -> {
+   }));
+   public static final dge.e<dge.d> ab = a("spawnChunkRadius", dge.b.g, dge.d.a(2, 0, 32, crt.a(), ($$0, $$1) -> {
+      arc $$2 = $$0.J();
+      $$2.a($$2.Z(), $$2.aa());
+   }));
+   private final Map<dge.e<?>, dge.g<?>> ae;
+   private final crt af;
 
-      return $$5;
-   }
-
-   default double a(fcl $$0, Supplier<fcl> $$1) {
-      if (!$$0.c()) {
-         return $$0.c(jm.a.b);
+   private static <T extends dge.g<T>> dge.e<T> a(String $$0, dge.b $$1, dge.f<T> $$2) {
+      dge.e<T> $$3 = new dge.e<>($$0, $$1);
+      dge.f<?> $$4 = ad.put($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate game rule registration for " + $$0);
       } else {
-         double $$2 = $$1.get().c(jm.a.b);
-         return $$2 >= 1.0 ? $$2 - 1.0 : Double.NEGATIVE_INFINITY;
+         return $$3;
       }
    }
 
-   default double j(jh $$0) {
-      return this.a(this.a_($$0).g(this, $$0), () -> {
-         jh $$1 = $$0.e();
-         return this.a_($$1).g(this, $$1);
-      });
+   public dge(crt $$0, DynamicLike<?> $$1) {
+      this($$0);
+      this.a($$1);
    }
 
-   static <T, C> T a(fbr $$0, fbr $$1, C $$2, BiFunction<C, jh, T> $$3, Function<C, T> $$4) {
-      if ($$0.equals($$1)) {
-         return $$4.apply($$2);
+   public dge(crt $$0) {
+      this(b($$0).collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0x -> ((dge.f)$$0x.getValue()).a())), $$0);
+   }
+
+   private static Stream<Entry<dge.e<?>, dge.f<?>>> b(crt $$0) {
+      return ad.entrySet().stream().filter($$1 -> $$1.getValue().e.a($$0));
+   }
+
+   private dge(Map<dge.e<?>, dge.g<?>> $$0, crt $$1) {
+      this.ae = $$0;
+      this.af = $$1;
+   }
+
+   public <T extends dge.g<T>> T a(dge.e<T> $$0) {
+      T $$1 = (T)this.ae.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Tried to access invalid game rule");
       } else {
-         double $$5 = azu.d(-1.0E-7, $$1.d, $$0.d);
-         double $$6 = azu.d(-1.0E-7, $$1.e, $$0.e);
-         double $$7 = azu.d(-1.0E-7, $$1.f, $$0.f);
-         double $$8 = azu.d(-1.0E-7, $$0.d, $$1.d);
-         double $$9 = azu.d(-1.0E-7, $$0.e, $$1.e);
-         double $$10 = azu.d(-1.0E-7, $$0.f, $$1.f);
-         int $$11 = azu.a($$8);
-         int $$12 = azu.a($$9);
-         int $$13 = azu.a($$10);
-         jh.a $$14 = new jh.a($$11, $$12, $$13);
-         T $$15 = $$3.apply($$2, $$14);
-         if ($$15 != null) {
-            return $$15;
-         } else {
-            double $$16 = $$5 - $$8;
-            double $$17 = $$6 - $$9;
-            double $$18 = $$7 - $$10;
-            int $$19 = azu.j($$16);
-            int $$20 = azu.j($$17);
-            int $$21 = azu.j($$18);
-            double $$22 = $$19 == 0 ? Double.MAX_VALUE : (double)$$19 / $$16;
-            double $$23 = $$20 == 0 ? Double.MAX_VALUE : (double)$$20 / $$17;
-            double $$24 = $$21 == 0 ? Double.MAX_VALUE : (double)$$21 / $$18;
-            double $$25 = $$22 * ($$19 > 0 ? 1.0 - azu.e($$8) : azu.e($$8));
-            double $$26 = $$23 * ($$20 > 0 ? 1.0 - azu.e($$9) : azu.e($$9));
-            double $$27 = $$24 * ($$21 > 0 ? 1.0 - azu.e($$10) : azu.e($$10));
-
-            while ($$25 <= 1.0 || $$26 <= 1.0 || $$27 <= 1.0) {
-               if ($$25 < $$26) {
-                  if ($$25 < $$27) {
-                     $$11 += $$19;
-                     $$25 += $$22;
-                  } else {
-                     $$13 += $$21;
-                     $$27 += $$24;
-                  }
-               } else if ($$26 < $$27) {
-                  $$12 += $$20;
-                  $$26 += $$23;
-               } else {
-                  $$13 += $$21;
-                  $$27 += $$24;
-               }
-
-               T $$28 = $$3.apply($$2, $$14.d($$11, $$12, $$13));
-               if ($$28 != null) {
-                  return $$28;
-               }
-            }
-
-            return $$4.apply($$2);
-         }
+         return $$1;
       }
    }
 
-   static Iterable<jh> a(fbr $$0, fbr $$1, fbm $$2) {
-      fbr $$3 = $$1.d($$0);
-      Iterable<jh> $$4 = jh.a($$2);
-      if ($$3.h() < (double)azu.l(0.99999F)) {
-         return $$4;
-      } else {
-         Set<jh> $$5 = new ObjectLinkedOpenHashSet();
-         fbr $$6 = $$3.d().c(1.0E-7);
-         fbr $$7 = $$2.h().e($$6);
-         fbr $$8 = $$2.h().d($$3).d($$6);
-         a($$5, $$8, $$7, $$2);
+   public tq a() {
+      tq $$0 = new tq();
+      this.ae.forEach(($$1, $$2) -> $$0.a($$1.a, $$2.b()));
+      return $$0;
+   }
 
-         for (jh $$9 : $$4) {
-            $$5.add($$9.j());
-         }
+   private void a(DynamicLike<?> $$0) {
+      this.ae.forEach(($$1, $$2) -> $$0.get($$1.a).asString().ifSuccess($$2::a));
+   }
 
-         return $$5;
+   public dge a(crt $$0) {
+      return new dge(
+         b($$0)
+            .collect(
+               ImmutableMap.toImmutableMap(
+                  Entry::getKey, $$0x -> this.ae.containsKey($$0x.getKey()) ? this.ae.get($$0x.getKey()) : ((dge.f)$$0x.getValue()).a()
+               )
+            ),
+         $$0
+      );
+   }
+
+   public void a(dge.c $$0) {
+      ad.forEach(($$1, $$2) -> this.a($$0, (dge.e<?>)$$1, (dge.f<?>)$$2));
+   }
+
+   private <T extends dge.g<T>> void a(dge.c $$0, dge.e<?> $$1, dge.f<?> $$2) {
+      if ($$2.e.a(this.af)) {
+         $$0.a($$1, $$2);
+         $$2.a($$0, $$1);
       }
    }
 
-   private static void a(Set<jh> $$0, fbr $$1, fbr $$2, fbm $$3) {
-      fbr $$4 = $$2.d($$1);
-      int $$5 = azu.a($$1.d);
-      int $$6 = azu.a($$1.e);
-      int $$7 = azu.a($$1.f);
-      int $$8 = azu.j($$4.d);
-      int $$9 = azu.j($$4.e);
-      int $$10 = azu.j($$4.f);
-      double $$11 = $$8 == 0 ? Double.MAX_VALUE : (double)$$8 / $$4.d;
-      double $$12 = $$9 == 0 ? Double.MAX_VALUE : (double)$$9 / $$4.e;
-      double $$13 = $$10 == 0 ? Double.MAX_VALUE : (double)$$10 / $$4.f;
-      double $$14 = $$11 * ($$8 > 0 ? 1.0 - azu.e($$1.d) : azu.e($$1.d));
-      double $$15 = $$12 * ($$9 > 0 ? 1.0 - azu.e($$1.e) : azu.e($$1.e));
-      double $$16 = $$13 * ($$10 > 0 ? 1.0 - azu.e($$1.f) : azu.e($$1.f));
-      int $$17 = 0;
+   public void a(dge $$0, @Nullable MinecraftServer $$1) {
+      $$0.ae.keySet().forEach($$2 -> this.a((dge.e<?>)$$2, $$0, $$1));
+   }
 
-      while ($$14 <= 1.0 || $$15 <= 1.0 || $$16 <= 1.0) {
-         if ($$14 < $$15) {
-            if ($$14 < $$16) {
-               $$5 += $$8;
-               $$14 += $$11;
-            } else {
-               $$7 += $$10;
-               $$16 += $$13;
-            }
-         } else if ($$15 < $$16) {
-            $$6 += $$9;
-            $$15 += $$12;
-         } else {
-            $$7 += $$10;
-            $$16 += $$13;
-         }
+   private <T extends dge.g<T>> void a(dge.e<T> $$0, dge $$1, @Nullable MinecraftServer $$2) {
+      T $$3 = $$1.a($$0);
+      this.<T>a($$0).a($$3, $$2);
+   }
 
-         if ($$17++ > 16) {
-            break;
-         }
+   public boolean b(dge.e<dge.a> $$0) {
+      return this.a($$0).a();
+   }
 
-         Optional<fbr> $$18 = fbm.a((double)$$5, (double)$$6, (double)$$7, (double)($$5 + 1), (double)($$6 + 1), (double)($$7 + 1), $$1, $$2);
-         if (!$$18.isEmpty()) {
-            fbr $$19 = $$18.get();
-            double $$20 = azu.a($$19.d, (double)$$5 + 1.0E-5F, (double)$$5 + 1.0 - 1.0E-5F);
-            double $$21 = azu.a($$19.e, (double)$$6 + 1.0E-5F, (double)$$6 + 1.0 - 1.0E-5F);
-            double $$22 = azu.a($$19.f, (double)$$7 + 1.0E-5F, (double)$$7 + 1.0 - 1.0E-5F);
-            int $$23 = azu.a($$20 + $$3.b());
-            int $$24 = azu.a($$21 + $$3.c());
-            int $$25 = azu.a($$22 + $$3.d());
+   public int c(dge.e<dge.d> $$0) {
+      return this.a($$0).a();
+   }
 
-            for (int $$26 = $$5; $$26 <= $$23; $$26++) {
-               for (int $$27 = $$6; $$27 <= $$24; $$27++) {
-                  for (int $$28 = $$7; $$28 <= $$25; $$28++) {
-                     $$0.add(new jh($$26, $$27, $$28));
-                  }
-               }
-            }
+   public static class a extends dge.g<dge.a> {
+      private boolean b;
+
+      static dge.f<dge.a> a(boolean $$0, BiConsumer<MinecraftServer, dge.a> $$1) {
+         return new dge.f<>(BoolArgumentType::bool, $$1x -> new dge.a($$1x, $$0), $$1, dge.c::b, crt.a());
+      }
+
+      static dge.f<dge.a> a(boolean $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
+      }
+
+      public a(dge.f<dge.a> $$0, boolean $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      protected void a(CommandContext<ex> $$0, String $$1) {
+         this.b = BoolArgumentType.getBool($$0, $$1);
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public void a(boolean $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Boolean.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = Boolean.parseBoolean($$0);
+      }
+
+      @Override
+      public int c() {
+         return this.b ? 1 : 0;
+      }
+
+      protected dge.a d() {
+         return this;
+      }
+
+      protected dge.a e() {
+         return new dge.a(this.a, this.b);
+      }
+
+      public void a(dge.a $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
+   }
+
+   public static enum b {
+      a("gamerule.category.player"),
+      b("gamerule.category.mobs"),
+      c("gamerule.category.spawning"),
+      d("gamerule.category.drops"),
+      e("gamerule.category.updates"),
+      f("gamerule.category.chat"),
+      g("gamerule.category.misc");
+
+      private final String h;
+
+      private b(final String $$0) {
+         this.h = $$0;
+      }
+
+      public String a() {
+         return this.h;
+      }
+   }
+
+   public interface c {
+      default <T extends dge.g<T>> void a(dge.e<T> $$0, dge.f<T> $$1) {
+      }
+
+      default void b(dge.e<dge.a> $$0, dge.f<dge.a> $$1) {
+      }
+
+      default void c(dge.e<dge.d> $$0, dge.f<dge.d> $$1) {
+      }
+   }
+
+   public static class d extends dge.g<dge.d> {
+      private int b;
+
+      private static dge.f<dge.d> a(int $$0, BiConsumer<MinecraftServer, dge.d> $$1) {
+         return new dge.f<>(IntegerArgumentType::integer, $$1x -> new dge.d($$1x, $$0), $$1, dge.c::c, crt.a());
+      }
+
+      static dge.f<dge.d> a(int $$0, int $$1, int $$2, crt $$3, BiConsumer<MinecraftServer, dge.d> $$4) {
+         return new dge.f<>(() -> IntegerArgumentType.integer($$1, $$2), $$1x -> new dge.d($$1x, $$0), $$4, dge.c::c, $$3);
+      }
+
+      static dge.f<dge.d> a(int $$0) {
+         return a($$0, ($$0x, $$1) -> {
+         });
+      }
+
+      public d(dge.f<dge.d> $$0, int $$1) {
+         super($$0);
+         this.b = $$1;
+      }
+
+      @Override
+      protected void a(CommandContext<ex> $$0, String $$1) {
+         this.b = IntegerArgumentType.getInteger($$0, $$1);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public void a(int $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0;
+         this.a($$1);
+      }
+
+      @Override
+      public String b() {
+         return Integer.toString(this.b);
+      }
+
+      @Override
+      protected void a(String $$0) {
+         this.b = c($$0);
+      }
+
+      public boolean b(String $$0) {
+         try {
+            StringReader $$1 = new StringReader($$0);
+            this.b = (Integer)this.a.a.get().parse($$1);
+            return !$$1.canRead();
+         } catch (CommandSyntaxException var3) {
+            return false;
          }
       }
+
+      private static int c(String $$0) {
+         if (!$$0.isEmpty()) {
+            try {
+               return Integer.parseInt($$0);
+            } catch (NumberFormatException var2) {
+               dge.ac.warn("Failed to parse integer {}", $$0);
+            }
+         }
+
+         return 0;
+      }
+
+      @Override
+      public int c() {
+         return this.b;
+      }
+
+      protected dge.d d() {
+         return this;
+      }
+
+      protected dge.d e() {
+         return new dge.d(this.a, this.b);
+      }
+
+      public void a(dge.d $$0, @Nullable MinecraftServer $$1) {
+         this.b = $$0.b;
+         this.a($$1);
+      }
+   }
+
+   public static final class e<T extends dge.g<T>> {
+      final String a;
+      private final dge.b b;
+
+      public e(String $$0, dge.b $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public String toString() {
+         return this.a;
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return this == $$0 ? true : $$0 instanceof dge.e && ((dge.e)$$0).a.equals(this.a);
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.hashCode();
+      }
+
+      public String a() {
+         return this.a;
+      }
+
+      public String b() {
+         return "gamerule." + this.a;
+      }
+
+      public dge.b c() {
+         return this.b;
+      }
+   }
+
+   public static class f<T extends dge.g<T>> {
+      final Supplier<ArgumentType<?>> a;
+      private final Function<dge.f<T>, T> b;
+      final BiConsumer<MinecraftServer, T> c;
+      private final dge.h<T> d;
+      final crt e;
+
+      f(Supplier<ArgumentType<?>> $$0, Function<dge.f<T>, T> $$1, BiConsumer<MinecraftServer, T> $$2, dge.h<T> $$3, crt $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      public RequiredArgumentBuilder<ex, ?> a(String $$0) {
+         return ey.a($$0, (ArgumentType<T>)this.a.get());
+      }
+
+      public T a() {
+         return this.b.apply(this);
+      }
+
+      public void a(dge.c $$0, dge.e<T> $$1) {
+         this.d.call($$0, $$1, this);
+      }
+
+      public crt b() {
+         return this.e;
+      }
+   }
+
+   public abstract static class g<T extends dge.g<T>> {
+      protected final dge.f<T> a;
+
+      public g(dge.f<T> $$0) {
+         this.a = $$0;
+      }
+
+      protected abstract void a(CommandContext<ex> var1, String var2);
+
+      public void b(CommandContext<ex> $$0, String $$1) {
+         this.a($$0, $$1);
+         this.a(((ex)$$0.getSource()).l());
+      }
+
+      protected void a(@Nullable MinecraftServer $$0) {
+         if ($$0 != null) {
+            this.a.c.accept($$0, this.g());
+         }
+      }
+
+      protected abstract void a(String var1);
+
+      public abstract String b();
+
+      @Override
+      public String toString() {
+         return this.b();
+      }
+
+      public abstract int c();
+
+      protected abstract T g();
+
+      protected abstract T f();
+
+      public abstract void a(T var1, @Nullable MinecraftServer var2);
+   }
+
+   interface h<T extends dge.g<T>> {
+      void call(dge.c var1, dge.e<T> var2, dge.f<T> var3);
    }
 }

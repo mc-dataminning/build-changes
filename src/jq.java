@@ -1,246 +1,33 @@
-import com.mojang.datafixers.util.Either;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 
-public interface jq<T> {
-   T a();
+public record jq(akt<dgi> d, ji e) {
+   public static final MapCodec<jq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dgi.h.fieldOf("dimension").forGetter(jq::a), ji.a.fieldOf("pos").forGetter(jq::b)).apply($$0, jq::a)
+   );
+   public static final Codec<jq> b = a.codec();
+   public static final ym<ByteBuf, jq> c = ym.a(akt.b(mc.be), jq::a, ji.b, jq::b, jq::a);
 
-   boolean b();
-
-   boolean a(alp var1);
-
-   boolean a(alo<T> var1);
-
-   boolean a(Predicate<alo<T>> var1);
-
-   boolean a(aya<T> var1);
-
-   @Deprecated
-   boolean a(jq<T> var1);
-
-   Stream<aya<T>> c();
-
-   Either<alo<T>, T> d();
-
-   Optional<alo<T>> e();
-
-   jq.b f();
-
-   boolean a(jt<T> var1);
-
-   default String g() {
-      return this.e().map($$0 -> $$0.a().toString()).orElse("[unregistered]");
+   public static jq a(akt<dgi> $$0, ji $$1) {
+      return new jq($$0, $$1);
    }
 
-   static <T> jq<T> a(T $$0) {
-      return new jq.a<>($$0);
+   @Override
+   public String toString() {
+      return this.d + " " + this.e;
    }
 
-   public static record a<T>(T a) implements jq<T> {
-      @Override
-      public boolean b() {
-         return true;
-      }
-
-      @Override
-      public boolean a(alp $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(alo<T> $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(aya<T> $$0) {
-         return false;
-      }
-
-      @Override
-      public boolean a(jq<T> $$0) {
-         return this.a.equals($$0.a());
-      }
-
-      @Override
-      public boolean a(Predicate<alo<T>> $$0) {
-         return false;
-      }
-
-      @Override
-      public Either<alo<T>, T> d() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public Optional<alo<T>> e() {
-         return Optional.empty();
-      }
-
-      @Override
-      public jq.b f() {
-         return jq.b.b;
-      }
-
-      @Override
-      public String toString() {
-         return "Direct{" + this.a + "}";
-      }
-
-      @Override
-      public boolean a(jt<T> $$0) {
-         return true;
-      }
-
-      @Override
-      public Stream<aya<T>> c() {
-         return Stream.of();
-      }
+   public boolean a(akt<dgi> $$0, ji $$1, int $$2) {
+      return this.d.equals($$0) && this.e.l($$1) <= $$2;
    }
 
-   public static enum b {
-      a,
-      b;
+   public akt<dgi> a() {
+      return this.d;
    }
 
-   public static class c<T> implements jq<T> {
-      private final jt<T> a;
-      @Nullable
-      private Set<aya<T>> b;
-      private final jq.c.a c;
-      @Nullable
-      private alo<T> d;
-      @Nullable
-      private T e;
-
-      protected c(jq.c.a $$0, jt<T> $$1, @Nullable alo<T> $$2, @Nullable T $$3) {
-         this.a = $$1;
-         this.c = $$0;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      public static <T> jq.c<T> a(jt<T> $$0, alo<T> $$1) {
-         return new jq.c<>(jq.c.a.a, $$0, $$1, null);
-      }
-
-      @Deprecated
-      public static <T> jq.c<T> a(jt<T> $$0, @Nullable T $$1) {
-         return new jq.c<>(jq.c.a.b, $$0, null, $$1);
-      }
-
-      public alo<T> h() {
-         if (this.d == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.e + "' from registry " + this.a);
-         } else {
-            return this.d;
-         }
-      }
-
-      @Override
-      public T a() {
-         if (this.e == null) {
-            throw new IllegalStateException("Trying to access unbound value '" + this.d + "' from registry " + this.a);
-         } else {
-            return this.e;
-         }
-      }
-
-      @Override
-      public boolean a(alp $$0) {
-         return this.h().a().equals($$0);
-      }
-
-      @Override
-      public boolean a(alo<T> $$0) {
-         return this.h() == $$0;
-      }
-
-      private Set<aya<T>> i() {
-         if (this.b == null) {
-            throw new IllegalStateException("Tags not bound");
-         } else {
-            return this.b;
-         }
-      }
-
-      @Override
-      public boolean a(aya<T> $$0) {
-         return this.i().contains($$0);
-      }
-
-      @Override
-      public boolean a(jq<T> $$0) {
-         return $$0.a(this.h());
-      }
-
-      @Override
-      public boolean a(Predicate<alo<T>> $$0) {
-         return $$0.test(this.h());
-      }
-
-      @Override
-      public boolean a(jt<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public Either<alo<T>, T> d() {
-         return Either.left(this.h());
-      }
-
-      @Override
-      public Optional<alo<T>> e() {
-         return Optional.of(this.h());
-      }
-
-      @Override
-      public jq.b f() {
-         return jq.b.a;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d != null && this.e != null;
-      }
-
-      void b(alo<T> $$0) {
-         if (this.d != null && $$0 != this.d) {
-            throw new IllegalStateException("Can't change holder key: existing=" + this.d + ", new=" + $$0);
-         } else {
-            this.d = $$0;
-         }
-      }
-
-      protected void b(T $$0) {
-         if (this.c == jq.c.a.b && this.e != $$0) {
-            throw new IllegalStateException("Can't change holder " + this.d + " value: existing=" + this.e + ", new=" + $$0);
-         } else {
-            this.e = $$0;
-         }
-      }
-
-      void a(Collection<aya<T>> $$0) {
-         this.b = Set.copyOf($$0);
-      }
-
-      @Override
-      public Stream<aya<T>> c() {
-         return this.i().stream();
-      }
-
-      @Override
-      public String toString() {
-         return "Reference{" + this.d + "=" + this.e + "}";
-      }
-
-      protected static enum a {
-         a,
-         b;
-      }
+   public ji b() {
+      return this.e;
    }
 }

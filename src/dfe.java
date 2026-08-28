@@ -1,24 +1,43 @@
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
+
 public interface dfe {
-   alo<dey> a = a("mob_spawn_equipment");
-   alo<dey> b = a("pillager_spawn_crossbow");
-   alo<dey> c = a("raid/pillager_post_wave_3");
-   alo<dey> d = a("raid/pillager_post_wave_5");
-   alo<dey> e = a("raid/vindicator");
-   alo<dey> f = a("raid/vindicator_post_wave_5");
-   alo<dey> g = a("enderman_loot_drop");
+   void a(@Nullable cox var1);
 
-   static void a(ra<dey> $$0) {
-      jr<ddq> $$1 = $$0.a(mb.aO);
-      $$0.a(a, new dfb($$1.b(axn.l), 5, 17));
-      $$0.a(b, new dfc($$1.b(ddv.K), bsc.a(1)));
-      $$0.a(c, new dfc($$1.b(ddv.J), bsc.a(1)));
-      $$0.a(d, new dfc($$1.b(ddv.J), bsc.a(2)));
-      $$0.a(e, new dfc($$1.b(ddv.n), bsc.a(1)));
-      $$0.a(f, new dfc($$1.b(ddv.n), bsc.a(2)));
-      $$0.a(g, new dfc($$1.b(ddv.v), bsc.a(1)));
+   @Nullable
+   cox gp();
+
+   dfg gr();
+
+   void a(dfg var1);
+
+   void a(dff var1);
+
+   void i(cwp var1);
+
+   int x();
+
+   void s(int var1);
+
+   boolean gs();
+
+   avz gt();
+
+   default boolean gB() {
+      return false;
    }
 
-   static alo<dey> a(String $$0) {
-      return alo.a(mb.aP, alp.b($$0));
+   default void a(cox $$0, wo $$1, int $$2) {
+      OptionalInt $$3 = $$0.a(new bsr(($$0x, $$1x, $$2x) -> new ctn($$0x, $$1x, this), $$1));
+      if ($$3.isPresent()) {
+         dfg $$4 = this.gr();
+         if (!$$4.isEmpty()) {
+            $$0.a($$3.getAsInt(), $$4, $$2, this.x(), this.gs(), this.gB());
+         }
+      }
    }
+
+   boolean gx();
+
+   boolean f(cox var1);
 }

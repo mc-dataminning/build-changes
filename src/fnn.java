@@ -1,9 +1,16 @@
-public interface fnn {
-   boolean a(cuq var1);
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
-   boolean a(double var1, double var3, int var5, cxg var6);
+public class fnn implements fnp {
+   private final aku a;
 
-   void b(cuq var1);
+   public fnn(aku $$0) {
+      this.a = $$0;
+   }
 
-   void a(cuq var1, cte var2);
+   public JsonElement a() {
+      JsonObject $$0 = new JsonObject();
+      $$0.addProperty("parent", this.a.toString());
+      return $$0;
+   }
 }

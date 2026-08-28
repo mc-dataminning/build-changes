@@ -1,43 +1,55 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public interface ech extends azh {
+   float b = 5.9604645E-8F;
+   double c = 1.110223E-16F;
 
-public class ech<T extends ecm> {
-   private final T a;
-   @Nullable
-   private kj b;
+   int c(int var1);
 
-   public ech(T $$0) {
-      this.a = $$0;
+   @Override
+   default int f() {
+      return this.c(32);
    }
 
-   public void a(arx $$0) {
-      this.c($$0);
-   }
+   @Override
+   default int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else if (($$0 & $$0 - 1) == 0) {
+         return (int)((long)$$0 * (long)this.c(31) >> 31);
+      } else {
+         int $$1;
+         int $$2;
+         do {
+            $$1 = this.c(31);
+            $$2 = $$1 % $$0;
+         } while ($$1 - $$2 + ($$0 - 1) < 0);
 
-   public T a() {
-      return this.a;
-   }
-
-   public void b(arx $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
-
-   public void c(arx $$0) {
-      this.a.a().a($$0).map(kj::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(dhc $$0, @Nullable kj $$1, Consumer<ecn> $$2) {
-      if ($$1 != null) {
-         dzj $$3 = $$0.a($$1.a(), $$1.c(), eak.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
-         }
+         return $$2;
       }
+   }
+
+   @Override
+   default long g() {
+      int $$0 = this.c(32);
+      int $$1 = this.c(32);
+      long $$2 = (long)$$0 << 32;
+      return $$2 + (long)$$1;
+   }
+
+   @Override
+   default boolean h() {
+      return this.c(1) != 0;
+   }
+
+   @Override
+   default float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   default double j() {
+      int $$0 = this.c(26);
+      int $$1 = this.c(27);
+      long $$2 = ((long)$$0 << 27) + (long)$$1;
+      return (double)$$2 * 1.110223E-16F;
    }
 }

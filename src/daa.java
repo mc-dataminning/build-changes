@@ -1,32 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public record daa(Optional<jp> c, boolean d) {
-   public static final Codec<daa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jp.b.optionalFieldOf("target").forGetter(daa::a), Codec.BOOL.optionalFieldOf("tracked", true).forGetter(daa::b)).apply($$0, daa::new)
-   );
-   public static final zi<ByteBuf, daa> b = zi.a(jp.c.a(zg::a), daa::a, zg.b, daa::b, daa::new);
+public record daa() implements dab {
+   public static final daa a = new daa();
+   public static final MapCodec<daa> b = MapCodec.unit(a);
+   public static final ym<vz, daa> c = ym.a(a);
 
-   public daa a(arx $$0) {
-      if (this.d && !this.c.isEmpty()) {
-         if (this.c.get().a() != $$0.ai()) {
-            return this;
-         } else {
-            jh $$1 = this.c.get().b();
-            return $$0.k($$1) && $$0.A().a(chf.s, $$1) ? this : new daa(Optional.empty(), true);
-         }
-      } else {
-         return this;
-      }
+   @Override
+   public dab.a<daa> a() {
+      return dab.a.c;
    }
 
-   public Optional<jp> a() {
-      return this.c;
-   }
-
-   public boolean b() {
-      return this.d;
+   @Override
+   public boolean a(dgi $$0, cwp $$1, bvg $$2) {
+      return $$2.eA();
    }
 }

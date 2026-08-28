@@ -1,70 +1,67 @@
-import com.google.common.collect.Lists;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
-import com.mojang.datafixers.util.Unit;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
 public class bfr extends DataFix {
-   public bfr(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private static final Set<String> a = Set.of(
+      "filled_map.buried_treasure",
+      "filled_map.explorer_jungle",
+      "filled_map.explorer_swamp",
+      "filled_map.mansion",
+      "filled_map.monument",
+      "filled_map.trial_chambers",
+      "filled_map.village_desert",
+      "filled_map.village_plains",
+      "filled_map.village_savanna",
+      "filled_map.village_snowy",
+      "filled_map.village_taiga"
+   );
+
+   public bfr(Schema $$0) {
+      super($$0, false);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.a(this.getOutputSchema().getTypeRaw(bin.J));
-   }
-
-   private <R> TypeRewriteRule a(Type<R> $$0) {
-      Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1 = DSL.and(
-         DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList($$0, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
-      );
-      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(bin.s, "minecraft:furnace"));
-      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(bin.s, "minecraft:blast_furnace"));
-      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(bin.s, "minecraft:smoker"));
-      Type<?> $$5 = this.getOutputSchema().getChoiceType(bin.s, "minecraft:furnace");
-      Type<?> $$6 = this.getOutputSchema().getChoiceType(bin.s, "minecraft:blast_furnace");
-      Type<?> $$7 = this.getOutputSchema().getChoiceType(bin.s, "minecraft:smoker");
-      Type<?> $$8 = this.getInputSchema().getType(bin.s);
-      Type<?> $$9 = this.getOutputSchema().getType(bin.s);
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhw.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhw.D.typeName(), bjk.a()));
+      OpticFinder<?> $$2 = $$0.findField("components");
       return this.fixTypeEverywhereTyped(
-         "FurnaceRecipesFix",
-         $$8,
-         $$9,
-         $$8x -> $$8x.updateTyped($$2, $$5, $$2xx -> this.a($$0, $$1, $$2xx))
-               .updateTyped($$3, $$6, $$2xx -> this.a($$0, $$1, $$2xx))
-               .updateTyped($$4, $$7, $$2xx -> this.a($$0, $$1, $$2xx))
+         "ItemStack custom_name to item_name component fix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            Optional<String> $$4 = $$3.map(Pair::getSecond);
+            if ($$4.filter($$0xx -> $$0xx.equals("minecraft:white_banner")).isPresent()) {
+               return $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bfr::b));
+            } else {
+               return $$4.filter($$0xx -> $$0xx.equals("minecraft:filled_map")).isPresent()
+                  ? $$2x.updateTyped($$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), bfr::a))
+                  : $$2x;
+            }
+         }
       );
    }
 
-   private <R> Typed<?> a(Type<R> $$0, Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1, Typed<?> $$2) {
-      Dynamic<?> $$3 = (Dynamic<?>)$$2.getOrCreate(DSL.remainderFinder());
-      int $$4 = $$3.get("RecipesUsedSize").asInt(0);
-      $$3 = $$3.remove("RecipesUsedSize");
-      List<Pair<R, Integer>> $$5 = Lists.newArrayList();
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return a($$0, a::contains);
+   }
 
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         String $$7 = "RecipeLocation" + $$6;
-         String $$8 = "RecipeAmount" + $$6;
-         Optional<? extends Dynamic<?>> $$9 = $$3.get($$7).result();
-         int $$10 = $$3.get($$8).asInt(0);
-         if ($$10 > 0) {
-            $$9.ifPresent($$3x -> {
-               Optional<? extends Pair<R, ? extends Dynamic<?>>> $$4x = $$0.read($$3x).result();
-               $$4x.ifPresent($$2xx -> $$5.add(Pair.of($$2xx.getFirst(), $$10)));
-            });
-         }
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      return a($$0, $$0x -> $$0x.equals("block.minecraft.ominous_banner"));
+   }
 
-         $$3 = $$3.remove($$7).remove($$8);
-      }
-
-      return $$2.set(DSL.remainderFinder(), $$1, Pair.of(Either.left(Pair.of($$5, $$3.emptyMap())), $$3));
+   private static <T> Dynamic<T> a(Dynamic<T> $$0, Predicate<String> $$1) {
+      OptionalDynamic<T> $$2 = $$0.get("minecraft:custom_name");
+      Optional<String> $$3 = $$2.asString().result().flatMap(bam::a).filter($$1);
+      return $$3.isPresent() ? $$0.renameField("minecraft:custom_name", "minecraft:item_name") : $$0;
    }
 }

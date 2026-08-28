@@ -1,15 +1,12 @@
-public enum buf {
-   a(n.j),
-   b(n.m),
-   c(n.j);
+import javax.annotation.Nullable;
 
-   private final n d;
-
-   private buf(final n $$0) {
-      this.d = $$0;
+public record buf(bug a, boolean b, boolean c, @Nullable fca d) {
+   public static buf a(bvi $$0, boolean $$1, boolean $$2) {
+      return new buf(bug.a, $$1, $$2, $$0.cr());
    }
 
-   public n a() {
-      return this.d;
+   @FunctionalInterface
+   public interface a<T extends bvi> {
+      void finalizeConversion(T var1);
    }
 }

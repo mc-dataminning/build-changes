@@ -1,133 +1,39 @@
-public class gcf extends gbh<gyx> {
-   private static final String a = "feather";
-   private final gej b;
-   private final gej c;
-   private final gej d;
-   private final gej e;
-   private final gej f;
-   private final gej g;
-   private final gej i;
+public class gcf extends gca<gyt> {
+   private final gfc[] a = new gfc[9];
 
-   public gcf(gej $$0) {
+   public gcf(gfc $$0) {
       super($$0);
-      this.b = $$0.b("body");
-      this.c = $$0.b("tail");
-      this.d = $$0.b("left_wing");
-      this.e = $$0.b("right_wing");
-      this.f = $$0.b("head");
-      this.g = $$0.b("left_leg");
-      this.i = $$0.b("right_leg");
+
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      $$1.a("body", geo.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), gel.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
-      $$1.a("tail", geo.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), gel.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
-      $$1.a("left_wing", geo.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gel.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      $$1.a("right_wing", geo.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gel.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      get $$2 = $$1.a("head", geo.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), gel.a(0.0F, 15.69F, -2.76F));
-      $$2.a("head2", geo.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), gel.a(0.0F, -2.0F, -1.0F));
-      $$2.a("beak1", geo.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), gel.a(0.0F, -0.5F, -1.5F));
-      $$2.a("beak2", geo.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), gel.a(0.0F, -1.75F, -2.45F));
-      $$2.a("feather", geo.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), gel.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
-      geo $$3 = geo.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
-      $$1.a("left_leg", $$3, gel.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      $$1.a("right_leg", $$3, gel.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      return gep.a($$0, 32, 32);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   public void a(gyx $$0) {
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("body", gfh.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gfe.a(0.0F, 17.6F, 0.0F));
+      azh $$2 = azh.a(1660L);
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), gfh.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gfe.a($$4, 24.6F, $$5));
+      }
+
+      return gfi.a($$0, 64, 32).a(gfl.scaling(4.5F));
+   }
+
+   public void a(gyt $$0) {
       super.a($$0);
-      this.a($$0.c);
-      this.f.e = $$0.V * (float) (Math.PI / 180.0);
-      this.f.f = $$0.U * (float) (Math.PI / 180.0);
-      switch ($$0.c) {
-         case b:
-            this.g.e = this.g.e + azu.b($$0.X * 0.6662F) * 1.4F * $$0.Y;
-            this.i.e = this.i.e + azu.b($$0.X * 0.6662F + (float) Math.PI) * 1.4F * $$0.Y;
-         case a:
-         case e:
-         default:
-            float $$3 = $$0.b * 0.3F;
-            this.f.c += $$3;
-            this.c.e = this.c.e + azu.b($$0.X * 0.6662F) * 0.3F * $$0.Y;
-            this.c.c += $$3;
-            this.b.c += $$3;
-            this.d.g = -0.0873F - $$0.b;
-            this.d.c += $$3;
-            this.e.g = 0.0873F + $$0.b;
-            this.e.c += $$3;
-            this.g.c += $$3;
-            this.i.c += $$3;
-         case c:
-            break;
-         case d:
-            float $$1 = azu.b($$0.p);
-            float $$2 = azu.a($$0.p);
-            this.f.b += $$1;
-            this.f.c += $$2;
-            this.f.e = 0.0F;
-            this.f.f = 0.0F;
-            this.f.g = azu.a($$0.p) * 0.4F;
-            this.b.b += $$1;
-            this.b.c += $$2;
-            this.d.g = -0.0873F - $$0.b;
-            this.d.b += $$1;
-            this.d.c += $$2;
-            this.e.g = 0.0873F + $$0.b;
-            this.e.b += $$1;
-            this.e.c += $$2;
-            this.c.b += $$1;
-            this.c.c += $$2;
-      }
-   }
 
-   private void a(gcf.a $$0) {
-      switch ($$0) {
-         case a:
-            this.g.e += (float) (Math.PI * 2.0 / 9.0);
-            this.i.e += (float) (Math.PI * 2.0 / 9.0);
-         case b:
-         case e:
-         default:
-            break;
-         case c:
-            float $$1 = 1.9F;
-            this.f.c++;
-            this.c.e += (float) (Math.PI / 6);
-            this.c.c++;
-            this.b.c++;
-            this.d.g = -0.0873F;
-            this.d.c++;
-            this.e.g = 0.0873F;
-            this.e.c++;
-            this.g.c++;
-            this.i.c++;
-            this.g.e++;
-            this.i.e++;
-            break;
-         case d:
-            this.g.g = (float) (-Math.PI / 9);
-            this.i.g = (float) (Math.PI / 9);
+      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
+         this.a[$$1].e = 0.2F * ayz.a($$0.u * 0.3F + (float)$$1) + 0.4F;
       }
-   }
-
-   public static gcf.a a(cie $$0) {
-      if ($$0.gB()) {
-         return gcf.a.d;
-      } else if ($$0.x()) {
-         return gcf.a.c;
-      } else {
-         return $$0.gD() ? gcf.a.a : gcf.a.b;
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
    }
 }

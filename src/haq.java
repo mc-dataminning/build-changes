@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface haq {
+public class haq extends gzi {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 }

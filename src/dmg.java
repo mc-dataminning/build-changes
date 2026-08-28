@@ -1,177 +1,147 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dmg extends dob {
-   protected static final fcl c = dkd.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
-   public static final dyf d = dye.B;
+public class dmg extends dmp {
+   public static final MapCodec<dmg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.fieldOf("open").forGetter($$0x -> $$0x.h.c), t()).apply($$0, dmg::new)
+   );
+   private static final int f = 3;
+   private static final int g = 2;
+   private final dmg.a h;
 
-   protected dmg(dxn.d $$0) {
-      super($$0);
+   @Override
+   public MapCodec<? extends dmg> a() {
+      return a;
+   }
+
+   public dmg(dmg.a $$0, dww.d $$1) {
+      super($$0.d, $$0.e, $$1);
+      this.h = $$0;
+   }
+
+   public dmg(boolean $$0, dww.d $$1) {
+      super(dmg.a.a($$0).d, dmg.a.a($$0).e, $$1);
+      this.h = dmg.a.a($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dmg> a();
-
-   @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return c;
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      if (this.h.e() && $$3.a(700) == 0) {
+         dwx $$4 = $$1.a_($$2.e());
+         if ($$4.a(djo.tW)) {
+            $$1.a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), awa.jh, awb.e, 1.0F, 1.0F, false);
+         }
+      }
    }
 
    @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      jh $$3 = $$2.e();
-      return this.b($$1, $$3, $$1.a_($$3));
-   }
+   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.h.d().f, awb.e, 1.0F, 1.0F);
+      }
 
-   protected boolean b(dhc $$0, jh $$1, dxo $$2) {
-      return $$2.a($$0, $$1, jm.b, dsj.c);
+      super.b($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (!this.c((dhc)$$1, $$2, $$0)) {
-         boolean $$4 = $$0.c(d);
-         boolean $$5 = this.a((dgz)$$1, $$2, $$0);
-         if ($$4 && !$$5) {
-            $$1.a($$2, $$0.b(d, Boolean.valueOf(false)), 2);
-         } else if (!$$4) {
-            $$1.a($$2, $$0.b(d, Boolean.valueOf(true)), 2);
-            if (!$$5) {
-               $$1.a($$2, this, this.h($$0), fdn.b);
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (this.c($$0, $$1, $$2, $$3)) {
+         $$1.a(null, $$2, this.h.d().g, awb.e, 1.0F, 1.0F);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private boolean c(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if (!$$1.G_().j()) {
+         return false;
+      } else if ($$1.V() != this.h.c) {
+         return false;
+      } else {
+         dmg.a $$4 = this.h.d();
+         $$1.a($$2, $$4.c(), 3);
+         $$1.a(ebt.c, $$2, ebt.a.a($$0));
+         $$4.a($$1, $$2, $$3);
+         ji.c($$2.b(-3, -2, -3), $$2.b(3, 2, 3)).forEach($$4x -> {
+            dwx $$5 = $$1.a_($$4x);
+            if ($$5 == $$0) {
+               double $$6 = Math.sqrt($$2.j($$4x));
+               int $$7 = $$3.a((int)($$6 * 5.0), (int)($$6 * 10.0));
+               $$1.a($$4x, $$0.b(), $$7);
             }
-         }
+         });
+         return true;
       }
    }
 
    @Override
-   protected int b(dxo $$0, dge $$1, jh $$2, jm $$3) {
-      return $$0.a($$1, $$2, $$3);
-   }
-
-   @Override
-   protected int a(dxo $$0, dge $$1, jh $$2, jm $$3) {
-      if (!$$0.c(d)) {
-         return 0;
-      } else {
-         return $$0.c(aF) == $$3 ? this.a($$1, $$2, $$0) : 0;
+   protected void a(dwx $$0, dgi $$1, ji $$2, buk $$3) {
+      if (!$$1.B_() && $$1.am() != bsg.a && $$3 instanceof cgy $$4 && !$$4.b(btr.s)) {
+         $$4.a(this.b());
       }
    }
 
    @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, dkd $$3, @Nullable euy $$4, boolean $$5) {
-      if ($$0.a((dhc)$$1, $$2)) {
-         this.c($$1, $$2, $$0);
-      } else {
-         duq $$6 = $$0.x() ? $$1.c_($$2) : null;
-         a($$0, $$1, $$2, $$6);
-         $$1.a($$2, false);
+   public btp b() {
+      return new btp(btr.s, 25);
+   }
 
-         for (jm $$7 : jm.values()) {
-            $$1.a($$2.a($$7), this);
-         }
+   public static enum a {
+      a(true, btr.o, 7.0F, awa.jd, awa.je, 16545810),
+      b(false, btr.i, 7.0F, awa.jf, awa.jg, 6250335);
+
+      final boolean c;
+      final jr<btn> d;
+      final float e;
+      final avz f;
+      final avz g;
+      private final int h;
+
+      private a(final boolean $$0, final jr<btn> $$1, final float $$2, final avz $$3, final avz $$4, final int $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
+
+      public dwx a() {
+         return this == a ? djo.ua.m() : djo.tZ.m();
+      }
+
+      public djm b() {
+         return this.c ? djo.tZ : djo.ua;
+      }
+
+      public dwx c() {
+         return this.b().m();
+      }
+
+      public dmg.a d() {
+         return a(!this.c);
+      }
+
+      public boolean e() {
+         return this.c;
+      }
+
+      public static dmg.a a(boolean $$0) {
+         return $$0 ? a : b;
+      }
+
+      public void a(arc $$0, ji $$1, azh $$2) {
+         fba $$3 = $$1.b();
+         double $$4 = 0.5 + $$2.j();
+         fba $$5 = new fba($$2.j() - 0.5, $$2.j() + 1.0, $$2.j() - 0.5);
+         fba $$6 = $$3.e($$5.c($$4));
+         ly $$7 = new ly($$6, this.h, (int)(20.0 * $$4));
+         $$0.a($$7, $$3.d, $$3.e, $$3.f, 1, 0.0, 0.0, 0.0, 0.0);
+      }
+
+      public avz f() {
+         return this.f;
       }
    }
-
-   protected void c(dgz $$0, jh $$1, dxo $$2) {
-      if (!this.c((dhc)$$0, $$1, $$2)) {
-         boolean $$3 = $$2.c(d);
-         boolean $$4 = this.a($$0, $$1, $$2);
-         if ($$3 != $$4 && !$$0.U().b($$1, this)) {
-            fdn $$5 = fdn.c;
-            if (this.b((dge)$$0, $$1, $$2)) {
-               $$5 = fdn.a;
-            } else if ($$3) {
-               $$5 = fdn.b;
-            }
-
-            $$0.a($$1, this, this.h($$2), $$5);
-         }
-      }
-   }
-
-   public boolean c(dhc $$0, jh $$1, dxo $$2) {
-      return false;
-   }
-
-   protected boolean a(dgz $$0, jh $$1, dxo $$2) {
-      return this.b($$0, $$1, $$2) > 0;
-   }
-
-   protected int b(dgz $$0, jh $$1, dxo $$2) {
-      jm $$3 = $$2.c(aF);
-      jh $$4 = $$1.a($$3);
-      int $$5 = $$0.c($$4, $$3);
-      if ($$5 >= 15) {
-         return $$5;
-      } else {
-         dxo $$6 = $$0.a_($$4);
-         return Math.max($$5, $$6.a(dkf.cE) ? $$6.c(dqk.f) : 0);
-      }
-   }
-
-   protected int a(dhr $$0, jh $$1, dxo $$2) {
-      jm $$3 = $$2.c(aF);
-      jm $$4 = $$3.h();
-      jm $$5 = $$3.i();
-      boolean $$6 = this.b();
-      return Math.max($$0.a($$1.a($$4), $$4, $$6), $$0.a($$1.a($$5), $$5, $$6));
-   }
-
-   @Override
-   protected boolean f_(dxo $$0) {
-      return true;
-   }
-
-   @Override
-   public dxo a(dax $$0) {
-      return this.m().b(aF, $$0.g().g());
-   }
-
-   @Override
-   public void a(dgz $$0, jh $$1, dxo $$2, bvx $$3, cxg $$4) {
-      if (this.a($$0, $$1, $$2)) {
-         $$0.a($$1, this, 1);
-      }
-   }
-
-   @Override
-   protected void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      this.d($$1, $$2, $$0);
-   }
-
-   @Override
-   protected void a(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-         this.d($$1, $$2, $$0);
-      }
-   }
-
-   protected void d(dgz $$0, jh $$1, dxo $$2) {
-      jm $$3 = $$2.c(aF);
-      jh $$4 = $$1.a($$3.g());
-      euy $$5 = euu.a($$0, $$3.g(), jm.b);
-      $$0.b($$4, this, $$5);
-      $$0.a($$4, this, $$3, $$5);
-   }
-
-   protected boolean b() {
-      return false;
-   }
-
-   protected int a(dge $$0, jh $$1, dxo $$2) {
-      return 15;
-   }
-
-   public static boolean n(dxo $$0) {
-      return $$0.b() instanceof dmg;
-   }
-
-   public boolean b(dge $$0, jh $$1, dxo $$2) {
-      jm $$3 = $$2.c(aF).g();
-      dxo $$4 = $$0.a_($$1.a($$3));
-      return n($$4) && $$4.c(aF) != $$3;
-   }
-
-   protected abstract int h(dxo var1);
 }

@@ -1,52 +1,28 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.google.gson.JsonObject;
+import com.mojang.authlib.GameProfile;
+import java.io.File;
+import java.util.Objects;
 
-public interface avl extends avo {
-   Set<String> a();
+public class avl extends avi<GameProfile, avm> {
+   public avl(File $$0) {
+      super($$0);
+   }
 
-   List<avj> a(alp var1);
+   @Override
+   protected avh<GameProfile> a(JsonObject $$0) {
+      return new avm($$0);
+   }
 
-   Map<alp, avj> b(String var1, Predicate<alp> var2);
+   public boolean a(GameProfile $$0) {
+      return this.d($$0);
+   }
 
-   Map<alp, List<avj>> c(String var1, Predicate<alp> var2);
+   @Override
+   public String[] a() {
+      return this.d().stream().map(avh::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   }
 
-   Stream<atw> b();
-
-   public static enum a implements avl {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<avj> getResource(alp $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<avj> a(alp $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<alp, avj> b(String $$0, Predicate<alp> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<alp, List<avj>> c(String $$0, Predicate<alp> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<atw> b() {
-         return Stream.of();
-      }
+   protected String b(GameProfile $$0) {
+      return $$0.getId().toString();
    }
 }

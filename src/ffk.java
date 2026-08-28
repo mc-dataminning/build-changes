@@ -1,3 +1,14 @@
-public interface ffk {
-   ffj createMonitor(long var1);
+public enum ffk {
+   a(0),
+   b(1);
+
+   private final int c;
+
+   private ffk(final int $$0) {
+      this.c = $$0;
+   }
+
+   public int a() {
+      return this.c;
+   }
 }

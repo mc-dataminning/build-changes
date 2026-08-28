@@ -1,50 +1,21 @@
-public class hew extends hem {
-   private static final float n = 0.0F;
-   private static final float o = 0.7F;
-   private static final float p = 0.0F;
-   private static final float q = 1.0F;
-   private static final float r = 0.0025F;
-   private final crn s;
-   private float t = 0.0F;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public hew(crn $$0) {
-      super(awv.pl, aww.g, hfd.t());
-      this.s = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.0F;
-      this.f = (double)((float)$$0.dB());
-      this.g = (double)((float)$$0.dD());
-      this.h = (double)((float)$$0.dH());
+public class hew implements hen {
+   public static final MapCodec<hew> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azi.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, hew::new));
+   private final azi c;
+
+   public hew(azi $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public boolean s() {
-      return !this.s.bb();
+   public void a(aup $$0, hen.a $$1) {
+      $$1.a(this.c.c());
    }
 
    @Override
-   public boolean r() {
-      return true;
-   }
-
-   @Override
-   public void q() {
-      if (this.s.dR()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.s.dB());
-         this.g = (double)((float)this.s.dD());
-         this.h = (double)((float)this.s.dH());
-         float $$0 = (float)this.s.dz().i();
-         boolean $$1 = !this.s.cq() && this.s.l() instanceof csc;
-         if ($$0 >= 0.01F && this.s.dW().u().i() && !$$1) {
-            this.t = azu.a(this.t + 0.0025F, 0.0F, 1.0F);
-            this.d = azu.h(azu.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
-         } else {
-            this.t = 0.0F;
-            this.d = 0.0F;
-         }
-      }
+   public hep a() {
+      return heq.c;
    }
 }

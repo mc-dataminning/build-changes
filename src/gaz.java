@@ -1,42 +1,30 @@
-public class gaz extends gbh<gxj> {
-   private final gej a;
-   private final gej b;
-   private final gej c;
-   private final gej d;
-   private final gej e;
-   private static final int f = 6;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
 
-   public gaz(gej $$0) {
-      super($$0);
-      this.a = $$0.b("head");
-      this.c = $$0.b("right_hind_leg");
-      this.b = $$0.b("left_hind_leg");
-      this.e = $$0.b("right_front_leg");
-      this.d = $$0.b("left_front_leg");
+public record gaz(boolean a, float b, float c, float d, float e, float f, Set<String> g) implements gfl {
+   public gaz(Set<String> $$0) {
+      this(false, 5.0F, 2.0F, $$0);
    }
 
-   public static gep a(gen $$0) {
-      ger $$1 = new ger();
-      get $$2 = $$1.a();
-      $$2.a("head", geo.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gel.a(0.0F, 6.0F, 0.0F));
-      $$2.a("body", geo.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gel.a(0.0F, 6.0F, 0.0F));
-      geo $$3 = geo.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$3, gel.a(-2.0F, 18.0F, 4.0F));
-      $$2.a("left_hind_leg", $$3, gel.a(2.0F, 18.0F, 4.0F));
-      $$2.a("right_front_leg", $$3, gel.a(-2.0F, 18.0F, -4.0F));
-      $$2.a("left_front_leg", $$3, gel.a(2.0F, 18.0F, -4.0F));
-      return gep.a($$1, 64, 32);
+   public gaz(boolean $$0, float $$1, float $$2, Set<String> $$3) {
+      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F, $$3);
    }
 
-   public void a(gxj $$0) {
-      super.a($$0);
-      this.a.f = $$0.U * (float) (Math.PI / 180.0);
-      this.a.e = $$0.V * (float) (Math.PI / 180.0);
-      float $$1 = $$0.Y;
-      float $$2 = $$0.X;
-      this.b.e = azu.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.c.e = azu.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.d.e = azu.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.e.e = azu.b($$2 * 0.6662F) * 1.4F * $$1;
+   @Override
+   public gfk apply(gfk $$0) {
+      float $$1 = this.a ? 1.5F / this.d : 1.0F;
+      float $$2 = 1.0F / this.e;
+      UnaryOperator<gfe> $$3 = $$1x -> $$1x.c(0.0F, this.b, this.c).b($$1);
+      UnaryOperator<gfe> $$4 = $$1x -> $$1x.c(0.0F, this.f, 0.0F).b($$2);
+      gfk $$5 = new gfk();
+
+      for (Entry<String, gfm> $$6 : $$0.a().a()) {
+         String $$7 = $$6.getKey();
+         gfm $$8 = $$6.getValue();
+         $$5.a().a($$7, $$8.a(this.g.contains($$7) ? $$3 : $$4));
+      }
+
+      return $$5;
    }
 }

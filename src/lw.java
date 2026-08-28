@@ -1,24 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class lw extends lr<lw> implements lq {
-   private final MapCodec<lw> a = MapCodec.unit(this::e);
-   private final zi<wv, lw> b = zi.a(this);
+public class lw implements lr {
+   public static final MapCodec<lw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.INT.fieldOf("delay").forGetter($$0x -> $$0x.c)).apply($$0, lw::new));
+   public static final ym<vz, lw> b = ym.a(yk.h, $$0 -> $$0.c, lw::new);
+   private final int c;
 
-   protected lw(boolean $$0) {
-      super($$0);
-   }
-
-   public lw e() {
-      return this;
-   }
-
-   @Override
-   public MapCodec<lw> c() {
-      return this.a;
+   public lw(int $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public zi<wv, lw> d() {
-      return this.b;
+   public ls<lw> a() {
+      return lt.aX;
+   }
+
+   public int b() {
+      return this.c;
    }
 }

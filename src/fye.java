@@ -1,57 +1,51 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.List;
 
-public class fye extends fxx<ggp.a> {
-   private static final int C = 85;
-   private static final int D = 178;
-   private static final xk E = xk.c("gui.abuseReport.skin.title");
-   private foq F;
-   private fny G;
+public class fye extends fyh<cse> {
+   private static final fqf h = new fqf(
+      aku.b("recipe_book/furnace_filter_enabled"),
+      aku.b("recipe_book/furnace_filter_disabled"),
+      aku.b("recipe_book/furnace_filter_enabled_highlighted"),
+      aku.b("recipe_book/furnace_filter_disabled_highlighted")
+   );
+   private final wo i;
 
-   private fye(ftr $$0, ggo $$1, ggp.a $$2) {
-      super(E, $$0, $$1, $$2);
-   }
-
-   public fye(ftr $$0, ggo $$1, UUID $$2, Supplier<hch> $$3) {
-      this($$0, $$1, new ggp.a($$2, $$3, $$1.a().b()));
-   }
-
-   public fye(ftr $$0, ggo $$1, ggp $$2) {
-      this($$0, $$1, new ggp.a($$2, $$1.a().b()));
+   public fye(cse $$0, wo $$1, List<fyh.a> $$2) {
+      super($$0, $$2);
+      this.i = $$1;
    }
 
    @Override
-   protected void E() {
-      frr $$0 = this.z.a(frr.e().a(8));
-      $$0.c().e();
-      $$0.a(new foz(85, 120, this.m.aS(), this.A.e().a()));
-      frr $$1 = $$0.a(frr.d().a(8));
-      this.G = fny.a(c, $$0x -> this.m.a(new fyd(this, this.A.i(), ggn.b, $$0xx -> {
-            this.A.a($$0xx);
-            this.G();
-         }))).a(178).a();
-      $$1.a(frj.a(this.p, this.G, b));
-      this.F = this.a(178, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.G();
-      });
-      $$1.a(frj.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
+   protected void a() {
+      this.e.a(h);
    }
 
    @Override
-   protected void G() {
-      ggm $$0 = this.A.i();
-      if ($$0 != null) {
-         this.G.b($$0.b());
-      } else {
-         this.G.b(c);
+   protected boolean a(ctz $$0) {
+      return switch ($$0.d) {
+         case 0, 1, 2 -> true;
+         default -> false;
+      };
+   }
+
+   @Override
+   protected void a(fyf $$0, dcj $$1, bak $$2) {
+      $$0.b(this.f.l(), $$2, $$1.d());
+      if ($$1 instanceof dci $$3) {
+         $$0.a(this.f.k.get(0), $$2, $$3.b());
+         ctz $$4 = this.f.k.get(1);
+         if ($$4.g().f()) {
+            $$0.a($$4, $$2, $$3.c());
+         }
       }
-
-      super.G();
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
+   protected wo b() {
+      return this.i;
+   }
+
+   @Override
+   protected void a(fyl $$0, cpc $$1) {
+      $$0.a($$1, $$0x -> $$0x instanceof dci);
    }
 }

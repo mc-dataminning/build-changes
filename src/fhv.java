@@ -1,28 +1,20 @@
 import com.google.gson.JsonObject;
-import com.mojang.logging.LogUtils;
-import java.util.Date;
-import java.util.UUID;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class fhv extends fiq {
-   private static final Logger f = LogUtils.getLogger();
+public class fhv extends fhz {
+   @Nullable
    public String a;
-   public String b;
-   public String c;
-   public UUID d;
-   public Date e;
+   public long b;
+   public long c;
 
    public static fhv a(JsonObject $$0) {
       fhv $$1 = new fhv();
 
       try {
-         $$1.a = fkm.b("invitationId", $$0, "");
-         $$1.b = fkm.b("worldName", $$0, "");
-         $$1.c = fkm.b("worldOwnerName", $$0, "");
-         $$1.d = fkm.a("worldOwnerUuid", $$0, ae.e);
-         $$1.e = fkm.b("date", $$0);
+         $$1.a = fjv.b("profileUuid", $$0, null);
+         $$1.b = fjv.a("joinTime", $$0, Long.MIN_VALUE);
+         $$1.c = fjv.a("leaveTime", $$0, Long.MIN_VALUE);
       } catch (Exception var3) {
-         f.error("Could not parse PendingInvite: {}", var3.getMessage());
       }
 
       return $$1;

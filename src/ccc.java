@@ -1,83 +1,81 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class ccc<T extends bvx> extends ccv {
-   protected final bwf a;
-   private final double i;
-   private final double j;
+public class ccc extends cce {
+   private final bwd a;
    @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected eue d;
-   protected final cfj e;
-   protected final Class<T> f;
-   protected final Predicate<bvx> g;
-   protected final Predicate<bvx> h;
-   private final cgo k;
+   private bvg b;
+   private final double c;
+   private final ces d;
+   private int e;
+   private final float f;
+   private final float g;
+   private float h;
 
-   public ccc(bwf $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bvg.e::test);
-   }
-
-   public ccc(bwf $$0, Class<T> $$1, Predicate<bvx> $$2, float $$3, double $$4, double $$5, Predicate<bvx> $$6) {
+   public ccc(bwd $$0, double $$1, float $$2, float $$3) {
       this.a = $$0;
-      this.f = $$1;
+      this.c = $$1;
+      this.d = $$0.L();
       this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.L();
-      this.a(EnumSet.of(ccv.a.a));
-      this.k = cgo.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
-   }
-
-   public ccc(bwf $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bvx> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
+      this.f = $$3;
+      this.a(EnumSet.of(cce.a.a, cce.a.b));
+      if (!($$0.L() instanceof cer) && !($$0.L() instanceof ceq)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+      }
    }
 
    @Override
    public boolean b() {
-      this.b = a(this.a)
-         .a(this.a.dW().a(this.f, this.a.cR().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dB(), this.a.dD(), this.a.dH());
-      if (this.b == null) {
+      bvg $$0 = this.a.ag_();
+      if ($$0 == null) {
+         return false;
+      } else if (this.a.gs()) {
+         return false;
+      } else if (this.a.g((buk)$$0) < (double)(this.g * this.g)) {
          return false;
       } else {
-         fbr $$0 = cgs.a(this.a, 16, 7, this.b.du());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
-            return this.d != null;
-         }
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
    public boolean c() {
-      return !this.e.m();
+      if (this.d.k()) {
+         return false;
+      } else {
+         return this.a.gs() ? false : !(this.a.g((buk)this.b) <= (double)(this.f * this.f));
+      }
    }
 
    @Override
    public void d() {
-      this.e.a(this.d, this.i);
+      this.e = 0;
+      this.h = this.a.a(etq.j);
+      this.a.a(etq.j, 0.0F);
    }
 
    @Override
    public void e() {
       this.b = null;
+      this.d.m();
+      this.a.a(etq.j, this.h);
    }
 
    @Override
    public void a() {
-      if (this.a.g((bvb)this.b) < 49.0) {
-         this.a.L().a(this.j);
-      } else {
-         this.a.L().a(this.i);
+      boolean $$0 = this.a.gr();
+      if (!$$0) {
+         this.a.H().a(this.b, 10.0F, (float)this.a.aa());
+      }
+
+      if (--this.e <= 0) {
+         this.e = this.a(10);
+         if ($$0) {
+            this.a.gq();
+         } else {
+            this.d.a(this.b, this.c);
+         }
       }
    }
 }

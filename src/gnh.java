@@ -1,16 +1,4 @@
-import com.google.common.collect.Streams;
-import java.util.function.Predicate;
+import org.joml.Vector3f;
 
-public class gnh implements gne {
-   public static final String a = "OR";
-   private final Iterable<? extends gne> d;
-
-   public gnh(Iterable<? extends gne> $$0) {
-      this.d = $$0;
-   }
-
-   @Override
-   public Predicate<dxo> getPredicate(dxp<dkd, dxo> $$0) {
-      return ae.b(Streams.stream(this.d).map($$1 -> $$1.getPredicate($$0)).toList());
-   }
+public record gnh(Vector3f a, jn.a b, float c, boolean d) {
 }

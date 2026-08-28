@@ -1,39 +1,41 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehy extends egp<eja> {
-   public ehy(Codec<eja> $$0) {
-      super($$0);
+public class ehy implements eic {
+   public static final Codec<ehy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dwx.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dwx.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bro.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bro.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ehy::new)
+   );
+   private final dwx b;
+   private final dwx c;
+   private final bro d;
+   private final bro e;
+
+   public ehy(dwx $$0, dwx $$1, bro $$2, bro $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   @Override
-   public boolean a(egr<eja> $$0) {
-      dhx $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      jh.a $$3 = new jh.a();
-      jh.a $$4 = new jh.a();
+   public dwx a() {
+      return this.b;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(edj.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(jm.a, 1);
-            dib $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dkf.eb.m(), 2);
-            }
+   public dwx b() {
+      return this.c;
+   }
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dkf.ea.m(), 2);
-               dxo $$11 = $$1.a_($$4);
-               if ($$11.b(drs.c)) {
-                  $$1.a($$4, $$11.b(drs.c, Boolean.valueOf(true)), 2);
-               }
-            }
-         }
-      }
+   public bro c() {
+      return this.d;
+   }
 
-      return true;
+   public bro d() {
+      return this.e;
    }
 }

@@ -1,32 +1,182 @@
-public class awy {
-   protected final awz a = new awz();
+public final class awy {
+   public static final axf<cwl> a = a("wool");
+   public static final axf<cwl> b = a("planks");
+   public static final axf<cwl> c = a("stone_bricks");
+   public static final axf<cwl> d = a("wooden_buttons");
+   public static final axf<cwl> e = a("stone_buttons");
+   public static final axf<cwl> f = a("buttons");
+   public static final axf<cwl> g = a("wool_carpets");
+   public static final axf<cwl> h = a("wooden_doors");
+   public static final axf<cwl> i = a("wooden_stairs");
+   public static final axf<cwl> j = a("wooden_slabs");
+   public static final axf<cwl> k = a("wooden_fences");
+   public static final axf<cwl> l = a("fence_gates");
+   public static final axf<cwl> m = a("wooden_pressure_plates");
+   public static final axf<cwl> n = a("wooden_trapdoors");
+   public static final axf<cwl> o = a("doors");
+   public static final axf<cwl> p = a("saplings");
+   public static final axf<cwl> q = a("logs_that_burn");
+   public static final axf<cwl> r = a("logs");
+   public static final axf<cwl> s = a("dark_oak_logs");
+   public static final axf<cwl> t = a("pale_oak_logs");
+   public static final axf<cwl> u = a("oak_logs");
+   public static final axf<cwl> v = a("birch_logs");
+   public static final axf<cwl> w = a("acacia_logs");
+   public static final axf<cwl> x = a("cherry_logs");
+   public static final axf<cwl> y = a("jungle_logs");
+   public static final axf<cwl> z = a("spruce_logs");
+   public static final axf<cwl> A = a("mangrove_logs");
+   public static final axf<cwl> B = a("crimson_stems");
+   public static final axf<cwl> C = a("warped_stems");
+   public static final axf<cwl> D = a("bamboo_blocks");
+   public static final axf<cwl> E = a("wart_blocks");
+   public static final axf<cwl> F = a("banners");
+   public static final axf<cwl> G = a("sand");
+   public static final axf<cwl> H = a("smelts_to_glass");
+   public static final axf<cwl> I = a("stairs");
+   public static final axf<cwl> J = a("slabs");
+   public static final axf<cwl> K = a("walls");
+   public static final axf<cwl> L = a("anvil");
+   public static final axf<cwl> M = a("rails");
+   public static final axf<cwl> N = a("leaves");
+   public static final axf<cwl> O = a("trapdoors");
+   public static final axf<cwl> P = a("small_flowers");
+   public static final axf<cwl> Q = a("beds");
+   public static final axf<cwl> R = a("fences");
+   public static final axf<cwl> S = a("piglin_repellents");
+   public static final axf<cwl> T = a("piglin_loved");
+   public static final axf<cwl> U = a("ignored_by_piglin_babies");
+   public static final axf<cwl> V = a("piglin_safe_armor");
+   public static final axf<cwl> W = a("duplicates_allays");
+   public static final axf<cwl> X = a("brewing_fuel");
+   public static final axf<cwl> Y = a("shulker_boxes");
+   public static final axf<cwl> Z = a("meat");
+   public static final axf<cwl> aa = a("sniffer_food");
+   public static final axf<cwl> ab = a("piglin_food");
+   public static final axf<cwl> ac = a("fox_food");
+   public static final axf<cwl> ad = a("cow_food");
+   public static final axf<cwl> ae = a("goat_food");
+   public static final axf<cwl> af = a("sheep_food");
+   public static final axf<cwl> ag = a("wolf_food");
+   public static final axf<cwl> ah = a("cat_food");
+   public static final axf<cwl> ai = a("horse_food");
+   public static final axf<cwl> aj = a("horse_tempt_items");
+   public static final axf<cwl> ak = a("camel_food");
+   public static final axf<cwl> al = a("armadillo_food");
+   public static final axf<cwl> am = a("bee_food");
+   public static final axf<cwl> an = a("chicken_food");
+   public static final axf<cwl> ao = a("frog_food");
+   public static final axf<cwl> ap = a("hoglin_food");
+   public static final axf<cwl> aq = a("llama_food");
+   public static final axf<cwl> ar = a("llama_tempt_items");
+   public static final axf<cwl> as = a("ocelot_food");
+   public static final axf<cwl> at = a("panda_food");
+   public static final axf<cwl> au = a("panda_eats_from_ground");
+   public static final axf<cwl> av = a("pig_food");
+   public static final axf<cwl> aw = a("rabbit_food");
+   public static final axf<cwl> ax = a("strider_food");
+   public static final axf<cwl> ay = a("strider_tempt_items");
+   public static final axf<cwl> az = a("turtle_food");
+   public static final axf<cwl> aA = a("parrot_food");
+   public static final axf<cwl> aB = a("parrot_poisonous_food");
+   public static final axf<cwl> aC = a("axolotl_food");
+   public static final axf<cwl> aD = a("gold_ores");
+   public static final axf<cwl> aE = a("iron_ores");
+   public static final axf<cwl> aF = a("diamond_ores");
+   public static final axf<cwl> aG = a("redstone_ores");
+   public static final axf<cwl> aH = a("lapis_ores");
+   public static final axf<cwl> aI = a("coal_ores");
+   public static final axf<cwl> aJ = a("emerald_ores");
+   public static final axf<cwl> aK = a("copper_ores");
+   public static final axf<cwl> aL = a("non_flammable_wood");
+   public static final axf<cwl> aM = a("soul_fire_base_blocks");
+   public static final axf<cwl> aN = a("candles");
+   public static final axf<cwl> aO = a("dirt");
+   public static final axf<cwl> aP = a("terracotta");
+   public static final axf<cwl> aQ = a("completes_find_tree_tutorial");
+   public static final axf<cwl> aR = a("boats");
+   public static final axf<cwl> aS = a("chest_boats");
+   public static final axf<cwl> aT = a("fishes");
+   public static final axf<cwl> aU = a("signs");
+   public static final axf<cwl> aV = a("creeper_drop_music_discs");
+   public static final axf<cwl> aW = a("coals");
+   public static final axf<cwl> aX = a("arrows");
+   public static final axf<cwl> aY = a("lectern_books");
+   public static final axf<cwl> aZ = a("bookshelf_books");
+   public static final axf<cwl> ba = a("beacon_payment_items");
+   public static final axf<cwl> bb = a("wooden_tool_materials");
+   public static final axf<cwl> bc = a("stone_tool_materials");
+   public static final axf<cwl> bd = a("iron_tool_materials");
+   public static final axf<cwl> be = a("gold_tool_materials");
+   public static final axf<cwl> bf = a("diamond_tool_materials");
+   public static final axf<cwl> bg = a("netherite_tool_materials");
+   public static final axf<cwl> bh = a("repairs_leather_armor");
+   public static final axf<cwl> bi = a("repairs_chain_armor");
+   public static final axf<cwl> bj = a("repairs_iron_armor");
+   public static final axf<cwl> bk = a("repairs_gold_armor");
+   public static final axf<cwl> bl = a("repairs_diamond_armor");
+   public static final axf<cwl> bm = a("repairs_netherite_armor");
+   public static final axf<cwl> bn = a("repairs_turtle_helmet");
+   public static final axf<cwl> bo = a("repairs_wolf_armor");
+   public static final axf<cwl> bp = a("stone_crafting_materials");
+   public static final axf<cwl> bq = a("freeze_immune_wearables");
+   public static final axf<cwl> br = a("dampens_vibrations");
+   public static final axf<cwl> bs = a("cluster_max_harvestables");
+   public static final axf<cwl> bt = a("compasses");
+   public static final axf<cwl> bu = a("hanging_signs");
+   public static final axf<cwl> bv = a("creeper_igniters");
+   public static final axf<cwl> bw = a("noteblock_top_instruments");
+   public static final axf<cwl> bx = a("foot_armor");
+   public static final axf<cwl> by = a("leg_armor");
+   public static final axf<cwl> bz = a("chest_armor");
+   public static final axf<cwl> bA = a("head_armor");
+   public static final axf<cwl> bB = a("skulls");
+   public static final axf<cwl> bC = a("trimmable_armor");
+   public static final axf<cwl> bD = a("trim_materials");
+   public static final axf<cwl> bE = a("trim_templates");
+   public static final axf<cwl> bF = a("decorated_pot_sherds");
+   public static final axf<cwl> bG = a("decorated_pot_ingredients");
+   public static final axf<cwl> bH = a("swords");
+   public static final axf<cwl> bI = a("axes");
+   public static final axf<cwl> bJ = a("hoes");
+   public static final axf<cwl> bK = a("pickaxes");
+   public static final axf<cwl> bL = a("shovels");
+   public static final axf<cwl> bM = a("breaks_decorated_pots");
+   public static final axf<cwl> bN = a("villager_plantable_seeds");
+   public static final axf<cwl> bO = a("villager_picks_up");
+   public static final axf<cwl> bP = a("dyeable");
+   public static final axf<cwl> bQ = a("furnace_minecart_fuel");
+   public static final axf<cwl> bR = a("bundles");
+   public static final axf<cwl> bS = a("skeleton_preferred_weapon");
+   public static final axf<cwl> bT = a("drowned_preferred_weapon");
+   public static final axf<cwl> bU = a("piglin_preferred_weapon");
+   public static final axf<cwl> bV = a("pillager_preferred_weapon");
+   public static final axf<cwl> bW = a("enchantable/foot_armor");
+   public static final axf<cwl> bX = a("enchantable/leg_armor");
+   public static final axf<cwl> bY = a("enchantable/chest_armor");
+   public static final axf<cwl> bZ = a("enchantable/head_armor");
+   public static final axf<cwl> ca = a("enchantable/armor");
+   public static final axf<cwl> cb = a("enchantable/sword");
+   public static final axf<cwl> cc = a("enchantable/fire_aspect");
+   public static final axf<cwl> cd = a("enchantable/sharp_weapon");
+   public static final axf<cwl> ce = a("enchantable/weapon");
+   public static final axf<cwl> cf = a("enchantable/mining");
+   public static final axf<cwl> cg = a("enchantable/mining_loot");
+   public static final axf<cwl> ch = a("enchantable/fishing");
+   public static final axf<cwl> ci = a("enchantable/trident");
+   public static final axf<cwl> cj = a("enchantable/durability");
+   public static final axf<cwl> ck = a("enchantable/bow");
+   public static final axf<cwl> cl = a("enchantable/equippable");
+   public static final axf<cwl> cm = a("enchantable/crossbow");
+   public static final axf<cwl> cn = a("enchantable/vanishing");
+   public static final axf<cwl> co = a("enchantable/mace");
+   public static final axf<cwl> cp = a("map_invisibility_equipment");
+   public static final axf<cwl> cq = a("gaze_disguise_equipment");
 
-   public boolean a(cuj $$0) {
-      return this.a.a($$0);
+   private awy() {
    }
 
-   public void a(cuj $$0, boolean $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   public boolean b(cuj $$0) {
-      return this.a.b($$0);
-   }
-
-   public void b(cuj $$0, boolean $$1) {
-      this.a.b($$0, $$1);
-   }
-
-   public void a(awz $$0) {
-      this.a.a($$0);
-   }
-
-   public awz a() {
-      return this.a.a();
-   }
-
-   public void a(cuj $$0, boolean $$1, boolean $$2) {
-      this.a.a($$0, $$1);
-      this.a.b($$0, $$2);
+   private static axf<cwl> a(String $$0) {
+      return axf.a(mc.K, aku.b($$0));
    }
 }

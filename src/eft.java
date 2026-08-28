@@ -1,118 +1,111 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class eft extends egp<ein> {
-   private static final ImmutableList<dkd> a = ImmutableList.of(dkf.K, dkf.I, dkf.ll, dkf.ej, dkf.fI, dkf.fJ, dkf.fK, dkf.fL, dkf.cD, dkf.cA);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int ao = 15;
+public class eft {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
 
-   public eft(Codec<ein> $$0) {
-      super($$0);
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
    }
 
-   @Override
-   public boolean a(egr<ein> $$0) {
-      int $$1 = $$0.c().f();
-      jh $$2 = $$0.e();
-      dhx $$3 = $$0.b();
-      bac $$4 = $$0.d();
-      ein $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.k())) {
+   protected static boolean a(dhg $$0, ji $$1, int $$2) {
+      if (b($$0, $$1)) {
          return false;
       } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
 
-         for (jh $$11 : jh.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(ayz.b($$5) * (float)$$2);
+            int $$7 = (int)(ayz.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
             }
          }
 
-         return $$10;
+         return true;
       }
    }
 
-   private boolean a(dha $$0, int $$1, jh $$2, int $$3, int $$4) {
-      boolean $$5 = false;
+   protected static boolean a(dgj $$0, ji $$1) {
+      return $$0.a($$1, eft::c);
+   }
 
-      for (jh $$6 : jh.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         jh $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
+   protected static boolean b(dgj $$0, ji $$1) {
+      return $$0.a($$1, eft::e);
+   }
 
-            for (jh.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (jh)$$10)) {
-                  this.a($$0, $$10, dkf.el.m());
-                  $$10.c(jm.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(dkf.el)) {
-                     break;
-                  }
+   protected static void a(jn $$0, int $$1, boolean $$2, Consumer<dwx> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dxt.e));
 
-                  $$10.c(jm.b);
-               }
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dxt.d));
+         }
+      }
+
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dxt.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dxt.a : dxt.b));
+      }
+   }
+
+   protected static void a(dgj $$0, ji $$1, jn $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         ji.a $$5 = $$1.k();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(djo.sV)) {
+               $$3x = $$3x.b(dpi.d, Boolean.valueOf($$0.z($$5)));
             }
-         }
-      }
 
-      return $$5;
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
    }
 
-   @Nullable
-   private static jh a(dha $$0, int $$1, jh.a $$2, int $$3) {
-      while ($$2.v() > $$0.L_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(jm.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(dha $$0, int $$1, jh.a $$2) {
-      if (!a($$0, $$1, (jh)$$2)) {
-         return false;
+   protected static boolean c(dgj $$0, ji $$1) {
+      dwx $$2 = $$0.a_($$1);
+      if ($$2.a(awp.bu)) {
+         $$0.a($$1, djo.sW.m(), 2);
+         return true;
       } else {
-         dxo $$3 = $$0.a_($$2.c(jm.a));
-         $$2.c(jm.b);
-         return !$$3.l() && !a.contains($$3.b());
+         return false;
       }
    }
 
-   @Nullable
-   private static jh a(dha $$0, jh.a $$1, int $$2) {
-      while ($$1.v() <= $$0.an() && $$2 > 0) {
-         $$2--;
-         dxo $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
-         }
-
-         if ($$3.l()) {
-            return $$1;
-         }
-
-         $$1.c(jm.b);
-      }
-
-      return null;
+   private static dwx a(jn $$0, dxt $$1) {
+      return djo.sV.m().b(dpi.b, $$0).b(dpi.c, $$1);
    }
 
-   private static boolean a(dha $$0, int $$1, jh $$2) {
-      dxo $$3 = $$0.a_($$2);
-      return $$3.l() || $$3.a(dkf.K) && $$2.v() <= $$1;
+   public static boolean a(dwx $$0) {
+      return b($$0) || $$0.a(djo.K);
+   }
+
+   public static boolean b(dwx $$0) {
+      return $$0.a(djo.sW) || $$0.a(awp.bu);
+   }
+
+   public static boolean c(dwx $$0) {
+      return $$0.l() || $$0.a(djo.J);
+   }
+
+   public static boolean d(dwx $$0) {
+      return !$$0.l() && !$$0.a(djo.J);
+   }
+
+   public static boolean e(dwx $$0) {
+      return $$0.l() || $$0.a(djo.J) || $$0.a(djo.K);
    }
 }

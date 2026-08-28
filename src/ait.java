@@ -1,49 +1,29 @@
-import javax.annotation.Nullable;
+public class ait implements yv<aip> {
+   public static final ym<vl, ait> a = yv.a(ait::a, ait::new);
+   private final wo b;
 
-public class ait implements zr<ahb> {
-   public static final zi<wh, ait> a = zr.a(ait::a, ait::new);
-   private final int b;
-   private final String c;
-   private final boolean d;
-
-   public ait(int $$0, String $$1, boolean $$2) {
+   public ait(wo $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private ait(wh $$0) {
-      this.b = $$0.l();
-      this.c = $$0.p();
-      this.d = $$0.readBoolean();
+   private ait(vl $$0) {
+      this.b = wo.a.b($$0.d(262144), kf.b);
    }
 
-   private void a(wh $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vl $$0) {
+      $$0.a(wo.a.a(this.b, kf.b));
    }
 
    @Override
-   public zt<ait> a() {
-      return agz.cd;
+   public yx<ait> a() {
+      return aiv.e;
    }
 
-   public void a(ahb $$0) {
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public dfz a(dgz $$0) {
-      bvb $$1 = $$0.a(this.b);
-      return $$1 instanceof crx ? ((crx)$$1).v() : null;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public boolean e() {
-      return this.d;
+   public wo b() {
+      return this.b;
    }
 }

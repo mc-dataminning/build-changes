@@ -1,29 +1,60 @@
-import java.util.function.ToIntFunction;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface dla {
-   fcl s_ = dkd.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dyf t_ = dye.c;
+public class dla extends djm {
+   public static final MapCodec<dla> a = b(dla::new);
+   public static final dxo b = dxn.B;
+   public static final dxo c = dxn.v;
 
-   static bta a(@Nullable bvb $$0, dxo $$1, dgz $$2, jh $$3) {
-      if ($$1.c(t_)) {
-         dkd.a($$2, $$3, new cxg(cxk.xw, 1));
-         float $$4 = azu.b($$2.A, 0.8F, 1.2F);
-         $$2.a(null, $$3, awv.eg, aww.e, 1.0F, $$4);
-         dxo $$5 = $$1.b(t_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(eck.c, $$3, eck.a.a($$0, $$5));
-         return bta.a;
-      } else {
-         return bta.e;
+   @Override
+   protected MapCodec<? extends dla> a() {
+      return a;
+   }
+
+   public dla(dww.d $$0) {
+      super($$0);
+      this.l(this.m().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
+   }
+
+   @Override
+   protected void b(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if ($$3.b() != $$0.b() && $$1 instanceof arc $$5) {
+         this.a($$0, $$5, $$2);
       }
    }
 
-   static boolean j_(dxo $$0) {
-      return $$0.b(t_) && $$0.c(t_);
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      if ($$1 instanceof arc $$6) {
+         this.a($$0, $$6, $$2);
+      }
    }
 
-   static ToIntFunction<dxo> i_(int $$0) {
-      return $$1 -> $$1.c(dye.c) ? $$0 : 0;
+   public void a(dwx $$0, arc $$1, ji $$2) {
+      boolean $$3 = $$1.C($$2);
+      if ($$3 != $$0.c(b)) {
+         dwx $$4 = $$0;
+         if (!$$0.c(b)) {
+            $$4 = $$0.a(c);
+            $$1.a(null, $$2, $$4.c(c) ? awa.fI : awa.fJ, awb.e);
+         }
+
+         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
+      }
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c, b);
+   }
+
+   @Override
+   protected boolean c_(dwx $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return $$1.a_($$2).c(c) ? 15 : 0;
    }
 }

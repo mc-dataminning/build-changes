@@ -1,21 +1,33 @@
-public record adj(xk b, xg.a c) implements zr<acg> {
-   public static final zi<wv, adj> a = zi.a(xm.d, adj::b, xg.a.a, adj::e, adj::new);
+public class adj implements yv<abk> {
+   public static final ym<vz, adj> a = ym.a(yk.w, adj::b, yk.a(mc.V), adj::e, wq.d, adj::f, adj::new);
+   private final int b;
+   private final ctl<?> c;
+   private final wo d;
 
-   @Override
-   public zt<adj> a() {
-      return agz.C;
+   public adj(int $$0, ctl<?> $$1, wo $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(acg $$0) {
+   @Override
+   public yx<adj> a() {
+      return agd.X;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public int b() {
+      return this.b;
    }
 
-   public xg.a e() {
+   public ctl<?> e() {
       return this.c;
+   }
+
+   public wo f() {
+      return this.d;
    }
 }

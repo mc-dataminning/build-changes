@@ -1,64 +1,165 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpq extends dkd implements dkg {
-   public static final MapCodec<dpq> a = b(dpq::new);
+public class dpq extends djb {
+   public static final MapCodec<dpq> d = b(dpq::new);
+   public static final dxu<dya> e = dxn.aj;
 
    @Override
    public MapCodec<dpq> a() {
-      return a;
+      return d;
    }
 
-   protected dpq(dxn.d $$0) {
-      super($$0);
-   }
-
-   private static boolean b(dxo $$0, dhc $$1, jh $$2) {
-      jh $$3 = $$2.d();
-      dxo $$4 = $$1.a_($$3);
-      int $$5 = eth.a($$0, $$4, jm.b, $$4.g());
-      return $$5 < 15;
+   protected dpq(dww.d $$0) {
+      super(false, $$0);
+      this.l(this.F.b().b(e, dya.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dkf.ei.m());
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3) {
+      if ($$3.m().p() && new dpr($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   public boolean b(dhc $$0, jh $$1, dxo $$2) {
-      return $$0.a_($$1.d()).l();
+   public dxz<dya> c() {
+      return e;
    }
 
    @Override
-   public boolean a(dgz $$0, bac $$1, jh $$2, dxo $$3) {
-      return true;
-   }
+   protected dwx a(dwx $$0, dqe $$1) {
+      dya $$2 = $$0.c(e);
 
-   @Override
-   public void a(arx $$0, bac $$1, jh $$2, dxo $$3) {
-      dxo $$4 = $$0.a_($$2);
-      jh $$5 = $$2.d();
-      dzk $$6 = $$0.m().g();
-      kd<egb<?, ?>> $$7 = $$0.K_().e(mb.aL);
-      if ($$4.a(dkf.oY)) {
-         this.a($$7, sd.h, $$0, $$6, $$1, $$5);
-      } else if ($$4.a(dkf.oP)) {
-         this.a($$7, sd.j, $$0, $$6, $$1, $$5);
-         this.a($$7, sd.l, $$0, $$6, $$1, $$5);
-         if ($$1.a(8) == 0) {
-            this.a($$7, sd.n, $$0, $$6, $$1, $$5);
+      return $$0.b(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dya.a;
+               case b:
+                  yield dya.b;
+               case c:
+                  yield dya.d;
+               case d:
+                  yield dya.c;
+               case e:
+                  yield dya.f;
+               case f:
+                  yield dya.e;
+               case g:
+                  yield dya.i;
+               case h:
+                  yield dya.j;
+               case i:
+                  yield dya.g;
+               case j:
+                  yield dya.h;
+               default:
+                  throw new MatchException(null, null);
+            }
          }
-      }
-   }
-
-   private void a(kd<egb<?, ?>> $$0, alo<egb<?, ?>> $$1, arx $$2, dzk $$3, bac $$4, jh $$5) {
-      $$0.a($$1).ifPresent($$4x -> ((egb)$$4x.a()).a($$2, $$3, $$4, $$5));
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dya.b;
+               case b:
+                  yield dya.a;
+               case c:
+                  yield dya.e;
+               case d:
+                  yield dya.f;
+               case e:
+                  yield dya.d;
+               case f:
+                  yield dya.c;
+               case g:
+                  yield dya.j;
+               case h:
+                  yield dya.g;
+               case i:
+                  yield dya.h;
+               case j:
+                  yield dya.i;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dya.b;
+               case b:
+                  yield dya.a;
+               case c:
+                  yield dya.f;
+               case d:
+                  yield dya.e;
+               case e:
+                  yield dya.c;
+               case f:
+                  yield dya.d;
+               case g:
+                  yield dya.h;
+               case h:
+                  yield dya.i;
+               case i:
+                  yield dya.j;
+               case j:
+                  yield dya.g;
+               default:
+                  throw new MatchException(null, null);
+            }
+         }
+         default -> $$2;
+      });
    }
 
    @Override
-   public dkg.a ar_() {
-      return dkg.a.a;
+   protected dwx a(dwx $$0, dol $$1) {
+      dya $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(e, dya.f);
+               case f:
+                  return $$0.b(e, dya.e);
+               case g:
+                  return $$0.b(e, dya.j);
+               case h:
+                  return $$0.b(e, dya.i);
+               case i:
+                  return $$0.b(e, dya.h);
+               case j:
+                  return $$0.b(e, dya.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(e, dya.d);
+               case d:
+                  return $$0.b(e, dya.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(e, dya.h);
+               case h:
+                  return $$0.b(e, dya.g);
+               case i:
+                  return $$0.b(e, dya.j);
+               case j:
+                  return $$0.b(e, dya.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(e, c);
    }
 }

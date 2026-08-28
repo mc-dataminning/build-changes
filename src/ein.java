@@ -1,23 +1,21 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ein implements eit {
+public class ein implements eic {
    public static final Codec<ein> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bsf.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bsf.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ein::new)
+      $$0 -> $$0.group(emq.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), emq.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, ein::new)
    );
-   private final bsf b;
-   private final bsf c;
+   public final jr<emq> b;
+   public final jr<emq> c;
 
-   public ein(bsf $$0, bsf $$1) {
+   public ein(jr<emq> $$0, jr<emq> $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public bsf a() {
-      return this.b;
-   }
-
-   public bsf b() {
-      return this.c;
+   @Override
+   public Stream<efk<?, ?>> e() {
+      return Stream.concat(this.b.a().a(), this.c.a().a());
    }
 }

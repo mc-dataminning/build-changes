@@ -1,44 +1,28 @@
 public class bsw {
-   public static void a(dgz $$0, jh $$1, bst $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
-   }
+   public static final float a = 20.0F;
+   public static final float b = 25.0F;
+   public static final float c = 2.0F;
+   public static final float d = 0.2F;
+   private static final int e = 4;
 
-   public static void a(dgz $$0, bvb $$1, bst $$2) {
-      a($$0, $$1.dB(), $$1.dD(), $$1.dH(), $$2);
-   }
-
-   private static void a(dgz $$0, double $$1, double $$2, double $$3, bst $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   public static float a(bvg $$0, float $$1, bta $$2, float $$3, float $$4) {
+      float $$5 = 2.0F + $$4 / 4.0F;
+      float $$6 = ayz.a($$3 - $$1 / $$5, $$3 * 0.2F, 20.0F);
+      float $$7 = $$6 / 25.0F;
+      cwp $$8 = $$2.e();
+      float $$10;
+      if ($$8 != null && $$0.dW() instanceof arc $$9) {
+         $$10 = ayz.a(ddb.c($$9, $$8, $$0, $$2, $$7), 0.0F, 1.0F);
+      } else {
+         $$10 = $$7;
       }
+
+      float $$12 = 1.0F - $$10;
+      return $$1 * $$12;
    }
 
-   public static void a(dgz $$0, jh $$1, jz<cxg> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
-   }
-
-   public static void a(dgz $$0, double $$1, double $$2, double $$3, cxg $$4) {
-      double $$5 = (double)bvi.ar.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
-
-      while (!$$4.f()) {
-         cls $$11 = new cls($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
-      }
-   }
-
-   public static void a(dxo $$0, dxo $$1, dgz $$2, jh $$3) {
-      if (!$$0.a($$1.b())) {
-         if ($$2.c_($$3) instanceof bst $$5) {
-            a($$2, $$3, $$5);
-            $$2.c($$3, $$0.b());
-         }
-      }
+   public static float a(float $$0, float $$1) {
+      float $$2 = ayz.a($$1, 0.0F, 20.0F);
+      return $$0 * (1.0F - $$2 / 25.0F);
    }
 }

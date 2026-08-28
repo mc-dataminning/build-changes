@@ -1,56 +1,26 @@
 import java.util.List;
 
-public record cyx(aya<dkd> g, int h, float i, float j, int k, aya<cxc> l) {
-   public static final cyx a = new cyx(axk.bP, 59, 2.0F, 0.0F, 15, axt.bd);
-   public static final cyx b = new cyx(axk.bN, 131, 4.0F, 1.0F, 5, axt.be);
-   public static final cyx c = new cyx(axk.bM, 250, 6.0F, 2.0F, 14, axt.bf);
-   public static final cyx d = new cyx(axk.bL, 1561, 8.0F, 3.0F, 10, axt.bh);
-   public static final cyx e = new cyx(axk.bO, 32, 12.0F, 0.0F, 22, axt.bg);
-   public static final cyx f = new cyx(axk.bK, 2031, 9.0F, 4.0F, 15, axt.bi);
+public class cyx {
+   public static final cyv a = a().a();
+   public static final cyv b = b().a();
+   public static final cyv c = b().a(2.0F).a(awa.nb).a(new dad(btr.s)).a();
+   public static final cyv d = b().b(awa.sP).a();
+   public static final cyv e = a().a(0.8F).a();
+   public static final cyv f = a().a(new czz(new btp(btr.q, 600, 0), 0.3F)).a();
+   public static final cyv g = a().a(new czz(List.of(new btp(btr.j, 400, 1), new btp(btr.k, 6000, 0), new btp(btr.l, 6000, 0), new btp(btr.v, 2400, 3)))).a();
+   public static final cyv h = a().a(new czz(List.of(new btp(btr.j, 100, 1), new btp(btr.v, 2400, 0)))).a();
+   public static final cyv i = a().a(new czz(new btp(btr.s, 100, 0), 0.6F)).a();
+   public static final cyv j = a().a(new czz(List.of(new btp(btr.s, 1200, 1), new btp(btr.q, 300, 2), new btp(btr.i, 300, 0)))).a();
+   public static final cyv k = a().a(new czz(new btp(btr.q, 600, 0), 0.8F)).a();
+   public static final cyv l = a().a(new czz(new btp(btr.s, 100, 0))).a();
+   public static final cyv m = b().a(daa.a).a();
+   public static final cyv n = a().a(new dae()).a();
 
-   private cxc.a a(cxc.a $$0) {
-      return $$0.b(this.h).a(this.l).c(this.k);
+   public static cyv.a a() {
+      return cyv.b().a(1.6F).a(cwr.b).a(awa.kD).a(true);
    }
 
-   public cxc.a a(cxc.a $$0, aya<dkd> $$1, float $$2, float $$3) {
-      jr<dkd> $$4 = ma.a(ma.e);
-      return this.a($$0).a(ku.B, new dai(List.of(dai.a.a($$4.b(this.g)), dai.a.a($$4.b($$1), this.i)), 1.0F, 1)).a(this.a($$2, $$3));
-   }
-
-   private czx a(float $$0, float $$1) {
-      return czx.a().a(bxf.c, new bxd(cxc.g, (double)($$0 + this.j), bxd.a.a), bvk.b).a(bxf.e, new bxd(cxc.h, (double)$$1, bxd.a.a), bvk.b).a();
-   }
-
-   public cxc.a a(cxc.a $$0, float $$1, float $$2) {
-      jr<dkd> $$3 = ma.a(ma.e);
-      return this.a($$0).a(ku.B, new dai(List.of(dai.a.a(ju.a(dkf.bz.p()), 15.0F), dai.a.b($$3.b(axk.bG), 1.5F)), 1.0F, 2)).a(this.b($$1, $$2));
-   }
-
-   private czx b(float $$0, float $$1) {
-      return czx.a().a(bxf.c, new bxd(cxc.g, (double)($$0 + this.j), bxd.a.a), bvk.b).a(bxf.e, new bxd(cxc.h, (double)$$1, bxd.a.a), bvk.b).a();
-   }
-
-   public aya<dkd> a() {
-      return this.g;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public float c() {
-      return this.i;
-   }
-
-   public float d() {
-      return this.j;
-   }
-
-   public int e() {
-      return this.k;
-   }
-
-   public aya<cxc> f() {
-      return this.l;
+   public static cyv.a b() {
+      return cyv.b().a(1.6F).a(cwr.c).a(awa.kC).a(false);
    }
 }

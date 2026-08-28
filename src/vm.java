@@ -1,7 +1,18 @@
 public class vm {
-   private static final vl<?>[] a = new vl[]{uo.a, uk.a, ve.a, ur.a, uu.a, up.b, un.b, uj.a, vh.a, us.a, um.b, uq.a, ut.a};
-
-   public static vl<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < a.length ? a[$$0] : vl.a($$0);
-   }
+   public static final String a = "decompress";
+   public static final String b = "compress";
+   public static final String c = "decoder";
+   public static final String d = "encoder";
+   public static final String e = "inbound_config";
+   public static final String f = "outbound_config";
+   public static final String g = "splitter";
+   public static final String h = "prepender";
+   public static final String i = "decrypt";
+   public static final String j = "encrypt";
+   public static final String k = "unbundler";
+   public static final String l = "bundler";
+   public static final String m = "packet_handler";
+   public static final String n = "timeout";
+   public static final String o = "legacy_query";
+   public static final String p = "latency";
 }

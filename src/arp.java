@@ -1,30 +1,43 @@
-import java.util.function.IntFunction;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public enum arp implements azx {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public class arp implements arm {
+   private final arm a;
+   private final bqz b;
+   private boolean c;
 
-   private static final IntFunction<arp> d = ayl.a(arp::b, values(), ayl.a.b);
-   private final int e;
-   private final String f;
+   private arp(arm $$0, Executor $$1) {
+      this.a = $$0;
+      this.b = new bqz($$1, "progressListener");
+   }
 
-   private arp(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public static arp a(arm $$0, Executor $$1) {
+      arp $$2 = new arp($$0, $$1);
+      $$2.a();
+      return $$2;
    }
 
    @Override
-   public String a() {
-      return this.f;
+   public void a(dfo $$0) {
+      this.b.a_(() -> this.a.a($$0));
    }
 
    @Override
-   public int b() {
-      return this.e;
+   public void a(dfo $$0, @Nullable dzt $$1) {
+      if (this.c) {
+         this.b.a_(() -> this.a.a($$0, $$1));
+      }
    }
 
-   public static arp a(int $$0) {
-      return d.apply($$0);
+   @Override
+   public void a() {
+      this.c = true;
+      this.b.a_(this.a::a);
+   }
+
+   @Override
+   public void b() {
+      this.c = false;
+      this.b.a_(this.a::b);
    }
 }

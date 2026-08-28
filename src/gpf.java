@@ -1,29 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
+import java.util.ListIterator;
+import javax.annotation.Nullable;
 
-public class gpf implements gpg.a {
-   private final flz a;
-   private double b = Double.MIN_VALUE;
-   private List<fcl> c = Collections.emptyList();
+public class gpf {
+   private static final int a = 2;
+   private int b = 2;
+   private final List<gpk.b.a> c = new ObjectArrayList();
 
-   public gpf(flz $$0) {
-      this.a = $$0;
+   public synchronized void a(gpk.b.a $$0) {
+      this.c.add($$0);
    }
 
-   @Override
-   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ae.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bvb $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dW().d($$6, $$6.cR().g(6.0)));
+   @Nullable
+   public synchronized gpk.b.a a(fba $$0) {
+      int $$1 = -1;
+      int $$2 = -1;
+      double $$3 = Double.MAX_VALUE;
+      double $$4 = Double.MAX_VALUE;
+      ListIterator<gpk.b.a> $$5 = this.c.listIterator();
+
+      while ($$5.hasNext()) {
+         int $$6 = $$5.nextIndex();
+         gpk.b.a $$7 = $$5.next();
+         if ($$7.a.get()) {
+            $$5.remove();
+         } else {
+            double $$8 = $$7.d().b($$0);
+            if (!$$7.c() && $$8 < $$3) {
+               $$3 = $$8;
+               $$1 = $$6;
+            }
+
+            if ($$7.c() && $$8 < $$4) {
+               $$4 = $$8;
+               $$2 = $$6;
+            }
+         }
       }
 
-      fgp $$7 = $$1.getBuffer(glq.y());
-
-      for (fcl $$8 : this.c) {
-         gpg.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
+      boolean $$9 = $$2 >= 0;
+      boolean $$10 = $$1 >= 0;
+      if (!$$9 || $$10 && (this.b <= 0 || !($$4 < $$3))) {
+         this.b = 2;
+         return this.a($$1);
+      } else {
+         this.b--;
+         return this.a($$2);
       }
+   }
+
+   public int a() {
+      return this.c.size();
+   }
+
+   @Nullable
+   private gpk.b.a a(int $$0) {
+      return $$0 >= 0 ? this.c.remove($$0) : null;
+   }
+
+   public synchronized void b() {
+      for (gpk.b.a $$0 : this.c) {
+         $$0.a();
+      }
+
+      this.c.clear();
    }
 }

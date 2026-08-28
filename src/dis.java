@@ -1,59 +1,84 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class dis extends dif {
-   public static final MapCodec<dis> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(aln.d(dii.ai), aln.d(dii.aj), aln.d(dii.ak), aln.d(dii.al), aln.d(dii.am)).apply($$0, $$0.stable(dis::new))
-   );
-   private final jq<dib> c;
-   private final jq<dib> d;
-   private final jq<dib> e;
-   private final jq<dib> f;
-   private final jq<dib> g;
+public class dis extends diy {
+   public static final MapCodec<dis> a = b(dis::new);
+   public static final dxu<jn> b = dxn.S;
+   public static final dxo c = dxn.z;
 
-   public static dis a(jr<dib> $$0) {
-      return new dis($$0.b(dii.ai), $$0.b(dii.aj), $$0.b(dii.ak), $$0.b(dii.al), $$0.b(dii.am));
+   @Override
+   public MapCodec<dis> a() {
+      return a;
    }
 
-   private dis(jq<dib> $$0, jq<dib> $$1, jq<dib> $$2, jq<dib> $$3, jq<dib> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public dis(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jn.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected Stream<jq<dib>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
-
-   @Override
-   protected MapCodec<? extends dif> a() {
-      return b;
-   }
-
-   @Override
-   public jq<dib> getNoiseBiome(int $$0, int $$1, int $$2, dik.f $$3) {
-      int $$4 = kb.c($$0);
-      int $$5 = kb.c($$1);
-      int $$6 = kb.c($$2);
-      int $$7 = kj.a($$4);
-      int $$8 = kj.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
-      } else {
-         int $$9 = (kj.a($$4) * 2 + 1) * 8;
-         int $$10 = (kj.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new edc.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
-         }
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if ($$1 instanceof arc $$5 && $$1.c_($$2) instanceof dts $$6) {
+         $$3.a($$6);
+         $$3.a(awk.ar);
+         cnm.a($$5, $$3, true);
       }
+
+      return bsj.a;
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      bsf.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      dtz $$4 = $$1.c_($$2);
+      if ($$4 instanceof dts) {
+         ((dts)$$4).k();
+      }
+   }
+
+   @Nullable
+   @Override
+   public dtz a(ji $$0, dwx $$1) {
+      return new dts($$0, $$1);
+   }
+
+   @Override
+   protected dpx a_(dwx $$0) {
+      return dpx.c;
+   }
+
+   @Override
+   protected boolean c_(dwx $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return csc.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dwx a(dag $$0) {
+      return this.m().b(b, $$0.d().g());
    }
 }

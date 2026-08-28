@@ -1,54 +1,51 @@
-import java.util.Iterator;
+import com.mojang.logging.LogUtils;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Properties;
+import org.slf4j.Logger;
 
-public interface ala {
-   static <T> void a(int $$0, int $$1, dbv<?> $$2, Iterable<T> $$3, ala.a<T> $$4) {
-      if ($$2 instanceof dcj $$5) {
-         a($$0, $$1, $$5.k(), $$5.l(), $$3, $$4);
-      } else {
-         a($$0, $$1, $$0, $$1, $$3, $$4);
+public class ala {
+   private static final Logger a = LogUtils.getLogger();
+   private final Path b;
+   private final boolean c;
+
+   public ala(Path $$0) {
+      this.b = $$0;
+      this.c = ab.aU || this.b();
+   }
+
+   private boolean b() {
+      try {
+         boolean var3;
+         try (InputStream $$0 = Files.newInputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.load($$0);
+            var3 = Boolean.parseBoolean($$1.getProperty("eula", "false"));
+         }
+
+         return var3;
+      } catch (Exception var6) {
+         a.warn("Failed to load {}", this.b);
+         this.c();
+         return false;
       }
    }
 
-   static <T> void a(int $$0, int $$1, int $$2, int $$3, Iterable<T> $$4, ala.a<T> $$5) {
-      Iterator<T> $$6 = $$4.iterator();
-      int $$7 = 0;
-
-      for (int $$8 = 0; $$8 < $$1; $$8++) {
-         boolean $$9 = (float)$$3 < (float)$$1 / 2.0F;
-         int $$10 = azu.d((float)$$1 / 2.0F - (float)$$3 / 2.0F);
-         if ($$9 && $$10 > $$8) {
-            $$7 += $$0;
-            $$8++;
-         }
-
-         for (int $$11 = 0; $$11 < $$0; $$11++) {
-            if (!$$6.hasNext()) {
-               return;
-            }
-
-            $$9 = (float)$$2 < (float)$$0 / 2.0F;
-            $$10 = azu.d((float)$$0 / 2.0F - (float)$$2 / 2.0F);
-            int $$12 = $$2;
-            boolean $$13 = $$11 < $$2;
-            if ($$9) {
-               $$12 = $$10 + $$2;
-               $$13 = $$10 <= $$11 && $$11 < $$10 + $$2;
-            }
-
-            if ($$13) {
-               $$5.addItemToSlot($$6.next(), $$7, $$11, $$8);
-            } else if ($$12 == $$11) {
-               $$7 += $$0 - $$11;
-               break;
-            }
-
-            $$7++;
-         }
-      }
+   public boolean a() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void addItemToSlot(T var1, int var2, int var3, int var4);
+   private void c() {
+      if (!ab.aU) {
+         try (OutputStream $$0 = Files.newOutputStream(this.b)) {
+            Properties $$1 = new Properties();
+            $$1.setProperty("eula", "false");
+            $$1.store($$0, "By changing the setting below to TRUE you are indicating your agreement to our EULA (" + axv.b + ").");
+         } catch (Exception var6) {
+            a.warn("Failed to save {}", this.b, var6);
+         }
+      }
    }
 }

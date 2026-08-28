@@ -1,219 +1,177 @@
-public abstract class fca {
-   private static final jm.a[] d = jm.a.values();
-   protected final int a;
-   protected final int b;
-   protected final int c;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   protected fca(int $$0, int $$1, int $$2) {
-      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+public class fca extends fch {
+   private static final int a = 0;
+   private static final int b = 1;
+   private final fcf c;
+   private final String d;
+   private final Set<String> e = Sets.newHashSet();
+   private wo f;
+   private wo g = wn.a;
+   private wo h = wn.a;
+   private boolean i = true;
+   private boolean j = true;
+   private fch.b k = fch.b.a;
+   private fch.b l = fch.b.a;
+   private n m = n.v;
+   private fch.a n = fch.a.a;
+   private final xl o;
+
+   public fca(fcf $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = wo.b($$1);
+      this.o = xl.a.a($$1).a(new wu(wu.a.a, wo.b($$1)));
+   }
+
+   public fcf a() {
+      return this.c;
+   }
+
+   @Override
+   public String b() {
+      return this.d;
+   }
+
+   public wo c() {
+      return this.f;
+   }
+
+   public xc d() {
+      xc $$0 = wr.a((wo)this.f.f().c(this.o));
+      n $$1 = this.n();
+      if ($$1 != n.v) {
+         $$0.a($$1);
+      }
+
+      return $$0;
+   }
+
+   public void a(wo $$0) {
+      if ($$0 == null) {
+         throw new IllegalArgumentException("Name cannot be null");
       } else {
-         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
+         this.f = $$0;
+         this.c.b(this);
       }
    }
 
-   public boolean a(je $$0, int $$1, int $$2, int $$3) {
-      return this.e($$0.a($$1, $$2, $$3, jm.a.a), $$0.a($$1, $$2, $$3, jm.a.b), $$0.a($$1, $$2, $$3, jm.a.c));
+   public void b(@Nullable wo $$0) {
+      this.g = $$0 == null ? wn.a : $$0;
+      this.c.b(this);
    }
 
-   public boolean e(int $$0, int $$1, int $$2) {
-      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
-         return false;
-      } else {
-         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
+   public wo e() {
+      return this.g;
+   }
+
+   public void c(@Nullable wo $$0) {
+      this.h = $$0 == null ? wn.a : $$0;
+      this.c.b(this);
+   }
+
+   public wo f() {
+      return this.h;
+   }
+
+   @Override
+   public Collection<String> g() {
+      return this.e;
+   }
+
+   @Override
+   public xc d(wo $$0) {
+      xc $$1 = wo.i().b(this.g).b($$0).b(this.h);
+      n $$2 = this.n();
+      if ($$2 != n.v) {
+         $$1.a($$2);
       }
+
+      return $$1;
    }
 
-   public boolean b(je $$0, int $$1, int $$2, int $$3) {
-      return this.b($$0.a($$1, $$2, $$3, jm.a.a), $$0.a($$1, $$2, $$3, jm.a.b), $$0.a($$1, $$2, $$3, jm.a.c));
+   public static xc a(@Nullable fch $$0, wo $$1) {
+      return $$0 == null ? $$1.f() : $$0.d($$1);
    }
 
-   public abstract boolean b(int var1, int var2, int var3);
+   @Override
+   public boolean h() {
+      return this.i;
+   }
 
-   public abstract void c(int var1, int var2, int var3);
+   public void a(boolean $$0) {
+      this.i = $$0;
+      this.c.b(this);
+   }
 
-   public boolean a() {
-      for (jm.a $$0 : d) {
-         if (this.a($$0) >= this.b($$0)) {
-            return true;
-         }
+   @Override
+   public boolean i() {
+      return this.j;
+   }
+
+   public void b(boolean $$0) {
+      this.j = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public fch.b j() {
+      return this.k;
+   }
+
+   @Override
+   public fch.b k() {
+      return this.l;
+   }
+
+   public void a(fch.b $$0) {
+      this.k = $$0;
+      this.c.b(this);
+   }
+
+   public void b(fch.b $$0) {
+      this.l = $$0;
+      this.c.b(this);
+   }
+
+   @Override
+   public fch.a l() {
+      return this.n;
+   }
+
+   public void a(fch.a $$0) {
+      this.n = $$0;
+      this.c.b(this);
+   }
+
+   public int m() {
+      int $$0 = 0;
+      if (this.h()) {
+         $$0 |= 1;
       }
 
-      return false;
-   }
-
-   public abstract int a(jm.a var1);
-
-   public abstract int b(jm.a var1);
-
-   public int a(jm.a $$0, int $$1, int $$2) {
-      int $$3 = this.c($$0);
-      if ($$1 >= 0 && $$2 >= 0) {
-         jm.a $$4 = je.b.a($$0);
-         jm.a $$5 = je.c.a($$0);
-         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
-            je $$6 = je.a(jm.a.a, $$0);
-
-            for (int $$7 = 0; $$7 < $$3; $$7++) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7;
-               }
-            }
-
-            return $$3;
-         } else {
-            return $$3;
-         }
-      } else {
-         return $$3;
+      if (this.i()) {
+         $$0 |= 2;
       }
+
+      return $$0;
    }
 
-   public int b(jm.a $$0, int $$1, int $$2) {
-      if ($$1 >= 0 && $$2 >= 0) {
-         jm.a $$3 = je.b.a($$0);
-         jm.a $$4 = je.c.a($$0);
-         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
-            int $$5 = this.c($$0);
-            je $$6 = je.a(jm.a.a, $$0);
-
-            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7 + 1;
-               }
-            }
-
-            return 0;
-         } else {
-            return 0;
-         }
-      } else {
-         return 0;
-      }
+   public void a(int $$0) {
+      this.a(($$0 & 1) > 0);
+      this.b(($$0 & 2) > 0);
    }
 
-   public int c(jm.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
+   public void a(n $$0) {
+      this.m = $$0;
+      this.c.b(this);
    }
 
-   public int b() {
-      return this.c(jm.a.a);
-   }
-
-   public int c() {
-      return this.c(jm.a.b);
-   }
-
-   public int d() {
-      return this.c(jm.a.c);
-   }
-
-   public void a(fca.b $$0, boolean $$1) {
-      this.a($$0, je.a, $$1);
-      this.a($$0, je.b, $$1);
-      this.a($$0, je.c, $$1);
-   }
-
-   private void a(fca.b $$0, je $$1, boolean $$2) {
-      je $$3 = $$1.a();
-      int $$4 = this.c($$3.a(jm.a.a));
-      int $$5 = this.c($$3.a(jm.a.b));
-      int $$6 = this.c($$3.a(jm.a.c));
-
-      for (int $$7 = 0; $$7 <= $$4; $$7++) {
-         for (int $$8 = 0; $$8 <= $$5; $$8++) {
-            int $$9 = -1;
-
-            for (int $$10 = 0; $$10 <= $$6; $$10++) {
-               int $$11 = 0;
-               int $$12 = 0;
-
-               for (int $$13 = 0; $$13 <= 1; $$13++) {
-                  for (int $$14 = 0; $$14 <= 1; $$14++) {
-                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
-                        $$11++;
-                        $$12 ^= $$13 ^ $$14;
-                     }
-                  }
-               }
-
-               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
-                  if ($$2) {
-                     if ($$9 == -1) {
-                        $$9 = $$10;
-                     }
-                  } else {
-                     $$0.consume(
-                        $$3.a($$7, $$8, $$10, jm.a.a),
-                        $$3.a($$7, $$8, $$10, jm.a.b),
-                        $$3.a($$7, $$8, $$10, jm.a.c),
-                        $$3.a($$7, $$8, $$10 + 1, jm.a.a),
-                        $$3.a($$7, $$8, $$10 + 1, jm.a.b),
-                        $$3.a($$7, $$8, $$10 + 1, jm.a.c)
-                     );
-                  }
-               } else if ($$9 != -1) {
-                  $$0.consume(
-                     $$3.a($$7, $$8, $$9, jm.a.a),
-                     $$3.a($$7, $$8, $$9, jm.a.b),
-                     $$3.a($$7, $$8, $$9, jm.a.c),
-                     $$3.a($$7, $$8, $$10, jm.a.a),
-                     $$3.a($$7, $$8, $$10, jm.a.b),
-                     $$3.a($$7, $$8, $$10, jm.a.c)
-                  );
-                  $$9 = -1;
-               }
-            }
-         }
-      }
-   }
-
-   public void b(fca.b $$0, boolean $$1) {
-      fbu.a(this, $$0, $$1);
-   }
-
-   public void a(fca.a $$0) {
-      this.a($$0, je.a);
-      this.a($$0, je.b);
-      this.a($$0, je.c);
-   }
-
-   private void a(fca.a $$0, je $$1) {
-      je $$2 = $$1.a();
-      jm.a $$3 = $$2.a(jm.a.c);
-      int $$4 = this.c($$2.a(jm.a.a));
-      int $$5 = this.c($$2.a(jm.a.b));
-      int $$6 = this.c($$3);
-      jm $$7 = jm.a($$3, jm.b.b);
-      jm $$8 = jm.a($$3, jm.b.a);
-
-      for (int $$9 = 0; $$9 < $$4; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            boolean $$11 = false;
-
-            for (int $$12 = 0; $$12 <= $$6; $$12++) {
-               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
-               if (!$$11 && $$13) {
-                  $$0.consume($$7, $$2.a($$9, $$10, $$12, jm.a.a), $$2.a($$9, $$10, $$12, jm.a.b), $$2.a($$9, $$10, $$12, jm.a.c));
-               }
-
-               if ($$11 && !$$13) {
-                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, jm.a.a), $$2.a($$9, $$10, $$12 - 1, jm.a.b), $$2.a($$9, $$10, $$12 - 1, jm.a.c));
-               }
-
-               $$11 = $$13;
-            }
-         }
-      }
-   }
-
-   public interface a {
-      void consume(jm var1, int var2, int var3, int var4);
-   }
-
-   public interface b {
-      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
+   @Override
+   public n n() {
+      return this.m;
    }
 }

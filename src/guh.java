@@ -1,30 +1,29 @@
-public class guh extends gqf<cpa, gzz, gdt> {
-   private static final alp b = alp.b("textures/entity/villager/villager.png");
-   public static final gve.a a = new gve.a(-0.1171875F, -0.07421875F, 1.0F);
+public class guh extends gqw<cjo, hag, gdz> {
+   private static final aku a = aku.b("textures/entity/sniffer/sniffer.png");
 
-   public guh(grl.a $$0) {
-      super($$0, new gdt($$0.a(gei.dt)), new gdt($$0.a(gei.du)), 0.5F);
-      this.a(new gve<>(this, $$0.f(), a, $$0.b()));
-      this.a(new gwk<>(this, $$0.e(), "villager"));
-      this.a(new gvd<>(this, $$0.b()));
+   public guh(gsc.a $$0) {
+      super($$0, new gdz($$0.a(gfb.cQ)), new gdz($$0.a(gfb.cR)), 1.1F);
    }
 
-   public alp a(gzz $$0) {
-      return b;
+   public aku a(hag $$0) {
+      return a;
    }
 
-   protected float b(gzz $$0) {
-      float $$1 = super.g($$0);
-      return $$0.ae ? $$1 * 0.5F : $$1;
+   public hag b() {
+      return new hag();
    }
 
-   public gzz b() {
-      return new gzz();
-   }
-
-   public void a(cpa $$0, gzz $$1, float $$2) {
+   public void a(cjo $$0, hag $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.p() > 0;
-      $$1.b = $$0.gy();
+      $$1.a = $$0.t();
+      $$1.b.a($$0.cc);
+      $$1.c.a($$0.ca);
+      $$1.d.a($$0.cd);
+      $$1.e.a($$0.bY);
+      $$1.f.a($$0.bZ);
+   }
+
+   protected fav a(cjo $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

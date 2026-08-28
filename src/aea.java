@@ -1,69 +1,36 @@
-public class aea implements zr<acg> {
-   public static final zi<wv, aea> a = zr.a(aea::a, aea::new);
-   private final int b;
-   private final dfx c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-   public aea(int $$0, dfx $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+public class aea implements yv<abk> {
+   public static final ym<vl, aea> a = yv.a(aea::a, aea::new);
+   private final IntList b;
+
+   public aea(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private aea(wv $$0) {
-      this.b = $$0.x();
-      this.c = dfx.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   public aea(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(wv $$0) {
-      $$0.f(this.b);
-      dfx.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
-      $$0.a(this.f);
-      $$0.a(this.g);
+   private aea(vl $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zt<aea> a() {
-      return agz.Q;
+   public yx<aea> a() {
+      return agd.an;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public IntList b() {
       return this.b;
-   }
-
-   public dfx e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.g;
    }
 }

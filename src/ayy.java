@@ -1,80 +1,49 @@
-import java.io.DataOutput;
-import java.io.IOException;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public class ayy implements DataOutput {
-   private final DataOutput a;
-
-   public ayy(DataOutput $$0) {
-      this.a = $$0;
+public record ayy(ayy.a a, String b) {
+   public static ayy a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new ayy(ayy.a.c, $$2 + " brand changed to '" + $$4 + "'");
+      } else {
+         return $$3.getSigners() == null
+            ? new ayy(ayy.a.b, $$2 + " jar signature invalidated")
+            : new ayy(ayy.a.a, $$2 + " jar signature and brand is untouched");
+      }
    }
 
-   @Override
-   public void write(int $$0) throws IOException {
-      this.a.write($$0);
+   public boolean a() {
+      return this.a.e;
    }
 
-   @Override
-   public void write(byte[] $$0) throws IOException {
-      this.a.write($$0);
+   public ayy a(ayy $$0) {
+      return new ayy((ayy.a)ObjectUtils.max(new ayy.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
    }
 
-   @Override
-   public void write(byte[] $$0, int $$1, int $$2) throws IOException {
-      this.a.write($$0, $$1, $$2);
+   public String b() {
+      return this.a.d + " " + this.b;
    }
 
-   @Override
-   public void writeBoolean(boolean $$0) throws IOException {
-      this.a.writeBoolean($$0);
+   public ayy.a c() {
+      return this.a;
    }
 
-   @Override
-   public void writeByte(int $$0) throws IOException {
-      this.a.writeByte($$0);
+   public String d() {
+      return this.b;
    }
 
-   @Override
-   public void writeShort(int $$0) throws IOException {
-      this.a.writeShort($$0);
-   }
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
 
-   @Override
-   public void writeChar(int $$0) throws IOException {
-      this.a.writeChar($$0);
-   }
+      final String d;
+      final boolean e;
 
-   @Override
-   public void writeInt(int $$0) throws IOException {
-      this.a.writeInt($$0);
-   }
-
-   @Override
-   public void writeLong(long $$0) throws IOException {
-      this.a.writeLong($$0);
-   }
-
-   @Override
-   public void writeFloat(float $$0) throws IOException {
-      this.a.writeFloat($$0);
-   }
-
-   @Override
-   public void writeDouble(double $$0) throws IOException {
-      this.a.writeDouble($$0);
-   }
-
-   @Override
-   public void writeBytes(String $$0) throws IOException {
-      this.a.writeBytes($$0);
-   }
-
-   @Override
-   public void writeChars(String $$0) throws IOException {
-      this.a.writeChars($$0);
-   }
-
-   @Override
-   public void writeUTF(String $$0) throws IOException {
-      this.a.writeUTF($$0);
+      private a(final String $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
    }
 }

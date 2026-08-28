@@ -1,28 +1,453 @@
-public class cwl extends cxc implements cyb {
-   public cwl(cxc.a $$0) {
-      super($$0);
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
+public class cwl implements crq, dgh {
+   public static final Codec<jr<cwl>> e = mb.g
+      .r()
+      .validate($$0 -> $$0.a(cwt.a.f()) ? DataResult.error(() -> "Item must not be minecraft:air") : DataResult.success($$0));
+   private static final Logger a = LogUtils.getLogger();
+   public static final Map<djm, cwl> f = Maps.newHashMap();
+   public static final aku g = aku.b("base_attack_damage");
+   public static final aku h = aku.b("base_attack_speed");
+   public static final int i = 64;
+   public static final int j = 99;
+   public static final int k = 13;
+   private final jr.c<cwl> b = mb.g.f(this);
+   private final kr c;
+   @Nullable
+   private final cwl d;
+   protected final String l;
+   private final crt m;
+
+   public static int a(cwl $$0) {
+      return $$0 == null ? 0 : mb.g.a($$0);
+   }
+
+   public static cwl b(int $$0) {
+      return mb.g.a($$0);
+   }
+
+   @Deprecated
+   public static cwl a(djm $$0) {
+      return f.getOrDefault($$0, cwt.a);
+   }
+
+   public cwl(cwl.a $$0) {
+      this.l = $$0.d();
+      this.c = $$0.a(wo.c(this.l), $$0.e());
+      this.d = $$0.d;
+      this.m = $$0.e;
+      if (ab.aU) {
+         String $$1 = this.getClass().getSimpleName();
+         if (!$$1.endsWith("Item")) {
+            a.error("Item classes should end with Item and {} doesn't.", $$1);
+         }
+      }
+   }
+
+   @Deprecated
+   public jr.c<cwl> f() {
+      return this.b;
+   }
+
+   public kr g() {
+      return this.c;
+   }
+
+   public int h() {
+      return this.c.a(kv.c, 1);
+   }
+
+   public void a(dgi $$0, bvg $$1, cwp $$2, int $$3) {
+   }
+
+   public void a(clb $$0) {
+   }
+
+   public void l(cwp $$0) {
+   }
+
+   public boolean a(dwx $$0, dgi $$1, ji $$2, cox $$3) {
+      return true;
    }
 
    @Override
-   public bta a(dgz $$0, cpo $$1, bsz $$2) {
-      cxg $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), awv.jb, aww.g, 0.5F, 0.4F / ($$0.H_().i() * 0.4F + 0.8F));
-      if ($$0 instanceof arx $$4) {
-         cqh.a(cqs::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
+   public cwl j() {
+      return this;
+   }
+
+   public bsj a(dai $$0) {
+      return bsj.e;
+   }
+
+   public float a(cwp $$0, dwx $$1) {
+      czr $$2 = $$0.a(kv.B);
+      return $$2 != null ? $$2.a($$1) : 1.0F;
+   }
+
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      cwp $$3 = $$1.b($$2);
+      cyv $$4 = $$3.a(kv.x);
+      if ($$4 != null) {
+         return $$4.a($$1, $$3, $$2);
+      } else {
+         deu $$5 = $$3.a(kv.D);
+         return (bsj)($$5 != null && $$5.g() ? $$5.a($$3, $$1) : bsj.e);
+      }
+   }
+
+   public cwp a(cwp $$0, dgi $$1, bvg $$2) {
+      cyv $$3 = $$0.a(kv.x);
+      return $$3 != null ? $$3.a($$1, $$2, $$0) : $$0;
+   }
+
+   public boolean d(cwp $$0) {
+      return $$0.n();
+   }
+
+   public int e(cwp $$0) {
+      return ayz.a(Math.round(13.0F - (float)$$0.o() * 13.0F / (float)$$0.p()), 0, 13);
+   }
+
+   public int f(cwp $$0) {
+      int $$1 = $$0.p();
+      float $$2 = Math.max(0.0F, ((float)$$1 - (float)$$0.o()) / (float)$$1);
+      return ayz.g($$2 / 3.0F, 1.0F, 1.0F);
+   }
+
+   public boolean a(cwp $$0, ctz $$1, csm $$2, cox $$3) {
+      return false;
+   }
+
+   public boolean a(cwp $$0, cwp $$1, ctz $$2, csm $$3, cox $$4, bvy $$5) {
+      return false;
+   }
+
+   public float a(buk $$0, float $$1, bta $$2) {
+      return 0.0F;
+   }
+
+   @Nullable
+   public bta a(bvg $$0) {
+      return null;
+   }
+
+   public boolean a(cwp $$0, bvg $$1, bvg $$2) {
+      return false;
+   }
+
+   public void b(cwp $$0, bvg $$1, bvg $$2) {
+   }
+
+   public boolean a(cwp $$0, dgi $$1, dwx $$2, ji $$3, bvg $$4) {
+      czr $$5 = $$0.a(kv.B);
+      if ($$5 == null) {
+         return false;
+      } else {
+         if (!$$1.C && $$2.e($$1, $$3) != 0.0F && $$5.c() > 0) {
+            $$0.a($$5.c(), $$4, bus.a);
+         }
+
+         return true;
+      }
+   }
+
+   public boolean b(cwp $$0, dwx $$1) {
+      czr $$2 = $$0.a(kv.B);
+      return $$2 != null && $$2.b($$1);
+   }
+
+   public bsj a(cwp $$0, cox $$1, bvg $$2, bsi $$3) {
+      return bsj.e;
+   }
+
+   @Override
+   public String toString() {
+      return mb.g.e(this).g();
+   }
+
+   public final cwp k() {
+      return this.d == null ? cwp.j : new cwp(this.d);
+   }
+
+   public void a(cwp $$0, dgi $$1, buk $$2, int $$3, boolean $$4) {
+   }
+
+   public void a(cwp $$0, dgi $$1, cox $$2) {
+      this.a($$0, $$1);
+   }
+
+   public void a(cwp $$0, dgi $$1) {
+   }
+
+   public cwr b(cwp $$0) {
+      cyv $$1 = $$0.a(kv.x);
+      return $$1 != null ? $$1.d() : cwr.a;
+   }
+
+   public int a(cwp $$0, bvg $$1) {
+      cyv $$2 = $$0.a(kv.x);
+      return $$2 != null ? $$2.a() : 0;
+   }
+
+   public boolean a(cwp $$0, dgi $$1, bvg $$2, int $$3) {
+      return false;
+   }
+
+   public void a(cwp $$0, cwl.b $$1, List<wo> $$2, cyh $$3) {
+   }
+
+   public Optional<cuj> k(cwp $$0) {
+      return Optional.empty();
+   }
+
+   @VisibleForTesting
+   public final String l() {
+      return this.l;
+   }
+
+   public final wo m() {
+      return this.c.a(kv.h, wn.a);
+   }
+
+   public wo a(cwp $$0) {
+      return $$0.a().a(kv.h, wn.a);
+   }
+
+   public boolean c_(cwp $$0) {
+      return $$0.F();
+   }
+
+   protected static faw a(dgi $$0, cox $$1, dfq.b $$2) {
+      fba $$3 = $$1.bF();
+      fba $$4 = $$3.e($$1.d($$1.dO(), $$1.dM()).c($$1.gL()));
+      return $$0.a(new dfq($$3, $$4, dfq.a.b, $$2, $$1));
+   }
+
+   public boolean d_(cwp $$0) {
+      return false;
+   }
+
+   public cwp n() {
+      return new cwp(this);
+   }
+
+   public avz a() {
+      return awa.nZ;
+   }
+
+   public boolean e() {
+      return true;
+   }
+
+   @Override
+   public crt i() {
+      return this.m;
+   }
+
+   public static class a {
+      private static final akm<cwl, String> a = $$0 -> af.a("block", $$0.a());
+      private static final akm<cwl, String> b = $$0 -> af.a("item", $$0.a());
+      private final kr.a c = kr.a().a(kv.aq);
+      @Nullable
+      cwl d;
+      crt e = crv.g;
+      @Nullable
+      private akt<cwl> f;
+      private akm<cwl, String> g = b;
+      private akm<cwl, aku> h = akt::a;
+
+      public cwl.a a(crz $$0) {
+         return this.a($$0, cyx.a);
       }
 
-      $$1.b(axf.c.b(this));
-      $$3.a(1, $$1);
-      return bta.a;
+      public cwl.a a(crz $$0, cyv $$1) {
+         return this.a(kv.w, $$0).a(kv.x, $$1);
+      }
+
+      public cwl.a a(cwl $$0) {
+         return this.a(kv.y, new czv(new cwp($$0)));
+      }
+
+      public cwl.a a(float $$0) {
+         return this.a(kv.z, new czu($$0));
+      }
+
+      public cwl.a a(int $$0) {
+         return this.a(kv.c, $$0);
+      }
+
+      public cwl.a b(int $$0) {
+         this.a(kv.d, $$0);
+         this.a(kv.c, 1);
+         this.a(kv.e, 0);
+         return this;
+      }
+
+      public cwl.a b(cwl $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cwl.a a(cxm $$0) {
+         return this.a(kv.k, $$0);
+      }
+
+      public cwl.a a() {
+         return this.a(kv.A, new cza(awr.i));
+      }
+
+      public cwl.a a(akt<cwv> $$0) {
+         return this.a(kv.ab, new cwu(new cvp<>($$0), true));
+      }
+
+      public cwl.a c(int $$0) {
+         return this.a(kv.C, new dcx($$0));
+      }
+
+      public cwl.a c(cwl $$0) {
+         return this.a(kv.E, new ddh(jv.a($$0.f())));
+      }
+
+      public cwl.a a(axf<cwl> $$0) {
+         js<cwl> $$1 = mb.a(mb.g);
+         return this.a(kv.E, new ddh($$1.b($$0)));
+      }
+
+      public cwl.a a(bus $$0) {
+         return this.a(kv.D, deu.a($$0).a());
+      }
+
+      public cwl.a b(bus $$0) {
+         return this.a(kv.D, deu.a($$0).b(false).a());
+      }
+
+      public cwl.a a(crr... $$0) {
+         this.e = crv.e.a($$0);
+         return this;
+      }
+
+      public cwl.a b(akt<cwl> $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cwl.a a(String $$0) {
+         this.g = akm.fixed($$0);
+         return this;
+      }
+
+      public cwl.a b() {
+         this.g = a;
+         return this;
+      }
+
+      public cwl.a c() {
+         this.g = b;
+         return this;
+      }
+
+      protected String d() {
+         return this.g.get(Objects.requireNonNull(this.f, "Item id not set"));
+      }
+
+      public aku e() {
+         return this.h.get(Objects.requireNonNull(this.f, "Item id not set"));
+      }
+
+      public <T> cwl.a a(ku<T> $$0, T $$1) {
+         this.c.a($$0, $$1);
+         return this;
+      }
+
+      public cwl.a a(czg $$0) {
+         return this.a(kv.o, $$0);
+      }
+
+      kr a(wo $$0, aku $$1) {
+         kr $$2 = this.c.a(kv.h, $$0).a(kv.i, $$1).a();
+         if ($$2.b(kv.e) && $$2.a(kv.c, 1) > 1) {
+            throw new IllegalStateException("Item cannot have both durability and be stackable");
+         } else {
+            return $$2;
+         }
+      }
    }
 
-   @Override
-   public cqh a(dgz $$0, ka $$1, cxg $$2, jm $$3) {
-      return new cqs($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
-   }
+   public interface b {
+      cwl.b a = new cwl.b() {
+         @Nullable
+         @Override
+         public jt.a a() {
+            return null;
+         }
 
-   @Override
-   public cyb.a b() {
-      return cyb.a.a().a(cyb.a.a.c() * 0.5F).b(cyb.a.a.d() * 1.25F).a();
+         @Override
+         public float b() {
+            return 20.0F;
+         }
+
+         @Nullable
+         @Override
+         public eut a(eur $$0) {
+            return null;
+         }
+      };
+
+      @Nullable
+      jt.a a();
+
+      float b();
+
+      @Nullable
+      eut a(eur var1);
+
+      static cwl.b a(@Nullable final dgi $$0) {
+         return $$0 == null ? a : new cwl.b() {
+            @Override
+            public jt.a a() {
+               return $$0.K_();
+            }
+
+            @Override
+            public float b() {
+               return $$0.u().f();
+            }
+
+            @Override
+            public eut a(eur $$0x) {
+               return $$0.a($$0);
+            }
+         };
+      }
+
+      static cwl.b a(final jt.a $$0) {
+         return new cwl.b() {
+            @Override
+            public jt.a a() {
+               return $$0;
+            }
+
+            @Override
+            public float b() {
+               return 20.0F;
+            }
+
+            @Nullable
+            @Override
+            public eut a(eur $$0x) {
+               return null;
+            }
+         };
+      }
    }
 }

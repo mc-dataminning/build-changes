@@ -1,56 +1,41 @@
-import com.google.common.collect.Sets;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class cdp<T extends crc> extends ccv {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public class cdp<T extends bvi> extends cce {
+   private final T a;
+   private final cwp b;
+   private final Predicate<? super T> c;
+   @Nullable
+   private final avz d;
 
-   public cdp(T $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(ccv.a.a));
+   public cdp(T $$0, cwp $$1, @Nullable avz $$2, Predicate<? super T> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = $$3;
    }
 
    @Override
    public boolean b() {
-      return this.c.O_() == null && !this.c.cY() && this.c.gE() && !this.c.gB().a() && !((arx)this.c.dW()).c(this.c.dw());
+      return this.c.test(this.a);
    }
 
    @Override
    public boolean c() {
-      return this.c.gE() && !this.c.gB().a() && this.c.dW() instanceof arx && !((arx)this.c.dW()).c(this.c.dw());
+      return this.a.fz();
    }
 
    @Override
-   public void a() {
-      if (this.c.gE()) {
-         crb $$0 = this.c.gB();
-         if (this.c.af > this.d) {
-            this.d = this.c.af + 20;
-            this.a($$0);
-         }
-
-         if (!this.c.gk()) {
-            fbr $$1 = cgs.a(this.c, 15, 4, fbr.c($$0.s()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.L().a($$1.d, $$1.e, $$1.f, 1.0);
-            }
-         }
-      }
+   public void d() {
+      this.a.a(bus.a, this.b.v());
+      this.a.c(bsi.a);
    }
 
-   private void a(crb $$0) {
-      if ($$0.u()) {
-         Set<crc> $$1 = Sets.newHashSet();
-         List<crc> $$2 = this.c.dW().a(crc.class, this.c.cR().g(16.0), $$1x -> !$$1x.gE() && crd.a($$1x, $$0));
-         $$1.addAll($$2);
-
-         for (crc $$3 : $$1) {
-            $$0.a($$0.k(), $$3, null, true);
-         }
+   @Override
+   public void e() {
+      this.a.a(bus.a, cwp.j);
+      if (this.d != null) {
+         this.a.a(this.d, 1.0F, this.a.dZ().i() * 0.2F + 0.9F);
       }
    }
 }

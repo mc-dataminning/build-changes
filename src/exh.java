@@ -1,93 +1,76 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.BiFunction;
 
-public class exh extends exv {
-   public static final MapCodec<exh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ma.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dyq::f).toList())
-               )
-            )
-            .apply($$0, exh::new)
-   );
-   private final jq<dkd> b;
-   private final Set<dyq<?>> c;
+public class exh {
+   public static final BiFunction<cwp, evr, cwp> a = ($$0, $$1) -> $$0;
+   public static final Codec<exf> b = mb.E.q().dispatch("function", exf::b, exg::a);
+   public static final Codec<exf> c = Codec.lazyInitialized(() -> Codec.withAlternative(b, exj.b));
+   public static final Codec<jr<exf>> d = akq.a(mc.bh, c);
+   public static final exg<exw> e = a("set_count", exw.a);
+   public static final exg<exy> f = a("set_item", exy.a);
+   public static final exg<ewv> g = a("enchant_with_levels", ewv.a);
+   public static final exg<ewu> h = a("enchant_randomly", ewu.a);
+   public static final exg<exs> i = a("set_enchantments", exs.a);
+   public static final exg<exq> j = a("set_custom_data", exq.a);
+   public static final exg<exn> k = a("set_components", exn.a);
+   public static final exg<eyg> l = a("furnace_smelt", eyg.a);
+   public static final exg<eww> m = a("enchanted_count_increase", eww.b);
+   public static final exg<exx> n = a("set_damage", exx.a);
+   public static final exg<exk> o = a("set_attributes", exk.a);
+   public static final exg<eya> p = a("set_name", eya.a);
+   public static final exg<ewx> q = a("exploration_map", ewx.f);
+   public static final exg<eyd> r = a("set_stew_effect", eyd.a);
+   public static final exg<ewt> s = a("copy_name", ewt.a);
+   public static final exg<exo> t = a("set_contents", exo.a);
+   public static final exg<exi> u = a("modify_contents", exi.a);
+   public static final exg<ewz> v = a("filtered", ewz.a);
+   public static final exg<exc> w = a("limit_count", exc.a);
+   public static final exg<ewo> x = a("apply_bonus", ewo.a);
+   public static final exg<exp> y = a("set_loot_table", exp.a);
+   public static final exg<ewp> z = a("explosion_decay", ewp.a);
+   public static final exg<exz> A = a("set_lore", exz.a);
+   public static final exg<ewy> B = a("fill_player_head", ewy.a);
+   public static final exg<ews> C = a("copy_custom_data", ews.a);
+   public static final exg<ewq> D = a("copy_state", ewq.a);
+   public static final exg<exl> E = a("set_banner_pattern", exl.a);
+   public static final exg<eyc> F = a("set_potion", eyc.a);
+   public static final exg<exv> G = a("set_instrument", exv.a);
+   public static final exg<exa> H = a("reference", exa.a);
+   public static final exg<exj> I = a("sequence", exj.a);
+   public static final exg<ewr> J = a("copy_components", ewr.a);
+   public static final exg<exu> K = a("set_fireworks", exu.a);
+   public static final exg<ext> L = a("set_firework_explosion", ext.a);
+   public static final exg<exm> M = a("set_book_cover", exm.a);
+   public static final exg<eyf> N = a("set_written_book_pages", eyf.b);
+   public static final exg<eye> O = a("set_writable_book_pages", eye.a);
+   public static final exg<eyh> P = a("toggle_tooltips", eyh.a);
+   public static final exg<eyb> Q = a("set_ominous_bottle_amplifier", eyb.a);
+   public static final exg<exr> R = a("set_custom_model_data", exr.a);
 
-   exh(List<ezr> $$0, jq<dkd> $$1, Set<dyq<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private static <T extends exf> exg<T> a(String $$0, MapCodec<T> $$1) {
+      return ke.a(mb.E, aku.b($$0), new exg<>($$1));
    }
 
-   private exh(List<ezr> $$0, jq<dkd> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
-   }
+   public static BiFunction<cwp, evr, cwp> a(List<? extends BiFunction<cwp, evr, cwp>> $$0) {
+      List<BiFunction<cwp, evr, cwp>> $$1 = List.copyOf($$0);
 
-   @Override
-   public exx<exh> b() {
-      return exy.D;
-   }
-
-   @Override
-   public Set<bbd<?>> a() {
-      return Set.of(ezc.g);
-   }
-
-   @Override
-   protected cxg a(cxg $$0, ewi $$1) {
-      dxo $$2 = $$1.c(ezc.g);
-      if ($$2 != null) {
-         $$0.a(ku.am, czi.a, $$1x -> {
-            for (dyq<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
-   }
-
-   public static exh.a a(dkd $$0) {
-      return new exh.a($$0);
-   }
-
-   public static class a extends exv.a<exh.a> {
-      private final jq<dkd> a;
-      private final Builder<dyq<?>> b = ImmutableSet.builder();
-
-      a(dkd $$0) {
-         this.a = $$0.p();
-      }
-
-      public exh.a a(dyq<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
+      return switch ($$1.size()) {
+         case 0 -> a;
+         case 1 -> (BiFunction)$$1.get(0);
+         case 2 -> {
+            BiFunction<cwp, evr, cwp> $$2 = $$1.get(0);
+            BiFunction<cwp, evr, cwp> $$3 = $$1.get(1);
+            yield ($$2x, $$3x) -> $$3.apply($$2.apply($$2x, $$3x), $$3x);
          }
-      }
+         default -> ($$1x, $$2x) -> {
+         for (BiFunction<cwp, evr, cwp> $$3x : $$1) {
+            $$1x = $$3x.apply($$1x, $$2x);
+         }
 
-      protected exh.a a() {
-         return this;
-      }
-
-      @Override
-      public exw b() {
-         return new exh(this.g(), this.a, this.b.build());
-      }
+         return $$1x;
+      };
+      };
    }
 }

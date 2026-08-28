@@ -1,124 +1,137 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ckr extends ckn {
-   private static final cgo b = cgo.a().d();
-   @Nullable
-   private eue c;
-   @Nullable
-   private fbr d;
-   private boolean e;
+public abstract class ckr extends buk {
+   private static final Logger b = LogUtils.getLogger();
+   private int c;
+   protected ji a;
 
-   public ckr(ckl $$0) {
-      super($$0);
+   protected ckr(bur<? extends ckr> $$0, dgi $$1) {
+      super($$0, $$1);
    }
+
+   protected ckr(bur<? extends ckr> $$0, dgi $$1, ji $$2) {
+      this($$0, $$1);
+      this.a = $$2;
+   }
+
+   protected abstract void l();
 
    @Override
-   public clb<ckr> h() {
-      return clb.a;
-   }
-
-   @Override
-   public void a(arx $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
-      }
-   }
-
-   @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Nullable
-   @Override
-   public fbr f() {
-      return this.d;
-   }
-
-   private void b(arx $$0) {
-      if (this.c != null && this.c.c()) {
-         jh $$1 = $$0.a(edj.a.f, ego.a(this.a.m()));
-         int $$2 = this.a.gl() == null ? 0 : this.a.gl().e();
-         if (this.a.dZ().a($$2 + 3) == 0) {
-            this.a.gk().a(clb.c);
-            return;
-         }
-
-         cpo $$3 = $$0.a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         double $$4;
-         if ($$3 != null) {
-            $$4 = $$1.b($$3.du()) / 512.0;
-         } else {
-            $$4 = 64.0;
-         }
-
-         if ($$3 != null && (this.a.dZ().a((int)($$4 + 2.0)) == 0 || this.a.dZ().a($$2 + 2) == 0)) {
-            this.a($$3);
-            return;
-         }
-      }
-
-      if (this.c == null || this.c.c()) {
-         int $$6 = this.a.t();
-         int $$7 = $$6;
-         if (this.a.dZ().a(8) == 0) {
-            this.e = !this.e;
-            $$7 = $$6 + 6;
-         }
-
-         if (this.e) {
-            $$7++;
-         } else {
-            $$7--;
-         }
-
-         if (this.a.gl() != null && this.a.gl().e() >= 0) {
-            $$7 %= 12;
-            if ($$7 < 0) {
-               $$7 += 12;
+   public void h() {
+      if (this.dW() instanceof arc $$0) {
+         this.aA();
+         if (this.c++ == 100) {
+            this.c = 0;
+            if (!this.dR() && !this.m()) {
+               this.at();
+               this.a($$0, null);
             }
-         } else {
-            $$7 -= 12;
-            $$7 &= 7;
-            $$7 += 12;
-         }
-
-         this.c = this.a.a($$6, $$7, null);
-         if (this.c != null) {
-            this.c.a();
          }
       }
-
-      this.i();
    }
 
-   private void a(cpo $$0) {
-      this.a.gk().a(clb.b);
-      this.a.gk().b(clb.b).a($$0);
+   public abstract boolean m();
+
+   @Override
+   public boolean bH() {
+      return true;
    }
 
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         kl $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new fbr($$1, $$3, $$2);
+   @Override
+   public boolean v(buk $$0) {
+      if ($$0 instanceof cox $$1) {
+         return !this.dW().a($$1, this.a) ? true : this.b(this.dX().a($$1), 0.0F);
+      } else {
+         return false;
       }
    }
 
    @Override
-   public void a(ckk $$0, jh $$1, btr $$2, @Nullable cpo $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
+   public boolean b(bta $$0) {
+      return !this.d($$0);
+   }
+
+   @Override
+   public boolean a(arc $$0, bta $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if (!$$0.O().b(dge.c) && $$1.d() instanceof bvi) {
+         return false;
+      } else {
+         if (!this.dR()) {
+            this.c($$0);
+            this.bD();
+            this.a($$0, $$1.d());
+         }
+
+         return true;
       }
+   }
+
+   @Override
+   public boolean a(dga $$0) {
+      return $$0.h() ? super.a($$0) : true;
+   }
+
+   @Override
+   public void a(bvk $$0, fba $$1) {
+      if (this.dW() instanceof arc $$2 && !this.dR() && $$1.h() > 0.0) {
+         this.c($$2);
+         this.a($$2, null);
+      }
+   }
+
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+      if (this.dW() instanceof arc $$3 && !this.dR() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.c($$3);
+         this.a($$3, null);
+      }
+   }
+
+   @Override
+   public void b(tq $$0) {
+      ji $$1 = this.p();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
+   }
+
+   @Override
+   public void a(tq $$0) {
+      ji $$1 = new ji($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.dw(), 16.0)) {
+         b.error("Block-attached entity at invalid position: {}", $$1);
+      } else {
+         this.a = $$1;
+      }
+   }
+
+   public abstract void a(arc var1, @Nullable buk var2);
+
+   @Override
+   protected boolean bJ() {
+      return false;
+   }
+
+   @Override
+   public void a_(double $$0, double $$1, double $$2) {
+      this.a = ji.a($$0, $$1, $$2);
+      this.l();
+      this.ar = true;
+   }
+
+   public ji p() {
+      return this.a;
+   }
+
+   @Override
+   public void a(arc $$0, bvf $$1) {
+   }
+
+   @Override
+   public void m_() {
    }
 }

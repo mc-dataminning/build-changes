@@ -1,19 +1,42 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Set;
 
-public class cfo extends cgh<bus> {
+public class cfo extends cfq<coi> {
+   private static final int a = 40;
+
+   public cfo() {
+      super(40);
+   }
+
+   protected void a(arc $$0, coi $$1) {
+      akt<dgi> $$2 = $$0.ai();
+      ji $$3 = $$1.dw();
+      List<jq> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               ji $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gz().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(jq.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      bwi<?> $$10 = $$1.ec();
+      if (!$$4.isEmpty()) {
+         $$10.a(cek.f, $$4);
+      } else {
+         $$10.b(cek.f);
+      }
+   }
+
    @Override
-   public Set<cfb<?>> a() {
-      return ImmutableSet.of(cfb.K, cfb.h);
-   }
-
-   protected void a(arx $$0, bus $$1) {
-      $$1.ec().c(cfb.h).ifPresent($$1x -> this.a($$1, $$1x));
-   }
-
-   private void a(bus $$0, cfd $$1) {
-      Optional<bus> $$2 = $$1.a($$1x -> $$1x.aq() == $$0.aq() && !$$1x.e_()).map(bus.class::cast);
-      $$0.ec().a(cfb.K, $$2);
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.f);
    }
 }

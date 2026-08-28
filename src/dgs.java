@@ -1,27 +1,50 @@
-import java.util.Optional;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class dgs {
-   public Optional<Float> a(dgr $$0, dge $$1, jh $$2, dxo $$3, etq $$4) {
-      return $$3.l() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
+   private final Long2ObjectMap<List<ard>> a = new Long2ObjectOpenHashMap();
+   private final Map<ard, dgs.a> b = Maps.newHashMap();
+   private final aqh c;
+
+   public dgs(aqh $$0) {
+      this.c = $$0;
    }
 
-   public boolean a(dgr $$0, dge $$1, jh $$2, dxo $$3, float $$4) {
-      return true;
+   private List<ard> a(dfo $$0) {
+      return (List<ard>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
    }
 
-   public boolean a(dgr $$0, bvb $$1) {
-      return true;
+   public void a(dfo $$0, bvj $$1) {
+      for (ard $$2 : this.a($$0)) {
+         this.b.computeIfAbsent($$2, $$0x -> new dgs.a()).a($$1);
+      }
    }
 
-   public float a(bvb $$0) {
-      return 1.0F;
+   public boolean a(bvj $$0, dfo $$1) {
+      for (ard $$2 : this.a($$1)) {
+         dgs.a $$3 = this.b.get($$2);
+         if ($$3 == null || $$3.b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public float a(dgr $$0, bvb $$1, float $$2) {
-      float $$3 = $$0.e() * 2.0F;
-      fbr $$4 = $$0.f();
-      double $$5 = Math.sqrt($$1.f($$4)) / (double)$$3;
-      double $$6 = (1.0 - $$5) * (double)$$2;
-      return (float)(($$6 * $$6 + $$6) / 2.0 * 7.0 * (double)$$3 + 1.0);
+   static class a {
+      private final Object2IntMap<bvj> a = new Object2IntOpenHashMap(bvj.values().length);
+
+      public void a(bvj $$0) {
+         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
+      }
+
+      public boolean b(bvj $$0) {
+         return this.a.getOrDefault($$0, 0) < $$0.b();
+      }
    }
 }

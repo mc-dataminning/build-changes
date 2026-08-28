@@ -1,72 +1,224 @@
+import com.google.common.base.Stopwatch;
+import com.google.common.collect.Lists;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.yggdrasil.ServicesKeySet;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Lifecycle;
+import java.net.Proxy;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.function.BooleanSupplier;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class sq {
-   public static final enk a = end.a(edj.a.e);
-   public static final enk b = end.a(edj.a.f);
-   public static final enk c = end.a(edj.a.c);
-   public static final enk d = end.a(edj.a.a);
-   public static final enk e = end.a(edj.a.d);
-   public static final enk f = enc.a(eed.a(), eed.b());
-   public static final enk g = enc.a(eed.b(10), eed.c(10));
-   public static final enk h = enc.a(eed.b(8), eed.c(8));
-   public static final enk i = enc.a(eed.b(4), eed.c(4));
-   public static final enk j = enc.a(eed.a(), eed.a(256));
+public class sq extends MinecraftServer {
+   private static final Logger l = LogUtils.getLogger();
+   private static final int m = 20;
+   private static final int n = 14999992;
+   private static final alp o = new alp(null, ServicesKeySet.EMPTY, null, null);
+   private static final crt p = crv.e.a().d(crt.a(crv.c, crv.d));
+   private final bnc q = new bnc(4);
+   private List<sf> r = new ArrayList<>();
+   private final List<tf> s;
+   private final ji t;
+   private final Stopwatch u = Stopwatch.createUnstarted();
+   private static final dge v = af.a(new dge(p), $$0 -> {
+      $$0.a(dge.e).a(false, null);
+      $$0.a(dge.w).a(false, null);
+      $$0.a(dge.o).a(0, null);
+      $$0.a(dge.b).a(false, null);
+   });
+   private static final edq w = new edq(0L, false, false);
+   @Nullable
+   private sw x;
 
-   public static void a(ra<enh> $$0) {
-      sk.a($$0);
-      sl.a($$0);
-      sm.a($$0);
-      sn.a($$0);
-      so.a($$0);
-      sp.a($$0);
-      sr.a($$0);
-      ss.a($$0);
-      st.a($$0);
-   }
-
-   public static alo<enh> a(String $$0) {
-      return alo.a(mb.aT, alp.b($$0));
-   }
-
-   public static void a(ra<enh> $$0, alo<enh> $$1, jq<egb<?, ?>> $$2, List<enk> $$3) {
-      $$0.a($$1, new enh($$2, List.copyOf($$3)));
-   }
-
-   public static void a(ra<enh> $$0, alo<enh> $$1, jq<egb<?, ?>> $$2, enk... $$3) {
-      a($$0, $$1, $$2, List.of($$3));
-   }
-
-   public static enk a(int $$0, float $$1, int $$2) {
-      float $$3 = 1.0F / $$1;
-      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
-         throw new IllegalStateException("Chance data cannot be represented as list weight");
+   public static sq a(Thread $$0, evf.c $$1, aua $$2, Collection<tf> $$3, ji $$4) {
+      if ($$3.isEmpty()) {
+         throw new IllegalArgumentException("No test functions were given!");
       } else {
-         bri<bsf> $$4 = bri.<bsf>a().a(bsc.a($$0), (int)$$3 - 1).a(bsc.a($$0 + $$2), 1).a();
-         return emz.a(new bsm($$4));
+         $$2.a();
+         dhf $$5 = new dhf(new dfv(new ArrayList<>($$2.c()), List.of()), p);
+         dgm $$6 = new dgm("Test Level", dgf.b, false, bsg.c, true, v, $$5);
+         als.d $$7 = new als.d($$2, $$5, false, true);
+         als.c $$8 = new als.c($$7, ey.a.b, 4);
+
+         try {
+            l.debug("Starting resource loading");
+            Stopwatch $$9 = Stopwatch.createStarted();
+            alt $$10 = af.<alt>c($$2x -> als.a($$8, $$1xx -> {
+                  ke<eat> $$2xx = new jz<>(mc.bf, Lifecycle.stable()).n();
+                  edn.b $$3x = $$1xx.c().d(mc.bb).b(enc.b).a().a().a($$2xx);
+                  return new als.b<>(new evj($$6, w, $$3x.d(), $$3x.a()), $$3x.b());
+               }, alt::new, af.g(), $$2x)).get();
+            $$9.stop();
+            l.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
+            return new sq($$0, $$1, $$2, $$10, $$3, $$4);
+         } catch (Exception var11) {
+            l.warn("Failed to load vanilla datapack, bit oops", var11);
+            System.exit(-1);
+            throw new IllegalStateException();
+         }
       }
    }
 
-   public static enj a() {
-      return emw.a(eeq.c);
+   private sq(Thread $$0, evf.c $$1, aua $$2, alt $$3, Collection<tf> $$4, ji $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bao.a(), o, aro::b);
+      this.s = Lists.newArrayList($$4);
+      this.t = $$5;
    }
 
-   public static emw a(dkd $$0) {
-      return emw.a(eeq.a($$0.m(), jh.c));
+   @Override
+   public boolean e() {
+      this.a(new avd(this, this.bb(), this.g, 1) {
+      });
+      this.v_();
+      arc $$0 = this.J();
+      this.r = Lists.newArrayList(sg.a(this.s, $$0));
+      $$0.a(this.t, 0.0F);
+      int $$1 = 20000000;
+      $$0.a(20000000, 20000000, false, false);
+      l.info("Started game test server");
+      return true;
    }
 
-   public static jq<enh> a(jq<egb<?, ?>> $$0, enk... $$1) {
-      return jq.a(new enh($$0, List.of($$1)));
+   @Override
+   public void a(BooleanSupplier $$0) {
+      super.a($$0);
+      arc $$1 = this.J();
+      if (!this.br()) {
+         this.b($$1);
+      }
+
+      if ($$1.ad() % 20L == 0L) {
+         l.info(this.x.j());
+      }
+
+      if (this.x.i()) {
+         this.a(false);
+         l.info(this.x.j());
+         st.a();
+         l.info("========= {} GAME TESTS COMPLETE IN {} ======================", this.x.h(), this.u.stop());
+         if (this.x.d()) {
+            l.info("{} required tests failed :(", this.x.a());
+            this.x.f().forEach($$0x -> l.info("   - {}", $$0x.b()));
+         } else {
+            l.info("All {} required tests passed :)", this.x.h());
+         }
+
+         if (this.x.e()) {
+            l.info("{} optional tests failed", this.x.b());
+            this.x.g().forEach($$0x -> l.info("   - {} with rotation: {}", $$0x.b(), $$0x.u()));
+         }
+
+         l.info("====================================================");
+      }
    }
 
-   public static <FC extends eit, F extends egp<FC>> jq<enh> a(F $$0, FC $$1, enk... $$2) {
-      return a(jq.a(new egb($$0, $$1)), $$2);
+   @Override
+   public bnf f() {
+      return this.q;
    }
 
-   public static <FC extends eit, F extends egp<FC>> jq<enh> a(F $$0, FC $$1) {
-      return a($$0, $$1, eeq.c);
+   @Override
+   public boolean g() {
+      return false;
    }
 
-   public static <FC extends eit, F extends egp<FC>> jq<enh> a(F $$0, FC $$1, eeq $$2) {
-      return a($$0, $$1, emw.a($$2));
+   @Override
+   public void x_() {
+      this.bA();
+   }
+
+   @Override
+   public ad a(ad $$0) {
+      $$0.a("Type", "Game test server");
+      return $$0;
+   }
+
+   @Override
+   public void i() {
+      super.i();
+      l.info("Game test server shutting down");
+      System.exit(this.x.a());
+   }
+
+   @Override
+   public void a(o $$0) {
+      super.a($$0);
+      l.error("Game test server crashed\n{}", $$0.a(y.a));
+      System.exit(1);
+   }
+
+   private void b(arc $$0) {
+      ji $$1 = new ji($$0.A.a(-14999992, 14999992), -59, $$0.A.a(-14999992, 14999992));
+      so $$2 = so.a.a(this.r, $$0).a((so.c)(new ta($$1, 8, false))).a();
+      Collection<sl> $$3 = $$2.a();
+      this.x = new sw($$3);
+      l.info("{} tests are now running at position {}!", this.x.h(), $$1.x());
+      this.u.reset();
+      this.u.start();
+      $$2.b();
+   }
+
+   private boolean br() {
+      return this.x != null;
+   }
+
+   @Override
+   public boolean w_() {
+      return false;
+   }
+
+   @Override
+   public int k() {
+      return 0;
+   }
+
+   @Override
+   public int l() {
+      return 4;
+   }
+
+   @Override
+   public boolean m() {
+      return false;
+   }
+
+   @Override
+   public boolean n() {
+      return false;
+   }
+
+   @Override
+   public int o() {
+      return 0;
+   }
+
+   @Override
+   public boolean p() {
+      return false;
+   }
+
+   @Override
+   public boolean q() {
+      return true;
+   }
+
+   @Override
+   public boolean r() {
+      return false;
+   }
+
+   @Override
+   public boolean c() {
+      return false;
+   }
+
+   @Override
+   public boolean a(GameProfile $$0) {
+      return false;
    }
 }

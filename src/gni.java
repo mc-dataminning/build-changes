@@ -1,66 +1,90 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
 public class gni {
-   private final gne a;
-   private final gmz b;
+   public float[] a;
+   public final int b;
 
-   public gni(gne $$0, gmz $$1) {
+   public gni(@Nullable float[] $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
-   public gmz a() {
-      return this.b;
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
    }
 
-   public Predicate<dxo> a(dxp<dkd, dxo> $$0) {
-      return this.a.getPredicate($$0);
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
    }
 
-   public static class a implements JsonDeserializer<gni> {
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gni> {
+      private static final int a = 0;
+
       public gni a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         return new gni(this.b($$3), (gmz)$$2.deserialize($$3.get("apply"), gmz.class));
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gni($$4, $$5);
       }
 
-      private gne b(JsonObject $$0) {
-         return $$0.has("when") ? a(azk.u($$0, "when")) : gne.b;
-      }
-
-      @VisibleForTesting
-      static gne a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gne> $$2 = Streams.stream(azk.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gnh($$2);
-            } else if ($$0.has("AND")) {
-               List<gne> $$3 = Streams.stream(azk.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gnd($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
+      protected int a(JsonObject $$0) {
+         int $$1 = ayp.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
          } else {
-            return new gnd($$1.stream().map(gni.a::a).collect(Collectors.toList()));
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
 
-      private static gne a(Entry<String, JsonElement> $$0) {
-         return new gnf($$0.getKey(), $$0.getValue().getAsString());
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = ayp.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
+
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = ayp.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
+
+               return $$2;
+            }
+         }
       }
    }
 }

@@ -1,12 +1,39 @@
-public record aev(awz b) implements zr<acg> {
-   public static final zi<wh, aev> a = zi.a(awz.a, aev::b, aev::new);
+import javax.annotation.Nullable;
 
-   @Override
-   public zt<aev> a() {
-      return agz.am;
+public class aev implements yv<abk> {
+   public static final ym<vl, aev> a = yv.a(aev::a, aev::new);
+   private final int b;
+   private final int c;
+
+   public aev(buk $$0, @Nullable buk $$1) {
+      this.b = $$0.ar();
+      this.c = $$1 != null ? $$1.ar() : 0;
    }
 
-   public void a(acg $$0) {
+   private aev(vl $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+   }
+
+   private void a(vl $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+   }
+
+   @Override
+   public yx<aev> a() {
+      return agd.aG;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
    }
 }

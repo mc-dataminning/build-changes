@@ -1,44 +1,35 @@
-public class ccj extends cdi {
-   private final chr g;
+public class ccj extends cce {
+   private final chu a;
+   private ard b;
+   private boolean c;
 
-   public ccj(chr $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+   public ccj(chu $$0) {
+      this.a = $$0;
    }
 
    @Override
    public boolean b() {
-      return this.g.p() && !this.g.go() && super.b();
+      ard $$0 = (ard)this.a.ag_();
+      boolean $$1 = $$0 != null && !$$0.Z_() && !$$0.gj().b && !$$0.bj() && !$$0.av;
+      return !this.a.gp() && $$1 && this.a.gF();
+   }
+
+   @Override
+   public boolean U_() {
+      return !this.c;
    }
 
    @Override
    public void d() {
-      super.d();
-      this.g.y(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.y(false);
+      this.b = (ard)this.a.ag_();
+      this.c = false;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.g.y(this.m());
-   }
-
-   @Override
-   protected boolean a(dhc $$0, jh $$1) {
-      if (!$$0.u($$1.d())) {
-         return false;
-      } else {
-         dxo $$2 = $$0.a_($$1);
-         if ($$2.a(dkf.cD)) {
-            return dux.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dkf.cL) && $$2.c(dnl.b) ? true : $$2.a(axk.T, $$0x -> $$0x.d(djw.b).map($$0xx -> $$0xx != dyb.a).orElse(true));
+      if (!this.c && !this.a.x() && !this.a.P_()) {
+         if (this.a.cR().c(this.b.cR())) {
+            this.c = this.a.b(this.b);
          }
       }
    }

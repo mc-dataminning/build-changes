@@ -1,31 +1,22 @@
-import com.google.common.collect.Lists;
-import com.ibm.icu.lang.UCharacter;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.Bidi;
-import com.ibm.icu.text.BidiRun;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hcm {
-   public static azg a(xp $$0, boolean $$1) {
-      yi $$2 = yi.a($$0, UCharacter::getMirror, hcm::a);
-      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
-      $$3.setReorderingMode(0);
-      List<azg> $$4 = Lists.newArrayList();
-      int $$5 = $$3.countRuns();
+public record hcm(boolean b) implements hcp {
+   public static final MapCodec<hcm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("normalize", true).forGetter(hcm::b)).apply($$0, hcm::new)
+   );
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         BidiRun $$7 = $$3.getVisualRun($$6);
-         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
-      }
-
-      return azg.composite($$4);
+   @Override
+   public float a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      float $$4 = (float)$$0.o();
+      float $$5 = (float)$$0.p();
+      return this.b ? ayz.a($$4 / $$5, 0.0F, 1.0F) : ayz.a($$4, 0.0F, $$5);
    }
 
-   private static String a(String $$0) {
-      try {
-         return new ArabicShaping(8).shape($$0);
-      } catch (Exception var2) {
-         return $$0;
-      }
+   @Override
+   public MapCodec<hcm> a() {
+      return a;
    }
 }

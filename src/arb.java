@@ -1,65 +1,70 @@
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public class arb {
-   private static final int c = 33;
-   private static final int d = 32;
-   private static final int e = 31;
-   private static final ean f = eaj.a.a(eak.n);
-   public static final int a = f.c().c();
-   public static final int b = 33 + a;
+public interface arb extends dfz {
+   arc a();
 
    @Nullable
-   public static eak a(int $$0) {
-      return a($$0 - 33, null);
+   default cox a(cfx $$0, bvg $$1) {
+      return this.a(this.z(), $$0, $$1, $$1.dB(), $$1.dD(), $$1.dH());
    }
 
    @Nullable
-   @Contract("_,!null->!null;_,_->_")
-   public static eak a(int $$0, @Nullable eak $$1) {
-      if ($$0 > a) {
-         return $$1;
-      } else {
-         return $$0 <= 0 ? eak.n : f.c().a($$0);
+   default cox a(cfx $$0, bvg $$1, double $$2, double $$3, double $$4) {
+      return this.a(this.z(), $$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Nullable
+   default cox a(cfx $$0, double $$1, double $$2, double $$3) {
+      return this.a(this.z(), $$0, null, $$1, $$2, $$3);
+   }
+
+   @Nullable
+   default <T extends bvg> T a(Class<? extends T> $$0, cfx $$1, @Nullable bvg $$2, double $$3, double $$4, double $$5, fav $$6) {
+      return this.a(this.a($$0, $$6, $$0x -> true), $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   default <T extends bvg> T a(List<? extends T> $$0, cfx $$1, @Nullable bvg $$2, double $$3, double $$4, double $$5) {
+      double $$6 = -1.0;
+      T $$7 = null;
+
+      for (T $$8 : $$0) {
+         if ($$1.a(this.a(), $$2, $$8)) {
+            double $$9 = $$8.i($$3, $$4, $$5);
+            if ($$6 == -1.0 || $$9 < $$6) {
+               $$6 = $$9;
+               $$7 = $$8;
+            }
+         }
       }
+
+      return $$7;
    }
 
-   public static eak b(int $$0) {
-      return a($$0, eak.c);
-   }
+   default List<cox> a(cfx $$0, bvg $$1, fav $$2) {
+      List<cox> $$3 = new ArrayList<>();
 
-   public static int a(eak $$0) {
-      return 33 + f.a($$0);
-   }
-
-   public static arm c(int $$0) {
-      if ($$0 <= 31) {
-         return arm.d;
-      } else if ($$0 <= 32) {
-         return arm.c;
-      } else {
-         return $$0 <= 33 ? arm.b : arm.a;
+      for (cox $$4 : this.z()) {
+         if ($$2.e($$4.dB(), $$4.dD(), $$4.dH()) && $$0.a(this.a(), $$1, $$4)) {
+            $$3.add($$4);
+         }
       }
+
+      return $$3;
    }
 
-   public static int a(arm $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> 33;
-         case c -> 32;
-         case d -> 31;
-      };
-   }
+   default <T extends bvg> List<T> a(Class<T> $$0, cfx $$1, bvg $$2, fav $$3) {
+      List<T> $$4 = this.a($$0, $$3, $$0x -> true);
+      List<T> $$5 = new ArrayList<>();
 
-   public static boolean d(int $$0) {
-      return $$0 <= 31;
-   }
+      for (T $$6 : $$4) {
+         if ($$1.a(this.a(), $$2, $$6)) {
+            $$5.add($$6);
+         }
+      }
 
-   public static boolean e(int $$0) {
-      return $$0 <= 32;
-   }
-
-   public static boolean f(int $$0) {
-      return $$0 <= b;
+      return $$5;
    }
 }

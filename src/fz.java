@@ -1,170 +1,109 @@
-import com.google.gson.JsonObject;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
 import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fz<T> implements ArgumentType<fz.c<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xk.b("argument.resource_tag.not_found", $$0, $$1));
-   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> xk.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
-   );
-   private final js<T> d;
-   final alo<? extends kd<T>> e;
+public class fz<T> implements ArgumentType<jr<T>> {
+   private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wo.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wo.c("argument.resource_or_id.invalid"));
+   private final jt.a d;
+   private final boolean e;
+   private final Codec<jr<T>> f;
 
-   public fz(es $$0, alo<? extends kd<T>> $$1) {
-      this.e = $$1;
-      this.d = $$0.d($$1);
+   protected fz(et $$0, akt<ke<T>> $$1, Codec<jr<T>> $$2) {
+      this.d = $$0;
+      this.e = $$0.a($$1).isPresent();
+      this.f = $$2;
    }
 
-   public static <T> fz<T> a(es $$0, alo<? extends kd<T>> $$1) {
-      return new fz<>($$0, $$1);
+   public static fz.c a(et $$0) {
+      return new fz.c($$0);
    }
 
-   public static <T> fz.c<T> a(CommandContext<ew> $$0, String $$1, alo<kd<T>> $$2) throws CommandSyntaxException {
-      fz.c<?> $$3 = (fz.c<?>)$$0.getArgument($$1, fz.c.class);
-      Optional<fz.c<T>> $$4 = $$3.a($$2);
-      return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            alo<?> $$2x = $$1xx.h();
-            return fv.b.create($$2x.a(), $$2x.b(), $$2.a());
-         }, $$1xx -> {
-            aya<?> $$2x = $$1xx.h();
-            return c.create($$2x.b(), $$2x.a(), $$2.a());
-         }));
+   public static jr<evw> a(CommandContext<ex> $$0, String $$1) throws CommandSyntaxException {
+      return d($$0, $$1);
    }
 
-   public fz.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
-         int $$1 = $$0.getCursor();
+   public static fz.a b(et $$0) {
+      return new fz.a($$0);
+   }
 
-         try {
-            $$0.skip();
-            alp $$2 = alp.a($$0);
-            aya<T> $$3 = aya.a(this.e, $$2);
-            ju.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
-            return new fz.d<>($$4);
-         } catch (CommandSyntaxException var6) {
-            $$0.setCursor($$1);
-            throw var6;
-         }
+   public static jr<exf> b(CommandContext<ex> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   public static fz.b c(et $$0) {
+      return new fz.b($$0);
+   }
+
+   public static jr<eza> c(CommandContext<ex> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   private static <T> jr<T> d(CommandContext<ex> $$0, String $$1) {
+      return (jr<T>)$$0.getArgument($$1, jr.class);
+   }
+
+   @Nullable
+   public jr<T> a(StringReader $$0) throws CommandSyntaxException {
+      un $$1 = b($$0);
+      if (!this.e) {
+         return null;
       } else {
-         alp $$6 = alp.a($$0);
-         alo<T> $$7 = alo.a(this.e, $$6);
-         jq.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fv.a.createWithContext($$0, $$6, this.e.a()));
-         return new fz.b<>($$8);
+         aks<un> $$2 = this.d.a(ue.a);
+         return (jr<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      fb.a(this.d.f().map(aya::b), $$1, "#");
-      return fb.a(this.d.c_().map(alo::a), $$1);
+   @VisibleForTesting
+   static un b(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      un $$2 = new uo($$0).d();
+      if (c($$0)) {
+         return $$2;
+      } else {
+         $$0.setCursor($$1);
+         aku $$3 = aku.a($$0);
+         if (c($$0)) {
+            return ul.a($$3.toString());
+         } else {
+            $$0.setCursor($$1);
+            throw c.createWithContext($$0);
+         }
+      }
+   }
+
+   private static boolean c(StringReader $$0) {
+      return !$$0.canRead() || $$0.peek() == ' ';
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 
-   public static class a<T> implements is<fz<T>, fz.a<T>.a> {
-      public void a(fz.a<T>.a $$0, wh $$1) {
-         $$1.b($$0.b);
-      }
-
-      public fz.a<T>.a a(wh $$0) {
-         return new fz.a.a($$0.r());
-      }
-
-      public void a(fz.a<T>.a $$0, JsonObject $$1) {
-         $$1.addProperty("registry", $$0.b.a().toString());
-      }
-
-      public fz.a<T>.a a(fz<T> $$0) {
-         return new fz.a.a($$0.e);
-      }
-
-      public final class a implements is.a<fz<T>> {
-         final alo<? extends kd<T>> b;
-
-         a(final alo<? extends kd<T>> $$1) {
-            this.b = $$1;
-         }
-
-         public fz<T> a(es $$0) {
-            return new fz<>($$0, this.b);
-         }
-
-         @Override
-         public is<fz<T>, ?> a() {
-            return a.this;
-         }
+   public static class a extends fz<exf> {
+      protected a(et $$0) {
+         super($$0, mc.bh, exh.d);
       }
    }
 
-   static record b<T>(jq.c<T> a) implements fz.c<T> {
-      @Override
-      public Either<jq.c<T>, ju.c<T>> a() {
-         return Either.left(this.a);
-      }
-
-      @Override
-      public <E> Optional<fz.c<E>> a(alo<? extends kd<E>> $$0) {
-         return this.a.h().c($$0) ? Optional.of((fz.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(jq<T> $$0) {
-         return $$0.equals(this.a);
-      }
-
-      @Override
-      public String b() {
-         return this.a.h().a().toString();
-      }
-
-      public jq.c<T> c() {
-         return this.a;
+   public static class b extends fz<eza> {
+      protected b(et $$0) {
+         super($$0, mc.bi, eza.f);
       }
    }
 
-   public interface c<T> extends Predicate<jq<T>> {
-      Either<jq.c<T>, ju.c<T>> a();
-
-      <E> Optional<fz.c<E>> a(alo<? extends kd<E>> var1);
-
-      String b();
-   }
-
-   static record d<T>(ju.c<T> a) implements fz.c<T> {
-      @Override
-      public Either<jq.c<T>, ju.c<T>> a() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public <E> Optional<fz.c<E>> a(alo<? extends kd<E>> $$0) {
-         return this.a.h().d($$0) ? Optional.of((fz.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(jq<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public String b() {
-         return "#" + this.a.h().b();
-      }
-
-      public ju.c<T> c() {
-         return this.a;
+   public static class c extends fz<evw> {
+      protected c(et $$0) {
+         super($$0, mc.bg, evw.e);
       }
    }
 }

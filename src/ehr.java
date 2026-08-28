@@ -1,109 +1,96 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Predicate;
 
-public class ehr extends egp<ejj> {
-   public ehr(Codec<ejj> $$0) {
+public class ehr extends efy<eij> {
+   private static final jn[] a = jn.values();
+
+   public ehr(Codec<eij> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egr<ejj> $$0) {
-      dhx $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      if (!$$1.a_($$2).l()) {
+   public boolean a(ega<eij> $$0) {
+      dhg $$1 = $$0.b();
+      ji $$2 = $$0.e();
+      azh $$3 = $$0.d();
+      if (!$$1.u($$2)) {
          return false;
       } else {
-         bac $$3 = $$0.d();
-         jh $$4 = $$0.e();
-         ejj $$5 = $$0.f();
-         jh.a $$6 = $$4.k();
-         if (a($$1, $$0.c(), $$5, $$3, $$6, $$4)) {
-            a($$1, $$5, $$3, $$4, $$6);
-         }
-
-         return true;
-      }
-   }
-
-   private static boolean a(dhx $$0, ejj $$1, jh $$2) {
-      jh.a $$3 = $$2.k();
-
-      for (int $$4 = 1; $$4 <= $$1.c; $$4++) {
-         $$3.c(jm.b);
-         dxo $$5 = $$0.a_($$3);
-         if (!a($$5, $$4, $$1.n)) {
+         dwx $$4 = $$1.a_($$2.d());
+         if (!$$4.a(djo.ei) && !$$4.a(djo.lm)) {
             return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
          }
       }
-
-      return true;
    }
 
-   private static boolean a(dxo $$0, int $$1, int $$2) {
-      if ($$0.l()) {
-         return true;
-      } else {
-         int $$3 = $$1 + 1;
-         return $$3 <= $$2 && $$0.y().a(axq.a);
-      }
-   }
+   private void a(dgj $$0, azh $$1, ji $$2) {
+      $$0.a($$2, djo.lm.m(), 2);
+      ji.a $$3 = new ji.a();
+      ji.a $$4 = new ji.a();
 
-   private static boolean a(dhx $$0, dzk $$1, ejj $$2, bac $$3, jh.a $$4, jh $$5) {
-      for (int $$6 = 0; $$6 < $$2.h; $$6++) {
-         $$4.c(jm.b);
-         if ($$2.o.test($$0, $$4) && a($$0, $$2, $$4)) {
-            jh $$7 = $$4.e();
-            if ($$0.b_($$7).a(axq.b) || !$$0.a_($$7).e()) {
-               return false;
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (jn $$7 : a) {
+               dwx $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(djo.ei) || $$8.a(djo.lm)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
             }
 
-            if ($$2.b.a().a($$0, $$1, $$3, $$4)) {
-               a($$5, $$5.v() + $$6, $$0, $$2, $$3);
-               return true;
+            if ($$6 == 1) {
+               $$0.a($$3, djo.lm.m(), 2);
             }
          }
       }
-
-      return false;
    }
 
-   private static void a(jh $$0, int $$1, dhx $$2, ejj $$3, bac $$4) {
-      int $$5 = $$0.u();
-      int $$6 = $$0.w();
-      jh.a $$7 = $$0.k();
+   private void b(dgj $$0, azh $$1, ji $$2) {
+      ji.a $$3 = new ji.a();
 
-      for (int $$8 = $$0.v(); $$8 < $$1; $$8++) {
-         a($$2, $$3, $$4, $$5, $$6, $$7.d($$5, $$8, $$6));
-      }
-   }
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            dwx $$5 = $$0.a_($$3.d());
+            if ($$5.a(djo.ei) || $$5.a(djo.lm)) {
+               int $$6 = ayz.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
 
-   private static void a(dhx $$0, ejj $$1, bac $$2, int $$3, int $$4, jh.a $$5) {
-      int $$6 = $$1.d;
-      Predicate<dxo> $$7 = $$1x -> $$1x.a($$1.e);
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
 
-      for (int $$8 = 0; $$8 < $$1.g; $$8++) {
-         $$5.a($$5, $$2.a($$6) - $$2.a($$6), 0, $$2.a($$6) - $$2.a($$6));
-         if ($$7.test($$0.a_($$5))) {
-            $$0.a($$5, $$1.f.a($$2, $$5), 2);
-         }
-
-         $$5.p($$3);
-         $$5.r($$4);
-      }
-   }
-
-   private static void a(dhx $$0, ejj $$1, bac $$2, jh $$3, jh.a $$4) {
-      int $$5 = $$1.i;
-      int $$6 = $$1.j;
-
-      for (int $$7 = 0; $$7 < $$1.l; $$7++) {
-         $$4.a($$3, $$2.a($$5) - $$2.a($$5), $$2.a($$6) - $$2.a($$6), $$2.a($$5) - $$2.a($$5));
-         if ($$0.u($$4)) {
-            dxo $$8 = $$1.k.a($$2, $$4);
-            if ($$8.a($$0, $$4) && $$0.a_($$4.d()).c($$0, $$4, jm.a)) {
-               $$0.a($$4, $$8, 2);
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
             }
          }
+      }
+   }
+
+   public static void a(dgj $$0, azh $$1, ji.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.e())) {
+               $$0.a($$2, djo.pb.m().b(dnc.e, Integer.valueOf(ayz.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, djo.pc.m(), 2);
+         }
+
+         $$2.c(jn.a);
       }
    }
 }

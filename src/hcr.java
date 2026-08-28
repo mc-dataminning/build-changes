@@ -1,22 +1,19 @@
-public class hcr {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-   public hcr(int $$0) {
-      this($$0, -1);
+public record hcr(float b) implements hcp {
+   public static final MapCodec<hcr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayi.o.optionalFieldOf("period", 1.0F).forGetter(hcr::b)).apply($$0, hcr::new)
+   );
+
+   @Override
+   public float a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      return $$2 != null && $$2.fB() == $$0 ? (float)$$2.fC() % this.b : 0.0F;
    }
 
-   public hcr(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   @Override
+   public MapCodec<hcr> a() {
+      return a;
    }
 }

@@ -1,60 +1,113 @@
 import com.mojang.serialization.MapCodec;
 
-public class dru extends dkd {
+public class dru extends djw implements djp {
    public static final MapCodec<dru> a = b(dru::new);
-   protected static final fcl b = dkd.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
-   private static final int c = 20;
+   private static final float d = 0.003F;
+   public static final int b = 3;
+   public static final dxw c = dxn.av;
+   private static final fbu e = djm.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   private static final fbu f = djm.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dru> a() {
       return a;
    }
 
-   public dru(dxn.d $$0) {
+   public dru(dww.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcl b(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return b;
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return new cwp(cwt.xv);
    }
 
    @Override
-   protected fcl b_(dxo $$0, dge $$1, jh $$2) {
-      return fci.b();
-   }
-
-   @Override
-   protected fcl c(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return fci.b();
-   }
-
-   @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      dkk.b($$1, $$2.d(), $$0);
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$4 == jm.b && $$6.a(dkf.J)) {
-         $$2.a($$3, this, 20);
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      if ($$0.c(c) == 0) {
+         return e;
+      } else {
+         return $$0.c(c) < 3 ? f : super.a($$0, $$1, $$2, $$3);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   protected boolean f(dwx $$0) {
+      return $$0.c(c) < 3;
    }
 
    @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      return false;
+   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.d(), 0) >= 9) {
+         dwx $$5 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$5, 2);
+         $$1.a(ebt.c, $$2, ebt.a.a($$5));
+      }
    }
 
    @Override
-   protected float c(dxo $$0, dge $$1, jh $$2) {
-      return 0.2F;
+   protected void a(dwx $$0, dgi $$1, ji $$2, buk $$3) {
+      if ($$3 instanceof bvg && $$3.aq() != bur.ab && $$3.aq() != bur.l) {
+         $$3.a($$0, new fba(0.8F, 0.75, 0.8F));
+         if ($$1 instanceof arc $$4 && $$0.c(c) != 0) {
+            fba $$6 = $$3.dj() ? $$3.ah() : $$3.bC().d($$3.du());
+            if ($$6.j() > 0.0) {
+               double $$7 = Math.abs($$6.a());
+               double $$8 = Math.abs($$6.c());
+               if ($$7 >= 0.003F || $$8 >= 0.003F) {
+                  $$3.a($$4, $$1.ak().u(), 1.0F);
+               }
+            }
+
+            return;
+         }
+      }
+   }
+
+   @Override
+   protected bsj a(cwp $$0, dwx $$1, dgi $$2, ji $$3, cox $$4, bsi $$5, faw $$6) {
+      int $$7 = $$1.c(c);
+      boolean $$8 = $$7 == 3;
+      return (bsj)(!$$8 && $$0.a(cwt.sv) ? bsj.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
+   }
+
+   @Override
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      int $$5 = $$0.c(c);
+      boolean $$6 = $$5 == 3;
+      if ($$5 > 1) {
+         int $$7 = 1 + $$1.A.a(2);
+         a($$1, $$2, new cwp(cwt.xv, $$7 + ($$6 ? 1 : 0)));
+         $$1.a(null, $$2, awa.Ah, awb.e, 1.0F, 0.8F + $$1.A.i() * 0.4F);
+         dwx $$8 = $$0.b(c, Integer.valueOf(1));
+         $$1.a($$2, $$8, 2);
+         $$1.a(ebt.c, $$2, ebt.a.a($$3, $$8));
+         return bsj.a;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(c);
+   }
+
+   @Override
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      return $$2.c(c) < 3;
+   }
+
+   @Override
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      int $$4 = Math.min(3, $$3.c(c) + 1);
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$4)), 2);
    }
 }

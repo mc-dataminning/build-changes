@@ -1,17 +1,118 @@
-import java.util.Collections;
-import java.util.List;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hec extends hdm {
-   private final bri<hdi> b;
+public class hec extends hdu {
+   static final Logger e = LogUtils.getLogger();
+   protected final aku d;
 
-   public hec(bri<hdi> $$0) {
-      super($$0.e().getFirst().b());
-      this.b = $$0;
+   public hec(aku $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public List<gmn> a(@Nullable dxo $$0, @Nullable jm $$1, bac $$2) {
-      return this.b.a($$2).map($$3 -> $$3.a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public void a(aup $$0) throws IOException {
+      hec.a $$1 = this.b($$0);
+      $$1.c();
+      hgh $$2 = $$1.a();
+      boolean $$3;
+      if ($$2 != null) {
+         this.c = $$2.a();
+         $$3 = $$2.b();
+      } else {
+         this.c = false;
+         $$3 = false;
+      }
+
+      feu $$5 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$5, this.c, $$3));
+      } else {
+         this.a($$5, this.c, $$3);
+      }
+   }
+
+   private void a(feu $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   }
+
+   protected hec.a b(aup $$0) {
+      return hec.a.a($$0, this.d);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final hgh a;
+      @Nullable
+      private final feu b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable hgh $$0, feu $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static hec.a a(aup $$0, aku $$1) {
+         try {
+            aun $$2 = $$0.getResourceOrThrow($$1);
+
+            feu $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = feu.a($$3);
+            }
+
+            hgh $$6 = null;
+
+            try {
+               $$6 = $$2.f().a(hgh.a).orElse(null);
+            } catch (RuntimeException var8) {
+               hec.e.warn("Failed reading metadata of: {}", $$1, var8);
+            }
+
+            return new hec.a($$6, $$4);
+         } catch (IOException var10) {
+            return new hec.a(var10);
+         }
+      }
+
+      @Nullable
+      public hgh a() {
+         return this.a;
+      }
+
+      public feu b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
+      }
    }
 }

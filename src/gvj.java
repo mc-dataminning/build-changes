@@ -1,24 +1,13 @@
-public abstract class gvj<S extends gxq, M extends gbh<S>> extends gwa<S, M> {
-   public gvj(gti<S, M> $$0) {
-      super($$0);
+public class gvj extends gqv<cmq, haz, ges<haz>> {
+   public gvj(gsc.a $$0) {
+      this($$0, gfb.dN, gfb.dO, gfb.dU, gfb.dV, gfb.dP, gfb.dQ);
    }
 
-   @Override
-   public void a(fgl $$0, glg $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.p;
-         M $$7 = this.c();
-         fgp $$8 = $$1.getBuffer(glq.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hax.d, -8355712);
-      }
+   public haz b() {
+      return new haz();
    }
 
-   protected abstract boolean a(S var1);
-
-   protected abstract float a(float var1);
-
-   protected abstract alp a();
-
-   protected abstract M c();
+   public gvj(gsc.a $$0, gfa $$1, gfa $$2, gfa $$3, gfa $$4, gfa $$5, gfa $$6) {
+      super($$0, new ges<>($$0.a($$1)), new ges<>($$0.a($$2)), new ges<>($$0.a($$3)), new ges<>($$0.a($$4)), new ges<>($$0.a($$5)), new ges<>($$0.a($$6)));
+   }
 }

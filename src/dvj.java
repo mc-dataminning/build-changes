@@ -1,95 +1,124 @@
-import java.util.Map;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dvj {
-   public static final alo<dvi> a = a("blank");
-   public static final alo<dvi> b = a("angler");
-   public static final alo<dvi> c = a("archer");
-   public static final alo<dvi> d = a("arms_up");
-   public static final alo<dvi> e = a("blade");
-   public static final alo<dvi> f = a("brewer");
-   public static final alo<dvi> g = a("burn");
-   public static final alo<dvi> h = a("danger");
-   public static final alo<dvi> i = a("explorer");
-   public static final alo<dvi> j = a("flow");
-   public static final alo<dvi> k = a("friend");
-   public static final alo<dvi> l = a("guster");
-   public static final alo<dvi> m = a("heart");
-   public static final alo<dvi> n = a("heartbreak");
-   public static final alo<dvi> o = a("howl");
-   public static final alo<dvi> p = a("miner");
-   public static final alo<dvi> q = a("mourner");
-   public static final alo<dvi> r = a("plenty");
-   public static final alo<dvi> s = a("prize");
-   public static final alo<dvi> t = a("scrape");
-   public static final alo<dvi> u = a("sheaf");
-   public static final alo<dvi> v = a("shelter");
-   public static final alo<dvi> w = a("skull");
-   public static final alo<dvi> x = a("snort");
-   private static final Map<cxc, alo<dvi>> y = Map.ofEntries(
-      Map.entry(cxk.rs, a),
-      Map.entry(cxk.yP, b),
-      Map.entry(cxk.yQ, c),
-      Map.entry(cxk.yR, d),
-      Map.entry(cxk.yS, e),
-      Map.entry(cxk.yT, f),
-      Map.entry(cxk.yU, g),
-      Map.entry(cxk.yV, h),
-      Map.entry(cxk.yW, i),
-      Map.entry(cxk.yX, j),
-      Map.entry(cxk.yY, k),
-      Map.entry(cxk.yZ, l),
-      Map.entry(cxk.za, m),
-      Map.entry(cxk.zb, n),
-      Map.entry(cxk.zc, o),
-      Map.entry(cxk.zd, p),
-      Map.entry(cxk.ze, q),
-      Map.entry(cxk.zf, r),
-      Map.entry(cxk.zg, s),
-      Map.entry(cxk.zh, t),
-      Map.entry(cxk.zi, u),
-      Map.entry(cxk.zj, v),
-      Map.entry(cxk.zk, w),
-      Map.entry(cxk.zl, x)
-   );
+public class dvj extends dtz implements ebv.b<ecc.b>, ecc {
+   private static final Logger a = LogUtils.getLogger();
+   private ecc.a b;
+   private final ecc.b c;
+   private final ecc.d d = this.b();
+   private int h;
 
-   @Nullable
-   public static alo<dvi> a(cxc $$0) {
-      return y.get($$0);
+   protected dvj(dub<?> $$0, ji $$1, dwx $$2) {
+      super($$0, $$1, $$2);
+      this.b = new ecc.a();
+      this.c = new ecc.b(this);
    }
 
-   private static alo<dvi> a(String $$0) {
-      return alo.a(mb.ax, alp.b($$0));
+   public dvj(ji $$0, dwx $$1) {
+      this(dub.J, $$0, $$1);
    }
 
-   public static dvi a(kd<dvi> $$0) {
-      a($$0, b, "angler_pottery_pattern");
-      a($$0, c, "archer_pottery_pattern");
-      a($$0, d, "arms_up_pottery_pattern");
-      a($$0, e, "blade_pottery_pattern");
-      a($$0, f, "brewer_pottery_pattern");
-      a($$0, g, "burn_pottery_pattern");
-      a($$0, h, "danger_pottery_pattern");
-      a($$0, i, "explorer_pottery_pattern");
-      a($$0, j, "flow_pottery_pattern");
-      a($$0, k, "friend_pottery_pattern");
-      a($$0, l, "guster_pottery_pattern");
-      a($$0, m, "heart_pottery_pattern");
-      a($$0, n, "heartbreak_pottery_pattern");
-      a($$0, o, "howl_pottery_pattern");
-      a($$0, p, "miner_pottery_pattern");
-      a($$0, q, "mourner_pottery_pattern");
-      a($$0, r, "plenty_pottery_pattern");
-      a($$0, s, "prize_pottery_pattern");
-      a($$0, t, "scrape_pottery_pattern");
-      a($$0, u, "sheaf_pottery_pattern");
-      a($$0, v, "shelter_pottery_pattern");
-      a($$0, w, "skull_pottery_pattern");
-      a($$0, x, "snort_pottery_pattern");
-      return a($$0, a, "decorated_pot_side");
+   public ecc.d b() {
+      return new dvj.a(this.aA_());
    }
 
-   private static dvi a(kd<dvi> $$0, alo<dvi> $$1, String $$2) {
-      return kd.a($$0, $$1, new dvi(alp.b($$2)));
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      this.h = $$0.h("last_vibration_frequency");
+      aks<un> $$2 = $$1.a(ue.a);
+      if ($$0.b("listener", 10)) {
+         ecc.a.a
+            .parse($$2, $$0.p("listener"))
+            .resultOrPartial($$0x -> a.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
+            .ifPresent($$0x -> this.b = $$0x);
+      }
+   }
+
+   @Override
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("last_vibration_frequency", this.h);
+      aks<un> $$2 = $$1.a(ue.a);
+      ecc.a.a
+         .encodeStart($$2, this.b)
+         .resultOrPartial($$0x -> a.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
+         .ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
+
+   @Override
+   public ecc.a gq() {
+      return this.b;
+   }
+
+   @Override
+   public ecc.d gr() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public ecc.b f() {
+      return this.c;
+   }
+
+   protected class a implements ecc.d {
+      public static final int b = 8;
+      protected final ji c;
+      private final ebx a;
+
+      public a(final ji $$1) {
+         this.c = $$1;
+         this.a = new ebp($$1);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public ebx b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(arc $$0, ji $$1, jr<ebt> $$2, @Nullable ebt.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(ebt.f) && !$$2.a(ebt.i) ? dqk.q(dvj.this.m()) : false;
+      }
+
+      @Override
+      public void a(arc $$0, ji $$1, jr<ebt> $$2, @Nullable buk $$3, @Nullable buk $$4, float $$5) {
+         dwx $$6 = dvj.this.m();
+         if (dqk.q($$6)) {
+            dvj.this.a(ecc.a_($$2));
+            int $$7 = ecc.a_($$5, this.a());
+            if ($$6.b() instanceof dqk $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dvj.this.d());
+            }
+         }
+      }
+
+      @Override
+      public void e() {
+         dvj.this.e();
+      }
+
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

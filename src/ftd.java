@@ -1,82 +1,47 @@
-import javax.annotation.Nullable;
+public class ftd extends fuk {
+   private static final int a = 90;
+   private final wo b;
+   private fpl c = fpl.a;
+   private final Runnable d;
+   private final wo s;
+   private final boolean u;
 
-public class ftd extends ftr {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final xk d;
-   private final xk s;
-   private final Runnable u;
-   @Nullable
-   private fos v;
-   private fny w;
-   private int x;
-
-   public static ftd a(xk $$0, xk $$1, Runnable $$2) {
-      return new ftd($$0, null, $$1, $$2, 0);
+   public ftd(Runnable $$0, wo $$1, wo $$2) {
+      this($$0, $$1, $$2, wn.k, true);
    }
 
-   public static ftd a(xk $$0, xk $$1, xk $$2, Runnable $$3) {
-      return new ftd($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected ftd(xk $$0, @Nullable xk $$1, xk $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+   public ftd(Runnable $$0, wo $$1, wo $$2, wo $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.s = $$3;
+      this.u = $$4;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      if (this.d != null) {
-         this.v = fos.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fny.a(this.s, $$0x -> this.aP_()).a((this.n - 150) / 2, $$4, 150, 20).a());
+   public wo i() {
+      return wn.a(super.i(), this.b);
    }
 
    @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
-      }
-
-      this.w.j = this.x == 0;
+   protected void aR_() {
+      super.aR_();
+      this.c = fpl.a(this.p, this.b, this.n - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = ayz.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
+      int $$2 = 150;
+      this.c(fos.a(this.s, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = ftg.a(ae.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
-      } else {
-         this.v.a($$0, this.n / 2, 120);
-      }
+      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
+      this.c.a($$0, this.n / 2, 90);
    }
 
    @Override
-   public boolean aH_() {
-      return this.v != null && this.w.j;
-   }
-
-   @Override
-   public void aP_() {
-      this.u.run();
-   }
-
-   @Override
-   public xk i() {
-      return xj.a(this.l, this.d != null ? this.d : xj.a);
+   public boolean aG_() {
+      return this.u;
    }
 }

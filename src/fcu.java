@@ -1,34 +1,7 @@
-import javax.annotation.Nullable;
+public interface fcu<T> {
+   void a(fcs<T> var1);
 
-public interface fcu {
+   boolean a(ji var1, T var2);
+
    int a();
-
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
-   }
-
-   default int b() {
-      return this.b(1);
-   }
-
-   default void c() {
-      this.a(0);
-   }
-
-   boolean d();
-
-   void e();
-
-   void f();
-
-   @Nullable
-   xk g();
-
-   void a(@Nullable xk var1);
-
-   void a(@Nullable za var1);
 }

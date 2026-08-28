@@ -1,69 +1,62 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dwh extends duq implements dhu {
-   private final dga a = new dga() {
-      @Override
-      public void a(dgz $$0, jh $$1, int $$2) {
-         $$0.a($$1, dkf.cA, $$2, 0);
-      }
+public record dwh(akt<evw> d, double e, double f, cwp g, Optional<akt<evw>> h, dvy i, dvy.a j) {
+   static final String a = "config";
+   static dwh b = new dwh();
+   static Codec<dwh> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  akt.a(mc.bg).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dwh::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dwh::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dwh::d),
+                  cwp.a("key_item").forGetter(dwh::e),
+                  akt.a(mc.bg).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dwh::f)
+               )
+               .apply($$0, dwh::new)
+      )
+      .validate(dwh::h);
 
-      @Override
-      public void a(@Nullable dgz $$0, jh $$1, dht $$2) {
-         super.a($$0, $$1, $$2);
-         if ($$0 != null) {
-            dxo $$3 = $$0.a_($$1);
-            $$0.a($$1, $$3, $$3, 4);
-         }
-      }
-   };
-
-   public dwh(jh $$0, dxo $$1) {
-      super(dus.j, $$0, $$1);
+   private dwh() {
+      this(evn.R, 4.0, 4.5, new cwp(cwt.zD), Optional.empty(), dvy.b, dvy.a.a);
    }
 
-   @Override
-   protected void a(um $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.a.a(this.o, this.p, $$0);
+   public dwh(akt<evw> $$0, double $$1, double $$2, cwp $$3, Optional<akt<evw>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   @Override
-   protected void b(um $$0, js.a $$1) {
-      super.b($$0, $$1);
-      this.a.a($$0);
+   public dvy a() {
+      return this.i;
    }
 
-   public static void a(dgz $$0, jh $$1, dxo $$2, dwh $$3) {
-      $$3.a.a($$0, $$1);
+   private DataResult<dwh> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
    }
 
-   public static void b(dgz $$0, jh $$1, dxo $$2, dwh $$3) {
-      $$3.a.a((arx)$$0, $$1);
+   public akt<evw> b() {
+      return this.d;
    }
 
-   public acn b() {
-      return acn.a(this);
+   public double c() {
+      return this.e;
    }
 
-   @Override
-   public um a(js.a $$0) {
-      um $$1 = this.e($$0);
-      $$1.r("SpawnPotentials");
-      return $$1;
+   public double d() {
+      return this.f;
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
+   public cwp e() {
+      return this.g;
    }
 
-   @Override
-   public void a(bvi<?> $$0, bac $$1) {
-      this.a.a($$0, this.o, $$1, this.p);
-      this.e();
+   public Optional<akt<evw>> f() {
+      return this.h;
    }
 
-   public dga c() {
-      return this.a;
+   public dvy.a g() {
+      return this.j;
    }
 }

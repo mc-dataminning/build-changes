@@ -1,49 +1,45 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.List;
 
-public record aae(UUID c, String d, String e, boolean f, Optional<xk> g) implements zr<zx> {
-   public static final int a = 40;
-   public static final zi<ByteBuf, aae> b = zi.a(kk.g, aae::b, zg.o, aae::e, zg.b(40), aae::f, zg.b, aae::g, xm.f.a(zg::a), aae::h, aae::new);
+public record aae(int c, ji d, List<aae.a> e) implements zy {
+   public static final ym<vl, aae> a = zy.a(aae::a, aae::new);
+   public static final zy.b<aae> b = zy.a("debug/goal_selector");
 
-   public aae(UUID c, String d, String e, boolean f, Optional<xk> g) {
-      if (e.length() > 40) {
-         throw new IllegalArgumentException("Hash is too long (max 40, was " + e.length() + ")");
-      } else {
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
+   private aae(vl $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(aae.a::new));
+   }
+
+   private void a(vl $$0) {
+      $$0.q(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zt<aae> a() {
-      return aaj.g;
+   public zy.b<aae> a() {
+      return b;
    }
 
-   public void a(zx $$0) {
-      $$0.a(this);
-   }
-
-   public UUID b() {
+   public int b() {
       return this.c;
    }
 
-   public String e() {
+   public ji c() {
       return this.d;
    }
 
-   public String f() {
+   public List<aae.a> d() {
       return this.e;
    }
 
-   public boolean g() {
-      return this.f;
-   }
+   public static record a(int a, boolean b, String c) {
+      public a(vl $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
 
-   public Optional<xk> h() {
-      return this.g;
+      public void a(vl $$0) {
+         $$0.q(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

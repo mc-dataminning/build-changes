@@ -1,18 +1,25 @@
-public class fox extends fny {
-   private final fnj a;
-   private final xk b;
-   private final xk c;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
 
-   public fox(int $$0, int $$1, int $$2, int $$3, xk $$4, fny.c $$5, fnj $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xn.a($$4.f(), yh.a.c(true));
+public class fox {
+   private static final ayl a = ayl.codepoint(32, xl.a);
+
+   private static String a(String $$0) {
+      return flj.Q().n.N().c() ? $$0 : n.a($$0);
    }
 
-   @Override
-   public void b(fnl $$0, int $$1, int $$2, float $$3) {
-      xk $$4 = this.B() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | azu.f(this.l * 255.0F) << 24);
+   public static List<ayl> a(wt $$0, int $$1, fob $$2) {
+      fkx $$3 = new fkx();
+      $$0.a(($$1x, $$2x) -> {
+         $$3.a(wt.a(a($$2x), $$1x));
+         return Optional.empty();
+      }, xl.a);
+      List<ayl> $$4 = Lists.newArrayList();
+      $$2.b().a($$3.b(), $$1, xl.a, ($$1x, $$2x) -> {
+         ayl $$3x = tl.a().a($$1x);
+         $$4.add($$2x ? ayl.composite(a, $$3x) : $$3x);
+      });
+      return (List<ayl>)($$4.isEmpty() ? Lists.newArrayList(new ayl[]{ayl.a}) : $$4);
    }
 }

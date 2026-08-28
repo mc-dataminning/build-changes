@@ -1,68 +1,137 @@
-public final class edt {
-   private static final float a = 0.4F;
-   private static final int b = 20;
-   private static final double c = 0.2;
-   private static final float d = 0.7F;
-   private static final float e = 0.1F;
-   private static final float f = 0.3F;
-   private static final float g = 0.6F;
-   private static final float h = 0.02F;
-   private static final float i = -0.3F;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.Codec;
 
-   private edt() {
+public class edt implements azh {
+   private static final float c = 5.9604645E-8F;
+   private static final double d = 1.110223E-16F;
+   public static final Codec<edt> b = eds.a.xmap($$0 -> new edt($$0), $$0 -> $$0.e);
+   private eds e;
+   private final ecu f = new ecu(this);
+
+   public edt(long $$0) {
+      this.e = new eds(edh.c($$0));
    }
 
-   protected static edn.c a(edc $$0, edc $$1, edc $$2, edw $$3) {
-      dxo $$4 = null;
-      return $$5 -> {
-         double $$6 = $$0.a($$5);
-         int $$7 = $$5.b();
-         edt.a $$8 = $$6 > 0.0 ? edt.a.a : edt.a.b;
-         double $$9 = Math.abs($$6);
-         int $$10 = $$8.d - $$7;
-         int $$11 = $$7 - $$8.c;
-         if ($$11 >= 0 && $$10 >= 0) {
-            int $$12 = Math.min($$10, $$11);
-            double $$13 = azu.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
-            if ($$9 + $$13 < 0.4F) {
-               return $$4;
-            } else {
-               bac $$14 = $$3.a($$5.a(), $$7, $$5.c());
-               if ($$14.i() > 0.7F) {
-                  return $$4;
-               } else if ($$1.a($$5) >= 0.0) {
-                  return $$4;
-               } else {
-                  double $$15 = azu.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
-                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
-                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
-                  } else {
-                     return $$8.g;
-                  }
-               }
+   public edt(edh.a $$0) {
+      this.e = new eds($$0);
+   }
+
+   public edt(long $$0, long $$1) {
+      this.e = new eds($$0, $$1);
+   }
+
+   private edt(eds $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public azh d() {
+      return new edt(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public edf e() {
+      return new edt.a(this.e.a(), this.e.a());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.e = new eds(edh.c($$0));
+      this.f.a();
+   }
+
+   @Override
+   public int f() {
+      return (int)this.e.a();
+   }
+
+   @Override
+   public int a(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Bound must be positive");
+      } else {
+         long $$1 = Integer.toUnsignedLong(this.f());
+         long $$2 = $$1 * (long)$$0;
+         long $$3 = $$2 & 4294967295L;
+         if ($$3 < (long)$$0) {
+            for (int $$4 = Integer.remainderUnsigned(~$$0 + 1, $$0); $$3 < (long)$$4; $$3 = $$2 & 4294967295L) {
+               $$1 = Integer.toUnsignedLong(this.f());
+               $$2 = $$1 * (long)$$0;
             }
-         } else {
-            return $$4;
          }
-      };
+
+         long $$5 = $$2 >> 32;
+         return (int)$$5;
+      }
    }
 
-   protected static enum a {
-      a(dkf.rC.m(), dkf.tI.m(), dkf.c.m(), 0, 50),
-      b(dkf.T.m(), dkf.tH.m(), dkf.rb.m(), -60, -8);
+   @Override
+   public long g() {
+      return this.e.a();
+   }
 
-      final dxo e;
-      final dxo f;
-      final dxo g;
-      protected final int c;
-      protected final int d;
+   @Override
+   public boolean h() {
+      return (this.e.a() & 1L) != 0L;
+   }
 
-      private a(final dxo $$0, final dxo $$1, final dxo $$2, final int $$3, final int $$4) {
-         this.e = $$0;
-         this.f = $$1;
-         this.g = $$2;
-         this.c = $$3;
-         this.d = $$4;
+   @Override
+   public float i() {
+      return (float)this.c(24) * 5.9604645E-8F;
+   }
+
+   @Override
+   public double j() {
+      return (double)this.c(53) * 1.110223E-16F;
+   }
+
+   @Override
+   public double k() {
+      return this.f.b();
+   }
+
+   @Override
+   public void b(int $$0) {
+      for (int $$1 = 0; $$1 < $$0; $$1++) {
+         this.e.a();
+      }
+   }
+
+   private long c(int $$0) {
+      return this.e.a() >>> 64 - $$0;
+   }
+
+   public static class a implements edf {
+      private final long a;
+      private final long b;
+
+      public a(long $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public azh a(int $$0, int $$1, int $$2) {
+         long $$3 = ayz.b($$0, $$1, $$2);
+         long $$4 = $$3 ^ this.a;
+         return new edt($$4, this.b);
+      }
+
+      @Override
+      public azh a(String $$0) {
+         edh.a $$1 = edh.a($$0);
+         return new edt($$1.a(this.a, this.b));
+      }
+
+      @Override
+      public azh a(long $$0) {
+         return new edt($$0 ^ this.a, $$0 ^ this.b);
+      }
+
+      @VisibleForTesting
+      @Override
+      public void a(StringBuilder $$0) {
+         $$0.append("seedLo: ").append(this.a).append(", seedHi: ").append(this.b);
       }
    }
 }

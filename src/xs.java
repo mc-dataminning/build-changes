@@ -1,77 +1,70 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import java.util.BitSet;
-import java.util.Objects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class xs {
-   private final xu[] a;
-   private int b;
-   private int c;
+public class xs implements wp {
+   public static final MapCodec<xs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("keybind").forGetter($$0x -> $$0x.c)).apply($$0, xs::new)
+   );
+   public static final wp.a<xs> b = new wp.a<>(a, "keybind");
+   private final String c;
    @Nullable
-   private xw d;
+   private Supplier<wo> d;
 
-   public xs(int $$0) {
-      this.a = new xu[$$0];
+   public xs(String $$0) {
+      this.c = $$0;
    }
 
-   public boolean a(xw $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xu($$0, true) : null);
+   private wo c() {
+      if (this.d == null) {
+         this.d = xt.a.apply(this.c);
+      }
+
+      return this.d.get();
+   }
+
+   @Override
+   public <T> Optional<T> a(wt.a<T> $$0) {
+      return this.c().a($$0);
+   }
+
+   @Override
+   public <T> Optional<T> a(wt.b<T> $$0, xl $$1) {
+      return this.c().a($$0, $$1);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      }
-   }
-
-   private void a(@Nullable xu $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
-   }
-
-   public void a(xw $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xu $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
+      } else {
+         if ($$0 instanceof xs $$1 && this.c.equals($$1.c)) {
+            return true;
          }
+
+         return false;
       }
    }
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
    }
 
-   public xs.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xw> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xu $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
-      }
-
-      xr $$6 = new xr($$2);
-      xr.b $$7 = new xr.b($$0, $$1);
-      return new xs.a($$6, $$7);
+   @Override
+   public String toString() {
+      return "keybind{" + this.c + "}";
    }
 
-   public int c() {
+   public String b() {
       return this.c;
    }
 
-   public static record a(xr a, xr.b b) {
+   @Override
+   public wp.a<?> a() {
+      return b;
    }
 }

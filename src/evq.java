@@ -1,157 +1,109 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.io.DataInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PushbackInputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.Map;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
+import java.util.OptionalInt;
+import java.util.Set;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class evq implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private final Map<String, Optional<evc>> b = new HashMap<>();
-   private final DataFixer c;
-   private final js.a d;
-   private final Path e;
-   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
-
-   public evq(Path $$0, DataFixer $$1, js.a $$2) {
-      this.c = $$1;
-      this.e = $$0;
-      this.d = $$2;
-   }
-
-   private Path a(String $$0) {
-      return this.e.resolve($$0 + ".dat");
-   }
-
-   public <T extends evc> T a(evc.a<T> $$0, String $$1) {
-      T $$2 = this.b($$0, $$1);
-      if ($$2 != null) {
-         return $$2;
-      } else {
-         T $$3 = (T)$$0.a().get();
-         this.a($$1, $$3);
-         return $$3;
-      }
-   }
-
+public class evq {
+   private static final Codec<evq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ezx.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               ezx.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, evq::new)
+   );
+   public static final Codec<evq> a = Codec.either(Codec.INT, b).xmap($$0 -> (evq)$$0.map(evq::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
    @Nullable
-   public <T extends evc> T b(evc.a<T> $$0, String $$1) {
-      Optional<evc> $$2 = this.b.get($$1);
-      if ($$2 == null) {
-         $$2 = Optional.ofNullable(this.a($$0.b(), $$0.c(), $$1));
-         this.b.put($$1, $$2);
-      }
-
-      return (T)$$2.orElse(null);
-   }
-
+   private final ezw c;
    @Nullable
-   private <T extends evc> T a(BiFunction<um, js.a, T> $$0, bbi $$1, String $$2) {
-      try {
-         Path $$3 = this.a($$2);
-         if (Files.exists($$3)) {
-            um $$4 = this.a($$2, $$1, ab.b().d().c());
-            return $$0.apply($$4.p("data"), this.d);
-         }
-      } catch (Exception var6) {
-         a.error("Error loading saved data: {}", $$2, var6);
+   private final ezw d;
+   private final evq.b e;
+   private final evq.a f;
+
+   public Set<bai<?>> a() {
+      Builder<bai<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
       }
 
-      return null;
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public void a(String $$0, evc $$1) {
-      this.b.put($$0, Optional.of($$1));
-      $$1.c();
+   private evq(Optional<ezw> $$0, Optional<ezw> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   public um a(String $$0, bbi $$1, int $$2) throws IOException {
-      um var8;
-      try (
-         InputStream $$3 = Files.newInputStream(this.a($$0));
-         PushbackInputStream $$4 = new PushbackInputStream(new aze($$3), 2);
-      ) {
-         um $$5;
-         if (this.a($$4)) {
-            $$5 = uz.a($$4, uv.a());
+   private evq(@Nullable ezw $$0, @Nullable ezw $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
          } else {
-            try (DataInputStream $$6 = new DataInputStream($$4)) {
-               $$5 = uz.a($$6);
-            }
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
          }
-
-         int $$9 = vb.b($$5, 1343);
-         var8 = $$1.a(this.c, $$5, $$9, $$2);
-      }
-
-      return var8;
-   }
-
-   private boolean a(PushbackInputStream $$0) throws IOException {
-      byte[] $$1 = new byte[2];
-      boolean $$2 = false;
-      int $$3 = $$0.read($$1, 0, 2);
-      if ($$3 == 2) {
-         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
-         if ($$4 == 35615) {
-            $$2 = true;
-         }
-      }
-
-      if ($$3 != 0) {
-         $$0.unread($$1, 0, $$3);
-      }
-
-      return $$2;
-   }
-
-   public CompletableFuture<?> a() {
-      Map<Path, um> $$0 = this.c();
-      if ($$0.isEmpty()) {
-         return CompletableFuture.completedFuture(null);
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         this.f = this.f
-            .thenCompose(
-               $$1 -> CompletableFuture.allOf(
-                     $$0.entrySet().stream().map($$0xx -> a((Path)$$0xx.getKey(), (um)$$0xx.getValue())).toArray(CompletableFuture[]::new)
-                  )
-            );
-         return this.f;
+         this.e = ($$2, $$3) -> ayz.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   private Map<Path, um> c() {
-      Map<Path, um> $$0 = new Object2ObjectArrayMap();
-      this.b.forEach(($$1, $$2) -> $$2.filter(evc::d).ifPresent($$2x -> $$0.put(this.a($$1), $$2x.a(this.d))));
-      return $$0;
+   public static evq a(int $$0) {
+      ezt $$1 = ezt.a((float)$$0);
+      return new evq(Optional.of($$1), Optional.of($$1));
    }
 
-   private static CompletableFuture<Void> a(Path $$0, um $$1) {
-      return CompletableFuture.runAsync(() -> {
-         try {
-            uz.a($$1, $$0);
-         } catch (IOException var3) {
-            a.error("Could not save data to {}", $$0.getFileName(), var3);
-         }
-      }, ae.h());
+   public static evq a(int $$0, int $$1) {
+      return new evq(Optional.of(ezt.a((float)$$0)), Optional.of(ezt.a((float)$$1)));
    }
 
-   public void b() {
-      this.a().join();
+   public static evq b(int $$0) {
+      return new evq(Optional.of(ezt.a((float)$$0)), Optional.empty());
    }
 
-   @Override
-   public void close() {
-      this.b();
+   public static evq c(int $$0) {
+      return new evq(Optional.empty(), Optional.of(ezt.a((float)$$0)));
+   }
+
+   public int a(evr $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(evr $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof ezt $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(evr var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(evr var1, int var2);
    }
 }

@@ -1,26 +1,28 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bzt {
-   public static bxr<bvx> a() {
-      return cbd.a((Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$0 -> $$0.a((cbg<bvx>)(($$0x, $$1, $$2) -> {
-            if ($$0x.A.a(20) != 0) {
-               return false;
-            } else {
-               bwz<?> $$3 = $$1.ec();
-               crb $$4 = $$0x.d($$1.dw());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(crf.h);
-                     $$3.a(crf.h);
-                  } else {
-                     $$3.b(crf.i);
-                     $$3.a(crf.i);
-                  }
-               }
+public class bzt<T extends bvi> extends bwz<T> {
+   private final float c;
 
-               return true;
-            }
-         }))));
+   public bzt(float $$0) {
+      super(ImmutableMap.of());
+      this.c = $$0;
+   }
+
+   public static <T extends bvi> boolean a(T $$0) {
+      return $$0.bj() && $$0.b(awv.a) > $$0.dq() || $$0.bx();
+   }
+
+   protected boolean a(arc $$0, bvi $$1) {
+      return a($$1);
+   }
+
+   protected boolean a(arc $$0, bvi $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(arc $$0, bvi $$1, long $$2) {
+      if ($$1.dZ().i() < this.c) {
+         $$1.J().a();
+      }
    }
 }

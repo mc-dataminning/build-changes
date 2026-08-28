@@ -1,43 +1,32 @@
-public class gte extends gsr<cih, gzd, gbh<gxq>> {
-   private static final alp a = alp.b("textures/entity/fish/pufferfish.png");
-   private final gbh<gxq> b;
-   private final gbh<gxq> k;
-   private final gbh<gxq> l = this.c();
+public class gte extends gqw<cje, gzj, gcs> {
+   private static final aku a = aku.b("textures/entity/llama/creamy.png");
+   private static final aku b = aku.b("textures/entity/llama/white.png");
+   private static final aku k = aku.b("textures/entity/llama/brown.png");
+   private static final aku l = aku.b("textures/entity/llama/gray.png");
 
-   public gte(grl.a $$0) {
-      super($$0, new gco($$0.a(gei.cq)), 0.2F);
-      this.k = new gcp($$0.a(gei.cr));
-      this.b = new gcq($$0.a(gei.cs));
+   public gte(gsc.a $$0, gfa $$1, gfa $$2) {
+      super($$0, new gcs($$0.a($$1)), new gcs($$0.a($$2)), 0.7F);
+      this.a(new gwl(this, $$0.f(), $$0.h()));
    }
 
-   public alp a(gzd $$0) {
-      return a;
-   }
-
-   public gzd b() {
-      return new gzd();
-   }
-
-   protected float b(gzd $$0) {
-      return 0.1F + 0.1F * (float)$$0.a;
-   }
-
-   public void a(gzd $$0, fgl $$1, glg $$2, int $$3) {
-      this.h = switch ($$0.a) {
-         case 0 -> this.b;
-         case 1 -> this.k;
-         default -> this.l;
+   public aku a(gzj $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
       };
-      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(cih $$0, gzd $$1, float $$2) {
+   public gzj b() {
+      return new gzj();
+   }
+
+   public void a(cje $$0, gzj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gp();
-   }
-
-   protected void a(gzd $$0, fgl $$1, float $$2, float $$3) {
-      $$1.a(0.0F, azu.b($$0.p * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3);
+      $$1.a = $$0.gC();
+      $$1.b = !$$0.e_() && $$0.t();
+      $$1.c = $$0.ag();
+      $$1.d = $$0.gs();
    }
 }

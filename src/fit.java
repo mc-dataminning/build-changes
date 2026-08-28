@@ -1,56 +1,38 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+public class fit extends hkx {
+   private static final wo a = wo.c("mco.client.incompatible.title").b(-65536);
+   private static final wo b = wo.b(ab.b().c()).b(-65536);
+   private static final wo c = wo.a("mco.client.unsupported.snapshot.version", b);
+   private static final wo C = wo.a("mco.client.outdated.stable.version", b);
+   private final fuk D;
+   private final fsg E = new fsg(this);
 
-public class fit extends fiq {
-   private static final Logger e = LogUtils.getLogger();
-   public List<fis> a;
-   public int b;
-   public int c;
-   public int d;
-
-   public fit() {
+   public fit(fuk $$0) {
+      super(a);
+      this.D = $$0;
    }
 
-   public fit(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
+   @Override
+   public void aR_() {
+      this.E.a(a, this.p);
+      this.E.c(new fpm(this.E(), this.p).b(true));
+      this.E.b(fos.a(wn.k, $$0 -> this.aO_()).a(200).a());
+      this.E.a($$1 -> {
+         fop var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
+   @Override
+   protected void c() {
+      this.E.a();
    }
 
-   public static fit a(String $$0) {
-      fit $$1 = new fit();
-      $$1.a = Lists.newArrayList();
+   @Override
+   public void aO_() {
+      this.m.a(this.D);
+   }
 
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fis.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fkm.a("page", $$3, 0);
-         $$1.c = fkm.a("size", $$3, 0);
-         $$1.d = fkm.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
-      }
-
-      return $$1;
+   private wo E() {
+      return ab.b().g() ? C : c;
    }
 }

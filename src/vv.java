@@ -1,42 +1,38 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class vv extends vr {
-   private final Deque<vt> a = new ArrayDeque<>();
-
-   public vv(vs... $$0) {
-      vt $$1 = vt.a();
-
-      for (vs $$2 : $$0) {
-         $$1.a($$2);
-      }
-
-      this.a.push($$1);
-   }
-
-   @Override
-   public vg.a a(vl<?> $$0, String $$1) {
-      vt $$2 = this.a.element();
-      if ($$2.a($$0, $$1)) {
-         return vg.a.b;
-      } else {
-         if ($$0 == um.b) {
-            vt $$3 = $$2.d().get($$1);
-            if ($$3 != null) {
-               this.a.push($$3);
-            }
+public interface vv {
+   static vv a(final Runnable $$0) {
+      return new vv() {
+         @Override
+         public void a() {
+            $$0.run();
          }
 
-         return super.a($$0, $$1);
-      }
+         @Nullable
+         @Override
+         public yv<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
    }
 
-   @Override
-   public vg.b b() {
-      if (this.e() == this.a.element().b()) {
-         this.a.pop();
-      }
+   static vv a(final Supplier<yv<?>> $$0) {
+      return new vv() {
+         @Nullable
+         @Override
+         public yv<?> b() {
+            return $$0.get();
+         }
+      };
+   }
 
-      return super.b();
+   default void a() {
+   }
+
+   @Nullable
+   default yv<?> b() {
+      return null;
    }
 }

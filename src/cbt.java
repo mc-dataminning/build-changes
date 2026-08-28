@@ -1,59 +1,34 @@
-public class cbt implements cbu {
-   private final bvz a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import java.util.EnumSet;
 
-   public cbt(bvz $$0) {
+public class cbt extends cce {
+   private final bvi a;
+   private final dgi b;
+
+   public cbt(bvi $$0, dgi $$1) {
       this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(cce.a.c));
    }
 
-   public void a() {
-      if (this.f()) {
-         this.a.aX = this.a.dM();
-         this.c();
-         this.f = this.a.aZ;
-         this.e = 0;
+   @Override
+   public boolean b() {
+      boolean $$0 = this.a.aw || this.a.av;
+      if ($$0 && this.a.aq().a(awt.h)) {
+         ji $$1 = this.a.dw().d();
+         dwx $$2 = this.b.a_($$1);
+         return $$2.a(djo.rr) || $$2.g(this.b, $$1) == fbr.a();
       } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aZ - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aZ;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
+         return false;
       }
    }
 
-   private void b() {
-      this.a.aX = azu.c(this.a.aX, this.a.aZ, (float)this.a.aa());
+   @Override
+   public boolean V_() {
+      return true;
    }
 
-   private void c() {
-      this.a.aZ = azu.c(this.a.aZ, this.a.aX, (float)this.a.aa());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = azu.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.aa() * (1.0F - $$1);
-      this.a.aX = azu.c(this.a.aX, this.a.aZ, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.da() instanceof bvz);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dB() - this.a.K;
-      double $$1 = this.a.dH() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+   @Override
+   public void a() {
+      this.a.J().a();
    }
 }

@@ -1,153 +1,21 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class cim extends chl implements bwo, cms {
-   private static final aks<Byte> a = akw.a(cim.class, aku.a);
-   private static final byte b = 16;
+public class cim {
+   public static bxa<bvg> a() {
+      return cam.a(
+         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$0 -> $$0.group($$0.b(cek.N), $$0.a(cek.y)).apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                  int $$6 = $$0.<Integer>b($$1);
+                  if ($$6 <= 0) {
+                     $$1.b();
+                     $$2.b();
+                     $$4.ec().f();
+                  } else {
+                     $$1.a($$6 - 1);
+                  }
 
-   public cim(bvi<? extends cim> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void B() {
-      this.bT.a(1, new cdu(this, 1.25, 20, 10.0F));
-      this.bT.a(2, new cei(this, 1.0, 1.0000001E-5F));
-      this.bT.a(3, new cdd(this, cpo.class, 6.0F));
-      this.bT.a(4, new cdq(this));
-      this.bU.a(1, new ceo<>(this, bvz.class, 10, true, false, ($$0, $$1) -> $$0 instanceof cmg));
-   }
-
-   public static bxe.a m() {
-      return bvz.C().a(bxf.s, 4.0).a(bxf.v, 0.2F);
-   }
-
-   @Override
-   protected void a(akw.a $$0) {
-      super.a($$0);
-      $$0.a(a, (byte)16);
-   }
-
-   @Override
-   public void b(um $$0) {
-      super.b($$0);
-      $$0.a("Pumpkin", this.p());
-   }
-
-   @Override
-   public void a(um $$0) {
-      super.a($$0);
-      if ($$0.e("Pumpkin")) {
-         this.x($$0.q("Pumpkin"));
-      }
-   }
-
-   @Override
-   public boolean fr() {
-      return true;
-   }
-
-   @Override
-   public void d_() {
-      super.d_();
-      if (this.dW() instanceof arx $$0) {
-         if (this.dW().t(this.dw()).a(axj.ae)) {
-            this.a($$0, this.dX().d(), 1.0F);
-         }
-
-         if (!$$0.O().b(dgv.c)) {
-            return;
-         }
-
-         dxo $$1 = dkf.ea.m();
-
-         for (int $$2 = 0; $$2 < 4; $$2++) {
-            int $$3 = azu.a(this.dB() + (double)((float)($$2 % 2 * 2 - 1) * 0.25F));
-            int $$4 = azu.a(this.dD());
-            int $$5 = azu.a(this.dH() + (double)((float)($$2 / 2 % 2 * 2 - 1) * 0.25F));
-            jh $$6 = new jh($$3, $$4, $$5);
-            if (this.dW().a_($$6).l() && $$1.a((dhc)this.dW(), $$6)) {
-               this.dW().b($$6, $$1);
-               this.dW().a(eck.i, $$6, eck.a.a(this, $$1));
-            }
-         }
-      }
-   }
-
-   @Override
-   public void a(bvx $$0, float $$1) {
-      double $$2 = $$0.dB() - this.dB();
-      double $$3 = $$0.dF() - 1.1F;
-      double $$4 = $$0.dH() - this.dH();
-      double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4) * 0.2F;
-      if (this.dW() instanceof arx $$6) {
-         cxg $$7 = new cxg(cxk.rj);
-         cqh.a(new cqm($$6, this, $$7), $$6, $$7, $$4x -> $$4x.c($$2, $$3 + $$5 - $$4x.dD(), $$4, 1.6F, 12.0F));
-      }
-
-      this.a(awv.zv, 1.0F, 0.4F / (this.dZ().i() * 0.4F + 0.8F));
-   }
-
-   @Override
-   protected bta b(cpo $$0, bsz $$1) {
-      cxg $$2 = $$0.b($$1);
-      if ($$2.a(cxk.sS) && this.a()) {
-         if (this.dW() instanceof arx $$3) {
-            this.a($$3, aww.h, $$2);
-            this.a(eck.M, $$0);
-            $$2.a(1, $$0, d($$1));
-         }
-
-         return bta.a;
-      } else {
-         return bta.e;
-      }
-   }
-
-   @Override
-   public void a(arx $$0, aww $$1, cxg $$2) {
-      $$0.a(null, this, awv.zw, $$1, 1.0F, 1.0F);
-      this.x(false);
-      this.a($$0, ewe.aU, $$2, ($$0x, $$1x) -> this.a($$0x, $$1x, this.cS()));
-   }
-
-   @Override
-   public boolean a() {
-      return this.bL() && this.p();
-   }
-
-   public boolean p() {
-      return (this.al.a(a) & 16) != 0;
-   }
-
-   public void x(boolean $$0) {
-      byte $$1 = this.al.a(a);
-      if ($$0) {
-         this.al.a(a, (byte)($$1 | 16));
-      } else {
-         this.al.a(a, (byte)($$1 & -17));
-      }
-   }
-
-   @Nullable
-   @Override
-   protected awu u() {
-      return awv.zs;
-   }
-
-   @Nullable
-   @Override
-   protected awu e(btr $$0) {
-      return awv.zu;
-   }
-
-   @Nullable
-   @Override
-   protected awu o_() {
-      return awv.zt;
-   }
-
-   @Override
-   public fbr cT() {
-      return new fbr(0.0, (double)(0.75F * this.cS()), (double)(this.dr() * 0.4F));
+                  return true;
+               }))
+      );
    }
 }

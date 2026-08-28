@@ -1,32 +1,28 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public record abi(long c, List<abi.a> d) implements aau {
-   public static final aau.b<abi> a = aau.a("debug/redstone_update_order");
-   public static final zi<wh, abi> b = zi.a(zg.k, abi::b, abi.a.a.a(zg.a()), abi::c, abi::new);
+public record abi(aku b, @Nullable byte[] c) implements yv<abh> {
+   public static final ym<vl, abi> a = yv.a(abi::a, abi::new);
+
+   private abi(vl $$0) {
+      this($$0.q(), $$0.c(zk.b));
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, zk.b);
+   }
 
    @Override
-   public aau.b<abi> a() {
-      return a;
+   public yx<abi> a() {
+      return abg.b;
    }
 
-   public long b() {
+   public void a(abh $$0) {
+      $$0.a(this);
+   }
+
+   @Nullable
+   public byte[] e() {
       return this.c;
-   }
-
-   public List<abi.a> c() {
-      return this.d;
-   }
-
-   public static record a(jh b, euy c) {
-      public static final zi<ByteBuf, abi.a> a = zi.a(jh.b, abi.a::a, euy.a, abi.a::b, abi.a::new);
-
-      public jh a() {
-         return this.b;
-      }
-
-      public euy b() {
-         return this.c;
-      }
    }
 }

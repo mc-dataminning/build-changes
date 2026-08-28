@@ -1,123 +1,145 @@
-import java.util.ArrayList;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 import javax.annotation.Nullable;
 
-public class fql implements fqj {
-   private static final alp h = alp.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int e = 1;
-   public static final int f = 3;
-   public static final int g = 4;
-   private static final int i = 7;
-   private static final int j = 3;
-   private static final int k = 11;
-   private static final int l = 30;
-   private static final int m = 126;
-   private final fql.a n;
-   private final List<azg> o;
-   private fqj.a p = fqj.a.a;
-   private long q;
-   private float r;
-   private float s;
-   private final boolean t;
-   private final int u;
+public class fql {
+   private static final int a = 105;
+   private static final int b = 5;
+   private static final int c = 10;
+   private final fob d;
+   @Nullable
+   private boq e;
+   private String f = "root";
+   private int g = 0;
 
-   public fql(fnj $$0, fql.a $$1, xk $$2, @Nullable xk $$3, boolean $$4, int $$5) {
-      this.n = $$1;
-      this.o = new ArrayList<>(2);
-      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
-      if ($$3 != null) {
-         this.o.addAll($$0.c($$3, 126));
-      }
-
-      this.t = $$4;
-      this.u = $$5;
+   public fql(fob $$0) {
+      this.d = $$0;
    }
 
-   public fql(fnj $$0, fql.a $$1, xk $$2, @Nullable xk $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, $$4, 0);
+   public void a(@Nullable boq $$0) {
+      this.e = $$0;
    }
 
-   @Override
-   public fqj.a a() {
-      return this.p;
+   public void a(int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public void a(fqk $$0, long $$1) {
-      if (this.u > 0) {
-         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
-         this.r = this.s;
-         this.q = $$1;
-         if ($$1 > (long)this.u) {
-            this.d();
+   public void a(fod $$0) {
+      if (this.e != null) {
+         List<bou> $$1 = this.e.a(this.f);
+         bou $$2 = $$1.removeFirst();
+         int $$3 = $$0.a() - 105 - 10;
+         int $$4 = $$3 - 105;
+         int $$5 = $$3 + 105;
+         int $$6 = $$1.size() * 9;
+         int $$7 = $$0.b() - this.g - 5;
+         int $$8 = $$7 - $$6;
+         int $$9 = 62;
+         int $$10 = $$8 - 62 - 5;
+         $$0.a($$4 - 5, $$10 - 62 - 5, $$5 + 5, $$7 + 5, -1873784752);
+         $$0.a($$4x -> {
+            double $$5x = 0.0;
+
+            for (bou $$6x : $$1) {
+               int $$7x = ayz.a($$6x.a / 4.0) + 1;
+               ffy $$8x = $$4x.getBuffer(gmh.D());
+               int $$9x = axk.f($$6x.a());
+               int $$10x = axk.a($$9x, -8355712);
+               ffu.a $$11x = $$0.c().c();
+               $$8x.a($$11x, (float)$$3, (float)$$10, 10.0F).a($$9x);
+
+               for (int $$12x = $$7x; $$12x >= 0; $$12x--) {
+                  float $$13x = (float)(($$5x + $$6x.a * (double)$$12x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$14x = ayz.a($$13x) * 105.0F;
+                  float $$15x = ayz.b($$13x) * 105.0F * 0.5F;
+                  $$8x.a($$11x, (float)$$3 + $$14x, (float)$$10 - $$15x, 10.0F).a($$9x);
+               }
+
+               $$8x = $$4x.getBuffer(gmh.C());
+
+               for (int $$16x = $$7x; $$16x > 0; $$16x--) {
+                  float $$17x = (float)(($$5x + $$6x.a * (double)$$16x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$18x = ayz.a($$17x) * 105.0F;
+                  float $$19x = ayz.b($$17x) * 105.0F * 0.5F;
+                  float $$20x = (float)(($$5x + $$6x.a * (double)($$16x - 1) / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
+                  float $$21 = ayz.a($$20x) * 105.0F;
+                  float $$22 = ayz.b($$20x) * 105.0F * 0.5F;
+                  if (!(($$19x + $$22) / 2.0F > 0.0F)) {
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22 + 10.0F, 10.0F).a($$10x);
+                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22, 10.0F).a($$10x);
+                  }
+               }
+
+               $$5x += $$6x.a;
+            }
+         });
+         DecimalFormat $$11 = new DecimalFormat("##0.00");
+         $$11.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
+         String $$12 = boq.b($$2.d);
+         String $$13 = "";
+         if (!"unspecified".equals($$12)) {
+            $$13 = $$13 + "[0] ";
          }
-      } else if (this.t) {
-         this.r = azu.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
-         this.q = $$1;
-      }
-   }
 
-   @Override
-   public int c() {
-      return 7 + this.e() + 3;
-   }
-
-   private int e() {
-      return Math.max(this.o.size(), 2) * 11;
-   }
-
-   @Override
-   public void a(fnl $$0, fnj $$1, long $$2) {
-      int $$3 = this.c();
-      $$0.a(glq::H, h, 0, 0, this.b(), $$3);
-      this.n.a($$0, 6, 6);
-      int $$4 = this.o.size() * 11;
-      int $$5 = 7 + (this.e() - $$4) / 2;
-
-      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
-         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
-      }
-
-      if (this.t) {
-         int $$7 = $$3 - 4;
-         $$0.a(3, $$7, 157, $$7 + 1, -1);
-         int $$8;
-         if (this.s >= this.r) {
-            $$8 = -16755456;
+         if ($$12.isEmpty()) {
+            $$13 = $$13 + "ROOT ";
          } else {
-            $$8 = -11206656;
+            $$13 = $$13 + $$12 + " ";
          }
 
-         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
+         int $$14 = 16777215;
+         int $$15 = $$10 - 62;
+         $$0.b(this.d, $$13, $$4, $$15, 16777215);
+         $$13 = $$11.format($$2.b) + "%";
+         $$0.b(this.d, $$13, $$5 - this.d.b($$13), $$15, 16777215);
+
+         for (int $$16 = 0; $$16 < $$1.size(); $$16++) {
+            bou $$17 = $$1.get($$16);
+            StringBuilder $$18 = new StringBuilder();
+            if ("unspecified".equals($$17.d)) {
+               $$18.append("[?] ");
+            } else {
+               $$18.append("[").append($$16 + 1).append("] ");
+            }
+
+            String $$19 = $$18.append($$17.d).toString();
+            int $$20 = $$8 + $$16 * 9;
+            $$0.b(this.d, $$19, $$4, $$20, $$17.a());
+            $$19 = $$11.format($$17.a) + "%";
+            $$0.b(this.d, $$19, $$5 - 50 - this.d.b($$19), $$20, $$17.a());
+            $$19 = $$11.format($$17.b) + "%";
+            $$0.b(this.d, $$19, $$5 - this.d.b($$19), $$20, $$17.a());
+         }
       }
    }
 
-   public void d() {
-      this.p = fqj.a.b;
-   }
+   public void b(int $$0) {
+      if (this.e != null) {
+         List<bou> $$1 = this.e.a(this.f);
+         if (!$$1.isEmpty()) {
+            bou $$2 = $$1.remove(0);
+            if ($$0 == 0) {
+               if (!$$2.d.isEmpty()) {
+                  int $$3 = this.f.lastIndexOf(30);
+                  if ($$3 >= 0) {
+                     this.f = this.f.substring(0, $$3);
+                  }
+               }
+            } else {
+               $$0--;
+               if ($$0 < $$1.size() && !"unspecified".equals($$1.get($$0).d)) {
+                  if (!this.f.isEmpty()) {
+                     this.f = this.f + "\u001e";
+                  }
 
-   public void a(float $$0) {
-      this.s = $$0;
-   }
-
-   public static enum a {
-      a(alp.b("toast/movement_keys")),
-      b(alp.b("toast/mouse")),
-      c(alp.b("toast/tree")),
-      d(alp.b("toast/recipe_book")),
-      e(alp.b("toast/wooden_planks")),
-      f(alp.b("toast/social_interactions")),
-      g(alp.b("toast/right_click"));
-
-      private final alp h;
-
-      private a(final alp $$0) {
-         this.h = $$0;
-      }
-
-      public void a(fnl $$0, int $$1, int $$2) {
-         $$0.a(glq::H, this.h, $$1, $$2, 20, 20);
+                  this.f = this.f + $$1.get($$0).d;
+               }
+            }
+         }
       }
    }
 }

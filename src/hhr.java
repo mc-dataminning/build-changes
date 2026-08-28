@@ -1,22 +1,17 @@
-public class hhr implements fpc {
-   private final xk a;
-   private final int b;
-   private final int c;
-   private final int d;
+public abstract class hhr extends hhq implements hij {
+   private boolean n;
 
-   public hhr(xk $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   protected hhr(avz $$0, awb $$1, azh $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      $$0.a(flz.Q().h, this.a, this.b, this.c, this.d);
+   public boolean m() {
+      return this.n;
    }
 
-   public xk a() {
-      return this.a;
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

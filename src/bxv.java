@@ -1,18 +1,31 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bxv {
-   public static <E extends bvx, T> bxr<E> a(Predicate<E> $$0, cfb<? extends T> $$1, cfb<T> $$2, bsl $$3) {
-      return cbd.a(
-         (Function<cbd.b<E>, ? extends App<cbd.c<E>, cbg<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
-                  if (!$$0.test((E)$$6)) {
-                     return false;
-                  } else {
-                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
-                     return true;
-                  }
-               }))
+   public static bxa<bvo> a(float $$0) {
+      return cam.a(
+         (Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$1 -> $$1.group($$1.c(cek.m))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.dw())) {
+                           return false;
+                        } else {
+                           ji $$5 = $$3.dw();
+                           List<ji> $$6 = ji.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(ji::j).collect(af.b());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new cen($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
       );
    }
 }

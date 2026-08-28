@@ -1,205 +1,115 @@
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public class cvm extends cxc {
-   private static final xk a = xk.c("item.op_block_warning.line1").a(n.m, n.r);
-   private static final xk b = xk.c("item.op_block_warning.line2").a(n.m);
-   private static final xk c = xk.c("item.op_block_warning.line3").a(n.m);
-   @Deprecated
-   private final dkd d;
+public enum cvm implements azv {
+   a(0, "white", 16383998, etd.i, 15790320, 16777215),
+   b(1, "orange", 16351261, etd.p, 15435844, 16738335),
+   c(2, "magenta", 13061821, etd.q, 12801229, 16711935),
+   d(3, "light_blue", 3847130, etd.r, 6719955, 10141901),
+   e(4, "yellow", 16701501, etd.s, 14602026, 16776960),
+   f(5, "lime", 8439583, etd.t, 4312372, 12582656),
+   g(6, "pink", 15961002, etd.u, 14188952, 16738740),
+   h(7, "gray", 4673362, etd.v, 4408131, 8421504),
+   i(8, "light_gray", 10329495, etd.w, 11250603, 13882323),
+   j(9, "cyan", 1481884, etd.x, 2651799, 65535),
+   k(10, "purple", 8991416, etd.y, 8073150, 10494192),
+   l(11, "blue", 3949738, etd.z, 2437522, 255),
+   m(12, "brown", 8606770, etd.A, 5320730, 9127187),
+   n(13, "green", 6192150, etd.B, 3887386, 65280),
+   o(14, "red", 11546150, etd.C, 11743532, 16711680),
+   p(15, "black", 1908001, etd.D, 1973019, 0);
 
-   public cvm(dkd $$0, cxc.a $$1) {
-      super($$1);
-      this.d = $$0;
+   private static final IntFunction<cvm> s = axq.a(cvm::a, values(), axq.a.a);
+   private static final Int2ObjectOpenHashMap<cvm> t = new Int2ObjectOpenHashMap(
+      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.y, $$0 -> (cvm)$$0))
+   );
+   public static final azv.a<cvm> q = azv.a(cvm::values);
+   public static final ym<ByteBuf, cvm> r = yk.a(s, cvm::a);
+   private final int u;
+   private final String v;
+   private final etd w;
+   private final int x;
+   private final int y;
+   private final int z;
+
+   private cvm(final int $$0, final String $$1, final int $$2, final etd $$3, final int $$4, final int $$5) {
+      this.u = $$0;
+      this.v = $$1;
+      this.w = $$3;
+      this.z = $$5;
+      this.x = axk.f($$2);
+      this.y = $$4;
    }
 
-   @Override
-   public bta a(daz $$0) {
-      bta $$1 = this.a(new dax($$0));
-      return !$$1.a() && $$0.n().b(ku.x) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
+   public int a() {
+      return this.u;
    }
 
-   public bta a(dax $$0) {
-      if (!this.d().a($$0.q().K())) {
-         return bta.d;
-      } else if (!$$0.b()) {
-         return bta.d;
-      } else {
-         dax $$1 = this.b($$0);
-         if ($$1 == null) {
-            return bta.d;
-         } else {
-            dxo $$2 = this.c($$1);
-            if ($$2 == null) {
-               return bta.d;
-            } else if (!this.a($$1, $$2)) {
-               return bta.d;
-            } else {
-               jh $$3 = $$1.a();
-               dgz $$4 = $$1.q();
-               cpo $$5 = $$1.o();
-               cxg $$6 = $$1.n();
-               dxo $$7 = $$4.a_($$3);
-               if ($$7.a($$2.b())) {
-                  $$7 = this.a($$3, $$4, $$6, $$7);
-                  this.a($$3, $$4, $$5, $$6, $$7);
-                  a($$4, $$3, $$6);
-                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
-                  if ($$5 instanceof ary) {
-                     ao.z.a((ary)$$5, $$3, $$6);
-                  }
-               }
-
-               drv $$8 = $$7.A();
-               $$4.a($$5, $$3, this.a($$7), aww.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
-               $$4.a(eck.i, $$3, eck.a.a($$5, $$7));
-               $$6.a(1, $$5);
-               return bta.a;
-            }
-         }
-      }
+   public String b() {
+      return this.v;
    }
 
-   protected awu a(dxo $$0) {
-      return $$0.A().e();
+   public int d() {
+      return this.x;
    }
 
-   @Nullable
-   public dax b(dax $$0) {
-      return $$0;
+   public etd e() {
+      return this.w;
    }
 
-   private static void a(dgz $$0, jh $$1, cxg $$2) {
-      duq $$3 = $$0.c_($$1);
-      if ($$3 != null) {
-         $$3.a($$2);
-         $$3.e();
-      }
+   public int f() {
+      return this.y;
    }
 
-   protected boolean a(jh $$0, dgz $$1, @Nullable cpo $$2, cxg $$3, dxo $$4) {
-      return a($$1, $$2, $$0, $$3);
+   public int g() {
+      return this.z;
+   }
+
+   public static cvm a(int $$0) {
+      return s.apply($$0);
    }
 
    @Nullable
-   protected dxo c(dax $$0) {
-      dxo $$1 = this.d().a($$0);
-      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
-   }
-
-   private dxo a(jh $$0, dgz $$1, cxg $$2, dxo $$3) {
-      czi $$4 = $$2.a(ku.am, czi.a);
-      if ($$4.a()) {
-         return $$3;
-      } else {
-         dxo $$5 = $$4.a($$3);
-         if ($$5 != $$3) {
-            $$1.a($$0, $$5, 2);
-         }
-
-         return $$5;
-      }
-   }
-
-   protected boolean b(dax $$0, dxo $$1) {
-      cpo $$2 = $$0.o();
-      fbw $$3 = $$2 == null ? fbw.a() : fbw.a($$2);
-      return (!this.c() || $$1.a((dhc)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), $$3);
-   }
-
-   protected boolean c() {
-      return true;
-   }
-
-   protected boolean a(dax $$0, dxo $$1) {
-      return $$0.q().a($$0.a(), $$1, 11);
-   }
-
-   public static boolean a(dgz $$0, @Nullable cpo $$1, jh $$2, cxg $$3) {
-      if ($$0.C) {
-         return false;
-      } else {
-         czp $$4 = $$3.a(ku.Y, czp.a);
-         if (!$$4.c()) {
-            dus<?> $$5 = a($$0.K_(), $$4);
-            if ($$5 == null) {
-               return false;
-            }
-
-            duq $$6 = $$0.c_($$2);
-            if ($$6 != null) {
-               dus<?> $$7 = $$6.p();
-               if ($$7 != $$5) {
-                  return false;
-               }
-
-               if (!$$7.b() || $$1 != null && $$1.gG()) {
-                  return $$4.a($$6, $$0.K_());
-               }
-
-               return false;
-            }
-         }
-
-         return false;
-      }
+   @Contract("_,!null->!null;_,null->_")
+   public static cvm a(String $$0, @Nullable cvm $$1) {
+      cvm $$2 = q.a($$0);
+      return $$2 != null ? $$2 : $$1;
    }
 
    @Nullable
-   private static dus<?> a(js.a $$0, czp $$1) {
-      alp $$2 = $$1.a();
-      return $$2 == null ? null : $$0.a(mb.h).flatMap($$1x -> $$1x.a(alo.a(mb.h, $$2))).map(jq::a).orElse(null);
+   public static cvm b(int $$0) {
+      return (cvm)t.get($$0);
    }
 
    @Override
-   public void a(cxg $$0, cxc.b $$1, List<xk> $$2, cyy $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.d().a($$0, $$1, $$2, $$3);
-      czp $$4 = $$0.a(ku.Y);
-      if ($$4 != null && $$1.c() >= 2) {
-         dus<?> $$5 = a($$1.a(), $$4);
-         if ($$5 != null && $$5.b()) {
-            $$2.add(a);
-            $$2.add(b);
-            $$2.add(c);
-         }
-      }
-   }
-
-   public dkd d() {
-      return this.d;
-   }
-
-   public void a(Map<dkd, cxc> $$0, cxc $$1) {
-      $$0.put(this.d(), $$1);
+   public String toString() {
+      return this.v;
    }
 
    @Override
-   public boolean e() {
-      return !(this.d() instanceof drh);
+   public String c() {
+      return this.v;
    }
 
-   @Override
-   public void a(cls $$0) {
-      czy $$1 = $$0.l().b(ku.al, czy.a);
-      if ($$1 != null) {
-         cxj.a($$0, $$1.e());
-      }
+   public static cvm a(arc $$0, cvm $$1, cvm $$2) {
+      das $$3 = a($$1, $$2);
+      return $$0.t()
+         .a(dbp.a, $$3, $$0)
+         .map($$2x -> ((dat)$$2x.b()).a($$3, $$0.K_()))
+         .map(cwp::h)
+         .filter(cvn.class::isInstance)
+         .map(cvn.class::cast)
+         .map(cvn::b)
+         .orElseGet(() -> $$0.A.h() ? $$1 : $$2);
    }
 
-   public static void a(cxg $$0, dus<?> $$1, um $$2) {
-      $$2.r("id");
-      if ($$2.g()) {
-         $$0.c(ku.Y);
-      } else {
-         duq.a($$2, $$1);
-         $$0.b(ku.Y, czp.a($$2));
-      }
-   }
-
-   @Override
-   public csk i() {
-      return this.d().i();
+   private static das a(cvm $$0, cvm $$1) {
+      return das.a(2, 1, List.of(new cwp(cvn.a($$0)), new cwp(cvn.a($$1))));
    }
 }

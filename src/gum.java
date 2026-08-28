@@ -1,22 +1,17 @@
-public class gum extends gsr<cne, hab, gdw> {
-   private static final alp a = alp.b("textures/entity/witch.png");
+public class gum extends gqu<cmj, hae> {
+   private static final aku a = aku.b("textures/entity/skeleton/stray.png");
+   private static final aku b = aku.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gum(grl.a $$0) {
-      super($$0, new gdw($$0.a(gei.dz)), 0.5F);
-      this.a(new gwm(this, $$0.b()));
+   public gum(gsc.a $$0) {
+      super($$0, gfb.cZ, gfb.da, gfb.db);
+      this.a(new gwu<>(this, $$0.f(), gfb.dc, b));
    }
 
-   public alp a(hab $$0) {
+   public aku b(hae $$0) {
       return a;
    }
 
-   public hab b() {
-      return new hab();
-   }
-
-   public void a(cne $$0, hab $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.ar();
-      $$1.b = !$$0.eZ().f();
+   public hae b() {
+      return new hae();
    }
 }

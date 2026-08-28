@@ -1,14 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record hcy(hcz d) {
-   public static final hcy a = new hcy(hcz.b);
-   public static final Codec<hcy> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(hcz.a.optionalFieldOf("scaling", hcz.b).forGetter(hcy::a)).apply($$0, hcy::new)
+public record hcy(String b) implements hdb<String> {
+   public static final hdb.a<hcy, String> a = hdb.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hcy::b)).apply($$0, hcy::new)), Codec.STRING
    );
-   public static final auk<hcy> c = auk.a("gui", b);
 
-   public hcz a() {
-      return this.d;
+   @Nullable
+   public String a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3, cwn $$4) {
+      cyr $$5 = $$0.a(kv.am);
+      return $$5 == null ? null : $$5.b().get(this.b);
+   }
+
+   @Override
+   public hdb.a<hcy, String> a() {
+      return a;
    }
 }

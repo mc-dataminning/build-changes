@@ -1,36 +1,44 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-
-public abstract class bsf {
-   private static final Codec<Either<Integer, bsf>> a = Codec.either(Codec.INT, ma.K.q().dispatch(bsf::c, bsg::codec));
-   public static final Codec<bsf> c = a.xmap(
-      $$0 -> (bsf)$$0.map(bsc::a, $$0x -> $$0x), $$0 -> $$0.c() == bsg.a ? Either.left(((bsc)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bsf> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bsf> e = b(1, Integer.MAX_VALUE);
-
-   public static Codec<bsf> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+public class bsf {
+   public static void a(dgi $$0, ji $$1, bsc $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
    }
 
-   public static <T extends bsf> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   public static void a(dgi $$0, buk $$1, bsc $$2) {
+      a($$0, $$1.dB(), $$1.dD(), $$1.dH(), $$2);
    }
 
-   private static <T extends bsf> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+   private static void a(dgi $$0, double $$1, double $$2, double $$3, bsc $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   public abstract int a(bac var1);
+   public static void a(dgi $$0, ji $$1, ka<cwp> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   }
 
-   public abstract int a();
+   public static void a(dgi $$0, double $$1, double $$2, double $$3, cwp $$4) {
+      double $$5 = (double)bur.ar.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
 
-   public abstract int b();
+      while (!$$4.f()) {
+         clb $$11 = new clb($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
+      }
+   }
 
-   public abstract bsg<?> c();
+   public static void a(dwx $$0, dwx $$1, dgi $$2, ji $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bsc $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
+   }
 }

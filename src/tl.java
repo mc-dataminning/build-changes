@@ -1,134 +1,97 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+import org.slf4j.Logger;
 
-public class tl {
-   final th a;
-   private final List<te> b = Lists.newArrayList();
-   private long c;
+public abstract class tl {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new Gson();
+   private static final Pattern d = Pattern.compile("%(\\d+\\$)?[\\d.]*[df]");
+   public static final String a = "en_us";
+   private static volatile tl e = c();
 
-   tl(th $$0) {
-      this.a = $$0;
-      this.c = $$0.p();
-   }
-
-   public tl a(Runnable $$0) {
-      this.b.add(te.a($$0));
-      return this;
-   }
-
-   public tl a(long $$0, Runnable $$1) {
-      this.b.add(te.a($$0, $$1));
-      return this;
-   }
-
-   public tl a(int $$0) {
-      return this.a($$0, () -> {
-      });
-   }
-
-   public tl b(Runnable $$0) {
-      this.b.add(te.a(() -> this.c($$0)));
-      return this;
-   }
-
-   public tl a(int $$0, Runnable $$1) {
-      this.b.add(te.a(() -> {
-         if (this.a.p() < this.c + (long)$$0) {
-            throw new sz("Test timed out before sequence completed");
-         } else {
-            this.c($$1);
+   private static tl c() {
+      tk $$0 = tk.a();
+      Map<String, String> $$1 = new HashMap<>();
+      BiConsumer<String, String> $$2 = $$1::put;
+      a($$2, "/assets/minecraft/lang/en_us.json");
+      $$0.a($$1);
+      final Map<String, String> $$3 = Map.copyOf($$1);
+      return new tl() {
+         @Override
+         public String a(String $$0, String $$1) {
+            return $$3.getOrDefault($$0, $$1);
          }
-      }));
-      return this;
-   }
 
-   public tl b(int $$0, Runnable $$1) {
-      this.b.add(te.a(() -> {
-         if (this.a.p() < this.c + (long)$$0) {
-            this.c($$1);
-            throw new sz("Test timed out before sequence completed");
+         @Override
+         public boolean b(String $$0) {
+            return $$3.containsKey($$0);
          }
-      }));
-      return this;
-   }
 
-   public void a() {
-      this.b.add(te.a(this.a::m));
-   }
-
-   public void a(Supplier<Exception> $$0) {
-      this.b.add(te.a(() -> this.a.a($$0.get())));
-   }
-
-   public tl.a b() {
-      tl.a $$0 = new tl.a();
-      this.b.add(te.a(() -> $$0.a(this.a.p())));
-      return $$0;
-   }
-
-   public void a(long $$0) {
-      try {
-         this.c($$0);
-      } catch (sz var4) {
-      }
-   }
-
-   public void b(long $$0) {
-      try {
-         this.c($$0);
-      } catch (sz var4) {
-         this.a.a(var4);
-      }
-   }
-
-   private void c(Runnable $$0) {
-      try {
-         $$0.run();
-      } catch (sz var3) {
-         this.a.a(var3);
-      }
-   }
-
-   private void c(long $$0) {
-      Iterator<te> $$1 = this.b.iterator();
-
-      while ($$1.hasNext()) {
-         te $$2 = $$1.next();
-         $$2.b.run();
-         $$1.remove();
-         long $$3 = $$0 - this.c;
-         long $$4 = this.c;
-         this.c = $$0;
-         if ($$2.a != null && $$2.a != $$3) {
-            this.a.a(new sz("Succeeded in invalid tick: expected " + ($$4 + $$2.a) + ", but current tick is " + $$0));
-            break;
+         @Override
+         public boolean b() {
+            return false;
          }
+
+         @Override
+         public ayl a(wt $$0) {
+            return $$1 -> $$0.a(($$1x, $$2) -> azu.c($$2, $$1x, $$1) ? Optional.empty() : wt.a, xl.a).isPresent();
+         }
+      };
+   }
+
+   private static void a(BiConsumer<String, String> $$0, String $$1) {
+      try (InputStream $$2 = tl.class.getResourceAsStream($$1)) {
+         a($$2, $$0);
+      } catch (JsonParseException | IOException var7) {
+         b.error("Couldn't read strings from {}", $$1, var7);
       }
    }
 
-   public class a {
-      private static final long b = -1L;
-      private long c = -1L;
+   public static void a(InputStream $$0, BiConsumer<String, String> $$1) {
+      JsonObject $$2 = (JsonObject)c.fromJson(new InputStreamReader($$0, StandardCharsets.UTF_8), JsonObject.class);
 
-      void a(long $$0) {
-         if (this.c != -1L) {
-            throw new IllegalStateException("Condition already triggered at " + this.c);
-         } else {
-            this.c = $$0;
-         }
+      for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
+         String $$4 = d.matcher(ayp.a($$3.getValue(), $$3.getKey())).replaceAll("%$1s");
+         $$1.accept($$3.getKey(), $$4);
       }
+   }
 
-      public void a() {
-         long $$0 = tl.this.a.p();
-         if (this.c != $$0) {
-            if (this.c == -1L) {
-               throw new sz("Condition not triggered (t=" + $$0 + ")");
-            } else {
-               throw new sz("Condition triggered at " + this.c + ", (t=" + $$0 + ")");
-            }
-         }
-      }
+   public static tl a() {
+      return e;
+   }
+
+   public static void a(tl $$0) {
+      e = $$0;
+   }
+
+   public String a(String $$0) {
+      return this.a($$0, $$0);
+   }
+
+   public abstract String a(String var1, String var2);
+
+   public abstract boolean b(String var1);
+
+   public abstract boolean b();
+
+   public abstract ayl a(wt var1);
+
+   public List<ayl> a(List<wt> $$0) {
+      return $$0.stream().map(this::a).collect(ImmutableList.toImmutableList());
    }
 }

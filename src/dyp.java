@@ -1,20 +1,5 @@
-public enum dyp implements baq {
-   a("normal"),
-   b("sticky");
+public interface dyp {
+   dwx a(int var1);
 
-   private final String c;
-
-   private dyp(final String $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
-   }
-
-   @Override
-   public String c() {
-      return this.c;
-   }
+   void a(int var1, dwx var2);
 }

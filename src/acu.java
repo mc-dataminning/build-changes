@@ -1,20 +1,29 @@
-public record acu(int b) implements zr<acg> {
-   public static final zi<wh, acu> a = zr.a(acu::a, acu::new);
+public record acu(int b, float c) implements yv<abk> {
+   public static final ym<vl, acu> a = yv.a(acu::a, acu::new);
 
-   private acu(wh $$0) {
-      this($$0.l());
+   public acu(bvg $$0) {
+      this($$0.ar(), $$0.eK());
    }
 
-   private void a(wh $$0) {
+   private acu(vl $$0) {
+      this($$0.l(), $$0.readFloat());
+   }
+
+   private void a(vl $$0) {
       $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zt<acu> a() {
-      return agz.n;
+   public yx<acu> a() {
+      return agd.I;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
+   }
+
+   public float e() {
+      return this.c;
    }
 }

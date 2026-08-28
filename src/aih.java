@@ -1,67 +1,51 @@
-public class aih implements zr<ahb> {
-   public static final zi<wh, aih> a = zr.a(aih::a, aih::new);
-   private final jh b;
-   private final jm c;
-   private final aih.a d;
-   private final int e;
+import org.jetbrains.annotations.VisibleForTesting;
 
-   public aih(aih.a $$0, jh $$1, jm $$2, int $$3) {
-      this.d = $$0;
-      this.b = $$1.j();
-      this.c = $$2;
-      this.e = $$3;
+public class aih {
+   private static final double a = 4096.0;
+   private fba b = fba.c;
+
+   @VisibleForTesting
+   static long a(double $$0) {
+      return Math.round($$0 * 4096.0);
    }
 
-   public aih(aih.a $$0, jh $$1, jm $$2) {
-      this($$0, $$1, $$2, 0);
+   @VisibleForTesting
+   static double a(long $$0) {
+      return (double)$$0 / 4096.0;
    }
 
-   private aih(wh $$0) {
-      this.d = $$0.b(aih.a.class);
-      this.b = $$0.e();
-      this.c = jm.a($$0.readUnsignedByte());
-      this.e = $$0.l();
+   public fba a(long $$0, long $$1, long $$2) {
+      if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
+         return this.b;
+      } else {
+         double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
+         double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
+         double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
+         return new fba($$3, $$4, $$5);
+      }
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.d);
-      $$0.a(this.b);
-      $$0.l(this.c.d());
-      $$0.c(this.e);
+   public long a(fba $$0) {
+      return a($$0.d) - a(this.b.d);
    }
 
-   @Override
-   public zt<aih> a() {
-      return agz.bS;
+   public long b(fba $$0) {
+      return a($$0.e) - a(this.b.e);
    }
 
-   public void a(ahb $$0) {
-      $$0.a(this);
+   public long c(fba $$0) {
+      return a($$0.f) - a(this.b.f);
    }
 
-   public jh b() {
+   public fba d(fba $$0) {
+      return $$0.d(this.b);
+   }
+
+   public void e(fba $$0) {
+      this.b = $$0;
+   }
+
+   public fba a() {
       return this.b;
-   }
-
-   public jm e() {
-      return this.c;
-   }
-
-   public aih.a f() {
-      return this.d;
-   }
-
-   public int g() {
-      return this.e;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g;
    }
 }

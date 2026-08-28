@@ -1,121 +1,62 @@
-public class crz extends cro implements dvr {
-   private boolean c = true;
-   private boolean d = false;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public crz(bvi<? extends crz> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   public dxo w() {
-      return dkf.hz.m();
-   }
-
-   @Override
-   public int z() {
-      return 1;
-   }
+public record crz(int c, float d, boolean e) implements cyw {
+   public static final Codec<crz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayi.l.fieldOf("nutrition").forGetter(crz::a),
+               Codec.FLOAT.fieldOf("saturation").forGetter(crz::b),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(crz::c)
+            )
+            .apply($$0, crz::new)
+   );
+   public static final ym<vz, crz> b = ym.a(yk.h, crz::a, yk.l, crz::b, yk.b, crz::c, crz::new);
 
    @Override
-   public int b() {
-      return 5;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.F()) {
-         this.s($$4);
+   public void a(dgi $$0, bvg $$1, cwp $$2, cyv $$3) {
+      azh $$4 = $$1.dZ();
+      $$0.a(null, $$1.dB(), $$1.dD(), $$1.dH(), $$3.e().a(), awb.g, 1.0F, $$4.a(1.0F, 0.4F));
+      if ($$1 instanceof cox $$5) {
+         $$5.gt().a(this);
+         $$0.a(null, $$5.dB(), $$5.dD(), $$5.dH(), awa.uJ, awb.h, 0.5F, ayz.b($$4, 0.9F, 1.0F));
       }
    }
 
-   public boolean F() {
+   public int a() {
       return this.c;
    }
 
-   public void s(boolean $$0) {
-      this.c = $$0;
+   public float b() {
+      return this.d;
    }
 
-   @Override
-   public double G() {
-      return this.dB();
+   public boolean c() {
+      return this.e;
    }
 
-   @Override
-   public double H() {
-      return this.dD() + 0.5;
-   }
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
 
-   @Override
-   public double I() {
-      return this.dH();
-   }
-
-   @Override
-   public boolean J() {
-      return false;
-   }
-
-   @Override
-   public void h() {
-      this.d = false;
-      super.h();
-      this.P();
-   }
-
-   @Override
-   protected double a(jh $$0, dyr $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.P();
-      return $$3;
-   }
-
-   private void P() {
-      if (!this.dW().C && this.bL() && this.F() && !this.d && this.K()) {
-         this.d = true;
-         this.e();
+      public crz.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
-   }
 
-   public boolean K() {
-      if (dvs.a(this.dW(), this)) {
-         return true;
-      } else {
-         for (cls $$1 : this.dW().a(cls.class, this.cR().c(0.25, 0.0, 0.25), bvg.a)) {
-            if (dvs.a(this, $$1)) {
-               return true;
-            }
-         }
-
-         return false;
+      public crz.a a(float $$0) {
+         this.b = $$0;
+         return this;
       }
-   }
 
-   @Override
-   protected cxc u() {
-      return cxk.os;
-   }
+      public crz.a a() {
+         this.c = true;
+         return this;
+      }
 
-   @Override
-   public cxg dJ() {
-      return new cxg(cxk.os);
-   }
-
-   @Override
-   protected void b(um $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
-   }
-
-   @Override
-   protected void a(um $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
-   }
-
-   @Override
-   public cst a(int $$0, cpn $$1) {
-      return new ctu($$0, $$1, this);
+      public crz b() {
+         float $$0 = crx.a(this.a, this.b);
+         return new crz(this.a, $$0, this.c);
+      }
    }
 }

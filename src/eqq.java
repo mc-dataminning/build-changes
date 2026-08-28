@@ -1,63 +1,20 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eqq extends eod {
-   public static final MapCodec<eqq> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               a($$0),
-               eqq.a.c.fieldOf("biome_temp").forGetter($$0x -> $$0x.e),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("large_probability").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("cluster_probability").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eqq::new)
-   );
-   public final eqq.a e;
-   public final float f;
-   public final float g;
+public class eqq extends eri {
+   public static final MapCodec<eqq> a = mb.e.q().fieldOf("block").xmap(eqq::new, $$0 -> $$0.b);
+   private final djm b;
 
-   public eqq(eod.c $$0, eqq.a $$1, float $$2, float $$3) {
-      super($$0);
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
+   public eqq(djm $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public Optional<eod.b> a(eod.a $$0) {
-      return a($$0, edj.a.c, $$1 -> this.a($$1, $$0));
-   }
-
-   private void a(eov $$0, eod.a $$1) {
-      jh $$2 = new jh($$1.h().d(), 90, $$1.h().e());
-      dqv $$3 = dqv.a($$1.f());
-      eqp.a($$1.e(), $$2, $$3, $$0, $$1.f(), this);
+   public boolean a(dwx $$0, azh $$1) {
+      return $$0.a(this.b);
    }
 
    @Override
-   public eom<?> e() {
-      return eom.k;
-   }
-
-   public static enum a implements baq {
-      a("warm"),
-      b("cold");
-
-      public static final Codec<eqq.a> c = baq.a(eqq.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   protected erj<?> a() {
+      return erj.b;
    }
 }

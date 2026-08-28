@@ -1,48 +1,91 @@
-import com.mojang.serialization.Codec;
+public class dam extends dau {
+   public dam(dar $$0) {
+      super($$0);
+   }
 
-public record dam(cxg c) {
-   public static final Codec<dam> a = cxg.a.xmap(dam::new, dam::a);
-   public static final zi<wv, dam> b = zi.a(cxg.h, dam::a, dam::new);
-
-   public cxg a(cxg $$0, int $$1, boolean $$2, dam.a $$3) {
-      if ($$2) {
-         return $$0;
-      } else if ($$0.M() >= $$1) {
-         return $$0;
+   public boolean a(das $$0, dgi $$1) {
+      if ($$0.e() != 2) {
+         return false;
       } else {
-         cxg $$4 = this.c.v();
-         if ($$0.f()) {
-            return $$4;
-         } else {
-            $$3.apply($$4);
-            return $$0;
+         cvm $$2 = null;
+         boolean $$3 = false;
+         boolean $$4 = false;
+
+         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
+            cwp $$6 = $$0.a($$5);
+            if (!$$6.f()) {
+               cwl $$7 = $$6.h();
+               if (!($$7 instanceof cus)) {
+                  return false;
+               }
+
+               cus $$8 = (cus)$$7;
+               if ($$2 == null) {
+                  $$2 = $$8.b();
+               } else if ($$2 != $$8.b()) {
+                  return false;
+               }
+
+               int $$10 = $$6.a(kv.ai, dtq.a).b().size();
+               if ($$10 > 6) {
+                  return false;
+               }
+
+               if ($$10 > 0) {
+                  if ($$4) {
+                     return false;
+                  }
+
+                  $$4 = true;
+               } else {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               }
+            }
+         }
+
+         return $$4 && $$3;
+      }
+   }
+
+   public cwp a(das $$0, jt.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+         cwp $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            int $$4 = $$3.a(kv.ai, dtq.a).b().size();
+            if ($$4 > 0 && $$4 <= 6) {
+               return $$3.c(1);
+            }
          }
       }
+
+      return cwp.j;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         dam $$1 = (dam)$$0;
-         return cxg.a(this.c, $$1.c);
-      } else {
-         return false;
+   public ka<cwp> a(das $$0) {
+      ka<cwp> $$1 = ka.a($$0.a(), cwp.j);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cwp $$3 = $$0.a($$2);
+         if (!$$3.f()) {
+            cwp $$4 = $$3.h().k();
+            if (!$$4.f()) {
+               $$1.set($$2, $$4);
+            } else if (!$$3.a(kv.ai, dtq.a).b().isEmpty()) {
+               $$1.set($$2, $$3.c(1));
+            }
+         }
       }
+
+      return $$1;
    }
 
    @Override
-   public int hashCode() {
-      return cxg.a(this.c);
-   }
-
-   public cxg a() {
-      return this.c;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(cxg var1);
+   public dbo<dam> a() {
+      return dbo.k;
    }
 }

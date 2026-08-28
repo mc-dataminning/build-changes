@@ -1,72 +1,21 @@
-@FunctionalInterface
-public interface grl<T extends bvb> {
-   grk<T, ?> create(grl.a var1);
+public class grl extends gqw<chc, gxz, gbo> {
+   private static final aku a = aku.b("textures/entity/chicken.png");
 
-   public static class a {
-      private final grj a;
-      private final gsj b;
-      private final glf c;
-      private final gmj d;
-      private final avl e;
-      private final gef f;
-      private final hdn g;
-      private final fnj h;
-      private final gvk i;
+   public grl(gsc.a $$0) {
+      super($$0, new gbo($$0.a(gfb.X)), new gbo($$0.a(gfb.Y)), 0.3F);
+   }
 
-      public a(grj $$0, gsj $$1, glf $$2, gmj $$3, avl $$4, gef $$5, hdn $$6, fnj $$7) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = new gvk($$6, this.i().a(gmb.g));
-      }
+   public aku a(gxz $$0) {
+      return a;
+   }
 
-      public grj a() {
-         return this.a;
-      }
+   public gxz a() {
+      return new gxz();
+   }
 
-      public gsj b() {
-         return this.b;
-      }
-
-      public glf c() {
-         return this.c;
-      }
-
-      public gmj d() {
-         return this.d;
-      }
-
-      public avl e() {
-         return this.e;
-      }
-
-      public gef f() {
-         return this.f;
-      }
-
-      public hdn g() {
-         return this.g;
-      }
-
-      public gvk h() {
-         return this.i;
-      }
-
-      public hdv i() {
-         return this.d.a().a();
-      }
-
-      public gej a(geh $$0) {
-         return this.f.a($$0);
-      }
-
-      public fnj j() {
-         return this.h;
-      }
+   public void a(chc $$0, gxz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = ayz.h($$2, $$0.cc, $$0.bY);
+      $$1.b = ayz.h($$2, $$0.ca, $$0.bZ);
    }
 }

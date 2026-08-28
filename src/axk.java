@@ -1,195 +1,137 @@
-public final class axk {
-   public static final aya<dkd> a = a("wool");
-   public static final aya<dkd> b = a("planks");
-   public static final aya<dkd> c = a("stone_bricks");
-   public static final aya<dkd> d = a("wooden_buttons");
-   public static final aya<dkd> e = a("stone_buttons");
-   public static final aya<dkd> f = a("buttons");
-   public static final aya<dkd> g = a("wool_carpets");
-   public static final aya<dkd> h = a("wooden_doors");
-   public static final aya<dkd> i = a("mob_interactable_doors");
-   public static final aya<dkd> j = a("wooden_stairs");
-   public static final aya<dkd> k = a("wooden_slabs");
-   public static final aya<dkd> l = a("wooden_fences");
-   public static final aya<dkd> m = a("pressure_plates");
-   public static final aya<dkd> n = a("wooden_pressure_plates");
-   public static final aya<dkd> o = a("stone_pressure_plates");
-   public static final aya<dkd> p = a("wooden_trapdoors");
-   public static final aya<dkd> q = a("doors");
-   public static final aya<dkd> r = a("saplings");
-   public static final aya<dkd> s = a("logs_that_burn");
-   public static final aya<dkd> t = a("overworld_natural_logs");
-   public static final aya<dkd> u = a("logs");
-   public static final aya<dkd> v = a("dark_oak_logs");
-   public static final aya<dkd> w = a("pale_oak_logs");
-   public static final aya<dkd> x = a("oak_logs");
-   public static final aya<dkd> y = a("birch_logs");
-   public static final aya<dkd> z = a("acacia_logs");
-   public static final aya<dkd> A = a("cherry_logs");
-   public static final aya<dkd> B = a("jungle_logs");
-   public static final aya<dkd> C = a("spruce_logs");
-   public static final aya<dkd> D = a("mangrove_logs");
-   public static final aya<dkd> E = a("crimson_stems");
-   public static final aya<dkd> F = a("warped_stems");
-   public static final aya<dkd> G = a("bamboo_blocks");
-   public static final aya<dkd> H = a("wart_blocks");
-   public static final aya<dkd> I = a("banners");
-   public static final aya<dkd> J = a("sand");
-   public static final aya<dkd> K = a("smelts_to_glass");
-   public static final aya<dkd> L = a("stairs");
-   public static final aya<dkd> M = a("slabs");
-   public static final aya<dkd> N = a("walls");
-   public static final aya<dkd> O = a("anvil");
-   public static final aya<dkd> P = a("rails");
-   public static final aya<dkd> Q = a("leaves");
-   public static final aya<dkd> R = a("trapdoors");
-   public static final aya<dkd> S = a("small_flowers");
-   public static final aya<dkd> T = a("beds");
-   public static final aya<dkd> U = a("fences");
-   public static final aya<dkd> V = a("tall_flowers");
-   public static final aya<dkd> W = a("flowers");
-   public static final aya<dkd> X = a("piglin_repellents");
-   public static final aya<dkd> Y = a("gold_ores");
-   public static final aya<dkd> Z = a("iron_ores");
-   public static final aya<dkd> aa = a("diamond_ores");
-   public static final aya<dkd> ab = a("redstone_ores");
-   public static final aya<dkd> ac = a("lapis_ores");
-   public static final aya<dkd> ad = a("coal_ores");
-   public static final aya<dkd> ae = a("emerald_ores");
-   public static final aya<dkd> af = a("copper_ores");
-   public static final aya<dkd> ag = a("candles");
-   public static final aya<dkd> ah = a("dirt");
-   public static final aya<dkd> ai = a("terracotta");
-   public static final aya<dkd> aj = a("badlands_terracotta");
-   public static final aya<dkd> ak = a("concrete_powder");
-   public static final aya<dkd> al = a("completes_find_tree_tutorial");
-   public static final aya<dkd> am = a("shulker_boxes");
-   public static final aya<dkd> an = a("flower_pots");
-   public static final aya<dkd> ao = a("enderman_holdable");
-   public static final aya<dkd> ap = a("ice");
-   public static final aya<dkd> aq = a("valid_spawn");
-   public static final aya<dkd> ar = a("impermeable");
-   public static final aya<dkd> as = a("underwater_bonemeals");
-   public static final aya<dkd> at = a("coral_blocks");
-   public static final aya<dkd> au = a("wall_corals");
-   public static final aya<dkd> av = a("coral_plants");
-   public static final aya<dkd> aw = a("corals");
-   public static final aya<dkd> ax = a("bamboo_plantable_on");
-   public static final aya<dkd> ay = a("standing_signs");
-   public static final aya<dkd> az = a("wall_signs");
-   public static final aya<dkd> aA = a("signs");
-   public static final aya<dkd> aB = a("ceiling_hanging_signs");
-   public static final aya<dkd> aC = a("wall_hanging_signs");
-   public static final aya<dkd> aD = a("all_hanging_signs");
-   public static final aya<dkd> aE = a("all_signs");
-   public static final aya<dkd> aF = a("dragon_immune");
-   public static final aya<dkd> aG = a("dragon_transparent");
-   public static final aya<dkd> aH = a("wither_immune");
-   public static final aya<dkd> aI = a("wither_summon_base_blocks");
-   public static final aya<dkd> aJ = a("beehives");
-   public static final aya<dkd> aK = a("crops");
-   public static final aya<dkd> aL = a("bee_growables");
-   public static final aya<dkd> aM = a("portals");
-   public static final aya<dkd> aN = a("fire");
-   public static final aya<dkd> aO = a("nylium");
-   public static final aya<dkd> aP = a("beacon_base_blocks");
-   public static final aya<dkd> aQ = a("soul_speed_blocks");
-   public static final aya<dkd> aR = a("wall_post_override");
-   public static final aya<dkd> aS = a("climbable");
-   public static final aya<dkd> aT = a("fall_damage_resetting");
-   public static final aya<dkd> aU = a("hoglin_repellents");
-   public static final aya<dkd> aV = a("soul_fire_base_blocks");
-   public static final aya<dkd> aW = a("strider_warm_blocks");
-   public static final aya<dkd> aX = a("campfires");
-   public static final aya<dkd> aY = a("guarded_by_piglins");
-   public static final aya<dkd> aZ = a("prevent_mob_spawning_inside");
-   public static final aya<dkd> ba = a("fence_gates");
-   public static final aya<dkd> bb = a("unstable_bottom_center");
-   public static final aya<dkd> bc = a("mushroom_grow_block");
-   public static final aya<dkd> bd = a("infiniburn_overworld");
-   public static final aya<dkd> be = a("infiniburn_nether");
-   public static final aya<dkd> bf = a("infiniburn_end");
-   public static final aya<dkd> bg = a("base_stone_overworld");
-   public static final aya<dkd> bh = a("stone_ore_replaceables");
-   public static final aya<dkd> bi = a("deepslate_ore_replaceables");
-   public static final aya<dkd> bj = a("base_stone_nether");
-   public static final aya<dkd> bk = a("overworld_carver_replaceables");
-   public static final aya<dkd> bl = a("nether_carver_replaceables");
-   public static final aya<dkd> bm = a("candle_cakes");
-   public static final aya<dkd> bn = a("cauldrons");
-   public static final aya<dkd> bo = a("crystal_sound_blocks");
-   public static final aya<dkd> bp = a("inside_step_sound_blocks");
-   public static final aya<dkd> bq = a("combination_step_sound_blocks");
-   public static final aya<dkd> br = a("camel_sand_step_sound_blocks");
-   public static final aya<dkd> bs = a("occludes_vibration_signals");
-   public static final aya<dkd> bt = a("dampens_vibrations");
-   public static final aya<dkd> bu = a("dripstone_replaceable_blocks");
-   public static final aya<dkd> bv = a("cave_vines");
-   public static final aya<dkd> bw = a("moss_replaceable");
-   public static final aya<dkd> bx = a("lush_ground_replaceable");
-   public static final aya<dkd> by = a("azalea_root_replaceable");
-   public static final aya<dkd> bz = a("small_dripleaf_placeable");
-   public static final aya<dkd> bA = a("big_dripleaf_placeable");
-   public static final aya<dkd> bB = a("snow");
-   public static final aya<dkd> bC = a("mineable/axe");
-   public static final aya<dkd> bD = a("mineable/hoe");
-   public static final aya<dkd> bE = a("mineable/pickaxe");
-   public static final aya<dkd> bF = a("mineable/shovel");
-   public static final aya<dkd> bG = a("sword_efficient");
-   public static final aya<dkd> bH = a("needs_diamond_tool");
-   public static final aya<dkd> bI = a("needs_iron_tool");
-   public static final aya<dkd> bJ = a("needs_stone_tool");
-   public static final aya<dkd> bK = a("incorrect_for_netherite_tool");
-   public static final aya<dkd> bL = a("incorrect_for_diamond_tool");
-   public static final aya<dkd> bM = a("incorrect_for_iron_tool");
-   public static final aya<dkd> bN = a("incorrect_for_stone_tool");
-   public static final aya<dkd> bO = a("incorrect_for_gold_tool");
-   public static final aya<dkd> bP = a("incorrect_for_wooden_tool");
-   public static final aya<dkd> bQ = a("features_cannot_replace");
-   public static final aya<dkd> bR = a("lava_pool_stone_cannot_replace");
-   public static final aya<dkd> bS = a("geode_invalid_blocks");
-   public static final aya<dkd> bT = a("frog_prefer_jump_to");
-   public static final aya<dkd> bU = a("sculk_replaceable");
-   public static final aya<dkd> bV = a("sculk_replaceable_world_gen");
-   public static final aya<dkd> bW = a("ancient_city_replaceable");
-   public static final aya<dkd> bX = a("vibration_resonators");
-   public static final aya<dkd> bY = a("animals_spawnable_on");
-   public static final aya<dkd> bZ = a("armadillo_spawnable_on");
-   public static final aya<dkd> ca = a("axolotls_spawnable_on");
-   public static final aya<dkd> cb = a("goats_spawnable_on");
-   public static final aya<dkd> cc = a("mooshrooms_spawnable_on");
-   public static final aya<dkd> cd = a("parrots_spawnable_on");
-   public static final aya<dkd> ce = a("polar_bears_spawnable_on_alternate");
-   public static final aya<dkd> cf = a("rabbits_spawnable_on");
-   public static final aya<dkd> cg = a("foxes_spawnable_on");
-   public static final aya<dkd> ch = a("wolves_spawnable_on");
-   public static final aya<dkd> ci = a("frogs_spawnable_on");
-   public static final aya<dkd> cj = a("bats_spawnable_on");
-   public static final aya<dkd> ck = a("azalea_grows_on");
-   public static final aya<dkd> cl = a("convertable_to_mud");
-   public static final aya<dkd> cm = a("mangrove_logs_can_grow_through");
-   public static final aya<dkd> cn = a("mangrove_roots_can_grow_through");
-   public static final aya<dkd> co = a("dead_bush_may_place_on");
-   public static final aya<dkd> cp = a("snaps_goat_horn");
-   public static final aya<dkd> cq = a("replaceable_by_trees");
-   public static final aya<dkd> cr = a("snow_layer_cannot_survive_on");
-   public static final aya<dkd> cs = a("snow_layer_can_survive_on");
-   public static final aya<dkd> ct = a("invalid_spawn_inside");
-   public static final aya<dkd> cu = a("sniffer_diggable_block");
-   public static final aya<dkd> cv = a("sniffer_egg_hatch_boost");
-   public static final aya<dkd> cw = a("trail_ruins_replaceable");
-   public static final aya<dkd> cx = a("replaceable");
-   public static final aya<dkd> cy = a("enchantment_power_provider");
-   public static final aya<dkd> cz = a("enchantment_power_transmitter");
-   public static final aya<dkd> cA = a("maintains_farmland");
-   public static final aya<dkd> cB = a("blocks_wind_charge_explosions");
-   public static final aya<dkd> cC = a("does_not_block_hoppers");
-   public static final aya<dkd> cD = a("air");
+import org.joml.Vector3f;
 
-   private axk() {
+public class axk {
+   public static int a(int $$0) {
+      return $$0 >>> 24;
    }
 
-   private static aya<dkd> a(String $$0) {
-      return aya.a(mb.f, alp.b($$0));
+   public static int b(int $$0) {
+      return $$0 >> 16 & 0xFF;
+   }
+
+   public static int c(int $$0) {
+      return $$0 >> 8 & 0xFF;
+   }
+
+   public static int d(int $$0) {
+      return $$0 & 0xFF;
+   }
+
+   public static int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
+   }
+
+   public static int a(int $$0, int $$1, int $$2) {
+      return a(255, $$0, $$1, $$2);
+   }
+
+   public static int a(fba $$0) {
+      return a(b((float)$$0.a()), b((float)$$0.b()), b((float)$$0.c()));
+   }
+
+   public static int a(int $$0, int $$1) {
+      if ($$0 == -1) {
+         return $$1;
+      } else {
+         return $$1 == -1 ? $$0 : a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
+      }
+   }
+
+   public static int a(int $$0, float $$1) {
+      return a($$0, $$1, $$1, $$1);
+   }
+
+   public static int a(int $$0, float $$1, float $$2, float $$3) {
+      return a(
+         a($$0),
+         Math.clamp((long)((int)((float)b($$0) * $$1)), 0, 255),
+         Math.clamp((long)((int)((float)c($$0) * $$2)), 0, 255),
+         Math.clamp((long)((int)((float)d($$0) * $$3)), 0, 255)
+      );
+   }
+
+   public static int b(int $$0, int $$1) {
+      return a(
+         a($$0),
+         Math.clamp((long)b($$0) * (long)$$1 / 255L, 0, 255),
+         Math.clamp((long)c($$0) * (long)$$1 / 255L, 0, 255),
+         Math.clamp((long)d($$0) * (long)$$1 / 255L, 0, 255)
+      );
+   }
+
+   public static int e(int $$0) {
+      int $$1 = (int)((float)b($$0) * 0.3F + (float)c($$0) * 0.59F + (float)d($$0) * 0.11F);
+      return a($$1, $$1, $$1);
+   }
+
+   public static int a(float $$0, int $$1, int $$2) {
+      int $$3 = ayz.a($$0, a($$1), a($$2));
+      int $$4 = ayz.a($$0, b($$1), b($$2));
+      int $$5 = ayz.a($$0, c($$1), c($$2));
+      int $$6 = ayz.a($$0, d($$1), d($$2));
+      return a($$3, $$4, $$5, $$6);
+   }
+
+   public static int f(int $$0) {
+      return $$0 | 0xFF000000;
+   }
+
+   public static int g(int $$0) {
+      return $$0 & 16777215;
+   }
+
+   public static int c(int $$0, int $$1) {
+      return $$0 << 24 | $$1 & 16777215;
+   }
+
+   public static int a(float $$0) {
+      return b($$0) << 24 | 16777215;
+   }
+
+   public static int a(float $$0, float $$1, float $$2, float $$3) {
+      return a(b($$0), b($$1), b($$2), b($$3));
+   }
+
+   public static Vector3f h(int $$0) {
+      float $$1 = (float)b($$0) / 255.0F;
+      float $$2 = (float)c($$0) / 255.0F;
+      float $$3 = (float)d($$0) / 255.0F;
+      return new Vector3f($$1, $$2, $$3);
+   }
+
+   public static int d(int $$0, int $$1) {
+      return a((a($$0) + a($$1)) / 2, (b($$0) + b($$1)) / 2, (c($$0) + c($$1)) / 2, (d($$0) + d($$1)) / 2);
+   }
+
+   public static int b(float $$0) {
+      return ayz.d($$0 * 255.0F);
+   }
+
+   public static float i(int $$0) {
+      return o(a($$0));
+   }
+
+   public static float j(int $$0) {
+      return o(b($$0));
+   }
+
+   public static float k(int $$0) {
+      return o(c($$0));
+   }
+
+   public static float l(int $$0) {
+      return o(d($$0));
+   }
+
+   private static float o(int $$0) {
+      return (float)$$0 / 255.0F;
+   }
+
+   public static int m(int $$0) {
+      return $$0 & -16711936 | ($$0 & 0xFF0000) >> 16 | ($$0 & 0xFF) << 16;
+   }
+
+   public static int n(int $$0) {
+      return m($$0);
    }
 }

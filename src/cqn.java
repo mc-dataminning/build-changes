@@ -1,51 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cqn extends cpv {
-   private int d = 200;
-
-   public cqn(bvi<? extends cqn> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
-
-   public cqn(dgz $$0, bvx $$1, cxg $$2, @Nullable cxg $$3) {
-      super(bvi.bn, $$1, $$0, $$2, $$3);
-   }
-
-   public cqn(dgz $$0, double $$1, double $$2, double $$3, cxg $$4, @Nullable cxg $$5) {
-      super(bvi.bn, $$1, $$2, $$3, $$0, $$4, $$5);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.dW().C && !this.l()) {
-         this.dW().a(ls.S, this.dB(), this.dD(), this.dH(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected void a(bvx $$0) {
-      super.a($$0);
-      bug $$1 = new bug(bui.x, this.d, 0);
-      $$0.b($$1, this.E());
-   }
-
-   @Override
-   public void a(um $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.d = $$0.h("Duration");
-      }
-   }
-
-   @Override
-   public void b(um $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.d);
-   }
-
-   @Override
-   protected cxg v() {
-      return new cxg(cxk.wp);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cqn {
 }

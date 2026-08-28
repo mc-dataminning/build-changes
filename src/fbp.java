@@ -1,26 +1,53 @@
-public abstract class fbp {
-   protected final fbr a;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-   protected fbp(fbr $$0) {
+public class fbp extends AbstractDoubleList implements fbm {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
+
+   protected fbp(DoubleList $$0, DoubleList $$1, boolean $$2) {
       this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public double a(bvb $$0) {
-      double $$1 = this.a.d - $$0.dB();
-      double $$2 = this.a.e - $$0.dD();
-      double $$3 = this.a.f - $$0.dH();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
-   public abstract fbp.a d();
-
-   public fbr g() {
-      return this.a;
+   @Override
+   public boolean a(fbm.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   public static enum a {
-      a,
-      b,
-      c;
+   private boolean b(fbm.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
+         }
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

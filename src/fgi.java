@@ -1,155 +1,216 @@
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.nio.ByteBuffer;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.time.Duration;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.util.Args;
+import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 
-public class fgi implements AutoCloseable {
-   private static final MemoryPool a = TracyClient.createMemoryPool("ByteBufferBuilder");
-   private static final Logger b = LogUtils.getLogger();
-   private static final MemoryAllocator c = MemoryUtil.getAllocator(false);
-   private static final int d = 2097152;
-   private static final int e = -1;
-   long f;
-   private int g;
-   private int h;
-   private int i;
-   private int j;
-   private int k;
-
-   public fgi(int $$0) {
-      this.g = $$0;
-      this.f = c.malloc((long)$$0);
-      a.malloc(this.f, $$0);
-      if (this.f == 0L) {
-         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
-      }
-   }
-
-   public long a(int $$0) {
-      int $$1 = this.h;
-      int $$2 = $$1 + $$0;
-      this.b($$2);
-      this.h = $$2;
-      return this.f + (long)$$1;
-   }
-
-   private void b(int $$0) {
-      if ($$0 > this.g) {
-         int $$1 = Math.min(this.g, 2097152);
-         int $$2 = Math.max(this.g + $$1, $$0);
-         this.c($$2);
-      }
-   }
-
-   private void c(int $$0) {
-      a.free(this.f);
-      this.f = c.realloc(this.f, (long)$$0);
-      a.malloc(this.f, $$0);
-      b.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.g, $$0);
-      if (this.f == 0L) {
-         throw new OutOfMemoryError("Failed to resize buffer from " + this.g + " bytes to " + $$0 + " bytes");
-      } else {
-         this.g = $$0;
-      }
-   }
-
+public class fgi {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private static final String c = "/upload";
+   private final File d;
+   private final long e;
+   private final int f;
+   private final fhy g;
+   private final String h;
+   private final String i;
+   private final String j;
+   private final String k;
+   private final fgo l;
+   final AtomicBoolean m = new AtomicBoolean(false);
    @Nullable
-   public fgi.a a() {
-      this.f();
-      int $$0 = this.i;
-      int $$1 = this.h - $$0;
-      if ($$1 == 0) {
-         return null;
+   private CompletableFuture<fjp> n;
+   private final RequestConfig o = RequestConfig.custom()
+      .setSocketTimeout((int)TimeUnit.MINUTES.toMillis(10L))
+      .setConnectTimeout((int)TimeUnit.SECONDS.toMillis(15L))
+      .build();
+
+   public fgi(File $$0, long $$1, int $$2, fhy $$3, flv $$4, String $$5, String $$6, fgo $$7) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4.a();
+      this.i = $$4.c();
+      this.j = $$5;
+      this.k = $$6;
+      this.l = $$7;
+   }
+
+   public fjp a() {
+      if (this.n != null) {
+         return new fjp.a().a();
       } else {
-         this.i = this.h;
-         this.j++;
-         return new fgi.a($$0, $$1, this.k);
+         this.n = CompletableFuture.supplyAsync(() -> this.a(0), af.g());
+         if (this.m.get()) {
+            this.b();
+            return new fjp.a().a();
+         } else {
+            return this.n.join();
+         }
       }
    }
 
    public void b() {
-      if (this.j > 0) {
-         b.warn("Clearing BufferBuilder with unused batches");
-      }
-
-      this.c();
+      this.m.set(true);
    }
 
-   public void c() {
-      this.f();
-      if (this.j > 0) {
-         this.e();
-         this.j = 0;
-      }
-   }
+   private fjp a(int $$0) {
+      fjp.a $$1 = new fjp.a();
+      if (this.m.get()) {
+         return $$1.a();
+      } else {
+         this.l.a(this.d.length());
+         HttpPost $$2 = new HttpPost(this.g.b().resolve("/upload/" + this.e + "/" + this.f));
+         CloseableHttpClient $$3 = HttpClientBuilder.create().setDefaultRequestConfig(this.o).build();
 
-   boolean d(int $$0) {
-      return $$0 == this.k;
-   }
+         fjp var8;
+         try {
+            this.a($$2);
+            HttpResponse $$4 = $$3.execute($$2);
+            long $$5 = this.a($$4);
+            if (!this.a($$5, $$0)) {
+               this.a($$4, $$1);
+               return $$1.a();
+            }
 
-   void d() {
-      if (--this.j <= 0) {
-         this.e();
-      }
-   }
+            var8 = this.b($$5, $$0);
+         } catch (Exception var12) {
+            if (!this.m.get()) {
+               a.error("Caught exception while uploading: ", var12);
+               return $$1.a();
+            }
 
-   private void e() {
-      int $$0 = this.h - this.i;
-      if ($$0 > 0) {
-         MemoryUtil.memCopy(this.f + (long)this.i, this.f, (long)$$0);
-      }
+            throw new fgr();
+         } finally {
+            this.a($$2, $$3);
+         }
 
-      this.h = $$0;
-      this.i = 0;
-      this.k++;
-   }
-
-   @Override
-   public void close() {
-      if (this.f != 0L) {
-         a.free(this.f);
-         c.free(this.f);
-         this.f = 0L;
-         this.k = -1;
+         return var8;
       }
    }
 
-   private void f() {
-      if (this.f == 0L) {
-         throw new IllegalStateException("Buffer has been freed");
-      }
-   }
-
-   public class a implements AutoCloseable {
-      private final int b;
-      private final int c;
-      private final int d;
-      private boolean e;
-
-      a(final int $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public ByteBuffer a() {
-         if (!fgi.this.d(this.d)) {
-            throw new IllegalStateException("Buffer is no longer valid");
-         } else {
-            return MemoryUtil.memByteBuffer(fgi.this.f + (long)this.b, this.c);
+   private void a(HttpPost $$0, @Nullable CloseableHttpClient $$1) {
+      $$0.releaseConnection();
+      if ($$1 != null) {
+         try {
+            $$1.close();
+         } catch (IOException var4) {
+            a.error("Failed to close Realms upload client");
          }
       }
+   }
 
-      @Override
-      public void close() {
-         if (!this.e) {
-            this.e = true;
-            if (fgi.this.d(this.d)) {
-               fgi.this.d();
+   private void a(HttpPost $$0) throws FileNotFoundException {
+      $$0.setHeader("Cookie", "sid=" + this.h + ";token=" + this.g.a() + ";user=" + this.i + ";version=" + this.j + ";worldVersion=" + this.k);
+      fgi.a $$1 = new fgi.a(new FileInputStream(this.d), this.d.length(), this.l);
+      $$1.setContentType("application/octet-stream");
+      $$0.setEntity($$1);
+   }
+
+   private void a(HttpResponse $$0, fjp.a $$1) throws IOException {
+      int $$2 = $$0.getStatusLine().getStatusCode();
+      if ($$2 == 401) {
+         a.debug("Realms server returned 401: {}", $$0.getFirstHeader("WWW-Authenticate"));
+      }
+
+      $$1.a($$2);
+      if ($$0.getEntity() != null) {
+         String $$3 = EntityUtils.toString($$0.getEntity(), "UTF-8");
+         if ($$3 != null) {
+            try {
+               JsonParser $$4 = new JsonParser();
+               JsonElement $$5 = $$4.parse($$3).getAsJsonObject().get("errorMsg");
+               Optional<String> $$6 = Optional.ofNullable($$5).map(JsonElement::getAsString);
+               $$1.a($$6.orElse(null));
+            } catch (Exception var8) {
+            }
+         }
+      }
+   }
+
+   private boolean a(long $$0, int $$1) {
+      return $$0 > 0L && $$1 + 1 < 5;
+   }
+
+   private fjp b(long $$0, int $$1) throws InterruptedException {
+      Thread.sleep(Duration.ofSeconds($$0).toMillis());
+      return this.a($$1 + 1);
+   }
+
+   private long a(HttpResponse $$0) {
+      return Optional.ofNullable($$0.getFirstHeader("Retry-After")).<String>map(NameValuePair::getValue).map(Long::valueOf).orElse(0L);
+   }
+
+   public boolean c() {
+      return this.n.isDone() || this.n.isCancelled();
+   }
+
+   class a extends InputStreamEntity {
+      private final long b;
+      private final InputStream c;
+      private final fgo d;
+
+      public a(final InputStream $$0, final long $$1, final fgo $$2) {
+         super($$0);
+         this.c = $$0;
+         this.b = $$1;
+         this.d = $$2;
+      }
+
+      public void writeTo(OutputStream $$0) throws IOException {
+         Args.notNull($$0, "Output stream");
+
+         try (InputStream $$1 = this.c) {
+            byte[] $$2 = new byte[4096];
+            int $$3;
+            if (this.b < 0L) {
+               while (($$3 = $$1.read($$2)) != -1) {
+                  if (fgi.this.m.get()) {
+                     throw new fgr();
+                  }
+
+                  $$0.write($$2, 0, $$3);
+                  this.d.b((long)$$3);
+               }
+            } else {
+               long $$4 = this.b;
+
+               while ($$4 > 0L) {
+                  $$3 = $$1.read($$2, 0, (int)Math.min(4096L, $$4));
+                  if ($$3 == -1) {
+                     break;
+                  }
+
+                  if (fgi.this.m.get()) {
+                     throw new fgr();
+                  }
+
+                  $$0.write($$2, 0, $$3);
+                  this.d.b((long)$$3);
+                  $$4 -= (long)$$3;
+                  $$0.flush();
+               }
             }
          }
       }

@@ -1,15 +1,16 @@
-public class guo extends gqd<cnf, gzl> {
-   private static final alp a = alp.b("textures/entity/skeleton/wither_skeleton.png");
+public class guo extends gti<ciu, gzi, gef> {
+   private static final aku a = aku.b("textures/entity/tadpole/tadpole.png");
 
-   public guo(grl.a $$0) {
-      super($$0, gei.dC, gei.dD, gei.dE);
+   public guo(gsc.a $$0) {
+      super($$0, new gef($$0.a(gfb.dh)), 0.14F);
    }
 
-   public alp b(gzl $$0) {
+   @Override
+   public aku b(gzi $$0) {
       return a;
    }
 
-   public gzl b() {
-      return new gzl();
+   public gzi b() {
+      return new gzi();
    }
 }

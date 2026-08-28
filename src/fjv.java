@@ -1,211 +1,93 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.util.UndashedUuid;
+import java.util.Date;
+import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fjv extends hhs {
-   static final alp a = alp.b("pending_invite/accept_highlighted");
-   static final alp b = alp.b("pending_invite/accept");
-   static final alp c = alp.b("pending_invite/reject_highlighted");
-   static final alp C = alp.b("pending_invite/reject");
-   private static final Logger D = LogUtils.getLogger();
-   private static final xk E = xk.c("mco.invites.nopending");
-   static final xk F = xk.c("mco.invites.button.accept");
-   static final xk G = xk.c("mco.invites.button.reject");
-   private final ftr H;
-   private final CompletableFuture<List<fhv>> I = CompletableFuture.supplyAsync(() -> {
-      try {
-         return fhb.a().i().a;
-      } catch (fix var1x) {
-         D.error("Couldn't list invites", var1x);
-         return List.of();
+public class fjv {
+   public static <T> T a(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+      } else {
+         return $$2.apply($$3.getAsJsonObject());
       }
-   }, ae.h());
+   }
+
    @Nullable
-   xk J;
-   fjv.b K;
-   private fny L;
-   private fny M;
-
-   public fjv(ftr $$0, xk $$1) {
-      super($$1);
-      this.H = $$0;
-   }
-
-   @Override
-   public void aT_() {
-      fgw.f();
-      this.K = new fjv.b();
-      this.I.thenAcceptAsync($$0 -> {
-         List<fjv.a> $$1 = $$0.stream().map($$0x -> new fjv.a($$0x)).toList();
-         this.K.a($$1);
-         if ($$1.isEmpty()) {
-            this.m.aZ().b(E);
-         }
-      }, this.r);
-      this.c(this.K);
-      this.L = this.c((fny)fny.a(F, $$0 -> this.c(true)).a(this.n / 2 - 174, this.o - 32, 100, 20).a());
-      this.c((fny)fny.a(xj.d, $$0 -> this.aP_()).a(this.n / 2 - 50, this.o - 32, 100, 20).a());
-      this.M = this.c((fny)fny.a(G, $$0 -> this.c(false)).a(this.n / 2 + 74, this.o - 32, 100, 20).a());
-      this.E();
-   }
-
-   @Override
-   public void aP_() {
-      this.m.a(this.H);
-   }
-
-   @Override
-   void c(boolean $$0) {
-      if (this.K.g() instanceof fjv.a $$1) {
-         String $$2 = $$1.c.a;
-         CompletableFuture.<Boolean>supplyAsync(() -> {
-            try {
-               fhb $$2x = fhb.a();
-               if ($$0) {
-                  $$2x.a($$2);
-               } else {
-                  $$2x.b($$2);
-               }
-
-               return true;
-            } catch (fix var3) {
-               D.error("Couldn't handle invite", var3);
-               return false;
-            }
-         }, ae.h()).thenAcceptAsync($$2x -> {
-            if ($$2x) {
-               this.K.a($$1);
-               this.E();
-               fja $$3 = this.m.bc();
-               if ($$0) {
-                  $$3.c.a();
-               }
-
-               $$3.d.a();
-            }
-         }, this.r);
+   public static <T> T b(String $$0, JsonObject $$1, Function<JsonObject, T> $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 == null || $$3.isJsonNull()) {
+         return null;
+      } else if (!$$3.isJsonObject()) {
+         throw new IllegalStateException("Required property " + $$0 + " was not a JsonObject as espected");
+      } else {
+         return $$2.apply($$3.getAsJsonObject());
       }
    }
 
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
-      this.J = null;
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 12, -1);
-      if (this.J != null) {
-         $$0.a(this.p, this.J, $$1, $$2);
-      }
-
-      if (this.I.isDone() && this.K.b()) {
-         $$0.a(this.p, E, this.n / 2, this.o / 2 - 20, -1);
+   public static String a(String $$0, JsonObject $$1) {
+      String $$2 = b($$0, $$1, null);
+      if ($$2 == null) {
+         throw new IllegalStateException("Missing required property: " + $$0);
+      } else {
+         return $$2;
       }
    }
 
-   void E() {
-      fjv.a $$0 = this.K.g();
-      this.L.k = $$0 != null;
-      this.M.k = $$0 != null;
+   public static String a(String $$0, JsonObject $$1, String $$2) {
+      return b($$0, $$1, $$2);
    }
 
-   class a extends fov.a<fjv.a> {
-      private static final int b = 38;
-      final fhv c;
-      private final List<fje> d;
-
-      a(final fhv $$0) {
-         this.c = $$0;
-         this.d = Arrays.asList(new fjv.a.a(), new fjv.a.b());
-      }
-
-      @Override
-      public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a($$0, this.c, $$3, $$2, $$6, $$7);
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         fje.a(fjv.this.K, this, this.d, $$2, $$0, $$1);
-         return super.a($$0, $$1, $$2);
-      }
-
-      private void a(fnl $$0, fhv $$1, int $$2, int $$3, int $$4, int $$5) {
-         $$0.b(fjv.this.p, $$1.b, $$2 + 38, $$3 + 1, -1);
-         $$0.b(fjv.this.p, $$1.c, $$2 + 38, $$3 + 12, 7105644);
-         $$0.b(fjv.this.p, fkq.a($$1.e), $$2 + 38, $$3 + 24, 7105644);
-         fje.a($$0, this.d, fjv.this.K, $$2, $$3, $$4, $$5);
-         fkq.a($$0, $$2, $$3, 32, $$1.d);
-      }
-
-      @Override
-      public xk a() {
-         xk $$0 = xj.b(xk.b(this.c.b), xk.b(this.c.c), fkq.a(this.c.e));
-         return xk.a("narrator.select", $$0);
-      }
-
-      class a extends fje {
-         a() {
-            super(15, 15, 215, 5);
-         }
-
-         @Override
-         protected void a(fnl $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(glq::H, $$3 ? fjv.a : fjv.b, $$1, $$2, 18, 18);
-            if ($$3) {
-               fjv.this.J = fjv.F;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            fjv.this.c(true);
-         }
-      }
-
-      class b extends fje {
-         b() {
-            super(15, 15, 235, 5);
-         }
-
-         @Override
-         protected void a(fnl $$0, int $$1, int $$2, boolean $$3) {
-            $$0.a(glq::H, $$3 ? fjv.c : fjv.C, $$1, $$2, 18, 18);
-            if ($$3) {
-               fjv.this.J = fjv.G;
-            }
-         }
-
-         @Override
-         public void a(int $$0) {
-            fjv.this.c(false);
-         }
+   @Nullable
+   public static String b(String $$0, JsonObject $$1, @Nullable String $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
+      } else {
+         return $$2;
       }
    }
 
-   class b extends fov<fjv.a> {
-      public b() {
-         super(flz.Q(), fjv.this.n, fjv.this.o - 72, 32, 36);
-      }
+   @Nullable
+   public static UUID a(String $$0, JsonObject $$1, @Nullable UUID $$2) {
+      String $$3 = b($$0, $$1, null);
+      return $$3 == null ? $$2 : UndashedUuid.fromStringLenient($$3);
+   }
 
-      @Override
-      public int a() {
-         return 260;
+   public static int a(String $$0, JsonObject $$1, int $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsInt();
+      } else {
+         return $$2;
       }
+   }
 
-      @Override
-      public void a(int $$0) {
-         super.a($$0);
-         fjv.this.E();
+   public static long a(String $$0, JsonObject $$1, long $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsLong();
+      } else {
+         return $$2;
       }
+   }
 
-      public boolean b() {
-         return this.k() == 0;
+   public static boolean a(String $$0, JsonObject $$1, boolean $$2) {
+      JsonElement $$3 = $$1.get($$0);
+      if ($$3 != null) {
+         return $$3.isJsonNull() ? $$2 : $$3.getAsBoolean();
+      } else {
+         return $$2;
       }
+   }
 
-      public void a(fjv.a $$0) {
-         this.g($$0);
-      }
+   public static Date b(String $$0, JsonObject $$1) {
+      JsonElement $$2 = $$1.get($$0);
+      return $$2 != null ? new Date(Long.parseLong($$2.getAsString())) : new Date();
    }
 }

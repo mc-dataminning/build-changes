@@ -1,19 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class zr implements yv<zo> {
+   public static final ym<vl, zr> a = yv.a(zr::a, zr::new);
+   private final long b;
 
-public interface zr<T extends wq> {
-   zt<? extends zr<T>> a();
-
-   void a(T var1);
-
-   default boolean c() {
-      return false;
+   public zr(long $$0) {
+      this.b = $$0;
    }
 
-   default boolean d() {
-      return false;
+   private zr(vl $$0) {
+      this.b = $$0.readLong();
    }
 
-   static <B extends ByteBuf, T extends zr<?>> zi<B, T> a(zl<B, T> $$0, zj<B, T> $$1) {
-      return zi.a($$0, $$1);
+   private void a(vl $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public yx<zr> a() {
+      return zn.n;
+   }
+
+   public void a(zo $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

@@ -1,47 +1,56 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Streams;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
-public final class bdb {
-   public static final ImmutableMap<String, String> a = ImmutableMap.builder()
-      .put("minecraft:badlands_plateau", "minecraft:badlands")
-      .put("minecraft:bamboo_jungle_hills", "minecraft:bamboo_jungle")
-      .put("minecraft:birch_forest_hills", "minecraft:birch_forest")
-      .put("minecraft:dark_forest_hills", "minecraft:dark_forest")
-      .put("minecraft:desert_hills", "minecraft:desert")
-      .put("minecraft:desert_lakes", "minecraft:desert")
-      .put("minecraft:giant_spruce_taiga_hills", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_spruce_taiga", "minecraft:old_growth_spruce_taiga")
-      .put("minecraft:giant_tree_taiga_hills", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:giant_tree_taiga", "minecraft:old_growth_pine_taiga")
-      .put("minecraft:gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:jungle_hills", "minecraft:jungle")
-      .put("minecraft:modified_badlands_plateau", "minecraft:badlands")
-      .put("minecraft:modified_gravelly_mountains", "minecraft:windswept_gravelly_hills")
-      .put("minecraft:modified_jungle_edge", "minecraft:sparse_jungle")
-      .put("minecraft:modified_jungle", "minecraft:jungle")
-      .put("minecraft:modified_wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:mountain_edge", "minecraft:windswept_hills")
-      .put("minecraft:mountains", "minecraft:windswept_hills")
-      .put("minecraft:mushroom_field_shore", "minecraft:mushroom_fields")
-      .put("minecraft:shattered_savanna", "minecraft:windswept_savanna")
-      .put("minecraft:shattered_savanna_plateau", "minecraft:windswept_savanna")
-      .put("minecraft:snowy_mountains", "minecraft:snowy_plains")
-      .put("minecraft:snowy_taiga_hills", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_taiga_mountains", "minecraft:snowy_taiga")
-      .put("minecraft:snowy_tundra", "minecraft:snowy_plains")
-      .put("minecraft:stone_shore", "minecraft:stony_shore")
-      .put("minecraft:swamp_hills", "minecraft:swamp")
-      .put("minecraft:taiga_hills", "minecraft:taiga")
-      .put("minecraft:taiga_mountains", "minecraft:taiga")
-      .put("minecraft:tall_birch_forest", "minecraft:old_growth_birch_forest")
-      .put("minecraft:tall_birch_hills", "minecraft:old_growth_birch_forest")
-      .put("minecraft:wooded_badlands_plateau", "minecraft:wooded_badlands")
-      .put("minecraft:wooded_hills", "minecraft:forest")
-      .put("minecraft:wooded_mountains", "minecraft:windswept_forest")
-      .put("minecraft:lofty_peaks", "minecraft:jagged_peaks")
-      .put("minecraft:snowcapped_peaks", "minecraft:frozen_peaks")
-      .build();
+public class bdb extends bgr {
+   private static final String[] a = new String[]{
+      "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
+   };
 
-   private bdb() {
+   public bdb(Schema $$0, String $$1, String $$2) {
+      super($$0, false, $$1, bhw.s, $$2);
+   }
+
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      $$0 = $$0.update("front_text", bdb::b);
+      $$0 = $$0.update("back_text", bdb::b);
+
+      for (String $$1 : a) {
+         $$0 = $$0.remove($$1);
+      }
+
+      return $$0;
+   }
+
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      boolean $$1 = $$0.get("_filtered_correct").asBoolean(false);
+      if ($$1) {
+         return $$0.remove("_filtered_correct");
+      } else {
+         Optional<Stream<Dynamic<T>>> $$2 = $$0.get("filtered_messages").asStreamOpt().result();
+         if ($$2.isEmpty()) {
+            return $$0;
+         } else {
+            Dynamic<T> $$3 = bam.a($$0.getOps());
+            List<Dynamic<T>> $$4 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
+            List<Dynamic<T>> $$5 = Streams.mapWithIndex($$2.get(), ($$2x, $$3x) -> {
+               Dynamic<T> $$4x = $$3x < (long)$$4.size() ? $$4.get((int)$$3x) : $$3;
+               return $$2x.equals($$3) ? $$4x : $$2x;
+            }).toList();
+            return $$5.stream().allMatch($$1x -> $$1x.equals($$3))
+               ? $$0.remove("filtered_messages")
+               : $$0.set("filtered_messages", $$0.createList($$5.stream()));
+         }
+      }
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bdb::a);
    }
 }

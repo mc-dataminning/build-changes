@@ -1,31 +1,45 @@
-import java.util.function.UnaryOperator;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public class gqo extends gpz {
-   private final gcc a;
-   private final alp b;
-   private final gbh<gxc> h;
+public class gqo implements gpx.a {
+   private final List<ji> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
 
-   public gqo(grl.a $$0, geh $$1) {
-      super($$0);
-      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new gcc.a($$0.a(gei.E), $$0x -> glq.i());
-      this.h = new gao($$0.a($$1));
+   public void a(ji $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
    @Override
-   protected gbh<gxc> a() {
-      return this.h;
-   }
+   public void a(ffu $$0, glx $$1, double $$2, double $$3, double $$4) {
+      ffy $$5 = $$1.getBuffer(gmh.B());
 
-   @Override
-   protected glq b() {
-      return this.h.a(this.b);
-   }
-
-   @Override
-   protected void b(gxc $$0, fgl $$1, glg $$2, int $$3) {
-      if (!$$0.f) {
-         this.a.a($$1, $$2.getBuffer(this.a.a(this.b)), $$3, hax.d);
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         ji $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         gmr.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
       }
    }
 }

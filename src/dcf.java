@@ -1,35 +1,46 @@
-import com.mojang.serialization.MapCodec;
+public class dcf extends dau {
+   public dcf(dar $$0) {
+      super($$0);
+   }
 
-public interface dcf<T extends dbv<?>> {
-   dcf<dcj> a = a("crafting_shaped", new dcj.a());
-   dcf<dcl> b = a("crafting_shapeless", new dcl.a());
-   dcf<dbc> c = a("crafting_special_armordye", new dbl.a<>(dbc::new));
-   dcf<dbf> d = a("crafting_special_bookcloning", new dbl.a<>(dbf::new));
-   dcf<dbs> e = a("crafting_special_mapcloning", new dbl.a<>(dbs::new));
-   dcf<dbt> f = a("crafting_special_mapextending", new dbl.a<>(dbt::new));
-   dcf<dbo> g = a("crafting_special_firework_rocket", new dbl.a<>(dbo::new));
-   dcf<dbq> h = a("crafting_special_firework_star", new dbl.a<>(dbq::new));
-   dcf<dbp> i = a("crafting_special_firework_star_fade", new dbl.a<>(dbp::new));
-   dcf<dcw> j = a("crafting_special_tippedarrow", new dbl.a<>(dcw::new));
-   dcf<dbd> k = a("crafting_special_bannerduplicate", new dbl.a<>(dbd::new));
-   dcf<dcm> l = a("crafting_special_shielddecoration", new dbl.a<>(dcm::new));
-   dcf<dcx> m = a("crafting_transmute", new dcx.a());
-   dcf<dch> n = a("crafting_special_repairitem", new dbl.a<>(dch::new));
-   dcf<dcp> o = a("smelting", new dbb.b<>(dcp::new, 200));
-   dcf<dbe> p = a("blasting", new dbb.b<>(dbe::new, 100));
-   dcf<dcu> q = a("smoking", new dbb.b<>(dcu::new, 100));
-   dcf<dbg> r = a("campfire_cooking", new dbb.b<>(dbg::new, 100));
-   dcf<dcv> s = a("stonecutting", new dcn.b<>(dcv::new));
-   dcf<dcs> t = a("smithing_transform", new dcs.a());
-   dcf<dct> u = a("smithing_trim", new dct.a());
-   dcf<dbm> v = a("crafting_decorated_pot", new dbl.a<>(dbm::new));
+   public boolean a(das $$0, dgi $$1) {
+      if ($$0.f() == 3 && $$0.g() == 3 && $$0.e() == 9) {
+         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
+            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
+               cwp $$4 = $$0.a($$3, $$2);
+               if ($$4.f()) {
+                  return false;
+               }
 
-   MapCodec<T> a();
+               if ($$3 == 1 && $$2 == 1) {
+                  if (!$$4.a(cwt.wr)) {
+                     return false;
+                  }
+               } else if (!$$4.a(cwt.pb)) {
+                  return false;
+               }
+            }
+         }
 
-   @Deprecated
-   zi<wv, T> b();
+         return true;
+      } else {
+         return false;
+      }
+   }
 
-   static <S extends dcf<T>, T extends dbv<?>> S a(String $$0, S $$1) {
-      return kd.a(ma.r, $$0, $$1);
+   public cwp a(das $$0, jt.a $$1) {
+      cwp $$2 = $$0.a(1, 1);
+      if (!$$2.a(cwt.wr)) {
+         return cwp.j;
+      } else {
+         cwp $$3 = new cwp(cwt.wq, 8);
+         $$3.b(kv.Q, $$2.a(kv.Q));
+         return $$3;
+      }
+   }
+
+   @Override
+   public dbo<dcf> a() {
+      return dbo.j;
    }
 }

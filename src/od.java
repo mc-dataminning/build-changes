@@ -1,97 +1,100 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.google.common.collect.Maps;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class od implements ob {
-   private final dkd a;
-   private final List<od.b> b = Lists.newArrayList();
+public class od implements nz {
+   private final js<cwl> b;
+   private final oa c;
+   private final cwl d;
+   private final int e;
+   private final List<String> f = Lists.newArrayList();
+   private final Map<Character, dba> g = Maps.newLinkedHashMap();
+   private final Map<String, aq<?>> h = new LinkedHashMap<>();
+   @Nullable
+   private String i;
+   private boolean j = true;
 
-   private od(dkd $$0) {
-      this.a = $$0;
+   private od(js<cwl> $$0, oa $$1, dgh $$2, int $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.j();
+      this.e = $$3;
+   }
+
+   public static od a(js<cwl> $$0, oa $$1, dgh $$2) {
+      return a($$0, $$1, $$2, 1);
+   }
+
+   public static od a(js<cwl> $$0, oa $$1, dgh $$2, int $$3) {
+      return new od($$0, $$1, $$2, $$3);
+   }
+
+   public od a(Character $$0, axf<cwl> $$1) {
+      return this.a($$0, dba.a(this.b.b($$1)));
+   }
+
+   public od a(Character $$0, dgh $$1) {
+      return this.a($$0, dba.a($$1));
+   }
+
+   public od a(Character $$0, dba $$1) {
+      if (this.g.containsKey($$0)) {
+         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
+      } else if ($$0 == ' ') {
+         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+      } else {
+         this.g.put($$0, $$1);
+         return this;
+      }
+   }
+
+   public od b(String $$0) {
+      if (!this.f.isEmpty() && $$0.length() != this.f.get(0).length()) {
+         throw new IllegalArgumentException("Pattern must be the same width on every line!");
+      } else {
+         this.f.add($$0);
+         return this;
+      }
+   }
+
+   public od b(String $$0, aq<?> $$1) {
+      this.h.put($$0, $$1);
+      return this;
+   }
+
+   public od c(@Nullable String $$0) {
+      this.i = $$0;
+      return this;
+   }
+
+   public od a(boolean $$0) {
+      this.j = $$0;
+      return this;
    }
 
    @Override
-   public dkd a() {
-      return this.a;
+   public cwl a() {
+      return this.d;
    }
 
-   public static od a(dkd $$0) {
-      return new od($$0);
+   @Override
+   public void a(ob $$0, akt<dbe<?>> $$1) {
+      dbt $$2 = this.a($$1);
+      ah.a $$3 = $$0.a().a("has_the_recipe", dw.a($$1)).a(am.a.c($$1)).a(al.a.b);
+      this.h.forEach($$3::a);
+      dbs $$4 = new dbs(Objects.requireNonNullElse(this.i, ""), nz.a(this.c), $$2, new cwp(this.d, this.e), this.j);
+      $$0.a($$1, $$4, $$3.b($$1.a().f("recipes/" + this.c.a() + "/")));
    }
 
-   public od a(List<oh> $$0) {
-      this.b.add(new od.b($$0));
-      return this;
-   }
-
-   public od a(oh $$0) {
-      return this.a(ImmutableList.of($$0));
-   }
-
-   public od a(oc $$0, List<oh> $$1) {
-      this.b.add(new od.a($$0, $$1));
-      return this;
-   }
-
-   public od a(oc $$0, oh... $$1) {
-      return this.a($$0, ImmutableList.copyOf($$1));
-   }
-
-   public od a(oc $$0, oh $$1) {
-      return this.a($$0, ImmutableList.of($$1));
-   }
-
-   public JsonElement b() {
-      dxp<dkd, dxo> $$0 = this.a.l();
-      this.b.forEach($$1x -> $$1x.a($$0));
-      JsonArray $$1 = new JsonArray();
-      this.b.stream().map(od.b::a).forEach($$1::add);
-      JsonObject $$2 = new JsonObject();
-      $$2.add("multipart", $$1);
-      return $$2;
-   }
-
-   static class a extends od.b {
-      private final oc a;
-
-      a(oc $$0, List<oh> $$1) {
-         super($$1);
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(dxp<?, ?> $$0) {
-         this.a.a($$0);
-      }
-
-      @Override
-      public void a(JsonObject $$0) {
-         $$0.add("when", this.a.get());
-      }
-   }
-
-   static class b implements Supplier<JsonElement> {
-      private final List<oh> a;
-
-      b(List<oh> $$0) {
-         this.a = $$0;
-      }
-
-      public void a(dxp<?, ?> $$0) {
-      }
-
-      public void a(JsonObject $$0) {
-      }
-
-      public JsonElement a() {
-         JsonObject $$0 = new JsonObject();
-         this.a($$0);
-         $$0.add("apply", oh.a(this.a));
-         return $$0;
+   private dbt a(akt<dbe<?>> $$0) {
+      if (this.h.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
+      } else {
+         return dbt.a(this.g, this.f);
       }
    }
 }

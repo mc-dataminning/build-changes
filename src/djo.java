@@ -1,89 +1,1235 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
-public class djo extends djl {
-   public static final MapCodec<djo> b = b(djo::new);
-   public static final dyl<jm> c = dob.aF;
-   private static final Map<jm, fcl> e = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.c,
-         dkd.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
-         jm.d,
-         dkd.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
-         jm.e,
-         dkd.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
-         jm.f,
-         dkd.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
-      )
+public class djo {
+   private static final dww.f ud = ($$0x, $$1x, $$2) -> $$1x.c_($$2) instanceof dvl $$4 ? $$4.t() : true;
+   private static final dww.f ue = ($$0x, $$1x, $$2) -> !$$0x.c(dwq.c);
+   public static final djm a = a("air", dij::new, dww.d.a().p().b().g().m());
+   public static final djm b = a("stone", dww.d.a().a(etd.l).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm c = a("granite", dww.d.a().a(etd.k).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm d = a("polished_granite", dww.d.a().a(etd.k).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm e = a("diorite", dww.d.a().a(etd.o).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm f = a("polished_diorite", dww.d.a().a(etd.o).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm g = a("andesite", dww.d.a().a(etd.l).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm h = a("polished_andesite", dww.d.a().a(etd.l).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm i = a("grass_block", dmy::new, dww.d.a().a(etd.b).e().d(0.6F).a(dre.d));
+   public static final djm j = a("dirt", dww.d.a().a(etd.k).d(0.5F).a(dre.c));
+   public static final djm k = a("coarse_dirt", dww.d.a().a(etd.k).d(0.5F).a(dre.c));
+   public static final djm l = a("podzol", drb::new, dww.d.a().a(etd.I).d(0.5F).a(dre.c));
+   public static final djm m = a("cobblestone", dww.d.a().a(etd.l).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm n = a("oak_planks", dww.d.a().a(etd.n).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm o = a("spruce_planks", dww.d.a().a(etd.I).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm p = a("birch_planks", dww.d.a().a(etd.c).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm q = a("jungle_planks", dww.d.a().a(etd.k).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm r = a("acacia_planks", dww.d.a().a(etd.p).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm s = a("cherry_planks", dww.d.a().a(etd.K).a(dxx.e).a(2.0F, 3.0F).a(dre.aU).i());
+   public static final djm t = a("dark_oak_planks", dww.d.a().a(etd.A).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm u = a("pale_oak_wood", dqd::new, dww.d.a().a(etd.l).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm v = a("pale_oak_planks", dww.d.a().a(etd.o).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm w = a("mangrove_planks", dww.d.a().a(etd.C).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm x = a("bamboo_planks", dww.d.a().a(etd.s).a(dxx.e).a(2.0F, 3.0F).a(dre.aS).i());
+   public static final djm y = a("bamboo_mosaic", dww.d.a().a(etd.s).a(dxx.e).a(2.0F, 3.0F).a(dre.aS).i());
+   public static final djm z = a("oak_sapling", $$0x -> new dqf(dwm.b, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.d).a(ete.b));
+   public static final djm A = a("spruce_sapling", $$0x -> new dqf(dwm.c, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.d).a(ete.b));
+   public static final djm B = a("birch_sapling", $$0x -> new dqf(dwm.f, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.d).a(ete.b));
+   public static final djm C = a("jungle_sapling", $$0x -> new dqf(dwm.g, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.d).a(ete.b));
+   public static final djm D = a("acacia_sapling", $$0x -> new dqf(dwm.h, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.d).a(ete.b));
+   public static final djm E = a("cherry_sapling", $$0x -> new dqf(dwm.i, $$0x), dww.d.a().a(etd.u).b().e().d().a(dre.aV).a(ete.b));
+   public static final djm F = a("dark_oak_sapling", $$0x -> new dqf(dwm.j, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.d).a(ete.b));
+   public static final djm G = a("pale_oak_sapling", $$0x -> new dqf(dwm.k, $$0x), dww.d.a().a(etd.o).b().e().d().a(dre.d).a(ete.b));
+   public static final djm H = a("mangrove_propagule", $$0x -> new doj(dwm.d, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm I = a("bedrock", dww.d.a().a(etd.l).a(dxx.b).a(-1.0F, 3600000.0F).g().a(djo::a));
+   public static final djm J = a("water", $$0x -> new doe(eta.c, $$0x), dww.d.a().a(etd.m).p().b().d(100.0F).a(ete.b).g().j().a(dre.a));
+   public static final djm K = a("lava", $$0x -> new doe(eta.e, $$0x), dww.d.a().a(etd.e).p().b().e().d(100.0F).a($$0x -> 15).a(ete.b).g().j().a(dre.a));
+   public static final djm L = a("sand", $$0x -> new dku(new axt(14406560), $$0x), dww.d.a().a(etd.c).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm M = a("suspicious_sand", $$0x -> new djs(L, awa.cT, awa.cT, $$0x), dww.d.a().a(etd.c).a(dxx.c).d(0.25F).a(dre.aZ).a(ete.b));
+   public static final djm N = a("red_sand", $$0x -> new dku(new axt(11098145), $$0x), dww.d.a().a(etd.p).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm O = a("gravel", $$0x -> new dku(new axt(-8356741), $$0x), dww.d.a().a(etd.l).a(dxx.c).d(0.6F).a(dre.c));
+   public static final djm P = a("suspicious_gravel", $$0x -> new djs(O, awa.cU, awa.cU, $$0x), dww.d.a().a(etd.l).a(dxx.c).d(0.25F).a(dre.ba).a(ete.b));
+   public static final djm Q = a("gold_ore", $$0x -> new dlx(brl.a(0), $$0x), dww.d.a().a(etd.l).a(dxx.b).n().a(3.0F, 3.0F));
+   public static final djm R = a("deepslate_gold_ore", $$0x -> new dlx(brl.a(0), $$0x), dww.d.b(Q).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm S = a("iron_ore", $$0x -> new dlx(brl.a(0), $$0x), dww.d.a().a(etd.l).a(dxx.b).n().a(3.0F, 3.0F));
+   public static final djm T = a("deepslate_iron_ore", $$0x -> new dlx(brl.a(0), $$0x), dww.d.b(S).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm U = a("coal_ore", $$0x -> new dlx(bru.a(0, 2), $$0x), dww.d.a().a(etd.l).a(dxx.b).n().a(3.0F, 3.0F));
+   public static final djm V = a("deepslate_coal_ore", $$0x -> new dlx(bru.a(0, 2), $$0x), dww.d.b(U).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm W = a("nether_gold_ore", $$0x -> new dlx(bru.a(0, 1), $$0x), dww.d.a().a(etd.J).a(dxx.b).n().a(3.0F, 3.0F).a(dre.V));
+   public static final djm X = a("oak_log", dqd::new, a(etd.n, etd.I, dre.b));
+   public static final djm Y = a("spruce_log", dqd::new, a(etd.I, etd.A, dre.b));
+   public static final djm Z = a("birch_log", dqd::new, a(etd.c, etd.o, dre.b));
+   public static final djm aa = a("jungle_log", dqd::new, a(etd.k, etd.I, dre.b));
+   public static final djm ab = a("acacia_log", dqd::new, a(etd.p, etd.l, dre.b));
+   public static final djm ac = a("cherry_log", dqd::new, a(etd.K, etd.R, dre.aU));
+   public static final djm ad = a("dark_oak_log", dqd::new, a(etd.A, etd.A, dre.b));
+   public static final djm ae = a("pale_oak_log", dqd::new, a(v.w(), u.w(), dre.b));
+   public static final djm af = a("mangrove_log", dqd::new, a(etd.C, etd.I, dre.b));
+   public static final djm ag = a("mangrove_roots", dok::new, dww.d.a().a(etd.I).a(dxx.e).d(0.7F).a(dre.aK).c().b(djo::b).c(djo::b).c().i());
+   public static final djm ah = a("muddy_mangrove_roots", dqd::new, dww.d.a().a(etd.I).d(0.7F).a(dre.aL));
+   public static final djm ai = a("bamboo_block", dqd::new, a(etd.s, etd.h, dre.aS));
+   public static final djm aj = a("stripped_spruce_log", dqd::new, a(etd.I, etd.I, dre.b));
+   public static final djm ak = a("stripped_birch_log", dqd::new, a(etd.c, etd.c, dre.b));
+   public static final djm al = a("stripped_jungle_log", dqd::new, a(etd.k, etd.k, dre.b));
+   public static final djm am = a("stripped_acacia_log", dqd::new, a(etd.p, etd.p, dre.b));
+   public static final djm an = a("stripped_cherry_log", dqd::new, a(etd.K, etd.Q, dre.aU));
+   public static final djm ao = a("stripped_dark_oak_log", dqd::new, a(etd.A, etd.A, dre.b));
+   public static final djm ap = a("stripped_pale_oak_log", dqd::new, a(v.w(), v.w(), dre.b));
+   public static final djm aq = a("stripped_oak_log", dqd::new, a(etd.n, etd.n, dre.b));
+   public static final djm ar = a("stripped_mangrove_log", dqd::new, a(etd.C, etd.C, dre.b));
+   public static final djm as = a("stripped_bamboo_block", dqd::new, a(etd.s, etd.s, dre.aS));
+   public static final djm at = a("oak_wood", dqd::new, dww.d.a().a(etd.n).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm au = a("spruce_wood", dqd::new, dww.d.a().a(etd.I).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm av = a("birch_wood", dqd::new, dww.d.a().a(etd.c).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aw = a("jungle_wood", dqd::new, dww.d.a().a(etd.k).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm ax = a("acacia_wood", dqd::new, dww.d.a().a(etd.v).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm ay = a("cherry_wood", dqd::new, dww.d.a().a(etd.R).a(dxx.e).d(2.0F).a(dre.aU).i());
+   public static final djm az = a("dark_oak_wood", dqd::new, dww.d.a().a(etd.A).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aA = a("mangrove_wood", dqd::new, dww.d.a().a(etd.C).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aB = a("stripped_oak_wood", dqd::new, dww.d.a().a(etd.n).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aC = a("stripped_spruce_wood", dqd::new, dww.d.a().a(etd.I).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aD = a("stripped_birch_wood", dqd::new, dww.d.a().a(etd.c).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aE = a("stripped_jungle_wood", dqd::new, dww.d.a().a(etd.k).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aF = a("stripped_acacia_wood", dqd::new, dww.d.a().a(etd.p).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aG = a("stripped_cherry_wood", dqd::new, dww.d.a().a(etd.Q).a(dxx.e).d(2.0F).a(dre.aU).i());
+   public static final djm aH = a("stripped_dark_oak_wood", dqd::new, dww.d.a().a(etd.A).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aI = a("stripped_pale_oak_wood", dqd::new, dww.d.a().a(v.w()).a(dxx.e).d(2.0F).a(dre.b).i());
+   public static final djm aJ = a("stripped_mangrove_wood", dqd::new, a(etd.C, etd.C, dre.b));
+   public static final djm aK = a("oak_leaves", dny::new, a(dre.d));
+   public static final djm aL = a("spruce_leaves", dny::new, a(dre.d));
+   public static final djm aM = a("birch_leaves", dny::new, a(dre.d));
+   public static final djm aN = a("jungle_leaves", dny::new, a(dre.d));
+   public static final djm aO = a("acacia_leaves", dny::new, a(dre.d));
+   public static final djm aP = a(
+      "cherry_leaves", $$0x -> new dpb(10, lt.H, $$0x), dww.d.a().a(etd.u).d(0.2F).e().a(dre.aW).c().a(djo::c).b(djo::b).c(djo::b).i().a(ete.b).a(djo::b)
    );
+   public static final djm aQ = a("dark_oak_leaves", dny::new, a(dre.d));
+   public static final djm aR = a(
+      "pale_oak_leaves", $$0x -> new dpb(50, lt.I, $$0x), dww.d.a().a(etd.X).d(0.2F).e().a(dre.d).c().a(djo::c).b(djo::b).c(djo::b).i().a(ete.b).a(djo::b)
+   );
+   public static final djm aS = a("mangrove_leaves", doi::new, a(dre.d));
+   public static final djm aT = a("azalea_leaves", dny::new, a(dre.ax));
+   public static final djm aU = a("flowering_azalea_leaves", dny::new, a(dre.ax));
+   public static final djm aV = a("sponge", drg::new, dww.d.a().a(etd.s).d(0.6F).a(dre.be));
+   public static final djm aW = a("wet_sponge", dti::new, dww.d.a().a(etd.s).d(0.6F).a(dre.bf));
+   public static final djm aX = a("glass", dsd::new, dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c().a(djo::a).a(djo::b).b(djo::b).c(djo::b));
+   public static final djm aY = a("lapis_ore", $$0x -> new dlx(bru.a(2, 5), $$0x), dww.d.a().a(etd.l).a(dxx.b).n().a(3.0F, 3.0F));
+   public static final djm aZ = a("deepslate_lapis_ore", $$0x -> new dlx(bru.a(2, 5), $$0x), dww.d.b(aY).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm ba = a("lapis_block", dww.d.a().a(etd.G).n().a(3.0F, 3.0F));
+   public static final djm bb = a("dispenser", dls::new, dww.d.a().a(etd.l).a(dxx.b).n().d(3.5F));
+   public static final djm bc = a("sandstone", dww.d.a().a(etd.c).a(dxx.b).n().d(0.8F));
+   public static final djm bd = a("chiseled_sandstone", dww.d.a().a(etd.c).a(dxx.b).n().d(0.8F));
+   public static final djm be = a("cut_sandstone", dww.d.a().a(etd.c).a(dxx.b).n().d(0.8F));
+   public static final djm bf = a("note_block", doy::new, dww.d.a().a(etd.n).a(dxx.e).a(dre.b).d(0.8F).i());
+   public static final djm bg = a("white_bed", cvm.a);
+   public static final djm bh = a("orange_bed", cvm.b);
+   public static final djm bi = a("magenta_bed", cvm.c);
+   public static final djm bj = a("light_blue_bed", cvm.d);
+   public static final djm bk = a("yellow_bed", cvm.e);
+   public static final djm bl = a("lime_bed", cvm.f);
+   public static final djm bm = a("pink_bed", cvm.g);
+   public static final djm bn = a("gray_bed", cvm.h);
+   public static final djm bo = a("light_gray_bed", cvm.i);
+   public static final djm bp = a("cyan_bed", cvm.j);
+   public static final djm bq = a("purple_bed", cvm.k);
+   public static final djm br = a("blue_bed", cvm.l);
+   public static final djm bs = a("brown_bed", cvm.m);
+   public static final djm bt = a("green_bed", cvm.n);
+   public static final djm bu = a("red_bed", cvm.o);
+   public static final djm bv = a("black_bed", cvm.p);
+   public static final djm bw = a("powered_rail", dpn::new, dww.d.a().b().d(0.7F).a(dre.g));
+   public static final djm bx = a("detector_rail", dlo::new, dww.d.a().b().d(0.7F).a(dre.g));
+   public static final djm by = a("sticky_piston", $$0x -> new dwq(true, $$0x), a());
+   public static final djm bz = a("cobweb", dte::new, dww.d.a().a(etd.d).a(dre.bj).k().b().n().d(4.0F).a(ete.b));
+   public static final djm bA = a("short_grass", drw::new, dww.d.a().a(etd.h).p().b().d().a(dre.d).a(dww.c.c).i().a(ete.b));
+   public static final djm bB = a("fern", drw::new, dww.d.a().a(etd.h).p().b().d().a(dre.d).a(dww.c.c).i().a(ete.b));
+   public static final djm bC = a("dead_bush", dlm::new, dww.d.a().a(etd.n).p().b().d().a(dre.d).i().a(ete.b));
+   public static final djm bD = a("seagrass", dqp::new, dww.d.a().a(etd.m).p().b().d().a(dre.q).a(ete.b));
+   public static final djm bE = a("tall_seagrass", drx::new, dww.d.a().a(etd.m).p().b().d().a(dre.q).a(dww.c.b).a(ete.b));
+   public static final djm bF = a("piston", $$0x -> new dwq(false, $$0x), a());
+   public static final djm bG = a("piston_head", dwr::new, dww.d.a().a(etd.l).d(1.5F).g().a(ete.c));
+   public static final djm bH = a("white_wool", dww.d.a().a(etd.i).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bI = a("orange_wool", dww.d.a().a(etd.p).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bJ = a("magenta_wool", dww.d.a().a(etd.q).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bK = a("light_blue_wool", dww.d.a().a(etd.r).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bL = a("yellow_wool", dww.d.a().a(etd.s).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bM = a("lime_wool", dww.d.a().a(etd.t).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bN = a("pink_wool", dww.d.a().a(etd.u).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bO = a("gray_wool", dww.d.a().a(etd.v).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bP = a("light_gray_wool", dww.d.a().a(etd.w).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bQ = a("cyan_wool", dww.d.a().a(etd.x).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bR = a("purple_wool", dww.d.a().a(etd.y).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bS = a("blue_wool", dww.d.a().a(etd.z).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bT = a("brown_wool", dww.d.a().a(etd.A).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bU = a("green_wool", dww.d.a().a(etd.B).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bV = a("red_wool", dww.d.a().a(etd.C).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bW = a("black_wool", dww.d.a().a(etd.D).a(dxx.h).d(0.8F).a(dre.i).i());
+   public static final djm bX = a("moving_piston", dwp::new, dww.d.a().a(etd.l).k().d(-1.0F).f().g().c().a(djo::b).b(djo::b).c(djo::b).a(ete.c));
+   public static final djm bY = a("dandelion", $$0x -> new dmp(btr.w, 0.35F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm bZ = a("torchflower", $$0x -> new dmp(btr.p, 5.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm ca = a("poppy", $$0x -> new dmp(btr.p, 5.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cb = a("blue_orchid", $$0x -> new dmp(btr.w, 0.35F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cc = a("allium", $$0x -> new dmp(btr.l, 3.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cd = a("azure_bluet", $$0x -> new dmp(btr.o, 11.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm ce = a("red_tulip", $$0x -> new dmp(btr.r, 7.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cf = a("orange_tulip", $$0x -> new dmp(btr.r, 7.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cg = a("white_tulip", $$0x -> new dmp(btr.r, 7.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm ch = a("pink_tulip", $$0x -> new dmp(btr.r, 7.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm ci = a("oxeye_daisy", $$0x -> new dmp(btr.j, 7.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cj = a("cornflower", $$0x -> new dmp(btr.h, 5.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm ck = a("wither_rose", $$0x -> new dtj(btr.t, 7.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cl = a("lily_of_the_valley", $$0x -> new dmp(btr.s, 11.0F, $$0x), dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).a(ete.b));
+   public static final djm cm = a("brown_mushroom", $$0x -> new dor(rk.e, $$0x), dww.d.a().a(etd.A).b().e().d().a(dre.d).a($$0x -> 1).d(djo::a).a(ete.b));
+   public static final djm cn = a("red_mushroom", $$0x -> new dor(rk.f, $$0x), dww.d.a().a(etd.C).b().e().d().a(dre.d).d(djo::a).a(ete.b));
+   public static final djm co = a("gold_block", dww.d.a().a(etd.E).a(dxx.g).n().a(3.0F, 6.0F).a(dre.g));
+   public static final djm cp = a("iron_block", dww.d.a().a(etd.g).a(dxx.k).n().a(5.0F, 6.0F).a(dre.g));
+   public static final djm cq = a("bricks", dww.d.a().a(etd.C).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm cr = a("tnt", dsa::new, dww.d.a().a(etd.e).d().a(dre.d).i().a(djo::b));
+   public static final djm cs = a("bookshelf", dww.d.a().a(etd.n).a(dxx.e).d(1.5F).a(dre.b).i());
+   public static final djm ct = a("chiseled_bookshelf", dkq::new, dww.d.a().a(etd.n).a(dxx.e).d(1.5F).a(dre.aY).i());
+   public static final djm cu = a("mossy_cobblestone", dww.d.a().a(etd.l).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm cv = a("obsidian", dww.d.a().a(etd.D).a(dxx.b).n().a(50.0F, 1200.0F));
+   public static final djm cw = a("torch", $$0x -> new dsb(lt.F, $$0x), dww.d.a().b().d().a($$0x -> 14).a(dre.b).a(ete.b));
+   public static final djm cx = a("wall_torch", $$0x -> new dst(lt.F, $$0x), a(cw, true).b().d().a($$0x -> 14).a(dre.b).a(ete.b));
+   public static final djm cy = a("fire", dmn::new, dww.d.a().a(etd.e).p().b().d().a($$0x -> 15).a(dre.i).a(ete.b));
+   public static final djm cz = a("soul_fire", drc::new, dww.d.a().a(etd.r).p().b().d().a($$0x -> 10).a(dre.i).a(ete.b));
+   public static final djm cA = a("spawner", drf::new, dww.d.a().a(etd.l).a(dxx.b).n().d(5.0F).a(dre.bk).c());
+   public static final djm cB = a("creaking_heart", dlh::new, dww.d.a().a(etd.p).a(dxx.b).d(5.0F).a(dre.bh));
+   public static final djm cC = a("oak_stairs", n);
+   public static final djm cD = a("chest", $$0x -> new dkp(() -> dub.b, $$0x), dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm cE = a("redstone_wire", dpt::new, dww.d.a().b().d().a(ete.b));
+   public static final djm cF = a("diamond_ore", $$0x -> new dlx(bru.a(3, 7), $$0x), dww.d.a().a(etd.l).a(dxx.b).n().a(3.0F, 3.0F));
+   public static final djm cG = a("deepslate_diamond_ore", $$0x -> new dlx(bru.a(3, 7), $$0x), dww.d.b(cF).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm cH = a("diamond_block", dww.d.a().a(etd.F).n().a(5.0F, 6.0F).a(dre.g));
+   public static final djm cI = a("crafting_table", dlg::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm cJ = a("wheat", dli::new, dww.d.a().a($$0x -> $$0x.c(dli.f) >= 6 ? etd.s : etd.h).b().e().d().a(dre.w).a(ete.b));
+   public static final djm cK = a("farmland", dmk::new, dww.d.a().a(etd.k).e().d(0.6F).a(dre.c).c(djo::a).b(djo::a));
+   public static final djm cL = a("furnace", dmu::new, dww.d.a().a(etd.l).a(dxx.b).n().d(3.5F).a(a(13)));
+   public static final djm cM = a("oak_sign", $$0x -> new drm(dyj.b, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cN = a("spruce_sign", $$0x -> new drm(dyj.c, $$0x), dww.d.a().a(Y.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cO = a("birch_sign", $$0x -> new drm(dyj.d, $$0x), dww.d.a().a(etd.c).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cP = a("acacia_sign", $$0x -> new drm(dyj.e, $$0x), dww.d.a().a(etd.p).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cQ = a("cherry_sign", $$0x -> new drm(dyj.f, $$0x), dww.d.a().a(s.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cR = a("jungle_sign", $$0x -> new drm(dyj.g, $$0x), dww.d.a().a(aa.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cS = a("dark_oak_sign", $$0x -> new drm(dyj.h, $$0x), dww.d.a().a(ad.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cT = a("pale_oak_sign", $$0x -> new drm(dyj.i, $$0x), dww.d.a().a(v.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cU = a("mangrove_sign", $$0x -> new drm(dyj.l, $$0x), dww.d.a().a(af.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cV = a("bamboo_sign", $$0x -> new drm(dyj.m, $$0x), dww.d.a().a(x.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm cW = a("oak_door", $$0x -> new dlt(dxm.g, $$0x), dww.d.a().a(n.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm cX = a("ladder", dnu::new, dww.d.a().l().d(0.4F).a(dre.m).c().a(ete.b));
+   public static final djm cY = a("rail", dpq::new, dww.d.a().b().d(0.7F).a(dre.g));
+   public static final djm cZ = a("cobblestone_stairs", m);
+   public static final djm da = a("oak_wall_sign", $$0x -> new dsr(dyj.b, $$0x), a(cM, true).a(etd.n).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm db = a("spruce_wall_sign", $$0x -> new dsr(dyj.c, $$0x), a(cN, true).a(Y.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dc = a("birch_wall_sign", $$0x -> new dsr(dyj.d, $$0x), a(cO, true).a(etd.c).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dd = a("acacia_wall_sign", $$0x -> new dsr(dyj.e, $$0x), a(cP, true).a(etd.p).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm de = a("cherry_wall_sign", $$0x -> new dsr(dyj.f, $$0x), a(cQ, true).a(ac.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm df = a("jungle_wall_sign", $$0x -> new dsr(dyj.g, $$0x), a(cR, true).a(aa.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dg = a("dark_oak_wall_sign", $$0x -> new dsr(dyj.h, $$0x), a(cS, true).a(ad.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dh = a("pale_oak_wall_sign", $$0x -> new dsr(dyj.i, $$0x), a(cT, true).a(v.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm di = a("mangrove_wall_sign", $$0x -> new dsr(dyj.l, $$0x), a(cU, true).a(af.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dj = a("bamboo_wall_sign", $$0x -> new dsr(dyj.m, $$0x), a(cV, true).a(x.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dk = a("oak_hanging_sign", $$0x -> new dkm(dyj.b, $$0x), dww.d.a().a(X.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dl = a("spruce_hanging_sign", $$0x -> new dkm(dyj.c, $$0x), dww.d.a().a(Y.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dm = a("birch_hanging_sign", $$0x -> new dkm(dyj.d, $$0x), dww.d.a().a(etd.c).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dn = a("acacia_hanging_sign", $$0x -> new dkm(dyj.e, $$0x), dww.d.a().a(etd.p).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm do = a("cherry_hanging_sign", $$0x -> new dkm(dyj.f, $$0x), dww.d.a().a(etd.Q).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dp = a("jungle_hanging_sign", $$0x -> new dkm(dyj.g, $$0x), dww.d.a().a(aa.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dq = a("dark_oak_hanging_sign", $$0x -> new dkm(dyj.h, $$0x), dww.d.a().a(ad.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dr = a("pale_oak_hanging_sign", $$0x -> new dkm(dyj.i, $$0x), dww.d.a().a(v.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm ds = a("crimson_hanging_sign", $$0x -> new dkm(dyj.j, $$0x), dww.d.a().a(etd.ab).k().a(dxx.e).b().d(1.0F));
+   public static final djm dt = a("warped_hanging_sign", $$0x -> new dkm(dyj.k, $$0x), dww.d.a().a(etd.ae).k().a(dxx.e).b().d(1.0F));
+   public static final djm du = a("mangrove_hanging_sign", $$0x -> new dkm(dyj.l, $$0x), dww.d.a().a(af.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dv = a("bamboo_hanging_sign", $$0x -> new dkm(dyj.m, $$0x), dww.d.a().a(etd.s).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dw = a("oak_wall_hanging_sign", $$0x -> new dsq(dyj.b, $$0x), a(dk, true).a(X.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dx = a("spruce_wall_hanging_sign", $$0x -> new dsq(dyj.c, $$0x), a(dl, true).a(etd.n).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dy = a("birch_wall_hanging_sign", $$0x -> new dsq(dyj.d, $$0x), a(dm, true).a(etd.c).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dz = a("acacia_wall_hanging_sign", $$0x -> new dsq(dyj.e, $$0x), a(dn, true).a(etd.p).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dA = a("cherry_wall_hanging_sign", $$0x -> new dsq(dyj.f, $$0x), a(do, true).a(etd.Q).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dB = a("jungle_wall_hanging_sign", $$0x -> new dsq(dyj.g, $$0x), a(dp, true).a(aa.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dC = a("dark_oak_wall_hanging_sign", $$0x -> new dsq(dyj.h, $$0x), a(dq, true).a(ad.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dD = a("pale_oak_wall_hanging_sign", $$0x -> new dsq(dyj.i, $$0x), a(dr, true).a(v.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dE = a("mangrove_wall_hanging_sign", $$0x -> new dsq(dyj.l, $$0x), a(du, true).a(af.w()).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dF = a("crimson_wall_hanging_sign", $$0x -> new dsq(dyj.j, $$0x), a(ds, true).a(etd.ab).k().a(dxx.e).b().d(1.0F));
+   public static final djm dG = a("warped_wall_hanging_sign", $$0x -> new dsq(dyj.k, $$0x), a(dt, true).a(etd.ae).k().a(dxx.e).b().d(1.0F));
+   public static final djm dH = a("bamboo_wall_hanging_sign", $$0x -> new dsq(dyj.m, $$0x), a(dv, true).a(etd.s).k().a(dxx.e).b().d(1.0F).i());
+   public static final djm dI = a("lever", dob::new, dww.d.a().b().d(0.5F).a(dre.f).a(ete.b));
+   public static final djm dJ = a("stone_pressure_plate", $$0x -> new dpo(dxm.e, $$0x), dww.d.a().a(etd.l).k().a(dxx.b).b().d(0.5F).a(ete.b));
+   public static final djm dK = a("iron_door", $$0x -> new dlt(dxm.b, $$0x), dww.d.a().a(etd.g).d(5.0F).c().a(ete.b));
+   public static final djm dL = a("oak_pressure_plate", $$0x -> new dpo(dxm.g, $$0x), dww.d.a().a(n.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dM = a("spruce_pressure_plate", $$0x -> new dpo(dxm.h, $$0x), dww.d.a().a(o.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dN = a("birch_pressure_plate", $$0x -> new dpo(dxm.i, $$0x), dww.d.a().a(p.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dO = a("jungle_pressure_plate", $$0x -> new dpo(dxm.l, $$0x), dww.d.a().a(q.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dP = a("acacia_pressure_plate", $$0x -> new dpo(dxm.j, $$0x), dww.d.a().a(r.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dQ = a("cherry_pressure_plate", $$0x -> new dpo(dxm.k, $$0x), dww.d.a().a(s.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dR = a("dark_oak_pressure_plate", $$0x -> new dpo(dxm.m, $$0x), dww.d.a().a(t.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dS = a("pale_oak_pressure_plate", $$0x -> new dpo(dxm.n, $$0x), dww.d.a().a(v.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dT = a("mangrove_pressure_plate", $$0x -> new dpo(dxm.q, $$0x), dww.d.a().a(w.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dU = a("bamboo_pressure_plate", $$0x -> new dpo(dxm.r, $$0x), dww.d.a().a(x.w()).k().a(dxx.e).b().d(0.5F).i().a(ete.b));
+   public static final djm dV = a("redstone_ore", dps::new, dww.d.a().a(etd.l).a(dxx.b).n().e().a(a(9)).a(3.0F, 3.0F));
+   public static final djm dW = a("deepslate_redstone_ore", dps::new, dww.d.b(dV).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm dX = a("redstone_torch", dpv::new, dww.d.a().b().d().a(a(7)).a(dre.b).a(ete.b));
+   public static final djm dY = a("redstone_wall_torch", dpw::new, a(dX, true).b().d().a(a(7)).a(dre.b).a(ete.b));
+   public static final djm dZ = a("stone_button", $$0x -> new djx(dxm.e, 20, $$0x), b());
+   public static final djm ea = a("snow", dra::new, dww.d.a().a(etd.i).p().l().e().d(0.1F).n().a(dre.k).c(($$0x, $$1x, $$2) -> $$0x.c(dra.c) >= 8).a(ete.b));
+   public static final djm eb = a("ice", dnm::new, dww.d.a().a(etd.f).a(0.98F).e().d(0.5F).a(dre.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bur.aV).a(djo::b));
+   public static final djm ec = a("snow_block", dww.d.a().a(etd.i).n().d(0.2F).a(dre.k));
+   public static final djm ed = a("cactus", djy::new, dww.d.a().a(etd.h).e().d(0.4F).a(dre.i).a(ete.b));
+   public static final djm ee = a("clay", dww.d.a().a(etd.j).a(dxx.f).d(0.6F).a(dre.c));
+   public static final djm ef = a("sugar_cane", drr::new, dww.d.a().a(etd.h).b().e().d().a(dre.d).a(ete.b));
+   public static final djm eg = a("jukebox", dnr::new, dww.d.a().a(etd.k).a(dxx.e).a(2.0F, 6.0F).a(dre.b).i());
+   public static final djm eh = a("oak_fence", dml::new, dww.d.a().a(n.w()).k().a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm ei = a("netherrack", dox::new, dww.d.a().a(etd.J).a(dxx.b).n().d(0.4F).a(dre.M));
+   public static final djm ej = a("soul_sand", drd::new, dww.d.a().a(etd.A).a(dxx.l).d(0.5F).b(0.4F).a(dre.I).a(djo::b).a(djo::a).c(djo::a).b(djo::a));
+   public static final djm ek = a("soul_soil", dww.d.a().a(etd.A).d(0.5F).a(dre.J));
+   public static final djm el = a("basalt", dqd::new, dww.d.a().a(etd.D).a(dxx.b).n().a(1.25F, 4.2F).a(dre.K));
+   public static final djm em = a("polished_basalt", dqd::new, dww.d.a().a(etd.D).a(dxx.b).n().a(1.25F, 4.2F).a(dre.K));
+   public static final djm en = a("soul_torch", $$0x -> new dsb(lt.M, $$0x), dww.d.a().b().d().a($$0x -> 10).a(dre.b).a(ete.b));
+   public static final djm eo = a("soul_wall_torch", $$0x -> new dst(lt.M, $$0x), a(en, true).b().d().a($$0x -> 10).a(dre.b).a(ete.b));
+   public static final djm ep = a("glowstone", dww.d.a().a(etd.c).a(dxx.p).d(0.3F).a(dre.h).a($$0x -> 15).a(djo::b));
+   public static final djm eq = a("nether_portal", dot::new, dww.d.a().b().e().d(-1.0F).a(dre.h).a($$0x -> 11).a(ete.c));
+   public static final djm er = a("carved_pumpkin", dkh::new, dww.d.a().a(etd.p).d(1.0F).a(dre.b).a(djo::b).a(ete.b));
+   public static final djm es = a("jack_o_lantern", dkh::new, dww.d.a().a(etd.p).d(1.0F).a(dre.b).a($$0x -> 15).a(djo::b).a(ete.b));
+   public static final djm et = a("cake", djz::new, dww.d.a().k().d(0.5F).a(dre.i).a(ete.b));
+   public static final djm eu = a("repeater", dpy::new, dww.d.a().d().a(dre.f).a(ete.b));
+   public static final djm ev = b("white_stained_glass", cvm.a);
+   public static final djm ew = b("orange_stained_glass", cvm.b);
+   public static final djm ex = b("magenta_stained_glass", cvm.c);
+   public static final djm ey = b("light_blue_stained_glass", cvm.d);
+   public static final djm ez = b("yellow_stained_glass", cvm.e);
+   public static final djm eA = b("lime_stained_glass", cvm.f);
+   public static final djm eB = b("pink_stained_glass", cvm.g);
+   public static final djm eC = b("gray_stained_glass", cvm.h);
+   public static final djm eD = b("light_gray_stained_glass", cvm.i);
+   public static final djm eE = b("cyan_stained_glass", cvm.j);
+   public static final djm eF = b("purple_stained_glass", cvm.k);
+   public static final djm eG = b("blue_stained_glass", cvm.l);
+   public static final djm eH = b("brown_stained_glass", cvm.m);
+   public static final djm eI = b("green_stained_glass", cvm.n);
+   public static final djm eJ = b("red_stained_glass", cvm.o);
+   public static final djm eK = b("black_stained_glass", cvm.p);
+   public static final djm eL = a("oak_trapdoor", $$0x -> new dse(dxm.g, $$0x), dww.d.a().a(etd.n).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eM = a("spruce_trapdoor", $$0x -> new dse(dxm.h, $$0x), dww.d.a().a(etd.I).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eN = a("birch_trapdoor", $$0x -> new dse(dxm.i, $$0x), dww.d.a().a(etd.c).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eO = a("jungle_trapdoor", $$0x -> new dse(dxm.l, $$0x), dww.d.a().a(etd.k).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eP = a("acacia_trapdoor", $$0x -> new dse(dxm.j, $$0x), dww.d.a().a(etd.p).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eQ = a("cherry_trapdoor", $$0x -> new dse(dxm.k, $$0x), dww.d.a().a(etd.K).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eR = a("dark_oak_trapdoor", $$0x -> new dse(dxm.m, $$0x), dww.d.a().a(etd.A).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eS = a("pale_oak_trapdoor", $$0x -> new dse(dxm.n, $$0x), dww.d.a().a(v.w()).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eT = a("mangrove_trapdoor", $$0x -> new dse(dxm.q, $$0x), dww.d.a().a(etd.C).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eU = a("bamboo_trapdoor", $$0x -> new dse(dxm.r, $$0x), dww.d.a().a(etd.s).a(dxx.e).d(3.0F).c().a(djo::a).i());
+   public static final djm eV = a("stone_bricks", dww.d.a().a(etd.l).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm eW = a("mossy_stone_bricks", dww.d.a().a(etd.l).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm eX = a("cracked_stone_bricks", dww.d.a().a(etd.l).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm eY = a("chiseled_stone_bricks", dww.d.a().a(etd.l).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm eZ = a("packed_mud", dww.d.b(j).a(1.0F, 3.0F).a(dre.aO));
+   public static final djm fa = a("mud_bricks", dww.d.a().a(etd.S).a(dxx.b).n().a(1.5F, 3.0F).a(dre.aN));
+   public static final djm fb = a("infested_stone", $$0x -> new dnn(b, $$0x), dww.d.a().a(etd.j));
+   public static final djm fc = a("infested_cobblestone", $$0x -> new dnn(m, $$0x), dww.d.a().a(etd.j));
+   public static final djm fd = a("infested_stone_bricks", $$0x -> new dnn(eV, $$0x), dww.d.a().a(etd.j));
+   public static final djm fe = a("infested_mossy_stone_bricks", $$0x -> new dnn(eW, $$0x), dww.d.a().a(etd.j));
+   public static final djm ff = a("infested_cracked_stone_bricks", $$0x -> new dnn(eX, $$0x), dww.d.a().a(etd.j));
+   public static final djm fg = a("infested_chiseled_stone_bricks", $$0x -> new dnn(eY, $$0x), dww.d.a().a(etd.j));
+   public static final djm fh = a("brown_mushroom_block", dnl::new, dww.d.a().a(etd.k).a(dxx.e).d(0.2F).a(dre.b).i());
+   public static final djm fi = a("red_mushroom_block", dnl::new, dww.d.a().a(etd.C).a(dxx.e).d(0.2F).a(dre.b).i());
+   public static final djm fj = a("mushroom_stem", dnl::new, dww.d.a().a(etd.d).a(dxx.e).d(0.2F).a(dre.b).i());
+   public static final djm fk = a("iron_bars", dnp::new, dww.d.a().n().a(5.0F, 6.0F).a(dre.g).c());
+   public static final djm fl = a("chain", dkn::new, dww.d.a().k().n().a(5.0F, 6.0F).a(dre.U).c());
+   public static final djm fm = a("glass_pane", dnp::new, dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm fn = a(aki.a, dpp::new, dww.d.a().a(etd.p).a(dxx.m).d(1.0F).a(dre.b).a(ete.b));
+   public static final djm fo = a(aki.d, dww.d.a().a(etd.t).d(1.0F).a(dre.b).a(ete.b));
+   public static final djm fp = a(aki.c, $$0x -> new din(aki.b, aki.a, akj.a, $$0x), dww.d.a().a(etd.h).b().d().a(dre.b).a(ete.b));
+   public static final djm fq = a(aki.f, $$0x -> new din(aki.e, aki.d, akj.b, $$0x), dww.d.a().a(etd.h).b().d().a(dre.b).a(ete.b));
+   public static final djm fr = a(aki.b, $$0x -> new drn(aki.a, aki.c, akj.a, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.x).a(ete.b));
+   public static final djm fs = a(aki.e, $$0x -> new drn(aki.d, aki.f, akj.b, $$0x), dww.d.a().a(etd.h).b().e().d().a(dre.x).a(ete.b));
+   public static final djm ft = a("vine", dsn::new, dww.d.a().a(etd.h).p().b().e().d(0.2F).a(dre.y).i().a(ete.b));
+   public static final djm fu = a("glow_lichen", dmx::new, dww.d.a().a(etd.aj).p().b().d(0.2F).a(dre.aD).a(dmx.b(7)).i().a(ete.b));
+   public static final djm fv = a("resin_clump", doo::new, dww.d.a().a(etd.L).p().b().a(dre.bl).i().a(ete.b));
+   public static final djm fw = a("oak_fence_gate", $$0x -> new dmm(dyj.b, $$0x), dww.d.a().a(n.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm fx = a("brick_stairs", cq);
+   public static final djm fy = a("stone_brick_stairs", eV);
+   public static final djm fz = a("mud_brick_stairs", fa);
+   public static final djm fA = a("mycelium", dos::new, dww.d.a().a(etd.y).e().d(0.6F).a(dre.d));
+   public static final djm fB = a("lily_pad", dsu::new, dww.d.a().a(etd.h).d().a(dre.e).c().a(ete.b));
+   public static final djm fC = a("resin_block", dww.d.a().a(etd.L).a(dxx.b).a(dre.bl));
+   public static final djm fD = a("resin_bricks", dww.d.a().a(etd.L).a(dxx.b).n().a(dre.bm).a(1.5F, 6.0F));
+   public static final djm fE = a("resin_brick_stairs", fD);
+   public static final djm fF = a("resin_brick_slab", $$0x -> new dqu($$0x), dww.d.a().a(etd.L).a(dxx.b).n().a(dre.bm).a(1.5F, 6.0F));
+   public static final djm fG = a("resin_brick_wall", $$0x -> new dsp($$0x), dww.d.a().a(etd.L).a(dxx.b).n().a(dre.bm).a(1.5F, 6.0F));
+   public static final djm fH = a("chiseled_resin_bricks", dww.d.a().a(etd.L).a(dxx.b).n().a(dre.bm).a(1.5F, 6.0F));
+   public static final djm fI = a("nether_bricks", dww.d.a().a(etd.J).a(dxx.b).n().a(2.0F, 6.0F).a(dre.N));
+   public static final djm fJ = a("nether_brick_fence", dml::new, dww.d.a().a(etd.J).a(dxx.b).n().a(2.0F, 6.0F).a(dre.N));
+   public static final djm fK = a("nether_brick_stairs", fI);
+   public static final djm fL = a("nether_wart", dow::new, dww.d.a().a(etd.C).b().e().a(dre.z).a(ete.b));
+   public static final djm fM = a("enchanting_table", dlz::new, dww.d.a().a(etd.C).a(dxx.b).n().a($$0x -> 7).a(5.0F, 1200.0F));
+   public static final djm fN = a("brewing_stand", djr::new, dww.d.a().a(etd.g).d(0.5F).a($$0x -> 1).c());
+   public static final djm fO = a("cauldron", dki::new, dww.d.a().a(etd.l).n().d(2.0F).c());
+   public static final djm fP = a("water_cauldron", $$0x -> new dnx(dhk.c.b, ko.d, $$0x), dww.d.b(fO));
+   public static final djm fQ = a("lava_cauldron", dnw::new, dww.d.b(fO).a($$0x -> 15));
+   public static final djm fR = a("powder_snow_cauldron", $$0x -> new dnx(dhk.c.c, ko.f, $$0x), dww.d.b(fO));
+   public static final djm fS = a("end_portal", dmb::new, dww.d.a().a(etd.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ete.c));
+   public static final djm fT = a("end_portal_frame", dmc::new, dww.d.a().a(etd.B).a(dxx.b).a(dre.h).a($$0x -> 1).a(-1.0F, 3600000.0F).g());
+   public static final djm fU = a("end_stone", dww.d.a().a(etd.c).a(dxx.b).n().a(3.0F, 9.0F));
+   public static final djm fV = a("dragon_egg", dlw::new, dww.d.a().a(etd.D).a(3.0F, 9.0F).a($$0x -> 1).c().a(ete.b));
+   public static final djm fW = a("redstone_lamp", dpu::new, dww.d.a().a(etd.L).a(a(15)).d(0.3F).a(dre.h).a(djo::b));
+   public static final djm fX = a("cocoa", dkt::new, dww.d.a().a(etd.h).e().a(0.2F, 3.0F).a(dre.b).c().a(ete.b));
+   public static final djm fY = a("sandstone_stairs", bc);
+   public static final djm fZ = a("emerald_ore", $$0x -> new dlx(bru.a(3, 7), $$0x), dww.d.a().a(etd.l).a(dxx.b).n().a(3.0F, 3.0F));
+   public static final djm ga = a("deepslate_emerald_ore", $$0x -> new dlx(bru.a(3, 7), $$0x), dww.d.b(fZ).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm gb = a("ender_chest", dme::new, dww.d.a().a(etd.l).a(dxx.b).a(22.5F, 600.0F).a($$0x -> 7));
+   public static final djm gc = a("tripwire_hook", dsi::new, dww.d.a().b().a(dre.b).a(ete.b));
+   public static final djm gd = a("tripwire", $$0x -> new dsh(gc, $$0x), dww.d.a().b().a(ete.b));
+   public static final djm ge = a("emerald_block", dww.d.a().a(etd.H).a(dxx.n).n().a(5.0F, 6.0F).a(dre.g));
+   public static final djm gf = a("spruce_stairs", o);
+   public static final djm gg = a("birch_stairs", p);
+   public static final djm gh = a("jungle_stairs", q);
+   public static final djm gi = a("command_block", $$0x -> new dkv(false, $$0x), dww.d.a().a(etd.A).n().a(-1.0F, 3600000.0F).g());
+   public static final djm gj = a("beacon", dje::new, dww.d.a().a(etd.F).a(dxx.d).d(3.0F).a($$0x -> 15).c().a(djo::b));
+   public static final djm gk = a("cobblestone_wall", dsp::new, dww.d.b(m).k());
+   public static final djm gl = a("mossy_cobblestone_wall", dsp::new, dww.d.b(m).k());
+   public static final djm gm = a("flower_pot", $$0x -> new dmq(a, $$0x), c());
+   public static final djm gn = a("potted_torchflower", $$0x -> new dmq(bZ, $$0x), c());
+   public static final djm go = a("potted_oak_sapling", $$0x -> new dmq(z, $$0x), c());
+   public static final djm gp = a("potted_spruce_sapling", $$0x -> new dmq(A, $$0x), c());
+   public static final djm gq = a("potted_birch_sapling", $$0x -> new dmq(B, $$0x), c());
+   public static final djm gr = a("potted_jungle_sapling", $$0x -> new dmq(C, $$0x), c());
+   public static final djm gs = a("potted_acacia_sapling", $$0x -> new dmq(D, $$0x), c());
+   public static final djm gt = a("potted_cherry_sapling", $$0x -> new dmq(E, $$0x), c());
+   public static final djm gu = a("potted_dark_oak_sapling", $$0x -> new dmq(F, $$0x), c());
+   public static final djm gv = a("potted_pale_oak_sapling", $$0x -> new dmq(G, $$0x), c());
+   public static final djm gw = a("potted_mangrove_propagule", $$0x -> new dmq(H, $$0x), c());
+   public static final djm gx = a("potted_fern", $$0x -> new dmq(bB, $$0x), c());
+   public static final djm gy = a("potted_dandelion", $$0x -> new dmq(bY, $$0x), c());
+   public static final djm gz = a("potted_poppy", $$0x -> new dmq(ca, $$0x), c());
+   public static final djm gA = a("potted_blue_orchid", $$0x -> new dmq(cb, $$0x), c());
+   public static final djm gB = a("potted_allium", $$0x -> new dmq(cc, $$0x), c());
+   public static final djm gC = a("potted_azure_bluet", $$0x -> new dmq(cd, $$0x), c());
+   public static final djm gD = a("potted_red_tulip", $$0x -> new dmq(ce, $$0x), c());
+   public static final djm gE = a("potted_orange_tulip", $$0x -> new dmq(cf, $$0x), c());
+   public static final djm gF = a("potted_white_tulip", $$0x -> new dmq(cg, $$0x), c());
+   public static final djm gG = a("potted_pink_tulip", $$0x -> new dmq(ch, $$0x), c());
+   public static final djm gH = a("potted_oxeye_daisy", $$0x -> new dmq(ci, $$0x), c());
+   public static final djm gI = a("potted_cornflower", $$0x -> new dmq(cj, $$0x), c());
+   public static final djm gJ = a("potted_lily_of_the_valley", $$0x -> new dmq(cl, $$0x), c());
+   public static final djm gK = a("potted_wither_rose", $$0x -> new dmq(ck, $$0x), c());
+   public static final djm gL = a("potted_red_mushroom", $$0x -> new dmq(cn, $$0x), c());
+   public static final djm gM = a("potted_brown_mushroom", $$0x -> new dmq(cm, $$0x), c());
+   public static final djm gN = a("potted_dead_bush", $$0x -> new dmq(bC, $$0x), c());
+   public static final djm gO = a("potted_cactus", $$0x -> new dmq(ed, $$0x), c());
+   public static final djm gP = a("carrots", dkf::new, dww.d.a().a(etd.h).b().e().d().a(dre.w).a(ete.b));
+   public static final djm gQ = a("potatoes", dpk::new, dww.d.a().a(etd.h).b().e().d().a(dre.w).a(ete.b));
+   public static final djm gR = a("oak_button", $$0x -> new djx(dxm.g, 30, $$0x), b());
+   public static final djm gS = a("spruce_button", $$0x -> new djx(dxm.h, 30, $$0x), b());
+   public static final djm gT = a("birch_button", $$0x -> new djx(dxm.i, 30, $$0x), b());
+   public static final djm gU = a("jungle_button", $$0x -> new djx(dxm.l, 30, $$0x), b());
+   public static final djm gV = a("acacia_button", $$0x -> new djx(dxm.j, 30, $$0x), b());
+   public static final djm gW = a("cherry_button", $$0x -> new djx(dxm.k, 30, $$0x), b());
+   public static final djm gX = a("dark_oak_button", $$0x -> new djx(dxm.m, 30, $$0x), b());
+   public static final djm gY = a("pale_oak_button", $$0x -> new djx(dxm.n, 30, $$0x), b());
+   public static final djm gZ = a("mangrove_button", $$0x -> new djx(dxm.q, 30, $$0x), b());
+   public static final djm ha = a("bamboo_button", $$0x -> new djx(dxm.r, 30, $$0x), b());
+   public static final djm hb = a("skeleton_skull", $$0x -> new dqt(dqt.b.c, $$0x), dww.d.a().a(dxx.r).d(1.0F).a(ete.b));
+   public static final djm hc = a("skeleton_wall_skull", $$0x -> new dss(dqt.b.c, $$0x), a(hb, true).d(1.0F).a(ete.b));
+   public static final djm hd = a("wither_skeleton_skull", dtk::new, dww.d.a().a(dxx.u).d(1.0F).a(ete.b));
+   public static final djm he = a("wither_skeleton_wall_skull", dtl::new, a(hd, true).d(1.0F).a(ete.b));
+   public static final djm hf = a("zombie_head", $$0x -> new dqt(dqt.b.f, $$0x), dww.d.a().a(dxx.q).d(1.0F).a(ete.b));
+   public static final djm hg = a("zombie_wall_head", $$0x -> new dss(dqt.b.f, $$0x), a(hf, true).d(1.0F).a(ete.b));
+   public static final djm hh = a("player_head", dpg::new, dww.d.a().a(dxx.w).d(1.0F).a(ete.b));
+   public static final djm hi = a("player_wall_head", dph::new, a(hh, true).d(1.0F).a(ete.b));
+   public static final djm hj = a("creeper_head", $$0x -> new dqt(dqt.b.g, $$0x), dww.d.a().a(dxx.s).d(1.0F).a(ete.b));
+   public static final djm hk = a("creeper_wall_head", $$0x -> new dss(dqt.b.g, $$0x), a(hj, true).d(1.0F).a(ete.b));
+   public static final djm hl = a("dragon_head", $$0x -> new dqt(dqt.b.i, $$0x), dww.d.a().a(dxx.t).d(1.0F).a(ete.b));
+   public static final djm hm = a("dragon_wall_head", $$0x -> new dss(dqt.b.i, $$0x), a(hl, true).d(1.0F).a(ete.b));
+   public static final djm hn = a("piglin_head", $$0x -> new dqt(dqt.b.h, $$0x), dww.d.a().a(dxx.v).d(1.0F).a(ete.b));
+   public static final djm ho = a("piglin_wall_head", dpc::new, a(hn, true).d(1.0F).a(ete.b));
+   public static final djm hp = a("anvil", dim::new, dww.d.a().a(etd.g).n().a(5.0F, 1200.0F).a(dre.n).a(ete.c));
+   public static final djm hq = a("chipped_anvil", dim::new, dww.d.a().a(etd.g).n().a(5.0F, 1200.0F).a(dre.n).a(ete.c));
+   public static final djm hr = a("damaged_anvil", dim::new, dww.d.a().a(etd.g).n().a(5.0F, 1200.0F).a(dre.n).a(ete.c));
+   public static final djm hs = a("trapped_chest", dsf::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm ht = a("light_weighted_pressure_plate", $$0x -> new dth(15, dxm.d, $$0x), dww.d.a().a(etd.E).k().b().d(0.5F).a(ete.b));
+   public static final djm hu = a("heavy_weighted_pressure_plate", $$0x -> new dth(150, dxm.b, $$0x), dww.d.a().a(etd.g).k().b().d(0.5F).a(ete.b));
+   public static final djm hv = a("comparator", dkw::new, dww.d.a().d().a(dre.f).a(ete.b));
+   public static final djm hw = a("daylight_detector", dll::new, dww.d.a().a(etd.n).a(dxx.e).d(0.2F).a(dre.b).i());
+   public static final djm hx = a("redstone_block", dpm::new, dww.d.a().a(etd.e).n().a(5.0F, 6.0F).a(dre.g).a(djo::b));
+   public static final djm hy = a("nether_quartz_ore", $$0x -> new dlx(bru.a(2, 5), $$0x), dww.d.a().a(etd.J).a(dxx.b).n().a(3.0F, 3.0F).a(dre.P));
+   public static final djm hz = a("hopper", dnj::new, dww.d.a().a(etd.l).n().a(3.0F, 4.8F).a(dre.g).c());
+   public static final djm hA = a("quartz_block", dww.d.a().a(etd.o).a(dxx.b).n().d(0.8F));
+   public static final djm hB = a("chiseled_quartz_block", dww.d.a().a(etd.o).a(dxx.b).n().d(0.8F));
+   public static final djm hC = a("quartz_pillar", dqd::new, dww.d.a().a(etd.o).a(dxx.b).n().d(0.8F));
+   public static final djm hD = a("quartz_stairs", hA);
+   public static final djm hE = a("activator_rail", dpn::new, dww.d.a().b().d(0.7F).a(dre.g));
+   public static final djm hF = a("dropper", dly::new, dww.d.a().a(etd.l).a(dxx.b).n().d(3.5F));
+   public static final djm hG = a("white_terracotta", dww.d.a().a(etd.K).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hH = a("orange_terracotta", dww.d.a().a(etd.L).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hI = a("magenta_terracotta", dww.d.a().a(etd.M).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hJ = a("light_blue_terracotta", dww.d.a().a(etd.N).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hK = a("yellow_terracotta", dww.d.a().a(etd.O).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hL = a("lime_terracotta", dww.d.a().a(etd.P).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hM = a("pink_terracotta", dww.d.a().a(etd.Q).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hN = a("gray_terracotta", dww.d.a().a(etd.R).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hO = a("light_gray_terracotta", dww.d.a().a(etd.S).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hP = a("cyan_terracotta", dww.d.a().a(etd.T).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hQ = a("purple_terracotta", dww.d.a().a(etd.U).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hR = a("blue_terracotta", dww.d.a().a(etd.V).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hS = a("brown_terracotta", dww.d.a().a(etd.W).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hT = a("green_terracotta", dww.d.a().a(etd.X).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hU = a("red_terracotta", dww.d.a().a(etd.Y).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hV = a("black_terracotta", dww.d.a().a(etd.Z).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm hW = a("white_stained_glass_pane", $$0x -> new drk(cvm.a, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm hX = a("orange_stained_glass_pane", $$0x -> new drk(cvm.b, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm hY = a("magenta_stained_glass_pane", $$0x -> new drk(cvm.c, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm hZ = a("light_blue_stained_glass_pane", $$0x -> new drk(cvm.d, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ia = a("yellow_stained_glass_pane", $$0x -> new drk(cvm.e, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ib = a("lime_stained_glass_pane", $$0x -> new drk(cvm.f, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ic = a("pink_stained_glass_pane", $$0x -> new drk(cvm.g, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm id = a("gray_stained_glass_pane", $$0x -> new drk(cvm.h, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ie = a("light_gray_stained_glass_pane", $$0x -> new drk(cvm.i, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm if = a("cyan_stained_glass_pane", $$0x -> new drk(cvm.j, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ig = a("purple_stained_glass_pane", $$0x -> new drk(cvm.k, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ih = a("blue_stained_glass_pane", $$0x -> new drk(cvm.l, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ii = a("brown_stained_glass_pane", $$0x -> new drk(cvm.m, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ij = a("green_stained_glass_pane", $$0x -> new drk(cvm.n, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm ik = a("red_stained_glass_pane", $$0x -> new drk(cvm.o, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm il = a("black_stained_glass_pane", $$0x -> new drk(cvm.p, $$0x), dww.d.a().a(dxx.d).d(0.3F).a(dre.h).c());
+   public static final djm im = a("acacia_stairs", r);
+   public static final djm in = a("cherry_stairs", s);
+   public static final djm io = a("dark_oak_stairs", t);
+   public static final djm ip = a("pale_oak_stairs", v);
+   public static final djm iq = a("mangrove_stairs", w);
+   public static final djm ir = a("bamboo_stairs", x);
+   public static final djm is = a("bamboo_mosaic_stairs", y);
+   public static final djm it = a("slime_block", dqv::new, dww.d.a().a(etd.b).a(0.8F).a(dre.o).c());
+   public static final djm iu = a("barrier", dit::new, dww.d.a().a(-1.0F, 3600000.8F).a(a(etd.a)).g().c().a(djo::a).o().a(ete.c));
+   public static final djm iv = a("light", doc::new, dww.d.a().p().a(-1.0F, 3600000.8F).a(a(etd.a)).g().c().a(doc.e));
+   public static final djm iw = a("iron_trapdoor", $$0x -> new dse(dxm.b, $$0x), dww.d.a().a(etd.g).n().d(5.0F).c().a(djo::a));
+   public static final djm ix = a("prismarine", dww.d.a().a(etd.x).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm iy = a("prismarine_bricks", dww.d.a().a(etd.F).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm iz = a("dark_prismarine", dww.d.a().a(etd.F).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm iA = a("prismarine_stairs", ix);
+   public static final djm iB = a("prismarine_brick_stairs", iy);
+   public static final djm iC = a("dark_prismarine_stairs", iz);
+   public static final djm iD = a("prismarine_slab", dqu::new, dww.d.a().a(etd.x).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm iE = a("prismarine_brick_slab", dqu::new, dww.d.a().a(etd.F).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm iF = a("dark_prismarine_slab", dqu::new, dww.d.a().a(etd.F).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm iG = a("sea_lantern", dww.d.a().a(etd.o).a(dxx.d).d(0.3F).a(dre.h).a($$0x -> 15).a(djo::b));
+   public static final djm iH = a("hay_block", dng::new, dww.d.a().a(etd.s).a(dxx.o).d(0.5F).a(dre.d));
+   public static final djm iI = a("white_carpet", $$0x -> new dtm(cvm.a, $$0x), dww.d.a().a(etd.i).d(0.1F).a(dre.i).i());
+   public static final djm iJ = a("orange_carpet", $$0x -> new dtm(cvm.b, $$0x), dww.d.a().a(etd.p).d(0.1F).a(dre.i).i());
+   public static final djm iK = a("magenta_carpet", $$0x -> new dtm(cvm.c, $$0x), dww.d.a().a(etd.q).d(0.1F).a(dre.i).i());
+   public static final djm iL = a("light_blue_carpet", $$0x -> new dtm(cvm.d, $$0x), dww.d.a().a(etd.r).d(0.1F).a(dre.i).i());
+   public static final djm iM = a("yellow_carpet", $$0x -> new dtm(cvm.e, $$0x), dww.d.a().a(etd.s).d(0.1F).a(dre.i).i());
+   public static final djm iN = a("lime_carpet", $$0x -> new dtm(cvm.f, $$0x), dww.d.a().a(etd.t).d(0.1F).a(dre.i).i());
+   public static final djm iO = a("pink_carpet", $$0x -> new dtm(cvm.g, $$0x), dww.d.a().a(etd.u).d(0.1F).a(dre.i).i());
+   public static final djm iP = a("gray_carpet", $$0x -> new dtm(cvm.h, $$0x), dww.d.a().a(etd.v).d(0.1F).a(dre.i).i());
+   public static final djm iQ = a("light_gray_carpet", $$0x -> new dtm(cvm.i, $$0x), dww.d.a().a(etd.w).d(0.1F).a(dre.i).i());
+   public static final djm iR = a("cyan_carpet", $$0x -> new dtm(cvm.j, $$0x), dww.d.a().a(etd.x).d(0.1F).a(dre.i).i());
+   public static final djm iS = a("purple_carpet", $$0x -> new dtm(cvm.k, $$0x), dww.d.a().a(etd.y).d(0.1F).a(dre.i).i());
+   public static final djm iT = a("blue_carpet", $$0x -> new dtm(cvm.l, $$0x), dww.d.a().a(etd.z).d(0.1F).a(dre.i).i());
+   public static final djm iU = a("brown_carpet", $$0x -> new dtm(cvm.m, $$0x), dww.d.a().a(etd.A).d(0.1F).a(dre.i).i());
+   public static final djm iV = a("green_carpet", $$0x -> new dtm(cvm.n, $$0x), dww.d.a().a(etd.B).d(0.1F).a(dre.i).i());
+   public static final djm iW = a("red_carpet", $$0x -> new dtm(cvm.o, $$0x), dww.d.a().a(etd.C).d(0.1F).a(dre.i).i());
+   public static final djm iX = a("black_carpet", $$0x -> new dtm(cvm.p, $$0x), dww.d.a().a(etd.D).d(0.1F).a(dre.i).i());
+   public static final djm iY = a("terracotta", dww.d.a().a(etd.p).a(dxx.b).n().a(1.25F, 4.2F));
+   public static final djm iZ = a("coal_block", dww.d.a().a(etd.D).a(dxx.b).n().a(5.0F, 6.0F));
+   public static final djm ja = a("packed_ice", dww.d.a().a(etd.f).a(dxx.i).a(0.98F).d(0.5F).a(dre.h));
+   public static final djm jb = a("sunflower", drv::new, dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).i().a(ete.b));
+   public static final djm jc = a("lilac", drv::new, dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).i().a(ete.b));
+   public static final djm jd = a("rose_bush", drv::new, dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).i().a(ete.b));
+   public static final djm je = a("peony", drv::new, dww.d.a().a(etd.h).b().d().a(dre.d).a(dww.c.b).i().a(ete.b));
+   public static final djm jf = a("tall_grass", dlv::new, dww.d.a().a(etd.h).p().b().d().a(dre.d).a(dww.c.b).i().a(ete.b));
+   public static final djm jg = a("large_fern", dlv::new, dww.d.a().a(etd.h).p().b().d().a(dre.d).a(dww.c.b).i().a(ete.b));
+   public static final djm jh = a("white_banner", $$0x -> new dir(cvm.a, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm ji = a("orange_banner", $$0x -> new dir(cvm.b, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jj = a("magenta_banner", $$0x -> new dir(cvm.c, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jk = a("light_blue_banner", $$0x -> new dir(cvm.d, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jl = a("yellow_banner", $$0x -> new dir(cvm.e, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jm = a("lime_banner", $$0x -> new dir(cvm.f, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jn = a("pink_banner", $$0x -> new dir(cvm.g, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jo = a("gray_banner", $$0x -> new dir(cvm.h, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jp = a("light_gray_banner", $$0x -> new dir(cvm.i, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jq = a("cyan_banner", $$0x -> new dir(cvm.j, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jr = a("purple_banner", $$0x -> new dir(cvm.k, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm js = a("blue_banner", $$0x -> new dir(cvm.l, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jt = a("brown_banner", $$0x -> new dir(cvm.m, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm ju = a("green_banner", $$0x -> new dir(cvm.n, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jv = a("red_banner", $$0x -> new dir(cvm.o, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jw = a("black_banner", $$0x -> new dir(cvm.p, $$0x), dww.d.a().a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jx = a("white_wall_banner", $$0x -> new dso(cvm.a, $$0x), a(jh, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jy = a("orange_wall_banner", $$0x -> new dso(cvm.b, $$0x), a(ji, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jz = a("magenta_wall_banner", $$0x -> new dso(cvm.c, $$0x), a(jj, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jA = a("light_blue_wall_banner", $$0x -> new dso(cvm.d, $$0x), a(jk, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jB = a("yellow_wall_banner", $$0x -> new dso(cvm.e, $$0x), a(jl, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jC = a("lime_wall_banner", $$0x -> new dso(cvm.f, $$0x), a(jm, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jD = a("pink_wall_banner", $$0x -> new dso(cvm.g, $$0x), a(jn, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jE = a("gray_wall_banner", $$0x -> new dso(cvm.h, $$0x), a(jo, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jF = a("light_gray_wall_banner", $$0x -> new dso(cvm.i, $$0x), a(jp, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jG = a("cyan_wall_banner", $$0x -> new dso(cvm.j, $$0x), a(jq, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jH = a("purple_wall_banner", $$0x -> new dso(cvm.k, $$0x), a(jr, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jI = a("blue_wall_banner", $$0x -> new dso(cvm.l, $$0x), a(js, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jJ = a("brown_wall_banner", $$0x -> new dso(cvm.m, $$0x), a(jt, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jK = a("green_wall_banner", $$0x -> new dso(cvm.n, $$0x), a(ju, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jL = a("red_wall_banner", $$0x -> new dso(cvm.o, $$0x), a(jv, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jM = a("black_wall_banner", $$0x -> new dso(cvm.p, $$0x), a(jw, true).a(etd.n).k().a(dxx.e).b().d(1.0F).a(dre.b).i());
+   public static final djm jN = a("red_sandstone", dww.d.a().a(etd.p).a(dxx.b).n().d(0.8F));
+   public static final djm jO = a("chiseled_red_sandstone", dww.d.a().a(etd.p).a(dxx.b).n().d(0.8F));
+   public static final djm jP = a("cut_red_sandstone", dww.d.a().a(etd.p).a(dxx.b).n().d(0.8F));
+   public static final djm jQ = a("red_sandstone_stairs", jN);
+   public static final djm jR = a("oak_slab", dqu::new, dww.d.a().a(etd.n).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm jS = a("spruce_slab", dqu::new, dww.d.a().a(etd.I).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm jT = a("birch_slab", dqu::new, dww.d.a().a(etd.c).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm jU = a("jungle_slab", dqu::new, dww.d.a().a(etd.k).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm jV = a("acacia_slab", dqu::new, dww.d.a().a(etd.p).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm jW = a("cherry_slab", dqu::new, dww.d.a().a(etd.K).a(dxx.e).a(2.0F, 3.0F).a(dre.aU).i());
+   public static final djm jX = a("dark_oak_slab", dqu::new, dww.d.a().a(etd.A).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm jY = a("pale_oak_slab", dqu::new, dww.d.a().a(v.w()).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm jZ = a("mangrove_slab", dqu::new, dww.d.a().a(etd.C).a(dxx.e).a(2.0F, 3.0F).a(dre.b).i());
+   public static final djm ka = a("bamboo_slab", dqu::new, dww.d.a().a(etd.s).a(dxx.e).a(2.0F, 3.0F).a(dre.aS).i());
+   public static final djm kb = a("bamboo_mosaic_slab", dqu::new, dww.d.a().a(etd.s).a(dxx.e).a(2.0F, 3.0F).a(dre.aS).i());
+   public static final djm kc = a("stone_slab", dqu::new, dww.d.a().a(etd.l).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kd = a("smooth_stone_slab", dqu::new, dww.d.a().a(etd.l).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm ke = a("sandstone_slab", dqu::new, dww.d.a().a(etd.c).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kf = a("cut_sandstone_slab", dqu::new, dww.d.a().a(etd.c).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kg = a("petrified_oak_slab", dqu::new, dww.d.a().a(etd.n).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kh = a("cobblestone_slab", dqu::new, dww.d.a().a(etd.l).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm ki = a("brick_slab", dqu::new, dww.d.a().a(etd.C).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kj = a("stone_brick_slab", dqu::new, dww.d.a().a(etd.l).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kk = a("mud_brick_slab", dqu::new, dww.d.a().a(etd.S).a(dxx.b).n().a(1.5F, 3.0F).a(dre.aN));
+   public static final djm kl = a("nether_brick_slab", dqu::new, dww.d.a().a(etd.J).a(dxx.b).n().a(2.0F, 6.0F).a(dre.N));
+   public static final djm km = a("quartz_slab", dqu::new, dww.d.a().a(etd.o).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kn = a("red_sandstone_slab", dqu::new, dww.d.a().a(etd.p).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm ko = a("cut_red_sandstone_slab", dqu::new, dww.d.a().a(etd.p).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kp = a("purpur_slab", dqu::new, dww.d.a().a(etd.q).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kq = a("smooth_stone", dww.d.a().a(etd.l).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kr = a("smooth_sandstone", dww.d.a().a(etd.c).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm ks = a("smooth_quartz", dww.d.a().a(etd.o).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm kt = a("smooth_red_sandstone", dww.d.a().a(etd.p).a(dxx.b).n().a(2.0F, 6.0F));
+   public static final djm ku = a("spruce_fence_gate", $$0x -> new dmm(dyj.c, $$0x), dww.d.a().a(o.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kv = a("birch_fence_gate", $$0x -> new dmm(dyj.d, $$0x), dww.d.a().a(p.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kw = a("jungle_fence_gate", $$0x -> new dmm(dyj.g, $$0x), dww.d.a().a(q.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kx = a("acacia_fence_gate", $$0x -> new dmm(dyj.e, $$0x), dww.d.a().a(r.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm ky = a("cherry_fence_gate", $$0x -> new dmm(dyj.f, $$0x), dww.d.a().a(s.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kz = a("dark_oak_fence_gate", $$0x -> new dmm(dyj.h, $$0x), dww.d.a().a(t.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kA = a("pale_oak_fence_gate", $$0x -> new dmm(dyj.i, $$0x), dww.d.a().a(v.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kB = a("mangrove_fence_gate", $$0x -> new dmm(dyj.l, $$0x), dww.d.a().a(w.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kC = a("bamboo_fence_gate", $$0x -> new dmm(dyj.m, $$0x), dww.d.a().a(x.w()).k().a(dxx.e).a(2.0F, 3.0F).i());
+   public static final djm kD = a("spruce_fence", dml::new, dww.d.a().a(o.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.b));
+   public static final djm kE = a("birch_fence", dml::new, dww.d.a().a(p.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.b));
+   public static final djm kF = a("jungle_fence", dml::new, dww.d.a().a(q.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.b));
+   public static final djm kG = a("acacia_fence", dml::new, dww.d.a().a(r.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.b));
+   public static final djm kH = a("cherry_fence", dml::new, dww.d.a().a(s.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.aU));
+   public static final djm kI = a("dark_oak_fence", dml::new, dww.d.a().a(t.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.b));
+   public static final djm kJ = a("pale_oak_fence", dml::new, dww.d.a().a(v.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.b));
+   public static final djm kK = a("mangrove_fence", dml::new, dww.d.a().a(w.w()).a(dxx.e).a(2.0F, 3.0F).i().a(dre.b));
+   public static final djm kL = a("bamboo_fence", dml::new, dww.d.a().a(x.w()).a(dxx.e).a(2.0F, 3.0F).a(dre.aS).i());
+   public static final djm kM = a("spruce_door", $$0x -> new dlt(dxm.h, $$0x), dww.d.a().a(o.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kN = a("birch_door", $$0x -> new dlt(dxm.i, $$0x), dww.d.a().a(p.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kO = a("jungle_door", $$0x -> new dlt(dxm.l, $$0x), dww.d.a().a(q.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kP = a("acacia_door", $$0x -> new dlt(dxm.j, $$0x), dww.d.a().a(r.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kQ = a("cherry_door", $$0x -> new dlt(dxm.k, $$0x), dww.d.a().a(s.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kR = a("dark_oak_door", $$0x -> new dlt(dxm.m, $$0x), dww.d.a().a(t.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kS = a("pale_oak_door", $$0x -> new dlt(dxm.n, $$0x), dww.d.a().a(v.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kT = a("mangrove_door", $$0x -> new dlt(dxm.q, $$0x), dww.d.a().a(w.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kU = a("bamboo_door", $$0x -> new dlt(dxm.r, $$0x), dww.d.a().a(x.w()).a(dxx.e).d(3.0F).c().i().a(ete.b));
+   public static final djm kV = a("end_rod", dmd::new, dww.d.a().l().d().a($$0x -> 14).a(dre.b).c());
+   public static final djm kW = a("chorus_plant", dks::new, dww.d.a().a(etd.y).l().d(0.4F).a(dre.b).c().a(ete.b));
+   public static final djm kX = a("chorus_flower", $$0x -> new dkr(kW, $$0x), dww.d.a().a(etd.y).l().e().d(0.4F).a(dre.b).c().a(djo::a).a(ete.b).a(djo::b));
+   public static final djm kY = a("purpur_block", dww.d.a().a(etd.q).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm kZ = a("purpur_pillar", dqd::new, dww.d.a().a(etd.q).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm la = a("purpur_stairs", kY);
+   public static final djm lb = a("end_stone_bricks", dww.d.a().a(etd.c).a(dxx.b).n().a(3.0F, 9.0F));
+   public static final djm lc = a("torchflower_crop", dsc::new, dww.d.a().a(etd.h).b().e().d().a(dre.w).a(ete.b));
+   public static final djm ld = a("pitcher_crop", dpf::new, dww.d.a().a(etd.h).b().e().d().a(dre.w).a(ete.b));
+   public static final djm le = a("pitcher_plant", dlv::new, dww.d.a().a(etd.h).b().d().a(dre.w).a(dww.c.b).i().a(ete.b));
+   public static final djm lf = a("beetroots", djh::new, dww.d.a().a(etd.h).b().e().d().a(dre.w).a(ete.b));
+   public static final djm lg = a("dirt_path", dlr::new, dww.d.a().a(etd.k).d(0.65F).a(dre.d).c(djo::a).b(djo::a));
+   public static final djm lh = a("end_gateway", dma::new, dww.d.a().a(etd.D).b().a($$0x -> 15).a(-1.0F, 3600000.0F).g().a(ete.c));
+   public static final djm li = a("repeating_command_block", $$0x -> new dkv(false, $$0x), dww.d.a().a(etd.y).n().a(-1.0F, 3600000.0F).g());
+   public static final djm lj = a("chain_command_block", $$0x -> new dkv(true, $$0x), dww.d.a().a(etd.B).n().a(-1.0F, 3600000.0F).g());
+   public static final djm lk = a(
+      "frosted_ice", dms::new, dww.d.a().a(etd.f).a(0.98F).d(0.5F).a(dre.h).c().a(($$0x, $$1x, $$2, $$3) -> $$3 == bur.aV).a(djo::b)
+   );
+   public static final djm ll = a(
+      "magma_block", doh::new, dww.d.a().a(etd.J).a(dxx.b).n().a($$0x -> 3).d(0.5F).a(($$0x, $$1x, $$2, $$3) -> $$3.d()).d(djo::a).e(djo::a)
+   );
+   public static final djm lm = a("nether_wart_block", dww.d.a().a(etd.C).d(1.0F).a(dre.L));
+   public static final djm ln = a("red_nether_bricks", dww.d.a().a(etd.J).a(dxx.b).n().a(2.0F, 6.0F).a(dre.N));
+   public static final djm lo = a("bone_block", dqd::new, dww.d.a().a(etd.c).a(dxx.j).n().d(2.0F).a(dre.Q));
+   public static final djm lp = a("structure_void", drq::new, dww.d.a().p().b().g().o().a(ete.b));
+   public static final djm lq = a("observer", dpa::new, dww.d.a().a(etd.l).a(dxx.b).d(3.0F).n().a(djo::b));
+   public static final djm lr = a("shulker_box", $$0x -> new dqq(null, $$0x), c(etd.y));
+   public static final djm ls = a("white_shulker_box", $$0x -> new dqq(cvm.a, $$0x), c(etd.i));
+   public static final djm lt = a("orange_shulker_box", $$0x -> new dqq(cvm.b, $$0x), c(etd.p));
+   public static final djm lu = a("magenta_shulker_box", $$0x -> new dqq(cvm.c, $$0x), c(etd.q));
+   public static final djm lv = a("light_blue_shulker_box", $$0x -> new dqq(cvm.d, $$0x), c(etd.r));
+   public static final djm lw = a("yellow_shulker_box", $$0x -> new dqq(cvm.e, $$0x), c(etd.s));
+   public static final djm lx = a("lime_shulker_box", $$0x -> new dqq(cvm.f, $$0x), c(etd.t));
+   public static final djm ly = a("pink_shulker_box", $$0x -> new dqq(cvm.g, $$0x), c(etd.u));
+   public static final djm lz = a("gray_shulker_box", $$0x -> new dqq(cvm.h, $$0x), c(etd.v));
+   public static final djm lA = a("light_gray_shulker_box", $$0x -> new dqq(cvm.i, $$0x), c(etd.w));
+   public static final djm lB = a("cyan_shulker_box", $$0x -> new dqq(cvm.j, $$0x), c(etd.x));
+   public static final djm lC = a("purple_shulker_box", $$0x -> new dqq(cvm.k, $$0x), c(etd.U));
+   public static final djm lD = a("blue_shulker_box", $$0x -> new dqq(cvm.l, $$0x), c(etd.z));
+   public static final djm lE = a("brown_shulker_box", $$0x -> new dqq(cvm.m, $$0x), c(etd.A));
+   public static final djm lF = a("green_shulker_box", $$0x -> new dqq(cvm.n, $$0x), c(etd.B));
+   public static final djm lG = a("red_shulker_box", $$0x -> new dqq(cvm.o, $$0x), c(etd.C));
+   public static final djm lH = a("black_shulker_box", $$0x -> new dqq(cvm.p, $$0x), c(etd.D));
+   public static final djm lI = a("white_glazed_terracotta", dmw::new, dww.d.a().a(cvm.a).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lJ = a("orange_glazed_terracotta", dmw::new, dww.d.a().a(cvm.b).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lK = a("magenta_glazed_terracotta", dmw::new, dww.d.a().a(cvm.c).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lL = a("light_blue_glazed_terracotta", dmw::new, dww.d.a().a(cvm.d).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lM = a("yellow_glazed_terracotta", dmw::new, dww.d.a().a(cvm.e).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lN = a("lime_glazed_terracotta", dmw::new, dww.d.a().a(cvm.f).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lO = a("pink_glazed_terracotta", dmw::new, dww.d.a().a(cvm.g).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lP = a("gray_glazed_terracotta", dmw::new, dww.d.a().a(cvm.h).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lQ = a("light_gray_glazed_terracotta", dmw::new, dww.d.a().a(cvm.i).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lR = a("cyan_glazed_terracotta", dmw::new, dww.d.a().a(cvm.j).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lS = a("purple_glazed_terracotta", dmw::new, dww.d.a().a(cvm.k).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lT = a("blue_glazed_terracotta", dmw::new, dww.d.a().a(cvm.l).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lU = a("brown_glazed_terracotta", dmw::new, dww.d.a().a(cvm.m).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lV = a("green_glazed_terracotta", dmw::new, dww.d.a().a(cvm.n).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lW = a("red_glazed_terracotta", dmw::new, dww.d.a().a(cvm.o).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lX = a("black_glazed_terracotta", dmw::new, dww.d.a().a(cvm.p).a(dxx.b).n().d(1.4F).a(ete.e));
+   public static final djm lY = a("white_concrete", dww.d.a().a(cvm.a).a(dxx.b).n().d(1.8F));
+   public static final djm lZ = a("orange_concrete", dww.d.a().a(cvm.b).a(dxx.b).n().d(1.8F));
+   public static final djm ma = a("magenta_concrete", dww.d.a().a(cvm.c).a(dxx.b).n().d(1.8F));
+   public static final djm mb = a("light_blue_concrete", dww.d.a().a(cvm.d).a(dxx.b).n().d(1.8F));
+   public static final djm mc = a("yellow_concrete", dww.d.a().a(cvm.e).a(dxx.b).n().d(1.8F));
+   public static final djm md = a("lime_concrete", dww.d.a().a(cvm.f).a(dxx.b).n().d(1.8F));
+   public static final djm me = a("pink_concrete", dww.d.a().a(cvm.g).a(dxx.b).n().d(1.8F));
+   public static final djm mf = a("gray_concrete", dww.d.a().a(cvm.h).a(dxx.b).n().d(1.8F));
+   public static final djm mg = a("light_gray_concrete", dww.d.a().a(cvm.i).a(dxx.b).n().d(1.8F));
+   public static final djm mh = a("cyan_concrete", dww.d.a().a(cvm.j).a(dxx.b).n().d(1.8F));
+   public static final djm mi = a("purple_concrete", dww.d.a().a(cvm.k).a(dxx.b).n().d(1.8F));
+   public static final djm mj = a("blue_concrete", dww.d.a().a(cvm.l).a(dxx.b).n().d(1.8F));
+   public static final djm mk = a("brown_concrete", dww.d.a().a(cvm.m).a(dxx.b).n().d(1.8F));
+   public static final djm ml = a("green_concrete", dww.d.a().a(cvm.n).a(dxx.b).n().d(1.8F));
+   public static final djm mm = a("red_concrete", dww.d.a().a(cvm.o).a(dxx.b).n().d(1.8F));
+   public static final djm mn = a("black_concrete", dww.d.a().a(cvm.p).a(dxx.b).n().d(1.8F));
+   public static final djm mo = a("white_concrete_powder", $$0x -> new dky(lY, $$0x), dww.d.a().a(cvm.a).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mp = a("orange_concrete_powder", $$0x -> new dky(lZ, $$0x), dww.d.a().a(cvm.b).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mq = a("magenta_concrete_powder", $$0x -> new dky(ma, $$0x), dww.d.a().a(cvm.c).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mr = a("light_blue_concrete_powder", $$0x -> new dky(mb, $$0x), dww.d.a().a(cvm.d).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm ms = a("yellow_concrete_powder", $$0x -> new dky(mc, $$0x), dww.d.a().a(cvm.e).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mt = a("lime_concrete_powder", $$0x -> new dky(md, $$0x), dww.d.a().a(cvm.f).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mu = a("pink_concrete_powder", $$0x -> new dky(me, $$0x), dww.d.a().a(cvm.g).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mv = a("gray_concrete_powder", $$0x -> new dky(mf, $$0x), dww.d.a().a(cvm.h).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mw = a("light_gray_concrete_powder", $$0x -> new dky(mg, $$0x), dww.d.a().a(cvm.i).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mx = a("cyan_concrete_powder", $$0x -> new dky(mh, $$0x), dww.d.a().a(cvm.j).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm my = a("purple_concrete_powder", $$0x -> new dky(mi, $$0x), dww.d.a().a(cvm.k).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mz = a("blue_concrete_powder", $$0x -> new dky(mj, $$0x), dww.d.a().a(cvm.l).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mA = a("brown_concrete_powder", $$0x -> new dky(mk, $$0x), dww.d.a().a(cvm.m).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mB = a("green_concrete_powder", $$0x -> new dky(ml, $$0x), dww.d.a().a(cvm.n).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mC = a("red_concrete_powder", $$0x -> new dky(mm, $$0x), dww.d.a().a(cvm.o).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mD = a("black_concrete_powder", $$0x -> new dky(mn, $$0x), dww.d.a().a(cvm.p).a(dxx.c).d(0.5F).a(dre.j));
+   public static final djm mE = a("kelp", dns::new, dww.d.a().a(etd.m).b().e().d().a(dre.q).a(ete.b));
+   public static final djm mF = a("kelp_plant", dnt::new, dww.d.a().a(etd.m).b().d().a(dre.q).a(ete.b));
+   public static final djm mG = a("dried_kelp_block", dww.d.a().a(etd.B).a(0.5F, 2.5F).a(dre.d));
+   public static final djm mH = a("turtle_egg", dsj::new, dww.d.a().a(etd.c).k().d(0.5F).a(dre.g).e().c().a(ete.b));
+   public static final djm mI = a("sniffer_egg", dqz::new, dww.d.a().a(etd.C).d(0.5F).a(dre.g).c());
+   public static final djm mJ = a("dead_tube_coral_block", dww.d.a().a(etd.v).k().a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm mK = a("dead_brain_coral_block", dww.d.a().a(etd.v).k().a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm mL = a("dead_bubble_coral_block", dww.d.a().a(etd.v).k().a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm mM = a("dead_fire_coral_block", dww.d.a().a(etd.v).k().a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm mN = a("dead_horn_coral_block", dww.d.a().a(etd.v).k().a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm mO = a("tube_coral_block", $$0x -> new dlb(mJ, $$0x), dww.d.a().a(etd.z).a(dxx.b).n().a(1.5F, 6.0F).a(dre.r));
+   public static final djm mP = a("brain_coral_block", $$0x -> new dlb(mK, $$0x), dww.d.a().a(etd.u).a(dxx.b).n().a(1.5F, 6.0F).a(dre.r));
+   public static final djm mQ = a("bubble_coral_block", $$0x -> new dlb(mL, $$0x), dww.d.a().a(etd.y).a(dxx.b).n().a(1.5F, 6.0F).a(dre.r));
+   public static final djm mR = a("fire_coral_block", $$0x -> new dlb(mM, $$0x), dww.d.a().a(etd.C).a(dxx.b).n().a(1.5F, 6.0F).a(dre.r));
+   public static final djm mS = a("horn_coral_block", $$0x -> new dlb(mN, $$0x), dww.d.a().a(etd.s).a(dxx.b).n().a(1.5F, 6.0F).a(dre.r));
+   public static final djm mT = a("dead_tube_coral", div::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm mU = a("dead_brain_coral", div::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm mV = a("dead_bubble_coral", div::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm mW = a("dead_fire_coral", div::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm mX = a("dead_horn_coral", div::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm mY = a("tube_coral", $$0x -> new dld(mT, $$0x), dww.d.a().a(etd.z).b().d().a(dre.q).a(ete.b));
+   public static final djm mZ = a("brain_coral", $$0x -> new dld(mU, $$0x), dww.d.a().a(etd.u).b().d().a(dre.q).a(ete.b));
+   public static final djm na = a("bubble_coral", $$0x -> new dld(mV, $$0x), dww.d.a().a(etd.y).b().d().a(dre.q).a(ete.b));
+   public static final djm nb = a("fire_coral", $$0x -> new dld(mW, $$0x), dww.d.a().a(etd.C).b().d().a(dre.q).a(ete.b));
+   public static final djm nc = a("horn_coral", $$0x -> new dld(mX, $$0x), dww.d.a().a(etd.s).b().d().a(dre.q).a(ete.b));
+   public static final djm nd = a("dead_tube_coral_fan", diu::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm ne = a("dead_brain_coral_fan", diu::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm nf = a("dead_bubble_coral_fan", diu::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm ng = a("dead_fire_coral_fan", diu::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm nh = a("dead_horn_coral_fan", diu::new, dww.d.a().a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm ni = a("tube_coral_fan", $$0x -> new dlc(nd, $$0x), dww.d.a().a(etd.z).b().d().a(dre.q).a(ete.b));
+   public static final djm nj = a("brain_coral_fan", $$0x -> new dlc(ne, $$0x), dww.d.a().a(etd.u).b().d().a(dre.q).a(ete.b));
+   public static final djm nk = a("bubble_coral_fan", $$0x -> new dlc(nf, $$0x), dww.d.a().a(etd.y).b().d().a(dre.q).a(ete.b));
+   public static final djm nl = a("fire_coral_fan", $$0x -> new dlc(ng, $$0x), dww.d.a().a(etd.C).b().d().a(dre.q).a(ete.b));
+   public static final djm nm = a("horn_coral_fan", $$0x -> new dlc(nh, $$0x), dww.d.a().a(etd.s).b().d().a(dre.q).a(ete.b));
+   public static final djm nn = a("dead_tube_coral_wall_fan", dix::new, a(nd, false).a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm no = a("dead_brain_coral_wall_fan", dix::new, a(ne, false).a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm np = a("dead_bubble_coral_wall_fan", dix::new, a(nf, false).a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm nq = a("dead_fire_coral_wall_fan", dix::new, a(ng, false).a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm nr = a("dead_horn_coral_wall_fan", dix::new, a(nh, false).a(etd.v).k().a(dxx.b).n().b().d());
+   public static final djm ns = a("tube_coral_wall_fan", $$0x -> new dle(nn, $$0x), a(ni, false).a(etd.z).b().d().a(dre.q).a(ete.b));
+   public static final djm nt = a("brain_coral_wall_fan", $$0x -> new dle(no, $$0x), a(nj, false).a(etd.u).b().d().a(dre.q).a(ete.b));
+   public static final djm nu = a("bubble_coral_wall_fan", $$0x -> new dle(np, $$0x), a(nk, false).a(etd.y).b().d().a(dre.q).a(ete.b));
+   public static final djm nv = a("fire_coral_wall_fan", $$0x -> new dle(nq, $$0x), a(nl, false).a(etd.C).b().d().a(dre.q).a(ete.b));
+   public static final djm nw = a("horn_coral_wall_fan", $$0x -> new dle(nr, $$0x), a(nm, false).a(etd.s).b().d().a(dre.q).a(ete.b));
+   public static final djm nx = a("sea_pickle", dqo::new, dww.d.a().a(etd.B).a($$0x -> dqo.o($$0x) ? 0 : 3 + 3 * $$0x.c(dqo.c)).a(dre.o).c().a(ete.b));
+   public static final djm ny = a("blue_ice", dnd::new, dww.d.a().a(etd.f).d(2.8F).a(0.989F).a(dre.h));
+   public static final djm nz = a("conduit", dkz::new, dww.d.a().a(etd.F).k().a(dxx.d).d(3.0F).a($$0x -> 15).c());
+   public static final djm nA = a("bamboo_sapling", dip::new, dww.d.a().a(etd.n).k().e().d().b().d(1.0F).a(dre.t).a(dww.c.b).i().a(ete.b));
+   public static final djm nB = a("bamboo", diq::new, dww.d.a().a(etd.h).k().e().d().d(1.0F).a(dre.s).c().f().a(dww.c.b).i().a(ete.b).a(djo::b));
+   public static final djm nC = a("potted_bamboo", $$0x -> new dmq(nB, $$0x), c());
+   public static final djm nD = a("void_air", dij::new, dww.d.a().p().b().g().m());
+   public static final djm nE = a("cave_air", dij::new, dww.d.a().p().b().g().m());
+   public static final djm nF = a("bubble_column", djt::new, dww.d.a().a(etd.m).p().b().g().a(ete.b).j().a(dre.a));
+   public static final djm nG = a("polished_granite_stairs", d);
+   public static final djm nH = a("smooth_red_sandstone_stairs", kt);
+   public static final djm nI = a("mossy_stone_brick_stairs", eW);
+   public static final djm nJ = a("polished_diorite_stairs", f);
+   public static final djm nK = a("mossy_cobblestone_stairs", cu);
+   public static final djm nL = a("end_stone_brick_stairs", lb);
+   public static final djm nM = a("stone_stairs", b);
+   public static final djm nN = a("smooth_sandstone_stairs", kr);
+   public static final djm nO = a("smooth_quartz_stairs", ks);
+   public static final djm nP = a("granite_stairs", c);
+   public static final djm nQ = a("andesite_stairs", g);
+   public static final djm nR = a("red_nether_brick_stairs", ln);
+   public static final djm nS = a("polished_andesite_stairs", h);
+   public static final djm nT = a("diorite_stairs", e);
+   public static final djm nU = a("polished_granite_slab", dqu::new, dww.d.b(d));
+   public static final djm nV = a("smooth_red_sandstone_slab", dqu::new, dww.d.b(kt));
+   public static final djm nW = a("mossy_stone_brick_slab", dqu::new, dww.d.b(eW));
+   public static final djm nX = a("polished_diorite_slab", dqu::new, dww.d.b(f));
+   public static final djm nY = a("mossy_cobblestone_slab", dqu::new, dww.d.b(cu));
+   public static final djm nZ = a("end_stone_brick_slab", dqu::new, dww.d.b(lb));
+   public static final djm oa = a("smooth_sandstone_slab", dqu::new, dww.d.b(kr));
+   public static final djm ob = a("smooth_quartz_slab", dqu::new, dww.d.b(ks));
+   public static final djm oc = a("granite_slab", dqu::new, dww.d.b(c));
+   public static final djm od = a("andesite_slab", dqu::new, dww.d.b(g));
+   public static final djm oe = a("red_nether_brick_slab", dqu::new, dww.d.b(ln));
+   public static final djm of = a("polished_andesite_slab", dqu::new, dww.d.b(h));
+   public static final djm og = a("diorite_slab", dqu::new, dww.d.b(e));
+   public static final djm oh = a("brick_wall", dsp::new, dww.d.b(cq).k());
+   public static final djm oi = a("prismarine_wall", dsp::new, dww.d.b(ix).k());
+   public static final djm oj = a("red_sandstone_wall", dsp::new, dww.d.b(jN).k());
+   public static final djm ok = a("mossy_stone_brick_wall", dsp::new, dww.d.b(eW).k());
+   public static final djm ol = a("granite_wall", dsp::new, dww.d.b(c).k());
+   public static final djm om = a("stone_brick_wall", dsp::new, dww.d.b(eV).k());
+   public static final djm on = a("mud_brick_wall", dsp::new, dww.d.b(fa).k());
+   public static final djm oo = a("nether_brick_wall", dsp::new, dww.d.b(fI).k());
+   public static final djm op = a("andesite_wall", dsp::new, dww.d.b(g).k());
+   public static final djm oq = a("red_nether_brick_wall", dsp::new, dww.d.b(ln).k());
+   public static final djm or = a("sandstone_wall", dsp::new, dww.d.b(bc).k());
+   public static final djm os = a("end_stone_brick_wall", dsp::new, dww.d.b(lb).k());
+   public static final djm ot = a("diorite_wall", dsp::new, dww.d.b(e).k());
+   public static final djm ou = a("scaffolding", dqg::new, dww.d.a().a(etd.c).b().a(dre.u).f().a(djo::a).a(ete.b).a(djo::b));
+   public static final djm ov = a("loom", dog::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm ow = a("barrel", dis::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm ox = a("smoker", dqy::new, dww.d.a().a(etd.l).a(dxx.b).n().d(3.5F).a(a(13)));
+   public static final djm oy = a("blast_furnace", djl::new, dww.d.a().a(etd.l).a(dxx.b).n().d(3.5F).a(a(13)));
+   public static final djm oz = a("cartography_table", dkg::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm oA = a("fletching_table", dmo::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm oB = a("grindstone", dmz::new, dww.d.a().a(etd.g).n().a(2.0F, 6.0F).a(dre.f).a(ete.c));
+   public static final djm oC = a("lectern", dnz::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm oD = a("smithing_table", dqx::new, dww.d.a().a(etd.n).a(dxx.e).d(2.5F).a(dre.b).i());
+   public static final djm oE = a("stonecutter", dro::new, dww.d.a().a(etd.l).a(dxx.b).n().d(3.5F));
+   public static final djm oF = a("bell", dji::new, dww.d.a().a(etd.E).k().d(5.0F).a(dre.n).a(ete.b));
+   public static final djm oG = a("lantern", dnv::new, dww.d.a().a(etd.g).k().d(3.5F).a(dre.A).a($$0x -> 15).c().a(ete.b));
+   public static final djm oH = a("soul_lantern", dnv::new, dww.d.a().a(etd.g).k().d(3.5F).a(dre.A).a($$0x -> 10).c().a(ete.b));
+   public static final djm oI = a("campfire", $$0x -> new dkb(true, 1, $$0x), dww.d.a().a(etd.I).a(dxx.e).d(2.0F).a(dre.b).a(a(15)).c().i());
+   public static final djm oJ = a("soul_campfire", $$0x -> new dkb(false, 2, $$0x), dww.d.a().a(etd.I).a(dxx.e).d(2.0F).a(dre.b).a(a(10)).c().i());
+   public static final djm oK = a("sweet_berry_bush", dru::new, dww.d.a().a(etd.h).e().b().a(dre.v).a(ete.b));
+   public static final djm oL = a("warped_stem", dqd::new, b(etd.ae));
+   public static final djm oM = a("stripped_warped_stem", dqd::new, b(etd.ae));
+   public static final djm oN = a("warped_hyphae", dqd::new, dww.d.a().a(etd.af).a(dxx.e).d(2.0F).a(dre.B));
+   public static final djm oO = a("stripped_warped_hyphae", dqd::new, dww.d.a().a(etd.af).a(dxx.e).d(2.0F).a(dre.B));
+   public static final djm oP = a("warped_nylium", doz::new, dww.d.a().a(etd.ad).a(dxx.b).n().d(0.4F).a(dre.C).e());
+   public static final djm oQ = a("warped_fungus", $$0x -> new dmt(rk.d, oP, $$0x), dww.d.a().a(etd.x).d().b().a(dre.D).a(ete.b));
+   public static final djm oR = a("warped_wart_block", dww.d.a().a(etd.ag).d(1.0F).a(dre.L));
+   public static final djm oS = a("warped_roots", dqc::new, dww.d.a().a(etd.x).p().b().d().a(dre.E).a(dww.c.b).a(ete.b));
+   public static final djm oT = a("nether_sprouts", dou::new, dww.d.a().a(etd.x).p().b().d().a(dre.O).a(dww.c.b).a(ete.b));
+   public static final djm oU = a("crimson_stem", dqd::new, b(etd.ab));
+   public static final djm oV = a("stripped_crimson_stem", dqd::new, b(etd.ab));
+   public static final djm oW = a("crimson_hyphae", dqd::new, dww.d.a().a(etd.ac).a(dxx.e).d(2.0F).a(dre.B));
+   public static final djm oX = a("stripped_crimson_hyphae", dqd::new, dww.d.a().a(etd.ac).a(dxx.e).d(2.0F).a(dre.B));
+   public static final djm oY = a("crimson_nylium", doz::new, dww.d.a().a(etd.aa).a(dxx.b).n().d(0.4F).a(dre.C).e());
+   public static final djm oZ = a("crimson_fungus", $$0x -> new dmt(rk.b, oY, $$0x), dww.d.a().a(etd.J).d().b().a(dre.D).a(ete.b));
+   public static final djm pa = a("shroomlight", dww.d.a().a(etd.C).d(1.0F).a(dre.F).a($$0x -> 15));
+   public static final djm pb = a("weeping_vines", dtf::new, dww.d.a().a(etd.J).e().b().d().a(dre.G).a(ete.b));
+   public static final djm pc = a("weeping_vines_plant", dtg::new, dww.d.a().a(etd.J).b().d().a(dre.G).a(ete.b));
+   public static final djm pd = a("twisting_vines", dsk::new, dww.d.a().a(etd.x).e().b().d().a(dre.G).a(ete.b));
+   public static final djm pe = a("twisting_vines_plant", dsl::new, dww.d.a().a(etd.x).b().d().a(dre.G).a(ete.b));
+   public static final djm pf = a("crimson_roots", dqc::new, dww.d.a().a(etd.J).p().b().d().a(dre.E).a(dww.c.b).a(ete.b));
+   public static final djm pg = a("crimson_planks", dww.d.a().a(etd.ab).a(dxx.e).a(2.0F, 3.0F).a(dre.aT));
+   public static final djm ph = a("warped_planks", dww.d.a().a(etd.ae).a(dxx.e).a(2.0F, 3.0F).a(dre.aT));
+   public static final djm pi = a("crimson_slab", dqu::new, dww.d.a().a(pg.w()).a(dxx.e).a(2.0F, 3.0F).a(dre.aT));
+   public static final djm pj = a("warped_slab", dqu::new, dww.d.a().a(ph.w()).a(dxx.e).a(2.0F, 3.0F).a(dre.aT));
+   public static final djm pk = a("crimson_pressure_plate", $$0x -> new dpo(dxm.o, $$0x), dww.d.a().a(pg.w()).k().a(dxx.e).b().d(0.5F).a(ete.b));
+   public static final djm pl = a("warped_pressure_plate", $$0x -> new dpo(dxm.p, $$0x), dww.d.a().a(ph.w()).k().a(dxx.e).b().d(0.5F).a(ete.b));
+   public static final djm pm = a("crimson_fence", dml::new, dww.d.a().a(pg.w()).a(dxx.e).a(2.0F, 3.0F).a(dre.aT));
+   public static final djm pn = a("warped_fence", dml::new, dww.d.a().a(ph.w()).a(dxx.e).a(2.0F, 3.0F).a(dre.aT));
+   public static final djm po = a("crimson_trapdoor", $$0x -> new dse(dxm.o, $$0x), dww.d.a().a(pg.w()).a(dxx.e).d(3.0F).c().a(djo::a));
+   public static final djm pp = a("warped_trapdoor", $$0x -> new dse(dxm.p, $$0x), dww.d.a().a(ph.w()).a(dxx.e).d(3.0F).c().a(djo::a));
+   public static final djm pq = a("crimson_fence_gate", $$0x -> new dmm(dyj.j, $$0x), dww.d.a().a(pg.w()).k().a(dxx.e).a(2.0F, 3.0F));
+   public static final djm pr = a("warped_fence_gate", $$0x -> new dmm(dyj.k, $$0x), dww.d.a().a(ph.w()).k().a(dxx.e).a(2.0F, 3.0F));
+   public static final djm ps = a("crimson_stairs", pg);
+   public static final djm pt = a("warped_stairs", ph);
+   public static final djm pu = a("crimson_button", $$0x -> new djx(dxm.o, 30, $$0x), b());
+   public static final djm pv = a("warped_button", $$0x -> new djx(dxm.p, 30, $$0x), b());
+   public static final djm pw = a("crimson_door", $$0x -> new dlt(dxm.o, $$0x), dww.d.a().a(pg.w()).a(dxx.e).d(3.0F).c().a(ete.b));
+   public static final djm px = a("warped_door", $$0x -> new dlt(dxm.p, $$0x), dww.d.a().a(ph.w()).a(dxx.e).d(3.0F).c().a(ete.b));
+   public static final djm py = a("crimson_sign", $$0x -> new drm(dyj.j, $$0x), dww.d.a().a(pg.w()).a(dxx.e).k().b().d(1.0F));
+   public static final djm pz = a("warped_sign", $$0x -> new drm(dyj.k, $$0x), dww.d.a().a(ph.w()).a(dxx.e).k().b().d(1.0F));
+   public static final djm pA = a("crimson_wall_sign", $$0x -> new dsr(dyj.j, $$0x), a(py, true).a(pg.w()).a(dxx.e).k().b().d(1.0F));
+   public static final djm pB = a("warped_wall_sign", $$0x -> new dsr(dyj.k, $$0x), a(pz, true).a(ph.w()).a(dxx.e).k().b().d(1.0F));
+   public static final djm pC = a("structure_block", drp::new, dww.d.a().a(etd.w).n().a(-1.0F, 3600000.0F).g());
+   public static final djm pD = a("jigsaw", dnq::new, dww.d.a().a(etd.w).n().a(-1.0F, 3600000.0F).g());
+   public static final djm pE = a("composter", dkx::new, dww.d.a().a(etd.n).a(dxx.e).d(0.6F).a(dre.b).i());
+   public static final djm pF = a("target", dry::new, dww.d.a().a(etd.o).d(0.5F).a(dre.d));
+   public static final djm pG = a("bee_nest", djg::new, dww.d.a().a(etd.s).a(dxx.e).d(0.3F).a(dre.b).i());
+   public static final djm pH = a("beehive", djg::new, dww.d.a().a(etd.n).a(dxx.e).d(0.6F).a(dre.b).i());
+   public static final djm pI = a("honey_block", dni::new, dww.d.a().a(etd.p).b(0.4F).c(0.5F).c().a(dre.p));
+   public static final djm pJ = a("honeycomb_block", dww.d.a().a(etd.p).d(0.6F).a(dre.r));
+   public static final djm pK = a("netherite_block", dww.d.a().a(etd.D).n().a(50.0F, 1200.0F).a(dre.R));
+   public static final djm pL = a("ancient_debris", dww.d.a().a(etd.D).n().a(30.0F, 1200.0F).a(dre.S));
+   public static final djm pM = a("crying_obsidian", dlk::new, dww.d.a().a(etd.D).a(dxx.b).n().a(50.0F, 1200.0F).a($$0x -> 10));
+   public static final djm pN = a("respawn_anchor", dpz::new, dww.d.a().a(etd.D).a(dxx.b).n().a(50.0F, 1200.0F).a($$0x -> dpz.a($$0x, 15)));
+   public static final djm pO = a("potted_crimson_fungus", $$0x -> new dmq(oZ, $$0x), c());
+   public static final djm pP = a("potted_warped_fungus", $$0x -> new dmq(oQ, $$0x), c());
+   public static final djm pQ = a("potted_crimson_roots", $$0x -> new dmq(pf, $$0x), c());
+   public static final djm pR = a("potted_warped_roots", $$0x -> new dmq(oS, $$0x), c());
+   public static final djm pS = a("lodestone", dww.d.a().a(etd.g).n().d(3.5F).a(dre.T).a(ete.c));
+   public static final djm pT = a("blackstone", dww.d.a().a(etd.D).a(dxx.b).n().a(1.5F, 6.0F));
+   public static final djm pU = a("blackstone_stairs", pT);
+   public static final djm pV = a("blackstone_wall", dsp::new, dww.d.b(pT).k());
+   public static final djm pW = a("blackstone_slab", dqu::new, dww.d.b(pT).a(2.0F, 6.0F));
+   public static final djm pX = a("polished_blackstone", dww.d.b(pT).a(2.0F, 6.0F));
+   public static final djm pY = a("polished_blackstone_bricks", dww.d.b(pX).a(1.5F, 6.0F));
+   public static final djm pZ = a("cracked_polished_blackstone_bricks", dww.d.b(pY));
+   public static final djm qa = a("chiseled_polished_blackstone", dww.d.b(pX).a(1.5F, 6.0F));
+   public static final djm qb = a("polished_blackstone_brick_slab", dqu::new, dww.d.b(pY).a(2.0F, 6.0F));
+   public static final djm qc = a("polished_blackstone_brick_stairs", pY);
+   public static final djm qd = a("polished_blackstone_brick_wall", dsp::new, dww.d.b(pY).k());
+   public static final djm qe = a("gilded_blackstone", dww.d.b(pT).a(dre.W));
+   public static final djm qf = a("polished_blackstone_stairs", pX);
+   public static final djm qg = a("polished_blackstone_slab", dqu::new, dww.d.b(pX));
+   public static final djm qh = a("polished_blackstone_pressure_plate", $$0x -> new dpo(dxm.f, $$0x), dww.d.a().a(etd.D).k().a(dxx.b).b().d(0.5F).a(ete.b));
+   public static final djm qi = a("polished_blackstone_button", $$0x -> new djx(dxm.e, 20, $$0x), b());
+   public static final djm qj = a("polished_blackstone_wall", dsp::new, dww.d.b(pX).k());
+   public static final djm qk = a("chiseled_nether_bricks", dww.d.a().a(etd.J).a(dxx.b).n().a(2.0F, 6.0F).a(dre.N));
+   public static final djm ql = a("cracked_nether_bricks", dww.d.a().a(etd.J).a(dxx.b).n().a(2.0F, 6.0F).a(dre.N));
+   public static final djm qm = a("quartz_bricks", dww.d.b(hA));
+   public static final djm qn = a("candle", dkc::new, d(etd.c));
+   public static final djm qo = a("white_candle", dkc::new, d(etd.d));
+   public static final djm qp = a("orange_candle", dkc::new, d(etd.p));
+   public static final djm qq = a("magenta_candle", dkc::new, d(etd.q));
+   public static final djm qr = a("light_blue_candle", dkc::new, d(etd.r));
+   public static final djm qs = a("yellow_candle", dkc::new, d(etd.s));
+   public static final djm qt = a("lime_candle", dkc::new, d(etd.t));
+   public static final djm qu = a("pink_candle", dkc::new, d(etd.u));
+   public static final djm qv = a("gray_candle", dkc::new, d(etd.v));
+   public static final djm qw = a("light_gray_candle", dkc::new, d(etd.w));
+   public static final djm qx = a("cyan_candle", dkc::new, d(etd.x));
+   public static final djm qy = a("purple_candle", dkc::new, d(etd.y));
+   public static final djm qz = a("blue_candle", dkc::new, d(etd.z));
+   public static final djm qA = a("brown_candle", dkc::new, d(etd.A));
+   public static final djm qB = a("green_candle", dkc::new, d(etd.B));
+   public static final djm qC = a("red_candle", dkc::new, d(etd.C));
+   public static final djm qD = a("black_candle", dkc::new, d(etd.D));
+   public static final djm qE = a("candle_cake", $$0x -> new dkd(qn, $$0x), dww.d.b(et).a(a(3)));
+   public static final djm qF = a("white_candle_cake", $$0x -> new dkd(qo, $$0x), dww.d.b(qE));
+   public static final djm qG = a("orange_candle_cake", $$0x -> new dkd(qp, $$0x), dww.d.b(qE));
+   public static final djm qH = a("magenta_candle_cake", $$0x -> new dkd(qq, $$0x), dww.d.b(qE));
+   public static final djm qI = a("light_blue_candle_cake", $$0x -> new dkd(qr, $$0x), dww.d.b(qE));
+   public static final djm qJ = a("yellow_candle_cake", $$0x -> new dkd(qs, $$0x), dww.d.b(qE));
+   public static final djm qK = a("lime_candle_cake", $$0x -> new dkd(qt, $$0x), dww.d.b(qE));
+   public static final djm qL = a("pink_candle_cake", $$0x -> new dkd(qu, $$0x), dww.d.b(qE));
+   public static final djm qM = a("gray_candle_cake", $$0x -> new dkd(qv, $$0x), dww.d.b(qE));
+   public static final djm qN = a("light_gray_candle_cake", $$0x -> new dkd(qw, $$0x), dww.d.b(qE));
+   public static final djm qO = a("cyan_candle_cake", $$0x -> new dkd(qx, $$0x), dww.d.b(qE));
+   public static final djm qP = a("purple_candle_cake", $$0x -> new dkd(qy, $$0x), dww.d.b(qE));
+   public static final djm qQ = a("blue_candle_cake", $$0x -> new dkd(qz, $$0x), dww.d.b(qE));
+   public static final djm qR = a("brown_candle_cake", $$0x -> new dkd(qA, $$0x), dww.d.b(qE));
+   public static final djm qS = a("green_candle_cake", $$0x -> new dkd(qB, $$0x), dww.d.b(qE));
+   public static final djm qT = a("red_candle_cake", $$0x -> new dkd(qC, $$0x), dww.d.b(qE));
+   public static final djm qU = a("black_candle_cake", $$0x -> new dkd(qD, $$0x), dww.d.b(qE));
+   public static final djm qV = a("amethyst_block", dik::new, dww.d.a().a(etd.y).d(1.5F).a(dre.Y).n());
+   public static final djm qW = a("budding_amethyst", djv::new, dww.d.a().a(etd.y).e().d(1.5F).a(dre.Y).n().a(ete.b));
+   public static final djm qX = a("amethyst_cluster", $$0x -> new dil(7.0F, 3.0F, $$0x), dww.d.a().a(etd.y).k().c().a(dre.Z).d(1.5F).a($$0x -> 5).a(ete.b));
+   public static final djm qY = a("large_amethyst_bud", $$0x -> new dil(5.0F, 3.0F, $$0x), dww.d.b(qX).a(dre.ab).a($$0x -> 4));
+   public static final djm qZ = a("medium_amethyst_bud", $$0x -> new dil(4.0F, 3.0F, $$0x), dww.d.b(qX).a(dre.ac).a($$0x -> 2));
+   public static final djm ra = a("small_amethyst_bud", $$0x -> new dil(3.0F, 4.0F, $$0x), dww.d.b(qX).a(dre.aa).a($$0x -> 1));
+   public static final djm rb = a("tuff", dww.d.a().a(etd.R).a(dxx.b).a(dre.ad).n().a(1.5F, 6.0F));
+   public static final djm rc = a("tuff_slab", dqu::new, dww.d.b(rb));
+   public static final djm rd = a("tuff_stairs", $$0x -> new drl(rb.m(), $$0x), dww.d.b(rb));
+   public static final djm re = a("tuff_wall", dsp::new, dww.d.b(rb).k());
+   public static final djm rf = a("polished_tuff", dww.d.b(rb).a(dre.af));
+   public static final djm rg = a("polished_tuff_slab", dqu::new, dww.d.b(rf));
+   public static final djm rh = a("polished_tuff_stairs", $$0x -> new drl(rf.m(), $$0x), dww.d.b(rf));
+   public static final djm ri = a("polished_tuff_wall", dsp::new, dww.d.b(rf).k());
+   public static final djm rj = a("chiseled_tuff", dww.d.b(rb));
+   public static final djm rk = a("tuff_bricks", dww.d.b(rb).a(dre.ae));
+   public static final djm rl = a("tuff_brick_slab", dqu::new, dww.d.b(rk));
+   public static final djm rm = a("tuff_brick_stairs", $$0x -> new drl(rk.m(), $$0x), dww.d.b(rk));
+   public static final djm rn = a("tuff_brick_wall", dsp::new, dww.d.b(rk).k());
+   public static final djm ro = a("chiseled_tuff_bricks", dww.d.b(rk));
+   public static final djm rp = a("calcite", dww.d.a().a(etd.K).a(dxx.b).a(dre.ag).n().d(0.75F));
+   public static final djm rq = a("tinted_glass", drz::new, dww.d.b(aX).a(etd.v).c().a(djo::a).a(djo::b).b(djo::b).c(djo::b));
+   public static final djm rr = a("powder_snow", dpl::new, dww.d.a().a(etd.i).d(0.25F).a(dre.l).f().c().a(djo::b));
+   public static final djm rs = a("sculk_sensor", dqk::new, dww.d.a().a(etd.x).d(1.5F).a(dre.ay).a($$0x -> 1).e(($$0x, $$1x, $$2) -> dqk.o($$0x) == dyd.b));
+   public static final djm rt = a("calibrated_sculk_sensor", dka::new, dww.d.b(rs));
+   public static final djm ru = a("sculk", dqi::new, dww.d.a().a(etd.D).d(0.2F).a(dre.aA));
+   public static final djm rv = a("sculk_vein", dqn::new, dww.d.a().a(etd.D).k().b().d(0.2F).a(dre.aB).a(ete.b));
+   public static final djm rw = a("sculk_catalyst", dqj::new, dww.d.a().a(etd.D).a(3.0F, 3.0F).a(dre.az).a($$0x -> 6));
+   public static final djm rx = a("sculk_shrieker", dql::new, dww.d.a().a(etd.D).a(3.0F, 3.0F).a(dre.aC));
+   public static final djm ry = a("copper_block", $$0x -> new dsz(dsw.a.a, $$0x), dww.d.a().a(etd.p).n().a(3.0F, 6.0F).a(dre.aj));
+   public static final djm rz = a("exposed_copper", $$0x -> new dsz(dsw.a.b, $$0x), dww.d.a(ry).a(etd.S));
+   public static final djm rA = a("weathered_copper", $$0x -> new dsz(dsw.a.c, $$0x), dww.d.a(ry).a(etd.ae));
+   public static final djm rB = a("oxidized_copper", $$0x -> new dsz(dsw.a.d, $$0x), dww.d.a(ry).a(etd.ad));
+   public static final djm rC = a("copper_ore", $$0x -> new dlx(brl.a(0), $$0x), dww.d.b(S));
+   public static final djm rD = a("deepslate_copper_ore", $$0x -> new dlx(brl.a(0), $$0x), dww.d.b(rC).a(etd.ah).a(4.5F, 3.0F).a(dre.aE));
+   public static final djm rE = a("oxidized_cut_copper", $$0x -> new dsz(dsw.a.d, $$0x), dww.d.a(rB));
+   public static final djm rF = a("weathered_cut_copper", $$0x -> new dsz(dsw.a.c, $$0x), dww.d.a(rA));
+   public static final djm rG = a("exposed_cut_copper", $$0x -> new dsz(dsw.a.b, $$0x), dww.d.a(rz));
+   public static final djm rH = a("cut_copper", $$0x -> new dsz(dsw.a.a, $$0x), dww.d.a(ry));
+   public static final djm rI = a("oxidized_chiseled_copper", $$0x -> new dsz(dsw.a.d, $$0x), dww.d.a(rB));
+   public static final djm rJ = a("weathered_chiseled_copper", $$0x -> new dsz(dsw.a.c, $$0x), dww.d.a(rA));
+   public static final djm rK = a("exposed_chiseled_copper", $$0x -> new dsz(dsw.a.b, $$0x), dww.d.a(rz));
+   public static final djm rL = a("chiseled_copper", $$0x -> new dsz(dsw.a.a, $$0x), dww.d.a(ry));
+   public static final djm rM = a("waxed_oxidized_chiseled_copper", dww.d.a(rI));
+   public static final djm rN = a("waxed_weathered_chiseled_copper", dww.d.a(rJ));
+   public static final djm rO = a("waxed_exposed_chiseled_copper", dww.d.a(rK));
+   public static final djm rP = a("waxed_chiseled_copper", dww.d.a(rL));
+   public static final djm rQ = a("oxidized_cut_copper_stairs", $$0x -> new dtc(dsw.a.d, rE.m(), $$0x), dww.d.a(rE));
+   public static final djm rR = a("weathered_cut_copper_stairs", $$0x -> new dtc(dsw.a.c, rF.m(), $$0x), dww.d.a(rA));
+   public static final djm rS = a("exposed_cut_copper_stairs", $$0x -> new dtc(dsw.a.b, rG.m(), $$0x), dww.d.a(rz));
+   public static final djm rT = a("cut_copper_stairs", $$0x -> new dtc(dsw.a.a, rH.m(), $$0x), dww.d.a(ry));
+   public static final djm rU = a("oxidized_cut_copper_slab", $$0x -> new dtb(dsw.a.d, $$0x), dww.d.a(rE));
+   public static final djm rV = a("weathered_cut_copper_slab", $$0x -> new dtb(dsw.a.c, $$0x), dww.d.a(rF));
+   public static final djm rW = a("exposed_cut_copper_slab", $$0x -> new dtb(dsw.a.b, $$0x), dww.d.a(rG));
+   public static final djm rX = a("cut_copper_slab", $$0x -> new dtb(dsw.a.a, $$0x), dww.d.a(rH));
+   public static final djm rY = a("waxed_copper_block", dww.d.a(ry));
+   public static final djm rZ = a("waxed_weathered_copper", dww.d.a(rA));
+   public static final djm sa = a("waxed_exposed_copper", dww.d.a(rz));
+   public static final djm sb = a("waxed_oxidized_copper", dww.d.a(rB));
+   public static final djm sc = a("waxed_oxidized_cut_copper", dww.d.a(rB));
+   public static final djm sd = a("waxed_weathered_cut_copper", dww.d.a(rA));
+   public static final djm se = a("waxed_exposed_cut_copper", dww.d.a(rz));
+   public static final djm sf = a("waxed_cut_copper", dww.d.a(ry));
+   public static final djm sg = b("waxed_oxidized_cut_copper_stairs", sc);
+   public static final djm sh = b("waxed_weathered_cut_copper_stairs", sd);
+   public static final djm si = b("waxed_exposed_cut_copper_stairs", se);
+   public static final djm sj = b("waxed_cut_copper_stairs", sf);
+   public static final djm sk = a("waxed_oxidized_cut_copper_slab", dqu::new, dww.d.a(sc).n());
+   public static final djm sl = a("waxed_weathered_cut_copper_slab", dqu::new, dww.d.a(sd).n());
+   public static final djm sm = a("waxed_exposed_cut_copper_slab", dqu::new, dww.d.a(se).n());
+   public static final djm sn = a("waxed_cut_copper_slab", dqu::new, dww.d.a(sf).n());
+   public static final djm so = a("copper_door", $$0x -> new dsy(dxm.c, dsw.a.a, $$0x), dww.d.a().a(ry.w()).a(3.0F, 6.0F).c().a(ete.b));
+   public static final djm sp = a("exposed_copper_door", $$0x -> new dsy(dxm.c, dsw.a.b, $$0x), dww.d.a(so).a(rz.w()));
+   public static final djm sq = a("oxidized_copper_door", $$0x -> new dsy(dxm.c, dsw.a.d, $$0x), dww.d.a(so).a(rB.w()));
+   public static final djm sr = a("weathered_copper_door", $$0x -> new dsy(dxm.c, dsw.a.c, $$0x), dww.d.a(so).a(rA.w()));
+   public static final djm ss = a("waxed_copper_door", $$0x -> new dlt(dxm.c, $$0x), dww.d.a(so));
+   public static final djm st = a("waxed_exposed_copper_door", $$0x -> new dlt(dxm.c, $$0x), dww.d.a(sp));
+   public static final djm su = a("waxed_oxidized_copper_door", $$0x -> new dlt(dxm.c, $$0x), dww.d.a(sq));
+   public static final djm sv = a("waxed_weathered_copper_door", $$0x -> new dlt(dxm.c, $$0x), dww.d.a(sr));
+   public static final djm sw = a("copper_trapdoor", $$0x -> new dtd(dxm.c, dsw.a.a, $$0x), dww.d.a().a(ry.w()).a(3.0F, 6.0F).n().c().a(djo::a));
+   public static final djm sx = a("exposed_copper_trapdoor", $$0x -> new dtd(dxm.c, dsw.a.b, $$0x), dww.d.a(sw).a(rz.w()));
+   public static final djm sy = a("oxidized_copper_trapdoor", $$0x -> new dtd(dxm.c, dsw.a.d, $$0x), dww.d.a(sw).a(rB.w()));
+   public static final djm sz = a("weathered_copper_trapdoor", $$0x -> new dtd(dxm.c, dsw.a.c, $$0x), dww.d.a(sw).a(rA.w()));
+   public static final djm sA = a("waxed_copper_trapdoor", $$0x -> new dse(dxm.c, $$0x), dww.d.a(sw));
+   public static final djm sB = a("waxed_exposed_copper_trapdoor", $$0x -> new dse(dxm.c, $$0x), dww.d.a(sx));
+   public static final djm sC = a("waxed_oxidized_copper_trapdoor", $$0x -> new dse(dxm.c, $$0x), dww.d.a(sy));
+   public static final djm sD = a("waxed_weathered_copper_trapdoor", $$0x -> new dse(dxm.c, $$0x), dww.d.a(sz));
+   public static final djm sE = a(
+      "copper_grate", $$0x -> new dta(dsw.a.a, $$0x), dww.d.a().a(3.0F, 6.0F).a(dre.al).a(etd.p).c().n().a(djo::a).a(djo::b).b(djo::b).c(djo::b)
+   );
+   public static final djm sF = a("exposed_copper_grate", $$0x -> new dta(dsw.a.b, $$0x), dww.d.a(sE).a(etd.S));
+   public static final djm sG = a("weathered_copper_grate", $$0x -> new dta(dsw.a.c, $$0x), dww.d.a(sE).a(etd.ae));
+   public static final djm sH = a("oxidized_copper_grate", $$0x -> new dta(dsw.a.d, $$0x), dww.d.a(sE).a(etd.ad));
+   public static final djm sI = a("waxed_copper_grate", dsv::new, dww.d.a(sE));
+   public static final djm sJ = a("waxed_exposed_copper_grate", dsv::new, dww.d.a(sF));
+   public static final djm sK = a("waxed_weathered_copper_grate", dsv::new, dww.d.a(sG));
+   public static final djm sL = a("waxed_oxidized_copper_grate", dsv::new, dww.d.a(sH));
+   public static final djm sM = a("copper_bulb", $$0x -> new dsx(dsw.a.a, $$0x), dww.d.a().a(ry.w()).a(3.0F, 6.0F).a(dre.ak).n().a(djo::b).a(a(15)));
+   public static final djm sN = a("exposed_copper_bulb", $$0x -> new dsx(dsw.a.b, $$0x), dww.d.a(sM).a(etd.S).a(a(12)));
+   public static final djm sO = a("weathered_copper_bulb", $$0x -> new dsx(dsw.a.c, $$0x), dww.d.a(sM).a(etd.ae).a(a(8)));
+   public static final djm sP = a("oxidized_copper_bulb", $$0x -> new dsx(dsw.a.d, $$0x), dww.d.a(sM).a(etd.ad).a(a(4)));
+   public static final djm sQ = a("waxed_copper_bulb", dla::new, dww.d.a(sM));
+   public static final djm sR = a("waxed_exposed_copper_bulb", dla::new, dww.d.a(sN));
+   public static final djm sS = a("waxed_weathered_copper_bulb", dla::new, dww.d.a(sO));
+   public static final djm sT = a("waxed_oxidized_copper_bulb", dla::new, dww.d.a(sP));
+   public static final djm sU = a("lightning_rod", dod::new, dww.d.a().a(etd.p).k().n().a(3.0F, 6.0F).a(dre.aj).c());
+   public static final djm sV = a(
+      "pointed_dripstone", dpi::new, dww.d.a().a(etd.W).k().a(dxx.b).c().a(dre.ai).e().a(1.5F, 3.0F).f().a(dww.c.b).a(ete.b).a(djo::b)
+   );
+   public static final djm sW = a("dripstone_block", dww.d.a().a(etd.W).a(dxx.b).a(dre.ah).n().a(1.5F, 1.0F));
+   public static final djm sX = a("cave_vines", dkk::new, dww.d.a().a(etd.h).e().b().a(dkj.i_(14)).d().a(dre.am).a(ete.b));
+   public static final djm sY = a("cave_vines_plant", dkl::new, dww.d.a().a(etd.h).b().a(dkj.i_(14)).d().a(dre.am).a(ete.b));
+   public static final djm sZ = a("spore_blossom", drh::new, dww.d.a().a(etd.h).d().b().a(dre.an).a(ete.b));
+   public static final djm ta = a("azalea", dio::new, dww.d.a().a(etd.h).l().d().a(dre.ao).c().a(ete.b));
+   public static final djm tb = a("flowering_azalea", dio::new, dww.d.a().a(etd.h).l().d().a(dre.ap).c().a(ete.b));
+   public static final djm tc = a("moss_carpet", dke::new, dww.d.a().a(etd.B).d(0.1F).a(dre.aq).a(ete.b));
+   public static final djm td = a("pink_petals", dpd::new, dww.d.a().a(etd.h).b().a(dre.ar).a(ete.b));
+   public static final djm te = a("moss_block", $$0x -> new djq(rd.n, $$0x), dww.d.a().a(etd.B).d(0.1F).a(dre.as).a(ete.b));
+   public static final djm tf = a("big_dripleaf", djj::new, dww.d.a().a(etd.h).l().d(0.1F).a(dre.at).a(ete.b));
+   public static final djm tg = a("big_dripleaf_stem", djk::new, dww.d.a().a(etd.h).b().d(0.1F).a(dre.at).a(ete.b));
+   public static final djm th = a("small_dripleaf", dqw::new, dww.d.a().a(etd.h).b().d().a(dre.au).a(dww.c.c).a(ete.b));
+   public static final djm ti = a("hanging_roots", dnf::new, dww.d.a().a(etd.k).p().b().d().a(dre.aw).a(dww.c.b).i().a(ete.b));
+   public static final djm tj = a("rooted_dirt", dqb::new, dww.d.a().a(etd.k).d(0.5F).a(dre.av));
+   public static final djm tk = a("mud", don::new, dww.d.b(j).a(etd.T).a(djo::b).a(djo::a).c(djo::a).b(djo::a).a(dre.aM));
+   public static final djm tl = a("deepslate", dqd::new, dww.d.a().a(etd.ah).a(dxx.b).n().a(3.0F, 6.0F).a(dre.aE));
+   public static final djm tm = a("cobbled_deepslate", dww.d.b(tl).a(3.5F, 6.0F));
+   public static final djm tn = a("cobbled_deepslate_stairs", tm);
+   public static final djm to = a("cobbled_deepslate_slab", dqu::new, dww.d.b(tm));
+   public static final djm tp = a("cobbled_deepslate_wall", dsp::new, dww.d.b(tm).k());
+   public static final djm tq = a("polished_deepslate", dww.d.b(tm).a(dre.aH));
+   public static final djm tr = a("polished_deepslate_stairs", tq);
+   public static final djm ts = a("polished_deepslate_slab", dqu::new, dww.d.b(tq));
+   public static final djm tt = a("polished_deepslate_wall", dsp::new, dww.d.b(tq).k());
+   public static final djm tu = a("deepslate_tiles", dww.d.b(tm).a(dre.aG));
+   public static final djm tv = a("deepslate_tile_stairs", tu);
+   public static final djm tw = a("deepslate_tile_slab", dqu::new, dww.d.b(tu));
+   public static final djm tx = a("deepslate_tile_wall", dsp::new, dww.d.b(tu).k());
+   public static final djm ty = a("deepslate_bricks", dww.d.b(tm).a(dre.aF));
+   public static final djm tz = a("deepslate_brick_stairs", ty);
+   public static final djm tA = a("deepslate_brick_slab", dqu::new, dww.d.b(ty));
+   public static final djm tB = a("deepslate_brick_wall", dsp::new, dww.d.b(ty).k());
+   public static final djm tC = a("chiseled_deepslate", dww.d.b(tm).a(dre.aF));
+   public static final djm tD = a("cracked_deepslate_bricks", dww.d.b(ty));
+   public static final djm tE = a("cracked_deepslate_tiles", dww.d.b(tu));
+   public static final djm tF = a("infested_deepslate", $$0x -> new dno(tl, $$0x), dww.d.a().a(etd.ah).a(dre.aE));
+   public static final djm tG = a("smooth_basalt", dww.d.b(el));
+   public static final djm tH = a("raw_iron_block", dww.d.a().a(etd.ai).a(dxx.b).n().a(5.0F, 6.0F));
+   public static final djm tI = a("raw_copper_block", dww.d.a().a(etd.p).a(dxx.b).n().a(5.0F, 6.0F));
+   public static final djm tJ = a("raw_gold_block", dww.d.a().a(etd.E).a(dxx.b).n().a(5.0F, 6.0F));
+   public static final djm tK = a("potted_azalea_bush", $$0x -> new dmq(ta, $$0x), c());
+   public static final djm tL = a("potted_flowering_azalea_bush", $$0x -> new dmq(tb, $$0x), c());
+   public static final djm tM = a("ochre_froglight", dqd::new, dww.d.a().a(etd.c).d(0.3F).a($$0x -> 15).a(dre.aI));
+   public static final djm tN = a("verdant_froglight", dqd::new, dww.d.a().a(etd.aj).d(0.3F).a($$0x -> 15).a(dre.aI));
+   public static final djm tO = a("pearlescent_froglight", dqd::new, dww.d.a().a(etd.u).d(0.3F).a($$0x -> 15).a(dre.aI));
+   public static final djm tP = a("frogspawn", dmr::new, dww.d.a().a(etd.m).d().c().b().a(dre.aJ).a(ete.b));
+   public static final djm tQ = a("reinforced_deepslate", dww.d.a().a(etd.ah).a(dxx.b).a(dre.aE).a(55.0F, 1200.0F));
+   public static final djm tR = a("decorated_pot", dln::new, dww.d.a().a(etd.Y).a(0.0F, 0.0F).a(ete.b).c());
+   public static final djm tS = a("crafter", dlf::new, dww.d.a().a(etd.l).a(1.5F, 3.5F));
+   public static final djm tT = a("trial_spawner", dsg::new, dww.d.a().a(etd.l).a(dxx.b).a($$0x -> $$0x.c(dsg.b).a()).d(50.0F).a(dre.bd).c(djo::b).c());
+   public static final djm tU = a("vault", dsm::new, dww.d.a().a(etd.l).a(dxx.b).c().a(dre.bg).a($$0x -> $$0x.c(dsm.b).a()).d(50.0F).c(djo::b));
+   public static final djm tV = a("heavy_core", dnh::new, dww.d.a().a(etd.g).a(dxx.c).a(dre.bi).d(10.0F).a(ete.a).f(1200.0F));
+   public static final djm tW = a("pale_moss_block", $$0x -> new djq(rl.G, $$0x), dww.d.a().i().a(etd.w).d(0.1F).a(dre.as).a(ete.b));
+   public static final djm tX = a("pale_moss_carpet", dom::new, dww.d.a().i().a(tW.w()).d(0.1F).a(dre.aq).a(ete.b));
+   public static final djm tY = a("pale_hanging_moss", dne::new, dww.d.a().i().a(tW.w()).b().a(dre.aq).a(ete.b));
+   public static final djm tZ = a("open_eyeblossom", $$0x -> new dmg(dmg.a.a, $$0x), dww.d.a().a(cB.w()).b().d().a(dre.d).a(dww.c.b).a(ete.b).e());
+   public static final djm ua = a("closed_eyeblossom", $$0x -> new dmg(dmg.a.b, $$0x), dww.d.a().a(aR.w()).b().d().a(dre.d).a(dww.c.b).a(ete.b).e());
+   public static final djm ub = a("potted_open_eyeblossom", $$0x -> new dmq(tZ, $$0x), c().e());
+   public static final djm uc = a("potted_closed_eyeblossom", $$0x -> new dmq(ua, $$0x), c().e());
 
-   @Override
-   public MapCodec<? extends djo> a() {
-      return b;
+   private static ToIntFunction<dwx> a(int $$0) {
+      return $$1 -> $$1.c(dxn.v) ? $$0 : 0;
    }
 
-   protected djo(dxn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(c, jm.c).b(d, Boolean.valueOf(true)));
+   private static Function<dwx, etd> a(etd $$0) {
+      return $$1 -> $$1.c(dxn.J) ? etd.m : $$0;
    }
 
-   @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return e.get($$0.c(c));
+   private static Boolean a(dwx $$0, dfn $$1, ji $$2, bur<?> $$3) {
+      return false;
    }
 
-   @Override
-   protected dxo a(dxo $$0, dqv $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
+   private static Boolean b(dwx $$0, dfn $$1, ji $$2, bur<?> $$3) {
+      return true;
    }
 
-   @Override
-   protected dxo a(dxo $$0, dpc $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   private static Boolean c(dwx $$0, dfn $$1, ji $$2, bur<?> $$3) {
+      return $$3 == bur.aJ || $$3 == bur.aP;
    }
 
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(c, d);
+   private static djm a(String $$0, cvm $$1) {
+      return a($$0, $$1x -> new djf($$1, $$1x), dww.d.a().a($$1x -> $$1x.c(djf.b) == dxk.b ? $$1.e() : etd.d).a(dre.b).d(0.2F).c().i().a(ete.b));
    }
 
-   @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, etr.c, etr.c.a($$1));
+   private static dww.d a(etd $$0, etd $$1, dre $$2) {
+      return dww.d.a().a($$2x -> $$2x.c(dqd.i) == jn.a.b ? $$0 : $$1).a(dxx.e).d(2.0F).a($$2).i();
+   }
+
+   private static dww.d b(etd $$0) {
+      return dww.d.a().a($$1 -> $$0).a(dxx.e).d(2.0F).a(dre.B);
+   }
+
+   private static boolean a(dwx $$0, dfn $$1, ji $$2) {
+      return true;
+   }
+
+   private static boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return false;
+   }
+
+   private static djm b(String $$0, cvm $$1) {
+      return a($$0, $$1x -> new drj($$1, $$1x), dww.d.a().a($$1).a(dxx.d).d(0.3F).a(dre.h).c().a(djo::a).a(djo::b).b(djo::b).c(djo::b));
+   }
+
+   private static dww.d a(dre $$0) {
+      return dww.d.a().a(etd.h).d(0.2F).e().a($$0).c().a(djo::c).b(djo::b).c(djo::b).i().a(ete.b).a(djo::b);
+   }
+
+   private static dww.d c(etd $$0) {
+      return dww.d.a().a($$0).k().d(2.0F).f().c().b(ud).c(ud).a(ete.b);
+   }
+
+   private static dww.d a() {
+      return dww.d.a().a(etd.l).d(1.5F).a(djo::b).b(ue).c(ue).a(ete.c);
+   }
+
+   private static dww.d b() {
+      return dww.d.a().b().d(0.5F).a(ete.b);
+   }
+
+   private static dww.d c() {
+      return dww.d.a().d().c().a(ete.b);
+   }
+
+   private static dww.d d(etd $$0) {
+      return dww.d.a().a($$0).c().d(0.1F).a(dre.X).a(dkc.i).a(ete.b);
+   }
+
+   @Deprecated
+   private static djm a(String $$0, djm $$1) {
+      return a($$0, $$1x -> new drl($$1.m(), $$1x), dww.d.b($$1));
+   }
+
+   private static djm b(String $$0, djm $$1) {
+      return a($$0, $$1x -> new drl($$1.m(), $$1x), dww.d.a($$1));
+   }
+
+   private static dww.d a(djm $$0, boolean $$1) {
+      dww.d $$2 = $$0.s();
+      dww.d $$3 = dww.d.a().a($$0.u());
+      if ($$1) {
+         $$3 = $$3.a($$0.v());
       }
 
-      return $$4.g() == $$0.c(c) && !$$0.a($$1, $$3) ? dkf.a.m() : $$0;
+      return $$3;
    }
 
-   @Override
-   protected boolean a(dxo $$0, dhc $$1, jh $$2) {
-      jm $$3 = $$0.c(c);
-      jh $$4 = $$2.a($$3.g());
-      dxo $$5 = $$1.a_($$4);
-      return $$5.c($$1, $$4, $$3);
+   private static djm a(akt<djm> $$0, Function<dww.d, djm> $$1, dww.d $$2) {
+      djm $$3 = $$1.apply($$2.a($$0));
+      return ke.a(mb.e, $$0, $$3);
    }
 
-   @Nullable
-   @Override
-   public dxo a(dax $$0) {
-      dxo $$1 = super.a($$0);
-      dhc $$2 = $$0.q();
-      jh $$3 = $$0.a();
-      jm[] $$4 = $$0.f();
+   private static djm a(akt<djm> $$0, dww.d $$1) {
+      return a($$0, djm::new, $$1);
+   }
 
-      for (jm $$5 : $$4) {
-         if ($$5.o().d()) {
-            $$1 = $$1.b(c, $$5.g());
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
+   private static akt<djm> a(String $$0) {
+      return akt.a(mc.f, aku.b($$0));
+   }
+
+   private static djm a(String $$0, Function<dww.d, djm> $$1, dww.d $$2) {
+      return a(a($$0), $$1, $$2);
+   }
+
+   private static djm a(String $$0, dww.d $$1) {
+      return a($$0, djm::new, $$1);
+   }
+
+   static {
+      for (djm $$0 : mb.e) {
+         UnmodifiableIterator var2 = $$0.l().a().iterator();
+
+         while (var2.hasNext()) {
+            dwx $$1 = (dwx)var2.next();
+            djm.q.b($$1);
+            $$1.a();
          }
       }
-
-      return null;
    }
 }

@@ -1,19 +1,29 @@
-public class buq extends bue {
-   public static final int c = 40;
+public enum buq {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g,
+   h,
+   i,
+   j,
+   k,
+   l,
+   m,
+   n,
+   o,
+   p,
+   q,
+   r,
+   s;
 
-   protected buq(buf $$0, int $$1) {
-      super($$0, $$1);
+   public static boolean a(buq $$0) {
+      return $$0 == c || $$0 == q;
    }
 
-   @Override
-   public boolean a(arx $$0, bvx $$1, int $$2) {
-      $$1.a($$0, $$1.dX().r(), 1.0F);
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public static boolean b(buq $$0) {
+      return $$0 == q;
    }
 }

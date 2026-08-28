@@ -1,4 +1,3 @@
-import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.TypeRewriteRule;
@@ -9,11 +8,11 @@ public class bhd extends DataFix {
       super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
+   public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "Map id fix",
-         this.getInputSchema().getType(bin.j),
-         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.createMap(ImmutableMap.of($$0x.createString("data"), $$0x)))
+         "OptionsForceVBOFix",
+         this.getInputSchema().getType(bhw.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("useVbo", $$0x.createString("true")))
       );
    }
 }

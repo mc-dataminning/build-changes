@@ -1,57 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class dg extends dy<dg.a> {
+public record dg(dk.d c, Optional<bx> d) implements by {
+   public static final MapCodec<dg> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dk.d.d.optionalFieldOf("blocks_set_on_fire", dk.d.c).forGetter(dg::b), bx.a.optionalFieldOf("entity_struck").forGetter(dg::c))
+            .apply($$0, dg::new)
+   );
+
+   public static dg a(dk.d $$0) {
+      return new dg($$0, Optional.empty());
+   }
+
    @Override
-   public Codec<dg.a> a() {
-      return dg.a.a;
+   public MapCodec<dg> a() {
+      return bz.a;
    }
 
-   public void a(ary $$0, bvw $$1, List<bvb> $$2) {
-      List<ewi> $$3 = $$2.stream().map($$1x -> bw.b($$0, $$1x)).collect(Collectors.toList());
-      ewi $$4 = bw.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$4, $$3));
+   @Override
+   public boolean a(buk $$0, arc $$1, @Nullable fba $$2) {
+      return !($$0 instanceof bvf $$3) ? false : this.c.d($$3.m()) && (this.d.isEmpty() || $$3.p().anyMatch($$2x -> this.d.get().a($$1, $$2, $$2x)));
    }
 
-   public static record a(Optional<bh> b, Optional<bh> c, Optional<bh> d) implements dy.a {
-      public static final Codec<dg.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bw.b.optionalFieldOf("player").forGetter(dg.a::a),
-                  bw.b.optionalFieldOf("lightning").forGetter(dg.a::b),
-                  bw.b.optionalFieldOf("bystander").forGetter(dg.a::c)
-               )
-               .apply($$0, dg.a::new)
-      );
+   public dk.d b() {
+      return this.c;
+   }
 
-      public static ap<dg.a> a(Optional<bw> $$0, Optional<bw> $$1) {
-         return ao.V.a(new dg.a(Optional.empty(), bw.a($$0), bw.a($$1)));
-      }
-
-      public boolean a(ewi $$0, List<ewi> $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
-      }
-
-      @Override
-      public void a(bi $$0) {
-         dy.a.super.a($$0);
-         $$0.a(this.c, ".lightning");
-         $$0.a(this.d, ".bystander");
-      }
-
-      @Override
-      public Optional<bh> a() {
-         return this.b;
-      }
-
-      public Optional<bh> b() {
-         return this.c;
-      }
-
-      public Optional<bh> c() {
-         return this.d;
-      }
+   public Optional<bx> c() {
+      return this.d;
    }
 }

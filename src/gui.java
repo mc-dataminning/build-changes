@@ -1,22 +1,21 @@
-public class gui extends gse<cnd, gyh> {
-   private static final alp a = alp.b("textures/entity/illager/vindicator.png");
+public class gui extends gti<chv, hah, gea> {
+   private static final aku a = aku.b("textures/entity/snow_golem.png");
 
-   public gui(grl.a $$0) {
-      super($$0, new gbv<>($$0.a(gei.dv)), 0.5F);
-      this.a(new gvs<gyh, gbv<gyh>>(this, $$0.b()) {
-         public void a(fgl $$0, glg $$1, int $$2, gyh $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gui(gsc.a $$0) {
+      super($$0, new gea($$0.a(gfb.cS)), 0.5F);
+      this.a(new gww(this, $$0.d()));
    }
 
-   public alp a(gyh $$0) {
+   public aku a(hah $$0) {
       return a;
    }
 
-   public gyh b() {
-      return new gyh();
+   public hah b() {
+      return new hah();
+   }
+
+   public void a(chv $$0, hah $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.p();
    }
 }

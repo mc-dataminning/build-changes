@@ -1,45 +1,20 @@
-public class afg implements zr<acg> {
-   public static final zi<wh, afg> a = zr.a(afg::a, afg::new);
-   private final double b;
-   private final double c;
-   private final long d;
+public record afg(int b) implements yv<abk> {
+   public static final ym<vl, afg> a = yv.a(afg::a, afg::new);
 
-   public afg(dze $$0) {
-      this.b = $$0.i();
-      this.c = $$0.k();
-      this.d = $$0.j();
+   private afg(vl $$0) {
+      this($$0.l());
    }
 
-   private afg(wh $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.m();
-   }
-
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   private void a(vl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zt<afg> a() {
-      return agz.aw;
+   public yx<afg> a() {
+      return agd.aQ;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
-   }
-
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
    }
 }

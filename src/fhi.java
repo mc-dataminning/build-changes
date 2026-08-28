@@ -1,8 +1,13 @@
-public class fhi extends fhj {
-   private static final xk a = xk.c("mco.upload.cancelled");
+import com.google.gson.annotations.SerializedName;
 
-   @Override
-   public xk a() {
-      return a;
+public class fhi extends fhz implements fht {
+   @SerializedName("name")
+   public String a;
+   @SerializedName("description")
+   public String b;
+
+   public fhi(String $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 }

@@ -1,61 +1,57 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-public class gpi implements gpg.a {
-   private static final float a = 0.02F;
-   private final Map<jh, gpi.a> b = Maps.newHashMap();
+public class gpi {
+   private final Long2ObjectMap<gpi.a> a = new Long2ObjectOpenHashMap();
 
-   public void a(jh $$0, int $$1, String $$2, int $$3) {
-      this.b.put($$0, new gpi.a($$1, $$2, ae.c() + (long)$$3));
-   }
+   @Nullable
+   public gph a(dgi $$0, kk $$1) {
+      gpi.a $$2 = this.a($$0, $$1.a(), $$1.c());
+      if ($$2.a().c($$1.b())) {
+         return null;
+      } else {
+         int $$3 = $$1.a() - 1;
+         int $$4 = $$1.c() - 1;
+         int $$5 = $$1.a() + 1;
+         int $$6 = $$1.c() + 1;
+         gpg[] $$7 = new gpg[9];
 
-   @Override
-   public void a() {
-      this.b.clear();
-   }
+         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
+               int $$10 = gph.a($$3, $$4, $$9, $$8);
+               gpi.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
+               $$7[$$10] = $$11.b();
+            }
+         }
 
-   @Override
-   public void a(fgl $$0, glg $$1, double $$2, double $$3, double $$4) {
-      long $$5 = ae.c();
-      this.b.entrySet().removeIf($$1x -> $$5 > ((gpi.a)$$1x.getValue()).c);
-      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
-   }
-
-   private void a(fgl $$0, glg $$1, jh $$2, gpi.a $$3) {
-      gpg.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
-      if (!$$3.b.isEmpty()) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v() + 1.2;
-         double $$6 = (double)$$2.w() + 0.5;
-         gpg.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+         return new gph($$0, $$3, $$4, $$7);
       }
    }
 
-   static class a {
-      public int a;
-      public String b;
-      public long c;
+   private gpi.a a(dgi $$0, int $$1, int $$2) {
+      return (gpi.a)this.a.computeIfAbsent(dfo.c($$1, $$2), $$1x -> new gpi.a($$0.d(dfo.a($$1x), dfo.b($$1x))));
+   }
 
-      public a(int $$0, String $$1, long $$2) {
+   static final class a {
+      private final dzc a;
+      @Nullable
+      private gpg b;
+
+      a(dzc $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      public float a() {
-         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      public dzc a() {
+         return this.a;
       }
 
-      public float b() {
-         return (float)(this.a >> 8 & 0xFF) / 255.0F;
-      }
+      public gpg b() {
+         if (this.b == null) {
+            this.b = new gpg(this.a);
+         }
 
-      public float c() {
-         return (float)(this.a & 0xFF) / 255.0F;
-      }
-
-      public float d() {
-         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+         return this.b;
       }
    }
 }

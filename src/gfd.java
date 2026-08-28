@@ -1,106 +1,89 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
-public class gfd extends gfc implements abo, wy {
-   private static final Logger l = LogUtils.getLogger();
-   private final GameProfile m;
-   private csk n;
-   private final ke.b o;
-   private final gft p = new gft();
-   @Nullable
-   private gfm q;
-   @Nullable
-   protected fnz.b k;
-
-   public gfd(flz $$0, we $$1, gfk $$2) {
-      super($$0, $$1, $$2);
-      this.m = $$2.a();
-      this.o = $$2.c();
-      this.n = $$2.d();
-      this.k = $$2.i();
-   }
-
-   @Override
-   public boolean c() {
-      return this.b.i();
-   }
-
-   @Override
-   protected void a(aau $$0) {
-      this.b($$0);
-   }
-
-   private void b(aau $$0) {
-      l.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(abq $$0) {
-      zu.a($$0, this, this.a);
-      this.p.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(aai $$0) {
-      zu.a($$0, this, this.a);
-      this.p.a($$0.b());
-   }
-
-   @Override
-   public void a(abt $$0) {
-      this.n = csm.e.a($$0.b());
-   }
-
-   @Override
-   public void a(abs $$0) {
-      zu.a($$0, this, this.a);
-      if (this.q == null) {
-         this.q = new gfm();
-      }
-
-      List<aur> $$1 = this.q.a($$0.b());
-      this.b(new aby($$1));
-   }
-
-   @Override
-   public void a(abr $$0) {
-      this.k = null;
-   }
-
-   private <T> T a(Function<avo, T> $$0) {
-      if (this.q == null) {
-         return $$0.apply(avo.b);
-      } else {
-         Object var3;
-         try (avb $$1 = this.q.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
-   }
-
-   @Override
-   public void a(abp $$0) {
-      zu.a($$0, this, this.a);
-      ke.b $$1 = this.a($$0x -> this.p.a($$0x, this.o, this.b.e()));
-      this.b.a(aha.b.a(wv.a($$1)), new gfg(this.a, this.b, new gfk(this.m, this.e, $$1, this.n, this.d, this.c, this.f, this.h, this.k, this.i, this.j)));
-      this.b.a(abx.a);
-      this.b.a(aha.a.a(wv.a($$1)));
-   }
-
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   @Override
-   public void a(wg $$0) {
-      super.a($$0);
-      this.a.z();
-   }
+public class gfd {
+   public static final String a = "left_fin";
+   public static final String b = "right_fin";
+   public static final String c = "top_fin";
+   public static final String d = "bottom_fin";
+   public static final String e = "tail_fin";
+   public static final String f = "left_blue_fin";
+   public static final String g = "right_blue_fin";
+   public static final String h = "left_arm";
+   public static final String i = "right_arm";
+   public static final String j = "left_wing";
+   public static final String k = "right_wing";
+   public static final String l = "left_wing_base";
+   public static final String m = "right_wing_base";
+   public static final String n = "left_wing_tip";
+   public static final String o = "right_wing_tip";
+   public static final String p = "left_ear";
+   public static final String q = "right_ear";
+   public static final String r = "left_leg";
+   public static final String s = "right_leg";
+   public static final String t = "left_hind_leg";
+   public static final String u = "right_hind_leg";
+   public static final String v = "left_mid_leg";
+   public static final String w = "right_mid_leg";
+   public static final String x = "left_front_leg";
+   public static final String y = "right_front_leg";
+   public static final String z = "left_hind_foot";
+   public static final String A = "right_hind_foot";
+   public static final String B = "left_front_foot";
+   public static final String C = "right_front_foot";
+   public static final String D = "feet";
+   public static final String E = "left_hind_leg_tip";
+   public static final String F = "right_hind_leg_tip";
+   public static final String G = "left_front_leg_tip";
+   public static final String H = "right_front_leg_tip";
+   public static final String I = "left_lid";
+   public static final String J = "right_lid";
+   public static final String K = "left_chest";
+   public static final String L = "right_chest";
+   public static final String M = "left_horn";
+   public static final String N = "right_horn";
+   public static final String O = "left_eye";
+   public static final String P = "right_eye";
+   public static final String Q = "jaw";
+   public static final String R = "nose";
+   public static final String S = "arms";
+   public static final String T = "tail";
+   public static final String U = "cube";
+   public static final String V = "beak";
+   public static final String W = "back_fin";
+   public static final String X = "mane";
+   public static final String Y = "neck";
+   public static final String Z = "mouth";
+   public static final String aa = "head";
+   public static final String ab = "hat";
+   public static final String ac = "body";
+   public static final String ad = "upper_body";
+   public static final String ae = "hat_rim";
+   public static final String af = "jacket";
+   public static final String ag = "top_gills";
+   public static final String ah = "left_gills";
+   public static final String ai = "right_gills";
+   public static final String aj = "root";
+   public static final String ak = "croaking_body";
+   public static final String al = "tongue";
+   public static final String am = "tongue_r1";
+   public static final String an = "left_hand";
+   public static final String ao = "right_hand";
+   public static final String ap = "left_foot";
+   public static final String aq = "right_foot";
+   public static final String ar = "eyes";
+   public static final String as = "right_tendril";
+   public static final String at = "left_tendril";
+   public static final String au = "right_ribcage";
+   public static final String av = "left_ribcage";
+   public static final String aw = "wind_body";
+   public static final String ax = "wind_top";
+   public static final String ay = "wind_mid";
+   public static final String az = "wind_bottom";
+   public static final String aA = "rods";
+   public static final String aB = "mushrooms";
+   public static final String aC = "bone";
+   public static final String aD = "left_paddle";
+   public static final String aE = "right_paddle";
+   public static final String aF = "bottom";
+   public static final String aG = "chest_bottom";
+   public static final String aH = "chest_lid";
+   public static final String aI = "chest_lock";
 }

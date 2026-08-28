@@ -1,82 +1,65 @@
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import java.io.Closeable;
-import java.io.IOException;
-import java.io.Writer;
-import java.nio.channels.Channels;
-import java.nio.channels.FileChannel;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Collectors;
 
-public class bob<T> implements Closeable {
-   private static final Gson a = new Gson();
-   private final Codec<T> b;
-   final FileChannel c;
-   private final AtomicInteger d = new AtomicInteger(1);
-
-   public bob(Codec<T> $$0, FileChannel $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public record bob<T>(bnt<StringReader> a, bnr<T> b) {
+   public Optional<T> a(bnw<StringReader> $$0) {
+      return $$0.a(this.b);
    }
 
-   public static <T> bob<T> a(Codec<T> $$0, Path $$1) throws IOException {
-      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
-      return new bob<>($$0, $$2);
-   }
-
-   public void a(T $$0) throws IOException {
-      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
-      this.c.position(this.c.size());
-      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
-      a.toJson($$1, a.newJsonWriter($$2));
-      $$2.write(10);
-      $$2.flush();
-   }
-
-   public boc<T> a() throws IOException {
-      if (this.d.get() <= 0) {
-         throw new IOException("Event log has already been closed");
+   public T a(StringReader $$0) throws CommandSyntaxException {
+      bnu.a<StringReader> $$1 = new bnu.a<>();
+      bof $$2 = new bof(this.a(), $$1, $$0);
+      Optional<T> $$3 = this.a($$2);
+      if ($$3.isPresent()) {
+         return $$3.get();
       } else {
-         this.d.incrementAndGet();
-         final boc<T> $$0 = boc.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
-         return new boc<T>() {
-            private volatile long c;
-
-            @Nullable
-            @Override
-            public T a() throws IOException {
-               Object var1;
-               try {
-                  bob.this.c.position(this.c);
-                  var1 = $$0.a();
-               } finally {
-                  this.c = bob.this.c.position();
-               }
-
-               return (T)var1;
+         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
+            if ($$0x.c() instanceof Exception $$3x) {
+               $$1x.accept($$3x);
             }
+         }).toList();
 
-            @Override
-            public void close() throws IOException {
-               bob.this.b();
+         for (Exception $$5 : $$4) {
+            if ($$5 instanceof CommandSyntaxException $$6) {
+               throw $$6;
             }
-         };
+         }
+
+         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
+            throw $$7;
+         } else {
+            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bnv::toString).collect(Collectors.joining(", ")));
+         }
       }
    }
 
-   @Override
-   public void close() throws IOException {
-      this.b();
-   }
+   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
+      StringReader $$1 = new StringReader($$0.getInput());
+      $$1.setCursor($$0.getStart());
+      bnu.a<StringReader> $$2 = new bnu.a<>();
+      bof $$3 = new bof(this.a(), $$2, $$1);
+      this.a($$3);
+      List<bnv<StringReader>> $$4 = $$2.a();
+      if ($$4.isEmpty()) {
+         return $$0.buildFuture();
+      } else {
+         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
 
-   void b() throws IOException {
-      if (this.d.decrementAndGet() <= 0) {
-         this.c.close();
+         for (bnv<StringReader> $$6 : $$4) {
+            if ($$6.b() instanceof boe $$7) {
+               fc.a($$7.a(), $$5);
+            } else {
+               fc.b($$6.b().possibleValues($$3), $$5);
+            }
+         }
+
+         return $$5.buildFuture();
       }
    }
 }

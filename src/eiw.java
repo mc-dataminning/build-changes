@@ -1,40 +1,43 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eiw implements eit {
+public class eiw implements eic {
    public static final Codec<eiw> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bsf.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bsd.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bsd.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bsd.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bsd.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               ehi.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               ji.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
             )
             .apply($$0, eiw::new)
    );
-   public final int b;
-   public final bsf c;
-   public final bsd d;
-   public final float e;
-   public final bsd f;
-   public final bsd g;
-   public final bsd h;
-   public final int i;
-   public final float j;
+   private final boolean b;
+   private final List<ehi.a> c;
+   @Nullable
+   private final ji d;
 
-   public eiw(int $$0, bsf $$1, bsd $$2, float $$3, bsd $$4, bsd $$5, bsd $$6, int $$7, float $$8) {
+   public eiw(boolean $$0, List<ehi.a> $$1, @Nullable ji $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
+   }
+
+   private eiw(boolean $$0, List<ehi.a> $$1, Optional<ji> $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+      this.d = $$2.orElse(null);
+   }
+
+   public boolean a() {
+      return this.b;
+   }
+
+   public List<ehi.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public ji c() {
+      return this.d;
    }
 }

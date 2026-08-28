@@ -1,149 +1,95 @@
 import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.DoubleConsumer;
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class fyl extends fns {
-   private static final int a = 32;
-   private static final String b = "telemetry.event.required";
-   private static final String c = "telemetry.event.optional";
-   private static final String d = "telemetry.event.optional.disabled";
-   private static final xk e = xk.c("telemetry_info.property_title").a(n.t);
-   private final fnj f;
-   private fyl.a m;
-   @Nullable
-   private DoubleConsumer n;
+public class fyl {
+   private final List<dck> a;
+   private final boolean b;
+   private final Set<dcl> c = new HashSet<>();
+   private final Set<dcl> d = new HashSet<>();
 
-   public fyl(int $$0, int $$1, int $$2, int $$3, fnj $$4) {
-      super($$0, $$1, $$2, $$3, xk.i());
-      this.f = $$4;
-      this.m = this.c(flz.Q().C());
+   public fyl(List<dck> $$0) {
+      this.a = $$0;
+      if ($$0.size() <= 1) {
+         this.b = true;
+      } else {
+         this.b = a(this.a);
+      }
    }
 
-   public void b(boolean $$0) {
-      this.m = this.c($$0);
-      this.a(this.c());
-   }
+   private static boolean a(List<dck> $$0) {
+      int $$1 = $$0.size();
+      dcp $$2 = $$0.getFirst().b().d();
 
-   public void j() {
-      this.m = this.c(flz.Q().C());
-      this.a(this.c());
-   }
-
-   private fyl.a c(boolean $$0) {
-      fyl.b $$1 = new fyl.b(this.k());
-      List<hgs> $$2 = new ArrayList<>(hgs.g());
-      $$2.sort(Comparator.comparing(hgs::d));
-
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         hgs $$4 = $$2.get($$3);
-         boolean $$5 = $$4.d() && !$$0;
-         this.a($$1, $$4, $$5);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+      for (int $$3 = 1; $$3 < $$1; $$3++) {
+         dcp $$4 = $$0.get($$3).b().d();
+         if (!$$4.equals($$2)) {
+            return false;
          }
       }
 
-      return $$1.a();
+      return true;
    }
 
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.n = $$0;
-   }
+   public void a(cpc $$0, Predicate<dcj> $$1) {
+      for (dck $$2 : this.a) {
+         boolean $$3 = $$1.test($$2.b());
+         if ($$3) {
+            this.d.add($$2.a());
+         } else {
+            this.d.remove($$2.a());
+         }
 
-   @Override
-   protected void a(double $$0) {
-      super.a($$0);
-      if (this.n != null) {
-         this.n.accept(this.c());
+         if ($$3 && $$2.a($$0)) {
+            this.c.add($$2.a());
+         } else {
+            this.c.remove($$2.a());
+         }
       }
    }
 
-   @Override
-   protected int h() {
-      return this.m.a().w();
+   public boolean a(dcl $$0) {
+      return this.c.contains($$0);
    }
 
-   @Override
-   protected double i() {
-      return 9.0;
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   @Override
-   protected void c(fnl $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.E() + this.a();
-      int $$5 = this.D() + this.a();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
+   public boolean b() {
+      return !this.d.isEmpty();
    }
 
-   @Override
-   protected void a(frw $$0) {
-      $$0.a(frv.a, this.m.b());
+   public List<dck> c() {
+      return this.a;
    }
 
-   private xk a(xk $$0, boolean $$1) {
-      return (xk)($$1 ? $$0.f().a(n.h) : $$0);
-   }
+   public List<dck> a(fyl.a $$0) {
+      Predicate<dcl> $$1 = switch ($$0) {
+         case a -> this.d::contains;
+         case b -> this.c::contains;
+         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
+      };
+      List<dck> $$2 = new ArrayList<>();
 
-   private void a(fyl.b $$0, hgs $$1, boolean $$2) {
-      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
-      $$0.b(this.f, this.a(xk.a($$3, $$1.e()), $$2));
-      $$0.b(this.f, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.f, this.a(e, $$2), 2);
-      this.a($$1, $$0, $$2);
-   }
-
-   private void a(hgs $$0, fyl.b $$1, boolean $$2) {
-      for (hgu<?> $$3 : $$0.b()) {
-         $$1.a(this.f, this.a($$3.a(), $$2));
-      }
-   }
-
-   private int k() {
-      return this.g - this.b();
-   }
-
-   static record a(fro a, xk b) {
-   }
-
-   static class b {
-      private final int a;
-      private final frr b;
-      private final xy c = xk.i();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = frr.d();
-         this.b.c().a();
-         this.b.a(frs.a($$0));
+      for (dck $$3 : this.a) {
+         if ($$1.test($$3.a())) {
+            $$2.add($$3);
+         }
       }
 
-      public void a(fnj $$0, xk $$1) {
-         this.a($$0, $$1, 0);
-      }
+      return $$2;
+   }
 
-      public void a(fnj $$0, xk $$1, int $$2) {
-         this.b.a(new fot($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
+   public boolean d() {
+      return this.b;
+   }
 
-      public void b(fnj $$0, xk $$1) {
-         this.b.a(new fot($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.b.a(frs.b($$0));
-      }
-
-      public fyl.a a() {
-         this.b.a();
-         return new fyl.a(this.b, this.c);
-      }
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

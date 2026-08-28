@@ -1,77 +1,126 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Predicate;
 
-public class ccf extends ccm {
-   private static final int g = 240;
-   private final Predicate<bsx> h;
-   protected int a;
-   protected int b = -1;
-   protected int c = -1;
-
-   public ccf(bvz $$0, Predicate<bsx> $$1) {
-      super($$0);
-      this.h = $$1;
-   }
-
-   public ccf(bvz $$0, int $$1, Predicate<bsx> $$2) {
-      this($$0, $$2);
-      this.c = $$1;
-   }
-
-   protected int f() {
-      return Math.max(240, this.c);
-   }
-
-   @Override
-   public boolean b() {
-      if (!super.b()) {
+public class ccf {
+   private static final cds a = new cds(Integer.MAX_VALUE, new cce() {
+      @Override
+      public boolean b() {
          return false;
-      } else {
-         return !a(this.d).O().b(dgv.c) ? false : this.a(this.d.dW().am()) && !this.h();
       }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<cce.a, cds> b = new EnumMap<>(cce.a.class);
+   private final Set<cds> c = new ObjectLinkedOpenHashSet();
+   private final EnumSet<cce.a> d = EnumSet.noneOf(cce.a.class);
+
+   public void a(int $$0, cce $$1) {
+      this.c.add(new cds($$0, $$1));
    }
 
-   @Override
-   public void d() {
-      super.d();
-      this.a = 0;
+   @VisibleForTesting
+   public void a(Predicate<cce> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
    }
 
-   @Override
-   public boolean c() {
-      return this.a <= this.f() && !this.h() && this.e.a(this.d.du(), 2.0) && this.a(this.d.dW().am());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d.dW().a(this.d.ar(), this.e, -1);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (this.d.dZ().a(20) == 0) {
-         this.d.dW().c(1019, this.e, 0);
-         if (!this.d.aI) {
-            this.d.a(this.d.fA());
+   public void a(cce $$0) {
+      for (cds $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.e();
          }
       }
 
-      this.a++;
-      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
-      if ($$0 != this.b) {
-         this.d.dW().a(this.d.ar(), this.e, $$0);
-         this.b = $$0;
-      }
-
-      if (this.a == this.f() && this.a(this.d.dW().am())) {
-         this.d.dW().a(this.e, false);
-         this.d.dW().c(1021, this.e, 0);
-         this.d.dW().c(2001, this.e, dkd.j(this.d.dW().a_(this.e)));
-      }
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   private boolean a(bsx $$0) {
-      return this.h.test($$0);
+   private static boolean a(cds $$0, EnumSet<cce.a> $$1) {
+      for (cce.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   private static boolean a(cds $$0, Map<cce.a, cds> $$1) {
+      for (cce.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bos $$0 = bor.a();
+      $$0.a("goalCleanup");
+
+      for (cds $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.d) || !$$1.c())) {
+            $$1.e();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((cds)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (cds $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.d) && a($$2, this.b) && $$2.b()) {
+            for (cce.a $$3 : $$2.j()) {
+               cds $$4 = this.b.getOrDefault($$3, a);
+               $$4.e();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.d();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bos $$1 = bor.a();
+      $$1.a("goalTick");
+
+      for (cds $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.V_())) {
+            $$2.a();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<cds> b() {
+      return this.c;
+   }
+
+   public void a(cce.a $$0) {
+      this.d.add($$0);
+   }
+
+   public void b(cce.a $$0) {
+      this.d.remove($$0);
+   }
+
+   public void a(cce.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
+      }
    }
 }

@@ -1,41 +1,56 @@
-public class goj extends gok<dwj> {
-   private static final alp c = alp.b("textures/entity/end_gateway_beam.png");
+@FunctionalInterface
+public interface goj<T extends dtz> {
+   goi<T> create(goj.a var1);
 
-   public goj(gns.a $$0) {
-      super($$0);
-   }
+   public static class a {
+      private final goh a;
+      private final gnb b;
+      private final hbj c;
+      private final gta d;
+      private final gsa e;
+      private final gey f;
+      private final fob g;
 
-   public void a(dwj $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      if ($$0.b() || $$0.c()) {
-         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
-         double $$7 = $$0.b() ? (double)$$0.i().an() : 50.0;
-         $$6 = azu.a($$6 * (float) Math.PI);
-         int $$8 = azu.a((double)$$6 * $$7);
-         int $$9 = $$0.b() ? cwd.c.d() : cwd.k.d();
-         long $$10 = $$0.i().ad();
-         gnn.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      public a(goh $$0, gnb $$1, hbj $$2, gta $$3, gsa $$4, gey $$5, fob $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+      public goh a() {
+         return this.a;
+      }
 
-   @Override
-   protected float b() {
-      return 1.0F;
-   }
+      public gnb b() {
+         return this.b;
+      }
 
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
+      public gsa c() {
+         return this.e;
+      }
 
-   @Override
-   protected glq d() {
-      return glq.u();
-   }
+      public hbj d() {
+         return this.c;
+      }
 
-   @Override
-   public int a() {
-      return 256;
+      public gta e() {
+         return this.d;
+      }
+
+      public gey f() {
+         return this.f;
+      }
+
+      public gfc a(gfa $$0) {
+         return this.f.a($$0);
+      }
+
+      public fob g() {
+         return this.g;
+      }
    }
 }

@@ -1,18 +1,29 @@
-import io.netty.buffer.ByteBuf;
+public class aid implements yv<agf> {
+   public static final ym<vl, aid> a = yv.a(aid::a, aid::new);
+   private final bsi b;
 
-public record aid(jh b, boolean c) implements zr<ahb> {
-   public static final zi<ByteBuf, aid> a = zi.a(jh.b, aid::b, zg.b, aid::e, aid::new);
-
-   @Override
-   public zt<aid> a() {
-      return agz.bO;
+   public aid(bsi $$0) {
+      this.b = $$0;
    }
 
-   public void a(ahb $$0) {
+   private aid(vl $$0) {
+      this.b = $$0.b(bsi.class);
+   }
+
+   private void a(vl $$0) {
+      $$0.a(this.b);
+   }
+
+   @Override
+   public yx<aid> a() {
+      return agd.cj;
+   }
+
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
-      return this.c;
+   public bsi b() {
+      return this.b;
    }
 }

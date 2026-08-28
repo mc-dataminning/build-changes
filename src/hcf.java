@@ -1,9 +1,16 @@
-public class hcf extends hck {
-   public hcf(hbh $$0) {
-      super($$0, alp.b("textures/atlas/mob_effects.png"), alp.b("mob_effects"));
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
+
+public record hcf() implements hcp {
+   public static final MapCodec<hcf> a = MapCodec.unit(new hcf());
+
+   @Override
+   public float a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      return cvc.c($$0);
    }
 
-   public hbg a(jq<bue> $$0) {
-      return this.a($$0.e().map(alo::a).orElseGet(haw::b));
+   @Override
+   public MapCodec<hcf> a() {
+      return a;
    }
 }

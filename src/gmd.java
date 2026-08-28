@@ -1,44 +1,146 @@
-public class gmd implements fgp {
-   private final fgp a;
-   private final hbg b;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.joml.Matrix4f;
 
-   public gmd(fgp $$0, hbg $$1) {
+public class gmd {
+   private final String a;
+   private final glh b;
+   private final aku c;
+   private final List<gmc.h> d;
+   private final List<gmd.a> e = new ArrayList<>();
+
+   public gmd(String $$0, glh $$1, aku $$2, List<gmc.h> $$3) {
       this.a = $$0;
       this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public fgp a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public void a(gmd.a $$0) {
+      this.e.add($$0);
    }
 
-   @Override
-   public fgp a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public void a(fdy $$0, Map<aku, ffg<fee>> $$1, Matrix4f $$2) {
+      fdz $$3 = $$0.a(this.a);
+
+      for (gmd.a $$4 : this.e) {
+         $$4.a($$3, $$1);
+      }
+
+      ffg<fee> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
+      if ($$5 == null) {
+         throw new IllegalStateException("Missing handle for target " + this.c);
+      } else {
+         $$3.a(() -> {
+            fee $$3x = $$5.get();
+            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
+
+            for (gmd.a $$4x : this.e) {
+               $$4x.a(this.b, $$1);
+            }
+
+            this.b.c("OutSize").a((float)$$3x.c, (float)$$3x.d);
+
+            for (gmc.h $$5x : this.d) {
+               ffl $$6 = this.b.a($$5x.a());
+               if ($$6 != null) {
+                  $$6.a($$5x.b(), $$5x.b().size());
+               }
+            }
+
+            $$3x.a(0.0F, 0.0F, 0.0F, 0.0F);
+            $$3x.f();
+            $$3x.a(false);
+            RenderSystem.depthFunc(519);
+            RenderSystem.setShader(this.b);
+            RenderSystem.backupProjectionMatrix();
+            RenderSystem.setProjectionMatrix($$2, fdd.b);
+            ffp $$7 = ffw.b().a(ffz.c.h, ffs.e);
+            $$7.a(0.0F, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
+            $$7.a(0.0F, (float)$$3x.d, 500.0F);
+            ffq.a($$7.b());
+            RenderSystem.depthFunc(515);
+            RenderSystem.restoreProjectionMatrix();
+            $$3x.e();
+
+            for (gmd.a $$8 : this.e) {
+               $$8.a($$1);
+            }
+
+            this.b();
+         });
+      }
    }
 
-   @Override
-   public fgp a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   private void b() {
+      for (gmc.h $$0 : this.d) {
+         String $$1 = $$0.a();
+         ffl $$2 = this.b.a($$1);
+         gmq.b $$3 = this.b.b($$1);
+         if ($$2 != null && $$3 != null && !$$0.b().equals($$3.d())) {
+            $$2.a($$3);
+         }
+      }
    }
 
-   @Override
-   public fgp a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public glh a() {
+      return this.b;
    }
 
-   @Override
-   public fgp b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
+   public interface a {
+      void a(fdz var1, Map<aku, ffg<fee>> var2);
+
+      void a(glh var1, Map<aku, ffg<fee>> var2);
+
+      default void a(Map<aku, ffg<fee>> $$0) {
+      }
    }
 
-   @Override
-   public fgp b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
+   public static record b(String a, aku b, boolean c, boolean d) implements gmd.a {
+      private ffg<fee> b(Map<aku, ffg<fee>> $$0) {
+         ffg<fee> $$1 = $$0.get(this.b);
+         if ($$1 == null) {
+            throw new IllegalStateException("Missing handle for target " + this.b);
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public void a(fdz $$0, Map<aku, ffg<fee>> $$1) {
+         $$0.a(this.b($$1));
+      }
+
+      @Override
+      public void a(glh $$0, Map<aku, ffg<fee>> $$1) {
+         ffg<fee> $$2 = this.b($$1);
+         fee $$3 = $$2.get();
+         $$3.a(this.d ? 9729 : 9728);
+         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
+         $$0.c(this.a + "Size").a((float)$$3.c, (float)$$3.d);
+      }
+
+      @Override
+      public void a(Map<aku, ffg<fee>> $$0) {
+         if (this.d) {
+            this.b($$0).get().a(9728);
+         }
+      }
    }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+   public static record c(String a, hdu b, int c, int d) implements gmd.a {
+      @Override
+      public void a(fdz $$0, Map<aku, ffg<fee>> $$1) {
+      }
+
+      @Override
+      public void a(glh $$0, Map<aku, ffg<fee>> $$1) {
+         $$0.a(this.a + "Sampler", this.b.a());
+         $$0.c(this.a + "Size").a((float)this.c, (float)this.d);
+      }
    }
 }

@@ -1,28 +1,21 @@
 import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.List;
 
-public class cg implements ar<cg.a> {
-   @Override
-   public void a(alx $$0, ar.a<cg.a> $$1) {
+public record cg(List<dgf> d) {
+   public static final cg a = a(dgf.values());
+   public static final cg b = a(dgf.a, dgf.c);
+   public static final Codec<cg> c = dgf.f.listOf().xmap(cg::new, cg::a);
+
+   public static cg a(dgf... $$0) {
+      return new cg(Arrays.stream($$0).toList());
    }
 
-   @Override
-   public void b(alx $$0, ar.a<cg.a> $$1) {
+   public boolean a(dgf $$0) {
+      return this.d.contains($$0);
    }
 
-   @Override
-   public void a(alx $$0) {
-   }
-
-   @Override
-   public Codec<cg.a> a() {
-      return cg.a.a;
-   }
-
-   public static record a() implements as {
-      public static final Codec<cg.a> a = Codec.unit(new cg.a());
-
-      @Override
-      public void a(bi $$0) {
-      }
+   public List<dgf> a() {
+      return this.d;
    }
 }

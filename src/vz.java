@@ -1,17 +1,19 @@
 import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.crypto.Cipher;
+import java.util.function.Function;
 
-public class vz extends MessageToMessageDecoder<ByteBuf> {
-   private final vy a;
+public class vz extends vl {
+   private final kf d;
 
-   public vz(Cipher $$0) {
-      this.a = new vy($$0);
+   public vz(ByteBuf $$0, kf $$1) {
+      super($$0);
+      this.d = $$1;
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      $$2.add(this.a.a($$0, $$1));
+   public kf H() {
+      return this.d;
+   }
+
+   public static Function<ByteBuf, vz> a(kf $$0) {
+      return $$1 -> new vz($$1, $$0);
    }
 }

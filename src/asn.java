@@ -1,7 +1,22 @@
-import com.mojang.authlib.GameProfile;
+import java.util.Optional;
+import java.util.function.Consumer;
+import net.minecraft.server.MinecraftServer;
 
-public record asn(GameProfile a, int b, ari c, boolean d) {
-   public static asn a(GameProfile $$0, boolean $$1) {
-      return new asn($$0, 0, ari.a(), $$1);
+public class asn implements art {
+   public static final art.a a = new art.a("server_resource_pack");
+   private final MinecraftServer.b b;
+
+   public asn(MinecraftServer.b $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(Consumer<yv<?>> $$0) {
+      $$0.accept(new zi(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   }
+
+   @Override
+   public art.a a() {
+      return a;
    }
 }

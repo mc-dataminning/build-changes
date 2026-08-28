@@ -1,42 +1,73 @@
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public class hb implements gu {
-   private final ha a;
-   private final ha b;
-   private final ha c;
+public class hb {
+   private static final char c = '~';
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("argument.pos.missing.double"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("argument.pos.missing.int"));
+   private final boolean d;
+   private final double e;
 
-   public hb(ha $$0, ha $$1, ha $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public hb(boolean $$0, double $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   public fbr a(ew $$0) {
-      fbr $$1 = $$0.d();
-      return new fbr(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public double a(double $$0) {
+      return this.d ? this.e + $$0 : this.e;
    }
 
-   @Override
-   public fbq b(ew $$0) {
-      fbq $$1 = $$0.k();
-      return new fbq((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public static hb a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw ha.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
+         throw a.createWithContext($$0);
+      } else {
+         boolean $$2 = b($$0);
+         int $$3 = $$0.getCursor();
+         double $$4 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
+         String $$5 = $$0.getString().substring($$3, $$0.getCursor());
+         if ($$2 && $$5.isEmpty()) {
+            return new hb(true, 0.0);
+         } else {
+            if (!$$5.contains(".") && !$$2 && $$1) {
+               $$4 += 0.5;
+            }
+
+            return new hb($$2, $$4);
+         }
+      }
    }
 
-   @Override
-   public boolean a() {
-      return this.a.a();
+   public static hb a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '^') {
+         throw ha.b.createWithContext($$0);
+      } else if (!$$0.canRead()) {
+         throw b.createWithContext($$0);
+      } else {
+         boolean $$1 = b($$0);
+         double $$2;
+         if ($$0.canRead() && $$0.peek() != ' ') {
+            $$2 = $$1 ? $$0.readDouble() : (double)$$0.readInt();
+         } else {
+            $$2 = 0.0;
+         }
+
+         return new hb($$1, $$2);
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.b.a();
-   }
+   public static boolean b(StringReader $$0) {
+      boolean $$1;
+      if ($$0.peek() == '~') {
+         $$1 = true;
+         $$0.skip();
+      } else {
+         $$1 = false;
+      }
 
-   @Override
-   public boolean c() {
-      return this.c.a();
+      return $$1;
    }
 
    @Override
@@ -45,65 +76,19 @@ public class hb implements gu {
          return true;
       } else if (!($$0 instanceof hb $$1)) {
          return false;
-      } else if (!this.a.equals($$1.a)) {
-         return false;
       } else {
-         return !this.b.equals($$1.b) ? false : this.c.equals($$1.c);
+         return this.d != $$1.d ? false : Double.compare($$1.e, this.e) == 0;
       }
-   }
-
-   public static hb a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      ha $$2 = ha.a($$0);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         ha $$3 = ha.a($$0);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            ha $$4 = ha.a($$0);
-            return new hb($$2, $$3, $$4);
-         } else {
-            $$0.setCursor($$1);
-            throw gz.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$1);
-         throw gz.a.createWithContext($$0);
-      }
-   }
-
-   public static hb a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      int $$2 = $$0.getCursor();
-      ha $$3 = ha.a($$0, $$1);
-      if ($$0.canRead() && $$0.peek() == ' ') {
-         $$0.skip();
-         ha $$4 = ha.a($$0, false);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            ha $$5 = ha.a($$0, $$1);
-            return new hb($$3, $$4, $$5);
-         } else {
-            $$0.setCursor($$2);
-            throw gz.a.createWithContext($$0);
-         }
-      } else {
-         $$0.setCursor($$2);
-         throw gz.a.createWithContext($$0);
-      }
-   }
-
-   public static hb a(double $$0, double $$1, double $$2) {
-      return new hb(new ha(false, $$0), new ha(false, $$1), new ha(false, $$2));
-   }
-
-   public static hb a(fbq $$0) {
-      return new hb(new ha(false, (double)$$0.i), new ha(false, (double)$$0.j), new ha(true, 0.0));
    }
 
    @Override
    public int hashCode() {
-      int $$0 = this.a.hashCode();
-      $$0 = 31 * $$0 + this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+      int $$0 = this.d ? 1 : 0;
+      long $$1 = Double.doubleToLongBits(this.e);
+      return 31 * $$0 + (int)($$1 ^ $$1 >>> 32);
+   }
+
+   public boolean a() {
+      return this.d;
    }
 }

@@ -1,60 +1,37 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aej implements yv<abk> {
+   public static final ym<vl, aej> a = yv.a(aej::a, aej::new);
+   private final double b;
+   private final double c;
 
-public record aej(UUID b, int c, @Nullable xw d, yd.a e, @Nullable xk f, xo g, xg.a h) implements zr<acg> {
-   public static final zi<wv, aej> a = zr.a(aej::a, aej::new);
-
-   private aej(wv $$0) {
-      this($$0.n(), $$0.l(), $$0.c(xw::a), new yd.a($$0), wh.a($$0, xm.d), xo.a($$0), xg.a.a.decode($$0));
+   public aej(dyn $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private void a(wv $$0) {
+   private aej(vl $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+   }
+
+   private void a(vl $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, xw::a);
-      this.e.a($$0);
-      wh.a($$0, this.f, xm.d);
-      xo.a($$0, this.g);
-      xg.a.a.encode($$0, this.h);
+      $$0.a(this.c);
    }
 
    @Override
-   public zt<aej> a() {
-      return agz.ab;
+   public yx<aej> a() {
+      return agd.av;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public int e() {
+   public double b() {
       return this.c;
    }
 
-   @Nullable
-   public xw f() {
-      return this.d;
-   }
-
-   public yd.a g() {
-      return this.e;
-   }
-
-   @Nullable
-   public xk h() {
-      return this.f;
-   }
-
-   public xo i() {
-      return this.g;
-   }
-
-   public xg.a j() {
-      return this.h;
+   public double e() {
+      return this.b;
    }
 }

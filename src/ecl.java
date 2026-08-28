@@ -1,59 +1,105 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ecl {
-   private final arx a;
+public interface ecl {
+   Codec<ecl> b = ecm.b;
+   Codec<jr<ecl>> c = akq.a(mc.aM, b);
+   Codec<ecl> d = c.xmap(ecm.j::new, $$0 -> (jr)($$0 instanceof ecm.j $$1 ? $$1.j() : new jr.a<>($$0)));
 
-   public ecl(arx $$0) {
-      this.a = $$0;
+   double a(ecl.b var1);
+
+   void a(double[] var1, ecl.a var2);
+
+   ecl a(ecl.f var1);
+
+   double a();
+
+   double b();
+
+   ays<? extends ecl> c();
+
+   default ecl a(double $$0, double $$1) {
+      return new ecm.g(this, $$0, $$1);
    }
 
-   public void a(jq<eck> $$0, fbr $$1, eck.a $$2) {
-      int $$3 = $$0.a().a();
-      jh $$4 = jh.a((ka)$$1);
-      int $$5 = kj.a($$4.u() - $$3);
-      int $$6 = kj.a($$4.v() - $$3);
-      int $$7 = kj.a($$4.w() - $$3);
-      int $$8 = kj.a($$4.u() + $$3);
-      int $$9 = kj.a($$4.v() + $$3);
-      int $$10 = kj.a($$4.w() + $$3);
-      List<eck.b> $$11 = new ArrayList<>();
-      ecn.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == ecm.a.b) {
-            $$11.add(new eck.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   default ecl d() {
+      return ecm.a(this, ecm.k.a.a);
+   }
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dzj $$16 = this.a.m().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
-            }
-         }
-      }
+   default ecl e() {
+      return ecm.a(this, ecm.k.a.b);
+   }
 
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
+   default ecl f() {
+      return ecm.a(this, ecm.k.a.c);
+   }
 
-      if ($$13) {
-         agy.a(this.a, $$0, $$1);
+   default ecl g() {
+      return ecm.a(this, ecm.k.a.d);
+   }
+
+   default ecl h() {
+      return ecm.a(this, ecm.k.a.e);
+   }
+
+   default ecl i() {
+      return ecm.a(this, ecm.k.a.f);
+   }
+
+   public interface a {
+      ecl.b a(int var1);
+
+      void a(double[] var1, ecl var2);
+   }
+
+   public interface b {
+      int a();
+
+      int b();
+
+      int c();
+
+      default edu d() {
+         return edu.a();
       }
    }
 
-   private void a(List<eck.b> $$0) {
-      Collections.sort($$0);
+   public static record c(jr<esc.a> b, @Nullable esc c) {
+      public static final Codec<ecl.c> a = esc.a.b.xmap($$0 -> new ecl.c($$0, null), ecl.c::b);
 
-      for (eck.b $$1 : $$0) {
-         ecm $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
+      public c(jr<esc.a> $$0) {
+         this($$0, null);
+      }
+
+      public double a(double $$0, double $$1, double $$2) {
+         return this.c == null ? 0.0 : this.c.a($$0, $$1, $$2);
+      }
+
+      public double a() {
+         return this.c == null ? 2.0 : this.c.a();
+      }
+   }
+
+   public interface d extends ecl {
+      @Override
+      default void a(double[] $$0, ecl.a $$1) {
+         $$1.a($$0, this);
+      }
+
+      @Override
+      default ecl a(ecl.f $$0) {
+         return $$0.apply(this);
+      }
+   }
+
+   public static record e(int a, int b, int c) implements ecl.b {
+   }
+
+   public interface f {
+      ecl apply(ecl var1);
+
+      default ecl.c a(ecl.c $$0) {
+         return $$0;
       }
    }
 }

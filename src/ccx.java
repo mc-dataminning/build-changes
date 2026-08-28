@@ -1,86 +1,90 @@
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.EnumSet;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class ccx extends cds {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class ccx extends cce {
+   public static final int b = 1;
+   protected final bvo c;
+   protected final double d;
+   protected double e;
+   protected double f;
+   protected double g;
+   protected boolean h;
+   private final Function<bvo, axf<btc>> a;
 
-   public ccx(bwf $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public ccx(bvo $$0, double $$1) {
+      this($$0, $$1, awr.F);
    }
 
-   @Nullable
+   public ccx(bvo $$0, double $$1, axf<btc> $$2) {
+      this($$0, $$1, $$1x -> $$2);
+   }
+
+   public ccx(bvo $$0, double $$1, Function<bvo, axf<btc>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.a(EnumSet.of(cce.a.a));
+   }
+
    @Override
-   protected fbr h() {
-      float $$0 = this.b.dW().A.i();
-      if (this.b.dW().A.i() < 0.3F) {
-         return this.k();
+   public boolean b() {
+      if (!this.h()) {
+         return false;
       } else {
-         fbr $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
+         if (this.c.bY()) {
+            ji $$0 = this.a(this.c.dW(), this.c, 5);
+            if ($$0 != null) {
+               this.e = (double)$$0.u();
+               this.f = (double)$$0.v();
+               this.g = (double)$$0.w();
+               return true;
             }
          }
 
-         return $$1 == null ? this.k() : $$1;
+         return this.i();
       }
    }
 
-   @Nullable
-   private fbr k() {
-      return cgv.a(this.b, 10, 7);
+   protected boolean h() {
+      return this.c.eG() != null && this.c.eG().a(this.a.apply(this.c));
    }
 
-   @Nullable
-   private fbr l() {
-      arx $$0 = (arx)this.b.dW();
-      List<cpa> $$1 = $$0.a(bvi.bD, this.b.cR().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cpa $$2 = $$1.get(this.b.dW().A.a($$1.size()));
-         fbr $$3 = $$2.du();
-         return cgv.a(this.b, 10, 7, $$3);
-      }
-   }
-
-   @Nullable
-   private fbr m() {
-      kj $$0 = this.n();
+   protected boolean i() {
+      fba $$0 = cgb.a(this.c, 5, 4);
       if ($$0 == null) {
-         return null;
+         return false;
       } else {
-         jh $$1 = this.a($$0);
-         return $$1 == null ? null : cgv.a(this.b, 10, 7, fbr.c($$1));
+         this.e = $$0.d;
+         this.f = $$0.e;
+         this.g = $$0.f;
+         return true;
       }
    }
 
-   @Nullable
-   private kj n() {
-      arx $$0 = (arx)this.b.dW();
-      List<kj> $$1 = kj.a(kj.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.A.a($$1.size()));
+   public boolean k() {
+      return this.h;
+   }
+
+   @Override
+   public void d() {
+      this.c.L().a(this.e, this.f, this.g, this.d);
+      this.h = true;
+   }
+
+   @Override
+   public void e() {
+      this.h = false;
+   }
+
+   @Override
+   public boolean c() {
+      return !this.c.L().k();
    }
 
    @Nullable
-   private jh a(kj $$0) {
-      arx $$1 = (arx)this.b.dW();
-      chb $$2 = $$1.A();
-      List<jh> $$3 = $$2.c($$0x -> true, $$0.k(), 8, chb.b.b).map(chc::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.A.a($$3.size()));
-   }
-
-   private boolean a(cpa $$0) {
-      return $$0.a(this.b.dW().ad());
+   protected ji a(dfn $$0, buk $$1, int $$2) {
+      ji $$3 = $$1.dw();
+      return !$$0.a_($$3).g($$0, $$3).c() ? null : ji.a($$1.dw(), $$2, 1, $$1x -> $$0.b_($$1x).a(awv.a)).orElse(null);
    }
 }

@@ -1,73 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dtj extends diz {
-   public static final MapCodec<dtj> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(drk.a.b.fieldOf("kind").forGetter(diz::b), t()).apply($$0, dtj::new));
-   public static final dyl<jm> d = dob.aF;
-   private static final Map<jm, fcl> b = Maps.newEnumMap(
-      ImmutableMap.of(
-         jm.c,
-         dkd.a(4.0, 4.0, 8.0, 12.0, 12.0, 16.0),
-         jm.d,
-         dkd.a(4.0, 4.0, 0.0, 12.0, 12.0, 8.0),
-         jm.f,
-         dkd.a(0.0, 4.0, 4.0, 8.0, 12.0, 12.0),
-         jm.e,
-         dkd.a(8.0, 4.0, 4.0, 16.0, 12.0, 12.0)
-      )
-   );
+public class dtj extends dmp {
+   public static final MapCodec<dtj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(b.forGetter(dmp::c), t()).apply($$0, dtj::new));
 
    @Override
-   public MapCodec<? extends dtj> a() {
-      return c;
+   public MapCodec<dtj> a() {
+      return a;
    }
 
-   protected dtj(drk.a $$0, dxn.d $$1) {
+   public dtj(jr<btn> $$0, float $$1, dww.d $$2) {
+      this(a($$0, $$1), $$2);
+   }
+
+   public dtj(czq $$0, dww.d $$1) {
       super($$0, $$1);
-      this.l(this.m().b(d, jm.c));
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return b.get($$0.c(d));
+   protected boolean b(dwx $$0, dfn $$1, ji $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(djo.ei) || $$0.a(djo.ej) || $$0.a(djo.ek);
    }
 
    @Override
-   public dxo a(dax $$0) {
-      dxo $$1 = super.a($$0);
-      dge $$2 = $$0.q();
-      jh $$3 = $$0.a();
-      jm[] $$4 = $$0.f();
+   public void a(dwx $$0, dgi $$1, ji $$2, azh $$3) {
+      fbu $$4 = this.a($$0, $$1, $$2, fbf.a());
+      fba $$5 = $$4.a().f();
+      double $$6 = (double)$$2.u() + $$5.d;
+      double $$7 = (double)$$2.w() + $$5.f;
 
-      for (jm $$5 : $$4) {
-         if ($$5.o().d()) {
-            jm $$6 = $$5.g();
-            $$1 = $$1.b(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
-            }
+      for (int $$8 = 0; $$8 < 3; $$8++) {
+         if ($$3.h()) {
+            $$1.a(lt.ag, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
          }
       }
-
-      return null;
    }
 
    @Override
-   protected dxo a(dxo $$0, dqv $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected void a(dwx $$0, dgi $$1, ji $$2, buk $$3) {
+      if ($$1 instanceof arc $$4 && $$1.am() != bsg.a && $$3 instanceof bvg $$5 && !$$5.a($$4, $$1.ak().r())) {
+         $$5.a(this.b());
+      }
    }
 
    @Override
-   protected dxo a(dxo $$0, dpc $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public btp b() {
+      return new btp(btr.t, 40);
    }
 }

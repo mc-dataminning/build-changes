@@ -1,48 +1,47 @@
-import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.ParseResults;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.ParsedCommandNode;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.tree.CommandNode;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class aob {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.help.failed"));
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("help").executes($$1 -> {
-               Map<CommandNode<ew>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ew)$$1.getSource());
+   public static void a(Collection<String> $$0, ex $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(wo.c("commands.reload.failure"));
+         return null;
+      });
+   }
 
-               for (String $$3 : $$2.values()) {
-                  ((ew)$$1.getSource()).a(() -> xk.b("/" + $$3), false);
-               }
+   private static Collection<String> a(aua $$0, evl $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.D().a().b();
 
-               return $$2.size();
-            }))
-            .then(
-               ex.a("command", StringArgumentType.greedyString())
-                  .executes(
-                     $$1 -> {
-                        ParseResults<ew> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ew)$$1.getSource());
-                        if ($$2.getContext().getNodes().isEmpty()) {
-                           throw a.create();
-                        } else {
-                           Map<CommandNode<ew>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ew)$$1.getSource()
-                           );
+      for (String $$5 : $$0.c()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
+         }
+      }
 
-                           for (String $$4 : $$3.values()) {
-                              ((ew)$$1.getSource()).a(() -> xk.b("/" + $$2.getReader().getString() + " " + $$4), false);
-                           }
+      return $$3;
+   }
 
-                           return $$3.size();
-                        }
-                     }
-                  )
-            )
-      );
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         ex $$1 = (ex)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         aua $$3 = $$2.aF();
+         evl $$4 = $$2.aZ();
+         Collection<String> $$5 = $$3.e();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> wo.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

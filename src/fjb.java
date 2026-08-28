@@ -1,39 +1,20 @@
-public class fjb {
-   private final fko a;
-   private boolean b;
-   private String c;
+public class fjb extends fja {
+   private final fkh a;
 
-   public fjb(fko $$0) {
-      this.a = $$0;
-      fko.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
+   public fjb(fuk $$0, fkh $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
-   public boolean a() {
-      return this.b;
+   @Override
+   public void e() {
+      super.e();
+      this.a.c();
    }
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fia $$0) {
-      fko.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fko.a b(fia $$0) {
-      fko.a $$1 = this.a.a();
-      if ($$0.a != null && !$$0.a.equals($$1.a)) {
-         fko.a $$2 = new fko.a();
-         $$2.a = $$0.a;
-         $$2.b = true;
-         this.a.a($$2);
-         return $$2;
-      } else {
-         return $$1;
-      }
+   @Override
+   protected void f() {
+      this.a.b();
+      super.f();
    }
 }

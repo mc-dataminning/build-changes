@@ -1,58 +1,52 @@
-import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fko {
-   private static final String a = "realms_persistence.json";
-   private static final fht b = new fht();
-   private static final Logger c = LogUtils.getLogger();
+public class fko extends fkh {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wo c = wo.c("mco.minigame.world.slot.screen.title");
+   private final long d;
+   private final int e;
+   private final Runnable f;
 
-   public fko.a a() {
-      return b();
+   public fko(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public void a(fko.a $$0) {
-      b($$0);
-   }
+   @Override
+   public void run() {
+      fgk $$0 = fgk.a();
 
-   public static fko.a b() {
-      Path $$0 = c();
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
 
-      try {
-         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
-         fko.a $$2 = b.a($$1, fko.a.class);
-         if ($$2 != null) {
-            return $$2;
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fih var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
          }
-      } catch (NoSuchFileException var3) {
-      } catch (Exception var4) {
-         c.warn("Failed to read Realms storage {}", $$0, var4);
-      }
-
-      return new fko.a();
-   }
-
-   public static void b(fko.a $$0) {
-      Path $$1 = c();
-
-      try {
-         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
-      } catch (Exception var3) {
       }
    }
 
-   private static Path c() {
-      return flz.Q().q.toPath().resolve("realms_persistence.json");
-   }
-
-   public static class a implements fik {
-      @SerializedName("newsLink")
-      public String a;
-      @SerializedName("hasUnreadNews")
-      public boolean b;
+   @Override
+   public wo a() {
+      return c;
    }
 }

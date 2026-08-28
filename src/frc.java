@@ -1,34 +1,42 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-
 public interface frc {
-   MapCodec<frc> b = frd.f.dispatchMap(frc::a, frd::a);
+   Object b = new Object();
+   int c = 160;
+   int d = 32;
 
-   frd a();
+   frc.a a();
 
-   Either<frc.b, frc.c> b();
+   void a(frd var1, long var2);
 
-   public static record a(frc b, fqq.a c) {
-      public static final Codec<frc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(frc.b.forGetter(frc.a::a), fqq.a.a.optionalFieldOf("filter", fqq.a.b).forGetter(frc.a::b)).apply($$0, frc.a::new)
-      );
+   void a(fod var1, fob var2, long var3);
 
-      public frc a() {
-         return this.b;
-      }
-
-      public fqq.a b() {
-         return this.c;
-      }
+   default Object f() {
+      return b;
    }
 
-   public interface b {
-      fek load(avl var1) throws IOException;
+   default int b() {
+      return 160;
    }
 
-   public static record c(alp a) {
+   default int c() {
+      return 32;
+   }
+
+   default int g() {
+      return ayz.e(this.c(), 32);
+   }
+
+   public static enum a {
+      a(awa.Bn),
+      b(awa.Bo);
+
+      private final avz c;
+
+      private a(final avz $$0) {
+         this.c = $$0;
+      }
+
+      public void a(hjo $$0) {
+         $$0.a(hid.a(this.c, 1.0F, 1.0F));
+      }
    }
 }

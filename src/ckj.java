@@ -1,43 +1,80 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class ckj {
-   public static final int a = 64;
-   private static final int b = 63;
-   private final ckj.a[] c = new ckj.a[64];
-   private int d = -1;
+public class ckj extends cjw {
+   private boolean b;
+   @Nullable
+   private etn c;
+   @Nullable
+   private fba d;
 
-   public ckj() {
-      Arrays.fill(this.c, new ckj.a(0.0, 0.0F));
+   public ckj(cju $$0) {
+      super($$0);
    }
 
-   public void a(ckj $$0) {
-      System.arraycopy($$0.c, 0, this.c, 0, 64);
-      this.d = $$0.d;
+   @Override
+   public void a(arc $$0) {
+      if (!this.b && this.c != null) {
+         ji $$1 = $$0.a(ecs.a.f, efx.a(this.a.m()));
+         if (!$$1.a(this.a.du(), 10.0)) {
+            this.a.gl().a(ckk.a);
+         }
+      } else {
+         this.b = false;
+         this.i();
+      }
    }
 
-   public void a(double $$0, float $$1) {
-      ckj.a $$2 = new ckj.a($$0, $$1);
-      if (this.d < 0) {
-         Arrays.fill(this.c, $$2);
+   @Override
+   public void c() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
+   }
+
+   private void i() {
+      int $$0 = this.a.t();
+      fba $$1 = this.a.J(1.0F);
+      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
+      if (this.a.gm() != null && this.a.gm().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
       }
 
-      if (++this.d == 64) {
-         this.d = 0;
+      this.c = this.a.a($$0, $$2, null);
+      this.j();
+   }
+
+   private void j() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            km $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new fba((double)$$0.u(), $$1, (double)$$0.w());
+         }
       }
-
-      this.c[this.d] = $$2;
    }
 
-   public ckj.a a(int $$0) {
-      return this.c[this.d - $$0 & 63];
+   @Nullable
+   @Override
+   public fba f() {
+      return this.d;
    }
 
-   public ckj.a a(int $$0, float $$1) {
-      ckj.a $$2 = this.a($$0);
-      ckj.a $$3 = this.a($$0 + 1);
-      return new ckj.a(azu.d((double)$$1, $$3.a, $$2.a), azu.i($$1, $$3.b, $$2.b));
-   }
-
-   public static record a(double a, float b) {
+   @Override
+   public ckk<ckj> h() {
+      return ckk.e;
    }
 }

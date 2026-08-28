@@ -1,32 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+import com.google.common.collect.ImmutableSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
 
-public record ayo(int b) {
-   private static final String c = "#";
-   public static final Codec<ayo> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
+public final class ayo {
+   private ayo() {
+   }
+
+   public static <T> boolean a(Map<T, Set<T>> $$0, Set<T> $$1, Set<T> $$2, Consumer<T> $$3, T $$4) {
+      if ($$1.contains($$4)) {
+         return false;
+      } else if ($$2.contains($$4)) {
+         return true;
       } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new ayo($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
+         $$2.add($$4);
+
+         for (T $$5 : $$0.getOrDefault($$4, ImmutableSet.of())) {
+            if (a($$0, $$1, $$2, $$3, $$5)) {
+               return true;
+            }
          }
+
+         $$2.remove($$4);
+         $$1.add($$4);
+         $$3.accept($$4);
+         return false;
       }
-   }, ayo::b);
-
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   public int a() {
-      return this.b;
    }
 }

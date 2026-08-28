@@ -1,21 +1,20 @@
-public record abf(jh c) implements aau {
-   public static final zi<wh, abf> a = aau.a(abf::a, abf::new);
-   public static final aau.b<abf> b = aau.a("debug/poi_removed");
+public record abf(aku b) implements yv<abe> {
+   public static final ym<vl, abf> a = yv.a(abf::a, abf::new);
 
-   private abf(wh $$0) {
-      this($$0.e());
+   private abf(vl $$0) {
+      this($$0.q());
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.c);
+   private void a(vl $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public aau.b<abf> a() {
-      return b;
+   public yx<abf> a() {
+      return abg.a;
    }
 
-   public jh b() {
-      return this.c;
+   public void a(abe $$0) {
+      $$0.a(this);
    }
 }

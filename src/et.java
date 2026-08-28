@@ -1,34 +1,25 @@
-@FunctionalInterface
-public interface et {
-   et a = new et() {
-      @Override
-      public void onResult(boolean $$0, int $$1) {
-      }
+import java.util.Optional;
+import java.util.stream.Stream;
 
-      @Override
-      public String toString() {
-         return "<empty>";
-      }
-   };
+public interface et extends jt.a {
+   static et a(final jt.a $$0, final crt $$1) {
+      return new et() {
+         @Override
+         public Stream<akt<? extends ke<?>>> b() {
+            return $$0.b();
+         }
 
-   void onResult(boolean var1, int var2);
+         @Override
+         public <T> Optional<jt.b<T>> a(akt<? extends ke<? extends T>> $$0x) {
+            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
+         }
 
-   default void onSuccess(int $$0) {
-      this.onResult(true, $$0);
+         @Override
+         public crt a() {
+            return $$1;
+         }
+      };
    }
 
-   default void onFailure() {
-      this.onResult(false, 0);
-   }
-
-   static et chain(et $$0, et $$1) {
-      if ($$0 == a) {
-         return $$1;
-      } else {
-         return $$1 == a ? $$0 : ($$2, $$3) -> {
-            $$0.onResult($$2, $$3);
-            $$1.onResult($$2, $$3);
-         };
-      }
-   }
+   crt a();
 }

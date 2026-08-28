@@ -1,233 +1,132 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.ImmutableBiMap;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
 import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class ami extends fcw {
-   private final MinecraftServer b;
-   private final Set<fco> c = Sets.newHashSet();
-   private final List<Runnable> d = Lists.newArrayList();
+public class ami {
+   private static final Logger b = LogUtils.getLogger();
+   private static final String c = "localhost";
+   private static final String d = "0.0.0.0";
+   private static final int e = 10000;
+   private static final int f = 100;
+   public static BiMap<String, akt<dgi>> a = ImmutableBiMap.of("o", dgi.i, "n", dgi.j, "e", dgi.k);
+   @Nullable
+   private static ama g;
+   @Nullable
+   private static alz h;
 
-   public ami(MinecraftServer $$0) {
-      this.b = $$0;
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("chase")
+                  .then(
+                     ((LiteralArgumentBuilder)ey.a("follow")
+                           .then(
+                              ((RequiredArgumentBuilder)ey.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                                 .then(
+                                    ey.a("port", IntegerArgumentType.integer(1, 65535))
+                                       .executes(
+                                          $$0x -> b(
+                                                (ex)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                             )
+                                       )
+                                 )
+                           ))
+                        .executes($$0x -> b((ex)$$0x.getSource(), "localhost", 10000))
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)ey.a("lead")
+                        .then(
+                           ((RequiredArgumentBuilder)ey.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((ex)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                              .then(
+                                 ey.a("port", IntegerArgumentType.integer(1024, 65535))
+                                    .executes(
+                                       $$0x -> a(
+                                             (ex)$$0x.getSource(),
+                                             StringArgumentType.getString($$0x, "bind_address"),
+                                             IntegerArgumentType.getInteger($$0x, "port")
+                                          )
+                                    )
+                              )
+                        ))
+                     .executes($$0x -> a((ex)$$0x.getSource(), "0.0.0.0", 10000))
+               ))
+            .then(ey.a("stop").executes($$0x -> a((ex)$$0x.getSource())))
+      );
    }
 
-   @Override
-   protected void a(fcv $$0, fco $$1, fct $$2) {
-      super.a($$0, $$1, $$2);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new agb($$0.cI(), $$1.b(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+   private static int a(ex $$0) {
+      if (h != null) {
+         h.b();
+         $$0.a(() -> wo.b("You have now stopped chasing"), false);
+         h = null;
       }
 
-      this.a();
-   }
-
-   @Override
-   protected void a(fcv $$0, fco $$1) {
-      super.a($$0, $$1);
-      this.a();
-   }
-
-   @Override
-   public void a(fcv $$0) {
-      super.a($$0);
-      this.b.ag().a(new aey($$0.cI(), null));
-      this.a();
-   }
-
-   @Override
-   public void b(fcv $$0, fco $$1) {
-      super.b($$0, $$1);
-      if (this.c.contains($$1)) {
-         this.b.ag().a(new aey($$0.cI(), $$1.b()));
+      if (g != null) {
+         g.b();
+         $$0.a(() -> wo.b("You are no longer being chased"), false);
+         g = null;
       }
 
-      this.a();
+      return 0;
    }
 
-   @Override
-   public void a(fcn $$0, @Nullable fco $$1) {
-      fco $$2 = this.a($$0);
-      super.a($$0, $$1);
-      if ($$2 != $$1 && $$2 != null) {
-         if (this.h($$2) > 0) {
-            this.b.ag().a(new afp($$0, $$1));
-         } else {
-            this.g($$2);
-         }
-      }
-
-      if ($$1 != null) {
-         if (this.c.contains($$1)) {
-            this.b.ag().a(new afp($$0, $$1));
-         } else {
-            this.e($$1);
-         }
-      }
-
-      this.a();
-   }
-
-   @Override
-   public boolean a(String $$0, fcr $$1) {
-      if (super.a($$0, $$1)) {
-         this.b.ag().a(aga.a($$1, $$0, aga.a.a));
-         this.a();
+   private static boolean b(ex $$0) {
+      if (g != null) {
+         $$0.b(wo.b("Chase server is already running. Stop it using /chase stop"));
+         return true;
+      } else if (h != null) {
+         $$0.b(wo.b("You are already chasing someone. Stop it using /chase stop"));
          return true;
       } else {
          return false;
       }
    }
 
-   @Override
-   public void b(String $$0, fcr $$1) {
-      super.b($$0, $$1);
-      this.b.ag().a(aga.a($$1, $$0, aga.a.b));
-      this.a();
-   }
+   private static int a(ex $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         g = new ama($$1, $$2, $$0.l().ag(), 100);
 
-   @Override
-   public void a(fco $$0) {
-      super.a($$0);
-      this.a();
-   }
-
-   @Override
-   public void b(fco $$0) {
-      super.b($$0);
-      if (this.c.contains($$0)) {
-         this.b.ag().a(new afx($$0, 2));
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void c(fco $$0) {
-      super.c($$0);
-      if (this.c.contains($$0)) {
-         this.g($$0);
-      }
-
-      this.a();
-   }
-
-   @Override
-   public void a(fcr $$0) {
-      super.a($$0);
-      this.b.ag().a(aga.a($$0, true));
-      this.a();
-   }
-
-   @Override
-   public void b(fcr $$0) {
-      super.b($$0);
-      this.b.ag().a(aga.a($$0, false));
-      this.a();
-   }
-
-   @Override
-   public void c(fcr $$0) {
-      super.c($$0);
-      this.b.ag().a(aga.a($$0));
-      this.a();
-   }
-
-   public void a(Runnable $$0) {
-      this.d.add($$0);
-   }
-
-   protected void a() {
-      for (Runnable $$0 : this.d) {
-         $$0.run();
-      }
-   }
-
-   public List<zr<?>> d(fco $$0) {
-      List<zr<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afx($$0, 0));
-
-      for (fcn $$2 : fcn.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new afp($$2, $$0));
+         try {
+            g.a();
+            $$0.a(() -> wo.b("Chase server is now running on port " + $$2 + ". Clients can follow you using /chase follow <ip> <port>"), false);
+         } catch (IOException var4) {
+            b.error("Failed to start chase server", var4);
+            $$0.b(wo.b("Failed to start chase server on port " + $$2));
+            g = null;
          }
+
+         return 0;
       }
+   }
 
-      for (fcp $$3 : this.i($$0)) {
-         $$1.add(new agb($$3.c(), $$0.b(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
+   private static int b(ex $$0, String $$1, int $$2) {
+      if (b($$0)) {
+         return 0;
+      } else {
+         h = new alz($$1, $$2, $$0.l());
+         h.a();
+         $$0.a(
+            () -> wo.b(
+                  "You are now chasing "
+                     + $$1
+                     + ":"
+                     + $$2
+                     + ". If that server does '/chase lead' then you will automatically go to the same position. Use '/chase stop' to stop chasing."
+               ),
+            false
+         );
+         return 0;
       }
-
-      return $$1;
-   }
-
-   public void e(fco $$0) {
-      List<zr<?>> $$1 = this.d($$0);
-
-      for (ary $$2 : this.b.ag().t()) {
-         for (zr<?> $$3 : $$1) {
-            $$2.f.b($$3);
-         }
-      }
-
-      this.c.add($$0);
-   }
-
-   public List<zr<?>> f(fco $$0) {
-      List<zr<?>> $$1 = Lists.newArrayList();
-      $$1.add(new afx($$0, 1));
-
-      for (fcn $$2 : fcn.values()) {
-         if (this.a($$2) == $$0) {
-            $$1.add(new afp($$2, $$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public void g(fco $$0) {
-      List<zr<?>> $$1 = this.f($$0);
-
-      for (ary $$2 : this.b.ag().t()) {
-         for (zr<?> $$3 : $$1) {
-            $$2.f.b($$3);
-         }
-      }
-
-      this.c.remove($$0);
-   }
-
-   public int h(fco $$0) {
-      int $$1 = 0;
-
-      for (fcn $$2 : fcn.values()) {
-         if (this.a($$2) == $$0) {
-            $$1++;
-         }
-      }
-
-      return $$1;
-   }
-
-   public evc.a<fcx> b() {
-      return new evc.a<>(this::h, this::a, bbi.n);
-   }
-
-   private fcx h() {
-      fcx $$0 = new fcx(this);
-      this.a($$0::c);
-      return $$0;
-   }
-
-   private fcx a(um $$0, js.a $$1) {
-      return this.h().b($$0, $$1);
-   }
-
-   public static enum a {
-      a,
-      b;
    }
 }

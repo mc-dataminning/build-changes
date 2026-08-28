@@ -1,51 +1,14 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.time.Duration;
+import jdk.jfr.consumer.RecordedEvent;
 
-public class bpo implements AutoCloseable {
-   public static final bpo a = new bpo(null);
-   @Nullable
-   private final bpj b;
-
-   bpo(@Nullable bpj $$0) {
-      this.b = $$0;
-   }
-
-   public bpo a(String $$0) {
-      if (this.b != null) {
-         this.b.e($$0);
-      }
-
-      return this;
-   }
-
-   public bpo a(Supplier<String> $$0) {
-      if (this.b != null) {
-         this.b.e($$0.get());
-      }
-
-      return this;
-   }
-
-   public bpo a(long $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   public bpo a(int $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-
-      return this;
-   }
-
-   @Override
-   public void close() {
-      if (this.b != null) {
-         this.b.c();
-      }
+public record bpo(Duration a, dfo b, aqo c, dzt d, String e) implements bpy {
+   public static bpo a(RecordedEvent $$0) {
+      return new bpo(
+         $$0.getDuration(),
+         new dfo($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new aqo($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dzt.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

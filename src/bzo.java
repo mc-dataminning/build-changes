@@ -1,65 +1,50 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
-import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bzo {
-   private static final int a = 40;
-   private static final int b = 5;
-   private static final int c = 20;
-   private static final int d = 4;
+   private static final int a = 200;
 
-   public static bxr<bwf> a(float $$0) {
-      Long2LongMap $$1 = new Long2LongOpenHashMap();
-      MutableLong $$2 = new MutableLong(0L);
-      return cbd.a(
-         (Function<cbd.b<bwf>, ? extends App<cbd.c<bwf>, cbg<bwf>>>)($$3 -> $$3.group($$3.c(cfb.m), $$3.c(cfb.b))
-               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
-                     if ($$4x.ad() - $$2.getValue() < 20L) {
-                        return false;
-                     } else {
-                        chb $$7 = $$4x.A();
-                        Optional<jh> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(chf.n), $$5.dw(), 48, chb.b.c);
-                        if (!$$8.isEmpty() && !($$8.get().j($$5.dw()) <= 4.0)) {
-                           MutableInt $$9 = new MutableInt(0);
-                           $$2.setValue($$4x.ad() + (long)$$4x.H_().a(20));
-                           Predicate<jh> $$10 = $$3xxx -> {
-                              long $$4xx = $$3xxx.a();
-                              if ($$1.containsKey($$4xx)) {
-                                 return false;
-                              } else if ($$9.incrementAndGet() >= 5) {
-                                 return false;
-                              } else {
-                                 $$1.put($$4xx, $$2.getValue() + 40L);
-                                 return true;
-                              }
-                           };
-                           Set<Pair<jq<che>, jh>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(chf.n), $$10, $$5.dw(), 48, chb.b.c).collect(Collectors.toSet());
-                           eue $$12 = bxj.a($$5, $$11);
-                           if ($$12 != null && $$12.j()) {
-                              jh $$13 = $$12.l();
-                              Optional<jq<che>> $$14 = $$7.c($$13);
-                              if ($$14.isPresent()) {
-                                 $$3x.a(new cfe($$13, $$0, 1));
-                                 agy.c($$4x, $$13);
-                              }
-                           } else if ($$9.getValue() < 5) {
-                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
-                           }
+   public static <E extends bvi> bxa<E> a(bzo.b<E> $$0) {
+      return a(($$0x, $$1) -> false, $$0, true);
+   }
 
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
+   public static <E extends bvi> bxa<E> a(bzo.a $$0) {
+      return a($$0, ($$0x, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bvi> bxa<E> a() {
+      return a(($$0, $$1) -> false, ($$0, $$1, $$2) -> {
+      }, true);
+   }
+
+   public static <E extends bvi> bxa<E> a(bzo.a $$0, bzo.b<E> $$1, boolean $$2) {
+      return cam.a(
+         (Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$3 -> $$3.group($$3.b(cek.o), $$3.a(cek.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  bvg $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bL() && $$9.dW() == $$7.dW() && !$$0.test($$6, $$9)) {
+                     return true;
+                  } else {
+                     $$1.accept($$6, (E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(bvg $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dW().ad() - $$1.get() > 200L;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      boolean test(arc var1, bvg var2);
+   }
+
+   @FunctionalInterface
+   public interface b<E> {
+      void accept(arc var1, E var2, bvg var3);
    }
 }

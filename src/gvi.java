@@ -1,12 +1,11 @@
-public class gvi extends gvl<gxp, gbf<gxp>> {
-   private static final glq a = glq.q(alp.b("textures/entity/enderman/enderman_eyes.png"));
+public class gvi extends gqr<cmp> {
+   private static final aku a = aku.b("textures/entity/hoglin/zoglin.png");
 
-   public gvi(gti<gxp, gbf<gxp>> $$0) {
-      super($$0);
+   public gvi(gsc.a $$0) {
+      super($$0, gfb.dL, gfb.dM, 0.7F);
    }
 
-   @Override
-   public glq a() {
+   public aku a(gyw $$0) {
       return a;
    }
 }

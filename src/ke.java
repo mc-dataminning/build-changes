@@ -1,102 +1,174 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
+import com.mojang.serialization.Lifecycle;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import java.util.function.Function;
 import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public interface ke extends js.a {
-   Logger a = LogUtils.getLogger();
-   ke.b b = new ke.c(Map.of()).e();
-
+public interface ke<T> extends Keyable, jt.b<T>, jw<T> {
    @Override
-   <E> Optional<kd<E>> a(alo<? extends kd<? extends E>> var1);
+   akt<? extends ke<T>> g();
 
-   default <E> kd<E> e(alo<? extends kd<? extends E>> $$0) {
-      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
+   default Codec<T> q() {
+      return this.b().flatComapMap(jr.c::a, $$0 -> this.a(this.e((T)$$0)));
    }
 
-   Stream<ke.d<?>> a();
-
-   @Override
-   default Stream<alo<? extends kd<?>>> b() {
-      return this.a().map($$0 -> $$0.a);
+   default Codec<jr<T>> r() {
+      return this.b().flatComapMap($$0 -> $$0, this::a);
    }
 
-   static ke.b a(final kd<? extends kd<?>> $$0) {
-      return new ke.b() {
-         @Override
-         public <T> Optional<kd<T>> a(alo<? extends kd<? extends T>> $$0x) {
-            kd<kd<T>> $$1 = (kd<kd<T>>)$$0;
-            return $$1.f((alo<kd<T>>)$$0);
+   private Codec<jr.c<T>> b() {
+      Codec<jr.c<T>> $$0 = aku.a
+         .comapFlatMap(
+            $$0x -> this.c($$0x)
+                  .<DataResult>map(DataResult::success)
+                  .orElseGet(() -> DataResult.error(() -> "Unknown registry key in " + this.g() + ": " + $$0x)),
+            $$0x -> $$0x.h().a()
+         );
+      return ayi.a($$0, (Function<jr.c<T>, Lifecycle>)($$0x -> this.d($$0x.h()).map(kd::b).orElse(Lifecycle.experimental())));
+   }
+
+   private DataResult<jr.c<T>> a(jr<T> $$0) {
+      return $$0 instanceof jr.c<T> $$1 ? DataResult.success($$1) : DataResult.error(() -> "Unregistered holder in " + this.g() + ": " + $$0);
+   }
+
+   default <U> Stream<U> keys(DynamicOps<U> $$0) {
+      return this.i().stream().map($$1 -> (U)$$0.createString($$1.toString()));
+   }
+
+   @Nullable
+   aku b(T var1);
+
+   Optional<akt<T>> d(T var1);
+
+   @Override
+   int a(@Nullable T var1);
+
+   @Nullable
+   T c(@Nullable akt<T> var1);
+
+   @Nullable
+   T a(@Nullable aku var1);
+
+   Optional<kd> d(akt<T> var1);
+
+   default Optional<T> b(@Nullable aku $$0) {
+      return Optional.ofNullable(this.a($$0));
+   }
+
+   default Optional<T> f(@Nullable akt<T> $$0) {
+      return Optional.ofNullable(this.c($$0));
+   }
+
+   Optional<jr.c<T>> a();
+
+   default T g(akt<T> $$0) {
+      T $$1 = this.c($$0);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing key in " + this.g() + ": " + $$0);
+      } else {
+         return $$1;
+      }
+   }
+
+   Set<aku> i();
+
+   Set<Entry<akt<T>, T>> k();
+
+   Set<akt<T>> j();
+
+   Optional<jr.c<T>> a(azh var1);
+
+   default Stream<T> s() {
+      return StreamSupport.stream(this.spliterator(), false);
+   }
+
+   boolean d(aku var1);
+
+   boolean e(akt<T> var1);
+
+   static <T> T a(ke<? super T> $$0, String $$1, T $$2) {
+      return a($$0, aku.a($$1), $$2);
+   }
+
+   static <V, T extends V> T a(ke<V> $$0, aku $$1, T $$2) {
+      return a($$0, akt.a($$0.g(), $$1), $$2);
+   }
+
+   static <V, T extends V> T a(ke<V> $$0, akt<V> $$1, T $$2) {
+      ((kn)$$0).a($$1, (V)$$2, kd.a);
+      return $$2;
+   }
+
+   static <T> jr.c<T> b(ke<T> $$0, akt<T> $$1, T $$2) {
+      return ((kn)$$0).a($$1, $$2, kd.a);
+   }
+
+   static <T> jr.c<T> b(ke<T> $$0, aku $$1, T $$2) {
+      return b($$0, akt.a($$0.g(), $$1), $$2);
+   }
+
+   ke<T> n();
+
+   jr.c<T> f(T var1);
+
+   Optional<jr.c<T>> c(int var1);
+
+   Optional<jr.c<T>> c(aku var1);
+
+   jr<T> e(T var1);
+
+   default Iterable<jr<T>> c(axf<T> $$0) {
+      return (Iterable<jr<T>>)DataFixUtils.orElse(this.a($$0), List.of());
+   }
+
+   default Optional<jr<T>> a(axf<T> $$0, azh $$1) {
+      return this.a($$0).flatMap($$1x -> $$1x.a($$1));
+   }
+
+   Stream<jv.c<T>> l();
+
+   default jw<jr<T>> t() {
+      return new jw<jr<T>>() {
+         public int a(jr<T> $$0) {
+            return ke.this.a($$0.a());
+         }
+
+         @Nullable
+         public jr<T> c(int $$0) {
+            return (jr<T>)ke.this.c($$0).orElse(null);
          }
 
          @Override
-         public Stream<ke.d<?>> a() {
-            return $$0.k().stream().map(ke.d::a);
+         public int d() {
+            return ke.this.d();
          }
 
          @Override
-         public ke.b e() {
-            return this;
+         public Iterator<jr<T>> iterator() {
+            return ke.this.c().map($$0 -> (jr<T>)$$0).iterator();
          }
       };
    }
 
-   default ke.b e() {
-      class a extends ke.c implements ke.b {
-         protected a(final Stream<ke.d<?>> $$1) {
-            super($$1);
-         }
-      }
+   ke.a<T> a(axg.c<T> var1);
 
-      return new a(this.a().map(ke.d::c));
-   }
+   public interface a<T> {
+      akt<? extends ke<? extends T>> a();
 
-   public interface b extends ke {
-   }
+      jt.b<T> c();
 
-   public static class c implements ke {
-      private final Map<? extends alo<? extends kd<?>>, ? extends kd<?>> c;
+      void d();
 
-      public c(List<? extends kd<?>> $$0) {
-         this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(kd::g, $$0x -> $$0x));
-      }
-
-      public c(Map<? extends alo<? extends kd<?>>, ? extends kd<?>> $$0) {
-         this.c = Map.copyOf($$0);
-      }
-
-      public c(Stream<ke.d<?>> $$0) {
-         this.c = $$0.collect(ImmutableMap.toImmutableMap(ke.d::a, ke.d::b));
-      }
-
-      @Override
-      public <E> Optional<kd<E>> a(alo<? extends kd<? extends E>> $$0) {
-         return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
-      }
-
-      @Override
-      public Stream<ke.d<?>> a() {
-         return this.c.entrySet().stream().map(ke.d::a);
-      }
-   }
-
-   public static record d<T>(alo<? extends kd<T>> a, kd<T> b) {
-
-      private static <T, R extends kd<? extends T>> ke.d<T> a(Entry<? extends alo<? extends kd<?>>, R> $$0) {
-         return a((alo<? extends kd<?>>)$$0.getKey(), $$0.getValue());
-      }
-
-      private static <T> ke.d<T> a(alo<? extends kd<?>> $$0, kd<?> $$1) {
-         return new ke.d<>((alo<? extends kd<T>>)$$0, (kd<T>)$$1);
-      }
-
-      private ke.d<T> c() {
-         return new ke.d<>(this.a, this.b.n());
-      }
+      int b();
    }
 }

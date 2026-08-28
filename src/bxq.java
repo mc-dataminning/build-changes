@@ -1,101 +1,37 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public abstract class bxq<E extends bvx> implements bxr<E> {
-   public static final int a = 60;
-   protected final Map<cfb<?>, cfc> b;
-   private bxq.a c = bxq.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bxq {
+   public static bxa<coi> a(float $$0, int $$1) {
+      return cam.a((Function<cam.b<coi>, ? extends App<cam.c<coi>, cap<coi>>>)($$2 -> $$2.group($$2.c(cek.m)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.dw())) {
+                  return false;
+               } else {
+                  cgk $$6 = $$3.A();
+                  int $$7 = $$6.a(kk.a($$4.dw()));
+                  fba $$8 = null;
 
-   public bxq(Map<cfb<?>, cfc> $$0) {
-      this($$0, 60);
-   }
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     fba $$10 = cge.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(kk.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(kk.a(ji.a((kb)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
 
-   public bxq(Map<cfb<?>, cfc> $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
+                        }
+                     }
+                  }
 
-   public bxq(Map<cfb<?>, cfc> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
+                  if ($$8 != null) {
+                     $$2x.a(new cen($$8, $$0, $$1));
+                  }
 
-   @Override
-   public bxq.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(arx $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bxq.a.b;
-         int $$3 = this.e + $$0.H_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(arx $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(arx $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(arx $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(arx $$0, E $$1, long $$2) {
-      this.c = bxq.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(arx $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(arx $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(arx $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<cfb<?>, cfc> $$1 : this.b.entrySet()) {
-         cfb<?> $$2 = $$1.getKey();
-         cfc $$3 = $$1.getValue();
-         if (!$$0.ec().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b;
+                  return true;
+               }
+            })));
    }
 }

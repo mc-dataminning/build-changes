@@ -1,17 +1,24 @@
-public class eeg {
-   private final int a;
-   private final int b;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public eeg(dzk $$0, dhb $$1) {
-      this.a = Math.max($$1.L_(), $$0.g());
-      this.b = Math.min($$1.M_(), $$0.e());
+class eeg extends eek {
+   private final jv<esy> e;
+   public static final MapCodec<eeg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kg.a(mc.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eeg::new)
+   );
+
+   public eeg(km $$0, jv<esy> $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   protected boolean a(dwx $$0) {
+      return $$0.y().a(this.e);
    }
 
-   public int b() {
-      return this.b;
+   @Override
+   public eea<?> a() {
+      return eea.c;
    }
 }

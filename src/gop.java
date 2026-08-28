@@ -1,71 +1,103 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-class gop {
-   private final Map<jh, duq> a;
-   @Nullable
-   private final List<eab<dxo>> b;
-   private final boolean c;
-   private final dzt d;
+public class gop implements goi<dul> {
+   public static final hgs a = new hgs(hei.d, aku.b("entity/conduit/base"));
+   public static final hgs b = new hgs(hei.d, aku.b("entity/conduit/cage"));
+   public static final hgs c = new hgs(hei.d, aku.b("entity/conduit/wind"));
+   public static final hgs d = new hgs(hei.d, aku.b("entity/conduit/wind_vertical"));
+   public static final hgs e = new hgs(hei.d, aku.b("entity/conduit/open_eye"));
+   public static final hgs f = new hgs(hei.d, aku.b("entity/conduit/closed_eye"));
+   private final gfc g;
+   private final gfc h;
+   private final gfc i;
+   private final gfc j;
+   private final goh k;
 
-   gop(dzt $$0) {
-      this.d = $$0;
-      this.c = $$0.H().aj();
-      this.a = ImmutableMap.copyOf($$0.I());
-      if ($$0 instanceof dzp) {
-         this.b = null;
-      } else {
-         dzu[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dzu $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public gop(goj.a $$0) {
+      this.k = $$0.a();
+      this.g = $$0.a(gfb.ac);
+      this.h = $$0.a(gfb.ae);
+      this.i = $$0.a(gfb.ad);
+      this.j = $$0.a(gfb.ab);
    }
 
-   @Nullable
-   public duq a(jh $$0) {
-      return this.a.get($$0);
+   public static gfi b() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("eye", gfh.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new gfg(0.01F)), gfe.a);
+      return gfi.a($$0, 16, 16);
    }
 
-   public dxo b(jh $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dxo $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dkf.iu.m();
-         }
+   public static gfi c() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("wind", gfh.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gfe.a);
+      return gfi.a($$0, 64, 32);
+   }
 
-         if ($$2 == 70) {
-            $$4 = eda.a($$1, $$3);
-         }
+   public static gfi d() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("shell", gfh.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gfe.a);
+      return gfi.a($$0, 32, 16);
+   }
 
-         return $$4 == null ? dkf.a.m() : $$4;
-      } else if (this.b == null) {
-         return dkf.a.m();
+   public static gfi e() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("shell", gfh.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gfe.a);
+      return gfi.a($$0, 32, 16);
+   }
+
+   public void a(dul $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
+      float $$6 = (float)$$0.a + $$1;
+      if (!$$0.c()) {
+         float $$7 = $$0.a(0.0F);
+         ffy $$8 = a.a($$3, gmh::d);
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(new Quaternionf().rotationY($$7 * (float) (Math.PI / 180.0)));
+         this.i.a($$2, $$8, $$4, $$5);
+         $$2.b();
       } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               eab<dxo> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
-            }
-
-            return dkf.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
+         float $$9 = $$0.a($$1) * (180.0F / (float)Math.PI);
+         float $$10 = ayz.a($$6 * 0.1F) / 2.0F + 0.5F;
+         $$10 = $$10 * $$10 + $$10;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         Vector3f $$11 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
+         $$2.a(new Quaternionf().rotationAxis($$9 * (float) (Math.PI / 180.0), $$11));
+         this.j.a($$2, b.a($$3, gmh::g), $$4, $$5);
+         $$2.b();
+         int $$12 = $$0.a / 66 % 3;
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         if ($$12 == 1) {
+            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
+         } else if ($$12 == 2) {
+            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
          }
+
+         ffy $$13 = ($$12 == 1 ? d : c).a($$3, gmh::g);
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         $$2.a();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.b(0.875F, 0.875F, 0.875F);
+         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
+         this.h.a($$2, $$13, $$4, $$5);
+         $$2.b();
+         fkr $$14 = this.k.b;
+         $$2.a();
+         $$2.a(0.5F, 0.3F + $$10 * 0.2F, 0.5F);
+         $$2.b(0.5F, 0.5F, 0.5F);
+         float $$15 = -$$14.e();
+         $$2.a(new Quaternionf().rotationYXZ($$15 * (float) (Math.PI / 180.0), $$14.d() * (float) (Math.PI / 180.0), (float) Math.PI));
+         float $$16 = 1.3333334F;
+         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
+         this.g.a($$2, ($$0.d() ? e : f).a($$3, gmh::g), $$4, $$5);
+         $$2.b();
       }
    }
 }

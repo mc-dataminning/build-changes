@@ -1,29 +1,28 @@
-public class ahf implements zr<ahb> {
-   public static final zi<wh, ahf> a = zr.a(ahf::a, ahf::new);
-   private final bsx b;
+public record ahf(fba b, float c, float d, boolean e) implements yv<agf> {
+   public static final ym<vl, ahf> a = ym.a(fba.b, ahf::b, yk.l, ahf::e, yk.l, ahf::f, yk.b, ahf::g, ahf::new);
 
-   public ahf(bsx $$0) {
-      this.b = $$0;
-   }
-
-   private ahf(wh $$0) {
-      this.b = bsx.a($$0.readUnsignedByte());
-   }
-
-   private void a(wh $$0) {
-      $$0.l(this.b.a());
+   public static ahf a(buk $$0) {
+      return new ahf(new fba($$0.R_(), $$0.S_(), $$0.g_()), $$0.dM(), $$0.dO(), $$0.aJ());
    }
 
    @Override
-   public zt<ahf> a() {
-      return agz.bn;
+   public yx<ahf> a() {
+      return agd.bM;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public bsx b() {
-      return this.b;
+   public float e() {
+      return this.c;
+   }
+
+   public float f() {
+      return this.d;
+   }
+
+   public boolean g() {
+      return this.e;
    }
 }

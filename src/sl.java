@@ -1,65 +1,342 @@
-public class sl {
-   public static final alo<enh> a = sq.a("monster_room");
-   public static final alo<enh> b = sq.a("monster_room_deep");
-   public static final alo<enh> c = sq.a("fossil_upper");
-   public static final alo<enh> d = sq.a("fossil_lower");
-   public static final alo<enh> e = sq.a("dripstone_cluster");
-   public static final alo<enh> f = sq.a("large_dripstone");
-   public static final alo<enh> g = sq.a("pointed_dripstone");
-   public static final alo<enh> h = sq.a("underwater_magma");
-   public static final alo<enh> i = sq.a("glow_lichen");
-   public static final alo<enh> j = sq.a("rooted_azalea_tree");
-   public static final alo<enh> k = sq.a("cave_vines");
-   public static final alo<enh> l = sq.a("lush_caves_vegetation");
-   public static final alo<enh> m = sq.a("lush_caves_clay");
-   public static final alo<enh> n = sq.a("lush_caves_ceiling_vegetation");
-   public static final alo<enh> o = sq.a("spore_blossom");
-   public static final alo<enh> p = sq.a("classic_vines_cave_feature");
-   public static final alo<enh> q = sq.a("amethyst_geode");
-   public static final alo<enh> r = sq.a("sculk_patch_deep_dark");
-   public static final alo<enh> s = sq.a("sculk_patch_ancient_city");
-   public static final alo<enh> t = sq.a("sculk_vein");
+import com.google.common.base.Stopwatch;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
+import it.unimi.dsi.fastutil.objects.Object2LongOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2LongMap.Entry;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   public static void a(ra<enh> $$0) {
-      jr<egb<?, ?>> $$1 = $$0.a(mb.aL);
-      jq<egb<?, ?>> $$2 = $$1.b(rz.a);
-      jq<egb<?, ?>> $$3 = $$1.b(rz.b);
-      jq<egb<?, ?>> $$4 = $$1.b(rz.c);
-      jq<egb<?, ?>> $$5 = $$1.b(rz.d);
-      jq<egb<?, ?>> $$6 = $$1.b(rz.e);
-      jq<egb<?, ?>> $$7 = $$1.b(rz.f);
-      jq<egb<?, ?>> $$8 = $$1.b(rz.g);
-      jq<egb<?, ?>> $$9 = $$1.b(rz.h);
-      jq<egb<?, ?>> $$10 = $$1.b(rz.i);
-      jq<egb<?, ?>> $$11 = $$1.b(rz.j);
-      jq<egb<?, ?>> $$12 = $$1.b(rz.m);
-      jq<egb<?, ?>> $$13 = $$1.b(rz.r);
-      jq<egb<?, ?>> $$14 = $$1.b(rz.s);
-      jq<egb<?, ?>> $$15 = $$1.b(rz.t);
-      jq<egb<?, ?>> $$16 = $$1.b(sh.c);
-      jq<egb<?, ?>> $$17 = $$1.b(rz.u);
-      jq<egb<?, ?>> $$18 = $$1.b(rz.v);
-      jq<egb<?, ?>> $$19 = $$1.b(rz.w);
-      jq<egb<?, ?>> $$20 = $$1.b(rz.x);
-      sq.a($$0, a, $$2, emz.a(10), ene.a(), enc.a(eed.a(0), eed.b()), emv.a());
-      sq.a($$0, b, $$2, emz.a(4), ene.a(), enc.a(eed.b(6), eed.a(-1)), emv.a());
-      sq.a($$0, c, $$3, enn.a(64), ene.a(), enc.a(eed.a(0), eed.b()), emv.a());
-      sq.a($$0, d, $$4, enn.a(64), ene.a(), enc.a(eed.a(), eed.a(-8)), emv.a());
-      sq.a($$0, e, $$5, emz.a(bsl.a(48, 96)), ene.a(), sq.j, emv.a());
-      sq.a($$0, f, $$6, emz.a(bsl.a(10, 48)), ene.a(), sq.j, emv.a());
-      sq.a($$0, g, $$7, emz.a(bsl.a(192, 256)), ene.a(), sq.j, emz.a(bsl.a(1, 5)), enm.a(bsa.a(0.0F, 3.0F, -10, 10), bsa.a(0.0F, 0.6F, -2, 2)), emv.a());
-      sq.a($$0, h, $$8, emz.a(bsl.a(44, 52)), ene.a(), sq.j, enp.a(edj.a.c, Integer.MIN_VALUE, -2), emv.a());
-      sq.a($$0, i, $$9, emz.a(bsl.a(104, 157)), sq.j, ene.a(), enp.a(edj.a.c, Integer.MIN_VALUE, -13), emv.a());
-      sq.a($$0, j, $$10, emz.a(bsl.a(1, 2)), ene.a(), sq.j, ena.a(jm.b, eeq.c(), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
-      sq.a($$0, k, $$11, emz.a(188), ene.a(), sq.j, ena.a(jm.b, eeq.a(jm.a), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
-      sq.a($$0, l, $$12, emz.a(125), ene.a(), sq.j, ena.a(jm.a, eeq.c(), eeq.c, 12), enm.a(bsc.a(1)), emv.a());
-      sq.a($$0, m, $$13, emz.a(62), ene.a(), sq.j, ena.a(jm.a, eeq.c(), eeq.c, 12), enm.a(bsc.a(1)), emv.a());
-      sq.a($$0, n, $$14, emz.a(125), ene.a(), sq.j, ena.a(jm.b, eeq.c(), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
-      sq.a($$0, o, $$15, emz.a(25), ene.a(), sq.j, ena.a(jm.b, eeq.c(), eeq.c, 12), enm.a(bsc.a(-1)), emv.a());
-      sq.a($$0, p, $$16, emz.a(256), ene.a(), sq.j, emv.a());
-      sq.a($$0, q, $$17, enn.a(24), ene.a(), enc.a(eed.b(6), eed.a(30)), emv.a());
-      sq.a($$0, r, $$18, emz.a(bsc.a(256)), ene.a(), sq.j, emv.a());
-      sq.a($$0, s, $$19);
-      sq.a($$0, t, $$20, emz.a(bsl.a(204, 250)), ene.a(), sq.j, emv.a());
+public class sl {
+   private final tf a;
+   @Nullable
+   private ji b;
+   @Nullable
+   private ji c;
+   private final arc d;
+   private final Collection<sm> e = Lists.newArrayList();
+   private final int f;
+   private final Collection<sp> g = Lists.newCopyOnWriteArrayList();
+   private final Object2LongMap<Runnable> h = new Object2LongOpenHashMap();
+   private long i;
+   private int j = 20;
+   private boolean k;
+   private boolean l;
+   private long m;
+   private boolean n;
+   private final sy o;
+   private final Stopwatch p = Stopwatch.createUnstarted();
+   private boolean q;
+   private final dqe r;
+   @Nullable
+   private Throwable s;
+   @Nullable
+   private dvr t;
+
+   public sl(tf $$0, dqe $$1, arc $$2, sy $$3) {
+      this.a = $$0;
+      this.d = $$2;
+      this.o = $$3;
+      this.f = $$0.f();
+      this.r = $$0.e().a($$1);
+   }
+
+   void a(ji $$0) {
+      this.b = $$0;
+   }
+
+   public sl a(int $$0) {
+      this.i = this.d.ad() + this.a.g() + (long)$$0;
+      this.p.start();
+      return this;
+   }
+
+   public sl a() {
+      if (this.k) {
+         return this;
+      } else {
+         this.j = 0;
+         this.k = true;
+         dvr $$0 = this.f();
+         $$0.c(this.d);
+         ene $$1 = tb.b($$0);
+         this.d.n().a($$1);
+         this.d.a($$1);
+         return this;
+      }
+   }
+
+   private boolean E() {
+      if (this.k) {
+         return true;
+      } else if (this.j > 0) {
+         this.j--;
+         return false;
+      } else {
+         this.a().a(0);
+         return true;
+      }
+   }
+
+   public void a(so $$0) {
+      if (!this.k()) {
+         if (this.t == null) {
+            this.a(new IllegalStateException("Running test without structure block entity"));
+         }
+
+         if (this.l || tb.b(this.t).b().allMatch($$0x -> this.d.f($$0x.l()))) {
+            this.l = true;
+            if (this.E()) {
+               this.F();
+               if (this.k()) {
+                  if (this.s != null) {
+                     this.e.forEach($$1 -> $$1.b(this, $$0));
+                  } else {
+                     this.e.forEach($$1 -> $$1.a(this, $$0));
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private void F() {
+      this.m = this.d.ad() - this.i;
+      if (this.m >= 0L) {
+         if (!this.n) {
+            this.G();
+         }
+
+         ObjectIterator<Entry<Runnable>> $$0 = this.h.object2LongEntrySet().iterator();
+
+         while ($$0.hasNext()) {
+            Entry<Runnable> $$1 = (Entry<Runnable>)$$0.next();
+            if ($$1.getLongValue() <= this.m) {
+               try {
+                  ((Runnable)$$1.getKey()).run();
+               } catch (Exception var4) {
+                  this.a(var4);
+               }
+
+               $$0.remove();
+            }
+         }
+
+         if (this.m > (long)this.f) {
+            if (this.g.isEmpty()) {
+               this.a(new ss("Didn't succeed or fail within " + this.a.f() + " ticks"));
+            } else {
+               this.g.forEach($$0x -> $$0x.b(this.m));
+               if (this.s == null) {
+                  this.a(new ss("No sequences finished"));
+               }
+            }
+         } else {
+            this.g.forEach($$0x -> $$0x.a(this.m));
+         }
+      }
+   }
+
+   private void G() {
+      if (!this.n) {
+         this.n = true;
+
+         try {
+            this.a.a(new sk(this));
+         } catch (Exception var2) {
+            this.a(var2);
+         }
+      }
+   }
+
+   public void a(long $$0, Runnable $$1) {
+      this.h.put($$1, $$0);
+   }
+
+   public String b() {
+      return this.a.c();
+   }
+
+   @Nullable
+   public ji c() {
+      return this.b;
+   }
+
+   public ji d() {
+      return tb.c(this.t);
+   }
+
+   public fav e() {
+      dvr $$0 = this.f();
+      return tb.a($$0);
+   }
+
+   public dvr f() {
+      if (this.t == null) {
+         if (this.b == null) {
+            throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
+         }
+
+         this.t = (dvr)this.d.c_(this.b);
+         if (this.t == null) {
+            throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
+         }
+      }
+
+      return this.t;
+   }
+
+   public arc g() {
+      return this.d;
+   }
+
+   public boolean h() {
+      return this.q && this.s == null;
+   }
+
+   public boolean i() {
+      return this.s != null;
+   }
+
+   public boolean j() {
+      return this.n;
+   }
+
+   public boolean k() {
+      return this.q;
+   }
+
+   public long l() {
+      return this.p.elapsed(TimeUnit.MILLISECONDS);
+   }
+
+   private void H() {
+      if (!this.q) {
+         this.q = true;
+         if (this.p.isRunning()) {
+            this.p.stop();
+         }
+      }
+   }
+
+   public void m() {
+      if (this.s == null) {
+         this.H();
+         fav $$0 = this.e();
+         List<buk> $$1 = this.g().a(buk.class, $$0.g(1.0), $$0x -> !($$0x instanceof cox));
+         $$1.forEach($$0x -> $$0x.a(buk.d.b));
+      }
+   }
+
+   public void a(Throwable $$0) {
+      this.s = $$0;
+      this.H();
+   }
+
+   @Nullable
+   public Throwable n() {
+      return this.s;
+   }
+
+   @Override
+   public String toString() {
+      return this.b();
+   }
+
+   public void a(sm $$0) {
+      this.e.add($$0);
+   }
+
+   public sl o() {
+      ji $$0 = this.D();
+      this.t = tb.b(this, $$0, this.u(), this.d);
+      this.b = this.t.aA_();
+      tb.a(this.b, new ji(1, 0, -1), this.u(), this.d);
+      tb.a(this.e(), this.d, !this.a.l());
+      this.e.forEach($$0x -> $$0x.a(this));
+      return this;
+   }
+
+   long p() {
+      return this.m;
+   }
+
+   sp q() {
+      sp $$0 = new sp(this);
+      this.g.add($$0);
+      return $$0;
+   }
+
+   public boolean r() {
+      return this.a.h();
+   }
+
+   public boolean s() {
+      return !this.a.h();
+   }
+
+   public String t() {
+      return this.a.d();
+   }
+
+   public dqe u() {
+      return this.r;
+   }
+
+   public tf v() {
+      return this.a;
+   }
+
+   public int w() {
+      return this.f;
+   }
+
+   public boolean x() {
+      return this.a.a();
+   }
+
+   public int y() {
+      return this.a.j();
+   }
+
+   public int z() {
+      return this.a.k();
+   }
+
+   public sy A() {
+      return this.o;
+   }
+
+   public Stream<sm> B() {
+      return this.e.stream();
+   }
+
+   public sl C() {
+      sl $$0 = new sl(this.a, this.r, this.d, this.A());
+      if (this.c != null) {
+         $$0.b(this.c);
+      }
+
+      if (this.b != null) {
+         $$0.a(this.b);
+      }
+
+      return $$0;
+   }
+
+   public ji D() {
+      if (this.c == null) {
+         ene $$0 = tb.b(this.f());
+         this.c = new ji($$0.h(), $$0.i(), $$0.j());
+      }
+
+      return this.c;
+   }
+
+   public void b(ji $$0) {
+      this.c = $$0;
    }
 }

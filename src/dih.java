@@ -1,274 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalInt;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dih {
-   public static final Codec<dih> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
-               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
-               dih.b.d.optionalFieldOf("grass_color_modifier", dih.b.a).forGetter($$0x -> $$0x.h),
-               dia.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
-               awu.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
-               dhz.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
-               dhy.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
-               bri.a(aws.a).optionalFieldOf("music").forGetter($$0x -> $$0x.m),
-               Codec.FLOAT.fieldOf("music_volume").orElse(1.0F).forGetter($$0x -> $$0x.n)
-            )
-            .apply($$0, dih::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final Optional<Integer> f;
-   private final Optional<Integer> g;
-   private final dih.b h;
-   private final Optional<dia> i;
-   private final Optional<jq<awu>> j;
-   private final Optional<dhz> k;
-   private final Optional<dhy> l;
-   private final Optional<bri<aws>> m;
-   private final float n;
+public abstract class dih extends diy {
+   public static final dxu<jn> a = dnk.aF;
+   public static final dxo b = dxn.v;
 
-   dih(
-      int $$0,
-      int $$1,
-      int $$2,
-      int $$3,
-      Optional<Integer> $$4,
-      Optional<Integer> $$5,
-      dih.b $$6,
-      Optional<dia> $$7,
-      Optional<jq<awu>> $$8,
-      Optional<dhz> $$9,
-      Optional<dhy> $$10,
-      Optional<bri<aws>> $$11,
-      float $$12
-   ) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
-      this.l = $$10;
-      this.m = $$11;
-      this.n = $$12;
+   protected dih(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jn.c).b(b, Boolean.valueOf(false)));
    }
 
-   public int a() {
-      return this.b;
-   }
+   @Override
+   protected abstract MapCodec<? extends dih> a();
 
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
-   }
-
-   public Optional<Integer> e() {
-      return this.f;
-   }
-
-   public Optional<Integer> f() {
-      return this.g;
-   }
-
-   public dih.b g() {
-      return this.h;
-   }
-
-   public Optional<dia> h() {
-      return this.i;
-   }
-
-   public Optional<jq<awu>> i() {
-      return this.j;
-   }
-
-   public Optional<dhz> j() {
-      return this.k;
-   }
-
-   public Optional<dhy> k() {
-      return this.l;
-   }
-
-   public Optional<bri<aws>> l() {
-      return this.m;
-   }
-
-   public float m() {
-      return this.n;
-   }
-
-   public static class a {
-      private OptionalInt a = OptionalInt.empty();
-      private OptionalInt b = OptionalInt.empty();
-      private OptionalInt c = OptionalInt.empty();
-      private OptionalInt d = OptionalInt.empty();
-      private Optional<Integer> e = Optional.empty();
-      private Optional<Integer> f = Optional.empty();
-      private dih.b g = dih.b.a;
-      private Optional<dia> h = Optional.empty();
-      private Optional<jq<awu>> i = Optional.empty();
-      private Optional<dhz> j = Optional.empty();
-      private Optional<dhy> k = Optional.empty();
-      private Optional<bri<aws>> l = Optional.empty();
-      private float m = 1.0F;
-
-      public dih.a a(int $$0) {
-         this.a = OptionalInt.of($$0);
-         return this;
+   @Override
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
       }
 
-      public dih.a b(int $$0) {
-         this.b = OptionalInt.of($$0);
-         return this;
-      }
+      return bsj.a;
+   }
 
-      public dih.a c(int $$0) {
-         this.c = OptionalInt.of($$0);
-         return this;
-      }
+   protected abstract void a(dgi var1, ji var2, cox var3);
 
-      public dih.a d(int $$0) {
-         this.d = OptionalInt.of($$0);
-         return this;
-      }
+   @Override
+   public dwx a(dag $$0) {
+      return this.m().b(a, $$0.g().g());
+   }
 
-      public dih.a e(int $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dtz $$5 = $$1.c_($$2);
+         if ($$5 instanceof dtn) {
+            if ($$1 instanceof arc) {
+               bsf.a($$1, $$2, (dtn)$$5);
+               ((dtn)$$5).a((arc)$$1, fba.b($$2));
+            }
 
-      public dih.a f(int $$0) {
-         this.f = Optional.of($$0);
-         return this;
-      }
-
-      public dih.a a(dih.b $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public dih.a a(dia $$0) {
-         this.h = Optional.of($$0);
-         return this;
-      }
-
-      public dih.a a(jq<awu> $$0) {
-         this.i = Optional.of($$0);
-         return this;
-      }
-
-      public dih.a a(dhz $$0) {
-         this.j = Optional.of($$0);
-         return this;
-      }
-
-      public dih.a a(dhy $$0) {
-         this.k = Optional.of($$0);
-         return this;
-      }
-
-      public dih.a a(@Nullable aws $$0) {
-         if ($$0 == null) {
-            this.l = Optional.empty();
-            return this;
+            super.a($$0, $$1, $$2, $$3, $$4);
+            $$1.c($$2, this);
          } else {
-            this.l = Optional.of(bri.a($$0));
-            return this;
+            super.a($$0, $$1, $$2, $$3, $$4);
          }
-      }
-
-      public dih.a a() {
-         return this.a(bri.b()).a(0.0F);
-      }
-
-      public dih.a a(bri<aws> $$0) {
-         this.l = Optional.of($$0);
-         return this;
-      }
-
-      public dih.a a(float $$0) {
-         this.m = $$0;
-         return this;
-      }
-
-      public dih b() {
-         return new dih(
-            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
-            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
-            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
-            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
-            this.e,
-            this.f,
-            this.g,
-            this.h,
-            this.i,
-            this.j,
-            this.k,
-            this.l,
-            this.m
-         );
       }
    }
 
-   public static enum b implements baq {
-      a("none") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return $$2;
-         }
-      },
-      b("dark_forest") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            return ($$2 & 16711422) + 2634762 >> 1;
-         }
-      },
-      c("swamp") {
-         @Override
-         public int a(double $$0, double $$1, int $$2) {
-            double $$3 = dib.e.a($$0 * 0.0225, $$1 * 0.0225, false);
-            return $$3 < -0.1 ? 5011004 : 6975545;
-         }
-      };
+   @Override
+   protected boolean c_(dwx $$0) {
+      return true;
+   }
 
-      private final String e;
-      public static final Codec<dih.b> d = baq.a(dih.b::values);
+   @Override
+   protected int a(dwx $$0, dgi $$1, ji $$2) {
+      return csc.a($$1.c_($$2));
+   }
 
-      public abstract int a(double var1, double var3, int var5);
+   @Override
+   protected dpx a_(dwx $$0) {
+      return dpx.c;
+   }
 
-      b(final String $$0) {
-         this.e = $$0;
-      }
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
 
-      public String a() {
-         return this.e;
-      }
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dtz> dua<T> a(dgi $$0, dub<T> $$1, dub<? extends dtn> $$2) {
+      return $$0 instanceof arc $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dtn.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

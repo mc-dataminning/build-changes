@@ -1,53 +1,42 @@
-public class add implements zr<acg> {
-   public static final zi<wv, add> a = zr.a(add::a, add::new);
-   private final int b;
-   private final int c;
-   private final int d;
-   private final cxg e;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public add(int $$0, int $$1, int $$2, cxg $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3.v();
-   }
+public record add(eur b, byte c, boolean d, Optional<List<eun>> e, Optional<eut.c> f) implements yv<abk> {
+   public static final ym<vz, add> a = ym.a(eur.b, add::b, yk.c, add::e, yk.b, add::f, eun.a.a(yk.a()).a(yk::a), add::g, eut.c.a, add::h, add::new);
 
-   private add(wv $$0) {
-      this.b = $$0.x();
-      this.c = $$0.l();
-      this.d = $$0.readShort();
-      this.e = cxg.g.decode($$0);
-   }
-
-   private void a(wv $$0) {
-      $$0.f(this.b);
-      $$0.c(this.c);
-      $$0.m(this.d);
-      cxg.g.encode($$0, this.e);
+   public add(eur $$0, byte $$1, boolean $$2, @Nullable Collection<eun> $$3, @Nullable eut.c $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
    @Override
-   public zt<add> a() {
-      return agz.w;
+   public yx<add> a() {
+      return agd.P;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public void a(eut $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
    }
 
-   public int e() {
+   public byte e() {
+      return this.c;
+   }
+
+   public boolean f() {
       return this.d;
    }
 
-   public cxg f() {
+   public Optional<List<eun>> g() {
       return this.e;
    }
 
-   public int g() {
-      return this.c;
+   public Optional<eut.c> h() {
+      return this.f;
    }
 }

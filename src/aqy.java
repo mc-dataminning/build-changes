@@ -1,60 +1,127 @@
-public class aqy implements Comparable<aqy> {
-   private final int a;
-   private final jh b;
-   private int c;
-   private int d;
+import com.google.common.base.Objects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Set;
+import java.util.function.Function;
 
-   public aqy(int $$0, jh $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class aqy extends brz {
+   private final Set<ard> h = Sets.newHashSet();
+   private final Set<ard> i = Collections.unmodifiableSet(this.h);
+   private boolean j = true;
 
-   public int a() {
-      return this.a;
-   }
-
-   public jh b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
-      }
-
-      this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
+   public aqy(wo $$0, brz.a $$1, brz.b $$2) {
+      super(ayz.a(), $$0, $$1, $$2);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         aqy $$1 = (aqy)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
+   public void a(float $$0) {
+      if ($$0 != this.b) {
+         super.a($$0);
+         this.a(abu::b);
       }
    }
 
    @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
+   public void a(brz.a $$0) {
+      if ($$0 != this.c) {
+         super.a($$0);
+         this.a(abu::d);
+      }
    }
 
-   public int a(aqy $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
+   @Override
+   public void a(brz.b $$0) {
+      if ($$0 != this.d) {
+         super.a($$0);
+         this.a(abu::d);
+      }
+   }
+
+   @Override
+   public brz a(boolean $$0) {
+      if ($$0 != this.e) {
+         super.a($$0);
+         this.a(abu::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public brz b(boolean $$0) {
+      if ($$0 != this.f) {
+         super.b($$0);
+         this.a(abu::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public brz c(boolean $$0) {
+      if ($$0 != this.g) {
+         super.c($$0);
+         this.a(abu::e);
+      }
+
+      return this;
+   }
+
+   @Override
+   public void a(wo $$0) {
+      if (!Objects.equal($$0, this.a)) {
+         super.a($$0);
+         this.a(abu::c);
+      }
+   }
+
+   private void a(Function<brz, abu> $$0) {
+      if (this.j) {
+         abu $$1 = $$0.apply(this);
+
+         for (ard $$2 : this.h) {
+            $$2.f.b($$1);
+         }
+      }
+   }
+
+   public void a(ard $$0) {
+      if (this.h.add($$0) && this.j) {
+         $$0.f.b(abu.a(this));
+      }
+   }
+
+   public void b(ard $$0) {
+      if (this.h.remove($$0) && this.j) {
+         $$0.f.b(abu.a(this.h()));
+      }
+   }
+
+   public void b() {
+      if (!this.h.isEmpty()) {
+         for (ard $$0 : Lists.newArrayList(this.h)) {
+            this.b($$0);
+         }
+      }
+   }
+
+   public boolean f() {
+      return this.j;
+   }
+
+   public void d(boolean $$0) {
+      if ($$0 != this.j) {
+         this.j = $$0;
+
+         for (ard $$1 : this.h) {
+            $$1.f.b($$0 ? abu.a(this) : abu.a(this.h()));
+         }
+      }
+   }
+
+   public Collection<ard> g() {
+      return this.i;
    }
 }

@@ -1,25 +1,21 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.stream.Collectors;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
 
-public class fbg extends Exception {
-   private final Path a;
-   private final List<fbi> b;
+public class fbg extends AbstractDoubleList {
+   private final int a;
 
-   public fbg(Path $$0, List<fbi> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fbg(int $$0) {
+      if ($$0 <= 0) {
+         throw new IllegalArgumentException("Need at least 1 part");
+      } else {
+         this.a = $$0;
+      }
    }
 
-   @Override
-   public String getMessage() {
-      return a(this.a, this.b);
+   public double getDouble(int $$0) {
+      return (double)$$0 / (double)this.a;
    }
 
-   public static String a(Path $$0, List<fbi> $$1) {
-      return "Failed to validate '"
-         + $$0
-         + "'. Found forbidden symlinks: "
-         + $$1.stream().map($$0x -> $$0x.a() + "->" + $$0x.b()).collect(Collectors.joining(", "));
+   public int size() {
+      return this.a + 1;
    }
 }

@@ -1,25 +1,23 @@
-public class dbg extends dbb {
-   public dbg(String $$0, dbh $$1, dbr $$2, cxg $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+public class dbg {
+   public static final dbh a = a("crafting_building_blocks");
+   public static final dbh b = a("crafting_redstone");
+   public static final dbh c = a("crafting_equipment");
+   public static final dbh d = a("crafting_misc");
+   public static final dbh e = a("furnace_food");
+   public static final dbh f = a("furnace_blocks");
+   public static final dbh g = a("furnace_misc");
+   public static final dbh h = a("blast_furnace_blocks");
+   public static final dbh i = a("blast_furnace_misc");
+   public static final dbh j = a("smoker_food");
+   public static final dbh k = a("stonecutter");
+   public static final dbh l = a("smithing");
+   public static final dbh m = a("campfire");
+
+   private static dbh a(String $$0) {
+      return ke.a(mb.aB, $$0, new dbh());
    }
 
-   @Override
-   protected cxc f() {
-      return cxk.xx;
-   }
-
-   @Override
-   public dcf<dbg> a() {
-      return dcf.r;
-   }
-
-   @Override
-   public dcg<dbg> b() {
-      return dcg.e;
-   }
-
-   @Override
-   public dby h() {
-      return dbx.m;
+   public static dbh a(ke<dbh> $$0) {
+      return m;
    }
 }

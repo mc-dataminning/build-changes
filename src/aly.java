@@ -1,15 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public enum aly {
-   a,
-   b,
-   c,
-   d;
-
-   private static final List<aly> e = List.of(values());
-   private static final ke.b f = ke.a(ma.aC);
-
-   public static jx<aly> a() {
-      return new jx<>(e).a(a, f);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface aly {
 }

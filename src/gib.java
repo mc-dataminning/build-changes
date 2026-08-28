@@ -1,146 +1,39 @@
-public class gib extends gjn {
-   static final bac a = bac.a();
-   private final gji b;
-
-   gib(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.b = $$7;
-      this.D *= 0.75F;
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public gir b() {
-      return gir.c;
-   }
-
-   @Override
-   public int a(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = azu.a($$1, 0.0F, 1.0F);
-      int $$2 = super.a($$0);
-      int $$3 = $$2 & 0xFF;
-      int $$4 = $$2 >> 16 & 0xFF;
-      $$3 += (int)($$1 * 15.0F * 16.0F);
-      if ($$3 > 240) {
-         $$3 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+public class gib extends gkg {
+   gib(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements giq<lw> {
-      private final double a = 0.25;
-      private final gji b;
-
-      public a(gji $$0) {
-         this.b = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gib $$8 = new gib($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.25, $$6 * 0.25, $$7 * 0.25);
-         int $$9 = 2;
-         int $$10 = 4;
-         $$8.a($$1.A.a(2) + 2);
-         return $$8;
+      if (!this.o && !this.c.b_(ji.a(this.g, this.h, this.i)).a(awv.a)) {
+         this.k();
       }
    }
 
-   public static class b implements giq<lw> {
-      private final gji a;
+   @Override
+   public gjk b() {
+      return gjk.b;
+   }
 
-      public b(gji $$0) {
+   public static class a implements gjj<lx> {
+      private final gkb a;
+
+      public a(gkb $$0) {
          this.a = $$0;
       }
 
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gib $$8 = new gib($$1, $$2, $$3, $$4, 0.5 - gib.a.j(), $$6, 0.5 - gib.a.j(), this.a);
-         if ($$1.A.h()) {
-            $$8.a(0.6F, 1.0F, 0.8F);
-         } else {
-            $$8.a(0.08F, 0.4F, 0.4F);
-         }
-
-         $$8.k *= 0.2F;
-         if ($$5 == 0.0 && $$7 == 0.0) {
-            $$8.j *= 0.1F;
-            $$8.l *= 0.1F;
-         }
-
-         $$8.a((int)(8.0 / ($$1.A.j() * 0.8 + 0.2)));
-         return $$8;
-      }
-   }
-
-   public static class c implements giq<lw> {
-      private final double a = 0.01;
-      private final gji b;
-
-      public c(gji $$0) {
-         this.b = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gib $$8 = new gib($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         if ($$1.A.h()) {
-            $$8.a(0.29F, 0.58F, 0.51F);
-         } else {
-            $$8.a(0.43F, 0.77F, 0.62F);
-         }
-
-         $$8.b($$5 * 0.01, $$6 * 0.01, $$7 * 0.01);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class d implements giq<lw> {
-      private final double a = 0.01;
-      private final gji b;
-
-      public d(gji $$0) {
-         this.b = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gib $$8 = new gib($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(1.0F, 0.9F, 1.0F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
-         return $$8;
-      }
-   }
-
-   public static class e implements giq<lw> {
-      private final double a = 0.01;
-      private final gji b;
-
-      public e(gji $$0) {
-         this.b = $$0;
-      }
-
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gib $$8 = new gib($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, this.b);
-         $$8.a(0.91F, 0.55F, 0.08F);
-         $$8.b($$5 * 0.01 / 2.0, $$6 * 0.01, $$7 * 0.01 / 2.0);
-         int $$9 = 10;
-         int $$10 = 40;
-         $$8.a($$1.A.a(30) + 10);
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gib $$8 = new gib($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }

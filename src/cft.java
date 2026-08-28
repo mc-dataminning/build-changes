@@ -1,41 +1,28 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
-public class cft extends cgh<bvx> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cft() {
-      this(200);
-   }
-
-   public cft(int $$0) {
-      super($$0);
+public class cft extends cfq<bvg> {
+   @Override
+   public Set<cek<?>> a() {
+      return ImmutableSet.of(cek.i);
    }
 
    @Override
-   protected void a(arx $$0, bvx $$1) {
-      a($$1);
+   protected void a(arc $$0, bvg $$1) {
+      $$1.ec().a(cek.i, this.a($$1));
    }
 
-   @Override
-   public Set<cfb<?>> a() {
-      return ImmutableSet.of(cfb.g);
+   private List<bvg> a(bvg $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
    }
 
-   public static void a(bvx $$0) {
-      Optional<List<bvx>> $$1 = $$0.ec().c(cfb.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bvi.aq));
-         if ($$2) {
-            b($$0);
-         }
-      }
+   private boolean b(bvg $$0) {
+      return $$0.aq() == bur.bD && $$0.e_();
    }
 
-   public static void b(bvx $$0) {
-      $$0.ec().a(cfb.F, true, 599L);
+   private cem c(bvg $$0) {
+      return $$0.ec().c(cek.h).orElse(cem.a());
    }
 }

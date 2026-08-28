@@ -2,33 +2,26 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cs(Optional<ju<cxm>> c) implements dz<cxl> {
-   public static final Codec<cs> a = RecordCodecBuilder.create($$0 -> $$0.group(kf.a(mb.L).optionalFieldOf("song").forGetter(cs::c)).apply($$0, cs::new));
+public record cs(Optional<bf<cze, cr.a>> c, dk.d d) implements ea<czf> {
+   public static final Codec<cs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(bf.a(cr.a.a).optionalFieldOf("explosions").forGetter(cs::b), dk.d.d.optionalFieldOf("flight_duration", dk.d.c).forGetter(cs::c))
+            .apply($$0, cs::new)
+   );
 
    @Override
-   public kt<cxl> a() {
-      return ku.ab;
+   public ku<czf> a() {
+      return kv.af;
    }
 
-   public boolean a(cxg $$0, cxl $$1) {
-      if (!this.c.isPresent()) {
-         return true;
-      } else {
-         boolean $$2 = false;
-
-         for (jq<cxm> $$3 : this.c.get()) {
-            Optional<alo<cxm>> $$4 = $$3.e();
-            if (!$$4.isEmpty() && $$4.get() == $$1.a().c()) {
-               $$2 = true;
-               break;
-            }
-         }
-
-         return $$2;
-      }
+   public boolean a(cwp $$0, czf $$1) {
+      return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : this.d.d($$1.a());
    }
 
-   public static cs b() {
-      return new cs(Optional.empty());
+   public Optional<bf<cze, cr.a>> b() {
+      return this.c;
+   }
+
+   public dk.d c() {
+      return this.d;
    }
 }

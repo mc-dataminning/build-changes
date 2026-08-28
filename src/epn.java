@@ -1,112 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.Optional;
 
-public class epn {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<jq<epn>>> d = new MutableObject();
-   public static final Codec<epn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(epn::a),
-               Codec.mapPair(epl.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, epn::new)
-   );
-   public static final Codec<jq<epn>> b = ae.a(all.a(mb.aX, a), d::setValue);
-   private final List<Pair<epl, Integer>> e;
-   private final ObjectArrayList<epl> f;
-   private final jq<epn> g;
-   private int h = Integer.MIN_VALUE;
+public final class epn extends enm {
+   public static final eom d = eom.b;
+   public static final eqy e = eqy.b;
+   public static final int f = 128;
+   public static final int g = 0;
+   public static final int h = 20;
+   public static final MapCodec<epn> i = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  a($$0),
+                  eow.b.fieldOf("start_pool").forGetter($$0x -> $$0x.j),
+                  aku.a.optionalFieldOf("start_jigsaw_name").forGetter($$0x -> $$0x.k),
+                  Codec.intRange(0, 20).fieldOf("size").forGetter($$0x -> $$0x.l),
+                  elt.c.fieldOf("start_height").forGetter($$0x -> $$0x.m),
+                  Codec.BOOL.fieldOf("use_expansion_hack").forGetter($$0x -> $$0x.n),
+                  ecs.a.g.optionalFieldOf("project_start_to_heightmap").forGetter($$0x -> $$0x.o),
+                  Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter($$0x -> $$0x.p),
+                  Codec.list(eoy.b).optionalFieldOf("pool_aliases", List.of()).forGetter($$0x -> $$0x.q),
+                  eom.a.optionalFieldOf("dimension_padding", d).forGetter($$0x -> $$0x.r),
+                  eqy.c.optionalFieldOf("liquid_settings", e).forGetter($$0x -> $$0x.s)
+               )
+               .apply($$0, epn::new)
+      )
+      .validate(epn::a);
+   private final jr<eow> j;
+   private final Optional<aku> k;
+   private final int l;
+   private final elt m;
+   private final boolean n;
+   private final Optional<ecs.a> o;
+   private final int p;
+   private final List<eoy> q;
+   private final eom r;
+   private final eqy s;
 
-   public epn(jq<epn> $$0, List<Pair<epl, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<epl, Integer> $$2 : $$1) {
-         epl $$3 = (epl)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   private static DataResult<epn> a(epn $$0) {
+      int $$1 = switch ($$0.d()) {
+         case a -> 0;
+         case b, c, d, e -> 12;
+      };
+      return $$0.p + $$1 > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 128") : DataResult.success($$0);
    }
 
-   public epn(jq<epn> $$0, List<Pair<Function<epn.a, ? extends epl>, Integer>> $$1, epn.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<epn.a, ? extends epl>, Integer> $$3 : $$1) {
-         epl $$4 = (epl)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
+   public epn(enm.c $$0, jr<eow> $$1, Optional<aku> $$2, int $$3, elt $$4, boolean $$5, Optional<ecs.a> $$6, int $$7, List<eoy> $$8, eom $$9, eqy $$10) {
+      super($$0);
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
+      this.q = $$8;
+      this.r = $$9;
+      this.s = $$10;
    }
 
-   public int a(esg $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != epe.b).mapToInt($$1 -> $$1.a($$0, jh.c, dqv.a).e()).max().orElse(0);
-      }
-
-      return this.h;
+   public epn(enm.c $$0, jr<eow> $$1, int $$2, elt $$3, boolean $$4, ecs.a $$5) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.of($$5), 80, List.of(), d, e);
    }
 
-   public jq<epn> a() {
-      return this.g;
+   public epn(enm.c $$0, jr<eow> $$1, int $$2, elt $$3, boolean $$4) {
+      this($$0, $$1, Optional.empty(), $$2, $$3, $$4, Optional.empty(), 80, List.of(), d, e);
    }
 
-   public epl a(bac $$0) {
-      return (epl)(this.f.isEmpty() ? epe.b : (epl)this.f.get($$0.a(this.f.size())));
+   @Override
+   public Optional<enm.b> a(enm.a $$0) {
+      dfo $$1 = $$0.h();
+      int $$2 = this.m.a($$0.f(), new edp($$0.b(), $$0.i()));
+      ji $$3 = new ji($$1.d(), $$2, $$1.e());
+      return eoq.a($$0, this.j, this.k, this.l, $$3, this.n, this.o, this.p, epa.create(this.q, $$3, $$0.g()), this.r, this.s);
    }
 
-   public List<epl> b(bac $$0) {
-      return ae.a(this.f, $$0);
-   }
-
-   public int b() {
-      return this.f.size();
-   }
-
-   public static enum a implements baq {
-      a("terrain_matching", ImmutableList.of(new erl(edj.a.a, -1))),
-      b("rigid", ImmutableList.of());
-
-      public static final baq.a<epn.a> c = baq.a(epn.a::values);
-      private final String d;
-      private final ImmutableList<esc> e;
-
-      private a(final String $$0, final ImmutableList<esc> $$1) {
-         this.d = $$0;
-         this.e = $$1;
-      }
-
-      public String a() {
-         return this.d;
-      }
-
-      public static epn.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<esc> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public env<?> e() {
+      return env.f;
    }
 }

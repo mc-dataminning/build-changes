@@ -1,124 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record bt(Optional<cu> b, Optional<cu> c, Optional<cu> d, Optional<cu> e, Optional<cu> f, Optional<cu> g, Optional<cu> h) {
-   public static final Codec<bt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cu.a.optionalFieldOf("head").forGetter(bt::a),
-               cu.a.optionalFieldOf("chest").forGetter(bt::b),
-               cu.a.optionalFieldOf("legs").forGetter(bt::c),
-               cu.a.optionalFieldOf("feet").forGetter(bt::d),
-               cu.a.optionalFieldOf("body").forGetter(bt::e),
-               cu.a.optionalFieldOf("mainhand").forGetter(bt::f),
-               cu.a.optionalFieldOf("offhand").forGetter(bt::g)
+public class bt extends dz<bt.a> {
+   @Override
+   public Codec<bt.a> a() {
+      return bt.a.a;
+   }
+
+   public void a(ard $$0, dwx $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public static record a(Optional<bi> b, Optional<jr<djm>> c, Optional<ef> d) implements dz.a {
+      public static final Codec<bt.a> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     bx.b.optionalFieldOf("player").forGetter(bt.a::a),
+                     mb.e.r().optionalFieldOf("block").forGetter(bt.a::b),
+                     ef.a.optionalFieldOf("state").forGetter(bt.a::c)
+                  )
+                  .apply($$0, bt.a::new)
+         )
+         .validate(bt.a::a);
+
+      private static DataResult<bt.a> a(bt.a $$0) {
+         return $$0.c
+            .<DataResult<bt.a>>flatMap(
+               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((djm)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
             )
-            .apply($$0, bt::new)
-   );
-
-   public static bt a(jr<cxc> $$0, jr<dug> $$1) {
-      return bt.a.a().a(cu.a.a().a($$0, cxk.vP).a(ks.a(crb.a($$1).a(), ku.ai, ku.h))).b();
-   }
-
-   public boolean a(@Nullable bvb $$0) {
-      if ($$0 instanceof bvx $$1) {
-         if (this.b.isPresent() && !this.b.get().a($$1.a(bvj.f))) {
-            return false;
-         } else if (this.c.isPresent() && !this.c.get().a($$1.a(bvj.e))) {
-            return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1.a(bvj.d))) {
-            return false;
-         } else if (this.e.isPresent() && !this.e.get().a($$1.a(bvj.c))) {
-            return false;
-         } else if (this.f.isPresent() && !this.f.get().a($$1.a(bvj.g))) {
-            return false;
-         } else {
-            return this.g.isPresent() && !this.g.get().a($$1.a(bvj.a)) ? false : !this.h.isPresent() || this.h.get().a($$1.a(bvj.b));
-         }
-      } else {
-         return false;
-      }
-   }
-
-   public Optional<cu> a() {
-      return this.b;
-   }
-
-   public Optional<cu> b() {
-      return this.c;
-   }
-
-   public Optional<cu> c() {
-      return this.d;
-   }
-
-   public Optional<cu> d() {
-      return this.e;
-   }
-
-   public Optional<cu> e() {
-      return this.f;
-   }
-
-   public Optional<cu> f() {
-      return this.g;
-   }
-
-   public Optional<cu> g() {
-      return this.h;
-   }
-
-   public static class a {
-      private Optional<cu> a = Optional.empty();
-      private Optional<cu> b = Optional.empty();
-      private Optional<cu> c = Optional.empty();
-      private Optional<cu> d = Optional.empty();
-      private Optional<cu> e = Optional.empty();
-      private Optional<cu> f = Optional.empty();
-      private Optional<cu> g = Optional.empty();
-
-      public static bt.a a() {
-         return new bt.a();
+            .orElseGet(() -> DataResult.success($$0));
       }
 
-      public bt.a a(cu.a $$0) {
-         this.a = Optional.of($$0.b());
-         return this;
+      public static aq<bt.a> a(djm $$0) {
+         return ap.e.a(new bt.a(Optional.empty(), Optional.of($$0.p()), Optional.empty()));
       }
 
-      public bt.a b(cu.a $$0) {
-         this.b = Optional.of($$0.b());
-         return this;
+      public boolean a(dwx $$0) {
+         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
-      public bt.a c(cu.a $$0) {
-         this.c = Optional.of($$0.b());
-         return this;
+      @Override
+      public Optional<bi> a() {
+         return this.b;
       }
 
-      public bt.a d(cu.a $$0) {
-         this.d = Optional.of($$0.b());
-         return this;
+      public Optional<jr<djm>> b() {
+         return this.c;
       }
 
-      public bt.a e(cu.a $$0) {
-         this.e = Optional.of($$0.b());
-         return this;
-      }
-
-      public bt.a f(cu.a $$0) {
-         this.f = Optional.of($$0.b());
-         return this;
-      }
-
-      public bt.a g(cu.a $$0) {
-         this.g = Optional.of($$0.b());
-         return this;
-      }
-
-      public bt b() {
-         return new bt(this.a, this.b, this.c, this.d, this.e, this.f, this.g);
+      public Optional<ef> c() {
+         return this.d;
       }
    }
 }

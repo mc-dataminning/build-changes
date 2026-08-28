@@ -1,137 +1,151 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.microsoft.aad.msal4j.ClientCredentialFactory;
-import com.microsoft.aad.msal4j.ClientCredentialParameters;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication;
-import com.microsoft.aad.msal4j.IAuthenticationResult;
-import com.microsoft.aad.msal4j.IClientCertificate;
-import com.microsoft.aad.msal4j.ConfidentialClientApplication.Builder;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.net.Proxy;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.Instant;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.ExecutorService;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class asw extends atf {
-   private final ConfidentialClientApplication b;
-   private final ClientCredentialParameters c;
-   private final Set<String> d;
-   private final int e;
+public class asw implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bnk<asw.e> d;
+   private final bqz e = new bqz(af.i(), "download-queue");
 
-   private asw(URL $$0, atf.b $$1, atf.a $$2, ExecutorService $$3, ConfidentialClientApplication $$4, ClientCredentialParameters $$5, Set<String> $$6, int $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$4;
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   public asw(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = bnk.a(asw.e.a, $$0.resolve("log.json"));
+      asv.a($$0, 20);
    }
 
-   @Nullable
-   public static atf a(String $$0) {
-      JsonObject $$1 = azk.a($$0);
-      URI $$2 = URI.create(azk.i($$1, "apiServer"));
-      String $$3 = azk.i($$1, "apiPath");
-      String $$4 = azk.i($$1, "scope");
-      String $$5 = azk.a($$1, "serverId", "");
-      String $$6 = azk.i($$1, "applicationId");
-      String $$7 = azk.i($$1, "tenantId");
-      String $$8 = azk.a($$1, "roomId", "Java:Chat");
-      String $$9 = azk.i($$1, "certificatePath");
-      String $$10 = azk.a($$1, "certificatePassword", "");
-      int $$11 = azk.a($$1, "hashesToDrop", -1);
-      int $$12 = azk.a($$1, "maxConcurrentRequests", 7);
-      JsonArray $$13 = azk.v($$1, "fullyFilteredEvents");
-      Set<String> $$14 = new HashSet<>();
-      $$13.forEach($$1x -> $$14.add(azk.a($$1x, "filteredEvent")));
-      int $$15 = azk.a($$1, "connectionReadTimeoutMs", 2000);
+   private asw.b b(asw.a $$0, Map<UUID, asw.c> $$1) {
+      asw.b $$2 = new asw.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
-      URL $$16;
-      try {
-         $$16 = $$2.resolve($$3).toURL();
-      } catch (MalformedURLException var26) {
-         throw new RuntimeException(var26);
-      }
-
-      atf.b $$19 = ($$2x, $$3x) -> {
-         JsonObject $$4x = new JsonObject();
-         $$4x.addProperty("userId", $$2x.getId().toString());
-         $$4x.addProperty("userDisplayName", $$2x.getName());
-         $$4x.addProperty("server", $$5);
-         $$4x.addProperty("room", $$8);
-         $$4x.addProperty("area", "JavaChatRealms");
-         $$4x.addProperty("data", $$3x);
-         $$4x.addProperty("language", "*");
-         return $$4x;
-      };
-      atf.a $$20 = atf.a.select($$11);
-      ExecutorService $$21 = a($$12);
-
-      IClientCertificate $$23;
-      try (InputStream $$22 = Files.newInputStream(Path.of($$9))) {
-         $$23 = ClientCredentialFactory.createFromCertificate($$22, $$10);
-      } catch (Exception var28) {
-         a.warn("Failed to open certificate file");
-         return null;
-      }
-
-      ConfidentialClientApplication $$27;
-      try {
-         $$27 = ((Builder)((Builder)ConfidentialClientApplication.builder($$6, $$23).sendX5c(true).executorService($$21))
-               .authority(String.format(Locale.ROOT, "https://login.microsoftonline.com/%s/", $$7)))
-            .build();
-      } catch (Exception var25) {
-         a.warn("Failed to create confidential client application");
-         return null;
-      }
-
-      ClientCredentialParameters $$30 = ClientCredentialParameters.builder(Set.of($$4)).build();
-      return new asw($$16, $$19, $$20, $$21, $$27, $$30, $$14, $$15);
-   }
-
-   private IAuthenticationResult b() {
-      return (IAuthenticationResult)this.b.acquireToken(this.c).join();
-   }
-
-   @Override
-   protected void a(HttpURLConnection $$0) {
-      IAuthenticationResult $$1 = this.b();
-      $$0.setRequestProperty("Authorization", "Bearer " + $$1.accessToken());
-   }
-
-   @Override
-   protected asq a(String $$0, atf.a $$1, JsonObject $$2) {
-      JsonObject $$3 = azk.a($$2, "result", null);
-      if ($$3 == null) {
-         return asq.b($$0);
-      } else {
-         boolean $$4 = azk.a($$3, "filtered", true);
-         if (!$$4) {
-            return asq.a($$0);
-         } else {
-            for (JsonElement $$6 : azk.a($$3, "events", new JsonArray())) {
-               JsonObject $$7 = $$6.getAsJsonObject();
-               String $$8 = azk.a($$7, "id", "");
-               if (this.d.contains($$8)) {
-                  return asq.b($$0);
-               }
+            try {
+               $$5 = ayq.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
             }
 
-            JsonArray $$9 = azk.a($$3, "redactedTextIndex", new JsonArray());
-            return new asq($$0, this.a($$0, $$9, $$1));
+            try {
+               this.d
+                  .a(
+                     new asw.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
+            }
          }
+      );
+      return $$2;
+   }
+
+   private Either<String, asw.d> a(Path $$0) {
+      try {
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new asw.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
       }
    }
 
+   public CompletableFuture<asw.b> a(asw.a $$0, Map<UUID, asw.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a_);
+   }
+
    @Override
-   protected int a() {
-      return this.e;
+   public void close() throws IOException {
+      this.e.close();
+      this.d.close();
+   }
+
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, ayq.a e) {
+   }
+
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
+      }
+   }
+
+   public static record c(URL a, @Nullable HashCode b) {
+   }
+
+   static record d(String b, long c) {
+      public static final Codec<asw.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(asw.d::a), Codec.LONG.fieldOf("size").forGetter(asw.d::b)).apply($$0, asw.d::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
+      }
+   }
+
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, asw.d> f) {
+      public static final Codec<asw.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kl.d.fieldOf("id").forGetter(asw.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(asw.e::b),
+                  ayi.q.fieldOf("time").forGetter(asw.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(asw.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), asw.d.a.fieldOf("file")).forGetter(asw.e::e)
+               )
+               .apply($$0, asw.e::new)
+      );
+
+      public UUID a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public Instant c() {
+         return this.d;
+      }
+
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, asw.d> e() {
+         return this.f;
+      }
    }
 }

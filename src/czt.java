@@ -1,19 +1,27 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public record czt(Map<jq<dkd>, dyq<?>> c) {
-   public static final czt a = new czt(Map.of());
-   public static final Codec<czt> b = Codec.dispatchedMap(ma.e.r(), $$0 -> Codec.STRING.comapFlatMap($$1 -> {
-         dyq<?> $$2 = ((dkd)$$0.a()).l().a($$1);
-         return $$2 != null ? DataResult.success($$2) : DataResult.error(() -> "No property on " + $$0.g() + " with name: " + $$1);
-      }, dyq::f)).xmap(czt::new, czt::a);
+public record czt(boolean c) implements czs {
+   public static final Codec<czt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(czt::a)).apply($$0, czt::new)
+   );
+   public static final ym<ByteBuf, czt> b = yk.b.a(czt::new, czt::a);
+   private static final wo d = wo.c("item.unbreakable").a(n.j);
 
-   public czt a(jq<dkd> $$0, dyq<?> $$1) {
-      return new czt(ae.a(this.c, $$0, $$1));
+   @Override
+   public void a(cwl.b $$0, Consumer<wo> $$1, cyh $$2) {
+      if (this.c) {
+         $$1.accept(d);
+      }
    }
 
-   public Map<jq<dkd>, dyq<?>> a() {
+   public czt a(boolean $$0) {
+      return new czt($$0);
+   }
+
+   public boolean a() {
       return this.c;
    }
 }

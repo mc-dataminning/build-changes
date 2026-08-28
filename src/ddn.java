@@ -1,30 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public record ddn<T>(T a, Optional<ezr> b) {
-   public static Codec<ezr> a(bbe $$0) {
-      return ezr.e
-         .validate(
-            $$1 -> {
-               baa.a $$2 = new baa.a();
-               ewo $$3 = new ewo($$2, $$0);
-               $$1.a($$3);
-               return $$2.b()
-                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
-                  .orElseGet(() -> DataResult.success($$1));
-            }
-         );
+public record ddn(ddg d, ddg e, jr<btc> f) implements ddq {
+   public static final MapCodec<ddn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ddg.b.fieldOf("min_damage").forGetter(ddn::b), ddg.b.fieldOf("max_damage").forGetter(ddn::c), btc.b.fieldOf("damage_type").forGetter(ddn::d)
+            )
+            .apply($$0, ddn::new)
+   );
+
+   @Override
+   public void a(arc $$0, int $$1, dcy $$2, buk $$3, fba $$4) {
+      float $$5 = ayz.b($$3.dZ(), this.d.a($$1), this.e.a($$1));
+      $$3.a($$0, new bta(this.f, $$2.c()), $$5);
    }
 
-   public static <T> Codec<ddn<T>> a(Codec<T> $$0, bbe $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(ddn::a), a($$1).optionalFieldOf("requirements").forGetter(ddn::b)).apply($$2, ddn::new)
-      );
+   @Override
+   public MapCodec<ddn> a() {
+      return a;
    }
 
-   public boolean a(ewi $$0) {
-      return this.b.isEmpty() ? true : this.b.get().test($$0);
+   public ddg b() {
+      return this.d;
+   }
+
+   public ddg c() {
+      return this.e;
+   }
+
+   public jr<btc> d() {
+      return this.f;
    }
 }

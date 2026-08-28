@@ -1,37 +1,68 @@
-public class gap extends gdc<gxd> {
-   private final gej a;
+public class gap<S extends gyz> extends gcn<S> {
+   private static final String x = "left_sleeve";
+   private static final String y = "right_sleeve";
+   private static final String z = "left_pants";
+   private static final String A = "right_pants";
+   public final gfc a = this.s.b("left_sleeve");
+   public final gfc b = this.r.b("right_sleeve");
+   public final gfc c = this.u.b("left_pants");
+   public final gfc d = this.t.b("right_pants");
+   public final gfc e = this.q.b("jacket");
+   public final gfc f = this.o.b("right_ear");
+   public final gfc g = this.o.b("left_ear");
 
-   public gap(gej $$0) {
-      super($$0);
-      this.a = $$0.b("head").b("mushrooms");
+   public gap(gfc $$0) {
+      super($$0, gmh::j);
    }
 
-   public static gep a() {
-      ger $$0 = gbu.a(gen.a, 0.0F);
-      get $$1 = $$0.a();
-      gdc.a($$1);
-      get $$2 = $$1.b("head").a("mushrooms");
-      $$2.a("red_mushroom_1", geo.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gel.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("red_mushroom_2", geo.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gel.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
-      $$2.a("brown_mushroom_1", geo.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gel.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a(
-         "brown_mushroom_2", geo.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gel.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
-      );
-      $$2.a(
-         "brown_mushroom_3",
-         geo.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         gel.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
-      );
-      $$2.a(
-         "brown_mushroom_4",
-         geo.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
-         gel.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
-      );
-      return gep.a($$0, 64, 32);
+   public static gfk a(gfg $$0) {
+      gfk $$1 = gdf.a($$0, false);
+      gfm $$2 = $$1.a();
+      $$2.a("body", gfh.c().a(16, 16).a(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, $$0), gfe.a);
+      gfm $$3 = a($$0, $$1);
+      $$3.a("hat");
+      return $$1;
    }
 
-   public void a(gxd $$0) {
+   public static gfm a(gfg $$0, gfk $$1) {
+      gfm $$2 = $$1.a();
+      gfm $$3 = $$2.a(
+         "head",
+         gfh.c()
+            .a(0, 0)
+            .a(-5.0F, -8.0F, -4.0F, 10.0F, 8.0F, 8.0F, $$0)
+            .a(31, 1)
+            .a(-2.0F, -4.0F, -5.0F, 4.0F, 4.0F, 1.0F, $$0)
+            .a(2, 4)
+            .a(2.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0)
+            .a(2, 0)
+            .a(-3.0F, -2.0F, -5.0F, 1.0F, 2.0F, 1.0F, $$0),
+         gfe.a
+      );
+      $$3.a("left_ear", gfh.c().a(51, 6).a(0.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gfe.a(4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 6)));
+      $$3.a("right_ear", gfh.c().a(39, 6).a(-1.0F, 0.0F, -2.0F, 1.0F, 5.0F, 4.0F, $$0), gfe.a(-4.5F, -6.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 6)));
+      return $$3;
+   }
+
+   @Override
+   public void a(S $$0) {
       super.a($$0);
-      this.a.k = !$$0.a;
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      float $$3 = (float) (Math.PI / 6);
+      float $$4 = $$0.u * 0.1F + $$1 * 0.5F;
+      float $$5 = 0.08F + $$2 * 0.4F;
+      this.g.g = (float) (-Math.PI / 6) - ayz.b($$4 * 1.2F) * $$5;
+      this.f.g = (float) (Math.PI / 6) + ayz.b($$4) * $$5;
+   }
+
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

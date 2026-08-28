@@ -1,43 +1,96 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fgx {
-   a,
-   b,
-   c,
-   d;
+public class fgx {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 20;
+   private final fgk c = fgk.a();
+   private final Path d;
+   private final fhr e;
+   private final flv f;
+   private final long g;
+   private final int h;
+   private final fgy i;
+   private volatile boolean j;
+   @Nullable
+   private fgi k;
 
-   private static final int e = 1024;
+   public fgx(Path $$0, fhr $$1, flv $$2, long $$3, int $$4, fgy $$5) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+   }
 
-   public static fgx a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
-      } else {
+   public CompletableFuture<?> a() {
+      return CompletableFuture.runAsync(() -> {
+         File $$0 = null;
+
          try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
+            fhy $$1 = this.c();
+            $$0 = fgw.a(this.d, () -> this.j);
+            this.i.d();
+            fgi $$2 = new fgi($$0, this.g, this.h, $$1, this.f, ab.b().c(), this.e.i, this.i.b());
+            this.k = $$2;
+            fjp $$3 = $$2.a();
+            String $$4 = $$3.a();
+            if ($$4 != null) {
+               throw new fgt($$4);
+            }
+
+            fkb.b(this.g);
+            this.c.a(this.g, this.h, this.e);
+         } catch (IOException var11) {
+            throw new fgt(var11.getMessage());
+         } catch (fig var12) {
+            throw new fgt(var12.a.b());
+         } catch (CancellationException | InterruptedException var13) {
+            throw new fgr();
+         } finally {
+            if ($$0 != null) {
+               b.debug("Deleting file {}", $$0.getAbsolutePath());
+               $$0.delete();
+            }
+         }
+      }, af.g());
+   }
+
+   public void b() {
+      this.j = true;
+      if (this.k != null) {
+         this.k.b();
+         this.k = null;
+      }
+   }
+
+   private fhy c() throws fig, InterruptedException {
+      for (int $$0 = 0; $$0 < 20; $$0++) {
+         try {
+            fhy $$1 = this.c.i(this.g);
+            if (this.j) {
+               throw new fgr();
+            }
+
+            if ($$1 != null) {
+               if (!$$1.c()) {
+                  throw new fgv();
+               }
+
+               return $$1;
+            }
+         } catch (fih var3) {
+            Thread.sleep((long)var3.c * 1000L);
          }
       }
-   }
 
-   public static double a(long $$0, fgx $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
-
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
-      } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
-      }
-   }
-
-   public static String b(long $$0, fgx $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+      throw new fgv();
    }
 }

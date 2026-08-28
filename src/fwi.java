@@ -1,32 +1,33 @@
-public class fwi extends fwm {
-   private static final xk b = xk.c("multiplayerWarning.header").a(n.r);
-   private static final xk c = xk.c("multiplayerWarning.message");
-   private static final xk d = xk.c("multiplayerWarning.check");
-   private static final xk s = b.f().f("\n").b(c);
-   private final ftr u;
+public class fwi extends fos {
+   private static final aku a = aku.b("widget/page_forward_highlighted");
+   private static final aku b = aku.b("widget/page_forward");
+   private static final aku c = aku.b("widget/page_backward_highlighted");
+   private static final aku d = aku.b("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-   public fwi(ftr $$0) {
-      super(b, c, d, s);
-      this.u = $$0;
+   public fwi(int $$0, int $$1, boolean $$2, fos.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, wn.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   protected fro l() {
-      frr $$0 = frr.e().a(8);
-      $$0.a(fny.a(xj.i, $$0x -> {
-         if (this.a.a()) {
-            this.m.n.u = true;
-            this.m.n.az();
-         }
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      aku $$4;
+      if (this.u) {
+         $$4 = this.D() ? a : b;
+      } else {
+         $$4 = this.D() ? c : d;
+      }
 
-         this.m.a(new fwh(this.u));
-      }).a());
-      $$0.a(fny.a(xj.k, $$0x -> this.aP_()).a());
-      return $$0;
+      $$0.a(gmh::H, $$4, this.F(), this.G(), 23, 13);
    }
 
    @Override
-   public void aP_() {
-      this.m.a(this.u);
+   public void a(hjo $$0) {
+      if (this.v) {
+         $$0.a(hid.a(awa.cy, 1.0F));
+      }
    }
 }

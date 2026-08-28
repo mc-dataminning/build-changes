@@ -4,32 +4,20 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bly extends bkb {
+public class bly extends bjk {
    public bly(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bin.c,
-         () -> DSL.optionalFields(
-               "entities",
-               DSL.list(bin.A.in($$0)),
-               "block_entities",
-               DSL.list(DSL.or(bin.s.in($$0), DSL.remainder())),
-               "block_ticks",
-               DSL.list(DSL.fields("i", bin.C.in($$0))),
-               "sections",
-               DSL.list(
-                  DSL.optionalFields(
-                     "biomes", DSL.optionalFields("palette", DSL.list(bin.K.in($$0))), "block_states", DSL.optionalFields("palette", DSL.list(bin.u.in($$0)))
-                  )
-               ),
-               "structures",
-               DSL.optionalFields("starts", DSL.compoundList(bin.G.in($$0)))
-            )
-      );
+   protected static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("inBlockState", bhw.u.in($$0), "item", bhw.t.in($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register($$1, "minecraft:trident", () -> a($$0));
+      $$0.register($$1, "minecraft:spectral_arrow", () -> a($$0));
+      $$0.register($$1, "minecraft:arrow", () -> a($$0));
+      return $$1;
    }
 }

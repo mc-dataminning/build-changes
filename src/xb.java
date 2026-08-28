@@ -1,48 +1,63 @@
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
 public class xb {
-   private static final int a = 5;
-   private static final int b = 127;
-   private static final int c = 128;
-   private static final int d = 7;
+   public static final int a = -1;
+   private static final int b = 128;
+   private final xa[] c;
 
-   public static int a(int $$0) {
-      for (int $$1 = 1; $$1 < 5; $$1++) {
-         if (($$0 & -1 << $$1 * 7) == 0) {
+   public xb(int $$0) {
+      this.c = new xa[$$0];
+   }
+
+   public static xb a() {
+      return new xb(128);
+   }
+
+   public int a(xa $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
             return $$1;
          }
       }
 
-      return 5;
+      return -1;
    }
 
-   public static boolean a(byte $$0) {
-      return ($$0 & 128) == 128;
+   @Nullable
+   public xa a(int $$0) {
+      return this.c[$$0];
    }
 
-   public static int a(ByteBuf $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-
-      byte $$3;
-      do {
-         $$3 = $$0.readByte();
-         $$1 |= ($$3 & 127) << $$2++ * 7;
-         if ($$2 > 5) {
-            throw new RuntimeException("VarInt too big");
-         }
-      } while (a($$3));
-
-      return $$1;
-   }
-
-   public static ByteBuf a(ByteBuf $$0, int $$1) {
-      while (($$1 & -128) != 0) {
-         $$0.writeByte($$1 & 127 | 128);
-         $$1 >>>= 7;
+   public void a(xh $$0, @Nullable xa $$1) {
+      List<xa> $$2 = $$0.d().a();
+      ArrayDeque<xa> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
       }
 
-      $$0.writeByte($$1);
-      return $$0;
+      this.a($$3);
+   }
+
+   @VisibleForTesting
+   void a(List<xa> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<xa> $$0) {
+      Set<xa> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         xa $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
+      }
    }
 }

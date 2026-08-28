@@ -1,57 +1,41 @@
-import java.util.OptionalInt;
+public class cyb extends cwl {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public interface cyb {
-   cqh a(dgz var1, ka var2, cxg var3, jm var4);
-
-   default cyb.a b() {
-      return cyb.a.a;
+   public cyb(cwl.a $$0) {
+      super($$0);
    }
 
-   default void a(cqh $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
+   @Override
+   public int a(cwp $$0, bvg $$1) {
+      return 1200;
    }
 
-   public static record a(cyb.b b, float c, float d, OptionalInt e) {
-      public static final cyb.a a = a().a();
-
-      public static cyb.a.a a() {
-         return new cyb.a.a();
-      }
-
-      public static class a {
-         private cyb.b a = ($$0, $$1) -> dmj.a($$0, 0.7, new fbr(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public cyb.a.a a(cyb.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public cyb.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public cyb.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public cyb.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cyb.a a() {
-            return new cyb.a(this.a, this.b, this.c, this.d);
-         }
-      }
+   @Override
+   public cwr b(cwp $$0) {
+      return cwr.h;
    }
 
-   @FunctionalInterface
-   public interface b {
-      ka getDispensePosition(ky var1, jm var2);
+   @Override
+   public bsj a(dgi $$0, cox $$1, bsi $$2) {
+      $$1.a(awa.zM, 1.0F, 1.0F);
+      $$1.b(awk.c.b(this));
+      return cws.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cwp a(cwp $$0, dgi $$1, bvg $$2) {
+      this.b($$2);
+      return $$0;
+   }
+
+   @Override
+   public boolean a(cwp $$0, dgi $$1, bvg $$2, int $$3) {
+      this.b($$2);
+      return true;
+   }
+
+   private void b(bvg $$0) {
+      $$0.a(awa.zN, 1.0F, 1.0F);
    }
 }

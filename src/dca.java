@@ -1,34 +1,33 @@
-public record dca<T extends dbv<?>>(alo<dbv<?>> b, T c) {
-   public static final zi<wv, dca<?>> a = zi.a(alo.b(mb.bk), dca::a, dbv.b, dca::b, dca::new);
-
+public record dca(cwp a, cwp b, cwp c) implements dbk {
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dca<?> $$1 && this.b == $$1.b) {
-            return true;
-         }
-
-         return false;
-      }
+   public cwp a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public int a() {
+      return 3;
    }
 
    @Override
-   public String toString() {
-      return this.b.toString();
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
    }
 
-   public alo<dbv<?>> a() {
+   public cwp c() {
+      return this.a;
+   }
+
+   public cwp d() {
       return this.b;
    }
 
-   public T b() {
+   public cwp e() {
       return this.c;
    }
 }

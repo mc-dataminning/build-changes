@@ -1,29 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class cad {
-   public static bxr<bvx> a(int $$0, BiPredicate<bvx, bvx> $$1) {
-      return cbd.a(
-         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$2 -> $$2.group($$2.b(cfb.o), $$2.a(cfb.ab), $$2.c(cfb.ai), $$2.a(cfb.aj))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bvx $$10 = $$2.b($$3);
-                     if (!$$10.eF()) {
-                        return false;
-                     } else {
-                        if ($$1.test($$8, $$10)) {
-                           $$6.a(true, (long)$$0);
-                        }
+   private static final int a = 10;
+   private static final int b = 7;
 
-                        $$5.a($$10.dw(), (long)$$0);
-                        if ($$10.aq() != bvi.bS || $$7.O().b(dgv.O)) {
-                           $$3.b();
-                           $$4.b();
-                        }
+   public static byk<bvo> a(float $$0) {
+      return a($$0, 10, 7);
+   }
 
-                        return true;
-                     }
-                  }))
-      );
+   public static byk<bvo> a(float $$0, int $$1, int $$2) {
+      return cam.a((Function<cam.b<bvo>, ? extends App<cam.c<bvo>, cap<bvo>>>)($$3 -> $$3.group($$3.c(cek.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
+               ji $$7 = $$5.dw();
+               fba $$8;
+               if ($$4.c($$7)) {
+                  $$8 = cge.a($$5, $$1, $$2);
+               } else {
+                  kk $$9 = kk.a($$7);
+                  kk $$10 = bxb.a($$4, $$9, 2);
+                  if ($$10 != $$9) {
+                     $$8 = cgb.a($$5, $$1, $$2, fba.c($$10.k()), (float) (Math.PI / 2));
+                  } else {
+                     $$8 = cge.a($$5, $$1, $$2);
+                  }
+               }
+
+               $$3x.a(Optional.ofNullable($$8).map($$1xxxx -> new cen($$1xxxx, $$0, 0)));
+               return true;
+            })));
    }
 }

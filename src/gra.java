@@ -1,21 +1,28 @@
-public class gra extends gqf<chw, gxl, gba> {
-   private static final alp a = alp.b("textures/entity/dolphin.png");
+public abstract class gra<T extends cpe, S extends gxp> extends gsb<T, S> {
+   private final gax a;
 
-   public gra(grl.a $$0) {
-      super($$0, new gba($$0.a(gei.ap)), new gba($$0.a(gei.aq)), 0.7F);
-      this.a(new gvg(this, $$0.b()));
+   public gra(gsc.a $$0) {
+      super($$0);
+      this.a = new gax($$0.a(gfb.l));
    }
 
-   public alp a(gxl $$0) {
-      return a;
+   public void a(S $$0, ffu $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      ffy $$4 = $$2.getBuffer(gmh.f(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, hea.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gxl a() {
-      return new gxl();
-   }
+   protected abstract aku a(S var1);
 
-   public void a(chw $$0, gxl $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.dz().j() > 1.0E-7;
+      $$1.a = $$0.j($$2);
+      $$1.b = $$0.k($$2);
+      $$1.c = (float)$$0.c - $$2;
    }
 }

@@ -1,17 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record eme(jq<cxc> c, emg d) {
-   public static final Codec<eme> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(cxc.e.fieldOf("display").forGetter($$0x -> $$0x.c), emg.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, eme::new)
-   );
-   public static final Codec<jq<eme>> b = all.a(mb.aQ, a);
+public class eme extends ems {
+   private static final eme c = new eme();
+   public static MapCodec<eme> a = MapCodec.unit(() -> c);
 
-   public jq<cxc> a() {
-      return this.c;
+   private eme() {
    }
 
-   public emg b() {
-      return this.d;
+   public static eme a() {
+      return c;
+   }
+
+   @Override
+   protected boolean a(emr $$0, azh $$1, ji $$2) {
+      emq $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jr<dhk> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public emu<?> b() {
+      return emu.e;
    }
 }

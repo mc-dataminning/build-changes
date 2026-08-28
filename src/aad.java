@@ -1,23 +1,16 @@
-import java.util.Optional;
-import java.util.UUID;
+public record aad() implements zy {
+   public static final ym<vl, aad> a = zy.a(aad::a, aad::new);
+   public static final zy.b<aad> b = zy.a("debug/game_test_clear");
 
-public record aad(Optional<UUID> b) implements zr<zx> {
-   public static final zi<wh, aad> a = zr.a(aad::a, aad::new);
-
-   private aad(wh $$0) {
-      this($$0.b(kk.g));
+   private aad(vl $$0) {
+      this();
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b, kk.g);
+   private void a(vl $$0) {
    }
 
    @Override
-   public zt<aad> a() {
-      return aaj.f;
-   }
-
-   public void a(zx $$0) {
-      $$0.a(this);
+   public zy.b<aad> a() {
+      return b;
    }
 }

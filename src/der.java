@@ -1,33 +1,37 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public record der(alp d) implements deh {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<der> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alp.a.fieldOf("function").forGetter(der::b)).apply($$0, der::new));
+public enum der implements azv {
+   a(bus.f, 11, "helmet"),
+   b(bus.e, 16, "chestplate"),
+   c(bus.d, 15, "leggings"),
+   d(bus.c, 13, "boots"),
+   e(bus.g, 16, "body");
 
-   @Override
-   public void a(arx $$0, int $$1, ddp $$2, bvb $$3, fbr $$4) {
-      MinecraftServer $$5 = $$0.p();
-      ame $$6 = $$5.aE();
-      Optional<ik<ew>> $$7 = $$6.a(this.d);
-      if ($$7.isPresent()) {
-         ew $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bU());
-         $$6.a($$7.get(), $$8);
-      } else {
-         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
-      }
+   public static final Codec<der> f = azv.b(der::values);
+   private final bus g;
+   private final String h;
+   private final int i;
+
+   private der(final bus $$0, final int $$1, final String $$2) {
+      this.g = $$0;
+      this.h = $$2;
+      this.i = $$1;
+   }
+
+   public int a(int $$0) {
+      return this.i * $$0;
+   }
+
+   public bus a() {
+      return this.g;
+   }
+
+   public String b() {
+      return this.h;
    }
 
    @Override
-   public MapCodec<der> a() {
-      return a;
-   }
-
-   public alp b() {
-      return this.d;
+   public String c() {
+      return this.h;
    }
 }

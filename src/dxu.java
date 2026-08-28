@@ -1,96 +1,92 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.util.stream.Collectors;
 
-public class dxu {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<dxs>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+public final class dxu<T extends Enum<T> & azv> extends dxz<T> {
+   private final List<T> a;
+   private final Map<String, T> b;
+   private final int[] c;
 
-   private dxu() {
-      this.c.put(' ', $$0 -> true);
-   }
-
-   public dxu a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
-         }
-
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
-
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
-
-            this.b.add($$0);
-            return this;
-         }
+   private dxu(String $$0, Class<T> $$1, List<T> $$2) {
+      super($$0, $$1);
+      if ($$2.isEmpty()) {
+         throw new IllegalArgumentException("Trying to make empty EnumProperty '" + $$0 + "'");
       } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
-      }
-   }
+         this.a = List.copyOf($$2);
+         T[] $$3 = $$1.getEnumConstants();
+         this.c = new int[$$3.length];
 
-   public static dxu a() {
-      return new dxu();
-   }
-
-   public dxu a(char $$0, Predicate<dxs> $$1) {
-      this.c.put($$0, $$1);
-      return this;
-   }
-
-   public dxt b() {
-      return new dxt(this.c());
-   }
-
-   private Predicate<dxs>[][][] c() {
-      this.d();
-      Predicate<dxs>[][][] $$0 = (Predicate<dxs>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
-            }
+         for (T $$4 : $$3) {
+            this.c[$$4.ordinal()] = $$2.indexOf($$4);
          }
-      }
 
-      return $$0;
+         Builder<String, T> $$5 = ImmutableMap.builder();
+
+         for (T $$6 : $$2) {
+            String $$7 = $$6.c();
+            $$5.put($$7, $$6);
+         }
+
+         this.b = $$5.buildOrThrow();
+      }
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
+   @Override
+   public List<T> a() {
+      return this.a;
+   }
 
-      for (Entry<Character, Predicate<dxs>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
+   @Override
+   public Optional<T> b(String $$0) {
+      return Optional.ofNullable(this.b.get($$0));
+   }
+
+   public String a(T $$0) {
+      return $$0.c();
+   }
+
+   public int b(T $$0) {
+      return this.c[$$0.ordinal()];
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof dxu<?> $$1 && super.equals($$0)) {
+            return this.a.equals($$1.a);
          }
-      }
 
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
+         return false;
       }
+   }
+
+   @Override
+   public int b() {
+      int $$0 = super.b();
+      return 31 * $$0 + this.a.hashCode();
+   }
+
+   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1, Predicate<T> $$2) {
+      return a($$0, $$1, Arrays.<T>stream($$1.getEnumConstants()).filter($$2).collect(Collectors.toList()));
+   }
+
+   @SafeVarargs
+   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1, T... $$2) {
+      return a($$0, $$1, List.of($$2));
+   }
+
+   public static <T extends Enum<T> & azv> dxu<T> a(String $$0, Class<T> $$1, List<T> $$2) {
+      return new dxu<>($$0, $$1, $$2);
    }
 }

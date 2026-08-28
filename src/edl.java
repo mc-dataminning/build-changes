@@ -1,34 +1,47 @@
-public class edl {
-   public final bac a;
-   private double b;
-   private boolean c;
+import java.util.concurrent.atomic.AtomicLong;
 
-   public edl(bac $$0) {
-      this.a = $$0;
+@Deprecated
+public class edl implements ech {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private final AtomicLong h = new AtomicLong();
+   private final ecu i = new ecu(this);
+
+   public edl(long $$0) {
+      this.b($$0);
    }
 
-   public void a() {
-      this.c = false;
+   @Override
+   public azh d() {
+      return new edl(this.g());
    }
 
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = azu.k($$0) + azu.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
+   @Override
+   public edf e() {
+      return new ect.a(this.g());
+   }
 
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
-      }
+   @Override
+   public void b(long $$0) {
+      this.h.set(($$0 ^ 25214903917L) & 281474976710655L);
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1;
+      long $$2;
+      do {
+         $$1 = this.h.get();
+         $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
+      } while (!this.h.compareAndSet($$1, $$2));
+
+      return (int)($$2 >>> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

@@ -1,19 +1,26 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+public enum fks {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public class fks {
-   private static final Long2ObjectMap<String> a = new Long2ObjectOpenHashMap();
+   private static final fks[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public static String a(long $$0) {
-      return (String)a.get($$0);
+   private fks(final boolean $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static void b(long $$0) {
-      a.remove($$0);
+   public boolean a() {
+      return this.e;
    }
 
-   public static void a(long $$0, @Nullable String $$1) {
-      a.put($$0, $$1);
+   public boolean b() {
+      return this.f;
+   }
+
+   public fks c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

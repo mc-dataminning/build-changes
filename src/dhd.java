@@ -1,78 +1,34 @@
-import com.mojang.serialization.Dynamic;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public final class dhd {
-   private final String a;
-   private final dgw b;
-   private final boolean c;
-   private final bsx d;
-   private final boolean e;
-   private final dgv f;
-   private final dhw g;
+public interface dhd {
+   void a(bur<?> var1, azh var2);
 
-   public dhd(String $$0, dgw $$1, boolean $$2, bsx $$3, boolean $$4, dgv $$5, dhw $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   static void a(cwp $$0, List<wo> $$1, String $$2) {
+      wo $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(wn.a);
+         $$1.add(wo.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(wn.a().b(wo.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
    }
 
-   public static dhd a(Dynamic<?> $$0, dhw $$1) {
-      dgw $$2 = dgw.a($$0.get("GameType").asInt(0));
-      return new dhd(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bsx.a($$0x.byteValue())).result().orElse(bsx.c),
-         $$0.get("allowCommands").asBoolean($$2 == dgw.b),
-         new dgv($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   @Nullable
+   static wo a(cwp $$0, String $$1) {
+      tq $$2 = $$0.a(kv.Y, cyy.a).e();
+      aku $$3 = a($$2, $$1);
+      return $$3 != null ? mb.f.b($$3).map($$0x -> wo.c($$0x.g()).a(n.h)).orElse(null) : null;
    }
 
-   public String a() {
-      return this.a;
-   }
-
-   public dgw b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public bsx d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public dgv f() {
-      return this.f;
-   }
-
-   public dhw g() {
-      return this.g;
-   }
-
-   public dhd a(dgw $$0) {
-      return new dhd(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public dhd a(bsx $$0) {
-      return new dhd(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public dhd a(dhw $$0) {
-      return new dhd(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public dhd h() {
-      return new dhd(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   @Nullable
+   private static aku a(tq $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return aku.c($$2);
+      } else {
+         return null;
+      }
    }
 }

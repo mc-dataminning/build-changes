@@ -1,20 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.HashMap;
-import java.util.Map;
-
-public record zz(Map<String, String> b) implements zr<zx> {
-   private static final int c = 128;
-   private static final int d = 4096;
-   private static final int e = 32;
-   private static final zi<ByteBuf, Map<String, String>> f = zg.a(HashMap::new, zg.b(128), zg.b(4096), 32);
-   public static final zi<ByteBuf, zz> a = zi.a(f, zz::b, zz::new);
-
-   @Override
-   public zt<zz> a() {
-      return aaj.b;
+public record zz(aku a) implements zy {
+   public static <T extends vl> ym<T, zz> a(aku $$0, int $$1) {
+      return zy.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new zz($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
-   public void a(zx $$0) {
-      $$0.a(this);
+   @Override
+   public zy.b<zz> a() {
+      return new zy.b<>(this.a);
+   }
+
+   public aku b() {
+      return this.a;
    }
 }

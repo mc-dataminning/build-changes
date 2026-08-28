@@ -1,31 +1,54 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bym {
-   public static bxr<bwf> a(float $$0) {
-      return cbd.a(
-         (Function<cbd.b<bwf>, ? extends App<cbd.c<bwf>, cbg<bwf>>>)($$1 -> $$1.group($$1.c(cfb.m))
+   public static bxa<coi> a() {
+      return cam.a(
+         (Function<cam.b<coi>, ? extends App<cam.c<coi>, cap<coi>>>)($$0 -> $$0.group($$0.b(cek.c), $$0.b(cek.g))
                .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dw())) {
-                           return false;
-                        } else {
-                           jh $$5 = $$3.dw();
-                           List<jh> $$6 = jh.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(jh::j).collect(ae.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new cfe($$2x, $$0, 0)));
-                           return true;
-                        }
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jq $$6 = $$0.b($$1);
+                        $$3.A()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<bvg>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof coi && $$1xxx != $$4)
+                                    .map($$0xxxx -> (coi)$$0xxxx)
+                                    .filter(bvg::bL)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, bym::a)
+                           );
+                        return true;
                      }
                ))
       );
+   }
+
+   private static coi a(coi $$0, coi $$1) {
+      coi $$2;
+      coi $$3;
+      if ($$0.x() > $$1.x()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.ec().b(cek.c);
+      return $$2;
+   }
+
+   private static boolean a(jq $$0, jr<cgn> $$1, coi $$2) {
+      Optional<jq> $$3 = $$2.ec().c(cek.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gz().b());
+   }
+
+   private static boolean a(jr<cgn> $$0, col $$1) {
+      return $$1.b().test($$0);
    }
 }

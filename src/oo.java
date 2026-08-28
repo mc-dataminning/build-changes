@@ -1,173 +1,46 @@
+import com.google.gson.JsonElement;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
 import java.util.Optional;
-import java.util.stream.IntStream;
+import java.util.concurrent.CompletableFuture;
 
-public class oo {
-   public static final on a = a("cube", oq.c, oq.j, oq.k, oq.l, oq.m, oq.n, oq.o);
-   public static final on b = a("cube_directional", oq.c, oq.j, oq.k, oq.l, oq.m, oq.n, oq.o);
-   public static final on c = a("cube_all", oq.a);
-   public static final on d = a("cube_all_inner_faces", oq.a);
-   public static final on e = a("cube_mirrored_all", "_mirrored", oq.a);
-   public static final on f = a("cube_north_west_mirrored_all", "_north_west_mirrored", oq.a);
-   public static final on g = a("cube_column_uv_locked_x", "_x", oq.d, oq.i);
-   public static final on h = a("cube_column_uv_locked_y", "_y", oq.d, oq.i);
-   public static final on i = a("cube_column_uv_locked_z", "_z", oq.d, oq.i);
-   public static final on j = a("cube_column", oq.d, oq.i);
-   public static final on k = a("cube_column_horizontal", "_horizontal", oq.d, oq.i);
-   public static final on l = a("cube_column_mirrored", "_mirrored", oq.d, oq.i);
-   public static final on m = a("cube_top", oq.f, oq.i);
-   public static final on n = a("cube_bottom_top", oq.f, oq.e, oq.i);
-   public static final on o = a("cube_bottom_top_inner_faces", oq.f, oq.e, oq.i);
-   public static final on p = a("orientable", oq.f, oq.g, oq.i);
-   public static final on q = a("orientable_with_bottom", oq.f, oq.e, oq.i, oq.g);
-   public static final on r = a("orientable_vertical", "_vertical", oq.g, oq.i);
-   public static final on s = a("button", oq.b);
-   public static final on t = a("button_pressed", "_pressed", oq.b);
-   public static final on u = a("button_inventory", "_inventory", oq.b);
-   public static final on v = a("door_bottom_left", "_bottom_left", oq.f, oq.e);
-   public static final on w = a("door_bottom_left_open", "_bottom_left_open", oq.f, oq.e);
-   public static final on x = a("door_bottom_right", "_bottom_right", oq.f, oq.e);
-   public static final on y = a("door_bottom_right_open", "_bottom_right_open", oq.f, oq.e);
-   public static final on z = a("door_top_left", "_top_left", oq.f, oq.e);
-   public static final on A = a("door_top_left_open", "_top_left_open", oq.f, oq.e);
-   public static final on B = a("door_top_right", "_top_right", oq.f, oq.e);
-   public static final on C = a("door_top_right_open", "_top_right_open", oq.f, oq.e);
-   public static final on D = a("custom_fence_post", "_post", oq.b, oq.c);
-   public static final on E = a("custom_fence_side_north", "_side_north", oq.b);
-   public static final on F = a("custom_fence_side_east", "_side_east", oq.b);
-   public static final on G = a("custom_fence_side_south", "_side_south", oq.b);
-   public static final on H = a("custom_fence_side_west", "_side_west", oq.b);
-   public static final on I = a("custom_fence_inventory", "_inventory", oq.b);
-   public static final on J = a("fence_post", "_post", oq.b);
-   public static final on K = a("fence_side", "_side", oq.b);
-   public static final on L = a("fence_inventory", "_inventory", oq.b);
-   public static final on M = a("template_wall_post", "_post", oq.s);
-   public static final on N = a("template_wall_side", "_side", oq.s);
-   public static final on O = a("template_wall_side_tall", "_side_tall", oq.s);
-   public static final on P = a("wall_inventory", "_inventory", oq.s);
-   public static final on Q = a("template_custom_fence_gate", oq.b, oq.c);
-   public static final on R = a("template_custom_fence_gate_open", "_open", oq.b, oq.c);
-   public static final on S = a("template_custom_fence_gate_wall", "_wall", oq.b, oq.c);
-   public static final on T = a("template_custom_fence_gate_wall_open", "_wall_open", oq.b, oq.c);
-   public static final on U = a("template_fence_gate", oq.b);
-   public static final on V = a("template_fence_gate_open", "_open", oq.b);
-   public static final on W = a("template_fence_gate_wall", "_wall", oq.b);
-   public static final on X = a("template_fence_gate_wall_open", "_wall_open", oq.b);
-   public static final on Y = a("pressure_plate_up", oq.b);
-   public static final on Z = a("pressure_plate_down", "_down", oq.b);
-   public static final on aa = a(oq.c);
-   public static final on ab = a("slab", oq.e, oq.f, oq.i);
-   public static final on ac = a("slab_top", "_top", oq.e, oq.f, oq.i);
-   public static final on ad = a("leaves", oq.a);
-   public static final on ae = a("stairs", oq.e, oq.f, oq.i);
-   public static final on af = a("inner_stairs", "_inner", oq.e, oq.f, oq.i);
-   public static final on ag = a("outer_stairs", "_outer", oq.e, oq.f, oq.i);
-   public static final on ah = a("template_trapdoor_top", "_top", oq.b);
-   public static final on ai = a("template_trapdoor_bottom", "_bottom", oq.b);
-   public static final on aj = a("template_trapdoor_open", "_open", oq.b);
-   public static final on ak = a("template_orientable_trapdoor_top", "_top", oq.b);
-   public static final on al = a("template_orientable_trapdoor_bottom", "_bottom", oq.b);
-   public static final on am = a("template_orientable_trapdoor_open", "_open", oq.b);
-   public static final on an = a("pointed_dripstone", oq.p);
-   public static final on ao = a("cross", oq.p);
-   public static final on ap = a("tinted_cross", oq.p);
-   public static final on aq = a("cross_emissive", oq.p, oq.q);
-   public static final on ar = a("flower_pot_cross", oq.r);
-   public static final on as = a("tinted_flower_pot_cross", oq.r);
-   public static final on at = a("flower_pot_cross_emissive", oq.r, oq.q);
-   public static final on au = a("rail_flat", oq.t);
-   public static final on av = a("rail_curved", "_corner", oq.t);
-   public static final on aw = a("template_rail_raised_ne", "_raised_ne", oq.t);
-   public static final on ax = a("template_rail_raised_sw", "_raised_sw", oq.t);
-   public static final on ay = a("carpet", oq.u);
-   public static final on az = a("mossy_carpet_side", oq.i);
-   public static final on aA = a("flowerbed_1", "_1", oq.Q, oq.z);
-   public static final on aB = a("flowerbed_2", "_2", oq.Q, oq.z);
-   public static final on aC = a("flowerbed_3", "_3", oq.Q, oq.z);
-   public static final on aD = a("flowerbed_4", "_4", oq.Q, oq.z);
-   public static final on aE = a("coral_fan", oq.y);
-   public static final on aF = a("coral_wall_fan", oq.y);
-   public static final on aG = a("template_glazed_terracotta", oq.v);
-   public static final on aH = a("template_chorus_flower", oq.b);
-   public static final on aI = a("template_daylight_detector", oq.f, oq.i);
-   public static final on aJ = a("template_glass_pane_noside", "_noside", oq.w);
-   public static final on aK = a("template_glass_pane_noside_alt", "_noside_alt", oq.w);
-   public static final on aL = a("template_glass_pane_post", "_post", oq.w, oq.x);
-   public static final on aM = a("template_glass_pane_side", "_side", oq.w, oq.x);
-   public static final on aN = a("template_glass_pane_side_alt", "_side_alt", oq.w, oq.x);
-   public static final on aO = a("template_command_block", oq.g, oq.h, oq.i);
-   public static final on aP = a("template_chiseled_bookshelf_slot_top_left", "_slot_top_left", oq.b);
-   public static final on aQ = a("template_chiseled_bookshelf_slot_top_mid", "_slot_top_mid", oq.b);
-   public static final on aR = a("template_chiseled_bookshelf_slot_top_right", "_slot_top_right", oq.b);
-   public static final on aS = a("template_chiseled_bookshelf_slot_bottom_left", "_slot_bottom_left", oq.b);
-   public static final on aT = a("template_chiseled_bookshelf_slot_bottom_mid", "_slot_bottom_mid", oq.b);
-   public static final on aU = a("template_chiseled_bookshelf_slot_bottom_right", "_slot_bottom_right", oq.b);
-   public static final on aV = a("template_anvil", oq.f);
-   public static final on[] aW = IntStream.range(0, 8).mapToObj($$0 -> a("stem_growth" + $$0, "_stage" + $$0, oq.z)).toArray(on[]::new);
-   public static final on aX = a("stem_fruit", oq.z, oq.A);
-   public static final on aY = a("crop", oq.B);
-   public static final on aZ = a("template_farmland", oq.C, oq.f);
-   public static final on ba = a("template_fire_floor", oq.D);
-   public static final on bb = a("template_fire_side", oq.D);
-   public static final on bc = a("template_fire_side_alt", oq.D);
-   public static final on bd = a("template_fire_up", oq.D);
-   public static final on be = a("template_fire_up_alt", oq.D);
-   public static final on bf = a("template_campfire", oq.D, oq.L);
-   public static final on bg = a("template_lantern", oq.E);
-   public static final on bh = a("template_hanging_lantern", "_hanging", oq.E);
-   public static final on bi = a("template_torch", oq.H);
-   public static final on bj = a("template_torch_unlit", oq.H);
-   public static final on bk = a("template_torch_wall", oq.H);
-   public static final on bl = a("template_torch_wall_unlit", oq.H);
-   public static final on bm = a("template_redstone_torch", oq.H);
-   public static final on bn = a("template_redstone_torch_wall", oq.H);
-   public static final on bo = a("template_piston", oq.F, oq.e, oq.i);
-   public static final on bp = a("template_piston_head", oq.F, oq.i, oq.G);
-   public static final on bq = a("template_piston_head_short", oq.F, oq.i, oq.G);
-   public static final on br = a("template_seagrass", oq.b);
-   public static final on bs = a("template_turtle_egg", oq.a);
-   public static final on bt = a("template_two_turtle_eggs", oq.a);
-   public static final on bu = a("template_three_turtle_eggs", oq.a);
-   public static final on bv = a("template_four_turtle_eggs", oq.a);
-   public static final on bw = a("template_single_face", oq.b);
-   public static final on bx = a("template_cauldron_level1", oq.O, oq.N, oq.c, oq.f, oq.e, oq.i);
-   public static final on by = a("template_cauldron_level2", oq.O, oq.N, oq.c, oq.f, oq.e, oq.i);
-   public static final on bz = a("template_cauldron_full", oq.O, oq.N, oq.c, oq.f, oq.e, oq.i);
-   public static final on bA = a("template_azalea", oq.f, oq.i);
-   public static final on bB = a("template_potted_azalea_bush", oq.r, oq.f, oq.i);
-   public static final on bC = a("template_potted_azalea_bush", oq.r, oq.f, oq.i);
-   public static final on bD = a("sniffer_egg", oq.f, oq.e, oq.j, oq.k, oq.l, oq.m);
-   public static final on bE = b("generated", oq.I);
-   public static final on bF = b("template_music_disc", oq.I);
-   public static final on bG = b("handheld", oq.I);
-   public static final on bH = b("handheld_rod", oq.I);
-   public static final on bI = b("generated", oq.I, oq.J);
-   public static final on bJ = b("generated", oq.I, oq.J, oq.K);
-   public static final on bK = b("template_shulker_box", oq.c);
-   public static final on bL = b("template_bed", oq.c);
-   public static final on bM = b("template_banner");
-   public static final on bN = b("template_skull");
-   public static final on bO = a("template_candle", oq.a, oq.c);
-   public static final on bP = a("template_two_candles", oq.a, oq.c);
-   public static final on bQ = a("template_three_candles", oq.a, oq.c);
-   public static final on bR = a("template_four_candles", oq.a, oq.c);
-   public static final on bS = a("template_cake_with_candle", oq.M, oq.e, oq.i, oq.f, oq.c);
-   public static final on bT = a("template_sculk_shrieker", oq.e, oq.i, oq.f, oq.c, oq.P);
-   public static final on bU = a("template_vault", oq.f, oq.e, oq.i, oq.g);
-   public static final on bV = b("handheld_mace", oq.I);
+public class oo implements mi {
+   private final mk d;
+   private final CompletableFuture<jt.a> e;
 
-   private static on a(oq... $$0) {
-      return new on(Optional.empty(), Optional.empty(), $$0);
+   public oo(mk $$0, CompletableFuture<jt.a> $$1) {
+      this.e = $$1;
+      this.d = $$0;
    }
 
-   private static on a(String $$0, oq... $$1) {
-      return new on(Optional.of(alp.b("block/" + $$0)), Optional.empty(), $$1);
+   @Override
+   public CompletableFuture<?> a(mg $$0) {
+      return this.e.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(akp.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akp.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+      });
    }
 
-   private static on b(String $$0, oq... $$1) {
-      return new on(Optional.of(alp.b("item/" + $$0)), Optional.empty(), $$1);
+   private <T> Optional<CompletableFuture<?>> a(mg $$0, jt.a $$1, DynamicOps<JsonElement> $$2, akp.d<T> $$3) {
+      akt<? extends ke<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         mk.a $$5 = this.d.a($$4);
+         return CompletableFuture.allOf($$4x.c().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
    }
 
-   private static on a(String $$0, String $$1, oq... $$2) {
-      return new on(Optional.of(alp.b("block/" + $$0)), Optional.of($$1), $$2);
+   private static <E> CompletableFuture<?> a(Path $$0, mg $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
+         .mapOrElse(
+            $$2x -> mi.a($$1, $$2x, $$0),
+            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
+         );
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

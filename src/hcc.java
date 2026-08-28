@@ -1,17 +1,16 @@
-import java.io.IOException;
-import java.io.InputStream;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class hcc {
-   @Deprecated
-   public static int[] a(avl $$0, alp $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         ffl $$3 = ffl.a($$2);
-      ) {
-         var4 = $$3.f();
-      }
+public record hcc() implements hbu {
+   public static final MapCodec<hcc> a = MapCodec.unit(new hcc());
 
-      return var4;
+   @Override
+   public boolean a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      return $$2 == null ? false : $$2.fz() && $$2.fB() == $$0;
+   }
+
+   @Override
+   public MapCodec<hcc> a() {
+      return a;
    }
 }

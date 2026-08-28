@@ -1,294 +1,146 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.io.Files;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.GameProfileRepository;
-import com.mojang.authlib.ProfileLookupCallback;
 import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
+import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class avu {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 1000;
-   private static final int c = 1;
-   private static boolean d;
-   private final Map<String, avu.a> e = Maps.newConcurrentMap();
-   private final Map<UUID, avu.a> f = Maps.newConcurrentMap();
-   private final Map<String, CompletableFuture<Optional<GameProfile>>> g = Maps.newConcurrentMap();
-   private final GameProfileRepository h;
-   private final Gson i = new GsonBuilder().create();
-   private final File j;
-   private final AtomicLong k = new AtomicLong();
-   @Nullable
-   private Executor l;
+public class avu extends avs {
+   private static final Logger d = LogUtils.getLogger();
+   private static final int e = 3;
+   private static final int f = 2;
+   private static final int g = 0;
+   private static final int h = 2;
+   private static final int i = -1;
+   private boolean j;
+   private final Socket k;
+   private final byte[] l = new byte[1460];
+   private final String m;
+   private final all n;
 
-   public avu(GameProfileRepository $$0, File $$1) {
-      this.h = $$0;
-      this.j = $$1;
-      Lists.reverse(this.b()).forEach(this::a);
-   }
-
-   private void a(avu.a $$0) {
-      GameProfile $$1 = $$0.a();
-      $$0.a(this.e());
-      this.e.put($$1.getName().toLowerCase(Locale.ROOT), $$0);
-      this.f.put($$1.getId(), $$0);
-   }
-
-   private static Optional<GameProfile> a(GameProfileRepository $$0, String $$1) {
-      if (!bar.f($$1)) {
-         return c($$1);
-      } else {
-         final AtomicReference<GameProfile> $$2 = new AtomicReference<>();
-         ProfileLookupCallback $$3 = new ProfileLookupCallback() {
-            public void onProfileLookupSucceeded(GameProfile $$0) {
-               $$2.set($$0);
-            }
-
-            public void onProfileLookupFailed(String $$0, Exception $$1) {
-               $$2.set(null);
-            }
-         };
-         $$0.findProfilesByNames(new String[]{$$1}, $$3);
-         GameProfile $$4 = $$2.get();
-         return $$4 != null ? Optional.of($$4) : c($$1);
-      }
-   }
-
-   private static Optional<GameProfile> c(String $$0) {
-      return d() ? Optional.empty() : Optional.of(kk.b($$0));
-   }
-
-   public static void a(boolean $$0) {
-      d = $$0;
-   }
-
-   private static boolean d() {
-      return d;
-   }
-
-   public void a(GameProfile $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      $$1.setTime(new Date());
-      $$1.add(2, 1);
-      Date $$2 = $$1.getTime();
-      avu.a $$3 = new avu.a($$0, $$2);
-      this.a($$3);
-      this.c();
-   }
-
-   private long e() {
-      return this.k.incrementAndGet();
-   }
-
-   public Optional<GameProfile> a(String $$0) {
-      String $$1 = $$0.toLowerCase(Locale.ROOT);
-      avu.a $$2 = this.e.get($$1);
-      boolean $$3 = false;
-      if ($$2 != null && new Date().getTime() >= $$2.b.getTime()) {
-         this.f.remove($$2.a().getId());
-         this.e.remove($$2.a().getName().toLowerCase(Locale.ROOT));
-         $$3 = true;
-         $$2 = null;
-      }
-
-      Optional<GameProfile> $$4;
-      if ($$2 != null) {
-         $$2.a(this.e());
-         $$4 = Optional.of($$2.a());
-      } else {
-         $$4 = a(this.h, $$1);
-         if ($$4.isPresent()) {
-            this.a($$4.get());
-            $$3 = false;
-         }
-      }
-
-      if ($$3) {
-         this.c();
-      }
-
-      return $$4;
-   }
-
-   public CompletableFuture<Optional<GameProfile>> b(String $$0) {
-      if (this.l == null) {
-         throw new IllegalStateException("No executor");
-      } else {
-         CompletableFuture<Optional<GameProfile>> $$1 = this.g.get($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            CompletableFuture<Optional<GameProfile>> $$2 = CompletableFuture.<Optional<GameProfile>>supplyAsync(() -> this.a($$0), ae.g().a("getProfile"))
-               .whenCompleteAsync(($$1x, $$2x) -> this.g.remove($$0), this.l);
-            this.g.put($$0, $$2);
-            return $$2;
-         }
-      }
-   }
-
-   public Optional<GameProfile> a(UUID $$0) {
-      avu.a $$1 = this.f.get($$0);
-      if ($$1 == null) {
-         return Optional.empty();
-      } else {
-         $$1.a(this.e());
-         return Optional.of($$1.a());
-      }
-   }
-
-   public void a(Executor $$0) {
-      this.l = $$0;
-   }
-
-   public void a() {
-      this.l = null;
-   }
-
-   private static DateFormat f() {
-      return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
-   }
-
-   public List<avu.a> b() {
-      List<avu.a> $$0 = Lists.newArrayList();
+   avu(all $$0, String $$1, Socket $$2) {
+      super("RCON Client " + $$2.getInetAddress());
+      this.n = $$0;
+      this.k = $$2;
 
       try {
-         Object var9;
-         try (Reader $$1 = Files.newReader(this.j, StandardCharsets.UTF_8)) {
-            JsonArray $$2 = (JsonArray)this.i.fromJson($$1, JsonArray.class);
-            if ($$2 != null) {
-               DateFormat $$3 = f();
-               $$2.forEach($$2x -> a($$2x, $$3).ifPresent($$0::add));
-               return $$0;
-            }
-
-            var9 = $$0;
-         }
-
-         return (List<avu.a>)var9;
-      } catch (FileNotFoundException var7) {
-      } catch (JsonParseException | IOException var8) {
-         a.warn("Failed to load profile cache {}", this.j, var8);
+         this.k.setSoTimeout(0);
+      } catch (Exception var5) {
+         this.a = false;
       }
 
-      return $$0;
+      this.m = $$1;
    }
 
-   public void c() {
-      JsonArray $$0 = new JsonArray();
-      DateFormat $$1 = f();
-      this.a(1000).forEach($$2x -> $$0.add(a($$2x, $$1)));
-      String $$2 = this.i.toJson($$0);
+   @Override
+   public void run() {
+      try {
+         try {
+            while (this.a) {
+               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
+               int $$1 = $$0.read(this.l, 0, 1460);
+               if (10 > $$1) {
+                  return;
+               }
 
-      try (Writer $$3 = Files.newWriter(this.j, StandardCharsets.UTF_8)) {
-         $$3.write($$2);
-      } catch (IOException var9) {
-      }
-   }
+               int $$2 = 0;
+               int $$3 = avp.b(this.l, 0, $$1);
+               if ($$3 != $$1 - 4) {
+                  return;
+               }
 
-   private Stream<avu.a> a(int $$0) {
-      return ImmutableList.copyOf(this.f.values()).stream().sorted(Comparator.comparing(avu.a::c).reversed()).limit((long)$$0);
-   }
+               $$2 += 4;
+               int $$4 = avp.b(this.l, $$2, $$1);
+               $$2 += 4;
+               int $$5 = avp.a(this.l, $$2);
+               $$2 += 4;
+               switch ($$5) {
+                  case 2:
+                     if (this.j) {
+                        String $$7 = avp.a(this.l, $$2, $$1);
 
-   private static JsonElement a(avu.a $$0, DateFormat $$1) {
-      JsonObject $$2 = new JsonObject();
-      $$2.addProperty("name", $$0.a().getName());
-      $$2.addProperty("uuid", $$0.a().getId().toString());
-      $$2.addProperty("expiresOn", $$1.format($$0.b()));
-      return $$2;
-   }
+                        try {
+                           this.a($$4, this.n.a($$7));
+                        } catch (Exception var15) {
+                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
+                        }
+                        break;
+                     }
 
-   private static Optional<avu.a> a(JsonElement $$0, DateFormat $$1) {
-      if ($$0.isJsonObject()) {
-         JsonObject $$2 = $$0.getAsJsonObject();
-         JsonElement $$3 = $$2.get("name");
-         JsonElement $$4 = $$2.get("uuid");
-         JsonElement $$5 = $$2.get("expiresOn");
-         if ($$3 != null && $$4 != null) {
-            String $$6 = $$4.getAsString();
-            String $$7 = $$3.getAsString();
-            Date $$8 = null;
-            if ($$5 != null) {
-               try {
-                  $$8 = $$1.parse($$5.getAsString());
-               } catch (ParseException var12) {
+                     this.d();
+                     break;
+                  case 3:
+                     String $$6 = avp.a(this.l, $$2, $$1);
+                     $$2 += $$6.length();
+                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
+                        this.j = true;
+                        this.a($$4, 2, "");
+                        break;
+                     }
+
+                     this.j = false;
+                     this.d();
+                     break;
+                  default:
+                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
                }
             }
 
-            if ($$7 != null && $$6 != null && $$8 != null) {
-               UUID $$9;
-               try {
-                  $$9 = UUID.fromString($$6);
-               } catch (Throwable var11) {
-                  return Optional.empty();
-               }
-
-               return Optional.of(new avu.a(new GameProfile($$9, $$7), $$8));
-            } else {
-               return Optional.empty();
-            }
-         } else {
-            return Optional.empty();
+            return;
+         } catch (IOException var16) {
+         } catch (Exception var17) {
+            d.error("Exception whilst parsing RCON input", var17);
          }
-      } else {
-         return Optional.empty();
+      } finally {
+         this.e();
+         d.info("Thread {} shutting down", this.b);
+         this.a = false;
       }
    }
 
-   static class a {
-      private final GameProfile a;
-      final Date b;
-      private volatile long c;
+   private void a(int $$0, int $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
+      DataOutputStream $$4 = new DataOutputStream($$3);
+      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
+      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
+      $$4.writeInt(Integer.reverseBytes($$0));
+      $$4.writeInt(Integer.reverseBytes($$1));
+      $$4.write($$5);
+      $$4.write(0);
+      $$4.write(0);
+      this.k.getOutputStream().write($$3.toByteArray());
+   }
 
-      a(GameProfile $$0, Date $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private void d() throws IOException {
+      this.a(-1, 2, "");
+   }
 
-      public GameProfile a() {
-         return this.a;
-      }
+   private void a(int $$0, String $$1) throws IOException {
+      int $$2 = $$1.length();
 
-      public Date b() {
-         return this.b;
-      }
+      do {
+         int $$3 = 4096 <= $$2 ? 4096 : $$2;
+         this.a($$0, 0, $$1.substring(0, $$3));
+         $$1 = $$1.substring($$3);
+         $$2 = $$1.length();
+      } while (0 != $$2);
+   }
 
-      public void a(long $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public void b() {
+      this.a = false;
+      this.e();
+      super.b();
+   }
 
-      public long c() {
-         return this.c;
+   private void e() {
+      try {
+         this.k.close();
+      } catch (IOException var2) {
+         d.warn("Failed to close socket", var2);
       }
    }
 }

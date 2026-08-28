@@ -1,3 +1,8 @@
-public interface akh extends wq {
-   void a(aki var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface akh {
 }

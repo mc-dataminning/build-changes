@@ -1,31 +1,37 @@
-public class gqm extends gqf<chp, gxa, gak> {
-   private static final alp a = alp.b("textures/entity/bee/bee_angry.png");
-   private static final alp b = alp.b("textures/entity/bee/bee_angry_nectar.png");
-   private static final alp k = alp.b("textures/entity/bee/bee.png");
-   private static final alp l = alp.b("textures/entity/bee/bee_nectar.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gqm(grl.a $$0) {
-      super($$0, new gak($$0.a(gei.x)), new gak($$0.a(gei.y)), 0.4F);
+public class gqm implements gpx.a {
+   private static final int a = 60;
+   private final Set<kk> b = Sets.newHashSet();
+
+   gqm() {
    }
 
-   public alp a(gxa $$0) {
-      if ($$0.d) {
-         return $$0.e ? b : a;
-      } else {
-         return $$0.e ? l : k;
-      }
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public gxa a() {
-      return new gxa();
+   public void a(kk $$0) {
+      this.b.add($$0);
    }
 
-   public void a(chp $$0, gxa $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = !$$0.gB();
-      $$1.c = $$0.aJ() && $$0.dz().h() < 1.0E-7;
-      $$1.d = $$0.ad_();
-      $$1.e = $$0.gA();
+   public void b(kk $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(ffu $$0, glx $$1, double $$2, double $$3, double $$4) {
+      ji $$5 = ji.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(ffu $$0, glx $$1, kk $$2) {
+      gpx.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

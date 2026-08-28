@@ -1,45 +1,49 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface brv<R extends Runnable> extends AutoCloseable {
-   String A_();
+public class brv extends bro {
+   public static final MapCodec<brv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bqr.b(bro.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, brv::new)
+   );
+   private final bqr<bro> b;
+   private final int f;
+   private final int g;
 
-   void a_(R var1);
+   public brv(bqr<bro> $$0) {
+      this.b = $$0;
+      List<bqt.b<bro>> $$1 = $$0.e();
+      int $$2 = Integer.MAX_VALUE;
+      int $$3 = Integer.MIN_VALUE;
+
+      for (bqt.b<bro> $$4 : $$1) {
+         int $$5 = $$4.b().a();
+         int $$6 = $$4.b().b();
+         $$2 = Math.min($$2, $$5);
+         $$3 = Math.max($$3, $$6);
+      }
+
+      this.f = $$2;
+      this.g = $$3;
+   }
 
    @Override
-   default void close() {
+   public int a(azh $$0) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
    }
 
-   R f(Runnable var1);
-
-   default <Source> CompletableFuture<Source> a(Consumer<CompletableFuture<Source>> $$0) {
-      CompletableFuture<Source> $$1 = new CompletableFuture<>();
-      this.a_(this.f(() -> $$0.accept($$1)));
-      return $$1;
+   @Override
+   public int a() {
+      return this.f;
    }
 
-   static brv<Runnable> a(final String $$0, final Executor $$1) {
-      return new brv<Runnable>() {
-         @Override
-         public String A_() {
-            return $$0;
-         }
+   @Override
+   public int b() {
+      return this.g;
+   }
 
-         @Override
-         public void a_(Runnable $$0x) {
-            $$1.execute($$0);
-         }
-
-         @Override
-         public Runnable f(Runnable $$0x) {
-            return $$0;
-         }
-
-         @Override
-         public String toString() {
-            return $$0;
-         }
-      };
+   @Override
+   public brp<?> c() {
+      return brp.e;
    }
 }

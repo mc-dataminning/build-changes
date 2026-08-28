@@ -1,33 +1,12 @@
-public record dcr(cxg a, cxg b, cxg c) implements dcb {
-   @Override
-   public cxg a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
-   }
-
-   @Override
-   public int a() {
-      return 3;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a.f() && this.b.f() && this.c.f();
-   }
-
-   public cxg c() {
-      return this.a;
-   }
-
-   public cxg d() {
-      return this.b;
-   }
-
-   public cxg e() {
-      return this.c;
+public class dcr {
+   public static dcp.i<?> a(ke<dcp.i<?>> $$0) {
+      ke.a($$0, "empty", dcp.c.f);
+      ke.a($$0, "any_fuel", dcp.a.f);
+      ke.a($$0, "item", dcp.d.e);
+      ke.a($$0, "item_stack", dcp.f.e);
+      ke.a($$0, "tag", dcp.h.e);
+      ke.a($$0, "smithing_trim", dcp.g.e);
+      ke.a($$0, "with_remainder", dcp.j.e);
+      return ke.a($$0, "composite", dcp.b.e);
    }
 }

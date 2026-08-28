@@ -1,37 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record dw(Optional<Boolean> c, Optional<cwd> d) implements bx {
-   public static final MapCodec<dw> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dw::b), cwd.q.optionalFieldOf("color").forGetter(dw::c)).apply($$0, dw::new)
-   );
-
+public class dw extends dz<dw.a> {
    @Override
-   public MapCodec<dw> a() {
-      return by.f;
+   public Codec<dw.a> a() {
+      return dw.a.a;
    }
 
-   @Override
-   public boolean a(bvb $$0, arx $$1, @Nullable fbr $$2) {
-      if ($$0 instanceof cik $$3) {
-         return this.c.isPresent() && $$3.x() != this.c.get() ? false : !this.d.isPresent() || $$3.t() == this.d.get();
-      } else {
-         return false;
+   public void a(ard $$0, dbj<?> $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public static aq<dw.a> a(akt<dbe<?>> $$0) {
+      return ap.g.a(new dw.a(Optional.empty(), $$0));
+   }
+
+   public static record a(Optional<bi> b, akt<dbe<?>> c) implements dz.a {
+      public static final Codec<dw.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dw.a::a), akt.a(mc.bk).fieldOf("recipe").forGetter(dw.a::b)).apply($$0, dw.a::new)
+      );
+
+      public boolean a(dbj<?> $$0) {
+         return this.c == $$0.a();
       }
-   }
 
-   public static dw a(cwd $$0) {
-      return new dw(Optional.of(false), Optional.of($$0));
-   }
+      @Override
+      public Optional<bi> a() {
+         return this.b;
+      }
 
-   public Optional<Boolean> b() {
-      return this.c;
-   }
-
-   public Optional<cwd> c() {
-      return this.d;
+      public akt<dbe<?>> b() {
+         return this.c;
+      }
    }
 }

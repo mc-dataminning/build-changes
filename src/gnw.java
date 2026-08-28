@@ -1,30 +1,59 @@
-public class gnw implements gnr<duw> {
-   private static final float a = 0.375F;
-   private final gsj b;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   public gnw(gns.a $$0) {
-      this.b = $$0.d();
+public class gnw implements gnv {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
+
+   public gnw(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void a(duw $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      jm $$6 = $$0.m().c(dks.f);
-      jz<cxg> $$7 = $$0.b();
-      int $$8 = (int)$$0.aB_().a();
+   @Override
+   public Predicate<dwx> getPredicate(dwy<djm, dwx> $$0) {
+      dxz<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         cxg $$10 = $$7.get($$9);
-         if ($$10 != cxg.j) {
-            $$2.a();
-            $$2.a(0.5F, 0.44921875F, 0.5F);
-            jm $$11 = jm.b(($$9 + $$6.e()) % 4);
-            float $$12 = -$$11.p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(a.b.rotationDegrees(90.0F));
-            $$2.a(-0.3125F, -0.3125F, 0.0F);
-            $$2.b(0.375F, 0.375F, 0.375F);
-            this.b.a($$10, cxe.i, $$4, $$5, $$2, $$3, $$0.i(), $$8 + $$9);
-            $$2.b();
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dwx> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               $$5 = af.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
+            }
+
+            return $$3 ? $$5.negate() : $$5;
          }
       }
+   }
+
+   private Predicate<dwx> a(dwy<djm, dwx> $$0, dxz<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

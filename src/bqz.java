@@ -1,29 +1,13 @@
-public class bqz implements bra {
-   public static final bra a = new bqz();
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
 
-   @Override
-   public void a() {
+public class bqz extends bqx<Runnable> {
+   public bqz(Executor $$0, String $$1) {
+      super(new brd.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
    @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bpj f() {
-      return bpf.a;
-   }
-
-   @Override
-   public void d() {
+   public Runnable f(Runnable $$0) {
+      return $$0;
    }
 }

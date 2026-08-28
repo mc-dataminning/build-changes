@@ -1,50 +1,88 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiPredicate;
+import java.util.function.Function;
 
-public class dlu extends djn {
-   public static final MapCodec<dlu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dls.a.forGetter($$0x -> $$0x.e), t()).apply($$0, dlu::new));
-   private final dkd e;
-   protected static final float b = 6.0F;
-   protected static final fcl c = dkd.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
+public class dlu {
+   public static <S extends dtz> dlu.c<S> a(
+      dub<S> $$0, Function<dwx, dlu.a> $$1, Function<dwx, jn> $$2, dxz<jn> $$3, dwx $$4, dgj $$5, ji $$6, BiPredicate<dgj, ji> $$7
+   ) {
+      S $$8 = $$0.a($$5, $$6);
+      if ($$8 == null) {
+         return dlu.b::b;
+      } else if ($$7.test($$5, $$6)) {
+         return dlu.b::b;
+      } else {
+         dlu.a $$9 = $$1.apply($$4);
+         boolean $$10 = $$9 == dlu.a.a;
+         boolean $$11 = $$9 == dlu.a.b;
+         if ($$10) {
+            return new dlu.c.b<>($$8);
+         } else {
+            ji $$12 = $$6.a($$2.apply($$4));
+            dwx $$13 = $$5.a_($$12);
+            if ($$13.a($$4.b())) {
+               dlu.a $$14 = $$1.apply($$13);
+               if ($$14 != dlu.a.a && $$9 != $$14 && $$13.c($$3) == $$4.c($$3)) {
+                  if ($$7.test($$5, $$12)) {
+                     return dlu.b::b;
+                  }
 
-   @Override
-   public MapCodec<dlu> a() {
-      return a;
-   }
+                  S $$15 = $$0.a($$5, $$12);
+                  if ($$15 != null) {
+                     S $$16 = $$11 ? $$8 : $$15;
+                     S $$17 = $$11 ? $$15 : $$8;
+                     return new dlu.c.a<>($$16, $$17);
+                  }
+               }
+            }
 
-   protected dlu(dkd $$0, dxn.d $$1) {
-      super($$1);
-      this.e = $$0;
-   }
-
-   @Override
-   protected void b(dxo $$0, dgz $$1, jh $$2, dxo $$3, boolean $$4) {
-      this.a($$0, $$1, $$1, $$1.A, $$2);
-   }
-
-   @Override
-   protected void a(dxo $$0, arx $$1, jh $$2, bac $$3) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this.e.m().b(d, Boolean.valueOf(false)), 2);
+            return new dlu.c.b<>($$8);
+         }
       }
    }
 
-   @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$4 == jm.a && !$$0.a($$1, $$3)) {
-         return dkf.a.m();
-      } else {
-         this.a($$0, $$1, $$2, $$7, $$3);
-         if ($$0.c(d)) {
-            $$2.a($$3, etr.c, etr.c.a($$1));
+   public static enum a {
+      a,
+      b,
+      c;
+   }
+
+   public interface b<S, T> {
+      T a(S var1, S var2);
+
+      T a(S var1);
+
+      T b();
+   }
+
+   public interface c<S> {
+      <T> T apply(dlu.b<? super S, T> var1);
+
+      public static final class a<S> implements dlu.c<S> {
+         private final S a;
+         private final S b;
+
+         public a(S $$0, S $$1) {
+            this.a = $$0;
+            this.b = $$1;
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         @Override
+         public <T> T apply(dlu.b<? super S, T> $$0) {
+            return $$0.a(this.a, this.b);
+         }
       }
-   }
 
-   @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return c;
+      public static final class b<S> implements dlu.c<S> {
+         private final S a;
+
+         public b(S $$0) {
+            this.a = $$0;
+         }
+
+         @Override
+         public <T> T apply(dlu.b<? super S, T> $$0) {
+            return $$0.a(this.a);
+         }
+      }
    }
 }

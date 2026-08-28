@@ -1,7 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public interface zb extends abe {
+   void a(zf var1);
 
-public interface zb<T extends za> {
-   MapCodec<T> a();
+   void a(zg var1);
 
-   zi<wv, T> b();
+   void a(zc var1);
+
+   void a(ze var1);
+
+   void a(zi var1);
+
+   void a(zh var1);
+
+   void a(zm var1);
+
+   void a(zk var1);
+
+   void a(zl var1);
+
+   void a(zd var1);
+
+   void a(zj var1);
 }

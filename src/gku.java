@@ -1,31 +1,22 @@
-public record gku(float b, float c, fgb d, float e, float f, float g, float h) {
-   public static final gku a = new gku(Float.MAX_VALUE, 0.0F, fgb.a, 0.0F, 0.0F, 0.0F, 0.0F);
+public class gku extends gkt {
+   private final fln d;
 
-   public float a() {
-      return this.b;
+   public gku(fln $$0) {
+      this.d = $$0;
    }
 
-   public float b() {
-      return this.c;
+   private static float a(boolean $$0, boolean $$1) {
+      if ($$0 == $$1) {
+         return 0.0F;
+      } else {
+         return $$0 ? 1.0F : -1.0F;
+      }
    }
 
-   public fgb c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
+   @Override
+   public void a() {
+      this.a = new cov(this.d.v.e(), this.d.x.e(), this.d.w.e(), this.d.y.e(), this.d.z.e(), this.d.A.e(), this.d.B.e());
+      this.c = a(this.a.a(), this.a.b());
+      this.b = a(this.a.c(), this.a.d());
    }
 }

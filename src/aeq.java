@@ -1,26 +1,29 @@
-import java.util.Set;
+public class aeq implements yv<abk> {
+   public static final ym<vl, aeq> a = yv.a(aeq::a, aeq::new);
+   private final int b;
 
-public record aeq(int b, bwk c, Set<bwl> d) implements zr<acg> {
-   public static final zi<wh, aeq> a = zi.a(zg.h, aeq::b, bwk.a, aeq::e, bwl.m, aeq::f, aeq::new);
+   public aeq(int $$0) {
+      this.b = $$0;
+   }
 
-   public static aeq a(int $$0, bwk $$1, Set<bwl> $$2) {
-      return new aeq($$0, $$1, $$2);
+   private aeq(vl $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zt<aeq> a() {
-      return agz.ai;
+   public yx<aeq> a() {
+      return agd.aC;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public bwk e() {
-      return this.c;
-   }
-
-   public Set<bwl> f() {
-      return this.d;
+   public int b() {
+      return this.b;
    }
 }

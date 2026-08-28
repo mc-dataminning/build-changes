@@ -1,37 +1,32 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class bxw extends bxq<bvx> {
-   private final cfb<Integer> c;
-
-   public bxw(cfb<Integer> $$0) {
-      super(ImmutableMap.of($$0, cfc.a));
-      this.c = $$0;
+public class bxw {
+   public static <T extends bvg> bxa<bvg> a(bur<? extends T> $$0, int $$1, cek<T> $$2, float $$3, int $$4) {
+      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
    }
 
-   private Optional<Integer> b(bvx $$0) {
-      return $$0.ec().c(this.c);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean a(arx $$0, bvx $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      return $$3.isPresent() && $$3.get() > 0;
-   }
-
-   @Override
-   protected void c(arx $$0, bvx $$1, long $$2) {
-      Optional<Integer> $$3 = this.b($$1);
-      $$1.ec().a(this.c, $$3.get() - 1);
-   }
-
-   @Override
-   protected void b(arx $$0, bvx $$1, long $$2) {
-      $$1.ec().b(this.c);
+   public static <E extends bvg, T extends bvg> bxa<E> a(bur<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, cek<T> $$4, float $$5, int $$6) {
+      int $$7 = $$1 * $$1;
+      Predicate<bvg> $$8 = $$2x -> $$0.equals($$2x.aq()) && $$3.test((T)$$2x);
+      return cam.a(
+         (Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(cek.n), $$6x.c(cek.m), $$6x.b(cek.h))
+               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
+                     cem $$13 = $$6x.b($$9);
+                     if ($$2.test((E)$$11) && $$13.d($$8)) {
+                        Optional<bvg> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((buk)$$11) <= (double)$$7 && $$8.test($$3xxxx));
+                        $$14.ifPresent($$5xxxx -> {
+                           $$6xx.a($$5xxxx);
+                           $$7x.a(new bxk($$5xxxx, true));
+                           $$8x.a(new cen(new bxk($$5xxxx, false), $$5, $$6));
+                        });
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

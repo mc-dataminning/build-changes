@@ -1,13 +1,38 @@
-public class ebh {
-   public static final alo<ebj> a = a("overworld");
-   public static final alo<ebj> b = a("the_nether");
-   public static final alo<ebj> c = a("the_end");
-   public static final alo<ebj> d = a("overworld_caves");
-   public static final alp e = alp.b("overworld");
-   public static final alp f = alp.b("the_nether");
-   public static final alp g = alp.b("the_end");
+import javax.annotation.Nullable;
 
-   private static alo<ebj> a(String $$0) {
-      return alo.a(mb.aN, alp.b($$0));
+public interface ebh<B, T extends B> {
+   static <B, T extends B> ebh<B, T> a(final Class<T> $$0) {
+      return new ebh<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
+
+   static <B, T extends B> ebh<B, T> b(final Class<T> $$0) {
+      return new ebh<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
+   }
+
+   @Nullable
+   T a(B var1);
+
+   Class<? extends B> a();
 }

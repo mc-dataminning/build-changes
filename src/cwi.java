@@ -1,44 +1,33 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class cwi extends cxc {
-   public cwi(cxc.a $$0) {
-      super($$0);
+public record cwi(jr<avz> e, float f, float g, wo h) {
+   public static final Codec<cwi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               avz.b.fieldOf("sound_event").forGetter(cwi::a),
+               ayi.o.fieldOf("use_duration").forGetter(cwi::b),
+               ayi.o.fieldOf("range").forGetter(cwi::c),
+               wq.a.fieldOf("description").forGetter(cwi::d)
+            )
+            .apply($$0, cwi::new)
+   );
+   public static final ym<vz, cwi> b = ym.a(avz.d, cwi::a, yk.l, cwi::b, yk.l, cwi::c, wq.b, cwi::d, cwi::new);
+   public static final Codec<jr<cwi>> c = akq.a(mc.I, a);
+   public static final ym<vz, jr<cwi>> d = yk.a(mc.I, b);
+
+   public jr<avz> a() {
+      return this.e;
    }
 
-   @Override
-   public bta a(daz $$0) {
-      dgz $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      dxo $$3 = $$1.a_($$2);
-      if (!$$3.a(dkf.cv) && !$$3.a(dkf.I)) {
-         return bta.d;
-      } else {
-         jh $$4 = $$2.d();
-         if (!$$1.u($$4)) {
-            return bta.d;
-         } else {
-            double $$5 = (double)$$4.u();
-            double $$6 = (double)$$4.v();
-            double $$7 = (double)$$4.w();
-            List<bvb> $$8 = $$1.a_(null, new fbm($$5, $$6, $$7, $$5 + 1.0, $$6 + 2.0, $$7 + 1.0));
-            if (!$$8.isEmpty()) {
-               return bta.d;
-            } else {
-               if ($$1 instanceof arx) {
-                  ckk $$9 = new ckk($$1, $$5 + 0.5, $$6, $$7 + 0.5);
-                  $$9.a(false);
-                  $$1.b($$9);
-                  $$1.a($$0.o(), eck.t, $$4);
-                  ebm $$10 = ((arx)$$1).F();
-                  if ($$10 != null) {
-                     $$10.g();
-                  }
-               }
+   public float b() {
+      return this.f;
+   }
 
-               $$0.n().h(1);
-               return bta.a;
-            }
-         }
-      }
+   public float c() {
+      return this.g;
+   }
+
+   public wo d() {
+      return this.h;
    }
 }

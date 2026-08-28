@@ -1,33 +1,30 @@
-public class guq extends gqf<cir, hae, gdy> {
-   public guq(grl.a $$0) {
-      super($$0, new gdy($$0.a(gei.dH)), new gdy($$0.a(gei.dJ)), 0.5F);
-      this.a(new gwo(this, $$0.f(), $$0.h()));
-      this.a(new gwp(this));
+public class guq extends gsb<cqd, ham> {
+   public static final aku a = aku.b("textures/entity/trident.png");
+   private final geg b;
+
+   public guq(gsc.a $$0) {
+      super($$0);
+      this.b = new geg($$0.a(gfb.dl));
    }
 
-   protected int a(hae $$0) {
-      float $$1 = $$0.f;
-      return $$1 == 1.0F ? -1 : ayf.a(1.0F, $$1, $$1, $$1);
+   public void a(ham $$0, ffu $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a + 90.0F));
+      ffy $$4 = gta.a($$2, this.b.a(a), false, $$0.c);
+      this.b.a($$1, $$4, $$3, hea.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public alp b(hae $$0) {
-      return $$0.g;
+   public ham a() {
+      return new ham();
    }
 
-   public hae b() {
-      return new hae();
-   }
-
-   public void a(cir $$0, hae $$1, float $$2) {
+   public void a(cqd $$0, ham $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.ad_();
-      $$1.b = $$0.x();
-      $$1.c = $$0.gD();
-      $$1.d = $$0.L($$2);
-      $$1.e = $$0.K($$2);
-      $$1.g = $$0.gA();
-      $$1.f = $$0.J($$2);
-      $$1.h = $$0.p() ? $$0.gE() : null;
-      $$1.i = $$0.af().v();
+      $$1.b = $$0.k($$2);
+      $$1.a = $$0.j($$2);
+      $$1.c = $$0.D();
    }
 }

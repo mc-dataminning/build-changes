@@ -1,16 +1,32 @@
-import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
 
-public record aam(aau b) implements zr<aak> {
-   private static final int c = 32767;
-   public static final zi<wh, aam> a = aau.<wh>a($$0 -> aav.a($$0, 32767), ae.a(Lists.newArrayList(new aau.c[]{new aau.c<>(aas.b, aas.a)}), $$0 -> {
-   })).a(aam::new, aam::b);
+public record aam(long c, List<aam.a> d) implements zy {
+   public static final zy.b<aam> a = zy.a("debug/redstone_update_order");
+   public static final ym<vl, aam> b = ym.a(yk.k, aam::b, aam.a.a.a(yk.a()), aam::c, aam::new);
 
    @Override
-   public zt<aam> a() {
-      return aaj.m;
+   public zy.b<aam> a() {
+      return a;
    }
 
-   public void a(aak $$0) {
-      $$0.a(this);
+   public long b() {
+      return this.c;
+   }
+
+   public List<aam.a> c() {
+      return this.d;
+   }
+
+   public static record a(ji b, euh c) {
+      public static final ym<ByteBuf, aam.a> a = ym.a(ji.b, aam.a::a, euh.a, aam.a::b, aam.a::new);
+
+      public ji a() {
+         return this.b;
+      }
+
+      public euh b() {
+         return this.c;
+      }
    }
 }

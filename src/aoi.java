@@ -1,22 +1,15 @@
-@FunctionalInterface
-public interface aoi {
-   void perform(ew var1, bvb var2);
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
-   public static record a(bvb a, fi.a b) implements aoi {
-      @Override
-      public void perform(ew $$0, bvb $$1) {
-         if ($$1 instanceof ary $$2) {
-            $$2.a($$0.m(), this.a, this.b);
-         } else {
-            $$1.a($$0.m(), this.b.a(this.a));
-         }
-      }
-   }
-
-   public static record b(fbr a) implements aoi {
-      @Override
-      public void perform(ew $$0, bvb $$1) {
-         $$1.a($$0.m(), this.a);
-      }
+public class aoi {
+   public static void a(CommandDispatcher<ex> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("say").requires($$0x -> $$0x.c(2))).then(ey.a("message", fo.a()).executes($$0x -> {
+         fo.a($$0x, "message", $$1 -> {
+            ex $$2 = (ex)$$0x.getSource();
+            avd $$3 = $$2.l().ag();
+            $$3.a($$1, $$2, wk.a(wk.f, $$2));
+         });
+         return 1;
+      })));
    }
 }

@@ -1,38 +1,33 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import java.util.Objects;
 
-public class bds extends DataFix {
-   private final String a;
-   private final String b;
-   private final UnaryOperator<String> c;
-
-   public bds(Schema $$0, String $$1, String $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bds extends bec {
+   public bds(Schema $$0, boolean $$1) {
+      super("EntityHorseSplitFix", $$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bin.p), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
-   }
+   @Override
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (Objects.equals("EntityHorse", $$0)) {
+         Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
+         int $$3 = $$2.get("Type").asInt(0);
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         this.b,
-         $$0x -> $$0x.update(
-               "criteria",
-               $$0xx -> $$0xx.updateMapValues(
-                     $$0xxx -> $$0xxx.mapFirst(
-                           $$0xxxx -> (Dynamic)DataFixUtils.orElse($$0xxxx.asString().map($$1 -> $$0xxxx.createString(this.c.apply($$1))).result(), $$0xxxx)
-                        )
-                  )
-            )
-      );
+         String $$4 = switch ($$3) {
+            case 1 -> "Donkey";
+            case 2 -> "Mule";
+            case 3 -> "ZombieHorse";
+            case 4 -> "SkeletonHorse";
+            default -> "Horse";
+         };
+         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bhw.B).types().get($$4);
+         return Pair.of($$4, af.a($$1, $$5, $$0x -> $$0x.remove("Type")));
+      } else {
+         return Pair.of($$0, $$1);
+      }
    }
 }

@@ -1,44 +1,46 @@
-public class het extends hem {
-   public static final int n = 20;
-   private final gkc o;
-   private int p;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-   public het(gkc $$0) {
-      super(awv.ir, aww.h, hfd.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class het {
+   private final aku a;
+   private final aun b;
+   private final AtomicReference<feu> c = new AtomicReference<>();
+   private final AtomicInteger d;
+
+   public het(aku $$0, aun $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
    }
 
-   @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dR() && (this.p <= 20 || this.o.fJ())) {
-         this.f = (double)((float)this.o.dB());
-         this.g = (double)((float)this.o.dD());
-         this.h = (double)((float)this.o.dH());
-         float $$0 = (float)this.o.dz().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = azu.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
+   public feu a() throws IOException {
+      feu $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = feu.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
+            }
          }
+      }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
+      return $$0;
+   }
 
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
-         } else {
-            this.e = 1.0F;
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         feu $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
          }
-      } else {
-         this.n();
       }
    }
 }

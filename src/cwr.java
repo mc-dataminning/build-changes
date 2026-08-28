@@ -1,28 +1,36 @@
-public class cwr<T extends bvb & bvu> extends cxc {
-   private final bvi<T> a;
-   private final int b;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public cwr(bvi<T> $$0, int $$1, cxc.a $$2) {
-      super($$2);
-      this.a = $$0;
-      this.b = $$1;
+public enum cwr implements azv {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush");
+
+   private static final IntFunction<cwr> m = axq.a(cwr::a, values(), axq.a.a);
+   public static final Codec<cwr> k = azv.a(cwr::values);
+   public static final ym<ByteBuf, cwr> l = yk.a(m, cwr::a);
+   private final int n;
+   private final String o;
+
+   private cwr(final int $$0, final String $$1) {
+      this.n = $$0;
+      this.o = $$1;
+   }
+
+   public int a() {
+      return this.n;
    }
 
    @Override
-   public bta a(dgz $$0, cpo $$1, bsz $$2) {
-      cxg $$3 = $$1.b($$2);
-      if ($$0.C) {
-         return bta.e;
-      } else {
-         bvb $$4 = $$1.dm();
-         if ($$1.bZ() && $$4 instanceof bvu $$5 && $$4.aq() == this.a && $$5.a()) {
-            bvj $$6 = bvx.d($$2);
-            cxg $$7 = $$3.a(this.b, cxk.rS, $$1, $$6);
-            return bta.b.a($$7);
-         }
-
-         $$1.b(axf.c.b(this));
-         return bta.e;
-      }
+   public String c() {
+      return this.o;
    }
 }

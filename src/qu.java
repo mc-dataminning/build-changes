@@ -1,171 +1,168 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
+import java.util.List;
 
 public class qu {
-   public static void a(ra<epn> $$0) {
-      jr<esd> $$1 = $$0.a(mb.aV);
-      jq<esd> $$2 = $$1.b(ri.v);
-      jq<esd> $$3 = $$1.b(ri.u);
-      jr<epn> $$4 = $$0.a(mb.aX);
-      jq<epn> $$5 = $$4.b(rh.a);
-      rh.a(
-         $$0,
-         "bastion/hoglin_stable/starting_pieces",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/starting_stairs_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/starting_stairs_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/starting_stairs_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/starting_stairs_3", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/starting_stairs_4", $$2), 1)
+   public static final akt<eow> a = ql.a("trail_ruins/tower");
+
+   public static void a(qe<eow> $$0) {
+      js<eow> $$1 = $$0.a(mc.aX);
+      jr<eow> $$2 = $$1.b(ql.a);
+      js<erm> $$3 = $$0.a(mc.aV);
+      jr<erm> $$4 = $$3.b(qm.J);
+      jr<erm> $$5 = $$3.b(qm.K);
+      jr<erm> $$6 = $$3.b(qm.L);
+      $$0.a(
+         a,
+         new eow(
+            $$2,
+            List.of(
+               Pair.of(eou.b("trail_ruins/tower/tower_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_5", $$4), 1)
             ),
-            epn.a.b
+            eow.a.b
          )
       );
-      rh.a(
+      ql.a(
          $$0,
-         "bastion/hoglin_stable/mirrored_starting_pieces",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/stairs_0_mirrored", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/stairs_1_mirrored", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/stairs_2_mirrored", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/stairs_3_mirrored", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/starting_pieces/stairs_4_mirrored", $$2), 1)
+         "trail_ruins/tower/tower_top",
+         new eow(
+            $$2,
+            List.of(
+               Pair.of(eou.b("trail_ruins/tower/tower_top_1", $$6), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_top_2", $$6), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_top_3", $$6), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_top_4", $$6), 1),
+               Pair.of(eou.b("trail_ruins/tower/tower_top_5", $$6), 1)
             ),
-            epn.a.b
+            eow.a.b
          )
       );
-      rh.a($$0, "bastion/hoglin_stable/wall_bases", new epn($$5, ImmutableList.of(Pair.of(epl.b("bastion/hoglin_stable/walls/wall_base", $$2), 1)), epn.a.b));
-      rh.a(
+      ql.a(
          $$0,
-         "bastion/hoglin_stable/walls",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/walls/side_wall_0", $$3), 1), Pair.of(epl.b("bastion/hoglin_stable/walls/side_wall_1", $$3), 1)
+         "trail_ruins/tower/additions",
+         new eow(
+            $$2,
+            List.of(
+               Pair.of(eou.b("trail_ruins/tower/hall_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/hall_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/hall_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/hall_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/hall_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/large_hall_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/large_hall_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/large_hall_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/large_hall_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/large_hall_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/one_room_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/one_room_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/one_room_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/one_room_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/one_room_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/platform_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/platform_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/platform_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/platform_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/platform_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/stable_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/stable_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/stable_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/stable_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/tower/stable_5", $$4), 1)
             ),
-            epn.a.b
+            eow.a.b
          )
       );
-      rh.a(
+      ql.a(
          $$0,
-         "bastion/hoglin_stable/stairs",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_1_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_1_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_1_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_1_3", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_1_4", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_2_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_2_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_2_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_2_3", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_2_4", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_3_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_3_1", $$2), 1),
-               new Pair[]{
-                  Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_3_2", $$2), 1),
-                  Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_3_3", $$2), 1),
-                  Pair.of(epl.b("bastion/hoglin_stable/stairs/stairs_3_4", $$2), 1)
-               }
+         "trail_ruins/roads",
+         new eow(
+            $$2,
+            List.of(
+               Pair.of(eou.b("trail_ruins/roads/long_road_end", $$5), 1),
+               Pair.of(eou.b("trail_ruins/roads/road_end_1", $$5), 1),
+               Pair.of(eou.b("trail_ruins/roads/road_section_1", $$5), 1),
+               Pair.of(eou.b("trail_ruins/roads/road_section_2", $$5), 1),
+               Pair.of(eou.b("trail_ruins/roads/road_section_3", $$5), 1),
+               Pair.of(eou.b("trail_ruins/roads/road_section_4", $$5), 1),
+               Pair.of(eou.b("trail_ruins/roads/road_spacer_1", $$5), 1)
             ),
-            epn.a.b
+            eow.a.b
          )
       );
-      rh.a(
+      ql.a(
          $$0,
-         "bastion/hoglin_stable/small_stables/inner",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/inner_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/inner_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/inner_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/inner_3", $$2), 1)
+         "trail_ruins/buildings",
+         new eow(
+            $$2,
+            List.of(
+               Pair.of(eou.b("trail_ruins/buildings/group_hall_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_hall_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_hall_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_hall_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_hall_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/large_room_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/large_room_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/large_room_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/large_room_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/large_room_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/one_room_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/one_room_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/one_room_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/one_room_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/one_room_5", $$4), 1)
             ),
-            epn.a.b
+            eow.a.b
          )
       );
-      rh.a(
+      ql.a(
          $$0,
-         "bastion/hoglin_stable/small_stables/outer",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/outer_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/outer_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/outer_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/small_stables/outer_3", $$2), 1)
+         "trail_ruins/buildings/grouped",
+         new eow(
+            $$2,
+            List.of(
+               Pair.of(eou.b("trail_ruins/buildings/group_full_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_full_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_full_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_full_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_full_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_lower_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_lower_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_lower_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_lower_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_lower_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_upper_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_upper_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_upper_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_upper_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_upper_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_room_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_room_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_room_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_room_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/buildings/group_room_5", $$4), 1)
             ),
-            epn.a.b
+            eow.a.b
          )
       );
-      rh.a(
+      ql.a(
          $$0,
-         "bastion/hoglin_stable/large_stables/inner",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/inner_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/inner_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/inner_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/inner_3", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/inner_4", $$2), 1)
+         "trail_ruins/decor",
+         new eow(
+            $$2,
+            List.of(
+               Pair.of(eou.b("trail_ruins/decor/decor_1", $$4), 1),
+               Pair.of(eou.b("trail_ruins/decor/decor_2", $$4), 1),
+               Pair.of(eou.b("trail_ruins/decor/decor_3", $$4), 1),
+               Pair.of(eou.b("trail_ruins/decor/decor_4", $$4), 1),
+               Pair.of(eou.b("trail_ruins/decor/decor_5", $$4), 1),
+               Pair.of(eou.b("trail_ruins/decor/decor_6", $$4), 1),
+               Pair.of(eou.b("trail_ruins/decor/decor_7", $$4), 1)
             ),
-            epn.a.b
+            eow.a.b
          )
-      );
-      rh.a(
-         $$0,
-         "bastion/hoglin_stable/large_stables/outer",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/outer_0", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/outer_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/outer_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/outer_3", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/large_stables/outer_4", $$2), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "bastion/hoglin_stable/posts",
-         new epn(
-            $$5,
-            ImmutableList.of(Pair.of(epl.b("bastion/hoglin_stable/posts/stair_post", $$2), 1), Pair.of(epl.b("bastion/hoglin_stable/posts/end_post", $$2), 1)),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "bastion/hoglin_stable/ramparts",
-         new epn(
-            $$5,
-            ImmutableList.of(
-               Pair.of(epl.b("bastion/hoglin_stable/ramparts/ramparts_1", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/ramparts/ramparts_2", $$2), 1),
-               Pair.of(epl.b("bastion/hoglin_stable/ramparts/ramparts_3", $$2), 1)
-            ),
-            epn.a.b
-         )
-      );
-      rh.a(
-         $$0,
-         "bastion/hoglin_stable/rampart_plates",
-         new epn($$5, ImmutableList.of(Pair.of(epl.b("bastion/hoglin_stable/rampart_plates/rampart_plate_1", $$2), 1)), epn.a.b)
-      );
-      rh.a(
-         $$0,
-         "bastion/hoglin_stable/connectors",
-         new epn($$5, ImmutableList.of(Pair.of(epl.b("bastion/hoglin_stable/connectors/end_post_connector", $$2), 1)), epn.a.b)
       );
    }
 }

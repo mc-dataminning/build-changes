@@ -1,29 +1,37 @@
-public class aee implements zr<acg> {
-   public static final zi<wh, aee> a = zr.a(aee::a, aee::new);
-   private final bsz b;
+public class aee implements yv<abk> {
+   public static final ym<vl, aee> a = yv.a(aee::a, aee::new);
+   private final int b;
+   private final byte c;
 
-   public aee(bsz $$0) {
-      this.b = $$0;
+   public aee(buk $$0, byte $$1) {
+      this.b = $$0.ar();
+      this.c = $$1;
    }
 
-   private aee(wh $$0) {
-      this.b = $$0.b(bsz.class);
+   private aee(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readByte();
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zt<aee> a() {
-      return agz.W;
+   public yx<aee> a() {
+      return agd.aq;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public bsz b() {
-      return this.b;
+   public buk a(dgi $$0) {
+      return $$0.a(this.b);
+   }
+
+   public float b() {
+      return ayz.a(this.c);
    }
 }

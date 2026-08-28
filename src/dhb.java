@@ -1,59 +1,50 @@
-public interface dhb {
-   int M_();
+import java.util.Optional;
 
-   int L_();
+public class dhb extends dgb {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<jv<djm>> d;
 
-   default int an() {
-      return this.L_() + this.M_() - 1;
+   public dhb(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jv<djm>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   default int ao() {
-      return this.aq() - this.ap() + 1;
+   @Override
+   public Optional<Float> a(dga $$0, dfn $$1, ji $$2, dwx $$3, esz $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
-   default int ap() {
-      return kj.a(this.L_());
+   @Override
+   public boolean a(dga $$0, dfn $$1, ji $$2, dwx $$3, float $$4) {
+      return this.a;
    }
 
-   default int aq() {
-      return kj.a(this.an());
+   @Override
+   public boolean a(dga $$0, buk $$1) {
+      return this.b;
    }
 
-   default boolean d(int $$0) {
-      return $$0 >= this.L_() && $$0 <= this.an();
-   }
-
-   default boolean s(jh $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.L_() || $$0 > this.an();
-   }
-
-   default int f(int $$0) {
-      return this.g(kj.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.ap();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.ap();
-   }
-
-   static dhb e(final int $$0, final int $$1) {
-      return new dhb() {
-         @Override
-         public int M_() {
-            return $$1;
+   @Override
+   public float a(buk $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof cox $$1 && $$1.gj().b) {
+            var10000 = true;
+            break label17;
          }
 
-         @Override
-         public int L_() {
-            return $$0;
-         }
-      };
+         var10000 = false;
+      }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

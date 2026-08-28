@@ -1,227 +1,279 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class dwc extends dvy implements btk {
-   public static final int d = 9;
-   public static final int e = 3;
-   public static final int f = 27;
-   public static final int g = 1;
-   public static final int h = 10;
-   public static final float i = 0.5F;
-   public static final float j = 270.0F;
-   private static final int[] k = IntStream.range(0, 27).toArray();
-   private jz<cxg> n = jz.a(27, cxg.j);
-   private int r;
-   private dwc.a s = dwc.a.a;
-   private float t;
-   private float u;
+public class dwc {
+   public static final String a = "spawn_data";
+   private static final String m = "next_mob_spawns_at";
+   private static final int n = 20;
+   private static final int o = 18000;
+   public static MapCodec<dwc> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kl.b.lenientOptionalFieldOf("registered_players", Sets.newHashSet()).forGetter($$0x -> $$0x.c),
+               kl.b.lenientOptionalFieldOf("current_mobs", Sets.newHashSet()).forGetter($$0x -> $$0x.d),
+               Codec.LONG.lenientOptionalFieldOf("cooldown_ends_at", 0L).forGetter($$0x -> $$0x.e),
+               Codec.LONG.lenientOptionalFieldOf("next_mob_spawns_at", 0L).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("total_mobs_spawned", 0).forGetter($$0x -> $$0x.g),
+               dhc.b.lenientOptionalFieldOf("spawn_data").forGetter($$0x -> $$0x.h),
+               akt.a(mc.bg).lenientOptionalFieldOf("ejecting_loot_table").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, dwc::new)
+   );
+   protected final Set<UUID> c = new HashSet<>();
+   protected final Set<UUID> d = new HashSet<>();
+   protected long e;
+   protected long f;
+   protected int g;
+   protected Optional<dhc> h;
+   protected Optional<akt<evw>> i;
    @Nullable
-   private final cwd v;
+   protected buk j;
+   @Nullable
+   private bqr<cwp> p;
+   protected double k;
+   protected double l;
 
-   public dwc(@Nullable cwd $$0, jh $$1, dxo $$2) {
-      super(dus.y, $$1, $$2);
-      this.v = $$0;
+   public dwc() {
+      this(Collections.emptySet(), Collections.emptySet(), 0L, 0L, 0, Optional.empty(), Optional.empty());
    }
 
-   public dwc(jh $$0, dxo $$1) {
-      super(dus.y, $$0, $$1);
-      this.v = drh.a($$1.b());
+   public dwc(Set<UUID> $$0, Set<UUID> $$1, long $$2, long $$3, int $$4, Optional<dhc> $$5, Optional<akt<evw>> $$6) {
+      this.c.addAll($$0);
+      this.d.addAll($$1);
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
-   public static void a(dgz $$0, jh $$1, dxo $$2, dwc $$3) {
-      $$3.b($$0, $$1, $$2);
+   public void a() {
+      this.d.clear();
+      this.h = Optional.empty();
+      this.b();
    }
 
-   private void b(dgz $$0, jh $$1, dxo $$2) {
-      this.u = this.t;
-      switch (this.s) {
-         case a:
-            this.t = 0.0F;
-            break;
-         case b:
-            this.t += 0.1F;
-            if (this.u == 0.0F) {
-               d($$0, $$1, $$2);
-            }
+   public void b() {
+      this.c.clear();
+      this.g = 0;
+      this.f = 0L;
+      this.e = 0L;
+   }
 
-            if (this.t >= 1.0F) {
-               this.s = dwc.a.c;
-               this.t = 1.0F;
-               d($$0, $$1, $$2);
-            }
+   public boolean a(dvz $$0, azh $$1) {
+      boolean $$2 = this.b($$0, $$1).a().b("id", 8);
+      return $$2 || !$$0.b().i().d();
+   }
 
-            this.c($$0, $$1, $$2);
-            break;
-         case c:
-            this.t = 1.0F;
-            break;
-         case d:
-            this.t -= 0.1F;
-            if (this.u == 1.0F) {
-               d($$0, $$1, $$2);
-            }
+   public boolean a(dwa $$0, int $$1) {
+      return this.g >= $$0.a($$1);
+   }
 
-            if (this.t <= 0.0F) {
-               this.s = dwc.a.a;
-               this.t = 0.0F;
-               d($$0, $$1, $$2);
-            }
+   public boolean c() {
+      return this.d.isEmpty();
+   }
+
+   public boolean a(arc $$0, dwa $$1, int $$2) {
+      return $$0.ad() >= this.f && this.d.size() < $$1.b($$2);
+   }
+
+   public int a(ji $$0) {
+      if (this.c.isEmpty()) {
+         af.b("Trial Spawner at " + $$0 + " has no detected players");
       }
+
+      return Math.max(0, this.c.size() - 1);
    }
 
-   public dwc.a k() {
-      return this.s;
-   }
+   public void a(arc $$0, ji $$1, dvz $$2) {
+      boolean $$3 = ($$1.a() + $$0.ad()) % 20L != 0L;
+      if (!$$3) {
+         if (!$$2.i().equals(dwd.f) || !$$2.e()) {
+            List<UUID> $$4 = $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), true);
+            boolean $$7;
+            if (!$$2.e() && !$$4.isEmpty()) {
+               Optional<Pair<cox, jr<btn>>> $$6 = a($$0, $$4);
+               $$6.ifPresent($$3x -> {
+                  cox $$4x = (cox)$$3x.getFirst();
+                  if ($$3x.getSecond() == btr.E) {
+                     a($$4x);
+                  }
 
-   public fbm a(dxo $$0) {
-      return cmu.a(1.0F, $$0.c(drh.b), 0.5F * this.a(1.0F));
-   }
+                  $$0.c(3020, ji.a((kb)$$4x.bF()), 0);
+                  $$2.a($$0, $$1);
+               });
+               $$7 = $$6.isPresent();
+            } else {
+               $$7 = false;
+            }
 
-   private void c(dgz $$0, jh $$1, dxo $$2) {
-      if ($$2.b() instanceof drh) {
-         jm $$3 = $$2.c(drh.b);
-         fbm $$4 = cmu.a(1.0F, $$3, this.u, this.t).a($$1);
-         List<bvb> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (bvb $$6 : $$5) {
-               if ($$6.n_() != etv.d) {
-                  $$6.a(bwb.d, new fbr(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
+            if (!$$2.i().equals(dwd.f) || $$7) {
+               boolean $$8 = $$2.f().c.isEmpty();
+               List<UUID> $$9 = $$8 ? $$4 : $$2.k().detect($$0, $$2.l(), $$1, (double)$$2.h(), false);
+               if (this.c.addAll($$9)) {
+                  this.f = Math.max($$0.ad() + 40L, this.f);
+                  if (!$$7) {
+                     int $$10 = $$2.e() ? 3019 : 3013;
+                     $$0.c($$10, $$1, this.c.size());
+                  }
                }
             }
          }
       }
    }
 
-   @Override
-   public int b() {
-      return this.n.size();
+   private static Optional<Pair<cox, jr<btn>>> a(arc $$0, List<UUID> $$1) {
+      cox $$2 = null;
+
+      for (UUID $$3 : $$1) {
+         cox $$4 = $$0.b($$3);
+         if ($$4 != null) {
+            jr<btn> $$5 = btr.H;
+            if ($$4.b($$5)) {
+               return Optional.of(Pair.of($$4, $$5));
+            }
+
+            if ($$4.b(btr.E)) {
+               $$2 = $$4;
+            }
+         }
+      }
+
+      return Optional.ofNullable($$2).map($$0x -> Pair.of($$0x, btr.E));
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.r = $$1;
-         if ($$1 == 0) {
-            this.s = dwc.a.d;
-         }
+   public void a(dvz $$0, arc $$1) {
+      this.d.stream().map($$1::a).forEach($$1x -> {
+         if ($$1x != null) {
+            $$1.c(3012, $$1x.dw(), dvz.a.a.a());
+            if ($$1x instanceof bvi $$2) {
+               $$2.b($$1);
+            }
 
-         if ($$1 == 1) {
-            this.s = dwc.a.b;
+            $$1x.a(buk.d.b);
          }
+      });
+      if (!$$0.d().i().d()) {
+         this.h = Optional.empty();
+      }
 
-         return true;
+      this.g = 0;
+      this.d.clear();
+      this.f = $$1.ad() + (long)$$0.d().h();
+      $$0.j();
+      this.e = $$1.ad() + $$0.d().a();
+   }
+
+   private static void a(cox $$0) {
+      btp $$1 = $$0.c(btr.E);
+      if ($$1 != null) {
+         int $$2 = $$1.e() + 1;
+         int $$3 = 18000 * $$2;
+         $$0.e(btr.E);
+         $$0.a(new btp(btr.H, $$3, 0));
+      }
+   }
+
+   public boolean a(arc $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)$$0.ad() >= (float)$$3 + $$1;
+   }
+
+   public boolean b(arc $$0, float $$1, int $$2) {
+      long $$3 = this.e - (long)$$2;
+      return (float)($$0.ad() - $$3) % $$1 == 0.0F;
+   }
+
+   public boolean a(arc $$0) {
+      return $$0.ad() >= this.e;
+   }
+
+   protected dhc b(dvz $$0, azh $$1) {
+      if (this.h.isPresent()) {
+         return this.h.get();
       } else {
-         return super.a_($$0, $$1);
+         bqr<dhc> $$2 = $$0.b().i();
+         Optional<dhc> $$3 = $$2.d() ? this.h : $$2.b($$1).map(bqt.b::b);
+         this.h = Optional.of($$3.orElseGet(dhc::new));
+         $$0.j();
+         return this.h.get();
       }
-   }
-
-   private static void d(dgz $$0, jh $$1, dxo $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void c_(cpo $$0) {
-      if (!this.q && !$$0.aa_()) {
-         if (this.r < 0) {
-            this.r = 0;
-         }
-
-         this.r++;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r == 1) {
-            this.o.a($$0, eck.k, this.p);
-            this.o.a(null, this.p, awv.xn, aww.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cpo $$0) {
-      if (!this.q && !$$0.aa_()) {
-         this.r--;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r <= 0) {
-            this.o.a($$0, eck.j, this.p);
-            this.o.a(null, this.p, awv.xm, aww.e, 0.5F, this.o.A.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected xk j() {
-      return xk.c("container.shulkerBox");
-   }
-
-   @Override
-   protected void a(um $$0, js.a $$1) {
-      super.a($$0, $$1);
-      this.e($$0, $$1);
-   }
-
-   @Override
-   protected void b(um $$0, js.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bsu.a($$0, this.n, false, $$1);
-      }
-   }
-
-   public void e(um $$0, js.a $$1) {
-      this.n = jz.a(this.b(), cxg.j);
-      if (!this.b_($$0) && $$0.b("Items", 9)) {
-         bsu.b($$0, this.n, $$1);
-      }
-   }
-
-   @Override
-   protected jz<cxg> f() {
-      return this.n;
-   }
-
-   @Override
-   protected void a(jz<cxg> $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public int[] a(jm $$0) {
-      return k;
-   }
-
-   @Override
-   public boolean a(int $$0, cxg $$1, @Nullable jm $$2) {
-      return !(dkd.a($$1.h()) instanceof drh);
-   }
-
-   @Override
-   public boolean b(int $$0, cxg $$1, jm $$2) {
-      return true;
-   }
-
-   public float a(float $$0) {
-      return azu.h($$0, this.u, this.t);
    }
 
    @Nullable
-   public cwd s() {
-      return this.v;
+   public buk a(dvz $$0, dgi $$1, dwd $$2) {
+      if (!$$2.d()) {
+         return null;
+      } else {
+         if (this.j == null) {
+            tq $$3 = this.b($$0, $$1.H_()).a();
+            if ($$3.b("id", 8)) {
+               this.j = bur.a($$3, $$1, buq.q, Function.identity());
+            }
+         }
+
+         return this.j;
+      }
    }
 
-   @Override
-   protected cst a(int $$0, cpn $$1) {
-      return new cun($$0, $$1, this);
+   public tq a(dwd $$0) {
+      tq $$1 = new tq();
+      if ($$0 == dwd.c) {
+         $$1.a("next_mob_spawns_at", this.f);
+      }
+
+      this.h
+         .ifPresent($$1x -> $$1.a("spawn_data", (un)dhc.b.encodeStart(ue.a, $$1x).result().orElseThrow(() -> new IllegalStateException("Invalid SpawnData"))));
+      return $$1;
    }
 
-   public boolean t() {
-      return this.s == dwc.a.a;
+   public double d() {
+      return this.k;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public double e() {
+      return this.l;
+   }
+
+   bqr<cwp> a(arc $$0, dwa $$1, ji $$2) {
+      if (this.p != null) {
+         return this.p;
+      } else {
+         evw $$3 = $$0.p().bc().b($$1.k());
+         evu $$4 = new evu.a($$0).a(eyk.b);
+         long $$5 = a($$0, $$2);
+         ObjectArrayList<cwp> $$6 = $$3.a($$4, $$5);
+         if ($$6.isEmpty()) {
+            return bqr.b();
+         } else {
+            bqr.a<cwp> $$7 = new bqr.a<>();
+            ObjectListIterator var10 = $$6.iterator();
+
+            while (var10.hasNext()) {
+               cwp $$8 = (cwp)var10.next();
+               $$7.a($$8.c(1), $$8.M());
+            }
+
+            this.p = $$7.a();
+            return this.p;
+         }
+      }
+   }
+
+   private static long a(arc $$0, ji $$1) {
+      ji $$2 = new ji(ayz.d((float)$$1.u() / 30.0F), ayz.d((float)$$1.v() / 20.0F), ayz.d((float)$$1.w() / 30.0F));
+      return $$0.E() + $$2.a();
    }
 }

@@ -1,10 +1,15 @@
-public enum arm {
-   a,
-   b,
-   c,
-   d;
+import javax.annotation.Nullable;
 
-   public boolean a(arm $$0) {
-      return this.ordinal() >= $$0.ordinal();
+public interface arm {
+   void a(dfo var1);
+
+   void a(dfo var1, @Nullable dzt var2);
+
+   void a();
+
+   void b();
+
+   static int a(int $$0) {
+      return 2 * $$0 + 1;
    }
 }

@@ -1,112 +1,59 @@
-import com.google.common.base.MoreObjects;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import javax.annotation.Nullable;
 
-public abstract class dyq<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
+public class dyq implements AutoCloseable {
+   private final dgj a;
+   private final Long2ObjectMap<dzd> b = new Long2ObjectOpenHashMap();
    @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::b
-      );
-   private final Codec<dyq.a<T>> e = this.d.xmap(this::c, dyq.a::b);
+   private dzd c;
+   private long d;
 
-   protected dyq(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   public dyq(dgj $$0) {
+      this.a = $$0;
    }
 
-   public dyq.a<T> c(T $$0) {
-      return new dyq.a<>(this, $$0);
-   }
-
-   public dyq.a<T> a(dxq<?, ?> $$0) {
-      return new dyq.a<>(this, $$0.c(this));
-   }
-
-   public Stream<dyq.a<T>> c() {
-      return this.a().stream().map(this::c);
-   }
-
-   public Codec<T> d() {
-      return this.d;
-   }
-
-   public Codec<dyq.a<T>> e() {
-      return this.e;
-   }
-
-   public String f() {
-      return this.b;
-   }
-
-   public Class<T> g() {
-      return this.a;
-   }
-
-   public abstract List<T> a();
-
-   public abstract String b(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   public abstract int a(T var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dyq<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
-   }
-
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
-   }
-
-   public <U, S extends dxq<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
-   }
-
-   public static record a<T extends Comparable<T>>(dyq<T> a, T b) {
-      public a(dyq<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
+   @Nullable
+   public dzd a(ji $$0) {
+      int $$1 = this.a.f($$0.v());
+      if ($$1 >= 0 && $$1 < this.a.ao()) {
+         long $$2 = kk.c($$0);
+         if (this.c == null || this.d != $$2) {
+            this.c = (dzd)this.b.computeIfAbsent($$2, $$2x -> {
+               dys $$3 = this.a.a(kk.a($$0.u()), kk.a($$0.w()));
+               dzd $$4 = $$3.b($$1);
+               $$4.a();
+               return $$4;
+            });
+            this.d = $$2;
          }
-      }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.b(this.b);
+         return this.c;
+      } else {
+         return null;
+      }
+   }
+
+   public dwx b(ji $$0) {
+      dzd $$1 = this.a($$0);
+      if ($$1 == null) {
+         return djo.a.m();
+      } else {
+         int $$2 = kk.b($$0.u());
+         int $$3 = kk.b($$0.v());
+         int $$4 = kk.b($$0.w());
+         return $$1.a($$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public void close() {
+      ObjectIterator var1 = this.b.values().iterator();
+
+      while (var1.hasNext()) {
+         dzd $$0 = (dzd)var1.next();
+         $$0.b();
       }
    }
 }

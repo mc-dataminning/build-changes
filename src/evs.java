@@ -1,28 +1,11 @@
-import java.util.Locale;
+import java.util.Set;
 
 public interface evs {
-   jh a();
+   default Set<bai<?>> a() {
+      return Set.of();
+   }
 
-   float b();
-
-   long c();
-
-   long d();
-
-   boolean g();
-
-   boolean i();
-
-   void b(boolean var1);
-
-   boolean l();
-
-   bsx q();
-
-   boolean r();
-
-   default void a(p $$0, dhb $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   default void a(evx $$0) {
+      $$0.a(this);
    }
 }

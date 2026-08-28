@@ -1,61 +1,48 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
-public record ezz(Optional<Long> b, ewh c) implements ezr {
+public record ezz(aku b, fp.g c) implements ezw {
    public static final MapCodec<ezz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(ezz::c), ewh.a.fieldOf("value").forGetter(ezz::d)).apply($$0, ezz::new)
+      $$0 -> $$0.group(aku.a.fieldOf("storage").forGetter(ezz::c), fp.g.a.fieldOf("path").forGetter(ezz::d)).apply($$0, ezz::new)
    );
 
    @Override
-   public ezs b() {
-      return ezt.q;
+   public ezv b() {
+      return ezx.f;
+   }
+
+   private Optional<ug> c(evr $$0) {
+      tq $$1 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<un> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof ug $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
    }
 
    @Override
-   public Set<bbd<?>> a() {
-      return this.c.a();
+   public float b(evr $$0) {
+      return this.c($$0).map(ug::k).orElse(0.0F);
    }
 
-   public boolean a(ewi $$0) {
-      arx $$1 = $$0.d();
-      long $$2 = $$1.ae();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
-      }
-
-      return this.c.b($$0, (int)$$2);
+   @Override
+   public int a(evr $$0) {
+      return this.c($$0).map(ug::g).orElse(0);
    }
 
-   public static ezz.a a(ewh $$0) {
-      return new ezz.a($$0);
-   }
-
-   public Optional<Long> c() {
+   public aku c() {
       return this.b;
    }
 
-   public ewh d() {
+   public fp.g d() {
       return this.c;
-   }
-
-   public static class a implements ezr.a {
-      private Optional<Long> a = Optional.empty();
-      private final ewh b;
-
-      public a(ewh $$0) {
-         this.b = $$0;
-      }
-
-      public ezz.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public ezz a() {
-         return new ezz(this.a, this.b);
-      }
    }
 }

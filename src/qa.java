@@ -1,12 +1,31 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public class qa extends qj<eme> {
-   public qa(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.aQ, $$1);
-   }
+public class qa {
+   public static final akt<eow> a = ql.a("bastion/starts");
 
-   @Override
-   protected void a(js.a $$0) {
-      this.b(axp.a).a(emf.a).a(emf.b).a(emf.c).a(emf.d).a(emf.e).a(emf.f).a(emf.g).a(emf.h).a(emf.i);
+   public static void a(qe<eow> $$0) {
+      js<erm> $$1 = $$0.a(mc.aV);
+      jr<erm> $$2 = $$1.b(qm.w);
+      js<eow> $$3 = $$0.a(mc.aX);
+      jr<eow> $$4 = $$3.b(ql.a);
+      $$0.a(
+         a,
+         new eow(
+            $$4,
+            ImmutableList.of(
+               Pair.of(eou.b("bastion/units/air_base", $$2), 1),
+               Pair.of(eou.b("bastion/hoglin_stable/air_base", $$2), 1),
+               Pair.of(eou.b("bastion/treasure/big_air_full", $$2), 1),
+               Pair.of(eou.b("bastion/bridge/starting_pieces/entrance_base", $$2), 1)
+            ),
+            eow.a.b
+         )
+      );
+      pz.a($$0);
+      py.a($$0);
+      qc.a($$0);
+      px.a($$0);
+      qb.a($$0);
    }
 }

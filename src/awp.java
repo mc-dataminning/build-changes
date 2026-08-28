@@ -1,146 +1,195 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.Locale;
-import org.slf4j.Logger;
+public final class awp {
+   public static final axf<djm> a = a("wool");
+   public static final axf<djm> b = a("planks");
+   public static final axf<djm> c = a("stone_bricks");
+   public static final axf<djm> d = a("wooden_buttons");
+   public static final axf<djm> e = a("stone_buttons");
+   public static final axf<djm> f = a("buttons");
+   public static final axf<djm> g = a("wool_carpets");
+   public static final axf<djm> h = a("wooden_doors");
+   public static final axf<djm> i = a("mob_interactable_doors");
+   public static final axf<djm> j = a("wooden_stairs");
+   public static final axf<djm> k = a("wooden_slabs");
+   public static final axf<djm> l = a("wooden_fences");
+   public static final axf<djm> m = a("pressure_plates");
+   public static final axf<djm> n = a("wooden_pressure_plates");
+   public static final axf<djm> o = a("stone_pressure_plates");
+   public static final axf<djm> p = a("wooden_trapdoors");
+   public static final axf<djm> q = a("doors");
+   public static final axf<djm> r = a("saplings");
+   public static final axf<djm> s = a("logs_that_burn");
+   public static final axf<djm> t = a("overworld_natural_logs");
+   public static final axf<djm> u = a("logs");
+   public static final axf<djm> v = a("dark_oak_logs");
+   public static final axf<djm> w = a("pale_oak_logs");
+   public static final axf<djm> x = a("oak_logs");
+   public static final axf<djm> y = a("birch_logs");
+   public static final axf<djm> z = a("acacia_logs");
+   public static final axf<djm> A = a("cherry_logs");
+   public static final axf<djm> B = a("jungle_logs");
+   public static final axf<djm> C = a("spruce_logs");
+   public static final axf<djm> D = a("mangrove_logs");
+   public static final axf<djm> E = a("crimson_stems");
+   public static final axf<djm> F = a("warped_stems");
+   public static final axf<djm> G = a("bamboo_blocks");
+   public static final axf<djm> H = a("wart_blocks");
+   public static final axf<djm> I = a("banners");
+   public static final axf<djm> J = a("sand");
+   public static final axf<djm> K = a("smelts_to_glass");
+   public static final axf<djm> L = a("stairs");
+   public static final axf<djm> M = a("slabs");
+   public static final axf<djm> N = a("walls");
+   public static final axf<djm> O = a("anvil");
+   public static final axf<djm> P = a("rails");
+   public static final axf<djm> Q = a("leaves");
+   public static final axf<djm> R = a("trapdoors");
+   public static final axf<djm> S = a("small_flowers");
+   public static final axf<djm> T = a("beds");
+   public static final axf<djm> U = a("fences");
+   public static final axf<djm> V = a("flowers");
+   public static final axf<djm> W = a("bee_attractive");
+   public static final axf<djm> X = a("piglin_repellents");
+   public static final axf<djm> Y = a("gold_ores");
+   public static final axf<djm> Z = a("iron_ores");
+   public static final axf<djm> aa = a("diamond_ores");
+   public static final axf<djm> ab = a("redstone_ores");
+   public static final axf<djm> ac = a("lapis_ores");
+   public static final axf<djm> ad = a("coal_ores");
+   public static final axf<djm> ae = a("emerald_ores");
+   public static final axf<djm> af = a("copper_ores");
+   public static final axf<djm> ag = a("candles");
+   public static final axf<djm> ah = a("dirt");
+   public static final axf<djm> ai = a("terracotta");
+   public static final axf<djm> aj = a("badlands_terracotta");
+   public static final axf<djm> ak = a("concrete_powder");
+   public static final axf<djm> al = a("completes_find_tree_tutorial");
+   public static final axf<djm> am = a("shulker_boxes");
+   public static final axf<djm> an = a("flower_pots");
+   public static final axf<djm> ao = a("enderman_holdable");
+   public static final axf<djm> ap = a("ice");
+   public static final axf<djm> aq = a("valid_spawn");
+   public static final axf<djm> ar = a("impermeable");
+   public static final axf<djm> as = a("underwater_bonemeals");
+   public static final axf<djm> at = a("coral_blocks");
+   public static final axf<djm> au = a("wall_corals");
+   public static final axf<djm> av = a("coral_plants");
+   public static final axf<djm> aw = a("corals");
+   public static final axf<djm> ax = a("bamboo_plantable_on");
+   public static final axf<djm> ay = a("standing_signs");
+   public static final axf<djm> az = a("wall_signs");
+   public static final axf<djm> aA = a("signs");
+   public static final axf<djm> aB = a("ceiling_hanging_signs");
+   public static final axf<djm> aC = a("wall_hanging_signs");
+   public static final axf<djm> aD = a("all_hanging_signs");
+   public static final axf<djm> aE = a("all_signs");
+   public static final axf<djm> aF = a("dragon_immune");
+   public static final axf<djm> aG = a("dragon_transparent");
+   public static final axf<djm> aH = a("wither_immune");
+   public static final axf<djm> aI = a("wither_summon_base_blocks");
+   public static final axf<djm> aJ = a("beehives");
+   public static final axf<djm> aK = a("crops");
+   public static final axf<djm> aL = a("bee_growables");
+   public static final axf<djm> aM = a("portals");
+   public static final axf<djm> aN = a("fire");
+   public static final axf<djm> aO = a("nylium");
+   public static final axf<djm> aP = a("beacon_base_blocks");
+   public static final axf<djm> aQ = a("soul_speed_blocks");
+   public static final axf<djm> aR = a("wall_post_override");
+   public static final axf<djm> aS = a("climbable");
+   public static final axf<djm> aT = a("fall_damage_resetting");
+   public static final axf<djm> aU = a("hoglin_repellents");
+   public static final axf<djm> aV = a("soul_fire_base_blocks");
+   public static final axf<djm> aW = a("strider_warm_blocks");
+   public static final axf<djm> aX = a("campfires");
+   public static final axf<djm> aY = a("guarded_by_piglins");
+   public static final axf<djm> aZ = a("prevent_mob_spawning_inside");
+   public static final axf<djm> ba = a("fence_gates");
+   public static final axf<djm> bb = a("unstable_bottom_center");
+   public static final axf<djm> bc = a("mushroom_grow_block");
+   public static final axf<djm> bd = a("infiniburn_overworld");
+   public static final axf<djm> be = a("infiniburn_nether");
+   public static final axf<djm> bf = a("infiniburn_end");
+   public static final axf<djm> bg = a("base_stone_overworld");
+   public static final axf<djm> bh = a("stone_ore_replaceables");
+   public static final axf<djm> bi = a("deepslate_ore_replaceables");
+   public static final axf<djm> bj = a("base_stone_nether");
+   public static final axf<djm> bk = a("overworld_carver_replaceables");
+   public static final axf<djm> bl = a("nether_carver_replaceables");
+   public static final axf<djm> bm = a("candle_cakes");
+   public static final axf<djm> bn = a("cauldrons");
+   public static final axf<djm> bo = a("crystal_sound_blocks");
+   public static final axf<djm> bp = a("inside_step_sound_blocks");
+   public static final axf<djm> bq = a("combination_step_sound_blocks");
+   public static final axf<djm> br = a("camel_sand_step_sound_blocks");
+   public static final axf<djm> bs = a("occludes_vibration_signals");
+   public static final axf<djm> bt = a("dampens_vibrations");
+   public static final axf<djm> bu = a("dripstone_replaceable_blocks");
+   public static final axf<djm> bv = a("cave_vines");
+   public static final axf<djm> bw = a("moss_replaceable");
+   public static final axf<djm> bx = a("lush_ground_replaceable");
+   public static final axf<djm> by = a("azalea_root_replaceable");
+   public static final axf<djm> bz = a("small_dripleaf_placeable");
+   public static final axf<djm> bA = a("big_dripleaf_placeable");
+   public static final axf<djm> bB = a("snow");
+   public static final axf<djm> bC = a("mineable/axe");
+   public static final axf<djm> bD = a("mineable/hoe");
+   public static final axf<djm> bE = a("mineable/pickaxe");
+   public static final axf<djm> bF = a("mineable/shovel");
+   public static final axf<djm> bG = a("sword_efficient");
+   public static final axf<djm> bH = a("needs_diamond_tool");
+   public static final axf<djm> bI = a("needs_iron_tool");
+   public static final axf<djm> bJ = a("needs_stone_tool");
+   public static final axf<djm> bK = a("incorrect_for_netherite_tool");
+   public static final axf<djm> bL = a("incorrect_for_diamond_tool");
+   public static final axf<djm> bM = a("incorrect_for_iron_tool");
+   public static final axf<djm> bN = a("incorrect_for_stone_tool");
+   public static final axf<djm> bO = a("incorrect_for_gold_tool");
+   public static final axf<djm> bP = a("incorrect_for_wooden_tool");
+   public static final axf<djm> bQ = a("features_cannot_replace");
+   public static final axf<djm> bR = a("lava_pool_stone_cannot_replace");
+   public static final axf<djm> bS = a("geode_invalid_blocks");
+   public static final axf<djm> bT = a("frog_prefer_jump_to");
+   public static final axf<djm> bU = a("sculk_replaceable");
+   public static final axf<djm> bV = a("sculk_replaceable_world_gen");
+   public static final axf<djm> bW = a("ancient_city_replaceable");
+   public static final axf<djm> bX = a("vibration_resonators");
+   public static final axf<djm> bY = a("animals_spawnable_on");
+   public static final axf<djm> bZ = a("armadillo_spawnable_on");
+   public static final axf<djm> ca = a("axolotls_spawnable_on");
+   public static final axf<djm> cb = a("goats_spawnable_on");
+   public static final axf<djm> cc = a("mooshrooms_spawnable_on");
+   public static final axf<djm> cd = a("parrots_spawnable_on");
+   public static final axf<djm> ce = a("polar_bears_spawnable_on_alternate");
+   public static final axf<djm> cf = a("rabbits_spawnable_on");
+   public static final axf<djm> cg = a("foxes_spawnable_on");
+   public static final axf<djm> ch = a("wolves_spawnable_on");
+   public static final axf<djm> ci = a("frogs_spawnable_on");
+   public static final axf<djm> cj = a("bats_spawnable_on");
+   public static final axf<djm> ck = a("azalea_grows_on");
+   public static final axf<djm> cl = a("convertable_to_mud");
+   public static final axf<djm> cm = a("mangrove_logs_can_grow_through");
+   public static final axf<djm> cn = a("mangrove_roots_can_grow_through");
+   public static final axf<djm> co = a("dead_bush_may_place_on");
+   public static final axf<djm> cp = a("snaps_goat_horn");
+   public static final axf<djm> cq = a("replaceable_by_trees");
+   public static final axf<djm> cr = a("snow_layer_cannot_survive_on");
+   public static final axf<djm> cs = a("snow_layer_can_survive_on");
+   public static final axf<djm> ct = a("invalid_spawn_inside");
+   public static final axf<djm> cu = a("sniffer_diggable_block");
+   public static final axf<djm> cv = a("sniffer_egg_hatch_boost");
+   public static final axf<djm> cw = a("trail_ruins_replaceable");
+   public static final axf<djm> cx = a("replaceable");
+   public static final axf<djm> cy = a("enchantment_power_provider");
+   public static final axf<djm> cz = a("enchantment_power_transmitter");
+   public static final axf<djm> cA = a("maintains_farmland");
+   public static final axf<djm> cB = a("blocks_wind_charge_explosions");
+   public static final axf<djm> cC = a("does_not_block_hoppers");
+   public static final axf<djm> cD = a("air");
 
-public class awp extends awn {
-   private static final Logger d = LogUtils.getLogger();
-   private static final int e = 3;
-   private static final int f = 2;
-   private static final int g = 0;
-   private static final int h = 2;
-   private static final int i = -1;
-   private boolean j;
-   private final Socket k;
-   private final byte[] l = new byte[1460];
-   private final String m;
-   private final amg n;
-
-   awp(amg $$0, String $$1, Socket $$2) {
-      super("RCON Client " + $$2.getInetAddress());
-      this.n = $$0;
-      this.k = $$2;
-
-      try {
-         this.k.setSoTimeout(0);
-      } catch (Exception var5) {
-         this.a = false;
-      }
-
-      this.m = $$1;
+   private awp() {
    }
 
-   @Override
-   public void run() {
-      try {
-         try {
-            while (this.a) {
-               BufferedInputStream $$0 = new BufferedInputStream(this.k.getInputStream());
-               int $$1 = $$0.read(this.l, 0, 1460);
-               if (10 > $$1) {
-                  return;
-               }
-
-               int $$2 = 0;
-               int $$3 = awk.b(this.l, 0, $$1);
-               if ($$3 != $$1 - 4) {
-                  return;
-               }
-
-               $$2 += 4;
-               int $$4 = awk.b(this.l, $$2, $$1);
-               $$2 += 4;
-               int $$5 = awk.a(this.l, $$2);
-               $$2 += 4;
-               switch ($$5) {
-                  case 2:
-                     if (this.j) {
-                        String $$7 = awk.a(this.l, $$2, $$1);
-
-                        try {
-                           this.a($$4, this.n.a($$7));
-                        } catch (Exception var15) {
-                           this.a($$4, "Error executing: " + $$7 + " (" + var15.getMessage() + ")");
-                        }
-                        break;
-                     }
-
-                     this.d();
-                     break;
-                  case 3:
-                     String $$6 = awk.a(this.l, $$2, $$1);
-                     $$2 += $$6.length();
-                     if (!$$6.isEmpty() && $$6.equals(this.m)) {
-                        this.j = true;
-                        this.a($$4, 2, "");
-                        break;
-                     }
-
-                     this.j = false;
-                     this.d();
-                     break;
-                  default:
-                     this.a($$4, String.format(Locale.ROOT, "Unknown request %s", Integer.toHexString($$5)));
-               }
-            }
-
-            return;
-         } catch (IOException var16) {
-         } catch (Exception var17) {
-            d.error("Exception whilst parsing RCON input", var17);
-         }
-      } finally {
-         this.e();
-         d.info("Thread {} shutting down", this.b);
-         this.a = false;
-      }
-   }
-
-   private void a(int $$0, int $$1, String $$2) throws IOException {
-      ByteArrayOutputStream $$3 = new ByteArrayOutputStream(1248);
-      DataOutputStream $$4 = new DataOutputStream($$3);
-      byte[] $$5 = $$2.getBytes(StandardCharsets.UTF_8);
-      $$4.writeInt(Integer.reverseBytes($$5.length + 10));
-      $$4.writeInt(Integer.reverseBytes($$0));
-      $$4.writeInt(Integer.reverseBytes($$1));
-      $$4.write($$5);
-      $$4.write(0);
-      $$4.write(0);
-      this.k.getOutputStream().write($$3.toByteArray());
-   }
-
-   private void d() throws IOException {
-      this.a(-1, 2, "");
-   }
-
-   private void a(int $$0, String $$1) throws IOException {
-      int $$2 = $$1.length();
-
-      do {
-         int $$3 = 4096 <= $$2 ? 4096 : $$2;
-         this.a($$0, 0, $$1.substring(0, $$3));
-         $$1 = $$1.substring($$3);
-         $$2 = $$1.length();
-      } while (0 != $$2);
-   }
-
-   @Override
-   public void b() {
-      this.a = false;
-      this.e();
-      super.b();
-   }
-
-   private void e() {
-      try {
-         this.k.close();
-      } catch (IOException var2) {
-         d.warn("Failed to close socket", var2);
-      }
+   private static axf<djm> a(String $$0) {
+      return axf.a(mc.f, aku.b($$0));
    }
 }

@@ -4,13 +4,23 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bko extends bkb {
+public class bko extends bjk {
    public bko(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(false, bin.C, () -> DSL.constType(a()));
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$0.register(
+         $$1,
+         "minecraft:wandering_trader",
+         $$1x -> DSL.optionalFields("Inventory", DSL.list(bhw.t.in($$0)), "Offers", DSL.optionalFields("Recipes", DSL.list(bhw.x.in($$0))), bjl.a($$0))
+      );
+      $$0.register(
+         $$1,
+         "minecraft:trader_llama",
+         $$1x -> DSL.optionalFields("Items", DSL.list(bhw.t.in($$0)), "SaddleItem", bhw.t.in($$0), "DecorItem", bhw.t.in($$0), bjl.a($$0))
+      );
+      return $$1;
    }
 }

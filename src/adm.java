@@ -1,26 +1,88 @@
-import java.util.Optional;
+public class adm implements yv<abk> {
+   public static final ym<vl, adm> a = yv.a(adm::a, adm::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private static final int d = 4;
+   private static final int e = 8;
+   private final boolean f;
+   private final boolean g;
+   private final boolean h;
+   private final boolean i;
+   private final float j;
+   private final float k;
 
-public record adm(fbr b, Optional<fbr> c, lq d, jq<awu> e) implements zr<acg> {
-   public static final zi<wv, adm> a = zi.a(fbr.b, adm::b, fbr.b.a(zg::a), adm::e, ls.bj, adm::f, awu.d, adm::g, adm::new);
-
-   @Override
-   public zt<adm> a() {
-      return agz.E;
+   public adm(cot $$0) {
+      this.f = $$0.a;
+      this.g = $$0.b;
+      this.h = $$0.c;
+      this.i = $$0.d;
+      this.j = $$0.a();
+      this.k = $$0.b();
    }
 
-   public void a(acg $$0) {
+   private adm(vl $$0) {
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) != 0;
+      this.g = ($$1 & 2) != 0;
+      this.h = ($$1 & 4) != 0;
+      this.i = ($$1 & 8) != 0;
+      this.j = $$0.readFloat();
+      this.k = $$0.readFloat();
+   }
+
+   private void a(vl $$0) {
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      if (this.h) {
+         $$1 = (byte)($$1 | 4);
+      }
+
+      if (this.i) {
+         $$1 = (byte)($$1 | 8);
+      }
+
+      $$0.l($$1);
+      $$0.a(this.j);
+      $$0.a(this.k);
+   }
+
+   @Override
+   public yx<adm> a() {
+      return agd.aa;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public Optional<fbr> e() {
-      return this.c;
+   public boolean b() {
+      return this.f;
    }
 
-   public lq f() {
-      return this.d;
+   public boolean e() {
+      return this.g;
    }
 
-   public jq<awu> g() {
-      return this.e;
+   public boolean f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public float h() {
+      return this.j;
+   }
+
+   public float i() {
+      return this.k;
    }
 }

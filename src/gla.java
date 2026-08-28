@@ -1,28 +1,36 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Set;
+import java.util.function.LongSupplier;
 import java.util.function.Supplier;
 
-public class gla {
-   private final Map<alp, hdi> a = new HashMap<>();
-   private final Supplier<hdi> b;
-   private final Function<alp, hdi> c;
+public class gla implements bqe {
+   private final glt a;
+   private final Set<bqc> b = new ObjectOpenHashSet();
+   private final bqk c = new bqk();
 
-   public gla(hdv $$0) {
-      this.b = $$0::a;
-      this.c = $$1 -> $$0.a(hdw.a($$1));
+   public gla(LongSupplier $$0, glt $$1) {
+      this.a = $$1;
+      this.b.add(bql.a($$0));
+      this.a();
    }
 
-   public hdi a(cxg $$0) {
-      alp $$1 = $$0.a(ku.i);
-      return $$1 == null ? this.b.get() : this.a($$1);
+   private void a() {
+      this.b.addAll(bql.a());
+      this.b.add(bqc.a("totalChunks", bqb.f, this.a, glt::h));
+      this.b.add(bqc.a("renderedChunks", bqb.f, this.a, glt::j));
+      this.b.add(bqc.a("lastViewDistance", bqb.f, this.a, glt::i));
+      gpk $$0 = this.a.g();
+      this.b.add(bqc.a("toUpload", bqb.g, $$0, gpk::c));
+      this.b.add(bqc.a("freeBufferCount", bqb.g, $$0, gpk::d));
+      this.b.add(bqc.a("toBatchCount", bqb.g, $$0, gpk::b));
+      if (ffn.a().isPresent()) {
+         this.b.add(bqc.a("gpuUtilization", bqb.i, flj.Q(), flj::v));
+      }
    }
 
-   public hdi a(alp $$0) {
-      return this.a.computeIfAbsent($$0, this.c);
-   }
-
-   public void a() {
-      this.a.clear();
+   @Override
+   public Set<bqc> a(Supplier<bop> $$0) {
+      this.b.addAll(this.c.a($$0));
+      return this.b;
    }
 }

@@ -1,35 +1,48 @@
-public class dbm extends dbl {
-   public dbm(dbi $$0) {
-      super($$0);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.ImmutableMultimap.Builder;
+import java.util.Collection;
+import java.util.Map;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+
+public class dbm {
+   public static final dbm a = new dbm(ImmutableMultimap.of(), Map.of());
+   private final Multimap<dbp<?>, dbj<?>> b;
+   private final Map<akt<dbe<?>>, dbj<?>> c;
+
+   private dbm(Multimap<dbp<?>, dbj<?>> $$0, Map<akt<dbe<?>>, dbj<?>> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private static cxg c(dbj $$0) {
-      return $$0.a(1, 0);
+   public static dbm a(Iterable<dbj<?>> $$0) {
+      Builder<dbp<?>, dbj<?>> $$1 = ImmutableMultimap.builder();
+      com.google.common.collect.ImmutableMap.Builder<akt<dbe<?>>, dbj<?>> $$2 = ImmutableMap.builder();
+
+      for (dbj<?> $$3 : $$0) {
+         $$1.put($$3.b().b(), $$3);
+         $$2.put($$3.a(), $$3);
+      }
+
+      return new dbm($$1.build(), $$2.build());
    }
 
-   private static cxg d(dbj $$0) {
-      return $$0.a(0, 1);
+   public <I extends dbk, T extends dbe<I>> Collection<dbj<T>> a(dbp<T> $$0) {
+      return this.b.get($$0);
    }
 
-   private static cxg e(dbj $$0) {
-      return $$0.a(2, 1);
+   public Collection<dbj<?>> a() {
+      return this.c.values();
    }
 
-   private static cxg f(dbj $$0) {
-      return $$0.a(1, 2);
+   @Nullable
+   public dbj<?> a(akt<dbe<?>> $$0) {
+      return this.c.get($$0);
    }
 
-   public boolean a(dbj $$0, dgz $$1) {
-      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(axt.bI) && d($$0).a(axt.bI) && e($$0).a(axt.bI) && f($$0).a(axt.bI) : false;
-   }
-
-   public cxg a(dbj $$0, js.a $$1) {
-      dvx $$2 = new dvx(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
-      return dvh.a($$2);
-   }
-
-   @Override
-   public dcf<dbm> a() {
-      return dcf.v;
+   public <I extends dbk, T extends dbe<I>> Stream<dbj<T>> a(dbp<T> $$0, I $$1, dgi $$2) {
+      return $$1.b() ? Stream.empty() : this.a($$0).stream().filter($$2x -> $$2x.b().a($$1, $$2));
    }
 }

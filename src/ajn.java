@@ -1,29 +1,31 @@
-public class ajn implements zr<ajk> {
-   public static final zi<wh, ajn> a = zr.a(ajn::a, ajn::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public ajn(int $$0) {
+public class ajn implements yv<ajm> {
+   public static final ym<ByteBuf, ajn> a = yv.a(ajn::a, ajn::new);
+   private final long b;
+
+   public ajn(long $$0) {
       this.b = $$0;
    }
 
-   private ajn(wh $$0) {
-      this.b = $$0.l();
+   private ajn(ByteBuf $$0) {
+      this.b = $$0.readLong();
    }
 
-   private void a(wh $$0) {
-      $$0.c(this.b);
+   private void a(ByteBuf $$0) {
+      $$0.writeLong(this.b);
    }
 
    @Override
-   public zt<ajn> a() {
-      return ajq.d;
+   public yx<ajn> a() {
+      return ajl.b;
    }
 
-   public void a(ajk $$0) {
+   public void a(ajm $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public long b() {
       return this.b;
    }
 }

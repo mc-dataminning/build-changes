@@ -1,55 +1,61 @@
-import org.joml.Quaternionf;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public abstract class gpz extends grk<crl, gxc> {
-   public gpz(grl.a $$0) {
-      super($$0);
-      this.f = 0.8F;
+public class gpz implements gpx.a {
+   private static final float a = 0.02F;
+   private final Map<ji, gpz.a> b = Maps.newHashMap();
+
+   public void a(ji $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new gpz.a($$1, $$2, af.c() + (long)$$3));
    }
 
-   public void a(gxc $$0, fgl $$1, glg $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.375F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
-      float $$4 = $$0.c;
-      if ($$4 > 0.0F) {
-         $$1.a(a.b.rotationDegrees(azu.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public void a(ffu $$0, glx $$1, double $$2, double $$3, double $$4) {
+      long $$5 = af.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((gpz.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
+
+   private void a(ffu $$0, glx $$1, ji $$2, gpz.a $$3) {
+      gpx.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         gpx.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
+      }
+   }
+
+   static class a {
+      public int a;
+      public String b;
+      public long c;
+
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      if (!azu.a($$0.e, 0.0F)) {
-         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
       }
 
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(a.d.rotationDegrees(90.0F));
-      gbh<gxc> $$5 = this.a();
-      $$5.a($$0);
-      fgp $$6 = $$2.getBuffer(this.b());
-      $$5.a($$1, $$6, $$3, hax.d);
-      this.b($$0, $$1, $$2, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
 
-   protected void b(gxc $$0, fgl $$1, glg $$2, int $$3) {
-   }
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
 
-   protected abstract gbh<gxc> a();
-
-   protected abstract glq b();
-
-   public gxc c() {
-      return new gxc();
-   }
-
-   public void a(crl $$0, gxc $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.k($$2);
-      $$1.c = (float)$$0.N() - $$2;
-      $$1.b = $$0.O();
-      $$1.d = Math.max($$0.L() - $$2, 0.0F);
-      $$1.e = $$0.a($$2);
-      $$1.f = $$0.bo();
-      $$1.g = $$0.a(0, $$2);
-      $$1.h = $$0.a(1, $$2);
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

@@ -1,203 +1,101 @@
+import java.util.List;
+
 public class rv {
-   public static dib a(jr<enh> $$0, jr<efn<?>> $$1) {
-      din $$2 = new din.a()
-         .a(bwa.a, new din.c(bvi.ae, 50, 4, 4))
-         .a(bwa.a, new din.c(bvi.bR, 100, 4, 4))
-         .a(bwa.a, new din.c(bvi.aA, 2, 4, 4))
-         .a(bwa.a, new din.c(bvi.O, 1, 4, 4))
-         .a(bwa.a, new din.c(bvi.aS, 15, 4, 4))
-         .a(bwa.b, new din.c(bvi.bt, 60, 1, 2))
-         .a();
-      dic.a $$3 = new dic.a($$0, $$1).a(rb.d).a(edf.a.j, sn.p);
-      qz.ac($$3);
-      $$3.a(edf.a.h, so.r)
-         .a(edf.a.h, so.t)
-         .a(edf.a.h, so.s)
-         .a(edf.a.h, so.f)
-         .a(edf.a.h, so.g)
-         .a(edf.a.h, ss.F)
-         .a(edf.a.h, ss.G)
-         .a(edf.a.h, sp.a)
-         .a(edf.a.h, so.p);
-      qz.at($$3);
-      return new dib.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(new dih.a().b(4159204).c(329011).a(3344392).d(rw.a(2.0F)).a(awv.p).a(new dhz(awv.q, 6000, 8, 2.0)).a(new dhy(awv.o, 0.0111)).a(awt.a(awv.qN)).b())
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
+   public static final akt<emq> a = ru.a("crimson_fungi");
+   public static final akt<emq> b = ru.a("warped_fungi");
+   public static final akt<emq> c = ru.a("oak_checked");
+   public static final akt<emq> d = ru.a("dark_oak_checked");
+   public static final akt<emq> e = ru.a("pale_oak_checked");
+   public static final akt<emq> f = ru.a("pale_oak_creaking_checked");
+   public static final akt<emq> g = ru.a("birch_checked");
+   public static final akt<emq> h = ru.a("acacia_checked");
+   public static final akt<emq> i = ru.a("spruce_checked");
+   public static final akt<emq> j = ru.a("mangrove_checked");
+   public static final akt<emq> k = ru.a("cherry_checked");
+   public static final akt<emq> l = ru.a("pine_on_snow");
+   public static final akt<emq> m = ru.a("spruce_on_snow");
+   public static final akt<emq> n = ru.a("pine_checked");
+   public static final akt<emq> o = ru.a("jungle_tree");
+   public static final akt<emq> p = ru.a("fancy_oak_checked");
+   public static final akt<emq> q = ru.a("mega_jungle_tree_checked");
+   public static final akt<emq> r = ru.a("mega_spruce_checked");
+   public static final akt<emq> s = ru.a("mega_pine_checked");
+   public static final akt<emq> t = ru.a("tall_mangrove_checked");
+   public static final akt<emq> u = ru.a("jungle_bush");
+   public static final akt<emq> v = ru.a("super_birch_bees_0002");
+   public static final akt<emq> w = ru.a("super_birch_bees");
+   public static final akt<emq> x = ru.a("oak_bees_0002");
+   public static final akt<emq> y = ru.a("oak_bees_002");
+   public static final akt<emq> z = ru.a("birch_bees_0002");
+   public static final akt<emq> A = ru.a("birch_bees_002");
+   public static final akt<emq> B = ru.a("fancy_oak_bees_0002");
+   public static final akt<emq> C = ru.a("fancy_oak_bees_002");
+   public static final akt<emq> D = ru.a("fancy_oak_bees");
+   public static final akt<emq> E = ru.a("cherry_bees_005");
 
-   public static dib b(jr<enh> $$0, jr<efn<?>> $$1) {
-      double $$2 = 0.7;
-      double $$3 = 0.15;
-      din $$4 = new din.a()
-         .a(bwa.a, new din.c(bvi.bf, 20, 5, 5))
-         .a(bwa.a, new din.c(bvi.ae, 50, 4, 4))
-         .a(bwa.a, new din.c(bvi.O, 1, 4, 4))
-         .a(bwa.b, new din.c(bvi.bt, 60, 1, 2))
-         .a(bvi.bf, 0.7, 0.15)
-         .a(bvi.ae, 0.7, 0.15)
-         .a(bvi.O, 0.7, 0.15)
-         .a(bvi.bt, 0.7, 0.15)
-         .a();
-      dic.a $$5 = new dic.a($$0, $$1)
-         .a(rb.d)
-         .a(edf.a.j, sn.p)
-         .a(edf.a.c, so.n)
-         .a(edf.a.h, so.r)
-         .a(edf.a.h, so.t)
-         .a(edf.a.h, so.s)
-         .a(edf.a.h, so.f)
-         .a(edf.a.h, so.g)
-         .a(edf.a.h, so.m)
-         .a(edf.a.h, sp.a)
-         .a(edf.a.h, so.p)
-         .a(edf.a.h, sp.b);
-      qz.at($$5);
-      return new dib.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dih.a()
-               .b(4159204)
-               .c(329011)
-               .a(1787717)
-               .d(rw.a(2.0F))
-               .a(new dia(ls.aC, 0.00625F))
-               .a(awv.s)
-               .a(new dhz(awv.t, 6000, 8, 2.0))
-               .a(new dhy(awv.r, 0.0111))
-               .a(awt.a(awv.qQ))
-               .b()
-         )
-         .a($$4)
-         .a($$5.a())
-         .a();
-   }
-
-   public static dib c(jr<enh> $$0, jr<efn<?>> $$1) {
-      din $$2 = new din.a().a(bwa.a, new din.c(bvi.ae, 40, 1, 1)).a(bwa.a, new din.c(bvi.aA, 100, 2, 5)).a(bwa.b, new din.c(bvi.bt, 60, 1, 2)).a();
-      dic.a $$3 = new dic.a($$0, $$1)
-         .a(rb.d)
-         .a(edf.a.e, so.a)
-         .a(edf.a.e, so.b)
-         .a(edf.a.e, so.c)
-         .a(edf.a.h, so.d)
-         .a(edf.a.h, so.e)
-         .a(edf.a.h, so.o)
-         .a(edf.a.h, so.t)
-         .a(edf.a.h, so.s)
-         .a(edf.a.h, so.f)
-         .a(edf.a.h, so.g)
-         .a(edf.a.h, ss.F)
-         .a(edf.a.h, ss.G)
-         .a(edf.a.h, sp.a)
-         .a(edf.a.h, so.q)
-         .a(edf.a.h, sp.c)
-         .a(edf.a.h, sp.d);
-      qz.au($$3);
-      return new dib.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dih.a()
-               .b(4159204)
-               .c(329011)
-               .a(6840176)
-               .d(rw.a(2.0F))
-               .a(new dia(ls.aK, 0.118093334F))
-               .a(awv.j)
-               .a(new dhz(awv.k, 6000, 8, 2.0))
-               .a(new dhy(awv.i, 0.0111))
-               .a(awt.a(awv.qB))
-               .b()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
-
-   public static dib d(jr<enh> $$0, jr<efn<?>> $$1) {
-      din $$2 = new din.a()
-         .a(bwa.a, new din.c(bvi.bR, 1, 2, 4))
-         .a(bwa.a, new din.c(bvi.ak, 9, 3, 4))
-         .a(bwa.a, new din.c(bvi.aS, 5, 3, 4))
-         .a(bwa.b, new din.c(bvi.bt, 60, 1, 2))
-         .a();
-      dic.a $$3 = new dic.a($$0, $$1).a(rb.d).a(edf.a.j, sn.p);
-      qz.ac($$3);
-      $$3.a(edf.a.h, so.r)
-         .a(edf.a.h, so.t)
-         .a(edf.a.h, so.f)
-         .a(edf.a.h, so.g)
-         .a(edf.a.h, sp.a)
-         .a(edf.a.h, so.p)
-         .a(edf.a.j, so.l)
-         .a(edf.a.j, sr.a)
-         .a(edf.a.j, so.h);
-      qz.at($$3);
-      return new dib.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dih.a()
-               .b(4159204)
-               .c(329011)
-               .a(3343107)
-               .d(rw.a(2.0F))
-               .a(new dia(ls.aD, 0.025F))
-               .a(awv.m)
-               .a(new dhz(awv.n, 6000, 8, 2.0))
-               .a(new dhy(awv.l, 0.0111))
-               .a(awt.a(awv.qC))
-               .b()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
-   }
-
-   public static dib e(jr<enh> $$0, jr<efn<?>> $$1) {
-      din $$2 = new din.a().a(bwa.a, new din.c(bvi.O, 1, 4, 4)).a(bwa.b, new din.c(bvi.bt, 60, 1, 2)).a(bvi.O, 1.0, 0.12).a();
-      dic.a $$3 = new dic.a($$0, $$1).a(rb.d).a(edf.a.j, sn.p);
-      qz.ac($$3);
-      $$3.a(edf.a.h, so.r)
-         .a(edf.a.h, so.t)
-         .a(edf.a.h, so.s)
-         .a(edf.a.h, so.f)
-         .a(edf.a.h, so.g)
-         .a(edf.a.h, sp.a)
-         .a(edf.a.h, so.p)
-         .a(edf.a.j, sr.b)
-         .a(edf.a.j, so.i)
-         .a(edf.a.j, so.j)
-         .a(edf.a.j, so.k);
-      qz.at($$3);
-      return new dib.a()
-         .a(false)
-         .a(2.0F)
-         .b(0.0F)
-         .a(
-            new dih.a()
-               .b(4159204)
-               .c(329011)
-               .a(1705242)
-               .d(rw.a(2.0F))
-               .a(new dia(ls.aE, 0.01428F))
-               .a(awv.v)
-               .a(new dhz(awv.w, 6000, 8, 2.0))
-               .a(new dhy(awv.u, 0.0111))
-               .a(awt.a(awv.qS))
-               .b()
-         )
-         .a($$2)
-         .a($$3.a())
-         .a();
+   public static void a(qe<emq> $$0) {
+      js<efk<?, ?>> $$1 = $$0.a(mc.aL);
+      jr<efk<?, ?>> $$2 = $$1.b(rk.a);
+      jr<efk<?, ?>> $$3 = $$1.b(rk.c);
+      jr<efk<?, ?>> $$4 = $$1.b(rk.g);
+      jr<efk<?, ?>> $$5 = $$1.b(rk.h);
+      jr<efk<?, ?>> $$6 = $$1.b(rk.i);
+      jr<efk<?, ?>> $$7 = $$1.b(rk.k);
+      jr<efk<?, ?>> $$8 = $$1.b(rk.l);
+      jr<efk<?, ?>> $$9 = $$1.b(rk.m);
+      jr<efk<?, ?>> $$10 = $$1.b(rk.n);
+      jr<efk<?, ?>> $$11 = $$1.b(rk.A);
+      jr<efk<?, ?>> $$12 = $$1.b(rk.C);
+      jr<efk<?, ?>> $$13 = $$1.b(rk.o);
+      jr<efk<?, ?>> $$14 = $$1.b(rk.p);
+      jr<efk<?, ?>> $$15 = $$1.b(rk.q);
+      jr<efk<?, ?>> $$16 = $$1.b(rk.s);
+      jr<efk<?, ?>> $$17 = $$1.b(rk.t);
+      jr<efk<?, ?>> $$18 = $$1.b(rk.u);
+      jr<efk<?, ?>> $$19 = $$1.b(rk.B);
+      jr<efk<?, ?>> $$20 = $$1.b(rk.y);
+      jr<efk<?, ?>> $$21 = $$1.b(rk.v);
+      jr<efk<?, ?>> $$22 = $$1.b(rk.w);
+      jr<efk<?, ?>> $$23 = $$1.b(rk.D);
+      jr<efk<?, ?>> $$24 = $$1.b(rk.E);
+      jr<efk<?, ?>> $$25 = $$1.b(rk.G);
+      jr<efk<?, ?>> $$26 = $$1.b(rk.H);
+      jr<efk<?, ?>> $$27 = $$1.b(rk.J);
+      jr<efk<?, ?>> $$28 = $$1.b(rk.K);
+      jr<efk<?, ?>> $$29 = $$1.b(rk.M);
+      jr<efk<?, ?>> $$30 = $$1.b(rk.N);
+      ru.a($$0, a, $$2, emh.a(8), eme.a());
+      ru.a($$0, b, $$3, emh.a(8), eme.a());
+      ru.a($$0, c, $$4, ru.a(djo.z));
+      ru.a($$0, d, $$5, ru.a(djo.F));
+      ru.a($$0, e, $$6, ru.a(djo.G));
+      ru.a($$0, f, $$7, ru.a(djo.G));
+      ru.a($$0, g, $$8, ru.a(djo.B));
+      ru.a($$0, h, $$9, ru.a(djo.D));
+      ru.a($$0, i, $$10, ru.a(djo.A));
+      ru.a($$0, j, $$11, ru.a(djo.H));
+      ru.a($$0, k, $$12, ru.a(djo.E));
+      edz $$31 = edz.a(jn.a.q(), djo.ec, djo.rr);
+      List<emt> $$32 = List.of(emj.a(jn.b, edz.a(edz.a(djo.rr)), 8), emf.a($$31));
+      ru.a($$0, l, $$13, $$32);
+      ru.a($$0, m, $$10, $$32);
+      ru.a($$0, n, $$13, ru.a(djo.A));
+      ru.a($$0, o, $$14, ru.a(djo.C));
+      ru.a($$0, p, $$15, ru.a(djo.z));
+      ru.a($$0, q, $$16, ru.a(djo.C));
+      ru.a($$0, r, $$17, ru.a(djo.A));
+      ru.a($$0, s, $$18, ru.a(djo.A));
+      ru.a($$0, t, $$19, ru.a(djo.H));
+      ru.a($$0, u, $$20, ru.a(djo.z));
+      ru.a($$0, v, $$21, ru.a(djo.B));
+      ru.a($$0, w, $$22, ru.a(djo.B));
+      ru.a($$0, x, $$23, ru.a(djo.z));
+      ru.a($$0, y, $$24, ru.a(djo.z));
+      ru.a($$0, z, $$25, ru.a(djo.B));
+      ru.a($$0, A, $$26, ru.a(djo.B));
+      ru.a($$0, B, $$27, ru.a(djo.z));
+      ru.a($$0, C, $$28, ru.a(djo.z));
+      ru.a($$0, D, $$29, ru.a(djo.z));
+      ru.a($$0, E, $$30, ru.a(djo.E));
    }
 }

@@ -1,34 +1,61 @@
-public class ahm implements zr<ahb> {
-   public static final zi<wh, ahm> a = zr.a(ahm::a, ahm::new);
-   private final ahm.a b;
+public class ahm implements yv<agf> {
+   public static final ym<vl, ahm> a = yv.a(ahm::a, ahm::new);
+   private final int b;
+   private final ahm.a c;
+   private final int d;
 
-   public ahm(ahm.a $$0) {
-      this.b = $$0;
+   public ahm(buk $$0, ahm.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   private ahm(wh $$0) {
-      this.b = $$0.b(ahm.a.class);
+   public ahm(buk $$0, ahm.a $$1, int $$2) {
+      this.b = $$0.ar();
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
+   private ahm(vl $$0) {
+      this.b = $$0.l();
+      this.c = $$0.b(ahm.a.class);
+      this.d = $$0.l();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zt<ahm> a() {
-      return agz.bu;
+   public yx<ahm> a() {
+      return agd.bT;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 
-   public ahm.a b() {
+   public int b() {
       return this.b;
+   }
+
+   public ahm.a e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 
    public static enum a {
       a,
-      b;
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

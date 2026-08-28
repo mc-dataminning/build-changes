@@ -1,29 +1,33 @@
-public class gtq extends gqf<ckf, gzn, gdg> {
-   private static final alp a = alp.b("textures/entity/sniffer/sniffer.png");
+public class gtq extends gti<clz, gzr, gcz> {
+   private static final aku a = aku.b("textures/entity/phantom.png");
 
-   public gtq(grl.a $$0) {
-      super($$0, new gdg($$0.a(gei.cQ)), new gdg($$0.a(gei.cR)), 1.1F);
+   public gtq(gsc.a $$0) {
+      super($$0, new gcz($$0.a(gfb.bO)), 0.75F);
+      this.a(new gwp(this));
    }
 
-   public alp a(gzn $$0) {
+   public aku a(gzr $$0) {
       return a;
    }
 
-   public gzn b() {
-      return new gzn();
+   public gzr b() {
+      return new gzr();
    }
 
-   public void a(ckf $$0, gzn $$1, float $$2) {
+   public void a(clz $$0, gzr $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.cd);
-      $$1.c.a($$0.cb);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.bZ);
-      $$1.f.a($$0.ca);
+      $$1.a = (float)$$0.p() + $$1.u;
+      $$1.b = $$0.m();
    }
 
-   protected fbm a(ckf $$0) {
-      return super.a($$0).g(0.6F);
+   protected void a(gzr $$0, ffu $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(gzr $$0, ffu $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.ab));
    }
 }

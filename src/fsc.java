@@ -1,32 +1,20 @@
-public interface fsc {
-   fse a();
+import java.util.function.Consumer;
 
-   public static record a(fse a) implements fsc {
-      @Override
-      public fse a() {
-         return this.a.a() == fsd.b ? this.a : fse.b;
-      }
+public class fsc {
+   private static final int a = 4;
 
-      public fse b() {
-         return this.a;
-      }
+   private fsc() {
    }
 
-   public static class b implements fsc {
-      @Override
-      public fse a() {
-         return fse.b;
-      }
+   public static fsh a(fob $$0, fsi $$1, wo $$2) {
+      return a($$0, $$1, $$2, $$0x -> {
+      });
    }
 
-   public static record c(boolean a) implements fsc {
-      @Override
-      public fse a() {
-         return this.a ? fse.b : fse.a;
-      }
-
-      public boolean b() {
-         return this.a;
-      }
+   public static fsh a(fob $$0, fsi $$1, wo $$2, Consumer<fsj> $$3) {
+      fsk $$4 = fsk.d().a(4);
+      $$4.a(new fpz($$2, $$0));
+      $$4.a($$1, $$3);
+      return $$4;
    }
 }

@@ -1,102 +1,98 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.EnumSet;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.io.BufferedOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.zip.DeflaterOutputStream;
+import java.util.zip.GZIPInputStream;
+import java.util.zip.GZIPOutputStream;
+import java.util.zip.InflaterInputStream;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.VisibleForTesting;
+import net.jpountz.lz4.LZ4BlockInputStream;
+import net.jpountz.lz4.LZ4BlockOutputStream;
+import org.slf4j.Logger;
 
 public class eak {
-   public static final int a = 8;
-   private static final EnumSet<edj.a> o = EnumSet.of(edj.a.c, edj.a.a);
-   public static final EnumSet<edj.a> b = EnumSet.of(edj.a.d, edj.a.b, edj.a.e, edj.a.f);
-   public static final eak c = a("empty", null, o, eao.a);
-   public static final eak d = a("structure_starts", c, o, eao.a);
-   public static final eak e = a("structure_references", d, o, eao.a);
-   public static final eak f = a("biomes", e, o, eao.a);
-   public static final eak g = a("noise", f, o, eao.a);
-   public static final eak h = a("surface", g, o, eao.a);
-   public static final eak i = a("carvers", h, b, eao.a);
-   public static final eak j = a("features", i, b, eao.a);
-   public static final eak k = a("initialize_light", j, b, eao.a);
-   public static final eak l = a("light", k, b, eao.a);
-   public static final eak m = a("spawn", l, b, eao.a);
-   public static final eak n = a("full", m, b, eao.b);
-   private final int p;
-   private final eak q;
-   private final eao r;
-   private final EnumSet<edj.a> s;
+   private static final Logger g = LogUtils.getLogger();
+   private static final Int2ObjectMap<eak> h = new Int2ObjectOpenHashMap();
+   private static final Object2ObjectMap<String, eak> i = new Object2ObjectOpenHashMap();
+   public static final eak a = a(new eak(1, null, $$0 -> new ayj(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
+   public static final eak b = a(
+      new eak(2, "deflate", $$0 -> new ayj(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
+   );
+   public static final eak c = a(new eak(3, "none", ayj::new, BufferedOutputStream::new));
+   public static final eak d = a(
+      new eak(4, "lz4", $$0 -> new ayj(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
+   );
+   public static final eak e = a(new eak(127, null, $$0 -> {
+      throw new UnsupportedOperationException();
+   }, $$0 -> {
+      throw new UnsupportedOperationException();
+   }));
+   public static final eak f = b;
+   private static volatile eak j = f;
+   private final int k;
+   @Nullable
+   private final String l;
+   private final eak.a<InputStream> m;
+   private final eak.a<OutputStream> n;
 
-   private static eak a(String $$0, @Nullable eak $$1, EnumSet<edj.a> $$2, eao $$3) {
-      return kd.a(ma.l, $$0, new eak($$1, $$2, $$3));
+   private eak(int $$0, @Nullable String $$1, eak.a<InputStream> $$2, eak.a<OutputStream> $$3) {
+      this.k = $$0;
+      this.l = $$1;
+      this.m = $$2;
+      this.n = $$3;
    }
 
-   public static List<eak> a() {
-      List<eak> $$0 = Lists.newArrayList();
-
-      eak $$1;
-      for ($$1 = n; $$1.c() != $$1; $$1 = $$1.c()) {
-         $$0.add($$1);
+   private static eak a(eak $$0) {
+      h.put($$0.k, $$0);
+      if ($$0.l != null) {
+         i.put($$0.l, $$0);
       }
 
-      $$0.add($$1);
-      Collections.reverse($$0);
       return $$0;
    }
 
-   @VisibleForTesting
-   protected eak(@Nullable eak $$0, EnumSet<edj.a> $$1, eao $$2) {
-      this.q = $$0 == null ? this : $$0;
-      this.r = $$2;
-      this.s = $$1;
-      this.p = $$0 == null ? 0 : $$0.b() + 1;
+   @Nullable
+   public static eak a(int $$0) {
+      return (eak)h.get($$0);
+   }
+
+   public static void a(String $$0) {
+      eak $$1 = (eak)i.get($$0);
+      if ($$1 != null) {
+         j = $$1;
+      } else {
+         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+      }
+   }
+
+   public static eak a() {
+      return j;
+   }
+
+   public static boolean b(int $$0) {
+      return h.containsKey($$0);
    }
 
    public int b() {
-      return this.p;
+      return this.k;
    }
 
-   public eak c() {
-      return this.q;
+   public OutputStream a(OutputStream $$0) throws IOException {
+      return this.n.wrap($$0);
    }
 
-   public eao d() {
-      return this.r;
+   public InputStream a(InputStream $$0) throws IOException {
+      return this.m.wrap($$0);
    }
 
-   public static eak a(String $$0) {
-      return ma.l.a(alp.c($$0));
-   }
-
-   public EnumSet<edj.a> e() {
-      return this.s;
-   }
-
-   public boolean a(eak $$0) {
-      return this.b() >= $$0.b();
-   }
-
-   public boolean b(eak $$0) {
-      return this.b() > $$0.b();
-   }
-
-   public boolean c(eak $$0) {
-      return this.b() <= $$0.b();
-   }
-
-   public boolean d(eak $$0) {
-      return this.b() < $$0.b();
-   }
-
-   public static eak a(eak $$0, eak $$1) {
-      return $$0.b($$1) ? $$0 : $$1;
-   }
-
-   @Override
-   public String toString() {
-      return this.f();
-   }
-
-   public String f() {
-      return ma.l.b(this).toString();
+   @FunctionalInterface
+   interface a<O> {
+      O wrap(O var1) throws IOException;
    }
 }

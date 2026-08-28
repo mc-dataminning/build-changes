@@ -1,33 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ejk(int b, int c, int d, int e, int f, bsf g, float h) implements eit {
-   public static final Codec<ejk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(ejk::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(ejk::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(ejk::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(ejk::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(ejk::f),
-               bsf.c.fieldOf("extra_rare_growths").forGetter(ejk::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(ejk::h)
-            )
-            .apply($$0, ejk::new)
-   );
+public class ejk extends ejj {
+   public static final MapCodec<ejk> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ejk::new));
 
-   public int a() {
-      return this.b;
+   public ejk(bro $$0, bro $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   protected ejp<?> a() {
+      return ejp.e;
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   protected void a(dgo $$0, ejo.b $$1, azh $$2, eiy $$3, int $$4, ejo.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
    }
 
-   public int d() {
-      return this.e;
+   @Override
+   protected boolean a(azh $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

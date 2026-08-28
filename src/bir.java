@@ -1,50 +1,34 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.function.Function;
+import java.util.Optional;
 
-public class bir extends DataFix {
-   final String a;
-   final Map<String, String> b;
-
-   public bir(Schema $$0, String $$1, Map<String, String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+public class bir extends bgs {
+   public bir(Schema $$0) {
+      super($$0, false, "TippedArrowPotionToItemFix", bhw.B, "minecraft:arrow");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bin.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
-   }
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
+      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
+         ? $$0
+         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
+            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
+            if ($$1.isPresent()) {
+               $$4 = $$4.set("Potion", $$1.get());
+            }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = this.a($$0, "Enchantments");
-      return this.a($$0, "StoredEnchantments");
-   }
+            if ($$2.isPresent()) {
+               $$4 = $$4.set("custom_potion_effects", $$2.get());
+            }
 
-   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
-      return $$0.update(
-         $$1,
-         $$0x -> (Dynamic)$$0x.asStreamOpt()
-               .map(
-                  $$0xx -> $$0xx.map(
-                        $$0xxx -> $$0xxx.update(
-                              "id",
-                              $$1x -> (Dynamic)$$1x.asString()
-                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(bkb.a($$1xx), $$1xx)))
-                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
-                           )
-                     )
-               )
-               .map($$0x::createList)
-               .mapOrElse(Function.identity(), $$1x -> $$0x)
-      );
+            if ($$3.isPresent()) {
+               $$4 = $$4.set("CustomPotionColor", $$3.get());
+            }
+
+            return $$3x.set("tag", $$4);
+         });
    }
 }

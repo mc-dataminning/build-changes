@@ -2,63 +2,53 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
 
 public class bdw extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
+   private static final int[][] a = new int[][]{{0, 0, 1}, {-1, 0, 0}, {0, 0, -1}, {1, 0, 0}};
 
-   public bdw(Schema $$0) {
-      super($$0, false);
+   public bdw(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(bin.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bin.D.typeName(), bkb.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bin.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bin.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               if ($$2x.getOptional($$2).filter($$0xx -> a.contains($$0xx.getSecond())).isPresent()) {
-                  Optional<? extends Typed<?>> $$3x = $$2x.getOptionalTyped($$3);
-                  if ($$3x.isPresent()) {
-                     Dynamic<?> $$4 = (Dynamic<?>)$$3x.get().get(DSL.remainderFinder());
-                     Typed<?> $$5 = $$3x.get().set(DSL.remainderFinder(), $$4.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$5);
-                  }
-               }
-
-               return $$2x;
-            })
+   private Dynamic<?> a(Dynamic<?> $$0, boolean $$1, boolean $$2) {
+      if (($$1 || $$2) && $$0.get("Facing").asNumber().result().isEmpty()) {
+         int $$3;
+         if ($$0.get("Direction").asNumber().result().isPresent()) {
+            $$3 = $$0.get("Direction").asByte((byte)0) % a.length;
+            int[] $$4 = a[$$3];
+            $$0 = $$0.set("TileX", $$0.createInt($$0.get("TileX").asInt(0) + $$4[0]));
+            $$0 = $$0.set("TileY", $$0.createInt($$0.get("TileY").asInt(0) + $$4[1]));
+            $$0 = $$0.set("TileZ", $$0.createInt($$0.get("TileZ").asInt(0) + $$4[2]));
+            $$0 = $$0.remove("Direction");
+            if ($$2 && $$0.get("ItemRotation").asNumber().result().isPresent()) {
+               $$0 = $$0.set("ItemRotation", $$0.createByte((byte)($$0.get("ItemRotation").asByte((byte)0) * 2)));
+            }
+         } else {
+            $$3 = $$0.get("Dir").asByte((byte)0) % a.length;
+            $$0 = $$0.remove("Dir");
          }
+
+         $$0 = $$0.set("Facing", $$0.createByte((byte)$$3));
+      }
+
+      return $$0;
+   }
+
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bhw.B, "Painting");
+      OpticFinder<?> $$1 = DSL.namedChoice("Painting", $$0);
+      Type<?> $$2 = this.getInputSchema().getChoiceType(bhw.B, "ItemFrame");
+      OpticFinder<?> $$3 = DSL.namedChoice("ItemFrame", $$2);
+      Type<?> $$4 = this.getInputSchema().getType(bhw.B);
+      TypeRewriteRule $$5 = this.fixTypeEverywhereTyped(
+         "EntityPaintingFix", $$4, $$2x -> $$2x.updateTyped($$1, $$0, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, true, false)))
       );
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
-      });
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
+      TypeRewriteRule $$6 = this.fixTypeEverywhereTyped(
+         "EntityItemFrameFix", $$4, $$2x -> $$2x.updateTyped($$3, $$2, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> this.a($$0xxx, false, true)))
+      );
+      return TypeRewriteRule.seq($$5, $$6);
    }
 }

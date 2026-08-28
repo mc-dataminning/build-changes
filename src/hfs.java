@@ -1,23 +1,78 @@
-public class hfs {
-   private final String a;
-   private final String b;
-   private long c;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public hfs(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ae.c();
+public class hfs implements auq {
+   private static final Logger a = LogUtils.getLogger();
+   private static final hfr b = new hfr("US", "English", false);
+   private Map<String, hfr> c = ImmutableMap.of("en_us", b);
+   private String d;
+   private final Consumer<hfo> e;
+
+   public hfs(String $$0, Consumer<hfo> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   private static Map<String, hfr> a(Stream<atb> $$0) {
+      Map<String, hfr> $$1 = Maps.newHashMap();
+      $$0.forEach($$1x -> {
+         try {
+            hge $$2 = $$1x.a(hge.c);
+            if ($$2 != null) {
+               $$2.a().forEach($$1::putIfAbsent);
+            }
+         } catch (IOException | RuntimeException var3) {
+            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
+         }
+      });
+      return ImmutableMap.copyOf($$1);
+   }
+
+   @Override
+   public void a(aup $$0) {
+      this.c = a($$0.b());
+      List<String> $$1 = new ArrayList<>(2);
+      boolean $$2 = b.d();
+      $$1.add("en_us");
+      if (!this.d.equals("en_us")) {
+         hfr $$3 = this.c.get(this.d);
+         if ($$3 != null) {
+            $$1.add(this.d);
+            $$2 = $$3.d();
+         }
+      }
+
+      hfo $$4 = hfo.a($$0, $$1, $$2);
+      hfq.a($$4);
+      tl.a($$4);
+      this.e.accept($$4);
+   }
+
+   public void a(String $$0) {
+      this.d = $$0;
    }
 
    public String a() {
-      return this.a;
+      return this.d;
    }
 
-   public String b() {
-      return this.b;
+   public SortedMap<String, hfr> b() {
+      return new TreeMap<>(this.c);
    }
 
-   public void c() {
-      this.c = ae.c();
+   @Nullable
+   public hfr b(String $$0) {
+      return this.c.get($$0);
    }
 }

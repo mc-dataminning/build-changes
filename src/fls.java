@@ -1,29 +1,44 @@
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
 
-public record fls(int a, xk b, @Nullable xw c, @Nullable flt d) {
-   @Nullable
-   public flt.a a() {
-      return this.d != null ? this.d.f() : null;
+public class fls {
+   private double a;
+   private double b;
+
+   public Vector2i a(double $$0, double $$1) {
+      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
+         this.a = 0.0;
+      }
+
+      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
+         this.b = 0.0;
+      }
+
+      this.a += $$0;
+      this.b += $$1;
+      int $$2 = (int)this.a;
+      int $$3 = (int)this.b;
+      if ($$2 == 0 && $$3 == 0) {
+         return new Vector2i(0, 0);
+      } else {
+         this.a -= (double)$$2;
+         this.b -= (double)$$3;
+         return new Vector2i($$2, $$3);
+      }
    }
 
-   public int b() {
-      return this.a;
-   }
+   public static int a(double $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.signum($$0);
+      $$1 -= $$3;
+      $$1 = Math.max(-1, $$1);
 
-   public xk c() {
-      return this.b;
-   }
+      while ($$1 < 0) {
+         $$1 += $$2;
+      }
 
-   @Nullable
-   public xw d() {
-      return this.c;
-   }
+      while ($$1 >= $$2) {
+         $$1 -= $$2;
+      }
 
-   @Nullable
-   public flt e() {
-      return this.d;
-   }
-
-   public static record a(int a, azg b, @Nullable flt c, boolean d) {
+      return $$1;
    }
 }

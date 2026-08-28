@@ -1,91 +1,92 @@
-public class dbd extends dbl {
-   public dbd(dbi $$0) {
-      super($$0);
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+public class dbd {
+   public static final dbd a = new dbd(List.of(), List.of(), List.of());
+   private final List<dba> b;
+   private final List<cpb.a<jr<cwl>>> c;
+   private final List<Optional<dbd.a>> d;
+
+   private dbd(List<dba> $$0, List<cpb.a<jr<cwl>>> $$1, List<Optional<dbd.a>> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public boolean a(dbj $$0, dgz $$1) {
-      if ($$0.e() != 2) {
-         return false;
+   public static cpb.a<jr<cwl>> a(dba $$0) {
+      return cpc.a($$0.a().stream());
+   }
+
+   public static dbd b(dba $$0) {
+      if ($$0.a().isEmpty()) {
+         return a;
       } else {
-         cwd $$2 = null;
-         boolean $$3 = false;
-         boolean $$4 = false;
-
-         for (int $$5 = 0; $$5 < $$0.a(); $$5++) {
-            cxg $$6 = $$0.a($$5);
-            if (!$$6.f()) {
-               cxc $$7 = $$6.h();
-               if (!($$7 instanceof cvj)) {
-                  return false;
-               }
-
-               cvj $$8 = (cvj)$$7;
-               if ($$2 == null) {
-                  $$2 = $$8.b();
-               } else if ($$2 != $$8.b()) {
-                  return false;
-               }
-
-               int $$10 = $$6.a(ku.ai, duh.a).b().size();
-               if ($$10 > 6) {
-                  return false;
-               }
-
-               if ($$10 > 0) {
-                  if ($$4) {
-                     return false;
-                  }
-
-                  $$4 = true;
-               } else {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$4 && $$3;
+         cpb.a<jr<cwl>> $$1 = a($$0);
+         dbd.a $$2 = new dbd.a(0);
+         return new dbd(List.of($$0), List.of($$1), List.of(Optional.of($$2)));
       }
    }
 
-   public cxg a(dbj $$0, js.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-         cxg $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            int $$4 = $$3.a(ku.ai, duh.a).b().size();
-            if ($$4 > 0 && $$4 <= 6) {
-               return $$3.c(1);
+   public static dbd a(List<Optional<dba>> $$0) {
+      int $$1 = $$0.size();
+      List<dba> $$2 = new ArrayList<>($$1);
+      List<cpb.a<jr<cwl>>> $$3 = new ArrayList<>($$1);
+      List<Optional<dbd.a>> $$4 = new ArrayList<>($$1);
+      int $$5 = 0;
+
+      for (Optional<dba> $$6 : $$0) {
+         if ($$6.isPresent()) {
+            dba $$7 = $$6.get();
+            if ($$7.a().isEmpty()) {
+               return a;
             }
+
+            $$2.add($$7);
+            $$3.add(a($$7));
+            $$4.add(Optional.of(new dbd.a($$5++)));
+         } else {
+            $$4.add(Optional.empty());
          }
       }
 
-      return cxg.j;
+      return new dbd($$2, $$3, $$4);
    }
 
-   @Override
-   public jz<cxg> a(dbj $$0) {
-      jz<cxg> $$1 = jz.a($$0.a(), cxg.j);
+   public static dbd b(List<dba> $$0) {
+      int $$1 = $$0.size();
+      List<cpb.a<jr<cwl>>> $$2 = new ArrayList<>($$1);
+      List<Optional<dbd.a>> $$3 = new ArrayList<>($$1);
 
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cxg $$3 = $$0.a($$2);
-         if (!$$3.f()) {
-            cxg $$4 = $$3.h().k();
-            if (!$$4.f()) {
-               $$1.set($$2, $$4);
-            } else if (!$$3.a(ku.ai, duh.a).b().isEmpty()) {
-               $$1.set($$2, $$3.c(1));
-            }
+      for (int $$4 = 0; $$4 < $$1; $$4++) {
+         dba $$5 = $$0.get($$4);
+         if ($$5.a().isEmpty()) {
+            return a;
          }
+
+         $$2.add(a($$5));
+         $$3.add(Optional.of(new dbd.a($$4)));
       }
 
-      return $$1;
+      return new dbd($$0, $$2, $$3);
    }
 
-   @Override
-   public dcf<dbd> a() {
-      return dcf.k;
+   public List<Optional<dbd.a>> a() {
+      return this.d;
+   }
+
+   public List<dba> b() {
+      return this.b;
+   }
+
+   public List<cpb.a<jr<cwl>>> c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.d.isEmpty();
+   }
+
+   public static record a(int a) {
    }
 }

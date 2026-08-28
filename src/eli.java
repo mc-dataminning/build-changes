@@ -1,47 +1,76 @@
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class eli extends eln {
-   public static final MapCodec<eli> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eli::new, $$0 -> $$0.d);
-   private static final jm b = jm.d;
-   private static final jm[] c = jm.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jm[]::new);
-   private final float d;
+public abstract class eli {
+   public static final Codec<eli> c = mb.V.q().dispatch(eli::a, elj::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   public eli(float $$0) {
-      this.d = $$0;
+   protected static <P extends eli> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected elo<?> a() {
-      return elo.f;
+   public eli(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public void a(eln.a $$0) {
-      bac $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<jh> $$2 = $$0.d();
-         List<jh> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<jh> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            ae.c($$5, $$1);
-            Optional<jh> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dkf.pG.m().b(djx.b, b));
-               $$0.a().a($$6.get(), dus.I).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
+   protected abstract elj<?> a();
 
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(dun.c.a($$1.a(599)));
-                  }
-               });
-            }
-         }
+   public abstract List<ejo.a> a(dgo var1, BiConsumer<ji, dwx> var2, azh var3, int var4, ji var5, eiy var6);
+
+   public int a(azh $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   }
+
+   private static boolean c(dgo $$0, ji $$1) {
+      return $$0.a($$1, $$0x -> efy.b($$0x) && !$$0x.a(djo.i) && !$$0x.a(djo.fA));
+   }
+
+   protected static void a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, ji $$3, eiy $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
       }
+   }
+
+   protected boolean b(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, ji $$3, eiy $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, ji $$3, eiy $$4, Function<dwx, dwx> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(dgo $$0, BiConsumer<ji, dwx> $$1, azh $$2, ji.a $$3, eiy $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(dgo $$0, ji $$1) {
+      return ehk.c($$0, $$1);
+   }
+
+   public boolean b(dgo $$0, ji $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(awp.u));
    }
 }

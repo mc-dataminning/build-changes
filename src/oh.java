@@ -1,47 +1,47 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-public class oh implements Supplier<JsonElement> {
-   private final Map<oj<?>, oj<?>.a> a = Maps.newLinkedHashMap();
+public class oh {
+   private final dba a;
+   private final dba b;
+   private final dba c;
+   private final oa d;
+   private final cwl e;
+   private final Map<String, aq<?>> f = new LinkedHashMap<>();
 
-   public <T> oh a(oj<T> $$0, T $$1) {
-      oj<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
-      }
+   public oh(dba $$0, dba $$1, dba $$2, oa $$3, cwl $$4) {
+      this.d = $$3;
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.e = $$4;
    }
 
-   public static oh a() {
-      return new oh();
+   public static oh a(dba $$0, dba $$1, dba $$2, oa $$3, cwl $$4) {
+      return new oh($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static oh a(oh $$0, oh $$1) {
-      oh $$2 = new oh();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
+   public oh a(String $$0, aq<?> $$1) {
+      this.f.put($$0, $$1);
+      return this;
    }
 
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
+   public void a(ob $$0, String $$1) {
+      this.a($$0, akt.a(mc.bk, aku.a($$1)));
    }
 
-   public static JsonElement a(List<oh> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
+   public void a(ob $$0, akt<dbe<?>> $$1) {
+      this.a($$1);
+      ah.a $$2 = $$0.a().a("has_the_recipe", dw.a($$1)).a(am.a.c($$1)).a(al.a.b);
+      this.f.forEach($$2::a);
+      dcb $$3 = new dcb(Optional.of(this.a), Optional.of(this.b), Optional.of(this.c), new cwp(this.e));
+      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.d.a() + "/")));
+   }
+
+   private void a(akt<dbe<?>> $$0) {
+      if (this.f.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }
    }
 }

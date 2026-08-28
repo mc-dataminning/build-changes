@@ -1,89 +1,141 @@
-import com.google.gson.JsonElement;
+import com.google.common.base.Charsets;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Collection;
-import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.Socket;
 import java.util.List;
-import java.util.Map;
+import java.util.Locale;
+import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
+import java.util.Scanner;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
 public class alz {
    private static final Logger a = LogUtils.getLogger();
-   private static final kc b = new kc(Optional.empty(), Lifecycle.experimental());
+   private static final int b = 5;
+   private final String c;
+   private final int d;
+   private final MinecraftServer e;
+   private volatile boolean f;
+   @Nullable
+   private Socket g;
+   @Nullable
+   private Thread h;
 
-   public static CompletableFuture<alz.b> a(jx<aly> $$0, List<kd.a<?>> $$1, avl $$2, Executor $$3) {
-      List<js.b<?>> $$4 = ayb.a($$0.b(aly.d), $$1);
-      js.a $$5 = js.a.a($$4.stream());
-      aln<JsonElement> $$6 = $$5.a(JsonOps.INSTANCE);
-      List<CompletableFuture<km<?>>> $$7 = ewk.a().map($$3x -> a($$3x, $$6, $$2, $$3)).toList();
-      CompletableFuture<List<km<?>>> $$8 = ae.d($$7);
-      return $$8.thenApplyAsync($$2x -> a($$0, $$5, $$2x), $$3);
+   public alz(String $$0, int $$1, MinecraftServer $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static <T> CompletableFuture<km<?>> a(ewk<T> $$0, aln<JsonElement> $$1, avl $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         km<T> $$3x = new jy<>($$0.b(), Lifecycle.experimental());
-         Map<alp, T> $$4 = new HashMap<>();
-         String $$5 = mb.c($$0.b());
-         avp.a($$2, $$5, $$1, $$0.c(), $$4);
-         $$4.forEach(($$2xx, $$3xx) -> $$3x.a(alo.a($$0.b(), $$2xx), (T)$$3xx, b));
-         ayb.a($$2, $$3x);
-         return $$3x;
-      }, $$3);
-   }
-
-   private static alz.b a(jx<aly> $$0, js.a $$1, List<km<?>> $$2) {
-      jx<aly> $$3 = a($$0, $$2);
-      js.a $$4 = a($$1, $$3.a(aly.d));
-      a($$4);
-      return new alz.b($$3, $$4);
-   }
-
-   private static js.a a(js.a $$0, js.a $$1) {
-      return js.a.a(Stream.concat($$0.c(), $$1.c()));
-   }
-
-   private static void a(js.a $$0) {
-      baa.a $$1 = new baa.a();
-      ewo $$2 = new ewo($$1, ezb.q, $$0);
-      ewk.a().forEach($$2x -> a($$2, $$2x, $$0));
-      $$1.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-   }
-
-   private static jx<aly> a(jx<aly> $$0, List<km<?>> $$1) {
-      return $$0.a(aly.d, new ke.c($$1).e());
-   }
-
-   private static <T> void a(ewo $$0, ewk<T> $$1, js.a $$2) {
-      js<T> $$3 = $$2.d($$1.b());
-      $$3.c().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
-   }
-
-   public static class a {
-      private final js.a a;
-
-      public a(js.a $$0) {
-         this.a = $$0;
+   public void a() {
+      if (this.h != null && this.h.isAlive()) {
+         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
       }
 
-      public jr.a a() {
-         return this.a;
-      }
+      this.f = true;
+      this.h = new Thread(this::c, "chase-client");
+      this.h.setDaemon(true);
+      this.h.start();
+   }
 
-      public Collection<alp> a(alo<? extends kd<?>> $$0) {
-         return this.a.d($$0).c_().map(alo::a).toList();
-      }
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+      this.h = null;
+   }
 
-      public ewn b(alo<ewn> $$0) {
-         return this.a.a(mb.bg).flatMap($$1 -> $$1.a($$0)).map(jq::a).orElse(ewn.a);
+   public void c() {
+      String $$0 = this.c + ":" + this.d;
+
+      while (this.f) {
+         try {
+            a.info("Connecting to remote control server {}", $$0);
+            this.g = new Socket(this.c, this.d);
+            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
+
+            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
+               while (this.f) {
+                  String $$2 = $$1.readLine();
+                  if ($$2 == null) {
+                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+                     break;
+                  }
+
+                  this.a($$2);
+               }
+            } catch (IOException var8) {
+               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+            }
+         } catch (IOException var9) {
+            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
+         }
+
+         if (this.f) {
+            try {
+               Thread.sleep(5000L);
+            } catch (InterruptedException var5) {
+            }
+         }
       }
    }
 
-   public static record b(jx<aly> a, js.a b) {
+   private void a(String $$0) {
+      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
+         $$1.useLocale(Locale.ROOT);
+         String $$2 = $$1.next();
+         if ("t".equals($$2)) {
+            this.a($$1);
+         } else {
+            a.warn("Unknown message type '{}'", $$2);
+         }
+      } catch (NoSuchElementException var7) {
+         a.warn("Could not parse message '{}', ignoring", $$0);
+      }
+   }
+
+   private void a(Scanner $$0) {
+      this.b($$0)
+         .ifPresent(
+            $$0x -> this.b(
+                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.d, $$0x.b.e, $$0x.b.f, $$0x.c.j, $$0x.c.i)
+               )
+         );
+   }
+
+   private Optional<alz.a> b(Scanner $$0) {
+      akt<dgi> $$1 = (akt<dgi>)ami.a.get($$0.next());
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         float $$2 = $$0.nextFloat();
+         float $$3 = $$0.nextFloat();
+         float $$4 = $$0.nextFloat();
+         float $$5 = $$0.nextFloat();
+         float $$6 = $$0.nextFloat();
+         return Optional.of(new alz.a($$1, new fba((double)$$2, (double)$$3, (double)$$4), new faz($$6, $$5)));
+      }
+   }
+
+   private void b(String $$0) {
+      this.e.execute(() -> {
+         List<ard> $$1 = this.e.ag().t();
+         if (!$$1.isEmpty()) {
+            ard $$2 = $$1.get(0);
+            arc $$3 = this.e.J();
+            ex $$4 = new ex($$2.z(), fba.a($$3.Z()), faz.a, $$3, 4, "", wn.a, this.e, $$2);
+            ey $$5 = this.e.aG();
+            $$5.a($$4, $$0);
+         }
+      });
+   }
+
+   static record a(akt<dgi> a, fba b, faz c) {
    }
 }

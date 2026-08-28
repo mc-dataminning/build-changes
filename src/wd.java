@@ -1,48 +1,101 @@
 import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelDuplexHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import java.util.zip.Deflater;
+import io.netty.channel.ChannelInboundHandler;
+import io.netty.channel.ChannelOutboundHandler;
+import io.netty.channel.ChannelOutboundHandlerAdapter;
+import io.netty.channel.ChannelPromise;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.EncoderException;
+import io.netty.util.ReferenceCountUtil;
 
-public class wd extends MessageToByteEncoder<ByteBuf> {
-   private final byte[] a = new byte[8192];
-   private final Deflater b;
-   private int c;
-
-   public wd(int $$0) {
-      this.c = $$0;
-      this.b = new Deflater();
+public class wd {
+   public static <T extends vu> wd.b a(vw<T> $$0) {
+      return a(new vs<T>($$0));
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, ByteBuf $$2) {
-      int $$3 = $$1.readableBytes();
-      if ($$3 > 8388608) {
-         throw new IllegalArgumentException("Packet too big (is " + $$3 + ", should be less than 8388608)");
-      } else {
-         if ($$3 < this.c) {
-            xb.a($$2, 0);
-            $$2.writeBytes($$1);
-         } else {
-            byte[] $$4 = new byte[$$3];
-            $$1.readBytes($$4);
-            xb.a($$2, $$4.length);
-            this.b.setInput($$4, 0, $$3);
-            this.b.finish();
+   private static wd.b a(ChannelInboundHandler $$0) {
+      return $$1 -> {
+         $$1.pipeline().replace($$1.name(), "decoder", $$0);
+         $$1.channel().config().setAutoRead(true);
+      };
+   }
 
-            while (!this.b.finished()) {
-               int $$5 = this.b.deflate(this.a);
-               $$2.writeBytes(this.a, 0, $$5);
+   public static <T extends vu> wd.d b(vw<T> $$0) {
+      return a(new vt<T>($$0));
+   }
+
+   private static wd.d a(ChannelOutboundHandler $$0) {
+      return $$1 -> $$1.pipeline().replace($$1.name(), "encoder", $$0);
+   }
+
+   public static class a extends ChannelDuplexHandler {
+      public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+         if (!($$1 instanceof ByteBuf) && !($$1 instanceof yv)) {
+            $$0.fireChannelRead($$1);
+         } else {
+            ReferenceCountUtil.release($$1);
+            throw new DecoderException("Pipeline has no inbound protocol configured, can't process packet " + $$1);
+         }
+      }
+
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof wd.b $$3) {
+            try {
+               $$3.run($$0);
+            } finally {
+               ReferenceCountUtil.release($$1);
             }
 
-            this.b.reset();
+            $$2.setSuccess();
+         } else {
+            $$0.write($$1, $$2);
          }
       }
    }
 
-   public int a() {
-      return this.c;
+   @FunctionalInterface
+   public interface b {
+      void run(ChannelHandlerContext var1);
+
+      default wd.b andThen(wd.b $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
    }
 
-   public void a(int $$0) {
-      this.c = $$0;
+   public static class c extends ChannelOutboundHandlerAdapter {
+      public void write(ChannelHandlerContext $$0, Object $$1, ChannelPromise $$2) throws Exception {
+         if ($$1 instanceof yv) {
+            ReferenceCountUtil.release($$1);
+            throw new EncoderException("Pipeline has no outbound protocol configured, can't process packet " + $$1);
+         } else {
+            if ($$1 instanceof wd.d $$3) {
+               try {
+                  $$3.run($$0);
+               } finally {
+                  ReferenceCountUtil.release($$1);
+               }
+
+               $$2.setSuccess();
+            } else {
+               $$0.write($$1, $$2);
+            }
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface d {
+      void run(ChannelHandlerContext var1);
+
+      default wd.d andThen(wd.d $$0) {
+         return $$1 -> {
+            this.run($$1);
+            $$0.run($$1);
+         };
+      }
    }
 }

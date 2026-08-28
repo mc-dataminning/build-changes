@@ -1,111 +1,22 @@
-import javax.annotation.Nullable;
+public class fpe extends fos {
+   protected final fqf a;
 
-public abstract class fpe extends fny {
-   protected final alp a;
-   protected final int b;
-   protected final int c;
-
-   fpe(int $$0, int $$1, xk $$2, int $$3, int $$4, alp $$5, fny.c $$6, @Nullable fny.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public fpe(int $$0, int $$1, int $$2, int $$3, fqf $$4, fos.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, wn.a);
    }
 
-   public static fpe.a a(xk $$0, fny.c $$1, boolean $$2) {
-      return new fpe.a($$0, $$1, $$2);
+   public fpe(int $$0, int $$1, int $$2, int $$3, fqf $$4, fos.c $$5, wo $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
    }
 
-   public static class a {
-      private final xk b;
-      private final fny.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private alp g;
-      private int h;
-      private int i;
-      @Nullable
-      fny.b a;
-
-      public a(xk $$0, fny.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public fpe.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fpe.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fpe.a a(alp $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fpe.a a(fny.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fpe a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fpe)(this.d
-               ? new fpe.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fpe.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
-         }
-      }
+   public fpe(int $$0, int $$1, fqf $$2, fos.c $$3, wo $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
-   public static class b extends fpe {
-      protected b(int $$0, int $$1, xk $$2, int $$3, int $$4, alp $$5, fny.c $$6, @Nullable fny.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fnl $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() / 2 - this.b / 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(glq::H, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fnl $$0, fnj $$1, int $$2) {
-      }
-   }
-
-   public static class c extends fpe {
-      protected c(int $$0, int $$1, xk $$2, int $$3, int $$4, alp $$5, fny.c $$6, @Nullable fny.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fnl $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() - this.b - 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(glq::H, this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fnl $$0, fnj $$1, int $$2) {
-         int $$3 = this.D() + 2;
-         int $$4 = this.D() + this.y() - this.b - 4;
-         int $$5 = this.D() + this.y() / 2;
-         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
-      }
+   @Override
+   public void b(fod $$0, int $$1, int $$2, float $$3) {
+      aku $$4 = this.a.a(this.E(), this.D());
+      $$0.a(gmh::H, $$4, this.F(), this.G(), this.g, this.h);
    }
 }

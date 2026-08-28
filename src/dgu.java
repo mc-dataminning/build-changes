@@ -1,34 +1,25 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+public final class dgu implements dyp {
+   private final int a;
+   private final dwx[] b;
 
-public class dgu extends evc {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
-
-   public static evc.a<dgu> a() {
-      return new evc.a<>(dgu::new, dgu::b, bbi.i);
-   }
-
-   private dgu(LongSet $$0) {
-      this.c = $$0;
-   }
-
-   public dgu() {
-      this(new LongOpenHashSet());
-   }
-
-   public static dgu b(um $$0, js.a $$1) {
-      return new dgu(new LongOpenHashSet($$0.o("Forced")));
+   public dgu(int $$0, dwx[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public um a(um $$0, js.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
+   public dwx a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : djo.a.m();
    }
 
-   public LongSet b() {
-      return this.c;
+   @Override
+   public void a(int $$0, dwx $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

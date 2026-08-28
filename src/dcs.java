@@ -1,84 +1,44 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class dcs implements dcq {
-   final Optional<dbr> c;
-   final Optional<dbr> d;
-   final Optional<dbr> e;
-   final cxg f;
-   @Nullable
-   private dbu g;
-
-   public dcs(Optional<dbr> $$0, Optional<dbr> $$1, Optional<dbr> $$2, cxg $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
-
-   public cxg a(dcr $$0, js.a $$1) {
-      cxg $$2 = $$0.d().a(this.f.h(), this.f.M());
-      $$2.b(this.f.e());
-      return $$2;
-   }
+public record dcs(dcp f, dcp g, dcp h, dcp i, dcp j) implements dcj {
+   public static final MapCodec<dcs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dcp.a.fieldOf("template").forGetter(dcs::b),
+               dcp.a.fieldOf("base").forGetter(dcs::c),
+               dcp.a.fieldOf("addition").forGetter(dcs::f),
+               dcp.a.fieldOf("result").forGetter(dcs::d),
+               dcp.a.fieldOf("crafting_station").forGetter(dcs::e)
+            )
+            .apply($$0, dcs::new)
+   );
+   public static final ym<vz, dcs> b = ym.a(dcp.b, dcs::b, dcp.b, dcs::c, dcp.b, dcs::f, dcp.b, dcs::d, dcp.b, dcs::e, dcs::new);
+   public static final dcj.a<dcs> c = new dcj.a<>(a, b);
 
    @Override
-   public Optional<dbr> c() {
-      return this.c;
+   public dcj.a<dcs> a() {
+      return c;
    }
 
-   @Override
-   public Optional<dbr> f() {
-      return this.d;
+   public dcp b() {
+      return this.f;
    }
 
-   @Override
-   public Optional<dbr> k() {
-      return this.e;
-   }
-
-   @Override
-   public dcf<dcs> a() {
-      return dcf.t;
-   }
-
-   @Override
-   public dbu ap_() {
-      if (this.g == null) {
-         this.g = dbu.a(List.of(this.c, this.d, this.e));
-      }
-
+   public dcp c() {
       return this.g;
    }
 
-   @Override
-   public List<dda> g() {
-      return List.of(new ddj(dbr.a(this.c), dbr.a(this.d), dbr.a(this.e), new ddg.f(this.f), new ddg.d(cxk.xq)));
+   public dcp f() {
+      return this.h;
    }
 
-   public static class a implements dcf<dcs> {
-      private static final MapCodec<dcs> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  dbr.d.optionalFieldOf("template").forGetter($$0x -> $$0x.c),
-                  dbr.d.optionalFieldOf("base").forGetter($$0x -> $$0x.d),
-                  dbr.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.e),
-                  cxg.c.fieldOf("result").forGetter($$0x -> $$0x.f)
-               )
-               .apply($$0, dcs::new)
-      );
-      public static final zi<wv, dcs> w = zi.a(dbr.b, $$0 -> $$0.c, dbr.b, $$0 -> $$0.d, dbr.b, $$0 -> $$0.e, cxg.h, $$0 -> $$0.f, dcs::new);
+   @Override
+   public dcp d() {
+      return this.i;
+   }
 
-      @Override
-      public MapCodec<dcs> a() {
-         return x;
-      }
-
-      @Override
-      public zi<wv, dcs> b() {
-         return w;
-      }
+   @Override
+   public dcp e() {
+      return this.j;
    }
 }

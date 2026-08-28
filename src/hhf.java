@@ -1,4 +1,5 @@
-public class hhf implements hhm {
-   public hhf(hhl $$0) {
-   }
+public interface hhf {
+   hej a(hgs var1);
+
+   hej a(String var1);
 }

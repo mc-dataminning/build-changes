@@ -1,29 +1,23 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class ely extends elz {
-   public static final MapCodec<ely> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ely::new));
+public class ely extends elt {
+   public static final MapCodec<ely> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bqr.b(elt.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, ely::new)
+   );
+   private final bqr<elt> b;
 
-   public ely(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public ely(bqr<elt> $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected ema<?> a() {
-      return ema.a;
+   public int a(azh $$0, edp $$1) {
+      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0, $$1);
    }
 
    @Override
-   public List<ekf.a> a(dhf $$0, BiConsumer<jh, dxo> $$1, bac $$2, int $$3, jh $$4, ejp $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
-
-      return ImmutableList.of(new ekf.a($$4.b($$3), 0, false));
+   public elu<?> a() {
+      return elu.f;
    }
 }

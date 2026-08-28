@@ -1,23 +1,15 @@
-public class duy {
-   private boolean a;
-   private float b;
-   private float c;
-
-   public void a() {
-      this.c = this.b;
-      float $$0 = 0.1F;
-      if (!this.a && this.b > 0.0F) {
-         this.b = Math.max(this.b - 0.1F, 0.0F);
-      } else if (this.a && this.b < 1.0F) {
-         this.b = Math.min(this.b + 0.1F, 1.0F);
-      }
+public class duy extends dtn {
+   public duy(ji $$0, dwx $$1) {
+      super(dub.a, $$0, $$1, dbp.b);
    }
 
-   public float a(float $$0) {
-      return azu.h($$0, this.c, this.b);
+   @Override
+   protected wo j() {
+      return wo.c("container.furnace");
    }
 
-   public void a(boolean $$0) {
-      this.a = $$0;
+   @Override
+   protected csc a(int $$0, cow $$1) {
+      return new cta($$0, $$1, this, this.n);
    }
 }

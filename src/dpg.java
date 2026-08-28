@@ -1,12 +1,14 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dpg extends dpf {
-   public dpg(dxn.d $$0) {
-      super($$0);
-   }
+public class dpg extends dqt {
+   public static final MapCodec<dpg> b = b(dpg::new);
 
    @Override
-   public abstract MapCodec<? extends dpg> a();
+   public MapCodec<dpg> a() {
+      return b;
+   }
 
-   public abstract dph c();
+   protected dpg(dww.d $$0) {
+      super(dqt.b.e, $$0);
+   }
 }

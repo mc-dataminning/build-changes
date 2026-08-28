@@ -1,23 +1,21 @@
-public class gtr extends gsr<cim, gyo, gdh> {
-   private static final alp a = alp.b("textures/entity/snow_golem.png");
+public class gtr extends gqw<cho, gzs, gda> {
+   private static final aku a = aku.b("textures/entity/pig/pig.png");
 
-   public gtr(grl.a $$0) {
-      super($$0, new gdh($$0.a(gei.cS)), 0.5F);
-      this.a(new gwf(this, $$0.d(), $$0.b()));
+   public gtr(gsc.a $$0) {
+      super($$0, new gda($$0.a(gfb.bP)), new gda($$0.a(gfb.ca)), 0.7F);
+      this.a(new gws<>(this, new gda($$0.a(gfb.cc)), new gda($$0.a(gfb.cb)), aku.b("textures/entity/pig/pig_saddle.png")));
    }
 
-   @Override
-   public alp b(gyo $$0) {
+   public aku a(gzs $$0) {
       return a;
    }
 
-   public gyo b() {
-      return new gyo();
+   public gzs b() {
+      return new gzs();
    }
 
-   public void a(cim $$0, gyo $$1, float $$2) {
+   public void a(cho $$0, gzs $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.ao = $$0.p() ? new cxg(cxk.fA) : cxg.j;
-      $$1.an = this.i.a($$1.ao, $$0, cxe.f);
+      $$1.a = $$0.j();
    }
 }

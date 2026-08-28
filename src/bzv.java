@@ -1,29 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
 import java.util.function.Function;
 
 public class bzv {
-   private static final int a = 1;
-
-   public static bxr<bvz> a(float $$0) {
-      return a($$1 -> $$0);
+   public static <E extends bvg> byk<E> a(List<Pair<? extends cap<? super E>, Integer>> $$0) {
+      return a($$0, bxn.a.b, bxn.b.a);
    }
 
-   public static bxr<bvz> a(Function<bvx, Float> $$0) {
-      return cbd.a(
-         (Function<cbd.b<bvz>, ? extends App<cbd.c<bvz>, cbg<bvz>>>)($$1 -> $$1.group($$1.a(cfb.m), $$1.a(cfb.n), $$1.b(cfb.o), $$1.a(cfb.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     bvx $$9 = $$1.b($$4);
-                     Optional<cfd> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bxs.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new byb($$9, true));
-                        $$2.a(new cfe(new byb($$9, false), $$0.apply($$7), 0));
-                     }
+   public static <E extends bvg> byk<E> a(List<Pair<? extends cap<? super E>, Integer>> $$0, bxn.a $$1, bxn.b $$2) {
+      bzi<cap<? super E>> $$3 = new bzi<>();
+      $$0.forEach($$1x -> $$3.a((cap<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
+      return cam.a((Function<cam.b<E>, ? extends App<cam.c<E>, cap<E>>>)($$3x -> $$3x.a((cap<E>)(($$3xx, $$4, $$5) -> {
+            if ($$1 == bxn.a.b) {
+               $$3.a();
+            }
 
-                     return true;
-                  }))
-      );
+            for (cap<? super E> $$6 : $$3) {
+               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bxn.b.a) {
+                  break;
+               }
+            }
+
+            return true;
+         }))));
    }
 }

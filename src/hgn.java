@@ -1,94 +1,123 @@
-import com.google.common.base.Suppliers;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class hgn implements AutoCloseable {
-   private static final AtomicInteger a = new AtomicInteger(1);
-   private static final Executor b = Executors.newSingleThreadExecutor($$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Telemetry-Sender-#" + a.getAndIncrement());
-      return $$1;
-   });
-   private final flz c;
-   private final UserApiService d;
-   private final hgv e;
-   private final Path f;
-   private final CompletableFuture<Optional<hgt>> g;
-   private final Supplier<hgr> h = Suppliers.memoize(this::c);
+public class hgn {
+   private static final Logger e = LogUtils.getLogger();
+   private static final akn f = akn.a("blockstates");
+   private static final String g = "map";
+   private static final String h = "map=true";
+   private static final String i = "map=false";
+   private static final dwy<djm, dwx> j = new dwy.a<djm, dwx>(djo.a).a(dxo.a("map")).a(djm::m, dwx::new);
+   private static final aku k = aku.b("glow_item_frame");
+   private static final aku l = aku.b("item_frame");
+   private static final Map<aku, dwy<djm, dwx>> m = Map.of(l, j, k, j);
+   public static final hha a = new hha(k, "map=true");
+   public static final hha b = new hha(k, "map=false");
+   public static final hha c = new hha(l, "map=true");
+   public static final hha d = new hha(l, "map=false");
 
-   public hgn(flz $$0, UserApiService $$1, fml $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      hgv.a $$3 = hgv.a();
-      $$2.f().ifPresent($$1x -> $$3.a(hgu.a, $$1x));
-      $$2.e().ifPresent($$1x -> $$3.a(hgu.b, $$1x));
-      $$3.a(hgu.c, UUID.randomUUID());
-      $$3.a(hgu.d, ab.b().b());
-      $$3.a(hgu.e, ae.m().a());
-      $$3.a(hgu.f, System.getProperty("os.name"));
-      $$3.a(hgu.g, flz.e().a());
-      $$3.b(hgu.h, flz.bg());
-      this.e = $$3.a();
-      this.f = $$0.q.toPath().resolve("logs/telemetry");
-      this.g = hgt.a(this.f);
-   }
+   private static Function<aku, dwy<djm, dwx>> a() {
+      Map<aku, dwy<djm, dwx>> $$0 = new HashMap<>(m);
 
-   public hgw a(boolean $$0, @Nullable Duration $$1, @Nullable String $$2) {
-      return new hgw(this.c(), $$0, $$1, $$2);
-   }
-
-   public hgr a() {
-      return this.h.get();
-   }
-
-   private hgr c() {
-      if (!this.c.E()) {
-         return hgr.a;
-      } else {
-         TelemetrySession $$0 = this.d.newTelemetrySession(b);
-         if (!$$0.isEnabled()) {
-            return hgr.a;
-         } else {
-            CompletableFuture<Optional<hgq>> $$1 = this.g
-               .thenCompose($$0x -> $$0x.<CompletionStage<Optional<hgq>>>map(hgt::a).orElseGet(() -> CompletableFuture.completedFuture(Optional.empty())));
-            return ($$2, $$3) -> {
-               if (!$$2.d() || flz.Q().C()) {
-                  hgv.a $$4 = hgv.a();
-                  $$4.a(this.e);
-                  $$4.a(hgu.m, Instant.now());
-                  $$4.a(hgu.l, $$2.d());
-                  $$3.accept($$4);
-                  hgo $$5 = new hgo($$2, $$4.a());
-                  $$1.thenAccept($$2x -> {
-                     if (!$$2x.isEmpty()) {
-                        ((hgq)$$2x.get()).log($$5);
-                        $$5.a($$0).send();
-                     }
-                  });
-               }
-            };
-         }
+      for (djm $$1 : mb.e) {
+         $$0.put($$1.p().h().a(), $$1.l());
       }
+
+      return $$0::get;
    }
 
-   public Path b() {
-      return this.f;
+   public static CompletableFuture<hgn.c> a(hhg $$0, aup $$1, Executor $$2) {
+      Function<aku, dwy<djm, dwx>> $$3 = a();
+      return CompletableFuture.<Map<aku, List<aun>>>supplyAsync(() -> f.b($$1), $$2).thenCompose($$3x -> {
+         List<CompletableFuture<hgn.c>> $$4 = new ArrayList<>($$3x.size());
+
+         for (Entry<aku, List<aun>> $$5 : $$3x.entrySet()) {
+            $$4.add(CompletableFuture.supplyAsync(() -> {
+               aku $$3xx = f.b($$5.getKey());
+               dwy<djm, dwx> $$4x = $$3.apply($$3xx);
+               if ($$4x == null) {
+                  e.debug("Discovered unknown block state definition {}, ignoring", $$3xx);
+                  return null;
+               } else {
+                  List<aun> $$5x = $$5.getValue();
+                  List<hgn.a> $$6 = new ArrayList<>($$5x.size());
+
+                  for (aun $$7 : $$5x) {
+                     try (Reader $$8 = $$7.e()) {
+                        JsonObject $$9 = ayp.a($$8);
+                        gnk $$10 = gnk.a($$9);
+                        $$6.add(new hgn.a($$7.b(), $$10));
+                     } catch (Exception var15) {
+                        e.error("Failed to load blockstate definition {} from pack {}", new Object[]{$$3xx, $$7.b(), var15});
+                     }
+                  }
+
+                  try {
+                     return a($$3xx, $$4x, $$6, $$0);
+                  } catch (Exception var12) {
+                     e.error("Failed to load blockstate definition {}", $$3xx, var12);
+                     return null;
+                  }
+               }
+            }, $$2));
+         }
+
+         return af.d($$4).thenApply($$0xx -> {
+            Map<hha, hgn.b> $$1xx = new HashMap<>();
+
+            for (hgn.c $$2xx : $$0xx) {
+               if ($$2xx != null) {
+                  $$1xx.putAll($$2xx.c());
+               }
+            }
+
+            return new hgn.c($$1xx);
+         });
+      });
    }
 
-   @Override
-   public void close() {
-      this.g.thenAccept($$0 -> $$0.ifPresent(hgt::close));
+   private static hgn.c a(aku $$0, dwy<djm, dwx> $$1, List<hgn.a> $$2, hhg $$3) {
+      Map<hha, hgn.b> $$4 = new HashMap<>();
+
+      for (hgn.a $$5 : $$2) {
+         $$5.b.a($$1, $$0 + "/" + $$5.a).forEach(($$2x, $$3x) -> {
+            hha $$4x = gna.a($$0, $$2x);
+            $$4.put($$4x, new hgn.b($$2x, $$3x));
+         });
+      }
+
+      return new hgn.c($$4);
+   }
+
+   static record a(String a, gnk b) {
+   }
+
+   public static record b(dwx a, gnr b) {
+   }
+
+   public static record c(Map<hha, hgn.b> a) {
+      public Stream<hhd> a() {
+         return this.a.values().stream().map(hgn.b::b);
+      }
+
+      public Map<hha, gnr> b() {
+         return Maps.transformValues(this.a, hgn.b::b);
+      }
+
+      public Map<hha, hgn.b> c() {
+         return this.a;
+      }
    }
 }

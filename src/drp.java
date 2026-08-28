@@ -1,49 +1,84 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class drp extends diy {
-   public static final MapCodec<drp> c = b(drp::new);
+public class drp extends diy implements dmv {
+   public static final MapCodec<drp> a = b(drp::new);
+   public static final dxu<dyg> b = dxn.bm;
 
    @Override
    public MapCodec<drp> a() {
-      return c;
+      return a;
    }
 
-   protected drp(dxn.d $$0) {
+   protected drp(dww.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, dyg.b));
    }
 
    @Override
-   public duq a(jh $$0, dxo $$1) {
-      return new dwg($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends duq> dur<T> a(dgz $$0, dxo $$1, dus<T> $$2) {
-      return a($$0, $$2, dus.C);
+   public dtz a(ji $$0, dwx $$1) {
+      return new dvr($$0, $$1);
    }
 
    @Override
-   protected void a(dgz $$0, jh $$1, cpo $$2) {
-      duq $$3 = $$0.c_($$1);
-      if ($$3 instanceof dwg) {
-         $$2.a((btc)$$3);
-         $$2.a(axf.at);
+   protected bsj a(dwx $$0, dgi $$1, ji $$2, cox $$3, faw $$4) {
+      dtz $$5 = $$1.c_($$2);
+      if ($$5 instanceof dvr) {
+         return (bsj)(((dvr)$$5).a($$3) ? bsj.a : bsj.e);
+      } else {
+         return bsj.e;
       }
    }
 
    @Override
-   public void a(dxo $$0, dgz $$1, jh $$2, bac $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awv.yZ, aww.e, 1.0F, 1.0F, false);
+   public void a(dgi $$0, ji $$1, dwx $$2, @Nullable bvg $$3, cwp $$4) {
+      if (!$$0.C) {
+         if ($$3 != null) {
+            dtz $$5 = $$0.c_($$1);
+            if ($$5 instanceof dvr) {
+               ((dvr)$$5).a($$3);
+            }
          }
+      }
+   }
 
-         $$1.a(ls.ag, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+   @Override
+   protected dpx a_(dwx $$0) {
+      return dpx.c;
+   }
+
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      if ($$1 instanceof arc) {
+         if ($$1.c_($$2) instanceof dvr $$7) {
+            boolean $$8 = $$1.C($$2);
+            boolean $$9 = $$7.C();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((arc)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
+      }
+   }
+
+   private void a(arc $$0, dvr $$1) {
+      switch ($$1.u()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.A();
+         case d:
       }
    }
 }

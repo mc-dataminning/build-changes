@@ -1,75 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsf extends dkd {
-   public static final MapCodec<dsf> a = b(dsf::new);
-   private static final xk d = xk.c("container.stonecutter");
-   public static final dyl<jm> b = dob.aF;
-   protected static final fcl c = dkd.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+public class dsf extends dkp {
+   public static final MapCodec<dsf> n = b(dsf::new);
 
    @Override
    public MapCodec<dsf> a() {
-      return a;
+      return n;
    }
 
-   public dsf(dxn.d $$0) {
-      super($$0);
-      this.l(this.F.b().b(b, jm.c));
-   }
-
-   @Override
-   public dxo a(dax $$0) {
-      return this.m().b(b, $$0.g().g());
+   public dsf(dww.d $$0) {
+      super(() -> dub.c, $$0);
    }
 
    @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.c($$1, $$2));
-         $$3.a(axf.ay);
-      }
-
-      return bta.a;
-   }
-
-   @Nullable
-   @Override
-   protected btc b(dxo $$0, dgz $$1, jh $$2) {
-      return new bti(($$2x, $$3, $$4) -> new cuw($$2x, $$3, ctg.a($$1, $$2)), d);
+   public dtz a(ji $$0, dwx $$1) {
+      return new dvv($$0, $$1);
    }
 
    @Override
-   protected fcl a(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return c;
+   protected awh<aku> c() {
+      return awk.i.b(awk.ai);
    }
 
    @Override
-   protected boolean g_(dxo $$0) {
+   protected boolean f_(dwx $$0) {
       return true;
    }
 
    @Override
-   protected dqo a_(dxo $$0) {
-      return dqo.c;
+   protected int a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+      return ayz.a(dug.a($$1, $$2), 0, 15);
    }
 
    @Override
-   protected dxo a(dxo $$0, dqv $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dxo a(dxo $$0, dpc $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      return false;
+   protected int b(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+      return $$3 == jn.b ? $$0.a($$1, $$2, $$3) : 0;
    }
 }

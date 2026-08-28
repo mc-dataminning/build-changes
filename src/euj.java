@@ -1,37 +1,39 @@
 import javax.annotation.Nullable;
 
-public class euj {
-   private final dgi a;
-   @Nullable
-   private final eui b;
-   private final jh c;
-   private final jh.a d = new jh.a();
+public abstract class euj {
+   protected final dpt a;
 
-   public euj(dgi $$0, bvz $$1) {
+   protected euj(dpt $$0) {
       this.a = $$0;
-      if ($$1.dW() instanceof arx $$2) {
-         this.b = $$2.I();
-      } else {
-         this.b = null;
+   }
+
+   public abstract void a(dgi var1, ji var2, dwx var3, @Nullable euh var4, boolean var5);
+
+   protected int a(dgi $$0, ji $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   protected int a(ji $$0, dwx $$1) {
+      return $$1.a(this.a) ? $$1.c(dpt.f) : 0;
+   }
+
+   protected int b(dgi $$0, ji $$1) {
+      int $$2 = 0;
+
+      for (jn $$3 : jn.c.a) {
+         ji $$4 = $$1.a($$3);
+         dwx $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         ji $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            ji $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            ji $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
+         }
       }
 
-      this.c = $$1.dw();
-   }
-
-   public euh a(int $$0, int $$1, int $$2) {
-      jh $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? eum.b(this.a, $$3) : this.b.a(this.a, $$3);
-   }
-
-   public dxo a(jh $$0) {
-      return this.a.a_($$0);
-   }
-
-   public dgi a() {
-      return this.a;
-   }
-
-   public jh b() {
-      return this.c;
+      return Math.max(0, $$2 - 1);
    }
 }

@@ -1,69 +1,47 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+public class cxd extends cwl {
+   private final bur<? extends cqw> a;
 
-public class cxd {
-   private final Map<alp, cxd.a> a = Maps.newHashMap();
-   private int b;
-
-   public boolean a(cxg $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cxd(bur<? extends cqw> $$0, cwl.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   public float a(cxg $$0, float $$1) {
-      alp $$2 = this.b($$0);
-      cxd.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azu.a($$5 / $$4, 0.0F, 1.0F);
+   @Override
+   public bsj a(dai $$0) {
+      dgi $$1 = $$0.q();
+      ji $$2 = $$0.a();
+      dwx $$3 = $$1.a_($$2);
+      if (!$$3.a(awp.P)) {
+         return bsj.d;
       } else {
-         return 0.0F;
-      }
-   }
+         cwp $$4 = $$0.n();
+         dya $$5 = $$3.b() instanceof djb ? $$3.c(((djb)$$3.b()).c()) : dya.a;
+         double $$6 = 0.0;
+         if ($$5.b()) {
+            $$6 = 0.5;
+         }
 
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<alp, cxd.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<alp, cxd.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
+         fba $$7 = new fba((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
+         cqw $$8 = cqw.a($$1, $$7.d, $$7.e, $$7.f, this.a, buq.o, $$4, $$0.o());
+         if ($$8 == null) {
+            return bsj.d;
+         } else {
+            if (cqw.b($$1)) {
+               for (buk $$10 : $$1.a_(null, $$8.cR())) {
+                  if ($$10 instanceof cqw) {
+                     return bsj.d;
+                  }
+               }
             }
+
+            if ($$1 instanceof arc $$11) {
+               $$11.b($$8);
+               $$11.a(ebt.t, $$2, ebt.a.a($$0.o(), $$11.a_($$2.e())));
+            }
+
+            $$4.h(1);
+            return bsj.a;
          }
       }
-   }
-
-   public alp b(cxg $$0) {
-      dal $$1 = $$0.a(ku.z);
-      alp $$2 = ma.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
-   }
-
-   public void a(cxg $$0, int $$1) {
-      this.a(this.b($$0), $$1);
-   }
-
-   public void a(alp $$0, int $$1) {
-      this.a.put($$0, new cxd.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(alp $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(alp $$0, int $$1) {
-   }
-
-   protected void b(alp $$0) {
-   }
-
-   static record a(int a, int b) {
    }
 }

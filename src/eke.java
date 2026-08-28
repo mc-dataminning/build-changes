@@ -1,28 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eke extends eka {
-   public static final MapCodec<eke> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eke::new));
+public class eke<P extends ekd> {
+   public static final eke<ekm> a = a("simple_state_provider", ekm.b);
+   public static final eke<ekn> b = a("weighted_state_provider", ekn.b);
+   public static final eke<eki> c = a("noise_threshold_provider", eki.b);
+   public static final eke<ekh> d = a("noise_provider", ekh.g);
+   public static final eke<ekf> e = a("dual_noise_provider", ekf.b);
+   public static final eke<ekk> f = a("rotated_block_provider", ekk.b);
+   public static final eke<ekj> g = a("randomized_int_state_provider", ekj.b);
+   private final MapCodec<P> h;
 
-   public eke(bsf $$0, bsf $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends ekd> eke<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.T, $$0, new eke<>($$1));
    }
 
-   @Override
-   protected ekg<?> a() {
-      return ekg.f;
+   private eke(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   protected void a(dhf $$0, ekf.b $$1, bac $$2, ejp $$3, int $$4, ekf.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(bac $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return azu.l((float)$$1 + 0.5F) + azu.l((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

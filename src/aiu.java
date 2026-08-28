@@ -1,20 +1,20 @@
-public record aiu(short b, cxg c) implements zr<ahb> {
-   public static final zi<wv, aiu> a = zi.a(zg.e, aiu::b, cxg.a(cxg.g), aiu::e, aiu::new);
+import com.mojang.authlib.GameProfile;
+import io.netty.buffer.ByteBuf;
 
-   public aiu(int $$0, cxg $$1) {
-      this((short)$$0, $$1);
-   }
+public record aiu(GameProfile b) implements yv<aip> {
+   public static final ym<ByteBuf, aiu> a = ym.a(yk.y, aiu::b, aiu::new);
 
    @Override
-   public zt<aiu> a() {
-      return agz.ce;
+   public yx<aiu> a() {
+      return aiv.b;
    }
 
-   public void a(ahb $$0) {
+   public void a(aip $$0) {
       $$0.a(this);
    }
 
-   public cxg e() {
-      return this.c;
+   @Override
+   public boolean d() {
+      return true;
    }
 }

@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class erj extends erz {
-   public static final MapCodec<erj> a = dxo.a.fieldOf("block_state").xmap(erj::new, $$0 -> $$0.b);
-   private final dxo b;
+public interface erj<P extends eri> {
+   erj<eql> a = a("always_true", eql.a);
+   erj<eqq> b = a("block_match", eqq.a);
+   erj<eqs> c = a("blockstate_match", eqs.a);
+   erj<erq> d = a("tag_match", erq.a);
+   erj<erf> e = a("random_block_match", erf.a);
+   erj<erg> f = a("random_blockstate_match", erg.a);
 
-   public erj(dxo $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dxo $$0, bac $$1) {
-      return $$0 == this.b;
-   }
-
-   @Override
-   protected esa<?> a() {
-      return esa.c;
+   static <P extends eri> erj<P> a(String $$0, MapCodec<P> $$1) {
+      return ke.a(mb.m, $$0, () -> $$1);
    }
 }

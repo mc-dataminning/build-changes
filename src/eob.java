@@ -1,84 +1,78 @@
-public abstract class eob extends eoh {
-   protected final int a;
-   protected final int b;
-   protected final int c;
-   protected int d = -1;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-   protected eob(eou $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, jm $$7) {
-      super($$0, 0, eoh.a($$1, $$2, $$3, $$7, $$4, $$5, $$6));
-      this.a = $$4;
-      this.b = $$5;
-      this.c = $$6;
-      this.a($$7);
+public record eob(List<enq> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final aku c = aku.b("jigsaw");
+   private static final Map<aku, aku> d = ImmutableMap.builder()
+      .put(aku.b("nvi"), c)
+      .put(aku.b("pcp"), c)
+      .put(aku.b("bastionremnant"), c)
+      .put(aku.b("runtime"), c)
+      .build();
+
+   public eob(final List<enq> a) {
+      this.a = List.copyOf(a);
    }
 
-   protected eob(eou $$0, um $$1) {
-      super($$0, $$1);
-      this.a = $$1.h("Width");
-      this.b = $$1.h("Height");
-      this.c = $$1.h("Depth");
-      this.d = $$1.h("HPos");
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   @Override
-   protected void a(eot $$0, um $$1) {
-      $$1.a("Width", this.a);
-      $$1.a("Height", this.b);
-      $$1.a("Depth", this.c);
-      $$1.a("HPos", this.d);
-   }
-
-   protected boolean a(dha $$0, env $$1, int $$2) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$3 = 0;
-         int $$4 = 0;
-         jh.a $$5 = new jh.a();
-
-         for (int $$6 = this.f.j(); $$6 <= this.f.m(); $$6++) {
-            for (int $$7 = this.f.h(); $$7 <= this.f.k(); $$7++) {
-               $$5.d($$7, 64, $$6);
-               if ($$1.b($$5)) {
-                  $$3 += $$0.a(edj.a.f, $$5).v();
-                  $$4++;
-               }
-            }
-         }
-
-         if ($$4 == 0) {
-            return false;
-         } else {
-            this.d = $$3 / $$4;
-            this.f.a(0, this.d - this.f.i() + $$2, 0);
+   public boolean a(ji $$0) {
+      for (enq $$1 : this.a) {
+         if ($$1.f().b($$0)) {
             return true;
          }
       }
+
+      return false;
    }
 
-   protected boolean a(dha $$0, int $$1) {
-      if (this.d >= 0) {
-         return true;
-      } else {
-         int $$2 = $$0.an() + 1;
-         boolean $$3 = false;
-         jh.a $$4 = new jh.a();
+   public un a(eoc $$0) {
+      tw $$1 = new tw();
 
-         for (int $$5 = this.f.j(); $$5 <= this.f.m(); $$5++) {
-            for (int $$6 = this.f.h(); $$6 <= this.f.k(); $$6++) {
-               $$4.d($$6, 0, $$5);
-               $$2 = Math.min($$2, $$0.a(edj.a.f, $$4).v());
-               $$3 = true;
+      for (enq $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
+   }
+
+   public static eob a(tw $$0, eoc $$1) {
+      List<enq> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         tq $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         aku $$6 = aku.a($$5);
+         aku $$7 = d.getOrDefault($$6, $$6);
+         eod $$8 = mb.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               enq $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
             }
          }
-
-         if (!$$3) {
-            return false;
-         } else {
-            this.d = $$2;
-            this.f.a(0, this.d - this.f.i() + $$1, 0);
-            return true;
-         }
       }
+
+      return new eob($$2);
+   }
+
+   public ene b() {
+      return enq.a(this.a.stream());
+   }
+
+   public List<enq> c() {
+      return this.a;
    }
 }

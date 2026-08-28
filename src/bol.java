@@ -1,45 +1,33 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.function.IntSupplier;
+import java.util.function.LongSupplier;
 
-public interface bol<S> {
-   void a(int var1, boq<S> var2, Object var3);
+public class bol {
+   private final LongSupplier a;
+   private final IntSupplier b;
+   private bop c = boo.a;
 
-   default void a(int $$0, Object $$1) {
-      this.a($$0, boq.b(), $$1);
+   public bol(LongSupplier $$0, IntSupplier $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   void a(int var1);
+   public boolean a() {
+      return this.c != boo.a;
+   }
 
-   public static class a<S> implements bol<S> {
-      private final List<bom<S>> a = new ArrayList<>();
-      private int b = -1;
+   public void b() {
+      this.c = boo.a;
+   }
 
-      private void b(int $$0) {
-         if ($$0 > this.b) {
-            this.b = $$0;
-            this.a.clear();
-         }
-      }
+   public void c() {
+      this.c = new bok(this.a, this.b, true);
+   }
 
-      @Override
-      public void a(int $$0) {
-         this.b($$0);
-      }
+   public bos d() {
+      return this.c;
+   }
 
-      @Override
-      public void a(int $$0, boq<S> $$1, Object $$2) {
-         this.b($$0);
-         if ($$0 == this.b) {
-            this.a.add(new bom<>($$0, $$1, $$2));
-         }
-      }
-
-      public List<bom<S>> a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
+   public boq e() {
+      return this.c.d();
    }
 }

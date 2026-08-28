@@ -1,70 +1,31 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.function.Predicate;
+import com.mojang.brigadier.context.CommandContext;
 
 public class ane {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xk.b("clear.failed.single", $$0));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xk.b("clear.failed.multiple", $$0));
-
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("clear").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ew)$$0x.getSource(), Collections.singleton(((ew)$$0x.getSource()).h()), $$0xx -> true)))
-            .then(
-               ((RequiredArgumentBuilder)ex.a("targets", fj.d()).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), $$0xx -> true)))
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("item", hi.a($$1)).executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), hi.a($$0x, "item"))))
-                        .then(
-                           ex.a("maxCount", IntegerArgumentType.integer(0))
-                              .executes(
-                                 $$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), hi.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
-                              )
-                        )
-                  )
-            )
-      );
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+      final LiteralArgumentBuilder<ex> $$2 = (LiteralArgumentBuilder<ex>)ey.a("gamerule").requires($$0x -> $$0x.c(2));
+      new dge($$1.a()).a(new dge.c() {
+         @Override
+         public <T extends dge.g<T>> void a(dge.e<T> $$0, dge.f<T> $$1) {
+            LiteralArgumentBuilder<ex> $$2 = ey.a($$0.a());
+            $$2.then(((LiteralArgumentBuilder)$$2.executes($$1x -> ane.a((ex)$$1x.getSource(), $$0))).then($$1.a("value").executes($$1x -> ane.a($$1x, $$0))));
+         }
+      });
+      $$0.register($$2);
    }
 
-   private static int a(ew $$0, Collection<ary> $$1, Predicate<cxg> $$2) throws CommandSyntaxException {
-      return a($$0, $$1, $$2, -1);
+   static <T extends dge.g<T>> int a(CommandContext<ex> $$0, dge.e<T> $$1) {
+      ex $$2 = (ex)$$0.getSource();
+      T $$3 = $$2.l().aL().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> wo.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
    }
 
-   private static int a(ew $$0, Collection<ary> $$1, Predicate<cxg> $$2, int $$3) throws CommandSyntaxException {
-      int $$4 = 0;
-
-      for (ary $$5 : $$1) {
-         $$4 += $$5.gi().a($$2, $$3, $$5.cc.r());
-         $$5.cd.d();
-         $$5.cc.a($$5.gi());
-      }
-
-      if ($$4 == 0) {
-         if ($$1.size() == 1) {
-            throw a.create($$1.iterator().next().al());
-         } else {
-            throw b.create($$1.size());
-         }
-      } else {
-         int $$6 = $$4;
-         if ($$3 == 0) {
-            if ($$1.size() == 1) {
-               $$0.a(() -> xk.a("commands.clear.test.single", $$6, $$1.iterator().next().p_()), true);
-            } else {
-               $$0.a(() -> xk.a("commands.clear.test.multiple", $$6, $$1.size()), true);
-            }
-         } else if ($$1.size() == 1) {
-            $$0.a(() -> xk.a("commands.clear.success.single", $$6, $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> xk.a("commands.clear.success.multiple", $$6, $$1.size()), true);
-         }
-
-         return $$4;
-      }
+   static <T extends dge.g<T>> int a(ex $$0, dge.e<T> $$1) {
+      T $$2 = $$0.l().aL().a($$1);
+      $$0.a(() -> wo.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

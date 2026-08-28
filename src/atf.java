@@ -1,257 +1,144 @@
-import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public abstract class atf implements AutoCloseable {
-   protected static final Logger a = LogUtils.getLogger();
-   private static final AtomicInteger b = new AtomicInteger(1);
-   private static final ThreadFactory c = $$0 -> {
-      Thread $$1 = new Thread($$0);
-      $$1.setName("Chat-Filter-Worker-" + b.getAndIncrement());
-      return $$1;
-   };
-   private final URL d;
-   private final atf.b e;
-   final atf.a f;
-   final ExecutorService g;
+public class atf implements atb {
+   private static final Logger c = LogUtils.getLogger();
+   private final ata d;
+   private final ast e;
+   private final Set<String> f;
+   private final List<Path> g;
+   private final Map<atd, List<Path>> h;
 
-   protected static ExecutorService a(int $$0) {
-      return Executors.newFixedThreadPool($$0, c);
-   }
-
-   protected atf(URL $$0, atf.b $$1, atf.a $$2, ExecutorService $$3) {
-      this.f = $$2;
-      this.g = $$3;
+   atf(ata $$0, ast $$1, Set<String> $$2, List<Path> $$3, Map<atd, List<Path>> $$4) {
       this.d = $$0;
       this.e = $$1;
-   }
-
-   protected static URL a(URI $$0, @Nullable JsonObject $$1, String $$2, String $$3) throws MalformedURLException {
-      String $$4 = a($$1, $$2, $$3);
-      return $$0.resolve("/" + $$4).toURL();
-   }
-
-   protected static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
-      return $$0 != null ? azk.a($$0, $$1, $$2) : $$2;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
    }
 
    @Nullable
-   public static atf a(aqp $$0) {
-      String $$1 = $$0.R;
-      if (bar.h($$1)) {
-         return null;
-      } else {
-         return switch ($$0.S) {
-            case 0 -> ast.a($$1);
-            case 1 -> asw.a($$1);
-            default -> {
-               a.warn("Could not create text filter - unsupported text filtering version used");
-               yield null;
+   @Override
+   public auh<InputStream> a(String... $$0) {
+      v.a($$0);
+      List<String> $$1 = List.of($$0);
+
+      for (Path $$2 : this.g) {
+         Path $$3 = v.a($$2, $$1);
+         if (Files.exists($$3) && ate.a($$3)) {
+            return auh.create($$3);
+         }
+      }
+
+      return null;
+   }
+
+   public void a(atd $$0, aku $$1, Consumer<Path> $$2) {
+      v.d($$1.a()).ifSuccess($$3 -> {
+         String $$4 = $$1.b();
+
+         for (Path $$5 : this.h.get($$0)) {
+            Path $$6 = $$5.resolve($$4);
+            $$2.accept(v.a($$6, $$3));
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
+   }
+
+   @Override
+   public void a(atd $$0, String $$1, String $$2, atb.a $$3) {
+      v.d($$2).ifSuccess($$3x -> {
+         List<Path> $$4 = this.h.get($$0);
+         int $$5 = $$4.size();
+         if ($$5 == 1) {
+            a($$3, $$1, $$4.get(0), $$3x);
+         } else if ($$5 > 1) {
+            Map<aku, auh<InputStream>> $$6 = new HashMap<>();
+
+            for (int $$7 = 0; $$7 < $$5 - 1; $$7++) {
+               a($$6::putIfAbsent, $$1, $$4.get($$7), $$3x);
             }
-         };
-      }
+
+            Path $$8 = $$4.get($$5 - 1);
+            if ($$6.isEmpty()) {
+               a($$3, $$1, $$8, $$3x);
+            } else {
+               a($$6::putIfAbsent, $$1, $$8, $$3x);
+               $$6.forEach($$3);
+            }
+         }
+      }).ifError($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
    }
 
-   protected CompletableFuture<asq> a(GameProfile $$0, String $$1, atf.a $$2, Executor $$3) {
-      return $$1.isEmpty() ? CompletableFuture.completedFuture(asq.a) : CompletableFuture.supplyAsync(() -> {
-         JsonObject $$3x = this.e.encode($$0, $$1);
-
-         try {
-            JsonObject $$4 = this.b($$3x, this.d);
-            return this.a($$1, $$2, $$4);
-         } catch (Exception var6) {
-            a.warn("Failed to validate message '{}'", $$1, var6);
-            return asq.b($$1);
-         }
-      }, $$3);
+   private static void a(atb.a $$0, String $$1, Path $$2, List<String> $$3) {
+      Path $$4 = $$2.resolve($$1);
+      ate.a($$1, $$4, $$3, $$0);
    }
 
-   protected abstract asq a(String var1, atf.a var2, JsonObject var3);
+   @Nullable
+   @Override
+   public auh<InputStream> a(atd $$0, aku $$1) {
+      return (auh<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
+         String $$3 = $$1.b();
 
-   protected xo a(String $$0, JsonArray $$1, atf.a $$2) {
-      if ($$1.isEmpty()) {
-         return xo.c;
-      } else if ($$2.shouldIgnore($$0, $$1.size())) {
-         return xo.b;
-      } else {
-         xo $$3 = new xo($$0.length());
-
-         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
-            $$3.a($$1.get($$4).getAsInt());
+         for (Path $$4 : this.h.get($$0)) {
+            Path $$5 = v.a($$4.resolve($$3), $$2);
+            if (Files.exists($$5) && ate.a($$5)) {
+               return auh.create($$5);
+            }
          }
 
-         return $$3;
+         return null;
+      }, $$1x -> {
+         c.error("Invalid path {}: {}", $$1, $$1x.message());
+         return null;
+      });
+   }
+
+   @Override
+   public Set<String> a(atd $$0) {
+      return this.f;
+   }
+
+   @Nullable
+   @Override
+   public <T> T a(ato<T> $$0) {
+      auh<InputStream> $$1 = this.a("pack.mcmeta");
+      if ($$1 != null) {
+         try (InputStream $$2 = $$1.get()) {
+            T $$3 = ass.a($$0, $$2);
+            if ($$3 != null) {
+               return $$3;
+            }
+
+            return this.e.a($$0);
+         } catch (IOException var8) {
+         }
       }
+
+      return this.e.a($$0);
+   }
+
+   @Override
+   public ata a() {
+      return this.d;
    }
 
    @Override
    public void close() {
-      this.g.shutdownNow();
    }
 
-   protected void a(InputStream $$0) throws IOException {
-      byte[] $$1 = new byte[1024];
-
-      while ($$0.read($$1) != -1) {
-      }
-   }
-
-   private JsonObject b(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.a($$0, $$1);
-
-      JsonObject var5;
-      try (InputStream $$3 = $$2.getInputStream()) {
-         if ($$2.getResponseCode() == 204) {
-            return new JsonObject();
-         }
-
-         try {
-            var5 = Streams.parse(new JsonReader(new InputStreamReader($$3, StandardCharsets.UTF_8))).getAsJsonObject();
-         } finally {
-            this.a($$3);
-         }
-      }
-
-      return var5;
-   }
-
-   protected HttpURLConnection a(JsonObject $$0, URL $$1) throws IOException {
-      HttpURLConnection $$2 = this.a($$1);
-      this.a($$2);
-      OutputStreamWriter $$3 = new OutputStreamWriter($$2.getOutputStream(), StandardCharsets.UTF_8);
-
-      try {
-         JsonWriter $$4 = new JsonWriter($$3);
-
-         try {
-            Streams.write($$0, $$4);
-         } catch (Throwable var10) {
-            try {
-               $$4.close();
-            } catch (Throwable var9) {
-               var10.addSuppressed(var9);
-            }
-
-            throw var10;
-         }
-
-         $$4.close();
-      } catch (Throwable var11) {
-         try {
-            $$3.close();
-         } catch (Throwable var8) {
-            var11.addSuppressed(var8);
-         }
-
-         throw var11;
-      }
-
-      $$3.close();
-      int $$5 = $$2.getResponseCode();
-      if ($$5 >= 200 && $$5 < 300) {
-         return $$2;
-      } else {
-         throw new atf.d($$5 + " " + $$2.getResponseMessage());
-      }
-   }
-
-   protected abstract void a(HttpURLConnection var1);
-
-   protected int a() {
-      return 2000;
-   }
-
-   protected HttpURLConnection a(URL $$0) throws IOException {
-      HttpURLConnection $$1 = (HttpURLConnection)$$0.openConnection();
-      $$1.setConnectTimeout(15000);
-      $$1.setReadTimeout(this.a());
-      $$1.setUseCaches(false);
-      $$1.setDoOutput(true);
-      $$1.setDoInput(true);
-      $$1.setRequestMethod("POST");
-      $$1.setRequestProperty("Content-Type", "application/json; charset=utf-8");
-      $$1.setRequestProperty("Accept", "application/json");
-      $$1.setRequestProperty("User-Agent", "Minecraft server" + ab.b().c());
-      return $$1;
-   }
-
-   public atg a(GameProfile $$0) {
-      return new atf.c($$0);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      atf.a a = ($$0, $$1) -> false;
-      atf.a b = ($$0, $$1) -> $$0.length() == $$1;
-
-      static atf.a ignoreOverThreshold(int $$0) {
-         return ($$1, $$2) -> $$2 >= $$0;
-      }
-
-      static atf.a select(int $$0) {
-         return switch ($$0) {
-            case -1 -> a;
-            case 0 -> b;
-            default -> ignoreOverThreshold($$0);
-         };
-      }
-
-      boolean shouldIgnore(String var1, int var2);
-   }
-
-   @FunctionalInterface
-   protected interface b {
-      JsonObject encode(GameProfile var1, String var2);
-   }
-
-   protected class c implements atg {
-      protected final GameProfile b;
-      protected final Executor c;
-
-      protected c(final GameProfile $$1) {
-         this.b = $$1;
-         brq $$2 = new brq(atf.this.g, "chat stream for " + $$1.getName());
-         this.c = $$2::a_;
-      }
-
-      @Override
-      public CompletableFuture<List<asq>> a(List<String> $$0) {
-         List<CompletableFuture<asq>> $$1 = $$0.stream().map($$0x -> atf.this.a(this.b, $$0x, atf.this.f, this.c)).collect(ImmutableList.toImmutableList());
-         return ae.e($$1).exceptionally($$0x -> ImmutableList.of());
-      }
-
-      @Override
-      public CompletableFuture<asq> a(String $$0) {
-         return atf.this.a(this.b, $$0, atf.this.f, this.c);
-      }
-   }
-
-   protected static class d extends RuntimeException {
-      protected d(String $$0) {
-         super($$0);
-      }
+   public aus d() {
+      return $$0 -> Optional.ofNullable(this.a(atd.a, $$0)).map($$0x -> new aun(this, $$0x));
    }
 }

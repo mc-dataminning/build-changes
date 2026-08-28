@@ -1,46 +1,53 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cao {
-   public static bxr<bwf> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return cbd.a(
-         (Function<cbd.b<bwf>, ? extends App<cbd.c<bwf>, cbg<bwf>>>)($$3 -> $$3.group($$3.c(cfb.o), $$3.c(cfb.m), $$3.a(cfb.n))
-               .apply(
-                  $$3,
-                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                        if ($$5x.b_($$6.dw()).a(axq.a)) {
-                           return false;
-                        } else if ($$7 < $$2.getValue()) {
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        } else {
-                           fbw $$8 = fbw.a($$6);
-                           jh $$9 = $$6.dw();
-                           jh.a $$10 = new jh.a();
+public interface cao<F extends K1, Value> {
+   cek<Value> a();
 
-                           label45:
-                           for (jh $$11 : jh.a($$9, $$0, $$0, $$0)) {
-                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
-                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
-                                 && !$$5x.a_($$10.a($$11, jm.a)).b($$5x, $$11, $$8).c()) {
-                                 for (jm $$12 : jm.c.a) {
-                                    $$10.a($$11, $$12);
-                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jm.a)).a(dkf.J)) {
-                                       $$5.a(new bxt($$11));
-                                       $$4.a(new cfe(new bxt($$11), $$1, 0));
-                                       break label45;
-                                    }
-                                 }
-                              }
-                           }
+   cel b();
 
-                           $$2.setValue($$7 + 40L);
-                           return true;
-                        }
-                     }
-               ))
-      );
+   @Nullable
+   can<F, Value> a(bwi<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(cek<Value> a) implements cao<Mu<Unit>, Value> {
+      @Override
+      public cel b() {
+         return cel.b;
+      }
+
+      @Override
+      public can<Mu<Unit>, Value> a(bwi<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new can<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
+   }
+
+   public static record b<Value>(cek<Value> a) implements cao<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public cel b() {
+         return cel.a;
+      }
+
+      @Override
+      public can<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bwi<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new can<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
+
+   public static record c<Value>(cek<Value> a) implements cao<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public cel b() {
+         return cel.c;
+      }
+
+      @Override
+      public can<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bwi<?> $$0, Optional<Value> $$1) {
+         return new can<>($$0, this.a, OptionalBox.create($$1));
+      }
    }
 }

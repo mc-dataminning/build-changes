@@ -1,23 +1,32 @@
-public class grb<T extends cjr> extends gqb<T, gxm, gbb> {
-   public static final alp a = alp.b("textures/entity/horse/donkey.png");
-   public static final alp b = alp.b("textures/entity/horse/mule.png");
-   private final alp k;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
 
-   public grb(grl.a $$0, geh $$1, geh $$2, boolean $$3) {
-      super($$0, new gbb($$0.a($$1)), new gbb($$0.a($$2)));
-      this.k = $$3 ? b : a;
+public class grb extends gqw<cij, gxq, gay> {
+   private static final Map<cij.e, aku> a = af.a(Maps.newHashMap(), $$0 -> {
+      for (cij.e $$1 : cij.e.values()) {
+         $$0.put($$1, aku.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
+      }
+   });
+
+   public grb(gsc.a $$0) {
+      super($$0, new gay($$0.a(gfb.m)), new gay($$0.a(gfb.n)), 0.5F);
    }
 
-   public alp a(gxm $$0) {
-      return this.k;
+   public aku a(gxq $$0) {
+      return a.get($$0.a);
    }
 
-   public gxm a() {
-      return new gxm();
+   public gxq a() {
+      return new gxq();
    }
 
-   public void a(T $$0, gxm $$1, float $$2) {
+   public void a(cij $$0, gxq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.gp();
+      $$1.b = $$0.cf.a($$2);
+      $$1.d = $$0.cg.a($$2);
+      $$1.e = $$0.ch.a($$2);
+      $$1.c = $$0.ci.a($$2);
    }
 }

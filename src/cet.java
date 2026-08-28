@@ -1,40 +1,50 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cet extends cev {
-   private final bwu a;
-   private bvx b;
-   private int c;
+public class cet extends cer {
+   @Nullable
+   private ji p;
 
-   public cet(bwu $$0) {
-      super($$0, false);
-      this.a = $$0;
-      this.a(EnumSet.of(ccv.a.d));
+   public cet(bvi $$0, dgi $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public boolean b() {
-      if (this.a.p() && !this.a.go()) {
-         bvx $$0 = this.a.ah_();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.es();
-            int $$1 = $$0.et();
-            return $$1 != this.c && this.a(this.b, cgo.a) && this.a.a(this.b, $$0);
-         }
+   public etn a(ji $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public etn a(buk $$0, int $$1) {
+      this.p = $$0.dw();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(buk $$0, double $$1) {
+      etn $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
       } else {
-         return false;
+         this.p = $$0.dw();
+         this.d = $$1;
+         return true;
       }
    }
 
    @Override
-   public void d() {
-      this.e.h(this.b);
-      bvx $$0 = this.a.ah_();
-      if ($$0 != null) {
-         this.c = $$0.et();
+   public void c() {
+      if (!this.k()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.du(), (double)this.a.dr())
+               && (!(this.a.dD() > (double)this.p.v()) || !ji.a((double)this.p.u(), this.a.dD(), (double)this.p.w()).a(this.a.du(), (double)this.a.dr()))) {
+               this.a.I().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
       }
-
-      super.d();
    }
 }

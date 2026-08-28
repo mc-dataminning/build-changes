@@ -1,72 +1,80 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
+import java.util.Collections;
 
 public class aoa {
-   public static final int a = 100;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wo.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wo.c("commands.recipe.take.failed"));
 
-   public static void a(CommandDispatcher<ew> $$0, es $$1) {
+   public static void a(CommandDispatcher<ex> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("give").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("recipe").requires($$0x -> $$0x.c(2)))
+               .then(
+                  ey.a("give")
+                     .then(
+                        ((RequiredArgumentBuilder)ey.a("targets", fk.d())
+                              .then(
+                                 ey.a("recipe", fx.a(mc.bk))
+                                    .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
+                              ))
+                           .then(ey.a("*").executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
+                     )
+               ))
             .then(
-               ex.a("targets", fj.d())
+               ey.a("take")
                   .then(
-                     ((RequiredArgumentBuilder)ex.a("item", hf.a($$1)).executes($$0x -> a((ew)$$0x.getSource(), hf.a($$0x, "item"), fj.f($$0x, "targets"), 1)))
-                        .then(
-                           ex.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((ew)$$0x.getSource(), hf.a($$0x, "item"), fj.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
+                     ((RequiredArgumentBuilder)ey.a("targets", fk.d())
+                           .then(
+                              ey.a("recipe", fx.a(mc.bk))
+                                 .executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), Collections.singleton(fx.d($$0x, "recipe"))))
+                           ))
+                        .then(ey.a("*").executes($$0x -> b((ex)$$0x.getSource(), fk.f($$0x, "targets"), ((ex)$$0x.getSource()).l().aI().e())))
                   )
             )
       );
    }
 
-   private static int a(ew $$0, hg $$1, Collection<ary> $$2, int $$3) throws CommandSyntaxException {
-      cxg $$4 = $$1.a(1, false);
-      int $$5 = $$4.k();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(xk.a("commands.give.failed.toomanyitems", $$6, $$4.K()));
-         return 0;
+   private static int a(ex $$0, Collection<ard> $$1, Collection<dbj<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (ard $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
       } else {
-         for (ary $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               cxg $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gi().f($$10);
-               if ($$11 && $$10.f()) {
-                  cls $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.y();
-                  }
-
-                  $$7.dW().a(null, $$7.dB(), $$7.dD(), $$7.dH(), awv.oa, aww.h, 0.2F, (($$7.dZ().i() - $$7.dZ().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.cd.d();
-               } else {
-                  cls $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.t();
-                     $$12.b($$7.cG());
-                  }
-               }
-            }
-         }
-
-         if ($$2.size() == 1) {
-            $$0.a(() -> xk.a("commands.give.success.single", $$3, $$4.K(), $$2.iterator().next().p_()), true);
+         if ($$1.size() == 1) {
+            $$0.a(() -> wo.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().p_()), true);
          } else {
-            $$0.a(() -> xk.a("commands.give.success.single", $$3, $$4.K(), $$2.size()), true);
+            $$0.a(() -> wo.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
          }
 
-         return $$2.size();
+         return $$3;
+      }
+   }
+
+   private static int b(ex $$0, Collection<ard> $$1, Collection<dbj<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (ard $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> wo.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> wo.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
       }
    }
 }

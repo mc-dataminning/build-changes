@@ -1,9 +1,11 @@
-public abstract class zo<T extends wq> implements zr<T> {
-   @Override
-   public final void a(T $$0) {
-      throw new AssertionError("This packet should be handled by pipeline");
-   }
+public interface zo extends abh {
+   void a(zr var1);
 
-   @Override
-   public abstract zt<? extends zo<T>> a();
+   void a(zs var1);
+
+   void a(zq var1);
+
+   void a(zt var1);
+
+   void a(zp var1);
 }

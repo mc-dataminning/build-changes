@@ -1,144 +1,77 @@
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.RewriteResult;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.View;
+import com.mojang.datafixers.functions.PointFreeRule;
+import com.mojang.datafixers.types.Type;
+import com.mojang.serialization.Dynamic;
+import java.util.BitSet;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class bap {
-   private static final char a = '�';
-   private static final Optional<Object> b = Optional.of(bba.a);
-
-   private static boolean a(yh $$0, azh $$1, int $$2, char $$3) {
-      return Character.isSurrogate($$3) ? $$1.accept($$2, $$0, 65533) : $$1.accept($$2, $$0, $$3);
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("X").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
+      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
+      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
+         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
+         : $$0;
    }
 
-   public static boolean a(String $$0, yh $$1, azh $$2) {
-      int $$3 = $$0.length();
+   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
+      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   }
 
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isHighSurrogate($$5)) {
-            if ($$4 + 1 >= $$3) {
-               if (!$$2.accept($$4, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
+   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
+      return $$0.all(a($$1, $$2), true, false).view().newType();
+   }
 
-            char $$6 = $$0.charAt($$4 + 1);
-            if (Character.isLowSurrogate($$6)) {
-               if (!$$2.accept($$4, $$1, Character.toCodePoint($$5, $$6))) {
-                  return false;
-               }
+   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
+      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
+            throw new UnsupportedOperationException();
+         }), new BitSet());
+      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
+   }
 
-               $$4++;
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
+   @SafeVarargs
+   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
+      return $$1 -> {
+         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
+            $$1 = $$2.apply($$1);
          }
+
+         return $$1;
+      };
+   }
+
+   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
+      Dynamic<un> $$2 = new Dynamic(ue.a, new tq());
+      Dynamic<un> $$3 = $$2.set("Name", $$2.createString($$0));
+      if (!$$1.isEmpty()) {
+         $$3 = $$3.set(
+            "Properties",
+            $$2.createMap(
+               $$1.entrySet()
+                  .stream()
+                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
+            )
+         );
       }
 
-      return true;
+      return $$3;
    }
 
-   public static boolean b(String $$0, yh $$1, azh $$2) {
-      int $$3 = $$0.length();
-
-      for (int $$4 = $$3 - 1; $$4 >= 0; $$4--) {
-         char $$5 = $$0.charAt($$4);
-         if (Character.isLowSurrogate($$5)) {
-            if ($$4 - 1 < 0) {
-               if (!$$2.accept(0, $$1, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$6 = $$0.charAt($$4 - 1);
-            if (Character.isHighSurrogate($$6)) {
-               if (!$$2.accept(--$$4, $$1, Character.toCodePoint($$6, $$5))) {
-                  return false;
-               }
-            } else if (!$$2.accept($$4, $$1, 65533)) {
-               return false;
-            }
-         } else if (!a($$1, $$2, $$4, $$5)) {
-            return false;
-         }
-      }
-
-      return true;
+   public static Dynamic<?> a(String $$0) {
+      return a($$0, Map.of());
    }
 
-   public static boolean c(String $$0, yh $$1, azh $$2) {
-      return a($$0, 0, $$1, $$2);
-   }
-
-   public static boolean a(String $$0, int $$1, yh $$2, azh $$3) {
-      return a($$0, $$1, $$2, $$2, $$3);
-   }
-
-   public static boolean a(String $$0, int $$1, yh $$2, yh $$3, azh $$4) {
-      int $$5 = $$0.length();
-      yh $$6 = $$2;
-
-      for (int $$7 = $$1; $$7 < $$5; $$7++) {
-         char $$8 = $$0.charAt($$7);
-         if ($$8 == 167) {
-            if ($$7 + 1 >= $$5) {
-               break;
-            }
-
-            char $$9 = $$0.charAt($$7 + 1);
-            n $$10 = n.a($$9);
-            if ($$10 != null) {
-               $$6 = $$10 == n.v ? $$3 : $$6.c($$10);
-            }
-
-            $$7++;
-         } else if (Character.isHighSurrogate($$8)) {
-            if ($$7 + 1 >= $$5) {
-               if (!$$4.accept($$7, $$6, 65533)) {
-                  return false;
-               }
-               break;
-            }
-
-            char $$11 = $$0.charAt($$7 + 1);
-            if (Character.isLowSurrogate($$11)) {
-               if (!$$4.accept($$7, $$6, Character.toCodePoint($$8, $$11))) {
-                  return false;
-               }
-
-               $$7++;
-            } else if (!$$4.accept($$7, $$6, 65533)) {
-               return false;
-            }
-         } else if (!a($$6, $$4, $$7, $$8)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public static boolean a(xp $$0, yh $$1, azh $$2) {
-      return $$0.a(($$1x, $$2x) -> a($$2x, 0, $$1x, $$2) ? Optional.empty() : b, $$1).isEmpty();
-   }
-
-   public static String a(String $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, yh.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
-   }
-
-   public static String a(xp $$0) {
-      StringBuilder $$1 = new StringBuilder();
-      a($$0, yh.a, ($$1x, $$2, $$3) -> {
-         $$1.appendCodePoint($$3);
-         return true;
-      });
-      return $$1.toString();
+   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
+      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
    }
 }

@@ -1,263 +1,55 @@
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.ToIntFunction;
 
-public class bts {
-   private final kd<btt> a;
-   private final btr b;
-   private final btr c;
-   private final btr d;
-   private final btr e;
-   private final btr f;
-   private final btr g;
-   private final btr h;
-   private final btr i;
-   private final btr j;
-   private final btr k;
-   private final btr l;
-   private final btr m;
-   private final btr n;
-   private final btr o;
-   private final btr p;
-   private final btr q;
-   private final btr r;
-   private final btr s;
-   private final btr t;
-   private final btr u;
-   private final btr v;
-   private final btr w;
-   private final btr x;
-   private final btr y;
-   private final btr z;
+class bts extends btn {
+   private static final int d = 2;
+   public static final int c = 2;
+   private final ToIntFunction<azh> e;
 
-   public bts(ke $$0) {
-      this.a = $$0.e(mb.s);
-      this.b = this.a(btu.a);
-      this.c = this.a(btu.b);
-      this.d = this.a(btu.c);
-      this.e = this.a(btu.d);
-      this.f = this.a(btu.e);
-      this.g = this.a(btu.f);
-      this.h = this.a(btu.g);
-      this.i = this.a(btu.h);
-      this.j = this.a(btu.i);
-      this.k = this.a(btu.j);
-      this.l = this.a(btu.k);
-      this.m = this.a(btu.l);
-      this.n = this.a(btu.m);
-      this.o = this.a(btu.n);
-      this.p = this.a(btu.o);
-      this.q = this.a(btu.p);
-      this.r = this.a(btu.q);
-      this.s = this.a(btu.r);
-      this.t = this.a(btu.s);
-      this.u = this.a(btu.t);
-      this.v = this.a(btu.u);
-      this.w = this.a(btu.v);
-      this.x = this.a(btu.w);
-      this.y = this.a(btu.U);
-      this.z = this.a(btu.V);
+   protected bts(bto $$0, int $$1, ToIntFunction<azh> $$2) {
+      super($$0, $$1, lt.W);
+      this.e = $$2;
    }
 
-   private btr a(alo<btt> $$0) {
-      return new btr(this.a.b($$0));
+   @VisibleForTesting
+   protected static int a(int $$0, bts.a $$1, int $$2) {
+      return $$0 < 1 ? $$2 : ayz.a(0, $$0 - $$1.count($$0), $$2);
    }
 
-   private btr a(alo<btt> $$0, @Nullable bvb $$1) {
-      return new btr(this.a.b($$0), $$1);
+   @Override
+   public void a(arc $$0, bvg $$1, int $$2, buk.d $$3) {
+      if ($$3 == buk.d.a) {
+         int $$4 = this.e.applyAsInt($$1.dZ());
+         int $$5 = $$0.O().c(dge.v);
+         int $$6 = a($$5, bts.a.a($$1), $$4);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            this.a($$1.dW(), $$1.dB(), $$1.dD() + 0.5, $$1.dH());
+         }
+      }
    }
 
-   private btr a(alo<btt> $$0, @Nullable bvb $$1, @Nullable bvb $$2) {
-      return new btr(this.a.b($$0), $$1, $$2);
+   private void a(dgi $$0, double $$1, double $$2, double $$3) {
+      cmg $$4 = bur.bh.a($$0, buq.k);
+      if ($$4 != null) {
+         $$4.a(2, true);
+         $$4.b($$1, $$2, $$3, $$0.H_().i() * 360.0F, 0.0F);
+         $$0.b($$4);
+      }
    }
 
-   public btr a() {
-      return this.b;
-   }
+   @FunctionalInterface
+   protected interface a {
+      int count(int var1);
 
-   public btr b() {
-      return this.c;
-   }
-
-   public btr c() {
-      return this.d;
-   }
-
-   public btr d() {
-      return this.e;
-   }
-
-   public btr e() {
-      return this.f;
-   }
-
-   public btr f() {
-      return this.g;
-   }
-
-   public btr g() {
-      return this.h;
-   }
-
-   public btr h() {
-      return this.i;
-   }
-
-   public btr i() {
-      return this.j;
-   }
-
-   public btr j() {
-      return this.k;
-   }
-
-   public btr k() {
-      return this.l;
-   }
-
-   public btr l() {
-      return this.m;
-   }
-
-   public btr m() {
-      return this.n;
-   }
-
-   public btr n() {
-      return this.o;
-   }
-
-   public btr o() {
-      return this.p;
-   }
-
-   public btr p() {
-      return this.q;
-   }
-
-   public btr q() {
-      return this.r;
-   }
-
-   public btr r() {
-      return this.s;
-   }
-
-   public btr s() {
-      return this.t;
-   }
-
-   public btr t() {
-      return this.u;
-   }
-
-   public btr u() {
-      return this.v;
-   }
-
-   public btr v() {
-      return this.w;
-   }
-
-   public btr w() {
-      return this.x;
-   }
-
-   public btr a(bvb $$0) {
-      return this.a(btu.x, $$0);
-   }
-
-   public btr b(bvb $$0) {
-      return this.a(btu.y, $$0);
-   }
-
-   public btr c(bvb $$0) {
-      return this.a(btu.z, $$0);
-   }
-
-   public btr a(bvx $$0) {
-      return this.a(btu.A, $$0);
-   }
-
-   public btr b(bvx $$0) {
-      return this.a(btu.B, $$0);
-   }
-
-   public btr c(bvx $$0) {
-      return this.a(btu.C, $$0);
-   }
-
-   public btr a(cpo $$0) {
-      return this.a(btu.D, $$0);
-   }
-
-   public btr a(cpv $$0, @Nullable bvb $$1) {
-      return this.a(btu.E, $$0, $$1);
-   }
-
-   public btr a(bvb $$0, @Nullable bvb $$1) {
-      return this.a(btu.F, $$0, $$1);
-   }
-
-   public btr a(bvb $$0, @Nullable bvx $$1) {
-      return this.a(btu.G, $$0, $$1);
-   }
-
-   public btr b(bvb $$0, @Nullable bvx $$1) {
-      return this.a(btu.H, $$0, $$1);
-   }
-
-   public btr c(bvb $$0, @Nullable bvx $$1) {
-      return this.a(btu.I, $$0, $$1);
-   }
-
-   public btr a(cqc $$0, @Nullable bvb $$1) {
-      return this.a(btu.J, $$0, $$1);
-   }
-
-   public btr a(cqb $$0, @Nullable bvb $$1) {
-      return $$1 == null ? this.a(btu.L, $$0) : this.a(btu.K, $$0, $$1);
-   }
-
-   public btr a(cqv $$0, bvb $$1) {
-      return this.a(btu.M, $$0, $$1);
-   }
-
-   public btr b(bvb $$0, @Nullable bvb $$1) {
-      return this.a(btu.N, $$0, $$1);
-   }
-
-   public btr c(bvb $$0, @Nullable bvb $$1) {
-      return this.a(btu.O, $$0, $$1);
-   }
-
-   public btr d(bvb $$0) {
-      return this.a(btu.P, $$0);
-   }
-
-   public btr a(@Nullable dgr $$0) {
-      return $$0 != null ? this.d($$0.d(), $$0.c()) : this.d(null, null);
-   }
-
-   public btr d(@Nullable bvb $$0, @Nullable bvb $$1) {
-      return this.a($$1 != null && $$0 != null ? btu.R : btu.Q, $$0, $$1);
-   }
-
-   public btr e(bvb $$0) {
-      return this.a(btu.S, $$0);
-   }
-
-   public btr a(fbr $$0) {
-      return new btr(this.a.b(btu.T), $$0);
-   }
-
-   public btr x() {
-      return this.y;
-   }
-
-   public btr y() {
-      return this.z;
-   }
-
-   public btr f(bvb $$0) {
-      return this.a(btu.W, $$0);
+      static bts.a a(bvg $$0) {
+         return $$1 -> {
+            List<cmg> $$2 = new ArrayList<>();
+            $$0.dW().a(bur.bh, $$0.cR().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
+            return $$2.size();
+         };
+      }
    }
 }

@@ -1,30 +1,66 @@
-import java.util.Objects;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public interface fbw {
-   static fbw a() {
-      return fcb.a;
+public enum fbw implements azv {
+   a(0, "list"),
+   b(1, "sidebar"),
+   c(2, "below_name"),
+   d(3, "sidebar.team.black"),
+   e(4, "sidebar.team.dark_blue"),
+   f(5, "sidebar.team.dark_green"),
+   g(6, "sidebar.team.dark_aqua"),
+   h(7, "sidebar.team.dark_red"),
+   i(8, "sidebar.team.dark_purple"),
+   j(9, "sidebar.team.gold"),
+   k(10, "sidebar.team.gray"),
+   l(11, "sidebar.team.dark_gray"),
+   m(12, "sidebar.team.blue"),
+   n(13, "sidebar.team.green"),
+   o(14, "sidebar.team.aqua"),
+   p(15, "sidebar.team.red"),
+   q(16, "sidebar.team.light_purple"),
+   r(17, "sidebar.team.yellow"),
+   s(18, "sidebar.team.white");
+
+   public static final azv.a<fbw> t = azv.a(fbw::values);
+   public static final IntFunction<fbw> u = axq.a(fbw::a, values(), axq.a.a);
+   private final int v;
+   private final String w;
+
+   private fbw(final int $$0, final String $$1) {
+      this.v = $$0;
+      this.w = $$1;
    }
 
-   static fbw a(bvb $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fbw)(switch ($$0) {
-         case crn $$1 -> crn.b($$1.dW()) ? new fcf($$1, false) : new fcb($$0, false);
-         default -> new fcb($$0, false);
-      });
+   public int a() {
+      return this.v;
    }
 
-   static fbw a(bvb $$0, boolean $$1) {
-      return new fcb($$0, $$1);
+   @Override
+   public String c() {
+      return this.w;
    }
 
-   boolean b();
-
-   boolean a(fcl var1, jh var2, boolean var3);
-
-   boolean a(cxc var1);
-
-   boolean a(etq var1, etq var2);
-
-   fcl a(dxo var1, dgi var2, jh var3);
+   @Nullable
+   public static fbw a(n $$0) {
+      return switch ($$0) {
+         case a -> d;
+         case b -> e;
+         case c -> f;
+         case d -> g;
+         case e -> h;
+         case f -> i;
+         case g -> j;
+         case h -> k;
+         case i -> l;
+         case j -> m;
+         case k -> n;
+         case l -> o;
+         case m -> p;
+         case n -> q;
+         case o -> r;
+         case p -> s;
+         case r, u, t, v, q, s -> null;
+      };
+   }
 }

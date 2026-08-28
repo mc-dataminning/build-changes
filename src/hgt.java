@@ -1,59 +1,23 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+import org.joml.Vector3f;
 
-public class hgt implements AutoCloseable {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ".json";
-   private static final int c = 7;
-   private final boa d;
-   @Nullable
-   private CompletableFuture<Optional<hgp>> e;
+public class hgt {
+   private static final String c = "missing";
+   private static final String d = "missingno";
+   public static final aku a = aku.b("builtin/missing");
+   public static final hha b = new hha(a, "missing");
 
-   private hgt(boa $$0) {
-      this.d = $$0;
-   }
+   public static hhg a() {
+      gni $$0 = new gni(new float[]{0.0F, 0.0F, 16.0F, 16.0F}, 0);
+      Map<jn, gng> $$1 = new EnumMap<>(jn.class);
 
-   public static CompletableFuture<Optional<hgt>> a(Path $$0) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            boa $$1 = boa.a($$0, ".json");
-            $$1.a().a(LocalDate.now(), 7).a();
-            return Optional.of(new hgt($$1));
-         } catch (Exception var2) {
-            a.error("Failed to create telemetry log manager", var2);
-            return Optional.empty();
-         }
-      }, ae.g());
-   }
-
-   public CompletableFuture<Optional<hgq>> a() {
-      if (this.e == null) {
-         this.e = CompletableFuture.supplyAsync(() -> {
-            try {
-               boa.e $$0 = this.d.a(LocalDate.now());
-               FileChannel $$1 = $$0.e();
-               return Optional.of(new hgp($$1, ae.g()));
-            } catch (IOException var3) {
-               a.error("Failed to open channel for telemetry event log", var3);
-               return Optional.empty();
-            }
-         }, ae.g());
+      for (jn $$2 : jn.values()) {
+         $$1.put($$2, new gng($$2, -1, "missingno", $$0));
       }
 
-      return this.e.thenApply($$0 -> $$0.map(hgp::a));
-   }
-
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.thenAccept($$0 -> $$0.ifPresent(hgp::close));
-      }
+      gnf $$3 = new gnf(new Vector3f(0.0F, 0.0F, 0.0F), new Vector3f(16.0F, 16.0F, 16.0F), $$1);
+      return new gnj(null, List.of($$3), new gnq.a.a().a("particle", "missingno").a("missingno", new hgs(hei.d, hdz.b())).a(), null, null, gno.a);
    }
 }

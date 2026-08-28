@@ -1,44 +1,45 @@
-import java.util.List;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public record aet(List<aet.a> b, boolean c) implements zr<acg> {
-   public static final zi<wv, aet> a = zi.a(aet.a.c.a(zg.a()), aet::b, zg.b, aet::e, aet::new);
+public class aet implements yv<abk> {
+   public static final ym<vl, aet> a = yv.a(aet::a, aet::new);
+   private final fbw b;
+   private final String c;
 
-   @Override
-   public zt<aet> a() {
-      return agz.ak;
+   public aet(fbw $$0, @Nullable fbx $$1) {
+      this.b = $$0;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   public void a(acg $$0) {
+   private aet(vl $$0) {
+      this.b = $$0.a(fbw.u);
+      this.c = $$0.p();
+   }
+
+   private void a(vl $$0) {
+      $$0.a(fbw::a, this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public yx<aet> a() {
+      return agd.aE;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
-      return this.c;
+   public fbw b() {
+      return this.b;
    }
 
-   public static record a(ddb d, byte e) {
-      public static final byte a = 1;
-      public static final byte b = 2;
-      public static final zi<wv, aet.a> c = zi.a(ddb.a, aet.a::c, zg.c, aet.a::d, aet.a::new);
-
-      public a(ddb $$0, boolean $$1, boolean $$2) {
-         this($$0, (byte)(($$1 ? 1 : 0) | ($$2 ? 2 : 0)));
-      }
-
-      public boolean a() {
-         return (this.e & 1) != 0;
-      }
-
-      public boolean b() {
-         return (this.e & 2) != 0;
-      }
-
-      public ddb c() {
-         return this.d;
-      }
-
-      public byte d() {
-         return this.e;
-      }
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

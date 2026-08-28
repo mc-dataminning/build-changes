@@ -1,65 +1,49 @@
 import java.util.EnumSet;
 
-public abstract class ccv {
-   private final EnumSet<ccv.a> a = EnumSet.noneOf(ccv.a.class);
+public class ccv extends cce {
+   private static final cfx b = cfx.b().a(6.0);
+   public static final int a = 400;
+   private final chj c;
+   private coi d;
+   private int e;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
-   }
-
-   public boolean U_() {
-      return true;
-   }
-
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean V_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<ccv.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   public ccv(chj $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(cce.a.a, cce.a.b));
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      if (!this.c.dW().V()) {
+         return false;
+      } else if (this.c.dZ().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = a(this.c).a(coi.class, b, this.c, this.c.dB(), this.c.dD(), this.c.dH(), this.c.cR().c(6.0, 2.0, 6.0));
+         return this.d != null;
+      }
    }
 
-   public EnumSet<ccv.a> j() {
-      return this.a;
+   @Override
+   public boolean c() {
+      return this.e > 0;
    }
 
-   protected int a(int $$0) {
-      return this.V_() ? $$0 : b($$0);
+   @Override
+   public void d() {
+      this.e = this.a(400);
+      this.c.x(true);
    }
 
-   protected static int b(int $$0) {
-      return azu.e($$0, 2);
+   @Override
+   public void e() {
+      this.c.x(false);
+      this.d = null;
    }
 
-   protected static arx a(bvb $$0) {
-      return (arx)$$0.dW();
-   }
-
-   protected static arx a(dgz $$0) {
-      return (arx)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      this.c.H().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

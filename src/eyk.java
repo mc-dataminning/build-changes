@@ -1,52 +1,54 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.List;
+import com.mojang.serialization.DataResult;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eyk extends exv {
-   public static final MapCodec<eyk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  czv.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  czv.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  czv.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, eyk::new)
-   );
-   public static final czv b = new czv(czv.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<czv.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+public class eyk {
+   private static final BiMap<aku, baj> y = HashBiMap.create();
+   public static final Codec<baj> a = aku.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((baj)y.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         y.inverse()::get
+      );
+   public static final baj b = a("empty", $$0 -> {
+   });
+   public static final baj c = a("chest", $$0 -> $$0.a(eyl.f).b(eyl.a));
+   public static final baj d = a("command", $$0 -> $$0.a(eyl.f).b(eyl.a));
+   public static final baj e = a("selector", $$0 -> $$0.a(eyl.f).a(eyl.a));
+   public static final baj f = a("fishing", $$0 -> $$0.a(eyl.f).a(eyl.i).b(eyl.a));
+   public static final baj g = a("entity", $$0 -> $$0.a(eyl.a).a(eyl.f).a(eyl.c).b(eyl.d).b(eyl.e).b(eyl.b));
+   public static final baj h = a("equipment", $$0 -> $$0.a(eyl.f).a(eyl.a));
+   public static final baj i = a("archaeology", $$0 -> $$0.a(eyl.f).a(eyl.a).a(eyl.i));
+   public static final baj j = a("gift", $$0 -> $$0.a(eyl.f).a(eyl.a));
+   public static final baj k = a("barter", $$0 -> $$0.a(eyl.a));
+   public static final baj l = a("vault", $$0 -> $$0.a(eyl.f).b(eyl.a).b(eyl.i));
+   public static final baj m = a("advancement_reward", $$0 -> $$0.a(eyl.a).a(eyl.f));
+   public static final baj n = a("advancement_entity", $$0 -> $$0.a(eyl.a).a(eyl.f));
+   public static final baj o = a("advancement_location", $$0 -> $$0.a(eyl.a).a(eyl.f).a(eyl.i).a(eyl.g));
+   public static final baj p = a("block_use", $$0 -> $$0.a(eyl.a).a(eyl.f).a(eyl.g));
+   public static final baj q = a("generic", $$0 -> $$0.a(eyl.a).a(eyl.b).a(eyl.c).a(eyl.d).a(eyl.e).a(eyl.f).a(eyl.g).a(eyl.h).a(eyl.i).a(eyl.j));
+   public static final baj r = a("block", $$0 -> $$0.a(eyl.g).a(eyl.f).a(eyl.i).b(eyl.a).b(eyl.h).b(eyl.j));
+   public static final baj s = a("shearing", $$0 -> $$0.a(eyl.f).a(eyl.a).a(eyl.i));
+   public static final baj t = a("enchanted_damage", $$0 -> $$0.a(eyl.a).a(eyl.k).a(eyl.f).a(eyl.c).b(eyl.e).b(eyl.d));
+   public static final baj u = a("enchanted_item", $$0 -> $$0.a(eyl.i).a(eyl.k));
+   public static final baj v = a("enchanted_location", $$0 -> $$0.a(eyl.a).a(eyl.k).a(eyl.f).a(eyl.l));
+   public static final baj w = a("enchanted_entity", $$0 -> $$0.a(eyl.a).a(eyl.k).a(eyl.f));
+   public static final baj x = a("hit_block", $$0 -> $$0.a(eyl.a).a(eyl.k).a(eyl.f).a(eyl.g));
 
-   public eyk(List<ezr> $$0, Optional<czv.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
-      super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
-   }
-
-   @Override
-   protected cxg a(cxg $$0, ewi $$1) {
-      $$0.a(ku.ae, b, this::a);
-      return $$0;
-   }
-
-   private czv a(czv $$0) {
-      return new czv(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
-   }
-
-   @Override
-   public exx<eyk> b() {
-      return exy.L;
+   private static baj a(String $$0, Consumer<baj.a> $$1) {
+      baj.a $$2 = new baj.a();
+      $$1.accept($$2);
+      baj $$3 = $$2.a();
+      aku $$4 = aku.b($$0);
+      baj $$5 = (baj)y.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+      } else {
+         return $$3;
+      }
    }
 }

@@ -1,39 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Set;
+import java.util.function.Function;
 
-public class eys extends exv {
-   static final MapCodec<eys> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fao.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, eys::new));
-   private final fan b;
+public interface eys<T extends eys<T>> {
+   T b(eza.a var1);
 
-   private eys(List<ezr> $$0, fan $$1) {
-      super($$0);
-      this.b = $$1;
+   default <E> T a_(Iterable<E> $$0, Function<E, eza.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public Set<bbd<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public exx<eys> b() {
-      return exy.Q;
-   }
-
-   @Override
-   public cxg a(cxg $$0, ewi $$1) {
-      int $$2 = azu.a(this.b.a($$1), 0, 4);
-      $$0.b(ku.aa, new dae($$2));
-      return $$0;
-   }
-
-   public fan c() {
-      return this.b;
-   }
-
-   public static exv.a<?> a(fan $$0) {
-      return a($$1 -> new eys($$1, $$0));
-   }
+   T d();
 }

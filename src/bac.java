@@ -1,69 +1,50 @@
-import io.netty.util.internal.ThreadLocalRandom;
+import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
+import java.util.function.Function;
 
-public interface bac {
-   @Deprecated
-   double a = 2.297;
+public interface bac<C> {
+   bac<Float> a = a($$0 -> $$0);
 
-   static bac a() {
-      return a(edy.a());
+   float a(C var1);
+
+   float b();
+
+   float c();
+
+   static bac<Float> a(final Float2FloatFunction $$0) {
+      return new bac<Float>() {
+         public float a(Float $$0x) {
+            return (Float)$$0.apply($$0);
+         }
+
+         @Override
+         public float b() {
+            return Float.NEGATIVE_INFINITY;
+         }
+
+         @Override
+         public float c() {
+            return Float.POSITIVE_INFINITY;
+         }
+      };
    }
 
-   @Deprecated
-   static bac b() {
-      return new eec(edy.a());
-   }
+   default <C2> bac<C2> a(final Function<C2, C> $$0) {
+      final bac<C> $$1 = this;
+      return new bac<C2>() {
+         @Override
+         public float a(C2 $$0x) {
+            return $$1.a($$0.apply($$0));
+         }
 
-   static bac a(long $$0) {
-      return new edk($$0);
-   }
+         @Override
+         public float b() {
+            return $$1.b();
+         }
 
-   static bac c() {
-      return new edz(ThreadLocalRandom.current().nextLong());
-   }
-
-   bac d();
-
-   edw e();
-
-   void b(long var1);
-
-   int f();
-
-   int a(int var1);
-
-   default int a(int $$0, int $$1) {
-      return this.a($$1 - $$0 + 1) + $$0;
-   }
-
-   long g();
-
-   boolean h();
-
-   float i();
-
-   double j();
-
-   double k();
-
-   default double a(double $$0, double $$1) {
-      return $$0 + $$1 * (this.j() - this.j());
-   }
-
-   default float a(float $$0, float $$1) {
-      return $$0 + $$1 * (this.i() - this.i());
-   }
-
-   default void b(int $$0) {
-      for (int $$1 = 0; $$1 < $$0; $$1++) {
-         this.f();
-      }
-   }
-
-   default int b(int $$0, int $$1) {
-      if ($$0 >= $$1) {
-         throw new IllegalArgumentException("bound - origin is non positive");
-      } else {
-         return $$0 + this.a($$1 - $$0);
-      }
+         @Override
+         public float c() {
+            return $$1.c();
+         }
+      };
    }
 }

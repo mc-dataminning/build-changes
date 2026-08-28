@@ -1,20 +1,23 @@
-public record aal(ari b) implements zr<aak> {
-   public static final zi<wh, aal> a = zr.a(aal::a, aal::new);
+import java.util.List;
 
-   private aal(wh $$0) {
-      this(new ari($$0));
+public record aal(List<ji> c) implements zy {
+   public static final ym<vl, aal> a = zy.a(aal::a, aal::new);
+   public static final zy.b<aal> b = zy.a("debug/raids");
+
+   private aal(vl $$0) {
+      this($$0.a(ji.b));
    }
 
-   private void a(wh $$0) {
-      this.b.a($$0);
+   private void a(vl $$0) {
+      $$0.a(this.c, ji.b);
    }
 
    @Override
-   public zt<aal> a() {
-      return aaj.l;
+   public zy.b<aal> a() {
+      return b;
    }
 
-   public void a(aak $$0) {
-      $$0.a(this);
+   public List<ji> b() {
+      return this.c;
    }
 }

@@ -1,4 +1,3 @@
-public class gzm extends gyo {
-   public float a;
-   public int b = 1;
+public class gzm extends gzl {
+   public float n = -1.0F;
 }

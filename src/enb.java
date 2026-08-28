@@ -1,44 +1,44 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Optional;
 
-public class enb extends enk {
-   public static final MapCodec<enb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jh.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, enb::new)
-   );
-   private final List<jh> c;
+public class enb {
+   public static final Codec<enb> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.unboundedMap(akt.a(mc.bf), eat.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, enb::new)
+      )
+      .validate(enb::a);
+   public static final Codec<jr<enb>> b = akq.a(mc.bb, a);
+   private final Map<akt<eat>, eat> c;
 
-   public static enb a(jh... $$0) {
-      return new enb(List.of($$0));
-   }
-
-   private enb(List<jh> $$0) {
+   public enb(Map<akt<eat>, eat> $$0) {
       this.c = $$0;
    }
 
-   @Override
-   public Stream<jh> a_(eni $$0, bac $$1, jh $$2) {
-      int $$3 = kj.a($$2.u());
-      int $$4 = kj.a($$2.w());
-      boolean $$5 = false;
-
-      for (jh $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
+   private ImmutableMap<akt<eat>, eat> c() {
+      Builder<akt<eat>, eat> $$0 = ImmutableMap.builder();
+      edn.a(this.c.keySet().stream()).forEach($$1 -> {
+         eat $$2 = this.c.get($$1);
+         if ($$2 != null) {
+            $$0.put($$1, $$2);
          }
-      }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+      });
+      return $$0.build();
    }
 
-   private static boolean a(int $$0, int $$1, jh $$2) {
-      return $$0 == kj.a($$2.u()) && $$1 == kj.a($$2.w());
+   public edn a() {
+      return new edn(this.c());
    }
 
-   @Override
-   public enl<?> b() {
-      return enl.o;
+   public Optional<eat> b() {
+      return Optional.ofNullable(this.c.get(eat.b));
+   }
+
+   private static DataResult<enb> a(enb $$0) {
+      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
    }
 }

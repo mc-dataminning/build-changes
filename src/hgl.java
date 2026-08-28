@@ -1,7 +1,16 @@
-public interface hgl<T> {
-   int e();
+import java.util.List;
+import javax.annotation.Nullable;
 
-   T b(bac var1);
+public interface hgl {
+   List<gne> a(@Nullable dwx var1, @Nullable jn var2, azh var3);
 
-   void a(hgg var1);
+   boolean a();
+
+   boolean b();
+
+   boolean c();
+
+   hej d();
+
+   gno e();
 }

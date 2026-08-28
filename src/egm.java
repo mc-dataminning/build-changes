@@ -1,29 +1,44 @@
 import com.mojang.serialization.Codec;
 
-public class egm extends egp<eja> {
-   public egm(Codec<eja> $$0) {
+public class egm extends efy<eij> {
+   public egm(Codec<eij> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(egr<eja> $$0) {
-      dhx $$1 = $$0.b();
-      bac $$2 = $$0.d();
-      jh $$3 = $$0.e();
-      float $$4 = (float)$$2.a(3) + 4.0F;
+   public boolean a(ega<eij> $$0) {
+      int $$1 = 0;
+      dhg $$2 = $$0.b();
+      ji $$3 = $$0.e();
+      azh $$4 = $$0.d();
+      int $$5 = $$2.a(ecs.a.d, $$3.u(), $$3.w());
+      ji $$6 = new ji($$3.u(), $$5, $$3.w());
+      if ($$2.a_($$6).a(djo.J)) {
+         dwx $$7 = djo.mE.m();
+         dwx $$8 = djo.mF.m();
+         int $$9 = 1 + $$4.a(10);
 
-      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
-         for (int $$6 = azu.d(-$$4); $$6 <= azu.f($$4); $$6++) {
-            for (int $$7 = azu.d(-$$4); $$7 <= azu.f($$4); $$7++) {
-               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
-                  this.a($$1, $$3.b($$6, $$5, $$7), dkf.fU.m());
+         for (int $$10 = 0; $$10 <= $$9; $$10++) {
+            if ($$2.a_($$6).a(djo.J) && $$2.a_($$6.d()).a(djo.J) && $$8.a($$2, $$6)) {
+               if ($$10 == $$9) {
+                  $$2.a($$6, $$7.b(dns.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               } else {
+                  $$2.a($$6, $$8, 2);
                }
+            } else if ($$10 > 0) {
+               ji $$11 = $$6.e();
+               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(djo.mE)) {
+                  $$2.a($$11, $$7.b(dns.e, Integer.valueOf($$4.a(4) + 20)), 2);
+                  $$1++;
+               }
+               break;
             }
-         }
 
-         $$4 -= (float)$$2.a(2) + 0.5F;
+            $$6 = $$6.d();
+         }
       }
 
-      return true;
+      return $$1 > 0;
    }
 }

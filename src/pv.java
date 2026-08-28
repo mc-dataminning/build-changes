@@ -1,143 +1,26 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
 
-public class pv extends qj<dib> {
-   public pv(mj $$0, CompletableFuture<js.a> $$1) {
-      super($$0, mb.aI, $$1);
-   }
+public class pv {
+   public static final akt<eow> a = ql.a("ancient_city/city_center");
 
-   @Override
-   protected void a(js.a $$0) {
-      this.b(axj.a).a(dii.Y).a(dii.W).a(dii.U).a(dii.S);
-      this.b(axj.b).b(axj.a).a(dii.X).a(dii.T).a(dii.V).a(dii.R).a(dii.Q);
-      this.b(axj.c).a(dii.N).a(dii.O);
-      this.b(axj.d).a(dii.L).a(dii.M);
-      this.b(axj.e).a(dii.E).a(dii.I).a(dii.J).a(dii.K).a(dii.H).a(dii.F);
-      this.b(axj.f).a(dii.B).a(dii.C).a(dii.D);
-      this.b(axj.g).a(dii.u).a(dii.w).a(dii.v);
-      this.b(axj.h).a(dii.q).a(dii.r).a(dii.o).a(dii.p);
-      this.b(axj.i).a(dii.A).a(dii.y).a(dii.z);
-      this.b(axj.j).a(dii.i).a(dii.j).a(dii.k).a(dii.n).a(dii.l).a(dii.m).a(dii.G);
-      this.b(axj.k).a(dii.s).a(dii.t).a(dii.x);
-      qj.b<dib> $$1 = this.b(axj.m);
-      dip.a.a.a().forEach($$1::a);
-      qj.b<dib> $$2 = this.b(axj.l);
-      dip.a.b.a().forEach($$2::a);
-      this.b(axj.n).a(dii.ai).a(dii.aj).a(dii.ak).a(dii.al).a(dii.am);
-      this.b(axj.p).b(axj.c);
-      this.b(axj.q).a(dii.f);
-      this.b(axj.r).a(dii.r).a(dii.d).a(dii.H);
-      this.b(axj.s).a(dii.A).a(dii.y);
-      this.b(axj.t)
-         .b(axj.b)
-         .b(axj.d)
-         .b(axj.c)
-         .b(axj.e)
-         .b(axj.g)
-         .b(axj.h)
-         .b(axj.i)
-         .b(axj.j)
-         .a(dii.P)
-         .a(dii.Z)
-         .a(dii.e)
-         .a(dii.x)
-         .a(dii.f)
-         .a(dii.s)
-         .a(dii.d)
-         .a(dii.b)
-         .a(dii.c)
-         .a(dii.g)
-         .a(dii.h)
-         .a(dii.t)
-         .a(dii.aa)
-         .a(dii.ab);
-      this.b(axj.u).b(axj.f);
-      this.b(axj.Y).a(dii.ac);
-      this.b(axj.v).b(axj.a);
-      this.b(axj.X).b(axj.b).b(axj.d);
-      this.b(axj.w).a(dii.X).a(dii.V).a(dii.T).a(dii.Y).a(dii.W).a(dii.U);
-      this.b(axj.x).a(dii.R).a(dii.Q).a(dii.S);
-      this.b(axj.y).a(dii.f).a(dii.b).a(dii.s).a(dii.d).a(dii.q).b(axj.e).a(dii.G);
-      this.b(axj.z).a(dii.f);
-      this.b(axj.A).b(axj.i);
-      this.b(axj.B).b(axj.b);
-      this.b(axj.C).a(dii.g).a(dii.h);
-      this.b(axj.D).b(axj.f).b(axj.g).a(dii.t).a(dii.x).a(dii.P).b(axj.e);
-      this.b(axj.E).b(axj.c).b(axj.d).b(axj.h).b(axj.j).a(dii.Z).a(dii.e).a(dii.aa).a(dii.ab).a(dii.s).a(dii.d).a(dii.b).a(dii.c);
-      this.b(axj.F).b(axj.c);
-      this.b(axj.G).b(axj.b);
-      this.b(axj.J).a(dii.g);
-      this.b(axj.K).a(dii.f);
-      this.b(axj.L).a(dii.b).a(dii.E);
-      this.b(axj.M).a(dii.s);
-      this.b(axj.N).a(dii.d);
-      this.b(axj.O).a(dii.q);
-      this.b(axj.P).a(dii.q).a(dii.r).a(dii.o).a(dii.p).a(dii.n).a(dii.y);
-      this.b(axj.Q).a(dii.l);
-      this.b(axj.o)
-         .a(dii.b)
-         .a(dii.c)
-         .a(dii.d)
-         .a(dii.e)
-         .a(dii.f)
-         .a(dii.i)
-         .a(dii.j)
-         .a(dii.k)
-         .a(dii.l)
-         .a(dii.m)
-         .a(dii.n)
-         .a(dii.o)
-         .a(dii.p)
-         .a(dii.q)
-         .a(dii.r)
-         .a(dii.s)
-         .a(dii.t)
-         .a(dii.u)
-         .a(dii.v)
-         .a(dii.w)
-         .a(dii.x)
-         .a(dii.y)
-         .a(dii.z)
-         .a(dii.A)
-         .a(dii.B)
-         .a(dii.C)
-         .a(dii.D)
-         .a(dii.E)
-         .a(dii.G)
-         .a(dii.H)
-         .a(dii.I)
-         .a(dii.J)
-         .a(dii.K)
-         .a(dii.Z)
-         .a(dii.aa)
-         .a(dii.ab);
-      this.b(axj.H).b(axj.l);
-      qj.b<dib> $$3 = this.b(axj.I);
-      dip.a.b.a().filter(Predicate.not(dii.ac::equals)).forEach($$3::a);
-      this.b(axj.R).b(axj.m);
-      this.b(axj.S).a(dii.ag);
-      this.b(axj.T).a(dii.af).a(dii.ad).a(dii.ag).a(dii.ae);
-      this.b(axj.U).a(dii.ac);
-      this.b(axj.V).b(axj.m);
-      this.b(axj.W).a(dii.aj).a(dii.ak);
-      this.b(axj.ac).a(dii.Q);
-      this.b(axj.Z).b(axj.b).b(axj.d);
-      this.b(axj.aa).a(dii.g).a(dii.h);
-      this.b(axj.ab).b(axj.b).b(axj.d).a(dii.g).a(dii.h);
-      this.b(axj.af).a(dii.Z);
-      this.b(axj.ag).a(dii.Z);
-      this.b(axj.ah).a(dii.a);
-      this.b(axj.ai).a(dii.d).a(dii.e).a(dii.I).a(dii.J).a(dii.H).a(dii.X).a(dii.Y).a(dii.G).a(dii.ac).a(dii.M).a(dii.r).a(dii.O).b(axj.n);
-      this.b(axj.aj).a(dii.f).a(dii.Q).b(axj.i).b(axj.k).b(axj.m).b(axj.f).a(dii.h);
-      this.b(axj.ak).a(dii.f);
-      this.b(axj.al).a(dii.d).a(dii.e).a(dii.X).a(dii.r).a(dii.M).a(dii.O).a(dii.I).a(dii.J).a(dii.H).a(dii.G);
-      this.b(axj.am).b(axj.d);
-      this.b(axj.an).a(dii.ab);
-      this.b(axj.ao).a(dii.X).a(dii.Y);
-      this.b(axj.ap).b(axj.d);
-      this.b(axj.aq).a(dii.g).a(dii.h);
-      this.b(axj.ar).a(dii.d).a(dii.e).a(dii.X).a(dii.r).a(dii.M).a(dii.O).a(dii.I).a(dii.J).a(dii.H).a(dii.G);
-      this.b(axj.ad).a(dii.A).a(dii.Z).a(dii.h).a(dii.H).a(dii.I).a(dii.J).a(dii.g).a(dii.y);
-      this.b(axj.ae).a(dii.B).a(dii.ah).a(dii.af).a(dii.f).a(dii.C).a(dii.ad).a(dii.s).a(dii.t).a(dii.ag).a(dii.ae).a(dii.x).a(dii.D);
+   public static void a(qe<eow> $$0) {
+      js<erm> $$1 = $$0.a(mc.aV);
+      jr<erm> $$2 = $$1.b(qm.G);
+      js<eow> $$3 = $$0.a(mc.aX);
+      jr<eow> $$4 = $$3.b(ql.a);
+      $$0.a(
+         a,
+         new eow(
+            $$4,
+            ImmutableList.of(
+               Pair.of(eou.b("ancient_city/city_center/city_center_1", $$2), 1),
+               Pair.of(eou.b("ancient_city/city_center/city_center_2", $$2), 1),
+               Pair.of(eou.b("ancient_city/city_center/city_center_3", $$2), 1)
+            ),
+            eow.a.b
+         )
+      );
+      pw.a($$0);
    }
 }

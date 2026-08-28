@@ -1,8 +1,19 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Optional;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dfy {
+public class dfy extends dgb {
+   private final buk a;
+
+   public dfy(buk $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public Optional<Float> a(dga $$0, dfn $$1, ji $$2, dwx $$3, esz $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
+   }
+
+   @Override
+   public boolean a(dga $$0, dfn $$1, ji $$2, dwx $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
+   }
 }

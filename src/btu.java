@@ -1,103 +1,24 @@
-public interface btu {
-   alo<btt> a = alo.a(mb.s, alp.b("in_fire"));
-   alo<btt> b = alo.a(mb.s, alp.b("campfire"));
-   alo<btt> c = alo.a(mb.s, alp.b("lightning_bolt"));
-   alo<btt> d = alo.a(mb.s, alp.b("on_fire"));
-   alo<btt> e = alo.a(mb.s, alp.b("lava"));
-   alo<btt> f = alo.a(mb.s, alp.b("hot_floor"));
-   alo<btt> g = alo.a(mb.s, alp.b("in_wall"));
-   alo<btt> h = alo.a(mb.s, alp.b("cramming"));
-   alo<btt> i = alo.a(mb.s, alp.b("drown"));
-   alo<btt> j = alo.a(mb.s, alp.b("starve"));
-   alo<btt> k = alo.a(mb.s, alp.b("cactus"));
-   alo<btt> l = alo.a(mb.s, alp.b("fall"));
-   alo<btt> m = alo.a(mb.s, alp.b("ender_pearl"));
-   alo<btt> n = alo.a(mb.s, alp.b("fly_into_wall"));
-   alo<btt> o = alo.a(mb.s, alp.b("out_of_world"));
-   alo<btt> p = alo.a(mb.s, alp.b("generic"));
-   alo<btt> q = alo.a(mb.s, alp.b("magic"));
-   alo<btt> r = alo.a(mb.s, alp.b("wither"));
-   alo<btt> s = alo.a(mb.s, alp.b("dragon_breath"));
-   alo<btt> t = alo.a(mb.s, alp.b("dry_out"));
-   alo<btt> u = alo.a(mb.s, alp.b("sweet_berry_bush"));
-   alo<btt> v = alo.a(mb.s, alp.b("freeze"));
-   alo<btt> w = alo.a(mb.s, alp.b("stalagmite"));
-   alo<btt> x = alo.a(mb.s, alp.b("falling_block"));
-   alo<btt> y = alo.a(mb.s, alp.b("falling_anvil"));
-   alo<btt> z = alo.a(mb.s, alp.b("falling_stalactite"));
-   alo<btt> A = alo.a(mb.s, alp.b("sting"));
-   alo<btt> B = alo.a(mb.s, alp.b("mob_attack"));
-   alo<btt> C = alo.a(mb.s, alp.b("mob_attack_no_aggro"));
-   alo<btt> D = alo.a(mb.s, alp.b("player_attack"));
-   alo<btt> E = alo.a(mb.s, alp.b("arrow"));
-   alo<btt> F = alo.a(mb.s, alp.b("trident"));
-   alo<btt> G = alo.a(mb.s, alp.b("mob_projectile"));
-   alo<btt> H = alo.a(mb.s, alp.b("spit"));
-   alo<btt> I = alo.a(mb.s, alp.b("wind_charge"));
-   alo<btt> J = alo.a(mb.s, alp.b("fireworks"));
-   alo<btt> K = alo.a(mb.s, alp.b("fireball"));
-   alo<btt> L = alo.a(mb.s, alp.b("unattributed_fireball"));
-   alo<btt> M = alo.a(mb.s, alp.b("wither_skull"));
-   alo<btt> N = alo.a(mb.s, alp.b("thrown"));
-   alo<btt> O = alo.a(mb.s, alp.b("indirect_magic"));
-   alo<btt> P = alo.a(mb.s, alp.b("thorns"));
-   alo<btt> Q = alo.a(mb.s, alp.b("explosion"));
-   alo<btt> R = alo.a(mb.s, alp.b("player_explosion"));
-   alo<btt> S = alo.a(mb.s, alp.b("sonic_boom"));
-   alo<btt> T = alo.a(mb.s, alp.b("bad_respawn_point"));
-   alo<btt> U = alo.a(mb.s, alp.b("outside_border"));
-   alo<btt> V = alo.a(mb.s, alp.b("generic_kill"));
-   alo<btt> W = alo.a(mb.s, alp.b("mace_smash"));
+class btu extends btn {
+   protected btu(bto $$0, int $$1, lr $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   static void a(ra<btt> $$0) {
-      $$0.a(a, new btt("inFire", 0.1F, btp.d));
-      $$0.a(b, new btt("inFire", 0.1F, btp.d));
-      $$0.a(c, new btt("lightningBolt", 0.1F));
-      $$0.a(d, new btt("onFire", 0.0F, btp.d));
-      $$0.a(e, new btt("lava", 0.1F, btp.d));
-      $$0.a(f, new btt("hotFloor", 0.1F, btp.d));
-      $$0.a(g, new btt("inWall", 0.0F));
-      $$0.a(h, new btt("cramming", 0.0F));
-      $$0.a(i, new btt("drown", 0.0F, btp.c));
-      $$0.a(j, new btt("starve", 0.0F));
-      $$0.a(k, new btt("cactus", 0.1F));
-      $$0.a(l, new btt("fall", btq.b, 0.0F, btp.a, btv.b));
-      $$0.a(m, new btt("fall", btq.b, 0.0F, btp.a, btv.b));
-      $$0.a(n, new btt("flyIntoWall", 0.0F));
-      $$0.a(o, new btt("outOfWorld", 0.0F));
-      $$0.a(p, new btt("generic", 0.0F));
-      $$0.a(q, new btt("magic", 0.0F));
-      $$0.a(r, new btt("wither", 0.0F));
-      $$0.a(s, new btt("dragonBreath", 0.0F));
-      $$0.a(t, new btt("dryout", 0.1F));
-      $$0.a(u, new btt("sweetBerryBush", 0.1F, btp.e));
-      $$0.a(v, new btt("freeze", 0.0F, btp.f));
-      $$0.a(w, new btt("stalagmite", 0.0F));
-      $$0.a(x, new btt("fallingBlock", 0.1F));
-      $$0.a(y, new btt("anvil", 0.1F));
-      $$0.a(z, new btt("fallingStalactite", 0.1F));
-      $$0.a(A, new btt("sting", 0.1F));
-      $$0.a(B, new btt("mob", 0.1F));
-      $$0.a(C, new btt("mob", 0.1F));
-      $$0.a(D, new btt("player", 0.1F));
-      $$0.a(E, new btt("arrow", 0.1F));
-      $$0.a(F, new btt("trident", 0.1F));
-      $$0.a(G, new btt("mob", 0.1F));
-      $$0.a(H, new btt("mob", 0.1F));
-      $$0.a(J, new btt("fireworks", 0.1F));
-      $$0.a(L, new btt("onFire", 0.1F, btp.d));
-      $$0.a(K, new btt("fireball", 0.1F, btp.d));
-      $$0.a(M, new btt("witherSkull", 0.1F));
-      $$0.a(N, new btt("thrown", 0.1F));
-      $$0.a(O, new btt("indirectMagic", 0.0F));
-      $$0.a(P, new btt("thorns", 0.1F, btp.b));
-      $$0.a(Q, new btt("explosion", btq.c, 0.1F));
-      $$0.a(R, new btt("explosion.player", btq.c, 0.1F));
-      $$0.a(S, new btt("sonic_boom", btq.c, 0.0F));
-      $$0.a(T, new btt("badRespawnPoint", btq.c, 0.1F, btp.a, btv.c));
-      $$0.a(U, new btt("outsideBorder", 0.0F));
-      $$0.a(V, new btt("genericKill", 0.0F));
-      $$0.a(I, new btt("mob", 0.1F));
-      $$0.a(W, new btt("mace_smash", 0.1F));
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 == 1;
+   }
+
+   @Override
+   public boolean a(arc $$0, bvg $$1, int $$2) {
+      if ($$1 instanceof ard $$3 && !$$1.Z_()) {
+         ji $$4 = $$3.ag();
+         if ($$4 != null) {
+            $$0.B().a($$3, $$4);
+            $$3.af();
+            return false;
+         }
+      }
+
+      return true;
    }
 }

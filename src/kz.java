@@ -1,46 +1,21 @@
-public class kz extends la {
-   private final la c = new la();
-   private final bvi<? extends crl> d;
-
-   public kz(bvi<? extends crl> $$0) {
-      this.d = $$0;
+public record kz(arc a, ji b, dwx c, dut d) {
+   public fba a() {
+      return this.b.b();
    }
 
-   @Override
-   public cxg a(ky $$0, cxg $$1) {
-      jm $$2 = $$0.d().c(dmj.b);
-      arx $$3 = $$0.b();
-      fbr $$4 = $$0.a();
-      double $$5 = 0.5625 + (double)this.d.l() / 2.0;
-      double $$6 = $$4.a() + (double)$$2.j() * $$5;
-      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
-      double $$8 = $$4.c() + (double)$$2.l() * $$5;
-      jh $$9 = $$0.c().a($$2);
-      double $$10;
-      if ($$3.b_($$9).a(axq.a)) {
-         $$10 = 1.0;
-      } else {
-         if (!$$3.a_($$9).l() || !$$3.b_($$9.e()).a(axq.a)) {
-            return this.c.dispense($$0, $$1);
-         }
-
-         $$10 = 0.0;
-      }
-
-      crl $$13 = this.d.a($$3, bvh.o);
-      if ($$13 != null) {
-         $$13.p($$6, $$7 + $$10, $$8);
-         bvi.<crl>a($$3, $$1, null).accept($$13);
-         $$13.v($$2.p());
-         $$3.b($$13);
-         $$1.h(1);
-      }
-
-      return $$1;
+   public arc b() {
+      return this.a;
    }
 
-   @Override
-   protected void a(ky $$0) {
-      $$0.b().c(1000, $$0.c(), 0);
+   public ji c() {
+      return this.b;
+   }
+
+   public dwx d() {
+      return this.c;
+   }
+
+   public dut e() {
+      return this.d;
    }
 }

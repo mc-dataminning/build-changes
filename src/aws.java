@@ -1,41 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public interface aws {
+   axf<dcz> a = a("tooltip_order");
+   axf<dcz> b = a("exclusive_set/armor");
+   axf<dcz> c = a("exclusive_set/boots");
+   axf<dcz> d = a("exclusive_set/bow");
+   axf<dcz> e = a("exclusive_set/crossbow");
+   axf<dcz> f = a("exclusive_set/damage");
+   axf<dcz> g = a("exclusive_set/mining");
+   axf<dcz> h = a("exclusive_set/riptide");
+   axf<dcz> i = a("tradeable");
+   axf<dcz> j = a("double_trade_price");
+   axf<dcz> k = a("in_enchanting_table");
+   axf<dcz> l = a("on_mob_spawn_equipment");
+   axf<dcz> m = a("on_traded_equipment");
+   axf<dcz> n = a("on_random_loot");
+   axf<dcz> o = a("curse");
+   axf<dcz> p = a("smelts_loot");
+   axf<dcz> q = a("prevents_bee_spawns_when_mining");
+   axf<dcz> r = a("prevents_decorated_pot_shattering");
+   axf<dcz> s = a("prevents_ice_melting");
+   axf<dcz> t = a("prevents_infested_spawns");
+   axf<dcz> u = a("treasure");
+   axf<dcz> v = a("non_treasure");
+   axf<dcz> w = a("trades/desert_common");
+   axf<dcz> x = a("trades/jungle_common");
+   axf<dcz> y = a("trades/plains_common");
+   axf<dcz> z = a("trades/savanna_common");
+   axf<dcz> A = a("trades/snow_common");
+   axf<dcz> B = a("trades/swamp_common");
+   axf<dcz> C = a("trades/taiga_common");
+   axf<dcz> D = a("trades/desert_special");
+   axf<dcz> E = a("trades/jungle_special");
+   axf<dcz> F = a("trades/plains_special");
+   axf<dcz> G = a("trades/savanna_special");
+   axf<dcz> H = a("trades/snow_special");
+   axf<dcz> I = a("trades/swamp_special");
+   axf<dcz> J = a("trades/taiga_special");
 
-public class aws {
-   public static final Codec<aws> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awu.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
-               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, aws::new)
-   );
-   private final jq<awu> b;
-   private final int c;
-   private final int d;
-   private final boolean e;
-
-   public aws(jq<awu> $$0, int $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   public jq<awu> a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
+   private static axf<dcz> a(String $$0) {
+      return axf.a(mc.aO, aku.b($$0));
    }
 }

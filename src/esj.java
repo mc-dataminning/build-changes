@@ -1,30 +1,166 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class esj {
+   private static final int b = 16;
+   public static final int a = Integer.MIN_VALUE;
+   private final int c;
+   private final axo d;
+   private final ji.a e = new ji.a();
+   private final ji.a f = new ji.a();
 
-public class esj implements esn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<esj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alo.a(mb.bg).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, esj::new)
-   );
-   private final alo<ewn> d;
-
-   public esj(alo<ewn> $$0) {
-      this.d = $$0;
+   public esj(dgk $$0) {
+      this.c = $$0.L_() - 1;
+      int $$1 = $$0.an() + 1;
+      int $$2 = ayz.e($$1 - this.c + 1);
+      this.d = new azo($$2, 256);
    }
 
-   @Override
-   public um a(bac $$0, @Nullable um $$1) {
-      um $$2 = $$1 == null ? new um() : $$1.i();
-      alo.a(mb.bg).encodeStart(va.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
+   public void a(dys $$0) {
+      int $$1 = $$0.a();
+      if ($$1 == -1) {
+         this.a(this.c);
+      } else {
+         for (int $$2 = 0; $$2 < 16; $$2++) {
+            for (int $$3 = 0; $$3 < 16; $$3++) {
+               int $$4 = Math.max(this.a($$0, $$1, $$3, $$2), this.c);
+               this.b(c($$3, $$2), $$4);
+            }
+         }
+      }
    }
 
-   @Override
-   public eso<?> a() {
-      return eso.d;
+   private int a(dys $$0, int $$1, int $$2, int $$3) {
+      int $$4 = kk.c($$0.h($$1) + 1);
+      ji.a $$5 = this.e.d($$2, $$4, $$3);
+      ji.a $$6 = this.f.a($$5, jn.a);
+      dwx $$7 = djo.a.m();
+
+      for (int $$8 = $$1; $$8 >= 0; $$8--) {
+         dzd $$9 = $$0.b($$8);
+         if ($$9.c()) {
+            $$7 = djo.a.m();
+            int $$10 = $$0.h($$8);
+            $$5.q(kk.c($$10));
+            $$6.q($$5.v() - 1);
+         } else {
+            for (int $$11 = 15; $$11 >= 0; $$11--) {
+               dwx $$12 = $$9.a($$2, $$11, $$3);
+               if (a($$7, $$12)) {
+                  return $$5.v();
+               }
+
+               $$7 = $$12;
+               $$5.g($$6);
+               $$6.c(jn.a);
+            }
+         }
+      }
+
+      return this.c;
+   }
+
+   public boolean a(dfn $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$2 + 1;
+      int $$5 = c($$1, $$3);
+      int $$6 = this.b($$5);
+      if ($$4 < $$6) {
+         return false;
+      } else {
+         ji $$7 = this.e.d($$1, $$2 + 1, $$3);
+         dwx $$8 = $$0.a_($$7);
+         ji $$9 = this.f.d($$1, $$2, $$3);
+         dwx $$10 = $$0.a_($$9);
+         if (this.a($$0, $$5, $$6, $$7, $$8, $$9, $$10)) {
+            return true;
+         } else {
+            ji $$11 = this.e.d($$1, $$2 - 1, $$3);
+            dwx $$12 = $$0.a_($$11);
+            return this.a($$0, $$5, $$6, $$9, $$10, $$11, $$12);
+         }
+      }
+   }
+
+   private boolean a(dfn $$0, int $$1, int $$2, ji $$3, dwx $$4, ji $$5, dwx $$6) {
+      int $$7 = $$3.v();
+      if (a($$4, $$6)) {
+         if ($$7 > $$2) {
+            this.b($$1, $$7);
+            return true;
+         }
+      } else if ($$7 == $$2) {
+         this.b($$1, this.a($$0, $$5, $$6));
+         return true;
+      }
+
+      return false;
+   }
+
+   private int a(dfn $$0, ji $$1, dwx $$2) {
+      ji.a $$3 = this.e.g($$1);
+      ji.a $$4 = this.f.a($$1, jn.a);
+      dwx $$5 = $$2;
+
+      while ($$4.v() >= this.c) {
+         dwx $$6 = $$0.a_($$4);
+         if (a($$5, $$6)) {
+            return $$3.v();
+         }
+
+         $$5 = $$6;
+         $$3.g($$4);
+         $$4.c(jn.a);
+      }
+
+      return this.c;
+   }
+
+   private static boolean a(dwx $$0, dwx $$1) {
+      if ($$1.g() != 0) {
+         return true;
+      } else {
+         fbu $$2 = esq.a($$0, jn.a);
+         fbu $$3 = esq.a($$1, jn.b);
+         return fbr.b($$2, $$3);
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      int $$2 = this.b(c($$0, $$1));
+      return this.c($$2);
+   }
+
+   public int a() {
+      int $$0 = Integer.MIN_VALUE;
+
+      for (int $$1 = 0; $$1 < this.d.b(); $$1++) {
+         int $$2 = this.d.a($$1);
+         if ($$2 > $$0) {
+            $$0 = $$2;
+         }
+      }
+
+      return this.c($$0 + this.c);
+   }
+
+   private void a(int $$0) {
+      int $$1 = $$0 - this.c;
+
+      for (int $$2 = 0; $$2 < this.d.b(); $$2++) {
+         this.d.b($$2, $$1);
+      }
+   }
+
+   private void b(int $$0, int $$1) {
+      this.d.b($$0, $$1 - this.c);
+   }
+
+   private int b(int $$0) {
+      return this.d.a($$0) + this.c;
+   }
+
+   private int c(int $$0) {
+      return $$0 == this.c ? Integer.MIN_VALUE : $$0;
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
    }
 }

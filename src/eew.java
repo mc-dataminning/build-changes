@@ -1,24 +1,24 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-class eew extends efb {
-   private final ju<dkd> e;
-   public static final MapCodec<eew> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kf.a(mb.f).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, eew::new)
-   );
+public record eew<WC extends eer>(eey<WC> d, WC e) {
+   public static final Codec<eew<?>> a = mb.N.q().dispatch($$0 -> $$0.d, eey::c);
+   public static final Codec<jr<eew<?>>> b = akq.a(mc.aK, a);
+   public static final Codec<jv<eew<?>>> c = kg.a(mc.aK, a);
 
-   public eew(kl $$0, ju<dkd> $$1) {
-      super($$0);
-      this.e = $$1;
+   public boolean a(azh $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   protected boolean a(dxo $$0) {
-      return $$0.a(this.e);
+   public boolean a(eet $$0, dys $$1, Function<ji, jr<dhk>> $$2, azh $$3, ece $$4, dfo $$5, dyr $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public eer<?> a() {
-      return eer.a;
+   public eey<WC> a() {
+      return this.d;
+   }
+
+   public WC b() {
+      return this.e;
    }
 }

@@ -1,15 +1,33 @@
-public class sf {
-   public static final alo<egb<?, ?>> a = sb.a("pile_hay");
-   public static final alo<egb<?, ?>> b = sb.a("pile_melon");
-   public static final alo<egb<?, ?>> c = sb.a("pile_snow");
-   public static final alo<egb<?, ?>> d = sb.a("pile_ice");
-   public static final alo<egb<?, ?>> e = sb.a("pile_pumpkin");
+import java.util.Collection;
+import java.util.function.Consumer;
 
-   public static void a(ra<egb<?, ?>> $$0) {
-      sb.a($$0, a, egp.j, new eil(new elb(dkf.iH)));
-      sb.a($$0, b, egp.j, new eil(eku.a(dkf.fo)));
-      sb.a($$0, c, egp.j, new eil(eku.a(dkf.ea)));
-      sb.a($$0, d, egp.j, new eil(new ele(bri.<dxo>a().a(dkf.ny.m(), 1).a(dkf.ja.m(), 5))));
-      sb.a($$0, e, egp.j, new eil(new ele(bri.<dxo>a().a(dkf.fn.m(), 19).a(dkf.es.m(), 1))));
+public record sf(String b, Collection<sl> c, Consumer<arc> d, Consumer<arc> e) {
+   public static final String a = "defaultBatch";
+
+   public sf(String b, Collection<sl> c, Consumer<arc> d, Consumer<arc> e) {
+      if (c.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+      }
+   }
+
+   public String a() {
+      return this.b;
+   }
+
+   public Collection<sl> b() {
+      return this.c;
+   }
+
+   public Consumer<arc> c() {
+      return this.d;
+   }
+
+   public Consumer<arc> d() {
+      return this.e;
    }
 }

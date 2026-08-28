@@ -1,26 +1,88 @@
-import java.util.IllegalFormatException;
+import javax.annotation.Nullable;
 
-public class hcn {
-   private static volatile uh a = uh.a();
+public abstract class hcn {
+   private final boolean a;
 
-   private hcn() {
+   protected hcn(boolean $$0) {
+      this.a = $$0;
    }
 
-   static void a(uh $$0) {
-      a = $$0;
-   }
+   public float a(cwp $$0, @Nullable gfy $$1, @Nullable bvg $$2, int $$3) {
+      buk $$4 = (buk)($$2 != null ? $$2 : $$0.J());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         if ($$1 == null && $$4.dW() instanceof gfy $$5) {
+            $$1 = $$5;
+         }
 
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
       }
    }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   protected abstract float a(cwp var1, gfy var2, int var3, buk var4);
+
+   protected boolean b() {
+      return this.a;
+   }
+
+   protected hcn.a a(float $$0) {
+      return this.a ? b($$0) : c();
+   }
+
+   public static hcn.a b(final float $$0) {
+      return new hcn.a() {
+         private float b;
+         private float c;
+         private long d;
+
+         @Override
+         public float a() {
+            return this.b;
+         }
+
+         @Override
+         public boolean a(long $$0x) {
+            return this.d != $$0;
+         }
+
+         @Override
+         public void a(long $$0x, float $$1) {
+            this.d = $$0;
+            float $$2 = ayz.b($$1 - this.b + 0.5F, 1.0F) - 0.5F;
+            this.c += $$2 * 0.1F;
+            this.c = this.c * $$0;
+            this.b = ayz.b(this.b + this.c, 1.0F);
+         }
+      };
+   }
+
+   public static hcn.a c() {
+      return new hcn.a() {
+         private float a;
+
+         @Override
+         public float a() {
+            return this.a;
+         }
+
+         @Override
+         public boolean a(long $$0) {
+            return true;
+         }
+
+         @Override
+         public void a(long $$0, float $$1) {
+            this.a = $$1;
+         }
+      };
+   }
+
+   public interface a {
+      float a();
+
+      boolean a(long var1);
+
+      void a(long var1, float var3);
    }
 }

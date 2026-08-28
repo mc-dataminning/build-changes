@@ -1,46 +1,108 @@
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-public class fry<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fry<?> a = new fry<>(bba.a, ($$0, $$1) -> {
-   });
+public record fry(aku c, float d, float e, fry.a f, String g) implements frv {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fry> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               aku.a.fieldOf("file").forGetter(fry::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fry::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fry::e),
+               fry.a.b.optionalFieldOf("shift", fry.a.a).forGetter(fry::f),
+               h.optionalFieldOf("skip", "").forGetter(fry::g)
+            )
+            .apply($$0, fry::new)
+   );
 
-   private fry(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static fry<?> a(String $$0) {
-      return new fry<>($$0, Consumer::accept);
-   }
-
-   public static fry<?> a(xk $$0) {
-      return new fry<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static fry<?> a(List<xk> $$0) {
-      return new fry<>($$0, ($$1, $$2) -> $$0.stream().map(xk::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
+   @Override
+   public frw a() {
+      return frw.b;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fry<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+   public Either<frv.b, frv.c> b() {
+      return Either.left(this::a);
+   }
+
+   private fdt a(aup $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         fdw var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fru.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
+
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fru.a(FreeType.FT_New_Memory_Face(fru.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               fru.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new fdw($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            }
+         }
+
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fru.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var17;
       }
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   public static record a(float c, float d) {
+      public static final fry.a a = new fry.a(0.0F, 0.0F);
+      public static final Codec<fry.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> af.a($$0, 2).map($$0x -> new fry.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+
+      public float a() {
+         return this.c;
+      }
+
+      public float b() {
+         return this.d;
+      }
    }
 }

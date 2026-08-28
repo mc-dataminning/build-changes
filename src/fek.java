@@ -1,24 +1,17 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public interface fek extends AutoCloseable {
-   float a = 7.0F;
+public class fek {
+   public final int a;
+   public final int b;
+   public final OptionalInt c;
+   public final OptionalInt d;
+   public final boolean e;
 
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default fej a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(fek a, fqq.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
+   public fek(int $$0, int $$1, OptionalInt $$2, OptionalInt $$3, boolean $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

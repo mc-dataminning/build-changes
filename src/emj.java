@@ -1,34 +1,66 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class emj extends emk {
-   public static final emj a = new emj(eed.a(0));
-   public static final MapCodec<emj> b = eed.a.fieldOf("value").xmap(emj::new, emj::b);
-   private final eed d;
+public class emj extends emt {
+   private final jn c;
+   private final edz d;
+   private final edz e;
+   private final int f;
+   public static final MapCodec<emj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               jn.h.fieldOf("direction_of_search").forGetter($$0x -> $$0x.c),
+               edz.b.fieldOf("target_condition").forGetter($$0x -> $$0x.d),
+               edz.b.optionalFieldOf("allowed_search_condition", edz.e()).forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 32).fieldOf("max_steps").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, emj::new)
+   );
 
-   public static emj a(eed $$0) {
-      return new emj($$0);
+   private emj(jn $$0, edz $$1, edz $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   private emj(eed $$0) {
-      this.d = $$0;
+   public static emj a(jn $$0, edz $$1, edz $$2, int $$3) {
+      return new emj($$0, $$1, $$2, $$3);
    }
 
-   public eed b() {
-      return this.d;
+   public static emj a(jn $$0, edz $$1, int $$2) {
+      return a($$0, $$1, edz.e(), $$2);
    }
 
    @Override
-   public int a(bac $$0, eeg $$1) {
-      return this.d.a($$1);
+   public Stream<ji> a_(emr $$0, azh $$1, ji $$2) {
+      ji.a $$3 = $$2.k();
+      dhg $$4 = $$0.d();
+      if (!this.e.test($$4, $$3)) {
+         return Stream.of();
+      } else {
+         for (int $$5 = 0; $$5 < this.f; $$5++) {
+            if (this.d.test($$4, $$3)) {
+               return Stream.of($$3);
+            }
+
+            $$3.c(this.c);
+            if ($$4.e($$3.v())) {
+               return Stream.of();
+            }
+
+            if (!this.e.test($$4, $$3)) {
+               break;
+            }
+         }
+
+         return this.d.test($$4, $$3) ? Stream.of($$3) : Stream.of();
+      }
    }
 
    @Override
-   public eml<?> a() {
-      return eml.a;
-   }
-
-   @Override
-   public String toString() {
-      return this.d.toString();
+   public emu<?> b() {
+      return emu.j;
    }
 }

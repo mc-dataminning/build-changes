@@ -1,36 +1,29 @@
-public class gqx<T extends cns> extends gsr<T, gxi, gay> {
-   private static final alp a = alp.b("textures/entity/creaking/creaking.png");
-   private static final alp b = alp.b("textures/entity/creaking/creaking_eyes.png");
+public class gqx extends gti<cid, gxl, gar> {
+   private static final aku a = aku.b("textures/entity/allay/allay.png");
 
-   public gqx(grl.a $$0) {
-      super($$0, new gay($$0.a(gei.ah)), 0.7F);
-      this.a(new gvt<>(this, b, ($$0x, $$1) -> 1.0F, gay::b, glq::q));
+   public gqx(gsc.a $$0) {
+      super($$0, new gar($$0.a(gfb.c)), 0.4F);
+      this.a(new gwj<>(this));
    }
 
-   public alp a(gxi $$0) {
+   public aku a(gxl $$0) {
       return a;
    }
 
-   public gxi a() {
-      return new gxi();
+   public gxl a() {
+      return new gxl();
    }
 
-   public void a(T $$0, gxi $$1, float $$2) {
-      label12: {
-         super.a($$0, $$1, $$2);
-         $$1.b.a($$0.bZ);
-         $$1.a.a($$0.ca);
-         $$1.c.a($$0.cb);
-         if ($$0 instanceof cnu $$3 && $$0.cb.b()) {
-            $$1.W = 0.0F;
-            $$1.ah = false;
-            $$1.d = $$3.gv();
-            break label12;
-         }
+   public void a(cid $$0, gxl $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      gxn.a($$0, $$1, this.i);
+      $$1.a = $$0.x();
+      $$1.b = $$0.gp();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
 
-         $$1.d = $$0.go();
-      }
-
-      $$1.e = $$0.p();
+   protected int a(cid $$0, ji $$1) {
+      return 15;
    }
 }

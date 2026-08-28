@@ -1,74 +1,63 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Set;
 
 public class hgy {
-   public static final hgy a = new hgy(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hgu<hgy.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+   static final int a = -1;
+   private static final int b = 0;
 
-   protected hgy(Ticker $$0) {
-      this.c = $$0;
-   }
+   public static Object2IntMap<dwx> a(fml $$0, hgn.c $$1) {
+      Map<djm, List<dxz<?>>> $$2 = new HashMap<>();
+      Map<hgy.a, Set<dwx>> $$3 = new HashMap<>();
+      $$1.c().forEach(($$3x, $$4x) -> {
+         List<dxz<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
+         hgy.a $$6x = hgy.a.a($$4x.a(), $$4x.b(), $$5x);
+         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
+      });
+      int $$4 = 1;
+      Object2IntMap<dwx> $$5 = new Object2IntOpenHashMap();
+      $$5.defaultReturnValue(-1);
 
-   public synchronized void a(hgu<hgy.a> $$0) {
-      this.a($$0, (Function<hgu<hgy.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
-   }
+      for (Set<dwx> $$6 : $$3.values()) {
+         Iterator<dwx> $$7 = $$6.iterator();
 
-   public synchronized void a(hgu<hgy.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hgu<hgy.a>, Stopwatch>)($$1x -> $$1));
-   }
+         while ($$7.hasNext()) {
+            dwx $$8 = $$7.next();
+            if ($$8.o() != dpx.c) {
+               $$7.remove();
+               $$5.put($$8, 0);
+            }
+         }
 
-   private synchronized void a(hgu<hgy.a> $$0, Function<hgu<hgy.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
-   }
-
-   public synchronized void b(hgu<hgy.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
+         if ($$6.size() > 1) {
+            int $$9 = $$4++;
+            $$6.forEach($$2x -> $$5.put($$2x, $$9));
          }
       }
+
+      return $$5;
    }
 
-   public void a(hgr $$0) {
-      $$0.send(hgs.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hgu<hgy.a>)$$1, new hgy.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hgs.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hgu.B, new hgy.a((int)$$1)));
-            this.d.clear();
+   static record a(Object a, List<Object> b) {
+      public static hgy.a a(dwx $$0, gnr $$1, List<dxz<?>> $$2) {
+         List<Object> $$3 = a($$0, $$2);
+         Object $$4 = $$1.a($$0);
+         return new hgy.a($$4, $$3);
+      }
+
+      private static List<Object> a(dwx $$0, List<dxz<?>> $$1) {
+         Object[] $$2 = new Object[$$1.size()];
+
+         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
+            $$2[$$3] = $$0.c($$1.get($$3));
          }
-      });
-   }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
-
-   public static record a(int b) {
-      public static final Codec<hgy.a> a = Codec.INT.xmap(hgy.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
+         return List.of($$2);
       }
    }
 }

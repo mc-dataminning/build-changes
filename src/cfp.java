@@ -1,25 +1,38 @@
-public class cfp extends cgb {
-   public static final float a = 8.0F;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-   @Override
-   protected boolean a(arx $$0, bvx $$1, bvx $$2) {
-      return this.b($$1, $$2) && $$2.bm() && (this.b($$2) || this.a($$1, $$2)) && cgh.c($$0, $$1, $$2);
+public class cfp {
+   private final bvi a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
+
+   public cfp(bvi $$0) {
+      this.a = $$0;
    }
 
-   private boolean a(bvx $$0, bvx $$1) {
-      return !$$0.ec().a(cfb.U) && $$1.aq().a(axo.j);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   private boolean b(bvx $$0) {
-      return $$0.aq().a(axo.i);
-   }
+   public boolean a(buk $$0) {
+      int $$1 = $$0.ar();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         bos $$2 = bor.a();
+         $$2.a("hasLineOfSight");
+         boolean $$3 = this.a.E($$0);
+         $$2.c();
+         if ($$3) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(bvx $$0, bvx $$1) {
-      return $$1.g((bvb)$$0) <= 64.0;
-   }
-
-   @Override
-   protected cfb<bvx> b() {
-      return cfb.B;
+         return $$3;
+      }
    }
 }

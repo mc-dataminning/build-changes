@@ -1,91 +1,106 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnc extends dma {
-   public static final MapCodec<dnc> i = b(dnc::new);
-   private final fcl[] j;
+public abstract class dnc extends dna implements djp {
+   public static final dxw e = dxn.aA;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<dnc> a() {
-      return i;
-   }
-
-   public dnc(dxn.d $$0) {
-      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
-      this.l(
-         this.F
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+   protected dnc(dww.d $$0, jn $$1, fbu $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.l(this.F.b().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected fcl d_(dxo $$0) {
-      return this.j[this.h($$0)];
+   protected abstract MapCodec<? extends dnc> a();
+
+   @Override
+   public dwx b(azh $$0) {
+      return this.m().b(e, Integer.valueOf($$0.a(25)));
    }
 
    @Override
-   protected fcl c(dxo $$0, dge $$1, jh $$2, fbw $$3) {
-      return this.a($$0, $$1, $$2, $$3);
+   protected boolean f(dwx $$0) {
+      return $$0.c(e) < 25;
    }
 
    @Override
-   protected boolean a(dxo $$0, euf $$1) {
-      return false;
+   protected void b(dwx $$0, arc $$1, ji $$2, azh $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         ji $$4 = $$2.a(this.a);
+         if (this.h($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.A));
+         }
+      }
    }
 
-   public boolean a(dxo $$0, boolean $$1, jm $$2) {
-      dkd $$3 = $$0.b();
-      boolean $$4 = this.o($$0);
-      boolean $$5 = $$3 instanceof dnd && dnd.a($$0, $$2);
-      return !k($$0) && $$1 || $$4 || $$5;
+   protected dwx a(dwx $$0, azh $$1) {
+      return $$0.a(e);
    }
 
-   private boolean o(dxo $$0) {
-      return $$0.a(axk.U) && $$0.a(axk.l) == this.m().a(axk.l);
+   public dwx p(dwx $$0) {
+      return $$0.b(e, Integer.valueOf(25));
    }
 
-   @Override
-   protected bta a(dxo $$0, dgz $$1, jh $$2, cpo $$3, fbn $$4) {
-      return (bta)(!$$1.B_() ? cxq.a($$3, $$1, $$2) : bta.e);
+   public boolean q(dwx $$0) {
+      return $$0.c(e) == 25;
    }
 
-   @Override
-   public dxo a(dax $$0) {
-      dge $$1 = $$0.q();
-      jh $$2 = $$0.a();
-      etq $$3 = $$0.q().b_($$0.a());
-      jh $$4 = $$2.f();
-      jh $$5 = $$2.i();
-      jh $$6 = $$2.g();
-      jh $$7 = $$2.h();
-      dxo $$8 = $$1.a_($$4);
-      dxo $$9 = $$1.a_($$5);
-      dxo $$10 = $$1.a_($$6);
-      dxo $$11 = $$1.a_($$7);
-      return super.a($$0)
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jm.d), jm.d)))
-         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jm.e), jm.e)))
-         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jm.c), jm.c)))
-         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jm.f), jm.f)))
-         .b(e, Boolean.valueOf($$3.a() == etr.c));
+   protected dwx a(dwx $$0, dwx $$1) {
+      return $$1;
    }
 
    @Override
-   protected dxo a(dxo $$0, dhc $$1, dho $$2, jh $$3, jm $$4, jh $$5, dxo $$6, bac $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, etr.c, etr.c.a($$1));
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      if ($$4 == this.a.g() && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
 
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$4 != this.a || !$$6.a(this) && !$$6.a(this.b())) {
+         if (this.b) {
+            $$2.a($$3, eta.c, eta.c.a($$1));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         return this.a($$0, this.b().m());
+      }
    }
 
    @Override
-   protected void a(dxp.a<dkd, dxo> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean a(dgl $$0, ji $$1, dwx $$2) {
+      return this.h($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(dgi $$0, azh $$1, ji $$2, dwx $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arc $$0, azh $$1, ji $$2, dwx $$3) {
+      ji $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(azh var1);
+
+   protected abstract boolean h(dwx var1);
+
+   @Override
+   protected dnc c() {
+      return this;
    }
 }

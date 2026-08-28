@@ -1,57 +1,80 @@
 import javax.annotation.Nullable;
 
-public class ckc extends cjs {
-   private static final bve bZ = bvi.bP.n().a(bvd.a().a(bvc.a, 0.0F, bvi.bP.m() - 0.03125F, 0.0F)).a(0.5F);
+public class ckc extends cjw {
+   private static final cfx b = cfx.a().d();
+   @Nullable
+   private etn c;
+   @Nullable
+   private fba d;
 
-   public ckc(bvi<? extends ckc> $$0, dgz $$1) {
-      super($$0, $$1);
-   }
-
-   public static bxe.a p() {
-      return gQ().a(bxf.s, 15.0).a(bxf.v, 0.2F);
-   }
-
-   public static boolean c(bvi<? extends cho> $$0, dha $$1, bvh $$2, jh $$3, bac $$4) {
-      return !bvh.a($$2) ? cho.b($$0, $$1, $$2, $$3, $$4) : bvh.b($$2) || a($$1, $$3);
+   public ckc(cju $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(bac $$0) {
-      this.g(bxf.o).a(a($$0::j));
+   public ckk<ckc> h() {
+      return ckk.c;
    }
 
    @Override
-   protected awu u() {
-      return awv.Ep;
+   public void c() {
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   protected awu o_() {
-      return awv.Eq;
-   }
-
-   @Override
-   protected awu e(btr $$0) {
-      return awv.Er;
+   public void a(arc $$0) {
+      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dB(), this.a.dD(), this.a.dH());
+      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
+         this.b($$0);
+      }
    }
 
    @Nullable
    @Override
-   public bus a(arx $$0, bus $$1) {
-      return bvi.bP.a($$0, bvh.e);
+   public fba f() {
+      return this.d;
    }
 
-   @Override
-   public bta b(cpo $$0, bsz $$1) {
-      return (bta)(!this.gF() ? bta.e : super.b($$0, $$1));
+   private void b(arc $$0) {
+      if (this.c == null || this.c.c()) {
+         int $$1 = this.a.t();
+         ji $$2 = $$0.a(ecs.a.f, efx.a(this.a.m()));
+         cox $$3 = $$0.a(b, this.a, (double)$$2.u(), (double)$$2.v(), (double)$$2.w());
+         int $$5;
+         if ($$3 != null) {
+            fba $$4 = new fba($$3.dB(), 0.0, $$3.dH()).d();
+            $$5 = this.a.q(-$$4.d * 40.0, 105.0, -$$4.f * 40.0);
+         } else {
+            $$5 = this.a.q(40.0, (double)$$2.v(), 0.0);
+         }
+
+         etl $$7 = new etl($$2.u(), $$2.v(), $$2.w());
+         this.c = this.a.a($$1, $$5, $$7);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.i();
+      if (this.c != null && this.c.c()) {
+         this.a.gl().a(ckk.d);
+      }
    }
 
-   @Override
-   protected void gG() {
-   }
+   private void i() {
+      if (this.c != null && !this.c.c()) {
+         km $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
 
-   @Override
-   public bve e(bwj $$0) {
-      return this.e_() ? bZ : super.e($$0);
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dZ().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new fba($$1, $$3, $$2);
+      }
    }
 }

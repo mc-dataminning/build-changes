@@ -1,171 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.collect.AbstractIterator;
+import java.util.function.BiFunction;
+import javax.annotation.Nullable;
 
-public record dfl(bvj c, jq<awu> d, Optional<alp> e, Optional<alp> f, Optional<ju<bvi<?>>> g, boolean h, boolean i, boolean j) {
-   public static final Codec<dfl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               bvj.k.fieldOf("slot").forGetter(dfl::a),
-               awu.b.optionalFieldOf("equip_sound", awv.as).forGetter(dfl::b),
-               alp.a.optionalFieldOf("model").forGetter(dfl::c),
-               alp.a.optionalFieldOf("camera_overlay").forGetter(dfl::d),
-               kf.a(mb.z).optionalFieldOf("allowed_entities").forGetter(dfl::e),
-               Codec.BOOL.optionalFieldOf("dispensable", true).forGetter(dfl::f),
-               Codec.BOOL.optionalFieldOf("swappable", true).forGetter(dfl::g),
-               Codec.BOOL.optionalFieldOf("damage_on_hurt", true).forGetter(dfl::h)
-            )
-            .apply($$0, dfl::new)
-   );
-   public static final zi<wv, dfl> b = zi.a(
-      bvj.l,
-      dfl::a,
-      awu.d,
-      dfl::b,
-      alp.b.a(zg::a),
-      dfl::c,
-      alp.b.a(zg::a),
-      dfl::d,
-      zg.c(mb.z).a(zg::a),
-      dfl::e,
-      zg.b,
-      dfl::f,
-      zg.b,
-      dfl::g,
-      zg.b,
-      dfl::h,
-      dfl::new
-   );
+public class dfl<T> extends AbstractIterator<T> {
+   private final fav a;
+   private final fbf b;
+   private final jk c;
+   private final ji.a d;
+   private final fbu e;
+   private final dfr f;
+   private final boolean g;
+   @Nullable
+   private dfn h;
+   private long i;
+   private final BiFunction<ji.a, fbu, T> j;
 
-   public static dfl a(cwd $$0) {
-      return a(bvj.g).a(awv.oE).a(dfk.j.get($$0)).a(bvi.ay, bvi.by).a();
+   public dfl(dfr $$0, @Nullable buk $$1, fav $$2, boolean $$3, BiFunction<ji.a, fbu, T> $$4) {
+      this($$0, $$1 == null ? fbf.a() : fbf.a($$1), $$2, $$3, $$4);
    }
 
-   public static dfl.a a(bvj $$0) {
-      return new dfl.a($$0);
+   public dfl(dfr $$0, fbf $$1, fav $$2, boolean $$3, BiFunction<ji.a, fbu, T> $$4) {
+      this.b = $$1;
+      this.d = new ji.a();
+      this.e = fbr.a($$2);
+      this.f = $$0;
+      this.a = $$2;
+      this.g = $$3;
+      this.j = $$4;
+      int $$5 = ayz.a($$2.a - 1.0E-7) - 1;
+      int $$6 = ayz.a($$2.d + 1.0E-7) + 1;
+      int $$7 = ayz.a($$2.b - 1.0E-7) - 1;
+      int $$8 = ayz.a($$2.e + 1.0E-7) + 1;
+      int $$9 = ayz.a($$2.c - 1.0E-7) - 1;
+      int $$10 = ayz.a($$2.f + 1.0E-7) + 1;
+      this.c = new jk($$5, $$7, $$9, $$6, $$8, $$10);
    }
 
-   public bta a(cxg $$0, cpo $$1) {
-      if (!$$1.e(this.c)) {
-         return bta.e;
+   @Nullable
+   private dfn a(int $$0, int $$1) {
+      int $$2 = kk.a($$0);
+      int $$3 = kk.a($$1);
+      long $$4 = dfo.c($$2, $$3);
+      if (this.h != null && this.i == $$4) {
+         return this.h;
       } else {
-         cxg $$2 = $$1.a(this.c);
-         if ((!dds.a($$2, ddr.E) || $$1.b()) && !cxg.c($$0, $$2)) {
-            if (!$$1.dW().B_()) {
-               $$1.b(axf.c.b($$0.h()));
-            }
+         dfn $$5 = this.f.c($$2, $$3);
+         this.h = $$5;
+         this.i = $$4;
+         return $$5;
+      }
+   }
 
-            if ($$0.M() <= 1) {
-               cxg $$3 = $$2.f() ? $$0 : $$2.g();
-               cxg $$4 = $$1.b() ? $$0.v() : $$0.g();
-               $$1.a(this.c, $$4);
-               return bta.a.a($$3);
-            } else {
-               cxg $$5 = $$2.g();
-               cxg $$6 = $$0.b(1, $$1);
-               $$1.a(this.c, $$6);
-               if (!$$1.gi().f($$5)) {
-                  $$1.a($$5, false);
+   protected T computeNext() {
+      while (this.c.a()) {
+         int $$0 = this.c.b();
+         int $$1 = this.c.c();
+         int $$2 = this.c.d();
+         int $$3 = this.c.e();
+         if ($$3 != 3) {
+            dfn $$4 = this.a($$0, $$2);
+            if ($$4 != null) {
+               this.d.d($$0, $$1, $$2);
+               dwx $$5 = $$4.a_(this.d);
+               if ((!this.g || $$5.j($$4, this.d)) && ($$3 != 1 || $$5.i()) && ($$3 != 2 || $$5.a(djo.bX))) {
+                  fbu $$6 = this.b.a($$5, this.f, this.d);
+                  if ($$6 == fbr.b()) {
+                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
+                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
+                     }
+                  } else {
+                     fbu $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
+                     if (!$$7.c() && fbr.c($$7, this.e, fbe.i)) {
+                        return this.j.apply(this.d, $$7);
+                     }
+                  }
                }
-
-               return bta.a.a($$0);
             }
-         } else {
-            return bta.d;
          }
       }
-   }
 
-   public boolean a(bvi<?> $$0) {
-      return this.g.isEmpty() || this.g.get().a($$0.r());
-   }
-
-   public bvj a() {
-      return this.c;
-   }
-
-   public jq<awu> b() {
-      return this.d;
-   }
-
-   public Optional<alp> c() {
-      return this.e;
-   }
-
-   public Optional<alp> d() {
-      return this.f;
-   }
-
-   public Optional<ju<bvi<?>>> e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public static class a {
-      private final bvj a;
-      private jq<awu> b = awv.as;
-      private Optional<alp> c = Optional.empty();
-      private Optional<alp> d = Optional.empty();
-      private Optional<ju<bvi<?>>> e = Optional.empty();
-      private boolean f = true;
-      private boolean g = true;
-      private boolean h = true;
-
-      a(bvj $$0) {
-         this.a = $$0;
-      }
-
-      public dfl.a a(jq<awu> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public dfl.a a(alp $$0) {
-         this.c = Optional.of($$0);
-         return this;
-      }
-
-      public dfl.a b(alp $$0) {
-         this.d = Optional.of($$0);
-         return this;
-      }
-
-      public dfl.a a(bvi<?>... $$0) {
-         return this.a(ju.a(bvi::r, $$0));
-      }
-
-      public dfl.a a(ju<bvi<?>> $$0) {
-         this.e = Optional.of($$0);
-         return this;
-      }
-
-      public dfl.a a(boolean $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public dfl.a b(boolean $$0) {
-         this.g = $$0;
-         return this;
-      }
-
-      public dfl.a c(boolean $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public dfl a() {
-         return new dfl(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h);
-      }
+      return (T)this.endOfData();
    }
 }

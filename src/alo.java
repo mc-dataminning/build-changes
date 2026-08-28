@@ -1,64 +1,113 @@
-import com.google.common.collect.MapMaker;
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentMap;
+import net.minecraft.server.MinecraftServer;
 
-public class alo<T> {
-   private static final ConcurrentMap<alo.a, alo<?>> a = new MapMaker().weakValues().makeMap();
-   private final alp b;
-   private final alp c;
+public class alo extends bss {
+   private long g = 0L;
+   private long h = 0L;
+   private long i = 0L;
+   private long j = 0L;
+   private boolean k = false;
+   private final MinecraftServer l;
 
-   public static <T> Codec<alo<T>> a(alo<? extends kd<T>> $$0) {
-      return alp.a.xmap($$1 -> a($$0, $$1), alo::a);
+   public alo(MinecraftServer $$0) {
+      this.l = $$0;
    }
 
-   public static <T> zi<ByteBuf, alo<T>> b(alo<? extends kd<T>> $$0) {
-      return alp.b.a($$1 -> a($$0, $$1), alo::a);
-   }
-
-   public static <T> alo<T> a(alo<? extends kd<T>> $$0, alp $$1) {
-      return a($$0.c, $$1);
-   }
-
-   public static <T> alo<kd<T>> a(alp $$0) {
-      return a(mb.a, $$0);
-   }
-
-   private static <T> alo<T> a(alp $$0, alp $$1) {
-      return (alo<T>)a.computeIfAbsent(new alo.a($$0, $$1), $$0x -> new alo($$0x.a, $$0x.b));
-   }
-
-   private alo(alp $$0, alp $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public boolean a() {
+      return this.j > 0L;
    }
 
    @Override
-   public String toString() {
-      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.n();
    }
 
-   public boolean c(alo<? extends kd<?>> $$0) {
-      return this.b.equals($$0.a());
+   private void n() {
+      this.l.ag().a(afu.a(this));
    }
 
-   public <E> Optional<alo<E>> d(alo<? extends kd<E>> $$0) {
-      return this.c($$0) ? Optional.of((alo<E>)this) : Optional.empty();
+   private void o() {
+      this.l.ag().a(afv.a(this));
    }
 
-   public alp a() {
-      return this.c;
+   public boolean a(int $$0) {
+      if (!this.l()) {
+         return false;
+      } else {
+         this.d = $$0;
+         this.o();
+         return true;
+      }
    }
 
-   public alp b() {
-      return this.b;
+   public boolean b() {
+      if (this.d > 0) {
+         this.d = 0;
+         this.o();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public alo<kd<T>> c() {
-      return a(this.b);
+   public boolean c() {
+      if (this.g > 0L) {
+         this.p();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   static record a(alp a, alp b) {
+   public boolean b(int $$0) {
+      boolean $$1 = this.g > 0L;
+      this.i = 0L;
+      this.j = (long)$$0;
+      this.g = (long)$$0;
+      this.k = this.l();
+      this.a(false);
+      return $$1;
+   }
+
+   private void p() {
+      long $$0 = this.j - this.g;
+      double $$1 = Math.max(1.0, (double)this.i) / (double)bab.b;
+      int $$2 = (int)((double)(bab.c * $$0) / $$1);
+      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
+      this.j = 0L;
+      this.i = 0L;
+      this.l.aH().a(() -> wo.a("commands.tick.sprint.report", $$2, $$3), true);
+      this.g = 0L;
+      this.a(this.k);
+      this.l.F();
+   }
+
+   public boolean d() {
+      if (!this.e) {
+         return false;
+      } else if (this.g > 0L) {
+         this.h = System.nanoTime();
+         this.g--;
+         return true;
+      } else {
+         this.p();
+         return false;
+      }
+   }
+
+   public void e() {
+      this.i = this.i + (System.nanoTime() - this.h);
+   }
+
+   @Override
+   public void a(float $$0) {
+      super.a($$0);
+      this.l.F();
+      this.n();
+   }
+
+   public void a(ard $$0) {
+      $$0.f.b(afu.a(this));
+      $$0.f.b(afv.a(this));
    }
 }

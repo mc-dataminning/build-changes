@@ -1,27 +1,24 @@
-public class gdp extends gbh<gzv> {
-   private final gej a;
-
-   public gdp(gej $$0) {
+public class gdp extends gdk<hab> {
+   public gdp(gfc $$0) {
       super($$0);
-      this.a = $$0.b("tail");
    }
 
-   public static gep a(gen $$0) {
-      ger $$1 = new ger();
-      get $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", geo.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), gel.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", geo.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), gel.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", geo.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gel.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", geo.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gel.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", geo.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gel.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", geo.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gel.a(0.0F, 22.0F, -3.0F));
-      return gep.a($$1, 32, 32);
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      $$1.a("head", gfh.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new gfg(0.6F)), gfe.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gfh.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new gfg(1.75F)), gfe.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gfh $$2 = gfh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new gfg(0.5F));
+      $$1.a("right_hind_leg", $$2, gfe.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, gfe.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, gfe.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, gfe.a(3.0F, 12.0F, -5.0F));
+      return gfi.a($$0, 64, 32);
    }
 
-   public void a(gzv $$0) {
+   public void a(hab $$0) {
       super.a($$0);
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * azu.a(0.6F * $$0.p);
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ag;
+      this.b.e = $$0.b;
    }
 }

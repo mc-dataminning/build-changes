@@ -1,54 +1,38 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class emo extends emk {
+public class emo extends emx {
    public static final MapCodec<emo> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               eed.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               eed.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, emo::new)
    );
-   private static final Logger b = LogUtils.getLogger();
-   private final eed d;
-   private final eed e;
-   private final int f;
+   private final int c;
+   private final double d;
+   private final double e;
 
-   private emo(eed $$0, eed $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private emo(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static emo a(eed $$0, eed $$1, int $$2) {
+   public static emo a(int $$0, double $$1, double $$2) {
       return new emo($$0, $$1, $$2);
    }
 
    @Override
-   public int a(bac $$0, eeg $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = azu.a($$0, $$2 + this.f, $$3);
-         int $$5 = azu.a($$0, $$2, $$4 - 1);
-         return azu.a($$0, $$2, $$5 - 1 + this.f);
-      }
+   protected int a(azh $$0, ji $$1) {
+      double $$2 = dhk.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
    @Override
-   public eml<?> a() {
-      return eml.d;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   public emu<?> b() {
+      return emu.g;
    }
 }

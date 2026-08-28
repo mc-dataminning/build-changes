@@ -8,22 +8,22 @@ public class ab {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 4174;
+   public static final int b = 4177;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "24w44a";
+   public static final String d = "24w45a";
    @Deprecated
    public static final int e = 769;
    @Deprecated
-   public static final int f = 220;
+   public static final int f = 221;
    public static final int g = 4173;
    private static final int bl = 30;
    public static final boolean h = true;
    @Deprecated
-   public static final int i = 43;
+   public static final int i = 44;
    @Deprecated
-   public static final int j = 58;
+   public static final int j = 59;
    @Deprecated
    public static final int k = 1;
    public static final int l = 1;
@@ -131,9 +131,9 @@ public class ab {
    public static final float bj = 17.578125F;
    public static final int bk = 64;
    @Nullable
-   private static af bm;
+   private static ag bm;
 
-   public static void a(af $$0) {
+   public static void a(ag $$0) {
       if (bm == null) {
          bm = $$0;
       } else if ($$0 != bm) {
@@ -147,7 +147,7 @@ public class ab {
       }
    }
 
-   public static af b() {
+   public static ag b() {
       if (bm == null) {
          throw new IllegalStateException("Game version not set");
       } else {
@@ -156,10 +156,10 @@ public class ab {
    }
 
    public static int c() {
-      return 1073742044;
+      return 1073742045;
    }
 
-   public static boolean a(dgf $$0) {
+   public static boolean a(dfo $$0) {
       int $$1 = $$0.d();
       int $$2 = $$0.e();
       return !ar ? false : $$1 > 8192 || $$1 < 0 || $$2 > 1024 || $$2 < 0;
@@ -168,6 +168,6 @@ public class ab {
    static {
       ResourceLeakDetector.setLevel(aH);
       CommandSyntaxException.ENABLE_COMMAND_STACK_TRACES = false;
-      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new eq();
+      CommandSyntaxException.BUILT_IN_EXCEPTIONS = new er();
    }
 }

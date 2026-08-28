@@ -1,37 +1,33 @@
-public class aeg implements zr<acg> {
-   public static final zi<wh, aeg> a = zr.a(aeg::a, aeg::new);
-   private final jh b;
-   private final boolean c;
+import javax.annotation.Nullable;
 
-   public aeg(jh $$0, boolean $$1) {
+public class aeg implements yv<abk> {
+   public static final ym<vl, aeg> a = yv.a(aeg::a, aeg::new);
+   @Nullable
+   private final aku b;
+
+   public aeg(@Nullable aku $$0) {
       this.b = $$0;
-      this.c = $$1;
    }
 
-   private aeg(wh $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readBoolean();
+   private aeg(vl $$0) {
+      this.b = $$0.c(vl::q);
    }
 
-   private void a(wh $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(vl $$0) {
+      $$0.a(this.b, vl::a);
    }
 
    @Override
-   public zt<aeg> a() {
-      return agz.Y;
+   public yx<aeg> a() {
+      return agd.as;
    }
 
-   public void a(acg $$0) {
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   public jh b() {
+   @Nullable
+   public aku b() {
       return this.b;
-   }
-
-   public boolean e() {
-      return this.c;
    }
 }

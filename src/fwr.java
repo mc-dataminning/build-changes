@@ -1,117 +1,44 @@
-public class fwr extends fwv {
-   private static final xk a = xk.c("options.languageAccuracyWarning").b(-4539718);
-   private static final int u = 53;
-   private fwr.a v;
-   final hcp w;
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-   public fwr(ftr $$0, fmd $$1, hcp $$2) {
-      super($$0, $$1, xk.c("options.language.title"));
-      this.w = $$2;
-      this.s.a(53);
+public class fwr implements fwu {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
+
+   public fwr(fwr.a $$0) {
+      this.c = $$0.a();
    }
 
    @Override
-   protected void F() {
-      this.v = this.s.c(new fwr.a(this.m));
+   public int a(fob $$0) {
+      return this.c.size() * 12 + 2;
    }
 
    @Override
-   protected void l() {
+   public int b(fob $$0) {
+      int $$1 = 0;
+
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1 + 10 + 6;
    }
 
    @Override
-   protected void E() {
-      frr $$0 = this.s.b(frr.d()).a(8);
-      $$0.c().b();
-      $$0.a(new fpg(a, this.p));
-      frr $$1 = $$0.a(frr.e().a(8));
-      $$1.a(fny.a(xk.c("options.font"), $$0x -> this.m.a(new fwq(this, this.c))).a());
-      $$1.a(fny.a(xj.d, $$0x -> this.J()).a());
+   public void a(fob $$0, int $$1, int $$2, int $$3, int $$4, fod $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         fpr.a($$5, flj.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
+      }
    }
 
-   @Override
-   protected void c() {
-      super.c();
-      this.v.a(this.n, this.s);
-   }
-
-   void J() {
-      fwr.a.a $$0 = this.v.g();
-      if ($$0 != null && !$$0.b.equals(this.w.a())) {
-         this.w.a($$0.b);
-         this.c.ab = $$0.b;
-         this.m.l();
-      }
-
-      this.m.a(this.b);
-   }
-
-   class a extends fov<fwr.a.a> {
-      public a(final flz $$0) {
-         super($$0, fwr.this.n, fwr.this.o - 33 - 53, 33, 18);
-         String $$1 = fwr.this.w.a();
-         fwr.this.w.b().forEach(($$1x, $$2) -> {
-            fwr.a.a $$3 = new fwr.a.a($$1x, $$2);
-            this.b($$3);
-            if ($$1.equals($$1x)) {
-               this.a($$3);
-            }
-         });
-         if (this.g() != null) {
-            this.e(this.g());
-         }
-      }
-
-      @Override
-      public int a() {
-         return super.a() + 50;
-      }
-
-      public class a extends fov.a<fwr.a.a> {
-         final String b;
-         private final xk c;
-         private long d;
-
-         public a(final String $$1, final hco $$2) {
-            this.b = $$1;
-            this.c = $$2.a();
-         }
-
-         @Override
-         public void a(fnl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            $$0.a(fwr.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
-         }
-
-         @Override
-         public boolean a(int $$0, int $$1, int $$2) {
-            if (fsb.a($$0)) {
-               this.b();
-               fwr.this.J();
-               return true;
-            } else {
-               return super.a($$0, $$1, $$2);
-            }
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            this.b();
-            if (ae.c() - this.d < 250L) {
-               fwr.this.J();
-            }
-
-            this.d = ae.c();
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void b() {
-            a.this.a(this);
-         }
-
-         @Override
-         public xk a() {
-            return xk.a("narrator.select", this.c);
-         }
-      }
+   public static record a(List<ProfileResult> a) implements cuj {
    }
 }

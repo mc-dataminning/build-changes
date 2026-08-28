@@ -1,16 +1,8 @@
-public class fuv implements cth {
-   private final flz a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public fuv(flz $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void a(cst $$0, int $$1, cxg $$2) {
-      this.a.r.a($$2, $$1);
-   }
-
-   @Override
-   public void a(cst $$0, int $$1, int $$2) {
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fuv {
 }

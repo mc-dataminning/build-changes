@@ -1,59 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class co extends dy<co.a> {
+public record co(dk.d c, dk.d d) implements ea<Integer> {
+   public static final Codec<co> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dk.d.d.optionalFieldOf("durability", dk.d.c).forGetter(co::b), dk.d.d.optionalFieldOf("damage", dk.d.c).forGetter(co::c))
+            .apply($$0, co::new)
+   );
+
    @Override
-   public Codec<co.a> a() {
-      return co.a.a;
+   public ku<Integer> a() {
+      return kv.e;
    }
 
-   public void a(ary $$0, cxg $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public boolean a(cwp $$0, Integer $$1) {
+      return !this.c.d($$0.p() - $$1) ? false : this.d.d($$1);
    }
 
-   public static record a(Optional<bh> b, Optional<cu> c, dj.d d, dj.d e) implements dy.a {
-      public static final Codec<co.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bw.b.optionalFieldOf("player").forGetter(co.a::a),
-                  cu.a.optionalFieldOf("item").forGetter(co.a::b),
-                  dj.d.d.optionalFieldOf("durability", dj.d.c).forGetter(co.a::c),
-                  dj.d.d.optionalFieldOf("delta", dj.d.c).forGetter(co.a::d)
-               )
-               .apply($$0, co.a::new)
-      );
+   public static co a(dk.d $$0) {
+      return new co($$0, dk.d.c);
+   }
 
-      public static ap<co.a> a(Optional<cu> $$0, dj.d $$1) {
-         return a(Optional.empty(), $$0, $$1);
-      }
+   public dk.d b() {
+      return this.c;
+   }
 
-      public static ap<co.a> a(Optional<bh> $$0, Optional<cu> $$1, dj.d $$2) {
-         return ao.u.a(new co.a($$0, $$1, $$2, dj.d.c));
-      }
-
-      public boolean a(cxg $$0, int $$1) {
-         if (this.c.isPresent() && !this.c.get().a($$0)) {
-            return false;
-         } else {
-            return !this.d.d($$0.p() - $$1) ? false : this.e.d($$0.o() - $$1);
-         }
-      }
-
-      @Override
-      public Optional<bh> a() {
-         return this.b;
-      }
-
-      public Optional<cu> b() {
-         return this.c;
-      }
-
-      public dj.d c() {
-         return this.d;
-      }
-
-      public dj.d d() {
-         return this.e;
-      }
+   public dk.d c() {
+      return this.d;
    }
 }

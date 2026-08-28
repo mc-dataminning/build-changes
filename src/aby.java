@@ -1,15 +1,20 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public record aby(int b) implements yv<abk> {
+   public static final ym<vl, aby> a = yv.a(aby::a, aby::new);
 
-public record aby(List<aur> b) implements zr<abw> {
-   public static final zi<ByteBuf, aby> a = zi.a(aur.a.a(zg.c(64)), aby::b, aby::new);
-
-   @Override
-   public zt<aby> a() {
-      return abu.g;
+   private aby(vl $$0) {
+      this($$0.l());
    }
 
-   public void a(abw $$0) {
+   private void a(vl $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public yx<aby> a() {
+      return agd.n;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 }

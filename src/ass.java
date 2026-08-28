@@ -1,112 +1,61 @@
+import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.channel.ChannelFutureListener;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import java.net.SocketAddress;
-import java.util.Locale;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ass extends ChannelInboundHandlerAdapter {
-   private static final Logger a = LogUtils.getLogger();
-   private final amf b;
+public abstract class ass implements atb {
+   private static final Logger c = LogUtils.getLogger();
+   private final ata d;
 
-   public ass(amf $$0) {
-      this.b = $$0;
+   protected ass(ata $$0) {
+      this.d = $$0;
    }
 
-   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
-      ByteBuf $$2 = (ByteBuf)$$1;
-      $$2.markReaderIndex();
-      boolean $$3 = true;
-
-      try {
-         try {
-            if ($$2.readUnsignedByte() != 254) {
-               return;
-            }
-
-            SocketAddress $$4 = $$0.channel().remoteAddress();
-            int $$5 = $$2.readableBytes();
-            if ($$5 == 0) {
-               a.debug("Ping: (<1.3.x) from {}", $$4);
-               String $$6 = a(this.b);
-               a($$0, a($$0.alloc(), $$6));
-            } else {
-               if ($$2.readUnsignedByte() != 1) {
-                  return;
-               }
-
-               if ($$2.isReadable()) {
-                  if (!a($$2)) {
-                     return;
-                  }
-
-                  a.debug("Ping: (1.6) from {}", $$4);
-               } else {
-                  a.debug("Ping: (1.4-1.5.x) from {}", $$4);
-               }
-
-               String $$7 = b(this.b);
-               a($$0, a($$0.alloc(), $$7));
-            }
-
-            $$2.release();
-            $$3 = false;
-         } catch (RuntimeException var11) {
-         }
-      } finally {
-         if ($$3) {
-            $$2.resetReaderIndex();
-            $$0.channel().pipeline().remove(this);
-            $$0.fireChannelRead($$1);
-         }
-      }
-   }
-
-   private static boolean a(ByteBuf $$0) {
-      short $$1 = $$0.readUnsignedByte();
-      if ($$1 != 250) {
-         return false;
+   @Nullable
+   @Override
+   public <T> T a(ato<T> $$0) throws IOException {
+      auh<InputStream> $$1 = this.a(new String[]{"pack.mcmeta"});
+      if ($$1 == null) {
+         return null;
       } else {
-         String $$2 = asr.a($$0);
-         if (!"MC|PingHost".equals($$2)) {
-            return false;
-         } else {
-            int $$3 = $$0.readUnsignedShort();
-            if ($$0.readableBytes() != $$3) {
-               return false;
-            } else {
-               short $$4 = $$0.readUnsignedByte();
-               if ($$4 < 73) {
-                  return false;
-               } else {
-                  String $$5 = asr.a($$0);
-                  int $$6 = $$0.readInt();
-                  return $$6 <= 65535;
-               }
-            }
+         Object var4;
+         try (InputStream $$2 = $$1.get()) {
+            var4 = a($$0, $$2);
+         }
+
+         return (T)var4;
+      }
+   }
+
+   @Nullable
+   public static <T> T a(ato<T> $$0, InputStream $$1) {
+      JsonObject $$3;
+      try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1, StandardCharsets.UTF_8))) {
+         $$3 = ayp.a($$2);
+      } catch (Exception var9) {
+         c.error("Couldn't load {} metadata", $$0.a(), var9);
+         return null;
+      }
+
+      if (!$$3.has($$0.a())) {
+         return null;
+      } else {
+         try {
+            return $$0.a(ayp.u($$3, $$0.a()));
+         } catch (Exception var7) {
+            c.error("Couldn't load {} metadata", $$0.a(), var7);
+            return null;
          }
       }
    }
 
-   private static String a(amf $$0) {
-      return String.format(Locale.ROOT, "%s§%d§%d", $$0.ae(), $$0.N(), $$0.O());
-   }
-
-   private static String b(amf $$0) {
-      return String.format(Locale.ROOT, "§1\u0000%d\u0000%s\u0000%s\u0000%d\u0000%d", 127, $$0.M(), $$0.ae(), $$0.N(), $$0.O());
-   }
-
-   private static void a(ChannelHandlerContext $$0, ByteBuf $$1) {
-      $$0.pipeline().firstContext().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE);
-   }
-
-   private static ByteBuf a(ByteBufAllocator $$0, String $$1) {
-      ByteBuf $$2 = $$0.buffer();
-      $$2.writeByte(255);
-      asr.a($$2, $$1);
-      return $$2;
+   @Override
+   public ata a() {
+      return this.d;
    }
 }

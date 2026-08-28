@@ -1,82 +1,35 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class se {
-   public static final alo<egb<?, ?>> a = sb.a("ore_magma");
-   public static final alo<egb<?, ?>> b = sb.a("ore_soul_sand");
-   public static final alo<egb<?, ?>> c = sb.a("ore_nether_gold");
-   public static final alo<egb<?, ?>> d = sb.a("ore_quartz");
-   public static final alo<egb<?, ?>> e = sb.a("ore_gravel_nether");
-   public static final alo<egb<?, ?>> f = sb.a("ore_blackstone");
-   public static final alo<egb<?, ?>> g = sb.a("ore_dirt");
-   public static final alo<egb<?, ?>> h = sb.a("ore_gravel");
-   public static final alo<egb<?, ?>> i = sb.a("ore_granite");
-   public static final alo<egb<?, ?>> j = sb.a("ore_diorite");
-   public static final alo<egb<?, ?>> k = sb.a("ore_andesite");
-   public static final alo<egb<?, ?>> l = sb.a("ore_tuff");
-   public static final alo<egb<?, ?>> m = sb.a("ore_coal");
-   public static final alo<egb<?, ?>> n = sb.a("ore_coal_buried");
-   public static final alo<egb<?, ?>> o = sb.a("ore_iron");
-   public static final alo<egb<?, ?>> p = sb.a("ore_iron_small");
-   public static final alo<egb<?, ?>> q = sb.a("ore_gold");
-   public static final alo<egb<?, ?>> r = sb.a("ore_gold_buried");
-   public static final alo<egb<?, ?>> s = sb.a("ore_redstone");
-   public static final alo<egb<?, ?>> t = sb.a("ore_diamond_small");
-   public static final alo<egb<?, ?>> u = sb.a("ore_diamond_medium");
-   public static final alo<egb<?, ?>> v = sb.a("ore_diamond_large");
-   public static final alo<egb<?, ?>> w = sb.a("ore_diamond_buried");
-   public static final alo<egb<?, ?>> x = sb.a("ore_lapis");
-   public static final alo<egb<?, ?>> y = sb.a("ore_lapis_buried");
-   public static final alo<egb<?, ?>> z = sb.a("ore_infested");
-   public static final alo<egb<?, ?>> A = sb.a("ore_emerald");
-   public static final alo<egb<?, ?>> B = sb.a("ore_ancient_debris_large");
-   public static final alo<egb<?, ?>> C = sb.a("ore_ancient_debris_small");
-   public static final alo<egb<?, ?>> D = sb.a("ore_copper_small");
-   public static final alo<egb<?, ?>> E = sb.a("ore_copper_large");
-   public static final alo<egb<?, ?>> F = sb.a("ore_clay");
+public class se extends sd {
+   private final ji a;
+   private final ji b;
+   private final long c;
 
-   public static void a(ra<egb<?, ?>> $$0) {
-      erz $$1 = new esh(axk.bg);
-      erz $$2 = new esh(axk.bh);
-      erz $$3 = new esh(axk.bi);
-      erz $$4 = new erh(dkf.ei);
-      erz $$5 = new esh(axk.bj);
-      List<ejb.a> $$6 = List.of(ejb.a($$2, dkf.S.m()), ejb.a($$3, dkf.T.m()));
-      List<ejb.a> $$7 = List.of(ejb.a($$2, dkf.Q.m()), ejb.a($$3, dkf.R.m()));
-      List<ejb.a> $$8 = List.of(ejb.a($$2, dkf.cF.m()), ejb.a($$3, dkf.cG.m()));
-      List<ejb.a> $$9 = List.of(ejb.a($$2, dkf.aY.m()), ejb.a($$3, dkf.aZ.m()));
-      List<ejb.a> $$10 = List.of(ejb.a($$2, dkf.rC.m()), ejb.a($$3, dkf.rD.m()));
-      List<ejb.a> $$11 = List.of(ejb.a($$2, dkf.U.m()), ejb.a($$3, dkf.V.m()));
-      sb.a($$0, a, egp.I, new ejb($$4, dkf.ll.m(), 33));
-      sb.a($$0, b, egp.I, new ejb($$4, dkf.ej.m(), 12));
-      sb.a($$0, c, egp.I, new ejb($$4, dkf.W.m(), 10));
-      sb.a($$0, d, egp.I, new ejb($$4, dkf.hy.m(), 14));
-      sb.a($$0, e, egp.I, new ejb($$4, dkf.O.m(), 33));
-      sb.a($$0, f, egp.I, new ejb($$4, dkf.pT.m(), 33));
-      sb.a($$0, g, egp.I, new ejb($$1, dkf.j.m(), 33));
-      sb.a($$0, h, egp.I, new ejb($$1, dkf.O.m(), 33));
-      sb.a($$0, i, egp.I, new ejb($$1, dkf.c.m(), 64));
-      sb.a($$0, j, egp.I, new ejb($$1, dkf.e.m(), 64));
-      sb.a($$0, k, egp.I, new ejb($$1, dkf.g.m(), 64));
-      sb.a($$0, l, egp.I, new ejb($$1, dkf.rb.m(), 64));
-      sb.a($$0, m, egp.I, new ejb($$11, 17));
-      sb.a($$0, n, egp.I, new ejb($$11, 17, 0.5F));
-      sb.a($$0, o, egp.I, new ejb($$6, 9));
-      sb.a($$0, p, egp.I, new ejb($$6, 4));
-      sb.a($$0, q, egp.I, new ejb($$7, 9));
-      sb.a($$0, r, egp.I, new ejb($$7, 9, 0.5F));
-      sb.a($$0, s, egp.I, new ejb(List.of(ejb.a($$2, dkf.dV.m()), ejb.a($$3, dkf.dW.m())), 8));
-      sb.a($$0, t, egp.I, new ejb($$8, 4, 0.5F));
-      sb.a($$0, v, egp.I, new ejb($$8, 12, 0.7F));
-      sb.a($$0, w, egp.I, new ejb($$8, 8, 1.0F));
-      sb.a($$0, u, egp.I, new ejb($$8, 8, 0.5F));
-      sb.a($$0, x, egp.I, new ejb($$9, 7));
-      sb.a($$0, y, egp.I, new ejb($$9, 7, 1.0F));
-      sb.a($$0, z, egp.I, new ejb(List.of(ejb.a($$2, dkf.fb.m()), ejb.a($$3, dkf.tF.m())), 9));
-      sb.a($$0, A, egp.I, new ejb(List.of(ejb.a($$2, dkf.fZ.m()), ejb.a($$3, dkf.ga.m())), 3));
-      sb.a($$0, B, egp.af, new ejb($$5, dkf.pL.m(), 3, 1.0F));
-      sb.a($$0, C, egp.af, new ejb($$5, dkf.pL.m(), 2, 1.0F));
-      sb.a($$0, D, egp.I, new ejb($$10, 10));
-      sb.a($$0, E, egp.I, new ejb($$10, 20));
-      sb.a($$0, F, egp.I, new ejb($$1, dkf.ee.m(), 33));
+   public se(String $$0, ji $$1, ji $$2, long $$3) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   @Override
+   public String getMessage() {
+      String $$0 = this.a.u() + "," + this.a.v() + "," + this.a.w() + " (relative: " + this.b.u() + "," + this.b.v() + "," + this.b.w() + ")";
+      return super.getMessage() + " at " + $$0 + " (t=" + this.c + ")";
+   }
+
+   @Nullable
+   public String a() {
+      return super.getMessage();
+   }
+
+   @Nullable
+   public ji b() {
+      return this.b;
+   }
+
+   @Nullable
+   public ji c() {
+      return this.a;
    }
 }

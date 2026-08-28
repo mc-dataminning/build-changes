@@ -1,16 +1,20 @@
-public interface ajk extends aca {
-   @Override
-   default wf b() {
-      return wf.d;
+public record ajk(long b) implements yv<ajj> {
+   public static final ym<vl, ajk> a = yv.a(ajk::a, ajk::new);
+
+   private ajk(vl $$0) {
+      this($$0.readLong());
    }
 
-   void a(ajm var1);
+   private void a(vl $$0) {
+      $$0.b(this.b);
+   }
 
-   void a(ajp var1);
+   @Override
+   public yx<ajk> a() {
+      return ajl.a;
+   }
 
-   void a(ajo var1);
-
-   void a(ajn var1);
-
-   void a(ajl var1);
+   public void a(ajj $$0) {
+      $$0.a(this);
+   }
 }

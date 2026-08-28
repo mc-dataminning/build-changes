@@ -1,4 +1,3 @@
-public class gyq extends gxq {
-   public float a;
-   public float b;
+public class gyq extends gyi {
+   public fba a = fba.c;
 }

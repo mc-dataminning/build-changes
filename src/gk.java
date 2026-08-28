@@ -1,15 +1,15 @@
 import com.mojang.brigadier.context.CommandContext;
 
-public class gk extends gg<dqv> {
+public class gk extends gh<dol> {
    private gk() {
-      super(dqv.e, dqv::values);
+      super(dol.d, dol::values);
    }
 
-   public static gk a() {
+   public static gh<dol> a() {
       return new gk();
    }
 
-   public static dqv a(CommandContext<ew> $$0, String $$1) {
-      return (dqv)$$0.getArgument($$1, dqv.class);
+   public static dol a(CommandContext<ex> $$0, String $$1) {
+      return (dol)$$0.getArgument($$1, dol.class);
    }
 }

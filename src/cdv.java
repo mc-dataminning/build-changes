@@ -1,130 +1,43 @@
 import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class cdv<T extends cmo & cms> extends ccv {
-   private final T a;
-   private final double b;
-   private int c;
-   private final float d;
-   private int e = -1;
-   private int f;
-   private boolean g;
-   private boolean h;
-   private int i = -1;
+public class cdv extends cee {
+   private final chj a;
+   @Nullable
+   private bvg b;
+   private final cfx c = cfx.a().a(64.0);
 
-   public cdv(T $$0, double $$1, int $$2, float $$3) {
+   public cdv(chj $$0) {
+      super($$0, false, true);
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3 * $$3;
-      this.a(EnumSet.of(ccv.a.a, ccv.a.b));
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
+      this.a(EnumSet.of(cce.a.d));
    }
 
    @Override
    public boolean b() {
-      return this.a.O_() == null ? false : this.h();
-   }
+      fav $$0 = this.a.cR().c(10.0, 8.0, 10.0);
+      arc $$1 = a(this.a);
+      List<? extends bvg> $$2 = $$1.a(coi.class, this.c, this.a, $$0);
+      List<cox> $$3 = $$1.a(this.c, this.a, $$0);
 
-   protected boolean h() {
-      return this.a.b(cxk.pa);
-   }
+      for (bvg $$4 : $$2) {
+         coi $$5 = (coi)$$4;
 
-   @Override
-   public boolean c() {
-      return (this.b() || !this.a.L().m()) && this.h();
+         for (cox $$6 : $$3) {
+            int $$7 = $$5.g($$6);
+            if ($$7 <= -100) {
+               this.b = $$6;
+            }
+         }
+      }
+
+      return this.b == null ? false : !(this.b instanceof cox) || !this.b.Z_() && !((cox)this.b).b();
    }
 
    @Override
    public void d() {
+      this.a.h(this.b);
       super.d();
-      this.a.w(true);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.a.w(false);
-      this.f = 0;
-      this.e = -1;
-      this.a.fF();
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      bvx $$0 = this.a.O_();
-      if ($$0 != null) {
-         double $$1 = this.a.i($$0.dB(), $$0.dD(), $$0.dH());
-         boolean $$2 = this.a.N().a($$0);
-         boolean $$3 = this.f > 0;
-         if ($$2 != $$3) {
-            this.f = 0;
-         }
-
-         if ($$2) {
-            this.f++;
-         } else {
-            this.f--;
-         }
-
-         if (!($$1 > (double)this.d) && this.f >= 20) {
-            this.a.L().o();
-            this.i++;
-         } else {
-            this.a.L().a($$0, this.b);
-            this.i = -1;
-         }
-
-         if (this.i >= 20) {
-            if ((double)this.a.dZ().i() < 0.3) {
-               this.g = !this.g;
-            }
-
-            if ((double)this.a.dZ().i() < 0.3) {
-               this.h = !this.h;
-            }
-
-            this.i = 0;
-         }
-
-         if (this.i > -1) {
-            if ($$1 > (double)(this.d * 0.75F)) {
-               this.h = false;
-            } else if ($$1 < (double)(this.d * 0.25F)) {
-               this.h = true;
-            }
-
-            this.a.I().a(this.h ? -0.5F : 0.5F, this.g ? 0.5F : -0.5F);
-            if (this.a.dm() instanceof bvz $$4) {
-               $$4.a($$0, 30.0F, 30.0F);
-            }
-
-            this.a.a($$0, 30.0F, 30.0F);
-         } else {
-            this.a.H().a($$0, 30.0F, 30.0F);
-         }
-
-         if (this.a.fz()) {
-            if (!$$2 && this.f < -60) {
-               this.a.fF();
-            } else if ($$2) {
-               int $$5 = this.a.fD();
-               if ($$5 >= 20) {
-                  this.a.fF();
-                  this.a.a($$0, cvq.a($$5));
-                  this.e = this.c;
-               }
-            }
-         } else if (--this.e <= 0 && this.f >= -60) {
-            this.a.c(cqj.a(this.a, cxk.pa));
-         }
-      }
    }
 }

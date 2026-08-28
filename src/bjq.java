@@ -1,21 +1,37 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-public class bjq extends bhi {
-   private static final String a = "CanPickUpLoot";
-
-   public bjq(Schema $$0) {
-      super($$0, true, "Villager CanPickUpLoot default value", bin.B, "Villager");
+public class bjq extends bjk {
+   public bjq(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bjq::a);
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$0.registerSimple($$1, "minecraft:bed");
+      return $$1;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("CanPickUpLoot", $$0.createBoolean(true));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bhw.p,
+         () -> DSL.optionalFields(
+               "minecraft:adventure/adventuring_time",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.K.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_a_mob",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.z.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:adventure/kill_all_mobs",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.z.in($$0), DSL.constType(DSL.string()))),
+               "minecraft:husbandry/bred_all_animals",
+               DSL.optionalFields("criteria", DSL.compoundList(bhw.z.in($$0), DSL.constType(DSL.string())))
+            )
+      );
+      $$0.registerType(false, bhw.K, () -> DSL.constType(a()));
+      $$0.registerType(false, bhw.z, () -> DSL.constType(a()));
    }
 }

@@ -1,16 +1,22 @@
-public class gtx extends gsr<cjl, gyo, gdm> {
-   private static final alp a = alp.b("textures/entity/tadpole/tadpole.png");
+import java.util.function.UnaryOperator;
 
-   public gtx(grl.a $$0) {
-      super($$0, new gdm($$0.a(gei.dh)), 0.14F);
+public class gtx extends gqq {
+   private final gca<gxu> a;
+   private final aku b;
+
+   public gtx(gsc.a $$0, gfa $$1) {
+      super($$0);
+      this.b = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new gdm($$0.a($$1));
    }
 
    @Override
-   public alp b(gyo $$0) {
-      return a;
+   protected gca<gxu> a() {
+      return this.a;
    }
 
-   public gyo b() {
-      return new gyo();
+   @Override
+   protected gmh b() {
+      return this.a.a(this.b);
    }
 }

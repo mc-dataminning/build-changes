@@ -1,60 +1,36 @@
-public class btj {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = baw.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+import javax.annotation.Nullable;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)baw.a / (double)this.b);
+class btj extends btm {
+   private final boolean c;
+
+   public btj(bto $$0, int $$1, boolean $$2) {
+      super($$0, $$1);
+      this.c = $$2;
    }
 
-   public float f() {
-      return this.b;
-   }
-
-   public float g() {
-      return (float)this.c / (float)baw.b;
-   }
-
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   @Override
+   public boolean a(arc $$0, bvg $$1, int $$2) {
+      if (this.c == $$1.eD()) {
+         $$1.c((float)Math.max(4 << $$2, 0));
+      } else {
+         $$1.a($$0, $$1.dX().q(), (float)(6 << $$2));
       }
+
+      return true;
    }
 
-   public boolean a(bvb $$0) {
-      return !this.i() && !($$0 instanceof cpo) && $$0.de() <= 0;
+   @Override
+   public void a(arc $$0, @Nullable buk $$1, @Nullable buk $$2, bvg $$3, int $$4, double $$5) {
+      if (this.c == $$3.eD()) {
+         int $$6 = (int)($$5 * (double)(4 << $$4) + 0.5);
+         $$3.c((float)$$6);
+      } else {
+         int $$7 = (int)($$5 * (double)(6 << $$4) + 0.5);
+         if ($$1 == null) {
+            $$3.a($$0, $$3.dX().q(), (float)$$7);
+         } else {
+            $$3.a($$0, $$3.dX().c($$1, $$2), (float)$$7);
+         }
+      }
    }
 }

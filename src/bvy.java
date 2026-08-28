@@ -1,62 +1,82 @@
-public class bvy extends bvb {
-   private static final String a = "data";
-   private um b = new um();
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-   public bvy(bvi<?> $$0, dgz $$1) {
-      super($$0, $$1);
-      this.ad = true;
+public interface bvy {
+   bvy a = new bvy() {
+      @Override
+      public cwp a() {
+         return cwp.j;
+      }
+
+      @Override
+      public boolean a(cwp $$0) {
+         return false;
+      }
+   };
+
+   static bvy a(final Supplier<cwp> $$0, final Consumer<cwp> $$1) {
+      return new bvy() {
+         @Override
+         public cwp a() {
+            return $$0.get();
+         }
+
+         @Override
+         public boolean a(cwp $$0x) {
+            $$1.accept($$0);
+            return true;
+         }
+      };
    }
 
-   @Override
-   public void h() {
+   static bvy a(final bsc $$0, final int $$1, final Predicate<cwp> $$2) {
+      return new bvy() {
+         @Override
+         public cwp a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cwp $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
 
-   @Override
-   protected void a(akw.a $$0) {
+   static bvy a(bsc $$0, int $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   @Override
-   protected void a(um $$0) {
-      this.b = $$0.p("data");
+   static bvy a(final bvg $$0, final bus $$1, final Predicate<cwp> $$2) {
+      return new bvy() {
+         @Override
+         public cwp a() {
+            return $$0.a($$1);
+         }
+
+         @Override
+         public boolean a(cwp $$0x) {
+            if (!$$2.test($$0)) {
+               return false;
+            } else {
+               $$0.a($$1, $$0);
+               return true;
+            }
+         }
+      };
    }
 
-   @Override
-   protected void b(um $$0) {
-      $$0.a("data", this.b.i());
+   static bvy a(bvg $$0, bus $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   @Override
-   public zr<acg> a(arv $$0) {
-      throw new IllegalStateException("Markers should never be sent");
-   }
+   cwp a();
 
-   @Override
-   protected boolean r(bvb $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bR() {
-      return false;
-   }
-
-   @Override
-   protected void p(bvb $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public etv n_() {
-      return etv.d;
-   }
-
-   @Override
-   public boolean s_() {
-      return true;
-   }
-
-   @Override
-   public final boolean a(arx $$0, btr $$1, float $$2) {
-      return false;
-   }
+   boolean a(cwp var1);
 }

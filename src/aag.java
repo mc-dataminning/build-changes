@@ -1,33 +1,26 @@
-import io.netty.buffer.ByteBuf;
+public record aag(long c, ji d) implements zy {
+   public static final ym<vl, aag> a = zy.a(aag::a, aag::new);
+   public static final zy.b<aag> b = zy.a("debug/neighbors_update");
 
-public record aag(alp c, byte[] d) implements zr<zx> {
-   public static final zi<wh, aag> a = zr.a(aag::a, aag::new);
-   private static final int e = 5120;
-   public static final zi<ByteBuf, byte[]> b = zg.a(5120);
-
-   private aag(wh $$0) {
-      this($$0.q(), b.decode($$0));
+   private aag(vl $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(wh $$0) {
+   private void a(vl $$0) {
       $$0.a(this.c);
-      b.encode($$0, this.d);
+      $$0.a(this.d);
    }
 
    @Override
-   public zt<aag> a() {
-      return aaj.i;
+   public zy.b<aag> a() {
+      return b;
    }
 
-   public void a(zx $$0) {
-      $$0.a(this);
-   }
-
-   public alp b() {
+   public long b() {
       return this.c;
    }
 
-   public byte[] e() {
+   public ji c() {
       return this.d;
    }
 }

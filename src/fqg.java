@@ -1,66 +1,55 @@
-import java.util.List;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public class fqg implements fqj {
-   private static final alp e = alp.b("toast/advancement");
-   public static final int a = 5000;
-   private final ah f;
-   private boolean g;
-   private fqj.a h = fqj.a.b;
+public class fqg {
+   @Nullable
+   private fqd a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   public fqg(ah $$0) {
-      this.f = $$0;
+   public void a(Duration $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   public fqj.a a() {
-      return this.h;
+   public void a(@Nullable fqd $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public void a(fqk $$0, long $$1) {
-      at $$2 = this.f.b().c().orElse(null);
-      if ($$2 == null) {
-         this.h = fqj.a.b;
+   @Nullable
+   public fqd a() {
+      return this.a;
+   }
+
+   public void a(boolean $$0, boolean $$1, fsz $$2) {
+      if (this.a == null) {
+         this.d = false;
       } else {
-         if (!this.g && $$1 > 0L) {
-            this.g = true;
-            if ($$2.e() == an.b) {
-               $$0.c().ak().a(hey.a(awv.Bm, 1.0F, 1.0F));
+         boolean $$3 = $$0 || $$1 && flj.Q().aX().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = af.c();
             }
+
+            this.d = $$3;
          }
 
-         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fqj.a.b : fqj.a.a;
+         if ($$3 && af.c() - this.c > this.b.toMillis()) {
+            fuk $$4 = flj.Q().z;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
    }
 
-   @Override
-   public void a(fnl $$0, fnj $$1, long $$2) {
-      at $$3 = this.f.b().c().orElse(null);
-      $$0.a(glq::H, e, 0, 0, this.b(), this.c());
-      if ($$3 != null) {
-         List<azg> $$4 = $$1.c($$3.a(), 125);
-         int $$5 = $$3.e() == an.b ? -30465 : -256;
-         if ($$4.size() == 1) {
-            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
-            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = azu.d(azu.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = azu.d(azu.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
+   private fwv a(fsz $$0, boolean $$1, boolean $$2) {
+      return (fwv)(!$$1 && $$2 && flj.Q().aX().b() ? new fwq($$0) : new fwx($$0));
+   }
 
-               for (azg $$11 : $$4) {
-                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
-
-         $$0.b($$3.c(), 8, 8);
+   public void a(fsp $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
       }
    }
 }

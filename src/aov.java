@@ -1,80 +1,44 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.Collections;
+import javax.annotation.Nullable;
 
 public class aov {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xk.c("commands.recipe.give.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.recipe.take.failed"));
+   public static void a(CommandDispatcher<ex> $$0) {
+      RequiredArgumentBuilder<ex, hm> $$1 = (RequiredArgumentBuilder<ex, hm>)((RequiredArgumentBuilder)ey.a("targets", fk.d())
+            .executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), null, null)))
+         .then(ey.a("*").then(ey.a("sound", fy.a()).suggests(ix.b).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), null, fy.a($$0x, "sound")))));
 
-   public static void a(CommandDispatcher<ew> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ex.a("recipe").requires($$0x -> $$0x.c(2)))
-               .then(
-                  ex.a("give")
-                     .then(
-                        ((RequiredArgumentBuilder)ex.a("targets", fj.d())
-                              .then(
-                                 ex.a("recipe", fw.a(mb.bk))
-                                    .executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), Collections.singleton(fw.d($$0x, "recipe"))))
-                              ))
-                           .then(ex.a("*").executes($$0x -> a((ew)$$0x.getSource(), fj.f($$0x, "targets"), ((ew)$$0x.getSource()).l().aI().e())))
-                     )
-               ))
-            .then(
-               ex.a("take")
-                  .then(
-                     ((RequiredArgumentBuilder)ex.a("targets", fj.d())
-                           .then(
-                              ex.a("recipe", fw.a(mb.bk))
-                                 .executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets"), Collections.singleton(fw.d($$0x, "recipe"))))
-                           ))
-                        .then(ex.a("*").executes($$0x -> b((ew)$$0x.getSource(), fj.f($$0x, "targets"), ((ew)$$0x.getSource()).l().aI().e())))
-                  )
-            )
-      );
+      for (awb $$2 : awb.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)ey.a($$2.a()).executes($$1x -> a((ex)$$1x.getSource(), fk.f($$1x, "targets"), $$2, null)))
+               .then(ey.a("sound", fy.a()).suggests(ix.b).executes($$1x -> a((ex)$$1x.getSource(), fk.f($$1x, "targets"), $$2, fy.a($$1x, "sound"))))
+         );
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(ew $$0, Collection<ary> $$1, Collection<dca<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
+   private static int a(ex $$0, Collection<ard> $$1, @Nullable awb $$2, @Nullable aku $$3) {
+      afo $$4 = new afo($$3, $$2);
 
-      for (ary $$4 : $$1) {
-         $$3 += $$4.a($$2);
+      for (ard $$5 : $$1) {
+         $$5.f.b($$4);
       }
 
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xk.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().p_()), true);
+      if ($$2 != null) {
+         if ($$3 != null) {
+            $$0.a(() -> wo.a("commands.stopsound.success.source.sound", wo.a($$3), $$2.a()), true);
          } else {
-            $$0.a(() -> xk.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+            $$0.a(() -> wo.a("commands.stopsound.success.source.any", $$2.a()), true);
          }
-
-         return $$3;
-      }
-   }
-
-   private static int b(ew $$0, Collection<ary> $$1, Collection<dca<?>> $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (ary $$4 : $$1) {
-         $$3 += $$4.b($$2);
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
+      } else if ($$3 != null) {
+         $$0.a(() -> wo.a("commands.stopsound.success.sourceless.sound", wo.a($$3)), true);
       } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> xk.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().p_()), true);
-         } else {
-            $$0.a(() -> xk.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
-         }
-
-         return $$3;
+         $$0.a(() -> wo.c("commands.stopsound.success.sourceless.any"), true);
       }
+
+      return $$1.size();
    }
 }

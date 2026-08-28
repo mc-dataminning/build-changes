@@ -1,87 +1,176 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.List;
-import java.util.stream.IntStream;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.IntSupplier;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class arf {
-   public static final int a = arb.b + 2;
-   private final List<Long2ObjectLinkedOpenHashMap<List<Runnable>>> b = IntStream.range(0, a).mapToObj($$0x -> new Long2ObjectLinkedOpenHashMap()).toList();
-   private volatile int c = a;
-   private final String d;
+public class arf extends eso implements AutoCloseable {
+   public static final int a = 1000;
+   private static final Logger e = LogUtils.getLogger();
+   private final bqz f;
+   private final ObjectList<Pair<arf.a, Runnable>> g = new ObjectArrayList();
+   private final aqh h;
+   private final aqj i;
+   private final int j = 1000;
+   private final AtomicBoolean k = new AtomicBoolean();
 
-   public arf(String $$0) {
-      this.d = $$0;
-   }
-
-   protected void a(int $$0, dgf $$1, int $$2) {
-      if ($$0 < a) {
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$3 = this.b.get($$0);
-         List<Runnable> $$4 = (List<Runnable>)$$3.remove($$1.a());
-         if ($$0 == this.c) {
-            while (this.b() && this.b.get(this.c).isEmpty()) {
-               this.c++;
-            }
-         }
-
-         if ($$4 != null && !$$4.isEmpty()) {
-            ((List)this.b.get($$2).computeIfAbsent($$1.a(), $$0x -> Lists.newArrayList())).addAll($$4);
-            this.c = Math.min(this.c, $$2);
-         }
-      }
-   }
-
-   protected void a(Runnable $$0, long $$1, int $$2) {
-      ((List)this.b.get($$2).computeIfAbsent($$1, $$0x -> Lists.newArrayList())).add($$0);
-      this.c = Math.min(this.c, $$2);
-   }
-
-   protected void a(long $$0, boolean $$1) {
-      for (Long2ObjectLinkedOpenHashMap<List<Runnable>> $$2 : this.b) {
-         List<Runnable> $$3 = (List<Runnable>)$$2.get($$0);
-         if ($$3 != null) {
-            if ($$1) {
-               $$3.clear();
-            }
-
-            if ($$3.isEmpty()) {
-               $$2.remove($$0);
-            }
-         }
-      }
-
-      while (this.b() && this.b.get(this.c).isEmpty()) {
-         this.c++;
-      }
-   }
-
-   @Nullable
-   public arf.a a() {
-      if (!this.b()) {
-         return null;
-      } else {
-         int $$0 = this.c;
-         Long2ObjectLinkedOpenHashMap<List<Runnable>> $$1 = this.b.get($$0);
-         long $$2 = $$1.firstLongKey();
-         List<Runnable> $$3 = (List<Runnable>)$$1.removeFirst();
-
-         while (this.b() && this.b.get(this.c).isEmpty()) {
-            this.c++;
-         }
-
-         return new arf.a($$2, $$3);
-      }
-   }
-
-   public boolean b() {
-      return this.c < a;
+   public arf(dzf $$0, aqh $$1, boolean $$2, bqz $$3, aqj $$4) {
+      super($$0, true, $$2);
+      this.h = $$1;
+      this.i = $$4;
+      this.f = $$3;
    }
 
    @Override
-   public String toString() {
-      return this.d + " " + this.c + "...";
+   public void close() {
    }
 
-   public static record a(long a, List<Runnable> b) {
+   @Override
+   public int a() {
+      throw (UnsupportedOperationException)af.b(new UnsupportedOperationException("Ran automatically on a different thread!"));
+   }
+
+   @Override
+   public void a(ji $$0) {
+      ji $$1 = $$0.j();
+      this.a(kk.a($$0.u()), kk.a($$0.w()), arf.a.a, af.a((Runnable)(() -> super.a($$1)), (Supplier<String>)(() -> "checkBlock " + $$1)));
+   }
+
+   protected void a(dfo $$0) {
+      this.a($$0.h, $$0.i, () -> 0, arf.a.a, af.a((Runnable)(() -> {
+         super.b($$0, false);
+         super.a($$0, false);
+
+         for (int $$1 = this.d(); $$1 < this.e(); $$1++) {
+            super.a(dgr.b, kk.a($$0, $$1), null);
+            super.a(dgr.a, kk.a($$0, $$1), null);
+         }
+
+         for (int $$2 = this.d.ap(); $$2 <= this.d.aq(); $$2++) {
+            super.a(kk.a($$0, $$2), true);
+         }
+      }), (Supplier<String>)(() -> "updateChunkStatus " + $$0 + " true")));
+   }
+
+   @Override
+   public void a(kk $$0, boolean $$1) {
+      this.a($$0.a(), $$0.c(), () -> 0, arf.a.a, af.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "updateSectionStatus " + $$0 + " " + $$1)));
+   }
+
+   @Override
+   public void b(dfo $$0) {
+      this.a($$0.h, $$0.i, arf.a.a, af.a((Runnable)(() -> super.b($$0)), (Supplier<String>)(() -> "propagateLight " + $$0)));
+   }
+
+   @Override
+   public void a(dfo $$0, boolean $$1) {
+      this.a($$0.h, $$0.i, arf.a.a, af.a((Runnable)(() -> super.a($$0, $$1)), (Supplier<String>)(() -> "enableLight " + $$0 + " " + $$1)));
+   }
+
+   @Override
+   public void a(dgr $$0, kk $$1, @Nullable dyx $$2) {
+      this.a($$1.a(), $$1.c(), () -> 0, arf.a.a, af.a((Runnable)(() -> super.a($$0, $$1, $$2)), (Supplier<String>)(() -> "queueData " + $$1)));
+   }
+
+   private void a(int $$0, int $$1, arf.a $$2, Runnable $$3) {
+      this.a($$0, $$1, this.h.c(dfo.c($$0, $$1)), $$2, $$3);
+   }
+
+   private void a(int $$0, int $$1, IntSupplier $$2, arf.a $$3, Runnable $$4) {
+      this.i.a(() -> {
+         this.g.add(Pair.of($$3, $$4));
+         if (this.g.size() >= 1000) {
+            this.f();
+         }
+      }, dfo.c($$0, $$1), $$2);
+   }
+
+   @Override
+   public void b(dfo $$0, boolean $$1) {
+      this.a($$0.h, $$0.i, () -> 0, arf.a.a, af.a((Runnable)(() -> super.b($$0, $$1)), (Supplier<String>)(() -> "retainData " + $$0)));
+   }
+
+   public CompletableFuture<dys> a(dys $$0, boolean $$1) {
+      dfo $$2 = $$0.f();
+      this.a($$2.h, $$2.i, arf.a.a, af.a((Runnable)(() -> {
+         dzd[] $$2x = $$0.d();
+
+         for (int $$3 = 0; $$3 < $$0.ao(); $$3++) {
+            dzd $$4 = $$2x[$$3];
+            if (!$$4.c()) {
+               int $$5 = this.d.h($$3);
+               super.a(kk.a($$2, $$5), false);
+            }
+         }
+      }), (Supplier<String>)(() -> "initializeLight: " + $$2)));
+      return CompletableFuture.supplyAsync(() -> {
+         super.a($$2, $$1);
+         super.b($$2, false);
+         return $$0;
+      }, $$1x -> this.a($$2.h, $$2.i, arf.a.b, $$1x));
+   }
+
+   public CompletableFuture<dys> b(dys $$0, boolean $$1) {
+      dfo $$2 = $$0.f();
+      $$0.a(false);
+      this.a($$2.h, $$2.i, arf.a.a, af.a((Runnable)(() -> {
+         if (!$$1) {
+            super.b($$2);
+         }
+      }), (Supplier<String>)(() -> "lightChunk " + $$2 + " " + $$1)));
+      return CompletableFuture.supplyAsync(() -> {
+         $$0.a(true);
+         return $$0;
+      }, $$1x -> this.a($$2.h, $$2.i, arf.a.b, $$1x));
+   }
+
+   public void b() {
+      if ((!this.g.isEmpty() || super.N_()) && this.k.compareAndSet(false, true)) {
+         this.f.a_(() -> {
+            this.f();
+            this.k.set(false);
+         });
+      }
+   }
+
+   private void f() {
+      int $$0 = Math.min(this.g.size(), 1000);
+      ObjectListIterator<Pair<arf.a, Runnable>> $$1 = this.g.iterator();
+
+      int $$2;
+      for ($$2 = 0; $$1.hasNext() && $$2 < $$0; $$2++) {
+         Pair<arf.a, Runnable> $$3 = (Pair<arf.a, Runnable>)$$1.next();
+         if ($$3.getFirst() == arf.a.a) {
+            ((Runnable)$$3.getSecond()).run();
+         }
+      }
+
+      $$1.back($$2);
+      super.a();
+
+      for (int var5 = 0; $$1.hasNext() && var5 < $$0; var5++) {
+         Pair<arf.a, Runnable> $$4 = (Pair<arf.a, Runnable>)$$1.next();
+         if ($$4.getFirst() == arf.a.b) {
+            ((Runnable)$$4.getSecond()).run();
+         }
+
+         $$1.remove();
+      }
+   }
+
+   public CompletableFuture<?> a(int $$0, int $$1) {
+      return CompletableFuture.runAsync(() -> {
+      }, $$2 -> this.a($$0, $$1, arf.a.b, $$2));
+   }
+
+   static enum a {
+      a,
+      b;
    }
 }

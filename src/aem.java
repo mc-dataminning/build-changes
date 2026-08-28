@@ -1,21 +1,29 @@
-public record aem(int b, xk c) implements zr<acg> {
-   public static final zi<wv, aem> a = zi.a(zg.h, aem::b, xm.d, aem::e, aem::new);
+public class aem implements yv<abk> {
+   public static final ym<vl, aem> a = yv.a(aem::a, aem::new);
+   private final int b;
 
-   @Override
-   public zt<aem> a() {
-      return agz.ae;
+   public aem(dyn $$0) {
+      this.b = $$0.q();
    }
 
-   public void a(acg $$0) {
+   private aem(vl $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(vl $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public yx<aem> a() {
+      return agd.ay;
+   }
+
+   public void a(abk $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public xk e() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 }

@@ -1,20 +1,67 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class brs extends bro<bru.c> {
-   public brs(int $$0, Executor $$1, String $$2) {
-      super(new bru.a($$0), $$1, $$2);
-      bqu.a.a(this);
+public class brs extends brm {
+   public static final MapCodec<brs> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("plateau").forGetter($$0x -> $$0x.e)
+               )
+               .apply($$0, brs::new)
+      )
+      .validate(
+         $$0 -> {
+            if ($$0.d < $$0.b) {
+               return DataResult.error(() -> "Max must be larger than min: [" + $$0.b + ", " + $$0.d + "]");
+            } else {
+               return $$0.e > $$0.d - $$0.b
+                  ? DataResult.error(() -> "Plateau can at most be the full span: [" + $$0.b + ", " + $$0.d + "]")
+                  : DataResult.success($$0);
+            }
+         }
+      );
+   private final float b;
+   private final float d;
+   private final float e;
+
+   public static brs a(float $$0, float $$1, float $$2) {
+      return new brs($$0, $$1, $$2);
    }
 
-   public bru.c b(Runnable $$0) {
-      return new bru.c(0, $$0);
+   private brs(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
-      CompletableFuture<Source> $$2 = new CompletableFuture<>();
-      this.a_(new bru.c($$0, () -> $$1.accept($$2)));
-      return $$2;
+   @Override
+   public float a(azh $$0) {
+      float $$1 = this.d - this.b;
+      float $$2 = ($$1 - this.e) / 2.0F;
+      float $$3 = $$1 - $$2;
+      return this.b + $$0.i() * $$3 + $$0.i() * $$2;
+   }
+
+   @Override
+   public float a() {
+      return this.b;
+   }
+
+   @Override
+   public float b() {
+      return this.d;
+   }
+
+   @Override
+   public brn<?> c() {
+      return brn.d;
+   }
+
+   @Override
+   public String toString() {
+      return "trapezoid(" + this.e + ") in [" + this.b + "-" + this.d + "]";
    }
 }

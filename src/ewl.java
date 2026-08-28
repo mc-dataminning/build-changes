@@ -1,95 +1,64 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-public class ewl {
-   private final arx a;
-   private final bbf b;
-   private final Map<alp, ewl.b> c;
-   private final float d;
+public class ewl extends ewa {
+   public static final MapCodec<ewl> a = a(ewl::new);
 
-   public ewl(arx $$0, bbf $$1, Map<alp, ewl.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   ewl(List<ewh> $$0, List<eza> $$1) {
+      super($$0, $$1);
    }
 
-   public arx a() {
-      return this.a;
+   @Override
+   public ewi a() {
+      return ewf.h;
    }
 
-   public bbf b() {
-      return this.b;
+   @Override
+   protected evz a(List<? extends evz> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (evz)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (evz $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   public void a(alp $$0, Consumer<cxg> $$1) {
-      ewl.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
+   public static ewl.a a(ewh.a<?>... $$0) {
+      return new ewl.a($$0);
    }
 
-   public float c() {
-      return this.d;
-   }
+   public static class a extends ewh.a<ewl.a> {
+      private final Builder<ewh> a = ImmutableList.builder();
 
-   public static class a {
-      private final arx a;
-      private final bbf.a b = new bbf.a();
-      private final Map<alp, ewl.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(arx $$0) {
-         this.a = $$0;
-      }
-
-      public arx a() {
-         return this.a;
-      }
-
-      public <T> ewl.a a(bbd<T> $$0, T $$1) {
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      public <T> ewl.a b(bbd<T> $$0, @Nullable T $$1) {
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      public <T> T a(bbd<T> $$0) {
-         return this.b.a($$0);
-      }
-
-      @Nullable
-      public <T> T b(bbd<T> $$0) {
-         return this.b.b($$0);
-      }
-
-      public ewl.a a(alp $$0, ewl.b $$1) {
-         ewl.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
+      public a(ewh.a<?>... $$0) {
+         for (ewh.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
       }
 
-      public ewl.a a(float $$0) {
-         this.d = $$0;
+      protected ewl.a a() {
          return this;
       }
 
-      public ewl a(bbe $$0) {
-         bbf $$1 = this.b.a($$0);
-         return new ewl(this.a, $$1, this.c, this.d);
+      @Override
+      public ewl.a c(ewh.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
-   }
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cxg> var1);
+      @Override
+      public ewh b() {
+         return new ewl(this.a.build(), this.f());
+      }
    }
 }

@@ -1,109 +1,136 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
+import com.mojang.logging.LogUtils;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import org.slf4j.Logger;
 
 public class hgv {
-   final Map<hgu<?>, Object> a;
+   public static final hgs a = new hgs(hei.d, aku.b("block/fire_0"));
+   public static final hgs b = new hgs(hei.d, aku.b("block/fire_1"));
+   public static final hgs c = new hgs(hei.d, aku.b("block/lava_flow"));
+   public static final hgs d = new hgs(hei.d, aku.b("block/water_flow"));
+   public static final hgs e = new hgs(hei.d, aku.b("block/water_overlay"));
+   public static final hgs f = new hgs(gms.c, aku.b("entity/banner_base"));
+   public static final hgs g = new hgs(gms.d, aku.b("entity/shield_base"));
+   public static final hgs h = new hgs(gms.d, aku.b("entity/shield_base_nopattern"));
+   public static final int i = 10;
+   public static final List<aku> j = IntStream.range(0, 10).mapToObj($$0 -> aku.b("block/destroy_stage_" + $$0)).collect(Collectors.toList());
+   public static final List<aku> k = j.stream().map($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"))).collect(Collectors.toList());
+   public static final List<gmh> l = k.stream().map(gmh::t).collect(Collectors.toList());
+   static final Logger m = LogUtils.getLogger();
+   private final gey n;
+   final Map<hgv.a, hgl> o = new HashMap<>();
+   private final Map<hha, gnr> p;
+   private final Map<aku, hbi.b> q;
+   final Map<aku, hhg> r;
+   final hhg s;
 
-   hgv(Map<hgu<?>, Object> $$0) {
-      this.a = $$0;
+   public hgv(gey $$0, Map<hha, gnr> $$1, Map<aku, hbi.b> $$2, Map<aku, hhg> $$3, hhg $$4) {
+      this.n = $$0;
+      this.p = $$1;
+      this.q = $$2;
+      this.r = $$3;
+      this.s = $$4;
    }
 
-   public static hgv.a a() {
-      return new hgv.a();
+   public hgv.b a(hgv.d $$0) {
+      hgl $$1 = hhg.a(this.s, new hgv.c($$0, () -> "missing"), hgm.a);
+      Map<hha, hgl> $$2 = new HashMap<>(this.p.size());
+      this.p.forEach(($$2x, $$3x) -> {
+         try {
+            hgl $$4x = $$3x.a(new hgv.c($$0, $$2x::toString));
+            $$2.put($$2x, $$4x);
+         } catch (Exception var6) {
+            m.warn("Unable to bake model: '{}': {}", $$2x, var6);
+         }
+      });
+      hbi $$3 = new hbm($$1);
+      Map<aku, hbi> $$4 = new HashMap<>(this.q.size());
+      this.q.forEach(($$3x, $$4x) -> {
+         hgw $$5 = () -> $$3x + "#inventory";
+         hgv.c $$6 = new hgv.c($$0, $$5);
+         hbi.a $$7 = new hbi.a($$6, this.n, $$3);
+
+         try {
+            hbi $$8 = $$4x.a($$7);
+            $$4.put($$3x, $$8);
+         } catch (Exception var10) {
+            m.warn("Unable to bake item model: '{}'", $$3x, var10);
+         }
+      });
+      return new hgv.b($$1, $$2, $$3, $$4);
    }
 
-   public static MapCodec<hgv> a(final List<hgu<?>> $$0) {
-      return new MapCodec<hgv>() {
-         public <T> RecordBuilder<T> a(hgv $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
+   static record a(aku a, j b, boolean c) {
+   }
 
-            for (hgu<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
+   public static record b(hgl a, Map<hha, hgl> b, hbi c, Map<aku, hbi> d) {
+   }
 
+   class c implements hgu {
+      private final hgw b;
+      private final hhf c;
+
+      c(final hgv.d $$0, final hgw $$1) {
+         this.c = $$0.a($$1);
+         this.b = $$1;
+      }
+
+      @Override
+      public hhf a() {
+         return this.c;
+      }
+
+      private hhg a(aku $$0) {
+         hhg $$1 = hgv.this.r.get($$0);
+         if ($$1 == null) {
+            hgv.m.warn("Requested a model that was not discovered previously: {}", $$0);
+            return hgv.this.s;
+         } else {
+            return $$1;
+         }
+      }
+
+      @Override
+      public hgl a(aku $$0, hhb $$1) {
+         hgv.a $$2 = new hgv.a($$0, $$1.a(), $$1.b());
+         hgl $$3 = hgv.this.o.get($$2);
+         if ($$3 != null) {
             return $$3;
+         } else {
+            hhg $$4 = this.a($$0);
+            hgl $$5 = hhg.a($$4, this, $$1);
+            hgv.this.o.put($$2, $$5);
+            return $$5;
          }
+      }
 
-         private <T, V> RecordBuilder<T> a(hgv $$0x, RecordBuilder<T> $$1, hgu<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
+      @Override
+      public hgw b() {
+         return this.b;
+      }
+   }
 
-         public <T> DataResult<hgv> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<hgv.a> $$2 = DataResult.success(new hgv.a());
+   public interface d {
+      hej a(hgw var1, hgs var2);
 
-            for (hgu<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
+      hej a(hgw var1, String var2);
+
+      default hhf a(final hgw $$0) {
+         return new hhf() {
+            @Override
+            public hej a(hgs $$0x) {
+               return d.this.a($$0, $$0);
             }
 
-            return $$2.map(hgv.a::a);
-         }
-
-         private <T, V> DataResult<hgv.a> a(DataResult<hgv.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hgu<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
+            @Override
+            public hej a(String $$0x) {
+               return d.this.a($$0, $$0);
             }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(hgu::b).map($$0::createString);
-         }
-      };
-   }
-
-   @Nullable
-   public <T> T a(hgu<T> $$0) {
-      return (T)this.a.get($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public Set<hgu<?>> b() {
-      return this.a.keySet();
-   }
-
-   public static class a {
-      private final Map<hgu<?>, Object> a = new Reference2ObjectOpenHashMap();
-
-      a() {
-      }
-
-      public <T> hgv.a a(hgu<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> hgv.a b(hgu<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public hgv.a a(hgv $$0) {
-         this.a.putAll($$0.a);
-         return this;
-      }
-
-      public hgv a() {
-         return new hgv(this.a);
+         };
       }
    }
 }

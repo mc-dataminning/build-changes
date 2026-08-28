@@ -1,40 +1,43 @@
-public class giw extends gjn {
-   private final gji a;
+public class giw extends gje {
+   private final double a;
+   private final int b;
 
-   giw(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
-   }
-
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gir b() {
-      return gir.c;
+   giw(gfy $$0, double $$1, double $$2, double $$3, double $$4, int $$5, int $$6) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$4;
+      this.t = $$5;
+      this.b = $$6;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.a);
+      if (this.s % (this.b + 1) == 0) {
+         for (int $$0 = 0; $$0 < 3; $$0++) {
+            double $$1 = this.g + (this.r.j() - this.r.j()) * this.a;
+            double $$2 = this.h + (this.r.j() - this.r.j()) * this.a;
+            double $$3 = this.i + (this.r.j() - this.r.j()) * this.a;
+            this.c.a(lt.x, $$1, $$2, $$3, (double)((float)this.s / (float)this.t), 0.0, 0.0);
+         }
+      }
+
+      if (this.s++ == this.t) {
+         this.k();
+      }
    }
 
-   public static record a(gji a) implements giq<lu> {
-      public gin a(lu $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         giw $$8 = new giw($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.A.a(12) + 8);
-         return $$8;
+   public static class a implements gjj<lx> {
+      private final double a;
+      private final int b;
+      private final int c;
+
+      public a(double $$0, int $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public gjg a(lx $$0, gfy $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new giw($$1, $$2, $$3, $$4, this.a, this.b, this.c);
       }
    }
 }

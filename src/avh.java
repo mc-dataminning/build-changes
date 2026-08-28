@@ -1,18 +1,22 @@
-import java.util.concurrent.CompletableFuture;
+import com.google.gson.JsonObject;
+import javax.annotation.Nullable;
 
-public interface avh {
-   CompletableFuture<?> a();
+public abstract class avh<T> {
+   @Nullable
+   private final T a;
 
-   float b();
-
-   default boolean c() {
-      return this.a().isDone();
+   public avh(@Nullable T $$0) {
+      this.a = $$0;
    }
 
-   default void d() {
-      CompletableFuture<?> $$0 = this.a();
-      if ($$0.isCompletedExceptionally()) {
-         $$0.join();
-      }
+   @Nullable
+   T g() {
+      return this.a;
    }
+
+   boolean f() {
+      return false;
+   }
+
+   protected abstract void a(JsonObject var1);
 }

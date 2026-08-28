@@ -1,59 +1,13 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import jdk.jfr.consumer.RecordedEvent;
+public interface bqj {
+   void a();
 
-public record bqj(Instant a, long b, bqj.b c) {
-   public static bqj a(RecordedEvent $$0) {
-      return new bqj($$0.getStartTime(), $$0.getLong("heapUsed"), $$0.getString("when").equalsIgnoreCase("before gc") ? bqj.b.a : bqj.b.b);
-   }
+   void b();
 
-   public static bqj.a a(Duration $$0, List<bqj> $$1, Duration $$2, int $$3) {
-      return new bqj.a($$0, $$2, $$3, a($$1));
-   }
+   void c();
 
-   private static double a(List<bqj> $$0) {
-      long $$1 = 0L;
-      Map<bqj.b, List<bqj>> $$2 = $$0.stream().collect(Collectors.groupingBy($$0x -> $$0x.c));
-      List<bqj> $$3 = $$2.get(bqj.b.a);
-      List<bqj> $$4 = $$2.get(bqj.b.b);
+   boolean e();
 
-      for (int $$5 = 1; $$5 < $$3.size(); $$5++) {
-         bqj $$6 = $$3.get($$5);
-         bqj $$7 = $$4.get($$5 - 1);
-         $$1 += $$6.b - $$7.b;
-      }
+   bos f();
 
-      Duration $$8 = Duration.between($$0.get(1).a, $$0.get($$0.size() - 1).a);
-      return (double)$$1 / (double)$$8.getSeconds();
-   }
-
-   public static record a(Duration a, Duration b, int c, double d) {
-      public float a() {
-         return (float)this.b.toMillis() / (float)this.a.toMillis();
-      }
-
-      public Duration b() {
-         return this.a;
-      }
-
-      public Duration c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public double e() {
-         return this.d;
-      }
-   }
-
-   static enum b {
-      a,
-      b;
-   }
+   void d();
 }

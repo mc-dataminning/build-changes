@@ -1,113 +1,70 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.function.Predicate;
 
-public class amj extends btj {
-   private long g = 0L;
-   private long h = 0L;
-   private long i = 0L;
-   private long j = 0L;
-   private boolean k = false;
-   private final MinecraftServer l;
+public class amj {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wo.b("clear.failed.single", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wo.b("clear.failed.multiple", $$0));
 
-   public amj(MinecraftServer $$0) {
-      this.l = $$0;
+   public static void a(CommandDispatcher<ex> $$0, et $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ey.a("clear").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ex)$$0x.getSource(), Collections.singleton(((ex)$$0x.getSource()).h()), $$0xx -> true)))
+            .then(
+               ((RequiredArgumentBuilder)ey.a("targets", fk.d()).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), $$0xx -> true)))
+                  .then(
+                     ((RequiredArgumentBuilder)ey.a("item", hj.a($$1)).executes($$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), hj.a($$0x, "item"))))
+                        .then(
+                           ey.a("maxCount", IntegerArgumentType.integer(0))
+                              .executes(
+                                 $$0x -> a((ex)$$0x.getSource(), fk.f($$0x, "targets"), hj.a($$0x, "item"), IntegerArgumentType.getInteger($$0x, "maxCount"))
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   public boolean a() {
-      return this.j > 0L;
+   private static int a(ex $$0, Collection<ard> $$1, Predicate<cwp> $$2) throws CommandSyntaxException {
+      return a($$0, $$1, $$2, -1);
    }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.n();
-   }
+   private static int a(ex $$0, Collection<ard> $$1, Predicate<cwp> $$2, int $$3) throws CommandSyntaxException {
+      int $$4 = 0;
 
-   private void n() {
-      this.l.ag().a(agq.a(this));
-   }
-
-   private void o() {
-      this.l.ag().a(agr.a(this));
-   }
-
-   public boolean a(int $$0) {
-      if (!this.l()) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.o();
-         return true;
+      for (ard $$5 : $$1) {
+         $$4 += $$5.gi().a($$2, $$3, $$5.cc.r());
+         $$5.cd.d();
+         $$5.cc.a($$5.gi());
       }
-   }
 
-   public boolean b() {
-      if (this.d > 0) {
-         this.d = 0;
-         this.o();
-         return true;
+      if ($$4 == 0) {
+         if ($$1.size() == 1) {
+            throw a.create($$1.iterator().next().al());
+         } else {
+            throw b.create($$1.size());
+         }
       } else {
-         return false;
+         int $$6 = $$4;
+         if ($$3 == 0) {
+            if ($$1.size() == 1) {
+               $$0.a(() -> wo.a("commands.clear.test.single", $$6, $$1.iterator().next().p_()), true);
+            } else {
+               $$0.a(() -> wo.a("commands.clear.test.multiple", $$6, $$1.size()), true);
+            }
+         } else if ($$1.size() == 1) {
+            $$0.a(() -> wo.a("commands.clear.success.single", $$6, $$1.iterator().next().p_()), true);
+         } else {
+            $$0.a(() -> wo.a("commands.clear.success.multiple", $$6, $$1.size()), true);
+         }
+
+         return $$4;
       }
-   }
-
-   public boolean c() {
-      if (this.g > 0L) {
-         this.p();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean b(int $$0) {
-      boolean $$1 = this.g > 0L;
-      this.i = 0L;
-      this.j = (long)$$0;
-      this.g = (long)$$0;
-      this.k = this.l();
-      this.a(false);
-      return $$1;
-   }
-
-   private void p() {
-      long $$0 = this.j - this.g;
-      double $$1 = Math.max(1.0, (double)this.i) / (double)baw.b;
-      int $$2 = (int)((double)(baw.c * $$0) / $$1);
-      String $$3 = String.format("%.2f", $$0 == 0L ? (double)this.g() : $$1 / (double)$$0);
-      this.j = 0L;
-      this.i = 0L;
-      this.l.aH().a(() -> xk.a("commands.tick.sprint.report", $$2, $$3), true);
-      this.g = 0L;
-      this.a(this.k);
-      this.l.F();
-   }
-
-   public boolean d() {
-      if (!this.e) {
-         return false;
-      } else if (this.g > 0L) {
-         this.h = System.nanoTime();
-         this.g--;
-         return true;
-      } else {
-         this.p();
-         return false;
-      }
-   }
-
-   public void e() {
-      this.i = this.i + (System.nanoTime() - this.h);
-   }
-
-   @Override
-   public void a(float $$0) {
-      super.a($$0);
-      this.l.F();
-      this.n();
-   }
-
-   public void a(ary $$0) {
-      $$0.f.b(agq.a(this));
-      $$0.f.b(agr.a(this));
    }
 }

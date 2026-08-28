@@ -1,42 +1,14 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
 public class dhz {
-   public static final Codec<dhz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               awu.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dhz::new)
-   );
-   public static final dhz b = new dhz(awv.h, 6000, 8, 2.0);
-   private final jq<awu> c;
-   private final int d;
-   private final int e;
-   private final double f;
+   public static final akt<dhy> a = a("nether");
+   public static final akt<dhy> b = a("overworld");
 
-   public dhz(jq<awu> $$0, int $$1, int $$2, double $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static void a(qe<dhy> $$0) {
+      js<dhk> $$1 = $$0.a(mc.aI);
+      $$0.a(a, new dhy(dhy.a.a, $$1));
+      $$0.a(b, new dhy(dhy.a.b, $$1));
    }
 
-   public jq<awu> a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
-   }
-
-   public double d() {
-      return this.f;
+   private static akt<dhy> a(String $$0) {
+      return akt.a(mc.bc, aku.b($$0));
    }
 }

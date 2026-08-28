@@ -1,55 +1,80 @@
-public class gjt extends gjn {
-   private final gji a;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-   gjt(gff $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gji $$7) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$7;
-      this.j *= 0.3F;
-      this.k = Math.random() * 0.2F + 0.1F;
-      this.l *= 0.3F;
-      this.b(0.01F, 0.01F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
-      this.b($$7);
-      this.u = 0.0F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public abstract class gjt extends gjg {
+   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+
+   protected gjt(gfy $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
+
+   protected gjt(gfy $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public gjt.a p() {
+      return gjt.a.a;
    }
 
    @Override
-   public gir b() {
-      return gir.b;
+   public void a(ffy $$0, fkr $$1, float $$2) {
+      Quaternionf $$3 = new Quaternionf();
+      this.p().setRotation($$3, $$1, $$2);
+      if (this.z != 0.0F) {
+         $$3.rotateZ(ayz.h($$2, this.A, this.z));
+      }
+
+      this.a($$0, $$1, $$3, $$2);
+   }
+
+   protected void a(ffy $$0, fkr $$1, Quaternionf $$2, float $$3) {
+      fba $$4 = $$1.b();
+      float $$5 = (float)(ayz.d((double)$$3, this.d, this.g) - $$4.a());
+      float $$6 = (float)(ayz.d((double)$$3, this.e, this.h) - $$4.b());
+      float $$7 = (float)(ayz.d((double)$$3, this.f, this.i) - $$4.c());
+      this.a($$0, $$2, $$5, $$6, $$7, $$3);
+   }
+
+   protected void a(ffy $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = this.b($$5);
+      float $$7 = this.c();
+      float $$8 = this.d();
+      float $$9 = this.e();
+      float $$10 = this.f();
+      int $$11 = this.a($$5);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
+   }
+
+   private void a(ffy $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
+      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
+   }
+
+   public float b(float $$0) {
+      return this.D;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      int $$0 = 60 - this.t;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.98F;
-         this.k *= 0.98F;
-         this.l *= 0.98F;
-         float $$1 = (float)$$0 * 0.001F;
-         this.b($$1, $$1);
-         this.a(this.a.a($$0 % 4, 4));
-      }
+   public gjg d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
    }
 
-   public static class a implements giq<lw> {
-      private final gji a;
+   protected abstract float c();
 
-      public a(gji $$0) {
-         this.a = $$0;
-      }
+   protected abstract float d();
 
-      public gin a(lw $$0, gff $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gjt($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   protected abstract float e();
+
+   protected abstract float f();
+
+   public interface a {
+      gjt.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      gjt.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+
+      void setRotation(Quaternionf var1, fkr var2, float var3);
    }
 }

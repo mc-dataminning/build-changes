@@ -1,41 +1,31 @@
-public class gtf extends gqf<cii, gze, gcs> {
-   private static final alp a = alp.b("textures/entity/rabbit/brown.png");
-   private static final alp b = alp.b("textures/entity/rabbit/white.png");
-   private static final alp k = alp.b("textures/entity/rabbit/black.png");
-   private static final alp l = alp.b("textures/entity/rabbit/gold.png");
-   private static final alp m = alp.b("textures/entity/rabbit/salt.png");
-   private static final alp n = alp.b("textures/entity/rabbit/white_splotched.png");
-   private static final alp o = alp.b("textures/entity/rabbit/toast.png");
-   private static final alp p = alp.b("textures/entity/rabbit/caerbannog.png");
+public class gtf extends gsb<cpp, gzk> {
+   private static final aku a = aku.b("textures/entity/llama/spit.png");
+   private final gct b;
 
-   public gtf(grl.a $$0) {
-      super($$0, new gcs($$0.a(gei.ct)), new gcs($$0.a(gei.cu)), 0.3F);
+   public gtf(gsc.a $$0) {
+      super($$0);
+      this.b = new gct($$0.a(gfb.bw));
    }
 
-   public alp a(gze $$0) {
-      if ($$0.b) {
-         return o;
-      } else {
-         return switch ($$0.c) {
-            case a -> a;
-            case b -> b;
-            case c -> k;
-            case e -> l;
-            case f -> m;
-            case d -> n;
-            case g -> p;
-         };
-      }
+   public void a(gzk $$0, ffu $$1, glx $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      ffy $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, hea.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gze b() {
-      return new gze();
+   public gzk a() {
+      return new gzk();
    }
 
-   public void a(cii $$0, gze $$1, float $$2) {
+   public void a(cpp $$0, gzk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = "Toast".equals(n.a($$0.al().getString()));
-      $$1.c = $$0.go();
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

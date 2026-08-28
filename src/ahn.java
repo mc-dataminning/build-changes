@@ -1,15 +1,12 @@
-import io.netty.buffer.ByteBuf;
-
-public record ahn() implements zr<ahb> {
-   public static final ahn a = new ahn();
-   public static final zi<ByteBuf, ahn> b = zi.a(a);
+public record ahn(cov b) implements yv<agf> {
+   public static final ym<vl, ahn> a = ym.a(cov.a, ahn::b, ahn::new);
 
    @Override
-   public zt<ahn> a() {
-      return agz.bv;
+   public yx<ahn> a() {
+      return agd.bU;
    }
 
-   public void a(ahb $$0) {
+   public void a(agf $$0) {
       $$0.a(this);
    }
 }

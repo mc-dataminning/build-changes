@@ -1,46 +1,39 @@
-public class gup extends grk<cqv, had> {
-   private static final alp a = alp.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alp b = alp.b("textures/entity/wither/wither.png");
-   private final gdd h;
+public class gup<T extends buk & cpn> extends gsb<T, hal> {
+   private final hbj a;
+   private final float b;
+   private final boolean h;
 
-   public gup(grl.a $$0) {
+   public gup(gsc.a $$0, float $$1, boolean $$2) {
       super($$0);
-      this.h = new gdd($$0.a(gei.dG));
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   public static gep a() {
-      ger $$0 = new ger();
-      get $$1 = $$0.a();
-      $$1.a("head", geo.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gel.a);
-      return gep.a($$0, 64, 64);
+   public gup(gsc.a $$0) {
+      this($$0, 1.0F, false);
    }
 
-   protected int a(cqv $$0, jh $$1) {
-      return 15;
+   @Override
+   protected int a(T $$0, ji $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
    }
 
-   public void a(had $$0, fgl $$1, glg $$2, int $$3) {
+   public void a(hal $$0, ffu $$1, glx $$2, int $$3) {
       $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      fgp $$4 = $$2.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$0.c, $$0.b);
-      this.h.a($$1, $$4, $$3, hax.d);
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      $$0.a.a($$1, $$2, $$3, hea.d);
       $$1.b();
       super.a($$0, $$1, $$2, $$3);
    }
 
-   private alp a(had $$0) {
-      return $$0.a ? a : b;
+   public hal a() {
+      return new hal();
    }
 
-   public had b() {
-      return new had();
-   }
-
-   public void a(cqv $$0, had $$1, float $$2) {
+   public void a(T $$0, hal $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.v();
-      $$1.c = $$0.k($$2);
-      $$1.b = $$0.j($$2);
+      this.a.a($$1.a, $$0.l(), cwn.h, $$0);
    }
 }

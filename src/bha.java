@@ -1,29 +1,18 @@
-import com.google.common.escape.Escaper;
-import com.google.common.escape.Escapers;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bha extends bgg {
-   public static final Escaper a = Escapers.builder().addEscape('"', "\\\"").addEscape('\\', "\\\\").build();
-
+public class bha extends DataFix {
    public bha(Schema $$0) {
-      super($$0, "LockComponentPredicateFix", "minecraft:lock");
+      super($$0, false);
    }
 
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
-   }
-
-   public static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<String> $$1 = $$0.asString().result();
-      if ($$1.isPresent()) {
-         Dynamic<T> $$2 = $$0.createString("\"" + a.escape($$1.get()) + "\"");
-         Dynamic<T> $$3 = $$0.emptyMap().set("minecraft:custom_name", $$2);
-         return $$0.emptyMap().set("components", $$3);
-      } else {
-         return $$0.emptyMap();
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsAccessibilityOnboardFix",
+         this.getInputSchema().getType(bhw.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createBoolean(false)))
+      );
    }
 }

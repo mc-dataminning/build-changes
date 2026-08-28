@@ -1,93 +1,97 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 public class cgo {
-   public static final cgo a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private cgo.a g;
+   public static final akt<cgn> a = a("armorer");
+   public static final akt<cgn> b = a("butcher");
+   public static final akt<cgn> c = a("cartographer");
+   public static final akt<cgn> d = a("cleric");
+   public static final akt<cgn> e = a("farmer");
+   public static final akt<cgn> f = a("fisherman");
+   public static final akt<cgn> g = a("fletcher");
+   public static final akt<cgn> h = a("leatherworker");
+   public static final akt<cgn> i = a("librarian");
+   public static final akt<cgn> j = a("mason");
+   public static final akt<cgn> k = a("shepherd");
+   public static final akt<cgn> l = a("toolsmith");
+   public static final akt<cgn> m = a("weaponsmith");
+   public static final akt<cgn> n = a("home");
+   public static final akt<cgn> o = a("meeting");
+   public static final akt<cgn> p = a("beehive");
+   public static final akt<cgn> q = a("bee_nest");
+   public static final akt<cgn> r = a("nether_portal");
+   public static final akt<cgn> s = a("lodestone");
+   public static final akt<cgn> t = a("lightning_rod");
+   private static final Set<dwx> u = ImmutableList.of(
+         djo.bu, djo.bv, djo.br, djo.bs, djo.bp, djo.bn, djo.bt, djo.bj, djo.bo, djo.bl, djo.bi, djo.bh, new djm[]{djo.bm, djo.bq, djo.bg, djo.bk}
+      )
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .filter($$0 -> $$0.c(djf.b) == dxk.a)
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Set<dwx> v = ImmutableList.of(djo.fO, djo.fQ, djo.fP, djo.fR)
+      .stream()
+      .flatMap($$0 -> $$0.l().a().stream())
+      .collect(ImmutableSet.toImmutableSet());
+   private static final Map<dwx, jr<cgn>> w = Maps.newHashMap();
 
-   private cgo(boolean $$0) {
-      this.c = $$0;
+   private static Set<dwx> a(djm $$0) {
+      return ImmutableSet.copyOf($$0.l().a());
    }
 
-   public static cgo a() {
-      return new cgo(true);
+   private static akt<cgn> a(String $$0) {
+      return akt.a(mc.aa, aku.b($$0));
    }
 
-   public static cgo b() {
-      return new cgo(false);
+   private static cgn a(ke<cgn> $$0, akt<cgn> $$1, Set<dwx> $$2, int $$3, int $$4) {
+      cgn $$5 = new cgn($$2, $$3, $$4);
+      ke.a($$0, $$1, $$5);
+      a($$0.b($$1), $$2);
+      return $$5;
    }
 
-   public cgo c() {
-      cgo $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      return $$0;
-   }
-
-   public cgo a(double $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public cgo d() {
-      this.e = false;
-      return this;
-   }
-
-   public cgo e() {
-      this.f = false;
-      return this;
-   }
-
-   public cgo a(@Nullable cgo.a $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(arx $$0, @Nullable bvx $$1, bvx $$2) {
-      if ($$1 == $$2) {
-         return false;
-      } else if (!$$2.ey()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$2, $$0)) {
-         return false;
-      } else {
-         if ($$1 == null) {
-            if (this.c && (!$$2.ex() || $$0.am() == bsx.a)) {
-               return false;
-            }
-         } else {
-            if (this.c && (!$$1.c($$2) || !$$1.a($$2.aq()) || $$1.s($$2))) {
-               return false;
-            }
-
-            if (this.d > 0.0) {
-               double $$3 = this.f ? $$2.C($$1) : 1.0;
-               double $$4 = Math.max(this.d * $$3, 2.0);
-               double $$5 = $$1.i($$2.dB(), $$2.dD(), $$2.dH());
-               if ($$5 > $$4 * $$4) {
-                  return false;
-               }
-            }
-
-            if (this.e && $$1 instanceof bvz $$6 && !$$6.N().a($$2)) {
-               return false;
-            }
+   private static void a(jr<cgn> $$0, Set<dwx> $$1) {
+      $$1.forEach($$1x -> {
+         jr<cgn> $$2 = w.put($$1x, $$0);
+         if ($$2 != null) {
+            throw (IllegalStateException)af.b(new IllegalStateException(String.format(Locale.ROOT, "%s is defined in more than one PoI type", $$1x)));
          }
-
-         return true;
-      }
+      });
    }
 
-   @FunctionalInterface
-   public interface a {
-      boolean test(bvx var1, arx var2);
+   public static Optional<jr<cgn>> a(dwx $$0) {
+      return Optional.ofNullable(w.get($$0));
+   }
+
+   public static boolean b(dwx $$0) {
+      return w.containsKey($$0);
+   }
+
+   public static cgn a(ke<cgn> $$0) {
+      a($$0, a, a(djo.oy), 1, 1);
+      a($$0, b, a(djo.ox), 1, 1);
+      a($$0, c, a(djo.oz), 1, 1);
+      a($$0, d, a(djo.fN), 1, 1);
+      a($$0, e, a(djo.pE), 1, 1);
+      a($$0, f, a(djo.ow), 1, 1);
+      a($$0, g, a(djo.oA), 1, 1);
+      a($$0, h, v, 1, 1);
+      a($$0, i, a(djo.oC), 1, 1);
+      a($$0, j, a(djo.oE), 1, 1);
+      a($$0, k, a(djo.ov), 1, 1);
+      a($$0, l, a(djo.oD), 1, 1);
+      a($$0, m, a(djo.oB), 1, 1);
+      a($$0, n, u, 1, 1);
+      a($$0, o, a(djo.oF), 32, 6);
+      a($$0, p, a(djo.pH), 0, 1);
+      a($$0, q, a(djo.pG), 0, 1);
+      a($$0, r, a(djo.eq), 0, 1);
+      a($$0, s, a(djo.pS), 0, 1);
+      return a($$0, t, a(djo.sU), 0, 1);
    }
 }

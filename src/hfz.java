@@ -1,6 +1,12 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.google.gson.JsonObject;
 
-public interface hfz extends hfw {
-   ByteBuffer b() throws IOException;
+public class hfz implements ato<hfy> {
+   public hfy b(JsonObject $$0) {
+      return new hfy(hfy.a.a(ayp.a($$0, "hat", "none")));
+   }
+
+   @Override
+   public String a() {
+      return "villager";
+   }
 }

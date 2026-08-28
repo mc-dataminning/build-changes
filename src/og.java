@@ -1,49 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public final class og {
-   private static final og a = new og(ImmutableList.of());
-   private static final Comparator<dyq.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
-   private final List<dyq.a<?>> c;
+public class og implements nz {
+   private final oa b;
+   private final cwl c;
+   private final dba d;
+   private final int e;
+   private final Map<String, aq<?>> f = new LinkedHashMap<>();
+   @Nullable
+   private String g;
+   private final dbw.a<?> h;
 
-   public og a(dyq.a<?> $$0) {
-      return new og(ImmutableList.builder().addAll(this.c).add($$0).build());
+   public og(oa $$0, dbw.a<?> $$1, dba $$2, dgh $$3, int $$4) {
+      this.b = $$0;
+      this.h = $$1;
+      this.c = $$3.j();
+      this.d = $$2;
+      this.e = $$4;
    }
 
-   public og a(og $$0) {
-      return new og(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   public static og a(dba $$0, oa $$1, dgh $$2) {
+      return new og($$1, dce::new, $$0, $$2, 1);
    }
 
-   private og(List<dyq.a<?>> $$0) {
-      this.c = $$0;
+   public static og a(dba $$0, oa $$1, dgh $$2, int $$3) {
+      return new og($$1, dce::new, $$0, $$2, $$3);
    }
 
-   public static og a() {
-      return a;
+   public og b(String $$0, aq<?> $$1) {
+      this.f.put($$0, $$1);
+      return this;
    }
 
-   public static og a(dyq.a<?>... $$0) {
-      return new og(ImmutableList.copyOf($$0));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 || $$0 instanceof og && this.c.equals(((og)$$0).c);
-   }
-
-   @Override
-   public int hashCode() {
-      return this.c.hashCode();
-   }
-
-   public String b() {
-      return this.c.stream().sorted(b).map(dyq.a::toString).collect(Collectors.joining(","));
+   public og b(@Nullable String $$0) {
+      this.g = $$0;
+      return this;
    }
 
    @Override
-   public String toString() {
-      return this.b();
+   public cwl a() {
+      return this.c;
+   }
+
+   @Override
+   public void a(ob $$0, akt<dbe<?>> $$1) {
+      this.a($$1);
+      ah.a $$2 = $$0.a().a("has_the_recipe", dw.a($$1)).a(am.a.c($$1)).a(al.a.b);
+      this.f.forEach($$2::a);
+      dbw $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new cwp(this.c, this.e));
+      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
+   }
+
+   private void a(akt<dbe<?>> $$0) {
+      if (this.f.isEmpty()) {
+         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
+      }
    }
 }

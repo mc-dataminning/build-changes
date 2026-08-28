@@ -1,34 +1,127 @@
 import javax.annotation.Nullable;
 
-public class duv extends dwa {
-   public duv(jh $$0, dxo $$1) {
-      super(dus.K, $$0, $$1);
+public class duv extends dtz implements bsm {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final azh k = azh.a();
+   @Nullable
+   private wo l;
+
+   public duv(ji $$0, dwx $$1) {
+      super(dub.n, $$0, $$1);
    }
 
    @Override
-   public ect.d b() {
-      return new duv.a(this.aB_());
+   protected void b(tq $$0, jt.a $$1) {
+      super.b($$0, $$1);
+      if (this.l_()) {
+         $$0.a("CustomName", wo.a.a(this.l, $$1));
+      }
    }
 
-   protected class a extends dwa.a {
-      public a(final jh $$1) {
-         super($$1);
+   @Override
+   protected void a(tq $$0, jt.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.l = a($$0.l("CustomName"), $$1);
+      }
+   }
+
+   public static void a(dgi $$0, ji $$1, dwx $$2, duv $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cox $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dB() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dH() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)ayz.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
+
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
+         }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
 
-      @Override
-      public int a() {
-         return 16;
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
       }
 
-      @Override
-      public boolean a(arx $$0, jh $$1, jq<eck> $$2, @Nullable eck.a $$3) {
-         int $$4 = this.a($$0, this.c, duv.this.m());
-         return $$4 != 0 && ect.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
       }
 
-      private int a(dgz $$0, jh $$1, dxo $$2) {
-         jm $$3 = $$2.c(dkr.b).g();
-         return $$0.c($$1.a($$3), $$3);
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
       }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = ayz.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = ayz.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
+   }
+
+   @Override
+   public wo al() {
+      return (wo)(this.l != null ? this.l : wo.c("container.enchant"));
+   }
+
+   public void a(@Nullable wo $$0) {
+      this.l = $$0;
+   }
+
+   @Nullable
+   @Override
+   public wo an() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(dtz.b $$0) {
+      super.a($$0);
+      this.l = $$0.a(kv.g);
+   }
+
+   @Override
+   protected void a(kr.a $$0) {
+      super.a($$0);
+      $$0.a(kv.g, this.l);
+   }
+
+   @Override
+   public void a(tq $$0) {
+      $$0.r("CustomName");
    }
 }

@@ -1,500 +1,82 @@
-import com.google.common.collect.ImmutableList;
 import java.util.List;
 
 public class ri {
-   private static final alo<esd> N = a("empty");
-   public static final alo<esd> a = a("zombie_plains");
-   public static final alo<esd> b = a("zombie_savanna");
-   public static final alo<esd> c = a("zombie_snowy");
-   public static final alo<esd> d = a("zombie_taiga");
-   public static final alo<esd> e = a("zombie_desert");
-   public static final alo<esd> f = a("mossify_10_percent");
-   public static final alo<esd> g = a("mossify_20_percent");
-   public static final alo<esd> h = a("mossify_70_percent");
-   public static final alo<esd> i = a("street_plains");
-   public static final alo<esd> j = a("street_savanna");
-   public static final alo<esd> k = a("street_snowy_or_taiga");
-   public static final alo<esd> l = a("farm_plains");
-   public static final alo<esd> m = a("farm_savanna");
-   public static final alo<esd> n = a("farm_snowy");
-   public static final alo<esd> o = a("farm_taiga");
-   public static final alo<esd> p = a("farm_desert");
-   public static final alo<esd> q = a("outpost_rot");
-   public static final alo<esd> r = a("bottom_rampart");
-   public static final alo<esd> s = a("treasure_rooms");
-   public static final alo<esd> t = a("housing");
-   public static final alo<esd> u = a("side_wall_degradation");
-   public static final alo<esd> v = a("stable_degradation");
-   public static final alo<esd> w = a("bastion_generic_degradation");
-   public static final alo<esd> x = a("rampart_degradation");
-   public static final alo<esd> y = a("entrance_replacement");
-   public static final alo<esd> z = a("bridge");
-   public static final alo<esd> A = a("roof");
-   public static final alo<esd> B = a("high_wall");
-   public static final alo<esd> C = a("high_rampart");
-   public static final alo<esd> D = a("fossil_rot");
-   public static final alo<esd> E = a("fossil_coal");
-   public static final alo<esd> F = a("fossil_diamonds");
-   public static final alo<esd> G = a("ancient_city_start_degradation");
-   public static final alo<esd> H = a("ancient_city_generic_degradation");
-   public static final alo<esd> I = a("ancient_city_walls_degradation");
-   public static final alo<esd> J = a("trail_ruins_houses_archaeology");
-   public static final alo<esd> K = a("trail_ruins_roads_archaeology");
-   public static final alo<esd> L = a("trail_ruins_tower_top_archaeology");
-   public static final alo<esd> M = a("trial_chambers_copper_bulb_degradation");
+   public static final akt<efk<?, ?>> a = rf.a("ore_magma");
+   public static final akt<efk<?, ?>> b = rf.a("ore_soul_sand");
+   public static final akt<efk<?, ?>> c = rf.a("ore_nether_gold");
+   public static final akt<efk<?, ?>> d = rf.a("ore_quartz");
+   public static final akt<efk<?, ?>> e = rf.a("ore_gravel_nether");
+   public static final akt<efk<?, ?>> f = rf.a("ore_blackstone");
+   public static final akt<efk<?, ?>> g = rf.a("ore_dirt");
+   public static final akt<efk<?, ?>> h = rf.a("ore_gravel");
+   public static final akt<efk<?, ?>> i = rf.a("ore_granite");
+   public static final akt<efk<?, ?>> j = rf.a("ore_diorite");
+   public static final akt<efk<?, ?>> k = rf.a("ore_andesite");
+   public static final akt<efk<?, ?>> l = rf.a("ore_tuff");
+   public static final akt<efk<?, ?>> m = rf.a("ore_coal");
+   public static final akt<efk<?, ?>> n = rf.a("ore_coal_buried");
+   public static final akt<efk<?, ?>> o = rf.a("ore_iron");
+   public static final akt<efk<?, ?>> p = rf.a("ore_iron_small");
+   public static final akt<efk<?, ?>> q = rf.a("ore_gold");
+   public static final akt<efk<?, ?>> r = rf.a("ore_gold_buried");
+   public static final akt<efk<?, ?>> s = rf.a("ore_redstone");
+   public static final akt<efk<?, ?>> t = rf.a("ore_diamond_small");
+   public static final akt<efk<?, ?>> u = rf.a("ore_diamond_medium");
+   public static final akt<efk<?, ?>> v = rf.a("ore_diamond_large");
+   public static final akt<efk<?, ?>> w = rf.a("ore_diamond_buried");
+   public static final akt<efk<?, ?>> x = rf.a("ore_lapis");
+   public static final akt<efk<?, ?>> y = rf.a("ore_lapis_buried");
+   public static final akt<efk<?, ?>> z = rf.a("ore_infested");
+   public static final akt<efk<?, ?>> A = rf.a("ore_emerald");
+   public static final akt<efk<?, ?>> B = rf.a("ore_ancient_debris_large");
+   public static final akt<efk<?, ?>> C = rf.a("ore_ancient_debris_small");
+   public static final akt<efk<?, ?>> D = rf.a("ore_copper_small");
+   public static final akt<efk<?, ?>> E = rf.a("ore_copper_large");
+   public static final akt<efk<?, ?>> F = rf.a("ore_clay");
 
-   private static alo<esd> a(String $$0) {
-      return alo.a(mb.aV, alp.b($$0));
-   }
-
-   private static void a(ra<esd> $$0, alo<esd> $$1, List<esc> $$2) {
-      $$0.a($$1, new esd($$2));
-   }
-
-   public static void a(ra<esd> $$0) {
-      jr<dkd> $$1 = $$0.a(mb.f);
-      eru $$2 = new eru(new erw(dkf.pT, 0.01F), erc.b, dkf.qe.m());
-      eru $$3 = new eru(new erw(dkf.qe, 0.5F), erc.b, dkf.pT.m());
-      a($$0, N, ImmutableList.of());
-      a(
-         $$0,
-         a,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.m, 0.8F), erc.b, dkf.cu.m()),
-                  new eru(new esh(axk.q), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cw), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cx), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.m, 0.07F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.cu, 0.07F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.hG, 0.07F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.X, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.n, 0.1F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.cC, 0.1F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.aq, 0.02F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.fm, 0.5F), erc.b, dkf.bz.m()),
-                  new eru[]{
-                     new eru(
-                        new erj(dkf.fm.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))),
-                        erc.b,
-                        dkf.ii.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))
-                     ),
-                     new eru(
-                        new erj(dkf.fm.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))),
-                        erc.b,
-                        dkf.ii.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))
-                     ),
-                     new eru(new erw(dkf.cJ, 0.3F), erc.b, dkf.gP.m()),
-                     new eru(new erw(dkf.cJ, 0.2F), erc.b, dkf.gQ.m()),
-                     new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.lf.m())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         b,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new esh(axk.q), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cw), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cx), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.r, 0.2F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.im, 0.2F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.ab, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.ax, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.hH, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.hK, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.hU, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.fm, 0.5F), erc.b, dkf.bz.m()),
-                  new eru(
-                     new erj(dkf.fm.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))),
-                     erc.b,
-                     dkf.ii.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))
-                  ),
-                  new eru[]{
-                     new eru(
-                        new erj(dkf.fm.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))),
-                        erc.b,
-                        dkf.ii.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))
-                     ),
-                     new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.fs.m())
-                  }
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         c,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new esh(axk.q), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cw), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cx), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.oG), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.o, 0.2F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.jS, 0.4F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.aj, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.aC, 0.05F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.fm, 0.5F), erc.b, dkf.bz.m()),
-                  new eru(
-                     new erj(dkf.fm.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))),
-                     erc.b,
-                     dkf.ii.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))
-                  ),
-                  new eru(
-                     new erj(dkf.fm.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))),
-                     erc.b,
-                     dkf.ii.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))
-                  ),
-                  new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.gP.m()),
-                  new eru[]{new eru(new erw(dkf.cJ, 0.8F), erc.b, dkf.gQ.m())}
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         d,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.m, 0.8F), erc.b, dkf.cu.m()),
-                  new eru(new esh(axk.q), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cw), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cx), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.oI), erc.b, dkf.oI.m().b(dks.c, Boolean.valueOf(false))),
-                  new eru(new erw(dkf.m, 0.08F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.Y, 0.08F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.fm, 0.5F), erc.b, dkf.bz.m()),
-                  new eru(
-                     new erj(dkf.fm.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))),
-                     erc.b,
-                     dkf.ii.m().b(dog.a, Boolean.valueOf(true)).b(dog.c, Boolean.valueOf(true))
-                  ),
-                  new eru(
-                     new erj(dkf.fm.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))),
-                     erc.b,
-                     dkf.ii.m().b(dog.b, Boolean.valueOf(true)).b(dog.d, Boolean.valueOf(true))
-                  ),
-                  new eru(new erw(dkf.cJ, 0.3F), erc.b, dkf.fr.m()),
-                  new eru(new erw(dkf.cJ, 0.2F), erc.b, dkf.gQ.m()),
-                  new eru[0]
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         e,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new esh(axk.q), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cw), erc.b, dkf.a.m()),
-                  new eru(new erh(dkf.cx), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.kr, 0.08F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.be, 0.1F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.iY, 0.08F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.nN, 0.08F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.oa, 0.08F), erc.b, dkf.bz.m()),
-                  new eru(new erw(dkf.cJ, 0.2F), erc.b, dkf.lf.m()),
-                  new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.fs.m())
-               )
-            )
-         )
-      );
-      a($$0, f, ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.m, 0.1F), erc.b, dkf.cu.m())))));
-      a($$0, g, ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.m, 0.2F), erc.b, dkf.cu.m())))));
-      a($$0, h, ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.m, 0.7F), erc.b, dkf.cu.m())))));
-      a(
-         $$0,
-         i,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erh(dkf.lg), new erh(dkf.J), dkf.n.m()),
-                  new eru(new erw(dkf.lg, 0.1F), erc.b, dkf.i.m()),
-                  new eru(new erh(dkf.i), new erh(dkf.J), dkf.J.m()),
-                  new eru(new erh(dkf.j), new erh(dkf.J), dkf.J.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         j,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erh(dkf.lg), new erh(dkf.J), dkf.r.m()),
-                  new eru(new erw(dkf.lg, 0.2F), erc.b, dkf.i.m()),
-                  new eru(new erh(dkf.i), new erh(dkf.J), dkf.J.m()),
-                  new eru(new erh(dkf.j), new erh(dkf.J), dkf.J.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         k,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erh(dkf.lg), new erh(dkf.J), dkf.o.m()),
-                  new eru(new erh(dkf.lg), new erh(dkf.eb), dkf.o.m()),
-                  new eru(new erw(dkf.lg, 0.2F), erc.b, dkf.i.m()),
-                  new eru(new erh(dkf.i), new erh(dkf.J), dkf.J.m()),
-                  new eru(new erh(dkf.j), new erh(dkf.J), dkf.J.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         l,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.cJ, 0.3F), erc.b, dkf.gP.m()),
-                  new eru(new erw(dkf.cJ, 0.2F), erc.b, dkf.gQ.m()),
-                  new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.lf.m())
-               )
-            )
-         )
-      );
-      a($$0, m, ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.fs.m())))));
-      a(
-         $$0,
-         n,
-         ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.gP.m()), new eru(new erw(dkf.cJ, 0.8F), erc.b, dkf.gQ.m()))))
-      );
-      a(
-         $$0,
-         o,
-         ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.cJ, 0.3F), erc.b, dkf.fr.m()), new eru(new erw(dkf.cJ, 0.2F), erc.b, dkf.gQ.m()))))
-      );
-      a(
-         $$0,
-         p,
-         ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.cJ, 0.2F), erc.b, dkf.lf.m()), new eru(new erw(dkf.cJ, 0.1F), erc.b, dkf.fs.m()))))
-      );
-      a($$0, q, ImmutableList.of(new eri(0.05F)));
-      a(
-         $$0,
-         r,
-         ImmutableList.of(
-            new ery(ImmutableList.of(new eru(new erw(dkf.ll, 0.75F), erc.b, dkf.pZ.m()), new eru(new erw(dkf.pZ, 0.15F), erc.b, dkf.pY.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         s,
-         ImmutableList.of(
-            new ery(ImmutableList.of(new eru(new erw(dkf.pY, 0.35F), erc.b, dkf.pZ.m()), new eru(new erw(dkf.qa, 0.1F), erc.b, dkf.pZ.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         t,
-         ImmutableList.of(
-            new ery(ImmutableList.of(new eru(new erw(dkf.pY, 0.3F), erc.b, dkf.pZ.m()), new eru(new erw(dkf.pT, 1.0E-4F), erc.b, dkf.a.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         u,
-         ImmutableList.of(
-            new ery(ImmutableList.of(new eru(new erw(dkf.qa, 0.5F), erc.b, dkf.a.m()), new eru(new erw(dkf.co, 0.1F), erc.b, dkf.pZ.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         v,
-         ImmutableList.of(
-            new ery(ImmutableList.of(new eru(new erw(dkf.pY, 0.1F), erc.b, dkf.pZ.m()), new eru(new erw(dkf.pT, 1.0E-4F), erc.b, dkf.a.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         w,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.pY, 0.3F), erc.b, dkf.pZ.m()),
-                  new eru(new erw(dkf.pT, 1.0E-4F), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.co, 0.3F), erc.b, dkf.pZ.m()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         x,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.pY, 0.4F), erc.b, dkf.pZ.m()),
-                  new eru(new erw(dkf.pT, 0.01F), erc.b, dkf.pZ.m()),
-                  new eru(new erw(dkf.pY, 1.0E-4F), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.pT, 1.0E-4F), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.co, 0.3F), erc.b, dkf.pZ.m()),
-                  $$3,
-                  $$2
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         y,
-         ImmutableList.of(
-            new ery(ImmutableList.of(new eru(new erw(dkf.qa, 0.5F), erc.b, dkf.a.m()), new eru(new erw(dkf.co, 0.6F), erc.b, dkf.pZ.m()), $$3, $$2))
-         )
-      );
-      a(
-         $$0,
-         z,
-         ImmutableList.of(new ery(ImmutableList.of(new eru(new erw(dkf.pY, 0.3F), erc.b, dkf.pZ.m()), new eru(new erw(dkf.pT, 1.0E-4F), erc.b, dkf.a.m()))))
-      );
-      a(
-         $$0,
-         A,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.pY, 0.3F), erc.b, dkf.pZ.m()),
-                  new eru(new erw(dkf.pY, 0.15F), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.pY, 0.3F), erc.b, dkf.pT.m())
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         B,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.pY, 0.01F), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.pY, 0.5F), erc.b, dkf.pZ.m()),
-                  new eru(new erw(dkf.pY, 0.3F), erc.b, dkf.pT.m()),
-                  $$3
-               )
-            )
-         )
-      );
-      a(
-         $$0,
-         C,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(new eru(new erw(dkf.co, 0.3F), erc.b, dkf.pZ.m()), new eru(erc.b, erc.b, new erd(0.0F, 0.05F, 0, 100, jm.a.b), dkf.a.m()), $$3)
-            )
-         )
-      );
-      a($$0, D, ImmutableList.of(new eri(0.9F), new erv(axk.bQ)));
-      a($$0, E, ImmutableList.of(new eri(0.1F), new erv(axk.bQ)));
-      a($$0, F, ImmutableList.of(new eri(0.1F), new ery(ImmutableList.of(new eru(new erh(dkf.U), erc.b, dkf.cG.m()))), new erv(axk.bQ)));
-      a(
-         $$0,
-         G,
-         ImmutableList.of(
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.ty, 0.3F), erc.b, dkf.tD.m()),
-                  new eru(new erw(dkf.tu, 0.3F), erc.b, dkf.tE.m()),
-                  new eru(new erw(dkf.oH, 0.05F), erc.b, dkf.a.m())
-               )
-            ),
-            new erv(axk.bQ)
-         )
-      );
-      a(
-         $$0,
-         H,
-         ImmutableList.of(
-            new eri($$1.b(axk.bW), 0.95F),
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.ty, 0.3F), erc.b, dkf.tD.m()),
-                  new eru(new erw(dkf.tu, 0.3F), erc.b, dkf.tE.m()),
-                  new eru(new erw(dkf.oH, 0.05F), erc.b, dkf.a.m())
-               )
-            ),
-            new erv(axk.bQ)
-         )
-      );
-      a(
-         $$0,
-         I,
-         ImmutableList.of(
-            new eri($$1.b(axk.bW), 0.95F),
-            new ery(
-               ImmutableList.of(
-                  new eru(new erw(dkf.ty, 0.3F), erc.b, dkf.tD.m()),
-                  new eru(new erw(dkf.tu, 0.3F), erc.b, dkf.tE.m()),
-                  new eru(new erw(dkf.tw, 0.3F), erc.b, dkf.a.m()),
-                  new eru(new erw(dkf.oH, 0.05F), erc.b, dkf.a.m())
-               )
-            ),
-            new erv(axk.bQ)
-         )
-      );
-      a(
-         $$0,
-         J,
-         List.of(
-            new ery(
-               List.of(
-                  new eru(new erw(dkf.O, 0.2F), erc.b, dkf.j.m()),
-                  new eru(new erw(dkf.O, 0.1F), erc.b, dkf.k.m()),
-                  new eru(new erw(dkf.fa, 0.1F), erc.b, dkf.eZ.m())
-               )
-            ),
-            a(ewe.aZ, 6),
-            a(ewe.ba, 3)
-         )
-      );
-      a(
-         $$0,
-         K,
-         List.of(
-            new ery(
-               List.of(
-                  new eru(new erw(dkf.O, 0.2F), erc.b, dkf.j.m()),
-                  new eru(new erw(dkf.O, 0.1F), erc.b, dkf.k.m()),
-                  new eru(new erw(dkf.fa, 0.1F), erc.b, dkf.eZ.m())
-               )
-            ),
-            a(ewe.aZ, 2)
-         )
-      );
-      a($$0, L, List.of(a(ewe.aZ, 2)));
-      a(
-         $$0,
-         M,
-         List.of(
-            new ery(
-               List.of(
-                  new eru(new erw(dkf.sQ, 0.1F), erc.b, dkf.sT.m().b(dlr.c, Boolean.valueOf(true))),
-                  new eru(new erw(dkf.sQ, 0.33333334F), erc.b, dkf.sS.m().b(dlr.c, Boolean.valueOf(true))),
-                  new eru(new erw(dkf.sQ, 0.5F), erc.b, dkf.sR.m().b(dlr.c, Boolean.valueOf(true)))
-               )
-            ),
-            new erv(axk.bQ)
-         )
-      );
-   }
-
-   private static erk a(alo<ewn> $$0, int $$1) {
-      return new erk(new ery(List.of(new eru(new esh(axk.cw), erc.b, err.b, dkf.P.m(), new esj($$0)))), bsc.a($$1));
+   public static void a(qe<efk<?, ?>> $$0) {
+      eri $$1 = new erq(awp.bg);
+      eri $$2 = new erq(awp.bh);
+      eri $$3 = new erq(awp.bi);
+      eri $$4 = new eqq(djo.ei);
+      eri $$5 = new erq(awp.bj);
+      List<eik.a> $$6 = List.of(eik.a($$2, djo.S.m()), eik.a($$3, djo.T.m()));
+      List<eik.a> $$7 = List.of(eik.a($$2, djo.Q.m()), eik.a($$3, djo.R.m()));
+      List<eik.a> $$8 = List.of(eik.a($$2, djo.cF.m()), eik.a($$3, djo.cG.m()));
+      List<eik.a> $$9 = List.of(eik.a($$2, djo.aY.m()), eik.a($$3, djo.aZ.m()));
+      List<eik.a> $$10 = List.of(eik.a($$2, djo.rC.m()), eik.a($$3, djo.rD.m()));
+      List<eik.a> $$11 = List.of(eik.a($$2, djo.U.m()), eik.a($$3, djo.V.m()));
+      rf.a($$0, a, efy.I, new eik($$4, djo.ll.m(), 33));
+      rf.a($$0, b, efy.I, new eik($$4, djo.ej.m(), 12));
+      rf.a($$0, c, efy.I, new eik($$4, djo.W.m(), 10));
+      rf.a($$0, d, efy.I, new eik($$4, djo.hy.m(), 14));
+      rf.a($$0, e, efy.I, new eik($$4, djo.O.m(), 33));
+      rf.a($$0, f, efy.I, new eik($$4, djo.pT.m(), 33));
+      rf.a($$0, g, efy.I, new eik($$1, djo.j.m(), 33));
+      rf.a($$0, h, efy.I, new eik($$1, djo.O.m(), 33));
+      rf.a($$0, i, efy.I, new eik($$1, djo.c.m(), 64));
+      rf.a($$0, j, efy.I, new eik($$1, djo.e.m(), 64));
+      rf.a($$0, k, efy.I, new eik($$1, djo.g.m(), 64));
+      rf.a($$0, l, efy.I, new eik($$1, djo.rb.m(), 64));
+      rf.a($$0, m, efy.I, new eik($$11, 17));
+      rf.a($$0, n, efy.I, new eik($$11, 17, 0.5F));
+      rf.a($$0, o, efy.I, new eik($$6, 9));
+      rf.a($$0, p, efy.I, new eik($$6, 4));
+      rf.a($$0, q, efy.I, new eik($$7, 9));
+      rf.a($$0, r, efy.I, new eik($$7, 9, 0.5F));
+      rf.a($$0, s, efy.I, new eik(List.of(eik.a($$2, djo.dV.m()), eik.a($$3, djo.dW.m())), 8));
+      rf.a($$0, t, efy.I, new eik($$8, 4, 0.5F));
+      rf.a($$0, v, efy.I, new eik($$8, 12, 0.7F));
+      rf.a($$0, w, efy.I, new eik($$8, 8, 1.0F));
+      rf.a($$0, u, efy.I, new eik($$8, 8, 0.5F));
+      rf.a($$0, x, efy.I, new eik($$9, 7));
+      rf.a($$0, y, efy.I, new eik($$9, 7, 1.0F));
+      rf.a($$0, z, efy.I, new eik(List.of(eik.a($$2, djo.fb.m()), eik.a($$3, djo.tF.m())), 9));
+      rf.a($$0, A, efy.I, new eik(List.of(eik.a($$2, djo.fZ.m()), eik.a($$3, djo.ga.m())), 3));
+      rf.a($$0, B, efy.af, new eik($$5, djo.pL.m(), 3, 1.0F));
+      rf.a($$0, C, efy.af, new eik($$5, djo.pL.m(), 2, 1.0F));
+      rf.a($$0, D, efy.I, new eik($$10, 10));
+      rf.a($$0, E, efy.I, new eik($$10, 20));
+      rf.a($$0, F, efy.I, new eik($$1, djo.ee.m(), 33));
    }
 }

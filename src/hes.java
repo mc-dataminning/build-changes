@@ -1,31 +1,30 @@
-public class hes implements hen {
-   private final gkc a;
-   private boolean b;
-   private boolean c = true;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public hes(gkc $$0) {
-      this.a = $$0;
+public class hes implements hen {
+   public static final MapCodec<hes> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, hes::new)
+   );
+   private final String c;
+   private final String d;
+
+   public hes(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a() {
-      dgz $$0 = this.a.dW();
-      dxo $$1 = $$0.c(this.a.cR().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dkf.nF)).findFirst().orElse(null);
-      if ($$1 != null) {
-         if (!this.b && !this.c && $$1.a(dkf.nF) && !this.a.aa_()) {
-            boolean $$2 = $$1.c(dkk.b);
-            if ($$2) {
-               this.a.a(awv.db, 1.0F, 1.0F);
-            } else {
-               this.a.a(awv.cZ, 1.0F, 1.0F);
-            }
-         }
+   public void a(aup $$0, hen.a $$1) {
+      akn $$2 = new akn("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         aku $$4 = $$2.b($$2x).f(this.d);
+         $$1.a($$4, $$3);
+      });
+   }
 
-         this.b = true;
-      } else {
-         this.b = false;
-      }
-
-      this.c = false;
+   @Override
+   public hep a() {
+      return heq.b;
    }
 }

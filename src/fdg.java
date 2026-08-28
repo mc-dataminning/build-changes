@@ -1,265 +1,166 @@
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.concurrent.atomic.AtomicBoolean;
+import javax.annotation.Nullable;
+import javax.sound.sampled.AudioFormat;
+import org.lwjgl.openal.AL10;
+import org.slf4j.Logger;
 
-public class fdg<T> implements fdf<T> {
-   private static final Comparator<fde<?>> a = ($$0, $$1) -> fdj.b.compare($$0.b(), $$1.b());
-   private final LongPredicate b;
-   private final Long2ObjectMap<fde<T>> c = new Long2ObjectOpenHashMap();
-   private final Long2LongMap d = ae.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<fde<T>> e = new PriorityQueue<>(a);
-   private final Queue<fdj<T>> f = new ArrayDeque<>();
-   private final List<fdj<T>> g = new ArrayList<>();
-   private final Set<fdj<?>> h = new ObjectOpenCustomHashSet(fdj.c);
-   private final BiConsumer<fde<T>, fdj<T>> i = ($$0x, $$1) -> {
-      if ($$1.equals($$0x.b())) {
-         this.b($$1);
-      }
-   };
+public class fdg {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 4;
+   public static final int a = 1;
+   private final int d;
+   private final AtomicBoolean e = new AtomicBoolean(true);
+   private int f = 16384;
+   @Nullable
+   private hjb g;
 
-   public fdg(LongPredicate $$0) {
-      this.b = $$0;
+   @Nullable
+   static fdg a() {
+      int[] $$0 = new int[1];
+      AL10.alGenSources($$0);
+      return fdk.a("Allocate new source") ? null : new fdg($$0[0]);
    }
 
-   public void a(dgf $$0, fde<T> $$1) {
-      long $$2 = $$0.a();
-      this.c.put($$2, $$1);
-      fdj<T> $$3 = $$1.b();
-      if ($$3 != null) {
-         this.d.put($$2, $$3.c());
-      }
-
-      $$1.a(this.i);
+   private fdg(int $$0) {
+      this.d = $$0;
    }
 
-   public void a(dgf $$0) {
-      long $$1 = $$0.a();
-      fde<T> $$2 = (fde<T>)this.c.remove($$1);
-      this.d.remove($$1);
-      if ($$2 != null) {
-         $$2.a(null);
+   public void b() {
+      if (this.e.compareAndSet(true, false)) {
+         AL10.alSourceStop(this.d);
+         fdk.a("Stop");
+         if (this.g != null) {
+            try {
+               this.g.close();
+            } catch (IOException var2) {
+               b.error("Failed to close audio stream", var2);
+            }
+
+            this.l();
+            this.g = null;
+         }
+
+         AL10.alDeleteSources(new int[]{this.d});
+         fdk.a("Cleanup");
       }
    }
 
-   @Override
-   public void a(fdj<T> $$0) {
-      long $$1 = dgf.a($$0.b());
-      fde<T> $$2 = (fde<T>)this.c.get($$1);
-      if ($$2 == null) {
-         ae.b("Trying to schedule tick in not loaded position " + $$0.b());
-      } else {
-         $$2.a($$0);
+   public void c() {
+      AL10.alSourcePlay(this.d);
+   }
+
+   private int k() {
+      return !this.e.get() ? 4116 : AL10.alGetSourcei(this.d, 4112);
+   }
+
+   public void d() {
+      if (this.k() == 4114) {
+         AL10.alSourcePause(this.d);
       }
    }
 
-   public void a(long $$0, int $$1, BiConsumer<jh, T> $$2) {
-      bpj $$3 = bpi.a();
-      $$3.a("collect");
-      this.a($$0, $$1, $$3);
-      $$3.b("run");
-      $$3.a("ticksToRun", this.f.size());
-      this.a($$2);
-      $$3.b("cleanup");
-      this.c();
-      $$3.c();
+   public void e() {
+      if (this.k() == 4115) {
+         AL10.alSourcePlay(this.d);
+      }
    }
 
-   private void a(long $$0, int $$1, bpj $$2) {
-      this.a($$0);
-      $$2.a("containersToTick", this.e.size());
-      this.a($$0, $$1);
-      this.b();
+   public void f() {
+      if (this.e.get()) {
+         AL10.alSourceStop(this.d);
+         fdk.a("Stop");
+      }
    }
 
-   private void a(long $$0) {
-      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.d);
+   public boolean g() {
+      return this.k() == 4114;
+   }
 
-      while ($$1.hasNext()) {
-         Entry $$2 = (Entry)$$1.next();
-         long $$3 = $$2.getLongKey();
-         long $$4 = $$2.getLongValue();
-         if ($$4 <= $$0) {
-            fde<T> $$5 = (fde<T>)this.c.get($$3);
-            if ($$5 == null) {
-               $$1.remove();
-            } else {
-               fdj<T> $$6 = $$5.b();
-               if ($$6 == null) {
-                  $$1.remove();
-               } else if ($$6.c() > $$0) {
-                  $$2.setValue($$6.c());
-               } else if (this.b.test($$3)) {
-                  $$1.remove();
-                  this.e.add($$5);
+   public boolean h() {
+      return this.k() == 4116;
+   }
+
+   public void a(fba $$0) {
+      AL10.alSourcefv(this.d, 4100, new float[]{(float)$$0.d, (float)$$0.e, (float)$$0.f});
+   }
+
+   public void a(float $$0) {
+      AL10.alSourcef(this.d, 4099, $$0);
+   }
+
+   public void a(boolean $$0) {
+      AL10.alSourcei(this.d, 4103, $$0 ? 1 : 0);
+   }
+
+   public void b(float $$0) {
+      AL10.alSourcef(this.d, 4106, $$0);
+   }
+
+   public void i() {
+      AL10.alSourcei(this.d, 53248, 0);
+   }
+
+   public void c(float $$0) {
+      AL10.alSourcei(this.d, 53248, 53251);
+      AL10.alSourcef(this.d, 4131, $$0);
+      AL10.alSourcef(this.d, 4129, 1.0F);
+      AL10.alSourcef(this.d, 4128, 0.0F);
+   }
+
+   public void b(boolean $$0) {
+      AL10.alSourcei(this.d, 514, $$0 ? 1 : 0);
+   }
+
+   public void a(fdl $$0) {
+      $$0.a().ifPresent($$0x -> AL10.alSourcei(this.d, 4105, $$0x));
+   }
+
+   public void a(hjb $$0) {
+      this.g = $$0;
+      AudioFormat $$1 = $$0.a();
+      this.f = a($$1, 1);
+      this.a(4);
+   }
+
+   private static int a(AudioFormat $$0, int $$1) {
+      return (int)((float)($$1 * $$0.getSampleSizeInBits()) / 8.0F * (float)$$0.getChannels() * $$0.getSampleRate());
+   }
+
+   private void a(int $$0) {
+      if (this.g != null) {
+         try {
+            for (int $$1 = 0; $$1 < $$0; $$1++) {
+               ByteBuffer $$2 = this.g.a(this.f);
+               if ($$2 != null) {
+                  new fdl($$2, this.g.a()).c().ifPresent($$0x -> AL10.alSourceQueueBuffers(this.d, new int[]{$$0x}));
                }
             }
+         } catch (IOException var4) {
+            b.error("Failed to read from audio stream", var4);
          }
       }
    }
 
-   private void a(long $$0, int $$1) {
-      fde<T> $$2;
-      while (this.a($$1) && ($$2 = this.e.poll()) != null) {
-         fdj<T> $$3 = $$2.c();
-         this.c($$3);
-         this.a(this.e, $$2, $$0, $$1);
-         fdj<T> $$4 = $$2.b();
-         if ($$4 != null) {
-            if ($$4.c() <= $$0 && this.a($$1)) {
-               this.e.add($$2);
-            } else {
-               this.b($$4);
-            }
-         }
+   public void j() {
+      if (this.g != null) {
+         int $$0 = this.l();
+         this.a($$0);
       }
    }
 
-   private void b() {
-      for (fde<T> $$0 : this.e) {
-         this.b($$0.b());
+   private int l() {
+      int $$0 = AL10.alGetSourcei(this.d, 4118);
+      if ($$0 > 0) {
+         int[] $$1 = new int[$$0];
+         AL10.alSourceUnqueueBuffers(this.d, $$1);
+         fdk.a("Unqueue buffers");
+         AL10.alDeleteBuffers($$1);
+         fdk.a("Remove processed buffers");
       }
-   }
 
-   private void b(fdj<T> $$0) {
-      this.d.put(dgf.a($$0.b()), $$0.c());
-   }
-
-   private void a(Queue<fde<T>> $$0, fde<T> $$1, long $$2, int $$3) {
-      if (this.a($$3)) {
-         fde<T> $$4 = $$0.peek();
-         fdj<T> $$5 = $$4 != null ? $$4.b() : null;
-
-         while (this.a($$3)) {
-            fdj<T> $$6 = $$1.b();
-            if ($$6 == null || $$6.c() > $$2 || $$5 != null && fdj.b.compare($$6, $$5) > 0) {
-               break;
-            }
-
-            $$1.c();
-            this.c($$6);
-         }
-      }
-   }
-
-   private void c(fdj<T> $$0) {
-      this.f.add($$0);
-   }
-
-   private boolean a(int $$0) {
-      return this.f.size() < $$0;
-   }
-
-   private void a(BiConsumer<jh, T> $$0) {
-      while (!this.f.isEmpty()) {
-         fdj<T> $$1 = this.f.poll();
-         if (!this.h.isEmpty()) {
-            this.h.remove($$1);
-         }
-
-         this.g.add($$1);
-         $$0.accept($$1.b(), $$1.a());
-      }
-   }
-
-   private void c() {
-      this.f.clear();
-      this.e.clear();
-      this.g.clear();
-      this.h.clear();
-   }
-
-   @Override
-   public boolean a(jh $$0, T $$1) {
-      fde<T> $$2 = (fde<T>)this.c.get(dgf.a($$0));
-      return $$2 != null && $$2.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(jh $$0, T $$1) {
-      this.d();
-      return this.h.contains(fdj.a($$1, $$0));
-   }
-
-   private void d() {
-      if (this.h.isEmpty() && !this.f.isEmpty()) {
-         this.h.addAll(this.f);
-      }
-   }
-
-   private void a(env $$0, fdg.a<T> $$1) {
-      int $$2 = kj.a((double)$$0.h());
-      int $$3 = kj.a((double)$$0.j());
-      int $$4 = kj.a((double)$$0.k());
-      int $$5 = kj.a((double)$$0.m());
-
-      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
-            long $$8 = dgf.c($$6, $$7);
-            fde<T> $$9 = (fde<T>)this.c.get($$8);
-            if ($$9 != null) {
-               $$1.accept($$8, $$9);
-            }
-         }
-      }
-   }
-
-   public void a(env $$0) {
-      Predicate<fdj<T>> $$1 = $$1x -> $$0.b($$1x.b());
-      this.a($$0, ($$1x, $$2) -> {
-         fdj<T> $$3 = $$2.b();
-         $$2.a($$1);
-         fdj<T> $$4 = $$2.b();
-         if ($$4 != $$3) {
-            if ($$4 != null) {
-               this.b($$4);
-            } else {
-               this.d.remove($$1x);
-            }
-         }
-      });
-      this.g.removeIf($$1);
-      this.f.removeIf($$1);
-   }
-
-   public void a(env $$0, kl $$1) {
-      this.a(this, $$0, $$1);
-   }
-
-   public void a(fdg<T> $$0, env $$1, kl $$2) {
-      List<fdj<T>> $$3 = new ArrayList<>();
-      Predicate<fdj<T>> $$4 = $$1x -> $$1.b($$1x.b());
-      $$0.g.stream().filter($$4).forEach($$3::add);
-      $$0.f.stream().filter($$4).forEach($$3::add);
-      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
-      LongSummaryStatistics $$5 = $$3.stream().mapToLong(fdj::e).summaryStatistics();
-      long $$6 = $$5.getMin();
-      long $$7 = $$5.getMax();
-      $$3.forEach($$3x -> this.a(new fdj<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
-   }
-
-   @Override
-   public int a() {
-      return this.c.values().stream().mapToInt(fdl::a).sum();
-   }
-
-   @FunctionalInterface
-   interface a<T> {
-      void accept(long var1, fde<T> var3);
+      return $$0;
    }
 }

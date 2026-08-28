@@ -1,26 +1,30 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public interface eom<S extends eod> {
-   eom<epx> a = a("buried_treasure", epx.d);
-   eom<epz> b = a("desert_pyramid", epz.d);
-   eom<eqb> c = a("end_city", eqb.d);
-   eom<eqk> d = a("fortress", eqk.e);
-   eom<eqd> e = a("igloo", eqd.d);
-   eom<eqe> f = a("jigsaw", eqe.i);
-   eom<eqg> g = a("jungle_temple", eqg.d);
-   eom<eqi> h = a("mineshaft", eqi.d);
-   eom<eqm> i = a("nether_fossil", eqm.d);
-   eom<eqo> j = a("ocean_monument", eqo.d);
-   eom<eqq> k = a("ocean_ruin", eqq.d);
-   eom<eqs> l = a("ruined_portal", eqs.d);
-   eom<equ> m = a("shipwreck", equ.d);
-   eom<eqw> n = a("stronghold", eqw.d);
-   eom<eqy> o = a("swamp_hut", eqy.d);
-   eom<era> p = a("woodland_mansion", era.d);
+public record eom(int c, int d) {
+   private static final Codec<eom> e = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayi.l.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), ayi.l.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
+            .apply($$0, eom::new)
+   );
+   public static final Codec<eom> a = Codec.either(ayi.l, e)
+      .xmap($$0 -> (eom)$$0.map(eom::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
+   public static final eom b = new eom(0);
 
-   MapCodec<S> codec();
+   public eom(int $$0) {
+      this($$0, $$0);
+   }
 
-   private static <S extends eod> eom<S> a(String $$0, MapCodec<S> $$1) {
-      return kd.a(ma.R, $$0, () -> $$1);
+   public boolean a() {
+      return this.d == this.c;
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

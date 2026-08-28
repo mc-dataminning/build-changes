@@ -1,19 +1,24 @@
-public class dpm {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dxo $$0) {
-      return $$0.l();
+public class dpm extends djm {
+   public static final MapCodec<dpm> a = b(dpm::new);
+
+   @Override
+   public MapCodec<dpm> a() {
+      return a;
    }
 
-   public static int a(bac $$0) {
-      double $$1 = 1.0;
+   public dpm(dww.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
-      }
+   @Override
+   protected boolean f_(dwx $$0) {
+      return true;
+   }
 
-      return $$2;
+   @Override
+   protected int a(dwx $$0, dfn $$1, ji $$2, jn $$3) {
+      return 15;
    }
 }

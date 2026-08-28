@@ -1,50 +1,75 @@
-public class god implements gnr<dxk> {
-   private final gmj a;
+public class god implements goi<dto> {
+   private static final int a = 16;
+   private static final float b = 0.6666667F;
+   private final gbb c;
+   private final gbb d;
+   private final gba e;
+   private final gba f;
 
-   public god(gns.a $$0) {
-      this.a = $$0.b();
+   public god(goj.a $$0) {
+      this($$0.f());
    }
 
-   public void a(dxk $$0, float $$1, fgl $$2, glg $$3, int $$4, int $$5) {
-      dgz $$6 = $$0.i();
-      if ($$6 != null) {
-         jh $$7 = $$0.aB_().a($$0.f().g());
-         dxo $$8 = $$0.j();
-         if (!$$8.l()) {
-            gml.a();
-            $$2.a();
-            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
-            if ($$8.a(dkf.bG) && $$0.a($$1) <= 4.0F) {
-               $$8 = $$8.b(dxi.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            } else if ($$0.d() && !$$0.b()) {
-               dyp $$9 = $$8.a(dkf.by) ? dyp.b : dyp.a;
-               dxo $$10 = dkf.bG.m().b(dxi.c, $$9).b(dxi.a, $$8.c(dxh.a));
-               $$10 = $$10.b(dxi.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
-               this.a($$7, $$10, $$2, $$3, $$6, false, $$5);
-               jh $$11 = $$7.a($$0.f());
-               $$2.b();
-               $$2.a();
-               $$8 = $$8.b(dxh.c, Boolean.valueOf(true));
-               this.a($$11, $$8, $$2, $$3, $$6, true, $$5);
-            } else {
-               this.a($$7, $$8, $$2, $$3, $$6, false, $$5);
-            }
+   public god(gey $$0) {
+      this.c = new gbb($$0.a(gfb.q));
+      this.d = new gbb($$0.a(gfb.s));
+      this.e = new gba($$0.a(gfb.r));
+      this.f = new gba($$0.a(gfb.t));
+   }
 
-            $$2.b();
-            gml.b();
-         }
+   public void a(dto $$0, float $$1, ffu $$2, glx $$3, int $$4, int $$5) {
+      dwx $$6 = $$0.m();
+      gbb $$8;
+      gba $$9;
+      float $$7;
+      if ($$6.b() instanceof dir) {
+         $$7 = -dyc.b($$6.c(dir.b));
+         $$8 = this.c;
+         $$9 = this.e;
+      } else {
+         $$7 = -$$6.c(dso.b).p();
+         $$8 = this.d;
+         $$9 = this.f;
+      }
+
+      long $$13 = $$0.i().ad();
+      ji $$14 = $$0.aA_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$13, 100L) + $$1) / 100.0F;
+      a($$2, $$3, $$4, $$5, $$7, $$8, $$9, $$15, $$0.f(), $$0.b());
+   }
+
+   public void a(ffu $$0, glx $$1, int $$2, int $$3, cvm $$4, dtq $$5) {
+      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
+   }
+
+   private static void a(ffu $$0, glx $$1, int $$2, int $$3, float $$4, gbb $$5, gba $$6, float $$7, cvm $$8, dtq $$9) {
+      $$0.a();
+      $$0.a(0.5F, 0.0F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$4));
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      $$5.a($$0, hgv.f.a($$1, gmh::d), $$2, $$3);
+      $$6.a($$7);
+      a($$0, $$1, $$2, $$3, $$6.e(), hgv.f, true, $$8, $$9);
+      $$0.b();
+   }
+
+   public static void a(ffu $$0, glx $$1, int $$2, int $$3, gfc $$4, hgs $$5, boolean $$6, cvm $$7, dtq $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(ffu $$0, glx $$1, int $$2, int $$3, gfc $$4, hgs $$5, boolean $$6, cvm $$7, dtq $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, gmh::d, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gms.m : gms.n, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         dtq.b $$12 = $$8.b().get($$11);
+         hgs $$13 = $$6 ? gms.a($$12.b()) : gms.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
       }
    }
 
-   private void a(jh $$0, dxo $$1, fgl $$2, glg $$3, dgz $$4, boolean $$5, int $$6) {
-      glq $$7 = gky.b($$1);
-      fgp $$8 = $$3.getBuffer($$7);
-      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, bac.a(), $$1.b($$0), $$6);
-   }
-
-   @Override
-   public int a() {
-      return 68;
+   private static void a(ffu $$0, glx $$1, int $$2, int $$3, gfc $$4, hgs $$5, cvm $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gmh::n), $$2, $$3, $$7);
    }
 }

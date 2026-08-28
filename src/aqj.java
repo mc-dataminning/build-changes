@@ -1,58 +1,91 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Locale;
-import java.util.UUID;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class aqj implements aqh {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xk.c("commands.data.entity.invalid"));
-   public static final Function<String, aqi.c> a = $$0 -> new aqi.c() {
-         @Override
-         public aqh a(CommandContext<ew> $$0x) throws CommandSyntaxException {
-            return new aqj(fj.a($$0, $$0));
+public class aqj implements aqf.a, AutoCloseable {
+   public static final int a = 4;
+   private static final Logger c = LogUtils.getLogger();
+   private final aqk d;
+   private final bre<Runnable> e;
+   private final brb f;
+   protected boolean b;
+
+   public aqj(bre<Runnable> $$0, Executor $$1) {
+      this.d = new aqk($$0.A_() + "_queue");
+      this.e = $$0;
+      this.f = new brb(4, $$1, "dispatcher");
+      this.b = true;
+   }
+
+   public boolean a() {
+      return this.f.c() || this.d.b();
+   }
+
+   @Override
+   public void onLevelChange(dfo $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
+      this.f.a_(new brd.c(0, () -> {
+         int $$4 = $$1.getAsInt();
+         this.d.a($$4, $$0, $$2);
+         $$3.accept($$2);
+      }));
+   }
+
+   public void a(long $$0, Runnable $$1, boolean $$2) {
+      this.f.a_(new brd.c(1, () -> {
+         this.d.a($$0, $$2);
+         this.a($$0);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
 
-         @Override
-         public ArgumentBuilder<ew, ?> a(ArgumentBuilder<ew, ?> $$0x, Function<ArgumentBuilder<ew, ?>, ArgumentBuilder<ew, ?>> $$1) {
-            return $$0.then(ex.a("entity").then($$1.apply(ex.a($$0, fj.a()))));
+         $$1.run();
+      }));
+   }
+
+   public void a(Runnable $$0, long $$1, IntSupplier $$2) {
+      this.f.a_(new brd.c(2, () -> {
+         int $$3 = $$2.getAsInt();
+         this.d.a($$0, $$1, $$3);
+         if (this.b) {
+            this.b = false;
+            this.b();
          }
-      };
-   private final bvb c;
+      }));
+   }
 
-   public aqj(bvb $$0) {
-      this.c = $$0;
+   protected void b() {
+      this.f.a_(new brd.c(3, () -> {
+         aqk.a $$0 = this.c();
+         if ($$0 == null) {
+            this.b = true;
+         } else {
+            this.a($$0);
+         }
+      }));
+   }
+
+   protected void a(aqk.a $$0) {
+      CompletableFuture.allOf($$0.b().stream().map($$0x -> this.e.a($$1 -> {
+            $$0x.run();
+            $$1.complete(baf.a);
+         })).toArray(CompletableFuture[]::new)).thenAccept($$0x -> this.b());
+   }
+
+   protected void a(long $$0) {
+   }
+
+   @Nullable
+   protected aqk.a c() {
+      return this.d.a();
    }
 
    @Override
-   public void a(um $$0) throws CommandSyntaxException {
-      if (this.c instanceof cpo) {
-         throw b.create();
-      } else {
-         UUID $$1 = this.c.cG();
-         this.c.g($$0);
-         this.c.a_($$1);
-      }
-   }
-
-   @Override
-   public um a() {
-      return dm.b(this.c);
-   }
-
-   @Override
-   public xk b() {
-      return xk.a("commands.data.entity.modified", this.c.p_());
-   }
-
-   @Override
-   public xk a(vj $$0) {
-      return xk.a("commands.data.entity.query", this.c.p_(), vb.c($$0));
-   }
-
-   @Override
-   public xk a(fo.g $$0, double $$1, int $$2) {
-      return xk.a("commands.data.entity.get", $$0.a(), this.c.p_(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   public void close() {
+      this.e.close();
    }
 }

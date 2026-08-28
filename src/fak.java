@@ -1,36 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.server.MinecraftServer;
 
-public record fak(float c) implements fan {
-   public static final MapCodec<fak> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(fak::c)).apply($$0, fak::new));
-   public static final Codec<fak> b = Codec.FLOAT.xmap(fak::new, fak::c);
+public class fak implements fal<MinecraftServer> {
+   final aku a;
 
-   @Override
-   public fam b() {
-      return fao.b;
+   public fak(aku $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public float b(ewi $$0) {
-      return this.c;
-   }
+   public void a(MinecraftServer $$0, fan<MinecraftServer> $$1, long $$2) {
+      alj $$3 = $$0.aE();
 
-   public static fak a(float $$0) {
-      return new fak($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((fak)$$0).c, this.c) == 0 : false;
+      for (il<ex> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
+   public static class a extends fal.a<MinecraftServer, fak> {
+      public a() {
+         super(aku.b("function_tag"), fak.class);
+      }
+
+      public void a(tq $$0, fak $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public fak a(tq $$0) {
+         aku $$1 = aku.a($$0.l("Name"));
+         return new fak($$1);
+      }
    }
 }

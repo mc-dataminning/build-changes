@@ -1,24 +1,31 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class byy {
-   private static final int a = 1;
+   public static bxa<bvg> a(bvj $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
+   }
 
-   public static bxr<bvx> a(float $$0) {
-      return cbd.a(
-         (Function<cbd.b<bvx>, ? extends App<cbd.c<bvx>, cbg<bvx>>>)($$1 -> $$1.group($$1.a(cfb.n), $$1.c(cfb.m), $$1.b(cfb.s))
-               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
-                     if ($$6.bZ()) {
+   public static byk<bvg> a(bur<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.aq()), $$1);
+   }
+
+   public static byk<bvg> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static byk<bvg> a(Predicate<bvg> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return cam.a(
+         (Function<cam.b<bvg>, ? extends App<cam.c<bvg>, cap<bvg>>>)($$2x -> $$2x.group($$2x.c(cek.n), $$2x.b(cek.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bvg> $$8 = $$2x.<cem>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((buk)$$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        bvb $$8 = $$1.b($$4);
-                        if ($$8.a($$6, 1.0)) {
-                           $$6.n($$8);
-                        } else {
-                           $$2.a(new byb($$8, true));
-                           $$3.a(new cfe(new byb($$8, false), $$0, 1));
-                        }
-
+                        $$3.a(new bxk($$8.get(), true));
                         return true;
                      }
                   }))

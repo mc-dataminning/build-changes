@@ -1,100 +1,98 @@
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public class etz extends eum {
-   private final boolean a;
-   private float m;
-   private float n;
+public record etz(arc d, fba e, fba f, float g, float h, boolean i, boolean j, Set<bvu> k, etz.a l) {
+   public static final etz.a a = $$0 -> {
+   };
+   public static final etz.a b = etz::a;
+   public static final etz.a c = etz::b;
 
-   public etz(boolean $$0) {
-      this.a = $$0;
+   public etz(arc $$0, fba $$1, fba $$2, float $$3, float $$4, etz.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
    }
 
-   @Override
-   public void a(dhm $$0, bvz $$1) {
-      super.a($$0, $$1);
-      $$1.a(euh.j, 0.0F);
-      this.m = $$1.a(euh.c);
-      $$1.a(euh.c, 6.0F);
-      this.n = $$1.a(euh.k);
-      $$1.a(euh.k, 4.0F);
+   public etz(arc $$0, fba $$1, fba $$2, float $$3, float $$4, Set<bvu> $$5, etz.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
    }
 
-   @Override
-   public void b() {
-      this.c.a(euh.c, this.m);
-      this.c.a(euh.k, this.n);
-      super.b();
+   public etz(arc $$0, buk $$1, etz.a $$2) {
+      this($$0, a($$0, $$1), fba.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
    }
 
-   @Override
-   public euc a() {
-      return !this.c.bj() ? super.a() : this.c(new jh(azu.a(this.c.cR().a), azu.a(this.c.cR().b + 0.5), azu.a(this.c.cR().c)));
-   }
-
-   @Override
-   public eul a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1 + 0.5, $$2);
-   }
-
-   @Override
-   public int a(euc[] $$0, euc $$1) {
-      int $$2 = super.a($$0, $$1);
-      euh $$3 = this.b($$1.a, $$1.b + 1, $$1.c);
-      euh $$4 = this.b($$1.a, $$1.b, $$1.c);
-      int $$5;
-      if (this.c.a($$3) >= 0.0F && $$4 != euh.w) {
-         $$5 = azu.d(Math.max(1.0F, this.c.dQ()));
-      } else {
-         $$5 = 0;
+   private static void a(buk $$0) {
+      if ($$0 instanceof ard $$1) {
+         $$1.f.b(new acy(1032, ji.c, 0, false));
       }
-
-      double $$7 = this.d(new jh($$1.a, $$1.b, $$1.c));
-      euc $$8 = this.a($$1.a, $$1.b + 1, $$1.c, Math.max(0, $$5 - 1), $$7, jm.b, $$4);
-      euc $$9 = this.a($$1.a, $$1.b - 1, $$1.c, $$5, $$7, jm.a, $$4);
-      if (this.b($$8, $$1)) {
-         $$0[$$2++] = $$8;
-      }
-
-      if (this.b($$9, $$1) && $$4 != euh.e) {
-         $$0[$$2++] = $$9;
-      }
-
-      for (int $$10 = 0; $$10 < $$2; $$10++) {
-         euc $$11 = $$0[$$10];
-         if ($$11.l == euh.j && this.a && $$11.b < this.c.dW().P() - 10) {
-            $$11.k++;
-         }
-      }
-
-      return $$2;
    }
 
-   private boolean b(@Nullable euc $$0, euc $$1) {
-      return this.a($$0, $$1) && $$0.l == euh.j;
+   private static void b(buk $$0) {
+      $$0.f(ji.a((kb)$$0.du()));
    }
 
-   @Override
-   protected boolean c() {
-      return true;
+   public static etz a(arc $$0, buk $$1, etz.a $$2) {
+      return new etz($$0, a($$0, $$1), fba.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
    }
 
-   @Override
-   public euh a(euj $$0, int $$1, int $$2, int $$3) {
-      euh $$4 = $$0.a($$1, $$2, $$3);
-      if ($$4 == euh.j) {
-         jh.a $$5 = new jh.a();
+   private static fba a(arc $$0, buk $$1) {
+      return $$1.a($$0, $$0.Z()).c();
+   }
 
-         for (jm $$6 : jm.values()) {
-            $$5.d($$1, $$2, $$3).c($$6);
-            euh $$7 = $$0.a($$5.u(), $$5.v(), $$5.w());
-            if ($$7 == euh.a) {
-               return euh.k;
-            }
-         }
+   public etz a(float $$0, float $$1) {
+      return new etz(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   }
 
-         return euh.j;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
+   public etz a(fba $$0) {
+      return new etz(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   }
+
+   public etz a() {
+      return new etz(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public arc b() {
+      return this.d;
+   }
+
+   public fba c() {
+      return this.e;
+   }
+
+   public fba d() {
+      return this.f;
+   }
+
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<bvu> i() {
+      return this.k;
+   }
+
+   public etz.a j() {
+      return this.l;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(buk var1);
+
+      default etz.a then(etz.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
    }
 }

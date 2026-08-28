@@ -1,94 +1,86 @@
-public class gar extends gbh<gxe> {
-   private static final float a = 0.6F;
-   private static final float b = 0.8F;
-   private static final float c = 1.0F;
-   private final gej d;
-   private final gej e;
-   private final gej f;
-   private final gej g;
-   private final gej i;
-   private final gej j;
-   private final gej k;
+public class gar extends gca<gxl> implements gau {
+   private final gfc a = this.v.b("head");
+   private final gfc b = this.v.b("body");
+   private final gfc c = this.b.b("right_arm");
+   private final gfc d = this.b.b("left_arm");
+   private final gfc e = this.b.b("right_wing");
+   private final gfc f = this.b.b("left_wing");
+   private static final float g = (float) (Math.PI / 4);
+   private static final float i = -1.134464F;
+   private static final float j = (float) (-Math.PI / 3);
 
-   public gar(gej $$0) {
-      super($$0, glq::j);
-      this.f = $$0.b("wind_body");
-      this.j = this.f.b("wind_bottom");
-      this.i = this.j.b("wind_mid");
-      this.g = this.i.b("wind_top");
-      this.d = $$0.b("body").b("head");
-      this.e = this.d.b("eyes");
-      this.k = $$0.b("body").b("rods");
+   public gar(gfc $$0) {
+      super($$0.b("root"), gmh::j);
    }
 
-   public static gep a(int $$0, int $$1) {
-      ger $$2 = new ger();
-      get $$3 = $$2.a();
-      get $$4 = $$3.a("body", geo.c(), gel.a(0.0F, 0.0F, 0.0F));
-      get $$5 = $$4.a("rods", geo.c(), gel.a(0.0F, 8.0F, 0.0F));
-      $$5.a("rod_1", geo.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gen(0.0F)), gel.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
-      $$5.a("rod_2", geo.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gen(0.0F)), gel.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
-      $$5.a("rod_3", geo.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gen(0.0F)), gel.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
-      get $$6 = $$4.a(
-         "head",
-         geo.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gen(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gen(0.0F)),
-         gel.a(0.0F, 4.0F, 0.0F)
+   public static gfi a() {
+      gfk $$0 = new gfk();
+      gfm $$1 = $$0.a();
+      gfm $$2 = $$1.a("root", gfh.c(), gfe.a(0.0F, 23.5F, 0.0F));
+      $$2.a("head", gfh.c().a(0, 0).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F, new gfg(0.0F)), gfe.a(0.0F, -3.99F, 0.0F));
+      gfm $$3 = $$2.a(
+         "body",
+         gfh.c().a(0, 10).a(-1.5F, 0.0F, -1.0F, 3.0F, 4.0F, 2.0F, new gfg(0.0F)).a(0, 16).a(-1.5F, 0.0F, -1.0F, 3.0F, 5.0F, 2.0F, new gfg(-0.2F)),
+         gfe.a(0.0F, -4.0F, 0.0F)
       );
-      $$6.a(
-         "eyes",
-         geo.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gen(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gen(0.0F)),
-         gel.a(0.0F, 0.0F, 0.0F)
-      );
-      get $$7 = $$3.a("wind_body", geo.c(), gel.a(0.0F, 0.0F, 0.0F));
-      get $$8 = $$7.a("wind_bottom", geo.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new gen(0.0F)), gel.a(0.0F, 24.0F, 0.0F));
-      get $$9 = $$8.a(
-         "wind_mid",
-         geo.c()
-            .a(74, 28)
-            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new gen(0.0F))
-            .a(78, 32)
-            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new gen(0.0F))
-            .a(49, 71)
-            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new gen(0.0F)),
-         gel.a(0.0F, -7.0F, 0.0F)
-      );
-      $$9.a(
-         "wind_top",
-         geo.c()
-            .a(0, 0)
-            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new gen(0.0F))
-            .a(6, 6)
-            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new gen(0.0F))
-            .a(105, 57)
-            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new gen(0.0F)),
-         gel.a(0.0F, -6.0F, 0.0F)
-      );
-      return gep.a($$2, $$0, $$1);
+      $$3.a("right_arm", gfh.c().a(23, 0).a(-0.75F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new gfg(-0.01F)), gfe.a(-1.75F, 0.5F, 0.0F));
+      $$3.a("left_arm", gfh.c().a(23, 6).a(-0.25F, -0.5F, -1.0F, 1.0F, 4.0F, 2.0F, new gfg(-0.01F)), gfe.a(1.75F, 0.5F, 0.0F));
+      $$3.a("right_wing", gfh.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gfg(0.0F)), gfe.a(-0.5F, 0.0F, 0.6F));
+      $$3.a("left_wing", gfh.c().a(16, 14).a(0.0F, 1.0F, 0.0F, 0.0F, 5.0F, 8.0F, new gfg(0.0F)), gfe.a(0.5F, 0.0F, 0.6F));
+      return gfi.a($$0, 32, 32);
    }
 
-   public void a(gxe $$0) {
+   public void a(gxl $$0) {
       super.a($$0);
-      this.a($$0.a, fms.a, $$0.p);
-      this.a($$0.b, fms.b, $$0.p);
-      this.a($$0.c, fms.e, $$0.p);
-      this.a($$0.d, fms.f, $$0.p);
-      this.a($$0.e, fms.d, $$0.p);
-      this.a($$0.f, fms.c, $$0.p);
+      float $$1 = $$0.ae;
+      float $$2 = $$0.ad;
+      float $$3 = $$0.u * 20.0F * (float) (Math.PI / 180.0) + $$2;
+      float $$4 = ayz.b($$3) * (float) Math.PI * 0.15F + $$1;
+      float $$5 = $$0.u * 9.0F * (float) (Math.PI / 180.0);
+      float $$6 = Math.min($$1 / 0.3F, 1.0F);
+      float $$7 = 1.0F - $$6;
+      float $$8 = $$0.d;
+      if ($$0.a) {
+         float $$9 = $$0.u * 8.0F * (float) (Math.PI / 180.0) + $$1;
+         float $$10 = ayz.b($$9) * 16.0F * (float) (Math.PI / 180.0);
+         float $$11 = $$0.c;
+         float $$12 = ayz.b($$9) * 14.0F * (float) (Math.PI / 180.0);
+         float $$13 = ayz.b($$9) * 30.0F * (float) (Math.PI / 180.0);
+         this.v.f = $$0.b ? (float) (Math.PI * 4) * $$11 : this.v.f;
+         this.v.g = $$10 * (1.0F - $$11);
+         this.a.f = $$13 * (1.0F - $$11);
+         this.a.g = $$12 * (1.0F - $$11);
+      } else {
+         this.a.e = $$0.ab * (float) (Math.PI / 180.0);
+         this.a.f = $$0.aa * (float) (Math.PI / 180.0);
+      }
+
+      this.e.e = 0.43633232F * (1.0F - $$6);
+      this.e.f = (float) (-Math.PI / 4) + $$4;
+      this.f.e = 0.43633232F * (1.0F - $$6);
+      this.f.f = (float) (Math.PI / 4) - $$4;
+      this.b.e = $$6 * (float) (Math.PI / 4);
+      float $$14 = $$8 * ayz.h($$6, (float) (-Math.PI / 3), -1.134464F);
+      this.v.c = this.v.c + (float)Math.cos((double)$$5) * 0.25F * $$7;
+      this.c.e = $$14;
+      this.d.e = $$14;
+      float $$15 = $$7 * (1.0F - $$8);
+      float $$16 = 0.43633232F - ayz.b($$5 + (float) (Math.PI * 3.0 / 2.0)) * (float) Math.PI * 0.075F * $$15;
+      this.d.g = -$$16;
+      this.c.g = $$16;
+      this.c.f = 0.27925268F * $$8;
+      this.d.f = -0.27925268F * $$8;
    }
 
-   public gej a() {
-      return this.d;
-   }
-
-   public gej b() {
-      return this.e;
-   }
-
-   public gej c() {
-      return this.k;
-   }
-
-   public gej d() {
-      return this.f;
+   @Override
+   public void a(bva $$0, ffu $$1) {
+      float $$2 = 1.0F;
+      float $$3 = 3.0F;
+      this.v.a($$1);
+      this.b.a($$1);
+      $$1.a(0.0F, 0.0625F, 0.1875F);
+      $$1.a(a.b.rotation(this.c.e));
+      $$1.b(0.7F, 0.7F, 0.7F);
+      $$1.a(0.0625F, 0.0F, 0.0F);
    }
 }

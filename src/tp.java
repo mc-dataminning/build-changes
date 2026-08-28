@@ -1,19 +1,15 @@
-public class tp {
-   private static ue a = new tr();
+import java.util.AbstractList;
 
-   public static void a(ue $$0) {
-      a = $$0;
-   }
+public abstract class tp<T extends un> extends AbstractList<T> implements un {
+   public abstract T d(int var1, T var2);
 
-   public static void a(th $$0) {
-      a.a($$0);
-   }
+   public abstract void c(int var1, T var2);
 
-   public static void b(th $$0) {
-      a.b($$0);
-   }
+   public abstract T c(int var1);
 
-   public static void a() {
-      a.a();
-   }
+   public abstract boolean a(int var1, un var2);
+
+   public abstract boolean b(int var1, un var2);
+
+   public abstract byte f();
 }

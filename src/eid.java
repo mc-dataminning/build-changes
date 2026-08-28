@@ -1,56 +1,53 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eid extends egp<ejr> {
-   public eid(Codec<ejr> $$0) {
-      super($$0);
-   }
+public class eid implements eic {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<eid> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ecp.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               ecr.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               ecq.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bro.b(1, 20).fieldOf("outer_wall_distance").orElse(bru.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bro.b(1, 20).fieldOf("distribution_points").orElse(bru.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bro.b(0, 10).fieldOf("point_offset").orElse(bru.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
+            )
+            .apply($$0, eid::new)
+   );
+   public final ecp c;
+   public final ecr d;
+   public final ecq e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bro i;
+   public final bro j;
+   public final bro k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   @Override
-   public boolean a(egr<ejr> $$0) {
-      dhx $$1 = $$0.b();
-      jh $$2 = $$0.e();
-      ejr $$3 = $$0.f();
-      bac $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
-         return false;
-      } else {
-         jh $$6 = $$2.h($$5.getAsInt());
-         kl $$7 = new kl($$3.c, $$3.c, $$3.c);
-         env $$8 = env.a($$6.b($$7), $$6.a($$7));
-         return jh.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dkf.ll.m(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
-
-   private static OptionalInt a(dhx $$0, jh $$1, ejr $$2) {
-      Predicate<dxo> $$3 = $$0x -> $$0x.a(dkf.J);
-      Predicate<dxo> $$4 = $$0x -> !$$0x.a(dkf.J);
-      Optional<ecz> $$5 = ecz.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(ecz::c).orElseGet(OptionalInt::empty);
-   }
-
-   private boolean b(dhx $$0, jh $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (jm $$2 : jm.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
-            }
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private boolean a(dha $$0, jh $$1) {
-      dxo $$2 = $$0.a_($$1);
-      return $$2.a(dkf.J) || $$2.l();
+   public eid(ecp $$0, ecr $$1, ecq $$2, double $$3, double $$4, boolean $$5, bro $$6, bro $$7, bro $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

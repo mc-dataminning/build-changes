@@ -1,103 +1,169 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fyw extends ftr {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<alo<dgz>> b = ae.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dgz.i, -13408734);
-      $$0.put(dgz.j, -10075085);
-      $$0.put(dgz.k, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bso d;
-
+public class fyw extends fuk {
+   private static final wo a = wo.c("gui.abuseReport.reason.title");
+   private static final wo b = wo.c("gui.abuseReport.reason.description");
+   private static final wo c = wo.c("gui.abuseReport.read_info");
+   private static final int d = 320;
+   private static final int s = 62;
+   private static final int u = 4;
    @Nullable
-   public static fyw a(flz $$0, BooleanConsumer $$1, DataFixer $$2, evw.c $$3, boolean $$4) {
-      try {
-         fzd $$5 = $$0.x();
-         auv $$6 = auz.a($$3);
+   private final fuk v;
+   @Nullable
+   private fyw.a w;
+   @Nullable
+   ghf x;
+   private final Consumer<ghf> y;
+   final fsg z = new fsg(this);
+   final ghg A;
 
-         fyw var10;
-         try (amo $$7 = $$5.a($$3.h(), false, $$6)) {
-            ewc $$8 = $$7.d();
-            ke.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fyw($$1, $$2, $$3, $$8.J(), $$4, $$9);
+   public fyw(@Nullable fuk $$0, @Nullable ghf $$1, ghg $$2, Consumer<ghf> $$3) {
+      super(a);
+      this.v = $$0;
+      this.x = $$1;
+      this.y = $$3;
+      this.A = $$2;
+   }
+
+   @Override
+   protected void aR_() {
+      this.z.a(a, this.p);
+      fsk $$0 = this.z.c(fsk.d().a(4));
+      this.w = $$0.a(new fyw.a(this.m));
+      fyw.a.a $$1 = x.a(this.x, this.w::a);
+      this.w.a($$1);
+      $$0.a(fsl.b(this.I()));
+      fsk $$2 = this.z.b(fsk.e().a(8));
+      $$2.a(fos.a(c, fth.b(this, axv.m)).a());
+      $$2.a(fos.a(wn.d, $$0x -> {
+         fyw.a.a $$1x = this.w.p();
+         if ($$1x != null) {
+            this.y.accept($$1x.b());
          }
 
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
-      }
-   }
-
-   private fyw(BooleanConsumer $$0, DataFixer $$1, evw.c $$2, dhd $$3, boolean $$4, ke $$5) {
-      super(xk.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.d = new bso($$2, $$1, $$5, $$4, false);
+         this.m.a(this.v);
+      }).a());
+      this.z.a($$1x -> {
+         fop var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.c(fny.a(xj.e, $$0 -> {
-         this.d.a();
-         this.c.accept(false);
-      }).a(this.n / 2 - 100, this.o / 4 + 150, 200, 20).a());
-   }
-
-   @Override
-   public void e() {
-      if (this.d.b()) {
-         this.c.accept(true);
+   protected void c() {
+      this.z.a();
+      if (this.w != null) {
+         this.w.b(this.n, this.L(), this.z.c());
       }
    }
 
    @Override
-   public void aP_() {
-      this.c.accept(false);
-   }
-
-   @Override
-   public void aJ_() {
-      this.d.a();
-      this.d.close();
-   }
-
-   @Override
-   public void a(fnl $$0, int $$1, int $$2, float $$3) {
+   public void a(fod $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 20, 16777215);
-      int $$4 = this.n / 2 - 150;
-      int $$5 = this.n / 2 + 150;
-      int $$6 = this.o / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.p, this.d.h(), this.n / 2, $$6 - 9 - 2, 10526880);
-      if (this.d.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.p, xk.a("optimizeWorld.info.converted", this.d.f()), $$4, 40, 10526880);
-         $$0.b(this.p, xk.a("optimizeWorld.info.skipped", this.d.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.p, xk.a("optimizeWorld.info.total", this.d.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
+      $$0.a(this.m(), this.F(), this.E(), this.G(), -16777216);
+      $$0.b(this.m(), this.F(), this.H(), this.I(), -1);
+      $$0.b(this.p, b, this.m() + 4, this.F() + 4, -1);
+      fyw.a.a $$4 = this.w.p();
+      if ($$4 != null) {
+         int $$5 = this.m() + 4 + 16;
+         int $$6 = this.E() - 4;
+         int $$7 = this.F() + 4 + 9 + 2;
+         int $$8 = this.G() - 4;
+         int $$9 = $$6 - $$5;
+         int $$10 = $$8 - $$7;
+         int $$11 = this.p.b($$4.b.c(), $$9);
+         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
+      }
+   }
 
-         for (alo<dgz> $$9 : this.d.c()) {
-            int $$10 = azu.d(this.d.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
+   private int m() {
+      return (this.n - 320) / 2;
+   }
+
+   private int E() {
+      return (this.n + 320) / 2;
+   }
+
+   private int F() {
+      return this.G() - this.I();
+   }
+
+   private int G() {
+      return this.o - this.z.b() - 4;
+   }
+
+   private int H() {
+      return 320;
+   }
+
+   private int I() {
+      return 62;
+   }
+
+   int L() {
+      return this.z.d() - this.I() - 8;
+   }
+
+   @Override
+   public void aO_() {
+      this.m.a(this.v);
+   }
+
+   public class a extends fpo<fyw.a.a> {
+      public a(final flj $$1) {
+         super($$1, fyw.this.n, fyw.this.L(), fyw.this.z.c(), 18);
+
+         for (ghf $$2 : ghf.values()) {
+            if (!ghf.a(fyw.this.A).contains($$2)) {
+               this.b(new fyw.a.a($$2));
+            }
+         }
+      }
+
+      @Nullable
+      public fyw.a.a a(ghf $$0) {
+         return this.aH_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      }
+
+      @Override
+      public int a() {
+         return 320;
+      }
+
+      public void a(@Nullable fyw.a.a $$0) {
+         super.a($$0);
+         fyw.this.x = $$0 != null ? $$0.b() : null;
+      }
+
+      public class a extends fpo.a<fyw.a.a> {
+         final ghf b;
+
+         public a(final ghf $$1) {
+            this.b = $$1;
          }
 
-         int $$11 = this.d.f() + this.d.g();
-         xk $$12 = xk.a("optimizeWorld.progress.counter", $$11, this.d.e());
-         xk $$13 = xk.a("optimizeWorld.progress.percentage", azu.d(this.d.d() * 100.0F));
-         $$0.a(this.p, $$12, this.n / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.p, $$13, this.n / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+         @Override
+         public void a(fod $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            int $$10 = $$3 + 1;
+            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
+            $$0.b(fyw.this.p, this.b.b(), $$10, $$11, -1);
+         }
+
+         @Override
+         public wo a() {
+            return wo.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         public ghf b() {
+            return this.b;
+         }
       }
    }
 }

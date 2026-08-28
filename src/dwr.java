@@ -1,134 +1,146 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public record dwr(int d, float e, float f, float g, float h, int i, bri<dht> j, bri<alo<ewn>> k, alo<ewn> l) {
-   public static final dwr a = b().a();
-   public static final Codec<dwr> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).optionalFieldOf("spawn_range", a.d).forGetter(dwr::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs", a.e).forGetter(dwr::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs", a.f).forGetter(dwr::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("total_mobs_added_per_player", a.g).forGetter(dwr::f),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).optionalFieldOf("simultaneous_mobs_added_per_player", a.h).forGetter(dwr::g),
-               Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("ticks_between_spawn", a.i).forGetter(dwr::h),
-               dht.c.optionalFieldOf("spawn_potentials", bri.b()).forGetter(dwr::i),
-               bri.a(alo.a(mb.bg)).optionalFieldOf("loot_tables_to_eject", a.k).forGetter(dwr::j),
-               alo.a(mb.bg).optionalFieldOf("items_to_drop_when_ominous", a.l).forGetter(dwr::k)
-            )
-            .apply($$0, dwr::new)
-   );
-   public static final Codec<jq<dwr>> c = all.a(mb.bd, b);
+public class dwr extends dlq {
+   public static final MapCodec<dwr> b = b(dwr::new);
+   public static final dxu<dxy> c = dxn.bj;
+   public static final dxo d = dxn.C;
+   public static final float e = 4.0F;
+   protected static final fbu f = djm.a(12.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fbu g = djm.a(0.0, 0.0, 0.0, 4.0, 16.0, 16.0);
+   protected static final fbu h = djm.a(0.0, 0.0, 12.0, 16.0, 16.0, 16.0);
+   protected static final fbu i = djm.a(0.0, 0.0, 0.0, 16.0, 16.0, 4.0);
+   protected static final fbu j = djm.a(0.0, 12.0, 0.0, 16.0, 16.0, 16.0);
+   protected static final fbu k = djm.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0);
+   protected static final float l = 2.0F;
+   protected static final float m = 6.0F;
+   protected static final float n = 10.0F;
+   protected static final fbu o = djm.a(6.0, -4.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fbu G = djm.a(6.0, 4.0, 6.0, 10.0, 20.0, 10.0);
+   protected static final fbu H = djm.a(6.0, 6.0, -4.0, 10.0, 10.0, 12.0);
+   protected static final fbu I = djm.a(6.0, 6.0, 4.0, 10.0, 10.0, 20.0);
+   protected static final fbu J = djm.a(-4.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fbu K = djm.a(4.0, 6.0, 6.0, 20.0, 10.0, 10.0);
+   protected static final fbu L = djm.a(6.0, 0.0, 6.0, 10.0, 12.0, 10.0);
+   protected static final fbu M = djm.a(6.0, 4.0, 6.0, 10.0, 16.0, 10.0);
+   protected static final fbu N = djm.a(6.0, 6.0, 0.0, 10.0, 10.0, 12.0);
+   protected static final fbu O = djm.a(6.0, 6.0, 4.0, 10.0, 10.0, 16.0);
+   protected static final fbu P = djm.a(0.0, 6.0, 6.0, 12.0, 10.0, 10.0);
+   protected static final fbu Q = djm.a(4.0, 6.0, 6.0, 16.0, 10.0, 10.0);
+   private static final fbu[] R = a(true);
+   private static final fbu[] S = a(false);
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
+   @Override
+   protected MapCodec<dwr> a() {
+      return b;
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.f + this.h * (float)$$0));
+   private static fbu[] a(boolean $$0) {
+      return Arrays.stream(jn.values()).map($$1 -> a($$1, $$0)).toArray(fbu[]::new);
    }
 
-   public long a() {
-      return 160L;
+   private static fbu a(jn $$0, boolean $$1) {
+      switch ($$0) {
+         case a:
+         default:
+            return fbr.a(k, $$1 ? M : G);
+         case b:
+            return fbr.a(j, $$1 ? L : o);
+         case c:
+            return fbr.a(i, $$1 ? O : I);
+         case d:
+            return fbr.a(h, $$1 ? N : H);
+         case e:
+            return fbr.a(g, $$1 ? Q : K);
+         case f:
+            return fbr.a(f, $$1 ? P : J);
+      }
    }
 
-   public static dwr.a b() {
-      return new dwr.a();
+   public dwr(dww.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(a, jn.c).b(c, dxy.a).b(d, Boolean.valueOf(false)));
    }
 
-   public int c() {
-      return this.d;
+   @Override
+   protected boolean g_(dwx $$0) {
+      return true;
    }
 
-   public float d() {
-      return this.e;
+   @Override
+   protected fbu a(dwx $$0, dfn $$1, ji $$2, fbf $$3) {
+      return ($$0.c(d) ? R : S)[$$0.c(a).ordinal()];
    }
 
-   public float e() {
-      return this.f;
+   private boolean a(dwx $$0, dwx $$1) {
+      djm $$2 = $$0.c(c) == dxy.a ? djo.bF : djo.by;
+      return $$1.a($$2) && $$1.c(dwq.c) && $$1.c(a) == $$0.c(a);
    }
 
-   public float f() {
-      return this.g;
-   }
-
-   public float g() {
-      return this.h;
-   }
-
-   public int h() {
-      return this.i;
-   }
-
-   public bri<dht> i() {
-      return this.j;
-   }
-
-   public bri<alo<ewn>> j() {
-      return this.k;
-   }
-
-   public alo<ewn> k() {
-      return this.l;
-   }
-
-   public static class a {
-      private int a = 4;
-      private float b = 6.0F;
-      private float c = 2.0F;
-      private float d = 2.0F;
-      private float e = 1.0F;
-      private int f = 40;
-      private bri<dht> g = bri.b();
-      private bri<alo<ewn>> h = bri.<alo<ewn>>a().a(ewe.aM).a(ewe.aL).a();
-      private alo<ewn> i = ewe.aP;
-
-      public dwr.a a(int $$0) {
-         this.a = $$0;
-         return this;
+   @Override
+   public dwx a(dgi $$0, ji $$1, dwx $$2, cox $$3) {
+      if (!$$0.C && $$3.gj().d) {
+         ji $$4 = $$1.a($$2.c(a).g());
+         if (this.a($$2, $$0.a_($$4))) {
+            $$0.b($$4, false);
+         }
       }
 
-      public dwr.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
+      return super.a($$0, $$1, $$2, $$3);
+   }
 
-      public dwr.a b(float $$0) {
-         this.c = $$0;
-         return this;
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, dwx $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         super.a($$0, $$1, $$2, $$3, $$4);
+         ji $$5 = $$2.a($$0.c(a).g());
+         if (this.a($$0, $$1.a_($$5))) {
+            $$1.b($$5, true);
+         }
       }
+   }
 
-      public dwr.a c(float $$0) {
-         this.d = $$0;
-         return this;
-      }
+   @Override
+   protected dwx a(dwx $$0, dgl $$1, dgx $$2, ji $$3, jn $$4, ji $$5, dwx $$6, azh $$7) {
+      return $$4.g() == $$0.c(a) && !$$0.a($$1, $$3) ? djo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-      public dwr.a d(float $$0) {
-         this.e = $$0;
-         return this;
-      }
+   @Override
+   protected boolean a(dwx $$0, dgl $$1, ji $$2) {
+      dwx $$3 = $$1.a_($$2.a($$0.c(a).g()));
+      return this.a($$0, $$3) || $$3.a(djo.bX) && $$3.c(a) == $$0.c(a);
+   }
 
-      public dwr.a b(int $$0) {
-         this.f = $$0;
-         return this;
+   @Override
+   protected void a(dwx $$0, dgi $$1, ji $$2, djm $$3, @Nullable euh $$4, boolean $$5) {
+      if ($$0.a((dgl)$$1, $$2)) {
+         $$1.b($$2.a($$0.c(a).g()), $$3, eud.a($$4, $$0.c(a).g()));
       }
+   }
 
-      public dwr.a a(bri<dht> $$0) {
-         this.g = $$0;
-         return this;
-      }
+   @Override
+   protected cwp a(dgl $$0, ji $$1, dwx $$2, boolean $$3) {
+      return new cwp($$2.c(c) == dxy.b ? djo.by : djo.bF);
+   }
 
-      public dwr.a b(bri<alo<ewn>> $$0) {
-         this.h = $$0;
-         return this;
-      }
+   @Override
+   protected dwx a(dwx $$0, dqe $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
 
-      public dwr.a a(alo<ewn> $$0) {
-         this.i = $$0;
-         return this;
-      }
+   @Override
+   protected dwx a(dwx $$0, dol $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
 
-      public dwr a() {
-         return new dwr(this.a, this.b, this.c, this.d, this.e, this.f, this.g, this.h, this.i);
-      }
+   @Override
+   protected void a(dwy.a<djm, dwx> $$0) {
+      $$0.a(a, c, d);
+   }
+
+   @Override
+   protected boolean a(dwx $$0, eto $$1) {
+      return false;
    }
 }

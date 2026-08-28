@@ -1,5 +1,8 @@
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface daj {
-   void a(cxc.b var1, Consumer<xk> var2, cyy var3);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface daj {
 }

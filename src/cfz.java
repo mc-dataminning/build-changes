@@ -1,24 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cfz extends cgh<bvz> {
-   private static final long b = 32L;
-   private static final long c = 16L;
-   public static final int a = 32;
-
-   @Override
-   public Set<cfb<?>> a() {
-      return ImmutableSet.of(cfb.L);
+public class cfz {
+   @Nullable
+   public static fba a(bvo $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = cgc.a($$0, $$1);
+      return cgf.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   protected void a(arx $$0, bvz $$1) {
-      bwz<?> $$2 = $$1.ec();
-      List<cls> $$3 = $$0.a(cls.class, $$1.cR().c(32.0, 16.0, 32.0), $$0x -> true);
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      Optional<cls> $$4 = $$3.stream().filter($$2x -> $$1.c($$0, $$2x.l())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::E).findFirst();
-      $$2.a(cfb.L, $$4);
+   @Nullable
+   public static ji a(bvo $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      ji $$8 = cgf.a($$0.dZ(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         ji $$9 = cgf.a($$0, $$1, $$0.dZ(), $$8);
+         if (!cgc.a($$9, $$0) && !cgc.a($$7, $$0, $$9)) {
+            $$9 = cgf.a($$9, $$0.dW().an(), $$1x -> cgc.c($$0, $$1x));
+            return cgc.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

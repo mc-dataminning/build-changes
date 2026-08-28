@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum dxy implements azv {
+   a("normal"),
+   b("sticky");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dxy {
+   private final String c;
+
+   private dxy(final String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
+   }
 }

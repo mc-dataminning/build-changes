@@ -1,96 +1,55 @@
-import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonSyntaxException;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gng implements gna {
-   private final List<gng.d> a;
+public record gng(@Nullable jn b, int c, String d, gni e) {
+   public static final int a = -1;
 
-   gng(List<gng.d> $$0) {
-      this.a = $$0;
+   @Nullable
+   public jn a() {
+      return this.b;
    }
 
-   @Override
-   public Object a(dxo $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
-         if (this.a.get($$2).a.test($$0)) {
-            $$1.add($$2);
-         }
-      }
-
-      record a(gng a, IntList b) {
-         a(IntList b) {
-            this.b = b;
-         }
-      }
-
-      return new a($$1);
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public void a(heb.a $$0) {
-      this.a.forEach($$1 -> $$1.b.a($$0));
+   public String c() {
+      return this.d;
    }
 
-   @Override
-   public hdi a(hdr $$0, Function<hdp, hbg> $$1, hdx $$2) {
-      List<hdy.a> $$3 = new ArrayList<>(this.a.size());
-
-      for (gng.d $$4 : this.a) {
-         hdi $$5 = $$4.b.a($$0, $$1, $$2);
-         $$3.add(new hdy.a($$4.a, $$5));
-      }
-
-      return new hdy($$3);
+   public gni d() {
+      return this.e;
    }
 
-   public static record b(List<gni> a) {
-      public gng a(dxp<dkd, dxo> $$0) {
-         List<gng.d> $$1 = this.a.stream().map($$1x -> new gng.d($$1x.a($$0), $$1x.a())).toList();
-         return new gng($$1);
+   protected static class a implements JsonDeserializer<gng> {
+      private static final int a = -1;
+
+      public gng a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         jn $$4 = this.c($$3);
+         int $$5 = this.a($$3);
+         String $$6 = this.b($$3);
+         gni $$7 = (gni)$$2.deserialize($$3, gni.class);
+         return new gng($$4, $$5, $$6, $$7);
       }
 
-      public Set<gmz> a() {
-         return this.a.stream().map(gni::a).collect(Collectors.toSet());
+      protected int a(JsonObject $$0) {
+         return ayp.a($$0, "tintindex", -1);
       }
 
-      public List<gni> b() {
-         return this.a;
-      }
-   }
-
-   public static class c implements JsonDeserializer<gng.b> {
-      public gng.b a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return new gng.b(this.a($$2, $$0.getAsJsonArray()));
+      private String b(JsonObject $$0) {
+         return ayp.i($$0, "texture");
       }
 
-      private List<gni> a(JsonDeserializationContext $$0, JsonArray $$1) {
-         List<gni> $$2 = new ArrayList<>();
-         if ($$1.isEmpty()) {
-            throw new JsonSyntaxException("Empty selector array");
-         } else {
-            for (JsonElement $$3 : $$1) {
-               $$2.add((gni)$$0.deserialize($$3, gni.class));
-            }
-
-            return $$2;
-         }
+      @Nullable
+      private jn c(JsonObject $$0) {
+         String $$1 = ayp.a($$0, "cullface", "");
+         return jn.a($$1);
       }
-   }
-
-   static record d(Predicate<dxo> a, gmz b) {
    }
 }

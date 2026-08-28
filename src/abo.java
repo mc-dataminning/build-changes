@@ -1,16 +1,16 @@
-public interface abo extends zx {
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+
+public record abo(Object2IntMap<awh<?>> b) implements yv<abk> {
+   private static final ym<vz, Object2IntMap<awh<?>>> c = yk.a(Object2IntOpenHashMap::new, awh.a, yk.h);
+   public static final ym<vz, abo> a = c.a(abo::new, abo::b);
+
    @Override
-   default wf b() {
-      return wf.e;
+   public yx<abo> a() {
+      return agd.f;
    }
 
-   void a(abp var1);
-
-   void a(abq var1);
-
-   void a(abt var1);
-
-   void a(abs var1);
-
-   void a(abr var1);
+   public void a(abk $$0) {
+      $$0.a(this);
+   }
 }

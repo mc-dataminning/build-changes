@@ -1,47 +1,49 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
-public record ezg(jq<ddq> b, List<Float> c) implements ezr {
+public record ezg(float b, ddg c, jr<dcz> g) implements eza {
    public static final MapCodec<ezg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddq.c.fieldOf("enchantment").forGetter(ezg::c), azd.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(ezg::d)).apply($$0, ezg::new)
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(ezg::c),
+               ddg.b.fieldOf("enchanted_chance").forGetter(ezg::d),
+               dcz.c.fieldOf("enchantment").forGetter(ezg::e)
+            )
+            .apply($$0, ezg::new)
    );
 
    @Override
-   public ezs b() {
-      return ezt.k;
+   public ezb b() {
+      return ezc.e;
    }
 
    @Override
-   public Set<bbd<?>> a() {
-      return Set.of(ezc.i);
+   public Set<bai<?>> a() {
+      return Set.of(eyl.d);
    }
 
-   public boolean a(ewi $$0) {
-      cxg $$1 = $$0.c(ezc.i);
-      int $$2 = $$1 != null ? dds.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
+   public boolean a(evr $$0) {
+      buk $$1 = $$0.c(eyl.d);
+      int $$3 = $$1 instanceof bvg $$2 ? ddb.a(this.g, $$2) : 0;
+      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
+      return $$0.b().i() < $$4;
    }
 
-   public static ezr.a a(jq<ddq> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
-      }
-
-      return () -> new ezg($$0, $$2);
+   public static eza.a a(jt.a $$0, float $$1, float $$2) {
+      jt.b<dcz> $$3 = $$0.d(mc.aO);
+      return () -> new ezg($$1, new ddg.e($$1 + $$2, $$2), $$3.b(dde.s));
    }
 
-   public jq<ddq> c() {
+   public float c() {
       return this.b;
    }
 
-   public List<Float> d() {
+   public ddg d() {
       return this.c;
+   }
+
+   public jr<dcz> e() {
+      return this.g;
    }
 }

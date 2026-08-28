@@ -1,26 +1,42 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class emv extends enj {
-   private static final emv c = new emv();
-   public static MapCodec<emv> a = MapCodec.unit(() -> c);
+public class emv extends emt {
+   public static final MapCodec<emv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bro.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bro.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
+            .apply($$0, emv::new)
+   );
+   private final bro c;
+   private final bro d;
 
-   private emv() {
+   public static emv a(bro $$0, bro $$1) {
+      return new emv($$0, $$1);
    }
 
-   public static emv a() {
-      return c;
+   public static emv a(bro $$0) {
+      return new emv(brl.a(0), $$0);
+   }
+
+   public static emv b(bro $$0) {
+      return new emv($$0, brl.a(0));
+   }
+
+   private emv(bro $$0, bro $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected boolean a(eni $$0, bac $$1, jh $$2) {
-      enh $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      jq<dib> $$4 = $$0.d().t($$2);
-      return $$0.f().a($$4).a($$3);
+   public Stream<ji> a_(emr $$0, azh $$1, ji $$2) {
+      int $$3 = $$2.u() + this.c.a($$1);
+      int $$4 = $$2.v() + this.d.a($$1);
+      int $$5 = $$2.w() + this.c.a($$1);
+      return Stream.of(new ji($$3, $$4, $$5));
    }
 
    @Override
-   public enl<?> b() {
-      return enl.e;
+   public emu<?> b() {
+      return emu.n;
    }
 }

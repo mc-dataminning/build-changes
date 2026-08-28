@@ -1,37 +1,27 @@
-import com.mojang.logging.LogUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToByteEncoder;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.serialization.MapCodec;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class wp<T extends wq> extends MessageToByteEncoder<zr<T>> {
-   private static final Logger a = LogUtils.getLogger();
-   private final ws<T> b;
-
-   public wp(ws<T> $$0) {
-      this.b = $$0;
+public interface wp {
+   default <T> Optional<T> a(wt.b<T> $$0, xl $$1) {
+      return Optional.empty();
    }
 
-   protected void a(ChannelHandlerContext $$0, zr<T> $$1, ByteBuf $$2) throws Exception {
-      zt<? extends zr<? super T>> $$3 = $$1.a();
+   default <T> Optional<T> a(wt.a<T> $$0) {
+      return Optional.empty();
+   }
 
-      try {
-         this.b.c().encode($$2, $$1);
-         int $$4 = $$2.readableBytes();
-         if (a.isDebugEnabled()) {
-            a.debug(we.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
-         }
+   default xc a(@Nullable ex $$0, @Nullable buk $$1, int $$2) throws CommandSyntaxException {
+      return xc.a(this);
+   }
 
-         bpr.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
-      } catch (Throwable var9) {
-         a.error("Error sending packet {}", $$3, var9);
-         if ($$1.c()) {
-            throw new wx(var9);
-         }
+   wp.a<?> a();
 
-         throw var9;
-      } finally {
-         wt.b($$0, $$1);
+   public static record a<T extends wp>(MapCodec<T> a, String b) implements azv {
+      @Override
+      public String c() {
+         return this.b;
       }
    }
 }

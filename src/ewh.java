@@ -1,109 +1,66 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.Set;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class ewh {
-   private static final Codec<ewh> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               fao.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
-               fao.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
-            )
-            .apply($$0, ewh::new)
-   );
-   public static final Codec<ewh> a = Codec.either(Codec.INT, b).xmap($$0 -> (ewh)$$0.map(ewh::a, Function.identity()), $$0 -> {
-      OptionalInt $$1 = $$0.b();
-      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
-   });
-   @Nullable
-   private final fan c;
-   @Nullable
-   private final fan d;
-   private final ewh.b e;
-   private final ewh.a f;
+public abstract class ewh implements evz {
+   protected final List<eza> e;
+   private final Predicate<evr> a;
 
-   public Set<bbd<?>> a() {
-      Builder<bbd<?>> $$0 = ImmutableSet.builder();
-      if (this.c != null) {
-         $$0.addAll(this.c.a());
-      }
-
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0.build();
+   protected ewh(List<eza> $$0) {
+      this.e = $$0;
+      this.a = af.a($$0);
    }
 
-   private ewh(Optional<fan> $$0, Optional<fan> $$1) {
-      this($$0.orElse(null), $$1.orElse(null));
+   protected static <T extends ewh> P1<Mu<T>, List<eza>> a(Instance<T> $$0) {
+      return $$0.group(eza.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   private ewh(@Nullable fan $$0, @Nullable fan $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$0 == null) {
-         if ($$1 == null) {
-            this.e = ($$0x, $$1x) -> $$1x;
-            this.f = ($$0x, $$1x) -> true;
-         } else {
-            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
-            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
-         }
-      } else if ($$1 == null) {
-         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
-         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
-      } else {
-         this.e = ($$2, $$3) -> azu.a($$3, $$0.a($$2), $$1.a($$2));
-         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+   public void a(evx $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
       }
    }
 
-   public static ewh a(int $$0) {
-      fak $$1 = fak.a((float)$$0);
-      return new ewh(Optional.of($$1), Optional.of($$1));
+   protected final boolean a(evr $$0) {
+      return this.a.test($$0);
    }
 
-   public static ewh a(int $$0, int $$1) {
-      return new ewh(Optional.of(fak.a((float)$$0)), Optional.of(fak.a((float)$$1)));
-   }
+   public abstract ewi a();
 
-   public static ewh b(int $$0) {
-      return new ewh(Optional.of(fak.a((float)$$0)), Optional.empty());
-   }
+   public abstract static class a<T extends ewh.a<T>> implements eys<T> {
+      private final Builder<eza> a = ImmutableList.builder();
 
-   public static ewh c(int $$0) {
-      return new ewh(Optional.empty(), Optional.of(fak.a((float)$$0)));
-   }
+      protected abstract T aE_();
 
-   public int a(ewi $$0, int $$1) {
-      return this.e.apply($$0, $$1);
-   }
+      public T a(eza.a $$0) {
+         this.a.add($$0.build());
+         return this.aE_();
+      }
 
-   public boolean b(ewi $$0, int $$1) {
-      return this.f.test($$0, $$1);
-   }
+      public final T e() {
+         return this.aE_();
+      }
 
-   private OptionalInt b() {
-      return Objects.equals(this.c, this.d) && this.c instanceof fak $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
-         ? OptionalInt.of((int)$$0.c())
-         : OptionalInt.empty();
-   }
+      protected List<eza> f() {
+         return this.a.build();
+      }
 
-   @FunctionalInterface
-   interface a {
-      boolean test(ewi var1, int var2);
-   }
+      public evy.a a(ewh.a<?> $$0) {
+         return new evy.a(this, $$0);
+      }
 
-   @FunctionalInterface
-   interface b {
-      int apply(ewi var1, int var2);
+      public ewd.a b(ewh.a<?> $$0) {
+         return new ewd.a(this, $$0);
+      }
+
+      public ewl.a c(ewh.a<?> $$0) {
+         return new ewl.a(this, $$0);
+      }
+
+      public abstract ewh b();
    }
 }
