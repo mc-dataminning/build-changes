@@ -1,32 +1,57 @@
-public class cwh extends cvl implements cvm {
-   public cwh(cul.a $$0) {
-      super($$0);
+import java.util.OptionalInt;
+
+public interface cwh {
+   coi a(dds var1, jx var2, cvl var3, jj var4);
+
+   default cwh.a c() {
+      return cwh.a.a;
    }
 
-   @Override
-   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      cuq $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cob $$4 = new cob($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dG(), $$1.dE(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
+   default void a(coi $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
+      $$0.c($$1, $$2, $$3, $$4, $$5);
+   }
+
+   public static record a(cwh.b b, float c, float d, OptionalInt e) {
+      public static final cwh.a a = a().a();
+
+      public static cwh.a.a a() {
+         return new cwh.a.a();
       }
 
-      $$1.b(avz.c.b(this));
-      $$3.a(1, $$1);
-      return bqs.a($$3, $$0.x_());
+      public static class a {
+         private cwh.b a = ($$0, $$1) -> dja.a($$0, 0.7, new eye(0.0, 0.1, 0.0));
+         private float b = 6.0F;
+         private float c = 1.1F;
+         private OptionalInt d = OptionalInt.empty();
+
+         public cwh.a.a a(cwh.b $$0) {
+            this.a = $$0;
+            return this;
+         }
+
+         public cwh.a.a a(float $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public cwh.a.a b(float $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public cwh.a.a a(int $$0) {
+            this.d = OptionalInt.of($$0);
+            return this;
+         }
+
+         public cwh.a a() {
+            return new cwh.a(this.a, this.b, this.c, this.d);
+         }
+      }
    }
 
-   @Override
-   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
-      cob $$4 = new cob($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
-   }
-
-   @Override
-   public cvm.a c() {
-      return cvm.a.a().a(cvm.a.a.c() * 0.5F).b(cvm.a.a.d() * 1.25F).a();
+   @FunctionalInterface
+   public interface b {
+      jx getDispensePosition(kv var1, jj var2);
    }
 }

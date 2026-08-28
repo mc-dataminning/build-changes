@@ -1,40 +1,33 @@
-public class gcm extends gdn {
-   gcm(fzf $$0, double $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.B = 0.66F;
-      this.C = true;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.2;
-      this.v = Math.max(0.0F, ayo.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.w = Math.max(0.0F, ayo.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.x = Math.max(0.0F, ayo.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
-      this.D *= 1.5F;
-      this.t = 6;
-   }
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Streams;
+import com.mojang.blocklist.BlockListSupplier;
+import java.util.Objects;
+import java.util.ServiceLoader;
+import java.util.function.Predicate;
 
-   @Override
-   public gcr b() {
-      return gcr.b;
-   }
+public interface gcm {
+   boolean a(gcn var1);
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   boolean a(gco var1);
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   static gcm a() {
+      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
+         .<Predicate>map(BlockListSupplier::createBlockList)
+         .filter(Objects::nonNull)
+         .collect(ImmutableList.toImmutableList());
+      return new gcm() {
+         @Override
+         public boolean a(gcn $$0x) {
+            String $$1 = $$0.a();
+            String $$2 = $$0.b();
+            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+         }
 
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcm $$8 = new gcm($$1, $$2, $$3, $$4, $$5);
-         $$8.a(this.a);
-         return $$8;
-      }
+         @Override
+         public boolean a(gco $$0x) {
+            String $$1 = $$0.a();
+            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
+         }
+      };
    }
 }

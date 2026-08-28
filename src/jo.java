@@ -1,122 +1,27 @@
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Map;
 import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public interface jo<T> extends jn<T> {
-   Stream<jm.c<T>> b();
+public interface jo<T> {
+   Optional<jn.c<T>> a(ala<T> var1);
 
-   default Stream<akq<T>> c() {
-      return this.b().map(jm.c::h);
+   default jn.c<T> b(ala<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing element " + $$0));
    }
 
-   Stream<jq.c<T>> d();
+   Optional<jr.c<T>> a(axi<T> var1);
 
-   default Stream<awu<T>> e() {
-      return this.d().map(jq.c::g);
+   default jr.c<T> b(axi<T> $$0) {
+      return this.a($$0).orElseThrow(() -> new IllegalStateException("Missing tag " + $$0));
    }
 
    public interface a {
-      Stream<akq<? extends jz<?>>> a();
+      <T> Optional<jo<T>> a(ala<? extends ka<? extends T>> var1);
 
-      <T> Optional<jo.b<T>> a(akq<? extends jz<? extends T>> var1);
-
-      default <T> jo.b<T> b(akq<? extends jz<? extends T>> $$0) {
+      default <T> jo<T> b(ala<? extends ka<? extends T>> $$0) {
          return this.a($$0).orElseThrow(() -> new IllegalStateException("Registry " + $$0.a() + " not found"));
       }
 
-      default <V> akp<V> a(DynamicOps<V> $$0) {
-         return akp.a((DynamicOps<T>)$$0, this);
-      }
-
-      default jn.a b() {
-         return new jn.a() {
-            @Override
-            public <T> Optional<jn<T>> a(akq<? extends jz<? extends T>> $$0) {
-               return a.this.a($$0).map($$0x -> $$0x);
-            }
-         };
-      }
-
-      static jo.a a(Stream<jo.b<?>> $$0) {
-         final Map<akq<? extends jz<?>>, jo.b<?>> $$1 = $$0.collect(Collectors.toUnmodifiableMap(jo.b::f, $$0x -> $$0x));
-         return new jo.a() {
-            @Override
-            public Stream<akq<? extends jz<?>>> a() {
-               return $$1.keySet().stream();
-            }
-
-            @Override
-            public <T> Optional<jo.b<T>> a(akq<? extends jz<? extends T>> $$0) {
-               return Optional.ofNullable((jo.b<T>)$$1.get($$0));
-            }
-         };
-      }
-   }
-
-   public interface b<T> extends jo<T>, jp<T> {
-      akq<? extends jz<? extends T>> f();
-
-      Lifecycle g();
-
-      default jo.b<T> a(cpl $$0) {
-         return cpi.bA.contains(this.f()) ? this.a($$1 -> ((cpi)$$1).a($$0)) : this;
-      }
-
-      default jo.b<T> a(final Predicate<T> $$0) {
-         return new jo.b.a<T>() {
-            @Override
-            public jo.b<T> a() {
-               return b.this;
-            }
-
-            @Override
-            public Optional<jm.c<T>> a(akq<T> $$0x) {
-               return this.a().a($$0).filter($$1 -> $$0.test($$1.a()));
-            }
-
-            @Override
-            public Stream<jm.c<T>> b() {
-               return this.a().b().filter($$1 -> $$0.test($$1.a()));
-            }
-         };
-      }
-
-      public interface a<T> extends jo.b<T> {
-         jo.b<T> a();
-
-         @Override
-         default akq<? extends jz<? extends T>> f() {
-            return this.a().f();
-         }
-
-         @Override
-         default Lifecycle g() {
-            return this.a().g();
-         }
-
-         @Override
-         default Optional<jm.c<T>> a(akq<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         default Stream<jm.c<T>> b() {
-            return this.a().b();
-         }
-
-         @Override
-         default Optional<jq.c<T>> a(awu<T> $$0) {
-            return this.a().a($$0);
-         }
-
-         @Override
-         default Stream<jq.c<T>> d() {
-            return this.a().d();
-         }
+      default <T> Optional<jn.c<T>> a(ala<? extends ka<? extends T>> $$0, ala<T> $$1) {
+         return this.a($$0).flatMap($$1x -> $$1x.a($$1));
       }
    }
 }

@@ -1,26 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eex implements eei {
+public record eex(List<eex.a> b, jj c, ebd d, boolean e) implements efg {
    public static final Codec<eex> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               dtc.b.fieldOf("target").forGetter($$0x -> $$0x.b),
-               dtc.b.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bpw.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               eex.a.a.listOf().fieldOf("layers").forGetter(eex::a),
+               jj.g.fieldOf("direction").forGetter(eex::b),
+               ebd.b.fieldOf("allowed_placement").forGetter(eex::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eex::d)
             )
             .apply($$0, eex::new)
    );
-   public final dtc b;
-   public final dtc c;
-   private final bpw d;
 
-   public eex(dtc $$0, dtc $$1, bpw $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public static eex.a a(bqp $$0, ehh $$1) {
+      return new eex.a($$0, $$1);
    }
 
-   public bpw a() {
+   public static eex b(bqp $$0, ehh $$1) {
+      return new eex(List.of(a($$0, $$1)), jj.b, ebd.c, false);
+   }
+
+   public List<eex.a> a() {
+      return this.b;
+   }
+
+   public jj b() {
+      return this.c;
+   }
+
+   public ebd c() {
       return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(bqp b, ehh c) {
+      public static final Codec<eex.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bqp.d.fieldOf("height").forGetter(eex.a::a), ehh.a.fieldOf("provider").forGetter(eex.a::b)).apply($$0, eex.a::new)
+      );
+
+      public bqp a() {
+         return this.b;
+      }
+
+      public ehh b() {
+         return this.c;
+      }
    }
 }

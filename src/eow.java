@@ -1,17 +1,17 @@
-public interface eow {
-   void a(jd var1);
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-   boolean K_();
+public class eow implements eoy {
+   private static final eow b = new eow();
+   public static final MapCodec<eow> a = MapCodec.unit(b);
 
-   int a();
-
-   default void a(jd $$0, boolean $$1) {
-      this.a(kf.a($$0), $$1);
+   @Override
+   public uf a(azk $$0, @Nullable uf $$1) {
+      return new uf();
    }
 
-   void a(kf var1, boolean var2);
-
-   void a(dcd var1, boolean var2);
-
-   void b(dcd var1);
+   @Override
+   public eoz<?> a() {
+      return eoz.a;
+   }
 }

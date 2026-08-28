@@ -22,11 +22,11 @@ import org.apache.commons.lang3.mutable.MutableBoolean;
 
 public class fl implements ArgumentType<fl.g> {
    private static final Collection<String> d = Arrays.asList("foo", "foo.bar", "foo[0]", "[0]", "[]", "{foo=bar}");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("arguments.nbtpath.node.invalid"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("arguments.nbtpath.too_deep"));
-   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wz.b("arguments.nbtpath.nothing_found", $$0));
-   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wz.b("commands.data.modify.expected_list", $$0));
-   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> wz.b("commands.data.modify.invalid_index", $$0));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("arguments.nbtpath.node.invalid"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xd.c("arguments.nbtpath.too_deep"));
+   public static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xd.b("arguments.nbtpath.nothing_found", $$0));
+   static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> xd.b("commands.data.modify.expected_list", $$0));
+   static final DynamicCommandExceptionType f = new DynamicCommandExceptionType($$0 -> xd.b("commands.data.modify.invalid_index", $$0));
    private static final char g = '[';
    private static final char h = ']';
    private static final char i = '{';
@@ -71,7 +71,7 @@ public class fl implements ArgumentType<fl.g> {
             $$0.skip();
             int $$3 = $$0.peek();
             if ($$3 == 123) {
-               ub $$4 = new uz($$0).f();
+               uf $$4 = new vd($$0).f();
                $$0.expect(']');
                yield new fl.d($$4);
             } else if ($$3 == 93) {
@@ -88,7 +88,7 @@ public class fl implements ArgumentType<fl.g> {
                throw a.createWithContext($$0);
             }
 
-            ub $$2 = new uz($$0).f();
+            uf $$2 = new vd($$0).f();
             yield new fl.f($$2);
          }
          default -> a($$0, b($$0));
@@ -97,7 +97,7 @@ public class fl implements ArgumentType<fl.g> {
 
    private static fl.h a(StringReader $$0, String $$1) throws CommandSyntaxException {
       if ($$0.canRead() && $$0.peek() == '{') {
-         ub $$2 = new uz($$0).f();
+         uf $$2 = new vd($$0).f();
          return new fl.e($$1, $$2);
       } else {
          return new fl.b($$1);
@@ -126,8 +126,8 @@ public class fl implements ArgumentType<fl.g> {
       return $$0 != ' ' && $$0 != '"' && $$0 != '\'' && $$0 != '[' && $$0 != ']' && $$0 != '.' && $$0 != '{' && $$0 != '}';
    }
 
-   static Predicate<uy> a(ub $$0) {
-      return $$1 -> uq.a($$0, $$1, true);
+   static Predicate<vc> a(uf $$0) {
+      return $$1 -> uu.a($$0, $$1, true);
    }
 
    static class a implements fl.h {
@@ -137,34 +137,34 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public void a(uy $$0, List<uy> $$1) {
-         if ($$0 instanceof ua) {
-            $$1.addAll((ua)$$0);
+      public void a(vc $$0, List<vc> $$1) {
+         if ($$0 instanceof ue) {
+            $$1.addAll((ue)$$0);
          }
       }
 
       @Override
-      public void a(uy $$0, Supplier<uy> $$1, List<uy> $$2) {
-         if ($$0 instanceof ua<?> $$3) {
+      public void a(vc $$0, Supplier<vc> $$1, List<vc> $$2) {
+         if ($$0 instanceof ue<?> $$3) {
             if ($$3.isEmpty()) {
-               uy $$4 = $$1.get();
+               vc $$4 = $$1.get();
                if ($$3.b(0, $$4)) {
                   $$2.add($$4);
                }
             } else {
-               $$2.addAll((Collection<? extends uy>)$$3);
+               $$2.addAll((Collection<? extends vc>)$$3);
             }
          }
       }
 
       @Override
-      public uy a() {
-         return new uh();
+      public vc a() {
+         return new ul();
       }
 
       @Override
-      public int a(uy $$0, Supplier<uy> $$1) {
-         if (!($$0 instanceof ua<?> $$2)) {
+      public int a(vc $$0, Supplier<vc> $$1) {
+         if (!($$0 instanceof ue<?> $$2)) {
             return 0;
          } else {
             int $$3 = $$2.size();
@@ -172,7 +172,7 @@ public class fl implements ArgumentType<fl.g> {
                $$2.b(0, $$1.get());
                return 1;
             } else {
-               uy $$4 = $$1.get();
+               vc $$4 = $$1.get();
                int $$5 = $$3 - (int)$$2.stream().filter($$4::equals).count();
                if ($$5 == 0) {
                   return 0;
@@ -193,8 +193,8 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public int a(uy $$0) {
-         if ($$0 instanceof ua<?> $$1) {
+      public int a(vc $$0) {
+         if ($$0 instanceof ue<?> $$1) {
             int $$2 = $$1.size();
             if ($$2 > 0) {
                $$1.clear();
@@ -214,9 +214,9 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public void a(uy $$0, List<uy> $$1) {
-         if ($$0 instanceof ub) {
-            uy $$2 = ((ub)$$0).c(this.a);
+      public void a(vc $$0, List<vc> $$1) {
+         if ($$0 instanceof uf) {
+            vc $$2 = ((uf)$$0).c(this.a);
             if ($$2 != null) {
                $$1.add($$2);
             }
@@ -224,9 +224,9 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public void a(uy $$0, Supplier<uy> $$1, List<uy> $$2) {
-         if ($$0 instanceof ub $$3) {
-            uy $$4;
+      public void a(vc $$0, Supplier<vc> $$1, List<vc> $$2) {
+         if ($$0 instanceof uf $$3) {
+            vc $$4;
             if ($$3.e(this.a)) {
                $$4 = $$3.c(this.a);
             } else {
@@ -239,15 +239,15 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public uy a() {
-         return new ub();
+      public vc a() {
+         return new uf();
       }
 
       @Override
-      public int a(uy $$0, Supplier<uy> $$1) {
-         if ($$0 instanceof ub $$2) {
-            uy $$3 = $$1.get();
-            uy $$4 = $$2.a(this.a, $$3);
+      public int a(vc $$0, Supplier<vc> $$1) {
+         if ($$0 instanceof uf $$2) {
+            vc $$3 = $$1.get();
+            vc $$4 = $$2.a(this.a, $$3);
             if (!$$3.equals($$4)) {
                return 1;
             }
@@ -257,8 +257,8 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public int a(uy $$0) {
-         if ($$0 instanceof ub $$1 && $$1.e(this.a)) {
+      public int a(vc $$0) {
+         if ($$0 instanceof uf $$1 && $$1.e(this.a)) {
             $$1.r(this.a);
             return 1;
          }
@@ -275,8 +275,8 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public void a(uy $$0, List<uy> $$1) {
-         if ($$0 instanceof ua<?> $$2) {
+      public void a(vc $$0, List<vc> $$1) {
+         if ($$0 instanceof ue<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
@@ -286,23 +286,23 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public void a(uy $$0, Supplier<uy> $$1, List<uy> $$2) {
+      public void a(vc $$0, Supplier<vc> $$1, List<vc> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public uy a() {
-         return new uh();
+      public vc a() {
+         return new ul();
       }
 
       @Override
-      public int a(uy $$0, Supplier<uy> $$1) {
-         if ($$0 instanceof ua<?> $$2) {
+      public int a(vc $$0, Supplier<vc> $$1) {
+         if ($$0 instanceof ue<?> $$2) {
             int $$3 = $$2.size();
             int $$4 = this.a < 0 ? $$3 + this.a : this.a;
             if (0 <= $$4 && $$4 < $$3) {
-               uy $$5 = $$2.get($$4);
-               uy $$6 = $$1.get();
+               vc $$5 = $$2.get($$4);
+               vc $$6 = $$1.get();
                if (!$$6.equals($$5) && $$2.a($$4, $$6)) {
                   return 1;
                }
@@ -313,8 +313,8 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public int a(uy $$0) {
-         if ($$0 instanceof ua<?> $$1) {
+      public int a(vc $$0) {
+         if ($$0 instanceof ue<?> $$1) {
             int $$2 = $$1.size();
             int $$3 = this.a < 0 ? $$2 + this.a : this.a;
             if (0 <= $$3 && $$3 < $$2) {
@@ -328,31 +328,31 @@ public class fl implements ArgumentType<fl.g> {
    }
 
    static class d implements fl.h {
-      private final ub a;
-      private final Predicate<uy> b;
+      private final uf a;
+      private final Predicate<vc> b;
 
-      public d(ub $$0) {
+      public d(uf $$0) {
          this.a = $$0;
          this.b = fl.a($$0);
       }
 
       @Override
-      public void a(uy $$0, List<uy> $$1) {
-         if ($$0 instanceof uh $$2) {
+      public void a(vc $$0, List<vc> $$1) {
+         if ($$0 instanceof ul $$2) {
             $$2.stream().filter(this.b).forEach($$1::add);
          }
       }
 
       @Override
-      public void a(uy $$0, Supplier<uy> $$1, List<uy> $$2) {
+      public void a(vc $$0, Supplier<vc> $$1, List<vc> $$2) {
          MutableBoolean $$3 = new MutableBoolean();
-         if ($$0 instanceof uh $$4) {
+         if ($$0 instanceof ul $$4) {
             $$4.stream().filter(this.b).forEach($$2x -> {
                $$2.add($$2x);
                $$3.setTrue();
             });
             if ($$3.isFalse()) {
-               ub $$5 = this.a.i();
+               uf $$5 = this.a.i();
                $$4.add($$5);
                $$2.add($$5);
             }
@@ -360,23 +360,23 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public uy a() {
-         return new uh();
+      public vc a() {
+         return new ul();
       }
 
       @Override
-      public int a(uy $$0, Supplier<uy> $$1) {
+      public int a(vc $$0, Supplier<vc> $$1) {
          int $$2 = 0;
-         if ($$0 instanceof uh $$3) {
+         if ($$0 instanceof ul $$3) {
             int $$4 = $$3.size();
             if ($$4 == 0) {
                $$3.add($$1.get());
                $$2++;
             } else {
                for (int $$5 = 0; $$5 < $$4; $$5++) {
-                  uy $$6 = $$3.k($$5);
+                  vc $$6 = $$3.k($$5);
                   if (this.b.test($$6)) {
-                     uy $$7 = $$1.get();
+                     vc $$7 = $$1.get();
                      if (!$$7.equals($$6) && $$3.a($$5, $$7)) {
                         $$2++;
                      }
@@ -389,9 +389,9 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public int a(uy $$0) {
+      public int a(vc $$0) {
          int $$1 = 0;
-         if ($$0 instanceof uh $$2) {
+         if ($$0 instanceof ul $$2) {
             for (int $$3 = $$2.size() - 1; $$3 >= 0; $$3--) {
                if (this.b.test($$2.k($$3))) {
                   $$2.c($$3);
@@ -406,19 +406,19 @@ public class fl implements ArgumentType<fl.g> {
 
    static class e implements fl.h {
       private final String a;
-      private final ub b;
-      private final Predicate<uy> c;
+      private final uf b;
+      private final Predicate<vc> c;
 
-      public e(String $$0, ub $$1) {
+      public e(String $$0, uf $$1) {
          this.a = $$0;
          this.b = $$1;
          this.c = fl.a($$1);
       }
 
       @Override
-      public void a(uy $$0, List<uy> $$1) {
-         if ($$0 instanceof ub) {
-            uy $$2 = ((ub)$$0).c(this.a);
+      public void a(vc $$0, List<vc> $$1) {
+         if ($$0 instanceof uf) {
+            vc $$2 = ((uf)$$0).c(this.a);
             if (this.c.test($$2)) {
                $$1.add($$2);
             }
@@ -426,11 +426,11 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public void a(uy $$0, Supplier<uy> $$1, List<uy> $$2) {
-         if ($$0 instanceof ub $$3) {
-            uy $$4 = $$3.c(this.a);
+      public void a(vc $$0, Supplier<vc> $$1, List<vc> $$2) {
+         if ($$0 instanceof uf $$3) {
+            vc $$4 = $$3.c(this.a);
             if ($$4 == null) {
-               uy var6 = this.b.i();
+               vc var6 = this.b.i();
                $$3.a(this.a, var6);
                $$2.add(var6);
             } else if (this.c.test($$4)) {
@@ -440,16 +440,16 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public uy a() {
-         return new ub();
+      public vc a() {
+         return new uf();
       }
 
       @Override
-      public int a(uy $$0, Supplier<uy> $$1) {
-         if ($$0 instanceof ub $$2) {
-            uy $$3 = $$2.c(this.a);
+      public int a(vc $$0, Supplier<vc> $$1) {
+         if ($$0 instanceof uf $$2) {
+            vc $$3 = $$2.c(this.a);
             if (this.c.test($$3)) {
-               uy $$4 = $$1.get();
+               vc $$4 = $$1.get();
                if (!$$4.equals($$3)) {
                   $$2.a(this.a, $$4);
                   return 1;
@@ -461,9 +461,9 @@ public class fl implements ArgumentType<fl.g> {
       }
 
       @Override
-      public int a(uy $$0) {
-         if ($$0 instanceof ub $$1) {
-            uy $$2 = $$1.c(this.a);
+      public int a(vc $$0) {
+         if ($$0 instanceof uf $$1) {
+            vc $$2 = $$1.c(this.a);
             if (this.c.test($$2)) {
                $$1.r(this.a);
                return 1;
@@ -475,36 +475,36 @@ public class fl implements ArgumentType<fl.g> {
    }
 
    static class f implements fl.h {
-      private final Predicate<uy> a;
+      private final Predicate<vc> a;
 
-      public f(ub $$0) {
+      public f(uf $$0) {
          this.a = fl.a($$0);
       }
 
       @Override
-      public void a(uy $$0, List<uy> $$1) {
-         if ($$0 instanceof ub && this.a.test($$0)) {
+      public void a(vc $$0, List<vc> $$1) {
+         if ($$0 instanceof uf && this.a.test($$0)) {
             $$1.add($$0);
          }
       }
 
       @Override
-      public void a(uy $$0, Supplier<uy> $$1, List<uy> $$2) {
+      public void a(vc $$0, Supplier<vc> $$1, List<vc> $$2) {
          this.a($$0, $$2);
       }
 
       @Override
-      public uy a() {
-         return new ub();
+      public vc a() {
+         return new uf();
       }
 
       @Override
-      public int a(uy $$0, Supplier<uy> $$1) {
+      public int a(vc $$0, Supplier<vc> $$1) {
          return 0;
       }
 
       @Override
-      public int a(uy $$0) {
+      public int a(vc $$0) {
          return 0;
       }
    }
@@ -532,8 +532,8 @@ public class fl implements ArgumentType<fl.g> {
          this.c = $$2;
       }
 
-      public List<uy> a(uy $$0) throws CommandSyntaxException {
-         List<uy> $$1 = Collections.singletonList($$0);
+      public List<vc> a(vc $$0) throws CommandSyntaxException {
+         List<vc> $$1 = Collections.singletonList($$0);
 
          for (fl.h $$2 : this.d) {
             $$1 = $$2.a($$1);
@@ -545,8 +545,8 @@ public class fl implements ArgumentType<fl.g> {
          return $$1;
       }
 
-      public int b(uy $$0) {
-         List<uy> $$1 = Collections.singletonList($$0);
+      public int b(vc $$0) {
+         List<vc> $$1 = Collections.singletonList($$0);
 
          for (fl.h $$2 : this.d) {
             $$1 = $$2.a($$1);
@@ -558,8 +558,8 @@ public class fl implements ArgumentType<fl.g> {
          return $$1.size();
       }
 
-      private List<uy> d(uy $$0) throws CommandSyntaxException {
-         List<uy> $$1 = Collections.singletonList($$0);
+      private List<vc> d(vc $$0) throws CommandSyntaxException {
+         List<vc> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.d.length - 1; $$2++) {
             fl.h $$3 = this.d[$$2];
@@ -573,29 +573,29 @@ public class fl implements ArgumentType<fl.g> {
          return $$1;
       }
 
-      public List<uy> a(uy $$0, Supplier<uy> $$1) throws CommandSyntaxException {
-         List<uy> $$2 = this.d($$0);
+      public List<vc> a(vc $$0, Supplier<vc> $$1) throws CommandSyntaxException {
+         List<vc> $$2 = this.d($$0);
          fl.h $$3 = this.d[this.d.length - 1];
          return $$3.a($$2, $$1);
       }
 
-      private static int a(List<uy> $$0, Function<uy, Integer> $$1) {
+      private static int a(List<vc> $$0, Function<vc, Integer> $$1) {
          return $$0.stream().map($$1).reduce(0, ($$0x, $$1x) -> $$0x + $$1x);
       }
 
-      public static boolean a(uy $$0, int $$1) {
+      public static boolean a(vc $$0, int $$1) {
          if ($$1 >= 512) {
             return true;
          } else {
-            if ($$0 instanceof ub $$2) {
+            if ($$0 instanceof uf $$2) {
                for (String $$3 : $$2.e()) {
-                  uy $$4 = $$2.c($$3);
+                  vc $$4 = $$2.c($$3);
                   if ($$4 != null && a($$4, $$1 + 1)) {
                      return true;
                   }
                }
-            } else if ($$0 instanceof uh) {
-               for (uy $$6 : (uh)$$0) {
+            } else if ($$0 instanceof ul) {
+               for (vc $$6 : (ul)$$0) {
                   if (a($$6, $$1 + 1)) {
                      return true;
                   }
@@ -606,12 +606,12 @@ public class fl implements ArgumentType<fl.g> {
          }
       }
 
-      public int a(uy $$0, uy $$1) throws CommandSyntaxException {
+      public int a(vc $$0, vc $$1) throws CommandSyntaxException {
          if (a($$1, this.b())) {
             throw fl.b.create();
          } else {
-            uy $$2 = $$1.d();
-            List<uy> $$3 = this.d($$0);
+            vc $$2 = $$1.d();
+            List<vc> $$3 = this.d($$0);
             if ($$3.isEmpty()) {
                return 0;
             } else {
@@ -633,30 +633,30 @@ public class fl implements ArgumentType<fl.g> {
          return this.d.length;
       }
 
-      public int a(int $$0, ub $$1, List<uy> $$2) throws CommandSyntaxException {
-         List<uy> $$3 = new ArrayList<>($$2.size());
+      public int a(int $$0, uf $$1, List<vc> $$2) throws CommandSyntaxException {
+         List<vc> $$3 = new ArrayList<>($$2.size());
 
-         for (uy $$4 : $$2) {
-            uy $$5 = $$4.d();
+         for (vc $$4 : $$2) {
+            vc $$5 = $$4.d();
             $$3.add($$5);
             if (a($$5, this.b())) {
                throw fl.b.create();
             }
          }
 
-         Collection<uy> $$6 = this.a($$1, uh::new);
+         Collection<vc> $$6 = this.a($$1, ul::new);
          int $$7 = 0;
          boolean $$8 = false;
 
-         for (uy $$9 : $$6) {
-            if (!($$9 instanceof ua<?> $$10)) {
+         for (vc $$9 : $$6) {
+            if (!($$9 instanceof ue<?> $$10)) {
                throw fl.e.create($$9);
             }
 
             boolean $$11 = false;
             int $$12 = $$0 < 0 ? $$10.size() + $$0 + 1 : $$0;
 
-            for (uy $$13 : $$3) {
+            for (vc $$13 : $$3) {
                try {
                   if ($$10.b($$12, $$8 ? $$13.d() : $$13)) {
                      $$12++;
@@ -674,8 +674,8 @@ public class fl implements ArgumentType<fl.g> {
          return $$7;
       }
 
-      public int c(uy $$0) {
-         List<uy> $$1 = Collections.singletonList($$0);
+      public int c(vc $$0) {
+         List<vc> $$1 = Collections.singletonList($$0);
 
          for (int $$2 = 0; $$2 < this.d.length - 1; $$2++) {
             $$1 = this.d[$$2].a($$1);
@@ -701,28 +701,28 @@ public class fl implements ArgumentType<fl.g> {
    }
 
    interface h {
-      void a(uy var1, List<uy> var2);
+      void a(vc var1, List<vc> var2);
 
-      void a(uy var1, Supplier<uy> var2, List<uy> var3);
+      void a(vc var1, Supplier<vc> var2, List<vc> var3);
 
-      uy a();
+      vc a();
 
-      int a(uy var1, Supplier<uy> var2);
+      int a(vc var1, Supplier<vc> var2);
 
-      int a(uy var1);
+      int a(vc var1);
 
-      default List<uy> a(List<uy> $$0) {
+      default List<vc> a(List<vc> $$0) {
          return this.a($$0, this::a);
       }
 
-      default List<uy> a(List<uy> $$0, Supplier<uy> $$1) {
+      default List<vc> a(List<vc> $$0, Supplier<vc> $$1) {
          return this.a($$0, ($$1x, $$2) -> this.a($$1x, $$1, $$2));
       }
 
-      default List<uy> a(List<uy> $$0, BiConsumer<uy, List<uy>> $$1) {
-         List<uy> $$2 = Lists.newArrayList();
+      default List<vc> a(List<vc> $$0, BiConsumer<vc, List<vc>> $$1) {
+         List<vc> $$2 = Lists.newArrayList();
 
-         for (uy $$3 : $$0) {
+         for (vc $$3 : $$0) {
             $$1.accept($$3, $$2);
          }
 

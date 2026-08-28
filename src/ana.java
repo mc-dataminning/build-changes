@@ -1,35 +1,34 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import net.minecraft.server.MinecraftServer;
 
 public class ana {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xd.b("commands.difficulty.failure", $$0));
+
    public static void a(CommandDispatcher<et> $$0) {
-      final LiteralArgumentBuilder<et> $$1 = (LiteralArgumentBuilder<et>)eu.a("gamerule").requires($$0x -> $$0x.c(2));
-      dcs.a(
-         new dcs.c() {
-            @Override
-            public <T extends dcs.g<T>> void a(dcs.e<T> $$0, dcs.f<T> $$1x) {
-               $$1.then(
-                  ((LiteralArgumentBuilder)eu.a($$0.a()).executes($$1xxx -> ana.a((et)$$1xxx.getSource(), $$0)))
-                     .then($$1.a("value").executes($$1xxx -> ana.a($$1xxx, $$0)))
-               );
-            }
-         }
-      );
-      $$0.register($$1);
+      LiteralArgumentBuilder<et> $$1 = eu.a("difficulty");
+
+      for (brh $$2 : brh.values()) {
+         $$1.then(eu.a($$2.e()).executes($$1x -> a((et)$$1x.getSource(), $$2)));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         brh $$1x = ((et)$$0x.getSource()).e().am();
+         ((et)$$0x.getSource()).a(() -> xd.a("commands.difficulty.query", $$1x.b()), false);
+         return $$1x.a();
+      }));
    }
 
-   static <T extends dcs.g<T>> int a(CommandContext<et> $$0, dcs.e<T> $$1) {
-      et $$2 = (et)$$0.getSource();
-      T $$3 = $$2.l().aM().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> wz.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
-   }
-
-   static <T extends dcs.g<T>> int a(et $$0, dcs.e<T> $$1) {
-      T $$2 = $$0.l().aM().a($$1);
-      $$0.a(() -> wz.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+   public static int a(et $$0, brh $$1) throws CommandSyntaxException {
+      MinecraftServer $$2 = $$0.l();
+      if ($$2.ba().q() == $$1) {
+         throw a.create($$1.e());
+      } else {
+         $$2.a($$1, true);
+         $$0.a(() -> xd.a("commands.difficulty.success", $$1.b()), true);
+         return 0;
+      }
    }
 }

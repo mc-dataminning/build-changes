@@ -1,38 +1,30 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class cej {
-   @Nullable
-   public static exc a(btw $$0, int $$1, int $$2) {
-      boolean $$3 = cek.a($$0, $$1);
-      return cen.a($$0, () -> {
-         jd $$4 = cen.a($$0.dR(), $$1, $$2);
-         return a($$0, $$1, $$3, $$4);
-      });
+public class cej extends ceo<buf> {
+   @Override
+   public Set<cdi<?>> a() {
+      return ImmutableSet.of(cdi.h, cdi.M, cdi.an);
    }
 
-   @Nullable
-   public static exc a(btw $$0, int $$1, int $$2, exc $$3, double $$4) {
-      exc $$5 = $$3.a($$0.dt(), $$0.dv(), $$0.dz());
-      boolean $$6 = cek.a($$0, $$1);
-      return cen.a($$0, () -> {
-         jd $$6x = cen.a($$0.dR(), $$1, $$2, 0, $$5.c, $$5.e, $$4);
-         return $$6x == null ? null : a($$0, $$1, $$6, $$6x);
-      });
-   }
+   @Override
+   protected void a(arg $$0, buf $$1) {
+      bvg<?> $$2 = $$1.dX();
+      List<cme> $$3 = Lists.newArrayList();
+      cdk $$4 = $$2.c(cdi.h).orElse(cdk.a());
+      Optional<buh> $$5 = $$4.a($$0x -> $$0x instanceof clm || $$0x instanceof cjm).map(buh.class::cast);
 
-   @Nullable
-   public static exc a(btw $$0, int $$1, int $$2, exc $$3) {
-      exc $$4 = $$0.dm().d($$3);
-      boolean $$5 = cek.a($$0, $$1);
-      return cen.a($$0, () -> {
-         jd $$5x = cen.a($$0.dR(), $$1, $$2, 0, $$4.c, $$4.e, (float) (Math.PI / 2));
-         return $$5x == null ? null : a($$0, $$1, $$5, $$5x);
-      });
-   }
+      for (buf $$7 : $$2.c(cdi.g).orElse(ImmutableList.of())) {
+         if ($$7 instanceof cme && ((cme)$$7).gp()) {
+            $$3.add((cme)$$7);
+         }
+      }
 
-   @Nullable
-   private static jd a(btw $$0, int $$1, boolean $$2, jd $$3) {
-      jd $$4 = cen.a($$0, $$1, $$0.dR(), $$3);
-      return !cek.a($$4, $$0) && !cek.a($$2, $$0, $$4) && !cek.a($$0.N(), $$4) && !cek.b($$0, $$4) ? $$4 : null;
+      $$2.a(cdi.M, $$5);
+      $$2.a(cdi.an, $$3);
    }
 }

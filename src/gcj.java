@@ -1,57 +1,77 @@
-public class gcj extends gdn {
-   gcj(fzf $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.u = 0.75F;
-      this.B = 0.999F;
-      this.j *= 0.8F;
-      this.k *= 0.8F;
-      this.l *= 0.8F;
-      this.k = (double)(this.r.i() * 0.4F + 0.05F);
-      this.D = this.D * (this.r.i() * 2.0F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+
+public class gcj implements AutoCloseable {
+   private final Long2ObjectOpenHashMap<gcj.a> a = new Long2ObjectOpenHashMap();
+   private int b;
+   private boolean c;
+
+   public void a(je $$0, dua $$1, gfs $$2) {
+      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gcj.a(this.b, $$1, $$2.dq()));
    }
 
-   @Override
-   public gcr b() {
-      return gcr.b;
+   public boolean a(je $$0, dua $$1) {
+      gcj.a $$2 = (gcj.a)this.a.get($$0.a());
+      if ($$2 == null) {
+         return false;
+      } else {
+         $$2.a($$1);
+         return true;
+      }
    }
 
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      int $$2 = 240;
-      int $$3 = $$1 >> 16 & 0xFF;
-      return 240 | $$3 << 16;
-   }
+   public void a(int $$0, gax $$1) {
+      ObjectIterator<Entry<gcj.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
 
-   @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      return this.D * (1.0F - $$1 * $$1);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      if (!this.o) {
-         float $$0 = (float)this.s / (float)this.t;
-         if (this.r.i() > $$0) {
-            this.c.a(lm.ae, this.g, this.h, this.i, this.j, this.k, this.l);
+      while ($$2.hasNext()) {
+         Entry<gcj.a> $$3 = (Entry<gcj.a>)$$2.next();
+         gcj.a $$4 = (gcj.a)$$3.getValue();
+         if ($$4.b <= $$0) {
+            je $$5 = je.d($$3.getLongKey());
+            $$2.remove();
+            $$1.a($$5, $$4.c, $$4.a);
          }
       }
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   public gcj a() {
+      this.b++;
+      this.c = true;
+      return this;
+   }
 
-      public a(gdi $$0) {
-         this.a = $$0;
+   @Override
+   public void close() {
+      this.c = false;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   static class a {
+      final eye a;
+      int b;
+      dua c;
+
+      a(int $$0, dua $$1, eye $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
       }
 
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcj $$8 = new gcj($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      gcj.a a(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      void a(dua $$0) {
+         this.c = $$0;
       }
    }
 }

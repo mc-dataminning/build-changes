@@ -1,86 +1,100 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class fqv extends fqi<crj> implements ftv {
+   private static final alb G = alb.b("textures/gui/container/crafting_table.png");
+   private final ftp<?> H;
+   private boolean I;
 
-public class fqv extends fod {
-   private static final int a = 310;
-   private static final int b = 25;
-   private static final wz c = wz.c("menu.server_links.title");
-   private final fod r;
-   @Nullable
-   private fqv.a s;
-   final flz u = new flz(this);
-   final alj v;
-
-   public fqv(fod $$0, alj $$1) {
-      super(c);
-      this.r = $$0;
-      this.v = $$1;
+   public fqv(crj $$0, cno $$1, xd $$2) {
+      super($$0, $$1, $$2);
+      this.H = new ftl($$0);
    }
 
    @Override
    protected void aT_() {
-      this.u.a(this.k, this.o);
-      this.s = this.u.c(new fqv.a(this.l, this.m, this));
-      this.u.b(fim.a(wy.k, $$0 -> this.d()).a(200).a());
-      this.u.a($$1 -> {
-         fik var10000 = this.c($$1);
-      });
-      this.c();
+      super.aT_();
+      this.I = this.n < 379;
+      this.H.a(this.n, this.o, this.m, this.I);
+      this.C = this.H.a(this.n, this.s);
+      this.c(new fkm(this.C + 5, this.o / 2 - 49, 20, 18, ftp.a, $$0 -> {
+         this.H.c();
+         this.C = this.H.a(this.n, this.s);
+         $$0.c(this.C + 5, this.o / 2 - 49);
+      }));
+      this.d(this.H);
+      this.v = 29;
    }
 
    @Override
-   protected void c() {
-      this.u.a();
-      if (this.s != null) {
-         this.s.a(this.m, this.u);
+   public void D() {
+      super.D();
+      this.H.e();
+   }
+
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      if (this.H.d() && this.I) {
+         this.b($$0, $$1, $$2, $$3);
+         this.H.a($$0, $$1, $$2, $$3);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         this.H.a($$0, $$1, $$2, $$3);
+         this.H.a($$0, this.C, this.D, true);
+      }
+
+      this.a($$0, $$1, $$2);
+      this.H.a($$0, $$1, $$2, this.B);
+   }
+
+   @Override
+   protected void a(fjn $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(ghe::C, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.H.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return this.H.a($$0, $$1) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   protected boolean a(int $$0, int $$1, int $$2, int $$3, double $$4, double $$5) {
+      return (!this.I || !this.H.d()) && super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.H.a($$0, $$1, $$2)) {
+         this.a(this.H);
+         return true;
+      } else {
+         return this.I && this.H.d() ? true : super.a($$0, $$1, $$2);
       }
    }
 
    @Override
-   public void d() {
-      this.l.a(this.r);
+   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
+      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
+      return this.H.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
    }
 
-   static class a extends fis<fqv.b> {
-      public a(fgo $$0, int $$1, fqv $$2) {
-         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
-         $$2.v.c().forEach($$1x -> this.b(new fqv.b($$2, $$1x)));
-      }
-
-      @Override
-      public int b() {
-         return 310;
-      }
-
-      @Override
-      public void a(int $$0, flz $$1) {
-         super.a($$0, $$1);
-         int $$2 = $$0 / 2 - 155;
-         this.aK_().forEach($$1x -> $$1x.a.m($$2));
-      }
+   @Override
+   protected void a(csn $$0, int $$1, int $$2, crb $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.H.b($$0);
    }
 
-   static class b extends fis.a<fqv.b> {
-      final fik a;
+   @Override
+   public void F() {
+      this.H.f();
+   }
 
-      b(fod $$0, alj.a $$1) {
-         this.a = fim.a($$1.a(), fna.b($$0, $$1.c(), false)).a(310).a();
-      }
-
-      @Override
-      public void a(fhz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         this.a.n($$2);
-         this.a.a($$0, $$6, $$7, $$9);
-      }
-
-      @Override
-      public List<? extends fki> aK_() {
-         return List.of(this.a);
-      }
-
-      @Override
-      public List<? extends fmg> b() {
-         return List.of(this.a);
-      }
+   @Override
+   public ftp G() {
+      return this.H;
    }
 }

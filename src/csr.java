@@ -1,15 +1,9 @@
-public class csr extends cul {
-   public csr(cul.a $$0) {
-      super($$0);
+public class csr extends cqs {
+   public csr(int $$0, cno $$1) {
+      super(crz.w, czz.d, csg.d, $$0, $$1);
    }
 
-   @Override
-   public boolean a(cuq $$0) {
-      return $$0.H() == 1;
-   }
-
-   @Override
-   public int g() {
-      return 1;
+   public csr(int $$0, cno $$1, brd $$2, crc $$3) {
+      super(crz.w, czz.d, csg.d, $$0, $$1, $$2, $$3);
    }
 }

@@ -1,31 +1,16 @@
-public class acd implements zg<abu> {
-   public static final yx<wk, acd> a = yx.a(jd.b, acd::e, yv.a(dfy.q), acd::b, acd::new);
-   private final jd b;
-   private final dtc c;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   public acd(jd $$0, dtc $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public acd(dcc $$0, jd $$1) {
-      this($$1, $$0.a_($$1));
-   }
+public record acd(Object2IntMap<awk<?>> b) implements zk<abz> {
+   private static final zb<wo, Object2IntMap<awk<?>>> c = yz.a(Object2IntOpenHashMap::new, awk.a, yz.g);
+   public static final zb<wo, acd> a = c.a(acd::new, acd::b);
 
    @Override
-   public zi<acd> a() {
-      return agg.k;
+   public zm<acd> a() {
+      return ago.f;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
-   }
-
-   public dtc b() {
-      return this.c;
-   }
-
-   public jd e() {
-      return this.b;
    }
 }

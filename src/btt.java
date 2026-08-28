@@ -1,120 +1,43 @@
-import java.util.Objects;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
-public interface btt {
-   String c_ = "AngerTime";
-   String d_ = "AngryAt";
+public record btt(ala<esy> c, Map<btr, Float> d) {
+   public static final Codec<Map<btr, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(btr.i, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(btt::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(btr.values()));
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<btt> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ala.a(lv.bc).fieldOf("loot_table").forGetter(btt::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(btt::b))
+            .apply($$0, btt::new)
+   );
 
-   int a();
+   private static Map<btr, Float> a(float $$0) {
+      return a(List.of(btr.values()), $$0);
+   }
 
-   void a(int var1);
+   private static Map<btr, Float> a(List<btr> $$0, float $$1) {
+      Map<btr, Float> $$2 = Maps.newHashMap();
 
-   @Nullable
-   UUID b();
-
-   void a(@Nullable UUID var1);
-
-   void c();
-
-   default void a_(ub $$0) {
-      $$0.a("AngerTime", this.a());
-      if (this.b() != null) {
-         $$0.a("AngryAt", this.b());
+      for (btr $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   default void a(dcw $$0, ub $$1) {
-      this.a($$1.h("AngerTime"));
-      if ($$0 instanceof aqu) {
-         if (!$$1.b("AngryAt")) {
-            this.a(null);
-         } else {
-            UUID $$2 = $$1.a("AngryAt");
-            this.a($$2);
-            bsr $$3 = ((aqu)$$0).a($$2);
-            if ($$3 != null) {
-               if ($$3 instanceof btp $$4) {
-                  this.h($$4);
-                  this.a($$4);
-               }
-
-               if ($$3 instanceof cmx $$5) {
-                  this.h($$5);
-                  this.c($$5);
-               }
-            }
-         }
-      }
+   public ala<esy> a() {
+      return this.c;
    }
 
-   default void a(aqu $$0, boolean $$1) {
-      btn $$2 = this.p();
-      UUID $$3 = this.b();
-      if (($$2 == null || $$2.ex()) && $$3 != null && $$0.a($$3) instanceof btp) {
-         this.Z_();
-      } else {
-         if ($$2 != null && !Objects.equals($$3, $$2.cz())) {
-            this.a($$2.cz());
-            this.c();
-         }
-
-         if (this.a() > 0 && ($$2 == null || $$2.am() != bsx.by || !$$1)) {
-            this.a(this.a() - 1);
-            if (this.a() == 0) {
-               this.Z_();
-            }
-         }
-      }
+   public Map<btr, Float> b() {
+      return this.d;
    }
-
-   default boolean a_(btn $$0) {
-      if (!this.c($$0)) {
-         return false;
-      } else {
-         return $$0.am() == bsx.by && this.a_($$0.dO()) ? true : $$0.cz().equals(this.b());
-      }
-   }
-
-   default boolean a_(dcw $$0) {
-      return $$0.ab().b(dcs.O) && this.ad_() && this.b() == null;
-   }
-
-   default boolean ad_() {
-      return this.a() > 0;
-   }
-
-   default void a_(cmx $$0) {
-      if ($$0.dO().ab().b(dcs.N)) {
-         if ($$0.cz().equals(this.b())) {
-            this.Z_();
-         }
-      }
-   }
-
-   default void ae_() {
-      this.Z_();
-      this.c();
-   }
-
-   default void Z_() {
-      this.a(null);
-      this.a(null);
-      this.h(null);
-      this.a(0);
-   }
-
-   @Nullable
-   btn ei();
-
-   void a(@Nullable btn var1);
-
-   void c(@Nullable cmx var1);
-
-   void h(@Nullable btn var1);
-
-   boolean c(btn var1);
-
-   @Nullable
-   btn p();
 }

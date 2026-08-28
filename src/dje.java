@@ -1,55 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dje extends dgh implements dgb {
-   public static final MapCodec<dje> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akq.a(lu.aI).fieldOf("feature").forGetter($$0x -> $$0x.e), lt.e.r().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
-            .apply($$0, dje::new)
-   );
-   protected static final exv b = dfy.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
-   private static final double c = 0.4;
-   private final dfy d;
-   private final akq<ebq<?, ?>> e;
+public class dje extends djr {
+   public static final MapCodec<dje> a = b(dje::new);
+   protected static final eyx b = dgv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<dje> a() {
       return a;
    }
 
-   protected dje(akq<ebq<?, ?>> $$0, dfy $$1, dtb.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   public dje(dtz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
       return b;
    }
 
    @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.a(awe.aM) || $$0.a(dga.fl) || $$0.a(dga.dX) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends jm<ebq<?, ?>>> a(dcz $$0) {
-      return $$0.H_().d(lu.aI).b(this.e);
+   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
+      this.d($$0, $$1, $$2);
+      return brk.a;
    }
 
    @Override
-   public boolean b(dcz $$0, jd $$1, dtc $$2) {
-      dtc $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
+   protected void a_(dua $$0, dds $$1, je $$2, cnp $$3) {
+      this.d($$0, $$1, $$2);
+   }
+
+   private void d(dua $$0, dds $$1, je $$2) {
+      dvr $$3 = $$1.A_();
+
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         je $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = azc.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = azc.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = azc.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(ln.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
+
+            return;
+         }
+      }
    }
 
    @Override
-   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
-      return (double)$$1.i() < 0.4;
+   protected int b() {
+      return 5;
    }
 
    @Override
-   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
-      this.a($$0).ifPresent($$3x -> ((ebq)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
+   protected boolean a(dua $$0, eqq $$1) {
+      return false;
    }
 }

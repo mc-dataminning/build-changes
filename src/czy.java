@@ -1,51 +1,34 @@
-public class czy extends cyr {
-   public czy(cyo $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
 
-   public boolean a(cyp $$0, dcw $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cuq $$4 = $$0.a($$3, $$2);
-               if ($$4.e()) {
-                  return false;
-               }
+public interface czy<T extends czt<?>> {
+   czy<dab> a = a("crafting_shaped", new dab.a());
+   czy<dad> b = a("crafting_shapeless", new dad.a());
+   czy<czb> c = a("crafting_special_armordye", new dah<>(czb::new));
+   czy<cze> d = a("crafting_special_bookcloning", new dah<>(cze::new));
+   czy<czq> e = a("crafting_special_mapcloning", new dah<>(czq::new));
+   czy<czr> f = a("crafting_special_mapextending", new dah<>(czr::new));
+   czy<czm> g = a("crafting_special_firework_rocket", new dah<>(czm::new));
+   czy<czo> h = a("crafting_special_firework_star", new dah<>(czo::new));
+   czy<czn> i = a("crafting_special_firework_star_fade", new dah<>(czn::new));
+   czy<dar> j = a("crafting_special_tippedarrow", new dah<>(dar::new));
+   czy<czc> k = a("crafting_special_bannerduplicate", new dah<>(czc::new));
+   czy<dae> l = a("crafting_special_shielddecoration", new dah<>(dae::new));
+   czy<daf> m = a("crafting_special_shulkerboxcoloring", new dah<>(daf::new));
+   czy<daa> n = a("crafting_special_repairitem", new dah<>(daa::new));
+   czy<dak> o = a("smelting", new dag<>(dak::new, 200));
+   czy<czd> p = a("blasting", new dag<>(czd::new, 100));
+   czy<dap> q = a("smoking", new dag<>(dap::new, 100));
+   czy<czf> r = a("campfire_cooking", new dag<>(czf::new, 100));
+   czy<daq> s = a("stonecutting", new dai.b<>(daq::new));
+   czy<dan> t = a("smithing_transform", new dan.a());
+   czy<dao> u = a("smithing_trim", new dao.a());
+   czy<czl> v = a("crafting_decorated_pot", new dah<>(czl::new));
 
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cut.vr)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cut.ow)) {
-                  return false;
-               }
-            }
-         }
+   MapCodec<T> a();
 
-         return true;
-      } else {
-         return false;
-      }
-   }
+   zb<wo, T> b();
 
-   public cuq a(cyp $$0, jo.a $$1) {
-      cuq $$2 = $$0.a(1, 1);
-      if (!$$2.a(cut.vr)) {
-         return cuq.l;
-      } else {
-         cuq $$3 = new cuq(cut.vq, 8);
-         $$3.b(kq.G, $$2.a(kq.G));
-         return $$3;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
-   }
-
-   @Override
-   public cze<?> at_() {
-      return cze.j;
+   static <S extends czy<T>, T extends czt<?>> S a(String $$0, S $$1) {
+      return ka.a(lu.r, $$0, $$1);
    }
 }

@@ -1,30 +1,77 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.RewriteResult;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.util.Pair;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.View;
+import com.mojang.datafixers.functions.PointFreeRule;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Objects;
+import java.util.BitSet;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-public class ban extends DataFix {
-   public ban(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+public class ban {
+   public static Dynamic<?> a(Dynamic<?> $$0) {
+      Optional<Number> $$1 = $$0.get("X").asNumber().result();
+      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
+      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
+      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
+         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
+         : $$0;
    }
 
-   public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgr.D.typeName(), bid.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bgr.t), $$1 -> {
-         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
-         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
-            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
-            if ($$3.get("Damage").asInt(0) == 0) {
-               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
-            }
+   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
+      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   }
+
+   public static Type<?> a(Type<?> $$0, Type<?> $$1, Type<?> $$2) {
+      return $$0.all(a($$1, $$2), true, false).view().newType();
+   }
+
+   private static <A, B> TypeRewriteRule a(Type<A> $$0, Type<B> $$1) {
+      RewriteResult<A, B> $$2 = RewriteResult.create(View.create("Patcher", $$0, $$1, $$0x -> $$0xx -> {
+            throw new UnsupportedOperationException();
+         }), new BitSet());
+      return TypeRewriteRule.everywhere(TypeRewriteRule.ifSame($$0, $$2), PointFreeRule.nop(), true, true);
+   }
+
+   @SafeVarargs
+   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
+      return $$1 -> {
+         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
+            $$1 = $$2.apply($$1);
          }
 
          return $$1;
-      });
+      };
+   }
+
+   public static Dynamic<?> a(String $$0, Map<String, String> $$1) {
+      Dynamic<vc> $$2 = new Dynamic(ut.a, new uf());
+      Dynamic<vc> $$3 = $$2.set("Name", $$2.createString($$0));
+      if (!$$1.isEmpty()) {
+         $$3 = $$3.set(
+            "Properties",
+            $$2.createMap(
+               $$1.entrySet()
+                  .stream()
+                  .collect(Collectors.toMap($$1x -> $$2.createString((String)$$1x.getKey()), $$1x -> $$2.createString((String)$$1x.getValue())))
+            )
+         );
+      }
+
+      return $$3;
+   }
+
+   public static Dynamic<?> a(String $$0) {
+      return a($$0, Map.of());
+   }
+
+   public static Dynamic<?> a(Dynamic<?> $$0, String $$1, UnaryOperator<String> $$2) {
+      return $$0.update($$1, $$2x -> (Dynamic)DataFixUtils.orElse($$2x.asString().map($$2).map($$0::createString).result(), $$2x));
    }
 }

@@ -1,44 +1,63 @@
-import com.mojang.authlib.GameProfile;
-import java.time.Duration;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.ArrayDeque;
+import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.VisibleForTesting;
 
-public record xq(UUID a, cna b) {
-   public xv a(Duration $$0) {
-      return new xv.a(this.b.a(), () -> this.b.b().a($$0));
+public class xq {
+   public static final int a = -1;
+   private static final int b = 128;
+   private final xp[] c;
+
+   public xq(int $$0) {
+      this.c = new xp[$$0];
    }
 
-   public xt.b a(UUID $$0) {
-      return new xt($$0, this.a).a(this.b);
+   public static xq a() {
+      return new xq(128);
    }
 
-   public xq.a a() {
-      return new xq.a(this.a, this.b.b());
-   }
-
-   public boolean b() {
-      return this.b.b().a();
-   }
-
-   public UUID c() {
-      return this.a;
-   }
-
-   public cna d() {
-      return this.b;
-   }
-
-   public static record a(UUID a, cna.a b) {
-      public static xq.a a(vw $$0) {
-         return new xq.a($$0.n(), new cna.a($$0));
+   public int a(xp $$0) {
+      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
+         if ($$0.equals(this.c[$$1])) {
+            return $$1;
+         }
       }
 
-      public static void a(vw $$0, xq.a $$1) {
-         $$0.a($$1.a);
-         $$1.b.a($$0);
+      return -1;
+   }
+
+   @Nullable
+   public xp a(int $$0) {
+      return this.c[$$0];
+   }
+
+   public void a(xw $$0, @Nullable xp $$1) {
+      List<xp> $$2 = $$0.d().a();
+      ArrayDeque<xp> $$3 = new ArrayDeque<>($$2.size() + 1);
+      $$3.addAll($$2);
+      if ($$1 != null) {
+         $$3.add($$1);
       }
 
-      public xq a(GameProfile $$0, azb $$1) throws cna.b {
-         return new xq(this.a, cna.a($$1, $$0.getId(), this.b));
+      this.a($$3);
+   }
+
+   @VisibleForTesting
+   void a(List<xp> $$0) {
+      this.a(new ArrayDeque<>($$0));
+   }
+
+   private void a(ArrayDeque<xp> $$0) {
+      Set<xp> $$1 = new ObjectOpenHashSet($$0);
+
+      for (int $$2 = 0; !$$0.isEmpty() && $$2 < this.c.length; $$2++) {
+         xp $$3 = this.c[$$2];
+         this.c[$$2] = $$0.removeLast();
+         if ($$3 != null && !$$1.contains($$3)) {
+            $$0.addFirst($$3);
+         }
       }
    }
 }

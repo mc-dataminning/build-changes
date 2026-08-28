@@ -1,85 +1,57 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import java.util.BitSet;
+import javax.annotation.Nullable;
 
-public record adl(int b, boolean c, Set<akq<dcw>> d, int e, int f, int g, boolean h, boolean i, boolean j, agd k, boolean l) implements zg<abu> {
-   public static final yx<wk, adl> a = zg.a(adl::a, adl::new);
+public class adl implements zk<abz> {
+   public static final zb<wo, adl> a = zk.a(adl::a, adl::new);
+   private final int b;
+   private final int c;
+   private final adk d;
+   private final adp e;
 
-   private adl(wk $$0) {
-      this(
-         $$0.readInt(),
-         $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lu.ba)),
-         $$0.l(),
-         $$0.l(),
-         $$0.l(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         new agd($$0),
-         $$0.readBoolean()
-      );
+   public adl(dwg $$0, epq $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      dcy $$4 = $$0.f();
+      this.b = $$4.e;
+      this.c = $$4.f;
+      this.d = new adk($$0);
+      this.e = new adp($$4, $$1, $$2, $$3);
    }
 
-   private void a(wk $$0) {
-      $$0.p(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d, vw::b);
-      $$0.c(this.e);
-      $$0.c(this.f);
-      $$0.c(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.j);
-      this.k.a($$0);
-      $$0.a(this.l);
+   private adl(wo $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = new adk($$0, this.b, this.c);
+      this.e = new adp($$0, this.b, this.c);
+   }
+
+   private void a(wo $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      this.d.a($$0);
+      this.e.a($$0);
    }
 
    @Override
-   public zi<adl> a() {
-      return agg.O;
+   public zm<adl> a() {
+      return ago.K;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public boolean e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public Set<akq<dcw>> f() {
+   public adk f() {
       return this.d;
    }
 
-   public int g() {
+   public adp g() {
       return this.e;
-   }
-
-   public int h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
-   }
-
-   public boolean k() {
-      return this.i;
-   }
-
-   public boolean l() {
-      return this.j;
-   }
-
-   public agd m() {
-      return this.k;
-   }
-
-   public boolean n() {
-      return this.l;
    }
 }

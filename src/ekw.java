@@ -1,30 +1,128 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ekw extends eky {
-   public static final MapCodec<ekw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, ekw::new));
+public final class ekw {
+   public static final String a = "INVALID";
+   public static final ekw b = new ekw(null, new dcy(0, 0), 0, new eld(List.of()));
+   private static final Logger c = LogUtils.getLogger();
+   private final eko d;
+   private final eld e;
+   private final dcy f;
+   private int g;
+   @Nullable
+   private volatile ekg h;
 
-   protected ekw(Either<akr, ent> $$0, jm<enr> $$1, elb.a $$2, Optional<end> $$3) {
-      super($$0, $$1, $$2, $$3);
+   public ekw(eko $$0, dcy $$1, int $$2, eld $$3) {
+      this.d = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.e = $$3;
    }
 
-   @Override
-   protected enp a(dmm $$0, ejj $$1, end $$2, boolean $$3) {
-      enp $$4 = super.a($$0, $$1, $$2, $$3);
-      $$4.b(emu.b);
-      $$4.a(emu.d);
-      return $$4;
+   @Nullable
+   public static ekw a(ele $$0, uf $$1, long $$2) {
+      String $$3 = $$1.l("id");
+      if ("INVALID".equals($$3)) {
+         return b;
+      } else {
+         ka<eko> $$4 = $$0.b().d(lv.aR);
+         eko $$5 = $$4.a(alb.a($$3));
+         if ($$5 == null) {
+            c.error("Unknown stucture id: {}", $$3);
+            return null;
+         } else {
+            dcy $$6 = new dcy($$1.h("ChunkX"), $$1.h("ChunkZ"));
+            int $$7 = $$1.h("references");
+            ul $$8 = $$1.c("Children", 10);
+
+            try {
+               eld $$9 = eld.a($$8, $$0);
+               if ($$5 instanceof emz) {
+                  $$9 = emz.a($$6, $$2, $$9);
+               }
+
+               return new ekw($$5, $$6, $$7, $$9);
+            } catch (Exception var11) {
+               c.error("Failed Start with id {}", $$3, var11);
+               return null;
+            }
+         }
+      }
    }
 
-   @Override
-   public ela<?> a() {
-      return ela.e;
+   public ekg a() {
+      ekg $$0 = this.h;
+      if ($$0 == null) {
+         $$0 = this.d.a(this.e.b());
+         this.h = $$0;
+      }
+
+      return $$0;
    }
 
-   @Override
-   public String toString() {
-      return "LegacySingle[" + this.c + "]";
+   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5) {
+      List<eks> $$6 = this.e.c();
+      if (!$$6.isEmpty()) {
+         ekg $$7 = $$6.get(0).f;
+         je $$8 = $$7.g();
+         je $$9 = new je($$8.u(), $$7.i(), $$8.w());
+
+         for (eks $$10 : $$6) {
+            if ($$10.f().a($$4)) {
+               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
+            }
+         }
+
+         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
+      }
+   }
+
+   public uf a(ele $$0, dcy $$1) {
+      uf $$2 = new uf();
+      if (this.b()) {
+         $$2.a("id", $$0.b().d(lv.aR).b(this.d).toString());
+         $$2.a("ChunkX", $$1.e);
+         $$2.a("ChunkZ", $$1.f);
+         $$2.a("references", this.g);
+         $$2.a("Children", this.e.a($$0));
+         return $$2;
+      } else {
+         $$2.a("id", "INVALID");
+         return $$2;
+      }
+   }
+
+   public boolean b() {
+      return !this.e.a();
+   }
+
+   public dcy c() {
+      return this.f;
+   }
+
+   public boolean d() {
+      return this.g < this.g();
+   }
+
+   public void e() {
+      this.g++;
+   }
+
+   public int f() {
+      return this.g;
+   }
+
+   protected int g() {
+      return 1;
+   }
+
+   public eko h() {
+      return this.d;
+   }
+
+   public List<eks> i() {
+      return this.e.c();
    }
 }

@@ -1,37 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record cxw(List<cxw.a> d) {
-   public static final cxw a = new cxw(List.of());
-   public static final Codec<cxw> b = cxw.a.a.listOf().xmap(cxw::new, cxw::a);
-   public static final yx<wk, cxw> c = cxw.a.b.a(yv.a()).a(cxw::new, cxw::a);
+public record cxw(Map<String, String> d) {
+   public static final cxw a = new cxw(Map.of());
+   public static final Codec<cxw> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(cxw::new, cxw::b);
+   private static final zb<ByteBuf, Map<String, String>> e = yz.a(Object2ObjectOpenHashMap::new, yz.l, yz.l);
+   public static final zb<ByteBuf, cxw> c = e.a(cxw::new, cxw::b);
 
-   public cxw a(cxw.a $$0) {
-      return new cxw(ad.a(this.d, $$0));
+   public <T extends Comparable<T>> cxw a(dvd<T> $$0, T $$1) {
+      return new cxw(ad.a(this.d, $$0.f(), $$0.a($$1)));
    }
 
-   public List<cxw.a> a() {
+   public <T extends Comparable<T>> cxw a(dvd<T> $$0, dua $$1) {
+      return this.a($$0, $$1.c($$0));
+   }
+
+   @Nullable
+   public <T extends Comparable<T>> T a(dvd<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   }
+
+   public dua a(dua $$0) {
+      dub<dgv, dua> $$1 = $$0.b().l();
+
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         dvd<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
+         }
+      }
+
+      return $$0;
+   }
+
+   private static <T extends Comparable<T>> dua a(dua $$0, dvd<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
+   }
+
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   public Map<String, String> b() {
       return this.d;
-   }
-
-   public static record a(jm<brx> c, int d) {
-      public static final Codec<cxw.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brx.a.fieldOf("id").forGetter(cxw.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(cxw.a::c))
-               .apply($$0, cxw.a::new)
-      );
-      public static final yx<wk, cxw.a> b = yx.a(brx.b, cxw.a::b, yv.g, cxw.a::c, cxw.a::new);
-
-      public brz a() {
-         return new brz(this.c, this.d);
-      }
-
-      public jm<brx> b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
    }
 }

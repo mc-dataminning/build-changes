@@ -1,136 +1,48 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import java.util.Map;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 
-public class eru {
-   private final aqu a;
-   private final Map<euk<?>, Object> b;
-   private final Map<akr, eru.b> c;
-   private final float d;
+public class eru extends ern {
+   public static final String a = "idcounts";
+   private final Object2IntMap<String> b = new Object2IntOpenHashMap();
 
-   public eru(aqu $$0, Map<euk<?>, Object> $$1, Map<akr, eru.b> $$2, float $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static ern.a<eru> a() {
+      return new ern.a<>(eru::new, eru::b, bal.k);
    }
 
-   public aqu a() {
-      return this.a;
+   public eru() {
+      this.b.defaultReturnValue(-1);
    }
 
-   public boolean a(euk<?> $$0) {
-      return this.b.containsKey($$0);
-   }
+   public static eru b(uf $$0, jp.a $$1) {
+      eru $$2 = new eru();
 
-   public <T> T b(euk<T> $$0) {
-      T $$1 = (T)this.b.get($$0);
-      if ($$1 == null) {
-         throw new NoSuchElementException($$0.a().toString());
-      } else {
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public <T> T c(euk<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   @Nullable
-   public <T> T d(euk<T> $$0) {
-      return (T)this.b.get($$0);
-   }
-
-   public void a(akr $$0, Consumer<cuq> $$1) {
-      eru.b $$2 = this.c.get($$0);
-      if ($$2 != null) {
-         $$2.add($$1);
-      }
-   }
-
-   public float b() {
-      return this.d;
-   }
-
-   public static class a {
-      private final aqu a;
-      private final Map<euk<?>, Object> b = Maps.newIdentityHashMap();
-      private final Map<akr, eru.b> c = Maps.newHashMap();
-      private float d;
-
-      public a(aqu $$0) {
-         this.a = $$0;
-      }
-
-      public aqu a() {
-         return this.a;
-      }
-
-      public <T> eru.a a(euk<T> $$0, T $$1) {
-         this.b.put($$0, $$1);
-         return this;
-      }
-
-      public <T> eru.a b(euk<T> $$0, @Nullable T $$1) {
-         if ($$1 == null) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         return this;
-      }
-
-      public <T> T a(euk<T> $$0) {
-         T $$1 = (T)this.b.get($$0);
-         if ($$1 == null) {
-            throw new NoSuchElementException($$0.a().toString());
-         } else {
-            return $$1;
+      for (String $$3 : $$0.e()) {
+         if ($$0.b($$3, 99)) {
+            $$2.b.put($$3, $$0.h($$3));
          }
       }
 
-      @Nullable
-      public <T> T b(euk<T> $$0) {
-         return (T)this.b.get($$0);
-      }
-
-      public eru.a a(akr $$0, eru.b $$1) {
-         eru.b $$2 = this.c.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
-         } else {
-            return this;
-         }
-      }
-
-      public eru.a a(float $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public eru a(eul $$0) {
-         Set<euk<?>> $$1 = Sets.difference(this.b.keySet(), $$0.b());
-         if (!$$1.isEmpty()) {
-            throw new IllegalArgumentException("Parameters not allowed in this parameter set: " + $$1);
-         } else {
-            Set<euk<?>> $$2 = Sets.difference($$0.a(), this.b.keySet());
-            if (!$$2.isEmpty()) {
-               throw new IllegalArgumentException("Missing required parameters: " + $$2);
-            } else {
-               return new eru(this.a, this.b, this.c, this.d);
-            }
-         }
-      }
+      return $$2;
    }
 
-   @FunctionalInterface
-   public interface b {
-      void add(Consumer<cuq> var1);
+   @Override
+   public uf a(uf $$0, jp.a $$1) {
+      ObjectIterator var3 = this.b.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<String> $$2 = (Entry<String>)var3.next();
+         $$0.a((String)$$2.getKey(), $$2.getIntValue());
+      }
+
+      return $$0;
+   }
+
+   public ert b() {
+      int $$0 = this.b.getInt("map") + 1;
+      this.b.put("map", $$0);
+      this.c();
+      return new ert($$0);
    }
 }

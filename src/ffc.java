@@ -1,57 +1,59 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.util.List;
 
-public class ffc {
-   private static final Map<String, ffc.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final akr c = akr.b("textures/gui/presets/isles.png");
+public abstract class ffc {
+   public final int a;
+   public final int b;
+   public final int c;
+   public final int d;
 
-   public static akr a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   public ffc(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static akr b(String $$0, String $$1) {
-      ffc.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         faj $$3 = a($$1);
-         if ($$3 == null) {
-            akr $$4 = gqb.b();
-            a.put($$0, new ffc.a($$1, $$4));
-            return $$4;
-         } else {
-            akr $$5 = akr.a("realms", "dynamic/" + $$0);
-            fgo.Q().aa().a($$5, new gpy($$3));
-            a.put($$0, new ffc.a($$1, $$5));
-            return $$5;
+   public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$1 + this.c;
+      int $$6 = $$2 + this.d;
+      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
+      this.a($$0, $$5, $$6, $$7);
+   }
+
+   protected abstract void a(fjn var1, int var2, int var3, boolean var4);
+
+   public int a() {
+      return this.c + this.a;
+   }
+
+   public int b() {
+      return this.d + this.b;
+   }
+
+   public abstract void a(int var1);
+
+   public static void a(fjn $$0, List<ffc> $$1, hcs<?> $$2, int $$3, int $$4, int $$5, int $$6) {
+      for (ffc $$7 : $$1) {
+         if ($$2.b() > $$7.a()) {
+            $$7.a($$0, $$3, $$4, $$5, $$6);
          }
       }
    }
 
-   @Nullable
-   private static faj a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
+   public static void a(hcs<?> $$0, fkw.a<?> $$1, List<ffc> $$2, int $$3, double $$4, double $$5) {
+      int $$6 = $$0.aK_().indexOf($$1);
+      if ($$6 > -1) {
+         $$0.b($$6);
+         int $$7 = $$0.s();
+         int $$8 = $$0.g($$6);
+         int $$9 = (int)($$4 - (double)$$7);
+         int $$10 = (int)($$5 - (double)$$8);
 
-      try {
-         return faj.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
+         for (ffc $$11 : $$2) {
+            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
+               $$11.a($$6);
+            }
+         }
       }
-
-      return null;
-   }
-
-   public static record a(String a, akr b) {
    }
 }

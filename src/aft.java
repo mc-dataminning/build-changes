@@ -1,16 +1,45 @@
-public record aft(wz b, wz c) implements zg<abu> {
-   public static final yx<wk, aft> a = yx.a(xb.d, aft::b, xb.d, aft::e, aft::new);
+public class aft implements zk<abz> {
+   public static final zb<wa, aft> a = zk.a(aft::a, aft::new);
+   private final long b;
+   private final long c;
 
-   @Override
-   public zi<aft> a() {
-      return agg.aW;
+   public aft(long $$0, long $$1, boolean $$2) {
+      this.b = $$0;
+      long $$3 = $$1;
+      if (!$$2) {
+         $$3 = -$$1;
+         if ($$3 == 0L) {
+            $$3 = -1L;
+         }
+      }
+
+      this.c = $$3;
    }
 
-   public void a(abu $$0) {
+   private aft(wa $$0) {
+      this.b = $$0.readLong();
+      this.c = $$0.readLong();
+   }
+
+   private void a(wa $$0) {
+      $$0.b(this.b);
+      $$0.b(this.c);
+   }
+
+   @Override
+   public zm<aft> a() {
+      return ago.aP;
+   }
+
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public wz e() {
+   public long b() {
+      return this.b;
+   }
+
+   public long e() {
       return this.c;
    }
 }

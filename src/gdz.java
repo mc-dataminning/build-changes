@@ -1,21 +1,17 @@
-public class gdz {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public boolean h;
-
-   public void a(boolean $$0, float $$1) {
+public class gdz extends ges {
+   protected gdz(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gez $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, 2.5F, $$7);
    }
 
-   public exb a() {
-      return new exb(this.a, this.b);
-   }
+   public static class a implements geh<lr> {
+      private final gez a;
 
-   public boolean b() {
-      return this.b > 1.0E-5F;
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

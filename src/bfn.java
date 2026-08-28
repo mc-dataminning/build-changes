@@ -3,30 +3,44 @@ import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public abstract class bfn extends DataFix {
-   private final String a;
-   private final String b;
-   private final TypeReference c;
-
-   public bfn(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
+public class bfn extends DataFix {
+   public bfn(Schema $$0, boolean $$1) {
       super($$0, $$1);
-      this.a = $$2;
-      this.c = $$3;
-      this.b = $$4;
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<?> $$0 = DSL.namedChoice(this.b, this.getInputSchema().getChoiceType(this.c, this.b));
+      Type<?> $$0 = this.getInputSchema().getType(bhk.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bhk.D.typeName(), biw.a()));
+      OpticFinder<?> $$2 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped(
-         this.a,
-         this.getInputSchema().getType(this.c),
-         this.getOutputSchema().getType(this.c),
-         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.c, this.b), this::a)
+         "ItemWaterPotionFix",
+         $$0,
+         $$2x -> {
+            Optional<Pair<String, String>> $$3 = $$2x.getOptional($$1);
+            if ($$3.isPresent()) {
+               String $$4 = (String)$$3.get().getSecond();
+               if ("minecraft:potion".equals($$4)
+                  || "minecraft:splash_potion".equals($$4)
+                  || "minecraft:lingering_potion".equals($$4)
+                  || "minecraft:tipped_arrow".equals($$4)) {
+                  Typed<?> $$5 = $$2x.getOrCreateTyped($$2);
+                  Dynamic<?> $$6 = (Dynamic<?>)$$5.get(DSL.remainderFinder());
+                  if ($$6.get("Potion").asString().result().isEmpty()) {
+                     $$6 = $$6.set("Potion", $$6.createString("minecraft:water"));
+                  }
+
+                  return $$2x.set($$2, $$5.set(DSL.remainderFinder(), $$6));
+               }
+            }
+
+            return $$2x;
+         }
       );
    }
-
-   protected abstract Typed<?> a(Typed<?> var1);
 }

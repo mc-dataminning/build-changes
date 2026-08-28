@@ -1,36 +1,51 @@
-public class fxq<T extends bsr> extends fvc<T> {
-   private final fyk a;
-   private final fyk b;
+import java.util.Arrays;
 
-   public fxq(fyk $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail");
+public class fxq extends fxa<guq> {
+   private static final int a = 8;
+   private final gab b;
+   private final gab[] c = new gab[8];
+
+   public fxq(gab $$0) {
+      this.b = $$0;
+      Arrays.setAll(this.c, $$1 -> $$0.b(a($$1)));
    }
 
-   public static fyq a(fyo $$0) {
-      fys $$1 = new fys();
-      fyt $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", fyp.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), fym.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", fyp.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fym.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", fyp.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fym.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", fyp.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), fym.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", fyp.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), fym.a(0.0F, 20.5F, -3.0F));
-      return fyq.a($$1, 32, 32);
+   private static String a(int $$0) {
+      return "cube" + $$0;
    }
 
-   @Override
-   public fyk a() {
-      return this.a;
-   }
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = 1.0F;
-      if (!$$0.bf()) {
-         $$6 = 1.5F;
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = $$2;
+         if ($$2 == 2) {
+            $$3 = 24;
+            $$4 = 10;
+         } else if ($$2 == 3) {
+            $$3 = 24;
+            $$4 = 19;
+         }
+
+         $$1.a(a($$2), gag.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gad.a);
       }
 
-      this.b.f = -$$6 * 0.45F * ayo.a(0.6F * $$3);
+      $$1.a("inside_cube", gag.c().a(0, 16).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gad.a);
+      return gah.a($$0, 64, 32);
+   }
+
+   public void a(guq $$0) {
+      float $$1 = Math.max(0.0F, $$0.a);
+
+      for (int $$2 = 0; $$2 < this.c.length; $$2++) {
+         this.c[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
+      }
+   }
+
+   @Override
+   public gab a() {
+      return this.b;
    }
 }

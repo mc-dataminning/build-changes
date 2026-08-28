@@ -1,36 +1,63 @@
-public class ghi implements ggz<drc> {
-   public static final gsq a = new gsq(gqk.e, akr.b("entity/enchanting_table_book"));
-   private final fus b;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public ghi(gha.a $$0) {
-      this.b = new fus($$0.a(fyj.r));
+public class ghi {
+   private static final Logger a = LogUtils.getLogger();
+   private final Queue<ghh> b;
+   private volatile int c;
+
+   private ghi(List<ghh> $$0) {
+      this.b = Queues.newArrayDeque($$0);
+      this.c = this.b.size();
    }
 
-   public void a(drc $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
-      $$2.a();
-      $$2.a(0.5F, 0.75F, 0.5F);
-      float $$6 = (float)$$0.a + $$1;
-      $$2.a(0.0F, 0.1F + ayo.a($$6 * 0.1F) * 0.01F, 0.0F);
-      float $$7 = $$0.h - $$0.i;
+   public static ghi a(int $$0) {
+      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / ghh.a);
+      int $$2 = Math.max(1, Math.min($$0, $$1));
+      List<ghh> $$3 = new ArrayList<>($$2);
 
-      while ($$7 >= (float) Math.PI) {
-         $$7 -= (float) (Math.PI * 2);
+      try {
+         for (int $$4 = 0; $$4 < $$2; $$4++) {
+            $$3.add(new ghh());
+         }
+      } catch (OutOfMemoryError var7) {
+         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
+         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            $$3.remove($$3.size() - 1).close();
+         }
       }
 
-      while ($$7 < (float) -Math.PI) {
-         $$7 += (float) (Math.PI * 2);
-      }
+      return new ghi($$3);
+   }
 
-      float $$8 = $$0.i + $$7 * $$1;
-      $$2.a(a.d.rotation(-$$8));
-      $$2.a(a.f.rotationDegrees(80.0F));
-      float $$9 = ayo.i($$1, $$0.c, $$0.b);
-      float $$10 = ayo.h($$9 + 0.25F) * 1.6F - 0.3F;
-      float $$11 = ayo.h($$9 + 0.75F) * 1.6F - 0.3F;
-      float $$12 = ayo.i($$1, $$0.g, $$0.f);
-      this.b.a($$6, ayo.a($$10, 0.0F, 1.0F), ayo.a($$11, 0.0F, 1.0F), $$12);
-      fbm $$13 = a.a($$3, gfh::c);
-      this.b.b($$2, $$13, $$4, $$5, -1);
-      $$2.b();
+   @Nullable
+   public ghh a() {
+      ghh $$0 = this.b.poll();
+      if ($$0 != null) {
+         this.c = this.b.size();
+         return $$0;
+      } else {
+         return null;
+      }
+   }
+
+   public void a(ghh $$0) {
+      this.b.add($$0);
+      this.c = this.b.size();
+   }
+
+   public boolean b() {
+      return this.b.isEmpty();
+   }
+
+   public int c() {
+      return this.c;
    }
 }

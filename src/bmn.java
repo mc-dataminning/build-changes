@@ -1,9 +1,7 @@
-import java.util.stream.Stream;
+public interface bmn {
+   void a(long[] var1);
 
-public interface bmn<S> {
-   Stream<String> possibleValues(bmk<S> var1);
+   void a(long var1);
 
-   static <S> bmn<S> b() {
-      return $$0 -> Stream.empty();
-   }
+   void a(long var1, int var3);
 }

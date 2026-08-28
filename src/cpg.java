@@ -1,84 +1,65 @@
-public abstract class cpg extends bsr {
-   protected static final ajw<Integer> f = aka.a(cpg.class, ajy.b);
-   protected static final ajw<Integer> g = aka.a(cpg.class, ajy.b);
-   protected static final ajw<Float> h = aka.a(cpg.class, ajy.d);
+public class cpg {
+   public static final cpg a = a("core");
+   public static final cpg b = a("idle");
+   public static final cpg c = a("work");
+   public static final cpg d = a("play");
+   public static final cpg e = a("rest");
+   public static final cpg f = a("meet");
+   public static final cpg g = a("panic");
+   public static final cpg h = a("raid");
+   public static final cpg i = a("pre_raid");
+   public static final cpg j = a("hide");
+   public static final cpg k = a("fight");
+   public static final cpg l = a("celebrate");
+   public static final cpg m = a("admire_item");
+   public static final cpg n = a("avoid");
+   public static final cpg o = a("ride");
+   public static final cpg p = a("play_dead");
+   public static final cpg q = a("long_jump");
+   public static final cpg r = a("ram");
+   public static final cpg s = a("tongue");
+   public static final cpg t = a("swim");
+   public static final cpg u = a("lay_spawn");
+   public static final cpg v = a("sniff");
+   public static final cpg w = a("investigate");
+   public static final cpg x = a("roar");
+   public static final cpg y = a("emerge");
+   public static final cpg z = a("dig");
+   private final String A;
+   private final int B;
 
-   public cpg(bsx<?> $$0, dcw $$1) {
-      super($$0, $$1);
+   private cpg(String $$0) {
+      this.A = $$0;
+      this.B = $$0.hashCode();
+   }
+
+   public String a() {
+      return this.A;
+   }
+
+   private static cpg a(String $$0) {
+      return ka.a(lu.C, $$0, new cpg($$0));
    }
 
    @Override
-   public boolean a(brk $$0, float $$1) {
-      if (this.dO().B || this.dJ()) {
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
-      } else if (this.b($$0)) {
-         return false;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         cpg $$1 = (cpg)$$0;
+         return this.A.equals($$1.A);
       } else {
-         this.m(-this.P());
-         this.d(10);
-         this.bw();
-         this.b(this.N() + $$1 * 10.0F);
-         this.a(dxz.o, $$0.d());
-         boolean $$2 = $$0.d() instanceof cmx && ((cmx)$$0.d()).fZ().d;
-         if (($$2 || !(this.N() > 40.0F)) && !this.d($$0)) {
-            if ($$2) {
-               this.aq();
-            }
-         } else {
-            this.a($$0);
-         }
-
-         return true;
-      }
-   }
-
-   boolean d(brk $$0) {
-      return false;
-   }
-
-   public void b(cul $$0) {
-      this.ap();
-      if (this.dO().ab().b(dcs.i)) {
-         cuq $$1 = new cuq($$0);
-         $$1.b(kq.g, this.aj());
-         this.b($$1);
+         return false;
       }
    }
 
    @Override
-   protected void a(aka.a $$0) {
-      $$0.a(f, 0);
-      $$0.a(g, 1);
-      $$0.a(h, 0.0F);
+   public int hashCode() {
+      return this.B;
    }
 
-   public void d(int $$0) {
-      this.ao.a(f, $$0);
+   @Override
+   public String toString() {
+      return this.a();
    }
-
-   public void m(int $$0) {
-      this.ao.a(g, $$0);
-   }
-
-   public void b(float $$0) {
-      this.ao.a(h, $$0);
-   }
-
-   public float N() {
-      return this.ao.a(h);
-   }
-
-   public int O() {
-      return this.ao.a(f);
-   }
-
-   public int P() {
-      return this.ao.a(g);
-   }
-
-   protected void a(brk $$0) {
-      this.b(this.ak_());
-   }
-
-   abstract cul ak_();
 }

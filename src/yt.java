@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface yt {
+   xr a(int var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface yt {
+   yu<? extends yt> a();
 }

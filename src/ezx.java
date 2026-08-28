@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface ezx<T> {
+   void a(ezv<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ezd
-@ezc
-interface ezx {
+   boolean a(je var1, T var2);
+
+   int a();
 }

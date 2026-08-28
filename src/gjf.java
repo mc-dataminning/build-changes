@@ -1,16 +1,23 @@
-public class gjf extends glp<cgk, fug> {
-   private static final akr a = akr.b("textures/entity/allay/allay.png");
+import it.unimi.dsi.fastutil.ints.Int2IntFunction;
 
-   public gjf(gkj.a $$0) {
-      super($$0, new fug($$0.a(fyj.a)), 0.4F);
-      this.a(new goo<>(this, $$0.d()));
+public class gjf<S extends dre> implements djc.b<S, Int2IntFunction> {
+   public Int2IntFunction a(S $$0, S $$1) {
+      return $$2 -> {
+         int $$3 = ggr.a($$0.i(), $$0.aD_());
+         int $$4 = ggr.a($$1.i(), $$1.aD_());
+         int $$5 = ggt.a($$3);
+         int $$6 = ggt.a($$4);
+         int $$7 = ggt.b($$3);
+         int $$8 = ggt.b($$4);
+         return ggt.a(Math.max($$5, $$6), Math.max($$7, $$8));
+      };
    }
 
-   public akr a(cgk $$0) {
-      return a;
+   public Int2IntFunction a(S $$0) {
+      return $$0x -> $$0x;
    }
 
-   protected int a(cgk $$0, jd $$1) {
-      return 15;
+   public Int2IntFunction a() {
+      return $$0 -> $$0;
    }
 }

@@ -1,38 +1,34 @@
-import java.util.List;
-import java.util.Optional;
+public class ahb implements zk<agq> {
+   public static final zb<wa, ahb> a = zk.a(ahb::a, ahb::new);
+   private final ahb.a b;
 
-public record ahb(int c, List<String> d, Optional<String> e) implements zg<agi> {
-   public static final int a = 4;
-   private static final int f = 128;
-   private static final int g = 8192;
-   private static final int h = 200;
-   public static final yx<vw, ahb> b = yx.a(yv.g, ahb::b, yv.b(8192).a(yv.c(200)), ahb::e, yv.b(128).a(yv::a), ahb::f, ahb::new);
+   public ahb(ahb.a $$0) {
+      this.b = $$0;
+   }
 
-   public ahb(int c, List<String> d, Optional<String> e) {
-      d = List.copyOf(d);
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   private ahb(wa $$0) {
+      this.b = $$0.b(ahb.a.class);
+   }
+
+   private void a(wa $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zi<ahb> a() {
-      return agg.bw;
+   public zm<ahb> a() {
+      return ago.bq;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.c;
+   public ahb.a b() {
+      return this.b;
    }
 
-   public List<String> e() {
-      return this.d;
-   }
-
-   public Optional<String> f() {
-      return this.e;
+   public static enum a {
+      a,
+      b;
    }
 }

@@ -1,56 +1,21 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cwr extends cul {
-   public cwr(cul.a $$0) {
-      super($$0);
+public class cwr extends cwz {
+   public cwr(cvg.a $$0, dgv $$1, dgv $$2) {
+      super($$1, $$2, $$0, jj.a);
+   }
+
+   public cwr(cvg.a $$0, dgv $$1, dgv $$2, jj $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public wz n(cuq $$0) {
-      cyb $$1 = $$0.a(kq.J);
-      if ($$1 != null) {
-         String $$2 = $$1.d().a();
-         if (!azl.h($$2)) {
-            return wz.b($$2);
-         }
+   protected boolean a(je $$0, dds $$1, @Nullable cnp $$2, cvl $$3, dua $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dsq $$6 && $$1.a_($$0).b() instanceof dnw $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      return super.n($$0);
-   }
-
-   @Override
-   public void a(cuq $$0, cul.b $$1, List<wz> $$2, cwm $$3) {
-      cyb $$4 = $$0.a(kq.J);
-      if ($$4 != null) {
-         if (!azl.h($$4.e())) {
-            $$2.add(wz.a("book.byAuthor", $$4.e()).a(n.h));
-         }
-
-         $$2.add(wz.c("book.generation." + $$4.f()).a(n.h));
-      }
-   }
-
-   @Override
-   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      cuq $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avz.c.b(this));
-      return bqs.a($$3, $$0.x_());
-   }
-
-   public static boolean a(cuq $$0, et $$1, @Nullable cmx $$2) {
-      cyb $$3 = $$0.a(kq.J);
-      if ($$3 != null && !$$3.g()) {
-         cyb $$4 = $$3.a($$1, $$2);
-         if ($$4 != null) {
-            $$0.b(kq.J, $$4);
-            return true;
-         }
-
-         $$0.b(kq.J, $$3.c());
-      }
-
-      return false;
+      return $$5;
    }
 }

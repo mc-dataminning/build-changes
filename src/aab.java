@@ -1,16 +1,31 @@
-import com.google.common.collect.Lists;
+import java.util.Map;
 
-public record aab(aaj b) implements zg<zz> {
-   private static final int c = 32767;
-   public static final yx<vw, aab> a = aaj.<vw>a($$0 -> aak.a($$0, 32767), ad.a(Lists.newArrayList(new aaj.c[]{new aaj.c<>(aah.b, aah.a)}), $$0 -> {
-   })).a(aab::new, aab::b);
+public class aab implements zk<zq> {
+   public static final zb<wa, aab> a = zk.a(aab::a, aab::new);
+   private final Map<ala<? extends ka<?>>, axk.a> b;
 
-   @Override
-   public zi<aab> a() {
-      return zy.m;
+   public aab(Map<ala<? extends ka<?>>, axk.a> $$0) {
+      this.b = $$0;
    }
 
-   public void a(zz $$0) {
+   private aab(wa $$0) {
+      this.b = $$0.a(wa::r, axk.a::b);
+   }
+
+   private void a(wa $$0) {
+      $$0.a(this.b, wa::b, ($$0x, $$1) -> $$1.a($$0x));
+   }
+
+   @Override
+   public zm<aab> a() {
+      return aac.k;
+   }
+
+   public void a(zq $$0) {
       $$0.a(this);
+   }
+
+   public Map<ala<? extends ka<?>>, axk.a> b() {
+      return this.b;
    }
 }

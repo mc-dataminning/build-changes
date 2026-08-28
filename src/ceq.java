@@ -1,122 +1,47 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class ceq implements dcj {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private ceq.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
+public class ceq extends ceo<bun> {
+   private static final cev a = cev.b().d();
+   private final Predicate<cvl> b;
 
-   public ceq() {
-      this.c = ceq.a.c;
+   public ceq(Predicate<cvl> $$0) {
+      this.b = $$0;
+   }
+
+   protected void a(arg $$0, bun $$1) {
+      bvg<?> $$2 = $$1.dX();
+      cev $$3 = a.c().a((double)((float)$$1.h(bvm.E)));
+      List<cnp> $$4 = $$0.x()
+         .stream()
+         .filter(bto.f)
+         .filter($$2x -> $$3.a($$1, $$2x))
+         .filter(this::a)
+         .filter($$1x -> !$$1.y($$1x))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      if (!$$4.isEmpty()) {
+         cnp $$5 = $$4.get(0);
+         $$2.a(cdi.O, $$5);
+      } else {
+         $$2.b(cdi.O);
+      }
+   }
+
+   private boolean a(cnp $$0) {
+      return this.a($$0.eW()) || this.a($$0.eX());
+   }
+
+   private boolean a(cvl $$0) {
+      return this.b.test($$0);
    }
 
    @Override
-   public int a(aqu $$0, boolean $$1, boolean $$2) {
-      if (!$$0.R() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.z.a(10) == 0 ? ceq.a.b : ceq.a.c;
-         }
-
-         if (this.c == ceq.a.c) {
-            return 0;
-         } else {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return 0;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-               return 0;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = ceq.a.c;
-               }
-
-               return 1;
-            }
-         }
-      } else {
-         this.c = ceq.a.c;
-         this.b = false;
-         return 0;
-      }
-   }
-
-   private boolean a(aqu $$0) {
-      for (cmx $$1 : $$0.x()) {
-         if (!$$1.R_()) {
-            jd $$2 = $$1.do();
-            if ($$0.c($$2) && !$$0.t($$2).a(awd.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + ayo.d(ayo.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + ayo.d(ayo.a($$4) * 32.0F);
-                  if (this.a($$0, new jd(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private void b(aqu $$0) {
-      exc $$1 = this.a($$0, new jd(this.f, this.g, this.h));
-      if ($$1 != null) {
-         ckw $$2;
-         try {
-            $$2 = new ckw($$0);
-            $$2.a($$0, $$0.d_($$2.do()), btr.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.c, $$1.d, $$1.e, $$0.z.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
-      }
-   }
-
-   @Nullable
-   private exc a(aqu $$0, jd $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.z.a(16) - 8;
-         int $$4 = $$1.w() + $$0.z.a(16) - 8;
-         int $$5 = $$0.a(dyy.a.b, $$3, $$4);
-         jd $$6 = new jd($$3, $$5, $$4);
-         if ($$0.c($$6) && ckd.b(bsx.bu, $$0, btr.h, $$6, $$0.z)) {
-            return exc.c($$6);
-         }
-      }
-
-      return null;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   public Set<cdi<?>> a() {
+      return ImmutableSet.of(cdi.O);
    }
 }

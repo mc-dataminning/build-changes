@@ -1,392 +1,119 @@
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.mojang.logging.LogUtils;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.slf4j.Logger;
 
-public class fbv {
-   static final Logger a = LogUtils.getLogger();
-   volatile boolean b;
-   volatile boolean c;
-   volatile boolean d;
-   volatile boolean e;
-   @Nullable
-   private volatile File f;
-   volatile File g;
-   @Nullable
-   private volatile HttpGet h;
-   @Nullable
-   private Thread i;
-   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
-   private static final String[] k = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
+public abstract class fbv {
+   private static final String a = "/\\*(?:[^*]|\\*+[^*/])*\\*+/";
+   private static final String b = "//[^\\v]*";
+   private static final Pattern c = Pattern.compile(
+      "(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*moj_import(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(?:\"(.*)\"|<(.*)>))"
+   );
+   private static final Pattern d = Pattern.compile("(#(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*version(?:/\\*(?:[^*]|\\*+[^*/])*\\*+/|\\h)*(\\d+))\\b");
+   private static final Pattern e = Pattern.compile("(?:^|\\v)(?:\\s|/\\*(?:[^*]|\\*+[^*/])*\\*+/|(//[^\\v]*))*\\z");
 
-   public long a(String $$0) {
-      CloseableHttpClient $$1 = null;
-      HttpGet $$2 = null;
+   public List<String> a(String $$0) {
+      fbv.a $$1 = new fbv.a();
+      List<String> $$2 = this.a($$0, $$1, "");
+      $$2.set(0, this.a($$2.get(0), $$1.a));
+      return $$2;
+   }
 
-      long var5;
-      try {
-         $$2 = new HttpGet($$0);
-         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-         CloseableHttpResponse $$3 = $$1.execute($$2);
-         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
-      } catch (Throwable var16) {
-         a.error("Unable to get content length for download");
-         var5 = 0L;
-      } finally {
-         if ($$2 != null) {
-            $$2.releaseConnection();
-         }
+   private List<String> a(String $$0, fbv.a $$1, String $$2) {
+      int $$3 = $$1.b;
+      int $$4 = 0;
+      String $$5 = "";
+      List<String> $$6 = Lists.newArrayList();
+      Matcher $$7 = c.matcher($$0);
 
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (IOException var15) {
-               a.error("Could not close http client", var15);
+      while ($$7.find()) {
+         if (!a($$0, $$7, $$4)) {
+            String $$8 = $$7.group(2);
+            boolean $$9 = $$8 != null;
+            if (!$$9) {
+               $$8 = $$7.group(3);
             }
-         }
-      }
 
-      return var5;
-   }
-
-   public void a(fdd $$0, String $$1, fea.a $$2, erf $$3) {
-      if (this.i == null) {
-         this.i = new Thread(() -> {
-            CloseableHttpClient $$4 = null;
-
-            try {
-               this.f = File.createTempFile("backup", ".tar.gz");
-               this.h = new HttpGet($$0.a);
-               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-               HttpResponse $$5 = $$4.execute(this.h);
-               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
-               if ($$5.getStatusLine().getStatusCode() == 200) {
-                  OutputStream $$12 = new FileOutputStream(this.f);
-                  fbv.b $$13 = new fbv.b($$1.trim(), this.f, $$3, $$2);
-                  fbv.a $$14 = new fbv.a($$12);
-                  $$14.a($$13);
-                  IOUtils.copy($$5.getEntity().getContent(), $$14);
-                  return;
-               }
-
-               this.d = true;
-               this.h.abort();
-            } catch (Exception var93) {
-               a.error("Caught exception while downloading: {}", var93.getMessage());
-               this.d = true;
-               return;
-            } finally {
-               this.h.releaseConnection();
-               if (this.f != null) {
-                  this.f.delete();
-               }
-
-               if (!this.d) {
-                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
-                     try {
-                        this.f = File.createTempFile("resources", ".tar.gz");
-                        this.h = new HttpGet($$0.b);
-                        HttpResponse $$28 = $$4.execute(this.h);
-                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
-                        if ($$28.getStatusLine().getStatusCode() != 200) {
-                           this.d = true;
-                           this.h.abort();
-                           return;
-                        }
-
-                        OutputStream $$29 = new FileOutputStream(this.f);
-                        fbv.c $$30 = new fbv.c(this.f, $$2, $$0);
-                        fbv.a $$31 = new fbv.a($$29);
-                        $$31.a($$30);
-                        IOUtils.copy($$28.getEntity().getContent(), $$31);
-                     } catch (Exception var91) {
-                        a.error("Caught exception while downloading: {}", var91.getMessage());
-                        this.d = true;
-                     } finally {
-                        this.h.releaseConnection();
-                        if (this.f != null) {
-                           this.f.delete();
-                        }
-                     }
-                  } else {
-                     this.c = true;
+            if ($$8 != null) {
+               String $$10 = $$0.substring($$4, $$7.start(1));
+               String $$11 = $$2 + $$8;
+               String $$12 = this.a($$9, $$11);
+               if (!Strings.isNullOrEmpty($$12)) {
+                  if (!azz.d($$12)) {
+                     $$12 = $$12 + System.lineSeparator();
                   }
-               }
 
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (IOException var90) {
-                     a.error("Failed to close Realms download client");
+                  $$1.b++;
+                  int $$13 = $$1.b;
+                  List<String> $$14 = this.a($$12, $$1, $$9 ? v.b($$11) : "");
+                  $$14.set(0, String.format(Locale.ROOT, "#line %d %d\n%s", 0, $$13, this.a($$14.get(0), $$1)));
+                  if (!azz.h($$10)) {
+                     $$6.add($$10);
                   }
-               }
-            }
-         });
-         this.i.setUncaughtExceptionHandler(new fdh(a));
-         this.i.start();
-      }
-   }
 
-   public void a() {
-      if (this.h != null) {
-         this.h.abort();
-      }
-
-      if (this.f != null) {
-         this.f.delete();
-      }
-
-      this.b = true;
-   }
-
-   public boolean b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static String b(String $$0) {
-      $$0 = $$0.replaceAll("[\\./\"]", "_");
-
-      for (String $$1 : k) {
-         if ($$0.equalsIgnoreCase($$1)) {
-            $$0 = "_" + $$0 + "_";
-         }
-      }
-
-      return $$0;
-   }
-
-   void a(String $$0, @Nullable File $$1, erf $$2) throws IOException {
-      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
-      int $$4 = 1;
-
-      for (char $$5 : ab.bd) {
-         $$0 = $$0.replace($$5, '_');
-      }
-
-      if (StringUtils.isEmpty($$0)) {
-         $$0 = "Realm";
-      }
-
-      $$0 = b($$0);
-
-      try {
-         for (erf.b $$6 : $$2.b()) {
-            String $$7 = $$6.a();
-            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
-               Matcher $$8 = $$3.matcher($$7);
-               if ($$8.matches()) {
-                  int $$9 = Integer.parseInt($$8.group(1));
-                  if ($$9 > $$4) {
-                     $$4 = $$9;
-                  }
+                  $$6.addAll($$14);
                } else {
-                  $$4++;
+                  String $$15 = $$9 ? String.format(Locale.ROOT, "/*#moj_import \"%s\"*/", $$8) : String.format(Locale.ROOT, "/*#moj_import <%s>*/", $$8);
+                  $$6.add($$5 + $$10 + $$15);
                }
+
+               int $$16 = azz.c($$0.substring(0, $$7.end(1)));
+               $$5 = String.format(Locale.ROOT, "#line %d %d", $$16, $$3);
+               $$4 = $$7.end(1);
             }
          }
-      } catch (Exception var43) {
-         a.error("Error getting level list", var43);
-         this.d = true;
-         return;
       }
 
-      String $$13;
-      if ($$2.a($$0) && $$4 <= 1) {
-         $$13 = $$0;
+      String $$17 = $$0.substring($$4);
+      if (!azz.h($$17)) {
+         $$6.add($$5 + $$17);
+      }
+
+      return $$6;
+   }
+
+   private String a(String $$0, fbv.a $$1) {
+      Matcher $$2 = d.matcher($$0);
+      if ($$2.find() && a($$0, $$2)) {
+         $$1.a = Math.max($$1.a, Integer.parseInt($$2.group(2)));
+         return $$0.substring(0, $$2.start(1)) + "/*" + $$0.substring($$2.start(1), $$2.end(1)) + "*/" + $$0.substring($$2.end(1));
       } else {
-         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-         if (!$$2.a($$13)) {
-            boolean $$12 = false;
-
-            while (!$$12) {
-               $$4++;
-               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-               if ($$2.a($$13)) {
-                  $$12 = true;
-               }
-            }
-         }
-      }
-
-      TarArchiveInputStream $$14 = null;
-      File $$15 = new File(fgo.Q().p.getAbsolutePath(), "saves");
-
-      try {
-         $$15.mkdir();
-         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
-
-         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
-            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
-            if ($$16.isDirectory()) {
-               $$17.mkdirs();
-            } else {
-               $$17.createNewFile();
-
-               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
-                  IOUtils.copy($$14, $$18);
-               }
-            }
-         }
-      } catch (Exception var41) {
-         a.error("Error extracting world", var41);
-         this.d = true;
-      } finally {
-         if ($$14 != null) {
-            $$14.close();
-         }
-
-         if ($$1 != null) {
-            $$1.delete();
-         }
-
-         try (erf.c $$26 = $$2.d($$13)) {
-            $$26.b($$13);
-         } catch (um | us | IOException var39) {
-            a.error("Failed to modify unpacked realms level {}", $$13, var39);
-         } catch (ewr var40) {
-            a.warn("{}", var40.getMessage());
-         }
-
-         this.g = new File($$15, $$13 + File.separator + "resources.zip");
+         return $$0;
       }
    }
 
-   static class a extends CountingOutputStream {
-      @Nullable
-      private ActionListener a;
+   private String a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      return $$2.find() && a($$0, $$2) ? $$0.substring(0, $$2.start(2)) + Math.max($$1, Integer.parseInt($$2.group(2))) + $$0.substring($$2.end(2)) : $$0;
+   }
 
-      public a(OutputStream $$0) {
-         super($$0);
-      }
+   private static boolean a(String $$0, Matcher $$1) {
+      return !a($$0, $$1, 0);
+   }
 
-      public void a(ActionListener $$0) {
-         this.a = $$0;
-      }
-
-      protected void afterWrite(int $$0) throws IOException {
-         super.afterWrite($$0);
-         if (this.a != null) {
-            this.a.actionPerformed(new ActionEvent(this, 0, null));
+   private static boolean a(String $$0, Matcher $$1, int $$2) {
+      int $$3 = $$1.start() - $$2;
+      if ($$3 == 0) {
+         return false;
+      } else {
+         Matcher $$4 = e.matcher($$0.substring($$2, $$1.start()));
+         if (!$$4.find()) {
+            return true;
+         } else {
+            int $$5 = $$4.end(1);
+            return $$5 == $$1.start();
          }
       }
    }
 
-   class b implements ActionListener {
-      private final String b;
-      private final File c;
-      private final erf d;
-      private final fea.a e;
+   @Nullable
+   public abstract String a(boolean var1, String var2);
 
-      b(final String $$0, final File $$1, final erf $$2, final fea.a $$3) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.e.a = ((fbv.a)$$0.getSource()).getByteCount();
-         if (this.e.a >= this.e.b && !fbv.this.b && !fbv.this.d) {
-            try {
-               fbv.this.e = true;
-               fbv.this.a(this.b, this.c, this.d);
-            } catch (IOException var3) {
-               fbv.a.error("Error extracting archive", var3);
-               fbv.this.d = true;
-            }
-         }
-      }
-   }
-
-   class c implements ActionListener {
-      private final File b;
-      private final fea.a c;
-      private final fdd d;
-
-      c(final File $$0, final fea.a $$1, final fdd $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.c.a = ((fbv.a)$$0.getSource()).getByteCount();
-         if (this.c.a >= this.c.b && !fbv.this.b) {
-            try {
-               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
-               if ($$1.equals(this.d.c)) {
-                  FileUtils.copyFile(this.b, fbv.this.g);
-                  fbv.this.c = true;
-               } else {
-                  fbv.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
-                  FileUtils.deleteQuietly(this.b);
-                  fbv.this.d = true;
-               }
-            } catch (IOException var3) {
-               fbv.a.error("Error copying resourcepack file: {}", var3.getMessage());
-               fbv.this.d = true;
-            }
-         }
-      }
+   static final class a {
+      int a;
+      int b;
    }
 }

@@ -1,21 +1,46 @@
-public class gjv extends glp<cfk, fva<cfk>> {
-   private static final akr a = akr.b("textures/entity/fish/cod.png");
+import org.joml.Matrix4f;
 
-   public gjv(gkj.a $$0) {
-      super($$0, new fva<>($$0.a(fyj.B)), 0.3F);
+public class gjv<T extends dsx> implements gjc<T> {
+   public static final alb a = alb.b("textures/environment/end_sky.png");
+   public static final alb b = alb.b("textures/entity/end_portal.png");
+
+   public gjv(gjd.a $$0) {
    }
 
-   public akr a(cfk $$0) {
-      return a;
+   public void a(T $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
    }
 
-   protected void a(cfk $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * ayo.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.bf()) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   private void a(T $$0, Matrix4f $$1, fcy $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jj.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jj.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jj.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jj.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jj.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jj.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, fcy $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jj $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7);
+         $$2.a($$1, $$4, $$5, $$8);
+         $$2.a($$1, $$4, $$6, $$9);
+         $$2.a($$1, $$3, $$6, $$10);
       }
+   }
+
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected ghe d() {
+      return ghe.u();
    }
 }

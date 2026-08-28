@@ -1,28 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+public class bwa implements bxl {
+   private final je a;
+   private final eye b;
 
-public class bwa {
-   private static jd a(btp $$0, jd $$1) {
-      ayw $$2 = $$0.dO().z;
-      return $$1.b(a($$2), 0, a($$2));
+   public bwa(je $$0) {
+      this.a = $$0.j();
+      this.b = eye.b($$0);
    }
 
-   private static int a(ayw $$0) {
-      return $$0.a(3) - 1;
+   public bwa(eye $$0) {
+      this.a = je.a((jx)$$0);
+      this.b = $$0;
    }
 
-   public static <E extends btp> bws<E> a(ccs<jd> $$0, int $$1, float $$2) {
-      return byu.a(
-         (Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(ccs.o), $$3.c(ccs.m), $$3.a(ccs.n))
-               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
-                     jd $$7 = $$3.b($$3x);
-                     boolean $$8 = $$7.a($$5x.do(), (double)$$1);
-                     if (!$$8) {
-                        bvj.a($$5x, a($$5x, $$7), $$2, $$1);
-                     }
+   @Override
+   public eye a() {
+      return this.b;
+   }
 
-                     return true;
-                  }))
-      );
+   @Override
+   public je b() {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(buf $$0) {
+      return true;
+   }
+
+   @Override
+   public String toString() {
+      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
    }
 }

@@ -1,46 +1,56 @@
-public class gop extends gov<chl, fwd<chl>> {
-   private static final akr[] a = new akr[]{
-      akr.b("textures/entity/llama/decor/white.png"),
-      akr.b("textures/entity/llama/decor/orange.png"),
-      akr.b("textures/entity/llama/decor/magenta.png"),
-      akr.b("textures/entity/llama/decor/light_blue.png"),
-      akr.b("textures/entity/llama/decor/yellow.png"),
-      akr.b("textures/entity/llama/decor/lime.png"),
-      akr.b("textures/entity/llama/decor/pink.png"),
-      akr.b("textures/entity/llama/decor/gray.png"),
-      akr.b("textures/entity/llama/decor/light_gray.png"),
-      akr.b("textures/entity/llama/decor/cyan.png"),
-      akr.b("textures/entity/llama/decor/purple.png"),
-      akr.b("textures/entity/llama/decor/blue.png"),
-      akr.b("textures/entity/llama/decor/brown.png"),
-      akr.b("textures/entity/llama/decor/green.png"),
-      akr.b("textures/entity/llama/decor/red.png"),
-      akr.b("textures/entity/llama/decor/black.png")
-   };
-   private static final akr b = akr.b("textures/entity/llama/decor/trader_llama.png");
-   private final fwd<chl> c;
+public class gop extends gny<cgq, gul, fyo> {
+   private static final alb a = alb.b("textures/entity/fish/salmon.png");
+   private final fyo b;
+   private final fyo k;
+   private final fyo l;
 
-   public gop(gmf<chl, fwd<chl>> $$0, fyg $$1) {
-      super($$0);
-      this.c = new fwd<>($$1.a(fyj.az));
+   public gop(gms.a $$0) {
+      super($$0, new fyo($$0.a(gaa.bZ)), 0.4F);
+      this.b = new fyo($$0.a(gaa.ca));
+      this.k = new fyo($$0.a(gaa.bZ));
+      this.l = new fyo($$0.a(gaa.cb));
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, chl $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cti $$10 = $$3.gw();
-      akr $$11;
-      if ($$10 != null) {
-         $$11 = a[$$10.a()];
-      } else {
-         if (!$$3.gn()) {
-            return;
-         }
+   public void a(cgq $$0, gul $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gx();
+   }
 
-         $$11 = b;
+   public alb a(gul $$0) {
+      return a;
+   }
+
+   public gul c() {
+      return new gul();
+   }
+
+   protected void a(gul $$0, fcu $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 1.0F;
+      float $$5 = 1.0F;
+      if (!$$0.af) {
+         $$4 = 1.3F;
+         $$5 = 1.7F;
       }
 
-      this.c().a(this.c);
-      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
-      fbm $$14 = $$1.getBuffer(gfh.e($$11));
-      this.c.a($$0, $$14, $$2, gqc.d);
+      float $$6 = $$4 * 4.3F * azc.a($$5 * 0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$6));
+      $$1.a(0.0F, 0.0F, -0.4F);
+      if (!$$0.af) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
+   }
+
+   public void a(gul $$0, fcu $$1, ggv $$2, int $$3) {
+      if ($$0.a == cgq.a.a) {
+         this.h = this.b;
+      } else if ($$0.a == cgq.a.c) {
+         this.h = this.l;
+      } else {
+         this.h = this.k;
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

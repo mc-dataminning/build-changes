@@ -1,32 +1,12 @@
-import javax.annotation.Nullable;
-
-public class aet implements zg<abu> {
-   public static final yx<vw, aet> a = zg.a(aet::a, aet::new);
-   private final int b;
-
-   public aet(bsr $$0) {
-      this.b = $$0.an();
-   }
-
-   private aet(vw $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
-   }
+public record aet(xd b) implements zk<abz> {
+   public static final zb<wo, aet> a = zb.a(xf.d, aet::b, aet::new);
 
    @Override
-   public zi<aet> a() {
-      return agg.aw;
+   public zm<aet> a() {
+      return ago.ar;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
-   }
-
-   @Nullable
-   public bsr a(dcw $$0) {
-      return $$0.a(this.b);
    }
 }

@@ -1,4 +1,8 @@
-public interface atu extends aue, AutoCloseable {
-   @Override
-   void close();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface atu {
 }

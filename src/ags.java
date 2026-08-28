@@ -1,20 +1,29 @@
-public record ags(float b) implements zg<agi> {
-   public static final yx<vw, ags> a = zg.a(ags::a, ags::new);
+public class ags implements zk<agq> {
+   public static final zb<wa, ags> a = zk.a(ags::a, ags::new);
+   private final int b;
 
-   private ags(vw $$0) {
-      this($$0.readFloat());
+   public ags(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private ags(wa $$0) {
+      this.b = $$0.l();
+   }
+
+   private void a(wa $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zi<ags> a() {
-      return agg.bn;
+   public zm<ags> a() {
+      return ago.bg;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

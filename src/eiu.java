@@ -1,38 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eiu extends ejc {
-   public static final MapCodec<eiu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eiu::new)
-   );
-   private final double c;
-   private final int d;
-   private final int e;
+public class eiu extends eiv {
+   public static final eiu a = new eiu(eaq.a(0));
+   public static final MapCodec<eiu> b = eaq.a.fieldOf("value").xmap(eiu::new, eiu::b);
+   private final eaq d;
 
-   private eiu(double $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public static eiu a(eaq $$0) {
+      return new eiu($$0);
    }
 
-   public static eiu a(double $$0, int $$1, int $$2) {
-      return new eiu($$0, $$1, $$2);
+   private eiu(eaq $$0) {
+      this.d = $$0;
+   }
+
+   public eaq b() {
+      return this.d;
    }
 
    @Override
-   protected int a(ayw $$0, jd $$1) {
-      double $$2 = ddw.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
-      return $$2 < this.c ? this.d : this.e;
+   public int a(azk $$0, eat $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public eiz<?> b() {
-      return eiz.h;
+   public eiw<?> a() {
+      return eiw.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

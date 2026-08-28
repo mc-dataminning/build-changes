@@ -1,7 +1,20 @@
-import java.util.List;
+public record ajz(aka b) implements zk<ajy> {
+   public static final zb<wa, ajz> a = zk.a(ajz::a, ajz::new);
 
-public interface ajz {
-   void a(ajw<?> var1);
+   private ajz(wa $$0) {
+      this($$0.a(aka.a));
+   }
 
-   void a(List<aka.c<?>> var1);
+   private void a(wa $$0) {
+      $$0.a(aka.a, this.b);
+   }
+
+   @Override
+   public zm<ajz> a() {
+      return akd.a;
+   }
+
+   public void a(ajy $$0) {
+      $$0.a(this);
+   }
 }

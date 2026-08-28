@@ -1,69 +1,101 @@
-public class adn implements zg<abu> {
-   public static final yx<wk, adn> a = zg.a(adn::a, adn::new);
-   private final int b;
-   private final dbv c;
-   private final int d;
-   private final int e;
-   private final boolean f;
-   private final boolean g;
+public class adn implements zk<abz> {
+   public static final zb<wo, adn> a = zk.a(adn::a, adn::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final int i;
+   private final boolean j;
+   private final ll k;
 
-   public adn(int $$0, dbv $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+   public <T extends ll> adn(T $$0, boolean $$1, double $$2, double $$3, double $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      this.k = $$0;
+      this.j = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+      this.f = $$6;
+      this.g = $$7;
+      this.h = $$8;
+      this.i = $$9;
    }
 
-   private adn(wk $$0) {
-      this.b = $$0.l();
-      this.c = dbv.b.decode($$0);
-      this.d = $$0.l();
-      this.e = $$0.l();
-      this.f = $$0.readBoolean();
-      this.g = $$0.readBoolean();
+   private adn(wo $$0) {
+      this.j = $$0.readBoolean();
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readFloat();
+      this.h = $$0.readFloat();
+      this.i = $$0.readInt();
+      this.k = ln.bg.decode($$0);
    }
 
-   private void a(wk $$0) {
-      $$0.c(this.b);
-      dbv.b.encode($$0, this.c);
-      $$0.c(this.d);
-      $$0.c(this.e);
+   private void a(wo $$0) {
+      $$0.a(this.j);
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
       $$0.a(this.f);
       $$0.a(this.g);
+      $$0.a(this.h);
+      $$0.q(this.i);
+      ln.bg.encode($$0, this.k);
    }
 
    @Override
-   public zi<adn> a() {
-      return agg.Q;
+   public zm<adn> a() {
+      return ago.M;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
+      return this.j;
+   }
+
+   public double e() {
       return this.b;
    }
 
-   public dbv e() {
+   public double f() {
       return this.c;
    }
 
-   public int f() {
+   public double g() {
       return this.d;
    }
 
-   public int g() {
+   public float h() {
       return this.e;
    }
 
-   public boolean h() {
+   public float i() {
       return this.f;
    }
 
-   public boolean i() {
+   public float j() {
       return this.g;
+   }
+
+   public float k() {
+      return this.h;
+   }
+
+   public int l() {
+      return this.i;
+   }
+
+   public ll m() {
+      return this.k;
    }
 }

@@ -1,93 +1,78 @@
-import java.util.UUID;
+public class age implements zk<abz> {
+   public static final zb<wa, age> a = zk.a(age::a, age::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final byte f;
+   private final byte g;
+   private final boolean h;
 
-public class age {
-   private static final String[] a = new String[]{
-      "Slim",
-      "Far",
-      "River",
-      "Silly",
-      "Fat",
-      "Thin",
-      "Fish",
-      "Bat",
-      "Dark",
-      "Oak",
-      "Sly",
-      "Bush",
-      "Zen",
-      "Bark",
-      "Cry",
-      "Slack",
-      "Soup",
-      "Grim",
-      "Hook",
-      "Dirt",
-      "Mud",
-      "Sad",
-      "Hard",
-      "Crook",
-      "Sneak",
-      "Stink",
-      "Weird",
-      "Fire",
-      "Soot",
-      "Soft",
-      "Rough",
-      "Cling",
-      "Scar"
-   };
-   private static final String[] b = new String[]{
-      "Fox",
-      "Tail",
-      "Jaw",
-      "Whisper",
-      "Twig",
-      "Root",
-      "Finder",
-      "Nose",
-      "Brow",
-      "Blade",
-      "Fry",
-      "Seek",
-      "Wart",
-      "Tooth",
-      "Foot",
-      "Leaf",
-      "Stone",
-      "Fall",
-      "Face",
-      "Tongue",
-      "Voice",
-      "Lip",
-      "Mouth",
-      "Snail",
-      "Toe",
-      "Ear",
-      "Hair",
-      "Beard",
-      "Shirt",
-      "Fist"
-   };
-
-   public static String a(bsr $$0) {
-      if ($$0 instanceof cmx) {
-         return $$0.ah().getString();
-      } else {
-         wz $$1 = $$0.aj();
-         return $$1 != null ? $$1.getString() : a($$0.cz());
-      }
+   public age(btj $$0) {
+      this.b = $$0.ap();
+      eye $$1 = $$0.dr();
+      this.c = $$1.d;
+      this.d = $$1.e;
+      this.e = $$1.f;
+      this.f = (byte)((int)($$0.dI() * 256.0F / 360.0F));
+      this.g = (byte)((int)($$0.dK() * 256.0F / 360.0F));
+      this.h = $$0.aH();
    }
 
-   public static String a(UUID $$0) {
-      ayw $$1 = b($$0);
-      return a($$1, a) + a($$1, b);
+   private age(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readByte();
+      this.g = $$0.readByte();
+      this.h = $$0.readBoolean();
    }
 
-   private static String a(ayw $$0, String[] $$1) {
-      return ad.a($$1, $$0);
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.l(this.f);
+      $$0.l(this.g);
+      $$0.a(this.h);
    }
 
-   private static ayw b(UUID $$0) {
-      return ayw.a((long)($$0.hashCode() >> 2));
+   @Override
+   public zm<age> a() {
+      return ago.ba;
+   }
+
+   public void a(abz $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public byte h() {
+      return this.f;
+   }
+
+   public byte i() {
+      return this.g;
+   }
+
+   public boolean j() {
+      return this.h;
    }
 }

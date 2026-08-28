@@ -1,195 +1,49 @@
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-public abstract class fis<E extends fis.a<E>> extends fih<E> {
-   public fis(fgo $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
-   }
+public class fis {
+   public static void a(fxv $$0, fiq $$1, long $$2, float $$3, Vector3f $$4) {
+      float $$5 = a($$1, $$2);
 
-   @Nullable
-   @Override
-   public fhw a(fmo $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (!($$0 instanceof fmo.a $$1)) {
-         return super.a($$0);
-      } else {
-         E $$2 = this.j();
-         if ($$1.b().a() == fmp.a && $$2 != null) {
-            return fhw.a(this, $$2.a($$0));
-         } else {
-            int $$3 = -1;
-            fmq $$4 = $$1.b();
-            if ($$2 != null) {
-               $$3 = $$2.aK_().indexOf($$2.aN_());
-            }
-
-            if ($$3 == -1) {
-               switch ($$4) {
-                  case c:
-                     $$3 = Integer.MAX_VALUE;
-                     $$4 = fmq.b;
-                     break;
-                  case d:
-                     $$3 = 0;
-                     $$4 = fmq.b;
-                     break;
-                  default:
-                     $$3 = 0;
-               }
-            }
-
-            E $$5 = $$2;
-
-            fhw $$6;
-            do {
-               $$5 = this.a($$4, $$0x -> !$$0x.aK_().isEmpty(), $$5);
-               if ($$5 == null) {
-                  return null;
+      for (Entry<String, List<fip>> $$6 : $$1.c().entrySet()) {
+         Optional<gab> $$7 = $$0.a($$6.getKey());
+         List<fip> $$8 = $$6.getValue();
+         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
+               fir[] $$5x = $$4xx.b();
+               int $$6x = Math.max(0, azc.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
+               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
+               fir $$8x = $$5x[$$6x];
+               fir $$9 = $$5x[$$7x];
+               float $$10 = $$5 - $$8x.a();
+               float $$11;
+               if ($$7x != $$6x) {
+                  $$11 = azc.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
+               } else {
+                  $$11 = 0.0F;
                }
 
-               $$6 = $$5.a($$1, $$3);
-            } while ($$6 == null);
-
-            return fhw.a(this, $$6);
-         }
+               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
+               $$4xx.a().apply($$4x, $$4);
+            }));
       }
    }
 
-   @Override
-   public void a(@Nullable fki $$0) {
-      if (this.j() != $$0) {
-         super.a($$0);
-         if ($$0 == null) {
-            this.a(null);
-         }
-      }
+   private static float a(fiq $$0, long $$1) {
+      float $$2 = (float)$$1 / 1000.0F;
+      return $$0.b() ? $$2 % $$0.a() : $$2;
    }
 
-   @Override
-   public fmg.a u() {
-      return this.aO_() ? fmg.a.c : super.u();
+   public static Vector3f a(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0, -$$1, $$2);
    }
 
-   @Override
-   protected boolean e(int $$0) {
-      return false;
+   public static Vector3f b(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
    }
 
-   @Override
-   public void a(fmi $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         $$1.a($$0.a());
-         this.a($$0, $$1);
-      } else {
-         E $$2 = this.j();
-         if ($$2 != null) {
-            $$2.a($$0.a());
-            this.a($$0, $$2);
-         }
-      }
-
-      $$0.a(fmh.d, wz.c("narration.component_list.usage"));
-   }
-
-   public abstract static class a<E extends fis.a<E>> extends fih.a<E> implements fkh {
-      @Nullable
-      private fki a;
-      @Nullable
-      private fmg b;
-      private boolean c;
-
-      @Override
-      public boolean aM_() {
-         return this.c;
-      }
-
-      @Override
-      public void b_(boolean $$0) {
-         this.c = $$0;
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return fkh.super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(@Nullable fki $$0) {
-         if (this.a != null) {
-            this.a.a(false);
-         }
-
-         if ($$0 != null) {
-            $$0.a(true);
-         }
-
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public fki aN_() {
-         return this.a;
-      }
-
-      @Nullable
-      public fhw a(fmo $$0, int $$1) {
-         if (this.aK_().isEmpty()) {
-            return null;
-         } else {
-            fhw $$2 = this.aK_().get(Math.min($$1, this.aK_().size() - 1)).a($$0);
-            return fhw.a(this, $$2);
-         }
-      }
-
-      @Nullable
-      @Override
-      public fhw a(fmo $$0) {
-         if ($$0 instanceof fmo.a $$1) {
-            int $$2 = switch ($$1.b()) {
-               case c -> -1;
-               case d -> 1;
-               case a, b -> 0;
-            };
-            if ($$2 == 0) {
-               return null;
-            }
-
-            int $$3 = ayo.a($$2 + this.aK_().indexOf(this.aN_()), 0, this.aK_().size() - 1);
-
-            for (int $$4 = $$3; $$4 >= 0 && $$4 < this.aK_().size(); $$4 += $$2) {
-               fki $$5 = this.aK_().get($$4);
-               fhw $$6 = $$5.a($$0);
-               if ($$6 != null) {
-                  return fhw.a(this, $$6);
-               }
-            }
-         }
-
-         return fkh.super.a($$0);
-      }
-
-      public abstract List<? extends fmg> b();
-
-      void a(fmi $$0) {
-         List<? extends fmg> $$1 = this.b();
-         fod.b $$2 = fod.a($$1, this.b);
-         if ($$2 != null) {
-            if ($$2.c.a()) {
-               this.b = $$2.a;
-            }
-
-            if ($$1.size() > 1) {
-               $$0.a(fmh.b, wz.a("narrator.position.object_list", $$2.b + 1, $$1.size()));
-               if ($$2.c == fmg.a.c) {
-                  $$0.a(fmh.d, wz.c("narration.component_list.usage"));
-               }
-            }
-
-            $$2.a.b($$0.a());
-         }
-      }
+   public static Vector3f a(double $$0, double $$1, double $$2) {
+      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
    }
 }

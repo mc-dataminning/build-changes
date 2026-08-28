@@ -1,178 +1,109 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class ess extends ete {
-   public static final MapCodec<ess> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(evr.a.fieldOf("source").forGetter($$0x -> $$0x.b), ess.b.a.listOf().fieldOf("ops").forGetter($$0x -> $$0x.c)))
+public class ess {
+   private static final Codec<ess> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               exb.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               exb.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
             .apply($$0, ess::new)
    );
-   private final evq b;
-   private final List<ess.b> c;
+   public static final Codec<ess> a = Codec.either(Codec.INT, b).xmap($$0 -> (ess)$$0.map(ess::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final exa c;
+   @Nullable
+   private final exa d;
+   private final ess.b e;
+   private final ess.a f;
 
-   ess(List<evc> $$0, evq $$1, List<ess.b> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+   public Set<evm<?>> a() {
+      Builder<evm<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   @Override
-   public etg<ess> b() {
-      return eth.C;
+   private ess(Optional<exa> $$0, Optional<exa> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   @Override
-   public Set<euk<?>> a() {
-      return this.b.b();
-   }
-
-   @Override
-   public cuq a(cuq $$0, err $$1) {
-      uy $$2 = this.b.a($$1);
-      if ($$2 == null) {
-         return $$0;
+   private ess(@Nullable exa $$0, @Nullable exa $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
       } else {
-         MutableObject<ub> $$3 = new MutableObject();
-         Supplier<uy> $$4 = () -> {
-            if ($$3.getValue() == null) {
-               $$3.setValue($$0.a(kq.b, cxh.a).c());
-            }
-
-            return (uy)$$3.getValue();
-         };
-         this.c.forEach($$2x -> $$2x.a($$4, $$2));
-         ub $$5 = (ub)$$3.getValue();
-         if ($$5 != null) {
-            cxh.a(kq.b, $$0, $$5);
-         }
-
-         return $$0;
+         this.e = ($$2, $$3) -> azc.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   @Deprecated
-   public static ess.a a(evq $$0) {
-      return new ess.a($$0);
+   public static ess a(int $$0) {
+      ewx $$1 = ewx.a((float)$$0);
+      return new ess(Optional.of($$1), Optional.of($$1));
    }
 
-   public static ess.a a(err.b $$0) {
-      return new ess.a(evo.a($$0));
+   public static ess a(int $$0, int $$1) {
+      return new ess(Optional.of(ewx.a((float)$$0)), Optional.of(ewx.a((float)$$1)));
    }
 
-   public static class a extends ete.a<ess.a> {
-      private final evq a;
-      private final List<ess.b> b = Lists.newArrayList();
-
-      a(evq $$0) {
-         this.a = $$0;
-      }
-
-      public ess.a a(String $$0, String $$1, ess.c $$2) {
-         try {
-            this.b.add(new ess.b(fl.g.a($$0), fl.g.a($$1), $$2));
-            return this;
-         } catch (CommandSyntaxException var5) {
-            throw new IllegalArgumentException(var5);
-         }
-      }
-
-      public ess.a a(String $$0, String $$1) {
-         return this.a($$0, $$1, ess.c.a);
-      }
-
-      protected ess.a a() {
-         return this;
-      }
-
-      @Override
-      public etf b() {
-         return new ess(this.g(), this.a, this.b);
-      }
+   public static ess b(int $$0) {
+      return new ess(Optional.of(ewx.a((float)$$0)), Optional.empty());
    }
 
-   static record b(fl.g b, fl.g c, ess.c d) {
-      public static final Codec<ess.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fl.g.a.fieldOf("source").forGetter(ess.b::a), fl.g.a.fieldOf("target").forGetter(ess.b::b), ess.c.d.fieldOf("op").forGetter(ess.b::c))
-               .apply($$0, ess.b::new)
-      );
-
-      public void a(Supplier<uy> $$0, uy $$1) {
-         try {
-            List<uy> $$2 = this.b.a($$1);
-            if (!$$2.isEmpty()) {
-               this.d.a($$0.get(), this.c, $$2);
-            }
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      public fl.g a() {
-         return this.b;
-      }
-
-      public fl.g b() {
-         return this.c;
-      }
-
-      public ess.c c() {
-         return this.d;
-      }
+   public static ess c(int $$0) {
+      return new ess(Optional.empty(), Optional.of(ewx.a((float)$$0)));
    }
 
-   public static enum c implements azk {
-      a("replace") {
-         @Override
-         public void a(uy $$0, fl.g $$1, List<uy> $$2) throws CommandSyntaxException {
-            $$1.a($$0, (uy)Iterables.getLast($$2));
-         }
-      },
-      b("append") {
-         @Override
-         public void a(uy $$0, fl.g $$1, List<uy> $$2) throws CommandSyntaxException {
-            List<uy> $$3 = $$1.a($$0, uh::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof uh) {
-                  $$2.forEach($$1xx -> ((uh)$$1x).add($$1xx.d()));
-               }
-            });
-         }
-      },
-      c("merge") {
-         @Override
-         public void a(uy $$0, fl.g $$1, List<uy> $$2) throws CommandSyntaxException {
-            List<uy> $$3 = $$1.a($$0, ub::new);
-            $$3.forEach($$1x -> {
-               if ($$1x instanceof ub) {
-                  $$2.forEach($$1xx -> {
-                     if ($$1xx instanceof ub) {
-                        ((ub)$$1x).a((ub)$$1xx);
-                     }
-                  });
-               }
-            });
-         }
-      };
+   public int a(est $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
 
-      public static final Codec<ess.c> d = azk.a(ess.c::values);
-      private final String e;
+   public boolean b(est $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
 
-      public abstract void a(uy var1, fl.g var2, List<uy> var3) throws CommandSyntaxException;
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof ewx $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
 
-      c(final String $$0) {
-         this.e = $$0;
-      }
+   @FunctionalInterface
+   interface a {
+      boolean test(est var1, int var2);
+   }
 
-      @Override
-      public String c() {
-         return this.e;
-      }
+   @FunctionalInterface
+   interface b {
+      int apply(est var1, int var2);
    }
 }

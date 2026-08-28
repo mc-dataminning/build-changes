@@ -1,18 +1,18 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class eoa implements eob {
-   public static final eoa a = new eoa();
-   public static final MapCodec<eoa> b = MapCodec.unit(a);
+public enum eoa implements azy {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   @Nullable
-   @Override
-   public ub a(ayw $$0, @Nullable ub $$1) {
-      return $$1;
+   public static Codec<eoa> c = azy.b(eoa::values);
+   private final String d;
+
+   private eoa(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public eoc<?> a() {
-      return eoc.b;
+   public String c() {
+      return this.d;
    }
 }

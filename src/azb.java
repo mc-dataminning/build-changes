@@ -1,54 +1,49 @@
-import com.mojang.authlib.yggdrasil.ServicesKeyInfo;
-import com.mojang.authlib.yggdrasil.ServicesKeySet;
-import com.mojang.authlib.yggdrasil.ServicesKeyType;
-import com.mojang.logging.LogUtils;
-import java.security.PublicKey;
-import java.security.Signature;
-import java.security.SignatureException;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.ObjectUtils;
 
-public interface azb {
-   azb a = ($$0, $$1) -> true;
-   Logger b = LogUtils.getLogger();
-
-   boolean validate(aza var1, byte[] var2);
-
-   default boolean a(byte[] $$0, byte[] $$1) {
-      return this.validate($$1x -> $$1x.update($$0), $$1);
+public record azb(azb.a a, String b) {
+   public static azb a(String $$0, Supplier<String> $$1, String $$2, Class<?> $$3) {
+      String $$4 = $$1.get();
+      if (!$$0.equals($$4)) {
+         return new azb(azb.a.c, $$2 + " brand changed to '" + $$4 + "'");
+      } else {
+         return $$3.getSigners() == null
+            ? new azb(azb.a.b, $$2 + " jar signature invalidated")
+            : new azb(azb.a.a, $$2 + " jar signature and brand is untouched");
+      }
    }
 
-   private static boolean a(aza $$0, byte[] $$1, Signature $$2) throws SignatureException {
-      $$0.update($$2::update);
-      return $$2.verify($$1);
+   public boolean a() {
+      return this.a.e;
    }
 
-   static azb a(PublicKey $$0, String $$1) {
-      return ($$2, $$3) -> {
-         try {
-            Signature $$4 = Signature.getInstance($$1);
-            $$4.initVerify($$0);
-            return a($$2, $$3, $$4);
-         } catch (Exception var5) {
-            b.error("Failed to verify signature", var5);
-            return false;
-         }
-      };
+   public azb a(azb $$0) {
+      return new azb((azb.a)ObjectUtils.max(new azb.a[]{this.a, $$0.a}), this.b + "; " + $$0.b);
    }
 
-   @Nullable
-   static azb a(ServicesKeySet $$0, ServicesKeyType $$1) {
-      Collection<ServicesKeyInfo> $$2 = $$0.keys($$1);
-      return $$2.isEmpty() ? null : ($$1x, $$2x) -> $$2.stream().anyMatch($$2xx -> {
-            Signature $$3 = $$2xx.signature();
+   public String b() {
+      return this.a.d + " " + this.b;
+   }
 
-            try {
-               return a($$1x, $$2x, $$3);
-            } catch (SignatureException var5) {
-               b.error("Failed to verify Services signature", var5);
-               return false;
-            }
-         });
+   public azb.a c() {
+      return this.a;
+   }
+
+   public String d() {
+      return this.b;
+   }
+
+   public static enum a {
+      a("Probably not.", false),
+      b("Very likely;", true),
+      c("Definitely;", true);
+
+      final String d;
+      final boolean e;
+
+      private a(final String $$0, final boolean $$1) {
+         this.d = $$0;
+         this.e = $$1;
+      }
    }
 }

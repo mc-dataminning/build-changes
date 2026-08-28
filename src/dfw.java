@@ -1,114 +1,91 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Optional;
 
-public class dfw extends dju implements dgb, dna {
-   public static final MapCodec<dfw> a = b(dfw::new);
-   private static final dtt f = dts.C;
-   private static final int g = 6;
-   protected static final exv b = dfy.a(5.0, 0.0, 9.0, 11.0, 16.0, 15.0);
-   protected static final exv c = dfy.a(5.0, 0.0, 1.0, 11.0, 16.0, 7.0);
-   protected static final exv d = dfy.a(1.0, 0.0, 5.0, 7.0, 16.0, 11.0);
-   protected static final exv e = dfy.a(9.0, 0.0, 5.0, 15.0, 16.0, 11.0);
+public class dfw extends dhe {
+   public static final MapCodec<dfw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ala.a(lv.f).fieldOf("fruit").forGetter($$0x -> $$0x.e),
+               ala.a(lv.f).fieldOf("stem").forGetter($$0x -> $$0x.f),
+               ala.a(lv.K).fieldOf("seed").forGetter($$0x -> $$0x.g),
+               u()
+            )
+            .apply($$0, dfw::new)
+   );
+   public static final duu b = dkr.aE;
+   protected static final float c = 2.0F;
+   private static final Map<jj, eyx> d = Maps.newEnumMap(
+      ImmutableMap.of(
+         jj.d,
+         dgv.a(6.0, 0.0, 6.0, 10.0, 10.0, 16.0),
+         jj.e,
+         dgv.a(0.0, 0.0, 6.0, 10.0, 10.0, 10.0),
+         jj.c,
+         dgv.a(6.0, 0.0, 0.0, 10.0, 10.0, 10.0),
+         jj.f,
+         dgv.a(6.0, 0.0, 6.0, 16.0, 10.0, 10.0)
+      )
+   );
+   private final ala<dgv> e;
+   private final ala<dgv> f;
+   private final ala<cvg> g;
 
    @Override
    public MapCodec<dfw> a() {
       return a;
    }
 
-   protected dfw(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(f, Boolean.valueOf(false)).a(aE, ji.c));
+   protected dfw(ala<dgv> $$0, ala<dgv> $$1, ala<cvg> $$2, dtz.d $$3) {
+      super($$3);
+      this.l(this.E.b().b(b, jj.c));
+      this.f = $$0;
+      this.e = $$1;
+      this.g = $$2;
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      switch ((ji)$$0.c(aE)) {
-         case d:
-            return c;
-         case c:
-         default:
-            return b;
-         case e:
-            return e;
-         case f:
-            return d;
-      }
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return d.get($$0.c(b));
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(f, aE);
-   }
-
-   @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(f) ? epf.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      jd $$3 = $$2.e();
-      dtc $$4 = $$1.a_($$3);
-      dtc $$5 = $$1.a_($$2.d());
-      return ($$4.a(this) || $$4.a(awe.bz)) && ($$5.a(this) || $$5.a(dga.sD));
-   }
-
-   protected static boolean a(dcx $$0, jd $$1, epe $$2, ji $$3) {
-      dtc $$4 = dga.sE.o().a(f, Boolean.valueOf($$2.a(epf.c))).a(aE, $$3);
-      return $$0.a($$1, $$4, 3);
-   }
-
-   @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if (($$1 == ji.a || $$1 == ji.b) && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      if ($$0.c(f)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if (!$$2.a(this.e) && $$1 == $$0.c(b)) {
+         Optional<dgv> $$6 = $$3.F_().d(lv.f).e(this.f);
+         if ($$6.isPresent()) {
+            return $$6.get().o().c(dos.c, Integer.valueOf(7));
+         }
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
-      }
+   protected boolean b(dua $$0, dcx $$1, je $$2) {
+      return $$0.a(dgx.cC);
    }
 
    @Override
-   public boolean b(dcz $$0, jd $$1, dtc $$2) {
-      Optional<jd> $$3 = l.a($$0, $$1, $$2.b(), ji.b, dga.sD);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jd $$4 = $$3.get().d();
-         dtc $$5 = $$0.a_($$4);
-         return dfv.a($$0, $$4, $$5);
-      }
+   public cvl a(ddv $$0, je $$1, dua $$2) {
+      return new cvl((ddr)DataFixUtils.orElse($$0.F_().d(lv.K).e(this.g), this));
    }
 
    @Override
-   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
-      return true;
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
-      Optional<jd> $$4 = l.a($$0, $$2, $$3.b(), ji.b, dga.sD);
-      if (!$$4.isEmpty()) {
-         jd $$5 = $$4.get();
-         jd $$6 = $$5.d();
-         ji $$7 = $$3.c(aE);
-         a($$0, $$5, $$0.b_($$5), $$7);
-         dfv.a($$0, $$6, $$0.b_($$6), $$7);
-      }
+   protected dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   public cuq a(dcz $$0, jd $$1, dtc $$2) {
-      return new cuq(dga.sD);
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b);
    }
 }

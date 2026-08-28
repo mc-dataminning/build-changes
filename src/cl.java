@@ -8,12 +8,12 @@ public record cl(dh.d c, dh.d d) implements dw<Integer> {
    );
 
    @Override
-   public kp<Integer> a() {
-      return kq.e;
+   public kq<Integer> a() {
+      return kr.e;
    }
 
-   public boolean a(cuq $$0, Integer $$1) {
-      return !this.c.d($$0.o() - $$1) ? false : this.d.d($$1);
+   public boolean a(cvl $$0, Integer $$1) {
+      return !this.c.d($$0.p() - $$1) ? false : this.d.d($$1);
    }
 
    public static cl a(dh.d $$0) {

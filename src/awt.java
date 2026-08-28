@@ -1,17 +1,11 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class awt {
+   public static final axi<cfz> a = a("default_spawns");
+   public static final axi<cfz> b = a("full_moon_spawns");
 
-public record awt(List<aws> b, boolean c) {
-   public static final Codec<awt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(aws.a.listOf().fieldOf("values").forGetter(awt::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(awt::b)).apply($$0, awt::new)
-   );
-
-   public List<aws> a() {
-      return this.b;
+   private awt() {
    }
 
-   public boolean b() {
-      return this.c;
+   private static axi<cfz> a(String $$0) {
+      return axi.a(lv.l, alb.b($$0));
    }
 }

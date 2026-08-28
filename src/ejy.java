@@ -1,33 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public record ejy(ejy.a b, bpf<dei.c> c) {
-   public static final Codec<ejy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ejy.a.c.fieldOf("bounding_box").forGetter(ejy::a), bpf.c(dei.c.a).fieldOf("spawns").forGetter(ejy::b)).apply($$0, ejy::new)
-   );
+public class ejy extends eju {
+   public static final MapCodec<ejy> a = ayl.l.fieldOf("chance").xmap(ejy::new, $$0 -> $$0.c);
+   private final int c;
 
-   public ejy.a a() {
-      return this.b;
+   private ejy(int $$0) {
+      this.c = $$0;
    }
 
-   public bpf<dei.c> b() {
-      return this.c;
+   public static ejy a(int $$0) {
+      return new ejy($$0);
    }
 
-   public static enum a implements azk {
-      a("piece"),
-      b("full");
+   @Override
+   protected boolean a(ejt $$0, azk $$1, je $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
 
-      public static final Codec<ejy.a> c = azk.a(ejy.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public ejw<?> b() {
+      return ejw.b;
    }
 }

@@ -1,44 +1,59 @@
-public class cwp extends cul implements cvm {
-   private static final int a = 10;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public cwp(cul.a $$0) {
-      super($$0);
+public class cwp extends cua {
+   protected static final Map<dgv, dua> a = Maps.newHashMap(
+      new Builder()
+         .put(dgx.i, dgx.kE.o())
+         .put(dgx.j, dgx.kE.o())
+         .put(dgx.l, dgx.kE.o())
+         .put(dgx.k, dgx.kE.o())
+         .put(dgx.fl, dgx.kE.o())
+         .put(dgx.sH, dgx.kE.o())
+         .build()
+   );
+
+   public cwp(cxe $$0, float $$1, float $$2, cvg.a $$3) {
+      super($$0, aws.bE, $$1, $$2, $$3);
    }
 
    @Override
-   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      if (!$$0.x_()) {
-         coh $$3 = new coh($$1, $$0, $$1.dm().a(), $$1.by().b(), $$1.dm().c());
-         $$3.a($$1, $$1.dG(), $$1.dE(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$3);
+   public brk a(cyy $$0) {
+      dds $$1 = $$0.q();
+      je $$2 = $$0.a();
+      dua $$3 = $$1.a_($$2);
+      if ($$0.k() == jj.a) {
+         return brk.e;
+      } else {
+         cnp $$4 = $$0.o();
+         dua $$5 = a.get($$3.b());
+         dua $$6 = null;
+         if ($$5 != null && $$1.a_($$2.d()).l()) {
+            $$1.a($$4, $$2, awd.wL, awe.e, 1.0F, 1.0F);
+            $$6 = $$5;
+         } else if ($$3.b() instanceof dhj && $$3.c(dhj.c)) {
+            if (!$$1.w_()) {
+               $$1.a(null, 1009, $$2, 0);
+            }
+
+            dhj.a($$0.o(), $$1, $$2, $$3);
+            $$6 = $$3.b(dhj.c, Boolean.valueOf(false));
+         }
+
+         if ($$6 != null) {
+            if (!$$1.B) {
+               $$1.a($$2, $$6, 11);
+               $$1.a(dyx.c, $$2, dyx.a.a($$4, $$6));
+               if ($$4 != null) {
+                  $$0.n().a(1, $$4, buf.d($$0.p()));
+               }
+            }
+
+            return brk.a;
+         } else {
+            return brk.e;
+         }
       }
-
-      $$0.a(null, $$1.dt(), $$1.dv(), $$1.dz(), avp.Cr, avq.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      cuq $$4 = $$1.b($$2);
-      $$1.gt().a(this, 10);
-      $$1.b(avz.c.b(this));
-      $$4.a(1, $$1);
-      return bqs.a($$4, $$0.x_());
-   }
-
-   @Override
-   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
-      ayw $$4 = $$0.E_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      exc $$8 = new exc($$5, $$6, $$7);
-      coh $$9 = new coh($$0, $$1.a(), $$1.b(), $$1.c(), $$8);
-      $$9.i($$8);
-      return $$9;
-   }
-
-   @Override
-   public void a(cnp $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cvm.a c() {
-      return cvm.a.a().a(($$0, $$1) -> did.a($$0, 1.0, exc.b)).a(6.6666665F).b(1.0F).a(1051).a();
    }
 }

@@ -1,4 +1,8 @@
-public class fcc {
-   public volatile long a;
-   public volatile long b;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@faf
+@fae
+interface fcc {
 }

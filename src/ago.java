@@ -1,20 +1,178 @@
-public record ago(String b) implements zg<agi> {
-   public static final yx<vw, ago> a = zg.a(ago::a, ago::new);
+public class ago {
+   public static final zm<acl> a = a("bundle");
+   public static final zm<ack> b = a("bundle_delimiter");
+   public static final zm<aca> c = a("add_entity");
+   public static final zm<acb> d = a("add_experience_orb");
+   public static final zm<acc> e = a("animate");
+   public static final zm<acd> f = a("award_stats");
+   public static final zm<ace> g = a("block_changed_ack");
+   public static final zm<acf> h = a("block_destruction");
+   public static final zm<acg> i = a("block_entity_data");
+   public static final zm<ach> j = a("block_event");
+   public static final zm<aci> k = a("block_update");
+   public static final zm<acj> l = a("boss_event");
+   public static final zm<acm> m = a("change_difficulty");
+   public static final zm<acn> n = a("chunk_batch_finished");
+   public static final zm<aco> o = a("chunk_batch_start");
+   public static final zm<acp> p = a("chunks_biomes");
+   public static final zm<acq> q = a("clear_titles");
+   public static final zm<acr> r = a("command_suggestions");
+   public static final zm<acs> s = a("commands");
+   public static final zm<act> t = a("container_close");
+   public static final zm<acu> u = a("container_set_content");
+   public static final zm<acv> v = a("container_set_data");
+   public static final zm<acw> w = a("container_set_slot");
+   public static final zm<acx> x = a("cooldown");
+   public static final zm<acy> y = a("custom_chat_completions");
+   public static final zm<acz> z = a("damage_event");
+   public static final zm<ada> A = a("debug_sample");
+   public static final zm<adb> B = a("delete_chat");
+   public static final zm<adc> C = a("disguised_chat");
+   public static final zm<add> D = a("entity_event");
+   public static final zm<ade> E = a("explode");
+   public static final zm<adf> F = a("forget_level_chunk");
+   public static final zm<adg> G = a("game_event");
+   public static final zm<adh> H = a("horse_screen_open");
+   public static final zm<adi> I = a("hurt_animation");
+   public static final zm<adj> J = a("initialize_border");
+   public static final zm<adl> K = a("level_chunk_with_light");
+   public static final zm<adm> L = a("level_event");
+   public static final zm<adn> M = a("level_particles");
+   public static final zm<ado> N = a("light_update");
+   public static final zm<adq> O = a("login");
+   public static final zm<adr> P = a("map_item_data");
+   public static final zm<ads> Q = a("merchant_offers");
+   public static final zm<adt.a> R = a("move_entity_pos");
+   public static final zm<adt.b> S = a("move_entity_pos_rot");
+   public static final zm<adu> T = a("move_minecart_along_track");
+   public static final zm<adt.c> U = a("move_entity_rot");
+   public static final zm<adv> V = a("move_vehicle");
+   public static final zm<adw> W = a("open_book");
+   public static final zm<adx> X = a("open_screen");
+   public static final zm<ady> Y = a("open_sign_editor");
+   public static final zm<adz> Z = a("place_ghost_recipe");
+   public static final zm<aea> aa = a("player_abilities");
+   public static final zm<aeb> ab = a("player_chat");
+   public static final zm<aec> ac = a("player_combat_end");
+   public static final zm<aed> ad = a("player_combat_enter");
+   public static final zm<aee> ae = a("player_combat_kill");
+   public static final zm<aef> af = a("player_info_remove");
+   public static final zm<aeg> ag = a("player_info_update");
+   public static final zm<aeh> ah = a("player_look_at");
+   public static final zm<aei> ai = a("player_position");
+   public static final zm<aek> aj = a("recipe");
+   public static final zm<ael> ak = a("remove_entities");
+   public static final zm<aem> al = a("remove_mob_effect");
+   public static final zm<aeo> am = a("respawn");
+   public static final zm<aep> an = a("rotate_head");
+   public static final zm<aeq> ao = a("section_blocks_update");
+   public static final zm<aer> ap = a("select_advancements_tab");
+   public static final zm<aes> aq = a("server_data");
+   public static final zm<aet> ar = a("set_action_bar_text");
+   public static final zm<aeu> as = a("set_border_center");
+   public static final zm<aev> at = a("set_border_lerp_size");
+   public static final zm<aew> au = a("set_border_size");
+   public static final zm<aex> av = a("set_border_warning_delay");
+   public static final zm<aey> aw = a("set_border_warning_distance");
+   public static final zm<aez> ax = a("set_camera");
+   public static final zm<afa> ay = a("set_chunk_cache_center");
+   public static final zm<afb> az = a("set_chunk_cache_radius");
+   public static final zm<afd> aA = a("set_default_spawn_position");
+   public static final zm<afe> aB = a("set_display_objective");
+   public static final zm<aff> aC = a("set_entity_data");
+   public static final zm<afg> aD = a("set_entity_link");
+   public static final zm<afh> aE = a("set_entity_motion");
+   public static final zm<afi> aF = a("set_equipment");
+   public static final zm<afj> aG = a("set_experience");
+   public static final zm<afk> aH = a("set_health");
+   public static final zm<afl> aI = a("set_held_slot");
+   public static final zm<afm> aJ = a("set_objective");
+   public static final zm<afn> aK = a("set_passengers");
+   public static final zm<afp> aL = a("set_player_team");
+   public static final zm<afq> aM = a("set_score");
+   public static final zm<afr> aN = a("set_simulation_distance");
+   public static final zm<afs> aO = a("set_subtitle_text");
+   public static final zm<aft> aP = a("set_time");
+   public static final zm<afu> aQ = a("set_title_text");
+   public static final zm<afv> aR = a("set_titles_animation");
+   public static final zm<afw> aS = a("sound_entity");
+   public static final zm<afx> aT = a("sound");
+   public static final zm<afy> aU = a("start_configuration");
+   public static final zm<afz> aV = a("stop_sound");
+   public static final zm<aga> aW = a("system_chat");
+   public static final zm<agb> aX = a("tab_list");
+   public static final zm<agc> aY = a("tag_query");
+   public static final zm<agd> aZ = a("take_item_entity");
+   public static final zm<age> ba = a("teleport_entity");
+   public static final zm<agh> bb = a("update_advancements");
+   public static final zm<agi> bc = a("update_attributes");
+   public static final zm<agj> bd = a("update_mob_effect");
+   public static final zm<agk> be = a("update_recipes");
+   public static final zm<aej> bf = a("projectile_power");
+   public static final zm<ags> bg = b("accept_teleportation");
+   public static final zm<agt> bh = b("block_entity_tag_query");
+   public static final zm<aic> bi = b("bundle_item_selected");
+   public static final zm<agu> bj = b("change_difficulty");
+   public static final zm<agv> bk = b("chat_ack");
+   public static final zm<agw> bl = b("chat_command");
+   public static final zm<agx> bm = b("chat_command_signed");
+   public static final zm<agy> bn = b("chat");
+   public static final zm<agz> bo = b("chat_session_update");
+   public static final zm<aha> bp = b("chunk_batch_received");
+   public static final zm<ahb> bq = b("client_command");
+   public static final zm<ahc> br = b("client_tick_end");
+   public static final zm<ahd> bs = b("command_suggestion");
+   public static final zm<ahe> bt = b("configuration_acknowledged");
+   public static final zm<ahf> bu = b("container_button_click");
+   public static final zm<ahg> bv = b("container_click");
+   public static final zm<ahh> bw = b("container_close");
+   public static final zm<ahi> bx = b("container_slot_state_changed");
+   public static final zm<ahj> by = b("debug_sample_subscription");
+   public static final zm<ahk> bz = b("edit_book");
+   public static final zm<ahl> bA = b("entity_tag_query");
+   public static final zm<ahm> bB = b("interact");
+   public static final zm<ahn> bC = b("jigsaw_generate");
+   public static final zm<aho> bD = b("lock_difficulty");
+   public static final zm<ahp.a> bE = b("move_player_pos");
+   public static final zm<ahp.b> bF = b("move_player_pos_rot");
+   public static final zm<ahp.c> bG = b("move_player_rot");
+   public static final zm<ahp.d> bH = b("move_player_status_only");
+   public static final zm<ahq> bI = b("move_vehicle");
+   public static final zm<ahr> bJ = b("paddle_boat");
+   public static final zm<ahs> bK = b("pick_item");
+   public static final zm<aht> bL = b("place_recipe");
+   public static final zm<ahu> bM = b("player_abilities");
+   public static final zm<ahv> bN = b("player_action");
+   public static final zm<ahw> bO = b("player_command");
+   public static final zm<ahx> bP = b("player_input");
+   public static final zm<ahy> bQ = b("recipe_book_change_settings");
+   public static final zm<ahz> bR = b("recipe_book_seen_recipe");
+   public static final zm<aia> bS = b("rename_item");
+   public static final zm<aib> bT = b("seen_advancements");
+   public static final zm<aid> bU = b("select_trade");
+   public static final zm<aie> bV = b("set_beacon");
+   public static final zm<aif> bW = b("set_carried_item");
+   public static final zm<aig> bX = b("set_command_block");
+   public static final zm<aih> bY = b("set_command_minecart");
+   public static final zm<aii> bZ = b("set_creative_mode_slot");
+   public static final zm<aij> ca = b("set_jigsaw_block");
+   public static final zm<aik> cb = b("set_structure_block");
+   public static final zm<ail> cc = b("sign_update");
+   public static final zm<aim> cd = b("swing");
+   public static final zm<ain> ce = b("teleport_to_entity");
+   public static final zm<aio> cf = b("use_item_on");
+   public static final zm<aip> cg = b("use_item");
+   public static final zm<aen> ch = a("reset_score");
+   public static final zm<agf> ci = a("ticking_state");
+   public static final zm<agg> cj = a("ticking_step");
+   public static final zm<afc> ck = a("set_cursor_item");
+   public static final zm<afo> cl = a("set_player_inventory");
 
-   private ago(vw $$0) {
-      this($$0.p());
+   private static <T extends zk<abz>> zm<T> a(String $$0) {
+      return new zm<>(zl.b, alb.b($$0));
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-   }
-
-   @Override
-   public zi<ago> a() {
-      return agg.bj;
-   }
-
-   public void a(agi $$0) {
-      $$0.a(this);
+   private static <T extends zk<agq>> zm<T> b(String $$0) {
+      return new zm<>(zl.a, alb.b($$0));
    }
 }

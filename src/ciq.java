@@ -1,63 +1,43 @@
-import java.lang.reflect.Constructor;
 import java.util.Arrays;
 
-public class ciq<T extends cik> {
-   private static ciq<?>[] l = new ciq[0];
-   public static final ciq<cig> a = a(cig.class, "HoldingPattern");
-   public static final ciq<cio> b = a(cio.class, "StrafePlayer");
-   public static final ciq<cii> c = a(cii.class, "LandingApproach");
-   public static final ciq<cij> d = a(cij.class, "Landing");
-   public static final ciq<cip> e = a(cip.class, "Takeoff");
-   public static final ciq<cim> f = a(cim.class, "SittingFlaming");
-   public static final ciq<cin> g = a(cin.class, "SittingScanning");
-   public static final ciq<cil> h = a(cil.class, "SittingAttacking");
-   public static final ciq<cie> i = a(cie.class, "ChargingPlayer");
-   public static final ciq<cif> j = a(cif.class, "Dying");
-   public static final ciq<cih> k = a(cih.class, "Hover");
-   private final Class<? extends cik> m;
-   private final int n;
-   private final String o;
+public class ciq {
+   public static final int a = 64;
+   private static final int b = 63;
+   private final ciq.a[] c = new ciq.a[64];
+   private int d = -1;
 
-   private ciq(int $$0, Class<? extends cik> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
+   public ciq() {
+      Arrays.fill(this.c, new ciq.a(0.0, 0.0F));
    }
 
-   public cik a(cia $$0) {
-      try {
-         Constructor<? extends cik> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
+   public void a(ciq $$0) {
+      System.arraycopy($$0.c, 0, this.c, 0, 64);
+      this.d = $$0.d;
+   }
+
+   public void a(double $$0, float $$1) {
+      ciq.a $$2 = new ciq.a($$0, $$1);
+      if (this.d < 0) {
+         Arrays.fill(this.c, $$2);
       }
+
+      if (++this.d == 64) {
+         this.d = 0;
+      }
+
+      this.c[this.d] = $$2;
    }
 
-   protected Constructor<? extends cik> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cia.class);
+   public ciq.a a(int $$0) {
+      return this.c[this.d - $$0 & 63];
    }
 
-   public int b() {
-      return this.n;
+   public ciq.a a(int $$0, float $$1) {
+      ciq.a $$2 = this.a($$0);
+      ciq.a $$3 = this.a($$0 + 1);
+      return new ciq.a(azc.d((double)$$1, $$3.a, $$2.a), azc.i($$1, $$3.b, $$2.b));
    }
 
-   @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
-   }
-
-   public static ciq<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
-   }
-
-   public static int c() {
-      return l.length;
-   }
-
-   private static <T extends cik> ciq<T> a(Class<T> $$0, String $$1) {
-      ciq<T> $$2 = new ciq<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   public static record a(double a, float b) {
    }
 }

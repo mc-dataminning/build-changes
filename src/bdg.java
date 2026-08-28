@@ -1,19 +1,15 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
+import java.util.Objects;
 
-public class bdg extends bfn {
+public class bdg extends bhv {
    public bdg(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", bgr.B, "minecraft:shulker");
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Color").map(Dynamic::asNumber).result().isEmpty() ? $$0.set("Color", $$0.createByte((byte)10)) : $$0;
+      super("EntityElderGuardianSplitFix", $$0, $$1);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected Pair<String, Dynamic<?>> a(String $$0, Dynamic<?> $$1) {
+      return Pair.of(Objects.equals($$0, "Guardian") && $$1.get("Elder").asBoolean(false) ? "ElderGuardian" : $$0, $$1);
    }
 }

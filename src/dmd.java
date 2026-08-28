@@ -1,133 +1,68 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Map;
-import java.util.WeakHashMap;
 
-public class dmd extends dfo {
-   public static final MapCodec<dmd> c = b(dmd::new);
-   public static final dtt d = dts.r;
-   private static final Map<dcc, List<dmd.a>> h = new WeakHashMap<>();
-   public static final int e = 60;
-   public static final int f = 8;
-   public static final int g = 160;
-   private static final int i = 2;
+public class dmd extends dgv implements dgy {
+   public static final MapCodec<dmd> a = b(dmd::new);
 
    @Override
-   public MapCodec<? extends dmd> a() {
-      return c;
+   public MapCodec<dmd> a() {
+      return a;
    }
 
-   protected dmd(dtb.d $$0) {
+   public dmd(dtz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void b(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      for (ji $$5 : ji.values()) {
-         $$1.a($$2.a($$5), this);
-      }
-   }
-
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      if (!$$4) {
-         for (ji $$5 : ji.values()) {
-            $$1.a($$2.a($$5), this);
-         }
-      }
-   }
-
-   @Override
-   protected int a(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      return $$0.c(d) && ji.b != $$3 ? 15 : 0;
-   }
-
-   protected boolean a(dcw $$0, jd $$1, dtc $$2) {
-      return $$0.b($$1.e(), ji.a);
-   }
-
-   @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      boolean $$4 = this.a($$1, $$2, $$0);
-      List<dmd.a> $$5 = h.get($$1);
-
-      while ($$5 != null && !$$5.isEmpty() && $$1.Z() - $$5.get(0).b > 60L) {
-         $$5.remove(0);
-      }
-
-      if ($$0.c(d)) {
-         if ($$4) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
-            if (a($$1, $$2, true)) {
-               $$1.c(1502, $$2, 0);
-               $$1.a($$2, $$1.a_($$2).b(), 160);
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      if (!$$0.a_($$1.d()).f()) {
+         return false;
+      } else {
+         for (je $$3 : je.c($$1.b(-1, -1, -1), $$1.b(1, 1, 1))) {
+            if ($$0.a_($$3).a(aws.aM)) {
+               return true;
             }
          }
-      } else if (!$$4 && !a($$1, $$2, false)) {
-         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+
+         return false;
       }
    }
 
    @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dfy $$3, jd $$4, boolean $$5) {
-      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.P().b($$2, this)) {
-         $$1.a($$2, this, 2);
-      }
-   }
-
-   @Override
-   protected int b(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      return $$3 == ji.a ? $$0.b($$1, $$2, $$3) : 0;
-   }
-
-   @Override
-   protected boolean e_(dtc $$0) {
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
       return true;
    }
 
    @Override
-   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
-      if ($$0.c(d)) {
-         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         $$1.a(lh.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (je $$6 : je.c($$2.b(-1, -1, -1), $$2.b(1, 1, 1))) {
+         dua $$7 = $$0.a_($$6);
+         if ($$7.a(dgx.on)) {
+            $$5 = true;
+         }
+
+         if ($$7.a(dgx.ow)) {
+            $$4 = true;
+         }
+
+         if ($$5 && $$4) {
+            break;
+         }
+      }
+
+      if ($$5 && $$4) {
+         $$0.a($$2, $$1.h() ? dgx.on.o() : dgx.ow.o(), 3);
+      } else if ($$5) {
+         $$0.a($$2, dgx.on.o(), 3);
+      } else if ($$4) {
+         $$0.a($$2, dgx.ow.o(), 3);
       }
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(d);
-   }
-
-   private static boolean a(dcw $$0, jd $$1, boolean $$2) {
-      List<dmd.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
-      if ($$2) {
-         $$3.add(new dmd.a($$1.j(), $$0.Z()));
-      }
-
-      int $$4 = 0;
-
-      for (dmd.a $$5 : $$3) {
-         if ($$5.a.equals($$1)) {
-            if (++$$4 >= 8) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static class a {
-      final jd a;
-      final long b;
-
-      public a(jd $$0, long $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public dgy.a at_() {
+      return dgy.a.a;
    }
 }

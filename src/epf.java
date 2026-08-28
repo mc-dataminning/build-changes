@@ -1,24 +1,217 @@
-import com.google.common.collect.UnmodifiableIterator;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.ints.IntBidirectionalIterator;
+import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
+import it.unimi.dsi.fastutil.ints.IntSortedSet;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.stream.IntStream;
+import javax.annotation.Nullable;
 
 public class epf {
-   public static final epd a = a("empty", new epb());
-   public static final epc b = a("flowing_water", new epk.a());
-   public static final epc c = a("water", new epk.b());
-   public static final epc d = a("flowing_lava", new eph.a());
-   public static final epc e = a("lava", new eph.b());
+   private static final int a = 33554432;
+   private final epc[] b;
+   private final int c;
+   private final DoubleList d;
+   private final double e;
+   private final double f;
+   private final double g;
 
-   private static <T extends epd> T a(String $$0, T $$1) {
-      return jz.a(lt.c, $$0, $$1);
+   @Deprecated
+   public static epf a(azk $$0, IntStream $$1) {
+      return new epf($$0, a(new IntRBTreeSet($$1.boxed().collect(ImmutableList.toImmutableList()))), false);
    }
 
-   static {
-      for (epd $$0 : lt.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   @Deprecated
+   public static epf a(azk $$0, int $$1, DoubleList $$2) {
+      return new epf($$0, Pair.of($$1, $$2), false);
+   }
 
-         while (var2.hasNext()) {
-            epe $$1 = (epe)var2.next();
-            epd.c.b($$1);
+   public static epf b(azk $$0, IntStream $$1) {
+      return a($$0, $$1.boxed().collect(ImmutableList.toImmutableList()));
+   }
+
+   public static epf a(azk $$0, List<Integer> $$1) {
+      return new epf($$0, a(new IntRBTreeSet($$1)), true);
+   }
+
+   public static epf a(azk $$0, int $$1, double $$2, double... $$3) {
+      DoubleArrayList $$4 = new DoubleArrayList($$3);
+      $$4.add(0, $$2);
+      return new epf($$0, Pair.of($$1, $$4), true);
+   }
+
+   public static epf b(azk $$0, int $$1, DoubleList $$2) {
+      return new epf($$0, Pair.of($$1, $$2), true);
+   }
+
+   private static Pair<Integer, DoubleList> a(IntSortedSet $$0) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Need some octaves!");
+      } else {
+         int $$1 = -$$0.firstInt();
+         int $$2 = $$0.lastInt();
+         int $$3 = $$1 + $$2 + 1;
+         if ($$3 < 1) {
+            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
+         } else {
+            DoubleList $$4 = new DoubleArrayList(new double[$$3]);
+            IntBidirectionalIterator $$5 = $$0.iterator();
+
+            while ($$5.hasNext()) {
+               int $$6 = $$5.nextInt();
+               $$4.set($$6 + $$1, 1.0);
+            }
+
+            return Pair.of(-$$1, $$4);
          }
       }
+   }
+
+   protected epf(azk $$0, Pair<Integer, DoubleList> $$1, boolean $$2) {
+      this.c = (Integer)$$1.getFirst();
+      this.d = (DoubleList)$$1.getSecond();
+      int $$3 = this.d.size();
+      int $$4 = -this.c;
+      this.b = new epc[$$3];
+      if ($$2) {
+         eaj $$5 = $$0.e();
+
+         for (int $$6 = 0; $$6 < $$3; $$6++) {
+            if (this.d.getDouble($$6) != 0.0) {
+               int $$7 = this.c + $$6;
+               this.b[$$6] = new epc($$5.a("octave_" + $$7));
+            }
+         }
+      } else {
+         epc $$8 = new epc($$0);
+         if ($$4 >= 0 && $$4 < $$3) {
+            double $$9 = this.d.getDouble($$4);
+            if ($$9 != 0.0) {
+               this.b[$$4] = $$8;
+            }
+         }
+
+         for (int $$10 = $$4 - 1; $$10 >= 0; $$10--) {
+            if ($$10 < $$3) {
+               double $$11 = this.d.getDouble($$10);
+               if ($$11 != 0.0) {
+                  this.b[$$10] = new epc($$0);
+               } else {
+                  a($$0);
+               }
+            } else {
+               a($$0);
+            }
+         }
+
+         if (Arrays.stream(this.b).filter(Objects::nonNull).count() != this.d.stream().filter($$0x -> $$0x != 0.0).count()) {
+            throw new IllegalStateException("Failed to create correct number of noise levels for given non-zero amplitudes");
+         }
+
+         if ($$4 < $$3 - 1) {
+            throw new IllegalArgumentException("Positive octaves are temporarily disabled");
+         }
+      }
+
+      this.f = Math.pow(2.0, (double)(-$$4));
+      this.e = Math.pow(2.0, (double)($$3 - 1)) / (Math.pow(2.0, (double)$$3) - 1.0);
+      this.g = this.c(2.0);
+   }
+
+   protected double a() {
+      return this.g;
+   }
+
+   private static void a(azk $$0) {
+      $$0.b(262);
+   }
+
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0, false);
+   }
+
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4, boolean $$5) {
+      double $$6 = 0.0;
+      double $$7 = this.f;
+      double $$8 = this.e;
+
+      for (int $$9 = 0; $$9 < this.b.length; $$9++) {
+         epc $$10 = this.b[$$9];
+         if ($$10 != null) {
+            double $$11 = $$10.a(b($$0 * $$7), $$5 ? -$$10.b : b($$1 * $$7), b($$2 * $$7), $$3 * $$7, $$4 * $$7);
+            $$6 += this.d.getDouble($$9) * $$11 * $$8;
+         }
+
+         $$7 *= 2.0;
+         $$8 /= 2.0;
+      }
+
+      return $$6;
+   }
+
+   public double a(double $$0) {
+      return this.c($$0 + 2.0);
+   }
+
+   private double c(double $$0) {
+      double $$1 = 0.0;
+      double $$2 = this.e;
+
+      for (int $$3 = 0; $$3 < this.b.length; $$3++) {
+         epc $$4 = this.b[$$3];
+         if ($$4 != null) {
+            $$1 += this.d.getDouble($$3) * $$0 * $$2;
+         }
+
+         $$2 /= 2.0;
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public epc a(int $$0) {
+      return this.b[this.b.length - 1 - $$0];
+   }
+
+   public static double b(double $$0) {
+      return $$0 - (double)azc.b($$0 / 3.3554432E7 + 0.5) * 3.3554432E7;
+   }
+
+   protected int b() {
+      return this.c;
+   }
+
+   protected DoubleList c() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      $$0.append("PerlinNoise{");
+      List<String> $$1 = this.d.stream().map($$0x -> String.format(Locale.ROOT, "%.2f", $$0x)).toList();
+      $$0.append("first octave: ").append(this.c).append(", amplitudes: ").append($$1).append(", noise levels: [");
+
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         $$0.append($$2).append(": ");
+         epc $$3 = this.b[$$2];
+         if ($$3 == null) {
+            $$0.append("null");
+         } else {
+            $$3.a($$0);
+         }
+
+         $$0.append(", ");
+      }
+
+      $$0.append("]");
+      $$0.append("}");
    }
 }

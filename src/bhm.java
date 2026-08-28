@@ -2,33 +2,20 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bhm extends bfo {
+public class bhm extends bgg {
    public bhm(Schema $$0) {
-      super($$0, false, "TippedArrowPotionToItemFix", bgr.B, "minecraft:arrow");
+      super($$0, false, "RemoveEmptyItemInSuspiciousBlockFix", bhk.s, "minecraft:brushable_block");
    }
 
    @Override
    protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
-      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
-      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
-      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
-         ? $$0
-         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
-            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
-            if ($$1.isPresent()) {
-               $$4 = $$4.set("Potion", $$1.get());
-            }
+      Optional<Dynamic<T>> $$1 = $$0.get("item").result();
+      return $$1.isPresent() && b($$1.get()) ? $$0.remove("item") : $$0;
+   }
 
-            if ($$2.isPresent()) {
-               $$4 = $$4.set("custom_potion_effects", $$2.get());
-            }
-
-            if ($$3.isPresent()) {
-               $$4 = $$4.set("CustomPotionColor", $$3.get());
-            }
-
-            return $$3x.set("tag", $$4);
-         });
+   private static boolean b(Dynamic<?> $$0) {
+      String $$1 = biw.a($$0.get("id").asString("minecraft:air"));
+      int $$2 = $$0.get("count").asInt(0);
+      return $$1.equals("minecraft:air") || $$2 == 0;
    }
 }

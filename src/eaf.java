@@ -1,127 +1,71 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.function.BiPredicate;
+public class eaf {
+   public static final ala<epe.a> a = a("temperature");
+   public static final ala<epe.a> b = a("vegetation");
+   public static final ala<epe.a> c = a("continentalness");
+   public static final ala<epe.a> d = a("erosion");
+   public static final ala<epe.a> e = a("temperature_large");
+   public static final ala<epe.a> f = a("vegetation_large");
+   public static final ala<epe.a> g = a("continentalness_large");
+   public static final ala<epe.a> h = a("erosion_large");
+   public static final ala<epe.a> i = a("ridge");
+   public static final ala<epe.a> j = a("offset");
+   public static final ala<epe.a> k = a("aquifer_barrier");
+   public static final ala<epe.a> l = a("aquifer_fluid_level_floodedness");
+   public static final ala<epe.a> m = a("aquifer_lava");
+   public static final ala<epe.a> n = a("aquifer_fluid_level_spread");
+   public static final ala<epe.a> o = a("pillar");
+   public static final ala<epe.a> p = a("pillar_rareness");
+   public static final ala<epe.a> q = a("pillar_thickness");
+   public static final ala<epe.a> r = a("spaghetti_2d");
+   public static final ala<epe.a> s = a("spaghetti_2d_elevation");
+   public static final ala<epe.a> t = a("spaghetti_2d_modulator");
+   public static final ala<epe.a> u = a("spaghetti_2d_thickness");
+   public static final ala<epe.a> v = a("spaghetti_3d_1");
+   public static final ala<epe.a> w = a("spaghetti_3d_2");
+   public static final ala<epe.a> x = a("spaghetti_3d_rarity");
+   public static final ala<epe.a> y = a("spaghetti_3d_thickness");
+   public static final ala<epe.a> z = a("spaghetti_roughness");
+   public static final ala<epe.a> A = a("spaghetti_roughness_modulator");
+   public static final ala<epe.a> B = a("cave_entrance");
+   public static final ala<epe.a> C = a("cave_layer");
+   public static final ala<epe.a> D = a("cave_cheese");
+   public static final ala<epe.a> E = a("ore_veininess");
+   public static final ala<epe.a> F = a("ore_vein_a");
+   public static final ala<epe.a> G = a("ore_vein_b");
+   public static final ala<epe.a> H = a("ore_gap");
+   public static final ala<epe.a> I = a("noodle");
+   public static final ala<epe.a> J = a("noodle_thickness");
+   public static final ala<epe.a> K = a("noodle_ridge_a");
+   public static final ala<epe.a> L = a("noodle_ridge_b");
+   public static final ala<epe.a> M = a("jagged");
+   public static final ala<epe.a> N = a("surface");
+   public static final ala<epe.a> O = a("surface_secondary");
+   public static final ala<epe.a> P = a("clay_bands_offset");
+   public static final ala<epe.a> Q = a("badlands_pillar");
+   public static final ala<epe.a> R = a("badlands_pillar_roof");
+   public static final ala<epe.a> S = a("badlands_surface");
+   public static final ala<epe.a> T = a("iceberg_pillar");
+   public static final ala<epe.a> U = a("iceberg_pillar_roof");
+   public static final ala<epe.a> V = a("iceberg_surface");
+   public static final ala<epe.a> W = a("surface_swamp");
+   public static final ala<epe.a> X = a("calcite");
+   public static final ala<epe.a> Y = a("gravel");
+   public static final ala<epe.a> Z = a("powder_snow");
+   public static final ala<epe.a> aa = a("packed_ice");
+   public static final ala<epe.a> ab = a("ice");
+   public static final ala<epe.a> ac = a("soul_sand_layer");
+   public static final ala<epe.a> ad = a("gravel_layer");
+   public static final ala<epe.a> ae = a("patch");
+   public static final ala<epe.a> af = a("netherrack");
+   public static final ala<epe.a> ag = a("nether_wart");
+   public static final ala<epe.a> ah = a("nether_state_selector");
 
-public interface eaf extends BiPredicate<dds, jd> {
-   Codec<eaf> b = lt.M.r().dispatch(eaf::a, eag::codec);
-   eaf c = a(dga.a);
-   eaf d = a(dga.a, dga.G);
-
-   eag<?> a();
-
-   static eaf a(List<eaf> $$0) {
-      return new ead($$0);
+   private static ala<epe.a> a(String $$0) {
+      return ala.a(lv.aP, alb.b($$0));
    }
 
-   static eaf a(eaf... $$0) {
-      return a(List.of($$0));
-   }
-
-   static eaf a(eaf $$0, eaf $$1) {
-      return a(List.of($$0, $$1));
-   }
-
-   static eaf b(List<eaf> $$0) {
-      return new eae($$0);
-   }
-
-   static eaf b(eaf... $$0) {
-      return b(List.of($$0));
-   }
-
-   static eaf b(eaf $$0, eaf $$1) {
-      return b(List.of($$0, $$1));
-   }
-
-   static eaf a(kh $$0, List<dfy> $$1) {
-      return new eal($$0, jq.a(dfy::s, $$1));
-   }
-
-   static eaf c(List<dfy> $$0) {
-      return a(kh.g, $$0);
-   }
-
-   static eaf a(kh $$0, dfy... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   static eaf a(dfy... $$0) {
-      return a(kh.g, $$0);
-   }
-
-   static eaf a(kh $$0, awu<dfy> $$1) {
-      return new eak($$0, $$1);
-   }
-
-   static eaf a(awu<dfy> $$0) {
-      return a(kh.g, $$0);
-   }
-
-   static eaf b(kh $$0, List<epd> $$1) {
-      return new eam($$0, jq.a(epd::k, $$1));
-   }
-
-   static eaf a(kh $$0, epd... $$1) {
-      return b($$0, List.of($$1));
-   }
-
-   static eaf a(epd... $$0) {
-      return a(kh.g, $$0);
-   }
-
-   static eaf a(eaf $$0) {
-      return new ean($$0);
-   }
-
-   static eaf a(kh $$0) {
-      return new eao($$0);
-   }
-
-   static eaf b() {
-      return a(kh.g);
-   }
-
-   static eaf a(dtc $$0, kh $$1) {
-      return new eat($$1, $$0);
-   }
-
-   static eaf a(kh $$0, ji $$1) {
-      return new eai($$0, $$1);
-   }
-
-   static eaf a(ji $$0) {
-      return a(kh.g, $$0);
-   }
-
-   static eaf b(kh $$0) {
-      return new eap($$0);
-   }
-
-   static eaf c() {
-      return b(kh.g);
-   }
-
-   static eaf d() {
-      return c(kh.g);
-   }
-
-   static eaf c(kh $$0) {
-      return a($$0, epf.a);
-   }
-
-   static eaf d(kh $$0) {
-      return new eaj($$0);
-   }
-
-   static eaf e() {
-      return ear.a;
-   }
-
-   static eaf e(kh $$0) {
-      return new eas($$0);
-   }
-
-   static eaf f() {
-      return e(kh.g);
+   public static epe a(jo<epe.a> $$0, eaj $$1, ala<epe.a> $$2) {
+      jn<epe.a> $$3 = $$0.b($$2);
+      return epe.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
    }
 }

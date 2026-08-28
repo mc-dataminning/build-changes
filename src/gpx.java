@@ -1,6 +1,11 @@
-import java.io.IOException;
-import java.nio.file.Path;
+public class gpx extends gli<cln> {
+   private static final alb a = alb.b("textures/entity/hoglin/zoglin.png");
 
-public interface gpx {
-   void a(akr var1, Path var2) throws IOException;
+   public gpx(gms.a $$0) {
+      super($$0, gaa.dj, gaa.dk, 0.7F);
+   }
+
+   public alb a(gti $$0) {
+      return a;
+   }
 }

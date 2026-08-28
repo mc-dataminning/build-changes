@@ -1,75 +1,49 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egv extends eha {
-   public static final MapCodec<egv> a = egj.a.fieldOf("provider").xmap(egv::new, $$0 -> $$0.b);
-   private final egj b;
+public class egv extends egs {
+   public static final MapCodec<egv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bqp.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, egv::new)
+   );
+   private final bqp b;
 
-   public egv(egj $$0) {
-      this.b = $$0;
+   public egv(bqp $$0, bqp $$1, bqp $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected ehb<?> a() {
-      return ehb.e;
+   protected egt<?> a() {
+      return egt.h;
    }
 
    @Override
-   public void a(eha.a $$0) {
-      List<jd> $$1 = Lists.newArrayList();
-      List<jd> $$2 = $$0.e();
-      List<jd> $$3 = $$0.c();
-      if ($$2.isEmpty()) {
-         $$1.addAll($$3);
-      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
-         $$1.addAll($$3);
-         $$1.addAll($$2);
-      } else {
-         $$1.addAll($$2);
-      }
+   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
+      je $$9 = $$5.a();
+      int $$10 = 0;
 
-      if (!$$1.isEmpty()) {
-         int $$4 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + azc.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
 
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3x = $$0.b().a(64);
-               int $$4x = $$3x % 8;
-               int $$5 = $$3x / 8;
-               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
-               }
-            }
-         });
+         this.a($$0, $$1, $$2, $$3, new je($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
    }
 
-   private void a(eha.a $$0, jd $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
+   @Override
+   public int a(azk $$0, int $$1, egc $$2) {
+      return this.b.a($$0);
    }
 
-   private void b(eha.a $$0, jd $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         jd $$3 = $$1.b($$2);
-         if (ece.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
-      }
+   @Override
+   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

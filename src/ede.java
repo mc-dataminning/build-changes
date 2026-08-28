@@ -1,54 +1,43 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class ede extends ece<eex> {
-   public ede(Codec<eex> $$0) {
-      super($$0);
+public class ede<FC extends efg> {
+   private final Optional<eco<?, ?>> a;
+   private final dep b;
+   private final dvx c;
+   private final azk d;
+   private final je e;
+   private final FC f;
+
+   public ede(Optional<eco<?, ?>> $$0, dep $$1, dvx $$2, azk $$3, je $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(ecg<eex> $$0) {
-      eex $$1 = $$0.f();
-      dds $$2 = $$0.b();
-      ayw $$3 = $$0.d();
-      dfy $$4 = $$1.b.b();
-      jd $$5 = a($$2, $$0.e().k().a(ji.a.b, $$2.I_() + 1, $$2.am() - 1), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
-
-         for (jd $$11 : jd.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dtc $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
-         }
-
-         return $$10;
-      }
+   public Optional<eco<?, ?>> a() {
+      return this.a;
    }
 
-   @Nullable
-   private static jd a(dcx $$0, jd.a $$1, dfy $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dtc $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
+   public dep b() {
+      return this.b;
+   }
 
-         $$1.c(ji.a);
-      }
+   public dvx c() {
+      return this.c;
+   }
 
-      return null;
+   public azk d() {
+      return this.d;
+   }
+
+   public je e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

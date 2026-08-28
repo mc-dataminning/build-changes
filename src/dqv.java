@@ -1,245 +1,76 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class dqv extends drn implements cql {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jv<cuq> q = jv.a(9, cuq.l);
-   private int r = 0;
-   protected final cqf k = new cqf() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public record dqv(List<dqv.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dqv a = new dqv(List.of());
+   public static final Codec<dqv> b = dqv.b.a.listOf().xmap(dqv::new, dqv::b);
+   public static final zb<wo, dqv> c = dqv.b.b.a(yz.a()).a(dqv::new, dqv::b);
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
-      }
+   public dqv a() {
+      return new dqv(List.copyOf(this.d.subList(0, this.d.size() - 1)));
+   }
 
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
+   public List<dqv.b> b() {
+      return this.d;
+   }
+
+   public static class a {
+      private final Builder<dqv.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public dqv.a a(jo<dqu> $$0, ala<dqu> $$1, cue $$2) {
+         Optional<jn.c<dqu>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dqv.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
          } else {
-            this.a[$$0] = $$1;
+            return this.a($$3.get(), $$2);
          }
       }
 
-      @Override
-      public int a() {
-         return 10;
+      public dqv.a a(jn<dqu> $$0, cue $$1) {
+         return this.a(new dqv.b($$0, $$1));
       }
-   };
 
-   public dqv(jd $$0, dtc $$1) {
-      super(dqj.P, $$0, $$1);
-   }
+      public dqv.a a(dqv.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
 
-   @Override
-   protected wz k() {
-      return wz.c("container.crafter");
-   }
+      public dqv.a a(dqv $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
 
-   @Override
-   protected cpu a(int $$0, cmw $$1) {
-      return new cqj($$0, $$1, this, this.k);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
+      public dqv a() {
+         return new dqv(this.a.build());
       }
    }
 
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
-   }
+   public static record b(jn<dqu> c, cue d) {
+      public static final Codec<dqv.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dqu.c.fieldOf("pattern").forGetter(dqv.b::b), cue.q.fieldOf("color").forGetter(dqv.b::c)).apply($$0, dqv.b::new)
+      );
+      public static final zb<wo, dqv.b> b = zb.a(dqu.d, dqv.b::b, cue.r, dqv.b::c, dqv.b::new);
 
-   @Override
-   public boolean b(int $$0, cuq $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         cuq $$2 = this.q.get($$0);
-         int $$3 = $$2.H();
-         if ($$3 >= $$2.j()) {
-            return false;
-         } else {
-            return $$2.e() ? true : !this.a($$3, $$2, $$0);
-         }
-      }
-   }
-
-   private boolean a(int $$0, cuq $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cuq $$4 = this.a($$3);
-            if ($$4.e() || $$4.H() < $$0 && cuq.c($$4, $$1)) {
-               return true;
-            }
-         }
+      public xr a() {
+         String $$0 = this.c.a().b();
+         return xd.c($$0 + "." + this.d.b());
       }
 
-      return false;
-   }
-
-   @Override
-   protected void a(ub $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.q = jv.a(this.b(), cuq.l);
-      if (!this.b_($$0)) {
-         bql.b($$0, this.q, $$1);
+      public jn<dqu> b() {
+         return this.c;
       }
 
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
+      public cue c() {
+         return this.d;
       }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(ub $$0, jo.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.c_($$0)) {
-         bql.a($$0, this.q, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
-   }
-
-   @Override
-   public int b() {
-      return 9;
-   }
-
-   @Override
-   public boolean c() {
-      for (cuq $$0 : this.q) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cuq a(int $$0) {
-      return this.q.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, cuq $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(cmx $$0) {
-      return bqk.a(this, $$0);
-   }
-
-   @Override
-   public jv<cuq> j() {
-      return this.q;
-   }
-
-   @Override
-   protected void a(jv<cuq> $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public int f() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void a(cnb $$0) {
-      for (cuq $$1 : this.q) {
-         $$0.a($$1);
-      }
-   }
-
-   private void c(ub $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
-      }
-
-      $$0.b("disabled_slots", $$1);
-   }
-
-   private void d(ub $$0) {
-      $$0.a("triggered", this.k.a(9));
-   }
-
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean l() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(dcw $$0, jd $$1, dtc $$2, dqv $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.a(dhr.b, Boolean.valueOf(false)), 3);
-         }
-      }
-   }
-
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int u() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cuq $$2 = this.a($$1);
-         if (!$$2.e() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).e();
    }
 }

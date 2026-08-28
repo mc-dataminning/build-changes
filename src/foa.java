@@ -1,71 +1,88 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public class foa extends fod implements ayv {
-   @Nullable
-   private wz a;
-   @Nullable
-   private wz b;
-   private int c;
-   private boolean r;
-   private final boolean s;
+public class foa {
+   int a;
+   final Map<foa.a, foa.b> b = Maps.newTreeMap(Comparator.<foa.a, fnw>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   public foa(boolean $$0) {
-      super(fgg.a);
-      this.s = $$0;
+   public void a(Consumer<fnx> $$0) {
+      this.a++;
+      $$0.accept(new foa.c(0));
    }
 
-   @Override
-   public boolean aJ_() {
-      return false;
-   }
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
 
-   @Override
-   protected boolean aS_() {
-      return false;
-   }
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
 
-   @Override
-   public void a(wz $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(wz $$0) {
-      this.a = $$0;
-      this.c(wz.c("menu.working"));
-   }
-
-   @Override
-   public void c(wz $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.r = true;
-   }
-
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      if (this.r) {
-         if (this.s) {
-            this.l.a(null);
+            this.b = false;
+            $$1.append($$0);
          }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.o, this.a, this.m / 2, 70, 16777215);
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
+   }
+
+   static class a {
+      final fnw a;
+      final int b;
+
+      a(fnw $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+   }
+
+   static class b {
+      fnz<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fnz.a;
+         this.b = -1;
+      }
+
+      public foa.b a(int $$0, fnz<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
          }
 
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.o, wz.i().b(this.b).f(" " + this.c + "%"), this.m / 2, 90, 16777215);
-         }
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements fnx {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fnw $$0, fnz<?> $$1) {
+         foa.this.b.computeIfAbsent(new foa.a($$0, this.b), $$0x -> new foa.b()).a(foa.this.a, $$1);
+      }
+
+      @Override
+      public fnx a() {
+         return foa.this.new c(this.b + 1);
       }
    }
 }

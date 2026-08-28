@@ -36,7 +36,7 @@ public record bv(
                      bt.a.optionalFieldOf("flags").forGetter(bv::g),
                      bs.a.optionalFieldOf("equipment").forGetter(bv::h),
                      bw.a.optionalFieldOf("type_specific").forGetter(bv::i),
-                     axw.l.optionalFieldOf("periodic_tick").forGetter(bv::j),
+                     ayl.l.optionalFieldOf("periodic_tick").forGetter(bv::j),
                      $$0.optionalFieldOf("vehicle").forGetter(bv::k),
                      $$0.optionalFieldOf("passenger").forGetter(bv::l),
                      $$0.optionalFieldOf("targeted_entity").forGetter(bv::m),
@@ -61,48 +61,48 @@ public record bv(
    }
 
    public static bg a(bv $$0) {
-      evc $$1 = evf.a(err.b.a, $$0).build();
+      ewe $$1 = ewh.a(est.b.a, $$0).build();
       return new bg(List.of($$1));
    }
 
-   public boolean a(aqv $$0, @Nullable bsr $$1) {
-      return this.a($$0.A(), $$0.dm(), $$1);
+   public boolean a(arh $$0, @Nullable btj $$1) {
+      return this.a($$0.B(), $$0.dq(), $$1);
    }
 
-   public boolean a(aqu $$0, @Nullable exc $$1, @Nullable bsr $$2) {
+   public boolean a(arg $$0, @Nullable eye $$1, @Nullable btj $$2) {
       if ($$2 == null) {
          return false;
-      } else if (this.c.isPresent() && !this.c.get().b($$2.am())) {
+      } else if (this.c.isPresent() && !this.c.get().a($$2.ao())) {
          return false;
       } else {
          if ($$1 == null) {
             if (this.d.isPresent()) {
                return false;
             }
-         } else if (this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.dt(), $$2.dv(), $$2.dz())) {
+         } else if (this.d.isPresent() && !this.d.get().a($$1.d, $$1.e, $$1.f, $$2.dx(), $$2.dz(), $$2.dD())) {
             return false;
          }
 
          if (this.e.isPresent()) {
-            exc $$3 = $$2.ag();
-            exc $$4 = $$3.a(20.0);
-            if (!this.e.get().a($$4.c, $$4.d, $$4.e, (double)$$2.ac)) {
+            eye $$3 = $$2.ai();
+            eye $$4 = $$3.c(20.0);
+            if (!this.e.get().a($$4.d, $$4.e, $$4.f, (double)$$2.aa)) {
                return false;
             }
          }
 
-         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.dt(), $$2.dv(), $$2.dz())) {
+         if (this.f.b.isPresent() && !this.f.b.get().a($$0, $$2.dx(), $$2.dz(), $$2.dD())) {
             return false;
          } else {
             if (this.f.c.isPresent()) {
-               exc $$5 = exc.b($$2.aM());
+               eye $$5 = eye.b($$2.aP());
                if (!this.f.c.get().a($$0, $$5.a(), $$5.b(), $$5.c())) {
                   return false;
                }
             }
 
             if (this.f.d.isPresent()) {
-               exc $$6 = exc.b($$2.aL());
+               eye $$6 = eye.b($$2.aO());
                if (!this.f.d.get().a($$0, $$6.a(), $$6.b(), $$6.c())) {
                   return false;
                }
@@ -116,17 +116,17 @@ public record bv(
                return false;
             } else if (this.k.isPresent() && !this.k.get().a($$2, $$0, $$1)) {
                return false;
-            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2.dc())) {
+            } else if (this.m.isPresent() && !this.m.get().a($$0, $$1, $$2.dg())) {
                return false;
-            } else if (this.n.isPresent() && $$2.cS().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
+            } else if (this.n.isPresent() && $$2.cW().stream().noneMatch($$2x -> this.n.get().a($$0, $$1, $$2x))) {
                return false;
-            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof btp ? ((btp)$$2).p() : null)) {
+            } else if (this.o.isPresent() && !this.o.get().a($$0, $$1, $$2 instanceof buh ? ((buh)$$2).m() : null)) {
                return false;
-            } else if (this.l.isPresent() && $$2.ai % this.l.get() != 0) {
+            } else if (this.l.isPresent() && $$2.ag % this.l.get() != 0) {
                return false;
             } else {
                if (this.p.isPresent()) {
-                  eyi $$7 = $$2.ck();
+                  ezk $$7 = $$2.co();
                   if ($$7 == null || !this.p.get().equals($$7.b())) {
                      return false;
                   }
@@ -138,9 +138,9 @@ public record bv(
       }
    }
 
-   public static err b(aqv $$0, bsr $$1) {
-      eru $$2 = new eru.a($$0.A()).a(eun.a, $$1).a(eun.f, $$0.dm()).a(eum.n);
-      return new err.a($$2).a(Optional.empty());
+   public static est b(arh $$0, btj $$1) {
+      esw $$2 = new esw.a($$0.B()).a(evp.a, $$1).a(evp.f, $$0.dq()).a(evo.n);
+      return new est.a($$2).a(Optional.empty());
    }
 
    public Optional<by> a() {
@@ -206,35 +206,33 @@ public record bv(
    public static class a {
       private Optional<by> a = Optional.empty();
       private Optional<bm> b = Optional.empty();
-      private Optional<bm> c = Optional.empty();
-      private Optional<dj> d = Optional.empty();
-      private Optional<bv.b> e = Optional.empty();
+      private Optional<dj> c = Optional.empty();
+      private Optional<df> d = Optional.empty();
+      private Optional<df> e = Optional.empty();
       private Optional<df> f = Optional.empty();
-      private Optional<df> g = Optional.empty();
-      private Optional<df> h = Optional.empty();
-      private Optional<di> i = Optional.empty();
-      private Optional<dk> j = Optional.empty();
-      private Optional<bt> k = Optional.empty();
-      private Optional<bs> l = Optional.empty();
-      private Optional<bw> m = Optional.empty();
-      private Optional<Integer> n = Optional.empty();
+      private Optional<di> g = Optional.empty();
+      private Optional<dk> h = Optional.empty();
+      private Optional<bt> i = Optional.empty();
+      private Optional<bs> j = Optional.empty();
+      private Optional<bw> k = Optional.empty();
+      private Optional<Integer> l = Optional.empty();
+      private Optional<bv> m = Optional.empty();
+      private Optional<bv> n = Optional.empty();
       private Optional<bv> o = Optional.empty();
-      private Optional<bv> p = Optional.empty();
-      private Optional<bv> q = Optional.empty();
-      private Optional<String> r = Optional.empty();
-      private Optional<dz> s = Optional.empty();
+      private Optional<String> p = Optional.empty();
+      private Optional<dz> q = Optional.empty();
 
       public static bv.a a() {
          return new bv.a();
       }
 
-      public bv.a a(bsx<?> $$0) {
-         this.a = Optional.of(by.a($$0));
+      public bv.a a(jo<btq<?>> $$0, btq<?> $$1) {
+         this.a = Optional.of(by.a($$0, $$1));
          return this;
       }
 
-      public bv.a a(awu<bsx<?>> $$0) {
-         this.a = Optional.of(by.a($$0));
+      public bv.a a(jo<btq<?>> $$0, axi<btq<?>> $$1) {
+         this.a = Optional.of(by.a($$0, $$1));
          return this;
       }
 
@@ -249,88 +247,88 @@ public record bv(
       }
 
       public bv.a a(dj $$0) {
-         this.d = Optional.of($$0);
+         this.c = Optional.of($$0);
          return this;
       }
 
       public bv.a a(df.a $$0) {
-         this.f = Optional.of($$0.b());
+         this.d = Optional.of($$0.b());
          return this;
       }
 
       public bv.a b(df.a $$0) {
-         this.g = Optional.of($$0.b());
+         this.e = Optional.of($$0.b());
          return this;
       }
 
       public bv.a c(df.a $$0) {
-         this.h = Optional.of($$0.b());
+         this.f = Optional.of($$0.b());
          return this;
       }
 
       public bv.a a(di.a $$0) {
-         this.i = $$0.b();
+         this.g = $$0.b();
          return this;
       }
 
       public bv.a a(dk $$0) {
-         this.j = Optional.of($$0);
+         this.h = Optional.of($$0);
          return this;
       }
 
       public bv.a a(bt.a $$0) {
-         this.k = Optional.of($$0.b());
+         this.i = Optional.of($$0.b());
          return this;
       }
 
       public bv.a a(bs.a $$0) {
-         this.l = Optional.of($$0.b());
+         this.j = Optional.of($$0.b());
          return this;
       }
 
       public bv.a a(bs $$0) {
-         this.l = Optional.of($$0);
+         this.j = Optional.of($$0);
          return this;
       }
 
       public bv.a a(bw $$0) {
-         this.m = Optional.of($$0);
+         this.k = Optional.of($$0);
          return this;
       }
 
       public bv.a a(int $$0) {
-         this.n = Optional.of($$0);
+         this.l = Optional.of($$0);
          return this;
       }
 
       public bv.a a(bv.a $$0) {
-         this.o = Optional.of($$0.b());
+         this.m = Optional.of($$0.b());
          return this;
       }
 
       public bv.a b(bv.a $$0) {
-         this.p = Optional.of($$0.b());
+         this.n = Optional.of($$0.b());
          return this;
       }
 
       public bv.a c(bv.a $$0) {
-         this.q = Optional.of($$0.b());
+         this.o = Optional.of($$0.b());
          return this;
       }
 
       public bv.a a(String $$0) {
-         this.r = Optional.of($$0);
+         this.p = Optional.of($$0);
          return this;
       }
 
       public bv.a a(dz $$0) {
-         this.s = Optional.of($$0);
+         this.q = Optional.of($$0);
          return this;
       }
 
       public bv b() {
          return new bv(
-            this.a, this.b, this.d, new bv.b(this.f, this.g, this.h), this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.p, this.q, this.r, this.s
+            this.a, this.b, this.c, new bv.b(this.d, this.e, this.f), this.g, this.h, this.i, this.j, this.k, this.l, this.m, this.n, this.o, this.p, this.q
          );
       }
    }

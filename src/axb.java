@@ -1,464 +1,163 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.AbstractList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+public final class axb {
+   public static final axi<cvg> a = a("wool");
+   public static final axi<cvg> b = a("planks");
+   public static final axi<cvg> c = a("stone_bricks");
+   public static final axi<cvg> d = a("wooden_buttons");
+   public static final axi<cvg> e = a("stone_buttons");
+   public static final axi<cvg> f = a("buttons");
+   public static final axi<cvg> g = a("wool_carpets");
+   public static final axi<cvg> h = a("wooden_doors");
+   public static final axi<cvg> i = a("wooden_stairs");
+   public static final axi<cvg> j = a("wooden_slabs");
+   public static final axi<cvg> k = a("wooden_fences");
+   public static final axi<cvg> l = a("fence_gates");
+   public static final axi<cvg> m = a("wooden_pressure_plates");
+   public static final axi<cvg> n = a("wooden_trapdoors");
+   public static final axi<cvg> o = a("doors");
+   public static final axi<cvg> p = a("saplings");
+   public static final axi<cvg> q = a("logs_that_burn");
+   public static final axi<cvg> r = a("logs");
+   public static final axi<cvg> s = a("dark_oak_logs");
+   public static final axi<cvg> t = a("oak_logs");
+   public static final axi<cvg> u = a("birch_logs");
+   public static final axi<cvg> v = a("acacia_logs");
+   public static final axi<cvg> w = a("cherry_logs");
+   public static final axi<cvg> x = a("jungle_logs");
+   public static final axi<cvg> y = a("spruce_logs");
+   public static final axi<cvg> z = a("mangrove_logs");
+   public static final axi<cvg> A = a("crimson_stems");
+   public static final axi<cvg> B = a("warped_stems");
+   public static final axi<cvg> C = a("bamboo_blocks");
+   public static final axi<cvg> D = a("wart_blocks");
+   public static final axi<cvg> E = a("banners");
+   public static final axi<cvg> F = a("sand");
+   public static final axi<cvg> G = a("smelts_to_glass");
+   public static final axi<cvg> H = a("stairs");
+   public static final axi<cvg> I = a("slabs");
+   public static final axi<cvg> J = a("walls");
+   public static final axi<cvg> K = a("anvil");
+   public static final axi<cvg> L = a("rails");
+   public static final axi<cvg> M = a("leaves");
+   public static final axi<cvg> N = a("trapdoors");
+   public static final axi<cvg> O = a("small_flowers");
+   public static final axi<cvg> P = a("beds");
+   public static final axi<cvg> Q = a("fences");
+   public static final axi<cvg> R = a("tall_flowers");
+   public static final axi<cvg> S = a("flowers");
+   public static final axi<cvg> T = a("piglin_repellents");
+   public static final axi<cvg> U = a("piglin_loved");
+   public static final axi<cvg> V = a("ignored_by_piglin_babies");
+   public static final axi<cvg> W = a("meat");
+   public static final axi<cvg> X = a("sniffer_food");
+   public static final axi<cvg> Y = a("piglin_food");
+   public static final axi<cvg> Z = a("fox_food");
+   public static final axi<cvg> aa = a("cow_food");
+   public static final axi<cvg> ab = a("goat_food");
+   public static final axi<cvg> ac = a("sheep_food");
+   public static final axi<cvg> ad = a("wolf_food");
+   public static final axi<cvg> ae = a("cat_food");
+   public static final axi<cvg> af = a("horse_food");
+   public static final axi<cvg> ag = a("horse_tempt_items");
+   public static final axi<cvg> ah = a("camel_food");
+   public static final axi<cvg> ai = a("armadillo_food");
+   public static final axi<cvg> aj = a("bee_food");
+   public static final axi<cvg> ak = a("chicken_food");
+   public static final axi<cvg> al = a("frog_food");
+   public static final axi<cvg> am = a("hoglin_food");
+   public static final axi<cvg> an = a("llama_food");
+   public static final axi<cvg> ao = a("llama_tempt_items");
+   public static final axi<cvg> ap = a("ocelot_food");
+   public static final axi<cvg> aq = a("panda_food");
+   public static final axi<cvg> ar = a("pig_food");
+   public static final axi<cvg> as = a("rabbit_food");
+   public static final axi<cvg> at = a("strider_food");
+   public static final axi<cvg> au = a("strider_tempt_items");
+   public static final axi<cvg> av = a("turtle_food");
+   public static final axi<cvg> aw = a("parrot_food");
+   public static final axi<cvg> ax = a("parrot_poisonous_food");
+   public static final axi<cvg> ay = a("axolotl_food");
+   public static final axi<cvg> az = a("gold_ores");
+   public static final axi<cvg> aA = a("iron_ores");
+   public static final axi<cvg> aB = a("diamond_ores");
+   public static final axi<cvg> aC = a("redstone_ores");
+   public static final axi<cvg> aD = a("lapis_ores");
+   public static final axi<cvg> aE = a("coal_ores");
+   public static final axi<cvg> aF = a("emerald_ores");
+   public static final axi<cvg> aG = a("copper_ores");
+   public static final axi<cvg> aH = a("non_flammable_wood");
+   public static final axi<cvg> aI = a("soul_fire_base_blocks");
+   public static final axi<cvg> aJ = a("candles");
+   public static final axi<cvg> aK = a("dirt");
+   public static final axi<cvg> aL = a("terracotta");
+   public static final axi<cvg> aM = a("completes_find_tree_tutorial");
+   public static final axi<cvg> aN = a("boats");
+   public static final axi<cvg> aO = a("chest_boats");
+   public static final axi<cvg> aP = a("fishes");
+   public static final axi<cvg> aQ = a("signs");
+   public static final axi<cvg> aR = a("creeper_drop_music_discs");
+   public static final axi<cvg> aS = a("coals");
+   public static final axi<cvg> aT = a("arrows");
+   public static final axi<cvg> aU = a("lectern_books");
+   public static final axi<cvg> aV = a("bookshelf_books");
+   public static final axi<cvg> aW = a("beacon_payment_items");
+   public static final axi<cvg> aX = a("wooden_tool_materials");
+   public static final axi<cvg> aY = a("stone_tool_materials");
+   public static final axi<cvg> aZ = a("iron_tool_materials");
+   public static final axi<cvg> ba = a("gold_tool_materials");
+   public static final axi<cvg> bb = a("diamond_tool_materials");
+   public static final axi<cvg> bc = a("netherite_tool_materials");
+   public static final axi<cvg> bd = a("stone_crafting_materials");
+   public static final axi<cvg> be = a("freeze_immune_wearables");
+   public static final axi<cvg> bf = a("dampens_vibrations");
+   public static final axi<cvg> bg = a("cluster_max_harvestables");
+   public static final axi<cvg> bh = a("compasses");
+   public static final axi<cvg> bi = a("hanging_signs");
+   public static final axi<cvg> bj = a("creeper_igniters");
+   public static final axi<cvg> bk = a("noteblock_top_instruments");
+   public static final axi<cvg> bl = a("foot_armor");
+   public static final axi<cvg> bm = a("leg_armor");
+   public static final axi<cvg> bn = a("chest_armor");
+   public static final axi<cvg> bo = a("head_armor");
+   public static final axi<cvg> bp = a("skulls");
+   public static final axi<cvg> bq = a("trimmable_armor");
+   public static final axi<cvg> br = a("trim_materials");
+   public static final axi<cvg> bs = a("trim_templates");
+   public static final axi<cvg> bt = a("decorated_pot_sherds");
+   public static final axi<cvg> bu = a("decorated_pot_ingredients");
+   public static final axi<cvg> bv = a("swords");
+   public static final axi<cvg> bw = a("axes");
+   public static final axi<cvg> bx = a("hoes");
+   public static final axi<cvg> by = a("pickaxes");
+   public static final axi<cvg> bz = a("shovels");
+   public static final axi<cvg> bA = a("breaks_decorated_pots");
+   public static final axi<cvg> bB = a("villager_plantable_seeds");
+   public static final axi<cvg> bC = a("villager_picks_up");
+   public static final axi<cvg> bD = a("dyeable");
+   public static final axi<cvg> bE = a("furnace_minecart_fuel");
+   public static final axi<cvg> bF = a("enchantable/foot_armor");
+   public static final axi<cvg> bG = a("enchantable/leg_armor");
+   public static final axi<cvg> bH = a("enchantable/chest_armor");
+   public static final axi<cvg> bI = a("enchantable/head_armor");
+   public static final axi<cvg> bJ = a("enchantable/armor");
+   public static final axi<cvg> bK = a("enchantable/sword");
+   public static final axi<cvg> bL = a("enchantable/fire_aspect");
+   public static final axi<cvg> bM = a("enchantable/sharp_weapon");
+   public static final axi<cvg> bN = a("enchantable/weapon");
+   public static final axi<cvg> bO = a("enchantable/mining");
+   public static final axi<cvg> bP = a("enchantable/mining_loot");
+   public static final axi<cvg> bQ = a("enchantable/fishing");
+   public static final axi<cvg> bR = a("enchantable/trident");
+   public static final axi<cvg> bS = a("enchantable/durability");
+   public static final axi<cvg> bT = a("enchantable/bow");
+   public static final axi<cvg> bU = a("enchantable/equippable");
+   public static final axi<cvg> bV = a("enchantable/crossbow");
+   public static final axi<cvg> bW = a("enchantable/vanishing");
+   public static final axi<cvg> bX = a("enchantable/mace");
 
-public class axb<T> extends AbstractList<T> implements ayk<T> {
-   private static final int a = 1;
-   private Object[] b;
-   private int c;
-   private int d;
-
-   public axb() {
-      this(1);
+   private axb() {
    }
 
-   public axb(int $$0) {
-      this.b = new Object[$$0];
-      this.c = 0;
-      this.d = 0;
-   }
-
-   @Override
-   public int size() {
-      return this.d;
-   }
-
-   @VisibleForTesting
-   public int a() {
-      return this.b.length;
-   }
-
-   private int a(int $$0) {
-      return ($$0 + this.c) % this.b.length;
-   }
-
-   @Override
-   public T get(int $$0) {
-      this.b($$0);
-      return this.c(this.a($$0));
-   }
-
-   private static void a(int $$0, int $$1) {
-      if ($$0 < 0 || $$0 >= $$1) {
-         throw new IndexOutOfBoundsException($$0);
-      }
-   }
-
-   private void b(int $$0) {
-      a($$0, this.d);
-   }
-
-   private T c(int $$0) {
-      return (T)this.b[$$0];
-   }
-
-   @Override
-   public T set(int $$0, T $$1) {
-      this.b($$0);
-      Objects.requireNonNull($$1);
-      int $$2 = this.a($$0);
-      T $$3 = this.c($$2);
-      this.b[$$2] = $$1;
-      return $$3;
-   }
-
-   @Override
-   public void add(int $$0, T $$1) {
-      a($$0, this.d + 1);
-      Objects.requireNonNull($$1);
-      if (this.d == this.b.length) {
-         this.c();
-      }
-
-      int $$2 = this.a($$0);
-      if ($$0 == this.d) {
-         this.b[$$2] = $$1;
-      } else if ($$0 == 0) {
-         this.c--;
-         if (this.c < 0) {
-            this.c = this.c + this.b.length;
-         }
-
-         this.b[this.a(0)] = $$1;
-      } else {
-         for (int $$3 = this.d - 1; $$3 >= $$0; $$3--) {
-            this.b[this.a($$3 + 1)] = this.b[this.a($$3)];
-         }
-
-         this.b[$$2] = $$1;
-      }
-
-      this.modCount++;
-      this.d++;
-   }
-
-   private void c() {
-      int $$0 = this.b.length + Math.max(this.b.length >> 1, 1);
-      Object[] $$1 = new Object[$$0];
-      this.a($$1, this.d);
-      this.c = 0;
-      this.b = $$1;
-   }
-
-   @Override
-   public T remove(int $$0) {
-      this.b($$0);
-      int $$1 = this.a($$0);
-      T $$2 = this.c($$1);
-      if ($$0 == 0) {
-         this.b[$$1] = null;
-         this.c++;
-      } else if ($$0 == this.d - 1) {
-         this.b[$$1] = null;
-      } else {
-         for (int $$3 = $$0 + 1; $$3 < this.d; $$3++) {
-            this.b[this.a($$3 - 1)] = this.get($$3);
-         }
-
-         this.b[this.a(this.d - 1)] = null;
-      }
-
-      this.modCount++;
-      this.d--;
-      return $$2;
-   }
-
-   @Override
-   public boolean removeIf(Predicate<? super T> $$0) {
-      int $$1 = 0;
-
-      for (int $$2 = 0; $$2 < this.d; $$2++) {
-         T $$3 = this.get($$2);
-         if ($$0.test($$3)) {
-            $$1++;
-         } else if ($$1 != 0) {
-            this.b[this.a($$2 - $$1)] = $$3;
-            this.b[this.a($$2)] = null;
-         }
-      }
-
-      this.modCount += $$1;
-      this.d -= $$1;
-      return $$1 != 0;
-   }
-
-   private void a(Object[] $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         $$0[$$2] = this.get($$2);
-      }
-   }
-
-   @Override
-   public void replaceAll(UnaryOperator<T> $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         int $$2 = this.a($$1);
-         this.b[$$2] = Objects.requireNonNull($$0.apply(this.c($$1)));
-      }
-   }
-
-   @Override
-   public void forEach(Consumer<? super T> $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         $$0.accept(this.get($$1));
-      }
-   }
-
-   @Override
-   public void addFirst(T $$0) {
-      this.add(0, $$0);
-   }
-
-   @Override
-   public void addLast(T $$0) {
-      this.add(this.d, $$0);
-   }
-
-   @Override
-   public boolean offerFirst(T $$0) {
-      this.addFirst($$0);
-      return true;
-   }
-
-   @Override
-   public boolean offerLast(T $$0) {
-      this.addLast($$0);
-      return true;
-   }
-
-   @Override
-   public T removeFirst() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.remove(0);
-      }
-   }
-
-   @Override
-   public T removeLast() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.remove(this.d - 1);
-      }
-   }
-
-   @Override
-   public ayk<T> b() {
-      return new axb.b(this);
-   }
-
-   @Nullable
-   @Override
-   public T pollFirst() {
-      return this.d == 0 ? null : this.removeFirst();
-   }
-
-   @Nullable
-   @Override
-   public T pollLast() {
-      return this.d == 0 ? null : this.removeLast();
-   }
-
-   @Override
-   public T getFirst() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.get(0);
-      }
-   }
-
-   @Override
-   public T getLast() {
-      if (this.d == 0) {
-         throw new NoSuchElementException();
-      } else {
-         return this.get(this.d - 1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public T peekFirst() {
-      return this.d == 0 ? null : this.getFirst();
-   }
-
-   @Nullable
-   @Override
-   public T peekLast() {
-      return this.d == 0 ? null : this.getLast();
-   }
-
-   @Override
-   public boolean removeFirstOccurrence(Object $$0) {
-      for (int $$1 = 0; $$1 < this.d; $$1++) {
-         T $$2 = this.get($$1);
-         if (Objects.equals($$0, $$2)) {
-            this.remove($$1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public boolean removeLastOccurrence(Object $$0) {
-      for (int $$1 = this.d - 1; $$1 >= 0; $$1--) {
-         T $$2 = this.get($$1);
-         if (Objects.equals($$0, $$2)) {
-            this.remove($$1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   public Iterator<T> descendingIterator() {
-      return new axb.a();
-   }
-
-   class a implements Iterator<T> {
-      private int b = axb.this.size() - 1;
-
-      public a() {
-      }
-
-      @Override
-      public boolean hasNext() {
-         return this.b >= 0;
-      }
-
-      @Override
-      public T next() {
-         return axb.this.get(this.b--);
-      }
-
-      @Override
-      public void remove() {
-         axb.this.remove(this.b + 1);
-      }
-   }
-
-   class b extends AbstractList<T> implements ayk<T> {
-      private final axb<T> b;
-
-      public b(final axb<T> $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public ayk<T> b() {
-         return this.b;
-      }
-
-      @Override
-      public T getFirst() {
-         return this.b.getLast();
-      }
-
-      @Override
-      public T getLast() {
-         return this.b.getFirst();
-      }
-
-      @Override
-      public void addFirst(T $$0) {
-         this.b.addLast($$0);
-      }
-
-      @Override
-      public void addLast(T $$0) {
-         this.b.addFirst($$0);
-      }
-
-      @Override
-      public boolean offerFirst(T $$0) {
-         return this.b.offerLast($$0);
-      }
-
-      @Override
-      public boolean offerLast(T $$0) {
-         return this.b.offerFirst($$0);
-      }
-
-      @Override
-      public T pollFirst() {
-         return this.b.pollLast();
-      }
-
-      @Override
-      public T pollLast() {
-         return this.b.pollFirst();
-      }
-
-      @Override
-      public T peekFirst() {
-         return this.b.peekLast();
-      }
-
-      @Override
-      public T peekLast() {
-         return this.b.peekFirst();
-      }
-
-      @Override
-      public T removeFirst() {
-         return this.b.removeLast();
-      }
-
-      @Override
-      public T removeLast() {
-         return this.b.removeFirst();
-      }
-
-      @Override
-      public boolean removeFirstOccurrence(Object $$0) {
-         return this.b.removeLastOccurrence($$0);
-      }
-
-      @Override
-      public boolean removeLastOccurrence(Object $$0) {
-         return this.b.removeFirstOccurrence($$0);
-      }
-
-      @Override
-      public Iterator<T> descendingIterator() {
-         return this.b.iterator();
-      }
-
-      @Override
-      public int size() {
-         return this.b.size();
-      }
-
-      @Override
-      public boolean isEmpty() {
-         return this.b.isEmpty();
-      }
-
-      @Override
-      public boolean contains(Object $$0) {
-         return this.b.contains($$0);
-      }
-
-      @Override
-      public T get(int $$0) {
-         return this.b.get(this.a($$0));
-      }
-
-      @Override
-      public T set(int $$0, T $$1) {
-         return this.b.set(this.a($$0), $$1);
-      }
-
-      @Override
-      public void add(int $$0, T $$1) {
-         this.b.add(this.a($$0) + 1, $$1);
-      }
-
-      @Override
-      public T remove(int $$0) {
-         return this.b.remove(this.a($$0));
-      }
-
-      @Override
-      public int indexOf(Object $$0) {
-         return this.a(this.b.lastIndexOf($$0));
-      }
-
-      @Override
-      public int lastIndexOf(Object $$0) {
-         return this.a(this.b.indexOf($$0));
-      }
-
-      @Override
-      public List<T> subList(int $$0, int $$1) {
-         return this.b.subList(this.a($$1) + 1, this.a($$0) + 1).reversed();
-      }
-
-      @Override
-      public Iterator<T> iterator() {
-         return this.b.descendingIterator();
-      }
-
-      @Override
-      public void clear() {
-         this.b.clear();
-      }
-
-      private int a(int $$0) {
-         return $$0 == -1 ? -1 : this.b.size() - 1 - $$0;
-      }
+   private static axi<cvg> a(String $$0) {
+      return axi.a(lv.K, alb.b($$0));
    }
 }

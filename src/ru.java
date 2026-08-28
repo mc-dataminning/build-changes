@@ -1,82 +1,54 @@
 import java.util.List;
 
 public class ru {
-   public static final akq<ebq<?, ?>> a = rr.a("ore_magma");
-   public static final akq<ebq<?, ?>> b = rr.a("ore_soul_sand");
-   public static final akq<ebq<?, ?>> c = rr.a("ore_nether_gold");
-   public static final akq<ebq<?, ?>> d = rr.a("ore_quartz");
-   public static final akq<ebq<?, ?>> e = rr.a("ore_gravel_nether");
-   public static final akq<ebq<?, ?>> f = rr.a("ore_blackstone");
-   public static final akq<ebq<?, ?>> g = rr.a("ore_dirt");
-   public static final akq<ebq<?, ?>> h = rr.a("ore_gravel");
-   public static final akq<ebq<?, ?>> i = rr.a("ore_granite");
-   public static final akq<ebq<?, ?>> j = rr.a("ore_diorite");
-   public static final akq<ebq<?, ?>> k = rr.a("ore_andesite");
-   public static final akq<ebq<?, ?>> l = rr.a("ore_tuff");
-   public static final akq<ebq<?, ?>> m = rr.a("ore_coal");
-   public static final akq<ebq<?, ?>> n = rr.a("ore_coal_buried");
-   public static final akq<ebq<?, ?>> o = rr.a("ore_iron");
-   public static final akq<ebq<?, ?>> p = rr.a("ore_iron_small");
-   public static final akq<ebq<?, ?>> q = rr.a("ore_gold");
-   public static final akq<ebq<?, ?>> r = rr.a("ore_gold_buried");
-   public static final akq<ebq<?, ?>> s = rr.a("ore_redstone");
-   public static final akq<ebq<?, ?>> t = rr.a("ore_diamond_small");
-   public static final akq<ebq<?, ?>> u = rr.a("ore_diamond_medium");
-   public static final akq<ebq<?, ?>> v = rr.a("ore_diamond_large");
-   public static final akq<ebq<?, ?>> w = rr.a("ore_diamond_buried");
-   public static final akq<ebq<?, ?>> x = rr.a("ore_lapis");
-   public static final akq<ebq<?, ?>> y = rr.a("ore_lapis_buried");
-   public static final akq<ebq<?, ?>> z = rr.a("ore_infested");
-   public static final akq<ebq<?, ?>> A = rr.a("ore_emerald");
-   public static final akq<ebq<?, ?>> B = rr.a("ore_ancient_debris_large");
-   public static final akq<ebq<?, ?>> C = rr.a("ore_ancient_debris_small");
-   public static final akq<ebq<?, ?>> D = rr.a("ore_copper_small");
-   public static final akq<ebq<?, ?>> E = rr.a("ore_copper_large");
-   public static final akq<ebq<?, ?>> F = rr.a("ore_clay");
+   public static void a(qt<eco<?, ?>> $$0) {
+      rr.a($$0);
+      rs.a($$0);
+      rt.a($$0);
+      rv.a($$0);
+      rw.a($$0);
+      rx.a($$0);
+      ry.a($$0);
+      rz.a($$0);
+      sa.a($$0);
+   }
 
-   public static void a(qq<ebq<?, ?>> $$0) {
-      enn $$1 = new env(awe.bf);
-      enn $$2 = new env(awe.bg);
-      enn $$3 = new env(awe.bh);
-      enn $$4 = new emv(dga.dV);
-      enn $$5 = new env(awe.bi);
-      List<eeq.a> $$6 = List.of(eeq.a($$2, dga.P.o()), eeq.a($$3, dga.Q.o()));
-      List<eeq.a> $$7 = List.of(eeq.a($$2, dga.N.o()), eeq.a($$3, dga.O.o()));
-      List<eeq.a> $$8 = List.of(eeq.a($$2, dga.cx.o()), eeq.a($$3, dga.cy.o()));
-      List<eeq.a> $$9 = List.of(eeq.a($$2, dga.aR.o()), eeq.a($$3, dga.aS.o()));
-      List<eeq.a> $$10 = List.of(eeq.a($$2, dga.ra.o()), eeq.a($$3, dga.rb.o()));
-      List<eeq.a> $$11 = List.of(eeq.a($$2, dga.R.o()), eeq.a($$3, dga.S.o()));
-      rr.a($$0, a, ece.I, new eeq($$4, dga.kJ.o(), 33));
-      rr.a($$0, b, ece.I, new eeq($$4, dga.dW.o(), 12));
-      rr.a($$0, c, ece.I, new eeq($$4, dga.T.o(), 10));
-      rr.a($$0, d, ece.I, new eeq($$4, dga.hb.o(), 14));
-      rr.a($$0, e, ece.I, new eeq($$4, dga.L.o(), 33));
-      rr.a($$0, f, ece.I, new eeq($$4, dga.pr.o(), 33));
-      rr.a($$0, g, ece.I, new eeq($$1, dga.j.o(), 33));
-      rr.a($$0, h, ece.I, new eeq($$1, dga.L.o(), 33));
-      rr.a($$0, i, ece.I, new eeq($$1, dga.c.o(), 64));
-      rr.a($$0, j, ece.I, new eeq($$1, dga.e.o(), 64));
-      rr.a($$0, k, ece.I, new eeq($$1, dga.g.o(), 64));
-      rr.a($$0, l, ece.I, new eeq($$1, dga.qz.o(), 64));
-      rr.a($$0, m, ece.I, new eeq($$11, 17));
-      rr.a($$0, n, ece.I, new eeq($$11, 17, 0.5F));
-      rr.a($$0, o, ece.I, new eeq($$6, 9));
-      rr.a($$0, p, ece.I, new eeq($$6, 4));
-      rr.a($$0, q, ece.I, new eeq($$7, 9));
-      rr.a($$0, r, ece.I, new eeq($$7, 9, 0.5F));
-      rr.a($$0, s, ece.I, new eeq(List.of(eeq.a($$2, dga.dI.o()), eeq.a($$3, dga.dJ.o())), 8));
-      rr.a($$0, t, ece.I, new eeq($$8, 4, 0.5F));
-      rr.a($$0, v, ece.I, new eeq($$8, 12, 0.7F));
-      rr.a($$0, w, ece.I, new eeq($$8, 8, 1.0F));
-      rr.a($$0, u, ece.I, new eeq($$8, 8, 0.5F));
-      rr.a($$0, x, ece.I, new eeq($$9, 7));
-      rr.a($$0, y, ece.I, new eeq($$9, 7, 1.0F));
-      rr.a($$0, z, ece.I, new eeq(List.of(eeq.a($$2, dga.eN.o()), eeq.a($$3, dga.td.o())), 9));
-      rr.a($$0, A, ece.I, new eeq(List.of(eeq.a($$2, dga.fE.o()), eeq.a($$3, dga.fF.o())), 3));
-      rr.a($$0, B, ece.af, new eeq($$5, dga.pj.o(), 3, 1.0F));
-      rr.a($$0, C, ece.af, new eeq($$5, dga.pj.o(), 2, 1.0F));
-      rr.a($$0, D, ece.I, new eeq($$10, 10));
-      rr.a($$0, E, ece.I, new eeq($$10, 20));
-      rr.a($$0, F, ece.I, new eeq($$1, dga.dR.o(), 33));
+   private static ebd a(List<dgv> $$0) {
+      ebd $$1;
+      if (!$$0.isEmpty()) {
+         $$1 = ebd.a(ebd.c, ebd.a(jj.a.q(), $$0));
+      } else {
+         $$1 = ebd.c;
+      }
+
+      return $$1;
+   }
+
+   public static eft a(int $$0, jn<ejs> $$1) {
+      return new eft($$0, 7, 3, $$1);
+   }
+
+   public static <FC extends efg, F extends edc<FC>> eft a(F $$0, FC $$1, List<dgv> $$2, int $$3) {
+      return a($$3, sj.a($$0, $$1, a($$2)));
+   }
+
+   public static <FC extends efg, F extends edc<FC>> eft a(F $$0, FC $$1, List<dgv> $$2) {
+      return a($$0, $$1, $$2, 96);
+   }
+
+   public static <FC extends efg, F extends edc<FC>> eft a(F $$0, FC $$1) {
+      return a($$0, $$1, List.of(), 96);
+   }
+
+   public static ala<eco<?, ?>> a(String $$0) {
+      return ala.a(lv.aI, alb.b($$0));
+   }
+
+   public static void a(qt<eco<?, ?>> $$0, ala<eco<?, ?>> $$1, edc<efn> $$2) {
+      a($$0, $$1, $$2, efg.m);
+   }
+
+   public static <FC extends efg, F extends edc<FC>> void a(qt<eco<?, ?>> $$0, ala<eco<?, ?>> $$1, F $$2, FC $$3) {
+      $$0.a($$1, new eco($$2, $$3));
    }
 }

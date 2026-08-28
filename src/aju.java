@@ -1,8 +1,12 @@
-import io.netty.buffer.ByteBuf;
-
 public class aju {
-   public static final wh.a<ajr, ByteBuf> a = zl.a(vu.c, $$0 -> $$0.a(ajt.b, ajs.b).a(ajk.b, ajm.a));
-   public static final wh<ajr> b = a.a($$0 -> $$0);
-   public static final wh.a<ajo, vw> c = zl.b(vu.c, $$0 -> $$0.a(ajt.a, ajp.a).a(ajk.a, ajj.a));
-   public static final wh<ajo> d = c.a(vw::new);
+   public static final zm<ajt> a = a("pong_response");
+   public static final zm<ajw> b = b("ping_request");
+
+   private static <T extends zk<ajs>> zm<T> a(String $$0) {
+      return new zm<>(zl.b, alb.b($$0));
+   }
+
+   private static <T extends zk<ajv>> zm<T> b(String $$0) {
+      return new zm<>(zl.a, alb.b($$0));
+   }
 }

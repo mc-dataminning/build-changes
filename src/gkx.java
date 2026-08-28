@@ -1,115 +1,59 @@
-public class gkx extends glp<cjz, fvr> {
-   private static final akr a = akr.b("textures/entity/guardian.png");
-   private static final akr i = akr.b("textures/entity/guardian_beam.png");
-   private static final gfh j = gfh.e(i);
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-   public gkx(gkj.a $$0) {
-      this($$0, 0.5F, fyj.an);
+public class gkx implements gkq.a {
+   private final fib a;
+   private final Map<Long, Map<je, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   gkx(fib $$0) {
+      this.a = $$0;
    }
 
-   protected gkx(gkj.a $$0, float $$1, fyi $$2) {
-      super($$0, new fvr($$0.a($$2)), $$1);
+   public void a(long $$0, je $$1) {
+      Map<je, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
    }
 
-   public boolean a(cjz $$0, gie $$1, double $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else {
-         if ($$0.gm()) {
-            btn $$5 = $$0.gn();
-            if ($$5 != null) {
-               exc $$6 = this.a($$5, (double)$$5.dk() * 0.5, 1.0F);
-               exc $$7 = this.a($$0, (double)$$0.cL(), 1.0F);
-               return $$1.a(new ewx($$7.c, $$7.d, $$7.e, $$6.c, $$6.d, $$6.e));
+   @Override
+   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.aa();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<je> $$8 = Sets.newHashSet();
+      Map<je, Integer> $$9 = Maps.newHashMap();
+      fcy $$10 = $$1.getBuffer(ghe.z());
+      Iterator<Entry<Long, Map<je, Integer>>> $$11 = this.b.entrySet().iterator();
+
+      while ($$11.hasNext()) {
+         Entry<Long, Map<je, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<je, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<je, Integer> $$16 : $$14.entrySet()) {
+               je $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  exz $$19 = new exz(je.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  ghl.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
             }
          }
-
-         return false;
       }
-   }
 
-   private exc a(btn $$0, double $$1, float $$2) {
-      double $$3 = ayo.d((double)$$2, $$0.ad, $$0.dt());
-      double $$4 = ayo.d((double)$$2, $$0.ae, $$0.dv()) + $$1;
-      double $$5 = ayo.d((double)$$2, $$0.af, $$0.dz());
-      return new exc($$3, $$4, $$5);
-   }
-
-   public void a(cjz $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      btn $$6 = $$0.gn();
-      if ($$6 != null) {
-         float $$7 = $$0.J($$2);
-         float $$8 = $$0.go() + $$2;
-         float $$9 = $$8 * 0.5F % 1.0F;
-         float $$10 = $$0.cL();
-         $$3.a();
-         $$3.a(0.0F, $$10, 0.0F);
-         exc $$11 = this.a($$6, (double)$$6.dk() * 0.5, $$2);
-         exc $$12 = this.a($$0, (double)$$10, $$2);
-         exc $$13 = $$11.d($$12);
-         float $$14 = (float)($$13.f() + 1.0);
-         $$13 = $$13.d();
-         float $$15 = (float)Math.acos($$13.d);
-         float $$16 = (float)Math.atan2($$13.e, $$13.c);
-         $$3.a(a.d.rotationDegrees(((float) (Math.PI / 2) - $$16) * (180.0F / (float)Math.PI)));
-         $$3.a(a.b.rotationDegrees($$15 * (180.0F / (float)Math.PI)));
-         int $$17 = 1;
-         float $$18 = $$8 * 0.05F * -1.5F;
-         float $$19 = $$7 * $$7;
-         int $$20 = 64 + (int)($$19 * 191.0F);
-         int $$21 = 32 + (int)($$19 * 191.0F);
-         int $$22 = 128 - (int)($$19 * 64.0F);
-         float $$23 = 0.2F;
-         float $$24 = 0.282F;
-         float $$25 = ayo.b($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$26 = ayo.a($$18 + (float) (Math.PI * 3.0 / 4.0)) * 0.282F;
-         float $$27 = ayo.b($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$28 = ayo.a($$18 + (float) (Math.PI / 4)) * 0.282F;
-         float $$29 = ayo.b($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$30 = ayo.a($$18 + ((float) Math.PI * 5.0F / 4.0F)) * 0.282F;
-         float $$31 = ayo.b($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$32 = ayo.a($$18 + ((float) Math.PI * 7.0F / 4.0F)) * 0.282F;
-         float $$33 = ayo.b($$18 + (float) Math.PI) * 0.2F;
-         float $$34 = ayo.a($$18 + (float) Math.PI) * 0.2F;
-         float $$35 = ayo.b($$18 + 0.0F) * 0.2F;
-         float $$36 = ayo.a($$18 + 0.0F) * 0.2F;
-         float $$37 = ayo.b($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$38 = ayo.a($$18 + (float) (Math.PI / 2)) * 0.2F;
-         float $$39 = ayo.b($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$40 = ayo.a($$18 + (float) (Math.PI * 3.0 / 2.0)) * 0.2F;
-         float $$42 = 0.0F;
-         float $$43 = 0.4999F;
-         float $$44 = -1.0F + $$9;
-         float $$45 = $$14 * 2.5F + $$44;
-         fbm $$46 = $$4.getBuffer(j);
-         fbi.a $$47 = $$3.c();
-         a($$46, $$47, $$33, $$14, $$34, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$47, $$33, 0.0F, $$34, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$47, $$35, 0.0F, $$36, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$47, $$35, $$14, $$36, $$20, $$21, $$22, 0.0F, $$45);
-         a($$46, $$47, $$37, $$14, $$38, $$20, $$21, $$22, 0.4999F, $$45);
-         a($$46, $$47, $$37, 0.0F, $$38, $$20, $$21, $$22, 0.4999F, $$44);
-         a($$46, $$47, $$39, 0.0F, $$40, $$20, $$21, $$22, 0.0F, $$44);
-         a($$46, $$47, $$39, $$14, $$40, $$20, $$21, $$22, 0.0F, $$45);
-         float $$48 = 0.0F;
-         if ($$0.ai % 2 == 0) {
-            $$48 = 0.5F;
-         }
-
-         a($$46, $$47, $$25, $$14, $$26, $$20, $$21, $$22, 0.5F, $$48 + 0.5F);
-         a($$46, $$47, $$27, $$14, $$28, $$20, $$21, $$22, 1.0F, $$48 + 0.5F);
-         a($$46, $$47, $$31, $$14, $$32, $$20, $$21, $$22, 1.0F, $$48);
-         a($$46, $$47, $$29, $$14, $$30, $$20, $$21, $$22, 0.5F, $$48);
-         $$3.b();
+      for (Entry<je, Integer> $$20 : $$9.entrySet()) {
+         je $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         gkq.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
-   }
-
-   private static void a(fbm $$0, fbi.a $$1, float $$2, float $$3, float $$4, int $$5, int $$6, int $$7, float $$8, float $$9) {
-      $$0.a($$1, $$2, $$3, $$4).a($$5, $$6, $$7, 255).a($$8, $$9).b(gqc.d).c(15728880).b($$1, 0.0F, 1.0F, 0.0F);
-   }
-
-   public akr a(cjz $$0) {
-      return a;
    }
 }

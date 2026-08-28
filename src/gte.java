@@ -1,20 +1,9 @@
-import java.util.UUID;
-
-public interface gte {
-   void a(UUID var1, gte.b var2);
-
-   void a(UUID var1, gte.a var2);
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
-   }
-
-   public static enum b {
-      a,
-      b;
-   }
+public class gte extends gts {
+   private static final alb g = alb.b("textures/entity/frog/temperate_frog.png");
+   public boolean a;
+   public final btd b = new btd();
+   public final btd c = new btd();
+   public final btd d = new btd();
+   public final btd e = new btd();
+   public alb f = g;
 }

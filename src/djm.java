@@ -1,73 +1,131 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public abstract class djm extends djl implements dgb {
-   protected djm(dtb.d $$0, ji $$1, exv $$2, boolean $$3) {
-      super($$0, $$1, $$2, $$3);
+public class djm extends dfp<dsa> implements dnx {
+   public static final MapCodec<djm> b = b(djm::new);
+   public static final duu c = dkr.aE;
+   public static final dur d = duq.C;
+   protected static final eyx e = dgv.a(1.0, 0.0, 1.0, 15.0, 14.0, 15.0);
+   private static final xd f = xd.c("container.enderchest");
+
+   @Override
+   public MapCodec<djm> a() {
+      return b;
+   }
+
+   protected djm(dtz.d $$0) {
+      super($$0, () -> drg.d);
+      this.l(this.E.b().b(c, jj.c).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends djm> a();
-
-   protected dtc a(dtc $$0, dtc $$1) {
-      return $$1;
+   public djc.c<? extends drl> a(dua $$0, dds $$1, je $$2, boolean $$3) {
+      return djc.b::b;
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return e;
+   }
 
-      djn $$6 = this.c();
-      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
-         return this.a($$0, $$6.a($$3));
-      } else {
-         if (this.b) {
-            $$3.a($$4, epf.c, epf.c.a($$3));
+   @Override
+   protected dnc a_(dua $$0) {
+      return dnc.b;
+   }
+
+   @Override
+   public dua a(cyw $$0) {
+      eqb $$1 = $$0.q().b_($$0.a());
+      return this.o().b(c, $$0.g().g()).b(d, Boolean.valueOf($$1.a() == eqc.c));
+   }
+
+   @Override
+   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
+      cse $$5 = $$3.gp();
+      if ($$5 != null && $$1.c_($$2) instanceof dsa $$7) {
+         je $$9 = $$2.d();
+         if ($$1.a_($$9).d($$1, $$9)) {
+            return brk.a;
+         } else {
+            if (!$$1.B) {
+               $$5.a($$7);
+               $$3.a(new brs(($$1x, $$2x, $$3x) -> cqz.a($$1x, $$2x, $$5), f));
+               $$3.a(awn.aj);
+               cmg.a($$3, true);
+            }
+
+            return brk.a;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return brk.a;
       }
    }
 
    @Override
-   public cuq a(dcz $$0, jd $$1, dtc $$2) {
-      return new cuq(this.c());
+   public dre a(je $$0, dua $$1) {
+      return new dsa($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
+      return $$0.B ? a($$2, drg.d, dsa::a) : null;
    }
 
    @Override
-   public boolean b(dcz $$0, jd $$1, dtc $$2) {
-      Optional<jd> $$3 = this.a($$0, $$1, $$2.b());
-      return $$3.isPresent() && this.c().g($$0.a_($$3.get().a(this.a)));
-   }
-
-   @Override
-   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
-      Optional<jd> $$4 = this.a($$0, $$2, $$3.b());
-      if ($$4.isPresent()) {
-         dtc $$5 = $$0.a_($$4.get());
-         ((djn)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
+      for (int $$4 = 0; $$4 < 3; $$4++) {
+         int $$5 = $$3.a(2) * 2 - 1;
+         int $$6 = $$3.a(2) * 2 - 1;
+         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
+         double $$8 = (double)((float)$$2.v() + $$3.i());
+         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
+         double $$10 = (double)($$3.i() * (float)$$5);
+         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
+         double $$12 = (double)($$3.i() * (float)$$6);
+         $$1.a(ln.ac, $$7, $$8, $$9, $$10, $$11, $$12);
       }
    }
 
-   private Optional<jd> a(dcc $$0, jd $$1, dfy $$2) {
-      return l.a($$0, $$1, $$2, this.a, this.c());
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
    }
 
    @Override
-   protected boolean a(dtc $$0, cyd $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      return $$2 && $$1.n().a(this.c().r()) ? false : $$2;
+   protected dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 
    @Override
-   protected dfy b() {
-      return this;
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected eqb b_(dua $$0) {
+      return $$0.c(d) ? eqc.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eqc.c, eqc.c.a($$3));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected boolean a(dua $$0, eqq $$1) {
+      return false;
+   }
+
+   @Override
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      dre $$4 = $$1.c_($$2);
+      if ($$4 instanceof dsa) {
+         ((dsa)$$4).b();
+      }
    }
 }

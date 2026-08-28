@@ -1,118 +1,147 @@
-public class cpq {
-   private int a = 20;
-   private float b;
-   private float c;
-   private int d;
-   private int e = 20;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public cpq() {
-      this.b = 5.0F;
+public interface cpq extends brd, brm {
+   eye dq();
+
+   exz cO();
+
+   @Nullable
+   ala<esy> E();
+
+   void a(@Nullable ala<esy> var1);
+
+   long F();
+
+   void a(long var1);
+
+   jw<cvl> G();
+
+   void I();
+
+   dds dS();
+
+   boolean dN();
+
+   @Override
+   default boolean c() {
+      return this.g();
    }
 
-   private void b(int $$0, float $$1) {
-      this.a = ayo.a($$0 + this.a, 0, 20);
-      this.b = ayo.a($$1 + this.b, 0.0F, (float)this.a);
-   }
-
-   public void a(int $$0, float $$1) {
-      this.b($$0, cpp.a($$0, $$1));
-   }
-
-   public void a(cpr $$0) {
-      this.b($$0.b(), $$0.c());
-   }
-
-   public void a(cmx $$0) {
-      bqo $$1 = $$0.dO().al();
-      this.e = this.a;
-      if (this.c > 4.0F) {
-         this.c -= 4.0F;
-         if (this.b > 0.0F) {
-            this.b = Math.max(this.b - 1.0F, 0.0F);
-         } else if ($$1 != bqo.a) {
-            this.a = Math.max(this.a - 1, 0);
-         }
-      }
-
-      boolean $$2 = $$0.dO().ab().b(dcs.k);
-      if ($$2 && this.b > 0.0F && $$0.gj() && this.a >= 20) {
-         this.d++;
-         if (this.d >= 10) {
-            float $$3 = Math.min(this.b, 6.0F);
-            $$0.c($$3 / 6.0F);
-            this.a($$3);
-            this.d = 0;
-         }
-      } else if ($$2 && this.a >= 18 && $$0.gj()) {
-         this.d++;
-         if (this.d >= 80) {
-            $$0.c(1.0F);
-            this.a(6.0F);
-            this.d = 0;
-         }
-      } else if (this.a <= 0) {
-         this.d++;
-         if (this.d >= 80) {
-            if ($$0.ew() > 10.0F || $$1 == bqo.d || $$0.ew() > 1.0F && $$1 == bqo.c) {
-               $$0.a($$0.dP().j(), 1.0F);
-            }
-
-            this.d = 0;
+   default void a(uf $$0, jp.a $$1) {
+      if (this.E() != null) {
+         $$0.a("LootTable", this.E().a().toString());
+         if (this.F() != 0L) {
+            $$0.a("LootTableSeed", this.F());
          }
       } else {
-         this.d = 0;
+         bre.a($$0, this.G(), $$1);
       }
    }
 
-   public void a(ub $$0) {
-      if ($$0.b("foodLevel", 99)) {
-         this.a = $$0.h("foodLevel");
-         this.d = $$0.h("foodTickTimer");
-         this.b = $$0.j("foodSaturationLevel");
-         this.c = $$0.j("foodExhaustionLevel");
+   default void b(uf $$0, jp.a $$1) {
+      this.I();
+      if ($$0.b("LootTable", 8)) {
+         this.a(ala.a(lv.bc, alb.a($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         bre.b($$0, this.G(), $$1);
       }
    }
 
-   public void b(ub $$0) {
-      $$0.a("foodLevel", this.a);
-      $$0.a("foodTickTimer", this.d);
-      $$0.a("foodSaturationLevel", this.b);
-      $$0.a("foodExhaustionLevel", this.c);
+   default void a(bsb $$0, dds $$1, btj $$2) {
+      if ($$1.ac().b(ddo.i)) {
+         brg.a($$1, $$2, this);
+         if (!$$1.B) {
+            btj $$3 = $$0.c();
+            if ($$3 != null && $$3.ao() == btq.by) {
+               cmg.a((cnp)$$3, true);
+            }
+         }
+      }
    }
 
-   public int a() {
-      return this.a;
+   default brk c_(cnp $$0) {
+      $$0.a(this);
+      return brk.a;
    }
 
-   public int b() {
-      return this.e;
+   default void f(@Nullable cnp $$0) {
+      MinecraftServer $$1 = this.dS().o();
+      if (this.E() != null && $$1 != null) {
+         esy $$2 = $$1.bd().b(this.E());
+         if ($$0 != null) {
+            an.Q.a((arh)$$0, this.E());
+         }
+
+         this.a(null);
+         esw.a $$3 = new esw.a((arg)this.dS()).a(evp.f, this.dq());
+         if ($$0 != null) {
+            $$3.a($$0.gy()).a(evp.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(evo.c), this.F());
+      }
    }
 
-   public boolean c() {
-      return this.a < 20;
+   default void f() {
+      this.f(null);
+      this.G().clear();
    }
 
-   public void a(float $$0) {
-      this.c = Math.min(this.c + $$0, 40.0F);
+   default boolean g() {
+      for (cvl $$0 : this.G()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public float d() {
-      return this.c;
+   default cvl e_(int $$0) {
+      this.f(null);
+      cvl $$1 = this.G().get($$0);
+      if ($$1.f()) {
+         return cvl.k;
+      } else {
+         this.G().set($$0, cvl.k);
+         return $$1;
+      }
    }
 
-   public float e() {
-      return this.b;
+   default cvl f_(int $$0) {
+      this.f(null);
+      return this.G().get($$0);
    }
 
-   public void a(int $$0) {
-      this.a = $$0;
+   default cvl b(int $$0, int $$1) {
+      this.f(null);
+      return bre.a(this.G(), $$0, $$1);
    }
 
-   public void b(float $$0) {
-      this.b = $$0;
+   default void c(int $$0, cvl $$1) {
+      this.f(null);
+      this.G().set($$0, $$1);
+      $$1.f(this.f_($$1));
    }
 
-   public void c(float $$0) {
-      this.c = $$0;
+   default buw g_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new buw() {
+         @Override
+         public cvl a() {
+            return cpq.this.f_($$0);
+         }
+
+         @Override
+         public boolean a(cvl $$0x) {
+            cpq.this.c($$0, $$0);
+            return true;
+         }
+      } : buw.a;
+   }
+
+   default boolean g(cnp $$0) {
+      return !this.dN() && $$0.a(this.cO(), 4.0);
    }
 }

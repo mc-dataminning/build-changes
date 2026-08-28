@@ -1,44 +1,62 @@
-import java.util.function.BiFunction;
+public class acb implements zk<abz> {
+   public static final zb<wa, acb> a = zk.a(acb::a, acb::new);
+   private final int b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final int f;
 
-public class acb implements zg<abu> {
-   public static final yx<wk, acb> a = yx.a(jd.b, acb::b, yv.a(lu.h), acb::e, yv.p, acb::f, acb::new);
-   private final jd b;
-   private final dqj<?> c;
-   private final ub d;
-
-   public static acb a(dqh $$0, BiFunction<dqh, ka, ub> $$1) {
-      ka $$2 = $$0.i().H_();
-      return new acb($$0.aD_(), $$0.r(), $$1.apply($$0, $$2));
+   public acb(btv $$0, arf $$1) {
+      this.b = $$0.ap();
+      eye $$2 = $$1.b();
+      this.c = $$2.a();
+      this.d = $$2.b();
+      this.e = $$2.c();
+      this.f = $$0.m();
    }
 
-   public static acb a(dqh $$0) {
-      return a($$0, dqh::a);
+   private acb(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.readShort();
    }
 
-   private acb(jd $$0, dqj<?> $$1, ub $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.m(this.f);
    }
 
    @Override
-   public zi<acb> a() {
-      return agg.i;
+   public zm<acb> a() {
+      return ago.d;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public jd b() {
+   public int b() {
       return this.b;
    }
 
-   public dqj<?> e() {
+   public double e() {
       return this.c;
    }
 
-   public ub f() {
+   public double f() {
       return this.d;
+   }
+
+   public double g() {
+      return this.e;
+   }
+
+   public int h() {
+      return this.f;
    }
 }

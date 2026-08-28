@@ -1,143 +1,23 @@
-import java.util.function.BiConsumer;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public record nb(jo.a a) implements mx {
-   @Override
-   public void generate(BiConsumer<akq<erw>, erw.a> $$0) {
-      $$0.accept(
-         ern.bd,
-         erw.b()
-            .a(
-               erv.a()
-                  .a(evv.a(1.0F))
-                  .a(ese.a(cut.xQ).a(2))
-                  .a(ese.a(cut.xS).a(2))
-                  .a(ese.a(cut.qL))
-                  .a(ese.a(cut.oA))
-                  .a(ese.a(cut.pq))
-                  .a(
-                     ese.a(cut.vX)
-                        .a(
-                           eud.c()
-                              .a(bsb.p, ewc.a(7.0F, 10.0F))
-                              .a(bsb.h, ewc.a(7.0F, 10.0F))
-                              .a(bsb.r, ewc.a(6.0F, 8.0F))
-                              .a(bsb.o, ewc.a(5.0F, 7.0F))
-                              .a(bsb.s, ewc.a(10.0F, 20.0F))
-                              .a(bsb.w, ewc.a(7.0F, 10.0F))
-                        )
-                  )
-            )
-      );
-      $$0.accept(
-         ern.be,
-         erw.b()
-            .a(
-               erv.a()
-                  .a(evv.a(1.0F))
-                  .a(ese.a(cut.xP))
-                  .a(ese.a(cut.yc))
-                  .a(ese.a(cut.yf))
-                  .a(ese.a(cut.yj))
-                  .a(ese.a(cut.oz))
-                  .a(ese.a(cut.md))
-                  .a(ese.a(cut.pu))
-                  .a(ese.a(cut.oA))
-            )
-      );
-      $$0.accept(
-         ern.bf,
-         erw.b()
-            .a(
-               erv.a()
-                  .a(evv.a(1.0F))
-                  .a(ese.a(cut.oA).a(2))
-                  .a(ese.a(cut.pw).a(2))
-                  .a(ese.a(cut.oQ).a(2))
-                  .a(ese.a(cut.eX).a(2))
-                  .a(ese.a(cut.qL).a(2))
-                  .a(ese.a(cut.rm).a(2))
-                  .a(ese.a(cut.rt).a(2))
-                  .a(ese.a(cut.rl).a(2))
-                  .a(ese.a(cut.ri).a(2))
-                  .a(ese.a(cut.rj).a(2))
-                  .a(ese.a(cut.xi).a(2))
-                  .a(ese.a(cut.xh).a(2))
-                  .a(ese.a(cut.xe).a(2))
-                  .a(ese.a(cut.xg).a(2))
-                  .a(ese.a(cut.iv))
-                  .a(ese.a(cut.iz))
-                  .a(ese.a(cut.iE))
-                  .a(ese.a(cut.iw))
-                  .a(ese.a(cut.iH))
-                  .a(ese.a(cut.ix))
-                  .a(ese.a(cut.iD))
-                  .a(ese.a(cut.qo))
-                  .a(ese.a(cut.qn))
-                  .a(ese.a(cut.si))
-                  .a(ese.a(cut.ox))
-                  .a(ese.a(cut.pv))
-                  .a(ese.a(cut.vl))
-                  .a(ese.a(cut.cR))
-                  .a(ese.a(cut.ue))
-                  .a(ese.a(cut.ps))
-                  .a(ese.a(cut.uK))
-            )
-      );
-      $$0.accept(
-         ern.bg,
-         erw.b()
-            .a(
-               erv.a()
-                  .a(evv.a(1.0F))
-                  .a(ese.a(cut.xT))
-                  .a(ese.a(cut.xU))
-                  .a(ese.a(cut.xX))
-                  .a(ese.a(cut.xZ))
-                  .a(ese.a(cut.ya))
-                  .a(ese.a(cut.yb))
-                  .a(ese.a(cut.yh))
-                  .a(ese.a(cut.xH))
-                  .a(ese.a(cut.xK))
-                  .a(ese.a(cut.xI))
-                  .a(ese.a(cut.xL))
-                  .a(ese.a(cut.vN))
-            )
-      );
-      $$0.accept(
-         ern.bh,
-         erw.b()
-            .a(
-               erv.a()
-                  .a(evv.a(1.0F))
-                  .a(ese.a(cut.xO))
-                  .a(ese.a(cut.yi))
-                  .a(ese.a(cut.yk))
-                  .a(ese.a(cut.kq))
-                  .a(ese.a(cut.pe))
-                  .a(ese.a(cut.oA).a(2))
-                  .a(ese.a(cut.pw).a(2))
-                  .a(ese.a(cut.oQ).a(2))
-                  .a(ese.a(cut.ox).a(2))
-                  .a(ese.a(cut.si).a(2))
-            )
-      );
-      $$0.accept(
-         ern.bi,
-         erw.b()
-            .a(
-               erv.a()
-                  .a(evv.a(1.0F))
-                  .a(ese.a(cut.xR))
-                  .a(ese.a(cut.xV))
-                  .a(ese.a(cut.yd))
-                  .a(ese.a(cut.ye))
-                  .a(ese.a(cut.pe))
-                  .a(ese.a(cut.oA).a(2))
-                  .a(ese.a(cut.pw).a(2))
-                  .a(ese.a(cut.oQ).a(2))
-                  .a(ese.a(cut.ox).a(2))
-                  .a(ese.a(cut.si).a(2))
-            )
-      );
-   }
+public interface nb {
+   Map<cue, ddr> a = ad.a(Maps.newEnumMap(cue.class), $$0 -> {
+      $$0.put(cue.a, dgx.bA);
+      $$0.put(cue.b, dgx.bB);
+      $$0.put(cue.c, dgx.bC);
+      $$0.put(cue.d, dgx.bD);
+      $$0.put(cue.e, dgx.bE);
+      $$0.put(cue.f, dgx.bF);
+      $$0.put(cue.g, dgx.bG);
+      $$0.put(cue.h, dgx.bH);
+      $$0.put(cue.i, dgx.bI);
+      $$0.put(cue.j, dgx.bJ);
+      $$0.put(cue.k, dgx.bK);
+      $$0.put(cue.l, dgx.bL);
+      $$0.put(cue.m, dgx.bM);
+      $$0.put(cue.n, dgx.bN);
+      $$0.put(cue.o, dgx.bO);
+      $$0.put(cue.p, dgx.bP);
+   });
 }

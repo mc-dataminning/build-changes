@@ -8,7 +8,7 @@ public class dq extends dv<dq.a> {
       return dq.a.a;
    }
 
-   public void a(aqv $$0) {
+   public void a(arh $$0) {
       this.a($$0, $$0x -> true);
    }
 
@@ -43,8 +43,8 @@ public class dq extends dv<dq.a> {
          return an.x.a(new dq.a(Optional.empty()));
       }
 
-      public static ao<dq.a> a(dfy $$0, cul $$1) {
-         return a(bv.a.a().a(bs.a.a().d(cs.a.a().a($$1))).b(df.a.a().a(aw.a.a().a($$0))));
+      public static ao<dq.a> a(jo<dgv> $$0, jo<cvg> $$1, dgv $$2, cvg $$3) {
+         return a(bv.a.a().a(bs.a.a().d(cs.a.a().a($$1, $$3))).b(df.a.a().a(aw.a.a().a($$0, $$2))));
       }
 
       @Override

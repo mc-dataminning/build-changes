@@ -10,9 +10,9 @@ public class de extends dv<de.a> {
       return de.a.a;
    }
 
-   public void a(aqv $$0, btm $$1, List<bsr> $$2) {
-      List<err> $$3 = $$2.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
-      err $$4 = bv.b($$0, $$1);
+   public void a(arh $$0, bue $$1, List<btj> $$2) {
+      List<est> $$3 = $$2.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
+      est $$4 = bv.b($$0, $$1);
       this.a($$0, $$2x -> $$2x.a($$4, $$3));
    }
 
@@ -30,7 +30,7 @@ public class de extends dv<de.a> {
          return an.V.a(new de.a(Optional.empty(), bv.a($$0), bv.a($$1)));
       }
 
-      public boolean a(err $$0, List<err> $$1) {
+      public boolean a(est $$0, List<est> $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || !$$1.stream().noneMatch(this.d.get()::a);
       }
 

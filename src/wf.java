@@ -1,31 +1,43 @@
-public interface wf {
-   zh a();
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.DecoderException;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   vu b();
+public class wf extends MessageToMessageDecoder<zk<?>> {
+   private final zj a;
+   @Nullable
+   private zj.a b;
 
-   void a(vv var1);
-
-   default void a(zg $$0, Exception $$1) throws z {
-      throw zj.a($$1, $$0, this);
+   public wf(zj $$0) {
+      this.a = $$0;
    }
 
-   default vv a(wz $$0, Throwable $$1) {
-      return new vv($$0);
+   protected void a(ChannelHandlerContext $$0, zk<?> $$1, List<Object> $$2) throws Exception {
+      if (this.b != null) {
+         a($$1);
+         zk<?> $$3 = this.b.a($$1);
+         if ($$3 != null) {
+            this.b = null;
+            $$2.add($$3);
+         }
+      } else {
+         zj.a $$4 = this.a.a($$1);
+         if ($$4 != null) {
+            a($$1);
+            this.b = $$4;
+         } else {
+            $$2.add($$1);
+            if ($$1.d()) {
+               $$0.pipeline().remove($$0.name());
+            }
+         }
+      }
    }
 
-   boolean c();
-
-   default boolean a(zg<?> $$0) {
-      return this.c();
-   }
-
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
-      $$1.a("Protocol", () -> this.b().a());
-      $$1.a("Flow", () -> this.a().toString());
-      this.a($$0, $$1);
-   }
-
-   default void a(o $$0, p $$1) {
+   private static void a(zk<?> $$0) {
+      if ($$0.d()) {
+         throw new DecoderException("Terminal message received in bundle");
+      }
    }
 }

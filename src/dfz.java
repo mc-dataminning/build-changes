@@ -1,250 +1,208 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dfz {
-   public static final MapCodec<dfy> a = lt.ae.r().dispatchMap(dfy::a, Function.identity());
+public class dfz extends dgv implements dgy {
+   public static final MapCodec<dfz> a = b(dfz::new);
+   protected static final float b = 3.0F;
+   protected static final float c = 5.0F;
+   protected static final float d = 1.5F;
+   protected static final eyx e = dgv.a(5.0, 0.0, 5.0, 11.0, 16.0, 11.0);
+   protected static final eyx f = dgv.a(3.0, 0.0, 3.0, 13.0, 16.0, 13.0);
+   protected static final eyx g = dgv.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   public static final dva h = duq.aq;
+   public static final duy<dum> i = duq.bk;
+   public static final dva j = duq.aU;
+   public static final int k = 16;
+   public static final int l = 0;
+   public static final int m = 1;
+   public static final int n = 0;
+   public static final int o = 1;
 
-   public static MapCodec<? extends dfy> a(jz<MapCodec<? extends dfy>> $$0) {
-      jz.a($$0, "block", dfy.p);
-      jz.a($$0, "air", dev.a);
-      jz.a($$0, "amethyst", dew.a);
-      jz.a($$0, "amethyst_cluster", dex.b);
-      jz.a($$0, "anvil", dey.a);
-      jz.a($$0, "attached_stem", dez.a);
-      jz.a($$0, "azalea", dfa.a);
-      jz.a($$0, "bamboo_sapling", dfb.a);
-      jz.a($$0, "bamboo_stalk", dfc.a);
-      jz.a($$0, "banner", dfd.a);
-      jz.a($$0, "barrel", dfe.a);
-      jz.a($$0, "barrier", dff.a);
-      jz.a($$0, "base_coral_fan", dfg.a);
-      jz.a($$0, "base_coral_plant", dfh.a);
-      jz.a($$0, "base_coral_wall_fan", dfj.b);
-      jz.a($$0, "beacon", dfq.a);
-      jz.a($$0, "bed", dfr.a);
-      jz.a($$0, "beehive", dfs.a);
-      jz.a($$0, "beetroot", dft.a);
-      jz.a($$0, "bell", dfu.a);
-      jz.a($$0, "big_dripleaf", dfv.a);
-      jz.a($$0, "big_dripleaf_stem", dfw.a);
-      jz.a($$0, "blast_furnace", dfx.c);
-      jz.a($$0, "brewing_stand", dgc.a);
-      jz.a($$0, "brushable", dgd.a);
-      jz.a($$0, "bubble_column", dge.a);
-      jz.a($$0, "budding_amethyst", dgg.b);
-      jz.a($$0, "button", dgi.a);
-      jz.a($$0, "cactus", dgj.a);
-      jz.a($$0, "cake", dgk.a);
-      jz.a($$0, "calibrated_sculk_sensor", dgl.a);
-      jz.a($$0, "campfire", dgm.a);
-      jz.a($$0, "candle_cake", dgo.c);
-      jz.a($$0, "candle", dgn.c);
-      jz.a($$0, "carpet", dgp.a);
-      jz.a($$0, "carrot", dgq.a);
-      jz.a($$0, "cartography_table", dgr.a);
-      jz.a($$0, "carved_pumpkin", dir.c);
-      jz.a($$0, "cauldron", dgt.d);
-      jz.a($$0, "cave_vines", dgv.c);
-      jz.a($$0, "cave_vines_plant", dgw.c);
-      jz.a($$0, "ceiling_hanging_sign", dgx.a);
-      jz.a($$0, "chain", dgy.a);
-      jz.a($$0, "cherry_leaves", dha.a);
-      jz.a($$0, "chest", dhb.b);
-      jz.a($$0, "chiseled_book_shelf", dhc.a);
-      jz.a($$0, "chorus_flower", dhd.a);
-      jz.a($$0, "chorus_plant", dhe.a);
-      jz.a($$0, "cocoa", dhf.a);
-      jz.a($$0, "colored_falling", dhg.a);
-      jz.a($$0, "command", dhh.a);
-      jz.a($$0, "comparator", dhi.a);
-      jz.a($$0, "composter", dhj.a);
-      jz.a($$0, "concrete_powder", dhk.a);
-      jz.a($$0, "conduit", dhl.a);
-      jz.a($$0, "copper_bulb_block", dhm.a);
-      jz.a($$0, "coral", dhn.b);
-      jz.a($$0, "coral_fan", dho.b);
-      jz.a($$0, "coral_plant", dhp.a);
-      jz.a($$0, "coral_wall_fan", dhq.e);
-      jz.a($$0, "crafter", dhr.a);
-      jz.a($$0, "crafting_table", dhs.a);
-      jz.a($$0, "crop", dht.d);
-      jz.a($$0, "crying_obsidian", dhv.a);
-      jz.a($$0, "daylight_detector", dhw.a);
-      jz.a($$0, "dead_bush", dhx.a);
-      jz.a($$0, "decorated_pot", dhy.a);
-      jz.a($$0, "detector_rail", dhz.d);
-      jz.a($$0, "dirt_path", dic.a);
-      jz.a($$0, "dispenser", did.a);
-      jz.a($$0, "door", die.a);
-      jz.a($$0, "double_plant", dig.a);
-      jz.a($$0, "dragon_egg", dih.a);
-      jz.a($$0, "drop_experience", dii.a);
-      jz.a($$0, "dropper", dij.e);
-      jz.a($$0, "enchantment_table", dik.a);
-      jz.a($$0, "ender_chest", dip.b);
-      jz.a($$0, "end_gateway", dil.a);
-      jz.a($$0, "end_portal", dim.a);
-      jz.a($$0, "end_portal_frame", din.a);
-      jz.a($$0, "end_rod", dio.b);
-      jz.a($$0, "farm", div.a);
-      jz.a($$0, "fence", diw.i);
-      jz.a($$0, "fence_gate", dix.a);
-      jz.a($$0, "fire", diy.c);
-      jz.a($$0, "fletching_table", diz.b);
-      jz.a($$0, "flower", dja.b);
-      jz.a($$0, "flower_pot", djb.a);
-      jz.a($$0, "frogspawn", djc.a);
-      jz.a($$0, "frosted_ice", djd.a);
-      jz.a($$0, "fungus", dje.a);
-      jz.a($$0, "furnace", djf.c);
-      jz.a($$0, "glazed_terracotta", djh.a);
-      jz.a($$0, "glow_lichen", dji.a);
-      jz.a($$0, "grass", djj.a);
-      jz.a($$0, "grindstone", djk.a);
-      jz.a($$0, "half_transparent", djo.d);
-      jz.a($$0, "hanging_roots", djp.a);
-      jz.a($$0, "hay", djq.a);
-      jz.a($$0, "heavy_core", djr.a);
-      jz.a($$0, "honey", djs.a);
-      jz.a($$0, "hopper", djt.a);
-      jz.a($$0, "huge_mushroom", djv.a);
-      jz.a($$0, "ice", djw.e);
-      jz.a($$0, "infested", djx.a);
-      jz.a($$0, "infested_rotated_pillar", djy.b);
-      jz.a($$0, "iron_bars", djz.i);
-      jz.a($$0, "jack_o_lantern", dgs.a);
-      jz.a($$0, "jigsaw", dka.a);
-      jz.a($$0, "jukebox", dkb.a);
-      jz.a($$0, "kelp", dkc.c);
-      jz.a($$0, "kelp_plant", dkd.c);
-      jz.a($$0, "ladder", dke.a);
-      jz.a($$0, "lantern", dkf.a);
-      jz.a($$0, "lava_cauldron", dkg.d);
-      jz.a($$0, "layered_cauldron", dkh.d);
-      jz.a($$0, "leaves", dki.b);
-      jz.a($$0, "lectern", dkj.a);
-      jz.a($$0, "lever", dkl.a);
-      jz.a($$0, "light", dkm.a);
-      jz.a($$0, "lightning_rod", dkn.b);
-      jz.a($$0, "liquid", dko.a);
-      jz.a($$0, "loom", dkq.a);
-      jz.a($$0, "magma", dkr.a);
-      jz.a($$0, "mangrove_leaves", dks.a);
-      jz.a($$0, "mangrove_propagule", dkt.a);
-      jz.a($$0, "mangrove_roots", dku.a);
-      jz.a($$0, "moss", dkw.a);
-      jz.a($$0, "moving_piston", dsu.a);
-      jz.a($$0, "mud", dkx.a);
-      jz.a($$0, "mushroom", dla.a);
-      jz.a($$0, "mycelium", dlb.a);
-      jz.a($$0, "nether_portal", dlc.a);
-      jz.a($$0, "netherrack", dlg.a);
-      jz.a($$0, "nether_sprouts", dld.a);
-      jz.a($$0, "nether_wart", dlf.a);
-      jz.a($$0, "note", dlh.a);
-      jz.a($$0, "nylium", dli.a);
-      jz.a($$0, "observer", dlj.b);
-      jz.a($$0, "piglinwallskull", dlk.b);
-      jz.a($$0, "pink_petals", dll.a);
-      jz.a($$0, "piston_base", dsv.b);
-      jz.a($$0, "piston_head", dsw.b);
-      jz.a($$0, "pitcher_crop", dln.c);
-      jz.a($$0, "player_head", dlo.b);
-      jz.a($$0, "player_wall_head", dlp.b);
-      jz.a($$0, "pointed_dripstone", dlq.a);
-      jz.a($$0, "potato", dls.a);
-      jz.a($$0, "powder_snow", dlt.a);
-      jz.a($$0, "powered", dlu.a);
-      jz.a($$0, "powered_rail", dlv.d);
-      jz.a($$0, "pressure_plate", dlw.e);
-      jz.a($$0, "pumpkin", dlx.a);
-      jz.a($$0, "rail", dly.d);
-      jz.a($$0, "redstone_lamp", dmc.a);
-      jz.a($$0, "redstone_ore", dma.a);
-      jz.a($$0, "redstone_torch", dmd.c);
-      jz.a($$0, "redstone_wall_torch", dme.h);
-      jz.a($$0, "redstone_wire", dmb.a);
-      jz.a($$0, "repeater", dmg.a);
-      jz.a($$0, "respawn_anchor", dmh.a);
-      jz.a($$0, "rooted_dirt", dmj.a);
-      jz.a($$0, "roots", dmk.a);
-      jz.a($$0, "rotated_pillar", dml.h);
-      jz.a($$0, "sapling", dmn.e);
-      jz.a($$0, "scaffolding", dmo.a);
-      jz.a($$0, "sculk_catalyst", dmr.a);
-      jz.a($$0, "sculk", dmq.b);
-      jz.a($$0, "sculk_sensor", dms.c);
-      jz.a($$0, "sculk_shrieker", dmt.a);
-      jz.a($$0, "sculk_vein", dmv.c);
-      jz.a($$0, "seagrass", dmx.a);
-      jz.a($$0, "sea_pickle", dmw.a);
-      jz.a($$0, "shulker_box", dmy.a);
-      jz.a($$0, "skull", dnb.c);
-      jz.a($$0, "slab", dnc.a);
-      jz.a($$0, "slime", dnd.a);
-      jz.a($$0, "small_dripleaf", dne.c);
-      jz.a($$0, "smithing_table", dnf.b);
-      jz.a($$0, "smoker", dng.c);
-      jz.a($$0, "sniffer_egg", dnh.a);
-      jz.a($$0, "snow_layer", dni.a);
-      jz.a($$0, "snowy_dirt", dnj.b);
-      jz.a($$0, "soul_fire", dnk.c);
-      jz.a($$0, "soul_sand", dnl.a);
-      jz.a($$0, "spawner", dnn.a);
-      jz.a($$0, "sponge", dno.a);
-      jz.a($$0, "spore_blossom", dnp.a);
-      jz.a($$0, "stained_glass_pane", dns.j);
-      jz.a($$0, "stained_glass", dnr.a);
-      jz.a($$0, "stair", dnt.a);
-      jz.a($$0, "standing_sign", dnu.a);
-      jz.a($$0, "stem", dnv.a);
-      jz.a($$0, "stonecutter", dnw.a);
-      jz.a($$0, "structure", dnx.a);
-      jz.a($$0, "structure_void", dny.a);
-      jz.a($$0, "sugar_cane", dnz.a);
-      jz.a($$0, "sweet_berry_bush", doc.a);
-      jz.a($$0, "tall_flower", dod.c);
-      jz.a($$0, "tall_grass", doe.a);
-      jz.a($$0, "tall_seagrass", dof.c);
-      jz.a($$0, "target", dog.a);
-      jz.a($$0, "tinted_glass", doh.a);
-      jz.a($$0, "tnt", doi.a);
-      jz.a($$0, "torchflower_crop", dok.a);
-      jz.a($$0, "torch", doj.d);
-      jz.a($$0, "transparent", dol.b);
-      jz.a($$0, "trapdoor", dom.a);
-      jz.a($$0, "trapped_chest", don.n);
-      jz.a($$0, "trial_spawner", doo.a);
-      jz.a($$0, "trip_wire_hook", doq.a);
-      jz.a($$0, "tripwire", dop.a);
-      jz.a($$0, "turtle_egg", dor.a);
-      jz.a($$0, "twisting_vines_plant", dot.c);
-      jz.a($$0, "twisting_vines", dos.c);
-      jz.a($$0, "vault", dou.a);
-      jz.a($$0, "vine", dov.a);
-      jz.a($$0, "wall_banner", dow.a);
-      jz.a($$0, "wall_hanging_sign", doy.a);
-      jz.a($$0, "wall_sign", doz.a);
-      jz.a($$0, "wall_skull", dpa.c);
-      jz.a($$0, "wall_torch", dpb.f);
-      jz.a($$0, "wall", dox.a);
-      jz.a($$0, "waterlily", dpc.a);
-      jz.a($$0, "waterlogged_transparent", dpd.a);
-      jz.a($$0, "weathering_copper_bulb", dpf.d);
-      jz.a($$0, "weathering_copper_door", dpg.l);
-      jz.a($$0, "weathering_copper_full", dph.d);
-      jz.a($$0, "weathering_copper_grate", dpi.e);
-      jz.a($$0, "weathering_copper_slab", dpj.f);
-      jz.a($$0, "weathering_copper_stair", dpk.I);
-      jz.a($$0, "weathering_copper_trap_door", dpl.m);
-      jz.a($$0, "web", dpm.a);
-      jz.a($$0, "weeping_vines_plant", dpo.c);
-      jz.a($$0, "weeping_vines", dpn.c);
-      jz.a($$0, "weighted_pressure_plate", dpp.e);
-      jz.a($$0, "wet_sponge", dpq.a);
-      jz.a($$0, "wither_rose", dpr.e);
-      jz.a($$0, "wither_skull", dps.b);
-      jz.a($$0, "wither_wall_skull", dpt.b);
-      return jz.a($$0, "wool_carpet", dpu.c);
+   @Override
+   public MapCodec<dfz> a() {
+      return a;
+   }
+
+   public dfz(dtz.d $$0) {
+      super($$0);
+      this.l(this.E.b().b(h, Integer.valueOf(0)).b(i, dum.a).b(j, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(h, i, j);
+   }
+
+   @Override
+   protected boolean e_(dua $$0) {
+      return true;
+   }
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      eyx $$4 = $$0.c(i) == dum.c ? f : e;
+      eye $$5 = $$0.a($$2);
+      return $$4.a($$5.d, $$5.e, $$5.f);
+   }
+
+   @Override
+   protected boolean a(dua $$0, eqq $$1) {
+      return false;
+   }
+
+   @Override
+   protected eyx b(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      eye $$4 = $$0.a($$2);
+      return g.a($$4.d, $$4.e, $$4.f);
+   }
+
+   @Override
+   protected boolean a_(dua $$0, dcx $$1, je $$2) {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public dua a(cyw $$0) {
+      eqb $$1 = $$0.q().b_($$0.a());
+      if (!$$1.c()) {
+         return null;
+      } else {
+         dua $$2 = $$0.q().a_($$0.a().e());
+         if ($$2.a(aws.av)) {
+            if ($$2.a(dgx.mY)) {
+               return this.o().b(h, Integer.valueOf(0));
+            } else if ($$2.a(dgx.mZ)) {
+               int $$3 = $$2.c(h) > 0 ? 1 : 0;
+               return this.o().b(h, Integer.valueOf($$3));
+            } else {
+               dua $$4 = $$0.q().a_($$0.a().d());
+               return $$4.a(dgx.mZ) ? this.o().b(h, $$4.c(h)) : dgx.mY.o();
+            }
+         } else {
+            return null;
+         }
+      }
+   }
+
+   @Override
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected boolean f(dua $$0) {
+      return $$0.c(j) == 0;
+   }
+
+   @Override
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$0.c(j) == 0) {
+         if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
+            int $$4 = this.b($$1, $$2) + 1;
+            if ($$4 < 16) {
+               this.a($$0, $$1, $$2, $$3, $$4);
+            }
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      return $$1.a_($$2.e()).a(aws.av);
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$1 == jj.b && $$2.a(dgx.mZ) && $$2.c(h) > $$0.c(h)) {
+         $$3.a($$4, $$0.a(h), 2);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      int $$3 = this.a($$0, $$1);
+      int $$4 = this.b($$0, $$1);
+      return $$3 + $$4 + 1 < 16 && $$0.a_($$1.b($$3)).c(j) != 1;
+   }
+
+   @Override
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      int $$4 = this.a($$0, $$2);
+      int $$5 = this.b($$0, $$2);
+      int $$6 = $$4 + $$5 + 1;
+      int $$7 = 1 + $$1.a(2);
+
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         je $$9 = $$2.b($$4);
+         dua $$10 = $$0.a_($$9);
+         if ($$6 >= 16 || $$10.c(j) == 1 || !$$0.u($$9.d())) {
+            return;
+         }
+
+         this.a($$10, $$0, $$9, $$1, $$6);
+         $$4++;
+         $$6++;
+      }
+   }
+
+   @Override
+   protected float a(dua $$0, cnp $$1, dcx $$2, je $$3) {
+      return $$1.eW().h() instanceof cxb ? 1.0F : super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(dua $$0, dds $$1, je $$2, azk $$3, int $$4) {
+      dua $$5 = $$1.a_($$2.e());
+      je $$6 = $$2.c(2);
+      dua $$7 = $$1.a_($$6);
+      dum $$8 = dum.a;
+      if ($$4 >= 1) {
+         if (!$$5.a(dgx.mZ) || $$5.c(i) == dum.a) {
+            $$8 = dum.b;
+         } else if ($$5.a(dgx.mZ) && $$5.c(i) != dum.a) {
+            $$8 = dum.c;
+            if ($$7.a(dgx.mZ)) {
+               $$1.a($$2.e(), $$5.b(i, dum.b), 3);
+               $$1.a($$6, $$7.b(i, dum.a), 3);
+            }
+         }
+      }
+
+      int $$9 = $$0.c(h) != 1 && !$$7.a(dgx.mZ) ? 0 : 1;
+      int $$10 = ($$4 < 11 || !($$3.i() < 0.25F)) && $$4 != 15 ? 0 : 1;
+      $$1.a($$2.d(), this.o().b(h, Integer.valueOf($$9)).b(i, $$8).b(j, Integer.valueOf($$10)), 3);
+   }
+
+   protected int a(dcx $$0, je $$1) {
+      int $$2 = 0;
+
+      while ($$2 < 16 && $$0.a_($$1.b($$2 + 1)).a(dgx.mZ)) {
+         $$2++;
+      }
+
+      return $$2;
+   }
+
+   protected int b(dcx $$0, je $$1) {
+      int $$2 = 0;
+
+      while ($$2 < 16 && $$0.a_($$1.c($$2 + 1)).a(dgx.mZ)) {
+         $$2++;
+      }
+
+      return $$2;
    }
 }

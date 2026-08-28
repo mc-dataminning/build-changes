@@ -1,60 +1,61 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class adv implements zk<abz> {
+   public static final zb<wa, adv> a = zk.a(adv::a, adv::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
 
-public record adv(UUID b, int c, @Nullable xl d, xs.a e, @Nullable wz f, xd g, wv.a h) implements zg<abu> {
-   public static final yx<wk, adv> a = zg.a(adv::a, adv::new);
-
-   private adv(wk $$0) {
-      this($$0.n(), $$0.l(), $$0.c(xl::a), new xs.a($$0), vw.a($$0, xb.d), xd.a($$0), wv.a.a.decode($$0));
+   public adv(btj $$0) {
+      this.b = $$0.dx();
+      this.c = $$0.dz();
+      this.d = $$0.dD();
+      this.e = $$0.dI();
+      this.f = $$0.dK();
    }
 
-   private void a(wk $$0) {
+   private adv(wa $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+   }
+
+   private void a(wa $$0) {
       $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d, xl::a);
-      this.e.a($$0);
-      vw.a($$0, this.f, xb.d);
-      xd.a($$0, this.g);
-      wv.a.a.encode($$0, this.h);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
    }
 
    @Override
-   public zi<adv> a() {
-      return agg.aa;
+   public zm<adv> a() {
+      return ago.V;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public double b() {
+      return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   @Nullable
-   public xl f() {
+   public double f() {
       return this.d;
    }
 
-   public xs.a g() {
+   public float g() {
       return this.e;
    }
 
-   @Nullable
-   public wz h() {
+   public float h() {
       return this.f;
-   }
-
-   public xd i() {
-      return this.g;
-   }
-
-   public wv.a j() {
-      return this.h;
    }
 }

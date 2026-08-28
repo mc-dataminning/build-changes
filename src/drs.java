@@ -1,251 +1,245 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.UUID;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class drs extends dqh {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 90;
-   private static final int c = 10;
-   @Nullable
-   private UUID d;
-   private drt e = this.f();
-   private drt f = this.f();
-   private boolean g;
+public class drs extends dsl implements cri {
+   public static final int d = 3;
+   public static final int e = 3;
+   public static final int f = 9;
+   public static final int g = 1;
+   public static final int h = 0;
+   public static final int i = 9;
+   public static final int j = 10;
+   private jw<cvl> n = jw.a(9, cvl.k);
+   private int r = 0;
+   protected final crc k = new crc() {
+      private final int[] a = new int[9];
+      private int b = 0;
 
-   public drs(jd $$0, dtc $$1) {
-      this(dqj.h, $$0, $$1);
-   }
-
-   public drs(dqj $$0, jd $$1, dtc $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   protected drt f() {
-      return new drt();
-   }
-
-   public boolean a(cmx $$0) {
-      if (this.n().b() instanceof dmz $$1) {
-         exc $$2 = $$1.m(this.n());
-         double $$3 = $$0.dt() - ((double)this.aD_().u() + $$2.c);
-         double $$4 = $$0.dz() - ((double)this.aD_().w() + $$2.e);
-         float $$5 = $$1.g(this.n());
-         float $$6 = (float)(ayo.d($$4, $$3) * 180.0F / (float)Math.PI) - 90.0F;
-         return ayo.d($$5, $$6) <= 90.0F;
-      } else {
-         return false;
-      }
-   }
-
-   public drt a(boolean $$0) {
-      return $$0 ? this.e : this.f;
-   }
-
-   public drt j() {
-      return this.e;
-   }
-
-   public drt k() {
-      return this.f;
-   }
-
-   public int b() {
-      return 10;
-   }
-
-   public int c() {
-      return 90;
-   }
-
-   @Override
-   protected void b(ub $$0, jo.a $$1) {
-      super.b($$0, $$1);
-      DynamicOps<uy> $$2 = $$1.a(up.a);
-      drt.a.encodeStart($$2, this.e).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("front_text", $$1x));
-      drt.a.encodeStart($$2, this.f).resultOrPartial(a::error).ifPresent($$1x -> $$0.a("back_text", $$1x));
-      $$0.a("is_waxed", this.g);
-   }
-
-   @Override
-   protected void a(ub $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      DynamicOps<uy> $$2 = $$1.a(up.a);
-      if ($$0.e("front_text")) {
-         drt.a.parse($$2, $$0.p("front_text")).resultOrPartial(a::error).ifPresent($$0x -> this.e = this.a($$0x));
+      @Override
+      public int a(int $$0) {
+         return $$0 == 9 ? this.b : this.a[$$0];
       }
 
-      if ($$0.e("back_text")) {
-         drt.a.parse($$2, $$0.p("back_text")).resultOrPartial(a::error).ifPresent($$0x -> this.f = this.a($$0x));
-      }
-
-      this.g = $$0.q("is_waxed");
-   }
-
-   private drt a(drt $$0) {
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         wz $$2 = this.a($$0.a($$1, false));
-         wz $$3 = this.a($$0.a($$1, true));
-         $$0 = $$0.a($$1, $$2, $$3);
-      }
-
-      return $$0;
-   }
-
-   private wz a(wz $$0) {
-      if (this.n instanceof aqu $$1) {
-         try {
-            return xc.a(a(null, $$1, this.o), $$0, null, 0);
-         } catch (CommandSyntaxException var4) {
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(cmx $$0, boolean $$1, List<arm> $$2) {
-      if (!this.v() && $$0.cz().equals(this.u()) && this.n != null) {
-         this.a($$2x -> this.a($$0, $$2, $$2x), $$1);
-         this.a(null);
-         this.n.a(this.aD_(), this.n(), this.n(), 3);
-      } else {
-         a.warn("Player {} just tried to change non-editable sign", $$0.ah().getString());
-      }
-   }
-
-   public boolean a(UnaryOperator<drt> $$0, boolean $$1) {
-      drt $$2 = this.a($$1);
-      return this.a($$0.apply($$2), $$1);
-   }
-
-   private drt a(cmx $$0, List<arm> $$1, drt $$2) {
-      for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-         arm $$4 = $$1.get($$3);
-         xw $$5 = $$2.a($$3, $$0.Z()).a();
-         if ($$0.Z()) {
-            $$2 = $$2.a($$3, wz.b($$4.b()).b($$5));
+      @Override
+      public void a(int $$0, int $$1) {
+         if ($$0 == 9) {
+            this.b = $$1;
          } else {
-            $$2 = $$2.a($$3, wz.b($$4.d()).b($$5), wz.b($$4.b()).b($$5));
+            this.a[$$0] = $$1;
          }
       }
 
-      return $$2;
+      @Override
+      public int a() {
+         return 10;
+      }
+   };
+
+   public drs(je $$0, dua $$1) {
+      super(drg.P, $$0, $$1);
    }
 
-   public boolean a(drt $$0, boolean $$1) {
-      return $$1 ? this.c($$0) : this.b($$0);
+   @Override
+   protected xd j() {
+      return xd.c("container.crafter");
    }
 
-   private boolean b(drt $$0) {
-      if ($$0 != this.f) {
-         this.f = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
+   @Override
+   protected cqq a(int $$0, cno $$1) {
+      return new crg($$0, $$1, this, this.k);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      if (this.e($$0)) {
+         this.k.a($$0, $$1 ? 0 : 1);
+         this.e();
       }
    }
 
-   private boolean c(drt $$0) {
-      if ($$0 != this.e) {
-         this.e = $$0;
-         this.w();
-         return true;
-      } else {
+   public boolean c(int $$0) {
+      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   }
+
+   @Override
+   public boolean b(int $$0, cvl $$1) {
+      if (this.k.a($$0) == 1) {
          return false;
+      } else {
+         cvl $$2 = this.n.get($$0);
+         int $$3 = $$2.J();
+         if ($$3 >= $$2.k()) {
+            return false;
+         } else {
+            return $$2.f() ? true : !this.a($$3, $$2, $$0);
+         }
       }
    }
 
-   public boolean a(boolean $$0, cmx $$1) {
-      return this.v() && this.a($$0).b($$1);
-   }
-
-   public boolean a(cmx $$0, dcw $$1, jd $$2, boolean $$3) {
-      boolean $$4 = false;
-
-      for (wz $$5 : this.a($$3).b($$0.Z())) {
-         xw $$6 = $$5.a();
-         wx $$7 = $$6.h();
-         if ($$7 != null && $$7.a() == wx.a.c) {
-            $$0.cO().aH().a(a($$0, $$1, $$2), $$7.b());
-            $$4 = true;
+   private boolean a(int $$0, cvl $$1, int $$2) {
+      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
+         if (!this.c($$3)) {
+            cvl $$4 = this.a($$3);
+            if ($$4.f() || $$4.J() < $$0 && cvl.c($$4, $$1)) {
+               return true;
+            }
          }
       }
 
-      return $$4;
-   }
-
-   private static et a(@Nullable cmx $$0, dcw $$1, jd $$2) {
-      String $$3 = $$0 == null ? "Sign" : $$0.ah().getString();
-      wz $$4 = (wz)($$0 == null ? wz.b("Sign") : $$0.S_());
-      return new et(es.a, exc.b($$2), exb.a, (aqu)$$1, 2, $$3, $$4, $$1.o(), $$0);
-   }
-
-   public acb l() {
-      return acb.a(this);
+      return false;
    }
 
    @Override
-   public ub a(jo.a $$0) {
-      return this.e($$0);
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.r = $$0.h("crafting_ticks_remaining");
+      this.n = jw.a(this.b(), cvl.k);
+      if (!this.b_($$0)) {
+         bre.b($$0, this.n, $$1);
+      }
+
+      int[] $$2 = $$0.n("disabled_slots");
+
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         this.k.a($$3, 0);
+      }
+
+      for (int $$4 : $$2) {
+         if (this.e($$4)) {
+            this.k.a($$4, 1);
+         }
+      }
+
+      this.k.a(9, $$0.h("triggered"));
    }
 
    @Override
-   public boolean q() {
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("crafting_ticks_remaining", this.r);
+      if (!this.c_($$0)) {
+         bre.a($$0, this.n, $$1);
+      }
+
+      this.c($$0);
+      this.d($$0);
+   }
+
+   @Override
+   public int b() {
+      return 9;
+   }
+
+   @Override
+   public boolean c() {
+      for (cvl $$0 : this.n) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
       return true;
    }
 
-   public void a(@Nullable UUID $$0) {
-      this.d = $$0;
+   @Override
+   public cvl a(int $$0) {
+      return this.n.get($$0);
    }
 
-   @Nullable
-   public UUID u() {
-      return this.d;
+   @Override
+   public void a(int $$0, cvl $$1) {
+      if (this.c($$0)) {
+         this.a($$0, true);
+      }
+
+      super.a($$0, $$1);
    }
 
-   private void w() {
-      this.e();
-      this.n.a(this.aD_(), this.n(), this.n(), 3);
+   @Override
+   public boolean a(cnp $$0) {
+      return brd.a(this, $$0);
    }
 
-   public boolean v() {
-      return this.g;
+   @Override
+   public jw<cvl> f() {
+      return this.n;
    }
 
-   public boolean b(boolean $$0) {
-      if (this.g != $$0) {
-         this.g = $$0;
-         this.w();
-         return true;
-      } else {
-         return false;
+   @Override
+   protected void a(jw<cvl> $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   public int aB_() {
+      return 3;
+   }
+
+   @Override
+   public int g() {
+      return 3;
+   }
+
+   @Override
+   public void fillStackedContents(cnu $$0) {
+      for (cvl $$1 : this.n) {
+         $$0.a($$1);
       }
    }
 
-   public boolean b(UUID $$0) {
-      cmx $$1 = this.n.b($$0);
-      return $$1 == null || !$$1.a(this.aD_(), 4.0);
+   private void c(uf $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         if (this.c($$2)) {
+            $$1.add($$2);
+         }
+      }
+
+      $$0.b("disabled_slots", $$1);
    }
 
-   public static void a(dcw $$0, jd $$1, dtc $$2, drs $$3) {
-      UUID $$4 = $$3.u();
-      if ($$4 != null) {
-         $$3.a($$3, $$0, $$4);
+   private void d(uf $$0) {
+      $$0.a("triggered", this.k.a(9));
+   }
+
+   public void a(boolean $$0) {
+      this.k.a(9, $$0 ? 1 : 0);
+   }
+
+   @VisibleForTesting
+   public boolean k() {
+      return this.k.a(9) == 1;
+   }
+
+   public static void a(dds $$0, je $$1, dua $$2, drs $$3) {
+      int $$4 = $$3.r - 1;
+      if ($$4 >= 0) {
+         $$3.r = $$4;
+         if ($$4 == 0) {
+            $$0.a($$1, $$2.b(dio.b, Boolean.valueOf(false)), 3);
+         }
       }
    }
 
-   private void a(drs $$0, dcw $$1, UUID $$2) {
-      if ($$0.b($$2)) {
-         $$0.a(null);
-      }
+   public void d(int $$0) {
+      this.r = $$0;
    }
 
-   public avo d() {
-      return avp.Cb;
+   public int t() {
+      int $$0 = 0;
+
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         cvl $$2 = this.a($$1);
+         if (!$$2.f() || this.c($$1)) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   private boolean e(int $$0) {
+      return $$0 > -1 && $$0 < 9 && this.n.get($$0).f();
    }
 }

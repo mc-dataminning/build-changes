@@ -1,50 +1,45 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
 
-public class eia extends ehx {
-   public static final MapCodec<eia> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dzs.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), dzs.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, eia::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dzs d;
-   private final dzs e;
-   private final LongSet f = new LongOpenHashSet();
+public class eia extends ehy {
+   public static final MapCodec<eia> a = MapCodec.unit(() -> eia.b);
+   public static final eia b = new eia();
 
-   private eia(dzs $$0, dzs $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static eia a(dzs $$0, dzs $$1) {
-      return new eia($$0, $$1);
+   @Override
+   protected ehz<?> a() {
+      return ehz.a;
    }
 
    @Override
-   public int a(ayw $$0, dzv $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
-            b.warn("Empty height range: {}", this);
+   public void a(ehy.a $$0) {
+      azk $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            je $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dps.d);
+            }
          }
 
-         return $$2;
-      } else {
-         return ayo.b($$0, $$2, $$3);
-      }
-   }
+         if ($$1.a(3) > 0) {
+            je $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dps.f);
+            }
+         }
 
-   @Override
-   public ehy<?> a() {
-      return ehy.b;
-   }
+         if ($$1.a(3) > 0) {
+            je $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dps.e);
+            }
+         }
 
-   @Override
-   public String toString() {
-      return "[" + this.d + "-" + this.e + "]";
+         if ($$1.a(3) > 0) {
+            je $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dps.c);
+            }
+         }
+      });
    }
 }

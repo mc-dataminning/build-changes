@@ -1,79 +1,101 @@
 import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Map.Entry;
 
-public class bvx<E extends btn & cmi> extends bvh<E> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private final Function<btn, Optional<bwv>> e;
-   private final float f;
+public abstract class bvx<E extends buf> implements bvy<E> {
+   public static final int a = 60;
+   protected final Map<cdi<?>, cdj> b;
+   private bvx.a c = bvx.a.a;
+   private long d;
+   private final int e;
+   private final int f;
 
-   public bvx(Function<btn, Optional<bwv>> $$0, float $$1, int $$2) {
-      super(Map.of(ccs.n, cct.c, ccs.m, cct.c, ccs.aP, cct.c), $$2);
-      this.e = $$0;
-      this.f = $$1;
+   public bvx(Map<cdi<?>, cdj> $$0) {
+      this($$0, 60);
+   }
+
+   public bvx(Map<cdi<?>, cdj> $$0, int $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bvx(Map<cdi<?>, cdj> $$0, int $$1, int $$2) {
+      this.e = $$1;
+      this.f = $$2;
+      this.b = $$0;
    }
 
    @Override
-   protected boolean a(aqu $$0, E $$1) {
-      return this.b($$1);
+   public bvx.a a() {
+      return this.c;
    }
 
    @Override
-   protected boolean a(aqu $$0, E $$1, long $$2) {
-      return this.b($$1);
+   public final boolean e(arg $$0, E $$1, long $$2) {
+      if (this.a($$1) && this.a($$0, $$1)) {
+         this.c = bvx.a.b;
+         int $$3 = this.e + $$0.C_().a(this.f + 1 - this.e);
+         this.d = $$2 + (long)$$3;
+         this.d($$0, $$1, $$2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void d(arg $$0, E $$1, long $$2) {
    }
 
    @Override
-   protected void d(aqu $$0, E $$1, long $$2) {
-      this.e.apply($$1).ifPresent($$1x -> bvj.a($$1, $$1x, this.f, 3));
+   public final void f(arg $$0, E $$1, long $$2) {
+      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
+         this.c($$0, $$1, $$2);
+      } else {
+         this.g($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(arg $$0, E $$1, long $$2) {
    }
 
    @Override
-   protected void c(aqu $$0, E $$1, long $$2) {
-      Optional<bwv> $$3 = this.e.apply($$1);
-      if (!$$3.isEmpty()) {
-         bwv $$4 = $$3.get();
-         double $$5 = $$4.a().f($$1.by());
-         if ($$5 < 3.0) {
-            cuq $$6 = $$1.x().a(0, 1);
-            if (!$$6.e()) {
-               a($$1, $$6, a($$4));
-               if ($$1 instanceof cgk $$7) {
-                  cgl.a((btn)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
-               }
+   public final void g(arg $$0, E $$1, long $$2) {
+      this.c = bvx.a.a;
+      this.b($$0, $$1, $$2);
+   }
 
-               $$1.dT().a(ccs.aP, 60);
-            }
+   protected void b(arg $$0, E $$1, long $$2) {
+   }
+
+   protected boolean a(arg $$0, E $$1, long $$2) {
+      return false;
+   }
+
+   protected boolean a(long $$0) {
+      return $$0 > this.d;
+   }
+
+   protected boolean a(arg $$0, E $$1) {
+      return true;
+   }
+
+   @Override
+   public String b() {
+      return this.getClass().getSimpleName();
+   }
+
+   protected boolean a(E $$0) {
+      for (Entry<cdi<?>, cdj> $$1 : this.b.entrySet()) {
+         cdi<?> $$2 = $$1.getKey();
+         cdj $$3 = $$1.getValue();
+         if (!$$0.dX().a($$2, $$3)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   private void a(bwv $$0, cuq $$1, aqv $$2) {
-      jd $$3 = $$0.b().e();
-      an.aa.a($$2, $$3, $$1);
-   }
-
-   private boolean b(E $$0) {
-      if ($$0.x().c()) {
-         return false;
-      } else {
-         Optional<bwv> $$1 = this.e.apply($$0);
-         return $$1.isPresent();
-      }
-   }
-
-   private static exc a(bwv $$0) {
-      return $$0.a().b(0.0, 1.0, 0.0);
-   }
-
-   public static void a(btn $$0, cuq $$1, exc $$2) {
-      exc $$3 = new exc(0.2F, 0.3F, 0.2F);
-      bvj.a($$0, $$1, $$2, $$3, 0.2F);
-      dcw $$4 = $$0.dO();
-      if ($$4.Z() % 7L == 0L && $$4.z.j() < 0.9) {
-         float $$5 = ad.<Float>a(cgk.d, $$4.E_());
-         $$4.a(null, $$0, avp.g, avq.g, 1.0F, $$5);
-      }
+   public static enum a {
+      a,
+      b;
    }
 }

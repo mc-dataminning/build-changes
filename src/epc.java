@@ -1,412 +1,194 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.objects.Object2ByteLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.Short2BooleanMap;
-import it.unimi.dsi.fastutil.shorts.Short2BooleanOpenHashMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
-import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import com.google.common.annotations.VisibleForTesting;
 
-public abstract class epc extends epd {
-   public static final dtt a = dts.i;
-   public static final duc b = dts.aM;
-   private static final int e = 200;
-   private static final ThreadLocal<Object2ByteLinkedOpenHashMap<dfy.a>> f = ThreadLocal.withInitial(() -> {
-      Object2ByteLinkedOpenHashMap<dfy.a> $$0 = new Object2ByteLinkedOpenHashMap<dfy.a>(200) {
-         protected void rehash(int $$0) {
-         }
-      };
-      $$0.defaultReturnValue((byte)127);
-      return $$0;
-   });
-   private final Map<epe, exv> g = Maps.newIdentityHashMap();
+public final class epc {
+   private static final float d = 1.0E-7F;
+   private final byte[] e;
+   public final double a;
+   public final double b;
+   public final double c;
 
-   @Override
-   protected void a(dtd.a<epd, epe> $$0) {
-      $$0.a(a);
-   }
+   public epc(azk $$0) {
+      this.a = $$0.j() * 256.0;
+      this.b = $$0.j() * 256.0;
+      this.c = $$0.j() * 256.0;
+      this.e = new byte[256];
 
-   @Override
-   public exc a(dcc $$0, jd $$1, epe $$2) {
-      double $$3 = 0.0;
-      double $$4 = 0.0;
-      jd.a $$5 = new jd.a();
-
-      for (ji $$6 : ji.c.a) {
-         $$5.a($$1, $$6);
-         epe $$7 = $$0.b_($$5);
-         if (this.g($$7)) {
-            float $$8 = $$7.d();
-            float $$9 = 0.0F;
-            if ($$8 == 0.0F) {
-               if (!$$0.a_($$5).d()) {
-                  jd $$10 = $$5.e();
-                  epe $$11 = $$0.b_($$10);
-                  if (this.g($$11)) {
-                     $$8 = $$11.d();
-                     if ($$8 > 0.0F) {
-                        $$9 = $$2.d() - ($$8 - 0.8888889F);
-                     }
-                  }
-               }
-            } else if ($$8 > 0.0F) {
-               $$9 = $$2.d() - $$8;
-            }
-
-            if ($$9 != 0.0F) {
-               $$3 += (double)((float)$$6.j() * $$9);
-               $$4 += (double)((float)$$6.l() * $$9);
-            }
-         }
+      for (int $$1 = 0; $$1 < 256; $$1++) {
+         this.e[$$1] = (byte)$$1;
       }
 
-      exc $$12 = new exc($$3, 0.0, $$4);
-      if ($$2.c(a)) {
-         for (ji $$13 : ji.c.a) {
-            $$5.a($$1, $$13);
-            if (this.a($$0, $$5, $$13) || this.a($$0, $$5.d(), $$13)) {
-               $$12 = $$12.d().b(0.0, -6.0, 0.0);
-               break;
-            }
-         }
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         int $$3 = $$0.a(256 - $$2);
+         byte $$4 = this.e[$$2];
+         this.e[$$2] = this.e[$$2 + $$3];
+         this.e[$$2 + $$3] = $$4;
       }
-
-      return $$12.d();
    }
 
-   private boolean g(epe $$0) {
-      return $$0.c() || $$0.a().a(this);
+   public double a(double $$0, double $$1, double $$2) {
+      return this.a($$0, $$1, $$2, 0.0, 0.0);
    }
 
-   protected boolean a(dcc $$0, jd $$1, ji $$2) {
-      dtc $$3 = $$0.a_($$1);
-      epe $$4 = $$0.b_($$1);
-      if ($$4.a().a(this)) {
-         return false;
-      } else if ($$2 == ji.b) {
-         return true;
+   @Deprecated
+   public double a(double $$0, double $$1, double $$2, double $$3, double $$4) {
+      double $$5 = $$0 + this.a;
+      double $$6 = $$1 + this.b;
+      double $$7 = $$2 + this.c;
+      int $$8 = azc.a($$5);
+      int $$9 = azc.a($$6);
+      int $$10 = azc.a($$7);
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      double $$13 = $$7 - (double)$$10;
+      double $$16;
+      if ($$3 != 0.0) {
+         double $$14;
+         if ($$4 >= 0.0 && $$4 < $$12) {
+            $$14 = $$4;
+         } else {
+            $$14 = $$12;
+         }
+
+         $$16 = (double)azc.a($$14 / $$3 + 1.0E-7F) * $$3;
       } else {
-         return $$3.b() instanceof djw ? false : $$3.d($$0, $$1, $$2);
-      }
-   }
-
-   protected void a(dcw $$0, jd $$1, epe $$2) {
-      if (!$$2.c()) {
-         dtc $$3 = $$0.a_($$1);
-         jd $$4 = $$1.e();
-         dtc $$5 = $$0.a_($$4);
-         epe $$6 = this.a($$0, $$4, $$5);
-         if (this.a($$0, $$1, $$3, ji.a, $$4, $$5, $$0.b_($$4), $$6.a())) {
-            this.a($$0, $$4, $$5, ji.a, $$6);
-            if (this.a($$0, $$1) >= 3) {
-               this.a($$0, $$1, $$2, $$3);
-            }
-         } else if ($$2.b() || !this.a($$0, $$6.a(), $$1, $$3, $$4, $$5)) {
-            this.a($$0, $$1, $$2, $$3);
-         }
-      }
-   }
-
-   private void a(dcw $$0, jd $$1, epe $$2, dtc $$3) {
-      int $$4 = $$2.e() - this.c($$0);
-      if ($$2.c(a)) {
-         $$4 = 7;
+         $$16 = 0.0;
       }
 
-      if ($$4 > 0) {
-         Map<ji, epe> $$5 = this.b($$0, $$1, $$3);
-
-         for (Entry<ji, epe> $$6 : $$5.entrySet()) {
-            ji $$7 = $$6.getKey();
-            epe $$8 = $$6.getValue();
-            jd $$9 = $$1.a($$7);
-            dtc $$10 = $$0.a_($$9);
-            if (this.a($$0, $$1, $$3, $$7, $$9, $$10, $$0.b_($$9), $$8.a())) {
-               this.a($$0, $$9, $$10, $$7, $$8);
-            }
-         }
-      }
+      return this.a($$8, $$9, $$10, $$11, $$12 - $$16, $$13, $$12);
    }
 
-   protected epe a(dcw $$0, jd $$1, dtc $$2) {
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (ji $$5 : ji.c.a) {
-         jd $$6 = $$1.a($$5);
-         dtc $$7 = $$0.a_($$6);
-         epe $$8 = $$7.u();
-         if ($$8.a().a(this) && this.a($$5, $$0, $$1, $$2, $$6, $$7)) {
-            if ($$8.b()) {
-               $$4++;
-            }
-
-            $$3 = Math.max($$3, $$8.e());
-         }
-      }
-
-      if (this.a($$0) && $$4 >= 2) {
-         dtc $$9 = $$0.a_($$1.e());
-         epe $$10 = $$9.u();
-         if ($$9.e() || this.h($$10)) {
-            return this.a(false);
-         }
-      }
-
-      jd $$11 = $$1.d();
-      dtc $$12 = $$0.a_($$11);
-      epe $$13 = $$12.u();
-      if (!$$13.c() && $$13.a().a(this) && this.a(ji.b, $$0, $$1, $$2, $$11, $$12)) {
-         return this.a(8, true);
-      } else {
-         int $$14 = $$3 - this.c($$0);
-         return $$14 <= 0 ? epf.a.g() : this.a($$14, false);
-      }
+   public double a(double $$0, double $$1, double $$2, double[] $$3) {
+      double $$4 = $$0 + this.a;
+      double $$5 = $$1 + this.b;
+      double $$6 = $$2 + this.c;
+      int $$7 = azc.a($$4);
+      int $$8 = azc.a($$5);
+      int $$9 = azc.a($$6);
+      double $$10 = $$4 - (double)$$7;
+      double $$11 = $$5 - (double)$$8;
+      double $$12 = $$6 - (double)$$9;
+      return this.a($$7, $$8, $$9, $$10, $$11, $$12, $$3);
    }
 
-   private boolean a(ji $$0, dcc $$1, jd $$2, dtc $$3, jd $$4, dtc $$5) {
-      Object2ByteLinkedOpenHashMap<dfy.a> $$7;
-      if (!$$3.b().p() && !$$5.b().p()) {
-         $$7 = f.get();
-      } else {
-         $$7 = null;
-      }
-
-      dfy.a $$8;
-      if ($$7 != null) {
-         $$8 = new dfy.a($$3, $$5, $$0);
-         byte $$9 = $$7.getAndMoveToFirst($$8);
-         if ($$9 != 127) {
-            return $$9 != 0;
-         }
-      } else {
-         $$8 = null;
-      }
-
-      exv $$11 = $$3.k($$1, $$2);
-      exv $$12 = $$5.k($$1, $$4);
-      boolean $$13 = !exs.b($$11, $$12, $$0);
-      if ($$7 != null) {
-         if ($$7.size() == 200) {
-            $$7.removeLastByte();
-         }
-
-         $$7.putAndMoveToFirst($$8, (byte)($$13 ? 1 : 0));
-      }
-
-      return $$13;
+   private static double a(int $$0, double $$1, double $$2, double $$3) {
+      return eph.a(eph.a[$$0 & 15], $$1, $$2, $$3);
    }
 
-   public abstract epd d();
-
-   public epe a(int $$0, boolean $$1) {
-      return this.d().g().a(b, $$0).a(a, $$1);
+   private int a(int $$0) {
+      return this.e[$$0 & 0xFF] & 0xFF;
    }
 
-   public abstract epd e();
-
-   public epe a(boolean $$0) {
-      return this.e().g().a(a, $$0);
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      double $$13 = a(this.a($$9 + $$2), $$3, $$4, $$5);
+      double $$14 = a(this.a($$11 + $$2), $$3 - 1.0, $$4, $$5);
+      double $$15 = a(this.a($$10 + $$2), $$3, $$4 - 1.0, $$5);
+      double $$16 = a(this.a($$12 + $$2), $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$17 = a(this.a($$9 + $$2 + 1), $$3, $$4, $$5 - 1.0);
+      double $$18 = a(this.a($$11 + $$2 + 1), $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$19 = a(this.a($$10 + $$2 + 1), $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$20 = a(this.a($$12 + $$2 + 1), $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$21 = azc.h($$3);
+      double $$22 = azc.h($$6);
+      double $$23 = azc.h($$5);
+      return azc.a($$21, $$22, $$23, $$13, $$14, $$15, $$16, $$17, $$18, $$19, $$20);
    }
 
-   protected abstract boolean a(dcw var1);
-
-   protected void a(dcx $$0, jd $$1, dtc $$2, ji $$3, epe $$4) {
-      if ($$2.b() instanceof dkp) {
-         ((dkp)$$2.b()).a($$0, $$1, $$2, $$4);
-      } else {
-         if (!$$2.i()) {
-            this.a($$0, $$1, $$2);
-         }
-
-         $$0.a($$1, $$4.g(), 3);
-      }
+   private double a(int $$0, int $$1, int $$2, double $$3, double $$4, double $$5, double[] $$6) {
+      int $$7 = this.a($$0);
+      int $$8 = this.a($$0 + 1);
+      int $$9 = this.a($$7 + $$1);
+      int $$10 = this.a($$7 + $$1 + 1);
+      int $$11 = this.a($$8 + $$1);
+      int $$12 = this.a($$8 + $$1 + 1);
+      int $$13 = this.a($$9 + $$2);
+      int $$14 = this.a($$11 + $$2);
+      int $$15 = this.a($$10 + $$2);
+      int $$16 = this.a($$12 + $$2);
+      int $$17 = this.a($$9 + $$2 + 1);
+      int $$18 = this.a($$11 + $$2 + 1);
+      int $$19 = this.a($$10 + $$2 + 1);
+      int $$20 = this.a($$12 + $$2 + 1);
+      int[] $$21 = eph.a[$$13 & 15];
+      int[] $$22 = eph.a[$$14 & 15];
+      int[] $$23 = eph.a[$$15 & 15];
+      int[] $$24 = eph.a[$$16 & 15];
+      int[] $$25 = eph.a[$$17 & 15];
+      int[] $$26 = eph.a[$$18 & 15];
+      int[] $$27 = eph.a[$$19 & 15];
+      int[] $$28 = eph.a[$$20 & 15];
+      double $$29 = eph.a($$21, $$3, $$4, $$5);
+      double $$30 = eph.a($$22, $$3 - 1.0, $$4, $$5);
+      double $$31 = eph.a($$23, $$3, $$4 - 1.0, $$5);
+      double $$32 = eph.a($$24, $$3 - 1.0, $$4 - 1.0, $$5);
+      double $$33 = eph.a($$25, $$3, $$4, $$5 - 1.0);
+      double $$34 = eph.a($$26, $$3 - 1.0, $$4, $$5 - 1.0);
+      double $$35 = eph.a($$27, $$3, $$4 - 1.0, $$5 - 1.0);
+      double $$36 = eph.a($$28, $$3 - 1.0, $$4 - 1.0, $$5 - 1.0);
+      double $$37 = azc.h($$3);
+      double $$38 = azc.h($$4);
+      double $$39 = azc.h($$5);
+      double $$40 = azc.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[0],
+         (double)$$22[0],
+         (double)$$23[0],
+         (double)$$24[0],
+         (double)$$25[0],
+         (double)$$26[0],
+         (double)$$27[0],
+         (double)$$28[0]
+      );
+      double $$41 = azc.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[1],
+         (double)$$22[1],
+         (double)$$23[1],
+         (double)$$24[1],
+         (double)$$25[1],
+         (double)$$26[1],
+         (double)$$27[1],
+         (double)$$28[1]
+      );
+      double $$42 = azc.a(
+         $$37,
+         $$38,
+         $$39,
+         (double)$$21[2],
+         (double)$$22[2],
+         (double)$$23[2],
+         (double)$$24[2],
+         (double)$$25[2],
+         (double)$$26[2],
+         (double)$$27[2],
+         (double)$$28[2]
+      );
+      double $$43 = azc.a($$38, $$39, $$30 - $$29, $$32 - $$31, $$34 - $$33, $$36 - $$35);
+      double $$44 = azc.a($$39, $$37, $$31 - $$29, $$35 - $$33, $$32 - $$30, $$36 - $$34);
+      double $$45 = azc.a($$37, $$38, $$33 - $$29, $$34 - $$30, $$35 - $$31, $$36 - $$32);
+      double $$46 = azc.i($$3);
+      double $$47 = azc.i($$4);
+      double $$48 = azc.i($$5);
+      double $$49 = $$40 + $$46 * $$43;
+      double $$50 = $$41 + $$47 * $$44;
+      double $$51 = $$42 + $$48 * $$45;
+      $$6[0] += $$49;
+      $$6[1] += $$50;
+      $$6[2] += $$51;
+      return azc.a($$37, $$38, $$39, $$29, $$30, $$31, $$32, $$33, $$34, $$35, $$36);
    }
 
-   protected abstract void a(dcx var1, jd var2, dtc var3);
-
-   private static short a(jd $$0, jd $$1) {
-      int $$2 = $$1.u() - $$0.u();
-      int $$3 = $$1.w() - $$0.w();
-      return (short)(($$2 + 128 & 0xFF) << 8 | $$3 + 128 & 0xFF);
-   }
-
-   protected int a(dcz $$0, jd $$1, int $$2, ji $$3, dtc $$4, jd $$5, Short2ObjectMap<Pair<dtc, epe>> $$6, Short2BooleanMap $$7) {
-      int $$8 = 1000;
-
-      for (ji $$9 : ji.c.a) {
-         if ($$9 != $$3) {
-            jd $$10 = $$1.a($$9);
-            short $$11 = a($$5, $$10);
-            Pair<dtc, epe> $$12 = (Pair<dtc, epe>)$$6.computeIfAbsent($$11, $$2x -> {
-               dtc $$3x = $$0.a_($$10);
-               return Pair.of($$3x, $$3x.u());
-            });
-            dtc $$13 = (dtc)$$12.getFirst();
-            epe $$14 = (epe)$$12.getSecond();
-            if (this.a($$0, this.d(), $$1, $$4, $$9, $$10, $$13, $$14)) {
-               boolean $$15 = $$7.computeIfAbsent($$11, $$3x -> {
-                  jd $$4x = $$10.e();
-                  dtc $$5x = $$0.a_($$4x);
-                  return this.a($$0, this.d(), $$10, $$13, $$4x, $$5x);
-               });
-               if ($$15) {
-                  return $$2;
-               }
-
-               if ($$2 < this.b($$0)) {
-                  int $$16 = this.a($$0, $$10, $$2 + 1, $$9.g(), $$13, $$5, $$6, $$7);
-                  if ($$16 < $$8) {
-                     $$8 = $$16;
-                  }
-               }
-            }
-         }
-      }
-
-      return $$8;
-   }
-
-   private boolean a(dcc $$0, epd $$1, jd $$2, dtc $$3, jd $$4, dtc $$5) {
-      if (!this.a(ji.a, $$0, $$2, $$3, $$4, $$5)) {
-         return false;
-      } else {
-         return $$5.u().a().a(this) ? true : this.a($$0, $$4, $$5, $$1);
-      }
-   }
-
-   private boolean a(dcc $$0, epd $$1, jd $$2, dtc $$3, ji $$4, jd $$5, dtc $$6, epe $$7) {
-      return !this.h($$7) && this.a($$4, $$0, $$2, $$3, $$5, $$6) && this.a($$0, $$5, $$6, $$1);
-   }
-
-   private boolean h(epe $$0) {
-      return $$0.a().a(this) && $$0.b();
-   }
-
-   protected abstract int b(dcz var1);
-
-   private int a(dcz $$0, jd $$1) {
-      int $$2 = 0;
-
-      for (ji $$3 : ji.c.a) {
-         jd $$4 = $$1.a($$3);
-         epe $$5 = $$0.b_($$4);
-         if (this.h($$5)) {
-            $$2++;
-         }
-      }
-
-      return $$2;
-   }
-
-   protected Map<ji, epe> b(dcw $$0, jd $$1, dtc $$2) {
-      int $$3 = 1000;
-      Map<ji, epe> $$4 = Maps.newEnumMap(ji.class);
-      Short2ObjectMap<Pair<dtc, epe>> $$5 = new Short2ObjectOpenHashMap();
-      Short2BooleanMap $$6 = new Short2BooleanOpenHashMap();
-
-      for (ji $$7 : ji.c.a) {
-         jd $$8 = $$1.a($$7);
-         short $$9 = a($$1, $$8);
-         Pair<dtc, epe> $$10 = (Pair<dtc, epe>)$$5.computeIfAbsent($$9, $$2x -> {
-            dtc $$3x = $$0.a_($$8);
-            return Pair.of($$3x, $$3x.u());
-         });
-         dtc $$11 = (dtc)$$10.getFirst();
-         epe $$12 = (epe)$$10.getSecond();
-         epe $$13 = this.a($$0, $$8, $$11);
-         if (this.a($$0, $$13.a(), $$1, $$2, $$7, $$8, $$11, $$12)) {
-            jd $$14 = $$8.e();
-            boolean $$15 = $$6.computeIfAbsent($$9, $$4x -> {
-               dtc $$5x = $$0.a_($$14);
-               return this.a($$0, this.d(), $$8, $$11, $$14, $$5x);
-            });
-            int $$16;
-            if ($$15) {
-               $$16 = 0;
-            } else {
-               $$16 = this.a($$0, $$8, 1, $$7.g(), $$11, $$1, $$5, $$6);
-            }
-
-            if ($$16 < $$3) {
-               $$4.clear();
-            }
-
-            if ($$16 <= $$3) {
-               $$4.put($$7, $$13);
-               $$3 = $$16;
-            }
-         }
-      }
-
-      return $$4;
-   }
-
-   private boolean a(dcc $$0, jd $$1, dtc $$2, epd $$3) {
-      dfy $$4 = $$2.b();
-      if ($$4 instanceof dkp $$5) {
-         return $$5.a(null, $$0, $$1, $$2, $$3);
-      } else if ($$4 instanceof die || $$2.a(awe.ay) || $$2.a(dga.cO) || $$2.a(dga.dS) || $$2.a(dga.nd)) {
-         return false;
-      } else {
-         return !$$2.a(dga.ed) && !$$2.a(dga.fx) && !$$2.a(dga.kF) && !$$2.a(dga.kN) ? !$$2.d() : false;
-      }
-   }
-
-   protected boolean a(dcc $$0, jd $$1, dtc $$2, ji $$3, jd $$4, dtc $$5, epe $$6, epd $$7) {
-      return $$6.a($$0, $$4, $$7, $$3) && this.a($$3, $$0, $$1, $$2, $$4, $$5) && this.a($$0, $$4, $$5, $$7);
-   }
-
-   protected abstract int c(dcz var1);
-
-   protected int a(dcw $$0, jd $$1, epe $$2, epe $$3) {
-      return this.a((dcz)$$0);
-   }
-
-   @Override
-   public void b(dcw $$0, jd $$1, epe $$2) {
-      if (!$$2.b()) {
-         epe $$3 = this.a($$0, $$1, $$0.a_($$1));
-         int $$4 = this.a($$0, $$1, $$2, $$3);
-         if ($$3.c()) {
-            $$2 = $$3;
-            $$0.a($$1, dga.a.o(), 3);
-         } else if (!$$3.equals($$2)) {
-            $$2 = $$3;
-            dtc $$5 = $$3.g();
-            $$0.a($$1, $$5, 2);
-            $$0.a($$1, $$3.a(), $$4);
-            $$0.a($$1, $$5.b());
-         }
-      }
-
-      this.a($$0, $$1, $$2);
-   }
-
-   protected static int e(epe $$0) {
-      return $$0.b() ? 0 : 8 - Math.min($$0.e(), 8) + ($$0.c(a) ? 8 : 0);
-   }
-
-   private static boolean c(epe $$0, dcc $$1, jd $$2) {
-      return $$0.a().a($$1.b_($$2.d()).a());
-   }
-
-   @Override
-   public float a(epe $$0, dcc $$1, jd $$2) {
-      return c($$0, $$1, $$2) ? 1.0F : $$0.d();
-   }
-
-   @Override
-   public float a(epe $$0) {
-      return (float)$$0.e() / 9.0F;
-   }
-
-   @Override
-   public abstract int d(epe var1);
-
-   @Override
-   public exv b(epe $$0, dcc $$1, jd $$2) {
-      return $$0.e() == 9 && c($$0, $$1, $$2) ? exs.b() : this.g.computeIfAbsent($$0, $$2x -> exs.a(0.0, 0.0, 0.0, 1.0, (double)$$2x.a($$1, $$2), 1.0));
+   @VisibleForTesting
+   public void a(StringBuilder $$0) {
+      epd.a($$0, this.a, this.b, this.c, this.e);
    }
 }

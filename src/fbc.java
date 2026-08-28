@@ -1,8 +1,22 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.File;
+import java.time.Duration;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ezd
-@ezc
-interface fbc {
+public class fbc {
+   private static final Duration a = Duration.ofSeconds(15L);
+
+   public static void a(File $$0, long $$1) {
+      Thread $$2 = new Thread(() -> {
+         try {
+            Thread.sleep(a);
+         } catch (InterruptedException var4) {
+            return;
+         }
+
+         o $$3 = aqb.a("Client shutdown", $$1);
+         fib.a($$0, $$3);
+      });
+      $$2.setDaemon(true);
+      $$2.setName("Client shutdown watchdog");
+      $$2.start();
+   }
 }

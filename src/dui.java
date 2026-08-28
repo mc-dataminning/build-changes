@@ -1,37 +1,18 @@
-import java.util.Optional;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class dui {
-   private static final ayy a = new ayy(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+public class dui implements Predicate<dua> {
+   private final dgv a;
 
-   public static int a() {
-      return b;
+   public dui(dgv $$0) {
+      this.a = $$0;
    }
 
-   public static int a(ji $$0) {
-      return a.a($$0);
+   public static dui a(dgv $$0) {
+      return new dui($$0);
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
-   }
-
-   public static Optional<ji> a(int $$0) {
-      ji $$1 = switch ($$0) {
-         case 0 -> ji.c;
-         case 4 -> ji.f;
-         case 8 -> ji.d;
-         case 12 -> ji.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
-   }
-
-   public static float b(int $$0) {
-      return a.b($$0);
+   public boolean a(@Nullable dua $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

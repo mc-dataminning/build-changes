@@ -1,82 +1,43 @@
-import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class din extends dfy {
-   public static final MapCodec<din> a = b(din::new);
-   public static final dtw b = dju.aE;
-   public static final dtt c = dts.h;
-   protected static final exv d = dfy.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
-   protected static final exv e = dfy.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
-   protected static final exv f = exs.a(d, e);
-   private static dth g;
+public class din extends dgg {
+   public static final MapCodec<din> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dik.a.forGetter($$0x -> $$0x.f), u()).apply($$0, din::new));
+   private final dgv f;
 
    @Override
    public MapCodec<din> a() {
-      return a;
+      return e;
    }
 
-   public din(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ji.c).a(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean f_(dtc $$0) {
-      return true;
+   protected din(dgv $$0, dtz.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return $$0.c(c) ? f : d;
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      this.a($$0, (ddt)$$1, $$2);
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
-   }
-
-   @Override
-   protected boolean c_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dtc $$0, dcw $$1, jd $$2) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b, c);
-   }
-
-   public static dth b() {
-      if (g == null) {
-         g = dti.a()
-            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
-            .a('?', dtg.a(dtl.a))
-            .a('^', dtg.a(dtl.a(dga.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.d))))
-            .a('>', dtg.a(dtl.a(dga.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.e))))
-            .a('v', dtg.a(dtl.a(dga.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.c))))
-            .a('<', dtg.a(dtl.a(dga.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(ji.f))))
-            .b();
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.f.o().b(d, Boolean.valueOf(false)).b(c, $$0.c(c)), 2);
       }
-
-      return g;
    }
 
    @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
+         return dgx.a.o();
+      } else {
+         if ($$0.c(d)) {
+            $$3.a($$4, eqc.c, eqc.c.a($$3));
+         }
+
+         this.a($$0, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

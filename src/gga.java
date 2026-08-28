@@ -1,90 +1,125 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class gga {
-   public float[] a;
-   public final int b;
-
-   public gga(@Nullable float[] $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
-   }
-
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
-
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
-   }
-
-   protected static class a implements JsonDeserializer<gga> {
-      private static final int a = 0;
-
-      public gga a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
-         int $$5 = this.a($$3);
-         return new gga($$4, $$5);
+   private static final gga a = new gga("") {
+      @Override
+      public void a(fib $$0) {
       }
 
-      protected int a(JsonObject $$0) {
-         int $$1 = aye.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
+      @Override
+      public void a(gga.c $$0, String $$1, String $$2) {
       }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
+   @Nullable
+   private gga.b e;
 
-      @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = aye.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
+   gga(String $$0) {
+      this.d = fib.Q().q.toPath().resolve($$0);
+   }
 
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = aye.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
+   public static gga a(@Nullable String $$0) {
+      return $$0 == null ? a : new gga($$0);
+   }
 
-               return $$2;
+   public void a(gga.c $$0, String $$1, String $$2) {
+      this.e = new gga.b($$0, $$1, $$2);
+   }
+
+   public void a(fib $$0) {
+      if ($$0.r != null && this.e != null) {
+         ad.h().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
             }
-         }
+
+            gga.a $$2 = new gga.a(this.e, Instant.now(), $$0.r.j());
+            Codec.list(gga.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ad.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
+   }
+
+   static record a(gga.b b, Instant c, ddp d) {
+      public static final Codec<gga.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gga.b.a.forGetter(gga.a::a), ayl.o.fieldOf("lastPlayedTime").forGetter(gga.a::b), ddp.f.fieldOf("gamemode").forGetter(gga.a::c))
+               .apply($$0, gga.a::new)
+      );
+
+      public gga.b a() {
+         return this.b;
+      }
+
+      public Instant b() {
+         return this.c;
+      }
+
+      public ddp c() {
+         return this.d;
+      }
+   }
+
+   static record b(gga.c b, String c, String d) {
+      public static final MapCodec<gga.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gga.c.d.fieldOf("type").forGetter(gga.b::a), ayl.q.fieldOf("id").forGetter(gga.b::b), Codec.STRING.fieldOf("name").forGetter(gga.b::c)
+               )
+               .apply($$0, gga.b::new)
+      );
+
+      public gga.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements azy {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gga.c> d = azy.a(gga.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

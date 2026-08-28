@@ -1,43 +1,49 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class nz<T> {
-   final String a;
-   final Function<T, JsonElement> b;
+public final class nz {
+   private static final nz a = new nz(ImmutableList.of());
+   private static final Comparator<dvd.a<?>> b = Comparator.comparing($$0 -> $$0.a().f());
+   private final List<dvd.a<?>> c;
 
-   public nz(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public nz a(dvd.a<?> $$0) {
+      return new nz(ImmutableList.builder().addAll(this.c).add($$0).build());
    }
 
-   public nz<T>.a a(T $$0) {
-      return new nz.a($$0);
+   public nz a(nz $$0) {
+      return new nz(ImmutableList.builder().addAll(this.c).addAll($$0.c).build());
+   }
+
+   private nz(List<dvd.a<?>> $$0) {
+      this.c = $$0;
+   }
+
+   public static nz a() {
+      return a;
+   }
+
+   public static nz a(dvd.a<?>... $$0) {
+      return new nz(ImmutableList.copyOf($$0));
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof nz && this.c.equals(((nz)$$0).c);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c.hashCode();
+   }
+
+   public String b() {
+      return this.c.stream().sorted(b).map(dvd.a::toString).collect(Collectors.joining(","));
    }
 
    @Override
    public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(final T $$1) {
-         this.b = $$1;
-      }
-
-      public nz<T> a() {
-         return nz.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(nz.this.a, nz.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return nz.this.a + "=" + this.b;
-      }
+      return this.b();
    }
 }

@@ -1,122 +1,261 @@
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.logging.LogUtils;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.UUID;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.ReentrantLock;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class ffm extends ffn {
-   private static final wz b = wz.c("multiplayer.applyingPack");
-   private static final Logger c = LogUtils.getLogger();
-   private static final wz d = wz.c("mco.connect.connecting");
-   private final fcp e;
-   private final fod f;
+public class ffm extends hct {
+   private static final Logger a = LogUtils.getLogger();
+   private static final ReentrantLock b = new ReentrantLock();
+   private static final int c = 200;
+   private static final int B = 80;
+   private static final int C = 95;
+   private static final int D = 1;
+   private final fpt E;
+   private final fep F;
+   private final xd G;
+   private final RateLimiter H;
+   private fka I;
+   private final String J;
+   private final ffm.a K;
+   @Nullable
+   private volatile xd L;
+   private volatile xd M = xd.c("mco.download.preparing");
+   @Nullable
+   private volatile String N;
+   private volatile boolean O;
+   private volatile boolean P = true;
+   private volatile boolean Q;
+   private volatile boolean R;
+   @Nullable
+   private Long S;
+   @Nullable
+   private Long T;
+   private long U;
+   private int V;
+   private static final String[] W = new String[]{"", ".", ". .", ". . ."};
+   private int X;
+   private boolean Y;
+   private final BooleanConsumer Z;
 
-   public ffm(fod $$0, fcp $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   public ffm(fpt $$0, fep $$1, String $$2, BooleanConsumer $$3) {
+      super(fhs.a);
+      this.Z = $$3;
+      this.E = $$0;
+      this.J = $$2;
+      this.F = $$1;
+      this.K = new ffm.a();
+      this.G = xd.c("mco.download.title");
+      this.H = RateLimiter.create(0.1F);
    }
 
    @Override
-   public void run() {
-      fcq $$0;
-      try {
-         $$0 = this.f();
-      } catch (CancellationException var4) {
-         c.info("User aborted connecting to realms");
-         return;
-      } catch (fdj var5) {
-         switch (var5.a.a()) {
-            case 6002:
-               a(new fer(this.f, this.e));
-               return;
-            case 6006:
-               boolean $$3 = fgo.Q().b(this.e.g);
-               a(
-                  (fod)($$3
-                     ? new fdv(this.f, this.e.a, this.e.i())
-                     : new feb(wz.c("mco.brokenworld.nonowner.title"), wz.c("mco.brokenworld.nonowner.error"), this.f))
-               );
-               return;
-            default:
-               this.a(var5);
-               c.error("Couldn't connect to world", var5);
-               return;
+   public void aT_() {
+      this.I = this.c(fka.a(xc.e, $$0 -> this.d()).a((this.n - 200) / 2, this.o - 42, 200, 20).a());
+      this.D();
+   }
+
+   private void D() {
+      if (!this.Q && !this.Y) {
+         this.Y = true;
+         if (this.a(this.F.a) >= 5368709120L) {
+            xd $$0 = xd.a("mco.download.confirmation.oversized", fdg.b(5368709120L));
+            this.m.a(ffv.c(this, $$0, $$0x -> {
+               this.m.a(this);
+               this.F();
+            }));
+         } else {
+            this.F();
          }
-      } catch (TimeoutException var6) {
-         this.a(wz.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         c.error("Couldn't connect to world", var7);
-         this.a(var7);
-         return;
+      }
+   }
+
+   private long a(String $$0) {
+      fdh $$1 = new fdh();
+      return $$1.a($$0);
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.V++;
+      if (this.M != null && this.H.tryAcquire(1)) {
+         xd $$0 = this.E();
+         this.m.aY().c($$0);
+      }
+   }
+
+   private xd E() {
+      List<xd> $$0 = Lists.newArrayList();
+      $$0.add(this.G);
+      $$0.add(this.M);
+      if (this.N != null) {
+         $$0.add(xd.a("mco.download.percent", this.N));
+         $$0.add(xd.a("mco.download.speed.narration", fdg.b(this.U)));
       }
 
-      boolean $$7 = $$0.b != null && $$0.c != null;
-      fod $$8 = (fod)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
-      a($$8);
-   }
+      if (this.L != null) {
+         $$0.add(this.L);
+      }
 
-   private static UUID a(fcp $$0) {
-      return $$0.o != null
-         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.o).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + $$0.c + ":" + $$0.n).getBytes(StandardCharsets.UTF_8));
+      return xc.a($$0);
    }
 
    @Override
-   public wz a() {
-      return d;
+   public void d() {
+      this.O = true;
+      if (this.Q && this.Z != null && this.L == null) {
+         this.Z.accept(true);
+      }
+
+      this.m.a(this.E);
    }
 
-   private fcq f() throws fdj, TimeoutException, CancellationException {
-      fby $$0 = fby.a();
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.G, this.n / 2, 20, -1);
+      $$0.a(this.p, this.M, this.n / 2, 50, -1);
+      if (this.P) {
+         this.c($$0);
+      }
 
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.d()) {
-            throw new CancellationException();
+      if (this.K.a != 0L && !this.O) {
+         this.d($$0);
+         this.e($$0);
+      }
+
+      if (this.L != null) {
+         $$0.a(this.p, this.L, this.n / 2, 110, -65536);
+      }
+   }
+
+   private void c(fjn $$0) {
+      int $$1 = this.p.a(this.M);
+      if (this.V != 0 && this.V % 10 == 0) {
+         this.X++;
+      }
+
+      $$0.a(this.p, W[this.X % W.length], this.n / 2 + $$1 / 2 + 5, 50, -1, false);
+   }
+
+   private void d(fjn $$0) {
+      double $$1 = Math.min((double)this.K.a / (double)this.K.b, 1.0);
+      this.N = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
+      int $$2 = (this.n - 200) / 2;
+      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
+      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
+      $$0.a($$2, 80, $$3, 95, -8355712);
+      $$0.a(this.p, xd.a("mco.download.percent", this.N), this.n / 2, 84, -1);
+   }
+
+   private void e(fjn $$0) {
+      if (this.V % 20 == 0) {
+         if (this.S != null) {
+            long $$1 = ad.c() - this.T;
+            if ($$1 == 0L) {
+               $$1 = 1L;
+            }
+
+            this.U = 1000L * (this.K.a - this.S) / $$1;
+            this.a($$0, this.U);
          }
 
+         this.S = this.K.a;
+         this.T = ad.c();
+      } else {
+         this.a($$0, this.U);
+      }
+   }
+
+   private void a(fjn $$0, long $$1) {
+      if ($$1 > 0L) {
+         int $$2 = this.p.b(this.N);
+         $$0.a(this.p, xd.a("mco.download.speed", fdg.b($$1)), this.n / 2 + $$2 / 2 + 15, 84, -1, false);
+      }
+   }
+
+   private void F() {
+      new Thread(() -> {
          try {
-            return $$0.c(this.e.a);
-         } catch (fdk var4) {
-            a((long)var4.c);
+            try {
+               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
+                  this.M = xd.c("mco.download.failed");
+                  return;
+               }
+
+               if (this.O) {
+                  this.G();
+                  return;
+               }
+
+               this.M = xd.a("mco.download.downloading", this.J);
+               fdh $$0 = new fdh();
+               $$0.a(this.F.a);
+               $$0.a(this.F, this.J, this.K, this.m.m());
+
+               while (!$$0.b()) {
+                  if ($$0.c()) {
+                     $$0.a();
+                     this.L = xd.c("mco.download.failed");
+                     this.I.b(xc.d);
+                     return;
+                  }
+
+                  if ($$0.d()) {
+                     if (!this.R) {
+                        this.M = xd.c("mco.download.extracting");
+                     }
+
+                     this.R = true;
+                  }
+
+                  if (this.O) {
+                     $$0.a();
+                     this.G();
+                     return;
+                  }
+
+                  try {
+                     Thread.sleep(500L);
+                  } catch (InterruptedException var8) {
+                     a.error("Failed to check Realms backup download status");
+                  }
+               }
+
+               this.Q = true;
+               this.M = xd.c("mco.download.done");
+               this.I.b(xc.d);
+               return;
+            } catch (InterruptedException var9) {
+               a.error("Could not acquire upload lock");
+            } catch (Exception var10) {
+               this.L = xd.c("mco.download.failed");
+               a.info("Exception while downloading world", var10);
+            }
+         } finally {
+            if (!b.isHeldByCurrentThread()) {
+               return;
+            } else {
+               b.unlock();
+               this.P = false;
+               this.Q = true;
+            }
          }
-      }
-
-      throw new TimeoutException();
+      }).start();
    }
 
-   public fed a(fcq $$0) {
-      return new fee(this.f, new ffj(this.f, this.e, $$0));
+   private void G() {
+      this.M = xd.c("mco.download.cancelled");
    }
 
-   private fjo a(fcq $$0, UUID $$1, Function<fcq, fod> $$2) {
-      wz $$3 = wz.c("mco.configure.world.resourcepack.question");
-      return fej.a(this.f, $$3, $$3x -> {
-         a(new fno(b));
-         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
-            fgo.Q().ae().i();
-            c.error("Failed to download resource pack from {}", $$0, $$1xx);
-            a(new feb(wz.c("mco.download.resourcePack.fail"), this.f));
-            return null;
-         });
-      });
-   }
-
-   private CompletableFuture<?> a(fcq $$0, UUID $$1) {
-      try {
-         gtc $$2 = fgo.Q().ae();
-         CompletableFuture<Void> $$3 = $$2.b($$1);
-         $$2.g();
-         $$2.a($$1, new URL($$0.b), $$0.c);
-         return $$3;
-      } catch (Exception var5) {
-         CompletableFuture<Void> $$5 = new CompletableFuture<>();
-         $$5.completeExceptionally(var5);
-         return $$5;
-      }
+   public static class a {
+      public volatile long a;
+      public volatile long b;
    }
 }

@@ -1,40 +1,70 @@
-import com.mojang.serialization.MapCodec;
+public abstract class dfa {
+   public static final ala<det> a = a("the_void");
+   public static final ala<det> b = a("plains");
+   public static final ala<det> c = a("sunflower_plains");
+   public static final ala<det> d = a("snowy_plains");
+   public static final ala<det> e = a("ice_spikes");
+   public static final ala<det> f = a("desert");
+   public static final ala<det> g = a("swamp");
+   public static final ala<det> h = a("mangrove_swamp");
+   public static final ala<det> i = a("forest");
+   public static final ala<det> j = a("flower_forest");
+   public static final ala<det> k = a("birch_forest");
+   public static final ala<det> l = a("dark_forest");
+   public static final ala<det> m = a("old_growth_birch_forest");
+   public static final ala<det> n = a("old_growth_pine_taiga");
+   public static final ala<det> o = a("old_growth_spruce_taiga");
+   public static final ala<det> p = a("taiga");
+   public static final ala<det> q = a("snowy_taiga");
+   public static final ala<det> r = a("savanna");
+   public static final ala<det> s = a("savanna_plateau");
+   public static final ala<det> t = a("windswept_hills");
+   public static final ala<det> u = a("windswept_gravelly_hills");
+   public static final ala<det> v = a("windswept_forest");
+   public static final ala<det> w = a("windswept_savanna");
+   public static final ala<det> x = a("jungle");
+   public static final ala<det> y = a("sparse_jungle");
+   public static final ala<det> z = a("bamboo_jungle");
+   public static final ala<det> A = a("badlands");
+   public static final ala<det> B = a("eroded_badlands");
+   public static final ala<det> C = a("wooded_badlands");
+   public static final ala<det> D = a("meadow");
+   public static final ala<det> E = a("cherry_grove");
+   public static final ala<det> F = a("grove");
+   public static final ala<det> G = a("snowy_slopes");
+   public static final ala<det> H = a("frozen_peaks");
+   public static final ala<det> I = a("jagged_peaks");
+   public static final ala<det> J = a("stony_peaks");
+   public static final ala<det> K = a("river");
+   public static final ala<det> L = a("frozen_river");
+   public static final ala<det> M = a("beach");
+   public static final ala<det> N = a("snowy_beach");
+   public static final ala<det> O = a("stony_shore");
+   public static final ala<det> P = a("warm_ocean");
+   public static final ala<det> Q = a("lukewarm_ocean");
+   public static final ala<det> R = a("deep_lukewarm_ocean");
+   public static final ala<det> S = a("ocean");
+   public static final ala<det> T = a("deep_ocean");
+   public static final ala<det> U = a("cold_ocean");
+   public static final ala<det> V = a("deep_cold_ocean");
+   public static final ala<det> W = a("frozen_ocean");
+   public static final ala<det> X = a("deep_frozen_ocean");
+   public static final ala<det> Y = a("mushroom_fields");
+   public static final ala<det> Z = a("dripstone_caves");
+   public static final ala<det> aa = a("lush_caves");
+   public static final ala<det> ab = a("deep_dark");
+   public static final ala<det> ac = a("nether_wastes");
+   public static final ala<det> ad = a("warped_forest");
+   public static final ala<det> ae = a("crimson_forest");
+   public static final ala<det> af = a("soul_sand_valley");
+   public static final ala<det> ag = a("basalt_deltas");
+   public static final ala<det> ah = a("the_end");
+   public static final ala<det> ai = a("end_highlands");
+   public static final ala<det> aj = a("end_midlands");
+   public static final ala<det> ak = a("small_end_islands");
+   public static final ala<det> al = a("end_barrens");
 
-public class dfa extends dgh implements dgb {
-   public static final MapCodec<dfa> a = b(dfa::new);
-   private static final exv b = exs.a(dfy.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dfy.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
-
-   @Override
-   public MapCodec<dfa> a() {
-      return a;
-   }
-
-   protected dfa(dtb.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.a(dga.dR) || super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean b(dcz $$0, jd $$1, dtc $$2) {
-      return $$0.b_($$1.d()).c();
-   }
-
-   @Override
-   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
-      return (double)$$0.z.i() < 0.45;
-   }
-
-   @Override
-   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
-      dsr.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
+   private static ala<det> a(String $$0) {
+      return ala.a(lv.aF, alb.b($$0));
    }
 }

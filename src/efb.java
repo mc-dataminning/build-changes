@@ -1,16 +1,18 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
 
-public class efb implements eei {
-   public static final Codec<efb> a = axw.b(eiv.c).fieldOf("features").xmap(efb::new, $$0 -> $$0.b).codec();
-   public final jq<eiv> b;
+public class efb implements efg {
+   public static final Codec<efb> a = bqp.b(0, 256).fieldOf("count").xmap(efb::new, efb::a).codec();
+   private final bqp b;
 
-   public efb(jq<eiv> $$0) {
+   public efb(int $$0) {
+      this.b = bqm.a($$0);
+   }
+
+   public efb(bqp $$0) {
       this.b = $$0;
    }
 
-   @Override
-   public Stream<ebq<?, ?>> e() {
-      return this.b.a().flatMap($$0 -> $$0.a().a());
+   public bqp a() {
+      return this.b;
    }
 }

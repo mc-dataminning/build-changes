@@ -1,28 +1,41 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class guf<T> extends gug<T> {
-   private final guk<T> c;
+public class guf extends gtk {
+   public gxl a = gxc.b();
+   public float b;
+   public float c;
+   public float d;
+   public int e;
+   public int f;
+   public int g;
+   public boolean h;
+   public boolean i = true;
+   public boolean j = true;
+   public boolean k = true;
+   public boolean l = true;
+   public boolean au = true;
+   public boolean av = true;
+   public boolean aw = true;
+   public boolean ax;
+   public float ay;
+   public boolean az;
+   public float aA;
+   public boolean aB;
+   public guf.a aC = new guf.a();
+   public guf.a aD = new guf.a();
+   @Nullable
+   public xd aE;
+   @Nullable
+   public cgl.b aF;
+   @Nullable
+   public cgl.b aG;
+   public int aH;
+   public String aI = "Steve";
 
-   public guf(Function<T, Stream<String>> $$0, Function<T, Stream<akr>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = guk.plainText($$2, $$0);
-   }
-
-   @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
-   }
-
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new gui<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new guh<T>($$2.iterator(), $$5, this.a));
+   public static class a {
+      public boolean a = true;
+      @Nullable
+      public cxh b;
+      public boolean c;
    }
 }

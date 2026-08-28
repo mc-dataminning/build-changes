@@ -1,67 +1,74 @@
-import java.util.Arrays;
+public class fxe extends fxa<gte> {
+   private static final float a = 1.5F;
+   private static final float b = 1.0F;
+   private static final float c = 2.5F;
+   private final gab d;
+   private final gab e;
+   private final gab f;
+   private final gab g;
+   private final gab i;
+   private final gab j;
+   private final gab k;
+   private final gab l;
+   private final gab m;
+   private final gab n;
 
-public class fxe<T extends bsr> extends fvt<T> {
-   private static final int a = 7;
-   private final fyk b;
-   private final fyk[] f = new fyk[7];
-   private final fyk[] g = new fyk[3];
-   private static final int[][] h = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] i = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
-
-   public fxe(fyk $$0) {
-      this.b = $$0;
-      Arrays.setAll(this.f, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.g, $$1 -> $$0.b(a($$1)));
+   public fxe(gab $$0) {
+      this.d = $$0.b("root");
+      this.e = this.d.b("body");
+      this.f = this.e.b("head");
+      this.g = this.f.b("eyes");
+      this.i = this.e.b("tongue");
+      this.j = this.e.b("left_arm");
+      this.k = this.e.b("right_arm");
+      this.l = this.d.b("left_leg");
+      this.m = this.d.b("right_leg");
+      this.n = this.e.b("croaking_body");
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      gal $$2 = $$1.a("root", gag.c(), gad.a(0.0F, 24.0F, 0.0F));
+      gal $$3 = $$2.a(
+         "body", gag.c().a(3, 1).a(-3.5F, -2.0F, -8.0F, 7.0F, 3.0F, 9.0F).a(23, 22).a(-3.5F, -1.0F, -8.0F, 7.0F, 0.0F, 9.0F), gad.a(0.0F, -2.0F, 4.0F)
+      );
+      gal $$4 = $$3.a(
+         "head", gag.c().a(23, 13).a(-3.5F, -1.0F, -7.0F, 7.0F, 0.0F, 9.0F).a(0, 13).a(-3.5F, -2.0F, -7.0F, 7.0F, 3.0F, 9.0F), gad.a(0.0F, -2.0F, -1.0F)
+      );
+      gal $$5 = $$4.a("eyes", gag.c(), gad.a(-0.5F, 0.0F, 2.0F));
+      $$5.a("right_eye", gag.c().a(0, 0).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), gad.a(-1.5F, -3.0F, -6.5F));
+      $$5.a("left_eye", gag.c().a(0, 5).a(-1.5F, -1.0F, -1.5F, 3.0F, 2.0F, 3.0F), gad.a(2.5F, -3.0F, -6.5F));
+      $$3.a("croaking_body", gag.c().a(26, 5).a(-3.5F, -0.1F, -2.9F, 7.0F, 2.0F, 3.0F, new gaf(-0.1F)), gad.a(0.0F, -1.0F, -5.0F));
+      gal $$6 = $$3.a("tongue", gag.c().a(17, 13).a(-2.0F, 0.0F, -7.1F, 4.0F, 0.0F, 7.0F), gad.a(0.0F, -1.01F, 1.0F));
+      gal $$7 = $$3.a("left_arm", gag.c().a(0, 32).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), gad.a(4.0F, -1.0F, -6.5F));
+      $$7.a("left_hand", gag.c().a(18, 40).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), gad.a(0.0F, 3.0F, -1.0F));
+      gal $$8 = $$3.a("right_arm", gag.c().a(0, 38).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 3.0F), gad.a(-4.0F, -1.0F, -6.5F));
+      $$8.a("right_hand", gag.c().a(2, 40).a(-4.0F, 0.01F, -5.0F, 8.0F, 0.0F, 8.0F), gad.a(0.0F, 3.0F, 0.0F));
+      gal $$9 = $$2.a("left_leg", gag.c().a(14, 25).a(-1.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), gad.a(3.5F, -3.0F, 4.0F));
+      $$9.a("left_foot", gag.c().a(2, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), gad.a(2.0F, 3.0F, 0.0F));
+      gal $$10 = $$2.a("right_leg", gag.c().a(0, 25).a(-2.0F, 0.0F, -2.0F, 3.0F, 3.0F, 4.0F), gad.a(-3.5F, -3.0F, 4.0F));
+      $$10.a("right_foot", gag.c().a(18, 32).a(-4.0F, 0.01F, -4.0F, 8.0F, 0.0F, 8.0F), gad.a(-2.0F, 3.0F, 0.0F));
+      return gah.a($$0, 48, 48);
    }
 
-   private static String b(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            fyp.c().a(i[$$4][0], i[$$4][1]).a((float)h[$$4][0] * -0.5F, 0.0F, (float)h[$$4][2] * -0.5F, (float)h[$$4][0], (float)h[$$4][1], (float)h[$$4][2]),
-            fym.a(0.0F, (float)(24 - h[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(h[$$4][2] + h[$$4 + 1][2]) * 0.5F;
-         }
+   public void a(gte $$0) {
+      this.a().e().forEach(gab::c);
+      this.a($$0.b, fix.c, $$0.p);
+      this.a($$0.c, fix.a, $$0.p);
+      this.a($$0.d, fix.d, $$0.p);
+      if ($$0.a) {
+         this.a(fix.e, $$0.X, $$0.Y, 1.0F, 2.5F);
+      } else {
+         this.a(fix.b, $$0.X, $$0.Y, 1.5F, 2.5F);
       }
 
-      $$1.a(a(0), fyp.c().a(20, 0).a(-5.0F, 0.0F, (float)h[2][2] * -0.5F, 10.0F, 8.0F, (float)h[2][2]), fym.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), fyp.c().a(20, 11).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 4.0F, (float)h[4][2]), fym.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), fyp.c().a(20, 18).a(-3.0F, 0.0F, (float)h[4][2] * -0.5F, 6.0F, 5.0F, (float)h[1][2]), fym.a(0.0F, 19.0F, $$2[1]));
-      return fyq.a($$0, 64, 32);
+      this.a($$0.e, fix.f, $$0.p);
+      this.n.k = $$0.c.b();
    }
 
    @Override
-   public fyk a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      for (int $$6 = 0; $$6 < this.f.length; $$6++) {
-         this.f[$$6].f = ayo.b($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$6 - 2));
-         this.f[$$6].b = ayo.a($$3 * 0.9F + (float)$$6 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$6 - 2);
-      }
-
-      this.g[0].f = this.f[2].f;
-      this.g[1].f = this.f[4].f;
-      this.g[1].b = this.f[4].b;
-      this.g[2].f = this.f[1].f;
-      this.g[2].b = this.f[1].b;
+   public gab a() {
+      return this.d;
    }
 }

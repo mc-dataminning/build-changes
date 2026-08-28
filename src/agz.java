@@ -1,30 +1,20 @@
-public record agz(int b, int c, boolean d) implements zg<agi> {
-   public static final yx<vw, agz> a = zg.a(agz::a, agz::new);
+public record agz(xu.a b) implements zk<agq> {
+   public static final zb<wa, agz> a = zk.a(agz::a, agz::new);
 
-   private agz(vw $$0) {
-      this($$0.l(), $$0.l(), $$0.readBoolean());
+   private agz(wa $$0) {
+      this(xu.a.a($$0));
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(wa $$0) {
+      xu.a.a($$0, this.b);
    }
 
    @Override
-   public zi<agz> a() {
-      return agg.bu;
+   public zm<agz> a() {
+      return ago.bo;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
    }
 }

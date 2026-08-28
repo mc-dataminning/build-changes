@@ -1,20 +1,25 @@
-public record aaa(aqh b) implements zg<zz> {
-   public static final yx<vw, aaa> a = zg.a(aaa::a, aaa::new);
+public record aaa(String b, int c) implements zk<zq> {
+   public static final zb<wa, aaa> a = zk.a(aaa::a, aaa::new);
 
-   private aaa(vw $$0) {
-      this(new aqh($$0));
+   private aaa(wa $$0) {
+      this($$0.p(), $$0.l());
    }
 
-   private void a(vw $$0) {
-      this.b.a($$0);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zi<aaa> a() {
-      return zy.l;
+   public zm<aaa> a() {
+      return aac.j;
    }
 
-   public void a(zz $$0) {
+   public void a(zq $$0) {
       $$0.a(this);
+   }
+
+   public int e() {
+      return this.c;
    }
 }

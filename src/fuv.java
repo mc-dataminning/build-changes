@@ -1,80 +1,32 @@
-public class fuv<T extends cfh> extends fwi<T> {
-   private float q;
-   private float r;
-   private float s;
+import java.util.Map;
+import java.util.Optional;
 
-   public fuv(fyk $$0) {
-      super($$0);
+public interface fuv {
+   Map<Optional<ala<ekd>>, fuv> a = Map.of(Optional.of(eke.b), ($$0, $$1) -> {
+      dvx $$2 = $$1.e().a();
+      kb $$3 = $$1.a();
+      jo<det> $$4 = $$3.b(lv.aF);
+      jo<eku> $$5 = $$3.b(lv.aT);
+      jo<ejs> $$6 = $$3.b(lv.aQ);
+      return new fou($$0, $$1x -> $$0.m().a(a($$1x)), $$2 instanceof dzr ? ((dzr)$$2).h() : eir.a($$4, $$5, $$6));
+   }, Optional.of(eke.e), ($$0, $$1) -> new fot($$0, $$1, $$1x -> $$0.m().a(a($$1x))));
+
+   fpt createEditScreen(fuq var1, fuy var2);
+
+   private static fuy.a a(eir $$0) {
+      return ($$1, $$2) -> {
+         dvx $$3 = new dzr($$0);
+         return $$2.a($$1, $$3);
+      };
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.q = $$0.H($$3);
-      this.r = $$0.I($$3);
-      this.s = $$0.J($$3);
-      if (this.q <= 0.0F) {
-         this.n.e = 0.0F;
-         this.n.g = 0.0F;
-         this.j.e = 0.0F;
-         this.j.g = 0.0F;
-         this.k.e = 0.0F;
-         this.k.g = 0.0F;
-         this.k.b = -1.2F;
-         this.h.e = 0.0F;
-         this.i.e = 0.0F;
-         this.i.g = 0.0F;
-         this.i.b = -1.1F;
-         this.i.c = 18.0F;
-      }
-
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.x()) {
-         this.o.e = (float) (Math.PI / 4);
-         this.o.c += -4.0F;
-         this.o.d += 5.0F;
-         this.n.c += -3.3F;
-         this.n.d++;
-         this.l.c += 8.0F;
-         this.l.d += -2.0F;
-         this.m.c += 2.0F;
-         this.m.d += -0.8F;
-         this.l.e = 1.7278761F;
-         this.m.e = 2.670354F;
-         this.j.e = (float) (-Math.PI / 20);
-         this.j.c = 16.1F;
-         this.j.d = -7.0F;
-         this.k.e = (float) (-Math.PI / 20);
-         this.k.c = 16.1F;
-         this.k.d = -7.0F;
-         this.h.e = (float) (-Math.PI / 2);
-         this.h.c = 21.0F;
-         this.h.d = 1.0F;
-         this.i.e = (float) (-Math.PI / 2);
-         this.i.c = 21.0F;
-         this.i.d = 1.0F;
-         this.p = 3;
-      }
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (this.q > 0.0F) {
-         this.n.g = fwh.a(this.n.g, -1.2707963F, this.q);
-         this.n.f = fwh.a(this.n.f, 1.2707963F, this.q);
-         this.j.e = -1.2707963F;
-         this.k.e = -0.47079635F;
-         this.k.g = -0.2F;
-         this.k.b = -0.2F;
-         this.h.e = -0.4F;
-         this.i.e = 0.5F;
-         this.i.g = -0.5F;
-         this.i.b = -0.3F;
-         this.i.c = 20.0F;
-         this.l.e = fwh.a(this.l.e, 0.8F, this.r);
-         this.m.e = fwh.a(this.m.e, -0.4F, this.r);
-      }
-
-      if (this.s > 0.0F) {
-         this.n.e = fwh.a(this.n.e, -0.58177644F, this.s);
-      }
+   private static fuy.a a(jn<det> $$0) {
+      return ($$1, $$2) -> {
+         ka<eab> $$3 = $$1.d(lv.aO);
+         jn<eab> $$4 = $$3.g(eab.c);
+         dex $$5 = new dfe($$0);
+         dvx $$6 = new dzz($$5, $$4);
+         return $$2.a($$1, $$6);
+      };
    }
 }

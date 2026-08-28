@@ -1,16 +1,38 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import net.minecraft.server.MinecraftServer;
 
 public class bvt {
-   public static <E extends btn> bvi<E> a(Predicate<E> $$0, ccs<?> $$1) {
-      return byu.a((Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+   public static bvy<cnc> a() {
+      return bzk.a(
+         (Function<bzk.b<cnc>, ? extends App<bzk.c<cnc>, bzn<cnc>>>)($$0 -> $$0.group($$0.b(cdi.d), $$0.a(cdi.c))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jm $$6 = $$0.b($$1);
+                        if (!$$6.b().a($$4.dq(), 2.0) && !$$4.gz()) {
+                           return false;
+                        } else {
+                           $$1.b();
+                           $$2.a($$6);
+                           $$3.a($$4, (byte)14);
+                           if ($$4.gy().b() != cnf.b) {
+                              return true;
+                           } else {
+                              MinecraftServer $$7 = $$3.o();
+                              Optional.ofNullable($$7.a($$6.a()))
+                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
+                                 .flatMap($$0xxx -> lu.x.s().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
+                                 .ifPresent($$2xx -> {
+                                    $$4.a($$4.gy().a($$2xx));
+                                    $$4.a($$3);
+                                 });
+                              return true;
+                           }
+                        }
+                     }
+               ))
+      );
    }
 }

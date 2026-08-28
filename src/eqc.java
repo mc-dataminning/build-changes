@@ -1,72 +1,24 @@
-public record eqc(aqu d, exc e, exc f, float g, float h, boolean i, eqc.a j) {
-   public static final eqc.a a = $$0 -> {
-   };
-   public static final eqc.a b = eqc::a;
-   public static final eqc.a c = eqc::b;
+import com.google.common.collect.UnmodifiableIterator;
 
-   public eqc(aqu $$0, exc $$1, exc $$2, float $$3, float $$4, eqc.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, false, $$5);
+public class eqc {
+   public static final eqa a = a("empty", new epy());
+   public static final epz b = a("flowing_water", new eqh.a());
+   public static final epz c = a("water", new eqh.b());
+   public static final epz d = a("flowing_lava", new eqe.a());
+   public static final epz e = a("lava", new eqe.b());
+
+   private static <T extends eqa> T a(String $$0, T $$1) {
+      return ka.a(lu.c, $$0, $$1);
    }
 
-   public eqc(aqu $$0, bsr $$1, eqc.a $$2) {
-      this($$0, a($$0, $$1), exc.b, 0.0F, 0.0F, false, $$2);
-   }
+   static {
+      for (eqa $$0 : lu.c) {
+         UnmodifiableIterator var2 = $$0.f().a().iterator();
 
-   private static void a(bsr $$0) {
-      if ($$0 instanceof aqv $$1) {
-         $$1.c.b(new adh(1032, jd.c, 0, false));
-      }
-   }
-
-   private static void b(bsr $$0) {
-      $$0.f(jd.a((jw)$$0.dm()));
-   }
-
-   public static eqc a(aqu $$0, bsr $$1, eqc.a $$2) {
-      return new eqc($$0, a($$0, $$1), exc.b, 0.0F, 0.0F, true, $$2);
-   }
-
-   private static exc a(aqu $$0, bsr $$1) {
-      return $$1.a($$0, $$0.V()).c();
-   }
-
-   public aqu a() {
-      return this.d;
-   }
-
-   public exc b() {
-      return this.e;
-   }
-
-   public exc c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public float e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public eqc.a g() {
-      return this.j;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(bsr var1);
-
-      default eqc.a then(eqc.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
+         while (var2.hasNext()) {
+            eqb $$1 = (eqb)var2.next();
+            eqa.c.b($$1);
+         }
       }
    }
 }

@@ -1,21 +1,10 @@
-import java.util.function.IntConsumer;
+public class axc {
+   public static final axi<cjv> a = a("placeable");
 
-public interface axc {
-   int a(int var1, int var2);
+   private axc() {
+   }
 
-   void b(int var1, int var2);
-
-   int a(int var1);
-
-   long[] a();
-
-   int b();
-
-   int c();
-
-   void a(IntConsumer var1);
-
-   void a(int[] var1);
-
-   axc d();
+   private static axi<cjv> a(String $$0) {
+      return axi.a(lv.X, alb.b($$0));
+   }
 }

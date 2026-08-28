@@ -1,52 +1,132 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class ett extends ete {
+public class ett extends eug {
    public static final MapCodec<ett> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  cxl.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  cxl.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  cxl.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  ett.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
+                  kq.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
+                  kq.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, ett::new)
    );
-   public static final cxl b = new cxl(cxl.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<cxl.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final ett.b b;
+   private final Optional<List<kq<?>>> c;
+   private final Optional<List<kq<?>>> d;
+   private final Predicate<kq<?>> e;
 
-   public ett(List<evc> $$0, Optional<cxl.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   ett(List<ewe> $$0, ett.b $$1, Optional<List<kq<?>>> $$2, Optional<List<kq<?>>> $$3) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.b = $$1;
+      this.c = $$2.map(List::copyOf);
+      this.d = $$3.map(List::copyOf);
+      List<Predicate<kq<?>>> $$4 = new ArrayList<>(2);
+      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
+      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
+      this.e = ad.a($$4);
    }
 
    @Override
-   protected cuq a(cuq $$0, err $$1) {
-      $$0.a(kq.U, b, this::a);
+   public eui<ett> b() {
+      return euj.J;
+   }
+
+   @Override
+   public Set<evm<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      kn $$2 = this.b.a($$1);
+      $$0.b($$2.a(this.e));
       return $$0;
    }
 
-   private cxl a(cxl $$0) {
-      return new cxl(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   public static ett.a a(ett.b $$0) {
+      return new ett.a($$0);
    }
 
-   @Override
-   public etg<ett> b() {
-      return eth.L;
+   public static class a extends eug.a<ett.a> {
+      private final ett.b a;
+      private Optional<Builder<kq<?>>> b = Optional.empty();
+      private Optional<Builder<kq<?>>> c = Optional.empty();
+
+      a(ett.b $$0) {
+         this.a = $$0;
+      }
+
+      public ett.a a(kq<?> $$0) {
+         if (this.b.isEmpty()) {
+            this.b = Optional.of(ImmutableList.builder());
+         }
+
+         this.b.get().add($$0);
+         return this;
+      }
+
+      public ett.a b(kq<?> $$0) {
+         if (this.c.isEmpty()) {
+            this.c = Optional.of(ImmutableList.builder());
+         }
+
+         this.c.get().add($$0);
+         return this;
+      }
+
+      protected ett.a a() {
+         return this;
+      }
+
+      @Override
+      public euh b() {
+         return new ett(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
+      }
+   }
+
+   public static enum b implements azy {
+      a("block_entity");
+
+      public static final Codec<ett.b> b = azy.b(ett.b::values);
+      private final String c;
+
+      private b(final String $$0) {
+         this.c = $$0;
+      }
+
+      public kn a(est $$0) {
+         switch (this) {
+            case a:
+               dre $$1 = $$0.c(evp.h);
+               return $$1 != null ? $$1.r() : kn.a;
+            default:
+               throw new MatchException(null, null);
+         }
+      }
+
+      public Set<evm<?>> a() {
+         switch (this) {
+            case a:
+               return Set.of(evp.h);
+            default:
+               throw new MatchException(null, null);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
    }
 }

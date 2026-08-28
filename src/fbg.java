@@ -1,15 +1,46 @@
 public class fbg {
-   public static final fbn a = fbn.a().a("Position", fbo.b).a();
-   public static final fbn b = fbn.a().a("Position", fbo.b).a("Color", fbo.c).a("UV0", fbo.d).a("UV2", fbo.g).a("Normal", fbo.h).a(1).a();
-   public static final fbn c = fbn.a().a("Position", fbo.b).a("Color", fbo.c).a("UV0", fbo.d).a("UV1", fbo.f).a("UV2", fbo.g).a("Normal", fbo.h).a(1).a();
-   public static final fbn d = fbn.a().a("Position", fbo.b).a("UV0", fbo.d).a("Color", fbo.c).a("UV2", fbo.g).a();
-   public static final fbn e = fbn.a().a("Position", fbo.b).a();
-   public static final fbn f = fbn.a().a("Position", fbo.b).a("Color", fbo.c).a();
-   public static final fbn g = fbn.a().a("Position", fbo.b).a("Color", fbo.c).a("Normal", fbo.h).a(1).a();
-   public static final fbn h = fbn.a().a("Position", fbo.b).a("Color", fbo.c).a("UV2", fbo.g).a();
-   public static final fbn i = fbn.a().a("Position", fbo.b).a("UV0", fbo.d).a();
-   public static final fbn j = fbn.a().a("Position", fbo.b).a("UV0", fbo.d).a("Color", fbo.c).a();
-   public static final fbn k = fbn.a().a("Position", fbo.b).a("Color", fbo.c).a("UV0", fbo.d).a("UV2", fbo.g).a();
-   public static final fbn l = fbn.a().a("Position", fbo.b).a("UV0", fbo.d).a("UV2", fbo.g).a("Color", fbo.c).a();
-   public static final fbn m = fbn.a().a("Position", fbo.b).a("UV0", fbo.d).a("Color", fbo.c).a("Normal", fbo.h).a(1).a();
+   private static final int a = 60;
+   private static final int b = 10;
+   private static final int c = 30;
+   private static final int d = 10;
+   private static final long e = 60000L;
+   private static final long f = 600000L;
+   private final fif g;
+   private final fib h;
+   private int i;
+   private long j;
+
+   public fbg(fif $$0, fib $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$0.h().c();
+   }
+
+   public int a() {
+      fhx $$0 = this.g.i().c();
+      if (this.h.aO().k()) {
+         return 10;
+      } else {
+         if ($$0 == fhx.b) {
+            long $$1 = ad.c() - this.j;
+            if ($$1 > 600000L) {
+               return 10;
+            }
+
+            if ($$1 > 60000L) {
+               return Math.min(this.i, 30);
+            }
+         }
+
+         return this.h.s != null || this.h.z == null && this.h.aM() == null ? this.i : 60;
+      }
+   }
+
+   public void a(int $$0) {
+      this.i = $$0;
+   }
+
+   public void b() {
+      this.j = ad.c();
+   }
 }

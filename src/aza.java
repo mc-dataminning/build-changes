@@ -1,11 +1,14 @@
-import java.security.SignatureException;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface aza {
-   void update(aza.a var1) throws SignatureException;
+public class aza {
+   @Nullable
+   private static byte[] a = null;
 
-   @FunctionalInterface
-   public interface a {
-      void update(byte[] var1) throws SignatureException;
+   public static void a() {
+      a = new byte[10485760];
+   }
+
+   public static void b() {
+      a = new byte[0];
    }
 }

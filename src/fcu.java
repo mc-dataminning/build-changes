@@ -1,154 +1,130 @@
-import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.common.collect.Queues;
+import java.util.Deque;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class fcu extends fdc {
-   public final boolean a;
-   public final boolean b;
-   public final boolean c;
-   public final boolean d;
-   public final int e;
-   public final boolean f;
-   public final boolean g;
-   public final int h;
-   public final int i;
-   private final String o;
-   public final String j;
-   public final fcp.a k;
-   public long l;
-   @Nullable
-   public String m;
-   public boolean n;
-   private static final boolean p = false;
-   private static final boolean q = true;
-   private static final boolean r = true;
-   private static final boolean s = true;
-   private static final boolean t = true;
-   private static final int u = 0;
-   private static final boolean v = false;
-   private static final int w = 2;
-   private static final int x = 0;
-   private static final String y = "";
-   private static final String z = "";
-   private static final fcp.a A = fcp.a.a;
-   private static final long B = -1L;
-   private static final String C = null;
+public class fcu {
+   private final Deque<fcu.a> a = ad.a(Queues.newArrayDeque(), $$0 -> {
+      Matrix4f $$1 = new Matrix4f();
+      Matrix3f $$2 = new Matrix3f();
+      $$0.add(new fcu.a($$1, $$2));
+   });
 
-   public fcu(boolean $$0, boolean $$1, boolean $$2, boolean $$3, int $$4, boolean $$5, int $$6, int $$7, boolean $$8, String $$9, String $$10, fcp.a $$11) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.g = $$8;
-      this.o = $$9;
-      this.j = $$10;
-      this.k = $$11;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
    }
 
-   public static fcu a() {
-      return new fcu(true, true, true, true, 0, false, 2, 0, false, "", "", A);
+   public void a(float $$0, float $$1, float $$2) {
+      fcu.a $$3 = this.a.getLast();
+      $$3.a.translate($$0, $$1, $$2);
    }
 
-   public static fcu b() {
-      fcu $$0 = a();
-      $$0.a(true);
-      return $$0;
+   public void a(eye $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
    }
 
-   public void a(boolean $$0) {
-      this.n = $$0;
-   }
-
-   public static fcu a(JsonObject $$0) {
-      fcu $$1 = new fcu(
-         fez.a("pvp", $$0, true),
-         fez.a("spawnAnimals", $$0, true),
-         fez.a("spawnMonsters", $$0, true),
-         fez.a("spawnNPCs", $$0, true),
-         fez.a("spawnProtection", $$0, 0),
-         fez.a("commandBlocks", $$0, false),
-         fez.a("difficulty", $$0, 2),
-         fez.a("gameMode", $$0, 0),
-         fez.a("forceGameMode", $$0, false),
-         fez.a("slotName", $$0, ""),
-         fez.a("version", $$0, ""),
-         fcp.d(fez.a("compatibility", $$0, fcp.a.a.name()))
-      );
-      $$1.l = fez.a("worldTemplateId", $$0, -1L);
-      $$1.m = fez.b("worldTemplateImage", $$0, C);
-      return $$1;
-   }
-
-   public String a(int $$0) {
-      if (azl.h(this.o)) {
-         return this.n ? grr.a("mco.configure.world.slot.empty") : this.b($$0);
+   public void b(float $$0, float $$1, float $$2) {
+      fcu.a $$3 = this.a.getLast();
+      $$3.a.scale($$0, $$1, $$2);
+      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
+         }
       } else {
-         return this.o;
+         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+         $$3.c = false;
       }
    }
 
-   public String b(int $$0) {
-      return grr.a("mco.configure.world.slot", $$0);
+   public void a(Quaternionf $$0) {
+      fcu.a $$1 = this.a.getLast();
+      $$1.a.rotate($$0);
+      $$1.b.rotate($$0);
    }
 
-   public String c() {
-      JsonObject $$0 = new JsonObject();
-      if (!this.a) {
-         $$0.addProperty("pvp", this.a);
-      }
-
-      if (!this.b) {
-         $$0.addProperty("spawnAnimals", this.b);
-      }
-
-      if (!this.c) {
-         $$0.addProperty("spawnMonsters", this.c);
-      }
-
-      if (!this.d) {
-         $$0.addProperty("spawnNPCs", this.d);
-      }
-
-      if (this.e != 0) {
-         $$0.addProperty("spawnProtection", this.e);
-      }
-
-      if (this.f) {
-         $$0.addProperty("commandBlocks", this.f);
-      }
-
-      if (this.h != 2) {
-         $$0.addProperty("difficulty", this.h);
-      }
-
-      if (this.i != 0) {
-         $$0.addProperty("gameMode", this.i);
-      }
-
-      if (this.g) {
-         $$0.addProperty("forceGameMode", this.g);
-      }
-
-      if (!Objects.equals(this.o, "")) {
-         $$0.addProperty("slotName", this.o);
-      }
-
-      if (!Objects.equals(this.j, "")) {
-         $$0.addProperty("version", this.j);
-      }
-
-      if (this.k != A) {
-         $$0.addProperty("compatibility", this.k.name());
-      }
-
-      return $$0.toString();
+   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
+      fcu.a $$4 = this.a.getLast();
+      $$4.a.rotateAround($$0, $$1, $$2, $$3);
+      $$4.b.rotate($$0);
    }
 
-   public fcu d() {
-      return new fcu(this.a, this.b, this.c, this.d, this.e, this.f, this.h, this.i, this.g, this.o, this.j, this.k);
+   public void a() {
+      this.a.addLast(new fcu.a(this.a.getLast()));
+   }
+
+   public void b() {
+      this.a.removeLast();
+   }
+
+   public fcu.a c() {
+      return this.a.getLast();
+   }
+
+   public boolean d() {
+      return this.a.size() == 1;
+   }
+
+   public void e() {
+      fcu.a $$0 = this.a.getLast();
+      $$0.a.identity();
+      $$0.b.identity();
+      $$0.c = true;
+   }
+
+   public void a(Matrix4f $$0) {
+      fcu.a $$1 = this.a.getLast();
+      $$1.a.mul($$0);
+      if (!f.a($$0)) {
+         if (f.b($$0)) {
+            $$1.b.mul(new Matrix3f($$0));
+         } else {
+            $$1.d();
+         }
+      }
+   }
+
+   public static final class a {
+      final Matrix4f a;
+      final Matrix3f b;
+      boolean c = true;
+
+      a(Matrix4f $$0, Matrix3f $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      a(fcu.a $$0) {
+         this.a = new Matrix4f($$0.a);
+         this.b = new Matrix3f($$0.b);
+         this.c = $$0.c;
+      }
+
+      void d() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
+      }
+
+      public Matrix4f a() {
+         return this.a;
+      }
+
+      public Matrix3f b() {
+         return this.b;
+      }
+
+      public Vector3f a(Vector3f $$0, Vector3f $$1) {
+         return this.a($$0.x, $$0.y, $$0.z, $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public fcu.a c() {
+         return new fcu.a(this);
+      }
    }
 }

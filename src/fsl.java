@@ -1,64 +1,50 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+public class fsl extends fpt {
+   private static final int a = 600;
+   private final vx b;
+   private fka c;
+   private int d;
+   private final fns s = fns.d();
 
-public class fsl extends fsk<gah.a> {
-   private static final wz C = wz.c("gui.chatReport.title");
-   private static final wz D = wz.c("gui.chatReport.select_chat");
-   private fje E;
-   private fim F;
-   private fim G;
-
-   private fsl(fod $$0, gao $$1, gah.a $$2) {
-      super(C, $$0, $$1, $$2);
-   }
-
-   public fsl(fod $$0, gao $$1, UUID $$2) {
-      this($$0, $$1, new gah.a($$2, $$1.a().b()));
-   }
-
-   public fsl(fod $$0, gao $$1, gah $$2) {
-      this($$0, $$1, new gah.a($$2, $$1.a().b()));
+   public fsl(xd $$0, vx $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void C() {
-      this.F = this.z.a(fim.a(D, $$0 -> this.l.a(new fsn(this, this.y, this.A, $$0x -> {
-            this.A = $$0x;
-            this.E();
-         }))).a(280).a());
-      this.G = fim.a(c, $$0 -> this.l.a(new fsq(this, this.A.i(), $$0x -> {
-            this.A.a($$0x);
-            this.E();
-         }))).a(280).a();
-      this.z.a(flv.a(this.o, this.G, b));
-      this.E = this.a(280, 9 * 8, $$0 -> {
-         this.A.a($$0);
-         this.E();
+   public boolean aJ_() {
+      return false;
+   }
+
+   @Override
+   protected void aT_() {
+      this.s.c().b().a(10);
+      this.s.a(new flh(this.l, this.p));
+      this.c = this.s.a(fka.a(xc.p, $$0 -> this.b.a(fos.a)).a());
+      this.c.j = false;
+      this.s.a();
+      this.s.a($$1 -> {
+         fjy var10000 = this.c($$1);
       });
-      this.z.a(flv.a(this.o, this.E, r, $$0 -> $$0.e(12)));
+      this.c();
    }
 
    @Override
-   protected void E() {
-      IntSet $$0 = this.A.a();
-      if ($$0.isEmpty()) {
-         this.F.b(D);
-      } else {
-         this.F.b(wz.a("gui.chatReport.selected_chat", $$0.size()));
-      }
-
-      gam $$1 = this.A.i();
-      if ($$1 != null) {
-         this.G.b($$1.b());
-      } else {
-         this.G.b(c);
-      }
-
-      super.E();
+   protected void c() {
+      fnm.a(this.s, this.H());
    }
 
    @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
+      }
+
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

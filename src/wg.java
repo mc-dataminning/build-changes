@@ -1,38 +1,18 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.MessageToMessageEncoder;
+import java.util.List;
 
-public interface wg {
-   static wg a(final Runnable $$0) {
-      return new wg() {
-         @Override
-         public void a() {
-            $$0.run();
-         }
+public class wg extends MessageToMessageEncoder<zk<?>> {
+   private final zj a;
 
-         @Nullable
-         @Override
-         public zg<?> b() {
-            $$0.run();
-            return null;
-         }
-      };
+   public wg(zj $$0) {
+      this.a = $$0;
    }
 
-   static wg a(final Supplier<zg<?>> $$0) {
-      return new wg() {
-         @Nullable
-         @Override
-         public zg<?> b() {
-            return $$0.get();
-         }
-      };
-   }
-
-   default void a() {
-   }
-
-   @Nullable
-   default zg<?> b() {
-      return null;
+   protected void a(ChannelHandlerContext $$0, zk<?> $$1, List<Object> $$2) throws Exception {
+      this.a.a($$1, $$2::add);
+      if ($$1.d()) {
+         $$0.pipeline().remove($$0.name());
+      }
    }
 }

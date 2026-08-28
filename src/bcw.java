@@ -1,29 +1,10 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bcw extends bde {
-   public bcw(Schema $$0) {
-      super("EntityMinecartIdentifiersFix", $$0, true);
-   }
-
-   @Override
-   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
-      if (!$$0.equals("Minecart")) {
-         return Pair.of($$0, $$1);
-      } else {
-         int $$2 = ((Dynamic)$$1.getOrCreate(DSL.remainderFinder())).get("Type").asInt(0);
-
-         String $$3 = switch ($$2) {
-            case 1 -> "MinecartChest";
-            case 2 -> "MinecartFurnace";
-            default -> "MinecartRideable";
-         };
-         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bgr.B).types().get($$3);
-         return Pair.of($$3, ad.a($$1, $$4, $$0x -> $$0x.remove("Type")));
-      }
-   }
+public class bcw {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:cactus_green", "minecraft:green_dye")
+      .put("minecraft:rose_red", "minecraft:red_dye")
+      .put("minecraft:dandelion_yellow", "minecraft:yellow_dye")
+      .build();
 }

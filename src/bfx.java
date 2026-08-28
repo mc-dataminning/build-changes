@@ -1,31 +1,53 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import org.slf4j.Logger;
 
-public class bfx extends DataFix {
+public class bfx extends bas {
+   private static final Logger b = LogUtils.getLogger();
+
    public bfx(Schema $$0) {
-      super($$0, false);
+      super($$0, bhk.a);
    }
 
-   public TypeRewriteRule makeRule() {
+   protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsAmbientOcclusionFix",
-         this.getInputSchema().getType(bgr.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse($$0x.get("ao").asString().map($$1 -> $$0x.set("ao", $$0x.createString(a($$1)))).result(), $$0x)
+         "LevelUUIDFix",
+         this.getInputSchema().getType(this.a),
+         $$0 -> $$0.updateTyped(DSL.remainderFinder(), $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
+                  $$0xx = this.d($$0xx);
+                  $$0xx = this.c($$0xx);
+                  return this.b($$0xx);
+               }))
+      );
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update(
+         "DimensionData",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
             )
       );
    }
 
-   private static String a(String $$0) {
-      return switch ($$0) {
-         case "0" -> "false";
-         case "1", "2" -> "true";
-         default -> $$0;
-      };
+   private Dynamic<?> d(Dynamic<?> $$0) {
+      return $$0.update(
+         "CustomBossEvents",
+         $$0x -> $$0x.updateMapValues(
+               $$0xx -> $$0xx.mapSecond(
+                     $$0xxx -> $$0xxx.update("Players", $$1 -> $$0xxx.createList($$1.asStream().map($$0xxxxx -> (Dynamic)a($$0xxxxx).orElseGet(() -> {
+                                 b.warn("CustomBossEvents contains invalid UUIDs.");
+                                 return $$0xxxxx;
+                              }))))
+                  )
+            )
+      );
    }
 }

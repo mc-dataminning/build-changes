@@ -1,49 +1,85 @@
-public record aij(int b, String c, int d, aii e) implements zg<aim> {
-   public static final yx<vw, aij> a = zg.a(aij::a, aij::new);
-   private static final int f = 255;
+public class aij implements zk<agq> {
+   public static final zb<wa, aij> a = zk.a(aij::a, aij::new);
+   private final je b;
+   private final alb c;
+   private final alb d;
+   private final alb e;
+   private final String f;
+   private final dsg.a g;
+   private final int h;
+   private final int i;
 
-   @Deprecated
-   public aij(int b, String c, int d, aii e) {
-      this.b = b;
-      this.c = c;
-      this.d = d;
-      this.e = e;
+   public aij(je $$0, alb $$1, alb $$2, alb $$3, String $$4, dsg.a $$5, int $$6, int $$7) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
    }
 
-   private aij(vw $$0) {
-      this($$0.l(), $$0.d(255), $$0.readUnsignedShort(), aii.a($$0.l()));
+   private aij(wa $$0) {
+      this.b = $$0.e();
+      this.c = $$0.q();
+      this.d = $$0.q();
+      this.e = $$0.q();
+      this.f = $$0.p();
+      this.g = dsg.a.a($$0.p()).orElse(dsg.a.b);
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b);
       $$0.a(this.c);
-      $$0.l(this.d);
-      $$0.c(this.e.a());
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.a(this.g.c());
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zi<aij> a() {
-      return aik.a;
+   public zm<aij> a() {
+      return ago.ca;
    }
 
-   public void a(aim $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public je b() {
+      return this.b;
    }
 
-   public String e() {
+   public alb e() {
       return this.c;
    }
 
-   public int f() {
+   public alb f() {
       return this.d;
    }
 
-   public aii g() {
+   public alb g() {
       return this.e;
+   }
+
+   public String h() {
+      return this.f;
+   }
+
+   public dsg.a i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.h;
+   }
+
+   public int k() {
+      return this.i;
    }
 }

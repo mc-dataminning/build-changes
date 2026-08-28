@@ -1,32 +1,34 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
-
 public class dzy {
-   private long b;
-   private long c;
-   public static final Codec<dzy> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new dzy($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+   public final azk a;
+   private double b;
+   private boolean c;
 
-   public dzy(dzn.a $$0) {
-      this($$0.b(), $$0.c());
+   public dzy(azk $$0) {
+      this.a = $$0;
    }
 
-   public dzy(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+   public void a() {
+      this.c = false;
+   }
+
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = azc.k($$0) + azc.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
+
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
       }
-   }
-
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
    }
 }

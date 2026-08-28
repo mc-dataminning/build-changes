@@ -1,79 +1,83 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+public abstract class fnj implements fnp {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
-public class fnj extends fod {
-   private static final wz a = wz.c("addServer.enterIp");
-   private fim b;
-   private final fzt c;
-   private fiv r;
-   private final BooleanConsumer s;
-   private final fod u;
-
-   public fnj(fod $$0, BooleanConsumer $$1, fzt $$2) {
-      super(wz.c("selectServer.direct"));
-      this.u = $$0;
-      this.c = $$2;
-      this.s = $$1;
+   public fnj(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.b.j || this.aN_() != this.r || $$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.m();
-         return true;
+   public void m(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.m($$2);
+      });
+      this.c = $$0;
+   }
+
+   @Override
+   public void n(int $$0) {
+      this.b($$1 -> {
+         int $$2 = $$1.E() + ($$0 - this.E());
+         $$1.n($$2);
+      });
+      this.d = $$0;
+   }
+
+   @Override
+   public int D() {
+      return this.c;
+   }
+
+   @Override
+   public int E() {
+      return this.d;
+   }
+
+   @Override
+   public int y() {
+      return this.a;
+   }
+
+   @Override
+   public int w() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final fnq a;
+      public final fnr.a b;
+
+      protected a(fnq $$0, fnr $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
       }
-   }
 
-   @Override
-   protected void aT_() {
-      this.r = new fiv(this.o, this.m / 2 - 100, 116, 200, 20, wz.c("addServer.enterIp"));
-      this.r.f(128);
-      this.r.a(this.l.m.Z);
-      this.r.b($$0 -> this.C());
-      this.d(this.r);
-      this.b = this.c(fim.a(wz.c("selectServer.select"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 12, 200, 20).a());
-      this.c(fim.a(wy.e, $$0 -> this.s.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
-      this.C();
-   }
+      public int a() {
+         return this.a.w() + this.b.b + this.b.d;
+      }
 
-   @Override
-   protected void aI_() {
-      this.b(this.r);
-   }
+      public int b() {
+         return this.a.y() + this.b.a + this.b.c;
+      }
 
-   @Override
-   public void a(fgo $$0, int $$1, int $$2) {
-      String $$3 = this.r.a();
-      this.b($$0, $$1, $$2);
-      this.r.a($$3);
-   }
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.y() - this.b.c);
+         int $$4 = (int)azc.h(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
+      }
 
-   private void m() {
-      this.c.b = this.r.a();
-      this.s.accept(true);
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.u);
-   }
-
-   @Override
-   public void j() {
-      this.l.m.Z = this.r.a();
-      this.l.m.aw();
-   }
-
-   private void C() {
-      this.b.j = gax.b(this.r.a());
-   }
-
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
-      $$0.b(this.o, a, this.m / 2 - 100 + 1, 100, 10526880);
-      this.r.a($$0, $$1, $$2, $$3);
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.w() - this.b.d);
+         int $$4 = Math.round(azc.h(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
+      }
    }
 }

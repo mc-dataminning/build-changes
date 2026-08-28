@@ -1,33 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpk extends dnt implements dpe {
-   public static final MapCodec<dpk> I = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpe.a.e.fieldOf("weathering_state").forGetter(dgz::c), dtc.b.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, dpk::new)
-   );
-   private final dpe.a J;
+public class dpk extends dhy {
+   public static final MapCodec<dpk> n = b(dpk::new);
 
    @Override
    public MapCodec<dpk> a() {
-      return I;
+      return n;
    }
 
-   public dpk(dpe.a $$0, dtc $$1, dtb.d $$2) {
-      super($$1, $$2);
-      this.J = $$0;
-   }
-
-   @Override
-   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   public dpk(dtz.d $$0) {
+      super($$0, () -> drg.c);
    }
 
    @Override
-   protected boolean d_(dtc $$0) {
-      return dpe.c($$0.b()).isPresent();
+   public dre a(je $$0, dua $$1) {
+      return new dsz($$0, $$1);
    }
 
-   public dpe.a m() {
-      return this.J;
+   @Override
+   protected awk<alb> c() {
+      return awn.i.b(awn.ai);
+   }
+
+   @Override
+   protected boolean f_(dua $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dua $$0, dcx $$1, je $$2, jj $$3) {
+      return azc.a(drl.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   protected int b(dua $$0, dcx $$1, je $$2, jj $$3) {
+      return $$3 == jj.b ? $$0.a($$1, $$2, $$3) : 0;
    }
 }

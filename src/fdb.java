@@ -1,99 +1,142 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fdb extends fdc {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "http://";
-   private static final int c = 8080;
-   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
-   private final boolean e;
-   @Nullable
-   private final String f;
-   private final URI g;
-
-   private fdb(boolean $$0, @Nullable String $$1, URI $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class fdb {
+   public static fcy a() {
+      throw new IllegalArgumentException();
    }
 
-   @Nullable
-   public static fdb a(String $$0) {
-      try {
-         JsonParser $$1 = new JsonParser();
-         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
-         String $$3 = fez.b("uploadEndpoint", $$2, null);
-         if ($$3 != null) {
-            int $$4 = fez.a("port", $$2, -1);
-            URI $$5 = a($$3, $$4);
-            if ($$5 != null) {
-               boolean $$6 = fez.a("worldClosed", $$2, false);
-               String $$7 = fez.b("token", $$2, null);
-               return new fdb($$6, $$7, $$5);
+   public static fcy a(fcy $$0) {
+      return $$0;
+   }
+
+   public static fcy a(fcy $$0, fcy $$1) {
+      return new fdb.a($$0, $$1);
+   }
+
+   public static fcy a(fcy... $$0) {
+      return new fdb.b($$0);
+   }
+
+   static class a implements fcy {
+      private final fcy a;
+      private final fcy b;
+
+      public a(fcy $$0, fcy $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+         }
+      }
+
+      @Override
+      public fcy a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public fcy a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public fcy a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fcy a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fcy b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fcy b(float $$0, float $$1, float $$2) {
+         this.a.b($$0, $$1, $$2);
+         this.b.b($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   static record b(fcy[] a) implements fcy {
+      b(fcy[] a) {
+         for (int $$1 = 0; $$1 < a.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
+               if (a[$$1] == a[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
             }
          }
-      } catch (Exception var8) {
-         a.error("Could not parse UploadInfo: {}", var8.getMessage());
+
+         this.a = a;
       }
 
-      return null;
-   }
-
-   @Nullable
-   @VisibleForTesting
-   public static URI a(String $$0, int $$1) {
-      Matcher $$2 = d.matcher($$0);
-      String $$3 = a($$0, $$2);
-
-      try {
-         URI $$4 = new URI($$3);
-         int $$5 = a($$1, $$4.getPort());
-         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
-      } catch (URISyntaxException var6) {
-         a.warn("Failed to parse URI {}", $$3, var6);
-         return null;
-      }
-   }
-
-   private static int a(int $$0, int $$1) {
-      if ($$0 != -1) {
-         return $$0;
-      } else {
-         return $$1 != -1 ? $$1 : 8080;
-      }
-   }
-
-   private static String a(String $$0, Matcher $$1) {
-      return $$1.find() ? $$0 : "http://" + $$0;
-   }
-
-   public static String b(@Nullable String $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 != null) {
-         $$1.addProperty("token", $$0);
+      private void a(Consumer<fcy> $$0) {
+         for (fcy $$1 : this.a) {
+            $$0.accept($$1);
+         }
       }
 
-      return $$1.toString();
-   }
+      @Override
+      public fcy a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
 
-   @Nullable
-   public String a() {
-      return this.f;
-   }
+      @Override
+      public fcy a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
 
-   public URI b() {
-      return this.g;
-   }
+      @Override
+      public fcy a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
 
-   public boolean c() {
-      return this.e;
+      @Override
+      public fcy a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fcy b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fcy b(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.b($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+      }
    }
 }

@@ -1,22 +1,54 @@
-public interface czr extends cyz<czs> {
-   @Override
-   default czf<?> e() {
-      return czf.g;
+import java.util.Map;
+
+public class czr extends dab {
+   public czr(czh $$0) {
+      super("", $$0, dac.a(Map.of('#', czp.a(cvo.qP), 'x', czp.a(cvo.rV)), "###", "#x#", "###"), new cvl(cvo.ul));
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public boolean a(czi $$0, dds $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cvl $$2 = a($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            erv $$3 = cvx.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
    }
 
    @Override
-   default cuq g() {
-      return new cuq(dga.ob);
+   public cvl a(czi $$0, jp.a $$1) {
+      cvl $$2 = a($$0).c(1);
+      $$2.b(kr.F, cym.b);
+      return $$2;
    }
 
-   boolean a(cuq var1);
+   private static cvl a(czi $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cvl $$2 = $$0.a($$1);
+         if ($$2.a(cvo.rV)) {
+            return $$2;
+         }
+      }
 
-   boolean b(cuq var1);
+      return cvl.k;
+   }
 
-   boolean c(cuq var1);
+   @Override
+   public boolean ar_() {
+      return true;
+   }
+
+   @Override
+   public czy<?> as_() {
+      return czy.f;
+   }
 }

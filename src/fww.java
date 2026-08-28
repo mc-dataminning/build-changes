@@ -1,70 +1,45 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+public class fww extends fxa<gtk> {
+   public static final gak a = gak.scaling(0.5F);
+   private final gab b;
+   private final gab c;
+   private final gab d;
 
-public class fww extends fwc<cov> {
-   private static final String a = "left_paddle";
-   private static final String b = "right_paddle";
-   private static final String f = "bottom";
-   private final fyk g;
-   private final fyk h;
-   private final ImmutableList<fyk> i;
-
-   public fww(fyk $$0) {
-      this.g = $$0.b("left_paddle");
-      this.h = $$0.b("right_paddle");
-      this.i = this.a($$0).build();
+   public fww(gab $$0) {
+      this.b = $$0;
+      this.d = $$0.b("left_wing");
+      this.c = $$0.b("right_wing");
    }
 
-   protected Builder<fyk> a(fyk $$0) {
-      Builder<fyk> $$1 = new Builder();
-      $$1.add(new fyk[]{$$0.b("bottom"), this.g, this.h});
-      return $$1;
-   }
-
-   public static void a(fyt $$0) {
-      $$0.a(
-         "bottom",
-         fyp.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         fym.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      gaf $$2 = new gaf(1.0F);
+      $$1.a(
+         "left_wing",
+         gag.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gad.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
       );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         fyp.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fym.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      $$1.a(
+         "right_wing",
+         gag.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gad.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
       );
-      $$0.a(
-         "right_paddle",
-         fyp.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         fym.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+      return gah.a($$0, 64, 32);
    }
 
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      a($$1);
-      return fyq.a($$0, 128, 64);
+   public void a(gtk $$0) {
+      this.d.c = $$0.I ? 3.0F : 0.0F;
+      this.d.e = $$0.N;
+      this.d.g = $$0.P;
+      this.d.f = $$0.O;
+      this.c.f = -this.d.f;
+      this.c.c = this.d.c;
+      this.c.e = this.d.e;
+      this.c.g = -this.d.g;
    }
 
-   public void a(cov $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      a($$0, 0, this.g, $$1);
-      a($$0, 1, this.h, $$1);
-   }
-
-   public ImmutableList<fyk> c() {
-      return this.i;
-   }
-
-   private static void a(cov $$0, int $$1, fyk $$2, float $$3) {
-      float $$4 = $$0.a($$1, $$3);
-      $$2.e = ayo.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (ayo.a(-$$4) + 1.0F) / 2.0F);
-      $$2.f = ayo.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (ayo.a(-$$4 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   @Override
+   public gab a() {
+      return this.b;
    }
 }

@@ -1,16 +1,23 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class des<E extends dqh> extends dfk {
-   protected final Supplier<dqj<? extends E>> a;
+public class des {
+   public static final Codec<des> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ln.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, des::new)
+   );
+   private final ll b;
+   private final float c;
 
-   protected des(dtb.d $$0, Supplier<dqj<? extends E>> $$1) {
-      super($$0);
-      this.a = $$1;
+   public des(ll $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   protected abstract MapCodec<? extends des<E>> a();
+   public ll a() {
+      return this.b;
+   }
 
-   public abstract dif.c<? extends dqo> a(dtc var1, dcw var2, jd var3, boolean var4);
+   public boolean a(azk $$0) {
+      return $$0.i() <= this.c;
+   }
 }

@@ -1,17 +1,42 @@
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageDecoder;
-import java.util.List;
-import javax.crypto.Cipher;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-public class vo extends MessageToMessageDecoder<ByteBuf> {
-   private final vn a;
+public class vo extends vk {
+   private final Deque<vm> a = new ArrayDeque<>();
 
-   public vo(Cipher $$0) {
-      this.a = new vn($$0);
+   public vo(vl... $$0) {
+      vm $$1 = vm.a();
+
+      for (vl $$2 : $$0) {
+         $$1.a($$2);
+      }
+
+      this.a.push($$1);
    }
 
-   protected void a(ChannelHandlerContext $$0, ByteBuf $$1, List<Object> $$2) throws Exception {
-      $$2.add(this.a.a($$0, $$1));
+   @Override
+   public uz.a a(ve<?> $$0, String $$1) {
+      vm $$2 = this.a.element();
+      if ($$2.a($$0, $$1)) {
+         return uz.a.b;
+      } else {
+         if ($$0 == uf.b) {
+            vm $$3 = $$2.d().get($$1);
+            if ($$3 != null) {
+               this.a.push($$3);
+            }
+         }
+
+         return super.a($$0, $$1);
+      }
+   }
+
+   @Override
+   public uz.b b() {
+      if (this.e() == this.a.element().b()) {
+         this.a.pop();
+      }
+
+      return super.b();
    }
 }

@@ -1,13 +1,49 @@
-public abstract class gcv extends gdn {
-   protected gcv(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.j = this.j * 0.01F + $$4;
-      this.k = this.k * 0.01F + $$5;
-      this.l = this.l * 0.01F + $$6;
-      this.g = this.g + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.h = this.h + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.i = this.i + (double)((this.r.i() - this.r.i()) * 0.05F);
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2)) + 4;
+public class gcv extends gfe {
+   private final gez a;
+
+   gcv(gax $$0, double $$1, double $$2, double $$3, double $$4, gez $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$5;
+      this.t = 4;
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 1.0F - (float)$$4 * 0.5F;
+      this.b($$5);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public gei b() {
+      return gei.b;
+   }
+
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gcv($$1, $$2, $$3, $$4, $$5, this.a);
+      }
    }
 }

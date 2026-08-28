@@ -1,10 +1,10 @@
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import javax.sound.sampled.AudioFormat;
+public class gut extends gts implements guk {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 
-public interface gut extends Closeable {
-   AudioFormat a();
-
-   ByteBuffer a(int var1) throws IOException;
+   @Override
+   public boolean c() {
+      return this.a;
+   }
 }

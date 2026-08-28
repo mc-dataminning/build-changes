@@ -1,16 +1,20 @@
-public record agw(int b, int c) implements zg<agi> {
-   public static final yx<vw, agw> a = yx.a(yv.g, agw::b, yv.g, agw::e, agw::new);
+public record agw(String b) implements zk<agq> {
+   public static final zb<wa, agw> a = zk.a(agw::a, agw::new);
+
+   private agw(wa $$0) {
+      this($$0.p());
+   }
+
+   private void a(wa $$0) {
+      $$0.a(this.b);
+   }
 
    @Override
-   public zi<agw> a() {
-      return agg.br;
+   public zm<agw> a() {
+      return ago.bl;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
-   }
-
-   public int e() {
-      return this.c;
    }
 }

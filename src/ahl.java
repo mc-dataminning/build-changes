@@ -1,36 +1,37 @@
-public class ahl implements zg<agi> {
-   public static final yx<vw, ahl> a = zg.a(ahl::a, ahl::new);
-   private static final int b = 2;
-   private final boolean c;
+public class ahl implements zk<agq> {
+   public static final zb<wa, ahl> a = zk.a(ahl::a, ahl::new);
+   private final int b;
+   private final int c;
 
-   public ahl(cmu $$0) {
-      this.c = $$0.b;
+   public ahl(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahl(vw $$0) {
-      byte $$1 = $$0.readByte();
-      this.c = ($$1 & 2) != 0;
+   private ahl(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
    }
 
-   private void a(vw $$0) {
-      byte $$1 = 0;
-      if (this.c) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      $$0.k($$1);
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zi<ahl> a() {
-      return agg.bJ;
+   public zm<ahl> a() {
+      return ago.bA;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 }

@@ -1,17 +1,46 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public abstract class egj {
-   public static final Codec<egj> a = lt.T.r().dispatch(egj::a, egk::a);
+public class egj extends egh {
+   public static final MapCodec<egj> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
+               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
+               a()
+            )
+            .apply($$0, egj::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-   public static egs a(dtc $$0) {
-      return new egs($$0);
+   public egj(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
+      super($$5);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   public static egs a(dfy $$0) {
-      return new egs($$0.o());
+   @Override
+   protected egi<?> b() {
+      return egi.b;
    }
 
-   protected abstract egk<?> a();
-
-   public abstract dtc a(ayw var1, jd var2);
+   @Override
+   public int a(int $$0, int $$1) {
+      if ($$1 < this.e) {
+         return this.g;
+      } else {
+         return $$1 >= $$0 - this.f ? this.i : this.h;
+      }
+   }
 }

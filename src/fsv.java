@@ -1,167 +1,124 @@
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fsv extends fis<fst> {
-   private final fsw a;
-   private final List<fst> m = Lists.newArrayList();
+public class fsv extends fpt {
+   private static final xd a = xd.c("options.title");
+   private static final xd b = xd.c("options.skinCustomisation");
+   private static final xd c = xd.c("options.sounds");
+   private static final xd d = xd.c("options.video");
+   private static final xd s = xd.c("options.controls");
+   private static final xd u = xd.c("options.language");
+   private static final xd v = xd.c("options.chat");
+   private static final xd w = xd.c("options.resourcepack");
+   private static final xd x = xd.c("options.accessibility");
+   private static final xd y = xd.c("options.telemetry");
+   private static final fll z = fll.a(xd.c("options.telemetry.disabled"));
+   private static final xd A = xd.c("options.credits_and_attribution");
+   private static final int B = 2;
+   private final fno C = new fno(this, 61, 33);
+   private final fpt D;
+   private final fif E;
    @Nullable
-   private String n;
+   private fkh<brh> F;
+   @Nullable
+   private fkq G;
 
-   public fsv(fsw $$0, fgo $$1, int $$2, int $$3, int $$4, int $$5) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.a = $$0;
+   public fsv(fpt $$0, fif $$1) {
+      super(a);
+      this.D = $$0;
+      this.E = $$1;
    }
 
    @Override
-   protected void b(fhz $$0) {
-   }
-
-   @Override
-   protected void a(fhz $$0) {
-   }
-
-   @Override
-   protected void c(fhz $$0) {
-      $$0.c(this.D(), this.E() + 4, this.F(), this.G());
-   }
-
-   public void a(Collection<UUID> $$0, double $$1, boolean $$2) {
-      Map<UUID, fst> $$3 = new HashMap<>();
-      this.a($$0, $$3);
-      this.a($$3, $$2);
-      this.a($$3.values(), $$1);
-   }
-
-   private void a(Collection<UUID> $$0, Map<UUID, fst> $$1) {
-      fzg $$2 = this.c.s.h;
-
-      for (UUID $$3 : $$0) {
-         fzq $$4 = $$2.a($$3);
-         if ($$4 != null) {
-            boolean $$5 = $$4.d();
-            $$1.put($$3, new fst(this.c, this.a, $$3, $$4.a().getName(), $$4::g, $$5));
-         }
+   protected void aT_() {
+      fns $$0 = this.C.a(fns.d().a(8));
+      $$0.a(new flh(a, this.p), fnr::b);
+      fns $$1 = $$0.a(fns.e()).a(8);
+      $$1.a(this.E.aj().a(this.m.n));
+      $$1.a(this.m());
+      fnn $$2 = new fnn();
+      $$2.c().f(4).e(4).b();
+      fnn.b $$3 = $$2.d(2);
+      $$3.a(this.a(b, () -> new fsx(this, this.E)));
+      $$3.a(this.a(c, () -> new fsy(this, this.E)));
+      $$3.a(this.a(d, () -> new fta(this, this.m, this.E)));
+      $$3.a(this.a(s, () -> new ftb(this, this.E)));
+      $$3.a(this.a(u, () -> new fss(this, this.E, this.m.ag())));
+      $$3.a(this.a(v, () -> new fsq(this, this.E)));
+      $$3.a(this.a(w, () -> new fti(this.m.ac(), this::a, this.m.af(), xd.c("resourcePack.title"))));
+      $$3.a(this.a(x, () -> new fsp(this, this.E)));
+      fka $$4 = $$3.a(this.a(y, () -> new fun(this, this.E)));
+      if (!this.m.E()) {
+         $$4.j = false;
+         $$4.a(z);
       }
+
+      $$3.a(this.a(A, () -> new fov(this)));
+      this.C.c($$2);
+      this.C.b(fka.a(xc.d, $$0x -> this.d()).a(200).a());
+      this.C.a($$1x -> {
+         fjy var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   private void a(Map<UUID, fst> $$0, boolean $$1) {
-      for (GameProfile $$3 : a(this.c.aX().b())) {
-         fst $$4;
-         if ($$1) {
-            $$4 = $$0.computeIfAbsent($$3.getId(), $$1x -> {
-               fst $$2 = new fst(this.c, this.a, $$3.getId(), $$3.getName(), this.c.am().a($$3), true);
-               $$2.c(true);
-               return $$2;
-            });
+   @Override
+   protected void c() {
+      this.C.a();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.D);
+   }
+
+   private void a(aud $$0) {
+      this.E.a($$0);
+      this.m.a(this);
+   }
+
+   private fnq m() {
+      if (this.m.s != null && this.m.U()) {
+         this.F = a(0, 0, "options.difficulty", this.m);
+         if (!this.m.s.j().l()) {
+            this.G = new fkq(0, 0, $$0x -> this.m.a(new foq(this::c, xd.c("difficulty.lock.title"), xd.a("difficulty.lock.question", this.m.s.j().q().b()))));
+            this.F.k(this.F.y() - this.G.y());
+            this.G.b(this.m.s.j().r());
+            this.G.j = !this.G.a();
+            this.F.j = !this.G.a();
+            fnl $$0 = new fnl(150, 0, fnl.b.a);
+            $$0.a(this.F);
+            $$0.a(this.G);
+            return $$0;
          } else {
-            $$4 = $$0.get($$3.getId());
-            if ($$4 == null) {
-               continue;
-            }
+            this.F.j = false;
+            return this.F;
          }
-
-         $$4.d(true);
+      } else {
+         return fka.a(xd.c("options.online"), $$0x -> this.m.a(new fsu(this, this.E))).a(this.n / 2 + 5, this.o / 6 - 12 + 24, 150, 20).a();
       }
    }
 
-   private static Collection<GameProfile> a(gaa $$0) {
-      Set<GameProfile> $$1 = new ObjectLinkedOpenHashSet();
-
-      for (int $$2 = $$0.b(); $$2 >= $$0.a(); $$2--) {
-         gac $$3 = $$0.b($$2);
-         if ($$3 instanceof gad.a) {
-            gad.a $$4 = (gad.a)$$3;
-            if ($$4.g().i()) {
-               $$1.add($$4.f());
-            }
-         }
-      }
-
-      return $$1;
+   public static fkh<brh> a(int $$0, int $$1, String $$2, fib $$3) {
+      return fkh.a(brh::b).a(brh.values()).a($$3.s.am()).a($$0, $$1, 150, 20, xd.c($$2), ($$1x, $$2x) -> $$3.L().b(new agu($$2x)));
    }
 
-   private void J() {
-      this.m.sort(Comparator.<fst, Integer>comparing($$0 -> {
-         if (this.c.b($$0.d())) {
-            return 0;
-         } else if (this.c.aX().a($$0.d())) {
-            return 1;
-         } else if ($$0.d().version() == 2) {
-            return 4;
-         } else {
-            return $$0.j() ? 2 : 3;
-         }
-      }).thenComparing($$0 -> {
-         if (!$$0.c().isBlank()) {
-            int $$1 = $$0.c().codePointAt(0);
-            if ($$1 == 95 || $$1 >= 97 && $$1 <= 122 || $$1 >= 65 && $$1 <= 90 || $$1 >= 48 && $$1 <= 57) {
-               return 0;
-            }
-         }
-
-         return 1;
-      }).thenComparing(fst::c, String::compareToIgnoreCase));
-   }
-
-   private void a(Collection<fst> $$0, double $$1) {
-      this.m.clear();
-      this.m.addAll($$0);
-      this.J();
-      this.K();
-      this.a(this.m);
-      this.b($$1);
-   }
-
-   private void K() {
-      if (this.n != null) {
-         this.m.removeIf($$0 -> !$$0.c().toLowerCase(Locale.ROOT).contains(this.n));
-         this.a(this.m);
+   private void c(boolean $$0) {
+      this.m.a(this);
+      if ($$0 && this.m.s != null && this.G != null && this.F != null) {
+         this.m.L().b(new aho(true));
+         this.G.b(true);
+         this.G.j = false;
+         this.F.j = false;
       }
    }
 
-   public void a(String $$0) {
-      this.n = $$0;
+   @Override
+   public void j() {
+      this.E.ay();
    }
 
-   public boolean c() {
-      return this.m.isEmpty();
-   }
-
-   public void a(fzq $$0, fsw.a $$1) {
-      UUID $$2 = $$0.a().getId();
-
-      for (fst $$3 : this.m) {
-         if ($$3.d().equals($$2)) {
-            $$3.c(false);
-            return;
-         }
-      }
-
-      if (($$1 == fsw.a.a || this.c.aL().c($$2)) && (Strings.isNullOrEmpty(this.n) || $$0.a().getName().toLowerCase(Locale.ROOT).contains(this.n))) {
-         boolean $$4 = $$0.d();
-         fst $$5 = new fst(this.c, this.a, $$0.a().getId(), $$0.a().getName(), $$0::g, $$4);
-         this.b((fst)$$5);
-         this.m.add($$5);
-      }
-   }
-
-   public void a(UUID $$0) {
-      for (fst $$1 : this.m) {
-         if ($$1.d().equals($$0)) {
-            $$1.c(true);
-            return;
-         }
-      }
+   private fka a(xd $$0, Supplier<fpt> $$1) {
+      return fka.a($$0, $$1x -> this.m.a($$1.get())).a();
    }
 }

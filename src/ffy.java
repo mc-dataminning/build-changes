@@ -1,227 +1,167 @@
-import java.util.Arrays;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ffy {
-   private static final float b = 4.0F;
-   private static final Vector3f c = new Vector3f(0.0F, 0.0F, -1.0F);
-   private static final Vector3f d = new Vector3f(0.0F, 1.0F, 0.0F);
-   private static final Vector3f e = new Vector3f(-1.0F, 0.0F, 0.0F);
-   private boolean f;
-   private dcc g;
-   private bsr h;
-   private exc i = exc.b;
-   private final jd.a j = new jd.a();
-   private final Vector3f k = new Vector3f(c);
-   private final Vector3f l = new Vector3f(d);
-   private final Vector3f m = new Vector3f(e);
-   private float n;
-   private float o;
-   private final Quaternionf p = new Quaternionf();
-   private boolean q;
-   private float r;
-   private float s;
-   private float t;
-   public static final float a = 0.083333336F;
+public class ffy extends hct {
+   private static final Logger b = LogUtils.getLogger();
+   public static final xd a = xd.c("mco.upload.select.world.title");
+   private static final xd c = xd.c("selectWorld.unable_to_load");
+   static final xd B = xd.c("selectWorld.world");
+   private static final xd C = xd.c("mco.upload.hardcore").b(-65536);
+   private static final xd D = xd.c("selectWorld.commands");
+   private static final DateFormat E = new SimpleDateFormat();
+   @Nullable
+   private final fhb F;
+   private final ffx G;
+   private final long H;
+   private final int I;
+   fka J;
+   List<esi> K = Lists.newArrayList();
+   int L = -1;
+   ffy.b M;
 
-   public void a(dcc $$0, bsr $$1, boolean $$2, boolean $$3, float $$4) {
-      this.f = true;
-      this.g = $$0;
-      this.h = $$1;
-      this.q = $$2;
-      this.t = $$4;
-      this.a($$1.i($$4), $$1.h($$4));
-      this.a(ayo.d((double)$$4, $$1.L, $$1.dt()), ayo.d((double)$$4, $$1.M, $$1.dv()) + (double)ayo.i($$4, this.s, this.r), ayo.d((double)$$4, $$1.N, $$1.dz()));
-      if ($$2) {
-         if ($$3) {
-            this.a(this.o + 180.0F, -this.n);
-         }
+   public ffy(@Nullable fhb $$0, long $$1, int $$2, ffx $$3) {
+      super(a);
+      this.F = $$0;
+      this.G = $$3;
+      this.H = $$1;
+      this.I = $$2;
+   }
 
-         float $$6 = $$1 instanceof btn $$5 ? $$5.eb() : 1.0F;
-         this.a(-this.a(4.0F * $$6), 0.0F, 0.0F);
-      } else if ($$1 instanceof btn && ((btn)$$1).fH()) {
-         ji $$7 = ((btn)$$1).fJ();
-         this.a($$7 != null ? $$7.p() - 180.0F : 0.0F, 0.0F);
-         this.a(0.0F, 0.3F, 0.0F);
+   private void D() {
+      esh.a $$0 = this.m.m().b();
+      this.K = this.m.m().a($$0).join().stream().filter(esi::v).collect(Collectors.toList());
+
+      for (esi $$1 : this.K) {
+         this.M.a($$1);
       }
    }
 
-   public void a() {
-      if (this.h != null) {
-         this.s = this.r;
-         this.r = this.r + (this.h.cL() - this.r) * 0.5F;
+   @Override
+   public void aT_() {
+      this.M = this.c(new ffy.b());
+
+      try {
+         this.D();
+      } catch (Exception var2) {
+         b.error("Couldn't load level list", var2);
+         this.m.a(new ffn(c, xd.a(var2.getMessage()), this.G));
+         return;
+      }
+
+      this.J = this.c(fka.a(xd.c("mco.upload.button.name"), $$0 -> this.E()).a(this.n / 2 - 154, this.o - 32, 153, 20).a());
+      this.J.j = this.L >= 0 && this.L < this.K.size();
+      this.c(fka.a(xc.k, $$0 -> this.m.a(this.G)).a(this.n / 2 + 6, this.o - 32, 153, 20).a());
+      this.a(new hcr(xd.c("mco.upload.select.world.subtitle"), this.n / 2, g(-1), -6250336));
+      if (this.K.isEmpty()) {
+         this.a(new hcr(xd.c("mco.upload.select.world.none"), this.n / 2, this.o / 2 - 20, -1));
       }
    }
 
-   private float a(float $$0) {
-      float $$1 = 0.1F;
+   @Override
+   public xd i() {
+      return xc.a(this.n(), this.m());
+   }
 
-      for (int $$2 = 0; $$2 < 8; $$2++) {
-         float $$3 = (float)(($$2 & 1) * 2 - 1);
-         float $$4 = (float)(($$2 >> 1 & 1) * 2 - 1);
-         float $$5 = (float)(($$2 >> 2 & 1) * 2 - 1);
-         exc $$6 = this.i.b((double)($$3 * 0.1F), (double)($$4 * 0.1F), (double)($$5 * 0.1F));
-         exc $$7 = $$6.e(new exc(this.k).a((double)(-$$0)));
-         exa $$8 = this.g.a(new dcf($$6, $$7, dcf.a.c, dcf.b.a, this.h));
-         if ($$8.c() != exa.a.a) {
-            float $$9 = (float)$$8.e().g(this.i);
-            if ($$9 < ayo.k($$0)) {
-               $$0 = ayo.c($$9);
-            }
-         }
+   private void E() {
+      if (this.L != -1 && !this.K.get(this.L).i()) {
+         esi $$0 = this.K.get(this.L);
+         this.m.a(new fge(this.F, this.H, this.I, this.G, $$0));
       }
-
-      return $$0;
    }
 
-   protected void a(float $$0, float $$1, float $$2) {
-      Vector3f $$3 = new Vector3f($$2, $$1, -$$0).rotate(this.p);
-      this.a(new exc(this.i.c + (double)$$3.x, this.i.d + (double)$$3.y, this.i.e + (double)$$3.z));
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 13, -1);
    }
 
-   protected void a(float $$0, float $$1) {
-      this.n = $$1;
-      this.o = $$0;
-      this.p.rotationYXZ((float) Math.PI - $$0 * (float) (Math.PI / 180.0), -$$1 * (float) (Math.PI / 180.0), 0.0F);
-      c.rotate(this.p, this.k);
-      d.rotate(this.p, this.l);
-      e.rotate(this.p, this.m);
-   }
-
-   protected void a(double $$0, double $$1, double $$2) {
-      this.a(new exc($$0, $$1, $$2));
-   }
-
-   protected void a(exc $$0) {
-      this.i = $$0;
-      this.j.b($$0.c, $$0.d, $$0.e);
-   }
-
-   public exc b() {
-      return this.i;
-   }
-
-   public jd c() {
-      return this.j;
-   }
-
-   public float d() {
-      return this.n;
-   }
-
-   public float e() {
-      return this.o;
-   }
-
-   public Quaternionf f() {
-      return this.p;
-   }
-
-   public bsr g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.q;
-   }
-
-   public ffy.a j() {
-      fgo $$0 = fgo.Q();
-      double $$1 = (double)$$0.aM().l() / (double)$$0.aM().m();
-      double $$2 = Math.tan((double)((float)$$0.m.ah().c().intValue() * (float) (Math.PI / 180.0)) / 2.0) * 0.05F;
-      double $$3 = $$2 * $$1;
-      exc $$4 = new exc(this.k).a(0.05F);
-      exc $$5 = new exc(this.m).a($$3);
-      exc $$6 = new exc(this.l).a($$2);
-      return new ffy.a($$4, $$5, $$6);
-   }
-
-   public epg k() {
-      if (!this.f) {
-         return epg.d;
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.a(this.G);
+         return true;
       } else {
-         epe $$0 = this.g.b_(this.j);
-         if ($$0.a(awk.a) && this.i.d < (double)((float)this.j.v() + $$0.a(this.g, this.j))) {
-            return epg.b;
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   static xd a(esi $$0) {
+      return $$0.h().d();
+   }
+
+   static String b(esi $$0) {
+      return E.format(new Date($$0.f()));
+   }
+
+   class a extends fkw.a<ffy.a> {
+      private final esi b;
+      private final String c;
+      private final xd d;
+      private final xd e;
+
+      public a(final esi $$0) {
+         this.b = $$0;
+         this.c = $$0.b();
+         this.d = xd.a("mco.upload.entry.id", $$0.a(), ffy.b($$0));
+         this.e = $$0.s();
+      }
+
+      @Override
+      public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$1, $$3, $$2);
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         ffy.this.M.b(ffy.this.K.indexOf(this.b));
+         return super.a($$0, $$1, $$2);
+      }
+
+      protected void a(fjn $$0, int $$1, int $$2, int $$3) {
+         String $$4;
+         if (this.c.isEmpty()) {
+            $$4 = ffy.B + " " + ($$1 + 1);
          } else {
-            ffy.a $$1 = this.j();
-
-            for (exc $$3 : Arrays.asList($$1.a, $$1.a(), $$1.b(), $$1.c(), $$1.d())) {
-               exc $$4 = this.i.e($$3);
-               jd $$5 = jd.a((jw)$$4);
-               epe $$6 = this.g.b_($$5);
-               if ($$6.a(awk.b)) {
-                  if ($$4.d <= (double)($$6.a(this.g, $$5) + (float)$$5.v())) {
-                     return epg.a;
-                  }
-               } else {
-                  dtc $$7 = this.g.a_($$5);
-                  if ($$7.a(dga.qP)) {
-                     return epg.c;
-                  }
-               }
-            }
-
-            return epg.d;
+            $$4 = this.c;
          }
+
+         $$0.a(ffy.this.p, $$4, $$2 + 2, $$3 + 1, 16777215, false);
+         $$0.a(ffy.this.p, this.d, $$2 + 2, $$3 + 12, -8355712, false);
+         $$0.a(ffy.this.p, this.e, $$2 + 2, $$3 + 12 + 10, -8355712, false);
+      }
+
+      @Override
+      public xd a() {
+         xd $$0 = xc.b(xd.b(this.b.b()), xd.b(ffy.b(this.b)), ffy.a(this.b));
+         return xd.a("narrator.select", $$0);
       }
    }
 
-   public final Vector3f l() {
-      return this.k;
-   }
-
-   public final Vector3f m() {
-      return this.l;
-   }
-
-   public final Vector3f n() {
-      return this.m;
-   }
-
-   public void o() {
-      this.g = null;
-      this.h = null;
-      this.f = false;
-   }
-
-   public float p() {
-      return this.t;
-   }
-
-   public static class a {
-      final exc a;
-      private final exc b;
-      private final exc c;
-
-      a(exc $$0, exc $$1, exc $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   class b extends hcs<ffy.a> {
+      public b() {
+         super(ffy.this.n, ffy.this.o - 40 - ffy.g(0), ffy.g(0), 36);
       }
 
-      public exc a() {
-         return this.a.e(this.c).e(this.b);
+      public void a(esi $$0) {
+         this.a((ffy.a)(ffy.this.new a($$0)));
       }
 
-      public exc b() {
-         return this.a.e(this.c).d(this.b);
+      @Override
+      public int a() {
+         return ffy.this.K.size() * 36;
       }
 
-      public exc c() {
-         return this.a.d(this.c).e(this.b);
-      }
-
-      public exc d() {
-         return this.a.d(this.c).d(this.b);
-      }
-
-      public exc a(float $$0, float $$1) {
-         return this.a.e(this.c.a((double)$$1)).d(this.b.a((double)$$0));
+      public void a(@Nullable ffy.a $$0) {
+         super.a($$0);
+         ffy.this.L = this.aK_().indexOf($$0);
+         ffy.this.J.j = ffy.this.L >= 0 && ffy.this.L < this.l() && !ffy.this.K.get(ffy.this.L).i();
       }
    }
 }

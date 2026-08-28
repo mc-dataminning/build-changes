@@ -1,5 +1,15 @@
-public interface yp {
-   xn a(int var1);
+import java.util.Locale;
 
-   yq<? extends yp> a();
+public class yp extends IllegalArgumentException {
+   public yp(yo $$0, String $$1) {
+      super(String.format(Locale.ROOT, "Error parsing: %s: %s", $$0, $$1));
+   }
+
+   public yp(yo $$0, int $$1) {
+      super(String.format(Locale.ROOT, "Invalid index %d requested for %s", $$1, $$0));
+   }
+
+   public yp(yo $$0, Throwable $$1) {
+      super(String.format(Locale.ROOT, "Error while parsing: %s", $$0), $$1);
+   }
 }

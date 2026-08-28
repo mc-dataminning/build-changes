@@ -1,52 +1,84 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.LongFunction;
 
-public class eav extends eax {
-   public static final Codec<eav> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eax.d.forGetter($$0x -> $$0x), bpu.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), eav.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, eav::new)
-   );
-   public final bpu b;
-   public final eav.a c;
+public class eav extends dzx {
+   private final azk d;
+   private int e;
 
-   public eav(float $$0, ehx $$1, bpu $$2, dzs $$3, eay $$4, jq<dfy> $$5, bpu $$6, eav.a $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.b = $$6;
-      this.c = $$7;
+   public eav(azk $$0) {
+      super(0L);
+      this.d = $$0;
    }
 
-   public eav(eax $$0, bpu $$1, eav.a $$2) {
-      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
+   public int l() {
+      return this.e;
    }
 
-   public static class a {
-      public static final Codec<eav.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bpu.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
-                  bpu.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
-                  axw.k.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
-                  bpu.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
-                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
-                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, eav.a::new)
-      );
-      public final bpu b;
-      public final bpu c;
-      public final int d;
-      public final bpu e;
-      public final float f;
-      public final float g;
+   @Override
+   public azk d() {
+      return this.d.d();
+   }
 
-      public a(bpu $$0, bpu $$1, int $$2, bpu $$3, float $$4, float $$5) {
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-         this.b = $$0;
-         this.c = $$1;
+   @Override
+   public eaj e() {
+      return this.d.e();
+   }
+
+   @Override
+   public int c(int $$0) {
+      this.e++;
+      return this.d instanceof dzx $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
+   }
+
+   @Override
+   public synchronized void b(long $$0) {
+      if (this.d != null) {
+         this.d.b($$0);
+      }
+   }
+
+   public long a(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g() | 1L;
+      long $$4 = this.g() | 1L;
+      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+      return $$5;
+   }
+
+   public void b(long $$0, int $$1, int $$2) {
+      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
+      this.b($$3);
+   }
+
+   public void c(long $$0, int $$1, int $$2) {
+      this.b($$0);
+      long $$3 = this.g();
+      long $$4 = this.g();
+      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
+      this.b($$5);
+   }
+
+   public void a(long $$0, int $$1, int $$2, int $$3) {
+      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
+      this.b($$4);
+   }
+
+   public static azk a(int $$0, int $$1, long $$2, long $$3) {
+      return azk.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
+   }
+
+   public static enum a {
+      a(dzx::new),
+      b(eax::new);
+
+      private final LongFunction<azk> c;
+
+      private a(final LongFunction<azk> $$0) {
+         this.c = $$0;
+      }
+
+      public azk a(long $$0) {
+         return this.c.apply($$0);
       }
    }
 }

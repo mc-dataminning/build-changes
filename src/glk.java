@@ -1,252 +1,150 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public abstract class glk<T extends btn, M extends fvk<T>> extends gki<T> implements gmf<T, M> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final float i = 0.1F;
-   protected M g;
-   protected final List<gov<T, M>> h = Lists.newArrayList();
+public abstract class glk<T extends cpm, S extends gtv> extends gmr<T, S> {
+   private static final alb b = alb.b("textures/entity/minecart.png");
+   protected final fxu a;
+   private final ghu h;
 
-   public glk(gkj.a $$0, M $$1, float $$2) {
+   public glk(gms.a $$0, fzz $$1) {
       super($$0);
-      this.g = $$1;
-      this.e = $$2;
+      this.f = 0.7F;
+      this.a = new fxu($$0.a($$1));
+      this.h = $$0.d();
    }
 
-   protected final boolean a(gov<T, M> $$0) {
-      return this.h.add($$0);
-   }
-
-   @Override
-   public M a() {
-      return this.g;
-   }
-
-   public void a(T $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      $$3.a();
-      this.g.c = this.d($$0, $$2);
-      this.g.d = $$0.bS();
-      this.g.e = $$0.o_();
-      float $$6 = ayo.j($$2, $$0.aZ, $$0.aY);
-      float $$7 = ayo.j($$2, $$0.bb, $$0.ba);
-      float $$8 = $$7 - $$6;
-      if ($$0.bS() && $$0.dc() instanceof btn $$9) {
-         $$6 = ayo.j($$2, $$9.aZ, $$9.aY);
-         $$8 = $$7 - $$6;
-         float $$10 = ayo.g($$8);
-         if ($$10 < -85.0F) {
-            $$10 = -85.0F;
-         }
-
-         if ($$10 >= 85.0F) {
-            $$10 = 85.0F;
-         }
-
-         $$6 = $$7 - $$10;
-         if ($$10 * $$10 > 2500.0F) {
-            $$6 += $$10 * 0.2F;
-         }
-
-         $$8 = $$7 - $$6;
-      }
-
-      float $$11 = ayo.i($$2, $$0.P, $$0.dG());
-      if (e($$0)) {
-         $$11 *= -1.0F;
-         $$8 *= -1.0F;
-      }
-
-      $$8 = ayo.g($$8);
-      if ($$0.c(bua.c)) {
-         ji $$12 = $$0.fJ();
-         if ($$12 != null) {
-            float $$13 = $$0.d(bua.a) - 0.1F;
-            $$3.a((float)(-$$12.j()) * $$13, 0.0F, (float)(-$$12.l()) * $$13);
-         }
-      }
-
-      float $$14 = $$0.eb();
-      $$3.b($$14, $$14, $$14);
-      float $$15 = this.a($$0, $$2);
-      this.a($$0, $$3, $$15, $$6, $$2, $$14);
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a($$0, $$3, $$2);
-      $$3.a(0.0F, -1.501F, 0.0F);
-      float $$16 = 0.0F;
-      float $$17 = 0.0F;
-      if (!$$0.bS() && $$0.bE()) {
-         $$16 = $$0.aU.b($$2);
-         $$17 = $$0.aU.c($$2);
-         if ($$0.o_()) {
-            $$17 *= 3.0F;
-         }
-
-         if ($$16 > 1.0F) {
-            $$16 = 1.0F;
-         }
-      }
-
-      this.g.a($$0, $$17, $$16, $$2);
-      this.g.a($$0, $$17, $$16, $$15, $$8, $$11);
-      fgo $$18 = fgo.Q();
-      boolean $$19 = this.d($$0);
-      boolean $$20 = !$$19 && !$$0.d($$18.s);
-      boolean $$21 = $$18.b($$0);
-      gfh $$22 = this.a($$0, $$19, $$20, $$21);
-      if ($$22 != null) {
-         fbm $$23 = $$4.getBuffer($$22);
-         int $$24 = c($$0, this.b($$0, $$2));
-         this.g.a($$3, $$23, $$5, $$24, $$20 ? 654311423 : -1);
-      }
-
-      if (!$$0.R_()) {
-         for (gov<T, M> $$25 : this.h) {
-            $$25.a($$3, $$4, $$5, $$0, $$17, $$16, $$2, $$15, $$8, $$11);
-         }
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   protected gfh a(T $$0, boolean $$1, boolean $$2, boolean $$3) {
-      akr $$4 = this.a($$0);
-      if ($$2) {
-         return gfh.g($$4);
-      } else if ($$1) {
-         return this.g.a($$4);
+   public void a(S $$0, fcu $$1, ggv $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a();
+      long $$4 = $$0.c;
+      float $$5 = (((float)($$4 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$6 = (((float)($$4 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      float $$7 = (((float)($$4 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
+      $$1.a($$5, $$6, $$7);
+      if ($$0.i) {
+         a($$0, $$1);
       } else {
-         return $$3 ? gfh.r($$4) : null;
-      }
-   }
-
-   public static int c(btn $$0, float $$1) {
-      return gqc.a(gqc.a($$1), gqc.a($$0.aO > 0 || $$0.aQ > 0));
-   }
-
-   protected boolean d(T $$0) {
-      return !$$0.ci();
-   }
-
-   private static float a(ji $$0) {
-      switch ($$0) {
-         case d:
-            return 90.0F;
-         case e:
-            return 0.0F;
-         case c:
-            return 270.0F;
-         case f:
-            return 180.0F;
-         default:
-            return 0.0F;
-      }
-   }
-
-   protected boolean a(T $$0) {
-      return $$0.cp();
-   }
-
-   protected void a(T $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
-      if (this.a($$0)) {
-         $$3 += (float)(Math.cos((double)$$0.ai * 3.25) * Math.PI * 0.4F);
+         b($$0, $$1);
       }
 
-      if (!$$0.c(bua.c)) {
-         $$1.a(a.d.rotationDegrees(180.0F - $$3));
+      float $$8 = $$0.e;
+      if ($$8 > 0.0F) {
+         $$1.a(a.b.rotationDegrees(azc.a($$8) * $$8 * $$0.f / 10.0F * (float)$$0.d));
       }
 
-      if ($$0.aQ > 0) {
-         float $$6 = ((float)$$0.aQ + $$4 - 1.0F) / 20.0F * 1.6F;
-         $$6 = ayo.c($$6);
-         if ($$6 > 1.0F) {
-            $$6 = 1.0F;
+      dua $$9 = $$0.h;
+      if ($$9.o() != dnc.a) {
+         $$1.a();
+         float $$10 = 0.75F;
+         $$1.b(0.75F, 0.75F, 0.75F);
+         $$1.a(-0.5F, (float)($$0.g - 8) / 16.0F, 0.5F);
+         $$1.a(a.d.rotationDegrees(90.0F));
+         this.a($$0, $$9, $$1, $$2, $$3);
+         $$1.b();
+      }
+
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.a.a($$0);
+      fcy $$11 = $$2.getBuffer(this.a.a(this.a($$0)));
+      this.a.a($$1, $$11, $$3, gwb.d);
+      $$1.b();
+   }
+
+   private static <S extends gtv> void a(S $$0, fcu $$1) {
+      $$1.a(a.d.rotationDegrees($$0.b));
+      $$1.a(a.f.rotationDegrees(-$$0.a));
+      $$1.a(0.0F, 0.375F, 0.0F);
+   }
+
+   private static <S extends gtv> void b(S $$0, fcu $$1) {
+      double $$2 = $$0.m;
+      double $$3 = $$0.n;
+      double $$4 = $$0.o;
+      float $$5 = $$0.a;
+      float $$6 = $$0.b;
+      if ($$0.k != null && $$0.l != null && $$0.B != null) {
+         eye $$7 = $$0.l;
+         eye $$8 = $$0.B;
+         $$1.a($$0.k.d - $$2, ($$7.e + $$8.e) / 2.0 - $$3, $$0.k.f - $$4);
+         eye $$9 = $$8.b(-$$7.d, -$$7.e, -$$7.f);
+         if ($$9.g() != 0.0) {
+            $$9 = $$9.d();
+            $$6 = (float)(Math.atan2($$9.f, $$9.d) * 180.0 / Math.PI);
+            $$5 = (float)(Math.atan($$9.e) * 73.0);
          }
-
-         $$1.a(a.f.rotationDegrees($$6 * this.c($$0)));
-      } else if ($$0.fn()) {
-         $$1.a(a.b.rotationDegrees(-90.0F - $$0.dG()));
-         $$1.a(a.d.rotationDegrees(((float)$$0.ai + $$4) * -75.0F));
-      } else if ($$0.c(bua.c)) {
-         ji $$7 = $$0.fJ();
-         float $$8 = $$7 != null ? a($$7) : $$3;
-         $$1.a(a.d.rotationDegrees($$8));
-         $$1.a(a.f.rotationDegrees(this.c($$0)));
-         $$1.a(a.d.rotationDegrees(270.0F));
-      } else if (e($$0)) {
-         $$1.a(0.0F, ($$0.dk() + 0.1F) / $$5, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
       }
+
+      $$1.a(0.0F, 0.375F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$6));
+      $$1.a(a.f.rotationDegrees(-$$5));
    }
 
-   protected float d(T $$0, float $$1) {
-      return $$0.B($$1);
+   public alb a(S $$0) {
+      return b;
    }
 
-   protected float a(T $$0, float $$1) {
-      return (float)$$0.ai + $$1;
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$0.m() instanceof cqa $$3) {
+         a($$0, $$3, $$1, $$2);
+         $$1.i = true;
+      } else if ($$0.m() instanceof cqb $$4) {
+         a($$0, $$4, $$1, $$2);
+         $$1.i = false;
+      }
+
+      long $$5 = (long)$$0.ap() * 493286711L;
+      $$1.c = $$5 * $$5 * 4392167121L + $$5 * 98761L;
+      $$1.e = (float)$$0.R() - $$2;
+      $$1.d = $$0.S();
+      $$1.f = Math.max($$0.Q() - $$2, 0.0F);
+      $$1.g = $$0.A();
+      $$1.h = $$0.y();
    }
 
-   protected float c(T $$0) {
-      return 90.0F;
-   }
-
-   protected float b(T $$0, float $$1) {
-      return 0.0F;
-   }
-
-   protected void a(T $$0, fbi $$1, float $$2) {
-   }
-
-   protected boolean b(T $$0) {
-      double $$1 = this.d.b($$0);
-      float $$2 = $$0.bZ() ? 32.0F : 64.0F;
-      if ($$1 >= (double)($$2 * $$2)) {
-         return false;
+   private static <T extends cpm, S extends gtv> void a(T $$0, cqa $$1, S $$2, float $$3) {
+      if ($$1.t()) {
+         $$2.j = $$1.e($$3);
+         $$2.a = $$1.c($$3);
+         $$2.b = $$1.d($$3);
       } else {
-         fgo $$3 = fgo.Q();
-         geb $$4 = $$3.s;
-         boolean $$5 = !$$0.d($$4);
-         if ($$0 != $$4) {
-            eyi $$6 = $$0.ck();
-            eyi $$7 = $$4.ck();
-            if ($$6 != null) {
-               eyi.b $$8 = $$6.j();
-               switch ($$8) {
-                  case a:
-                     return $$5;
-                  case b:
-                     return false;
-                  case c:
-                     return $$7 == null ? $$5 : $$6.a($$7) && ($$6.i() || $$5);
-                  case d:
-                     return $$7 == null ? $$5 : !$$6.a($$7) && $$5;
-                  default:
-                     return true;
-               }
-            }
-         }
-
-         return fgo.M() && $$0 != $$3.an() && $$5 && !$$0.bT();
+         $$2.j = null;
+         $$2.a = $$0.j($$3);
+         $$2.b = $$0.k($$3);
       }
    }
 
-   public static boolean e(btn $$0) {
-      if ($$0 instanceof cmx || $$0.ai()) {
-         String $$1 = n.a($$0.ah().getString());
-         if ("Dinnerbone".equals($$1) || "Grumm".equals($$1)) {
-            return !($$0 instanceof cmx) || ((cmx)$$0).a(cmy.a);
-         }
+   private static <T extends cpm, S extends gtv> void a(T $$0, cqb $$1, S $$2, float $$3) {
+      float $$4 = 0.3F;
+      $$2.a = $$0.j($$3);
+      $$2.b = $$0.k($$3);
+      double $$5 = $$2.m;
+      double $$6 = $$2.n;
+      double $$7 = $$2.o;
+      eye $$8 = $$1.d($$5, $$6, $$7);
+      if ($$8 != null) {
+         $$2.k = $$8;
+         eye $$9 = $$1.a($$5, $$6, $$7, 0.3F);
+         eye $$10 = $$1.a($$5, $$6, $$7, -0.3F);
+         $$2.l = Objects.requireNonNullElse($$9, $$8);
+         $$2.B = Objects.requireNonNullElse($$10, $$8);
+      } else {
+         $$2.k = null;
+         $$2.l = null;
+         $$2.B = null;
       }
-
-      return false;
    }
 
-   protected float f(T $$0) {
-      return super.c($$0) * $$0.eb();
+   protected void a(S $$0, dua $$1, fcu $$2, ggv $$3, int $$4) {
+      this.h.a($$1, $$2, $$3, $$4, gwb.d);
+   }
+
+   protected exz a(T $$0) {
+      exz $$1 = super.a($$0);
+      return $$0.C() ? $$1.g((double)Math.abs($$0.A()) / 16.0) : $$1;
+   }
+
+   public eye b(S $$0) {
+      eye $$1 = super.b($$0);
+      return $$0.i && $$0.j != null ? $$1.b($$0.j.d - $$0.m, $$0.j.e - $$0.n, $$0.j.f - $$0.o) : $$1;
    }
 }

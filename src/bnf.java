@@ -1,101 +1,66 @@
-import java.util.function.Supplier;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface bnf {
-   String b = "root";
+public final class bnf {
+   private final Object2ObjectMap<bmy<?>, Object> a = new Object2ObjectArrayMap();
 
-   void a();
-
-   void b();
-
-   void a(String var1);
-
-   void a(Supplier<String> var1);
-
-   void c();
-
-   void b(String var1);
-
-   void b(Supplier<String> var1);
-
-   void a(bol var1);
-
-   default void d(String $$0) {
-      this.a($$0, 1);
+   public <T> void a(bmy<T> $$0, @Nullable T $$1) {
+      this.a.put($$0, $$1);
    }
 
-   void a(String var1, int var2);
-
-   default void c(Supplier<String> $$0) {
-      this.a($$0, 1);
+   @Nullable
+   public <T> T a(bmy<T> $$0) {
+      return (T)this.a.get($$0);
    }
 
-   void a(Supplier<String> var1, int var2);
+   public <T> T b(bmy<T> $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
 
-   static bnf a(final bnf $$0, final bnf $$1) {
-      if ($$0 == bnc.a) {
-         return $$1;
-      } else {
-         return $$1 == bnc.a ? $$0 : new bnf() {
-            @Override
-            public void a() {
-               $$0.a();
-               $$1.a();
-            }
+   public <T> T b(bmy<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.a($$0), $$1);
+   }
 
-            @Override
-            public void b() {
-               $$0.b();
-               $$1.b();
-            }
-
-            @Override
-            public void a(String $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void a(bol $$0x) {
-               $$0.a($$0);
-               $$1.a($$0);
-            }
-
-            @Override
-            public void c() {
-               $$0.c();
-               $$1.c();
-            }
-
-            @Override
-            public void b(String $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void b(Supplier<String> $$0x) {
-               $$0.b($$0);
-               $$1.b($$0);
-            }
-
-            @Override
-            public void a(String $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-
-            @Override
-            public void a(Supplier<String> $$0x, int $$1x) {
-               $$0.a($$0, $$1);
-               $$1.a($$0, $$1);
-            }
-         };
+   @Nullable
+   @SafeVarargs
+   public final <T> T a(bmy<T>... $$0) {
+      for (bmy<T> $$1 : $$0) {
+         T $$2 = this.a($$1);
+         if ($$2 != null) {
+            return $$2;
+         }
       }
+
+      return null;
+   }
+
+   @SafeVarargs
+   public final <T> T b(bmy<T>... $$0) {
+      return Objects.requireNonNull(this.a($$0));
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
+   }
+
+   public void a(bnf $$0) {
+      this.a.putAll($$0.a);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 instanceof bnf $$1 ? this.a.equals($$1.a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

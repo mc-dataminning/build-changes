@@ -1,81 +1,70 @@
-import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.concurrent.Semaphore;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Queues;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Deque;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class azn {
-   private static final Logger a = LogUtils.getLogger();
-   private final String b;
-   private final Semaphore c = new Semaphore(1);
-   private final Lock d = new ReentrantLock();
+public final class azn<T> extends AbstractIterator<T> {
+   private static final int a = Integer.MIN_VALUE;
    @Nullable
-   private volatile Thread e;
-   @Nullable
-   private volatile z f;
+   private Deque<T> b = null;
+   private int c = Integer.MIN_VALUE;
+   private final Int2ObjectMap<Deque<T>> d = new Int2ObjectOpenHashMap();
 
-   public azn(String $$0) {
-      this.b = $$0;
+   public void a(T $$0, int $$1) {
+      if ($$1 == this.c && this.b != null) {
+         this.b.addLast($$0);
+      } else {
+         Deque<T> $$2 = (Deque<T>)this.d.computeIfAbsent($$1, $$0x -> Queues.newArrayDeque());
+         $$2.addLast($$0);
+         if ($$1 >= this.c) {
+            this.b = $$2;
+            this.c = $$1;
+         }
+      }
    }
 
-   public void a() {
-      boolean $$0 = false;
-
-      try {
-         this.d.lock();
-         if (!this.c.tryAcquire()) {
-            this.e = Thread.currentThread();
-            $$0 = true;
-            this.d.unlock();
-
-            try {
-               this.c.acquire();
-            } catch (InterruptedException var6) {
-               Thread.currentThread().interrupt();
+   @Nullable
+   protected T computeNext() {
+      if (this.b == null) {
+         return (T)this.endOfData();
+      } else {
+         T $$0 = this.b.removeFirst();
+         if ($$0 == null) {
+            return (T)this.endOfData();
+         } else {
+            if (this.b.isEmpty()) {
+               this.a();
             }
 
-            throw this.f;
-         }
-      } finally {
-         if (!$$0) {
-            this.d.unlock();
+            return $$0;
          }
       }
    }
 
-   public void b() {
-      try {
-         this.d.lock();
-         Thread $$0 = this.e;
-         if ($$0 != null) {
-            z $$1 = a(this.b, $$0);
-            this.f = $$1;
-            this.c.release();
-            throw $$1;
+   private void a() {
+      int $$0 = Integer.MIN_VALUE;
+      Deque<T> $$1 = null;
+      ObjectIterator var3 = Int2ObjectMaps.fastIterable(this.d).iterator();
+
+      while (var3.hasNext()) {
+         Entry<Deque<T>> $$2 = (Entry<Deque<T>>)var3.next();
+         Deque<T> $$3 = (Deque<T>)$$2.getValue();
+         int $$4 = $$2.getIntKey();
+         if ($$4 > $$0 && !$$3.isEmpty()) {
+            $$0 = $$4;
+            $$1 = $$3;
+            if ($$4 == this.c - 1) {
+               break;
+            }
          }
-
-         this.c.release();
-      } finally {
-         this.d.unlock();
       }
-   }
 
-   public static z a(String $$0, @Nullable Thread $$1) {
-      String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(azn::a).collect(Collectors.joining("\n"));
-      String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
-      $$5.a("Thread dumps", $$2);
-      a.error("Thread dumps: \n" + $$2);
-      return new z($$4);
-   }
-
-   private static String a(Thread $$0) {
-      return $$0.getName() + ": \n\tat " + Arrays.stream($$0.getStackTrace()).map(Object::toString).collect(Collectors.joining("\n\tat "));
+      this.c = $$0;
+      this.b = $$1;
    }
 }

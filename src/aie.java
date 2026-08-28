@@ -1,45 +1,18 @@
-public class aie implements zg<agi> {
-   public static final yx<vw, aie> a = zg.a(aie::a, aie::new);
-   private final ewy b;
-   private final bqq c;
-   private final int d;
+import java.util.Optional;
 
-   public aie(bqq $$0, ewy $$1, int $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.d = $$2;
-   }
-
-   private aie(vw $$0) {
-      this.c = $$0.b(bqq.class);
-      this.b = $$0.v();
-      this.d = $$0.l();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.c);
-      $$0.a(this.b);
-      $$0.c(this.d);
-   }
+public record aie(Optional<jn<bso>> b, Optional<jn<bso>> c) implements zk<agq> {
+   public static final zb<wo, aie> a = zb.a(bso.b.a(yz::a), aie::b, bso.b.a(yz::a), aie::e, aie::new);
 
    @Override
-   public zi<aie> a() {
-      return agg.cc;
+   public zm<aie> a() {
+      return ago.bV;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public bqq b() {
+   public Optional<jn<bso>> e() {
       return this.c;
-   }
-
-   public ewy e() {
-      return this.b;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

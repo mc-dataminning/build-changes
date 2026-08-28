@@ -1,231 +1,141 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Deque;
+import com.google.common.base.Charsets;
+import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.Socket;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.Locale;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import java.util.Scanner;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class amg {
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("commands.clone.overlap"));
-   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wz.b("commands.clone.toobig", $$0, $$1));
-   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wz.c("commands.clone.failed"));
-   public static final Predicate<dtg> a = $$0 -> !$$0.a().i();
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 5;
+   private final String c;
+   private final int d;
+   private final MinecraftServer e;
+   private volatile boolean f;
+   @Nullable
+   private Socket g;
+   @Nullable
+   private Thread h;
 
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("clone").requires($$0x -> $$0x.c(2)))
-               .then(a($$1, $$0x -> ((et)$$0x.getSource()).e())))
-            .then(eu.a("from").then(eu.a("sourceDimension", fe.a()).then(a($$1, $$0x -> fe.a($$0x, "sourceDimension")))))
-      );
+   public amg(String $$0, int $$1, MinecraftServer $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   private static ArgumentBuilder<et, ?> a(ep $$0, amg.c<CommandContext<et>, aqu> $$1) {
-      return eu.a("begin", gp.a())
-         .then(
-            ((RequiredArgumentBuilder)eu.a("end", gp.a()).then(a($$0, $$1, $$0x -> ((et)$$0x.getSource()).e())))
-               .then(eu.a("to").then(eu.a("targetDimension", fe.a()).then(a($$0, $$1, $$0x -> fe.a($$0x, "targetDimension")))))
-         );
+   public void a() {
+      if (this.h != null && this.h.isAlive()) {
+         a.warn("Remote control client was asked to start, but it is already running. Will ignore.");
+      }
+
+      this.f = true;
+      this.h = new Thread(this::c, "chase-client");
+      this.h.setDaemon(true);
+      this.h.start();
    }
 
-   private static amg.d a(CommandContext<et> $$0, aqu $$1, String $$2) throws CommandSyntaxException {
-      jd $$3 = gp.a($$0, $$1, $$2);
-      return new amg.d($$1, $$3);
+   public void b() {
+      this.f = false;
+      IOUtils.closeQuietly(this.g);
+      this.g = null;
+      this.h = null;
    }
 
-   private static ArgumentBuilder<et, ?> a(ep $$0, amg.c<CommandContext<et>, aqu> $$1, amg.c<CommandContext<et>, aqu> $$2) {
-      amg.c<CommandContext<et>, amg.d> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
-      amg.c<CommandContext<et>, amg.d> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
-      amg.c<CommandContext<et>, amg.d> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
-      return ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("destination", gp.a())
-                  .executes($$3x -> a((et)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, amg.e.c)))
-               .then(
-                  a(
-                     $$3,
-                     $$4,
-                     $$5,
-                     $$0x -> $$0xx -> true,
-                     eu.a("replace").executes($$3x -> a((et)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), $$0xx -> true, amg.e.c))
-                  )
-               ))
-            .then(
-               a(
-                  $$3,
-                  $$4,
-                  $$5,
-                  $$0x -> a,
-                  eu.a("masked").executes($$3x -> a((et)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), a, amg.e.c))
-               )
-            ))
-         .then(
-            eu.a("filtered")
-               .then(
-                  a(
-                     $$3,
-                     $$4,
-                     $$5,
-                     $$0x -> gl.a($$0x, "filter"),
-                     eu.a("filter", gl.a($$0))
-                        .executes($$3x -> a((et)$$3x.getSource(), $$3.apply($$3x), $$4.apply($$3x), $$5.apply($$3x), gl.a($$3x, "filter"), amg.e.c))
-                  )
-               )
-         );
-   }
+   public void c() {
+      String $$0 = this.c + ":" + this.d;
 
-   private static ArgumentBuilder<et, ?> a(
-      amg.c<CommandContext<et>, amg.d> $$0,
-      amg.c<CommandContext<et>, amg.d> $$1,
-      amg.c<CommandContext<et>, amg.d> $$2,
-      amg.c<CommandContext<et>, Predicate<dtg>> $$3,
-      ArgumentBuilder<et, ?> $$4
-   ) {
-      return $$4.then(eu.a("force").executes($$4x -> a((et)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), amg.e.a)))
-         .then(eu.a("move").executes($$4x -> a((et)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), amg.e.b)))
-         .then(eu.a("normal").executes($$4x -> a((et)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), amg.e.c)));
-   }
+      while (this.f) {
+         try {
+            a.info("Connecting to remote control server {}", $$0);
+            this.g = new Socket(this.c, this.d);
+            a.info("Connected to remote control server! Will continuously execute the command broadcasted by that server.");
 
-   private static int a(et $$0, amg.d $$1, amg.d $$2, amg.d $$3, Predicate<dtg> $$4, amg.e $$5) throws CommandSyntaxException {
-      jd $$6 = $$1.b();
-      jd $$7 = $$2.b();
-      ejj $$8 = ejj.a($$6, $$7);
-      jd $$9 = $$3.b();
-      jd $$10 = $$9.a($$8.c());
-      ejj $$11 = ejj.a($$9, $$10);
-      aqu $$12 = $$1.a();
-      aqu $$13 = $$3.a();
-      if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
-         throw b.create();
-      } else {
-         int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().ab().c(dcs.z);
-         if ($$14 > $$15) {
-            throw c.create($$15, $$14);
-         } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
-            List<amg.b> $$16 = Lists.newArrayList();
-            List<amg.b> $$17 = Lists.newArrayList();
-            List<amg.b> $$18 = Lists.newArrayList();
-            Deque<jd> $$19 = Lists.newLinkedList();
-            jd $$20 = new jd($$11.h() - $$8.h(), $$11.i() - $$8.i(), $$11.j() - $$8.j());
-
-            for (int $$21 = $$8.j(); $$21 <= $$8.m(); $$21++) {
-               for (int $$22 = $$8.i(); $$22 <= $$8.l(); $$22++) {
-                  for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
-                     jd $$24 = new jd($$23, $$22, $$21);
-                     jd $$25 = $$24.a((kh)$$20);
-                     dtg $$26 = new dtg($$12, $$24, false);
-                     dtc $$27 = $$26.a();
-                     if ($$4.test($$26)) {
-                        dqh $$28 = $$12.c_($$24);
-                        if ($$28 != null) {
-                           amg.a $$29 = new amg.a($$28.e($$0.v()), $$28.t());
-                           $$17.add(new amg.b($$25, $$27, $$29));
-                           $$19.addLast($$24);
-                        } else if (!$$27.i($$12, $$24) && !$$27.r($$12, $$24)) {
-                           $$18.add(new amg.b($$25, $$27, null));
-                           $$19.addFirst($$24);
-                        } else {
-                           $$16.add(new amg.b($$25, $$27, null));
-                           $$19.addLast($$24);
-                        }
-                     }
+            try (BufferedReader $$1 = new BufferedReader(new InputStreamReader(this.g.getInputStream(), Charsets.US_ASCII))) {
+               while (this.f) {
+                  String $$2 = $$1.readLine();
+                  if ($$2 == null) {
+                     a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
+                     break;
                   }
+
+                  this.a($$2);
                }
+            } catch (IOException var8) {
+               a.warn("Lost connection to remote control server {}. Will retry in {}s.", $$0, 5);
             }
+         } catch (IOException var9) {
+            a.warn("Failed to connect to remote control server {}. Will retry in {}s.", $$0, 5);
+         }
 
-            if ($$5 == amg.e.b) {
-               for (jd $$30 : $$19) {
-                  dqh $$31 = $$12.c_($$30);
-                  bqi.a_($$31);
-                  $$12.a($$30, dga.hW.o(), 2);
-               }
-
-               for (jd $$32 : $$19) {
-                  $$12.a($$32, dga.a.o(), 3);
-               }
+         if (this.f) {
+            try {
+               Thread.sleep(5000L);
+            } catch (InterruptedException var5) {
             }
-
-            List<amg.b> $$33 = Lists.newArrayList();
-            $$33.addAll($$16);
-            $$33.addAll($$17);
-            $$33.addAll($$18);
-            List<amg.b> $$34 = Lists.reverse($$33);
-
-            for (amg.b $$35 : $$34) {
-               dqh $$36 = $$13.c_($$35.a);
-               bqi.a_($$36);
-               $$13.a($$35.a, dga.hW.o(), 2);
-            }
-
-            int $$37 = 0;
-
-            for (amg.b $$38 : $$33) {
-               if ($$13.a($$38.a, $$38.b, 2)) {
-                  $$37++;
-               }
-            }
-
-            for (amg.b $$39 : $$17) {
-               dqh $$40 = $$13.c_($$39.a);
-               if ($$39.c != null && $$40 != null) {
-                  $$40.d($$39.c.a, $$13.H_());
-                  $$40.a($$39.c.b);
-                  $$40.e();
-               }
-
-               $$13.a($$39.a, $$39.b, 2);
-            }
-
-            for (amg.b $$41 : $$34) {
-               $$13.b($$41.a, $$41.b.b());
-            }
-
-            $$13.m().a($$12.m(), $$8, $$20);
-            if ($$37 == 0) {
-               throw d.create();
-            } else {
-               int $$42 = $$37;
-               $$0.a(() -> wz.a("commands.clone.success", $$42), true);
-               return $$37;
-            }
-         } else {
-            throw gp.a.create();
          }
       }
    }
 
-   static record a(ub a, km b) {
-   }
-
-   static record b(jd a, dtc b, @Nullable amg.a c) {
-   }
-
-   @FunctionalInterface
-   interface c<T, R> {
-      R apply(T var1) throws CommandSyntaxException;
-   }
-
-   static record d(aqu a, jd b) {
-   }
-
-   static enum e {
-      a(true),
-      b(true),
-      c(false);
-
-      private final boolean d;
-
-      private e(final boolean $$0) {
-         this.d = $$0;
+   private void a(String $$0) {
+      try (Scanner $$1 = new Scanner(new StringReader($$0))) {
+         $$1.useLocale(Locale.ROOT);
+         String $$2 = $$1.next();
+         if ("t".equals($$2)) {
+            this.a($$1);
+         } else {
+            a.warn("Unknown message type '{}'", $$2);
+         }
+      } catch (NoSuchElementException var7) {
+         a.warn("Could not parse message '{}', ignoring", $$0);
       }
+   }
 
-      public boolean a() {
-         return this.d;
+   private void a(Scanner $$0) {
+      this.b($$0)
+         .ifPresent(
+            $$0x -> this.b(
+                  String.format(Locale.ROOT, "execute in %s run tp @s %.3f %.3f %.3f %.3f %.3f", $$0x.a.a(), $$0x.b.d, $$0x.b.e, $$0x.b.f, $$0x.c.j, $$0x.c.i)
+               )
+         );
+   }
+
+   private Optional<amg.a> b(Scanner $$0) {
+      ala<dds> $$1 = (ala<dds>)amp.a.get($$0.next());
+      if ($$1 == null) {
+         return Optional.empty();
+      } else {
+         float $$2 = $$0.nextFloat();
+         float $$3 = $$0.nextFloat();
+         float $$4 = $$0.nextFloat();
+         float $$5 = $$0.nextFloat();
+         float $$6 = $$0.nextFloat();
+         return Optional.of(new amg.a($$1, new eye((double)$$2, (double)$$3, (double)$$4), new eyd($$6, $$5)));
       }
+   }
+
+   private void b(String $$0) {
+      this.e.execute(() -> {
+         List<arh> $$1 = this.e.ag().t();
+         if (!$$1.isEmpty()) {
+            arh $$2 = $$1.get(0);
+            arg $$3 = this.e.J();
+            et $$4 = new et($$2, eye.a($$3.W()), eyd.a, $$3, 4, "", xc.a, this.e, $$2);
+            eu $$5 = this.e.aG();
+            $$5.a($$4, $$0);
+         }
+      });
+   }
+
+   static record a(ala<dds> a, eye b, eyd c) {
    }
 }

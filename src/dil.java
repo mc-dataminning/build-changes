@@ -1,86 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dil extends dfk implements dlr {
-   public static final MapCodec<dil> a = b(dil::new);
+public class dil extends dgd {
+   public static final MapCodec<dil> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dik.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dil::new));
+   private final dgv c;
 
    @Override
    public MapCodec<dil> a() {
-      return a;
+      return b;
    }
 
-   protected dil(dtb.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dry($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return a($$2, dqj.v, $$0.B ? dry::a : dry::b);
+   protected dil(dgv $$0, dtz.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
-      dqh $$4 = $$1.c_($$2);
-      if ($$4 instanceof dry) {
-         int $$5 = ((dry)$$4).f();
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      this.a($$0, (ddt)$$1, $$2);
+   }
 
-         for (int $$6 = 0; $$6 < $$5; $$6++) {
-            double $$7 = (double)$$2.u() + $$3.j();
-            double $$8 = (double)$$2.v() + $$3.j();
-            double $$9 = (double)$$2.w() + $$3.j();
-            double $$10 = ($$3.j() - 0.5) * 0.5;
-            double $$11 = ($$3.j() - 0.5) * 0.5;
-            double $$12 = ($$3.j() - 0.5) * 0.5;
-            int $$13 = $$3.a(2) * 2 - 1;
-            if ($$3.h()) {
-               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
-               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
-            } else {
-               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
-               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
-            }
-
-            $$1.a(lm.ac, $$7, $$8, $$9, $$10, $$11, $$12);
-         }
+   @Override
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.o().b(d, Boolean.valueOf(false)), 2);
       }
    }
 
    @Override
-   public cuq a(dcz $$0, jd $$1, dtc $$2) {
-      return cuq.l;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, epd $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
-      if ($$3.o(false) && !$$1.B && $$1.c_($$2) instanceof dry $$5 && !$$5.c()) {
-         $$3.a(this, $$2);
-         dry.c($$1, $$2, $$0, $$5);
-      }
-   }
-
-   @Nullable
-   @Override
-   public eqc a(aqu $$0, bsr $$1, jd $$2) {
-      if ($$0.c_($$2) instanceof dry $$4) {
-         exc $$6 = $$4.a($$0, $$2);
-         return $$6 != null ? new eqc($$0, $$6, a($$1), $$1.dE(), $$1.dG(), eqc.c) : null;
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$1 == jj.a && !$$0.a($$3, $$4)) {
+         return dgx.a.o();
       } else {
-         return null;
-      }
-   }
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, eqc.c, eqc.c.a($$3));
+         }
 
-   private static exc a(bsr $$0) {
-      return $$0 instanceof cnz ? new exc(0.0, -1.0, 0.0) : $$0.dr();
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

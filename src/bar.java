@@ -1,53 +1,42 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.Objects;
+import java.util.stream.Stream;
 
-public class bar extends DataFix {
+public abstract class bar extends DataFix {
    private final String a;
-   private static final Set<String> b = Set.of("minecraft:empty", "minecraft:structure_starts", "minecraft:structure_references", "minecraft:biomes");
 
-   public bar(Schema $$0) {
+   public bar(Schema $$0, String $$1) {
       super($$0, false);
-      this.a = "Blending Data Fix v" + $$0.getVersionKey();
+      this.a = $$1;
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bgr.c);
-      return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
-      $$0 = $$0.remove("blending_data");
-      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
-      Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
-      if ($$2 && $$3.isPresent()) {
-         String $$4 = bid.a($$3.get().asString("empty"));
-         Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
-         if (!b.contains($$4)) {
-            $$0 = a($$0, 384, -64);
-         } else if ($$5.isPresent()) {
-            Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bid.a($$6.get("target_status").asString("empty"));
-            if (!b.contains($$7)) {
-               $$0 = a($$0, 256, 0);
-            }
-         }
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bhk.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bhk.q))) {
+         throw new IllegalStateException("Poi type is not what was expected.");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
       }
-
-      return $$0;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
-      return $$0.set(
-         "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(kf.a($$2)), $$0.createString("max_section"), $$0.createInt(kf.a($$2 + $$1))))
-      );
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("Sections", $$0x -> $$0x.updateMapValues($$0xx -> $$0xx.mapSecond(this::b)));
    }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("Records", this::c);
+   }
+
+   private <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asStreamOpt().result().map($$1 -> $$0.createList(this.a((Stream<Dynamic<T>>)$$1))), $$0);
+   }
+
+   protected abstract <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> var1);
 }

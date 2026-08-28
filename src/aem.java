@@ -1,19 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public record aem(wz b, Optional<byte[]> c) implements zg<abu> {
-   public static final yx<ByteBuf, aem> a = yx.a(xb.f, aem::b, yv.k.a(yv::a), aem::e, aem::new);
+public record aem(int b, jn<bso> c) implements zk<abz> {
+   public static final zb<wo, aem> a = zb.a(yz.g, aem::b, bso.b, aem::e, aem::new);
 
    @Override
-   public zi<aem> a() {
-      return agg.ap;
+   public zm<aem> a() {
+      return ago.al;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public Optional<byte[]> e() {
+   @Nullable
+   public btj a(dds $$0) {
+      return $$0.a(this.b);
+   }
+
+   public jn<bso> e() {
       return this.c;
    }
 }

@@ -1,59 +1,64 @@
-public class ayy {
-   private final int a;
-   private final int b;
-   private final float c;
-   private final float d;
+import java.io.Serializable;
+import java.util.Deque;
+import java.util.List;
+import java.util.RandomAccess;
+import javax.annotation.Nullable;
 
-   public ayy(int $$0) {
-      if ($$0 < 2) {
-         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
-      } else if ($$0 > 30) {
-         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
-      } else {
-         int $$1 = 1 << $$0;
-         this.a = $$1 - 1;
-         this.b = $$0;
-         this.c = (float)$$1 / 360.0F;
-         this.d = 360.0F / (float)$$1;
-      }
+public interface ayy<T> extends Serializable, Cloneable, Deque<T>, List<T>, RandomAccess {
+   ayy<T> b();
+
+   @Override
+   T getFirst();
+
+   @Override
+   T getLast();
+
+   @Override
+   void addFirst(T var1);
+
+   @Override
+   void addLast(T var1);
+
+   @Override
+   T removeFirst();
+
+   @Override
+   T removeLast();
+
+   @Override
+   default boolean offer(T $$0) {
+      return this.offerLast($$0);
    }
 
-   public boolean a(int $$0, int $$1) {
-      int $$2 = this.a() >> 1;
-      return ($$0 & $$2) == ($$1 & $$2);
+   @Override
+   default T remove() {
+      return this.removeFirst();
    }
 
-   public int a(ji $$0) {
-      if ($$0.o().b()) {
-         return 0;
-      } else {
-         int $$1 = $$0.e();
-         return $$1 << this.b - 2;
-      }
+   @Nullable
+   @Override
+   default T poll() {
+      return this.pollFirst();
    }
 
-   public int a(float $$0) {
-      return Math.round($$0 * this.c);
+   @Override
+   default T element() {
+      return this.getFirst();
    }
 
-   public int b(float $$0) {
-      return this.c(this.a($$0));
+   @Nullable
+   @Override
+   default T peek() {
+      return this.peekFirst();
    }
 
-   public float a(int $$0) {
-      return (float)$$0 * this.d;
+   @Override
+   default void push(T $$0) {
+      this.addFirst($$0);
    }
 
-   public float b(int $$0) {
-      float $$1 = this.a(this.c($$0));
-      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
-   }
-
-   public int c(int $$0) {
-      return $$0 & this.a;
-   }
-
-   public int a() {
-      return this.a;
+   @Override
+   default T pop() {
+      return this.removeFirst();
    }
 }

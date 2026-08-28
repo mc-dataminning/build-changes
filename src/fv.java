@@ -10,15 +10,15 @@ import java.util.Collection;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class fv<T> implements ArgumentType<jm<T>> {
+public class fv<T> implements ArgumentType<jn<T>> {
    private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
-   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wz.b("argument.resource_or_id.failed_to_parse", $$0));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wz.c("argument.resource_or_id.invalid"));
-   private final jo.a d;
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xd.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xd.c("argument.resource_or_id.invalid"));
+   private final jp.a d;
    private final boolean e;
-   private final Codec<jm<T>> f;
+   private final Codec<jn<T>> f;
 
-   protected fv(ep $$0, akq<jz<T>> $$1, Codec<jm<T>> $$2) {
+   protected fv(ep $$0, ala<ka<T>> $$1, Codec<jn<T>> $$2) {
       this.d = $$0;
       this.e = $$0.a($$1).isPresent();
       this.f = $$2;
@@ -28,7 +28,7 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return new fv.c($$0);
    }
 
-   public static jm<erw> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jn<esy> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return d($$0, $$1);
    }
 
@@ -36,7 +36,7 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return new fv.a($$0);
    }
 
-   public static jm<etf> b(CommandContext<et> $$0, String $$1) {
+   public static jn<euh> b(CommandContext<et> $$0, String $$1) {
       return d($$0, $$1);
    }
 
@@ -44,36 +44,36 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return new fv.b($$0);
    }
 
-   public static jm<evc> c(CommandContext<et> $$0, String $$1) {
+   public static jn<ewe> c(CommandContext<et> $$0, String $$1) {
       return d($$0, $$1);
    }
 
-   private static <T> jm<T> d(CommandContext<et> $$0, String $$1) {
-      return (jm<T>)$$0.getArgument($$1, jm.class);
+   private static <T> jn<T> d(CommandContext<et> $$0, String $$1) {
+      return (jn<T>)$$0.getArgument($$1, jn.class);
    }
 
    @Nullable
-   public jm<T> a(StringReader $$0) throws CommandSyntaxException {
-      uy $$1 = b($$0);
+   public jn<T> a(StringReader $$0) throws CommandSyntaxException {
+      vc $$1 = b($$0);
       if (!this.e) {
          return null;
       } else {
-         akp<uy> $$2 = this.d.a(up.a);
-         return (jm<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
+         akz<vc> $$2 = this.d.a(ut.a);
+         return (jn<T>)this.f.parse($$2, $$1).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
       }
    }
 
    @VisibleForTesting
-   static uy b(StringReader $$0) throws CommandSyntaxException {
+   static vc b(StringReader $$0) throws CommandSyntaxException {
       int $$1 = $$0.getCursor();
-      uy $$2 = new uz($$0).d();
+      vc $$2 = new vd($$0).d();
       if (c($$0)) {
          return $$2;
       } else {
          $$0.setCursor($$1);
-         akr $$3 = akr.a($$0);
+         alb $$3 = alb.a($$0);
          if (c($$0)) {
-            return uw.a($$3.toString());
+            return va.a($$3.toString());
          } else {
             $$0.setCursor($$1);
             throw c.createWithContext($$0);
@@ -89,21 +89,21 @@ public class fv<T> implements ArgumentType<jm<T>> {
       return b;
    }
 
-   public static class a extends fv<etf> {
+   public static class a extends fv<euh> {
       protected a(ep $$0) {
-         super($$0, lu.bd, eth.d);
+         super($$0, lv.bd, euj.d);
       }
    }
 
-   public static class b extends fv<evc> {
+   public static class b extends fv<ewe> {
       protected b(ep $$0) {
-         super($$0, lu.be, evc.f);
+         super($$0, lv.be, ewe.f);
       }
    }
 
-   public static class c extends fv<erw> {
+   public static class c extends fv<esy> {
       protected c(ep $$0) {
-         super($$0, lu.bc, erw.e);
+         super($$0, lv.bc, esy.e);
       }
    }
 }

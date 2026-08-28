@@ -20,11 +20,11 @@ public record cb(Optional<Boolean> d) implements bw {
    }
 
    @Override
-   public boolean a(bsr $$0, aqu $$1, @Nullable exc $$2) {
+   public boolean a(btj $$0, arg $$1, @Nullable eye $$2) {
       if (this.d.isEmpty()) {
          return true;
       } else {
-         return $$0 instanceof cnl $$3 ? this.d.get() == $$3.p() : false;
+         return $$0 instanceof coe $$3 ? this.d.get() == $$3.m() : false;
       }
    }
 

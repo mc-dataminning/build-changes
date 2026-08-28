@@ -1,23 +1,60 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SequencedMap;
 
-public class ghc<S extends dqh> implements dif.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = gex.a($$0.i(), $$0.aD_());
-         int $$4 = gex.a($$1.i(), $$1.aD_());
-         int $$5 = gey.a($$3);
-         int $$6 = gey.a($$4);
-         int $$7 = gey.b($$3);
-         int $$8 = gey.b($$4);
-         return gey.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
+public class ghc {
+   private final ghh a = new ghh();
+   private final ghi b;
+   private final ggv.a c;
+   private final ggv.a d;
+   private final ggw e;
+
+   public ghc(int $$0) {
+      this.b = ghi.a($$0);
+      SequencedMap<ghe, fcr> $$1 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(ghm.h(), this.a.a(ghe.c()));
+         $$0x.put(ghm.i(), this.a.a(ghe.e()));
+         $$0x.put(ghm.a(), this.a.a(ghe.d()));
+         $$0x.put(ghm.k(), this.a.a(ghe.f()));
+         a($$0x, ghm.b());
+         a($$0x, ghm.c());
+         a($$0x, ghm.d());
+         a($$0x, ghm.e());
+         a($$0x, ghm.f());
+         $$0x.put(ghm.g(), new fcr(786432));
+         a($$0x, ghe.j());
+         a($$0x, ghe.l());
+         a($$0x, ghe.k());
+         a($$0x, ghe.m());
+         a($$0x, ghe.n());
+         a($$0x, ghe.i());
+      });
+      this.c = ggv.a($$1, new fcr(786432));
+      this.e = new ggw(this.c);
+      SequencedMap<ghe, fcr> $$2 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> gyt.l.forEach($$1x -> a($$0x, $$1x)));
+      this.d = ggv.a($$2, new fcr(0));
    }
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
+   private static void a(Object2ObjectLinkedOpenHashMap<ghe, fcr> $$0, ghe $$1) {
+      $$0.put($$1, new fcr($$1.N()));
    }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+   public ghh a() {
+      return this.a;
+   }
+
+   public ghi b() {
+      return this.b;
+   }
+
+   public ggv.a c() {
+      return this.c;
+   }
+
+   public ggv.a d() {
+      return this.d;
+   }
+
+   public ggw e() {
+      return this.e;
    }
 }

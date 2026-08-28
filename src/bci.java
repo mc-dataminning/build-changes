@@ -1,19 +1,21 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.Type;
 
-public class bci extends bfn {
-   public bci(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityArmorStandSilentFix", bgr.B, "ArmorStand");
+public class bci extends DataFix {
+   public bci(Schema $$0) {
+      super($$0, false);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("Silent").asBoolean(false) && !$$0.get("Marker").asBoolean(false) ? $$0.remove("Silent") : $$0;
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.c);
+      OpticFinder<?> $$1 = $$0.findField("sections");
+      return this.fixTypeEverywhereTyped("ChunkDeleteLightFix for " + this.getOutputSchema().getVersionKey(), $$0, $$1x -> {
+         $$1x = $$1x.update(DSL.remainderFinder(), $$0xx -> $$0xx.remove("isLightOn"));
+         return $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("BlockLight").remove("SkyLight")));
+      });
    }
 }

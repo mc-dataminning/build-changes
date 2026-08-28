@@ -1,63 +1,50 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public abstract class fqy extends fod {
-   private static final int b = 100;
-   private final wz c;
-   @Nullable
-   private final wz r;
-   private final wz s;
-   @Nullable
-   protected fio a;
-   @Nullable
-   private fix u;
-   private final flx v;
+public class fqy {
+   private static final int a = 30;
+   private static final int b = 16;
+   private static final int c = 4;
+   private final int d;
+   private List<alb> e = List.of();
+   private int f;
+   private int g;
 
-   protected fqy(wz $$0, wz $$1, wz $$2) {
-      this($$0, $$1, null, $$2);
+   public fqy(int $$0) {
+      this.d = $$0;
    }
 
-   protected fqy(wz $$0, wz $$1, @Nullable wz $$2, wz $$3) {
-      super($$0);
-      this.c = $$1;
-      this.r = $$2;
-      this.s = $$3;
-      this.v = new flx(0, 0, this.m, this.n);
-   }
-
-   protected abstract fma m();
-
-   @Override
-   protected void aT_() {
-      fmd $$0 = this.v.a(fmd.d().a(8));
-      $$0.c().b();
-      $$0.a(new fjt(this.n(), this.o));
-      this.u = $$0.a(new fix(this.m - 100, this.c, this.o, 12), $$0x -> $$0x.a(12));
-      this.u.b(false);
-      fmd $$1 = $$0.a(fmd.d().a(8));
-      $$1.c().b();
-      if (this.r != null) {
-         this.a = $$1.a(fio.a(this.r, this.o).a());
+   public void a(List<alb> $$0) {
+      if (!this.e.equals($$0)) {
+         this.e = $$0;
+         this.g = 0;
       }
 
-      $$1.a(this.m());
-      this.v.a($$1x -> {
-         fik var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      if (this.u != null) {
-         this.u.d(this.m - 100);
+      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
+         this.g = (this.g + 1) % this.e.size();
       }
-
-      this.v.a();
-      flx.a(this.v, this.H());
    }
 
-   @Override
-   public wz i() {
-      return this.s;
+   public void a(cqq $$0, fjn $$1, float $$2, int $$3, int $$4) {
+      csn $$5 = $$0.b(this.d);
+      if (!this.e.isEmpty() && !$$5.h()) {
+         boolean $$6 = this.e.size() > 1 && this.f >= 30;
+         float $$7 = $$6 ? this.a($$2) : 1.0F;
+         if ($$7 < 1.0F) {
+            int $$8 = Math.floorMod(this.g - 1, this.e.size());
+            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+         }
+
+         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+      }
+   }
+
+   private void a(csn $$0, alb $$1, float $$2, fjn $$3, int $$4, int $$5) {
+      gwk $$6 = fib.Q().a(gwj.d).apply($$1);
+      $$3.a(ghe::C, $$6, $$4 + $$0.e, $$5 + $$0.f, 16, 16, axn.a($$2));
+   }
+
+   private float a(float $$0) {
+      float $$1 = (float)(this.f % 30) + $$0;
+      return Math.min($$1, 4.0F) / 4.0F;
    }
 }

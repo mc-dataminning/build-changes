@@ -1,67 +1,64 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
-public record gal(String a, @Nullable gal.a b) {
-   public static gal a() {
-      return a(null);
+public class gal {
+   private final List<gae> a;
+   private final gad b;
+   private final Map<String, gal> c = Maps.newHashMap();
+
+   gal(List<gae> $$0, gad $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static gal a(String $$0) {
-      return a(new gal.a.b($$0));
+   public gal a(String $$0, gag $$1, gad $$2) {
+      gal $$3 = new gal($$1.b(), $$2);
+      return this.a($$0, $$3);
    }
 
-   public static gal a(fcp $$0) {
-      return a(new gal.a.a($$0));
-   }
-
-   public static gal a(@Nullable gal.a $$0) {
-      return new gal(g(), $$0);
-   }
-
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof gal.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof gal.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.21.1");
-      if (fgo.e().a()) {
-         $$0.append(" (modded)");
+   public gal a(String $$0, gal $$1) {
+      gal $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
       }
 
-      return $$0.toString();
+      return $$1;
    }
 
-   public String e() {
-      return this.a;
+   public gal a(String $$0) {
+      return this.a($$0, gag.c(), gad.a);
    }
 
-   @Nullable
-   public gal.a f() {
-      return this.b;
+   public gab a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, gab> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gal)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<gab.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      gab $$4 = new gab($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   public interface a {
-      public static record a(long a, int b) implements gal.a {
-         public a(fcp $$0) {
-            this($$0.a, $$0.n);
-         }
-      }
+   public gal b(String $$0) {
+      return this.c.get($$0);
+   }
 
-      public static record b(String a) implements gal.a {
-      }
+   public Set<Entry<String, gal>> a() {
+      return this.c.entrySet();
+   }
+
+   public gal a(UnaryOperator<gad> $$0) {
+      gal $$1 = new gal(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

@@ -1,7 +1,16 @@
-public interface blu {
-   void a(long[] var1);
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   void a(long var1);
+public class blu extends biw {
+   public blu(int $$0, Schema $$1) {
+      super($$0, $$1);
+   }
 
-   void a(long var1, int var3);
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(true, bhk.y, () -> DSL.optionalFields("item", bhk.t.in($$0), "block_state", bhk.u.in($$0)));
+   }
 }

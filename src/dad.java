@@ -1,46 +1,90 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public interface dad {
-   Codec<kp<?>> a = Codec.lazyInitialized(() -> lt.au.r());
-   Codec<km> b = km.a(a);
-   kp<List<daa<dau>>> c = a("damage_protection", $$0 -> $$0.a(daa.a(dau.b, eum.t).listOf()));
-   kp<List<daa<dap>>> d = a("damage_immunity", $$0 -> $$0.a(daa.a(dap.b, eum.t).listOf()));
-   kp<List<daa<dau>>> e = a("damage", $$0 -> $$0.a(daa.a(dau.b, eum.t).listOf()));
-   kp<List<daa<dau>>> f = a("smash_damage_per_fallen_block", $$0 -> $$0.a(daa.a(dau.b, eum.t).listOf()));
-   kp<List<daa<dau>>> g = a("knockback", $$0 -> $$0.a(daa.a(dau.b, eum.t).listOf()));
-   kp<List<daa<dau>>> h = a("armor_effectiveness", $$0 -> $$0.a(daa.a(dau.b, eum.t).listOf()));
-   kp<List<dak<das>>> i = a("post_attack", $$0 -> $$0.a(dak.a(das.b, eum.t).listOf()));
-   kp<List<daa<das>>> j = a("hit_block", $$0 -> $$0.a(daa.a(das.b, eum.x).listOf()));
-   kp<List<daa<dau>>> k = a("item_damage", $$0 -> $$0.a(daa.a(dau.b, eum.u).listOf()));
-   kp<List<dar>> l = a("attributes", $$0 -> $$0.a(dar.a.codec().listOf()));
-   kp<List<dak<dau>>> m = a("equipment_drops", $$0 -> $$0.a(dak.b(dau.b, eum.t).listOf()));
-   kp<List<daa<dat>>> n = a("location_changed", $$0 -> $$0.a(daa.a(dat.c, eum.v).listOf()));
-   kp<List<daa<das>>> o = a("tick", $$0 -> $$0.a(daa.a(das.b, eum.w).listOf()));
-   kp<List<daa<dau>>> p = a("ammo_use", $$0 -> $$0.a(daa.a(dau.b, eum.u).listOf()));
-   kp<List<daa<dau>>> q = a("projectile_piercing", $$0 -> $$0.a(daa.a(dau.b, eum.u).listOf()));
-   kp<List<daa<das>>> r = a("projectile_spawned", $$0 -> $$0.a(daa.a(das.b, eum.w).listOf()));
-   kp<List<daa<dau>>> s = a("projectile_spread", $$0 -> $$0.a(daa.a(dau.b, eum.w).listOf()));
-   kp<List<daa<dau>>> t = a("projectile_count", $$0 -> $$0.a(daa.a(dau.b, eum.w).listOf()));
-   kp<List<daa<dau>>> u = a("trident_return_acceleration", $$0 -> $$0.a(daa.a(dau.b, eum.w).listOf()));
-   kp<List<daa<dau>>> v = a("fishing_time_reduction", $$0 -> $$0.a(daa.a(dau.b, eum.w).listOf()));
-   kp<List<daa<dau>>> w = a("fishing_luck_bonus", $$0 -> $$0.a(daa.a(dau.b, eum.w).listOf()));
-   kp<List<daa<dau>>> x = a("block_experience", $$0 -> $$0.a(daa.a(dau.b, eum.u).listOf()));
-   kp<List<daa<dau>>> y = a("mob_experience", $$0 -> $$0.a(daa.a(dau.b, eum.w).listOf()));
-   kp<List<daa<dau>>> z = a("repair_with_xp", $$0 -> $$0.a(daa.a(dau.b, eum.u).listOf()));
-   kp<dau> A = a("crossbow_charge_time", $$0 -> $$0.a(dau.b));
-   kp<List<ctc.a>> B = a("crossbow_charging_sounds", $$0 -> $$0.a(ctc.a.a.listOf()));
-   kp<List<jm<avo>>> C = a("trident_sound", $$0 -> $$0.a(avo.b.listOf()));
-   kp<azs> D = a("prevent_equipment_drop", $$0 -> $$0.a(azs.b));
-   kp<azs> E = a("prevent_armor_change", $$0 -> $$0.a(azs.b));
-   kp<dau> F = a("trident_spin_attack_strength", $$0 -> $$0.a(dau.b));
+public class dad implements czj {
+   final String a;
+   final czh b;
+   final cvl c;
+   final List<czp> d;
+   @Nullable
+   private czs e;
 
-   static kp<?> a(jz<kp<?>> $$0) {
-      return c;
+   public dad(String $$0, czh $$1, cvl $$2, List<czp> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private static <T> kp<T> a(String $$0, UnaryOperator<kp.a<T>> $$1) {
-      return jz.a(lt.au, $$0, $$1.apply(kp.a()).b());
+   @Override
+   public czy<?> as_() {
+      return czy.b;
+   }
+
+   @Override
+   public String c() {
+      return this.a;
+   }
+
+   @Override
+   public czh d() {
+      return this.b;
+   }
+
+   @Override
+   public cvl a(jp.a $$0) {
+      return this.c;
+   }
+
+   @Override
+   public czs a() {
+      if (this.e == null) {
+         this.e = czs.b(this.d);
+      }
+
+      return this.e;
+   }
+
+   public boolean a(czi $$0, dds $$1) {
+      if ($$0.e() != this.d.size()) {
+         return false;
+      } else {
+         return $$0.a() == 1 && this.d.size() == 1 ? this.d.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
+      }
+   }
+
+   public cvl a(czi $$0, jp.a $$1) {
+      return this.c.u();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= this.d.size();
+   }
+
+   public static class a implements czy<dad> {
+      private static final MapCodec<dad> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.a),
+                  czh.e.fieldOf("category").orElse(czh.d).forGetter($$0x -> $$0x.b),
+                  cvl.d.fieldOf("result").forGetter($$0x -> $$0x.c),
+                  czp.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, dad::new)
+      );
+      public static final zb<wo, dad> w = zb.a(yz.l, $$0 -> $$0.a, czh.g, $$0 -> $$0.b, cvl.i, $$0 -> $$0.c, czp.a.a(yz.a()), $$0 -> $$0.d, dad::new);
+
+      @Override
+      public MapCodec<dad> a() {
+         return x;
+      }
+
+      @Override
+      public zb<wo, dad> b() {
+         return w;
+      }
    }
 }

@@ -1,12 +1,20 @@
-public class ajt {
-   public static final zi<ajp> a = a("status_response");
-   public static final zi<ajs> b = b("status_request");
+public record ajt(long b) implements zk<ajs> {
+   public static final zb<wa, ajt> a = zk.a(ajt::a, ajt::new);
 
-   private static <T extends zg<ajo>> zi<T> a(String $$0) {
-      return new zi<>(zh.b, akr.b($$0));
+   private ajt(wa $$0) {
+      this($$0.readLong());
    }
 
-   private static <T extends zg<ajr>> zi<T> b(String $$0) {
-      return new zi<>(zh.a, akr.b($$0));
+   private void a(wa $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public zm<ajt> a() {
+      return aju.a;
+   }
+
+   public void a(ajs $$0) {
+      $$0.a(this);
    }
 }

@@ -1,107 +1,276 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class fmv extends fod {
-   private static final wz a = wz.c("accessibility.onboarding.screen.title");
-   private static final wz b = wz.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int r = 16;
-   private final fjd s;
-   private final fgs u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
-   @Nullable
-   private fix z;
-   private final flz A = new flz(this, this.m(), 33);
+public class fmv {
+   private final Supplier<String> a;
+   private final Consumer<String> b;
+   private final Supplier<String> c;
+   private final Consumer<String> d;
+   private final Predicate<String> e;
+   private int f;
+   private int g;
 
-   public fmv(fgs $$0, Runnable $$1) {
-      super(a);
-      this.u = $$0;
-      this.y = $$1;
-      this.s = new fjd(true);
-      this.v = fgo.Q().aV().a();
+   public fmv(Supplier<String> $$0, Consumer<String> $$1, Supplier<String> $$2, Consumer<String> $$3, Predicate<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f();
    }
 
-   @Override
-   public void aT_() {
-      fmd $$0 = this.A.c(fmd.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new fix(this.m, this.k, this.o), $$0x -> $$0x.a(8));
-      if (this.u.as().a(this.u) instanceof fit $$1) {
-         this.p = $$1;
-         this.p.j = this.v;
-         $$0.a(this.p);
+   public static Supplier<String> a(fib $$0) {
+      return () -> b($$0);
+   }
+
+   public static String b(fib $$0) {
+      return n.a($$0.p.a().replaceAll("\\r", ""));
+   }
+
+   public static Consumer<String> c(fib $$0) {
+      return $$1 -> a($$0, $$1);
+   }
+
+   public static void a(fib $$0, String $$1) {
+      $$0.p.a($$1);
+   }
+
+   public boolean a(char $$0) {
+      if (azz.a($$0)) {
+         this.a(this.a.get(), Character.toString($$0));
       }
 
-      $$0.a(fiq.b(150, $$0x -> this.a(new fra(this, this.l.m)), false));
-      $$0.a(fiq.a(150, $$0x -> this.a(new frd(this, this.l.m, this.l.ag())), false));
-      this.A.b(fim.a(wy.j, $$0x -> this.d()).a());
-      this.A.a(this::c);
-      this.c();
+      return true;
    }
 
-   @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.b(this.m);
-      }
-
-      this.A.a();
-   }
-
-   @Override
-   protected void aI_() {
-      if (this.v && this.p != null) {
-         this.b(this.p);
+   public boolean a(int $$0) {
+      if (fpt.f($$0)) {
+         this.d();
+         return true;
+      } else if (fpt.e($$0)) {
+         this.c();
+         return true;
+      } else if (fpt.d($$0)) {
+         this.b();
+         return true;
+      } else if (fpt.c($$0)) {
+         this.a();
+         return true;
       } else {
-         super.aI_();
-      }
-   }
+         fmv.a $$1 = fpt.s() ? fmv.a.b : fmv.a.a;
+         if ($$0 == 259) {
+            this.a(-1, $$1);
+            return true;
+         } else {
+            if ($$0 == 261) {
+               this.a(1, $$1);
+            } else {
+               if ($$0 == 263) {
+                  this.a(-1, fpt.t(), $$1);
+                  return true;
+               }
 
-   private int m() {
-      return 90;
-   }
+               if ($$0 == 262) {
+                  this.a(1, fpt.t(), $$1);
+                  return true;
+               }
 
-   @Override
-   public void d() {
-      this.a(true, this.y);
-   }
+               if ($$0 == 268) {
+                  this.a(fpt.t());
+                  return true;
+               }
 
-   private void a(fod $$0) {
-      this.a(false, () -> this.l.a($$0));
-   }
+               if ($$0 == 269) {
+                  this.b(fpt.t());
+                  return true;
+               }
+            }
 
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.au();
-      }
-
-      Narrator.getNarrator().clear();
-      $$1.run();
-   }
-
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.C();
-      this.s.a($$0, this.m, 1.0F);
-   }
-
-   @Override
-   protected void a(fhz $$0, float $$1) {
-      e.a($$0, this.m, this.n, 1.0F, 0.0F);
-   }
-
-   private void C() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.l.aA()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.w = true;
+            return false;
          }
       }
+   }
+
+   private int h(int $$0) {
+      return azc.a($$0, 0, this.a.get().length());
+   }
+
+   private void a(String $$0, String $$1) {
+      if (this.g != this.f) {
+         $$0 = this.c($$0);
+      }
+
+      this.f = azc.a(this.f, 0, $$0.length());
+      String $$2 = new StringBuilder($$0).insert(this.f, $$1).toString();
+      if (this.e.test($$2)) {
+         this.b.accept($$2);
+         this.g = this.f = Math.min($$2.length(), this.f + $$1.length());
+      }
+   }
+
+   public void a(String $$0) {
+      this.a(this.a.get(), $$0);
+   }
+
+   private void c(boolean $$0) {
+      if (!$$0) {
+         this.g = this.f;
+      }
+   }
+
+   public void a(int $$0, boolean $$1, fmv.a $$2) {
+      switch ($$2) {
+         case a:
+            this.a($$0, $$1);
+            break;
+         case b:
+            this.b($$0, $$1);
+      }
+   }
+
+   public void b(int $$0) {
+      this.a($$0, false);
+   }
+
+   public void a(int $$0, boolean $$1) {
+      this.f = ad.a(this.a.get(), this.f, $$0);
+      this.c($$1);
+   }
+
+   public void c(int $$0) {
+      this.b($$0, false);
+   }
+
+   public void b(int $$0, boolean $$1) {
+      this.f = fim.a(this.a.get(), $$0, this.f, true);
+      this.c($$1);
+   }
+
+   public void a(int $$0, fmv.a $$1) {
+      switch ($$1) {
+         case a:
+            this.e($$0);
+            break;
+         case b:
+            this.d($$0);
+      }
+   }
+
+   public void d(int $$0) {
+      int $$1 = fim.a(this.a.get(), $$0, this.f, true);
+      this.e($$1 - this.f);
+   }
+
+   public void e(int $$0) {
+      String $$1 = this.a.get();
+      if (!$$1.isEmpty()) {
+         String $$2;
+         if (this.g != this.f) {
+            $$2 = this.c($$1);
+         } else {
+            int $$3 = ad.a($$1, this.f, $$0);
+            int $$4 = Math.min($$3, this.f);
+            int $$5 = Math.max($$3, this.f);
+            $$2 = new StringBuilder($$1).delete($$4, $$5).toString();
+            if ($$0 < 0) {
+               this.g = this.f = $$4;
+            }
+         }
+
+         this.b.accept($$2);
+      }
+   }
+
+   public void a() {
+      String $$0 = this.a.get();
+      this.d.accept(this.b($$0));
+      this.b.accept(this.c($$0));
+   }
+
+   public void b() {
+      this.a(this.a.get(), this.c.get());
+      this.g = this.f;
+   }
+
+   public void c() {
+      this.d.accept(this.b(this.a.get()));
+   }
+
+   public void d() {
+      this.g = 0;
+      this.f = this.a.get().length();
+   }
+
+   private String b(String $$0) {
+      int $$1 = Math.min(this.f, this.g);
+      int $$2 = Math.max(this.f, this.g);
+      return $$0.substring($$1, $$2);
+   }
+
+   private String c(String $$0) {
+      if (this.g == this.f) {
+         return $$0;
+      } else {
+         int $$1 = Math.min(this.f, this.g);
+         int $$2 = Math.max(this.f, this.g);
+         String $$3 = $$0.substring(0, $$1) + $$0.substring($$2);
+         this.g = this.f = $$1;
+         return $$3;
+      }
+   }
+
+   public void e() {
+      this.a(false);
+   }
+
+   public void a(boolean $$0) {
+      this.f = 0;
+      this.c($$0);
+   }
+
+   public void f() {
+      this.b(false);
+   }
+
+   public void b(boolean $$0) {
+      this.f = this.a.get().length();
+      this.c($$0);
+   }
+
+   public int g() {
+      return this.f;
+   }
+
+   public void f(int $$0) {
+      this.c($$0, true);
+   }
+
+   public void c(int $$0, boolean $$1) {
+      this.f = this.h($$0);
+      this.c($$1);
+   }
+
+   public int h() {
+      return this.g;
+   }
+
+   public void g(int $$0) {
+      this.g = this.h($$0);
+   }
+
+   public void a(int $$0, int $$1) {
+      int $$2 = this.a.get().length();
+      this.f = azc.a($$0, 0, $$2);
+      this.g = azc.a($$1, 0, $$2);
+   }
+
+   public boolean i() {
+      return this.f != this.g;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

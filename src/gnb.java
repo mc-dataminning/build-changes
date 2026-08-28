@@ -1,16 +1,23 @@
-public class gnb extends glp<cgf, fxs<cgf>> {
-   private static final akr a = akr.b("textures/entity/turtle/big_sea_turtle.png");
-
-   public gnb(gkj.a $$0) {
-      super($$0, new fxs<>($$0.a(fyj.bO)), 0.7F);
+public class gnb extends gny<chp, gte, fxe> {
+   public gnb(gms.a $$0) {
+      super($$0, new fxe($$0.a(gaa.aB)), 0.3F);
    }
 
-   protected float a(cgf $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.83F : $$1;
+   public alb a(gte $$0) {
+      return $$0.f;
    }
 
-   public akr b(cgf $$0) {
-      return a;
+   public gte c() {
+      return new gte();
+   }
+
+   public void a(chp $$0, gte $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.bl();
+      $$1.b.a($$0.cd);
+      $$1.c.a($$0.ce);
+      $$1.d.a($$0.cf);
+      $$1.e.a($$0.cg);
+      $$1.f = $$0.y().a().a();
    }
 }

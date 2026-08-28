@@ -1,570 +1,328 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.floats.FloatArrayList;
+import it.unimi.dsi.fastutil.floats.FloatList;
 import java.util.List;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.jetbrains.annotations.Contract;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import org.apache.commons.lang3.mutable.MutableObject;
 
-public class aye {
-   private static final Gson a = new GsonBuilder().create();
+public interface aye<C, I extends bae<C>> extends bae<C> {
+   @bai
+   String a();
 
-   public static boolean a(JsonObject $$0, String $$1) {
-      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isString();
-   }
+   aye<C, I> a(aye.d<I> var1);
 
-   public static boolean a(JsonElement $$0) {
-      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isString();
-   }
+   static <C, I extends bae<C>> Codec<aye<C, I>> a(Codec<I> $$0) {
+      MutableObject<Codec<aye<C, I>>> $$1 = new MutableObject();
 
-   public static boolean b(JsonObject $$0, String $$1) {
-      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isNumber();
-   }
-
-   public static boolean b(JsonElement $$0) {
-      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isNumber();
-   }
-
-   public static boolean c(JsonObject $$0, String $$1) {
-      return !f($$0, $$1) ? false : $$0.getAsJsonPrimitive($$1).isBoolean();
-   }
-
-   public static boolean c(JsonElement $$0) {
-      return !$$0.isJsonPrimitive() ? false : $$0.getAsJsonPrimitive().isBoolean();
-   }
-
-   public static boolean d(JsonObject $$0, String $$1) {
-      return !g($$0, $$1) ? false : $$0.get($$1).isJsonArray();
-   }
-
-   public static boolean e(JsonObject $$0, String $$1) {
-      return !g($$0, $$1) ? false : $$0.get($$1).isJsonObject();
-   }
-
-   public static boolean f(JsonObject $$0, String $$1) {
-      return !g($$0, $$1) ? false : $$0.get($$1).isJsonPrimitive();
-   }
-
-   public static boolean g(@Nullable JsonObject $$0, String $$1) {
-      return $$0 == null ? false : $$0.get($$1) != null;
-   }
-
-   public static JsonElement h(JsonObject $$0, String $$1) {
-      JsonElement $$2 = $$0.get($$1);
-      if ($$2 != null && !$$2.isJsonNull()) {
-         return $$2;
-      } else {
-         throw new JsonSyntaxException("Missing field " + $$1);
-      }
-   }
-
-   public static String a(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive()) {
-         return $$0.getAsString();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a string, was " + d($$0));
-      }
-   }
-
-   public static String i(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return a($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a string");
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static String a(JsonObject $$0, String $$1, @Nullable String $$2) {
-      return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
-   }
-
-   public static jm<cul> b(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive()) {
-         String $$2 = $$0.getAsString();
-         return lt.g.c(akr.a($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be an item, was " + d($$0));
-      }
-   }
-
-   public static jm<cul> j(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return b($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find an item");
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static jm<cul> a(JsonObject $$0, String $$1, @Nullable jm<cul> $$2) {
-      return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
-   }
-
-   public static boolean c(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive()) {
-         return $$0.getAsBoolean();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Boolean, was " + d($$0));
-      }
-   }
-
-   public static boolean k(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return c($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Boolean");
-      }
-   }
-
-   public static boolean a(JsonObject $$0, String $$1, boolean $$2) {
-      return $$0.has($$1) ? c($$0.get($$1), $$1) : $$2;
-   }
-
-   public static double d(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsDouble();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Double, was " + d($$0));
-      }
-   }
-
-   public static double l(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return d($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Double");
-      }
-   }
-
-   public static double a(JsonObject $$0, String $$1, double $$2) {
-      return $$0.has($$1) ? d($$0.get($$1), $$1) : $$2;
-   }
-
-   public static float e(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsFloat();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Float, was " + d($$0));
-      }
-   }
-
-   public static float m(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return e($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Float");
-      }
-   }
-
-   public static float a(JsonObject $$0, String $$1, float $$2) {
-      return $$0.has($$1) ? e($$0.get($$1), $$1) : $$2;
-   }
-
-   public static long f(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsLong();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Long, was " + d($$0));
-      }
-   }
-
-   public static long n(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return f($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Long");
-      }
-   }
-
-   public static long a(JsonObject $$0, String $$1, long $$2) {
-      return $$0.has($$1) ? f($$0.get($$1), $$1) : $$2;
-   }
-
-   public static int g(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsInt();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Int, was " + d($$0));
-      }
-   }
-
-   public static int o(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return g($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Int");
-      }
-   }
-
-   public static int a(JsonObject $$0, String $$1, int $$2) {
-      return $$0.has($$1) ? g($$0.get($$1), $$1) : $$2;
-   }
-
-   public static byte h(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsByte();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Byte, was " + d($$0));
-      }
-   }
-
-   public static byte p(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return h($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Byte");
-      }
-   }
-
-   public static byte a(JsonObject $$0, String $$1, byte $$2) {
-      return $$0.has($$1) ? h($$0.get($$1), $$1) : $$2;
-   }
-
-   public static char i(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsCharacter();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Character, was " + d($$0));
-      }
-   }
-
-   public static char q(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return i($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Character");
-      }
-   }
-
-   public static char a(JsonObject $$0, String $$1, char $$2) {
-      return $$0.has($$1) ? i($$0.get($$1), $$1) : $$2;
-   }
-
-   public static BigDecimal j(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsBigDecimal();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigDecimal, was " + d($$0));
-      }
-   }
-
-   public static BigDecimal r(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return j($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigDecimal");
-      }
-   }
-
-   public static BigDecimal a(JsonObject $$0, String $$1, BigDecimal $$2) {
-      return $$0.has($$1) ? j($$0.get($$1), $$1) : $$2;
-   }
-
-   public static BigInteger k(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsBigInteger();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a BigInteger, was " + d($$0));
-      }
-   }
-
-   public static BigInteger s(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return k($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a BigInteger");
-      }
-   }
-
-   public static BigInteger a(JsonObject $$0, String $$1, BigInteger $$2) {
-      return $$0.has($$1) ? k($$0.get($$1), $$1) : $$2;
-   }
-
-   public static short l(JsonElement $$0, String $$1) {
-      if ($$0.isJsonPrimitive() && $$0.getAsJsonPrimitive().isNumber()) {
-         return $$0.getAsShort();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a Short, was " + d($$0));
-      }
-   }
-
-   public static short t(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return l($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a Short");
-      }
-   }
-
-   public static short a(JsonObject $$0, String $$1, short $$2) {
-      return $$0.has($$1) ? l($$0.get($$1), $$1) : $$2;
-   }
-
-   public static JsonObject m(JsonElement $$0, String $$1) {
-      if ($$0.isJsonObject()) {
-         return $$0.getAsJsonObject();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonObject, was " + d($$0));
-      }
-   }
-
-   public static JsonObject u(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return m($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonObject");
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static JsonObject a(JsonObject $$0, String $$1, @Nullable JsonObject $$2) {
-      return $$0.has($$1) ? m($$0.get($$1), $$1) : $$2;
-   }
-
-   public static JsonArray n(JsonElement $$0, String $$1) {
-      if ($$0.isJsonArray()) {
-         return $$0.getAsJsonArray();
-      } else {
-         throw new JsonSyntaxException("Expected " + $$1 + " to be a JsonArray, was " + d($$0));
-      }
-   }
-
-   public static JsonArray v(JsonObject $$0, String $$1) {
-      if ($$0.has($$1)) {
-         return n($$0.get($$1), $$1);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1 + ", expected to find a JsonArray");
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null->!null;_,_,null->_")
-   public static JsonArray a(JsonObject $$0, String $$1, @Nullable JsonArray $$2) {
-      return $$0.has($$1) ? n($$0.get($$1), $$1) : $$2;
-   }
-
-   public static <T> T a(@Nullable JsonElement $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
-      if ($$0 != null) {
-         return (T)$$2.deserialize($$0, $$3);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1);
-      }
-   }
-
-   public static <T> T a(JsonObject $$0, String $$1, JsonDeserializationContext $$2, Class<? extends T> $$3) {
-      if ($$0.has($$1)) {
-         return a($$0.get($$1), $$1, $$2, $$3);
-      } else {
-         throw new JsonSyntaxException("Missing " + $$1);
-      }
-   }
-
-   @Nullable
-   @Contract("_,_,!null,_,_->!null;_,_,null,_,_->_")
-   public static <T> T a(JsonObject $$0, String $$1, @Nullable T $$2, JsonDeserializationContext $$3, Class<? extends T> $$4) {
-      return $$0.has($$1) ? a($$0.get($$1), $$1, $$3, $$4) : $$2;
-   }
-
-   public static String d(@Nullable JsonElement $$0) {
-      String $$1 = StringUtils.abbreviateMiddle(String.valueOf($$0), "...", 10);
-      if ($$0 == null) {
-         return "null (missing)";
-      } else if ($$0.isJsonNull()) {
-         return "null (json)";
-      } else if ($$0.isJsonArray()) {
-         return "an array (" + $$1 + ")";
-      } else if ($$0.isJsonObject()) {
-         return "an object (" + $$1 + ")";
-      } else {
-         if ($$0.isJsonPrimitive()) {
-            JsonPrimitive $$2 = $$0.getAsJsonPrimitive();
-            if ($$2.isNumber()) {
-               return "a number (" + $$1 + ")";
-            }
-
-            if ($$2.isBoolean()) {
-               return "a boolean (" + $$1 + ")";
-            }
-         }
-
-         return $$1;
-      }
-   }
-
-   @Nullable
-   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
-      try {
-         JsonReader $$4 = new JsonReader($$1);
-         $$4.setLenient($$3);
-         return (T)$$0.getAdapter($$2).read($$4);
-      } catch (IOException var5) {
-         throw new JsonParseException(var5);
-      }
-   }
-
-   public static <T> T b(Gson $$0, Reader $$1, Class<T> $$2, boolean $$3) {
-      T $$4 = a($$0, $$1, $$2, $$3);
-      if ($$4 == null) {
-         throw new JsonParseException("JSON data was null or empty");
-      } else {
-         return $$4;
-      }
-   }
-
-   @Nullable
-   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
-      try {
-         JsonReader $$4 = new JsonReader($$1);
-         $$4.setLenient($$3);
-         return (T)$$0.getAdapter($$2).read($$4);
-      } catch (IOException var5) {
-         throw new JsonParseException(var5);
-      }
-   }
-
-   public static <T> T b(Gson $$0, Reader $$1, TypeToken<T> $$2, boolean $$3) {
-      T $$4 = a($$0, $$1, $$2, $$3);
-      if ($$4 == null) {
-         throw new JsonParseException("JSON data was null or empty");
-      } else {
-         return $$4;
-      }
-   }
-
-   @Nullable
-   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2, boolean $$3) {
-      return a($$0, new StringReader($$1), $$2, $$3);
-   }
-
-   public static <T> T a(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
-      return b($$0, new StringReader($$1), $$2, $$3);
-   }
-
-   @Nullable
-   public static <T> T b(Gson $$0, String $$1, Class<T> $$2, boolean $$3) {
-      return a($$0, new StringReader($$1), $$2, $$3);
-   }
-
-   public static <T> T a(Gson $$0, Reader $$1, TypeToken<T> $$2) {
-      return b($$0, $$1, $$2, false);
-   }
-
-   @Nullable
-   public static <T> T a(Gson $$0, String $$1, TypeToken<T> $$2) {
-      return a($$0, $$1, $$2, false);
-   }
-
-   public static <T> T a(Gson $$0, Reader $$1, Class<T> $$2) {
-      return b($$0, $$1, $$2, false);
-   }
-
-   public static <T> T a(Gson $$0, String $$1, Class<T> $$2) {
-      return a($$0, $$1, $$2, false);
-   }
-
-   public static JsonObject a(String $$0, boolean $$1) {
-      return a(new StringReader($$0), $$1);
-   }
-
-   public static JsonObject a(Reader $$0, boolean $$1) {
-      return b(a, $$0, JsonObject.class, $$1);
-   }
-
-   public static JsonObject a(String $$0) {
-      return a($$0, false);
-   }
-
-   public static JsonObject a(Reader $$0) {
-      return a($$0, false);
-   }
-
-   public static JsonArray b(String $$0) {
-      return b(new StringReader($$0));
-   }
-
-   public static JsonArray b(Reader $$0) {
-      return b(a, $$0, JsonArray.class, false);
-   }
-
-   public static String e(JsonElement $$0) {
-      StringWriter $$1 = new StringWriter();
-      JsonWriter $$2 = new JsonWriter($$1);
-
-      try {
-         a($$2, $$0, Comparator.naturalOrder());
-      } catch (IOException var4) {
-         throw new AssertionError(var4);
+      record a<C, I extends bae<C>>(float a, aye<C, I> b, float c) {
       }
 
-      return $$1.toString();
+      Codec<a<C, I>> $$2 = RecordCodecBuilder.create(
+         $$1x -> $$1x.group(
+                  Codec.FLOAT.fieldOf("location").forGetter(a::a),
+                  Codec.lazyInitialized($$1::getValue).fieldOf("value").forGetter(a::b),
+                  Codec.FLOAT.fieldOf("derivative").forGetter(a::c)
+               )
+               .apply($$1x, ($$0xx, $$1xx, $$2x) -> new a($$0xx, $$1xx, $$2x))
+      );
+      Codec<aye.e<C, I>> $$3 = RecordCodecBuilder.create(
+         $$2x -> $$2x.group(
+                  $$0.fieldOf("coordinate").forGetter(aye.e::d),
+                  ayl.a($$2.listOf())
+                     .fieldOf("points")
+                     .forGetter(
+                        $$0xx -> IntStream.range(0, $$0xx.c.length)
+                              .mapToObj($$1xx -> new a($$0xx.e()[$$1xx], (aye<C, I>)$$0xx.f().get($$1xx), $$0xx.g()[$$1xx]))
+                              .toList()
+                     )
+               )
+               .apply($$2x, ($$0xx, $$1xx) -> {
+                  float[] $$2xx = new float[$$1xx.size()];
+                  Builder<aye<C, I>> $$3x = ImmutableList.builder();
+                  float[] $$4 = new float[$$1xx.size()];
+
+                  for (int $$5 = 0; $$5 < $$1xx.size(); $$5++) {
+                     a<C, I> $$6 = (a<C, I>)$$1xx.get($$5);
+                     $$2xx[$$5] = $$6.a();
+                     $$3x.add($$6.b());
+                     $$4[$$5] = $$6.c();
+                  }
+
+                  return aye.e.a((I)$$0xx, $$2xx, $$3x.build(), $$4);
+               })
+      );
+      $$1.setValue(
+         Codec.either(Codec.FLOAT, $$3)
+            .xmap(
+               $$0x -> (aye)$$0x.map(aye.c::new, $$0xx -> $$0xx), $$0x -> $$0x instanceof aye.c<C, I> $$1x ? Either.left($$1x.d()) : Either.right((aye.e)$$0x)
+            )
+      );
+      return (Codec<aye<C, I>>)$$1.getValue();
    }
 
-   public static void a(JsonWriter $$0, @Nullable JsonElement $$1, @Nullable Comparator<String> $$2) throws IOException {
-      if ($$1 == null || $$1.isJsonNull()) {
-         $$0.nullValue();
-      } else if ($$1.isJsonPrimitive()) {
-         JsonPrimitive $$3 = $$1.getAsJsonPrimitive();
-         if ($$3.isNumber()) {
-            $$0.value($$3.getAsNumber());
-         } else if ($$3.isBoolean()) {
-            $$0.value($$3.getAsBoolean());
+   static <C, I extends bae<C>> aye<C, I> a(float $$0) {
+      return new aye.c<>($$0);
+   }
+
+   static <C, I extends bae<C>> aye.b<C, I> a(I $$0) {
+      return new aye.b<>($$0);
+   }
+
+   static <C, I extends bae<C>> aye.b<C, I> a(I $$0, bae<Float> $$1) {
+      return new aye.b<>($$0, $$1);
+   }
+
+   public static final class b<C, I extends bae<C>> {
+      private final I a;
+      private final bae<Float> b;
+      private final FloatList c = new FloatArrayList();
+      private final List<aye<C, I>> d = Lists.newArrayList();
+      private final FloatList e = new FloatArrayList();
+
+      protected b(I $$0) {
+         this($$0, bae.a);
+      }
+
+      protected b(I $$0, bae<Float> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public aye.b<C, I> a(float $$0, float $$1) {
+         return this.a($$0, new aye.c<>(this.b.a($$1)), 0.0F);
+      }
+
+      public aye.b<C, I> a(float $$0, float $$1, float $$2) {
+         return this.a($$0, new aye.c<>(this.b.a($$1)), $$2);
+      }
+
+      public aye.b<C, I> a(float $$0, aye<C, I> $$1) {
+         return this.a($$0, $$1, 0.0F);
+      }
+
+      private aye.b<C, I> a(float $$0, aye<C, I> $$1, float $$2) {
+         if (!this.c.isEmpty() && $$0 <= this.c.getFloat(this.c.size() - 1)) {
+            throw new IllegalArgumentException("Please register points in ascending order");
          } else {
-            $$0.value($$3.getAsString());
+            this.c.add($$0);
+            this.d.add($$1);
+            this.e.add($$2);
+            return this;
          }
-      } else if ($$1.isJsonArray()) {
-         $$0.beginArray();
+      }
 
-         for (JsonElement $$4 : $$1.getAsJsonArray()) {
-            a($$0, $$4, $$2);
+      public aye<C, I> a() {
+         if (this.c.isEmpty()) {
+            throw new IllegalStateException("No elements added");
+         } else {
+            return aye.e.a(this.a, this.c.toFloatArray(), ImmutableList.copyOf(this.d), this.e.toFloatArray());
          }
-
-         $$0.endArray();
-      } else {
-         if (!$$1.isJsonObject()) {
-            throw new IllegalArgumentException("Couldn't write " + $$1.getClass());
-         }
-
-         $$0.beginObject();
-
-         for (Entry<String, JsonElement> $$5 : a($$1.getAsJsonObject().entrySet(), $$2)) {
-            $$0.name($$5.getKey());
-            a($$0, $$5.getValue(), $$2);
-         }
-
-         $$0.endObject();
       }
    }
 
-   private static Collection<Entry<String, JsonElement>> a(Collection<Entry<String, JsonElement>> $$0, @Nullable Comparator<String> $$1) {
-      if ($$1 == null) {
-         return $$0;
-      } else {
-         List<Entry<String, JsonElement>> $$2 = new ArrayList<>($$0);
-         $$2.sort(Entry.comparingByKey($$1));
-         return $$2;
+   @bai
+   public static record c<C, I extends bae<C>>(float b) implements aye<C, I> {
+      @Override
+      public float a(C $$0) {
+         return this.b;
+      }
+
+      @Override
+      public String a() {
+         return String.format(Locale.ROOT, "k=%.3f", this.b);
+      }
+
+      @Override
+      public float c() {
+         return this.b;
+      }
+
+      @Override
+      public aye<C, I> a(aye.d<I> $$0) {
+         return this;
+      }
+
+      public float d() {
+         return this.b;
+      }
+   }
+
+   public interface d<I> {
+      I visit(I var1);
+   }
+
+   @bai
+   public static record e<C, I extends bae<C>>(I b, float[] c, List<aye<C, I>> d, float[] e, float f, float g) implements aye<C, I> {
+
+      public e(I b, float[] c, List<aye<C, I>> d, float[] e, float f, float g) {
+         a(c, d, e);
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+         this.f = f;
+         this.g = g;
+      }
+
+      static <C, I extends bae<C>> aye.e<C, I> a(I $$0, float[] $$1, List<aye<C, I>> $$2, float[] $$3) {
+         a($$1, $$2, $$3);
+         int $$4 = $$1.length - 1;
+         float $$5 = Float.POSITIVE_INFINITY;
+         float $$6 = Float.NEGATIVE_INFINITY;
+         float $$7 = $$0.b();
+         float $$8 = $$0.c();
+         if ($$7 < $$1[0]) {
+            float $$9 = a($$7, $$1, $$2.get(0).b(), $$3, 0);
+            float $$10 = a($$7, $$1, $$2.get(0).c(), $$3, 0);
+            $$5 = Math.min($$5, Math.min($$9, $$10));
+            $$6 = Math.max($$6, Math.max($$9, $$10));
+         }
+
+         if ($$8 > $$1[$$4]) {
+            float $$11 = a($$8, $$1, $$2.get($$4).b(), $$3, $$4);
+            float $$12 = a($$8, $$1, $$2.get($$4).c(), $$3, $$4);
+            $$5 = Math.min($$5, Math.min($$11, $$12));
+            $$6 = Math.max($$6, Math.max($$11, $$12));
+         }
+
+         for (aye<C, I> $$13 : $$2) {
+            $$5 = Math.min($$5, $$13.b());
+            $$6 = Math.max($$6, $$13.c());
+         }
+
+         for (int $$14 = 0; $$14 < $$4; $$14++) {
+            float $$15 = $$1[$$14];
+            float $$16 = $$1[$$14 + 1];
+            float $$17 = $$16 - $$15;
+            aye<C, I> $$18 = $$2.get($$14);
+            aye<C, I> $$19 = $$2.get($$14 + 1);
+            float $$20 = $$18.b();
+            float $$21 = $$18.c();
+            float $$22 = $$19.b();
+            float $$23 = $$19.c();
+            float $$24 = $$3[$$14];
+            float $$25 = $$3[$$14 + 1];
+            if ($$24 != 0.0F || $$25 != 0.0F) {
+               float $$26 = $$24 * $$17;
+               float $$27 = $$25 * $$17;
+               float $$28 = Math.min($$20, $$22);
+               float $$29 = Math.max($$21, $$23);
+               float $$30 = $$26 - $$23 + $$20;
+               float $$31 = $$26 - $$22 + $$21;
+               float $$32 = -$$27 + $$22 - $$21;
+               float $$33 = -$$27 + $$23 - $$20;
+               float $$34 = Math.min($$30, $$32);
+               float $$35 = Math.max($$31, $$33);
+               $$5 = Math.min($$5, $$28 + 0.25F * $$34);
+               $$6 = Math.max($$6, $$29 + 0.25F * $$35);
+            }
+         }
+
+         return new aye.e<>($$0, $$1, $$2, $$3, $$5, $$6);
+      }
+
+      private static float a(float $$0, float[] $$1, float $$2, float[] $$3, int $$4) {
+         float $$5 = $$3[$$4];
+         return $$5 == 0.0F ? $$2 : $$2 + $$5 * ($$0 - $$1[$$4]);
+      }
+
+      private static <C, I extends bae<C>> void a(float[] $$0, List<aye<C, I>> $$1, float[] $$2) {
+         if ($$0.length != $$1.size() || $$0.length != $$2.length) {
+            throw new IllegalArgumentException("All lengths must be equal, got: " + $$0.length + " " + $$1.size() + " " + $$2.length);
+         } else if ($$0.length == 0) {
+            throw new IllegalArgumentException("Cannot create a multipoint spline with no points");
+         }
+      }
+
+      @Override
+      public float a(C $$0) {
+         float $$1 = this.b.a($$0);
+         int $$2 = a(this.c, $$1);
+         int $$3 = this.c.length - 1;
+         if ($$2 < 0) {
+            return a($$1, this.c, this.d.get(0).a($$0), this.e, 0);
+         } else if ($$2 == $$3) {
+            return a($$1, this.c, this.d.get($$3).a($$0), this.e, $$3);
+         } else {
+            float $$4 = this.c[$$2];
+            float $$5 = this.c[$$2 + 1];
+            float $$6 = ($$1 - $$4) / ($$5 - $$4);
+            bae<C> $$7 = (bae<C>)this.d.get($$2);
+            bae<C> $$8 = (bae<C>)this.d.get($$2 + 1);
+            float $$9 = this.e[$$2];
+            float $$10 = this.e[$$2 + 1];
+            float $$11 = $$7.a($$0);
+            float $$12 = $$8.a($$0);
+            float $$13 = $$9 * ($$5 - $$4) - ($$12 - $$11);
+            float $$14 = -$$10 * ($$5 - $$4) + ($$12 - $$11);
+            return azc.h($$6, $$11, $$12) + $$6 * (1.0F - $$6) * azc.h($$6, $$13, $$14);
+         }
+      }
+
+      private static int a(float[] $$0, float $$1) {
+         return azc.a(0, $$0.length, $$2 -> $$1 < $$0[$$2]) - 1;
+      }
+
+      @VisibleForTesting
+      @Override
+      public String a() {
+         return "Spline{coordinate="
+            + this.b
+            + ", locations="
+            + this.a(this.c)
+            + ", derivatives="
+            + this.a(this.e)
+            + ", values="
+            + this.d.stream().map(aye::a).collect(Collectors.joining(", ", "[", "]"))
+            + "}";
+      }
+
+      private String a(float[] $$0) {
+         return "["
+            + IntStream.range(0, $$0.length)
+               .mapToDouble($$1 -> (double)$$0[$$1])
+               .mapToObj($$0x -> String.format(Locale.ROOT, "%.3f", $$0x))
+               .collect(Collectors.joining(", "))
+            + "]";
+      }
+
+      @Override
+      public aye<C, I> a(aye.d<I> $$0) {
+         return a($$0.visit(this.b), this.c, this.f().stream().map($$1 -> $$1.a($$0)).toList(), this.e);
+      }
+
+      public I d() {
+         return this.b;
+      }
+
+      public float[] e() {
+         return this.c;
+      }
+
+      public List<aye<C, I>> f() {
+         return this.d;
+      }
+
+      public float[] g() {
+         return this.e;
+      }
+
+      @Override
+      public float b() {
+         return this.f;
+      }
+
+      @Override
+      public float c() {
+         return this.g;
       }
    }
 }

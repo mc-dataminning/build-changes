@@ -1,116 +1,60 @@
-import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
-import java.util.Set;
+import java.nio.charset.StandardCharsets;
+import java.util.Optional;
+import java.util.UUID;
 
 public class aor {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("commands.tag.add.failed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("commands.tag.remove.failed"));
-
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("tag").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("targets", fg.b())
-                        .then(
-                           eu.a("add")
-                              .then(
-                                 eu.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                              )
-                        ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("serverpack").requires($$0x -> $$0x.c(2)))
+               .then(
+                  eu.a("push")
                      .then(
-                        eu.a("remove")
-                           .then(
-                              eu.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> ey.b(a(fg.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
-                           )
-                     ))
-                  .then(eu.a("list").executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"))))
-            )
+                        ((RequiredArgumentBuilder)eu.a("url", StringArgumentType.string())
+                              .then(
+                                 ((RequiredArgumentBuilder)eu.a("uuid", gj.a())
+                                       .then(
+                                          eu.a("hash", StringArgumentType.word())
+                                             .executes(
+                                                $$0x -> a(
+                                                      (et)$$0x.getSource(),
+                                                      StringArgumentType.getString($$0x, "url"),
+                                                      Optional.of(gj.a($$0x, "uuid")),
+                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
+                                                   )
+                                             )
+                                       ))
+                                    .executes(
+                                       $$0x -> a(
+                                             (et)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gj.a($$0x, "uuid")), Optional.empty()
+                                          )
+                                    )
+                              ))
+                           .executes($$0x -> a((et)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                     )
+               ))
+            .then(eu.a("pop").then(eu.a("uuid", gj.a()).executes($$0x -> a((et)$$0x.getSource(), gj.a($$0x, "uuid")))))
       );
    }
 
-   private static Collection<String> a(Collection<? extends bsr> $$0) {
-      Set<String> $$1 = Sets.newHashSet();
-
-      for (bsr $$2 : $$0) {
-         $$1.addAll($$2.ao());
-      }
-
-      return $$1;
+   private static void a(et $$0, zk<?> $$1) {
+      $$0.l().ah().e().forEach($$1x -> $$1x.a($$1));
    }
 
-   private static int a(et $$0, Collection<? extends bsr> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bsr $$4 : $$1) {
-         if ($$4.a($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wz.a("commands.tag.add.success.single", $$2, $$1.iterator().next().S_()), true);
-         } else {
-            $$0.a(() -> wz.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
+   private static int a(et $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
+      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
+      String $$5 = $$3.orElse("");
+      zx $$6 = new zx($$4, $$1, $$5, false, null);
+      a($$0, $$6);
+      return 0;
    }
 
-   private static int b(et $$0, Collection<? extends bsr> $$1, String $$2) throws CommandSyntaxException {
-      int $$3 = 0;
-
-      for (bsr $$4 : $$1) {
-         if ($$4.b($$2)) {
-            $$3++;
-         }
-      }
-
-      if ($$3 == 0) {
-         throw b.create();
-      } else {
-         if ($$1.size() == 1) {
-            $$0.a(() -> wz.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().S_()), true);
-         } else {
-            $$0.a(() -> wz.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
-         }
-
-         return $$3;
-      }
-   }
-
-   private static int a(et $$0, Collection<? extends bsr> $$1) {
-      Set<String> $$2 = Sets.newHashSet();
-
-      for (bsr $$3 : $$1) {
-         $$2.addAll($$3.ao());
-      }
-
-      if ($$1.size() == 1) {
-         bsr $$4 = $$1.iterator().next();
-         if ($$2.isEmpty()) {
-            $$0.a(() -> wz.a("commands.tag.list.single.empty", $$4.S_()), false);
-         } else {
-            $$0.a(() -> wz.a("commands.tag.list.single.success", $$4.S_(), $$2.size(), xc.a($$2)), false);
-         }
-      } else if ($$2.isEmpty()) {
-         $$0.a(() -> wz.a("commands.tag.list.multiple.empty", $$1.size()), false);
-      } else {
-         $$0.a(() -> wz.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xc.a($$2)), false);
-      }
-
-      return $$2.size();
+   private static int a(et $$0, UUID $$1) {
+      zw $$2 = new zw(Optional.of($$1));
+      a($$0, $$2);
+      return 0;
    }
 }

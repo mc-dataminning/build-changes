@@ -1,76 +1,42 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class der extends dfy {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final exv h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final exv b = exs.a(
-      exs.b(), exs.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), exg.e
+public class der {
+   public static final Codec<der> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awc.b.fieldOf("sound").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("tick_delay").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("block_search_extent").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("offset").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, der::new)
    );
-   protected final kj.a c;
+   public static final der b = new der(awd.h, 6000, 8, 2.0);
+   private final jn<awc> c;
+   private final int d;
+   private final int e;
+   private final double f;
 
-   @Override
-   protected abstract MapCodec<? extends der> a();
-
-   public der(dtb.d $$0, kj.a $$1) {
-      super($$0);
-      this.c = $$1;
+   public der(jn<awc> $$0, int $$1, int $$2, double $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   protected double b(dtc $$0) {
-      return 0.0;
+   public jn<awc> a() {
+      return this.c;
    }
 
-   protected boolean a(dtc $$0, jd $$1, bsr $$2) {
-      return $$2.dv() < (double)$$1.v() + this.b($$0) && $$2.cK().e > (double)$$1.v() + 0.25;
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
-      kj $$7 = this.c.b().get($$0.g());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
+   public int c() {
+      return this.e;
    }
 
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return b;
-   }
-
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean c_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
-   }
-
-   public abstract boolean d(dtc var1);
-
-   @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      jd $$4 = dlq.a((dcw)$$1, $$2);
-      if ($$4 != null) {
-         epd $$5 = dlq.a($$1, $$4);
-         if ($$5 != epf.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
-      }
-   }
-
-   protected boolean a(epd $$0) {
-      return false;
-   }
-
-   protected void a(dtc $$0, dcw $$1, jd $$2, epd $$3) {
+   public double d() {
+      return this.f;
    }
 }

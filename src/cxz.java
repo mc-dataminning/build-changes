@@ -1,27 +1,63 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.Consumer;
+import java.util.List;
 
-public record cxz(boolean c) implements cxy {
-   public static final Codec<cxz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cxz::a)).apply($$0, cxz::new)
-   );
-   public static final yx<ByteBuf, cxz> b = yv.b.a(cxz::new, cxz::a);
-   private static final wz d = wz.c("item.unbreakable").a(n.j);
+public final class cxz {
+   public static final cxz a = new cxz(List.of());
+   public static final Codec<cxz> b = cvl.b.listOf().xmap(cxz::new, $$0 -> $$0.d);
+   public static final zb<wo, cxz> c = cvl.i.a(yz.a()).a(cxz::new, $$0 -> $$0.d);
+   private final List<cvl> d;
+
+   private cxz(List<cvl> $$0) {
+      this.d = $$0;
+   }
+
+   public static cxz a(cvl $$0) {
+      return new cxz(List.of($$0.u()));
+   }
+
+   public static cxz a(List<cvl> $$0) {
+      return new cxz(List.copyOf(Lists.transform($$0, cvl::u)));
+   }
+
+   public boolean a(cvg $$0) {
+      for (cvl $$1 : this.d) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public List<cvl> a() {
+      return Lists.transform(this.d, cvl::u);
+   }
+
+   public boolean b() {
+      return this.d.isEmpty();
+   }
 
    @Override
-   public void a(cul.b $$0, Consumer<wz> $$1, cwm $$2) {
-      if (this.c) {
-         $$1.accept(d);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cxz $$1 && cvl.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
-   public cxz a(boolean $$0) {
-      return new cxz($$0);
+   @Override
+   public int hashCode() {
+      return cvl.a(this.d);
    }
 
-   public boolean a() {
-      return this.c;
+   @Override
+   public String toString() {
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

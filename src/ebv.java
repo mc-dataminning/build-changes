@@ -1,67 +1,31 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebv extends ece<eee> {
-   private static final ImmutableList<dfy> a = ImmutableList.of(dga.F, dga.fn, dga.fo, dga.fp, dga.fq, dga.cv, dga.ct);
-   private static final ji[] b = ji.values();
-   private static final double c = 0.9;
+public class ebv extends efq {
+   public static final MapCodec<ebv> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l),
+               eiv.c.fieldOf("y").forGetter($$0x -> $$0x.e),
+               bqn.c.fieldOf("yScale").forGetter($$0x -> $$0x.f),
+               eaq.a.fieldOf("lava_level").forGetter($$0x -> $$0x.g),
+               ebw.b.optionalFieldOf("debug_settings", ebw.a).forGetter($$0x -> $$0x.h),
+               kc.a(lv.f).fieldOf("replaceable").forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, ebv::new)
+   );
+   public final eiv e;
+   public final bqn f;
+   public final eaq g;
+   public final ebw h;
+   public final jr<dgv> i;
 
-   public ebv(Codec<eee> $$0) {
+   public ebv(float $$0, eiv $$1, bqn $$2, eaq $$3, ebw $$4, jr<dgv> $$5) {
       super($$0);
-   }
-
-   @Override
-   public boolean a(ecg<eee> $$0) {
-      boolean $$1 = false;
-      ayw $$2 = $$0.d();
-      dds $$3 = $$0.b();
-      eee $$4 = $$0.f();
-      jd $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
-
-      for (jd $$13 : jd.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
-
-            jd $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
-            }
-         }
-      }
-
-      return $$1;
-   }
-
-   private static boolean a(dcx $$0, jd $$1, eee $$2) {
-      dtc $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (ji $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).i();
-            if ($$5 && $$4 != ji.b || !$$5 && $$4 == ji.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
    }
 }

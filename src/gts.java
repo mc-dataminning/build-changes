@@ -1,34 +1,49 @@
-public class gts extends gtj {
-   private static final float n = 0.0F;
-   private static final float o = 1.0F;
-   private static final float p = 0.7F;
-   private static final float q = 0.5F;
-   private final cjz r;
+import javax.annotation.Nullable;
 
-   public gts(cjz $$0) {
-      super(avp.ls, avq.f, gua.t());
-      this.r = $$0;
-      this.k = gua.a.a;
-      this.i = true;
-      this.j = 0;
+public class gts extends gsu {
+   public float T;
+   public float U;
+   public float V;
+   public float W;
+   public float X;
+   public float Y;
+   public float Z;
+   public float aa = 1.0F;
+   public float ab = 1.0F;
+   public boolean ac;
+   public boolean ad;
+   public boolean ae;
+   public boolean af;
+   public boolean ag;
+   public boolean ah;
+   public boolean ai;
+   public boolean aj;
+   @Nullable
+   public jj ak;
+   @Nullable
+   public xd al;
+   public bur am = bur.a;
+   @Nullable
+   public gym an;
+   public cvl ao = cvl.k;
+   public btz ap = btz.b;
+   @Nullable
+   public gym aq;
+   public cvl ar = cvl.k;
+   @Nullable
+   public gym as;
+   public cvl at = cvl.k;
+
+   public cvl aY_() {
+      return this.ap == btz.b ? this.ar : this.at;
    }
 
-   @Override
-   public boolean s() {
-      return !this.r.aX();
+   @Nullable
+   public gym b() {
+      return this.ap == btz.b ? this.aq : this.as;
    }
 
-   @Override
-   public void q() {
-      if (!this.r.dJ() && this.r.p() == null) {
-         this.f = (double)((float)this.r.dt());
-         this.g = (double)((float)this.r.dv());
-         this.h = (double)((float)this.r.dz());
-         float $$0 = this.r.J(0.0F);
-         this.d = 0.0F + 1.0F * $$0 * $$0;
-         this.e = 0.7F + 0.5F * $$0;
-      } else {
-         this.n();
-      }
+   public boolean a(bur $$0) {
+      return this.am == $$0;
    }
 }

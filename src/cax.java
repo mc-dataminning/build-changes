@@ -1,27 +1,86 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cax extends cbj {
-   private static final int i = 10;
-   private static final int j = 7;
+public class cax extends cbc {
+   private int a;
+   private final bun b;
+   @Nullable
+   private cnp c;
+   private cal d;
 
-   public cax(btw $$0, double $$1, boolean $$2) {
-      super($$0, $$1, 10, $$2);
+   public cax(bun $$0) {
+      this.b = $$0;
    }
 
    @Override
    public boolean b() {
-      aqu $$0 = (aqu)this.b.dO();
-      jd $$1 = this.b.do();
-      return $$0.c($$1) ? false : super.b();
+      List<cpo> $$0 = this.b.dS().a(cpo.class, this.b.cO().g(5.0));
+      boolean $$1 = false;
+
+      for (cpo $$2 : $$0) {
+         btj $$3 = $$2.cU();
+         if ($$3 instanceof cnp && (azc.e(((cnp)$$3).bl) > 0.0F || azc.e(((cnp)$$3).bn) > 0.0F)) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return this.c != null && (azc.e(this.c.bl) > 0.0F || azc.e(this.c.bn) > 0.0F) || $$1;
    }
 
-   @Nullable
    @Override
-   protected exc h() {
-      aqu $$0 = (aqu)this.b.dO();
-      jd $$1 = this.b.do();
-      kf $$2 = kf.a($$1);
-      kf $$3 = bvj.a($$0, $$2, 2);
-      return $$3 != $$2 ? cej.a(this.b, 10, 7, exc.c($$3.k()), (float) (Math.PI / 2)) : null;
+   public boolean S_() {
+      return true;
+   }
+
+   @Override
+   public boolean c() {
+      return this.c != null && this.c.bW() && (azc.e(this.c.bl) > 0.0F || azc.e(this.c.bn) > 0.0F);
+   }
+
+   @Override
+   public void d() {
+      for (cpo $$1 : this.b.dS().a(cpo.class, this.b.cO().g(5.0))) {
+         if ($$1.cU() instanceof cnp $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = cal.a;
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+   }
+
+   @Override
+   public void a() {
+      boolean $$0 = azc.e(this.c.bl) > 0.0F || azc.e(this.c.bn) > 0.0F;
+      float $$1 = this.d == cal.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new eye((double)this.b.bl, (double)this.b.bm, (double)this.b.bn));
+      this.b.a(buj.a, this.b.dv());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == cal.a) {
+            je $$2 = this.c.ds().a(this.c.cL().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.P().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = cal.b;
+            }
+         } else if (this.d == cal.b) {
+            jj $$3 = this.c.cM();
+            je $$4 = this.c.ds().a($$3, 10);
+            this.b.P().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = cal.a;
+            }
+         }
+      }
    }
 }

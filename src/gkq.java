@@ -1,92 +1,224 @@
-public class gkq extends gki<cnl> {
-   private static final akr a = akr.b("textures/entity/fishing_hook.png");
-   private static final gfh g = gfh.d(a);
-   private static final double h = 960.0;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public gkq(gkj.a $$0) {
-      super($$0);
+public class gkq {
+   public final gky a = new gky();
+   public final gkq.a b;
+   public final gkq.a c;
+   public final gkq.a d;
+   public final gkq.a e;
+   public final gkq.a f;
+   public final gkx g;
+   public final gla h;
+   public final glc i;
+   public final gkq.a j;
+   public final gkq.a k;
+   public final gkq.a l;
+   public final gkq.a m;
+   public final gkk n;
+   public final gle o;
+   public final gkj p;
+   public final gkz q;
+   public final gkt r;
+   public final gks s;
+   public final gkr t;
+   public final gkw u;
+   public final gkl v;
+   public final gkn w;
+   private boolean x;
+
+   public gkq(fib $$0) {
+      this.b = new glf($$0);
+      this.c = new gkm($$0);
+      this.d = new gku($$0);
+      this.e = new gkp($$0);
+      this.f = new gld($$0);
+      this.g = new gkx($$0);
+      this.h = new gla($$0);
+      this.i = new glc($$0);
+      this.j = new gkv($$0);
+      this.k = new glg();
+      this.l = new glb($$0);
+      this.m = new gko($$0);
+      this.n = new gkk($$0);
+      this.o = new gle();
+      this.p = new gkj($$0);
+      this.q = new gkz($$0);
+      this.r = new gkt($$0);
+      this.s = new gks();
+      this.t = new gkr($$0);
+      this.u = new gkw($$0, deb.a);
+      this.v = new gkl($$0);
+      this.w = new gkn($$0);
    }
 
-   public void a(cnl $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      cmx $$6 = $$0.t();
-      if ($$6 != null) {
-         $$3.a();
-         $$3.a();
-         $$3.b(0.5F, 0.5F, 0.5F);
-         $$3.a(this.d.b());
-         fbi.a $$7 = $$3.c();
-         fbm $$8 = $$4.getBuffer(g);
-         a($$8, $$7, $$5, 0.0F, 0, 0, 1);
-         a($$8, $$7, $$5, 1.0F, 0, 1, 1);
-         a($$8, $$7, $$5, 1.0F, 1, 1, 0);
-         a($$8, $$7, $$5, 0.0F, 1, 0, 0);
-         $$3.b();
-         float $$9 = $$6.B($$2);
-         float $$10 = ayo.a(ayo.c($$9) * (float) Math.PI);
-         exc $$11 = this.a($$6, $$10, $$2);
-         exc $$12 = $$0.m($$2).b(0.0, 0.25, 0.0);
-         float $$13 = (float)($$11.c - $$12.c);
-         float $$14 = (float)($$11.d - $$12.d);
-         float $$15 = (float)($$11.e - $$12.e);
-         fbm $$16 = $$4.getBuffer(gfh.z());
-         fbi.a $$17 = $$3.c();
-         int $$18 = 16;
-
-         for (int $$19 = 0; $$19 <= 16; $$19++) {
-            a($$13, $$14, $$15, $$16, $$17, a($$19, 16), a($$19 + 1, 16));
-         }
-
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public void a() {
+      this.a.a();
+      this.b.a();
+      this.c.a();
+      this.d.a();
+      this.e.a();
+      this.f.a();
+      this.g.a();
+      this.i.a();
+      this.j.a();
+      this.k.a();
+      this.l.a();
+      this.m.a();
+      this.n.a();
+      this.o.a();
+      this.p.a();
+      this.q.a();
+      this.r.a();
+      this.s.a();
+      this.t.a();
+      this.u.a();
+      this.v.a();
+      this.w.a();
    }
 
-   private exc a(cmx $$0, float $$1, float $$2) {
-      int $$3 = $$0.fq() == btg.b ? 1 : -1;
-      cuq $$4 = $$0.eT();
-      if (!$$4.a(cut.qV)) {
-         $$3 = -$$3;
+   public boolean b() {
+      this.x = !this.x;
+      return this.x;
+   }
+
+   public void a(fcu $$0, ggv.a $$1, double $$2, double $$3, double $$4) {
+      if (this.x && !fib.Q().aw()) {
+         this.c.a($$0, $$1, $$2, $$3, $$4);
       }
 
-      if (this.d.d.aB().a() && $$0 == fgo.Q().s) {
-         double $$12 = 960.0 / (double)this.d.d.ah().c().intValue();
-         exc $$13 = this.d.b.j().a((float)$$3 * 0.525F, -0.1F).a($$12).b($$1 * 0.5F).a(-$$1 * 0.7F);
-         return $$0.k($$2).e($$13);
+      this.s.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public void b(fcu $$0, ggv.a $$1, double $$2, double $$3, double $$4) {
+      this.w.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static Optional<btj> a(@Nullable btj $$0, int $$1) {
+      if ($$0 == null) {
+         return Optional.empty();
       } else {
-         float $$5 = ayo.i($$2, $$0.aZ, $$0.aY) * (float) (Math.PI / 180.0);
-         double $$6 = (double)ayo.a($$5);
-         double $$7 = (double)ayo.b($$5);
-         float $$8 = $$0.eb();
-         double $$9 = (double)$$3 * 0.35 * (double)$$8;
-         double $$10 = 0.8 * (double)$$8;
-         float $$11 = $$0.cb() ? -0.1875F : 0.0F;
-         return $$0.k($$2).b(-$$7 * $$9 - $$6 * $$10, (double)$$11 - 0.45 * (double)$$8, -$$6 * $$9 + $$7 * $$10);
+         eye $$2 = $$0.bC();
+         eye $$3 = $$0.g(1.0F).c((double)$$1);
+         eye $$4 = $$2.e($$3);
+         exz $$5 = $$0.cO().b($$3).g(1.0);
+         int $$6 = $$1 * $$1;
+         eyb $$7 = cok.a($$0, $$2, $$4, $$5, bto.h, (double)$$6);
+         if ($$7 == null) {
+            return Optional.empty();
+         } else {
+            return $$2.g($$7.e()) > (double)$$6 ? Optional.empty() : Optional.of($$7.a());
+         }
       }
    }
 
-   private static float a(int $$0, int $$1) {
-      return (float)$$0 / (float)$$1;
+   public static void a(fcu $$0, ggv $$1, je $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2, $$2.b(1, 1, 1), $$3, $$4, $$5, $$6);
    }
 
-   private static void a(fbm $$0, fbi.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.5F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(gqc.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   public static void a(fcu $$0, ggv $$1, je $$2, je $$3, float $$4, float $$5, float $$6, float $$7) {
+      fhk $$8 = fib.Q().j.l();
+      if ($$8.h()) {
+         eye $$9 = $$8.b().e();
+         exz $$10 = exz.a($$2, $$3).c($$9);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
+      }
    }
 
-   private static void a(float $$0, float $$1, float $$2, fbm $$3, fbi.a $$4, float $$5, float $$6) {
-      float $$7 = $$0 * $$5;
-      float $$8 = $$1 * ($$5 * $$5 + $$5) * 0.5F + 0.25F;
-      float $$9 = $$2 * $$5;
-      float $$10 = $$0 * $$6 - $$7;
-      float $$11 = $$1 * ($$6 * $$6 + $$6) * 0.5F + 0.25F - $$8;
-      float $$12 = $$2 * $$6 - $$9;
-      float $$13 = ayo.c($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
-      $$10 /= $$13;
-      $$11 /= $$13;
-      $$12 /= $$13;
-      $$3.a($$4, $$7, $$8, $$9).a(-16777216).b($$4, $$10, $$11, $$12);
+   public static void a(fcu $$0, ggv $$1, je $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
+      fhk $$8 = fib.Q().j.l();
+      if ($$8.h()) {
+         eye $$9 = $$8.b().e();
+         exz $$10 = new exz($$2).c($$9).g((double)$$3);
+         a($$0, $$1, $$10, $$4, $$5, $$6, $$7);
+      }
    }
 
-   public akr a(cnl $$0) {
-      return a;
+   public static void a(fcu $$0, ggv $$1, exz $$2, float $$3, float $$4, float $$5, float $$6) {
+      a($$0, $$1, $$2.a, $$2.b, $$2.c, $$2.d, $$2.e, $$2.f, $$3, $$4, $$5, $$6);
+   }
+
+   public static void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7, float $$8, float $$9, float $$10, float $$11) {
+      fcy $$12 = $$1.getBuffer(ghe.B());
+      ghl.b($$0, $$12, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, $$11);
+   }
+
+   public static void a(fcu $$0, ggv $$1, String $$2, int $$3, int $$4, int $$5, int $$6) {
+      a($$0, $$1, $$2, (double)$$3 + 0.5, (double)$$4 + 0.5, (double)$$5 + 0.5, $$6);
+   }
+
+   public static void a(fcu $$0, ggv $$1, String $$2, double $$3, double $$4, double $$5, int $$6) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0.02F);
+   }
+
+   public static void a(fcu $$0, ggv $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, true, 0.0F, false);
+   }
+
+   public static void a(fcu $$0, ggv $$1, String $$2, double $$3, double $$4, double $$5, int $$6, float $$7, boolean $$8, float $$9, boolean $$10) {
+      fib $$11 = fib.Q();
+      fhk $$12 = $$11.j.l();
+      if ($$12.h() && $$11.ap().d != null) {
+         fjl $$13 = $$11.h;
+         double $$14 = $$12.b().d;
+         double $$15 = $$12.b().e;
+         double $$16 = $$12.b().f;
+         $$0.a();
+         $$0.a((float)($$3 - $$14), (float)($$4 - $$15) + 0.07F, (float)($$5 - $$16));
+         $$0.a($$12.f());
+         $$0.b($$7, -$$7, $$7);
+         float $$17 = $$8 ? (float)(-$$13.b($$2)) / 2.0F : 0.0F;
+         $$17 -= $$9 / $$7;
+         $$13.a($$2, $$17, 0.0F, $$6, false, $$0.c().a(), $$1, $$10 ? fjl.a.b : fjl.a.a, 0, 15728880);
+         $$0.b();
+      }
+   }
+
+   private static eye a(float $$0) {
+      float $$1 = 5.99999F;
+      int $$2 = (int)(azc.a($$0, 0.0F, 1.0F) * 5.99999F);
+      float $$3 = $$0 * 5.99999F - (float)$$2;
+
+      return switch ($$2) {
+         case 0 -> new eye(1.0, (double)$$3, 0.0);
+         case 1 -> new eye((double)(1.0F - $$3), 1.0, 0.0);
+         case 2 -> new eye(0.0, 1.0, (double)$$3);
+         case 3 -> new eye(0.0, 1.0 - (double)$$3, 1.0);
+         case 4 -> new eye((double)$$3, 0.0, 1.0);
+         case 5 -> new eye(1.0, 0.0, 1.0 - (double)$$3);
+         default -> throw new IllegalStateException("Unexpected value: " + $$2);
+      };
+   }
+
+   private static eye a(float $$0, float $$1, float $$2, float $$3) {
+      eye $$4 = a($$3).c((double)$$0);
+      eye $$5 = a(($$3 + 0.33333334F) % 1.0F).c((double)$$1);
+      eye $$6 = a(($$3 + 0.6666667F) % 1.0F).c((double)$$2);
+      eye $$7 = $$4.e($$5).e($$6);
+      double $$8 = Math.max(Math.max(1.0, $$7.d), Math.max($$7.e, $$7.f));
+      return new eye($$7.d / $$8, $$7.e / $$8, $$7.f / $$8);
+   }
+
+   public static void a(fcu $$0, fcy $$1, eyx $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, boolean $$10) {
+      List<exz> $$11 = $$2.e();
+      if (!$$11.isEmpty()) {
+         int $$12 = $$10 ? $$11.size() : $$11.size() * 8;
+         ghl.a($$0, $$1, eyu.a($$11.get(0)), $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+
+         for (int $$13 = 1; $$13 < $$11.size(); $$13++) {
+            exz $$14 = $$11.get($$13);
+            float $$15 = (float)$$13 / (float)$$12;
+            eye $$16 = a($$6, $$7, $$8, $$15);
+            ghl.a($$0, $$1, eyu.a($$14), $$3, $$4, $$5, (float)$$16.d, (float)$$16.e, (float)$$16.f, $$9);
+         }
+      }
+   }
+
+   public interface a {
+      void a(fcu var1, ggv var2, double var3, double var5, double var7);
+
+      default void a() {
+      }
    }
 }

@@ -1,261 +1,179 @@
-import com.google.common.collect.Lists;
-import com.google.common.util.concurrent.RateLimiter;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.UUID;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fea extends gwq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final ReentrantLock b = new ReentrantLock();
-   private static final int c = 200;
-   private static final int B = 80;
-   private static final int C = 95;
-   private static final int D = 1;
-   private final fod E;
-   private final fdd F;
-   private final wz G;
-   private final RateLimiter H;
-   private fim I;
-   private final String J;
-   private final fea.a K;
-   @Nullable
-   private volatile wz L;
-   private volatile wz M = wz.c("mco.download.preparing");
-   @Nullable
-   private volatile String N;
-   private volatile boolean O;
-   private volatile boolean P = true;
-   private volatile boolean Q;
-   private volatile boolean R;
-   @Nullable
-   private Long S;
-   @Nullable
-   private Long T;
-   private long U;
-   private int V;
-   private static final String[] W = new String[]{"", ".", ". .", ". . ."};
-   private int X;
-   private boolean Y;
-   private final BooleanConsumer Z;
+public class fea {
+   static final Logger a = LogUtils.getLogger();
+   private static final String b = "notificationUuid";
+   private static final String c = "dismissable";
+   private static final String d = "seen";
+   private static final String e = "type";
+   private static final String f = "visitUrl";
+   private static final String g = "infoPopup";
+   static final xd h = xd.c("mco.notification.visitUrl.buttonText.default");
+   final UUID i;
+   final boolean j;
+   final boolean k;
+   final String l;
 
-   public fea(fod $$0, fdd $$1, String $$2, BooleanConsumer $$3) {
-      super(fgg.a);
-      this.Z = $$3;
-      this.E = $$0;
-      this.J = $$2;
-      this.F = $$1;
-      this.K = new fea.a();
-      this.G = wz.c("mco.download.title");
-      this.H = RateLimiter.create(0.1F);
+   fea(UUID $$0, boolean $$1, boolean $$2, String $$3) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = $$3;
    }
 
-   @Override
-   public void aT_() {
-      this.I = this.c(fim.a(wy.e, $$0 -> this.d()).a((this.m - 200) / 2, this.n - 42, 200, 20).a());
-      this.C();
+   public boolean a() {
+      return this.k;
    }
 
-   private void C() {
-      if (!this.Q && !this.Y) {
-         this.Y = true;
-         if (this.a(this.F.a) >= 5368709120L) {
-            wz $$0 = wz.a("mco.download.confirmation.oversized", fbu.b(5368709120L));
-            this.l.a(fej.c(this, $$0, $$0x -> {
-               this.l.a(this);
-               this.E();
-            }));
-         } else {
-            this.E();
+   public boolean b() {
+      return this.j;
+   }
+
+   public UUID c() {
+      return this.i;
+   }
+
+   public static List<fea> a(String $$0) {
+      List<fea> $$1 = new ArrayList<>();
+
+      try {
+         for (JsonElement $$3 : JsonParser.parseString($$0).getAsJsonObject().get("notifications").getAsJsonArray()) {
+            $$1.add(a($$3.getAsJsonObject()));
          }
+      } catch (Exception var5) {
+         a.error("Could not parse list of RealmsNotifications", var5);
       }
+
+      return $$1;
    }
 
-   private long a(String $$0) {
-      fbv $$1 = new fbv();
-      return $$1.a($$0);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.V++;
-      if (this.M != null && this.H.tryAcquire(1)) {
-         wz $$0 = this.D();
-         this.l.aV().c($$0);
-      }
-   }
-
-   private wz D() {
-      List<wz> $$0 = Lists.newArrayList();
-      $$0.add(this.G);
-      $$0.add(this.M);
-      if (this.N != null) {
-         $$0.add(wz.a("mco.download.percent", this.N));
-         $$0.add(wz.a("mco.download.speed.narration", fbu.b(this.U)));
-      }
-
-      if (this.L != null) {
-         $$0.add(this.L);
-      }
-
-      return wy.a($$0);
-   }
-
-   @Override
-   public void d() {
-      this.O = true;
-      if (this.Q && this.Z != null && this.L == null) {
-         this.Z.accept(true);
-      }
-
-      this.l.a(this.E);
-   }
-
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.G, this.m / 2, 20, -1);
-      $$0.a(this.o, this.M, this.m / 2, 50, -1);
-      if (this.P) {
-         this.c($$0);
-      }
-
-      if (this.K.a != 0L && !this.O) {
-         this.d($$0);
-         this.e($$0);
-      }
-
-      if (this.L != null) {
-         $$0.a(this.o, this.L, this.m / 2, 110, -65536);
-      }
-   }
-
-   private void c(fhz $$0) {
-      int $$1 = this.o.a(this.M);
-      if (this.V != 0 && this.V % 10 == 0) {
-         this.X++;
-      }
-
-      $$0.a(this.o, W[this.X % W.length], this.m / 2 + $$1 / 2 + 5, 50, -1, false);
-   }
-
-   private void d(fhz $$0) {
-      double $$1 = Math.min((double)this.K.a / (double)this.K.b, 1.0);
-      this.N = String.format(Locale.ROOT, "%.1f", $$1 * 100.0);
-      int $$2 = (this.m - 200) / 2;
-      int $$3 = $$2 + (int)Math.round(200.0 * $$1);
-      $$0.a($$2 - 1, 79, $$3 + 1, 96, -1);
-      $$0.a($$2, 80, $$3, 95, -8355712);
-      $$0.a(this.o, wz.a("mco.download.percent", this.N), this.m / 2, 84, -1);
-   }
-
-   private void e(fhz $$0) {
-      if (this.V % 20 == 0) {
-         if (this.S != null) {
-            long $$1 = ad.c() - this.T;
-            if ($$1 == 0L) {
-               $$1 = 1L;
-            }
-
-            this.U = 1000L * (this.K.a - this.S) / $$1;
-            this.a($$0, this.U);
-         }
-
-         this.S = this.K.a;
-         this.T = ad.c();
+   private static fea a(JsonObject $$0) {
+      UUID $$1 = fgl.a("notificationUuid", $$0, null);
+      if ($$1 == null) {
+         throw new IllegalStateException("Missing required property notificationUuid");
       } else {
-         this.a($$0, this.U);
+         boolean $$2 = fgl.a("dismissable", $$0, true);
+         boolean $$3 = fgl.a("seen", $$0, false);
+         String $$4 = fgl.a("type", $$0);
+         fea $$5 = new fea($$1, $$2, $$3, $$4);
+
+         return (fea)(switch ($$4) {
+            case "visitUrl" -> fea.c.a($$5, $$0);
+            case "infoPopup" -> fea.a.a($$5, $$0);
+            default -> $$5;
+         });
       }
    }
 
-   private void a(fhz $$0, long $$1) {
-      if ($$1 > 0L) {
-         int $$2 = this.o.b(this.N);
-         $$0.a(this.o, wz.a("mco.download.speed", fbu.b($$1)), this.m / 2 + $$2 / 2 + 15, 84, -1, false);
+   public static class a extends fea {
+      private static final String a = "title";
+      private static final String b = "message";
+      private static final String c = "image";
+      private static final String d = "urlButton";
+      private final fef e;
+      private final fef f;
+      private final alb g;
+      @Nullable
+      private final fea.b h;
+
+      private a(fea $$0, fef $$1, fef $$2, alb $$3, @Nullable fea.b $$4) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.e = $$1;
+         this.f = $$2;
+         this.g = $$3;
+         this.h = $$4;
       }
-   }
 
-   private void E() {
-      new Thread(() -> {
-         try {
-            try {
-               if (!b.tryLock(1L, TimeUnit.SECONDS)) {
-                  this.M = wz.c("mco.download.failed");
-                  return;
-               }
+      public static fea.a a(fea $$0, JsonObject $$1) {
+         fef $$2 = fgl.a("title", $$1, fef::a);
+         fef $$3 = fgl.a("message", $$1, fef::a);
+         alb $$4 = alb.a(fgl.a("image", $$1));
+         fea.b $$5 = fgl.b("urlButton", $$1, fea.b::a);
+         return new fea.a($$0, $$2, $$3, $$4, $$5);
+      }
 
-               if (this.O) {
-                  this.F();
-                  return;
-               }
-
-               this.M = wz.a("mco.download.downloading", this.J);
-               fbv $$0 = new fbv();
-               $$0.a(this.F.a);
-               $$0.a(this.F, this.J, this.K, this.l.m());
-
-               while (!$$0.b()) {
-                  if ($$0.c()) {
-                     $$0.a();
-                     this.L = wz.c("mco.download.failed");
-                     this.I.b(wy.d);
-                     return;
-                  }
-
-                  if ($$0.d()) {
-                     if (!this.R) {
-                        this.M = wz.c("mco.download.extracting");
+      @Nullable
+      public flc a(fpt $$0, Consumer<UUID> $$1) {
+         xd $$2 = this.e.a();
+         if ($$2 == null) {
+            fea.a.warn("Realms info popup had title with no available translation: {}", this.e);
+            return null;
+         } else {
+            flc.a $$3 = new flc.a($$0, $$2).a(this.g).a(this.f.a(xc.a));
+            if (this.h != null) {
+               $$3.a(this.h.b.a(fea.h), $$2x -> {
+                  fib $$3x = fib.Q();
+                  $$3x.a(new fop($$3xx -> {
+                     if ($$3xx) {
+                        ad.m().a(this.h.a);
+                        $$3x.a($$0);
+                     } else {
+                        $$3x.a($$2x);
                      }
-
-                     this.R = true;
-                  }
-
-                  if (this.O) {
-                     $$0.a();
-                     this.F();
-                     return;
-                  }
-
-                  try {
-                     Thread.sleep(500L);
-                  } catch (InterruptedException var8) {
-                     a.error("Failed to check Realms backup download status");
-                  }
-               }
-
-               this.Q = true;
-               this.M = wz.c("mco.download.done");
-               this.I.b(wy.d);
-               return;
-            } catch (InterruptedException var9) {
-               a.error("Could not acquire upload lock");
-            } catch (Exception var10) {
-               this.L = wz.c("mco.download.failed");
-               a.info("Exception while downloading world", var10);
+                  }, this.h.a, true));
+                  $$1.accept(this.c());
+               });
             }
-         } finally {
-            if (!b.isHeldByCurrentThread()) {
-               return;
-            } else {
-               b.unlock();
-               this.P = false;
-               this.Q = true;
-            }
+
+            $$3.a(xc.h, $$1x -> {
+               $$1x.d();
+               $$1.accept(this.c());
+            });
+            $$3.a(() -> $$1.accept(this.c()));
+            return $$3.a();
          }
-      }).start();
+      }
    }
 
-   private void F() {
-      this.M = wz.c("mco.download.cancelled");
+   static record b(String a, fef b) {
+      private static final String c = "url";
+      private static final String d = "urlText";
+
+      public static fea.b a(JsonObject $$0) {
+         String $$1 = fgl.a("url", $$0);
+         fef $$2 = fgl.a("urlText", $$0, fef::a);
+         return new fea.b($$1, $$2);
+      }
    }
 
-   public static class a {
-      public volatile long a;
-      public volatile long b;
+   public static class c extends fea {
+      private static final String a = "url";
+      private static final String b = "buttonText";
+      private static final String c = "message";
+      private final String d;
+      private final fef e;
+      private final fef f;
+
+      private c(fea $$0, String $$1, fef $$2, fef $$3) {
+         super($$0.i, $$0.j, $$0.k, $$0.l);
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+      }
+
+      public static fea.c a(fea $$0, JsonObject $$1) {
+         String $$2 = fgl.a("url", $$1);
+         fef $$3 = fgl.a("buttonText", $$1, fef::a);
+         fef $$4 = fgl.a("message", $$1, fef::a);
+         return new fea.c($$0, $$2, $$3, $$4);
+      }
+
+      public xd d() {
+         return this.f.a(xd.c("mco.notification.visitUrl.message.default"));
+      }
+
+      public fka a(fpt $$0) {
+         xd $$1 = this.e.a(fea.h);
+         return fka.a($$1, fop.b($$0, this.d)).a();
+      }
    }
 }

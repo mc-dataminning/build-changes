@@ -1,94 +1,39 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
 import javax.annotation.Nullable;
 
-public interface erl {
-   int d = 19133;
-   int e = 19132;
+public abstract class erl {
+   protected final dmy a;
 
-   ddr D();
-
-   void a(ddr var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   protected erl(dmy $$0) {
+      this.a = $$0;
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
+   public abstract void a(dds var1, je var2, dua var3, @Nullable erj var4);
+
+   protected int a(dds $$0, je $$1) {
+      return this.a.a($$0, $$1);
+   }
+
+   protected int a(je $$0, dua $$1) {
+      return $$1.a(this.a) ? $$1.c(dmy.f) : 0;
+   }
+
+   protected int b(dds $$0, je $$1) {
+      int $$2 = 0;
+
+      for (jj $$3 : jj.c.a) {
+         je $$4 = $$1.a($$3);
+         dua $$5 = $$0.a_($$4);
+         $$2 = Math.max($$2, this.a($$4, $$5));
+         je $$6 = $$1.d();
+         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
+            je $$7 = $$4.d();
+            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
+         } else if (!$$5.d($$0, $$4)) {
+            je $$8 = $$4.e();
+            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
+         }
       }
-   }
 
-   @Nullable
-   ub E();
-
-   void a(@Nullable ub var1);
-
-   erk I();
-
-   dda J();
-
-   ub a(ka var1, @Nullable ub var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   dct k();
-
-   void a(dct var1);
-
-   boolean m();
-
-   bqo q();
-
-   void a(bqo var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   dcs o();
-
-   @Nullable
-   ub w();
-
-   dxb.a C();
-
-   void a(dxb.a var1);
-
-   dzw y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default cpl K() {
-      return this.D().b();
+      return Math.max(0, $$2 - 1);
    }
 }

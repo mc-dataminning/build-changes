@@ -1,42 +1,53 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class adm implements zk<abz> {
+   public static final zb<wa, adm> a = zk.a(adm::a, adm::new);
+   private final int b;
+   private final je c;
+   private final int d;
+   private final boolean e;
 
-public record adm(eqr b, byte c, boolean d, Optional<List<eqn>> e, Optional<eqt.b> f) implements zg<abu> {
-   public static final yx<wk, adm> a = yx.a(eqr.b, adm::b, yv.c, adm::e, yv.b, adm::f, eqn.a.a(yv.a()).a(yv::a), adm::g, eqt.b.a, adm::h, adm::new);
+   public adm(int $$0, je $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1.j();
+      this.d = $$2;
+      this.e = $$3;
+   }
 
-   public adm(eqr $$0, byte $$1, boolean $$2, @Nullable Collection<eqn> $$3, @Nullable eqt.b $$4) {
-      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
+   private adm(wa $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.e();
+      this.d = $$0.readInt();
+      this.e = $$0.readBoolean();
+   }
+
+   private void a(wa $$0) {
+      $$0.q(this.b);
+      $$0.a(this.c);
+      $$0.q(this.d);
+      $$0.a(this.e);
    }
 
    @Override
-   public zi<adm> a() {
-      return agg.P;
+   public zm<adm> a() {
+      return ago.L;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public void a(eqt $$0) {
-      this.e.ifPresent($$0::a);
-      this.f.ifPresent($$1 -> $$1.a($$0));
-   }
-
-   public byte e() {
-      return this.c;
-   }
-
-   public boolean f() {
-      return this.d;
-   }
-
-   public Optional<List<eqn>> g() {
+   public boolean b() {
       return this.e;
    }
 
-   public Optional<eqt.b> h() {
-      return this.f;
+   public int e() {
+      return this.b;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public je g() {
+      return this.c;
    }
 }

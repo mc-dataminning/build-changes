@@ -1,44 +1,145 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.io.IOException;
-import java.util.function.BiFunction;
-import java.util.function.Supplier;
-import org.slf4j.Logger;
+import java.util.Arrays;
 
-public abstract class eql {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
+public class eql {
+   private eqn[] a = new eqn[128];
+   private int b;
 
-   public abstract ub a(ub var1, jo.a var2);
-
-   public void c() {
-      this.a(true);
-   }
-
-   public void a(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean d() {
-      return this.b;
-   }
-
-   public void a(File $$0, jo.a $$1) {
-      if (this.d()) {
-         ub $$2 = new ub();
-         $$2.a("data", this.a(new ub(), $$1));
-         uq.e($$2);
-
-         try {
-            uo.a($$2, $$0.toPath());
-         } catch (IOException var5) {
-            a.error("Could not save data {}", this, var5);
+   public eqn a(eqn $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            eqn[] $$1 = new eqn[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
          }
 
-         this.a(false);
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
       }
    }
 
-   public static record a<T extends eql>(Supplier<T> a, BiFunction<ub, jo.a, T> b, azw c) {
+   public void a() {
+      this.b = 0;
+   }
+
+   public eqn b() {
+      return this.a[0];
+   }
+
+   public eqn c() {
+      eqn $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
+      }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(eqn $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
+   }
+
+   public void a(eqn $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      eqn $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         eqn $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      eqn $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         eqn $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         eqn $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public eqn[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

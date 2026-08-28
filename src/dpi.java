@@ -1,33 +1,29 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dpi extends dpd implements dpe {
-   public static final MapCodec<dpi> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dpe.a.e.fieldOf("weathering_state").forGetter(dpi::m), u()).apply($$0, dpi::new)
-   );
-   private final dpe.a f;
+public class dpi extends dkl {
+   public static final MapCodec<dpi> b = b(dpi::new);
 
-   @Override
-   protected MapCodec<dpi> a() {
-      return e;
-   }
-
-   protected dpi(dpe.a $$0, dtb.d $$1) {
-      super($$1);
-      this.f = $$0;
+   protected dpi(dtz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      this.a_($$0, $$1, $$2, $$3);
+   protected MapCodec<? extends dpi> a() {
+      return b;
    }
 
    @Override
-   protected boolean d_(dtc $$0) {
-      return dpe.c($$0.b()).isPresent();
+   protected eyx c(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return eyu.a();
    }
 
-   public dpe.a m() {
-      return this.f;
+   @Override
+   protected float c(dua $$0, dcx $$1, je $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean e_(dua $$0) {
+      return true;
    }
 }

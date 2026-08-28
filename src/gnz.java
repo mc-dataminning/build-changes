@@ -1,17 +1,27 @@
-public class gnz<T extends btn, M extends fvk<T>> extends gov<T, M> {
-   private final gev a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gnz(gmf<T, M> $$0, gev $$1) {
-      super($$0);
-      this.a = $$1;
+public class gnz extends gny<cgi, gtx, fwr> {
+   private static final Map<cgi.a, alb> a = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cgi.a.b, alb.b("textures/entity/cow/brown_mooshroom.png"));
+      $$0.put(cgi.a.a, alb.b("textures/entity/cow/red_mooshroom.png"));
+   });
+
+   public gnz(gms.a $$0) {
+      super($$0, new fwr($$0.a(gaa.bj)), 0.7F);
+      this.a(new gra(this, $$0.d()));
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      $$0.a();
-      $$0.a(0.0F, 0.4F, -0.4F);
-      $$0.a(a.b.rotationDegrees(180.0F));
-      cuq $$10 = $$3.a(bsy.a);
-      this.a.a($$3, $$10, cun.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public alb a(gtx $$0) {
+      return a.get($$0.a);
+   }
+
+   public gtx c() {
+      return new gtx();
+   }
+
+   public void a(cgi $$0, gtx $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
    }
 }

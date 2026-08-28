@@ -1,9 +1,9 @@
-public class fvp extends fud<cjy> {
-   public fvp(fyk $$0) {
+public class fvp extends RuntimeException {
+   public fvp(String $$0) {
       super($$0);
    }
 
-   public boolean a(cjy $$0) {
-      return false;
+   public fvp(String $$0, Throwable $$1) {
+      super($$0, $$1);
    }
 }

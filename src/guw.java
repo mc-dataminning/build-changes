@@ -1,6 +1,5 @@
-import java.io.IOException;
-import java.nio.ByteBuffer;
-
-public interface guw extends gut {
-   ByteBuffer b() throws IOException;
+public class guw extends gsu {
+   public float a;
+   public float b;
+   public boolean c;
 }

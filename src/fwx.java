@@ -1,99 +1,49 @@
-public class fwx extends fvt<cki> {
-   private final fyk a;
-   private final fyk b;
-   private final fyk f;
-   private final fyk g;
-   private final fyk h;
-   private final fyk i;
-   private final fyk j;
-   private final fyk k;
+import org.joml.Quaternionf;
 
-   public fwx(fyk $$0) {
-      this.a = $$0;
-      this.k = $$0.b("neck");
-      this.b = this.k.b("head");
-      this.f = this.b.b("mouth");
-      this.g = $$0.b("right_hind_leg");
-      this.h = $$0.b("left_hind_leg");
-      this.i = $$0.b("right_front_leg");
-      this.j = $$0.b("left_front_leg");
+public class fwx extends fxa<gsr> {
+   private static final String e = "outer_glass";
+   private static final String f = "inner_glass";
+   private static final String g = "base";
+   private static final float i = (float)Math.sin(Math.PI / 4);
+   private final gab j;
+   public final gab a;
+   public final gab b;
+   public final gab c;
+   public final gab d;
+
+   public fwx(gab $$0) {
+      this.j = $$0;
+      this.a = $$0.b("base");
+      this.b = $$0.b("outer_glass");
+      this.c = this.b.b("inner_glass");
+      this.d = this.c.b("cube");
    }
 
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      int $$2 = 16;
-      fyt $$3 = $$1.a("neck", fyp.c().a(68, 73).a(-5.0F, -1.0F, -18.0F, 10.0F, 10.0F, 18.0F), fym.a(0.0F, -7.0F, 5.5F));
-      fyt $$4 = $$3.a(
-         "head", fyp.c().a(0, 0).a(-8.0F, -20.0F, -14.0F, 16.0F, 20.0F, 16.0F).a(0, 0).a(-2.0F, -6.0F, -18.0F, 4.0F, 8.0F, 4.0F), fym.a(0.0F, 16.0F, -17.0F)
-      );
-      $$4.a("right_horn", fyp.c().a(74, 55).a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fym.a(-10.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
-      $$4.a("left_horn", fyp.c().a(74, 55).a().a(0.0F, -14.0F, -2.0F, 2.0F, 14.0F, 4.0F), fym.a(8.0F, -14.0F, -8.0F, 1.0995574F, 0.0F, 0.0F));
-      $$4.a("mouth", fyp.c().a(0, 36).a(-8.0F, 0.0F, -16.0F, 16.0F, 3.0F, 16.0F), fym.a(0.0F, -2.0F, 2.0F));
-      $$1.a(
-         "body",
-         fyp.c().a(0, 55).a(-7.0F, -10.0F, -7.0F, 14.0F, 16.0F, 20.0F).a(0, 91).a(-6.0F, 6.0F, -7.0F, 12.0F, 13.0F, 18.0F),
-         fym.a(0.0F, 1.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
-      );
-      $$1.a("right_hind_leg", fyp.c().a(96, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fym.a(-8.0F, -13.0F, 18.0F));
-      $$1.a("left_hind_leg", fyp.c().a(96, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fym.a(8.0F, -13.0F, 18.0F));
-      $$1.a("right_front_leg", fyp.c().a(64, 0).a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fym.a(-8.0F, -13.0F, -5.0F));
-      $$1.a("left_front_leg", fyp.c().a(64, 0).a().a(-4.0F, 0.0F, -4.0F, 8.0F, 37.0F, 8.0F), fym.a(8.0F, -13.0F, -5.0F));
-      return fyq.a($$0, 128, 128);
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      float $$2 = 0.875F;
+      gag $$3 = gag.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
+      gal $$4 = $$1.a("outer_glass", $$3, gad.a(0.0F, 24.0F, 0.0F).a(0.875F));
+      gal $$5 = $$4.a("inner_glass", $$3, gad.a.a(0.765625F));
+      $$5.a("cube", gag.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gad.a);
+      $$1.a("base", gag.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gad.a);
+      return gah.a($$0, 64, 32);
+   }
+
+   public void a(gsr $$0) {
+      this.j.e().forEach(gab::c);
+      this.a.k = $$0.a;
+      float $$1 = $$0.p * 3.0F;
+      float $$2 = gmm.a($$0.p) * 16.0F;
+      this.b.c += $$2 / 2.0F;
+      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
+      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
    }
 
    @Override
-   public fyk a() {
-      return this.a;
-   }
-
-   public void a(cki $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      float $$6 = 0.4F * $$2;
-      this.g.e = ayo.b($$1 * 0.6662F) * $$6;
-      this.h.e = ayo.b($$1 * 0.6662F + (float) Math.PI) * $$6;
-      this.i.e = ayo.b($$1 * 0.6662F + (float) Math.PI) * $$6;
-      this.j.e = ayo.b($$1 * 0.6662F) * $$6;
-   }
-
-   public void a(cki $$0, float $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = $$0.gk();
-      int $$5 = $$0.gu();
-      int $$6 = 20;
-      int $$7 = $$0.t();
-      int $$8 = 10;
-      if ($$7 > 0) {
-         float $$9 = ayo.e((float)$$7 - $$3, 10.0F);
-         float $$10 = (1.0F + $$9) * 0.5F;
-         float $$11 = $$10 * $$10 * $$10 * 12.0F;
-         float $$12 = $$11 * ayo.a(this.k.e);
-         this.k.d = -6.5F + $$11;
-         this.k.c = -7.0F - $$12;
-         float $$13 = ayo.a(((float)$$7 - $$3) / 10.0F * (float) Math.PI * 0.25F);
-         this.f.e = (float) (Math.PI / 2) * $$13;
-         if ($$7 > 5) {
-            this.f.e = ayo.a(((float)(-4 + $$7) - $$3) / 4.0F) * (float) Math.PI * 0.4F;
-         } else {
-            this.f.e = (float) (Math.PI / 20) * ayo.a((float) Math.PI * ((float)$$7 - $$3) / 10.0F);
-         }
-      } else {
-         float $$14 = -1.0F;
-         float $$15 = -1.0F * ayo.a(this.k.e);
-         this.k.b = 0.0F;
-         this.k.c = -7.0F - $$15;
-         this.k.d = 5.5F;
-         boolean $$16 = $$4 > 0;
-         this.k.e = $$16 ? 0.21991149F : 0.0F;
-         this.f.e = (float) Math.PI * ($$16 ? 0.05F : 0.01F);
-         if ($$16) {
-            double $$17 = (double)$$4 / 40.0;
-            this.k.b = (float)Math.sin($$17 * 10.0) * 3.0F;
-         } else if ($$5 > 0) {
-            float $$18 = ayo.a(((float)(20 - $$5) - $$3) / 20.0F * (float) Math.PI * 0.25F);
-            this.f.e = (float) (Math.PI / 2) * $$18;
-         }
-      }
+   public gab a() {
+      return this.j;
    }
 }

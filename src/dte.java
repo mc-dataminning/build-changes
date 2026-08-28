@@ -1,169 +1,68 @@
-import com.google.common.collect.ArrayTable;
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.Table;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class dte<O, S> {
-   public static final String c = "Name";
-   public static final String d = "Properties";
-   private static final Function<Entry<duf<?>, Comparable<?>>, String> a = new Function<Entry<duf<?>, Comparable<?>>, String>() {
-      public String a(@Nullable Entry<duf<?>, Comparable<?>> $$0) {
-         if ($$0 == null) {
-            return "<NULL>";
-         } else {
-            duf<?> $$1 = $$0.getKey();
-            return $$1.f() + "=" + this.a($$1, $$0.getValue());
-         }
-      }
+public record dte(int c, float d, float e, float f, float g, int h, bpu<del> i, bpu<ala<esy>> j, ala<esy> k) {
+   public static final dte a = new dte(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, bpu.b(), bpu.<ala<esy>>a().a(esp.aK).a(esp.aJ).a(), esp.aN);
+   public static final Codec<dte> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).lenientOptionalFieldOf("spawn_range", a.c).forGetter(dte::b),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs", a.d).forGetter(dte::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs", a.e).forGetter(dte::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs_added_per_player", a.f).forGetter(dte::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs_added_per_player", a.g).forGetter(dte::f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("ticks_between_spawn", a.h).forGetter(dte::g),
+               del.c.lenientOptionalFieldOf("spawn_potentials", bpu.b()).forGetter(dte::h),
+               bpu.a(ala.a(lv.bc)).lenientOptionalFieldOf("loot_tables_to_eject", a.j).forGetter(dte::i),
+               ala.a(lv.bc).lenientOptionalFieldOf("items_to_drop_when_ominous", a.k).forGetter(dte::j)
+            )
+            .apply($$0, dte::new)
+   );
 
-      private <T extends Comparable<T>> String a(duf<T> $$0, Comparable<?> $$1) {
-         return $$0.a((T)$$1);
-      }
-   };
-   protected final O e;
-   private final Reference2ObjectArrayMap<duf<?>, Comparable<?>> b;
-   private Table<duf<?>, Comparable<?>, S> g;
-   protected final MapCodec<S> f;
-
-   protected dte(O $$0, Reference2ObjectArrayMap<duf<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
-      this.e = $$0;
-      this.b = $$1;
-      this.f = $$2;
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.d + this.f * (float)$$0));
    }
 
-   public <T extends Comparable<T>> S a(duf<T> $$0) {
-      return this.a($$0, a($$0.a(), this.c($$0)));
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   protected static <T> T a(Collection<T> $$0, T $$1) {
-      Iterator<T> $$2 = $$0.iterator();
-
-      while ($$2.hasNext()) {
-         if ($$2.next().equals($$1)) {
-            if ($$2.hasNext()) {
-               return $$2.next();
-            }
-
-            return $$0.iterator().next();
-         }
-      }
-
-      return $$2.next();
+   public long a() {
+      return 160L;
    }
 
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(this.e);
-      if (!this.C().isEmpty()) {
-         $$0.append('[');
-         $$0.append(this.C().entrySet().stream().map(a).collect(Collectors.joining(",")));
-         $$0.append(']');
-      }
-
-      return $$0.toString();
+   public int b() {
+      return this.c;
    }
 
-   public Collection<duf<?>> B() {
-      return Collections.unmodifiableCollection(this.b.keySet());
+   public float c() {
+      return this.d;
    }
 
-   public <T extends Comparable<T>> boolean b(duf<T> $$0) {
-      return this.b.containsKey($$0);
+   public float d() {
+      return this.e;
    }
 
-   public <T extends Comparable<T>> T c(duf<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.e);
-      } else {
-         return $$0.g().cast($$1);
-      }
+   public float e() {
+      return this.f;
    }
 
-   public <T extends Comparable<T>> Optional<T> d(duf<T> $$0) {
-      Comparable<?> $$1 = (Comparable<?>)this.b.get($$0);
-      return $$1 == null ? Optional.empty() : Optional.of($$0.g().cast($$1));
+   public float f() {
+      return this.g;
    }
 
-   public <T extends Comparable<T>, V extends T> S a(duf<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.e);
-      } else if ($$2.equals($$1)) {
-         return (S)this;
-      } else {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      }
+   public int g() {
+      return this.h;
    }
 
-   public <T extends Comparable<T>, V extends T> S b(duf<T> $$0, V $$1) {
-      Comparable<?> $$2 = (Comparable<?>)this.b.get($$0);
-      if ($$2 != null && !$$2.equals($$1)) {
-         S $$3 = (S)this.g.get($$0, $$1);
-         if ($$3 == null) {
-            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.e + ", it is not an allowed value");
-         } else {
-            return $$3;
-         }
-      } else {
-         return (S)this;
-      }
+   public bpu<del> h() {
+      return this.i;
    }
 
-   public void a(Map<Map<duf<?>, Comparable<?>>, S> $$0) {
-      if (this.g != null) {
-         throw new IllegalStateException();
-      } else {
-         Table<duf<?>, Comparable<?>, S> $$1 = HashBasedTable.create();
-         ObjectIterator var3 = this.b.entrySet().iterator();
-
-         while (var3.hasNext()) {
-            Entry<duf<?>, Comparable<?>> $$2 = (Entry<duf<?>, Comparable<?>>)var3.next();
-            duf<?> $$3 = $$2.getKey();
-
-            for (Comparable<?> $$4 : $$3.a()) {
-               if (!$$4.equals($$2.getValue())) {
-                  $$1.put($$3, $$4, $$0.get(this.c($$3, $$4)));
-               }
-            }
-         }
-
-         this.g = (Table<duf<?>, Comparable<?>, S>)($$1.isEmpty() ? $$1 : ArrayTable.create($$1));
-      }
+   public bpu<ala<esy>> i() {
+      return this.j;
    }
 
-   private Map<duf<?>, Comparable<?>> c(duf<?> $$0, Comparable<?> $$1) {
-      Map<duf<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.b);
-      $$2.put($$0, $$1);
-      return $$2;
-   }
-
-   public Map<duf<?>, Comparable<?>> C() {
-      return this.b;
-   }
-
-   protected static <O, S extends dte<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
-      return $$0.dispatch("Name", $$0x -> $$0x.e, $$1x -> {
-         S $$2 = $$1.apply((O)$$1x);
-         return $$2.C().isEmpty() ? MapCodec.unit($$2) : $$2.f.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
-      });
+   public ala<esy> j() {
+      return this.k;
    }
 }

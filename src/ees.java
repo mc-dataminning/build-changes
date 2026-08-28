@@ -1,13 +1,26 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ees implements eei {
-   public static final Codec<ees> k = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, ees::new)
-   );
-   public final float l;
+public class ees extends edc<efn> {
+   public ees(Codec<efn> $$0) {
+      super($$0);
+   }
 
-   public ees(float $$0) {
-      this.l = $$0;
+   @Override
+   public boolean a(ede<efn> $$0) {
+      dep $$1 = $$0.b();
+      je $$2 = $$0.e();
+      $$0.f();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         for (jj $$3 : jj.values()) {
+            if ($$3 != jj.a && dps.a($$1, $$2.a($$3), $$3)) {
+               $$1.a($$2, dgx.ff.o().b(dps.a($$3), Boolean.valueOf(true)), 2);
+               return true;
+            }
+         }
+
+         return false;
+      }
    }
 }

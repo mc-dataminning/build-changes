@@ -1,16 +1,29 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
 
-public class ewi {
-   private static final Codec<ewh> d = lt.I.r().dispatch(ewh::a, ewg::a);
-   public static final Codec<ewh> a = Codec.lazyInitialized(
-      () -> Codec.either(ewe.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof ewe $$1 ? Either.left($$1) : Either.right($$0))
-   );
-   public static final ewg b = a("fixed", ewf.a);
-   public static final ewg c = a("context", ewe.a);
+public class ewi implements ewe {
+   private static final ewi b = new ewi();
+   public static final MapCodec<ewi> a = MapCodec.unit(b);
 
-   private static ewg a(String $$0, MapCodec<? extends ewh> $$1) {
-      return jz.a(lt.I, akr.b($$0), new ewg($$1));
+   private ewi() {
+   }
+
+   @Override
+   public ewf b() {
+      return ewg.g;
+   }
+
+   @Override
+   public Set<evm<?>> a() {
+      return ImmutableSet.of(evp.b);
+   }
+
+   public boolean a(est $$0) {
+      return $$0.a(evp.b);
+   }
+
+   public static ewe.a c() {
+      return () -> b;
    }
 }

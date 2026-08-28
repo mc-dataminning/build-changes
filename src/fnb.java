@@ -1,102 +1,240 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fnb extends fod {
-   private static final int r = 20;
-   private final wz s;
-   private fjf u = fjf.a;
-   protected wz a;
-   protected wz b;
-   private int v;
-   protected final BooleanConsumer c;
-   private final List<fim> w = Lists.newArrayList();
+public class fnb implements fao {
+   static final Logger b = LogUtils.getLogger();
+   private final fbp c;
+   private final fmp<fnb.b> d;
 
-   public fnb(BooleanConsumer $$0, wz $$1, wz $$2) {
-      this($$0, $$1, $$2, wy.f, wy.g);
-   }
-
-   public fnb(BooleanConsumer $$0, wz $$1, wz $$2, wz $$3, wz $$4) {
-      super($$1);
+   fnb(fbp $$0, fmp<fnb.b> $$1) {
       this.c = $$0;
-      this.s = $$2;
-      this.a = $$3;
-      this.b = $$4;
+      this.d = $$1;
    }
 
    @Override
-   public wz i() {
-      return wy.a(super.i(), this.s);
+   public void close() {
+      this.c.close();
+   }
+
+   @Nullable
+   @Override
+   public fan a(int $$0) {
+      return this.d.a($$0);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.u = fjf.a(this.o, this.s, this.m - 50);
-      int $$0 = ayo.a(this.C() + this.D() + 20, this.n / 6 + 96, this.n - 24);
-      this.w.clear();
-      this.a($$0);
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
    }
 
-   protected void a(int $$0) {
-      this.a(fim.a(this.a, $$0x -> this.c.accept(true)).a(this.m / 2 - 155, $$0, 150, 20).a());
-      this.a(fim.a(this.b, $$0x -> this.c.accept(false)).a(this.m / 2 - 155 + 160, $$0, 150, 20).a());
-   }
+   public static record a(alb c, int d, int e, int[][] f) implements fnd {
+      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
 
-   protected void a(fim $$0) {
-      this.w.add(this.c($$0));
-   }
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
+         }
 
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, this.m(), 16777215);
-      this.u.a($$0, this.m / 2, this.C());
-   }
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
 
-   private int m() {
-      int $$0 = (this.n - this.D()) / 2;
-      return ayo.a($$0 - 20 - 9, 10, 80);
-   }
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
 
-   private int C() {
-      return this.m() + 20;
-   }
+         return $$1;
+      }).validate(fnb.a::a);
+      public static final MapCodec<fnb.a> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     alb.a.fieldOf("file").forGetter(fnb.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(fnb.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(fnb.a::e),
+                     g.fieldOf("chars").forGetter(fnb.a::f)
+                  )
+                  .apply($$0, fnb.a::new)
+         )
+         .validate(fnb.a::a);
 
-   private int D() {
-      return this.u.a() * 9;
-   }
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
+         } else {
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
 
-   public void b(int $$0) {
-      this.v = $$0;
-
-      for (fim $$1 : this.w) {
-         $$1.j = false;
-      }
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      if (--this.v == 0) {
-         for (fim $$0 : this.w) {
-            $$0.j = true;
+               return DataResult.success($$0);
+            }
          }
       }
+
+      private static DataResult<fnb.a> a(fnb.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
+      }
+
+      @Override
+      public fne a() {
+         return fne.a;
+      }
+
+      @Override
+      public Either<fnd.b, fnd.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fao a(aus $$0) throws IOException {
+         alb $$1 = this.c.f("textures/");
+
+         fnb var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            fbp $$3 = fbp.a(fbp.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fmp<fnb.b> $$9 = new fmp<>(fnb.b[]::new, fnb.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     fnb.b $$15 = $$9.a($$12, new fnb.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        fnb.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
+                     }
+                  }
+               }
+            }
+
+            var22 = new fnb($$3, $$9);
+         }
+
+         return var22;
+      }
+
+      private int a(fbp $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.b($$6, $$8) != 0) {
+                  return $$5 + 1;
+               }
+            }
+         }
+
+         return $$5 + 1;
+      }
    }
 
-   @Override
-   public boolean aJ_() {
-      return false;
-   }
+   static record b(float a, fbp b, int c, int d, int e, int f, int g, int h) implements fan {
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.c.accept(false);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
+      }
+
+      @Override
+      public fmw bake(Function<fap, fmw> $$0) {
+         return $$0.apply(new fap() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
+      }
+
+      public float c() {
+         return this.a;
+      }
+
+      public fbp d() {
+         return this.b;
+      }
+
+      public int e() {
+         return this.c;
+      }
+
+      public int f() {
+         return this.d;
+      }
+
+      public int g() {
+         return this.e;
+      }
+
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
       }
    }
 }

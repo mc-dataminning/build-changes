@@ -1,60 +1,21 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+
 public class exb {
-   public static final exb a = new exb(0.0F, 0.0F);
-   public static final exb b = new exb(1.0F, 1.0F);
-   public static final exb c = new exb(1.0F, 0.0F);
-   public static final exb d = new exb(-1.0F, 0.0F);
-   public static final exb e = new exb(0.0F, 1.0F);
-   public static final exb f = new exb(0.0F, -1.0F);
-   public static final exb g = new exb(Float.MAX_VALUE, Float.MAX_VALUE);
-   public static final exb h = new exb(Float.MIN_VALUE, Float.MIN_VALUE);
-   public final float i;
-   public final float j;
+   private static final Codec<exa> h = lu.G.q().dispatch(exa::b, ewz::a);
+   public static final Codec<exa> a = Codec.lazyInitialized(() -> {
+      Codec<exa> $$0 = Codec.withAlternative(h, exe.a.codec());
+      return Codec.either(ewx.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof ewx $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final ewz b = a("constant", ewx.a);
+   public static final ewz c = a("uniform", exe.a);
+   public static final ewz d = a("binomial", eww.a);
+   public static final ewz e = a("score", exc.a);
+   public static final ewz f = a("storage", exd.a);
+   public static final ewz g = a("enchantment_level", ewy.a);
 
-   public exb(float $$0, float $$1) {
-      this.i = $$0;
-      this.j = $$1;
-   }
-
-   public exb a(float $$0) {
-      return new exb(this.i * $$0, this.j * $$0);
-   }
-
-   public float a(exb $$0) {
-      return this.i * $$0.i + this.j * $$0.j;
-   }
-
-   public exb b(exb $$0) {
-      return new exb(this.i + $$0.i, this.j + $$0.j);
-   }
-
-   public exb b(float $$0) {
-      return new exb(this.i + $$0, this.j + $$0);
-   }
-
-   public boolean c(exb $$0) {
-      return this.i == $$0.i && this.j == $$0.j;
-   }
-
-   public exb a() {
-      float $$0 = ayo.c(this.i * this.i + this.j * this.j);
-      return $$0 < 1.0E-4F ? a : new exb(this.i / $$0, this.j / $$0);
-   }
-
-   public float b() {
-      return ayo.c(this.i * this.i + this.j * this.j);
-   }
-
-   public float c() {
-      return this.i * this.i + this.j * this.j;
-   }
-
-   public float d(exb $$0) {
-      float $$1 = $$0.i - this.i;
-      float $$2 = $$0.j - this.j;
-      return $$1 * $$1 + $$2 * $$2;
-   }
-
-   public exb d() {
-      return new exb(-this.i, -this.j);
+   private static ewz a(String $$0, MapCodec<? extends exa> $$1) {
+      return ka.a(lu.G, alb.b($$0), new ewz($$1));
    }
 }

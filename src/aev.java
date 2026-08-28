@@ -1,37 +1,45 @@
-public class aev implements zg<abu> {
-   public static final yx<vw, aev> a = zg.a(aev::a, aev::new);
-   private final int b;
-   private final int c;
+public class aev implements zk<abz> {
+   public static final zb<wa, aev> a = zk.a(aev::a, aev::new);
+   private final double b;
+   private final double c;
+   private final long d;
 
-   public aev(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aev(dvr $$0) {
+      this.b = $$0.i();
+      this.c = $$0.k();
+      this.d = $$0.j();
    }
 
-   private aev(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
+   private aev(wa $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.m();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zi<aev> a() {
-      return agg.ay;
+   public zm<aev> a() {
+      return ago.at;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
+   }
+
+   public long f() {
+      return this.d;
    }
 }

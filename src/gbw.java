@@ -1,79 +1,85 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class gbw extends gdn {
-   private final float a;
-   private final gdi b;
-
-   gbw(fzf $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gdi $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+public interface gbw {
+   static gbw a(gcc $$0, UserApiService $$1) {
+      return new gbw.b($$0, $$1);
    }
 
-   @Override
-   public gcr b() {
-      return gcr.b;
+   CompletableFuture<Unit> a(UUID var1, gce var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.b);
-         this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
-         }
-
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
+   public static class a extends yd {
+      public a(xd $$0, Throwable $$1) {
+         super($$0, $$1);
       }
    }
 
-   public static class a implements gcq<le> {
-      private final gdi a;
+   public static record b(gcc a, UserApiService b) implements gbw {
+      private static final xd c = xd.c("gui.abuseReport.send.service_unavailable");
+      private static final xd d = xd.c("gui.abuseReport.send.http_error");
+      private static final xd e = xd.c("gui.abuseReport.send.json_error");
 
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, gce $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
 
-      @Nullable
-      public gcn a(le $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dtc $$8 = $$0.b();
-         if (!$$8.i() && $$8.l() == dmf.a) {
-            return null;
-         } else {
-            jd $$9 = jd.a($$2, $$3, $$4);
-            int $$10 = fgo.Q().au().a($$8, $$1, $$9);
-            if ($$8.b() instanceof diu) {
-               $$10 = ((diu)$$8.b()).b($$8, $$1, $$9);
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xd $$5 = this.a(var7);
+               throw new CompletionException(new gbw.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xd $$7 = this.a(var8);
+               throw new CompletionException(new gbw.a($$7, var8));
             }
+         }, ad.h());
+      }
 
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gbw($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
-         }
+      @Override
+      public boolean a() {
+         return this.b.canSendReports();
+      }
+
+      private xd a(MinecraftClientHttpException $$0) {
+         return xd.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xd a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
+      }
+
+      @Override
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public gcc c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

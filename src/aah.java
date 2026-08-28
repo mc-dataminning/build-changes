@@ -1,21 +1,29 @@
-public record aah(String c) implements aaj {
-   public static final yx<vw, aah> a = aaj.a(aah::a, aah::new);
-   public static final aaj.b<aah> b = aaj.a("brand");
+public class aah implements zk<aad> {
+   public static final zb<wa, aah> a = zk.a(aah::a, aah::new);
+   private final int b;
 
-   private aah(vw $$0) {
-      this($$0.p());
+   public aah(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.c);
+   private aah(wa $$0) {
+      this.b = $$0.readInt();
+   }
+
+   private void a(wa $$0) {
+      $$0.q(this.b);
    }
 
    @Override
-   public aaj.b<aah> a() {
-      return b;
+   public zm<aah> a() {
+      return aac.o;
    }
 
-   public String b() {
-      return this.c;
+   public void a(aad $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
    }
 }

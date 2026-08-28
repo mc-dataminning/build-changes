@@ -1,49 +1,64 @@
-import javax.annotation.Nullable;
+public class ahx implements zk<agq> {
+   public static final zb<wa, ahx> a = zk.a(ahx::a, ahx::new);
+   private static final int b = 1;
+   private static final int c = 2;
+   private final float d;
+   private final float e;
+   private final boolean f;
+   private final boolean g;
 
-public class ahx implements zg<agi> {
-   public static final yx<vw, ahx> a = zg.a(ahx::a, ahx::new);
-   private final int b;
-   private final String c;
-   private final boolean d;
-
-   public ahx(int $$0, String $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   public ahx(float $$0, float $$1, boolean $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   private ahx(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.p();
-      this.d = $$0.readBoolean();
+   private ahx(wa $$0) {
+      this.d = $$0.readFloat();
+      this.e = $$0.readFloat();
+      byte $$1 = $$0.readByte();
+      this.f = ($$1 & 1) > 0;
+      this.g = ($$1 & 2) > 0;
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(wa $$0) {
       $$0.a(this.d);
+      $$0.a(this.e);
+      byte $$1 = 0;
+      if (this.f) {
+         $$1 = (byte)($$1 | 1);
+      }
+
+      if (this.g) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.l($$1);
    }
 
    @Override
-   public zi<ahx> a() {
-      return agg.bV;
+   public zm<ahx> a() {
+      return ago.bP;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public dbx a(dcw $$0) {
-      bsr $$1 = $$0.a(this.b);
-      return $$1 instanceof cpb ? ((cpb)$$1).B() : null;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public boolean e() {
+   public float b() {
       return this.d;
+   }
+
+   public float e() {
+      return this.e;
+   }
+
+   public boolean f() {
+      return this.f;
+   }
+
+   public boolean g() {
+      return this.g;
    }
 }

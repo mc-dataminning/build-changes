@@ -1,14 +1,29 @@
-public class goz<T extends btp & ckh, M extends fvk<T>> extends gov<T, M> {
-   private final fxf<T> a;
-   private final akr b;
+public class goz<T extends clg> extends gny<T, gts, fzb> {
+   private static final alb a = alb.b("textures/entity/spider/spider.png");
 
-   public goz(gmf<T, M> $$0, fyg $$1, fyi $$2, akr $$3) {
-      super($$0);
-      this.b = $$3;
-      this.a = new fxf<>($$1.a($$2));
+   public goz(gms.a $$0) {
+      this($$0, gaa.cx);
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      a(this.c(), this.a, this.b, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, -1);
+   public goz(gms.a $$0, fzz $$1) {
+      super($$0, new fzb($$0.a($$1)), 0.8F);
+      this.a(new grl<>(this));
+   }
+
+   @Override
+   protected float aX_() {
+      return 180.0F;
+   }
+
+   public alb b(gts $$0) {
+      return a;
+   }
+
+   public gts c() {
+      return new gts();
+   }
+
+   public void a(T $$0, gts $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

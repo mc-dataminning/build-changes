@@ -1,29 +1,93 @@
-public class agm implements zg<agi> {
-   public static final yx<vw, agm> a = zg.a(agm::a, agm::new);
-   private final bqo b;
+import java.util.UUID;
 
-   public agm(bqo $$0) {
-      this.b = $$0;
+public class agm {
+   private static final String[] a = new String[]{
+      "Slim",
+      "Far",
+      "River",
+      "Silly",
+      "Fat",
+      "Thin",
+      "Fish",
+      "Bat",
+      "Dark",
+      "Oak",
+      "Sly",
+      "Bush",
+      "Zen",
+      "Bark",
+      "Cry",
+      "Slack",
+      "Soup",
+      "Grim",
+      "Hook",
+      "Dirt",
+      "Mud",
+      "Sad",
+      "Hard",
+      "Crook",
+      "Sneak",
+      "Stink",
+      "Weird",
+      "Fire",
+      "Soot",
+      "Soft",
+      "Rough",
+      "Cling",
+      "Scar"
+   };
+   private static final String[] b = new String[]{
+      "Fox",
+      "Tail",
+      "Jaw",
+      "Whisper",
+      "Twig",
+      "Root",
+      "Finder",
+      "Nose",
+      "Brow",
+      "Blade",
+      "Fry",
+      "Seek",
+      "Wart",
+      "Tooth",
+      "Foot",
+      "Leaf",
+      "Stone",
+      "Fall",
+      "Face",
+      "Tongue",
+      "Voice",
+      "Lip",
+      "Mouth",
+      "Snail",
+      "Toe",
+      "Ear",
+      "Hair",
+      "Beard",
+      "Shirt",
+      "Fist"
+   };
+
+   public static String a(btj $$0) {
+      if ($$0 instanceof cnp) {
+         return $$0.aj().getString();
+      } else {
+         xd $$1 = $$0.al();
+         return $$1 != null ? $$1.getString() : a($$0.cD());
+      }
    }
 
-   private agm(vw $$0) {
-      this.b = bqo.a($$0.readUnsignedByte());
+   public static String a(UUID $$0) {
+      azk $$1 = b($$0);
+      return a($$1, a) + a($$1, b);
    }
 
-   private void a(vw $$0) {
-      $$0.k(this.b.a());
+   private static String a(azk $$0, String[] $$1) {
+      return ad.a($$1, $$0);
    }
 
-   @Override
-   public zi<agm> a() {
-      return agg.bh;
-   }
-
-   public void a(agi $$0) {
-      $$0.a(this);
-   }
-
-   public bqo b() {
-      return this.b;
+   private static azk b(UUID $$0) {
+      return azk.a((long)($$0.hashCode() >> 2));
    }
 }

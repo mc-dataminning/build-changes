@@ -1,51 +1,50 @@
-public class cnu extends cnw {
-   public cnu(bsx<? extends cnu> $$0, dcw $$1) {
-      super($$0, $$1);
-   }
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-   public cnu(dcw $$0, btn $$1) {
-      super(bsx.aT, $$1, $$0);
-   }
+public class cnu {
+   private final cnt<jn<cvg>> a = new cnt<>();
 
-   public cnu(dcw $$0, double $$1, double $$2, double $$3) {
-      super(bsx.aT, $$1, $$2, $$3, $$0);
-   }
-
-   @Override
-   protected cul t() {
-      return cut.qC;
-   }
-
-   private lk v() {
-      cuq $$0 = this.p();
-      return (lk)(!$$0.e() && !$$0.a(this.t()) ? new li(lm.S, $$0) : lm.W);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lk $$1 = this.v();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dO().a($$1, this.dt(), this.dv(), this.dz(), 0.0, 0.0, 0.0);
-         }
+   public void a(cvl $$0) {
+      if (cno.d($$0)) {
+         this.b($$0);
       }
    }
 
-   @Override
-   protected void a(ewz $$0) {
-      super.a($$0);
-      bsr $$1 = $$0.a();
-      int $$2 = $$1 instanceof cjm ? 3 : 0;
-      $$1.a(this.dP().b(this, this.s()), (float)$$2);
+   public void b(cvl $$0) {
+      this.a($$0, $$0.k());
    }
 
-   @Override
-   protected void a(exa $$0) {
-      super.a($$0);
-      if (!this.dO().B) {
-         this.dO().a(this, (byte)3);
-         this.aq();
+   public void a(cvl $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.J());
+         this.a.a($$0.i(), $$2);
       }
+   }
+
+   public static cnt.a<jn<cvg>> a(Stream<jn<cvg>> $$0) {
+      List<jn<cvg>> $$1 = $$0.sorted(Comparator.comparingInt($$0x -> lu.g.a((cvg)$$0x.a()))).toList();
+      return new cnt.a<>($$1);
+   }
+
+   public boolean a(czt<?> $$0, @Nullable cnt.b<jn<cvg>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   public boolean a(czt<?> $$0, int $$1, @Nullable cnt.b<jn<cvg>> $$2) {
+      return this.a.a($$0.a().b(), $$1, $$2);
+   }
+
+   public int b(czt<?> $$0, @Nullable cnt.b<jn<cvg>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int b(czt<?> $$0, int $$1, @Nullable cnt.b<jn<cvg>> $$2) {
+      return this.a.b($$0.a().b(), $$1, $$2);
+   }
+
+   public void a() {
+      this.a.a();
    }
 }

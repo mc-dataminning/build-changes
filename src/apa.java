@@ -1,107 +1,44 @@
-import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
 public class apa {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("commands.trigger.failed.unprimed"));
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("commands.trigger.failed.invalid"));
-
    public static void a(CommandDispatcher<et> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)eu.a("trigger")
-            .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("objective", fn.a())
-                        .suggests(($$0x, $$1) -> a((et)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((et)$$0x.getSource(), ((et)$$0x.getSource()).h(), fn.a($$0x, "objective"))))
-                     .then(
-                        eu.a("add")
-                           .then(
-                              eu.a("value", IntegerArgumentType.integer())
-                                 .executes(
-                                    $$0x -> a(
-                                          (et)$$0x.getSource(),
-                                          ((et)$$0x.getSource()).h(),
-                                          fn.a($$0x, "objective"),
-                                          IntegerArgumentType.getInteger($$0x, "value")
-                                       )
-                                 )
-                           )
-                     ))
-                  .then(
-                     eu.a("set")
-                        .then(
-                           eu.a("value", IntegerArgumentType.integer())
-                              .executes(
-                                 $$0x -> b(
-                                       (et)$$0x.getSource(), ((et)$$0x.getSource()).h(), fn.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+      RequiredArgumentBuilder<et, hi> $$1 = (RequiredArgumentBuilder<et, hi>)((RequiredArgumentBuilder)eu.a("targets", fg.d())
+            .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), null, null)))
+         .then(eu.a("*").then(eu.a("sound", fu.a()).suggests(it.c).executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), null, fu.c($$0x, "sound")))));
+
+      for (awe $$2 : awe.values()) {
+         $$1.then(
+            ((LiteralArgumentBuilder)eu.a($$2.a()).executes($$1x -> a((et)$$1x.getSource(), fg.f($$1x, "targets"), $$2, null)))
+               .then(eu.a("sound", fu.a()).suggests(it.c).executes($$1x -> a((et)$$1x.getSource(), fg.f($$1x, "targets"), $$2, fu.c($$1x, "sound"))))
+         );
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   public static CompletableFuture<Suggestions> a(et $$0, SuggestionsBuilder $$1) {
-      eyf $$2 = $$0.f();
-      List<String> $$3 = Lists.newArrayList();
+   private static int a(et $$0, Collection<arh> $$1, @Nullable awe $$2, @Nullable alb $$3) {
+      afz $$4 = new afz($$3, $$2);
+
+      for (arh $$5 : $$1) {
+         $$5.c.b($$4);
+      }
+
       if ($$2 != null) {
-         eyg $$4 = $$0.l().aK();
-
-         for (exy $$5 : $$4.c()) {
-            if ($$5.c() == eyj.c) {
-               eyc $$6 = $$4.d($$2, $$5);
-               if ($$6 != null && !$$6.b()) {
-                  $$3.add($$5.b());
-               }
-            }
-         }
-      }
-
-      return ey.b($$3, $$1);
-   }
-
-   private static int a(et $$0, aqv $$1, exy $$2, int $$3) throws CommandSyntaxException {
-      eye $$4 = a($$0.l().aK(), $$1, $$2);
-      int $$5 = $$4.b($$3);
-      $$0.a(() -> wz.a("commands.trigger.add.success", $$2.g(), $$3), true);
-      return $$5;
-   }
-
-   private static int b(et $$0, aqv $$1, exy $$2, int $$3) throws CommandSyntaxException {
-      eye $$4 = a($$0.l().aK(), $$1, $$2);
-      $$4.a($$3);
-      $$0.a(() -> wz.a("commands.trigger.set.success", $$2.g(), $$3), true);
-      return $$3;
-   }
-
-   private static int a(et $$0, aqv $$1, exy $$2) throws CommandSyntaxException {
-      eye $$3 = a($$0.l().aK(), $$1, $$2);
-      int $$4 = $$3.b(1);
-      $$0.a(() -> wz.a("commands.trigger.simple.success", $$2.g()), true);
-      return $$4;
-   }
-
-   private static eye a(eyg $$0, eyf $$1, exy $$2) throws CommandSyntaxException {
-      if ($$2.c() != eyj.c) {
-         throw b.create();
-      } else {
-         eyc $$3 = $$0.d($$1, $$2);
-         if ($$3 != null && !$$3.b()) {
-            eye $$4 = $$0.c($$1, $$2);
-            $$4.f();
-            return $$4;
+         if ($$3 != null) {
+            $$0.a(() -> xd.a("commands.stopsound.success.source.sound", xd.a($$3), $$2.a()), true);
          } else {
-            throw a.create();
+            $$0.a(() -> xd.a("commands.stopsound.success.source.any", $$2.a()), true);
          }
+      } else if ($$3 != null) {
+         $$0.a(() -> xd.a("commands.stopsound.success.sourceless.sound", xd.a($$3)), true);
+      } else {
+         $$0.a(() -> xd.c("commands.stopsound.success.sourceless.any"), true);
       }
+
+      return $$1.size();
    }
 }

@@ -1,37 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import javax.annotation.Nullable;
 
 public class bwq {
-   public static bws<btn> a(float $$0) {
-      return byu.a((Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$1 -> $$1.group($$1.c(ccs.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
-               if ($$2.h($$3.do())) {
-                  return false;
-               } else {
-                  Optional<exc> $$5 = Optional.ofNullable(a($$2, $$3));
-                  $$5.ifPresent($$2x -> $$1x.a(new ccv($$2x, $$0, 0)));
-                  return true;
-               }
-            })));
+   private static je a(buh $$0, je $$1) {
+      azk $$2 = $$0.dS().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   @Nullable
-   private static exc a(aqu $$0, btn $$1) {
-      ayw $$2 = $$1.dR();
-      jd $$3 = $$1.do();
-
-      for (int $$4 = 0; $$4 < 10; $$4++) {
-         jd $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
-         if (a($$0, $$1, $$5)) {
-            return exc.c($$5);
-         }
-      }
-
-      return null;
+   private static int a(azk $$0) {
+      return $$0.a(3) - 1;
    }
 
-   public static boolean a(aqu $$0, btn $$1, jd $$2) {
-      return $$0.h($$2) && (double)$$0.a(dyy.a.e, $$2).v() <= $$1.dv();
+   public static <E extends buh> bxi<E> a(cdi<je> $$0, int $$1, float $$2) {
+      return bzk.a(
+         (Function<bzk.b<E>, ? extends App<bzk.c<E>, bzn<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(cdi.o), $$3.c(cdi.m), $$3.a(cdi.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     je $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.ds(), (double)$$1);
+                     if (!$$8) {
+                        bvz.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

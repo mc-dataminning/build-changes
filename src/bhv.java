@@ -1,22 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 
-public class bhv extends bfn {
-   public bhv(Schema $$0, boolean $$1) {
-      super($$0, $$1, "WeaponSmithChestLootTableFix", bgr.s, "minecraft:chest");
+public abstract class bhv extends bdw {
+   public bhv(String $$0, Schema $$1, boolean $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            String $$1 = $$0x.get("LootTable").asString("");
-            return $$1.equals("minecraft:chests/village_blacksmith")
-               ? $$0x.set("LootTable", $$0x.createString("minecraft:chests/village/village_weaponsmith"))
-               : $$0x;
-         }
-      );
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      Pair<String, Dynamic<?>> $$2 = this.a($$0, (Dynamic<?>)$$1.getOrCreate(DSL.remainderFinder()));
+      return Pair.of((String)$$2.getFirst(), $$1.set(DSL.remainderFinder(), (Dynamic)$$2.getSecond()));
    }
+
+   protected abstract Pair<String, Dynamic<?>> a(String var1, Dynamic<?> var2);
 }

@@ -1,3 +1,5 @@
+import java.util.List;
+
 public interface ftu {
-   void a(ftr var1);
+   void a(List<czv<?>> var1);
 }

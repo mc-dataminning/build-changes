@@ -1,194 +1,151 @@
+import com.google.common.hash.HashCode;
+import com.google.common.hash.HashFunction;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.net.URI;
-import java.nio.channels.SeekableByteChannel;
-import java.nio.file.AccessDeniedException;
-import java.nio.file.AccessMode;
-import java.nio.file.CopyOption;
-import java.nio.file.DirectoryIteratorException;
-import java.nio.file.DirectoryStream;
-import java.nio.file.FileStore;
-import java.nio.file.FileSystem;
+import java.net.Proxy;
+import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.NotDirectoryException;
-import java.nio.file.OpenOption;
 import java.nio.file.Path;
-import java.nio.file.ProviderMismatchException;
-import java.nio.file.ReadOnlyFileSystemException;
-import java.nio.file.StandardOpenOption;
-import java.nio.file.DirectoryStream.Filter;
-import java.nio.file.attribute.BasicFileAttributeView;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileAttribute;
-import java.nio.file.attribute.FileAttributeView;
-import java.nio.file.spi.FileSystemProvider;
-import java.util.Iterator;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-class asz extends FileSystemProvider {
-   public static final String a = "x-mc-link";
+public class asz implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 20;
+   private final Path c;
+   private final bmr<asz.e> d;
+   private final bqd<Runnable> e = bqd.a(ad.i(), "download-queue");
 
-   @Override
-   public String getScheme() {
-      return "x-mc-link";
+   public asz(Path $$0) throws IOException {
+      this.c = $$0;
+      v.c($$0);
+      this.d = bmr.a(asz.e.a, $$0.resolve("log.json"));
+      asy.a($$0, 20);
    }
 
-   @Override
-   public FileSystem newFileSystem(URI $$0, Map<String, ?> $$1) {
-      throw new UnsupportedOperationException();
-   }
+   private asz.b b(asz.a $$0, Map<UUID, asz.c> $$1) {
+      asz.b $$2 = new asz.b();
+      $$1.forEach(
+         ($$2x, $$3) -> {
+            Path $$4 = this.c.resolve($$2x.toString());
+            Path $$5 = null;
 
-   @Override
-   public FileSystem getFileSystem(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public Path getPath(URI $$0) {
-      throw new UnsupportedOperationException();
-   }
-
-   @Override
-   public SeekableByteChannel newByteChannel(Path $$0, Set<? extends OpenOption> $$1, FileAttribute<?>... $$2) throws IOException {
-      if (!$$1.contains(StandardOpenOption.CREATE_NEW)
-         && !$$1.contains(StandardOpenOption.CREATE)
-         && !$$1.contains(StandardOpenOption.APPEND)
-         && !$$1.contains(StandardOpenOption.WRITE)) {
-         Path $$3 = a($$0).f().h();
-         if ($$3 == null) {
-            throw new NoSuchFileException($$0.toString());
-         } else {
-            return Files.newByteChannel($$3, $$1, $$2);
-         }
-      } else {
-         throw new UnsupportedOperationException();
-      }
-   }
-
-   @Override
-   public DirectoryStream<Path> newDirectoryStream(Path $$0, final Filter<? super Path> $$1) throws IOException {
-      final atb.a $$2 = a($$0).f().i();
-      if ($$2 == null) {
-         throw new NotDirectoryException($$0.toString());
-      } else {
-         return new DirectoryStream<Path>() {
-            @Override
-            public Iterator<Path> iterator() {
-               return $$2.a().values().stream().filter($$1xx -> {
-                  try {
-                     return $$1.accept($$1xx);
-                  } catch (IOException var3) {
-                     throw new DirectoryIteratorException(var3);
-                  }
-               }).map($$0 -> (Path)$$0).iterator();
+            try {
+               $$5 = ayt.a($$4, $$3.a, $$0.c, $$0.a, $$3.b, $$0.b, $$0.d, $$0.e);
+               $$2.a.put($$2x, $$5);
+            } catch (Exception var9) {
+               a.error("Failed to download {}", $$3.a, var9);
+               $$2.b.add($$2x);
             }
 
-            @Override
-            public void close() {
-            }
-         };
-      }
-   }
-
-   @Override
-   public void createDirectory(Path $$0, FileAttribute<?>... $$1) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void delete(Path $$0) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void copy(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public void move(Path $$0, Path $$1, CopyOption... $$2) {
-      throw new ReadOnlyFileSystemException();
-   }
-
-   @Override
-   public boolean isSameFile(Path $$0, Path $$1) {
-      return $$0 instanceof asy && $$1 instanceof asy && $$0.equals($$1);
-   }
-
-   @Override
-   public boolean isHidden(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public FileStore getFileStore(Path $$0) {
-      return a($$0).a().a();
-   }
-
-   @Override
-   public void checkAccess(Path $$0, AccessMode... $$1) throws IOException {
-      if ($$1.length == 0 && !a($$0).g()) {
-         throw new NoSuchFileException($$0.toString());
-      } else {
-         AccessMode[] var3 = $$1;
-         int var4 = $$1.length;
-         int var5 = 0;
-
-         while (var5 < var4) {
-            AccessMode $$2 = var3[var5];
-            switch ($$2) {
-               case READ:
-                  if (!a($$0).g()) {
-                     throw new NoSuchFileException($$0.toString());
-                  }
-               default:
-                  var5++;
-                  break;
-               case EXECUTE:
-               case WRITE:
-                  throw new AccessDeniedException($$2.toString());
+            try {
+               this.d
+                  .a(
+                     new asz.e(
+                        $$2x,
+                        $$3.a.toString(),
+                        Instant.now(),
+                        Optional.ofNullable($$3.b).map(HashCode::toString),
+                        $$5 != null ? this.a($$5) : Either.left("download_failed")
+                     )
+                  );
+            } catch (Exception var8) {
+               a.error("Failed to log download of {}", $$3.a, var8);
             }
          }
+      );
+      return $$2;
+   }
+
+   private Either<String, asz.d> a(Path $$0) {
+      try {
+         long $$1 = Files.size($$0);
+         Path $$2 = this.c.relativize($$0);
+         return Either.right(new asz.d($$2.toString(), $$1));
+      } catch (IOException var5) {
+         a.error("Failed to get file size of {}", $$0, var5);
+         return Either.left("no_access");
       }
    }
 
-   @Nullable
-   @Override
-   public <V extends FileAttributeView> V getFileAttributeView(Path $$0, Class<V> $$1, LinkOption... $$2) {
-      asy $$3 = a($$0);
-      return (V)($$1 == BasicFileAttributeView.class ? $$3.j() : null);
+   public CompletableFuture<asz.b> a(asz.a $$0, Map<UUID, asz.c> $$1) {
+      return CompletableFuture.supplyAsync(() -> this.b($$0, $$1), this.e::a);
    }
 
    @Override
-   public <A extends BasicFileAttributes> A readAttributes(Path $$0, Class<A> $$1, LinkOption... $$2) throws IOException {
-      asy $$3 = a($$0).f();
-      if ($$1 == BasicFileAttributes.class) {
-         return (A)$$3.k();
-      } else {
-         throw new UnsupportedOperationException("Attributes of type " + $$1.getName() + " not supported");
+   public void close() throws IOException {
+      this.e.close();
+      this.d.close();
+   }
+
+   public static record a(HashFunction a, int b, Map<String, String> c, Proxy d, ayt.a e) {
+   }
+
+   public static record b(Map<UUID, Path> a, Set<UUID> b) {
+
+      public b() {
+         this(new HashMap<>(), new HashSet<>());
       }
    }
 
-   @Override
-   public Map<String, Object> readAttributes(Path $$0, String $$1, LinkOption... $$2) {
-      throw new UnsupportedOperationException();
+   public static record c(URL a, @Nullable HashCode b) {
    }
 
-   @Override
-   public void setAttribute(Path $$0, String $$1, Object $$2, LinkOption... $$3) {
-      throw new ReadOnlyFileSystemException();
+   static record d(String b, long c) {
+      public static final Codec<asz.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(asz.d::a), Codec.LONG.fieldOf("size").forGetter(asz.d::b)).apply($$0, asz.d::new)
+      );
+
+      public String a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
+      }
    }
 
-   private static asy a(@Nullable Path $$0) {
-      if ($$0 == null) {
-         throw new NullPointerException();
-      } else if ($$0 instanceof asy) {
-         return (asy)$$0;
-      } else {
-         throw new ProviderMismatchException();
+   static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, asz.d> f) {
+      public static final Codec<asz.e> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  kh.d.fieldOf("id").forGetter(asz.e::a),
+                  Codec.STRING.fieldOf("url").forGetter(asz.e::b),
+                  ayl.o.fieldOf("time").forGetter(asz.e::c),
+                  Codec.STRING.optionalFieldOf("hash").forGetter(asz.e::d),
+                  Codec.mapEither(Codec.STRING.fieldOf("error"), asz.d.a.fieldOf("file")).forGetter(asz.e::e)
+               )
+               .apply($$0, asz.e::new)
+      );
+
+      public UUID a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public Instant c() {
+         return this.d;
+      }
+
+      public Optional<String> d() {
+         return this.e;
+      }
+
+      public Either<String, asz.d> e() {
+         return this.f;
       }
    }
 }

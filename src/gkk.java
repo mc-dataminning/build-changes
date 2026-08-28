@@ -1,185 +1,320 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gkk {
+public class gkk implements gkq.a {
    private static final Logger a = LogUtils.getLogger();
-   private static final Map<bsx<?>, gkj<?>> b = new Object2ObjectOpenHashMap();
-   private static final Map<grl.a, gkj<gdy>> c = Map.of(grl.a.b, $$0 -> new gpo($$0, false), grl.a.a, $$0 -> new gpo($$0, true));
+   private static final boolean b = true;
+   private static final boolean c = false;
+   private static final boolean d = false;
+   private static final boolean e = false;
+   private static final boolean f = false;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = false;
+   private static final boolean j = true;
+   private static final boolean k = false;
+   private static final boolean l = true;
+   private static final boolean m = true;
+   private static final boolean n = true;
+   private static final boolean o = true;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final boolean r = true;
+   private static final boolean s = true;
+   private static final boolean t = true;
+   private static final boolean u = true;
+   private static final boolean v = true;
+   private static final boolean w = true;
+   private static final int x = 30;
+   private static final int y = 30;
+   private static final int z = 8;
+   private static final float A = 0.02F;
+   private static final int B = -16711681;
+   private static final int C = -3355444;
+   private static final int D = -98404;
+   private static final int E = -23296;
+   private final fib F;
+   private final Map<je, gkk.a> G = Maps.newHashMap();
+   private final Map<UUID, aak.a> H = Maps.newHashMap();
+   @Nullable
+   private UUID I;
 
-   private static <T extends bsr> void a(bsx<? extends T> $$0, gkj<T> $$1) {
-      b.put($$0, $$1);
+   public gkk(fib $$0) {
+      this.F = $$0;
    }
 
-   public static Map<bsx<?>, gki<?>> a(gkj.a $$0) {
-      Builder<bsx<?>, gki<?>> $$1 = ImmutableMap.builder();
-      b.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create model for " + lt.f.b((bsx<?>)$$2), var5);
+   @Override
+   public void a() {
+      this.G.clear();
+      this.H.clear();
+      this.I = null;
+   }
+
+   public void a(gkk.a $$0) {
+      this.G.put($$0.a, $$0);
+   }
+
+   public void a(je $$0) {
+      this.G.remove($$0);
+   }
+
+   public void a(je $$0, int $$1) {
+      gkk.a $$2 = this.G.get($$0);
+      if ($$2 == null) {
+         a.warn("Strange, setFreeTicketCount was called for an unknown POI: {}", $$0);
+      } else {
+         $$2.c = $$1;
+      }
+   }
+
+   public void a(aak.a $$0) {
+      this.H.put($$0.a(), $$0);
+   }
+
+   public void a(int $$0) {
+      this.H.values().removeIf($$1 -> $$1.b() == $$0);
+   }
+
+   @Override
+   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
+      this.b();
+      this.b($$0, $$1, $$2, $$3, $$4);
+      if (!this.F.t.P_()) {
+         this.d();
+      }
+   }
+
+   private void b() {
+      this.H.entrySet().removeIf($$0 -> {
+         btj $$1 = this.F.s.a($$0.getValue().b());
+         return $$1 == null || $$1.dN();
+      });
+   }
+
+   private void b(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
+      je $$5 = je.a($$2, $$3, $$4);
+      this.H.values().forEach($$5x -> {
+         if (this.c($$5x)) {
+            this.b($$0, $$1, $$5x, $$2, $$3, $$4);
          }
       });
-      return $$1.build();
-   }
 
-   public static Map<grl.a, gki<? extends cmx>> b(gkj.a $$0) {
-      Builder<grl.a, gki<? extends cmx>> $$1 = ImmutableMap.builder();
-      c.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
-         }
-      });
-      return $$1.build();
-   }
-
-   public static boolean a() {
-      boolean $$0 = true;
-
-      for (bsx<?> $$1 : lt.f) {
-         if ($$1 != bsx.by && !b.containsKey($$1)) {
-            a.warn("No renderer registered for {}", lt.f.b($$1));
-            $$0 = false;
+      for (je $$6 : this.G.keySet()) {
+         if ($$5.a($$6, 30.0)) {
+            a($$0, $$1, $$6);
          }
       }
 
-      return !$$0;
+      this.G.values().forEach($$3x -> {
+         if ($$5.a($$3x.a, 30.0)) {
+            this.a($$0, $$1, $$3x);
+         }
+      });
+      this.c().forEach(($$3x, $$4x) -> {
+         if ($$5.a($$3x, 30.0)) {
+            this.a($$0, $$1, $$3x, $$4x);
+         }
+      });
    }
 
-   static {
-      a(bsx.a, gjf::new);
-      a(bsx.b, glr::new);
-      a(bsx.c, gjg::new);
-      a(bsx.d, gjh::new);
-      a(bsx.e, gmx::new);
-      a(bsx.f, gjj::new);
-      a(bsx.g, gjk::new);
-      a(bsx.h, gjl::new);
-      a(bsx.i, gjm::new);
-      a(bsx.j, gjy.a::new);
-      a(bsx.k, $$0 -> new gjn($$0, false));
-      a(bsx.l, gjo::new);
-      a(bsx.m, gjp::new);
-      a(bsx.n, gni::new);
-      a(bsx.p, gjr::new);
-      a(bsx.o, $$0 -> new gjq($$0, fyj.w));
-      a(bsx.q, gjs::new);
-      a(bsx.r, $$0 -> new gjn($$0, true));
-      a(bsx.s, $$0 -> new glo<>($$0, fyj.z));
-      a(bsx.t, gju::new);
-      a(bsx.u, gjv::new);
-      a(bsx.v, $$0 -> new glo<>($$0, fyj.C));
-      a(bsx.w, gjw::new);
-      a(bsx.x, gjx::new);
-      a(bsx.y, gjz::new);
-      a(bsx.z, $$0 -> new gjt<>($$0, 0.87F, fyj.O));
-      a(bsx.A, gka::new);
-      a(bsx.B, gkb::new);
-      a(bsx.C, gmv::new);
-      a(bsx.D, gkc::new);
-      a(bsx.H, gkf::new);
-      a(bsx.I, gkg::new);
-      a(bsx.F, gke::new);
-      a(bsx.G, gmv::new);
-      a(bsx.E, gkd::new);
-      a(bsx.J, gkm::new);
-      a(bsx.K, gkl::new);
-      a(bsx.L, gmv::new);
-      a(bsx.M, gkn::new);
-      a(bsx.N, $$0 -> new gmv<>($$0, 1.0F, true));
-      a(bsx.O, gko::new);
-      a(bsx.ak, $$0 -> new gmv<>($$0, 3.0F, true));
-      a(bsx.P, gkp::new);
-      a(bsx.bz, gkq::new);
-      a(bsx.Q, gkr::new);
-      a(bsx.R, gks::new);
-      a(bsx.S, $$0 -> new glo<>($$0, fyj.ag));
-      a(bsx.T, gkt::new);
-      a(bsx.U, $$0 -> new gku($$0, 6.0F));
-      a(bsx.V, glg::new);
-      a(bsx.W, $$0 -> new gkv($$0, new fxm<>($$0.a(fyj.al))));
-      a(bsx.X, gkw::new);
-      a(bsx.Y, gkx::new);
-      a(bsx.Z, gky::new);
-      a(bsx.aa, $$0 -> new glo<>($$0, fyj.ap));
-      a(bsx.ab, gkz::new);
-      a(bsx.ac, glb::new);
-      a(bsx.ad, gld::new);
-      a(bsx.ae, glr::new);
-      a(bsx.af, gle::new);
-      a(bsx.ag, glf::new);
-      a(bsx.ah, gjy.b::new);
-      a(bsx.ai, glg::new);
-      a(bsx.aj, glt::new);
-      a(bsx.al, gli::new);
-      a(bsx.am, glj::new);
-      a(bsx.an, $$0 -> new gll($$0, fyj.ay));
-      a(bsx.ao, glm::new);
-      a(bsx.ap, gln::new);
-      a(bsx.aq, glr::new);
-      a(bsx.ar, $$0 -> new glo<>($$0, fyj.aC));
-      a(bsx.as, glq::new);
-      a(bsx.at, $$0 -> new gjt<>($$0, 0.92F, fyj.aE));
-      a(bsx.au, gls::new);
-      a(bsx.av, glu::new);
-      a(bsx.aw, glv::new);
-      a(bsx.ax, glw::new);
-      a(bsx.ay, glx::new);
-      a(bsx.az, gly::new);
-      a(bsx.aA, $$0 -> new glz($$0, fyj.aK, fyj.aP, fyj.aQ, false));
-      a(bsx.aB, $$0 -> new glz($$0, fyj.aL, fyj.aM, fyj.aN, false));
-      a(bsx.aC, gma::new);
-      a(bsx.aD, gmb::new);
-      a(bsx.aE, gmv::new);
-      a(bsx.aF, gmc::new);
-      a(bsx.aG, gmd::new);
-      a(bsx.aH, gme::new);
-      a(bsx.aI, gmg::new);
-      a(bsx.aJ, gmh::new);
-      a(bsx.aK, gmj::new);
-      a(bsx.aL, gmi::new);
-      a(bsx.aM, gmk::new);
-      a(bsx.aN, gml::new);
-      a(bsx.aO, $$0 -> new gnc($$0, fyj.bp));
-      a(bsx.aP, gmm::new);
-      a(bsx.aQ, $$0 -> new gmv<>($$0, 0.75F, true));
-      a(bsx.aR, gmn::new);
-      a(bsx.aT, gmv::new);
-      a(bsx.aS, gmo::new);
-      a(bsx.aU, $$0 -> new glo<>($$0, fyj.bx));
-      a(bsx.aV, gmp::new);
-      a(bsx.aW, gmq::new);
-      a(bsx.aX, $$0 -> new gmr<>($$0, new fxm<>($$0.a(fyj.bz))));
-      a(bsx.aY, gms::new);
-      a(bsx.aZ, gmt::new);
-      a(bsx.ba, gmu::new);
-      a(bsx.bb, gjy.c::new);
-      a(bsx.bc, gmz::new);
-      a(bsx.bd, gmy::new);
-      a(bsx.be, $$0 -> new gll($$0, fyj.bI));
-      a(bsx.bf, gmw::new);
-      a(bsx.bg, gna::new);
-      a(bsx.bh, gnb::new);
-      a(bsx.bi, gnd::new);
-      a(bsx.bj, gne::new);
-      a(bsx.bk, gnf::new);
-      a(bsx.bm, gnh::new);
-      a(bsx.bl, gng::new);
-      a(bsx.bn, gni::new);
-      a(bsx.bo, gnj::new);
-      a(bsx.bp, gnk::new);
-      a(bsx.bq, gnl::new);
-      a(bsx.br, gnm::new);
-      a(bsx.bs, gnn::new);
-      a(bsx.bt, gno::new);
-      a(bsx.bu, gnp::new);
-      a(bsx.bv, $$0 -> new gnc($$0, fyj.ci));
-      a(bsx.bw, gnq::new);
-      a(bsx.bx, $$0 -> new glz($$0, fyj.co, fyj.cp, fyj.cq, true));
+   private static void a(fcu $$0, ggv $$1, je $$2) {
+      float $$3 = 0.05F;
+      gkq.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+   }
+
+   private void a(fcu $$0, ggv $$1, je $$2, List<String> $$3) {
+      float $$4 = 0.05F;
+      gkq.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+      a($$0, $$1, $$3 + "", $$2, 0, -256);
+      a($$0, $$1, "Ghost POI", $$2, 1, -65536);
+   }
+
+   private void a(fcu $$0, ggv $$1, gkk.a $$2) {
+      int $$3 = 0;
+      Set<String> $$4 = this.b($$2);
+      if ($$4.size() < 4) {
+         a($$0, $$1, "Owners: " + $$4, $$2, $$3, -256);
+      } else {
+         a($$0, $$1, $$4.size() + " ticket holders", $$2, $$3, -256);
+      }
+
+      $$3++;
+      Set<String> $$5 = this.c($$2);
+      if ($$5.size() < 4) {
+         a($$0, $$1, "Candidates: " + $$5, $$2, $$3, -23296);
+      } else {
+         a($$0, $$1, $$5.size() + " potential owners", $$2, $$3, -23296);
+      }
+
+      a($$0, $$1, "Free tickets: " + $$2.c, $$2, ++$$3, -256);
+      a($$0, $$1, $$2.b, $$2, ++$$3, -1);
+   }
+
+   private void a(fcu $$0, ggv $$1, aak.a $$2, double $$3, double $$4, double $$5) {
+      if ($$2.j() != null) {
+         gky.a($$0, $$1, $$2.j(), 0.5F, false, false, $$3, $$4, $$5);
+      }
+   }
+
+   private void b(fcu $$0, ggv $$1, aak.a $$2, double $$3, double $$4, double $$5) {
+      boolean $$6 = this.b($$2);
+      int $$7 = 0;
+      a($$0, $$1, $$2.h(), $$7, $$2.c(), -1, 0.03F);
+      $$7++;
+      if ($$6) {
+         a($$0, $$1, $$2.h(), $$7, $$2.d() + " " + $$2.e() + " xp", -1, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         int $$8 = $$2.f() < $$2.g() ? -23296 : -1;
+         a($$0, $$1, $$2.h(), $$7, "health: " + String.format(Locale.ROOT, "%.1f", $$2.f()) + " / " + String.format(Locale.ROOT, "%.1f", $$2.g()), $$8, 0.02F);
+         $$7++;
+      }
+
+      if ($$6 && !$$2.i().equals("")) {
+         a($$0, $$1, $$2.h(), $$7, $$2.i(), -98404, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         for (String $$9 : $$2.n()) {
+            a($$0, $$1, $$2.h(), $$7, $$9, -16711681, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         for (String $$10 : $$2.m()) {
+            a($$0, $$1, $$2.h(), $$7, $$10, -16711936, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$2.k()) {
+         a($$0, $$1, $$2.h(), $$7, "Wants Golem", -23296, 0.02F);
+         $$7++;
+      }
+
+      if ($$6 && $$2.l() != -1) {
+         a($$0, $$1, $$2.h(), $$7, "Anger Level: " + $$2.l(), -98404, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         for (String $$11 : $$2.p()) {
+            if ($$11.startsWith($$2.c())) {
+               a($$0, $$1, $$2.h(), $$7, $$11, -1, 0.02F);
+            } else {
+               a($$0, $$1, $$2.h(), $$7, $$11, -23296, 0.02F);
+            }
+
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         for (String $$12 : Lists.reverse($$2.o())) {
+            a($$0, $$1, $$2.h(), $$7, $$12, -3355444, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   private static void a(fcu $$0, ggv $$1, String $$2, gkk.a $$3, int $$4, int $$5) {
+      a($$0, $$1, $$2, $$3.a, $$4, $$5);
+   }
+
+   private static void a(fcu $$0, ggv $$1, String $$2, je $$3, int $$4, int $$5) {
+      double $$6 = 1.3;
+      double $$7 = 0.2;
+      double $$8 = (double)$$3.u() + 0.5;
+      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
+      double $$10 = (double)$$3.w() + 0.5;
+      gkq.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
+   }
+
+   private static void a(fcu $$0, ggv $$1, jx $$2, int $$3, String $$4, int $$5, float $$6) {
+      double $$7 = 2.4;
+      double $$8 = 0.25;
+      je $$9 = je.a($$2);
+      double $$10 = (double)$$9.u() + 0.5;
+      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
+      double $$12 = (double)$$9.w() + 0.5;
+      float $$13 = 0.5F;
+      gkq.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
+   }
+
+   private Set<String> b(gkk.a $$0) {
+      return this.b($$0.a).stream().map(agm::a).collect(Collectors.toSet());
+   }
+
+   private Set<String> c(gkk.a $$0) {
+      return this.c($$0.a).stream().map(agm::a).collect(Collectors.toSet());
+   }
+
+   private boolean b(aak.a $$0) {
+      return Objects.equals(this.I, $$0.a());
+   }
+
+   private boolean c(aak.a $$0) {
+      cnp $$1 = this.F.t;
+      je $$2 = je.a($$1.dx(), $$0.h().b(), $$1.dD());
+      je $$3 = je.a((jx)$$0.h());
+      return $$2.a($$3, 30.0);
+   }
+
+   private Collection<UUID> b(je $$0) {
+      return this.H.values().stream().filter($$1 -> $$1.a($$0)).map(aak.a::a).collect(Collectors.toSet());
+   }
+
+   private Collection<UUID> c(je $$0) {
+      return this.H.values().stream().filter($$1 -> $$1.b($$0)).map(aak.a::a).collect(Collectors.toSet());
+   }
+
+   private Map<je, List<String>> c() {
+      Map<je, List<String>> $$0 = Maps.newHashMap();
+
+      for (aak.a $$1 : this.H.values()) {
+         for (je $$2 : Iterables.concat($$1.q(), $$1.r())) {
+            if (!this.G.containsKey($$2)) {
+               $$0.computeIfAbsent($$2, $$0x -> Lists.newArrayList()).add($$1.c());
+            }
+         }
+      }
+
+      return $$0;
+   }
+
+   private void d() {
+      gkq.a(this.F.an(), 8).ifPresent($$0 -> this.I = $$0.cD());
+   }
+
+   public static class a {
+      public final je a;
+      public final String b;
+      public int c;
+
+      public a(je $$0, String $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
    }
 }

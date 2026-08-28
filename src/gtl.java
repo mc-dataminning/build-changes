@@ -1,16 +1,9 @@
-public class gtl extends gtn {
-   public gtl(cff $$0) {
-      super($$0, avp.bQ, avq.g);
-      this.j = 0;
-   }
-
-   @Override
-   protected gtj o() {
-      return new gtm(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.ad_();
-   }
+public class gtl extends gts {
+   public boolean b;
+   public boolean c;
+   public btz d = btz.b;
+   public ckc.a e = ckc.a.h;
+   public int f;
+   public int g;
+   public float h;
 }

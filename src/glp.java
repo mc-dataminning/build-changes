@@ -1,13 +1,23 @@
-public abstract class glp<T extends btp, M extends fvk<T>> extends glk<T, M> {
-   public glp(gkj.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+public class glp extends gln<che, gsa, fvw> {
+   private static final alb a = alb.b("textures/entity/armadillo.png");
+
+   public glp(gms.a $$0) {
+      super($$0, new fvw($$0.a(gaa.b)), new fvw($$0.a(gaa.c)), 0.4F);
    }
 
-   protected boolean a(T $$0) {
-      return super.b($$0) && ($$0.cF() || $$0.ai() && $$0 == this.d.c);
+   public alb a(gsa $$0) {
+      return a;
    }
 
-   protected float b(T $$0) {
-      return super.f($$0) * $$0.ea();
+   public gsa a() {
+      return new gsa();
+   }
+
+   public void a(che $$0, gsa $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.y();
+      $$1.d.a($$0.cf);
+      $$1.b.a($$0.cd);
+      $$1.c.a($$0.ce);
    }
 }

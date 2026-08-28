@@ -1,29 +1,23 @@
-public class zq implements zg<zm> {
-   public static final yx<vw, zq> a = zg.a(zq::a, zq::new);
-   private final long b;
+public interface zq extends abt {
+   void a(zu var1);
 
-   public zq(long $$0) {
-      this.b = $$0;
-   }
+   void a(zv var1);
 
-   private zq(vw $$0) {
-      this.b = $$0.readLong();
-   }
+   void a(zr var1);
 
-   private void a(vw $$0) {
-      $$0.b(this.b);
-   }
+   void a(zt var1);
 
-   @Override
-   public zi<zq> a() {
-      return zy.d;
-   }
+   void a(zx var1);
 
-   public void a(zm $$0) {
-      $$0.a(this);
-   }
+   void a(zw var1);
 
-   public long b() {
-      return this.b;
-   }
+   void a(aab var1);
+
+   void a(zz var1);
+
+   void a(aaa var1);
+
+   void a(zs var1);
+
+   void a(zy var1);
 }

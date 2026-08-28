@@ -9,10 +9,10 @@ public class bz extends dv<bz.a> {
       return bz.a.a;
    }
 
-   public void a(aqv $$0, exc $$1, @Nullable bsr $$2) {
-      exc $$3 = $$0.dm();
-      err $$4 = $$2 != null ? bv.b($$0, $$2) : null;
-      this.a($$0, $$4x -> $$4x.a($$0.A(), $$1, $$3, $$4));
+   public void a(arh $$0, eye $$1, @Nullable btj $$2) {
+      eye $$3 = $$0.dq();
+      est $$4 = $$2 != null ? bv.b($$0, $$2) : null;
+      this.a($$0, $$4x -> $$4x.a($$0.B(), $$1, $$3, $$4));
    }
 
    public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d, Optional<bg> e) implements dv.a {
@@ -36,11 +36,11 @@ public class bz extends dv<bz.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(aqu $$0, exc $$1, exc $$2, @Nullable err $$3) {
-         if (this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)) {
+      public boolean a(arg $$0, eye $$1, eye $$2, @Nullable est $$3) {
+         if (this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)) {
             return false;
          } else {
-            return this.d.isPresent() && !this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e)
+            return this.d.isPresent() && !this.d.get().a($$1.d, $$1.e, $$1.f, $$2.d, $$2.e, $$2.f)
                ? false
                : !this.e.isPresent() || $$3 != null && this.e.get().a($$3);
          }

@@ -1,80 +1,97 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmx extends dgh implements dgb, dkp {
+public class dmx extends dgv {
    public static final MapCodec<dmx> a = b(dmx::new);
-   protected static final float b = 6.0F;
-   protected static final exv c = dfy.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
+   public static final dur b = dna.d;
 
    @Override
    public MapCodec<dmx> a() {
       return a;
    }
 
-   protected dmx(dtb.d $$0) {
+   public dmx(dtz.d $$0) {
       super($$0);
+      this.l(this.o().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return c;
+   protected void a_(dua $$0, dds $$1, je $$2, cnp $$3) {
+      d($$0, $$1, $$2);
+      super.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.d($$1, $$2, ji.b) && !$$0.a(dga.kJ);
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awk.a) && $$1.e() == 8 ? super.a($$0) : null;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      dtc $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!$$6.i()) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   public void a(dds $$0, je $$1, dua $$2, btj $$3) {
+      if (!$$3.cb()) {
+         d($$2, $$0, $$1);
       }
 
-      return $$6;
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean b(dcz $$0, jd $$1, dtc $$2) {
-      return true;
+   protected brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
+      if ($$2.B) {
+         a($$2, $$3);
+      } else {
+         d($$1, $$2, $$3);
+      }
+
+      return (brk)($$0.h() instanceof ctl && new cyw($$4, $$5, $$0, $$6).b() ? brk.e : brk.a);
    }
 
-   @Override
-   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
-      return true;
-   }
-
-   @Override
-   protected epe b_(dtc $$0) {
-      return epf.c.a(false);
-   }
-
-   @Override
-   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
-      dtc $$4 = dga.bx.o();
-      dtc $$5 = $$4.a(dof.d, dty.a);
-      jd $$6 = $$2.d();
-      if ($$0.a_($$6).a(dga.G)) {
-         $$0.a($$2, $$4, 2);
-         $$0.a($$6, $$5, 2);
+   private static void d(dua $$0, dds $$1, je $$2) {
+      a($$1, $$2);
+      if (!$$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(true)), 3);
       }
    }
 
    @Override
-   public boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epd $$4) {
-      return false;
+   protected boolean f(dua $$0) {
+      return $$0.c(b);
    }
 
    @Override
-   public boolean a(dcx $$0, jd $$1, dtc $$2, epe $$3) {
-      return false;
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+      }
+   }
+
+   @Override
+   protected void a(dua $$0, arg $$1, je $$2, cvl $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bqv.a(1, 5));
+      }
+   }
+
+   @Override
+   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
+      if ($$0.c(b)) {
+         a($$1, $$2);
+      }
+   }
+
+   private static void a(dds $$0, je $$1) {
+      double $$2 = 0.5625;
+      azk $$3 = $$0.z;
+
+      for (jj $$4 : jj.values()) {
+         je $$5 = $$1.a($$4);
+         if (!$$0.a_($$5).s()) {
+            jj.a $$6 = $$4.o();
+            double $$7 = $$6 == jj.a.a ? 0.5 + 0.5625 * (double)$$4.j() : (double)$$3.i();
+            double $$8 = $$6 == jj.a.b ? 0.5 + 0.5625 * (double)$$4.k() : (double)$$3.i();
+            double $$9 = $$6 == jj.a.c ? 0.5 + 0.5625 * (double)$$4.l() : (double)$$3.i();
+            $$0.a(li.b, (double)$$1.u() + $$7, (double)$$1.v() + $$8, (double)$$1.w() + $$9, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b);
    }
 }

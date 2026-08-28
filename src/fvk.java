@@ -1,26 +1,49 @@
-import java.util.function.Function;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
 
-public abstract class fvk<T extends bsr> extends fwg {
-   public float c;
-   public boolean d;
-   public boolean e = true;
+public class fvk implements fvg, fvh {
+   private static final alb a = alb.b("spectator/teleport_to_player");
+   private static final Comparator<gbi> b = Comparator.comparing($$0 -> $$0.a().getId());
+   private static final xd c = xd.c("spectatorMenu.teleport");
+   private static final xd d = xd.c("spectatorMenu.teleport.prompt");
+   private final List<fvh> e;
 
-   protected fvk() {
-      this(gfh::e);
+   public fvk() {
+      this(fib.Q().L().l());
    }
 
-   protected fvk(Function<akr, gfh> $$0) {
-      super($$0);
+   public fvk(Collection<gbi> $$0) {
+      this.e = $$0.stream().filter($$0x -> $$0x.e() != ddp.d).sorted(b).map($$0x -> new fvd($$0x.a())).toList();
    }
 
-   public abstract void a(T var1, float var2, float var3, float var4, float var5, float var6);
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
+   @Override
+   public List<fvh> a() {
+      return this.e;
    }
 
-   public void a(fvk<T> $$0) {
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
+   @Override
+   public xd b() {
+      return d;
+   }
+
+   @Override
+   public void a(fvf $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public xd aU_() {
+      return c;
+   }
+
+   @Override
+   public void a(fjn $$0, float $$1, float $$2) {
+      $$0.a(ghe::C, a, 0, 0, 16, 16, axn.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aV_() {
+      return !this.e.isEmpty();
    }
 }

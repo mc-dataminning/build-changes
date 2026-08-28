@@ -1,29 +1,14 @@
-public class bos implements bot {
-   public static final bot a = new bos();
+import java.time.Duration;
+import jdk.jfr.consumer.RecordedEvent;
 
-   @Override
-   public void a() {
-   }
-
-   @Override
-   public void b() {
-   }
-
-   @Override
-   public void c() {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public bnf f() {
-      return bnc.a;
-   }
-
-   @Override
-   public void d() {
+public record bos(Duration a, dcy b, aqt c, dwx d, String e) implements bpb {
+   public static bos a(RecordedEvent $$0) {
+      return new bos(
+         $$0.getDuration(),
+         new dcy($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new aqt($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dwx.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

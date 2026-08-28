@@ -1,34 +1,37 @@
-public class agt implements zg<agi> {
-   public static final yx<vw, agt> a = zg.a(agt::a, agt::new);
-   private final agt.a b;
+public class agt implements zk<agq> {
+   public static final zb<wa, agt> a = zk.a(agt::a, agt::new);
+   private final int b;
+   private final je c;
 
-   public agt(agt.a $$0) {
+   public agt(int $$0, je $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private agt(vw $$0) {
-      this.b = $$0.b(agt.a.class);
+   private agt(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.e();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zi<agt> a() {
-      return agg.bo;
+   public zm<agt> a() {
+      return ago.bh;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public agt.a b() {
+   public int b() {
       return this.b;
    }
 
-   public static enum a {
-      a,
-      b;
+   public je e() {
+      return this.c;
    }
 }

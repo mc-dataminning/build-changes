@@ -1,111 +1,171 @@
-import java.util.function.Consumer;
+import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class ebz {
-   protected static double a(double $$0, double $$1, double $$2, double $$3) {
-      if ($$0 < $$3) {
-         $$0 = $$3;
-      }
-
-      double $$4 = 0.384;
-      double $$5 = $$0 / $$1 * 0.384;
-      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
-      double $$7 = Math.pow($$5, 0.6666666666666666);
-      double $$8 = 0.3333333333333333 * Math.log($$5);
-      double $$9 = $$2 * ($$6 - $$7 - $$8);
-      $$9 = Math.max($$9, 0.0);
-      return $$9 / 0.384 * $$1;
+public class ebz extends ecc<eby> {
+   public ebz(Codec<eby> $$0) {
+      super($$0);
    }
 
-   protected static boolean a(dds $$0, jd $$1, int $$2) {
-      if (b($$0, $$1)) {
-         return false;
-      } else {
-         float $$3 = 6.0F;
-         float $$4 = 6.0F / (float)$$2;
+   public boolean a(eby $$0, azk $$1) {
+      return $$1.i() <= $$0.l;
+   }
 
-         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
-            int $$6 = (int)(ayo.b($$5) * (float)$$2);
-            int $$7 = (int)(ayo.a($$5) * (float)$$2);
-            if (b($$0, $$1.b($$6, 0, $$7))) {
-               return false;
-            }
+   public boolean a(ebx $$0, eby $$1, dvw $$2, Function<je, jn<det>> $$3, azk $$4, dzi $$5, dcy $$6, dvv $$7) {
+      int $$8 = kg.c(this.d() * 2 - 1);
+      int $$9 = $$4.a($$4.a($$4.a(this.a()) + 1) + 1);
+
+      for (int $$10 = 0; $$10 < $$9; $$10++) {
+         double $$11 = (double)$$6.a($$4.a(16));
+         double $$12 = (double)$$1.e.a($$4, $$0);
+         double $$13 = (double)$$6.b($$4.a(16));
+         double $$14 = (double)$$1.b.a($$4);
+         double $$15 = (double)$$1.c.a($$4);
+         double $$16 = (double)$$1.j.a($$4);
+         ecc.a $$17 = ($$1x, $$2x, $$3x, $$4x, $$5x) -> a($$2x, $$3x, $$4x, $$16);
+         int $$18 = 1;
+         if ($$4.a(4) == 0) {
+            double $$19 = (double)$$1.f.a($$4);
+            float $$20 = 1.0F + $$4.i() * 6.0F;
+            this.a($$0, $$1, $$2, $$3, $$5, $$11, $$12, $$13, $$20, $$19, $$7, $$17);
+            $$18 += $$4.a(4);
          }
 
-         return true;
-      }
-   }
-
-   protected static boolean a(dcx $$0, jd $$1) {
-      return $$0.a($$1, ebz::c);
-   }
-
-   protected static boolean b(dcx $$0, jd $$1) {
-      return $$0.a($$1, ebz::e);
-   }
-
-   protected static void a(ji $$0, int $$1, boolean $$2, Consumer<dtc> $$3) {
-      if ($$1 >= 3) {
-         $$3.accept(a($$0, dtz.e));
-
-         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
-            $$3.accept(a($$0, dtz.d));
+         for (int $$21 = 0; $$21 < $$18; $$21++) {
+            float $$22 = $$4.i() * (float) (Math.PI * 2);
+            float $$23 = ($$4.i() - 0.5F) / 4.0F;
+            float $$24 = this.a($$4);
+            int $$25 = $$8 - $$4.a($$8 / 4);
+            int $$26 = 0;
+            this.a($$0, $$1, $$2, $$3, $$4.g(), $$5, $$11, $$12, $$13, $$14, $$15, $$24, $$22, $$23, 0, $$25, this.b(), $$7, $$17);
          }
       }
 
-      if ($$1 >= 2) {
-         $$3.accept(a($$0, dtz.c));
-      }
-
-      if ($$1 >= 1) {
-         $$3.accept(a($$0, $$2 ? dtz.a : dtz.b));
-      }
+      return true;
    }
 
-   protected static void a(dcx $$0, jd $$1, ji $$2, int $$3, boolean $$4) {
-      if (b($$0.a_($$1.a($$2.g())))) {
-         jd.a $$5 = $$1.k();
-         a($$2, $$3, $$4, $$3x -> {
-            if ($$3x.a(dga.st)) {
-               $$3x = $$3x.a(dlq.d, Boolean.valueOf($$0.z($$5)));
+   protected int a() {
+      return 15;
+   }
+
+   protected float a(azk $$0) {
+      float $$1 = $$0.i() * 2.0F + $$0.i();
+      if ($$0.a(10) == 0) {
+         $$1 *= $$0.i() * $$0.i() * 3.0F + 1.0F;
+      }
+
+      return $$1;
+   }
+
+   protected double b() {
+      return 1.0;
+   }
+
+   protected void a(
+      ebx $$0, eby $$1, dvw $$2, Function<je, jn<det>> $$3, dzi $$4, double $$5, double $$6, double $$7, float $$8, double $$9, dvv $$10, ecc.a $$11
+   ) {
+      double $$12 = 1.5 + (double)(azc.a((float) (Math.PI / 2)) * $$8);
+      double $$13 = $$12 * $$9;
+      this.a($$0, $$1, $$2, $$3, $$4, $$5 + 1.0, $$6, $$7, $$12, $$13, $$10, $$11);
+   }
+
+   protected void a(
+      ebx $$0,
+      eby $$1,
+      dvw $$2,
+      Function<je, jn<det>> $$3,
+      long $$4,
+      dzi $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      double $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      int $$14,
+      int $$15,
+      double $$16,
+      dvv $$17,
+      ecc.a $$18
+   ) {
+      azk $$19 = azk.a($$4);
+      int $$20 = $$19.a($$15 / 2) + $$15 / 4;
+      boolean $$21 = $$19.a(6) == 0;
+      float $$22 = 0.0F;
+      float $$23 = 0.0F;
+
+      for (int $$24 = $$14; $$24 < $$15; $$24++) {
+         double $$25 = 1.5 + (double)(azc.a((float) Math.PI * (float)$$24 / (float)$$15) * $$11);
+         double $$26 = $$25 * $$16;
+         float $$27 = azc.b($$13);
+         $$6 += (double)(azc.b($$12) * $$27);
+         $$7 += (double)azc.a($$13);
+         $$8 += (double)(azc.a($$12) * $$27);
+         $$13 *= $$21 ? 0.92F : 0.7F;
+         $$13 += $$23 * 0.1F;
+         $$12 += $$22 * 0.1F;
+         $$23 *= 0.9F;
+         $$22 *= 0.75F;
+         $$23 += ($$19.i() - $$19.i()) * $$19.i() * 2.0F;
+         $$22 += ($$19.i() - $$19.i()) * $$19.i() * 4.0F;
+         if ($$24 == $$20 && $$11 > 1.0F) {
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 - (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            this.a(
+               $$0,
+               $$1,
+               $$2,
+               $$3,
+               $$19.g(),
+               $$5,
+               $$6,
+               $$7,
+               $$8,
+               $$9,
+               $$10,
+               $$19.i() * 0.5F + 0.5F,
+               $$12 + (float) (Math.PI / 2),
+               $$13 / 3.0F,
+               $$24,
+               $$15,
+               1.0,
+               $$17,
+               $$18
+            );
+            return;
+         }
+
+         if ($$19.a(4) != 0) {
+            if (!a($$2.f(), $$6, $$8, $$24, $$15, $$11)) {
+               return;
             }
 
-            $$0.a($$5, $$3x, 2);
-            $$5.c($$2);
-         });
+            this.a($$0, $$1, $$2, $$3, $$5, $$6, $$7, $$8, $$25 * $$9, $$26 * $$10, $$17, $$18);
+         }
       }
    }
 
-   protected static boolean c(dcx $$0, jd $$1) {
-      dtc $$2 = $$0.a_($$1);
-      if ($$2.a(awe.bt)) {
-         $$0.a($$1, dga.su.o(), 2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private static dtc a(ji $$0, dtz $$1) {
-      return dga.st.o().a(dlq.b, $$0).a(dlq.c, $$1);
-   }
-
-   public static boolean a(dtc $$0) {
-      return b($$0) || $$0.a(dga.H);
-   }
-
-   public static boolean b(dtc $$0) {
-      return $$0.a(dga.su) || $$0.a(awe.bt);
-   }
-
-   public static boolean c(dtc $$0) {
-      return $$0.i() || $$0.a(dga.G);
-   }
-
-   public static boolean d(dtc $$0) {
-      return !$$0.i() && !$$0.a(dga.G);
-   }
-
-   public static boolean e(dtc $$0) {
-      return $$0.i() || $$0.a(dga.G) || $$0.a(dga.H);
+   private static boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return $$1 <= $$3 ? true : $$0 * $$0 + $$1 * $$1 + $$2 * $$2 >= 1.0;
    }
 }

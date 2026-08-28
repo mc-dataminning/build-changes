@@ -1,40 +1,9 @@
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import org.apache.commons.lang3.ArrayUtils;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import javax.annotation.meta.TypeQualifierDefault;
 
-public enum fad {
-   a("icons"),
-   b("icons", "snapshot");
-
-   private final String[] c;
-
-   private fad(final String... $$0) {
-      this.c = $$0;
-   }
-
-   public List<atw<InputStream>> a(asq $$0) throws IOException {
-      return List.of(
-         this.a($$0, "icon_16x16.png"),
-         this.a($$0, "icon_32x32.png"),
-         this.a($$0, "icon_48x48.png"),
-         this.a($$0, "icon_128x128.png"),
-         this.a($$0, "icon_256x256.png")
-      );
-   }
-
-   public atw<InputStream> b(asq $$0) throws IOException {
-      return this.a($$0, "minecraft.icns");
-   }
-
-   private atw<InputStream> a(asq $$0, String $$1) throws IOException {
-      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
-      atw<InputStream> $$3 = $$0.a($$2);
-      if ($$3 == null) {
-         throw new FileNotFoundException(String.join("/", $$2));
-      } else {
-         return $$3;
-      }
-   }
+@TypeQualifierDefault({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.CLASS)
+public @interface fad {
 }

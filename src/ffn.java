@@ -1,56 +1,62 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class ffn extends hct {
+   private final fpt a;
+   private final ffn.a b;
+   private fkt c = fkt.a;
 
-public abstract class ffn implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
-
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
-      }
+   public ffn(fev $$0, fpt $$1) {
+      super(fhs.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   public static void a(fod $$0) {
-      fgo $$1 = fgo.Q();
-      $$1.execute(() -> $$1.a($$0));
+   public ffn(xd $$0, fpt $$1) {
+      super(fhs.a);
+      this.a = $$1;
+      this.b = a($$0);
    }
 
-   protected void a(wz $$0) {
-      this.b();
-      fgo $$1 = fgo.Q();
-      $$1.execute(() -> $$1.a(new feb($$0, new fbt(new fof()))));
+   public ffn(xd $$0, xd $$1, fpt $$2) {
+      super(fhs.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
    }
 
-   protected void a(Exception $$0) {
-      if ($$0 instanceof fdj $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wz.b($$0.getMessage()));
-      }
+   private static ffn.a a(fev $$0) {
+      fdm $$1 = $$0.a;
+      return a(xd.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
    }
 
-   protected void a(fdj $$0) {
-      this.a($$0.a.b());
+   private static ffn.a a(xd $$0) {
+      return a(xd.c("mco.errorMessage.generic"), $$0);
    }
 
-   public abstract wz a();
-
-   public boolean d() {
-      return this.c;
+   private static ffn.a a(xd $$0, xd $$1) {
+      return new ffn.a($$0, $$1);
    }
 
-   public void c() {
+   @Override
+   public void aT_() {
+      this.c(fka.a(xc.h, $$0 -> this.d()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+      this.c = fkt.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
-   public void e() {
+   @Override
+   public void d() {
+      this.m.a(this.a);
    }
 
-   public void b() {
-      this.c = true;
+   @Override
+   public xd i() {
+      return xd.i().b(this.b.a).f(": ").b(this.b.b);
+   }
+
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
+      this.c.a($$0, this.n / 2, 100, 9, -2142128);
+   }
+
+   static record a(xd a, xd b) {
    }
 }

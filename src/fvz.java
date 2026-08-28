@@ -1,68 +1,64 @@
-public class fvz<T extends cfq> extends fvt<T> {
-   private final fyk a;
-   private final fyk b;
-   private final fyk f;
-   private final fyk g;
-   private final fyk h;
-   private final fyk i;
+public class fvz extends fvy {
+   private static final String a = "right_body_stick";
+   private static final String b = "left_body_stick";
+   private static final String c = "shoulder_stick";
+   private static final String d = "base_plate";
+   private final gab e;
+   private final gab f;
+   private final gab g;
+   private final gab w;
 
-   public fvz(fyk $$0) {
-      this.a = $$0;
-      this.b = $$0.b("head");
-      this.f = $$0.b("right_arm");
-      this.g = $$0.b("left_arm");
-      this.h = $$0.b("right_leg");
-      this.i = $$0.b("left_leg");
+   public fvz(gab $$0) {
+      super($$0);
+      this.e = $$0.b("right_body_stick");
+      this.f = $$0.b("left_body_stick");
+      this.g = $$0.b("shoulder_stick");
+      this.w = $$0.b("base_plate");
+      this.p.k = false;
    }
 
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      $$1.a("head", fyp.c().a(0, 0).a(-4.0F, -12.0F, -5.5F, 8.0F, 10.0F, 8.0F).a(24, 0).a(-1.0F, -5.0F, -7.5F, 2.0F, 4.0F, 2.0F), fym.a(0.0F, -7.0F, -2.0F));
-      $$1.a(
-         "body",
-         fyp.c().a(0, 40).a(-9.0F, -2.0F, -6.0F, 18.0F, 12.0F, 11.0F).a(0, 70).a(-4.5F, 10.0F, -3.0F, 9.0F, 5.0F, 6.0F, new fyo(0.5F)),
-         fym.a(0.0F, -7.0F, 0.0F)
-      );
-      $$1.a("right_arm", fyp.c().a(60, 21).a(-13.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fym.a(0.0F, -7.0F, 0.0F));
-      $$1.a("left_arm", fyp.c().a(60, 58).a(9.0F, -2.5F, -3.0F, 4.0F, 30.0F, 6.0F), fym.a(0.0F, -7.0F, 0.0F));
-      $$1.a("right_leg", fyp.c().a(37, 0).a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fym.a(-4.0F, 11.0F, 0.0F));
-      $$1.a("left_leg", fyp.c().a(60, 0).a().a(-3.5F, -3.0F, -3.0F, 6.0F, 16.0F, 5.0F), fym.a(5.0F, 11.0F, 0.0F));
-      return fyq.a($$0, 128, 128);
+   public static gah b() {
+      gaj $$0 = fxn.a(gaf.a, 0.0F);
+      gal $$1 = $$0.a();
+      $$1.a("head", gag.c().a(0, 0).a(-1.0F, -7.0F, -1.0F, 2.0F, 7.0F, 2.0F), gad.a(0.0F, 1.0F, 0.0F));
+      $$1.a("body", gag.c().a(0, 26).a(-6.0F, 0.0F, -1.5F, 12.0F, 3.0F, 3.0F), gad.a);
+      $$1.a("right_arm", gag.c().a(24, 0).a(-2.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gad.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", gag.c().a(32, 16).a().a(0.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gad.a(5.0F, 2.0F, 0.0F));
+      $$1.a("right_leg", gag.c().a(8, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gad.a(-1.9F, 12.0F, 0.0F));
+      $$1.a("left_leg", gag.c().a(40, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 11.0F, 2.0F), gad.a(1.9F, 12.0F, 0.0F));
+      $$1.a("right_body_stick", gag.c().a(16, 0).a(-3.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gad.a);
+      $$1.a("left_body_stick", gag.c().a(48, 16).a(1.0F, 3.0F, -1.0F, 2.0F, 7.0F, 2.0F), gad.a);
+      $$1.a("shoulder_stick", gag.c().a(0, 48).a(-4.0F, 10.0F, -1.0F, 8.0F, 2.0F, 2.0F), gad.a);
+      $$1.a("base_plate", gag.c().a(0, 32).a(-6.0F, 11.0F, -6.0F, 12.0F, 1.0F, 12.0F), gad.a(0.0F, 12.0F, 0.0F));
+      return gah.a($$0, 64, 64);
    }
 
    @Override
-   public fyk a() {
-      return this.a;
+   public void a(gsb $$0) {
+      this.w.e = 0.0F;
+      this.w.f = (float) (Math.PI / 180.0) * -$$0.a;
+      this.w.g = 0.0F;
+      super.a($$0);
+      this.s.k = $$0.e;
+      this.r.k = $$0.e;
+      this.w.k = $$0.f;
+      this.e.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.e.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.e.g = (float) (Math.PI / 180.0) * $$0.h.d();
+      this.f.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.f.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.f.g = (float) (Math.PI / 180.0) * $$0.h.d();
+      this.g.e = (float) (Math.PI / 180.0) * $$0.h.b();
+      this.g.f = (float) (Math.PI / 180.0) * $$0.h.c();
+      this.g.g = (float) (Math.PI / 180.0) * $$0.h.d();
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.h.e = -1.5F * ayo.e($$1, 13.0F) * $$2;
-      this.i.e = 1.5F * ayo.e($$1, 13.0F) * $$2;
-      this.h.f = 0.0F;
-      this.i.f = 0.0F;
-   }
-
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      int $$4 = $$0.x();
-      if ($$4 > 0) {
-         this.f.e = -2.0F + 1.5F * ayo.e((float)$$4 - $$3, 10.0F);
-         this.g.e = -2.0F + 1.5F * ayo.e((float)$$4 - $$3, 10.0F);
-      } else {
-         int $$5 = $$0.gk();
-         if ($$5 > 0) {
-            this.f.e = -0.8F + 0.025F * ayo.e((float)$$5, 70.0F);
-            this.g.e = 0.0F;
-         } else {
-            this.f.e = (-0.2F + 1.5F * ayo.e($$1, 13.0F)) * $$2;
-            this.g.e = (-0.2F - 1.5F * ayo.e($$1, 13.0F)) * $$2;
-         }
-      }
-   }
-
-   public fyk c() {
-      return this.f;
+   @Override
+   public void a(btz $$0, fcu $$1) {
+      gab $$2 = this.a($$0);
+      boolean $$3 = $$2.k;
+      $$2.k = true;
+      super.a($$0, $$1);
+      $$2.k = $$3;
    }
 }

@@ -1,84 +1,93 @@
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class ets extends ete {
+public class ets extends eug {
    public static final MapCodec<ets> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  Codec.unboundedMap(dac.c, evz.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
+                  lu.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dvd::f).toList())
                )
             )
             .apply($$0, ets::new)
    );
-   private final Map<jm<dac>, evy> b;
-   private final boolean c;
+   private final jn<dgv> b;
+   private final Set<dvd<?>> c;
 
-   ets(List<evc> $$0, Map<jm<dac>, evy> $$1, boolean $$2) {
+   ets(List<ewe> $$0, jn<dgv> $$1, Set<dvd<?>> $$2) {
       super($$0);
-      this.b = Map.copyOf($$1);
+      this.b = $$1;
       this.c = $$2;
    }
 
-   @Override
-   public etg<ets> b() {
-      return eth.i;
+   private ets(List<ewe> $$0, jn<dgv> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public Set<euk<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public eui<ets> b() {
+      return euj.D;
    }
 
    @Override
-   public cuq a(cuq $$0, err $$1) {
-      if ($$0.a(cut.qP)) {
-         $$0 = $$0.a((dcv)cut.uw);
-         $$0.b(kq.y, $$0.c(kq.k));
+   public Set<evm<?>> a() {
+      return ImmutableSet.of(evp.g);
+   }
+
+   @Override
+   protected cvl a(cvl $$0, est $$1) {
+      dua $$2 = $$1.c(evp.g);
+      if ($$2 != null) {
+         $$0.a(kr.ae, cxw.a, $$1x -> {
+            for (dvd<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
       }
 
-      dae.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jm<dac>)$$2, ayo.a($$1x.a((jm<dac>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jm<dac>)$$2, ayo.a($$3.a($$1), 0, 255)));
-         }
-      });
       return $$0;
    }
 
-   public static class a extends ete.a<ets.a> {
-      private final Builder<jm<dac>, evy> a = ImmutableMap.builder();
-      private final boolean b;
+   public static ets.a a(dgv $$0) {
+      return new ets.a($$0);
+   }
 
-      public a() {
-         this(false);
+   public static class a extends eug.a<ets.a> {
+      private final jn<dgv> a;
+      private final Builder<dvd<?>> b = ImmutableSet.builder();
+
+      a(dgv $$0) {
+         this.a = $$0.s();
       }
 
-      public a(boolean $$0) {
-         this.b = $$0;
+      public ets.a a(dvd<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected ets.a a() {
          return this;
       }
 
-      public ets.a a(jm<dac> $$0, evy $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
       @Override
-      public etf b() {
-         return new ets(this.g(), this.a.build(), this.b);
+      public euh b() {
+         return new ets(this.g(), this.a, this.b.build());
       }
    }
 }

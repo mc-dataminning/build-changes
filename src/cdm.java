@@ -1,30 +1,8 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cdm extends cdy<btn> {
-   @Override
-   public Set<ccs<?>> a() {
-      return ImmutableSet.of(ccs.x, ccs.y);
-   }
-
-   @Override
-   protected void a(aqu $$0, btn $$1) {
-      buq<?> $$2 = $$1.dT();
-      brk $$3 = $$1.ey();
-      if ($$3 != null) {
-         $$2.a(ccs.x, $$1.ey());
-         bsr $$4 = $$3.d();
-         if ($$4 instanceof btn) {
-            $$2.a(ccs.y, (btn)$$4);
-         }
-      } else {
-         $$2.b(ccs.x);
-      }
-
-      $$2.c(ccs.y).ifPresent($$2x -> {
-         if (!$$2x.bE() || $$2x.dO() != $$0) {
-            $$2.b(ccs.y);
-         }
-      });
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cdm {
 }

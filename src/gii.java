@@ -1,66 +1,96 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
 public class gii {
-   private static final int a = axy.b.a(255, 255, 100, 255);
-   private static final int b = axy.b.a(255, 100, 255, 255);
-   private static final int c = axy.b.a(255, 0, 255, 0);
-   private static final int d = axy.b.a(255, 255, 165, 0);
-   private static final int e = axy.b.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final fgo h;
-   private final Map<Integer, aai.a> i = new HashMap<>();
+   public static final gii a = new gii(new Vector3f(), new Vector3f(), new Vector3f(1.0F, 1.0F, 1.0F));
+   public final Vector3f b;
+   public final Vector3f c;
+   public final Vector3f d;
 
-   public gii(fgo $$0) {
-      this.h = $$0;
+   public gii(Vector3f $$0, Vector3f $$1, Vector3f $$2) {
+      this.b = new Vector3f($$0);
+      this.c = new Vector3f($$1);
+      this.d = new Vector3f($$2);
    }
 
-   public void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4) {
-      geb $$5 = this.h.s;
-      $$5.dO().a(bsx.m, $$5.cK().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<aai.a> $$7 = Optional.ofNullable(this.i.get($$6.an()));
-         $$7.map(aai.a::d).map($$1xx -> $$5.dO().a($$1xx)).map($$0xx -> $$0xx.m(this.h.at().a(true))).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dm(), $$6x, b);
-            exc $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gfh.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gfh.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gfh.a(2.0)), $$7x, 20.0F, e);
-         });
-         $$7.map(aai.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dm(), $$6x.b(), a);
-            gim.a($$0, $$1, ewx.a(exc.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
+   public void a(boolean $$0, fcu $$1) {
+      if (this != a) {
+         float $$2 = this.b.x();
+         float $$3 = this.b.y();
+         float $$4 = this.b.z();
+         if ($$0) {
+            $$3 = -$$3;
+            $$4 = -$$4;
+         }
+
+         int $$5 = $$0 ? -1 : 1;
+         $$1.a((float)$$5 * this.c.x(), this.c.y(), this.c.z());
+         $$1.a(new Quaternionf().rotationXYZ($$2 * (float) (Math.PI / 180.0), $$3 * (float) (Math.PI / 180.0), $$4 * (float) (Math.PI / 180.0)));
+         $$1.b(this.d.x(), this.d.y(), this.d.z());
+      }
    }
 
-   private static void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4, exc $$5, exc $$6, int $$7) {
-      fbm $$8 = $$1.getBuffer(gfh.a(2.0));
-      $$8.a($$0.c(), (float)($$5.c - $$2), (float)($$5.d - $$3), (float)($$5.e - $$4)).a($$7);
-      $$8.a($$0.c(), (float)($$6.c - $$2), (float)($$6.d - $$3), (float)($$6.e - $$4)).a($$7);
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (this.getClass() != $$0.getClass()) {
+         return false;
+      } else {
+         gii $$1 = (gii)$$0;
+         return this.b.equals($$1.b) && this.d.equals($$1.d) && this.c.equals($$1.c);
+      }
    }
 
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fbm $$4, exc $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   @Override
+   public int hashCode() {
+      int $$0 = this.b.hashCode();
+      $$0 = 31 * $$0 + this.c.hashCode();
+      return 31 * $$0 + this.d.hashCode();
+   }
+
+   protected static class a implements JsonDeserializer<gii> {
+      private static final Vector3f c = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f d = new Vector3f(0.0F, 0.0F, 0.0F);
+      private static final Vector3f e = new Vector3f(1.0F, 1.0F, 1.0F);
+      public static final float a = 5.0F;
+      public static final float b = 4.0F;
+
+      public gii a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.a($$3, "rotation", c);
+         Vector3f $$5 = this.a($$3, "translation", d);
+         $$5.mul(0.0625F);
+         $$5.set(azc.a($$5.x, -5.0F, 5.0F), azc.a($$5.y, -5.0F, 5.0F), azc.a($$5.z, -5.0F, 5.0F));
+         Vector3f $$6 = this.a($$3, "scale", e);
+         $$6.set(azc.a($$6.x, -4.0F, 4.0F), azc.a($$6.y, -4.0F, 4.0F), azc.a($$6.z, -4.0F, 4.0F));
+         return new gii($$4, $$5, $$6);
       }
 
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
+      private Vector3f a(JsonObject $$0, String $$1, Vector3f $$2) {
+         if (!$$0.has($$1)) {
+            return $$2;
+         } else {
+            JsonArray $$3 = ays.v($$0, $$1);
+            if ($$3.size() != 3) {
+               throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$3.size());
+            } else {
+               float[] $$4 = new float[3];
 
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fbm $$5, exc $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      exc $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.c - $$2), (float)($$10.d - $$3), (float)($$10.e - $$4)).a($$8);
-   }
+               for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+                  $$4[$$5] = ays.e($$3.get($$5), $$1 + "[" + $$5 + "]");
+               }
 
-   public void a() {
-      this.i.clear();
-   }
-
-   public void a(aai.a $$0) {
-      this.i.put($$0.c(), $$0);
+               return new Vector3f($$4[0], $$4[1], $$4[2]);
+            }
+         }
+      }
    }
 }

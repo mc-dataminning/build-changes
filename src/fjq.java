@@ -1,23 +1,38 @@
-public class fjq {
-   public static final fjq a = new fjq("Merry X-mas!");
-   public static final fjq b = new fjq("Happy new year!");
-   public static final fjq c = new fjq("OOoooOOOoooo! Spooky!");
-   private static final int d = 123;
-   private static final int e = 69;
-   private final String f;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-   public fjq(String $$0) {
-      this.f = $$0;
+public class fjq {
+   public static final float a = 200.0F;
+   private final List<fjq.a> b = new ArrayList<>();
+
+   public fjq a(fjq.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   public void a(fhz $$0, int $$1, fhx $$2, int $$3) {
+   public fjq a(fjq $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
+   }
+
+   public void a(fjn $$0, fhr $$1) {
       $$0.c().a();
-      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
-      $$0.c().a(a.f.rotationDegrees(-20.0F));
-      float $$4 = 1.8F - ayo.e(ayo.a((float)(ad.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
-      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
-      $$0.c().b($$4, $$4, $$4);
-      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      this.b($$0, $$1);
       $$0.c().b();
+   }
+
+   private void b(fjn $$0, fhr $$1) {
+      for (fjq.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
+      }
+   }
+
+   public interface a {
+      void render(fjn var1, fhr var2);
    }
 }

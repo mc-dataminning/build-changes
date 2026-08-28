@@ -1,35 +1,45 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.function.Consumer;
 
-public class etc extends ete {
-   public static final MapCodec<etc> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(erq.a.fieldOf("limit").forGetter($$0x -> $$0x.b)).apply($$0, etc::new));
-   private final erq b;
+public abstract class etc extends etj {
+   protected final List<etj> d;
+   private final etb a;
 
-   private etc(List<evc> $$0, erq $$1) {
-      super($$0);
-      this.b = $$1;
+   protected etc(List<etj> $$0, List<ewe> $$1) {
+      super($$1);
+      this.d = $$0;
+      this.a = this.a($$0);
    }
 
    @Override
-   public etg<etc> b() {
-      return eth.w;
+   public void a(esz $$0) {
+      super.a($$0);
+      if (this.d.isEmpty()) {
+         $$0.b("Empty children list");
+      }
+
+      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
+         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
+      }
    }
+
+   protected abstract etb a(List<? extends etb> var1);
 
    @Override
-   public Set<euk<?>> a() {
-      return this.b.a();
+   public final boolean expand(est $$0, Consumer<eti> $$1) {
+      return !this.a($$0) ? false : this.a.expand($$0, $$1);
    }
 
-   @Override
-   public cuq a(cuq $$0, err $$1) {
-      int $$2 = this.b.a($$1, $$0.H());
-      $$0.e($$2);
-      return $$0;
+   public static <T extends etc> MapCodec<T> a(etc.a<T> $$0) {
+      return RecordCodecBuilder.mapCodec(
+         $$1 -> $$1.group(eth.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
+      );
    }
 
-   public static ete.a<?> a(erq $$0) {
-      return a($$1 -> new etc($$1, $$0));
+   @FunctionalInterface
+   public interface a<T extends etc> {
+      T create(List<etj> var1, List<ewe> var2);
    }
 }

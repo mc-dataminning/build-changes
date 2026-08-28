@@ -1,64 +1,59 @@
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Splitter;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class giq implements gim.a {
-   private final fgo a;
-   private static final int b = 2;
-   private static final float c = 0.09375F;
+public class giq implements gip {
+   private static final Splitter a = Splitter.on('|').omitEmptyStrings();
+   private final String d;
+   private final String e;
 
-   public giq(fgo $$0) {
-      this.a = $$0;
+   public giq(String $$0, String $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4) {
-      dcx $$5 = this.a.r;
-      fbm $$6 = $$1.getBuffer(gfh.A());
-      jd $$7 = jd.a($$2, 0.0, $$4);
+   public Predicate<dua> getPredicate(dub<dgv, dua> $$0) {
+      dvd<?> $$1 = $$0.a(this.d);
+      if ($$1 == null) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown property '%s' on '%s'", this.d, $$0.c()));
+      } else {
+         String $$2 = this.e;
+         boolean $$3 = !$$2.isEmpty() && $$2.charAt(0) == '!';
+         if ($$3) {
+            $$2 = $$2.substring(1);
+         }
 
-      for (int $$8 = -2; $$8 <= 2; $$8++) {
-         for (int $$9 = -2; $$9 <= 2; $$9++) {
-            duy $$10 = $$5.y($$7.b($$8 * 16, 0, $$9 * 16));
-
-            for (Entry<dyy.a, dyy> $$11 : $$10.e()) {
-               dyy.a $$12 = $$11.getKey();
-               dcd $$13 = $$10.f();
-               Vector3f $$14 = this.a($$12);
-
-               for (int $$15 = 0; $$15 < 16; $$15++) {
-                  for (int $$16 = 0; $$16 < 16; $$16++) {
-                     int $$17 = kf.a($$13.e, $$15);
-                     int $$18 = kf.a($$13.f, $$16);
-                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
-                     gex.b(
-                        $$0,
-                        $$6,
-                        (double)((float)$$17 + 0.25F) - $$2,
-                        (double)$$19,
-                        (double)((float)$$18 + 0.25F) - $$4,
-                        (double)((float)$$17 + 0.75F) - $$2,
-                        (double)($$19 + 0.09375F),
-                        (double)((float)$$18 + 0.75F) - $$4,
-                        $$14.x(),
-                        $$14.y(),
-                        $$14.z(),
-                        1.0F
-                     );
-                  }
-               }
+         List<String> $$4 = a.splitToList($$2);
+         if ($$4.isEmpty()) {
+            throw new RuntimeException(String.format(Locale.ROOT, "Empty value '%s' for property '%s' on '%s'", this.e, this.d, $$0.c()));
+         } else {
+            Predicate<dua> $$5;
+            if ($$4.size() == 1) {
+               $$5 = this.a($$0, $$1, $$2);
+            } else {
+               $$5 = ad.b($$4.stream().map($$2x -> this.a($$0, $$1, $$2x)).toList());
             }
+
+            return $$3 ? $$5.negate() : $$5;
          }
       }
    }
 
-   private Vector3f a(dyy.a $$0) {
-      return switch ($$0) {
-         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
-         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
-         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
-         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
-         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
-         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
-      };
+   private Predicate<dua> a(dub<dgv, dua> $$0, dvd<?> $$1, String $$2) {
+      Optional<?> $$3 = $$1.b($$2);
+      if ($$3.isEmpty()) {
+         throw new RuntimeException(String.format(Locale.ROOT, "Unknown value '%s' for property '%s' on '%s' in '%s'", $$2, this.d, $$0.c(), this.e));
+      } else {
+         return $$2x -> $$2x.c($$1).equals($$3.get());
+      }
+   }
+
+   @Override
+   public String toString() {
+      return MoreObjects.toStringHelper(this).add("key", this.d).add("value", this.e).toString();
    }
 }

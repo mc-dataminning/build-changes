@@ -1,72 +1,65 @@
 public class qu {
-   @Deprecated
-   public static final eoh.a a = new eoh.a(-3, 1.0, 1.0, 1.0, 0.0);
+   public static final ala<eca<?>> a = a("cave");
+   public static final ala<eca<?>> b = a("cave_extra_underground");
+   public static final ala<eca<?>> c = a("canyon");
+   public static final ala<eca<?>> d = a("nether_cave");
 
-   public static void a(qq<eoh.a> $$0) {
-      a($$0, 0, dzh.a, dzh.b, dzh.c, dzh.d);
-      a($$0, -2, dzh.e, dzh.f, dzh.g, dzh.h);
-      a($$0, dzh.i, -7, 1.0, 2.0, 1.0, 0.0, 0.0, 0.0);
-      $$0.a(dzh.j, a);
-      a($$0, dzh.k, -3, 1.0);
-      a($$0, dzh.l, -7, 1.0);
-      a($$0, dzh.m, -1, 1.0);
-      a($$0, dzh.n, -5, 1.0);
-      a($$0, dzh.o, -7, 1.0, 1.0);
-      a($$0, dzh.p, -8, 1.0);
-      a($$0, dzh.q, -8, 1.0);
-      a($$0, dzh.r, -7, 1.0);
-      a($$0, dzh.s, -8, 1.0);
-      a($$0, dzh.t, -11, 1.0);
-      a($$0, dzh.u, -11, 1.0);
-      a($$0, dzh.v, -7, 1.0);
-      a($$0, dzh.w, -7, 1.0);
-      a($$0, dzh.x, -11, 1.0);
-      a($$0, dzh.y, -8, 1.0);
-      a($$0, dzh.z, -5, 1.0);
-      a($$0, dzh.A, -8, 1.0);
-      a($$0, dzh.B, -7, 0.4, 0.5, 1.0);
-      a($$0, dzh.C, -8, 1.0);
-      a($$0, dzh.D, -8, 0.5, 1.0, 2.0, 1.0, 2.0, 1.0, 0.0, 2.0, 0.0);
-      a($$0, dzh.E, -8, 1.0);
-      a($$0, dzh.F, -7, 1.0);
-      a($$0, dzh.G, -7, 1.0);
-      a($$0, dzh.H, -5, 1.0);
-      a($$0, dzh.I, -8, 1.0);
-      a($$0, dzh.J, -8, 1.0);
-      a($$0, dzh.K, -7, 1.0);
-      a($$0, dzh.L, -7, 1.0);
-      a($$0, dzh.M, -16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.N, -6, 1.0, 1.0, 1.0);
-      a($$0, dzh.O, -6, 1.0, 1.0, 0.0, 1.0);
-      a($$0, dzh.P, -8, 1.0);
-      a($$0, dzh.Q, -2, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.R, -8, 1.0);
-      a($$0, dzh.S, -6, 1.0, 1.0, 1.0);
-      a($$0, dzh.T, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.U, -3, 1.0);
-      a($$0, dzh.V, -6, 1.0, 1.0, 1.0);
-      a($$0, dzh.W, -2, 1.0);
-      a($$0, dzh.X, -9, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.Y, -8, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.Z, -6, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.aa, -7, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.ab, -4, 1.0, 1.0, 1.0, 1.0);
-      a($$0, dzh.ac, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dzh.ad, -8, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dzh.ae, -5, 1.0, 0.0, 0.0, 0.0, 0.0, 0.013333333333333334);
-      a($$0, dzh.af, -3, 1.0, 0.0, 0.0, 0.35);
-      a($$0, dzh.ag, -3, 1.0, 0.0, 0.0, 0.9);
-      a($$0, dzh.ah, -4, 1.0);
+   private static ala<eca<?>> a(String $$0) {
+      return ala.a(lv.aH, alb.b($$0));
    }
 
-   private static void a(qq<eoh.a> $$0, int $$1, akq<eoh.a> $$2, akq<eoh.a> $$3, akq<eoh.a> $$4, akq<eoh.a> $$5) {
-      a($$0, $$2, -10 + $$1, 1.5, 0.0, 1.0, 0.0, 0.0, 0.0);
-      a($$0, $$3, -8 + $$1, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0);
-      a($$0, $$4, -9 + $$1, 1.0, 1.0, 2.0, 2.0, 2.0, 1.0, 1.0, 1.0, 1.0);
-      a($$0, $$5, -9 + $$1, 1.0, 1.0, 0.0, 1.0, 1.0);
-   }
-
-   private static void a(qq<eoh.a> $$0, akq<eoh.a> $$1, int $$2, double $$3, double... $$4) {
-      $$0.a($$1, new eoh.a($$2, $$3, $$4));
+   public static void a(qt<eca<?>> $$0) {
+      jo<dgv> $$1 = $$0.a(lv.f);
+      $$0.a(
+         a,
+         ecc.a
+            .a(
+               new eby(
+                  0.15F,
+                  eiy.a(eaq.b(8), eaq.a(180)),
+                  bqu.b(0.1F, 0.9F),
+                  eaq.b(8),
+                  ebw.a(false, dgx.oS.o()),
+                  $$1.b(aws.bj),
+                  bqu.b(0.7F, 1.4F),
+                  bqu.b(0.8F, 1.3F),
+                  bqu.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         b,
+         ecc.a
+            .a(
+               new eby(
+                  0.07F,
+                  eiy.a(eaq.b(8), eaq.a(47)),
+                  bqu.b(0.1F, 0.9F),
+                  eaq.b(8),
+                  ebw.a(false, dgx.gv.o()),
+                  $$1.b(aws.bj),
+                  bqu.b(0.7F, 1.4F),
+                  bqu.b(0.8F, 1.3F),
+                  bqu.b(-1.0F, -0.4F)
+               )
+            )
+      );
+      $$0.a(
+         c,
+         ecc.c
+            .a(
+               new ebt(
+                  0.01F,
+                  eiy.a(eaq.a(10), eaq.a(67)),
+                  bql.a(3.0F),
+                  eaq.b(8),
+                  ebw.a(false, dgx.oT.o()),
+                  $$1.b(aws.bj),
+                  bqu.b(-0.125F, 0.125F),
+                  new ebt.a(bqu.b(0.75F, 1.0F), bqt.a(0.0F, 6.0F, 2.0F), 3, bqu.b(0.75F, 1.0F), 1.0F, 0.0F)
+               )
+            )
+      );
+      $$0.a(d, ecc.b.a(new eby(0.2F, eiy.a(eaq.a(0), eaq.c(1)), bql.a(0.5F), eaq.b(10), $$1.b(aws.bk), bql.a(1.0F), bql.a(1.0F), bql.a(-0.7F))));
    }
 }

@@ -1,20 +1,18 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class ebp extends ece<eep> {
-   public ebp(Codec<eep> $$0) {
-      super($$0);
+class ebp implements ebd {
+   public static ebp a = new ebp();
+   public static final MapCodec<ebp> e = MapCodec.unit(() -> a);
+
+   private ebp() {
+   }
+
+   public boolean a(dep $$0, je $$1) {
+      return true;
    }
 
    @Override
-   public boolean a(ecg<eep> $$0) {
-      dds $$1 = $$0.b();
-      jd $$2 = $$0.e();
-      ayw $$3 = $$0.d();
-      if ($$1.u($$2) && $$1.a_($$2.e()).a(dga.fz)) {
-         dhd.a($$1, $$2, $$3, 8);
-         return true;
-      } else {
-         return false;
-      }
+   public ebe<?> a() {
+      return ebe.l;
    }
 }

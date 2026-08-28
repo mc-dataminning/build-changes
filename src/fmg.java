@@ -1,17 +1,8 @@
-public interface fmg extends fjw, fmj {
-   fmg.a u();
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   default boolean C() {
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == c;
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fmg {
 }

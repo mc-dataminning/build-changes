@@ -1,157 +1,65 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import java.util.Map;
 
-public class enp {
-   private dkv a;
-   private dmm b;
-   private jd c;
-   private boolean d;
-   @Nullable
-   private ejj e;
-   private end f;
-   @Nullable
-   private ayw g;
-   private int h;
-   private final List<enq> i;
-   private boolean j;
-   private boolean k;
+public class enp extends eon {
+   public static final MapCodec<enp> a = MapCodec.unit(() -> enp.b);
+   public static final enp b = new enp();
+   private final Map<dgv, dgv> c = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dgx.m, dgx.pr);
+      $$0.put(dgx.cn, dgx.pr);
+      $$0.put(dgx.b, dgx.pv);
+      $$0.put(dgx.eH, dgx.pw);
+      $$0.put(dgx.eI, dgx.pw);
+      $$0.put(dgx.cQ, dgx.ps);
+      $$0.put(dgx.ni, dgx.ps);
+      $$0.put(dgx.nk, dgx.pD);
+      $$0.put(dgx.fj, dgx.pA);
+      $$0.put(dgx.ng, dgx.pA);
+      $$0.put(dgx.jI, dgx.pu);
+      $$0.put(dgx.nw, dgx.pu);
+      $$0.put(dgx.jE, dgx.pE);
+      $$0.put(dgx.jD, dgx.pE);
+      $$0.put(dgx.jK, dgx.pz);
+      $$0.put(dgx.nu, dgx.pz);
+      $$0.put(dgx.nK, dgx.pB);
+      $$0.put(dgx.nI, dgx.pB);
+      $$0.put(dgx.fP, dgx.pt);
+      $$0.put(dgx.fQ, dgx.pt);
+      $$0.put(dgx.eK, dgx.py);
+      $$0.put(dgx.eJ, dgx.px);
+      $$0.put(dgx.eW, dgx.eX);
+   });
 
-   public enp() {
-      this.a = dkv.a;
-      this.b = dmm.a;
-      this.c = jd.c;
-      this.f = end.b;
-      this.i = Lists.newArrayList();
+   private enp() {
    }
 
-   public enp a() {
-      enp $$0 = new enp();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
-   }
-
-   public enp a(dkv $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public enp a(dmm $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public enp a(jd $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public enp a(boolean $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public enp a(ejj $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public enp a(@Nullable ayw $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public enp a(end $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public enp b(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public enp b() {
-      this.i.clear();
-      return this;
-   }
-
-   public enp a(enq $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public enp b(enq $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public dkv c() {
-      return this.a;
-   }
-
-   public dmm d() {
-      return this.b;
-   }
-
-   public jd e() {
-      return this.c;
-   }
-
-   public ayw b(@Nullable jd $$0) {
-      if (this.g != null) {
-         return this.g;
+   @Override
+   public eoq.c a(ddv $$0, je $$1, je $$2, eoq.c $$3, eoq.c $$4, eom $$5) {
+      dgv $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         return $$0 == null ? ayw.a(ad.c()) : ayw.a(ayo.a($$0));
+         dua $$7 = $$4.b();
+         dua $$8 = $$6.o();
+         if ($$7.b(doq.b)) {
+            $$8 = $$8.b(doq.b, $$7.c(doq.b));
+         }
+
+         if ($$7.b(doq.c)) {
+            $$8 = $$8.b(doq.c, $$7.c(doq.c));
+         }
+
+         if ($$7.b(dnz.b)) {
+            $$8 = $$8.b(dnz.b, $$7.c(dnz.b));
+         }
+
+         return new eoq.c($$4.a(), $$8, $$4.c());
       }
    }
 
-   public boolean f() {
-      return this.d;
-   }
-
-   @Nullable
-   public ejj g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<enq> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f == end.b;
-   }
-
-   public ent.a a(List<ent.a> $$0, @Nullable jd $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
-      } else {
-         return $$0.get(this.b($$1).a($$2));
-      }
-   }
-
-   public enp c(boolean $$0) {
-      this.k = $$0;
-      return this;
-   }
-
-   public boolean k() {
-      return this.k;
+   @Override
+   protected eop<?> a() {
+      return eop.l;
    }
 }

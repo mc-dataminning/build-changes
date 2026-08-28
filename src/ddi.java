@@ -1,25 +1,19 @@
-public final class ddi implements duv {
-   private final int a;
-   private final dtc[] b;
+import java.util.Optional;
 
-   public ddi(int $$0, dtc[] $$1) {
+public class ddi extends ddl {
+   private final btj a;
+
+   public ddi(btj $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
    @Override
-   public dtc a(int $$0) {
-      int $$1 = $$0 - this.a;
-      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dga.a.o();
+   public Optional<Float> a(ddk $$0, dcx $$1, je $$2, dua $$3, eqb $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
    @Override
-   public void a(int $$0, dtc $$1) {
-      int $$2 = $$0 - this.a;
-      if ($$2 >= 0 && $$2 < this.b.length) {
-         this.b[$$2] = $$1;
-      } else {
-         throw new IllegalArgumentException("Outside of column height: " + $$0);
-      }
+   public boolean a(ddk $$0, dcx $$1, je $$2, dua $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

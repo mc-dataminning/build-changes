@@ -1,93 +1,54 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class evo implements evq {
-   private static final String d = "block_entity";
-   private static final evo.a e = new evo.a() {
-      @Override
-      public uy a(err $$0) {
-         dqh $$1 = $$0.c(eun.h);
-         return $$1 != null ? $$1.b($$1.i().H_()) : null;
-      }
+public class evo {
+   private static final BiMap<alb, evn> y = HashBiMap.create();
+   public static final Codec<evn> a = alb.a
+      .comapFlatMap(
+         $$0 -> Optional.ofNullable((evn)y.get($$0))
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
+         y.inverse()::get
+      );
+   public static final evn b = a("empty", $$0 -> {
+   });
+   public static final evn c = a("chest", $$0 -> $$0.a(evp.f).b(evp.a));
+   public static final evn d = a("command", $$0 -> $$0.a(evp.f).b(evp.a));
+   public static final evn e = a("selector", $$0 -> $$0.a(evp.f).a(evp.a));
+   public static final evn f = a("fishing", $$0 -> $$0.a(evp.f).a(evp.i).b(evp.a));
+   public static final evn g = a("entity", $$0 -> $$0.a(evp.a).a(evp.f).a(evp.c).b(evp.d).b(evp.e).b(evp.b));
+   public static final evn h = a("equipment", $$0 -> $$0.a(evp.f).a(evp.a));
+   public static final evn i = a("archaeology", $$0 -> $$0.a(evp.f).b(evp.a));
+   public static final evn j = a("gift", $$0 -> $$0.a(evp.f).a(evp.a));
+   public static final evn k = a("barter", $$0 -> $$0.a(evp.a));
+   public static final evn l = a("vault", $$0 -> $$0.a(evp.f).b(evp.a));
+   public static final evn m = a("advancement_reward", $$0 -> $$0.a(evp.a).a(evp.f));
+   public static final evn n = a("advancement_entity", $$0 -> $$0.a(evp.a).a(evp.f));
+   public static final evn o = a("advancement_location", $$0 -> $$0.a(evp.a).a(evp.f).a(evp.i).a(evp.g));
+   public static final evn p = a("block_use", $$0 -> $$0.a(evp.a).a(evp.f).a(evp.g));
+   public static final evn q = a("generic", $$0 -> $$0.a(evp.a).a(evp.b).a(evp.c).a(evp.d).a(evp.e).a(evp.f).a(evp.g).a(evp.h).a(evp.i).a(evp.j));
+   public static final evn r = a("block", $$0 -> $$0.a(evp.g).a(evp.f).a(evp.i).b(evp.a).b(evp.h).b(evp.j));
+   public static final evn s = a("shearing", $$0 -> $$0.a(evp.f).b(evp.a));
+   public static final evn t = a("enchanted_damage", $$0 -> $$0.a(evp.a).a(evp.k).a(evp.f).a(evp.c).b(evp.e).b(evp.d));
+   public static final evn u = a("enchanted_item", $$0 -> $$0.a(evp.i).a(evp.k));
+   public static final evn v = a("enchanted_location", $$0 -> $$0.a(evp.a).a(evp.k).a(evp.f).a(evp.l));
+   public static final evn w = a("enchanted_entity", $$0 -> $$0.a(evp.a).a(evp.k).a(evp.f));
+   public static final evn x = a("hit_block", $$0 -> $$0.a(evp.a).a(evp.k).a(evp.f).a(evp.g));
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<euk<?>> b() {
-         return ImmutableSet.of(eun.h);
-      }
-   };
-   public static final evo a = new evo(e);
-   private static final Codec<evo.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
+   private static evn a(String $$0, Consumer<evn.a> $$1) {
+      evn.a $$2 = new evn.a();
+      $$1.accept($$2);
+      evn $$3 = $$2.a();
+      alb $$4 = alb.b($$0);
+      evn $$5 = (evn)y.put($$4, $$3);
+      if ($$5 != null) {
+         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
       } else {
-         err.b $$1 = err.b.a($$0);
-         return b($$1);
+         return $$3;
       }
-   }, evo.a::a);
-   public static final MapCodec<evo> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, evo::new));
-   public static final Codec<evo> c = f.xmap(evo::new, $$0 -> $$0.g);
-   private final evo.a g;
-
-   private static evo.a b(final err.b $$0) {
-      return new evo.a() {
-         @Nullable
-         @Override
-         public uy a(err $$0x) {
-            bsr $$1 = $$0.c($$0.a());
-            return $$1 != null ? dk.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<euk<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
-   }
-
-   private evo(evo.a $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public evp a() {
-      return evr.c;
-   }
-
-   @Nullable
-   @Override
-   public uy a(err $$0) {
-      return this.g.a($$0);
-   }
-
-   @Override
-   public Set<euk<?>> b() {
-      return this.g.b();
-   }
-
-   public static evq a(err.b $$0) {
-      return new evo(b($$0));
-   }
-
-   interface a {
-      @Nullable
-      uy a(err var1);
-
-      String a();
-
-      Set<euk<?>> b();
    }
 }

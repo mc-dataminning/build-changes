@@ -1,29 +1,25 @@
-public class aic implements zg<agi> {
-   public static final yx<vw, aic> a = zg.a(aic::a, aic::new);
-   private final bqq b;
+public record aic(int b, int c) implements zk<agq> {
+   public static final zb<wa, aic> a = zk.a(aic::a, aic::new);
 
-   public aic(bqq $$0) {
-      this.b = $$0;
+   private aic(wa $$0) {
+      this($$0.l(), $$0.l());
    }
 
-   private aic(vw $$0) {
-      this.b = $$0.b(bqq.class);
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
    }
 
    @Override
-   public zi<aic> a() {
-      return agg.ca;
+   public zm<aic> a() {
+      return ago.bi;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public bqq b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

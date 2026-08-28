@@ -1,48 +1,85 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+public class adj implements zk<abz> {
+   public static final zb<wa, adj> a = zk.a(adj::a, adj::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final double e;
+   private final long f;
+   private final int g;
+   private final int h;
+   private final int i;
 
-public class adj implements zg<abu> {
-   public static final yx<vw, adj> a = zg.a(adj::a, adj::new);
-   private final int b;
-   private final int c;
-   private final adk d;
-
-   public adj(dcd $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      this.b = $$0.e;
-      this.c = $$0.f;
-      this.d = new adk($$0, $$1, $$2, $$3);
+   private adj(wa $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readDouble();
+      this.f = $$0.m();
+      this.g = $$0.l();
+      this.h = $$0.l();
+      this.i = $$0.l();
    }
 
-   private adj(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = new adk($$0, this.b, this.c);
+   public adj(dvr $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
+      this.d = $$0.i();
+      this.e = $$0.k();
+      this.f = $$0.j();
+      this.g = $$0.m();
+      this.h = $$0.r();
+      this.i = $$0.q();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      this.d.a($$0);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.c(this.g);
+      $$0.c(this.h);
+      $$0.c(this.i);
    }
 
    @Override
-   public zi<adj> a() {
-      return agg.N;
+   public zm<adj> a() {
+      return ago.J;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
       return this.b;
    }
 
-   public int e() {
+   public double e() {
       return this.c;
    }
 
-   public adk f() {
+   public double f() {
+      return this.e;
+   }
+
+   public double g() {
       return this.d;
+   }
+
+   public long h() {
+      return this.f;
+   }
+
+   public int i() {
+      return this.g;
+   }
+
+   public int j() {
+      return this.i;
+   }
+
+   public int k() {
+      return this.h;
    }
 }

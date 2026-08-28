@@ -1,3 +1,3 @@
-public interface ajl extends wf {
-   void a(ajm var1);
+public interface ajl {
+   void a(wa var1);
 }

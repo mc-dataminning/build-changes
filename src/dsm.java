@@ -1,62 +1,98 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
 
-public record dsm(akq<erw> d, double e, double f, cuq g, Optional<akq<erw>> h, dse i, dse.a j) {
-   static final String a = "config";
-   static dsm b = new dsm();
-   static Codec<dsm> c = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  akq.a(lu.bc).lenientOptionalFieldOf("loot_table", b.b()).forGetter(dsm::b),
-                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(dsm::c),
-                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(dsm::d),
-                  cuq.a("key_item").forGetter(dsm::e),
-                  akq.a(lu.bc).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(dsm::f)
-               )
-               .apply($$0, dsm::new)
-      )
-      .validate(dsm::h);
+public class dsm extends dre implements dyz.b<dsm.a> {
+   private final dsm.a a;
 
-   private dsm() {
-      this(ern.S, 4.0, 4.5, new cuq(cut.yC), Optional.empty(), dse.b, dse.a.a);
+   public dsm(je $$0, dua $$1) {
+      super(drg.K, $$0, $$1);
+      this.a = new dsm.a($$1, new dyt($$0));
    }
 
-   public dsm(akq<erw> $$0, double $$1, double $$2, cuq $$3, Optional<akq<erw>> $$4) {
-      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
+   public static void a(dds $$0, je $$1, dua $$2, dsm $$3) {
+      $$3.a.d().a($$0, $$1, $$0.C_(), true);
    }
 
-   public dse a() {
-      return this.i;
+   @Override
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.a.b.a($$0);
    }
 
-   private DataResult<dsm> h() {
-      return this.e > this.f
-         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
-         : DataResult.success(this);
+   @Override
+   protected void b(uf $$0, jp.a $$1) {
+      this.a.b.b($$0);
+      super.b($$0, $$1);
    }
 
-   public akq<erw> b() {
-      return this.d;
+   public dsm.a b() {
+      return this.a;
    }
 
-   public double c() {
-      return this.e;
-   }
+   public static class a implements dyz {
+      public static final int a = 8;
+      final dnr b;
+      private final dua c;
+      private final dzb d;
 
-   public double d() {
-      return this.f;
-   }
+      public a(dua $$0, dzb $$1) {
+         this.c = $$0;
+         this.d = $$1;
+         this.b = dnr.a();
+      }
 
-   public cuq e() {
-      return this.g;
-   }
+      @Override
+      public dzb a() {
+         return this.d;
+      }
 
-   public Optional<akq<erw>> f() {
-      return this.h;
-   }
+      @Override
+      public int b() {
+         return 8;
+      }
 
-   public dse.a g() {
-      return this.j;
+      @Override
+      public dyz.a c() {
+         return dyz.a.b;
+      }
+
+      @Override
+      public boolean a(arg $$0, jn<dyx> $$1, dyx.a $$2, eye $$3) {
+         if ($$1.a(dyx.p) && $$2.a() instanceof buf $$4) {
+            if (!$$4.eH()) {
+               bsb $$5 = $$4.eC();
+               int $$6 = $$4.a($$0, x.a($$5, bsb::d));
+               if ($$4.ei() && $$6 > 0) {
+                  this.b.a(je.a((jx)$$3.a(jj.b, 0.5)), $$6);
+                  this.a($$0, $$4);
+               }
+
+               $$4.eG();
+               this.d.a($$0).ifPresent($$1x -> this.a($$0, je.a((jx)$$1x), this.c, $$0.C_()));
+            }
+
+            return true;
+         } else {
+            return false;
+         }
+      }
+
+      @VisibleForTesting
+      public dnr d() {
+         return this.b;
+      }
+
+      private void a(arg $$0, je $$1, dua $$2, azk $$3) {
+         $$0.a($$1, $$2.b(dno.b, Boolean.valueOf(true)), 3);
+         $$0.a($$1, $$2.b(), 8);
+         $$0.a(ln.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
+         $$0.a(null, $$1, awd.wb, awe.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+      }
+
+      private void a(dds $$0, buf $$1) {
+         if ($$1.em() instanceof arh $$3) {
+            bsb $$4 = $$1.eC() == null ? $$0.ak().a((cnp)$$3) : $$1.eC();
+            an.Z.a($$3, $$1, $$4);
+         }
+      }
    }
 }

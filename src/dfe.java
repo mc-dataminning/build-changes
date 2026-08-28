@@ -1,89 +1,57 @@
+import com.google.common.collect.Sets;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dfe extends dfk {
-   public static final MapCodec<dfe> a = b(dfe::new);
-   public static final dtw b = dts.P;
-   public static final dtt c = dts.u;
+public class dfe extends dex implements dev.a {
+   public static final MapCodec<dfe> b = det.c.fieldOf("biome").xmap(dfe::new, $$0 -> $$0.c).stable();
+   private final jn<det> c;
 
-   @Override
-   public MapCodec<dfe> a() {
-      return a;
-   }
-
-   public dfe(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ji.c).a(c, Boolean.valueOf(false)));
+   public dfe(jn<det> $$0) {
+      this.c = $$0;
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
-      if ($$1.B) {
-         return bqr.a;
+   protected Stream<jn<det>> b() {
+      return Stream.of(this.c);
+   }
+
+   @Override
+   protected MapCodec<? extends dex> a() {
+      return b;
+   }
+
+   @Override
+   public jn<det> getNoiseBiome(int $$0, int $$1, int $$2, dfc.f $$3) {
+      return this.c;
+   }
+
+   @Override
+   public jn<det> getNoiseBiome(int $$0, int $$1, int $$2) {
+      return this.c;
+   }
+
+   @Nullable
+   @Override
+   public Pair<je, jn<det>> a(int $$0, int $$1, int $$2, int $$3, int $$4, Predicate<jn<det>> $$5, azk $$6, boolean $$7, dfc.f $$8) {
+      if ($$5.test(this.c)) {
+         return $$7 ? Pair.of(new je($$0, $$1, $$2), this.c) : Pair.of(new je($$0 - $$3 + $$6.a($$3 * 2 + 1), $$1, $$2 - $$3 + $$6.a($$3 * 2 + 1)), this.c);
       } else {
-         dqh $$5 = $$1.c_($$2);
-         if ($$5 instanceof dqa) {
-            $$3.a((dqa)$$5);
-            $$3.a(avz.ar);
-            clo.a($$3, true);
-         }
-
-         return bqr.c;
-      }
-   }
-
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      bqn.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      dqh $$4 = $$1.c_($$2);
-      if ($$4 instanceof dqa) {
-         ((dqa)$$4).l();
+         return null;
       }
    }
 
    @Nullable
    @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dqa($$0, $$1);
+   public Pair<je, jn<det>> a(je $$0, int $$1, int $$2, int $$3, Predicate<jn<det>> $$4, dfc.f $$5, ddv $$6) {
+      return $$4.test(this.c) ? Pair.of($$0, this.c) : null;
    }
 
    @Override
-   protected dmf a_(dtc $$0) {
-      return dmf.c;
-   }
-
-   @Override
-   protected boolean c_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dtc $$0, dcw $$1, jd $$2) {
-      return cpu.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dtc a(cyd $$0) {
-      return this.o().a(b, $$0.d().g());
+   public Set<jn<det>> a(int $$0, int $$1, int $$2, int $$3, dfc.f $$4) {
+      return Sets.newHashSet(Set.of(this.c));
    }
 }

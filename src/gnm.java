@@ -1,37 +1,59 @@
-public class gnm extends gki<cod> {
-   private static final akr a = akr.b("textures/entity/wither/wither_invulnerable.png");
-   private static final akr g = akr.b("textures/entity/wither/wither.png");
-   private final fxg h;
+import java.util.Arrays;
 
-   public gnm(gkj.a $$0) {
-      super($$0);
-      this.h = new fxg($$0.a(fyj.cc));
+public class gnm extends gnl<ckt, gtm> {
+   private static final alb a = alb.b("textures/entity/illager/illusioner.png");
+
+   public gnm(gms.a $$0) {
+      super($$0, new fxo<>($$0.a(gaa.aZ)), 0.5F);
+      this.a(new gqy<gtm, fxo<gtm>>(this, $$0.b()) {
+         public void a(fcu $$0, ggv $$1, int $$2, gtm $$3, float $$4, float $$5) {
+            if ($$3.i || $$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
+      this.h.d().k = true;
    }
 
-   public static fyq a() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      $$1.a("head", fyp.c().a(0, 35).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fym.a);
-      return fyq.a($$0, 64, 64);
+   public alb a(gtm $$0) {
+      return a;
    }
 
-   protected int a(cod $$0, jd $$1) {
-      return 15;
+   public gtm c() {
+      return new gtm();
    }
 
-   public void a(cod $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      $$3.a();
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      float $$6 = ayo.j($$2, $$0.O, $$0.dE());
-      float $$7 = ayo.i($$2, $$0.P, $$0.dG());
-      fbm $$8 = $$4.getBuffer(this.h.a(this.a($$0)));
-      this.h.a(0.0F, $$6, $$7);
-      this.h.a($$3, $$8, $$5, gqc.d);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(ckt $$0, gtm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      eye[] $$3 = $$0.J($$2);
+      $$1.a = Arrays.copyOf($$3, $$3.length);
+      $$1.i = $$0.gy();
    }
 
-   public akr a(cod $$0) {
-      return $$0.y() ? a : g;
+   public void a(gtm $$0, fcu $$1, ggv $$2, int $$3) {
+      if ($$0.u) {
+         eye[] $$4 = $$0.a;
+
+         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
+            $$1.a();
+            $$1.a(
+               $$4[$$5].d + (double)azc.b((float)$$5 + $$0.p * 0.5F) * 0.025,
+               $$4[$$5].e + (double)azc.b((float)$$5 + $$0.p * 0.75F) * 0.0125,
+               $$4[$$5].f + (double)azc.b((float)$$5 + $$0.p * 0.7F) * 0.025
+            );
+            super.a($$0, $$1, $$2, $$3);
+            $$1.b();
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   protected boolean b(gtm $$0) {
+      return true;
+   }
+
+   protected exz a(ckt $$0) {
+      return super.a($$0).c(3.0, 0.0, 3.0);
    }
 }

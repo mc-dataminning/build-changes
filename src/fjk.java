@@ -1,18 +1,54 @@
-public class fjk extends fim {
-   private final fhx a;
-   private final wz b;
-   private final wz c;
+import javax.annotation.Nullable;
 
-   public fjk(int $$0, int $$1, int $$2, int $$3, wz $$4, fim.c $$5, fhx $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, q);
-      this.a = $$6;
-      this.b = $$4;
-      this.c = xc.a($$4.f(), xw.a.c(true));
+public interface fjk {
+   static fjk a(flx $$0) {
+      return new fjk.a($$0);
    }
 
-   @Override
-   public void b(fhz $$0, int $$1, int $$2, float $$3) {
-      wz $$4 = this.B() ? this.c : this.b;
-      $$0.b(this.a, $$4, this.D(), this.E(), 16777215 | ayo.f(this.l * 255.0F) << 24);
+   @Nullable
+   static fjk a(flw $$0, @Nullable fjk $$1) {
+      return $$1 == null ? null : new fjk.b($$0, $$1);
+   }
+
+   static fjk a(flx $$0, flw... $$1) {
+      fjk $$2 = a($$0);
+
+      for (flw $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
+   }
+
+   flx a();
+
+   void a(boolean var1);
+
+   public static record a(flx a) implements fjk {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
+   }
+
+   public static record b(flw a, fjk b) implements fjk {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
+         } else {
+            this.a.a(this.b.a());
+         }
+
+         this.b.a($$0);
+      }
+
+      public flw b() {
+         return this.a;
+      }
+
+      public fjk c() {
+         return this.b;
+      }
    }
 }

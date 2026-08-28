@@ -1,24 +1,25 @@
-public enum bqr {
-   a,
-   b,
-   c,
-   d,
-   e,
-   f;
+import java.util.Arrays;
 
-   public boolean a() {
-      return this == a || this == c || this == d || this == b;
+public class bqr implements bqs {
+   private final bqs[] a;
+
+   public bqr(bqs... $$0) {
+      this.a = $$0;
    }
 
-   public boolean b() {
-      return this == a || this == b;
+   @Override
+   public float a(azk $$0) {
+      float $$1 = 1.0F;
+
+      for (bqs $$2 : this.a) {
+         $$1 *= $$2.a($$0);
+      }
+
+      return $$1;
    }
 
-   public boolean c() {
-      return this == a || this == c;
-   }
-
-   public static bqr a(boolean $$0) {
-      return $$0 ? a : c;
+   @Override
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

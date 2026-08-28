@@ -1,95 +1,49 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public class czt implements czr {
-   final cyw a;
-   final cyw b;
-   final cyw c;
-   final cuq d;
+public interface czt<T extends czw> {
+   Codec<czt<?>> h = lu.r.q().dispatch(czt::as_, czy::a);
+   zb<wo, czt<?>> i = yz.a(lv.ae).b(czt::as_, czy::b);
 
-   public czt(cyw $$0, cyw $$1, cyw $$2, cuq $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   boolean a(T var1, dds var2);
 
-   public boolean a(czs $$0, dcw $$1) {
-      return this.a.a($$0.c()) && this.b.a($$0.d()) && this.c.a($$0.e());
-   }
+   cvl a(T var1, jp.a var2);
 
-   public cuq a(czs $$0, jo.a $$1) {
-      cuq $$2 = $$0.d().a(this.d.g(), this.d.H());
-      $$2.b(this.d.d());
-      return $$2;
-   }
+   boolean a(int var1, int var2);
 
-   @Override
-   public cuq a(jo.a $$0) {
-      return this.d;
-   }
+   cvl a(jp.a var1);
 
-   @Override
-   public boolean a(cuq $$0) {
-      return this.a.a($$0);
-   }
+   default jw<cvl> a(T $$0) {
+      jw<cvl> $$1 = jw.a($$0.a(), cvl.k);
 
-   @Override
-   public boolean b(cuq $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cuq $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cze<?> at_() {
-      return cze.u;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cyw::c);
-   }
-
-   public static class a implements cze<czt> {
-      private static final MapCodec<czt> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  cyw.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cyw.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cyw.c.fieldOf("addition").forGetter($$0x -> $$0x.c),
-                  cuq.d.fieldOf("result").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, czt::new)
-      );
-      public static final yx<wk, czt> x = yx.a(czt.a::a, czt.a::a);
-
-      @Override
-      public MapCodec<czt> a() {
-         return y;
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cvg $$3 = $$0.a($$2).h();
+         if ($$3.v()) {
+            $$1.set($$2, new cvl($$3.u()));
+         }
       }
 
-      @Override
-      public yx<wk, czt> b() {
-         return x;
-      }
-
-      private static czt a(wk $$0) {
-         cyw $$1 = cyw.b.decode($$0);
-         cyw $$2 = cyw.b.decode($$0);
-         cyw $$3 = cyw.b.decode($$0);
-         cuq $$4 = cuq.i.decode($$0);
-         return new czt($$1, $$2, $$3, $$4);
-      }
-
-      private static void a(wk $$0, czt $$1) {
-         cyw.b.encode($$0, $$1.a);
-         cyw.b.encode($$0, $$1.b);
-         cyw.b.encode($$0, $$1.c);
-         cuq.i.encode($$0, $$1.d);
-      }
+      return $$1;
    }
+
+   default boolean ar_() {
+      return false;
+   }
+
+   default boolean h() {
+      return true;
+   }
+
+   default String c() {
+      return "";
+   }
+
+   default cvl g() {
+      return new cvl(dgx.cA);
+   }
+
+   czy<?> as_();
+
+   czz<?> e();
+
+   czs a();
 }

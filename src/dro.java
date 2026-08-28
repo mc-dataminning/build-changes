@@ -1,98 +1,166 @@
-import com.google.common.annotations.VisibleForTesting;
+public class dro extends dre {
+   private boolean a;
+   private boolean b;
+   private boolean c;
+   private final dcs d = new dcs() {
+      @Override
+      public void a(String $$0) {
+         super.a($$0);
+         dro.this.e();
+      }
 
-public class dro extends dqh implements dyb.b<dro.a> {
-   private final dro.a a;
+      @Override
+      public arg e() {
+         return (arg)dro.this.o;
+      }
 
-   public dro(jd $$0, dtc $$1) {
-      super(dqj.K, $$0, $$1);
-      this.a = new dro.a($$1, new dxv($$0));
-   }
+      @Override
+      public void f() {
+         dua $$0 = dro.this.o.a_(dro.this.p);
+         this.e().a(dro.this.p, $$0, $$0, 3);
+      }
 
-   public static void a(dcw $$0, jd $$1, dtc $$2, dro $$3) {
-      $$3.a.d().a($$0, $$1, $$0.E_(), true);
+      @Override
+      public eye g() {
+         return eye.b(dro.this.p);
+      }
+
+      @Override
+      public et i() {
+         jj $$0 = dro.this.m().c(die.b);
+         return new et(this, eye.b(dro.this.p), new eyd(0.0F, $$0.p()), this.e(), 2, this.n().getString(), this.n(), this.e().o(), null);
+      }
+
+      @Override
+      public boolean j() {
+         return !dro.this.n();
+      }
+   };
+
+   public dro(je $$0, dua $$1) {
+      super(drg.w, $$0, $$1);
    }
 
    @Override
-   protected void a(ub $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      this.a.b.a($$0);
-   }
-
-   @Override
-   protected void b(ub $$0, jo.a $$1) {
-      this.a.b.b($$0);
+   protected void b(uf $$0, jp.a $$1) {
       super.b($$0, $$1);
+      this.d.a($$0, $$1);
+      $$0.a("powered", this.c());
+      $$0.a("conditionMet", this.j());
+      $$0.a("auto", this.d());
    }
 
-   public dro.a b() {
+   @Override
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.d.b($$0, $$1);
+      this.a = $$0.q("powered");
+      this.c = $$0.q("conditionMet");
+      this.b($$0.q("auto"));
+   }
+
+   @Override
+   public boolean p() {
+      return true;
+   }
+
+   public dcs b() {
+      return this.d;
+   }
+
+   public void a(boolean $$0) {
+      this.a = $$0;
+   }
+
+   public boolean c() {
       return this.a;
    }
 
-   public static class a implements dyb {
-      public static final int a = 8;
-      final dmu b;
-      private final dtc c;
-      private final dyd d;
+   public boolean d() {
+      return this.b;
+   }
 
-      public a(dtc $$0, dyd $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dmu.a();
+   public void b(boolean $$0) {
+      boolean $$1 = this.b;
+      this.b = $$0;
+      if (!$$1 && $$0 && !this.a && this.o != null && this.t() != dro.a.a) {
+         this.v();
       }
+   }
 
-      @Override
-      public dyd a() {
-         return this.d;
+   public void f() {
+      dro.a $$0 = this.t();
+      if ($$0 == dro.a.b && (this.a || this.b) && this.o != null) {
+         this.v();
       }
+   }
 
-      @Override
-      public int b() {
-         return 8;
+   private void v() {
+      dgv $$0 = this.m().b();
+      if ($$0 instanceof die) {
+         this.k();
+         this.o.a(this.p, $$0, 1);
       }
+   }
 
-      @Override
-      public dyb.a c() {
-         return dyb.a.b;
-      }
+   public boolean j() {
+      return this.c;
+   }
 
-      @Override
-      public boolean a(aqu $$0, jm<dxz> $$1, dxz.a $$2, exc $$3) {
-         if ($$1.a(dxz.p) && $$2.a() instanceof btn $$4) {
-            if (!$$4.eD()) {
-               brk $$5 = $$4.ey();
-               int $$6 = $$4.a($$0, x.a($$5, brk::d));
-               if ($$4.ee() && $$6 > 0) {
-                  this.b.a(jd.a((jw)$$3.a(ji.b, 0.5)), $$6);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eC();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, jd.a((jw)$$1x), this.c, $$0.E_()));
-            }
-
-            return true;
+   public boolean k() {
+      this.c = true;
+      if (this.u()) {
+         je $$0 = this.p.a(this.o.a_(this.p).c(die.b).g());
+         if (this.o.a_($$0).b() instanceof die) {
+            dre $$1 = this.o.c_($$0);
+            this.c = $$1 instanceof dro && ((dro)$$1).b().k() > 0;
          } else {
-            return false;
+            this.c = false;
          }
       }
 
-      @VisibleForTesting
-      public dmu d() {
-         return this.b;
-      }
+      return this.c;
+   }
 
-      private void a(aqu $$0, jd $$1, dtc $$2, ayw $$3) {
-         $$0.a($$1, $$2.a(dmr.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(lm.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, avp.wa, avq.e, 2.0F, 0.6F + $$3.i() * 0.4F);
+   public dro.a t() {
+      dua $$0 = this.m();
+      if ($$0.a(dgx.fN)) {
+         return dro.a.c;
+      } else if ($$0.a(dgx.kG)) {
+         return dro.a.b;
+      } else {
+         return $$0.a(dgx.kH) ? dro.a.a : dro.a.c;
       }
+   }
 
-      private void a(dcw $$0, btn $$1) {
-         if ($$1.ei() instanceof aqv $$3) {
-            brk $$4 = $$1.ey() == null ? $$0.aj().a((cmx)$$3) : $$1.ey();
-            an.Z.a($$3, $$1, $$4);
-         }
-      }
+   public boolean u() {
+      dua $$0 = this.o.a_(this.aD_());
+      return $$0.b() instanceof die ? $$0.c(die.c) : false;
+   }
+
+   @Override
+   protected void a(dre.b $$0) {
+      super.a($$0);
+      this.d.b($$0.a(kr.g));
+   }
+
+   @Override
+   protected void a(kn.a $$0) {
+      super.a($$0);
+      $$0.a(kr.g, this.d.o());
+   }
+
+   @Override
+   public void a(uf $$0) {
+      super.a($$0);
+      $$0.r("CustomName");
+      $$0.r("conditionMet");
+      $$0.r("powered");
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

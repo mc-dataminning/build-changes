@@ -1,20 +1,10 @@
-public record abp(akr b) implements zg<abo> {
-   public static final yx<vw, abp> a = zg.a(abp::a, abp::new);
-
-   private abp(vw $$0) {
-      this($$0.q());
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-   }
-
+public interface abp extends aad {
    @Override
-   public zi<abp> a() {
-      return abq.a;
+   default vy b() {
+      return vy.e;
    }
 
-   public void a(abo $$0) {
-      $$0.a(this);
-   }
+   void a(abq var1);
+
+   void a(abr var1);
 }

@@ -1,17 +1,40 @@
+import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjn extends bid {
+public class bjn extends biw {
    public bjn(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$1.remove("minecraft:zombie_pigman");
-      $$0.register($$1, "minecraft:zombified_piglin", () -> bie.a($$0));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bhk.c,
+         () -> DSL.fields(
+               "Level",
+               DSL.optionalFields(
+                  "Entities",
+                  DSL.list(bhk.A.in($$0)),
+                  "TileEntities",
+                  DSL.list(DSL.or(bhk.s.in($$0), DSL.remainder())),
+                  "TileTicks",
+                  DSL.list(DSL.fields("i", bhk.C.in($$0))),
+                  "Sections",
+                  DSL.list(DSL.optionalFields("Palette", DSL.list(bhk.u.in($$0)))),
+                  "Structures",
+                  DSL.optionalFields("Starts", DSL.compoundList(bhk.G.in($$0)))
+               )
+            )
+      );
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      $$1.put("DUMMY", DSL::remainder);
       return $$1;
    }
 }

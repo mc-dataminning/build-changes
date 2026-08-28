@@ -1,19 +1,19 @@
-public class dcu {
-   private static int[] a = new int[65536];
+public interface dcu extends dcx {
+   float a(jj var1, boolean var2);
 
-   public static void a(int[] $$0) {
-      a = $$0;
+   epq x_();
+
+   int a(je var1, ddc var2);
+
+   default int a(deb $$0, je $$1) {
+      return this.x_().a($$0).b($$1);
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? -65281 : a[$$4];
+   default int b(je $$0, int $$1) {
+      return this.x_().a($$0, $$1);
    }
 
-   public static int a() {
-      return a(0.5, 1.0);
+   default boolean h(je $$0) {
+      return this.a(deb.a, $$0) >= 15;
    }
 }

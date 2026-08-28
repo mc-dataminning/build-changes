@@ -1,25 +1,26 @@
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dci extends dcn, dcz, ddb {
+public record dci(jn<daw> c, bqp d) implements dce {
+   public static final MapCodec<dci> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(daw.c.fieldOf("enchantment").forGetter(dci::b), bqp.c.fieldOf("level").forGetter(dci::c)).apply($$0, dci::new)
+   );
+
    @Override
-   default <T extends dqh> Optional<T> a(jd $$0, dqj<T> $$1) {
-      return dcz.super.a($$0, $$1);
+   public void a(cvl $$0, dbc.a $$1, azk $$2, bri $$3) {
+      $$1.b(this.c, azc.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
    }
 
    @Override
-   default List<exv> c(@Nullable bsr $$0, ewx $$1) {
-      return dcn.super.c($$0, $$1);
+   public MapCodec<dci> a() {
+      return b;
    }
 
-   @Override
-   default boolean a(@Nullable bsr $$0, exv $$1) {
-      return dcn.super.a($$0, $$1);
+   public jn<daw> b() {
+      return this.c;
    }
 
-   @Override
-   default jd a(dyy.a $$0, jd $$1) {
-      return dcz.super.a($$0, $$1);
+   public bqp c() {
+      return this.d;
    }
 }

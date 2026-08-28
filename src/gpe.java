@@ -1,34 +1,48 @@
-public abstract class gpe<T extends btn, M extends fwp<T>> extends gov<T, M> {
-   public gpe(glk<T, M> $$0) {
+public class gpe<T extends btj & cof> extends gmr<T, guv> {
+   private final gnq a;
+   private final float b;
+   private final boolean h;
+
+   public gpe(gms.a $$0, float $$1, boolean $$2) {
       super($$0);
+      this.a = $$0.b();
+      this.b = $$1;
+      this.h = $$2;
    }
 
-   protected abstract int a(T var1);
+   public gpe(gms.a $$0) {
+      this($$0, 1.0F, false);
+   }
 
-   protected abstract void a(fbi var1, gez var2, int var3, bsr var4, float var5, float var6, float var7, float var8);
+   @Override
+   protected int a(T $$0, je $$1) {
+      return this.h ? 15 : super.a($$0, $$1);
+   }
 
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      int $$10 = this.a($$3);
-      ayw $$11 = ayw.a((long)$$3.an());
-      if ($$10 > 0) {
-         for (int $$12 = 0; $$12 < $$10; $$12++) {
-            $$0.a();
-            fyk $$13 = this.c().a($$11);
-            fyk.a $$14 = $$13.a($$11);
-            $$13.a($$0);
-            float $$15 = $$11.i();
-            float $$16 = $$11.i();
-            float $$17 = $$11.i();
-            float $$18 = ayo.i($$15, $$14.a, $$14.d) / 16.0F;
-            float $$19 = ayo.i($$16, $$14.b, $$14.e) / 16.0F;
-            float $$20 = ayo.i($$17, $$14.c, $$14.f) / 16.0F;
-            $$0.a($$18, $$19, $$20);
-            $$15 = -1.0F * ($$15 * 2.0F - 1.0F);
-            $$16 = -1.0F * ($$16 * 2.0F - 1.0F);
-            $$17 = -1.0F * ($$17 * 2.0F - 1.0F);
-            this.a($$0, $$1, $$2, $$3, $$15, $$16, $$17, $$6);
-            $$0.b();
-         }
+   public void a(guv $$0, fcu $$1, ggv $$2, int $$3) {
+      $$1.a();
+      $$1.b(this.b, this.b, this.b);
+      $$1.a(this.e.b());
+      if ($$0.a != null) {
+         this.a.a($$0.b, cvi.h, false, $$1, $$2, $$3, gwb.d, $$0.a);
       }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public guv a() {
+      return new guv();
+   }
+
+   public void a(T $$0, guv $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      cvl $$3 = $$0.m();
+      $$1.a = !$$3.f() ? this.a.a($$3, $$0.dS(), null, $$0.ap()) : null;
+      $$1.b = $$3;
+   }
+
+   public alb a(guv $$0) {
+      return gwj.d;
    }
 }

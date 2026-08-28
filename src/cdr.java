@@ -1,29 +1,50 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class cdr<T extends btn> extends cdy<T> {
-   @Override
-   protected void a(aqu $$0, T $$1) {
-      ewx $$2 = $$1.cK().c((double)this.b(), (double)this.c(), (double)this.b());
-      List<btn> $$3 = $$0.a(btn.class, $$2, $$1x -> $$1x != $$1 && $$1x.bE());
-      $$3.sort(Comparator.comparingDouble($$1::g));
-      buq<?> $$4 = $$1.dT();
-      $$4.a(ccs.g, $$3);
-      $$4.a(ccs.h, new ccu($$1, $$3));
-   }
+public class cdr extends cdp {
+   @Nullable
+   private je p;
 
-   protected int b() {
-      return 16;
-   }
-
-   protected int c() {
-      return 16;
+   public cdr(buh $$0, dds $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Set<ccs<?>> a() {
-      return ImmutableSet.of(ccs.g, ccs.h);
+   public eqp a(je $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public eqp a(btj $$0, int $$1) {
+      this.p = $$0.ds();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(btj $$0, double $$1) {
+      eqp $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.ds();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.m()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dq(), (double)this.a.dn())
+               && (!(this.a.dz() > (double)this.p.v()) || !je.a((double)this.p.u(), this.a.dz(), (double)this.p.w()).a(this.a.dq(), (double)this.a.dn()))) {
+               this.a.M().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

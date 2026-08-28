@@ -1,111 +1,86 @@
 import javax.annotation.Nullable;
 
-public abstract class clm extends ckd {
-   protected static final ajw<Boolean> b = aka.a(clm.class, ajy.k);
-   protected static final int c = 300;
-   protected int d;
-
-   public clm(bsx<? extends clm> $$0, dcw $$1) {
+public class clm extends ckd {
+   public clm(btq<? extends clm> $$0, dds $$1) {
       super($$0, $$1);
-      this.a_(true);
-      this.x();
-      this.a(epv.n, 16.0F);
-      this.a(epv.o, -1.0F);
-   }
-
-   private void x() {
-      if (cek.a(this)) {
-         ((ccz)this.N()).b(true);
-      }
-   }
-
-   protected abstract boolean s();
-
-   public void x(boolean $$0) {
-      this.ar().a(b, $$0);
-   }
-
-   protected boolean t() {
-      return this.ar().a(b);
+      this.a(eqs.i, 8.0F);
    }
 
    @Override
-   protected void a(aka.a $$0) {
-      super.a($$0);
-      $$0.a(b, false);
+   protected void D() {
+      this.bU.a(3, new ccv<>(this, cme.class, true));
+      super.D();
    }
 
    @Override
-   public void b(ub $$0) {
-      super.b($$0);
-      if (this.t()) {
-         $$0.a("IsImmuneToZombification", true);
-      }
-
-      $$0.a("TimeInOverworld", this.d);
+   protected awc w() {
+      return awd.CJ;
    }
 
    @Override
-   public void a(ub $$0) {
-      super.a($$0);
-      this.x($$0.q("IsImmuneToZombification"));
-      this.d = $$0.h("TimeInOverworld");
+   protected awc d(bsb $$0) {
+      return awd.CL;
    }
 
    @Override
-   protected void ab() {
-      super.ab();
-      if (this.gk()) {
-         this.d++;
-      } else {
-         this.d = 0;
-      }
-
-      if (this.d > 300) {
-         this.go();
-         this.a((aqu)this.dO());
-      }
+   protected awc n_() {
+      return awd.CK;
    }
 
-   public boolean gk() {
-      return !this.dO().D_().b() && !this.t() && !this.fZ();
+   @Override
+   awc t() {
+      return awd.CM;
    }
 
-   protected void a(aqu $$0) {
-      cky $$1 = this.a(bsx.bx, true);
-      if ($$1 != null) {
-         $$1.b(new brz(bsb.i, 200, 0));
+   @Override
+   protected void a(arg $$0, bsb $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$1.d() instanceof ckh $$4 && $$4.gq()) {
+         $$4.gr();
+         this.a((ddr)cvo.uo);
       }
    }
 
-   public boolean gl() {
-      return !this.o_();
+   @Override
+   protected void a(azk $$0, bri $$1) {
+      this.a(btr.a, new cvl(cvo.oS));
    }
 
-   public abstract clp gm();
+   @Override
+   protected void a(dei $$0, azk $$1, bri $$2) {
+   }
 
    @Nullable
    @Override
-   public btn p() {
-      return this.P();
-   }
-
-   protected boolean gn() {
-      return this.eT().g() instanceof cwj;
+   public bux a(dei $$0, bri $$1, btp $$2, @Nullable bux $$3) {
+      bux $$4 = super.a($$0, $$1, $$2, $$3);
+      this.g(bvm.c).a(4.0);
+      this.y();
+      return $$4;
    }
 
    @Override
-   public void S() {
-      if (clo.d(this)) {
-         super.S();
+   public boolean E(btj $$0) {
+      if (!super.E($$0)) {
+         return false;
+      } else {
+         if ($$0 instanceof buf) {
+            ((buf)$$0).b(new bsq(bss.t, 200), this);
+         }
+
+         return true;
       }
    }
 
    @Override
-   protected void aa() {
-      super.aa();
-      agf.a(this);
+   protected cnw a(cvl $$0, float $$1, @Nullable cvl $$2) {
+      cnw $$3 = super.a($$0, $$1, $$2);
+      $$3.d(100.0F);
+      return $$3;
    }
 
-   protected abstract void go();
+   @Override
+   public boolean c(bsq $$0) {
+      return $$0.a(bss.t) ? false : super.c($$0);
+   }
 }

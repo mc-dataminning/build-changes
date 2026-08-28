@@ -1,30 +1,46 @@
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class enx implements eob {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<enx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akq.a(lu.bc).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, enx::new)
-   );
-   private final akq<erw> d;
+public class enx extends eon {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<enx> a = MapCodec.unit(() -> enx.b);
+   public static final enx b = new enx();
 
-   public enx(akq<erw> $$0) {
-      this.d = $$0;
+   private enx() {
+   }
+
+   @Nullable
+   @Override
+   public eoq.c a(ddv $$0, je $$1, je $$2, eoq.c $$3, eoq.c $$4, eom $$5) {
+      dua $$6 = $$4.b();
+      if ($$6.a(dgx.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dua $$9;
+            try {
+               gn.a $$8 = gn.a($$0.a(lv.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(dgx.kN) ? null : new eoq.c($$4.a(), $$9, null);
+         }
+      } else {
+         return $$4;
+      }
    }
 
    @Override
-   public ub a(ayw $$0, @Nullable ub $$1) {
-      ub $$2 = $$1 == null ? new ub() : $$1.i();
-      akq.a(lu.bc).encodeStart(up.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public eoc<?> a() {
-      return eoc.d;
+   protected eop<?> a() {
+      return eop.h;
    }
 }

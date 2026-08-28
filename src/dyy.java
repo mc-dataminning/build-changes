@@ -1,171 +1,59 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class dyy {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dtc> b = $$0 -> !$$0.i();
-   static final Predicate<dtc> c = dtb.a::d;
-   private final axc d;
-   private final Predicate<dtc> e;
-   private final duy f;
+   private final arg a;
 
-   public dyy(duy $$0, dyy.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = ayo.e($$0.J_() + 1);
-      this.d = new azd($$2, 256);
+   public dyy(arg $$0) {
+      this.a = $$0;
    }
 
-   public static void a(duy $$0, Set<dyy.a> $$1) {
-      int $$2 = $$1.size();
-      ObjectList<dyy> $$3 = new ObjectArrayList($$2);
-      ObjectListIterator<dyy> $$4 = $$3.iterator();
-      int $$5 = $$0.b() + 16;
-      jd.a $$6 = new jd.a();
+   public void a(jn<dyx> $$0, eye $$1, dyx.a $$2) {
+      int $$3 = $$0.a().a();
+      je $$4 = je.a((jx)$$1);
+      int $$5 = kg.a($$4.u() - $$3);
+      int $$6 = kg.a($$4.v() - $$3);
+      int $$7 = kg.a($$4.w() - $$3);
+      int $$8 = kg.a($$4.u() + $$3);
+      int $$9 = kg.a($$4.v() + $$3);
+      int $$10 = kg.a($$4.w() + $$3);
+      List<dyx.b> $$11 = new ArrayList<>();
+      dza.a $$12 = ($$4x, $$5x) -> {
+         if ($$4x.c() == dyz.a.b) {
+            $$11.add(new dyx.b($$0, $$1, $$2, $$4x, $$5x));
+         } else {
+            $$4x.a(this.a, $$0, $$2, $$1);
+         }
+      };
+      boolean $$13 = false;
 
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            for (dyy.a $$9 : $$1) {
-               $$3.add($$0.a($$9));
-            }
-
-            for (int $$10 = $$5 - 1; $$10 >= $$0.I_(); $$10--) {
-               $$6.d($$7, $$10, $$8);
-               dtc $$11 = $$0.a_($$6);
-               if (!$$11.a(dga.a)) {
-                  while ($$4.hasNext()) {
-                     dyy $$12 = (dyy)$$4.next();
-                     if ($$12.e.test($$11)) {
-                        $$12.a($$7, $$8, $$10 + 1);
-                        $$4.remove();
-                     }
-                  }
-
-                  if ($$3.isEmpty()) {
-                     break;
-                  }
-
-                  $$4.back($$2);
+      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
+         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
+            dvw $$16 = this.a.l().a($$14, $$15);
+            if ($$16 != null) {
+               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
+                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
                }
             }
          }
       }
-   }
 
-   public boolean a(int $$0, int $$1, int $$2, dtc $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
-            }
-         } else if ($$4 - 1 == $$1) {
-            jd.a $$5 = new jd.a();
+      if (!$$11.isEmpty()) {
+         this.a($$11);
+      }
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.I_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
-               }
-            }
-
-            this.a($$0, $$2, this.f.I_());
-            return true;
-         }
-
-         return false;
+      if ($$13) {
+         agn.a(this.a, $$0, $$1);
       }
    }
 
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
+   private void a(List<dyx.b> $$0) {
+      Collections.sort($$0);
 
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.I_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.I_());
-   }
-
-   public void a(duy $$0, dyy.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
+      for (dyx.b $$1 : $$0) {
+         dyz $$2 = $$1.d();
+         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
       }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements azk {
-      a("WORLD_SURFACE_WG", dyy.b.a, dyy.b),
-      b("WORLD_SURFACE", dyy.b.c, dyy.b),
-      c("OCEAN_FLOOR_WG", dyy.b.a, dyy.c),
-      d("OCEAN_FLOOR", dyy.b.b, dyy.c),
-      e("MOTION_BLOCKING", dyy.b.c, $$0 -> $$0.d() || !$$0.u().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dyy.b.b, $$0 -> ($$0.d() || !$$0.u().c()) && !($$0.b() instanceof dki));
-
-      public static final Codec<dyy.a> g = azk.a(dyy.a::values);
-      private final String h;
-      private final dyy.b i;
-      private final Predicate<dtc> j;
-
-      private a(final String $$0, final dyy.b $$1, final Predicate<dtc> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
-      }
-
-      public String a() {
-         return this.h;
-      }
-
-      public boolean b() {
-         return this.i == dyy.b.c;
-      }
-
-      public boolean d() {
-         return this.i != dyy.b.a;
-      }
-
-      public Predicate<dtc> e() {
-         return this.j;
-      }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
    }
 }

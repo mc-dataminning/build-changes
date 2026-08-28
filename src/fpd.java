@@ -1,82 +1,74 @@
-public class fpd extends fos {
-   private final dqr u;
-   private fit<dqr.a> v;
-   private fit<Boolean> w;
-   private fit<Boolean> x;
-   private dqr.a y = dqr.a.c;
-   private boolean z;
-   private boolean A;
+import com.google.common.hash.Hashing;
+import javax.annotation.Nullable;
 
-   public fpd(dqr $$0) {
-      this.u = $$0;
+public class fpd implements AutoCloseable {
+   private static final alb a = alb.b("textures/misc/unknown_server.png");
+   private static final int b = 64;
+   private static final int c = 64;
+   private final gwl d;
+   private final alb e;
+   @Nullable
+   private gvx f;
+   private boolean g;
+
+   private fpd(gwl $$0, alb $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   public static fpd a(gwl $$0, String $$1) {
+      return new fpd($$0, alb.b("worlds/" + ad.a($$1, alb::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public static fpd b(gwl $$0, String $$1) {
+      return new fpd($$0, alb.b("servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
+   }
+
+   public void a(fbp $$0) {
+      if ($$0.a() == 64 && $$0.b() == 64) {
+         try {
+            this.c();
+            if (this.f == null) {
+               this.f = new gvx($$0);
+            } else {
+               this.f.a($$0);
+               this.f.e();
+            }
+
+            this.d.a(this.e, this.f);
+         } catch (Throwable var3) {
+            $$0.close();
+            this.a();
+            throw var3;
+         }
+      } else {
+         $$0.close();
+         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
+      }
+   }
+
+   public void a() {
+      this.c();
+      if (this.f != null) {
+         this.d.c(this.e);
+         this.f.close();
+         this.f = null;
+      }
+   }
+
+   public alb b() {
+      return this.f != null ? this.e : a;
    }
 
    @Override
-   dbx m() {
-      return this.u.b();
+   public void close() {
+      this.a();
+      this.g = true;
    }
 
-   @Override
-   int C() {
-      return 135;
-   }
-
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.v = this.c(fit.<dqr.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> wz.c("advMode.mode.sequence");
-            case b -> wz.c("advMode.mode.auto");
-            case c -> wz.c("advMode.mode.redstone");
-         };
-      }).a(dqr.a.values()).a().a(this.y).a(this.m / 2 - 50 - 100 - 4, 165, 100, 20, wz.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
-      this.w = this.c(
-         fit.a(wz.c("advMode.mode.conditional"), wz.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.z)
-            .a(this.m / 2 - 50, 165, 100, 20, wz.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.x = this.c(
-         fit.a(wz.c("advMode.mode.autoexec.bat"), wz.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.A)
-            .a(this.m / 2 + 50 + 4, 165, 100, 20, wz.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
-      );
-      this.f(false);
-   }
-
-   private void f(boolean $$0) {
-      this.c.j = $$0;
-      this.s.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-      this.x.j = $$0;
-   }
-
-   public void E() {
-      dbx $$0 = this.u.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.y = this.u.l();
-      this.z = this.u.u();
-      this.A = this.u.d();
-      this.s.a($$1);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.x.a(this.A);
-      this.c($$1);
-      this.f(true);
-   }
-
-   @Override
-   public void a(fgo $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.f(true);
-   }
-
-   @Override
-   protected void a(dbx $$0) {
-      this.l.L().b(new ahw(jd.a((jw)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
+   private void c() {
+      if (this.g) {
+         throw new IllegalStateException("Icon already closed");
+      }
    }
 }

@@ -1,24 +1,40 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class eam implements dzl {
+   private static final int d = 48;
+   private static final long e = 281474976710655L;
+   private static final long f = 25214903917L;
+   private static final long g = 11L;
+   private long h;
+   private final dzy i = new dzy(this);
 
-class eam extends eaq {
-   private final jq<epd> e;
-   public static final MapCodec<eam> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kb.a(lu.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, eam::new)
-   );
-
-   public eam(kh $$0, jq<epd> $$1) {
-      super($$0);
-      this.e = $$1;
+   public eam(long $$0) {
+      this.b($$0);
    }
 
    @Override
-   protected boolean a(dtc $$0) {
-      return $$0.u().a(this.e);
+   public azk d() {
+      return new eam(this.g());
    }
 
    @Override
-   public eag<?> a() {
-      return eag.c;
+   public eaj e() {
+      return new dzx.a(this.g());
+   }
+
+   @Override
+   public void b(long $$0) {
+      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
+      this.i.a();
+   }
+
+   @Override
+   public int c(int $$0) {
+      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
+      this.h = $$1;
+      return (int)($$1 >> 48 - $$0);
+   }
+
+   @Override
+   public double k() {
+      return this.i.b();
    }
 }

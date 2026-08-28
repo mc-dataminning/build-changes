@@ -1,42 +1,53 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class emw {
+   private static final alb[] a = new alb[]{
+      alb.b("nether_fossils/fossil_1"),
+      alb.b("nether_fossils/fossil_2"),
+      alb.b("nether_fossils/fossil_3"),
+      alb.b("nether_fossils/fossil_4"),
+      alb.b("nether_fossils/fossil_5"),
+      alb.b("nether_fossils/fossil_6"),
+      alb.b("nether_fossils/fossil_7"),
+      alb.b("nether_fossils/fossil_8"),
+      alb.b("nether_fossils/fossil_9"),
+      alb.b("nether_fossils/fossil_10"),
+      alb.b("nether_fossils/fossil_11"),
+      alb.b("nether_fossils/fossil_12"),
+      alb.b("nether_fossils/fossil_13"),
+      alb.b("nether_fossils/fossil_14")
+   };
 
-public class emw extends enq {
-   public static final MapCodec<emw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kb.a(lu.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, emw::new)
-   );
-   private final Optional<jq<dfy>> b;
-   private final float c;
-
-   public emw(jq<dfy> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
+   public static void a(eor $$0, ekt $$1, azk $$2, je $$3) {
+      dnj $$4 = dnj.a($$2);
+      $$1.a(new emw.a($$0, ad.a(a, $$2), $$3, $$4));
    }
 
-   public emw(float $$0) {
-      this(Optional.empty(), $$0);
-   }
+   public static class a extends eky {
+      public a(eor $$0, alb $$1, je $$2, dnj $$3) {
+         super(elf.ac, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
+      }
 
-   private emw(Optional<jq<dfy>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
+      public a(eor $$0, uf $$1) {
+         super(elf.ac, $$1, $$0, $$1x -> a(dnj.valueOf($$1.l("Rot"))));
+      }
 
-   @Nullable
-   @Override
-   public ent.c a(dcz $$0, jd $$1, jd $$2, ent.c $$3, ent.c $$4, enp $$5) {
-      ayw $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
-   }
+      private static eom a(dnj $$0) {
+         return new eom().a($$0).a(dls.a).a(enr.d);
+      }
 
-   @Override
-   protected ens<?> a() {
-      return ens.f;
+      @Override
+      protected void a(ele $$0, uf $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+      }
+
+      @Override
+      protected void a(String $$0, je $$1, dei $$2, azk $$3, ekg $$4) {
+      }
+
+      @Override
+      public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, je $$6) {
+         $$4.b(this.b.b(this.c, this.d));
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 }

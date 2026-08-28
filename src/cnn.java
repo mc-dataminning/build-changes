@@ -1,48 +1,30 @@
-public class cnn extends cnj {
-   private int e = 1;
+import java.util.function.IntFunction;
 
-   public cnn(bsx<? extends cnn> $$0, dcw $$1) {
-      super($$0, $$1);
-   }
+public enum cnn implements azf {
+   a(0, "options.chat.visibility.full"),
+   b(1, "options.chat.visibility.system"),
+   c(2, "options.chat.visibility.hidden");
 
-   public cnn(dcw $$0, btn $$1, exc $$2, int $$3) {
-      super(bsx.ak, $$1, $$2, $$0);
-      this.e = $$3;
-   }
+   private static final IntFunction<cnn> d = axt.a(cnn::b, values(), axt.a.b);
+   private final int e;
+   private final String f;
 
-   @Override
-   protected void a(exa $$0) {
-      super.a($$0);
-      if (!this.dO().B) {
-         boolean $$1 = this.dO().ab().b(dcs.c);
-         this.dO().a(this, this.dt(), this.dv(), this.dz(), (float)this.e, $$1, dcw.a.c);
-         this.aq();
-      }
+   private cnn(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   protected void a(ewz $$0) {
-      super.a($$0);
-      if (this.dO() instanceof aqu $$1) {
-         bsr var6 = $$0.a();
-         bsr $$4 = this.s();
-         brk $$5 = this.dP().a((cnj)this, $$4);
-         var6.a($$5, 6.0F);
-         dae.a($$1, var6, $$5);
-      }
+   public int b() {
+      return this.e;
    }
 
    @Override
-   public void b(ub $$0) {
-      super.b($$0);
-      $$0.a("ExplosionPower", (byte)this.e);
+   public String a() {
+      return this.f;
    }
 
-   @Override
-   public void a(ub $$0) {
-      super.a($$0);
-      if ($$0.b("ExplosionPower", 99)) {
-         this.e = $$0.f("ExplosionPower");
-      }
+   public static cnn a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -1,88 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjz extends bid {
+public class bjz extends biw {
    public bjz(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bgr.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bgr.A.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bgr.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bgr.C.in($$0))),
-                  "Sections",
-                  DSL.list(
-                     DSL.optionalFields(
-                        "biomes",
-                        DSL.optionalFields("palette", DSL.list(bgr.K.in($$0))),
-                        "block_states",
-                        DSL.optionalFields("palette", DSL.list(bgr.u.in($$0)))
-                     )
-                  ),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(bgr.G.in($$0)))
-               )
-            )
-      );
-      $$0.registerType(false, bgr.L, () -> DSL.constType(a()));
-      $$0.registerType(
-         false,
-         bgr.M,
-         () -> DSL.fields(
-               "dimensions",
-               DSL.compoundList(
-                  DSL.constType(a()),
-                  DSL.fields(
-                     "generator",
-                     DSL.taggedChoiceLazy(
-                        "type",
-                        DSL.string(),
-                        ImmutableMap.of(
-                           "minecraft:debug",
-                           DSL::remainder,
-                           "minecraft:flat",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "settings", DSL.optionalFields("biome", bgr.K.in($$0), "layers", DSL.list(DSL.optionalFields("block", bgr.C.in($$0))))
-                              ),
-                           "minecraft:noise",
-                           (Supplier<TypeTemplate>)() -> DSL.optionalFields(
-                                 "biome_source",
-                                 DSL.taggedChoiceLazy(
-                                    "type",
-                                    DSL.string(),
-                                    ImmutableMap.of(
-                                       "minecraft:fixed",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biome", bgr.K.in($$0)),
-                                       "minecraft:multi_noise",
-                                       (Supplier<TypeTemplate>)() -> DSL.or(DSL.fields("preset", bgr.L.in($$0)), DSL.list(DSL.fields("biome", bgr.K.in($$0)))),
-                                       "minecraft:checkerboard",
-                                       (Supplier<TypeTemplate>)() -> DSL.fields("biomes", DSL.list(bgr.K.in($$0))),
-                                       "minecraft:the_end",
-                                       DSL::remainder
-                                    )
-                                 ),
-                                 "settings",
-                                 DSL.or(DSL.constType(DSL.string()), DSL.optionalFields("default_block", bgr.C.in($$0), "default_fluid", bgr.C.in($$0)))
-                              )
-                        )
-                     )
-                  )
-               )
-            )
-      );
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> bix.a($$0));
+   }
+
+   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
+      $$1.remove("minecraft:illager_beast");
+      a($$0, $$1, "minecraft:ravager");
+      return $$1;
    }
 }

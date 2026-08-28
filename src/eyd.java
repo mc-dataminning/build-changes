@@ -1,81 +1,60 @@
-import javax.annotation.Nullable;
+public class eyd {
+   public static final eyd a = new eyd(0.0F, 0.0F);
+   public static final eyd b = new eyd(1.0F, 1.0F);
+   public static final eyd c = new eyd(1.0F, 0.0F);
+   public static final eyd d = new eyd(-1.0F, 0.0F);
+   public static final eyd e = new eyd(0.0F, 1.0F);
+   public static final eyd f = new eyd(0.0F, -1.0F);
+   public static final eyd g = new eyd(Float.MAX_VALUE, Float.MAX_VALUE);
+   public static final eyd h = new eyd(Float.MIN_VALUE, Float.MIN_VALUE);
+   public final float i;
+   public final float j;
 
-public class eyd implements eyc {
-   private static final String a = "Score";
-   private static final String b = "Locked";
-   private static final String c = "display";
-   private static final String d = "format";
-   private int e;
-   private boolean f = true;
-   @Nullable
-   private wz g;
-   @Nullable
-   private yp h;
-
-   @Override
-   public int a() {
-      return this.e;
+   public eyd(float $$0, float $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
-   public void a(int $$0) {
-      this.e = $$0;
+   public eyd a(float $$0) {
+      return new eyd(this.i * $$0, this.j * $$0);
    }
 
-   @Override
-   public boolean b() {
-      return this.f;
+   public float a(eyd $$0) {
+      return this.i * $$0.i + this.j * $$0.j;
    }
 
-   public void a(boolean $$0) {
-      this.f = $$0;
+   public eyd b(eyd $$0) {
+      return new eyd(this.i + $$0.i, this.j + $$0.j);
    }
 
-   @Nullable
-   public wz d() {
-      return this.g;
+   public eyd b(float $$0) {
+      return new eyd(this.i + $$0, this.j + $$0);
    }
 
-   public void a(@Nullable wz $$0) {
-      this.g = $$0;
+   public boolean c(eyd $$0) {
+      return this.i == $$0.i && this.j == $$0.j;
    }
 
-   @Nullable
-   @Override
-   public yp c() {
-      return this.h;
+   public eyd a() {
+      float $$0 = azc.c(this.i * this.i + this.j * this.j);
+      return $$0 < 1.0E-4F ? a : new eyd(this.i / $$0, this.j / $$0);
    }
 
-   public void b(@Nullable yp $$0) {
-      this.h = $$0;
+   public float b() {
+      return azc.c(this.i * this.i + this.j * this.j);
    }
 
-   public ub a(jo.a $$0) {
-      ub $$1 = new ub();
-      $$1.a("Score", this.e);
-      $$1.a("Locked", this.f);
-      if (this.g != null) {
-         $$1.a("display", wz.a.a(this.g, $$0));
-      }
-
-      if (this.h != null) {
-         yr.b.encodeStart($$0.a(up.a), this.h).ifSuccess($$1x -> $$1.a("format", $$1x));
-      }
-
-      return $$1;
+   public float c() {
+      return this.i * this.i + this.j * this.j;
    }
 
-   public static eyd a(ub $$0, jo.a $$1) {
-      eyd $$2 = new eyd();
-      $$2.e = $$0.h("Score");
-      $$2.f = $$0.q("Locked");
-      if ($$0.b("display", 8)) {
-         $$2.g = wz.a.a($$0.l("display"), $$1);
-      }
+   public float d(eyd $$0) {
+      float $$1 = $$0.i - this.i;
+      float $$2 = $$0.j - this.j;
+      return $$1 * $$1 + $$2 * $$2;
+   }
 
-      if ($$0.b("format", 10)) {
-         yr.b.parse($$1.a(up.a), $$0.c("format")).ifSuccess($$1x -> $$2.h = $$1x);
-      }
-
-      return $$2;
+   public eyd d() {
+      return new eyd(-this.i, -this.j);
    }
 }

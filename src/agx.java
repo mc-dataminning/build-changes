@@ -1,83 +1,42 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.time.Instant;
 
-public class agx implements zg<agi> {
-   public static final yx<wk, agx> a = zg.a(agx::a, agx::new);
-   private static final int b = 128;
-   private static final yx<wk, Int2ObjectMap<cuq>> c = yv.a(Int2ObjectOpenHashMap::new, yv.d.a(Short::intValue, Integer::shortValue), cuq.h, 128);
-   private final int d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final cqe h;
-   private final cuq i;
-   private final Int2ObjectMap<cuq> j;
+public record agx(String b, Instant c, long d, fa e, xk.b f) implements zk<agq> {
+   public static final zb<wa, agx> a = zk.a(agx::a, agx::new);
 
-   public agx(int $$0, int $$1, int $$2, int $$3, cqe $$4, cuq $$5, Int2ObjectMap<cuq> $$6) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = Int2ObjectMaps.unmodifiable($$6);
+   private agx(wa $$0) {
+      this($$0.p(), $$0.t(), $$0.readLong(), new fa($$0), new xk.b($$0));
    }
 
-   private agx(wk $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = $$0.readByte();
-      this.h = $$0.b(cqe.class);
-      this.j = Int2ObjectMaps.unmodifiable(c.decode($$0));
-      this.i = cuq.h.decode($$0);
-   }
-
-   private void a(wk $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      $$0.k(this.g);
-      $$0.a(this.h);
-      c.encode($$0, this.j);
-      cuq.h.encode($$0, this.i);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      this.e.a($$0);
+      this.f.a($$0);
    }
 
    @Override
-   public zi<agx> a() {
-      return agg.bs;
+   public zm<agx> a() {
+      return ago.bm;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
       return this.d;
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   public cuq g() {
-      return this.i;
-   }
-
-   public Int2ObjectMap<cuq> h() {
-      return this.j;
-   }
-
-   public cqe i() {
-      return this.h;
-   }
-
-   public int j() {
+   public fa g() {
       return this.e;
+   }
+
+   public xk.b h() {
+      return this.f;
    }
 }

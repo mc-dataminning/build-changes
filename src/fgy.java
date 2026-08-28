@@ -1,136 +1,122 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.UUID;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeoutException;
+import java.util.function.Function;
 import org.slf4j.Logger;
 
-public class fgy {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "screenshots";
-   private int c;
-   private final DataOutputStream d;
-   private final byte[] e;
-   private final int f;
-   private final int g;
-   private File h;
+public class fgy extends fgz {
+   private static final xd b = xd.c("multiplayer.applyingPack");
+   private static final Logger c = LogUtils.getLogger();
+   private static final xd d = xd.c("mco.connect.connecting");
+   private final feb e;
+   private final fpt f;
 
-   public static void a(File $$0, ezv $$1, Consumer<wz> $$2) {
-      a($$0, null, $$1, $$2);
+   public fgy(fpt $$0, feb $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public static void a(File $$0, @Nullable String $$1, ezv $$2, Consumer<wz> $$3) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
-      } else {
-         b($$0, $$1, $$2, $$3);
-      }
-   }
-
-   private static void b(File $$0, @Nullable String $$1, ezv $$2, Consumer<wz> $$3) {
-      faj $$4 = a($$2);
-      File $$5 = new File($$0, "screenshots");
-      $$5.mkdir();
-      File $$6;
-      if ($$1 == null) {
-         $$6 = a($$5);
-      } else {
-         $$6 = new File($$5, $$1);
-      }
-
-      ad.h().execute(() -> {
-         try {
-            $$4.a($$6);
-            wz $$3x = wz.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new wx(wx.a.b, $$6.getAbsolutePath())));
-            $$3.accept(wz.a("screenshot.success", $$3x));
-         } catch (Exception var7) {
-            b.warn("Couldn't save screenshot", var7);
-            $$3.accept(wz.a("screenshot.failure", var7.getMessage()));
-         } finally {
-            $$4.close();
+   @Override
+   public void run() {
+      fec $$0;
+      try {
+         $$0 = this.f();
+      } catch (CancellationException var4) {
+         c.info("User aborted connecting to realms");
+         return;
+      } catch (fev var5) {
+         switch (var5.a.a()) {
+            case 6002:
+               a(new fgd(this.f, this.e));
+               return;
+            case 6006:
+               boolean $$3 = fib.Q().b(this.e.g);
+               a(
+                  (fpt)($$3
+                     ? new ffh(this.f, this.e.a, this.e.i())
+                     : new ffn(xd.c("mco.brokenworld.nonowner.title"), xd.c("mco.brokenworld.nonowner.error"), this.f))
+               );
+               return;
+            default:
+               this.a(var5);
+               c.error("Couldn't connect to world", var5);
+               return;
          }
+      } catch (TimeoutException var6) {
+         this.a(xd.c("mco.errorMessage.connectionFailure"));
+         return;
+      } catch (Exception var7) {
+         c.error("Couldn't connect to world", var7);
+         this.a(var7);
+         return;
+      }
+
+      boolean $$7 = $$0.b != null && $$0.c != null;
+      fpt $$8 = (fpt)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+      a($$8);
+   }
+
+   private static UUID a(feb $$0) {
+      return $$0.o != null
+         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.o).getBytes(StandardCharsets.UTF_8))
+         : UUID.nameUUIDFromBytes(("realms:" + $$0.c + ":" + $$0.n).getBytes(StandardCharsets.UTF_8));
+   }
+
+   @Override
+   public xd a() {
+      return d;
+   }
+
+   private fec f() throws fev, TimeoutException, CancellationException {
+      fdk $$0 = fdk.a();
+
+      for (int $$1 = 0; $$1 < 40; $$1++) {
+         if (this.d()) {
+            throw new CancellationException();
+         }
+
+         try {
+            return $$0.c(this.e.a);
+         } catch (few var4) {
+            a((long)var4.c);
+         }
+      }
+
+      throw new TimeoutException();
+   }
+
+   public ffp a(fec $$0) {
+      return new ffq(this.f, new fgv(this.f, this.e, $$0));
+   }
+
+   private flc a(fec $$0, UUID $$1, Function<fec, fpt> $$2) {
+      xd $$3 = xd.c("mco.configure.world.resourcepack.question");
+      return ffv.a(this.f, $$3, $$3x -> {
+         a(new fpe(b));
+         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
+            fib.Q().ae().i();
+            c.error("Failed to download resource pack from {}", $$0, $$1xx);
+            a(new ffn(xd.c("mco.download.resourcePack.fail"), this.f));
+            return null;
+         });
       });
    }
 
-   public static faj a(ezv $$0) {
-      int $$1 = $$0.c;
-      int $$2 = $$0.d;
-      faj $$3 = new faj($$1, $$2, false);
-      RenderSystem.bindTexture($$0.f());
-      $$3.a(0, true);
-      $$3.h();
-      return $$3;
-   }
-
-   private static File a(File $$0) {
-      String $$1 = ad.f();
-      int $$2 = 1;
-
-      while (true) {
-         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
-         if (!$$3.exists()) {
-            return $$3;
-         }
-
-         $$2++;
+   private CompletableFuture<?> a(fec $$0, UUID $$1) {
+      try {
+         gzg $$2 = fib.Q().ae();
+         CompletableFuture<Void> $$3 = $$2.b($$1);
+         $$2.g();
+         $$2.a($$1, new URL($$0.b), $$0.c);
+         return $$3;
+      } catch (Exception var5) {
+         CompletableFuture<Void> $$5 = new CompletableFuture<>();
+         $$5.completeExceptionally(var5);
+         return $$5;
       }
-   }
-
-   public fgy(File $$0, int $$1, int $$2, int $$3) throws IOException {
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      File $$4 = new File($$0, "screenshots");
-      $$4.mkdir();
-      String $$5 = "huge_" + ad.f();
-      int $$6 = 1;
-
-      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
-         $$6++;
-      }
-
-      byte[] $$7 = new byte[18];
-      $$7[2] = 2;
-      $$7[12] = (byte)($$1 % 256);
-      $$7[13] = (byte)($$1 / 256);
-      $$7[14] = (byte)($$2 % 256);
-      $$7[15] = (byte)($$2 / 256);
-      $$7[16] = 24;
-      this.e = new byte[$$1 * $$3 * 3];
-      this.d = new DataOutputStream(new FileOutputStream(this.h));
-      this.d.write($$7);
-   }
-
-   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$3;
-      int $$6 = $$4;
-      if ($$3 > this.f - $$1) {
-         $$5 = this.f - $$1;
-      }
-
-      if ($$4 > this.g - $$2) {
-         $$6 = this.g - $$2;
-      }
-
-      this.c = $$6;
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
-         int $$8 = ($$1 + $$7 * this.f) * 3;
-         $$0.get(this.e, $$8, $$5 * 3);
-      }
-   }
-
-   public void a() throws IOException {
-      this.d.write(this.e, 0, this.f * 3 * this.c);
-   }
-
-   public File b() throws IOException {
-      this.d.close();
-      return this.h;
    }
 }

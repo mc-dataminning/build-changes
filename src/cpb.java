@@ -1,118 +1,45 @@
-public class cpb extends cot {
-   static final ajw<String> c = aka.a(cpb.class, ajy.e);
-   static final ajw<wz> d = aka.a(cpb.class, ajy.f);
-   private final dbx e = new cpb.a();
-   private static final int i = 4;
-   private int j;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public cpb(bsx<? extends cpb> $$0, dcw $$1) {
+public class cpb extends coz {
+   private static final ddl g = new dek(true, false, Optional.of(1.22F), lu.e.a(aws.cz).map(Function.identity()));
+   private static final float h = 1.2F;
+   private static final float i = azc.k(3.5F);
+   private int j = 5;
+
+   public cpb(btq<? extends coz> $$0, dds $$1) {
       super($$0, $$1);
    }
 
-   public cpb(dcw $$0, double $$1, double $$2, double $$3) {
-      super(bsx.v, $$0, $$1, $$2, $$3);
+   public cpb(cnp $$0, dds $$1, double $$2, double $$3, double $$4) {
+      super(btq.bn, $$1, $$0, $$2, $$3, $$4);
+   }
+
+   public cpb(dds $$0, double $$1, double $$2, double $$3, eye $$4) {
+      super(btq.bn, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   protected cul ak_() {
-      return cut.nM;
-   }
-
-   @Override
-   protected void a(aka.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, wy.a);
-   }
-
-   @Override
-   protected void a(ub $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dQ());
-      this.ar().a(c, this.B().m());
-      this.ar().a(d, this.B().l());
-   }
-
-   @Override
-   protected void b(ub $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dQ());
-   }
-
-   @Override
-   public cot.a v() {
-      return cot.a.g;
-   }
-
-   @Override
-   public dtc x() {
-      return dga.fN.o();
-   }
-
-   public dbx B() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ai - this.j >= 4) {
-         this.B().a(this.dO());
-         this.j = this.ai;
+   public void l() {
+      super.l();
+      if (this.j > 0) {
+         this.j--;
       }
    }
 
    @Override
-   public bqr a(cmx $$0, bqq $$1) {
-      return this.e.a($$0);
+   public boolean a(coj $$0, @Nullable btj $$1, @Nullable btj $$2, boolean $$3) {
+      return this.j > 0 ? false : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public void a(ajw<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.ar().a(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.ar().a(c));
-      }
+   protected void a(eye $$0) {
+      this.dS().a(this, null, g, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, dds.a.e, ln.A, ln.z, awd.Cw);
    }
 
    @Override
-   public boolean cP() {
-      return true;
-   }
-
-   public class a extends dbx {
-      @Override
-      public aqu e() {
-         return (aqu)cpb.this.dO();
-      }
-
-      @Override
-      public void f() {
-         cpb.this.ar().a(cpb.c, this.m());
-         cpb.this.ar().a(cpb.d, this.l());
-      }
-
-      @Override
-      public exc g() {
-         return cpb.this.dm();
-      }
-
-      public cpb h() {
-         return cpb.this;
-      }
-
-      @Override
-      public et i() {
-         return new et(this, cpb.this.dm(), cpb.this.bN(), this.e(), 2, this.n().getString(), cpb.this.S_(), this.e().o(), cpb.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !cpb.this.dJ();
-      }
+   public boolean a(double $$0) {
+      return this.ag < 2 && $$0 < (double)i ? false : super.a($$0);
    }
 }

@@ -1,11 +1,14 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface eob {
-   Codec<eob> c = lt.n.r().dispatch(eob::a, eoc::codec);
+public class eob extends eon {
+   public static final MapCodec<eob> a = MapCodec.unit(() -> eob.b);
+   public static final eob b = new eob();
 
-   @Nullable
-   ub a(ayw var1, @Nullable ub var2);
+   private eob() {
+   }
 
-   eoc<?> a();
+   @Override
+   protected eop<?> a() {
+      return eop.j;
+   }
 }

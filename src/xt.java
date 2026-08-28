@@ -1,108 +1,135 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.primitives.Ints;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.security.SignatureException;
+import java.time.Duration;
 import java.time.Instant;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
-import java.util.function.BooleanSupplier;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class xt {
-   static final Logger a = LogUtils.getLogger();
+public record xt(xy d, @Nullable xp e, xw f, @Nullable xd g, xh h) {
+   public static final MapCodec<xt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               xy.a.fieldOf("link").forGetter(xt::k),
+               xp.a.optionalFieldOf("signature").forGetter($$0x -> Optional.ofNullable($$0x.e)),
+               xw.a.forGetter(xt::m),
+               xf.a.optionalFieldOf("unsigned_content").forGetter($$0x -> Optional.ofNullable($$0x.g)),
+               xh.a.optionalFieldOf("filter_mask", xh.c).forGetter(xt::o)
+            )
+            .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new xt($$0x, (xp)$$1.orElse(null), $$2, (xd)$$3.orElse(null), $$4))
+   );
+   private static final UUID i = ad.e;
+   public static final Duration b = Duration.ofMinutes(5L);
+   public static final Duration c = b.plus(Duration.ofMinutes(2L));
+
+   public static xt a(String $$0) {
+      return a(i, $$0);
+   }
+
+   public static xt a(UUID $$0, String $$1) {
+      xw $$2 = xw.a($$1);
+      xy $$3 = xy.a($$0);
+      return new xt($$3, null, $$2, null, xh.c);
+   }
+
+   public xt a(xd $$0) {
+      xd $$1 = !$$0.equals(xd.b(this.c())) ? $$0 : null;
+      return new xt(this.d, this.e, this.f, $$1, this.h);
+   }
+
+   public xt a() {
+      return this.g != null ? new xt(this.d, this.e, this.f, null, this.h) : this;
+   }
+
+   public xt a(xh $$0) {
+      return this.h.equals($$0) ? this : new xt(this.d, this.e, this.f, this.g, $$0);
+   }
+
+   public xt a(boolean $$0) {
+      return this.a($$0 ? this.h : xh.c);
+   }
+
+   public xt b() {
+      xw $$0 = xw.a(this.c());
+      xy $$1 = xy.a(this.g());
+      return new xt($$1, null, $$0, this.g, this.h);
+   }
+
+   public static void a(azo.a $$0, xy $$1, xw $$2) throws SignatureException {
+      $$0.update(Ints.toByteArray(1));
+      $$1.a($$0);
+      $$2.a($$0);
+   }
+
+   public boolean a(azp $$0) {
+      return this.e != null && this.e.a($$0, $$0x -> a($$0x, this.d, this.f));
+   }
+
+   public String c() {
+      return this.f.a();
+   }
+
+   public xd d() {
+      return Objects.requireNonNullElseGet(this.g, () -> xd.b(this.c()));
+   }
+
+   public Instant e() {
+      return this.f.b();
+   }
+
+   public long f() {
+      return this.f.c();
+   }
+
+   public boolean a(Instant $$0) {
+      return $$0.isAfter(this.e().plus(b));
+   }
+
+   public boolean b(Instant $$0) {
+      return $$0.isAfter(this.e().plus(c));
+   }
+
+   public UUID g() {
+      return this.d.c();
+   }
+
+   public boolean h() {
+      return this.g().equals(i);
+   }
+
+   public boolean i() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.i() && this.d.c().equals($$0);
+   }
+
+   public boolean j() {
+      return this.h.b();
+   }
+
+   public xy k() {
+      return this.d;
+   }
+
    @Nullable
-   xu b;
-   Instant c = Instant.EPOCH;
-
-   public xt(UUID $$0, UUID $$1) {
-      this.b = xu.a($$0, $$1);
+   public xp l() {
+      return this.e;
    }
 
-   public xt.c a(azc $$0) {
-      return $$1 -> {
-         xu $$2 = this.b;
-         if ($$2 == null) {
-            return null;
-         } else {
-            this.b = $$2.a();
-            return new xl($$0.sign($$2x -> xp.a($$2x, $$2, $$1)));
-         }
-      };
+   public xw m() {
+      return this.f;
    }
 
-   public xt.b a(final cna $$0) {
-      final azb $$1 = $$0.a();
-      return new xt.b() {
-         @Override
-         public xp unpack(@Nullable xl $$0x, xs $$1x) throws xt.a {
-            if ($$0 == null) {
-               throw new xt.a(xt.a.a);
-            } else if ($$0.b().a()) {
-               throw new xt.a(xt.a.c);
-            } else {
-               xu $$2 = xt.this.b;
-               if ($$2 == null) {
-                  throw new xt.a(xt.a.b);
-               } else if ($$1.b().isBefore(xt.this.c)) {
-                  this.setChainBroken();
-                  throw new xt.a(xt.a.e);
-               } else {
-                  xt.this.c = $$1.b();
-                  xp $$3 = new xp($$2, $$0, $$1, null, xd.c);
-                  if (!$$3.a($$1)) {
-                     this.setChainBroken();
-                     throw new xt.a(xt.a.d);
-                  } else {
-                     if ($$3.a(Instant.now())) {
-                        xt.a.warn("Received expired chat: '{}'. Is the client/server system time unsynchronized?", $$1.a());
-                     }
-
-                     xt.this.b = $$2.a();
-                     return $$3;
-                  }
-               }
-            }
-         }
-
-         @Override
-         public void setChainBroken() {
-            xt.this.b = null;
-         }
-      };
+   @Nullable
+   public xd n() {
+      return this.g;
    }
 
-   public static class a extends xz {
-      static final wz a = wz.c("chat.disabled.missingProfileKey");
-      static final wz b = wz.c("chat.disabled.chain_broken");
-      static final wz c = wz.c("chat.disabled.expiredProfileKey");
-      static final wz d = wz.c("chat.disabled.invalid_signature");
-      static final wz e = wz.c("chat.disabled.out_of_order_chat");
-
-      public a(wz $$0) {
-         super($$0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      static xt.b unsigned(UUID $$0, BooleanSupplier $$1) {
-         return ($$2, $$3) -> {
-            if ($$1.getAsBoolean()) {
-               throw new xt.a(xt.a.a);
-            } else {
-               return xp.a($$0, $$3.a());
-            }
-         };
-      }
-
-      xp unpack(@Nullable xl var1, xs var2) throws xt.a;
-
-      default void setChainBroken() {
-      }
-   }
-
-   @FunctionalInterface
-   public interface c {
-      xt.c a = $$0 -> null;
-
-      @Nullable
-      xl pack(xs var1);
+   public xh o() {
+      return this.h;
    }
 }

@@ -1,31 +1,24 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import org.apache.commons.io.FileUtils;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class dwm extends dwj {
-   private final dwl a;
-   private final Path b;
+public interface dwm<T> {
+   int a(T var1);
 
-   public dwm(dws $$0, Path $$1, dws $$2, Path $$3, DataFixer $$4, boolean $$5) {
-      super($$0, $$1, $$4, $$5);
-      this.b = $$3;
-      this.a = new dwl($$2, $$3, $$5);
-   }
+   boolean a(Predicate<T> var1);
 
-   @Override
-   public CompletableFuture<Void> a(dcd $$0, ub $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
+   T a(int var1);
 
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
-      }
+   void a(wa var1);
+
+   void b(wa var1);
+
+   int a();
+
+   int b();
+
+   dwm<T> a(dwn<T> var1);
+
+   public interface a {
+      <A> dwm<A> create(int var1, js<A> var2, dwn<A> var3, List<A> var4);
    }
 }

@@ -1,45 +1,38 @@
-public class ahk implements zg<agi> {
-   public static final yx<vw, ahk> a = zg.a(ahk::a, ahk::new);
-   private final int b;
-   private final akr c;
-   private final boolean d;
+import java.util.List;
+import java.util.Optional;
 
-   public ahk(int $$0, czb<?> $$1, boolean $$2) {
-      this.b = $$0;
-      this.c = $$1.a();
-      this.d = $$2;
-   }
+public record ahk(int c, List<String> d, Optional<String> e) implements zk<agq> {
+   public static final int a = 4;
+   private static final int f = 128;
+   private static final int g = 8192;
+   private static final int h = 200;
+   public static final zb<wa, ahk> b = zb.a(yz.g, ahk::b, yz.b(8192).a(yz.c(200)), ahk::e, yz.b(128).a(yz::a), ahk::f, ahk::new);
 
-   private ahk(vw $$0) {
-      this.b = $$0.readByte();
-      this.c = $$0.q();
-      this.d = $$0.readBoolean();
-   }
-
-   private void a(vw $$0) {
-      $$0.k(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
+   public ahk(int c, List<String> d, Optional<String> e) {
+      d = List.copyOf(d);
+      this.c = c;
+      this.d = d;
+      this.e = e;
    }
 
    @Override
-   public zi<ahk> a() {
-      return agg.bI;
+   public zm<ahk> a() {
+      return ago.bz;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
    public int b() {
-      return this.b;
-   }
-
-   public akr e() {
       return this.c;
    }
 
-   public boolean f() {
+   public List<String> e() {
       return this.d;
+   }
+
+   public Optional<String> f() {
+      return this.e;
    }
 }

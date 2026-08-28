@@ -1,16 +1,47 @@
-import javax.annotation.Nullable;
+public class cby extends cbc {
+   private final chz a;
+   private int b;
 
-public class cby extends cbz {
-   public cby(btw $$0, double $$1) {
-      super($$0, $$1);
+   public cby(chz $$0) {
+      this.a = $$0;
+      this.a($$0);
    }
 
-   @Nullable
    @Override
-   protected exc h() {
-      exc $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      exc $$2 = cel.a(this.b, 8, 7, $$0.c, $$0.e, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : ceh.a(this.b, 8, 4, -2, $$0.c, $$0.e, (float) (Math.PI / 2));
+   public void d() {
+      this.a.gV();
+      this.h();
+   }
+
+   private void h() {
+      awc $$0 = this.a.gU();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return false;
+   }
+
+   @Override
+   public boolean b() {
+      this.b++;
+      if (this.b > 0 && this.a.dV().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.ff() && this.a.dV().a(10) == 0;
+      } else {
+         return false;
+      }
+   }
+
+   private void a(chz $$0) {
+      this.b = -$$0.gZ();
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
    }
 }

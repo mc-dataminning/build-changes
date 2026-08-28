@@ -1,149 +1,65 @@
-import java.io.DataInput;
-import java.io.DataOutput;
-import java.io.IOException;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public class tz extends ur {
-   private static final int w = 9;
-   public static final va<tz> a = new va.a<tz>() {
-      public tz a(DataInput $$0, uk $$1) throws IOException {
-         return tz.a(d($$0, $$1));
+public record tz(List<String> c, Map<String, String> d) {
+   private static final Logger e = LogUtils.getLogger();
+   public static final tz a = new tz(List.of(), Map.of());
+   public static final Codec<tz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.listOf().fieldOf("removed").forGetter(tz::b), Codec.unboundedMap(Codec.STRING, Codec.STRING).fieldOf("renamed").forGetter(tz::c)
+            )
+            .apply($$0, tz::new)
+   );
+
+   public static tz a(InputStream $$0) {
+      JsonElement $$1 = JsonParser.parseReader(new InputStreamReader($$0, StandardCharsets.UTF_8));
+      return (tz)b.parse(JsonOps.INSTANCE, $$1).getOrThrow($$0x -> new IllegalStateException("Failed to parse deprecated language data: " + $$0x));
+   }
+
+   public static tz a(String $$0) {
+      try (InputStream $$1 = ua.class.getResourceAsStream($$0)) {
+         return $$1 != null ? a($$1) : a;
+      } catch (Exception var6) {
+         e.error("Failed to read {}", $$0, var6);
+         return a;
+      }
+   }
+
+   public static tz a() {
+      return a("/assets/minecraft/lang/deprecated.json");
+   }
+
+   public void a(Map<String, String> $$0) {
+      for (String $$1 : this.c) {
+         $$0.remove($$1);
       }
 
-      @Override
-      public uv.b a(DataInput $$0, uv $$1, uk $$2) throws IOException {
-         return $$1.a(d($$0, $$2));
-      }
-
-      private static byte d(DataInput $$0, uk $$1) throws IOException {
-         $$1.b(9L);
-         return $$0.readByte();
-      }
-
-      @Override
-      public int c() {
-         return 1;
-      }
-
-      @Override
-      public String a() {
-         return "BYTE";
-      }
-
-      @Override
-      public String b() {
-         return "TAG_Byte";
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-   };
-   public static final tz b = a((byte)0);
-   public static final tz c = a((byte)1);
-   private final byte x;
-
-   tz(byte $$0) {
-      this.x = $$0;
-   }
-
-   public static tz a(byte $$0) {
-      return tz.a.a[128 + $$0];
-   }
-
-   public static tz a(boolean $$0) {
-      return $$0 ? c : b;
-   }
-
-   @Override
-   public void a(DataOutput $$0) throws IOException {
-      $$0.writeByte(this.x);
-   }
-
-   @Override
-   public int a() {
-      return 9;
-   }
-
-   @Override
-   public byte b() {
-      return 1;
-   }
-
-   @Override
-   public va<tz> c() {
-      return a;
-   }
-
-   public tz e() {
-      return this;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof tz && this.x == ((tz)$$0).x;
-   }
-
-   @Override
-   public int hashCode() {
-      return this.x;
-   }
-
-   @Override
-   public void a(vc $$0) {
-      $$0.a(this);
-   }
-
-   @Override
-   public long f() {
-      return (long)this.x;
-   }
-
-   @Override
-   public int g() {
-      return this.x;
-   }
-
-   @Override
-   public short h() {
-      return (short)this.x;
-   }
-
-   @Override
-   public byte i() {
-      return this.x;
-   }
-
-   @Override
-   public double j() {
-      return (double)this.x;
-   }
-
-   @Override
-   public float k() {
-      return (float)this.x;
-   }
-
-   @Override
-   public Number l() {
-      return this.x;
-   }
-
-   @Override
-   public uv.b a(uv $$0) {
-      return $$0.a(this.x);
-   }
-
-   static class a {
-      static final tz[] a = new tz[256];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new tz((byte)($$0 - 128));
+      this.d.forEach(($$1x, $$2) -> {
+         String $$3 = $$0.remove($$1x);
+         if ($$3 == null) {
+            e.warn("Missing translation key for rename: {}", $$1x);
+            $$0.remove($$2);
+         } else {
+            $$0.put($$2, $$3);
          }
-      }
+      });
+   }
+
+   public List<String> b() {
+      return this.c;
+   }
+
+   public Map<String, String> c() {
+      return this.d;
    }
 }

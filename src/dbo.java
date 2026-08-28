@@ -1,78 +1,31 @@
-public interface dbo {
-   akq<dbj> a = dbp.a("trades/desert_armorer_boots_4");
-   akq<dbj> b = dbp.a("trades/desert_armorer_leggings_4");
-   akq<dbj> c = dbp.a("trades/desert_armorer_chestplate_4");
-   akq<dbj> d = dbp.a("trades/desert_armorer_helmet_4");
-   akq<dbj> e = dbp.a("trades/desert_armorer_leggings_5");
-   akq<dbj> f = dbp.a("trades/desert_armorer_chestplate_5");
-   akq<dbj> g = dbp.a("trades/plains_armorer_boots_4");
-   akq<dbj> h = dbp.a("trades/plains_armorer_leggings_4");
-   akq<dbj> i = dbp.a("trades/plains_armorer_chestplate_4");
-   akq<dbj> j = dbp.a("trades/plains_armorer_helmet_4");
-   akq<dbj> k = dbp.a("trades/plains_armorer_boots_5");
-   akq<dbj> l = dbp.a("trades/plains_armorer_leggings_5");
-   akq<dbj> m = dbp.a("trades/savanna_armorer_boots_4");
-   akq<dbj> n = dbp.a("trades/savanna_armorer_leggings_4");
-   akq<dbj> o = dbp.a("trades/savanna_armorer_chestplate_4");
-   akq<dbj> p = dbp.a("trades/savanna_armorer_helmet_4");
-   akq<dbj> q = dbp.a("trades/savanna_armorer_chestplate_5");
-   akq<dbj> r = dbp.a("trades/savanna_armorer_helmet_5");
-   akq<dbj> s = dbp.a("trades/snow_armorer_boots_4");
-   akq<dbj> t = dbp.a("trades/snow_armorer_helmet_4");
-   akq<dbj> u = dbp.a("trades/snow_armorer_boots_5");
-   akq<dbj> v = dbp.a("trades/snow_armorer_helmet_5");
-   akq<dbj> w = dbp.a("trades/jungle_armorer_boots_4");
-   akq<dbj> x = dbp.a("trades/jungle_armorer_leggings_4");
-   akq<dbj> y = dbp.a("trades/jungle_armorer_chestplate_4");
-   akq<dbj> z = dbp.a("trades/jungle_armorer_helmet_4");
-   akq<dbj> A = dbp.a("trades/jungle_armorer_boots_5");
-   akq<dbj> B = dbp.a("trades/jungle_armorer_helmet_5");
-   akq<dbj> C = dbp.a("trades/swamp_armorer_boots_4");
-   akq<dbj> D = dbp.a("trades/swamp_armorer_leggings_4");
-   akq<dbj> E = dbp.a("trades/swamp_armorer_chestplate_4");
-   akq<dbj> F = dbp.a("trades/swamp_armorer_helmet_4");
-   akq<dbj> G = dbp.a("trades/swamp_armorer_boots_5");
-   akq<dbj> H = dbp.a("trades/swamp_armorer_helmet_5");
-   akq<dbj> I = dbp.a("trades/taiga_armorer_leggings_5");
-   akq<dbj> J = dbp.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-   static void a(qq<dbj> $$0) {
-      jn<dac> $$1 = $$0.a(lu.aL);
-      $$0.a(a, new dbn($$1.b(dah.h), bpt.a(1)));
-      $$0.a(b, new dbn($$1.b(dah.h), bpt.a(1)));
-      $$0.a(c, new dbn($$1.b(dah.h), bpt.a(1)));
-      $$0.a(d, new dbn($$1.b(dah.h), bpt.a(1)));
-      $$0.a(e, new dbn($$1.b(dah.h), bpt.a(1)));
-      $$0.a(f, new dbn($$1.b(dah.h), bpt.a(1)));
-      $$0.a(g, new dbn($$1.b(dah.a), bpt.a(1)));
-      $$0.a(h, new dbn($$1.b(dah.a), bpt.a(1)));
-      $$0.a(i, new dbn($$1.b(dah.a), bpt.a(1)));
-      $$0.a(j, new dbn($$1.b(dah.a), bpt.a(1)));
-      $$0.a(k, new dbn($$1.b(dah.a), bpt.a(1)));
-      $$0.a(l, new dbn($$1.b(dah.a), bpt.a(1)));
-      $$0.a(m, new dbn($$1.b(dah.k), bpt.a(1)));
-      $$0.a(n, new dbn($$1.b(dah.k), bpt.a(1)));
-      $$0.a(o, new dbn($$1.b(dah.k), bpt.a(1)));
-      $$0.a(p, new dbn($$1.b(dah.k), bpt.a(1)));
-      $$0.a(q, new dbn($$1.b(dah.k), bpt.a(1)));
-      $$0.a(r, new dbn($$1.b(dah.k), bpt.a(1)));
-      $$0.a(s, new dbn($$1.b(dah.j), bpt.a(1)));
-      $$0.a(t, new dbn($$1.b(dah.g), bpt.a(1)));
-      $$0.a(u, new dbn($$1.b(dah.j), bpt.a(1)));
-      $$0.a(v, new dbn($$1.b(dah.g), bpt.a(1)));
-      $$0.a(w, new dbn($$1.b(dah.w), bpt.a(1)));
-      $$0.a(x, new dbn($$1.b(dah.w), bpt.a(1)));
-      $$0.a(y, new dbn($$1.b(dah.w), bpt.a(1)));
-      $$0.a(z, new dbn($$1.b(dah.w), bpt.a(1)));
-      $$0.a(A, new dbn($$1.b(dah.c), bpt.a(1)));
-      $$0.a(B, new dbn($$1.b(dah.e), bpt.a(1)));
-      $$0.a(C, new dbn($$1.b(dah.O), bpt.a(1)));
-      $$0.a(D, new dbn($$1.b(dah.O), bpt.a(1)));
-      $$0.a(E, new dbn($$1.b(dah.O), bpt.a(1)));
-      $$0.a(F, new dbn($$1.b(dah.O), bpt.a(1)));
-      $$0.a(G, new dbn($$1.b(dah.i), bpt.a(1)));
-      $$0.a(H, new dbn($$1.b(dah.f), bpt.a(1)));
-      $$0.a(I, new dbn($$1.b(dah.d), bpt.a(1)));
-      $$0.a(J, new dbn($$1.b(dah.d), bpt.a(1)));
+public interface dbo {
+   Codec<dbo> c = lu.aw.q().dispatch(dbo::a, Function.identity());
+
+   static MapCodec<? extends dbo> b(ka<MapCodec<? extends dbo>> $$0) {
+      ka.a($$0, "all_of", dbh.b.a);
+      ka.a($$0, "apply_mob_effect", dbi.a);
+      ka.a($$0, "attribute", dbm.a);
+      ka.a($$0, "damage_entity", dbj.a);
+      ka.a($$0, "damage_item", dbl.a);
+      ka.a($$0, "explode", dbq.a);
+      ka.a($$0, "ignite", dbr.a);
+      ka.a($$0, "play_sound", dbt.a);
+      ka.a($$0, "replace_block", dbv.a);
+      ka.a($$0, "replace_disk", dbw.a);
+      ka.a($$0, "run_function", dbx.a);
+      ka.a($$0, "set_block_properties", dby.a);
+      ka.a($$0, "spawn_particles", dca.a);
+      return ka.a($$0, "summon_entity", dcb.a);
    }
+
+   void a(arg var1, int var2, dav var3, btj var4, eye var5, boolean var6);
+
+   default void a(dav $$0, btj $$1, eye $$2, int $$3) {
+   }
+
+   MapCodec<? extends dbo> a();
 }

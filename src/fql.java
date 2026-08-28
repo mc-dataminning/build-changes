@@ -1,90 +1,121 @@
-import org.apache.commons.lang3.math.Fraction;
+public class fql extends frj<cqt> {
+   private static final alb G = alb.b("container/anvil/text_field");
+   private static final alb H = alb.b("container/anvil/text_field_disabled");
+   private static final alb I = alb.b("container/anvil/error");
+   private static final alb J = alb.b("textures/gui/container/anvil.png");
+   private static final xd K = xd.c("container.repair.expensive");
+   private fkj L;
+   private final cnp M;
 
-public class fql implements fqn {
-   private static final akr a = akr.b("container/bundle/background");
-   private static final int b = 4;
-   private static final int c = 1;
-   private static final int d = 18;
-   private static final int e = 20;
-   private final cxf f;
-
-   public fql(cxf $$0) {
-      this.f = $$0;
+   public fql(cqt $$0, cno $$1, xd $$2) {
+      super($$0, $$1, $$2, J);
+      this.M = $$1.k;
+      this.v = 60;
    }
 
    @Override
-   public int a() {
-      return this.c() + 4;
+   protected void F() {
+      int $$0 = (this.n - this.s) / 2;
+      int $$1 = (this.o - this.u) / 2;
+      this.L = new fkj(this.p, $$0 + 62, $$1 + 24, 103, 12, xd.c("container.repair"));
+      this.L.f(false);
+      this.L.g(-1);
+      this.L.h(-1);
+      this.L.d(false);
+      this.L.f(50);
+      this.L.b(this::a);
+      this.L.a("");
+      this.d(this.L);
+      this.L.e(this.z.b(0).h());
    }
 
    @Override
-   public int a(fhx $$0) {
-      return this.b();
-   }
-
-   private int b() {
-      return this.d() * 18 + 2;
-   }
-
-   private int c() {
-      return this.e() * 20 + 2;
+   protected void aI_() {
+      this.b(this.L);
    }
 
    @Override
-   public void a(fhx $$0, int $$1, int $$2, fhz $$3) {
-      int $$4 = this.d();
-      int $$5 = this.e();
-      $$3.a(a, $$1, $$2, this.b(), this.c());
-      boolean $$6 = this.f.e().compareTo(Fraction.ONE) >= 0;
-      int $$7 = 0;
+   public void a(fib $$0, int $$1, int $$2) {
+      String $$3 = this.L.a();
+      this.b($$0, $$1, $$2);
+      this.L.a($$3);
+   }
 
-      for (int $$8 = 0; $$8 < $$5; $$8++) {
-         for (int $$9 = 0; $$9 < $$4; $$9++) {
-            int $$10 = $$1 + $$9 * 18 + 1;
-            int $$11 = $$2 + $$8 * 20 + 1;
-            this.a($$10, $$11, $$7++, $$6, $$3, $$0);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.m.t.s();
+      }
+
+      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+   }
+
+   private void a(String $$0) {
+      csn $$1 = this.z.b(0);
+      if ($$1.h()) {
+         String $$2 = $$0;
+         if (!$$1.g().b(kr.g) && $$0.equals($$1.g().y().getString())) {
+            $$2 = "";
+         }
+
+         if (this.z.a($$2)) {
+            this.m.t.cx.b(new aia($$2));
          }
       }
    }
 
-   private void a(int $$0, int $$1, int $$2, boolean $$3, fhz $$4, fhx $$5) {
-      if ($$2 >= this.f.d()) {
-         this.a($$4, $$0, $$1, $$3 ? fql.a.a : fql.a.b);
-      } else {
-         cuq $$6 = this.f.a($$2);
-         this.a($$4, $$0, $$1, fql.a.b);
-         $$4.a($$6, $$0 + 1, $$1 + 1, $$2);
-         $$4.a($$5, $$6, $$0 + 1, $$1 + 1);
-         if ($$2 == 0) {
-            fot.a($$4, $$0 + 1, $$1 + 1, 0);
+   @Override
+   protected void b(fjn $$0, int $$1, int $$2) {
+      super.b($$0, $$1, $$2);
+      int $$3 = this.z.n();
+      if ($$3 > 0) {
+         int $$4 = 8453920;
+         xd $$5;
+         if ($$3 >= 40 && !this.m.t.gd().d) {
+            $$5 = K;
+            $$4 = 16736352;
+         } else if (!this.z.b(2).h()) {
+            $$5 = null;
+         } else {
+            $$5 = xd.a("container.repair.cost", $$3);
+            if (!this.z.b(2).a(this.M)) {
+               $$4 = 16736352;
+            }
+         }
+
+         if ($$5 != null) {
+            int $$8 = this.s - 8 - this.p.a($$5) - 2;
+            int $$9 = 69;
+            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
+            $$0.b(this.p, $$5, $$8, 69, $$4);
          }
       }
    }
 
-   private void a(fhz $$0, int $$1, int $$2, fql.a $$3) {
-      $$0.a($$3.c, $$1, $$2, 0, $$3.d, $$3.e);
+   @Override
+   protected void a(fjn $$0, float $$1, int $$2, int $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(ghe::C, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
    }
 
-   private int d() {
-      return Math.max(2, (int)Math.ceil(Math.sqrt((double)this.f.d() + 1.0)));
+   @Override
+   public void d(fjn $$0, int $$1, int $$2, float $$3) {
+      this.L.a($$0, $$1, $$2, $$3);
    }
 
-   private int e() {
-      return (int)Math.ceil(((double)this.f.d() + 1.0) / (double)this.d());
+   @Override
+   protected void c(fjn $$0, int $$1, int $$2) {
+      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.o()).h()) {
+         $$0.a(ghe::C, I, $$1 + 99, $$2 + 45, 28, 21);
+      }
    }
 
-   static enum a {
-      a(akr.b("container/bundle/blocked_slot"), 18, 20),
-      b(akr.b("container/bundle/slot"), 18, 20);
-
-      public final akr c;
-      public final int d;
-      public final int e;
-
-      private a(final akr $$0, final int $$1, final int $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
+   @Override
+   public void a(cqq $$0, int $$1, cvl $$2) {
+      if ($$1 == 0) {
+         this.L.a($$2.f() ? "" : $$2.y().getString());
+         this.L.e(!$$2.f());
+         this.a(this.L);
       }
    }
 }

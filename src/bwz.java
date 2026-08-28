@@ -1,71 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
 
-public class bwz {
-   private static final int a = 10;
-   private static final int b = 7;
-   private static final int[][] c = new int[][]{{1, 1}, {3, 3}, {5, 5}, {6, 5}, {7, 7}, {10, 7}};
+public class bwz<E extends buh> extends bxa<E> {
+   private final axi<dgv> m;
+   private final float n;
+   private final List<bxa.a> o = new ArrayList<>();
+   private boolean p;
 
-   public static bws<btw> a(float $$0) {
-      return a($$0, true);
+   public bwz(bqv $$0, int $$1, int $$2, float $$3, Function<E, awc> $$4, axi<dgv> $$5, float $$6, BiPredicate<E, je> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   public static bws<btw> a(float $$0, boolean $$1) {
-      return a($$0, $$0x -> cem.a($$0x, 10, 7), $$1 ? $$0x -> true : $$0x -> !$$0x.bi());
+   @Override
+   protected void a(arg $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dV().i() < this.n;
    }
 
-   public static bvi<btw> a(float $$0, int $$1, int $$2) {
-      return a($$0, $$2x -> cem.a($$2x, $$1, $$2), $$0x -> true);
-   }
+   @Override
+   protected Optional<bxa.a> a(arg $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         je.a $$1 = new je.a();
 
-   public static bvi<btw> b(float $$0) {
-      return a($$0, $$0x -> a($$0x, 10, 7), $$0x -> true);
-   }
-
-   public static bvi<btw> c(float $$0) {
-      return a($$0, bwz::a, bsr::bi);
-   }
-
-   private static bws<btw> a(float $$0, Function<btw, exc> $$1, Predicate<btw> $$2) {
-      return byu.a((Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$3 -> $$3.group($$3.c(ccs.m)).apply($$3, $$3x -> ($$4, $$5, $$6) -> {
-               if (!$$2.test($$5)) {
-                  return false;
-               } else {
-                  Optional<exc> $$7 = Optional.ofNullable($$1.apply($$5));
-                  $$3x.a($$7.map($$1xxxx -> new ccv($$1xxxx, $$0, 0)));
-                  return true;
+         while (!this.h.isEmpty()) {
+            Optional<bxa.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bxa.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), jj.a)).a(this.m)) {
+                  return $$2;
                }
-            })));
-   }
 
-   @Nullable
-   private static exc a(btw $$0) {
-      exc $$1 = null;
-      exc $$2 = null;
-
-      for (int[] $$3 : c) {
-         if ($$1 == null) {
-            $$2 = bvj.a($$0, $$3[0], $$3[1]);
-         } else {
-            $$2 = $$0.dm().e($$0.dm().a($$1).d().d((double)$$3[0], (double)$$3[1], (double)$$3[0]));
+               this.o.add($$3);
+            }
          }
 
-         if ($$2 == null || $$0.dO().b_(jd.a((jw)$$2)).c()) {
-            return $$1;
-         }
-
-         $$1 = $$2;
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
       }
-
-      return $$2;
-   }
-
-   @Nullable
-   private static exc a(btw $$0, int $$1, int $$2) {
-      exc $$3 = $$0.g(0.0F);
-      return ceh.a($$0, $$1, $$2, -2, $$3.c, $$3.e, (float) (Math.PI / 2));
    }
 }

@@ -1,29 +1,52 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 
-public class aus extends auw<GameProfile, aut> {
-   public aus(File $$0) {
-      super($$0);
-   }
+public interface aus extends auv {
+   Set<String> a();
 
-   @Override
-   protected auv<GameProfile> a(JsonObject $$0) {
-      return new aut($$0);
-   }
+   List<auq> a(alb var1);
 
-   @Override
-   public String[] a() {
-      return this.d().stream().map(auv::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
-   }
+   Map<alb, auq> b(String var1, Predicate<alb> var2);
 
-   public boolean a(GameProfile $$0) {
-      aut $$1 = this.b($$0);
-      return $$1 != null ? $$1.b() : false;
-   }
+   Map<alb, List<auq>> c(String var1, Predicate<alb> var2);
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   Stream<ate> b();
+
+   public static enum a implements aus {
+      a;
+
+      @Override
+      public Set<String> a() {
+         return Set.of();
+      }
+
+      @Override
+      public Optional<auq> getResource(alb $$0) {
+         return Optional.empty();
+      }
+
+      @Override
+      public List<auq> a(alb $$0) {
+         return List.of();
+      }
+
+      @Override
+      public Map<alb, auq> b(String $$0, Predicate<alb> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Map<alb, List<auq>> c(String $$0, Predicate<alb> $$1) {
+         return Map.of();
+      }
+
+      @Override
+      public Stream<ate> b() {
+         return Stream.of();
+      }
    }
 }

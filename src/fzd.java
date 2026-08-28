@@ -1,107 +1,95 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fzd extends fxa<gut> {
+   private static final String a = "right_bottom_bristle";
+   private static final String b = "right_middle_bristle";
+   private static final String c = "right_top_bristle";
+   private static final String d = "left_top_bristle";
+   private static final String e = "left_middle_bristle";
+   private static final String f = "left_bottom_bristle";
+   private final gab g;
+   private final gab i;
+   private final gab j;
+   private final gab k;
+   private final gab l;
+   private final gab m;
+   private final gab n;
+   private final gab o;
+   private final gab p;
+   private final gab q;
 
-public class fzd extends fzc implements abc, wn {
-   private static final Logger m = LogUtils.getLogger();
-   private final GameProfile n;
-   private cpl o;
-   private final ka.b p;
-   private final fzs q = new fzs();
-   @Nullable
-   private fzl r;
-   @Nullable
-   protected fin.b l;
-
-   public fzd(fgo $$0, vt $$1, fzj $$2) {
-      super($$0, $$1, $$2);
-      this.n = $$2.a();
-      this.p = $$2.c();
-      this.o = $$2.d();
-      this.l = $$2.i();
+   public fzd(gab $$0) {
+      this.g = $$0;
+      this.i = $$0.b("right_leg");
+      this.j = $$0.b("left_leg");
+      this.k = $$0.b("body");
+      this.l = this.k.b("right_bottom_bristle");
+      this.m = this.k.b("right_middle_bristle");
+      this.n = this.k.b("right_top_bristle");
+      this.o = this.k.b("left_top_bristle");
+      this.p = this.k.b("left_middle_bristle");
+      this.q = this.k.b("left_bottom_bristle");
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      $$1.a("right_leg", gag.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), gad.a(-4.0F, 8.0F, 0.0F));
+      $$1.a("left_leg", gag.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), gad.a(4.0F, 8.0F, 0.0F));
+      gal $$2 = $$1.a("body", gag.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), gad.a(0.0F, 1.0F, 0.0F));
+      $$2.a("right_bottom_bristle", gag.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), gad.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
+      $$2.a("right_middle_bristle", gag.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), gad.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
+      $$2.a("right_top_bristle", gag.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), gad.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
+      $$2.a("left_top_bristle", gag.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), gad.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
+      $$2.a("left_middle_bristle", gag.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), gad.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
+      $$2.a("left_bottom_bristle", gag.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), gad.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
+      return gah.a($$0, 64, 128);
    }
 
-   @Override
-   protected void a(aaj $$0) {
-      this.b($$0);
-   }
-
-   private void b(aaj $$0) {
-      m.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(abe $$0) {
-      zj.a($$0, this, this.a);
-      this.q.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(zx $$0) {
-      zj.a($$0, this, this.a);
-      this.q.a($$0.b());
-   }
-
-   @Override
-   public void a(abh $$0) {
-      this.o = cpn.d.a($$0.b());
-   }
-
-   @Override
-   public void a(abg $$0) {
-      zj.a($$0, this, this.a);
-      if (this.r == null) {
-         this.r = new fzl();
-      }
-
-      List<atl> $$1 = this.r.a($$0.b());
-      this.b(new abm($$1));
-   }
-
-   @Override
-   public void a(abf $$0) {
-      this.l = null;
-   }
-
-   private <T> T a(Function<auh, T> $$0) {
-      if (this.r == null) {
-         return $$0.apply(auh.b);
+   public void a(gut $$0) {
+      float $$1 = $$0.X;
+      float $$2 = Math.min($$0.Y, 0.25F);
+      if (!$$0.c) {
+         this.k.e = $$0.V * (float) (Math.PI / 180.0);
+         this.k.f = $$0.U * (float) (Math.PI / 180.0);
       } else {
-         Object var3;
-         try (atu $$1 = this.r.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
+         this.k.e = 0.0F;
+         this.k.f = 0.0F;
       }
+
+      float $$3 = 1.5F;
+      this.k.g = 0.1F * azc.a($$1 * 1.5F) * 4.0F * $$2;
+      this.k.c = 2.0F;
+      this.k.c = this.k.c - 2.0F * azc.b($$1 * 1.5F) * 2.0F * $$2;
+      this.j.e = azc.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.i.e = azc.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.j.g = (float) (Math.PI / 18) * azc.b($$1 * 1.5F * 0.5F) * $$2;
+      this.i.g = (float) (Math.PI / 18) * azc.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
+      this.j.c = 8.0F + 2.0F * azc.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
+      this.i.c = 8.0F + 2.0F * azc.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
+      this.l.g = -1.2217305F;
+      this.m.g = -1.134464F;
+      this.n.g = -0.87266463F;
+      this.o.g = 0.87266463F;
+      this.p.g = 1.134464F;
+      this.q.g = 1.2217305F;
+      float $$4 = azc.b($$1 * 1.5F + (float) Math.PI) * $$2;
+      this.l.g += $$4 * 1.3F;
+      this.m.g += $$4 * 1.2F;
+      this.n.g += $$4 * 0.6F;
+      this.o.g += $$4 * 0.6F;
+      this.p.g += $$4 * 1.2F;
+      this.q.g += $$4 * 1.3F;
+      float $$5 = 1.0F;
+      float $$6 = 1.0F;
+      this.l.g = this.l.g + 0.05F * azc.a($$0.p * 1.0F * -0.4F);
+      this.m.g = this.m.g + 0.1F * azc.a($$0.p * 1.0F * 0.2F);
+      this.n.g = this.n.g + 0.1F * azc.a($$0.p * 1.0F * 0.4F);
+      this.o.g = this.o.g + 0.1F * azc.a($$0.p * 1.0F * 0.4F);
+      this.p.g = this.p.g + 0.1F * azc.a($$0.p * 1.0F * 0.2F);
+      this.q.g = this.q.g + 0.05F * azc.a($$0.p * 1.0F * -0.4F);
    }
 
    @Override
-   public void a(abd $$0) {
-      zj.a($$0, this, this.a);
-      ka.b $$1 = this.a($$0x -> this.q.a($$0x, this.p, this.b.e()));
-      this.b
-         .a(agh.b.a(wk.a($$1)), new fzg(this.a, this.b, new fzj(this.n, this.e, $$1, this.o, this.d, this.c, this.f, this.i, this.l, this.h, this.j, this.k)));
-      this.b.a(abl.a);
-      this.b.a(agh.a.a(wk.a($$1)));
-   }
-
-   @Override
-   public void d() {
-      this.e();
-   }
-
-   @Override
-   public void a(vv $$0) {
-      super.a($$0);
-      this.a.z();
+   public gab a() {
+      return this.g;
    }
 }

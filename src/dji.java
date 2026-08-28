@@ -1,72 +1,86 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class dji extends dky implements dgb, dna {
+public class dji extends dgh implements dmo {
    public static final MapCodec<dji> a = b(dji::new);
-   private static final dtt c = dts.C;
-   private final dkz d = new dkz(this);
 
    @Override
    public MapCodec<dji> a() {
       return a;
    }
 
-   public dji(dtb.d $$0) {
+   protected dji(dtz.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dtc> b(int $$0) {
-      return $$1 -> dky.n($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   public dre a(je $$0, dua $$1) {
+      return new dsw($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
+      return a($$2, drg.v, $$0.B ? dsw::a : dsw::b);
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
+      dre $$4 = $$1.c_($$2);
+      if ($$4 instanceof dsw) {
+         int $$5 = ((dsw)$$4).f();
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            double $$7 = (double)$$2.u() + $$3.j();
+            double $$8 = (double)$$2.v() + $$3.j();
+            double $$9 = (double)$$2.w() + $$3.j();
+            double $$10 = ($$3.j() - 0.5) * 0.5;
+            double $$11 = ($$3.j() - 0.5) * 0.5;
+            double $$12 = ($$3.j() - 0.5) * 0.5;
+            int $$13 = $$3.a(2) * 2 - 1;
+            if ($$3.h()) {
+               $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$13;
+               $$12 = (double)($$3.i() * 2.0F * (float)$$13);
+            } else {
+               $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$13;
+               $$10 = (double)($$3.i() * 2.0F * (float)$$13);
+            }
+
+            $$1.a(ln.ac, $$7, $$8, $$9, $$10, $$11, $$12);
+         }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dtc $$0, cyd $$1) {
-      return !$$1.n().a(cut.fW) || super.a($$0, $$1);
+   public cvl a(ddv $$0, je $$1, dua $$2) {
+      return cvl.k;
    }
 
    @Override
-   public boolean b(dcz $$0, jd $$1, dtc $$2) {
-      return ji.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   protected boolean a(dua $$0, eqa $$1) {
+      return false;
    }
 
    @Override
-   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
-      return true;
+   protected void a(dua $$0, dds $$1, je $$2, btj $$3) {
+      if ($$3.o(false) && !$$1.B && $$1.c_($$2) instanceof dsw $$5 && !$$5.c()) {
+         $$3.a(this, $$2);
+         dsw.c($$1, $$2, $$0, $$5);
+      }
    }
 
+   @Nullable
    @Override
-   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
+   public eqz a(arg $$0, btj $$1, je $$2) {
+      if ($$0.c_($$2) instanceof dsw $$4) {
+         eye $$6 = $$4.a($$0, $$2);
+         return $$6 != null ? new eqz($$0, $$6, a($$1), $$1.dI(), $$1.dK(), eqz.c) : null;
+      } else {
+         return null;
+      }
    }
 
-   @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(c) ? epf.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a_(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.u().c();
-   }
-
-   @Override
-   public dkz c() {
-      return this.d;
+   private static eye a(btj $$0) {
+      return $$0 instanceof cot ? new eye(0.0, -1.0, 0.0) : $$0.dv();
    }
 }

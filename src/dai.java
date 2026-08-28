@@ -1,160 +1,93 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class dai implements cxy {
-   public static final dai a = new dai(new Object2IntOpenHashMap(), true);
-   private static final Codec<Integer> d = Codec.intRange(0, 255);
-   private static final Codec<Object2IntOpenHashMap<jm<dac>>> e = Codec.unboundedMap(dac.c, d).xmap(Object2IntOpenHashMap::new, Function.identity());
-   private static final Codec<dai> f = RecordCodecBuilder.create(
-      $$0 -> $$0.group(e.fieldOf("levels").forGetter($$0x -> $$0x.g), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.h))
-            .apply($$0, dai::new)
-   );
-   public static final Codec<dai> b = Codec.withAlternative(f, e, $$0 -> new dai($$0, true));
-   public static final yx<wk, dai> c = yx.a(yv.a(Object2IntOpenHashMap::new, dac.d, yv.g), $$0 -> $$0.g, yv.b, $$0 -> $$0.h, dai::new);
-   final Object2IntOpenHashMap<jm<dac>> g;
-   final boolean h;
+public abstract class dai implements czt<daj> {
+   protected final czp a;
+   protected final cvl b;
+   private final czz<?> d;
+   private final czy<?> e;
+   protected final String c;
+   @Nullable
+   private czs f;
 
-   dai(Object2IntOpenHashMap<jm<dac>> $$0, boolean $$1) {
-      this.g = $$0;
-      this.h = $$1;
-      ObjectIterator var3 = $$0.object2IntEntrySet().iterator();
-
-      while (var3.hasNext()) {
-         Entry<jm<dac>> $$2 = (Entry<jm<dac>>)var3.next();
-         int $$3 = $$2.getIntValue();
-         if ($$3 < 0 || $$3 > 255) {
-            throw new IllegalArgumentException("Enchantment " + $$2.getKey() + " has invalid level " + $$3);
-         }
-      }
-   }
-
-   public int a(jm<dac> $$0) {
-      return this.g.getInt($$0);
+   public dai(czz<?> $$0, czy<?> $$1, String $$2, czp $$3, cvl $$4) {
+      this.d = $$0;
+      this.e = $$1;
+      this.c = $$2;
+      this.a = $$3;
+      this.b = $$4;
    }
 
    @Override
-   public void a(cul.b $$0, Consumer<wz> $$1, cwm $$2) {
-      if (this.h) {
-         jo.a $$3 = $$0.a();
-         jq<dac> $$4 = a($$3, lu.aL, awh.a);
-
-         for (jm<dac> $$5 : $$4) {
-            int $$6 = this.g.getInt($$5);
-            if ($$6 > 0) {
-               $$1.accept(dac.a($$5, $$6));
-            }
-         }
-
-         ObjectIterator var9 = this.g.object2IntEntrySet().iterator();
-
-         while (var9.hasNext()) {
-            Entry<jm<dac>> $$7 = (Entry<jm<dac>>)var9.next();
-            jm<dac> $$8 = (jm<dac>)$$7.getKey();
-            if (!$$4.a($$8)) {
-               $$1.accept(dac.a((jm<dac>)$$7.getKey(), $$7.getIntValue()));
-            }
-         }
-      }
-   }
-
-   private static <T> jq<T> a(@Nullable jo.a $$0, akq<jz<T>> $$1, awu<T> $$2) {
-      if ($$0 != null) {
-         Optional<jq.c<T>> $$3 = $$0.b($$1).a($$2);
-         if ($$3.isPresent()) {
-            return $$3.get();
-         }
-      }
-
-      return jq.a();
-   }
-
-   public dai a(boolean $$0) {
-      return new dai(this.g, $$0);
-   }
-
-   public Set<jm<dac>> a() {
-      return Collections.unmodifiableSet(this.g.keySet());
-   }
-
-   public Set<Entry<jm<dac>>> b() {
-      return Collections.unmodifiableSet(this.g.object2IntEntrySet());
-   }
-
-   public int c() {
-      return this.g.size();
-   }
-
-   public boolean d() {
-      return this.g.isEmpty();
+   public czz<?> e() {
+      return this.d;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dai $$1) ? false : this.h == $$1.h && this.g.equals($$1.g);
-      }
+   public czy<?> as_() {
+      return this.e;
    }
 
    @Override
-   public int hashCode() {
-      int $$0 = this.g.hashCode();
-      return 31 * $$0 + (this.h ? 1 : 0);
+   public String c() {
+      return this.c;
    }
 
    @Override
-   public String toString() {
-      return "ItemEnchantments{enchantments=" + this.g + ", showInTooltip=" + this.h + "}";
+   public cvl a(jp.a $$0) {
+      return this.b;
    }
 
-   public static class a {
-      private final Object2IntOpenHashMap<jm<dac>> a = new Object2IntOpenHashMap();
-      private final boolean b;
-
-      public a(dai $$0) {
-         this.a.putAll($$0.g);
-         this.b = $$0.h;
+   @Override
+   public czs a() {
+      if (this.f == null) {
+         this.f = czs.a(this.a);
       }
 
-      public void a(jm<dac> $$0, int $$1) {
-         if ($$1 <= 0) {
-            this.a.removeInt($$0);
-         } else {
-            this.a.put($$0, Math.min($$1, 255));
-         }
+      return this.f;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return true;
+   }
+
+   public cvl a(daj $$0, jp.a $$1) {
+      return this.b.u();
+   }
+
+   public interface a<T extends dai> {
+      T create(String var1, czp var2, cvl var3);
+   }
+
+   public static class b<T extends dai> implements czy<T> {
+      final dai.a<T> w;
+      private final MapCodec<T> x;
+      private final zb<wo, T> y;
+
+      protected b(dai.a<T> $$0) {
+         this.w = $$0;
+         this.x = RecordCodecBuilder.mapCodec(
+            $$1 -> $$1.group(
+                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
+                     czp.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
+                     cvl.d.fieldOf("result").forGetter($$0xx -> $$0xx.b)
+                  )
+                  .apply($$1, $$0::create)
+         );
+         this.y = zb.a(yz.l, $$0x -> $$0x.c, czp.a, $$0x -> $$0x.a, cvl.i, $$0x -> $$0x.b, $$0::create);
       }
 
-      public void b(jm<dac> $$0, int $$1) {
-         if ($$1 > 0) {
-            this.a.merge($$0, Math.min($$1, 255), Integer::max);
-         }
+      @Override
+      public MapCodec<T> a() {
+         return this.x;
       }
 
-      public void a(Predicate<jm<dac>> $$0) {
-         this.a.keySet().removeIf($$0);
-      }
-
-      public int a(jm<dac> $$0) {
-         return this.a.getOrDefault($$0, 0);
-      }
-
-      public Set<jm<dac>> a() {
-         return this.a.keySet();
-      }
-
-      public dai b() {
-         return new dai(this.a, this.b);
+      @Override
+      public zb<wo, T> b() {
+         return this.y;
       }
    }
 }

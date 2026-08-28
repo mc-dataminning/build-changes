@@ -1,74 +1,84 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dou extends dfk {
+public class dou extends dgh implements dkd {
    public static final MapCodec<dou> a = b(dou::new);
-   public static final duf<dsp> b = dts.bz;
-   public static final dtw c = dju.aE;
-   public static final dtt d = dts.bA;
+   public static final duy<dvk> b = duq.bj;
 
    @Override
    public MapCodec<dou> a() {
       return a;
    }
 
-   public dou(dtb.d $$0) {
+   protected dou(dtz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, ji.c).a(b, dsp.a).a(d, Boolean.valueOf(false)));
+      this.l(this.E.b().b(b, dvk.b));
    }
 
    @Override
-   public bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
-      if ($$0.e() || $$1.c(b) != dsp.b) {
-         return bqt.d;
-      } else if ($$2 instanceof aqu $$7) {
-         if ($$7.c_($$3) instanceof dsk $$9) {
-            dsk.b.a($$7, $$3, $$1, $$9.f(), $$9.b(), $$9.c(), $$4, $$0);
-            return bqt.a;
-         } else {
-            return bqt.d;
-         }
+   public dre a(je $$0, dua $$1) {
+      return new dsv($$0, $$1);
+   }
+
+   @Override
+   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
+      dre $$5 = $$1.c_($$2);
+      if ($$5 instanceof dsv) {
+         return (brk)(((dsv)$$5).a($$3) ? brk.a : brk.e);
       } else {
-         return bqt.b;
+         return brk.e;
       }
    }
 
-   @Nullable
    @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dsk($$0, $$1);
+   public void a(dds $$0, je $$1, dua $$2, @Nullable buf $$3, cvl $$4) {
+      if (!$$0.B) {
+         if ($$3 != null) {
+            dre $$5 = $$0.c_($$1);
+            if ($$5 instanceof dsv) {
+               ((dsv)$$5).a($$3);
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(c, b, d);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return $$0 instanceof aqu $$3
-         ? a($$2, dqj.R, ($$1x, $$2x, $$3x, $$4) -> dsk.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
-         : a($$2, dqj.R, ($$0x, $$1x, $$2x, $$3x) -> dsk.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   protected dnc a_(dua $$0) {
+      return dnc.c;
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      return this.o().a(c, $$0.g().g());
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   public dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(c, $$1.a($$0.c(c)));
+   protected void a(dua $$0, dds $$1, je $$2, dgv $$3, @Nullable erj $$4, boolean $$5) {
+      if ($$1 instanceof arg) {
+         if ($$1.c_($$2) instanceof dsv $$7) {
+            boolean $$8 = $$1.C($$2);
+            boolean $$9 = $$7.D();
+            if ($$8 && !$$9) {
+               $$7.c(true);
+               this.a((arg)$$1, $$7);
+            } else if (!$$8 && $$9) {
+               $$7.c(false);
+            }
+         }
+      }
    }
 
-   @Override
-   public dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   public dmf a_(dtc $$0) {
-      return dmf.c;
+   private void a(arg $$0, dsv $$1) {
+      switch ($$1.v()) {
+         case a:
+            $$1.b(false);
+            break;
+         case b:
+            $$1.c($$0);
+            break;
+         case c:
+            $$1.B();
+         case d:
+      }
    }
 }

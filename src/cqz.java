@@ -1,88 +1,104 @@
-public class cqz extends cpu {
-   private static final int o = 1;
-   private static final int p = 1;
-   public static final int k = 1;
-   public static final int l = 2;
-   public static final int m = 3;
-   public static final int n = 100;
-   private final bqk q;
-   private final cqf r;
+public class cqz extends cqq {
+   private final brd m;
+   private final int n;
 
-   public cqz(int $$0) {
-      this($$0, new bra(1), new crp(1));
+   private cqz(crz<?> $$0, int $$1, cno $$2, int $$3) {
+      this($$0, $$1, $$2, new brr(9 * $$3), $$3);
    }
 
-   public cqz(int $$0, bqk $$1, cqf $$2) {
-      super(crc.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.q = $$1;
-      this.r = $$2;
-      this.a(new crq($$1, 0, 0, 0) {
-         @Override
-         public void c() {
-            super.c();
-            cqz.this.a(this.c);
-         }
-      });
-      this.a($$2);
+   public static cqz a(int $$0, cno $$1) {
+      return new cqz(crz.a, $$0, $$1, 1);
    }
 
-   @Override
-   public boolean a(cmx $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.a(0, $$2);
-         return true;
-      } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.r.a(0);
-               this.a(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.r.a(0);
-               this.a(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gk()) {
-                  return false;
-               }
+   public static cqz b(int $$0, cno $$1) {
+      return new cqz(crz.b, $$0, $$1, 2);
+   }
 
-               cuq $$5 = this.q.b(0);
-               this.q.e();
-               if (!$$0.fY().f($$5)) {
-                  $$0.a($$5, false);
-               }
+   public static cqz c(int $$0, cno $$1) {
+      return new cqz(crz.c, $$0, $$1, 3);
+   }
 
-               return true;
-            default:
-               return false;
+   public static cqz d(int $$0, cno $$1) {
+      return new cqz(crz.d, $$0, $$1, 4);
+   }
+
+   public static cqz e(int $$0, cno $$1) {
+      return new cqz(crz.e, $$0, $$1, 5);
+   }
+
+   public static cqz f(int $$0, cno $$1) {
+      return new cqz(crz.f, $$0, $$1, 6);
+   }
+
+   public static cqz a(int $$0, cno $$1, brd $$2) {
+      return new cqz(crz.c, $$0, $$1, $$2, 3);
+   }
+
+   public static cqz b(int $$0, cno $$1, brd $$2) {
+      return new cqz(crz.f, $$0, $$1, $$2, 6);
+   }
+
+   public cqz(crz<?> $$0, int $$1, cno $$2, brd $$3, int $$4) {
+      super($$0, $$1);
+      a($$3, $$4 * 9);
+      this.m = $$3;
+      this.n = $$4;
+      $$3.d_($$2.k);
+      int $$5 = 18;
+      this.d($$3, 8, 18);
+      int $$6 = 18 + this.n * 18 + 13;
+      this.c($$2, 8, $$6);
+   }
+
+   private void d(brd $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.n; $$3++) {
+         for (int $$4 = 0; $$4 < 9; $$4++) {
+            this.a(new csn($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
    }
 
    @Override
-   public cuq b(cmx $$0, int $$1) {
-      return cuq.l;
+   public boolean b(cnp $$0) {
+      return this.m.a($$0);
    }
 
    @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
+   public cvl b(cnp $$0, int $$1) {
+      cvl $$2 = cvl.k;
+      csn $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvl $$4 = $$3.g();
+         $$2 = $$4.u();
+         if ($$1 < this.n * 9) {
+            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
+               return cvl.k;
+            }
+         } else if (!this.a($$4, 0, this.n * 9, false)) {
+            return cvl.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cvl.k);
+         } else {
+            $$3.c();
+         }
+      }
+
+      return $$2;
    }
 
    @Override
-   public boolean b(cmx $$0) {
-      return this.q.a($$0);
+   public void a(cnp $$0) {
+      super.a($$0);
+      this.m.c($$0);
    }
 
-   public cuq l() {
-      return this.q.a(0);
+   public brd l() {
+      return this.m;
    }
 
    public int m() {
-      return this.r.a(0);
+      return this.n;
    }
 }

@@ -1,54 +1,66 @@
-import javax.annotation.Nullable;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
+import org.slf4j.Logger;
 
-public interface fhw {
-   static fhw a(fki $$0) {
-      return new fhw.a($$0);
-   }
+public class fhw {
+   private static final Logger b = LogUtils.getLogger();
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gfu[] e = new gfu[9];
+   private boolean f;
 
-   @Nullable
-   static fhw a(fkh $$0, @Nullable fhw $$1) {
-      return $$1 == null ? null : new fhw.b($$0, $$1);
-   }
+   public fhw(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
+      this.d = $$1;
 
-   static fhw a(fki $$0, fkh... $$1) {
-      fhw $$2 = a($$0);
-
-      for (fkh $$3 : $$1) {
-         $$2 = a($$3, $$2);
-      }
-
-      return $$2;
-   }
-
-   fki a();
-
-   void a(boolean var1);
-
-   public static record a(fki a) implements fhw {
-      @Override
-      public void a(boolean $$0) {
-         this.a.a($$0);
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gfu();
       }
    }
 
-   public static record b(fkh a, fhw b) implements fhw {
-      @Override
-      public void a(boolean $$0) {
-         if (!$$0) {
-            this.a.a(null);
-         } else {
-            this.a.a(this.b.a());
+   private void b() {
+      try {
+         uf $$0 = us.a(this.c);
+         if ($$0 == null) {
+            return;
          }
 
-         this.b.a($$0);
+         int $$1 = uu.b($$0, 1343);
+         $$0 = bal.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gfu.a.parse(ut.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gfu::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
+      }
+   }
+
+   public void a() {
+      try {
+         uf $$0 = uu.e(new uf());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gfu $$2 = this.a($$1);
+            DataResult<vc> $$3 = gfu.a.encodeStart(ut.a, $$2);
+            $$0.a(String.valueOf($$1), (vc)$$3.getOrThrow());
+         }
+
+         us.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
+      }
+   }
+
+   public gfu a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
       }
 
-      public fkh b() {
-         return this.a;
-      }
-
-      public fhw c() {
-         return this.b;
-      }
+      return this.e[$$0];
    }
 }

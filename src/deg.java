@@ -1,108 +1,41 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
-import java.util.function.Function;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
-import org.apache.commons.lang3.mutable.MutableInt;
 
 public class deg {
-   public static <T> List<deg.b> a(List<T> $$0, Function<T, List<jq<eiv>>> $$1, boolean $$2) {
-      Object2IntMap<eiv> $$3 = new Object2IntOpenHashMap();
-      MutableInt $$4 = new MutableInt(0);
+   private final List<deg.a> a = Lists.newArrayList();
 
-      record a(int a, int b, eiv c) {
+   public void a(je $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new deg.a($$0, $$1));
       }
-
-      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
-      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
-      int $$7 = 0;
-
-      for (T $$8 : $$0) {
-         List<a> $$9 = Lists.newArrayList();
-         List<jq<eiv>> $$10 = $$1.apply($$8);
-         $$7 = Math.max($$7, $$10.size());
-
-         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
-            for (jm<eiv> $$12 : $$10.get($$11)) {
-               eiv $$13 = $$12.a();
-               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
-            }
-         }
-
-         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
-            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
-            if ($$14 < $$9.size() - 1) {
-               $$15.add($$9.get($$14 + 1));
-            }
-         }
-      }
-
-      Set<a> $$16 = new TreeSet<>($$5);
-      Set<a> $$17 = new TreeSet<>($$5);
-      List<a> $$18 = Lists.newArrayList();
-
-      for (a $$19 : $$6.keySet()) {
-         if (!$$17.isEmpty()) {
-            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
-         }
-
-         if (!$$16.contains($$19) && ayd.a($$6, $$16, $$17, $$18::add, $$19)) {
-            if (!$$2) {
-               throw new IllegalStateException("Feature order cycle found");
-            }
-
-            List<T> $$20 = new ArrayList<>($$0);
-
-            int $$21;
-            do {
-               $$21 = $$20.size();
-               ListIterator<T> $$22 = $$20.listIterator();
-
-               while ($$22.hasNext()) {
-                  T $$23 = $$22.next();
-                  $$22.remove();
-
-                  try {
-                     a($$20, $$1, false);
-                  } catch (IllegalStateException var18) {
-                     continue;
-                  }
-
-                  $$22.add($$23);
-               }
-            } while ($$21 != $$20.size());
-
-            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
-         }
-      }
-
-      Collections.reverse($$18);
-      Builder<deg.b> $$25 = ImmutableList.builder();
-
-      for (int $$26 = 0; $$26 < $$7; $$26++) {
-         int $$27 = $$26;
-         List<eiv> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
-         $$25.add(new deg.b($$28));
-      }
-
-      return $$25.build();
    }
 
-   public static record b(List<eiv> a, ToIntFunction<eiv> b) {
-      b(List<eiv> $$0) {
-         this($$0, ad.h($$0));
+   public double b(je $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (deg.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
+   }
+
+   static class a {
+      private final je a;
+      private final double b;
+
+      public a(je $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(je $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
       }
    }
 }

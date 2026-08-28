@@ -1,96 +1,31 @@
-public class fpm {
-   private static final akr a = akr.b("alt");
-   private static final xw b = xw.a.a(a);
-   private static final fpm c = new fpm();
-   private final ayw d = ayw.a();
-   private final String[] e = new String[]{
-      "the",
-      "elder",
-      "scrolls",
-      "klaatu",
-      "berata",
-      "niktu",
-      "xyzzy",
-      "bless",
-      "curse",
-      "light",
-      "darkness",
-      "fire",
-      "air",
-      "earth",
-      "water",
-      "hot",
-      "dry",
-      "cold",
-      "wet",
-      "ignite",
-      "snuff",
-      "embiggen",
-      "twist",
-      "shorten",
-      "stretch",
-      "fiddle",
-      "destroy",
-      "imbue",
-      "galvanize",
-      "enchant",
-      "free",
-      "limited",
-      "range",
-      "of",
-      "towards",
-      "inside",
-      "sphere",
-      "cube",
-      "self",
-      "other",
-      "ball",
-      "mental",
-      "physical",
-      "grow",
-      "shrink",
-      "demon",
-      "elemental",
-      "spirit",
-      "animal",
-      "creature",
-      "beast",
-      "humanoid",
-      "undead",
-      "fresh",
-      "stale",
-      "phnglui",
-      "mglwnafh",
-      "cthulhu",
-      "rlyeh",
-      "wgahnagl",
-      "fhtagn",
-      "baguette"
-   };
+public class fpm extends fpt {
+   private static final xd a = xd.c("outOfMemory.title");
+   private static final xd b = xd.c("outOfMemory.message");
+   private static final int c = 300;
+   private final fno d = new fno(this);
 
-   private fpm() {
+   public fpm() {
+      super(a);
    }
 
-   public static fpm a() {
-      return c;
+   @Override
+   protected void aT_() {
+      this.d.a(a, this.p);
+      this.d.c(new fkl(300, b, this.p));
+      fns $$0 = this.d.b(fns.e().a(8));
+      $$0.a(fka.a(xc.l, $$0x -> this.m.a(new fpv())).a());
+      $$0.a(fka.a(xd.c("menu.quit"), $$0x -> this.m.q()).a());
+      this.d.a(this::c);
+      this.c();
    }
 
-   public xe a(fhx $$0, int $$1) {
-      StringBuilder $$2 = new StringBuilder();
-      int $$3 = this.d.a(2) + 3;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if ($$4 != 0) {
-            $$2.append(" ");
-         }
-
-         $$2.append(ad.a(this.e, this.d));
-      }
-
-      return $$0.b().a(wz.b($$2.toString()).c(b), $$1, xw.a);
+   @Override
+   protected void c() {
+      this.d.a();
    }
 
-   public void a(long $$0) {
-      this.d.b($$0);
+   @Override
+   public boolean aJ_() {
+      return false;
    }
 }

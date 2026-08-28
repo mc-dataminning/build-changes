@@ -1,45 +1,113 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketTimeoutException;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class avy<T> implements Iterable<avw<T>> {
-   private final jz<T> a;
-   private final Map<T, avw<T>> b = new IdentityHashMap<>();
-   private final wz c;
-   private final yx<wk, avw<T>> d;
+public class avy extends avv {
+   private static final Logger d = LogUtils.getLogger();
+   private final ServerSocket e;
+   private final String f;
+   private final List<avx> g = Lists.newArrayList();
+   private final als h;
 
-   public avy(jz<T> $$0, wz $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = yv.a($$0.d()).a(this::b, avw::b);
+   private avy(als $$0, ServerSocket $$1, String $$2) {
+      super("RCON Listener");
+      this.h = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public yx<wk, avw<T>> a() {
-      return this.d;
-   }
-
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public avw<T> a(T $$0, avx $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new avw<>(this, (T)$$1x, $$1));
-   }
-
-   public jz<T> b() {
-      return this.a;
+   private void d() {
+      this.g.removeIf($$0 -> !$$0.c());
    }
 
    @Override
-   public Iterator<avw<T>> iterator() {
-      return this.b.values().iterator();
+   public void run() {
+      try {
+         while (this.a) {
+            try {
+               Socket $$0 = this.e.accept();
+               avx $$1 = new avx(this.h, this.f, $$0);
+               $$1.a();
+               this.g.add($$1);
+               this.d();
+            } catch (SocketTimeoutException var7) {
+               this.d();
+            } catch (IOException var8) {
+               if (this.a) {
+                  d.info("IO exception: ", var8);
+               }
+            }
+         }
+      } finally {
+         this.a(this.e);
+      }
    }
 
-   public avw<T> b(T $$0) {
-      return this.a($$0, avx.b);
+   @Nullable
+   public static avy a(als $$0) {
+      apz $$1 = $$0.a();
+      String $$2 = $$0.b();
+      if ($$2.isEmpty()) {
+         $$2 = "0.0.0.0";
+      }
+
+      int $$3 = $$1.r;
+      if (0 < $$3 && 65535 >= $$3) {
+         String $$4 = $$1.s;
+         if ($$4.isEmpty()) {
+            d.warn("No rcon password set in server.properties, rcon disabled!");
+            return null;
+         } else {
+            try {
+               ServerSocket $$5 = new ServerSocket($$3, 0, InetAddress.getByName($$2));
+               $$5.setSoTimeout(500);
+               avy $$6 = new avy($$0, $$5, $$4);
+               if (!$$6.a()) {
+                  return null;
+               } else {
+                  d.info("RCON running on {}:{}", $$2, $$3);
+                  return $$6;
+               }
+            } catch (IOException var7) {
+               d.warn("Unable to initialise RCON on {}:{}", new Object[]{$$2, $$3, var7});
+               return null;
+            }
+         }
+      } else {
+         d.warn("Invalid rcon port {} found in server.properties, rcon disabled!", $$3);
+         return null;
+      }
    }
 
-   public wz c() {
-      return this.c;
+   @Override
+   public void b() {
+      this.a = false;
+      this.a(this.e);
+      super.b();
+
+      for (avx $$0 : this.g) {
+         if ($$0.c()) {
+            $$0.b();
+         }
+      }
+
+      this.g.clear();
+   }
+
+   private void a(ServerSocket $$0) {
+      d.debug("closeSocket: {}", $$0);
+
+      try {
+         $$0.close();
+      } catch (IOException var3) {
+         d.warn("Failed to close socket", var3);
+      }
    }
 }

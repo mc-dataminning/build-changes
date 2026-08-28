@@ -1,42 +1,60 @@
-public record aqi(int a, int b) {
-   private static final long c = 32L;
-   private static final long d = 4294967295L;
+public class aqi implements Comparable<aqi> {
+   private final int a;
+   private final je b;
+   private int c;
+   private int d;
 
-   public dcd a() {
-      return new dcd(kf.a(this.a), kf.a(this.b));
+   public aqi(int $$0, je $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public long b() {
-      return a(this.a, this.b);
+   public int a() {
+      return this.a;
    }
 
-   public static long a(int $$0, int $$1) {
-      return (long)$$0 & 4294967295L | ((long)$$1 & 4294967295L) << 32;
+   public je b() {
+      return this.b;
    }
 
-   public static int a(long $$0) {
-      return (int)($$0 & 4294967295L);
+   public void a(int $$0) {
+      if ($$0 > 10) {
+         $$0 = 10;
+      }
+
+      this.c = $$0;
    }
 
-   public static int b(long $$0) {
-      return (int)($$0 >>> 32 & 4294967295L);
+   public int c() {
+      return this.c;
+   }
+
+   public void b(int $$0) {
+      this.d = $$0;
+   }
+
+   public int d() {
+      return this.d;
    }
 
    @Override
-   public String toString() {
-      return "[" + this.a + ", " + this.b + "]";
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         aqi $$1 = (aqi)$$0;
+         return this.a == $$1.a;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public int hashCode() {
-      return dcd.d(this.a, this.b);
+      return Integer.hashCode(this.a);
    }
 
-   public int c() {
-      return this.a;
-   }
-
-   public int d() {
-      return this.b;
+   public int a(aqi $$0) {
+      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
    }
 }

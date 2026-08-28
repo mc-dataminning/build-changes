@@ -1,18 +1,25 @@
-public abstract class aqq extends eoq {
+public abstract class aqq extends epn {
    protected aqq(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
+   protected boolean a(long $$0) {
+      return $$0 == dcy.a;
+   }
+
+   @Override
    protected void a(long $$0, int $$1, boolean $$2) {
       if (!$$2 || $$1 < this.f - 2) {
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = kf.a($$0, $$3, $$4, $$5);
-                  if ($$6 != $$0) {
-                     this.b($$0, $$6, $$1, $$2);
-                  }
+         dcy $$3 = new dcy($$0);
+         int $$4 = $$3.e;
+         int $$5 = $$3.f;
+
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               long $$8 = dcy.c($$4 + $$6, $$5 + $$7);
+               if ($$8 != $$0) {
+                  this.b($$0, $$8, $$1, $$2);
                }
             }
          }
@@ -22,24 +29,25 @@ public abstract class aqq extends eoq {
    @Override
    protected int a(long $$0, long $$1, int $$2) {
       int $$3 = $$2;
+      dcy $$4 = new dcy($$0);
+      int $$5 = $$4.e;
+      int $$6 = $$4.f;
 
-      for (int $$4 = -1; $$4 <= 1; $$4++) {
-         for (int $$5 = -1; $$5 <= 1; $$5++) {
-            for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = kf.a($$0, $$4, $$5, $$6);
-               if ($$7 == $$0) {
-                  $$7 = Long.MAX_VALUE;
+      for (int $$7 = -1; $$7 <= 1; $$7++) {
+         for (int $$8 = -1; $$8 <= 1; $$8++) {
+            long $$9 = dcy.c($$5 + $$7, $$6 + $$8);
+            if ($$9 == $$0) {
+               $$9 = dcy.a;
+            }
+
+            if ($$9 != $$1) {
+               int $$10 = this.b($$9, $$0, this.c($$9));
+               if ($$3 > $$10) {
+                  $$3 = $$10;
                }
 
-               if ($$7 != $$1) {
-                  int $$8 = this.b($$7, $$0, this.c($$7));
-                  if ($$3 > $$8) {
-                     $$3 = $$8;
-                  }
-
-                  if ($$3 == 0) {
-                     return $$3;
-                  }
+               if ($$3 == 0) {
+                  return $$3;
                }
             }
          }
@@ -50,12 +58,12 @@ public abstract class aqq extends eoq {
 
    @Override
    protected int b(long $$0, long $$1, int $$2) {
-      return this.a($$0) ? this.b($$1) : $$2 + 1;
+      return $$0 == dcy.a ? this.b($$1) : $$2 + 1;
    }
 
    protected abstract int b(long var1);
 
    public void b(long $$0, int $$1, boolean $$2) {
-      this.a(Long.MAX_VALUE, $$0, $$1, $$2);
+      this.a(dcy.a, $$0, $$1, $$2);
    }
 }

@@ -1,39 +1,53 @@
 import com.mojang.serialization.Codec;
 
-public class edn extends ece<eep> {
-   public edn(Codec<eep> $$0) {
+public class edn extends ece {
+   public edn(Codec<efi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecg<eep> $$0) {
-      dds $$1 = $$0.b();
-      jd $$2 = $$0.e();
-      jd.a $$3 = new jd.a();
-      jd.a $$4 = new jd.a();
+   protected void a(ddt $$0, azk $$1, je $$2, int $$3, je.a $$4, efi $$5) {
+      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
+         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
+         int $$8 = $$5.d - 2;
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dyy.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(ji.a, 1);
-            ddw $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dga.dO.o(), 2);
-            }
+         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
+            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
+               boolean $$11 = $$9 == -$$7;
+               boolean $$12 = $$9 == $$7;
+               boolean $$13 = $$10 == -$$7;
+               boolean $$14 = $$10 == $$7;
+               boolean $$15 = $$11 || $$12;
+               boolean $$16 = $$13 || $$14;
+               if ($$6 >= $$3 || $$15 != $$16) {
+                  $$4.a($$2, $$9, $$6, $$10);
+                  if (!$$0.a_($$4).s()) {
+                     dua $$17 = $$5.b.a($$1, $$2);
+                     if ($$17.b(dks.e) && $$17.b(dks.c) && $$17.b(dks.b) && $$17.b(dks.d) && $$17.b(dks.f)) {
+                        $$17 = $$17.b(dks.f, Boolean.valueOf($$6 >= $$3 - 1))
+                           .b(dks.e, Boolean.valueOf($$9 < -$$8))
+                           .b(dks.c, Boolean.valueOf($$9 > $$8))
+                           .b(dks.b, Boolean.valueOf($$10 < -$$8))
+                           .b(dks.d, Boolean.valueOf($$10 > $$8));
+                     }
 
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dga.dN.o(), 2);
-               dtc $$11 = $$1.a_($$4);
-               if ($$11.b(dnj.c)) {
-                  $$1.a($$4, $$11.a(dnj.c, Boolean.valueOf(true)), 2);
+                     this.a($$0, $$4, $$17);
+                  }
                }
             }
          }
       }
+   }
 
-      return true;
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 0;
+      if ($$3 < $$1 && $$3 >= $$1 - 3) {
+         $$4 = $$2;
+      } else if ($$3 == $$1) {
+         $$4 = $$2;
+      }
+
+      return $$4;
    }
 }

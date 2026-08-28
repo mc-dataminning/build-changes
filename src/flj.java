@@ -1,73 +1,66 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+public class flj extends fjy {
+   private static final fln a = new fln(
+      alb.b("widget/tab_selected"), alb.b("widget/tab"), alb.b("widget/tab_selected_highlighted"), alb.b("widget/tab_highlighted")
+   );
+   private static final int b = 3;
+   private static final int c = 1;
+   private static final int d = 1;
+   private static final int e = 4;
+   private static final int f = 2;
+   private final fme m;
+   private final fmd n;
 
-public enum flj implements ezl {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+   public flj(fme $$0, fmd $$1, int $$2, int $$3) {
+      super(0, 0, $$2, $$3, $$1.a());
+      this.m = $$0;
+      this.n = $$1;
+   }
 
-   final faj c;
-
-   private static faj a(int $$0, int $$1, flj.a $$2) {
-      faj $$3 = new faj(faj.a.a, $$0, $$1, false);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   @Override
+   public void b(fjn $$0, int $$1, int $$2, float $$3) {
+      $$0.a(ghe::C, a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
+      fjl $$4 = fib.Q().h;
+      int $$5 = this.j ? -1 : -6250336;
+      this.a($$0, $$4, $$5);
+      if (this.b()) {
+         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
+         this.b($$0, $$4, $$5);
       }
-
-      $$3.i();
-      return $$3;
    }
 
-   private flj(final Supplier<faj> $$0) {
-      this.c = $$0.get();
+   protected void a(fjn $$0, int $$1, int $$2, int $$3, int $$4) {
+      fpt.a($$0, fpt.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
+   }
+
+   public void a(fjn $$0, fjl $$1, int $$2) {
+      int $$3 = this.D() + 1;
+      int $$4 = this.E() + (this.b() ? 0 : 3);
+      int $$5 = this.D() + this.y() - 1;
+      int $$6 = this.E() + this.w();
+      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
+   }
+
+   private void b(fjn $$0, fjl $$1, int $$2) {
+      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
+      int $$4 = this.D() + (this.y() - $$3) / 2;
+      int $$5 = this.E() + this.w() - 2;
+      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
    }
 
    @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
+   protected void a(fnx $$0) {
+      $$0.a(fnw.a, xd.a("gui.narrate.tab", this.n.a()));
    }
 
    @Override
-   public flh bake(Function<ezn, flh> $$0) {
-      return $$0.apply(new ezn() {
-         @Override
-         public int a() {
-            return flj.this.c.a();
-         }
-
-         @Override
-         public int b() {
-            return flj.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            flj.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
+   public void a(hbj $$0) {
    }
 
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+   public fmd a() {
+      return this.n;
+   }
+
+   public boolean b() {
+      return this.m.a() == this.n;
    }
 }

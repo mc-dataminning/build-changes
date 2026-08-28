@@ -1,58 +1,45 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class eci extends ece<ecj> {
-   public eci(Codec<ecj> $$0) {
+public class eci extends edc<eez> {
+   public eci(Codec<eez> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecg<ecj> $$0) {
-      ayw $$1 = $$0.d();
-      dds $$2 = $$0.b();
-      jd $$3 = $$0.e();
-      dmm $$4 = dmm.a($$1);
-      ecj $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      enu $$7 = $$2.E().o().ba();
-      ent $$8 = $$7.a($$5.b.get($$6));
-      ent $$9 = $$7.a($$5.c.get($$6));
-      dcd $$10 = new dcd($$3);
-      ejj $$11 = new ejj($$10.d() - 16, $$2.I_(), $$10.e() - 16, $$10.f() + 16, $$2.am(), $$10.g() + 16);
-      enp $$12 = new enp().a($$4).a($$11).a($$1);
-      kh $$13 = $$8.a($$4);
-      jd $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+   public boolean a(ede<eez> $$0) {
+      je $$1 = $$0.e();
+      dep $$2 = $$0.b();
+      azk $$3 = $$0.d();
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(dyy.a.c, $$14.u() + $$16, $$14.w() + $$17));
+      eez $$4;
+      for ($$4 = $$0.f(); $$1.v() > $$2.G_() + 3; $$1 = $$1.e()) {
+         if (!$$2.u($$1.e())) {
+            dua $$5 = $$2.a_($$1.e());
+            if (b($$5) || a($$5)) {
+               break;
+            }
          }
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.I_() + 10);
-      jd $$19 = $$8.a($$14.h($$18), dkv.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
+      if ($$1.v() <= $$2.G_() + 3) {
          return false;
       } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 4);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 4);
+         for (int $$6 = 0; $$6 < 3; $$6++) {
+            int $$7 = $$3.a(2);
+            int $$8 = $$3.a(2);
+            int $$9 = $$3.a(2);
+            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
+
+            for (je $$11 : je.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
+               if ($$11.j($$1) <= (double)($$10 * $$10)) {
+                  $$2.a($$11, $$4.b, 3);
+               }
+            }
+
+            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
+         }
+
          return true;
       }
-   }
-
-   private static int a(dds $$0, ejj $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         dtc $$3 = $$0.a_($$2x);
-         if ($$3.i() || $$3.a(dga.H) || $$3.a(dga.G)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
    }
 }

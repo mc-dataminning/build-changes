@@ -1,136 +1,66 @@
-public class gca extends gdn {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final boolean G;
-   private final gcn.a H;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-   gca(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, gcn.a.a);
+public class gca extends gcb {
+   private final String g;
+
+   gca(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
    }
 
-   gca(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7, gcn.a $$8) {
-      super($$0, $$1, $$2, $$3);
-      this.G = $$7;
-      this.H = $$8;
-      this.e($$8.b());
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      float $$9 = this.r.i() * 0.6F + 0.4F;
-      this.v = 0.9F * $$9;
-      this.w = 0.9F * $$9;
-      this.x = $$9;
-      this.n = false;
-      this.t = (int)(Math.random() * 10.0) + 30;
+   public String a() {
+      return this.g;
+   }
+
+   public gca c() {
+      gca $$0 = new gca(this.a, this.b, this.c, this.g);
+      $$0.d = this.d;
+      $$0.f = this.f;
+      return $$0;
    }
 
    @Override
-   public gcr b() {
-      return this.H.a() ? gcr.b : gcr.c;
+   public fpt a(fpt $$0, gcf $$1) {
+      return new fuc($$0, $$1, this);
    }
 
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
-   }
+   public static class a extends gcb.a<gca> {
+      public a(gca $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
+      }
 
-   @Override
-   public int a(float $$0) {
-      if (this.G) {
-         return 240;
-      } else {
-         int $$1 = super.a($$0);
-         float $$2 = (float)this.s / (float)this.t;
-         $$2 *= $$2;
-         $$2 *= $$2;
-         int $$3 = $$1 & 0xFF;
-         int $$4 = $$1 >> 16 & 0xFF;
-         $$4 += (int)($$2 * 15.0F * 16.0F);
-         if ($$4 > 240) {
-            $$4 = 240;
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new gca(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
+
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
+
+      @Nullable
+      @Override
+      public gcb.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gcb.b.d : super.c();
+      }
+
+      @Override
+      public Either<gcb.c, gcb.b> a(gcf $$0) {
+         gcb.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new gcb.c(this.a.a, gce.c, $$3));
          }
-
-         return $$3 | $$4 << 16;
-      }
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         $$0 = 1.0F - $$0;
-         float $$1 = 1.0F - $$0;
-         $$1 *= $$1;
-         $$1 *= $$1;
-         this.g = this.a + this.j * (double)$$0;
-         this.h = this.b + this.k * (double)$$0 - (double)($$1 * 1.2F);
-         this.i = this.F + this.l * (double)$$0;
-      }
-   }
-
-   @Override
-   public void a(fbm $$0, ffy $$1, float $$2) {
-      this.e(this.H.a(this.s, this.t, $$2));
-      super.a($$0, $$1, $$2);
-   }
-
-   public static class a implements gcq<lq> {
-      private final gdi a;
-
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gca $$8 = new gca($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gcq<lq> {
-      private final gdi a;
-
-      public b(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gca $$8 = new gca($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class c implements gcq<lq> {
-      private final gdi a;
-
-      public c(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gca $$8 = new gca($$1, $$2, $$3, $$4, $$5, $$6, $$7, true, new gcn.a(0.0F, 0.6F, 0.25F, 1.0F));
-         $$8.d(1.5F);
-         $$8.a(this.a);
-         return $$8;
       }
    }
 }

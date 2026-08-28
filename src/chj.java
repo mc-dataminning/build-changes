@@ -1,59 +1,22 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class chj extends chh {
-   public chj(bsx<? extends chj> $$0, dcw $$1) {
-      super($$0, $$1);
+public class chj extends bvx<chh> {
+   public chj() {
+      super(ImmutableMap.of(cdi.N, cdj.a, cdi.y, cdj.a), 200);
    }
 
-   @Override
-   protected avo v() {
-      return avp.hf;
+   protected boolean a(arg $$0, chh $$1) {
+      return $$1.bl();
    }
 
-   @Override
-   protected avo gJ() {
-      return avp.hg;
+   protected boolean a(arg $$0, chh $$1, long $$2) {
+      return $$1.bl() && $$1.dX().a(cdi.N);
    }
 
-   @Override
-   protected avo n_() {
-      return avp.hi;
-   }
-
-   @Nullable
-   @Override
-   protected avo gm() {
-      return avp.hj;
-   }
-
-   @Override
-   protected avo d(brk $$0) {
-      return avp.hk;
-   }
-
-   @Override
-   public boolean a(cfe $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof chj) && !($$0 instanceof chk) ? false : this.gS() && ((chi)$$0).gS();
-      }
-   }
-
-   @Override
-   protected void gR() {
-      this.a(avp.hl, 0.4F, 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bsl a(aqu $$0, bsl $$1) {
-      bsx<? extends chi> $$2 = $$1 instanceof chk ? bsx.at : bsx.z;
-      chi $$3 = $$2.a((dcw)$$0);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
-
-      return $$3;
+   protected void b(arg $$0, chh $$1, long $$2) {
+      bvg<chh> $$3 = $$1.dX();
+      $$3.b(cdi.m);
+      $$3.b(cdi.n);
+      $$1.b(new bsq(bss.j, 200, 0));
    }
 }

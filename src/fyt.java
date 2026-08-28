@@ -1,44 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+public class fyt extends fxa<guo> {
+   public static final String a = "lid";
+   private static final String b = "base";
+   private final gab c;
+   private final gab d;
+   private final gab e;
 
-public class fyt {
-   private final List<fyn> a;
-   private final fym b;
-   private final Map<String, fyt> c = Maps.newHashMap();
-
-   fyt(List<fyn> $$0, fym $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fyt(gab $$0) {
+      super(ghe::g);
+      this.c = $$0;
+      this.d = $$0.b("lid");
+      this.e = $$0.b("head");
    }
 
-   public fyt a(String $$0, fyp $$1, fym $$2) {
-      fyt $$3 = new fyt($$1.b(), $$2);
-      fyt $$4 = this.c.put($$0, $$3);
-      if ($$4 != null) {
-         $$3.c.putAll($$4.c);
+   private static gaj d() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      $$1.a("lid", gag.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gad.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", gag.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gad.a(0.0F, 24.0F, 0.0F));
+      return $$0;
+   }
+
+   public static gah b() {
+      gaj $$0 = d();
+      $$0.a().a("head", gag.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gad.a(0.0F, 12.0F, 0.0F));
+      return gah.a($$0, 64, 64);
+   }
+
+   public static gah c() {
+      gaj $$0 = d();
+      return gah.a($$0, 64, 64);
+   }
+
+   public void a(guo $$0) {
+      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
+      float $$2 = -1.0F + azc.a($$1);
+      float $$3 = 0.0F;
+      if ($$1 > (float) Math.PI) {
+         $$3 = azc.a($$0.p * 0.1F) * 0.7F;
       }
 
-      return $$3;
+      this.d.a(0.0F, 16.0F + azc.a($$1) * 8.0F + $$3, 0.0F);
+      if ($$0.c > 0.3F) {
+         this.d.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
+      } else {
+         this.d.f = 0.0F;
+      }
+
+      this.e.e = $$0.V * (float) (Math.PI / 180.0);
+      this.e.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 
-   public fyk a(int $$0, int $$1) {
-      Object2ObjectArrayMap<String, fyk> $$2 = this.c
-         .entrySet()
-         .stream()
-         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((fyt)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
-      List<fyk.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
-      fyk $$4 = new fyk($$3, $$2);
-      $$4.a(this.b);
-      $$4.b(this.b);
-      return $$4;
-   }
-
-   public fyt a(String $$0) {
-      return this.c.get($$0);
+   @Override
+   public gab a() {
+      return this.c;
    }
 }

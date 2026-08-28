@@ -1,110 +1,138 @@
-public class gwf implements gwj {
-   private static final int a = 40;
-   private static final int b = 40;
-   private static final int c = 100;
-   private static final int d = 20;
-   private static final int e = -1;
-   private static final wz f = wz.a("tutorial.move.title", gwi.a("forward"), gwi.a("left"), gwi.a("back"), gwi.a("right"));
-   private static final wz g = wz.a("tutorial.move.description", gwi.a("jump"));
-   private static final wz h = wz.c("tutorial.look.title");
-   private static final wz i = wz.c("tutorial.look.description");
-   private final gwi j;
-   private fkx k;
-   private fkx l;
-   private int m;
-   private int n;
-   private int o;
-   private boolean p;
-   private boolean q;
-   private int r = -1;
-   private int s = -1;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-   public gwf(gwi $$0) {
-      this.j = $$0;
+public class gwf {
+   public static final Set<atr<?>> a = Set.of(gxw.a);
+   private static final Logger b = LogUtils.getLogger();
+   private final alb c;
+   private final int d;
+   private final int e;
+   private final int f;
+
+   public gwf(alb $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   public void a() {
-      this.m++;
-      if (this.p) {
-         this.n++;
-         this.p = false;
-      }
-
-      if (this.q) {
-         this.o++;
-         this.q = false;
-      }
-
-      if (this.r == -1 && this.n > 40) {
-         if (this.k != null) {
-            this.k.c();
-            this.k = null;
-         }
-
-         this.r = this.m;
-      }
-
-      if (this.s == -1 && this.o > 40) {
-         if (this.l != null) {
-            this.l.c();
-            this.l = null;
-         }
-
-         this.s = this.m;
-      }
-
-      if (this.r != -1 && this.s != -1) {
-         if (this.j.f()) {
-            this.j.a(gwk.b);
-         } else {
-            this.j.a(gwk.f);
-         }
-      }
-
-      if (this.k != null) {
-         this.k.a((float)this.n / 40.0F);
-      }
-
-      if (this.l != null) {
-         this.l.a((float)this.o / 40.0F);
-      }
-
-      if (this.m >= 100) {
-         if (this.r == -1 && this.k == null) {
-            this.k = new fkx(fkx.a.a, f, g, true);
-            this.j.e().aw().a(this.k);
-         } else if (this.r != -1 && this.m - this.r >= 20 && this.s == -1 && this.l == null) {
-            this.l = new fkx(fkx.a.b, h, i, true);
-            this.j.e().aw().a(this.l);
-         }
-      }
+   public static gwf a(gwj $$0) {
+      return new gwf($$0.h(), $$0.i(), $$0.j(), $$0.k());
    }
 
-   @Override
-   public void b() {
-      if (this.k != null) {
-         this.k.c();
-         this.k = null;
+   public gwf.a a(List<gwe> $$0, int $$1, Executor $$2) {
+      int $$3 = this.d;
+      gwh<gwe> $$4 = new gwh<>($$3, $$3, $$1);
+      int $$5 = Integer.MAX_VALUE;
+      int $$6 = 1 << $$1;
+
+      for (gwe $$7 : $$0) {
+         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
+         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
+         if ($$8 < $$6) {
+            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), azc.f($$6), azc.f($$8)});
+            $$6 = $$8;
+         }
+
+         $$4.a($$7);
       }
 
-      if (this.l != null) {
-         this.l.c();
-         this.l = null;
+      int $$9 = Math.min($$5, $$6);
+      int $$10 = azc.f($$9);
+      int $$11;
+      if ($$10 < $$1) {
+         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
+         $$11 = $$10;
+      } else {
+         $$11 = $$1;
       }
+
+      try {
+         $$4.c();
+      } catch (gwi var16) {
+         o $$14 = o.a(var16, "Stitching");
+         p $$15 = $$14.a("Stitcher");
+         $$15.a(
+            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
+         );
+         $$15.a("Max Texture Size", $$3);
+         throw new z($$14);
+      }
+
+      int $$16 = Math.max($$4.a(), this.e);
+      int $$17 = Math.max($$4.b(), this.f);
+      Map<alb, gwk> $$18 = this.a($$4, $$16, $$17);
+      gwk $$19 = $$18.get(gwa.b());
+      CompletableFuture<Void> $$20;
+      if ($$11 > 0) {
+         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
+      } else {
+         $$20 = CompletableFuture.completedFuture(null);
+      }
+
+      return new gwf.a($$16, $$17, $$11, $$19, $$18, $$20);
    }
 
-   @Override
-   public void a(gdz $$0) {
-      if ($$0.c || $$0.d || $$0.e || $$0.f || $$0.g) {
-         this.p = true;
-      }
+   public static CompletableFuture<List<gwe>> a(gwn $$0, List<Function<gwn, gwe>> $$1, Executor $$2) {
+      List<CompletableFuture<gwe>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gwe)$$2x.apply($$0), $$2)).toList();
+      return ad.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      if (Math.abs($$0) > 0.01 || Math.abs($$1) > 0.01) {
-         this.q = true;
+   public CompletableFuture<gwf.a> a(aus $$0, alb $$1, int $$2, Executor $$3) {
+      return this.a($$0, $$1, $$2, $$3, a);
+   }
+
+   public CompletableFuture<gwf.a> a(aus $$0, alb $$1, int $$2, Executor $$3, Collection<atr<?>> $$4) {
+      gwn $$5 = gwn.create($$4);
+      return CompletableFuture.<List<Function<gwn, gwe>>>supplyAsync(() -> gwp.a($$0, $$1).a($$0), $$3)
+         .thenCompose($$2x -> a($$5, $$2x, $$3))
+         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   }
+
+   private Map<alb, gwk> a(gwh<gwe> $$0, int $$1, int $$2) {
+      Map<alb, gwk> $$3 = new HashMap<>();
+      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gwk(this.c, $$3x, $$1, $$2, $$4, $$5)));
+      return $$3;
+   }
+
+   public static record a(int a, int b, int c, gwk d, Map<alb, gwk> e, CompletableFuture<Void> f) {
+      public CompletableFuture<gwf.a> a() {
+         return this.f.thenApply($$0 -> this);
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+
+      public int d() {
+         return this.c;
+      }
+
+      public gwk e() {
+         return this.d;
+      }
+
+      public Map<alb, gwk> f() {
+         return this.e;
+      }
+
+      public CompletableFuture<Void> g() {
+         return this.f;
       }
    }
 }

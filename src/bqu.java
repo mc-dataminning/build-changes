@@ -1,30 +1,56 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record bqu(String d) {
-   public static final bqu a = new bqu("");
-   public static final Codec<bqu> b = Codec.STRING.xmap(bqu::new, bqu::a);
-   public static final String c = "Lock";
+public class bqu extends bqn {
+   public static final MapCodec<bqu> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
+               .apply($$0, bqu::new)
+      )
+      .validate(
+         $$0 -> $$0.d <= $$0.b
+               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
+               : DataResult.success($$0)
+      );
+   private final float b;
+   private final float d;
 
-   public boolean a(cuq $$0) {
-      if (this.d.isEmpty()) {
-         return true;
+   private bqu(float $$0, float $$1) {
+      this.b = $$0;
+      this.d = $$1;
+   }
+
+   public static bqu b(float $$0, float $$1) {
+      if ($$1 <= $$0) {
+         throw new IllegalArgumentException("Max must exceed min");
       } else {
-         wz $$1 = $$0.a(kq.g);
-         return $$1 != null && this.d.equals($$1.getString());
+         return new bqu($$0, $$1);
       }
    }
 
-   public void a(ub $$0) {
-      if (!this.d.isEmpty()) {
-         $$0.a("Lock", this.d);
-      }
+   @Override
+   public float a(azk $$0) {
+      return azc.b($$0, this.b, this.d);
    }
 
-   public static bqu b(ub $$0) {
-      return $$0.b("Lock", 8) ? new bqu($$0.l("Lock")) : a;
+   @Override
+   public float a() {
+      return this.b;
    }
 
-   public String a() {
+   @Override
+   public float b() {
       return this.d;
+   }
+
+   @Override
+   public bqo<?> c() {
+      return bqo.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.b + "-" + this.d + "]";
    }
 }

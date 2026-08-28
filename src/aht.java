@@ -1,29 +1,45 @@
-public class aht implements zg<agi> {
-   public static final yx<vw, aht> a = zg.a(aht::a, aht::new);
+public class aht implements zk<agq> {
+   public static final zb<wa, aht> a = zk.a(aht::a, aht::new);
    private final int b;
+   private final alb c;
+   private final boolean d;
 
-   public aht(int $$0) {
+   public aht(int $$0, czv<?> $$1, boolean $$2) {
       this.b = $$0;
+      this.c = $$1.a();
+      this.d = $$2;
    }
 
-   private aht(vw $$0) {
-      this.b = $$0.l();
+   private aht(wa $$0) {
+      this.b = $$0.x();
+      this.c = $$0.q();
+      this.d = $$0.readBoolean();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   private void a(wa $$0) {
+      $$0.f(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
    }
 
    @Override
-   public zi<aht> a() {
-      return agg.bR;
+   public zm<aht> a() {
+      return ago.bL;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
    public int b() {
       return this.b;
+   }
+
+   public alb e() {
+      return this.c;
+   }
+
+   public boolean f() {
+      return this.d;
    }
 }

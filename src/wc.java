@@ -1,18 +1,19 @@
+import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.MessageToMessageEncoder;
-import java.util.List;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
-public class wc extends MessageToMessageEncoder<zg<?>> {
-   private final zf a;
+public class wc extends ChannelInboundHandlerAdapter {
+   private final vq a;
 
-   public wc(zf $$0) {
+   public wc(vq $$0) {
       this.a = $$0;
    }
 
-   protected void a(ChannelHandlerContext $$0, zg<?> $$1, List<Object> $$2) throws Exception {
-      this.a.a($$1, $$2::add);
-      if ($$1.d()) {
-         $$0.pipeline().remove($$0.name());
+   public void channelRead(ChannelHandlerContext $$0, Object $$1) {
+      if ($$1 instanceof ByteBuf $$2) {
+         this.a.a($$2.readableBytes());
       }
+
+      $$0.fireChannelRead($$1);
    }
 }

@@ -1,52 +1,33 @@
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.function.UnaryOperator;
 
-public interface aue extends auh {
-   Set<String> a();
+public interface aue {
+   UnaryOperator<xd> a = UnaryOperator.identity();
+   aue b = a(a, true);
+   aue c = a(a("pack.source.builtin"), true);
+   aue d = a(a("pack.source.feature"), false);
+   aue e = a(a("pack.source.world"), true);
+   aue f = a(a("pack.source.server"), true);
 
-   List<auc> a(akr var1);
+   xd a(xd var1);
 
-   Map<akr, auc> b(String var1, Predicate<akr> var2);
+   boolean a();
 
-   Map<akr, List<auc>> c(String var1, Predicate<akr> var2);
+   static aue a(final UnaryOperator<xd> $$0, final boolean $$1) {
+      return new aue() {
+         @Override
+         public xd a(xd $$0x) {
+            return $$0.apply($$0);
+         }
 
-   Stream<asq> b();
+         @Override
+         public boolean a() {
+            return $$1;
+         }
+      };
+   }
 
-   public static enum a implements aue {
-      a;
-
-      @Override
-      public Set<String> a() {
-         return Set.of();
-      }
-
-      @Override
-      public Optional<auc> getResource(akr $$0) {
-         return Optional.empty();
-      }
-
-      @Override
-      public List<auc> a(akr $$0) {
-         return List.of();
-      }
-
-      @Override
-      public Map<akr, auc> b(String $$0, Predicate<akr> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Map<akr, List<auc>> c(String $$0, Predicate<akr> $$1) {
-         return Map.of();
-      }
-
-      @Override
-      public Stream<asq> b() {
-         return Stream.of();
-      }
+   private static UnaryOperator<xd> a(String $$0) {
+      xd $$1 = xd.c($$0);
+      return $$1x -> xd.a("pack.nameAndSource", $$1x, $$1).a(n.h);
    }
 }

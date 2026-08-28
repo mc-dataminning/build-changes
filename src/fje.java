@@ -1,213 +1,164 @@
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class fje extends fig {
-   private static final int a = 1;
-   private static final int b = -3092272;
-   private static final String c = "_";
-   private static final int d = -2039584;
-   private static final int e = -857677600;
-   private static final int f = 300;
-   private final fhx m;
-   private final wz n;
-   private final fjh o;
-   private long p = ad.c();
+public class fje {
+   private static final int a = 256;
+   private final ThreadLocal<fje.b> b = ThreadLocal.withInitial(fje.b::new);
+   private final Long2ObjectLinkedOpenHashMap<fje.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<je> e;
 
-   public fje(fhx $$0, int $$1, int $$2, int $$3, int $$4, wz $$5, wz $$6) {
-      super($$1, $$2, $$3, $$4, $$6);
-      this.m = $$0;
-      this.n = $$5;
-      this.o = new fjh($$0, $$3 - this.b());
-      this.o.a(this::k);
+   public fje(ToIntFunction<je> $$0) {
+      this.e = $$0;
    }
 
-   public void a(int $$0) {
-      this.o.a($$0);
-   }
+   public int a(je $$0) {
+      int $$1 = kg.a($$0.u());
+      int $$2 = kg.a($$0.w());
+      fje.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
+      }
 
-   public void b(Consumer<String> $$0) {
-      this.o.a($$0);
-   }
-
-   public void a(String $$0) {
-      this.o.a($$0);
-   }
-
-   public String j() {
-      return this.o.c();
-   }
-
-   @Override
-   public void a(fmi $$0) {
-      $$0.a(fmh.a, wz.a("gui.narrate.editBox", this.z(), this.j()));
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(fod.s());
-         this.e($$0, $$1);
-         return true;
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
       } else {
-         return super.a($$0, $$1, $$2);
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4)) {
-         return true;
-      } else if (this.b($$0, $$1) && $$2 == 0) {
-         this.o.a(true);
-         this.e($$0, $$1);
-         this.o.a(fod.s());
-         return true;
-      } else {
-         return false;
-      }
-   }
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.o.e($$0);
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      if (this.k && this.aO_() && azl.a($$0)) {
-         this.o.b(Character.toString($$0));
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   protected void c(fhz $$0, int $$1, int $$2, float $$3) {
-      String $$4 = this.o.c();
-      if ($$4.isEmpty() && !this.aO_()) {
-         $$0.a(this.m, (xe)this.n, this.D() + this.a(), this.E() + this.a(), this.g - this.b(), -857677600);
-      } else {
-         int $$5 = this.o.d();
-         boolean $$6 = this.aO_() && (ad.c() - this.p) / 300L % 2L == 0L;
-         boolean $$7 = $$5 < $$4.length();
-         int $$8 = 0;
-         int $$9 = 0;
-         int $$10 = this.E() + this.a();
-
-         for (fjh.a $$11 : this.o.h()) {
-            boolean $$12 = this.a($$10, $$10 + 9);
-            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.D() + this.a(), $$10, -2039584) - 1;
-                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
-                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
-               }
-            } else {
-               if ($$12) {
-                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.D() + this.a(), $$10, -2039584) - 1;
-               }
-
-               $$9 = $$10;
-            }
-
-            $$10 += 9;
-         }
-
-         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
-            $$0.b(this.m, "_", $$8, $$9, -3092272);
-         }
-
-         if (this.o.i()) {
-            fjh.a $$13 = this.o.e();
-            int $$14 = this.D() + this.a();
-            $$10 = this.E() + this.a();
-
-            for (fjh.a $$15 : this.o.h()) {
-               if ($$13.a() > $$15.b()) {
-                  $$10 += 9;
-               } else {
-                  if ($$15.a() > $$13.b()) {
-                     break;
-                  }
-
-                  if (this.a($$10, $$10 + 9)) {
-                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
-                     int $$17;
-                     if ($$13.b() > $$15.b()) {
-                        $$17 = this.g - this.a();
-                     } else {
-                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
-                     }
-
-                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
-                  }
-
-                  $$10 += 9;
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = dcy.c($$0 + $$2, $$1 + $$3);
+               fje.a $$5 = (fje.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
                }
             }
          }
+      } finally {
+         this.d.writeLock().unlock();
       }
    }
 
-   @Override
-   protected void a(fhz $$0) {
-      super.a($$0);
-      if (this.o.b()) {
-         int $$1 = this.o.a();
-         wz $$2 = wz.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
-         $$0.b(this.m, $$2, this.D() + this.g - this.m.a($$2), this.E() + this.h + 4, 10526880);
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(fje.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
       }
    }
 
-   @Override
-   public int h() {
-      return 9 * this.o.f();
-   }
+   private fje.a b(int $$0, int $$1) {
+      long $$2 = dcy.c($$0, $$1);
+      this.d.readLock().lock();
 
-   @Override
-   protected boolean e() {
-      return (double)this.o.f() > this.l();
-   }
-
-   @Override
-   protected double i() {
-      return 9.0 / 2.0;
-   }
-
-   private void b(fhz $$0, int $$1, int $$2, int $$3, int $$4) {
-      $$0.a(gfh.G(), $$1, $$2, $$3, $$4, -16776961);
-   }
-
-   private void k() {
-      double $$0 = this.c();
-      fjh.a $$1 = this.o.c((int)($$0 / 9.0));
-      if (this.o.d() <= $$1.a()) {
-         $$0 = (double)(this.o.g() * 9);
-      } else {
-         fjh.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
-         if (this.o.d() > $$2.b()) {
-            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
+      try {
+         fje.a $$3 = (fje.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
          }
+      } finally {
+         this.d.readLock().unlock();
       }
 
-      this.a($$0);
+      this.d.writeLock().lock();
+
+      fje.a $$5;
+      try {
+         fje.a $$4 = (fje.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new fje.a();
+            if (this.c.size() >= 256) {
+               fje.a $$6 = (fje.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
+         }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
+      }
+
+      return $$5;
    }
 
-   private double l() {
-      return (double)(this.h - this.b()) / 9.0;
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = azc.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
    }
 
-   private void e(double $$0, double $$1) {
-      double $$2 = $$0 - (double)this.D() - (double)this.a();
-      double $$3 = $$1 - (double)this.E() - (double)this.a() + this.c();
-      this.o.a($$2, $$3);
-   }
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      fje.a c;
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if ($$0) {
-         this.p = ad.c();
+      private b() {
       }
    }
 }

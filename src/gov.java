@@ -1,33 +1,37 @@
-public abstract class gov<T extends bsr, M extends fvk<T>> {
-   private final gmf<T, M> a;
+public class gov extends gny<cle, guq, fyy> {
+   private static final alb a = alb.b("textures/entity/slime/slime.png");
 
-   public gov(gmf<T, M> $$0) {
-      this.a = $$0;
+   public gov(gms.a $$0) {
+      super($$0, new fyy($$0.a(gaa.cr)), 0.25F);
+      this.a(new grj(this, $$0.f()));
    }
 
-   protected static <T extends btn> void a(
-      fvk<T> $$0, fvk<T> $$1, akr $$2, fbi $$3, gez $$4, int $$5, T $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12, int $$13
-   ) {
-      if (!$$6.ci()) {
-         $$0.a($$1);
-         $$1.a($$6, $$7, $$8, $$12);
-         $$1.a($$6, $$7, $$8, $$9, $$10, $$11);
-         a($$1, $$2, $$3, $$4, $$5, $$6, $$13);
-      }
+   public void a(guq $$0, fcu $$1, ggv $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected static <T extends btn> void a(fvk<T> $$0, akr $$1, fbi $$2, gez $$3, int $$4, T $$5, int $$6) {
-      fbm $$7 = $$3.getBuffer(gfh.e($$1));
-      $$0.a($$2, $$7, $$4, glk.c($$5, 0.0F), $$6);
+   protected void a(guq $$0, fcu $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
    }
 
-   public M c() {
-      return this.a.a();
+   public alb a(guq $$0) {
+      return a;
    }
 
-   protected akr a(T $$0) {
-      return this.a.a($$0);
+   public guq c() {
+      return new guq();
    }
 
-   public abstract void a(fbi var1, gez var2, int var3, T var4, float var5, float var6, float var7, float var8, float var9, float var10);
+   public void a(cle $$0, guq $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azc.h($$2, $$0.bZ, $$0.bY);
+      $$1.b = $$0.gp();
+   }
 }

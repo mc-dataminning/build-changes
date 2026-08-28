@@ -1,34 +1,54 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqm extends drp {
-   public dqm(jd $$0, dtc $$1) {
-      super(dqj.J, $$0, $$1);
+public class dqm extends dgj {
+   public static final MapCodec<dqm> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.g), dup.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dqm::new)
+   );
+   public static final dva f = duq.aT;
+   private final int g;
+
+   @Override
+   public MapCodec<dqm> a() {
+      return e;
+   }
+
+   protected dqm(int $$0, dup $$1, dtz.d $$2) {
+      super($$2, $$1);
+      this.l(this.E.b().b(f, Integer.valueOf(0)));
+      this.g = $$0;
    }
 
    @Override
-   public dyi.d b() {
-      return new dqm.a(this.aD_());
+   protected int b(dds $$0, je $$1) {
+      int $$2 = Math.min(a($$0, c.a($$1), btj.class), this.g);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.g, $$2) / (float)this.g;
+         return azc.f($$3 * 15.0F);
+      } else {
+         return 0;
+      }
    }
 
-   protected class a extends drp.a {
-      public a(final jd $$1) {
-         super($$1);
-      }
+   @Override
+   protected int h(dua $$0) {
+      return $$0.c(f);
+   }
 
-      @Override
-      public int a() {
-         return 16;
-      }
+   @Override
+   protected dua a(dua $$0, int $$1) {
+      return $$0.b(f, Integer.valueOf($$1));
+   }
 
-      @Override
-      public boolean a(aqu $$0, jd $$1, jm<dxz> $$2, @Nullable dxz.a $$3) {
-         int $$4 = this.a($$0, this.c, dqm.this.n());
-         return $$4 != 0 && dyi.a_($$2) != $$4 ? false : super.a($$0, $$1, $$2, $$3);
-      }
+   @Override
+   protected int b() {
+      return 10;
+   }
 
-      private int a(dcw $$0, jd $$1, dtc $$2) {
-         ji $$3 = $$2.c(dgl.b).g();
-         return $$0.c($$1.a($$3), $$3);
-      }
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(f);
    }
 }

@@ -1,36 +1,34 @@
-public class car extends cam {
-   private final cgb a;
-   private aqv b;
-   private boolean c;
+import java.util.EnumSet;
 
-   public car(cgb $$0) {
+public class car extends cbc {
+   private final buh a;
+   private final dds b;
+
+   public car(buh $$0, dds $$1) {
       this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(cbc.a.c));
    }
 
    @Override
    public boolean b() {
-      aqv $$0 = (aqv)this.a.T_();
-      boolean $$1 = $$0 != null && !$$0.R_() && !$$0.fZ().b && !$$0.bf() && !$$0.az;
-      return !this.a.gk() && $$1 && this.a.gy();
+      boolean $$0 = this.a.ax || this.a.aw;
+      if ($$0 && this.a.ao().a(aww.h)) {
+         je $$1 = this.a.ds().d();
+         dua $$2 = this.b.a_($$1);
+         return $$2.a(dgx.qP) || $$2.g(this.b, $$1) == eyu.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public boolean U_() {
-      return !this.c;
-   }
-
-   @Override
-   public void d() {
-      this.b = (aqv)this.a.T_();
-      this.c = false;
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (!this.c && !this.a.x() && !this.a.N_()) {
-         if (this.a.cK().c(this.b.cK())) {
-            this.c = this.a.b(this.b);
-         }
-      }
+      this.a.O().a();
    }
 }

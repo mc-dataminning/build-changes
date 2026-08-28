@@ -1,22 +1,5 @@
-public abstract class cyr implements cyq {
-   private final cyo a;
+import java.util.function.Consumer;
 
-   public cyr(cyo $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean as_() {
-      return true;
-   }
-
-   @Override
-   public cuq a(jo.a $$0) {
-      return cuq.l;
-   }
-
-   @Override
-   public cyo d() {
-      return this.a;
-   }
+public interface cyr {
+   void a(cvg.b var1, Consumer<xd> var2, cxf var3);
 }

@@ -1,22 +1,76 @@
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+import jdk.jfr.Category;
+import jdk.jfr.Enabled;
+import jdk.jfr.Event;
+import jdk.jfr.Label;
+import jdk.jfr.Name;
+import jdk.jfr.StackTrace;
 
-public record boj<T extends boi>(T a, T b, @Nullable T c, int d, Map<Integer, Double> e, Duration f) {
-   public static <T extends boi> boj<T> a(List<T> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("No values");
-      } else {
-         List<T> $$1 = $$0.stream().sorted(Comparator.comparing(boi::a)).toList();
-         Duration $$2 = $$1.stream().map(boi::a).reduce(Duration::plus).orElse(Duration.ZERO);
-         T $$3 = (T)$$1.get(0);
-         T $$4 = (T)$$1.get($$1.size() - 1);
-         T $$5 = $$1.size() > 1 ? $$1.get($$1.size() - 2) : null;
-         int $$6 = $$1.size();
-         Map<Integer, Double> $$7 = bnm.a($$1.stream().mapToLong($$0x -> $$0x.a().toNanos()).toArray());
-         return new boj<>($$3, $$4, $$5, $$6, $$7, $$2);
+@Category({"Minecraft", "Storage"})
+@StackTrace(false)
+@Enabled(false)
+public abstract class boj extends Event {
+   @Name("regionPosX")
+   @Label("Region X Position")
+   public final int regionPosX;
+   @Name("regionPosZ")
+   @Label("Region Z Position")
+   public final int regionPosZ;
+   @Name("localPosX")
+   @Label("Local X Position")
+   public final int localChunkPosX;
+   @Name("localPosZ")
+   @Label("Local Z Position")
+   public final int localChunkPosZ;
+   @Name("chunkPosX")
+   @Label("Chunk X Position")
+   public final int chunkPosX;
+   @Name("chunkPosZ")
+   @Label("Chunk Z Position")
+   public final int chunkPosZ;
+   @Name("level")
+   @Label("Level Id")
+   public final String levelId;
+   @Name("dimension")
+   @Label("Dimension")
+   public final String dimension;
+   @Name("type")
+   @Label("Type")
+   public final String type;
+   @Name("compression")
+   @Label("Compression")
+   public final String compression;
+   @Name("bytes")
+   @Label("Bytes")
+   public final int bytes;
+
+   public boj(dxp $$0, dcy $$1, dxo $$2, int $$3) {
+      this.regionPosX = $$1.h();
+      this.regionPosZ = $$1.i();
+      this.localChunkPosX = $$1.j();
+      this.localChunkPosZ = $$1.k();
+      this.chunkPosX = $$1.e;
+      this.chunkPosZ = $$1.f;
+      this.levelId = $$0.a();
+      this.dimension = $$0.b().a().toString();
+      this.type = $$0.c();
+      this.compression = "standard:" + $$2.b();
+      this.bytes = $$3;
+   }
+
+   public static class a {
+      public static final String a = "regionPosX";
+      public static final String b = "regionPosZ";
+      public static final String c = "localPosX";
+      public static final String d = "localPosZ";
+      public static final String e = "chunkPosX";
+      public static final String f = "chunkPosZ";
+      public static final String g = "level";
+      public static final String h = "dimension";
+      public static final String i = "type";
+      public static final String j = "compression";
+      public static final String k = "bytes";
+
+      private a() {
       }
    }
 }

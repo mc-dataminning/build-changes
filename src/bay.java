@@ -1,19 +1,23 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.List;
 
-public class bay extends bfn {
-   public bay(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", bgr.s, "DUMMY");
+public class bay extends bba {
+   private static final List<String> a = List.of("generic.", "horse.", "player.", "zombie.");
+
+   public bay(Schema $$0) {
+      super($$0, "AttributeIdPrefixFix", bay::a);
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.set("keepPacked", $$0.createBoolean(true));
-   }
+   private static String a(String $$0) {
+      String $$1 = biw.a($$0);
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bay::a);
+      for (String $$2 : a) {
+         String $$3 = biw.a($$2);
+         if ($$1.startsWith($$3)) {
+            return "minecraft:" + $$1.substring($$3.length());
+         }
+      }
+
+      return $$0;
    }
 }

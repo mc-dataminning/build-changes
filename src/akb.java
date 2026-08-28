@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface akb extends agr, ajv {
+   @Override
+   default vy b() {
+      return vy.c;
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface akb {
+   void a(akc var1);
 }

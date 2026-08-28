@@ -1,5 +1,5 @@
-public class afv implements zg<abu> {
-   public static final yx<vw, afv> a = zg.a(afv::a, afv::new);
+public class afv implements zk<abz> {
+   public static final zb<wa, afv> a = zk.a(afv::a, afv::new);
    private final int b;
    private final int c;
    private final int d;
@@ -10,24 +10,24 @@ public class afv implements zg<abu> {
       this.d = $$2;
    }
 
-   private afv(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-      this.d = $$0.l();
+   private afv(wa $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
+      this.d = $$0.readInt();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-      $$0.c(this.d);
+   private void a(wa $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
+      $$0.q(this.d);
    }
 
    @Override
-   public zi<afv> a() {
-      return agg.aY;
+   public zm<afv> a() {
+      return ago.aR;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 

@@ -1,49 +1,33 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efx extends efu {
-   public static final MapCodec<efx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(bpw.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, efx::new)
+public record efx(int b, int c, int d, int e, int f, bqp g, float h) implements efg {
+   public static final Codec<efx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(efx::a),
+               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(efx::b),
+               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(efx::c),
+               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(efx::d),
+               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(efx::f),
+               bqp.c.fieldOf("extra_rare_growths").forGetter(efx::g),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(efx::h)
+            )
+            .apply($$0, efx::new)
    );
-   private final bpw b;
 
-   public efx(bpw $$0, bpw $$1, bpw $$2) {
-      super($$0, $$1);
-      this.b = $$2;
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected efv<?> a() {
-      return efv.h;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(ddc $$0, efu.b $$1, ayw $$2, efe $$3, int $$4, efu.a $$5, int $$6, int $$7, int $$8) {
-      jd $$9 = $$5.a();
-      int $$10 = 0;
-
-      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
-         int $$12 = $$9.v() - $$11;
-         int $$13 = $$7 + $$5.b() + ayo.d((float)$$12 / (float)$$6 * 3.5F);
-         int $$14;
-         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
-            $$14 = $$13 + 1;
-         } else {
-            $$14 = $$13;
-         }
-
-         this.a($$0, $$1, $$2, $$3, new jd($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
-         $$10 = $$13;
-      }
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   public int a(ayw $$0, int $$1, efe $$2) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   protected boolean a(ayw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public int d() {
+      return this.e;
    }
 }

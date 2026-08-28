@@ -1,147 +1,105 @@
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+public class cox extends cnx {
+   private static final akg<Boolean> e = akk.a(cox.class, aki.k);
 
-public interface cox extends bqk, bqv {
-   exc dm();
+   public cox(btq<? extends cox> $$0, dds $$1) {
+      super($$0, $$1);
+   }
 
-   ewx cK();
-
-   @Nullable
-   akq<erw> B();
-
-   void a(@Nullable akq<erw> var1);
-
-   long C();
-
-   void a(long var1);
-
-   jv<cuq> D();
-
-   void E();
-
-   dcw dO();
-
-   boolean dJ();
+   public cox(dds $$0, buf $$1, eye $$2) {
+      super(btq.br, $$1, $$2, $$0);
+   }
 
    @Override
-   default boolean c() {
-      return this.g();
+   protected float t() {
+      return this.w() ? 0.73F : super.t();
    }
 
-   default void a(ub $$0, jo.a $$1) {
-      if (this.B() != null) {
-         $$0.a("LootTable", this.B().a().toString());
-         if (this.C() != 0L) {
-            $$0.a("LootTableSeed", this.C());
+   @Override
+   public boolean bV() {
+      return false;
+   }
+
+   @Override
+   public float a(ddk $$0, dcx $$1, je $$2, dua $$3, eqb $$4, float $$5) {
+      return this.w() && cjm.c($$3) ? Math.min(0.8F, $$5) : $$5;
+   }
+
+   @Override
+   protected void a(eyb $$0) {
+      super.a($$0);
+      if (this.dS() instanceof arg $$1) {
+         btj var8 = $$0.a();
+         boolean $$7;
+         if (this.s() instanceof buf $$5) {
+            bsb $$6 = this.dT().a(this, $$5);
+            $$7 = var8.a($$6, 8.0F);
+            if ($$7) {
+               if (var8.bI()) {
+                  day.a($$1, var8, $$6);
+               } else {
+                  $$5.c(5.0F);
+               }
+            }
+         } else {
+            $$7 = var8.a(this.dT().q(), 5.0F);
          }
-      } else {
-         bql.a($$0, this.D(), $$1);
-      }
-   }
 
-   default void b(ub $$0, jo.a $$1) {
-      this.E();
-      if ($$0.b("LootTable", 8)) {
-         this.a(akq.a(lu.bc, akr.a($$0.l("LootTable"))));
-         this.a($$0.i("LootTableSeed"));
-      } else {
-         bql.b($$0, this.D(), $$1);
-      }
-   }
+         if ($$7 && var8 instanceof buf $$9) {
+            int $$10 = 0;
+            if (this.dS().am() == brh.c) {
+               $$10 = 10;
+            } else if (this.dS().am() == brh.d) {
+               $$10 = 40;
+            }
 
-   default void a(brk $$0, dcw $$1, bsr $$2) {
-      if ($$1.ab().b(dcs.i)) {
-         bqn.a($$1, $$2, this);
-         if (!$$1.B) {
-            bsr $$3 = $$0.c();
-            if ($$3 != null && $$3.am() == bsx.by) {
-               clo.a((cmx)$$3, true);
+            if ($$10 > 0) {
+               $$9.b(new bsq(bss.t, 20 * $$10, 1), this.E());
             }
          }
       }
    }
 
-   default bqr c_(cmx $$0) {
-      $$0.a(this);
-      return !$$0.dO().B ? bqr.c : bqr.a;
-   }
-
-   default void f(@Nullable cmx $$0) {
-      MinecraftServer $$1 = this.dO().o();
-      if (this.B() != null && $$1 != null) {
-         erw $$2 = $$1.be().b(this.B());
-         if ($$0 != null) {
-            an.Q.a((aqv)$$0, this.B());
-         }
-
-         this.a(null);
-         eru.a $$3 = new eru.a((aqu)this.dO()).a(eun.f, this.dm());
-         if ($$0 != null) {
-            $$3.a($$0.gu()).a(eun.a, $$0);
-         }
-
-         $$2.a(this, $$3.a(eum.c), this.C());
+   @Override
+   protected void a(eyc $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         this.dS().a(this, this.dx(), this.dz(), this.dD(), 1.0F, false, dds.a.c);
+         this.as();
       }
    }
 
-   default void f() {
-      this.f(null);
-      this.D().clear();
+   @Override
+   public boolean a(bsb $$0, float $$1) {
+      return false;
    }
 
-   default boolean g() {
-      for (cuq $$0 : this.D()) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
+   @Override
+   protected void a(akk.a $$0) {
+      $$0.a(e, false);
    }
 
-   default cuq e_(int $$0) {
-      this.f(null);
-      cuq $$1 = this.D().get($$0);
-      if ($$1.e()) {
-         return cuq.l;
-      } else {
-         this.D().set($$0, cuq.l);
-         return $$1;
-      }
+   public boolean w() {
+      return this.am.a(e);
    }
 
-   default cuq f_(int $$0) {
-      this.f(null);
-      return this.D().get($$0);
+   public void a(boolean $$0) {
+      this.am.a(e, $$0);
    }
 
-   default cuq b(int $$0, int $$1) {
-      this.f(null);
-      return bql.a(this.D(), $$0, $$1);
+   @Override
+   protected boolean o() {
+      return false;
    }
 
-   default void c(int $$0, cuq $$1) {
-      this.f(null);
-      this.D().set($$0, $$1);
-      $$1.f(this.e_($$1));
+   @Override
+   public void b(uf $$0) {
+      super.b($$0);
+      $$0.a("dangerous", this.w());
    }
 
-   default bug g_(final int $$0) {
-      return $$0 >= 0 && $$0 < this.b() ? new bug() {
-         @Override
-         public cuq a() {
-            return cox.this.f_($$0);
-         }
-
-         @Override
-         public boolean a(cuq $$0x) {
-            cox.this.c($$0, $$0);
-            return true;
-         }
-      } : bug.a;
-   }
-
-   default boolean g(cmx $$0) {
-      return !this.dJ() && $$0.a(this.cK(), 4.0);
+   @Override
+   public void a(uf $$0) {
+      super.a($$0);
+      this.a($$0.q("dangerous"));
    }
 }

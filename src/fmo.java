@@ -1,32 +1,16 @@
-public interface fmo {
-   fmq a();
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import javax.annotation.Nullable;
 
-   public static record a(fmq a) implements fmo {
-      @Override
-      public fmq a() {
-         return this.a.a() == fmp.b ? this.a : fmq.b;
-      }
-
-      public fmq b() {
-         return this.a;
-      }
+public class fmo implements fao {
+   @Nullable
+   @Override
+   public fan a(int $$0) {
+      return fmy.b;
    }
 
-   public static class b implements fmo {
-      @Override
-      public fmq a() {
-         return fmq.b;
-      }
-   }
-
-   public static record c(boolean a) implements fmo {
-      @Override
-      public fmq a() {
-         return this.a ? fmq.b : fmq.a;
-      }
-
-      public boolean b() {
-         return this.a;
-      }
+   @Override
+   public IntSet a() {
+      return IntSets.EMPTY_SET;
    }
 }

@@ -1,22 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class enj extends enq {
-   public final awu<dfy> a;
-   public static final MapCodec<enj> b = awu.b(lu.f).xmap(enj::new, $$0 -> $$0.a).fieldOf("value");
+public class enj extends eko {
+   public static final MapCodec<enj> d = a(enj::new);
 
-   public enj(awu<dfy> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public ent.c a(dcz $$0, jd $$1, jd $$2, ent.c $$3, ent.c $$4, enp $$5) {
-      return ece.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public enj(eko.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected ens<?> a() {
-      return ens.n;
+   public Optional<eko.b> a(eko.a $$0) {
+      return a($$0, dzw.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(elg $$0, eko.a $$1) {
+      $$0.a(new eni($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public ekx<?> e() {
+      return ekx.o;
    }
 }

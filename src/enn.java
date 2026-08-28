@@ -1,9 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class enn {
-   public static final Codec<enn> c = lt.m.r().dispatch("predicate_type", enn::a, eno::codec);
+public class enn extends eok {
+   public static final MapCodec<enn> a = MapCodec.unit(() -> enn.b);
+   public static final enn b = new enn();
 
-   public abstract boolean a(dtc var1, ayw var2);
+   private enn() {
+   }
 
-   protected abstract eno<?> a();
+   @Override
+   public boolean a(dua $$0, azk $$1) {
+      return true;
+   }
+
+   @Override
+   protected eol<?> a() {
+      return eol.a;
+   }
 }

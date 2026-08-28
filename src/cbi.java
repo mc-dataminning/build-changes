@@ -1,47 +1,48 @@
-public class cbi extends cam {
-   private final chi a;
-   private int b;
+import java.util.EnumSet;
 
-   public cbi(chi $$0) {
+public class cbi extends cbc {
+   private final buh a;
+   private buf b;
+   private final float c;
+
+   public cbi(buh $$0, float $$1) {
       this.a = $$0;
-      this.a($$0);
+      this.c = $$1;
+      this.a(EnumSet.of(cbc.a.c, cbc.a.a));
    }
 
    @Override
-   public void d() {
-      this.a.gP();
-      this.h();
-   }
-
-   private void h() {
-      avo $$0 = this.a.gO();
-      if ($$0 != null) {
-         this.a.a($$0);
+   public boolean b() {
+      if (this.a.cV()) {
+         return false;
+      } else {
+         this.b = this.a.m();
+         if (this.b == null) {
+            return false;
+         } else {
+            double $$0 = this.a.g(this.b);
+            if ($$0 < 4.0 || $$0 > 16.0) {
+               return false;
+            } else {
+               return !this.a.aH() ? false : this.a.dV().a(b(5)) == 0;
+            }
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return false;
+      return !this.a.aH();
    }
 
    @Override
-   public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dR().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fc() && this.a.dR().a(10) == 0;
-      } else {
-         return false;
+   public void d() {
+      eye $$0 = this.a.dv();
+      eye $$1 = new eye(this.b.dx() - this.a.dx(), 0.0, this.b.dD() - this.a.dD());
+      if ($$1.h() > 1.0E-7) {
+         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
       }
-   }
 
-   private void a(chi $$0) {
-      this.b = -$$0.gT();
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
+      this.a.n($$1.d, (double)this.c, $$1.f);
    }
 }

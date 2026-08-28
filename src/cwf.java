@@ -1,36 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class cwf extends cul {
-   public static final int a = 160;
-
-   public cwf(cul.a $$0) {
-      super($$0);
+public class cwf extends cwz {
+   public cwf(dgv $$0, dgv $$1, cvg.a $$2) {
+      super($$0, $$1, $$2, jj.a);
    }
 
    @Override
-   public void a(cuq $$0, cul.b $$1, List<wz> $$2, cwm $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$3.b()) {
-         List<brz> $$4 = new ArrayList<>();
-         cxw $$5 = $$0.a(kq.H, cxw.a);
-
-         for (cxw.a $$6 : $$5.a()) {
-            $$4.add($$6.a());
-         }
-
-         cwu.a($$4, $$2::add, 1.0F, $$1.b());
-      }
+   public xd n(cvl $$0) {
+      cyn $$1 = $$0.a(kr.Y);
+      return (xd)($$1 != null && $$1.c().isPresent() ? xd.a(this.a() + ".named", $$1.c().get()) : super.n($$0));
    }
 
    @Override
-   public cuq a(cuq $$0, dcw $$1, btn $$2) {
-      cxw $$3 = $$0.a(kq.H, cxw.a);
-
-      for (cxw.a $$4 : $$3.a()) {
-         $$2.b($$4.a());
+   public void m(cvl $$0) {
+      cyn $$1 = $$0.a(kr.Y);
+      if ($$1 != null && !$$1.b()) {
+         $$1.a().thenAcceptAsync($$1x -> $$0.b(kr.Y, $$1x), dss.a);
       }
-
-      return super.a($$0, $$1, $$2);
    }
 }

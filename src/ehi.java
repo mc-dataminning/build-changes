@@ -1,77 +1,24 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class ehi extends ehm {
-   public static final MapCodec<ehi> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehi::new));
+public class ehi<P extends ehh> {
+   public static final ehi<ehq> a = a("simple_state_provider", ehq.b);
+   public static final ehi<ehr> b = a("weighted_state_provider", ehr.b);
+   public static final ehi<ehm> c = a("noise_threshold_provider", ehm.b);
+   public static final ehi<ehl> d = a("noise_provider", ehl.g);
+   public static final ehi<ehj> e = a("dual_noise_provider", ehj.b);
+   public static final ehi<eho> f = a("rotated_block_provider", eho.b);
+   public static final ehi<ehn> g = a("randomized_int_state_provider", ehn.b);
+   private final MapCodec<P> h;
 
-   public ehi(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends ehh> ehi<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.T, $$0, new ehi<>($$1));
    }
 
-   @Override
-   protected ehn<?> a() {
-      return ehn.b;
+   private ehi(MapCodec<P> $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public List<efu.a> a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, int $$3, jd $$4, efe $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<efu.a> $$6 = Lists.newArrayList();
-      ji $$7 = ji.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      jd.a $$10 = new jd.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new efu.a(new jd($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      ji $$16 = ji.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new efu.a(new jd($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+   public MapCodec<P> a() {
+      return this.h;
    }
 }

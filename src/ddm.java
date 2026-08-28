@@ -1,92 +1,31 @@
-public interface ddm extends dcc {
-   ji[] C = ji.values();
+public class ddm {
+   private static int[] a = new int[65536];
 
-   default int a(jd $$0, ji $$1) {
-      return this.a_($$0).c(this, $$0, $$1);
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   default int e_(jd $$0) {
-      int $$1 = 0;
-      $$1 = Math.max($$1, this.a($$0.e(), ji.a));
-      if ($$1 >= 15) {
-         return $$1;
-      } else {
-         $$1 = Math.max($$1, this.a($$0.d(), ji.b));
-         if ($$1 >= 15) {
-            return $$1;
-         } else {
-            $$1 = Math.max($$1, this.a($$0.f(), ji.c));
-            if ($$1 >= 15) {
-               return $$1;
-            } else {
-               $$1 = Math.max($$1, this.a($$0.g(), ji.d));
-               if ($$1 >= 15) {
-                  return $$1;
-               } else {
-                  $$1 = Math.max($$1, this.a($$0.h(), ji.e));
-                  if ($$1 >= 15) {
-                     return $$1;
-                  } else {
-                     $$1 = Math.max($$1, this.a($$0.i(), ji.f));
-                     return $$1 >= 15 ? $$1 : $$1;
-                  }
-               }
-            }
-         }
-      }
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   default int a(jd $$0, ji $$1, boolean $$2) {
-      dtc $$3 = this.a_($$0);
-      if ($$2) {
-         return dia.m($$3) ? this.a($$0, $$1) : 0;
-      } else if ($$3.a(dga.ha)) {
-         return 15;
-      } else if ($$3.a(dga.cw)) {
-         return $$3.c(dmb.f);
-      } else {
-         return $$3.m() ? this.a($$0, $$1) : 0;
-      }
+   public static int a() {
+      return -10380959;
    }
 
-   default boolean b(jd $$0, ji $$1) {
-      return this.c($$0, $$1) > 0;
+   public static int b() {
+      return -8345771;
    }
 
-   default int c(jd $$0, ji $$1) {
-      dtc $$2 = this.a_($$0);
-      int $$3 = $$2.b(this, $$0, $$1);
-      return $$2.g(this, $$0) ? Math.max($$3, this.e_($$0)) : $$3;
+   public static int c() {
+      return -12012264;
    }
 
-   default boolean C(jd $$0) {
-      if (this.c($$0.e(), ji.a) > 0) {
-         return true;
-      } else if (this.c($$0.d(), ji.b) > 0) {
-         return true;
-      } else if (this.c($$0.f(), ji.c) > 0) {
-         return true;
-      } else if (this.c($$0.g(), ji.d) > 0) {
-         return true;
-      } else {
-         return this.c($$0.h(), ji.e) > 0 ? true : this.c($$0.i(), ji.f) > 0;
-      }
-   }
-
-   default int D(jd $$0) {
-      int $$1 = 0;
-
-      for (ji $$2 : C) {
-         int $$3 = this.c($$0.a($$2), $$2);
-         if ($$3 >= 15) {
-            return 15;
-         }
-
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
-      }
-
-      return $$1;
+   public static int d() {
+      return -7158200;
    }
 }

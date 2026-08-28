@@ -1,53 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eej implements eei {
-   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
-   public static final Codec<eej> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dyv.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
-               dyx.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
-               dyw.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
-               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
-               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
-               bpw.b(1, 20).fieldOf("outer_wall_distance").orElse(bqc.a(4, 5)).forGetter($$0x -> $$0x.i),
-               bpw.b(1, 20).fieldOf("distribution_points").orElse(bqc.a(3, 4)).forGetter($$0x -> $$0x.j),
-               bpw.b(0, 10).fieldOf("point_offset").orElse(bqc.a(1, 2)).forGetter($$0x -> $$0x.k),
-               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
-               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
-               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
-               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
-            )
-            .apply($$0, eej::new)
-   );
-   public final dyv c;
-   public final dyx d;
-   public final dyw e;
-   public final double f;
-   public final double g;
-   public final boolean h;
-   public final bpw i;
-   public final bpw j;
-   public final bpw k;
-   public final int l;
-   public final int n;
-   public final double o;
-   public final int p;
+public class eej extends edc<efy> {
+   public eej(Codec<efy> $$0) {
+      super($$0);
+   }
 
-   public eej(dyv $$0, dyx $$1, dyw $$2, double $$3, double $$4, boolean $$5, bpw $$6, bpw $$7, bpw $$8, int $$9, int $$10, double $$11, int $$12) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
-      this.n = $$10;
-      this.o = $$11;
-      this.p = $$12;
+   @Override
+   public boolean a(ede<efy> $$0) {
+      efy $$1 = $$0.f();
+      dep $$2 = $$0.b();
+      je $$3 = $$0.e();
+      dua $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof djd) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
+
+            djd.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

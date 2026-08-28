@@ -1,76 +1,112 @@
-public class ctq extends cul {
-   public ctq(cul.a $$0) {
+public class ctq extends cvg {
+   public static final int a = 10;
+   private static final int b = 200;
+
+   public ctq(cvg.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqr a(cyf $$0) {
-      dcw $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      dtc $$3 = $$1.a_($$2);
-      if (!$$3.a(dga.fy) || $$3.c(din.c)) {
-         return bqr.e;
-      } else if ($$1.B) {
-         return bqr.a;
-      } else {
-         dtc $$4 = $$3.a(din.c, Boolean.valueOf(true));
-         dfy.a($$3, $$4, $$1, $$2);
-         $$1.a($$2, $$4, 2);
-         $$1.c($$2, dga.fy);
-         $$0.n().h(1);
-         $$1.c(1503, $$2, 0);
-         dth.b $$5 = din.b().a($$1, $$2);
-         if ($$5 != null) {
-            jd $$6 = $$5.a().b(-3, 0, -3);
+   public brk a(cyy $$0) {
+      cnp $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).c() == eyc.a.b) {
+         $$1.c($$0.p());
+      }
 
-            for (int $$7 = 0; $$7 < 3; $$7++) {
-               for (int $$8 = 0; $$8 < 3; $$8++) {
-                  $$1.a($$6.b($$7, 0, $$8), dga.fx.o(), 2);
+      return brk.c;
+   }
+
+   @Override
+   public cxh b(cvl $$0) {
+      return cxh.j;
+   }
+
+   @Override
+   public int a(cvl $$0, buf $$1) {
+      return 200;
+   }
+
+   @Override
+   public void a(dds $$0, buf $$1, cvl $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cnp $$4) {
+         eyc $$6 = this.a($$4);
+         if ($$6 instanceof eya $$7 && $$6.c() == eyc.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               je $$11 = $$7.a();
+               dua $$12 = $$0.a_($$11);
+               btz $$13 = $$1.fw() == brj.a ? $$4.fu() : $$4.fu().e();
+               if ($$12.D() && $$12.o() != dnc.a) {
+                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
+               }
+
+               awc $$15;
+               if ($$12.b() instanceof dha $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = awd.cS;
+               }
+
+               $$0.a($$4, $$11, $$15, awe.e);
+               if (!$$0.w_() && $$0.c_($$11) instanceof dri $$17) {
+                  boolean $$18 = $$17.a($$0.aa(), $$4, $$7.b());
+                  if ($$18) {
+                     btr $$19 = $$2.equals($$4.a(btr.b)) ? btr.b : btr.a;
+                     $$2.a(1, $$1, $$19);
+                  }
                }
             }
 
-            $$1.b(1038, $$6.b(1, 0, 1), 0);
+            return;
          }
 
-         return bqr.c;
+         $$1.fA();
+      } else {
+         $$1.fA();
       }
    }
 
-   @Override
-   public int a(cuq $$0, btn $$1) {
-      return 0;
+   private eyc a(cnp $$0) {
+      return cok.a($$0, bto.h, $$0.gC());
    }
 
-   @Override
-   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      cuq $$3 = $$1.b($$2);
-      ewy $$4 = a($$0, $$1, dcf.b.a);
-      if ($$4.c() == exa.a.b && $$0.a_($$4.a()).a(dga.fy)) {
-         return bqs.c($$3);
-      } else {
-         $$1.c($$2);
-         if ($$0 instanceof aqu $$5) {
-            jd $$6 = $$5.a(awq.a, $$1.do(), 100, false);
-            if ($$6 != null) {
-               cni $$7 = new cni($$0, $$1.dt(), $$1.e(0.5), $$1.dz());
-               $$7.a($$3);
-               $$7.a($$6);
-               $$0.a(dxz.K, $$7.dm(), dxz.a.a($$1));
-               $$0.b($$7);
-               if ($$1 instanceof aqv $$8) {
-                  an.n.a($$8, $$6);
-               }
+   private void a(dds $$0, eya $$1, dua $$2, eye $$3, btz $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == btz.b ? 1 : -1;
+      int $$7 = $$0.C_().b(7, 12);
+      lf $$8 = new lf(ln.b, $$2);
+      jj $$9 = $$1.b();
+      ctq.a $$10 = ctq.a.a($$3, $$9);
+      eye $$11 = $$1.e();
 
-               float $$9 = ayo.i($$0.z.i(), 0.33F, 0.5F);
-               $$0.a(null, $$1.dt(), $$1.dv(), $$1.dz(), avp.ii, avq.g, 1.0F, $$9);
-               $$3.a(1, $$1);
-               $$1.b(avz.c.b(this));
-               $$1.a($$2, true);
-               return bqs.a($$3);
-            }
-         }
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.d - (double)($$9 == jj.e ? 1.0E-6F : 0.0F),
+            $$11.e,
+            $$11.f - (double)($$9 == jj.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.C_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.C_().j()
+         );
+      }
+   }
 
-         return bqs.b($$3);
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
+
+      public static ctq.a a(eye $$0, jj $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new ctq.a($$0.c(), 0.0, -$$0.a());
+            case c -> new ctq.a(1.0, 0.0, -0.1);
+            case d -> new ctq.a(-1.0, 0.0, 0.1);
+            case e -> new ctq.a(-0.1, 0.0, -1.0);
+            case f -> new ctq.a(0.1, 0.0, 1.0);
+         };
       }
    }
 }

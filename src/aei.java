@@ -1,36 +1,79 @@
-public record aei(agd e, byte f) implements zg<abu> {
-   public static final yx<wk, aei> a = zg.a(aei::a, aei::new);
-   public static final byte b = 1;
-   public static final byte c = 2;
-   public static final byte d = 3;
+import java.util.Set;
 
-   private aei(wk $$0) {
-      this(new agd($$0), $$0.readByte());
+public class aei implements zk<abz> {
+   public static final zb<wa, aei> a = zk.a(aei::a, aei::new);
+   private final double b;
+   private final double c;
+   private final double d;
+   private final float e;
+   private final float f;
+   private final Set<bus> g;
+   private final int h;
+
+   public aei(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bus> $$5, int $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   private void a(wk $$0) {
-      this.e.a($$0);
-      $$0.k(this.f);
+   private aei(wa $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
+      this.d = $$0.readDouble();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = bus.a($$0.readUnsignedByte());
+      this.h = $$0.l();
+   }
+
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.a(this.e);
+      $$0.a(this.f);
+      $$0.l(bus.a(this.g));
+      $$0.c(this.h);
    }
 
    @Override
-   public zi<aei> a() {
-      return agg.al;
+   public zm<aei> a() {
+      return ago.ai;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public boolean a(byte $$0) {
-      return (this.f & $$0) != 0;
+   public double b() {
+      return this.b;
    }
 
-   public agd b() {
+   public double e() {
+      return this.c;
+   }
+
+   public double f() {
+      return this.d;
+   }
+
+   public float g() {
       return this.e;
    }
 
-   public byte e() {
+   public float h() {
       return this.f;
+   }
+
+   public int i() {
+      return this.h;
+   }
+
+   public Set<bus> j() {
+      return this.g;
    }
 }

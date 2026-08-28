@@ -1,46 +1,37 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.function.IntFunction;
 
-public abstract class fid extends fik {
-   protected static final int e = 2;
-   private static final fjz a = new fjz(akr.b("widget/button"), akr.b("widget/button_disabled"), akr.b("widget/button_highlighted"));
+public enum fid {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public fid(int $$0, int $$1, int $$2, int $$3, wz $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   private static final IntFunction<fid> e = axt.a(fid::a, values(), axt.a.b);
+   private final int f;
+   private final xd g;
+
+   private fid(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = xd.c($$1);
    }
 
-   public abstract void b();
-
-   @Override
-   protected void b(fhz $$0, int $$1, int $$2, float $$3) {
-      fgo $$4 = fgo.Q();
-      $$0.a(1.0F, 1.0F, 1.0F, this.l);
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      $$0.a(a.a(this.j, this.B()), this.D(), this.E(), this.y(), this.w());
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, $$5 | ayo.f(this.l * 255.0F) << 24);
+   public int a() {
+      return this.f;
    }
 
-   public void a(fhz $$0, fhx $$1, int $$2) {
-      this.a($$0, $$1, 2, $$2);
+   public xd b() {
+      return this.g;
    }
 
-   @Override
-   public void a(double $$0, double $$1) {
-      this.b();
+   public static fid a(int $$0) {
+      return e.apply($$0);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (!this.j || !this.k) {
-         return false;
-      } else if (fmn.a($$0)) {
-         this.a(fgo.Q().aj());
-         this.b();
-         return true;
-      } else {
-         return false;
-      }
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

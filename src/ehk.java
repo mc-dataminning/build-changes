@@ -1,41 +1,30 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ehk extends ehj {
-   public static final MapCodec<ehk> b = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehk::new));
+public abstract class ehk extends ehh {
+   protected final long c;
+   protected final epe.a d;
+   protected final float e;
+   protected final epe f;
 
-   public ehk(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected static <P extends ehk> P3<Mu<P>, Long, epe.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         epe.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ayl.m.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   @Override
-   protected ehn<?> a() {
-      return ehn.d;
+   protected ehk(long $$0, epe.a $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = epe.b(new eav(new dzx($$0)), $$1);
    }
 
-   @Override
-   public List<efu.a> a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, int $$3, jd $$4, efe $$5) {
-      List<efu.a> $$6 = Lists.newArrayList();
-      $$6.addAll(super.a($$0, $$1, $$2, $$3, $$4, $$5));
-
-      for (int $$7 = $$3 - 2 - $$2.a(4); $$7 > $$3 / 2; $$7 -= 2 + $$2.a(4)) {
-         float $$8 = $$2.i() * (float) (Math.PI * 2);
-         int $$9 = 0;
-         int $$10 = 0;
-
-         for (int $$11 = 0; $$11 < 5; $$11++) {
-            $$9 = (int)(1.5F + ayo.b($$8) * (float)$$11);
-            $$10 = (int)(1.5F + ayo.a($$8) * (float)$$11);
-            jd $$12 = $$4.b($$9, $$7 - 3 + $$11 / 2, $$10);
-            this.b($$0, $$1, $$2, $$12, $$5);
-         }
-
-         $$6.add(new efu.a($$4.b($$9, $$7, $$10), -2, false));
-      }
-
-      return $$6;
+   protected double a(je $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

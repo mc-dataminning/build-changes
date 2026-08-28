@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.MapCodec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface eui {
+public record eui<T extends euh>(MapCodec<T> a) {
 }

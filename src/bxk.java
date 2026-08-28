@@ -1,26 +1,54 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 
 public class bxk {
-   public static bvi<btn> a() {
-      return byu.a((Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$0 -> $$0.a((byx<btn>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               buq<?> $$3 = $$1.dT();
-               coi $$4 = $$0x.d($$1.do());
-               if ($$4 != null) {
-                  if ($$4.c() && !$$4.b()) {
-                     $$3.b(com.h);
-                     $$3.a(com.h);
-                  } else {
-                     $$3.b(com.i);
-                     $$3.a(com.i);
-                  }
-               }
+   public static bvy<cnc> a() {
+      return bzk.a(
+         (Function<bzk.b<cnc>, ? extends App<bzk.c<cnc>, bzn<cnc>>>)($$0 -> $$0.group($$0.b(cdi.c), $$0.b(cdi.g))
+               .apply(
+                  $$0,
+                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                        jm $$6 = $$0.b($$1);
+                        $$3.y()
+                           .c($$6.b())
+                           .ifPresent(
+                              $$4x -> $$0.<List<buf>>b($$2)
+                                    .stream()
+                                    .filter($$1xxx -> $$1xxx instanceof cnc && $$1xxx != $$4)
+                                    .map($$0xxxx -> (cnc)$$0xxxx)
+                                    .filter(buf::bI)
+                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
+                                    .reduce($$4, bxk::a)
+                           );
+                        return true;
+                     }
+               ))
+      );
+   }
 
-               return true;
-            }
-         }))));
+   private static cnc a(cnc $$0, cnc $$1) {
+      cnc $$2;
+      cnc $$3;
+      if ($$0.t() > $$1.t()) {
+         $$2 = $$0;
+         $$3 = $$1;
+      } else {
+         $$2 = $$1;
+         $$3 = $$0;
+      }
+
+      $$3.dX().b(cdi.c);
+      return $$2;
+   }
+
+   private static boolean a(jm $$0, jn<cfl> $$1, cnc $$2) {
+      Optional<jm> $$3 = $$2.dX().c(cdi.c);
+      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gy().b());
+   }
+
+   private static boolean a(jn<cfl> $$0, cnf $$1) {
+      return $$1.b().test($$0);
    }
 }

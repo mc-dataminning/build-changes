@@ -1,87 +1,111 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dnz extends dfy {
+public class dnz extends dgv implements dnx {
    public static final MapCodec<dnz> a = b(dnz::new);
-   public static final duc b = dts.aw;
-   protected static final float c = 6.0F;
-   protected static final exv d = dfy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+   public static final duy<dvi> b = duq.bh;
+   public static final dur c = duq.C;
+   protected static final eyx d = dgv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   protected static final eyx e = dgv.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
 
    @Override
-   public MapCodec<dnz> a() {
+   public MapCodec<? extends dnz> a() {
       return a;
    }
 
-   protected dnz(dtb.d $$0) {
+   public dnz(dtz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      this.l(this.o().b(b, dvi.b).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return d;
+   protected boolean g_(dua $$0) {
+      return $$0.c(b) != dvi.c;
    }
 
    @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      dvi $$4 = $$0.c(b);
+      switch ($$4) {
+         case c:
+            return eyu.b();
+         case a:
+            return e;
+         default:
+            return d;
+      }
+   }
+
+   @Nullable
+   @Override
+   public dua a(cyw $$0) {
+      je $$1 = $$0.a();
+      dua $$2 = $$0.q().a_($$1);
+      if ($$2.a(this)) {
+         return $$2.b(b, dvi.c).b(c, Boolean.valueOf(false));
+      } else {
+         eqb $$3 = $$0.q().b_($$1);
+         dua $$4 = this.o().b(b, dvi.b).b(c, Boolean.valueOf($$3.a() == eqc.c));
+         jj $$5 = $$0.k();
+         return $$5 != jj.a && ($$5 == jj.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dvi.a);
       }
    }
 
    @Override
-   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if ($$1.u($$2.d())) {
-         int $$4 = 1;
-
-         while ($$1.a_($$2.c($$4)).a(this)) {
-            $$4++;
-         }
-
-         if ($$4 < 3) {
-            int $$5 = $$0.c(b);
-            if ($$5 == 15) {
-               $$1.b($$2.d(), this.o());
-               $$1.a($$2, $$0.a(b, Integer.valueOf(0)), 4);
-            } else {
-               $$1.a($$2, $$0.a(b, Integer.valueOf($$5 + 1)), 4);
-            }
-         }
+   protected boolean a(dua $$0, cyw $$1) {
+      cvl $$2 = $$1.n();
+      dvi $$3 = $$0.c(b);
+      if ($$3 == dvi.c || !$$2.a(this.r())) {
+         return false;
+      } else if ($$1.c()) {
+         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
+         jj $$5 = $$1.k();
+         return $$3 == dvi.b ? $$5 == jj.b || $$4 && $$5.o().d() : $$5 == jj.a || !$$4 && $$5.o().d();
+      } else {
+         return true;
       }
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if (!$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
+   protected eqb b_(dua $$0) {
+      return $$0.c(c) ? eqc.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   public boolean a(ddt $$0, je $$1, dua $$2, eqb $$3) {
+      return $$2.c(b) != dvi.c ? dnx.super.a($$0, $$1, $$2, $$3) : false;
+   }
+
+   @Override
+   public boolean a(@Nullable cnp $$0, dcx $$1, je $$2, dua $$3, eqa $$4) {
+      return $$3.c(b) != dvi.c ? dnx.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$0.c(c)) {
+         $$3.a($$4, eqc.c, eqc.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      dtc $$3 = $$1.a_($$2.e());
-      if ($$3.a(this)) {
-         return true;
-      } else {
-         if ($$3.a(awe.ag) || $$3.a(awe.I)) {
-            jd $$4 = $$2.e();
-
-            for (ji $$5 : ji.c.a) {
-               dtc $$6 = $$1.a_($$4.a($$5));
-               epe $$7 = $$1.b_($$4.a($$5));
-               if ($$7.a(awk.a) || $$6.a(dga.kI)) {
-                  return true;
-               }
-            }
-         }
-
-         return false;
+   protected boolean a(dua $$0, eqq $$1) {
+      switch ($$1) {
+         case a:
+            return false;
+         case b:
+            return $$0.y().a(awy.a);
+         case c:
+            return false;
+         default:
+            return false;
       }
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b);
    }
 }

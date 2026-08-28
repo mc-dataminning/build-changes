@@ -1,47 +1,96 @@
-public class fqr {
-   public static final int a = 12;
-   private static final int f = 3;
-   public static final int b = 3;
-   public static final int c = 3;
-   public static final int d = 3;
-   public static final int e = 3;
-   private static final int g = -267386864;
-   private static final int h = 1347420415;
-   private static final int i = 1344798847;
+import javax.annotation.Nullable;
 
-   public static void a(fhz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      int $$6 = $$1 - 3;
-      int $$7 = $$2 - 3;
-      int $$8 = $$3 + 3 + 3;
-      int $$9 = $$4 + 3 + 3;
-      c($$0, $$6, $$7 - 1, $$8, $$5, -267386864);
-      c($$0, $$6, $$7 + $$9, $$8, $$5, -267386864);
-      b($$0, $$6, $$7, $$8, $$9, $$5, -267386864);
-      b($$0, $$6 - 1, $$7, $$9, $$5, -267386864);
-      b($$0, $$6 + $$8, $$7, $$9, $$5, -267386864);
-      a($$0, $$6, $$7 + 1, $$8, $$9, $$5, 1347420415, 1344798847);
+public class fqr extends fqi<cqy> {
+   private static final alb G = alb.b("container/cartography_table/error");
+   private static final alb H = alb.b("container/cartography_table/scaled_map");
+   private static final alb I = alb.b("container/cartography_table/duplicated_map");
+   private static final alb J = alb.b("container/cartography_table/map");
+   private static final alb K = alb.b("container/cartography_table/locked");
+   private static final alb L = alb.b("textures/gui/container/cartography_table.png");
+   private final gvt M = new gvt();
+
+   public fqr(cqy $$0, cno $$1, xd $$2) {
+      super($$0, $$1, $$2);
+      this.w -= 2;
    }
 
-   private static void a(fhz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, $$4 - 2, $$5, $$6, $$7);
-      a($$0, $$1 + $$3 - 1, $$2, $$4 - 2, $$5, $$6, $$7);
-      c($$0, $$1, $$2 - 1, $$3, $$5, $$6);
-      c($$0, $$1, $$2 - 1 + $$4 - 1, $$3, $$5, $$7);
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
-   private static void b(fhz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5);
+   @Override
+   protected void a(fjn $$0, float $$1, int $$2, int $$3) {
+      int $$4 = this.C;
+      int $$5 = this.D;
+      $$0.a(ghe::C, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      cvl $$6 = this.z.b(1).g();
+      boolean $$7 = $$6.a(cvo.ul);
+      boolean $$8 = $$6.a(cvo.qP);
+      boolean $$9 = $$6.a(cvo.fT);
+      cvl $$10 = this.z.b(0).g();
+      ert $$11 = $$10.a(kr.D);
+      boolean $$12 = false;
+      erv $$13;
+      if ($$11 != null) {
+         $$13 = cvx.a($$11, this.m.s);
+         if ($$13 != null) {
+            if ($$13.h) {
+               $$12 = true;
+               if ($$8 || $$9) {
+                  $$0.a(ghe::C, G, $$4 + 35, $$5 + 31, 28, 21);
+               }
+            }
+
+            if ($$8 && $$13.f >= 4) {
+               $$12 = true;
+               $$0.a(ghe::C, G, $$4 + 35, $$5 + 31, 28, 21);
+            }
+         }
+      } else {
+         $$13 = null;
+      }
+
+      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
    }
 
-   private static void a(fhz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + 1, $$2 + $$3, $$4, $$5, $$6);
+   private void a(fjn $$0, @Nullable ert $$1, @Nullable erv $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
+      int $$7 = this.C;
+      int $$8 = this.D;
+      if ($$4 && !$$6) {
+         $$0.a(ghe::C, H, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
+      } else if ($$3) {
+         $$0.a(ghe::C, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(ghe::C, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
+         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
+         $$0.c().b();
+      } else if ($$5) {
+         $$0.a(ghe::C, J, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1.0F);
+         $$0.a(ghe::C, K, $$7 + 118, $$8 + 60, 10, 14);
+         $$0.c().b();
+      } else {
+         $$0.a(ghe::C, J, $$7 + 67, $$8 + 13, 66, 66);
+         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+      }
    }
 
-   private static void c(fhz $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + 1, $$4, $$5);
-   }
-
-   private static void b(fhz $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$2, $$1 + $$3, $$2 + $$4, $$5, $$6);
+   private void a(fjn $$0, @Nullable ert $$1, @Nullable erv $$2, int $$3, int $$4, float $$5) {
+      if ($$1 != null && $$2 != null) {
+         $$0.c().a();
+         $$0.c().a((float)$$3, (float)$$4, 1.0F);
+         $$0.c().b($$5, $$5, 1.0F);
+         ggu $$6 = this.m.as();
+         $$6.a($$1, $$2, this.M);
+         $$6.a(this.M, $$0.c(), $$0.d(), true, 15728880);
+         $$0.c().b();
+      }
    }
 }

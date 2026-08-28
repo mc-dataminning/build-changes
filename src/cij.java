@@ -1,69 +1,57 @@
 import javax.annotation.Nullable;
 
-public class cij extends cic {
-   @Nullable
-   private exc b;
+public class cij extends chz {
+   private static final btm bZ = btq.bv.n().a(btl.a().a(btk.a, 0.0F, btq.bv.m() - 0.03125F, 0.0F)).a(0.5F);
 
-   public cij(cia $$0) {
-      super($$0);
+   public cij(btq<? extends cij> $$0, dds $$1) {
+      super($$0, $$1);
+   }
+
+   public static bvl.a q() {
+      return gQ().a(bvm.s, 15.0).a(bvm.v, 0.2F);
+   }
+
+   public static boolean c(btq<? extends cfv> $$0, ddt $$1, btp $$2, je $$3, azk $$4) {
+      return !btp.a($$2) ? cfv.b($$0, $$1, $$2, $$3, $$4) : btp.b($$2) || a($$1, $$3);
    }
 
    @Override
-   public void b() {
-      exc $$0 = this.a.H(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.dt();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dz();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         ayw $$5 = this.a.dR();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         exc $$9 = this.a.dr();
-         this.a.dO().a(lm.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
-      }
+   protected void a(azk $$0) {
+      this.g(bvm.o).a(a($$0::j));
    }
 
    @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = exc.c(this.a.dO().a(dyy.a.f, ecd.a(this.a.s())));
-      }
-
-      if (this.b.c(this.a.dt(), this.a.dv(), this.a.dz()) < 1.0) {
-         this.a.gh().b(ciq.f).j();
-         this.a.gh().a(ciq.g);
-      }
+   protected awc w() {
+      return awd.DG;
    }
 
    @Override
-   public float f() {
-      return 1.5F;
+   protected awc n_() {
+      return awd.DH;
    }
 
    @Override
-   public float h() {
-      float $$0 = (float)this.a.dr().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
+   protected awc d(bsb $$0) {
+      return awd.DI;
    }
 
    @Nullable
    @Override
-   public exc g() {
-      return this.b;
+   public btc a(arg $$0, btc $$1) {
+      return btq.bv.a($$0, btp.e);
    }
 
    @Override
-   public ciq<cij> i() {
-      return ciq.d;
+   public brk b(cnp $$0, brj $$1) {
+      return (brk)(!this.gF() ? brk.e : super.b($$0, $$1));
+   }
+
+   @Override
+   protected void gG() {
+   }
+
+   @Override
+   public btm e(bur $$0) {
+      return this.o_() ? bZ : super.e($$0);
    }
 }

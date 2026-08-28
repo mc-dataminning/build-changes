@@ -1,23 +1,19 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import java.util.Optional;
+import com.mojang.serialization.Dynamic;
 
-public class bia extends bfn {
+public class bia extends bgf {
    public bia(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Zombie Villager XP rebuild", bgr.B, "minecraft:zombie_villager");
+      super($$0, $$1, "StriderGravityFix", bhk.B, "minecraft:strider");
+   }
+
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("NoGravity").asBoolean(false) ? $$0.set("NoGravity", $$0.createBoolean(false)) : $$0;
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), $$0x -> {
-         Optional<Number> $$1 = $$0x.get("Xp").asNumber().result();
-         if ($$1.isEmpty()) {
-            int $$2 = $$0x.get("VillagerData").get("level").asInt(1);
-            return $$0x.set("Xp", $$0x.createInt(bhs.a($$2)));
-         } else {
-            return $$0x;
-         }
-      });
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

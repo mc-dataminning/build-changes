@@ -1,7 +1,10 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
-
-public interface gtd {
-   void a(Map<UUID, asl.c> var1, Consumer<asl.b> var2);
+public class gtd extends gts {
+   public float a;
+   public float b;
+   public boolean c;
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public cgf.v h = cgf.v.a;
 }

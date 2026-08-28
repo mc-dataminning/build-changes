@@ -1,53 +1,48 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class ehv extends ehx {
-   public static final MapCodec<ehv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dzs.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dzs.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ehv::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dzs d;
-   private final dzs e;
-   private final int f;
+public class ehv extends ehy {
+   public static final MapCodec<ehv> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ehv::new, $$0 -> $$0.d);
+   private static final jj b = jj.d;
+   private static final jj[] c = jj.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jj[]::new);
+   private final float d;
 
-   private ehv(dzs $$0, dzs $$1, int $$2) {
+   public ehv(float $$0) {
       this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static ehv a(dzs $$0, dzs $$1, int $$2) {
-      return new ehv($$0, $$1, $$2);
    }
 
    @Override
-   public int a(ayw $$0, dzv $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
-         return $$0.a($$4 + this.f) + $$2;
+   protected ehz<?> a() {
+      return ehz.d;
+   }
+
+   @Override
+   public void a(ehy.a $$0) {
+      azk $$1 = $$0.b();
+      if (!($$1.i() >= this.d)) {
+         List<je> $$2 = $$0.d();
+         List<je> $$3 = $$0.c();
+         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
+         List<je> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+         if (!$$5.isEmpty()) {
+            Collections.shuffle($$5);
+            Optional<je> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+            if (!$$6.isEmpty()) {
+               $$0.a($$6.get(), dgx.pe.o().b(dgp.b, b));
+               $$0.a().a($$6.get(), drg.H).ifPresent($$1x -> {
+                  int $$2x = 2 + $$1.a(2);
+
+                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                     $$1x.a(drb.c.a($$1.a(599)));
+                  }
+               });
+            }
+         }
       }
-   }
-
-   @Override
-   public ehy<?> a() {
-      return ehy.c;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

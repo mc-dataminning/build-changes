@@ -1,41 +1,50 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ddk {
-   private final List<ddk.a> a = Lists.newArrayList();
-
-   public void a(jd $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new ddk.a($$0, $$1));
-      }
+public interface ddk {
+   static bsb a(dds $$0, @Nullable btj $$1) {
+      return $$0.ak().d($$1, a($$1));
    }
 
-   public double b(jd $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (ddk.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   @Nullable
+   static buf a(@Nullable btj $$0) {
+      return switch ($$0) {
+         case null, default -> null;
+         case cka $$1 -> $$1.m();
+         case buf $$2 -> $$2;
+         case coi $$3 when $$3.s() instanceof buf $$4 -> $$4;
+      };
    }
 
-   static class a {
-      private final jd a;
-      private final double b;
+   ddk.a a();
 
-      public a(jd $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   @Nullable
+   buf b();
+
+   @Nullable
+   btj c();
+
+   float d();
+
+   eye e();
+
+   boolean f();
+
+   boolean g();
+
+   public static enum a {
+      a(false),
+      b(true),
+      c(true),
+      d(false);
+
+      private final boolean e;
+
+      private a(final boolean $$0) {
+         this.e = $$0;
       }
 
-      public double a(jd $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
+      public boolean a() {
+         return this.e;
       }
    }
 }

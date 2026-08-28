@@ -1,20 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record egd(egj b, float c) {
+public record egd(int b, int c, int d) implements efg {
    public static final Codec<egd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               egj.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+               ayl.l.fieldOf("spread_width").forGetter(egd::a), ayl.l.fieldOf("spread_height").forGetter(egd::b), ayl.l.fieldOf("max_height").forGetter(egd::c)
             )
             .apply($$0, egd::new)
    );
 
-   public egj a() {
+   public int a() {
       return this.b;
    }
 
-   public float b() {
+   public int b() {
       return this.c;
+   }
+
+   public int c() {
+      return this.d;
    }
 }

@@ -1,10 +1,28 @@
-public class awo {
-   public static final awu<cjd> a = a("placeable");
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
-   private awo() {
+public class awo {
+   protected final Object2IntMap<awk<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+
+   public awo() {
+      this.a.defaultReturnValue(0);
    }
 
-   private static awu<cjd> a(String $$0) {
-      return awu.a(lu.X, akr.b($$0));
+   public void b(cnp $$0, awk<?> $$1, int $$2) {
+      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
+      this.a($$0, $$1, $$3);
+   }
+
+   public void a(cnp $$0, awk<?> $$1, int $$2) {
+      this.a.put($$1, $$2);
+   }
+
+   public <T> int a(awm<T> $$0, T $$1) {
+      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   }
+
+   public int a(awk<?> $$0) {
+      return this.a.getInt($$0);
    }
 }

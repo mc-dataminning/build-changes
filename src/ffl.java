@@ -1,70 +1,79 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class ffl extends hct {
+   private static final xd a = xd.c("mco.selectServer.create");
+   private static final xd b = xd.c("mco.configure.world.name");
+   private static final xd c = xd.c("mco.configure.world.description");
+   private static final int B = 10;
+   private static final int C = 210;
+   private final fdf D;
+   private final fno E = new fno(this);
+   private fkj F;
+   private fkj G;
+   private final Runnable H;
 
-public class ffl extends ffn {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wz c = wz.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fod f;
-   private final String g;
+   public ffl(fdf $$0, feb $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
+   }
 
-   public ffl(long $$0, int $$1, String $$2, fod $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public ffl(fdf $$0, long $$1) {
+      super(a);
+      this.D = $$0;
+      this.H = () -> this.a($$1);
    }
 
    @Override
-   public void run() {
-      fby $$0 = fby.a();
-      int $$1 = 0;
+   public void aT_() {
+      this.E.a(this.l, this.p);
+      fns $$0 = this.E.c(fns.d()).a(10);
+      fka $$1 = fka.a(xc.j, $$0x -> this.H.run()).a();
+      $$1.j = false;
+      this.F = new fkj(this.p, 210, 20, b);
+      this.F.b($$1x -> $$1.j = !azz.h($$1x));
+      this.G = new fkj(this.p, 210, 20, c);
+      $$0.a(fnk.a(this.p, this.F, b));
+      $$0.a(fnk.a(this.p, this.G, c));
+      fns $$2 = this.E.b(fns.e().a(10));
+      $$2.a($$1);
+      $$2.a(fka.a(xc.k, $$0x -> this.d()).a());
+      this.E.a($$1x -> {
+         fjy var10000 = this.c($$1x);
+      });
+      this.c();
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   @Override
+   protected void aI_() {
+      this.b(this.F);
+   }
 
-            fdd $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
+   @Override
+   protected void c() {
+      this.E.a();
+   }
 
-            a(new fea(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (fdk var4) {
-            if (this.d()) {
-               return;
-            }
+   private void a(feb $$0) {
+      fhb $$1 = new fhb($$0.a, this.F.a(), this.G.a());
+      ffx $$2 = ffx.a(this, $$0, $$1, () -> this.m.execute(() -> {
+            fdf.g();
+            this.m.a(this.D);
+         }));
+      this.m.a($$2);
+   }
 
-            a((long)var4.c);
-            $$1++;
-         } catch (fdj var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new feb(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+   private void a(long $$0) {
+      fpt $$1 = new ffw($$1x -> {
+         if ($$1x == null) {
+            this.m.a(this);
+         } else {
+            this.m.a(new ffp(this, new fgw(this.D, $$0, $$1x, this.F.a(), this.G.a())));
          }
-      }
+      }, a);
+      this.m.a($$1);
    }
 
    @Override
-   public wz a() {
-      return c;
+   public void d() {
+      this.m.a(this.D);
    }
 }

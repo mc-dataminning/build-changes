@@ -1,127 +1,51 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import org.slf4j.Logger;
+import com.google.common.collect.ImmutableList;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import java.util.Collection;
 
-public class apm extends aur {
-   private static final Logger h = LogUtils.getLogger();
+public class apm {
+   public static void a(CommandDispatcher<et> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(eu.a("clear").executes($$0x -> a((et)$$0x.getSource(), ImmutableList.of(((et)$$0x.getSource()).h())))))
+            .then(
+               eu.a("set")
+                  .then(
+                     eu.a("warning_level", IntegerArgumentType.integer(0, 4))
+                        .executes(
+                           $$0x -> a((et)$$0x.getSource(), ImmutableList.of(((et)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                        )
+                  )
+            )
+      );
+   }
 
-   public apm(apn $$0, jt<ala> $$1, eri $$2) {
-      super($$0, $$1, $$2, $$0.a().I);
-      apo $$3 = $$0.a();
-      this.a($$3.G);
-      this.b($$3.H);
-      super.a($$3.X.get());
-      this.z();
-      this.x();
-      this.y();
-      this.w();
-      this.A();
-      this.C();
-      this.B();
-      if (!this.i().b().exists()) {
-         this.D();
+   private static int a(et $$0, Collection<? extends cnp> $$1, int $$2) {
+      for (cnp $$3 : $$1) {
+         $$3.ad().ifPresent($$1x -> $$1x.a($$2));
       }
-   }
 
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      this.b().i($$0);
-   }
-
-   @Override
-   public void a(GameProfile $$0) {
-      super.a($$0);
-      this.B();
-   }
-
-   @Override
-   public void b(GameProfile $$0) {
-      super.b($$0);
-      this.B();
-   }
-
-   @Override
-   public void a() {
-      this.C();
-   }
-
-   private void w() {
-      try {
-         this.g().e();
-      } catch (IOException var2) {
-         h.warn("Failed to save ip banlist: ", var2);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.warden_spawn_tracker.set.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.warden_spawn_tracker.set.success.multiple", $$1.size()), true);
       }
+
+      return $$1.size();
    }
 
-   private void x() {
-      try {
-         this.f().e();
-      } catch (IOException var2) {
-         h.warn("Failed to save user banlist: ", var2);
+   private static int a(et $$0, Collection<? extends cnp> $$1) {
+      for (cnp $$2 : $$1) {
+         $$2.ad().ifPresent(cmv::b);
       }
-   }
 
-   private void y() {
-      try {
-         this.g().f();
-      } catch (IOException var2) {
-         h.warn("Failed to load ip banlist: ", var2);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.warden_spawn_tracker.clear.success.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.warden_spawn_tracker.clear.success.multiple", $$1.size()), true);
       }
-   }
 
-   private void z() {
-      try {
-         this.f().f();
-      } catch (IOException var2) {
-         h.warn("Failed to load user banlist: ", var2);
-      }
-   }
-
-   private void A() {
-      try {
-         this.k().f();
-      } catch (Exception var2) {
-         h.warn("Failed to load operators list: ", var2);
-      }
-   }
-
-   private void B() {
-      try {
-         this.k().e();
-      } catch (Exception var2) {
-         h.warn("Failed to save operators list: ", var2);
-      }
-   }
-
-   private void C() {
-      try {
-         this.i().f();
-      } catch (Exception var2) {
-         h.warn("Failed to load white-list: ", var2);
-      }
-   }
-
-   private void D() {
-      try {
-         this.i().e();
-      } catch (Exception var2) {
-         h.warn("Failed to save white-list: ", var2);
-      }
-   }
-
-   @Override
-   public boolean c(GameProfile $$0) {
-      return !this.o() || this.f($$0) || this.i().a($$0);
-   }
-
-   public apn b() {
-      return (apn)super.c();
-   }
-
-   @Override
-   public boolean d(GameProfile $$0) {
-      return this.k().a($$0);
+      return $$1.size();
    }
 }

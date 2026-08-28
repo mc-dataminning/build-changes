@@ -1,31 +1,27 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public record ewe(err.b c) implements ewh {
-   public static final MapCodec<ewe> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(err.b.e.fieldOf("target").forGetter(ewe::c)).apply($$0, ewe::new));
-   public static final Codec<ewe> b = err.b.e.xmap(ewe::new, ewe::c);
+public interface ewe extends esu, Predicate<est> {
+   Codec<ewe> d = lu.F.q().dispatch("condition", ewe::b, ewf::a);
+   Codec<ewe> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, evr.b));
+   Codec<jn<ewe>> f = akx.a(lv.be, e);
 
-   public static ewh a(err.b $$0) {
-      return new ewe($$0);
-   }
+   ewf b();
 
-   @Override
-   public ewg a() {
-      return ewi.c;
-   }
+   @FunctionalInterface
+   public interface a {
+      ewe build();
 
-   @Nullable
-   @Override
-   public eyf a(err $$0) {
-      return $$0.c(this.c.a());
-   }
+      default ewe.a invert() {
+         return ewb.a(this);
+      }
 
-   @Override
-   public Set<euk<?>> b() {
-      return ImmutableSet.of(this.c.a());
+      default evs.a or(ewe.a $$0) {
+         return evs.a(this, $$0);
+      }
+
+      default evr.a and(ewe.a $$0) {
+         return evr.a(this, $$0);
+      }
    }
 }

@@ -1,54 +1,37 @@
-public class gdj extends gcz {
-   gdj(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gdi $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axy.b.b($$7), (float)axy.b.c($$7), (float)axy.b.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+public class gdj<T extends lo> extends gfe {
+   private final gez a;
+
+   protected gdj(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gez $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.C = true;
+      this.a = $$8;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.D = this.D * 0.75F * $$7.d();
+      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
+      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
       this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+   }
+
+   protected float a(float $$0, float $$1) {
+      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
+   }
+
+   @Override
+   public gei b() {
+      return gei.b;
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azc.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
       super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(jd.a(this.g, this.h, this.i)).i()) {
-            this.k -= 0.0074F;
-         }
-      }
-   }
-
-   public static class a implements gcq<lq> {
-      private final gdi a;
-
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7, axy.b.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements gcq<lq> {
-      private final gdi a;
-
-      public b(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7, axy.b.a(255, 255, 255, 255), this.a);
-      }
+      this.b(this.a);
    }
 }

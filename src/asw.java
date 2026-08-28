@@ -1,43 +1,26 @@
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-abstract class asw implements BasicFileAttributes {
-   private static final FileTime a = FileTime.fromMillis(0L);
+public class asw {
+   private static final asw a = new asw(Map.of());
+   private final Map<atr<?>, ?> b;
 
-   @Override
-   public FileTime lastModifiedTime() {
+   private asw(Map<atr<?>, ?> $$0) {
+      this.b = $$0;
+   }
+
+   public <T> T a(atr<T> $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   public static asw a() {
       return a;
    }
 
-   @Override
-   public FileTime lastAccessTime() {
-      return a;
+   public static <T> asw a(atr<T> $$0, T $$1) {
+      return new asw(Map.of($$0, $$1));
    }
 
-   @Override
-   public FileTime creationTime() {
-      return a;
-   }
-
-   @Override
-   public boolean isSymbolicLink() {
-      return false;
-   }
-
-   @Override
-   public boolean isOther() {
-      return false;
-   }
-
-   @Override
-   public long size() {
-      return 0L;
-   }
-
-   @Nullable
-   @Override
-   public Object fileKey() {
-      return null;
+   public static <T1, T2> asw a(atr<T1> $$0, T1 $$1, atr<T2> $$2, T2 $$3) {
+      return new asw(Map.of($$0, $$1, $$2, (T1)$$3));
    }
 }

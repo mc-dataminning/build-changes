@@ -1,52 +1,40 @@
+import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.ContextChain;
-import java.util.List;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
 
 public class anx {
-   public static <T extends ev<T>> void a(CommandDispatcher<T> $$0) {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.pardon.failed"));
+
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
-                     .requires($$0x -> $$0x.c(2)))
-                  .then(RequiredArgumentBuilder.argument("value", IntegerArgumentType.integer()).executes(new anx.c())))
-               .then(LiteralArgumentBuilder.literal("fail").executes(new anx.a())))
-            .then(LiteralArgumentBuilder.literal("run").forward($$0.getRoot(), new anx.b(), false))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("pardon").requires($$0x -> $$0x.c(3)))
+            .then(
+               eu.a("targets", fi.a())
+                  .suggests(($$0x, $$1) -> ey.a(((et)$$0x.getSource()).l().ag().f().a(), $$1))
+                  .executes($$0x -> a((et)$$0x.getSource(), fi.a($$0x, "targets")))
+            )
       );
    }
 
-   static class a<T extends ev<T>> implements hp.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hn $$2, ht<T> $$3) {
-         $$0.p().onFailure();
-         hu $$4 = $$3.b();
-         $$4.a();
-         $$4.b();
-      }
-   }
+   private static int a(et $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+      avm $$2 = $$0.l().ag().f();
+      int $$3 = 0;
 
-   static class b<T extends ev<T>> implements hq.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hn $$3, ht<T> $$4) {
-         if ($$1.isEmpty()) {
-            if ($$3.c()) {
-               $$4.a(ic.a());
-            }
-         } else {
-            $$4.b().b();
-            ContextChain<T> $$5 = $$2.nextStage();
-            String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new hy.a<>($$6, $$5, $$3.d(), $$0, $$1));
+      for (GameProfile $$4 : $$1) {
+         if ($$2.a($$4)) {
+            $$2.c($$4);
+            $$3++;
+            $$0.a(() -> xd.a("commands.pardon.success", xd.b($$4.getName())), true);
          }
       }
-   }
 
-   static class c<T extends ev<T>> implements hp.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, hn $$2, ht<T> $$3) {
-         int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
-         $$0.p().onSuccess($$4);
-         hu $$5 = $$3.b();
-         $$5.a($$4);
-         $$5.b();
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         return $$3;
       }
    }
 }

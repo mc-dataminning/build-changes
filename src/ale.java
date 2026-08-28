@@ -1,69 +1,80 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import java.util.Collection;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.StringUtils;
 
-public class ale extends aui {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private Map<akr, ag> c = Map.of();
-   private al d = new al();
-   private final jo.a e;
+public class ale extends IOException {
+   private final List<ale.a> a = Lists.newArrayList();
+   private final String b;
 
-   public ale(jo.a $$0) {
-      super(b, lu.c(lu.bf));
-      this.e = $$0;
+   public ale(String $$0) {
+      this.a.add(new ale.a());
+      this.b = $$0;
    }
 
-   protected void a(Map<akr, JsonElement> $$0, aue $$1, bnf $$2) {
-      akp<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
-      Builder<akr, ag> $$4 = ImmutableMap.builder();
-      $$0.forEach(($$2x, $$3x) -> {
-         try {
-            af $$4x = (af)af.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
-            this.a($$2x, $$4x);
-            $$4.put($$2x, new ag($$2x, $$4x));
-         } catch (Exception var6x) {
-            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
-         }
-      });
-      this.c = $$4.buildOrThrow();
-      al $$5 = new al();
-      $$5.a(this.c.values());
+   public ale(String $$0, Throwable $$1) {
+      super($$1);
+      this.a.add(new ale.a());
+      this.b = $$0;
+   }
 
-      for (ah $$6 : $$5.b()) {
-         if ($$6.b().b().c().isPresent()) {
-            at.a($$6);
+   public void a(String $$0) {
+      this.a.get(0).a($$0);
+   }
+
+   public void b(String $$0) {
+      this.a.get(0).a = $$0;
+      this.a.add(0, new ale.a());
+   }
+
+   @Override
+   public String getMessage() {
+      return "Invalid " + this.a.get(this.a.size() - 1) + ": " + this.b;
+   }
+
+   public static ale a(Exception $$0) {
+      if ($$0 instanceof ale) {
+         return (ale)$$0;
+      } else {
+         String $$1 = $$0.getMessage();
+         if ($$0 instanceof FileNotFoundException) {
+            $$1 = "File not found";
          }
+
+         return new ale($$1, $$0);
+      }
+   }
+
+   public static class a {
+      @Nullable
+      String a;
+      private final List<String> b = Lists.newArrayList();
+
+      a() {
       }
 
-      this.d = $$5;
-   }
+      void a(String $$0) {
+         this.b.add(0, $$0);
+      }
 
-   private void a(akr $$0, af $$1) {
-      ayu.a $$2 = new ayu.a();
-      $$1.a($$2, this.e.b());
-      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
-   }
+      @Nullable
+      public String a() {
+         return this.a;
+      }
 
-   @Nullable
-   public ag a(akr $$0) {
-      return this.c.get($$0);
-   }
+      public String b() {
+         return StringUtils.join(this.b, "->");
+      }
 
-   public al a() {
-      return this.d;
-   }
-
-   public Collection<ag> b() {
-      return this.c.values();
+      @Override
+      public String toString() {
+         if (this.a != null) {
+            return this.b.isEmpty() ? this.a : this.a + " " + this.b();
+         } else {
+            return this.b.isEmpty() ? "(Unknown file)" : "(Unknown file) " + this.b();
+         }
+      }
    }
 }

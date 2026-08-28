@@ -1,9 +1,14 @@
-public class gri extends gro {
-   public gri(gqm $$0) {
-      super($$0, akr.b("textures/atlas/map_decorations.png"), akr.b("map_decorations"));
+public class gri<S extends gup, M extends fxa<S>> extends grf<S, M> {
+   private final fyv<S> a;
+   private final alb b;
+
+   public gri(goo<S, M> $$0, fzx $$1, fzz $$2, alb $$3) {
+      super($$0);
+      this.b = $$3;
+      this.a = new fyv<>($$1.a($$2));
    }
 
-   public gql a(eqn $$0) {
-      return this.a($$0.a());
+   public void a(fcu $$0, ggv $$1, int $$2, S $$3, float $$4, float $$5) {
+      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
    }
 }

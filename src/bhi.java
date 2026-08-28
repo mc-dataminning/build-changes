@@ -1,21 +1,13 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class bhi extends DataFix {
-   public bhi(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgr.G);
-      return this.fixTypeEverywhereTyped("Structure Reference Fix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bhi::a));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("references", $$0x -> $$0x.createInt($$0x.asNumber().map(Number::intValue).result().filter($$0xx -> $$0xx > 0).orElse(1)));
-   }
+public class bhi {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
+      .put("minecraft:birch_bark", "minecraft:birch_wood")
+      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
+      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
+      .put("minecraft:oak_bark", "minecraft:oak_wood")
+      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
+      .build();
 }

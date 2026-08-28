@@ -1,32 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class eeh implements eei {
-   public static final Codec<eeh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jd.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eeh::new)
-   );
-   private final Optional<jd> b;
-   private final boolean c;
-
-   private eeh(Optional<jd> $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class eeh extends edc<efb> {
+   public eeh(Codec<efb> $$0) {
+      super($$0);
    }
 
-   public static eeh a(jd $$0, boolean $$1) {
-      return new eeh(Optional.of($$0), $$1);
-   }
+   @Override
+   public boolean a(ede<efb> $$0) {
+      int $$1 = 0;
+      azk $$2 = $$0.d();
+      dep $$3 = $$0.b();
+      je $$4 = $$0.e();
+      int $$5 = $$0.f().a().a($$2);
 
-   public static eeh a() {
-      return new eeh(Optional.empty(), false);
-   }
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         int $$7 = $$2.a(8) - $$2.a(8);
+         int $$8 = $$2.a(8) - $$2.a(8);
+         int $$9 = $$3.a(dzw.a.d, $$4.u() + $$7, $$4.w() + $$8);
+         je $$10 = new je($$4.u() + $$7, $$9, $$4.w() + $$8);
+         dua $$11 = dgx.mV.o().b(dnt.c, Integer.valueOf($$2.a(4) + 1));
+         if ($$3.a_($$10).a(dgx.G) && $$11.a($$3, $$10)) {
+            $$3.a($$10, $$11, 2);
+            $$1++;
+         }
+      }
 
-   public Optional<jd> b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
+      return $$1 > 0;
    }
 }

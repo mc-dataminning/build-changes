@@ -1,41 +1,37 @@
-public class ccx extends cda {
-   public ccx(btp $$0, dcw $$1) {
-      super($$0, $$1);
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public class ccx<T extends buf> extends ccv<T> {
+   private static final int i = 200;
+   private int j = 0;
+
+   public ccx(cpd $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<buf> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
-   protected epu a(int $$0) {
-      this.o = new epn(false);
-      this.o.a(true);
-      return new epu(this.o, $$0);
+   public boolean b() {
+      if (this.j > 0 || !this.e.dV().h()) {
+         return false;
+      } else if (!((cpd)this.e).gF()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
-   protected boolean a() {
-      return true;
-   }
-
-   @Override
-   protected exc b() {
-      return new exc(this.a.dt(), this.a.e(0.5), this.a.dz());
-   }
-
-   @Override
-   protected double a(exc $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(exc $$0, exc $$1) {
-      return this.a.bj() ? a(this.a, $$0, $$1, false) : false;
-   }
-
-   @Override
-   public boolean a(jd $$0) {
-      return !this.b.a_($$0.e()).i();
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void d() {
+      this.j = b(200);
+      super.d();
    }
 }

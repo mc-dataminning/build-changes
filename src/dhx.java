@@ -1,26 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public class dhx extends dgh {
+public class dhx extends dlf {
    public static final MapCodec<dhx> a = b(dhx::new);
-   protected static final float b = 6.0F;
-   protected static final exv c = dfy.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dhx> a() {
       return a;
    }
 
-   protected dhx(dtb.d $$0) {
+   public dhx(dtz.d $$0) {
       super($$0);
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return c;
-   }
-
-   @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.a(awe.cm);
+   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.a(10) == 0) {
+         je $$4 = $$2.e();
+         dua $$5 = $$1.a_($$4);
+         if (!a($$5.g($$1, $$4), jj.b)) {
+            azg.a($$1, $$2, $$3, ln.H);
+         }
+      }
    }
 }

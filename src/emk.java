@@ -1,45 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
-public class emk extends ejr {
+public class emk extends ekn {
    public static final MapCodec<emk> d = a(emk::new);
 
-   public emk(ejr.c $$0) {
-      super($$0);
+   public emk(eko.c $$0) {
+      super(emj::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<ejr.b> a(ejr.a $$0) {
-      return Optional.of(new ejr.b($$0.h().l(), (Consumer<ekj>)($$1 -> a($$1, $$0))));
-   }
+   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, eld $$6) {
+      Set<je> $$7 = azu.a(ki::i);
 
-   private static void a(ekj $$0, ejr.a $$1) {
-      int $$2 = 0;
-
-      emj.m $$3;
-      do {
-         $$0.b();
-         $$1.f().c($$1.g() + (long)($$2++), $$1.h().e, $$1.h().f);
-         emj.a();
-         $$3 = new emj.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
-         $$0.a($$3);
-         $$3.a($$3, $$0, $$1.f());
-         List<ejv> $$4 = $$3.c;
-
-         while (!$$4.isEmpty()) {
-            int $$5 = $$1.f().a($$4.size());
-            ejv $$6 = $$4.remove($$5);
-            $$6.a($$3, $$0, $$1.f());
+      for (eks $$8 : $$6.c()) {
+         if ($$8 instanceof emj $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
          }
+      }
 
-         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
-      } while ($$0.c() || $$3.b == null);
+      ObjectArrayList<je> $$10 = new ObjectArrayList($$7.stream().toList());
+      azk $$11 = azk.a($$0.C()).e().a($$6.b().g());
+      ad.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         je $$13 = (je)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, dgx.I.o(), 2);
+         }
+      }
+   }
+
+   private static void a(ekg $$0, dep $$1, je $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, dgx.J.o(), 2);
+         $$1.a($$2, drg.N).ifPresent($$1x -> $$1x.a(esp.aT, $$2.a()));
+      }
    }
 
    @Override
-   public eka<?> e() {
-      return eka.n;
+   public ekx<?> e() {
+      return ekx.b;
    }
 }

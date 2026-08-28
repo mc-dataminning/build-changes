@@ -1,60 +1,63 @@
-public class ctu extends cul implements cvm {
-   public ctu(cul.a $$0) {
+import java.util.Optional;
+import javax.annotation.Nullable;
+
+public class ctu extends cvg {
+   public ctu(cvg.a $$0) {
       super($$0);
    }
 
+   @Nullable
+   public static jm a(dds $$0) {
+      return $$0.B_().j() ? jm.a($$0.ag(), $$0.W()) : null;
+   }
+
    @Override
-   public bqr a(cyf $$0) {
-      dcw $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      dtc $$3 = $$1.a_($$2);
-      boolean $$4 = false;
-      if (!dgm.h($$3) && !dgn.g($$3) && !dgo.g($$3)) {
-         $$2 = $$2.a($$0.k());
-         if (dfl.a($$1, $$2, $$0.g())) {
-            this.a($$1, $$2);
-            $$1.b($$2, dfl.a($$1, $$2));
-            $$1.a($$0.o(), dxz.i, $$2);
-            $$4 = true;
+   public boolean e_(cvl $$0) {
+      return $$0.b(kr.V) || super.e_($$0);
+   }
+
+   @Override
+   public void a(cvl $$0, dds $$1, btj $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof arg $$5) {
+         cyj $$6 = $$0.a(kr.V);
+         if ($$6 != null) {
+            cyj $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(kr.V, $$7);
+            }
          }
-      } else {
-         this.a($$1, $$2);
-         $$1.b($$2, $$3.a(dts.r, Boolean.valueOf(true)));
-         $$1.a($$0.o(), dxz.c, $$2);
-         $$4 = true;
-      }
-
-      if ($$4) {
-         $$0.n().h(1);
-         return bqr.a($$1.B);
-      } else {
-         return bqr.f;
       }
    }
 
-   private void a(dcw $$0, jd $$1) {
-      ayw $$2 = $$0.E_();
-      $$0.a(null, $$1, avp.iK, avq.e, 1.0F, ($$2.i() - $$2.i()) * 0.2F + 1.0F);
+   @Override
+   public brk a(cyy $$0) {
+      je $$1 = $$0.a();
+      dds $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dgx.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, awd.oo, awe.h, 1.0F, 1.0F);
+         cnp $$3 = $$0.o();
+         cvl $$4 = $$0.n();
+         boolean $$5 = !$$3.fP() && $$4.J() == 1;
+         cyj $$6 = new cyj(Optional.of(jm.a($$2.ag(), $$1)), true);
+         if ($$5) {
+            $$4.b(kr.V, $$6);
+         } else {
+            cvl $$7 = $$4.a(cvo.qT, 1);
+            $$4.a(1, $$3);
+            $$7.b(kr.V, $$6);
+            if (!$$3.gc().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return brk.a;
+      }
    }
 
    @Override
-   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
-      ayw $$4 = $$0.E_();
-      double $$5 = $$4.a((double)$$3.j(), 0.11485000000000001);
-      double $$6 = $$4.a((double)$$3.k(), 0.11485000000000001);
-      double $$7 = $$4.a((double)$$3.l(), 0.11485000000000001);
-      exc $$8 = new exc($$5, $$6, $$7);
-      cnt $$9 = new cnt($$0, $$1.a(), $$1.b(), $$1.c(), $$8.d());
-      $$9.a($$2);
-      return $$9;
-   }
-
-   @Override
-   public void a(cnp $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-   }
-
-   @Override
-   public cvm.a c() {
-      return cvm.a.a().a(($$0, $$1) -> did.a($$0, 1.0, exc.b)).a(6.6666665F).b(1.0F).a(1018).a();
+   public String d_(cvl $$0) {
+      return $$0.b(kr.V) ? "item.minecraft.lodestone_compass" : super.d_($$0);
    }
 }

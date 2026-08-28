@@ -1,19 +1,21 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
+import java.util.Locale;
+import java.util.Optional;
 
-public class bgu extends bfn {
+public class bgu extends DataFix {
    public bgu(Schema $$0, boolean $$1) {
-      super($$0, $$1, "Remove Golem Gossip Fix", bgr.B, "minecraft:villager");
+      super($$0, $$1);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bgu::a);
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("Gossips", $$1 -> $$0.createList($$1.asStream().filter($$0xx -> !$$0xx.get("Type").asString("").equals("golem"))));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bhk.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Optional<String> $$1 = $$0x.get("lang").asString().result();
+               return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
+            })
+      );
    }
 }

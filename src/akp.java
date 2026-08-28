@@ -1,128 +1,205 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.OptionalInt;
 
-public class akp<T> extends akj<T> {
-   private final akp.c b;
+public class akp<R extends czt<?>> {
+   private static final int a = -1;
+   private final cno b;
+   private final akp.a<R> c;
+   private final boolean d;
+   private final int e;
+   private final int f;
+   private final List<csn> g;
+   private final List<csn> h;
 
-   public static <T> akp<T> a(DynamicOps<T> $$0, jo.a $$1) {
-      return a($$0, new akp.a($$1));
-   }
-
-   public static <T> akp<T> a(DynamicOps<T> $$0, akp.c $$1) {
-      return new akp<>($$0, $$1);
-   }
-
-   public static <T> Dynamic<T> a(Dynamic<T> $$0, jo.a $$1) {
-      return new Dynamic($$1.a($$0.getOps()), $$0.getValue());
-   }
-
-   private akp(DynamicOps<T> $$0, akp.c $$1) {
-      super($$0);
-      this.b = $$1;
-   }
-
-   public <U> akp<U> a(DynamicOps<U> $$0) {
-      return (akp<U>)($$0 == this.a ? this : new akp((DynamicOps<T>)$$0, this.b));
-   }
-
-   public <E> Optional<jp<E>> a(akq<? extends jz<? extends E>> $$0) {
-      return this.b.a($$0).map(akp.b::a);
-   }
-
-   public <E> Optional<jn<E>> b(akq<? extends jz<? extends E>> $$0) {
-      return this.b.a($$0).map(akp.b::b);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         akp<?> $$1 = (akp<?>)$$0;
-         return this.a.equals($$1.a) && this.b.equals($$1.b);
+   public static <I extends czw, R extends czt<I>> csf.a a(
+      akp.a<R> $$0, int $$1, int $$2, List<csn> $$3, List<csn> $$4, cno $$5, czv<R> $$6, boolean $$7, boolean $$8
+   ) {
+      akp<R> $$9 = new akp<>($$0, $$5, $$7, $$1, $$2, $$3, $$4);
+      if (!$$8 && !$$9.b()) {
+         return csf.a.a;
       } else {
-         return false;
+         cnu $$10 = new cnu();
+         $$5.a($$10);
+         $$0.a($$10);
+         return $$9.a($$6, $$10);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode() * 31 + this.b.hashCode();
+   private akp(akp.a<R> $$0, cno $$1, boolean $$2, int $$3, int $$4, List<csn> $$5, List<csn> $$6) {
+      this.c = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
    }
 
-   public static <E, O> RecordCodecBuilder<O, jn<E>> c(akq<? extends jz<? extends E>> $$0) {
-      return axw.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$1 -> $$1 instanceof akp<?> $$2
-                  ? $$2.b.a($$0).map($$0xx -> DataResult.success($$0xx.b(), $$0xx.c())).orElseGet(() -> DataResult.error(() -> "Unknown registry: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   private csf.a a(czv<R> $$0, cnu $$1) {
+      if ($$1.a($$0.b(), null)) {
+         this.b($$0, $$1);
+         this.b.e();
+         return csf.a.a;
+      } else {
+         this.a();
+         this.b.e();
+         return csf.a.b;
+      }
    }
 
-   public static <E, O> RecordCodecBuilder<O, jm.c<E>> d(akq<E> $$0) {
-      akq<? extends jz<E>> $$1 = akq.a($$0.b());
-      return axw.a(
-            (Function<DynamicOps<?>, DataResult<E>>)($$2 -> $$2 instanceof akp<?> $$3
-                  ? $$3.b
-                     .a($$1)
-                     .flatMap($$1xx -> $$1xx.b().a($$0))
-                     .<DataResult<E>>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "Can't find value: " + $$0))
-                  : DataResult.error(() -> "Not a registry ops"))
-         )
-         .forGetter($$0x -> null);
+   private void a() {
+      for (csn $$0 : this.h) {
+         cvl $$1 = $$0.g().u();
+         this.b.a($$1, false);
+         $$0.f($$1);
+      }
+
+      this.c.a();
    }
 
-   static final class a implements akp.c {
-      private final jo.a a;
-      private final Map<akq<? extends jz<?>>, Optional<? extends akp.b<?>>> b = new ConcurrentHashMap<>();
-
-      public a(jo.a $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public <E> Optional<akp.b<E>> a(akq<? extends jz<? extends E>> $$0) {
-         return (Optional<akp.b<E>>)this.b.computeIfAbsent($$0, this::b);
-      }
-
-      private Optional<akp.b<Object>> b(akq<? extends jz<?>> $$0) {
-         return this.a.a($$0).map(akp.b::a);
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            if ($$0 instanceof akp.a $$1 && this.a.equals($$1.a)) {
-               return true;
+   private void b(czv<R> $$0, cnu $$1) {
+      boolean $$2 = this.c.a($$0);
+      int $$3 = $$1.b($$0.b(), null);
+      if ($$2) {
+         for (csn $$4 : this.g) {
+            cvl $$5 = $$4.g();
+            if (!$$5.f() && Math.min($$3, $$5.k()) < $$5.J() + 1) {
+               return;
             }
-
-            return false;
          }
       }
 
-      @Override
-      public int hashCode() {
-         return this.a.hashCode();
+      int $$6 = this.a($$3, $$2);
+      List<jn<cvg>> $$7 = new ArrayList<>();
+      if ($$1.a($$0.b(), $$6, $$7::add)) {
+         OptionalInt $$8 = $$7.stream().mapToInt($$0x -> ((cvg)$$0x.a()).q()).min();
+         if ($$8.isPresent()) {
+            $$6 = Math.min($$6, $$8.getAsInt());
+         }
+
+         $$7.clear();
+         if ($$1.a($$0.b(), $$6, $$7::add)) {
+            this.a();
+            int $$9 = $$6;
+            ako.a(this.e, this.f, $$0, $$0.b().a().a(), ($$2x, $$3x, $$4x, $$5) -> {
+               if (!$$2x.isEmpty()) {
+                  csn $$6x = this.g.get($$3x);
+                  int $$7x = ((czs.a)$$2x.get()).b();
+                  int $$8x = $$9;
+
+                  while ($$8x > 0) {
+                     jn<cvg> $$9x = $$7.get($$7x);
+                     $$8x = this.a($$6x, $$9x, $$8x);
+                     if ($$8x == -1) {
+                        return;
+                     }
+                  }
+               }
+            });
+         }
       }
    }
 
-   public static record b<T>(jp<T> a, jn<T> b, Lifecycle c) {
-      public static <T> akp.b<T> a(jo.b<T> $$0) {
-         return new akp.b<>($$0, $$0, $$0.g());
+   private int a(int $$0, boolean $$1) {
+      if (this.d) {
+         return $$0;
+      } else if ($$1) {
+         int $$2 = Integer.MAX_VALUE;
+
+         for (csn $$3 : this.g) {
+            cvl $$4 = $$3.g();
+            if (!$$4.f() && $$2 > $$4.J()) {
+               $$2 = $$4.J();
+            }
+         }
+
+         if ($$2 != Integer.MAX_VALUE) {
+            $$2++;
+         }
+
+         return $$2;
+      } else {
+         return 1;
       }
    }
 
-   public interface c {
-      <T> Optional<akp.b<T>> a(akq<? extends jz<? extends T>> var1);
+   private int a(csn $$0, jn<cvg> $$1, int $$2) {
+      int $$3 = this.b.a($$1);
+      if ($$3 == -1) {
+         return -1;
+      } else {
+         cvl $$4 = this.b.a($$3);
+         int $$5;
+         if ($$2 < $$4.J()) {
+            this.b.a($$3, $$2);
+            $$5 = $$2;
+         } else {
+            this.b.b($$3);
+            $$5 = $$4.J();
+         }
+
+         if ($$0.g().f()) {
+            $$0.f($$4.c($$5));
+         } else {
+            $$0.g().g($$5);
+         }
+
+         return $$2 - $$5;
+      }
+   }
+
+   private boolean b() {
+      List<cvl> $$0 = Lists.newArrayList();
+      int $$1 = this.c();
+
+      for (csn $$2 : this.g) {
+         cvl $$3 = $$2.g().u();
+         if (!$$3.f()) {
+            int $$4 = this.b.e($$3);
+            if ($$4 == -1 && $$0.size() <= $$1) {
+               for (cvl $$5 : $$0) {
+                  if (cvl.b($$5, $$3) && $$5.J() != $$5.k() && $$5.J() + $$3.J() <= $$5.k()) {
+                     $$5.g($$3.J());
+                     $$3.e(0);
+                     break;
+                  }
+               }
+
+               if (!$$3.f()) {
+                  if ($$0.size() >= $$1) {
+                     return false;
+                  }
+
+                  $$0.add($$3);
+               }
+            } else if ($$4 == -1) {
+               return false;
+            }
+         }
+      }
+
+      return true;
+   }
+
+   private int c() {
+      int $$0 = 0;
+
+      for (cvl $$1 : this.b.g) {
+         if ($$1.f()) {
+            $$0++;
+         }
+      }
+
+      return $$0;
+   }
+
+   public interface a<T extends czt<?>> {
+      void a(cnu var1);
+
+      void a();
+
+      boolean a(czv<T> var1);
    }
 }

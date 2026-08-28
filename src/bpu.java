@@ -1,26 +1,52 @@
-import com.mojang.datafixers.util.Either;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import java.util.List;
+import java.util.Optional;
 
-public abstract class bpu implements bpz {
-   private static final Codec<Either<Float, bpu>> a = Codec.either(Codec.FLOAT, lt.J.r().dispatch(bpu::c, bpv::codec));
-   public static final Codec<bpu> c = a.xmap(
-      $$0 -> (bpu)$$0.map(bps::a, $$0x -> $$0x), $$0 -> $$0.c() == bpv.a ? Either.left(((bps)$$0).d()) : Either.right($$0)
-   );
-
-   public static Codec<bpu> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+public class bpu<E> extends bpy<bpw.b<E>> {
+   public static <E> Codec<bpu<E>> a(Codec<E> $$0) {
+      return bpw.b.a($$0).listOf().xmap(bpu::new, bpy::e);
    }
 
-   public abstract float a();
+   public static <E> Codec<bpu<E>> b(Codec<E> $$0) {
+      return ayl.a(bpw.b.a($$0).listOf()).xmap(bpu::new, bpy::e);
+   }
 
-   public abstract float b();
+   bpu(List<? extends bpw.b<E>> $$0) {
+      super($$0);
+   }
 
-   public abstract bpv<?> c();
+   public static <E> bpu.a<E> a() {
+      return new bpu.a<>();
+   }
+
+   public static <E> bpu<E> b() {
+      return new bpu<>(List.of());
+   }
+
+   public static <E> bpu<E> a(E $$0) {
+      return new bpu<>(List.of(bpw.a($$0, 1)));
+   }
+
+   public Optional<E> a(azk $$0) {
+      return this.b($$0).map(bpw.b::b);
+   }
+
+   public static class a<E> {
+      private final Builder<bpw.b<E>> a = ImmutableList.builder();
+
+      public bpu.a<E> a(E $$0) {
+         return this.a($$0, 1);
+      }
+
+      public bpu.a<E> a(E $$0, int $$1) {
+         this.a.add(bpw.a($$0, $$1));
+         return this;
+      }
+
+      public bpu<E> a() {
+         return new bpu<>(this.a.build());
+      }
+   }
 }

@@ -1,29 +1,37 @@
-public class ahr implements zg<agi> {
-   public static final yx<vw, ahr> a = zg.a(ahr::a, ahr::new);
-   private final String b;
+public class ahr implements zk<agq> {
+   public static final zb<wa, ahr> a = zk.a(ahr::a, ahr::new);
+   private final boolean b;
+   private final boolean c;
 
-   public ahr(String $$0) {
+   public ahr(boolean $$0, boolean $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   private ahr(vw $$0) {
-      this.b = $$0.p();
+   private ahr(wa $$0) {
+      this.b = $$0.readBoolean();
+      this.c = $$0.readBoolean();
    }
 
-   private void a(vw $$0) {
+   private void a(wa $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
-   @Override
-   public zi<ahr> a() {
-      return agg.bP;
-   }
-
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public String b() {
+   @Override
+   public zm<ahr> a() {
+      return ago.bJ;
+   }
+
+   public boolean b() {
       return this.b;
+   }
+
+   public boolean e() {
+      return this.c;
    }
 }

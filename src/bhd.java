@@ -1,40 +1,19 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import java.util.Locale;
-import java.util.Objects;
+import com.mojang.serialization.Dynamic;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public abstract class bhd extends DataFix {
-   private final String a;
+public class bhd extends bar {
+   private final Function<String, String> a;
 
-   public bhd(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+   public bhd(Schema $$0, String $$1, Function<String, String> $$2) {
+      super($$0, $$1);
+      this.a = $$2;
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bgr.B);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bgr.B);
-      Type<Pair<String, String>> $$2 = DSL.named(bgr.z.typeName(), bid.a());
-      if (!Objects.equals(this.getOutputSchema().getType(bgr.z), $$2)) {
-         throw new IllegalStateException("Entity name type is not what was expected.");
-      } else {
-         return TypeRewriteRule.seq(this.fixTypeEverywhere(this.a, $$0, $$1, $$2x -> $$2xx -> $$2xx.mapFirst($$2xxx -> {
-                  String $$3 = this.a($$2xxx);
-                  Type<?> $$4 = (Type<?>)$$0.types().get($$2xxx);
-                  Type<?> $$5 = (Type<?>)$$1.types().get($$3);
-                  if (!$$5.equals($$4, true, true)) {
-                     throw new IllegalStateException(String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$5, $$4));
-                  } else {
-                     return $$3;
-                  }
-               })), this.fixTypeEverywhere(this.a + " for entity name", $$2, $$0x -> $$0xx -> $$0xx.mapSecond(this::a)));
-      }
+   @Override
+   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
+      return $$0.map($$0x -> $$0x.update("type", $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().map(this.a).map($$0xx::createString).result(), $$0xx)));
    }
-
-   protected abstract String a(String var1);
 }

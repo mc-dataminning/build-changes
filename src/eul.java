@@ -1,74 +1,41 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiFunction;
 
-public class eul {
-   private final Set<euk<?>> a;
-   private final Set<euk<?>> b;
+public class eul implements euh {
+   public static final MapCodec<eul> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(euj.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eul::new)
+   );
+   public static final Codec<eul> b = euj.b.listOf().xmap(eul::new, $$0 -> $$0.c);
+   private final List<euh> c;
+   private final BiFunction<cvl, est, cvl> d;
 
-   eul(Set<euk<?>> $$0, Set<euk<?>> $$1) {
-      this.a = ImmutableSet.copyOf($$0);
-      this.b = ImmutableSet.copyOf(Sets.union($$0, $$1));
+   private eul(List<euh> $$0) {
+      this.c = $$0;
+      this.d = euj.a($$0);
    }
 
-   public boolean a(euk<?> $$0) {
-      return this.b.contains($$0);
+   public static eul a(List<euh> $$0) {
+      return new eul(List.copyOf($$0));
    }
 
-   public Set<euk<?>> a() {
-      return this.a;
-   }
-
-   public Set<euk<?>> b() {
-      return this.b;
+   public cvl a(cvl $$0, est $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   public String toString() {
-      return "[" + Joiner.on(", ").join(this.b.stream().map($$0 -> (this.a.contains($$0) ? "!" : "") + $$0.a()).iterator()) + "]";
-   }
+   public void a(esz $$0) {
+      euh.super.a($$0);
 
-   public void a(erx $$0, ers $$1) {
-      this.a($$0.c(), $$1);
-   }
-
-   public void a(ayu $$0, ers $$1) {
-      Set<euk<?>> $$2 = $$1.a();
-      Set<euk<?>> $$3 = Sets.difference($$2, this.b);
-      if (!$$3.isEmpty()) {
-         $$0.b("Parameters " + $$3 + " are not provided in this context");
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
       }
    }
 
-   public static eul.a c() {
-      return new eul.a();
-   }
-
-   public static class a {
-      private final Set<euk<?>> a = Sets.newIdentityHashSet();
-      private final Set<euk<?>> b = Sets.newIdentityHashSet();
-
-      public eul.a a(euk<?> $$0) {
-         if (this.b.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already optional");
-         } else {
-            this.a.add($$0);
-            return this;
-         }
-      }
-
-      public eul.a b(euk<?> $$0) {
-         if (this.a.contains($$0)) {
-            throw new IllegalArgumentException("Parameter " + $$0.a() + " is already required");
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      public eul a() {
-         return new eul(this.a, this.b);
-      }
+   @Override
+   public eui<eul> b() {
+      return euj.I;
    }
 }

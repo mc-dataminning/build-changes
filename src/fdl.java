@@ -1,8 +1,18 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.net.Proxy;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fdl {
+public class fdl {
+   @Nullable
+   private static Proxy a;
+
+   @Nullable
+   public static Proxy a() {
+      return a;
+   }
+
+   public static void a(Proxy $$0) {
+      if (a == null) {
+         a = $$0;
+      }
+   }
 }

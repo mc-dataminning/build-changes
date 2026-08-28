@@ -1,34 +1,70 @@
-public record czb<T extends cyz<?>>(akr b, T c) {
-   public static final yx<wk, czb<?>> a = yx.a(akr.b, czb::a, cyz.i, czb::b, czb::new);
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof czb<?> $$1 && this.b.equals($$1.b)) {
-            return true;
+public class czb extends czk {
+   public czb(czh $$0) {
+      super($$0);
+   }
+
+   public boolean a(czi $$0, dds $$1) {
+      cvl $$2 = cvl.k;
+      List<cvl> $$3 = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvl $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axb.bD)) {
+               if (!$$2.f()) {
+                  return false;
+               }
+
+               $$2 = $$5;
+            } else {
+               if (!($$5.h() instanceof cuf)) {
+                  return false;
+               }
+
+               $$3.add($$5);
+            }
          }
-
-         return false;
       }
+
+      return !$$2.f() && !$$3.isEmpty();
+   }
+
+   public cvl a(czi $$0, jp.a $$1) {
+      List<cuf> $$2 = Lists.newArrayList();
+      cvl $$3 = cvl.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvl $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.a(axb.bD)) {
+               if (!$$3.f()) {
+                  return cvl.k;
+               }
+
+               $$3 = $$5.u();
+            } else {
+               if (!($$5.h() instanceof cuf $$6)) {
+                  return cvl.k;
+               }
+
+               $$2.add($$6);
+            }
+         }
+      }
+
+      return !$$3.f() && !$$2.isEmpty() ? cyd.a($$3, $$2) : cvl.k;
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   public akr a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   public czy<?> as_() {
+      return czy.c;
    }
 }

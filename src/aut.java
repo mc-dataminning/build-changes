@@ -1,57 +1,17 @@
-import com.google.gson.JsonObject;
-import com.mojang.authlib.GameProfile;
-import java.util.UUID;
-import javax.annotation.Nullable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
-public class aut extends auv<GameProfile> {
-   private final int a;
-   private final boolean b;
-
-   public aut(GameProfile $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-   }
-
-   public aut(JsonObject $$0) {
-      super(b($$0));
-      this.a = $$0.has("level") ? $$0.get("level").getAsInt() : 0;
-      this.b = $$0.has("bypassesPlayerLimit") && $$0.get("bypassesPlayerLimit").getAsBoolean();
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
+public interface aut extends aum {
    @Override
-   protected void a(JsonObject $$0) {
-      if (this.g() != null) {
-         $$0.addProperty("uuid", this.g().getId().toString());
-         $$0.addProperty("name", this.g().getName());
-         $$0.addProperty("level", this.a);
-         $$0.addProperty("bypassesPlayerLimit", this.b);
-      }
+   default CompletableFuture<Void> a(aum.a $$0, aus $$1, bny $$2, bny $$3, Executor $$4, Executor $$5) {
+      return $$0.a(bah.a).thenRunAsync(() -> {
+         $$3.a();
+         $$3.a("listener");
+         this.a($$1);
+         $$3.c();
+         $$3.b();
+      }, $$5);
    }
 
-   @Nullable
-   private static GameProfile b(JsonObject $$0) {
-      if ($$0.has("uuid") && $$0.has("name")) {
-         String $$1 = $$0.get("uuid").getAsString();
-
-         UUID $$2;
-         try {
-            $$2 = UUID.fromString($$1);
-         } catch (Throwable var4) {
-            return null;
-         }
-
-         return new GameProfile($$2, $$0.get("name").getAsString());
-      } else {
-         return null;
-      }
-   }
+   void a(aus var1);
 }

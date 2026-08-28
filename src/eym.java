@@ -1,45 +1,38 @@
-public class eym {
-   private static final eyw<Object> a = new eyw<Object>() {
-      @Override
-      public void a(eyt<Object> $$0) {
-      }
+import com.google.common.math.IntMath;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-      @Override
-      public boolean a(jd $$0, Object $$1) {
-         return false;
-      }
+public final class eym implements eyq {
+   private final eyk a;
+   private final int b;
+   private final int c;
 
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final eyp<Object> b = new eyp<Object>() {
-      @Override
-      public void a(eyt<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(jd $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(jd $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-
-   public static <T> eyw<T> a() {
-      return (eyw<T>)a;
+   eym(int $$0, int $$1) {
+      this.a = new eyk((int)eyu.a($$0, $$1));
+      int $$2 = IntMath.gcd($$0, $$1);
+      this.b = $$0 / $$2;
+      this.c = $$1 / $$2;
    }
 
-   public static <T> eyp<T> b() {
-      return (eyp<T>)b;
+   @Override
+   public boolean a(eyq.a $$0) {
+      int $$1 = this.a.size() - 1;
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public int size() {
+      return this.a.size();
+   }
+
+   @Override
+   public DoubleList a() {
+      return this.a;
    }
 }

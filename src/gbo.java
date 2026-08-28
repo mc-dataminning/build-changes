@@ -1,83 +1,90 @@
-public class gbo extends gdn {
-   private static final int a = 11993298;
-   private static final int b = 14614777;
-   private static final float F = 0.7176471F;
-   private static final float G = 0.0F;
-   private static final float H = 0.8235294F;
-   private static final float I = 0.8745098F;
-   private static final float J = 0.0F;
-   private static final float K = 0.9764706F;
-   private boolean L;
-   private final gdi M;
+import java.util.IdentityHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-   gbo(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gdi $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.B = 0.96F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.v = ayo.a(this.r, 0.7176471F, 0.8745098F);
-      this.w = ayo.a(this.r, 0.0F, 0.0F);
-      this.x = ayo.a(this.r, 0.8235294F, 0.9764706F);
-      this.D *= 0.75F;
-      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
-      this.L = false;
-      this.n = false;
-      this.M = $$7;
-      this.b($$7);
+public class gbo {
+   private static final gbo.a a = new gbo.a();
+   private static final gbo.a b = new gbo.a();
+   private static final gbo.a c = new gbo.a();
+   private CompletableFuture<hao<cvl>> d = CompletableFuture.completedFuture(hao.empty());
+   private CompletableFuture<hao<cvl>> e = CompletableFuture.completedFuture(hao.empty());
+   private CompletableFuture<hao<ftt>> f = CompletableFuture.completedFuture(hao.empty());
+   private final Map<gbo.a, Runnable> g = new IdentityHashMap<>();
+
+   private void a(gbo.a $$0, Runnable $$1) {
+      $$1.run();
+      this.g.put($$0, $$1);
    }
 
-   @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.M);
-         if (this.m) {
-            this.k = 0.0;
-            this.L = true;
-         }
-
-         if (this.L) {
-            this.k += 0.002;
-         }
-
-         this.a(this.j, this.k, this.l);
-         if (this.h == this.e) {
-            this.j *= 1.1;
-            this.l *= 1.1;
-         }
-
-         this.j = this.j * (double)this.B;
-         this.l = this.l * (double)this.B;
-         if (this.L) {
-            this.k = this.k * (double)this.B;
-         }
+      for (Runnable $$0 : this.g.values()) {
+         $$0.run();
       }
    }
 
-   @Override
-   public gcr b() {
-      return gcr.b;
+   private static Stream<String> a(Stream<cvl> $$0, cvg.b $$1, cxf $$2) {
+      return $$0.<xd>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * ayo.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public void a(fhm $$0, kb.b $$1) {
+      this.a(
+         a,
+         () -> {
+            List<ftt> $$2 = $$0.b();
+            ka<cvg> $$3 = $$1.d(lv.K);
+            cvg.b $$4 = cvg.b.a($$1);
+            cxf $$5 = cxf.a.a;
+            CompletableFuture<?> $$6 = this.f;
+            this.f = CompletableFuture.supplyAsync(
+               () -> new haj<>(
+                     $$3xx -> a($$3xx.e().stream().map($$1xxxx -> $$1xxxx.b().a($$1)), $$4, $$5),
+                     $$2xx -> $$2xx.e().stream().map($$2xxx -> $$3.b($$2xxx.b().a($$1).h())),
+                     $$2
+                  ),
+               ad.g()
+            );
+            $$6.cancel(true);
+         }
+      );
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   public hao<ftt> b() {
+      return this.f.join();
+   }
 
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
+   public void a(List<cvl> $$0) {
+      this.a(c, () -> {
+         CompletableFuture<?> $$1 = this.e;
+         this.e = CompletableFuture.supplyAsync(() -> new hak<>($$0xxx -> $$0xxx.j().map(axi::b), $$0), ad.g());
+         $$1.cancel(true);
+      });
+   }
 
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
+   public hao<cvl> c() {
+      return this.e.join();
+   }
+
+   public void a(jp.a $$0, List<cvl> $$1) {
+      this.a(
+         b,
+         () -> {
+            cvg.b $$2 = cvg.b.a($$0);
+            cxf $$3 = cxf.a.a.c();
+            CompletableFuture<?> $$4 = this.d;
+            this.d = CompletableFuture.supplyAsync(
+               () -> new haj<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(ala::a).stream(), $$1), ad.g()
+            );
+            $$4.cancel(true);
+         }
+      );
+   }
+
+   public hao<cvl> d() {
+      return this.d.join();
+   }
+
+   static class a {
    }
 }

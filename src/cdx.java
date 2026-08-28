@@ -1,37 +1,24 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
-public class cdx {
-   private final btp a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
-
-   public cdx(btp $$0) {
-      this.a = $$0;
+public class cdx extends ceh<clr> {
+   @Override
+   public Set<cdi<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cdi.B)));
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
-   }
-
-   public boolean a(bsr $$0) {
-      int $$1 = $$0.an();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dO().ag().a("hasLineOfSight");
-         boolean $$2 = this.a.F($$0);
-         this.a.dO().ag().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
-
-         return $$2;
-      }
+   protected void a(arg $$0, clr $$1) {
+      super.a($$0, $$1);
+      $$1.dX()
+         .c(cdi.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(bto.e)
+         .filter($$1x -> ceo.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.dX().a(cdi.B, $$1x), () -> $$1.dX().b(cdi.B));
    }
 }

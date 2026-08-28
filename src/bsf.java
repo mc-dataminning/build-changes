@@ -1,20 +1,19 @@
-class bsf extends brx {
-   protected bsf(bry $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bsf implements azy {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bsf> d = azy.a(bsf::values);
+   private final String e;
+
+   private bsf(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(btn $$0, int $$1) {
-      if ($$0.ew() < $$0.eN()) {
-         $$0.c(1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 50 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public String c() {
+      return this.e;
    }
 }

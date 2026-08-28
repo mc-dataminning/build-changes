@@ -1,55 +1,16 @@
-public class cpa extends cou {
-   public cpa(bsx<? extends cpa> $$0, dcw $$1) {
+public class cpa extends coz {
+   private static final float g = 3.0F;
+
+   public cpa(btq<? extends coz> $$0, dds $$1) {
       super($$0, $$1);
    }
 
-   public cpa(dcw $$0, double $$1, double $$2, double $$3) {
-      super(bsx.s, $$1, $$2, $$3, $$0);
+   public cpa(clr $$0, dds $$1) {
+      super(btq.n, $$1, $$0, $$0.dx(), $$0.gq(), $$0.dD());
    }
 
    @Override
-   protected cul ak_() {
-      return cut.nN;
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cot.a v() {
-      return cot.a.b;
-   }
-
-   @Override
-   public dtc x() {
-      return dga.cv.o().a(dhb.c, ji.c);
-   }
-
-   @Override
-   public int z() {
-      return 8;
-   }
-
-   @Override
-   public cpu a(int $$0, cmw $$1) {
-      return cqc.a($$0, $$1, this);
-   }
-
-   @Override
-   public void c(cmx $$0) {
-      this.dO().a(dxz.j, this.dm(), dxz.a.a($$0));
-   }
-
-   @Override
-   public bqr a(cmx $$0, bqq $$1) {
-      bqr $$2 = this.c_($$0);
-      if ($$2.a()) {
-         this.a(dxz.k, $$0);
-         clo.a($$0, true);
-      }
-
-      return $$2;
+   protected void a(eye $$0) {
+      this.dS().a(this, null, e, $$0.a(), $$0.b(), $$0.c(), 3.0F, false, dds.a.e, ln.A, ln.z, awd.cQ);
    }
 }

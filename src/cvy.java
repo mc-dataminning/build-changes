@@ -1,28 +1,41 @@
-public class cvy extends cul implements cvm {
-   public cvy(cul.a $$0) {
+public class cvy extends cvg {
+   private static final int a = 32;
+
+   public cvy(cvg.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      cuq $$3 = $$1.b($$2);
-      $$0.a(null, $$1.dt(), $$1.dv(), $$1.dz(), avp.yA, avq.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      if (!$$0.B) {
-         cnu $$4 = new cnu($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dG(), $$1.dE(), 0.0F, 1.5F, 1.0F);
-         $$0.b($$4);
+   public cvl a(cvl $$0, dds $$1, buf $$2) {
+      if ($$2 instanceof arh $$3) {
+         an.A.a($$3, $$0);
+         $$3.b(awn.c.b(this));
       }
 
-      $$1.b(avz.c.b(this));
-      $$3.a(1, $$1);
-      return bqs.a($$3, $$0.x_());
+      if (!$$1.B) {
+         $$2.ew();
+      }
+
+      if ($$2 instanceof cnp $$4) {
+         return cvn.a($$0, $$4, new cvl(cvo.qz), false);
+      } else {
+         $$0.a(1, $$2);
+         return $$0;
+      }
    }
 
    @Override
-   public cnp a(dcw $$0, jw $$1, cuq $$2, ji $$3) {
-      cnu $$4 = new cnu($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public int a(cvl $$0, buf $$1) {
+      return 32;
+   }
+
+   @Override
+   public cxh b(cvl $$0) {
+      return cxh.c;
+   }
+
+   @Override
+   public brk a(dds $$0, cnp $$1, brj $$2) {
+      return cvn.a($$0, $$1, $$2);
    }
 }

@@ -1,40 +1,42 @@
-public class gna extends glp<cge, fvc<cge>> {
-   private final fvc<cge> a = this.a();
-   private final fvc<cge> i;
-   private static final akr j = akr.b("textures/entity/fish/tropical_a.png");
-   private static final akr k = akr.b("textures/entity/fish/tropical_b.png");
+public class gna extends gln<cgf, gtd, fxd> {
+   private static final alb a = alb.b("textures/entity/fox/fox.png");
+   private static final alb b = alb.b("textures/entity/fox/fox_sleep.png");
+   private static final alb k = alb.b("textures/entity/fox/snow_fox.png");
+   private static final alb l = alb.b("textures/entity/fox/snow_fox_sleep.png");
 
-   public gna(gkj.a $$0) {
-      super($$0, new fxq<>($$0.a(fyj.bM)), 0.15F);
-      this.i = new fxr<>($$0.a(fyj.bK));
-      this.a(new gpf(this, $$0.f()));
+   public gna(gms.a $$0) {
+      super($$0, new fxd($$0.a(gaa.az)), new fxd($$0.a(gaa.aA)), 0.4F);
+      this.a(new gqs(this, $$0.b()));
    }
 
-   public akr a(cge $$0) {
-      return switch ($$0.gv().a()) {
-         case a -> j;
-         case b -> k;
-      };
-   }
-
-   public void a(cge $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      fvc<cge> $$6 = switch ($$0.gv().a()) {
-         case a -> this.a;
-         case b -> this.i;
-      };
-      this.g = $$6;
-      $$6.a($$0.gt().d());
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$6.a(-1);
-   }
-
-   protected void a(cge $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * ayo.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.bf()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
+   protected void a(gtd $$0, fcu $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.g || $$0.f) {
+         $$1.a(a.b.rotationDegrees(-$$0.V));
       }
+   }
+
+   public alb a(gtd $$0) {
+      if ($$0.h == cgf.v.a) {
+         return $$0.d ? b : a;
+      } else {
+         return $$0.d ? l : k;
+      }
+   }
+
+   public gtd c() {
+      return new gtd();
+   }
+
+   public void a(cgf $$0, gtd $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.cf();
+      $$1.b = $$0.K($$2);
+      $$1.d = $$0.fL();
+      $$1.e = $$0.y();
+      $$1.f = $$0.go();
+      $$1.g = $$0.gp();
+      $$1.h = $$0.t();
    }
 }

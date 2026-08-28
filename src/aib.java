@@ -1,53 +1,60 @@
-public class aib implements zg<agi> {
-   public static final yx<vw, aib> a = zg.a(aib::a, aib::new);
-   private static final int b = 384;
-   private final jd c;
-   private final String[] d;
-   private final boolean e;
+import javax.annotation.Nullable;
 
-   public aib(jd $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = new String[]{$$2, $$3, $$4, $$5};
+public class aib implements zk<agq> {
+   public static final zb<wa, aib> a = zk.a(aib::a, aib::new);
+   private final aib.a b;
+   @Nullable
+   private final alb c;
+
+   public aib(aib.a $$0, @Nullable alb $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private aib(vw $$0) {
-      this.c = $$0.e();
-      this.e = $$0.readBoolean();
-      this.d = new String[4];
+   public static aib a(ag $$0) {
+      return new aib(aib.a.a, $$0.a());
+   }
 
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         this.d[$$1] = $$0.d(384);
+   public static aib b() {
+      return new aib(aib.a.b, null);
+   }
+
+   private aib(wa $$0) {
+      this.b = $$0.b(aib.a.class);
+      if (this.b == aib.a.a) {
+         this.c = $$0.q();
+      } else {
+         this.c = null;
       }
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.c);
-      $$0.a(this.e);
-
-      for (int $$1 = 0; $$1 < 4; $$1++) {
-         $$0.a(this.d[$$1]);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      if (this.b == aib.a.a) {
+         $$0.a(this.c);
       }
    }
 
    @Override
-   public zi<aib> a() {
-      return agg.bZ;
+   public zm<aib> a() {
+      return ago.bT;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public jd b() {
+   public aib.a e() {
+      return this.b;
+   }
+
+   @Nullable
+   public alb f() {
       return this.c;
    }
 
-   public boolean e() {
-      return this.e;
-   }
-
-   public String[] f() {
-      return this.d;
+   public static enum a {
+      a,
+      b;
    }
 }

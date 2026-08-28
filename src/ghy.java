@@ -1,57 +1,193 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
 import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
 public class ghy {
-   private final Long2ObjectMap<ghy.a> a = new Long2ObjectOpenHashMap();
+   private static final boolean g = false;
+   private static final float h = -16.0F;
+   private static final float i = 32.0F;
+   public final Vector3f a;
+   public final Vector3f b;
+   public final Map<jj, ghz> c;
+   public final gia d;
+   public final boolean e;
+   public final int f;
 
-   @Nullable
-   public ghx a(dcw $$0, kf $$1) {
-      ghy.a $$2 = this.a($$0, $$1.a(), $$1.c());
-      if ($$2.a().c($$1.b())) {
-         return null;
-      } else {
-         int $$3 = $$1.a() - 1;
-         int $$4 = $$1.c() - 1;
-         int $$5 = $$1.a() + 1;
-         int $$6 = $$1.c() + 1;
-         ghw[] $$7 = new ghw[9];
+   public ghy(Vector3f $$0, Vector3f $$1, Map<jj, ghz> $$2) {
+      this($$0, $$1, $$2, null, true, 0);
+   }
 
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
-               int $$10 = ghx.a($$3, $$4, $$9, $$8);
-               ghy.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
-               $$7[$$10] = $$11.b();
+   public ghy(Vector3f $$0, Vector3f $$1, Map<jj, ghz> $$2, @Nullable gia $$3, boolean $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.a();
+   }
+
+   private void a() {
+      for (Entry<jj, ghz> $$0 : this.c.entrySet()) {
+         float[] $$1 = this.a($$0.getKey());
+         $$0.getValue().d().a($$1);
+      }
+   }
+
+   private float[] a(jj $$0) {
+      switch ($$0) {
+         case a:
+            return new float[]{this.a.x(), 16.0F - this.b.z(), this.b.x(), 16.0F - this.a.z()};
+         case b:
+            return new float[]{this.a.x(), this.a.z(), this.b.x(), this.b.z()};
+         case c:
+         default:
+            return new float[]{16.0F - this.b.x(), 16.0F - this.b.y(), 16.0F - this.a.x(), 16.0F - this.a.y()};
+         case d:
+            return new float[]{this.a.x(), 16.0F - this.b.y(), this.b.x(), 16.0F - this.a.y()};
+         case e:
+            return new float[]{this.a.z(), 16.0F - this.b.y(), this.b.z(), 16.0F - this.a.y()};
+         case f:
+            return new float[]{16.0F - this.b.z(), 16.0F - this.b.y(), 16.0F - this.a.z(), 16.0F - this.a.y()};
+      }
+   }
+
+   protected static class a implements JsonDeserializer<ghy> {
+      private static final boolean a = true;
+      private static final int b = 0;
+
+      public ghy a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         gia $$6 = this.a($$3);
+         Map<jj, ghz> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !ays.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
+         } else {
+            boolean $$8 = ays.a($$3, "shade", true);
+            int $$9 = 0;
+            if ($$3.has("light_emission")) {
+               boolean $$10 = ays.b($$3, "light_emission");
+               if ($$10) {
+                  $$9 = ays.o($$3, "light_emission");
+               }
+
+               if (!$$10 || $$9 < 0 || $$9 > 15) {
+                  throw new JsonParseException("Expected light_emission to be an Integer between (inclusive) 0 and 15");
+               }
             }
+
+            return new ghy($$4, $$5, $$7, $$6, $$8, $$9);
          }
-
-         return new ghx($$0, $$3, $$4, $$7);
       }
-   }
 
-   private ghy.a a(dcw $$0, int $$1, int $$2) {
-      return (ghy.a)this.a.computeIfAbsent(dcd.c($$1, $$2), $$1x -> new ghy.a($$0.d(dcd.a($$1x), dcd.b($$1x))));
-   }
-
-   static final class a {
-      private final dvi a;
       @Nullable
-      private ghw b;
-
-      a(dvi $$0) {
-         this.a = $$0;
-      }
-
-      public dvi a() {
-         return this.a;
-      }
-
-      public ghw b() {
-         if (this.b == null) {
-            this.b = new ghw(this.a);
+      private gia a(JsonObject $$0) {
+         gia $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = ays.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            jj.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = ays.a($$2, "rescale", false);
+            $$1 = new gia($$3, $$4, $$5, $$6);
          }
 
-         return this.b;
+         return $$1;
+      }
+
+      private float b(JsonObject $$0) {
+         float $$1 = ays.m($$0, "angle");
+         if ($$1 != 0.0F && azc.e($$1) != 22.5F && azc.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      private jj.a c(JsonObject $$0) {
+         String $$1 = ays.i($$0, "axis");
+         jj.a $$2 = jj.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<jj, ghz> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jj, ghz> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<jj, ghz> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jj, ghz> $$2 = Maps.newEnumMap(jj.class);
+         JsonObject $$3 = ays.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            jj $$5 = this.a($$4.getKey());
+            $$2.put($$5, (ghz)$$0.deserialize($$4.getValue(), ghz.class));
+         }
+
+         return $$2;
+      }
+
+      private jj a(String $$0) {
+         jj $$1 = jj.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
+      }
+
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = ays.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = ays.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
       }
    }
 }

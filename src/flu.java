@@ -1,83 +1,58 @@
-public abstract class flu implements fma {
-   private int c;
-   private int d;
-   protected int a;
-   protected int b;
+import java.util.Locale;
+import java.util.function.Supplier;
 
-   public flu(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.b = $$3;
+public class flu extends flp {
+   private static final int f = -6745839;
+   private static final int g = -4548257;
+   private static final int h = -10547572;
+   private final Supplier<Float> i;
+
+   public flu(fjl $$0, bmo $$1, Supplier<Float> $$2) {
+      super($$0, $$1);
+      this.i = $$2;
    }
 
    @Override
-   public void m(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.D() + ($$0 - this.D());
-         $$1.m($$2);
-      });
-      this.c = $$0;
+   protected void d(fjn $$0, int $$1, int $$2, int $$3) {
+      float $$4 = (float)bad.c / this.i.get();
+      this.a($$0, String.format(Locale.ROOT, "%.1f TPS", $$4), $$1 + 1, $$3 - 60 + 1);
    }
 
    @Override
-   public void n(int $$0) {
-      this.b($$1 -> {
-         int $$2 = $$1.E() + ($$0 - this.E());
-         $$1.n($$2);
-      });
-      this.d = $$0;
+   protected void c(fjn $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3, bmp.b.ordinal());
+      int $$5 = this.b((double)$$4);
+      $$0.a(ghe.H(), $$2, $$1 - $$5, $$2 + 1, $$1, -6745839);
+      long $$6 = this.e.a($$3, bmp.c.ordinal());
+      int $$7 = this.b((double)$$6);
+      $$0.a(ghe.H(), $$2, $$1 - $$5 - $$7, $$2 + 1, $$1 - $$5, -4548257);
+      long $$8 = this.e.a($$3) - this.e.a($$3, bmp.d.ordinal()) - $$4 - $$6;
+      int $$9 = this.b((double)$$8);
+      $$0.a(ghe.H(), $$2, $$1 - $$9 - $$7 - $$5, $$2 + 1, $$1 - $$7 - $$5, -10547572);
    }
 
    @Override
-   public int D() {
-      return this.c;
+   protected long b(int $$0) {
+      return this.e.a($$0) - this.e.a($$0, bmp.d.ordinal());
    }
 
    @Override
-   public int E() {
-      return this.d;
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
    }
 
    @Override
-   public int y() {
-      return this.a;
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / (double)this.i.get().floatValue());
    }
 
    @Override
-   public int w() {
-      return this.b;
+   protected int a(long $$0) {
+      float $$1 = this.i.get();
+      return this.a(c((double)$$0), (double)$$1, -16711936, (double)$$1 * 1.125, -256, (double)$$1 * 1.25, -65536);
    }
 
-   protected abstract static class a {
-      public final fmb a;
-      public final fmc.a b;
-
-      protected a(fmb $$0, fmc $$1) {
-         this.a = $$0;
-         this.b = $$1.h();
-      }
-
-      public int a() {
-         return this.a.w() + this.b.b + this.b.d;
-      }
-
-      public int b() {
-         return this.a.y() + this.b.a + this.b.c;
-      }
-
-      public void a(int $$0, int $$1) {
-         float $$2 = (float)this.b.a;
-         float $$3 = (float)($$1 - this.a.y() - this.b.c);
-         int $$4 = (int)ayo.i(this.b.e, $$2, $$3);
-         this.a.m($$4 + $$0);
-      }
-
-      public void b(int $$0, int $$1) {
-         float $$2 = (float)this.b.b;
-         float $$3 = (float)($$1 - this.a.w() - this.b.d);
-         int $$4 = Math.round(ayo.i(this.b.f, $$2, $$3));
-         this.a.n($$4 + $$0);
-      }
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

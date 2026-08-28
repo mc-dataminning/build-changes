@@ -1,62 +1,75 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
 
-public class een implements eei {
-   public static final Codec<een> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               lt.e.r().fieldOf("block").flatXmap(een::a, DataResult::success).orElse((dky)dga.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               kb.a(lu.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, een::new)
-   );
-   public final dky b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final jq<dfy> h;
-   private final ObjectArrayList<ji> i;
-
-   private static DataResult<dky> a(dfy $$0) {
-      return $$0 instanceof dky $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+public class een extends edc<egb> {
+   public een(Codec<egb> $$0) {
+      super($$0);
    }
 
-   public een(dky $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jq<dfy> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(ji.b);
+   @Override
+   public boolean a(ede<egb> $$0) {
+      egb $$1 = $$0.f();
+      dep $$2 = $$0.b();
+      je $$3 = $$0.e();
+      if (!$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
+         return false;
+      } else {
+         dua $$4 = $$2.a_($$3);
+         if (!$$4.l() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.i()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.i())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
       }
-
-      if ($$2) {
-         this.i.add(ji.a);
-      }
-
-      if ($$4) {
-         ji.c.a.forEach(this.i::add);
-      }
-   }
-
-   public List<ji> a(ayw $$0, ji $$1) {
-      return ad.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
-   }
-
-   public List<ji> a(ayw $$0) {
-      return ad.a(this.i, $$0);
    }
 }

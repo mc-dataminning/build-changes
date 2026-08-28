@@ -1,20 +1,23 @@
 import io.netty.buffer.ByteBuf;
-import java.util.HashMap;
-import java.util.Map;
 
-public record zo(Map<String, String> b) implements zg<zm> {
-   private static final int c = 128;
-   private static final int d = 4096;
-   private static final int e = 32;
-   private static final yx<ByteBuf, Map<String, String>> f = yv.a(HashMap::new, yv.b(128), yv.b(4096), 32);
-   public static final yx<ByteBuf, zo> a = yx.a(f, zo::b, zo::new);
+public class zo<B extends ByteBuf, L extends wj> {
+   private final za.a<B, zk<? super L>, zm<? extends zk<? super L>>> a = za.a(zk::a);
+   private final zl b;
 
-   @Override
-   public zi<zo> a() {
-      return zy.b;
+   public zo(zl $$0) {
+      this.b = $$0;
    }
 
-   public void a(zm $$0) {
-      $$0.a(this);
+   public <T extends zk<? super L>> zo<B, L> a(zm<T> $$0, zb<? super B, T> $$1) {
+      if ($$0.a() != this.b) {
+         throw new IllegalArgumentException("Invalid packet flow for packet " + $$0 + ", expected " + this.b.name());
+      } else {
+         this.a.a($$0, $$1);
+         return this;
+      }
+   }
+
+   public zb<B, zk<? super L>> a() {
+      return this.a.a();
    }
 }

@@ -1,34 +1,44 @@
-import com.google.common.collect.ImmutableMap;
+import java.util.Optional;
 
-public class bwi extends bvh<btp> {
-   public static final int c = 100;
-   private final bqc d;
-   private final avo e;
+public class bwi implements bxl {
+   private final btj a;
+   private final boolean b;
 
-   public bwi(bqc $$0, avo $$1) {
-      super(ImmutableMap.of(ccs.n, cct.c, ccs.T, cct.a), 100);
-      this.d = $$0;
-      this.e = $$1;
+   public bwi(btj $$0, boolean $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected boolean a(aqu $$0, btp $$1, long $$2) {
-      return !$$1.aF();
+   @Override
+   public eye a() {
+      return this.b ? this.a.dq().b(0.0, (double)this.a.cP(), 0.0) : this.a.dq();
    }
 
-   protected void b(aqu $$0, btp $$1, long $$2) {
-      $$1.r(true);
-      $$1.b(bua.g);
+   @Override
+   public je b() {
+      return this.a.ds();
    }
 
-   protected void c(aqu $$0, btp $$1, long $$2) {
-      if ($$1.aF()) {
-         $$1.i($$1.dr().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, avq.g, 2.0F, 1.0F);
+   @Override
+   public boolean a(buf $$0) {
+      if (this.a instanceof buf $$1) {
+         if (!$$1.bI()) {
+            return false;
+         } else {
+            Optional<cdk> $$3 = $$0.dX().c(cdi.h);
+            return $$3.isPresent() && $$3.get().a($$1);
+         }
+      } else {
+         return true;
       }
+   }
 
-      $$1.r(false);
-      $$1.b(bua.a);
-      $$1.dT().b(ccs.T);
-      $$1.dT().a(ccs.S, this.d.a($$0.z));
+   public btj c() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "EntityTracker for " + this.a;
    }
 }

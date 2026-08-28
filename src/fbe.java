@@ -1,56 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.platform.GLX;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodHandles.Lookup;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import javax.annotation.Nullable;
+import org.lwjgl.system.Pointer;
 
 public class fbe {
    @Nullable
-   private static fbl a;
+   private static final MethodHandle a = GLX.make(() -> {
+      try {
+         Lookup $$0 = MethodHandles.lookup();
+         Class<?> $$1 = Class.forName("org.lwjgl.system.MemoryManage$DebugAllocator");
+         Method $$2 = $$1.getDeclaredMethod("untrack", long.class);
+         $$2.setAccessible(true);
+         Field $$3 = Class.forName("org.lwjgl.system.MemoryUtil$LazyInit").getDeclaredField("ALLOCATOR");
+         $$3.setAccessible(true);
+         Object $$4 = $$3.get(null);
+         return $$1.isInstance($$4) ? $$0.unreflect($$2) : null;
+      } catch (NoSuchMethodException | NoSuchFieldException | IllegalAccessException | ClassNotFoundException var5) {
+         throw new RuntimeException(var5);
+      }
+   });
 
-   public static void a() {
+   public static void a(long $$0) {
       if (a != null) {
-         b();
-         fbl.b();
+         try {
+            a.invoke((long)$$0);
+         } catch (Throwable var3) {
+            throw new RuntimeException(var3);
+         }
       }
    }
 
-   public static void b() {
-      a = null;
-   }
-
-   public static void a(fbh $$0) {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> c($$0));
-      } else {
-         c($$0);
-      }
-   }
-
-   private static void c(fbh $$0) {
-      fbl $$1 = d($$0);
-      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-   }
-
-   public static void b(fbh $$0) {
-      fbl $$1 = d($$0);
-      $$1.c();
-   }
-
-   private static fbl d(fbh $$0) {
-      RenderSystem.assertOnRenderThread();
-      fbl $$1 = a($$0.c().a());
-      $$1.a($$0);
-      return $$1;
-   }
-
-   private static fbl a(fbn $$0) {
-      fbl $$1 = $$0.i();
-      a($$1);
-      return $$1;
-   }
-
-   private static void a(fbl $$0) {
-      if ($$0 != a) {
-         $$0.a();
-         a = $$0;
-      }
+   public static void a(Pointer $$0) {
+      a($$0.address());
    }
 }

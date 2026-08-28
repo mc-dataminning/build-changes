@@ -1,29 +1,40 @@
-public record add(int b, float c) implements zg<abu> {
-   public static final yx<vw, add> a = zg.a(add::a, add::new);
+import javax.annotation.Nullable;
 
-   public add(btn $$0) {
-      this($$0.an(), $$0.eE());
+public class add implements zk<abz> {
+   public static final zb<wa, add> a = zk.a(add::a, add::new);
+   private final int b;
+   private final byte c;
+
+   public add(btj $$0, byte $$1) {
+      this.b = $$0.ap();
+      this.c = $$1;
    }
 
-   private add(vw $$0) {
-      this($$0.l(), $$0.readFloat());
+   private add(wa $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readByte();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(wa $$0) {
+      $$0.q(this.b);
+      $$0.l(this.c);
    }
 
    @Override
-   public zi<add> a() {
-      return agg.I;
+   public zm<add> a() {
+      return ago.D;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public float e() {
+   @Nullable
+   public btj a(dds $$0) {
+      return $$0.a(this.b);
+   }
+
+   public byte b() {
       return this.c;
    }
 }

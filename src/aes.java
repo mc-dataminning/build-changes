@@ -1,29 +1,19 @@
-public class aes implements zg<abu> {
-   public static final yx<vw, aes> a = zg.a(aes::a, aes::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-   public aes(dut $$0) {
-      this.b = $$0.r();
-   }
-
-   private aes(vw $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
-   }
+public record aes(xd b, Optional<byte[]> c) implements zk<abz> {
+   public static final zb<ByteBuf, aes> a = zb.a(xf.f, aes::b, yz.k.a(yz::a), aes::e, aes::new);
 
    @Override
-   public zi<aes> a() {
-      return agg.av;
+   public zm<aes> a() {
+      return ago.aq;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Optional<byte[]> e() {
+      return this.c;
    }
 }

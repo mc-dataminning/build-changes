@@ -1,34 +1,103 @@
-import java.util.List;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public interface ddp {
-   void a(bsx<?> var1, ayw var2);
+public enum ddp implements azy {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   static void a(cuq $$0, List<wz> $$1, String $$2) {
-      wz $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.add($$3);
+   public static final ddp e = a;
+   public static final azy.a<ddp> f = azy.a(ddp::values);
+   private static final IntFunction<ddp> g = axt.a(ddp::a, values(), axt.a.a);
+   private static final int h = -1;
+   private final int i;
+   private final String j;
+   private final xd k;
+   private final xd l;
+
+   private ddp(final int $$0, final String $$1) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = xd.c("selectWorld.gameMode." + $$1);
+      this.l = xd.c("gameMode." + $$1);
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public String b() {
+      return this.j;
+   }
+
+   @Override
+   public String c() {
+      return this.j;
+   }
+
+   public xd d() {
+      return this.l;
+   }
+
+   public xd e() {
+      return this.k;
+   }
+
+   public void a(cnm $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
       } else {
-         $$1.add(wy.a);
-         $$1.add(wz.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.add(wy.a().b(wz.c("block.minecraft.spawner.desc2").a(n.j)));
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
       }
+
+      $$0.e = !this.f();
+   }
+
+   public boolean f() {
+      return this == c || this == d;
+   }
+
+   public boolean g() {
+      return this == b;
+   }
+
+   public boolean h() {
+      return this == a || this == c;
+   }
+
+   public static ddp a(int $$0) {
+      return g.apply($$0);
+   }
+
+   public static ddp a(String $$0) {
+      return a($$0, a);
    }
 
    @Nullable
-   static wz a(cuq $$0, String $$1) {
-      ub $$2 = $$0.a(kq.O, cxh.a).d();
-      akr $$3 = a($$2, $$1);
-      return $$3 != null ? lt.f.b($$3).map($$0x -> wz.c($$0x.g()).a(n.h)).orElse(null) : null;
+   @Contract("_,!null->!null;_,null->_")
+   public static ddp a(String $$0, @Nullable ddp $$1) {
+      ddp $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable ddp $$0) {
+      return $$0 != null ? $$0.i : -1;
    }
 
    @Nullable
-   private static akr a(ub $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return akr.c($$2);
-      } else {
-         return null;
-      }
+   public static ddp b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
    }
 }

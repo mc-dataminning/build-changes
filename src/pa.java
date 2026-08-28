@@ -1,46 +1,28 @@
-import com.google.gson.JsonElement;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.JsonOps;
-import java.nio.file.Path;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class pa implements ma {
-   private final mc d;
-   private final CompletableFuture<jo.a> e;
-
-   public pa(mc $$0, CompletableFuture<jo.a> $$1) {
-      this.e = $$1;
-      this.d = $$0;
+public class pa extends or {
+   pa(jp.a $$0, oq $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public CompletableFuture<?> a(ly $$0) {
-      return this.e.thenCompose($$1 -> {
-         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(akm.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akm.c<?>)$$3).stream()).toArray(CompletableFuture[]::new));
-      });
+   protected void a() {
+      this.a(op.e, cvo.qV).a('-', cvo.pt).a('#', cvo.qE).b("-").b("#").b("has_string", this.a(cvo.pt)).a(this.b);
    }
 
-   private <T> Optional<CompletableFuture<?>> a(ly $$0, jo.a $$1, DynamicOps<JsonElement> $$2, akm.c<T> $$3) {
-      akq<? extends jz<T>> $$4 = $$3.a();
-      return $$1.a($$4).map($$4x -> {
-         mc.a $$5 = this.d.a($$4);
-         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
-      });
-   }
+   public static class a extends or.b {
+      public a(md $$0, CompletableFuture<jp.a> $$1) {
+         super($$0, $$1);
+      }
 
-   private static <E> CompletableFuture<?> a(Path $$0, ly $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
-      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
-         .mapOrElse(
-            $$2x -> ma.a($$1, $$2x, $$0),
-            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
-         );
-   }
+      @Override
+      protected or a(jp.a $$0, oq $$1) {
+         return new pa($$0, $$1);
+      }
 
-   @Override
-   public final String a() {
-      return "Registries";
+      @Override
+      public String a() {
+         return "Bundle Recipes";
+      }
    }
 }

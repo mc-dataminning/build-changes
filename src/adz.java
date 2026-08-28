@@ -1,23 +1,37 @@
-import java.util.List;
-import java.util.UUID;
+public class adz implements zk<abz> {
+   public static final zb<wa, adz> a = zk.a(adz::a, adz::new);
+   private final int b;
+   private final alb c;
 
-public record adz(List<UUID> b) implements zg<abu> {
-   public static final yx<vw, adz> a = zg.a(adz::a, adz::new);
-
-   private adz(vw $$0) {
-      this($$0.a(kg.g));
+   public adz(int $$0, czv<?> $$1) {
+      this.b = $$0;
+      this.c = $$1.a();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b, kg.g);
+   private adz(wa $$0) {
+      this.b = $$0.x();
+      this.c = $$0.q();
+   }
+
+   private void a(wa $$0) {
+      $$0.f(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zi<adz> a() {
-      return agg.ae;
+   public zm<adz> a() {
+      return ago.Z;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
+   }
+
+   public alb b() {
+      return this.c;
+   }
+
+   public int e() {
+      return this.b;
    }
 }

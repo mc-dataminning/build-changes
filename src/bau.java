@@ -1,33 +1,37 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import java.util.Locale;
 
-public class bau extends bfn {
-   public bau(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", bgr.s, "minecraft:piston");
+public class bau extends DataFix {
+   private final String a;
+   private final TypeReference b;
+
+   public bau(Schema $$0, String $$1, TypeReference $$2) {
+      super($$0, true);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgr.s, "minecraft:piston");
-      Type<?> $$2 = $$1.findFieldType("blockState");
-      OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
-      Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      int $$5 = $$4.get("blockId").asInt(0);
-      $$4 = $$4.remove("blockId");
-      int $$6 = $$4.get("blockData").asInt(0) & 15;
-      $$4 = $$4.remove("blockData");
-      Dynamic<?> $$7 = bbh.b($$5 << 4 | $$6);
-      Typed<?> $$8 = (Typed<?>)$$1.pointTyped($$0.getOps()).orElseThrow(() -> new IllegalStateException("Could not create new piston block entity."));
-      return $$8.set(DSL.remainderFinder(), $$4)
-         .set(
-            $$3,
-            (Typed)((Pair)$$2.readTyped($$7).result().orElseThrow(() -> new IllegalStateException("Could not parse newly created block state tag.")))
-               .getFirst()
-         );
+   public TypeRewriteRule makeRule() {
+      TaggedChoiceType<?> $$0 = this.getInputSchema().findChoiceType(this.b);
+      TaggedChoiceType<?> $$1 = this.getOutputSchema().findChoiceType(this.b);
+      return this.a($$0, $$1);
+   }
+
+   private <K> TypeRewriteRule a(TaggedChoiceType<K> $$0, TaggedChoiceType<?> $$1) {
+      if ($$0.getKeyType() != $$1.getKeyType()) {
+         throw new IllegalStateException("Could not inject: key type is not the same");
+      } else {
+         return this.fixTypeEverywhere(this.a, $$0, $$1, $$1x -> $$1xx -> {
+               if (!$$1.hasType($$1xx.getFirst())) {
+                  throw new IllegalArgumentException(String.format(Locale.ROOT, "%s: Unknown type %s in '%s'", this.a, $$1xx.getFirst(), this.b.typeName()));
+               } else {
+                  return $$1xx;
+               }
+            });
+      }
    }
 }

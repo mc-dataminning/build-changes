@@ -1,22 +1,32 @@
-public class cwj extends cul {
-   private final cwi a;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public cwj(cwi $$0, cul.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
+public enum cwj implements azy {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
+
+   public static final Codec<cwj> e = azy.b(cwj::values);
+   public static final IntFunction<cwj> f = axt.a($$0 -> $$0.h, values(), axt.a.a);
+   public static final zb<ByteBuf, cwj> g = yz.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cwj(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   public cwi h() {
-      return this.a;
+   public n a() {
+      return this.j;
    }
 
    @Override
-   public int g() {
-      return this.a.e();
-   }
-
-   @Override
-   public boolean a(cuq $$0, cuq $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   public String c() {
+      return this.i;
    }
 }

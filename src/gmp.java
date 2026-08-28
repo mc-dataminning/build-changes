@@ -1,11 +1,20 @@
-public class gmp extends gji<cnv> {
-   public static final akr a = akr.b("textures/entity/projectiles/spectral_arrow.png");
+public class gmp extends gny<ckm, gts, fwz> {
+   private static final alb a = alb.b("textures/entity/endermite.png");
 
-   public gmp(gkj.a $$0) {
-      super($$0);
+   public gmp(gms.a $$0) {
+      super($$0, new fwz($$0.a(gaa.au)), 0.3F);
    }
 
-   public akr a(cnv $$0) {
+   @Override
+   protected float aX_() {
+      return 180.0F;
+   }
+
+   public alb c(gts $$0) {
       return a;
+   }
+
+   public gts c() {
+      return new gts();
    }
 }

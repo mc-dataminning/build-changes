@@ -1,56 +1,263 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-class bsc extends brx {
-   private static final int d = 2;
-   public static final int c = 2;
-   private final ToIntFunction<ayw> e;
+public class bsc {
+   private final ka<bsd> a;
+   private final bsb b;
+   private final bsb c;
+   private final bsb d;
+   private final bsb e;
+   private final bsb f;
+   private final bsb g;
+   private final bsb h;
+   private final bsb i;
+   private final bsb j;
+   private final bsb k;
+   private final bsb l;
+   private final bsb m;
+   private final bsb n;
+   private final bsb o;
+   private final bsb p;
+   private final bsb q;
+   private final bsb r;
+   private final bsb s;
+   private final bsb t;
+   private final bsb u;
+   private final bsb v;
+   private final bsb w;
+   private final bsb x;
+   private final bsb y;
+   private final bsb z;
 
-   protected bsc(bry $$0, int $$1, ToIntFunction<ayw> $$2) {
-      super($$0, $$1, lm.U);
-      this.e = $$2;
+   public bsc(kb $$0) {
+      this.a = $$0.d(lv.s);
+      this.b = this.a(bse.a);
+      this.c = this.a(bse.b);
+      this.d = this.a(bse.c);
+      this.e = this.a(bse.d);
+      this.f = this.a(bse.e);
+      this.g = this.a(bse.f);
+      this.h = this.a(bse.g);
+      this.i = this.a(bse.h);
+      this.j = this.a(bse.i);
+      this.k = this.a(bse.j);
+      this.l = this.a(bse.k);
+      this.m = this.a(bse.l);
+      this.n = this.a(bse.m);
+      this.o = this.a(bse.n);
+      this.p = this.a(bse.o);
+      this.q = this.a(bse.p);
+      this.r = this.a(bse.q);
+      this.s = this.a(bse.r);
+      this.t = this.a(bse.s);
+      this.u = this.a(bse.t);
+      this.v = this.a(bse.u);
+      this.w = this.a(bse.v);
+      this.x = this.a(bse.w);
+      this.y = this.a(bse.U);
+      this.z = this.a(bse.V);
    }
 
-   @VisibleForTesting
-   protected static int a(int $$0, bsc.a $$1, int $$2) {
-      return $$0 < 1 ? $$2 : ayo.a(0, $$0 - $$1.count($$0), $$2);
+   private bsb a(ala<bsd> $$0) {
+      return new bsb(this.a.g($$0));
    }
 
-   @Override
-   public void a(btn $$0, int $$1, bsr.c $$2) {
-      if ($$2 == bsr.c.a) {
-         int $$3 = this.e.applyAsInt($$0.dR());
-         dcw $$4 = $$0.dO();
-         int $$5 = $$4.ab().c(dcs.u);
-         int $$6 = a($$5, bsc.a.a($$0), $$3);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            this.a($$0.dO(), $$0.dt(), $$0.dv() + 0.5, $$0.dz());
-         }
-      }
+   private bsb a(ala<bsd> $$0, @Nullable btj $$1) {
+      return new bsb(this.a.g($$0), $$1);
    }
 
-   private void a(dcw $$0, double $$1, double $$2, double $$3) {
-      ckm $$4 = bsx.aP.a($$0);
-      if ($$4 != null) {
-         $$4.a(2, true);
-         $$4.b($$1, $$2, $$3, $$0.E_().i() * 360.0F, 0.0F);
-         $$0.b($$4);
-      }
+   private bsb a(ala<bsd> $$0, @Nullable btj $$1, @Nullable btj $$2) {
+      return new bsb(this.a.g($$0), $$1, $$2);
    }
 
-   @FunctionalInterface
-   protected interface a {
-      int count(int var1);
+   public bsb a() {
+      return this.b;
+   }
 
-      static bsc.a a(btn $$0) {
-         return $$1 -> {
-            List<ckm> $$2 = new ArrayList<>();
-            $$0.dO().a(bsx.aP, $$0.cK().g(2.0), $$1x -> $$1x != $$0, $$2, $$1);
-            return $$2.size();
-         };
-      }
+   public bsb b() {
+      return this.c;
+   }
+
+   public bsb c() {
+      return this.d;
+   }
+
+   public bsb d() {
+      return this.e;
+   }
+
+   public bsb e() {
+      return this.f;
+   }
+
+   public bsb f() {
+      return this.g;
+   }
+
+   public bsb g() {
+      return this.h;
+   }
+
+   public bsb h() {
+      return this.i;
+   }
+
+   public bsb i() {
+      return this.j;
+   }
+
+   public bsb j() {
+      return this.k;
+   }
+
+   public bsb k() {
+      return this.l;
+   }
+
+   public bsb l() {
+      return this.m;
+   }
+
+   public bsb m() {
+      return this.n;
+   }
+
+   public bsb n() {
+      return this.o;
+   }
+
+   public bsb o() {
+      return this.p;
+   }
+
+   public bsb p() {
+      return this.q;
+   }
+
+   public bsb q() {
+      return this.r;
+   }
+
+   public bsb r() {
+      return this.s;
+   }
+
+   public bsb s() {
+      return this.t;
+   }
+
+   public bsb t() {
+      return this.u;
+   }
+
+   public bsb u() {
+      return this.v;
+   }
+
+   public bsb v() {
+      return this.w;
+   }
+
+   public bsb w() {
+      return this.x;
+   }
+
+   public bsb a(btj $$0) {
+      return this.a(bse.x, $$0);
+   }
+
+   public bsb b(btj $$0) {
+      return this.a(bse.y, $$0);
+   }
+
+   public bsb c(btj $$0) {
+      return this.a(bse.z, $$0);
+   }
+
+   public bsb a(buf $$0) {
+      return this.a(bse.A, $$0);
+   }
+
+   public bsb b(buf $$0) {
+      return this.a(bse.B, $$0);
+   }
+
+   public bsb c(buf $$0) {
+      return this.a(bse.C, $$0);
+   }
+
+   public bsb a(cnp $$0) {
+      return this.a(bse.D, $$0);
+   }
+
+   public bsb a(cnw $$0, @Nullable btj $$1) {
+      return this.a(bse.E, $$0, $$1);
+   }
+
+   public bsb a(btj $$0, @Nullable btj $$1) {
+      return this.a(bse.F, $$0, $$1);
+   }
+
+   public bsb a(btj $$0, @Nullable buf $$1) {
+      return this.a(bse.G, $$0, $$1);
+   }
+
+   public bsb b(btj $$0, @Nullable buf $$1) {
+      return this.a(bse.H, $$0, $$1);
+   }
+
+   public bsb c(btj $$0, @Nullable buf $$1) {
+      return this.a(bse.I, $$0, $$1);
+   }
+
+   public bsb a(cod $$0, @Nullable btj $$1) {
+      return this.a(bse.J, $$0, $$1);
+   }
+
+   public bsb a(coc $$0, @Nullable btj $$1) {
+      return $$1 == null ? this.a(bse.L, $$0) : this.a(bse.K, $$0, $$1);
+   }
+
+   public bsb a(cox $$0, btj $$1) {
+      return this.a(bse.M, $$0, $$1);
+   }
+
+   public bsb b(btj $$0, @Nullable btj $$1) {
+      return this.a(bse.N, $$0, $$1);
+   }
+
+   public bsb c(btj $$0, @Nullable btj $$1) {
+      return this.a(bse.O, $$0, $$1);
+   }
+
+   public bsb d(btj $$0) {
+      return this.a(bse.P, $$0);
+   }
+
+   public bsb a(@Nullable ddk $$0) {
+      return $$0 != null ? this.d($$0.c(), $$0.b()) : this.d(null, null);
+   }
+
+   public bsb d(@Nullable btj $$0, @Nullable btj $$1) {
+      return this.a($$1 != null && $$0 != null ? bse.R : bse.Q, $$0, $$1);
+   }
+
+   public bsb e(btj $$0) {
+      return this.a(bse.S, $$0);
+   }
+
+   public bsb a(eye $$0) {
+      return new bsb(this.a.g(bse.T), $$0);
+   }
+
+   public bsb x() {
+      return this.y;
+   }
+
+   public bsb y() {
+      return this.z;
+   }
+
+   public bsb f(btj $$0) {
+      return this.a(bse.W, $$0);
    }
 }

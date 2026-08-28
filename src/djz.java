@@ -1,82 +1,111 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.MapCodec;
 
-public class djz extends dhu {
-   public static final MapCodec<djz> i = b(djz::new);
+public class djz extends dgv {
+   public static final MapCodec<djz> a = b(djz::new);
+   private static final int c = 2;
+   private static final int d = 5;
+   private static final int e = 3600;
+   private static final int f = 12000;
+   protected static final eyx b = dgv.a(0.0, 0.0, 0.0, 16.0, 1.5, 16.0);
+   private static int g = 3600;
+   private static int h = 12000;
 
    @Override
-   public MapCodec<? extends djz> a() {
-      return i;
+   public MapCodec<djz> a() {
+      return a;
    }
 
-   protected djz(dtb.d $$0) {
-      super(1.0F, 1.0F, 16.0F, 16.0F, 16.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
-   }
-
-   @Override
-   public dtc a(cyd $$0) {
-      dcc $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      epe $$3 = $$0.q().b_($$0.a());
-      jd $$4 = $$2.f();
-      jd $$5 = $$2.g();
-      jd $$6 = $$2.h();
-      jd $$7 = $$2.i();
-      dtc $$8 = $$1.a_($$4);
-      dtc $$9 = $$1.a_($$5);
-      dtc $$10 = $$1.a_($$6);
-      dtc $$11 = $$1.a_($$7);
-      return this.o()
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ji.d))))
-         .a(c, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ji.c))))
-         .a(d, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ji.f))))
-         .a(b, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ji.e))))
-         .a(e, Boolean.valueOf($$3.a() == epf.c));
+   public djz(dtz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      return a($$1, $$2.e());
+   }
+
+   @Override
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      $$1.a($$2, this, a($$1.C_()));
+   }
+
+   private static int a(azk $$0) {
+      return $$0.b(g, h);
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      return !this.a($$0, $$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (!this.a($$0, $$1, $$2)) {
+         this.a((dds)$$1, $$2);
+      } else {
+         this.a($$1, $$2, $$3);
       }
-
-      return $$1.o().d() ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return exs.a();
+   protected void a(dua $$0, dds $$1, je $$2, btj $$3) {
+      if ($$3.ao().equals(btq.O)) {
+         this.a($$1, $$2);
+      }
    }
 
-   @Override
-   protected boolean a(dtc $$0, dtc $$1, ji $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
+   private static boolean a(dcx $$0, je $$1) {
+      eqb $$2 = $$0.b_($$1);
+      eqb $$3 = $$0.b_($$1.d());
+      return $$2.a() == eqc.c && $$3.a() == eqc.a;
+   }
 
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
+   private void a(arg $$0, je $$1, azk $$2) {
+      this.a((dds)$$0, $$1);
+      $$0.a(null, $$1, awd.jJ, awe.e, 1.0F, 1.0F);
+      this.b($$0, $$1, $$2);
+   }
+
+   private void a(dds $$0, je $$1) {
+      $$0.b($$1, false);
+   }
+
+   private void b(arg $$0, je $$1, azk $$2) {
+      int $$3 = $$2.b(2, 6);
+
+      for (int $$4 = 1; $$4 <= $$3; $$4++) {
+         chs $$5 = btq.ba.a($$0, btp.e);
+         if ($$5 != null) {
+            double $$6 = (double)$$1.u() + this.b($$2);
+            double $$7 = (double)$$1.w() + this.b($$2);
+            int $$8 = $$2.b(1, 361);
+            $$5.b($$6, (double)$$1.v() - 0.5, $$7, (float)$$8, 0.0F);
+            $$5.fV();
+            $$0.b($$5);
          }
       }
-
-      return super.a($$0, $$1, $$2);
    }
 
-   public final boolean a(dtc $$0, boolean $$1) {
-      return !j($$0) && $$1 || $$0.b() instanceof djz || $$0.a(awe.M);
+   private double b(azk $$0) {
+      double $$1 = 0.2F;
+      return azc.a($$0.j(), 0.2F, 0.7999999970197678);
    }
 
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(a, b, d, c, e);
+   @VisibleForTesting
+   public static void a(int $$0, int $$1) {
+      g = $$0;
+      h = $$1;
+   }
+
+   @VisibleForTesting
+   public static void b() {
+      g = 3600;
+      h = 12000;
    }
 }

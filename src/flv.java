@@ -1,20 +1,36 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class flv {
-   private static final int a = 4;
+public abstract class flv implements flw {
+   @Nullable
+   private flx a;
+   private boolean b;
 
-   private flv() {
+   @Override
+   public final boolean aM_() {
+      return this.b;
    }
 
-   public static fma a(fhx $$0, fmb $$1, wz $$2) {
-      return a($$0, $$1, $$2, $$0x -> {
-      });
+   @Override
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
-   public static fma a(fhx $$0, fmb $$1, wz $$2, Consumer<fmc> $$3) {
-      fmd $$4 = fmd.d().a(4);
-      $$4.a(new fjt($$2, $$0));
-      $$4.a($$1, $$3);
-      return $$4;
+   @Nullable
+   @Override
+   public flx aN_() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable flx $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
    }
 }

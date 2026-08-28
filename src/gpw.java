@@ -1,72 +1,33 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.concurrent.Executor;
-
-public abstract class gpw implements AutoCloseable {
-   public static final int a = -1;
-   protected int b = -1;
-   protected boolean c;
-   protected boolean d;
-
-   public void a(boolean $$0, boolean $$1) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      this.c = $$0;
-      this.d = $$1;
-      int $$2;
-      int $$3;
-      if ($$0) {
-         $$2 = $$1 ? 9987 : 9729;
-         $$3 = 9729;
-      } else {
-         $$2 = $$1 ? 9986 : 9728;
-         $$3 = 9728;
-      }
-
-      this.c();
-      GlStateManager._texParameter(3553, 10241, $$2);
-      GlStateManager._texParameter(3553, 10240, $$3);
+public class gpw extends gln<cgy, gvi, fzq> {
+   public gpw(gms.a $$0) {
+      super($$0, new fzq($$0.a(gaa.df)), new fzq($$0.a(gaa.dh)), 0.5F);
+      this.a(new grt(this, $$0.f()));
+      this.a(new gru(this));
    }
 
-   public int a() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (this.b == -1) {
-         this.b = TextureUtil.generateTextureId();
-      }
-
-      return this.b;
+   protected int a(gvi $$0) {
+      float $$1 = $$0.f;
+      return $$1 == 1.0F ? -1 : axn.a(1.0F, $$1, $$1, $$1);
    }
 
-   public void b() {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            if (this.b != -1) {
-               TextureUtil.releaseTextureId(this.b);
-               this.b = -1;
-            }
-         });
-      } else if (this.b != -1) {
-         TextureUtil.releaseTextureId(this.b);
-         this.b = -1;
-      }
+   public alb b(gvi $$0) {
+      return $$0.g;
    }
 
-   public abstract void a(aue var1) throws IOException;
-
-   public void c() {
-      if (!RenderSystem.isOnRenderThreadOrInit()) {
-         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
-      } else {
-         GlStateManager._bindTexture(this.a());
-      }
+   public gvi c() {
+      return new gvi();
    }
 
-   public void a(gqm $$0, aue $$1, akr $$2, Executor $$3) {
-      $$0.a($$2, this);
-   }
-
-   @Override
-   public void close() {
+   public void a(cgy $$0, gvi $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.ac_();
+      $$1.b = $$0.y();
+      $$1.c = $$0.gD();
+      $$1.d = $$0.L($$2);
+      $$1.e = $$0.K($$2);
+      $$1.g = $$0.gA();
+      $$1.f = $$0.J($$2);
+      $$1.h = $$0.q() ? $$0.gE() : null;
+      $$1.i = $$0.fS().u();
    }
 }

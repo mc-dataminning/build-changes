@@ -1,77 +1,19 @@
-import java.util.EnumSet;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bzy extends cam {
-   private static final cef d = cef.b().a(8.0).d();
-   protected final cfe a;
-   private final Class<? extends cfe> e;
-   protected final dcw b;
-   @Nullable
-   protected cfe c;
-   private int f;
-   private final double g;
+public class bzy {
+   private static final bqp a = bqv.a(100, 200);
 
-   public bzy(cfe $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cfe>)$$0.getClass());
-   }
-
-   public bzy(cfe $$0, double $$1, Class<? extends cfe> $$2) {
-      this.a = $$0;
-      this.b = $$0.dO();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(cam.a.a, cam.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.a.gs()) {
-         return false;
-      } else {
-         this.c = this.h();
-         return this.c != null;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return this.c.bE() && this.c.gs() && this.f < 60 && !this.c.gh();
-   }
-
-   @Override
-   public void e() {
-      this.c = null;
-      this.f = 0;
-   }
-
-   @Override
-   public void a() {
-      this.a.I().a(this.c, 10.0F, (float)this.a.ac());
-      this.a.N().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
-      }
-   }
-
-   @Nullable
-   private cfe h() {
-      List<? extends cfe> $$0 = this.b.a(this.e, d, this.a, this.a.cK().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cfe $$2 = null;
-
-      for (cfe $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gh() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((aqu)this.b, this.c);
+   public static bvy<buf> a() {
+      return bzk.a(
+         (Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$0 -> $$0.group($$0.a(cdi.aB), $$0.a(cdi.m), $$0.c(cdi.aG), $$0.b(cdi.B), $$0.c(cdi.az))
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     $$0x.a(bah.a);
+                     $$2.a(bah.a, (long)a.a($$3x.C_()));
+                     $$1.b();
+                     $$4x.b(bur.m);
+                     return true;
+                  }))
+      );
    }
 }

@@ -1,42 +1,153 @@
-public interface awh {
-   awu<dac> a = a("tooltip_order");
-   awu<dac> b = a("exclusive_set/armor");
-   awu<dac> c = a("exclusive_set/boots");
-   awu<dac> d = a("exclusive_set/bow");
-   awu<dac> e = a("exclusive_set/crossbow");
-   awu<dac> f = a("exclusive_set/damage");
-   awu<dac> g = a("exclusive_set/mining");
-   awu<dac> h = a("exclusive_set/riptide");
-   awu<dac> i = a("tradeable");
-   awu<dac> j = a("double_trade_price");
-   awu<dac> k = a("in_enchanting_table");
-   awu<dac> l = a("on_mob_spawn_equipment");
-   awu<dac> m = a("on_traded_equipment");
-   awu<dac> n = a("on_random_loot");
-   awu<dac> o = a("curse");
-   awu<dac> p = a("smelts_loot");
-   awu<dac> q = a("prevents_bee_spawns_when_mining");
-   awu<dac> r = a("prevents_decorated_pot_shattering");
-   awu<dac> s = a("prevents_ice_melting");
-   awu<dac> t = a("prevents_infested_spawns");
-   awu<dac> u = a("treasure");
-   awu<dac> v = a("non_treasure");
-   awu<dac> w = a("trades/desert_common");
-   awu<dac> x = a("trades/jungle_common");
-   awu<dac> y = a("trades/plains_common");
-   awu<dac> z = a("trades/savanna_common");
-   awu<dac> A = a("trades/snow_common");
-   awu<dac> B = a("trades/swamp_common");
-   awu<dac> C = a("trades/taiga_common");
-   awu<dac> D = a("trades/desert_special");
-   awu<dac> E = a("trades/jungle_special");
-   awu<dac> F = a("trades/plains_special");
-   awu<dac> G = a("trades/savanna_special");
-   awu<dac> H = a("trades/snow_special");
-   awu<dac> I = a("trades/swamp_special");
-   awu<dac> J = a("trades/taiga_special");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 
-   private static awu<dac> a(String $$0) {
-      return awu.a(lu.aL, akr.b($$0));
+public final class awh {
+   private static final Map<csg, Pair<String, String>> a = ImmutableMap.of(
+      csg.a,
+      Pair.of("isGuiOpen", "isFilteringCraftable"),
+      csg.b,
+      Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
+      csg.c,
+      Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
+      csg.d,
+      Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
+   );
+   private final Map<csg, awh.a> b;
+
+   private awh(Map<csg, awh.a> $$0) {
+      this.b = $$0;
+   }
+
+   public awh() {
+      this(ad.a(Maps.newEnumMap(csg.class), $$0 -> {
+         for (csg $$1 : csg.values()) {
+            $$0.put($$1, new awh.a(false, false));
+         }
+      }));
+   }
+
+   public boolean a(csg $$0) {
+      return this.b.get($$0).a;
+   }
+
+   public void a(csg $$0, boolean $$1) {
+      this.b.get($$0).a = $$1;
+   }
+
+   public boolean b(csg $$0) {
+      return this.b.get($$0).b;
+   }
+
+   public void b(csg $$0, boolean $$1) {
+      this.b.get($$0).b = $$1;
+   }
+
+   public static awh a(wa $$0) {
+      Map<csg, awh.a> $$1 = Maps.newEnumMap(csg.class);
+
+      for (csg $$2 : csg.values()) {
+         boolean $$3 = $$0.readBoolean();
+         boolean $$4 = $$0.readBoolean();
+         $$1.put($$2, new awh.a($$3, $$4));
+      }
+
+      return new awh($$1);
+   }
+
+   public void b(wa $$0) {
+      for (csg $$1 : csg.values()) {
+         awh.a $$2 = this.b.get($$1);
+         if ($$2 == null) {
+            $$0.a(false);
+            $$0.a(false);
+         } else {
+            $$0.a($$2.a);
+            $$0.a($$2.b);
+         }
+      }
+   }
+
+   public static awh a(uf $$0) {
+      Map<csg, awh.a> $$1 = Maps.newEnumMap(csg.class);
+      a.forEach(($$2, $$3) -> {
+         boolean $$4 = $$0.q((String)$$3.getFirst());
+         boolean $$5 = $$0.q((String)$$3.getSecond());
+         $$1.put($$2, new awh.a($$4, $$5));
+      });
+      return new awh($$1);
+   }
+
+   public void b(uf $$0) {
+      a.forEach(($$1, $$2) -> {
+         awh.a $$3 = this.b.get($$1);
+         $$0.a((String)$$2.getFirst(), $$3.a);
+         $$0.a((String)$$2.getSecond(), $$3.b);
+      });
+   }
+
+   public awh a() {
+      Map<csg, awh.a> $$0 = Maps.newEnumMap(csg.class);
+
+      for (csg $$1 : csg.values()) {
+         awh.a $$2 = this.b.get($$1);
+         $$0.put($$1, $$2.a());
+      }
+
+      return new awh($$0);
+   }
+
+   public void a(awh $$0) {
+      this.b.clear();
+
+      for (csg $$1 : csg.values()) {
+         awh.a $$2 = $$0.b.get($$1);
+         this.b.put($$1, $$2.a());
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awh && this.b.equals(((awh)$$0).b);
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   static final class a {
+      boolean a;
+      boolean b;
+
+      public a(boolean $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public awh.a a() {
+         return new awh.a(this.a, this.b);
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         if (this == $$0) {
+            return true;
+         } else {
+            return !($$0 instanceof awh.a $$1) ? false : this.a == $$1.a && this.b == $$1.b;
+         }
+      }
+
+      @Override
+      public int hashCode() {
+         int $$0 = this.a ? 1 : 0;
+         return 31 * $$0 + (this.b ? 1 : 0);
+      }
+
+      @Override
+      public String toString() {
+         return "[open=" + this.a + ", filtering=" + this.b + "]";
+      }
    }
 }

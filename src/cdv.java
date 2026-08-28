@@ -1,24 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class cdv extends cdy<btn> {
+public class cdv extends ceo<btc> {
    @Override
-   public Set<ccs<?>> a() {
-      return ImmutableSet.of(ccs.j, ccs.k, ccs.l);
+   public Set<cdi<?>> a() {
+      return ImmutableSet.of(cdi.K, cdi.h);
    }
 
-   @Override
-   protected void a(aqu $$0, btn $$1) {
-      List<cmx> $$2 = $$0.x().stream().filter(bsw.f).filter($$1x -> $$1.a($$1x, 16.0)).sorted(Comparator.comparingDouble($$1::g)).collect(Collectors.toList());
-      buq<?> $$3 = $$1.dT();
-      $$3.a(ccs.j, $$2);
-      List<cmx> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(ccs.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cmx> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(ccs.l, $$5);
+   protected void a(arg $$0, btc $$1) {
+      $$1.dX().c(cdi.h).ifPresent($$1x -> this.a($$1, $$1x));
+   }
+
+   private void a(btc $$0, cdk $$1) {
+      Optional<btc> $$2 = $$1.a($$1x -> $$1x.ao() == $$0.ao() && !$$1x.o_()).map(btc.class::cast);
+      $$0.dX().a(cdi.K, $$2);
    }
 }

@@ -1,108 +1,61 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.net.URI;
 
-public abstract class fpl<T extends cpu> extends fot<T> {
-   private static final akr E = akr.b("container/inventory/effect_background_large");
-   private static final akr F = akr.b("container/inventory/effect_background_small");
+public class fpl extends fpt {
+   private static final xd a = xd.c("symlink_warning.title.world").a(n.r);
+   private static final xd b = xd.a("symlink_warning.message.world", xd.a(axy.p));
+   private static final xd c = xd.c("symlink_warning.title.pack").a(n.r);
+   private static final xd d = xd.a("symlink_warning.message.pack", xd.a(axy.p));
+   private final xd s;
+   private final URI u;
+   private final Runnable v;
+   private final fnn w = new fnn().b(10);
 
-   public fpl(T $$0, cmw $$1, wz $$2) {
-      super($$0, $$1, $$2);
+   public fpl(xd $$0, xd $$1, URI $$2, Runnable $$3) {
+      super($$0);
+      this.s = $$1;
+      this.u = $$2;
+      this.v = $$3;
+   }
+
+   public static fpt a(Runnable $$0) {
+      return new fpl(a, b, axy.p, $$0);
+   }
+
+   public static fpt b(Runnable $$0) {
+      return new fpl(c, d, axy.p, $$0);
    }
 
    @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
+   protected void aT_() {
+      super.aT_();
+      this.w.c().b();
+      fnn.b $$0 = this.w.d(1);
+      $$0.a(new flh(this.l, this.p));
+      $$0.a(new fku(this.s, this.p).d(this.n - 50).b(true));
+      int $$1 = 120;
+      fnn $$2 = new fnn().a(5);
+      fnn.b $$3 = $$2.d(3);
+      $$3.a(fka.a(xc.n, $$0x -> ad.m().a(this.u)).b(120, 20).a());
+      $$3.a(fka.a(xc.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
+      $$3.a(fka.a(xc.k, $$0x -> this.d()).b(120, 20).a());
+      $$0.a($$2);
+      this.c();
+      this.w.a(this::c);
    }
 
-   public boolean G() {
-      int $$0 = this.A + this.c + 2;
-      int $$1 = this.m - $$0;
-      return $$1 >= 32;
+   @Override
+   protected void c() {
+      this.w.a();
+      fnm.a(this.w, this.H());
    }
 
-   private void c(fhz $$0, int $$1, int $$2) {
-      int $$3 = this.A + this.c + 2;
-      int $$4 = this.m - $$3;
-      Collection<brz> $$5 = this.l.s.et();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
-         }
-
-         Iterable<brz> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.B;
-            brz $$10 = null;
-
-            for (brz $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
-
-               $$9 += $$7;
-            }
-
-            if ($$10 != null) {
-               List<wz> $$12 = List.of(this.a($$10), bsa.a($$10, 1.0F, this.l.r.s().f()));
-               $$0.a(this.o, $$12, Optional.empty(), $$1, $$2);
-            }
-         }
-      }
+   @Override
+   public xd i() {
+      return xc.a(super.i(), this.s);
    }
 
-   private void a(fhz $$0, int $$1, int $$2, Iterable<brz> $$3, boolean $$4) {
-      int $$5 = this.B;
-
-      for (brz $$6 : $$3) {
-         if ($$4) {
-            $$0.a(E, $$1, $$5, 120, 32);
-         } else {
-            $$0.a(F, $$1, $$5, 32, 32);
-         }
-
-         $$5 += $$2;
-      }
-   }
-
-   private void b(fhz $$0, int $$1, int $$2, Iterable<brz> $$3, boolean $$4) {
-      grj $$5 = this.l.aE();
-      int $$6 = this.B;
-
-      for (brz $$7 : $$3) {
-         jm<brx> $$8 = $$7.c();
-         gql $$9 = $$5.a($$8);
-         $$0.a($$1 + ($$4 ? 6 : 7), $$6 + 7, 0, 18, 18, $$9);
-         $$6 += $$2;
-      }
-   }
-
-   private void a(fhz $$0, int $$1, int $$2, Iterable<brz> $$3) {
-      int $$4 = this.B;
-
-      for (brz $$5 : $$3) {
-         wz $$6 = this.a($$5);
-         $$0.b(this.o, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         wz $$7 = bsa.a($$5, 1.0F, this.l.r.s().f());
-         $$0.b(this.o, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
-      }
-   }
-
-   private wz a(brz $$0) {
-      xn $$1 = $$0.c().a().e().f();
-      if ($$0.e() >= 1 && $$0.e() <= 9) {
-         $$1.b(wy.v).b(wz.c("enchantment.level." + ($$0.e() + 1)));
-      }
-
-      return $$1;
+   @Override
+   public void d() {
+      this.v.run();
    }
 }

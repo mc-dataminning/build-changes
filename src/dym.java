@@ -1,97 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
+public interface dym<T> {
+   void g(T var1);
 
-public final class dym {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dvz> e = lt.l
-      .r()
-      .comapFlatMap($$0 -> $$0 == dvz.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dym> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dym::a),
-               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dym::new)
-   );
-   private static final Set<akq<ddw>> f = Set.of(ded.aa, ded.Z, ded.ab);
-   public static final dcy b = new dcy() {
-      @Override
-      public int J_() {
-         return 64;
-      }
+   void f(T var1);
 
-      @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dvz g;
-   private final BitSet h;
+   void e(T var1);
 
-   private dym(dvz $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
-   }
+   void d(T var1);
 
-   @Nullable
-   public static dym a(ub $$0) {
-      dvz $$1 = dvz.a($$0.l("target_status"));
-      return $$1 == dvz.c ? null : new dym($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
+   void c(T var1);
 
-   public static void a(dvs $$0) {
-      int $$1 = 4;
-      jd.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dga.F)) {
-            $$0.a($$1x, dga.sJ.o(), false);
-         }
-      });
-   }
+   void b(T var1);
 
-   public void b(dvs $$0) {
-      dcy $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.am() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               jd.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dga.a.o(), false));
-            }
-         }
-      }
-   }
-
-   public dvz a() {
-      return this.g;
-   }
-
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static ddz a(ddz $$0, duy $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<akq<ddw>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            jm<ddw> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
-      }
-   }
+   void a(T var1);
 }

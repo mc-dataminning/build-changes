@@ -1,85 +1,51 @@
-public class cac extends caq {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cfm b;
-   private final int c;
-   private boolean d;
+public class cac extends caf {
+   private final int l;
+   private final boolean m;
 
-   public cac(cfm $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-   }
-
-   @Override
-   public boolean b() {
-      if (this.b.dR().a(this.c) != 0) {
-         return false;
-      } else {
-         ji $$0 = this.b.cI();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         jd $$3 = this.b.do();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(jd $$0, int $$1, int $$2, int $$3) {
-      jd $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dO().b_($$4).a(awk.a) && !this.b.dO().a_($$4).d();
-   }
-
-   private boolean b(jd $$0, int $$1, int $$2, int $$3) {
-      return this.b.dO().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).i() && this.b.dO().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).i();
-   }
-
-   @Override
-   public boolean c() {
-      double $$0 = this.b.dr().d;
-      return (!($$0 * $$0 < 0.03F) || this.b.dG() == 0.0F || !(Math.abs(this.b.dG()) < 10.0F) || !this.b.bf()) && !this.b.aF();
-   }
-
-   @Override
-   public boolean U_() {
-      return false;
-   }
-
-   @Override
-   public void d() {
-      ji $$0 = this.b.cI();
-      this.b.i(this.b.dr().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.N().n();
-   }
-
-   @Override
-   public void e() {
-      this.b.u(0.0F);
+   public cac(buh $$0, int $$1, boolean $$2) {
+      super($$0);
+      this.l = $$1;
+      this.m = $$2;
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         epe $$1 = this.b.dO().b_(this.b.do());
-         this.d = $$1.a(awk.a);
-      }
+      if (this.k == caf.a.b) {
+         this.k = caf.a.a;
+         this.d.f(true);
+         double $$0 = this.e - this.d.dx();
+         double $$1 = this.f - this.d.dz();
+         double $$2 = this.g - this.d.dD();
+         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+         if ($$3 < 2.5000003E-7F) {
+            this.d.H(0.0F);
+            this.d.G(0.0F);
+            return;
+         }
 
-      if (this.d && !$$0) {
-         this.b.a(avp.hb, 1.0F, 1.0F);
-      }
+         float $$4 = (float)(azc.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
+         this.d.v(this.a(this.d.dI(), $$4, 90.0F));
+         float $$5;
+         if (this.d.aH()) {
+            $$5 = (float)(this.h * this.d.h(bvm.v));
+         } else {
+            $$5 = (float)(this.h * this.d.h(bvm.l));
+         }
 
-      exc $$2 = this.b.dr();
-      if ($$2.d * $$2.d < 0.03F && this.b.dG() != 0.0F) {
-         this.b.u(ayo.j(0.2F, this.b.dG(), 0.0F));
-      } else if ($$2.f() > 1.0E-5F) {
-         double $$3 = $$2.h();
-         double $$4 = Math.atan2(-$$2.d, $$3) * 180.0F / (float)Math.PI;
-         this.b.u((float)$$4);
+         this.d.C($$5);
+         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
+            float $$8 = (float)(-(azc.d($$1, $$7) * 180.0F / (float)Math.PI));
+            this.d.w(this.a(this.d.dK(), $$8, (float)this.l));
+            this.d.H($$1 > 0.0 ? $$5 : -$$5);
+         }
+      } else {
+         if (!this.m) {
+            this.d.f(false);
+         }
+
+         this.d.H(0.0F);
+         this.d.G(0.0F);
       }
    }
 }

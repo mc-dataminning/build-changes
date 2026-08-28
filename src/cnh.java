@@ -1,139 +1,61 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class cnh extends bsr implements bun {
-   public static final int b = 20;
-   public static final int c = 2;
-   public static final int d = 14;
-   private int e;
-   private boolean f;
-   private int g = 22;
-   private boolean h;
-   @Nullable
-   private btn i;
-   @Nullable
-   private UUID j;
+public final class cnh {
+   public static final cnh a = a("desert");
+   public static final cnh b = a("jungle");
+   public static final cnh c = a("plains");
+   public static final cnh d = a("savanna");
+   public static final cnh e = a("snow");
+   public static final cnh f = a("swamp");
+   public static final cnh g = a("taiga");
+   private final String h;
+   private static final Map<ala<det>, cnh> i = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dfa.A, a);
+      $$0.put(dfa.f, a);
+      $$0.put(dfa.B, a);
+      $$0.put(dfa.C, a);
+      $$0.put(dfa.z, b);
+      $$0.put(dfa.x, b);
+      $$0.put(dfa.y, b);
+      $$0.put(dfa.s, d);
+      $$0.put(dfa.r, d);
+      $$0.put(dfa.w, d);
+      $$0.put(dfa.X, e);
+      $$0.put(dfa.W, e);
+      $$0.put(dfa.L, e);
+      $$0.put(dfa.e, e);
+      $$0.put(dfa.N, e);
+      $$0.put(dfa.q, e);
+      $$0.put(dfa.d, e);
+      $$0.put(dfa.F, e);
+      $$0.put(dfa.G, e);
+      $$0.put(dfa.H, e);
+      $$0.put(dfa.I, e);
+      $$0.put(dfa.g, f);
+      $$0.put(dfa.h, f);
+      $$0.put(dfa.o, g);
+      $$0.put(dfa.n, g);
+      $$0.put(dfa.u, g);
+      $$0.put(dfa.t, g);
+      $$0.put(dfa.p, g);
+      $$0.put(dfa.v, g);
+   });
 
-   public cnh(bsx<? extends cnh> $$0, dcw $$1) {
-      super($$0, $$1);
-   }
-
-   public cnh(dcw $$0, double $$1, double $$2, double $$3, float $$4, int $$5, btn $$6) {
-      this(bsx.K, $$0);
-      this.e = $$5;
-      this.a($$6);
-      this.t($$4 * (180.0F / (float)Math.PI));
-      this.a_($$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(aka.a $$0) {
-   }
-
-   public void a(@Nullable btn $$0) {
-      this.i = $$0;
-      this.j = $$0 == null ? null : $$0.cz();
-   }
-
-   @Nullable
-   public btn p() {
-      if (this.i == null && this.j != null && this.dO() instanceof aqu) {
-         bsr $$0 = ((aqu)this.dO()).a(this.j);
-         if ($$0 instanceof btn) {
-            this.i = (btn)$$0;
-         }
-      }
-
-      return this.i;
-   }
-
-   @Override
-   protected void a(ub $$0) {
-      this.e = $$0.h("Warmup");
-      if ($$0.b("Owner")) {
-         this.j = $$0.a("Owner");
-      }
+   private cnh(String $$0) {
+      this.h = $$0;
    }
 
    @Override
-   protected void b(ub $$0) {
-      $$0.a("Warmup", this.e);
-      if (this.j != null) {
-         $$0.a("Owner", this.j);
-      }
+   public String toString() {
+      return this.h;
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.dO().B) {
-         if (this.h) {
-            this.g--;
-            if (this.g == 14) {
-               for (int $$0 = 0; $$0 < 12; $$0++) {
-                  double $$1 = this.dt() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
-                  double $$2 = this.dv() + 0.05 + this.ah.j();
-                  double $$3 = this.dz() + (this.ah.j() * 2.0 - 1.0) * (double)this.dj() * 0.5;
-                  double $$4 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  double $$5 = 0.3 + this.ah.j() * 0.3;
-                  double $$6 = (this.ah.j() * 2.0 - 1.0) * 0.3;
-                  this.dO().a(lm.f, $$1, $$2 + 1.0, $$3, $$4, $$5, $$6);
-               }
-            }
-         }
-      } else if (--this.e < 0) {
-         if (this.e == -8) {
-            for (btn $$8 : this.dO().a(btn.class, this.cK().c(0.2, 0.0, 0.2))) {
-               this.c($$8);
-            }
-         }
-
-         if (!this.f) {
-            this.dO().a(this, (byte)4);
-            this.f = true;
-         }
-
-         if (--this.g < 0) {
-            this.aq();
-         }
-      }
+   private static cnh a(String $$0) {
+      return ka.a(lu.w, alb.b($$0), new cnh($$0));
    }
 
-   private void c(btn $$0) {
-      btn $$1 = this.p();
-      if ($$0.bE() && !$$0.cv() && $$0 != $$1) {
-         if ($$1 == null) {
-            $$0.a(this.dP().p(), 6.0F);
-         } else {
-            if ($$1.s($$0)) {
-               return;
-            }
-
-            brk $$2 = this.dP().c(this, (bsr)$$1);
-            if ($$0.a($$2, 6.0F) && this.dO() instanceof aqu $$3) {
-               dae.a($$3, (bsr)$$0, $$2);
-            }
-         }
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      super.b($$0);
-      if ($$0 == 4) {
-         this.h = true;
-         if (!this.aX()) {
-            this.dO().a(this.dt(), this.dv(), this.dz(), avp.iB, this.de(), 1.0F, this.ah.i() * 0.2F + 0.85F, false);
-         }
-      }
-   }
-
-   public float a(float $$0) {
-      if (!this.h) {
-         return 0.0F;
-      } else {
-         int $$1 = this.g - 2;
-         return $$1 <= 0 ? 1.0F : 1.0F - ((float)$$1 - $$0) / 20.0F;
-      }
+   public static cnh a(jn<det> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

@@ -1,8 +1,5 @@
-public interface ajo extends aji, vq {
+public record ajo(alb a) implements ajm {
    @Override
-   default vu b() {
-      return vu.c;
+   public void a(wa $$0) {
    }
-
-   void a(ajp var1);
 }

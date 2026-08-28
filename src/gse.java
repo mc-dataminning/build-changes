@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gse {
+public class gse extends gts {
+   public boolean a;
+   public final btd b = new btd();
+   public final btd c = new btd();
 }

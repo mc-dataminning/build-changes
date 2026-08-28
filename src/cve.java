@@ -1,81 +1,83 @@
-public class cve extends cul {
-   private static final kx a = new kw() {
-      private final kw c = new kw();
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
 
-      @Override
-      public cuq a(ku $$0, cuq $$1) {
-         ji $$2 = $$0.d().c(did.b);
-         aqu $$3 = $$0.b();
-         exc $$4 = $$0.a();
-         double $$5 = $$4.a() + (double)$$2.j() * 1.125;
-         double $$6 = Math.floor($$4.b()) + (double)$$2.k();
-         double $$7 = $$4.c() + (double)$$2.l() * 1.125;
-         jd $$8 = $$0.c().a($$2);
-         dtc $$9 = $$3.a_($$8);
-         dug $$10 = $$9.b() instanceof dfn ? $$9.c(((dfn)$$9.b()).c()) : dug.a;
-         double $$11;
-         if ($$9.a(awe.O)) {
-            if ($$10.b()) {
-               $$11 = 0.6;
-            } else {
-               $$11 = 0.1;
-            }
-         } else {
-            if (!$$9.i() || !$$3.a_($$8.e()).a(awe.O)) {
-               return this.c.dispense($$0, $$1);
-            }
+public class cve extends cvg {
+   private final axi<cvd> a;
 
-            dtc $$13 = $$3.a_($$8.e());
-            dug $$14 = $$13.b() instanceof dfn ? $$13.c(((dfn)$$13.b()).c()) : dug.a;
-            if ($$2 != ji.a && $$14.b()) {
-               $$11 = -0.4;
-            } else {
-               $$11 = -0.9;
-            }
-         }
-
-         cot $$18 = cot.a($$3, $$5, $$6 + $$11, $$7, ((cve)$$1.g()).b, $$1, null);
-         $$3.b($$18);
-         $$1.h(1);
-         return $$1;
-      }
-
-      @Override
-      protected void a(ku $$0) {
-         $$0.b().c(1000, $$0.c(), 0);
-      }
-   };
-   final cot.a b;
-
-   public cve(cot.a $$0, cul.a $$1) {
-      super($$1);
-      this.b = $$0;
-      did.a(this, a);
+   public cve(cvg.a $$0, axi<cvd> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public bqr a(cyf $$0) {
-      dcw $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      dtc $$3 = $$1.a_($$2);
-      if (!$$3.a(awe.O)) {
-         return bqr.f;
-      } else {
-         cuq $$4 = $$0.n();
-         if ($$1 instanceof aqu $$5) {
-            dug $$6 = $$3.b() instanceof dfn ? $$3.c(((dfn)$$3.b()).c()) : dug.a;
-            double $$7 = 0.0;
-            if ($$6.b()) {
-               $$7 = 0.5;
-            }
+   public void a(cvl $$0, cvg.b $$1, List<xd> $$2, cxf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      jp.a $$4 = $$1.a();
+      if ($$4 != null) {
+         Optional<jn<cvd>> $$5 = this.a($$0, $$4);
+         if ($$5.isPresent()) {
+            xr $$6 = $$5.get().a().d().f();
+            xg.a($$6, ya.a.a(n.h));
+            $$2.add($$6);
+         }
+      }
+   }
 
-            cot $$8 = cot.a($$5, (double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$7, (double)$$2.w() + 0.5, this.b, $$4, $$0.o());
-            $$5.b($$8);
-            $$5.a(dxz.t, $$2, dxz.a.a($$0.o(), $$5.a_($$2.e())));
+   public static cvl a(cvg $$0, jn<cvd> $$1) {
+      cvl $$2 = new cvl($$0);
+      $$2.b(kr.R, $$1);
+      return $$2;
+   }
+
+   @Override
+   public brk a(dds $$0, cnp $$1, brj $$2) {
+      cvl $$3 = $$1.b($$2);
+      Optional<? extends jn<cvd>> $$4 = this.a($$3, $$1.dU());
+      if ($$4.isPresent()) {
+         cvd $$5 = $$4.get().a();
+         $$1.c($$2);
+         a($$0, $$1, $$5);
+         $$1.gx().a(this, azc.d($$5.b() * 20.0F));
+         $$1.b(awn.c.b(this));
+         return brk.c;
+      } else {
+         return brk.d;
+      }
+   }
+
+   @Override
+   public int a(cvl $$0, buf $$1) {
+      Optional<jn<cvd>> $$2 = this.a($$0, $$1.dU());
+      return $$2.<Integer>map($$0x -> azc.d(((cvd)$$0x.a()).b() * 20.0F)).orElse(0);
+   }
+
+   private Optional<jn<cvd>> a(cvl $$0, jp.a $$1) {
+      jn<cvd> $$2 = $$0.a(kr.R);
+      if ($$2 != null) {
+         return Optional.of($$2);
+      } else {
+         Optional<jr.c<cvd>> $$3 = $$1.b(lv.I).a(this.a);
+         if ($$3.isPresent()) {
+            Iterator<jn<cvd>> $$4 = $$3.get().iterator();
+            if ($$4.hasNext()) {
+               return Optional.of($$4.next());
+            }
          }
 
-         $$4.h(1);
-         return bqr.a($$1.B);
+         return Optional.empty();
       }
+   }
+
+   @Override
+   public cxh b(cvl $$0) {
+      return cxh.i;
+   }
+
+   private static void a(dds $$0, cnp $$1, cvd $$2) {
+      awc $$3 = $$2.a().a();
+      float $$4 = $$2.c() / 16.0F;
+      $$0.a($$1, $$1, $$3, awe.c, $$4, 1.0F);
+      $$0.a(dyx.B, $$1.dq(), dyx.a.a($$1));
    }
 }

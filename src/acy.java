@@ -1,40 +1,33 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class acy implements zg<abu> {
-   public static final yx<vw, acy> a = zg.a(acy::a, acy::new);
-   private final int b;
-   private final byte c;
+public record acy(acy.a b, List<String> c) implements zk<abz> {
+   public static final zb<wa, acy> a = zk.a(acy::a, acy::new);
 
-   public acy(bsr $$0, byte $$1) {
-      this.b = $$0.an();
-      this.c = $$1;
+   private acy(wa $$0) {
+      this($$0.b(acy.a.class), $$0.a(wa::p));
    }
 
-   private acy(vw $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readByte();
-   }
-
-   private void a(vw $$0) {
-      $$0.p(this.b);
-      $$0.k(this.c);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, wa::a);
    }
 
    @Override
-   public zi<acy> a() {
-      return agg.D;
+   public zm<acy> a() {
+      return ago.y;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bsr a(dcw $$0) {
-      return $$0.a(this.b);
+   public List<String> e() {
+      return this.c;
    }
 
-   public byte b() {
-      return this.c;
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

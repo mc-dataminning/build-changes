@@ -1,15 +1,18 @@
-public class gpl extends gov<cgh, fyb<cgh>> {
-   private static final akr a = akr.b("textures/entity/wolf/wolf_collar.png");
+public class gpl extends glj<chz, gsv, fvr<gsv>> {
+   private static final alb a = alb.b("textures/entity/horse/horse_zombie.png");
+   private static final alb b = alb.b("textures/entity/horse/horse_skeleton.png");
+   private final alb k;
 
-   public gpl(gmf<cgh, fyb<cgh>> $$0) {
-      super($$0);
+   public gpl(gms.a $$0, fzz $$1, fzz $$2, boolean $$3) {
+      super($$0, new fxl($$0.a($$1)), new fxl($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, cgh $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.ci()) {
-         int $$10 = $$3.gz().d();
-         fbm $$11 = $$1.getBuffer(gfh.e(a));
-         this.c().a($$0, $$11, $$2, gqc.d, $$10);
-      }
+   public alb a(gsv $$0) {
+      return this.k;
+   }
+
+   public gsv c() {
+      return new gsv();
    }
 }

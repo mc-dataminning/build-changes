@@ -1,61 +1,48 @@
+import java.util.Objects;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class fme implements fmb {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public class fme {
+   private final Consumer<fjy> a;
+   private final Consumer<fjy> b;
+   @Nullable
+   private fmd c;
+   @Nullable
+   private foh d;
 
-   public fme(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
-
-   public fme(int $$0, int $$1, int $$2, int $$3) {
+   public fme(Consumer<fjy> $$0, Consumer<fjy> $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public static fme a(int $$0) {
-      return new fme($$0, 0);
+   public void a(foh $$0) {
+      this.d = $$0;
+      fmd $$1 = this.a();
+      if ($$1 != null) {
+         $$1.a($$0);
+      }
    }
 
-   public static fme b(int $$0) {
-      return new fme(0, $$0);
+   public void a(fmd $$0, boolean $$1) {
+      if (!Objects.equals(this.c, $$0)) {
+         if (this.c != null) {
+            this.c.a(this.b);
+         }
+
+         this.c = $$0;
+         $$0.a(this.a);
+         if (this.d != null) {
+            $$0.a(this.d);
+         }
+
+         if ($$1) {
+            fib.Q().aj().a(gzz.a(awd.Ax, 1.0F));
+         }
+      }
    }
 
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
-   }
-
-   @Override
-   public int D() {
-      return this.a;
-   }
-
-   @Override
-   public int E() {
-      return this.b;
-   }
-
-   @Override
-   public int y() {
+   @Nullable
+   public fmd a() {
       return this.c;
-   }
-
-   @Override
-   public int w() {
-      return this.d;
-   }
-
-   @Override
-   public void a(Consumer<fik> $$0) {
    }
 }

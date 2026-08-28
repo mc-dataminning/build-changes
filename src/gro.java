@@ -1,42 +1,47 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+public class gro extends grf<guz, fxa<guz>> {
+   private static final alb a = alb.b("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final alb b = alb.b("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final alb c = alb.b("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final alb d = alb.b("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final alb e = alb.b("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final alb f = alb.b("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final alb g = alb.b("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final alb h = alb.b("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final alb i = alb.b("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final alb j = alb.b("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final alb k = alb.b("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final alb l = alb.b("textures/entity/fish/tropical_b_pattern_6.png");
+   private final fzg m;
+   private final fzh n;
 
-public abstract class gro implements aty, AutoCloseable {
-   private final gqk a;
-   private final akr b;
-   private final Set<atd<?>> c;
-
-   public gro(gqm $$0, akr $$1, akr $$2) {
-      this($$0, $$1, $$2, gqg.a);
+   public gro(goo<guz, fxa<guz>> $$0, fzx $$1) {
+      super($$0);
+      this.m = new fzg($$1.a(gaa.cO));
+      this.n = new fzh($$1.a(gaa.cM));
    }
 
-   public gro(gqm $$0, akr $$1, akr $$2, Set<atd<?>> $$3) {
-      this.b = $$2;
-      this.a = new gqk($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
-   }
+   public void a(fcu $$0, ggv $$1, int $$2, guz $$3, float $$4, float $$5) {
+      cgv.b $$6 = $$3.a;
 
-   protected gql a(akr $$0) {
-      return this.a.a($$0);
-   }
+      fxa<guz> $$7 = (fxa<guz>)(switch ($$6.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   @Override
-   public final CompletableFuture<Void> a(aty.a $$0, aue $$1, bnf $$2, bnf $$3, Executor $$4, Executor $$5) {
-      return gqg.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gqg.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(gqg.a $$0, bnf $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
-   }
-
-   @Override
-   public void close() {
-      this.a.f();
+      alb $$8 = switch ($$6) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      a($$7, $$8, $$0, $$1, $$2, $$3, $$3.c);
    }
 }

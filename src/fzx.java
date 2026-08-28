@@ -1,34 +1,20 @@
-import java.util.HashMap;
+import com.google.common.collect.ImmutableMap;
 import java.util.Map;
-import java.util.function.Predicate;
 
-public class fzx {
-   private final Map<akq<? extends jz<?>>, awx.a> a = new HashMap<>();
+public class fzx implements aut {
+   private Map<fzz, gah> a = ImmutableMap.of();
 
-   public void a(akq<? extends jz<?>> $$0, awx.a $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   private static void a() {
-      dpv.f();
-      dga.a();
-   }
-
-   private void a(ka $$0, Predicate<akq<? extends jz<?>>> $$1) {
-      this.a.forEach(($$2, $$3) -> {
-         if ($$1.test((akq<? extends jz<?>>)$$2)) {
-            $$3.a($$0.d((akq<? extends jz<?>>)$$2));
-         }
-      });
-   }
-
-   public void a(ka $$0, boolean $$1) {
-      if ($$1) {
-         this.a($$0, kd.a::contains);
+   public gab a(fzz $$0) {
+      gah $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
       } else {
-         $$0.c().filter($$0x -> !kd.a.contains($$0x.a())).forEach($$0x -> $$0x.b().n());
-         this.a($$0, $$0x -> true);
-         a();
+         return $$1.a();
       }
+   }
+
+   @Override
+   public void a(aus $$0) {
+      this.a = ImmutableMap.copyOf(fzy.a());
    }
 }

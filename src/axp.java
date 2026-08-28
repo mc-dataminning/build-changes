@@ -1,328 +1,464 @@
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.floats.FloatArrayList;
-import it.unimi.dsi.fastutil.floats.FloatList;
+import java.util.AbstractList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import org.apache.commons.lang3.mutable.MutableObject;
+import java.util.NoSuchElementException;
+import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public interface axp<C, I extends azq<C>> extends azq<C> {
-   @azt
-   String a();
+public class axp<T> extends AbstractList<T> implements ayy<T> {
+   private static final int a = 1;
+   private Object[] b;
+   private int c;
+   private int d;
 
-   axp<C, I> a(axp.d<I> var1);
-
-   static <C, I extends azq<C>> Codec<axp<C, I>> a(Codec<I> $$0) {
-      MutableObject<Codec<axp<C, I>>> $$1 = new MutableObject();
-
-      record a<C, I extends azq<C>>(float a, axp<C, I> b, float c) {
-      }
-
-      Codec<a<C, I>> $$2 = RecordCodecBuilder.create(
-         $$1x -> $$1x.group(
-                  Codec.FLOAT.fieldOf("location").forGetter(a::a),
-                  Codec.lazyInitialized($$1::getValue).fieldOf("value").forGetter(a::b),
-                  Codec.FLOAT.fieldOf("derivative").forGetter(a::c)
-               )
-               .apply($$1x, ($$0xx, $$1xx, $$2x) -> new a($$0xx, $$1xx, $$2x))
-      );
-      Codec<axp.e<C, I>> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group(
-                  $$0.fieldOf("coordinate").forGetter(axp.e::d),
-                  axw.a($$2.listOf())
-                     .fieldOf("points")
-                     .forGetter(
-                        $$0xx -> IntStream.range(0, $$0xx.c.length)
-                              .mapToObj($$1xx -> new a($$0xx.e()[$$1xx], (axp<C, I>)$$0xx.f().get($$1xx), $$0xx.g()[$$1xx]))
-                              .toList()
-                     )
-               )
-               .apply($$2x, ($$0xx, $$1xx) -> {
-                  float[] $$2xx = new float[$$1xx.size()];
-                  Builder<axp<C, I>> $$3x = ImmutableList.builder();
-                  float[] $$4 = new float[$$1xx.size()];
-
-                  for (int $$5 = 0; $$5 < $$1xx.size(); $$5++) {
-                     a<C, I> $$6 = (a<C, I>)$$1xx.get($$5);
-                     $$2xx[$$5] = $$6.a();
-                     $$3x.add($$6.b());
-                     $$4[$$5] = $$6.c();
-                  }
-
-                  return axp.e.a((I)$$0xx, $$2xx, $$3x.build(), $$4);
-               })
-      );
-      $$1.setValue(
-         Codec.either(Codec.FLOAT, $$3)
-            .xmap(
-               $$0x -> (axp)$$0x.map(axp.c::new, $$0xx -> $$0xx), $$0x -> $$0x instanceof axp.c<C, I> $$1x ? Either.left($$1x.d()) : Either.right((axp.e)$$0x)
-            )
-      );
-      return (Codec<axp<C, I>>)$$1.getValue();
+   public axp() {
+      this(1);
    }
 
-   static <C, I extends azq<C>> axp<C, I> a(float $$0) {
-      return new axp.c<>($$0);
+   public axp(int $$0) {
+      this.b = new Object[$$0];
+      this.c = 0;
+      this.d = 0;
    }
 
-   static <C, I extends azq<C>> axp.b<C, I> a(I $$0) {
-      return new axp.b<>($$0);
+   @Override
+   public int size() {
+      return this.d;
    }
 
-   static <C, I extends azq<C>> axp.b<C, I> a(I $$0, azq<Float> $$1) {
-      return new axp.b<>($$0, $$1);
+   @VisibleForTesting
+   public int a() {
+      return this.b.length;
    }
 
-   public static final class b<C, I extends azq<C>> {
-      private final I a;
-      private final azq<Float> b;
-      private final FloatList c = new FloatArrayList();
-      private final List<axp<C, I>> d = Lists.newArrayList();
-      private final FloatList e = new FloatArrayList();
+   private int a(int $$0) {
+      return ($$0 + this.c) % this.b.length;
+   }
 
-      protected b(I $$0) {
-         this($$0, azq.a);
+   @Override
+   public T get(int $$0) {
+      this.b($$0);
+      return this.c(this.a($$0));
+   }
+
+   private static void a(int $$0, int $$1) {
+      if ($$0 < 0 || $$0 >= $$1) {
+         throw new IndexOutOfBoundsException($$0);
+      }
+   }
+
+   private void b(int $$0) {
+      a($$0, this.d);
+   }
+
+   private T c(int $$0) {
+      return (T)this.b[$$0];
+   }
+
+   @Override
+   public T set(int $$0, T $$1) {
+      this.b($$0);
+      Objects.requireNonNull($$1);
+      int $$2 = this.a($$0);
+      T $$3 = this.c($$2);
+      this.b[$$2] = $$1;
+      return $$3;
+   }
+
+   @Override
+   public void add(int $$0, T $$1) {
+      a($$0, this.d + 1);
+      Objects.requireNonNull($$1);
+      if (this.d == this.b.length) {
+         this.c();
       }
 
-      protected b(I $$0, azq<Float> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      int $$2 = this.a($$0);
+      if ($$0 == this.d) {
+         this.b[$$2] = $$1;
+      } else if ($$0 == 0) {
+         this.c--;
+         if (this.c < 0) {
+            this.c = this.c + this.b.length;
+         }
+
+         this.b[this.a(0)] = $$1;
+      } else {
+         for (int $$3 = this.d - 1; $$3 >= $$0; $$3--) {
+            this.b[this.a($$3 + 1)] = this.b[this.a($$3)];
+         }
+
+         this.b[$$2] = $$1;
       }
 
-      public axp.b<C, I> a(float $$0, float $$1) {
-         return this.a($$0, new axp.c<>(this.b.a($$1)), 0.0F);
+      this.modCount++;
+      this.d++;
+   }
+
+   private void c() {
+      int $$0 = this.b.length + Math.max(this.b.length >> 1, 1);
+      Object[] $$1 = new Object[$$0];
+      this.a($$1, this.d);
+      this.c = 0;
+      this.b = $$1;
+   }
+
+   @Override
+   public T remove(int $$0) {
+      this.b($$0);
+      int $$1 = this.a($$0);
+      T $$2 = this.c($$1);
+      if ($$0 == 0) {
+         this.b[$$1] = null;
+         this.c++;
+      } else if ($$0 == this.d - 1) {
+         this.b[$$1] = null;
+      } else {
+         for (int $$3 = $$0 + 1; $$3 < this.d; $$3++) {
+            this.b[this.a($$3 - 1)] = this.get($$3);
+         }
+
+         this.b[this.a(this.d - 1)] = null;
       }
 
-      public axp.b<C, I> a(float $$0, float $$1, float $$2) {
-         return this.a($$0, new axp.c<>(this.b.a($$1)), $$2);
-      }
+      this.modCount++;
+      this.d--;
+      return $$2;
+   }
 
-      public axp.b<C, I> a(float $$0, axp<C, I> $$1) {
-         return this.a($$0, $$1, 0.0F);
-      }
+   @Override
+   public boolean removeIf(Predicate<? super T> $$0) {
+      int $$1 = 0;
 
-      private axp.b<C, I> a(float $$0, axp<C, I> $$1, float $$2) {
-         if (!this.c.isEmpty() && $$0 <= this.c.getFloat(this.c.size() - 1)) {
-            throw new IllegalArgumentException("Please register points in ascending order");
-         } else {
-            this.c.add($$0);
-            this.d.add($$1);
-            this.e.add($$2);
-            return this;
+      for (int $$2 = 0; $$2 < this.d; $$2++) {
+         T $$3 = this.get($$2);
+         if ($$0.test($$3)) {
+            $$1++;
+         } else if ($$1 != 0) {
+            this.b[this.a($$2 - $$1)] = $$3;
+            this.b[this.a($$2)] = null;
          }
       }
 
-      public axp<C, I> a() {
-         if (this.c.isEmpty()) {
-            throw new IllegalStateException("No elements added");
-         } else {
-            return axp.e.a(this.a, this.c.toFloatArray(), ImmutableList.copyOf(this.d), this.e.toFloatArray());
-         }
+      this.modCount += $$1;
+      this.d -= $$1;
+      return $$1 != 0;
+   }
+
+   private void a(Object[] $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         $$0[$$2] = this.get($$2);
       }
    }
 
-   @azt
-   public static record c<C, I extends azq<C>>(float b) implements axp<C, I> {
+   @Override
+   public void replaceAll(UnaryOperator<T> $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         int $$2 = this.a($$1);
+         this.b[$$2] = Objects.requireNonNull($$0.apply(this.c($$1)));
+      }
+   }
+
+   @Override
+   public void forEach(Consumer<? super T> $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         $$0.accept(this.get($$1));
+      }
+   }
+
+   @Override
+   public void addFirst(T $$0) {
+      this.add(0, $$0);
+   }
+
+   @Override
+   public void addLast(T $$0) {
+      this.add(this.d, $$0);
+   }
+
+   @Override
+   public boolean offerFirst(T $$0) {
+      this.addFirst($$0);
+      return true;
+   }
+
+   @Override
+   public boolean offerLast(T $$0) {
+      this.addLast($$0);
+      return true;
+   }
+
+   @Override
+   public T removeFirst() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.remove(0);
+      }
+   }
+
+   @Override
+   public T removeLast() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.remove(this.d - 1);
+      }
+   }
+
+   @Override
+   public ayy<T> b() {
+      return new axp.b(this);
+   }
+
+   @Nullable
+   @Override
+   public T pollFirst() {
+      return this.d == 0 ? null : this.removeFirst();
+   }
+
+   @Nullable
+   @Override
+   public T pollLast() {
+      return this.d == 0 ? null : this.removeLast();
+   }
+
+   @Override
+   public T getFirst() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.get(0);
+      }
+   }
+
+   @Override
+   public T getLast() {
+      if (this.d == 0) {
+         throw new NoSuchElementException();
+      } else {
+         return this.get(this.d - 1);
+      }
+   }
+
+   @Nullable
+   @Override
+   public T peekFirst() {
+      return this.d == 0 ? null : this.getFirst();
+   }
+
+   @Nullable
+   @Override
+   public T peekLast() {
+      return this.d == 0 ? null : this.getLast();
+   }
+
+   @Override
+   public boolean removeFirstOccurrence(Object $$0) {
+      for (int $$1 = 0; $$1 < this.d; $$1++) {
+         T $$2 = this.get($$1);
+         if (Objects.equals($$0, $$2)) {
+            this.remove($$1);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public boolean removeLastOccurrence(Object $$0) {
+      for (int $$1 = this.d - 1; $$1 >= 0; $$1--) {
+         T $$2 = this.get($$1);
+         if (Objects.equals($$0, $$2)) {
+            this.remove($$1);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   public Iterator<T> descendingIterator() {
+      return new axp.a();
+   }
+
+   class a implements Iterator<T> {
+      private int b = axp.this.size() - 1;
+
+      public a() {
+      }
+
       @Override
-      public float a(C $$0) {
+      public boolean hasNext() {
+         return this.b >= 0;
+      }
+
+      @Override
+      public T next() {
+         return axp.this.get(this.b--);
+      }
+
+      @Override
+      public void remove() {
+         axp.this.remove(this.b + 1);
+      }
+   }
+
+   class b extends AbstractList<T> implements ayy<T> {
+      private final axp<T> b;
+
+      public b(final axp<T> $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public ayy<T> b() {
          return this.b;
       }
 
       @Override
-      public String a() {
-         return String.format(Locale.ROOT, "k=%.3f", this.b);
+      public T getFirst() {
+         return this.b.getLast();
       }
 
       @Override
-      public float c() {
-         return this.b;
+      public T getLast() {
+         return this.b.getFirst();
       }
 
       @Override
-      public axp<C, I> a(axp.d<I> $$0) {
-         return this;
-      }
-
-      public float d() {
-         return this.b;
-      }
-   }
-
-   public interface d<I> {
-      I visit(I var1);
-   }
-
-   @azt
-   public static record e<C, I extends azq<C>>(I b, float[] c, List<axp<C, I>> d, float[] e, float f, float g) implements axp<C, I> {
-
-      public e(I b, float[] c, List<axp<C, I>> d, float[] e, float f, float g) {
-         a(c, d, e);
-         this.b = b;
-         this.c = c;
-         this.d = d;
-         this.e = e;
-         this.f = f;
-         this.g = g;
-      }
-
-      static <C, I extends azq<C>> axp.e<C, I> a(I $$0, float[] $$1, List<axp<C, I>> $$2, float[] $$3) {
-         a($$1, $$2, $$3);
-         int $$4 = $$1.length - 1;
-         float $$5 = Float.POSITIVE_INFINITY;
-         float $$6 = Float.NEGATIVE_INFINITY;
-         float $$7 = $$0.b();
-         float $$8 = $$0.c();
-         if ($$7 < $$1[0]) {
-            float $$9 = a($$7, $$1, $$2.get(0).b(), $$3, 0);
-            float $$10 = a($$7, $$1, $$2.get(0).c(), $$3, 0);
-            $$5 = Math.min($$5, Math.min($$9, $$10));
-            $$6 = Math.max($$6, Math.max($$9, $$10));
-         }
-
-         if ($$8 > $$1[$$4]) {
-            float $$11 = a($$8, $$1, $$2.get($$4).b(), $$3, $$4);
-            float $$12 = a($$8, $$1, $$2.get($$4).c(), $$3, $$4);
-            $$5 = Math.min($$5, Math.min($$11, $$12));
-            $$6 = Math.max($$6, Math.max($$11, $$12));
-         }
-
-         for (axp<C, I> $$13 : $$2) {
-            $$5 = Math.min($$5, $$13.b());
-            $$6 = Math.max($$6, $$13.c());
-         }
-
-         for (int $$14 = 0; $$14 < $$4; $$14++) {
-            float $$15 = $$1[$$14];
-            float $$16 = $$1[$$14 + 1];
-            float $$17 = $$16 - $$15;
-            axp<C, I> $$18 = $$2.get($$14);
-            axp<C, I> $$19 = $$2.get($$14 + 1);
-            float $$20 = $$18.b();
-            float $$21 = $$18.c();
-            float $$22 = $$19.b();
-            float $$23 = $$19.c();
-            float $$24 = $$3[$$14];
-            float $$25 = $$3[$$14 + 1];
-            if ($$24 != 0.0F || $$25 != 0.0F) {
-               float $$26 = $$24 * $$17;
-               float $$27 = $$25 * $$17;
-               float $$28 = Math.min($$20, $$22);
-               float $$29 = Math.max($$21, $$23);
-               float $$30 = $$26 - $$23 + $$20;
-               float $$31 = $$26 - $$22 + $$21;
-               float $$32 = -$$27 + $$22 - $$21;
-               float $$33 = -$$27 + $$23 - $$20;
-               float $$34 = Math.min($$30, $$32);
-               float $$35 = Math.max($$31, $$33);
-               $$5 = Math.min($$5, $$28 + 0.25F * $$34);
-               $$6 = Math.max($$6, $$29 + 0.25F * $$35);
-            }
-         }
-
-         return new axp.e<>($$0, $$1, $$2, $$3, $$5, $$6);
-      }
-
-      private static float a(float $$0, float[] $$1, float $$2, float[] $$3, int $$4) {
-         float $$5 = $$3[$$4];
-         return $$5 == 0.0F ? $$2 : $$2 + $$5 * ($$0 - $$1[$$4]);
-      }
-
-      private static <C, I extends azq<C>> void a(float[] $$0, List<axp<C, I>> $$1, float[] $$2) {
-         if ($$0.length != $$1.size() || $$0.length != $$2.length) {
-            throw new IllegalArgumentException("All lengths must be equal, got: " + $$0.length + " " + $$1.size() + " " + $$2.length);
-         } else if ($$0.length == 0) {
-            throw new IllegalArgumentException("Cannot create a multipoint spline with no points");
-         }
+      public void addFirst(T $$0) {
+         this.b.addLast($$0);
       }
 
       @Override
-      public float a(C $$0) {
-         float $$1 = this.b.a($$0);
-         int $$2 = a(this.c, $$1);
-         int $$3 = this.c.length - 1;
-         if ($$2 < 0) {
-            return a($$1, this.c, this.d.get(0).a($$0), this.e, 0);
-         } else if ($$2 == $$3) {
-            return a($$1, this.c, this.d.get($$3).a($$0), this.e, $$3);
-         } else {
-            float $$4 = this.c[$$2];
-            float $$5 = this.c[$$2 + 1];
-            float $$6 = ($$1 - $$4) / ($$5 - $$4);
-            azq<C> $$7 = (azq<C>)this.d.get($$2);
-            azq<C> $$8 = (azq<C>)this.d.get($$2 + 1);
-            float $$9 = this.e[$$2];
-            float $$10 = this.e[$$2 + 1];
-            float $$11 = $$7.a($$0);
-            float $$12 = $$8.a($$0);
-            float $$13 = $$9 * ($$5 - $$4) - ($$12 - $$11);
-            float $$14 = -$$10 * ($$5 - $$4) + ($$12 - $$11);
-            return ayo.i($$6, $$11, $$12) + $$6 * (1.0F - $$6) * ayo.i($$6, $$13, $$14);
-         }
-      }
-
-      private static int a(float[] $$0, float $$1) {
-         return ayo.a(0, $$0.length, $$2 -> $$1 < $$0[$$2]) - 1;
-      }
-
-      @VisibleForTesting
-      @Override
-      public String a() {
-         return "Spline{coordinate="
-            + this.b
-            + ", locations="
-            + this.a(this.c)
-            + ", derivatives="
-            + this.a(this.e)
-            + ", values="
-            + this.d.stream().map(axp::a).collect(Collectors.joining(", ", "[", "]"))
-            + "}";
-      }
-
-      private String a(float[] $$0) {
-         return "["
-            + IntStream.range(0, $$0.length)
-               .mapToDouble($$1 -> (double)$$0[$$1])
-               .mapToObj($$0x -> String.format(Locale.ROOT, "%.3f", $$0x))
-               .collect(Collectors.joining(", "))
-            + "]";
+      public void addLast(T $$0) {
+         this.b.addFirst($$0);
       }
 
       @Override
-      public axp<C, I> a(axp.d<I> $$0) {
-         return a($$0.visit(this.b), this.c, this.f().stream().map($$1 -> $$1.a($$0)).toList(), this.e);
-      }
-
-      public I d() {
-         return this.b;
-      }
-
-      public float[] e() {
-         return this.c;
-      }
-
-      public List<axp<C, I>> f() {
-         return this.d;
-      }
-
-      public float[] g() {
-         return this.e;
+      public boolean offerFirst(T $$0) {
+         return this.b.offerLast($$0);
       }
 
       @Override
-      public float b() {
-         return this.f;
+      public boolean offerLast(T $$0) {
+         return this.b.offerFirst($$0);
       }
 
       @Override
-      public float c() {
-         return this.g;
+      public T pollFirst() {
+         return this.b.pollLast();
+      }
+
+      @Override
+      public T pollLast() {
+         return this.b.pollFirst();
+      }
+
+      @Override
+      public T peekFirst() {
+         return this.b.peekLast();
+      }
+
+      @Override
+      public T peekLast() {
+         return this.b.peekFirst();
+      }
+
+      @Override
+      public T removeFirst() {
+         return this.b.removeLast();
+      }
+
+      @Override
+      public T removeLast() {
+         return this.b.removeFirst();
+      }
+
+      @Override
+      public boolean removeFirstOccurrence(Object $$0) {
+         return this.b.removeLastOccurrence($$0);
+      }
+
+      @Override
+      public boolean removeLastOccurrence(Object $$0) {
+         return this.b.removeFirstOccurrence($$0);
+      }
+
+      @Override
+      public Iterator<T> descendingIterator() {
+         return this.b.iterator();
+      }
+
+      @Override
+      public int size() {
+         return this.b.size();
+      }
+
+      @Override
+      public boolean isEmpty() {
+         return this.b.isEmpty();
+      }
+
+      @Override
+      public boolean contains(Object $$0) {
+         return this.b.contains($$0);
+      }
+
+      @Override
+      public T get(int $$0) {
+         return this.b.get(this.a($$0));
+      }
+
+      @Override
+      public T set(int $$0, T $$1) {
+         return this.b.set(this.a($$0), $$1);
+      }
+
+      @Override
+      public void add(int $$0, T $$1) {
+         this.b.add(this.a($$0) + 1, $$1);
+      }
+
+      @Override
+      public T remove(int $$0) {
+         return this.b.remove(this.a($$0));
+      }
+
+      @Override
+      public int indexOf(Object $$0) {
+         return this.a(this.b.lastIndexOf($$0));
+      }
+
+      @Override
+      public int lastIndexOf(Object $$0) {
+         return this.a(this.b.indexOf($$0));
+      }
+
+      @Override
+      public List<T> subList(int $$0, int $$1) {
+         return this.b.subList(this.a($$1) + 1, this.a($$0) + 1).reversed();
+      }
+
+      @Override
+      public Iterator<T> iterator() {
+         return this.b.descendingIterator();
+      }
+
+      @Override
+      public void clear() {
+         this.b.clear();
+      }
+
+      private int a(int $$0) {
+         return $$0 == -1 ? -1 : this.b.size() - 1 - $$0;
       }
    }
 }

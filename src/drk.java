@@ -1,221 +1,173 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class drk extends dqh implements bqi, bqv {
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 0;
-   public static final int d = 1;
-   private final bqk e = new bqk() {
-      @Override
-      public int b() {
-         return 1;
-      }
+public class drk extends dre implements brb {
+   private static final int a = 2;
+   private static final int b = 4;
+   private final jw<cvl> c = jw.a(4, cvl.k);
+   private final int[] d = new int[4];
+   private final int[] e = new int[4];
+   private final czx.a<daj, czf> f = czx.b(czz.e);
 
-      @Override
-      public boolean c() {
-         return drk.this.g.e();
-      }
+   public drk(je $$0, dua $$1) {
+      super(drg.G, $$0, $$1);
+   }
 
-      @Override
-      public cuq a(int $$0) {
-         return $$0 == 0 ? drk.this.g : cuq.l;
-      }
+   public static void a(dds $$0, je $$1, dua $$2, drk $$3) {
+      boolean $$4 = false;
 
-      @Override
-      public cuq a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            cuq $$2 = drk.this.g.a($$1);
-            if (drk.this.g.e()) {
-               drk.this.k();
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         cvl $$6 = $$3.c.get($$5);
+         if (!$$6.f()) {
+            $$4 = true;
+            $$3.d[$$5]++;
+            if ($$3.d[$$5] >= $$3.e[$$5]) {
+               daj $$7 = new daj($$6);
+               cvl $$8 = $$3.f.a($$7, $$0).map($$2x -> ((czf)$$2x.b()).a($$7, $$0.F_())).orElse($$6);
+               if ($$8.a($$0.J())) {
+                  brg.a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$8);
+                  $$3.c.set($$5, cvl.k);
+                  $$0.a($$1, $$2, $$2, 3);
+                  $$0.a(dyx.c, $$1, dyx.a.a($$2));
+               }
             }
-
-            return $$2;
-         } else {
-            return cuq.l;
          }
       }
 
-      @Override
-      public cuq b(int $$0) {
-         if ($$0 == 0) {
-            cuq $$1 = drk.this.g;
-            drk.this.g = cuq.l;
-            drk.this.k();
-            return $$1;
-         } else {
-            return cuq.l;
+      if ($$4) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   public static void b(dds $$0, je $$1, dua $$2, drk $$3) {
+      boolean $$4 = false;
+
+      for (int $$5 = 0; $$5 < $$3.c.size(); $$5++) {
+         if ($$3.d[$$5] > 0) {
+            $$4 = true;
+            $$3.d[$$5] = azc.a($$3.d[$$5] - 2, 0, $$3.e[$$5]);
          }
       }
 
-      @Override
-      public void a(int $$0, cuq $$1) {
+      if ($$4) {
+         a($$0, $$1, $$2);
       }
+   }
 
-      @Override
-      public int al_() {
-         return 1;
-      }
-
-      @Override
-      public void e() {
-         drk.this.e();
-      }
-
-      @Override
-      public boolean a(cmx $$0) {
-         return bqk.a(drk.this, $$0) && drk.this.c();
-      }
-
-      @Override
-      public boolean b(int $$0, cuq $$1) {
-         return false;
-      }
-
-      @Override
-      public void a() {
-      }
-   };
-   private final cqf f = new cqf() {
-      @Override
-      public int a(int $$0) {
-         return $$0 == 0 ? drk.this.h : 0;
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 0) {
-            drk.this.a($$1);
+   public static void c(dds $$0, je $$1, dua $$2, drk $$3) {
+      azk $$4 = $$0.z;
+      if ($$4.i() < 0.11F) {
+         for (int $$5 = 0; $$5 < $$4.a(2) + 2; $$5++) {
+            dhj.a($$0, $$1, $$2.c(dhj.d), false);
          }
       }
 
-      @Override
-      public int a() {
-         return 1;
-      }
-   };
-   cuq g = cuq.l;
-   int h;
-   private int i;
+      int $$6 = $$2.c(dhj.f).e();
 
-   public drk(jd $$0, dtc $$1) {
-      super(dqj.D, $$0, $$1);
-   }
+      for (int $$7 = 0; $$7 < $$3.c.size(); $$7++) {
+         if (!$$3.c.get($$7).f() && $$4.i() < 0.2F) {
+            jj $$8 = jj.b(Math.floorMod($$7 + $$6, 4));
+            float $$9 = 0.3125F;
+            double $$10 = (double)$$1.u() + 0.5 - (double)((float)$$8.j() * 0.3125F) + (double)((float)$$8.h().j() * 0.3125F);
+            double $$11 = (double)$$1.v() + 0.5;
+            double $$12 = (double)$$1.w() + 0.5 - (double)((float)$$8.l() * 0.3125F) + (double)((float)$$8.h().l() * 0.3125F);
 
-   public cuq b() {
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.g.a(cut.tZ) || this.g.a(cut.ua);
-   }
-
-   public void b(cuq $$0) {
-      this.a($$0, null);
-   }
-
-   void k() {
-      this.h = 0;
-      this.i = 0;
-      dkj.a(null, this.i(), this.aD_(), this.n(), false);
-   }
-
-   public void a(cuq $$0, @Nullable cmx $$1) {
-      this.g = this.b($$0, $$1);
-      this.h = 0;
-      this.i = c(this.g);
-      this.e();
-   }
-
-   void a(int $$0) {
-      int $$1 = ayo.a($$0, 0, this.i - 1);
-      if ($$1 != this.h) {
-         this.h = $$1;
-         this.e();
-         dkj.a(this.i(), this.aD_(), this.n());
+            for (int $$13 = 0; $$13 < 4; $$13++) {
+               $$0.a(ln.ae, $$10, $$11, $$12, 0.0, 5.0E-4, 0.0);
+            }
+         }
       }
    }
 
-   public int f() {
-      return this.h;
-   }
-
-   public int j() {
-      float $$0 = this.i > 1 ? (float)this.f() / ((float)this.i - 1.0F) : 1.0F;
-      return ayo.d($$0 * 14.0F) + (this.c() ? 1 : 0);
-   }
-
-   private cuq b(cuq $$0, @Nullable cmx $$1) {
-      if (this.n instanceof aqu && $$0.a(cut.ua)) {
-         cwr.a($$0, this.a($$1), $$1);
-      }
-
-      return $$0;
-   }
-
-   private et a(@Nullable cmx $$0) {
-      String $$1;
-      wz $$2;
-      if ($$0 == null) {
-         $$1 = "Lectern";
-         $$2 = wz.b("Lectern");
-      } else {
-         $$1 = $$0.ah().getString();
-         $$2 = $$0.S_();
-      }
-
-      exc $$5 = exc.b(this.o);
-      return new et(es.a, $$5, exb.a, (aqu)this.n, 2, $$1, $$2, this.n.o(), $$0);
+   public jw<cvl> b() {
+      return this.c;
    }
 
    @Override
-   public boolean q() {
-      return true;
-   }
-
-   @Override
-   protected void a(ub $$0, jo.a $$1) {
+   protected void a(uf $$0, jp.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("Book", 10)) {
-         this.g = this.b(cuq.a($$1, (uy)$$0.p("Book")).orElse(cuq.l), null);
-      } else {
-         this.g = cuq.l;
+      this.c.clear();
+      bre.b($$0, this.c, $$1);
+      if ($$0.b("CookingTimes", 11)) {
+         int[] $$2 = $$0.n("CookingTimes");
+         System.arraycopy($$2, 0, this.d, 0, Math.min(this.e.length, $$2.length));
       }
 
-      this.i = c(this.g);
-      this.h = ayo.a($$0.h("Page"), 0, this.i - 1);
+      if ($$0.b("CookingTotalTimes", 11)) {
+         int[] $$3 = $$0.n("CookingTotalTimes");
+         System.arraycopy($$3, 0, this.e, 0, Math.min(this.e.length, $$3.length));
+      }
    }
 
    @Override
-   protected void b(ub $$0, jo.a $$1) {
+   protected void b(uf $$0, jp.a $$1) {
       super.b($$0, $$1);
-      if (!this.b().e()) {
-         $$0.a("Book", this.b().a($$1));
-         $$0.a("Page", this.h);
+      bre.a($$0, this.c, true, $$1);
+      $$0.a("CookingTimes", this.d);
+      $$0.a("CookingTotalTimes", this.e);
+   }
+
+   public acg c() {
+      return acg.a(this);
+   }
+
+   @Override
+   public uf a(jp.a $$0) {
+      uf $$1 = new uf();
+      bre.a($$1, this.c, true, $$0);
+      return $$1;
+   }
+
+   public Optional<czv<czf>> b(cvl $$0) {
+      return this.c.stream().noneMatch(cvl::f) ? Optional.empty() : this.f.a(new daj($$0), this.o);
+   }
+
+   public boolean a(@Nullable buf $$0, cvl $$1, int $$2) {
+      for (int $$3 = 0; $$3 < this.c.size(); $$3++) {
+         cvl $$4 = this.c.get($$3);
+         if ($$4.f()) {
+            this.e[$$3] = $$2;
+            this.d[$$3] = 0;
+            this.c.set($$3, $$1.b(1, $$0));
+            this.o.a(dyx.c, this.aD_(), dyx.a.a($$0, this.m()));
+            this.f();
+            return true;
+         }
       }
+
+      return false;
+   }
+
+   private void f() {
+      this.e();
+      this.i().a(this.aD_(), this.m(), this.m(), 3);
    }
 
    @Override
    public void a() {
-      this.b(cuq.l);
+      this.c.clear();
    }
 
-   @Override
-   public cpu createMenu(int $$0, cmw $$1, cmx $$2) {
-      return new cqz($$0, this.e, this.f);
-   }
-
-   @Override
-   public wz S_() {
-      return wz.c("container.lectern");
-   }
-
-   private static int c(cuq $$0) {
-      cyb $$1 = $$0.a(kq.J);
-      if ($$1 != null) {
-         return $$1.a().size();
-      } else {
-         cya $$2 = $$0.a(kq.I);
-         return $$2 != null ? $$2.a().size() : 0;
+   public void d() {
+      if (this.o != null) {
+         this.f();
       }
+   }
+
+   @Override
+   protected void a(dre.b $$0) {
+      super.a($$0);
+      $$0.a(kr.ad, cyh.a).a(this.b());
+   }
+
+   @Override
+   protected void a(kn.a $$0) {
+      super.a($$0);
+      $$0.a(kr.ad, cyh.a(this.b()));
+   }
+
+   @Override
+   public void a(uf $$0) {
+      $$0.r("Items");
    }
 }

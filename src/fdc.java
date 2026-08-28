@@ -1,32 +1,36 @@
-import com.google.gson.annotations.SerializedName;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import com.google.common.primitives.Floats;
+import it.unimi.dsi.fastutil.ints.IntArrays;
+import org.joml.Vector3f;
 
-public abstract class fdc {
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("{");
+public interface fdc {
+   fdc a = a(0.0F, 0.0F, 0.0F);
+   fdc b = a((fdc.a)($$0 -> -$$0.z()));
 
-      for (Field $$1 : this.getClass().getFields()) {
-         if (!b($$1)) {
-            try {
-               $$0.append(a($$1)).append("=").append($$1.get(this)).append(" ");
-            } catch (IllegalAccessException var7) {
-            }
+   static fdc a(float $$0, float $$1, float $$2) {
+      return a(new Vector3f($$0, $$1, $$2));
+   }
+
+   static fdc a(Vector3f $$0) {
+      return a($$0::distanceSquared);
+   }
+
+   static fdc a(fdc.a $$0) {
+      return $$1 -> {
+         float[] $$2 = new float[$$1.length];
+         int[] $$3 = new int[$$1.length];
+
+         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
+            $$2[$$4] = $$0.apply($$1[$$4]);
          }
-      }
 
-      $$0.deleteCharAt($$0.length() - 1);
-      $$0.append('}');
-      return $$0.toString();
+         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
+         return $$3;
+      };
    }
 
-   private static String a(Field $$0) {
-      SerializedName $$1 = $$0.getAnnotation(SerializedName.class);
-      return $$1 != null ? $$1.value() : $$0.getName();
-   }
+   int[] sort(Vector3f[] var1);
 
-   private static boolean b(Field $$0) {
-      return Modifier.isStatic($$0.getModifiers());
+   public interface a {
+      float apply(Vector3f var1);
    }
 }

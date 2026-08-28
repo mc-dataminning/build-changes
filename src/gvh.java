@@ -1,7 +1,5 @@
-public interface gvh<T> {
-   int e();
-
-   T b(ayw var1);
-
-   void a(gvc var1);
+public class gvh extends gsu {
+   public boolean a;
+   public float b;
+   public float c;
 }

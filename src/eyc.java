@@ -1,19 +1,26 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public abstract class eyc {
+   protected final eye a;
 
-public interface eyc {
-   int a();
-
-   boolean b();
-
-   @Nullable
-   yp c();
-
-   default xn a(yp $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   protected eyc(eye $$0) {
+      this.a = $$0;
    }
 
-   static xn a(@Nullable eyc $$0, yp $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   public double a(btj $$0) {
+      double $$1 = this.a.d - $$0.dx();
+      double $$2 = this.a.e - $$0.dz();
+      double $$3 = this.a.f - $$0.dD();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public abstract eyc.a c();
+
+   public eye e() {
+      return this.a;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

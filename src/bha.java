@@ -1,44 +1,28 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class bha extends bad {
-   private static final Logger b = LogUtils.getLogger();
-
+public class bha extends bgf {
    public bha(Schema $$0) {
-      super($$0, bgr.l);
+      super($$0, false, "PlayerHeadBlockProfileFix", bhk.s, "minecraft:skull");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "SavedDataUUIDFix",
-         this.getInputSchema().getType(this.a),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> $$0x.update(
-                     "data",
-                     $$0xx -> $$0xx.update(
-                           "Raids",
-                           $$0xxx -> $$0xxx.createList(
-                                 $$0xxx.asStream()
-                                    .map(
-                                       $$0xxxx -> $$0xxxx.update(
-                                             "HeroesOfTheVillage",
-                                             $$0xxxxx -> $$0xxxxx.createList(
-                                                   $$0xxxxx.asStream().map($$0xxxxxx -> (Dynamic)d($$0xxxxxx, "UUIDMost", "UUIDLeast").orElseGet(() -> {
-                                                         b.warn("HeroesOfTheVillage contained invalid UUIDs.");
-                                                         return $$0xxxxxx;
-                                                      }))
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
+      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
+      if ($$3.isEmpty()) {
+         return $$0;
+      } else {
+         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
+         return $$0.set("profile", bff.a($$3.get()));
+      }
    }
 }

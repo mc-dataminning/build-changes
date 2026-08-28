@@ -1,32 +1,97 @@
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Keyable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
-import java.util.stream.IntStream;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class azy {
-   public static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.get("X").asNumber().result();
-      Optional<Number> $$2 = $$0.get("Y").asNumber().result();
-      Optional<Number> $$3 = $$0.get("Z").asNumber().result();
-      return !$$1.isEmpty() && !$$2.isEmpty() && !$$3.isEmpty()
-         ? $$0.createIntList(IntStream.of($$1.get().intValue(), $$2.get().intValue(), $$3.get().intValue()))
-         : $$0;
+public interface azy {
+   int W = 16;
+
+   String c();
+
+   static <E extends Enum<E> & azy> azy.a<E> a(Supplier<E[]> $$0) {
+      return a($$0, $$0x -> $$0x);
    }
 
-   public static <T, R> Typed<R> a(Type<R> $$0, Typed<T> $$1) {
-      return new Typed($$0, $$1.getOps(), $$1.getValue());
+   static <E extends Enum<E> & azy> azy.a<E> a(Supplier<E[]> $$0, Function<String, String> $$1) {
+      E[] $$2 = (E[])$$0.get();
+      Function<String, E> $$3 = a($$2, $$1);
+      return new azy.a<>($$2, $$3);
    }
 
-   @SafeVarargs
-   public static <T> Function<Typed<?>, Typed<?>> a(Function<Typed<?>, Typed<?>>... $$0) {
-      return $$1 -> {
-         for (Function<Typed<?>, Typed<?>> $$2 : $$0) {
-            $$1 = $$2.apply($$1);
+   static <T extends azy> Codec<T> b(Supplier<T[]> $$0) {
+      T[] $$1 = (T[])$$0.get();
+      Function<String, T> $$2 = a($$1, $$0x -> $$0x);
+      ToIntFunction<T> $$3 = ad.g(Arrays.asList($$1));
+      return new azy.b<>($$1, $$2, $$3);
+   }
+
+   static <T extends azy> Function<String, T> a(T[] $$0, Function<String, String> $$1) {
+      if ($$0.length > 16) {
+         Map<String, T> $$2 = Arrays.<azy>stream($$0).collect(Collectors.toMap($$1x -> $$1.apply($$1x.c()), $$0x -> (T)$$0x));
+         return $$1x -> $$1x == null ? null : $$2.get($$1x);
+      } else {
+         return $$2x -> {
+            for (T $$3 : $$0) {
+               if ($$1.apply($$3.c()).equals($$2x)) {
+                  return $$3;
+               }
+            }
+
+            return null;
+         };
+      }
+   }
+
+   static Keyable a(final azy[] $$0) {
+      return new Keyable() {
+         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
+            return Arrays.stream($$0).map(azy::c).map($$0::createString);
          }
-
-         return $$1;
       };
+   }
+
+   @Deprecated
+   public static class a<E extends Enum<E> & azy> extends azy.b<E> {
+      private final Function<String, E> a;
+
+      public a(E[] $$0, Function<String, E> $$1) {
+         super($$0, $$1, $$0x -> ((Enum)$$0x).ordinal());
+         this.a = $$1;
+      }
+
+      @Nullable
+      public E a(@Nullable String $$0) {
+         return this.a.apply($$0);
+      }
+
+      public E a(@Nullable String $$0, E $$1) {
+         return Objects.requireNonNullElse(this.a($$0), $$1);
+      }
+   }
+
+   public static class b<S extends azy> implements Codec<S> {
+      private final Codec<S> a;
+
+      public b(S[] $$0, Function<String, S> $$1, ToIntFunction<S> $$2) {
+         this.a = ayl.a(Codec.stringResolver(azy::c, $$1), ayl.a($$2, $$1x -> $$1x >= 0 && $$1x < $$0.length ? $$0[$$1x] : null, -1));
+      }
+
+      public <T> DataResult<Pair<S, T>> decode(DynamicOps<T> $$0, T $$1) {
+         return this.a.decode($$0, $$1);
+      }
+
+      public <T> DataResult<T> a(S $$0, DynamicOps<T> $$1, T $$2) {
+         return this.a.encode($$0, $$1, $$2);
+      }
    }
 }

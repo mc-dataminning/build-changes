@@ -1,22 +1,20 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.annotations.VisibleForTesting;
 
-public class eaj implements eaf {
-   public static final MapCodec<eaj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(kh.v(16).optionalFieldOf("offset", jd.c).forGetter($$0x -> $$0x.e)).apply($$0, eaj::new)
-   );
-   private final kh e;
-
-   public eaj(kh $$0) {
-      this.e = $$0;
+public interface eaj {
+   default azk a(je $$0) {
+      return this.a($$0.u(), $$0.v(), $$0.w());
    }
 
-   public boolean a(dds $$0, jd $$1) {
-      return !$$0.s($$1.a(this.e));
+   default azk a(alb $$0) {
+      return this.a($$0.toString());
    }
 
-   @Override
-   public eag<?> a() {
-      return eag.h;
-   }
+   azk a(String var1);
+
+   azk a(long var1);
+
+   azk a(int var1, int var2, int var3);
+
+   @VisibleForTesting
+   void a(StringBuilder var1);
 }

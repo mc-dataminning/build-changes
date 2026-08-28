@@ -1,110 +1,89 @@
-public class cqc extends cpu {
-   private static final int k = 9;
-   private final bqk l;
-   private final int m;
+public abstract class cqc extends btj {
+   protected static final akg<Integer> f = akk.a(cqc.class, aki.b);
+   protected static final akg<Integer> g = akk.a(cqc.class, aki.b);
+   protected static final akg<Float> h = akk.a(cqc.class, aki.d);
 
-   private cqc(crc<?> $$0, int $$1, cmw $$2, int $$3) {
-      this($$0, $$1, $$2, new bra(9 * $$3), $$3);
-   }
-
-   public static cqc a(int $$0, cmw $$1) {
-      return new cqc(crc.a, $$0, $$1, 1);
-   }
-
-   public static cqc b(int $$0, cmw $$1) {
-      return new cqc(crc.b, $$0, $$1, 2);
-   }
-
-   public static cqc c(int $$0, cmw $$1) {
-      return new cqc(crc.c, $$0, $$1, 3);
-   }
-
-   public static cqc d(int $$0, cmw $$1) {
-      return new cqc(crc.d, $$0, $$1, 4);
-   }
-
-   public static cqc e(int $$0, cmw $$1) {
-      return new cqc(crc.e, $$0, $$1, 5);
-   }
-
-   public static cqc f(int $$0, cmw $$1) {
-      return new cqc(crc.f, $$0, $$1, 6);
-   }
-
-   public static cqc a(int $$0, cmw $$1, bqk $$2) {
-      return new cqc(crc.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cqc b(int $$0, cmw $$1, bqk $$2) {
-      return new cqc(crc.f, $$0, $$1, $$2, 6);
-   }
-
-   public cqc(crc<?> $$0, int $$1, cmw $$2, bqk $$3, int $$4) {
+   public cqc(btq<?> $$0, dds $$1) {
       super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.l = $$3;
-      this.m = $$4;
-      $$3.d_($$2.l);
-      int $$5 = (this.m - 4) * 18;
-
-      for (int $$6 = 0; $$6 < this.m; $$6++) {
-         for (int $$7 = 0; $$7 < 9; $$7++) {
-            this.a(new crq($$3, $$7 + $$6 * 9, 8 + $$7 * 18, 18 + $$6 * 18));
-         }
-      }
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         for (int $$9 = 0; $$9 < 9; $$9++) {
-            this.a(new crq($$2, $$9 + $$8 * 9 + 9, 8 + $$9 * 18, 103 + $$8 * 18 + $$5));
-         }
-      }
-
-      for (int $$10 = 0; $$10 < 9; $$10++) {
-         this.a(new crq($$2, $$10, 8 + $$10 * 18, 161 + $$5));
-      }
    }
 
    @Override
-   public boolean b(cmx $$0) {
-      return this.l.a($$0);
-   }
-
-   @Override
-   public cuq b(cmx $$0, int $$1) {
-      cuq $$2 = cuq.l;
-      crq $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuq $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.m * 9) {
-            if (!this.a($$4, this.m * 9, this.i.size(), true)) {
-               return cuq.l;
+   public boolean a(bsb $$0, float $$1) {
+      if (this.dS().B || this.dN()) {
+         return true;
+      } else if (this.b($$0)) {
+         return false;
+      } else {
+         this.m(-this.S());
+         this.d(10);
+         this.bA();
+         this.b(this.Q() + $$1 * 10.0F);
+         this.a(dyx.o, $$0.d());
+         boolean $$2 = $$0.d() instanceof cnp && ((cnp)$$0.d()).gd().d;
+         if (($$2 || !(this.Q() > 40.0F)) && !this.d($$0)) {
+            if ($$2) {
+               this.as();
             }
-         } else if (!this.a($$4, 0, this.m * 9, false)) {
-            return cuq.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cuq.l);
          } else {
-            $$3.c();
+            this.a($$0);
          }
-      }
 
-      return $$2;
+         return true;
+      }
+   }
+
+   boolean d(bsb $$0) {
+      return false;
+   }
+
+   public void b(cvg $$0) {
+      this.ar();
+      if (this.dS().ac().b(ddo.i)) {
+         cvl $$1 = new cvl($$0);
+         $$1.b(kr.g, this.al());
+         this.b($$1);
+      }
    }
 
    @Override
-   public void a(cmx $$0) {
-      super.a($$0);
-      this.l.c($$0);
+   protected void a(akk.a $$0) {
+      $$0.a(f, 0);
+      $$0.a(g, 1);
+      $$0.a(h, 0.0F);
    }
 
-   public bqk l() {
-      return this.l;
+   public void d(int $$0) {
+      this.am.a(f, $$0);
    }
 
-   public int m() {
-      return this.m;
+   public void m(int $$0) {
+      this.am.a(g, $$0);
    }
+
+   public void b(float $$0) {
+      this.am.a(h, $$0);
+   }
+
+   public float Q() {
+      return this.am.a(h);
+   }
+
+   public int R() {
+      return this.am.a(f);
+   }
+
+   public int S() {
+      return this.am.a(g);
+   }
+
+   protected void a(bsb $$0) {
+      this.b(this.aj_());
+   }
+
+   @Override
+   public int bU() {
+      return 10;
+   }
+
+   abstract cvg aj_();
 }

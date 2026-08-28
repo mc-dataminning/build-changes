@@ -1,27 +1,19 @@
-class brs extends brx {
-   protected brs(bry $$0, int $$1) {
-      super($$0, $$1);
+public final class brs implements brm {
+   private final xd a;
+   private final cry b;
+
+   public brs(cry $$0, xd $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public xd Q_() {
+      return this.a;
    }
 
    @Override
-   public boolean a(btn $$0, int $$1) {
-      if ($$0 instanceof aqv $$2 && !$$2.R_()) {
-         aqu $$3 = $$2.A();
-         if ($$3.al() != bqo.a && $$3.c($$2.do())) {
-            coi $$4 = $$3.d($$2.do());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.b(new brz(bsb.I, 600, $$1));
-               $$2.c($$2.do());
-               return false;
-            }
-         }
-      }
-
-      return true;
+   public cqq createMenu(int $$0, cno $$1, cnp $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

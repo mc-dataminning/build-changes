@@ -1,88 +1,19 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
-public class auk<S> implements aua {
-   private static final int c = 2;
-   private static final int d = 2;
-   private static final int e = 1;
-   protected final CompletableFuture<azs> a = new CompletableFuture<>();
-   protected CompletableFuture<List<S>> b;
-   final Set<aty> f;
-   private final int g;
-   private int h;
-   private int i;
-   private final AtomicInteger j = new AtomicInteger();
-   private final AtomicInteger k = new AtomicInteger();
-
-   public static auk<Void> a(aue $$0, List<aty> $$1, Executor $$2, Executor $$3, CompletableFuture<azs> $$4) {
-      return new auk<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, bnc.a, bnc.a, $$2, $$5), $$4);
+@FunctionalInterface
+public interface auk<T> {
+   static auk<InputStream> create(Path $$0) {
+      return () -> Files.newInputStream($$0);
    }
 
-   protected auk(Executor $$0, final Executor $$1, aue $$2, List<aty> $$3, auk.a<S> $$4, CompletableFuture<azs> $$5) {
-      this.g = $$3.size();
-      this.j.incrementAndGet();
-      $$5.thenRun(this.k::incrementAndGet);
-      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
-      CompletableFuture<?> $$7 = $$5;
-      this.f = Sets.newHashSet($$3);
-
-      for (final aty $$8 : $$3) {
-         final CompletableFuture<?> $$9 = $$7;
-         CompletableFuture<S> $$10 = $$4.create(new aty.a() {
-            @Override
-            public <T> CompletableFuture<T> a(T $$0) {
-               $$1.execute(() -> {
-                  auk.this.f.remove($$8);
-                  if (auk.this.f.isEmpty()) {
-                     auk.this.a.complete(azs.a);
-                  }
-               });
-               return auk.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
-            }
-         }, $$2, $$8, $$1x -> {
-            this.j.incrementAndGet();
-            $$0.execute(() -> {
-               $$1x.run();
-               this.k.incrementAndGet();
-            });
-         }, $$1x -> {
-            this.h++;
-            $$1.execute(() -> {
-               $$1x.run();
-               this.i++;
-            });
-         });
-         $$6.add($$10);
-         $$7 = $$10;
-      }
-
-      this.b = ad.e($$6);
+   static auk<InputStream> create(ZipFile $$0, ZipEntry $$1) {
+      return () -> $$0.getInputStream($$1);
    }
 
-   @Override
-   public CompletableFuture<?> a() {
-      return this.b;
-   }
-
-   @Override
-   public float b() {
-      int $$0 = this.g - this.f.size();
-      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
-      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
-      return $$1 / $$2;
-   }
-
-   public static aua a(aue $$0, List<aty> $$1, Executor $$2, Executor $$3, CompletableFuture<azs> $$4, boolean $$5) {
-      return (aua)($$5 ? new atz($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
-   }
-
-   protected interface a<S> {
-      CompletableFuture<S> create(aty.a var1, aue var2, aty var3, Executor var4, Executor var5);
-   }
+   T get() throws IOException;
 }

@@ -1,103 +1,55 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dkb extends dfk {
-   public static final MapCodec<dkb> a = b(dkb::new);
-   public static final dtt b = dts.n;
+public class dkb extends dhe implements dgy {
+   public static final MapCodec<dkb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ala.a(lv.aI).fieldOf("feature").forGetter($$0x -> $$0x.e), lu.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), u())
+            .apply($$0, dkb::new)
+   );
+   protected static final eyx b = dgv.a(4.0, 0.0, 4.0, 12.0, 9.0, 12.0);
+   private static final double c = 0.4;
+   private final dgv d;
+   private final ala<eco<?, ?>> e;
 
    @Override
    public MapCodec<dkb> a() {
       return a;
    }
 
-   protected dkb(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(false)));
+   protected dkb(ala<eco<?, ?>> $$0, dgv $$1, dtz.d $$2) {
+      super($$2);
+      this.e = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(dcw $$0, jd $$1, dtc $$2, @Nullable btn $$3, cuq $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cxh $$5 = $$4.a(kq.O, cxh.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.a(b, Boolean.valueOf(true)), 2);
-      }
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return b;
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof drj $$5) {
-         $$5.l();
-         return bqr.a($$1.B);
-      } else {
-         return bqr.e;
-      }
+   protected boolean b(dua $$0, dcx $$1, je $$2) {
+      return $$0.a(aws.aM) || $$0.a(dgx.fl) || $$0.a(dgx.dX) || super.b($$0, $$1, $$2);
+   }
+
+   private Optional<? extends jn<eco<?, ?>>> a(ddv $$0) {
+      return $$0.F_().d(lv.aI).b(this.e);
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
-      if ($$1.c(b)) {
-         return bqt.d;
-      } else {
-         cuq $$7 = $$4.b($$5);
-         bqt $$8 = cuu.a($$2, $$3, $$7, $$4);
-         return !$$8.a() ? bqt.d : $$8;
-      }
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      dua $$3 = $$0.a_($$1.e());
+      return $$3.a(this.d);
    }
 
    @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof drj $$5) {
-            $$5.l();
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
+      return (double)$$1.i() < 0.4;
    }
 
    @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new drj($$0, $$1);
-   }
-
-   @Override
-   public boolean e_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   public int a(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      if ($$1.c_($$2) instanceof drj $$4 && $$4.j().a()) {
-         return 15;
-      }
-
-      return 0;
-   }
-
-   @Override
-   protected boolean c_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dtc $$0, dcw $$1, jd $$2) {
-      return $$1.c_($$2) instanceof drj $$3 ? $$3.u() : 0;
-   }
-
-   @Override
-   protected dmf a_(dtc $$0) {
-      return dmf.c;
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return $$1.c(b) ? a($$2, dqj.e, drj::a) : null;
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      this.a($$0).ifPresent($$3x -> ((eco)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2));
    }
 }

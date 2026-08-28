@@ -1,21 +1,42 @@
-public class gel {
-   public static final dch a = ddw::a;
-   public static final dch b = ($$0, $$1, $$2) -> $$0.f();
-   public static final dch c = ($$0, $$1, $$2) -> $$0.i();
-
-   private static int a(dbz $$0, jd $$1, dch $$2) {
-      return $$0.a($$1, $$2);
+public class gel extends gek {
+   gel(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
-   public static int a(dbz $$0, jd $$1) {
-      return a($$0, $$1, a);
+   @Override
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
-   public static int b(dbz $$0, jd $$1) {
-      return a($$0, $$1, b);
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
+      }
    }
 
-   public static int c(dbz $$0, jd $$1) {
-      return a($$0, $$1, c);
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gel $$8 = new gel($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

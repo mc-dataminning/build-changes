@@ -23,19 +23,21 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@ezb
+@fad
 public class GlStateManager {
-   private static final boolean ON_LINUX = ad.k() == ad.a.a;
+   private static final boolean ON_LINUX = ad.m() == ad.a.a;
    public static final int TEXTURE_COUNT = 12;
    private static final GlStateManager.a BLEND = new GlStateManager.a();
    private static final GlStateManager.f DEPTH = new GlStateManager.f();
    private static final GlStateManager.e CULL = new GlStateManager.e();
-   private static final GlStateManager.h POLY_OFFSET = new GlStateManager.h();
+   private static final GlStateManager.i POLY_OFFSET = new GlStateManager.i();
    private static final GlStateManager.c COLOR_LOGIC = new GlStateManager.c();
-   private static final GlStateManager.k STENCIL = new GlStateManager.k();
-   private static final GlStateManager.i SCISSOR = new GlStateManager.i();
+   private static final GlStateManager.l STENCIL = new GlStateManager.l();
+   private static final GlStateManager.j SCISSOR = new GlStateManager.j();
+   private static final GlStateManager.g READ_FRAMEBUFFER = new GlStateManager.g();
+   private static final GlStateManager.g DRAW_FRAMEBUFFER = new GlStateManager.g();
    private static int activeTexture;
-   private static final GlStateManager.l[] TEXTURES = IntStream.range(0, 12).mapToObj($$0 -> new GlStateManager.l()).toArray(GlStateManager.l[]::new);
+   private static final GlStateManager.m[] TEXTURES = IntStream.range(0, 12).mapToObj($$0 -> new GlStateManager.m()).toArray(GlStateManager.m[]::new);
    private static final GlStateManager.d COLOR_MASK = new GlStateManager.d();
 
    public static void _disableScissorTest() {
@@ -344,7 +346,16 @@ public class GlStateManager {
 
    public static void _glBindFramebuffer(int $$0, int $$1) {
       RenderSystem.assertOnRenderThreadOrInit();
-      GL30.glBindFramebuffer($$0, $$1);
+
+      boolean $$2 = switch ($$0) {
+         case 36008 -> READ_FRAMEBUFFER.a($$1);
+         case 36009 -> DRAW_FRAMEBUFFER.a($$1);
+         case 36160 -> READ_FRAMEBUFFER.a($$1) | DRAW_FRAMEBUFFER.a($$1);
+         default -> true;
+      };
+      if ($$2) {
+         GL30.glBindFramebuffer($$0, $$1);
+      }
    }
 
    public static void _glBlitFrameBuffer(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8, int $$9) {
@@ -530,7 +541,7 @@ public class GlStateManager {
       RenderSystem.assertOnRenderThreadOrInit();
       GL11.glDeleteTextures($$0);
 
-      for (GlStateManager.l $$1 : TEXTURES) {
+      for (GlStateManager.m $$1 : TEXTURES) {
          if ($$1.a == $$0) {
             $$1.a = -1;
          }
@@ -540,7 +551,7 @@ public class GlStateManager {
    public static void _deleteTextures(int[] $$0) {
       RenderSystem.assertOnRenderThreadOrInit();
 
-      for (GlStateManager.l $$1 : TEXTURES) {
+      for (GlStateManager.m $$1 : TEXTURES) {
          for (int $$2 : $$0) {
             if ($$1.a == $$2) {
                $$1.a = -1;
@@ -573,7 +584,7 @@ public class GlStateManager {
       GL11.glTexSubImage2D($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, faj.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, fbp.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       if (!RenderSystem.isOnRenderThreadOrInit()) {
          RenderSystem.recordRenderCall(() -> _upload($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       } else {
@@ -581,7 +592,7 @@ public class GlStateManager {
       }
    }
 
-   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, faj.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, fbp.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       try {
          RenderSystem.assertOnRenderThreadOrInit();
          _pixelStore(3314, $$3);
@@ -601,10 +612,10 @@ public class GlStateManager {
 
    public static void _viewport(int $$0, int $$1, int $$2, int $$3) {
       RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager.m.a.b = $$0;
-      GlStateManager.m.a.c = $$1;
-      GlStateManager.m.a.d = $$2;
-      GlStateManager.m.a.e = $$3;
+      GlStateManager.n.a.b = $$0;
+      GlStateManager.n.a.c = $$1;
+      GlStateManager.n.a.d = $$2;
+      GlStateManager.n.a.e = $$3;
       GL11.glViewport($$0, $$1, $$2, $$3);
    }
 
@@ -662,10 +673,10 @@ public class GlStateManager {
       GL11.glClearStencil($$0);
    }
 
-   public static void _clear(int $$0, boolean $$1) {
+   public static void _clear(int $$0) {
       RenderSystem.assertOnRenderThreadOrInit();
       GL11.glClear($$0);
-      if ($$1) {
+      if (fbm.a) {
          _getError();
       }
    }
@@ -730,7 +741,7 @@ public class GlStateManager {
       return GL11.glGetInteger($$0);
    }
 
-   @ezb
+   @fad
    public static enum DestFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),
@@ -754,7 +765,7 @@ public class GlStateManager {
       }
    }
 
-   @ezb
+   @fad
    public static enum SourceFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),
@@ -839,7 +850,20 @@ public class GlStateManager {
       public int c = 513;
    }
 
-   public static enum g {
+   static class g {
+      public int a;
+
+      public boolean a(int $$0) {
+         if ($$0 != this.a) {
+            this.a = $$0;
+            return true;
+         } else {
+            return false;
+         }
+      }
+   }
+
+   public static enum h {
       a(5377),
       b(5380),
       c(5378),
@@ -859,41 +883,41 @@ public class GlStateManager {
 
       public final int q;
 
-      private g(final int $$0) {
+      private h(final int $$0) {
          this.q = $$0;
       }
    }
 
-   static class h {
+   static class i {
       public final GlStateManager.b a = new GlStateManager.b(32823);
       public final GlStateManager.b b = new GlStateManager.b(10754);
       public float c;
       public float d;
    }
 
-   static class i {
+   static class j {
       public final GlStateManager.b a = new GlStateManager.b(3089);
    }
 
-   static class j {
+   static class k {
       public int a = 519;
       public int b;
       public int c = -1;
    }
 
-   static class k {
-      public final GlStateManager.j a = new GlStateManager.j();
+   static class l {
+      public final GlStateManager.k a = new GlStateManager.k();
       public int b = -1;
       public int c = 7680;
       public int d = 7680;
       public int e = 7680;
    }
 
-   static class l {
+   static class m {
       public int a;
    }
 
-   public static enum m {
+   public static enum n {
       a;
 
       protected int b;

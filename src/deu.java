@@ -1,68 +1,103 @@
+import com.google.common.base.Suppliers;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
+import java.util.stream.Collectors;
+import org.slf4j.Logger;
 
-public abstract class deu extends dfk implements cts {
-   public static final dtt a = dts.w;
-   private final dnb.a b;
+public class deu {
+   private static final Logger c = LogUtils.getLogger();
+   public static final deu a = new deu(jr.a(), List.of());
+   public static final MapCodec<deu> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eca.c.promotePartial(ad.a("Carver: ", c::error)).fieldOf("carvers").forGetter($$0x -> $$0x.d),
+               ejs.d.promotePartial(ad.a("Features: ", c::error)).fieldOf("features").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, deu::new)
+   );
+   private final jr<eca<?>> d;
+   private final List<jr<ejs>> e;
+   private final Supplier<List<eco<?, ?>>> f;
+   private final Supplier<Set<ejs>> g;
 
-   public deu(dnb.a $$0, dtb.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.k(this.E.b().a(a, Boolean.valueOf(false)));
+   deu(jr<eca<?>> $$0, List<jr<ejs>> $$1) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = Suppliers.memoize(
+         () -> $$1.stream().flatMap(jr::a).map(jn::a).flatMap(ejs::a).filter($$0xx -> $$0xx.b() == edc.g).collect(ImmutableList.toImmutableList())
+      );
+      this.g = Suppliers.memoize(() -> $$1.stream().flatMap(jr::a).map(jn::a).collect(Collectors.toSet()));
    }
 
-   @Override
-   protected abstract MapCodec<? extends deu> a();
-
-   @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dru($$0, $$1);
+   public Iterable<jn<eca<?>>> a() {
+      return this.d;
    }
 
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      if ($$0.B) {
-         boolean $$3 = $$1.a(dga.gO) || $$1.a(dga.gP) || $$1.a(dga.gQ) || $$1.a(dga.gR);
-         if ($$3) {
-            return a($$2, dqj.p, dru::a);
+   public List<eco<?, ?>> b() {
+      return this.f.get();
+   }
+
+   public List<jr<ejs>> c() {
+      return this.e;
+   }
+
+   public boolean a(ejs $$0) {
+      return this.g.get().contains($$0);
+   }
+
+   public static class a extends deu.b {
+      private final jo<ejs> a;
+      private final jo<eca<?>> b;
+
+      public a(jo<ejs> $$0, jo<eca<?>> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public deu.a a(dzs.a $$0, ala<ejs> $$1) {
+         this.a($$0.ordinal(), this.a.b($$1));
+         return this;
+      }
+
+      public deu.a a(ala<eca<?>> $$0) {
+         this.a(this.b.b($$0));
+         return this;
+      }
+   }
+
+   public static class b {
+      private final List<jn<eca<?>>> a = new ArrayList<>();
+      private final List<List<jn<ejs>>> b = new ArrayList<>();
+
+      public deu.b a(dzs.a $$0, jn<ejs> $$1) {
+         return this.a($$0.ordinal(), $$1);
+      }
+
+      public deu.b a(int $$0, jn<ejs> $$1) {
+         this.a($$0);
+         this.b.get($$0).add($$1);
+         return this;
+      }
+
+      public deu.b a(jn<eca<?>> $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      private void a(int $$0) {
+         while (this.b.size() <= $$0) {
+            this.b.add(Lists.newArrayList());
          }
       }
 
-      return null;
-   }
-
-   public dnb.a b() {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
-   }
-
-   @Override
-   public bsy m() {
-      return bsy.f;
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dtc a(cyd $$0) {
-      return this.o().a(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dfy $$3, jd $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.a(a, Boolean.valueOf($$6)), 2);
-         }
+      public deu a() {
+         return new deu(jr.a(this.a), this.b.stream().map(jr::a).collect(ImmutableList.toImmutableList()));
       }
    }
 }

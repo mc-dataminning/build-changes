@@ -1,27 +1,28 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eve {
-   public static final evd a = a("inverted", euz.a);
-   public static final evd b = a("any_of", euq.a);
-   public static final evd c = a("all_of", eup.a);
-   public static final evd d = a("random_chance", evh.a);
-   public static final evd e = a("random_chance_with_enchanted_bonus", evi.a);
-   public static final evd f = a("entity_properties", evf.a);
-   public static final evd g = a("killed_by_player", evg.a);
-   public static final evd h = a("entity_scores", eux.a);
-   public static final evd i = a("block_state_property", evb.a);
-   public static final evd j = a("match_tool", evj.a);
-   public static final evd k = a("table_bonus", eur.a);
-   public static final evd l = a("survives_explosion", euy.a);
-   public static final evd m = a("damage_source_properties", euv.a);
-   public static final evd n = a("location_check", eva.a);
-   public static final evd o = a("weather_check", evm.a);
-   public static final evd p = a("reference", eut.a);
-   public static final evd q = a("time_check", evk.a);
-   public static final evd r = a("value_check", evl.a);
-   public static final evd s = a("enchantment_active_check", euw.a);
+public class eve extends eug {
+   public static final MapCodec<eve> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxl.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, eve::new));
+   private final jn<cxl> b;
 
-   private static evd a(String $$0, MapCodec<? extends evc> $$1) {
-      return jz.a(lt.F, akr.b($$0), new evd($$1));
+   private eve(List<ewe> $$0, jn<cxl> $$1) {
+      super($$0);
+      this.b = $$1;
+   }
+
+   @Override
+   public eui<eve> b() {
+      return euj.F;
+   }
+
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      $$0.a(kr.I, cxn.a, this.b, cxn::b);
+      return $$0;
+   }
+
+   public static eug.a<?> a(jn<cxl> $$0) {
+      return a($$1 -> new eve($$1, $$0));
    }
 }

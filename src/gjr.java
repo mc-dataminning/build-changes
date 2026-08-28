@@ -1,32 +1,73 @@
-public class gjr extends glp<cfh, fuv<cfh>> {
-   public gjr(gkj.a $$0) {
-      super($$0, new fuv<>($$0.a(fyj.u)), 0.4F);
-      this.a(new gnx(this, $$0.f()));
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class gjr implements gjc<dss> {
+   private final Map<dny.a, fyx> a;
+   private static final Map<dny.a, alb> b = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dny.b.c, alb.b("textures/entity/skeleton/skeleton.png"));
+      $$0.put(dny.b.d, alb.b("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(dny.b.f, alb.b("textures/entity/zombie/zombie.png"));
+      $$0.put(dny.b.g, alb.b("textures/entity/creeper/creeper.png"));
+      $$0.put(dny.b.i, alb.b("textures/entity/enderdragon/dragon.png"));
+      $$0.put(dny.b.h, alb.b("textures/entity/piglin/piglin.png"));
+      $$0.put(dny.b.e, gxc.a());
+   });
+
+   public static Map<dny.a, fyx> a(fzx $$0) {
+      Builder<dny.a, fyx> $$1 = ImmutableMap.builder();
+      $$1.put(dny.b.c, new fyw($$0.a(gaa.cq)));
+      $$1.put(dny.b.d, new fyw($$0.a(gaa.dd)));
+      $$1.put(dny.b.e, new fyw($$0.a(gaa.bK)));
+      $$1.put(dny.b.f, new fyw($$0.a(gaa.dm)));
+      $$1.put(dny.b.g, new fyw($$0.a(gaa.Y)));
+      $$1.put(dny.b.i, new fzu($$0.a(gaa.ah)));
+      $$1.put(dny.b.h, new fyb($$0.a(gaa.bA)));
+      return $$1.build();
    }
 
-   public akr a(cfh $$0) {
-      return $$0.gu();
+   public gjr(gjd.a $$0) {
+      this.a = a($$0.e());
    }
 
-   protected void a(cfh $$0, fbi $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b(0.8F, 0.8F, 0.8F);
+   public void a(dss $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dua $$7 = $$0.m();
+      boolean $$8 = $$7.b() instanceof dpx;
+      jj $$9 = $$8 ? $$7.c(dpx.d) : null;
+      int $$10 = $$8 ? dvg.a($$9.g()) : $$7.c(dny.e);
+      float $$11 = dvg.b($$10);
+      dny.a $$12 = ((dfr)$$7.b()).b();
+      fyx $$13 = this.a.get($$12);
+      ghe $$14 = a($$12, $$0.c());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
    }
 
-   protected void a(cfh $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.H($$4);
-      if ($$6 > 0.0F) {
-         $$1.a(0.4F * $$6, 0.15F * $$6, 0.1F * $$6);
-         $$1.a(a.f.rotationDegrees(ayo.j($$6, 0.0F, 90.0F)));
-         jd $$7 = $$0.do();
+   public static void a(@Nullable jj $$0, float $$1, float $$2, fcu $$3, ggv $$4, int $$5, fyx $$6, ghe $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
+      } else {
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
+      }
 
-         for (cmx $$9 : $$0.dO().a(cmx.class, new ewx($$7).c(2.0, 2.0, 2.0))) {
-            if ($$9.fH()) {
-               $$1.a(0.15F * $$6, 0.0F, 0.0F);
-               break;
-            }
-         }
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      fcy $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, gwb.d);
+      $$3.b();
+   }
+
+   public static ghe a(dny.a $$0, @Nullable cyn $$1) {
+      alb $$2 = b.get($$0);
+      if ($$0 == dny.b.e && $$1 != null) {
+         gxm $$3 = fib.Q().am();
+         return ghe.j($$3.b($$1.f()).a());
+      } else {
+         return ghe.g($$2);
       }
    }
 }

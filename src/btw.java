@@ -1,64 +1,44 @@
-public abstract class btw extends btp {
-   protected static final float cb = 0.0F;
-
-   protected btw(bsx<? extends btw> $$0, dcw $$1) {
+public abstract class btw extends buh {
+   protected btw(btq<? extends btw> $$0, dds $$1) {
       super($$0, $$1);
    }
 
-   public float c(jd $$0) {
-      return this.a($$0, this.dO());
-   }
-
-   public float a(jd $$0, dcz $$1) {
-      return 0.0F;
+   @Override
+   protected void a(double $$0, boolean $$1, dua $$2, je $$3) {
    }
 
    @Override
-   public boolean a(dcx $$0, btr $$1) {
-      return this.a(this.do(), $$0) >= 0.0F;
-   }
-
-   public boolean gg() {
-      return !this.N().l();
-   }
-
-   public boolean gh() {
-      if (this.bF.a(ccs.Z)) {
-         return this.bF.c(ccs.Z).isPresent();
-      } else {
-         for (cca $$0 : this.bW.b()) {
-            if ($$0.h() && $$0.k() instanceof cbf) {
-               return true;
+   public void a_(eye $$0) {
+      if (this.de()) {
+         if (this.bi()) {
+            this.a(0.02F, $$0);
+            this.a(buj.a, this.dv());
+            this.h(this.dv().c(0.8F));
+         } else if (this.bw()) {
+            this.a(0.02F, $$0);
+            this.a(buj.a, this.dv());
+            this.h(this.dv().c(0.5));
+         } else {
+            float $$1 = 0.91F;
+            if (this.aH()) {
+               $$1 = this.dS().a_(this.aO()).b().h() * 0.91F;
             }
+
+            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
+            $$1 = 0.91F;
+            if (this.aH()) {
+               $$1 = this.dS().a_(this.aO()).b().h() * 0.91F;
+            }
+
+            this.a(this.aH() ? 0.1F * $$2 : 0.02F, $$0);
+            this.a(buj.a, this.dv());
+            this.h(this.dv().c((double)$$1));
          }
-
-         return false;
-      }
-   }
-
-   protected boolean gi() {
-      return true;
-   }
-
-   @Override
-   public void b(bsr $$0) {
-      super.b($$0);
-      if (this.gi() && !this.gh()) {
-         this.bW.b(cam.a.a);
-         float $$1 = 2.0F;
-         float $$2 = this.f($$0);
-         exc $$3 = new exc($$0.dt() - this.dt(), $$0.dv() - this.dv(), $$0.dz() - this.dz()).d().a((double)Math.max($$2 - 2.0F, 0.0F));
-         this.N().a(this.dt() + $$3.c, this.dv() + $$3.d, this.dz() + $$3.e, this.gj());
       }
    }
 
    @Override
-   public boolean a(bsr $$0, float $$1) {
-      this.a($$0.do(), 5);
-      return true;
-   }
-
-   protected double gj() {
-      return 1.0;
+   public boolean p_() {
+      return false;
    }
 }

@@ -1,10 +1,63 @@
-import java.util.stream.Stream;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public abstract class eix extends eiy {
-   @Override
-   public final Stream<jd> a_(eiw $$0, ayw $$1, jd $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class eix extends eiv {
+   public static final MapCodec<eix> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               eaq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               eaq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, eix::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final eaq d;
+   private final eaq e;
+   private final int f;
+
+   private eix(eaq $$0, eaq $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   protected abstract boolean a(eiw var1, ayw var2, jd var3);
+   public static eix a(eaq $$0, eaq $$1, int $$2) {
+      return new eix($$0, $$1, $$2);
+   }
+
+   public static eix a(eaq $$0, eaq $$1) {
+      return a($$0, $$1, 0);
+   }
+
+   @Override
+   public int a(azk $$0, eat $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$3 - $$2;
+         if (this.f >= $$4) {
+            return azc.b($$0, $$2, $$3);
+         } else {
+            int $$5 = ($$4 - this.f) / 2;
+            int $$6 = $$4 - $$5;
+            return $$2 + azc.b($$0, 0, $$6) + azc.b($$0, 0, $$5);
+         }
+      }
+   }
+
+   @Override
+   public eiw<?> a() {
+      return eiw.e;
+   }
+
+   @Override
+   public String toString() {
+      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+   }
 }

@@ -1,15 +1,4 @@
-public class brw extends brx {
-   public brw(bry $$0, int $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a() {
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 1;
-   }
+public record brw(bsb a, float b, @Nullable bsg c, float d) {
 }

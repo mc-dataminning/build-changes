@@ -1,88 +1,31 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
-import java.util.stream.IntStream;
-import org.slf4j.Logger;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
+import com.mojang.datafixers.util.Pair;
+import java.time.Duration;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class bov implements boo {
-   private static final Logger a = LogUtils.getLogger();
-   private final Set<bom> b = new ObjectOpenHashSet();
-   private final bou c = new bou();
-
-   public bov(LongSupplier $$0, boolean $$1) {
-      this.b.add(a($$0));
-      if ($$1) {
-         this.b.addAll(a());
-      }
+public record bov(Duration a, @Nullable String b, long c) {
+   public static bov.a a(Duration $$0, List<bov> $$1) {
+      long $$2 = $$1.stream().mapToLong($$0x -> $$0x.c).sum();
+      return new bov.a(
+         $$2,
+         (double)$$2 / (double)$$0.getSeconds(),
+         (long)$$1.size(),
+         (double)$$1.size() / (double)$$0.getSeconds(),
+         $$1.stream().map(bov::a).reduce(Duration.ZERO, Duration::plus),
+         $$1.stream()
+            .filter($$0x -> $$0x.b != null)
+            .collect(Collectors.groupingBy($$0x -> $$0x.b, Collectors.summingLong($$0x -> $$0x.c)))
+            .entrySet()
+            .stream()
+            .sorted(Entry.<String, Long>comparingByValue().reversed())
+            .map($$0x -> Pair.of((String)$$0x.getKey(), (Long)$$0x.getValue()))
+            .limit(10L)
+            .toList()
+      );
    }
 
-   public static Set<bom> a() {
-      Builder<bom> $$0 = ImmutableSet.builder();
-
-      try {
-         bov.a $$1 = new bov.a();
-         IntStream.range(0, $$1.a).mapToObj($$1x -> bom.a("cpu#" + $$1x, bol.h, () -> $$1.a($$1))).forEach($$0::add);
-      } catch (Throwable var2) {
-         a.warn("Failed to query cpu, no cpu stats will be recorded", var2);
-      }
-
-      $$0.add(bom.a("heap MiB", bol.e, () -> (double)ac.a(Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory())));
-      $$0.addAll(bon.a.a());
-      return $$0.build();
-   }
-
-   @Override
-   public Set<bom> a(Supplier<bnd> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
-   }
-
-   public static bom a(final LongSupplier $$0) {
-      Stopwatch $$1 = Stopwatch.createUnstarted(new Ticker() {
-         public long read() {
-            return $$0.getAsLong();
-         }
-      });
-      ToDoubleFunction<Stopwatch> $$2 = $$0x -> {
-         if ($$0x.isRunning()) {
-            $$0x.stop();
-         }
-
-         long $$1x = $$0x.elapsed(TimeUnit.NANOSECONDS);
-         $$0x.reset();
-         return (double)$$1x;
-      };
-      bom.d $$3 = new bom.d(2.0F);
-      return bom.a("ticktime", bol.d, $$2, $$1).a(Stopwatch::start).a($$3).a();
-   }
-
-   static class a {
-      private final SystemInfo b = new SystemInfo();
-      private final CentralProcessor c = this.b.getHardware().getProcessor();
-      public final int a = this.c.getLogicalProcessorCount();
-      private long[][] d = this.c.getProcessorCpuLoadTicks();
-      private double[] e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-      private long f;
-
-      public double a(int $$0) {
-         long $$1 = System.currentTimeMillis();
-         if (this.f == 0L || this.f + 501L < $$1) {
-            this.e = this.c.getProcessorCpuLoadBetweenTicks(this.d);
-            this.d = this.c.getProcessorCpuLoadTicks();
-            this.f = $$1;
-         }
-
-         return this.e[$$0] * 100.0;
-      }
+   public static record a(long a, double b, long c, double d, Duration e, List<Pair<String, Long>> f) {
    }
 }

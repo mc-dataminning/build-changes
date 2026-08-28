@@ -1,77 +1,55 @@
-public class cqo extends cpu {
-   private static final int k = 9;
-   private static final int l = 9;
-   private static final int m = 36;
-   private static final int n = 36;
-   private static final int o = 45;
-   private final bqk p;
+public class cqo {
+   public static final cqn a = new cqn.a().a(4).a(0.3F).c();
+   public static final cqn b = new cqn.a().a(5).a(0.6F).c();
+   public static final cqn c = new cqn.a().a(3).a(0.3F).c();
+   public static final cqn d = new cqn.a().a(1).a(0.6F).c();
+   public static final cqn e = a(6).c();
+   public static final cqn f = new cqn.a().a(5).a(0.6F).c();
+   public static final cqn g = new cqn.a().a(3).a(0.6F).c();
+   public static final cqn h = new cqn.a().a(2).a(0.3F).a(new bsq(bss.q, 600, 0), 0.3F).c();
+   public static final cqn i = new cqn.a().a(4).a(0.3F).a().c();
+   public static final cqn j = new cqn.a().a(2).a(0.1F).c();
+   public static final cqn k = new cqn.a().a(8).a(0.8F).c();
+   public static final cqn l = new cqn.a().a(6).a(0.6F).c();
+   public static final cqn m = new cqn.a().a(5).a(0.6F).c();
+   public static final cqn n = new cqn.a().a(6).a(0.8F).c();
+   public static final cqn o = new cqn.a().a(8).a(0.8F).c();
+   public static final cqn p = new cqn.a().a(5).a(0.6F).c();
+   public static final cqn q = new cqn.a().a(6).a(0.8F).c();
+   public static final cqn r = new cqn.a().a(2).a(0.1F).c();
+   public static final cqn s = new cqn.a().a(1).a(0.3F).b().c();
+   public static final cqn t = new cqn.a()
+      .a(4)
+      .a(1.2F)
+      .a(new bsq(bss.j, 400, 1), 1.0F)
+      .a(new bsq(bss.k, 6000, 0), 1.0F)
+      .a(new bsq(bss.l, 6000, 0), 1.0F)
+      .a(new bsq(bss.v, 2400, 3), 1.0F)
+      .a()
+      .c();
+   public static final cqn u = new cqn.a().a(4).a(1.2F).a(new bsq(bss.j, 100, 1), 1.0F).a(new bsq(bss.v, 2400, 0), 1.0F).a().c();
+   public static final cqn v = new cqn.a().a(6).a(1.2F).c();
+   public static final cqn w = new cqn.a().a(6).a(0.1F).c();
+   public static final cqn x = new cqn.a().a(2).a(0.3F).c();
+   public static final cqn y = a(6).c();
+   public static final cqn z = new cqn.a().a(2).a(0.3F).c();
+   public static final cqn A = new cqn.a().a(2).a(0.3F).a(new bsq(bss.s, 100, 0), 0.6F).c();
+   public static final cqn B = new cqn.a().a(3).a(0.3F).c();
+   public static final cqn C = new cqn.a().a(1).a(0.3F).c();
+   public static final cqn D = new cqn.a().a(1).a(0.1F).a(new bsq(bss.s, 1200, 1), 1.0F).a(new bsq(bss.q, 300, 2), 1.0F).a(new bsq(bss.i, 300, 0), 1.0F).c();
+   public static final cqn E = new cqn.a().a(8).a(0.3F).c();
+   public static final cqn F = new cqn.a().a(3).a(0.3F).c();
+   public static final cqn G = a(10).c();
+   public static final cqn H = new cqn.a().a(4).a(0.1F).a(new bsq(bss.q, 600, 0), 0.8F).c();
+   public static final cqn I = new cqn.a().a(2).a(0.1F).c();
+   public static final cqn J = new cqn.a().a(2).a(0.8F).a(new bsq(bss.s, 100, 0), 1.0F).c();
+   public static final cqn K = a(6).a().c();
+   public static final cqn L = new cqn.a().a(2).a(0.1F).c();
+   public static final cqn M = new cqn.a().a(2).a(0.1F).c();
+   public static final cqn N = new cqn.a().a(1).a(0.1F).c();
+   public static final cqn O = new cqn.a().a(1).a(0.1F).c();
 
-   public cqo(int $$0, cmw $$1) {
-      this($$0, $$1, new bra(9));
-   }
-
-   public cqo(int $$0, cmw $$1, bqk $$2) {
-      super(crc.g, $$0);
-      a($$2, 9);
-      this.p = $$2;
-      $$2.d_($$1.l);
-
-      for (int $$3 = 0; $$3 < 3; $$3++) {
-         for (int $$4 = 0; $$4 < 3; $$4++) {
-            this.a(new crq($$2, $$4 + $$3 * 3, 62 + $$4 * 18, 17 + $$3 * 18));
-         }
-      }
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new crq($$1, $$6 + $$5 * 9 + 9, 8 + $$6 * 18, 84 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 9; $$7++) {
-         this.a(new crq($$1, $$7, 8 + $$7 * 18, 142));
-      }
-   }
-
-   @Override
-   public boolean b(cmx $$0) {
-      return this.p.a($$0);
-   }
-
-   @Override
-   public cuq b(cmx $$0, int $$1) {
-      cuq $$2 = cuq.l;
-      crq $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuq $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < 9) {
-            if (!this.a($$4, 9, 45, true)) {
-               return cuq.l;
-            }
-         } else if (!this.a($$4, 0, 9, false)) {
-            return cuq.l;
-         }
-
-         if ($$4.e()) {
-            $$3.e(cuq.l);
-         } else {
-            $$3.c();
-         }
-
-         if ($$4.H() == $$2.H()) {
-            return cuq.l;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cmx $$0) {
-      super.a($$0);
-      this.p.c($$0);
+   private static cqn.a a(int $$0) {
+      return new cqn.a().a($$0).a(0.6F).a(cvo.ou);
    }
 }

@@ -1,31 +1,48 @@
-public class dcq {
-   private static int[] a = new int[65536];
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   public static void a(int[] $$0) {
-      a = $$0;
+public class dcq extends ArrayList<dcp> {
+   public static final Codec<dcq> a = dcp.a.listOf().fieldOf("Recipes").xmap(dcq::new, Function.identity()).codec();
+   public static final zb<wo, dcq> b = dcp.b.a(yz.a(dcq::new));
+
+   public dcq() {
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   private dcq(int $$0) {
+      super($$0);
    }
 
-   public static int a() {
-      return -10380959;
+   private dcq(Collection<dcp> $$0) {
+      super($$0);
    }
 
-   public static int b() {
-      return -8345771;
+   @Nullable
+   public dcp a(cvl $$0, cvl $$1, int $$2) {
+      if ($$2 > 0 && $$2 < this.size()) {
+         dcp $$3 = this.get($$2);
+         return $$3.a($$0, $$1) ? $$3 : null;
+      } else {
+         for (int $$4 = 0; $$4 < this.size(); $$4++) {
+            dcp $$5 = this.get($$4);
+            if ($$5.a($$0, $$1)) {
+               return $$5;
+            }
+         }
+
+         return null;
+      }
    }
 
-   public static int c() {
-      return -12012264;
-   }
+   public dcq a() {
+      dcq $$0 = new dcq(this.size());
 
-   public static int d() {
-      return -7158200;
+      for (dcp $$1 : this) {
+         $$0.add($$1.v());
+      }
+
+      return $$0;
    }
 }

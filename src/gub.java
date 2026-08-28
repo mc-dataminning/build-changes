@@ -1,5 +1,10 @@
-public interface gub extends gua {
-   boolean m();
+public class gub extends gts {
+   public cgl.b a;
+   public float b;
+   public fxy.a c;
 
-   void q();
+   public gub() {
+      this.a = cgl.b.a;
+      this.c = fxy.a.a;
+   }
 }

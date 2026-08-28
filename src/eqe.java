@@ -1,192 +1,213 @@
 import java.util.Optional;
-import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class eqe {
-   private static final int c = 2;
-   public static final int a = 21;
-   private static final int d = 3;
-   public static final int b = 21;
-   private static final dtb.f e = ($$0, $$1, $$2) -> $$0.a(dga.co);
-   private static final float f = 4.0F;
-   private static final double g = 1.0;
-   private final dcx h;
-   private final ji.a i;
-   private final ji j;
-   private int k;
-   @Nullable
-   private jd l;
-   private int m;
-   private final int n;
+public abstract class eqe extends epz {
+   public static final float e = 0.44444445F;
 
-   public static Optional<eqe> a(dcx $$0, jd $$1, ji.a $$2) {
-      return a($$0, $$1, $$0x -> $$0x.a() && $$0x.k == 0, $$2);
+   @Override
+   public eqa d() {
+      return eqc.d;
    }
 
-   public static Optional<eqe> a(dcx $$0, jd $$1, Predicate<eqe> $$2, ji.a $$3) {
-      Optional<eqe> $$4 = Optional.of(new eqe($$0, $$1, $$3)).filter($$2);
-      if ($$4.isPresent()) {
-         return $$4;
-      } else {
-         ji.a $$5 = $$3 == ji.a.a ? ji.a.c : ji.a.a;
-         return Optional.of(new eqe($$0, $$1, $$5)).filter($$2);
-      }
+   @Override
+   public eqa e() {
+      return eqc.e;
    }
 
-   public eqe(dcx $$0, jd $$1, ji.a $$2) {
-      this.h = $$0;
-      this.i = $$2;
-      this.j = $$2 == ji.a.a ? ji.e : ji.d;
-      this.l = this.a($$1);
-      if (this.l == null) {
-         this.l = $$1;
-         this.n = 1;
-         this.m = 1;
-      } else {
-         this.n = this.d();
-         if (this.n > 0) {
-            this.m = this.e();
+   @Override
+   public cvg a() {
+      return cvo.qB;
+   }
+
+   @Override
+   public void a(dds $$0, je $$1, eqb $$2, azk $$3) {
+      je $$4 = $$1.d();
+      if ($$0.a_($$4).l() && !$$0.a_($$4).s()) {
+         if ($$3.a(100) == 0) {
+            double $$5 = (double)$$1.u() + $$3.j();
+            double $$6 = (double)$$1.v() + 1.0;
+            double $$7 = (double)$$1.w() + $$3.j();
+            $$0.a(ln.Y, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+            $$0.a($$5, $$6, $$7, awd.nS, awe.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
+         }
+
+         if ($$3.a(200) == 0) {
+            $$0.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), awd.nQ, awe.e, 0.2F + $$3.i() * 0.2F, 0.9F + $$3.i() * 0.15F, false);
          }
       }
    }
 
-   @Nullable
-   private jd a(jd $$0) {
-      int $$1 = Math.max(this.h.I_(), $$0.v() - 21);
+   @Override
+   public void b(dds $$0, je $$1, eqb $$2, azk $$3) {
+      if ($$0.ac().b(ddo.b)) {
+         int $$4 = $$3.a(3);
+         if ($$4 > 0) {
+            je $$5 = $$1;
 
-      while ($$0.v() > $$1 && a(this.h.a_($$0.e()))) {
-         $$0 = $$0.e();
-      }
+            for (int $$6 = 0; $$6 < $$4; $$6++) {
+               $$5 = $$5.b($$3.a(3) - 1, 1, $$3.a(3) - 1);
+               if (!$$0.p($$5)) {
+                  return;
+               }
 
-      ji $$2 = this.j.g();
-      int $$3 = this.a($$0, $$2) - 1;
-      return $$3 < 0 ? null : $$0.a($$2, $$3);
-   }
-
-   private int d() {
-      int $$0 = this.a(this.l, this.j);
-      return $$0 >= 2 && $$0 <= 21 ? $$0 : 0;
-   }
-
-   private int a(jd $$0, ji $$1) {
-      jd.a $$2 = new jd.a();
-
-      for (int $$3 = 0; $$3 <= 21; $$3++) {
-         $$2.g($$0).c($$1, $$3);
-         dtc $$4 = this.h.a_($$2);
-         if (!a($$4)) {
-            if (e.test($$4, this.h, $$2)) {
-               return $$3;
+               dua $$7 = $$0.a_($$5);
+               if ($$7.l()) {
+                  if (this.a((ddv)$$0, $$5)) {
+                     $$0.b($$5, dgi.a($$0, $$5));
+                     return;
+                  }
+               } else if ($$7.d()) {
+                  return;
+               }
             }
-            break;
-         }
+         } else {
+            for (int $$8 = 0; $$8 < 3; $$8++) {
+               je $$9 = $$1.b($$3.a(3) - 1, 0, $$3.a(3) - 1);
+               if (!$$0.p($$9)) {
+                  return;
+               }
 
-         dtc $$5 = this.h.a_($$2.c(ji.a));
-         if (!e.test($$5, this.h, $$2)) {
-            break;
+               if ($$0.u($$9.d()) && this.b($$0, $$9)) {
+                  $$0.b($$9.d(), dgi.a($$0, $$9));
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(ddv $$0, je $$1) {
+      for (jj $$2 : jj.values()) {
+         if (this.b($$0, $$1.a($$2))) {
+            return true;
          }
       }
 
-      return 0;
+      return false;
    }
 
-   private int e() {
-      jd.a $$0 = new jd.a();
-      int $$1 = this.a($$0);
-      return $$1 >= 3 && $$1 <= 21 && this.a($$0, $$1) ? $$1 : 0;
+   private boolean b(ddv $$0, je $$1) {
+      return $$1.v() >= $$0.G_() && $$1.v() < $$0.an() && !$$0.B($$1) ? false : $$0.a_($$1).m();
    }
 
-   private boolean a(jd.a $$0, int $$1) {
-      for (int $$2 = 0; $$2 < this.n; $$2++) {
-         jd.a $$3 = $$0.g(this.l).c(ji.b, $$1).c(this.j, $$2);
-         if (!e.test(this.h.a_($$3), this.h, $$3)) {
-            return false;
+   @Nullable
+   @Override
+   public ll h() {
+      return ln.i;
+   }
+
+   @Override
+   protected void a(ddt $$0, je $$1, dua $$2) {
+      this.a($$0, $$1);
+   }
+
+   @Override
+   public int b(ddv $$0) {
+      return $$0.B_().i() ? 4 : 2;
+   }
+
+   @Override
+   public dua b(eqb $$0) {
+      return dgx.H.o().b(dll.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(eqa $$0) {
+      return $$0 == eqc.e || $$0 == eqc.d;
+   }
+
+   @Override
+   public int c(ddv $$0) {
+      return $$0.B_().i() ? 1 : 2;
+   }
+
+   @Override
+   public boolean a(eqb $$0, dcx $$1, je $$2, eqa $$3, jj $$4) {
+      return $$0.a($$1, $$2) >= 0.44444445F && $$3.a(awy.a);
+   }
+
+   @Override
+   public int a(ddv $$0) {
+      return $$0.B_().i() ? 10 : 30;
+   }
+
+   @Override
+   public int a(dds $$0, je $$1, eqb $$2, eqb $$3) {
+      int $$4 = this.a((ddv)$$0);
+      if (!$$2.c() && !$$3.c() && !$$2.c(a) && !$$3.c(a) && $$3.a($$0, $$1) > $$2.a($$0, $$1) && $$0.C_().a(4) != 0) {
+         $$4 *= 4;
+      }
+
+      return $$4;
+   }
+
+   private void a(ddt $$0, je $$1) {
+      $$0.c(1501, $$1, 0);
+   }
+
+   @Override
+   protected boolean a(dds $$0) {
+      return $$0.ac().b(ddo.V);
+   }
+
+   @Override
+   protected void a(ddt $$0, je $$1, dua $$2, jj $$3, eqb $$4) {
+      if ($$3 == jj.a) {
+         eqb $$5 = $$0.b_($$1);
+         if (this.a(awy.b) && $$5.a(awy.a)) {
+            if ($$2.b() instanceof dll) {
+               $$0.a($$1, dgx.b.o(), 3);
+            }
+
+            this.a($$0, $$1);
+            return;
          }
       }
 
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean i() {
       return true;
    }
 
-   private int a(jd.a $$0) {
-      for (int $$1 = 0; $$1 < 21; $$1++) {
-         $$0.g(this.l).c(ji.b, $$1).c(this.j, -1);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
 
-         $$0.g(this.l).c(ji.b, $$1).c(this.j, this.n);
-         if (!e.test(this.h.a_($$0), this.h, $$0)) {
-            return $$1;
-         }
+   @Override
+   public Optional<awc> j() {
+      return Optional.of(awd.dl);
+   }
 
-         for (int $$2 = 0; $$2 < this.n; $$2++) {
-            $$0.g(this.l).c(ji.b, $$1).c(this.j, $$2);
-            dtc $$3 = this.h.a_($$0);
-            if (!a($$3)) {
-               return $$1;
-            }
-
-            if ($$3.a(dga.ed)) {
-               this.k++;
-            }
-         }
+   public static class a extends eqe {
+      @Override
+      protected void a(dub.a<eqa, eqb> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      return 21;
-   }
-
-   private static boolean a(dtc $$0) {
-      return $$0.i() || $$0.a(awe.aL) || $$0.a(dga.ed);
-   }
-
-   public boolean a() {
-      return this.l != null && this.n >= 2 && this.n <= 21 && this.m >= 3 && this.m <= 21;
-   }
-
-   public void b() {
-      dtc $$0 = dga.ed.o().a(dlc.b, this.i);
-      jd.c(this.l, this.l.a(ji.b, this.m - 1).a(this.j, this.n - 1)).forEach($$1 -> this.h.a($$1, $$0, 18));
-   }
-
-   public boolean c() {
-      return this.a() && this.k == this.n * this.m;
-   }
-
-   public static exc a(l.a $$0, ji.a $$1, exc $$2, bsu $$3) {
-      double $$4 = (double)$$0.b - (double)$$3.a();
-      double $$5 = (double)$$0.c - (double)$$3.b();
-      jd $$6 = $$0.a;
-      double $$8;
-      if ($$4 > 0.0) {
-         double $$7 = (double)$$6.a($$1) + (double)$$3.a() / 2.0;
-         $$8 = ayo.a(ayo.c($$2.a($$1) - $$7, 0.0, $$4), 0.0, 1.0);
-      } else {
-         $$8 = 0.5;
+      @Override
+      public int d(eqb $$0) {
+         return $$0.c(b);
       }
 
-      double $$11;
-      if ($$5 > 0.0) {
-         ji.a $$10 = ji.a.b;
-         $$11 = ayo.a(ayo.c($$2.a($$10) - (double)$$6.a($$10), 0.0, $$5), 0.0, 1.0);
-      } else {
-         $$11 = 0.0;
+      @Override
+      public boolean c(eqb $$0) {
+         return false;
       }
-
-      ji.a $$13 = $$1 == ji.a.a ? ji.a.c : ji.a.a;
-      double $$14 = $$2.a($$13) - ((double)$$6.a($$13) + 0.5);
-      return new exc($$8, $$11, $$14);
    }
 
-   public static exc a(exc $$0, aqu $$1, bsr $$2, bsu $$3) {
-      if (!($$3.a() > 4.0F) && !($$3.b() > 4.0F)) {
-         double $$4 = (double)$$3.b() / 2.0;
-         exc $$5 = $$0.b(0.0, $$4, 0.0);
-         exv $$6 = exs.a(ewx.a($$5, (double)$$3.a(), 0.0, (double)$$3.a()).b(0.0, 1.0, 0.0).g(1.0E-6));
-         Optional<exc> $$7 = $$1.a($$2, $$6, $$5, (double)$$3.a(), (double)$$3.b(), (double)$$3.a());
-         Optional<exc> $$8 = $$7.map($$1x -> $$1x.a(0.0, $$4, 0.0));
-         return $$8.orElse($$0);
-      } else {
-         return $$0;
+   public static class b extends eqe {
+      @Override
+      public int d(eqb $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eqb $$0) {
+         return true;
       }
    }
 }

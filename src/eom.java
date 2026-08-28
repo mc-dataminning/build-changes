@@ -1,113 +1,157 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public final class eom extends eov<eon.a, eon> {
-   private final jd.a g = new jd.a();
+public class eom {
+   private dls a;
+   private dnj b;
+   private je c;
+   private boolean d;
+   @Nullable
+   private ekg e;
+   private eoa f;
+   @Nullable
+   private azk g;
+   private int h;
+   private final List<eon> i;
+   private boolean j;
+   private boolean k;
 
-   public eom(dvl $$0) {
-      this($$0, new eon($$0));
+   public eom() {
+      this.a = dls.a;
+      this.b = dnj.a;
+      this.c = je.c;
+      this.f = eoa.b;
+      this.i = Lists.newArrayList();
    }
 
-   @VisibleForTesting
-   public eom(dvl $$0, eon $$1) {
-      super($$0, $$1);
+   public eom a() {
+      eom $$0 = new eom();
+      $$0.a = this.a;
+      $$0.b = this.b;
+      $$0.c = this.c;
+      $$0.d = this.d;
+      $$0.e = this.e;
+      $$0.f = this.f;
+      $$0.g = this.g;
+      $$0.h = this.h;
+      $$0.i.addAll(this.i);
+      $$0.j = this.j;
+      $$0.k = this.k;
+      return $$0;
    }
 
-   @Override
-   protected void a(long $$0) {
-      long $$1 = kf.e($$0);
-      if (this.f.b($$1)) {
-         dtc $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, eov.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
+   public eom a(dls $$0) {
+      this.a = $$0;
+      return this;
+   }
 
-         if ($$3 > 0) {
-            this.c($$0, eov.a.a($$3, a($$2)));
-         }
+   public eom a(dnj $$0) {
+      this.b = $$0;
+      return this;
+   }
+
+   public eom a(je $$0) {
+      this.c = $$0;
+      return this;
+   }
+
+   public eom a(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public eom a(ekg $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public eom a(@Nullable azk $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public eom a(eoa $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public eom b(boolean $$0) {
+      this.j = $$0;
+      return this;
+   }
+
+   public eom b() {
+      this.i.clear();
+      return this;
+   }
+
+   public eom a(eon $$0) {
+      this.i.add($$0);
+      return this;
+   }
+
+   public eom b(eon $$0) {
+      this.i.remove($$0);
+      return this;
+   }
+
+   public dls c() {
+      return this.a;
+   }
+
+   public dnj d() {
+      return this.b;
+   }
+
+   public je e() {
+      return this.c;
+   }
+
+   public azk b(@Nullable je $$0) {
+      if (this.g != null) {
+         return this.g;
+      } else {
+         return $$0 == null ? azk.a(ad.c()) : azk.a(azc.a($$0));
       }
    }
 
-   @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dtc $$3 = null;
+   public boolean f() {
+      return this.d;
+   }
 
-      for (ji $$4 : d) {
-         if (eov.a.a($$1, $$4)) {
-            long $$5 = jd.a($$0, $$4);
-            if (this.f.b(kf.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dtc $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.a($$8, this.g);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = eov.a.b($$1) ? dga.a.o() : this.c(this.g.f($$0));
-                     }
+   @Nullable
+   public ekg g() {
+      return this.e;
+   }
 
-                     if (!this.a($$0, $$3, $$5, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, eov.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
+   public boolean h() {
+      return this.j;
+   }
+
+   public List<eon> i() {
+      return this.i;
+   }
+
+   public boolean j() {
+      return this.f == eoa.b;
+   }
+
+   public eoq.a a(List<eoq.a> $$0, @Nullable je $$1) {
+      int $$2 = $$0.size();
+      if ($$2 == 0) {
+         throw new IllegalStateException("No palettes");
+      } else {
+         return $$0.get(this.b($$1).a($$2));
       }
    }
 
-   @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = eov.a.a($$1);
-
-      for (ji $$3 : d) {
-         if (eov.a.a($$1, $$3)) {
-            long $$4 = jd.a($$0, $$3);
-            if (this.f.b(kf.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dtc $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, eov.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, eov.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, eov.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
+   public eom c(boolean $$0) {
+      this.k = $$0;
+      return this;
    }
 
-   private int a(long $$0, dtc $$1) {
-      int $$2 = $$1.h();
-      return $$2 > 0 && this.f.j(kf.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(dcd $$0) {
-      this.a($$0, true);
-      dvk $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.h();
-            this.c($$0x.a(), eov.a.a($$2, a($$1x)));
-         });
-      }
+   public boolean k() {
+      return this.k;
    }
 }

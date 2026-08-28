@@ -1,15 +1,64 @@
-import java.util.List;
+import com.google.common.collect.MapMaker;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentMap;
 
-public enum ala {
-   a,
-   b,
-   c,
-   d;
+public class ala<T> {
+   private static final ConcurrentMap<ala.a, ala<?>> a = new MapMaker().weakValues().makeMap();
+   private final alb b;
+   private final alb c;
 
-   private static final List<ala> e = List.of(values());
-   private static final ka.b f = ka.a(lt.aA);
+   public static <T> Codec<ala<T>> a(ala<? extends ka<T>> $$0) {
+      return alb.a.xmap($$1 -> a($$0, $$1), ala::a);
+   }
 
-   public static jt<ala> a() {
-      return new jt<>(e).a(a, f);
+   public static <T> zb<ByteBuf, ala<T>> b(ala<? extends ka<T>> $$0) {
+      return alb.b.a($$1 -> a($$0, $$1), ala::a);
+   }
+
+   public static <T> ala<T> a(ala<? extends ka<T>> $$0, alb $$1) {
+      return a($$0.c, $$1);
+   }
+
+   public static <T> ala<ka<T>> a(alb $$0) {
+      return a(lv.a, $$0);
+   }
+
+   private static <T> ala<T> a(alb $$0, alb $$1) {
+      return (ala<T>)a.computeIfAbsent(new ala.a($$0, $$1), $$0x -> new ala($$0x.a, $$0x.b));
+   }
+
+   private ala(alb $$0, alb $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   @Override
+   public String toString() {
+      return "ResourceKey[" + this.b + " / " + this.c + "]";
+   }
+
+   public boolean c(ala<? extends ka<?>> $$0) {
+      return this.b.equals($$0.a());
+   }
+
+   public <E> Optional<ala<E>> d(ala<? extends ka<E>> $$0) {
+      return this.c($$0) ? Optional.of((ala<E>)this) : Optional.empty();
+   }
+
+   public alb a() {
+      return this.c;
+   }
+
+   public alb b() {
+      return this.b;
+   }
+
+   public ala<ka<T>> c() {
+      return a(this.b);
+   }
+
+   static record a(alb a, alb b) {
    }
 }

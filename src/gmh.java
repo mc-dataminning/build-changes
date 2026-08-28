@@ -1,12 +1,21 @@
-public class gmh extends glp<cga, fxa<cga>> {
-   private static final akr a = akr.b("textures/entity/sheep/sheep.png");
+public class gmh extends gln<cgd, gsp, fwt> {
+   private static final alb a = alb.b("textures/entity/dolphin.png");
 
-   public gmh(gkj.a $$0) {
-      super($$0, new fxa<>($$0.a(fyj.bi)), 0.7F);
-      this.a(new gox(this, $$0.f()));
+   public gmh(gms.a $$0) {
+      super($$0, new fwt($$0.a(gaa.ab)), new fwt($$0.a(gaa.ac)), 0.7F);
+      this.a(new gqm(this, $$0.b()));
    }
 
-   public akr a(cga $$0) {
+   public alb a(gsp $$0) {
       return a;
+   }
+
+   public gsp a() {
+      return new gsp();
+   }
+
+   public void a(cgd $$0, gsp $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.dv().j() > 1.0E-7;
    }
 }

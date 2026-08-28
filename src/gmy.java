@@ -1,33 +1,37 @@
-public class gmy extends glo<cpf> {
-   private final gft g;
+public class gmy extends gmr<cod, gtb> {
+   private final gnq a;
 
-   public gmy(gkj.a $$0) {
-      super($$0, fyj.bH);
-      this.g = $$0.c();
+   public gmy(gms.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   protected void a(cpf $$0, float $$1, dtc $$2, fbi $$3, gez $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ayo.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
+   public void a(gtb $$0, fcu $$1, ggv $$2, int $$3) {
+      $$1.a();
+      $$1.a(this.e.b());
+      if ($$0.a) {
+         $$1.a(a.f.rotationDegrees(180.0F));
+         $$1.a(a.d.rotationDegrees(180.0F));
+         $$1.a(a.b.rotationDegrees(90.0F));
       }
 
-      a(this.g, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+      this.a.a($$0.c, cvi.h, false, $$1, $$2, $$3, gwb.d, $$0.b);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public static void a(gft $$0, dtc $$1, fbi $$2, gez $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gqc.a(gqc.a(1.0F), 10);
-      } else {
-         $$6 = gqc.d;
-      }
+   public alb a(gtb $$0) {
+      return gwj.d;
+   }
 
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public gtb a() {
+      return new gtb();
+   }
+
+   public void a(cod $$0, gtb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.o();
+      $$1.c = $$0.m();
+      $$1.b = !$$1.c.f() ? this.a.a($$1.c, $$0.dS(), null, $$0.ap()) : null;
    }
 }

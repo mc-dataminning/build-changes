@@ -1,63 +1,23 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class ehz extends ehx {
-   public static final MapCodec<ehz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dzs.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               dzs.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ehz::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final dzs d;
-   private final dzs e;
-   private final int f;
+public class ehz<P extends ehy> {
+   public static final ehz<eia> a = a("trunk_vine", eia.a);
+   public static final ehz<ehx> b = a("leave_vine", ehx.a);
+   public static final ehz<ehw> c = a("cocoa", ehw.a);
+   public static final ehz<ehv> d = a("beehive", ehv.a);
+   public static final ehz<eht> e = a("alter_ground", eht.a);
+   public static final ehz<ehu> f = a("attached_to_leaves", ehu.a);
+   private final MapCodec<P> g;
 
-   private ehz(dzs $$0, dzs $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private static <P extends ehy> ehz<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.X, $$0, new ehz<>($$1));
    }
 
-   public static ehz a(dzs $$0, dzs $$1, int $$2) {
-      return new ehz($$0, $$1, $$2);
+   private ehz(MapCodec<P> $$0) {
+      this.g = $$0;
    }
 
-   public static ehz a(dzs $$0, dzs $$1) {
-      return a($$0, $$1, 0);
-   }
-
-   @Override
-   public int a(ayw $$0, dzv $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return ayo.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + ayo.b($$0, 0, $$6) + ayo.b($$0, 0, $$5);
-         }
-      }
-   }
-
-   @Override
-   public ehy<?> a() {
-      return ehy.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+   public MapCodec<P> a() {
+      return this.g;
    }
 }

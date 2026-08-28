@@ -1,28 +1,104 @@
-public class gko extends gki<cjg> {
-   private final gft a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
 
-   public gko(gkj.a $$0) {
-      super($$0);
-      this.e = 0.5F;
-      this.a = $$0.c();
+public class gko implements gkq.a {
+   final fib a;
+   private double b = Double.MIN_VALUE;
+   private final int c = 12;
+   @Nullable
+   private gko.a d;
+
+   public gko(fib $$0) {
+      this.a = $$0;
    }
 
-   public void a(cjg $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      dtc $$6 = $$0.t();
-      if ($$6.l() == dmf.c) {
-         dcw $$7 = $$0.dO();
-         if ($$6 != $$7.a_($$0.do()) && $$6.l() != dmf.a) {
-            $$3.a();
-            jd $$8 = jd.a($$0.dt(), $$0.cK().e, $$0.dz());
-            $$3.a(-0.5, 0.0, -0.5);
-            this.a.b().a($$7, this.a.a($$6), $$6, $$8, $$3, $$4.getBuffer(geu.b($$6)), false, ayw.a(), $$6.a($$0.p()), gqc.d);
-            $$3.b();
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ad.d();
+      if ($$5 - this.b > 3.0E9) {
+         this.b = $$5;
+         has $$6 = this.a.V();
+         if ($$6 != null) {
+            this.d = new gko.a($$6, $$2, $$4);
+         } else {
+            this.d = null;
+         }
+      }
+
+      if (this.d != null) {
+         Map<dcy, String> $$7 = this.d.b.getNow(null);
+         double $$8 = this.a.j.l().b().e * 0.85;
+
+         for (Entry<dcy, String> $$9 : this.d.a.entrySet()) {
+            dcy $$10 = $$9.getKey();
+            String $$11 = $$9.getValue();
+            if ($$7 != null) {
+               $$11 = $$11 + $$7.get($$10);
+            }
+
+            String[] $$12 = $$11.split("\n");
+            int $$13 = 0;
+
+            for (String $$14 : $$12) {
+               gkq.a($$0, $$1, $$14, (double)kg.a($$10.e, 8), $$8 + (double)$$13, (double)kg.a($$10.f, 8), -1, 0.15F, true, 0.0F, true);
+               $$13 -= 2;
+            }
          }
       }
    }
 
-   public akr a(cjg $$0) {
-      return gqk.e;
+   final class a {
+      final Map<dcy, String> a;
+      final CompletableFuture<Map<dcy, String>> b;
+
+      a(final has $$0, final double $$1, final double $$2) {
+         gax $$3 = gko.this.a.s;
+         ala<dds> $$4 = $$3.ag();
+         int $$5 = kg.a($$1);
+         int $$6 = kg.a($$2);
+         Builder<dcy, String> $$7 = ImmutableMap.builder();
+         gat $$8 = $$3.h();
+
+         for (int $$9 = $$5 - 12; $$9 <= $$5 + 12; $$9++) {
+            for (int $$10 = $$6 - 12; $$10 <= $$6 + 12; $$10++) {
+               dcy $$11 = new dcy($$9, $$10);
+               String $$12 = "";
+               dwg $$13 = $$8.a($$9, $$10, false);
+               $$12 = $$12 + "Client: ";
+               if ($$13 == null) {
+                  $$12 = $$12 + "0n/a\n";
+               } else {
+                  $$12 = $$12 + ($$13.B() ? " E" : "");
+                  $$12 = $$12 + "\n";
+               }
+
+               $$7.put($$11, $$12);
+            }
+         }
+
+         this.a = $$7.build();
+         this.b = $$0.a(() -> {
+            arg $$4x = $$0.a($$4);
+            if ($$4x == null) {
+               return ImmutableMap.of();
+            } else {
+               Builder<dcy, String> $$5x = ImmutableMap.builder();
+               are $$6x = $$4x.l();
+
+               for (int $$7x = $$5 - 12; $$7x <= $$5 + 12; $$7x++) {
+                  for (int $$8x = $$6 - 12; $$8x <= $$6 + 12; $$8x++) {
+                     dcy $$9x = new dcy($$7x, $$8x);
+                     $$5x.put($$9x, "Server: " + $$6x.a($$9x));
+                  }
+               }
+
+               return $$5x.build();
+            }
+         });
+      }
    }
 }

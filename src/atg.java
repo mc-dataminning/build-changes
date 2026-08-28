@@ -1,8 +1,14 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public enum atg {
+   a("assets"),
+   b("data");
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface atg {
+   private final String c;
+
+   private atg(final String $$0) {
+      this.c = $$0;
+   }
+
+   public String a() {
+      return this.c;
+   }
 }

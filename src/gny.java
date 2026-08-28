@@ -1,24 +1,14 @@
-public class gny extends gog<cjp, fve<cjp>> {
-   private static final akr a = akr.b("textures/entity/creeper/creeper_armor.png");
-   private final fve<cjp> b;
+public abstract class gny<T extends buh, S extends gts, M extends fxa<? super S>> extends gnt<T, S, M> {
+   public gny(gms.a $$0, M $$1, float $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   public gny(gmf<cjp, fve<cjp>> $$0, fyg $$1) {
-      super($$0);
-      this.b = new fve<>($$1.a(fyj.J));
+   protected boolean a(T $$0, double $$1) {
+      return super.a($$0, $$1) && ($$0.cJ() || $$0.ak() && $$0 == this.e.c);
    }
 
    @Override
-   protected float a(float $$0) {
-      return $$0 * 0.01F;
-   }
-
-   @Override
-   protected akr a() {
-      return a;
-   }
-
-   @Override
-   protected fvk<cjp> b() {
-      return this.b;
+   protected float f(S $$0) {
+      return super.f($$0) * $$0.ab;
    }
 }

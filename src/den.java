@@ -1,59 +1,154 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class den extends dea {
-   public static final MapCodec<den> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akp.d(ded.ah), akp.d(ded.ai), akp.d(ded.aj), akp.d(ded.ak), akp.d(ded.al)).apply($$0, $$0.stable(den::new))
-   );
-   private final jm<ddw> c;
-   private final jm<ddw> d;
-   private final jm<ddw> e;
-   private final jm<ddw> f;
-   private final jm<ddw> g;
+public class den {
+   private final ddt a;
+   private final eau b;
+   private final ekp c;
 
-   public static den a(jn<ddw> $$0) {
-      return new den($$0.b(ded.ah), $$0.b(ded.ai), $$0.b(ded.aj), $$0.b(ded.ak), $$0.b(ded.al));
+   public den(ddt $$0, eau $$1, ekp $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private den(jm<ddw> $$0, jm<ddw> $$1, jm<ddw> $$2, jm<ddw> $$3, jm<ddw> $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-   }
-
-   @Override
-   protected Stream<jm<ddw>> b() {
-      return Stream.of(this.c, this.d, this.e, this.f, this.g);
-   }
-
-   @Override
-   protected MapCodec<? extends dea> a() {
-      return b;
-   }
-
-   @Override
-   public jm<ddw> getNoiseBiome(int $$0, int $$1, int $$2, def.f $$3) {
-      int $$4 = jx.c($$0);
-      int $$5 = jx.c($$1);
-      int $$6 = jx.c($$2);
-      int $$7 = kf.a($$4);
-      int $$8 = kf.a($$6);
-      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
-         return this.c;
+   public den a(arn $$0) {
+      if ($$0.E() != this.a) {
+         throw new IllegalStateException("Using invalid structure manager (source level: " + $$0.E() + ", region: " + $$0);
       } else {
-         int $$9 = (kf.a($$4) * 2 + 1) * 8;
-         int $$10 = (kf.a($$6) * 2 + 1) * 8;
-         double $$11 = $$3.e().a(new dyr.e($$9, $$5, $$10));
-         if ($$11 > 0.25) {
-            return this.d;
-         } else if ($$11 >= -0.0625) {
-            return this.e;
-         } else {
-            return $$11 < -0.21875 ? this.f : this.g;
+         return new den($$0, this.b, this.c);
+      }
+   }
+
+   public List<ekw> a(dcy $$0, Predicate<eko> $$1) {
+      Map<eko, LongSet> $$2 = this.a.a($$0.e, $$0.f, dwx.e).h();
+      Builder<ekw> $$3 = ImmutableList.builder();
+
+      for (Entry<eko, LongSet> $$4 : $$2.entrySet()) {
+         eko $$5 = $$4.getKey();
+         if ($$1.test($$5)) {
+            this.a($$5, $$4.getValue(), $$3::add);
          }
       }
+
+      return $$3.build();
+   }
+
+   public List<ekw> a(kg $$0, eko $$1) {
+      LongSet $$2 = this.a.a($$0.a(), $$0.c(), dwx.e).b($$1);
+      Builder<ekw> $$3 = ImmutableList.builder();
+      this.a($$1, $$2, $$3::add);
+      return $$3.build();
+   }
+
+   public void a(eko $$0, LongSet $$1, Consumer<ekw> $$2) {
+      LongIterator var4 = $$1.iterator();
+
+      while (var4.hasNext()) {
+         long $$3 = (Long)var4.next();
+         kg $$4 = kg.a(new dcy($$3), this.a.ap());
+         ekw $$5 = this.a($$4, $$0, this.a.a($$4.a(), $$4.c(), dwx.d));
+         if ($$5 != null && $$5.b()) {
+            $$2.accept($$5);
+         }
+      }
+   }
+
+   @Nullable
+   public ekw a(kg $$0, eko $$1, dws $$2) {
+      return $$2.a($$1);
+   }
+
+   public void a(kg $$0, eko $$1, ekw $$2, dws $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public void a(kg $$0, eko $$1, long $$2, dws $$3) {
+      $$3.a($$1, $$2);
+   }
+
+   public boolean a() {
+      return this.b.c();
+   }
+
+   public ekw a(je $$0, eko $$1) {
+      for (ekw $$2 : this.a(kg.a($$0), $$1)) {
+         if ($$2.a().b($$0)) {
+            return $$2;
+         }
+      }
+
+      return ekw.b;
+   }
+
+   public ekw a(je $$0, axi<eko> $$1) {
+      return this.a($$0, $$1x -> $$1x.a($$1));
+   }
+
+   public ekw a(je $$0, jr<eko> $$1) {
+      return this.a($$0, $$1::a);
+   }
+
+   public ekw a(je $$0, Predicate<jn<eko>> $$1) {
+      ka<eko> $$2 = this.b().d(lv.aR);
+
+      for (ekw $$3 : this.a(new dcy($$0), $$2x -> $$2.c($$2.a($$2x)).map($$1::test).orElse(false))) {
+         if (this.a($$0, $$3)) {
+            return $$3;
+         }
+      }
+
+      return ekw.b;
+   }
+
+   public ekw b(je $$0, eko $$1) {
+      for (ekw $$2 : this.a(kg.a($$0), $$1)) {
+         if (this.a($$0, $$2)) {
+            return $$2;
+         }
+      }
+
+      return ekw.b;
+   }
+
+   public boolean a(je $$0, ekw $$1) {
+      for (eks $$2 : $$1.i()) {
+         if ($$2.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(je $$0) {
+      kg $$1 = kg.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dwx.e).v();
+   }
+
+   public Map<eko, LongSet> b(je $$0) {
+      kg $$1 = kg.a($$0);
+      return this.a.a($$1.a(), $$1.c(), dwx.e).h();
+   }
+
+   public ekq a(dcy $$0, eko $$1, ell $$2, boolean $$3) {
+      return this.c.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(ekw $$0) {
+      $$0.e();
+      this.c.a($$0.c(), $$0.h());
+   }
+
+   public kb b() {
+      return this.a.F_();
    }
 }

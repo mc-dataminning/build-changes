@@ -1,35 +1,24 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class gqx extends grf<gtn, fxp> {
+   private final ghu a;
 
-public class gqx implements gqp {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<gqx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akr.a.fieldOf("resource").forGetter($$0x -> $$0x.d), akr.a.optionalFieldOf("sprite").forGetter($$0x -> $$0x.e)).apply($$0, gqx::new)
-   );
-   private final akr d;
-   private final Optional<akr> e;
-
-   public gqx(akr $$0, Optional<akr> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public gqx(goo<gtn, fxp> $$0, ghu $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   @Override
-   public void a(aue $$0, gqp.a $$1) {
-      akr $$2 = a.a(this.d);
-      Optional<auc> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         $$1.a(this.e.orElse(this.d), $$3.get());
-      } else {
-         c.warn("Missing sprite: {}", $$2);
+   public void a(fcu $$0, ggv $$1, int $$2, gtn $$3, float $$4, float $$5) {
+      if ($$3.b != 0) {
+         $$0.a();
+         gab $$6 = this.d().c();
+         $$6.a($$0);
+         $$0.a(-1.1875F, 1.0625F, -0.9375F);
+         $$0.a(0.5F, 0.5F, 0.5F);
+         float $$7 = 0.5F;
+         $$0.b(0.5F, 0.5F, 0.5F);
+         $$0.a(a.b.rotationDegrees(-90.0F));
+         $$0.a(-0.5F, -0.5F, -0.5F);
+         this.a.a(dgx.bT.o(), $$0, $$1, $$2, gwb.d);
+         $$0.b();
       }
-   }
-
-   @Override
-   public gqr a() {
-      return gqs.a;
    }
 }

@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gus {
+public class gus extends gts {
+   public float a;
+   public float b;
+   public float c;
 }

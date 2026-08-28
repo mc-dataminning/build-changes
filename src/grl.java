@@ -1,37 +1,12 @@
-import javax.annotation.Nullable;
+public class grl<M extends fzb> extends gqr<gts, M> {
+   private static final ghe a = ghe.q(alb.b("textures/entity/spider_eyes.png"));
 
-public record grl(akr a, @Nullable String b, @Nullable akr c, @Nullable akr d, grl.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+   public grl(goo<gts, M> $$0) {
+      super($$0);
+   }
 
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static grl.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   @Override
+   public ghe a() {
+      return a;
    }
 }

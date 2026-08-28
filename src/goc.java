@@ -1,25 +1,41 @@
-public class goc extends gov<cfm, fvf<cfm>> {
-   private final gev a;
+public class goc extends gmr<bul, gty> {
+   private static final float a = 40.0F;
+   private static final int b = 50;
+   private final gnq h;
 
-   public goc(gmf<cfm, fvf<cfm>> $$0, gev $$1) {
+   protected goc(gms.a $$0) {
       super($$0);
-      this.a = $$1;
+      this.h = $$0.b();
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, cfm $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fq() == btg.b;
-      $$0.a();
-      float $$11 = 1.0F;
-      float $$12 = -1.0F;
-      float $$13 = ayo.e($$3.dG()) / 60.0F;
-      if ($$3.dG() < 0.0F) {
-         $$0.a(0.0F, 1.0F - $$13 * 0.5F, -1.0F + $$13 * 0.5F);
-      } else {
-         $$0.a(0.0F, 1.0F + $$13 * 0.8F, -1.0F + $$13 * 0.2F);
-      }
+   public alb a(gty $$0) {
+      return gwj.d;
+   }
 
-      cuq $$14 = $$10 ? $$3.eT() : $$3.eU();
-      this.a.a($$3, $$14, cun.h, false, $$0, $$1, $$2);
-      $$0.b();
+   public gty a() {
+      return new gty();
+   }
+
+   public void a(bul $$0, gty $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      cvl $$3 = $$0.o();
+      $$1.b = $$3;
+      $$1.a = !$$3.f() ? this.h.a($$3, $$0.dS(), null, 0) : null;
+   }
+
+   public void a(gty $$0, fcu $$1, ggv $$2, int $$3) {
+      gym $$4 = $$0.a;
+      if ($$4 != null) {
+         $$1.a();
+         if ($$0.p <= 50.0F) {
+            float $$5 = Math.min($$0.p, 50.0F) / 50.0F;
+            $$1.b($$5, $$5, $$5);
+         }
+
+         float $$6 = azc.g($$0.p * 40.0F);
+         $$1.a(a.d.rotationDegrees($$6));
+         gno.a(this.h, $$1, $$2, 15728880, $$0.b, $$4, $$4.b(), azk.a());
+         $$1.b();
+      }
    }
 }

@@ -1,17 +1,27 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class grs extends gqq<gvg, fzp> {
+   private static final alb a = alb.b("textures/entity/wither/wither_armor.png");
+   private final fzp b;
 
-public record grs(String b, String c, boolean d) {
-   public static final Codec<grs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axw.y.fieldOf("region").forGetter(grs::b),
-               axw.y.fieldOf("name").forGetter(grs::c),
-               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(grs::d)
-            )
-            .apply($$0, grs::new)
-   );
+   public grs(goo<gvg, fzp> $$0, fzx $$1) {
+      super($$0);
+      this.b = new fzp($$1.a(gaa.cZ));
+   }
 
-   public wz a() {
-      return wz.b(this.c + " (" + this.b + ")");
+   protected boolean a(gvg $$0) {
+      return $$0.d;
+   }
+
+   @Override
+   protected float a(float $$0) {
+      return azc.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected alb a() {
+      return a;
+   }
+
+   protected fzp b() {
+      return this.b;
    }
 }

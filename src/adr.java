@@ -1,33 +1,42 @@
-public class adr implements zg<abu> {
-   public static final yx<wk, adr> a = yx.a(yv.g, adr::b, yv.a(lu.V), adr::e, xb.d, adr::f, adr::new);
-   private final int b;
-   private final crc<?> c;
-   private final wz d;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public adr(int $$0, crc<?> $$1, wz $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public record adr(ert b, byte c, boolean d, Optional<List<erp>> e, Optional<erv.c> f) implements zk<abz> {
+   public static final zb<wo, adr> a = zb.a(ert.b, adr::b, yz.c, adr::e, yz.b, adr::f, erp.a.a(yz.a()).a(yz::a), adr::g, erv.c.a, adr::h, adr::new);
+
+   public adr(ert $$0, byte $$1, boolean $$2, @Nullable Collection<erp> $$3, @Nullable erv.c $$4) {
+      this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
    @Override
-   public zi<adr> a() {
-      return agg.W;
+   public zm<adr> a() {
+      return ago.P;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public void a(erv $$0) {
+      this.e.ifPresent($$0::a);
+      this.f.ifPresent($$1 -> $$1.a($$0));
    }
 
-   public crc<?> e() {
+   public byte e() {
       return this.c;
    }
 
-   public wz f() {
+   public boolean f() {
       return this.d;
+   }
+
+   public Optional<List<erp>> g() {
+      return this.e;
+   }
+
+   public Optional<erv.c> h() {
+      return this.f;
    }
 }

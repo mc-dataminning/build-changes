@@ -1,39 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.tree.LiteralCommandNode;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ank {
-   public static void a(CommandDispatcher<et> $$0) {
-      LiteralCommandNode<et> $$1 = $$0.register(
-         (LiteralArgumentBuilder)eu.a("msg").then(eu.a("targets", fg.d()).then(eu.a("message", fk.a()).executes($$0x -> {
-            Collection<aqv> $$1x = fg.f($$0x, "targets");
-            if (!$$1x.isEmpty()) {
-               fk.a($$0x, "message", $$2 -> a((et)$$0x.getSource(), $$1x, $$2));
-            }
+   public static final int a = 2;
 
-            return $$1x.size();
-         })))
+   public static void a(CommandDispatcher<et> $$0) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("gamemode", fh.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((et)$$0x.getSource()).h()), fh.a($$0x, "gamemode"))))
+                  .then(eu.a("target", fg.d()).executes($$0x -> a($$0x, fg.f($$0x, "target"), fh.a($$0x, "gamemode"))))
+            )
       );
-      $$0.register((LiteralArgumentBuilder)eu.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)eu.a("w").redirect($$1));
    }
 
-   private static void a(et $$0, Collection<aqv> $$1, xp $$2) {
-      wv.a $$3 = wv.a(wv.g, $$0);
-      xo $$4 = xo.a($$2);
-      boolean $$5 = false;
+   private static void a(et $$0, arh $$1, ddp $$2) {
+      xd $$3 = xd.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xd.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().ac().b(ddo.p)) {
+            $$1.a(xd.a("gameMode.changed", $$3));
+         }
 
-      for (aqv $$6 : $$1) {
-         wv.a $$7 = wv.a(wv.h, $$0).c($$6.S_());
-         $$0.a($$4, false, $$7);
-         boolean $$8 = $$0.a($$6);
-         $$6.a($$4, $$8, $$3);
-         $$5 |= $$8 && $$2.j();
+         $$0.a(() -> xd.a("commands.gamemode.success.other", $$1.Q_(), $$3), true);
+      }
+   }
+
+   private static int a(CommandContext<et> $$0, Collection<arh> $$1, ddp $$2) {
+      int $$3 = 0;
+
+      for (arh $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((et)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
       }
 
-      if ($$5) {
-         $$0.a(aur.e);
-      }
+      return $$3;
    }
 }

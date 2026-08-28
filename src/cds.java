@@ -1,27 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
+public class cds extends cdq {
+   private boolean p;
 
-public abstract class cds extends cdy<btn> {
-   protected abstract boolean a(btn var1, btn var2);
-
-   protected abstract ccs<btn> b();
-
-   @Override
-   public Set<ccs<?>> a() {
-      return ImmutableSet.of(this.b());
+   public cds(buh $$0, dds $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void a(aqu $$0, btn $$1) {
-      $$1.dT().a(this.b(), this.b($$1));
+   protected eqr a(int $$0) {
+      this.p = this.a.ao() == btq.y;
+      this.o = new eqv(this.p);
+      return new eqr(this.o, $$0);
    }
 
-   private Optional<btn> b(btn $$0) {
-      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bm();
    }
 
-   protected Optional<ccu> a(btn $$0) {
-      return $$0.dT().c(ccs.h);
+   @Override
+   protected eye b() {
+      return new eye(this.a.dx(), this.a.e(0.5), this.a.dD());
+   }
+
+   @Override
+   protected double a(eye $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(eye $$0, eye $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(je $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

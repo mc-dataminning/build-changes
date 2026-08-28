@@ -1,40 +1,23 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class byp extends bvh<cmk> {
-   public byp() {
-      super(ImmutableMap.of());
-   }
-
-   protected boolean a(aqu $$0, cmk $$1, long $$2) {
-      return c($$1) || b($$1);
-   }
-
-   protected void b(aqu $$0, cmk $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         buq<?> $$3 = $$1.dT();
-         if (!$$3.c(com.g)) {
-            $$3.b(ccs.t);
-            $$3.b(ccs.m);
-            $$3.b(ccs.n);
-            $$3.b(ccs.r);
-            $$3.b(ccs.q);
-         }
-
-         $$3.a(com.g);
-      }
-   }
-
-   protected void c(aqu $$0, cmk $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(btn $$0) {
-      return $$0.dT().a(ccs.A);
-   }
-
-   public static boolean c(btn $$0) {
-      return $$0.dT().a(ccs.x);
+public class byp {
+   public static bvy<bun> a(cdi<jm> $$0, float $$1, int $$2, int $$3) {
+      MutableLong $$4 = new MutableLong(0L);
+      return bzk.a(
+         (Function<bzk.b<bun>, ? extends App<bzk.c<bun>, bzn<bun>>>)($$5 -> $$5.group($$5.a(cdi.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  jm $$10 = $$5.b($$6);
+                  if ($$7.ag() != $$10.a() || !$$10.b().a($$8.dq(), (double)$$3)) {
+                     return false;
+                  } else if ($$9 <= $$4.getValue()) {
+                     return true;
+                  } else {
+                     $$5x.a(new cdl($$10.b(), $$1, $$2));
+                     $$4.setValue($$9 + 80L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

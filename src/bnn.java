@@ -1,58 +1,50 @@
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-public class bnn {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
-
-   protected bnn(Runnable $$0) {
-      this.b = $$0;
+public interface bnn {
+   static bnh<StringReader> a(String $$0) {
+      return new bnn.b($$0);
    }
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
+   static bnh<StringReader> a(char $$0) {
+      return new bnn.a($$0);
+   }
 
-         bnv $$1;
-         try {
-            $$1 = bnu.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
+   public static record a(char a) implements bnh<StringReader> {
+      @Override
+      public boolean a(bnd<StringReader> $$0, bnf $$1, bmz $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         if ($$0.b().canRead() && $$0.b().read() == this.a) {
+            return true;
+         } else {
+            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
          }
+      }
 
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
+      public char c() {
+         return this.a;
       }
    }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
-      } else {
-         akt.a($$0.get());
+   public static record b(String a) implements bnh<StringReader> {
+      @Override
+      public boolean a(bnd<StringReader> $$0, bnf $$1, bmz $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         String $$4 = $$0.b().readUnquotedString();
+         if (!$$4.equals(this.a)) {
+            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         } else {
+            return true;
+         }
       }
-   }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         akt.a($$0.get());
-         $$1.printStackTrace(akt.a);
+      public String c() {
+         return this.a;
       }
    }
 }

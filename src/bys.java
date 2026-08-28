@@ -1,48 +1,95 @@
 import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+import com.google.common.collect.ImmutableSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public class bys extends bvh<cmk> {
-   private static final int c = 300;
-   private static final double d = 1.73;
-   private long e;
+public class bys extends bvx<cnc> {
+   private Set<cvg> c = ImmutableSet.of();
 
    public bys() {
-      super(ImmutableMap.of(ccs.c, cct.a, ccs.n, cct.c));
+      super(ImmutableMap.of(cdi.q, cdj.a, cdi.h, cdj.a));
    }
 
-   protected boolean b(aqu $$0, cmk $$1) {
-      if ($$0.Z() - this.e < 300L) {
-         return false;
-      } else if ($$0.z.a(2) != 0) {
-         return false;
-      } else {
-         this.e = $$0.Z();
-         jl $$2 = $$1.dT().c(ccs.c).get();
-         return $$2.a() == $$0.af() && $$2.b().a($$1.dm(), 1.73);
+   protected boolean a(arg $$0, cnc $$1) {
+      return bvz.a($$1.dX(), cdi.q, btq.bj);
+   }
+
+   protected boolean a(arg $$0, cnc $$1, long $$2) {
+      return this.a($$0, $$1);
+   }
+
+   protected void b(arg $$0, cnc $$1, long $$2) {
+      cnc $$3 = (cnc)$$1.dX().c(cdi.q).get();
+      bvz.a($$1, $$3, 0.5F, 2);
+      this.c = a($$1, $$3);
+   }
+
+   protected void c(arg $$0, cnc $$1, long $$2) {
+      cnc $$3 = (cnc)$$1.dX().c(cdi.q).get();
+      if (!($$1.g($$3) > 5.0)) {
+         bvz.a($$1, $$3, 0.5F, 2);
+         $$1.a($$0, $$3, $$2);
+         if ($$1.gG() && ($$1.gy().b() == cnf.g || $$3.gH())) {
+            a($$1, cnc.cc.keySet(), $$3);
+         }
+
+         if ($$3.gy().b() == cnf.g && $$1.y().a_(cvo.px) > cvo.px.q() / 2) {
+            a($$1, ImmutableSet.of(cvo.px), $$3);
+         }
+
+         if (!this.c.isEmpty() && $$1.y().a_(this.c)) {
+            a($$1, this.c, $$3);
+         }
       }
    }
 
-   protected void a(aqu $$0, cmk $$1, long $$2) {
-      buq<cmk> $$3 = $$1.dT();
-      $$3.a(ccs.J, $$2);
-      $$3.c(ccs.c).ifPresent($$1x -> $$3.a(ccs.n, new bvk($$1x.b())));
-      $$1.gz();
-      this.a($$0, $$1);
-      if ($$1.gy()) {
-         $$1.gx();
+   protected void d(arg $$0, cnc $$1, long $$2) {
+      $$1.dX().b(cdi.q);
+   }
+
+   private static Set<cvg> a(cnc $$0, cnc $$1) {
+      ImmutableSet<cvg> $$2 = $$1.gy().b().d();
+      ImmutableSet<cvg> $$3 = $$0.gy().b().d();
+      return $$2.stream().filter($$1x -> !$$3.contains($$1x)).collect(Collectors.toSet());
+   }
+
+   private static void a(cnc $$0, Set<cvg> $$1, buf $$2) {
+      brr $$3 = $$0.y();
+      cvl $$4 = cvl.k;
+      int $$5 = 0;
+
+      while ($$5 < $$3.b()) {
+         cvl $$6;
+         cvg $$7;
+         int $$8;
+         label28: {
+            $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               $$7 = $$6.h();
+               if ($$1.contains($$7)) {
+                  if ($$6.J() > $$6.k() / 2) {
+                     $$8 = $$6.J() / 2;
+                     break label28;
+                  }
+
+                  if ($$6.J() > 24) {
+                     $$8 = $$6.J() - 24;
+                     break label28;
+                  }
+               }
+            }
+
+            $$5++;
+            continue;
+         }
+
+         $$6.h($$8);
+         $$4 = new cvl($$7, $$8);
+         break;
       }
-   }
 
-   protected void a(aqu $$0, cmk $$1) {
-   }
-
-   protected boolean b(aqu $$0, cmk $$1, long $$2) {
-      Optional<jl> $$3 = $$1.dT().c(ccs.c);
-      if ($$3.isEmpty()) {
-         return false;
-      } else {
-         jl $$4 = $$3.get();
-         return $$4.a() == $$0.af() && $$4.b().a($$1.dm(), 1.73);
+      if (!$$4.f()) {
+         bvz.a($$0, $$4, $$2.dq());
       }
    }
 }

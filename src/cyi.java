@@ -1,70 +1,42 @@
 import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class cyi extends cyr {
-   public cyi(cyo $$0) {
-      super($$0);
+public record cyi(List<xd> e, List<xd> f) implements cyr {
+   public static final cyi a = new cyi(List.of());
+   public static final int b = 256;
+   private static final ya g = ya.a.a(n.f).b(true);
+   public static final Codec<cyi> c = xf.g.sizeLimitedListOf(256).xmap(cyi::new, cyi::a);
+   public static final zb<wo, cyi> d = xf.b.a(yz.c(256)).a(cyi::new, cyi::a);
+
+   public cyi(List<xd> $$0) {
+      this($$0, Lists.transform($$0, $$0x -> xg.a($$0x.f(), g)));
    }
 
-   public boolean a(cyp $$0, dcw $$1) {
-      cuq $$2 = cuq.l;
-      List<cuq> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awn.bx)) {
-               if (!$$2.e()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.g() instanceof ctj)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
+   public cyi(List<xd> e, List<xd> f) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " lines, but maximum is 256");
+      } else {
+         this.e = e;
+         this.f = f;
       }
-
-      return !$$2.e() && !$$3.isEmpty();
    }
 
-   public cuq a(cyp $$0, jo.a $$1) {
-      List<ctj> $$2 = Lists.newArrayList();
-      cuq $$3 = cuq.l;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(awn.bx)) {
-               if (!$$3.e()) {
-                  return cuq.l;
-               }
-
-               $$3 = $$5.s();
-            } else {
-               if (!($$5.g() instanceof ctj $$6)) {
-                  return cuq.l;
-               }
-
-               $$2.add($$6);
-            }
-         }
-      }
-
-      return !$$3.e() && !$$2.isEmpty() ? cxk.a($$3, $$2) : cuq.l;
+   public cyi a(xd $$0) {
+      return new cyi(ad.a(this.e, $$0));
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public void a(cvg.b $$0, Consumer<xd> $$1, cxf $$2) {
+      this.f.forEach($$1);
    }
 
-   @Override
-   public cze<?> at_() {
-      return cze.c;
+   public List<xd> a() {
+      return this.e;
+   }
+
+   public List<xd> b() {
+      return this.f;
    }
 }

@@ -1,155 +1,90 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import javax.annotation.Nullable;
 
 public class gib {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final ji[] l = ji.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ad.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+   public float[] a;
+   public final int b;
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
-         }
-      }
-   });
-   private int o = 4096;
-
-   public void a(jd $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
+   public gib(@Nullable float[] $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   private static int b(jd $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public gic a() {
-      gic $$0 = new gic();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
+   public float a(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
       } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
-            }
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
+      }
+   }
+
+   public float b(int $$0) {
+      if (this.a == null) {
+         throw new NullPointerException("uvs");
+      } else {
+         int $$1 = this.d($$0);
+         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
+      }
+   }
+
+   private int d(int $$0) {
+      return ($$0 + this.b / 90) % 4;
+   }
+
+   public int c(int $$0) {
+      return ($$0 + 4 - this.b / 90) % 4;
+   }
+
+   public void a(float[] $$0) {
+      if (this.a == null) {
+         this.a = $$0;
+      }
+   }
+
+   protected static class a implements JsonDeserializer<gib> {
+      private static final int a = 0;
+
+      public gib a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         float[] $$4 = this.b($$3);
+         int $$5 = this.a($$3);
+         return new gib($$4, $$5);
+      }
+
+      protected int a(JsonObject $$0) {
+         int $$1 = ays.a($$0, "rotation", 0);
+         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
+            return $$1;
+         } else {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
          }
       }
 
-      return $$0;
-   }
+      @Nullable
+      private float[] b(JsonObject $$0) {
+         if (!$$0.has("uv")) {
+            return null;
+         } else {
+            JsonArray $$1 = ays.v($$0, "uv");
+            if ($$1.size() != 4) {
+               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
+            } else {
+               float[] $$2 = new float[4];
 
-   private Set<ji> a(int $$0) {
-      Set<ji> $$1 = EnumSet.noneOf(ji.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
+               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+                  $$2[$$3] = ays.e($$1.get($$3), "uv[" + $$3 + "]");
+               }
 
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
-
-         for (ji $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
+               return $$2;
             }
          }
-      }
-
-      return $$1;
-   }
-
-   private void a(int $$0, Set<ji> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(ji.e);
-      } else if ($$2 == 15) {
-         $$1.add(ji.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(ji.a);
-      } else if ($$3 == 15) {
-         $$1.add(ji.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(ji.c);
-      } else if ($$4 == 15) {
-         $$1.add(ji.d);
-      }
-   }
-
-   private int a(int $$0, ji $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
       }
    }
 }

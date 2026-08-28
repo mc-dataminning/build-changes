@@ -1,54 +1,25 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import javax.annotation.Nullable;
 
-public class erh {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final eqx d;
-   private final boolean e;
+public class erh implements eri {
+   private final dds b;
 
-   private erh(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new eqx($$3, $$4);
-      this.e = $$5;
+   public erh(dds $$0) {
+      this.b = $$0;
    }
 
-   public static erh a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new erh(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(ab.b().c()),
-            $$3.get("Id").asInt(ab.b().d().c()),
-            $$3.get("Series").asString(eqx.a),
-            $$3.get("Snapshot").asBoolean(!ab.b().g())
-         )
-         : new erh($$1, $$2, "", 0, eqx.a, false);
+   @Override
+   public void a(jj $$0, dua $$1, je $$2, je $$3, int $$4, int $$5) {
+      eri.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
    }
 
-   public int a() {
-      return this.a;
+   @Override
+   public void a(je $$0, dgv $$1, @Nullable erj $$2) {
+      dua $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
-   public long b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.c;
-   }
-
-   public eqx d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
+   @Override
+   public void a(dua $$0, je $$1, dgv $$2, @Nullable erj $$3, boolean $$4) {
+      eri.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

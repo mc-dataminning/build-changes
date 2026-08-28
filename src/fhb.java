@@ -1,77 +1,36 @@
-import com.mojang.util.UndashedUuid;
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fhb {
-   private final String a;
-   private final UUID b;
-   private final String c;
-   private final Optional<String> d;
-   private final Optional<String> e;
-   private final fhb.a f;
+public class fhb extends fgz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xd c = xd.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   public fhb(String $$0, UUID $$1, String $$2, Optional<String> $$3, Optional<String> $$4, fhb.a $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   public fhb(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public String a() {
-      return "token:" + this.c + ":" + UndashedUuid.toString(this.b);
-   }
+   @Override
+   public void run() {
+      fdk $$0 = fdk.a();
 
-   public UUID b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.a;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public Optional<String> e() {
-      return this.e;
-   }
-
-   public Optional<String> f() {
-      return this.d;
-   }
-
-   public fhb.a g() {
-      return this.f;
-   }
-
-   public static enum a {
-      a("legacy"),
-      b("mojang"),
-      c("msa");
-
-      private static final Map<String, fhb.a> d = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, Function.identity()));
-      private final String e;
-
-      private a(final String $$0) {
-         this.e = $$0;
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fev var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
       }
+   }
 
-      @Nullable
-      public static fhb.a a(String $$0) {
-         return d.get($$0.toLowerCase(Locale.ROOT));
-      }
-
-      public String a() {
-         return this.e;
-      }
+   @Override
+   public xd a() {
+      return c;
    }
 }

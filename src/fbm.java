@@ -1,134 +1,53 @@
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryStack;
+import ca.weblite.objc.Client;
+import ca.weblite.objc.NSObject;
+import com.sun.jna.Pointer;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFWNativeCocoa;
 
-public interface fbm {
-   fbm a(float var1, float var2, float var3);
+public class fbm {
+   public static final boolean a = System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("mac");
+   private static final int b = 8;
+   private static final int c = 16384;
 
-   fbm a(int var1, int var2, int var3, int var4);
-
-   fbm a(float var1, float var2);
-
-   fbm a(int var1, int var2);
-
-   fbm b(int var1, int var2);
-
-   fbm b(float var1, float var2, float var3);
-
-   default void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a($$0, $$1, $$2);
-      this.a($$3);
-      this.a($$4, $$5);
-      this.b($$6);
-      this.c($$7);
-      this.b($$8, $$9, $$10);
+   public static void a(long $$0) {
+      c($$0).filter(fbm::a).ifPresent(fbm::c);
    }
 
-   default fbm a(float $$0, float $$1, float $$2, float $$3) {
-      return this.a((int)($$0 * 255.0F), (int)($$1 * 255.0F), (int)($$2 * 255.0F), (int)($$3 * 255.0F));
+   public static void b(long $$0) {
+      c($$0).ifPresent($$0x -> {
+         long $$1 = b($$0x);
+         $$0x.send("setStyleMask:", new Object[]{$$1 & -9L});
+      });
    }
 
-   default fbm a(int $$0) {
-      return this.a(axy.b.b($$0), axy.b.c($$0), axy.b.d($$0), axy.b.a($$0));
+   private static Optional<NSObject> c(long $$0) {
+      long $$1 = GLFWNativeCocoa.glfwGetCocoaWindow($$0);
+      return $$1 != 0L ? Optional.of(new NSObject(new Pointer($$1))) : Optional.empty();
    }
 
-   default fbm d(int $$0) {
-      return this.a(axy.b.b($$0, -1));
+   private static boolean a(NSObject $$0) {
+      return (b($$0) & 16384L) != 0L;
    }
 
-   default fbm c(int $$0) {
-      return this.b($$0 & 65535, $$0 >> 16 & 65535);
+   private static long b(NSObject $$0) {
+      return (Long)$$0.sendRaw("styleMask", new Object[0]);
    }
 
-   default fbm b(int $$0) {
-      return this.a($$0 & 65535, $$0 >> 16 & 65535);
+   private static void c(NSObject $$0) {
+      $$0.send("toggleFullScreen:", new Object[]{Pointer.NULL});
    }
 
-   default void a(fbi.a $$0, gfw $$1, float $$2, float $$3, float $$4, float $$5, int $$6, int $$7) {
-      this.a($$0, $$1, new float[]{1.0F, 1.0F, 1.0F, 1.0F}, $$2, $$3, $$4, $$5, new int[]{$$6, $$6, $$6, $$6}, $$7, false);
-   }
-
-   default void a(fbi.a $$0, gfw $$1, float[] $$2, float $$3, float $$4, float $$5, float $$6, int[] $$7, int $$8, boolean $$9) {
-      int[] $$10 = $$1.b();
-      kh $$11 = $$1.e().q();
-      Matrix4f $$12 = $$0.a();
-      Vector3f $$13 = $$0.a((float)$$11.u(), (float)$$11.v(), (float)$$11.w(), new Vector3f());
-      int $$14 = 8;
-      int $$15 = $$10.length / 8;
-      int $$16 = (int)($$6 * 255.0F);
-      MemoryStack $$17 = MemoryStack.stackPush();
-
-      try {
-         ByteBuffer $$18 = $$17.malloc(fbg.b.b());
-         IntBuffer $$19 = $$18.asIntBuffer();
-
-         for (int $$20 = 0; $$20 < $$15; $$20++) {
-            $$19.clear();
-            $$19.put($$10, $$20 * 8, 8);
-            float $$21 = $$18.getFloat(0);
-            float $$22 = $$18.getFloat(4);
-            float $$23 = $$18.getFloat(8);
-            float $$27;
-            float $$28;
-            float $$29;
-            if ($$9) {
-               float $$24 = (float)($$18.get(12) & 255);
-               float $$25 = (float)($$18.get(13) & 255);
-               float $$26 = (float)($$18.get(14) & 255);
-               $$27 = $$24 * $$2[$$20] * $$3;
-               $$28 = $$25 * $$2[$$20] * $$4;
-               $$29 = $$26 * $$2[$$20] * $$5;
-            } else {
-               $$27 = $$2[$$20] * $$3 * 255.0F;
-               $$28 = $$2[$$20] * $$4 * 255.0F;
-               $$29 = $$2[$$20] * $$5 * 255.0F;
-            }
-
-            int $$33 = axy.b.a($$16, (int)$$27, (int)$$28, (int)$$29);
-            int $$34 = $$7[$$20];
-            float $$35 = $$18.getFloat(16);
-            float $$36 = $$18.getFloat(20);
-            Vector3f $$37 = $$12.transformPosition($$21, $$22, $$23, new Vector3f());
-            this.a($$37.x(), $$37.y(), $$37.z(), $$33, $$35, $$36, $$8, $$34, $$13.x(), $$13.y(), $$13.z());
-         }
-      } catch (Throwable var34) {
-         if ($$17 != null) {
-            try {
-               $$17.close();
-            } catch (Throwable var33) {
-               var34.addSuppressed(var33);
-            }
-         }
-
-         throw var34;
+   public static void a(auk<InputStream> $$0) throws IOException {
+      try (InputStream $$1 = $$0.get()) {
+         String $$2 = Base64.getEncoder().encodeToString($$1.readAllBytes());
+         Client $$3 = Client.getInstance();
+         Object $$4 = $$3.sendProxy("NSData", "alloc", new Object[0]).send("initWithBase64Encoding:", new Object[]{$$2});
+         Object $$5 = $$3.sendProxy("NSImage", "alloc", new Object[0]).send("initWithData:", new Object[]{$$4});
+         $$3.sendProxy("NSApplication", "sharedApplication", new Object[0]).send("setApplicationIconImage:", new Object[]{$$5});
       }
-
-      if ($$17 != null) {
-         $$17.close();
-      }
-   }
-
-   default fbm a(Vector3f $$0) {
-      return this.a($$0.x(), $$0.y(), $$0.z());
-   }
-
-   default fbm a(fbi.a $$0, Vector3f $$1) {
-      return this.a($$0, $$1.x(), $$1.y(), $$1.z());
-   }
-
-   default fbm a(fbi.a $$0, float $$1, float $$2, float $$3) {
-      return this.a($$0.a(), $$1, $$2, $$3);
-   }
-
-   default fbm a(Matrix4f $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.transformPosition($$1, $$2, $$3, new Vector3f());
-      return this.a($$4.x(), $$4.y(), $$4.z());
-   }
-
-   default fbm b(fbi.a $$0, float $$1, float $$2, float $$3) {
-      Vector3f $$4 = $$0.a($$1, $$2, $$3, new Vector3f());
-      return this.b($$4.x(), $$4.y(), $$4.z());
    }
 }

@@ -1,136 +1,141 @@
-import java.util.EnumSet;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import java.util.Arrays;
+import javax.annotation.Nullable;
 
 public class dwb {
-   private static boolean a(duy $$0) {
-      return $$0.j().a(dvz.l) && $$0.v();
+   public static final int a = 16;
+   public static final int b = 128;
+   public static final int c = 2048;
+   private static final int e = 4;
+   @Nullable
+   protected byte[] d;
+   private int f;
+
+   public dwb() {
+      this(0);
    }
 
-   static CompletableFuture<duy> a(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      return CompletableFuture.completedFuture($$3);
+   public dwb(int $$0) {
+      this.f = $$0;
    }
 
-   static CompletableFuture<duy> b(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqu $$4 = $$0.a();
-      if ($$4.o().bb().y().c()) {
-         $$0.b().a($$4.H_(), $$4.l().h(), $$4.a(), $$3, $$0.c());
+   public dwb(byte[] $$0) {
+      this.d = $$0;
+      this.f = 0;
+      if ($$0.length != 2048) {
+         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
+      }
+   }
+
+   public int a(int $$0, int $$1, int $$2) {
+      return this.d(b($$0, $$1, $$2));
+   }
+
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.a(b($$0, $$1, $$2), $$3);
+   }
+
+   private static int b(int $$0, int $$1, int $$2) {
+      return $$1 << 8 | $$2 << 4 | $$0;
+   }
+
+   private int d(int $$0) {
+      if (this.d == null) {
+         return this.f;
+      } else {
+         int $$1 = f($$0);
+         int $$2 = e($$0);
+         return this.d[$$1] >> 4 * $$2 & 15;
+      }
+   }
+
+   private void a(int $$0, int $$1) {
+      byte[] $$2 = this.a();
+      int $$3 = f($$0);
+      int $$4 = e($$0);
+      int $$5 = ~(15 << 4 * $$4);
+      int $$6 = ($$1 & 15) << 4 * $$4;
+      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
+   }
+
+   private static int e(int $$0) {
+      return $$0 & 1;
+   }
+
+   private static int f(int $$0) {
+      return $$0 >> 1;
+   }
+
+   public void a(int $$0) {
+      this.f = $$0;
+      this.d = null;
+   }
+
+   private static byte g(int $$0) {
+      byte $$1 = (byte)$$0;
+
+      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
+         $$1 = (byte)($$1 | $$0 << $$2);
       }
 
-      $$4.a($$3);
-      return CompletableFuture.completedFuture($$3);
+      return $$1;
    }
 
-   static CompletableFuture<duy> c(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      $$0.a().a($$3);
-      return CompletableFuture.completedFuture($$3);
+   public byte[] a() {
+      if (this.d == null) {
+         this.d = new byte[2048];
+         if (this.f != 0) {
+            Arrays.fill(this.d, g(this.f));
+         }
+      }
+
+      return this.d;
    }
 
-   static CompletableFuture<duy> d(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqu $$4 = $$0.a();
-      arb $$5 = new arb($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.a().a($$5), $$3);
-      return CompletableFuture.completedFuture($$3);
+   public dwb b() {
+      return this.d == null ? new dwb(this.f) : new dwb((byte[])this.d.clone());
    }
 
-   static CompletableFuture<duy> e(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqu $$4 = $$0.a();
-      arb $$5 = new arb($$4, $$2, $$1, $$3);
-      return $$0.b().a($$4.l().i(), eaa.a($$5), $$4.a().a($$5), $$3);
-   }
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
 
-   static CompletableFuture<duy> f(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqu $$4 = $$0.a();
-      arb $$5 = new arb($$4, $$2, $$1, $$3);
-      return $$0.b().a(eaa.a($$5), $$4.l().i(), $$4.a().a($$5), $$3).thenApply($$0x -> {
-         if ($$0x instanceof dvs $$1x) {
-            dym $$2x = $$1x.x();
-            if ($$2x != null) {
-               dym.a($$1x);
-               if ($$2x.b()) {
-                  $$2x.b($$1x);
-               }
-            }
+      for (int $$1 = 0; $$1 < 4096; $$1++) {
+         $$0.append(Integer.toHexString(this.d($$1)));
+         if (($$1 & 15) == 15) {
+            $$0.append("\n");
          }
 
-         return $$0x;
-      });
-   }
-
-   static CompletableFuture<duy> g(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqu $$4 = $$0.a();
-      arb $$5 = new arb($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$4.a().a($$5), $$4.l().i(), $$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<duy> h(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqu $$4 = $$0.a();
-      arb $$5 = new arb($$4, $$2, $$1, $$3);
-      if ($$3 instanceof dvs $$6) {
-         eaa.a($$5, $$6);
-      }
-
-      $$0.b().a($$5, $$4.C(), $$4.l().i(), $$4.F_(), $$4.a().a($$5), $$3, dyu.a.a);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<duy> i(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqu $$4 = $$0.a();
-      dyy.a($$3, EnumSet.of(dyy.a.e, dyy.a.f, dyy.a.d, dyy.a.b));
-      arb $$5 = new arb($$4, $$2, $$1, $$3);
-      $$0.b().a($$5, $$3, $$4.a().a($$5));
-      eaa.a($$5, $$3);
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<duy> j(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      aqx $$4 = $$0.d();
-      $$3.A();
-      ((dvs)$$3).a($$4);
-      boolean $$5 = a($$3);
-      return $$4.a($$3, $$5);
-   }
-
-   static CompletableFuture<duy> k(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      boolean $$4 = a($$3);
-      return $$0.d().b($$3, $$4);
-   }
-
-   static CompletableFuture<duy> l(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      if (!$$3.y()) {
-         $$0.b().a(new arb($$0.a(), $$2, $$1, $$3));
-      }
-
-      return CompletableFuture.completedFuture($$3);
-   }
-
-   static CompletableFuture<duy> m(dwe $$0, dwc $$1, azi<aqn> $$2, duy $$3) {
-      dcd $$4 = $$3.f();
-      aqn $$5 = $$2.a($$4.e, $$4.f);
-      return CompletableFuture.supplyAsync(() -> {
-         dvs $$3x = (dvs)$$3;
-         aqu $$4x = $$0.a();
-         dvi $$5x;
-         if ($$3x instanceof dvh) {
-            $$5x = ((dvh)$$3x).C();
-         } else {
-            $$5x = new dvi($$4x, $$3x, $$2xx -> a($$4x, $$3x.E()));
-            $$5.a(new dvh($$5x, false));
+         if (($$1 & 0xFF) == 255) {
+            $$0.append("\n");
          }
+      }
 
-         $$5x.b($$5::s);
-         $$5x.E();
-         $$5x.c(true);
-         $$5x.J();
-         $$5x.a($$4x);
-         return $$5x;
-      }, $$3x -> $$0.e().a(aqe.a($$3x, $$4.a(), $$5::i)));
+      return $$0.toString();
    }
 
-   private static void a(aqu $$0, List<ub> $$1) {
-      if (!$$1.isEmpty()) {
-         $$0.b(bsx.a($$1, $$0));
+   @bai
+   public String b(int $$0) {
+      StringBuilder $$1 = new StringBuilder();
+
+      for (int $$2 = 0; $$2 < 256; $$2++) {
+         $$1.append(Integer.toHexString(this.d($$2)));
+         if (($$2 & 15) == 15) {
+            $$1.append("\n");
+         }
       }
+
+      return $$1.toString();
+   }
+
+   public boolean c() {
+      return this.d == null;
+   }
+
+   public boolean c(int $$0) {
+      return this.d == null && this.f == $$0;
+   }
+
+   public boolean d() {
+      return this.d == null && this.f == 0;
    }
 }

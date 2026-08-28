@@ -1,32 +1,17 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Locale;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record axh(int b) {
-   private static final String c = "#";
-   public static final Codec<axh> a = Codec.STRING.comapFlatMap($$0 -> {
-      if (!$$0.startsWith("#")) {
-         return DataResult.error(() -> "Not a color code: " + $$0);
-      } else {
-         try {
-            int $$1 = (int)Long.parseLong($$0.substring(1), 16);
-            return DataResult.success(new axh($$1));
-         } catch (NumberFormatException var2) {
-            return DataResult.error(() -> "Exception parsing color code: " + var2.getMessage());
-         }
-      }
-   }, axh::b);
+public record axh(List<axg> b, boolean c) {
+   public static final Codec<axh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axg.a.listOf().fieldOf("values").forGetter(axh::a), Codec.BOOL.optionalFieldOf("replace", false).forGetter(axh::b)).apply($$0, axh::new)
+   );
 
-   private String b() {
-      return String.format(Locale.ROOT, "#%08X", this.b);
-   }
-
-   @Override
-   public String toString() {
-      return this.b();
-   }
-
-   public int a() {
+   public List<axg> a() {
       return this.b;
+   }
+
+   public boolean b() {
+      return this.c;
    }
 }

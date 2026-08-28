@@ -1,58 +1,30 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-public class frf extends frh {
-   private static final wz a = wz.c("options.online.title");
-   @Nullable
-   private fgr<Unit> u;
+public class frf extends fqk {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final alb v = alb.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
 
-   public frf(fod $$0, fgs $$1) {
-      super($$0, $$1, a);
+   public frf(dsq $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, xd.c("hanging_sign.edit"));
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      if (this.u != null) {
-         fik $$0 = this.r.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fgr<?>[] a(fgs $$0, fgo $$1) {
-      List<fgr<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.T());
-      $$2.add($$0.U());
-      fgr<Unit> $$3 = x.a(
-         $$1.r,
-         $$0x -> {
-            bqo $$1x = $$0x.al();
-            return new fgr<>(
-               "options.difficulty.online",
-               fgr.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fgr.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new fgr[0]);
+   protected void a(fjn $$0, dua $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   protected void m() {
-      this.r.a(this.a(this.c, this.l));
+   protected void c(fjn $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(ghe::C, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   }
+
+   @Override
+   protected Vector3f m() {
+      return d;
    }
 }

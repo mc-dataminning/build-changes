@@ -1,59 +1,69 @@
-public class fsp extends fod {
-   private static final wz a = wz.c("gui.abuseReport.title");
-   private static final wz b = wz.c("gui.abuseReport.message");
-   private static final wz c = wz.c("gui.abuseReport.type.chat");
-   private static final wz r = wz.c("gui.abuseReport.type.skin");
-   private static final wz s = wz.c("gui.abuseReport.type.name");
-   private static final int u = 6;
-   private final fod v;
-   private final gao w;
-   private final fst x;
-   private final fmd y = fmd.d().a(6);
+public class fsp extends fsw {
+   public static final xd a = xd.c("options.accessibility.title");
 
-   public fsp(fod $$0, gao $$1, fst $$2) {
-      super(a);
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
+   private static fie<?>[] a(fif $$0) {
+      return new fie[]{
+         $$0.au(),
+         $$0.Y(),
+         $$0.u(),
+         $$0.I(),
+         $$0.q(),
+         $$0.s(),
+         $$0.aa(),
+         $$0.o(),
+         $$0.p(),
+         $$0.B(),
+         $$0.C(),
+         $$0.ad(),
+         $$0.ae(),
+         $$0.af(),
+         $$0.al(),
+         $$0.am(),
+         $$0.an(),
+         $$0.aq(),
+         $$0.ao(),
+         $$0.ap(),
+         $$0.b(),
+         $$0.a(),
+         $$0.t(),
+         $$0.c(),
+         $$0.v(),
+         $$0.J()
+      };
    }
 
-   @Override
-   public wz i() {
-      return wy.a(super.i(), b);
+   public fsp(fpt $$0, fif $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
    protected void aT_() {
-      this.y.c().b();
-      this.y.a(new fjt(this.k, this.o), this.y.b().e(6));
-      this.y.a(new fjg(b, this.o).b(true), this.y.b().e(6));
-      fim $$0 = this.y.a(fim.a(c, $$0x -> this.l.a(new fsl(this.v, this.w, this.x.d()))).a());
-      if (!this.x.k()) {
+      super.aT_();
+      fjy $$0 = this.d.b(this.c.u());
+      if ($$0 != null && !this.m.ac().b().contains("high_contrast")) {
          $$0.j = false;
-         $$0.a(fjx.a(wz.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.x.j()) {
-         $$0.j = false;
-         $$0.a(fjx.a(wz.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
+         $$0.a(fll.a(xd.c("options.accessibility.high_contrast.error.tooltip")));
       }
 
-      this.y.a(fim.a(r, $$0x -> this.l.a(new fsr(this.v, this.w, this.x.d(), this.x.h()))).a());
-      this.y.a(fim.a(s, $$0x -> this.l.a(new fso(this.v, this.w, this.x.d(), this.x.c()))).a());
-      this.y.a(fme.b(20));
-      this.y.a(fim.a(wy.e, $$0x -> this.d()).a());
-      this.y.a($$1 -> {
-         fik var10000 = this.c($$1);
-      });
-      this.c();
+      fjy $$1 = this.d.b(this.c.J());
+      if ($$1 != null) {
+         $$1.j = this.G();
+      }
    }
 
    @Override
-   protected void c() {
-      this.y.a();
-      flx.a(this.y, this.H());
+   protected void m() {
+      this.d.a(a(this.c));
    }
 
    @Override
-   public void d() {
-      this.l.a(this.v);
+   protected void D() {
+      fns $$0 = this.s.b(fns.e().a(8));
+      $$0.a(fka.a(xd.c("options.accessibility.link"), fop.b(this, axy.l)).a());
+      $$0.a(fka.a(xc.d, $$0x -> this.m.a(this.b)).a());
+   }
+
+   private boolean G() {
+      return this.m.s != null && this.m.s.J().b(cqj.e);
    }
 }

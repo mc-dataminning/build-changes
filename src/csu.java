@@ -1,112 +1,97 @@
-public class csu extends cul {
-   public static final int a = 10;
-   private static final int b = 200;
+import java.util.List;
 
-   public csu(cul.a $$0) {
-      super($$0);
+public class csu implements cri {
+   private final jw<cvl> b;
+   private final int c;
+   private final int d;
+   private final cqq e;
+
+   public csu(cqq $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, jw.a($$1 * $$2, cvl.k));
+   }
+
+   private csu(cqq $$0, int $$1, int $$2, jw<cvl> $$3) {
+      this.b = $$3;
+      this.e = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public bqr a(cyf $$0) {
-      cmx $$1 = $$0.o();
-      if ($$1 != null && this.a($$1).c() == exa.a.b) {
-         $$1.c($$0.p());
-      }
-
-      return bqr.c;
+   public int b() {
+      return this.b.size();
    }
 
    @Override
-   public cwo b(cuq $$0) {
-      return cwo.j;
-   }
-
-   @Override
-   public int a(cuq $$0, btn $$1) {
-      return 200;
-   }
-
-   @Override
-   public void a(dcw $$0, btn $$1, cuq $$2, int $$3) {
-      if ($$3 >= 0 && $$1 instanceof cmx $$4) {
-         exa $$6 = this.a($$4);
-         if ($$6 instanceof ewy $$7 && $$6.c() == exa.a.b) {
-            int $$9 = this.a($$2, $$1) - $$3 + 1;
-            boolean $$10 = $$9 % 10 == 5;
-            if ($$10) {
-               jd $$11 = $$7.a();
-               dtc $$12 = $$0.a_($$11);
-               btg $$13 = $$1.fs() == bqq.a ? $$4.fq() : $$4.fq().e();
-               if ($$12.z() && $$12.l() != dmf.a) {
-                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
-               }
-
-               avo $$15;
-               if ($$12.b() instanceof dgd $$14) {
-                  $$15 = $$14.c();
-               } else {
-                  $$15 = avp.cS;
-               }
-
-               $$0.a($$4, $$11, $$15, avq.e);
-               if (!$$0.x_() && $$0.c_($$11) instanceof dql $$17) {
-                  boolean $$18 = $$17.a($$0.Z(), $$4, $$7.b());
-                  if ($$18) {
-                     bsy $$19 = $$2.equals($$4.a(bsy.b)) ? bsy.b : bsy.a;
-                     $$2.a(1, $$1, $$19);
-                  }
-               }
-            }
-
-            return;
+   public boolean c() {
+      for (cvl $$0 : this.b) {
+         if (!$$0.f()) {
+            return false;
          }
-
-         $$1.fw();
-      } else {
-         $$1.fw();
       }
+
+      return true;
    }
 
-   private exa a(cmx $$0) {
-      return cnr.a($$0, $$0x -> !$$0x.R_() && $$0x.bA(), $$0.gy());
+   @Override
+   public cvl a(int $$0) {
+      return $$0 >= this.b() ? cvl.k : this.b.get($$0);
    }
 
-   private void a(dcw $$0, ewy $$1, dtc $$2, exc $$3, btg $$4) {
-      double $$5 = 3.0;
-      int $$6 = $$4 == btg.b ? 1 : -1;
-      int $$7 = $$0.E_().b(7, 12);
-      le $$8 = new le(lm.b, $$2);
-      ji $$9 = $$1.b();
-      csu.a $$10 = csu.a.a($$3, $$9);
-      exc $$11 = $$1.e();
+   @Override
+   public cvl b(int $$0) {
+      return bre.a(this.b, $$0);
+   }
 
-      for (int $$12 = 0; $$12 < $$7; $$12++) {
-         $$0.a(
-            $$8,
-            $$11.c - (double)($$9 == ji.e ? 1.0E-6F : 0.0F),
-            $$11.d,
-            $$11.e - (double)($$9 == ji.c ? 1.0E-6F : 0.0F),
-            $$10.a() * (double)$$6 * 3.0 * $$0.E_().j(),
-            0.0,
-            $$10.c() * (double)$$6 * 3.0 * $$0.E_().j()
-         );
+   @Override
+   public cvl a(int $$0, int $$1) {
+      cvl $$2 = bre.a(this.b, $$0, $$1);
+      if (!$$2.f()) {
+         this.e.a(this);
       }
+
+      return $$2;
    }
 
-   static record a(double a, double b, double c) {
-      private static final double d = 1.0;
-      private static final double e = 0.1;
+   @Override
+   public void a(int $$0, cvl $$1) {
+      this.b.set($$0, $$1);
+      this.e.a(this);
+   }
 
-      public static csu.a a(exc $$0, ji $$1) {
-         double $$2 = 0.0;
+   @Override
+   public void e() {
+   }
 
-         return switch ($$1) {
-            case a, b -> new csu.a($$0.c(), 0.0, -$$0.a());
-            case c -> new csu.a(1.0, 0.0, -0.1);
-            case d -> new csu.a(-1.0, 0.0, 0.1);
-            case e -> new csu.a(-0.1, 0.0, -1.0);
-            case f -> new csu.a(0.1, 0.0, 1.0);
-         };
+   @Override
+   public boolean a(cnp $$0) {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.b.clear();
+   }
+
+   @Override
+   public int g() {
+      return this.d;
+   }
+
+   @Override
+   public int aB_() {
+      return this.c;
+   }
+
+   @Override
+   public List<cvl> h() {
+      return List.copyOf(this.b);
+   }
+
+   @Override
+   public void fillStackedContents(cnu $$0) {
+      for (cvl $$1 : this.b) {
+         $$0.a($$1);
       }
    }
 }

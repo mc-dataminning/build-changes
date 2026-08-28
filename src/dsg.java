@@ -1,68 +1,143 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.Optional;
 
-public record dsg(int c, float d, float e, float f, float g, int h, bpb<ddo> i, bpb<akq<erw>> j, akq<erw> k) {
-   public static final dsg a = new dsg(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, bpb.b(), bpb.<akq<erw>>a().a(ern.aY).a(ern.aX).a(), ern.bb);
-   public static final Codec<dsg> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 128).lenientOptionalFieldOf("spawn_range", a.c).forGetter(dsg::b),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs", a.d).forGetter(dsg::c),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs", a.e).forGetter(dsg::d),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs_added_per_player", a.f).forGetter(dsg::e),
-               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs_added_per_player", a.g).forGetter(dsg::f),
-               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("ticks_between_spawn", a.h).forGetter(dsg::g),
-               ddo.c.lenientOptionalFieldOf("spawn_potentials", bpb.b()).forGetter(dsg::h),
-               bpb.a(akq.a(lu.bc)).lenientOptionalFieldOf("loot_tables_to_eject", a.j).forGetter(dsg::i),
-               akq.a(lu.bc).lenientOptionalFieldOf("items_to_drop_when_ominous", a.k).forGetter(dsg::j)
-            )
-            .apply($$0, dsg::new)
-   );
+public class dsg extends dre {
+   public static final String a = "target";
+   public static final String b = "pool";
+   public static final String c = "joint";
+   public static final String d = "placement_priority";
+   public static final String e = "selection_priority";
+   public static final String f = "name";
+   public static final String g = "final_state";
+   private alb h = alb.b("empty");
+   private alb i = alb.b("empty");
+   private ala<ely> j = ala.a(lv.aU, alb.b("empty"));
+   private dsg.a k = dsg.a.a;
+   private String l = "minecraft:air";
+   private int m;
+   private int n;
 
-   public int a(int $$0) {
-      return (int)Math.floor((double)(this.d + this.f * (float)$$0));
+   public dsg(je $$0, dua $$1) {
+      super(drg.F, $$0, $$1);
    }
 
-   public int b(int $$0) {
-      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
-   }
-
-   public long a() {
-      return 160L;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
-   }
-
-   public float e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
-   }
-
-   public int g() {
+   public alb b() {
       return this.h;
    }
 
-   public bpb<ddo> h() {
+   public alb c() {
       return this.i;
    }
 
-   public bpb<akq<erw>> i() {
+   public ala<ely> d() {
       return this.j;
    }
 
-   public akq<erw> j() {
+   public String f() {
+      return this.l;
+   }
+
+   public dsg.a j() {
       return this.k;
+   }
+
+   public int k() {
+      return this.m;
+   }
+
+   public int t() {
+      return this.n;
+   }
+
+   public void a(alb $$0) {
+      this.h = $$0;
+   }
+
+   public void b(alb $$0) {
+      this.i = $$0;
+   }
+
+   public void a(ala<ely> $$0) {
+      this.j = $$0;
+   }
+
+   public void a(String $$0) {
+      this.l = $$0;
+   }
+
+   public void a(dsg.a $$0) {
+      this.k = $$0;
+   }
+
+   public void a(int $$0) {
+      this.m = $$0;
+   }
+
+   public void b(int $$0) {
+      this.n = $$0;
+   }
+
+   @Override
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("name", this.h.toString());
+      $$0.a("target", this.i.toString());
+      $$0.a("pool", this.j.a().toString());
+      $$0.a("final_state", this.l);
+      $$0.a("joint", this.k.c());
+      $$0.a("placement_priority", this.m);
+      $$0.a("selection_priority", this.n);
+   }
+
+   @Override
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.h = alb.a($$0.l("name"));
+      this.i = alb.a($$0.l("target"));
+      this.j = ala.a(lv.aU, alb.a($$0.l("pool")));
+      this.l = $$0.l("final_state");
+      this.k = dsg.a.a($$0.l("joint")).orElseGet(() -> dkx.o(this.m()).o().d() ? dsg.a.b : dsg.a.a);
+      this.m = $$0.h("placement_priority");
+      this.n = $$0.h("selection_priority");
+   }
+
+   public acg u() {
+      return acg.a(this);
+   }
+
+   @Override
+   public uf a(jp.a $$0) {
+      return this.e($$0);
+   }
+
+   public void a(arg $$0, int $$1, boolean $$2) {
+      je $$3 = this.aD_().a(this.m().c(dkx.b).a());
+      ka<ely> $$4 = $$0.F_().d(lv.aU);
+      jn<ely> $$5 = $$4.g(this.j);
+      els.a($$0, $$5, this.i, $$1, $$3, $$2);
+   }
+
+   public static enum a implements azy {
+      a("rollable"),
+      b("aligned");
+
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.c;
+      }
+
+      public static Optional<dsg.a> a(String $$0) {
+         return Arrays.stream(values()).filter($$1 -> $$1.c().equals($$0)).findFirst();
+      }
+
+      public xd a() {
+         return xd.c("jigsaw_block.joint." + this.c);
+      }
    }
 }

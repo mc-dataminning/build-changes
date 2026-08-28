@@ -1,112 +1,80 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class czu implements czr {
-   final cyw a;
-   final cyw b;
-   final cyw c;
+public class czu {
+   private final czu.a[] a;
+   private WeakReference<czx> b = new WeakReference<>(null);
 
-   public czu(cyw $$0, cyw $$1, cyw $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public czu(int $$0) {
+      this.a = new czu.a[$$0];
    }
 
-   public boolean a(czs $$0, dcw $$1) {
-      return this.a.a($$0.c()) && this.b.a($$0.d()) && this.c.a($$0.e());
+   public Optional<czv<czj>> a(dds $$0, czi $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            czu.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   public cuq a(czs $$0, jo.a $$1) {
-      cuq $$2 = $$0.d();
-      if (this.b.a($$2)) {
-         Optional<jm.c<cwy>> $$3 = cwz.a($$1, $$0.e());
-         Optional<jm.c<cxa>> $$4 = cxb.a($$1, $$0.c());
-         if ($$3.isPresent() && $$4.isPresent()) {
-            cwx $$5 = $$2.a(kq.K);
-            if ($$5 != null && $$5.a($$4.get(), $$3.get())) {
-               return cuq.l;
+   private void a(dds $$0) {
+      czx $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
+   }
+
+   private Optional<czv<czj>> a(czi $$0, dds $$1) {
+      Optional<czv<czj>> $$2 = $$1.r().a(czz.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
+   }
+
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         czu.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
+   }
+
+   private void a(czi $$0, @Nullable czv<czj> $$1) {
+      jw<cvl> $$2 = jw.a($$0.a(), cvl.k);
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
+      }
+
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new czu.a($$2, $$0.f(), $$0.g(), $$1);
+   }
+
+   static record a(jw<cvl> a, int b, int c, @Nullable czv<czj> d) {
+      public boolean a(czi $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cvl.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
             }
 
-            cuq $$6 = $$2.c(1);
-            $$6.b(kq.K, new cwx($$3.get(), $$4.get()));
-            return $$6;
+            return true;
+         } else {
+            return false;
          }
-      }
-
-      return cuq.l;
-   }
-
-   @Override
-   public cuq a(jo.a $$0) {
-      cuq $$1 = new cuq(cut.pH);
-      Optional<jm.c<cxa>> $$2 = $$0.b(lu.aX).b().findFirst();
-      Optional<jm.c<cwy>> $$3 = $$0.b(lu.aW).a(cwz.d);
-      if ($$2.isPresent() && $$3.isPresent()) {
-         $$1.b(kq.K, new cwx($$3.get(), $$2.get()));
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean a(cuq $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public boolean b(cuq $$0) {
-      return this.b.a($$0);
-   }
-
-   @Override
-   public boolean c(cuq $$0) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public cze<?> at_() {
-      return cze.v;
-   }
-
-   @Override
-   public boolean i() {
-      return Stream.of(this.a, this.b, this.c).anyMatch(cyw::c);
-   }
-
-   public static class a implements cze<czu> {
-      private static final MapCodec<czu> y = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  cyw.c.fieldOf("template").forGetter($$0x -> $$0x.a),
-                  cyw.c.fieldOf("base").forGetter($$0x -> $$0x.b),
-                  cyw.c.fieldOf("addition").forGetter($$0x -> $$0x.c)
-               )
-               .apply($$0, czu::new)
-      );
-      public static final yx<wk, czu> x = yx.a(czu.a::a, czu.a::a);
-
-      @Override
-      public MapCodec<czu> a() {
-         return y;
-      }
-
-      @Override
-      public yx<wk, czu> b() {
-         return x;
-      }
-
-      private static czu a(wk $$0) {
-         cyw $$1 = cyw.b.decode($$0);
-         cyw $$2 = cyw.b.decode($$0);
-         cyw $$3 = cyw.b.decode($$0);
-         return new czu($$1, $$2, $$3);
-      }
-
-      private static void a(wk $$0, czu $$1) {
-         cyw.b.encode($$0, $$1.a);
-         cyw.b.encode($$0, $$1.b);
-         cyw.b.encode($$0, $$1.c);
       }
    }
 }

@@ -1,173 +1,24 @@
-public class agg {
-   public static final zi<acg> a = a("bundle");
-   public static final zi<acf> b = a("bundle_delimiter");
-   public static final zi<abv> c = a("add_entity");
-   public static final zi<abw> d = a("add_experience_orb");
-   public static final zi<abx> e = a("animate");
-   public static final zi<aby> f = a("award_stats");
-   public static final zi<abz> g = a("block_changed_ack");
-   public static final zi<aca> h = a("block_destruction");
-   public static final zi<acb> i = a("block_entity_data");
-   public static final zi<acc> j = a("block_event");
-   public static final zi<acd> k = a("block_update");
-   public static final zi<ace> l = a("boss_event");
-   public static final zi<ach> m = a("change_difficulty");
-   public static final zi<aci> n = a("chunk_batch_finished");
-   public static final zi<acj> o = a("chunk_batch_start");
-   public static final zi<ack> p = a("chunks_biomes");
-   public static final zi<acl> q = a("clear_titles");
-   public static final zi<acm> r = a("command_suggestions");
-   public static final zi<acn> s = a("commands");
-   public static final zi<aco> t = a("container_close");
-   public static final zi<acp> u = a("container_set_content");
-   public static final zi<acq> v = a("container_set_data");
-   public static final zi<acr> w = a("container_set_slot");
-   public static final zi<acs> x = a("cooldown");
-   public static final zi<act> y = a("custom_chat_completions");
-   public static final zi<acu> z = a("damage_event");
-   public static final zi<acv> A = a("debug_sample");
-   public static final zi<acw> B = a("delete_chat");
-   public static final zi<acx> C = a("disguised_chat");
-   public static final zi<acy> D = a("entity_event");
-   public static final zi<acz> E = a("explode");
-   public static final zi<ada> F = a("forget_level_chunk");
-   public static final zi<adb> G = a("game_event");
-   public static final zi<adc> H = a("horse_screen_open");
-   public static final zi<add> I = a("hurt_animation");
-   public static final zi<ade> J = a("initialize_border");
-   public static final zi<adg> K = a("level_chunk_with_light");
-   public static final zi<adh> L = a("level_event");
-   public static final zi<adi> M = a("level_particles");
-   public static final zi<adj> N = a("light_update");
-   public static final zi<adl> O = a("login");
-   public static final zi<adm> P = a("map_item_data");
-   public static final zi<adn> Q = a("merchant_offers");
-   public static final zi<ado.a> R = a("move_entity_pos");
-   public static final zi<ado.b> S = a("move_entity_pos_rot");
-   public static final zi<ado.c> T = a("move_entity_rot");
-   public static final zi<adp> U = a("move_vehicle");
-   public static final zi<adq> V = a("open_book");
-   public static final zi<adr> W = a("open_screen");
-   public static final zi<ads> X = a("open_sign_editor");
-   public static final zi<adt> Y = a("place_ghost_recipe");
-   public static final zi<adu> Z = a("player_abilities");
-   public static final zi<adv> aa = a("player_chat");
-   public static final zi<adw> ab = a("player_combat_end");
-   public static final zi<adx> ac = a("player_combat_enter");
-   public static final zi<ady> ad = a("player_combat_kill");
-   public static final zi<adz> ae = a("player_info_remove");
-   public static final zi<aea> af = a("player_info_update");
-   public static final zi<aeb> ag = a("player_look_at");
-   public static final zi<aec> ah = a("player_position");
-   public static final zi<aee> ai = a("recipe");
-   public static final zi<aef> aj = a("remove_entities");
-   public static final zi<aeg> ak = a("remove_mob_effect");
-   public static final zi<aei> al = a("respawn");
-   public static final zi<aej> am = a("rotate_head");
-   public static final zi<aek> an = a("section_blocks_update");
-   public static final zi<ael> ao = a("select_advancements_tab");
-   public static final zi<aem> ap = a("server_data");
-   public static final zi<aen> aq = a("set_action_bar_text");
-   public static final zi<aeo> ar = a("set_border_center");
-   public static final zi<aep> as = a("set_border_lerp_size");
-   public static final zi<aeq> at = a("set_border_size");
-   public static final zi<aer> au = a("set_border_warning_delay");
-   public static final zi<aes> av = a("set_border_warning_distance");
-   public static final zi<aet> aw = a("set_camera");
-   public static final zi<aeu> ax = a("set_carried_item");
-   public static final zi<aev> ay = a("set_chunk_cache_center");
-   public static final zi<aew> az = a("set_chunk_cache_radius");
-   public static final zi<aex> aA = a("set_default_spawn_position");
-   public static final zi<aey> aB = a("set_display_objective");
-   public static final zi<aez> aC = a("set_entity_data");
-   public static final zi<afa> aD = a("set_entity_link");
-   public static final zi<afb> aE = a("set_entity_motion");
-   public static final zi<afc> aF = a("set_equipment");
-   public static final zi<afd> aG = a("set_experience");
-   public static final zi<afe> aH = a("set_health");
-   public static final zi<aff> aI = a("set_objective");
-   public static final zi<afg> aJ = a("set_passengers");
-   public static final zi<afh> aK = a("set_player_team");
-   public static final zi<afi> aL = a("set_score");
-   public static final zi<afj> aM = a("set_simulation_distance");
-   public static final zi<afk> aN = a("set_subtitle_text");
-   public static final zi<afl> aO = a("set_time");
-   public static final zi<afm> aP = a("set_title_text");
-   public static final zi<afn> aQ = a("set_titles_animation");
-   public static final zi<afo> aR = a("sound_entity");
-   public static final zi<afp> aS = a("sound");
-   public static final zi<afq> aT = a("start_configuration");
-   public static final zi<afr> aU = a("stop_sound");
-   public static final zi<afs> aV = a("system_chat");
-   public static final zi<aft> aW = a("tab_list");
-   public static final zi<afu> aX = a("tag_query");
-   public static final zi<afv> aY = a("take_item_entity");
-   public static final zi<afw> aZ = a("teleport_entity");
-   public static final zi<afz> ba = a("update_advancements");
-   public static final zi<aga> bb = a("update_attributes");
-   public static final zi<agb> bc = a("update_mob_effect");
-   public static final zi<agc> bd = a("update_recipes");
-   public static final zi<aed> be = a("projectile_power");
-   public static final zi<agk> bf = b("accept_teleportation");
-   public static final zi<agl> bg = b("block_entity_tag_query");
-   public static final zi<agm> bh = b("change_difficulty");
-   public static final zi<agn> bi = b("chat_ack");
-   public static final zi<ago> bj = b("chat_command");
-   public static final zi<agp> bk = b("chat_command_signed");
-   public static final zi<agq> bl = b("chat");
-   public static final zi<agr> bm = b("chat_session_update");
-   public static final zi<ags> bn = b("chunk_batch_received");
-   public static final zi<agt> bo = b("client_command");
-   public static final zi<agu> bp = b("command_suggestion");
-   public static final zi<agv> bq = b("configuration_acknowledged");
-   public static final zi<agw> br = b("container_button_click");
-   public static final zi<agx> bs = b("container_click");
-   public static final zi<agy> bt = b("container_close");
-   public static final zi<agz> bu = b("container_slot_state_changed");
-   public static final zi<aha> bv = b("debug_sample_subscription");
-   public static final zi<ahb> bw = b("edit_book");
-   public static final zi<ahc> bx = b("entity_tag_query");
-   public static final zi<ahd> by = b("interact");
-   public static final zi<ahe> bz = b("jigsaw_generate");
-   public static final zi<ahf> bA = b("lock_difficulty");
-   public static final zi<ahg.a> bB = b("move_player_pos");
-   public static final zi<ahg.b> bC = b("move_player_pos_rot");
-   public static final zi<ahg.c> bD = b("move_player_rot");
-   public static final zi<ahg.d> bE = b("move_player_status_only");
-   public static final zi<ahh> bF = b("move_vehicle");
-   public static final zi<ahi> bG = b("paddle_boat");
-   public static final zi<ahj> bH = b("pick_item");
-   public static final zi<ahk> bI = b("place_recipe");
-   public static final zi<ahl> bJ = b("player_abilities");
-   public static final zi<ahm> bK = b("player_action");
-   public static final zi<ahn> bL = b("player_command");
-   public static final zi<aho> bM = b("player_input");
-   public static final zi<ahp> bN = b("recipe_book_change_settings");
-   public static final zi<ahq> bO = b("recipe_book_seen_recipe");
-   public static final zi<ahr> bP = b("rename_item");
-   public static final zi<ahs> bQ = b("seen_advancements");
-   public static final zi<aht> bR = b("select_trade");
-   public static final zi<ahu> bS = b("set_beacon");
-   public static final zi<ahv> bT = b("set_carried_item");
-   public static final zi<ahw> bU = b("set_command_block");
-   public static final zi<ahx> bV = b("set_command_minecart");
-   public static final zi<ahy> bW = b("set_creative_mode_slot");
-   public static final zi<ahz> bX = b("set_jigsaw_block");
-   public static final zi<aia> bY = b("set_structure_block");
-   public static final zi<aib> bZ = b("sign_update");
-   public static final zi<aic> ca = b("swing");
-   public static final zi<aid> cb = b("teleport_to_entity");
-   public static final zi<aie> cc = b("use_item_on");
-   public static final zi<aif> cd = b("use_item");
-   public static final zi<aeh> ce = a("reset_score");
-   public static final zi<afx> cf = a("ticking_state");
-   public static final zi<afy> cg = a("ticking_step");
+public record agg(int b) implements zk<abz> {
+   public static final zb<wa, agg> a = zk.a(agg::a, agg::new);
 
-   private static <T extends zg<abu>> zi<T> a(String $$0) {
-      return new zi<>(zh.b, akr.b($$0));
+   private agg(wa $$0) {
+      this($$0.l());
    }
 
-   private static <T extends zg<agi>> zi<T> b(String $$0) {
-      return new zi<>(zh.a, akr.b($$0));
+   public static agg a(brt $$0) {
+      return new agg($$0.k());
+   }
+
+   private void a(wa $$0) {
+      $$0.c(this.b);
+   }
+
+   @Override
+   public zm<agg> a() {
+      return ago.cj;
+   }
+
+   public void a(abz $$0) {
+      $$0.a(this);
    }
 }

@@ -1,69 +1,27 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class ffk extends ffn {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wz c = wz.c("mco.snapshot.creating");
-   private final long d;
-   private final ffg e;
-   private final String f;
-   private final String g;
-   private final fbt h;
-   @Nullable
-   private ffp i;
-   @Nullable
-   private ffq j;
+public class ffk extends hct {
+   protected BooleanConsumer a;
+   private final xd b;
+   private final xd c;
 
-   public ffk(fbt $$0, long $$1, ffg $$2, String $$3, String $$4) {
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$0;
+   public ffk(BooleanConsumer $$0, xd $$1, xd $$2) {
+      super(fhs.a);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void run() {
-      fby $$0 = fby.a();
-
-      try {
-         fcp $$1 = $$0.a(Long.valueOf(this.d));
-         this.i = new ffp($$1.a, this.f, this.g);
-         this.j = new ffq(this.e, $$1.a, fel.a, () -> fgo.Q().execute(() -> fbt.a($$1, this.h, true)));
-         if (this.d()) {
-            return;
-         }
-
-         this.i.run();
-         if (this.d()) {
-            return;
-         }
-
-         this.j.run();
-      } catch (fdj var3) {
-         b.error("Couldn't create snapshot world", var3);
-         this.a(var3);
-      } catch (Exception var4) {
-         b.error("Couldn't create snapshot world", var4);
-         this.a(var4);
-      }
+   public void aT_() {
+      this.c(fka.a(xc.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
+      this.c(fka.a(xc.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
    }
 
    @Override
-   public wz a() {
-      return c;
-   }
-
-   @Override
-   public void b() {
-      super.b();
-      if (this.i != null) {
-         this.i.b();
-      }
-
-      if (this.j != null) {
-         this.j.b();
-      }
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
+      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
    }
 }

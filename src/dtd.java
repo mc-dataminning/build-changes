@@ -1,159 +1,346 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Optional;
+import java.util.UUID;
 
-public class dtd<O, S extends dte<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, duf<?>> c;
-   private final ImmutableList<S> d;
+public final class dtd {
+   public static final String a = "normal_config";
+   public static final String b = "ominous_config";
+   public static final int c = 40;
+   private static final int d = 36000;
+   private static final int e = 14;
+   private static final int f = 47;
+   private static final int g = azc.h(47);
+   private static final float h = 0.02F;
+   private final dte i;
+   private final dte j;
+   private final dtf k;
+   private final int l;
+   private final int m;
+   private final dtd.b n;
+   private dtc o;
+   private final dtc.a p;
+   private boolean q;
+   private boolean r;
 
-   protected dtd(Function<O, S> $$0, O $$1, dtd.b<O, S> $$2, Map<String, duf<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
+   public Codec<dtd> a() {
+      return RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dte.b.optionalFieldOf("normal_config", dte.a).forGetter(dtd::c),
+                  dte.b.optionalFieldOf("ominous_config", dte.a).forGetter(dtd::n),
+                  dtf.b.forGetter(dtd::f),
+                  Codec.intRange(0, Integer.MAX_VALUE).optionalFieldOf("target_cooldown_length", 36000).forGetter(dtd::g),
+                  Codec.intRange(1, 128).optionalFieldOf("required_player_range", 14).forGetter(dtd::h)
+               )
+               .apply($$0, ($$0x, $$1, $$2, $$3, $$4) -> new dtd($$0x, $$1, $$2, $$3, $$4, this.n, this.o, this.p))
+      );
+   }
 
-      while ($$7.hasNext()) {
-         Entry<String, duf<?>> $$6 = (Entry<String, duf<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+   public dtd(dtd.b $$0, dtc $$1, dtc.a $$2) {
+      this(dte.a, dte.a, new dtf(), 36000, 14, $$0, $$1, $$2);
+   }
+
+   public dtd(dte $$0, dte $$1, dtf $$2, int $$3, int $$4, dtd.b $$5, dtc $$6, dtc.a $$7) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.m = $$3;
+      this.l = $$4;
+      this.n = $$5;
+      this.o = $$6;
+      this.p = $$7;
+   }
+
+   public dte b() {
+      return this.r ? this.j : this.i;
+   }
+
+   @VisibleForTesting
+   public dte c() {
+      return this.i;
+   }
+
+   @VisibleForTesting
+   public dte d() {
+      return this.j;
+   }
+
+   private dte n() {
+      return !this.j.equals(this.i) ? this.j : dte.a;
+   }
+
+   public void a(arg $$0, je $$1) {
+      $$0.a($$1, $$0.a_($$1).b(dpl.c, Boolean.valueOf(true)), 3);
+      $$0.c(3020, $$1, 1);
+      this.r = true;
+      this.k.a(this, $$0);
+   }
+
+   public void b(arg $$0, je $$1) {
+      $$0.a($$1, $$0.a_($$1).b(dpl.c, Boolean.valueOf(false)), 3);
+      this.r = false;
+   }
+
+   public boolean e() {
+      return this.r;
+   }
+
+   public dtf f() {
+      return this.k;
+   }
+
+   public int g() {
+      return this.m;
+   }
+
+   public int h() {
+      return this.l;
+   }
+
+   public dtg i() {
+      return this.n.d();
+   }
+
+   public void a(dds $$0, dtg $$1) {
+      this.n.a($$0, $$1);
+   }
+
+   public void j() {
+      this.n.f();
+   }
+
+   public dtc k() {
+      return this.o;
+   }
+
+   public dtc.a l() {
+      return this.p;
+   }
+
+   public boolean a(dds $$0) {
+      if (this.q) {
+         return true;
+      } else {
+         return $$0.am() == brh.a ? false : $$0.ac().b(ddo.e);
       }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<duf<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<duf<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         duf<?> $$11 = (duf<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<duf<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         Reference2ObjectArrayMap<duf<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
-
-         for (Pair<duf<?>, Comparable<?>> $$7xx : $$5x) {
-            $$6.put((duf)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
-         }
-
-         S $$8x = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$8x);
-         $$9.add($$8x);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
-      }
-
-      this.d = ImmutableList.copyOf($$9);
    }
 
-   private static <S extends dte<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, duf<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (dte)((dte)$$1x.getFirst()).a($$3, ((duf.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
-
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<duf<?>> d() {
-      return this.c.values();
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(duf::f).collect(Collectors.toList()))
-         .toString();
-   }
-
-   @Nullable
-   public duf<?> a(String $$0) {
-      return (duf<?>)this.c.get($$0);
-   }
-
-   public static class a<O, S extends dte<O, S>> {
-      private final O a;
-      private final Map<String, duf<?>> b = Maps.newHashMap();
-
-      public a(O $$0) {
-         this.a = $$0;
-      }
-
-      public dtd.a<O, S> a(duf<?>... $$0) {
-         for (duf<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
-         }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(duf<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dtd.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
+   public Optional<UUID> c(arg $$0, je $$1) {
+      azk $$2 = $$0.C_();
+      del $$3 = this.k.b(this, $$0.C_());
+      uf $$4 = $$3.d();
+      ul $$5 = $$4.c("Pos", 6);
+      Optional<btq<?>> $$6 = btq.a($$4);
+      if ($$6.isEmpty()) {
+         return Optional.empty();
+      } else {
+         int $$7 = $$5.size();
+         double $$8 = $$7 >= 1 ? $$5.h(0) : (double)$$1.u() + ($$2.j() - $$2.j()) * (double)this.b().b() + 0.5;
+         double $$9 = $$7 >= 2 ? $$5.h(1) : (double)($$1.v() + $$2.a(3) - 1);
+         double $$10 = $$7 >= 3 ? $$5.h(2) : (double)$$1.w() + ($$2.j() - $$2.j()) * (double)this.b().b() + 0.5;
+         if (!$$0.b($$6.get().a($$8, $$9, $$10))) {
+            return Optional.empty();
          } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+            eye $$11 = new eye($$8, $$9, $$10);
+            if (!a($$0, $$1.b(), $$11)) {
+               return Optional.empty();
             } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dtd.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
+               je $$12 = je.a((jx)$$11);
+               if (!bva.a($$6.get(), $$0, btp.q, $$12, $$0.C_())) {
+                  return Optional.empty();
+               } else {
+                  if ($$3.b().isPresent()) {
+                     del.a $$13 = $$3.b().get();
+                     if (!$$13.a($$12, $$0)) {
+                        return Optional.empty();
+                     }
                   }
-               }
 
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
+                  btj $$14 = btq.a($$4, $$0, btp.q, $$4x -> {
+                     $$4x.b($$8, $$9, $$10, $$2.i() * 360.0F, 0.0F);
+                     return $$4x;
+                  });
+                  if ($$14 == null) {
+                     return Optional.empty();
+                  } else {
+                     if ($$14 instanceof buh $$15) {
+                        if (!$$15.a($$0)) {
+                           return Optional.empty();
+                        }
+
+                        boolean $$16 = $$3.a().f() == 1 && $$3.a().b("id", 8);
+                        if ($$16) {
+                           $$15.a($$0, $$0.d_($$15.ds()), btp.q, null);
+                        }
+
+                        $$15.fV();
+                        $$3.c().ifPresent($$15::a);
+                     }
+
+                     if (!$$0.e($$14)) {
+                        return Optional.empty();
+                     } else {
+                        dtd.a $$17 = this.r ? dtd.a.b : dtd.a.a;
+                        $$0.c(3011, $$1, $$17.a());
+                        $$0.c(3012, $$12, $$17.a());
+                        $$0.a($$14, dyx.t, $$12);
+                        return Optional.of($$14.cD());
+                     }
+                  }
                }
             }
          }
       }
+   }
 
-      public dtd<O, S> a(Function<O, S> $$0, dtd.b<O, S> $$1) {
-         return new dtd<>($$0, this.a, $$1, this.b);
+   public void a(arg $$0, je $$1, ala<esy> $$2) {
+      esy $$3 = $$0.o().bd().b($$2);
+      esw $$4 = new esw.a($$0).a(evo.b);
+      ObjectArrayList<cvl> $$5 = $$3.a($$4);
+      if (!$$5.isEmpty()) {
+         ObjectListIterator var7 = $$5.iterator();
+
+         while (var7.hasNext()) {
+            cvl $$6 = (cvl)var7.next();
+            kx.a($$0, $$6, 2, jj.b, eye.c($$1).a(jj.b, 1.2));
+         }
+
+         $$0.c(3014, $$1, 0);
       }
    }
 
-   public interface b<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<duf<?>, Comparable<?>> var2, MapCodec<S> var3);
+   public void a(dds $$0, je $$1, boolean $$2) {
+      dtg $$3 = this.i();
+      $$3.a($$0, $$1, $$2);
+      if ($$3.d()) {
+         double $$4 = (double)Math.max(0L, this.k.f - $$0.aa());
+         this.k.l = this.k.k;
+         this.k.k = (this.k.k + $$3.b() / ($$4 + 200.0)) % 360.0;
+      }
+
+      if ($$3.e()) {
+         azk $$5 = $$0.C_();
+         if ($$5.i() <= 0.02F) {
+            awc $$6 = $$2 ? awd.mk : awd.mj;
+            $$0.a($$1, $$6, awe.e, $$5.i() * 0.25F + 0.75F, $$5.i() + 0.5F, false);
+         }
+      }
+   }
+
+   public void a(arg $$0, je $$1, boolean $$2) {
+      this.r = $$2;
+      dtg $$3 = this.i();
+      if (this.k.d.removeIf($$2x -> a($$0, $$1, $$2x))) {
+         this.k.f = $$0.aa() + (long)this.b().g();
+      }
+
+      dtg $$4 = $$3.a($$1, this, $$0);
+      if ($$4 != $$3) {
+         this.a($$0, $$4);
+      }
+   }
+
+   private static boolean a(arg $$0, je $$1, UUID $$2) {
+      btj $$3 = $$0.a($$2);
+      return $$3 == null || !$$3.bI() || !$$3.dS().ag().equals($$0.ag()) || $$3.ds().j($$1) > (double)g;
+   }
+
+   private static boolean a(dds $$0, eye $$1, eye $$2) {
+      eya $$3 = $$0.a(new dda($$2, $$1, dda.a.c, dda.b.a, eyj.a()));
+      return $$3.a().equals(je.a((jx)$$1)) || $$3.c() == eyc.a.a;
+   }
+
+   public static void a(dds $$0, je $$1, azk $$2, lr $$3) {
+      for (int $$4 = 0; $$4 < 20; $$4++) {
+         double $$5 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         $$0.a(ln.ae, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+         $$0.a($$3, $$5, $$6, $$7, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void a(dds $$0, je $$1, azk $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$5 = (double)$$1.v() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$6 = (double)$$1.w() + 0.5 + ($$2.j() - 0.5) * 2.0;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(ln.be, $$4, $$5, $$6, $$7, $$8, $$9);
+         $$0.a(ln.L, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   public static void a(dds $$0, je $$1, azk $$2, int $$3, ll $$4) {
+      for (int $$5 = 0; $$5 < 30 + Math.min($$3, 10) * 5; $$5++) {
+         double $$6 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$7 = (double)(2.0F * $$2.i() - 1.0F) * 0.65;
+         double $$8 = (double)$$1.u() + 0.5 + $$6;
+         double $$9 = (double)$$1.v() + 0.1 + (double)$$2.i() * 0.8;
+         double $$10 = (double)$$1.w() + 0.5 + $$7;
+         $$0.a($$4, $$8, $$9, $$10, 0.0, 0.0, 0.0);
+      }
+   }
+
+   public static void b(dds $$0, je $$1, azk $$2) {
+      for (int $$3 = 0; $$3 < 20; $$3++) {
+         double $$4 = (double)$$1.u() + 0.4 + $$2.j() * 0.2;
+         double $$5 = (double)$$1.v() + 0.4 + $$2.j() * 0.2;
+         double $$6 = (double)$$1.w() + 0.4 + $$2.j() * 0.2;
+         double $$7 = $$2.k() * 0.02;
+         double $$8 = $$2.k() * 0.02;
+         double $$9 = $$2.k() * 0.02;
+         $$0.a(ln.aJ, $$4, $$5, $$6, $$7, $$8, $$9 * 0.25);
+         $$0.a(ln.ae, $$4, $$5, $$6, $$7, $$8, $$9);
+      }
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void a(dtc $$0) {
+      this.o = $$0;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   @VisibleForTesting
+   public void m() {
+      this.q = true;
+   }
+
+   public static enum a {
+      a(ln.F),
+      b(ln.L);
+
+      public final lr c;
+
+      private a(final lr $$0) {
+         this.c = $$0;
+      }
+
+      public static dtd.a a(int $$0) {
+         dtd.a[] $$1 = values();
+         return $$0 <= $$1.length && $$0 >= 0 ? $$1[$$0] : a;
+      }
+
+      public int a() {
+         return this.ordinal();
+      }
+   }
+
+   public interface b {
+      void a(dds var1, dtg var2);
+
+      dtg d();
+
+      void f();
    }
 }

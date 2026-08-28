@@ -1,18 +1,28 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
 public class esf {
-   public static final Codec<esh> a = lt.D.r().dispatch(esh::a, esi::a);
-   public static final esi b = a("empty", esc.a);
-   public static final esi c = a("item", ese.a);
-   public static final esi d = a("loot_table", esk.a);
-   public static final esi e = a("dynamic", esb.a);
-   public static final esi f = a("tag", esm.a);
-   public static final esi g = a("alternatives", ery.a);
-   public static final esi h = a("sequence", esl.a);
-   public static final esi i = a("group", esd.a);
+   public static final esf a = new esf("advancements");
+   public static final esf b = new esf("stats");
+   public static final esf c = new esf("playerdata");
+   public static final esf d = new esf("players");
+   public static final esf e = new esf("level.dat");
+   public static final esf f = new esf("level.dat_old");
+   public static final esf g = new esf("icon.png");
+   public static final esf h = new esf("session.lock");
+   public static final esf i = new esf("generated");
+   public static final esf j = new esf("datapacks");
+   public static final esf k = new esf("resources.zip");
+   public static final esf l = new esf(".");
+   private final String m;
 
-   private static esi a(String $$0, MapCodec<? extends esh> $$1) {
-      return jz.a(lt.D, akr.b($$0), new esi($$1));
+   private esf(String $$0) {
+      this.m = $$0;
+   }
+
+   public String a() {
+      return this.m;
+   }
+
+   @Override
+   public String toString() {
+      return "/" + this.m;
    }
 }

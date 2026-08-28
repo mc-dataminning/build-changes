@@ -1,15 +1,22 @@
-import java.util.Locale;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class eog {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
+public class eog extends eon {
+   public final axi<dgv> a;
+   public static final MapCodec<eog> b = axi.b(lv.f).xmap(eog::new, $$0 -> $$0.a).fieldOf("value");
+
+   public eog(axi<dgv> $$0) {
+      this.a = $$0;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Nullable
+   @Override
+   public eoq.c a(ddv $$0, je $$1, je $$2, eoq.c $$3, eoq.c $$4, eom $$5) {
+      return edc.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   @Override
+   protected eop<?> a() {
+      return eop.n;
    }
 }

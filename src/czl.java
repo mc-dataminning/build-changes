@@ -1,61 +1,49 @@
-public class czl extends cyr {
-   public czl(cyo $$0) {
+public class czl extends czk {
+   public czl(czh $$0) {
       super($$0);
    }
 
-   public boolean a(cyp $$0, dcw $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (dfy.a($$5.g()) instanceof dmy) {
-               $$2++;
-            } else {
-               if (!($$5.g() instanceof ctj)) {
-                  return false;
-               }
-
-               $$3++;
-            }
-
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
+   public boolean a(czi $$0, dds $$1) {
+      if (!this.a($$0.f(), $$0.g())) {
+         return false;
+      } else {
+         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
+            cvl $$3 = $$0.a($$2);
+            switch ($$2) {
+               case 1:
+               case 3:
+               case 5:
+               case 7:
+                  if (!$$3.a(axb.bu)) {
+                     return false;
+                  }
+                  break;
+               case 2:
+               case 4:
+               case 6:
+               default:
+                  if (!$$3.a(cvo.a)) {
+                     return false;
+                  }
             }
          }
-      }
 
-      return $$2 == 1 && $$3 == 1;
+         return true;
+      }
    }
 
-   public cuq a(cyp $$0, jo.a $$1) {
-      cuq $$2 = cuq.l;
-      ctj $$3 = (ctj)cut.ri;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            cul $$6 = $$5.g();
-            if (dfy.a($$6) instanceof dmy) {
-               $$2 = $$5;
-            } else if ($$6 instanceof ctj) {
-               $$3 = (ctj)$$6;
-            }
-         }
-      }
-
-      dfy $$7 = dmy.a($$3.c());
-      return $$2.a($$7, 1);
+   public cvl a(czi $$0, jp.a $$1) {
+      dsk $$2 = new dsk($$0.a(1).h(), $$0.a(3).h(), $$0.a(5).h(), $$0.a(7).h());
+      return dru.a($$2);
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+      return $$0 == 3 && $$1 == 3;
    }
 
    @Override
-   public cze<?> at_() {
-      return cze.m;
+   public czy<?> as_() {
+      return czy.v;
    }
 }

@@ -1,23 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehb<P extends eha> {
-   public static final ehb<ehc> a = a("trunk_vine", ehc.a);
-   public static final ehb<egz> b = a("leave_vine", egz.a);
-   public static final ehb<egy> c = a("cocoa", egy.a);
-   public static final ehb<egx> d = a("beehive", egx.a);
-   public static final ehb<egv> e = a("alter_ground", egv.a);
-   public static final ehb<egw> f = a("attached_to_leaves", egw.a);
-   private final MapCodec<P> g;
+public record ehb(ehh b, float c) {
+   public static final Codec<ehb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ehh.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ehb::new)
+   );
 
-   private static <P extends eha> ehb<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.X, $$0, new ehb<>($$1));
+   public ehh a() {
+      return this.b;
    }
 
-   private ehb(MapCodec<P> $$0) {
-      this.g = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.g;
+   public float b() {
+      return this.c;
    }
 }

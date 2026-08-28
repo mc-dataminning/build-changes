@@ -1,3 +1,6 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.OpticFinder;
@@ -5,61 +8,83 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.types.templates.List.ListType;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 
 public class bcf extends DataFix {
-   private static final Set<String> a = Set.of("minecraft:potion", "minecraft:splash_potion", "minecraft:lingering_potion", "minecraft:tipped_arrow");
-
-   public bcf(Schema $$0) {
-      super($$0, false);
+   public bcf(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(bgr.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgr.D.typeName(), bid.a()));
-      OpticFinder<?> $$3 = $$1.findField("tag");
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bhk.c);
+      Type<?> $$1 = $$0.findFieldType("Level");
+      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
+         throw new IllegalStateException("Tile entity type is not a list type.");
+      } else {
+         return this.a($$1, $$3);
+      }
+   }
+
+   private <TE> TypeRewriteRule a(Type<?> $$0, ListType<TE> $$1) {
+      Type<TE> $$2 = $$1.getElement();
+      OpticFinder<?> $$3 = DSL.fieldFinder("Level", $$0);
+      OpticFinder<List<TE>> $$4 = DSL.fieldFinder("TileEntities", $$1);
+      int $$5 = 416;
       return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bgr.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bgr.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
-            this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
-               Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
-               if ($$3x.filter(a::contains).isPresent()) {
-                  Optional<? extends Typed<?>> $$4 = $$2x.getOptionalTyped($$3);
-                  if ($$4.isPresent()) {
-                     Dynamic<?> $$5 = (Dynamic<?>)$$4.get().get(DSL.remainderFinder());
-                     Typed<?> $$6 = $$4.get().set(DSL.remainderFinder(), $$5.update("CustomPotionEffects", this::b));
-                     return $$2x.set($$3, $$6);
-                  }
+         this.fixTypeEverywhere(
+            "InjectBedBlockEntityType", this.getInputSchema().findChoiceType(bhk.s), this.getOutputSchema().findChoiceType(bhk.s), $$0x -> $$0xx -> $$0xx
+         ),
+         this.fixTypeEverywhereTyped(
+            "BedBlockEntityInjecter",
+            this.getOutputSchema().getType(bhk.c),
+            $$3x -> {
+               Typed<?> $$4x = $$3x.getTyped($$3);
+               Dynamic<?> $$5x = (Dynamic<?>)$$4x.get(DSL.remainderFinder());
+               int $$6 = $$5x.get("xPos").asInt(0);
+               int $$7 = $$5x.get("zPos").asInt(0);
+               List<TE> $$8 = Lists.newArrayList((Iterable)$$4x.getOrCreate($$4));
+
+               for (Dynamic<?> $$10 : $$5x.get("Sections").asList(Function.identity())) {
+                  int $$11 = $$10.get("Y").asInt(0);
+                  Streams.mapWithIndex($$10.get("Blocks").asIntStream(), ($$4xx, $$5xx) -> {
+                        if (416 == ($$4xx & 0xFF) << 4) {
+                           int $$6x = (int)$$5xx;
+                           int $$7x = $$6x & 15;
+                           int $$8x = $$6x >> 8 & 15;
+                           int $$9 = $$6x >> 4 & 15;
+                           Map<Dynamic<?>, Dynamic<?>> $$10x = Maps.newHashMap();
+                           $$10x.put($$10.createString("id"), $$10.createString("minecraft:bed"));
+                           $$10x.put($$10.createString("x"), $$10.createInt($$7x + ($$6 << 4)));
+                           $$10x.put($$10.createString("y"), $$10.createInt($$8x + ($$11 << 4)));
+                           $$10x.put($$10.createString("z"), $$10.createInt($$9 + ($$7 << 4)));
+                           $$10x.put($$10.createString("color"), $$10.createShort((short)14));
+                           return $$10x;
+                        } else {
+                           return null;
+                        }
+                     })
+                     .forEachOrdered(
+                        $$3xx -> {
+                           if ($$3xx != null) {
+                              $$8.add(
+                                 (TE)((Pair)$$2.read($$10.createMap($$3xx))
+                                       .result()
+                                       .orElseThrow(() -> new IllegalStateException("Could not parse newly created bed block entity.")))
+                                    .getFirst()
+                              );
+                           }
+                        }
+                     );
                }
 
-               return $$2x;
-            })
-         }
+               return !$$8.isEmpty() ? $$3x.set($$3, $$4x.set($$4, $$8)) : $$3x;
+            }
+         )
       );
-   }
-
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update("FactorCalculationData", $$1 -> {
-         int $$2 = $$1.get("effect_changed_timestamp").asInt(-1);
-         $$1 = $$1.remove("effect_changed_timestamp");
-         int $$3 = $$0.get("Duration").asInt(-1);
-         int $$4 = $$2 - $$3;
-         return $$1.set("ticks_active", $$1.createInt($$4));
-      });
-   }
-
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return $$0.createList($$0.asStream().map(this::a));
-   }
-
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      $$0 = $$0.update("Effects", this::b);
-      $$0 = $$0.update("ActiveEffects", this::b);
-      return $$0.update("CustomPotionEffects", this::b);
    }
 }

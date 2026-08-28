@@ -1,75 +1,28 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class grc extends grf<guf, fyf> {
+   private final fxy a;
 
-public class grc extends atj {
-   private static final atf d = new atf(wz.c("resourcePack.vanilla.description"), ab.b().a(ass.a), Optional.empty());
-   private static final asi e = asi.a(atf.b, d);
-   public static final String c = "high_contrast";
-   private static final Map<String, wz> f = Map.of(
-      "programmer_art", wz.c("resourcePack.programmer_art.name"), "high_contrast", wz.c("resourcePack.high_contrast.name")
-   );
-   private static final asp g = new asp("vanilla", wz.c("resourcePack.vanilla.name"), atq.c, Optional.of(b));
-   private static final asr h = new asr(true, atm.b.b, false);
-   private static final asr i = new asr(false, atm.b.a, false);
-   private static final akr j = akr.b("resourcepacks");
-   @Nullable
-   private final Path k;
-
-   public grc(Path $$0, ews $$1) {
-      super(ass.a, b($$0), j, $$1);
-      this.k = this.a($$0);
+   public grc(goo<guf, fyf> $$0, fzx $$1) {
+      super($$0);
+      this.a = new fxy($$1.a(gaa.bq));
    }
 
-   private static asp a(String $$0, wz $$1) {
-      return new asp($$0, $$1, atq.c, Optional.of(atl.a($$0)));
-   }
-
-   @Nullable
-   private Path a(Path $$0) {
-      if (ab.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
-         }
+   public void a(fcu $$0, ggv $$1, int $$2, guf $$3, float $$4, float $$5) {
+      cgl.b $$6 = $$3.aF;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
       }
 
-      return null;
-   }
-
-   private static asu b(Path $$0) {
-      asv $$1 = new asv().a(e).a("minecraft", "realms");
-      return $$1.b().a().a(ass.a, $$0).a(g);
-   }
-
-   @Override
-   protected wz a(String $$0) {
-      wz $$1 = f.get($$0);
-      return (wz)($$1 != null ? $$1 : wz.b($$0));
-   }
-
-   @Nullable
-   @Override
-   protected atm a(asq $$0) {
-      return atm.a(g, b($$0), ass.a, h);
-   }
-
-   @Nullable
-   @Override
-   protected atm a(String $$0, atm.c $$1, wz $$2) {
-      return atm.a(a($$0, $$2), $$1, ass.a, i);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, atm>> $$0) {
-      super.a($$0);
-      if (this.k != null) {
-         this.a(this.k, $$0);
+      cgl.b $$7 = $$3.aG;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
       }
+   }
+
+   private void a(fcu $$0, ggv $$1, int $$2, guf $$3, cgl.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
+      fcy $$8 = $$1.getBuffer(this.a.a(gof.a($$4)));
+      this.a.a($$0, $$8, $$2, gwb.d, $$3.X, $$3.Y, $$5, $$6, $$3.p);
+      $$0.b();
    }
 }

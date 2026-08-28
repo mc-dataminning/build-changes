@@ -1,136 +1,101 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import java.util.function.Function;
+import org.slf4j.Logger;
 
-public class eky extends ekz {
-   private static final Codec<Either<akr, ent>> a = Codec.of(eky::a, akr.a.map(Either::left));
-   public static final MapCodec<eky> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(d(), b(), e(), c()).apply($$0, eky::new));
-   protected final Either<akr, ent> c;
-   protected final jm<enr> d;
-   protected final Optional<end> e;
+public abstract class eky extends eks {
+   private static final Logger h = LogUtils.getLogger();
+   protected final String a;
+   protected eoq b;
+   protected eom c;
+   protected je d;
 
-   private static <T> DataResult<T> a(Either<akr, ent> $$0, DynamicOps<T> $$1, T $$2) {
-      Optional<akr> $$3 = $$0.left();
-      return $$3.isEmpty() ? DataResult.error(() -> "Can not serialize a runtime pool element") : akr.a.encode($$3.get(), $$1, $$2);
+   public eky(elf $$0, int $$1, eor $$2, alb $$3, String $$4, eom $$5, je $$6) {
+      super($$0, $$1, $$2.a($$3).b($$5, $$6));
+      this.a(jj.c);
+      this.a = $$4;
+      this.d = $$6;
+      this.b = $$2.a($$3);
+      this.c = $$5;
    }
 
-   protected static <E extends eky> RecordCodecBuilder<E, jm<enr>> b() {
-      return ens.d.fieldOf("processors").forGetter($$0 -> $$0.d);
+   public eky(elf $$0, uf $$1, eor $$2, Function<alb, eom> $$3) {
+      super($$0, $$1);
+      this.a(jj.c);
+      this.a = $$1.l("Template");
+      this.d = new je($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
+      alb $$4 = this.b();
+      this.b = $$2.a($$4);
+      this.c = $$3.apply($$4);
+      this.f = this.b.b(this.c, this.d);
    }
 
-   protected static <E extends eky> RecordCodecBuilder<E, Optional<end>> c() {
-      return end.c.optionalFieldOf("override_liquid_settings").forGetter($$0 -> $$0.e);
-   }
-
-   protected static <E extends eky> RecordCodecBuilder<E, Either<akr, ent>> d() {
-      return a.fieldOf("location").forGetter($$0 -> $$0.c);
-   }
-
-   protected eky(Either<akr, ent> $$0, jm<enr> $$1, elb.a $$2, Optional<end> $$3) {
-      super($$2);
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$3;
+   protected alb b() {
+      return alb.a(this.a);
    }
 
    @Override
-   public kh a(enu $$0, dmm $$1) {
-      ent $$2 = this.a($$0);
-      return $$2.a($$1);
+   protected void a(ele $$0, uf $$1) {
+      $$1.a("TPX", this.d.u());
+      $$1.a("TPY", this.d.v());
+      $$1.a("TPZ", this.d.w());
+      $$1.a("Template", this.a);
    }
 
-   private ent a(enu $$0) {
-      return (ent)this.c.map($$0::a, Function.identity());
-   }
+   @Override
+   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, je $$6) {
+      this.c.a($$4);
+      this.f = this.b.b(this.c, this.d);
+      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
+         for (eoq.c $$8 : this.b.a(this.d, this.c, dgx.pa)) {
+            if ($$8.c() != null) {
+               dvk $$9 = dvk.valueOf($$8.c().l("mode"));
+               if ($$9 == dvk.d) {
+                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
+               }
+            }
+         }
 
-   public List<ent.c> a(enu $$0, jd $$1, dmm $$2, boolean $$3) {
-      ent $$4 = this.a($$0);
-      List<ent.c> $$5 = $$4.a($$1, new enp().a($$2), dga.pa, $$3);
-      List<ent.c> $$6 = Lists.newArrayList();
+         for (eoq.c $$11 : this.b.a(this.d, this.c, dgx.pb)) {
+            if ($$11.c() != null) {
+               String $$12 = $$11.c().l("final_state");
+               dua $$13 = dgx.a.o();
 
-      for (ent.c $$7 : $$5) {
-         ub $$8 = $$7.c();
-         if ($$8 != null) {
-            dum $$9 = dum.valueOf($$8.l("mode"));
-            if ($$9 == dum.d) {
-               $$6.add($$7);
+               try {
+                  $$13 = gn.a($$0.a(lv.f), $$12, true).a();
+               } catch (CommandSyntaxException var15) {
+                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
+               }
+
+               $$0.a($$11.a(), $$13, 3);
             }
          }
       }
+   }
 
-      return $$6;
+   protected abstract void a(String var1, je var2, dei var3, azk var4, ekg var5);
+
+   @Deprecated
+   @Override
+   public void a(int $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.d = this.d.b($$0, $$1, $$2);
    }
 
    @Override
-   public List<ent.c> a(enu $$0, jd $$1, dmm $$2, ayw $$3) {
-      ent $$4 = this.a($$0);
-      ObjectArrayList<ent.c> $$5 = $$4.a($$1, new enp().a($$2), dga.pb, true);
-      ad.c($$5, $$3);
-      a($$5);
-      return $$5;
+   public dnj a() {
+      return this.c.d();
    }
 
-   @VisibleForTesting
-   static void a(List<ent.c> $$0) {
-      $$0.sort(Comparator.<ent.c>comparingInt($$0x -> x.a($$0x.c(), $$0xx -> $$0xx.h("selection_priority"), 0)).reversed());
+   public eoq c() {
+      return this.b;
    }
 
-   @Override
-   public ejj a(enu $$0, jd $$1, dmm $$2) {
-      ent $$3 = this.a($$0);
-      return $$3.b(new enp().a($$2), $$1);
+   public je d() {
+      return this.d;
    }
 
-   @Override
-   public boolean a(enu $$0, dds $$1, ddq $$2, duz $$3, jd $$4, jd $$5, dmm $$6, ejj $$7, ayw $$8, end $$9, boolean $$10) {
-      ent $$11 = this.a($$0);
-      enp $$12 = this.a($$6, $$7, $$9, $$10);
-      if (!$$11.a($$1, $$4, $$5, $$12, $$8, 18)) {
-         return false;
-      } else {
-         for (ent.c $$14 : ent.a($$1, $$4, $$5, $$12, this.a($$0, $$4, $$6, false))) {
-            this.a($$1, $$14, $$4, $$6, $$8, $$7);
-         }
-
-         return true;
-      }
-   }
-
-   protected enp a(dmm $$0, ejj $$1, end $$2, boolean $$3) {
-      enp $$4 = new enp();
-      $$4.a($$1);
-      $$4.a($$0);
-      $$4.b(true);
-      $$4.a(false);
-      $$4.a(emu.b);
-      $$4.c(true);
-      $$4.a(this.e.orElse($$2));
-      if (!$$3) {
-         $$4.a(ena.b);
-      }
-
-      this.d.a().a().forEach($$4::a);
-      this.f().b().forEach($$4::a);
-      return $$4;
-   }
-
-   @Override
-   public ela<?> a() {
-      return ela.a;
-   }
-
-   @Override
-   public String toString() {
-      return "Single[" + this.c + "]";
+   public eom e() {
+      return this.c;
    }
 }

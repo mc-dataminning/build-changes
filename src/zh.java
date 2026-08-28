@@ -1,18 +1,9 @@
-public enum zh {
-   a("serverbound"),
-   b("clientbound");
-
-   private final String c;
-
-   private zh(final String $$0) {
-      this.c = $$0;
+public abstract class zh<T extends wj> implements zk<T> {
+   @Override
+   public final void a(T $$0) {
+      throw new AssertionError("This packet should be handled by pipeline");
    }
 
-   public zh a() {
-      return this == b ? a : b;
-   }
-
-   public String b() {
-      return this.c;
-   }
+   @Override
+   public abstract zm<? extends zh<T>> a();
 }

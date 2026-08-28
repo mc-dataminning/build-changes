@@ -35,7 +35,7 @@ public class ex {
       }
    }
 
-   public static <T> T a(jo.a $$0, StringReader $$1, Codec<T> $$2) {
+   public static <T> T a(jp.a $$0, StringReader $$1, Codec<T> $$2) {
       JsonReader $$3 = new JsonReader(new java.io.StringReader($$1.getRemaining()));
       $$3.setLenient(false);
 

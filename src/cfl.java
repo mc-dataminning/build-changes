@@ -1,78 +1,29 @@
-import javax.annotation.Nullable;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class cfl extends cfe {
-   private static final bsu cc = bsx.w.n().a(0.5F).b(0.665F);
+public record cfl(Set<dua> b, int c, int d) {
+   public static final Predicate<jn<cfl>> a = $$0 -> false;
 
-   public cfl(bsx<? extends cfl> $$0, dcw $$1) {
-      super($$0, $$1);
+   public cfl(Set<dua> b, int c, int d) {
+      b = Set.copyOf(b);
+      this.b = b;
+      this.c = c;
+      this.d = d;
    }
 
-   @Override
-   protected void B() {
-      this.bW.a(0, new cag(this));
-      this.bW.a(1, new cbf(this, 2.0));
-      this.bW.a(2, new bzy(this, 1.0));
-      this.bW.a(3, new cbu(this, 1.25, $$0 -> $$0.a(awn.aa), false));
-      this.bW.a(4, new cal(this, 1.25));
-      this.bW.a(5, new cbz(this, 1.0));
-      this.bW.a(6, new cau(this, cmx.class, 6.0F));
-      this.bW.a(7, new cbh(this));
+   public boolean a(dua $$0) {
+      return this.b.contains($$0);
    }
 
-   @Override
-   public boolean o(cuq $$0) {
-      return $$0.a(awn.aa);
+   public Set<dua> a() {
+      return this.b;
    }
 
-   public static buv.a s() {
-      return btp.C().a(buw.s, 10.0).a(buw.v, 0.2F);
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected avo v() {
-      return avp.gb;
-   }
-
-   @Override
-   protected avo d(brk $$0) {
-      return avp.gd;
-   }
-
-   @Override
-   protected avo n_() {
-      return avp.gc;
-   }
-
-   @Override
-   protected void b(jd $$0, dtc $$1) {
-      this.a(avp.gf, 0.15F, 1.0F);
-   }
-
-   @Override
-   protected float fa() {
-      return 0.4F;
-   }
-
-   @Override
-   public bqr b(cmx $$0, bqq $$1) {
-      cuq $$2 = $$0.b($$1);
-      if ($$2.a(cut.qy) && !this.o_()) {
-         $$0.a(avp.ge, 1.0F, 1.0F);
-         cuq $$3 = cus.a($$2, $$0, cut.qE.w());
-         $$0.a($$1, $$3);
-         return bqr.a(this.dO().B);
-      } else {
-         return super.b($$0, $$1);
-      }
-   }
-
-   @Nullable
-   public cfl b(aqu $$0, bsl $$1) {
-      return bsx.w.a((dcw)$$0);
-   }
-
-   @Override
-   public bsu e(bua $$0) {
-      return this.o_() ? cc : super.e($$0);
+   public int c() {
+      return this.d;
    }
 }

@@ -1,22 +1,20 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import java.util.Objects;
+import java.util.function.Consumer;
 
-public interface etb<T extends etb<T>> {
-   T b(etf.a var1);
+@FunctionalInterface
+interface etb {
+   etb b = ($$0, $$1) -> false;
+   etb c = ($$0, $$1) -> true;
 
-   default <E> T a(Iterable<E> $$0, Function<E, etf.a> $$1) {
-      T $$2 = this.c();
+   boolean expand(est var1, Consumer<eti> var2);
 
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   default etb and(etb $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   default <E> T a(E[] $$0, Function<E, etf.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   default etb or(etb $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
-
-   T c();
 }

@@ -1,61 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dgl extends dms {
-   public static final MapCodec<dgl> a = b(dgl::new);
-   public static final dtw b = dts.R;
+public abstract class dgl extends dgv {
+   protected static final int a = 2;
+   protected static final eyx b = dgv.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
 
-   @Override
-   public MapCodec<dgl> a() {
-      return a;
-   }
-
-   public dgl(dtb.d $$0) {
+   protected dgl(dtz.d $$0) {
       super($$0);
-      this.k(this.o().a(b, ji.c));
-   }
-
-   @Nullable
-   @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dqm($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return !$$0.B ? a($$2, dqj.J, ($$0x, $$1x, $$2x, $$3) -> dyi.c.a($$0x, $$3.gm(), $$3.gn())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      return super.a($$0).a(b, $$0.g());
    }
 
    @Override
-   public int a(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected abstract MapCodec<? extends dgl> a();
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      super.a($$0);
-      $$0.a(b);
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      return $$1 == jj.a && !this.a($$0, $$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      return a($$1, $$2.e(), jj.b);
    }
 }

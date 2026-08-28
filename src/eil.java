@@ -1,30 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eil implements azk {
-   a(ji.b, 1, "ceiling"),
-   b(ji.a, -1, "floor");
+public class eil<P extends eik> {
+   public static final eil<eij> a = a("straight_trunk_placer", eij.a);
+   public static final eil<eig> b = a("forking_trunk_placer", eig.a);
+   public static final eil<eih> c = a("giant_trunk_placer", eih.a);
+   public static final eil<eii> d = a("mega_jungle_trunk_placer", eii.b);
+   public static final eil<eie> e = a("dark_oak_trunk_placer", eie.a);
+   public static final eil<eif> f = a("fancy_trunk_placer", eif.a);
+   public static final eil<eic> g = a("bending_trunk_placer", eic.a);
+   public static final eil<eim> h = a("upwards_branching_trunk_placer", eim.a);
+   public static final eil<eid> i = a("cherry_trunk_placer", eid.a);
+   private final MapCodec<P> j;
 
-   public static final Codec<eil> c = azk.a(eil::values);
-   private final ji d;
-   private final int e;
-   private final String f;
-
-   private eil(final ji $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private static <P extends eik> eil<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.V, $$0, new eil<>($$1));
    }
 
-   public ji a() {
-      return this.d;
+   private eil(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String c() {
-      return this.f;
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

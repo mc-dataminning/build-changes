@@ -1,47 +1,75 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dpr extends dja {
-   public static final MapCodec<dpr> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter(dja::b), u()).apply($$0, dpr::new));
+public class dpr extends dgh {
+   public static final MapCodec<dpr> a = b(dpr::new);
+   public static final dvd<dtn> b = duq.bz;
+   public static final duu c = dkr.aE;
+   public static final dur d = duq.bA;
 
    @Override
    public MapCodec<dpr> a() {
-      return e;
+      return a;
    }
 
-   public dpr(jm<brx> $$0, float $$1, dtb.d $$2) {
-      this(a($$0, $$1), $$2);
-   }
-
-   public dpr(cxw $$0, dtb.d $$1) {
-      super($$0, $$1);
+   public dpr(dtz.d $$0) {
+      super($$0);
+      this.l(this.E.b().b(c, jj.c).b(b, dtn.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dga.dV) || $$0.a(dga.dW) || $$0.a(dga.dX);
-   }
+   public brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
+      if (!$$0.f() && $$1.c(b) == dtn.b) {
+         if ($$2 instanceof arg $$7) {
+            if (!($$7.c_($$3) instanceof dti $$8)) {
+               return brk.f;
+            }
 
-   @Override
-   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
-      exv $$4 = this.a($$0, $$1, $$2, exh.a());
-      exc $$5 = $$4.a().f();
-      double $$6 = (double)$$2.u() + $$5.c;
-      double $$7 = (double)$$2.w() + $$5.e;
-
-      for (int $$8 = 0; $$8 < 3; $$8++) {
-         if ($$3.h()) {
-            $$1.a(lm.ae, $$6 + $$3.j() / 5.0, (double)$$2.v() + (0.5 - $$3.j()), $$7 + $$3.j() / 5.0, 0.0, 0.0, 0.0);
+            dti.b.a($$7, $$3, $$1, $$8.f(), $$8.b(), $$8.c(), $$4, $$0);
          }
+
+         return brk.b;
+      } else {
+         return brk.f;
       }
    }
 
+   @Nullable
    @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
-      if (!$$1.B && $$1.al() != bqo.a) {
-         if ($$3 instanceof btn $$4 && !$$4.b($$1.aj().q())) {
-            $$4.b(new brz(bsb.t, 40));
-         }
-      }
+   public dre a(je $$0, dua $$1) {
+      return new dti($$0, $$1);
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(c, b, d);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
+      return $$0 instanceof arg $$3
+         ? a($$2, drg.R, ($$1x, $$2x, $$3x, $$4) -> dti.b.a($$3, $$2x, $$3x, $$4.f(), $$4.b(), $$4.c()))
+         : a($$2, drg.R, ($$0x, $$1x, $$2x, $$3x) -> dti.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
+   }
+
+   @Override
+   public dua a(cyw $$0) {
+      return this.o().b(c, $$0.g().g());
+   }
+
+   @Override
+   public dua a(dua $$0, dnj $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   public dnc a_(dua $$0) {
+      return dnc.c;
    }
 }

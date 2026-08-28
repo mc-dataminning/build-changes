@@ -1,27 +1,61 @@
-public class gmm extends glp<ckm, fxi<ckm>> {
-   private static final akr a = akr.b("textures/entity/slime/slime.png");
+public class gmm extends gmr<cir, gsr> {
+   private static final alb a = alb.b("textures/entity/end_crystal/end_crystal.png");
+   private static final ghe b = ghe.f(a);
+   private final fwx h;
 
-   public gmm(gkj.a $$0) {
-      super($$0, new fxi<>($$0.a(fyj.bt)), 0.25F);
-      this.a(new gpa<>(this, $$0.f()));
+   public gmm(gms.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.h = new fwx($$0.a(gaa.aw));
    }
 
-   public void a(ckm $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      this.e = 0.25F * (float)$$0.gl();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(gsr $$0, fcu $$1, ggv $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(0.0F, -0.5F, 0.0F);
+      this.h.a($$0);
+      this.h.a($$1, $$2.getBuffer(b), $$3, gwb.d);
+      $$1.b();
+      eye $$4 = $$0.b;
+      if ($$4 != null) {
+         float $$5 = a($$0.p);
+         float $$6 = (float)$$4.d;
+         float $$7 = (float)$$4.e;
+         float $$8 = (float)$$4.f;
+         $$1.a($$4);
+         gmn.a(-$$6, -$$7 + $$5, -$$8, $$0.p, $$1, $$2, $$3);
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   protected void a(ckm $$0, fbi $$1, float $$2) {
-      float $$3 = 0.999F;
-      $$1.b(0.999F, 0.999F, 0.999F);
-      $$1.a(0.0F, 0.001F, 0.0F);
-      float $$4 = (float)$$0.gl();
-      float $$5 = ayo.i($$2, $$0.cc, $$0.cb) / ($$4 * 0.5F + 1.0F);
-      float $$6 = 1.0F / ($$5 + 1.0F);
-      $$1.b($$6 * $$4, 1.0F / $$6 * $$4, $$6 * $$4);
+   public static float a(float $$0) {
+      float $$1 = azc.a($$0 * 0.2F) / 2.0F + 0.5F;
+      $$1 = ($$1 * $$1 + $$1) * 0.4F;
+      return $$1 - 1.4F;
    }
 
-   public akr a(ckm $$0) {
+   public alb a(gsr $$0) {
       return a;
+   }
+
+   public gsr a() {
+      return new gsr();
+   }
+
+   public void a(cir $$0, gsr $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.p = (float)$$0.b + $$2;
+      $$1.a = $$0.o();
+      je $$3 = $$0.m();
+      if ($$3 != null) {
+         $$1.b = eye.b($$3).d($$0.o($$2));
+      } else {
+         $$1.b = null;
+      }
+   }
+
+   public boolean a(cir $$0, gkh $$1, double $$2, double $$3, double $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4) || $$0.m() != null;
    }
 }

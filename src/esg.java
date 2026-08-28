@@ -1,7 +1,12 @@
-import java.util.function.Consumer;
+public class esg extends RuntimeException {
+   private final xd a;
 
-public interface esg {
-   int a(float var1);
+   public esg(xd $$0) {
+      super($$0.getString());
+      this.a = $$0;
+   }
 
-   void a(Consumer<cuq> var1, err var2);
+   public xd a() {
+      return this.a;
+   }
 }

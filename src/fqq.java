@@ -1,39 +1,48 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+public class fqq extends fqi<cqx> {
+   private static final alb G = alb.b("container/brewing_stand/fuel_length");
+   private static final alb H = alb.b("container/brewing_stand/brew_progress");
+   private static final alb I = alb.b("container/brewing_stand/bubbles");
+   private static final alb J = alb.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-public class fqq implements fqo {
-   private static final int c = 5;
-   private static final int d = 12;
-   public static final int a = 3;
-   public static final int b = 5;
-   private final fms e;
-
-   public fqq(fms $$0) {
-      this.e = $$0;
+   public fqq(cqx $$0, cno $$1, xd $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
-      if ($$6.x + $$4 > $$0 - 5) {
-         $$6.x = Math.max($$2 - 12 - $$4, 9);
-      }
-
-      $$6.y += 3;
-      int $$7 = $$5 + 3 + 3;
-      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
-      int $$9 = $$1 - 5;
-      if ($$8 + $$7 <= $$9) {
-         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
-      } else {
-         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
-      }
-
-      return $$6;
+   protected void aT_() {
+      super.aT_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
    }
 
-   private static int a(int $$0, int $$1, int $$2) {
-      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
-      return Math.round(ayo.i((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fjn $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(ghe::C, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azc.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(ghe::C, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(ghe::C, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(ghe::C, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

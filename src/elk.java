@@ -1,53 +1,25 @@
-public class elk {
-   public static class a extends ejv {
-      public a(jd $$0) {
-         super(eki.aa, 0, new ejj($$0));
-      }
+import com.mojang.serialization.Codec;
 
-      public a(ub $$0) {
-         super(eki.aa, $$0);
-      }
+public enum elk implements azy {
+   a("linear"),
+   b("triangular");
 
-      @Override
-      protected void a(ekh $$0, ub $$1) {
-      }
+   public static final Codec<elk> c = azy.a(elk::values);
+   private final String d;
 
-      @Override
-      public void a(dds $$0, ddq $$1, duz $$2, ayw $$3, ejj $$4, dcd $$5, jd $$6) {
-         int $$7 = $$0.a(dyy.a.c, this.f.h(), this.f.j());
-         jd.a $$8 = new jd.a(this.f.h(), $$7, this.f.j());
+   private elk(final String $$0) {
+      this.d = $$0;
+   }
 
-         while ($$8.v() > $$0.I_()) {
-            dtc $$9 = $$0.a_($$8);
-            dtc $$10 = $$0.a_($$8.e());
-            if ($$10 == dga.aV.o() || $$10 == dga.b.o() || $$10 == dga.g.o() || $$10 == dga.c.o() || $$10 == dga.e.o()) {
-               dtc $$11 = !$$9.i() && !this.b($$9) ? $$9 : dga.I.o();
+   @Override
+   public String c() {
+      return this.d;
+   }
 
-               for (ji $$12 : ji.values()) {
-                  jd $$13 = $$8.a($$12);
-                  dtc $$14 = $$0.a_($$13);
-                  if ($$14.i() || this.b($$14)) {
-                     jd $$15 = $$13.e();
-                     dtc $$16 = $$0.a_($$15);
-                     if (($$16.i() || this.b($$16)) && $$12 != ji.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
-
-               this.f = new ejj($$8);
-               this.a($$0, $$4, $$3, $$8, ern.G, null);
-               return;
-            }
-
-            $$8.e(0, -1, 0);
-         }
-      }
-
-      private boolean b(dtc $$0) {
-         return $$0 == dga.G.o() || $$0 == dga.H.o();
-      }
+   public int a(azk $$0, int $$1) {
+      return switch (this) {
+         case a -> $$0.a($$1);
+         case b -> ($$0.a($$1) + $$0.a($$1)) / 2;
+      };
    }
 }

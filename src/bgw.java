@@ -1,12 +1,23 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bgw {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:tube_coral_fan", "minecraft:tube_coral_wall_fan")
-      .put("minecraft:brain_coral_fan", "minecraft:brain_coral_wall_fan")
-      .put("minecraft:bubble_coral_fan", "minecraft:bubble_coral_wall_fan")
-      .put("minecraft:fire_coral_fan", "minecraft:fire_coral_wall_fan")
-      .put("minecraft:horn_coral_fan", "minecraft:horn_coral_wall_fan")
-      .build();
+public class bgw extends DataFix {
+   public bgw(Schema $$0) {
+      super($$0, false);
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsProgrammerArtFix",
+         this.getInputSchema().getType(bhk.e),
+         $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("resourcePacks", this::a).update("incompatibleResourcePacks", this::a))
+      );
+   }
+
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.asString().result().map($$1 -> $$0.createString($$1.replace("\"programer_art\"", "\"programmer_art\""))).orElse($$0);
+   }
 }

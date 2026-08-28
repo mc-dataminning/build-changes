@@ -1,47 +1,23 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.DynamicOps;
-import java.util.Locale;
+import java.util.Map;
 
-public abstract class bde extends DataFix {
-   protected final String a;
+public class bde extends bhw {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:salmon_mob", "minecraft:salmon")
+      .put("minecraft:cod_mob", "minecraft:cod")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
+      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
+      .build();
 
-   public bde(String $$0, Schema $$1, boolean $$2) {
-      super($$1, $$2);
-      this.a = $$0;
+   public bde(Schema $$0, boolean $$1) {
+      super("EntityCodSalmonFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bgr.B);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bgr.B);
-      return this.fixTypeEverywhere(
-         this.a,
-         $$0,
-         $$1,
-         $$2 -> $$3 -> {
-               String $$4 = (String)$$3.getFirst();
-               Type<?> $$5 = (Type<?>)$$0.types().get($$4);
-               Pair<String, Typed<?>> $$6 = this.a($$4, this.a($$3.getSecond(), $$2, $$5));
-               Type<?> $$7 = (Type<?>)$$1.types().get($$6.getFirst());
-               if (!$$7.equals(((Typed)$$6.getSecond()).getType(), true, true)) {
-                  throw new IllegalStateException(
-                     String.format(Locale.ROOT, "Dynamic type check failed: %s not equal to %s", $$7, ((Typed)$$6.getSecond()).getType())
-                  );
-               } else {
-                  return Pair.of((String)$$6.getFirst(), ((Typed)$$6.getSecond()).getValue());
-               }
-            }
-      );
+   @Override
+   protected String a(String $$0) {
+      return a.getOrDefault($$0, $$0);
    }
-
-   private <A> Typed<A> a(Object $$0, DynamicOps<?> $$1, Type<A> $$2) {
-      return new Typed($$2, $$1, $$0);
-   }
-
-   protected abstract Pair<String, Typed<?>> a(String var1, Typed<?> var2);
 }

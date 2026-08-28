@@ -1,20 +1,21 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Optional;
 
-public enum bnj {
-   a("client"),
-   b("server");
+public class bnj implements bne<StringReader, alb> {
+   public static final bne<StringReader, alb> a = new bnj();
 
-   private final String c;
-
-   private bnj(final String $$0) {
-      this.c = $$0;
+   private bnj() {
    }
 
-   public static bnj a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
-   }
+   @Override
+   public Optional<alb> a(bnd<StringReader> $$0) {
+      $$0.b().skipWhitespace();
 
-   public String a() {
-      return this.c;
+      try {
+         return Optional.of(alb.b($$0.b()));
+      } catch (CommandSyntaxException var3) {
+         return Optional.empty();
+      }
    }
 }

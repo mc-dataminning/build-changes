@@ -1,90 +1,122 @@
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface cfg {
-   boolean t();
+public class cfg implements dde {
+   private static final Logger a = LogUtils.getLogger();
+   private boolean b;
+   private cfg.a c;
+   private int d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
 
-   void x(boolean var1);
-
-   void n(cuq var1);
-
-   void h(ub var1);
-
-   cuq b();
-
-   avo x();
-
-   @Deprecated
-   static void a(btp $$0, cuq $$1) {
-      $$1.b(kq.g, $$0.aj());
-      cxh.a(kq.N, $$1, $$1x -> {
-         if ($$0.fZ()) {
-            $$1x.a("NoAI", $$0.fZ());
-         }
-
-         if ($$0.aX()) {
-            $$1x.a("Silent", $$0.aX());
-         }
-
-         if ($$0.aY()) {
-            $$1x.a("NoGravity", $$0.aY());
-         }
-
-         if ($$0.cg()) {
-            $$1x.a("Glowing", $$0.cg());
-         }
-
-         if ($$0.cv()) {
-            $$1x.a("Invulnerable", $$0.cv());
-         }
-
-         $$1x.a("Health", $$0.ew());
-      });
+   public cfg() {
+      this.c = cfg.a.c;
    }
 
-   @Deprecated
-   static void a(btp $$0, ub $$1) {
-      if ($$1.e("NoAI")) {
-         $$0.u($$1.q("NoAI"));
-      }
-
-      if ($$1.e("Silent")) {
-         $$0.e($$1.q("Silent"));
-      }
-
-      if ($$1.e("NoGravity")) {
-         $$0.f($$1.q("NoGravity"));
-      }
-
-      if ($$1.e("Glowing")) {
-         $$0.j($$1.q("Glowing"));
-      }
-
-      if ($$1.e("Invulnerable")) {
-         $$0.n($$1.q("Invulnerable"));
-      }
-
-      if ($$1.b("Health", 99)) {
-         $$0.v($$1.j("Health"));
-      }
-   }
-
-   static <T extends btn & cfg> Optional<bqr> a(cmx $$0, bqq $$1, T $$2) {
-      cuq $$3 = $$0.b($$1);
-      if ($$3.g() == cut.qz && $$2.bE()) {
-         $$2.a($$2.x(), 1.0F, 1.0F);
-         cuq $$4 = $$2.b();
-         $$2.n($$4);
-         cuq $$5 = cus.a($$3, $$0, $$4, false);
-         $$0.a($$1, $$5);
-         dcw $$6 = $$2.dO();
-         if (!$$6.B) {
-            an.k.a((aqv)$$0, $$4);
+   @Override
+   public int a(arg $$0, boolean $$1, boolean $$2) {
+      if (!$$0.S() && $$1) {
+         float $$3 = $$0.f(0.0F);
+         if ((double)$$3 == 0.5) {
+            this.c = $$0.z.a(10) == 0 ? cfg.a.b : cfg.a.c;
          }
 
-         $$2.aq();
-         return Optional.of(bqr.a($$6.B));
+         if (this.c == cfg.a.c) {
+            return 0;
+         } else {
+            if (!this.b) {
+               if (!this.a($$0)) {
+                  return 0;
+               }
+
+               this.b = true;
+            }
+
+            if (this.e > 0) {
+               this.e--;
+               return 0;
+            } else {
+               this.e = 2;
+               if (this.d > 0) {
+                  this.b($$0);
+                  this.d--;
+               } else {
+                  this.c = cfg.a.c;
+               }
+
+               return 1;
+            }
+         }
       } else {
-         return Optional.empty();
+         this.c = cfg.a.c;
+         this.b = false;
+         return 0;
       }
+   }
+
+   private boolean a(arg $$0) {
+      for (cnp $$1 : $$0.x()) {
+         if (!$$1.P_()) {
+            je $$2 = $$1.ds();
+            if ($$0.c($$2) && !$$0.t($$2).a(awr.af)) {
+               for (int $$3 = 0; $$3 < 10; $$3++) {
+                  float $$4 = $$0.z.i() * (float) (Math.PI * 2);
+                  this.f = $$2.u() + azc.d(azc.b($$4) * 32.0F);
+                  this.g = $$2.v();
+                  this.h = $$2.w() + azc.d(azc.a($$4) * 32.0F);
+                  if (this.a($$0, new je(this.f, this.g, this.h)) != null) {
+                     this.e = 0;
+                     this.d = 20;
+                     break;
+                  }
+               }
+
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   private void b(arg $$0) {
+      eye $$1 = this.a($$0, new je(this.f, this.g, this.h));
+      if ($$1 != null) {
+         clo $$2;
+         try {
+            $$2 = new clo($$0);
+            $$2.a($$0, $$0.d_($$2.ds()), btp.h, null);
+         } catch (Exception var5) {
+            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
+            return;
+         }
+
+         $$2.b($$1.d, $$1.e, $$1.f, $$0.z.i() * 360.0F, 0.0F);
+         $$0.a_($$2);
+      }
+   }
+
+   @Nullable
+   private eye a(arg $$0, je $$1) {
+      for (int $$2 = 0; $$2 < 10; $$2++) {
+         int $$3 = $$1.u() + $$0.z.a(16) - 8;
+         int $$4 = $$1.w() + $$0.z.a(16) - 8;
+         int $$5 = $$0.a(dzw.a.b, $$3, $$4);
+         je $$6 = new je($$3, $$5, $$4);
+         if ($$0.c($$6) && ckv.b(btq.bu, $$0, btp.h, $$6, $$0.z)) {
+            return eye.c($$6);
+         }
+      }
+
+      return null;
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

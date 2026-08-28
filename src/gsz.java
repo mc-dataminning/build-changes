@@ -1,77 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gsz implements gsm {
-   private final int a;
-   private final List<bpd.b<gsm>> b;
-   private final gsm c;
+public class gsz extends gsu implements dcu {
+   public je a = je.c;
+   public je b = je.c;
+   public dua c = dgx.I.o();
+   @Nullable
+   public jn<det> d;
+   public dcu e = ddg.a;
 
-   public gsz(List<bpd.b<gsm>> $$0) {
-      this.b = $$0;
-      this.a = bpe.a($$0);
-      this.c = $$0.get(0).b();
+   @Override
+   public float a(jj $$0, boolean $$1) {
+      return this.e.a($$0, $$1);
    }
 
    @Override
-   public List<gfw> a(@Nullable dtc $$0, @Nullable ji $$1, ayw $$2) {
-      return bpe.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public epq x_() {
+      return this.e.x_();
    }
 
    @Override
-   public boolean a() {
-      return this.c.a();
+   public int a(je $$0, ddc $$1) {
+      return this.d == null ? -1 : $$1.getColor(this.d.a(), (double)$$0.u(), (double)$$0.w());
+   }
+
+   @Nullable
+   @Override
+   public dre c_(je $$0) {
+      return null;
    }
 
    @Override
-   public boolean b() {
-      return this.c.b();
+   public dua a_(je $$0) {
+      return $$0.equals(this.b) ? this.c : dgx.a.o();
    }
 
    @Override
-   public boolean c() {
-      return this.c.c();
+   public eqb b_(je $$0) {
+      return this.a_($$0).y();
    }
 
    @Override
-   public boolean d() {
-      return this.c.d();
+   public int H_() {
+      return 1;
    }
 
    @Override
-   public gql e() {
-      return this.c.e();
-   }
-
-   @Override
-   public ggi f() {
-      return this.c.f();
-   }
-
-   @Override
-   public ggg g() {
-      return this.c.g();
-   }
-
-   public static class a {
-      private final List<bpd.b<gsm>> a = Lists.newArrayList();
-
-      public gsz.a a(@Nullable gsm $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bpd.a($$0, $$1));
-         }
-
-         return this;
-      }
-
-      @Nullable
-      public gsm a() {
-         if (this.a.isEmpty()) {
-            return null;
-         } else {
-            return (gsm)(this.a.size() == 1 ? this.a.get(0).b() : new gsz(this.a));
-         }
-      }
+   public int G_() {
+      return this.b.v();
    }
 }

@@ -1,29 +1,38 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ejq extends ejr {
-   private final ejq.a d;
-   private final int e;
-   private final int f;
+public class ejq extends ejz {
+   public static final MapCodec<ejq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
+               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
+               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, ejq::new)
+   );
+   private final int c;
+   private final double d;
+   private final double e;
 
-   protected ejq(ejq.a $$0, int $$1, int $$2, ejr.c $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private ejq(int $$0, double $$1, double $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static ejq a(int $$0, double $$1, double $$2) {
+      return new ejq($$0, $$1, $$2);
    }
 
    @Override
-   public Optional<ejr.b> a(ejr.a $$0) {
-      return a($$0, this.e, this.f) < $$0.b().f() ? Optional.empty() : a($$0, dyy.a.a, $$1 -> this.a($$1, $$0));
+   protected int a(azk $$0, je $$1) {
+      double $$2 = det.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
+      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
    }
 
-   private void a(ekj $$0, ejr.a $$1) {
-      dcd $$2 = $$1.h();
-      $$0.a(this.d.construct($$1.f(), $$2.d(), $$2.e()));
-   }
-
-   @FunctionalInterface
-   protected interface a {
-      ejv construct(dzx var1, int var2, int var3);
+   @Override
+   public ejw<?> b() {
+      return ejw.g;
    }
 }

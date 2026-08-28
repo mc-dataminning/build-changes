@@ -1,29 +1,16 @@
-public class ahf implements zg<agi> {
-   public static final yx<vw, ahf> a = zg.a(ahf::a, ahf::new);
-   private final boolean b;
-
-   public ahf(boolean $$0) {
-      this.b = $$0;
-   }
-
-   private ahf(vw $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-   }
+public record ahf(int b, int c) implements zk<agq> {
+   public static final zb<wa, ahf> a = zb.a(yz.t, ahf::b, yz.g, ahf::e, ahf::new);
 
    @Override
-   public zi<ahf> a() {
-      return agg.bA;
+   public zm<ahf> a() {
+      return ago.bu;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.b;
+   public int e() {
+      return this.c;
    }
 }

@@ -1,28 +1,7 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class gty {
-   private final List<gtx> a;
-   private final boolean b;
+public class gty extends gsu {
    @Nullable
-   private final String c;
-
-   public gty(List<gtx> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public List<gtx> a() {
-      return this.a;
-   }
-
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
-   }
+   public gym a;
+   public cvl b = cvl.k;
 }

@@ -1,4 +1,5 @@
-@FunctionalInterface
+import java.util.concurrent.CompletableFuture;
+
 public interface dxf {
-   void onChunkStatusChange(dcd var1, aql var2);
+   CompletableFuture<Void> a(dcy var1, uz var2);
 }

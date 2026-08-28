@@ -1,38 +1,38 @@
-import com.mojang.serialization.Codec;
-import java.util.function.IntFunction;
+public class btg {
+   public static final btg a = new btg(0.75F, 0.5F, 0.25F);
+   public static final btg b = new btg(0.95F, 0.69F, 0.32F);
+   private final float c;
+   private final float d;
+   private final float e;
 
-public enum btg implements ayr, azk {
-   a(0, "left", "options.mainHand.left"),
-   b(1, "right", "options.mainHand.right");
-
-   public static final Codec<btg> c = azk.a(btg::values);
-   public static final IntFunction<btg> d = axe.a(btg::a, values(), axe.a.a);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private btg(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   private btg(float $$0, float $$1, float $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public btg e() {
-      return this == a ? b : a;
+   public btg.a a(float $$0) {
+      if ($$0 < this.e) {
+         return btg.a.d;
+      } else if ($$0 < this.d) {
+         return btg.a.c;
+      } else {
+         return $$0 < this.c ? btg.a.b : btg.a.a;
+      }
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public btg.a a(cvl $$0) {
+      return !$$0.m() ? btg.a.a : this.a($$0.o(), $$0.p());
    }
 
-   @Override
-   public String b() {
-      return this.g;
+   public btg.a a(int $$0, int $$1) {
+      return this.a((float)($$1 - $$0) / (float)$$1);
    }
 
-   @Override
-   public String c() {
-      return this.f;
+   public static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

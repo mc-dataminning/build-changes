@@ -9,48 +9,48 @@ import javax.annotation.Nullable;
 
 public class hi {
    public static final int a = Integer.MAX_VALUE;
-   public static final BiConsumer<exc, List<? extends bsr>> b = ($$0, $$1) -> {
+   public static final BiConsumer<eye, List<? extends btj>> b = ($$0, $$1) -> {
    };
-   private static final dxn<bsr, ?> c = new dxn<bsr, bsr>() {
-      public bsr a(bsr $$0) {
+   private static final dyl<btj, ?> c = new dyl<btj, btj>() {
+      public btj a(btj $$0) {
          return $$0;
       }
 
       @Override
-      public Class<? extends bsr> a() {
-         return bsr.class;
+      public Class<? extends btj> a() {
+         return btj.class;
       }
    };
    private final int d;
    private final boolean e;
    private final boolean f;
-   private final List<Predicate<bsr>> g;
+   private final List<Predicate<btj>> g;
    private final dh.c h;
-   private final Function<exc, exc> i;
+   private final Function<eye, eye> i;
    @Nullable
-   private final ewx j;
-   private final BiConsumer<exc, List<? extends bsr>> k;
+   private final exz j;
+   private final BiConsumer<eye, List<? extends btj>> k;
    private final boolean l;
    @Nullable
    private final String m;
    @Nullable
    private final UUID n;
-   private final dxn<bsr, ?> o;
+   private final dyl<btj, ?> o;
    private final boolean p;
 
    public hi(
       int $$0,
       boolean $$1,
       boolean $$2,
-      List<Predicate<bsr>> $$3,
+      List<Predicate<btj>> $$3,
       dh.c $$4,
-      Function<exc, exc> $$5,
-      @Nullable ewx $$6,
-      BiConsumer<exc, List<? extends bsr>> $$7,
+      Function<eye, eye> $$5,
+      @Nullable exz $$6,
+      BiConsumer<eye, List<? extends btj>> $$7,
       boolean $$8,
       @Nullable String $$9,
       @Nullable UUID $$10,
-      @Nullable bsx<?> $$11,
+      @Nullable btq<?> $$11,
       boolean $$12
    ) {
       this.d = $$0;
@@ -64,7 +64,7 @@ public class hi {
       this.l = $$8;
       this.m = $$9;
       this.n = $$10;
-      this.o = (dxn<bsr, ?>)($$11 == null ? c : $$11);
+      this.o = (dyl<btj, ?>)($$11 == null ? c : $$11);
       this.p = $$12;
    }
 
@@ -94,9 +94,9 @@ public class hi {
       }
    }
 
-   public bsr a(et $$0) throws CommandSyntaxException {
+   public btj a(et $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<? extends bsr> $$1 = this.b($$0);
+      List<? extends btj> $$1 = this.b($$0);
       if ($$1.isEmpty()) {
          throw fg.d.create();
       } else if ($$1.size() > 1) {
@@ -106,18 +106,18 @@ public class hi {
       }
    }
 
-   public List<? extends bsr> b(et $$0) throws CommandSyntaxException {
+   public List<? extends btj> b(et $$0) throws CommandSyntaxException {
       this.e($$0);
       if (!this.e) {
          return this.d($$0);
       } else if (this.m != null) {
-         aqv $$1 = $$0.l().ah().a(this.m);
+         arh $$1 = $$0.l().ag().a(this.m);
          return $$1 == null ? List.of() : List.of($$1);
       } else if (this.n != null) {
-         for (aqu $$2 : $$0.l().K()) {
-            bsr $$3 = $$2.a(this.n);
+         for (arg $$2 : $$0.l().L()) {
+            btj $$3 = $$2.a(this.n);
             if ($$3 != null) {
-               if ($$3.am().a($$0.w())) {
+               if ($$3.ao().a($$0.w())) {
                   return List.of($$3);
                }
                break;
@@ -126,18 +126,18 @@ public class hi {
 
          return List.of();
       } else {
-         exc $$4 = this.i.apply($$0.d());
-         ewx $$5 = this.a($$4);
+         eye $$4 = this.i.apply($$0.d());
+         exz $$5 = this.a($$4);
          if (this.l) {
-            Predicate<bsr> $$6 = this.a($$4, $$5, null);
+            Predicate<btj> $$6 = this.a($$4, $$5, null);
             return $$0.f() != null && $$6.test($$0.f()) ? List.of($$0.f()) : List.of();
          } else {
-            Predicate<bsr> $$7 = this.a($$4, $$5, $$0.w());
-            List<bsr> $$8 = new ObjectArrayList();
+            Predicate<btj> $$7 = this.a($$4, $$5, $$0.w());
+            List<btj> $$8 = new ObjectArrayList();
             if (this.d()) {
                this.a($$8, $$0.e(), $$5, $$7);
             } else {
-               for (aqu $$9 : $$0.l().K()) {
+               for (arg $$9 : $$0.l().L()) {
                   this.a($$8, $$9, $$5, $$7);
                }
             }
@@ -147,7 +147,7 @@ public class hi {
       }
    }
 
-   private void a(List<bsr> $$0, aqu $$1, @Nullable ewx $$2, Predicate<bsr> $$3) {
+   private void a(List<btj> $$0, arg $$1, @Nullable exz $$2, Predicate<btj> $$3) {
       int $$4 = this.f();
       if ($$0.size() < $$4) {
          if ($$2 != null) {
@@ -162,9 +162,9 @@ public class hi {
       return this.k == b ? this.d : Integer.MAX_VALUE;
    }
 
-   public aqv c(et $$0) throws CommandSyntaxException {
+   public arh c(et $$0) throws CommandSyntaxException {
       this.e($$0);
-      List<aqv> $$1 = this.d($$0);
+      List<arh> $$1 = this.d($$0);
       if ($$1.size() != 1) {
          throw fg.e.create();
       } else {
@@ -172,33 +172,33 @@ public class hi {
       }
    }
 
-   public List<aqv> d(et $$0) throws CommandSyntaxException {
+   public List<arh> d(et $$0) throws CommandSyntaxException {
       this.e($$0);
       if (this.m != null) {
-         aqv $$1 = $$0.l().ah().a(this.m);
+         arh $$1 = $$0.l().ag().a(this.m);
          return $$1 == null ? List.of() : List.of($$1);
       } else if (this.n != null) {
-         aqv $$2 = $$0.l().ah().a(this.n);
+         arh $$2 = $$0.l().ag().a(this.n);
          return $$2 == null ? List.of() : List.of($$2);
       } else {
-         exc $$3 = this.i.apply($$0.d());
-         ewx $$4 = this.a($$3);
-         Predicate<bsr> $$5 = this.a($$3, $$4, null);
+         eye $$3 = this.i.apply($$0.d());
+         exz $$4 = this.a($$3);
+         Predicate<btj> $$5 = this.a($$3, $$4, null);
          if (this.l) {
-            if ($$0.f() instanceof aqv $$6 && $$5.test($$6)) {
+            if ($$0.f() instanceof arh $$6 && $$5.test($$6)) {
                return List.of($$6);
             }
 
             return List.of();
          } else {
             int $$7 = this.f();
-            List<aqv> $$8;
+            List<arh> $$8;
             if (this.d()) {
                $$8 = $$0.e().a($$5, $$7);
             } else {
                $$8 = new ObjectArrayList();
 
-               for (aqv $$10 : $$0.l().ah().t()) {
+               for (arh $$10 : $$0.l().ag().t()) {
                   if ($$5.test($$10)) {
                      $$8.add($$10);
                      if ($$8.size() >= $$7) {
@@ -214,31 +214,31 @@ public class hi {
    }
 
    @Nullable
-   private ewx a(exc $$0) {
+   private exz a(eye $$0) {
       return this.j != null ? this.j.c($$0) : null;
    }
 
-   private Predicate<bsr> a(exc $$0, @Nullable ewx $$1, @Nullable cpl $$2) {
+   private Predicate<btj> a(eye $$0, @Nullable exz $$1, @Nullable cqh $$2) {
       boolean $$3 = $$2 != null;
       boolean $$4 = $$1 != null;
       boolean $$5 = !this.h.c();
       int $$6 = ($$3 ? 1 : 0) + ($$4 ? 1 : 0) + ($$5 ? 1 : 0);
-      List<Predicate<bsr>> $$7;
+      List<Predicate<btj>> $$7;
       if ($$6 == 0) {
          $$7 = this.g;
       } else {
-         List<Predicate<bsr>> $$8 = new ObjectArrayList(this.g.size() + $$6);
+         List<Predicate<btj>> $$8 = new ObjectArrayList(this.g.size() + $$6);
          $$8.addAll(this.g);
          if ($$3) {
-            $$8.add($$1x -> $$1x.am().a($$2));
+            $$8.add($$1x -> $$1x.ao().a($$2));
          }
 
          if ($$4) {
-            $$8.add($$1x -> $$1.c($$1x.cK()));
+            $$8.add($$1x -> $$1.c($$1x.cO()));
          }
 
          if ($$5) {
-            $$8.add($$1x -> this.h.e($$1x.g($$0)));
+            $$8.add($$1x -> this.h.e($$1x.f($$0)));
          }
 
          $$7 = $$8;
@@ -247,7 +247,7 @@ public class hi {
       return ad.a($$7);
    }
 
-   private <T extends bsr> List<T> a(exc $$0, List<T> $$1) {
+   private <T extends btj> List<T> a(eye $$0, List<T> $$1) {
       if ($$1.size() > 1) {
          this.k.accept($$0, $$1);
       }
@@ -255,7 +255,7 @@ public class hi {
       return $$1.subList(0, Math.min(this.d, $$1.size()));
    }
 
-   public static wz a(List<? extends bsr> $$0) {
-      return xc.b($$0, bsr::S_);
+   public static xd a(List<? extends btj> $$0) {
+      return xg.b($$0, btj::Q_);
    }
 }

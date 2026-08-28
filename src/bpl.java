@@ -1,27 +1,29 @@
-public abstract class bpl<R extends Runnable> extends bph<R> {
-   private int b;
+public class bpl implements bpm {
+   public static final bpm a = new bpl();
 
-   public bpl(String $$0) {
-      super($$0);
+   @Override
+   public void a() {
    }
 
    @Override
-   public boolean ay() {
-      return this.bC() || super.ay();
-   }
-
-   protected boolean bC() {
-      return this.b != 0;
+   public void b() {
    }
 
    @Override
-   public void d(R $$0) {
-      this.b++;
+   public void c() {
+   }
 
-      try {
-         super.d($$0);
-      } finally {
-         this.b--;
-      }
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public bny f() {
+      return bnv.a;
+   }
+
+   @Override
+   public void d() {
    }
 }

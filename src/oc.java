@@ -1,32 +1,43 @@
-import java.util.function.UnaryOperator;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import java.util.function.Function;
 
-public class oc {
-   @Deprecated
-   public static akr a(String $$0) {
-      return akr.b("block/" + $$0);
+public class oc<T> {
+   final String a;
+   final Function<T, JsonElement> b;
+
+   public oc(String $$0, Function<T, JsonElement> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static akr b(String $$0) {
-      return akr.b("item/" + $$0);
+   public oc<T>.a a(T $$0) {
+      return new oc.a($$0);
    }
 
-   public static akr a(dfy $$0, String $$1) {
-      akr $$2 = lt.e.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "block/" + $$1x + $$1));
+   @Override
+   public String toString() {
+      return this.a;
    }
 
-   public static akr a(dfy $$0) {
-      akr $$1 = lt.e.b($$0);
-      return $$1.f("block/");
-   }
+   public class a {
+      private final T b;
 
-   public static akr a(cul $$0) {
-      akr $$1 = lt.g.b($$0);
-      return $$1.f("item/");
-   }
+      public a(final T $$1) {
+         this.b = $$1;
+      }
 
-   public static akr a(cul $$0, String $$1) {
-      akr $$2 = lt.g.b($$0);
-      return $$2.a((UnaryOperator<String>)($$1x -> "item/" + $$1x + $$1));
+      public oc<T> a() {
+         return oc.this;
+      }
+
+      public void a(JsonObject $$0) {
+         $$0.add(oc.this.a, oc.this.b.apply(this.b));
+      }
+
+      @Override
+      public String toString() {
+         return oc.this.a + "=" + this.b;
+      }
    }
 }

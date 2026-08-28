@@ -1,46 +1,62 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.List;
 
-public class efl extends efj {
-   public static final MapCodec<efl> d = RecordCodecBuilder.mapCodec(
+public class efl implements efg {
+   public static final Codec<efl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(0, 80).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 80).fieldOf("upper_limit").orElse(1).forGetter($$0x -> $$0x.f),
-               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.g),
-               Codec.intRange(0, 16).fieldOf("middle_size").orElse(1).forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.i),
-               a()
+               lu.e.q().fieldOf("block").flatXmap(efl::a, DataResult::success).orElse((dlv)dgx.fg).forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
+               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
+               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
+               kc.a(lv.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
             )
             .apply($$0, efl::new)
    );
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
+   public final dlv b;
+   public final int c;
+   public final boolean d;
+   public final boolean e;
+   public final boolean f;
+   public final float g;
+   public final jr<dgv> h;
+   private final ObjectArrayList<jj> i;
 
-   public efl(int $$0, int $$1, int $$2, int $$3, int $$4, OptionalInt $$5) {
-      super($$5);
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   private static DataResult<dlv> a(dgv $$0) {
+      return $$0 instanceof dlv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
    }
 
-   @Override
-   protected efk<?> b() {
-      return efk.b;
-   }
-
-   @Override
-   public int a(int $$0, int $$1) {
-      if ($$1 < this.e) {
-         return this.g;
-      } else {
-         return $$1 >= $$0 - this.f ? this.i : this.h;
+   public efl(dlv $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jr<dgv> $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = new ObjectArrayList(6);
+      if ($$3) {
+         this.i.add(jj.b);
       }
+
+      if ($$2) {
+         this.i.add(jj.a);
+      }
+
+      if ($$4) {
+         jj.c.a.forEach(this.i::add);
+      }
+   }
+
+   public List<jj> a(azk $$0, jj $$1) {
+      return ad.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   }
+
+   public List<jj> a(azk $$0) {
+      return ad.a(this.i, $$0);
    }
 }

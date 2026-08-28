@@ -1,286 +1,156 @@
 import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fox extends fot<cpy> {
-   private static final akr E = akr.b("textures/gui/container/beacon.png");
-   static final akr F = akr.b("container/beacon/button_disabled");
-   static final akr G = akr.b("container/beacon/button_selected");
-   static final akr H = akr.b("container/beacon/button_highlighted");
-   static final akr I = akr.b("container/beacon/button");
-   static final akr J = akr.b("container/beacon/confirm");
-   static final akr K = akr.b("container/beacon/cancel");
-   private static final wz L = wz.c("block.minecraft.beacon.primary");
-   private static final wz M = wz.c("block.minecraft.beacon.secondary");
-   private final List<fox.a> N = Lists.newArrayList();
+public class fox extends fpt {
+   private static final alb a = alb.b("icon/draft_report");
+   private int b;
+   private final xd c;
+   private final boolean d;
+   private xd s;
+   private final List<fka> u = Lists.newArrayList();
    @Nullable
-   jm<brx> O;
-   @Nullable
-   jm<brx> P;
+   private fka v;
 
-   public fox(final cpy $$0, cmw $$1, wz $$2) {
-      super($$0, $$1, $$2);
-      this.c = 230;
-      this.r = 219;
-      $$0.a(new cqh() {
-         @Override
-         public void a(cpu $$0x, int $$1, cuq $$2) {
-         }
-
-         @Override
-         public void a(cpu $$0x, int $$1, int $$2) {
-            fox.this.O = $$0.m();
-            fox.this.P = $$0.n();
-         }
-      });
-   }
-
-   private <T extends fik & fox.a> void a(T $$0) {
-      this.c($$0);
-      this.N.add($$0);
+   public fox(@Nullable xd $$0, boolean $$1) {
+      super(xd.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
    protected void aT_() {
-      super.aT_();
-      this.N.clear();
-      this.a(new fox.c(this.A + 164, this.B + 107));
-      this.a(new fox.b(this.A + 190, this.B + 107));
-
-      for (int $$0 = 0; $$0 <= 2; $$0++) {
-         int $$1 = dqc.a.get($$0).size();
-         int $$2 = $$1 * 22 + ($$1 - 1) * 2;
-
-         for (int $$3 = 0; $$3 < $$1; $$3++) {
-            jm<brx> $$4 = dqc.a.get($$0).get($$3);
-            fox.d $$5 = new fox.d(this.A + 76 + $$3 * 24 - $$2 / 2, this.B + 22 + $$0 * 25, $$4, true, $$0);
-            $$5.j = false;
-            this.a($$5);
-         }
-      }
-
-      int $$6 = 3;
-      int $$7 = dqc.a.get(3).size() + 1;
-      int $$8 = $$7 * 22 + ($$7 - 1) * 2;
-
-      for (int $$9 = 0; $$9 < $$7 - 1; $$9++) {
-         jm<brx> $$10 = dqc.a.get(3).get($$9);
-         fox.d $$11 = new fox.d(this.A + 167 + $$9 * 24 - $$8 / 2, this.B + 47, $$10, false, 3);
-         $$11.j = false;
-         this.a($$11);
-      }
-
-      jm<brx> $$12 = dqc.a.get(0).get(0);
-      fox.d $$13 = new fox.g(this.A + 167 + ($$7 - 1) * 24 - $$8 / 2, this.B + 47, $$12);
-      $$13.k = false;
-      this.a($$13);
+      this.b = 0;
+      this.u.clear();
+      xd $$0 = this.d ? xd.c("deathScreen.spectate") : xd.c("deathScreen.respawn");
+      this.u.add(this.c(fka.a($$0, $$0x -> {
+         this.m.t.ga();
+         $$0x.j = false;
+      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
+      this.v = this.c(
+         fka.a(xd.c("deathScreen.titleScreen"), $$0x -> this.m.ba().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
+      );
+      this.u.add(this.v);
+      this.c(false);
+      this.s = xd.a("deathScreen.score.value", xd.b(Integer.toString(this.m.t.fW())).a(n.o));
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E();
+   public boolean aJ_() {
+      return false;
    }
 
-   void E() {
-      int $$0 = this.x.l();
-      this.N.forEach($$1 -> $$1.a($$0));
-   }
-
-   @Override
-   protected void b(fhz $$0, int $$1, int $$2) {
-      $$0.a(this.o, L, 62, 10, 14737632);
-      $$0.a(this.o, M, 169, 10, 14737632);
-   }
-
-   @Override
-   protected void a(fhz $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.r) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.r);
-      $$0.c().a();
-      $$0.c().a(0.0F, 0.0F, 100.0F);
-      $$0.a(new cuq(cut.oK), $$4 + 20, $$5 + 109);
-      $$0.a(new cuq(cut.oA), $$4 + 41, $$5 + 109);
-      $$0.a(new cuq(cut.oz), $$4 + 41 + 22, $$5 + 109);
-      $$0.a(new cuq(cut.oJ), $$4 + 42 + 44, $$5 + 109);
-      $$0.a(new cuq(cut.oF), $$4 + 42 + 66, $$5 + 109);
-      $$0.c().b();
-   }
-
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   interface a {
-      void a(int var1);
-   }
-
-   class b extends fox.f {
-      public b(final int $$0, final int $$1) {
-         super($$0, $$1, fox.K, wy.e);
-      }
-
-      @Override
-      public void b() {
-         fox.this.l.s.s();
-      }
-
-      @Override
-      public void a(int $$0) {
-      }
-   }
-
-   class c extends fox.f {
-      public c(final int $$0, final int $$1) {
-         super($$0, $$1, fox.J, wy.d);
-      }
-
-      @Override
-      public void b() {
-         fox.this.l.L().b(new ahu(Optional.ofNullable(fox.this.O), Optional.ofNullable(fox.this.P)));
-         fox.this.l.s.s();
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.j = fox.this.x.o() && fox.this.O != null;
-      }
-   }
-
-   class d extends fox.e {
-      private final boolean c;
-      protected final int a;
-      private jm<brx> d;
-      private gql f;
-
-      public d(final int $$0, final int $$1, final jm<brx> $$2, final boolean $$3, final int $$4) {
-         super($$0, $$1);
-         this.c = $$3;
-         this.a = $$4;
-         this.a($$2);
-      }
-
-      protected void a(jm<brx> $$0) {
-         this.d = $$0;
-         this.f = fgo.Q().aE().a($$0);
-         this.a(fjx.a(this.b($$0), null));
-      }
-
-      protected xn b(jm<brx> $$0) {
-         return wz.c($$0.a().d());
-      }
-
-      @Override
-      public void b() {
-         if (!this.a()) {
-            if (this.c) {
-               fox.this.O = this.d;
+   private void m() {
+      if (this.d) {
+         this.D();
+      } else {
+         foq $$0 = new fox.a($$0x -> {
+            if ($$0x) {
+               this.D();
             } else {
-               fox.this.P = this.d;
+               this.m.t.ga();
+               this.m.a(null);
             }
-
-            fox.this.E();
-         }
-      }
-
-      @Override
-      protected void a(fhz $$0) {
-         $$0.a(this.D() + 2, this.E() + 2, 0, 18, 18, this.f);
-      }
-
-      @Override
-      public void a(int $$0) {
-         this.j = this.a < $$0;
-         this.b(this.d.equals(this.c ? fox.this.O : fox.this.P));
-      }
-
-      @Override
-      protected xn aQ_() {
-         return this.b(this.d);
+         }, xd.c("deathScreen.quit.confirm"), xc.a, xd.c("deathScreen.titleScreen"), xd.c("deathScreen.respawn"));
+         this.m.a($$0);
+         $$0.b(20);
       }
    }
 
-   abstract static class e extends fid implements fox.a {
-      private boolean a;
-
-      protected e(int $$0, int $$1) {
-         super($$0, $$1, 22, 22, wy.a);
+   private void D() {
+      if (this.m.s != null) {
+         this.m.s.Z();
       }
 
-      protected e(int $$0, int $$1, wz $$2) {
-         super($$0, $$1, 22, 22, $$2);
+      this.m.b(new fpe(xd.c("menu.savingLevel")));
+      this.m.a(new fpv());
+   }
+
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
       }
 
-      @Override
-      public void b(fhz $$0, int $$1, int $$2, float $$3) {
-         akr $$4;
-         if (!this.j) {
-            $$4 = fox.F;
-         } else if (this.a) {
-            $$4 = fox.G;
-         } else if (this.B()) {
-            $$4 = fox.H;
-         } else {
-            $$4 = fox.I;
-         }
-
-         $$0.a($$4, this.D(), this.E(), this.g, this.h);
-         this.a($$0);
+      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         ya $$4 = this.a($$1);
+         $$0.a(this.p, $$4, $$1, $$2);
       }
 
-      protected abstract void a(fhz var1);
-
-      public boolean a() {
-         return this.a;
-      }
-
-      public void b(boolean $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(fmi $$0) {
-         this.c($$0);
+      if (this.v != null && this.m.ba().c()) {
+         $$0.a(ghe::C, a, this.v.D() + this.v.y() - 17, this.v.E() + 3, 15, 15);
       }
    }
 
-   abstract static class f extends fox.e {
-      private final akr a;
+   @Override
+   public void b(fjn $$0, int $$1, int $$2, float $$3) {
+      a($$0, this.n, this.o);
+   }
 
-      protected f(int $$0, int $$1, akr $$2, wz $$3) {
-         super($$0, $$1, $$3);
-         this.a = $$2;
-      }
+   static void a(fjn $$0, int $$1, int $$2) {
+      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   }
 
-      @Override
-      protected void a(fhz $$0) {
-         $$0.a(this.a, this.D() + 2, this.E() + 2, 18, 18);
+   @Nullable
+   private ya a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.m.h.a(this.c);
+         int $$2 = this.n / 2 - $$1 / 2;
+         int $$3 = this.n / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
       }
    }
 
-   class g extends fox.d {
-      public g(final int $$0, final int $$1, final jm<brx> $$2) {
-         super($$0, $$1, $$2, false, 3);
-      }
-
-      @Override
-      protected xn b(jm<brx> $$0) {
-         return wz.c($$0.a().d()).f(" II");
-      }
-
-      @Override
-      public void a(int $$0) {
-         if (fox.this.O != null) {
-            this.k = true;
-            this.a(fox.this.O);
-            super.a($$0);
-         } else {
-            this.k = false;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         ya $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.h() != null && $$3.h().a() == xb.a.a) {
+            this.a($$3);
+            return false;
          }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
+   }
+
+   private void c(boolean $$0) {
+      for (fka $$1 : this.u) {
+         $$1.j = $$0;
+      }
+   }
+
+   public static class a extends foq {
+      public a(BooleanConsumer $$0, xd $$1, xd $$2, xd $$3, xd $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      public void b(fjn $$0, int $$1, int $$2, float $$3) {
+         fox.a($$0, this.n, this.o);
       }
    }
 }

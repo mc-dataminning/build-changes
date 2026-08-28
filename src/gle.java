@@ -1,23 +1,37 @@
-public class gle extends glp<cfq, fvz<cfq>> {
-   private static final akr a = akr.b("textures/entity/iron_golem/iron_golem.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gle(gkj.a $$0) {
-      super($$0, new fvz<>($$0.a(fyj.aw)), 0.7F);
-      this.a(new gom(this));
-      this.a(new gon(this, $$0.c()));
+public class gle implements gkq.a {
+   private static final int a = 60;
+   private final Set<kg> b = Sets.newHashSet();
+
+   gle() {
    }
 
-   public akr a(cfq $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   protected void a(cfq $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if (!((double)$$0.aU.a() < 0.01)) {
-         float $$6 = 13.0F;
-         float $$7 = $$0.aU.c($$4) + 6.0F;
-         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$8));
-      }
+   public void a(kg $$0) {
+      this.b.add($$0);
+   }
+
+   public void b(kg $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
+      je $$5 = je.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fcu $$0, ggv $$1, kg $$2) {
+      gkq.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

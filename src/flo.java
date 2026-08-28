@@ -1,34 +1,55 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public interface flo {
-   MapCodec<flo> b = flp.f.dispatchMap(flo::a, flp::a);
+public class flo {
+   @Nullable
+   private fll a;
+   private Duration b = Duration.ZERO;
+   private long c;
+   private boolean d;
 
-   flp a();
+   public void a(Duration $$0) {
+      this.b = $$0;
+   }
 
-   Either<flo.b, flo.c> b();
+   public void a(@Nullable fll $$0) {
+      this.a = $$0;
+   }
 
-   public static record a(flo b, flc.a c) {
-      public static final Codec<flo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(flo.b.forGetter(flo.a::a), flc.a.a.optionalFieldOf("filter", flc.a.b).forGetter(flo.a::b)).apply($$0, flo.a::new)
-      );
+   @Nullable
+   public fll a() {
+      return this.a;
+   }
 
-      public flo a() {
-         return this.b;
-      }
+   public void a(boolean $$0, boolean $$1, foh $$2) {
+      if (this.a == null) {
+         this.d = false;
+      } else {
+         boolean $$3 = $$0 || $$1 && fib.Q().aX().b();
+         if ($$3 != this.d) {
+            if ($$3) {
+               this.c = ad.c();
+            }
 
-      public flc.a b() {
-         return this.c;
+            this.d = $$3;
+         }
+
+         if ($$3 && ad.c() - this.c > this.b.toMillis()) {
+            fpt $$4 = fib.Q().z;
+            if ($$4 != null) {
+               $$4.a(this.a, this.a($$2, $$0, $$1), $$1);
+            }
+         }
       }
    }
 
-   public interface b {
-      ezm load(aue var1) throws IOException;
+   private fsd a(foh $$0, boolean $$1, boolean $$2) {
+      return (fsd)(!$$1 && $$2 && fib.Q().aX().b() ? new fry($$0) : new fsf($$0));
    }
 
-   public static record c(akr a) {
+   public void a(fnx $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
    }
 }

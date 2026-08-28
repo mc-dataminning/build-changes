@@ -1,76 +1,36 @@
-import java.util.ArrayList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
+import java.util.stream.Stream;
 
-public class cyt extends cyr {
-   private static final cyw a = cyw.a(cut.qO);
-   private static final cyw b = cyw.a(cut.pu);
-   private static final cyw c = cyw.a(cut.uv);
+public record cyt(List<arx<String>> g) implements cxx<String, cyt> {
+   public static final cyt a = new cyt(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<arx<String>> h = arx.a(Codec.string(0, 1024));
+   public static final Codec<List<arx<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<cyt> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(cyt::a)).apply($$0, cyt::new));
+   public static final zb<ByteBuf, cyt> f = arx.a(yz.b(1024)).a(yz.c(100)).a(cyt::new, cyt::a);
 
-   public cyt(cyo $$0) {
-      super($$0);
-   }
-
-   public boolean a(cyp $$0, dcw $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
-            }
-         }
+   public cyt(List<arx<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+      } else {
+         this.g = g;
       }
-
-      return $$2 && $$3 >= 1;
    }
 
-   public cuq a(cyp $$0, jo.a $$1) {
-      List<cxl> $$2 = new ArrayList<>();
-      int $$3 = 0;
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cxl $$6 = $$5.a(kq.U);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cuq $$7 = new cuq(cut.uu, 3);
-      $$7.b(kq.V, new cxm($$3, $$2));
-      return $$7;
+   public cyt b(List<arx<String>> $$0) {
+      return new cyt($$0);
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
-   }
-
-   @Override
-   public cuq a(jo.a $$0) {
-      return new cuq(cut.uu);
-   }
-
-   @Override
-   public cze<?> at_() {
-      return cze.g;
+   public List<arx<String>> a() {
+      return this.g;
    }
 }

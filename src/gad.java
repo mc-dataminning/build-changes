@@ -1,119 +1,67 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+public record gad(float b, float c, float d, float e, float f, float g, float h, float i, float j) {
+   public static final gad a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 
-public interface gad extends gac {
-   static gad.a a(GameProfile $$0, xp $$1, gab $$2) {
-      return new gad.a($$0, $$1, $$2);
+   public static gad a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   static gad.b a(wz $$0, Instant $$1) {
-      return new gad.b($$0, $$1);
+   public static gad b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   wz b();
-
-   default wz c() {
-      return this.b();
+   public static gad a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new gad($$0, $$1, $$2, $$3, $$4, $$5, 1.0F, 1.0F, 1.0F);
    }
 
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, xp d, gab e) implements gad {
-      public static final MapCodec<gad.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  axw.x.fieldOf("profile").forGetter(gad.a::f), xp.a.forGetter(gad.a::g), gab.d.optionalFieldOf("trust_level", gab.a).forGetter(gad.a::h)
-               )
-               .apply($$0, gad.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public wz b() {
-         if (!this.d.o().a()) {
-            wz $$0 = this.d.o().b(this.d.c());
-            return (wz)($$0 != null ? $$0 : wz.i());
-         } else {
-            return this.d.d();
-         }
-      }
-
-      @Override
-      public wz c() {
-         wz $$0 = this.b();
-         wz $$1 = this.i();
-         return wz.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public wz d() {
-         wz $$0 = this.i();
-         return wz.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private wz i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return wz.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public gac.a a() {
-         return gac.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xp g() {
-         return this.d;
-      }
-
-      public gab h() {
-         return this.e;
-      }
+   public gad c(float $$0, float $$1, float $$2) {
+      return new gad(this.b + $$0, this.c + $$1, this.d + $$2, this.e, this.f, this.g, this.h, this.i, this.j);
    }
 
-   public static record b(wz c, Instant d) implements gad {
-      public static final MapCodec<gad.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(xb.a.fieldOf("message").forGetter(gad.b::d), axw.o.fieldOf("time_stamp").forGetter(gad.b::e)).apply($$0, gad.b::new)
-      );
+   public gad a(float $$0) {
+      return new gad(this.b, this.c, this.d, this.e, this.f, this.g, $$0, $$0, $$0);
+   }
 
-      @Override
-      public wz b() {
-         return this.c;
-      }
+   public gad b(float $$0) {
+      return $$0 == 1.0F ? this : this.d($$0, $$0, $$0);
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+   public gad d(float $$0, float $$1, float $$2) {
+      return new gad(this.b * $$0, this.c * $$1, this.d * $$2, this.e, this.f, this.g, this.h * $$0, this.i * $$1, this.j * $$2);
+   }
 
-      @Override
-      public gac.a a() {
-         return gac.a.b;
-      }
+   public float a() {
+      return this.b;
+   }
 
-      public wz d() {
-         return this.c;
-      }
+   public float b() {
+      return this.c;
+   }
 
-      public Instant e() {
-         return this.d;
-      }
+   public float c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
+   }
+
+   public float g() {
+      return this.h;
+   }
+
+   public float h() {
+      return this.i;
+   }
+
+   public float i() {
+      return this.j;
    }
 }

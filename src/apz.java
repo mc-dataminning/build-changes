@@ -1,296 +1,204 @@
-import it.unimi.dsi.fastutil.shorts.ShortOpenHashSet;
-import it.unimi.dsi.fastutil.shorts.ShortSet;
-import java.util.BitSet;
+import com.google.common.base.Splitter;
+import com.google.common.base.Strings;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.Executor;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Properties;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class apz extends aqn {
-   public static final aqc<dvi> a = aqc.a("Unloaded level chunk");
-   private static final CompletableFuture<aqc<dvi>> e = CompletableFuture.completedFuture(a);
-   private final dcy f;
-   private volatile CompletableFuture<aqc<dvi>> g = e;
-   private volatile CompletableFuture<aqc<dvi>> h = e;
-   private volatile CompletableFuture<aqc<dvi>> i = e;
-   private int j;
-   private int k;
-   private int l;
-   private boolean m;
-   private final ShortSet[] n;
-   private final BitSet o = new BitSet();
-   private final BitSet p = new BitSet();
-   private final eot q;
-   private final apz.a r;
-   private final apz.b s;
-   private boolean t;
-   private CompletableFuture<?> u = CompletableFuture.completedFuture(null);
-   private CompletableFuture<?> v = CompletableFuture.completedFuture(null);
-   private CompletableFuture<?> w = CompletableFuture.completedFuture(null);
+public class apz extends aqc<apz> {
+   static final Logger ad = LogUtils.getLogger();
+   private static final Pattern ae = Pattern.compile("^[a-fA-F0-9]{40}$");
+   private static final Splitter af = Splitter.on(',').trimResults();
+   public final boolean a = this.a("online-mode", true);
+   public final boolean b = this.a("prevent-proxy-connections", false);
+   public final String c = this.a("server-ip", "");
+   public final boolean d = this.a("pvp", true);
+   public final boolean e = this.a("allow-flight", false);
+   public final String f = this.a("motd", "A Minecraft Server");
+   public final String g = this.a("bug-report-link", "");
+   public final boolean h = this.a("force-gamemode", false);
+   public final boolean i = this.a("enforce-whitelist", false);
+   public final brh j = this.a("difficulty", a(brh::a, brh::a), brh::e, brh.b);
+   public final ddp k = this.a("gamemode", a(ddp::a, ddp::a), ddp::b, ddp.a);
+   public final String l = this.a("level-name", "world");
+   public final int m = this.a("server-port", 25565);
+   @Nullable
+   public final Boolean n = this.b("announce-player-achievements");
+   public final boolean o = this.a("enable-query", false);
+   public final int p = this.a("query.port", 25565);
+   public final boolean q = this.a("enable-rcon", false);
+   public final int r = this.a("rcon.port", 25575);
+   public final String s = this.a("rcon.password", "");
+   public final boolean t = this.a("hardcore", false);
+   public final boolean u = this.a("allow-nether", true);
+   public final boolean v = this.a("spawn-monsters", true);
+   public final boolean w = this.a("use-native-transport", true);
+   public final boolean x = this.a("enable-command-block", false);
+   public final int y = this.a("spawn-protection", 16);
+   public final int z = this.a("op-permission-level", 4);
+   public final int A = this.a("function-permission-level", 2);
+   public final long B = this.a("max-tick-time", TimeUnit.MINUTES.toMillis(1L));
+   public final int C = this.a("max-chained-neighbor-updates", 1000000);
+   public final int D = this.a("rate-limit", 0);
+   public final int E = this.a("view-distance", 10);
+   public final int F = this.a("simulation-distance", 10);
+   public final int G = this.a("max-players", 20);
+   public final int H = this.a("network-compression-threshold", 256);
+   public final boolean I = this.a("broadcast-rcon-to-ops", true);
+   public final boolean J = this.a("broadcast-console-to-ops", true);
+   public final int K = this.a("max-world-size", $$0x -> azc.a($$0x, 1, 29999984), 29999984);
+   public final boolean L = this.a("sync-chunk-writes", true);
+   public final String M = this.a("region-file-compression", "deflate");
+   public final boolean N = this.a("enable-jmx-monitoring", false);
+   public final boolean O = this.a("enable-status", true);
+   public final boolean P = this.a("hide-online-players", false);
+   public final int Q = this.a("entity-broadcast-range-percentage", $$0x -> azc.a($$0x, 10, 1000), 100);
+   public final String R = this.a("text-filtering-config", "");
+   public final int S = this.a("text-filtering-version", 0);
+   public final Optional<MinecraftServer.b> T;
+   public final ddf U;
+   public final aqc<apz>.a<Integer> V = this.b("player-idle-timeout", 0);
+   public final aqc<apz>.a<Boolean> W = this.b("white-list", false);
+   public final boolean X = this.a("enforce-secure-profile", true);
+   public final boolean Y = this.a("log-ips", true);
+   public final int Z = this.a("pause-when-empty-seconds", 60);
+   private final apz.a ag;
+   public final eau aa;
+   public boolean ab = this.a("accepts-transfers", false);
 
-   public apz(dcd $$0, int $$1, dcy $$2, eot $$3, apz.a $$4, apz.b $$5) {
+   public apz(Properties $$0) {
       super($$0);
-      this.f = $$2;
-      this.q = $$3;
-      this.r = $$4;
-      this.s = $$5;
-      this.j = aqa.b + 1;
-      this.k = this.j;
-      this.l = this.j;
-      this.a($$1);
-      this.n = new ShortSet[$$2.an()];
+      String $$1 = this.a("level-seed", "");
+      boolean $$2 = this.a("generate-structures", true);
+      long $$3 = eau.a($$1).orElse(eau.f());
+      this.aa = new eau($$3, $$2, false);
+      this.ag = new apz.a(
+         this.a("generator-settings", $$0x -> ays.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), eke.a.a().toString())
+      );
+      this.T = a(
+         this.a("resource-pack-id", ""),
+         this.a("resource-pack", ""),
+         this.a("resource-pack-sha1", ""),
+         this.a("resource-pack-hash"),
+         this.a("require-resource-pack", false),
+         this.a("resource-pack-prompt", "")
+      );
+      this.U = b(this.a("initial-enabled-packs", String.join(",", deo.c.a().a())), this.a("initial-disabled-packs", String.join(",", deo.c.a().b())));
    }
 
-   public CompletableFuture<aqc<dvi>> a() {
-      return this.h;
+   public static apz a(Path $$0) {
+      return new apz(b($$0));
    }
 
-   public CompletableFuture<aqc<dvi>> b() {
-      return this.i;
-   }
-
-   public CompletableFuture<aqc<dvi>> c() {
-      return this.g;
+   protected apz a(kb $$0, Properties $$1) {
+      return new apz($$1);
    }
 
    @Nullable
-   public dvi d() {
-      return this.a().getNow(a).b(null);
+   private static xd c(String $$0) {
+      if (!Strings.isNullOrEmpty($$0)) {
+         try {
+            return xd.a.a($$0, kb.b);
+         } catch (Exception var2) {
+            ad.warn("Failed to parse resource pack prompt '{}'", $$0, var2);
+         }
+      }
+
+      return null;
    }
 
-   @Nullable
-   public dvi e() {
-      return !this.v.isDone() ? null : this.d();
-   }
-
-   public CompletableFuture<?> f() {
-      return this.v;
-   }
-
-   public void a(CompletableFuture<?> $$0) {
-      if (this.v.isDone()) {
-         this.v = $$0;
+   private static Optional<MinecraftServer.b> a(String $$0, String $$1, String $$2, @Nullable String $$3, boolean $$4, String $$5) {
+      if ($$1.isEmpty()) {
+         return Optional.empty();
       } else {
-         this.v = this.v.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
-      }
-   }
-
-   public CompletableFuture<?> g() {
-      return this.w;
-   }
-
-   public boolean h() {
-      return this.o() == 0 && this.w.isDone();
-   }
-
-   private void b(CompletableFuture<?> $$0) {
-      if (this.w.isDone()) {
-         this.w = $$0;
-      } else {
-         this.w = this.w.thenCombine((CompletionStage<? extends Object>)$$0, ($$0x, $$1) -> null);
-      }
-   }
-
-   public void a(jd $$0) {
-      dvi $$1 = this.d();
-      if ($$1 != null) {
-         int $$2 = this.f.e($$0.v());
-         if (this.n[$$2] == null) {
-            this.m = true;
-            this.n[$$2] = new ShortOpenHashSet();
+         String $$6;
+         if (!$$2.isEmpty()) {
+            $$6 = $$2;
+            if (!Strings.isNullOrEmpty($$3)) {
+               ad.warn("resource-pack-hash is deprecated and found along side resource-pack-sha1. resource-pack-hash will be ignored.");
+            }
+         } else if (!Strings.isNullOrEmpty($$3)) {
+            ad.warn("resource-pack-hash is deprecated. Please use resource-pack-sha1 instead.");
+            $$6 = $$3;
+         } else {
+            $$6 = "";
          }
 
-         this.n[$$2].add(kf.b($$0));
-      }
-   }
+         if ($$6.isEmpty()) {
+            ad.warn("You specified a resource pack without providing a sha1 hash. Pack will be updated on the client only if you change the name of the pack.");
+         } else if (!ae.matcher($$6).matches()) {
+            ad.warn("Invalid sha1 for resource-pack-sha1");
+         }
 
-   public void a(ddf $$0, int $$1) {
-      duy $$2 = this.b(dvz.k);
-      if ($$2 != null) {
-         $$2.a(true);
-         dvi $$3 = this.d();
-         if ($$3 != null) {
-            int $$4 = this.q.d();
-            int $$5 = this.q.e();
-            if ($$1 >= $$4 && $$1 <= $$5) {
-               int $$6 = $$1 - $$4;
-               if ($$0 == ddf.a) {
-                  this.p.set($$6);
-               } else {
-                  this.o.set($$6);
-               }
+         xd $$9 = c($$5);
+         UUID $$10;
+         if ($$0.isEmpty()) {
+            $$10 = UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8));
+            ad.warn("resource-pack-id missing, using default of {}", $$10);
+         } else {
+            try {
+               $$10 = UUID.fromString($$0);
+            } catch (IllegalArgumentException var10) {
+               ad.warn("Failed to parse '{}' into UUID", $$0);
+               return Optional.empty();
             }
          }
+
+         return Optional.of(new MinecraftServer.b($$10, $$1, $$6, $$4, $$9));
       }
    }
 
-   public void a(dvi $$0) {
-      if (this.m || !this.p.isEmpty() || !this.o.isEmpty()) {
-         dcw $$1 = $$0.F();
-         if (!this.p.isEmpty() || !this.o.isEmpty()) {
-            List<aqv> $$2 = this.s.a(this.d, true);
-            if (!$$2.isEmpty()) {
-               adj $$3 = new adj($$0.f(), this.q, this.p, this.o);
-               this.a($$2, $$3);
+   private static ddf b(String $$0, String $$1) {
+      List<String> $$2 = af.splitToList($$0);
+      List<String> $$3 = af.splitToList($$1);
+      return new ddf($$2, $$3);
+   }
+
+   public ear a(jp.a $$0) {
+      return this.ag.a($$0);
+   }
+
+   static record a(JsonObject a, String b) {
+      private static final Map<String, ala<ekd>> c = Map.of("default", eke.a, "largebiomes", eke.c);
+
+      public ear a(jp.a $$0) {
+         jp<ekd> $$1 = $$0.b(lv.aY);
+         jn.c<ekd> $$2 = $$1.a(eke.a)
+            .or(() -> $$1.b().findAny())
+            .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
+         jn<ekd> $$3 = Optional.ofNullable(alb.c(this.b))
+            .map($$0x -> ala.a(lv.aY, $$0x))
+            .or(() -> Optional.ofNullable(c.get(this.b)))
+            .flatMap($$1::a)
+            .orElseGet(() -> {
+               apz.ad.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
+               return $$2;
+            });
+         ear $$4 = $$3.a().a();
+         if ($$3.a(eke.b)) {
+            akz<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
+            Optional<eir> $$6 = eir.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apz.ad::error);
+            if ($$6.isPresent()) {
+               return $$4.a($$0, new dzr($$6.get()));
             }
-
-            this.p.clear();
-            this.o.clear();
          }
 
-         if (this.m) {
-            List<aqv> $$4 = this.s.a(this.d, false);
-
-            for (int $$5 = 0; $$5 < this.n.length; $$5++) {
-               ShortSet $$6 = this.n[$$5];
-               if ($$6 != null) {
-                  this.n[$$5] = null;
-                  if (!$$4.isEmpty()) {
-                     int $$7 = this.f.g($$5);
-                     kf $$8 = kf.a($$0.f(), $$7);
-                     if ($$6.size() == 1) {
-                        jd $$9 = $$8.g($$6.iterator().nextShort());
-                        dtc $$10 = $$1.a_($$9);
-                        this.a($$4, new acd($$9, $$10));
-                        this.a($$4, $$1, $$9, $$10);
-                     } else {
-                        dvj $$11 = $$0.b($$5);
-                        aek $$12 = new aek($$8, $$6, $$11);
-                        this.a($$4, $$12);
-                        $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
-                     }
-                  }
-               }
-            }
-
-            this.m = false;
-         }
+         return $$4;
       }
-   }
-
-   private void a(List<aqv> $$0, dcw $$1, jd $$2, dtc $$3) {
-      if ($$3.t()) {
-         this.a($$0, $$1, $$2);
-      }
-   }
-
-   private void a(List<aqv> $$0, dcw $$1, jd $$2) {
-      dqh $$3 = $$1.c_($$2);
-      if ($$3 != null) {
-         zg<?> $$4 = $$3.az_();
-         if ($$4 != null) {
-            this.a($$0, $$4);
-         }
-      }
-   }
-
-   private void a(List<aqv> $$0, zg<?> $$1) {
-      $$0.forEach($$1x -> $$1x.c.b($$1));
-   }
-
-   @Override
-   public int i() {
-      return this.k;
-   }
-
-   @Override
-   public int j() {
-      return this.l;
-   }
-
-   private void b(int $$0) {
-      this.l = $$0;
-   }
-
-   public void a(int $$0) {
-      this.k = $$0;
-   }
-
-   private void a(aqb $$0, CompletableFuture<aqc<dvi>> $$1, Executor $$2, aql $$3) {
-      this.u.cancel(false);
-      CompletableFuture<Void> $$4 = new CompletableFuture<>();
-      $$4.thenRunAsync(() -> $$0.a(this.d, $$3), $$2);
-      this.u = $$4;
-      $$1.thenAccept($$1x -> $$1x.a($$1xx -> $$4.complete(null)));
-   }
-
-   private void a(aqb $$0, aql $$1) {
-      this.u.cancel(false);
-      $$0.a(this.d, $$1);
-   }
-
-   protected void a(aqb $$0, Executor $$1) {
-      aql $$2 = aqa.c(this.j);
-      aql $$3 = aqa.c(this.k);
-      boolean $$4 = $$2.a(aql.b);
-      boolean $$5 = $$3.a(aql.b);
-      this.t |= $$5;
-      if (!$$4 && $$5) {
-         this.g = $$0.c(this);
-         this.a($$0, this.g, $$1, aql.b);
-         this.b(this.g);
-      }
-
-      if ($$4 && !$$5) {
-         this.g.complete(a);
-         this.g = e;
-      }
-
-      boolean $$6 = $$2.a(aql.c);
-      boolean $$7 = $$3.a(aql.c);
-      if (!$$6 && $$7) {
-         this.h = $$0.b(this);
-         this.a($$0, this.h, $$1, aql.c);
-         this.b(this.h);
-      }
-
-      if ($$6 && !$$7) {
-         this.h.complete(a);
-         this.h = e;
-      }
-
-      boolean $$8 = $$2.a(aql.d);
-      boolean $$9 = $$3.a(aql.d);
-      if (!$$8 && $$9) {
-         if (this.i != e) {
-            throw (IllegalStateException)ad.b(new IllegalStateException());
-         }
-
-         this.i = $$0.a(this);
-         this.a($$0, this.i, $$1, aql.d);
-         this.b(this.i);
-      }
-
-      if ($$8 && !$$9) {
-         this.i.complete(a);
-         this.i = e;
-      }
-
-      if (!$$3.a($$2)) {
-         this.a($$0, $$3);
-      }
-
-      this.r.onLevelChange(this.d, this::j, this.k, this::b);
-      this.j = this.k;
-   }
-
-   public boolean k() {
-      return this.t;
-   }
-
-   public void l() {
-      this.t = aqa.c(this.k).a(aql.b);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onLevelChange(dcd var1, IntSupplier var2, int var3, IntConsumer var4);
-   }
-
-   public interface b {
-      List<aqv> a(dcd var1, boolean var2);
    }
 }

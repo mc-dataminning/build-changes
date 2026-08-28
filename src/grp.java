@@ -1,69 +1,64 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
 
-public class grp extends tw {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class grp<S extends gts & gvc, M extends fxa<S> & fzk> extends grf<S, M> {
+   private static final Int2ObjectMap<alb> a = ad.a(new Int2ObjectOpenHashMap(), $$0 -> {
+      $$0.put(1, alb.b("stone"));
+      $$0.put(2, alb.b("iron"));
+      $$0.put(3, alb.b("gold"));
+      $$0.put(4, alb.b("emerald"));
+      $$0.put(5, alb.b("diamond"));
+   });
+   private final Object2ObjectMap<cnh, gxz.a> b = new Object2ObjectOpenHashMap();
+   private final Object2ObjectMap<cnf, gxz.a> c = new Object2ObjectOpenHashMap();
+   private final aus d;
+   private final String e;
 
-   private grp(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
+   public grp(goo<S, M> $$0, aus $$1, String $$2) {
+      super($$0);
       this.d = $$1;
+      this.e = $$2;
    }
 
-   public static grp a(aue $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = Maps.newHashMap();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               akr $$7 = akr.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
+   public void a(fcu $$0, ggv $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (!$$3.u) {
+         cnd $$6 = $$3.a();
+         cnh $$7 = $$6.a();
+         cnf $$8 = $$6.b();
+         gxz.a $$9 = this.a(this.b, "type", lu.w, $$7);
+         gxz.a $$10 = this.a(this.c, "profession", lu.x, $$8);
+         M $$11 = this.d();
+         $$11.a($$10 == gxz.a.a || $$10 == gxz.a.b && $$9 != gxz.a.c);
+         alb $$12 = this.a("type", lu.w.b($$7));
+         b($$11, $$12, $$0, $$1, $$2, $$3, -1);
+         $$11.a(true);
+         if ($$8 != cnf.b && !$$3.ae) {
+            alb $$13 = this.a("profession", lu.x.b($$8));
+            b($$11, $$13, $$0, $$1, $$2, $$3, -1);
+            if ($$8 != cnf.m) {
+               alb $$14 = this.a("profession_level", (alb)a.get(azc.a($$6.c(), 1, a.size())));
+               b($$11, $$14, $$0, $$1, $$2, $$3, -1);
             }
          }
       }
-
-      return new grp(ImmutableMap.copyOf($$3), $$2);
    }
 
-   private static void a(String $$0, List<auc> $$1, Map<String, String> $$2) {
-      for (auc $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            tw.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
-      }
+   private alb a(String $$0, alb $$1) {
+      return $$1.a((UnaryOperator<String>)($$1x -> "textures/entity/" + this.e + "/" + $$0 + "/" + $$1x + ".png"));
    }
 
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
-   }
-
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public aya a(xe $$0) {
-      return grq.a($$0, this.d);
+   public <K> gxz.a a(Object2ObjectMap<K, gxz.a> $$0, String $$1, ji<K> $$2, K $$3) {
+      return (gxz.a)$$0.computeIfAbsent($$3, $$3x -> this.d.getResource(this.a($$1, $$2.b($$3))).flatMap($$0xx -> {
+            try {
+               return $$0xx.f().a(gxz.a).map(gxz::a);
+            } catch (IOException var2x) {
+               return Optional.empty();
+            }
+         }).orElse(gxz.a.a));
    }
 }

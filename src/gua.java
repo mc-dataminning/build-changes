@@ -1,47 +1,17 @@
-import javax.annotation.Nullable;
+public class gua extends gts {
+   public cgk.a a;
+   public boolean b;
+   public boolean c;
+   public int d;
+   public boolean e;
+   public boolean f;
+   public boolean g;
+   public float h;
+   public float i;
+   public float j;
+   public float k;
 
-public interface gua {
-   akr a();
-
-   @Nullable
-   gvg a(gvf var1);
-
-   gtx b();
-
-   avq c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gua.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static ayw t() {
-      return ayw.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   public gua() {
+      this.a = cgk.a.a;
    }
 }

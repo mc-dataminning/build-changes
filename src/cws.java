@@ -1,60 +1,100 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class cws implements cpi {
-   public static final Codec<jm<cws>> a = lt.h.s();
-   public static final yx<wk, jm<cws>> b = yv.b(lu.ad);
-   @Nullable
-   private final String c;
-   private final List<brz> d;
-   private cpl e = cpn.f;
+public class cws extends cvg {
+   private static final n a = n.h;
+   private static final n b = n.j;
+   private static final xd c = xd.c(ad.a("item", alb.b("smithing_template.ingredients"))).a(a);
+   private static final xd d = xd.c(ad.a("item", alb.b("smithing_template.applies_to"))).a(a);
+   private static final xd k = xd.c(ad.a("item", alb.b("smithing_template"))).a(a);
+   private static final xd l = xd.c(ad.a("item", alb.b("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final xd m = xd.c(ad.a("item", alb.b("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final xd n = xd.c(ad.a("item", alb.b("smithing_template.armor_trim.base_slot_description")));
+   private static final xd o = xd.c(ad.a("item", alb.b("smithing_template.armor_trim.additions_slot_description")));
+   private static final xd p = xd.c(ad.a("item", alb.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final xd q = xd.c(ad.a("item", alb.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final xd r = xd.c(ad.a("item", alb.b("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final xd s = xd.c(ad.a("item", alb.b("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final alb t = alb.b("item/empty_armor_slot_helmet");
+   private static final alb u = alb.b("item/empty_armor_slot_chestplate");
+   private static final alb v = alb.b("item/empty_armor_slot_leggings");
+   private static final alb w = alb.b("item/empty_armor_slot_boots");
+   private static final alb x = alb.b("item/empty_slot_hoe");
+   private static final alb y = alb.b("item/empty_slot_axe");
+   private static final alb z = alb.b("item/empty_slot_sword");
+   private static final alb A = alb.b("item/empty_slot_shovel");
+   private static final alb B = alb.b("item/empty_slot_pickaxe");
+   private static final alb C = alb.b("item/empty_slot_ingot");
+   private static final alb D = alb.b("item/empty_slot_redstone_dust");
+   private static final alb E = alb.b("item/empty_slot_quartz");
+   private static final alb F = alb.b("item/empty_slot_emerald");
+   private static final alb G = alb.b("item/empty_slot_diamond");
+   private static final alb H = alb.b("item/empty_slot_lapis_lazuli");
+   private static final alb I = alb.b("item/empty_slot_amethyst_shard");
+   private final xd J;
+   private final xd K;
+   private final xd L;
+   private final xd M;
+   private final List<alb> N;
+   private final List<alb> O;
 
-   public cws(brz... $$0) {
-      this(null, $$0);
+   public cws(cvg.a $$0, xd $$1, xd $$2, xd $$3, xd $$4, List<alb> $$5, List<alb> $$6, cqf... $$7) {
+      super($$0.a($$7));
+      this.J = $$1;
+      this.K = $$2;
+      this.L = $$3;
+      this.M = $$4;
+      this.N = $$5;
+      this.O = $$6;
    }
 
-   public cws(@Nullable String $$0, brz... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
+   public static cws a(cvg.a $$0, cqf... $$1) {
+      return new cws($$0, l, m, n, o, n(), x(), $$1);
    }
 
-   public cws a(cpj... $$0) {
-      this.e = cpn.d.a($$0);
-      return this;
+   public static cws a(cvg.a $$0) {
+      return new cws($$0, p, q, r, s, y(), z());
+   }
+
+   private static List<alb> n() {
+      return List.of(t, u, v, w);
+   }
+
+   private static List<alb> x() {
+      return List.of(C, D, H, E, G, F, I);
+   }
+
+   private static List<alb> y() {
+      return List.of(t, z, u, B, v, y, w, x, A);
+   }
+
+   private static List<alb> z() {
+      return List.of(C);
    }
 
    @Override
-   public cpl i() {
-      return this.e;
+   public void a(cvl $$0, cvg.b $$1, List<xd> $$2, cxf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$2.add(k);
+      $$2.add(xc.a);
+      $$2.add(d);
+      $$2.add(xc.a().b(this.J));
+      $$2.add(c);
+      $$2.add(xc.a().b(this.K));
    }
 
-   public static String a(Optional<jm<cws>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().c;
-         if ($$2 != null) {
-            return $$1 + $$2;
-         }
-      }
-
-      String $$3 = $$0.flatMap(jm::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
+   public xd h() {
+      return this.L;
    }
 
-   public List<brz> a() {
-      return this.d;
+   public xd k() {
+      return this.M;
    }
 
-   public boolean b() {
-      if (!this.d.isEmpty()) {
-         for (brz $$0 : this.d) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
-         }
-      }
+   public List<alb> l() {
+      return this.N;
+   }
 
-      return false;
+   public List<alb> m() {
+      return this.O;
    }
 }

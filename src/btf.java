@@ -1,3 +1,6 @@
+import javax.annotation.Nullable;
+
 public interface btf {
-   void b(cmx var1);
+   @Nullable
+   buf X_();
 }

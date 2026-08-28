@@ -1,20 +1,31 @@
-public record aci(int b) implements zg<abu> {
-   public static final yx<vw, aci> a = zg.a(aci::a, aci::new);
+public class aci implements zk<abz> {
+   public static final zb<wo, aci> a = zb.a(je.b, aci::e, yz.a(dgv.q), aci::b, aci::new);
+   private final je b;
+   private final dua c;
 
-   private aci(vw $$0) {
-      this($$0.l());
+   public aci(je $$0, dua $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   public aci(dcx $$0, je $$1) {
+      this($$1, $$0.a_($$1));
    }
 
    @Override
-   public zi<aci> a() {
-      return agg.n;
+   public zm<aci> a() {
+      return ago.k;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
+   }
+
+   public dua b() {
+      return this.c;
+   }
+
+   public je e() {
+      return this.b;
    }
 }

@@ -1,99 +1,70 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.logging.LogUtils;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.List;
-import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fgx {
-   private static final Logger a = LogUtils.getLogger();
-   @Nullable
-   private fgx.c b;
-   private int c;
+public class fgx extends fgz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xd c = xd.c("mco.download.preparing");
+   private final long d;
+   private final int e;
+   private final fpt f;
+   private final String g;
 
-   public void a(fgx.b $$0, List<asq> $$1) {
-      this.c++;
-      if (this.b != null && !this.b.d) {
-         a.warn("Reload already ongoing, replacing");
-      }
-
-      this.b = new fgx.c($$0, $$1.stream().map(asq::b).collect(ImmutableList.toImmutableList()));
+   public fgx(long $$0, int $$1, String $$2, fpt $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$3;
+      this.g = $$2;
    }
 
-   public void a(Throwable $$0) {
-      if (this.b == null) {
-         a.warn("Trying to signal reload recovery, but nothing was started");
-         this.b = new fgx.c(fgx.b.c, ImmutableList.of());
-      }
+   @Override
+   public void run() {
+      fdk $$0 = fdk.a();
+      int $$1 = 0;
 
-      this.b.c = new fgx.a($$0);
-   }
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
 
-   public void a() {
-      if (this.b == null) {
-         a.warn("Trying to finish reload, but nothing was started");
-      } else {
-         this.b.d = true;
-      }
-   }
+            fep $$2 = $$0.b(this.d, this.e);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
 
-   public void a(o $$0) {
-      p $$1 = $$0.a("Last reload");
-      $$1.a("Reload number", this.c);
-      if (this.b != null) {
-         this.b.a($$1);
-      }
-   }
+            a(new ffm(this.f, $$2, this.g, $$0x -> {
+            }));
+            return;
+         } catch (few var4) {
+            if (this.d()) {
+               return;
+            }
 
-   static class a {
-      private final Throwable a;
+            a((long)var4.c);
+            $$1++;
+         } catch (fev var5) {
+            if (this.d()) {
+               return;
+            }
 
-      a(Throwable $$0) {
-         this.a = $$0;
-      }
+            b.error("Couldn't download world data", var5);
+            a(new ffn(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
 
-      public void a(p $$0) {
-         $$0.a("Recovery", "Yes");
-         $$0.a("Recovery reason", () -> {
-            StringWriter $$0x = new StringWriter();
-            this.a.printStackTrace(new PrintWriter($$0x));
-            return $$0x.toString();
-         });
-      }
-   }
-
-   public static enum b {
-      a("initial"),
-      b("manual"),
-      c("unknown");
-
-      final String d;
-
-      private b(final String $$0) {
-         this.d = $$0;
-      }
-   }
-
-   static class c {
-      private final fgx.b a;
-      private final List<String> b;
-      @Nullable
-      fgx.a c;
-      boolean d;
-
-      c(fgx.b $$0, List<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(p $$0) {
-         $$0.a("Reload reason", this.a.d);
-         $$0.a("Finished", this.d ? "Yes" : "No");
-         $$0.a("Packs", () -> String.join(", ", this.b));
-         if (this.c != null) {
-            this.c.a($$0);
+            b.error("Couldn't download world data", var6);
+            this.a(var6);
+            return;
          }
       }
+   }
+
+   @Override
+   public xd a() {
+      return c;
    }
 }

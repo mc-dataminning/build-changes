@@ -1,49 +1,68 @@
-public class gbe extends gdn {
-   private final gdi a;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-   gbe(fzf $$0, double $$1, double $$2, double $$3, double $$4, gdi $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$5;
-      this.t = 4;
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 1.0F - (float)$$4 * 0.5F;
-      this.b($$5);
+public class gbe extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final gco b;
+   private final gbe.a c;
+
+   public gbe(gco $$0, gbe.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
-   }
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         arz.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         arz.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
    }
 
-   @Override
-   public gcr b() {
-      return gcr.d;
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = arz.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = azc.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = azc.a($$4.get(4), -1);
+            int $$9 = azc.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
+         }
+      }
+
+      $$0.close();
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
+   }
 
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbe($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

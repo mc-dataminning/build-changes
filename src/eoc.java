@@ -1,14 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public interface eoc<P extends eob> {
-   eoc<enz> a = a("clear", enz.a);
-   eoc<eoa> b = a("passthrough", eoa.b);
-   eoc<eny> c = a("append_static", eny.a);
-   eoc<enx> d = a("append_loot", enx.a);
+public class eoc extends eod {
+   public static final MapCodec<eoc> a = MapCodec.unit(() -> eoc.b);
+   public static final eoc b = new eoc();
 
-   MapCodec<P> codec();
+   private eoc() {
+   }
 
-   private static <P extends eob> eoc<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.n, $$0, () -> $$1);
+   @Override
+   public boolean a(je $$0, je $$1, je $$2, azk $$3) {
+      return true;
+   }
+
+   @Override
+   protected eoe<?> a() {
+      return eoe.a;
    }
 }

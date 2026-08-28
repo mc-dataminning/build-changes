@@ -1,25 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public class dld extends dgh {
-   public static final MapCodec<dld> a = b(dld::new);
-   protected static final exv b = dfy.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+public class dld extends dfo {
+   public static final MapCodec<dld> d = b(dld::new);
 
    @Override
    public MapCodec<dld> a() {
-      return a;
+      return d;
    }
 
-   public dld(dtb.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return b;
+   public dld(dtz.d $$0) {
+      super($$0, kk.e);
    }
 
    @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.a(awe.aM) || $$0.a(dga.dX) || super.b($$0, $$1, $$2);
+   protected double b(dua $$0) {
+      return 0.9375;
+   }
+
+   @Override
+   public boolean d(dua $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dua $$0, dds $$1, je $$2, btj $$3) {
+      if (this.a($$0, $$2, $$3)) {
+         $$3.aD();
+      }
+   }
+
+   @Override
+   protected int a(dua $$0, dds $$1, je $$2) {
+      return 3;
    }
 }

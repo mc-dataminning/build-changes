@@ -1,29 +1,29 @@
-public class adw implements zg<abu> {
-   public static final yx<vw, adw> a = zg.a(adw::a, adw::new);
-   private final int b;
+public class adw implements zk<abz> {
+   public static final zb<wa, adw> a = zk.a(adw::a, adw::new);
+   private final brj b;
 
-   public adw(brh $$0) {
-      this($$0.b());
-   }
-
-   public adw(int $$0) {
+   public adw(brj $$0) {
       this.b = $$0;
    }
 
-   private adw(vw $$0) {
-      this.b = $$0.l();
+   private adw(wa $$0) {
+      this.b = $$0.b(brj.class);
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zi<adw> a() {
-      return agg.ab;
+   public zm<adw> a() {
+      return ago.W;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
+   }
+
+   public brj b() {
+      return this.b;
    }
 }

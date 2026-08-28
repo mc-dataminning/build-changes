@@ -1,93 +1,88 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.util.List;
-import java.util.function.IntSupplier;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class gfd implements AutoCloseable {
-   private final gep c;
-   public final ezv a;
-   public final ezv b;
-   private final List<IntSupplier> d = Lists.newArrayList();
-   private final List<String> e = Lists.newArrayList();
-   private final List<Integer> f = Lists.newArrayList();
-   private final List<Integer> g = Lists.newArrayList();
-   private Matrix4f h;
-   private final int i;
+public class gfd extends gfe {
+   private final je a;
+   private final float b;
+   private final float F;
 
-   public gfd(auh $$0, String $$1, ezv $$2, ezv $$3, boolean $$4) throws IOException {
-      this.c = new gep($$0, $$1);
-      this.a = $$2;
-      this.b = $$3;
-      this.i = $$4 ? 9729 : 9728;
+   public gfd(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dua $$7) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, je.a($$1, $$2, $$3));
+   }
+
+   public gfd(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dua $$7, je $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.a = $$8;
+      this.a(fib.Q().ao().a().a($$7));
+      this.u = 1.0F;
+      this.v = 0.6F;
+      this.w = 0.6F;
+      this.x = 0.6F;
+      if (!$$7.a(dgx.i)) {
+         int $$9 = fib.Q().av().a($$7, $$0, $$8, 0);
+         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
+         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
+         this.x *= (float)($$9 & 0xFF) / 255.0F;
+      }
+
+      this.D /= 2.0F;
+      this.b = this.r.i() * 3.0F;
+      this.F = this.r.i() * 3.0F;
    }
 
    @Override
-   public void close() {
-      this.c.close();
+   public gei b() {
+      return gei.a;
    }
 
-   public final String a() {
-      return this.c.h();
+   @Override
+   protected float c() {
+      return this.E.a((this.b + 1.0F) / 4.0F);
    }
 
-   public void a(String $$0, IntSupplier $$1, int $$2, int $$3) {
-      this.e.add(this.e.size(), $$0);
-      this.d.add(this.d.size(), $$1);
-      this.f.add(this.f.size(), $$2);
-      this.g.add(this.g.size(), $$3);
+   @Override
+   protected float d() {
+      return this.E.a(this.b / 4.0F);
    }
 
-   public void a(Matrix4f $$0) {
-      this.h = $$0;
+   @Override
+   protected float e() {
+      return this.E.c(this.F / 4.0F);
    }
 
-   public void a(float $$0) {
-      this.a.e();
-      float $$1 = (float)this.b.c;
-      float $$2 = (float)this.b.d;
-      RenderSystem.viewport(0, 0, (int)$$1, (int)$$2);
-      this.c.a("DiffuseSampler", this.a::f);
+   @Override
+   protected float f() {
+      return this.E.c((this.F + 1.0F) / 4.0F);
+   }
 
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.c.a(this.e.get($$3), this.d.get($$3));
-         this.c.b("AuxSize" + $$3).a((float)this.f.get($$3).intValue(), (float)this.g.get($$3).intValue());
-      }
+   @Override
+   public int a(float $$0) {
+      int $$1 = super.a($$0);
+      return $$1 == 0 && this.c.B(this.a) ? ggr.a(this.c, this.a) : $$1;
+   }
 
-      this.c.b("ProjMat").a(this.h);
-      this.c.b("InSize").a((float)this.a.c, (float)this.a.d);
-      this.c.b("OutSize").a($$1, $$2);
-      this.c.b("Time").a($$0);
-      fgo $$4 = fgo.Q();
-      this.c.b("ScreenSize").a((float)$$4.aM().l(), (float)$$4.aM().m());
-      this.c.g();
-      this.b.b(fgo.a);
-      this.b.a(false);
-      RenderSystem.depthFunc(519);
-      fbd $$5 = fbk.b().a(fbn.c.h, fbg.e);
-      $$5.a(0.0F, 0.0F, 500.0F);
-      $$5.a($$1, 0.0F, 500.0F);
-      $$5.a($$1, $$2, 500.0F);
-      $$5.a(0.0F, $$2, 500.0F);
-      fbe.b($$5.b());
-      RenderSystem.depthFunc(515);
-      this.c.f();
-      this.b.e();
-      this.a.d();
+   @Nullable
+   static gfd a(lf $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      dua $$8 = $$0.b();
+      return !$$8.l() && !$$8.a(dgx.bQ) && $$8.D() ? new gfd($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
+   }
 
-      for (Object $$6 : this.d) {
-         if ($$6 instanceof ezv) {
-            ((ezv)$$6).d();
+   public static class a implements geh<lf> {
+      @Nullable
+      public gee a(lf $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gee $$8 = gfd.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         if ($$8 != null) {
+            $$8.b($$1.z.k() / 30.0, $$6 + $$1.z.k() / 2.0, $$1.z.k() / 30.0);
+            $$8.a($$1.z.a(20) + 20);
          }
+
+         return $$8;
       }
    }
 
-   public gep b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.i;
+   public static class b implements geh<lf> {
+      @Nullable
+      public gee a(lf $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return gfd.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 }

@@ -1,39 +1,46 @@
 import com.mojang.serialization.MapCodec;
 
-public class don extends dhb {
-   public static final MapCodec<don> n = b(don::new);
-
-   @Override
-   public MapCodec<don> a() {
-      return n;
+public abstract class don extends dog {
+   protected don(dtz.d $$0) {
+      super($$0);
    }
 
-   public don(dtb.d $$0) {
-      super($$0, () -> dqj.c);
-   }
-
-   @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dsb($$0, $$1);
-   }
-
-   @Override
-   protected avw<akr> c() {
-      return avz.i.b(avz.ai);
+   private static boolean b(dua $$0, ddv $$1, je $$2) {
+      je $$3 = $$2.d();
+      dua $$4 = $$1.a_($$3);
+      if ($$4.a(dgx.dN) && $$4.c(dof.c) == 1) {
+         return true;
+      } else if ($$4.y().e() == 8) {
+         return false;
+      } else {
+         int $$5 = eps.a($$0, $$4, jj.b, $$4.g());
+         return $$5 < 15;
+      }
    }
 
    @Override
-   protected boolean e_(dtc $$0) {
-      return true;
+   protected abstract MapCodec<? extends don> a();
+
+   private static boolean c(dua $$0, ddv $$1, je $$2) {
+      je $$3 = $$2.d();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awy.a);
    }
 
    @Override
-   protected int a(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      return ayo.a(dqo.a($$1, $$2), 0, 15);
-   }
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dgx.j.o());
+      } else {
+         if ($$1.A($$2.d()) >= 9) {
+            dua $$4 = this.o();
 
-   @Override
-   protected int b(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      return $$3 == ji.b ? $$0.b($$1, $$2, $$3) : 0;
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               je $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dgx.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.b(c, Boolean.valueOf($$1.a_($$6.d()).a(dgx.dN))));
+               }
+            }
+         }
+      }
    }
 }

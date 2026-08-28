@@ -1,220 +1,109 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import java.util.AbstractSet;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import javax.annotation.Nullable;
+import java.util.function.Supplier;
 
-public class azg<T> extends AbstractSet<T> {
-   private static final int a = 10;
-   private final Comparator<T> b;
-   T[] c;
-   int d;
-
-   private azg(int $$0, Comparator<T> $$1) {
-      this.b = $$1;
-      if ($$0 < 0) {
-         throw new IllegalArgumentException("Initial capacity (" + $$0 + ") is negative");
-      } else {
-         this.c = (T[])a(new Object[$$0]);
+public class azg {
+   public static void a(dds $$0, je $$1, ll $$2, bqp $$3) {
+      for (jj $$4 : jj.values()) {
+         a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
       }
    }
 
-   public static <T extends Comparable<T>> azg<T> a() {
-      return a(10);
-   }
+   public static void a(dds $$0, je $$1, ll $$2, bqp $$3, jj $$4, Supplier<eye> $$5, double $$6) {
+      int $$7 = $$3.a($$0.z);
 
-   public static <T extends Comparable<T>> azg<T> a(int $$0) {
-      return new azg<>($$0, Comparator.naturalOrder());
-   }
-
-   public static <T> azg<T> a(Comparator<T> $$0) {
-      return a($$0, 10);
-   }
-
-   public static <T> azg<T> a(Comparator<T> $$0, int $$1) {
-      return new azg<>($$1, $$0);
-   }
-
-   private static <T> T[] a(Object[] $$0) {
-      return (T[])$$0;
-   }
-
-   private int c(T $$0) {
-      return Arrays.binarySearch(this.c, 0, this.d, $$0, this.b);
-   }
-
-   private static int b(int $$0) {
-      return -$$0 - 1;
-   }
-
-   @Override
-   public boolean add(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return false;
-      } else {
-         int $$2 = b($$1);
-         this.a($$0, $$2);
-         return true;
+      for (int $$8 = 0; $$8 < $$7; $$8++) {
+         a($$0, $$1, $$4, $$2, $$5.get(), $$6);
       }
    }
 
-   private void c(int $$0) {
-      if ($$0 > this.c.length) {
-         if (this.c != ObjectArrays.DEFAULT_EMPTY_ARRAY) {
-            $$0 = (int)Math.max(Math.min((long)this.c.length + (long)(this.c.length >> 1), 2147483639L), (long)$$0);
-         } else if ($$0 < 10) {
-            $$0 = 10;
-         }
+   private static eye a(azk $$0) {
+      return new eye(azc.a($$0, -0.5, 0.5), azc.a($$0, -0.5, 0.5), azc.a($$0, -0.5, 0.5));
+   }
 
-         Object[] $$1 = new Object[$$0];
-         System.arraycopy(this.c, 0, $$1, 0, this.d);
-         this.c = (T[])a($$1);
+   public static void a(jj.a $$0, dds $$1, je $$2, double $$3, ll $$4, bqv $$5) {
+      eye $$6 = eye.b($$2);
+      boolean $$7 = $$0 == jj.a.a;
+      boolean $$8 = $$0 == jj.a.b;
+      boolean $$9 = $$0 == jj.a.c;
+      int $$10 = $$5.a($$1.z);
+
+      for (int $$11 = 0; $$11 < $$10; $$11++) {
+         double $$12 = $$6.d + azc.a($$1.z, -1.0, 1.0) * ($$7 ? 0.5 : $$3);
+         double $$13 = $$6.e + azc.a($$1.z, -1.0, 1.0) * ($$8 ? 0.5 : $$3);
+         double $$14 = $$6.f + azc.a($$1.z, -1.0, 1.0) * ($$9 ? 0.5 : $$3);
+         double $$15 = $$7 ? azc.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$16 = $$8 ? azc.a($$1.z, -1.0, 1.0) : 0.0;
+         double $$17 = $$9 ? azc.a($$1.z, -1.0, 1.0) : 0.0;
+         $$1.a($$4, $$12, $$13, $$14, $$15, $$16, $$17);
       }
    }
 
-   private void a(T $$0, int $$1) {
-      this.c(this.d + 1);
-      if ($$1 != this.d) {
-         System.arraycopy(this.c, $$1, this.c, $$1 + 1, this.d - $$1);
-      }
-
-      this.c[$$1] = $$0;
-      this.d++;
+   public static void a(dds $$0, je $$1, jj $$2, ll $$3, eye $$4, double $$5) {
+      eye $$6 = eye.b($$1);
+      int $$7 = $$2.j();
+      int $$8 = $$2.k();
+      int $$9 = $$2.l();
+      double $$10 = $$6.d + ($$7 == 0 ? azc.a($$0.z, -0.5, 0.5) : (double)$$7 * $$5);
+      double $$11 = $$6.e + ($$8 == 0 ? azc.a($$0.z, -0.5, 0.5) : (double)$$8 * $$5);
+      double $$12 = $$6.f + ($$9 == 0 ? azc.a($$0.z, -0.5, 0.5) : (double)$$9 * $$5);
+      double $$13 = $$7 == 0 ? $$4.a() : 0.0;
+      double $$14 = $$8 == 0 ? $$4.b() : 0.0;
+      double $$15 = $$9 == 0 ? $$4.c() : 0.0;
+      $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   void d(int $$0) {
-      this.d--;
-      if ($$0 != this.d) {
-         System.arraycopy(this.c, $$0 + 1, this.c, $$0, this.d - $$0);
-      }
-
-      this.c[this.d] = null;
+   public static void a(dds $$0, je $$1, azk $$2, ll $$3) {
+      double $$4 = (double)$$1.u() + $$2.j();
+      double $$5 = (double)$$1.v() - 0.05;
+      double $$6 = (double)$$1.w() + $$2.j();
+      $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   private T e(int $$0) {
-      return this.c[$$0];
+   public static void a(ddt $$0, je $$1, int $$2, ll $$3) {
+      double $$4 = 0.5;
+      dua $$5 = $$0.a_($$1);
+      double $$6 = $$5.l() ? 1.0 : $$5.f($$0, $$1).c(jj.a.b);
+      a($$0, $$1, $$2, 0.5, $$6, true, $$3);
    }
 
-   public T a(T $$0) {
-      int $$1 = this.c($$0);
-      if ($$1 >= 0) {
-         return this.e($$1);
-      } else {
-         this.a($$0, b($$1));
-         return $$0;
-      }
-   }
+   public static void a(ddt $$0, je $$1, int $$2, double $$3, double $$4, boolean $$5, ll $$6) {
+      azk $$7 = $$0.C_();
 
-   @Override
-   public boolean remove(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      if ($$1 >= 0) {
-         this.d($$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Nullable
-   public T b(T $$0) {
-      int $$1 = this.c($$0);
-      return $$1 >= 0 ? this.e($$1) : null;
-   }
-
-   public T b() {
-      return this.e(0);
-   }
-
-   public T c() {
-      return this.e(this.d - 1);
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      int $$1 = this.c((T)$$0);
-      return $$1 >= 0;
-   }
-
-   @Override
-   public Iterator<T> iterator() {
-      return new azg.a();
-   }
-
-   @Override
-   public int size() {
-      return this.d;
-   }
-
-   @Override
-   public Object[] toArray() {
-      return Arrays.copyOf(this.c, this.d, Object[].class);
-   }
-
-   @Override
-   public <U> U[] toArray(U[] $$0) {
-      if ($$0.length < this.d) {
-         return (U[])Arrays.copyOf(this.c, this.d, (Class<? extends T[]>)$$0.getClass());
-      } else {
-         System.arraycopy(this.c, 0, $$0, 0, this.d);
-         if ($$0.length > this.d) {
-            $$0[this.d] = null;
-         }
-
-         return $$0;
-      }
-   }
-
-   @Override
-   public void clear() {
-      Arrays.fill(this.c, 0, this.d, null);
-      this.d = 0;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof azg<?> $$1 && this.b.equals($$1.b)) {
-            return this.d == $$1.d && Arrays.equals(this.c, $$1.c);
-         }
-
-         return super.equals($$0);
-      }
-   }
-
-   class a implements Iterator<T> {
-      private int b;
-      private int c = -1;
-
-      @Override
-      public boolean hasNext() {
-         return this.b < azg.this.d;
-      }
-
-      @Override
-      public T next() {
-         if (this.b >= azg.this.d) {
-            throw new NoSuchElementException();
-         } else {
-            this.c = this.b++;
-            return azg.this.c[this.c];
+      for (int $$8 = 0; $$8 < $$2; $$8++) {
+         double $$9 = $$7.k() * 0.02;
+         double $$10 = $$7.k() * 0.02;
+         double $$11 = $$7.k() * 0.02;
+         double $$12 = 0.5 - $$3;
+         double $$13 = (double)$$1.u() + $$12 + $$7.j() * $$3 * 2.0;
+         double $$14 = (double)$$1.v() + $$7.j() * $$4;
+         double $$15 = (double)$$1.w() + $$12 + $$7.j() * $$3 * 2.0;
+         if ($$5 || !$$0.a_(je.a($$13, $$14, $$15).e()).l()) {
+            $$0.a($$6, $$13, $$14, $$15, $$9, $$10, $$11);
          }
       }
+   }
 
-      @Override
-      public void remove() {
-         if (this.c == -1) {
-            throw new IllegalStateException();
-         } else {
-            azg.this.d(this.c);
-            this.b--;
-            this.c = -1;
-         }
+   public static void a(ddt $$0, je $$1, int $$2) {
+      eye $$3 = $$1.b().b(0.0, 0.5, 0.0);
+      lf $$4 = new lf(ln.bb, $$0.a_($$1));
+
+      for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {
+         double $$6 = $$3.d + $$0.C_().k() / 2.0;
+         double $$7 = $$3.e;
+         double $$8 = $$3.f + $$0.C_().k() / 2.0;
+         double $$9 = $$0.C_().k() * 0.2F;
+         double $$10 = $$0.C_().k() * 0.2F;
+         double $$11 = $$0.C_().k() * 0.2F;
+         $$0.a($$4, $$6, $$7, $$8, $$9, $$10, $$11);
+      }
+
+      for (int $$12 = 0; (float)$$12 < (float)$$2 / 1.5F; $$12++) {
+         double $$13 = $$3.d + 3.5 * Math.cos((double)$$12) + $$0.C_().k() / 2.0;
+         double $$14 = $$3.e;
+         double $$15 = $$3.f + 3.5 * Math.sin((double)$$12) + $$0.C_().k() / 2.0;
+         double $$16 = $$0.C_().k() * 0.05F;
+         double $$17 = $$0.C_().k() * 0.05F;
+         double $$18 = $$0.C_().k() * 0.05F;
+         $$0.a($$4, $$13, $$14, $$15, $$16, $$17, $$18);
       }
    }
 }

@@ -1,45 +1,40 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ehc extends eha {
-   public static final MapCodec<ehc> a = MapCodec.unit(() -> ehc.b);
-   public static final ehc b = new ehc();
+public record ehc(jr<dgv> b, jr<dgv> c, ehh d, int e, int f, float g) {
+   public static final Codec<ehc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               kc.a(lv.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
+               kc.a(lv.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
+               ehh.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
+               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, ehc::new)
+   );
 
-   @Override
-   protected ehb<?> a() {
-      return ehb.a;
+   public jr<dgv> a() {
+      return this.b;
    }
 
-   @Override
-   public void a(eha.a $$0) {
-      ayw $$1 = $$0.b();
-      $$0.c().forEach($$2 -> {
-         if ($$1.a(3) > 0) {
-            jd $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               $$0.a($$3, dov.d);
-            }
-         }
+   public jr<dgv> b() {
+      return this.c;
+   }
 
-         if ($$1.a(3) > 0) {
-            jd $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               $$0.a($$4, dov.f);
-            }
-         }
+   public ehh c() {
+      return this.d;
+   }
 
-         if ($$1.a(3) > 0) {
-            jd $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               $$0.a($$5, dov.e);
-            }
-         }
+   public int d() {
+      return this.e;
+   }
 
-         if ($$1.a(3) > 0) {
-            jd $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               $$0.a($$6, dov.c);
-            }
-         }
-      });
+   public int e() {
+      return this.f;
+   }
+
+   public float f() {
+      return this.g;
    }
 }

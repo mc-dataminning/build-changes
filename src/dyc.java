@@ -1,34 +1,24 @@
-public interface dyc {
-   dyc a = new dyc() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+import java.util.List;
+import java.util.stream.Stream;
 
-      @Override
-      public void a(dyb $$0) {
-      }
+public class dyc<T> {
+   private final dcy a;
+   private final List<T> b;
 
-      @Override
-      public void b(dyb $$0) {
-      }
+   public dyc(dcy $$0, List<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      @Override
-      public boolean a(jm<dxz> $$0, exc $$1, dxz.a $$2, dyc.a $$3) {
-         return false;
-      }
-   };
+   public dcy a() {
+      return this.a;
+   }
 
-   boolean a();
+   public Stream<T> b() {
+      return this.b.stream();
+   }
 
-   void a(dyb var1);
-
-   void b(dyb var1);
-
-   boolean a(jm<dxz> var1, exc var2, dxz.a var3, dyc.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dyb var1, exc var2);
+   public boolean c() {
+      return this.b.isEmpty();
    }
 }

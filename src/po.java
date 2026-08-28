@@ -1,19 +1,142 @@
-import java.util.List;
-import java.util.Set;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
-public abstract class po extends pz<dac> {
-   public po(mc $$0, CompletableFuture<jo.a> $$1) {
-      super($$0, lu.aL, $$1);
+public class po extends qc<det> {
+   public po(md $$0, CompletableFuture<jp.a> $$1) {
+      super($$0, lv.aF, $$1);
    }
 
-   protected void a(jo.a $$0, akq<dac>... $$1) {
-      this.b(awh.a).a($$1);
-      Set<akq<dac>> $$2 = Set.of($$1);
-      List<String> $$3 = $$0.b(lu.aL).b().filter($$1x -> !$$2.contains($$1x.e().get())).map(jm::g).collect(Collectors.toList());
-      if (!$$3.isEmpty()) {
-         throw new IllegalStateException("Not all enchantments were registered for tooltip ordering. Missing: " + String.join(", ", $$3));
-      }
+   @Override
+   protected void a(jp.a $$0) {
+      this.b(awr.a).a(dfa.X).a(dfa.V).a(dfa.T).a(dfa.R);
+      this.b(awr.b).b(awr.a).a(dfa.W).a(dfa.S).a(dfa.U).a(dfa.Q).a(dfa.P);
+      this.b(awr.c).a(dfa.M).a(dfa.N);
+      this.b(awr.d).a(dfa.K).a(dfa.L);
+      this.b(awr.e).a(dfa.D).a(dfa.H).a(dfa.I).a(dfa.J).a(dfa.G).a(dfa.E);
+      this.b(awr.f).a(dfa.A).a(dfa.B).a(dfa.C);
+      this.b(awr.g).a(dfa.t).a(dfa.v).a(dfa.u);
+      this.b(awr.h).a(dfa.p).a(dfa.q).a(dfa.n).a(dfa.o);
+      this.b(awr.i).a(dfa.z).a(dfa.x).a(dfa.y);
+      this.b(awr.j).a(dfa.i).a(dfa.j).a(dfa.k).a(dfa.m).a(dfa.l).a(dfa.F);
+      this.b(awr.k).a(dfa.r).a(dfa.s).a(dfa.w);
+      qc.b<det> $$1 = this.b(awr.m);
+      dfh.a.a.a().forEach($$1::a);
+      qc.b<det> $$2 = this.b(awr.l);
+      dfh.a.b.a().forEach($$2::a);
+      this.b(awr.n).a(dfa.ah).a(dfa.ai).a(dfa.aj).a(dfa.ak).a(dfa.al);
+      this.b(awr.p).b(awr.c);
+      this.b(awr.q).a(dfa.f);
+      this.b(awr.r).a(dfa.q).a(dfa.d).a(dfa.G);
+      this.b(awr.s).a(dfa.z).a(dfa.x);
+      this.b(awr.t)
+         .b(awr.b)
+         .b(awr.d)
+         .b(awr.c)
+         .b(awr.e)
+         .b(awr.g)
+         .b(awr.h)
+         .b(awr.i)
+         .b(awr.j)
+         .a(dfa.O)
+         .a(dfa.Y)
+         .a(dfa.e)
+         .a(dfa.w)
+         .a(dfa.f)
+         .a(dfa.r)
+         .a(dfa.d)
+         .a(dfa.b)
+         .a(dfa.c)
+         .a(dfa.g)
+         .a(dfa.h)
+         .a(dfa.s)
+         .a(dfa.Z)
+         .a(dfa.aa);
+      this.b(awr.u).b(awr.f);
+      this.b(awr.Y).a(dfa.ab);
+      this.b(awr.v).b(awr.a);
+      this.b(awr.X).b(awr.b).b(awr.d);
+      this.b(awr.w).a(dfa.W).a(dfa.U).a(dfa.S).a(dfa.X).a(dfa.V).a(dfa.T);
+      this.b(awr.x).a(dfa.Q).a(dfa.P).a(dfa.R);
+      this.b(awr.y).a(dfa.f).a(dfa.b).a(dfa.r).a(dfa.d).a(dfa.p).b(awr.e).a(dfa.F);
+      this.b(awr.z).a(dfa.f);
+      this.b(awr.A).b(awr.i);
+      this.b(awr.B).b(awr.b);
+      this.b(awr.C).a(dfa.g).a(dfa.h);
+      this.b(awr.D).b(awr.f).b(awr.g).a(dfa.s).a(dfa.w).a(dfa.O).b(awr.e);
+      this.b(awr.E).b(awr.c).b(awr.d).b(awr.h).b(awr.j).a(dfa.Y).a(dfa.e).a(dfa.Z).a(dfa.aa).a(dfa.r).a(dfa.d).a(dfa.b).a(dfa.c);
+      this.b(awr.F).b(awr.c);
+      this.b(awr.G).b(awr.b);
+      this.b(awr.J).a(dfa.g);
+      this.b(awr.K).a(dfa.f);
+      this.b(awr.L).a(dfa.b).a(dfa.D);
+      this.b(awr.M).a(dfa.r);
+      this.b(awr.N).a(dfa.d);
+      this.b(awr.O).a(dfa.p);
+      this.b(awr.P).a(dfa.p).a(dfa.q).a(dfa.n).a(dfa.o).a(dfa.m).a(dfa.x);
+      this.b(awr.Q).a(dfa.l);
+      this.b(awr.o)
+         .a(dfa.b)
+         .a(dfa.c)
+         .a(dfa.d)
+         .a(dfa.e)
+         .a(dfa.f)
+         .a(dfa.i)
+         .a(dfa.j)
+         .a(dfa.k)
+         .a(dfa.l)
+         .a(dfa.m)
+         .a(dfa.n)
+         .a(dfa.o)
+         .a(dfa.p)
+         .a(dfa.q)
+         .a(dfa.r)
+         .a(dfa.s)
+         .a(dfa.t)
+         .a(dfa.u)
+         .a(dfa.v)
+         .a(dfa.w)
+         .a(dfa.x)
+         .a(dfa.y)
+         .a(dfa.z)
+         .a(dfa.A)
+         .a(dfa.B)
+         .a(dfa.C)
+         .a(dfa.D)
+         .a(dfa.F)
+         .a(dfa.G)
+         .a(dfa.H)
+         .a(dfa.I)
+         .a(dfa.J)
+         .a(dfa.Y)
+         .a(dfa.Z)
+         .a(dfa.aa);
+      this.b(awr.H).b(awr.l);
+      qc.b<det> $$3 = this.b(awr.I);
+      dfh.a.b.a().filter(Predicate.not(dfa.ab::equals)).forEach($$3::a);
+      this.b(awr.R).b(awr.m);
+      this.b(awr.S).a(dfa.af);
+      this.b(awr.T).a(dfa.ae).a(dfa.ac).a(dfa.af).a(dfa.ad);
+      this.b(awr.U).a(dfa.ab);
+      this.b(awr.V).b(awr.m);
+      this.b(awr.W).a(dfa.ai).a(dfa.aj);
+      this.b(awr.ac).a(dfa.P);
+      this.b(awr.Z).b(awr.b).b(awr.d);
+      this.b(awr.aa).a(dfa.g).a(dfa.h);
+      this.b(awr.ab).b(awr.b).b(awr.d).a(dfa.g).a(dfa.h);
+      this.b(awr.af).a(dfa.Y);
+      this.b(awr.ag).a(dfa.Y);
+      this.b(awr.ah).a(dfa.a);
+      this.b(awr.ai).a(dfa.d).a(dfa.e).a(dfa.H).a(dfa.I).a(dfa.G).a(dfa.W).a(dfa.X).a(dfa.F).a(dfa.ab).a(dfa.L).a(dfa.q).a(dfa.N).b(awr.n);
+      this.b(awr.aj).a(dfa.f).a(dfa.P).b(awr.i).b(awr.k).b(awr.m).b(awr.f).a(dfa.h);
+      this.b(awr.ak).a(dfa.f);
+      this.b(awr.al).a(dfa.d).a(dfa.e).a(dfa.W).a(dfa.q).a(dfa.L).a(dfa.N).a(dfa.H).a(dfa.I).a(dfa.G).a(dfa.F);
+      this.b(awr.am).b(awr.d);
+      this.b(awr.an).a(dfa.aa);
+      this.b(awr.ao).a(dfa.W).a(dfa.X);
+      this.b(awr.ap).b(awr.d);
+      this.b(awr.aq).a(dfa.g).a(dfa.h);
+      this.b(awr.ar).a(dfa.d).a(dfa.e).a(dfa.W).a(dfa.q).a(dfa.L).a(dfa.N).a(dfa.H).a(dfa.I).a(dfa.G).a(dfa.F);
+      this.b(awr.ad).a(dfa.z).a(dfa.Y).a(dfa.h).a(dfa.G).a(dfa.H).a(dfa.I).a(dfa.g).a(dfa.x);
+      this.b(awr.ae).a(dfa.A).a(dfa.ag).a(dfa.ae).a(dfa.f).a(dfa.B).a(dfa.ac).a(dfa.r).a(dfa.s).a(dfa.af).a(dfa.ad).a(dfa.w).a(dfa.C);
    }
 }

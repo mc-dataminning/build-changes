@@ -1,62 +1,166 @@
-public class gbm extends gdn {
-   private static final float a = 0.0025F;
-   private static final int b = 300;
-   private static final int F = 300;
-   private static final float G = 0.25F;
-   private static final float H = 2.0F;
-   private float I;
-   private final float J;
-   private final float K;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   protected gbm(fzf $$0, double $$1, double $$2, double $$3, gdi $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a($$4.a(this.r.a(12), 12));
-      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
-      this.J = this.r.i();
-      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
-      this.t = 300;
-      this.u = 7.5E-4F;
-      float $$5 = this.r.h() ? 0.05F : 0.075F;
-      this.D = $$5;
-      this.b($$5, $$5);
-      this.B = 1.0F;
+public class gbm {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bqd<Runnable> b = bqd.a(ad.g(), "server-list-io");
+   private static final int c = 16;
+   private final fib d;
+   private final List<gbl> e = Lists.newArrayList();
+   private final List<gbl> f = Lists.newArrayList();
+
+   public gbm(fib $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public gcr b() {
-      return gcr.b;
-   }
-
-   @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      }
-
-      if (!this.o) {
-         float $$0 = (float)(300 - this.t);
-         float $$1 = Math.min($$0 / 300.0F, 1.0F);
-         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
-         this.j += $$2 * 0.0025F;
-         this.l += $$3 * 0.0025F;
-         this.k = this.k - (double)this.u;
-         this.I = this.I + this.K / 20.0F;
-         this.A = this.z;
-         this.z = this.z + this.I / 20.0F;
-         this.a(this.j, this.k, this.l);
-         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
-            this.k();
+      try {
+         this.e.clear();
+         this.f.clear();
+         uf $$0 = us.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
          }
 
-         if (!this.o) {
-            this.j = this.j * (double)this.B;
-            this.k = this.k * (double)this.B;
-            this.l = this.l * (double)this.B;
+         ul $$1 = $$0.c("servers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            uf $$3 = $$1.a($$2);
+            gbl $$4 = gbl.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
+            }
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
+   }
+
+   public void b() {
+      try {
+         ul $$0 = new ul();
+
+         for (gbl $$1 : this.e) {
+            uf $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (gbl $$3 : this.f) {
+            uf $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         uf $$5 = new uf();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         us.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ad.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
+   }
+
+   public gbl a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Nullable
+   public gbl a(String $$0) {
+      for (gbl $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
          }
       }
+
+      for (gbl $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   @Nullable
+   public gbl b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         gbl $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
+      }
+
+      return null;
+   }
+
+   public void a(gbl $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(gbl $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      gbl $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, gbl $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(gbl $$0, List<gbl> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         gbl $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public static void b(gbl $$0) {
+      b.a(() -> {
+         gbm $$1 = new gbm(fib.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
+
+         $$1.b();
+      });
    }
 }

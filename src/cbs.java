@@ -1,67 +1,65 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cbs extends cam {
-   private static final int a = 10;
-   private final btw b;
-   private final int c;
-   @Nullable
-   private jd d;
+public class cbs extends cbc {
+   private final buh a;
+   private buf b;
+   private int c;
 
-   public cbs(btw $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(cam.a.a));
+   public cbs(buh $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cbc.a.a, cbc.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cR()) {
-         return false;
-      } else if (this.b.dO().R()) {
-         return false;
-      } else if (this.b.dR().a(this.c) != 0) {
+      buf $$0 = this.a.m();
+      if ($$0 == null) {
          return false;
       } else {
-         aqu $$0 = (aqu)this.b.dO();
-         jd $$1 = this.b.do();
-         if (!$$0.a($$1, 6)) {
-            return false;
-         } else {
-            exc $$2 = cem.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kf.a($$1x))));
-            this.d = $$2 == null ? null : jd.a((jw)$$2);
-            return this.d != null;
-         }
+         this.b = $$0;
+         return true;
       }
    }
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.N().l() && this.b.N().h().equals(this.d);
+      if (!this.b.bI()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > 225.0 ? false : !this.a.P().m() || this.b();
+      }
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+      this.a.P().o();
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (this.d != null) {
-         cda $$0 = this.b.N();
-         if ($$0.l() && !this.d.a(this.b.dm(), 10.0)) {
-            exc $$1 = exc.c(this.d);
-            exc $$2 = this.b.dm();
-            exc $$3 = $$2.d($$1);
-            $$1 = $$3.a(0.4).e($$1);
-            exc $$4 = $$1.d($$2).d().a(10.0).e($$2);
-            jd $$5 = jd.a((jw)$$4);
-            $$5 = this.b.dO().a(dyy.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
-            }
+      this.a.K().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dn() * 2.0F * this.a.dn() * 2.0F);
+      double $$1 = this.a.i(this.b.dx(), this.b.dz(), this.b.dD());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.P().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.E(this.b);
          }
       }
-   }
-
-   private void h() {
-      ayw $$0 = this.b.dR();
-      jd $$1 = this.b.dO().a(dyy.a.f, this.b.do().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.N().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
    }
 }

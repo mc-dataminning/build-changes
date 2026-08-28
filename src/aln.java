@@ -1,18 +1,13 @@
-public class aln implements Runnable {
-   private final int a;
-   private final Runnable b;
+public final class aln extends RuntimeException {
+   public static final aln a = new aln();
 
-   public aln(int $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.a;
+   private aln() {
+      this.setStackTrace(new StackTraceElement[0]);
    }
 
    @Override
-   public void run() {
-      this.b.run();
+   public synchronized Throwable fillInStackTrace() {
+      this.setStackTrace(new StackTraceElement[0]);
+      return this;
    }
 }

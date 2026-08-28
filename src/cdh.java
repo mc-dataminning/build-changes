@@ -1,36 +1,59 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cdh extends cdr<ckz> {
-   public static final int a = 24;
+public class cdh<T> {
+   private final T a;
+   private long b;
 
-   @Override
-   public Set<ccs<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(ccs.B)));
+   public cdh(T $$0, long $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   protected void a(aqu $$0, ckz $$1) {
-      super.a($$0, $$1);
-      $$1.dT()
-         .c(ccs.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bsw.e)
-         .filter($$1x -> cdy.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dT().a(ccs.B, $$1x), () -> $$1.dT().b(ccs.B));
+   public void a() {
+      if (this.e()) {
+         this.b--;
+      }
+   }
+
+   public static <T> cdh<T> a(T $$0) {
+      return new cdh<>($$0, Long.MAX_VALUE);
+   }
+
+   public static <T> cdh<T> a(T $$0, long $$1) {
+      return new cdh<>($$0, $$1);
+   }
+
+   public long b() {
+      return this.b;
+   }
+
+   public T c() {
+      return this.a;
+   }
+
+   public boolean d() {
+      return this.b <= 0L;
    }
 
    @Override
-   protected int b() {
-      return 24;
+   public String toString() {
+      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
    }
 
-   @Override
-   protected int c() {
-      return 24;
+   @bai
+   public boolean e() {
+      return this.b != Long.MAX_VALUE;
+   }
+
+   public static <T> Codec<cdh<T>> a(Codec<T> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(
+                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
+                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
+               )
+               .apply($$1, ($$0xx, $$1x) -> new cdh<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
+      );
    }
 }

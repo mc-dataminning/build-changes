@@ -1,18 +1,36 @@
-import java.util.Optional;
+public class ahu implements zk<agq> {
+   public static final zb<wa, ahu> a = zk.a(ahu::a, ahu::new);
+   private static final int b = 2;
+   private final boolean c;
 
-public record ahu(Optional<jm<brx>> b, Optional<jm<brx>> c) implements zg<agi> {
-   public static final yx<wk, ahu> a = yx.a(brx.b.a(yv::a), ahu::b, brx.b.a(yv::a), ahu::e, ahu::new);
-
-   @Override
-   public zi<ahu> a() {
-      return agg.bS;
+   public ahu(cnm $$0) {
+      this.c = $$0.b;
    }
 
-   public void a(agi $$0) {
+   private ahu(wa $$0) {
+      byte $$1 = $$0.readByte();
+      this.c = ($$1 & 2) != 0;
+   }
+
+   private void a(wa $$0) {
+      byte $$1 = 0;
+      if (this.c) {
+         $$1 = (byte)($$1 | 2);
+      }
+
+      $$0.l($$1);
+   }
+
+   @Override
+   public zm<ahu> a() {
+      return ago.bM;
+   }
+
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public Optional<jm<brx>> e() {
+   public boolean b() {
       return this.c;
    }
 }

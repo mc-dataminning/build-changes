@@ -1,45 +1,184 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.UUID;
+import net.minecraft.server.MinecraftServer;
 
-public abstract class esa extends esh {
-   protected final List<esh> d;
-   private final erz a;
+public class esa implements esm {
+   private final esn a;
+   private final esm b;
 
-   protected esa(List<esh> $$0, List<evc> $$1) {
-      super($$1);
-      this.d = $$0;
-      this.a = this.a($$0);
+   public esa(esn $$0, esm $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public void a(erx $$0) {
-      super.a($$0);
-      if (this.d.isEmpty()) {
-         $$0.b("Empty children list");
-      }
-
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         this.d.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
+   public je a() {
+      return this.b.a();
    }
-
-   protected abstract erz a(List<? extends erz> var1);
 
    @Override
-   public final boolean expand(err $$0, Consumer<esg> $$1) {
-      return !this.a($$0) ? false : this.a.expand($$0, $$1);
+   public float b() {
+      return this.b.b();
    }
 
-   public static <T extends esa> MapCodec<T> a(esa.a<T> $$0) {
-      return RecordCodecBuilder.mapCodec(
-         $$1 -> $$1.group(esf.a.listOf().optionalFieldOf("children", List.of()).forGetter($$0xx -> $$0xx.d)).and(a($$1).t1()).apply($$1, $$0::create)
-      );
+   @Override
+   public long c() {
+      return this.b.c();
    }
 
-   @FunctionalInterface
-   public interface a<T extends esa> {
-      T create(List<esh> var1, List<evc> var2);
+   @Override
+   public long d() {
+      return this.b.d();
+   }
+
+   @Override
+   public String e() {
+      return this.a.e();
+   }
+
+   @Override
+   public int f() {
+      return this.b.f();
+   }
+
+   @Override
+   public void a(int $$0) {
+   }
+
+   @Override
+   public boolean g() {
+      return this.b.g();
+   }
+
+   @Override
+   public int h() {
+      return this.b.h();
+   }
+
+   @Override
+   public boolean i() {
+      return this.b.i();
+   }
+
+   @Override
+   public int j() {
+      return this.b.j();
+   }
+
+   @Override
+   public ddp k() {
+      return this.a.k();
+   }
+
+   @Override
+   public void a(long $$0) {
+   }
+
+   @Override
+   public void b(long $$0) {
+   }
+
+   @Override
+   public void a(je $$0, float $$1) {
+   }
+
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public void b(int $$0) {
+   }
+
+   @Override
+   public void b(boolean $$0) {
+   }
+
+   @Override
+   public void c(int $$0) {
+   }
+
+   @Override
+   public void a(ddp $$0) {
+   }
+
+   @Override
+   public boolean l() {
+      return this.a.l();
+   }
+
+   @Override
+   public boolean m() {
+      return this.a.m();
+   }
+
+   @Override
+   public boolean n() {
+      return this.b.n();
+   }
+
+   @Override
+   public void c(boolean $$0) {
+   }
+
+   @Override
+   public ddo o() {
+      return this.a.o();
+   }
+
+   @Override
+   public dvr.c p() {
+      return this.b.p();
+   }
+
+   @Override
+   public void a(dvr.c $$0) {
+   }
+
+   @Override
+   public brh q() {
+      return this.a.q();
+   }
+
+   @Override
+   public boolean r() {
+      return this.a.r();
+   }
+
+   @Override
+   public exr<MinecraftServer> s() {
+      return this.b.s();
+   }
+
+   @Override
+   public int t() {
+      return 0;
+   }
+
+   @Override
+   public void d(int $$0) {
+   }
+
+   @Override
+   public int u() {
+      return 0;
+   }
+
+   @Override
+   public void e(int $$0) {
+   }
+
+   @Override
+   public UUID v() {
+      return null;
+   }
+
+   @Override
+   public void a(UUID $$0) {
+   }
+
+   @Override
+   public void a(p $$0, ddu $$1) {
+      $$0.a("Derived", true);
+      this.b.a($$0, $$1);
    }
 }

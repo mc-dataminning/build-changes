@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cry {
+@FunctionalInterface
+public interface cry {
+   @Nullable
+   cqq createMenu(int var1, cno var2, cnp var3);
 }

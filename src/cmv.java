@@ -1,30 +1,115 @@
-import java.util.function.IntFunction;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public enum cmv implements ayr {
-   a(0, "options.chat.visibility.full"),
-   b(1, "options.chat.visibility.system"),
-   c(2, "options.chat.visibility.hidden");
+public class cmv {
+   public static final Codec<cmv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayl.k.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
+               ayl.k.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
+               ayl.k.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
+            )
+            .apply($$0, cmv::new)
+   );
+   public static final int b = 4;
+   private static final double c = 16.0;
+   private static final int d = 48;
+   private static final int e = 12000;
+   private static final int f = 200;
+   private int g;
+   private int h;
+   private int i;
 
-   private static final IntFunction<cmv> d = axe.a(cmv::a, values(), axe.a.b);
-   private final int e;
-   private final String f;
-
-   private cmv(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public cmv(int $$0, int $$1, int $$2) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$2;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public void a() {
+      if (this.g >= 12000) {
+         this.f();
+         this.g = 0;
+      } else {
+         this.g++;
+      }
+
+      if (this.i > 0) {
+         this.i--;
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   public void b() {
+      this.g = 0;
+      this.h = 0;
+      this.i = 0;
    }
 
-   public static cmv a(int $$0) {
-      return d.apply($$0);
+   public static OptionalInt a(arg $$0, je $$1, arh $$2) {
+      if (a($$0, $$1)) {
+         return OptionalInt.empty();
+      } else {
+         List<arh> $$3 = b($$0, $$1);
+         if (!$$3.contains($$2)) {
+            $$3.add($$2);
+         }
+
+         if ($$3.stream().anyMatch($$0x -> $$0x.ad().map(cmv::d).orElse(false))) {
+            return OptionalInt.empty();
+         } else {
+            Optional<cmv> $$4 = $$3.stream().flatMap($$0x -> $$0x.ad().stream()).max(Comparator.comparingInt(cmv::c));
+            if ($$4.isPresent()) {
+               cmv $$5 = $$4.get();
+               $$5.e();
+               $$3.forEach($$1x -> $$1x.ad().ifPresent($$1xx -> $$1xx.a($$5)));
+               return OptionalInt.of($$5.h);
+            } else {
+               return OptionalInt.empty();
+            }
+         }
+      }
+   }
+
+   private boolean d() {
+      return this.i > 0;
+   }
+
+   private static boolean a(arg $$0, je $$1) {
+      exz $$2 = exz.a(eye.b($$1), 48.0, 48.0, 48.0);
+      return !$$0.a(cmt.class, $$2).isEmpty();
+   }
+
+   private static List<arh> b(arg $$0, je $$1) {
+      eye $$2 = eye.b($$1);
+      return $$0.a($$1x -> !$$1x.P_() && $$1x.dq().a((jx)$$2, 16.0) && $$1x.bI());
+   }
+
+   private void e() {
+      if (!this.d()) {
+         this.g = 0;
+         this.i = 200;
+         this.a(this.c() + 1);
+      }
+   }
+
+   private void f() {
+      this.a(this.c() - 1);
+   }
+
+   public void a(int $$0) {
+      this.h = azc.a($$0, 0, 4);
+   }
+
+   public int c() {
+      return this.h;
+   }
+
+   private void a(cmv $$0) {
+      this.h = $$0.h;
+      this.i = $$0.i;
+      this.g = $$0.g;
    }
 }

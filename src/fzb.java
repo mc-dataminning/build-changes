@@ -1,218 +1,90 @@
-import com.mojang.logging.LogUtils;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.concurrent.atomic.AtomicReferenceArray;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fzb extends fxa<gts> {
+   private static final String a = "body0";
+   private static final String b = "body1";
+   private static final String c = "right_middle_front_leg";
+   private static final String d = "left_middle_front_leg";
+   private static final String e = "right_middle_hind_leg";
+   private static final String f = "left_middle_hind_leg";
+   private final gab g;
+   private final gab i;
+   private final gab j;
+   private final gab k;
+   private final gab l;
+   private final gab m;
+   private final gab n;
+   private final gab o;
+   private final gab p;
+   private final gab q;
 
-public class fzb extends dvc {
-   static final Logger a = LogUtils.getLogger();
-   private final dvi b;
-   private final eot c;
-   volatile fzb.a d;
-   final fzf e;
+   public fzb(gab $$0) {
+      this.g = $$0;
+      this.i = $$0.b("head");
+      this.j = $$0.b("right_hind_leg");
+      this.k = $$0.b("left_hind_leg");
+      this.l = $$0.b("right_middle_hind_leg");
+      this.m = $$0.b("left_middle_hind_leg");
+      this.n = $$0.b("right_middle_front_leg");
+      this.o = $$0.b("left_middle_front_leg");
+      this.p = $$0.b("right_front_leg");
+      this.q = $$0.b("left_front_leg");
+   }
 
-   public fzb(fzf $$0, int $$1) {
-      this.e = $$0;
-      this.b = new dve($$0, new dcd(0, 0), $$0.H_().d(lu.aF).g(ded.b));
-      this.c = new eot(this, true, $$0.D_().g());
-      this.d = new fzb.a(b($$1));
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      int $$2 = 15;
+      $$1.a("head", gag.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), gad.a(0.0F, 15.0F, -3.0F));
+      $$1.a("body0", gag.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gad.a(0.0F, 15.0F, 0.0F));
+      $$1.a("body1", gag.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), gad.a(0.0F, 15.0F, 9.0F));
+      gag $$3 = gag.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      gag $$4 = gag.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      float $$5 = (float) (Math.PI / 4);
+      float $$6 = (float) (Math.PI / 8);
+      $$1.a("right_hind_leg", $$3, gad.a(-4.0F, 15.0F, 2.0F, 0.0F, (float) (Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_hind_leg", $$4, gad.a(4.0F, 15.0F, 2.0F, 0.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4)));
+      $$1.a("right_middle_hind_leg", $$3, gad.a(-4.0F, 15.0F, 1.0F, 0.0F, (float) (Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_hind_leg", $$4, gad.a(4.0F, 15.0F, 1.0F, 0.0F, (float) (-Math.PI / 8), 0.58119464F));
+      $$1.a("right_middle_front_leg", $$3, gad.a(-4.0F, 15.0F, 0.0F, 0.0F, (float) (-Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_front_leg", $$4, gad.a(4.0F, 15.0F, 0.0F, 0.0F, (float) (Math.PI / 8), 0.58119464F));
+      $$1.a("right_front_leg", $$3, gad.a(-4.0F, 15.0F, -1.0F, 0.0F, (float) (-Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_front_leg", $$4, gad.a(4.0F, 15.0F, -1.0F, 0.0F, (float) (Math.PI / 4), (float) (Math.PI / 4)));
+      return gah.a($$0, 64, 32);
    }
 
    @Override
-   public eot p() {
-      return this.c;
+   public gab a() {
+      return this.g;
    }
 
-   private static boolean a(@Nullable dvi $$0, int $$1, int $$2) {
-      if ($$0 == null) {
-         return false;
-      } else {
-         dcd $$3 = $$0.f();
-         return $$3.e == $$1 && $$3.f == $$2;
-      }
-   }
-
-   public void a(dcd $$0) {
-      if (this.d.b($$0.e, $$0.f)) {
-         int $$1 = this.d.a($$0.e, $$0.f);
-         dvi $$2 = this.d.a($$1);
-         if (a($$2, $$0.e, $$0.f)) {
-            this.d.a($$1, $$2, null);
-         }
-      }
-   }
-
-   @Nullable
-   public dvi b(int $$0, int $$1, dvz $$2, boolean $$3) {
-      if (this.d.b($$0, $$1)) {
-         dvi $$4 = this.d.a(this.d.a($$0, $$1));
-         if (a($$4, $$0, $$1)) {
-            return $$4;
-         }
-      }
-
-      return $$3 ? this.b : null;
-   }
-
-   @Override
-   public dcc q() {
-      return this.e;
-   }
-
-   public void a(int $$0, int $$1, vw $$2) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-      } else {
-         int $$3 = this.d.a($$0, $$1);
-         dvi $$4 = this.d.b.get($$3);
-         if (!a($$4, $$0, $$1)) {
-            a.warn("Ignoring chunk since it's not present: {}, {}", $$0, $$1);
-         } else {
-            $$4.a($$2);
-         }
-      }
-   }
-
-   @Nullable
-   public dvi a(int $$0, int $$1, vw $$2, ub $$3, Consumer<adf.b> $$4) {
-      if (!this.d.b($$0, $$1)) {
-         a.warn("Ignoring chunk since it's not in the view range: {}, {}", $$0, $$1);
-         return null;
-      } else {
-         int $$5 = this.d.a($$0, $$1);
-         dvi $$6 = this.d.b.get($$5);
-         dcd $$7 = new dcd($$0, $$1);
-         if (!a($$6, $$0, $$1)) {
-            $$6 = new dvi(this.e, $$7);
-            $$6.a($$2, $$3, $$4);
-            this.d.a($$5, $$6);
-         } else {
-            $$6.a($$2, $$3, $$4);
-         }
-
-         this.e.a($$7);
-         return $$6;
-      }
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0, boolean $$1) {
-   }
-
-   public void d(int $$0, int $$1) {
-      this.d.e = $$0;
-      this.d.f = $$1;
-   }
-
-   public void a(int $$0) {
-      int $$1 = this.d.c;
-      int $$2 = b($$0);
-      if ($$1 != $$2) {
-         fzb.a $$3 = new fzb.a($$2);
-         $$3.e = this.d.e;
-         $$3.f = this.d.f;
-
-         for (int $$4 = 0; $$4 < this.d.b.length(); $$4++) {
-            dvi $$5 = this.d.b.get($$4);
-            if ($$5 != null) {
-               dcd $$6 = $$5.f();
-               if ($$3.b($$6.e, $$6.f)) {
-                  $$3.a($$3.a($$6.e, $$6.f), $$5);
-               }
-            }
-         }
-
-         this.d = $$3;
-      }
-   }
-
-   private static int b(int $$0) {
-      return Math.max(2, $$0) + 3;
-   }
-
-   @Override
-   public String e() {
-      return this.d.b.length() + ", " + this.j();
-   }
-
-   @Override
-   public int j() {
-      return this.d.g;
-   }
-
-   @Override
-   public void a(ddf $$0, kf $$1) {
-      fgo.Q().f.b($$1.a(), $$1.b(), $$1.c());
-   }
-
-   final class a {
-      final AtomicReferenceArray<dvi> b;
-      final int c;
-      private final int d;
-      volatile int e;
-      volatile int f;
-      int g;
-
-      a(final int $$0) {
-         this.c = $$0;
-         this.d = $$0 * 2 + 1;
-         this.b = new AtomicReferenceArray<>(this.d * this.d);
-      }
-
-      int a(int $$0, int $$1) {
-         return Math.floorMod($$1, this.d) * this.d + Math.floorMod($$0, this.d);
-      }
-
-      protected void a(int $$0, @Nullable dvi $$1) {
-         dvi $$2 = this.b.getAndSet($$0, $$1);
-         if ($$2 != null) {
-            this.g--;
-            fzb.this.e.a($$2);
-         }
-
-         if ($$1 != null) {
-            this.g++;
-         }
-      }
-
-      protected dvi a(int $$0, dvi $$1, @Nullable dvi $$2) {
-         if (this.b.compareAndSet($$0, $$1, $$2) && $$2 == null) {
-            this.g--;
-         }
-
-         fzb.this.e.a($$1);
-         return $$1;
-      }
-
-      boolean b(int $$0, int $$1) {
-         return Math.abs($$0 - this.e) <= this.c && Math.abs($$1 - this.f) <= this.c;
-      }
-
-      @Nullable
-      protected dvi a(int $$0) {
-         return this.b.get($$0);
-      }
-
-      private void a(String $$0) {
-         try (FileOutputStream $$1 = new FileOutputStream($$0)) {
-            int $$2 = fzb.this.d.c;
-
-            for (int $$3 = this.f - $$2; $$3 <= this.f + $$2; $$3++) {
-               for (int $$4 = this.e - $$2; $$4 <= this.e + $$2; $$4++) {
-                  dvi $$5 = fzb.this.d.b.get(fzb.this.d.a($$4, $$3));
-                  if ($$5 != null) {
-                     dcd $$6 = $$5.f();
-                     $$1.write(($$6.e + "\t" + $$6.f + "\t" + $$5.C() + "\n").getBytes(StandardCharsets.UTF_8));
-                  }
-               }
-            }
-         } catch (IOException var10) {
-            fzb.a.error("Failed to dump chunks to file {}", $$0, var10);
-         }
-      }
+   public void a(gts $$0) {
+      this.g.e().forEach(gab::c);
+      this.i.f = $$0.U * (float) (Math.PI / 180.0);
+      this.i.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = $$0.X * 0.6662F;
+      float $$2 = $$0.Y;
+      float $$3 = -(azc.b($$1 * 2.0F + 0.0F) * 0.4F) * $$2;
+      float $$4 = -(azc.b($$1 * 2.0F + (float) Math.PI) * 0.4F) * $$2;
+      float $$5 = -(azc.b($$1 * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$6 = -(azc.b($$1 * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      float $$7 = Math.abs(azc.a($$1 + 0.0F) * 0.4F) * $$2;
+      float $$8 = Math.abs(azc.a($$1 + (float) Math.PI) * 0.4F) * $$2;
+      float $$9 = Math.abs(azc.a($$1 + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$10 = Math.abs(azc.a($$1 + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      this.j.f += $$3;
+      this.k.f -= $$3;
+      this.l.f += $$4;
+      this.m.f -= $$4;
+      this.n.f += $$5;
+      this.o.f -= $$5;
+      this.p.f += $$6;
+      this.q.f -= $$6;
+      this.j.g += $$7;
+      this.k.g -= $$7;
+      this.l.g += $$8;
+      this.m.g -= $$8;
+      this.n.g += $$9;
+      this.o.g -= $$9;
+      this.p.g += $$10;
+      this.q.g -= $$10;
    }
 }

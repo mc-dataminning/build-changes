@@ -1,33 +1,29 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class byk {
-   private static final int a = 16;
+   public static bvy<buf> a(int $$0, BiPredicate<buf, buf> $$1) {
+      return bzk.a(
+         (Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$2 -> $$2.group($$2.b(cdi.o), $$2.a(cdi.ab), $$2.c(cdi.ai), $$2.a(cdi.aj))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
+                     buf $$10 = $$2.b($$3);
+                     if (!$$10.eB()) {
+                        return false;
+                     } else {
+                        if ($$1.test($$8, $$10)) {
+                           $$6.a(true, (long)$$0);
+                        }
 
-   public static bvi<btn> a(Predicate<jm<cev>> $$0, ccs<jl> $$1) {
-      return byu.a((Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
-               jl $$6 = $$2.b($$2x);
-               jd $$7 = $$6.b();
-               if ($$3.af() == $$6.a() && $$7.a($$4.dm(), 16.0)) {
-                  aqu $$8 = $$3.o().a($$6.a());
-                  if ($$8 == null || !$$8.y().a($$7, $$0)) {
-                     $$2x.b();
-                  } else if (a($$8, $$7, $$4)) {
-                     $$2x.b();
-                     $$3.y().b($$7);
-                     agf.c($$3, $$7);
-                  }
+                        $$5.a($$10.ds(), (long)$$0);
+                        if ($$10.ao() != btq.by || $$7.ac().b(ddo.N)) {
+                           $$3.b();
+                           $$4.b();
+                        }
 
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
-   }
-
-   private static boolean a(aqu $$0, jd $$1, btn $$2) {
-      dtc $$3 = $$0.a_($$1);
-      return $$3.a(awe.S) && $$3.c(dfr.c) && !$$2.fH();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

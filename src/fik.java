@@ -1,306 +1,136 @@
-import java.time.Duration;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fik implements fjp, fki, fmb, fmg {
-   private static final double a = 0.5;
-   private static final double b = 3.0;
-   protected int g;
-   protected int h;
+public class fik {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "screenshots";
    private int c;
-   private int d;
-   private wz e;
-   protected boolean i;
-   public boolean j = true;
-   public boolean k = true;
-   protected float l = 1.0F;
-   private int f;
-   private boolean m;
-   private final fka n = new fka();
+   private final DataOutputStream d;
+   private final byte[] e;
+   private final int f;
+   private final int g;
+   private File h;
 
-   public fik(int $$0, int $$1, int $$2, int $$3, wz $$4) {
-      this.c = $$0;
-      this.d = $$1;
+   public static void a(File $$0, faz $$1, Consumer<xd> $$2) {
+      a($$0, null, $$1, $$2);
+   }
+
+   public static void a(File $$0, @Nullable String $$1, faz $$2, Consumer<xd> $$3) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> b($$0, $$1, $$2, $$3));
+      } else {
+         b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static void b(File $$0, @Nullable String $$1, faz $$2, Consumer<xd> $$3) {
+      fbp $$4 = a($$2);
+      File $$5 = new File($$0, "screenshots");
+      $$5.mkdir();
+      File $$6;
+      if ($$1 == null) {
+         $$6 = a($$5);
+      } else {
+         $$6 = new File($$5, $$1);
+      }
+
+      ad.h().execute(() -> {
+         try {
+            $$4.a($$6);
+            xd $$3x = xd.b($$6.getName()).a(n.t).a($$1xx -> $$1xx.a(new xb(xb.a.b, $$6.getAbsolutePath())));
+            $$3.accept(xd.a("screenshot.success", $$3x));
+         } catch (Exception var7) {
+            b.warn("Couldn't save screenshot", var7);
+            $$3.accept(xd.a("screenshot.failure", var7.getMessage()));
+         } finally {
+            $$4.close();
+         }
+      });
+   }
+
+   public static fbp a(faz $$0) {
+      int $$1 = $$0.c;
+      int $$2 = $$0.d;
+      fbp $$3 = new fbp($$1, $$2, false);
+      RenderSystem.bindTexture($$0.g());
+      $$3.a(0, true);
+      $$3.h();
+      return $$3;
+   }
+
+   private static File a(File $$0) {
+      String $$1 = ad.f();
+      int $$2 = 1;
+
+      while (true) {
+         File $$3 = new File($$0, $$1 + ($$2 == 1 ? "" : "_" + $$2) + ".png");
+         if (!$$3.exists()) {
+            return $$3;
+         }
+
+         $$2++;
+      }
+   }
+
+   public fik(File $$0, int $$1, int $$2, int $$3) throws IOException {
+      this.f = $$1;
       this.g = $$2;
-      this.h = $$3;
-      this.e = $$4;
+      this.c = $$3;
+      File $$4 = new File($$0, "screenshots");
+      $$4.mkdir();
+      String $$5 = "huge_" + ad.f();
+      int $$6 = 1;
+
+      while ((this.h = new File($$4, $$5 + ($$6 == 1 ? "" : "_" + $$6) + ".tga")).exists()) {
+         $$6++;
+      }
+
+      byte[] $$7 = new byte[18];
+      $$7[2] = 2;
+      $$7[12] = (byte)($$1 % 256);
+      $$7[13] = (byte)($$1 / 256);
+      $$7[14] = (byte)($$2 % 256);
+      $$7[15] = (byte)($$2 / 256);
+      $$7[16] = 24;
+      this.e = new byte[$$1 * $$3 * 3];
+      this.d = new DataOutputStream(new FileOutputStream(this.h));
+      this.d.write($$7);
    }
 
-   @Override
-   public int w() {
+   public void a(ByteBuffer $$0, int $$1, int $$2, int $$3, int $$4) {
+      int $$5 = $$3;
+      int $$6 = $$4;
+      if ($$3 > this.f - $$1) {
+         $$5 = this.f - $$1;
+      }
+
+      if ($$4 > this.g - $$2) {
+         $$6 = this.g - $$2;
+      }
+
+      this.c = $$6;
+
+      for (int $$7 = 0; $$7 < $$6; $$7++) {
+         $$0.position(($$4 - $$6) * $$3 * 3 + $$7 * $$3 * 3);
+         int $$8 = ($$1 + $$7 * this.f) * 3;
+         $$0.get(this.e, $$8, $$5 * 3);
+      }
+   }
+
+   public void a() throws IOException {
+      this.d.write(this.e, 0, this.f * 3 * this.c);
+   }
+
+   public File b() throws IOException {
+      this.d.close();
       return this.h;
-   }
-
-   @Override
-   public final void a(fhz $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.i = $$0.a($$1, $$2) && $$1 >= this.D() && $$2 >= this.E() && $$1 < this.D() + this.g && $$2 < this.E() + this.h;
-         this.b($$0, $$1, $$2, $$3);
-         this.n.a(this.A(), this.aO_(), this.H());
-      }
-   }
-
-   public void a(@Nullable fjx $$0) {
-      this.n.a($$0);
-   }
-
-   @Nullable
-   public fjx x() {
-      return this.n.a();
-   }
-
-   public void a(Duration $$0) {
-      this.n.a($$0);
-   }
-
-   protected xn aQ_() {
-      return a_(this.z());
-   }
-
-   public static xn a_(wz $$0) {
-      return wz.a("gui.narrate.button", $$0);
-   }
-
-   protected abstract void b(fhz var1, int var2, int var3, float var4);
-
-   protected static void a(fhz $$0, fhx $$1, wz $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, $$2, ($$3 + $$5) / 2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   protected static void a(fhz $$0, fhx $$1, wz $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$1.a($$2);
-      int $$10 = ($$5 + $$7 - 9) / 2 + 1;
-      int $$11 = $$6 - $$4;
-      if ($$9 > $$11) {
-         int $$12 = $$9 - $$11;
-         double $$13 = (double)ad.c() / 1000.0;
-         double $$14 = Math.max((double)$$12 * 0.5, 3.0);
-         double $$15 = Math.sin((Math.PI / 2) * Math.cos((Math.PI * 2) * $$13 / $$14)) / 2.0 + 0.5;
-         double $$16 = ayo.d($$15, 0.0, (double)$$12);
-         $$0.c($$4, $$5, $$6, $$7);
-         $$0.b($$1, $$2, $$4 - (int)$$16, $$10, $$8);
-         $$0.f();
-      } else {
-         int $$17 = ayo.a($$3, $$4 + $$9 / 2, $$6 - $$9 / 2);
-         $$0.a($$1, $$2, $$17, $$10, $$8);
-      }
-   }
-
-   protected void a(fhz $$0, fhx $$1, int $$2, int $$3) {
-      int $$4 = this.D() + $$2;
-      int $$5 = this.D() + this.y() - $$2;
-      a($$0, $$1, this.z(), $$4, this.E(), $$5, this.E() + this.w(), $$3);
-   }
-
-   public void a(double $$0, double $$1) {
-   }
-
-   public void a_(double $$0, double $$1) {
-   }
-
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.j && this.k) {
-         if (this.j($$2)) {
-            boolean $$3 = this.d($$0, $$1);
-            if ($$3) {
-               this.a(fgo.Q().aj());
-               this.a($$0, $$1);
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if (this.j($$2)) {
-         this.a_($$0, $$1);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean j(int $$0) {
-      return $$0 == 0;
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.j($$2)) {
-         this.b($$0, $$1, $$3, $$4);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected boolean d(double $$0, double $$1) {
-      return this.j
-         && this.k
-         && $$0 >= (double)this.D()
-         && $$1 >= (double)this.E()
-         && $$0 < (double)(this.D() + this.y())
-         && $$1 < (double)(this.E() + this.w());
-   }
-
-   @Nullable
-   @Override
-   public fhw a(fmo $$0) {
-      if (!this.j || !this.k) {
-         return null;
-      } else {
-         return !this.aO_() ? fhw.a(this) : null;
-      }
-   }
-
-   @Override
-   public boolean c(double $$0, double $$1) {
-      return this.j && this.k && $$0 >= (double)this.D() && $$1 >= (double)this.E() && $$0 < (double)(this.D() + this.g) && $$1 < (double)(this.E() + this.h);
-   }
-
-   public void a(gvf $$0) {
-      $$0.a(gtv.a(avp.Ar, 1.0F));
-   }
-
-   @Override
-   public int y() {
-      return this.g;
-   }
-
-   public void k(int $$0) {
-      this.g = $$0;
-   }
-
-   public void l(int $$0) {
-      this.h = $$0;
-   }
-
-   public void a(float $$0) {
-      this.l = $$0;
-   }
-
-   public void b(wz $$0) {
-      this.e = $$0;
-   }
-
-   public wz z() {
-      return this.e;
-   }
-
-   @Override
-   public boolean aO_() {
-      return this.m;
-   }
-
-   public boolean A() {
-      return this.i;
-   }
-
-   public boolean B() {
-      return this.A() || this.aO_();
-   }
-
-   @Override
-   public boolean C() {
-      return this.k && this.j;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public fmg.a u() {
-      if (this.aO_()) {
-         return fmg.a.c;
-      } else {
-         return this.i ? fmg.a.b : fmg.a.a;
-      }
-   }
-
-   @Override
-   public final void b(fmi $$0) {
-      this.a($$0);
-      this.n.a($$0);
-   }
-
-   protected abstract void a(fmi var1);
-
-   protected void c(fmi $$0) {
-      $$0.a(fmh.a, this.aQ_());
-      if (this.j) {
-         if (this.aO_()) {
-            $$0.a(fmh.d, wz.c("narration.button.usage.focused"));
-         } else {
-            $$0.a(fmh.d, wz.c("narration.button.usage.hovered"));
-         }
-      }
-   }
-
-   @Override
-   public int D() {
-      return this.c;
-   }
-
-   @Override
-   public void m(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public int E() {
-      return this.d;
-   }
-
-   @Override
-   public void n(int $$0) {
-      this.d = $$0;
-   }
-
-   public int F() {
-      return this.D() + this.y();
-   }
-
-   public int G() {
-      return this.E() + this.w();
-   }
-
-   @Override
-   public void a(Consumer<fik> $$0) {
-      $$0.accept(this);
-   }
-
-   public void b(int $$0, int $$1) {
-      this.g = $$0;
-      this.h = $$1;
-   }
-
-   @Override
-   public fms H() {
-      return fmb.super.H();
-   }
-
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.b($$0, $$1);
-      this.c($$2, $$3);
-   }
-
-   @Override
-   public int I() {
-      return this.f;
-   }
-
-   public void o(int $$0) {
-      this.f = $$0;
    }
 }

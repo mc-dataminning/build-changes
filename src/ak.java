@@ -7,43 +7,43 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record ak(int c, List<akq<erw>> d, List<akr> e, Optional<eo> f) {
+public record ak(int c, List<ala<esy>> d, List<alb> e, Optional<eo> f) {
    public static final Codec<ak> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(ak::a),
-               akq.a(lu.bc).listOf().optionalFieldOf("loot", List.of()).forGetter(ak::b),
-               akr.a.listOf().optionalFieldOf("recipes", List.of()).forGetter(ak::c),
+               ala.a(lv.bc).listOf().optionalFieldOf("loot", List.of()).forGetter(ak::b),
+               alb.a.listOf().optionalFieldOf("recipes", List.of()).forGetter(ak::c),
                eo.a.optionalFieldOf("function").forGetter(ak::d)
             )
             .apply($$0, ak::new)
    );
    public static final ak b = new ak(0, List.of(), List.of(), Optional.empty());
 
-   public void a(aqv $$0) {
+   public void a(arh $$0) {
       $$0.d(this.c);
-      eru $$1 = new eru.a($$0.A()).a(eun.a, $$0).a(eun.f, $$0.dm()).a(eum.m);
+      esw $$1 = new esw.a($$0.B()).a(evp.a, $$0).a(evp.f, $$0.dq()).a(evo.m);
       boolean $$2 = false;
 
-      for (akq<erw> $$3 : this.d) {
-         ObjectListIterator var6 = $$0.d.be().b($$3).a($$1).iterator();
+      for (ala<esy> $$3 : this.d) {
+         ObjectListIterator var6 = $$0.d.bd().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cuq $$4 = (cuq)var6.next();
-            if ($$0.i($$4)) {
-               $$0.dO().a(null, $$0.dt(), $$0.dv(), $$0.dz(), avp.nC, avq.h, 0.2F, (($$0.dR().i() - $$0.dR().i()) * 0.7F + 1.0F) * 2.0F);
+            cvl $$4 = (cvl)var6.next();
+            if ($$0.k($$4)) {
+               $$0.dS().a(null, $$0.dx(), $$0.dz(), $$0.dD(), awd.nD, awe.h, 0.2F, (($$0.dV().i() - $$0.dV().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               cjh $$5 = $$0.a($$4, false);
+               cjz $$5 = $$0.a($$4, false);
                if ($$5 != null) {
-                  $$5.w();
-                  $$5.b($$0.cz());
+                  $$5.t();
+                  $$5.b($$0.cD());
                }
             }
          }
       }
 
       if ($$2) {
-         $$0.cd.d();
+         $$0.ca.d();
       }
 
       if (!this.e.isEmpty()) {
@@ -51,18 +51,18 @@ public record ak(int c, List<akq<erw>> d, List<akr> e, Optional<eo> f) {
       }
 
       MinecraftServer $$6 = $$0.d;
-      this.f.flatMap($$1x -> $$1x.a($$6.aF())).ifPresent($$2x -> $$6.aF().a($$2x, $$0.dg().a().a(2)));
+      this.f.flatMap($$1x -> $$1x.a($$6.aE())).ifPresent($$2x -> $$6.aE().a($$2x, $$0.dk().a().a(2)));
    }
 
    public int a() {
       return this.c;
    }
 
-   public List<akq<erw>> b() {
+   public List<ala<esy>> b() {
       return this.d;
    }
 
-   public List<akr> c() {
+   public List<alb> c() {
       return this.e;
    }
 
@@ -72,9 +72,9 @@ public record ak(int c, List<akq<erw>> d, List<akr> e, Optional<eo> f) {
 
    public static class a {
       private int a;
-      private final Builder<akq<erw>> b = ImmutableList.builder();
-      private final Builder<akr> c = ImmutableList.builder();
-      private Optional<akr> d = Optional.empty();
+      private final Builder<ala<esy>> b = ImmutableList.builder();
+      private final Builder<alb> c = ImmutableList.builder();
+      private Optional<alb> d = Optional.empty();
 
       public static ak.a a(int $$0) {
          return new ak.a().b($$0);
@@ -85,29 +85,29 @@ public record ak(int c, List<akq<erw>> d, List<akr> e, Optional<eo> f) {
          return this;
       }
 
-      public static ak.a a(akq<erw> $$0) {
+      public static ak.a a(ala<esy> $$0) {
          return new ak.a().b($$0);
       }
 
-      public ak.a b(akq<erw> $$0) {
+      public ak.a b(ala<esy> $$0) {
          this.b.add($$0);
          return this;
       }
 
-      public static ak.a a(akr $$0) {
+      public static ak.a a(alb $$0) {
          return new ak.a().b($$0);
       }
 
-      public ak.a b(akr $$0) {
+      public ak.a b(alb $$0) {
          this.c.add($$0);
          return this;
       }
 
-      public static ak.a c(akr $$0) {
+      public static ak.a c(alb $$0) {
          return new ak.a().d($$0);
       }
 
-      public ak.a d(akr $$0) {
+      public ak.a d(alb $$0) {
          this.d = Optional.of($$0);
          return this;
       }

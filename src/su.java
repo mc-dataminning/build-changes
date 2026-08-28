@@ -1,20 +1,33 @@
-import javax.annotation.Nullable;
+import java.util.Collection;
+import java.util.function.Consumer;
 
-class su {
-   @Nullable
-   public final Long a;
-   public final Runnable b;
+public record su(String b, Collection<ta> c, Consumer<arg> d, Consumer<arg> e) {
+   public static final String a = "defaultBatch";
 
-   private su(@Nullable Long $$0, Runnable $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public su(String b, Collection<ta> c, Consumer<arg> d, Consumer<arg> e) {
+      if (c.isEmpty()) {
+         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
+      } else {
+         this.b = b;
+         this.c = c;
+         this.d = d;
+         this.e = e;
+      }
    }
 
-   static su a(Runnable $$0) {
-      return new su(null, $$0);
+   public String a() {
+      return this.b;
    }
 
-   static su a(long $$0, Runnable $$1) {
-      return new su($$0, $$1);
+   public Collection<ta> b() {
+      return this.c;
+   }
+
+   public Consumer<arg> c() {
+      return this.d;
+   }
+
+   public Consumer<arg> d() {
+      return this.e;
    }
 }

@@ -1,33 +1,82 @@
-import com.mojang.brigadier.ImmutableStringReader;
-import com.mojang.brigadier.StringReader;
-import java.util.Optional;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.Writer;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
-public abstract class bmr<C, V> implements bml<StringReader, V>, bms {
-   private final bmf<akr> b;
-   protected final C a;
+public class bmr<T> implements Closeable {
+   private static final Gson a = new Gson();
+   private final Codec<T> b;
+   final FileChannel c;
+   private final AtomicInteger d = new AtomicInteger(1);
 
-   protected bmr(bmf<akr> $$0, C $$1) {
+   public bmr(Codec<T> $$0, FileChannel $$1) {
       this.b = $$0;
-      this.a = $$1;
+      this.c = $$1;
    }
 
-   @Override
-   public Optional<V> a(bmk<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
-      Optional<akr> $$2 = $$0.b(this.b);
-      if ($$2.isPresent()) {
-         try {
-            return Optional.of(this.a((ImmutableStringReader)$$0.b(), $$2.get()));
-         } catch (Exception var5) {
-            $$0.a().a($$1, this, var5);
-            return Optional.empty();
-         }
+   public static <T> bmr<T> a(Codec<T> $$0, Path $$1) throws IOException {
+      FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.WRITE, StandardOpenOption.READ, StandardOpenOption.CREATE);
+      return new bmr<>($$0, $$2);
+   }
+
+   public void a(T $$0) throws IOException {
+      JsonElement $$1 = (JsonElement)this.b.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IOException::new);
+      this.c.position(this.c.size());
+      Writer $$2 = Channels.newWriter(this.c, StandardCharsets.UTF_8);
+      a.toJson($$1, a.newJsonWriter($$2));
+      $$2.write(10);
+      $$2.flush();
+   }
+
+   public bms<T> a() throws IOException {
+      if (this.d.get() <= 0) {
+         throw new IOException("Event log has already been closed");
       } else {
-         $$0.a().a($$1, this, akr.c.createWithContext((ImmutableStringReader)$$0.b()));
-         return Optional.empty();
+         this.d.incrementAndGet();
+         final bms<T> $$0 = bms.a(this.b, Channels.newReader(this.c, StandardCharsets.UTF_8));
+         return new bms<T>() {
+            private volatile long c;
+
+            @Nullable
+            @Override
+            public T a() throws IOException {
+               Object var1;
+               try {
+                  bmr.this.c.position(this.c);
+                  var1 = $$0.a();
+               } finally {
+                  this.c = bmr.this.c.position();
+               }
+
+               return (T)var1;
+            }
+
+            @Override
+            public void close() throws IOException {
+               bmr.this.b();
+            }
+         };
       }
    }
 
-   protected abstract V a(ImmutableStringReader var1, akr var2) throws Exception;
+   @Override
+   public void close() throws IOException {
+      this.b();
+   }
+
+   void b() throws IOException {
+      if (this.d.decrementAndGet() <= 0) {
+         this.c.close();
+      }
+   }
 }

@@ -1,30 +1,34 @@
-import java.util.function.IntFunction;
+public class fgv extends fgz {
+   private static final xd b = xd.c("mco.connect.connecting");
+   private final hcq c;
+   private final feb d;
+   private final fec e;
 
-public enum fgv implements ayr {
-   a(0, "options.prioritizeChunkUpdates.none"),
-   b(1, "options.prioritizeChunkUpdates.byPlayer"),
-   c(2, "options.prioritizeChunkUpdates.nearby");
-
-   private static final IntFunction<fgv> d = axe.a(fgv::a, values(), axe.a.b);
-   private final int e;
-   private final String f;
-
-   private fgv(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public fgv(fpt $$0, feb $$1, fec $$2) {
+      this.d = $$1;
+      this.e = $$2;
+      this.c = new hcq($$0);
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      this.c.a(this.d, gco.a(this.e.a));
    }
 
    @Override
-   public String b() {
-      return this.f;
+   public void b() {
+      super.b();
+      this.c.a();
+      fib.Q().ae().i();
    }
 
-   public static fgv a(int $$0) {
-      return d.apply($$0);
+   @Override
+   public void c() {
+      this.c.b();
+   }
+
+   @Override
+   public xd a() {
+      return b;
    }
 }

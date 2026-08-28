@@ -1,42 +1,50 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.function.Function;
 
-public class bho extends bfo {
-   public bho(Schema $$0) {
-      super($$0, true, "Trial Spawner config tag fixer", bgr.s, "minecraft:trial_spawner");
+public class bho extends DataFix {
+   final String a;
+   final Map<String, String> b;
+
+   public bho(Schema $$0, String $$1, Map<String, String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      List<String> $$1 = List.of(
-         "spawn_range",
-         "total_mobs",
-         "simultaneous_mobs",
-         "total_mobs_added_per_player",
-         "simultaneous_mobs_added_per_player",
-         "ticks_between_spawn",
-         "spawn_potentials",
-         "loot_tables_to_eject",
-         "items_to_drop_when_ominous"
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a)));
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = this.a($$0, "Enchantments");
+      return this.a($$0, "StoredEnchantments");
+   }
+
+   private Dynamic<?> a(Dynamic<?> $$0, String $$1) {
+      return $$0.update(
+         $$1,
+         $$0x -> (Dynamic)$$0x.asStreamOpt()
+               .map(
+                  $$0xx -> $$0xx.map(
+                        $$0xxx -> $$0xxx.update(
+                              "id",
+                              $$1x -> (Dynamic)$$1x.asString()
+                                    .map($$1xx -> $$0xxx.createString(this.b.getOrDefault(biw.a($$1xx), $$1xx)))
+                                    .mapOrElse(Function.identity(), $$1xx -> $$1x)
+                           )
+                     )
+               )
+               .map($$0x::createList)
+               .mapOrElse(Function.identity(), $$1x -> $$0x)
       );
-      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
-
-      for (String $$3 : $$1) {
-         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
-         if ($$4.isPresent()) {
-            $$2.put($$0.createString($$3), $$4.get());
-            $$0 = $$0.remove($$3);
-         }
-      }
-
-      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
-   }
-
-   @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return b($$0);
    }
 }

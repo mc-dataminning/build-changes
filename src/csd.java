@@ -1,21 +1,65 @@
-import java.util.List;
+import java.util.Optional;
 
-public class csd extends cul {
-   private final dfy a;
-
-   public csd(dfy $$0, cul.a $$1) {
-      super($$1);
-      this.a = $$0;
+public class csd extends csn {
+   public csd(brd $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public String a() {
-      return this.a.g();
+   public void b(cvl $$0, cvl $$1) {
    }
 
    @Override
-   public void a(cuq $$0, cul.b $$1, List<wz> $$2, cwm $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, $$1, $$2, $$3);
+   public boolean a(cnp $$0) {
+      return false;
+   }
+
+   @Override
+   public Optional<cvl> a(int $$0, int $$1, cnp $$2) {
+      return Optional.empty();
+   }
+
+   @Override
+   public cvl b(int $$0, int $$1, cnp $$2) {
+      return cvl.k;
+   }
+
+   @Override
+   public cvl d(cvl $$0) {
+      return $$0;
+   }
+
+   @Override
+   public cvl b(cvl $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(cnp $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(cvl $$0) {
+      return false;
+   }
+
+   @Override
+   public cvl a(int $$0) {
+      return cvl.k;
+   }
+
+   @Override
+   public void a(cnp $$0, cvl $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

@@ -85,7 +85,7 @@ public class ad {
    public static final int a = 8;
    private static final Set<String> o = Set.of("http", "https");
    public static final long b = 1000000L;
-   public static azo.a c = System::nanoTime;
+   public static bac.a c = System::nanoTime;
    public static final Ticker d = new Ticker() {
       public long read() {
          return ad.c.getAsLong();
@@ -108,11 +108,11 @@ public class ad {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(duf<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dvd<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
-   public static String a(String $$0, @Nullable akr $$1) {
+   public static String a(String $$0, @Nullable alb $$1) {
       return $$1 == null ? $$0 + ".unregistered_sadface" : $$0 + "." + $$1.b() + "." + $$1.a().replace('/', '.');
    }
 
@@ -133,7 +133,7 @@ public class ad {
    }
 
    private static ExecutorService c(String $$0) {
-      int $$1 = ayo.a(Runtime.getRuntime().availableProcessors() - 1, 1, n());
+      int $$1 = azc.a(Runtime.getRuntime().availableProcessors() - 1, 1, p());
       ExecutorService $$2;
       if ($$1 <= 0) {
          $$2 = MoreExecutors.newDirectExecutorService();
@@ -160,7 +160,7 @@ public class ad {
       return $$2;
    }
 
-   private static int n() {
+   private static int p() {
       String $$0 = System.getProperty("max.bg.threads");
       if ($$0 != null) {
          try {
@@ -232,7 +232,7 @@ public class ad {
       }
 
       if ($$1 instanceof z $$2) {
-         akt.a($$2.a().a(y.a));
+         ald.a($$2.a().a(y.a));
          System.exit(-1);
       }
 
@@ -241,7 +241,7 @@ public class ad {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !ab.aU ? null : b($$0, $$1);
+      return !ab.aV ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -249,10 +249,10 @@ public class ad {
       Type<?> $$2 = null;
 
       try {
-         $$2 = azx.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
+         $$2 = bam.a().getSchema(DataFixUtils.makeKey(ab.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
-         if (ab.aV) {
+         if (ab.aW) {
             throw var4;
          }
       }
@@ -261,7 +261,7 @@ public class ad {
    }
 
    public static Runnable a(String $$0, Runnable $$1) {
-      return ab.aV ? () -> {
+      return ab.aW ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -275,7 +275,7 @@ public class ad {
    }
 
    public static <V> Supplier<V> a(String $$0, Supplier<V> $$1) {
-      return ab.aV ? () -> {
+      return ab.aW ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -291,47 +291,127 @@ public class ad {
       } : $$1;
    }
 
-   public static <T> String a(jz<T> $$0, T $$1) {
-      akr $$2 = $$0.b($$1);
+   public static <T> String a(ka<T> $$0, T $$1) {
+      alb $$2 = $$0.b($$1);
       return $$2 == null ? "[unregistered]" : $$2.toString();
    }
 
-   public static <T> Predicate<T> a(List<? extends Predicate<T>> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> $$0x -> true;
-         case 1 -> (Predicate)$$0.get(0);
-         case 2 -> $$0.get(0).and((Predicate<? super T>)$$0.get(1));
-         default -> {
-            Predicate<T>[] $$1 = $$0.toArray(Predicate[]::new);
-            yield $$1x -> {
-               for (Predicate<T> $$2 : $$1) {
-                  if (!$$2.test((T)$$1x)) {
-                     return false;
-                  }
-               }
+   public static <T> Predicate<T> k() {
+      return $$0 -> true;
+   }
 
-               return true;
-            };
+   public static <T> Predicate<T> a(Predicate<? super T> $$0) {
+      return (Predicate<T>)$$0;
+   }
+
+   public static <T> Predicate<T> a(Predicate<? super T> $$0, Predicate<? super T> $$1) {
+      return $$2 -> $$0.test($$2) && $$1.test($$2);
+   }
+
+   public static <T> Predicate<T> a(Predicate<? super T> $$0, Predicate<? super T> $$1, Predicate<? super T> $$2) {
+      return $$3 -> $$0.test($$3) && $$1.test($$3) && $$2.test($$3);
+   }
+
+   public static <T> Predicate<T> a(Predicate<? super T> $$0, Predicate<? super T> $$1, Predicate<? super T> $$2, Predicate<? super T> $$3) {
+      return $$4 -> $$0.test($$4) && $$1.test($$4) && $$2.test($$4) && $$3.test($$4);
+   }
+
+   public static <T> Predicate<T> a(
+      Predicate<? super T> $$0, Predicate<? super T> $$1, Predicate<? super T> $$2, Predicate<? super T> $$3, Predicate<? super T> $$4
+   ) {
+      return $$5 -> $$0.test($$5) && $$1.test($$5) && $$2.test($$5) && $$3.test($$5) && $$4.test($$5);
+   }
+
+   @SafeVarargs
+   public static <T> Predicate<T> a(Predicate<? super T>... $$0) {
+      return $$1 -> {
+         for (Predicate<? super T> $$2 : $$0) {
+            if (!$$2.test($$1)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+   }
+
+   public static <T> Predicate<T> a(List<? extends Predicate<? super T>> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> k();
+         case 1 -> a((Predicate<? super T>)$$0.get(0));
+         case 2 -> a((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1));
+         case 3 -> a((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1), (Predicate<? super T>)$$0.get(2));
+         case 4 -> a((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1), (Predicate<? super T>)$$0.get(2), (Predicate<? super T>)$$0.get(3));
+         case 5 -> a(
+         (Predicate<? super T>)$$0.get(0),
+         (Predicate<? super T>)$$0.get(1),
+         (Predicate<? super T>)$$0.get(2),
+         (Predicate<? super T>)$$0.get(3),
+         (Predicate<? super T>)$$0.get(4)
+      );
+         default -> {
+            Predicate<? super T>[] $$1 = $$0.toArray(Predicate[]::new);
+            yield a($$1);
          }
       };
    }
 
-   public static <T> Predicate<T> b(List<? extends Predicate<T>> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> $$0x -> false;
-         case 1 -> (Predicate)$$0.get(0);
-         case 2 -> $$0.get(0).or((Predicate<? super T>)$$0.get(1));
-         default -> {
-            Predicate<T>[] $$1 = $$0.toArray(Predicate[]::new);
-            yield $$1x -> {
-               for (Predicate<T> $$2 : $$1) {
-                  if ($$2.test((T)$$1x)) {
-                     return true;
-                  }
-               }
+   public static <T> Predicate<T> l() {
+      return $$0 -> false;
+   }
 
-               return false;
-            };
+   public static <T> Predicate<T> b(Predicate<? super T> $$0) {
+      return (Predicate<T>)$$0;
+   }
+
+   public static <T> Predicate<T> b(Predicate<? super T> $$0, Predicate<? super T> $$1) {
+      return $$2 -> $$0.test($$2) || $$1.test($$2);
+   }
+
+   public static <T> Predicate<T> b(Predicate<? super T> $$0, Predicate<? super T> $$1, Predicate<? super T> $$2) {
+      return $$3 -> $$0.test($$3) || $$1.test($$3) || $$2.test($$3);
+   }
+
+   public static <T> Predicate<T> b(Predicate<? super T> $$0, Predicate<? super T> $$1, Predicate<? super T> $$2, Predicate<? super T> $$3) {
+      return $$4 -> $$0.test($$4) || $$1.test($$4) || $$2.test($$4) || $$3.test($$4);
+   }
+
+   public static <T> Predicate<T> b(
+      Predicate<? super T> $$0, Predicate<? super T> $$1, Predicate<? super T> $$2, Predicate<? super T> $$3, Predicate<? super T> $$4
+   ) {
+      return $$5 -> $$0.test($$5) || $$1.test($$5) || $$2.test($$5) || $$3.test($$5) || $$4.test($$5);
+   }
+
+   @SafeVarargs
+   public static <T> Predicate<T> b(Predicate<? super T>... $$0) {
+      return $$1 -> {
+         for (Predicate<? super T> $$2 : $$0) {
+            if ($$2.test($$1)) {
+               return true;
+            }
+         }
+
+         return false;
+      };
+   }
+
+   public static <T> Predicate<T> b(List<? extends Predicate<? super T>> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> l();
+         case 1 -> b((Predicate<? super T>)$$0.get(0));
+         case 2 -> b((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1));
+         case 3 -> b((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1), (Predicate<? super T>)$$0.get(2));
+         case 4 -> b((Predicate<? super T>)$$0.get(0), (Predicate<? super T>)$$0.get(1), (Predicate<? super T>)$$0.get(2), (Predicate<? super T>)$$0.get(3));
+         case 5 -> b(
+         (Predicate<? super T>)$$0.get(0),
+         (Predicate<? super T>)$$0.get(1),
+         (Predicate<? super T>)$$0.get(2),
+         (Predicate<? super T>)$$0.get(3),
+         (Predicate<? super T>)$$0.get(4)
+      );
+         default -> {
+            Predicate<? super T>[] $$1 = $$0.toArray(Predicate[]::new);
+            yield b($$1);
          }
       };
    }
@@ -357,7 +437,7 @@ public class ad {
       }
    }
 
-   public static ad.a k() {
+   public static ad.a m() {
       String $$0 = System.getProperty("os.name").toLowerCase(Locale.ROOT);
       if ($$0.contains("win")) {
          return ad.a.c;
@@ -389,7 +469,7 @@ public class ad {
       }
    }
 
-   public static Stream<String> l() {
+   public static Stream<String> n() {
       RuntimeMXBean $$0 = ManagementFactory.getRuntimeMXBean();
       return $$0.getInputArguments().stream().filter($$0x -> $$0x.startsWith("-X"));
    }
@@ -510,20 +590,20 @@ public class ad {
 
    public static void b(String $$0) {
       g.error($$0);
-      if (ab.aV) {
+      if (ab.aW) {
          d($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       g.error($$0, $$1);
-      if (ab.aV) {
+      if (ab.aW) {
          d($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (ab.aV) {
+      if (ab.aW) {
          g.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          d($$0.getMessage());
       }
@@ -552,19 +632,19 @@ public class ad {
       }
    }
 
-   public static <T> T a(T[] $$0, ayw $$1) {
+   public static <T> T a(T[] $$0, azk $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static int a(int[] $$0, ayw $$1) {
+   public static int a(int[] $$0, azk $$1) {
       return $$0[$$1.a($$0.length)];
    }
 
-   public static <T> T a(List<T> $$0, ayw $$1) {
+   public static <T> T a(List<T> $$0, azk $$1) {
       return $$0.get($$1.a($$0.size()));
    }
 
-   public static <T> Optional<T> b(List<T> $$0, ayw $$1) {
+   public static <T> Optional<T> b(List<T> $$0, azk $$1) {
       return $$0.isEmpty() ? Optional.empty() : Optional.of(a($$0, $$1));
    }
 
@@ -730,7 +810,7 @@ public class ad {
       }
    }
 
-   public static void m() {
+   public static void o() {
       Thread $$0 = new Thread("Timer hack thread") {
          @Override
          public void run() {
@@ -759,8 +839,8 @@ public class ad {
       return $$0.toLowerCase(Locale.ROOT).chars().mapToObj($$1x -> $$1.test((char)$$1x) ? Character.toString((char)$$1x) : "_").collect(Collectors.joining());
    }
 
-   public static <K, V> aze<K, V> a(Function<K, V> $$0) {
-      return new aze<>($$0);
+   public static <K, V> azs<K, V> a(Function<K, V> $$0) {
+      return new azs<>($$0);
    }
 
    public static <T, R> Function<T, R> b(final Function<T, R> $$0) {
@@ -795,13 +875,13 @@ public class ad {
       };
    }
 
-   public static <T> List<T> a(Stream<T> $$0, ayw $$1) {
+   public static <T> List<T> a(Stream<T> $$0, azk $$1) {
       ObjectArrayList<T> $$2 = $$0.collect(ObjectArrayList.toList());
       c($$2, $$1);
       return $$2;
    }
 
-   public static IntArrayList a(IntStream $$0, ayw $$1) {
+   public static IntArrayList a(IntStream $$0, azk $$1) {
       IntArrayList $$2 = IntArrayList.wrap($$0.toArray());
       int $$3 = $$2.size();
 
@@ -813,19 +893,19 @@ public class ad {
       return $$2;
    }
 
-   public static <T> List<T> b(T[] $$0, ayw $$1) {
+   public static <T> List<T> b(T[] $$0, azk $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> List<T> a(ObjectArrayList<T> $$0, ayw $$1) {
+   public static <T> List<T> a(ObjectArrayList<T> $$0, azk $$1) {
       ObjectArrayList<T> $$2 = new ObjectArrayList($$0);
       c($$2, $$1);
       return $$2;
    }
 
-   public static <T> void c(List<T> $$0, ayw $$1) {
+   public static <T> void c(List<T> $$0, azk $$1) {
       int $$2 = $$0.size();
 
       for (int $$3 = $$2; $$3 > 1; $$3--) {

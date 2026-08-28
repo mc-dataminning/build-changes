@@ -1,78 +1,69 @@
-public class afw implements zg<abu> {
-   public static final yx<vw, afw> a = zg.a(afw::a, afw::new);
-   private final int b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final byte f;
-   private final byte g;
-   private final boolean h;
+public class afw implements zk<abz> {
+   public static final zb<wo, afw> a = zk.a(afw::a, afw::new);
+   private final jn<awc> b;
+   private final awe c;
+   private final int d;
+   private final float e;
+   private final float f;
+   private final long g;
 
-   public afw(bsr $$0) {
-      this.b = $$0.an();
-      exc $$1 = $$0.dn();
-      this.c = $$1.c;
-      this.d = $$1.d;
-      this.e = $$1.e;
-      this.f = (byte)((int)($$0.dE() * 256.0F / 360.0F));
-      this.g = (byte)((int)($$0.dG() * 256.0F / 360.0F));
-      this.h = $$0.aF();
+   public afw(jn<awc> $$0, awe $$1, btj $$2, float $$3, float $$4, long $$5) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.ap();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   private afw(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.readByte();
-      this.g = $$0.readByte();
-      this.h = $$0.readBoolean();
+   private afw(wo $$0) {
+      this.b = awc.d.decode($$0);
+      this.c = $$0.b(awe.class);
+      this.d = $$0.l();
+      this.e = $$0.readFloat();
+      this.f = $$0.readFloat();
+      this.g = $$0.readLong();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   private void a(wo $$0) {
+      awc.d.encode($$0, this.b);
       $$0.a(this.c);
-      $$0.a(this.d);
+      $$0.c(this.d);
       $$0.a(this.e);
-      $$0.k(this.f);
-      $$0.k(this.g);
-      $$0.a(this.h);
+      $$0.a(this.f);
+      $$0.b(this.g);
    }
 
    @Override
-   public zi<afw> a() {
-      return agg.aZ;
+   public zm<afw> a() {
+      return ago.aS;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public jn<awc> b() {
       return this.b;
    }
 
-   public double e() {
+   public awe e() {
       return this.c;
    }
 
-   public double f() {
+   public int f() {
       return this.d;
    }
 
-   public double g() {
+   public float g() {
       return this.e;
    }
 
-   public byte h() {
+   public float h() {
       return this.f;
    }
 
-   public byte i() {
+   public long i() {
       return this.g;
-   }
-
-   public boolean j() {
-      return this.h;
    }
 }

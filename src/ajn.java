@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public record ajn() implements ajl {
+   public static final ajn a = new ajn();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ajn {
+   @Override
+   public void a(wa $$0) {
+   }
 }

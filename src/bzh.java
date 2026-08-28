@@ -1,63 +1,80 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
 
-public class bzh extends bvh<cmb> {
-   private static final int d = 15;
-   private static final int e = 20;
-   private static final double f = 0.5;
-   private static final double g = 2.5;
-   public static final int c = 40;
-   private static final int h = ayo.c(34.0);
-   private static final int i = ayo.f(60.0F);
+public class bzh extends bzi {
+   private static final List<cvg> c = ImmutableList.of(cvo.pw, cvo.vn);
 
-   public bzh() {
-      super(ImmutableMap.of(ccs.o, cct.a, ccs.aJ, cct.b, ccs.aK, cct.c, ccs.aL, cct.c), i);
-   }
-
-   protected boolean a(aqu $$0, cmb $$1) {
-      return $$1.a($$1.dT().c(ccs.o).get(), 15.0, 20.0);
-   }
-
-   protected boolean a(aqu $$0, cmb $$1, long $$2) {
-      return true;
-   }
-
-   protected void b(aqu $$0, cmb $$1, long $$2) {
-      $$1.dT().a(ccs.p, true, (long)i);
-      $$1.dT().a(ccs.aL, azs.a, (long)h);
-      $$0.a($$1, (byte)62);
-      $$1.a(avp.BX, 3.0F, 1.0F);
-   }
-
-   protected void c(aqu $$0, cmb $$1, long $$2) {
-      $$1.dT().c(ccs.o).ifPresent($$1x -> $$1.I().a($$1x.dm()));
-      if (!$$1.dT().a(ccs.aL) && !$$1.dT().a(ccs.aK)) {
-         $$1.dT().a(ccs.aK, azs.a, (long)(i - h));
-         $$1.dT().c(ccs.o).filter($$1::c).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
-            exc $$3 = $$1.dm().e($$1.dl().b(bss.d, 0, $$1.dE()));
-            exc $$4 = $$2x.by().d($$3);
-            exc $$5 = $$4.d();
-            int $$6 = ayo.a($$4.f()) + 7;
-
-            for (int $$7 = 1; $$7 < $$6; $$7++) {
-               exc $$8 = $$3.e($$5.a((double)$$7));
-               $$0.a(lm.B, $$8.c, $$8.d, $$8.e, 1, 0.0, 0.0, 0.0, 0.0);
-            }
-
-            $$1.a(avp.BW, 3.0F, 1.0F);
-            if ($$2x.a($$0.aj().e($$1), 10.0F)) {
-               double $$9 = 0.5 * (1.0 - $$2x.g(buw.p));
-               double $$10 = 2.5 * (1.0 - $$2x.g(buw.p));
-               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
-            }
-         });
+   @Override
+   protected void a(arg $$0, cnc $$1) {
+      Optional<jm> $$2 = $$1.dX().c(cdi.c);
+      if (!$$2.isEmpty()) {
+         jm $$3 = $$2.get();
+         dua $$4 = $$0.a_($$3.b());
+         if ($$4.a(dgx.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   protected void d(aqu $$0, cmb $$1, long $$2) {
-      a($$1, 40);
+   private void a(arg $$0, cnc $$1, jm $$2, dua $$3) {
+      je $$4 = $$2.b();
+      if ($$3.c(dig.e) == 8) {
+         $$3 = dig.a($$1, $$3, (dds)$$0, $$4);
+      }
+
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      brr $$8 = $$1.y();
+      int $$9 = $$8.b();
+      dua $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cvl $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.J();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dig.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dig.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
+      }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   public static void a(btn $$0, int $$1) {
-      $$0.dT().a(ccs.aJ, azs.a, (long)$$1);
+   private void a(arg $$0, dua $$1, je $$2, dua $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
+
+   private void a(cnc $$0) {
+      brr $$1 = $$0.y();
+      if ($$1.a_(cvo.py) <= 36) {
+         int $$2 = $$1.a_(cvo.px);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(cvo.px, $$6);
+            cvl $$7 = $$1.b(new cvl(cvo.py, $$5));
+            if (!$$7.f()) {
+               $$0.a($$7, 0.5F);
+            }
+         }
+      }
    }
 }

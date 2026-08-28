@@ -1,110 +1,97 @@
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
+import it.unimi.dsi.fastutil.objects.Object2ObjectSortedMaps;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SequencedMap;
+import javax.annotation.Nullable;
 
-public class ggv implements ggz<dqc> {
-   public static final akr a = akr.b("textures/entity/beacon_beam.png");
-   public static final int b = 1024;
-
-   public ggv(gha.a $$0) {
+public interface ggv {
+   static ggv.a a(fcr $$0) {
+      return a(Object2ObjectSortedMaps.emptyMap(), $$0);
    }
 
-   public void a(dqc $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
-      long $$6 = $$0.i().Z();
-      List<dqc.a> $$7 = $$0.b();
-      int $$8 = 0;
+   static ggv.a a(SequencedMap<ghe, fcr> $$0, fcr $$1) {
+      return new ggv.a($$1, $$0);
+   }
 
-      for (int $$9 = 0; $$9 < $$7.size(); $$9++) {
-         dqc.a $$10 = $$7.get($$9);
-         a($$2, $$3, $$1, $$6, $$8, $$9 == $$7.size() - 1 ? 1024 : $$10.c(), $$10.b());
-         $$8 += $$10.c();
+   fcy getBuffer(ghe var1);
+
+   public static class a implements ggv {
+      protected final fcr a;
+      protected final SequencedMap<ghe, fcr> b;
+      protected final Map<ghe, fcp> c = new HashMap<>();
+      @Nullable
+      protected ghe d;
+
+      protected a(fcr $$0, SequencedMap<ghe, fcr> $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
 
-   private static void a(fbi $$0, gez $$1, float $$2, long $$3, int $$4, int $$5, int $$6) {
-      a($$0, $$1, a, $$2, 1.0F, $$3, $$4, $$5, $$6, 0.2F, 0.25F);
-   }
+      @Override
+      public fcy getBuffer(ghe $$0) {
+         fcp $$1 = this.c.get($$0);
+         if ($$1 != null && !$$0.T()) {
+            this.a($$0, $$1);
+            $$1 = null;
+         }
 
-   public static void a(fbi $$0, gez $$1, akr $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = ayo.h($$13 * 0.2F - (float)ayo.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(gfh.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(gfh.e($$2, true)), axy.b.b(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-   }
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            fcr $$2 = this.b.get($$0);
+            if ($$2 != null) {
+               $$1 = new fcp($$2, $$0.P(), $$0.O());
+            } else {
+               if (this.d != null) {
+                  this.a(this.d);
+               }
 
-   private static void a(
-      fbi $$0,
-      fbm $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      fbi.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
-   }
+               $$1 = new fcp(this.a, $$0.P(), $$0.O());
+               this.d = $$0;
+            }
 
-   private static void a(
-      fbi.a $$0, fbm $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
-   }
+            this.c.put($$0, $$1);
+            return $$1;
+         }
+      }
 
-   private static void a(fbi.a $$0, fbm $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(gqc.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
-   }
+      public void a() {
+         if (this.d != null) {
+            this.a(this.d);
+            this.d = null;
+         }
+      }
 
-   public boolean a(dqc $$0) {
-      return true;
-   }
+      public void b() {
+         this.a();
 
-   @Override
-   public int aW_() {
-      return 256;
-   }
+         for (ghe $$0 : this.b.keySet()) {
+            this.a($$0);
+         }
+      }
 
-   public boolean a(dqc $$0, exc $$1) {
-      return exc.b($$0.aD_()).d(1.0, 0.0, 1.0).a((jw)$$1.d(1.0, 0.0, 1.0), (double)this.aW_());
+      public void a(ghe $$0) {
+         fcp $$1 = this.c.remove($$0);
+         if ($$1 != null) {
+            this.a($$0, $$1);
+         }
+      }
+
+      private void a(ghe $$0, fcp $$1) {
+         fct $$2 = $$1.a();
+         if ($$2 != null) {
+            if ($$0.U()) {
+               fcr $$3 = this.b.getOrDefault($$0, this.a);
+               $$2.a($$3, RenderSystem.getVertexSorting());
+            }
+
+            $$0.a($$2);
+         }
+
+         if ($$0.equals(this.d)) {
+            this.d = null;
+         }
+      }
    }
 }

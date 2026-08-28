@@ -1,15 +1,23 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public record abm(List<atl> b) implements zg<abk> {
-   public static final yx<ByteBuf, abm> a = yx.a(atl.a.a(yv.c(64)), abm::b, abm::new);
+public record abm(Set<alb> b) implements zk<abh> {
+   public static final zb<wa, abm> a = zk.a(abm::a, abm::new);
 
-   @Override
-   public zi<abm> a() {
-      return abi.g;
+   private abm(wa $$0) {
+      this($$0.a(HashSet::new, wa::q));
    }
 
-   public void a(abk $$0) {
+   private void a(wa $$0) {
+      $$0.a(this.b, wa::a);
+   }
+
+   @Override
+   public zm<abm> a() {
+      return abn.c;
+   }
+
+   public void a(abh $$0) {
       $$0.a(this);
    }
 }

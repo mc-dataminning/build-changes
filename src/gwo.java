@@ -1,22 +1,25 @@
-public class gwo implements fjp {
-   private final wz a;
-   private final int b;
-   private final int c;
-   private final int d;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public gwo(wz $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+public interface gwo {
+   aku a = new aku("textures", ".png");
+
+   void a(aus var1, gwo.a var2);
+
+   gwq a();
+
+   public interface a {
+      default void a(alb $$0, auq $$1) {
+         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+      }
+
+      void a(alb var1, gwo.b var2);
+
+      void a(Predicate<alb> var1);
    }
 
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      $$0.a(fgo.Q().h, this.a, this.b, this.c, this.d);
-   }
-
-   public wz a() {
-      return this.a;
+   public interface b extends Function<gwn, gwe> {
+      default void a() {
+      }
    }
 }

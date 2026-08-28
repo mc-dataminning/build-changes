@@ -1,59 +1,50 @@
-import java.util.List;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import java.util.Date;
+import java.util.Map;
+import java.util.Map.Entry;
+import org.slf4j.Logger;
 
-public abstract class fdq {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class fdq extends feo {
+   private static final Logger f = LogUtils.getLogger();
+   public String a;
+   public Date b;
+   public long c;
+   private boolean g;
+   public Map<String, String> d = Maps.newHashMap();
+   public Map<String, String> e = Maps.newHashMap();
 
-   public fdq(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   public static fdq a(JsonElement $$0) {
+      JsonObject $$1 = $$0.getAsJsonObject();
+      fdq $$2 = new fdq();
 
-   public void a(fhz $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
+      try {
+         $$2.a = fgl.b("backupId", $$1, "");
+         $$2.b = fgl.b("lastModifiedDate", $$1);
+         $$2.c = fgl.a("size", $$1, 0L);
+         if ($$1.has("metadata")) {
+            JsonObject $$3 = $$1.getAsJsonObject("metadata");
 
-   protected abstract void a(fhz var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(fhz $$0, List<fdq> $$1, gwp<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (fdq $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
-      }
-   }
-
-   public static void a(gwp<?> $$0, fji.a<?> $$1, List<fdq> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aK_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.s();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (fdq $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
+            for (Entry<String, JsonElement> $$5 : $$3.entrySet()) {
+               if (!$$5.getValue().isJsonNull()) {
+                  $$2.d.put($$5.getKey(), $$5.getValue().getAsString());
+               }
             }
          }
+      } catch (Exception var7) {
+         f.error("Could not parse Backup: {}", var7.getMessage());
       }
+
+      return $$2;
+   }
+
+   public boolean a() {
+      return this.g;
+   }
+
+   public void a(boolean $$0) {
+      this.g = $$0;
    }
 }

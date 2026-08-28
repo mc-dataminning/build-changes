@@ -1,108 +1,72 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
+import java.util.List;
 
-public class fsz extends fod {
-   private static final wz a = wz.c("telemetry_info.screen.title");
-   private static final wz b = wz.c("telemetry_info.screen.description").b(-4539718);
-   private static final wz c = wz.c("telemetry_info.button.privacy_statement");
-   private static final wz r = wz.c("telemetry_info.button.give_feedback");
-   private static final wz s = wz.c("telemetry_info.button.show_data");
-   private static final wz u = wz.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = fgo.Q().D();
-   private final fod x;
-   private final fgs y;
-   private final flz z = new flz(this, 16 + 9 * 5 + 20, w ? 33 + fio.a(fgo.Q().h) : 33);
-   @Nullable
-   private fsy A;
-   @Nullable
-   private fjg B;
-   private double C;
+public class fsz extends fpt {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final xd d;
+   private final List<xd> s;
+   private final ImmutableList<fsz.a> u;
+   private fkt v = fkt.a;
+   private int w;
+   private int x;
 
-   public fsz(fod $$0, fgs $$1) {
-      super(a);
-      this.x = $$0;
-      this.y = $$1;
+   protected fsz(xd $$0, List<xd> $$1, ImmutableList<fsz.a> $$2) {
+      super($$0);
+      this.s = $$1;
+      this.d = xc.a($$0, xg.a($$1, xc.a));
+      this.u = $$2;
    }
 
    @Override
-   public wz i() {
-      return wy.a(super.i(), b);
+   public xd i() {
+      return this.d;
    }
 
    @Override
-   protected void aT_() {
-      fmd $$0 = this.z.a(fmd.d().a(4));
-      $$0.c().b();
-      $$0.a(new fjt(a, this.o));
-      this.B = $$0.a(new fjg(b, this.o).b(true));
-      fmd $$1 = $$0.a(fmd.e().a(8));
-      $$1.a(fim.a(c, this::a).a());
-      $$1.a(fim.a(r, this::b).a());
-      fmd $$2 = this.z.b(fmd.d().a(4));
-      if (w) {
-         $$2.a(this.m());
+   public void aT_() {
+      UnmodifiableIterator $$1 = this.u.iterator();
+
+      while ($$1.hasNext()) {
+         fsz.a $$0 = (fsz.a)$$1.next();
+         this.x = Math.max(this.x, 20 + this.p.a($$0.a) + 20);
       }
 
-      fmd $$3 = $$2.a(fmd.e().a(8));
-      $$3.a(fim.a(s, this::c).a());
-      $$3.a(fim.a(wy.d, $$0x -> this.d()).a());
-      fmd $$4 = this.z.c(fmd.d().a(8));
-      this.A = $$4.a(new fsy(0, 0, this.m - 40, this.z.d(), this.o));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         fik var10000 = this.c($$1x);
-      });
-      this.c();
+      int $$1x = 5 + this.x + 5;
+      int $$2 = $$1x * this.u.size();
+      this.v = fkt.a(this.p, $$2, this.s.toArray(new xd[0]));
+      int $$3 = this.v.a() * 9;
+      this.w = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.w + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
+
+      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
+         fsz.a $$6 = (fsz.a)var6.next();
+         this.c(fka.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
+      }
    }
 
    @Override
-   protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.k(this.m - 40);
-         this.A.l(this.z.d());
-         this.A.j();
-      }
-
-      if (this.B != null) {
-         this.B.d(this.m - 16);
-      }
-
-      this.z.a();
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.w - 9 * 2, -1);
+      this.v.a($$0, this.n / 2, this.w);
    }
 
    @Override
-   protected void aI_() {
-      if (this.A != null) {
-         this.b(this.A);
+   public boolean aJ_() {
+      return false;
+   }
+
+   public static final class a {
+      final xd a;
+      final fka.c b;
+
+      public a(xd $$0, fka.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
-   }
-
-   private fik m() {
-      fgr<Boolean> $$0 = this.y.ai();
-      return fio.a(u, this.o).a($$0).a(this::a).a();
-   }
-
-   private void a(fik $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
-      }
-   }
-
-   private void a(fim $$0) {
-      fna.a(this, axj.c);
-   }
-
-   private void b(fim $$0) {
-      fna.a(this, axj.i);
-   }
-
-   private void c(fim $$0) {
-      ad.k().a(this.l.u().b());
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.x);
    }
 }

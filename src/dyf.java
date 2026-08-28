@@ -1,8 +1,15 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface dyf {
+   dyf a = new dyf() {
+      @Override
+      public void a() {
+      }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dyf {
+      @Override
+      public void a(btj.c $$0) {
+      }
+   };
+
+   void a();
+
+   void a(btj.c var1);
 }

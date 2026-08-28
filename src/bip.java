@@ -1,35 +1,29 @@
-import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
 
-public class bip extends bid {
-   public bip(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bip extends DataFix {
+   public bip(Schema $$0) {
+      super($$0, false);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.registerSimple($$1, "minecraft:egg");
-      $$0.registerSimple($$1, "minecraft:ender_pearl");
-      $$0.registerSimple($$1, "minecraft:fireball");
-      $$0.register($$1, "minecraft:potion", $$1x -> DSL.optionalFields("Potion", bgr.t.in($$0)));
-      $$0.registerSimple($$1, "minecraft:small_fireball");
-      $$0.registerSimple($$1, "minecraft:snowball");
-      $$0.registerSimple($$1, "minecraft:wither_skull");
-      $$0.registerSimple($$1, "minecraft:xp_bottle");
-      $$0.register($$1, "minecraft:arrow", () -> DSL.optionalFields("inBlockState", bgr.u.in($$0)));
-      $$0.register($$1, "minecraft:enderman", () -> DSL.optionalFields("carriedBlockState", bgr.u.in($$0), bie.a($$0)));
-      $$0.register($$1, "minecraft:falling_block", () -> DSL.optionalFields("BlockState", bgr.u.in($$0), "TileEntityData", bgr.s.in($$0)));
-      $$0.register($$1, "minecraft:spectral_arrow", () -> DSL.optionalFields("inBlockState", bgr.u.in($$0)));
-      $$0.register($$1, "minecraft:chest_minecart", () -> DSL.optionalFields("DisplayState", bgr.u.in($$0), "Items", DSL.list(bgr.t.in($$0))));
-      $$0.register($$1, "minecraft:commandblock_minecart", () -> DSL.optionalFields("DisplayState", bgr.u.in($$0)));
-      $$0.register($$1, "minecraft:furnace_minecart", () -> DSL.optionalFields("DisplayState", bgr.u.in($$0)));
-      $$0.register($$1, "minecraft:hopper_minecart", () -> DSL.optionalFields("DisplayState", bgr.u.in($$0), "Items", DSL.list(bgr.t.in($$0))));
-      $$0.register($$1, "minecraft:minecart", () -> DSL.optionalFields("DisplayState", bgr.u.in($$0)));
-      $$0.register($$1, "minecraft:spawner_minecart", () -> DSL.optionalFields("DisplayState", bgr.u.in($$0), bgr.F.in($$0)));
-      $$0.register($$1, "minecraft:tnt_minecart", () -> DSL.optionalFields("DisplayState", bgr.u.in($$0)));
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.M);
+      OpticFinder<?> $$1 = $$0.findField("dimensions");
+      return this.fixTypeEverywhereTyped(
+         "WorldGenSettingsDisallowOldCustomWorldsFix_" + this.getOutputSchema().getVersionKey(), $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> {
+               $$0xx.write().map($$0xxx -> $$0xxx.getMapValues().map($$0xxxx -> {
+                     $$0xxxx.forEach(($$0xxxxx, $$1xx) -> {
+                        if ($$1xx.get("type").asString().result().isEmpty()) {
+                           throw new ur("Unable load old custom worlds.");
+                        }
+                     });
+                     return $$0xxxx;
+                  }));
+               return $$0xx;
+            })
+      );
    }
 }

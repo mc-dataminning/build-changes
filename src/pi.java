@@ -1,25 +1,100 @@
+import com.google.common.hash.Hashing;
+import com.google.common.hash.HashingOutputStream;
 import com.mojang.logging.LogUtils;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class pi implements ph.a {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = ass.b.a() + "/minecraft/structure/";
+public class pi implements mb {
+   private static final Logger d = LogUtils.getLogger();
+   private final Iterable<Path> e;
+   private final md f;
 
-   @Override
-   public ub apply(String $$0, ub $$1) {
-      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+   public pi(md $$0, Collection<Path> $$1) {
+      this.e = $$1;
+      this.f = $$0;
    }
 
-   public static ub a(String $$0, ub $$1) {
-      ent $$2 = new ent();
-      int $$3 = uq.b($$1, 500);
-      int $$4 = 3937;
-      if ($$3 < 3937) {
-         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 3937, $$0});
+   @Override
+   public CompletableFuture<?> a(lz $$0) {
+      Path $$1 = this.f.a();
+      List<CompletableFuture<?>> $$2 = new ArrayList<>();
+
+      for (Path $$3 : this.e) {
+         $$2.add(
+            CompletableFuture.<CompletableFuture>supplyAsync(
+                  () -> {
+                     try {
+                        CompletableFuture var4;
+                        try (Stream<Path> $$3x = Files.walk($$3)) {
+                           var4 = CompletableFuture.allOf(
+                              $$3x.filter($$0xx -> $$0xx.toString().endsWith(".nbt"))
+                                 .map($$3xx -> CompletableFuture.runAsync(() -> a($$0, $$3xx, a($$3, $$3xx), $$1), ad.h()))
+                                 .toArray(CompletableFuture[]::new)
+                           );
+                        }
+
+                        return var4;
+                     } catch (IOException var8) {
+                        d.error("Failed to read structure input directory", var8);
+                        return CompletableFuture.completedFuture(null);
+                     }
+                  },
+                  ad.g()
+               )
+               .thenCompose($$0x -> $$0x)
+         );
       }
 
-      ub $$5 = azw.f.a(azx.a(), $$1, $$3);
-      $$2.a(lt.e.q(), $$5);
-      return $$2.a(new ub());
+      return CompletableFuture.allOf($$2.toArray(CompletableFuture[]::new));
+   }
+
+   @Override
+   public final String a() {
+      return "NBT -> SNBT";
+   }
+
+   private static String a(Path $$0, Path $$1) {
+      String $$2 = $$0.relativize($$1).toString().replaceAll("\\\\", "/");
+      return $$2.substring(0, $$2.length() - ".nbt".length());
+   }
+
+   @Nullable
+   public static Path a(lz $$0, Path $$1, String $$2, Path $$3) {
+      try {
+         Path var7;
+         try (
+            InputStream $$4 = Files.newInputStream($$1);
+            InputStream $$5 = new aym($$4);
+         ) {
+            Path $$6 = $$3.resolve($$2 + ".snbt");
+            a($$0, $$6, uu.a(us.a($$5, uo.a())));
+            d.info("Converted {} from NBT to SNBT", $$2);
+            var7 = $$6;
+         }
+
+         return var7;
+      } catch (IOException var12) {
+         d.error("Couldn't convert {} from NBT to SNBT at {}", new Object[]{$$2, $$1, var12});
+         return null;
+      }
+   }
+
+   public static void a(lz $$0, Path $$1, String $$2) throws IOException {
+      ByteArrayOutputStream $$3 = new ByteArrayOutputStream();
+      HashingOutputStream $$4 = new HashingOutputStream(Hashing.sha1(), $$3);
+      $$4.write($$2.getBytes(StandardCharsets.UTF_8));
+      $$4.write(10);
+      $$0.writeIfNeeded($$1, $$3.toByteArray(), $$4.hash());
    }
 }

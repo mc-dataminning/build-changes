@@ -1,19 +1,20 @@
-public interface dbz extends dcc {
-   float a(ji var1, boolean var2);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   eot y_();
+public record dbz(dbd c) implements dbp {
+   public static final MapCodec<dbz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbd.b.fieldOf("value").forGetter(dbz::b)).apply($$0, dbz::new));
 
-   int a(jd var1, dch var2);
-
-   default int a(ddf $$0, jd $$1) {
-      return this.y_().a($$0).b($$1);
+   @Override
+   public float a(int $$0, azk $$1, float $$2) {
+      return this.c.a($$0);
    }
 
-   default int b(jd $$0, int $$1) {
-      return this.y_().a($$0, $$1);
+   @Override
+   public MapCodec<dbz> a() {
+      return a;
    }
 
-   default boolean h(jd $$0) {
-      return this.a(ddf.a, $$0) >= this.Q();
+   public dbd b() {
+      return this.c;
    }
 }

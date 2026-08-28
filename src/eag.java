@@ -1,23 +1,68 @@
-import com.mojang.serialization.MapCodec;
+public final class eag {
+   private static final float a = 0.4F;
+   private static final int b = 20;
+   private static final double c = 0.2;
+   private static final float d = 0.7F;
+   private static final float e = 0.1F;
+   private static final float f = 0.3F;
+   private static final float g = 0.6F;
+   private static final float h = 0.02F;
+   private static final float i = -0.3F;
 
-public interface eag<P extends eaf> {
-   eag<eal> a = a("matching_blocks", eal.a);
-   eag<eak> b = a("matching_block_tag", eak.e);
-   eag<eam> c = a("matching_fluids", eam.a);
-   eag<eai> d = a("has_sturdy_face", eai.a);
-   eag<eap> e = a("solid", eap.a);
-   eag<eao> f = a("replaceable", eao.a);
-   eag<eat> g = a("would_survive", eat.a);
-   eag<eaj> h = a("inside_world_bounds", eaj.a);
-   eag<eae> i = a("any_of", eae.a);
-   eag<ead> j = a("all_of", ead.a);
-   eag<ean> k = a("not", ean.a);
-   eag<ear> l = a("true", ear.e);
-   eag<eas> m = a("unobstructed", eas.a);
+   private eag() {
+   }
 
-   MapCodec<P> codec();
+   protected static eaa.c a(dzp $$0, dzp $$1, dzp $$2, eaj $$3) {
+      dua $$4 = null;
+      return $$5 -> {
+         double $$6 = $$0.a($$5);
+         int $$7 = $$5.b();
+         eag.a $$8 = $$6 > 0.0 ? eag.a.a : eag.a.b;
+         double $$9 = Math.abs($$6);
+         int $$10 = $$8.d - $$7;
+         int $$11 = $$7 - $$8.c;
+         if ($$11 >= 0 && $$10 >= 0) {
+            int $$12 = Math.min($$10, $$11);
+            double $$13 = azc.a((double)$$12, 0.0, 20.0, -0.2, 0.0);
+            if ($$9 + $$13 < 0.4F) {
+               return $$4;
+            } else {
+               azk $$14 = $$3.a($$5.a(), $$7, $$5.c());
+               if ($$14.i() > 0.7F) {
+                  return $$4;
+               } else if ($$1.a($$5) >= 0.0) {
+                  return $$4;
+               } else {
+                  double $$15 = azc.a($$9, 0.4F, 0.6F, 0.1F, 0.3F);
+                  if ((double)$$14.i() < $$15 && $$2.a($$5) > -0.3F) {
+                     return $$14.i() < 0.02F ? $$8.f : $$8.e;
+                  } else {
+                     return $$8.g;
+                  }
+               }
+            }
+         } else {
+            return $$4;
+         }
+      };
+   }
 
-   private static <P extends eaf> eag<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.M, $$0, () -> $$1);
+   protected static enum a {
+      a(dgx.ra.o(), dgx.tg.o(), dgx.c.o(), 0, 50),
+      b(dgx.Q.o(), dgx.tf.o(), dgx.qz.o(), -60, -8);
+
+      final dua e;
+      final dua f;
+      final dua g;
+      protected final int c;
+      protected final int d;
+
+      private a(final dua $$0, final dua $$1, final dua $$2, final int $$3, final int $$4) {
+         this.e = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.c = $$3;
+         this.d = $$4;
+      }
    }
 }

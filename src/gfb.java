@@ -1,30 +1,99 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Optional;
 
-public class gfb {
-   public static final akr a = akr.b("textures/gui/title/background/panorama_overlay.png");
-   private final fgo b;
-   private final gen c;
-   private float d;
-   private float e;
-
-   public gfb(gen $$0) {
-      this.c = $$0;
-      this.b = fgo.Q();
+public class gfb extends gfe {
+   gfb(gax $$0, gez $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   public void a(fhz $$0, int $$1, int $$2, float $$3, float $$4) {
-      float $$5 = (float)((double)$$4 * this.b.m.s().c());
-      this.d = a(this.d + $$5 * 0.1F, 360.0F);
-      this.e = a(this.e + $$5 * 0.001F, (float) (Math.PI * 2));
-      this.c.a(this.b, 10.0F, -this.d, $$3);
-      RenderSystem.enableBlend();
-      $$0.a(1.0F, 1.0F, 1.0F, $$3);
-      $$0.a(a, 0, 0, $$1, $$2, 0.0F, 0.0F, 16, 128, 16, 128);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   gfb(gax $$0, gez $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   private static float a(float $$0, float $$1) {
-      return $$0 > $$1 ? $$0 - $$1 : $$0;
+   @Override
+   public gei b() {
+      return gei.b;
+   }
+
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         azk $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         gfb $$12 = new gfb($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
+   }
+
+   public static class b implements geh<lr> {
+      private final gez a;
+
+      public b(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfb $$8 = new gfb($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<lk> o() {
+               return Optional.of(lk.a);
+            }
+         };
+         $$8.t = azc.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
+         return $$8;
+      }
+   }
+
+   public static class c implements geh<lr> {
+      private final gez a;
+
+      public c(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfb $$8 = new gfb($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements geh<lr> {
+      private final gez a;
+
+      public d(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         gfb $$9 = new gfb($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
+      }
    }
 }

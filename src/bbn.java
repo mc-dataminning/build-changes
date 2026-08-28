@@ -1,90 +1,51 @@
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Streams;
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.List.ListType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Dynamic;
-import java.util.List;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
 import java.util.Map;
-import java.util.function.Function;
 
 public class bbn extends DataFix {
+   private static final Map<String, String> a = (Map<String, String>)DataFixUtils.make(Maps.newHashMap(), $$0 -> {
+      $$0.put("Airportal", "minecraft:end_portal");
+      $$0.put("Banner", "minecraft:banner");
+      $$0.put("Beacon", "minecraft:beacon");
+      $$0.put("Cauldron", "minecraft:brewing_stand");
+      $$0.put("Chest", "minecraft:chest");
+      $$0.put("Comparator", "minecraft:comparator");
+      $$0.put("Control", "minecraft:command_block");
+      $$0.put("DLDetector", "minecraft:daylight_detector");
+      $$0.put("Dropper", "minecraft:dropper");
+      $$0.put("EnchantTable", "minecraft:enchanting_table");
+      $$0.put("EndGateway", "minecraft:end_gateway");
+      $$0.put("EnderChest", "minecraft:ender_chest");
+      $$0.put("FlowerPot", "minecraft:flower_pot");
+      $$0.put("Furnace", "minecraft:furnace");
+      $$0.put("Hopper", "minecraft:hopper");
+      $$0.put("MobSpawner", "minecraft:mob_spawner");
+      $$0.put("Music", "minecraft:noteblock");
+      $$0.put("Piston", "minecraft:piston");
+      $$0.put("RecordPlayer", "minecraft:jukebox");
+      $$0.put("Sign", "minecraft:sign");
+      $$0.put("Skull", "minecraft:skull");
+      $$0.put("Structure", "minecraft:structure_block");
+      $$0.put("Trap", "minecraft:dispenser");
+   });
+
    public bbn(Schema $$0, boolean $$1) {
       super($$0, $$1);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bgr.c);
-      Type<?> $$1 = $$0.findFieldType("Level");
-      if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
-         throw new IllegalStateException("Tile entity type is not a list type.");
-      } else {
-         return this.a($$1, $$3);
-      }
-   }
-
-   private <TE> TypeRewriteRule a(Type<?> $$0, ListType<TE> $$1) {
-      Type<TE> $$2 = $$1.getElement();
-      OpticFinder<?> $$3 = DSL.fieldFinder("Level", $$0);
-      OpticFinder<List<TE>> $$4 = DSL.fieldFinder("TileEntities", $$1);
-      int $$5 = 416;
+      Type<?> $$0 = this.getInputSchema().getType(bhk.t);
+      Type<?> $$1 = this.getOutputSchema().getType(bhk.t);
+      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bhk.s);
+      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bhk.s);
       return TypeRewriteRule.seq(
-         this.fixTypeEverywhere(
-            "InjectBedBlockEntityType", this.getInputSchema().findChoiceType(bgr.s), this.getOutputSchema().findChoiceType(bgr.s), $$0x -> $$0xx -> $$0xx
-         ),
-         this.fixTypeEverywhereTyped(
-            "BedBlockEntityInjecter",
-            this.getOutputSchema().getType(bgr.c),
-            $$3x -> {
-               Typed<?> $$4x = $$3x.getTyped($$3);
-               Dynamic<?> $$5x = (Dynamic<?>)$$4x.get(DSL.remainderFinder());
-               int $$6 = $$5x.get("xPos").asInt(0);
-               int $$7 = $$5x.get("zPos").asInt(0);
-               List<TE> $$8 = Lists.newArrayList((Iterable)$$4x.getOrCreate($$4));
-
-               for (Dynamic<?> $$10 : $$5x.get("Sections").asList(Function.identity())) {
-                  int $$11 = $$10.get("Y").asInt(0);
-                  Streams.mapWithIndex($$10.get("Blocks").asIntStream(), ($$4xx, $$5xx) -> {
-                        if (416 == ($$4xx & 0xFF) << 4) {
-                           int $$6x = (int)$$5xx;
-                           int $$7x = $$6x & 15;
-                           int $$8x = $$6x >> 8 & 15;
-                           int $$9 = $$6x >> 4 & 15;
-                           Map<Dynamic<?>, Dynamic<?>> $$10x = Maps.newHashMap();
-                           $$10x.put($$10.createString("id"), $$10.createString("minecraft:bed"));
-                           $$10x.put($$10.createString("x"), $$10.createInt($$7x + ($$6 << 4)));
-                           $$10x.put($$10.createString("y"), $$10.createInt($$8x + ($$11 << 4)));
-                           $$10x.put($$10.createString("z"), $$10.createInt($$9 + ($$7 << 4)));
-                           $$10x.put($$10.createString("color"), $$10.createShort((short)14));
-                           return $$10x;
-                        } else {
-                           return null;
-                        }
-                     })
-                     .forEachOrdered(
-                        $$3xx -> {
-                           if ($$3xx != null) {
-                              $$8.add(
-                                 (TE)((Pair)$$2.read($$10.createMap($$3xx))
-                                       .result()
-                                       .orElseThrow(() -> new IllegalStateException("Could not parse newly created bed block entity.")))
-                                    .getFirst()
-                              );
-                           }
-                        }
-                     );
-               }
-
-               return !$$8.isEmpty() ? $$3x.set($$3, $$4x.set($$4, $$8)) : $$3x;
-            }
-         )
+         this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
+         this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))
       );
    }
 }

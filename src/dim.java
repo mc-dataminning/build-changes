@@ -1,84 +1,50 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dim extends dfk implements dlr {
-   public static final MapCodec<dim> a = b(dim::new);
-   protected static final exv b = dfy.a(0.0, 6.0, 0.0, 16.0, 12.0, 16.0);
+public class dim extends dgf {
+   public static final MapCodec<dim> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dik.a.forGetter($$0x -> $$0x.e), u()).apply($$0, dim::new));
+   private final dgv e;
+   protected static final float b = 6.0F;
+   protected static final eyx c = dgv.a(2.0, 0.0, 2.0, 14.0, 15.0, 14.0);
 
    @Override
    public MapCodec<dim> a() {
       return a;
    }
 
-   protected dim(dtb.d $$0) {
-      super($$0);
+   protected dim(dgv $$0, dtz.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new drz($$0, $$1);
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      this.a($$0, (ddt)$$1, $$2);
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return b;
-   }
-
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, bsr $$3) {
-      if ($$3.o(false) && exs.c(exs.a($$3.cK().d((double)(-$$2.u()), (double)(-$$2.v()), (double)(-$$2.w()))), $$0.j($$1, $$2), exg.i)) {
-         if (!$$1.B && $$1.af() == dcw.j && $$3 instanceof aqv $$4 && !$$4.f) {
-            $$4.q();
-            return;
-         }
-
-         $$3.a(this, $$2);
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.e.o().b(d, Boolean.valueOf(false)), 2);
       }
    }
 
    @Override
-   public eqc a(aqu $$0, bsr $$1, jd $$2) {
-      akq<dcw> $$3 = $$0.af() == dcw.j ? dcw.h : dcw.j;
-      aqu $$4 = $$0.o().a($$3);
-      if ($$4 == null) {
-         return null;
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$1 == jj.a && !$$0.a($$3, $$4)) {
+         return dgx.a.o();
       } else {
-         boolean $$5 = $$3 == dcw.j;
-         jd $$6 = $$5 ? aqu.a : $$4.V();
-         exc $$7 = $$6.c();
-         float $$8 = $$1.dE();
-         if ($$5) {
-            ecc.a($$4, jd.a((jw)$$7).e(), true);
-            $$8 = ji.e.p();
-            if ($$1 instanceof aqv) {
-               $$7 = $$7.a(0.0, 1.0, 0.0);
-            }
-         } else {
-            if ($$1 instanceof aqv $$9) {
-               return $$9.a(false, eqc.a);
-            }
-
-            $$7 = $$1.a($$4, $$6).c();
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, eqc.c, eqc.c.a($$3));
          }
 
-         return new eqc($$4, $$7, $$1.dr(), $$8, $$1.dG(), eqc.b.then(eqc.c));
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
    @Override
-   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
-      double $$4 = (double)$$2.u() + $$3.j();
-      double $$5 = (double)$$2.v() + 0.8;
-      double $$6 = (double)$$2.w() + $$3.j();
-      $$1.a(lm.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public cuq a(dcz $$0, jd $$1, dtc $$2) {
-      return cuq.l;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, epd $$1) {
-      return false;
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return c;
    }
 }

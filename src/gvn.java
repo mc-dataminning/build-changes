@@ -1,16 +1,11 @@
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface gvn {
-   gvn a = ($$0, $$1) -> {
-   };
-
-   default gvn decorate(Consumer<gvr.a> $$0) {
-      return ($$1, $$2) -> this.send($$1, $$2x -> {
-            $$2.accept($$2x);
-            $$0.accept($$2x);
-         });
+public interface gvn extends gvq {
+   @Deprecated
+   @Override
+   default float call(cvl $$0, @Nullable gax $$1, @Nullable buf $$2, int $$3) {
+      return azc.a(this.unclampedCall($$0, $$1, $$2, $$3), 0.0F, 1.0F);
    }
 
-   void send(gvo var1, Consumer<gvr.a> var2);
+   float unclampedCall(cvl var1, @Nullable gax var2, @Nullable buf var3, int var4);
 }

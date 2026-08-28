@@ -1,84 +1,45 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Locale;
-import java.util.function.Consumer;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
 
 public class anp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("commands.perf.notRunning"));
-   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wz.c("commands.perf.alreadyRunning"));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.jfr.start.failed"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xd.b("commands.jfr.dump.failed", $$0));
+
+   private anp() {
+   }
 
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("perf").requires($$0x -> $$0x.c(4)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("jfr").requires($$0x -> $$0x.c(4)))
                .then(eu.a("start").executes($$0x -> a((et)$$0x.getSource()))))
             .then(eu.a("stop").executes($$0x -> b((et)$$0x.getSource())))
       );
    }
 
    private static int a(et $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if ($$1.aV()) {
-         throw c.create();
+      boc $$1 = boc.a($$0.l());
+      if (!boe.f.a($$1)) {
+         throw a.create();
       } else {
-         Consumer<bne> $$2 = $$1x -> a($$0, $$1x);
-         Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
-         $$1.a($$2, $$3);
-         $$0.a(() -> wz.c("commands.perf.started"), false);
-         return 0;
+         $$0.a(() -> xd.c("commands.jfr.started"), false);
+         return 1;
       }
    }
 
    private static int b(et $$0) throws CommandSyntaxException {
-      MinecraftServer $$1 = $$0.l();
-      if (!$$1.aV()) {
-         throw b.create();
-      } else {
-         $$1.aX();
-         return 0;
-      }
-   }
-
-   private static void a(et $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ad.f(), $$2.bb().e(), ab.b().b());
-
-      String $$4;
       try {
-         $$4 = v.a(box.a, $$3, ".zip");
-      } catch (IOException var11) {
-         $$0.b(wz.c("commands.perf.reportFailed"));
-         a.error("Failed to create report name", var11);
-         return;
-      }
-
-      try (axz $$7 = new axz(box.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ac()).a());
-         $$7.a($$1);
-      }
-
-      try {
-         FileUtils.forceDelete($$1.toFile());
-      } catch (IOException var9) {
-         a.warn("Failed to delete temporary profiling file {}", $$1, var9);
-      }
-
-      $$0.a(() -> wz.a("commands.perf.reportSaved", $$4), false);
-   }
-
-   private static void a(et $$0, bne $$1) {
-      if ($$1 != bna.a) {
-         int $$2 = $$1.f();
-         double $$3 = (double)$$1.g() / (double)azp.a;
-         $$0.a(() -> wz.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);
+         Path $$1 = Paths.get(".").relativize(boe.f.b().normalize());
+         Path $$2 = $$0.l().r() && !ab.aW ? $$1 : $$1.toAbsolutePath();
+         xd $$3 = xd.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new xb(xb.a.f, $$2.toString())).a(new xj(xj.a.a, xd.c("chat.copy.click"))));
+         $$0.a(() -> xd.a("commands.jfr.stopped", $$3), false);
+         return 1;
+      } catch (Throwable var4) {
+         throw b.create(var4.getMessage());
       }
    }
 }

@@ -1,107 +1,179 @@
-public abstract class fou<T extends cpv> extends fot<T> implements fsg {
-   public final frw E;
-   private boolean F;
-   private final akr G;
-   private final akr H;
-   private final akr I;
+import java.util.List;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-   public fou(T $$0, frw $$1, cmw $$2, wz $$3, akr $$4, akr $$5, akr $$6) {
-      super($$0, $$2, $$3);
-      this.E = $$1;
-      this.G = $$4;
-      this.H = $$5;
-      this.I = $$6;
+public class fou extends fpt {
+   static final alb b = alb.b("container/slot");
+   private static final int c = 18;
+   private static final int d = 20;
+   private static final int s = 1;
+   private static final int u = 1;
+   private static final int v = 2;
+   private static final int w = 2;
+   protected final fuq a;
+   private final Consumer<eir> x;
+   eir y;
+   private xd z;
+   private xd A;
+   private fou.a B;
+   private fka C;
+
+   public fou(fuq $$0, Consumer<eir> $$1, eir $$2) {
+      super(xd.c("createWorld.customize.flat.title"));
+      this.a = $$0;
+      this.x = $$1;
+      this.y = $$2;
+   }
+
+   public eir l() {
+      return this.y;
+   }
+
+   public void a(eir $$0) {
+      this.y = $$0;
    }
 
    @Override
-   public void aT_() {
-      super.aT_();
-      this.F = this.m < 379;
-      this.E.a(this.m, this.n, this.l, this.F, this.x);
-      this.A = this.E.a(this.m, this.c);
-      this.c(new fiy(this.A + 20, this.n / 2 - 49, 20, 18, fsa.a, $$0 -> {
-         this.E.e();
-         this.A = this.E.a(this.m, this.c);
-         $$0.c(this.A + 20, this.n / 2 - 49);
-      }));
-      this.s = (this.c - this.o.a(this.k)) / 2;
+   protected void aT_() {
+      this.z = xd.c("createWorld.customize.flat.tile");
+      this.A = xd.c("createWorld.customize.flat.height");
+      this.B = this.c(new fou.a());
+      this.C = this.c(fka.a(xd.c("createWorld.customize.flat.removeLayer"), $$0 -> {
+         if (this.D()) {
+            List<eio> $$1 = this.y.e();
+            int $$2 = this.B.aK_().indexOf(this.B.h());
+            int $$3 = $$1.size() - $$2 - 1;
+            $$1.remove($$3);
+            this.B.a($$1.isEmpty() ? null : this.B.aK_().get(Math.min($$2, $$1.size() - 1)));
+            this.y.g();
+            this.B.c();
+            this.m();
+         }
+      }).a(this.n / 2 - 155, this.o - 52, 150, 20).a());
+      this.c(fka.a(xd.c("createWorld.customize.presets"), $$0 -> {
+         this.m.a(new fpp(this));
+         this.y.g();
+         this.m();
+      }).a(this.n / 2 + 5, this.o - 52, 150, 20).a());
+      this.c(fka.a(xc.d, $$0 -> {
+         this.x.accept(this.y);
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a());
+      this.c(fka.a(xc.e, $$0 -> {
+         this.m.a(this.a);
+         this.y.g();
+      }).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
+      this.y.g();
+      this.m();
+   }
+
+   void m() {
+      this.C.j = this.D();
+   }
+
+   private boolean D() {
+      return this.B.h() != null;
    }
 
    @Override
-   public void C() {
-      super.C();
-      this.E.h();
+   public void d() {
+      this.m.a(this.a);
    }
 
    @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      if (this.E.f() && this.F) {
-         this.b($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, $$1, $$2, $$3);
-         this.E.a($$0, this.A, this.B, true, $$3);
-      }
-
-      this.a($$0, $$1, $$2);
-      this.E.a($$0, this.A, this.B, $$1, $$2);
-   }
-
-   @Override
-   protected void a(fhz $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.A;
-      int $$5 = this.B;
-      $$0.a(this.G, $$4, $$5, 0, 0, this.c, this.r);
-      if (this.x.s()) {
-         int $$6 = 14;
-         int $$7 = ayo.f(this.x.r() * 13.0F) + 1;
-         $$0.a(this.H, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = ayo.f(this.x.q() * 24.0F);
-      $$0.a(this.I, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.E.a($$0, $$1, $$2)) {
-         return true;
-      } else {
-         return this.F && this.E.f() ? true : super.a($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void a(crq $$0, int $$1, int $$2, cqe $$3) {
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.E.a($$0);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+      int $$4 = this.n / 2 - 92 - 16;
+      $$0.b(this.p, this.z, $$4, 32, 16777215);
+      $$0.b(this.p, this.A, $$4 + 2 + 213 - this.p.a(this.A), 32, 16777215);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.E.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
-   }
+   class a extends fkw<fou.a.a> {
+      public a() {
+         super(fou.this.m, fou.this.n, fou.this.o - 103, 43, 24);
 
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.c) || $$1 >= (double)($$3 + this.r);
-      return this.E.a($$0, $$1, this.A, this.B, this.c, this.r, $$4) && $$5;
-   }
+         for (int $$0 = 0; $$0 < fou.this.y.e().size(); $$0++) {
+            this.b(new fou.a.a());
+         }
+      }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.E.a($$0, $$1) ? true : super.a($$0, $$1);
-   }
+      public void a(@Nullable fou.a.a $$0) {
+         super.a($$0);
+         fou.this.m();
+      }
 
-   @Override
-   public void E() {
-      this.E.i();
-   }
+      public void c() {
+         int $$0 = this.aK_().indexOf(this.h());
+         this.k();
 
-   @Override
-   public fsa F() {
-      return this.E;
+         for (int $$1 = 0; $$1 < fou.this.y.e().size(); $$1++) {
+            this.b(new fou.a.a());
+         }
+
+         List<fou.a.a> $$2 = this.aK_();
+         if ($$0 >= 0 && $$0 < $$2.size()) {
+            this.a($$2.get($$0));
+         }
+      }
+
+      class a extends fkw.a<fou.a.a> {
+         @Override
+         public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            eio $$10 = fou.this.y.e().get(fou.this.y.e().size() - $$1 - 1);
+            dua $$11 = $$10.b();
+            cvl $$12 = this.a($$11);
+            this.a($$0, $$3, $$2, $$12);
+            $$0.a(fou.this.p, $$12.y(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
+            xd $$13;
+            if ($$1 == 0) {
+               $$13 = xd.a("createWorld.customize.flat.layer.top", $$10.a());
+            } else if ($$1 == fou.this.y.e().size() - 1) {
+               $$13 = xd.a("createWorld.customize.flat.layer.bottom", $$10.a());
+            } else {
+               $$13 = xd.a("createWorld.customize.flat.layer", $$10.a());
+            }
+
+            $$0.a(fou.this.p, $$13, $$3 + 2 + 213 - fou.this.p.a($$13), $$2 + 3, 16777215, false);
+         }
+
+         private cvl a(dua $$0) {
+            cvg $$1 = $$0.b().r();
+            if ($$1 == cvo.a) {
+               if ($$0.a(dgx.G)) {
+                  $$1 = cvo.qA;
+               } else if ($$0.a(dgx.H)) {
+                  $$1 = cvo.qB;
+               }
+            }
+
+            return new cvl($$1);
+         }
+
+         @Override
+         public xd a() {
+            eio $$0 = fou.this.y.e().get(fou.this.y.e().size() - a.this.aK_().indexOf(this) - 1);
+            cvl $$1 = this.a($$0.b());
+            return (xd)(!$$1.f() ? xd.a("narrator.select", $$1.y()) : xc.a);
+         }
+
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            a.this.a(this);
+            return super.a($$0, $$1, $$2);
+         }
+
+         private void a(fjn $$0, int $$1, int $$2, cvl $$3) {
+            this.a($$0, $$1 + 1, $$2 + 1);
+            if (!$$3.f()) {
+               $$0.b($$3, $$1 + 2, $$2 + 2);
+            }
+         }
+
+         private void a(fjn $$0, int $$1, int $$2) {
+            $$0.a(ghe::C, fou.b, $$1, $$2, 18, 18);
+         }
+      }
    }
 }

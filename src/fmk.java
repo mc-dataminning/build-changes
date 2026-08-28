@@ -1,46 +1,42 @@
-import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+public interface fmk {
+   Object b = new Object();
+   int c = 160;
+   int d = 32;
 
-public class fmk<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fmk<?> a = new fmk<>(azs.a, ($$0, $$1) -> {
-   });
+   fmk.a a();
 
-   private fmk(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   void a(fml var1, long var2);
+
+   void a(fjn var1, fjl var2, long var3);
+
+   default Object f() {
+      return b;
    }
 
-   public static fmk<?> a(String $$0) {
-      return new fmk<>($$0, Consumer::accept);
+   default int b() {
+      return 160;
    }
 
-   public static fmk<?> a(wz $$0) {
-      return new fmk<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
+   default int c() {
+      return 32;
    }
 
-   public static fmk<?> a(List<wz> $$0) {
-      return new fmk<>($$0, ($$1, $$2) -> $$0.stream().map(wz::getString).forEach($$1));
+   default int g() {
+      return azc.e(this.c(), 32);
    }
 
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
+   public static enum a {
+      a(awd.AE),
+      b(awd.AF);
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fmk<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
+      private final awc c;
+
+      private a(final awc $$0) {
+         this.c = $$0;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+      public void a(hbj $$0) {
+         $$0.a(gzz.a(this.c, 1.0F, 1.0F));
+      }
    }
 }

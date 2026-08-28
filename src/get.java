@@ -1,168 +1,44 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class get extends gfe {
+   private final gez a;
 
-public class get extends auj<get.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final akr b = akr.b("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
-
-   public boolean a() {
-      return !this.c.isEmpty();
+   protected get(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gez $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   public boolean b() {
-      return this.a() && !this.e;
+   @Override
+   public gei b() {
+      return gei.b;
    }
 
-   public void d() {
-      this.d = true;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public void e() {
-      this.e = true;
-   }
+   public static class a implements geh<lr> {
+      private final gez a;
 
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected get.a a(aue $$0, bnf $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      $$1.a();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         $$1.a("compile_regex");
-         a($$5.getAsJsonArray("renderer"), $$2);
-         a($$5.getAsJsonArray("version"), $$3);
-         a($$5.getAsJsonArray("vendor"), $$4);
-         $$1.c();
-      }
-
-      $$1.b();
-      return new get.a($$2, $$3, $$4);
-   }
-
-   protected void a(get.a $$0, aue $$1, bnf $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
-   @Nullable
-   private static JsonObject c(aue $$0, bnf $$1) {
-      $$1.a("parse_json");
-      JsonObject $$2 = null;
-
-      try (Reader $$3 = $$0.openAsReader(b)) {
-         $$2 = JsonParser.parseReader($$3).getAsJsonObject();
-      } catch (JsonSyntaxException | IOException var8) {
-         a.warn("Failed to load GPU warnlist");
-      }
-
-      $$1.c();
-      return $$2;
-   }
-
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
-
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
+      public a(gez $$0) {
          this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
       }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
-            }
-         }
-
-         return String.join(", ", $$2);
-      }
-
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, fac.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
-
-         String $$2 = a(this.b, fac.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
-
-         String $$3 = a(this.c, fac.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
-
-         return $$0.build();
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         get $$8 = new get($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(0.923F, 0.964F, 0.999F);
+         return $$8;
       }
    }
 }

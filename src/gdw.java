@@ -1,22 +1,49 @@
-public class gdw extends gbf {
-   private static final int a = 12235202;
+public class gdw extends gfe {
+   private final gez a;
 
-   protected gdw(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdi $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-      this.v = 0.7294118F;
-      this.w = 0.69411767F;
-      this.x = 0.7607843F;
+   protected gdw(gax $$0, double $$1, double $$2, double $$3, double $$4, gez $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.t = 6 + this.r.a(4);
+      float $$6 = this.r.i() * 0.6F + 0.4F;
+      this.v = $$6;
+      this.w = $$6;
+      this.x = $$6;
+      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
+      this.a = $$5;
+      this.b($$5);
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
 
-      public a(gdi $$0) {
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.a);
+      }
+   }
+
+   @Override
+   public gei b() {
+      return gei.b;
+   }
+
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
          this.a = $$0;
       }
 
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gdw($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdw($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

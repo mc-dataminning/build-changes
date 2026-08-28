@@ -1,7 +1,7 @@
 public interface es {
    es a = new es() {
       @Override
-      public void a(wz $$0) {
+      public void a(xd $$0) {
       }
 
       @Override
@@ -10,23 +10,23 @@ public interface es {
       }
 
       @Override
-      public boolean w_() {
+      public boolean v_() {
          return false;
       }
 
       @Override
-      public boolean M_() {
+      public boolean J_() {
          return false;
       }
    };
 
-   void a(wz var1);
+   void a(xd var1);
 
    boolean k_();
 
-   boolean w_();
+   boolean v_();
 
-   boolean M_();
+   boolean J_();
 
    default boolean l_() {
       return false;

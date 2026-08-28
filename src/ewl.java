@@ -1,29 +1,32 @@
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class ewl implements ewn<MinecraftServer> {
-   final akr a;
+public record ewl(Optional<cs> b) implements ewe {
+   public static final MapCodec<ewl> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cs.a.optionalFieldOf("predicate").forGetter(ewl::c)).apply($$0, ewl::new));
 
-   public ewl(akr $$0) {
-      this.a = $$0;
+   @Override
+   public ewf b() {
+      return ewg.j;
    }
 
-   public void a(MinecraftServer $$0, ewp<MinecraftServer> $$1, long $$2) {
-      alg $$3 = $$0.aF();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public Set<evm<?>> a() {
+      return ImmutableSet.of(evp.i);
    }
 
-   public static class a extends ewn.a<MinecraftServer, ewl> {
-      public a() {
-         super(akr.b("function"), ewl.class);
-      }
+   public boolean a(est $$0) {
+      cvl $$1 = $$0.c(evp.i);
+      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   }
 
-      public void a(ub $$0, ewl $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   public static ewe.a a(cs.a $$0) {
+      return () -> new ewl(Optional.of($$0.b()));
+   }
 
-      public ewl a(ub $$0) {
-         akr $$1 = akr.a($$0.l("Name"));
-         return new ewl($$1);
-      }
+   public Optional<cs> c() {
+      return this.b;
    }
 }

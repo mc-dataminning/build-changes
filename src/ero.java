@@ -1,38 +1,53 @@
-import java.util.function.UnaryOperator;
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface ero<T> {
-   kp<T> a();
+public record ero(je c, cue d, Optional<xd> e) {
+   public static final Codec<ero> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               je.a.fieldOf("pos").forGetter(ero::c),
+               cue.q.lenientOptionalFieldOf("color", cue.a).forGetter(ero::d),
+               xf.g.lenientOptionalFieldOf("name").forGetter(ero::e)
+            )
+            .apply($$0, ero::new)
+   );
+   public static final Codec<List<ero>> b = a.listOf();
 
-   T b();
-
-   T a(T var1, Stream<cuq> var2);
-
-   Stream<cuq> a(T var1);
-
-   default void a(cuq $$0, T $$1, Stream<cuq> $$2) {
-      T $$3 = $$0.a(this.a(), $$1);
-      T $$4 = this.a($$3, $$2);
-      $$0.b(this.a(), $$4);
-   }
-
-   default void a(cuq $$0, Stream<cuq> $$1) {
-      this.a($$0, this.b(), $$1);
-   }
-
-   default void a(cuq $$0, UnaryOperator<cuq> $$1) {
-      T $$2 = $$0.a(this.a());
-      if ($$2 != null) {
-         UnaryOperator<cuq> $$3 = $$1x -> {
-            if ($$1x.e()) {
-               return $$1x;
-            } else {
-               cuq $$2x = $$1.apply($$1x);
-               $$2x.f($$2x.j());
-               return $$2x;
-            }
-         };
-         this.a($$0, this.a($$2).map($$3));
+   @Nullable
+   public static ero a(dcx $$0, je $$1) {
+      if ($$0.c_($$1) instanceof dqt $$3) {
+         cue $$4 = $$3.f();
+         Optional<xd> $$5 = Optional.ofNullable($$3.al());
+         return new ero($$1, $$4, $$5);
+      } else {
+         return null;
       }
+   }
+
+   public jn<erq> a() {
+      return switch (this.d) {
+         case a -> err.k;
+         case b -> err.l;
+         case c -> err.m;
+         case d -> err.n;
+         case e -> err.o;
+         case f -> err.p;
+         case g -> err.q;
+         case h -> err.r;
+         case i -> err.s;
+         case j -> err.t;
+         case k -> err.u;
+         case l -> err.v;
+         case m -> err.w;
+         case n -> err.x;
+         case o -> err.y;
+         case p -> err.z;
+      };
+   }
+
+   public String b() {
+      return "banner-" + this.c.u() + "," + this.c.v() + "," + this.c.w();
    }
 }

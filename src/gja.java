@@ -1,44 +1,14 @@
-public class gja implements gim.a {
-   private final fgo a;
+public class gja implements gjc<drc> {
+   public static final gyq a = new gyq(gwj.d, alb.b("entity/bell/bell_body"));
+   private final fwg b;
 
-   public gja(fgo $$0) {
-      this.a = $$0;
+   public gja(gjd.a $$0) {
+      this.b = new fwg($$0.a(gaa.t));
    }
 
-   @Override
-   public void a(fbi $$0, gez $$1, double $$2, double $$3, double $$4) {
-      jd $$5 = this.a.s.do();
-      dcz $$6 = this.a.s.dO();
-
-      for (jd $$7 : jd.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         epe $$8 = $$6.b_($$7);
-         if ($$8.a(awk.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            gim.a(
-               $$0,
-               $$1,
-               new ewx(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
-      }
-
-      for (jd $$10 : jd.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         epe $$11 = $$6.b_($$10);
-         if ($$11.a(awk.a)) {
-            gim.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
-      }
+   public void a(drc $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
+      fcy $$6 = a.a($$3, ghe::c);
+      this.b.a($$0, $$1);
+      this.b.a($$2, $$6, $$4, $$5);
    }
 }

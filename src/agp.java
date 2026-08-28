@@ -1,42 +1,195 @@
-import java.time.Instant;
-
-public record agp(String b, Instant c, long d, fa e, xg.b f) implements zg<agi> {
-   public static final yx<vw, agp> a = zg.a(agp::a, agp::new);
-
-   private agp(vw $$0) {
-      this($$0.p(), $$0.t(), $$0.readLong(), new fa($$0), new xg.b($$0));
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      this.e.a($$0);
-      this.f.a($$0);
-   }
-
-   @Override
-   public zi<agp> a() {
-      return agg.bk;
-   }
-
-   public void a(agi $$0) {
-      $$0.a(this);
-   }
-
-   public Instant e() {
-      return this.c;
-   }
-
-   public long f() {
-      return this.d;
-   }
-
-   public fa g() {
-      return this.e;
-   }
-
-   public xg.b h() {
-      return this.f;
-   }
+public class agp {
+   public static final wl.a<agq, wo> a = zp.a(
+      vy.b,
+      $$0 -> $$0.a(ago.bg, ags.a)
+            .a(ago.bh, agt.a)
+            .a(ago.bi, aic.a)
+            .a(ago.bj, agu.a)
+            .a(ago.bk, agv.a)
+            .a(ago.bl, agw.a)
+            .a(ago.bm, agx.a)
+            .a(ago.bn, agy.a)
+            .a(ago.bo, agz.a)
+            .a(ago.bp, aha.a)
+            .a(ago.bq, ahb.a)
+            .a(ago.br, ahc.b)
+            .a(aac.l, aae.a)
+            .a(ago.bs, ahd.a)
+            .a(ago.bt, ahe.b)
+            .a(ago.bu, ahf.a)
+            .a(ago.bv, ahg.a)
+            .a(ago.bw, ahh.a)
+            .a(ago.bx, ahi.a)
+            .a(abv.b, abx.a)
+            .a(aac.m, aaf.a)
+            .a(ago.by, ahj.a)
+            .a(ago.bz, ahk.b)
+            .a(ago.bA, ahl.a)
+            .a(ago.bB, ahm.a)
+            .a(ago.bC, ahn.a)
+            .a(aac.n, aag.a)
+            .a(ago.bD, aho.a)
+            .a(ago.bE, ahp.a.j)
+            .a(ago.bF, ahp.b.j)
+            .a(ago.bG, ahp.c.j)
+            .a(ago.bH, ahp.d.j)
+            .a(ago.bI, ahq.a)
+            .a(ago.bJ, ahr.a)
+            .a(ago.bK, ahs.a)
+            .a(aju.b, ajw.a)
+            .a(ago.bL, aht.a)
+            .a(ago.bM, ahu.a)
+            .a(ago.bN, ahv.a)
+            .a(ago.bO, ahw.a)
+            .a(ago.bP, ahx.a)
+            .a(aac.o, aah.a)
+            .a(ago.bQ, ahy.a)
+            .a(ago.bR, ahz.a)
+            .a(ago.bS, aia.a)
+            .a(aac.p, aai.a)
+            .a(ago.bT, aib.a)
+            .a(ago.bU, aid.a)
+            .a(ago.bV, aie.a)
+            .a(ago.bW, aif.a)
+            .a(ago.bX, aig.a)
+            .a(ago.bY, aih.a)
+            .a(ago.bZ, aii.a)
+            .a(ago.ca, aij.a)
+            .a(ago.cb, aik.a)
+            .a(ago.cc, ail.a)
+            .a(ago.cd, aim.a)
+            .a(ago.ce, ain.a)
+            .a(ago.cf, aio.a)
+            .a(ago.cg, aip.a)
+   );
+   public static final wl.a<abz, wo> b = zp.b(
+      vy.b,
+      $$0 -> $$0.a(ago.a, acl::new, new ack())
+            .a(ago.c, aca.a)
+            .a(ago.d, acb.a)
+            .a(ago.e, acc.a)
+            .a(ago.f, acd.a)
+            .a(ago.g, ace.a)
+            .a(ago.h, acf.a)
+            .a(ago.i, acg.a)
+            .a(ago.j, ach.a)
+            .a(ago.k, aci.a)
+            .a(ago.l, acj.a)
+            .a(ago.m, acm.a)
+            .a(ago.n, acn.a)
+            .a(ago.o, aco.b)
+            .a(ago.p, acp.a)
+            .a(ago.q, acq.a)
+            .a(ago.r, acr.a)
+            .a(ago.s, acs.a)
+            .a(ago.t, act.a)
+            .a(ago.u, acu.a)
+            .a(ago.v, acv.a)
+            .a(ago.w, acw.a)
+            .a(abv.a, abu.a)
+            .a(ago.x, acx.a)
+            .a(ago.y, acy.a)
+            .a(aac.a, zr.a)
+            .a(ago.z, acz.a)
+            .a(ago.A, ada.a)
+            .a(ago.B, adb.a)
+            .a(aac.c, zt.a)
+            .a(ago.C, adc.a)
+            .a(ago.D, add.a)
+            .a(ago.E, ade.a)
+            .a(ago.F, adf.a)
+            .a(ago.G, adg.a)
+            .a(ago.H, adh.a)
+            .a(ago.I, adi.a)
+            .a(ago.J, adj.a)
+            .a(aac.d, zu.a)
+            .a(ago.K, adl.a)
+            .a(ago.L, adm.a)
+            .a(ago.M, adn.a)
+            .a(ago.N, ado.a)
+            .a(ago.O, adq.a)
+            .a(ago.P, adr.a)
+            .a(ago.Q, ads.a)
+            .a(ago.R, adt.a.j)
+            .a(ago.S, adt.b.j)
+            .a(ago.T, adu.a)
+            .a(ago.U, adt.c.j)
+            .a(ago.V, adv.a)
+            .a(ago.W, adw.a)
+            .a(ago.X, adx.a)
+            .a(ago.Y, ady.a)
+            .a(aac.e, zv.a)
+            .a(aju.a, ajt.a)
+            .a(ago.Z, adz.a)
+            .a(ago.aa, aea.a)
+            .a(ago.ab, aeb.a)
+            .a(ago.ac, aec.a)
+            .a(ago.ad, aed.b)
+            .a(ago.ae, aee.a)
+            .a(ago.af, aef.a)
+            .a(ago.ag, aeg.a)
+            .a(ago.ah, aeh.a)
+            .a(ago.ai, aei.a)
+            .a(ago.aj, aek.a)
+            .a(ago.ak, ael.a)
+            .a(ago.al, aem.a)
+            .a(ago.ch, aen.a)
+            .a(aac.f, zw.a)
+            .a(aac.g, zx.b)
+            .a(ago.am, aeo.a)
+            .a(ago.an, aep.a)
+            .a(ago.ao, aeq.a)
+            .a(ago.ap, aer.a)
+            .a(ago.aq, aes.a)
+            .a(ago.ar, aet.a)
+            .a(ago.as, aeu.a)
+            .a(ago.at, aev.a)
+            .a(ago.au, aew.a)
+            .a(ago.av, aex.a)
+            .a(ago.aw, aey.a)
+            .a(ago.ax, aez.a)
+            .a(ago.ay, afa.a)
+            .a(ago.az, afb.a)
+            .a(ago.ck, afc.a)
+            .a(ago.aA, afd.a)
+            .a(ago.aB, afe.a)
+            .a(ago.aC, aff.a)
+            .a(ago.aD, afg.a)
+            .a(ago.aE, afh.a)
+            .a(ago.aF, afi.a)
+            .a(ago.aG, afj.a)
+            .a(ago.aH, afk.a)
+            .a(ago.aI, afl.a)
+            .a(ago.aJ, afm.a)
+            .a(ago.aK, afn.a)
+            .a(ago.cl, afo.a)
+            .a(ago.aL, afp.a)
+            .a(ago.aM, afq.a)
+            .a(ago.aN, afr.a)
+            .a(ago.aO, afs.a)
+            .a(ago.aP, aft.a)
+            .a(ago.aQ, afu.a)
+            .a(ago.aR, afv.a)
+            .a(ago.aS, afw.a)
+            .a(ago.aT, afx.a)
+            .a(ago.aU, afy.b)
+            .a(ago.aV, afz.a)
+            .a(aac.i, zz.a)
+            .a(ago.aW, aga.a)
+            .a(ago.aX, agb.a)
+            .a(ago.aY, agc.a)
+            .a(ago.aZ, agd.a)
+            .a(ago.ba, age.a)
+            .a(ago.ci, agf.a)
+            .a(ago.cj, agg.a)
+            .a(aac.j, aaa.a)
+            .a(ago.bb, agh.a)
+            .a(ago.bc, agi.a)
+            .a(ago.bd, agj.a)
+            .a(ago.be, agk.a)
+            .a(aac.k, aab.a)
+            .a(ago.bf, aej.a)
+            .a(aac.b, zs.a)
+            .a(aac.h, zy.a)
+   );
 }

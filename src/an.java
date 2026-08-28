@@ -1,7 +1,7 @@
 import com.mojang.serialization.Codec;
 
 public class an {
-   public static final Codec<aq<?>> a = lt.an.r();
+   public static final Codec<aq<?>> a = lu.am.q();
    public static final cf b = a("impossible", new cf());
    public static final da c = a("player_killed_entity", new da());
    public static final da d = a("entity_killed_player", new da());
@@ -60,10 +60,10 @@ public class an {
    public static final bz ae = a("fall_after_explosion", new bz());
 
    private static <T extends aq<?>> T a(String $$0, T $$1) {
-      return jz.a(lt.an, $$0, $$1);
+      return ka.a(lu.am, $$0, $$1);
    }
 
-   public static aq<?> a(jz<aq<?>> $$0) {
+   public static aq<?> a(ka<aq<?>> $$0) {
       return b;
    }
 }

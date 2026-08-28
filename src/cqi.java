@@ -1,9 +1,12 @@
-public interface cqi {
-   void a(cpu var1, jv<cuq> var2, cuq var3, int[] var4);
+public class cqi {
+   private final String a;
 
-   void a(cpu var1, int var2, cuq var3);
+   public cqi(String $$0) {
+      this.a = $$0;
+   }
 
-   void a(cpu var1, cuq var2);
-
-   void a(cpu var1, int var2, int var3);
+   @Override
+   public String toString() {
+      return this.a;
+   }
 }

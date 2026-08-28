@@ -1,110 +1,132 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 
-public class ggg {
-   public static final ggg a = new ggg();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final ggg.a[] c;
-   private final akr[] d;
+public abstract class ggg {
+   private static final Object2ObjectMap<alb, ggg> a = ad.a(new Object2ObjectArrayMap(), $$0 -> {
+      ggg.c $$1 = new ggg.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(dxu.e, $$1);
+      $$0.put(dxu.f, new ggg.b());
+      $$0.put(dxu.g, new ggg.a());
+   });
+   private final float b;
+   private final boolean c;
+   private final ggg.d d;
+   private final boolean e;
+   private final boolean f;
 
-   private ggg() {
-      this.c = new ggg.a[0];
-      this.d = new akr[0];
+   public ggg(float $$0, boolean $$1, ggg.d $$2, boolean $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public ggg(gsr $$0, ggb $$1, List<ggf> $$2) {
-      this.d = $$2.stream().flatMap(ggf::b).map(ggf.b::a).distinct().toArray(akr[]::new);
-      Object2IntMap<akr> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
-      }
-
-      List<ggg.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         ggf $$7 = $$2.get($$6);
-         gsm $$8 = this.a($$0, $$1, $$7);
-         ggg.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new ggg.b($$2x, $$1x.b());
-         }).toArray(ggg.b[]::new);
-         $$5.add(new ggg.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new ggg.a[0]);
+   public static ggg a(dxw $$0) {
+      return (ggg)a.get($$0.r());
    }
 
-   @Nullable
-   private gsm a(gsr $$0, ggb $$1, ggf $$2) {
-      gsy $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gsn.a);
+   public boolean a(float $$0) {
+      return false;
    }
 
-   @Nullable
-   public gsm a(gsm $$0, cuq $$1, @Nullable fzf $$2, @Nullable btn $$3, int $$4) {
-      if (this.c.length != 0) {
-         int $$5 = this.d.length;
-         float[] $$6 = new float[$$5];
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            akr $$8 = this.d[$$7];
-            gpt $$9 = gps.a($$1, $$8);
-            if ($$9 != null) {
-               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
-            } else {
-               $$6[$$7] = Float.NEGATIVE_INFINITY;
-            }
-         }
-
-         for (ggg.a $$10 : this.c) {
-            if ($$10.a($$6)) {
-               gsm $$11 = $$10.b;
-               if ($$11 == null) {
-                  return $$0;
-               }
-
-               return $$11;
-            }
-         }
-      }
-
-      return $$0;
+   public int b(float $$0) {
+      return 0;
    }
 
-   static class a {
-      private final ggg.b[] a;
-      @Nullable
-      final gsm b;
+   public float a() {
+      return this.b;
+   }
 
-      a(ggg.b[] $$0, @Nullable gsm $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public boolean b() {
+      return this.c;
+   }
+
+   public abstract eye a(eye var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public ggg.d c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public static class a extends ggg {
+      public a() {
+         super(Float.NaN, false, ggg.d.c, true, false);
       }
 
-      boolean a(float[] $$0) {
-         for (ggg.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
-            }
-         }
+      @Override
+      public eye a(eye $$0, float $$1) {
+         return $$0.c(0.15F);
+      }
 
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static class b extends ggg {
+      public b() {
+         super(Float.NaN, true, ggg.d.a, false, true);
+      }
+
+      @Override
+      public eye a(eye $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
          return true;
       }
    }
 
-   static class b {
-      public final int a;
-      public final float b;
+   public static class c extends ggg {
+      public static final int a = 192;
+      private static final float b = 0.4F;
 
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      public c() {
+         super(192.0F, true, ggg.d.b, false, false);
       }
+
+      @Override
+      public boolean a(float $$0) {
+         float $$1 = azc.b($$0 * (float) (Math.PI * 2));
+         return $$1 >= -0.4F && $$1 <= 0.4F;
+      }
+
+      @Override
+      public int b(float $$0) {
+         float $$1 = azc.b($$0 * (float) (Math.PI * 2));
+         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
+         float $$3 = azc.k(1.0F - (1.0F - azc.a($$2 * (float) Math.PI)) * 0.99F);
+         return axn.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
+      }
+
+      @Override
+      public eye a(eye $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

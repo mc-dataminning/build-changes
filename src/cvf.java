@@ -1,69 +1,32 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
+public interface cvf {
+   int a = 256;
+   float b = 7.0F;
+   ala<cvd> c = a("ponder_goat_horn");
+   ala<cvd> d = a("sing_goat_horn");
+   ala<cvd> e = a("seek_goat_horn");
+   ala<cvd> f = a("feel_goat_horn");
+   ala<cvd> g = a("admire_goat_horn");
+   ala<cvd> h = a("call_goat_horn");
+   ala<cvd> i = a("yearn_goat_horn");
+   ala<cvd> j = a("dream_goat_horn");
 
-public class cvf extends csv {
-   private static final MapCodec<cge.d> a = cge.d.a.fieldOf("BucketVariantTag");
-   private final bsx<?> b;
-   private final avo c;
-
-   public cvf(bsx<?> $$0, epd $$1, avo $$2, cul.a $$3) {
-      super($$1, $$3);
-      this.b = $$0;
-      this.c = $$2;
+   private static ala<cvd> a(String $$0) {
+      return ala.a(lv.I, alb.b($$0));
    }
 
-   @Override
-   public void a(@Nullable cmx $$0, dcw $$1, cuq $$2, jd $$3) {
-      if ($$1 instanceof aqu) {
-         this.a((aqu)$$1, $$2, $$3);
-         $$1.a($$0, dxz.t, $$3);
-      }
+   static void a(qt<cvd> $$0) {
+      a($$0, c, (jn<awc>)awd.mG.get(0), 7.0F, 256.0F);
+      a($$0, d, (jn<awc>)awd.mG.get(1), 7.0F, 256.0F);
+      a($$0, e, (jn<awc>)awd.mG.get(2), 7.0F, 256.0F);
+      a($$0, f, (jn<awc>)awd.mG.get(3), 7.0F, 256.0F);
+      a($$0, g, (jn<awc>)awd.mG.get(4), 7.0F, 256.0F);
+      a($$0, h, (jn<awc>)awd.mG.get(5), 7.0F, 256.0F);
+      a($$0, i, (jn<awc>)awd.mG.get(6), 7.0F, 256.0F);
+      a($$0, j, (jn<awc>)awd.mG.get(7), 7.0F, 256.0F);
    }
 
-   @Override
-   protected void a(@Nullable cmx $$0, dcx $$1, jd $$2) {
-      $$1.a($$0, $$2, this.c, avq.g, 1.0F, 1.0F);
-   }
-
-   private void a(aqu $$0, cuq $$1, jd $$2) {
-      if (this.b.a($$0, $$1, null, $$2, btr.l, true, false) instanceof cfg $$4) {
-         cxh $$5 = $$1.a(kq.N, cxh.a);
-         $$4.h($$5.c());
-         $$4.x(true);
-      }
-   }
-
-   @Override
-   public void a(cuq $$0, cul.b $$1, List<wz> $$2, cwm $$3) {
-      if (this.b == bsx.bg) {
-         cxh $$4 = $$0.a(kq.N, cxh.a);
-         if ($$4.b()) {
-            return;
-         }
-
-         Optional<cge.d> $$5 = $$4.a(a).result();
-         if ($$5.isPresent()) {
-            cge.d $$6 = $$5.get();
-            n[] $$7 = new n[]{n.u, n.h};
-            String $$8 = "color.minecraft." + $$6.c();
-            String $$9 = "color.minecraft." + $$6.d();
-            int $$10 = cge.c.indexOf($$6);
-            if ($$10 != -1) {
-               $$2.add(wz.c(cge.c($$10)).a($$7));
-               return;
-            }
-
-            $$2.add($$6.b().d().e().a($$7));
-            xn $$11 = wz.c($$8);
-            if (!$$8.equals($$9)) {
-               $$11.f(", ").b(wz.c($$9));
-            }
-
-            $$11.a($$7);
-            $$2.add($$11);
-         }
-      }
+   static void a(qt<cvd> $$0, ala<cvd> $$1, jn<awc> $$2, float $$3, float $$4) {
+      xr $$5 = xd.c(ad.a("instrument", $$1.a()));
+      $$0.a($$1, new cvd($$2, $$3, $$4, $$5));
    }
 }

@@ -1,29 +1,35 @@
-import com.google.common.util.concurrent.RateLimiter;
-import java.time.Duration;
-import java.util.concurrent.atomic.AtomicReference;
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
 
 public class gwr {
-   private final float a;
-   private final AtomicReference<gwr.a> b = new AtomicReference<>();
+   private static final BiMap<alb, gwq> i = HashBiMap.create();
+   public static final gwq a = a("single", gww.b);
+   public static final gwq b = a("directory", gwt.b);
+   public static final gwq c = a("filter", gwx.b);
+   public static final gwq d = a("unstitch", gwy.b);
+   public static final gwq e = a("paletted_permutations", gwv.b);
+   public static Codec<gwq> f = alb.a.flatXmap($$0 -> {
+      gwq $$1 = (gwq)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      alb $$1 = (alb)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gwo> g = f.dispatch(gwo::a, gwq::a);
+   public static Codec<List<gwo>> h = g.listOf().fieldOf("sources").codec();
 
-   public gwr(Duration $$0) {
-      this.a = 1000.0F / (float)$$0.toMillis();
-   }
-
-   public void a(fgg $$0, wz $$1) {
-      gwr.a $$2 = this.b.updateAndGet($$1x -> $$1x != null && $$1.equals($$1x.a) ? $$1x : new gwr.a($$1, RateLimiter.create((double)this.a)));
-      if ($$2.b.tryAcquire(1)) {
-         $$0.c($$1);
-      }
-   }
-
-   static class a {
-      final wz a;
-      final RateLimiter b;
-
-      a(wz $$0, RateLimiter $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private static gwq a(String $$0, MapCodec<? extends gwo> $$1) {
+      gwq $$2 = new gwq($$1);
+      alb $$3 = alb.b($$0);
+      gwq $$4 = (gwq)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
       }
    }
 }

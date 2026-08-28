@@ -1,3 +1,58 @@
-interface dvp<T> {
-   int onResize(int var1, T var2);
+public interface dvp {
+   void a(dvr var1, double var2);
+
+   void a(dvr var1, double var2, double var4, long var6);
+
+   void a(dvr var1, double var2, double var4);
+
+   void a(dvr var1, int var2);
+
+   void b(dvr var1, int var2);
+
+   void b(dvr var1, double var2);
+
+   void c(dvr var1, double var2);
+
+   public static class a implements dvp {
+      private final dvr a;
+
+      public a(dvr $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(dvr $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(dvr $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(dvr $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(dvr $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(dvr $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dvr $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dvr $$0, double $$1) {
+         this.a.b($$1);
+      }
+   }
 }

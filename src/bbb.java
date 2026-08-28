@@ -1,58 +1,61 @@
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.function.UnaryOperator;
 
-public class bbb extends bfn {
-   public static final String a = "_filtered_correct";
-   private static final String b = "black";
+public class bbb extends DataFix {
+   private final String a;
+   private final UnaryOperator<String> b;
 
-   public bbb(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bgr.s, $$2);
+   public bbb(Schema $$0, String $$1, UnaryOperator<String> $$2) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.set("front_text", b($$0)).set("back_text", c($$0)).set("is_waxed", $$0.createBoolean(false));
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.t);
+      OpticFinder<?> $$1 = $$0.findField("tag");
+      return TypeRewriteRule.seq(
+         this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
+         new TypeRewriteRule[]{
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bhk.B), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bhk.b), this::b)
+         }
+      );
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = azv.a($$0.getOps());
-      List<Dynamic<T>> $$2 = a($$0, "Text").map($$1x -> $$1x.orElse($$1)).toList();
-      Dynamic<T> $$3 = $$0.emptyMap()
-         .set("messages", $$0.createList($$2.stream()))
-         .set("color", $$0.get("Color").result().orElse($$0.createString("black")))
-         .set("has_glowing_text", $$0.get("GlowingText").result().orElse($$0.createBoolean(false)))
-         .set("_filtered_correct", $$0.createBoolean(true));
-      List<Optional<Dynamic<T>>> $$4 = a($$0, "FilteredText").toList();
-      if ($$4.stream().anyMatch(Optional::isPresent)) {
-         $$3 = $$3.set("filtered_messages", $$0.createList(Streams.mapWithIndex($$4.stream(), ($$1x, $$2x) -> {
-            Dynamic<T> $$3x = $$2.get((int)$$2x);
-            return $$1x.orElse($$3x);
-         })));
-      }
-
-      return $$3;
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map(this.b).map($$0::createString), $$0);
    }
 
-   private static <T> Stream<Optional<Dynamic<T>>> a(Dynamic<T> $$0, String $$1) {
-      return Stream.of($$0.get($$1 + "1").result(), $$0.get($$1 + "2").result(), $$0.get($$1 + "3").result(), $$0.get($$1 + "4").result());
+   private Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "AttributeModifiers",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", this::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 
-   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
-      return $$0.emptyMap().set("messages", d($$0)).set("color", $$0.createString("black")).set("has_glowing_text", $$0.createBoolean(false));
-   }
-
-   private static <T> Dynamic<T> d(Dynamic<T> $$0) {
-      Dynamic<T> $$1 = azv.a($$0.getOps());
-      return $$0.createList(Stream.of($$1, $$1, $$1, $$1));
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), bbb::a);
+   private Typed<?> b(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> $$0x.update(
+               "Attributes",
+               $$0xx -> (Dynamic)DataFixUtils.orElse(
+                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", this::a))).map($$0xx::createList), $$0xx
+                  )
+            )
+      );
    }
 }

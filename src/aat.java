@@ -1,31 +1,45 @@
-public record aat(jd c, String d, int e) implements aaj {
-   public static final yx<vw, aat> a = aaj.a(aat::a, aat::new);
-   public static final aaj.b<aat> b = aaj.a("debug/poi_added");
+import java.util.List;
 
-   private aat(vw $$0) {
-      this($$0.e(), $$0.p(), $$0.readInt());
+public record aat(int c, je d, List<aat.a> e) implements aan {
+   public static final zb<wa, aat> a = aan.a(aat::a, aat::new);
+   public static final aan.b<aat> b = aan.a("debug/goal_selector");
+
+   private aat(wa $$0) {
+      this($$0.readInt(), $$0.e(), $$0.a(aat.a::new));
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.c);
+   private void a(wa $$0) {
+      $$0.q(this.c);
       $$0.a(this.d);
-      $$0.p(this.e);
+      $$0.a(this.e, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public aaj.b<aat> a() {
+   public aan.b<aat> a() {
       return b;
    }
 
-   public jd b() {
+   public int b() {
       return this.c;
    }
 
-   public String c() {
+   public je c() {
       return this.d;
    }
 
-   public int d() {
+   public List<aat.a> d() {
       return this.e;
+   }
+
+   public static record a(int a, boolean b, String c) {
+      public a(wa $$0) {
+         this($$0.readInt(), $$0.readBoolean(), $$0.d(255));
+      }
+
+      public void a(wa $$0) {
+         $$0.q(this.a);
+         $$0.a(this.b);
+         $$0.a(this.c);
+      }
    }
 }

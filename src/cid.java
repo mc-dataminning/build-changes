@@ -1,20 +1,24 @@
-public abstract class cid extends cic {
-   public cid(cia $$0) {
-      super($$0);
+import java.util.function.IntFunction;
+
+public enum cid {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
+
+   private static final IntFunction<cid> f = axt.a(cid::a, values(), axt.a.b);
+   private final int g;
+
+   private cid(final int $$0) {
+      this.g = $$0;
    }
 
-   @Override
-   public boolean a() {
-      return true;
+   public int a() {
+      return this.g;
    }
 
-   @Override
-   public float a(brk $$0, float $$1) {
-      if (!($$0.c() instanceof cnd) && !($$0.c() instanceof coh)) {
-         return super.a($$0, $$1);
-      } else {
-         $$0.c().d(1.0F);
-         return 0.0F;
-      }
+   public static cid a(int $$0) {
+      return f.apply($$0);
    }
 }

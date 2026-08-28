@@ -1,517 +1,230 @@
 import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
-import org.joml.Vector4f;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+import java.util.Objects;
 
-public class faz extends far implements AutoCloseable {
-   private static final Logger l = LogUtils.getLogger();
-   public static final int a = 0;
-   public static final int b = 1;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   public static final int g = 6;
-   public static final int h = 7;
-   public static final int i = 8;
-   public static final int j = 9;
-   public static final int k = 10;
-   private static final boolean m = false;
-   private int n;
-   private final int o;
-   private final int p;
-   private final IntBuffer q;
-   private final FloatBuffer r;
-   private final String s;
-   private boolean t;
-   private final fay u;
+public abstract class faz {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int l = 2;
+   private static final int m = 3;
+   public int c;
+   public int d;
+   public int e;
+   public int f;
+   public final boolean g;
+   public int h;
+   protected int i;
+   protected int j;
+   private final float[] n = ad.a(() -> new float[]{1.0F, 1.0F, 1.0F, 0.0F});
+   public int k;
 
-   public faz(String $$0, int $$1, int $$2, fay $$3) {
-      this.s = $$0;
-      this.o = $$2;
-      this.p = $$1;
-      this.u = $$3;
-      if ($$1 <= 3) {
-         this.q = MemoryUtil.memAllocInt($$2);
-         this.r = null;
-      } else {
-         this.q = null;
-         this.r = MemoryUtil.memAllocFloat($$2);
+   public faz(boolean $$0) {
+      this.g = $$0;
+      this.h = -1;
+      this.i = -1;
+      this.j = -1;
+   }
+
+   public void a(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._enableDepthTest();
+      if (this.h >= 0) {
+         this.a();
       }
 
-      this.n = -1;
-      this.h();
+      this.b($$0, $$1);
+      GlStateManager._glBindFramebuffer(36160, 0);
    }
 
-   public static int a(int $$0, CharSequence $$1) {
-      return GlStateManager._glGetUniformLocation($$0, $$1);
-   }
-
-   public static void b(int $$0, int $$1) {
-      RenderSystem.glUniform1i($$0, $$1);
-   }
-
-   public static int b(int $$0, CharSequence $$1) {
-      return GlStateManager._glGetAttribLocation($$0, $$1);
-   }
-
-   public static void a(int $$0, int $$1, CharSequence $$2) {
-      GlStateManager._glBindAttribLocation($$0, $$1, $$2);
-   }
-
-   @Override
-   public void close() {
-      if (this.q != null) {
-         MemoryUtil.memFree(this.q);
+   public void a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.d();
+      this.e();
+      if (this.j > -1) {
+         TextureUtil.releaseTextureId(this.j);
+         this.j = -1;
       }
 
-      if (this.r != null) {
-         MemoryUtil.memFree(this.r);
+      if (this.i > -1) {
+         TextureUtil.releaseTextureId(this.i);
+         this.i = -1;
+      }
+
+      if (this.h > -1) {
+         GlStateManager._glBindFramebuffer(36160, 0);
+         GlStateManager._glDeleteFramebuffers(this.h);
+         this.h = -1;
       }
    }
 
-   private void h() {
-      this.t = true;
-      if (this.u != null) {
-         this.u.b();
-      }
+   public void a(faz $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36008, $$0.h);
+      GlStateManager._glBindFramebuffer(36009, this.h);
+      GlStateManager._glBlitFrameBuffer(0, 0, $$0.c, $$0.d, 0, 0, this.c, this.d, 256, 9728);
+      GlStateManager._glBindFramebuffer(36160, 0);
    }
 
-   public static int a(String $$0) {
-      int $$1 = -1;
-      if ("int".equals($$0)) {
-         $$1 = 0;
-      } else if ("float".equals($$0)) {
-         $$1 = 4;
-      } else if ($$0.startsWith("matrix")) {
-         if ($$0.endsWith("2x2")) {
-            $$1 = 8;
-         } else if ($$0.endsWith("3x3")) {
-            $$1 = 9;
-         } else if ($$0.endsWith("4x4")) {
-            $$1 = 10;
+   public void b(int $$0, int $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2 = RenderSystem.maxSupportedTextureSize();
+      if ($$0 > 0 && $$0 <= $$2 && $$1 > 0 && $$1 <= $$2) {
+         this.e = $$0;
+         this.f = $$1;
+         this.c = $$0;
+         this.d = $$1;
+         this.h = GlStateManager.glGenFramebuffers();
+         this.i = TextureUtil.generateTextureId();
+         if (this.g) {
+            this.j = TextureUtil.generateTextureId();
+            GlStateManager._bindTexture(this.j);
+            GlStateManager._texParameter(3553, 10241, 9728);
+            GlStateManager._texParameter(3553, 10240, 9728);
+            GlStateManager._texParameter(3553, 34892, 0);
+            GlStateManager._texParameter(3553, 10242, 33071);
+            GlStateManager._texParameter(3553, 10243, 33071);
+            GlStateManager._texImage2D(3553, 0, 6402, this.c, this.d, 0, 6402, 5126, null);
          }
-      }
 
-      return $$1;
-   }
+         this.a(9728, true);
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10242, 33071);
+         GlStateManager._texParameter(3553, 10243, 33071);
+         GlStateManager._texImage2D(3553, 0, 32856, this.c, this.d, 0, 6408, 5121, null);
+         GlStateManager._glBindFramebuffer(36160, this.h);
+         GlStateManager._glFramebufferTexture2D(36160, 36064, 3553, this.i, 0);
+         if (this.g) {
+            GlStateManager._glFramebufferTexture2D(36160, 36096, 3553, this.j, 0);
+         }
 
-   public void b(int $$0) {
-      this.n = $$0;
-   }
-
-   public String a() {
-      return this.s;
-   }
-
-   @Override
-   public final void a(float $$0) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.h();
-   }
-
-   public final void a(int $$0, float $$1) {
-      this.r.position(0);
-      this.r.put($$0, $$1);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.h();
-   }
-
-   @Override
-   public final void a(Vector3f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      this.r.put($$0);
-      this.r.put($$1);
-      this.r.put($$2);
-      this.r.put($$3);
-      this.r.flip();
-      this.h();
-   }
-
-   @Override
-   public final void a(Vector4f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      if (this.p >= 4) {
-         this.r.put(0, $$0);
-      }
-
-      if (this.p >= 5) {
-         this.r.put(1, $$1);
-      }
-
-      if (this.p >= 6) {
-         this.r.put(2, $$2);
-      }
-
-      if (this.p >= 7) {
-         this.r.put(3, $$3);
-      }
-
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1, int $$2, int $$3) {
-      this.q.position(0);
-      if (this.p >= 0) {
-         this.q.put(0, $$0);
-      }
-
-      if (this.p >= 1) {
-         this.q.put(1, $$1);
-      }
-
-      if (this.p >= 2) {
-         this.q.put(2, $$2);
-      }
-
-      if (this.p >= 3) {
-         this.q.put(3, $$3);
-      }
-
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.h();
-   }
-
-   @Override
-   public final void a(int $$0, int $$1, int $$2) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.q.put(2, $$2);
-      this.h();
-   }
-
-   @Override
-   public final void b(int $$0, int $$1, int $$2, int $$3) {
-      this.q.position(0);
-      this.q.put(0, $$0);
-      this.q.put(1, $$1);
-      this.q.put(2, $$2);
-      this.q.put(3, $$3);
-      this.h();
-   }
-
-   @Override
-   public final void a(float[] $$0) {
-      if ($$0.length < this.o) {
-         l.warn("Uniform.set called with a too-small value array (expected {}, got {}). Ignoring.", this.o, $$0.length);
+         this.b();
+         this.f();
+         this.d();
       } else {
-         this.r.position(0);
-         this.r.put($$0);
-         this.r.position(0);
-         this.h();
+         throw new IllegalArgumentException("Window " + $$0 + "x" + $$1 + " size out of bounds (max. size: " + $$2 + ")");
       }
    }
 
-   @Override
-   public final void c(float $$0, float $$1, float $$2, float $$3) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.h();
+   public void a(int $$0) {
+      this.a($$0, false);
    }
 
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.h();
-   }
-
-   @Override
-   public final void a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.h();
-   }
-
-   @Override
-   public final void b(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.h();
-   }
-
-   @Override
-   public final void a(
-      float $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15
-   ) {
-      this.r.position(0);
-      this.r.put(0, $$0);
-      this.r.put(1, $$1);
-      this.r.put(2, $$2);
-      this.r.put(3, $$3);
-      this.r.put(4, $$4);
-      this.r.put(5, $$5);
-      this.r.put(6, $$6);
-      this.r.put(7, $$7);
-      this.r.put(8, $$8);
-      this.r.put(9, $$9);
-      this.r.put(10, $$10);
-      this.r.put(11, $$11);
-      this.r.put(12, $$12);
-      this.r.put(13, $$13);
-      this.r.put(14, $$14);
-      this.r.put(15, $$15);
-      this.h();
-   }
-
-   @Override
-   public final void a(Matrix4f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
-   }
-
-   @Override
-   public final void a(Matrix3f $$0) {
-      this.r.position(0);
-      $$0.get(this.r);
-      this.h();
+   private void a(int $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if ($$1 || $$0 != this.k) {
+         this.k = $$0;
+         GlStateManager._bindTexture(this.i);
+         GlStateManager._texParameter(3553, 10241, $$0);
+         GlStateManager._texParameter(3553, 10240, $$0);
+         GlStateManager._bindTexture(0);
+      }
    }
 
    public void b() {
-      if (!this.t) {
-      }
-
-      this.t = false;
-      if (this.p <= 3) {
-         this.i();
-      } else if (this.p <= 7) {
-         this.j();
-      } else {
-         if (this.p > 10) {
-            l.warn("Uniform.upload called, but type value ({}) is not a valid type. Ignoring.", this.p);
-            return;
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$0 = GlStateManager.glCheckFramebufferStatus(36160);
+      if ($$0 != 36053) {
+         if ($$0 == 36054) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT");
+         } else if ($$0 == 36055) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT");
+         } else if ($$0 == 36059) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER");
+         } else if ($$0 == 36060) {
+            throw new RuntimeException("GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER");
+         } else if ($$0 == 36061) {
+            throw new RuntimeException("GL_FRAMEBUFFER_UNSUPPORTED");
+         } else if ($$0 == 1285) {
+            throw new RuntimeException("GL_OUT_OF_MEMORY");
+         } else {
+            throw new RuntimeException("glCheckFramebufferStatus returned unknown status:" + $$0);
          }
-
-         this.k();
       }
    }
 
-   private void i() {
-      this.q.rewind();
-      switch (this.p) {
-         case 0:
-            RenderSystem.glUniform1(this.n, this.q);
-            break;
-         case 1:
-            RenderSystem.glUniform2(this.n, this.q);
-            break;
-         case 2:
-            RenderSystem.glUniform3(this.n, this.q);
-            break;
-         case 3:
-            RenderSystem.glUniform4(this.n, this.q);
-            break;
-         default:
-            l.warn("Uniform.upload called, but count value ({}) is  not in the range of 1 to 4. Ignoring.", this.o);
+   public void c() {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._bindTexture(this.i);
+   }
+
+   public void d() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._bindTexture(0);
+   }
+
+   public void a(boolean $$0) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, this.h);
+      if ($$0) {
+         GlStateManager._viewport(0, 0, this.e, this.f);
       }
    }
 
-   private void j() {
-      this.r.rewind();
-      switch (this.p) {
-         case 4:
-            RenderSystem.glUniform1(this.n, this.r);
-            break;
-         case 5:
-            RenderSystem.glUniform2(this.n, this.r);
-            break;
-         case 6:
-            RenderSystem.glUniform3(this.n, this.r);
-            break;
-         case 7:
-            RenderSystem.glUniform4(this.n, this.r);
-            break;
-         default:
-            l.warn("Uniform.upload called, but count value ({}) is not in the range of 1 to 4. Ignoring.", this.o);
+   public void e() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      GlStateManager._glBindFramebuffer(36160, 0);
+   }
+
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      this.n[0] = $$0;
+      this.n[1] = $$1;
+      this.n[2] = $$2;
+      this.n[3] = $$3;
+   }
+
+   public void c(int $$0, int $$1) {
+      this.a($$0, $$1, true);
+   }
+
+   public void a(int $$0, int $$1, boolean $$2) {
+      this.b($$0, $$1, $$2);
+   }
+
+   private void b(int $$0, int $$1, boolean $$2) {
+      RenderSystem.assertOnRenderThread();
+      GlStateManager._colorMask(true, true, true, false);
+      GlStateManager._disableDepthTest();
+      GlStateManager._depthMask(false);
+      GlStateManager._viewport(0, 0, $$0, $$1);
+      if ($$2) {
+         GlStateManager._disableBlend();
       }
+
+      fib $$3 = fib.Q();
+      ghk $$4 = Objects.requireNonNull($$3.j.e, "Blit shader not loaded");
+      $$4.a("InSampler", this.i);
+      $$4.g();
+      fcp $$5 = RenderSystem.renderThreadTesselator().a(fcz.c.h, fcs.a);
+      $$5.a(0.0F, 0.0F, 0.0F);
+      $$5.a(1.0F, 0.0F, 0.0F);
+      $$5.a(1.0F, 1.0F, 0.0F);
+      $$5.a(0.0F, 1.0F, 0.0F);
+      fcq.b($$5.b());
+      $$4.f();
+      GlStateManager._depthMask(true);
+      GlStateManager._colorMask(true, true, true, true);
    }
 
-   private void k() {
-      this.r.clear();
-      switch (this.p) {
-         case 8:
-            RenderSystem.glUniformMatrix2(this.n, false, this.r);
-            break;
-         case 9:
-            RenderSystem.glUniformMatrix3(this.n, false, this.r);
-            break;
-         case 10:
-            RenderSystem.glUniformMatrix4(this.n, false, this.r);
+   public void f() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      this.a(true);
+      GlStateManager._clearColor(this.n[0], this.n[1], this.n[2], this.n[3]);
+      int $$0 = 16384;
+      if (this.g) {
+         GlStateManager._clearDepth(1.0);
+         $$0 |= 256;
       }
+
+      GlStateManager._clear($$0);
+      this.e();
    }
 
-   public int c() {
-      return this.n;
+   public int g() {
+      return this.i;
    }
 
-   public int d() {
-      return this.o;
-   }
-
-   public int e() {
-      return this.p;
-   }
-
-   public IntBuffer f() {
-      return this.q;
-   }
-
-   public FloatBuffer g() {
-      return this.r;
+   public int h() {
+      return this.j;
    }
 }

@@ -1,38 +1,66 @@
-public enum fom {
-   a(
-      akr.b("advancements/box_obtained"),
-      akr.b("advancements/task_frame_obtained"),
-      akr.b("advancements/challenge_frame_obtained"),
-      akr.b("advancements/goal_frame_obtained")
-   ),
-   b(
-      akr.b("advancements/box_unobtained"),
-      akr.b("advancements/task_frame_unobtained"),
-      akr.b("advancements/challenge_frame_unobtained"),
-      akr.b("advancements/goal_frame_unobtained")
-   );
+public class fom extends fpt {
+   private static final xd s = xd.c("selectWorld.backupJoinSkipButton");
+   public static final xd a = xd.c("selectWorld.backupJoinConfirmButton");
+   private final Runnable u;
+   protected final fom.a b;
+   private final xd v;
+   private final boolean w;
+   private fkt x = fkt.a;
+   final xd c;
+   protected int d;
+   private fkc y;
 
-   private final akr c;
-   private final akr d;
-   private final akr e;
-   private final akr f;
-
-   private fom(final akr $$0, final akr $$1, final akr $$2, final akr $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public fom(Runnable $$0, fom.a $$1, xd $$2, xd $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, a, $$4);
    }
 
-   public akr a() {
-      return this.c;
+   public fom(Runnable $$0, fom.a $$1, xd $$2, xd $$3, xd $$4, boolean $$5) {
+      super($$2);
+      this.u = $$0;
+      this.b = $$1;
+      this.v = $$3;
+      this.w = $$5;
+      this.c = $$4;
    }
 
-   public akr a(am $$0) {
-      return switch ($$0) {
-         case a -> this.d;
-         case b -> this.e;
-         case c -> this.f;
-      };
+   @Override
+   protected void aT_() {
+      super.aT_();
+      this.x = fkt.a(this.p, this.v, this.n - 50);
+      int $$0 = (this.x.a() + 1) * 9;
+      this.y = fkc.a(xd.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
+      if (this.w) {
+         this.c(this.y);
+      }
+
+      this.c(fka.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
+      this.c(fka.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
+      this.c(fka.a(xc.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
+   }
+
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
+      this.x.a($$0, this.n / 2, 70);
+   }
+
+   @Override
+   public boolean aJ_() {
+      return false;
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.u.run();
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
+      }
+   }
+
+   public interface a {
+      void proceed(boolean var1, boolean var2);
    }
 }

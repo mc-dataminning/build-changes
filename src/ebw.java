@@ -1,99 +1,61 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebw extends ece<eep> {
-   private static final dtl a = dtl.a(dga.I);
-   private final dtc b = dga.I.o();
-   private final dtc c = dga.jF.o();
-   private final dtc d = dga.aV.o();
-   private final dtc ao = dga.G.o();
+public class ebw {
+   public static final ebw a = new ebw(false, dgx.gz.o(), dgx.pL.o(), dgx.ej.o(), dgx.aQ.o());
+   public static final Codec<ebw> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(ebw::a),
+               dua.a.optionalFieldOf("air_state", a.b()).forGetter(ebw::b),
+               dua.a.optionalFieldOf("water_state", a.b()).forGetter(ebw::c),
+               dua.a.optionalFieldOf("lava_state", a.b()).forGetter(ebw::d),
+               dua.a.optionalFieldOf("barrier_state", a.b()).forGetter(ebw::e)
+            )
+            .apply($$0, ebw::new)
+   );
+   private final boolean c;
+   private final dua d;
+   private final dua e;
+   private final dua f;
+   private final dua g;
 
-   public ebw(Codec<eep> $$0) {
-      super($$0);
+   public static ebw a(boolean $$0, dua $$1, dua $$2, dua $$3, dua $$4) {
+      return new ebw($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(ecg<eep> $$0) {
-      dds $$1 = $$0.b();
-      jd $$2 = $$0.e();
-      $$2 = $$2.d();
-
-      while ($$1.u($$2) && $$2.v() > $$1.I_() + 2) {
-         $$2 = $$2.e();
-      }
-
-      if (!a.a($$1.a_($$2))) {
-         return false;
-      } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
-            }
-         }
-
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.ao, 2);
-
-         for (ji $$8 : ji.c.a) {
-            $$1.a($$2.a($$8), this.ao, 2);
-         }
-
-         jd $$9 = $$2.e();
-         $$1.a($$9, this.b, 2);
-
-         for (ji $$10 : ji.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<jd> $$17 = List.of($$2, $$2.i(), $$2.g(), $$2.h(), $$2.f());
-         ayw $$18 = $$0.d();
-         b($$1, ad.a($$17, $$18).c(1));
-         b($$1, ad.a($$17, $$18).c(2));
-         return true;
-      }
+   public static ebw a(dua $$0, dua $$1, dua $$2, dua $$3) {
+      return new ebw(false, $$0, $$1, $$2, $$3);
    }
 
-   private static void b(dds $$0, jd $$1) {
-      $$0.a($$1, dga.J.o(), 3);
-      $$0.a($$1, dqj.N).ifPresent($$1x -> $$1x.a(ern.bd, $$1.a()));
+   public static ebw a(boolean $$0, dua $$1) {
+      return new ebw($$0, $$1, a.c(), a.d(), a.e());
+   }
+
+   private ebw(boolean $$0, dua $$1, dua $$2, dua $$3, dua $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
+      return this.c;
+   }
+
+   public dua b() {
+      return this.d;
+   }
+
+   public dua c() {
+      return this.e;
+   }
+
+   public dua d() {
+      return this.f;
+   }
+
+   public dua e() {
+      return this.g;
    }
 }

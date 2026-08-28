@@ -1,17 +1,51 @@
-public class coo {
-   private final int a;
-   private final float b;
-
-   public coo(int $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class coo extends coq {
+   public coo(btq<? extends coo> $$0, dds $$1) {
+      super($$0, $$1);
    }
 
-   public int a() {
-      return this.a;
+   public coo(dds $$0, buf $$1, cvl $$2) {
+      super(btq.aT, $$1, $$0, $$2);
    }
 
-   public float b() {
-      return this.b;
+   public coo(dds $$0, double $$1, double $$2, double $$3, cvl $$4) {
+      super(btq.aT, $$1, $$2, $$3, $$0, $$4);
+   }
+
+   @Override
+   protected cvg o() {
+      return cvo.qD;
+   }
+
+   private ll q() {
+      cvl $$0 = this.m();
+      return (ll)(!$$0.f() && !$$0.a(this.o()) ? new lj(ln.S, $$0) : ln.W);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         ll $$1 = this.q();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dS().a($$1, this.dx(), this.dz(), this.dD(), 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   @Override
+   protected void a(eyb $$0) {
+      super.a($$0);
+      btj $$1 = $$0.a();
+      int $$2 = $$1 instanceof cke ? 3 : 0;
+      $$1.a(this.dT().b(this, this.s()), (float)$$2);
+   }
+
+   @Override
+   protected void a(eyc $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         this.dS().a(this, (byte)3);
+         this.as();
+      }
    }
 }

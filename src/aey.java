@@ -1,45 +1,29 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+public class aey implements zk<abz> {
+   public static final zb<wa, aey> a = zk.a(aey::a, aey::new);
+   private final int b;
 
-public class aey implements zg<abu> {
-   public static final yx<vw, aey> a = zg.a(aey::a, aey::new);
-   private final exx b;
-   private final String c;
-
-   public aey(exx $$0, @Nullable exy $$1) {
-      this.b = $$0;
-      if ($$1 == null) {
-         this.c = "";
-      } else {
-         this.c = $$1.b();
-      }
+   public aey(dvr $$0) {
+      this.b = $$0.r();
    }
 
-   private aey(vw $$0) {
-      this.b = $$0.a(exx.u);
-      this.c = $$0.p();
+   private aey(wa $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vw $$0) {
-      $$0.a(exx::a, this.b);
-      $$0.a(this.c);
+   private void a(wa $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zi<aey> a() {
-      return agg.aB;
+   public zm<aey> a() {
+      return ago.aw;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public exx b() {
+   public int b() {
       return this.b;
-   }
-
-   @Nullable
-   public String e() {
-      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

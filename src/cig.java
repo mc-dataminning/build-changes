@@ -1,124 +1,87 @@
 import javax.annotation.Nullable;
 
-public class cig extends cic {
-   private static final cef b = cef.a().d();
-   @Nullable
-   private eps c;
-   @Nullable
-   private exc d;
-   private boolean e;
+public class cig extends cbc {
+   private final cif a;
 
-   public cig(cia $$0) {
-      super($$0);
+   public cig(cif $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public ciq<cig> i() {
-      return ciq.a;
+   public boolean b() {
+      return this.a.dS().a(this.a.dx(), this.a.dz(), this.a.dD(), 10.0);
    }
 
    @Override
-   public void c() {
-      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dt(), this.a.dv(), this.a.dz());
-      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-         this.j();
-      }
-   }
+   public void a() {
+      arg $$0 = (arg)this.a.dS();
+      bri $$1 = $$0.d_(this.a.ds());
+      this.a.x(false);
+      this.a.y(true);
+      this.a.c_(0);
+      bue $$2 = btq.am.a($$0, btp.k);
+      if ($$2 != null) {
+         $$2.e(this.a.dx(), this.a.dz(), this.a.dD());
+         $$2.a(true);
+         $$0.b($$2);
+         cld $$3 = this.a($$1, this.a);
+         if ($$3 != null) {
+            $$3.n(this.a);
+            $$0.a_($$3);
 
-   @Override
-   public void d() {
-      this.c = null;
-      this.d = null;
-   }
-
-   @Nullable
-   @Override
-   public exc g() {
-      return this.d;
-   }
-
-   private void j() {
-      if (this.c != null && this.c.c()) {
-         jd $$0 = this.a.dO().a(dyy.a.f, new jd(ecd.a(this.a.s())));
-         int $$1 = this.a.gi() == null ? 0 : this.a.gi().e();
-         if (this.a.dR().a($$1 + 3) == 0) {
-            this.a.gh().a(ciq.c);
-            return;
-         }
-
-         cmx $$2 = this.a.dO().a(b, this.a, (double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-         double $$3;
-         if ($$2 != null) {
-            $$3 = $$0.b($$2.dm()) / 512.0;
-         } else {
-            $$3 = 64.0;
-         }
-
-         if ($$2 != null && (this.a.dR().a((int)($$3 + 2.0)) == 0 || this.a.dR().a($$1 + 2) == 0)) {
-            this.a($$2);
-            return;
-         }
-      }
-
-      if (this.c == null || this.c.c()) {
-         int $$5 = this.a.x();
-         int $$6 = $$5;
-         if (this.a.dR().a(8) == 0) {
-            this.e = !this.e;
-            $$6 = $$5 + 6;
-         }
-
-         if (this.e) {
-            $$6++;
-         } else {
-            $$6--;
-         }
-
-         if (this.a.gi() != null && this.a.gi().e() >= 0) {
-            $$6 %= 12;
-            if ($$6 < 0) {
-               $$6 += 12;
+            for (int $$4 = 0; $$4 < 3; $$4++) {
+               chz $$5 = this.a($$1);
+               if ($$5 != null) {
+                  cld $$6 = this.a($$1, $$5);
+                  if ($$6 != null) {
+                     $$6.n($$5);
+                     $$5.j(this.a.dV().a(0.0, 1.1485), 0.0, this.a.dV().a(0.0, 1.1485));
+                     $$0.a_($$5);
+                  }
+               }
             }
-         } else {
-            $$6 -= 12;
-            $$6 &= 7;
-            $$6 += 12;
-         }
-
-         this.c = this.a.a($$5, $$6, null);
-         if (this.c != null) {
-            this.c.a();
          }
       }
-
-      this.k();
    }
 
-   private void a(cmx $$0) {
-      this.a.gh().a(ciq.b);
-      this.a.gh().b(ciq.b).a($$0);
-   }
-
-   private void k() {
-      if (this.c != null && !this.c.c()) {
-         kh $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dR().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new exc($$1, $$3, $$2);
+   @Nullable
+   private chz a(bri $$0) {
+      cif $$1 = btq.aO.a(this.a.dS(), btp.k);
+      if ($$1 != null) {
+         $$1.a((arg)this.a.dS(), $$0, btp.k, null);
+         $$1.a_(this.a.dx(), this.a.dz(), this.a.dD());
+         $$1.ak = 60;
+         $$1.fV();
+         $$1.y(true);
+         $$1.c_(0);
       }
+
+      return $$1;
    }
 
-   @Override
-   public void a(chz $$0, jd $$1, brk $$2, @Nullable cmx $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
+   @Nullable
+   private cld a(bri $$0, chz $$1) {
+      cld $$2 = btq.aN.a($$1.dS(), btp.k);
+      if ($$2 != null) {
+         $$2.a((arg)$$1.dS(), $$0, btp.k, null);
+         $$2.a_($$1.dx(), $$1.dz(), $$1.dD());
+         $$2.ak = 60;
+         $$2.fV();
+         if ($$2.a(btr.f).f()) {
+            $$2.a(btr.f, new cvl(cvo.pH));
+         }
+
+         this.a($$2, btr.a, $$0);
+         this.a($$2, btr.f, $$0);
       }
+
+      return $$2;
+   }
+
+   private void a(cld $$0, btr $$1, bri $$2) {
+      cvl $$3 = $$0.a($$1);
+      $$3.b(kr.k, dbc.a);
+      day.a($$3, $$0.dS().F_(), dck.a, $$2, $$0.dV());
+      $$0.a($$1, $$3);
    }
 }

@@ -1,253 +1,263 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public class dlv extends dfn {
-   public static final MapCodec<dlv> d = b(dlv::new);
-   public static final dua<dug> e = dts.ah;
-   public static final dtt f = dts.w;
+public abstract class dlv extends dgv {
+   private static final float a = 1.0F;
+   private static final eyx c = dgv.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final eyx d = dgv.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final eyx e = dgv.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final eyx f = dgv.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final eyx g = dgv.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final eyx h = dgv.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<jj, dur> i = dmj.h;
+   private static final Map<jj, eyx> j = ad.a(Maps.newEnumMap(jj.class), $$0 -> {
+      $$0.put(jj.c, g);
+      $$0.put(jj.f, f);
+      $$0.put(jj.d, h);
+      $$0.put(jj.e, e);
+      $$0.put(jj.b, c);
+      $$0.put(jj.a, d);
+   });
+   protected static final jj[] b = jj.values();
+   private final ImmutableMap<dua, eyx> k;
+   private final boolean l;
+   private final boolean m;
+   private final boolean n;
+
+   public dlv(dtz.d $$0) {
+      super($$0);
+      this.l(a(this.E));
+      this.k = this.a(dlv::r);
+      this.l = jj.c.a.a().allMatch(this::a);
+      this.m = jj.c.a.a().filter(jj.a.a).filter(this::a).count() % 2L == 0L;
+      this.n = jj.c.a.a().filter(jj.a.c).filter(this::a).count() % 2L == 0L;
+   }
 
    @Override
-   public MapCodec<dlv> a() {
-      return d;
-   }
+   protected abstract MapCodec<? extends dlv> a();
 
-   protected dlv(dtb.d $$0) {
-      super(true, $$0);
-      this.k(this.E.b().a(e, dug.a).a(f, Boolean.valueOf(false)).a(c, Boolean.valueOf(false)));
-   }
-
-   protected boolean a(dcw $$0, jd $$1, dtc $$2, boolean $$3, int $$4) {
-      if ($$4 >= 8) {
-         return false;
+   public static Set<jj> o(dua $$0) {
+      if (!($$0.b() instanceof dlv)) {
+         return Set.of();
       } else {
-         int $$5 = $$1.u();
-         int $$6 = $$1.v();
-         int $$7 = $$1.w();
-         boolean $$8 = true;
-         dug $$9 = $$2.c(e);
-         switch ($$9) {
-            case a:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-               }
-               break;
-            case b:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-               }
-               break;
-            case c:
-               if ($$3) {
-                  $$5--;
-               } else {
-                  $$5++;
-                  $$6++;
-                  $$8 = false;
-               }
+         Set<jj> $$1 = EnumSet.noneOf(jj.class);
 
-               $$9 = dug.b;
-               break;
-            case d:
-               if ($$3) {
-                  $$5--;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$5++;
-               }
-
-               $$9 = dug.b;
-               break;
-            case e:
-               if ($$3) {
-                  $$7++;
-               } else {
-                  $$7--;
-                  $$6++;
-                  $$8 = false;
-               }
-
-               $$9 = dug.a;
-               break;
-            case f:
-               if ($$3) {
-                  $$7++;
-                  $$6++;
-                  $$8 = false;
-               } else {
-                  $$7--;
-               }
-
-               $$9 = dug.a;
+         for (jj $$2 : jj.values()) {
+            if (a($$0, $$2)) {
+               $$1.add($$2);
+            }
          }
 
-         return this.a($$0, new jd($$5, $$6, $$7), $$3, $$4, $$9) ? true : $$8 && this.a($$0, new jd($$5, $$6 - 1, $$7), $$3, $$4, $$9);
+         return $$1;
       }
    }
 
-   protected boolean a(dcw $$0, jd $$1, boolean $$2, int $$3, dug $$4) {
-      dtc $$5 = $$0.a_($$1);
-      if (!$$5.a(this)) {
-         return false;
+   public static Set<jj> a(byte $$0) {
+      Set<jj> $$1 = EnumSet.noneOf(jj.class);
+
+      for (jj $$2 : jj.values()) {
+         if (($$0 & (byte)(1 << $$2.ordinal())) > 0) {
+            $$1.add($$2);
+         }
+      }
+
+      return $$1;
+   }
+
+   public static byte a(Collection<jj> $$0) {
+      byte $$1 = 0;
+
+      for (jj $$2 : $$0) {
+         $$1 = (byte)($$1 | 1 << $$2.ordinal());
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(jj $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      for (jj $$1 : b) {
+         if (this.a($$1)) {
+            $$0.a(b($$1));
+         }
+      }
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if (!q($$0)) {
+         return dgx.a.o();
       } else {
-         dug $$6 = $$5.c(e);
-         if ($$4 != dug.b || $$6 != dug.a && $$6 != dug.e && $$6 != dug.f) {
-            if ($$4 != dug.a || $$6 != dug.b && $$6 != dug.c && $$6 != dug.d) {
-               if (!$$5.c(f)) {
-                  return false;
-               } else {
-                  return $$0.C($$1) ? true : this.a($$0, $$1, $$5, $$2, $$3 + 1);
-               }
-            } else {
+         return a($$0, $$1) && !a($$3, $$1, $$5, $$2) ? a($$0, b($$1)) : $$0;
+      }
+   }
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return (eyx)this.k.get($$0);
+   }
+
+   @Override
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      boolean $$3 = false;
+
+      for (jj $$4 : b) {
+         if (a($$0, $$4)) {
+            je $$5 = $$2.a($$4);
+            if (!a($$1, $$4, $$5, $$1.a_($$5))) {
                return false;
             }
+
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   @Override
+   protected boolean a(dua $$0, cyw $$1) {
+      return s($$0);
+   }
+
+   @Nullable
+   @Override
+   public dua a(cyw $$0) {
+      dds $$1 = $$0.q();
+      je $$2 = $$0.a();
+      dua $$3 = $$1.a_($$2);
+      return Arrays.stream($$0.f()).map($$3x -> this.c($$3, $$1, $$2, $$3x)).filter(Objects::nonNull).findFirst().orElse(null);
+   }
+
+   public boolean a(dcx $$0, dua $$1, je $$2, jj $$3) {
+      if (this.a($$3) && (!$$1.a(this) || !a($$1, $$3))) {
+         je $$4 = $$2.a($$3);
+         return a($$0, $$3, $$4, $$0.a_($$4));
+      } else {
+         return false;
+      }
+   }
+
+   @Nullable
+   public dua c(dua $$0, dcx $$1, je $$2, jj $$3) {
+      if (!this.a($$1, $$0, $$2, $$3)) {
+         return null;
+      } else {
+         dua $$4;
+         if ($$0.a(this)) {
+            $$4 = $$0;
+         } else if (this.m() && $$0.y().a(eqc.c)) {
+            $$4 = this.o().b(duq.C, Boolean.valueOf(true));
          } else {
-            return false;
+            $$4 = this.o();
+         }
+
+         return $$4.b(b($$3), Boolean.valueOf(true));
+      }
+   }
+
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      return !this.l ? $$0 : this.a($$0, $$1::a);
+   }
+
+   @Override
+   protected dua a(dua $$0, dls $$1) {
+      if ($$1 == dls.c && !this.m) {
+         return $$0;
+      } else {
+         return $$1 == dls.b && !this.n ? $$0 : this.a($$0, $$1::b);
+      }
+   }
+
+   private dua a(dua $$0, Function<jj, jj> $$1) {
+      dua $$2 = $$0;
+
+      for (jj $$3 : b) {
+         if (this.a($$3)) {
+            $$2 = $$2.b(b($$1.apply($$3)), $$0.c(b($$3)));
          }
       }
+
+      return $$2;
    }
 
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dfy $$3) {
-      boolean $$4 = $$0.c(f);
-      boolean $$5 = $$1.C($$2) || this.a($$1, $$2, $$0, true, 0) || this.a($$1, $$2, $$0, false, 0);
-      if ($$5 != $$4) {
-         $$1.a($$2, $$0.a(f, Boolean.valueOf($$5)), 3);
-         $$1.a($$2.e(), this);
-         if ($$0.c(e).b()) {
-            $$1.a($$2.d(), this);
+   public static boolean a(dua $$0, jj $$1) {
+      dur $$2 = b($$1);
+      return $$0.a($$2, Boolean.valueOf(false));
+   }
+
+   public static boolean a(dcx $$0, jj $$1, je $$2, dua $$3) {
+      return dgv.a($$3.h($$0, $$2), $$1.g()) || dgv.a($$3.g($$0, $$2), $$1.g());
+   }
+
+   private boolean m() {
+      return this.E.d().contains(duq.C);
+   }
+
+   private static dua a(dua $$0, dur $$1) {
+      dua $$2 = $$0.b($$1, Boolean.valueOf(false));
+      return q($$2) ? $$2 : dgx.a.o();
+   }
+
+   public static dur b(jj $$0) {
+      return i.get($$0);
+   }
+
+   private static dua a(dub<dgv, dua> $$0) {
+      dua $$1 = $$0.b();
+
+      for (dur $$2 : i.values()) {
+         $$1 = $$1.c($$2, Boolean.valueOf(false));
+      }
+
+      return $$1;
+   }
+
+   private static eyx r(dua $$0) {
+      eyx $$1 = eyu.a();
+
+      for (jj $$2 : b) {
+         if (a($$0, $$2)) {
+            $$1 = eyu.a($$1, j.get($$2));
          }
       }
+
+      return $$1.c() ? eyu.b() : $$1;
    }
 
-   @Override
-   public duf<dug> c() {
-      return e;
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      switch ($$1) {
-         case c:
-            switch ((dug)$$0.c(e)) {
-               case c:
-                  return $$0.a(e, dug.d);
-               case d:
-                  return $$0.a(e, dug.c);
-               case e:
-                  return $$0.a(e, dug.f);
-               case f:
-                  return $$0.a(e, dug.e);
-               case g:
-                  return $$0.a(e, dug.i);
-               case h:
-                  return $$0.a(e, dug.j);
-               case i:
-                  return $$0.a(e, dug.g);
-               case j:
-                  return $$0.a(e, dug.h);
-            }
-         case d:
-            switch ((dug)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dug.b);
-               case b:
-                  return $$0.a(e, dug.a);
-               case c:
-                  return $$0.a(e, dug.e);
-               case d:
-                  return $$0.a(e, dug.f);
-               case e:
-                  return $$0.a(e, dug.d);
-               case f:
-                  return $$0.a(e, dug.c);
-               case g:
-                  return $$0.a(e, dug.j);
-               case h:
-                  return $$0.a(e, dug.g);
-               case i:
-                  return $$0.a(e, dug.h);
-               case j:
-                  return $$0.a(e, dug.i);
-            }
-         case b:
-            switch ((dug)$$0.c(e)) {
-               case a:
-                  return $$0.a(e, dug.b);
-               case b:
-                  return $$0.a(e, dug.a);
-               case c:
-                  return $$0.a(e, dug.f);
-               case d:
-                  return $$0.a(e, dug.e);
-               case e:
-                  return $$0.a(e, dug.c);
-               case f:
-                  return $$0.a(e, dug.d);
-               case g:
-                  return $$0.a(e, dug.h);
-               case h:
-                  return $$0.a(e, dug.i);
-               case i:
-                  return $$0.a(e, dug.j);
-               case j:
-                  return $$0.a(e, dug.g);
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      dug $$2 = $$0.c(e);
-      switch ($$1) {
-         case b:
-            switch ($$2) {
-               case e:
-                  return $$0.a(e, dug.f);
-               case f:
-                  return $$0.a(e, dug.e);
-               case g:
-                  return $$0.a(e, dug.j);
-               case h:
-                  return $$0.a(e, dug.i);
-               case i:
-                  return $$0.a(e, dug.h);
-               case j:
-                  return $$0.a(e, dug.g);
-               default:
-                  return super.a($$0, $$1);
-            }
-         case c:
-            switch ($$2) {
-               case c:
-                  return $$0.a(e, dug.d);
-               case d:
-                  return $$0.a(e, dug.c);
-               case e:
-               case f:
-               default:
-                  break;
-               case g:
-                  return $$0.a(e, dug.h);
-               case h:
-                  return $$0.a(e, dug.g);
-               case i:
-                  return $$0.a(e, dug.j);
-               case j:
-                  return $$0.a(e, dug.i);
-            }
+   protected static boolean q(dua $$0) {
+      for (jj $$1 : b) {
+         if (a($$0, $$1)) {
+            return true;
+         }
       }
 
-      return super.a($$0, $$1);
+      return false;
    }
 
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(e, f, c);
+   private static boolean s(dua $$0) {
+      for (jj $$1 : b) {
+         if (!a($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
    }
+
+   public abstract dlw c();
 }

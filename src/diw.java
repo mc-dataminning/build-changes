@@ -1,100 +1,268 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.function.Predicate;
 
-public class diw extends dhu {
-   public static final MapCodec<diw> i = b(diw::new);
-   private final exv[] j;
+public class diw extends dgk {
+   public static final MapCodec<diw> d = b(diw::new);
+   public static final duy<dve> e = duq.ah;
+   public static final dur f = duq.w;
+   private static final int g = 20;
 
    @Override
    public MapCodec<diw> a() {
-      return i;
+      return d;
    }
 
-   public diw(dtb.d $$0) {
-      super(2.0F, 2.0F, 16.0F, 16.0F, 24.0F, $$0);
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
-      this.j = this.a(2.0F, 1.0F, 16.0F, 6.0F, 15.0F);
+   public diw(dtz.d $$0) {
+      super(true, $$0);
+      this.l(this.E.b().b(f, Boolean.valueOf(false)).b(e, dve.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected exv f(dtc $$0, dcc $$1, jd $$2) {
-      return this.j[this.g($$0)];
+   protected boolean f_(dua $$0) {
+      return true;
    }
 
    @Override
-   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return this.a($$0, $$1, $$2, $$3);
+   protected void a(dua $$0, dds $$1, je $$2, btj $$3) {
+      if (!$$1.B) {
+         if (!$$0.c(f)) {
+            this.a($$1, $$2, $$0);
+         }
+      }
    }
 
    @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
-   }
-
-   public boolean a(dtc $$0, boolean $$1, ji $$2) {
-      dfy $$3 = $$0.b();
-      boolean $$4 = this.m($$0);
-      boolean $$5 = $$3 instanceof dix && dix.a($$0, $$2);
-      return !j($$0) && $$1 || $$4 || $$5;
-   }
-
-   private boolean m(dtc $$0) {
-      return $$0.a(awe.T) && $$0.a(awe.l) == this.o().a(awe.l);
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$0.c(f)) {
+         this.a($$1, $$2, $$0);
+      }
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
-      if ($$2.B) {
-         return $$0.a(cut.uK) ? bqt.a : bqt.e;
+   protected int a(dua $$0, dcx $$1, je $$2, jj $$3) {
+      return $$0.c(f) ? 15 : 0;
+   }
+
+   @Override
+   protected int b(dua $$0, dcx $$1, je $$2, jj $$3) {
+      if (!$$0.c(f)) {
+         return 0;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+         return $$3 == jj.b ? 15 : 0;
+      }
+   }
+
+   private void a(dds $$0, je $$1, dua $$2) {
+      if (this.a($$2, (ddv)$$0, $$1)) {
+         boolean $$3 = $$2.c(f);
+         boolean $$4 = false;
+         List<cpm> $$5 = this.a($$0, $$1, cpm.class, $$0x -> true);
+         if (!$$5.isEmpty()) {
+            $$4 = true;
+         }
+
+         if ($$4 && !$$3) {
+            dua $$6 = $$2.b(f, Boolean.valueOf(true));
+            $$0.a($$1, $$6, 3);
+            this.b($$0, $$1, $$6, true);
+            $$0.a($$1, this);
+            $$0.a($$1.e(), this);
+            $$0.b($$1, $$2, $$6);
+         }
+
+         if (!$$4 && $$3) {
+            dua $$7 = $$2.b(f, Boolean.valueOf(false));
+            $$0.a($$1, $$7, 3);
+            this.b($$0, $$1, $$7, false);
+            $$0.a($$1, this);
+            $$0.a($$1.e(), this);
+            $$0.b($$1, $$2, $$7);
+         }
+
+         if ($$4) {
+            $$0.a($$1, this, 20);
+         }
+
+         $$0.c($$1, this);
+      }
+   }
+
+   protected void b(dds $$0, je $$1, dua $$2, boolean $$3) {
+      dmw $$4 = new dmw($$0, $$1, $$2);
+
+      for (je $$6 : $$4.a()) {
+         dua $$7 = $$0.a_($$6);
+         $$0.a($$7, $$6, $$7.b(), null, false);
       }
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
-      return !$$1.x_() ? cuz.a($$3, $$1, $$2) : bqr.e;
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      if (!$$3.a($$0.b())) {
+         dua $$5 = this.a($$0, $$1, $$2, $$4);
+         this.a($$1, $$2, $$5);
+      }
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      dcc $$1 = $$0.q();
-      jd $$2 = $$0.a();
-      epe $$3 = $$0.q().b_($$0.a());
-      jd $$4 = $$2.f();
-      jd $$5 = $$2.i();
-      jd $$6 = $$2.g();
-      jd $$7 = $$2.h();
-      dtc $$8 = $$1.a_($$4);
-      dtc $$9 = $$1.a_($$5);
-      dtc $$10 = $$1.a_($$6);
-      dtc $$11 = $$1.a_($$7);
-      return super.a($$0)
-         .a(a, Boolean.valueOf(this.a($$8, $$8.d($$1, $$4, ji.d), ji.d)))
-         .a(b, Boolean.valueOf(this.a($$9, $$9.d($$1, $$5, ji.e), ji.e)))
-         .a(c, Boolean.valueOf(this.a($$10, $$10.d($$1, $$6, ji.c), ji.c)))
-         .a(d, Boolean.valueOf(this.a($$11, $$11.d($$1, $$7, ji.f), ji.f)))
-         .a(e, Boolean.valueOf($$3.a() == epf.c));
+   public dvd<dve> c() {
+      return e;
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$0.c(e)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
+   protected boolean c_(dua $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dua $$0, dds $$1, je $$2) {
+      if ($$0.c(f)) {
+         List<cpv> $$3 = this.a($$1, $$2, cpv.class, $$0x -> true);
+         if (!$$3.isEmpty()) {
+            return $$3.get(0).E().k();
+         }
+
+         List<cpm> $$4 = this.a($$1, $$2, cpm.class, bto.d);
+         if (!$$4.isEmpty()) {
+            return cqq.b((brd)$$4.get(0));
+         }
       }
 
-      return $$1.o().e() == ji.c.a ? $$0.a(f.get($$1), Boolean.valueOf(this.a($$2, $$2.d($$3, $$5, $$1.g()), $$1.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return 0;
+   }
+
+   private <T extends cpm> List<T> a(dds $$0, je $$1, Class<T> $$2, Predicate<btj> $$3) {
+      return $$0.a($$2, this.a($$1), $$3);
+   }
+
+   private exz a(je $$0) {
+      double $$1 = 0.2;
+      return new exz(
+         (double)$$0.u() + 0.2, (double)$$0.v(), (double)$$0.w() + 0.2, (double)($$0.u() + 1) - 0.2, (double)($$0.v() + 1) - 0.2, (double)($$0.w() + 1) - 0.2
+      );
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(a, b, d, c, e);
+   protected dua a(dua $$0, dnj $$1) {
+      switch ($$1) {
+         case c:
+            switch ((dve)$$0.c(e)) {
+               case c:
+                  return $$0.b(e, dve.d);
+               case d:
+                  return $$0.b(e, dve.c);
+               case e:
+                  return $$0.b(e, dve.f);
+               case f:
+                  return $$0.b(e, dve.e);
+               case g:
+                  return $$0.b(e, dve.i);
+               case h:
+                  return $$0.b(e, dve.j);
+               case i:
+                  return $$0.b(e, dve.g);
+               case j:
+                  return $$0.b(e, dve.h);
+            }
+         case d:
+            switch ((dve)$$0.c(e)) {
+               case c:
+                  return $$0.b(e, dve.e);
+               case d:
+                  return $$0.b(e, dve.f);
+               case e:
+                  return $$0.b(e, dve.d);
+               case f:
+                  return $$0.b(e, dve.c);
+               case g:
+                  return $$0.b(e, dve.j);
+               case h:
+                  return $$0.b(e, dve.g);
+               case i:
+                  return $$0.b(e, dve.h);
+               case j:
+                  return $$0.b(e, dve.i);
+               case a:
+                  return $$0.b(e, dve.b);
+               case b:
+                  return $$0.b(e, dve.a);
+            }
+         case b:
+            switch ((dve)$$0.c(e)) {
+               case c:
+                  return $$0.b(e, dve.f);
+               case d:
+                  return $$0.b(e, dve.e);
+               case e:
+                  return $$0.b(e, dve.c);
+               case f:
+                  return $$0.b(e, dve.d);
+               case g:
+                  return $$0.b(e, dve.h);
+               case h:
+                  return $$0.b(e, dve.i);
+               case i:
+                  return $$0.b(e, dve.j);
+               case j:
+                  return $$0.b(e, dve.g);
+               case a:
+                  return $$0.b(e, dve.b);
+               case b:
+                  return $$0.b(e, dve.a);
+            }
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dua a(dua $$0, dls $$1) {
+      dve $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(e, dve.f);
+               case f:
+                  return $$0.b(e, dve.e);
+               case g:
+                  return $$0.b(e, dve.j);
+               case h:
+                  return $$0.b(e, dve.i);
+               case i:
+                  return $$0.b(e, dve.h);
+               case j:
+                  return $$0.b(e, dve.g);
+               default:
+                  return super.a($$0, $$1);
+            }
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(e, dve.d);
+               case d:
+                  return $$0.b(e, dve.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(e, dve.h);
+               case h:
+                  return $$0.b(e, dve.g);
+               case i:
+                  return $$0.b(e, dve.j);
+               case j:
+                  return $$0.b(e, dve.i);
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(e, f, c);
    }
 }

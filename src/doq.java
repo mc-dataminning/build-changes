@@ -1,235 +1,204 @@
-import com.google.common.base.MoreObjects;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.IntStream;
 
-public class doq extends dfy {
-   public static final MapCodec<doq> a = b(doq::new);
-   public static final dtw b = dju.aE;
-   public static final dtt c = dts.w;
-   public static final dtt d = dts.a;
-   protected static final int e = 1;
-   protected static final int f = 42;
-   private static final int l = 10;
-   protected static final int g = 3;
-   protected static final exv h = dfy.a(5.0, 0.0, 10.0, 11.0, 10.0, 16.0);
-   protected static final exv i = dfy.a(5.0, 0.0, 0.0, 11.0, 10.0, 6.0);
-   protected static final exv j = dfy.a(10.0, 0.0, 5.0, 16.0, 10.0, 11.0);
-   protected static final exv k = dfy.a(0.0, 0.0, 5.0, 6.0, 10.0, 11.0);
+public class doq extends dgv implements dnx {
+   public static final MapCodec<doq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dua.a.fieldOf("base_state").forGetter($$0x -> $$0x.H), u()).apply($$0, doq::new)
+   );
+   public static final duu b = dkr.aE;
+   public static final duy<duz> c = duq.af;
+   public static final duy<dvj> d = duq.bi;
+   public static final dur e = duq.C;
+   protected static final eyx f = dnz.e;
+   protected static final eyx g = dnz.d;
+   protected static final eyx h = dgv.a(0.0, 0.0, 0.0, 8.0, 8.0, 8.0);
+   protected static final eyx i = dgv.a(0.0, 0.0, 8.0, 8.0, 8.0, 16.0);
+   protected static final eyx j = dgv.a(0.0, 8.0, 0.0, 8.0, 16.0, 8.0);
+   protected static final eyx k = dgv.a(0.0, 8.0, 8.0, 8.0, 16.0, 16.0);
+   protected static final eyx l = dgv.a(8.0, 0.0, 0.0, 16.0, 8.0, 8.0);
+   protected static final eyx m = dgv.a(8.0, 0.0, 8.0, 16.0, 8.0, 16.0);
+   protected static final eyx n = dgv.a(8.0, 8.0, 0.0, 16.0, 16.0, 8.0);
+   protected static final eyx o = dgv.a(8.0, 8.0, 8.0, 16.0, 16.0, 16.0);
+   protected static final eyx[] F = a(f, h, l, i, m);
+   protected static final eyx[] G = a(g, j, n, k, o);
+   private static final int[] I = new int[]{12, 5, 3, 10, 14, 13, 7, 11, 13, 7, 11, 14, 8, 4, 1, 2, 4, 1, 2, 8};
+   private final dgv J;
+   protected final dua H;
 
    @Override
-   public MapCodec<doq> a() {
+   public MapCodec<? extends doq> a() {
       return a;
    }
 
-   public doq(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ji.c).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+   private static eyx[] a(eyx $$0, eyx $$1, eyx $$2, eyx $$3, eyx $$4) {
+      return IntStream.range(0, 16).mapToObj($$5 -> a($$5, $$0, $$1, $$2, $$3, $$4)).toArray(eyx[]::new);
    }
 
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      switch ((ji)$$0.c(b)) {
-         case f:
-         default:
-            return k;
-         case e:
-            return j;
-         case d:
-            return i;
-         case c:
-            return h;
-      }
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      ji $$3 = $$0.c(b);
-      jd $$4 = $$2.a($$3.g());
-      dtc $$5 = $$1.a_($$4);
-      return $$3.o().d() && $$5.d($$1, $$4, $$3);
-   }
-
-   @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = this.o().a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false));
-      dcz $$2 = $$0.q();
-      jd $$3 = $$0.a();
-      ji[] $$4 = $$0.f();
-
-      for (ji $$5 : $$4) {
-         if ($$5.o().d()) {
-            ji $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
-            }
-         }
+   private static eyx a(int $$0, eyx $$1, eyx $$2, eyx $$3, eyx $$4, eyx $$5) {
+      eyx $$6 = $$1;
+      if (($$0 & 1) != 0) {
+         $$6 = eyu.a($$1, $$2);
       }
 
-      return null;
-   }
-
-   @Override
-   public void a(dcw $$0, jd $$1, dtc $$2, btn $$3, cuq $$4) {
-      a($$0, $$1, $$2, false, false, -1, null);
-   }
-
-   public static void a(dcw $$0, jd $$1, dtc $$2, boolean $$3, boolean $$4, int $$5, @Nullable dtc $$6) {
-      Optional<ji> $$7 = $$2.d(b);
-      if ($$7.isPresent()) {
-         ji $$8 = $$7.get();
-         boolean $$9 = $$2.d(d).orElse(false);
-         boolean $$10 = $$2.d(c).orElse(false);
-         dfy $$11 = $$2.b();
-         boolean $$12 = !$$3;
-         boolean $$13 = false;
-         int $$14 = 0;
-         dtc[] $$15 = new dtc[42];
-
-         for (int $$16 = 1; $$16 < 42; $$16++) {
-            jd $$17 = $$1.a($$8, $$16);
-            dtc $$18 = $$0.a_($$17);
-            if ($$18.a(dga.fH)) {
-               if ($$18.c(b) == $$8.g()) {
-                  $$14 = $$16;
-               }
-               break;
-            }
-
-            if (!$$18.a(dga.fI) && $$16 != $$5) {
-               $$15[$$16] = null;
-               $$12 = false;
-            } else {
-               if ($$16 == $$5) {
-                  $$18 = (dtc)MoreObjects.firstNonNull($$6, $$18);
-               }
-
-               boolean $$19 = !$$18.c(dop.d);
-               boolean $$20 = $$18.c(dop.b);
-               $$13 |= $$19 && $$20;
-               $$15[$$16] = $$18;
-               if ($$16 == $$5) {
-                  $$0.a($$1, $$11, 10);
-                  $$12 &= $$19;
-               }
-            }
-         }
-
-         $$12 &= $$14 > 1;
-         $$13 &= $$12;
-         dtc $$21 = $$11.o().b(d, Boolean.valueOf($$12)).b(c, Boolean.valueOf($$13));
-         if ($$14 > 0) {
-            jd $$22 = $$1.a($$8, $$14);
-            ji $$23 = $$8.g();
-            $$0.a($$22, $$21.a(b, $$23), 3);
-            a($$11, $$0, $$22, $$23);
-            a($$0, $$22, $$12, $$13, $$9, $$10);
-         }
-
-         a($$0, $$1, $$12, $$13, $$9, $$10);
-         if (!$$3) {
-            $$0.a($$1, $$21.a(b, $$8), 3);
-            if ($$4) {
-               a($$11, $$0, $$1, $$8);
-            }
-         }
-
-         if ($$9 != $$12) {
-            for (int $$24 = 1; $$24 < $$14; $$24++) {
-               jd $$25 = $$1.a($$8, $$24);
-               dtc $$26 = $$15[$$24];
-               if ($$26 != null) {
-                  $$0.a($$25, $$26.b(d, Boolean.valueOf($$12)), 3);
-                  if (!$$0.a_($$25).i()) {
-                  }
-               }
-            }
-         }
+      if (($$0 & 2) != 0) {
+         $$6 = eyu.a($$6, $$3);
       }
-   }
 
-   @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      a($$1, $$2, $$0, false, true, -1, null);
-   }
-
-   private static void a(dcw $$0, jd $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5) {
-      if ($$3 && !$$5) {
-         $$0.a(null, $$1, avp.zK, avq.e, 0.4F, 0.6F);
-         $$0.a(null, dxz.a, $$1);
-      } else if (!$$3 && $$5) {
-         $$0.a(null, $$1, avp.zJ, avq.e, 0.4F, 0.5F);
-         $$0.a(null, dxz.e, $$1);
-      } else if ($$2 && !$$4) {
-         $$0.a(null, $$1, avp.zI, avq.e, 0.4F, 0.7F);
-         $$0.a(null, dxz.b, $$1);
-      } else if (!$$2 && $$4) {
-         $$0.a(null, $$1, avp.zL, avq.e, 0.4F, 1.2F / ($$0.z.i() * 0.2F + 0.9F));
-         $$0.a(null, dxz.g, $$1);
+      if (($$0 & 4) != 0) {
+         $$6 = eyu.a($$6, $$4);
       }
-   }
 
-   private static void a(dfy $$0, dcw $$1, jd $$2, ji $$3) {
-      $$1.a($$2, $$0);
-      $$1.a($$2.a($$3.g()), $$0);
-   }
-
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         boolean $$5 = $$0.c(d);
-         boolean $$6 = $$0.c(c);
-         if ($$5 || $$6) {
-            a($$1, $$2, $$0, true, false, -1, null);
-         }
-
-         if ($$6) {
-            $$1.a($$2, this);
-            $$1.a($$2.a($$0.c(b).g()), this);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
+      if (($$0 & 8) != 0) {
+         $$6 = eyu.a($$6, $$5);
       }
+
+      return $$6;
+   }
+
+   protected doq(dua $$0, dtz.d $$1) {
+      super($$1);
+      this.l(this.E.b().b(b, jj.c).b(c, duz.b).b(d, dvj.a).b(e, Boolean.valueOf(false)));
+      this.J = $$0.b();
+      this.H = $$0;
    }
 
    @Override
-   protected int a(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      return $$0.c(c) ? 15 : 0;
-   }
-
-   @Override
-   protected int b(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      if (!$$0.c(c)) {
-         return 0;
-      } else {
-         return $$0.c(b) == $$3 ? 15 : 0;
-      }
-   }
-
-   @Override
-   protected boolean e_(dtc $$0) {
+   protected boolean g_(dua $$0) {
       return true;
    }
 
    @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return ($$0.c(c) == duz.a ? F : G)[I[this.q($$0)]];
+   }
+
+   private int q(dua $$0) {
+      return $$0.c(d).ordinal() * 4 + $$0.c(b).e();
    }
 
    @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public float e() {
+      return this.J.e();
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b, c, d);
+   public dua a(cyw $$0) {
+      jj $$1 = $$0.k();
+      je $$2 = $$0.a();
+      eqb $$3 = $$0.q().b_($$2);
+      dua $$4 = this.o()
+         .b(b, $$0.g())
+         .b(c, $$1 != jj.a && ($$1 == jj.b || !($$0.l().e - (double)$$2.v() > 0.5)) ? duz.b : duz.a)
+         .b(e, Boolean.valueOf($$3.a() == eqc.c));
+      return $$4.b(d, e($$4, $$0.q(), $$2));
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$0.c(e)) {
+         $$3.a($$4, eqc.c, eqc.c.a($$3));
+      }
+
+      return $$1.o().d() ? $$0.b(d, e($$0, $$3, $$4)) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private static dvj e(dua $$0, dcx $$1, je $$2) {
+      jj $$3 = $$0.c(b);
+      dua $$4 = $$1.a_($$2.a($$3));
+      if (o($$4) && $$0.c(c) == $$4.c(c)) {
+         jj $$5 = $$4.c(b);
+         if ($$5.o() != $$0.c(b).o() && c($$0, $$1, $$2, $$5.g())) {
+            if ($$5 == $$3.i()) {
+               return dvj.d;
+            }
+
+            return dvj.e;
+         }
+      }
+
+      dua $$6 = $$1.a_($$2.a($$3.g()));
+      if (o($$6) && $$0.c(c) == $$6.c(c)) {
+         jj $$7 = $$6.c(b);
+         if ($$7.o() != $$0.c(b).o() && c($$0, $$1, $$2, $$7)) {
+            if ($$7 == $$3.i()) {
+               return dvj.b;
+            }
+
+            return dvj.c;
+         }
+      }
+
+      return dvj.a;
+   }
+
+   private static boolean c(dua $$0, dcx $$1, je $$2, jj $$3) {
+      dua $$4 = $$1.a_($$2.a($$3));
+      return !o($$4) || $$4.c(b) != $$0.c(b) || $$4.c(c) != $$0.c(c);
+   }
+
+   public static boolean o(dua $$0) {
+      return $$0.b() instanceof doq;
+   }
+
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dua a(dua $$0, dls $$1) {
+      jj $$2 = $$0.c(b);
+      dvj $$3 = $$0.c(d);
+      switch ($$1) {
+         case b:
+            if ($$2.o() == jj.a.c) {
+               switch ($$3) {
+                  case b:
+                     return $$0.a(dnj.c).b(d, dvj.c);
+                  case c:
+                     return $$0.a(dnj.c).b(d, dvj.b);
+                  case d:
+                     return $$0.a(dnj.c).b(d, dvj.e);
+                  case e:
+                     return $$0.a(dnj.c).b(d, dvj.d);
+                  default:
+                     return $$0.a(dnj.c);
+               }
+            }
+            break;
+         case c:
+            if ($$2.o() == jj.a.a) {
+               switch ($$3) {
+                  case b:
+                     return $$0.a(dnj.c).b(d, dvj.b);
+                  case c:
+                     return $$0.a(dnj.c).b(d, dvj.c);
+                  case d:
+                     return $$0.a(dnj.c).b(d, dvj.e);
+                  case e:
+                     return $$0.a(dnj.c).b(d, dvj.d);
+                  case a:
+                     return $$0.a(dnj.c);
+               }
+            }
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b, c, d, e);
+   }
+
+   @Override
+   protected eqb b_(dua $$0) {
+      return $$0.c(e) ? eqc.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dua $$0, eqq $$1) {
+      return false;
    }
 }

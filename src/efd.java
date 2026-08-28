@@ -1,28 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efd implements eei {
+public record efd(ehp b, ebd c, bqp d, int e) implements efg {
    public static final Codec<efd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               epe.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               kb.a(lu.f).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+               ehp.a.fieldOf("state_provider").forGetter(efd::a),
+               ebd.b.fieldOf("target").forGetter(efd::b),
+               bqp.b(0, 8).fieldOf("radius").forGetter(efd::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(efd::d)
             )
             .apply($$0, efd::new)
    );
-   public final epe b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final jq<dfy> f;
 
-   public efd(epe $$0, boolean $$1, int $$2, int $$3, jq<dfy> $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public ehp a() {
+      return this.b;
+   }
+
+   public ebd b() {
+      return this.c;
+   }
+
+   public bqp c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

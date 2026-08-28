@@ -1,19 +1,23 @@
-import java.util.function.Consumer;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class fej {
-   private static final int a = 8226750;
-   private static final wz b = wz.c("mco.info").b(8226750);
-   private static final wz c = wz.c("mco.warning").b(-65536);
+public class fej extends feo implements fei {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   public static fjo a(fod $$0, wz $$1, Consumer<fjo> $$2) {
-      return new fjo.a($$0, b).a($$1).a(wy.j, $$2).a(wy.e, fjo::d).a();
+   public fej(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static fjo b(fod $$0, wz $$1, Consumer<fjo> $$2) {
-      return new fjo.a($$0, c).a($$1).a(wy.j, $$2).a(wy.e, fjo::d).a();
+   public int a() {
+      return this.b;
    }
 
-   public static fjo c(fod $$0, wz $$1, Consumer<fjo> $$2) {
-      return new fjo.a($$0, c).a($$1).a(wy.h, $$2).a();
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

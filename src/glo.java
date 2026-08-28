@@ -1,87 +1,28 @@
-public class glo<T extends cot> extends gki<T> {
-   private static final akr g = akr.b("textures/entity/minecart.png");
-   protected final fvk<T> a;
-   private final gft h;
+public class glo extends gny<chb, grz, fvu> {
+   private static final alb a = alb.b("textures/entity/allay/allay.png");
 
-   public glo(gkj.a $$0, fyi $$1) {
-      super($$0);
-      this.e = 0.7F;
-      this.a = new fwf<>($$0.a($$1));
-      this.h = $$0.c();
+   public glo(gms.a $$0) {
+      super($$0, new fvu($$0.a(gaa.a)), 0.4F);
+      this.a(new gqy<>(this, $$0.b()));
    }
 
-   public void a(T $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$3.a();
-      long $$6 = (long)$$0.an() * 493286711L;
-      $$6 = $$6 * $$6 * 4392167121L + $$6 * 98761L;
-      float $$7 = (((float)($$6 >> 16 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$8 = (((float)($$6 >> 20 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      float $$9 = (((float)($$6 >> 24 & 7L) + 0.5F) / 8.0F - 0.5F) * 0.004F;
-      $$3.a($$7, $$8, $$9);
-      double $$10 = ayo.d((double)$$2, $$0.ad, $$0.dt());
-      double $$11 = ayo.d((double)$$2, $$0.ae, $$0.dv());
-      double $$12 = ayo.d((double)$$2, $$0.af, $$0.dz());
-      double $$13 = 0.3F;
-      exc $$14 = $$0.p($$10, $$11, $$12);
-      float $$15 = ayo.i($$2, $$0.P, $$0.dG());
-      if ($$14 != null) {
-         exc $$16 = $$0.a($$10, $$11, $$12, 0.3F);
-         exc $$17 = $$0.a($$10, $$11, $$12, -0.3F);
-         if ($$16 == null) {
-            $$16 = $$14;
-         }
-
-         if ($$17 == null) {
-            $$17 = $$14;
-         }
-
-         $$3.a($$14.c - $$10, ($$16.d + $$17.d) / 2.0 - $$11, $$14.e - $$12);
-         exc $$18 = $$17.b(-$$16.c, -$$16.d, -$$16.e);
-         if ($$18.f() != 0.0) {
-            $$18 = $$18.d();
-            $$1 = (float)(Math.atan2($$18.e, $$18.c) * 180.0 / Math.PI);
-            $$15 = (float)(Math.atan($$18.d) * 73.0);
-         }
-      }
-
-      $$3.a(0.0F, 0.375F, 0.0F);
-      $$3.a(a.d.rotationDegrees(180.0F - $$1));
-      $$3.a(a.f.rotationDegrees(-$$15));
-      float $$19 = (float)$$0.O() - $$2;
-      float $$20 = $$0.N() - $$2;
-      if ($$20 < 0.0F) {
-         $$20 = 0.0F;
-      }
-
-      if ($$19 > 0.0F) {
-         $$3.a(a.b.rotationDegrees(ayo.a($$19) * $$19 * $$20 / 10.0F * (float)$$0.P()));
-      }
-
-      int $$21 = $$0.y();
-      dtc $$22 = $$0.w();
-      if ($$22.l() != dmf.a) {
-         $$3.a();
-         float $$23 = 0.75F;
-         $$3.b(0.75F, 0.75F, 0.75F);
-         $$3.a(-0.5F, (float)($$21 - 8) / 16.0F, 0.5F);
-         $$3.a(a.d.rotationDegrees(90.0F));
-         this.a($$0, $$2, $$22, $$3, $$4, $$5);
-         $$3.b();
-      }
-
-      $$3.b(-1.0F, -1.0F, 1.0F);
-      this.a.a($$0, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
-      fbm $$24 = $$4.getBuffer(this.a.a(this.a($$0)));
-      this.a.a($$3, $$24, $$5, gqc.d);
-      $$3.b();
+   public alb a(grz $$0) {
+      return a;
    }
 
-   public akr a(T $$0) {
-      return g;
+   public grz a() {
+      return new grz();
    }
 
-   protected void a(T $$0, float $$1, dtc $$2, fbi $$3, gez $$4, int $$5) {
-      this.h.a($$2, $$3, $$4, $$5, gqc.d);
+   public void a(chb $$0, grz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.go();
+      $$1.b = $$0.gp();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(chb $$0, je $$1) {
+      return 15;
    }
 }

@@ -1,56 +1,45 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dfx extends det {
-   public static final MapCodec<dfx> c = b(dfx::new);
+public class dfx extends dhe implements dgy {
+   public static final MapCodec<dfx> a = b(dfx::new);
+   private static final eyx b = eyu.a(dgv.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dgv.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
    @Override
    public MapCodec<dfx> a() {
-      return c;
+      return a;
    }
 
-   protected dfx(dtb.d $$0) {
+   protected dfx(dtz.d $$0) {
       super($$0);
    }
 
    @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dqg($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return a($$0, $$2, dqj.C);
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dcw $$0, jd $$1, cmx $$2) {
-      dqh $$3 = $$0.c_($$1);
-      if ($$3 instanceof dqg) {
-         $$2.a((bqv)$$3);
-         $$2.a(avz.as);
-      }
+   protected boolean b(dua $$0, dcx $$1, je $$2) {
+      return $$0.a(dgx.dR) || super.b($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, avp.cA, avq.e, 1.0F, 1.0F, false);
-         }
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      return $$0.b_($$1.d()).c();
+   }
 
-         ji $$7 = $$0.c(a);
-         ji.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ji.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == ji.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(lm.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+   @Override
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
+      return (double)$$0.z.i() < 0.45;
+   }
+
+   @Override
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      dtp.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
+   }
+
+   @Override
+   protected boolean a(dua $$0, eqq $$1) {
+      return false;
    }
 }

@@ -1,35 +1,46 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+public class gqs extends grf<gtd, fxd> {
+   private final gnq a;
 
-public class gqs {
-   private static final BiMap<akr, gqr> i = HashBiMap.create();
-   public static final gqr a = a("single", gqx.b);
-   public static final gqr b = a("directory", gqu.b);
-   public static final gqr c = a("filter", gqy.b);
-   public static final gqr d = a("unstitch", gqz.b);
-   public static final gqr e = a("paletted_permutations", gqw.b);
-   public static Codec<gqr> f = akr.a.flatXmap($$0 -> {
-      gqr $$1 = (gqr)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      akr $$1 = (akr)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gqp> g = f.dispatch(gqp::a, gqr::a);
-   public static Codec<List<gqp>> h = g.listOf().fieldOf("sources").codec();
+   public gqs(goo<gtd, fxd> $$0, gnq $$1) {
+      super($$0);
+      this.a = $$1;
+   }
 
-   private static gqr a(String $$0, MapCodec<? extends gqp> $$1) {
-      gqr $$2 = new gqr($$1);
-      akr $$3 = akr.b($$0);
-      gqr $$4 = (gqr)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   public void a(fcu $$0, ggv $$1, int $$2, gtd $$3, float $$4, float $$5) {
+      gym $$6 = $$3.b();
+      cvl $$7 = $$3.aY_();
+      if ($$6 != null && !$$7.f()) {
+         boolean $$8 = $$3.d;
+         boolean $$9 = $$3.ae;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$9) {
+            float $$10 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
+         }
+
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.ae) {
+            if ($$8) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$8) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$8) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         this.a.a($$7, cvi.h, false, $$0, $$1, $$2, gwb.d, $$6);
+         $$0.b();
       }
    }
 }

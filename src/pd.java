@@ -1,62 +1,46 @@
-import java.util.List;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.Encoder;
+import com.mojang.serialization.JsonOps;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
-public class pd {
-   private static final kc a = new kc()
-      .a(lu.aK, qt::a)
-      .a(lu.aH, qr::a)
-      .a(lu.aI, rr::a)
-      .a(lu.aQ, sg::a)
-      .a(lu.aR, rc::a)
-      .a(lu.aT, rb::a)
-      .a(lu.aS, qy::a)
-      .a(lu.aU, qx::a)
-      .a(lu.aF, rj::a)
-      .a(lu.aZ, del::a)
-      .a(lu.aP, qu::a)
-      .a(lu.aJ, dzf::a)
-      .a(lu.aO, dzd::a)
-      .a(lu.aY, ejh::a)
-      .a(lu.aN, ehs::a)
-      .a(lu.aG, wv::a)
-      .a(lu.aX, cxb::a)
-      .a(lu.aW, cwz::a)
-      .a(lu.m, cgj::a)
-      .a(lu.X, cje::a)
-      .a(lu.s, brn::a)
-      .a(lu.d, dpz::a)
-      .a(lu.aL, dah::a)
-      .a(lu.aM, dbp::a)
-      .a(lu.L, cux::a);
+public class pd implements mb {
+   private final md d;
+   private final CompletableFuture<jp.a> e;
 
-   private static void a(jo.a $$0) {
-      a($$0.b(lu.aQ), $$0.b(lu.aF));
+   public pd(md $$0, CompletableFuture<jp.a> $$1) {
+      this.e = $$1;
+      this.d = $$0;
    }
 
-   public static void a(jn<eiv> $$0, jo<ddw> $$1) {
-      $$1.b().forEach($$1x -> {
-         akr $$2 = $$1x.h().a();
-         List<jq<eiv>> $$3 = ((ddw)$$1x.a()).d().b();
-         $$3.stream().flatMap(jq::a).forEach($$3x -> $$3x.d().ifLeft($$2xx -> {
-               jm.c<eiv> $$3xx = $$0.b($$2xx);
-               if (!a($$3xx.a())) {
-                  ad.b("Placed feature " + $$2xx.a() + " in biome " + $$2 + " is missing BiomeFilter.biome()");
-               }
-            }).ifRight($$1xxx -> {
-               if (!a($$1xxx)) {
-                  ad.b("Placed inline feature in biome " + $$1x + " is missing BiomeFilter.biome()");
-               }
-            }));
+   @Override
+   public CompletableFuture<?> a(lz $$0) {
+      return this.e.thenCompose($$1 -> {
+         DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
+         return CompletableFuture.allOf(akw.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akw.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private static boolean a(eiv $$0) {
-      return $$0.c().contains(eii.a());
+   private <T> Optional<CompletableFuture<?>> a(lz $$0, jp.a $$1, DynamicOps<JsonElement> $$2, akw.d<T> $$3) {
+      ala<? extends ka<T>> $$4 = $$3.a();
+      return $$1.a($$4).map($$4x -> {
+         md.a $$5 = this.d.a($$4);
+         return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));
+      });
    }
 
-   public static jo.a a() {
-      ka.b $$0 = ka.a(lt.aA);
-      jo.a $$1 = a.a($$0);
-      a($$1);
-      return $$1;
+   private static <E> CompletableFuture<?> a(Path $$0, lz $$1, DynamicOps<JsonElement> $$2, Encoder<E> $$3, E $$4) {
+      return (CompletableFuture<?>)$$3.encodeStart($$2, $$4)
+         .mapOrElse(
+            $$2x -> mb.a($$1, $$2x, $$0),
+            $$1x -> CompletableFuture.failedFuture(new IllegalStateException("Couldn't generate file '" + $$0 + "': " + $$1x.message()))
+         );
+   }
+
+   @Override
+   public final String a() {
+      return "Registries";
    }
 }

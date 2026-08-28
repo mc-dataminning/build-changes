@@ -1,322 +1,338 @@
-import com.google.common.collect.Lists;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.io.Reader;
+import com.mojang.authlib.GameProfile;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class flb implements aty, AutoCloseable {
-   static final Logger b = LogUtils.getLogger();
-   private static final String c = "fonts.json";
-   public static final akr a = akr.b("missing");
-   private static final akk d = akk.a("font");
-   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
-   private final fld f;
-   private final List<ezm> g = new ArrayList<>();
-   private final Map<akr, fld> h = new HashMap<>();
-   private final gqm i;
+public class flb {
+   private static final alb b = alb.b("icon/ping_unknown");
+   private static final alb c = alb.b("icon/ping_1");
+   private static final alb d = alb.b("icon/ping_2");
+   private static final alb e = alb.b("icon/ping_3");
+   private static final alb f = alb.b("icon/ping_4");
+   private static final alb g = alb.b("icon/ping_5");
+   private static final alb h = alb.b("hud/heart/container_blinking");
+   private static final alb i = alb.b("hud/heart/container");
+   private static final alb j = alb.b("hud/heart/full_blinking");
+   private static final alb k = alb.b("hud/heart/half_blinking");
+   private static final alb l = alb.b("hud/heart/absorbing_full_blinking");
+   private static final alb m = alb.b("hud/heart/full");
+   private static final alb n = alb.b("hud/heart/absorbing_half_blinking");
+   private static final alb o = alb.b("hud/heart/half");
+   private static final Comparator<gbi> p = Comparator.<gbi>comparingInt($$0 -> -$$0.j())
+      .thenComparingInt($$0 -> $$0.e() == ddp.d ? 1 : 0)
+      .thenComparing($$0 -> x.a($$0.h(), ezd::b, ""))
+      .thenComparing($$0 -> $$0.a().getName(), String::compareToIgnoreCase);
+   public static final int a = 20;
+   private final fib q;
+   private final fjm r;
    @Nullable
-   private volatile fld j;
+   private xd s;
+   @Nullable
+   private xd t;
+   private boolean u;
+   private final Map<UUID, flb.a> v = new Object2ObjectOpenHashMap();
 
-   public flb(gqm $$0) {
-      this.i = $$0;
-      this.f = ad.a(new fld($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
+   public flb(fib $$0, fjm $$1) {
+      this.q = $$0;
+      this.r = $$1;
    }
 
-   private static ezm.a d() {
-      return new ezm.a(new fkz(), flc.a.b);
+   public xd a(gbi $$0) {
+      return $$0.i() != null ? this.a($$0, $$0.i().f()) : this.a($$0, ezd.a($$0.h(), xd.b($$0.a().getName())));
    }
 
-   @Override
-   public CompletableFuture<Void> a(aty.a $$0, aue $$1, bnf $$2, bnf $$3, Executor $$4, Executor $$5) {
-      $$2.a();
-      $$2.b();
-      return this.a($$1, $$4).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   private xd a(gbi $$0, xr $$1) {
+      return $$0.e() == ddp.d ? $$1.a(n.u) : $$1;
    }
 
-   private CompletableFuture<flb.d> a(aue $$0, Executor $$1) {
-      List<CompletableFuture<flb.e>> $$2 = new ArrayList<>();
-
-      for (Entry<akr, List<auc>> $$3 : d.b($$0).entrySet()) {
-         akr $$4 = d.b($$3.getKey());
-         $$2.add(CompletableFuture.supplyAsync(() -> {
-            List<Pair<flb.a, flo.a>> $$4x = a($$3.getValue(), $$4);
-            flb.e $$5 = new flb.e($$4);
-
-            for (Pair<flb.a, flo.a> $$6 : $$4x) {
-               flb.a $$7 = (flb.a)$$6.getFirst();
-               flc.a $$8 = ((flo.a)$$6.getSecond()).b();
-               ((flo.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
-                  CompletableFuture<Optional<ezm>> $$6x = this.a($$7, $$5x, $$0, $$1);
-                  $$5.a($$7, $$8, $$6x);
-               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
-            }
-
-            return $$5;
-         }, $$1));
-      }
-
-      return ad.d($$2)
-         .thenCompose(
-            $$1x -> {
-               List<CompletableFuture<Optional<ezm>>> $$2x = $$1x.stream().flatMap(flb.e::d).collect(ad.b());
-               ezm.a $$3x = d();
-               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
-               return ad.d($$2x)
-                  .thenCompose(
-                     $$3xx -> {
-                        Map<akr, List<ezm.a>> $$4x = this.a($$1x);
-                        CompletableFuture<?>[] $$5 = $$4x.values()
-                           .stream()
-                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
-                           .toArray(CompletableFuture[]::new);
-                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
-                           List<ezm> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
-                           return new flb.d($$4x, $$3xxx);
-                        });
-                     }
-                  );
-            }
-         );
-   }
-
-   private CompletableFuture<Optional<ezm>> a(flb.a $$0, flo.b $$1, aue $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            return Optional.of($$1.load($$2));
-         } catch (Exception var4x) {
-            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
-            return Optional.empty();
+   public void a(boolean $$0) {
+      if (this.u != $$0) {
+         this.v.clear();
+         this.u = $$0;
+         if ($$0) {
+            xd $$1 = xg.a(this.b(), xd.b(", "), this::a);
+            this.q.aY().c(xd.a("multiplayer.player.list.narration", $$1));
          }
-      }, $$3);
+      }
    }
 
-   private Map<akr, List<ezm.a>> a(List<flb.e> $$0) {
-      Map<akr, List<ezm.a>> $$1 = new HashMap<>();
-      axs<akr, flb.e> $$2 = new axs<>();
-      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
-      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
-      return $$1;
+   private List<gbi> b() {
+      return this.q.t.cx.l().stream().sorted(p).limit(80L).toList();
    }
 
-   private void a(List<ezm.a> $$0, ezm.a $$1) {
-      $$0.add(0, $$1);
-      IntSet $$2 = new IntOpenHashSet();
+   public void a(fjn $$0, int $$1, ezi $$2, @Nullable eza $$3) {
+      List<gbi> $$4 = this.b();
+      List<flb.b> $$5 = new ArrayList<>($$4.size());
+      int $$6 = this.q.h.b(" ");
+      int $$7 = 0;
+      int $$8 = 0;
 
-      for (ezm.a $$3 : $$0) {
-         $$2.addAll($$3.a().a());
+      for (gbi $$9 : $$4) {
+         xd $$10 = this.a($$9);
+         $$7 = Math.max($$7, this.q.h.a($$10));
+         int $$11 = 0;
+         xd $$12 = null;
+         int $$13 = 0;
+         if ($$3 != null) {
+            ezh $$14 = ezh.a($$9.a());
+            eze $$15 = $$2.d($$14, $$3);
+            if ($$15 != null) {
+               $$11 = $$15.a();
+            }
+
+            if ($$3.h() != ezl.a.b) {
+               yt $$16 = $$3.a(yw.d);
+               $$12 = eze.a($$15, $$16);
+               $$13 = this.q.h.a($$12);
+               $$8 = Math.max($$8, $$13 > 0 ? $$6 + $$13 : 0);
+            }
+         }
+
+         $$5.add(new flb.b($$10, $$11, $$12, $$13));
       }
 
-      $$2.forEach($$1x -> {
-         if ($$1x != 32) {
-            for (ezm.a $$2x : Lists.reverse($$0)) {
-               if ($$2x.a().a($$1x) != null) {
-                  break;
+      if (!this.v.isEmpty()) {
+         Set<UUID> $$17 = $$4.stream().map($$0x -> $$0x.a().getId()).collect(Collectors.toSet());
+         this.v.keySet().removeIf($$1x -> !$$17.contains($$1x));
+      }
+
+      int $$18 = $$4.size();
+      int $$19 = $$18;
+
+      int $$20;
+      for ($$20 = 1; $$19 > 20; $$19 = ($$18 + $$20 - 1) / $$20) {
+         $$20++;
+      }
+
+      boolean $$21 = this.q.T() || this.q.L().k().h();
+      int $$22;
+      if ($$3 != null) {
+         if ($$3.h() == ezl.a.b) {
+            $$22 = 90;
+         } else {
+            $$22 = $$8;
+         }
+      } else {
+         $$22 = 0;
+      }
+
+      int $$25 = Math.min($$20 * (($$21 ? 9 : 0) + $$7 + $$22 + 13), $$1 - 50) / $$20;
+      int $$26 = $$1 / 2 - ($$25 * $$20 + ($$20 - 1) * 5) / 2;
+      int $$27 = 10;
+      int $$28 = $$25 * $$20 + ($$20 - 1) * 5;
+      List<ayo> $$29 = null;
+      if (this.t != null) {
+         $$29 = this.q.h.c(this.t, $$1 - 50);
+
+         for (ayo $$30 : $$29) {
+            $$28 = Math.max($$28, this.q.h.a($$30));
+         }
+      }
+
+      List<ayo> $$31 = null;
+      if (this.s != null) {
+         $$31 = this.q.h.c(this.s, $$1 - 50);
+
+         for (ayo $$32 : $$31) {
+            $$28 = Math.max($$28, this.q.h.a($$32));
+         }
+      }
+
+      if ($$29 != null) {
+         $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$29.size() * 9, Integer.MIN_VALUE);
+
+         for (ayo $$33 : $$29) {
+            int $$34 = this.q.h.a($$33);
+            $$0.b(this.q.h, $$33, $$1 / 2 - $$34 / 2, $$27, -1);
+            $$27 += 9;
+         }
+
+         $$27++;
+      }
+
+      $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$19 * 9, Integer.MIN_VALUE);
+      int $$35 = this.q.n.a(553648127);
+
+      for (int $$36 = 0; $$36 < $$18; $$36++) {
+         int $$37 = $$36 / $$19;
+         int $$38 = $$36 % $$19;
+         int $$39 = $$26 + $$37 * $$25 + $$37 * 5;
+         int $$40 = $$27 + $$38 * 9;
+         $$0.a($$39, $$40, $$39 + $$25, $$40 + 8, $$35);
+         if ($$36 < $$4.size()) {
+            gbi $$41 = $$4.get($$36);
+            flb.b $$42 = $$5.get($$36);
+            GameProfile $$43 = $$41.a();
+            if ($$21) {
+               cnp $$44 = this.q.s.b($$43.getId());
+               boolean $$45 = $$44 != null && gnt.b($$44);
+               boolean $$46 = $$44 != null && $$44.a(cnq.g);
+               fkz.a($$0, $$41.g().a(), $$39, $$40, 8, $$46, $$45, -1);
+               $$39 += 9;
+            }
+
+            $$0.b(this.q.h, $$42.a, $$39, $$40, $$41.e() == ddp.d ? -1862270977 : -1);
+            if ($$3 != null && $$41.e() != ddp.d) {
+               int $$47 = $$39 + $$7 + 1;
+               int $$48 = $$47 + $$22;
+               if ($$48 - $$47 > 5) {
+                  this.a($$3, $$40, $$42, $$47, $$48, $$43.getId(), $$0);
+               }
+            }
+
+            this.a($$0, $$25, $$39 - ($$21 ? 9 : 0), $$40, $$41);
+         }
+      }
+
+      if ($$31 != null) {
+         $$27 += $$19 * 9 + 1;
+         $$0.a($$1 / 2 - $$28 / 2 - 1, $$27 - 1, $$1 / 2 + $$28 / 2 + 1, $$27 + $$31.size() * 9, Integer.MIN_VALUE);
+
+         for (ayo $$49 : $$31) {
+            int $$50 = this.q.h.a($$49);
+            $$0.b(this.q.h, $$49, $$1 / 2 - $$50 / 2, $$27, -1);
+            $$27 += 9;
+         }
+      }
+   }
+
+   protected void a(fjn $$0, int $$1, int $$2, int $$3, gbi $$4) {
+      alb $$5;
+      if ($$4.f() < 0) {
+         $$5 = b;
+      } else if ($$4.f() < 150) {
+         $$5 = g;
+      } else if ($$4.f() < 300) {
+         $$5 = f;
+      } else if ($$4.f() < 600) {
+         $$5 = e;
+      } else if ($$4.f() < 1000) {
+         $$5 = d;
+      } else {
+         $$5 = c;
+      }
+
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, 100.0F);
+      $$0.a(ghe::C, $$5, $$2 + $$1 - 11, $$3, 10, 8);
+      $$0.c().b();
+   }
+
+   private void a(eza $$0, int $$1, flb.b $$2, int $$3, int $$4, UUID $$5, fjn $$6) {
+      if ($$0.h() == ezl.a.b) {
+         this.a($$1, $$3, $$4, $$5, $$6, $$2.b);
+      } else if ($$2.c != null) {
+         $$6.b(this.q.h, $$2.c, $$4 - $$2.d, $$1, 16777215);
+      }
+   }
+
+   private void a(int $$0, int $$1, int $$2, UUID $$3, fjn $$4, int $$5) {
+      flb.a $$6 = this.v.computeIfAbsent($$3, $$1x -> new flb.a($$5));
+      $$6.a($$5, (long)this.r.e());
+      int $$7 = azc.e(Math.max($$5, $$6.a()), 2);
+      int $$8 = Math.max($$5, Math.max($$6.a(), 20)) / 2;
+      boolean $$9 = $$6.a((long)this.r.e());
+      if ($$7 > 0) {
+         int $$10 = azc.d(Math.min((float)($$2 - $$1 - 4) / (float)$$8, 9.0F));
+         if ($$10 <= 3) {
+            float $$11 = azc.a((float)$$5 / 20.0F, 0.0F, 1.0F);
+            int $$12 = (int)((1.0F - $$11) * 255.0F) << 16 | (int)($$11 * 255.0F) << 8;
+            float $$13 = (float)$$5 / 2.0F;
+            xd $$14 = xd.a("multiplayer.player.list.hp", $$13);
+            xd $$15;
+            if ($$2 - this.q.h.a($$14) >= $$1) {
+               $$15 = $$14;
+            } else {
+               $$15 = xd.b(Float.toString($$13));
+            }
+
+            $$4.b(this.q.h, $$15, ($$2 + $$1 - this.q.h.a($$15)) / 2, $$0, $$12);
+         } else {
+            alb $$17 = $$9 ? h : i;
+
+            for (int $$18 = $$7; $$18 < $$8; $$18++) {
+               $$4.a(ghe::C, $$17, $$1 + $$18 * $$10, $$0, 9, 9);
+            }
+
+            for (int $$19 = 0; $$19 < $$7; $$19++) {
+               $$4.a(ghe::C, $$17, $$1 + $$19 * $$10, $$0, 9, 9);
+               if ($$9) {
+                  if ($$19 * 2 + 1 < $$6.a()) {
+                     $$4.a(ghe::C, j, $$1 + $$19 * $$10, $$0, 9, 9);
+                  }
+
+                  if ($$19 * 2 + 1 == $$6.a()) {
+                     $$4.a(ghe::C, k, $$1 + $$19 * $$10, $$0, 9, 9);
+                  }
+               }
+
+               if ($$19 * 2 + 1 < $$5) {
+                  $$4.a(ghe::C, $$19 >= 10 ? l : m, $$1 + $$19 * $$10, $$0, 9, 9);
+               }
+
+               if ($$19 * 2 + 1 == $$5) {
+                  $$4.a(ghe::C, $$19 >= 10 ? n : o, $$1 + $$19 * $$10, $$0, 9, 9);
                }
             }
          }
-      });
-   }
-
-   private static Set<flc> b(fgs $$0) {
-      Set<flc> $$1 = EnumSet.noneOf(flc.class);
-      if ($$0.P().c()) {
-         $$1.add(flc.a);
-      }
-
-      if ($$0.Q().c()) {
-         $$1.add(flc.b);
-      }
-
-      return $$1;
-   }
-
-   private void a(flb.d $$0, bnf $$1) {
-      $$1.a();
-      $$1.a("closing");
-      this.j = null;
-      this.h.values().forEach(fld::close);
-      this.h.clear();
-      this.g.forEach(ezm::close);
-      this.g.clear();
-      Set<flc> $$2 = b(fgo.Q().m);
-      $$1.b("reloading");
-      $$0.a().forEach(($$1x, $$2x) -> {
-         fld $$3 = new fld(this.i, $$1x);
-         $$3.a(Lists.reverse($$2x), $$2);
-         this.h.put($$1x, $$3);
-      });
-      this.g.addAll($$0.b);
-      $$1.c();
-      $$1.b();
-      if (!this.h.containsKey(fgo.b)) {
-         throw new IllegalStateException("Default font failed to load");
       }
    }
 
-   public void a(fgs $$0) {
-      Set<flc> $$1 = b($$0);
-
-      for (fld $$2 : this.h.values()) {
-         $$2.a($$1);
-      }
+   public void a(@Nullable xd $$0) {
+      this.s = $$0;
    }
 
-   private static List<Pair<flb.a, flo.a>> a(List<auc> $$0, akr $$1) {
-      List<Pair<flb.a, flo.a>> $$2 = new ArrayList<>();
+   public void b(@Nullable xd $$0) {
+      this.t = $$0;
+   }
 
-      for (auc $$3 : $$0) {
-         try (Reader $$4 = $$3.e()) {
-            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
-            flb.c $$6 = (flb.c)flb.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
-            List<flo.a> $$7 = $$6.b;
+   public void a() {
+      this.t = null;
+      this.s = null;
+   }
 
-            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
-               flb.a $$9 = new flb.a($$1, $$3.b(), $$8);
-               $$2.add(Pair.of($$9, $$7.get($$8)));
-            }
-         } catch (Exception var13) {
-            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
+   static class a {
+      private static final long a = 20L;
+      private static final long b = 20L;
+      private static final long c = 10L;
+      private int d;
+      private int e;
+      private long f;
+      private long g;
+
+      public a(int $$0) {
+         this.e = $$0;
+         this.d = $$0;
+      }
+
+      public void a(int $$0, long $$1) {
+         if ($$0 != this.d) {
+            long $$2 = $$0 < this.d ? 20L : 10L;
+            this.g = $$1 + $$2;
+            this.d = $$0;
+            this.f = $$1;
+         }
+
+         if ($$1 - this.f > 20L) {
+            this.e = $$0;
          }
       }
 
-      return $$2;
-   }
+      public int a() {
+         return this.e;
+      }
 
-   public fhx a() {
-      return new fhx(this::b, false);
-   }
-
-   public fhx b() {
-      return new fhx(this::b, true);
-   }
-
-   private fld a(akr $$0) {
-      return this.h.getOrDefault($$0, this.f);
-   }
-
-   private fld b(akr $$0) {
-      fld $$1 = this.j;
-      if ($$1 != null && $$0.equals($$1.a())) {
-         return $$1;
-      } else {
-         fld $$2 = this.a($$0);
-         this.j = $$2;
-         return $$2;
+      public boolean a(long $$0) {
+         return this.g > $$0 && (this.g - $$0) % 6L >= 3L;
       }
    }
 
-   @Override
-   public void close() {
-      this.h.values().forEach(fld::close);
-      this.g.forEach(ezm::close);
-      this.f.close();
-   }
-
-   static record a(akr a, String b, int c) {
-      @Override
-      public String toString() {
-         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
-      }
-   }
-
-   static record b(flb.a a, flc.a b, Either<CompletableFuture<Optional<ezm>>, akr> c) {
-
-      public Optional<List<ezm.a>> a(Function<akr, List<ezm.a>> $$0) {
-         return (Optional<List<ezm.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new ezm.a($$0xx, this.b))), $$1 -> {
-            List<ezm.a> $$2 = $$0.apply($$1);
-            if ($$2 == null) {
-               flb.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
-               return Optional.empty();
-            } else {
-               return Optional.of($$2.stream().map(this::a).toList());
-            }
-         });
-      }
-
-      private ezm.a a(ezm.a $$0) {
-         return new ezm.a($$0.a(), this.b.a($$0.b()));
-      }
-   }
-
-   static record c(List<flo.a> b) {
-      public static final Codec<flb.c> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(flo.a.a.listOf().fieldOf("providers").forGetter(flb.c::a)).apply($$0, flb.c::new)
-      );
-
-      public List<flo.a> a() {
-         return this.b;
-      }
-   }
-
-   static record d(Map<akr, List<ezm.a>> a, List<ezm> b) {
-   }
-
-   static record e(akr a, List<flb.b> b, Set<akr> c) implements axs.a<akr> {
-
-      public e(akr $$0) {
-         this($$0, new ArrayList<>(), new HashSet<>());
-      }
-
-      public void a(flb.a $$0, flc.a $$1, flo.c $$2) {
-         this.b.add(new flb.b($$0, $$1, Either.right($$2.a())));
-         this.c.add($$2.a());
-      }
-
-      public void a(flb.a $$0, flc.a $$1, CompletableFuture<Optional<ezm>> $$2) {
-         this.b.add(new flb.b($$0, $$1, Either.left($$2)));
-      }
-
-      private Stream<CompletableFuture<Optional<ezm>>> d() {
-         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
-      }
-
-      public Optional<List<ezm.a>> a(Function<akr, List<ezm.a>> $$0) {
-         List<ezm.a> $$1 = new ArrayList<>();
-
-         for (flb.b $$2 : this.b) {
-            Optional<List<ezm.a>> $$3 = $$2.a($$0);
-            if (!$$3.isPresent()) {
-               return Optional.empty();
-            }
-
-            $$1.addAll($$3.get());
-         }
-
-         return Optional.of($$1);
-      }
-
-      @Override
-      public void a(Consumer<akr> $$0) {
-         this.c.forEach($$0);
-      }
-
-      @Override
-      public void b(Consumer<akr> $$0) {
-      }
+   static record b(xd a, int b, @Nullable xd c, int d) {
    }
 }

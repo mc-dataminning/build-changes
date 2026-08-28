@@ -1,60 +1,97 @@
-public class dzk implements dcj {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-   @Override
-   public int a(aqu $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ab().b(dcs.C)) {
-         return 0;
-      } else {
-         ayw $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + (60 + $$3.a(60)) * 20;
-            if ($$0.B_() < 5 && $$0.D_().g()) {
-               return 0;
-            } else {
-               int $$4 = 0;
+public final class dzk {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<dwx> e = lu.l
+      .q()
+      .comapFlatMap($$0 -> $$0 == dwx.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<dzk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(dzk::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, dzk::new)
+   );
+   private static final Set<ala<det>> f = Set.of(dfa.aa, dfa.Z, dfa.ab);
+   public static final ddu b = new ddu() {
+      @Override
+      public int H_() {
+         return 64;
+      }
 
-               for (aqv $$5 : $$0.x()) {
-                  if (!$$5.R_()) {
-                     jd $$6 = $$5.do();
-                     if (!$$0.D_().g() || $$6.v() >= $$0.z_() && $$0.h($$6)) {
-                        bqp $$7 = $$0.d_($$6);
-                        if ($$7.a($$3.i() * 3.0F)) {
-                           avv $$8 = $$5.I();
-                           int $$9 = ayo.a($$8.a(avz.i.b(avz.n)), 1, Integer.MAX_VALUE);
-                           int $$10 = 24000;
-                           if ($$3.a($$9) >= 72000) {
-                              jd $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                              dtc $$12 = $$0.a_($$11);
-                              epe $$13 = $$0.b_($$11);
-                              if (ddh.a($$0, $$11, $$12, $$13, bsx.ay)) {
-                                 buh $$14 = null;
-                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
+      @Override
+      public int G_() {
+         return -64;
+      }
+   };
+   private final dwx g;
+   private final BitSet h;
 
-                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
-                                    ckf $$17 = bsx.ay.a((dcw)$$0);
-                                    if ($$17 != null) {
-                                       $$17.a($$11, 0.0F, 0.0F);
-                                       $$14 = $$17.a($$0, $$7, btr.a, $$14);
-                                       $$0.a_($$17);
-                                       $$4++;
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
+   private dzk(dwx $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
+   }
 
-               return $$4;
+   @Nullable
+   public static dzk a(uf $$0) {
+      dwx $$1 = dwx.a($$0.l("target_status"));
+      return $$1 == dwx.c ? null : new dzk($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
+   }
+
+   public static void a(dwq $$0) {
+      int $$1 = 4;
+      je.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dgx.F)) {
+            $$0.a($$1x, dgx.sJ.o(), false);
+         }
+      });
+   }
+
+   public void b(dwq $$0) {
+      ddu $$1 = $$0.y();
+      int $$2 = $$1.G_();
+      int $$3 = $$1.an() - 1;
+
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               je.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dgx.a.o(), false));
             }
          }
+      }
+   }
+
+   public dwx a() {
+      return this.g;
+   }
+
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static dew a(dew $$0, dvw $$1) {
+      if (!$$1.x()) {
+         return $$0;
+      } else {
+         Predicate<ala<det>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            jn<det> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
    }
 }

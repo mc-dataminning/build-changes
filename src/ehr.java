@@ -1,17 +1,29 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public record ehr(jm<cul> c, eht d) {
-   public static final Codec<ehr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ako.a(lu.K).fieldOf("display").forGetter($$0x -> $$0x.c), eht.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, ehr::new)
-   );
-   public static final Codec<jm<ehr>> b = akn.a(lu.aN, a);
+public class ehr extends ehh {
+   public static final MapCodec<ehr> b = bpu.b(dua.a).comapFlatMap(ehr::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bpu<dua> c;
 
-   public jm<cul> a() {
-      return this.c;
+   private static DataResult<ehr> a(bpu<dua> $$0) {
+      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new ehr($$0));
    }
 
-   public eht b() {
-      return this.d;
+   public ehr(bpu<dua> $$0) {
+      this.c = $$0;
+   }
+
+   public ehr(bpu.a<dua> $$0) {
+      this($$0.a());
+   }
+
+   @Override
+   protected ehi<?> a() {
+      return ehi.b;
+   }
+
+   @Override
+   public dua a(azk $$0, je $$1) {
+      return this.c.a($$0).orElseThrow(IllegalStateException::new);
    }
 }

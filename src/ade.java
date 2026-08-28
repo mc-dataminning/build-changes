@@ -1,85 +1,26 @@
-public class ade implements zg<abu> {
-   public static final yx<vw, ade> a = zg.a(ade::a, ade::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final double e;
-   private final long f;
-   private final int g;
-   private final int h;
-   private final int i;
+import java.util.Optional;
 
-   private ade(vw $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readDouble();
-      this.f = $$0.m();
-      this.g = $$0.l();
-      this.h = $$0.l();
-      this.i = $$0.l();
-   }
-
-   public ade(dut $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
-      this.d = $$0.i();
-      this.e = $$0.k();
-      this.f = $$0.j();
-      this.g = $$0.m();
-      this.h = $$0.r();
-      this.i = $$0.q();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.c(this.g);
-      $$0.c(this.h);
-      $$0.c(this.i);
-   }
+public record ade(eye b, Optional<eye> c, ll d, jn<awc> e) implements zk<abz> {
+   public static final zb<wo, ade> a = zb.a(eye.b, ade::b, eye.b.a(yz::a), ade::e, ln.bg, ade::f, awc.d, ade::g, ade::new);
 
    @Override
-   public zi<ade> a() {
-      return agg.J;
+   public zm<ade> a() {
+      return ago.E;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.b;
-   }
-
-   public double e() {
+   public Optional<eye> e() {
       return this.c;
    }
 
-   public double f() {
-      return this.e;
-   }
-
-   public double g() {
+   public ll f() {
       return this.d;
    }
 
-   public long h() {
-      return this.f;
-   }
-
-   public int i() {
-      return this.g;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.h;
+   public jn<awc> g() {
+      return this.e;
    }
 }

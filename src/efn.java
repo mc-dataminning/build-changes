@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.mojang.serialization.Codec;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface efn {
+public class efn implements efg {
+   public static final Codec<efn> a = Codec.unit(() -> efn.b);
+   public static final efn b = new efn();
 }

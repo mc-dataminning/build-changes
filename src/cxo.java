@@ -1,150 +1,56 @@
-import com.google.common.collect.Iterables;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+public class cxo {
+   public static final jn<cxl> a = a("water", new cxl());
+   public static final jn<cxl> b = a("mundane", new cxl());
+   public static final jn<cxl> c = a("thick", new cxl());
+   public static final jn<cxl> d = a("awkward", new cxl());
+   public static final jn<cxl> e = a("night_vision", new cxl(new bsq(bss.p, 3600)));
+   public static final jn<cxl> f = a("long_night_vision", new cxl("night_vision", new bsq(bss.p, 9600)));
+   public static final jn<cxl> g = a("invisibility", new cxl(new bsq(bss.n, 3600)));
+   public static final jn<cxl> h = a("long_invisibility", new cxl("invisibility", new bsq(bss.n, 9600)));
+   public static final jn<cxl> i = a("leaping", new cxl(new bsq(bss.h, 3600)));
+   public static final jn<cxl> j = a("long_leaping", new cxl("leaping", new bsq(bss.h, 9600)));
+   public static final jn<cxl> k = a("strong_leaping", new cxl("leaping", new bsq(bss.h, 1800, 1)));
+   public static final jn<cxl> l = a("fire_resistance", new cxl(new bsq(bss.l, 3600)));
+   public static final jn<cxl> m = a("long_fire_resistance", new cxl("fire_resistance", new bsq(bss.l, 9600)));
+   public static final jn<cxl> n = a("swiftness", new cxl(new bsq(bss.a, 3600)));
+   public static final jn<cxl> o = a("long_swiftness", new cxl("swiftness", new bsq(bss.a, 9600)));
+   public static final jn<cxl> p = a("strong_swiftness", new cxl("swiftness", new bsq(bss.a, 1800, 1)));
+   public static final jn<cxl> q = a("slowness", new cxl(new bsq(bss.b, 1800)));
+   public static final jn<cxl> r = a("long_slowness", new cxl("slowness", new bsq(bss.b, 4800)));
+   public static final jn<cxl> s = a("strong_slowness", new cxl("slowness", new bsq(bss.b, 400, 3)));
+   public static final jn<cxl> t = a("turtle_master", new cxl("turtle_master", new bsq(bss.b, 400, 3), new bsq(bss.k, 400, 2)));
+   public static final jn<cxl> u = a("long_turtle_master", new cxl("turtle_master", new bsq(bss.b, 800, 3), new bsq(bss.k, 800, 2)));
+   public static final jn<cxl> v = a("strong_turtle_master", new cxl("turtle_master", new bsq(bss.b, 400, 5), new bsq(bss.k, 400, 3)));
+   public static final jn<cxl> w = a("water_breathing", new cxl(new bsq(bss.m, 3600)));
+   public static final jn<cxl> x = a("long_water_breathing", new cxl("water_breathing", new bsq(bss.m, 9600)));
+   public static final jn<cxl> y = a("healing", new cxl(new bsq(bss.f, 1)));
+   public static final jn<cxl> z = a("strong_healing", new cxl("healing", new bsq(bss.f, 1, 1)));
+   public static final jn<cxl> A = a("harming", new cxl(new bsq(bss.g, 1)));
+   public static final jn<cxl> B = a("strong_harming", new cxl("harming", new bsq(bss.g, 1, 1)));
+   public static final jn<cxl> C = a("poison", new cxl(new bsq(bss.s, 900)));
+   public static final jn<cxl> D = a("long_poison", new cxl("poison", new bsq(bss.s, 1800)));
+   public static final jn<cxl> E = a("strong_poison", new cxl("poison", new bsq(bss.s, 432, 1)));
+   public static final jn<cxl> F = a("regeneration", new cxl(new bsq(bss.j, 900)));
+   public static final jn<cxl> G = a("long_regeneration", new cxl("regeneration", new bsq(bss.j, 1800)));
+   public static final jn<cxl> H = a("strong_regeneration", new cxl("regeneration", new bsq(bss.j, 450, 1)));
+   public static final jn<cxl> I = a("strength", new cxl(new bsq(bss.e, 3600)));
+   public static final jn<cxl> J = a("long_strength", new cxl("strength", new bsq(bss.e, 9600)));
+   public static final jn<cxl> K = a("strong_strength", new cxl("strength", new bsq(bss.e, 1800, 1)));
+   public static final jn<cxl> L = a("weakness", new cxl(new bsq(bss.r, 1800)));
+   public static final jn<cxl> M = a("long_weakness", new cxl("weakness", new bsq(bss.r, 4800)));
+   public static final jn<cxl> N = a("luck", new cxl("luck", new bsq(bss.z, 6000)));
+   public static final jn<cxl> O = a("slow_falling", new cxl(new bsq(bss.B, 1800)));
+   public static final jn<cxl> P = a("long_slow_falling", new cxl("slow_falling", new bsq(bss.B, 4800)));
+   public static final jn<cxl> Q = a("wind_charged", new cxl("wind_charged", new bsq(bss.J, 3600)));
+   public static final jn<cxl> R = a("weaving", new cxl("weaving", new bsq(bss.K, 3600)));
+   public static final jn<cxl> S = a("oozing", new cxl("oozing", new bsq(bss.L, 3600)));
+   public static final jn<cxl> T = a("infested", new cxl("infested", new bsq(bss.M, 3600)));
 
-public final class cxo {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final cxo a = new cxo(jv.a());
-   public static final Codec<cxo> b = cxo.a.a.sizeLimitedListOf(256).xmap(cxo::b, cxo::f);
-   public static final yx<wk, cxo> c = cuq.h.a(yv.c(256)).a(cxo::new, $$0 -> $$0.f);
-   private final jv<cuq> f;
-   private final int g;
-
-   private cxo(jv<cuq> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
-      } else {
-         this.f = $$0;
-         this.g = cuq.a($$0);
-      }
+   private static jn<cxl> a(String $$0, cxl $$1) {
+      return ka.b(lu.h, alb.b($$0), $$1);
    }
 
-   private cxo(int $$0) {
-      this(jv.a($$0, cuq.l));
-   }
-
-   private cxo(List<cuq> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cxo b(List<cxo.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(cxo.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cxo $$2 = new cxo($$1.getAsInt() + 1);
-
-         for (cxo.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
-         }
-
-         return $$2;
-      }
-   }
-
-   public static cxo a(List<cuq> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         cxo $$2 = new cxo($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).s());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cuq> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).e()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<cxo.a> f() {
-      List<cxo.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cuq $$2 = this.f.get($$1);
-         if (!$$2.e()) {
-            $$0.add(new cxo.a($$1, $$2));
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(jv<cuq> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cuq $$2 = $$1 < this.f.size() ? this.f.get($$1) : cuq.l;
-         $$0.set($$1, $$2.s());
-      }
-   }
-
-   public cuq a() {
-      return this.f.isEmpty() ? cuq.l : this.f.get(0).s();
-   }
-
-   public Stream<cuq> b() {
-      return this.f.stream().map(cuq::s);
-   }
-
-   public Stream<cuq> c() {
-      return this.f.stream().filter($$0 -> !$$0.e()).map(cuq::s);
-   }
-
-   public Iterable<cuq> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.e());
-   }
-
-   public Iterable<cuq> e() {
-      return Iterables.transform(this.d(), cuq::s);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cxo $$1 && cuq.a(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.g;
-   }
-
-   static record a(int b, cuq c) {
-      public static final Codec<cxo.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cxo.a::a), cuq.b.fieldOf("item").forGetter(cxo.a::b)).apply($$0, cxo.a::new)
-      );
-
-      public int a() {
-         return this.b;
-      }
-
-      public cuq b() {
-         return this.c;
-      }
+   public static jn<cxl> a(ka<cxl> $$0) {
+      return a;
    }
 }

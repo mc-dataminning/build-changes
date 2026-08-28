@@ -1,26 +1,99 @@
-public abstract class fij extends fik {
-   private final fhx a;
-   private int b = 16777215;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public fij(int $$0, int $$1, int $$2, int $$3, wz $$4, fhx $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.a = $$5;
+public class fij {
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private fij.c b;
+   private int c;
+
+   public void a(fij.b $$0, List<ate> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new fij.c($$0, $$1.stream().map(ate::b).collect(ImmutableList.toImmutableList()));
    }
 
-   @Override
-   protected void a(fmi $$0) {
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new fij.c(fij.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new fij.a($$0);
    }
 
-   public fij a(int $$0) {
-      this.b = $$0;
-      return this;
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
+      }
    }
 
-   protected final fhx a() {
-      return this.a;
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
    }
 
-   protected final int b() {
-      return this.b;
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final fij.b a;
+      private final List<String> b;
+      @Nullable
+      fij.a c;
+      boolean d;
+
+      c(fij.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
+      }
    }
 }

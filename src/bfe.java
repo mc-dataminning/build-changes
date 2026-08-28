@@ -1,36 +1,34 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Optional;
 
-public class bfe extends DataFix {
-   private static final String a = "WorldGenSettings";
-   private static final List<String> b = List.of(
-      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
-   );
+public abstract class bfe extends DataFix {
+   private final String a;
+   private final String b;
+   private final String c;
 
-   public bfe(Schema $$0) {
-      super($$0, false);
+   public bfe(Schema $$0, String $$1, String $$2) {
+      this($$0, $$1, $$2, $$2);
    }
 
-   protected TypeRewriteRule makeRule() {
+   public bfe(Schema $$0, String $$1, String $$2, String $$3) {
+      super($$0, false);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+   }
+
+   public final TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.t);
+      OpticFinder<?> $$1 = $$0.findField("components");
       return this.fixTypeEverywhereTyped(
-         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bgr.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
-
-               for (String $$2 : b) {
-                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
-                  if ($$3.isPresent()) {
-                     $$0x = $$0x.remove($$2);
-                     $$1 = $$1.set($$2, $$3.get());
-                  }
-               }
-
-               return $$0x.set("WorldGenSettings", $$1);
-            })
+         this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))
       );
    }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

@@ -1,39 +1,31 @@
-public class cus {
-   public static bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      $$1.c($$2);
-      return bqs.b($$1.b($$2));
+public class cus extends cvg {
+   public cus(cvg.a $$0) {
+      super($$0);
    }
 
-   public static cuq a(cuq $$0, cmx $$1, cuq $$2, boolean $$3) {
-      boolean $$4 = $$1.fL();
-      if ($$3 && $$4) {
-         if (!$$1.fY().i($$2)) {
-            $$1.fY().f($$2);
+   @Override
+   public brk a(dds $$0, cnp $$1, brj $$2) {
+      cvl $$3 = $$1.b($$2);
+      if ($$1.cs != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.cs.a($$3);
+            $$3.a($$4, $$1, buf.d($$2));
          }
 
-         return $$0;
+         $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awd.iX, awe.g, 1.0F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+         $$1.a(dyx.C);
       } else {
-         $$0.a(1, $$1);
-         if ($$0.e()) {
-            return $$2;
-         } else {
-            if (!$$1.fY().f($$2)) {
-               $$1.a($$2, false);
-            }
-
-            return $$0;
+         $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awd.iZ, awe.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof arg $$5) {
+            int $$6 = (int)(day.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = day.a($$5, $$3, $$1);
+            coi.a(new coe($$1, $$0, $$7, $$6, $$3), $$5, $$3);
          }
-      }
-   }
 
-   public static cuq a(cuq $$0, cmx $$1, cuq $$2) {
-      return a($$0, $$1, $$2, true);
-   }
-
-   public static void a(cjh $$0, Iterable<cuq> $$1) {
-      dcw $$2 = $$0.dO();
-      if (!$$2.B) {
-         $$1.forEach($$2x -> $$2.b(new cjh($$2, $$0.dt(), $$0.dv(), $$0.dz(), $$2x)));
+         $$1.b(awn.c.b(this));
+         $$1.a(dyx.D);
       }
+
+      return brk.a;
    }
 }

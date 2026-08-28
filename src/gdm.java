@@ -1,88 +1,43 @@
-import javax.annotation.Nullable;
+public class gdm extends gfe {
+   private final gez a;
 
-public class gdm extends gdn {
-   private final jd a;
-   private final float b;
-   private final float F;
-
-   public gdm(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dtc $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, jd.a($$1, $$2, $$3));
+   protected gdm(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gez $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.1F;
+      this.B = 0.9F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      float $$8 = this.r.i() * 0.3F + 0.7F;
+      this.v = $$8;
+      this.w = $$8;
+      this.x = $$8;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
+      this.b($$7);
    }
 
-   public gdm(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dtc $$7, jd $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(fgo.Q().ao().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dga.i)) {
-         int $$9 = fgo.Q().au().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+   @Override
+   public gei b() {
+      return gei.b;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
       }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
-   }
-
-   @Override
-   public gcr b() {
-      return gcr.a;
-   }
-
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
-
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? gex.a(this.c, this.a) : $$1;
-   }
-
-   @Nullable
-   static gdm a(le $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      dtc $$8 = $$0.b();
-      return !$$8.i() && !$$8.a(dga.bQ) && $$8.z() ? new gdm($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
-   }
-
-   public static class a implements gcq<le> {
-      @Nullable
-      public gcn a(le $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcn $$8 = gdm.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.z.k() / 30.0, $$6 + $$1.z.k() / 2.0, $$1.z.k() / 30.0);
-            $$8.a($$1.z.a(20) + 20);
-         }
-
-         return $$8;
-      }
-   }
-
-   public static class b implements gcq<le> {
-      @Nullable
-      public gcn a(le $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return gdm.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdm($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

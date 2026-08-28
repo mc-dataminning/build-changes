@@ -1,32 +1,31 @@
-import java.nio.file.Path;
-import java.util.List;
+import java.util.Optional;
 
-public interface bne {
-   char d = '\u001e';
+public interface bne<S, T> {
+   Optional<T> a(bnd<S> var1);
 
-   List<bnh> a(String var1);
-
-   boolean a(Path var1);
-
-   long a();
-
-   int b();
-
-   long c();
-
-   int d();
-
-   default long g() {
-      return this.c() - this.a();
+   static <S, T> bne<S, T> a(bnh<S> $$0, bne.a<S, T> $$1) {
+      return new bne.c<>($$1, $$0);
    }
 
-   default int f() {
-      return this.d() - this.b();
+   static <S, T> bne<S, T> a(bnh<S> $$0, bne.b<T> $$1) {
+      return new bne.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   String e();
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bnd<S> var1, bnf var2);
+   }
 
-   static String b(String $$0) {
-      return $$0.replace('\u001e', '.');
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bnf var1);
+   }
+
+   public static record c<S, T>(bne.a<S, T> a, bnh<S> b) implements bne<S, T> {
+      @Override
+      public Optional<T> a(bnd<S> $$0) {
+         bnf $$1 = new bnf();
+         return this.b.a($$0, $$1, bmz.a) ? this.a.run($$0, $$1) : Optional.empty();
+      }
    }
 }

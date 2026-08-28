@@ -1,33 +1,29 @@
-import java.util.UUID;
-import javax.annotation.Nullable;
+public class aid implements zk<agq> {
+   public static final zb<wa, aid> a = zk.a(aid::a, aid::new);
+   private final int b;
 
-public class aid implements zg<agi> {
-   public static final yx<vw, aid> a = zg.a(aid::a, aid::new);
-   private final UUID b;
-
-   public aid(UUID $$0) {
+   public aid(int $$0) {
       this.b = $$0;
    }
 
-   private aid(vw $$0) {
-      this.b = $$0.n();
+   private aid(wa $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private void a(wa $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zi<aid> a() {
-      return agg.cb;
+   public zm<aid> a() {
+      return ago.bU;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public bsr a(aqu $$0) {
-      return $$0.a(this.b);
+   public int b() {
+      return this.b;
    }
 }

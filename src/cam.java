@@ -1,57 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public abstract class cam {
-   private final EnumSet<cam.a> a = EnumSet.noneOf(cam.a.class);
+public class cam extends cat {
+   private static final int g = 240;
+   private final Predicate<brh> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
+   public cam(buh $$0, Predicate<brh> $$1) {
+      super($$0);
+      this.h = $$1;
    }
 
-   public boolean U_() {
-      return true;
+   public cam(buh $$0, int $$1, Predicate<brh> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
    }
 
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean V_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<cam.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public boolean b() {
+      if (!super.b()) {
+         return false;
+      } else {
+         return !this.d.dS().ac().b(ddo.c) ? false : this.a(this.d.dS().am()) && !this.h();
+      }
    }
 
-   public EnumSet<cam.a> j() {
-      return this.a;
+   @Override
+   public void d() {
+      super.d();
+      this.a = 0;
    }
 
-   protected int a(int $$0) {
-      return this.V_() ? $$0 : b($$0);
+   @Override
+   public boolean c() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dq(), 2.0) && this.a(this.d.dS().am());
    }
 
-   protected static int b(int $$0) {
-      return ayo.e($$0, 2);
+   @Override
+   public void e() {
+      super.e();
+      this.d.dS().a(this.d.ap(), this.e, -1);
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      super.a();
+      if (this.d.dV().a(20) == 0) {
+         this.d.dS().c(1019, this.e, 0);
+         if (!this.d.aF) {
+            this.d.a(this.d.fw());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dS().a(this.d.ap(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dS().am())) {
+         this.d.dS().a(this.e, false);
+         this.d.dS().c(1021, this.e, 0);
+         this.d.dS().c(2001, this.e, dgv.j(this.d.dS().a_(this.e)));
+      }
+   }
+
+   private boolean a(brh $$0) {
+      return this.h.test($$0);
    }
 }

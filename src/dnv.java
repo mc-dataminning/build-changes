@@ -1,112 +1,248 @@
-import com.mojang.datafixers.DataFixUtils;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dnv extends dgh implements dgb {
+public class dnv extends dgh {
    public static final MapCodec<dnv> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akq.a(lu.f).fieldOf("fruit").forGetter($$0x -> $$0x.f),
-               akq.a(lu.f).fieldOf("attached_stem").forGetter($$0x -> $$0x.g),
-               akq.a(lu.K).fieldOf("seed").forGetter($$0x -> $$0x.h),
-               u()
-            )
-            .apply($$0, dnv::new)
+      $$0 -> $$0.group(cue.q.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.m)), u())
+            .apply($$0, ($$0x, $$1) -> new dnv((cue)$$0x.orElse(null), $$1))
    );
-   public static final int b = 7;
-   public static final duc c = dts.av;
-   protected static final float d = 1.0F;
-   protected static final exv[] e = new exv[]{
-      dfy.a(7.0, 0.0, 7.0, 9.0, 2.0, 9.0),
-      dfy.a(7.0, 0.0, 7.0, 9.0, 4.0, 9.0),
-      dfy.a(7.0, 0.0, 7.0, 9.0, 6.0, 9.0),
-      dfy.a(7.0, 0.0, 7.0, 9.0, 8.0, 9.0),
-      dfy.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0),
-      dfy.a(7.0, 0.0, 7.0, 9.0, 12.0, 9.0),
-      dfy.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0),
-      dfy.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
-   };
-   private final akq<dfy> f;
-   private final akq<dfy> g;
-   private final akq<cul> h;
+   private static final xd d = xd.c("container.shulkerBox.unknownContents");
+   private static final float e = 1.0F;
+   private static final eyx f = dgv.a(0.0, 15.0, 0.0, 16.0, 16.0, 16.0);
+   private static final eyx g = dgv.a(0.0, 0.0, 0.0, 16.0, 1.0, 16.0);
+   private static final eyx h = dgv.a(0.0, 0.0, 0.0, 1.0, 16.0, 16.0);
+   private static final eyx i = dgv.a(15.0, 0.0, 0.0, 16.0, 16.0, 16.0);
+   private static final eyx j = dgv.a(0.0, 0.0, 0.0, 16.0, 16.0, 1.0);
+   private static final eyx k = dgv.a(0.0, 0.0, 15.0, 16.0, 16.0, 16.0);
+   private static final Map<jj, eyx> l = ad.a(Maps.newEnumMap(jj.class), $$0 -> {
+      $$0.put(jj.c, j);
+      $$0.put(jj.f, i);
+      $$0.put(jj.d, k);
+      $$0.put(jj.e, h);
+      $$0.put(jj.b, f);
+      $$0.put(jj.a, g);
+   });
+   public static final duy<jj> b = diy.a;
+   public static final alb c = alb.b("contents");
+   @Nullable
+   private final cue m;
 
    @Override
    public MapCodec<dnv> a() {
       return a;
    }
 
-   protected dnv(akq<dfy> $$0, akq<dfy> $$1, akq<cul> $$2, dtb.d $$3) {
-      super($$3);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   public dnv(@Nullable cue $$0, dtz.d $$1) {
+      super($$1);
+      this.m = $$0;
+      this.l(this.E.b().b(b, jj.b));
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return e[$$0.c(c)];
+   public dre a(je $$0, dua $$1) {
+      return new dsp(this.m, $$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
+      return a($$2, drg.x, dsp::a);
    }
 
    @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.a(dga.cC);
+   protected dnc a_(dua $$0) {
+      return dnc.b;
    }
 
    @Override
-   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if ($$1.b($$2, 0) >= 9) {
-         float $$4 = dht.a(this, $$1, $$2);
-         if ($$3.a((int)(25.0F / $$4) + 1) == 0) {
-            int $$5 = $$0.c(c);
-            if ($$5 < 7) {
-               $$0 = $$0.a(c, Integer.valueOf($$5 + 1));
-               $$1.a($$2, $$0, 2);
-            } else {
-               ji $$6 = ji.c.a.a($$3);
-               jd $$7 = $$2.a($$6);
-               dtc $$8 = $$1.a_($$7.e());
-               if ($$1.a_($$7).i() && ($$8.a(dga.cC) || $$8.a(awe.ag))) {
-                  jz<dfy> $$9 = $$1.H_().d(lu.f);
-                  Optional<dfy> $$10 = $$9.e(this.f);
-                  Optional<dfy> $$11 = $$9.e(this.g);
-                  if ($$10.isPresent() && $$11.isPresent()) {
-                     $$1.b($$7, $$10.get().o());
-                     $$1.b($$2, $$11.get().o().a(dju.aE, $$6));
-                  }
-               }
+   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
+      if (!$$1.B && $$1.c_($$2) instanceof dsp $$5 && a($$0, $$1, $$2, $$5)) {
+         $$3.a($$5);
+         $$3.a(awn.aq);
+         cmg.a($$3, true);
+      }
+
+      return brk.a;
+   }
+
+   private static boolean a(dua $$0, dds $$1, je $$2, dsp $$3) {
+      if ($$3.k() != dsp.a.a) {
+         return true;
+      } else {
+         exz $$4 = clb.a(1.0F, $$0.c(b), 0.0F, 0.5F).a($$2).h(1.0E-6);
+         return $$1.b($$4);
+      }
+   }
+
+   @Override
+   public dua a(cyw $$0) {
+      return this.o().b(b, $$0.k());
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dua a(dds $$0, je $$1, dua $$2, cnp $$3) {
+      dre $$4 = $$0.c_($$1);
+      if ($$4 instanceof dsp $$5) {
+         if (!$$0.B && $$3.f() && !$$5.c()) {
+            cvl $$6 = b(this.b());
+            $$6.b($$4.r());
+            cjz $$7 = new cjz($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
+            $$7.q();
+            $$0.b($$7);
+         } else {
+            $$5.e_($$3);
+         }
+      }
+
+      return super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected List<cvl> a(dua $$0, esw.a $$1) {
+      dre $$2 = $$1.b(evp.h);
+      if ($$2 instanceof dsp $$3) {
+         $$1 = $$1.a(c, $$1x -> {
+            for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
+               $$1x.accept($$3.a($$2x));
             }
+         });
+      }
+
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   protected void a(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dre $$5 = $$1.c_($$2);
+         super.a($$0, $$1, $$2, $$3, $$4);
+         if ($$5 instanceof dsp) {
+            $$1.c($$2, $$0.b());
          }
       }
    }
 
    @Override
-   public cuq a(dcz $$0, jd $$1, dtc $$2) {
-      return new cuq((dcv)DataFixUtils.orElse($$0.H_().d(lu.K).e(this.h), this));
-   }
+   public void a(cvl $$0, cvg.b $$1, List<xd> $$2, cxf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.b(kr.ah)) {
+         $$2.add(d);
+      }
 
-   @Override
-   public boolean b(dcz $$0, jd $$1, dtc $$2) {
-      return $$2.c(c) != 7;
-   }
+      int $$4 = 0;
+      int $$5 = 0;
 
-   @Override
-   public boolean a(dcw $$0, ayw $$1, jd $$2, dtc $$3) {
-      return true;
-   }
+      for (cvl $$6 : $$0.a(kr.ad, cyh.a).d()) {
+         $$5++;
+         if ($$4 <= 4) {
+            $$4++;
+            $$2.add(xd.a("container.shulkerBox.itemCount", $$6.y(), $$6.J()));
+         }
+      }
 
-   @Override
-   public void a(aqu $$0, ayw $$1, jd $$2, dtc $$3) {
-      int $$4 = Math.min(7, $$3.c(c) + ayo.a($$0.z, 2, 5));
-      dtc $$5 = $$3.a(c, Integer.valueOf($$4));
-      $$0.a($$2, $$5, 2);
-      if ($$4 == 7) {
-         $$5.b($$0, $$2, $$0.z);
+      if ($$5 - $$4 > 0) {
+         $$2.add(xd.a("container.shulkerBox.more", $$5 - $$4).a(n.u));
       }
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(c);
+   protected eyx b_(dua $$0, dcx $$1, je $$2) {
+      if ($$1.c_($$2) instanceof dsp $$4 && !$$4.u()) {
+         return l.get($$0.c(b).g());
+      }
+
+      return eyu.b();
+   }
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      dre $$4 = $$1.c_($$2);
+      return $$4 instanceof dsp ? eyu.a(((dsp)$$4).a($$0)) : eyu.b();
+   }
+
+   @Override
+   protected boolean e_(dua $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean c_(dua $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dua $$0, dds $$1, je $$2) {
+      return cqq.a($$1.c_($$2));
+   }
+
+   @Override
+   public cvl a(ddv $$0, je $$1, dua $$2) {
+      cvl $$3 = super.a($$0, $$1, $$2);
+      $$0.a($$1, drg.x).ifPresent($$2x -> $$2x.a($$3, $$0.F_()));
+      return $$3;
+   }
+
+   @Nullable
+   public static cue b(cvg $$0) {
+      return a(dgv.a($$0));
+   }
+
+   @Nullable
+   public static cue a(dgv $$0) {
+      return $$0 instanceof dnv ? ((dnv)$$0).b() : null;
+   }
+
+   public static dgv a(@Nullable cue $$0) {
+      if ($$0 == null) {
+         return dgx.kP;
+      } else {
+         return switch ($$0) {
+            case a -> dgx.kQ;
+            case b -> dgx.kR;
+            case c -> dgx.kS;
+            case d -> dgx.kT;
+            case e -> dgx.kU;
+            case f -> dgx.kV;
+            case g -> dgx.kW;
+            case h -> dgx.kX;
+            case i -> dgx.kY;
+            case j -> dgx.kZ;
+            case l -> dgx.lb;
+            case m -> dgx.lc;
+            case n -> dgx.ld;
+            case o -> dgx.le;
+            case p -> dgx.lf;
+            case k -> dgx.la;
+         };
+      }
+   }
+
+   @Nullable
+   public cue b() {
+      return this.m;
+   }
+
+   public static cvl b(@Nullable cue $$0) {
+      return new cvl(a($$0));
+   }
+
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 }

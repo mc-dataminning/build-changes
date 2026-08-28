@@ -1,76 +1,49 @@
-import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 
-public abstract class ehm {
-   public static final Codec<ehm> c = lt.V.r().dispatch(ehm::a, ehn::a);
-   private static final int a = 32;
-   private static final int b = 24;
-   public static final int d = 80;
-   protected final int e;
-   protected final int f;
-   protected final int g;
+public class ehm extends ehk {
+   public static final MapCodec<ehm> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  dua.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  Codec.list(dua.a).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  Codec.list(dua.a).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, ehm::new)
+   );
+   private final float g;
+   private final float h;
+   private final dua i;
+   private final List<dua> j;
+   private final List<dua> k;
 
-   protected static <P extends ehm> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
-         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
-         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
-      );
+   public ehm(long $$0, epe.a $$1, float $$2, float $$3, float $$4, dua $$5, List<dua> $$6, List<dua> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
-   public ehm(int $$0, int $$1, int $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Override
+   protected ehi<?> a() {
+      return ehi.c;
    }
 
-   protected abstract ehn<?> a();
-
-   public abstract List<efu.a> a(ddc var1, BiConsumer<jd, dtc> var2, ayw var3, int var4, jd var5, efe var6);
-
-   public int a(ayw $$0) {
-      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
-   }
-
-   private static boolean c(ddc $$0, jd $$1) {
-      return $$0.a($$1, $$0x -> ece.b($$0x) && !$$0x.a(dga.i) && !$$0x.a(dga.fl));
-   }
-
-   protected static void a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, jd $$3, efe $$4) {
-      if ($$4.k || !c($$0, $$3)) {
-         $$1.accept($$3, $$4.c.a($$2, $$3));
-      }
-   }
-
-   protected boolean b(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, jd $$3, efe $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
-   }
-
-   protected boolean a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, jd $$3, efe $$4, Function<dtc, dtc> $$5) {
-      if (this.a($$0, $$3)) {
-         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
-         return true;
+   @Override
+   public dua a(azk $$0, je $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ad.a(this.j, $$0);
       } else {
-         return false;
+         return $$0.i() < this.h ? ad.a(this.k, $$0) : this.i;
       }
-   }
-
-   protected void a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, jd.a $$3, efe $$4) {
-      if (this.b($$0, $$3)) {
-         this.b($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   protected boolean a(ddc $$0, jd $$1) {
-      return edq.c($$0, $$1);
-   }
-
-   public boolean b(ddc $$0, jd $$1) {
-      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(awe.u));
    }
 }

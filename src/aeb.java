@@ -1,83 +1,60 @@
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class aeb implements zg<abu> {
-   public static final yx<vw, aeb> a = zg.a(aeb::a, aeb::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final int e;
-   private final ff.a f;
-   private final ff.a g;
-   private final boolean h;
+public record aeb(UUID b, int c, @Nullable xp d, xw.a e, @Nullable xd f, xh g, wz.a h) implements zk<abz> {
+   public static final zb<wo, aeb> a = zk.a(aeb::a, aeb::new);
 
-   public aeb(ff.a $$0, double $$1, double $$2, double $$3) {
-      this.f = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = 0;
-      this.h = false;
-      this.g = null;
+   private aeb(wo $$0) {
+      this($$0.n(), $$0.l(), $$0.c(xp::a), new xw.a($$0), wa.a($$0, xf.d), xh.a($$0), wz.a.a.decode($$0));
    }
 
-   public aeb(ff.a $$0, bsr $$1, ff.a $$2) {
-      this.f = $$0;
-      this.e = $$1.an();
-      this.g = $$2;
-      exc $$3 = $$2.a($$1);
-      this.b = $$3.c;
-      this.c = $$3.d;
-      this.d = $$3.e;
-      this.h = true;
-   }
-
-   private aeb(vw $$0) {
-      this.f = $$0.b(ff.a.class);
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.h = $$0.readBoolean();
-      if (this.h) {
-         this.e = $$0.l();
-         this.g = $$0.b(ff.a.class);
-      } else {
-         this.e = 0;
-         this.g = null;
-      }
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.f);
+   private void a(wo $$0) {
       $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.h);
-      if (this.h) {
-         $$0.c(this.e);
-         $$0.a(this.g);
-      }
+      $$0.c(this.c);
+      $$0.a(this.d, xp::a);
+      this.e.a($$0);
+      wa.a($$0, this.f, xf.d);
+      xh.a($$0, this.g);
+      wz.a.a.encode($$0, this.h);
    }
 
    @Override
-   public zi<aeb> a() {
-      return agg.ag;
+   public zm<aeb> a() {
+      return ago.ab;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public ff.a b() {
-      return this.f;
+   @Override
+   public boolean c() {
+      return true;
+   }
+
+   public int e() {
+      return this.c;
    }
 
    @Nullable
-   public exc a(dcw $$0) {
-      if (this.h) {
-         bsr $$1 = $$0.a(this.e);
-         return $$1 == null ? new exc(this.b, this.c, this.d) : this.g.a($$1);
-      } else {
-         return new exc(this.b, this.c, this.d);
-      }
+   public xp f() {
+      return this.d;
+   }
+
+   public xw.a g() {
+      return this.e;
+   }
+
+   @Nullable
+   public xd h() {
+      return this.f;
+   }
+
+   public xh i() {
+      return this.g;
+   }
+
+   public wz.a j() {
+      return this.h;
    }
 }

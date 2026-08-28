@@ -1,359 +1,117 @@
-import com.google.common.primitives.Doubles;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.DoubleStream;
-import javax.annotation.Nullable;
 
-public class eab {
-   private static final double f = 0.1;
-   protected static final int a = 4;
-   protected static final int b = 8;
-   protected static final int c = 2;
-   private static final double g = 1.0;
-   private static final double h = -1.0;
-   private static final int i = 2;
-   private static final int j = jx.a(16);
-   private static final int k = j - 1;
-   private static final int l = j;
-   private static final int m = 2 * k + 1;
-   private static final int n = 2 * l + 1;
-   private static final int o = m + n;
-   private final dcy p;
-   private static final List<dfy> q = List.of(dga.l, dga.L, dga.i, dga.b, dga.k, dga.I, dga.K, dga.fl, dga.dP, dga.iA, dga.j);
-   protected static final double d = Double.MAX_VALUE;
-   private boolean r;
-   private final double[] s;
-   private final List<List<jm<ddw>>> t;
-   private final transient double[][] u;
-   private static final Codec<double[]> v = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
-   public static final Codec<eab> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("min_section").forGetter($$0x -> $$0x.p.ao()),
-                  Codec.INT.fieldOf("max_section").forGetter($$0x -> $$0x.p.ap()),
-                  v.lenientOptionalFieldOf("heights")
-                     .forGetter($$0x -> DoubleStream.of($$0x.s).anyMatch($$0xx -> $$0xx != Double.MAX_VALUE) ? Optional.of($$0x.s) : Optional.empty())
-               )
-               .apply($$0, eab::new)
-      )
-      .comapFlatMap(eab::a, Function.identity());
+public record eab(eae j, dua k, dua l, eac m, ean.o n, List<dfc.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<eab> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eae.a.fieldOf("noise").forGetter(eab::f),
+               dua.a.fieldOf("default_block").forGetter(eab::g),
+               dua.a.fieldOf("default_fluid").forGetter(eab::h),
+               eac.a.fieldOf("noise_router").forGetter(eab::i),
+               ean.o.b.fieldOf("surface_rule").forGetter(eab::j),
+               dfc.d.a.listOf().fieldOf("spawn_target").forGetter(eab::k),
+               Codec.INT.fieldOf("sea_level").forGetter(eab::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(eab::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(eab::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(eab::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(eab::n)
+            )
+            .apply($$0, eab::new)
+   );
+   public static final Codec<jn<eab>> b = akx.a(lv.aO, a);
+   public static final ala<eab> c = ala.a(lv.aO, alb.b("overworld"));
+   public static final ala<eab> d = ala.a(lv.aO, alb.b("large_biomes"));
+   public static final ala<eab> e = ala.a(lv.aO, alb.b("amplified"));
+   public static final ala<eab> f = ala.a(lv.aO, alb.b("nether"));
+   public static final ala<eab> g = ala.a(lv.aO, alb.b("end"));
+   public static final ala<eab> h = ala.a(lv.aO, alb.b("caves"));
+   public static final ala<eab> i = ala.a(lv.aO, alb.b("floating_islands"));
 
-   private static DataResult<eab> a(eab $$0) {
-      return $$0.s.length != o ? DataResult.error(() -> "heights has to be of length " + o) : DataResult.success($$0);
+   @Deprecated
+   public boolean a() {
+      return this.q;
    }
 
-   private eab(int $$0, int $$1, Optional<double[]> $$2) {
-      this.s = $$2.orElse(ad.a(new double[o], $$0x -> Arrays.fill($$0x, Double.MAX_VALUE)));
-      this.u = new double[o][];
-      ObjectArrayList<List<jm<ddw>>> $$3 = new ObjectArrayList(o);
-      $$3.size(o);
-      this.t = $$3;
-      int $$4 = kf.c($$0);
-      int $$5 = kf.c($$1) - $$4;
-      this.p = dcy.e($$4, $$5);
+   public boolean b() {
+      return this.r;
    }
 
-   @Nullable
-   public static eab a(arb $$0, int $$1, int $$2) {
-      duy $$3 = $$0.a($$1, $$2);
-      eab $$4 = $$3.t();
-      if ($$4 != null && !$$3.k().d(dvz.f)) {
-         $$4.a($$3, a($$0, $$1, $$2, false));
-         return $$4;
-      } else {
-         return null;
-      }
+   public boolean c() {
+      return this.s;
    }
 
-   public static Set<jj> a(dds $$0, int $$1, int $$2, boolean $$3) {
-      Set<jj> $$4 = EnumSet.noneOf(jj.class);
-
-      for (jj $$5 : jj.values()) {
-         int $$6 = $$1 + $$5.b();
-         int $$7 = $$2 + $$5.c();
-         if ($$0.a($$6, $$7).s() == $$3) {
-            $$4.add($$5);
-         }
-      }
-
-      return $$4;
+   public eav.a d() {
+      return this.t ? eav.a.a : eav.a.b;
    }
 
-   private void a(duy $$0, Set<jj> $$1) {
-      if (!this.r) {
-         if ($$1.contains(jj.a) || $$1.contains(jj.g) || $$1.contains(jj.h)) {
-            this.a(a(0, 0), $$0, 0, 0);
-         }
-
-         if ($$1.contains(jj.a)) {
-            for (int $$2 = 1; $$2 < j; $$2++) {
-               this.a(a($$2, 0), $$0, 4 * $$2, 0);
-            }
-         }
-
-         if ($$1.contains(jj.g)) {
-            for (int $$3 = 1; $$3 < j; $$3++) {
-               this.a(a(0, $$3), $$0, 0, 4 * $$3);
-            }
-         }
-
-         if ($$1.contains(jj.c)) {
-            for (int $$4 = 1; $$4 < j; $$4++) {
-               this.a(b(l, $$4), $$0, 15, 4 * $$4);
-            }
-         }
-
-         if ($$1.contains(jj.e)) {
-            for (int $$5 = 0; $$5 < j; $$5++) {
-               this.a(b($$5, l), $$0, 4 * $$5, 15);
-            }
-         }
-
-         if ($$1.contains(jj.c) && $$1.contains(jj.b)) {
-            this.a(b(l, 0), $$0, 15, 0);
-         }
-
-         if ($$1.contains(jj.c) && $$1.contains(jj.e) && $$1.contains(jj.d)) {
-            this.a(b(l, l), $$0, 15, 15);
-         }
-
-         this.r = true;
-      }
+   public static void a(qt<eab> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
    }
 
-   private void a(int $$0, duy $$1, int $$2, int $$3) {
-      if (this.s[$$0] == Double.MAX_VALUE) {
-         this.s[$$0] = (double)this.a($$1, $$2, $$3);
-      }
-
-      this.u[$$0] = this.a($$1, $$2, $$3, ayo.a(this.s[$$0]));
-      this.t.set($$0, this.b($$1, $$2, $$3));
+   private static eab b(qt<?> $$0) {
+      return new eab(eae.d, dgx.fz.o(), dgx.a.o(), ead.a($$0.a(lv.aJ)), rg.c(), List.of(), 0, true, false, false, true);
    }
 
-   private int a(duy $$0, int $$1, int $$2) {
-      int $$3;
-      if ($$0.b(dyy.a.a)) {
-         $$3 = Math.min($$0.a(dyy.a.a, $$1, $$2) + 1, this.p.am());
-      } else {
-         $$3 = this.p.am();
-      }
-
-      int $$5 = this.p.I_();
-      jd.a $$6 = new jd.a($$1, $$3, $$2);
-
-      while ($$6.v() > $$5) {
-         $$6.c(ji.a);
-         if (q.contains($$0.a_($$6).b())) {
-            return $$6.v();
-         }
-      }
-
-      return $$5;
+   private static eab c(qt<?> $$0) {
+      return new eab(eae.c, dgx.dV.o(), dgx.H.o(), ead.a($$0.a(lv.aJ), $$0.a(lv.aP)), rg.b(), List.of(), 32, false, false, false, true);
    }
 
-   private static double a(duy $$0, jd.a $$1) {
-      return a($$0, (jd)$$1.c(ji.a)) ? 1.0 : -1.0;
+   private static eab a(qt<?> $$0, boolean $$1, boolean $$2) {
+      return new eab(eae.b, dgx.b.o(), dgx.G.o(), ead.a($$0.a(lv.aJ), $$0.a(lv.aP), $$2, $$1), rg.a(), new dfj().a(), 63, false, true, true, false);
    }
 
-   private static double b(duy $$0, jd.a $$1) {
-      double $$2 = 0.0;
-
-      for (int $$3 = 0; $$3 < 7; $$3++) {
-         $$2 += a($$0, $$1);
-      }
-
-      return $$2;
+   private static eab d(qt<?> $$0) {
+      return new eab(eae.e, dgx.b.o(), dgx.G.o(), ead.b($$0.a(lv.aJ), $$0.a(lv.aP)), rg.a(false, true, true), List.of(), 32, false, false, false, true);
    }
 
-   private double[] a(duy $$0, int $$1, int $$2, int $$3) {
-      double[] $$4 = new double[this.b()];
-      Arrays.fill($$4, -1.0);
-      jd.a $$5 = new jd.a($$1, this.p.am(), $$2);
-      double $$6 = b($$0, $$5);
-
-      for (int $$7 = $$4.length - 2; $$7 >= 0; $$7--) {
-         double $$8 = a($$0, $$5);
-         double $$9 = b($$0, $$5);
-         $$4[$$7] = ($$6 + $$8 + $$9) / 15.0;
-         $$6 = $$9;
-      }
-
-      int $$10 = this.a(ayo.a($$3, 8));
-      if ($$10 >= 0 && $$10 < $$4.length - 1) {
-         double $$11 = ((double)$$3 + 0.5) % 8.0 / 8.0;
-         double $$12 = (1.0 - $$11) / $$11;
-         double $$13 = Math.max($$12, 1.0) * 0.25;
-         $$4[$$10 + 1] = -$$12 / $$13;
-         $$4[$$10] = 1.0 / $$13;
-      }
-
-      return $$4;
+   private static eab e(qt<?> $$0) {
+      return new eab(eae.f, dgx.b.o(), dgx.G.o(), ead.c($$0.a(lv.aJ), $$0.a(lv.aP)), rg.a(false, false, false), List.of(), -64, false, false, false, true);
    }
 
-   private List<jm<ddw>> b(duy $$0, int $$1, int $$2) {
-      ObjectArrayList<jm<ddw>> $$3 = new ObjectArrayList(this.c());
-      $$3.size(this.c());
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         int $$5 = $$4 + jx.a(this.p.I_());
-         $$3.set($$4, $$0.getNoiseBiome(jx.a($$1), $$5, jx.a($$2)));
-      }
-
-      return $$3;
+   public static eab e() {
+      return new eab(eae.b, dgx.b.o(), dgx.a.o(), ead.a(), rg.d(), List.of(), 63, true, false, false, false);
    }
 
-   private static boolean a(duy $$0, jd $$1) {
-      dtc $$2 = $$0.a_($$1);
-      if ($$2.i()) {
-         return false;
-      } else if ($$2.a(awe.P)) {
-         return false;
-      } else if ($$2.a(awe.u)) {
-         return false;
-      } else {
-         return $$2.a(dga.eT) || $$2.a(dga.eU) ? false : !$$2.k($$0, $$1).c();
-      }
+   public eae f() {
+      return this.j;
    }
 
-   protected double a(int $$0, int $$1, int $$2) {
-      if ($$0 == l || $$2 == l) {
-         return this.s[b($$0, $$2)];
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.s[a($$0, $$2)];
-      }
+   public dua g() {
+      return this.k;
    }
 
-   private double a(@Nullable double[] $$0, int $$1) {
-      if ($$0 == null) {
-         return Double.MAX_VALUE;
-      } else {
-         int $$2 = this.a($$1);
-         return $$2 >= 0 && $$2 < $$0.length ? $$0[$$2] * 0.1 : Double.MAX_VALUE;
-      }
+   public dua h() {
+      return this.l;
    }
 
-   protected double b(int $$0, int $$1, int $$2) {
-      if ($$1 == this.e()) {
-         return 0.1;
-      } else if ($$0 == l || $$2 == l) {
-         return this.a(this.u[b($$0, $$2)], $$1);
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.a(this.u[a($$0, $$2)], $$1);
-      }
+   public eac i() {
+      return this.m;
    }
 
-   protected void a(int $$0, int $$1, int $$2, eab.a $$3) {
-      if ($$1 >= jx.a(this.p.I_()) && $$1 < jx.a(this.p.am())) {
-         int $$4 = $$1 - jx.a(this.p.I_());
-
-         for (int $$5 = 0; $$5 < this.t.size(); $$5++) {
-            if (this.t.get($$5) != null) {
-               jm<ddw> $$6 = this.t.get($$5).get($$4);
-               if ($$6 != null) {
-                  $$3.consume($$0 + b($$5), $$2 + c($$5), $$6);
-               }
-            }
-         }
-      }
+   public ean.o j() {
+      return this.n;
    }
 
-   protected void a(int $$0, int $$1, eab.c $$2) {
-      for (int $$3 = 0; $$3 < this.s.length; $$3++) {
-         double $$4 = this.s[$$3];
-         if ($$4 != Double.MAX_VALUE) {
-            $$2.consume($$0 + b($$3), $$1 + c($$3), $$4);
-         }
-      }
+   public List<dfc.d> k() {
+      return this.o;
    }
 
-   protected void a(int $$0, int $$1, int $$2, int $$3, eab.b $$4) {
-      int $$5 = this.d();
-      int $$6 = Math.max(0, $$2 - $$5);
-      int $$7 = Math.min(this.b(), $$3 - $$5);
-
-      for (int $$8 = 0; $$8 < this.u.length; $$8++) {
-         double[] $$9 = this.u[$$8];
-         if ($$9 != null) {
-            int $$10 = $$0 + b($$8);
-            int $$11 = $$1 + c($$8);
-
-            for (int $$12 = $$6; $$12 < $$7; $$12++) {
-               $$4.consume($$10, $$12 + $$5, $$11, $$9[$$12] * 0.1);
-            }
-         }
-      }
-   }
-
-   private int b() {
-      return this.p.an() * 2;
-   }
-
-   private int c() {
-      return jx.d(this.p.an());
-   }
-
-   private int d() {
-      return this.e() + 1;
-   }
-
-   private int e() {
-      return this.p.ao() * 2;
-   }
-
-   private int a(int $$0) {
-      return $$0 - this.d();
-   }
-
-   private static int a(int $$0, int $$1) {
-      return k - $$0 + $$1;
-   }
-
-   private static int b(int $$0, int $$1) {
-      return m + $$0 + l - $$1;
-   }
-
-   private static int b(int $$0) {
-      if ($$0 < m) {
-         return d(k - $$0);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d(l - $$1);
-      }
-   }
-
-   private static int c(int $$0) {
-      if ($$0 < m) {
-         return d($$0 - k);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d($$1 - l);
-      }
-   }
-
-   private static int d(int $$0) {
-      return $$0 & ~($$0 >> 31);
-   }
-
-   public dcy a() {
+   public int l() {
       return this.p;
    }
 
-   protected interface a {
-      void consume(int var1, int var2, jm<ddw> var3);
+   public boolean m() {
+      return this.r;
    }
 
-   protected interface b {
-      void consume(int var1, int var2, int var3, double var4);
-   }
-
-   protected interface c {
-      void consume(int var1, int var2, double var3);
+   public boolean n() {
+      return this.t;
    }
 }

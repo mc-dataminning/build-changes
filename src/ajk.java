@@ -1,12 +1,23 @@
-public class ajk {
-   public static final zi<ajj> a = a("pong_response");
-   public static final zi<ajm> b = b("ping_request");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zg<aji>> zi<T> a(String $$0) {
-      return new zi<>(zh.b, akr.b($$0));
+public class ajk implements zk<ajg> {
+   public static final ajk a = new ajk();
+   public static final zb<ByteBuf, ajk> b = zb.a(a);
+
+   private ajk() {
    }
 
-   private static <T extends zg<ajl>> zi<T> b(String $$0) {
-      return new zi<>(zh.a, akr.b($$0));
+   @Override
+   public zm<ajk> a() {
+      return aje.i;
+   }
+
+   public void a(ajg $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

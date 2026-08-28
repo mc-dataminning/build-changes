@@ -1,16 +1,23 @@
-public record aao() implements aaj {
-   public static final yx<vw, aao> a = aaj.a(aao::a, aao::new);
-   public static final aaj.b<aao> b = aaj.a("debug/game_test_clear");
-
-   private aao(vw $$0) {
-      this();
-   }
-
-   private void a(vw $$0) {
+public record aao(alb a) implements aan {
+   public static <T extends wa> zb<T, aao> a(alb $$0, int $$1) {
+      return aan.a(($$0x, $$1x) -> {
+      }, $$2 -> {
+         int $$3 = $$2.readableBytes();
+         if ($$3 >= 0 && $$3 <= $$1) {
+            $$2.k($$3);
+            return new aao($$0);
+         } else {
+            throw new IllegalArgumentException("Payload may not be larger than " + $$1 + " bytes");
+         }
+      });
    }
 
    @Override
-   public aaj.b<aao> a() {
-      return b;
+   public aan.b<aao> a() {
+      return new aan.b<>(this.a);
+   }
+
+   public alb b() {
+      return this.a;
    }
 }

@@ -1,77 +1,160 @@
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import java.util.BitSet;
-import java.util.Objects;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
 public class xh {
-   private final xj[] a;
-   private int b;
-   private int c;
-   @Nullable
-   private xl d;
+   public static final Codec<xh> a = azy.a(xh.a::values).dispatch(xh::c, xh.a::a);
+   public static final xh b = new xh(new BitSet(0), xh.a.b);
+   public static final xh c = new xh(new BitSet(0), xh.a.a);
+   public static final ya d = ya.a.a(n.i).a(new xj(xj.a.a, xd.c("chat.filtered")));
+   static final MapCodec<xh> e = MapCodec.unit(c);
+   static final MapCodec<xh> f = MapCodec.unit(b);
+   static final MapCodec<xh> g = ayl.u.xmap(xh::new, xh::d).fieldOf("value");
+   private static final char h = '#';
+   private final BitSet i;
+   private final xh.a j;
+
+   private xh(BitSet $$0, xh.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
+   }
+
+   private xh(BitSet $$0) {
+      this.i = $$0;
+      this.j = xh.a.c;
+   }
 
    public xh(int $$0) {
-      this.a = new xj[$$0];
+      this(new BitSet($$0), xh.a.c);
    }
 
-   public boolean a(xl $$0, boolean $$1) {
-      if (Objects.equals($$0, this.d)) {
-         return false;
-      } else {
-         this.d = $$0;
-         this.a($$1 ? new xj($$0, true) : null);
+   private xh.a c() {
+      return this.j;
+   }
+
+   private BitSet d() {
+      return this.i;
+   }
+
+   public static xh a(wa $$0) {
+      xh.a $$1 = $$0.b(xh.a.class);
+
+      return switch ($$1) {
+         case a -> c;
+         case b -> b;
+         case c -> new xh($$0.w(), xh.a.c);
+      };
+   }
+
+   public static void a(wa $$0, xh $$1) {
+      $$0.a($$1.j);
+      if ($$1.j == xh.a.c) {
+         $$0.a($$1.i);
+      }
+   }
+
+   public void a(int $$0) {
+      this.i.set($$0);
+   }
+
+   @Nullable
+   public String a(String $$0) {
+      return switch (this.j) {
+         case a -> $$0;
+         case b -> null;
+         case c -> {
+            char[] $$1 = $$0.toCharArray();
+
+            for (int $$2 = 0; $$2 < $$1.length && $$2 < this.i.length(); $$2++) {
+               if (this.i.get($$2)) {
+                  $$1[$$2] = '#';
+               }
+            }
+
+            yield new String($$1);
+         }
+      };
+   }
+
+   @Nullable
+   public xd b(String $$0) {
+      return switch (this.j) {
+         case a -> xd.b($$0);
+         case b -> null;
+         case c -> {
+            xr $$1 = xd.i();
+            int $$2 = 0;
+            boolean $$3 = this.i.get(0);
+
+            while (true) {
+               int $$4 = $$3 ? this.i.nextClearBit($$2) : this.i.nextSetBit($$2);
+               $$4 = $$4 < 0 ? $$0.length() : $$4;
+               if ($$4 == $$2) {
+                  yield $$1;
+               }
+
+               if ($$3) {
+                  $$1.b(xd.b(StringUtils.repeat('#', $$4 - $$2)).c(d));
+               } else {
+                  $$1.f($$0.substring($$2, $$4));
+               }
+
+               $$3 = !$$3;
+               $$2 = $$4;
+            }
+         }
+      };
+   }
+
+   public boolean a() {
+      return this.j == xh.a.a;
+   }
+
+   public boolean b() {
+      return this.j == xh.a.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         xh $$1 = (xh)$$0;
+         return this.i.equals($$1.i) && this.j == $$1.j;
+      } else {
+         return false;
       }
    }
 
-   private void a(@Nullable xj $$0) {
-      int $$1 = this.b;
-      this.b = ($$1 + 1) % this.a.length;
-      this.c++;
-      this.a[$$1] = $$0;
+   @Override
+   public int hashCode() {
+      int $$0 = this.i.hashCode();
+      return 31 * $$0 + this.j.hashCode();
    }
 
-   public void a(xl $$0) {
-      for (int $$1 = 0; $$1 < this.a.length; $$1++) {
-         xj $$2 = this.a[$$1];
-         if ($$2 != null && $$2.c() && $$0.equals($$2.b())) {
-            this.a[$$1] = null;
-            break;
-         }
-      }
-   }
+   static enum a implements azy {
+      a("pass_through", () -> xh.e),
+      b("fully_filtered", () -> xh.f),
+      c("partially_filtered", () -> xh.g);
 
-   public int a() {
-      int $$0 = this.c;
-      this.c = 0;
-      return $$0;
-   }
+      private final String d;
+      private final Supplier<MapCodec<xh>> e;
 
-   public xh.a b() {
-      int $$0 = this.a();
-      BitSet $$1 = new BitSet(this.a.length);
-      ObjectList<xl> $$2 = new ObjectArrayList(this.a.length);
-
-      for (int $$3 = 0; $$3 < this.a.length; $$3++) {
-         int $$4 = (this.b + $$3) % this.a.length;
-         xj $$5 = this.a[$$4];
-         if ($$5 != null) {
-            $$1.set($$3, true);
-            $$2.add($$5.b());
-            this.a[$$4] = $$5.a();
-         }
+      private a(final String $$0, final Supplier<MapCodec<xh>> $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      xg $$6 = new xg($$2);
-      xg.b $$7 = new xg.b($$0, $$1);
-      return new xh.a($$6, $$7);
-   }
+      @Override
+      public String c() {
+         return this.d;
+      }
 
-   public int c() {
-      return this.c;
-   }
-
-   public static record a(xg a, xg.b b) {
+      private MapCodec<xh> a() {
+         return this.e.get();
+      }
    }
 }

@@ -18,22 +18,22 @@ public record bt(
             .apply($$0, bt::new)
    );
 
-   public boolean a(bsr $$0) {
-      if (this.b.isPresent() && $$0.aF() != this.b.get()) {
+   public boolean a(btj $$0) {
+      if (this.b.isPresent() && $$0.aH() != this.b.get()) {
          return false;
-      } else if (this.c.isPresent() && $$0.bR() != this.c.get()) {
+      } else if (this.c.isPresent() && $$0.bV() != this.c.get()) {
          return false;
-      } else if (this.d.isPresent() && $$0.cb() != this.d.get()) {
+      } else if (this.d.isPresent() && $$0.cf() != this.d.get()) {
          return false;
-      } else if (this.e.isPresent() && $$0.cc() != this.e.get()) {
+      } else if (this.e.isPresent() && $$0.cg() != this.e.get()) {
          return false;
-      } else if (this.f.isPresent() && $$0.cd() != this.f.get()) {
+      } else if (this.f.isPresent() && $$0.ch() != this.f.get()) {
          return false;
       } else {
          if (this.g.isPresent()) {
             boolean var10000;
             label53: {
-               if ($$0 instanceof btn $$1 && ($$1.fA() || $$1 instanceof cmx $$2 && $$2.fZ().b)) {
+               if ($$0 instanceof buf $$1 && ($$1.fE() || $$1 instanceof cnp $$2 && $$2.gd().b)) {
                   var10000 = true;
                   break label53;
                }
@@ -47,7 +47,7 @@ public record bt(
             }
          }
 
-         if (this.h.isPresent() && $$0 instanceof btn $$4 && $$4.o_() != this.h.get()) {
+         if (this.h.isPresent() && $$0 instanceof buf $$4 && $$4.o_() != this.h.get()) {
             return false;
          }
 

@@ -1,47 +1,27 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.serialization.JsonOps;
+import com.mojang.brigadier.CommandDispatcher;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
-public class mq implements ma {
-   private final mc d;
-   private final CompletableFuture<jo.a> e;
+public class mq implements mb {
+   private final md d;
+   private final CompletableFuture<jp.a> e;
 
-   public mq(mc $$0, CompletableFuture<jo.a> $$1) {
+   public mq(md $$0, CompletableFuture<jp.a> $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(ly $$0) {
-      Path $$1 = this.d.a(mc.b.c).resolve("items.json");
-      return this.e
-         .thenCompose(
-            $$2 -> {
-               JsonObject $$3 = new JsonObject();
-               akp<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
-               $$2.b(lu.K)
-                  .b()
-                  .forEach(
-                     $$2x -> {
-                        JsonObject $$3x = new JsonObject();
-                        $$3x.add(
-                           "components",
-                           (JsonElement)km.b
-                              .encodeStart($$4, ((cul)$$2x.a()).p())
-                              .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
-                        );
-                        $$3.add($$2x.g(), $$3x);
-                     }
-                  );
-               return ma.a($$0, $$3, $$1);
-            }
-         );
+   public CompletableFuture<?> a(lz $$0) {
+      Path $$1 = this.d.a(md.b.c).resolve("commands.json");
+      return this.e.thenCompose($$2 -> {
+         CommandDispatcher<et> $$3 = new eu(eu.a.a, eu.a($$2)).a();
+         return mb.a($$0, ir.a($$3, $$3.getRoot()), $$1);
+      });
    }
 
    @Override
    public final String a() {
-      return "Item List";
+      return "Command Syntax";
    }
 }

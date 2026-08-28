@@ -1,61 +1,43 @@
-public class fxf<T extends btp & ckh> extends fvx<T> {
-   public fxf(fyk $$0) {
-      super($$0);
+public class fxf extends fxa<gtf> {
+   private final gab a;
+   private final gab[] b = new gab[9];
+
+   public fxf(gab $$0) {
+      this.a = $$0;
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static fyq e() {
-      fys $$0 = fvx.a(fyo.a, 0.0F);
-      fyt $$1 = $$0.a();
-      a($$1);
-      return fyq.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   protected static void a(fyt $$0) {
-      $$0.a("right_arm", fyp.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fym.a(-5.0F, 2.0F, 0.0F));
-      $$0.a("left_arm", fyp.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), fym.a(5.0F, 2.0F, 0.0F));
-      $$0.a("right_leg", fyp.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fym.a(-2.0F, 12.0F, 0.0F));
-      $$0.a("left_leg", fyp.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), fym.a(2.0F, 12.0F, 0.0F));
-   }
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      $$1.a("body", gag.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gad.a(0.0F, 17.6F, 0.0F));
+      azk $$2 = azk.a(1660L);
 
-   public void a(T $$0, float $$1, float $$2, float $$3) {
-      this.s = fvx.a.a;
-      this.r = fvx.a.a;
-      cuq $$4 = $$0.b(bqq.a);
-      if ($$4.a(cut.ov) && $$0.gb()) {
-         if ($$0.fq() == btg.b) {
-            this.s = fvx.a.d;
-         } else {
-            this.r = fvx.a.d;
-         }
+      for (int $$3 = 0; $$3 < 9; $$3++) {
+         float $$4 = (((float)($$3 % 3) - (float)($$3 / 3 % 2) * 0.5F + 0.25F) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         float $$5 = ((float)($$3 / 3) / 2.0F * 2.0F - 1.0F) * 5.0F;
+         int $$6 = $$2.a(7) + 8;
+         $$1.a(a($$3), gag.c().a(0, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, (float)$$6, 2.0F), gad.a($$4, 24.6F, $$5));
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      return gah.a($$0, 64, 32).a(gak.scaling(4.5F));
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      cuq $$6 = $$0.eT();
-      if ($$0.gb() && ($$6.e() || !$$6.a(cut.ov))) {
-         float $$7 = ayo.a(this.c * (float) Math.PI);
-         float $$8 = ayo.a((1.0F - (1.0F - this.c) * (1.0F - this.c)) * (float) Math.PI);
-         this.n.g = 0.0F;
-         this.o.g = 0.0F;
-         this.n.f = -(0.1F - $$7 * 0.6F);
-         this.o.f = 0.1F - $$7 * 0.6F;
-         this.n.e = (float) (-Math.PI / 2);
-         this.o.e = (float) (-Math.PI / 2);
-         this.n.e -= $$7 * 1.2F - $$8 * 0.4F;
-         this.o.e -= $$7 * 1.2F - $$8 * 0.4F;
-         fuh.a(this.n, this.o, $$3);
+   public void a(gtf $$0) {
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         this.b[$$1].e = 0.2F * azc.a($$0.p * 0.3F + (float)$$1) + 0.4F;
       }
    }
 
    @Override
-   public void a(btg $$0, fbi $$1) {
-      float $$2 = $$0 == btg.b ? 1.0F : -1.0F;
-      fyk $$3 = this.a($$0);
-      $$3.b += $$2;
-      $$3.a($$1);
-      $$3.b -= $$2;
+   public gab a() {
+      return this.a;
    }
 }

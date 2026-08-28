@@ -1,11 +1,11 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.DoubleArgumentType;
 
-public class iu implements io<FloatArgumentType, iu.a> {
-   public void a(iu.a $$0, vw $$1) {
-      boolean $$2 = $$0.b != -Float.MAX_VALUE;
-      boolean $$3 = $$0.c != Float.MAX_VALUE;
-      $$1.k(iq.a($$2, $$3));
+public class iu implements ip<DoubleArgumentType, iu.a> {
+   public void a(iu.a $$0, wa $$1) {
+      boolean $$2 = $$0.b != -Double.MAX_VALUE;
+      boolean $$3 = $$0.c != Double.MAX_VALUE;
+      $$1.l(ir.a($$2, $$3));
       if ($$2) {
          $$1.a($$0.b);
       }
@@ -15,42 +15,42 @@ public class iu implements io<FloatArgumentType, iu.a> {
       }
    }
 
-   public iu.a a(vw $$0) {
+   public iu.a a(wa $$0) {
       byte $$1 = $$0.readByte();
-      float $$2 = iq.a($$1) ? $$0.readFloat() : -Float.MAX_VALUE;
-      float $$3 = iq.b($$1) ? $$0.readFloat() : Float.MAX_VALUE;
+      double $$2 = ir.a($$1) ? $$0.readDouble() : -Double.MAX_VALUE;
+      double $$3 = ir.b($$1) ? $$0.readDouble() : Double.MAX_VALUE;
       return new iu.a($$2, $$3);
    }
 
    public void a(iu.a $$0, JsonObject $$1) {
-      if ($$0.b != -Float.MAX_VALUE) {
+      if ($$0.b != -Double.MAX_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Float.MAX_VALUE) {
+      if ($$0.c != Double.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public iu.a a(FloatArgumentType $$0) {
+   public iu.a a(DoubleArgumentType $$0) {
       return new iu.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements io.a<FloatArgumentType> {
-      final float b;
-      final float c;
+   public final class a implements ip.a<DoubleArgumentType> {
+      final double b;
+      final double c;
 
-      a(final float $$1, final float $$2) {
+      a(final double $$1, final double $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public FloatArgumentType a(ep $$0) {
-         return FloatArgumentType.floatArg(this.b, this.c);
+      public DoubleArgumentType a(ep $$0) {
+         return DoubleArgumentType.doubleArg(this.b, this.c);
       }
 
       @Override
-      public io<FloatArgumentType, ?> a() {
+      public ip<DoubleArgumentType, ?> a() {
          return iu.this;
       }
    }

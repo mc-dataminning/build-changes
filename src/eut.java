@@ -1,59 +1,30 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Set;
 
-public record eut(akq<evc> b) implements evc {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<eut> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akq.a(lu.be).fieldOf("name").forGetter(eut::c)).apply($$0, eut::new));
+public class eut extends eug {
+   static final MapCodec<eut> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(exb.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, eut::new));
+   private final exa b;
 
-   @Override
-   public evd b() {
-      return eve.p;
+   private eut(List<ewe> $$0, exa $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public void a(erx $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else if ($$0.a(this.b)) {
-         $$0.b("Condition " + this.b.a() + " is recursively called");
-      } else {
-         evc.super.a($$0);
-         $$0.a()
-            .a(lu.be, this.b)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
-      }
+   public Set<evm<?>> a() {
+      return this.b.a();
    }
 
-   public boolean a(err $$0) {
-      evc $$1 = $$0.a().a(lu.be, this.b).map(jm.c::a).orElse(null);
-      if ($$1 == null) {
-         c.warn("Tried using unknown condition table called {}", this.b.a());
-         return false;
-      } else {
-         err.c<?> $$2 = err.a($$1);
-         if ($$0.b($$2)) {
-            boolean var4;
-            try {
-               var4 = $$1.test($$0);
-            } finally {
-               $$0.c($$2);
-            }
-
-            return var4;
-         } else {
-            c.warn("Detected infinite loop in loot tables");
-            return false;
-         }
-      }
+   @Override
+   public eui<eut> b() {
+      return euj.R;
    }
 
-   public static evc.a a(akq<evc> $$0) {
-      return () -> new eut($$0);
-   }
-
-   public akq<evc> c() {
-      return this.b;
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      $$0.b(kr.o, new cyb(this.b.a($$1)));
+      return $$0;
    }
 }

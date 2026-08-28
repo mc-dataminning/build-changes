@@ -1,28 +1,59 @@
-import com.mojang.serialization.Codec;
+import javax.annotation.concurrent.Immutable;
 
-public enum bri implements azk {
-   a("hurt", avp.ul),
-   b("thorns", avp.zx),
-   c("drowning", avp.um),
-   d("burning", avp.uo),
-   e("poking", avp.up),
-   f("freezing", avp.un);
+@Immutable
+public class bri {
+   private static final float a = -72000.0F;
+   private static final float b = 1440000.0F;
+   private static final float c = 3600000.0F;
+   private final brh d;
+   private final float e;
 
-   public static final Codec<bri> g = azk.a(bri::values);
-   private final String h;
-   private final avo i;
-
-   private bri(final String $$0, final avo $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public bri(brh $$0, long $$1, long $$2, float $$3) {
+      this.d = $$0;
+      this.e = this.a($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   public String c() {
-      return this.h;
+   public brh a() {
+      return this.d;
    }
 
-   public avo a() {
-      return this.i;
+   public float b() {
+      return this.e;
+   }
+
+   public boolean c() {
+      return this.e >= (float)brh.d.ordinal();
+   }
+
+   public boolean a(float $$0) {
+      return this.e > $$0;
+   }
+
+   public float d() {
+      if (this.e < 2.0F) {
+         return 0.0F;
+      } else {
+         return this.e > 4.0F ? 1.0F : (this.e - 2.0F) / 2.0F;
+      }
+   }
+
+   private float a(brh $$0, long $$1, long $$2, float $$3) {
+      if ($$0 == brh.a) {
+         return 0.0F;
+      } else {
+         boolean $$4 = $$0 == brh.d;
+         float $$5 = 0.75F;
+         float $$6 = azc.a(((float)$$1 + -72000.0F) / 1440000.0F, 0.0F, 1.0F) * 0.25F;
+         $$5 += $$6;
+         float $$7 = 0.0F;
+         $$7 += azc.a((float)$$2 / 3600000.0F, 0.0F, 1.0F) * ($$4 ? 1.0F : 0.75F);
+         $$7 += azc.a($$3 * 0.25F, 0.0F, $$6);
+         if ($$0 == brh.b) {
+            $$7 *= 0.5F;
+         }
+
+         $$5 += $$7;
+         return (float)$$0.a() * $$5;
+      }
    }
 }

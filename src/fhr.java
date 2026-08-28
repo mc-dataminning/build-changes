@@ -1,164 +1,120 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
-import java.util.Arrays;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
 
-public class fhr {
-   private static final int a = 256;
-   private final ThreadLocal<fhr.b> b = ThreadLocal.withInitial(fhr.b::new);
-   private final Long2ObjectLinkedOpenHashMap<fhr.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
-   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
-   private final ToIntFunction<jd> e;
+public interface fhr {
+   fhr a = new fhr.a(0.0F);
+   fhr b = new fhr.a(1.0F);
 
-   public fhr(ToIntFunction<jd> $$0) {
-      this.e = $$0;
-   }
+   float a();
 
-   public int a(jd $$0) {
-      int $$1 = kf.a($$0.u());
-      int $$2 = kf.a($$0.w());
-      fhr.b $$3 = this.b.get();
-      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
-         $$3.a = $$1;
-         $$3.b = $$2;
-         $$3.c = this.b($$1, $$2);
+   float a(boolean var1);
+
+   float b();
+
+   public static class a implements fhr {
+      private final float c;
+
+      a(float $$0) {
+         this.c = $$0;
       }
 
-      int[] $$4 = $$3.c.a($$0.v());
-      int $$5 = $$0.u() & 15;
-      int $$6 = $$0.w() & 15;
-      int $$7 = $$6 << 4 | $$5;
-      int $$8 = $$4[$$7];
-      if ($$8 != -1) {
-         return $$8;
-      } else {
-         int $$9 = this.e.applyAsInt($$0);
-         $$4[$$7] = $$9;
-         return $$9;
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         return this.c;
+      }
+
+      @Override
+      public float b() {
+         return this.c;
       }
    }
 
-   public void a(int $$0, int $$1) {
-      try {
-         this.d.writeLock().lock();
+   public static class b implements fhr {
+      private float c;
+      private float d;
+      private float e;
+      private float f;
+      private long g;
+      private long h;
+      private final float i;
+      private final FloatUnaryOperator j;
+      private boolean k;
+      private boolean l;
 
-         for (int $$2 = -1; $$2 <= 1; $$2++) {
-            for (int $$3 = -1; $$3 <= 1; $$3++) {
-               long $$4 = dcd.c($$0 + $$2, $$1 + $$3);
-               fhr.a $$5 = (fhr.a)this.c.remove($$4);
-               if ($$5 != null) {
-                  $$5.b();
-               }
-            }
+      public b(float $$0, long $$1, FloatUnaryOperator $$2) {
+         this.i = 1000.0F / $$0;
+         this.h = this.g = $$1;
+         this.j = $$2;
+      }
+
+      public int a(long $$0, boolean $$1) {
+         this.b($$0);
+         return $$1 ? this.a($$0) : 0;
+      }
+
+      private int a(long $$0) {
+         this.c = (float)($$0 - this.g) / this.j.apply(this.i);
+         this.g = $$0;
+         this.d = this.d + this.c;
+         int $$1 = (int)this.d;
+         this.d -= (float)$$1;
+         return $$1;
+      }
+
+      private void b(long $$0) {
+         this.e = (float)($$0 - this.h) / this.i;
+         this.h = $$0;
+      }
+
+      public void b(boolean $$0) {
+         if ($$0) {
+            this.c();
+         } else {
+            this.d();
          }
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   public void a() {
-      try {
-         this.d.writeLock().lock();
-         this.c.values().forEach(fhr.a::b);
-         this.c.clear();
-      } finally {
-         this.d.writeLock().unlock();
-      }
-   }
-
-   private fhr.a b(int $$0, int $$1) {
-      long $$2 = dcd.c($$0, $$1);
-      this.d.readLock().lock();
-
-      try {
-         fhr.a $$3 = (fhr.a)this.c.get($$2);
-         if ($$3 != null) {
-            return $$3;
-         }
-      } finally {
-         this.d.readLock().unlock();
       }
 
-      this.d.writeLock().lock();
-
-      fhr.a $$5;
-      try {
-         fhr.a $$4 = (fhr.a)this.c.get($$2);
-         if ($$4 == null) {
-            $$5 = new fhr.a();
-            if (this.c.size() >= 256) {
-               fhr.a $$6 = (fhr.a)this.c.removeFirst();
-               if ($$6 != null) {
-                  $$6.b();
-               }
-            }
-
-            this.c.put($$2, $$5);
-            return $$5;
+      private void c() {
+         if (!this.k) {
+            this.f = this.d;
          }
 
-         $$5 = $$4;
-      } finally {
-         this.d.writeLock().unlock();
+         this.k = true;
       }
 
-      return $$5;
-   }
-
-   static class a {
-      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
-      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
-      private static final int c = ayo.h(16);
-      private volatile boolean d;
-
-      public int[] a(int $$0) {
-         this.b.readLock().lock();
-
-         try {
-            int[] $$1 = (int[])this.a.get($$0);
-            if ($$1 != null) {
-               return $$1;
-            }
-         } finally {
-            this.b.readLock().unlock();
+      private void d() {
+         if (this.k) {
+            this.d = this.f;
          }
 
-         this.b.writeLock().lock();
+         this.k = false;
+      }
 
-         int[] var12;
-         try {
-            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
-         } finally {
-            this.b.writeLock().unlock();
+      public void c(boolean $$0) {
+         this.l = $$0;
+      }
+
+      @Override
+      public float a() {
+         return this.c;
+      }
+
+      @Override
+      public float a(boolean $$0) {
+         if (!$$0 && this.l) {
+            return 1.0F;
+         } else {
+            return this.k ? this.f : this.d;
          }
-
-         return var12;
       }
 
-      private int[] c() {
-         int[] $$0 = new int[c];
-         Arrays.fill($$0, -1);
-         return $$0;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public void b() {
-         this.d = true;
-      }
-   }
-
-   static class b {
-      public int a = Integer.MIN_VALUE;
-      public int b = Integer.MIN_VALUE;
-      @Nullable
-      fhr.a c;
-
-      private b() {
+      @Override
+      public float b() {
+         return this.e > 7.0F ? 0.5F : this.e;
       }
    }
 }

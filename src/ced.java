@@ -1,35 +1,18 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 
-public class ced extends cdr<cmb> {
+public class ced extends ceo<buf> {
    @Override
-   public Set<ccs<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(ccs.B)));
-   }
-
-   protected void a(aqu $$0, cmb $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.am() == bsx.by)
-         .or(() -> a($$1, $$0xx -> $$0xx.am() != bsx.by))
-         .ifPresentOrElse($$1x -> $$1.dT().a(ccs.B, $$1x), () -> $$1.dT().b(ccs.B));
-   }
-
-   private static Optional<btn> a(cmb $$0, Predicate<btn> $$1) {
-      return $$0.dT().c(ccs.g).stream().flatMap(Collection::stream).filter($$0::c).filter($$1).findFirst();
+   public Set<cdi<?>> a() {
+      return ImmutableSet.of(cdi.X);
    }
 
    @Override
-   protected int b() {
-      return 24;
-   }
-
-   @Override
-   protected int c() {
-      return 24;
+   protected void a(arg $$0, buf $$1) {
+      if ($$1.bi()) {
+         $$1.dX().a(cdi.X, bah.a);
+      } else {
+         $$1.dX().b(cdi.X);
+      }
    }
 }

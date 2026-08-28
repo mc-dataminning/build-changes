@@ -1,23 +1,20 @@
-public enum dun implements azk {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum dun implements azy {
+   a("head"),
+   b("foot");
 
-   private final String e;
-   private final boolean f;
+   private final String c;
 
-   private dun(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private dun(final String $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public boolean a() {
-      return this.f;
+      return this.c;
    }
 }

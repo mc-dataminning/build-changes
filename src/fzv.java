@@ -1,181 +1,220 @@
-import com.google.common.collect.Lists;
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
-import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelException;
-import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.socket.nio.NioSocketChannel;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+public class fzv extends fxa<gss> {
+   private static final int a = 5;
+   private static final int b = 12;
+   private final gab c;
+   private final gab d;
+   private final gab[] e = new gab[5];
+   private final gab[] f = new gab[12];
+   private final gab g;
+   private final gab i;
+   private final gab j;
+   private final gab k;
+   private final gab l;
+   private final gab m;
+   private final gab n;
+   private final gab o;
+   private final gab p;
+   private final gab q;
+   private final gab r;
+   private final gab s;
+   private final gab t;
+   private final gab u;
+   private final gab w;
+   private final gab x;
+   private final gab y;
+   private final gab z;
 
-public class fzv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wz b = wz.c("multiplayer.status.cannot_connect").b(-65536);
-   private final List<vt> c = Collections.synchronizedList(Lists.newArrayList());
+   private static String a(int $$0) {
+      return "neck" + $$0;
+   }
 
-   public void a(final fzt $$0, final Runnable $$1, final Runnable $$2) throws UnknownHostException {
-      final gax $$3 = gax.a($$0.b);
-      Optional<InetSocketAddress> $$4 = gaz.a.a($$3).map(gaw::d);
-      if ($$4.isEmpty()) {
-         this.a(fnc.b, $$0);
-      } else {
-         final InetSocketAddress $$5 = $$4.get();
-         final vt $$6 = vt.a($$5, false, null);
-         this.c.add($$6);
-         $$0.d = wz.c("multiplayer.status.pinging");
-         $$0.i = Collections.emptyList();
-         ajo $$7 = new ajo() {
-            private boolean h;
-            private boolean i;
-            private long j;
+   private static String b(int $$0) {
+      return "tail" + $$0;
+   }
 
-            @Override
-            public void a(ajp $$0x) {
-               if (this.i) {
-                  $$6.a(wz.c("multiplayer.status.unrequested"));
-               } else {
-                  this.i = true;
-                  ajq $$1 = $$0.b();
-                  $$0.d = $$1.a();
-                  $$1.c().ifPresentOrElse($$1xxx -> {
-                     $$0.h = wz.b($$1xxx.b());
-                     $$0.g = $$1xxx.c();
-                  }, () -> {
-                     $$0.h = wz.c("multiplayer.status.old");
-                     $$0.g = 0;
-                  });
-                  $$1.b().ifPresentOrElse($$1xxx -> {
-                     $$0.c = fzv.a($$1xxx.b(), $$1xxx.a());
-                     $$0.e = $$1xxx;
-                     if (!$$1xxx.c().isEmpty()) {
-                        List<wz> $$2xx = new ArrayList<>($$1xxx.c().size());
+   public fzv(gab $$0) {
+      this.c = $$0;
+      this.d = $$0.b("head");
+      this.g = this.d.b("jaw");
 
-                        for (GameProfile $$3xx : $$1xxx.c()) {
-                           $$2xx.add(wz.b($$3xx.getName()));
-                        }
+      for (int $$1 = 0; $$1 < this.e.length; $$1++) {
+         this.e[$$1] = $$0.b(a($$1));
+      }
 
-                        if ($$1xxx.c().size() < $$1xxx.b()) {
-                           $$2xx.add(wz.a("multiplayer.status.and_more", $$1xxx.b() - $$1xxx.c().size()));
-                        }
+      for (int $$2 = 0; $$2 < this.f.length; $$2++) {
+         this.f[$$2] = $$0.b(b($$2));
+      }
 
-                        $$0.i = $$2xx;
-                     } else {
-                        $$0.i = List.of();
-                     }
-                  }, () -> $$0.c = wz.c("multiplayer.status.unknown").a(n.i));
-                  $$1.d().ifPresent($$2xx -> {
-                     if (!Arrays.equals($$2xx.a(), $$0.c())) {
-                        $$0.a(fzt.b($$2xx.a()));
-                        $$1.run();
-                     }
-                  });
-                  this.j = ad.c();
-                  $$6.a(new ajm(this.j));
-                  this.h = true;
-               }
-            }
+      this.i = $$0.b("body");
+      this.j = this.i.b("left_wing");
+      this.k = this.j.b("left_wing_tip");
+      this.l = this.i.b("left_front_leg");
+      this.m = this.l.b("left_front_leg_tip");
+      this.n = this.m.b("left_front_foot");
+      this.o = this.i.b("left_hind_leg");
+      this.p = this.o.b("left_hind_leg_tip");
+      this.q = this.p.b("left_hind_foot");
+      this.r = this.i.b("right_wing");
+      this.s = this.r.b("right_wing_tip");
+      this.t = this.i.b("right_front_leg");
+      this.u = this.t.b("right_front_leg_tip");
+      this.w = this.u.b("right_front_foot");
+      this.x = this.i.b("right_hind_leg");
+      this.y = this.x.b("right_hind_leg_tip");
+      this.z = this.y.b("right_hind_foot");
+   }
 
-            @Override
-            public void a(ajj $$0x) {
-               long $$1 = this.j;
-               long $$2 = ad.c();
-               $$0.f = $$2 - $$1;
-               $$6.a(wz.c("multiplayer.status.finished"));
-               $$2.run();
-            }
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      float $$2 = -16.0F;
+      gal $$3 = $$1.a(
+         "head",
+         gag.c()
+            .a("upperlip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upperhead", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a()
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a()
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         gad.a(0.0F, 20.0F, -62.0F)
+      );
+      $$3.a("jaw", gag.c().a("jaw", -6.0F, 0.0F, -16.0F, 12, 4, 16, 176, 65), gad.a(0.0F, 4.0F, -8.0F));
+      gag $$4 = gag.c().a("box", -5.0F, -5.0F, -5.0F, 10, 10, 10, 192, 104).a("scale", -1.0F, -9.0F, -3.0F, 2, 4, 6, 48, 0);
 
-            @Override
-            public void a(vv $$0x) {
-               if (!this.h) {
-                  fzv.this.a($$0.a(), $$0);
-                  fzv.this.a($$5, $$3, $$0);
-               }
-            }
+      for (int $$5 = 0; $$5 < 5; $$5++) {
+         $$1.a(a($$5), $$4, gad.a(0.0F, 20.0F, -12.0F - (float)$$5 * 10.0F));
+      }
 
-            @Override
-            public boolean c() {
-               return $$6.i();
-            }
-         };
+      for (int $$6 = 0; $$6 < 12; $$6++) {
+         $$1.a(b($$6), $$4, gad.a(0.0F, 10.0F, 60.0F + (float)$$6 * 10.0F));
+      }
 
-         try {
-            $$6.a($$3.a(), $$3.b(), $$7);
-            $$6.a(ajs.a);
-         } catch (Throwable var10) {
-            a.error("Failed to ping server {}", $$3, var10);
-         }
+      gal $$7 = $$1.a(
+         "body",
+         gag.c()
+            .a("body", -12.0F, 1.0F, -16.0F, 24, 24, 64, 0, 0)
+            .a("scale", -1.0F, -5.0F, -10.0F, 2, 6, 12, 220, 53)
+            .a("scale", -1.0F, -5.0F, 10.0F, 2, 6, 12, 220, 53)
+            .a("scale", -1.0F, -5.0F, 30.0F, 2, 6, 12, 220, 53),
+         gad.a(0.0F, 3.0F, 8.0F)
+      );
+      gal $$8 = $$7.a(
+         "left_wing", gag.c().a().a("bone", 0.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), gad.a(12.0F, 2.0F, -6.0F)
+      );
+      $$8.a(
+         "left_wing_tip",
+         gag.c().a().a("bone", 0.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", 0.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
+         gad.a(56.0F, 0.0F, 0.0F)
+      );
+      gal $$9 = $$7.a("left_front_leg", gag.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), gad.a(12.0F, 17.0F, -6.0F, 1.3F, 0.0F, 0.0F));
+      gal $$10 = $$9.a("left_front_leg_tip", gag.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), gad.a(0.0F, 20.0F, -1.0F, -0.5F, 0.0F, 0.0F));
+      $$10.a("left_front_foot", gag.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), gad.a(0.0F, 23.0F, 0.0F, 0.75F, 0.0F, 0.0F));
+      gal $$11 = $$7.a("left_hind_leg", gag.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), gad.a(16.0F, 13.0F, 34.0F, 1.0F, 0.0F, 0.0F));
+      gal $$12 = $$11.a("left_hind_leg_tip", gag.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), gad.a(0.0F, 32.0F, -4.0F, 0.5F, 0.0F, 0.0F));
+      $$12.a("left_hind_foot", gag.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), gad.a(0.0F, 31.0F, 4.0F, 0.75F, 0.0F, 0.0F));
+      gal $$13 = $$7.a(
+         "right_wing", gag.c().a("bone", -56.0F, -4.0F, -4.0F, 56, 8, 8, 112, 88).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 88), gad.a(-12.0F, 2.0F, -6.0F)
+      );
+      $$13.a(
+         "right_wing_tip",
+         gag.c().a("bone", -56.0F, -2.0F, -2.0F, 56, 4, 4, 112, 136).a("skin", -56.0F, 0.0F, 2.0F, 56, 0, 56, -56, 144),
+         gad.a(-56.0F, 0.0F, 0.0F)
+      );
+      gal $$14 = $$7.a("right_front_leg", gag.c().a("main", -4.0F, -4.0F, -4.0F, 8, 24, 8, 112, 104), gad.a(-12.0F, 17.0F, -6.0F, 1.3F, 0.0F, 0.0F));
+      gal $$15 = $$14.a("right_front_leg_tip", gag.c().a("main", -3.0F, -1.0F, -3.0F, 6, 24, 6, 226, 138), gad.a(0.0F, 20.0F, -1.0F, -0.5F, 0.0F, 0.0F));
+      $$15.a("right_front_foot", gag.c().a("main", -4.0F, 0.0F, -12.0F, 8, 4, 16, 144, 104), gad.a(0.0F, 23.0F, 0.0F, 0.75F, 0.0F, 0.0F));
+      gal $$16 = $$7.a("right_hind_leg", gag.c().a("main", -8.0F, -4.0F, -8.0F, 16, 32, 16, 0, 0), gad.a(-16.0F, 13.0F, 34.0F, 1.0F, 0.0F, 0.0F));
+      gal $$17 = $$16.a("right_hind_leg_tip", gag.c().a("main", -6.0F, -2.0F, 0.0F, 12, 32, 12, 196, 0), gad.a(0.0F, 32.0F, -4.0F, 0.5F, 0.0F, 0.0F));
+      $$17.a("right_hind_foot", gag.c().a("main", -9.0F, 0.0F, -20.0F, 18, 6, 24, 112, 0), gad.a(0.0F, 31.0F, 4.0F, 0.75F, 0.0F, 0.0F));
+      return gah.a($$0, 256, 256);
+   }
+
+   public void a(gss $$0) {
+      this.a().e().forEach(gab::c);
+      float $$1 = $$0.a * (float) (Math.PI * 2);
+      this.g.e = (azc.a($$1) + 1.0F) * 0.2F;
+      float $$2 = azc.a($$1 - 1.0F) + 1.0F;
+      $$2 = ($$2 * $$2 + $$2 * 2.0F) * 0.05F;
+      this.c.c = ($$2 - 2.0F) * 16.0F;
+      this.c.d = -48.0F;
+      this.c.e = $$2 * 2.0F * (float) (Math.PI / 180.0);
+      float $$3 = this.e[0].b;
+      float $$4 = this.e[0].c;
+      float $$5 = this.e[0].d;
+      float $$6 = 1.5F;
+      ciq.a $$7 = $$0.a(6);
+      float $$8 = azc.g($$0.a(5).b() - $$0.a(10).b());
+      float $$9 = azc.g($$0.a(5).b() + $$8 / 2.0F);
+
+      for (int $$10 = 0; $$10 < 5; $$10++) {
+         gab $$11 = this.e[$$10];
+         ciq.a $$12 = $$0.a(5 - $$10);
+         float $$13 = azc.b((float)$$10 * 0.45F + $$1) * 0.15F;
+         $$11.f = azc.g($$12.b() - $$7.b()) * (float) (Math.PI / 180.0) * 1.5F;
+         $$11.e = $$13 + $$0.a($$10, $$7, $$12) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
+         $$11.g = -azc.g($$12.b() - $$9) * (float) (Math.PI / 180.0) * 1.5F;
+         $$11.c = $$4;
+         $$11.d = $$5;
+         $$11.b = $$3;
+         $$3 -= azc.a($$11.f) * azc.b($$11.e) * 10.0F;
+         $$4 += azc.a($$11.e) * 10.0F;
+         $$5 -= azc.b($$11.f) * azc.b($$11.e) * 10.0F;
+      }
+
+      this.d.c = $$4;
+      this.d.d = $$5;
+      this.d.b = $$3;
+      ciq.a $$14 = $$0.a(0);
+      this.d.f = azc.g($$14.b() - $$7.b()) * (float) (Math.PI / 180.0);
+      this.d.e = azc.g($$0.a(6, $$7, $$14)) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
+      this.d.g = -azc.g($$14.b() - $$9) * (float) (Math.PI / 180.0);
+      this.i.g = -$$8 * 1.5F * (float) (Math.PI / 180.0);
+      this.j.e = 0.125F - azc.b($$1) * 0.2F;
+      this.j.f = -0.25F;
+      this.j.g = -(azc.a($$1) + 0.125F) * 0.8F;
+      this.k.g = (azc.a($$1 + 2.0F) + 0.5F) * 0.75F;
+      this.r.e = this.j.e;
+      this.r.f = -this.j.f;
+      this.r.g = -this.j.g;
+      this.s.g = -this.k.g;
+      this.a($$2, this.l, this.m, this.n, this.o, this.p, this.q);
+      this.a($$2, this.t, this.u, this.w, this.x, this.y, this.z);
+      float $$15 = 0.0F;
+      $$4 = this.f[0].c;
+      $$5 = this.f[0].d;
+      $$3 = this.f[0].b;
+      $$7 = $$0.a(11);
+
+      for (int $$16 = 0; $$16 < 12; $$16++) {
+         ciq.a $$17 = $$0.a(12 + $$16);
+         $$15 += azc.a((float)$$16 * 0.45F + $$1) * 0.05F;
+         gab $$18 = this.f[$$16];
+         $$18.f = (azc.g($$17.b() - $$7.b()) * 1.5F + 180.0F) * (float) (Math.PI / 180.0);
+         $$18.e = $$15 + (float)($$17.a() - $$7.a()) * (float) (Math.PI / 180.0) * 1.5F * 5.0F;
+         $$18.g = azc.g($$17.b() - $$9) * (float) (Math.PI / 180.0) * 1.5F;
+         $$18.c = $$4;
+         $$18.d = $$5;
+         $$18.b = $$3;
+         $$4 += azc.a($$18.e) * 10.0F;
+         $$5 -= azc.b($$18.f) * azc.b($$18.e) * 10.0F;
+         $$3 -= azc.a($$18.f) * azc.b($$18.e) * 10.0F;
       }
    }
 
-   void a(wz $$0, fzt $$1) {
-      a.error("Can't ping {}: {}", $$1.b, $$0.getString());
-      $$1.d = b;
-      $$1.c = wy.a;
+   private void a(float $$0, gab $$1, gab $$2, gab $$3, gab $$4, gab $$5, gab $$6) {
+      $$4.e = 1.0F + $$0 * 0.1F;
+      $$5.e = 0.5F + $$0 * 0.1F;
+      $$6.e = 0.75F + $$0 * 0.1F;
+      $$1.e = 1.3F + $$0 * 0.1F;
+      $$2.e = -0.5F - $$0 * 0.1F;
+      $$3.e = 0.75F + $$0 * 0.1F;
    }
 
-   void a(InetSocketAddress $$0, final gax $$1, final fzt $$2) {
-      ((Bootstrap)((Bootstrap)((Bootstrap)new Bootstrap().group((EventLoopGroup)vt.e.get())).handler(new ChannelInitializer<Channel>() {
-         protected void initChannel(Channel $$0) {
-            try {
-               $$0.config().setOption(ChannelOption.TCP_NODELAY, true);
-            } catch (ChannelException var3) {
-            }
-
-            $$0.pipeline().addLast(new ChannelHandler[]{new fzm($$1, ($$1xx, $$2xx, $$3, $$4, $$5) -> {
-               $$2.a(fzt.b.d);
-               $$2.h = wz.b($$2xx);
-               $$2.d = wz.b($$3);
-               $$2.c = fzv.a($$4, $$5);
-               $$2.e = new ajq.b($$5, $$4, List.of());
-            })});
-         }
-      })).channel(NioSocketChannel.class)).connect($$0.getAddress(), $$0.getPort());
-   }
-
-   public static wz a(int $$0, int $$1) {
-      wz $$2 = wz.b(Integer.toString($$0)).a(n.h);
-      wz $$3 = wz.b(Integer.toString($$1)).a(n.h);
-      return wz.a("multiplayer.status.player_count", $$2, $$3).a(n.i);
-   }
-
-   public void a() {
-      synchronized (this.c) {
-         Iterator<vt> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            vt $$1 = $$0.next();
-            if ($$1.i()) {
-               $$1.b();
-            } else {
-               $$0.remove();
-               $$1.n();
-            }
-         }
-      }
-   }
-
-   public void b() {
-      synchronized (this.c) {
-         Iterator<vt> $$0 = this.c.iterator();
-
-         while ($$0.hasNext()) {
-            vt $$1 = $$0.next();
-            if ($$1.i()) {
-               $$0.remove();
-               $$1.a(wz.c("multiplayer.status.cancelled"));
-            }
-         }
-      }
+   @Override
+   public gab a() {
+      return this.c;
    }
 }

@@ -1,61 +1,113 @@
 import java.util.function.Consumer;
 
-public class ml implements me {
+public class ml implements mf {
    @Override
-   public void a(jo.a $$0, Consumer<ag> $$1) {
-      ag $$2 = af.a.a()
+   public void a(jp.a $$0, Consumer<ag> $$1) {
+      jo<cvg> $$2 = $$0.b(lv.K);
+      ag $$3 = af.a.a()
          .a(
-            dga.fz,
-            wz.c("advancements.end.root.title"),
-            wz.c("advancements.end.root.description"),
-            akr.b("textures/gui/advancements/backgrounds/end.png"),
+            dgx.i,
+            xd.c("advancements.story.root.title"),
+            xd.c("advancements.story.root.description"),
+            alb.b("textures/gui/advancements/backgrounds/stone.png"),
             am.a,
             false,
             false,
             false
          )
-         .a("entered_end", az.a.a(dcw.j))
-         .a($$1, "end/root");
-      ag $$3 = af.a.a()
-         .a($$2)
-         .a(dga.gO, wz.c("advancements.end.kill_dragon.title"), wz.c("advancements.end.kill_dragon.description"), null, am.a, true, true, false)
-         .a("killed_dragon", da.a.a(bv.a.a().a(bsx.F)))
-         .a($$1, "end/kill_dragon");
+         .a("crafting_table", cg.a.a(dgx.cA))
+         .a($$1, "story/root");
       ag $$4 = af.a.a()
          .a($$3)
-         .a(cut.sf, wz.c("advancements.end.enter_end_gateway.title"), wz.c("advancements.end.enter_end_gateway.description"), null, am.a, true, true, false)
-         .a("entered_end_gateway", br.a.a(dga.kF))
-         .a($$1, "end/enter_end_gateway");
-      af.a.a()
-         .a($$3)
-         .a(cut.vf, wz.c("advancements.end.respawn_dragon.title"), wz.c("advancements.end.respawn_dragon.description"), null, am.c, true, true, false)
-         .a("summoned_dragon", ec.a.a(bv.a.a().a(bsx.F)))
-         .a($$1, "end/respawn_dragon");
+         .a(cvo.oP, xd.c("advancements.story.mine_stone.title"), xd.c("advancements.story.mine_stone.description"), null, am.a, true, true, false)
+         .a("get_stone", cg.a.a(cs.a.a().a($$2, axb.aY)))
+         .a($$1, "story/mine_stone");
       ag $$5 = af.a.a()
          .a($$4)
-         .a(dga.kw, wz.c("advancements.end.find_end_city.title"), wz.c("advancements.end.find_end_city.description"), null, am.a, true, true, false)
-         .a("in_city", dq.a.a(df.a.b($$0.b(lu.aR).b(ejl.q))))
-         .a($$1, "end/find_end_city");
-      af.a.a()
-         .a($$3)
-         .a(cut.vn, wz.c("advancements.end.dragon_breath.title"), wz.c("advancements.end.dragon_breath.description"), null, am.c, true, true, false)
-         .a("dragon_breath", cg.a.a(cut.vn))
-         .a($$1, "end/dragon_breath");
-      af.a.a()
+         .a(cvo.oU, xd.c("advancements.story.upgrade_tools.title"), xd.c("advancements.story.upgrade_tools.description"), null, am.a, true, true, false)
+         .a("stone_pickaxe", cg.a.a(cvo.oU))
+         .a($$1, "story/upgrade_tools");
+      ag $$6 = af.a.a()
          .a($$5)
-         .a(cut.vu, wz.c("advancements.end.levitate.title"), wz.c("advancements.end.levitate.description"), null, am.b, true, true, false)
-         .a(ak.a.a(50))
-         .a("levitated", db.a.a(bm.b(dh.c.b(50.0))))
-         .a($$1, "end/levitate");
+         .a(cvo.oG, xd.c("advancements.story.smelt_iron.title"), xd.c("advancements.story.smelt_iron.description"), null, am.a, true, true, false)
+         .a("iron", cg.a.a(cvo.oG))
+         .a($$1, "story/smelt_iron");
+      ag $$7 = af.a.a()
+         .a($$6)
+         .a(cvo.pe, xd.c("advancements.story.iron_tools.title"), xd.c("advancements.story.iron_tools.description"), null, am.a, true, true, false)
+         .a("iron_pickaxe", cg.a.a(cvo.pe))
+         .a($$1, "story/iron_tools");
+      ag $$8 = af.a.a()
+         .a($$7)
+         .a(cvo.oA, xd.c("advancements.story.mine_diamond.title"), xd.c("advancements.story.mine_diamond.description"), null, am.a, true, true, false)
+         .a("diamond", cg.a.a(cvo.oA))
+         .a($$1, "story/mine_diamond");
+      ag $$9 = af.a.a()
+         .a($$6)
+         .a(cvo.qB, xd.c("advancements.story.lava_bucket.title"), xd.c("advancements.story.lava_bucket.description"), null, am.a, true, true, false)
+         .a("lava_bucket", cg.a.a(cvo.qB))
+         .a($$1, "story/lava_bucket");
+      ag $$10 = af.a.a()
+         .a($$6)
+         .a(cvo.pI, xd.c("advancements.story.obtain_armor.title"), xd.c("advancements.story.obtain_armor.description"), null, am.a, true, true, false)
+         .a(aj.a.b)
+         .a("iron_helmet", cg.a.a(cvo.pH))
+         .a("iron_chestplate", cg.a.a(cvo.pI))
+         .a("iron_leggings", cg.a.a(cvo.pJ))
+         .a("iron_boots", cg.a.a(cvo.pK))
+         .a($$1, "story/obtain_armor");
       af.a.a()
-         .a($$5)
-         .a(cut.nT, wz.c("advancements.end.elytra.title"), wz.c("advancements.end.elytra.description"), null, am.c, true, true, false)
-         .a("elytra", cg.a.a(cut.nT))
-         .a($$1, "end/elytra");
+         .a($$8)
+         .a(cvo.uy, xd.c("advancements.story.enchant_item.title"), xd.c("advancements.story.enchant_item.description"), null, am.a, true, true, false)
+         .a("enchanted_item", bp.a.b())
+         .a($$1, "story/enchant_item");
+      ag $$11 = af.a.a()
+         .a($$9)
+         .a(dgx.co, xd.c("advancements.story.form_obsidian.title"), xd.c("advancements.story.form_obsidian.description"), null, am.a, true, true, false)
+         .a("obsidian", cg.a.a(dgx.co))
+         .a($$1, "story/form_obsidian");
       af.a.a()
-         .a($$3)
-         .a(dga.fA, wz.c("advancements.end.dragon_egg.title"), wz.c("advancements.end.dragon_egg.description"), null, am.c, true, true, false)
-         .a("dragon_egg", cg.a.a(dga.fA))
-         .a($$1, "end/dragon_egg");
+         .a($$10)
+         .a(cvo.vu, xd.c("advancements.story.deflect_arrow.title"), xd.c("advancements.story.deflect_arrow.description"), null, am.a, true, true, false)
+         .a("deflected_projectile", bu.a.a(bj.a.a().a(bk.a.a().a(ed.a(awu.j))).a(true)))
+         .a($$1, "story/deflect_arrow");
+      af.a.a()
+         .a($$8)
+         .a(cvo.pM, xd.c("advancements.story.shiny_gear.title"), xd.c("advancements.story.shiny_gear.description"), null, am.a, true, true, false)
+         .a(aj.a.b)
+         .a("diamond_helmet", cg.a.a(cvo.pL))
+         .a("diamond_chestplate", cg.a.a(cvo.pM))
+         .a("diamond_leggings", cg.a.a(cvo.pN))
+         .a("diamond_boots", cg.a.a(cvo.pO))
+         .a($$1, "story/shiny_gear");
+      ag $$12 = af.a.a()
+         .a($$11)
+         .a(cvo.ot, xd.c("advancements.story.enter_the_nether.title"), xd.c("advancements.story.enter_the_nether.description"), null, am.a, true, true, false)
+         .a("entered_nether", az.a.a(dds.i))
+         .a($$1, "story/enter_the_nether");
+      af.a.a()
+         .a($$12)
+         .a(
+            cvo.qb,
+            xd.c("advancements.story.cure_zombie_villager.title"),
+            xd.c("advancements.story.cure_zombie_villager.description"),
+            null,
+            am.c,
+            true,
+            true,
+            false
+         )
+         .a("cured_zombie", bi.a.b())
+         .a($$1, "story/cure_zombie_villager");
+      ag $$13 = af.a.a()
+         .a($$12)
+         .a(cvo.st, xd.c("advancements.story.follow_ender_eye.title"), xd.c("advancements.story.follow_ender_eye.description"), null, am.a, true, true, false)
+         .a("in_stronghold", dq.a.a(df.a.b($$0.b(lv.aR).b(eki.k))))
+         .a($$1, "story/follow_ender_eye");
+      af.a.a()
+         .a($$13)
+         .a(dgx.fz, xd.c("advancements.story.enter_the_end.title"), xd.c("advancements.story.enter_the_end.description"), null, am.a, true, true, false)
+         .a("entered_end", az.a.a(dds.j))
+         .a($$1, "story/enter_the_end");
    }
 }

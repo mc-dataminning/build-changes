@@ -1,68 +1,72 @@
-import javax.annotation.Nullable;
+public class crl extends cqq {
+   private static final int m = 9;
+   private static final int n = 9;
+   private static final int o = 36;
+   private static final int p = 36;
+   private static final int q = 45;
+   private final brd r;
 
-public class crl implements bqk, crk {
-   private final jv<cuq> b = jv.a(1, cuq.l);
-   @Nullable
-   private czb<?> c;
-
-   @Override
-   public int b() {
-      return 1;
+   public crl(int $$0, cno $$1) {
+      this($$0, $$1, new brr(9));
    }
 
-   @Override
-   public boolean c() {
-      for (cuq $$0 : this.b) {
-         if (!$$0.e()) {
-            return false;
+   public crl(int $$0, cno $$1, brd $$2) {
+      super(crz.g, $$0);
+      a($$2, 9);
+      this.r = $$2;
+      $$2.d_($$1.k);
+      this.d($$2, 62, 17);
+      this.c($$1, 8, 84);
+   }
+
+   protected void d(brd $$0, int $$1, int $$2) {
+      for (int $$3 = 0; $$3 < 3; $$3++) {
+         for (int $$4 = 0; $$4 < 3; $$4++) {
+            int $$5 = $$4 + $$3 * 3;
+            this.a(new csn($$0, $$5, $$1 + $$4 * 18, $$2 + $$3 * 18));
          }
       }
-
-      return true;
    }
 
    @Override
-   public cuq a(int $$0) {
-      return this.b.get(0);
+   public boolean b(cnp $$0) {
+      return this.r.a($$0);
    }
 
    @Override
-   public cuq a(int $$0, int $$1) {
-      return bql.a(this.b, 0);
+   public cvl b(cnp $$0, int $$1) {
+      cvl $$2 = cvl.k;
+      csn $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvl $$4 = $$3.g();
+         $$2 = $$4.u();
+         if ($$1 < 9) {
+            if (!this.a($$4, 9, 45, true)) {
+               return cvl.k;
+            }
+         } else if (!this.a($$4, 0, 9, false)) {
+            return cvl.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cvl.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.J() == $$2.J()) {
+            return cvl.k;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
    }
 
    @Override
-   public cuq b(int $$0) {
-      return bql.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cuq $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cmx $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable czb<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public czb<?> d() {
-      return this.c;
+   public void a(cnp $$0) {
+      super.a($$0);
+      this.r.c($$0);
    }
 }

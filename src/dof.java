@@ -1,73 +1,124 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dof extends dig implements dkp {
-   public static final MapCodec<dof> c = b(dof::new);
-   public static final dua<dty> d = dig.b;
-   protected static final float e = 6.0F;
-   protected static final exv f = dfy.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
+public class dof extends dgv {
+   public static final MapCodec<dof> a = b(dof::new);
+   public static final int b = 8;
+   public static final dva c = duq.aF;
+   protected static final eyx[] d = new eyx[]{
+      eyu.a(),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
+   public static final int e = 5;
 
    @Override
    public MapCodec<dof> a() {
-      return c;
+      return a;
    }
 
-   public dof(dtb.d $$0) {
+   protected dof(dtz.d $$0) {
       super($$0);
+      this.l(this.E.b().b(c, Integer.valueOf(1)));
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return f;
+   protected boolean a(dua $$0, eqq $$1) {
+      switch ($$1) {
+         case a:
+            return $$0.c(c) < 5;
+         case b:
+            return false;
+         case c:
+            return false;
+         default:
+            return false;
+      }
    }
 
    @Override
-   protected boolean b(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.d($$1, $$2, ji.b) && !$$0.a(dga.kJ);
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return d[$$0.c(c)];
    }
 
    @Override
-   public cuq a(dcz $$0, jd $$1, dtc $$2) {
-      return new cuq(dga.bw);
+   protected eyx b(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return d[$$0.c(c) - 1];
+   }
+
+   @Override
+   protected eyx b_(dua $$0, dcx $$1, je $$2) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected eyx c(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean g_(dua $$0) {
+      return true;
+   }
+
+   @Override
+   protected float c(dua $$0, dcx $$1, je $$2) {
+      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   }
+
+   @Override
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      dua $$3 = $$1.a_($$2.e());
+      if ($$3.a(aws.cp)) {
+         return false;
+      } else {
+         return $$3.a(aws.cq) ? true : dgv.a($$3.g($$1, $$2.e()), jj.b) || $$3.a(this) && $$3.c(c) == 8;
+      }
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      return !$$0.a($$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$1.a(deb.b, $$2) > 11) {
+         c($$0, $$1, $$2);
+         $$1.a($$2, false);
+      }
+   }
+
+   @Override
+   protected boolean a(dua $$0, cyw $$1) {
+      int $$2 = $$0.c(c);
+      if (!$$1.n().a(this.r()) || $$2 >= 8) {
+         return $$2 == 1;
+      } else {
+         return $$1.c() ? $$1.k() == jj.b : true;
+      }
    }
 
    @Nullable
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = super.a($$0);
-      if ($$1 != null) {
-         epe $$2 = $$0.q().b_($$0.a().d());
-         if ($$2.a(awk.a) && $$2.e() == 8) {
-            return $$1;
-         }
-      }
-
-      return null;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      if ($$0.c(d) == dty.a) {
-         dtc $$3 = $$1.a_($$2.e());
-         return $$3.a(this) && $$3.c(d) == dty.b;
+   public dua a(cyw $$0) {
+      dua $$1 = $$0.q().a_($$0.a());
+      if ($$1.a(this)) {
+         int $$2 = $$1.c(c);
+         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
       } else {
-         epe $$4 = $$1.b_($$2);
-         return super.a($$0, $$1, $$2) && $$4.a(awk.a) && $$4.e() == 8;
+         return super.a($$0);
       }
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return epf.c.a(false);
-   }
-
-   @Override
-   public boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epd $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dcx $$0, jd $$1, dtc $$2, epe $$3) {
-      return false;
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(c);
    }
 }

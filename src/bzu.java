@@ -1,64 +1,21 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bzu extends cam {
-   private final cgh a;
-   @Nullable
-   private cmx b;
-   private final dcw c;
-   private final float d;
-   private int e;
-   private final cef f;
-
-   public bzu(cgh $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$0.dO();
-      this.d = $$1;
-      this.f = cef.b().a((double)$$1);
-      this.a(EnumSet.of(cam.a.b));
-   }
-
-   @Override
-   public boolean b() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
-
-   @Override
-   public boolean c() {
-      if (!this.b.bE()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.a.A(true);
-      this.e = this.a(40 + this.a.dR().a(40));
-   }
-
-   @Override
-   public void e() {
-      this.a.A(false);
-      this.b = null;
-   }
-
-   @Override
-   public void a() {
-      this.a.I().a(this.b.dt(), this.b.dx(), this.b.dz(), 10.0F, (float)this.a.ac());
-      this.e--;
-   }
-
-   private boolean a(cmx $$0) {
-      for (bqq $$1 : bqq.values()) {
-         cuq $$2 = $$0.b($$1);
-         if ($$2.a(cut.rz) || this.a.o($$2)) {
-            return true;
-         }
-      }
-
-      return false;
+public class bzu {
+   public static <E extends cmt> bvy<E> a(Function<E, Optional<? extends buf>> $$0) {
+      return bzk.a(
+         (Function<bzk.b<E>, ? extends App<bzk.c<E>, bzn<E>>>)($$1 -> $$1.group($$1.c(cdi.ay), $$1.c(cdi.o), $$1.a(cdi.E))
+               .apply($$1, ($$1x, $$2, $$3) -> ($$3x, $$4, $$5) -> {
+                     Optional<? extends buf> $$6 = $$0.apply((E)$$4);
+                     if ($$6.filter($$4::c).isEmpty()) {
+                        return false;
+                     } else {
+                        $$1x.a($$6.get());
+                        $$3.b();
+                        return true;
+                     }
+                  }))
+      );
    }
 }

@@ -1,23 +1,57 @@
-public class gkb extends gje<cjr, fvg<cjr>> {
-   private static final akr a = akr.b("textures/entity/zombie/drowned.png");
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
-   public gkb(gkj.a $$0) {
-      super($$0, new fvg<>($$0.a(fyj.S)), new fvg<>($$0.a(fyj.T)), new fvg<>($$0.a(fyj.U)));
-      this.a(new god<>(this, $$0.f()));
+public class gkb {
+   private final Long2ObjectMap<gkb.a> a = new Long2ObjectOpenHashMap();
+
+   @Nullable
+   public gka a(dds $$0, kg $$1) {
+      gkb.a $$2 = this.a($$0, $$1.a(), $$1.c());
+      if ($$2.a().c($$1.b())) {
+         return null;
+      } else {
+         int $$3 = $$1.a() - 1;
+         int $$4 = $$1.c() - 1;
+         int $$5 = $$1.a() + 1;
+         int $$6 = $$1.c() + 1;
+         gjz[] $$7 = new gjz[9];
+
+         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
+            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
+               int $$10 = gka.a($$3, $$4, $$9, $$8);
+               gkb.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
+               $$7[$$10] = $$11.b();
+            }
+         }
+
+         return new gka($$0, $$3, $$4, $$7);
+      }
    }
 
-   @Override
-   public akr a(ckw $$0) {
-      return a;
+   private gkb.a a(dds $$0, int $$1, int $$2) {
+      return (gkb.a)this.a.computeIfAbsent(dcy.c($$1, $$2), $$1x -> new gkb.a($$0.d(dcy.a($$1x), dcy.b($$1x))));
    }
 
-   protected void a(cjr $$0, fbi $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = $$0.a($$4);
-      if ($$6 > 0.0F) {
-         float $$7 = -10.0F - $$0.dG();
-         float $$8 = ayo.i($$6, 0.0F, $$7);
-         $$1.a(a.b.rotationDegrees($$8), 0.0F, $$0.dk() / 2.0F / $$5, 0.0F);
+   static final class a {
+      private final dwg a;
+      @Nullable
+      private gjz b;
+
+      a(dwg $$0) {
+         this.a = $$0;
+      }
+
+      public dwg a() {
+         return this.a;
+      }
+
+      public gjz b() {
+         if (this.b == null) {
+            this.b = new gjz(this.a);
+         }
+
+         return this.b;
       }
    }
 }

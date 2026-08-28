@@ -1,52 +1,19 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class ffv extends ffn {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wz c = wz.c("mco.minigame.world.slot.screen.title");
-   private final long d;
-   private final int e;
-   private final Runnable f;
+public class ffv {
+   private static final int a = 8226750;
+   private static final xd b = xd.c("mco.info").b(8226750);
+   private static final xd c = xd.c("mco.warning").b(-65536);
 
-   public ffv(long $$0, int $$1, Runnable $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static flc a(fpt $$0, xd $$1, Consumer<flc> $$2) {
+      return new flc.a($$0, b).a($$1).a(xc.j, $$2).a(xc.e, flc::d).a();
    }
 
-   @Override
-   public void run() {
-      fby $$0 = fby.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            if ($$0.a(this.d, this.e)) {
-               this.f.run();
-               break;
-            }
-         } catch (fdk var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't switch world!");
-            this.a(var5);
-         }
-      }
+   public static flc b(fpt $$0, xd $$1, Consumer<flc> $$2) {
+      return new flc.a($$0, c).a($$1).a(xc.j, $$2).a(xc.e, flc::d).a();
    }
 
-   @Override
-   public wz a() {
-      return c;
+   public static flc c(fpt $$0, xd $$1, Consumer<flc> $$2) {
+      return new flc.a($$0, c).a($$1).a(xc.h, $$2).a();
    }
 }

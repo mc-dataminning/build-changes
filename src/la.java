@@ -1,44 +1,28 @@
-public class la extends ky {
-   @Override
-   protected cuq a(ku $$0, cuq $$1) {
-      aqu $$2 = $$0.b();
-      if (!$$2.x_()) {
-         jd $$3 = $$0.c().a($$0.d().c(did.b));
-         this.a(a($$2, $$3) || b($$2, $$3));
-         if (this.b()) {
-            $$1.a(1, $$2, null, $$0x -> {
-            });
-         }
-      }
+public class la extends kx {
+   private final cwh c;
+   private final cwh.a d;
 
+   public la(cvg $$0) {
+      if ($$0 instanceof cwh $$1) {
+         this.c = $$1;
+         this.d = $$1.c();
+      } else {
+         throw new IllegalArgumentException($$0 + " not instance of " + cwh.class.getSimpleName());
+      }
+   }
+
+   @Override
+   public cvl a(kv $$0, cvl $$1) {
+      arg $$2 = $$0.b();
+      jj $$3 = $$0.d().c(dja.b);
+      jx $$4 = this.d.b().getDispensePosition($$0, $$3);
+      coi.a(this.c.a($$2, $$4, $$1, $$3), $$2, $$1, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
+      $$1.h(1);
       return $$1;
    }
 
-   private static boolean a(aqu $$0, jd $$1) {
-      dtc $$2 = $$0.a_($$1);
-      if ($$2.a(awe.aH, $$0x -> $$0x.b(dfs.c) && $$0x.b() instanceof dfs)) {
-         int $$3 = $$2.c(dfs.c);
-         if ($$3 >= 5) {
-            $$0.a(null, $$1, avp.bX, avq.e, 1.0F, 1.0F);
-            dfs.a($$0, $$1);
-            ((dfs)$$2.b()).a($$0, $$2, $$1, null, dqe.b.b);
-            $$0.a(null, dxz.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static boolean b(aqu $$0, jd $$1) {
-      for (btn $$3 : $$0.a(btn.class, new ewx($$1), bsw.f)) {
-         if ($$3 instanceof buf $$4 && $$4.a()) {
-            $$4.a(avq.e);
-            $$0.a(null, dxz.M, $$1);
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   protected void a(kv $$0) {
+      $$0.b().c(this.d.e().orElse(1002), $$0.c(), 0);
    }
 }

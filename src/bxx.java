@@ -1,22 +1,56 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class bxx {
-   public static bvi<btn> a() {
-      return byu.a(
-         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$0 -> $$0.group($$0.b(ccs.ab))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.a($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof btn $$1xx ? $$1xx : null)
-                           .filter(btn::ex)
-                           .filter($$1xx -> $$1xx.am() != bsx.by || $$2.ab().b(dcs.N))
-                           .ifPresent($$1xx -> $$1.b());
+   public static bvy<buf> a(float $$0, bqv $$1) {
+      return a($$0, $$1, $$0x -> true);
+   }
+
+   public static bvy<buf> a(btq<?> $$0, float $$1, bqv $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ao()));
+   }
+
+   private static bvy<buf> a(float $$0, bqv $$1, Predicate<buf> $$2) {
+      float $$3 = $$0 * $$0;
+      bxx.a $$4 = new bxx.a($$1);
+      return bzk.a(
+         (Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$3x -> $$3x.group($$3x.c(cdi.n), $$3x.b(cdi.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<buf> $$9 = $$3x.<cdk>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((btj)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bwi($$9.get(), true));
                         return true;
                      }
-               ))
+                  }))
       );
+   }
+
+   public static final class a {
+      private final bqv a;
+      private int b;
+
+      public a(bqv $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(azk $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

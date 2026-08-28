@@ -1,123 +1,216 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UncheckedIOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collection;
+import java.util.Locale;
+import net.minecraft.server.MinecraftServer;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
 public class amv {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wz.b("commands.fillbiome.toobig", $$0, $$1));
+   static final Logger a = LogUtils.getLogger();
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xd.c("commands.debug.notRunning"));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xd.c("commands.debug.alreadyRunning"));
+   static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xd.c("commands.debug.function.noRecursion"));
+   static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xd.c("commands.debug.function.noReturnRun"));
 
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("fillbiome").requires($$0x -> $$0x.c(2)))
-            .then(
-               eu.a("from", gp.a())
-                  .then(
-                     eu.a("to", gp.a())
-                        .then(
-                           ((RequiredArgumentBuilder)eu.a("biome", fs.a($$1, lu.aF))
-                                 .executes($$0x -> a((et)$$0x.getSource(), gp.a($$0x, "from"), gp.a($$0x, "to"), fs.a($$0x, "biome", lu.aF), $$0xx -> true)))
-                              .then(
-                                 eu.a("replace")
-                                    .then(
-                                       eu.a("filter", fw.a($$1, lu.aF))
-                                          .executes(
-                                             $$0x -> a(
-                                                   (et)$$0x.getSource(),
-                                                   gp.a($$0x, "from"),
-                                                   gp.a($$0x, "to"),
-                                                   fs.a($$0x, "biome", lu.aF),
-                                                   fw.a($$0x, "filter", lu.aF)::test
-                                                )
-                                          )
-                                    )
-                              )
-                        )
-                  )
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(eu.a("start").executes($$0x -> a((et)$$0x.getSource()))))
+               .then(eu.a("stop").executes($$0x -> b((et)$$0x.getSource()))))
+            .then(((LiteralArgumentBuilder)eu.a("function").requires($$0x -> $$0x.c(3))).then(eu.a("name", hb.a()).suggests(anj.b).executes(new amv.a())))
       );
    }
 
-   private static int a(int $$0) {
-      return jx.c(jx.a($$0));
-   }
-
-   private static jd a(jd $$0) {
-      return new jd(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
-
-   private static ddz a(MutableInt $$0, duy $$1, ejj $$2, jm<ddw> $$3, Predicate<jm<ddw>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = jx.c($$5);
-         int $$10 = jx.c($$6);
-         int $$11 = jx.c($$7);
-         jm<ddw> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
-         }
-      };
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(aqu $$0, jd $$1, jd $$2, jm<ddw> $$3) {
-      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
-      });
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(aqu $$0, jd $$1, jd $$2, jm<ddw> $$3, Predicate<jm<ddw>> $$4, Consumer<Supplier<wz>> $$5) {
-      jd $$6 = a($$1);
-      jd $$7 = a($$2);
-      ejj $$8 = ejj.a($$6, $$7);
-      int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.ab().c(dcs.z);
-      if ($$9 > $$10) {
-         return Either.right(b.create($$10, $$9));
+   private static int a(et $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if ($$1.bh()) {
+         throw c.create();
       } else {
-         List<duy> $$11 = new ArrayList<>();
-
-         for (int $$12 = kf.a($$8.j()); $$12 <= kf.a($$8.m()); $$12++) {
-            for (int $$13 = kf.a($$8.h()); $$13 <= kf.a($$8.k()); $$13++) {
-               duy $$14 = $$0.a($$13, $$12, dvz.n, false);
-               if ($$14 == null) {
-                  return Either.right(a.create());
-               }
-
-               $$11.add($$14);
-            }
-         }
-
-         MutableInt $$15 = new MutableInt(0);
-
-         for (duy $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
-            $$16.a(true);
-         }
-
-         $$0.l().a.a($$11);
-         $$5.accept(() -> wz.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
-         return Either.left($$15.getValue());
+         $$1.bi();
+         $$0.a(() -> xd.c("commands.debug.started"), true);
+         return 0;
       }
    }
 
-   private static int a(et $$0, jd $$1, jd $$2, jm.c<ddw> $$3, Predicate<jm<ddw>> $$4) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
-      Optional<CommandSyntaxException> $$6 = $$5.right();
-      if ($$6.isPresent()) {
-         throw (CommandSyntaxException)$$6.get();
+   private static int b(et $$0) throws CommandSyntaxException {
+      MinecraftServer $$1 = $$0.l();
+      if (!$$1.bh()) {
+         throw b.create();
       } else {
-         return (Integer)$$5.left().get();
+         bnx $$2 = $$1.bj();
+         double $$3 = (double)$$2.g() / (double)bad.a;
+         double $$4 = (double)$$2.f() / $$3;
+         $$0.a(() -> xd.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
+         return (int)$$4;
+      }
+   }
+
+   static class a extends hq.b<et> implements hq.a<et> {
+      public void a(et $$0, ContextChain<et> $$1, ho $$2, hu<et> $$3) throws CommandSyntaxException {
+         if ($$2.c()) {
+            throw amv.e.create();
+         } else if ($$3.a() != null) {
+            throw amv.d.create();
+         } else {
+            CommandContext<et> $$4 = $$1.getTopContext();
+            Collection<ih<et>> $$5 = hb.a($$4, "name");
+            MinecraftServer $$6 = $$0.l();
+            String $$7 = "debug-trace-" + ad.f() + ".txt";
+            CommandDispatcher<et> $$8 = $$0.l().aE().a();
+            int $$9 = 0;
+
+            try {
+               Path $$10 = $$6.c("debug");
+               Files.createDirectories($$10);
+               final PrintWriter $$11 = new PrintWriter(Files.newBufferedWriter($$10.resolve($$7), StandardCharsets.UTF_8));
+               amv.b $$12 = new amv.b($$11);
+               $$3.a($$12);
+
+               for (final ih<et> $$13 : $$5) {
+                  try {
+                     et $$14 = $$0.a($$12).b(2);
+                     ij<et> $$15 = $$13.a(null, $$8);
+                     $$3.a((new ia<et>($$15, eq.a, false) {
+                        public void a(et $$0, ht<et> $$1, hv $$2) {
+                           $$11.println($$13.a());
+                           super.a($$0, $$1, $$2);
+                        }
+                     }).bind($$14));
+                     $$9 += $$15.b().size();
+                  } catch (ew var18) {
+                     $$0.b(var18.a());
+                  }
+               }
+            } catch (IOException | UncheckedIOException var19) {
+               amv.a.warn("Tracing failed", var19);
+               $$0.b(xd.c("commands.debug.function.traceFailed"));
+            }
+
+            int $$18 = $$9;
+            $$3.a(($$4x, $$5x) -> {
+               if ($$5.size() == 1) {
+                  $$0.a(() -> xd.a("commands.debug.function.success.single", $$18, xd.a($$5.iterator().next().a()), $$7), true);
+               } else {
+                  $$0.a(() -> xd.a("commands.debug.function.success.multiple", $$18, $$5.size(), $$7), true);
+               }
+            });
+         }
+      }
+   }
+
+   static class b implements es, hw {
+      public static final int b = 1;
+      private final PrintWriter c;
+      private int d;
+      private boolean e;
+
+      b(PrintWriter $$0) {
+         this.c = $$0;
+      }
+
+      private void a(int $$0) {
+         this.b($$0);
+         this.d = $$0;
+      }
+
+      private void b(int $$0) {
+         for (int $$1 = 0; $$1 < $$0 + 1; $$1++) {
+            this.c.write("    ");
+         }
+      }
+
+      private void e() {
+         if (this.e) {
+            this.c.println();
+            this.e = false;
+         }
+      }
+
+      @Override
+      public void a(int $$0, String $$1) {
+         this.e();
+         this.a($$0);
+         this.c.print("[C] ");
+         this.c.print($$1);
+         this.e = true;
+      }
+
+      @Override
+      public void a(int $$0, String $$1, int $$2) {
+         if (this.e) {
+            this.c.print(" -> ");
+            this.c.println($$2);
+            this.e = false;
+         } else {
+            this.a($$0);
+            this.c.print("[R = ");
+            this.c.print($$2);
+            this.c.print("] ");
+            this.c.println($$1);
+         }
+      }
+
+      @Override
+      public void a(int $$0, alb $$1, int $$2) {
+         this.e();
+         this.a($$0);
+         this.c.print("[F] ");
+         this.c.print($$1);
+         this.c.print(" size=");
+         this.c.println($$2);
+      }
+
+      @Override
+      public void a(String $$0) {
+         this.e();
+         this.a(this.d + 1);
+         this.c.print("[E] ");
+         this.c.print($$0);
+      }
+
+      @Override
+      public void a(xd $$0) {
+         this.e();
+         this.b(this.d + 1);
+         this.c.print("[M] ");
+         this.c.println($$0.getString());
+      }
+
+      @Override
+      public boolean k_() {
+         return true;
+      }
+
+      @Override
+      public boolean v_() {
+         return true;
+      }
+
+      @Override
+      public boolean J_() {
+         return false;
+      }
+
+      @Override
+      public boolean l_() {
+         return true;
+      }
+
+      @Override
+      public void close() {
+         IOUtils.closeQuietly(this.c);
       }
    }
 }

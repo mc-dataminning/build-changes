@@ -1,61 +1,59 @@
 public class bti {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final aka c;
-   private final ajw<Integer> d;
-   private final ajw<Boolean> e;
-   private boolean f;
-   private int g;
+   private float a;
+   private float b;
+   private float c;
+   private float d;
+   private float e;
+   private float f;
+   private final buf g;
 
-   public bti(aka $$0, ajw<Integer> $$1, ajw<Boolean> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public bti(buf $$0) {
+      this.g = $$0;
    }
 
    public void a() {
-      this.f = true;
-      this.g = 0;
-   }
+      this.d = this.a;
+      this.e = this.b;
+      this.f = this.c;
+      if (this.g.a(btr.e).a(cvo.nU)) {
+         float $$0 = (float) (Math.PI / 12);
+         float $$1 = (float) (-Math.PI / 12);
+         float $$2 = 0.0F;
+         if (this.g.fE()) {
+            float $$3 = 1.0F;
+            eye $$4 = this.g.dv();
+            if ($$4.e < 0.0) {
+               eye $$5 = $$4.d();
+               $$3 = 1.0F - (float)Math.pow(-$$5.e, 1.5);
+            }
 
-   public boolean a(ayw $$0) {
-      if (this.f) {
-         return false;
+            $$0 = $$3 * (float) (Math.PI / 9) + (1.0F - $$3) * $$0;
+            $$1 = $$3 * (float) (-Math.PI / 2) + (1.0F - $$3) * $$1;
+         } else if (this.g.cf()) {
+            $$0 = (float) (Math.PI * 2.0 / 9.0);
+            $$1 = (float) (-Math.PI / 4);
+            $$2 = 0.08726646F;
+         }
+
+         this.a = this.a + ($$0 - this.a) * 0.3F;
+         this.b = this.b + ($$2 - this.b) * 0.3F;
+         this.c = this.c + ($$1 - this.c) * 0.3F;
       } else {
-         this.f = true;
-         this.g = 0;
-         this.c.a(this.d, $$0.a(841) + 140);
-         return true;
+         this.a = 0.0F;
+         this.b = 0.0F;
+         this.c = 0.0F;
       }
    }
 
-   public void b() {
-      if (this.f && this.g++ > this.e()) {
-         this.f = false;
-      }
+   public float a(float $$0) {
+      return azc.h($$0, this.d, this.a);
    }
 
-   public float c() {
-      return this.f ? 1.0F + 1.15F * ayo.a((float)this.g / (float)this.e() * (float) Math.PI) : 1.0F;
+   public float b(float $$0) {
+      return azc.h($$0, this.e, this.b);
    }
 
-   private int e() {
-      return this.c.a(this.d);
-   }
-
-   public void a(ub $$0) {
-      $$0.a("Saddle", this.d());
-   }
-
-   public void b(ub $$0) {
-      this.a($$0.q("Saddle"));
-   }
-
-   public void a(boolean $$0) {
-      this.c.a(this.e, $$0);
-   }
-
-   public boolean d() {
-      return this.c.a(this.e);
+   public float c(float $$0) {
+      return azc.h($$0, this.f, this.c);
    }
 }

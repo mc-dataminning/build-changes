@@ -1,67 +1,89 @@
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class csp extends cul {
-   private static final Predicate<bsr> a = bsw.f.and(bsr::bA);
-   private final cov.b b;
-   private final boolean c;
+public class csp {
+   private static final List<cso> b = ad.a(new ArrayList<>(), $$0 -> {
+      a($$0, "contents", 0);
+      a($$0, "container.", 0, 54);
+      a($$0, "hotbar.", 0, 9);
+      a($$0, "inventory.", 9, 27);
+      a($$0, "enderchest.", 200, 27);
+      a($$0, "villager.", 300, 8);
+      a($$0, "horse.", 500, 15);
+      int $$1 = btr.a.a(98);
+      int $$2 = btr.b.a(98);
+      a($$0, "weapon", $$1);
+      a($$0, "weapon.mainhand", $$1);
+      a($$0, "weapon.offhand", $$2);
+      a($$0, "weapon.*", $$1, $$2);
+      $$1 = btr.f.a(100);
+      $$2 = btr.e.a(100);
+      int $$5 = btr.d.a(100);
+      int $$6 = btr.c.a(100);
+      int $$7 = btr.g.a(105);
+      a($$0, "armor.head", $$1);
+      a($$0, "armor.chest", $$2);
+      a($$0, "armor.legs", $$5);
+      a($$0, "armor.feet", $$6);
+      a($$0, "armor.body", $$7);
+      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
+      a($$0, "horse.saddle", 400);
+      a($$0, "horse.chest", 499);
+      a($$0, "player.cursor", 499);
+      a($$0, "player.crafting.", 500, 4);
+   });
+   public static final Codec<cso> a = azy.b(() -> b.toArray(new cso[0]));
+   private static final Function<String, cso> c = azy.a(b.toArray(new cso[0]), $$0 -> $$0);
 
-   public csp(boolean $$0, cov.b $$1, cul.a $$2) {
-      super($$2);
-      this.c = $$0;
-      this.b = $$1;
+   private static cso a(String $$0, int $$1) {
+      return cso.a($$0, IntLists.singleton($$1));
    }
 
-   @Override
-   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      cuq $$3 = $$1.b($$2);
-      exa $$4 = a($$0, $$1, dcf.b.c);
-      if ($$4.c() == exa.a.a) {
-         return bqs.c($$3);
-      } else {
-         exc $$5 = $$1.g(1.0F);
-         double $$6 = 5.0;
-         List<bsr> $$7 = $$0.a($$1, $$1.cK().b($$5.a(5.0)).g(1.0), a);
-         if (!$$7.isEmpty()) {
-            exc $$8 = $$1.by();
-
-            for (bsr $$9 : $$7) {
-               ewx $$10 = $$9.cK().g((double)$$9.bL());
-               if ($$10.d($$8)) {
-                  return bqs.c($$3);
-               }
-            }
-         }
-
-         if ($$4.c() == exa.a.b) {
-            cov $$11 = this.a($$0, $$4, $$3, $$1);
-            $$11.a(this.b);
-            $$11.t($$1.dE());
-            if (!$$0.a($$11, $$11.cK())) {
-               return bqs.d($$3);
-            } else {
-               if (!$$0.B) {
-                  $$0.b($$11);
-                  $$0.a($$1, dxz.t, $$4.e());
-                  $$3.a(1, $$1);
-               }
-
-               $$1.b(avz.c.b(this));
-               return bqs.a($$3, $$0.x_());
-            }
-         } else {
-            return bqs.c($$3);
-         }
-      }
+   private static cso a(String $$0, IntList $$1) {
+      return cso.a($$0, IntLists.unmodifiable($$1));
    }
 
-   private cov a(dcw $$0, exa $$1, cuq $$2, cmx $$3) {
-      exc $$4 = $$1.e();
-      cov $$5 = (cov)(this.c ? new cow($$0, $$4.c, $$4.d, $$4.e) : new cov($$0, $$4.c, $$4.d, $$4.e));
-      if ($$0 instanceof aqu $$6) {
-         bsx.<cov>a($$6, $$2, $$3).accept($$5);
+   private static cso a(String $$0, int... $$1) {
+      return cso.a($$0, IntList.of($$1));
+   }
+
+   private static void a(List<cso> $$0, String $$1, int $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   private static void a(List<cso> $$0, String $$1, int $$2, int $$3) {
+      IntList $$4 = new IntArrayList($$3);
+
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         int $$6 = $$2 + $$5;
+         $$0.add(a($$1 + $$5, $$6));
+         $$4.add($$6);
       }
 
-      return $$5;
+      $$0.add(a($$1 + "*", $$4));
+   }
+
+   private static void a(List<cso> $$0, String $$1, int... $$2) {
+      $$0.add(a($$1, $$2));
+   }
+
+   @Nullable
+   public static cso a(String $$0) {
+      return c.apply($$0);
+   }
+
+   public static Stream<String> a() {
+      return b.stream().map(azy::c);
+   }
+
+   public static Stream<String> b() {
+      return b.stream().filter($$0 -> $$0.b() == 1).map(azy::c);
    }
 }

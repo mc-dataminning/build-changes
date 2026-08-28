@@ -1,49 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record egr(egj b, List<egr.a> c) {
-   public static final Codec<egr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(egj.a.fieldOf("fallback").forGetter(egr::a), egr.a.a.listOf().fieldOf("rules").forGetter(egr::b)).apply($$0, egr::new)
-   );
+public class egr extends egn {
+   public static final MapCodec<egr> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egr::new));
 
-   public static egr a(egj $$0) {
-      return new egr($$0, List.of());
+   public egr(bqp $$0, bqp $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static egr a(dfy $$0) {
-      return a(egj.a($$0));
+   @Override
+   protected egt<?> a() {
+      return egt.f;
    }
 
-   public dtc a(dds $$0, ayw $$1, jd $$2) {
-      for (egr.a $$3 : this.c) {
-         if ($$3.a().test($$0, $$2)) {
-            return $$3.b().a($$1, $$2);
-         }
+   @Override
+   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
-
-      return this.b.a($$1, $$2);
    }
 
-   public egj a() {
-      return this.b;
-   }
-
-   public List<egr.a> b() {
-      return this.c;
-   }
-
-   public static record a(eaf b, egj c) {
-      public static final Codec<egr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eaf.b.fieldOf("if_true").forGetter(egr.a::a), egj.a.fieldOf("then").forGetter(egr.a::b)).apply($$0, egr.a::new)
-      );
-
-      public eaf a() {
-         return this.b;
-      }
-
-      public egj b() {
-         return this.c;
-      }
+   @Override
+   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return azc.k((float)$$1 + 0.5F) + azc.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
    }
 }

@@ -1,92 +1,48 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Hashtable;
+import java.util.Optional;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.DirContext;
+import javax.naming.directory.InitialDirContext;
+import org.slf4j.Logger;
 
+@FunctionalInterface
 public interface gcr {
-   gcr a = new gcr() {
-      @Override
-      public fbd a(fbk $$0, gqm $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gqk.e);
-         return $$0.a(fbn.c.h, fbg.d);
+   Logger a = LogUtils.getLogger();
+   gcr b = $$0 -> Optional.empty();
+
+   Optional<gco> lookupRedirect(gco var1);
+
+   static gcr createDnsSrvRedirectHandler() {
+      DirContext $$2;
+      try {
+         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
+         Class.forName("com.sun.jndi.dns.DnsContextFactory");
+         Hashtable<String, String> $$1 = new Hashtable<>();
+         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
+         $$1.put("java.naming.provider.url", "dns:");
+         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
+         $$2 = new InitialDirContext($$1);
+      } catch (Throwable var3) {
+         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
+         return b;
       }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gcr b = new gcr() {
-      @Override
-      public fbd a(fbk $$0, gqm $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ges::s);
-         RenderSystem.setShaderTexture(0, gqk.f);
-         return $$0.a(fbn.c.h, fbg.d);
-      }
+      return $$1x -> {
+         if ($$1x.b() == 25565) {
+            try {
+               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
+               Attribute $$3x = $$2x.get("srv");
+               if ($$3x != null) {
+                  String[] $$4x = $$3x.get().toString().split(" ", 4);
+                  return Optional.of(new gco($$4x[3], gco.c($$4x[2])));
+               }
+            } catch (Throwable var5) {
+            }
+         }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   gcr c = new gcr() {
-      @Override
-      public fbd a(fbk $$0, gqm $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gqk.f);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         return $$0.a(fbn.c.h, fbg.d);
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   gcr d = new gcr() {
-      @Override
-      public fbd a(fbk $$0, gqm $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShaderTexture(0, gqk.f);
-         return $$0.a(fbn.c.h, fbg.d);
-      }
-
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_LIT";
-      }
-   };
-   gcr e = new gcr() {
-      @Override
-      public fbd a(fbk $$0, gqm $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-         return $$0.a(fbn.c.h, fbg.d);
-      }
-
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gcr f = new gcr() {
-      @Nullable
-      @Override
-      public fbd a(fbk $$0, gqm $$1) {
-         return null;
-      }
-
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
-
-   @Nullable
-   fbd a(fbk var1, gqm var2);
+         return Optional.empty();
+      };
+   }
 }

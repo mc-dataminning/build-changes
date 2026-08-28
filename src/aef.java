@@ -1,36 +1,23 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.UUID;
 
-public class aef implements zg<abu> {
-   public static final yx<vw, aef> a = zg.a(aef::a, aef::new);
-   private final IntList b;
+public record aef(List<UUID> b) implements zk<abz> {
+   public static final zb<wa, aef> a = zk.a(aef::a, aef::new);
 
-   public aef(IntList $$0) {
-      this.b = new IntArrayList($$0);
+   private aef(wa $$0) {
+      this($$0.a(kh.g));
    }
 
-   public aef(int... $$0) {
-      this.b = new IntArrayList($$0);
-   }
-
-   private aef(vw $$0) {
-      this.b = $$0.a();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b, kh.g);
    }
 
    @Override
-   public zi<aef> a() {
-      return agg.aj;
+   public zm<aef> a() {
+      return ago.af;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
-   }
-
-   public IntList b() {
-      return this.b;
    }
 }

@@ -1,33 +1,28 @@
-import java.util.Collection;
-import java.util.function.Consumer;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public record sr(String b, Collection<sx> c, Consumer<aqu> d, Consumer<aqu> e) {
-   public static final String a = "defaultBatch";
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sr {
+   int a() default 100;
 
-   public sr(String b, Collection<sx> c, Consumer<aqu> d, Consumer<aqu> e) {
-      if (c.isEmpty()) {
-         throw new IllegalArgumentException("A GameTestBatch must include at least one GameTestInfo!");
-      } else {
-         this.b = b;
-         this.c = c;
-         this.d = d;
-         this.e = e;
-      }
-   }
+   String b() default "defaultBatch";
 
-   public String a() {
-      return this.b;
-   }
+   boolean c() default false;
 
-   public Collection<sx> b() {
-      return this.c;
-   }
+   int d() default 0;
 
-   public Consumer<aqu> c() {
-      return this.d;
-   }
+   boolean e() default true;
 
-   public Consumer<aqu> d() {
-      return this.e;
-   }
+   boolean f() default false;
+
+   String g() default "";
+
+   long h() default 0L;
+
+   int i() default 1;
+
+   int j() default 1;
 }

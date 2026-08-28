@@ -1,39 +1,71 @@
-import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
 
-public class fjs extends fik {
+public abstract class fjs extends fjy implements flw {
    @Nullable
-   protected fjz a;
-   protected boolean b;
+   private flx a;
+   private boolean b;
 
-   public fjs(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, wy.a);
-      this.b = $$4;
+   public fjs(int $$0, int $$1, int $$2, int $$3, xd $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public void a(fjz $$0) {
-      this.a = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
+   @Override
+   public final boolean aM_() {
       return this.b;
    }
 
    @Override
-   public void a(fmi $$0) {
-      this.c($$0);
+   public final void b_(boolean $$0) {
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public flx aN_() {
+      return this.a;
    }
 
    @Override
-   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+   public void a(@Nullable flx $$0) {
       if (this.a != null) {
-         RenderSystem.disableDepthTest();
-         $$0.a(this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
-         RenderSystem.enableDepthTest();
+         this.a.a(false);
       }
+
+      if ($$0 != null) {
+         $$0.a(true);
+      }
+
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public fjk a(fod $$0) {
+      return flw.super.a($$0);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return flw.super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return flw.super.b($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return flw.super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   public boolean aO_() {
+      return flw.super.aO_();
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      flw.super.a($$0);
    }
 }

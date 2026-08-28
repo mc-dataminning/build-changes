@@ -1,30 +1,71 @@
-import org.joml.Vector3f;
+import javax.annotation.Nullable;
 
-public class fpq extends fov {
-   public static final float b = 4.5F;
-   private static final Vector3f c = new Vector3f(1.0F, 1.0F, 1.0F);
-   private static final int r = 16;
-   private static final int s = 16;
-   private final akr u = akr.b("textures/gui/hanging_signs/" + this.a.b() + ".png");
+public class fpq extends fpt implements azj {
+   @Nullable
+   private xd a;
+   @Nullable
+   private xd b;
+   private int c;
+   private boolean d;
+   private final boolean s;
 
-   public fpq(drs $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2, wz.c("hanging_sign.edit"));
+   public fpq(boolean $$0) {
+      super(fhs.a);
+      this.s = $$0;
    }
 
    @Override
-   protected void b(fhz $$0, dtc $$1) {
-      $$0.c().a((float)this.m / 2.0F, 125.0F, 50.0F);
+   public boolean aJ_() {
+      return false;
    }
 
    @Override
-   protected void a(fhz $$0, dtc $$1) {
-      $$0.c().a(0.0F, -13.0F, 0.0F);
-      $$0.c().b(4.5F, 4.5F, 1.0F);
-      $$0.a(this.u, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
+   protected boolean aS_() {
+      return false;
    }
 
    @Override
-   protected Vector3f m() {
-      return c;
+   public void a(xd $$0) {
+      this.b($$0);
+   }
+
+   @Override
+   public void b(xd $$0) {
+      this.a = $$0;
+      this.c(xd.c("menu.working"));
+   }
+
+   @Override
+   public void c(xd $$0) {
+      this.b = $$0;
+      this.a(0);
+   }
+
+   @Override
+   public void a(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public void a() {
+      this.d = true;
+   }
+
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      if (this.d) {
+         if (this.s) {
+            this.m.a(null);
+         }
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+         if (this.a != null) {
+            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
+         }
+
+         if (this.b != null && this.c != 0) {
+            $$0.a(this.p, xd.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
+         }
+      }
    }
 }

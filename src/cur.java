@@ -1,20 +1,15 @@
-import it.unimi.dsi.fastutil.Hash.Strategy;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cur {
-   private static final Strategy<? super cuq> a = new Strategy<cuq>() {
-      public int a(@Nullable cuq $$0) {
-         return cuq.a($$0);
+public class cur extends cvg {
+   public cur(cvg.a $$0) {
+      super($$0);
+   }
+
+   @Override
+   public void a(cvl $$0, cvg.b $$1, List<xd> $$2, cxf $$3) {
+      cye $$4 = $$0.a(kr.W);
+      if ($$4 != null) {
+         $$4.a($$1, $$2::add, $$3);
       }
-
-      public boolean a(@Nullable cuq $$0, @Nullable cuq $$1) {
-         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.e() == $$1.e() && cuq.c($$0, $$1);
-      }
-   };
-
-   public static Set<cuq> a() {
-      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

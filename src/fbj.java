@@ -1,67 +1,40 @@
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Vector3f;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class fbj implements fbm {
-   private final fbm a;
-   private final Matrix4f b;
-   private final Matrix3f c;
-   private final float d;
-   private final Vector3f e = new Vector3f();
-   private final Vector3f f = new Vector3f();
-   private float g;
-   private float h;
-   private float i;
+public enum fbj {
+   a("icons"),
+   b("icons", "snapshot");
 
-   public fbj(fbm $$0, fbi.a $$1, float $$2) {
-      this.a = $$0;
-      this.b = new Matrix4f($$1.a()).invert();
-      this.c = new Matrix3f($$1.b()).invert();
-      this.d = $$2;
+   private final String[] c;
+
+   private fbj(final String... $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public fbm a(float $$0, float $$1, float $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-      this.a.a($$0, $$1, $$2);
-      return this;
+   public List<auk<InputStream>> a(ate $$0) throws IOException {
+      return List.of(
+         this.a($$0, "icon_16x16.png"),
+         this.a($$0, "icon_32x32.png"),
+         this.a($$0, "icon_48x48.png"),
+         this.a($$0, "icon_128x128.png"),
+         this.a($$0, "icon_256x256.png")
+      );
    }
 
-   @Override
-   public fbm a(int $$0, int $$1, int $$2, int $$3) {
-      this.a.a(-1);
-      return this;
+   public auk<InputStream> b(ate $$0) throws IOException {
+      return this.a($$0, "minecraft.icns");
    }
 
-   @Override
-   public fbm a(float $$0, float $$1) {
-      return this;
-   }
-
-   @Override
-   public fbm a(int $$0, int $$1) {
-      this.a.a($$0, $$1);
-      return this;
-   }
-
-   @Override
-   public fbm b(int $$0, int $$1) {
-      this.a.b($$0, $$1);
-      return this;
-   }
-
-   @Override
-   public fbm b(float $$0, float $$1, float $$2) {
-      this.a.b($$0, $$1, $$2);
-      Vector3f $$3 = this.c.transform($$0, $$1, $$2, this.f);
-      ji $$4 = ji.a($$3.x(), $$3.y(), $$3.z());
-      Vector3f $$5 = this.b.transformPosition(this.g, this.h, this.i, this.e);
-      $$5.rotateY((float) Math.PI);
-      $$5.rotateX((float) (-Math.PI / 2));
-      $$5.rotate($$4.b());
-      this.a.a(-$$5.x() * this.d, -$$5.y() * this.d);
-      return this;
+   private auk<InputStream> a(ate $$0, String $$1) throws IOException {
+      String[] $$2 = (String[])ArrayUtils.add(this.c, $$1);
+      auk<InputStream> $$3 = $$0.a($$2);
+      if ($$3 == null) {
+         throw new FileNotFoundException(String.join("/", $$2));
+      } else {
+         return $$3;
+      }
    }
 }

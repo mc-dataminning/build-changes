@@ -1,73 +1,79 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
-import java.util.List;
-import org.apache.commons.io.IOUtils;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
+import java.util.Iterator;
 
-public class fbx {
-   public static List<fcx> a(fbx.a... $$0) {
-      for (fbx.a $$1 : $$0) {
-         a($$1.j);
-      }
+public class fbx implements fby, AutoCloseable {
+   private final int b;
+   private final Deque<fbx.a<?>> c = new ArrayDeque<>();
 
-      List<fcx> $$2 = Lists.newArrayList();
-
-      for (fbx.a $$3 : $$0) {
-         $$2.add(new fcx($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(fcx::a));
-      return $$2;
+   public fbx(int $$0) {
+      this.b = $$0;
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   public void a() {
+      Iterator<? extends fbx.a<?>> $$0 = this.c.iterator();
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+      while ($$0.hasNext()) {
+         fbx.a<?> $$1 = (fbx.a<?>)$$0.next();
+         if ($$1.c-- == 0) {
+            $$1.close();
+            $$0.remove();
+         }
+      }
+   }
+
+   @Override
+   public <T> T a(fca<T> $$0) {
+      Iterator<? extends fbx.a<?>> $$1 = this.c.iterator();
+
+      while ($$1.hasNext()) {
+         fbx.a<?> $$2 = (fbx.a<?>)$$1.next();
+         if ($$2.a.equals($$0)) {
+            $$1.remove();
+            return (T)$$2.b;
          }
       }
 
-      return (int)((double)$$2 / 5.0);
+      return $$0.e();
    }
 
-   private static long b() {
-      return ad.c();
+   @Override
+   public <T> void a(fca<T> $$0, T $$1) {
+      this.c.addFirst(new fbx.a<>($$0, $$1, this.b));
    }
 
-   public static List<fcx> a() {
-      return a(fbx.a.values());
+   public void b() {
+      this.c.forEach(fbx.a::close);
+      this.c.clear();
    }
 
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+   @Override
+   public void close() {
+      this.b();
+   }
 
-      final String i;
-      final String j;
+   @VisibleForTesting
+   protected Collection<fbx.a<?>> c() {
+      return this.c;
+   }
 
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+   @VisibleForTesting
+   protected static final class a<T> implements AutoCloseable {
+      final fca<T> a;
+      final T b;
+      int c;
+
+      a(fca<T> $$0, T $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      @Override
+      public void close() {
+         this.a.a(this.b);
       }
    }
 }

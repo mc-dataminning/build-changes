@@ -1,94 +1,132 @@
-import java.util.Arrays;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class fup<T extends bsr> extends fvt<T> {
-   private final fyk a;
-   private final fyk[] b;
-   private final fyk f;
+public class fup extends fpt {
+   private static final xd a = xd.c("selectWorld.experimental.title");
+   private static final xd b = xd.c("selectWorld.experimental.message");
+   private static final xd c = xd.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<aua> v;
+   private final fnn w = new fnn().a(10).b(20);
 
-   public fup(fyk $$0) {
-      this.a = $$0;
-      this.f = $$0.b("head");
-      this.b = new fyk[12];
-      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
-   }
-
-   private static String a(int $$0) {
-      return "part" + $$0;
-   }
-
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      $$1.a("head", fyp.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), fym.a);
-      float $$2 = 0.0F;
-      fyp $$3 = fyp.c().a(0, 16).a(0.0F, 0.0F, 0.0F, 2.0F, 8.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         float $$5 = ayo.b($$2) * 9.0F;
-         float $$6 = -2.0F + ayo.b((float)($$4 * 2) * 0.25F);
-         float $$7 = ayo.a($$2) * 9.0F;
-         $$1.a(a($$4), $$3, fym.a($$5, $$6, $$7));
-         $$2++;
-      }
-
-      $$2 = (float) (Math.PI / 4);
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         float $$9 = ayo.b($$2) * 7.0F;
-         float $$10 = 2.0F + ayo.b((float)($$8 * 2) * 0.25F);
-         float $$11 = ayo.a($$2) * 7.0F;
-         $$1.a(a($$8), $$3, fym.a($$9, $$10, $$11));
-         $$2++;
-      }
-
-      $$2 = 0.47123894F;
-
-      for (int $$12 = 8; $$12 < 12; $$12++) {
-         float $$13 = ayo.b($$2) * 5.0F;
-         float $$14 = 11.0F + ayo.b((float)$$12 * 1.5F * 0.5F);
-         float $$15 = ayo.a($$2) * 5.0F;
-         $$1.a(a($$12), $$3, fym.a($$13, $$14, $$15));
-         $$2++;
-      }
-
-      return fyq.a($$0, 64, 32);
+   public fup(Collection<aua> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.v = $$0;
+      this.u = $$1;
    }
 
    @Override
-   public fyk a() {
-      return this.a;
+   public xd i() {
+      return xc.a(super.i(), b);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = $$3 * (float) Math.PI * -0.1F;
+   protected void aT_() {
+      super.aT_();
+      fnn.b $$0 = this.w.d(2);
+      fnr $$1 = $$0.b().b();
+      $$0.a(new flh(this.l, this.p), 2, $$1);
+      fku $$2 = $$0.a(new fku(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fka.a(c, $$0x -> this.m.a(new fup.a())).a(100).a(), 2, $$1);
+      $$0.a(fka.a(xc.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(fka.a(xc.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fjy var10000 = this.c($$1x);
+      });
+      this.w.a();
+      this.c();
+   }
 
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         this.b[$$7].c = -2.0F + ayo.b(((float)($$7 * 2) + $$3) * 0.25F);
-         this.b[$$7].b = ayo.b($$6) * 9.0F;
-         this.b[$$7].d = ayo.a($$6) * 9.0F;
-         $$6++;
+   @Override
+   protected void c() {
+      fnm.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void d() {
+      this.u.accept(false);
+   }
+
+   class a extends fpt {
+      private static final xd b = xd.c("selectWorld.experimental.details.title");
+      final fno c = new fno(this);
+      @Nullable
+      private fup.a.a d;
+
+      a() {
+         super(b);
       }
 
-      $$6 = (float) (Math.PI / 4) + $$3 * (float) Math.PI * 0.03F;
-
-      for (int $$8 = 4; $$8 < 8; $$8++) {
-         this.b[$$8].c = 2.0F + ayo.b(((float)($$8 * 2) + $$3) * 0.25F);
-         this.b[$$8].b = ayo.b($$6) * 7.0F;
-         this.b[$$8].d = ayo.a($$6) * 7.0F;
-         $$6++;
+      @Override
+      protected void aT_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new fup.a.a(this.m, fup.this.v));
+         this.c.b(fka.a(xc.k, $$0 -> this.d()).a());
+         this.c.a($$1 -> {
+            fjy var10000 = this.c($$1);
+         });
+         this.c();
       }
 
-      $$6 = 0.47123894F + $$3 * (float) Math.PI * -0.05F;
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
+         }
 
-      for (int $$9 = 8; $$9 < 12; $$9++) {
-         this.b[$$9].c = 11.0F + ayo.b(((float)$$9 * 1.5F + $$3) * 0.5F);
-         this.b[$$9].b = ayo.b($$6) * 5.0F;
-         this.b[$$9].d = ayo.a($$6) * 5.0F;
-         $$6++;
+         this.c.a();
       }
 
-      this.f.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = $$5 * (float) (Math.PI / 180.0);
+      @Override
+      public void d() {
+         this.m.a(fup.this);
+      }
+
+      class a extends fkw<fup.a.b> {
+         public a(final fib $$0, final Collection<aua> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
+
+            for (aua $$2 : $$1) {
+               String $$3 = cqj.a(cqj.h, $$2.e());
+               if (!$$3.isEmpty()) {
+                  xd $$4 = xg.a($$2.b().f(), ya.a.a(true));
+                  xd $$5 = xd.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fkt.a(a.this.p, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
+         }
+      }
+
+      class b extends fkw.a<fup.a.b> {
+         private final xd b;
+         private final xd c;
+         private final fkt d;
+
+         b(final xd $$0, final xd $$1, final fkt $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public xd a() {
+            return xd.a("narrator.select", xc.a(this.b, this.c));
+         }
+      }
    }
 }

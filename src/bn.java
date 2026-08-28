@@ -8,9 +8,9 @@ public class bn extends dv<bn.a> {
       return bn.a.a;
    }
 
-   public void a(aqv $$0, exc $$1) {
-      exc $$2 = $$0.dm();
-      this.a($$0, $$3 -> $$3.a($$0.A(), $$1, $$2));
+   public void a(arh $$0, eye $$1) {
+      eye $$2 = $$0.dq();
+      this.a($$0, $$3 -> $$3.a($$0.B(), $$1, $$2));
    }
 
    public static record a(Optional<bg> b, Optional<df> c, Optional<bm> d) implements dv.a {
@@ -35,10 +35,10 @@ public class bn extends dv<bn.a> {
          return an.D.a(new bn.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(aqu $$0, exc $$1, exc $$2) {
-         return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
+      public boolean a(arg $$0, eye $$1, eye $$2) {
+         return this.c.isPresent() && !this.c.get().a($$0, $$1.d, $$1.e, $$1.f)
             ? false
-            : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);
+            : !this.d.isPresent() || this.d.get().a($$1.d, $$1.e, $$1.f, $$2.d, $$2.e, $$2.f);
       }
 
       @Override

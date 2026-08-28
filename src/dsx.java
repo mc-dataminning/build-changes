@@ -1,22 +1,13 @@
-public class dsx {
-   public static ewx a(ewx $$0, ji $$1, double $$2) {
-      double $$3 = $$2 * (double)$$1.f().a();
-      double $$4 = Math.min($$3, 0.0);
-      double $$5 = Math.max($$3, 0.0);
-      switch ($$1) {
-         case e:
-            return new ewx($$0.a + $$4, $$0.b, $$0.c, $$0.a + $$5, $$0.e, $$0.f);
-         case f:
-            return new ewx($$0.d + $$4, $$0.b, $$0.c, $$0.d + $$5, $$0.e, $$0.f);
-         case a:
-            return new ewx($$0.a, $$0.b + $$4, $$0.c, $$0.d, $$0.b + $$5, $$0.f);
-         case b:
-         default:
-            return new ewx($$0.a, $$0.e + $$4, $$0.c, $$0.d, $$0.e + $$5, $$0.f);
-         case c:
-            return new ewx($$0.a, $$0.b, $$0.c + $$4, $$0.d, $$0.e, $$0.c + $$5);
-         case d:
-            return new ewx($$0.a, $$0.b, $$0.f + $$4, $$0.d, $$0.e, $$0.f + $$5);
-      }
+public class dsx extends dre {
+   protected dsx(drg<?> $$0, je $$1, dua $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public dsx(je $$0, dua $$1) {
+      this(drg.n, $$0, $$1);
+   }
+
+   public boolean a(jj $$0) {
+      return $$0.o() == jj.a.b;
    }
 }

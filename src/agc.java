@@ -1,24 +1,46 @@
-import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class agc implements zg<abu> {
-   public static final yx<wk, agc> a = yx.a(czb.a.a(yv.a()), $$0 -> $$0.b, agc::new);
-   private final List<czb<?>> b;
+public class agc implements zk<abz> {
+   public static final zb<wa, agc> a = zk.a(agc::a, agc::new);
+   private final int b;
+   @Nullable
+   private final uf c;
 
-   public agc(Collection<czb<?>> $$0) {
-      this.b = List.copyOf($$0);
+   public agc(int $$0, @Nullable uf $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   private agc(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.o();
+   }
+
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.a((vc)this.c);
    }
 
    @Override
-   public zi<agc> a() {
-      return agg.bd;
+   public zm<agc> a() {
+      return ago.aY;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public List<czb<?>> b() {
+   public int b() {
       return this.b;
+   }
+
+   @Nullable
+   public uf e() {
+      return this.c;
+   }
+
+   @Override
+   public boolean c() {
+      return true;
    }
 }

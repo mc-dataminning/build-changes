@@ -1,84 +1,61 @@
-public class ahw implements zg<agi> {
-   public static final yx<vw, ahw> a = zg.a(ahw::a, ahw::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private final jd e;
-   private final String f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final dqr.a j;
+public class ahw implements zk<agq> {
+   public static final zb<wa, ahw> a = zk.a(ahw::a, ahw::new);
+   private final int b;
+   private final ahw.a c;
+   private final int d;
 
-   public ahw(jd $$0, String $$1, dqr.a $$2, boolean $$3, boolean $$4, boolean $$5) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$2;
+   public ahw(btj $$0, ahw.a $$1) {
+      this($$0, $$1, 0);
    }
 
-   private ahw(vw $$0) {
-      this.e = $$0.e();
-      this.f = $$0.p();
-      this.j = $$0.b(dqr.a.class);
-      int $$1 = $$0.readByte();
-      this.g = ($$1 & 1) != 0;
-      this.h = ($$1 & 2) != 0;
-      this.i = ($$1 & 4) != 0;
+   public ahw(btj $$0, ahw.a $$1, int $$2) {
+      this.b = $$0.ap();
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.a(this.j);
-      int $$1 = 0;
-      if (this.g) {
-         $$1 |= 1;
-      }
+   private ahw(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.b(ahw.a.class);
+      this.d = $$0.l();
+   }
 
-      if (this.h) {
-         $$1 |= 2;
-      }
-
-      if (this.i) {
-         $$1 |= 4;
-      }
-
-      $$0.k($$1);
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.a(this.c);
+      $$0.c(this.d);
    }
 
    @Override
-   public zi<ahw> a() {
-      return agg.bU;
+   public zm<ahw> a() {
+      return ago.bO;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public jd b() {
-      return this.e;
+   public int b() {
+      return this.b;
    }
 
-   public String e() {
-      return this.f;
+   public ahw.a e() {
+      return this.c;
    }
 
-   public boolean f() {
-      return this.g;
+   public int f() {
+      return this.d;
    }
 
-   public boolean g() {
-      return this.h;
-   }
-
-   public boolean h() {
-      return this.i;
-   }
-
-   public dqr.a i() {
-      return this.j;
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e,
+      f,
+      g,
+      h,
+      i;
    }
 }

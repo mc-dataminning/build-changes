@@ -1,31 +1,65 @@
-import io.netty.buffer.ByteBuf;
+import java.io.IOException;
+import java.nio.file.FileStore;
+import java.nio.file.attribute.BasicFileAttributeView;
+import java.nio.file.attribute.FileAttributeView;
+import java.nio.file.attribute.FileStoreAttributeView;
+import javax.annotation.Nullable;
 
-public record atl(String c, String d, String e) {
-   public static final yx<ByteBuf, atl> a = yx.a(yv.l, atl::b, yv.l, atl::c, yv.l, atl::d, atl::new);
-   public static final String b = "minecraft";
+class atl extends FileStore {
+   private final String a;
 
-   public static atl a(String $$0) {
-      return new atl("minecraft", $$0, ab.b().b());
-   }
-
-   public boolean a() {
-      return this.c.equals("minecraft");
+   public atl(String $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public String toString() {
-      return this.c + ":" + this.d + ":" + this.e;
+   public String name() {
+      return this.a;
    }
 
-   public String b() {
-      return this.c;
+   @Override
+   public String type() {
+      return "index";
    }
 
-   public String c() {
-      return this.d;
+   @Override
+   public boolean isReadOnly() {
+      return true;
    }
 
-   public String d() {
-      return this.e;
+   @Override
+   public long getTotalSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUsableSpace() {
+      return 0L;
+   }
+
+   @Override
+   public long getUnallocatedSpace() {
+      return 0L;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(Class<? extends FileAttributeView> $$0) {
+      return $$0 == BasicFileAttributeView.class;
+   }
+
+   @Override
+   public boolean supportsFileAttributeView(String $$0) {
+      return "basic".equals($$0);
+   }
+
+   @Nullable
+   @Override
+   public <V extends FileStoreAttributeView> V getFileStoreAttributeView(Class<V> $$0) {
+      return null;
+   }
+
+   @Override
+   public Object getAttribute(String $$0) throws IOException {
+      throw new UnsupportedOperationException();
    }
 }

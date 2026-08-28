@@ -1,81 +1,106 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmg extends dia {
-   public static final MapCodec<dmg> a = b(dmg::new);
-   public static final dtt b = dts.s;
-   public static final duc e = dts.aA;
+public class dmg extends diy {
+   public static final MapCodec<dmg> b = b(dmg::new);
+   public static final dur c = duq.w;
 
    @Override
    public MapCodec<dmg> a() {
-      return a;
+      return b;
    }
 
-   protected dmg(dtb.d $$0) {
+   public dmg(dtz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(aE, ji.c).a(e, Integer.valueOf(1)).a(b, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.l(this.E.b().b(a, jj.d).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
-      if (!$$3.fZ().e) {
-         return bqr.e;
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(a, c);
+   }
+
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
       } else {
-         $$1.a($$2, $$0.a(e), 3);
-         return bqr.a($$1.B);
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
+      }
+
+      this.a($$1, $$2, $$0);
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(ddt $$0, je $$1) {
+      if (!$$0.w_() && !$$0.R().a($$1, this)) {
+         $$0.a($$1, this, 2);
       }
    }
 
-   @Override
-   protected int g(dtc $$0) {
-      return $$0.c(e) * 2;
+   protected void a(dds $$0, je $$1, dua $$2) {
+      jj $$3 = $$2.c(a);
+      je $$4 = $$1.a($$3.g());
+      erj $$5 = erf.a($$0, $$3.g(), null);
+      $$0.b($$4, this, $$5);
+      $$0.a($$4, this, $$3, $$5);
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = super.a($$0);
-      return $$1.a(b, Boolean.valueOf(this.c($$0.q(), $$0.a(), $$1)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$1 == ji.a && !this.b($$3, $$5, $$2)) {
-         return dga.a.o();
-      } else {
-         return !$$3.x_() && $$1.o() != $$0.c(aE).o() ? $$0.a(b, Boolean.valueOf(this.c($$3, $$4, $$0))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
-   }
-
-   @Override
-   public boolean c(dcz $$0, jd $$1, dtc $$2) {
-      return this.a((ddm)$$0, $$1, $$2) > 0;
-   }
-
-   @Override
-   protected boolean b() {
+   protected boolean f_(dua $$0) {
       return true;
    }
 
    @Override
-   public void a(dtc $$0, dcw $$1, jd $$2, ayw $$3) {
-      if ($$0.c(d)) {
-         ji $$4 = $$0.c(aE);
-         double $$5 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         double $$6 = (double)$$2.v() + 0.4 + ($$3.j() - 0.5) * 0.2;
-         double $$7 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
-         float $$8 = -5.0F;
-         if ($$3.h()) {
-            $$8 = (float)($$0.c(e) * 2 - 1);
-         }
+   protected int b(dua $$0, dcx $$1, je $$2, jj $$3) {
+      return $$0.a($$1, $$2, $$3);
+   }
 
-         $$8 /= 16.0F;
-         double $$9 = (double)($$8 * (float)$$4.j());
-         double $$10 = (double)($$8 * (float)$$4.l());
-         $$1.a(lh.b, $$5 + $$9, $$6, $$7 + $$10, 0.0, 0.0, 0.0);
+   @Override
+   protected int a(dua $$0, dcx $$1, je $$2, jj $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.w_() && $$0.c(c) && !$$1.R().a($$2, this)) {
+            dua $$5 = $$0.b(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
+         }
       }
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(aE, e, b, d);
+   protected void a(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.R().a($$2, this)) {
+            this.a($$1, $$2, $$0.b(c, Boolean.valueOf(false)));
+         }
+      }
+   }
+
+   @Override
+   public dua a(cyw $$0) {
+      return this.o().b(a, $$0.d().g().g());
    }
 }

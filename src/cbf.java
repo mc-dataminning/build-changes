@@ -1,90 +1,13 @@
 import java.util.EnumSet;
-import java.util.function.Function;
-import javax.annotation.Nullable;
 
-public class cbf extends cam {
-   public static final int b = 1;
-   protected final btw c;
-   protected final double d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected boolean h;
-   private final Function<btw, awu<brm>> a;
-
-   public cbf(btw $$0, double $$1) {
-      this($$0, $$1, awg.F);
+public class cbf extends cbk {
+   public cbf(buh $$0, Class<? extends buf> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(EnumSet.of(cbc.a.b, cbc.a.a));
    }
 
-   public cbf(btw $$0, double $$1, awu<brm> $$2) {
-      this($$0, $$1, $$1x -> $$2);
-   }
-
-   public cbf(btw $$0, double $$1, Function<btw, awu<brm>> $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.a = $$2;
-      this.a(EnumSet.of(cam.a.a));
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.h()) {
-         return false;
-      } else {
-         if (this.c.bR()) {
-            jd $$0 = this.a(this.c.dO(), this.c, 5);
-            if ($$0 != null) {
-               this.e = (double)$$0.u();
-               this.f = (double)$$0.v();
-               this.g = (double)$$0.w();
-               return true;
-            }
-         }
-
-         return this.i();
-      }
-   }
-
-   protected boolean h() {
-      return this.c.ey() != null && this.c.ey().a(this.a.apply(this.c));
-   }
-
-   protected boolean i() {
-      exc $$0 = cej.a(this.c, 5, 4);
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.e = $$0.c;
-         this.f = $$0.d;
-         this.g = $$0.e;
-         return true;
-      }
-   }
-
-   public boolean k() {
-      return this.h;
-   }
-
-   @Override
-   public void d() {
-      this.c.N().a(this.e, this.f, this.g, this.d);
-      this.h = true;
-   }
-
-   @Override
-   public void e() {
-      this.h = false;
-   }
-
-   @Override
-   public boolean c() {
-      return !this.c.N().l();
-   }
-
-   @Nullable
-   protected jd a(dcc $$0, bsr $$1, int $$2) {
-      jd $$3 = $$1.do();
-      return !$$0.a_($$3).k($$0, $$3).c() ? null : jd.a($$1.do(), $$2, 1, $$1x -> $$0.b_($$1x).a(awk.a)).orElse(null);
+   public cbf(buh $$0, Class<? extends buf> $$1, float $$2, float $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a(EnumSet.of(cbc.a.b, cbc.a.a));
    }
 }

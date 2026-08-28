@@ -1,21 +1,29 @@
-public class gow<T extends bsr & bue, M extends fvk<T>> extends gov<T, M> {
-   private final akr a;
-   private final M b;
+public class gow extends gln<cim, gur, fyz> {
+   private static final alb a = alb.b("textures/entity/sniffer/sniffer.png");
 
-   public gow(gmf<T, M> $$0, M $$1, akr $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+   public gow(gms.a $$0) {
+      super($$0, new fyz($$0.a(gaa.ct)), new fyz($$0.a(gaa.cu)), 1.1F);
    }
 
-   @Override
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         fbm $$10 = $$1.getBuffer(gfh.e(this.a));
-         this.b.a($$0, $$10, $$2, gqc.d);
-      }
+   public alb a(gur $$0) {
+      return a;
+   }
+
+   public gur c() {
+      return new gur();
+   }
+
+   public void a(cim $$0, gur $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.b.a($$0.cd);
+      $$1.c.a($$0.cb);
+      $$1.d.a($$0.ce);
+      $$1.e.a($$0.bZ);
+      $$1.f.a($$0.ca);
+   }
+
+   protected exz a(cim $$0) {
+      return super.a($$0).g(0.6F);
    }
 }

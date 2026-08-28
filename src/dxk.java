@@ -1,72 +1,31 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 
-public class dxk<T extends dxg> {
-   private static final Logger a = LogUtils.getLogger();
-   private final axf<T> b;
-   private dxt c;
+public class dxk extends dxs {
+   private final dxi a;
+   private final Path b;
 
-   public dxk(Class<T> $$0, dxt $$1) {
-      this.c = $$1;
-      this.b = new axf<>($$0);
+   public dxk(dxp $$0, Path $$1, dxp $$2, Path $$3, DataFixer $$4, boolean $$5, bal $$6) {
+      super($$0, $$1, $$4, $$5, $$6);
+      this.b = $$3;
+      this.a = new dxi($$2, $$3, $$5);
    }
 
-   public void a(T $$0) {
-      this.b.add($$0);
+   @Override
+   public CompletableFuture<Void> a(dcy $$0, @Nullable uf $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public boolean b(T $$0) {
-      return this.b.remove($$0);
-   }
-
-   public axa.a a(ewx $$0, axa<T> $$1) {
-      for (T $$2 : this.b) {
-         if ($$2.cK().c($$0) && $$1.accept($$2).a()) {
-            return axa.a.b;
-         }
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
       }
-
-      return axa.a.a;
-   }
-
-   public <U extends T> axa.a a(dxn<T, U> $$0, ewx $$1, axa<? super U> $$2) {
-      Collection<? extends T> $$3 = this.b.a($$0.a());
-      if ($$3.isEmpty()) {
-         return axa.a.a;
-      } else {
-         for (T $$4 : $$3) {
-            U $$5 = (U)$$0.a($$4);
-            if ($$5 != null && $$4.cK().c($$1) && $$2.accept($$5).a()) {
-               return axa.a.b;
-            }
-         }
-
-         return axa.a.a;
-      }
-   }
-
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public dxt c() {
-      return this.c;
-   }
-
-   public dxt a(dxt $$0) {
-      dxt $$1 = this.c;
-      this.c = $$0;
-      return $$1;
-   }
-
-   @azt
-   public int d() {
-      return this.b.size();
    }
 }

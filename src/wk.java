@@ -1,19 +1,38 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public class wk extends vw {
-   private final ka d;
+public interface wk {
+   static wk a(final Runnable $$0) {
+      return new wk() {
+         @Override
+         public void a() {
+            $$0.run();
+         }
 
-   public wk(ByteBuf $$0, ka $$1) {
-      super($$0);
-      this.d = $$1;
+         @Nullable
+         @Override
+         public zk<?> b() {
+            $$0.run();
+            return null;
+         }
+      };
    }
 
-   public ka G() {
-      return this.d;
+   static wk a(final Supplier<zk<?>> $$0) {
+      return new wk() {
+         @Nullable
+         @Override
+         public zk<?> b() {
+            return $$0.get();
+         }
+      };
    }
 
-   public static Function<ByteBuf, wk> a(ka $$0) {
-      return $$1 -> new wk($$1, $$0);
+   default void a() {
+   }
+
+   @Nullable
+   default zk<?> b() {
+      return null;
    }
 }

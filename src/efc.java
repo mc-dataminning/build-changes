@@ -1,43 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class efc implements eei {
+public class efc implements efg {
    public static final Codec<efc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               edo.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               jd.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+               dua.a.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dua.a.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bqp.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bqp.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, efc::new)
    );
-   private final boolean b;
-   private final List<edo.a> c;
-   @Nullable
-   private final jd d;
+   private final dua b;
+   private final dua c;
+   private final bqp d;
+   private final bqp e;
 
-   public efc(boolean $$0, List<edo.a> $$1, @Nullable jd $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
-   }
-
-   private efc(boolean $$0, List<edo.a> $$1, Optional<jd> $$2) {
+   public efc(dua $$0, dua $$1, bqp $$2, bqp $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.orElse(null);
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public boolean a() {
+   public dua a() {
       return this.b;
    }
 
-   public List<edo.a> b() {
+   public dua b() {
       return this.c;
    }
 
-   @Nullable
-   public jd c() {
+   public bqp c() {
       return this.d;
+   }
+
+   public bqp d() {
+      return this.e;
    }
 }

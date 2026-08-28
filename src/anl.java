@@ -1,38 +1,41 @@
-import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class anl {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("commands.op.failed"));
-
    public static void a(CommandDispatcher<et> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("op").requires($$0x -> $$0x.c(3))).then(eu.a("targets", fi.a()).suggests(($$0x, $$1) -> {
-            aur $$2 = ((et)$$0x.getSource()).l().ah();
-            return ey.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fX())).map($$0xx -> $$0xx.fX().getName()), $$1);
-         }).executes($$0x -> a((et)$$0x.getSource(), fi.a($$0x, "targets"))))
-      );
+      final LiteralArgumentBuilder<et> $$1 = (LiteralArgumentBuilder<et>)eu.a("gamerule").requires($$0x -> $$0x.c(2));
+      new ddo(cqj.f.a())
+         .a(
+            new ddo.c() {
+               @Override
+               public <T extends ddo.g<T>> void a(ddo.e<T> $$0, ddo.f<T> $$1x) {
+                  LiteralArgumentBuilder<et> $$2 = eu.a($$0.a());
+                  if (!$$1.b().b()) {
+                     $$2.requires($$1xxx -> $$1.b().a($$1xxx.w()));
+                  }
+
+                  $$1.then(
+                     ((LiteralArgumentBuilder)$$2.executes($$1xxx -> anl.a((et)$$1xxx.getSource(), $$0)))
+                        .then($$1.a("value").executes($$1xxx -> anl.a($$1xxx, $$0)))
+                  );
+               }
+            }
+         );
+      $$0.register($$1);
    }
 
-   private static int a(et $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
-      aur $$2 = $$0.l().ah();
-      int $$3 = 0;
+   static <T extends ddo.g<T>> int a(CommandContext<et> $$0, ddo.e<T> $$1) {
+      et $$2 = (et)$$0.getSource();
+      T $$3 = $$2.l().aL().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> xd.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
 
-      for (GameProfile $$4 : $$1) {
-         if (!$$2.f($$4)) {
-            $$2.a($$4);
-            $$3++;
-            $$0.a(() -> wz.a("commands.op.success", $$1.iterator().next().getName()), true);
-         }
-      }
-
-      if ($$3 == 0) {
-         throw a.create();
-      } else {
-         return $$3;
-      }
+   static <T extends ddo.g<T>> int a(et $$0, ddo.e<T> $$1) {
+      T $$2 = $$0.l().aL().a($$1);
+      $$0.a(() -> xd.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

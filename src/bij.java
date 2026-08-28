@@ -1,37 +1,62 @@
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
 
-public class bij extends bid {
-   public bij(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bij extends bgf {
+   public bij(Schema $$0, String $$1) {
+      super($$0, false, "Villager profession data fix (" + $$1 + ")", bhk.B, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.registerSimple($$1, "minecraft:bed");
-      return $$1;
-   }
-
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bgr.p,
-         () -> DSL.optionalFields(
-               "minecraft:adventure/adventuring_time",
-               DSL.optionalFields("criteria", DSL.compoundList(bgr.K.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_a_mob",
-               DSL.optionalFields("criteria", DSL.compoundList(bgr.z.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:adventure/kill_all_mobs",
-               DSL.optionalFields("criteria", DSL.compoundList(bgr.z.in($$0), DSL.constType(DSL.string()))),
-               "minecraft:husbandry/bred_all_animals",
-               DSL.optionalFields("criteria", DSL.compoundList(bgr.z.in($$0), DSL.constType(DSL.string())))
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
+      return $$0.set(
+         DSL.remainderFinder(),
+         $$1.remove("Profession")
+            .remove("Career")
+            .remove("CareerLevel")
+            .set(
+               "VillagerData",
+               $$1.createMap(
+                  ImmutableMap.of(
+                     $$1.createString("type"),
+                     $$1.createString("minecraft:plains"),
+                     $$1.createString("profession"),
+                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
+                     $$1.createString("level"),
+                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
+                  )
+               )
             )
       );
-      $$0.registerType(false, bgr.K, () -> DSL.constType(a()));
-      $$0.registerType(false, bgr.z, () -> DSL.constType(a()));
+   }
+
+   private static String a(int $$0, int $$1) {
+      if ($$0 == 0) {
+         if ($$1 == 2) {
+            return "minecraft:fisherman";
+         } else if ($$1 == 3) {
+            return "minecraft:shepherd";
+         } else {
+            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
+         }
+      } else if ($$0 == 1) {
+         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
+      } else if ($$0 == 2) {
+         return "minecraft:cleric";
+      } else if ($$0 == 3) {
+         if ($$1 == 2) {
+            return "minecraft:weaponsmith";
+         } else {
+            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
+         }
+      } else if ($$0 == 4) {
+         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
+      } else {
+         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
+      }
    }
 }

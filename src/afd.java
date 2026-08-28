@@ -1,45 +1,37 @@
-public class afd implements zg<abu> {
-   public static final yx<vw, afd> a = zg.a(afd::a, afd::new);
-   private final float b;
-   private final int c;
-   private final int d;
+public class afd implements zk<abz> {
+   public static final zb<wa, afd> a = zk.a(afd::a, afd::new);
+   private final je b;
+   private final float c;
 
-   public afd(float $$0, int $$1, int $$2) {
+   public afd(je $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
    }
 
-   private afd(vw $$0) {
-      this.b = $$0.readFloat();
-      this.d = $$0.l();
-      this.c = $$0.l();
+   private afd(wa $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readFloat();
    }
 
-   private void a(vw $$0) {
+   private void a(wa $$0) {
       $$0.a(this.b);
-      $$0.c(this.d);
-      $$0.c(this.c);
+      $$0.a(this.c);
    }
 
    @Override
-   public zi<afd> a() {
-      return agg.aG;
+   public zm<afd> a() {
+      return ago.aA;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public je b() {
       return this.b;
    }
 
-   public int e() {
+   public float e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

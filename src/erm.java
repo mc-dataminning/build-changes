@@ -1,3 +1,8 @@
-public interface erm extends erb {
-   void a(jd var1, float var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface erm {
 }

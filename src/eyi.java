@@ -1,83 +1,20 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+public interface eyi {
+   eyi a = ($$0, $$1) -> false;
+   eyi b = ($$0, $$1) -> !$$0 && !$$1;
+   eyi c = ($$0, $$1) -> $$1 && !$$0;
+   eyi d = ($$0, $$1) -> !$$0;
+   eyi e = ($$0, $$1) -> $$0 && !$$1;
+   eyi f = ($$0, $$1) -> !$$1;
+   eyi g = ($$0, $$1) -> $$0 != $$1;
+   eyi h = ($$0, $$1) -> !$$0 || !$$1;
+   eyi i = ($$0, $$1) -> $$0 && $$1;
+   eyi j = ($$0, $$1) -> $$0 == $$1;
+   eyi k = ($$0, $$1) -> $$1;
+   eyi l = ($$0, $$1) -> !$$0 || $$1;
+   eyi m = ($$0, $$1) -> $$0;
+   eyi n = ($$0, $$1) -> $$0 || !$$1;
+   eyi o = ($$0, $$1) -> $$0 || $$1;
+   eyi p = ($$0, $$1) -> true;
 
-public abstract class eyi {
-   public boolean a(@Nullable eyi $$0) {
-      return $$0 == null ? false : this == $$0;
-   }
-
-   public abstract String b();
-
-   public abstract xn d(wz var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract eyi.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract eyi.b k();
-
-   public abstract eyi.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, eyi.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eyi.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static eyi.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public wz a() {
-         return wz.c("team.collision." + this.e);
-      }
-   }
-
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
-
-      private static final Map<String, eyi.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (eyi.b)$$0));
-      public final String e;
-      public final int f;
-
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
-
-      @Nullable
-      public static eyi.b a(String $$0) {
-         return g.get($$0);
-      }
-
-      private b(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public wz b() {
-         return wz.c("team.visibility." + this.e);
-      }
-   }
+   boolean apply(boolean var1, boolean var2);
 }

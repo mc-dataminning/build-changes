@@ -1,48 +1,162 @@
-import com.mojang.logging.LogUtils;
-import java.util.Hashtable;
-import java.util.Optional;
-import javax.naming.directory.Attribute;
-import javax.naming.directory.Attributes;
-import javax.naming.directory.DirContext;
-import javax.naming.directory.InitialDirContext;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface gba {
-   Logger a = LogUtils.getLogger();
-   gba b = $$0 -> Optional.empty();
+public class gba implements ey {
+   private final gay a;
+   private final fib b;
+   private int c = -1;
+   @Nullable
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
 
-   Optional<gax> lookupRedirect(gax var1);
+   public gba(gay $$0, fib $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-   static gba createDnsSrvRedirectHandler() {
-      DirContext $$2;
-      try {
-         String $$0 = "com.sun.jndi.dns.DnsContextFactory";
-         Class.forName("com.sun.jndi.dns.DnsContextFactory");
-         Hashtable<String, String> $$1 = new Hashtable<>();
-         $$1.put("java.naming.factory.initial", "com.sun.jndi.dns.DnsContextFactory");
-         $$1.put("java.naming.provider.url", "dns:");
-         $$1.put("com.sun.jndi.dns.timeout.retries", "1");
-         $$2 = new InitialDirContext($$1);
-      } catch (Throwable var3) {
-         a.error("Failed to initialize SRV redirect resolved, some servers might not work", var3);
-         return b;
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (gbi $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
       }
 
-      return $$1x -> {
-         if ($$1x.b() == 25565) {
-            try {
-               Attributes $$2x = $$2.getAttributes("_minecraft._tcp." + $$1x.a(), new String[]{"SRV"});
-               Attribute $$3x = $$2x.get("srv");
-               if ($$3x != null) {
-                  String[] $$4x = $$3x.get().toString().split(" ", 4);
-                  return Optional.of(new gax($$4x[3], gax.c($$4x[2])));
-               }
-            } catch (Throwable var5) {
-            }
-         }
+      return $$0;
+   }
 
-         return Optional.empty();
-      };
+   @Override
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
+      } else {
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
+      }
+   }
+
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.w != null && this.b.w.c() == eyc.a.c ? Collections.singleton(((eyb)this.b.w).a().cE()) : Collections.emptyList());
+   }
+
+   @Override
+   public Collection<String> r() {
+      return this.a.z().f();
+   }
+
+   @Override
+   public Stream<alb> s() {
+      return this.b.aj().d().stream();
+   }
+
+   @Override
+   public Stream<alb> t() {
+      return this.a.j().g();
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      gfs $$1 = this.b.t;
+      return $$1 != null ? $$1.l($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(ala<? extends ka<?>> $$0, ey.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().c($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
+      }
+
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new ahd($$1, $$0.getInput()));
+      return this.d;
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
+
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
+
+   @Override
+   public Collection<ey.b> B() {
+      eyc $$0 = this.b.w;
+      if ($$0 != null && $$0.c() == eyc.a.b) {
+         je $$1 = ((eya)$$0).a();
+         return Collections.singleton(new ey.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return ey.super.B();
+      }
+   }
+
+   @Override
+   public Collection<ey.b> C() {
+      eyc $$0 = this.b.w;
+      if ($$0 != null && $$0.c() == eyc.a.b) {
+         eye $$1 = $$0.e();
+         return Collections.singleton(new ey.b(a($$1.d), a($$1.e), a($$1.f)));
+      } else {
+         return ey.super.C();
+      }
+   }
+
+   @Override
+   public Set<ala<dds>> u() {
+      return this.a.u();
+   }
+
+   @Override
+   public kb v() {
+      return this.a.v();
+   }
+
+   @Override
+   public cqh w() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(acy.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
+      }
    }
 }

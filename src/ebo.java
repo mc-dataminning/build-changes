@@ -1,48 +1,21 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class ebo extends ece<eep> {
-   public ebo(Codec<eep> $$0) {
-      super($$0);
+public abstract class ebo implements ebd {
+   protected final ki f;
+
+   protected static <P extends ebo> P1<Mu<P>, ki> a(Instance<P> $$0) {
+      return $$0.group(ki.v(16).optionalFieldOf("offset", ki.g).forGetter($$0x -> $$0x.f));
    }
 
-   @Override
-   public boolean a(ecg<eep> $$0) {
-      ayw $$1 = $$0.d();
-      dds $$2 = $$0.b();
-      dcd $$3 = new dcd($$0.e());
-      IntArrayList $$4 = ad.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ad.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      jd.a $$6 = new jd.a();
-      IntListIterator var8 = $$4.iterator();
-
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            jd $$9 = $$2.a(dyy.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, dga.cv.o(), 2);
-               bqz.a($$2, $$1, $$9, ern.b);
-               dtc $$10 = dga.cp.o();
-
-               for (ji $$11 : ji.c.a) {
-                  jd $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   protected ebo(ki $$0) {
+      this.f = $$0;
    }
+
+   public final boolean a(dep $$0, je $$1) {
+      return this.a($$0.a_($$1.a(this.f)));
+   }
+
+   protected abstract boolean a(dua var1);
 }

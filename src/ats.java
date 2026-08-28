@@ -1,56 +1,28 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.nio.file.Path;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
 
-public class ats extends atj {
-   private static final atf c = new atf(wz.c("dataPack.vanilla.description"), ab.b().a(ass.b), Optional.empty());
-   private static final asm d = new asm(cpn.g);
-   private static final asi e = asi.a(atf.b, c, asm.a, d);
-   private static final asp f = new asp("vanilla", wz.c("dataPack.vanilla.name"), atq.c, Optional.of(b));
-   private static final asr g = new asr(false, atm.b.b, false);
-   private static final asr h = new asr(false, atm.b.a, false);
-   private static final akr i = akr.b("datapacks");
+public interface ats<T> extends atr<T> {
+   JsonObject a(T var1);
 
-   public ats(ews $$0) {
-      super(ass.b, b(), i, $$0);
-   }
+   static <T> ats<T> a(final String $$0, final Codec<T> $$1) {
+      return new ats<T>() {
+         @Override
+         public String a() {
+            return $$0;
+         }
 
-   private static asp a(String $$0, wz $$1) {
-      return new asp($$0, $$1, atq.d, Optional.of(atl.a($$0)));
-   }
+         @Override
+         public T a(JsonObject $$0x) {
+            return (T)$$1.parse(JsonOps.INSTANCE, $$0).getOrThrow(JsonParseException::new);
+         }
 
-   @VisibleForTesting
-   public static asu b() {
-      return new asv().a(e).a("minecraft").b().a().a(f);
-   }
-
-   @Override
-   protected wz a(String $$0) {
-      return wz.b($$0);
-   }
-
-   @Nullable
-   @Override
-   protected atm a(asq $$0) {
-      return atm.a(f, b($$0), ass.b, g);
-   }
-
-   @Nullable
-   @Override
-   protected atm a(String $$0, atm.c $$1, wz $$2) {
-      return atm.a(a($$0, $$2), $$1, ass.b, h);
-   }
-
-   public static atp a(Path $$0, ews $$1) {
-      return new atp(new ats($$1), new atk($$0, ass.b, atq.e, $$1));
-   }
-
-   public static atp c() {
-      return new atp(new ats(new ews($$0 -> true)));
-   }
-
-   public static atp a(erf.c $$0) {
-      return a($$0.a(erd.j), $$0.d().e());
+         @Override
+         public JsonObject a(T $$0x) {
+            return ((JsonElement)$$1.encodeStart(JsonOps.INSTANCE, $$0).getOrThrow(IllegalArgumentException::new)).getAsJsonObject();
+         }
+      };
    }
 }

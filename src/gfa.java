@@ -1,81 +1,54 @@
-import java.util.Optional;
-
-public class gfa implements gez {
-   private final gez.a a;
-   private final gez.a b = gez.a(new fbf(1536));
-   private int c = 255;
-   private int d = 255;
-   private int e = 255;
-   private int f = 255;
-
-   public gfa(gez.a $$0) {
-      this.a = $$0;
+public class gfa extends geq {
+   gfa(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gez $$8) {
+      super($$0, $$1, $$2, $$3, $$8, 0.0F);
+      this.B = 0.92F;
+      this.D = 0.5F;
+      this.e(1.0F);
+      this.a((float)axn.b($$7), (float)axn.c($$7), (float)axn.d($$7));
+      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
+      this.b($$8);
+      this.n = false;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public fbm getBuffer(gfh $$0) {
-      if ($$0.N()) {
-         fbm $$1 = this.b.getBuffer($$0);
-         return new gfa.a($$1, this.c, this.d, this.e, this.f);
-      } else {
-         fbm $$2 = this.a.getBuffer($$0);
-         Optional<gfh> $$3 = $$0.M();
-         if ($$3.isPresent()) {
-            fbm $$4 = this.b.getBuffer($$3.get());
-            gfa.a $$5 = new gfa.a($$4, this.c, this.d, this.e, this.f);
-            return fbp.a($$5, $$2);
-         } else {
-            return $$2;
+   public void a() {
+      super.a();
+      if (!this.o) {
+         this.b(this.a);
+         if (this.s > this.t / 2) {
+            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         }
+
+         if (this.c.a_(je.a(this.g, this.h, this.i)).l()) {
+            this.k -= 0.0074F;
          }
       }
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfa($$1, $$2, $$3, $$4, $$5, $$6, $$7, axn.a(255, 204, 31, 102), this.a);
+      }
    }
 
-   public void a() {
-      this.b.b();
-   }
+   public static class b implements geh<lr> {
+      private final gez a;
 
-   static record a(fbm a, int b) implements fbm {
-      public a(fbm $$0, int $$1, int $$2, int $$3, int $$4) {
-         this($$0, axy.b.a($$4, $$1, $$2, $$3));
+      public b(gez $$0) {
+         this.a = $$0;
       }
 
-      @Override
-      public fbm a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2).a(this.b);
-         return this;
-      }
-
-      @Override
-      public fbm a(int $$0, int $$1, int $$2, int $$3) {
-         return this;
-      }
-
-      @Override
-      public fbm a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fbm a(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fbm b(int $$0, int $$1) {
-         return this;
-      }
-
-      @Override
-      public fbm b(float $$0, float $$1, float $$2) {
-         return this;
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfa($$1, $$2, $$3, $$4, $$5, $$6, $$7, axn.a(255, 255, 255, 255), this.a);
       }
    }
 }

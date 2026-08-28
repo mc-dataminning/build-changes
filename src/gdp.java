@@ -1,42 +1,66 @@
-public class gdp extends gcl {
-   private final bsr a;
-   private int b;
-   private final int D;
-   private final lk E;
-
-   public gdp(fzf $$0, bsr $$1, lk $$2) {
-      this($$0, $$1, $$2, 3);
-   }
-
-   public gdp(fzf $$0, bsr $$1, lk $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dr());
-   }
-
-   private gdp(fzf $$0, bsr $$1, lk $$2, int $$3, exc $$4) {
-      super($$0, $$1.dt(), $$1.e(0.5), $$1.dz(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+public class gdp extends gem {
+   gdp(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
+   public gei b() {
+      return gei.b;
+   }
+
+   @Override
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
+   }
+
+   @Override
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
+   }
+
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azc.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
       }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdp $$8 = new gdp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements geh<lr> {
+      private final gez a;
+
+      public b(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdp $$8 = new gdp($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

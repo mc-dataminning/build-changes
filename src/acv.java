@@ -1,25 +1,45 @@
-public record acv(long[] b, bls c) implements zg<abu> {
-   public static final yx<vw, acv> a = zg.a(acv::a, acv::new);
+public class acv implements zk<abz> {
+   public static final zb<wa, acv> a = zk.a(acv::a, acv::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-   private acv(vw $$0) {
-      this($$0.d(), $$0.b(bls.class));
+   public acv(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private acv(wa $$0) {
+      this.b = $$0.x();
+      this.c = $$0.readShort();
+      this.d = $$0.readShort();
+   }
+
+   private void a(wa $$0) {
+      $$0.f(this.b);
+      $$0.m(this.c);
+      $$0.m(this.d);
    }
 
    @Override
-   public zi<acv> a() {
-      return agg.A;
+   public zm<acv> a() {
+      return ago.v;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public bls e() {
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

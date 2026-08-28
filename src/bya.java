@@ -1,32 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bya {
-   public static bvi<cmk> a(ccs<List<jl>> $$0, float $$1, int $$2, int $$3, ccs<jl> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return byu.a(
-         (Function<byu.b<cmk>, ? extends App<byu.c<cmk>, byx<cmk>>>)($$6 -> $$6.group($$6.a(ccs.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<jl> $$11 = $$6.b($$6x);
-                     jl $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        jl $$13 = $$11.get($$8.E_().a($$11.size()));
-                        if ($$13 != null && $$8.af() == $$13.a() && $$12.b().a($$9.dm(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new ccv($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
+   public static bvy<buf> a() {
+      return bzk.a((Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$0 -> $$0.a((bzn<buf>)(($$0x, $$1, $$2) -> {
+            if ($$0x.z.a(20) != 0) {
+               return false;
+            } else {
+               bvg<?> $$3 = $$1.dX();
+               cpc $$4 = $$0x.d($$1.ds());
+               if ($$4 != null) {
+                  if ($$4.c() && !$$4.b()) {
+                     $$3.b(cpg.h);
+                     $$3.a(cpg.h);
+                  } else {
+                     $$3.b(cpg.i);
+                     $$3.a(cpg.i);
+                  }
+               }
 
-                           return true;
-                        } else {
-                           return false;
-                        }
-                     }
-                  }))
-      );
+               return true;
+            }
+         }))));
    }
 }

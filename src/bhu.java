@@ -1,55 +1,69 @@
-import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.Set;
+import java.util.Map;
+import javax.annotation.Nullable;
 
 public class bhu extends DataFix {
-   private static final Set<String> a = ImmutableSet.of(
-      "minecraft:andesite_wall",
-      "minecraft:brick_wall",
-      "minecraft:cobblestone_wall",
-      "minecraft:diorite_wall",
-      "minecraft:end_stone_brick_wall",
-      "minecraft:granite_wall",
-      new String[]{
-         "minecraft:mossy_cobblestone_wall",
-         "minecraft:mossy_stone_brick_wall",
-         "minecraft:nether_brick_wall",
-         "minecraft:prismarine_wall",
-         "minecraft:red_nether_brick_wall",
-         "minecraft:red_sandstone_wall",
-         "minecraft:sandstone_wall",
-         "minecraft:stone_brick_wall"
-      }
-   );
+   private static final Map<String, String> a = ImmutableMap.builder()
+      .put("slot_0", "list")
+      .put("slot_1", "sidebar")
+      .put("slot_2", "below_name")
+      .put("slot_3", "sidebar.team.black")
+      .put("slot_4", "sidebar.team.dark_blue")
+      .put("slot_5", "sidebar.team.dark_green")
+      .put("slot_6", "sidebar.team.dark_aqua")
+      .put("slot_7", "sidebar.team.dark_red")
+      .put("slot_8", "sidebar.team.dark_purple")
+      .put("slot_9", "sidebar.team.gold")
+      .put("slot_10", "sidebar.team.gray")
+      .put("slot_11", "sidebar.team.dark_gray")
+      .put("slot_12", "sidebar.team.blue")
+      .put("slot_13", "sidebar.team.green")
+      .put("slot_14", "sidebar.team.aqua")
+      .put("slot_15", "sidebar.team.red")
+      .put("slot_16", "sidebar.team.light_purple")
+      .put("slot_17", "sidebar.team.yellow")
+      .put("slot_18", "sidebar.team.white")
+      .build();
 
-   public bhu(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   public bhu(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("WallPropertyFix", this.getInputSchema().getType(bgr.u), $$0 -> $$0.update(DSL.remainderFinder(), bhu::a));
-   }
-
+   @Nullable
    private static String a(String $$0) {
-      return "true".equals($$0) ? "low" : "none";
+      return a.get($$0);
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0, String $$1) {
-      return $$0.update($$1, $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().result().map(bhu::a).map($$0x::createString), $$0x));
-   }
-
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      boolean $$1 = $$0.get("Name").asString().result().filter(a::contains).isPresent();
-      return !$$1 ? $$0 : $$0.update("Properties", $$0x -> {
-         Dynamic<?> $$1x = a($$0x, "east");
-         $$1x = a((Dynamic<T>)$$1x, "west");
-         $$1x = a((Dynamic<T>)$$1x, "north");
-         return a((Dynamic<T>)$$1x, "south");
-      });
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.o);
+      OpticFinder<?> $$1 = $$0.findField("data");
+      return this.fixTypeEverywhereTyped(
+         "Scoreboard DisplaySlot rename",
+         $$0,
+         $$1x -> $$1x.updateTyped(
+               $$1,
+               $$0xx -> $$0xx.update(
+                     DSL.remainderFinder(),
+                     $$0xxx -> $$0xxx.update(
+                           "DisplaySlots",
+                           $$0xxxx -> $$0xxxx.updateMapValues(
+                                 $$0xxxxx -> $$0xxxxx.mapFirst(
+                                       $$0xxxxxx -> (Dynamic)DataFixUtils.orElse(
+                                             $$0xxxxxx.asString().result().map(bhu::a).map($$0xxxxxx::createString), $$0xxxxxx
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 }

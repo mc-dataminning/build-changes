@@ -1,86 +1,26 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fry {
-   @Nullable
-   private czb<?> a;
-   private final List<fry.a> b = Lists.newArrayList();
-   float c;
+public class fry implements fsd {
+   private final foh a;
 
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
-   }
-
-   public void a(cyw $$0, int $$1, int $$2) {
-      this.b.add(new fry.a($$0, $$1, $$2));
-   }
-
-   public fry.a a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int b() {
-      return this.b.size();
-   }
-
-   @Nullable
-   public czb<?> c() {
-      return this.a;
-   }
-
-   public void a(czb<?> $$0) {
+   public fry(foh $$0) {
       this.a = $$0;
    }
 
-   public void a(fhz $$0, fgo $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fod.r()) {
-         this.c += $$5;
+   @Override
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
       }
 
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         fry.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
-         }
-
-         cuq $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(gfh.H(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
-         }
-      }
-   }
-
-   public class a {
-      private final cyw b;
-      private final int c;
-      private final int d;
-
-      public a(final cyw $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
       }
 
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public cuq c() {
-         cuq[] $$0 = this.b.a();
-         return $$0.length == 0 ? cuq.l : $$0[ayo.d(fry.this.c / 30.0F) % $$0.length];
-      }
+      return $$6;
    }
 }

@@ -1,45 +1,45 @@
-public class afe implements zg<abu> {
-   public static final yx<vw, afe> a = zg.a(afe::a, afe::new);
-   private final float b;
-   private final int c;
-   private final float d;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public afe(float $$0, int $$1, float $$2) {
+public class afe implements zk<abz> {
+   public static final zb<wa, afe> a = zk.a(afe::a, afe::new);
+   private final eyz b;
+   private final String c;
+
+   public afe(eyz $$0, @Nullable eza $$1) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      if ($$1 == null) {
+         this.c = "";
+      } else {
+         this.c = $$1.b();
+      }
    }
 
-   private afe(vw $$0) {
-      this.b = $$0.readFloat();
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
+   private afe(wa $$0) {
+      this.b = $$0.a(eyz.u);
+      this.c = $$0.p();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
+   private void a(wa $$0) {
+      $$0.a(eyz::a, this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zi<afe> a() {
-      return agg.aH;
+   public zm<afe> a() {
+      return ago.aB;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public float b() {
+   public eyz b() {
       return this.b;
    }
 
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
+   @Nullable
+   public String e() {
+      return Objects.equals(this.c, "") ? null : this.c;
    }
 }

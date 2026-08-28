@@ -1,61 +1,88 @@
-public class adp implements zg<abu> {
-   public static final yx<vw, adp> a = zg.a(adp::a, adp::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.BitSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adp(bsr $$0) {
-      this.b = $$0.dt();
-      this.c = $$0.dv();
-      this.d = $$0.dz();
-      this.e = $$0.dE();
-      this.f = $$0.dG();
+public class adp {
+   private static final zb<ByteBuf, byte[]> a = yz.a(2048);
+   private final BitSet b;
+   private final BitSet c;
+   private final BitSet d;
+   private final BitSet e;
+   private final List<byte[]> f;
+   private final List<byte[]> g;
+
+   public adp(dcy $$0, epq $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = new BitSet();
+      this.c = new BitSet();
+      this.d = new BitSet();
+      this.e = new BitSet();
+      this.f = Lists.newArrayList();
+      this.g = Lists.newArrayList();
+
+      for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
+         if ($$2 == null || $$2.get($$4)) {
+            this.a($$0, $$1, deb.a, $$4, this.b, this.d, this.f);
+         }
+
+         if ($$3 == null || $$3.get($$4)) {
+            this.a($$0, $$1, deb.b, $$4, this.c, this.e, this.g);
+         }
+      }
    }
 
-   private adp(vw $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   public adp(wa $$0, int $$1, int $$2) {
+      this.b = $$0.w();
+      this.c = $$0.w();
+      this.d = $$0.w();
+      this.e = $$0.w();
+      this.f = $$0.a(a);
+      this.g = $$0.a(a);
    }
 
-   private void a(vw $$0) {
+   public void a(wa $$0) {
       $$0.a(this.b);
       $$0.a(this.c);
       $$0.a(this.d);
       $$0.a(this.e);
-      $$0.a(this.f);
+      $$0.a(this.f, a);
+      $$0.a(this.g, a);
    }
 
-   @Override
-   public zi<adp> a() {
-      return agg.U;
+   private void a(dcy $$0, epq $$1, deb $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      dwb $$7 = $$1.a($$2).a(kg.a($$0, $$1.d() + $$3));
+      if ($$7 != null) {
+         if ($$7.d()) {
+            $$5.set($$3);
+         } else {
+            $$4.set($$3);
+            $$6.add($$7.b().a());
+         }
+      }
    }
 
-   public void a(abu $$0) {
-      $$0.a(this);
-   }
-
-   public double b() {
+   public BitSet a() {
       return this.b;
    }
 
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
+   public BitSet b() {
       return this.d;
    }
 
-   public float g() {
+   public List<byte[]> c() {
+      return this.f;
+   }
+
+   public BitSet d() {
+      return this.c;
+   }
+
+   public BitSet e() {
       return this.e;
    }
 
-   public float h() {
-      return this.f;
+   public List<byte[]> f() {
+      return this.g;
    }
 }

@@ -1,42 +1,80 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class eug extends ete {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<eug> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eug::new));
+public abstract class eug implements euh {
+   protected final List<ewe> g;
+   private final Predicate<est> a;
 
-   private eug(List<evc> $$0) {
-      super($$0);
+   protected eug(List<ewe> $$0) {
+      this.g = $$0;
+      this.a = ad.a($$0);
    }
 
    @Override
-   public etg<eug> b() {
-      return eth.l;
+   public abstract eui<? extends eug> b();
+
+   protected static <T extends eug> P1<Mu<T>, List<ewe>> a(Instance<T> $$0) {
+      return $$0.group(ewe.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
 
-   @Override
-   public cuq a(cuq $$0, err $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         Optional<czb<czq>> $$2 = $$1.d().r().a(czf.b, new czp($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cuq $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.e()) {
-               return $$3.c($$0.H());
-            }
-         }
+   public final cvl b(cvl $$0, est $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
 
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
+   protected abstract cvl a(cvl var1, est var2);
+
+   @Override
+   public void a(esz $$0) {
+      euh.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
       }
    }
 
-   public static ete.a<?> c() {
-      return a(eug::new);
+   protected static eug.a<?> a(Function<List<ewe>, euh> $$0) {
+      return new eug.b($$0);
+   }
+
+   public abstract static class a<T extends eug.a<T>> implements euh.a, evw<T> {
+      private final Builder<ewe> a = ImmutableList.builder();
+
+      public T a(ewe.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
+      }
+
+      public final T f() {
+         return this.c();
+      }
+
+      protected abstract T c();
+
+      protected List<ewe> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends eug.a<eug.b> {
+      private final Function<List<ewe>, euh> a;
+
+      public b(Function<List<ewe>, euh> $$0) {
+         this.a = $$0;
+      }
+
+      protected eug.b a() {
+         return this;
+      }
+
+      @Override
+      public euh b() {
+         return this.a.apply(this.g());
+      }
    }
 }

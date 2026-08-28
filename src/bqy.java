@@ -1,171 +1,430 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.Lists;
+import com.google.common.util.concurrent.ThreadFactoryBuilder;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
+import it.unimi.dsi.fastutil.objects.Reference2FloatMap;
+import it.unimi.dsi.fastutil.objects.Reference2FloatMaps;
+import it.unimi.dsi.fastutil.objects.Reference2FloatOpenHashMap;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.ThreadFactory;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class bqy extends eql {
-   private static final Logger a = LogUtils.getLogger();
-   private final long b;
-   private int c;
-   private boolean d = true;
-   private boolean e = true;
-   private final Map<akr, bqx> f = new Object2ObjectOpenHashMap();
+public class bqy implements AutoCloseable {
+   static final Logger a = LogUtils.getLogger();
+   private static final ThreadFactory b = new ThreadFactoryBuilder().setDaemon(true).build();
+   private static final String c = "new_";
+   static final xd d = xd.c("optimizeWorld.stage.upgrading.poi");
+   static final xd e = xd.c("optimizeWorld.stage.finished.poi");
+   static final xd f = xd.c("optimizeWorld.stage.upgrading.entities");
+   static final xd g = xd.c("optimizeWorld.stage.finished.entities");
+   static final xd h = xd.c("optimizeWorld.stage.upgrading.chunks");
+   static final xd i = xd.c("optimizeWorld.stage.finished.chunks");
+   final ka<dxx> j;
+   final Set<ala<dds>> k;
+   final boolean l;
+   final boolean m;
+   final esh.c n;
+   private final Thread o;
+   final DataFixer p;
+   volatile boolean q = true;
+   private volatile boolean r;
+   volatile float s;
+   volatile int t;
+   volatile int u;
+   volatile int v;
+   volatile int w;
+   final Reference2FloatMap<ala<dds>> x = Reference2FloatMaps.synchronize(new Reference2FloatOpenHashMap());
+   volatile xd y = xd.c("optimizeWorld.stage.counting");
+   static final Pattern z = Pattern.compile("^r\\.(-?[0-9]+)\\.(-?[0-9]+)\\.mca$");
+   final esb A;
 
-   public static eql.a<bqy> a(long $$0) {
-      return new eql.a<>(() -> new bqy($$0), ($$1, $$2) -> a($$0, $$1), azw.m);
+   public bqy(esh.c $$0, DataFixer $$1, kb $$2, boolean $$3, boolean $$4) {
+      this.j = $$2.d(lv.bb);
+      this.k = this.j.g().stream().map(lv::a).collect(Collectors.toUnmodifiableSet());
+      this.l = $$3;
+      this.p = $$1;
+      this.n = $$0;
+      this.A = new esb(this.n.a(dds.h).resolve("data"), $$1, $$2);
+      this.m = $$4;
+      this.o = b.newThread(this::i);
+      this.o.setUncaughtExceptionHandler(($$0x, $$1x) -> {
+         a.error("Error upgrading world", $$1x);
+         this.y = xd.c("optimizeWorld.stage.failed");
+         this.r = true;
+      });
+      this.o.start();
    }
 
-   public bqy(long $$0) {
-      this.b = $$0;
+   public void a() {
+      this.q = false;
+
+      try {
+         this.o.join();
+      } catch (InterruptedException var2) {
+      }
    }
 
-   public ayw a(akr $$0) {
-      ayw $$1 = this.f.computeIfAbsent($$0, this::c).a();
-      return new bqy.a($$1);
+   private void i() {
+      long $$0 = ad.c();
+      a.info("Upgrading entities");
+      new bqy.d().a();
+      a.info("Upgrading POIs");
+      new bqy.f().a();
+      a.info("Upgrading blocks");
+      new bqy.b().a();
+      this.A.b();
+      $$0 = ad.c() - $$0;
+      a.info("World optimizaton finished after {} seconds", $$0 / 1000L);
+      this.r = true;
    }
 
-   private bqx c(akr $$0) {
-      return this.b($$0, this.c, this.d, this.e);
+   public boolean b() {
+      return this.r;
    }
 
-   private bqx b(akr $$0, int $$1, boolean $$2, boolean $$3) {
-      long $$4 = ($$2 ? this.b : 0L) ^ (long)$$1;
-      return new bqx($$4, $$3 ? Optional.of($$0) : Optional.empty());
+   public Set<ala<dds>> c() {
+      return this.k;
    }
 
-   public void a(BiConsumer<akr, bqx> $$0) {
-      this.f.forEach($$0);
+   public float a(ala<dds> $$0) {
+      return this.x.getFloat($$0);
    }
 
-   public void a(int $$0, boolean $$1, boolean $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public float d() {
+      return this.s;
+   }
+
+   public int e() {
+      return this.t;
+   }
+
+   public int f() {
+      return this.v;
+   }
+
+   public int g() {
+      return this.w;
+   }
+
+   public xd h() {
+      return this.y;
    }
 
    @Override
-   public ub a(ub $$0, jo.a $$1) {
-      $$0.a("salt", this.c);
-      $$0.a("include_world_seed", this.d);
-      $$0.a("include_sequence_id", this.e);
-      ub $$2 = new ub();
-      this.f.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), (uy)bqx.a.encodeStart(up.a, $$2x).result().orElseThrow()));
-      $$0.a("sequences", $$2);
-      return $$0;
+   public void close() {
+      this.A.close();
    }
 
-   private static boolean a(ub $$0, String $$1, boolean $$2) {
-      return $$0.b($$1, 1) ? $$0.q($$1) : $$2;
+   static Path a(Path $$0) {
+      return $$0.resolveSibling("new_" + $$0.getFileName().toString());
    }
 
-   public static bqy a(long $$0, ub $$1) {
-      bqy $$2 = new bqy($$0);
-      $$2.a($$1.h("salt"), a($$1, "include_world_seed", true), a($$1, "include_sequence_id", true));
-      ub $$3 = $$1.p("sequences");
+   abstract class a<T extends AutoCloseable> {
+      private final xd d;
+      private final xd e;
+      private final String f;
+      private final String g;
+      @Nullable
+      protected CompletableFuture<Void> a;
+      protected final bal b;
 
-      for (String $$5 : $$3.e()) {
-         try {
-            bqx $$6 = (bqx)((Pair)bqx.a.decode(up.a, $$3.c($$5)).result().get()).getFirst();
-            $$2.f.put(akr.a($$5), $$6);
-         } catch (Exception var9) {
-            a.error("Failed to load random sequence {}", $$5, var9);
+      a(final bal $$0, final String $$1, final String $$2, final xd $$3, final xd $$4) {
+         this.b = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      public void a() {
+         bqy.this.u = 0;
+         bqy.this.t = 0;
+         bqy.this.v = 0;
+         bqy.this.w = 0;
+         List<bqy.c<T>> $$0 = this.b();
+         if (bqy.this.t != 0) {
+            float $$1 = (float)bqy.this.u;
+            bqy.this.y = this.d;
+
+            while (bqy.this.q) {
+               boolean $$2 = false;
+               float $$3 = 0.0F;
+
+               for (bqy.c<T> $$4 : $$0) {
+                  ala<dds> $$5 = $$4.a;
+                  ListIterator<bqy.e> $$6 = $$4.c;
+                  T $$7 = $$4.b;
+                  if ($$6.hasNext()) {
+                     bqy.e $$8 = $$6.next();
+                     boolean $$9 = true;
+
+                     for (dcy $$10 : $$8.b) {
+                        $$9 = $$9 && this.a($$5, $$7, $$10);
+                        $$2 = true;
+                     }
+
+                     if (bqy.this.m) {
+                        if ($$9) {
+                           this.a($$8.a);
+                        } else {
+                           bqy.a.error("Failed to convert region file {}", $$8.a.a());
+                        }
+                     }
+                  }
+
+                  float $$11 = (float)$$6.nextIndex() / $$1;
+                  bqy.this.x.put($$5, $$11);
+                  $$3 += $$11;
+               }
+
+               bqy.this.s = $$3;
+               if (!$$2) {
+                  break;
+               }
+            }
+
+            bqy.this.y = this.e;
+
+            for (bqy.c<T> $$12 : $$0) {
+               try {
+                  $$12.b.close();
+               } catch (Exception var14) {
+                  bqy.a.error("Error upgrading chunk", var14);
+               }
+            }
          }
       }
 
-      return $$2;
-   }
+      private List<bqy.c<T>> b() {
+         List<bqy.c<T>> $$0 = Lists.newArrayList();
 
-   public int a() {
-      int $$0 = this.f.size();
-      this.f.clear();
-      return $$0;
-   }
+         for (ala<dds> $$1 : bqy.this.k) {
+            dxp $$2 = new dxp(bqy.this.n.f(), $$1, this.f);
+            Path $$3 = bqy.this.n.a($$1).resolve(this.g);
+            T $$4 = this.a($$2, $$3);
+            ListIterator<bqy.e> $$5 = this.b($$2, $$3);
+            $$0.add(new bqy.c<>($$1, $$4, $$5));
+         }
 
-   public void b(akr $$0) {
-      this.f.put($$0, this.c($$0));
-   }
-
-   public void a(akr $$0, int $$1, boolean $$2, boolean $$3) {
-      this.f.put($$0, this.b($$0, $$1, $$2, $$3));
-   }
-
-   class a implements ayw {
-      private final ayw c;
-
-      a(final ayw $$0) {
-         this.c = $$0;
+         return $$0;
       }
 
-      @Override
-      public ayw d() {
-         bqy.this.c();
-         return this.c.d();
+      protected abstract T a(dxp var1, Path var2);
+
+      private ListIterator<bqy.e> b(dxp $$0, Path $$1) {
+         List<bqy.e> $$2 = c($$0, $$1);
+         bqy.this.u = bqy.this.u + $$2.size();
+         bqy.this.t = bqy.this.t + $$2.stream().mapToInt($$0x -> $$0x.b.size()).sum();
+         return $$2.listIterator();
       }
 
-      @Override
-      public dzl e() {
-         bqy.this.c();
-         return this.c.e();
-      }
-
-      @Override
-      public void b(long $$0) {
-         bqy.this.c();
-         this.c.b($$0);
-      }
-
-      @Override
-      public int f() {
-         bqy.this.c();
-         return this.c.f();
-      }
-
-      @Override
-      public int a(int $$0) {
-         bqy.this.c();
-         return this.c.a($$0);
-      }
-
-      @Override
-      public long g() {
-         bqy.this.c();
-         return this.c.g();
-      }
-
-      @Override
-      public boolean h() {
-         bqy.this.c();
-         return this.c.h();
-      }
-
-      @Override
-      public float i() {
-         bqy.this.c();
-         return this.c.i();
-      }
-
-      @Override
-      public double j() {
-         bqy.this.c();
-         return this.c.j();
-      }
-
-      @Override
-      public double k() {
-         bqy.this.c();
-         return this.c.k();
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
+      private static List<bqy.e> c(dxp $$0, Path $$1) {
+         File[] $$2 = $$1.toFile().listFiles(($$0x, $$1x) -> $$1x.endsWith(".mca"));
+         if ($$2 == null) {
+            return List.of();
          } else {
-            return $$0 instanceof bqy.a $$1 ? this.c.equals($$1.c) : false;
+            List<bqy.e> $$3 = Lists.newArrayList();
+
+            for (File $$4 : $$2) {
+               Matcher $$5 = bqy.z.matcher($$4.getName());
+               if ($$5.matches()) {
+                  int $$6 = Integer.parseInt($$5.group(1)) << 5;
+                  int $$7 = Integer.parseInt($$5.group(2)) << 5;
+                  List<dcy> $$8 = Lists.newArrayList();
+
+                  try (dxm $$9 = new dxm($$0, $$4.toPath(), $$1, true)) {
+                     for (int $$10 = 0; $$10 < 32; $$10++) {
+                        for (int $$11 = 0; $$11 < 32; $$11++) {
+                           dcy $$12 = new dcy($$10 + $$6, $$11 + $$7);
+                           if ($$9.b($$12)) {
+                              $$8.add($$12);
+                           }
+                        }
+                     }
+
+                     if (!$$8.isEmpty()) {
+                        $$3.add(new bqy.e($$9, $$8));
+                     }
+                  } catch (Throwable var18) {
+                     bqy.a.error("Failed to read chunks from region file {}", $$4.toPath(), var18);
+                  }
+               }
+            }
+
+            return $$3;
          }
       }
+
+      private boolean a(ala<dds> $$0, T $$1, dcy $$2) {
+         boolean $$3 = false;
+
+         try {
+            $$3 = this.a($$1, $$2, $$0);
+         } catch (CompletionException | z var7) {
+            Throwable $$5 = var7.getCause();
+            if (!($$5 instanceof IOException)) {
+               throw var7;
+            }
+
+            bqy.a.error("Error upgrading chunk {}", $$2, $$5);
+         }
+
+         if ($$3) {
+            bqy.this.v++;
+         } else {
+            bqy.this.w++;
+         }
+
+         return $$3;
+      }
+
+      protected abstract boolean a(T var1, dcy var2, ala<dds> var3);
+
+      private void a(dxm $$0) {
+         if (bqy.this.m) {
+            if (this.a != null) {
+               this.a.join();
+            }
+
+            Path $$1 = $$0.a();
+            Path $$2 = $$1.getParent();
+            Path $$3 = bqy.a($$2).resolve($$1.getFileName().toString());
+
+            try {
+               if ($$3.toFile().exists()) {
+                  Files.delete($$1);
+                  Files.move($$3, $$1);
+               } else {
+                  bqy.a.error("Failed to replace an old region file. New file {} does not exist.", $$3);
+               }
+            } catch (IOException var6) {
+               bqy.a.error("Failed to replace an old region file", var6);
+            }
+         }
+      }
+   }
+
+   class b extends bqy.a<dxg> {
+      b() {
+         super(bal.c, "chunk", "region", bqy.h, bqy.i);
+      }
+
+      protected boolean a(dxg $$0, dcy $$1, ala<dds> $$2) {
+         uf $$3 = $$0.d($$1).join().orElse(null);
+         if ($$3 != null) {
+            int $$4 = dxg.a($$3);
+            dvx $$5 = bqy.this.j.f(lv.b($$2)).b();
+            uf $$6 = $$0.a($$2, () -> bqy.this.A, $$3, $$5.c());
+            dcy $$7 = new dcy($$6.h("xPos"), $$6.h("zPos"));
+            if (!$$7.equals($$1)) {
+               bqy.a.warn("Chunk {} has invalid position {}", $$1, $$7);
+            }
+
+            boolean $$8 = $$4 < ab.b().d().c();
+            if (bqy.this.l) {
+               $$8 = $$8 || $$6.e("Heightmaps");
+               $$6.r("Heightmaps");
+               $$8 = $$8 || $$6.e("isLightOn");
+               $$6.r("isLightOn");
+               ul $$9 = $$6.c("sections", 10);
+
+               for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
+                  uf $$11 = $$9.a($$10);
+                  $$8 = $$8 || $$11.e("BlockLight");
+                  $$11.r("BlockLight");
+                  $$8 = $$8 || $$11.e("SkyLight");
+                  $$11.r("SkyLight");
+               }
+            }
+
+            if ($$8 || bqy.this.m) {
+               if (this.a != null) {
+                  this.a.join();
+               }
+
+               this.a = $$0.a($$1, () -> $$6);
+               return true;
+            }
+         }
+
+         return false;
+      }
+
+      protected dxg b(dxp $$0, Path $$1) {
+         return (dxg)(bqy.this.m ? new dxj($$0.a("source"), $$1, $$0.a("target"), bqy.a($$1), bqy.this.p, true) : new dxg($$0, $$1, bqy.this.p, true));
+      }
+   }
+
+   static record c<T>(ala<dds> a, T b, ListIterator<bqy.e> c) {
+   }
+
+   class d extends bqy.g {
+      d() {
+         super(bal.s, "entities", bqy.f, bqy.g);
+      }
+
+      @Override
+      protected uf a(dxs $$0, uf $$1) {
+         return $$0.a($$1, -1);
+      }
+   }
+
+   static record e(dxm a, List<dcy> b) {
+   }
+
+   class f extends bqy.g {
+      f() {
+         super(bal.q, "poi", bqy.d, bqy.e);
+      }
+
+      @Override
+      protected uf a(dxs $$0, uf $$1) {
+         return $$0.a($$1, 1945);
+      }
+   }
+
+   abstract class g extends bqy.a<dxs> {
+      g(final bal $$0, final String $$1, final xd $$2, final xd $$3) {
+         super($$0, $$1, $$1, $$2, $$3);
+      }
+
+      protected dxs b(dxp $$0, Path $$1) {
+         return (dxs)(bqy.this.m
+            ? new dxk($$0.a("source"), $$1, $$0.a("target"), bqy.a($$1), bqy.this.p, true, this.b)
+            : new dxs($$0, $$1, bqy.this.p, true, this.b));
+      }
+
+      protected boolean a(dxs $$0, dcy $$1, ala<dds> $$2) {
+         uf $$3 = $$0.a($$1).join().orElse(null);
+         if ($$3 != null) {
+            int $$4 = dxg.a($$3);
+            uf $$5 = this.a($$0, $$3);
+            boolean $$6 = $$4 < ab.b().d().c();
+            if ($$6 || bqy.this.m) {
+               if (this.a != null) {
+                  this.a.join();
+               }
+
+               this.a = $$0.a($$1, $$5);
+               return true;
+            }
+         }
+
+         return false;
+      }
+
+      protected abstract uf a(dxs var1, uf var2);
    }
 }

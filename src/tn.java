@@ -1,224 +1,29 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+public record tn(int a, boolean b) {
+   private static final tn c = new tn(1, true);
 
-public class tn {
-   private static final Logger d = LogUtils.getLogger();
-   public static final int a = 10;
-   public static final String b = "gameteststructures";
-   public static String c = "gameteststructures";
-
-   public static dmm a(int $$0) {
-      switch ($$0) {
-         case 0:
-            return dmm.a;
-         case 1:
-            return dmm.b;
-         case 2:
-            return dmm.c;
-         case 3:
-            return dmm.d;
-         default:
-            throw new IllegalArgumentException("rotationSteps must be a value from 0-3. Got value " + $$0);
-      }
+   public static tn a() {
+      return c;
    }
 
-   public static int a(dmm $$0) {
-      switch ($$0) {
-         case a:
-            return 0;
-         case b:
-            return 1;
-         case c:
-            return 2;
-         case d:
-            return 3;
-         default:
-            throw new IllegalArgumentException("Unknown rotation value, don't know how many steps it represents: " + $$0);
-      }
+   public boolean b() {
+      return this.a < 1;
    }
 
-   public static ewx a(drx $$0) {
-      return ewx.a(b($$0));
+   public boolean a(int $$0, int $$1) {
+      boolean $$2 = $$0 != $$1;
+      boolean $$3 = this.b() || $$0 < this.a;
+      return $$3 && (!$$2 || !this.b);
    }
 
-   public static ejj b(drx $$0) {
-      jd $$1 = c($$0);
-      jd $$2 = a($$1, $$0.j(), $$0.l());
-      return ejj.a($$1, $$2);
+   public boolean c() {
+      return this.a != 1;
    }
 
-   public static jd c(drx $$0) {
-      return $$0.aD_().a((kh)$$0.f());
+   public int d() {
+      return this.a;
    }
 
-   public static void a(jd $$0, jd $$1, dmm $$2, aqu $$3) {
-      jd $$4 = ent.a($$0.a((kh)$$1), dkv.a, $$2, $$0);
-      $$3.b($$4, dga.fN.o());
-      dqr $$5 = (dqr)$$3.c_($$4);
-      $$5.b().a("test runclosest");
-      jd $$6 = ent.a($$4.b(0, 0, -1), dkv.a, $$2, $$4);
-      $$3.b($$6, dga.dM.o().a($$2));
-   }
-
-   public static void a(String $$0, jd $$1, kh $$2, dmm $$3, aqu $$4) {
-      ejj $$5 = b($$1.d(), $$2, $$3);
-      a($$5, $$4);
-      $$4.b($$1, dga.pa.o());
-      drx $$6 = (drx)$$4.c_($$1);
-      $$6.a(false);
-      $$6.a(akr.a($$0));
-      $$6.a($$2);
-      $$6.a(dum.a);
-      $$6.e(true);
-   }
-
-   public static drx a(sx $$0, jd $$1, dmm $$2, aqu $$3) {
-      kh $$4 = $$3.q().b(akr.a($$0.s())).orElseThrow(() -> new IllegalStateException("Missing test structure: " + $$0.s())).a();
-      ejj $$5 = b($$1, $$4, $$2);
-      jd $$6;
-      if ($$2 == dmm.a) {
-         $$6 = $$1;
-      } else if ($$2 == dmm.b) {
-         $$6 = $$1.b($$4.w() - 1, 0, 0);
-      } else if ($$2 == dmm.c) {
-         $$6 = $$1.b($$4.u() - 1, 0, $$4.w() - 1);
-      } else {
-         if ($$2 != dmm.d) {
-            throw new IllegalArgumentException("Invalid rotation: " + $$2);
-         }
-
-         $$6 = $$1.b(0, 0, $$4.u() - 1);
-      }
-
-      b($$5, $$3);
-      a($$5, $$3);
-      return b($$0, $$6.e(), $$2, $$3);
-   }
-
-   public static void a(ewx $$0, aqu $$1, boolean $$2) {
-      jd $$3 = jd.a($$0.a, $$0.b, $$0.c).b(-1, 0, -1);
-      jd $$4 = jd.a($$0.d, $$0.e, $$0.f);
-      jd.d($$3, $$4).forEach($$4x -> {
-         boolean $$5 = $$4x.u() == $$3.u() || $$4x.u() == $$4.u() || $$4x.w() == $$3.w() || $$4x.w() == $$4.w();
-         boolean $$6 = $$4x.v() == $$4.v();
-         if ($$5 || $$6 && $$2) {
-            $$1.b($$4x, dga.hW.o());
-         }
-      });
-   }
-
-   public static void a(ewx $$0, aqu $$1) {
-      jd $$2 = jd.a($$0.a, $$0.b, $$0.c).b(-1, 0, -1);
-      jd $$3 = jd.a($$0.d, $$0.e, $$0.f);
-      jd.d($$2, $$3).forEach($$3x -> {
-         boolean $$4 = $$3x.u() == $$2.u() || $$3x.u() == $$3.u() || $$3x.w() == $$2.w() || $$3x.w() == $$3.w();
-         boolean $$5 = $$3x.v() == $$3.v();
-         if ($$1.a_($$3x).a(dga.hW) && ($$4 || $$5)) {
-            $$1.b($$3x, dga.a.o());
-         }
-      });
-   }
-
-   private static void b(ejj $$0, aqu $$1) {
-      $$0.b().forEach($$1x -> $$1.a($$1x.e, $$1x.f, true));
-   }
-
-   public static void a(ejj $$0, aqu $$1) {
-      int $$2 = $$0.i() - 1;
-      ejj $$3 = new ejj($$0.h() - 2, $$0.i() - 3, $$0.j() - 3, $$0.k() + 3, $$0.l() + 20, $$0.m() + 3);
-      jd.a($$3).forEach($$2x -> a($$2, $$2x, $$1));
-      $$1.m().a($$3);
-      $$1.a($$3);
-      ewx $$4 = ewx.a($$3);
-      List<bsr> $$5 = $$1.a(bsr.class, $$4, $$0x -> !($$0x instanceof cmx));
-      $$5.forEach(bsr::aq);
-   }
-
-   public static jd a(jd $$0, kh $$1, dmm $$2) {
-      jd $$3 = $$0.a($$1).b(-1, -1, -1);
-      return ent.a($$3, dkv.a, $$2, $$0);
-   }
-
-   public static ejj b(jd $$0, kh $$1, dmm $$2) {
-      jd $$3 = a($$0, $$1, $$2);
-      ejj $$4 = ejj.a($$0, $$3);
-      int $$5 = Math.min($$4.h(), $$4.k());
-      int $$6 = Math.min($$4.j(), $$4.m());
-      return $$4.a($$0.u() - $$5, 0, $$0.w() - $$6);
-   }
-
-   public static Optional<jd> a(jd $$0, int $$1, aqu $$2) {
-      return c($$0, $$1, $$2).filter($$2x -> a($$2x, $$0, $$2)).findFirst();
-   }
-
-   public static Optional<jd> b(jd $$0, int $$1, aqu $$2) {
-      Comparator<jd> $$3 = Comparator.comparingInt($$1x -> $$1x.k($$0));
-      return c($$0, $$1, $$2).min($$3);
-   }
-
-   public static Stream<jd> a(jd $$0, int $$1, aqu $$2, String $$3) {
-      return c($$0, $$1, $$2).map($$1x -> (drx)$$2.c_($$1x)).filter(Objects::nonNull).filter($$1x -> Objects.equals($$1x.c(), $$3)).map(dqh::aD_).map(jd::j);
-   }
-
-   public static Stream<jd> c(jd $$0, int $$1, aqu $$2) {
-      ejj $$3 = d($$0, $$1, $$2);
-      return jd.a($$3).filter($$1x -> $$2.a_($$1x).a(dga.pa)).map(jd::j);
-   }
-
-   private static drx b(sx $$0, jd $$1, dmm $$2, aqu $$3) {
-      $$3.b($$1, dga.pa.o());
-      drx $$4 = (drx)$$3.c_($$1);
-      $$4.a(dum.b);
-      $$4.a($$2);
-      $$4.a(false);
-      $$4.a(akr.a($$0.s()));
-      $$4.b($$0.b());
-      if (!$$4.b($$3)) {
-         throw new RuntimeException("Failed to load structure info for test: " + $$0.b() + ". Structure name: " + $$0.s());
-      } else {
-         return $$4;
-      }
-   }
-
-   private static ejj d(jd $$0, int $$1, aqu $$2) {
-      jd $$3 = jd.a((double)$$0.u(), (double)$$2.a(dyy.a.b, $$0).v(), (double)$$0.w());
-      return new ejj($$3).c($$1, 10, $$1);
-   }
-
-   public static Stream<jd> a(jd $$0, bsr $$1, aqu $$2) {
-      int $$3 = 200;
-      exc $$4 = $$1.by();
-      exc $$5 = $$4.e($$1.bM().a(200.0));
-      return c($$0, 200, $$2)
-         .map($$1x -> $$2.a($$1x, dqj.u))
-         .flatMap(Optional::stream)
-         .filter($$2x -> a($$2x).b($$4, $$5).isPresent())
-         .map(dqh::aD_)
-         .sorted(Comparator.comparing($$0::j))
-         .limit(1L);
-   }
-
-   private static void a(int $$0, jd $$1, aqu $$2) {
-      dtc $$3;
-      if ($$1.v() < $$0) {
-         $$3 = dga.b.o();
-      } else {
-         $$3 = dga.a.o();
-      }
-
-      gk $$5 = new gk($$3, Collections.emptySet(), null);
-      $$5.a($$2, $$1, 2);
-      $$2.b($$1, $$3.b());
-   }
-
-   private static boolean a(jd $$0, jd $$1, aqu $$2) {
-      drx $$3 = (drx)$$2.c_($$0);
-      return b($$3).b($$1);
+   public boolean e() {
+      return this.b;
    }
 }

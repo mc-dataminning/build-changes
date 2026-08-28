@@ -1,104 +1,108 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import javax.annotation.Nullable;
 
-public class doz extends dmz {
-   public static final MapCodec<doz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dup.a.fieldOf("wood_type").forGetter(dmz::d), u()).apply($$0, doz::new));
-   public static final dtw b = dju.aE;
-   protected static final float c = 2.0F;
-   protected static final float d = 4.5F;
-   protected static final float e = 12.5F;
-   private static final Map<ji, exv> i = Maps.newEnumMap(
-      ImmutableMap.of(
-         ji.c,
-         dfy.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
-         ji.d,
-         dfy.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
-         ji.f,
-         dfy.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
-         ji.e,
-         dfy.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
-      )
-   );
+public class doz extends dhe implements dgy {
+   public static final MapCodec<doz> a = b(doz::new);
+   private static final float d = 0.003F;
+   public static final int b = 3;
+   public static final dva c = duq.as;
+   private static final eyx e = dgv.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
+   private static final eyx f = dgv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<doz> a() {
       return a;
    }
 
-   public doz(dup $$0, dtb.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, ji.c).a(f, Boolean.valueOf(false)));
+   public doz(dtz.d $$0) {
+      super($$0);
+      this.l(this.E.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   public String g() {
-      return this.r().a();
+   public cvl a(ddv $$0, je $$1, dua $$2) {
+      return new cvl(cvo.wx);
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return i.get($$0.c(b));
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      if ($$0.c(c) == 0) {
+         return e;
+      } else {
+         return $$0.c(c) < 3 ? f : super.a($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
+   protected boolean f(dua $$0) {
+      return $$0.c(c) < 3;
    }
 
-   @Nullable
    @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = this.o();
-      epe $$2 = $$0.q().b_($$0.a());
-      dcz $$3 = $$0.q();
-      jd $$4 = $$0.a();
-      ji[] $$5 = $$0.f();
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(5) == 0 && $$1.b($$2.d(), 0) >= 9) {
+         dua $$5 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$5, 2);
+         $$1.a(dyx.c, $$2, dyx.a.a($$5));
+      }
+   }
 
-      for (ji $$6 : $$5) {
-         if ($$6.o().d()) {
-            ji $$7 = $$6.g();
-            $$1 = $$1.a(b, $$7);
-            if ($$1.a($$3, $$4)) {
-               return $$1.a(f, Boolean.valueOf($$2.a() == epf.c));
+   @Override
+   protected void a(dua $$0, dds $$1, je $$2, btj $$3) {
+      if ($$3 instanceof buf && $$3.ao() != btq.Q && $$3.ao() != btq.h) {
+         $$3.a($$0, new eye(0.8F, 0.75, 0.8F));
+         if (!$$1.B && $$0.c(c) > 0 && ($$3.ab != $$3.dx() || $$3.ad != $$3.dD())) {
+            double $$4 = Math.abs($$3.dx() - $$3.ab);
+            double $$5 = Math.abs($$3.dD() - $$3.ad);
+            if ($$4 >= 0.003F || $$5 >= 0.003F) {
+               $$3.a($$1.ak().u(), 1.0F);
             }
          }
       }
-
-      return null;
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
+      int $$7 = $$1.c(c);
+      boolean $$8 = $$7 == 3;
+      return (brk)(!$$8 && $$0.a(cvo.rz) ? brk.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
    }
 
    @Override
-   public float g(dtc $$0) {
-      return $$0.c(b).p();
+   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
+      int $$5 = $$0.c(c);
+      boolean $$6 = $$5 == 3;
+      if ($$5 > 1) {
+         int $$7 = 1 + $$1.z.a(2);
+         a($$1, $$2, new cvl(cvo.wx, $$7 + ($$6 ? 1 : 0)));
+         $$1.a(null, $$2, awd.zy, awe.e, 1.0F, 0.8F + $$1.z.i() * 0.4F);
+         dua $$8 = $$0.b(c, Integer.valueOf(1));
+         $$1.a($$2, $$8, 2);
+         $$1.a(dyx.c, $$2, dyx.a.a($$3, $$8));
+         return brk.a;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
    }
 
    @Override
-   public exc m(dtc $$0) {
-      exv $$1 = i.get($$0.c(b));
-      return $$1.a().f();
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(c);
    }
 
    @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      return $$2.c(c) < 3;
    }
 
    @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
+      return true;
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b, f);
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      int $$4 = Math.min(3, $$3.c(c) + 1);
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$4)), 2);
    }
 }

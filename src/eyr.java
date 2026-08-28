@@ -1,54 +1,85 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
+import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleLists;
 
-public class eyr<T> implements eyu<T>, eyw<T> {
-   private final List<eys<T>> a = Lists.newArrayList();
-   private final Set<eys<?>> b = new ObjectOpenCustomHashSet(eys.a);
+public class eyr implements eyq {
+   private static final DoubleList a = DoubleLists.unmodifiable(DoubleArrayList.wrap(new double[]{0.0}));
+   private final double[] b;
+   private final int[] c;
+   private final int[] d;
+   private final int e;
 
-   @Override
-   public void a(eyt<T> $$0) {
-      eys<T> $$1 = new eys<>($$0.a(), $$0.b(), 0, $$0.d());
-      this.a($$1);
-   }
+   public eyr(DoubleList $$0, DoubleList $$1, boolean $$2, boolean $$3) {
+      double $$4 = Double.NaN;
+      int $$5 = $$0.size();
+      int $$6 = $$1.size();
+      int $$7 = $$5 + $$6;
+      this.b = new double[$$7];
+      this.c = new int[$$7];
+      this.d = new int[$$7];
+      boolean $$8 = !$$2;
+      boolean $$9 = !$$3;
+      int $$10 = 0;
+      int $$11 = 0;
+      int $$12 = 0;
 
-   private void a(eys<T> $$0) {
-      if (this.b.add($$0)) {
-         this.a.add($$0);
+      while (true) {
+         boolean $$13 = $$11 >= $$5;
+         boolean $$14 = $$12 >= $$6;
+         if ($$13 && $$14) {
+            this.e = Math.max(1, $$10);
+            return;
+         }
+
+         boolean $$15 = !$$13 && ($$14 || $$0.getDouble($$11) < $$1.getDouble($$12) + 1.0E-7);
+         if ($$15) {
+            $$11++;
+            if ($$8 && ($$12 == 0 || $$14)) {
+               continue;
+            }
+         } else {
+            $$12++;
+            if ($$9 && ($$11 == 0 || $$13)) {
+               continue;
+            }
+         }
+
+         int $$16 = $$11 - 1;
+         int $$17 = $$12 - 1;
+         double $$18 = $$15 ? $$0.getDouble($$16) : $$1.getDouble($$17);
+         if (!($$4 >= $$18 - 1.0E-7)) {
+            this.c[$$10] = $$16;
+            this.d[$$10] = $$17;
+            this.b[$$10] = $$18;
+            $$10++;
+            $$4 = $$18;
+         } else {
+            this.c[$$10 - 1] = $$16;
+            this.d[$$10 - 1] = $$17;
+         }
       }
    }
 
    @Override
-   public boolean a(jd $$0, T $$1) {
-      return this.b.contains(eys.a($$1, $$0));
-   }
+   public boolean a(eyq.a $$0) {
+      int $$1 = this.e - 1;
 
-   @Override
-   public int a() {
-      return this.a.size();
-   }
-
-   @Override
-   public uy b(long $$0, Function<T, String> $$1) {
-      uh $$2 = new uh();
-
-      for (eys<T> $$3 : this.a) {
-         $$2.add($$3.a($$1));
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge(this.c[$$2], this.d[$$2], $$2)) {
+            return false;
+         }
       }
 
-      return $$2;
+      return true;
    }
 
-   public List<eys<T>> b() {
-      return List.copyOf(this.a);
+   @Override
+   public int size() {
+      return this.e;
    }
 
-   public static <T> eyr<T> a(uh $$0, Function<String, Optional<T>> $$1, dcd $$2) {
-      eyr<T> $$3 = new eyr<>();
-      eys.a($$0, $$1, $$2, $$3::a);
-      return $$3;
+   @Override
+   public DoubleList a() {
+      return (DoubleList)(this.e <= 1 ? a : DoubleArrayList.wrap(this.b, this.e));
    }
 }

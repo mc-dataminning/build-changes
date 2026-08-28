@@ -1,11 +1,8 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface evq {
-   @Nullable
-   uy a(err var1);
-
-   Set<euk<?>> b();
-
-   evp a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface evq {
 }

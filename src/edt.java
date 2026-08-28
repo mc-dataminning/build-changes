@@ -1,96 +1,115 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class edt extends ece<efh> {
-   public edt(Codec<efh> $$0) {
+public class edt extends edc<efn> {
+   private static final Logger a = LogUtils.getLogger();
+   private static final btq<?>[] b = new btq[]{btq.aN, btq.bu, btq.bu, btq.aW};
+   private static final dua c = dgx.nc.o();
+
+   public edt(Codec<efn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecg<efh> $$0) {
-      dds $$1 = $$0.b();
-      efh $$2 = $$0.f();
-      ayw $$3 = $$0.d();
-      jd $$4 = $$0.e();
-      Predicate<dtc> $$5 = $$1x -> $$1x.a($$2.b);
-      int $$6 = $$2.j.a($$3) + 1;
-      int $$7 = $$2.j.a($$3) + 1;
-      Set<jd> $$8 = this.a($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      this.a($$0, $$1, $$2, $$3, $$8, $$6, $$7);
-      return !$$8.isEmpty();
-   }
+   public boolean a(ede<efn> $$0) {
+      Predicate<dua> $$1 = edc.a(aws.bP);
+      je $$2 = $$0.e();
+      azk $$3 = $$0.d();
+      dep $$4 = $$0.b();
+      int $$5 = 3;
+      int $$6 = $$3.a(2) + 2;
+      int $$7 = -$$6 - 1;
+      int $$8 = $$6 + 1;
+      int $$9 = -1;
+      int $$10 = 4;
+      int $$11 = $$3.a(2) + 2;
+      int $$12 = -$$11 - 1;
+      int $$13 = $$11 + 1;
+      int $$14 = 0;
 
-   protected Set<jd> a(dds $$0, efh $$1, ayw $$2, jd $$3, Predicate<dtc> $$4, int $$5, int $$6) {
-      jd.a $$7 = $$3.k();
-      jd.a $$8 = $$7.k();
-      ji $$9 = $$1.e.a();
-      ji $$10 = $$9.g();
-      Set<jd> $$11 = new HashSet<>();
-
-      for (int $$12 = -$$5; $$12 <= $$5; $$12++) {
-         boolean $$13 = $$12 == -$$5 || $$12 == $$5;
-
-         for (int $$14 = -$$6; $$14 <= $$6; $$14++) {
-            boolean $$15 = $$14 == -$$6 || $$14 == $$6;
-            boolean $$16 = $$13 || $$15;
-            boolean $$17 = $$13 && $$15;
-            boolean $$18 = $$16 && !$$17;
-            if (!$$17 && (!$$18 || $$1.k != 0.0F && !($$2.i() > $$1.k))) {
-               $$7.a($$3, $$12, 0, $$14);
-
-               for (int $$19 = 0; $$0.a($$7, dtb.a::i) && $$19 < $$1.h; $$19++) {
-                  $$7.c($$9);
+      for (int $$15 = $$7; $$15 <= $$8; $$15++) {
+         for (int $$16 = -1; $$16 <= 4; $$16++) {
+            for (int $$17 = $$12; $$17 <= $$13; $$17++) {
+               je $$18 = $$2.b($$15, $$16, $$17);
+               boolean $$19 = $$4.a_($$18).e();
+               if ($$16 == -1 && !$$19) {
+                  return false;
                }
 
-               for (int var25 = 0; $$0.a($$7, $$0x -> !$$0x.i()) && var25 < $$1.h; var25++) {
-                  $$7.c($$10);
+               if ($$16 == 4 && !$$19) {
+                  return false;
                }
 
-               $$8.a($$7, $$1.e.a());
-               dtc $$20 = $$0.a_($$8);
-               if ($$0.u($$7) && $$20.d($$0, $$8, $$1.e.a().g())) {
-                  int $$21 = $$1.f.a($$2) + ($$1.g > 0.0F && $$2.i() < $$1.g ? 1 : 0);
-                  jd $$22 = $$8.j();
-                  boolean $$23 = this.a($$0, $$1, $$4, $$2, $$8, $$21);
-                  if ($$23) {
-                     $$11.add($$22);
+               if (($$15 == $$7 || $$15 == $$8 || $$17 == $$12 || $$17 == $$13) && $$16 == 0 && $$4.u($$18) && $$4.u($$18.d())) {
+                  $$14++;
+               }
+            }
+         }
+      }
+
+      if ($$14 >= 1 && $$14 <= 5) {
+         for (int $$20 = $$7; $$20 <= $$8; $$20++) {
+            for (int $$21 = 3; $$21 >= -1; $$21--) {
+               for (int $$22 = $$12; $$22 <= $$13; $$22++) {
+                  je $$23 = $$2.b($$20, $$21, $$22);
+                  dua $$24 = $$4.a_($$23);
+                  if ($$20 == $$7 || $$21 == -1 || $$22 == $$12 || $$20 == $$8 || $$21 == 4 || $$22 == $$13) {
+                     if ($$23.v() >= $$4.G_() && !$$4.a_($$23.e()).e()) {
+                        $$4.a($$23, c, 2);
+                     } else if ($$24.e() && !$$24.a(dgx.cv)) {
+                        if ($$21 == -1 && $$3.a(4) != 0) {
+                           this.a($$4, $$23, dgx.cn.o(), $$1);
+                        } else {
+                           this.a($$4, $$23, dgx.m.o(), $$1);
+                        }
+                     }
+                  } else if (!$$24.a(dgx.cv) && !$$24.a(dgx.ct)) {
+                     this.a($$4, $$23, c, $$1);
                   }
                }
             }
          }
-      }
 
-      return $$11;
-   }
+         for (int $$25 = 0; $$25 < 2; $$25++) {
+            for (int $$26 = 0; $$26 < 3; $$26++) {
+               int $$27 = $$2.u() + $$3.a($$6 * 2 + 1) - $$6;
+               int $$28 = $$2.v();
+               int $$29 = $$2.w() + $$3.a($$11 * 2 + 1) - $$11;
+               je $$30 = new je($$27, $$28, $$29);
+               if ($$4.u($$30)) {
+                  int $$31 = 0;
 
-   protected void a(ecg<efh> $$0, dds $$1, efh $$2, ayw $$3, Set<jd> $$4, int $$5, int $$6) {
-      for (jd $$7 : $$4) {
-         if ($$2.i > 0.0F && $$3.i() < $$2.i) {
-            this.a($$1, $$2, $$0.c(), $$3, $$7);
-         }
-      }
-   }
+                  for (jj $$32 : jj.c.a) {
+                     if ($$4.a_($$30.a($$32)).e()) {
+                        $$31++;
+                     }
+                  }
 
-   protected boolean a(dds $$0, efh $$1, duz $$2, ayw $$3, jd $$4) {
-      return $$1.d.a().a($$0, $$2, $$3, $$4.a($$1.e.a().g()));
-   }
-
-   protected boolean a(dds $$0, efh $$1, Predicate<dtc> $$2, ayw $$3, jd.a $$4, int $$5) {
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         dtc $$7 = $$1.c.a($$3, $$4);
-         dtc $$8 = $$0.a_($$4);
-         if (!$$7.a($$8.b())) {
-            if (!$$2.test($$8)) {
-               return $$6 != 0;
+                  if ($$31 == 1) {
+                     this.a($$4, $$30, eks.a($$4, $$30, dgx.cv.o()), $$1);
+                     brq.a($$4, $$3, $$30, esp.d);
+                     break;
+                  }
+               }
             }
-
-            $$0.a($$4, $$7, 2);
-            $$4.c($$1.e.a());
          }
-      }
 
-      return true;
+         this.a($$4, $$2, dgx.ct.o(), $$1);
+         if ($$4.c_($$2) instanceof dsu $$34) {
+            $$34.a(this.a($$3), $$3);
+         } else {
+            a.error("Failed to fetch mob spawner entity at ({}, {}, {})", new Object[]{$$2.u(), $$2.v(), $$2.w()});
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private btq<?> a(azk $$0) {
+      return ad.a(b, $$0);
    }
 }

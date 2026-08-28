@@ -1,72 +1,41 @@
-import java.util.function.Consumer;
+import com.mojang.brigadier.Message;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.concurrent.CompletableFuture;
 
-public record tr(String a, String b, String c, dmm d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sw> l) {
-   public tr(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<sw> $$6) {
-      this($$0, $$1, $$2, dmm.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
+public class tr implements ArgumentType<String> {
+   private static final Collection<String> a = Arrays.asList("techtests", "mobtests");
+
+   public String a(StringReader $$0) throws CommandSyntaxException {
+      String $$1 = $$0.readUnquotedString();
+      if (tc.b($$1)) {
+         return $$1;
+      } else {
+         Message $$2 = xd.b("No such test class: " + $$1);
+         throw new CommandSyntaxException(new SimpleCommandExceptionType($$2), $$2);
+      }
    }
 
-   public tr(String $$0, String $$1, String $$2, dmm $$3, int $$4, long $$5, boolean $$6, Consumer<sw> $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
+   public static tr a() {
+      return new tr();
    }
 
-   public void a(sw $$0) {
-      this.l.accept($$0);
+   public static String a(CommandContext<et> $$0, String $$1) {
+      return (String)$$0.getArgument($$1, String.class);
    }
 
-   @Override
-   public String toString() {
-      return this.b;
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      return ey.b(tc.b().stream(), $$1);
    }
 
-   public boolean a() {
-      return this.i > 1;
-   }
-
-   public String b() {
-      return this.a;
-   }
-
-   public String c() {
-      return this.b;
-   }
-
-   public String d() {
-      return this.c;
-   }
-
-   public dmm e() {
-      return this.d;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public long g() {
-      return this.f;
-   }
-
-   public boolean h() {
-      return this.g;
-   }
-
-   public boolean i() {
-      return this.h;
-   }
-
-   public int j() {
-      return this.i;
-   }
-
-   public int k() {
-      return this.j;
-   }
-
-   public boolean l() {
-      return this.k;
-   }
-
-   public Consumer<sw> m() {
-      return this.l;
+   public Collection<String> getExamples() {
+      return a;
    }
 }

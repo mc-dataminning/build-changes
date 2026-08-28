@@ -1,33 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
+import io.netty.buffer.ByteBuf;
+import java.nio.charset.StandardCharsets;
 
-public interface arz {
-   arz a = new arz() {
-      @Override
-      public void a() {
-      }
+public class arz {
+   public static final int a = 250;
+   public static final String b = "MC|PingHost";
+   public static final int c = 254;
+   public static final int d = 1;
+   public static final int e = 255;
+   public static final int f = 127;
 
-      @Override
-      public void b() {
-      }
+   public static void a(ByteBuf $$0, String $$1) {
+      $$0.writeShort($$1.length());
+      $$0.writeCharSequence($$1, StandardCharsets.UTF_16BE);
+   }
 
-      @Override
-      public CompletableFuture<arm> a(String $$0) {
-         return CompletableFuture.completedFuture(arm.a($$0));
-      }
-
-      @Override
-      public CompletableFuture<List<arm>> a(List<String> $$0) {
-         return CompletableFuture.completedFuture($$0.stream().map(arm::a).collect(ImmutableList.toImmutableList()));
-      }
-   };
-
-   void a();
-
-   void b();
-
-   CompletableFuture<arm> a(String var1);
-
-   CompletableFuture<List<arm>> a(List<String> var1);
+   public static String a(ByteBuf $$0) {
+      int $$1 = $$0.readShort();
+      int $$2 = $$1 * 2;
+      String $$3 = $$0.toString($$0.readerIndex(), $$2, StandardCharsets.UTF_16BE);
+      $$0.skipBytes($$2);
+      return $$3;
+   }
 }

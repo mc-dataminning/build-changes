@@ -1,57 +1,31 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum dkv implements azk {
-   a("none", h.a),
-   b("left_right", h.B),
-   c("front_back", h.z);
+public class dkv extends dku {
+   public static final MapCodec<dkv> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lu.e.q().fieldOf("host").forGetter(dku::b), u()).apply($$0, dkv::new));
 
-   public static final Codec<dkv> d = azk.a(dkv::values);
-   private final String e;
-   private final wz f;
-   private final h g;
-
-   private dkv(final String $$0, final h $$1) {
-      this.e = $$0;
-      this.f = wz.c("mirror." + $$0);
-      this.g = $$1;
+   @Override
+   public MapCodec<dkv> a() {
+      return b;
    }
 
-   public int a(int $$0, int $$1) {
-      int $$2 = $$1 / 2;
-      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
-      switch (this) {
-         case b:
-            return ($$2 - $$3 + $$1) % $$1;
-         case c:
-            return ($$1 - $$3) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public dmm a(ji $$0) {
-      ji.a $$1 = $$0.o();
-      return (this != b || $$1 != ji.a.c) && (this != c || $$1 != ji.a.a) ? dmm.a : dmm.c;
-   }
-
-   public ji b(ji $$0) {
-      if (this == c && $$0.o() == ji.a.a) {
-         return $$0.g();
-      } else {
-         return this == b && $$0.o() == ji.a.c ? $$0.g() : $$0;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public wz b() {
-      return this.f;
+   public dkv(dgv $$0, dtz.d $$1) {
+      super($$0, $$1);
+      this.l(this.o().b(dni.i, jj.a.b));
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected dua a(dua $$0, dnj $$1) {
+      return dni.b($$0, $$1);
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(dni.i);
+   }
+
+   @Override
+   public dua a(cyw $$0) {
+      return this.o().b(dni.i, $$0.k().o());
    }
 }

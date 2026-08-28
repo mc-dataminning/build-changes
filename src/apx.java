@@ -1,60 +1,127 @@
-public class apx implements Comparable<apx> {
-   private final int a;
-   private final jd b;
-   private int c;
-   private int d;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import org.slf4j.Logger;
 
-   public apx(int $$0, jd $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+public class apx extends avg {
+   private static final Logger h = LogUtils.getLogger();
 
-   public int a() {
-      return this.a;
-   }
-
-   public jd b() {
-      return this.b;
-   }
-
-   public void a(int $$0) {
-      if ($$0 > 10) {
-         $$0 = 10;
-      }
-
-      this.c = $$0;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public void b(int $$0) {
-      this.d = $$0;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         apx $$1 = (apx)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
+   public apx(apy $$0, ju<alk> $$1, esk $$2) {
+      super($$0, $$1, $$2, $$0.a().G);
+      apz $$3 = $$0.a();
+      this.a($$3.E);
+      this.b($$3.F);
+      super.a($$3.W.get());
+      this.z();
+      this.x();
+      this.y();
+      this.w();
+      this.A();
+      this.C();
+      this.B();
+      if (!this.i().b().exists()) {
+         this.D();
       }
    }
 
    @Override
-   public int hashCode() {
-      return Integer.hashCode(this.a);
+   public void a(boolean $$0) {
+      super.a($$0);
+      this.b().i($$0);
    }
 
-   public int a(apx $$0) {
-      return this.c != $$0.c ? Integer.compare(this.c, $$0.c) : Integer.compare(this.a, $$0.a);
+   @Override
+   public void a(GameProfile $$0) {
+      super.a($$0);
+      this.B();
+   }
+
+   @Override
+   public void b(GameProfile $$0) {
+      super.b($$0);
+      this.B();
+   }
+
+   @Override
+   public void a() {
+      this.C();
+   }
+
+   private void w() {
+      try {
+         this.g().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save ip banlist: ", var2);
+      }
+   }
+
+   private void x() {
+      try {
+         this.f().e();
+      } catch (IOException var2) {
+         h.warn("Failed to save user banlist: ", var2);
+      }
+   }
+
+   private void y() {
+      try {
+         this.g().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load ip banlist: ", var2);
+      }
+   }
+
+   private void z() {
+      try {
+         this.f().f();
+      } catch (IOException var2) {
+         h.warn("Failed to load user banlist: ", var2);
+      }
+   }
+
+   private void A() {
+      try {
+         this.k().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load operators list: ", var2);
+      }
+   }
+
+   private void B() {
+      try {
+         this.k().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save operators list: ", var2);
+      }
+   }
+
+   private void C() {
+      try {
+         this.i().f();
+      } catch (Exception var2) {
+         h.warn("Failed to load white-list: ", var2);
+      }
+   }
+
+   private void D() {
+      try {
+         this.i().e();
+      } catch (Exception var2) {
+         h.warn("Failed to save white-list: ", var2);
+      }
+   }
+
+   @Override
+   public boolean c(GameProfile $$0) {
+      return !this.o() || this.f($$0) || this.i().a($$0);
+   }
+
+   public apy b() {
+      return (apy)super.c();
+   }
+
+   @Override
+   public boolean d(GameProfile $$0) {
+      return this.k().a($$0);
    }
 }

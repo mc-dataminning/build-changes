@@ -1,64 +1,26 @@
-public class fnq extends fmz {
-   private fim c;
+import java.util.function.Consumer;
 
-   public fnq() {
-      super("");
+public interface fnq {
+   void m(int var1);
+
+   void n(int var1);
+
+   int D();
+
+   int E();
+
+   int y();
+
+   int w();
+
+   default foh H() {
+      return new foh(this.D(), this.E(), this.y(), this.w());
    }
 
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.c = fim.a(wz.c("multiplayer.stopSleeping"), $$0 -> this.C()).a(this.m / 2 - 100, this.n - 40, 200, 20).a();
-      this.c(this.c);
+   default void c(int $$0, int $$1) {
+      this.m($$0);
+      this.n($$1);
    }
 
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      if (!this.l.J().a(this.l.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public void d() {
-      this.C();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.l.J().a(this.l.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.C();
-      }
-
-      if (!this.l.J().a(this.l.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.l.l.d().d();
-         return true;
-      }
-   }
-
-   private void C() {
-      fzg $$0 = this.l.s.h;
-      $$0.b(new ahn(this.l.s, ahn.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.l.a(null);
-      } else {
-         this.l.a(new fmz(this.b.a()));
-      }
-   }
+   void a(Consumer<fjy> var1);
 }

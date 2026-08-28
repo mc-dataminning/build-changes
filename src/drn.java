@@ -1,103 +1,139 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public abstract class drn extends dqb implements bqz {
-   @Nullable
-   protected akq<erw> l;
-   protected long m = 0L;
+public class drn extends dre implements brd {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jw<cvl> d = jw.a(6, cvl.k);
+   private int e = -1;
 
-   protected drn(dqj<?> $$0, jd $$1, dtc $$2) {
-      super($$0, $$1, $$2);
+   public drn(je $$0, dua $$1) {
+      super(drg.M, $$0, $$1);
    }
 
-   @Nullable
-   @Override
-   public akq<erw> aB_() {
-      return this.l;
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         dua $$1 = this.m();
+
+         for (int $$2 = 0; $$2 < dhz.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            dur $$4 = dhz.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
+         }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dyx.c, this.p, dyx.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
+      }
    }
 
    @Override
-   public void a(@Nullable akq<erw> $$0) {
-      this.l = $$0;
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      bre.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
    }
 
    @Override
-   public long aC_() {
-      return this.m;
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      bre.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cvl::f)).count();
    }
 
    @Override
-   public void a(long $$0) {
-      this.m = $$0;
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
    }
 
    @Override
    public boolean c() {
-      this.e_(null);
-      return super.c();
+      return this.d.stream().allMatch(cvl::f);
    }
 
    @Override
-   public cuq a(int $$0) {
-      this.e_(null);
-      return super.a($$0);
+   public cvl a(int $$0) {
+      return this.d.get($$0);
    }
 
    @Override
-   public cuq a(int $$0, int $$1) {
-      this.e_(null);
-      return super.a($$0, $$1);
+   public cvl a(int $$0, int $$1) {
+      cvl $$2 = Objects.requireNonNullElse(this.d.get($$0), cvl.k);
+      this.d.set($$0, cvl.k);
+      if (!$$2.f()) {
+         this.c($$0);
+      }
+
+      return $$2;
    }
 
    @Override
-   public cuq b(int $$0) {
-      this.e_(null);
-      return super.b($$0);
+   public cvl b(int $$0) {
+      return this.a($$0, 1);
    }
 
    @Override
-   public void a(int $$0, cuq $$1) {
-      this.e_(null);
-      super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(cmx $$0) {
-      return super.d($$0) && (this.l == null || !$$0.R_());
-   }
-
-   @Nullable
-   @Override
-   public cpu createMenu(int $$0, cmw $$1, cmx $$2) {
-      if (this.d($$2)) {
-         this.e_($$1.l);
-         return this.a($$0, $$1);
-      } else {
-         return null;
+   public void a(int $$0, cvl $$1) {
+      if ($$1.a(axb.aV)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
       }
    }
 
    @Override
-   protected void a(dqh.b $$0) {
-      super.a($$0);
-      cxv $$1 = $$0.a(kq.af);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
-      }
+   public boolean a(brd $$0, int $$1, cvl $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : cvl.c($$2, $$2x) && $$2x.J() + $$2.J() <= $$0.f_($$2x));
    }
 
    @Override
-   protected void a(km.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(kq.af, new cxv(this.l, this.m));
-      }
+   public int ak_() {
+      return 1;
    }
 
    @Override
-   public void a(ub $$0) {
+   public boolean a(cnp $$0) {
+      return brd.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cvl $$1) {
+      return $$1.a(axb.aV) && this.a($$0).f() && $$1.J() == this.ak_();
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(dre.b $$0) {
       super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
+      $$0.a(kr.ad, cyh.a).a(this.d);
+   }
+
+   @Override
+   protected void a(kn.a $$0) {
+      super.a($$0);
+      $$0.a(kr.ad, cyh.a(this.d));
+   }
+
+   @Override
+   public void a(uf $$0) {
+      $$0.r("Items");
    }
 }

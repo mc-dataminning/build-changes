@@ -1,29 +1,37 @@
-public class aeu implements zg<abu> {
-   public static final yx<vw, aeu> a = zg.a(aeu::a, aeu::new);
-   private final int b;
+public class aeu implements zk<abz> {
+   public static final zb<wa, aeu> a = zk.a(aeu::a, aeu::new);
+   private final double b;
+   private final double c;
 
-   public aeu(int $$0) {
-      this.b = $$0;
+   public aeu(dvr $$0) {
+      this.b = $$0.a();
+      this.c = $$0.b();
    }
 
-   private aeu(vw $$0) {
-      this.b = $$0.readByte();
+   private aeu(wa $$0) {
+      this.b = $$0.readDouble();
+      this.c = $$0.readDouble();
    }
 
-   private void a(vw $$0) {
-      $$0.k(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zi<aeu> a() {
-      return agg.ax;
+   public zm<aeu> a() {
+      return ago.as;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public double b() {
+      return this.c;
+   }
+
+   public double e() {
       return this.b;
    }
 }

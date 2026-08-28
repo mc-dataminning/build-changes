@@ -1,25 +1,11 @@
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
-public class dce {
-   private final exc a;
-   private final exc b;
-   private final Predicate<dtc> c;
+public interface dce {
+   Codec<dce> a = lu.ay.q().dispatch(dce::a, Function.identity());
 
-   public dce(exc $$0, exc $$1, Predicate<dtc> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   void a(cvl var1, dbc.a var2, azk var3, bri var4);
 
-   public exc a() {
-      return this.b;
-   }
-
-   public exc b() {
-      return this.a;
-   }
-
-   public Predicate<dtc> c() {
-      return this.c;
-   }
+   MapCodec<? extends dce> a();
 }

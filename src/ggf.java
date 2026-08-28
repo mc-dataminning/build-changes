@@ -1,68 +1,110 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
 public class ggf {
-   private final akr a;
-   private final List<ggf.b> b;
+   private static final int a = 6;
+   private final alb[] b = new alb[6];
 
-   public ggf(akr $$0, List<ggf.b> $$1) {
-      this.a = $$0;
-      this.b = ImmutableList.copyOf($$1);
-   }
-
-   public akr a() {
-      return this.a;
-   }
-
-   public Stream<ggf.b> b() {
-      return this.b.stream();
-   }
-
-   protected static class a implements JsonDeserializer<ggf> {
-      public ggf a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         akr $$4 = akr.a(aye.i($$3, "model"));
-         List<ggf.b> $$5 = this.a($$3);
-         return new ggf($$4, $$5);
+   public ggf(alb $$0) {
+      for (int $$1 = 0; $$1 < 6; $$1++) {
+         this.b[$$1] = $$0.e($$0.a() + "_" + $$1 + ".png");
       }
+   }
 
-      protected List<ggf.b> a(JsonObject $$0) {
-         Map<akr, Float> $$1 = Maps.newLinkedHashMap();
-         JsonObject $$2 = aye.u($$0, "predicate");
+   public void a(fib $$0, float $$1, float $$2, float $$3) {
+      fcw $$4 = fcw.b();
+      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().l() / (float)$$0.aO().m(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$5, fdc.a);
+      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
+      $$6.pushMatrix();
+      $$6.rotationX((float) Math.PI);
+      RenderSystem.setShader(ggl::r);
+      RenderSystem.enableBlend();
+      RenderSystem.disableCull();
+      RenderSystem.depthMask(false);
+      int $$7 = 2;
 
-         for (Entry<String, JsonElement> $$3 : $$2.entrySet()) {
-            $$1.put(akr.a($$3.getKey()), aye.e($$3.getValue(), $$3.getKey()));
+      for (int $$8 = 0; $$8 < 4; $$8++) {
+         $$6.pushMatrix();
+         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$11 = 0.0F;
+         $$6.translate($$9, $$10, 0.0F);
+         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
+         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
+
+         for (int $$12 = 0; $$12 < 6; $$12++) {
+            RenderSystem.setShaderTexture(0, this.b[$$12]);
+            fcp $$13 = $$4.a(fcz.c.h, fcs.j);
+            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
+            if ($$12 == 0) {
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 1) {
+               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 2) {
+               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 3) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 4) {
+               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            if ($$12 == 5) {
+               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
+               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
+               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
+            }
+
+            fcq.a($$13.b());
          }
 
-         return $$1.entrySet().stream().map($$0x -> new ggf.b((akr)$$0x.getKey(), (Float)$$0x.getValue())).collect(ImmutableList.toImmutableList());
+         $$6.popMatrix();
+         RenderSystem.colorMask(true, true, true, false);
       }
+
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.restoreProjectionMatrix();
+      $$6.popMatrix();
+      RenderSystem.depthMask(true);
+      RenderSystem.enableCull();
+      RenderSystem.enableDepthTest();
    }
 
-   public static class b {
-      private final akr a;
-      private final float b;
+   public CompletableFuture<Void> a(gwl $$0, Executor $$1) {
+      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
 
-      public b(akr $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+         $$2[$$3] = $$0.a(this.b[$$3], $$1);
       }
 
-      public akr a() {
-         return this.a;
-      }
-
-      public float b() {
-         return this.b;
-      }
+      return CompletableFuture.allOf($$2);
    }
 }

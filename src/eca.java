@@ -1,40 +1,24 @@
 import com.mojang.serialization.Codec;
+import java.util.function.Function;
 
-public class eca extends ece<eeh> {
-   public eca(Codec<eeh> $$0) {
-      super($$0);
+public record eca<WC extends ebv>(ecc<WC> d, WC e) {
+   public static final Codec<eca<?>> a = lu.N.q().dispatch($$0 -> $$0.d, ecc::c);
+   public static final Codec<jn<eca<?>>> b = akx.a(lv.aH, a);
+   public static final Codec<jr<eca<?>>> c = kc.a(lv.aH, a);
+
+   public boolean a(azk $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   @Override
-   public boolean a(ecg<eeh> $$0) {
-      jd $$1 = $$0.e();
-      dds $$2 = $$0.b();
-      eeh $$3 = $$0.f();
+   public boolean a(ebx $$0, dvw $$1, Function<je, jn<det>> $$2, azk $$3, dzi $$4, dcy $$5, dvv $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
 
-      for (jd $$4 : jd.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
-         boolean $$5 = $$4.u() == $$1.u();
-         boolean $$6 = $$4.v() == $$1.v();
-         boolean $$7 = $$4.w() == $$1.w();
-         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
-         if ($$5 && $$6 && $$7) {
-            jd $$9 = $$4.j();
-            this.a($$2, $$9, dga.kF.o());
-            $$3.b().ifPresent($$3x -> {
-               if ($$2.c_($$9) instanceof dry $$5x) {
-                  $$5x.a($$3x, $$3.c());
-               }
-            });
-         } else if ($$6) {
-            this.a($$2, $$4, dga.a.o());
-         } else if ($$8 && $$5 && $$7) {
-            this.a($$2, $$4, dga.F.o());
-         } else if (($$5 || $$7) && !$$8) {
-            this.a($$2, $$4, dga.F.o());
-         } else {
-            this.a($$2, $$4, dga.a.o());
-         }
-      }
+   public ecc<WC> a() {
+      return this.d;
+   }
 
-      return true;
+   public WC b() {
+      return this.e;
    }
 }

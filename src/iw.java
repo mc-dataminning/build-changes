@@ -1,56 +1,56 @@
 import com.google.gson.JsonObject;
-import com.mojang.brigadier.arguments.LongArgumentType;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 
-public class iw implements io<LongArgumentType, iw.a> {
-   public void a(iw.a $$0, vw $$1) {
-      boolean $$2 = $$0.b != Long.MIN_VALUE;
-      boolean $$3 = $$0.c != Long.MAX_VALUE;
-      $$1.k(iq.a($$2, $$3));
+public class iw implements ip<IntegerArgumentType, iw.a> {
+   public void a(iw.a $$0, wa $$1) {
+      boolean $$2 = $$0.b != Integer.MIN_VALUE;
+      boolean $$3 = $$0.c != Integer.MAX_VALUE;
+      $$1.l(ir.a($$2, $$3));
       if ($$2) {
-         $$1.b($$0.b);
+         $$1.q($$0.b);
       }
 
       if ($$3) {
-         $$1.b($$0.c);
+         $$1.q($$0.c);
       }
    }
 
-   public iw.a a(vw $$0) {
+   public iw.a a(wa $$0) {
       byte $$1 = $$0.readByte();
-      long $$2 = iq.a($$1) ? $$0.readLong() : Long.MIN_VALUE;
-      long $$3 = iq.b($$1) ? $$0.readLong() : Long.MAX_VALUE;
+      int $$2 = ir.a($$1) ? $$0.readInt() : Integer.MIN_VALUE;
+      int $$3 = ir.b($$1) ? $$0.readInt() : Integer.MAX_VALUE;
       return new iw.a($$2, $$3);
    }
 
    public void a(iw.a $$0, JsonObject $$1) {
-      if ($$0.b != Long.MIN_VALUE) {
+      if ($$0.b != Integer.MIN_VALUE) {
          $$1.addProperty("min", $$0.b);
       }
 
-      if ($$0.c != Long.MAX_VALUE) {
+      if ($$0.c != Integer.MAX_VALUE) {
          $$1.addProperty("max", $$0.c);
       }
    }
 
-   public iw.a a(LongArgumentType $$0) {
+   public iw.a a(IntegerArgumentType $$0) {
       return new iw.a($$0.getMinimum(), $$0.getMaximum());
    }
 
-   public final class a implements io.a<LongArgumentType> {
-      final long b;
-      final long c;
+   public final class a implements ip.a<IntegerArgumentType> {
+      final int b;
+      final int c;
 
-      a(final long $$1, final long $$2) {
+      a(final int $$1, final int $$2) {
          this.b = $$1;
          this.c = $$2;
       }
 
-      public LongArgumentType a(ep $$0) {
-         return LongArgumentType.longArg(this.b, this.c);
+      public IntegerArgumentType a(ep $$0) {
+         return IntegerArgumentType.integer(this.b, this.c);
       }
 
       @Override
-      public io<LongArgumentType, ?> a() {
+      public ip<IntegerArgumentType, ?> a() {
          return iw.this;
       }
    }

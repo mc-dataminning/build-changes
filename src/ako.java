@@ -1,65 +1,53 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
+import java.util.Iterator;
 
-public final class ako<E> implements Codec<jm<E>> {
-   private final akq<? extends jz<E>> a;
+public interface ako {
+   static <T> void a(int $$0, int $$1, czv<?> $$2, Iterable<T> $$3, ako.a<T> $$4) {
+      int $$5 = $$0;
+      int $$6 = $$1;
+      if ($$2.b() instanceof dab $$8) {
+         $$5 = $$8.j();
+         $$6 = $$8.k();
+      }
 
-   public static <E> ako<E> a(akq<? extends jz<E>> $$0) {
-      return new ako<>($$0);
-   }
+      Iterator<T> $$9 = $$3.iterator();
+      int $$10 = 0;
 
-   private ako(akq<? extends jz<E>> $$0) {
-      this.a = $$0;
-   }
+      for (int $$11 = 0; $$11 < $$1; $$11++) {
+         boolean $$12 = (float)$$6 < (float)$$1 / 2.0F;
+         int $$13 = azc.d((float)$$1 / 2.0F - (float)$$6 / 2.0F);
+         if ($$12 && $$13 > $$11) {
+            $$10 += $$0;
+            $$11++;
+         }
 
-   public <T> DataResult<T> a(jm<E> $$0, DynamicOps<T> $$1, T $$2) {
-      if ($$1 instanceof akp<?> $$3) {
-         Optional<jp<E>> $$4 = $$3.a(this.a);
-         if ($$4.isPresent()) {
-            if (!$$0.a($$4.get())) {
-               return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
+         for (int $$14 = 0; $$14 < $$0; $$14++) {
+            if (!$$9.hasNext()) {
+               return;
             }
 
-            return (DataResult<T>)$$0.d()
-               .map(
-                  $$2x -> akr.a.encode($$2x.a(), $$1, $$2),
-                  $$0x -> DataResult.error(() -> "Elements from registry " + this.a + " can't be serialized to a value")
-               );
+            $$12 = (float)$$5 < (float)$$0 / 2.0F;
+            $$13 = azc.d((float)$$0 / 2.0F - (float)$$5 / 2.0F);
+            int $$15 = $$5;
+            boolean $$16 = $$14 < $$5;
+            if ($$12) {
+               $$15 = $$13 + $$5;
+               $$16 = $$13 <= $$14 && $$14 < $$13 + $$5;
+            }
+
+            if ($$16) {
+               $$4.addItemToSlot($$9.next(), $$10, $$14, $$11);
+            } else if ($$15 == $$14) {
+               $$10 += $$0 - $$14;
+               break;
+            }
+
+            $$10++;
          }
       }
-
-      return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   public <T> DataResult<Pair<jm<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
-      if ($$0 instanceof akp<?> $$2) {
-         Optional<jn<E>> $$3 = $$2.b(this.a);
-         if ($$3.isPresent()) {
-            return akr.a
-               .decode($$0, $$1)
-               .flatMap(
-                  $$1x -> {
-                     akr $$2x = (akr)$$1x.getFirst();
-                     return $$3.get()
-                        .a(akq.a(this.a, $$2x))
-                        .<DataResult>map(DataResult::success)
-                        .orElseGet(() -> DataResult.error(() -> "Failed to get element " + $$2x))
-                        .map($$1xx -> Pair.of($$1xx, $$1x.getSecond()))
-                        .setLifecycle(Lifecycle.stable());
-                  }
-               );
-         }
-      }
-
-      return DataResult.error(() -> "Can't access registry " + this.a);
-   }
-
-   @Override
-   public String toString() {
-      return "RegistryFixedCodec[" + this.a + "]";
+   @FunctionalInterface
+   public interface a<T> {
+      void addItemToSlot(T var1, int var2, int var3, int var4);
    }
 }

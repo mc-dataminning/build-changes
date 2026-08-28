@@ -1,53 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class byg {
-   public static bvi<btw> a(int $$0, float $$1) {
-      MutableLong $$2 = new MutableLong(0L);
-      return byu.a(
-         (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$3 -> $$3.group($$3.c(ccs.o), $$3.c(ccs.m), $$3.a(ccs.n))
-               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
-                     if ($$5x.b_($$6.do()).a(awk.a)) {
-                        return false;
-                     } else if ($$7 < $$2.getValue()) {
-                        $$2.setValue($$7 + 20L + 2L);
-                        return true;
-                     } else {
-                        jd $$8 = null;
-                        jd $$9 = null;
-                        jd $$10 = $$6.do();
+public class byg<U> implements Iterable<U> {
+   protected final List<byg.a<U>> a;
+   private final azk b = azk.a();
 
-                        for (jd $$12 : jd.a($$10, $$0, $$0, $$0)) {
-                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
-                              dtc $$13 = $$6.dO().a_($$12.d());
-                              dtc $$14 = $$6.dO().a_($$12);
-                              if ($$14.a(dga.G)) {
-                                 if ($$13.i()) {
-                                    $$8 = $$12.j();
-                                    break;
-                                 }
+   public byg() {
+      this.a = Lists.newArrayList();
+   }
 
-                                 if ($$9 == null && !$$12.a($$6.dm(), 1.5)) {
-                                    $$9 = $$12.j();
-                                 }
-                              }
-                           }
-                        }
+   private byg(List<byg.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
 
-                        if ($$8 == null) {
-                           $$8 = $$9;
-                        }
+   public static <U> Codec<byg<U>> a(Codec<U> $$0) {
+      return byg.a.a($$0).listOf().xmap(byg::new, $$0x -> $$0x.a);
+   }
 
-                        if ($$8 != null) {
-                           $$5.a(new bvk($$8));
-                           $$4.a(new ccv(new bvk($$8), $$1, 0));
-                        }
+   public byg<U> a(U $$0, int $$1) {
+      this.a.add(new byg.a<>($$0, $$1));
+      return this;
+   }
 
-                        $$2.setValue($$7 + 40L);
-                        return true;
-                     }
-                  }))
-      );
+   public byg<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(byg.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(byg.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), byg.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<byg.a<E>> a(final Codec<E> $$0) {
+         return new Codec<byg.a<E>>() {
+            public <T> DataResult<Pair<byg.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new byg.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(byg.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

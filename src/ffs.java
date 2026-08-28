@@ -1,59 +1,50 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public abstract class ffs extends ffn {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wz d;
-   private final Runnable e;
+public class ffs extends hct {
+   private static final xd a = xd.c("mco.account.privacy.information");
+   private static final int b = 15;
+   private final fns c = fns.d();
+   private final fpt B;
+   @Nullable
+   private fku C;
 
-   public ffs(long $$0, wz $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public ffs(fpt $$0) {
+      super(fhs.a);
+      this.B = $$0;
    }
 
-   protected abstract void a(fby var1, long var2) throws fdj;
+   @Override
+   public void aT_() {
+      this.c.a(15).c().b();
+      this.C = new fku(a, this.p).b(true);
+      this.c.a(this.C);
+      fns $$0 = this.c.a(fns.e().a(8));
+      xd $$1 = xd.c("mco.account.privacy.info.button");
+      $$0.a(fka.a($$1, fop.b(this, axy.a)).a());
+      $$0.a(fka.a(xc.k, $$0x -> this.d()).a());
+      this.c.a($$1x -> {
+         fjy var10000 = this.c($$1x);
+      });
+      this.c();
+   }
 
    @Override
-   public void run() {
-      fby $$0 = fby.a();
-      int $$1 = 0;
+   public void d() {
+      this.m.a(this.B);
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (fdk var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
+   @Override
+   protected void c() {
+      if (this.C != null) {
+         this.C.d(this.n - 15);
       }
+
+      this.c.a();
+      fnm.a(this.c, this.H());
    }
 
    @Override
-   public wz a() {
-      return this.d;
+   public xd i() {
+      return a;
    }
 }

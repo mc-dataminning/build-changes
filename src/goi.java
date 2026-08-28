@@ -1,45 +1,30 @@
-public class goi extends gov<cfo, fvm<cfo>> {
-   private final gev a;
+public class goi extends gnj<cme, gue, fyc> {
+   private static final alb b = alb.b("textures/entity/piglin/piglin.png");
+   private static final alb k = alb.b("textures/entity/piglin/piglin_brute.png");
+   public static final gqk.a a = new gqk.a(0.0F, 0.0F, 1.0019531F);
 
-   public goi(gmf<cfo, fvm<cfo>> $$0, gev $$1) {
-      super($$0);
-      this.a = $$1;
+   public goi(gms.a $$0, fzz $$1, fzz $$2, fzz $$3, fzz $$4, fzz $$5, fzz $$6) {
+      super($$0, new fyc($$0.a($$1)), new fyc($$0.a($$2)), 0.5F, a);
+      this.a(new gqv<>(this, new fxm($$0.a($$3)), new fxm($$0.a($$4)), new fxm($$0.a($$5)), new fxm($$0.a($$5)), $$0.g()));
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, cfo $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      boolean $$10 = $$3.fH();
-      boolean $$11 = $$3.o_();
-      $$0.a();
-      if ($$11) {
-         float $$12 = 0.75F;
-         $$0.b(0.75F, 0.75F, 0.75F);
-         $$0.a(0.0F, 0.5F, 0.209375F);
-      }
+   public alb a(gue $$0) {
+      return $$0.a ? k : b;
+   }
 
-      $$0.a(this.c().a.b / 16.0F, this.c().a.c / 16.0F, this.c().a.d / 16.0F);
-      float $$13 = $$3.H($$6);
-      $$0.a(a.f.rotation($$13));
-      $$0.a(a.d.rotationDegrees($$8));
-      $$0.a(a.b.rotationDegrees($$9));
-      if ($$3.o_()) {
-         if ($$10) {
-            $$0.a(0.4F, 0.26F, 0.15F);
-         } else {
-            $$0.a(0.06F, 0.26F, -0.5F);
-         }
-      } else if ($$10) {
-         $$0.a(0.46F, 0.26F, 0.22F);
-      } else {
-         $$0.a(0.06F, 0.27F, -0.5F);
-      }
+   public gue c() {
+      return new gue();
+   }
 
-      $$0.a(a.b.rotationDegrees(90.0F));
-      if ($$10) {
-         $$0.a(a.f.rotationDegrees(90.0F));
-      }
+   public void a(cme $$0, gue $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.ao() == btq.aB;
+      $$1.d = $$0.gq();
+      $$1.c = (float)cty.b($$0.fx(), $$0);
+      $$1.b = $$0.go();
+   }
 
-      cuq $$14 = $$3.a(bsy.a);
-      this.a.a($$3, $$14, cun.h, false, $$0, $$1, $$2);
-      $$0.b();
+   protected boolean b(gue $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

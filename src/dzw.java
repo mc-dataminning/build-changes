@@ -1,83 +1,173 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.OptionalLong;
-import org.apache.commons.lang3.StringUtils;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
 public class dzw {
-   public static final MapCodec<dzw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.LONG.fieldOf("seed").stable().forGetter(dzw::b),
-               Codec.BOOL.fieldOf("generate_features").orElse(true).stable().forGetter(dzw::c),
-               Codec.BOOL.fieldOf("bonus_chest").orElse(false).stable().forGetter(dzw::d),
-               Codec.STRING.lenientOptionalFieldOf("legacy_custom_options").stable().forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, $$0.stable(dzw::new))
-   );
-   public static final dzw b = new dzw((long)"North Carolina".hashCode(), true, true);
-   private final long c;
-   private final boolean d;
-   private final boolean e;
-   private final Optional<String> f;
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<dua> b = $$0 -> !$$0.l();
+   static final Predicate<dua> c = dtz.a::d;
+   private final axr d;
+   private final Predicate<dua> e;
+   private final dvw f;
 
-   public dzw(long $$0, boolean $$1, boolean $$2) {
-      this($$0, $$1, $$2, Optional.empty());
+   public dzw(dvw $$0, dzw.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = azc.e($$0.H_() + 1);
+      this.d = new azr($$2, 256);
    }
 
-   public static dzw a() {
-      return new dzw(f(), true, false);
-   }
+   public static void a(dvw $$0, Set<dzw.a> $$1) {
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.size();
+         ObjectList<dzw> $$3 = new ObjectArrayList($$2);
+         ObjectListIterator<dzw> $$4 = $$3.iterator();
+         int $$5 = $$0.b() + 16;
+         je.a $$6 = new je.a();
 
-   private dzw(long $$0, boolean $$1, boolean $$2, Optional<String> $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-   }
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            for (int $$8 = 0; $$8 < 16; $$8++) {
+               for (dzw.a $$9 : $$1) {
+                  $$3.add($$0.a($$9));
+               }
 
-   public long b() {
-      return this.c;
-   }
+               for (int $$10 = $$5 - 1; $$10 >= $$0.G_(); $$10--) {
+                  $$6.d($$7, $$10, $$8);
+                  dua $$11 = $$0.a_($$6);
+                  if (!$$11.a(dgx.a)) {
+                     while ($$4.hasNext()) {
+                        dzw $$12 = (dzw)$$4.next();
+                        if ($$12.e.test($$11)) {
+                           $$12.a($$7, $$8, $$10 + 1);
+                           $$4.remove();
+                        }
+                     }
 
-   public boolean c() {
-      return this.d;
-   }
+                     if ($$3.isEmpty()) {
+                        break;
+                     }
 
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.f.isPresent();
-   }
-
-   public dzw a(boolean $$0) {
-      return new dzw(this.c, this.d, $$0, this.f);
-   }
-
-   public dzw b(boolean $$0) {
-      return new dzw(this.c, $$0, this.e, this.f);
-   }
-
-   public dzw a(OptionalLong $$0) {
-      return new dzw($$0.orElse(f()), this.d, this.e, this.f);
-   }
-
-   public static OptionalLong a(String $$0) {
-      $$0 = $$0.trim();
-      if (StringUtils.isEmpty($$0)) {
-         return OptionalLong.empty();
-      } else {
-         try {
-            return OptionalLong.of(Long.parseLong($$0));
-         } catch (NumberFormatException var2) {
-            return OptionalLong.of((long)$$0.hashCode());
+                     $$4.back($$2);
+                  }
+               }
+            }
          }
       }
    }
 
-   public static long f() {
-      return ayw.a().g();
+   public boolean a(int $$0, int $$1, int $$2, dua $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
+            }
+         } else if ($$4 - 1 == $$1) {
+            je.a $$5 = new je.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.G_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.G_());
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
+   }
+
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
+   }
+
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.G_();
+   }
+
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.G_());
+   }
+
+   public void a(dvw $$0, dzw.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
+   }
+
+   public long[] a() {
+      return this.d.a();
+   }
+
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements azy {
+      a("WORLD_SURFACE_WG", dzw.b.a, dzw.b),
+      b("WORLD_SURFACE", dzw.b.c, dzw.b),
+      c("OCEAN_FLOOR_WG", dzw.b.a, dzw.c),
+      d("OCEAN_FLOOR", dzw.b.b, dzw.c),
+      e("MOTION_BLOCKING", dzw.b.c, $$0 -> $$0.d() || !$$0.y().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", dzw.b.b, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dlf));
+
+      public static final Codec<dzw.a> g = azy.a(dzw.a::values);
+      private final String h;
+      private final dzw.b i;
+      private final Predicate<dua> j;
+
+      private a(final String $$0, final dzw.b $$1, final Predicate<dua> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == dzw.b.c;
+      }
+
+      public boolean d() {
+         return this.i != dzw.b.a;
+      }
+
+      public Predicate<dua> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

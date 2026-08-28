@@ -1,34 +1,57 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class dls extends dht {
-   public static final MapCodec<dls> a = b(dls::new);
-   private static final exv[] b = new exv[]{
-      dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 3.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 7.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0)
-   };
+public enum dls implements azy {
+   a("none", h.a),
+   b("left_right", h.B),
+   c("front_back", h.z);
 
-   @Override
-   public MapCodec<dls> a() {
-      return a;
+   public static final Codec<dls> d = azy.a(dls::values);
+   private final String e;
+   private final xd f;
+   private final h g;
+
+   private dls(final String $$0, final h $$1) {
+      this.e = $$0;
+      this.f = xd.c("mirror." + $$0);
+      this.g = $$1;
    }
 
-   public dls(dtb.d $$0) {
-      super($$0);
+   public int a(int $$0, int $$1) {
+      int $$2 = $$1 / 2;
+      int $$3 = $$0 > $$2 ? $$0 - $$1 : $$0;
+      switch (this) {
+         case b:
+            return ($$2 - $$3 + $$1) % $$1;
+         case c:
+            return ($$1 - $$3) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public dnj a(jj $$0) {
+      jj.a $$1 = $$0.o();
+      return (this != b || $$1 != jj.a.c) && (this != c || $$1 != jj.a.a) ? dnj.a : dnj.c;
+   }
+
+   public jj b(jj $$0) {
+      if (this == c && $$0.o() == jj.a.a) {
+         return $$0.g();
+      } else {
+         return this == b && $$0.o() == jj.a.c ? $$0.g() : $$0;
+      }
+   }
+
+   public h a() {
+      return this.g;
+   }
+
+   public xd b() {
+      return this.f;
    }
 
    @Override
-   protected dcv d() {
-      return cut.ug;
-   }
-
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return b[this.g($$0)];
+   public String c() {
+      return this.e;
    }
 }

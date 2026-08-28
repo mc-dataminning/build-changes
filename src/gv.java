@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class gv implements ArgumentType<gr> {
    private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "0.1 -0.5", "~1 ~-2");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("argument.pos2d.incomplete"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("argument.pos2d.incomplete"));
    private final boolean c;
 
    public gv(boolean $$0) {
@@ -27,9 +27,9 @@ public class gv implements ArgumentType<gr> {
       return new gv($$0);
    }
 
-   public static exb a(CommandContext<et> $$0, String $$1) {
-      exc $$2 = ((gr)$$0.getArgument($$1, gr.class)).a((et)$$0.getSource());
-      return new exb((float)$$2.c, (float)$$2.e);
+   public static eyd a(CommandContext<et> $$0, String $$1) {
+      eye $$2 = ((gr)$$0.getArgument($$1, gr.class)).a((et)$$0.getSource());
+      return new eyd((float)$$2.d, (float)$$2.f);
    }
 
    public gr a(StringReader $$0) throws CommandSyntaxException {

@@ -1,41 +1,42 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cbx<T extends btp> extends cam {
-   private final T a;
-   private final cuq b;
-   private final Predicate<? super T> c;
-   @Nullable
-   private final avo d;
+public class cbx extends cbc {
+   private final buh a;
+   private double b;
+   private double c;
+   private int d;
 
-   public cbx(T $$0, cuq $$1, @Nullable avo $$2, Predicate<? super T> $$3) {
+   public cbx(buh $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.d = $$2;
-      this.c = $$3;
+      this.a(EnumSet.of(cbc.a.a, cbc.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.c.test(this.a);
+      return this.a.dV().i() < 0.02F;
    }
 
    @Override
    public boolean c() {
-      return this.a.fr();
+      return this.d >= 0;
    }
 
    @Override
    public void d() {
-      this.a.a(bsy.a, this.b.s());
-      this.a.c(bqq.a);
+      double $$0 = (Math.PI * 2) * this.a.dV().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dV().a(20);
    }
 
    @Override
-   public void e() {
-      this.a.a(bsy.a, cuq.l);
-      if (this.d != null) {
-         this.a.a(this.d, 1.0F, this.a.dR().i() * 0.2F + 0.9F);
-      }
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      this.d--;
+      this.a.K().a(this.a.dx() + this.b, this.a.dB(), this.a.dD() + this.c);
    }
 }

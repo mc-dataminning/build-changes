@@ -1,73 +1,26 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ebg extends ece<eek> {
-   public ebg(Codec<eek> $$0) {
-      super($$0);
+public class ebg implements ebd {
+   private final ki e;
+   private final jj f;
+   public static final MapCodec<ebg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ki.v(16).optionalFieldOf("offset", ki.g).forGetter($$0x -> $$0x.e), jj.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, ebg::new)
+   );
+
+   public ebg(ki $$0, jj $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected void a(dcx $$0, ayw $$1, jd $$2, eek $$3, int $$4, jd.a $$5) {
-      for (int $$6 = 0; $$6 < $$4; $$6++) {
-         $$5.g($$2).c(ji.b, $$6);
-         if (!$$0.a_($$5).i($$0, $$5)) {
-            this.a($$0, $$5, $$3.c.a($$1, $$2));
-         }
-      }
-   }
-
-   protected int a(ayw $$0) {
-      int $$1 = $$0.a(3) + 4;
-      if ($$0.a(12) == 0) {
-         $$1 *= 2;
-      }
-
-      return $$1;
-   }
-
-   protected boolean a(dcx $$0, jd $$1, int $$2, jd.a $$3, eek $$4) {
-      int $$5 = $$1.v();
-      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.am()) {
-         dtc $$6 = $$0.a_($$1.e());
-         if (!b($$6) && !$$6.a(awe.bb)) {
-            return false;
-         } else {
-            for (int $$7 = 0; $$7 <= $$2; $$7++) {
-               int $$8 = this.a(-1, -1, $$4.d, $$7);
-
-               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
-                     dtc $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
-                     if (!$$11.i() && !$$11.a(awe.P)) {
-                        return false;
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      } else {
-         return false;
-      }
+   public boolean a(dep $$0, je $$1) {
+      je $$2 = $$1.a(this.e);
+      return $$0.a_($$2).c($$0, $$2, this.f);
    }
 
    @Override
-   public boolean a(ecg<eek> $$0) {
-      dds $$1 = $$0.b();
-      jd $$2 = $$0.e();
-      ayw $$3 = $$0.d();
-      eek $$4 = $$0.f();
-      int $$5 = this.a($$3);
-      jd.a $$6 = new jd.a();
-      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
-         return false;
-      } else {
-         this.a($$1, $$3, $$2, $$5, $$6, $$4);
-         this.a($$1, $$3, $$2, $$4, $$5, $$6);
-         return true;
-      }
+   public ebe<?> a() {
+      return ebe.d;
    }
-
-   protected abstract int a(int var1, int var2, int var3, int var4);
-
-   protected abstract void a(dcx var1, ayw var2, jd var3, int var4, jd.a var5, eek var6);
 }

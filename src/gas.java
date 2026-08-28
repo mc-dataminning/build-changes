@@ -1,77 +1,103 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gas implements AutoCloseable {
-   private final Long2ObjectOpenHashMap<gas.a> a = new Long2ObjectOpenHashMap();
-   private int b;
-   private boolean c;
+public class gas {
+   private static final Logger a = LogUtils.getLogger();
+   private final fib b;
+   private final hbw c;
+   private final al d = new al();
+   private final Map<ag, ai> e = new Object2ObjectOpenHashMap();
+   @Nullable
+   private gas.a f;
+   @Nullable
+   private ag g;
 
-   public void a(jd $$0, dtc $$1, geb $$2) {
-      this.a.compute($$0.a(), ($$2x, $$3) -> $$3 != null ? $$3.a(this.b) : new gas.a(this.b, $$1, $$2.dm()));
+   public gas(fib $$0, hbw $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public boolean a(jd $$0, dtc $$1) {
-      gas.a $$2 = (gas.a)this.a.get($$0.a());
-      if ($$2 == null) {
-         return false;
-      } else {
-         $$2.a($$1);
-         return true;
+   public void a(agh $$0) {
+      if ($$0.g()) {
+         this.d.a();
+         this.e.clear();
       }
-   }
 
-   public void a(int $$0, fzf $$1) {
-      ObjectIterator<Entry<gas.a>> $$2 = this.a.long2ObjectEntrySet().iterator();
+      this.d.a($$0.e());
+      this.d.a($$0.b());
 
-      while ($$2.hasNext()) {
-         Entry<gas.a> $$3 = (Entry<gas.a>)$$2.next();
-         gas.a $$4 = (gas.a)$$3.getValue();
-         if ($$4.b <= $$0) {
-            jd $$5 = jd.d($$3.getLongKey());
-            $$2.remove();
-            $$1.a($$5, $$4.c, $$4.a);
+      for (Entry<alb, ai> $$1 : $$0.f().entrySet()) {
+         ah $$2 = this.d.a($$1.getKey());
+         if ($$2 != null) {
+            ai $$3 = $$1.getValue();
+            $$3.a($$2.a().f());
+            this.e.put($$2.b(), $$3);
+            if (this.f != null) {
+               this.f.a($$2, $$3);
+            }
+
+            if (!$$0.g() && $$3.a()) {
+               if (this.b.s != null) {
+                  this.c.a(this.b.s, $$2.b());
+               }
+
+               Optional<as> $$4 = $$2.a().c();
+               if ($$4.isPresent() && $$4.get().h()) {
+                  this.b.az().a(new fmh($$2.b()));
+               }
+            }
+         } else {
+            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
          }
       }
    }
 
-   public gas a() {
-      this.b++;
-      this.c = true;
-      return this;
+   public al a() {
+      return this.d;
    }
 
-   @Override
-   public void close() {
-      this.c = false;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   static class a {
-      final exc a;
-      int b;
-      dtc c;
-
-      a(int $$0, dtc $$1, exc $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.a = $$2;
+   public void a(@Nullable ag $$0, boolean $$1) {
+      gay $$2 = this.b.L();
+      if ($$2 != null && $$0 != null && $$1) {
+         $$2.b(aib.a($$0));
       }
 
-      gas.a a(int $$0) {
-         this.b = $$0;
-         return this;
+      if (this.g != $$0) {
+         this.g = $$0;
+         if (this.f != null) {
+            this.f.a($$0);
+         }
       }
+   }
 
-      void a(dtc $$0) {
-         this.c = $$0;
+   public void a(@Nullable gas.a $$0) {
+      this.f = $$0;
+      this.d.a($$0);
+      if ($$0 != null) {
+         this.e.forEach(($$1, $$2) -> {
+            ah $$3 = this.d.a($$1);
+            if ($$3 != null) {
+               $$0.a($$3, $$2);
+            }
+         });
+         $$0.a(this.g);
       }
+   }
+
+   @Nullable
+   public ag a(alb $$0) {
+      ah $$1 = this.d.a($$0);
+      return $$1 != null ? $$1.b() : null;
+   }
+
+   public interface a extends al.a {
+      void a(ah var1, ai var2);
+
+      void a(@Nullable ag var1);
    }
 }

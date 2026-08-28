@@ -1,34 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class byh {
-   public static bvi<btn> a(dfy $$0) {
-      return byu.a(
-         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$1 -> $$1.group($$1.c(ccs.o), $$1.b(ccs.m), $$1.b(ccs.Y))
-               .apply($$1, ($$1x, $$2, $$3) -> ($$2x, $$3x, $$4) -> {
-                     if (!$$3x.bf() && $$3x.aF()) {
-                        jd $$5 = $$3x.do().e();
+public class byh extends bvx<buf> {
+   public static final int c = 100;
+   private long d;
 
-                        for (ji $$6 : ji.c.a) {
-                           jd $$7 = $$5.a($$6);
-                           if ($$2x.a_($$7).k($$2x, $$7).a(ji.b).c() && $$2x.b_($$7).b(epf.c)) {
-                              jd $$8 = $$7.d();
-                              if ($$2x.a_($$8).i()) {
-                                 dtc $$9 = $$0.o();
-                                 $$2x.a($$8, $$9, 3);
-                                 $$2x.a(dxz.i, $$8, dxz.a.a($$3x, $$9));
-                                 $$2x.a(null, $$3x, avp.jP, avq.e, 1.0F, 1.0F);
-                                 $$3.b();
-                                 return true;
-                              }
-                           }
-                        }
+   public byh() {
+      super(ImmutableMap.of(cdi.b, cdj.a, cdi.I, cdj.c));
+   }
 
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   @Override
+   protected boolean a(arg $$0, buf $$1) {
+      if ($$1.bW()) {
+         return false;
+      } else {
+         bvg<?> $$2 = $$1.dX();
+         jm $$3 = $$2.c(cdi.b).get();
+         if ($$0.ag() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(cdi.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.aa() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dua $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dq(), 2.0) && $$6.a(aws.S) && !$$6.c(dgo.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(arg $$0, buf $$1, long $$2) {
+      Optional<jm> $$3 = $$1.dX().c(cdi.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         je $$4 = $$3.get().b();
+         return $$1.dX().c(cpg.e) && $$1.dz() > (double)$$4.v() + 0.4 && $$4.a($$1.dq(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(arg $$0, buf $$1, long $$2) {
+      if ($$2 > this.d) {
+         bvg<?> $$3 = $$1.dX();
+         if ($$3.a(cdi.v)) {
+            Set<jm> $$4 = $$3.c(cdi.v).get();
+            Optional<List<buf>> $$5;
+            if ($$3.a(cdi.g)) {
+               $$5 = $$3.c(cdi.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bwv.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.dX().c(cdi.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(arg $$0, buf $$1, long $$2) {
+      if ($$1.fL()) {
+         $$1.fM();
+         this.d = $$2 + 40L;
+      }
    }
 }

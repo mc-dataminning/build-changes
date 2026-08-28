@@ -1,33 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class lr implements lk {
-   private static final Codec<dyd> c = dyd.c
-      .validate($$0 -> $$0 instanceof dxx ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success($$0));
-   public static final MapCodec<lr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(c.fieldOf("destination").forGetter(lr::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(lr::c)).apply($$0, lr::new)
-   );
-   public static final yx<wk, lr> b = yx.a(dyd.d, lr::b, yv.g, lr::c, lr::new);
-   private final dyd d;
-   private final int e;
+public class lr extends lm<lr> implements ll {
+   private final MapCodec<lr> a = MapCodec.unit(this::e);
+   private final zb<wo, lr> b = zb.a(this);
 
-   public lr(dyd $$0, int $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   protected lr(boolean $$0) {
+      super($$0);
+   }
+
+   public lr e() {
+      return this;
    }
 
    @Override
-   public ll<lr> a() {
-      return lm.T;
+   public MapCodec<lr> c() {
+      return this.a;
    }
 
-   public dyd b() {
-      return this.d;
-   }
-
-   public int c() {
-      return this.e;
+   @Override
+   public zb<wo, lr> d() {
+      return this.b;
    }
 }

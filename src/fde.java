@@ -1,42 +1,67 @@
-import com.google.gson.JsonObject;
 import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fde extends fdc {
-   private static final Logger j = LogUtils.getLogger();
-   public String a = "";
-   public String b = "";
-   public String c = "";
-   public String d = "";
-   public String e = "";
+public class fde {
+   private static final Logger a = LogUtils.getLogger();
    @Nullable
-   public String f;
-   public String g = "";
-   public String h = "";
-   public fde.a i = fde.a.a;
+   private static CompletableFuture<fde.a> b;
 
-   public static fde a(JsonObject $$0) {
-      fde $$1 = new fde();
-
-      try {
-         $$1.a = fez.b("id", $$0, "");
-         $$1.b = fez.b("name", $$0, "");
-         $$1.c = fez.b("version", $$0, "");
-         $$1.d = fez.b("author", $$0, "");
-         $$1.e = fez.b("link", $$0, "");
-         $$1.f = fez.b("image", $$0, null);
-         $$1.g = fez.b("trailer", $$0, "");
-         $$1.h = fez.b("recommendedPlayers", $$0, "");
-         $$1.i = fde.a.valueOf(fez.b("type", $$0, fde.a.a.name()));
-      } catch (Exception var3) {
-         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
+   public static CompletableFuture<fde.a> a() {
+      if (b == null || a(b)) {
+         b = b();
       }
 
-      return $$1;
+      return b;
    }
 
-   public static enum a {
+   private static boolean a(CompletableFuture<fde.a> $$0) {
+      fde.a $$1 = $$0.getNow(null);
+      return $$1 != null && $$1.b() != null;
+   }
+
+   private static CompletableFuture<fde.a> b() {
+      fio $$0 = fib.Q().X();
+      return $$0.g() != fio.a.c ? CompletableFuture.completedFuture(new fde.a(fde.b.d)) : CompletableFuture.supplyAsync(() -> {
+         fdk $$0x = fdk.a();
+
+         try {
+            if ($$0x.g() != fdk.a.a) {
+               return new fde.a(fde.b.b);
+            } else {
+               return !$$0x.f() ? new fde.a(fde.b.c) : new fde.a(fde.b.a);
+            }
+         } catch (fev var2) {
+            a.error("Couldn't connect to realms", var2);
+            return var2.a.a() == 401 ? new fde.a(fde.b.d) : new fde.a(var2);
+         }
+      }, ad.h());
+   }
+
+   public static record a(fde.b a, @Nullable fev b) {
+      public a(fde.b $$0) {
+         this($$0, null);
+      }
+
+      public a(fev $$0) {
+         this(fde.b.e, $$0);
+      }
+
+      @Nullable
+      public fpt a(fpt $$0) {
+         return (fpt)(switch (this.a) {
+            case a -> null;
+            case b -> new ffi($$0);
+            case c -> new ffs($$0);
+            case d -> new ffn(xd.c("mco.error.invalid.session.title"), xd.c("mco.error.invalid.session.message"), $$0);
+            case e -> new ffn(Objects.requireNonNull(this.b), $$0);
+         });
+      }
+   }
+
+   public static enum b {
       a,
       b,
       c,

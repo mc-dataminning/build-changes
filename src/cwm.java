@@ -1,32 +1,19 @@
-public interface cwm {
-   cwm.a a = new cwm.a(false, false);
-   cwm.a b = new cwm.a(true, false);
+public class cwm extends cvh {
+   private final arh a;
 
-   boolean a();
+   public cwm(arh $$0) {
+      this.a = $$0;
+   }
 
-   boolean b();
+   @Override
+   protected void b(cvg $$0, int $$1) {
+      super.b($$0, $$1);
+      this.a.c.b(new acx($$0, $$1));
+   }
 
-   public static record a(boolean c, boolean d) implements cwm {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cwm.a c() {
-         return new cwm.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   protected void c(cvg $$0) {
+      super.c($$0);
+      this.a.c.b(new acx($$0, 0));
    }
 }

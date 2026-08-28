@@ -1,3 +1,8 @@
-public interface fpy<T extends cpu> {
-   T D();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fpy {
 }

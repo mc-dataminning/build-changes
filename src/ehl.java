@@ -1,29 +1,41 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.datafixers.Products.P4;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class ehl extends ehm {
-   public static final MapCodec<ehl> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehl::new));
+public class ehl extends ehk {
+   public static final MapCodec<ehl> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ehl::new));
+   protected final List<dua> h;
 
-   public ehl(int $$0, int $$1, int $$2) {
+   protected static <P extends ehl> P4<Mu<P>, Long, epe.a, Float, List<dua>> b(Instance<P> $$0) {
+      return a($$0).and(Codec.list(dua.a).fieldOf("states").forGetter($$0x -> $$0x.h));
+   }
+
+   public ehl(long $$0, epe.a $$1, float $$2, List<dua> $$3) {
       super($$0, $$1, $$2);
+      this.h = $$3;
    }
 
    @Override
-   protected ehn<?> a() {
-      return ehn.a;
+   protected ehi<?> a() {
+      return ehi.d;
    }
 
    @Override
-   public List<efu.a> a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, int $$3, jd $$4, efe $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
+   public dua a(azk $$0, je $$1) {
+      return this.a(this.h, $$1, (double)this.e);
+   }
 
-      for (int $$6 = 0; $$6 < $$3; $$6++) {
-         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
-      }
+   protected dua a(List<dua> $$0, je $$1, double $$2) {
+      double $$3 = this.a($$1, $$2);
+      return this.a($$0, $$3);
+   }
 
-      return ImmutableList.of(new efu.a($$4.b($$3), 0, false));
+   protected dua a(List<dua> $$0, double $$1) {
+      double $$2 = azc.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
+      return $$0.get((int)($$2 * (double)$$0.size()));
    }
 }

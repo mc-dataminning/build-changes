@@ -1,78 +1,58 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class grt implements auf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final grs b = new grs("US", "English", false);
-   private Map<String, grs> c = ImmutableMap.of("en_us", b);
-   private String d;
-   private final Consumer<grp> e;
+public class grt extends grf<gvi, fzq> {
+   private final fzq a;
+   private final fzq b;
+   private static final Map<btg.a, alb> c = Map.of(
+      btg.a.b,
+      alb.b("textures/entity/wolf/wolf_armor_crackiness_low.png"),
+      btg.a.c,
+      alb.b("textures/entity/wolf/wolf_armor_crackiness_medium.png"),
+      btg.a.d,
+      alb.b("textures/entity/wolf/wolf_armor_crackiness_high.png")
+   );
 
-   public grt(String $$0, Consumer<grp> $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public grt(goo<gvi, fzq> $$0, fzx $$1) {
+      super($$0);
+      this.a = new fzq($$1.a(gaa.dg));
+      this.b = new fzq($$1.a(gaa.di));
    }
 
-   private static Map<String, grs> a(Stream<asq> $$0) {
-      Map<String, grs> $$1 = Maps.newHashMap();
-      $$0.forEach($$1x -> {
-         try {
-            gsf $$2 = $$1x.a(gsf.c);
-            if ($$2 != null) {
-               $$2.a().forEach($$1::putIfAbsent);
-            }
-         } catch (IOException | RuntimeException var3) {
-            a.warn("Unable to parse language metadata section of resourcepack: {}", $$1x.b(), var3);
-         }
-      });
-      return ImmutableMap.copyOf($$1);
-   }
-
-   @Override
-   public void a(aue $$0) {
-      this.c = a($$0.b());
-      List<String> $$1 = new ArrayList<>(2);
-      boolean $$2 = b.d();
-      $$1.add("en_us");
-      if (!this.d.equals("en_us")) {
-         grs $$3 = this.c.get(this.d);
-         if ($$3 != null) {
-            $$1.add(this.d);
-            $$2 = $$3.d();
-         }
+   public void a(fcu $$0, ggv $$1, int $$2, gvi $$3, float $$4, float $$5) {
+      cvl $$6 = $$3.i;
+      if ($$6.h() instanceof ctb $$7 && $$7.d() == ctb.a.b) {
+         fzq $$9 = $$3.ae ? this.b : this.a;
+         $$9.a($$3);
+         fcy $$10 = $$1.getBuffer(ghe.f($$7.b()));
+         $$9.a($$0, $$10, $$2, gwb.d);
+         this.a($$0, $$1, $$2, $$6, $$7, $$9);
+         this.a($$0, $$1, $$2, $$6, $$9);
+         return;
       }
-
-      grp $$4 = grp.a($$0, $$1, $$2);
-      grr.a($$4);
-      tw.a($$4);
-      this.e.accept($$4);
    }
 
-   public void a(String $$0) {
-      this.d = $$0;
+   private void a(fcu $$0, ggv $$1, int $$2, cvl $$3, ctb $$4, fxv $$5) {
+      if ($$3.a(axb.bD)) {
+         int $$6 = cyd.a($$3, 0);
+         if (axn.a($$6) == 0) {
+            return;
+         }
+
+         alb $$7 = $$4.c();
+         if ($$7 == null) {
+            return;
+         }
+
+         $$5.a($$0, $$1.getBuffer(ghe.f($$7)), $$2, gwb.d, axn.f($$6));
+      }
    }
 
-   public String a() {
-      return this.d;
-   }
-
-   public SortedMap<String, grs> b() {
-      return new TreeMap<>(this.c);
-   }
-
-   @Nullable
-   public grs b(String $$0) {
-      return this.c.get($$0);
+   private void a(fcu $$0, ggv $$1, int $$2, cvl $$3, fxv $$4) {
+      btg.a $$5 = btg.b.a($$3);
+      if ($$5 != btg.a.a) {
+         alb $$6 = c.get($$5);
+         fcy $$7 = $$1.getBuffer(ghe.j($$6));
+         $$4.a($$0, $$7, $$2, gwb.d);
+      }
    }
 }

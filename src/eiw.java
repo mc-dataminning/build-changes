@@ -1,42 +1,16 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
 
-public class eiw extends dzv {
-   private final dds a;
-   private final duz b;
-   private final Optional<eiv> c;
+public interface eiw<P extends eiv> {
+   eiw<eiu> a = a("constant", eiu.b);
+   eiw<eiy> b = a("uniform", eiy.a);
+   eiw<eit> c = a("biased_to_bottom", eit.a);
+   eiw<eiz> d = a("very_biased_to_bottom", eiz.a);
+   eiw<eix> e = a("trapezoid", eix.a);
+   eiw<eja> f = a("weighted_list", eja.a);
 
-   public eiw(dds $$0, duz $$1, Optional<eiv> $$2) {
-      super($$1, $$0);
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   MapCodec<P> codec();
 
-   public int a(dyy.a $$0, int $$1, int $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
-
-   public dux a(dcd $$0, dyu.a $$1) {
-      return ((dvs)this.a.a($$0.e, $$0.f)).b($$1);
-   }
-
-   public dtc a(jd $$0) {
-      return this.a.a_($$0);
-   }
-
-   public int c() {
-      return this.a.I_();
-   }
-
-   public dds d() {
-      return this.a;
-   }
-
-   public Optional<eiv> e() {
-      return this.c;
-   }
-
-   public duz f() {
-      return this.b;
+   private static <P extends eiv> eiw<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.L, $$0, () -> $$1);
    }
 }

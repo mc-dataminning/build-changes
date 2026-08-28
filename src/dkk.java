@@ -1,84 +1,106 @@
-public class dkk {
-   public static final int a = 1000;
-   public static final int b = 1001;
-   public static final int c = 1002;
-   public static final int d = 1004;
-   public static final int e = 1009;
-   public static final int f = 1010;
-   public static final int g = 1011;
-   public static final int h = 1015;
-   public static final int i = 1016;
-   public static final int j = 1017;
-   public static final int k = 1018;
-   public static final int l = 1019;
-   public static final int m = 1020;
-   public static final int n = 1021;
-   public static final int o = 1022;
-   public static final int p = 1023;
-   public static final int q = 1024;
-   public static final int r = 1025;
-   public static final int s = 1026;
-   public static final int t = 1027;
-   public static final int u = 1028;
-   public static final int v = 1029;
-   public static final int w = 1030;
-   public static final int x = 1031;
-   public static final int y = 1032;
-   public static final int z = 1033;
-   public static final int A = 1034;
-   public static final int B = 1035;
-   public static final int C = 1038;
-   public static final int D = 1039;
-   public static final int E = 1040;
-   public static final int F = 1041;
-   public static final int G = 1042;
-   public static final int H = 1043;
-   public static final int I = 1044;
-   public static final int J = 1045;
-   public static final int K = 1046;
-   public static final int L = 1047;
-   public static final int M = 1048;
-   public static final int N = 1049;
-   public static final int O = 1050;
-   public static final int P = 1051;
-   public static final int Q = 1500;
-   public static final int R = 1501;
-   public static final int S = 1502;
-   public static final int T = 1503;
-   public static final int U = 1504;
-   public static final int V = 1505;
-   public static final int W = 2000;
-   public static final int X = 2001;
-   public static final int Y = 2002;
-   public static final int Z = 2003;
-   public static final int aa = 2004;
-   public static final int ab = 2006;
-   public static final int ac = 2007;
-   public static final int ad = 2008;
-   public static final int ae = 2009;
-   public static final int af = 2010;
-   public static final int ag = 2011;
-   public static final int ah = 2012;
-   public static final int ai = 2013;
-   public static final int aj = 3000;
-   public static final int ak = 3001;
-   public static final int al = 3002;
-   public static final int am = 3003;
-   public static final int an = 3004;
-   public static final int ao = 3005;
-   public static final int ap = 3006;
-   public static final int aq = 3007;
-   public static final int ar = 3008;
-   public static final int as = 3009;
-   public static final int at = 3011;
-   public static final int au = 3012;
-   public static final int av = 3013;
-   public static final int aw = 3014;
-   public static final int ax = 3015;
-   public static final int ay = 3016;
-   public static final int az = 3017;
-   public static final int aA = 3018;
-   public static final int aB = 3019;
-   public static final int aC = 3020;
-   public static final int aD = 3021;
+import com.mojang.serialization.MapCodec;
+
+public abstract class dkk extends dki implements dgy {
+   public static final dva e = duq.ax;
+   public static final int f = 25;
+   private final double c;
+
+   protected dkk(dtz.d $$0, jj $$1, eyx $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.l(this.E.b().b(e, Integer.valueOf(0)));
+   }
+
+   @Override
+   protected abstract MapCodec<? extends dkk> a();
+
+   @Override
+   public dua a(ddt $$0) {
+      return this.o().b(e, Integer.valueOf($$0.C_().a(25)));
+   }
+
+   @Override
+   protected boolean f(dua $$0) {
+      return $$0.c(e) < 25;
+   }
+
+   @Override
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         je $$4 = $$2.a(this.a);
+         if (this.h($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
+      }
+   }
+
+   protected dua a(dua $$0, azk $$1) {
+      return $$0.a(e);
+   }
+
+   public dua p(dua $$0) {
+      return $$0.b(e, Integer.valueOf(25));
+   }
+
+   public boolean q(dua $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected dua a(dua $$0, dua $$1) {
+      return $$1;
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, eqc.c, eqc.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().o());
+      }
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      return this.h($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      je $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
+      }
+   }
+
+   protected abstract int a(azk var1);
+
+   protected abstract boolean h(dua var1);
+
+   @Override
+   protected dkk c() {
+      return this;
+   }
 }

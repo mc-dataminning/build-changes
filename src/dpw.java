@@ -1,109 +1,104 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dpw extends dqh implements bqw {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
+public class dpw extends dnw {
+   public static final MapCodec<dpw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dvn.a.fieldOf("wood_type").forGetter(dnw::d), u()).apply($$0, dpw::new));
+   public static final duu b = dkr.aE;
+   protected static final float c = 2.0F;
+   protected static final float d = 4.5F;
+   protected static final float e = 12.5F;
+   private static final Map<jj, eyx> i = Maps.newEnumMap(
+      ImmutableMap.of(
+         jj.c,
+         dgv.a(0.0, 4.5, 14.0, 16.0, 12.5, 16.0),
+         jj.d,
+         dgv.a(0.0, 4.5, 0.0, 16.0, 12.5, 2.0),
+         jj.f,
+         dgv.a(0.0, 4.5, 0.0, 2.0, 12.5, 16.0),
+         jj.e,
+         dgv.a(14.0, 4.5, 0.0, 16.0, 12.5, 16.0)
+      )
+   );
+
+   @Override
+   public MapCodec<dpw> a() {
+      return a;
+   }
+
+   public dpw(dvn $$0, dtz.d $$1) {
+      super($$0, $$1.a($$0.d()));
+      this.l(this.E.b().b(b, jj.c).b(f, Boolean.valueOf(false)));
+   }
+
+   @Override
+   public String g() {
+      return this.r().a();
+   }
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return i.get($$0.c(b));
+   }
+
+   @Override
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
    @Nullable
-   private wz d;
-   private cti e;
-   private dpy f = dpy.a;
-
-   public dpw(jd $$0, dtc $$1) {
-      super(dqj.t, $$0, $$1);
-      this.e = ((dep)$$1.b()).b();
-   }
-
-   public dpw(jd $$0, dtc $$1, cti $$2) {
-      this($$0, $$1);
-      this.e = $$2;
-   }
-
-   public void a(cuq $$0, cti $$1) {
-      this.e = $$1;
-      this.a($$0);
-   }
-
    @Override
-   public wz ah() {
-      return (wz)(this.d != null ? this.d : wz.c("block.minecraft.banner"));
-   }
+   public dua a(cyw $$0) {
+      dua $$1 = this.o();
+      eqb $$2 = $$0.q().b_($$0.a());
+      ddv $$3 = $$0.q();
+      je $$4 = $$0.a();
+      jj[] $$5 = $$0.f();
 
-   @Nullable
-   @Override
-   public wz aj() {
-      return this.d;
-   }
-
-   @Override
-   protected void b(ub $$0, jo.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f.equals(dpy.a)) {
-         $$0.a("patterns", (uy)dpy.b.encodeStart($$1.a(up.a), this.f).getOrThrow());
+      for (jj $$6 : $$5) {
+         if ($$6.o().d()) {
+            jj $$7 = $$6.g();
+            $$1 = $$1.b(b, $$7);
+            if ($$1.a($$3, $$4)) {
+               return $$1.b(f, Boolean.valueOf($$2.a() == eqc.c));
+            }
+         }
       }
 
-      if (this.d != null) {
-         $$0.a("CustomName", wz.a.a(this.d, $$1));
-      }
+      return null;
    }
 
    @Override
-   protected void a(ub $$0, jo.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.d = a($$0.l("CustomName"), $$1);
-      }
-
-      if ($$0.e("patterns")) {
-         dpy.b
-            .parse($$1.a(up.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
-      }
-   }
-
-   public acb a() {
-      return acb.a(this);
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      return $$1.g() == $$0.c(b) && !$$0.a($$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public ub a(jo.a $$0) {
-      return this.d($$0);
-   }
-
-   public dpy b() {
-      return this.f;
-   }
-
-   public cuq c() {
-      cuq $$0 = new cuq(dfd.a(this.e));
-      $$0.b(this.s());
-      return $$0;
-   }
-
-   public cti f() {
-      return this.e;
+   public float h(dua $$0) {
+      return $$0.c(b).p();
    }
 
    @Override
-   protected void a(dqh.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(kq.Y, dpy.a);
-      this.d = $$0.a(kq.g);
+   public eye o(dua $$0) {
+      eyx $$1 = i.get($$0.c(b));
+      return $$1.a().f();
    }
 
    @Override
-   protected void a(km.a $$0) {
-      super.a($$0);
-      $$0.a(kq.Y, this.f);
-      $$0.a(kq.g, this.d);
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void a(ub $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+   protected dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b, f);
    }
 }

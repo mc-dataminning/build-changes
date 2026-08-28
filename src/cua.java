@@ -1,14 +1,15 @@
-import javax.annotation.Nullable;
-
-public class cua extends cso {
-   public cua(dfy $$0, cul.a $$1) {
-      super($$0, $$1);
+public class cua extends cvg {
+   protected cua(cxe $$0, axi<dgv> $$1, float $$2, float $$3, cvg.a $$4) {
+      super($$0.a($$4, $$1, $$2, $$3));
    }
 
-   @Nullable
    @Override
-   protected dtc c(cyd $$0) {
-      cmx $$1 = $$0.o();
-      return $$1 != null && !$$1.gv() ? null : super.c($$0);
+   public boolean a(cvl $$0, buf $$1, buf $$2) {
+      return true;
+   }
+
+   @Override
+   public void b(cvl $$0, buf $$1, buf $$2) {
+      $$0.a(2, $$2, btr.a);
    }
 }

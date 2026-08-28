@@ -1,22 +1,40 @@
-public enum ffa {
-   a(0, ejh.a),
-   b(1, ejh.b),
-   c(2, ejh.c),
-   d(3, ejh.d);
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-   private final int e;
-   private final wz f;
+public class ffa implements Iterable<feb> {
+   private final fib a;
+   private final Set<feb> b = new HashSet<>();
+   private List<feb> c = List.of();
 
-   private ffa(final int $$0, final akq<ejg> $$1) {
-      this.e = $$0;
-      this.f = wz.c($$1.a().h("generator"));
+   public ffa(fib $$0) {
+      this.a = $$0;
    }
 
-   public wz a() {
-      return this.f;
+   public void a(List<feb> $$0) {
+      List<feb> $$1 = new ArrayList<>($$0);
+      $$1.sort(new feb.b(this.a.X().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
+      }
+
+      this.c = $$1;
    }
 
-   public int b() {
-      return this.e;
+   public void a(feb $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
+   }
+
+   @Override
+   public Iterator<feb> iterator() {
+      return this.c.iterator();
+   }
+
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

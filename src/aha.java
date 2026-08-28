@@ -1,20 +1,20 @@
-public record aha(bls b) implements zg<agi> {
-   public static final yx<vw, aha> a = zg.a(aha::a, aha::new);
+public record aha(float b) implements zk<agq> {
+   public static final zb<wa, aha> a = zk.a(aha::a, aha::new);
 
-   private aha(vw $$0) {
-      this($$0.b(bls.class));
+   private aha(wa $$0) {
+      this($$0.readFloat());
    }
 
-   private void a(vw $$0) {
+   private void a(wa $$0) {
       $$0.a(this.b);
    }
 
    @Override
-   public zi<aha> a() {
-      return agg.bv;
+   public zm<aha> a() {
+      return ago.bp;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 }

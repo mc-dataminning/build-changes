@@ -1,42 +1,51 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
 
-public record ewc(evy b, evy c) implements evy {
+public record ewc(Optional<df> b, je c) implements ewe {
+   private static final MapCodec<je> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(ki::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(ki::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(ki::w)
+            )
+            .apply($$0, je::new)
+   );
    public static final MapCodec<ewc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(evz.a.fieldOf("min").forGetter(ewc::c), evz.a.fieldOf("max").forGetter(ewc::d)).apply($$0, ewc::new)
+      $$0 -> $$0.group(df.a.optionalFieldOf("predicate").forGetter(ewc::c), g.forGetter(ewc::d)).apply($$0, ewc::new)
    );
 
    @Override
-   public evx b() {
-      return evz.c;
+   public ewf b() {
+      return ewg.n;
    }
 
-   public static ewc a(float $$0, float $$1) {
-      return new ewc(evv.a($$0), evv.a($$1));
-   }
-
-   @Override
-   public int a(err $$0) {
-      return ayo.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public boolean a(est $$0) {
+      eye $$1 = $$0.c(evp.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
    @Override
-   public float b(err $$0) {
-      return ayo.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public Set<evm<?>> a() {
+      return Set.of(evp.f);
    }
 
-   @Override
-   public Set<euk<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public static ewe.a a(df.a $$0) {
+      return () -> new ewc(Optional.of($$0.b()), je.c);
    }
 
-   public evy c() {
+   public static ewe.a a(df.a $$0, je $$1) {
+      return () -> new ewc(Optional.of($$0.b()), $$1);
+   }
+
+   public Optional<df> c() {
       return this.b;
    }
 
-   public evy d() {
+   public je d() {
       return this.c;
    }
 }

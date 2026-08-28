@@ -1,19 +1,25 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 
-public class bbj extends bfn {
-   public bbj(Schema $$0, boolean $$1) {
-      super($$0, $$1, "CatTypeFix", bgr.B, "minecraft:cat");
+public class bbj extends DataFix {
+   public bbj(Schema $$0) {
+      super($$0, false);
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.get("CatType").asInt(0) == 9 ? $$0.set("CatType", $$0.createInt(10)) : $$0;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getOutputSchema().getType(bhk.c);
+      return this.fixTypeEverywhereTyped(
+         "BlendingDataRemoveFromNetherEndFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context")))
+      );
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static Dynamic<?> a(Dynamic<?> $$0, OptionalDynamic<?> $$1) {
+      boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
+      return $$2 ? $$0 : $$0.remove("blending_data");
    }
 }

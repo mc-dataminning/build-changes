@@ -1,46 +1,47 @@
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.JsonOps;
 import java.nio.file.Path;
 import java.util.concurrent.CompletableFuture;
 
-public class ms implements ma {
-   private final mc d;
+public class ms implements mb {
+   private final md d;
+   private final CompletableFuture<jp.a> e;
 
-   public ms(mc $$0) {
+   public ms(md $$0, CompletableFuture<jp.a> $$1) {
       this.d = $$0;
+      this.e = $$1;
    }
 
    @Override
-   public CompletableFuture<?> a(ly $$0) {
-      JsonObject $$1 = new JsonObject();
-      lt.aA.i().forEach($$1x -> $$1.add($$1x.h().a().toString(), a((jz)$$1x.a())));
-      Path $$2 = this.d.a(mc.b.c).resolve("registries.json");
-      return ma.a($$0, $$1, $$2);
-   }
-
-   private static <T> JsonElement a(jz<T> $$0) {
-      JsonObject $$1 = new JsonObject();
-      if ($$0 instanceof jh) {
-         akr $$2 = ((jh)$$0).b();
-         $$1.addProperty("default", $$2.toString());
-      }
-
-      int $$3 = lt.aA.a($$0);
-      $$1.addProperty("protocol_id", $$3);
-      JsonObject $$4 = new JsonObject();
-      $$0.i().forEach($$2 -> {
-         T $$3x = $$2.a();
-         int $$4x = $$0.a($$3x);
-         JsonObject $$5 = new JsonObject();
-         $$5.addProperty("protocol_id", $$4x);
-         $$4.add($$2.h().a().toString(), $$5);
-      });
-      $$1.add("entries", $$4);
-      return $$1;
+   public CompletableFuture<?> a(lz $$0) {
+      Path $$1 = this.d.a(md.b.c).resolve("items.json");
+      return this.e
+         .thenCompose(
+            $$2 -> {
+               JsonObject $$3 = new JsonObject();
+               akz<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               $$2.b(lv.K)
+                  .b()
+                  .forEach(
+                     $$2x -> {
+                        JsonObject $$3x = new JsonObject();
+                        $$3x.add(
+                           "components",
+                           (JsonElement)kn.b
+                              .encodeStart($$4, ((cvg)$$2x.a()).p())
+                              .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
+                        );
+                        $$3.add($$2x.g(), $$3x);
+                     }
+                  );
+               return mb.a($$0, $$3, $$1);
+            }
+         );
    }
 
    @Override
    public final String a() {
-      return "Registry Dump";
+      return "Item List";
    }
 }

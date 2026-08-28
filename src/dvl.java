@@ -1,11 +1,23 @@
-import javax.annotation.Nullable;
+public enum dvl implements azy {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
-public interface dvl {
-   @Nullable
-   dvk c(int var1, int var2);
+   private final String e;
+   private final boolean f;
 
-   default void a(ddf $$0, kf $$1) {
+   private dvl(final String $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   dcc q();
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public boolean a() {
+      return this.f;
+   }
 }

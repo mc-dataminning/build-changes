@@ -1,17 +1,30 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import java.util.Objects;
+import java.util.function.Function;
 
-public class bim extends bid {
-   public bim(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bim extends DataFix {
+   public bim(Schema $$0) {
+      super($$0, false);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$0.register($$1, "minecraft:trapped_chest", () -> DSL.optionalFields("Items", DSL.list(bgr.t.in($$0))));
-      return $$1;
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.x);
+      OpticFinder<?> $$1 = $$0.findField("buy");
+      OpticFinder<?> $$2 = $$0.findField("buyB");
+      OpticFinder<?> $$3 = $$0.findField("sell");
+      OpticFinder<Pair<String, String>> $$4 = DSL.fieldFinder("id", DSL.named(bhk.D.typeName(), biw.a()));
+      Function<Typed<?>, Typed<?>> $$5 = $$1x -> this.a($$4, $$1x);
+      return this.fixTypeEverywhereTyped("Villager trade fix", $$0, $$4x -> $$4x.updateTyped($$1, $$5).updateTyped($$2, $$5).updateTyped($$3, $$5));
+   }
+
+   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
+      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
    }
 }

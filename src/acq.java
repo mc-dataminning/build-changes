@@ -1,45 +1,29 @@
-public class acq implements zg<abu> {
-   public static final yx<vw, acq> a = zg.a(acq::a, acq::new);
-   private final int b;
-   private final int c;
-   private final int d;
+public class acq implements zk<abz> {
+   public static final zb<wa, acq> a = zk.a(acq::a, acq::new);
+   private final boolean b;
 
-   public acq(int $$0, int $$1, int $$2) {
+   public acq(boolean $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
    }
 
-   private acq(vw $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.readShort();
-      this.d = $$0.readShort();
+   private acq(wa $$0) {
+      this.b = $$0.readBoolean();
    }
 
-   private void a(vw $$0) {
-      $$0.k(this.b);
-      $$0.l(this.c);
-      $$0.l(this.d);
+   private void a(wa $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zi<acq> a() {
-      return agg.v;
+   public zm<acq> a() {
+      return ago.q;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public boolean b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public int f() {
-      return this.d;
    }
 }

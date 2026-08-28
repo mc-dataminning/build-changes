@@ -1,175 +1,158 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.math.LongMath;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
+import java.io.Reader;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Map.Entry;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fig extends fik implements fjp, fki {
-   private static final fjz a = new fjz(akr.b("widget/text_field"), akr.b("widget/text_field_highlighted"));
-   private static final akr b = akr.b("widget/scroller");
-   private static final int c = 4;
-   private static final int d = 8;
-   private double e;
-   private boolean f;
+public class fig extends auy<Map<String, List<fig.a>>> implements AutoCloseable {
+   private static final Codec<Map<String, List<fig.a>>> a = Codec.unboundedMap(
+      Codec.STRING,
+      RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fig.a::a),
+                     Codec.LONG.fieldOf("period").forGetter(fig.a::b),
+                     Codec.STRING.fieldOf("title").forGetter(fig.a::c),
+                     Codec.STRING.fieldOf("message").forGetter(fig.a::d)
+                  )
+                  .apply($$0, fig.a::new)
+         )
+         .listOf()
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final alb c;
+   private final Object2BooleanFunction<String> d;
+   @Nullable
+   private Timer e;
+   @Nullable
+   private fig.b f;
 
-   public fig(int $$0, int $$1, int $$2, int $$3, wz $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fig(alb $$0, Object2BooleanFunction<String> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (!this.k) {
-         return false;
+   protected Map<String, List<fig.a>> a(aus $$0, bny $$1) {
+      try {
+         Map var4;
+         try (Reader $$2 = $$0.openAsReader(this.c)) {
+            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         }
+
+         return var4;
+      } catch (Exception var8) {
+         b.warn("Failed to load {}", this.c, var8);
+         return ImmutableMap.of();
+      }
+   }
+
+   protected void a(Map<String, List<fig.a>> $$0, aus $$1, bny $$2) {
+      List<fig.a> $$3 = $$0.entrySet()
+         .stream()
+         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
+         .map(Entry::getValue)
+         .flatMap(Collection::stream)
+         .collect(Collectors.toList());
+      if ($$3.isEmpty()) {
+         this.a();
+      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
+         ad.b("A periodic notification in " + this.c + " has a period of zero minutes");
+         this.a();
       } else {
-         boolean $$3 = this.b($$0, $$1);
-         boolean $$4 = this.e()
-            && $$0 >= (double)(this.D() + this.g)
-            && $$0 <= (double)(this.D() + this.g + 8)
-            && $$1 >= (double)this.E()
-            && $$1 < (double)(this.E() + this.h);
-         if ($$4 && $$2 == 0) {
-            this.f = true;
-            return true;
+         long $$4 = this.a($$3);
+         long $$5 = this.a($$3, $$4);
+         if (this.e == null) {
+            this.e = new Timer();
+         }
+
+         if (this.f == null) {
+            this.f = new fig.b($$3, $$4, $$5);
          } else {
-            return $$3 || $$4;
+            this.f = this.f.a($$3, $$5);
+         }
+
+         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+      }
+   }
+
+   @Override
+   public void close() {
+      this.a();
+   }
+
+   private void a() {
+      if (this.e != null) {
+         this.e.cancel();
+      }
+   }
+
+   private long a(List<fig.a> $$0, long $$1) {
+      return $$0.stream().mapToLong($$1x -> {
+         long $$2 = $$1x.a - $$1;
+         return LongMath.gcd($$2, $$1x.b);
+      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
+   }
+
+   private long a(List<fig.a> $$0) {
+      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
+   }
+
+   public static record a(long a, long b, String c, String d) {
+
+      public a(final long a, final long b, final String c, final String d) {
+         this.a = a != 0L ? a : b;
+         this.b = b;
+         this.c = c;
+         this.d = d;
+      }
+   }
+
+   static class b extends TimerTask {
+      private final fib a = fib.Q();
+      private final List<fig.a> b;
+      private final long c;
+      private final AtomicLong d;
+
+      public b(List<fig.a> $$0, long $$1, long $$2) {
+         this.b = $$0;
+         this.c = $$2;
+         this.d = new AtomicLong($$1);
+      }
+
+      public fig.b a(List<fig.a> $$0, long $$1) {
+         this.cancel();
+         return new fig.b($$0, this.d.get(), $$1);
+      }
+
+      @Override
+      public void run() {
+         long $$0 = this.d.getAndAdd(this.c);
+         long $$1 = this.d.get();
+
+         for (fig.a $$2 : this.b) {
+            if ($$0 >= $$2.a) {
+               long $$3 = $$0 / $$2.b;
+               long $$4 = $$1 / $$2.b;
+               if ($$3 != $$4) {
+                  this.a.execute(() -> fmj.a(fib.Q().az(), fmj.a.g, xd.a($$2.c, $$3), xd.a($$2.d, $$3)));
+                  return;
+               }
+            }
          }
       }
    }
-
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0) {
-         this.f = false;
-      }
-
-      return super.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      if (this.k && this.aO_() && this.f) {
-         if ($$1 < (double)this.E()) {
-            this.a(0.0);
-         } else if ($$1 > (double)(this.E() + this.h)) {
-            this.a((double)this.d());
-         } else {
-            int $$5 = this.j();
-            double $$6 = (double)Math.max(1, this.d() / (this.h - $$5));
-            this.a(this.e + $$4 * $$6);
-         }
-
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (!this.k) {
-         return false;
-      } else {
-         this.a(this.e - $$3 * this.i());
-         return true;
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      boolean $$3 = $$0 == 265;
-      boolean $$4 = $$0 == 264;
-      if ($$3 || $$4) {
-         double $$5 = this.e;
-         this.a(this.e + (double)($$3 ? -1 : 1) * this.i());
-         if ($$5 != this.e) {
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(fhz $$0, int $$1, int $$2, float $$3) {
-      if (this.k) {
-         this.b($$0);
-         $$0.c(this.D() + 1, this.E() + 1, this.D() + this.g - 1, this.E() + this.h - 1);
-         $$0.c().a();
-         $$0.c().a(0.0, -this.e, 0.0);
-         this.c($$0, $$1, $$2, $$3);
-         $$0.c().b();
-         $$0.f();
-         this.a($$0);
-      }
-   }
-
-   private int j() {
-      return ayo.a((int)((float)(this.h * this.h) / (float)this.k()), 32, this.h);
-   }
-
-   protected void a(fhz $$0) {
-      if (this.e()) {
-         this.c($$0);
-      }
-   }
-
-   protected int a() {
-      return 4;
-   }
-
-   protected int b() {
-      return this.a() * 2;
-   }
-
-   protected double c() {
-      return this.e;
-   }
-
-   protected void a(double $$0) {
-      this.e = ayo.a($$0, 0.0, (double)this.d());
-   }
-
-   protected int d() {
-      return Math.max(0, this.k() - (this.h - 4));
-   }
-
-   private int k() {
-      return this.h() + 4;
-   }
-
-   protected void b(fhz $$0) {
-      this.a($$0, this.D(), this.E(), this.y(), this.w());
-   }
-
-   protected void a(fhz $$0, int $$1, int $$2, int $$3, int $$4) {
-      akr $$5 = a.a(this.C(), this.aO_());
-      $$0.a($$5, $$1, $$2, $$3, $$4);
-   }
-
-   private void c(fhz $$0) {
-      int $$1 = this.j();
-      int $$2 = this.D() + this.g;
-      int $$3 = Math.max(this.E(), (int)this.e * (this.h - $$1) / this.d() + this.E());
-      RenderSystem.enableBlend();
-      $$0.a(b, $$2, $$3, 8, $$1);
-      RenderSystem.disableBlend();
-   }
-
-   protected boolean a(int $$0, int $$1) {
-      return (double)$$1 - this.e >= (double)this.E() && (double)$$0 - this.e <= (double)(this.E() + this.h);
-   }
-
-   protected boolean b(double $$0, double $$1) {
-      return $$0 >= (double)this.D() && $$0 < (double)(this.D() + this.g) && $$1 >= (double)this.E() && $$1 < (double)(this.E() + this.h);
-   }
-
-   protected boolean e() {
-      return this.h() > this.w();
-   }
-
-   public int f() {
-      return 8;
-   }
-
-   protected abstract int h();
-
-   protected abstract double i();
-
-   protected abstract void c(fhz var1, int var2, int var3, float var4);
 }

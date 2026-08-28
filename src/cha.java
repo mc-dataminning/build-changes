@@ -1,132 +1,48 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+public class cha {
+   public static final ala<cgz> a = a("pale");
+   public static final ala<cgz> b = a("spotted");
+   public static final ala<cgz> c = a("snowy");
+   public static final ala<cgz> d = a("black");
+   public static final ala<cgz> e = a("ashen");
+   public static final ala<cgz> f = a("rusty");
+   public static final ala<cgz> g = a("woods");
+   public static final ala<cgz> h = a("chestnut");
+   public static final ala<cgz> i = a("striped");
+   public static final ala<cgz> j = a;
 
-public class cha extends bvh<cgy> {
-   public static final int c = 100;
-   public static final int d = 6;
-   public static final int e = 10;
-   private static final float h = 1.75F;
-   private static final float i = 0.75F;
-   public static final int f = 100;
-   public static final int g = 5;
-   private int j;
-   private int k;
-   private final avo l;
-   private final avo m;
-   private exc n;
-   private cha.a o = cha.a.d;
-
-   public cha(avo $$0, avo $$1) {
-      super(ImmutableMap.of(ccs.m, cct.b, ccs.n, cct.c, ccs.o, cct.a, ccs.Z, cct.b), 100);
-      this.l = $$0;
-      this.m = $$1;
+   private static ala<cgz> a(String $$0) {
+      return ala.a(lv.m, alb.b($$0));
    }
 
-   protected boolean a(aqu $$0, cgy $$1) {
-      btn $$2 = $$1.dT().c(ccs.o).get();
-      boolean $$3 = this.a($$1, $$2);
-      if (!$$3) {
-         $$1.dT().b(ccs.o);
-         this.b($$1, $$2);
-      }
-
-      return $$3 && $$1.at() != bua.i && cgy.j($$2);
+   static void a(qt<cgz> $$0, ala<cgz> $$1, String $$2, ala<det> $$3) {
+      a($$0, $$1, $$2, jr.a($$0.a(lv.aF).b($$3)));
    }
 
-   protected boolean a(aqu $$0, cgy $$1, long $$2) {
-      return $$1.dT().a(ccs.o) && this.o != cha.a.d && !$$1.dT().a(ccs.Z);
+   static void a(qt<cgz> $$0, ala<cgz> $$1, String $$2, axi<det> $$3) {
+      a($$0, $$1, $$2, $$0.a(lv.aF).b($$3));
    }
 
-   protected void b(aqu $$0, cgy $$1, long $$2) {
-      btn $$3 = $$1.dT().c(ccs.o).get();
-      bvj.a($$1, $$3);
-      $$1.c($$3);
-      $$1.dT().a(ccs.m, new ccv($$3.dm(), 2.0F, 0));
-      this.k = 10;
-      this.o = cha.a.a;
+   static void a(qt<cgz> $$0, ala<cgz> $$1, String $$2, jr<det> $$3) {
+      alb $$4 = alb.b("entity/wolf/" + $$2);
+      alb $$5 = alb.b("entity/wolf/" + $$2 + "_tame");
+      alb $$6 = alb.b("entity/wolf/" + $$2 + "_angry");
+      $$0.a($$1, new cgz($$4, $$5, $$6, $$3));
    }
 
-   protected void c(aqu $$0, cgy $$1, long $$2) {
-      $$1.dT().b(ccs.o);
-      $$1.s();
-      $$1.b(bua.a);
+   public static jn<cgz> a(kb $$0, jn<det> $$1) {
+      ka<cgz> $$2 = $$0.d(lv.m);
+      return $$2.i().filter($$1x -> ((cgz)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.b(j)).or($$2::a).orElseThrow();
    }
 
-   private void b(aqu $$0, cgy $$1) {
-      $$0.a(null, $$1, this.m, avq.g, 2.0F, 1.0F);
-      Optional<bsr> $$2 = $$1.t();
-      if ($$2.isPresent()) {
-         bsr $$3 = $$2.get();
-         if ($$3.bE()) {
-            $$1.D($$3);
-            if (!$$3.bE()) {
-               $$3.a(bsr.c.a);
-            }
-         }
-      }
-   }
-
-   protected void d(aqu $$0, cgy $$1, long $$2) {
-      btn $$3 = $$1.dT().c(ccs.o).get();
-      $$1.c($$3);
-      switch (this.o) {
-         case a:
-            if ($$3.f($$1) < 1.75F) {
-               $$0.a(null, $$1, this.l, avq.g, 2.0F, 1.0F);
-               $$1.b(bua.j);
-               $$3.i($$3.dm().a($$1.dm()).d().a(0.75));
-               this.n = $$3.dm();
-               this.j = 0;
-               this.o = cha.a.b;
-            } else if (this.k <= 0) {
-               $$1.dT().a(ccs.m, new ccv($$3.dm(), 2.0F, 0));
-               this.k = 10;
-            } else {
-               this.k--;
-            }
-            break;
-         case b:
-            if (this.j++ >= 6) {
-               this.o = cha.a.c;
-               this.b($$0, $$1);
-            }
-            break;
-         case c:
-            if (this.j >= 10) {
-               this.o = cha.a.d;
-            } else {
-               this.j++;
-            }
-         case d:
-      }
-   }
-
-   private boolean a(cgy $$0, btn $$1) {
-      eps $$2 = $$0.N().a($$1, 0);
-      return $$2 != null && $$2.m() < 1.75F;
-   }
-
-   private void b(cgy $$0, btn $$1) {
-      List<UUID> $$2 = $$0.dT().c(ccs.aa).orElseGet(ArrayList::new);
-      boolean $$3 = !$$2.contains($$1.cz());
-      if ($$2.size() == 5 && $$3) {
-         $$2.remove(0);
-      }
-
-      if ($$3) {
-         $$2.add($$1.cz());
-      }
-
-      $$0.dT().a(ccs.aa, $$2, 100L);
-   }
-
-   static enum a {
-      a,
-      b,
-      c,
-      d;
+   public static void a(qt<cgz> $$0) {
+      a($$0, a, "wolf", dfa.p);
+      a($$0, b, "wolf_spotted", awr.k);
+      a($$0, c, "wolf_snowy", dfa.F);
+      a($$0, d, "wolf_black", dfa.n);
+      a($$0, e, "wolf_ashen", dfa.q);
+      a($$0, f, "wolf_rusty", awr.i);
+      a($$0, g, "wolf_woods", dfa.i);
+      a($$0, h, "wolf_chestnut", dfa.o);
+      a($$0, i, "wolf_striped", awr.f);
    }
 }

@@ -1,51 +1,70 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
-
 public class ghb {
-   private static final Map<dqj<?>, gha<?>> a = Maps.newHashMap();
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-   private static <T extends dqh> void a(dqj<? extends T> $$0, gha<T> $$1) {
-      a.put($$0, $$1);
+   public ghb(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static Map<dqj<?>, ggz<?>> a(gha.a $$0) {
-      Builder<dqj<?>, ggz<?>> $$1 = ImmutableMap.builder();
-      a.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalStateException("Failed to create model for " + lt.j.b((dqj<?>)$$2), var5);
-         }
-      });
-      return $$1.build();
+   public ghb a(ghb $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
    }
 
-   static {
-      a(dqj.h, ghn::new);
-      a(dqj.i, ghj::new);
-      a(dqj.j, ghp::new);
-      a(dqj.k, ghl::new);
-      a(dqj.b, ghf::new);
-      a(dqj.d, ghf::new);
-      a(dqj.c, ghf::new);
-      a(dqj.m, ghi::new);
-      a(dqj.D, ghk::new);
-      a(dqj.n, ghs::new);
-      a(dqj.v, ghr::new);
-      a(dqj.o, ggv::new);
-      a(dqj.p, gho::new);
-      a(dqj.t, ggu::new);
-      a(dqj.u, ghq::new);
-      a(dqj.x, ghm::new);
-      a(dqj.y, ggw::new);
-      a(dqj.z, ghg::new);
-      a(dqj.E, ggx::new);
-      a(dqj.G, ghe::new);
-      a(dqj.N, ghd::new);
-      a(dqj.O, ghh::new);
-      a(dqj.Q, ght::new);
-      a(dqj.R, ghu::new);
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public void d(int $$0) {
+      this.d = $$0;
+   }
+
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

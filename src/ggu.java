@@ -1,87 +1,79 @@
-public class ggu implements ggz<dpw> {
-   private static final int b = 20;
-   private static final int c = 40;
-   private static final int d = 16;
-   public static final String a = "flag";
-   private static final String e = "pole";
-   private static final String f = "bar";
-   private final fyk g;
-   private final fyk h;
-   private final fyk i;
+import org.joml.Matrix4f;
 
-   public ggu(gha.a $$0) {
-      fyk $$1 = $$0.a(fyj.g);
-      this.g = $$1.b("flag");
-      this.h = $$1.b("pole");
-      this.i = $$1.b("bar");
+public class ggu {
+   private static final float a = -0.01F;
+   private static final float b = -0.001F;
+   private static final int c = 128;
+   private static final int d = 128;
+   private final gxi e;
+   private final gxh f;
+
+   public ggu(gxh $$0, gxi $$1) {
+      this.f = $$0;
+      this.e = $$1;
    }
 
-   public static fyq a() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      $$1.a("flag", fyp.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), fym.a);
-      $$1.a("pole", fyp.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), fym.a);
-      $$1.a("bar", fyp.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), fym.a);
-      return fyq.a($$0, 64, 64);
-   }
+   public void a(gvt $$0, fcu $$1, ggv $$2, boolean $$3, int $$4) {
+      Matrix4f $$5 = $$1.c().a();
+      fcy $$6 = $$2.getBuffer(ghe.u($$0.a));
+      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
+      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
+      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
+      int $$7 = 0;
 
-   public void a(dpw $$0, float $$1, fbi $$2, gez $$3, int $$4, int $$5) {
-      float $$6 = 0.6666667F;
-      boolean $$7 = $$0.i() == null;
-      $$2.a();
-      long $$8;
-      if ($$7) {
-         $$8 = 0L;
-         $$2.a(0.5F, 0.5F, 0.5F);
-         this.h.k = true;
-      } else {
-         $$8 = $$0.i().Z();
-         dtc $$10 = $$0.n();
-         if ($$10.b() instanceof dfd) {
-            $$2.a(0.5F, 0.5F, 0.5F);
-            float $$11 = -dui.b($$10.c(dfd.b));
-            $$2.a(a.d.rotationDegrees($$11));
-            this.h.k = true;
-         } else {
-            $$2.a(0.5F, -0.16666667F, 0.5F);
-            float $$12 = -$$10.c(dow.b).p();
-            $$2.a(a.d.rotationDegrees($$12));
-            $$2.a(0.0F, -0.3125F, -0.4375F);
-            this.h.k = false;
+      for (gvt.a $$8 : $$0.b) {
+         if (!$$3 || $$8.e) {
+            $$1.a();
+            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
+            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
+            $$1.b(4.0F, 4.0F, 3.0F);
+            $$1.a(-0.125F, 0.125F, 0.0F);
+            Matrix4f $$9 = $$1.c().a();
+            gwk $$10 = $$8.a;
+            if ($$10 != null) {
+               fcy $$11 = $$2.getBuffer(ghe.u($$10.i()));
+               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
+               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
+               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
+               $$1.b();
+            }
+
+            if ($$8.f != null) {
+               fjl $$12 = fib.Q().h;
+               float $$13 = (float)$$12.a($$8.f);
+               float $$14 = azc.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
+               $$1.a();
+               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
+               $$1.b($$14, $$14, 1.0F);
+               $$1.a(0.0F, 0.0F, -0.1F);
+               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, fjl.a.a, Integer.MIN_VALUE, $$4);
+               $$1.b();
+            }
+
+            $$7++;
          }
       }
-
-      $$2.a();
-      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
-      fbm $$13 = gss.f.a($$3, gfh::c);
-      this.h.a($$2, $$13, $$4, $$5);
-      this.i.a($$2, $$13, $$4, $$5);
-      jd $$14 = $$0.aD_();
-      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
-      this.g.e = (-0.0125F + 0.01F * ayo.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
-      this.g.c = -32.0F;
-      a($$2, $$3, $$4, $$5, this.g, gss.f, true, $$0.f(), $$0.b());
-      $$2.b();
-      $$2.b();
    }
 
-   public static void a(fbi $$0, gez $$1, int $$2, int $$3, fyk $$4, gsq $$5, boolean $$6, cti $$7, dpy $$8) {
-      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false);
-   }
+   public void a(ert $$0, erv $$1, gvt $$2) {
+      $$2.a = this.e.b($$0, $$1);
+      $$2.b.clear();
 
-   public static void a(fbi $$0, gez $$1, int $$2, int $$3, fyk $$4, gsq $$5, boolean $$6, cti $$7, dpy $$8, boolean $$9) {
-      $$4.a($$0, $$5.a($$1, gfh::c, $$9), $$2, $$3);
-      a($$0, $$1, $$2, $$3, $$4, $$6 ? gfo.m : gfo.n, $$7);
-
-      for (int $$10 = 0; $$10 < 16 && $$10 < $$8.b().size(); $$10++) {
-         dpy.b $$11 = $$8.b().get($$10);
-         gsq $$12 = $$6 ? gfo.a($$11.b()) : gfo.b($$11.b());
-         a($$0, $$1, $$2, $$3, $$4, $$12, $$11.c());
+      for (erp $$3 : $$1.h()) {
+         $$2.b.add(this.a($$3));
       }
    }
 
-   private static void a(fbi $$0, gez $$1, int $$2, int $$3, fyk $$4, gsq $$5, cti $$6) {
-      int $$7 = $$6.d();
-      $$4.a($$0, $$5.a($$1, gfh::m), $$2, $$3, $$7);
+   private gvt.a a(erp $$0) {
+      gvt.a $$1 = new gvt.a();
+      $$1.a = this.f.a($$0);
+      $$1.b = $$0.d();
+      $$1.c = $$0.e();
+      $$1.d = $$0.f();
+      $$1.f = $$0.g().orElse(null);
+      $$1.e = $$0.b();
+      return $$1;
    }
 }

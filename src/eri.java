@@ -1,77 +1,44 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class eri {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = era.a();
+public interface eri {
+   jj[] a = new jj[]{jj.e, jj.f, jj.a, jj.b, jj.c, jj.d};
 
-   public eri(erf.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(erd.c).toFile();
-      this.c.mkdirs();
+   void a(jj var1, dua var2, je var3, je var4, int var5, int var6);
+
+   void a(je var1, dgv var2, @Nullable erj var3);
+
+   void a(dua var1, je var2, dgv var3, @Nullable erj var4, boolean var5);
+
+   default void a(je $$0, dgv $$1, @Nullable jj $$2, @Nullable erj $$3) {
+      for (jj $$4 : a) {
+         if ($$4 != $$2) {
+            this.a($$0.a($$4), $$1, null);
+         }
+      }
    }
 
-   public void a(cmx $$0) {
+   static void a(ddt $$0, jj $$1, dua $$2, je $$3, je $$4, int $$5, int $$6) {
+      dua $$7 = $$0.a_($$3);
+      dua $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
+      dgv.a($$7, $$8, $$0, $$3, $$5, $$6);
+   }
+
+   static void a(dds $$0, dua $$1, je $$2, dgv $$3, @Nullable erj $$4, boolean $$5) {
       try {
-         ub $$1 = $$0.f(new ub());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cA() + "-", ".dat");
-         uo.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cA() + ".dat");
-         Path $$5 = $$2.resolve($$0.cA() + ".dat_old");
-         ad.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ah().getString());
+         $$1.a($$0, $$2, $$3, $$4, $$5);
+      } catch (Throwable var9) {
+         o $$7 = o.a(var9, "Exception while updating neighbours");
+         p $$8 = $$7.a("Block being updated");
+         $$8.a("Source block type", () -> {
+            try {
+               return String.format(Locale.ROOT, "ID #%s (%s // %s)", lu.e.b($$3), $$3.g(), $$3.getClass().getCanonicalName());
+            } catch (Throwable var2x) {
+               return "ID #" + lu.e.b($$3);
+            }
+         });
+         p.a($$8, $$0, $$2, $$1);
+         throw new z($$7);
       }
-   }
-
-   private void a(cmx $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cA() + $$1);
-      Path $$4 = $$2.resolve($$0.cA() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ah().getString(), var7);
-         }
-      }
-   }
-
-   private Optional<ub> b(cmx $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cA() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(uo.a($$2.toPath(), uk.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ah().getString());
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public Optional<ub> b(cmx $$0) {
-      Optional<ub> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
-      }
-
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = uq.b($$1x, -1);
-         $$1x = azw.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
    }
 }

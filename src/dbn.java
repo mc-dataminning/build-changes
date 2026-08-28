@@ -1,26 +1,33 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record dbn(jm<dac> c, bpw d) implements dbj {
-   public static final MapCodec<dbn> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dac.c.fieldOf("enchantment").forGetter(dbn::b), bpw.c.fieldOf("level").forGetter(dbn::c)).apply($$0, dbn::new)
-   );
+public interface dbn extends dbo {
+   Codec<dbn> b = lu.av.q().dispatch(dbn::a, Function.identity());
+
+   static MapCodec<? extends dbn> a(ka<MapCodec<? extends dbn>> $$0) {
+      ka.a($$0, "all_of", dbh.a.a);
+      ka.a($$0, "apply_mob_effect", dbi.a);
+      ka.a($$0, "damage_entity", dbj.a);
+      ka.a($$0, "damage_item", dbl.a);
+      ka.a($$0, "explode", dbq.a);
+      ka.a($$0, "ignite", dbr.a);
+      ka.a($$0, "play_sound", dbt.a);
+      ka.a($$0, "replace_block", dbv.a);
+      ka.a($$0, "replace_disk", dbw.a);
+      ka.a($$0, "run_function", dbx.a);
+      ka.a($$0, "set_block_properties", dby.a);
+      ka.a($$0, "spawn_particles", dca.a);
+      return ka.a($$0, "summon_entity", dcb.a);
+   }
+
+   void a(arg var1, int var2, dav var3, btj var4, eye var5);
 
    @Override
-   public void a(cuq $$0, dai.a $$1, ayw $$2, bqp $$3) {
-      $$1.b(this.c, ayo.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   default void a(arg $$0, int $$1, dav $$2, btj $$3, eye $$4, boolean $$5) {
+      this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public MapCodec<dbn> a() {
-      return b;
-   }
-
-   public jm<dac> b() {
-      return this.c;
-   }
-
-   public bpw c() {
-      return this.d;
-   }
+   MapCodec<? extends dbn> a();
 }

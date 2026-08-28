@@ -1,17 +1,53 @@
-public enum cyn implements azk {
-   a("food"),
-   b("blocks"),
-   c("misc");
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.PropertyMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-   public static final azk.a<cyn> d = azk.a(cyn::values);
-   private final String e;
+public record cyn(Optional<String> c, Optional<UUID> d, PropertyMap e, GameProfile f) {
+   private static final Codec<cyn> g = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayl.w.optionalFieldOf("name").forGetter(cyn::c),
+               kh.a.optionalFieldOf("id").forGetter(cyn::d),
+               ayl.v.optionalFieldOf("properties", new PropertyMap()).forGetter(cyn::e)
+            )
+            .apply($$0, cyn::new)
+   );
+   public static final Codec<cyn> a = Codec.withAlternative(g, ayl.w, $$0 -> new cyn(Optional.of($$0), Optional.empty(), new PropertyMap()));
+   public static final zb<ByteBuf, cyn> b = zb.a(yz.b(16).a(yz::a), cyn::c, kh.g.a(yz::a), cyn::d, yz.u, cyn::e, cyn::new);
 
-   private cyn(final String $$0) {
-      this.e = $$0;
+   public cyn(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      this($$0, $$1, $$2, a($$0, $$1, $$2));
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public cyn(GameProfile $$0) {
+      this(Optional.of($$0.getName()), Optional.of($$0.getId()), $$0.getProperties(), $$0);
+   }
+
+   public CompletableFuture<cyn> a() {
+      if (this.b()) {
+         return CompletableFuture.completedFuture(this);
+      } else {
+         return this.d.isPresent() ? dss.a(this.d.get()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(this.d.get(), this.c.orElse("")));
+            return new cyn($$1);
+         }) : dss.a(this.c.orElseThrow()).thenApply($$0 -> {
+            GameProfile $$1 = $$0.orElseGet(() -> new GameProfile(ad.e, this.c.get()));
+            return new cyn($$1);
+         });
+      }
+   }
+
+   private static GameProfile a(Optional<String> $$0, Optional<UUID> $$1, PropertyMap $$2) {
+      GameProfile $$3 = new GameProfile($$1.orElse(ad.e), $$0.orElse(""));
+      $$3.getProperties().putAll($$2);
+      return $$3;
+   }
+
+   public boolean b() {
+      return !this.e.isEmpty() ? true : this.d.isPresent() == this.c.isPresent();
    }
 }

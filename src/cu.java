@@ -17,10 +17,10 @@ public class cu {
    public static final ct.a<cq> n = a("jukebox_playable", cq.a);
 
    private static <T extends ct> ct.a<T> a(String $$0, Codec<T> $$1) {
-      return jz.a(lt.as, $$0, new ct.a<>($$1));
+      return ka.a(lu.ar, $$0, new ct.a<>($$1));
    }
 
-   public static ct.a<?> a(jz<ct.a<?>> $$0) {
+   public static ct.a<?> a(ka<ct.a<?>> $$0) {
       return a;
    }
 }

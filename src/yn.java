@@ -1,29 +1,28 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class yn implements yp {
-   public static final yn a = new yn();
-   public static final yq<yn> b = new yq<yn>() {
-      private static final MapCodec<yn> a = MapCodec.unit(yn.a);
-      private static final yx<wk, yn> b = yx.a(yn.a);
-
-      @Override
-      public MapCodec<yn> a() {
-         return a;
-      }
-
-      @Override
-      public yx<wk, yn> b() {
-         return b;
-      }
-   };
+public record yn(alb d) implements yf {
+   public static final MapCodec<yn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alb.a.fieldOf("storage").forGetter(yn::b)).apply($$0, yn::new));
+   public static final yf.a<yn> b = new yf.a<>(a, "storage");
 
    @Override
-   public xn a(int $$0) {
-      return wz.i();
+   public Stream<uf> a(et $$0) {
+      uf $$1 = $$0.l().aK().a(this.d);
+      return Stream.of($$1);
    }
 
    @Override
-   public yq<yn> a() {
+   public yf.a<?> a() {
       return b;
+   }
+
+   @Override
+   public String toString() {
+      return "storage=" + this.d;
+   }
+
+   public alb b() {
+      return this.d;
    }
 }

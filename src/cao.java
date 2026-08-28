@@ -1,86 +1,77 @@
+import java.util.EnumSet;
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class cao extends cbj {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class cao extends cbc {
+   private static final cev d = cev.b().a(8.0).d();
+   protected final cfv a;
+   private final Class<? extends cfv> e;
+   protected final dds b;
+   @Nullable
+   protected cfv c;
+   private int f;
+   private final double g;
 
-   public cao(btw $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public cao(cfv $$0, double $$1) {
+      this($$0, $$1, (Class<? extends cfv>)$$0.getClass());
    }
 
-   @Nullable
+   public cao(cfv $$0, double $$1, Class<? extends cfv> $$2) {
+      this.a = $$0;
+      this.b = $$0.dS();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cbc.a.a, cbc.a.b));
+   }
+
    @Override
-   protected exc h() {
-      float $$0 = this.b.dO().z.i();
-      if (this.b.dO().z.i() < 0.3F) {
-         return this.k();
+   public boolean b() {
+      if (!this.a.gy()) {
+         return false;
       } else {
-         exc $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+         this.c = this.h();
+         return this.c != null;
+      }
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.bI() && this.c.gy() && this.f < 60 && !this.c.gl();
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+      this.f = 0;
+   }
+
+   @Override
+   public void a() {
+      this.a.K().a(this.c, 10.0F, (float)this.a.ae());
+      this.a.P().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private cfv h() {
+      List<? extends cfv> $$0 = this.b.a(this.e, d, this.a, this.a.cO().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      cfv $$2 = null;
+
+      for (cfv $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gl() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
+
+      return $$2;
    }
 
-   @Nullable
-   private exc k() {
-      return cem.a(this.b, 10, 7);
-   }
-
-   @Nullable
-   private exc l() {
-      aqu $$0 = (aqu)this.b.dO();
-      List<cmk> $$1 = $$0.a(bsx.bj, this.b.cK().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cmk $$2 = $$1.get(this.b.dO().z.a($$1.size()));
-         exc $$3 = $$2.dm();
-         return cem.a(this.b, 10, 7, $$3);
-      }
-   }
-
-   @Nullable
-   private exc m() {
-      kf $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         jd $$1 = this.a($$0);
-         return $$1 == null ? null : cem.a(this.b, 10, 7, exc.c($$1));
-      }
-   }
-
-   @Nullable
-   private kf n() {
-      aqu $$0 = (aqu)this.b.dO();
-      List<kf> $$1 = kf.a(kf.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private jd a(kf $$0) {
-      aqu $$1 = (aqu)this.b.dO();
-      ces $$2 = $$1.y();
-      List<jd> $$3 = $$2.c($$0x -> true, $$0.k(), 8, ces.b.b).map(cet::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cmk $$0) {
-      return $$0.a(this.b.dO().Z());
+   protected void g() {
+      this.a.a((arg)this.b, this.c);
    }
 }

@@ -1,66 +1,49 @@
-import javax.annotation.Nullable;
-
-public class ghx implements dbz {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
+public class ghx {
+   protected final int[] a;
+   protected final int b;
+   protected final jj c;
+   protected final gwk d;
+   private final boolean e;
    private final int f;
-   protected final ghw[] c;
-   protected final dcw d;
 
-   ghx(dcw $$0, int $$1, int $$2, ghw[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
+   public ghx(int[] $$0, int $$1, jj $$2, gwk $$3, boolean $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public dtc a_(jd $$0) {
-      return this.a(kf.a($$0.u()), kf.a($$0.w())).b($$0);
+   public gwk a() {
+      return this.d;
    }
 
-   @Override
-   public epe b_(jd $$0) {
-      return this.a(kf.a($$0.u()), kf.a($$0.w())).b($$0).u();
+   public int[] b() {
+      return this.a;
    }
 
-   @Override
-   public float a(ji $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
+   public boolean c() {
+      return this.b != -1;
    }
 
-   @Override
-   public eot y_() {
-      return this.d.y_();
+   public int d() {
+      return this.b;
    }
 
-   @Nullable
-   @Override
-   public dqh c_(jd $$0) {
-      return this.a(kf.a($$0.u()), kf.a($$0.w())).a($$0);
+   public jj e() {
+      return this.c;
    }
 
-   private ghw a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
+   public boolean f() {
+      return this.e;
    }
 
-   @Override
-   public int a(jd $$0, dch $$1) {
-      return this.d.a($$0, $$1);
+   public boolean g() {
+      return this.f > 0;
    }
 
-   @Override
-   public int I_() {
-      return this.d.I_();
-   }
-
-   @Override
-   public int J_() {
-      return this.d.J_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+   public int h() {
+      return this.f;
    }
 }

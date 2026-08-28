@@ -1,36 +1,51 @@
-public record aan(jd c, int d, String e, int f) implements aaj {
-   public static final yx<vw, aan> a = aaj.a(aan::a, aan::new);
-   public static final aaj.b<aan> b = aaj.a("debug/game_test_add_marker");
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-   private aan(vw $$0) {
-      this($$0.e(), $$0.readInt(), $$0.p(), $$0.readInt());
+public interface aan {
+   aan.b<? extends aan> a();
+
+   static <B extends ByteBuf, T extends aan> zb<B, T> a(ze<B, T> $$0, zc<B, T> $$1) {
+      return zb.a($$0, $$1);
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.c);
-      $$0.p(this.d);
-      $$0.a(this.e);
-      $$0.p(this.f);
+   static <T extends aan> aan.b<T> a(String $$0) {
+      return new aan.b<>(alb.b($$0));
    }
 
-   @Override
-   public aaj.b<aan> a() {
-      return b;
+   static <B extends wa> zb<B, aan> a(final aan.a<B> $$0, List<aan.c<? super B, ?>> $$1) {
+      final Map<alb, zb<? super B, ? extends aan>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aan.c::b));
+      return new zb<B, aan>() {
+         private zb<? super B, ? extends aan> a(alb $$0x) {
+            zb<? super B, ? extends aan> $$1 = $$2.get($$0);
+            return $$1 != null ? $$1 : $$0.create($$0);
+         }
+
+         private <T extends aan> void a(B $$0x, aan.b<T> $$1, aan $$2x) {
+            $$0.a($$1.a());
+            zb<B, T> $$3 = this.a($$1.a);
+            $$3.encode($$0, (T)$$2);
+         }
+
+         public void a(B $$0x, aan $$1) {
+            this.a($$0, $$1.a(), $$1);
+         }
+
+         public aan a(B $$0x) {
+            alb $$1 = $$0.q();
+            return (aan)this.a($$1).decode($$0);
+         }
+      };
    }
 
-   public jd b() {
-      return this.c;
+   public interface a<B extends wa> {
+      zb<B, ? extends aan> create(alb var1);
    }
 
-   public int c() {
-      return this.d;
+   public static record b<T extends aan>(alb a) {
    }
 
-   public String d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
+   public static record c<B extends wa, T extends aan>(aan.b<T> a, zb<B, T> b) {
    }
 }

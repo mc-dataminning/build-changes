@@ -1,61 +1,29 @@
-public class ahh implements zg<agi> {
-   public static final yx<vw, ahh> a = zg.a(ahh::a, ahh::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final float f;
+public class ahh implements zk<agq> {
+   public static final zb<wa, ahh> a = zk.a(ahh::a, ahh::new);
+   private final int b;
 
-   public ahh(bsr $$0) {
-      this.b = $$0.dt();
-      this.c = $$0.dv();
-      this.d = $$0.dz();
-      this.e = $$0.dE();
-      this.f = $$0.dG();
+   public ahh(int $$0) {
+      this.b = $$0;
    }
 
-   private ahh(vw $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
+   private ahh(wa $$0) {
+      this.b = $$0.x();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
+   private void a(wa $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public zi<ahh> a() {
-      return agg.bF;
+   public zm<ahh> a() {
+      return ago.bw;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public double b() {
+   public int b() {
       return this.b;
-   }
-
-   public double e() {
-      return this.c;
-   }
-
-   public double f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
    }
 }

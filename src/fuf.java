@@ -1,60 +1,57 @@
-import java.util.function.Function;
+import java.util.UUID;
+import java.util.function.Supplier;
 
-public abstract class fuf<E extends bsr> extends fvk<E> {
-   private final boolean a;
-   private final float b;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class fuf extends fty<gcg.a> {
+   private static final int C = 85;
+   private static final int D = 178;
+   private static final xd E = xd.c("gui.abuseReport.skin.title");
+   private fks F;
+   private fka G;
 
-   protected fuf(boolean $$0, float $$1, float $$2) {
-      this($$0, $$1, $$2, 2.0F, 2.0F, 24.0F);
+   private fuf(fpt $$0, gcf $$1, gcg.a $$2) {
+      super(E, $$0, $$1, $$2);
    }
 
-   protected fuf(boolean $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this(gfh::e, $$0, $$1, $$2, $$3, $$4, $$5);
+   public fuf(fpt $$0, gcf $$1, UUID $$2, Supplier<gxl> $$3) {
+      this($$0, $$1, new gcg.a($$2, $$3, $$1.a().b()));
    }
 
-   protected fuf(Function<akr, gfh> $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-   }
-
-   protected fuf() {
-      this(false, 5.0F, 2.0F);
+   public fuf(fpt $$0, gcf $$1, gcg $$2) {
+      this($$0, $$1, new gcg.a($$2, $$1.a().b()));
    }
 
    @Override
-   public void a(fbi $$0, fbm $$1, int $$2, int $$3, int $$4) {
-      if (this.e) {
-         $$0.a();
-         if (this.a) {
-            float $$5 = 1.5F / this.g;
-            $$0.b($$5, $$5, $$5);
-         }
-
-         $$0.a(0.0F, this.b / 16.0F, this.f / 16.0F);
-         this.a().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
-         $$0.b();
-         $$0.a();
-         float $$6 = 1.0F / this.h;
-         $$0.b($$6, $$6, $$6);
-         $$0.a(0.0F, this.i / 16.0F, 0.0F);
-         this.b().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
-         $$0.b();
-      } else {
-         this.a().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
-         this.b().forEach($$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
-      }
+   protected void D() {
+      fns $$0 = this.z.a(fns.e().a(8));
+      $$0.c().e();
+      $$0.a(new fla(85, 120, this.m.aS(), this.A.e().a()));
+      fns $$1 = $$0.a(fns.d().a(8));
+      this.G = fka.a(c, $$0x -> this.m.a(new fue(this, this.A.i(), gce.b, $$0xx -> {
+            this.A.a($$0xx);
+            this.F();
+         }))).a(178).a();
+      $$1.a(fnk.a(this.p, this.G, b));
+      this.F = this.a(178, 9 * 8, $$0x -> {
+         this.A.a($$0x);
+         this.F();
+      });
+      $$1.a(fnk.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
    }
 
-   protected abstract Iterable<fyk> a();
+   @Override
+   protected void F() {
+      gcd $$0 = this.A.i();
+      if ($$0 != null) {
+         this.G.b($$0.b());
+      } else {
+         this.G.b(c);
+      }
 
-   protected abstract Iterable<fyk> b();
+      super.F();
+   }
+
+   @Override
+   public boolean b(double $$0, double $$1, int $$2) {
+      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
+   }
 }

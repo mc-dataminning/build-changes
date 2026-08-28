@@ -1,36 +1,46 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Set;
 
-public class euy implements evc {
-   private static final euy b = new euy();
-   public static final MapCodec<euy> a = MapCodec.unit(b);
+public class euy extends eug {
+   public static final MapCodec<euy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(exb.a.fieldOf("count").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)))
+            .apply($$0, euy::new)
+   );
+   private final exa b;
+   private final boolean c;
 
-   private euy() {
+   private euy(List<ewe> $$0, exa $$1, boolean $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public evd b() {
-      return eve.l;
+   public eui<euy> b() {
+      return euj.e;
    }
 
    @Override
-   public Set<euk<?>> a() {
-      return ImmutableSet.of(eun.j);
+   public Set<evm<?>> a() {
+      return this.b.a();
    }
 
-   public boolean a(err $$0) {
-      Float $$1 = $$0.c(eun.j);
-      if ($$1 != null) {
-         ayw $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      int $$2 = this.c ? $$0.J() : 0;
+      $$0.e($$2 + this.b.a($$1));
+      return $$0;
    }
 
-   public static evc.a c() {
-      return () -> b;
+   public static eug.a<?> a(exa $$0) {
+      return a($$1 -> new euy($$1, $$0, false));
+   }
+
+   public static eug.a<?> a(exa $$0, boolean $$1) {
+      return a($$2 -> new euy($$2, $$0, $$1));
    }
 }

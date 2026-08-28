@@ -1,15 +1,17 @@
-public class gnl extends gml<cku> {
-   private static final akr a = akr.b("textures/entity/skeleton/wither_skeleton.png");
-
-   public gnl(gkj.a $$0) {
-      super($$0, fyj.bY, fyj.bZ, fyj.ca);
+public abstract class gnl<T extends ckc, S extends gtl> extends gny<T, S, fxo<S>> {
+   protected gnl(gms.a $$0, fxo<S> $$1, float $$2) {
+      super($$0, $$1, $$2);
+      this.a(new gqk<>(this, $$0.f(), $$0.b()));
    }
 
-   public akr a(cku $$0) {
-      return a;
-   }
-
-   protected void a(cku $$0, fbi $$1, float $$2) {
-      $$1.b(1.2F, 1.2F, 1.2F);
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.bW();
+      $$1.d = $$0.fu();
+      $$1.e = $$0.q();
+      $$1.f = $$1.e == ckc.a.f ? cty.b($$0.fx(), $$0) : 0;
+      $$1.g = $$0.fz();
+      $$1.h = $$0.D($$2);
+      $$1.c = $$0.gf();
    }
 }

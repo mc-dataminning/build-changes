@@ -1,42 +1,93 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import org.apache.commons.lang3.mutable.MutableBoolean;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class azz extends bfn {
-   private static final String a = "minecraft:wolf";
-   private static final String b = "minecraft:generic.max_health";
+public class azz {
+   private static final Pattern a = Pattern.compile("(?i)\\u00A7[0-9A-FK-OR]");
+   private static final Pattern b = Pattern.compile("\\r\\n|\\v");
+   private static final Pattern c = Pattern.compile("(?:\\r\\n|\\v)$");
 
-   public azz(Schema $$0) {
-      super($$0, false, "FixWolfHealth", bgr.B, "minecraft:wolf");
+   public static String a(int $$0, float $$1) {
+      int $$2 = azc.d((float)$$0 / $$1);
+      int $$3 = $$2 / 60;
+      $$2 %= 60;
+      int $$4 = $$3 / 60;
+      $$3 %= 60;
+      return $$4 > 0 ? String.format(Locale.ROOT, "%02d:%02d:%02d", $$4, $$3, $$2) : String.format(Locale.ROOT, "%02d:%02d", $$3, $$2);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> {
-            MutableBoolean $$1 = new MutableBoolean(false);
-            $$0x = $$0x.update(
-               "Attributes",
-               $$1x -> $$1x.createList(
-                     $$1x.asStream()
-                        .map($$1xx -> "minecraft:generic.max_health".equals(bid.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
-                              if ($$1xxx.asDouble(0.0) == 20.0) {
-                                 $$1.setTrue();
-                                 return $$1xxx.createDouble(40.0);
-                              } else {
-                                 return $$1xxx;
-                              }
-                           }) : $$1xx)
-                  )
-            );
-            if ($$1.isTrue()) {
-               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
-            }
+   public static String a(String $$0) {
+      return a.matcher($$0).replaceAll("");
+   }
 
-            return $$0x;
+   public static boolean b(@Nullable String $$0) {
+      return StringUtils.isEmpty($$0);
+   }
+
+   public static String a(String $$0, int $$1, boolean $$2) {
+      if ($$0.length() <= $$1) {
+         return $$0;
+      } else {
+         return $$2 && $$1 > 3 ? $$0.substring(0, $$1 - 3) + "..." : $$0.substring(0, $$1);
+      }
+   }
+
+   public static int c(String $$0) {
+      if ($$0.isEmpty()) {
+         return 0;
+      } else {
+         Matcher $$1 = b.matcher($$0);
+         int $$2 = 1;
+
+         while ($$1.find()) {
+            $$2++;
          }
-      );
+
+         return $$2;
+      }
+   }
+
+   public static boolean d(String $$0) {
+      return c.matcher($$0).find();
+   }
+
+   public static String e(String $$0) {
+      return a($$0, 256, false);
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 != 167 && $$0 >= ' ' && $$0 != 127;
+   }
+
+   public static boolean f(String $$0) {
+      return $$0.length() > 16 ? false : $$0.chars().filter($$0x -> $$0x <= 32 || $$0x >= 127).findAny().isEmpty();
+   }
+
+   public static String g(String $$0) {
+      return a($$0, false);
+   }
+
+   public static String a(String $$0, boolean $$1) {
+      StringBuilder $$2 = new StringBuilder();
+
+      for (char $$3 : $$0.toCharArray()) {
+         if (a($$3)) {
+            $$2.append($$3);
+         } else if ($$1 && $$3 == '\n') {
+            $$2.append($$3);
+         }
+      }
+
+      return $$2.toString();
+   }
+
+   public static boolean a(int $$0) {
+      return Character.isWhitespace($$0) || Character.isSpaceChar($$0);
+   }
+
+   public static boolean h(@Nullable String $$0) {
+      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(azz::a) : true;
    }
 }

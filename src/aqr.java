@@ -1,127 +1,126 @@
-import com.google.common.base.Objects;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.function.Function;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.function.Consumer;
 
-public class aqr extends bqh {
-   private final Set<aqv> h = Sets.newHashSet();
-   private final Set<aqv> i = Collections.unmodifiableSet(this.h);
-   private boolean j = true;
+public interface aqr {
+   aqr a = new aqr() {
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return false;
+      }
 
-   public aqr(wz $$0, bqh.a $$1, bqh.b $$2) {
-      super(ayo.a(), $$0, $$1, $$2);
+      @Override
+      public void a(Consumer<dcy> $$0) {
+      }
+   };
+
+   static aqr a(dcy $$0, int $$1) {
+      return new aqr.a($$0, $$1);
    }
 
-   @Override
-   public void a(float $$0) {
-      if ($$0 != this.b) {
-         super.a($$0);
-         this.a(ace::b);
+   static void a(aqr $$0, aqr $$1, Consumer<dcy> $$2, Consumer<dcy> $$3) {
+      if (!$$0.equals($$1)) {
+         if ($$0 instanceof aqr.a $$4 && $$1 instanceof aqr.a $$5 && $$4.a($$5)) {
+            int $$6 = Math.min($$4.c(), $$5.c());
+            int $$7 = Math.min($$4.d(), $$5.d());
+            int $$8 = Math.max($$4.e(), $$5.e());
+            int $$9 = Math.max($$4.f(), $$5.f());
+
+            for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+               for (int $$11 = $$7; $$11 <= $$9; $$11++) {
+                  boolean $$12 = $$4.a($$10, $$11);
+                  boolean $$13 = $$5.a($$10, $$11);
+                  if ($$12 != $$13) {
+                     if ($$13) {
+                        $$2.accept(new dcy($$10, $$11));
+                     } else {
+                        $$3.accept(new dcy($$10, $$11));
+                     }
+                  }
+               }
+            }
+
+            return;
+         }
+
+         $$0.a($$3);
+         $$1.a($$2);
       }
    }
 
-   @Override
-   public void a(bqh.a $$0) {
-      if ($$0 != this.c) {
-         super.a($$0);
-         this.a(ace::d);
-      }
+   default boolean a(dcy $$0) {
+      return this.a($$0.e, $$0.f);
    }
 
-   @Override
-   public void a(bqh.b $$0) {
-      if ($$0 != this.d) {
-         super.a($$0);
-         this.a(ace::d);
-      }
+   default boolean a(int $$0, int $$1) {
+      return this.a($$0, $$1, true);
    }
 
-   @Override
-   public bqh a(boolean $$0) {
-      if ($$0 != this.e) {
-         super.a($$0);
-         this.a(ace::e);
-      }
+   boolean a(int var1, int var2, boolean var3);
 
-      return this;
+   void a(Consumer<dcy> var1);
+
+   default boolean b(int $$0, int $$1) {
+      return this.a($$0, $$1, false);
    }
 
-   @Override
-   public bqh b(boolean $$0) {
-      if ($$0 != this.f) {
-         super.b($$0);
-         this.a(ace::e);
-      }
-
-      return this;
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      return a($$0, $$1, $$2, $$3, $$4, false);
    }
 
-   @Override
-   public bqh c(boolean $$0) {
-      if ($$0 != this.g) {
-         super.c($$0);
-         this.a(ace::e);
-      }
-
-      return this;
+   static boolean a(int $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      int $$6 = Math.max(0, Math.abs($$3 - $$0) - 1);
+      int $$7 = Math.max(0, Math.abs($$4 - $$1) - 1);
+      long $$8 = (long)Math.max(0, Math.max($$6, $$7) - ($$5 ? 1 : 0));
+      long $$9 = (long)Math.min($$6, $$7);
+      long $$10 = $$9 * $$9 + $$8 * $$8;
+      int $$11 = $$2 * $$2;
+      return $$10 < (long)$$11;
    }
 
-   @Override
-   public void a(wz $$0) {
-      if (!Objects.equal($$0, this.a)) {
-         super.a($$0);
-         this.a(ace::c);
+   public static record a(dcy b, int c) implements aqr {
+      int c() {
+         return this.b.e - this.c - 1;
       }
-   }
 
-   private void a(Function<bqh, ace> $$0) {
-      if (this.j) {
-         ace $$1 = $$0.apply(this);
+      int d() {
+         return this.b.f - this.c - 1;
+      }
 
-         for (aqv $$2 : this.h) {
-            $$2.c.b($$1);
+      int e() {
+         return this.b.e + this.c + 1;
+      }
+
+      int f() {
+         return this.b.f + this.c + 1;
+      }
+
+      @VisibleForTesting
+      protected boolean a(aqr.a $$0) {
+         return this.c() <= $$0.e() && this.e() >= $$0.c() && this.d() <= $$0.f() && this.f() >= $$0.d();
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1, boolean $$2) {
+         return aqr.a(this.b.e, this.b.f, this.c, $$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(Consumer<dcy> $$0) {
+         for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
+            for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
+               if (this.a($$1, $$2)) {
+                  $$0.accept(new dcy($$1, $$2));
+               }
+            }
          }
       }
-   }
 
-   public void a(aqv $$0) {
-      if (this.h.add($$0) && this.j) {
-         $$0.c.b(ace.a(this));
+      public dcy a() {
+         return this.b;
       }
-   }
 
-   public void b(aqv $$0) {
-      if (this.h.remove($$0) && this.j) {
-         $$0.c.b(ace.a(this.h()));
+      public int b() {
+         return this.c;
       }
-   }
-
-   public void b() {
-      if (!this.h.isEmpty()) {
-         for (aqv $$0 : Lists.newArrayList(this.h)) {
-            this.b($$0);
-         }
-      }
-   }
-
-   public boolean f() {
-      return this.j;
-   }
-
-   public void d(boolean $$0) {
-      if ($$0 != this.j) {
-         this.j = $$0;
-
-         for (aqv $$1 : this.h) {
-            $$1.c.b($$0 ? ace.a(this) : ace.a(this.h()));
-         }
-      }
-   }
-
-   public Collection<aqv> g() {
-      return this.i;
    }
 }

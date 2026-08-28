@@ -1,55 +1,64 @@
-public abstract class gji<T extends cnd> extends gki<T> {
-   public gji(gkj.a $$0) {
-      super($$0);
-   }
+import java.util.Calendar;
 
-   public void a(T $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      $$3.a();
-      $$3.a(a.d.rotationDegrees(ayo.i($$2, $$0.O, $$0.dE()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayo.i($$2, $$0.P, $$0.dG())));
-      int $$6 = 0;
-      float $$7 = 0.0F;
-      float $$8 = 0.5F;
-      float $$9 = 0.0F;
-      float $$10 = 0.15625F;
-      float $$11 = 0.0F;
-      float $$12 = 0.15625F;
-      float $$13 = 0.15625F;
-      float $$14 = 0.3125F;
-      float $$15 = 0.05625F;
-      float $$16 = (float)$$0.e - $$2;
-      if ($$16 > 0.0F) {
-         float $$17 = -ayo.a($$16 * 3.0F) * $$16;
-         $$3.a(a.f.rotationDegrees($$17));
+public class gji<T extends dre & dsj> implements gjc<T> {
+   private final fwo a;
+   private final fwo b;
+   private final fwo c;
+   private boolean d;
+
+   public gji(gjd.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.d = true;
       }
 
-      $$3.a(a.b.rotationDegrees(45.0F));
-      $$3.b(0.05625F, 0.05625F, 0.05625F);
-      $$3.a(-4.0F, 0.0F, 0.0F);
-      fbm $$18 = $$4.getBuffer(gfh.d(this.a($$0)));
-      fbi.a $$19 = $$3.c();
-      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.15625F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.3125F, -1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, -2, 0.0F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, 2, 2, 0.15625F, 0.15625F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, 2, 0.15625F, 0.3125F, 1, 0, 0, $$5);
-      this.a($$19, $$18, -7, -2, -2, 0.0F, 0.3125F, 1, 0, 0, $$5);
-
-      for (int $$20 = 0; $$20 < 4; $$20++) {
-         $$3.a(a.b.rotationDegrees(90.0F));
-         this.a($$19, $$18, -8, -2, 0, 0.0F, 0.0F, 0, 1, 0, $$5);
-         this.a($$19, $$18, 8, -2, 0, 0.5F, 0.0F, 0, 1, 0, $$5);
-         this.a($$19, $$18, 8, 2, 0, 0.5F, 0.15625F, 0, 1, 0, $$5);
-         this.a($$19, $$18, -8, 2, 0, 0.0F, 0.15625F, 0, 1, 0, $$5);
-      }
-
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a = new fwo($$0.a(gaa.K));
+      this.b = new fwo($$0.a(gaa.af));
+      this.c = new fwo($$0.a(gaa.ag));
    }
 
-   public void a(fbi.a $$0, fbm $$1, int $$2, int $$3, int $$4, float $$5, float $$6, int $$7, int $$8, int $$9, int $$10) {
-      $$1.a($$0, (float)$$2, (float)$$3, (float)$$4).a(-1).a($$5, $$6).b(gqc.d).c($$10).b($$0, (float)$$7, (float)$$9, (float)$$8);
+   @Override
+   public void a(T $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
+      dds $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dua $$8 = $$7 ? $$0.m() : dgx.cv.o().b(dhy.c, jj.d);
+      dus $$9 = $$8.b(dhy.d) ? $$8.c(dhy.d) : dus.a;
+      if ($$8.b() instanceof dfp<?> $$11) {
+         boolean $$12 = $$9 != dus.a;
+         $$2.a();
+         float $$13 = $$8.c(dhy.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         djc.c<? extends drl> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.aD_(), true);
+         } else {
+            $$14 = djc.b::b;
+         }
+
+         float $$16 = $$14.apply(dhy.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new gjf<>()).applyAsInt($$4);
+         gyq $$18 = ghm.a($$0, $$9, this.d);
+         fcy $$19 = $$18.a($$3, ghe::e);
+         if ($$12) {
+            if ($$9 == dus.b) {
+               this.a($$2, $$19, this.b, $$16, $$17, $$5);
+            } else {
+               this.a($$2, $$19, this.c, $$16, $$17, $$5);
+            }
+         } else {
+            this.a($$2, $$19, this.a, $$16, $$17, $$5);
+         }
+
+         $$2.b();
+      }
+   }
+
+   private void a(fcu $$0, fcy $$1, fwo $$2, float $$3, int $$4, int $$5) {
+      $$2.a($$3);
+      $$2.a($$0, $$1, $$4, $$5);
    }
 }

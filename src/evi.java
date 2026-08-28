@@ -1,50 +1,42 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public record evi(float b, daj c, jm<dac> g) implements evc {
-   public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("unenchanted_chance").forGetter(evi::c),
-               daj.b.fieldOf("enchanted_chance").forGetter(evi::d),
-               dac.c.fieldOf("enchantment").forGetter(evi::e)
-            )
-            .apply($$0, evi::new)
-   );
+public class evi extends eug {
+   private static final Logger b = LogUtils.getLogger();
+   public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, evi::new));
 
-   @Override
-   public evd b() {
-      return eve.e;
+   private evi(List<ewe> $$0) {
+      super($$0);
    }
 
    @Override
-   public Set<euk<?>> a() {
-      return ImmutableSet.of(eun.d);
+   public eui<evi> b() {
+      return euj.l;
    }
 
-   public boolean a(err $$0) {
-      bsr $$1 = $$0.c(eun.d);
-      int $$3 = $$1 instanceof btn $$2 ? dae.a(this.g, $$2) : 0;
-      float $$4 = $$3 > 0 ? this.c.a($$3) : this.b;
-      return $$0.b().i() < $$4;
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      if ($$0.f()) {
+         return $$0;
+      } else {
+         Optional<czv<dak>> $$2 = $$1.d().r().a(czz.b, new daj($$0), $$1.d());
+         if ($$2.isPresent()) {
+            cvl $$3 = $$2.get().b().a($$1.d().F_());
+            if (!$$3.f()) {
+               return $$3.c($$0.J());
+            }
+         }
+
+         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
+         return $$0;
+      }
    }
 
-   public static evc.a a(jo.a $$0, float $$1, float $$2) {
-      jo.b<dac> $$3 = $$0.b(lu.aL);
-      return () -> new evi($$1, new daj.e($$1 + $$2, $$2), $$3.b(dah.s));
-   }
-
-   public float c() {
-      return this.b;
-   }
-
-   public daj d() {
-      return this.c;
-   }
-
-   public jm<dac> e() {
-      return this.g;
+   public static eug.a<?> c() {
+      return a(evi::new);
    }
 }

@@ -1,10 +1,9 @@
-public class cro extends crq {
-   public cro(bqk $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+public class cro extends cqs {
+   public cro(int $$0, cno $$1) {
+      super(crz.o, czz.b, csg.b, $$0, $$1);
    }
 
-   @Override
-   public boolean a(cuq $$0) {
-      return $$0.g().ar_();
+   public cro(int $$0, cno $$1, brd $$2, crc $$3) {
+      super(crz.o, czz.b, csg.b, $$0, $$1, $$2, $$3);
    }
 }

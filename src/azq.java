@@ -1,49 +1,26 @@
-import it.unimi.dsi.fastutil.floats.Float2FloatFunction;
-import java.util.function.Function;
+import com.mojang.logging.LogUtils;
+import java.security.PrivateKey;
+import java.security.Signature;
+import org.slf4j.Logger;
 
-public interface azq<C> {
-   azq<Float> a = a($$0 -> $$0);
+public interface azq {
+   Logger a = LogUtils.getLogger();
 
-   float a(C var1);
+   byte[] sign(azo var1);
 
-   float b();
-
-   float c();
-
-   static azq<Float> a(final Float2FloatFunction $$0) {
-      return new azq<Float>() {
-         public float a(Float $$0x) {
-            return (Float)$$0.apply($$0);
-         }
-
-         @Override
-         public float b() {
-            return Float.NEGATIVE_INFINITY;
-         }
-
-         @Override
-         public float c() {
-            return Float.POSITIVE_INFINITY;
-         }
-      };
+   default byte[] a(byte[] $$0) {
+      return this.sign($$1 -> $$1.update($$0));
    }
 
-   default <C2> azq<C2> a(final Function<C2, C> $$0) {
-      final azq<C> $$1 = this;
-      return new azq<C2>() {
-         @Override
-         public float a(C2 $$0x) {
-            return $$1.a($$0.apply($$0));
-         }
-
-         @Override
-         public float b() {
-            return $$1.b();
-         }
-
-         @Override
-         public float c() {
-            return $$1.c();
+   static azq a(PrivateKey $$0, String $$1) {
+      return $$2 -> {
+         try {
+            Signature $$3 = Signature.getInstance($$1);
+            $$3.initSign($$0);
+            $$2.update($$3::update);
+            return $$3.sign();
+         } catch (Exception var4) {
+            throw new IllegalStateException("Failed to sign message", var4);
          }
       };
    }

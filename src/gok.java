@@ -1,24 +1,20 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gok extends gln<cgn, gug, fyg> {
+   private static final alb a = alb.b("textures/entity/bear/polarbear.png");
 
-public class gok extends gov<chk, fvv<chk>> {
-   private static final Map<chm, akr> a = ad.a(Maps.newEnumMap(chm.class), $$0 -> {
-      $$0.put(chm.a, null);
-      $$0.put(chm.b, akr.b("textures/entity/horse/horse_markings_white.png"));
-      $$0.put(chm.c, akr.b("textures/entity/horse/horse_markings_whitefield.png"));
-      $$0.put(chm.d, akr.b("textures/entity/horse/horse_markings_whitedots.png"));
-      $$0.put(chm.e, akr.b("textures/entity/horse/horse_markings_blackdots.png"));
-   });
-
-   public gok(gmf<chk, fvv<chk>> $$0) {
-      super($$0);
+   public gok(gms.a $$0) {
+      super($$0, new fyg($$0.a(gaa.bR)), new fyg($$0.a(gaa.bS)), 0.9F);
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, chk $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      akr $$10 = a.get($$3.t());
-      if ($$10 != null && !$$3.ci()) {
-         fbm $$11 = $$1.getBuffer(gfh.i($$10));
-         this.c().a($$0, $$11, $$2, glk.c($$3, 0.0F));
-      }
+   public alb a(gug $$0) {
+      return a;
+   }
+
+   public gug c() {
+      return new gug();
+   }
+
+   public void a(cgn $$0, gug $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
    }
 }

@@ -1,3 +1,8 @@
-public interface bpz {
-   float a(ayw var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bpz {
 }

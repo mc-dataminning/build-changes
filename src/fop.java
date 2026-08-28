@@ -1,214 +1,109 @@
-import com.google.common.collect.Lists;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.List;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
 
-public class fop extends fod {
-   static final akr a = akr.b("gamemode_switcher/slot");
-   static final akr b = akr.b("gamemode_switcher/selection");
-   private static final akr c = akr.b("textures/gui/container/gamemode_switcher.png");
-   private static final int r = 128;
-   private static final int s = 128;
-   private static final int u = 26;
-   private static final int v = 5;
-   private static final int w = 31;
-   private static final int x = 5;
-   private static final int y = fop.a.values().length * 31 - 5;
-   private static final wz z = wz.a("debug.gamemodes.select_next", wz.c("debug.gamemodes.press_f4").a(n.l));
-   private final fop.a A;
-   private fop.a B;
-   private int C;
-   private int D;
-   private boolean E;
-   private final List<fop.b> F = Lists.newArrayList();
+public class fop extends foq {
+   private static final xd d = xd.c("chat.copy");
+   private static final xd s = xd.c("chat.link.warning");
+   private final String u;
+   private final boolean v;
 
-   public fop() {
-      super(fgg.a);
-      this.A = fop.a.a(this.m());
-      this.B = this.A;
+   public fop(BooleanConsumer $$0, String $$1, boolean $$2) {
+      this($$0, c($$2), xd.b($$1), $$1, $$2 ? xc.e : xc.g, $$2);
    }
 
-   private dct m() {
-      fzo $$0 = fgo.Q().q;
-      dct $$1 = $$0.i();
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         return $$0.j() == dct.b ? dct.a : dct.b;
-      }
+   public fop(BooleanConsumer $$0, xd $$1, String $$2, boolean $$3) {
+      this($$0, $$1, a($$3, $$2), $$2, $$3 ? xc.e : xc.g, $$3);
    }
 
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.B = this.A;
+   public fop(BooleanConsumer $$0, xd $$1, URI $$2, boolean $$3) {
+      this($$0, $$1, $$2.toString(), $$3);
+   }
 
-      for (int $$0 = 0; $$0 < fop.a.e.length; $$0++) {
-         fop.a $$1 = fop.a.e[$$0];
-         this.F.add(new fop.b($$1, this.m / 2 - y / 2 + $$0 * 31, this.n / 2 - 31));
-      }
+   public fop(BooleanConsumer $$0, xd $$1, xd $$2, URI $$3, xd $$4, boolean $$5) {
+      this($$0, $$1, $$2, $$3.toString(), $$4, true);
+   }
+
+   public fop(BooleanConsumer $$0, xd $$1, xd $$2, String $$3, xd $$4, boolean $$5) {
+      super($$0, $$1, $$2);
+      this.a = (xd)($$5 ? xd.c("chat.link.open") : xc.f);
+      this.b = $$4;
+      this.v = !$$5;
+      this.u = $$3;
+   }
+
+   protected static xr a(boolean $$0, String $$1) {
+      return c($$0).b(xc.v).b(xd.b($$1));
+   }
+
+   protected static xr c(boolean $$0) {
+      return xd.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
    }
 
    @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      if (!this.D()) {
-         $$0.c().a();
-         RenderSystem.enableBlend();
-         int $$4 = this.m / 2 - 62;
-         int $$5 = this.n / 2 - 31 - 27;
-         $$0.a(c, $$4, $$5, 0.0F, 0.0F, 125, 75, 128, 128);
-         $$0.c().b();
-         super.a($$0, $$1, $$2, $$3);
-         $$0.a(this.o, this.B.a(), this.m / 2, this.n / 2 - 31 - 20, -1);
-         $$0.a(this.o, z, this.m / 2, this.n / 2 + 5, 16777215);
-         if (!this.E) {
-            this.C = $$1;
-            this.D = $$2;
-            this.E = true;
+   protected void a(int $$0) {
+      this.c(fka.a(this.a, $$0x -> this.c.accept(true)).a(this.n / 2 - 50 - 105, $$0, 100, 20).a());
+      this.c(fka.a(d, $$0x -> {
+         this.l();
+         this.c.accept(false);
+      }).a(this.n / 2 - 50, $$0, 100, 20).a());
+      this.c(fka.a(this.b, $$0x -> this.c.accept(false)).a(this.n / 2 - 50 + 105, $$0, 100, 20).a());
+   }
+
+   public void l() {
+      this.m.p.a(this.u);
+   }
+
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.v) {
+         $$0.a(this.p, s, this.n / 2, 110, 16764108);
+      }
+   }
+
+   public static void a(fpt $$0, String $$1, boolean $$2) {
+      fib $$3 = fib.Q();
+      $$3.a(new fop($$3x -> {
+         if ($$3x) {
+            ad.m().a($$1);
          }
 
-         boolean $$6 = this.C == $$1 && this.D == $$2;
+         $$3.a($$0);
+      }, $$1, $$2));
+   }
 
-         for (fop.b $$7 : this.F) {
-            $$7.a($$0, $$1, $$2, $$3);
-            $$7.b(this.B == $$7.a);
-            if (!$$6 && $$7.B()) {
-               this.B = $$7.a;
-            }
+   public static void a(fpt $$0, URI $$1, boolean $$2) {
+      fib $$3 = fib.Q();
+      $$3.a(new fop($$3x -> {
+         if ($$3x) {
+            ad.m().a($$1);
          }
-      }
+
+         $$3.a($$0);
+      }, $$1.toString(), $$2));
    }
 
-   @Override
-   public void b(fhz $$0, int $$1, int $$2, float $$3) {
+   public static void a(fpt $$0, URI $$1) {
+      a($$0, $$1, true);
    }
 
-   private void C() {
-      a(this.l, this.B);
+   public static void a(fpt $$0, String $$1) {
+      a($$0, $$1, true);
    }
 
-   private static void a(fgo $$0, fop.a $$1) {
-      if ($$0.q != null && $$0.s != null) {
-         fop.a $$2 = fop.a.a($$0.q.j());
-         if ($$0.s.l(2) && $$1 != $$2) {
-            $$0.s.h.d($$1.b());
-         }
-      }
+   public static fka.c b(fpt $$0, String $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
    }
 
-   private boolean D() {
-      if (!fae.a(this.l.aM().j(), 292)) {
-         this.C();
-         this.l.a(null);
-         return true;
-      } else {
-         return false;
-      }
+   public static fka.c b(fpt $$0, URI $$1, boolean $$2) {
+      return $$3 -> a($$0, $$1, $$2);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 293) {
-         this.E = false;
-         this.B = this.B.c();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public static fka.c b(fpt $$0, String $$1) {
+      return b($$0, $$1, true);
    }
 
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   static enum a {
-      a(wz.c("gameMode.creative"), "gamemode creative", new cuq(dga.i)),
-      b(wz.c("gameMode.survival"), "gamemode survival", new cuq(cut.pb)),
-      c(wz.c("gameMode.adventure"), "gamemode adventure", new cuq(cut.uj)),
-      d(wz.c("gameMode.spectator"), "gamemode spectator", new cuq(cut.ss));
-
-      protected static final fop.a[] e = values();
-      private static final int j = 16;
-      protected static final int f = 5;
-      final wz g;
-      final String h;
-      final cuq i;
-
-      private a(final wz $$0, final String $$1, final cuq $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-      }
-
-      void a(fhz $$0, int $$1, int $$2) {
-         $$0.a(this.i, $$1, $$2);
-      }
-
-      wz a() {
-         return this.g;
-      }
-
-      String b() {
-         return this.h;
-      }
-
-      fop.a c() {
-         return switch (this) {
-            case a -> b;
-            case b -> c;
-            case c -> d;
-            case d -> a;
-         };
-      }
-
-      static fop.a a(dct $$0) {
-         return switch ($$0) {
-            case d -> d;
-            case a -> b;
-            case b -> a;
-            case c -> c;
-         };
-      }
-   }
-
-   public class b extends fik {
-      final fop.a a;
-      private boolean b;
-
-      public b(final fop.a $$1, final int $$2, final int $$3) {
-         super($$2, $$3, 26, 26, $$1.a());
-         this.a = $$1;
-      }
-
-      @Override
-      public void b(fhz $$0, int $$1, int $$2, float $$3) {
-         this.a($$0);
-         this.a.a($$0, this.D() + 5, this.E() + 5);
-         if (this.b) {
-            this.b($$0);
-         }
-      }
-
-      @Override
-      public void a(fmi $$0) {
-         this.c($$0);
-      }
-
-      @Override
-      public boolean B() {
-         return super.B() || this.b;
-      }
-
-      public void b(boolean $$0) {
-         this.b = $$0;
-      }
-
-      private void a(fhz $$0) {
-         $$0.a(fop.a, this.D(), this.E(), 26, 26);
-      }
-
-      private void b(fhz $$0) {
-         $$0.a(fop.b, this.D(), this.E(), 26, 26);
-      }
+   public static fka.c b(fpt $$0, URI $$1) {
+      return b($$0, $$1, true);
    }
 }

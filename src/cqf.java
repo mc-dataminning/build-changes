@@ -1,7 +1,9 @@
-public interface cqf {
-   int a(int var1);
+public class cqf {
+   final cqi a;
+   final long b;
 
-   void a(int var1, int var2);
-
-   int a();
+   cqf(cqi $$0, int $$1) {
+      this.a = $$0;
+      this.b = 1L << $$1;
+   }
 }

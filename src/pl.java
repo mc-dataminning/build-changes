@@ -1,142 +1,25 @@
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class pl extends pz<ddw> {
-   public pl(mc $$0, CompletableFuture<jo.a> $$1) {
-      super($$0, lu.aF, $$1);
-   }
+public class pl implements pk.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = atg.b.a() + "/minecraft/structure/";
 
    @Override
-   protected void a(jo.a $$0) {
-      this.b(awd.a).a(ded.X).a(ded.V).a(ded.T).a(ded.R);
-      this.b(awd.b).b(awd.a).a(ded.W).a(ded.S).a(ded.U).a(ded.Q).a(ded.P);
-      this.b(awd.c).a(ded.M).a(ded.N);
-      this.b(awd.d).a(ded.K).a(ded.L);
-      this.b(awd.e).a(ded.D).a(ded.H).a(ded.I).a(ded.J).a(ded.G).a(ded.E);
-      this.b(awd.f).a(ded.A).a(ded.B).a(ded.C);
-      this.b(awd.g).a(ded.t).a(ded.v).a(ded.u);
-      this.b(awd.h).a(ded.p).a(ded.q).a(ded.n).a(ded.o);
-      this.b(awd.i).a(ded.z).a(ded.x).a(ded.y);
-      this.b(awd.j).a(ded.i).a(ded.j).a(ded.k).a(ded.m).a(ded.l).a(ded.F);
-      this.b(awd.k).a(ded.r).a(ded.s).a(ded.w);
-      pz.b<ddw> $$1 = this.b(awd.m);
-      dek.a.a.a().forEach($$1::a);
-      pz.b<ddw> $$2 = this.b(awd.l);
-      dek.a.b.a().forEach($$2::a);
-      this.b(awd.n).a(ded.ah).a(ded.ai).a(ded.aj).a(ded.ak).a(ded.al);
-      this.b(awd.p).b(awd.c);
-      this.b(awd.q).a(ded.f);
-      this.b(awd.r).a(ded.q).a(ded.d).a(ded.G);
-      this.b(awd.s).a(ded.z).a(ded.x);
-      this.b(awd.t)
-         .b(awd.b)
-         .b(awd.d)
-         .b(awd.c)
-         .b(awd.e)
-         .b(awd.g)
-         .b(awd.h)
-         .b(awd.i)
-         .b(awd.j)
-         .a(ded.O)
-         .a(ded.Y)
-         .a(ded.e)
-         .a(ded.w)
-         .a(ded.f)
-         .a(ded.r)
-         .a(ded.d)
-         .a(ded.b)
-         .a(ded.c)
-         .a(ded.g)
-         .a(ded.h)
-         .a(ded.s)
-         .a(ded.Z)
-         .a(ded.aa);
-      this.b(awd.u).b(awd.f);
-      this.b(awd.Y).a(ded.ab);
-      this.b(awd.v).b(awd.a);
-      this.b(awd.X).b(awd.b).b(awd.d);
-      this.b(awd.w).a(ded.W).a(ded.U).a(ded.S).a(ded.X).a(ded.V).a(ded.T);
-      this.b(awd.x).a(ded.Q).a(ded.P).a(ded.R);
-      this.b(awd.y).a(ded.f).a(ded.b).a(ded.r).a(ded.d).a(ded.p).b(awd.e).a(ded.F);
-      this.b(awd.z).a(ded.f);
-      this.b(awd.A).b(awd.i);
-      this.b(awd.B).b(awd.b);
-      this.b(awd.C).a(ded.g).a(ded.h);
-      this.b(awd.D).b(awd.f).b(awd.g).a(ded.s).a(ded.w).a(ded.O).b(awd.e);
-      this.b(awd.E).b(awd.c).b(awd.d).b(awd.h).b(awd.j).a(ded.Y).a(ded.e).a(ded.Z).a(ded.aa).a(ded.r).a(ded.d).a(ded.b).a(ded.c);
-      this.b(awd.F).b(awd.c);
-      this.b(awd.G).b(awd.b);
-      this.b(awd.J).a(ded.g);
-      this.b(awd.K).a(ded.f);
-      this.b(awd.L).a(ded.b).a(ded.D);
-      this.b(awd.M).a(ded.r);
-      this.b(awd.N).a(ded.d);
-      this.b(awd.O).a(ded.p);
-      this.b(awd.P).a(ded.p).a(ded.q).a(ded.n).a(ded.o).a(ded.m).a(ded.x);
-      this.b(awd.Q).a(ded.l);
-      this.b(awd.o)
-         .a(ded.b)
-         .a(ded.c)
-         .a(ded.d)
-         .a(ded.e)
-         .a(ded.f)
-         .a(ded.i)
-         .a(ded.j)
-         .a(ded.k)
-         .a(ded.l)
-         .a(ded.m)
-         .a(ded.n)
-         .a(ded.o)
-         .a(ded.p)
-         .a(ded.q)
-         .a(ded.r)
-         .a(ded.s)
-         .a(ded.t)
-         .a(ded.u)
-         .a(ded.v)
-         .a(ded.w)
-         .a(ded.x)
-         .a(ded.y)
-         .a(ded.z)
-         .a(ded.A)
-         .a(ded.B)
-         .a(ded.C)
-         .a(ded.D)
-         .a(ded.F)
-         .a(ded.G)
-         .a(ded.H)
-         .a(ded.I)
-         .a(ded.J)
-         .a(ded.Y)
-         .a(ded.Z)
-         .a(ded.aa);
-      this.b(awd.H).b(awd.l);
-      pz.b<ddw> $$3 = this.b(awd.I);
-      dek.a.b.a().filter(Predicate.not(ded.ab::equals)).forEach($$3::a);
-      this.b(awd.R).b(awd.m);
-      this.b(awd.S).a(ded.af);
-      this.b(awd.T).a(ded.ae).a(ded.ac).a(ded.af).a(ded.ad);
-      this.b(awd.U).a(ded.ab);
-      this.b(awd.V).b(awd.m);
-      this.b(awd.W).a(ded.ai).a(ded.aj);
-      this.b(awd.ac).a(ded.P);
-      this.b(awd.Z).b(awd.b).b(awd.d);
-      this.b(awd.aa).a(ded.g).a(ded.h);
-      this.b(awd.ab).b(awd.b).b(awd.d).a(ded.g).a(ded.h);
-      this.b(awd.af).a(ded.Y);
-      this.b(awd.ag).a(ded.Y);
-      this.b(awd.ah).a(ded.a);
-      this.b(awd.ai).a(ded.d).a(ded.e).a(ded.H).a(ded.I).a(ded.G).a(ded.W).a(ded.X).a(ded.F).a(ded.ab).a(ded.L).a(ded.q).a(ded.N).b(awd.n);
-      this.b(awd.aj).a(ded.f).a(ded.P).b(awd.i).b(awd.k).b(awd.m).b(awd.f).a(ded.h);
-      this.b(awd.ak).a(ded.f);
-      this.b(awd.al).a(ded.d).a(ded.e).a(ded.W).a(ded.q).a(ded.L).a(ded.N).a(ded.H).a(ded.I).a(ded.G).a(ded.F);
-      this.b(awd.am).b(awd.d);
-      this.b(awd.an).a(ded.aa);
-      this.b(awd.ao).a(ded.W).a(ded.X);
-      this.b(awd.ap).b(awd.d);
-      this.b(awd.aq).a(ded.g).a(ded.h);
-      this.b(awd.ar).a(ded.d).a(ded.e).a(ded.W).a(ded.q).a(ded.L).a(ded.N).a(ded.H).a(ded.I).a(ded.G).a(ded.F);
-      this.b(awd.ad).a(ded.z).a(ded.Y).a(ded.h).a(ded.G).a(ded.H).a(ded.I).a(ded.g).a(ded.x);
-      this.b(awd.ae).a(ded.A).a(ded.ag).a(ded.ae).a(ded.f).a(ded.B).a(ded.ac).a(ded.r).a(ded.s).a(ded.af).a(ded.ad).a(ded.w).a(ded.C);
+   public uf apply(String $$0, uf $$1) {
+      return $$0.startsWith(b) ? a($$0, $$1) : $$1;
+   }
+
+   public static uf a(String $$0, uf $$1) {
+      eoq $$2 = new eoq();
+      int $$3 = uu.b($$1, 500);
+      int $$4 = 4053;
+      if ($$3 < 4053) {
+         a.warn("SNBT Too old, do not forget to update: {} < {}: {}", new Object[]{$$3, 4053, $$0});
+      }
+
+      uf $$5 = bal.f.a(bam.a(), $$1, $$3);
+      $$2.a(lu.e.p(), $$5);
+      return $$2.a(new uf());
    }
 }

@@ -1,29 +1,18 @@
-public class aco implements zg<abu> {
-   public static final yx<vw, aco> a = zg.a(aco::a, aco::new);
-   private final int b;
+import io.netty.buffer.ByteBuf;
 
-   public aco(int $$0) {
-      this.b = $$0;
-   }
+public class aco implements zk<abz> {
+   public static final aco a = new aco();
+   public static final zb<ByteBuf, aco> b = zb.a(a);
 
-   private aco(vw $$0) {
-      this.b = $$0.readUnsignedByte();
-   }
-
-   private void a(vw $$0) {
-      $$0.k(this.b);
+   private aco() {
    }
 
    @Override
-   public zi<aco> a() {
-      return agg.t;
+   public zm<aco> a() {
+      return ago.o;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

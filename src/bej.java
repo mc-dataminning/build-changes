@@ -1,37 +1,17 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
+import java.util.Map;
 import java.util.Objects;
-import java.util.function.Function;
 
-public abstract class bej extends DataFix {
-   private final String a;
+public class bej extends bhw {
+   public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
 
-   public bej(Schema $$0, String $$1) {
-      super($$0, false);
-      this.a = $$1;
+   public bej(Schema $$0) {
+      super("EntityZombifiedPiglinRenameFix", $$0, true);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(bgr.D.typeName(), bid.a());
-      if (!Objects.equals(this.getInputSchema().getType(bgr.D), $$0)) {
-         throw new IllegalStateException("item name type is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
-      }
-   }
-
-   protected abstract String a(String var1);
-
-   public static DataFix a(Schema $$0, String $$1, final Function<String, String> $$2) {
-      return new bej($$0, $$1) {
-         @Override
-         protected String a(String $$0) {
-            return $$2.apply($$0);
-         }
-      };
+   @Override
+   protected String a(String $$0) {
+      return Objects.equals("minecraft:zombie_pigman", $$0) ? "minecraft:zombified_piglin" : $$0;
    }
 }

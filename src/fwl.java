@@ -1,52 +1,109 @@
-public class fwl<T extends ckf> extends fvt<T> {
-   private static final String a = "tail_base";
-   private static final String b = "tail_tip";
-   private final fyk f;
-   private final fyk g;
-   private final fyk h;
-   private final fyk i;
-   private final fyk j;
-   private final fyk k;
-   private final fyk l;
+public class fwl extends fxa<gsj> {
+   private static final float a = 0.6F;
+   private static final float b = 0.8F;
+   private static final float c = 1.0F;
+   private final gab d;
+   private final gab e;
+   private final gab f;
+   private final gab g;
+   private final gab i;
+   private final gab j;
+   private final gab k;
+   private final gab l;
 
-   public fwl(fyk $$0) {
-      this.f = $$0;
-      fyk $$1 = $$0.b("body");
-      this.k = $$1.b("tail_base");
-      this.l = this.k.b("tail_tip");
-      this.g = $$1.b("left_wing_base");
-      this.h = this.g.b("left_wing_tip");
-      this.i = $$1.b("right_wing_base");
-      this.j = this.i.b("right_wing_tip");
+   public fwl(gab $$0) {
+      super(ghe::j);
+      this.d = $$0;
+      this.g = $$0.b("wind_body");
+      this.k = this.g.b("wind_bottom");
+      this.j = this.k.b("wind_mid");
+      this.i = this.j.b("wind_top");
+      this.e = $$0.b("body").b("head");
+      this.f = this.e.b("eyes");
+      this.l = $$0.b("body").b("rods");
    }
 
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      fyt $$2 = $$1.a("body", fyp.c().a(0, 8).a(-3.0F, -2.0F, -8.0F, 5.0F, 3.0F, 9.0F), fym.b(-0.1F, 0.0F, 0.0F));
-      fyt $$3 = $$2.a("tail_base", fyp.c().a(3, 20).a(-2.0F, 0.0F, 0.0F, 3.0F, 2.0F, 6.0F), fym.a(0.0F, -2.0F, 1.0F));
-      $$3.a("tail_tip", fyp.c().a(4, 29).a(-1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 6.0F), fym.a(0.0F, 0.5F, 6.0F));
-      fyt $$4 = $$2.a("left_wing_base", fyp.c().a(23, 12).a(0.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fym.a(2.0F, -2.0F, -8.0F, 0.0F, 0.0F, 0.1F));
-      $$4.a("left_wing_tip", fyp.c().a(16, 24).a(0.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fym.a(6.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.1F));
-      fyt $$5 = $$2.a("right_wing_base", fyp.c().a(23, 12).a().a(-6.0F, 0.0F, 0.0F, 6.0F, 2.0F, 9.0F), fym.a(-3.0F, -2.0F, -8.0F, 0.0F, 0.0F, -0.1F));
-      $$5.a("right_wing_tip", fyp.c().a(16, 24).a().a(-13.0F, 0.0F, 0.0F, 13.0F, 1.0F, 9.0F), fym.a(-6.0F, 0.0F, 0.0F, 0.0F, 0.0F, -0.1F));
-      $$2.a("head", fyp.c().a(0, 0).a(-4.0F, -2.0F, -5.0F, 7.0F, 3.0F, 5.0F), fym.a(0.0F, 1.0F, -7.0F, 0.2F, 0.0F, 0.0F));
-      return fyq.a($$0, 64, 64);
+   public static gah a(int $$0, int $$1) {
+      gaj $$2 = new gaj();
+      gal $$3 = $$2.a();
+      gal $$4 = $$3.a("body", gag.c(), gad.a(0.0F, 0.0F, 0.0F));
+      gal $$5 = $$4.a("rods", gag.c(), gad.a(0.0F, 8.0F, 0.0F));
+      $$5.a("rod_1", gag.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gaf(0.0F)), gad.a(2.5981F, -3.0F, 1.5F, -2.7489F, -1.0472F, 3.1416F));
+      $$5.a("rod_2", gag.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gaf(0.0F)), gad.a(-2.5981F, -3.0F, 1.5F, -2.7489F, 1.0472F, 3.1416F));
+      $$5.a("rod_3", gag.c().a(0, 17).a(-1.0F, 0.0F, -3.0F, 2.0F, 8.0F, 2.0F, new gaf(0.0F)), gad.a(0.0F, -3.0F, -3.0F, 0.3927F, 0.0F, 0.0F));
+      gal $$6 = $$4.a(
+         "head",
+         gag.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gaf(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gaf(0.0F)),
+         gad.a(0.0F, 4.0F, 0.0F)
+      );
+      $$6.a(
+         "eyes",
+         gag.c().a(4, 24).a(-5.0F, -5.0F, -4.2F, 10.0F, 3.0F, 4.0F, new gaf(0.0F)).a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gaf(0.0F)),
+         gad.a(0.0F, 0.0F, 0.0F)
+      );
+      gal $$7 = $$3.a("wind_body", gag.c(), gad.a(0.0F, 0.0F, 0.0F));
+      gal $$8 = $$7.a("wind_bottom", gag.c().a(1, 83).a(-2.5F, -7.0F, -2.5F, 5.0F, 7.0F, 5.0F, new gaf(0.0F)), gad.a(0.0F, 24.0F, 0.0F));
+      gal $$9 = $$8.a(
+         "wind_mid",
+         gag.c()
+            .a(74, 28)
+            .a(-6.0F, -6.0F, -6.0F, 12.0F, 6.0F, 12.0F, new gaf(0.0F))
+            .a(78, 32)
+            .a(-4.0F, -6.0F, -4.0F, 8.0F, 6.0F, 8.0F, new gaf(0.0F))
+            .a(49, 71)
+            .a(-2.5F, -6.0F, -2.5F, 5.0F, 6.0F, 5.0F, new gaf(0.0F)),
+         gad.a(0.0F, -7.0F, 0.0F)
+      );
+      $$9.a(
+         "wind_top",
+         gag.c()
+            .a(0, 0)
+            .a(-9.0F, -8.0F, -9.0F, 18.0F, 8.0F, 18.0F, new gaf(0.0F))
+            .a(6, 6)
+            .a(-6.0F, -8.0F, -6.0F, 12.0F, 8.0F, 12.0F, new gaf(0.0F))
+            .a(105, 57)
+            .a(-2.5F, -8.0F, -2.5F, 5.0F, 8.0F, 5.0F, new gaf(0.0F)),
+         gad.a(0.0F, -6.0F, 0.0F)
+      );
+      return gah.a($$2, $$0, $$1);
+   }
+
+   public void a(gsj $$0) {
+      this.a().e().forEach(gab::c);
+      float $$1 = $$0.p * (float) Math.PI * -0.1F;
+      this.i.b = azc.b($$1) * 1.0F * 0.6F;
+      this.i.d = azc.a($$1) * 1.0F * 0.6F;
+      this.j.b = azc.a($$1) * 0.5F * 0.8F;
+      this.j.d = azc.b($$1) * 0.8F;
+      this.k.b = azc.b($$1) * -0.25F * 1.0F;
+      this.k.d = azc.a($$1) * -0.25F * 1.0F;
+      this.e.c = 4.0F + azc.b($$1) / 4.0F;
+      this.l.f = $$0.p * (float) Math.PI * 0.1F;
+      this.a($$0.a, fiv.a, $$0.p);
+      this.a($$0.b, fiv.d, $$0.p);
+      this.a($$0.c, fiv.e, $$0.p);
+      this.a($$0.d, fiv.c, $$0.p);
+      this.a($$0.e, fiv.b, $$0.p);
    }
 
    @Override
-   public fyk a() {
+   public gab a() {
+      return this.d;
+   }
+
+   public gab b() {
+      return this.e;
+   }
+
+   public gab c() {
       return this.f;
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      float $$6 = ((float)$$0.t() + $$3) * 7.448451F * (float) (Math.PI / 180.0);
-      float $$7 = 16.0F;
-      this.g.g = ayo.b($$6) * 16.0F * (float) (Math.PI / 180.0);
-      this.h.g = ayo.b($$6) * 16.0F * (float) (Math.PI / 180.0);
-      this.i.g = -this.g.g;
-      this.j.g = -this.h.g;
-      this.k.e = -(5.0F + ayo.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
-      this.l.e = -(5.0F + ayo.b($$6 * 2.0F) * 5.0F) * (float) (Math.PI / 180.0);
+   public gab d() {
+      return this.l;
+   }
+
+   public gab e() {
+      return this.g;
    }
 }

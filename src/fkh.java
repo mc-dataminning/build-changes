@@ -1,231 +1,278 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import com.google.common.collect.ImmutableList;
+import java.util.Collection;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
 import java.util.function.BooleanSupplier;
-import java.util.function.Supplier;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.joml.Vector2i;
 
-public interface fkh extends fki {
-   List<? extends fki> aK_();
+public class fkh<T> extends fjr {
+   public static final BooleanSupplier a = fpt::u;
+   private static final List<Boolean> b = ImmutableList.of(Boolean.TRUE, Boolean.FALSE);
+   private final xd c;
+   private int d;
+   private T f;
+   private final fkh.c<T> m;
+   private final Function<T, xd> n;
+   private final Function<fkh<T>, xr> o;
+   private final fkh.b<T> p;
+   private final boolean q;
+   private final fie.l<T> r;
 
-   default Optional<fki> b_(double $$0, double $$1) {
-      for (fki $$2 : this.aK_()) {
-         if ($$2.c($$0, $$1)) {
-            return Optional.of($$2);
-         }
-      }
+   fkh(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      xd $$4,
+      xd $$5,
+      int $$6,
+      T $$7,
+      fkh.c<T> $$8,
+      Function<T, xd> $$9,
+      Function<fkh<T>, xr> $$10,
+      fkh.b<T> $$11,
+      fie.l<T> $$12,
+      boolean $$13
+   ) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.c = $$5;
+      this.d = $$6;
+      this.f = $$7;
+      this.m = $$8;
+      this.n = $$9;
+      this.o = $$10;
+      this.p = $$11;
+      this.q = $$13;
+      this.r = $$12;
+      this.f();
+   }
 
-      return Optional.empty();
+   private void f() {
+      this.a(this.r.apply(this.f));
    }
 
    @Override
-   default boolean a(double $$0, double $$1, int $$2) {
-      for (fki $$3 : this.aK_()) {
-         if ($$3.a($$0, $$1, $$2)) {
-            this.a($$3);
-            if ($$2 == 0) {
-               this.b_(true);
+   public void b() {
+      if (fpt.t()) {
+         this.a(-1);
+      } else {
+         this.a(1);
+      }
+   }
+
+   private void a(int $$0) {
+      List<T> $$1 = this.m.a();
+      this.d = azc.b(this.d + $$0, $$1.size());
+      T $$2 = $$1.get(this.d);
+      this.b($$2);
+      this.p.onValueChange(this, $$2);
+   }
+
+   private T b(int $$0) {
+      List<T> $$1 = this.m.a();
+      return $$1.get(azc.b(this.d + $$0, $$1.size()));
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$3 > 0.0) {
+         this.a(-1);
+      } else if ($$3 < 0.0) {
+         this.a(1);
+      }
+
+      return true;
+   }
+
+   public void a(T $$0) {
+      List<T> $$1 = this.m.a();
+      int $$2 = $$1.indexOf($$0);
+      if ($$2 != -1) {
+         this.d = $$2;
+      }
+
+      this.b($$0);
+   }
+
+   private void b(T $$0) {
+      xd $$1 = this.c($$0);
+      this.b($$1);
+      this.f = $$0;
+      this.f();
+   }
+
+   private xd c(T $$0) {
+      return (xd)(this.q ? this.n.apply($$0) : this.d($$0));
+   }
+
+   private xr d(T $$0) {
+      return xc.a(this.c, this.n.apply($$0));
+   }
+
+   public T a() {
+      return this.f;
+   }
+
+   @Override
+   protected xr aQ_() {
+      return this.o.apply(this);
+   }
+
+   @Override
+   public void a(fnx $$0) {
+      $$0.a(fnw.a, this.aQ_());
+      if (this.j) {
+         T $$1 = this.b(1);
+         xd $$2 = this.c($$1);
+         if (this.aO_()) {
+            $$0.a(fnw.d, xd.a("narration.cycle_button.usage.focused", $$2));
+         } else {
+            $$0.a(fnw.d, xd.a("narration.cycle_button.usage.hovered", $$2));
+         }
+      }
+   }
+
+   public xr c() {
+      return a_((xd)(this.q ? this.d(this.f) : this.z()));
+   }
+
+   public static <T> fkh.a<T> a(Function<T, xd> $$0) {
+      return new fkh.a<>($$0);
+   }
+
+   public static fkh.a<Boolean> a(xd $$0, xd $$1) {
+      return new fkh.a<Boolean>($$2 -> $$2 ? $$0 : $$1).a(b);
+   }
+
+   public static fkh.a<Boolean> e() {
+      return new fkh.a<Boolean>($$0 -> $$0 ? xc.b : xc.c).a(b);
+   }
+
+   public static fkh.a<Boolean> b(boolean $$0) {
+      return e().a($$0);
+   }
+
+   public static class a<T> {
+      private int a;
+      @Nullable
+      private T b;
+      private final Function<T, xd> c;
+      private fie.l<T> d = $$0x -> null;
+      private Function<fkh<T>, xr> e = fkh::c;
+      private fkh.c<T> f = fkh.c.a(ImmutableList.of());
+      private boolean g;
+
+      public a(Function<T, xd> $$0) {
+         this.c = $$0;
+      }
+
+      public fkh.a<T> a(Collection<T> $$0) {
+         return this.a(fkh.c.a($$0));
+      }
+
+      @SafeVarargs
+      public final fkh.a<T> a(T... $$0) {
+         return this.a(ImmutableList.copyOf($$0));
+      }
+
+      public fkh.a<T> a(List<T> $$0, List<T> $$1) {
+         return this.a(fkh.c.a(fkh.a, $$0, $$1));
+      }
+
+      public fkh.a<T> a(BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         return this.a(fkh.c.a($$0, $$1, $$2));
+      }
+
+      public fkh.a<T> a(fkh.c<T> $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public fkh.a<T> a(fie.l<T> $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public fkh.a<T> a(T $$0) {
+         this.b = $$0;
+         int $$1 = this.f.b().indexOf($$0);
+         if ($$1 != -1) {
+            this.a = $$1;
+         }
+
+         return this;
+      }
+
+      public fkh.a<T> a(Function<fkh<T>, xr> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public fkh.a<T> a() {
+         this.g = true;
+         return this;
+      }
+
+      public fkh<T> a(xd $$0, fkh.b<T> $$1) {
+         return this.a(0, 0, 150, 20, $$0, $$1);
+      }
+
+      public fkh<T> a(int $$0, int $$1, int $$2, int $$3, xd $$4) {
+         return this.a($$0, $$1, $$2, $$3, $$4, ($$0x, $$1x) -> {
+         });
+      }
+
+      public fkh<T> a(int $$0, int $$1, int $$2, int $$3, xd $$4, fkh.b<T> $$5) {
+         List<T> $$6 = this.f.b();
+         if ($$6.isEmpty()) {
+            throw new IllegalStateException("No values for cycle button");
+         } else {
+            T $$7 = this.b != null ? this.b : $$6.get(this.a);
+            xd $$8 = this.c.apply($$7);
+            xd $$9 = (xd)(this.g ? $$8 : xc.a($$4, $$8));
+            return new fkh<>($$0, $$1, $$2, $$3, $$9, $$4, this.a, $$7, this.f, this.c, this.e, $$5, this.d, this.g);
+         }
+      }
+   }
+
+   public interface b<T> {
+      void onValueChange(fkh<T> var1, T var2);
+   }
+
+   public interface c<T> {
+      List<T> a();
+
+      List<T> b();
+
+      static <T> fkh.c<T> a(Collection<T> $$0) {
+         final List<T> $$1 = ImmutableList.copyOf($$0);
+         return new fkh.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$1;
             }
 
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   default boolean b(double $$0, double $$1, int $$2) {
-      if ($$2 == 0 && this.aM_()) {
-         this.b_(false);
-         if (this.aN_() != null) {
-            return this.aN_().b($$0, $$1, $$2);
-         }
-      }
-
-      return this.b_($$0, $$1).filter($$3 -> $$3.b($$0, $$1, $$2)).isPresent();
-   }
-
-   @Override
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return this.aN_() != null && this.aM_() && $$2 == 0 ? this.aN_().a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   boolean aM_();
-
-   void b_(boolean var1);
-
-   @Override
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return this.b_($$0, $$1).filter($$4 -> $$4.a($$0, $$1, $$2, $$3)).isPresent();
-   }
-
-   @Override
-   default boolean a(int $$0, int $$1, int $$2) {
-      return this.aN_() != null && this.aN_().a($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean c(int $$0, int $$1, int $$2) {
-      return this.aN_() != null && this.aN_().c($$0, $$1, $$2);
-   }
-
-   @Override
-   default boolean a(char $$0, int $$1) {
-      return this.aN_() != null && this.aN_().a($$0, $$1);
-   }
-
-   @Nullable
-   fki aN_();
-
-   void a(@Nullable fki var1);
-
-   @Override
-   default void a(boolean $$0) {
-   }
-
-   @Override
-   default boolean aO_() {
-      return this.aN_() != null;
-   }
-
-   @Nullable
-   @Override
-   default fhw aP_() {
-      fki $$0 = this.aN_();
-      return $$0 != null ? fhw.a(this, $$0.aP_()) : null;
-   }
-
-   @Nullable
-   @Override
-   default fhw a(fmo $$0) {
-      fki $$1 = this.aN_();
-      if ($$1 != null) {
-         fhw $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return fhw.a(this, $$2);
-         }
-      }
-
-      if ($$0 instanceof fmo.c $$3) {
-         return this.a($$3);
-      } else {
-         return $$0 instanceof fmo.a $$4 ? this.a($$4) : null;
-      }
-   }
-
-   @Nullable
-   private fhw a(fmo.c $$0) {
-      boolean $$1 = $$0.b();
-      fki $$2 = this.aN_();
-      List<? extends fki> $$3 = new ArrayList<>(this.aK_());
-      Collections.sort($$3, Comparator.comparingInt($$0x -> $$0x.I()));
-      int $$4 = $$3.indexOf($$2);
-      int $$5;
-      if ($$2 != null && $$4 >= 0) {
-         $$5 = $$4 + ($$1 ? 1 : 0);
-      } else if ($$1) {
-         $$5 = 0;
-      } else {
-         $$5 = $$3.size();
-      }
-
-      ListIterator<? extends fki> $$8 = $$3.listIterator($$5);
-      BooleanSupplier $$9 = $$1 ? $$8::hasNext : $$8::hasPrevious;
-      Supplier<? extends fki> $$10 = $$1 ? $$8::next : $$8::previous;
-
-      while ($$9.getAsBoolean()) {
-         fki $$11 = $$10.get();
-         fhw $$12 = $$11.a($$0);
-         if ($$12 != null) {
-            return fhw.a(this, $$12);
-         }
-      }
-
-      return null;
-   }
-
-   @Nullable
-   private fhw a(fmo.a $$0) {
-      fki $$1 = this.aN_();
-      if ($$1 == null) {
-         fmq $$2 = $$0.b();
-         fms $$3 = this.H().c($$2.b());
-         return fhw.a(this, this.a($$3, $$2, null, $$0));
-      } else {
-         fms $$4 = $$1.H();
-         return fhw.a(this, this.a($$4, $$0.b(), $$1, $$0));
-      }
-   }
-
-   @Nullable
-   private fhw a(fms $$0, fmq $$1, @Nullable fki $$2, fmo $$3) {
-      fmp $$4 = $$1.a();
-      fmp $$5 = $$4.a();
-      fmq $$6 = $$5.b();
-      int $$7 = $$0.b($$1.b());
-      List<fki> $$8 = new ArrayList<>();
-
-      for (fki $$9 : this.aK_()) {
-         if ($$9 != $$2) {
-            fms $$10 = $$9.H();
-            if ($$10.a($$0, $$5)) {
-               int $$11 = $$10.b($$1.b());
-               if ($$1.a($$11, $$7)) {
-                  $$8.add($$9);
-               } else if ($$11 == $$7 && $$1.a($$10.b($$1), $$0.b($$1))) {
-                  $$8.add($$9);
-               }
+            @Override
+            public List<T> b() {
+               return $$1;
             }
-         }
+         };
       }
 
-      Comparator<fki> $$12 = Comparator.comparing($$1x -> $$1x.H().b($$1.b()), $$1.d());
-      Comparator<fki> $$13 = Comparator.comparing($$1x -> $$1x.H().b($$6.b()), $$6.d());
-      $$8.sort($$12.thenComparing($$13));
-
-      for (fki $$14 : $$8) {
-         fhw $$15 = $$14.a($$3);
-         if ($$15 != null) {
-            return $$15;
-         }
-      }
-
-      return this.b($$0, $$1, $$2, $$3);
-   }
-
-   @Nullable
-   private fhw b(fms $$0, fmq $$1, @Nullable fki $$2, fmo $$3) {
-      fmp $$4 = $$1.a();
-      fmp $$5 = $$4.a();
-      List<Pair<fki, Long>> $$6 = new ArrayList<>();
-      fmr $$7 = fmr.a($$4, $$0.b($$1), $$0.b($$5));
-
-      for (fki $$8 : this.aK_()) {
-         if ($$8 != $$2) {
-            fms $$9 = $$8.H();
-            fmr $$10 = fmr.a($$4, $$9.b($$1.b()), $$9.b($$5));
-            if ($$1.a($$10.a($$4), $$7.a($$4))) {
-               long $$11 = Vector2i.distanceSquared($$7.a(), $$7.b(), $$10.a(), $$10.b());
-               $$6.add(Pair.of($$8, $$11));
+      static <T> fkh.c<T> a(final BooleanSupplier $$0, List<T> $$1, List<T> $$2) {
+         final List<T> $$3 = ImmutableList.copyOf($$1);
+         final List<T> $$4 = ImmutableList.copyOf($$2);
+         return new fkh.c<T>() {
+            @Override
+            public List<T> a() {
+               return $$0.getAsBoolean() ? $$4 : $$3;
             }
-         }
+
+            @Override
+            public List<T> b() {
+               return $$3;
+            }
+         };
       }
-
-      $$6.sort(Comparator.comparingDouble(Pair::getSecond));
-
-      for (Pair<fki, Long> $$12 : $$6) {
-         fhw $$13 = ((fki)$$12.getFirst()).a($$3);
-         if ($$13 != null) {
-            return $$13;
-         }
-      }
-
-      return null;
    }
 }

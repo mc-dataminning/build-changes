@@ -1,53 +1,73 @@
-import it.unimi.dsi.fastutil.longs.LongArrayList;
-import it.unimi.dsi.fastutil.longs.LongList;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.io.IOException;
+import java.util.concurrent.Executor;
 
-public final class gvv extends gvt {
-   private static final long a = a(Runtime.getRuntime().maxMemory());
-   private final LongList b = new LongArrayList();
-   private final LongList c = new LongArrayList();
-   private final LongList d = new LongArrayList();
+public abstract class gvv implements AutoCloseable {
+   public static final int a = -1;
+   protected int b = -1;
+   protected boolean c;
 
-   @Override
-   public void a(gvn $$0) {
-      if (fgo.Q().C()) {
-         super.a($$0);
+   public void a(boolean $$0, boolean $$1) {
+      RenderSystem.assertOnRenderThreadOrInit();
+      int $$2;
+      int $$3;
+      if ($$0) {
+         $$2 = $$1 ? 9987 : 9729;
+         $$3 = 9729;
+      } else {
+         $$2 = $$1 ? 9986 : 9728;
+         $$3 = 9728;
+      }
+
+      this.d();
+      GlStateManager._texParameter(3553, 10241, $$2);
+      GlStateManager._texParameter(3553, 10240, $$3);
+   }
+
+   public int a() {
+      RenderSystem.assertOnRenderThreadOrInit();
+      if (this.b == -1) {
+         this.b = TextureUtil.generateTextureId();
+      }
+
+      return this.b;
+   }
+
+   public void b() {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            if (this.b != -1) {
+               TextureUtil.releaseTextureId(this.b);
+               this.b = -1;
+            }
+         });
+      } else if (this.b != -1) {
+         TextureUtil.releaseTextureId(this.b);
+         this.b = -1;
       }
    }
 
-   private void g() {
-      this.b.clear();
-      this.c.clear();
-      this.d.clear();
+   public boolean c() {
+      return this.c;
+   }
+
+   public abstract void a(aus var1) throws IOException;
+
+   public void d() {
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> GlStateManager._bindTexture(this.a()));
+      } else {
+         GlStateManager._bindTexture(this.a());
+      }
+   }
+
+   public void a(gwl $$0, aus $$1, alb $$2, Executor $$3) {
+      $$0.a($$2, this);
    }
 
    @Override
-   public void f() {
-      this.b.add((long)fgo.Q().o());
-      this.h();
-      this.c.add(fgo.Q().p());
-   }
-
-   private void h() {
-      long $$0 = Runtime.getRuntime().totalMemory();
-      long $$1 = Runtime.getRuntime().freeMemory();
-      long $$2 = $$0 - $$1;
-      this.d.add(a($$2));
-   }
-
-   @Override
-   public void b(gvn $$0) {
-      $$0.send(gvo.c, $$0x -> {
-         $$0x.a(gvq.r, new LongArrayList(this.b));
-         $$0x.a(gvq.s, new LongArrayList(this.c));
-         $$0x.a(gvq.t, new LongArrayList(this.d));
-         $$0x.a(gvq.u, this.e());
-         $$0x.a(gvq.v, fgo.Q().m.aE());
-         $$0x.a(gvq.w, (int)a);
-      });
-      this.g();
-   }
-
-   private static long a(long $$0) {
-      return $$0 / 1000L;
+   public void close() {
    }
 }

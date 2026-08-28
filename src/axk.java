@@ -1,176 +1,71 @@
-import com.google.common.base.Predicates;
-import com.google.common.collect.Iterators;
-import java.util.Arrays;
-import java.util.Iterator;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-public class axk<K> implements jr<K> {
-   private static final int b = -1;
-   private static final Object c = null;
-   private static final float d = 0.8F;
-   private K[] e;
-   private int[] f;
-   private K[] g;
-   private int h;
-   private int i;
-
-   private axk(int $$0) {
-      this.e = (K[])(new Object[$$0]);
-      this.f = new int[$$0];
-      this.g = (K[])(new Object[$$0]);
+public class axk {
+   public static Map<ala<? extends ka<?>>, axk.a> a(ju<alk> $$0) {
+      return ke.b($$0)
+         .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
+         .filter($$0x -> !((axk.a)$$0x.getSecond()).a())
+         .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
    }
 
-   private axk(K[] $$0, int[] $$1, K[] $$2, int $$3, int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
-   }
+   private static <T> axk.a a(ka<T> $$0) {
+      Map<alb, IntList> $$1 = new HashMap<>();
+      $$0.j().forEach($$2 -> {
+         IntList $$3 = new IntArrayList($$2.b());
 
-   public static <A> axk<A> c(int $$0) {
-      return new axk((int)((float)$$0 / 0.8F));
-   }
+         for (jn<T> $$4 : $$2) {
+            if ($$4.f() != jn.b.a) {
+               throw new IllegalStateException("Can't serialize unregistered value " + $$4);
+            }
 
-   @Override
-   public int a(@Nullable K $$0) {
-      return this.e(this.b($$0, this.e($$0)));
-   }
-
-   @Nullable
-   @Override
-   public K a(int $$0) {
-      return $$0 >= 0 && $$0 < this.g.length ? this.g[$$0] : null;
-   }
-
-   private int e(int $$0) {
-      return $$0 == -1 ? -1 : this.f[$$0];
-   }
-
-   public boolean b(K $$0) {
-      return this.a($$0) != -1;
-   }
-
-   public boolean d(int $$0) {
-      return this.a($$0) != null;
-   }
-
-   public int d(K $$0) {
-      int $$1 = this.d();
-      this.a($$0, $$1);
-      return $$1;
-   }
-
-   private int d() {
-      while (this.h < this.g.length && this.g[this.h] != null) {
-         this.h++;
-      }
-
-      return this.h;
-   }
-
-   private void f(int $$0) {
-      K[] $$1 = this.e;
-      int[] $$2 = this.f;
-      axk<K> $$3 = new axk<>($$0);
-
-      for (int $$4 = 0; $$4 < $$1.length; $$4++) {
-         if ($$1[$$4] != null) {
-            $$3.a($$1[$$4], $$2[$$4]);
-         }
-      }
-
-      this.e = $$3.e;
-      this.f = $$3.f;
-      this.g = $$3.g;
-      this.h = $$3.h;
-      this.i = $$3.i;
-   }
-
-   public void a(K $$0, int $$1) {
-      int $$2 = Math.max($$1, this.i + 1);
-      if ((float)$$2 >= (float)this.e.length * 0.8F) {
-         int $$3 = this.e.length << 1;
-
-         while ($$3 < $$1) {
-            $$3 <<= 1;
+            $$3.add($$0.a($$4.a()));
          }
 
-         this.f($$3);
+         $$1.put($$2.h().b(), $$3);
+      });
+      return new axk.a($$1);
+   }
+
+   static <T> axj.b<T> a(ka<T> $$0, axk.a $$1) {
+      ala<? extends ka<T>> $$2 = $$0.d();
+      Map<axi<T>, List<jn<T>>> $$3 = new HashMap<>();
+      $$1.b.forEach(($$3x, $$4) -> {
+         axi<T> $$5 = axi.a($$2, $$3x);
+         List<jn<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         $$3.put($$5, $$6);
+      });
+      return new axj.b<>($$2, $$3);
+   }
+
+   public static final class a {
+      public static final axk.a a = new axk.a(Map.of());
+      final Map<alb, IntList> b;
+
+      a(Map<alb, IntList> $$0) {
+         this.b = $$0;
       }
 
-      int $$4 = this.g(this.e($$0));
-      this.e[$$4] = $$0;
-      this.f[$$4] = $$1;
-      this.g[$$1] = $$0;
-      this.i++;
-      if ($$1 == this.h) {
-         this.h++;
-      }
-   }
-
-   private int e(@Nullable K $$0) {
-      return (ayo.g(System.identityHashCode($$0)) & 2147483647) % this.e.length;
-   }
-
-   private int b(@Nullable K $$0, int $$1) {
-      for (int $$2 = $$1; $$2 < this.e.length; $$2++) {
-         if (this.e[$$2] == $$0) {
-            return $$2;
-         }
-
-         if (this.e[$$2] == c) {
-            return -1;
-         }
+      public void a(wa $$0) {
+         $$0.a(this.b, wa::a, wa::a);
       }
 
-      for (int $$3 = 0; $$3 < $$1; $$3++) {
-         if (this.e[$$3] == $$0) {
-            return $$3;
-         }
-
-         if (this.e[$$3] == c) {
-            return -1;
-         }
+      public static axk.a b(wa $$0) {
+         return new axk.a($$0.a(wa::q, wa::a));
       }
 
-      return -1;
-   }
-
-   private int g(int $$0) {
-      for (int $$1 = $$0; $$1 < this.e.length; $$1++) {
-         if (this.e[$$1] == c) {
-            return $$1;
-         }
+      public boolean a() {
+         return this.b.isEmpty();
       }
 
-      for (int $$2 = 0; $$2 < $$0; $$2++) {
-         if (this.e[$$2] == c) {
-            return $$2;
-         }
+      public <T> axj.b<T> a(ka<T> $$0) {
+         return axk.a($$0, this);
       }
-
-      throw new RuntimeException("Overflowed :(");
-   }
-
-   @Override
-   public Iterator<K> iterator() {
-      return Iterators.filter(Iterators.forArray(this.g), Predicates.notNull());
-   }
-
-   public void a() {
-      Arrays.fill(this.e, null);
-      Arrays.fill(this.g, null);
-      this.h = 0;
-      this.i = 0;
-   }
-
-   @Override
-   public int c() {
-      return this.i;
-   }
-
-   public axk<K> b() {
-      return new axk<>((K[])((Object[])this.e.clone()), (int[])this.f.clone(), (K[])((Object[])this.g.clone()), this.h, this.i);
    }
 }

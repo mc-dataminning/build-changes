@@ -1,20 +1,25 @@
-public record ada(dcd b) implements zg<abu> {
-   public static final yx<vw, ada> a = zg.a(ada::a, ada::new);
+public record ada(long[] b, bml c) implements zk<abz> {
+   public static final zb<wa, ada> a = zk.a(ada::a, ada::new);
 
-   private ada(vw $$0) {
-      this($$0.f());
+   private ada(wa $$0) {
+      this($$0.d(), $$0.b(bml.class));
    }
 
-   private void a(vw $$0) {
+   private void a(wa $$0) {
       $$0.a(this.b);
+      $$0.a(this.c);
    }
 
    @Override
-   public zi<ada> a() {
-      return agg.F;
+   public zm<ada> a() {
+      return ago.A;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
+   }
+
+   public bml e() {
+      return this.c;
    }
 }

@@ -1,26 +1,76 @@
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class eik extends eiy {
-   public static final MapCodec<eik> a = dyu.a.c.fieldOf("step").xmap(eik::new, $$0 -> $$0.c);
-   private final dyu.a c;
+public abstract class eik {
+   public static final Codec<eik> c = lu.V.q().dispatch(eik::a, eil::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   private eik(dyu.a $$0) {
-      this.c = $$0;
+   protected static <P extends eik> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   public static eik a(dyu.a $$0) {
-      return new eik($$0);
+   public eik(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public Stream<jd> a_(eiw $$0, ayw $$1, jd $$2) {
-      dcd $$3 = new dcd($$2);
-      return $$0.a($$3, this.c).a($$3);
+   protected abstract eil<?> a();
+
+   public abstract List<egs.a> a(ddy var1, BiConsumer<je, dua> var2, azk var3, int var4, je var5, egc var6);
+
+   public int a(azk $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
    }
 
-   @Override
-   public eiz<?> b() {
-      return eiz.o;
+   private static boolean c(ddy $$0, je $$1) {
+      return $$0.a($$1, $$0x -> edc.b($$0x) && !$$0x.a(dgx.i) && !$$0x.a(dgx.fl));
+   }
+
+   protected static void a(ddy $$0, BiConsumer<je, dua> $$1, azk $$2, je $$3, egc $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
+   }
+
+   protected boolean b(ddy $$0, BiConsumer<je, dua> $$1, azk $$2, je $$3, egc $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(ddy $$0, BiConsumer<je, dua> $$1, azk $$2, je $$3, egc $$4, Function<dua, dua> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(ddy $$0, BiConsumer<je, dua> $$1, azk $$2, je.a $$3, egc $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(ddy $$0, je $$1) {
+      return eeo.c($$0, $$1);
+   }
+
+   public boolean b(ddy $$0, je $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(aws.u));
    }
 }

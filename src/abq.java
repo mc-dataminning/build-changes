@@ -1,12 +1,23 @@
-public class abq {
-   public static final zi<abp> a = a("cookie_request");
-   public static final zi<abs> b = b("cookie_response");
+import io.netty.buffer.ByteBuf;
 
-   private static <T extends zg<abo>> zi<T> a(String $$0) {
-      return new zi<>(zh.b, akr.b($$0));
+public class abq implements zk<abp> {
+   public static final abq a = new abq();
+   public static final zb<ByteBuf, abq> b = zb.a(a);
+
+   private abq() {
    }
 
-   private static <T extends zg<abr>> zi<T> b(String $$0) {
-      return new zi<>(zh.a, akr.b($$0));
+   @Override
+   public zm<abq> a() {
+      return abn.f;
+   }
+
+   public void a(abp $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public boolean d() {
+      return true;
    }
 }

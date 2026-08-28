@@ -1,5 +1,18 @@
-public record dws(String a, akq<dcw> b, String c) {
-   public dws a(String $$0) {
-      return new dws(this.a, this.b, this.c + $$0);
-   }
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public interface dws {
+   @Nullable
+   ekw a(eko var1);
+
+   void a(eko var1, ekw var2);
+
+   LongSet b(eko var1);
+
+   void a(eko var1, long var2);
+
+   Map<eko, LongSet> h();
+
+   void b(Map<eko, LongSet> var1);
 }

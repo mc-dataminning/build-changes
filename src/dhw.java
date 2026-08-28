@@ -1,101 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dhw extends dfk {
-   public static final MapCodec<dhw> a = b(dhw::new);
-   public static final duc b = dts.aT;
-   public static final dtt c = dts.p;
-   protected static final exv d = dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
+public interface dhw<T extends Enum<T>> {
+   int z_ = 4;
 
-   @Override
-   public MapCodec<dhw> a() {
-      return a;
-   }
+   Optional<dua> k_(dua var1);
 
-   public dhw(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(c, Boolean.valueOf(false)));
-   }
+   float ax_();
 
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return d;
-   }
-
-   @Override
-   protected boolean f_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dtc $$0, dcc $$1, jd $$2, ji $$3) {
-      return $$0.c(b);
-   }
-
-   private static void d(dtc $$0, dcw $$1, jd $$2) {
-      int $$3 = $$1.a(ddf.a, $$2) - $$1.B_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * ayo.b($$4));
-      }
-
-      $$3 = ayo.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.a(b, Integer.valueOf($$3)), 3);
+   default void a_(dua $$0, arg $$1, je $$2, azk $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
-      if ($$3.gk()) {
-         if ($$1.B) {
-            return bqr.a;
-         } else {
-            dtc $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(dxz.c, $$2, dxz.a.a($$3, $$5));
-            d($$5, $$1, $$2);
-            return bqr.c;
+   T c();
+
+   default Optional<dua> c(dua $$0, arg $$1, je $$2, azk $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
+
+      for (je $$7 : je.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
          }
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dhw<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
+            }
+         }
       }
-   }
 
-   @Override
-   protected dmf a_(dtc $$0) {
-      return dmf.c;
-   }
-
-   @Override
-   protected boolean e_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return new dqw($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return !$$0.B && $$0.D_().g() ? a($$2, dqj.q, dhw::a) : null;
-   }
-
-   private static void a(dcw $$0, jd $$1, dtc $$2, dqw $$3) {
-      if ($$0.Z() % 20L == 0L) {
-         d($$2, $$0, $$1);
-      }
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b, c);
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.ax_();
+      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
    }
 }

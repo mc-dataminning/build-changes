@@ -1,27 +1,20 @@
-public class abj {
-   public static final wh.a<abk, vw> a = zl.a(
-      vu.e, $$0 -> $$0.a(zy.l, aaa.a).a(abq.b, abs.a).a(zy.m, aab.a).a(abi.f, abl.b).a(zy.n, aac.a).a(zy.o, aad.a).a(zy.p, aae.a).a(abi.g, abm.a)
-   );
-   public static final wh<abk> b = a.a(vw::new);
-   public static final wh.a<abc, vw> c = zl.b(
-      vu.e,
-      $$0 -> $$0.a(abq.a, abp.a)
-            .a(zy.a, zn.b)
-            .a(zy.c, zp.a)
-            .a(abi.a, abd.b)
-            .a(zy.d, zq.a)
-            .a(zy.e, zr.a)
-            .a(abi.e, abf.b)
-            .a(abi.b, abe.a)
-            .a(zy.f, zs.a)
-            .a(zy.g, zt.b)
-            .a(zy.i, zv.a)
-            .a(zy.j, zw.a)
-            .a(abi.c, abh.a)
-            .a(zy.k, zx.a)
-            .a(abi.d, abg.a)
-            .a(zy.b, zo.a)
-            .a(zy.h, zu.a)
-   );
-   public static final wh<abc> d = c.a(vw::new);
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+
+public record abj(ala<? extends ka<?>> b, List<ke.a> c) implements zk<abh> {
+   private static final zb<ByteBuf, ala<? extends ka<?>>> d = alb.b.a(ala::a, ala::a);
+   public static final zb<wa, abj> a = zb.a(d, abj::b, ke.a.a.a(yz.a()), abj::e, abj::new);
+
+   @Override
+   public zm<abj> a() {
+      return abn.b;
+   }
+
+   public void a(abh $$0) {
+      $$0.a(this);
+   }
+
+   public List<ke.a> e() {
+      return this.c;
+   }
 }

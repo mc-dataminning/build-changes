@@ -1,237 +1,132 @@
-import java.util.Collection;
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cjp extends ckd implements bub {
-   private static final ajw<Integer> b = aka.a(cjp.class, ajy.b);
-   private static final ajw<Boolean> c = aka.a(cjp.class, ajy.k);
-   private static final ajw<Boolean> d = aka.a(cjp.class, ajy.k);
-   private int e;
-   private int cc;
-   private int cd = 30;
-   private int ce = 3;
-   private int cf;
+public abstract class cjp extends btj {
+   private static final Logger c = LogUtils.getLogger();
+   private int d;
+   protected je b;
 
-   public cjp(bsx<? extends cjp> $$0, dcw $$1) {
+   protected cjp(btq<? extends cjp> $$0, dds $$1) {
       super($$0, $$1);
    }
 
-   @Override
-   protected void B() {
-      this.bW.a(1, new cag(this));
-      this.bW.a(2, new cbt(this));
-      this.bW.a(3, new bzt<>(this, cfs.class, 6.0F, 1.0, 1.2));
-      this.bW.a(3, new bzt<>(this, cfh.class, 6.0F, 1.0, 1.2));
-      this.bW.a(4, new caw(this, 1.0, false));
-      this.bW.a(5, new cbz(this, 0.8));
-      this.bW.a(6, new cau(this, cmx.class, 8.0F));
-      this.bW.a(6, new cbh(this));
-      this.bX.a(1, new ccf<>(this, cmx.class, true));
-      this.bX.a(2, new cce(this));
+   protected cjp(btq<? extends cjp> $$0, dds $$1, je $$2) {
+      this($$0, $$1);
+      this.b = $$2;
    }
 
-   public static buv.a s() {
-      return ckd.gq().a(buw.v, 0.25);
-   }
-
-   @Override
-   public int cx() {
-      return this.p() == null ? this.w(0.0F) : this.w(this.ew() - 1.0F);
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, brk $$2) {
-      boolean $$3 = super.a($$0, $$1, $$2);
-      this.cc += (int)($$0 * 1.5F);
-      if (this.cc > this.cd - 5) {
-         this.cc = this.cd - 5;
-      }
-
-      return $$3;
-   }
-
-   @Override
-   protected void a(aka.a $$0) {
-      super.a($$0);
-      $$0.a(b, -1);
-      $$0.a(c, false);
-      $$0.a(d, false);
-   }
-
-   @Override
-   public void b(ub $$0) {
-      super.b($$0);
-      if (this.ao.a(c)) {
-         $$0.a("powered", true);
-      }
-
-      $$0.a("Fuse", (short)this.cd);
-      $$0.a("ExplosionRadius", (byte)this.ce);
-      $$0.a("ignited", this.x());
-   }
-
-   @Override
-   public void a(ub $$0) {
-      super.a($$0);
-      this.ao.a(c, $$0.q("powered"));
-      if ($$0.b("Fuse", 99)) {
-         this.cd = $$0.g("Fuse");
-      }
-
-      if ($$0.b("ExplosionRadius", 99)) {
-         this.ce = $$0.f("ExplosionRadius");
-      }
-
-      if ($$0.q("ignited")) {
-         this.gk();
-      }
-   }
+   protected abstract void m();
 
    @Override
    public void l() {
-      if (this.bE()) {
-         this.e = this.cc;
-         if (this.x()) {
-            this.b(1);
-         }
-
-         int $$0 = this.t();
-         if ($$0 > 0 && this.cc == 0) {
-            this.a(avp.gk, 1.0F, 0.5F);
-            this.a(dxz.I);
-         }
-
-         this.cc += $$0;
-         if (this.cc < 0) {
-            this.cc = 0;
-         }
-
-         if (this.cc >= this.cd) {
-            this.cc = this.cd;
-            this.gn();
+      if (!this.dS().B) {
+         this.az();
+         if (this.d++ == 100) {
+            this.d = 0;
+            if (!this.dN() && !this.o()) {
+               this.as();
+               this.b(null);
+            }
          }
       }
-
-      super.l();
    }
 
-   @Override
-   public void h(@Nullable btn $$0) {
-      if (!($$0 instanceof che)) {
-         super.h($$0);
-      }
-   }
+   public abstract boolean o();
 
    @Override
-   protected avo d(brk $$0) {
-      return avp.gj;
-   }
-
-   @Override
-   protected avo n_() {
-      return avp.gi;
-   }
-
-   @Override
-   protected void a(aqu $$0, brk $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      bsr $$3 = $$1.d();
-      if ($$3 != this && $$3 instanceof cjp $$4 && $$4.gl()) {
-         $$4.gm();
-         this.a(cut.up);
-      }
-   }
-
-   @Override
-   public boolean D(bsr $$0) {
+   public boolean bE() {
       return true;
    }
 
    @Override
-   public boolean a() {
-      return this.ao.a(c);
-   }
-
-   public float H(float $$0) {
-      return ayo.i($$0, (float)this.e, (float)this.cc) / (float)(this.cd - 2);
-   }
-
-   public int t() {
-      return this.ao.a(b);
-   }
-
-   public void b(int $$0) {
-      this.ao.a(b, $$0);
-   }
-
-   @Override
-   public void a(aqu $$0, btm $$1) {
-      super.a($$0, $$1);
-      this.ao.a(c, true);
-   }
-
-   @Override
-   protected bqr b(cmx $$0, bqq $$1) {
-      cuq $$2 = $$0.b($$1);
-      if ($$2.a(awn.be)) {
-         avo $$3 = $$2.a(cut.tX) ? avp.iK : avp.iZ;
-         this.dO().a($$0, this.dt(), this.dv(), this.dz(), $$3, this.de(), 1.0F, this.ah.i() * 0.4F + 0.8F);
-         if (!this.dO().B) {
-            this.gk();
-            if (!$$2.l()) {
-               $$2.h(1);
-            } else {
-               $$2.a(1, $$0, d($$1));
-            }
-         }
-
-         return bqr.a(this.dO().B);
+   public boolean v(btj $$0) {
+      if ($$0 instanceof cnp $$1) {
+         return !this.dS().a($$1, this.b) ? true : this.a(this.dT().a($$1), 0.0F);
       } else {
-         return super.b($$0, $$1);
+         return false;
       }
    }
 
-   private void gn() {
-      if (!this.dO().B) {
-         float $$0 = this.a() ? 2.0F : 1.0F;
-         this.be = true;
-         this.dO().a(this, this.dt(), this.dv(), this.dz(), (float)this.ce * $$0, dcw.a.c);
-         this.go();
-         this.c(bsr.c.a);
-         this.aq();
-      }
-   }
-
-   private void go() {
-      Collection<brz> $$0 = this.et();
-      if (!$$0.isEmpty()) {
-         bsn $$1 = new bsn(this.dO(), this.dt(), this.dv(), this.dz());
-         $$1.a(2.5F);
-         $$1.b(-0.5F);
-         $$1.c(10);
-         $$1.a($$1.j() / 2);
-         $$1.c(-$$1.g() / (float)$$1.j());
-
-         for (brz $$2 : $$0) {
-            $$1.a(new brz($$2));
+   @Override
+   public boolean a(bsb $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if (!this.dS().ac().b(ddo.c) && $$0.d() instanceof buh) {
+         return false;
+      } else {
+         if (!this.dN() && !this.dS().B) {
+            this.ar();
+            this.bA();
+            this.b($$0.d());
          }
 
-         this.dO().b($$1);
+         return true;
       }
    }
 
-   public boolean x() {
-      return this.ao.a(d);
+   @Override
+   public boolean a(ddk $$0) {
+      return $$0.g() ? super.a($$0) : true;
    }
 
-   public void gk() {
-      this.ao.a(d, true);
+   @Override
+   public void a(buj $$0, eye $$1) {
+      if (!this.dS().B && !this.dN() && $$1.h() > 0.0) {
+         this.ar();
+         this.b(null);
+      }
    }
 
-   public boolean gl() {
-      return this.a() && this.cf < 1;
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+      if (!this.dS().B && !this.dN() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
+         this.ar();
+         this.b(null);
+      }
    }
 
-   public void gm() {
-      this.cf++;
+   @Override
+   public void b(uf $$0) {
+      je $$1 = this.q();
+      $$0.a("TileX", $$1.u());
+      $$0.a("TileY", $$1.v());
+      $$0.a("TileZ", $$1.w());
+   }
+
+   @Override
+   public void a(uf $$0) {
+      je $$1 = new je($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
+      if (!$$1.a(this.ds(), 16.0)) {
+         c.error("Block-attached entity at invalid position: {}", $$1);
+      } else {
+         this.b = $$1;
+      }
+   }
+
+   public abstract void b(@Nullable btj var1);
+
+   @Override
+   protected boolean bG() {
+      return false;
+   }
+
+   @Override
+   public void a_(double $$0, double $$1, double $$2) {
+      this.b = je.a($$0, $$1, $$2);
+      this.m();
+      this.as = true;
+   }
+
+   public je q() {
+      return this.b;
+   }
+
+   @Override
+   public void a(arg $$0, bue $$1) {
+   }
+
+   @Override
+   public void i_() {
    }
 }

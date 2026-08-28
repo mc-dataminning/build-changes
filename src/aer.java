@@ -1,29 +1,33 @@
-public class aer implements zg<abu> {
-   public static final yx<vw, aer> a = zg.a(aer::a, aer::new);
-   private final int b;
+import javax.annotation.Nullable;
 
-   public aer(dut $$0) {
-      this.b = $$0.q();
+public class aer implements zk<abz> {
+   public static final zb<wa, aer> a = zk.a(aer::a, aer::new);
+   @Nullable
+   private final alb b;
+
+   public aer(@Nullable alb $$0) {
+      this.b = $$0;
    }
 
-   private aer(vw $$0) {
-      this.b = $$0.l();
+   private aer(wa $$0) {
+      this.b = $$0.c(wa::q);
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b, wa::a);
    }
 
    @Override
-   public zi<aer> a() {
-      return agg.au;
+   public zm<aer> a() {
+      return ago.ap;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   @Nullable
+   public alb b() {
       return this.b;
    }
 }

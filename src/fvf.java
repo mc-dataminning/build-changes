@@ -1,53 +1,162 @@
-public class fvf<T extends bsr> extends fvt<T> {
-   private final fyk a;
-   private final fyk b;
-   private final fyk f;
-   private final fyk g;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public fvf(fyk $$0) {
-      this.a = $$0;
-      this.b = $$0.b("body");
-      this.f = this.b.b("tail");
-      this.g = this.f.b("tail_fin");
+public class fvf {
+   static final alb b = alb.b("spectator/close");
+   static final alb c = alb.b("spectator/scroll_left");
+   static final alb d = alb.b("spectator/scroll_right");
+   private static final fvh e = new fvf.a();
+   private static final fvh f = new fvf.b(-1, true);
+   private static final fvh g = new fvf.b(1, true);
+   private static final fvh h = new fvf.b(1, false);
+   private static final int i = 8;
+   static final xd j = xd.c("spectatorMenu.close");
+   static final xd k = xd.c("spectatorMenu.previous_page");
+   static final xd l = xd.c("spectatorMenu.next_page");
+   public static final fvh a = new fvh() {
+      @Override
+      public void a(fvf $$0) {
+      }
+
+      @Override
+      public xd aU_() {
+         return xc.a;
+      }
+
+      @Override
+      public void a(fjn $$0, float $$1, float $$2) {
+      }
+
+      @Override
+      public boolean aV_() {
+         return false;
+      }
+   };
+   private final fvi m;
+   private fvg n;
+   private int o = -1;
+   int p;
+
+   public fvf(fvi $$0) {
+      this.n = new fve();
+      this.m = $$0;
    }
 
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      float $$2 = 18.0F;
-      float $$3 = -8.0F;
-      fyt $$4 = $$1.a("body", fyp.c().a(22, 0).a(-4.0F, -7.0F, 0.0F, 8.0F, 7.0F, 13.0F), fym.a(0.0F, 22.0F, -5.0F));
-      $$4.a("back_fin", fyp.c().a(51, 0).a(-0.5F, 0.0F, 8.0F, 1.0F, 4.0F, 5.0F), fym.b((float) (Math.PI / 3), 0.0F, 0.0F));
-      $$4.a(
-         "left_fin",
-         fyp.c().a(48, 20).a().a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fym.a(2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (Math.PI * 2.0 / 3.0))
-      );
-      $$4.a(
-         "right_fin",
-         fyp.c().a(48, 20).a(-0.5F, -4.0F, 0.0F, 1.0F, 4.0F, 7.0F),
-         fym.a(-2.0F, -2.0F, 4.0F, (float) (Math.PI / 3), 0.0F, (float) (-Math.PI * 2.0 / 3.0))
-      );
-      fyt $$5 = $$4.a("tail", fyp.c().a(0, 19).a(-2.0F, -2.5F, 0.0F, 4.0F, 5.0F, 11.0F), fym.a(0.0F, -2.5F, 11.0F, -0.10471976F, 0.0F, 0.0F));
-      $$5.a("tail_fin", fyp.c().a(19, 20).a(-5.0F, -0.5F, 0.0F, 10.0F, 1.0F, 6.0F), fym.a(0.0F, 0.0F, 9.0F));
-      fyt $$6 = $$4.a("head", fyp.c().a(0, 0).a(-4.0F, -3.0F, -3.0F, 8.0F, 7.0F, 6.0F), fym.a(0.0F, -4.0F, -3.0F));
-      $$6.a("nose", fyp.c().a(0, 13).a(-1.0F, 2.0F, -7.0F, 2.0F, 2.0F, 4.0F), fym.a);
-      return fyq.a($$0, 64, 64);
+   public fvh a(int $$0) {
+      int $$1 = $$0 + this.p * 6;
+      if (this.p > 0 && $$0 == 0) {
+         return f;
+      } else if ($$0 == 7) {
+         return $$1 < this.n.a().size() ? g : h;
+      } else if ($$0 == 8) {
+         return e;
+      } else {
+         return $$1 >= 0 && $$1 < this.n.a().size() ? (fvh)MoreObjects.firstNonNull(this.n.a().get($$1), a) : a;
+      }
    }
 
-   @Override
-   public fyk a() {
-      return this.a;
+   public List<fvh> a() {
+      List<fvh> $$0 = Lists.newArrayList();
+
+      for (int $$1 = 0; $$1 <= 8; $$1++) {
+         $$0.add(this.a($$1));
+      }
+
+      return $$0;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.b.e = $$5 * (float) (Math.PI / 180.0);
-      this.b.f = $$4 * (float) (Math.PI / 180.0);
-      if ($$0.dr().i() > 1.0E-7) {
-         this.b.e = this.b.e + (-0.05F - 0.05F * ayo.b($$3 * 0.3F));
-         this.f.e = -0.1F * ayo.b($$3 * 0.3F);
-         this.g.e = -0.2F * ayo.b($$3 * 0.3F);
+   public fvh b() {
+      return this.a(this.o);
+   }
+
+   public fvg c() {
+      return this.n;
+   }
+
+   public void b(int $$0) {
+      fvh $$1 = this.a($$0);
+      if ($$1 != a) {
+         if (this.o == $$0 && $$1.aV_()) {
+            $$1.a(this);
+         } else {
+            this.o = $$0;
+         }
+      }
+   }
+
+   public void d() {
+      this.m.a(this);
+   }
+
+   public int e() {
+      return this.o;
+   }
+
+   public void a(fvg $$0) {
+      this.n = $$0;
+      this.o = -1;
+      this.p = 0;
+   }
+
+   public fvj f() {
+      return new fvj(this.a(), this.o);
+   }
+
+   static class a implements fvh {
+      @Override
+      public void a(fvf $$0) {
+         $$0.d();
+      }
+
+      @Override
+      public xd aU_() {
+         return fvf.j;
+      }
+
+      @Override
+      public void a(fjn $$0, float $$1, float $$2) {
+         $$0.a(ghe::C, fvf.b, 0, 0, 16, 16, axn.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aV_() {
+         return true;
+      }
+   }
+
+   static class b implements fvh {
+      private final int a;
+      private final boolean b;
+
+      public b(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fvf $$0) {
+         $$0.p = $$0.p + this.a;
+      }
+
+      @Override
+      public xd aU_() {
+         return this.a < 0 ? fvf.k : fvf.l;
+      }
+
+      @Override
+      public void a(fjn $$0, float $$1, float $$2) {
+         int $$3 = axn.a($$2, $$1, $$1, $$1);
+         if (this.a < 0) {
+            $$0.a(ghe::C, fvf.c, 0, 0, 16, 16, $$3);
+         } else {
+            $$0.a(ghe::C, fvf.d, 0, 0, 16, 16, $$3);
+         }
+      }
+
+      @Override
+      public boolean aV_() {
+         return this.b;
       }
    }
 }

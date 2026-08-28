@@ -1,43 +1,54 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+import com.google.common.collect.Lists;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringEscapeUtils;
 
-public class ayc implements azm, AutoCloseable {
-   private static final Logger b = LogUtils.getLogger();
-   private CompletableFuture<?> c = CompletableFuture.completedFuture(null);
-   private final Executor d;
-   private volatile boolean e;
+public class ayc {
+   private static final String a = "\r\n";
+   private static final String b = ",";
+   private final Writer c;
+   private final int d;
 
-   public ayc(Executor $$0) {
-      this.d = $$0;
+   ayc(Writer $$0, List<String> $$1) throws IOException {
+      this.c = $$0;
+      this.d = $$1.size();
+      this.a($$1.stream());
    }
 
-   @Override
-   public <T> void append(CompletableFuture<T> $$0, Consumer<T> $$1) {
-      this.c = this.c.<T, Object>thenCombine($$0, ($$0x, $$1x) -> $$1x).thenAcceptAsync($$1x -> {
-         if (!this.e) {
-            $$1.accept((T)$$1x);
-         }
-      }, this.d).exceptionally($$0x -> {
-         if ($$0x instanceof CompletionException $$1x) {
-            $$0x = $$1x.getCause();
-         }
-
-         if ($$0x instanceof CancellationException $$2) {
-            throw $$2;
-         } else {
-            b.error("Chain link failed, continuing to next one", $$0x);
-            return null;
-         }
-      });
+   public static ayc.a a() {
+      return new ayc.a();
    }
 
-   @Override
-   public void close() {
-      this.e = true;
+   public void a(Object... $$0) throws IOException {
+      if ($$0.length != this.d) {
+         throw new IllegalArgumentException("Invalid number of columns, expected " + this.d + ", but got " + $$0.length);
+      } else {
+         this.a(Stream.of($$0));
+      }
+   }
+
+   private void a(Stream<?> $$0) throws IOException {
+      this.c.write($$0.<CharSequence>map(ayc::a).collect(Collectors.joining(",")) + "\r\n");
+   }
+
+   private static String a(@Nullable Object $$0) {
+      return StringEscapeUtils.escapeCsv($$0 != null ? $$0.toString() : "[null]");
+   }
+
+   public static class a {
+      private final List<String> a = Lists.newArrayList();
+
+      public ayc.a a(String $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public ayc a(Writer $$0) throws IOException {
+         return new ayc($$0, this.a);
+      }
    }
 }

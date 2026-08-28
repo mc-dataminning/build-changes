@@ -1,11 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dbj {
-   Codec<dbj> a = lt.az.r().dispatch(dbj::a, Function.identity());
+public record dbj(dbd d, dbd e, jn<bsd> f) implements dbn {
+   public static final MapCodec<dbj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dbd.b.fieldOf("min_damage").forGetter(dbj::b), dbd.b.fieldOf("max_damage").forGetter(dbj::c), bsd.b.fieldOf("damage_type").forGetter(dbj::d)
+            )
+            .apply($$0, dbj::new)
+   );
 
-   void a(cuq var1, dai.a var2, ayw var3, bqp var4);
+   @Override
+   public void a(arg $$0, int $$1, dav $$2, btj $$3, eye $$4) {
+      float $$5 = azc.b($$3.dV(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new bsb(this.f, $$2.c()), $$5);
+   }
 
-   MapCodec<? extends dbj> a();
+   @Override
+   public MapCodec<dbj> a() {
+      return a;
+   }
+
+   public dbd b() {
+      return this.d;
+   }
+
+   public dbd c() {
+      return this.e;
+   }
+
+   public jn<bsd> d() {
+      return this.f;
+   }
 }

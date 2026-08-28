@@ -1,48 +1,85 @@
-import java.util.EnumSet;
+public class cas extends cbg {
+   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
+   private final cgd b;
+   private final int c;
+   private boolean d;
 
-public class cas extends cam {
-   private final btp a;
-   private btn b;
-   private final float c;
-
-   public cas(btp $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(cam.a.c, cam.a.a));
+   public cas(cgd $$0, int $$1) {
+      this.b = $$0;
+      this.c = b($$1);
    }
 
    @Override
    public boolean b() {
-      if (this.a.cR()) {
+      if (this.b.dV().a(this.c) != 0) {
          return false;
       } else {
-         this.b = this.a.p();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g((bsr)this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
+         jj $$0 = this.b.cM();
+         int $$1 = $$0.j();
+         int $$2 = $$0.l();
+         je $$3 = this.b.ds();
+
+         for (int $$4 : a) {
+            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
                return false;
-            } else {
-               return !this.a.aF() ? false : this.a.dR().a(b(5)) == 0;
             }
          }
+
+         return true;
       }
+   }
+
+   private boolean a(je $$0, int $$1, int $$2, int $$3) {
+      je $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
+      return this.b.dS().b_($$4).a(awy.a) && !this.b.dS().a_($$4).d();
+   }
+
+   private boolean b(je $$0, int $$1, int $$2, int $$3) {
+      return this.b.dS().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dS().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
    }
 
    @Override
    public boolean c() {
-      return !this.a.aF();
+      double $$0 = this.b.dv().e;
+      return (!($$0 * $$0 < 0.03F) || this.b.dK() == 0.0F || !(Math.abs(this.b.dK()) < 10.0F) || !this.b.bi()) && !this.b.aH();
+   }
+
+   @Override
+   public boolean S_() {
+      return false;
    }
 
    @Override
    public void d() {
-      exc $$0 = this.a.dr();
-      exc $$1 = new exc(this.b.dt() - this.a.dt(), 0.0, this.b.dz() - this.a.dz());
-      if ($$1.g() > 1.0E-7) {
-         $$1 = $$1.d().a(0.4).e($$0.a(0.2));
+      jj $$0 = this.b.cM();
+      this.b.h(this.b.dv().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
+      this.b.P().o();
+   }
+
+   @Override
+   public void e() {
+      this.b.w(0.0F);
+   }
+
+   @Override
+   public void a() {
+      boolean $$0 = this.d;
+      if (!$$0) {
+         eqb $$1 = this.b.dS().b_(this.b.ds());
+         this.d = $$1.a(awy.a);
       }
 
-      this.a.n($$1.c, (double)this.c, $$1.e);
+      if (this.d && !$$0) {
+         this.b.a(awd.hc, 1.0F, 1.0F);
+      }
+
+      eye $$2 = this.b.dv();
+      if ($$2.e * $$2.e < 0.03F && this.b.dK() != 0.0F) {
+         this.b.w(azc.i(0.2F, this.b.dK(), 0.0F));
+      } else if ($$2.g() > 1.0E-5F) {
+         double $$3 = $$2.i();
+         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
+         this.b.w((float)$$4);
+      }
    }
 }

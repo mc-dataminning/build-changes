@@ -1,29 +1,33 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import org.apache.commons.lang3.mutable.MutableInt;
 
 public class bxy {
-   private static final int a = 180;
-   private static final int b = 8;
-   private static final int c = 6;
+   private static final int a = 300;
 
-   public static bws<btw> a(ccs<jl> $$0, float $$1, int $$2) {
-      MutableLong $$3 = new MutableLong(0L);
-      return byu.a(
-         (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$4 -> $$4.group($$4.a(ccs.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
-                  jl $$9 = $$4.b($$5);
-                  if ($$6.af() != $$9.a() || !$$9.b().a($$7.dm(), (double)$$2)) {
-                     return false;
-                  } else if ($$8 <= $$3.getValue()) {
-                     return true;
-                  } else {
-                     Optional<exc> $$10 = Optional.ofNullable(cem.a($$7, 8, 6));
-                     $$4x.a($$10.map($$1xxxx -> new ccv($$1xxxx, $$1, 1)));
-                     $$3.setValue($$8 + 180L);
-                     return true;
-                  }
-               }))
+   public static bvy<buf> a(int $$0, int $$1) {
+      int $$2 = $$0 * 20;
+      MutableInt $$3 = new MutableInt(0);
+      return bzk.a(
+         (Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$3x -> $$3x.group($$3x.b(cdi.C), $$3x.b(cdi.D))
+               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                     long $$9 = $$3x.<Long>b($$5);
+                     boolean $$10 = $$9 + 300L <= $$8;
+                     if ($$3.getValue() <= $$2 && !$$10) {
+                        je $$11 = $$3x.<jm>b($$4).b();
+                        if ($$11.a($$7.ds(), (double)$$1)) {
+                           $$3.increment();
+                        }
+
+                        return true;
+                     } else {
+                        $$5.b();
+                        $$4.b();
+                        $$7.dX().a($$6.ab(), $$6.aa());
+                        $$3.setValue(0);
+                        return true;
+                     }
+                  }))
       );
    }
 }

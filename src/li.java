@@ -1,34 +1,27 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.joml.Vector3f;
 
-public class li implements lk {
-   private static final Codec<cuq> a = Codec.withAlternative(cuq.c, cuq.a, cuq::new);
-   private final ll<li> b;
-   private final cuq c;
+public class li extends lo {
+   public static final Vector3f a = eye.a(16711680).k();
+   public static final li b = new li(a, 1.0F);
+   public static final MapCodec<li> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayl.c.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(lo::d)).apply($$0, li::new)
+   );
+   public static final zb<wo, li> d = zb.a(yz.r, $$0 -> $$0.h, yz.i, lo::d, li::new);
+   private final Vector3f h;
 
-   public static MapCodec<li> a(ll<li> $$0) {
-      return a.xmap($$1 -> new li($$0, $$1), $$0x -> $$0x.c).fieldOf("item");
-   }
-
-   public static yx<? super wk, li> b(ll<li> $$0) {
-      return cuq.i.a($$1 -> new li($$0, $$1), $$0x -> $$0x.c);
-   }
-
-   public li(ll<li> $$0, cuq $$1) {
-      if ($$1.e()) {
-         throw new IllegalArgumentException("Empty stacks are not allowed");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-      }
+   public li(Vector3f $$0, float $$1) {
+      super($$1);
+      this.h = $$0;
    }
 
    @Override
-   public ll<li> a() {
-      return this.b;
+   public lm<li> a() {
+      return ln.n;
    }
 
-   public cuq b() {
-      return this.c;
+   public Vector3f b() {
+      return this.h;
    }
 }

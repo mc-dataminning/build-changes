@@ -1,30 +1,31 @@
-public class gbt extends gbf {
-   private static final int a = 12235202;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-   protected gbt(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdi $$8) {
-      super($$0, $$1, $$2, $$3, 0.7F, 0.6F, 0.7F, $$4, $$5 + 0.15F, $$6, $$7, $$8, 0.5F, 7, 0.5F, false);
-      float $$9 = (float)Math.random() * 0.2F;
-      this.v = (float)axy.b.b(12235202) / 255.0F - $$9;
-      this.w = (float)axy.b.c(12235202) / 255.0F - $$9;
-      this.x = (float)axy.b.d(12235202) / 255.0F - $$9;
-   }
+public interface gbt {
+   Codec<gbt> a = azy.a(gbt.a::values).dispatch(gbt::a, gbt.a::a);
 
-   @Override
-   public void a() {
-      this.u = 0.88F * this.u;
-      this.B = 0.92F * this.B;
-      super.a();
-   }
+   gbt.a a();
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   public static enum a implements azy {
+      a("player", () -> gbu.a.b),
+      b("system", () -> gbu.b.b);
 
-      public a(gdi $$0) {
-         this.a = $$0;
+      private final String c;
+      private final Supplier<MapCodec<? extends gbt>> d;
+
+      private a(final String $$0, final Supplier<MapCodec<? extends gbt>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
       }
 
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbt($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      private MapCodec<? extends gbt> a() {
+         return this.d.get();
+      }
+
+      @Override
+      public String c() {
+         return this.c;
       }
    }
 }

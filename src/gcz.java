@@ -1,53 +1,40 @@
-public class gcz extends gdn {
-   protected final gdi a;
-   private float b;
-   private float F;
-   private float G;
-   private boolean H;
-
-   protected gcz(fzf $$0, double $$1, double $$2, double $$3, gdi $$4, float $$5) {
+public class gcz extends gfe {
+   gcz(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.B = 0.91F;
-      this.u = $$5;
-      this.a = $$4;
-   }
-
-   public void b(int $$0) {
-      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      float $$4 = 1.0F;
-      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
-   }
-
-   public void c(int $$0) {
-      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
-      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
-      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
-      this.H = true;
-   }
-
-   @Override
-   public gcr b() {
-      return gcr.c;
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.a);
-      if (this.s > this.t / 2) {
-         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         if (this.H) {
-            this.v = this.v + (this.b - this.v) * 0.2F;
-            this.w = this.w + (this.F - this.w) * 0.2F;
-            this.x = this.x + (this.G - this.x) * 0.2F;
-         }
+      if (!this.o && !this.c.b_(je.a(this.g, this.h, this.i)).a(awy.a)) {
+         this.k();
       }
    }
 
    @Override
-   public int a(float $$0) {
-      return 15728880;
+   public gei b() {
+      return gei.b;
+   }
+
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcz $$8 = new gcz($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

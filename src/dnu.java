@@ -1,53 +1,78 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dnu extends dmz {
-   public static final MapCodec<dnu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dup.a.fieldOf("wood_type").forGetter(dmz::d), u()).apply($$0, dnu::new));
-   public static final duc b = dts.ba;
+public class dnu extends dhe implements dgy, dlm {
+   public static final MapCodec<dnu> a = b(dnu::new);
+   protected static final float b = 6.0F;
+   protected static final eyx c = dgv.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
 
    @Override
    public MapCodec<dnu> a() {
       return a;
    }
 
-   public dnu(dup $$0, dtb.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.k(this.E.b().a(b, Integer.valueOf(0)).a(f, Boolean.valueOf(false)));
+   protected dnu(dtz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      return $$1.a_($$2.e()).e();
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return c;
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Integer.valueOf(dui.a($$0.i() + 180.0F))).a(f, Boolean.valueOf($$1.a() == epf.c));
+   protected boolean b(dua $$0, dcx $$1, je $$2) {
+      return $$0.c($$1, $$2, jj.b) && !$$0.a(dgx.kJ);
+   }
+
+   @Nullable
+   @Override
+   public dua a(cyw $$0) {
+      eqb $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awy.a) && $$1.e() == 8 ? super.a($$0) : null;
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      return $$1 == ji.a && !this.a($$0, $$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      dua $$6 = super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      if (!$$6.l()) {
+         $$3.a($$4, eqc.c, eqc.c.a($$3));
+      }
+
+      return $$6;
    }
 
    @Override
-   public float g(dtc $$0) {
-      return dui.b($$0.c(b));
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      return $$0.a_($$1.d()).a(dgx.G);
    }
 
    @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
+      return true;
    }
 
    @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
+   protected eqb b_(dua $$0) {
+      return eqc.c.a(false);
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b, f);
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      dua $$4 = dgx.bx.o();
+      dua $$5 = $$4.b(dpc.d, duw.a);
+      je $$6 = $$2.d();
+      $$0.a($$2, $$4, 2);
+      $$0.a($$6, $$5, 2);
+   }
+
+   @Override
+   public boolean a(@Nullable cnp $$0, dcx $$1, je $$2, dua $$3, eqa $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(ddt $$0, je $$1, dua $$2, eqb $$3) {
+      return false;
    }
 }

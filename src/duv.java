@@ -1,5 +1,14 @@
-public interface duv {
-   dtc a(int var1);
+public enum duv implements azy {
+   a,
+   b;
 
-   void a(int var1, dtc var2);
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this == a ? "left" : "right";
+   }
 }

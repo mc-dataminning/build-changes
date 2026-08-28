@@ -1,30 +1,24 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class gqu implements gqp {
-   public static final MapCodec<gqu> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gqu::new)
-   );
-   private final String c;
-   private final String d;
+public class gqu extends grf<gtj, fxl> {
+   private static final Map<cid, alb> a = ad.a(Maps.newEnumMap(cid.class), $$0 -> {
+      $$0.put(cid.a, null);
+      $$0.put(cid.b, alb.b("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cid.c, alb.b("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cid.d, alb.b("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cid.e, alb.b("textures/entity/horse/horse_markings_blackdots.png"));
+   });
 
-   public gqu(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gqu(goo<gtj, fxl> $$0) {
+      super($$0);
    }
 
-   @Override
-   public void a(aue $$0, gqp.a $$1) {
-      akk $$2 = new akk("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         akr $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gqr a() {
-      return gqs.b;
+   public void a(fcu $$0, ggv $$1, int $$2, gtj $$3, float $$4, float $$5) {
+      alb $$6 = a.get($$3.h);
+      if ($$6 != null && !$$3.u) {
+         fcy $$7 = $$1.getBuffer(ghe.j($$6));
+         this.d().a($$0, $$7, $$2, gnt.a($$3, 0.0F));
+      }
    }
 }

@@ -1,105 +1,14 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dmm implements azk {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
-
-   public static final Codec<dmm> e = azk.a(dmm::values);
-   private final String f;
-   private final h g;
-
-   private dmm(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
-   }
-
-   public dmm a(dmm $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
-         case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
-         case b:
-            switch (this) {
-               case a:
-                  return b;
-               case b:
-                  return c;
-               case c:
-                  return d;
-               case d:
-                  return a;
-            }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public ji a(ji $$0) {
-      if ($$0.o() == ji.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
-         default:
-            return $$0;
-      }
-   }
-
-   public static dmm a(ayw $$0) {
-      return ad.a(values(), $$0);
-   }
-
-   public static List<dmm> b(ayw $$0) {
-      return ad.b(values(), $$0);
-   }
+public class dmm extends dpx {
+   public static final MapCodec<dmm> b = b(dmm::new);
 
    @Override
-   public String c() {
-      return this.f;
+   public MapCodec<dmm> a() {
+      return b;
+   }
+
+   protected dmm(dtz.d $$0) {
+      super(dny.b.e, $$0);
    }
 }

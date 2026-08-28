@@ -1,103 +1,136 @@
-import com.google.common.base.Stopwatch;
+import com.google.common.base.Joiner;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
 public class ani {
-   private static final Logger a = LogUtils.getLogger();
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wz.b("commands.locate.structure.not_found", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wz.b("commands.locate.structure.invalid", $$0));
-   private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> wz.b("commands.locate.biome.not_found", $$0));
-   private static final DynamicCommandExceptionType e = new DynamicCommandExceptionType($$0 -> wz.b("commands.locate.poi.not_found", $$0));
-   private static final int f = 100;
-   private static final int g = 6400;
-   private static final int h = 32;
-   private static final int i = 64;
-   private static final int j = 256;
+   private static final int a = 256;
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xd.b("commands.forceload.toobig", $$0, $$1));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> xd.b("commands.forceload.query.failure", $$0, $$1));
+   private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(xd.c("commands.forceload.added.failure"));
+   private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(xd.c("commands.forceload.removed.failure"));
 
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(eu.a("structure").then(eu.a("structure", fx.a(lu.aR)).executes($$0x -> a((et)$$0x.getSource(), fx.a($$0x, "structure", lu.aR, c))))))
-               .then(eu.a("biome").then(eu.a("biome", fw.a($$1, lu.aF)).executes($$0x -> a((et)$$0x.getSource(), fw.a($$0x, "biome", lu.aF))))))
-            .then(eu.a("poi").then(eu.a("poi", fw.a($$1, lu.aa)).executes($$0x -> b((et)$$0x.getSource(), fw.a($$0x, "poi", lu.aa)))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("forceload").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     eu.a("add")
+                        .then(
+                           ((RequiredArgumentBuilder)eu.a("from", gq.a())
+                                 .executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "from"), true)))
+                              .then(eu.a("to", gq.a()).executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "to"), true)))
+                        )
+                  ))
+               .then(
+                  ((LiteralArgumentBuilder)eu.a("remove")
+                        .then(
+                           ((RequiredArgumentBuilder)eu.a("from", gq.a())
+                                 .executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "from"), false)))
+                              .then(eu.a("to", gq.a()).executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "from"), gq.a($$0x, "to"), false)))
+                        ))
+                     .then(eu.a("all").executes($$0x -> b((et)$$0x.getSource())))
+               ))
+            .then(
+               ((LiteralArgumentBuilder)eu.a("query").executes($$0x -> a((et)$$0x.getSource())))
+                  .then(eu.a("pos", gq.a()).executes($$0x -> a((et)$$0x.getSource(), gq.a($$0x, "pos"))))
+            )
       );
    }
 
-   private static Optional<? extends jq.b<ejr>> a(fx.c<ejr> $$0, jz<ejr> $$1) {
-      return (Optional<? extends jq.b<ejr>>)$$0.a().map($$1x -> $$1.b($$1x).map($$0xx -> jq.a($$0xx)), $$1::b);
-   }
-
-   private static int a(et $$0, fx.c<ejr> $$1) throws CommandSyntaxException {
-      jz<ejr> $$2 = $$0.e().H_().d(lu.aR);
-      jq<ejr> $$3 = (jq<ejr>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
-      jd $$4 = jd.a((jw)$$0.d());
-      aqu $$5 = $$0.e();
-      Stopwatch $$6 = Stopwatch.createStarted(ad.d);
-      Pair<jd, jm<ejr>> $$7 = $$5.l().g().a($$5, $$3, $$4, 100, false);
-      $$6.stop();
-      if ($$7 == null) {
-         throw b.create($$1.b());
+   private static int a(et $$0, aqt $$1) throws CommandSyntaxException {
+      dcy $$2 = $$1.a();
+      arg $$3 = $$0.e();
+      ala<dds> $$4 = $$3.ag();
+      boolean $$5 = $$3.w().contains($$2.a());
+      if ($$5) {
+         $$0.a(() -> xd.a("commands.forceload.query.success", xd.a($$2), xd.a($$4.a())), false);
+         return 1;
       } else {
-         return a($$0, $$1, $$4, $$7, "commands.locate.structure.success", false, $$6.elapsed());
+         throw c.create($$2, $$4.a());
       }
    }
 
-   private static int a(et $$0, fw.c<ddw> $$1) throws CommandSyntaxException {
-      jd $$2 = jd.a((jw)$$0.d());
-      Stopwatch $$3 = Stopwatch.createStarted(ad.d);
-      Pair<jd, jm<ddw>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
-      $$3.stop();
-      if ($$4 == null) {
-         throw d.create($$1.b());
+   private static int a(et $$0) {
+      arg $$1 = $$0.e();
+      ala<dds> $$2 = $$1.ag();
+      LongSet $$3 = $$1.w();
+      int $$4 = $$3.size();
+      if ($$4 > 0) {
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dcy::new).map(dcy::toString).iterator());
+         if ($$4 == 1) {
+            $$0.a(() -> xd.a("commands.forceload.list.single", xd.a($$2.a()), $$5), false);
+         } else {
+            $$0.a(() -> xd.a("commands.forceload.list.multiple", $$4, xd.a($$2.a()), $$5), false);
+         }
       } else {
-         return a($$0, $$1, $$2, $$4, "commands.locate.biome.success", true, $$3.elapsed());
+         $$0.b(xd.a("commands.forceload.added.none", xd.a($$2.a())));
       }
+
+      return $$4;
    }
 
-   private static int b(et $$0, fw.c<cev> $$1) throws CommandSyntaxException {
-      jd $$2 = jd.a((jw)$$0.d());
-      aqu $$3 = $$0.e();
-      Stopwatch $$4 = Stopwatch.createStarted(ad.d);
-      Optional<Pair<jm<cev>, jd>> $$5 = $$3.y().e($$1, $$2, 256, ces.b.c);
-      $$4.stop();
-      if ($$5.isEmpty()) {
-         throw e.create($$1.b());
+   private static int b(et $$0) {
+      arg $$1 = $$0.e();
+      ala<dds> $$2 = $$1.ag();
+      LongSet $$3 = $$1.w();
+      $$3.forEach($$1x -> $$1.a(dcy.a($$1x), dcy.b($$1x), false));
+      $$0.a(() -> xd.a("commands.forceload.removed.all", xd.a($$2.a())), true);
+      return 0;
+   }
+
+   private static int a(et $$0, aqt $$1, aqt $$2, boolean $$3) throws CommandSyntaxException {
+      int $$4 = Math.min($$1.c(), $$2.c());
+      int $$5 = Math.min($$1.d(), $$2.d());
+      int $$6 = Math.max($$1.c(), $$2.c());
+      int $$7 = Math.max($$1.d(), $$2.d());
+      if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
+         int $$8 = kg.a($$4);
+         int $$9 = kg.a($$5);
+         int $$10 = kg.a($$6);
+         int $$11 = kg.a($$7);
+         long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
+         if ($$12 > 256L) {
+            throw b.create(256, $$12);
+         } else {
+            arg $$13 = $$0.e();
+            ala<dds> $$14 = $$13.ag();
+            dcy $$15 = null;
+            int $$16 = 0;
+
+            for (int $$17 = $$8; $$17 <= $$10; $$17++) {
+               for (int $$18 = $$9; $$18 <= $$11; $$18++) {
+                  boolean $$19 = $$13.a($$17, $$18, $$3);
+                  if ($$19) {
+                     $$16++;
+                     if ($$15 == null) {
+                        $$15 = new dcy($$17, $$18);
+                     }
+                  }
+               }
+            }
+
+            dcy $$20 = $$15;
+            int $$21 = $$16;
+            if ($$21 == 0) {
+               throw ($$3 ? d : e).create();
+            } else {
+               if ($$21 == 1) {
+                  $$0.a(() -> xd.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", xd.a($$20), xd.a($$14.a())), true);
+               } else {
+                  dcy $$22 = new dcy($$8, $$9);
+                  dcy $$23 = new dcy($$10, $$11);
+                  $$0.a(() -> xd.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, xd.a($$14.a()), xd.a($$22), xd.a($$23)), true);
+               }
+
+               return $$21;
+            }
+         }
       } else {
-         return a($$0, $$1, $$2, $$5.get().swap(), "commands.locate.poi.success", false, $$4.elapsed());
+         throw gp.b.create();
       }
-   }
-
-   public static int a(et $$0, fw.c<?> $$1, jd $$2, Pair<jd, ? extends jm<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + ((jm)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   public static int a(et $$0, fx.c<?> $$1, jd $$2, Pair<jd, ? extends jm<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + ((jm)$$3.getSecond()).g() + ")");
-      return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
-   }
-
-   private static int a(et $$0, jd $$1, Pair<jd, ? extends jm<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
-      jd $$7 = (jd)$$2.getFirst();
-      int $$8 = $$4 ? ayo.d(ayo.c((float)$$1.j($$7))) : ayo.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
-      String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
-      wz $$10 = xc.a((wz)wz.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new wx(wx.a.d, "/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new xf(xf.a.a, wz.c("chat.coordinates.tooltip"))));
-      $$0.a(() -> wz.a($$3, $$5, $$10, $$8), false);
-      a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
-      return $$8;
-   }
-
-   private static float a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = $$2 - $$0;
-      int $$5 = $$3 - $$1;
-      return ayo.c((float)($$4 * $$4 + $$5 * $$5));
    }
 }

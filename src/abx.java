@@ -1,42 +1,28 @@
-public class abx implements zg<abu> {
-   public static final yx<vw, abx> a = zg.a(abx::a, abx::new);
-   public static final int b = 0;
-   public static final int c = 2;
-   public static final int d = 3;
-   public static final int e = 4;
-   public static final int f = 5;
-   private final int g;
-   private final int h;
+import javax.annotation.Nullable;
 
-   public abx(bsr $$0, int $$1) {
-      this.g = $$0.an();
-      this.h = $$1;
+public record abx(alb b, @Nullable byte[] c) implements zk<abw> {
+   public static final zb<wa, abx> a = zk.a(abx::a, abx::new);
+
+   private abx(wa $$0) {
+      this($$0.q(), $$0.c(zz.b));
    }
 
-   private abx(vw $$0) {
-      this.g = $$0.l();
-      this.h = $$0.readUnsignedByte();
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.g);
-      $$0.k(this.h);
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c, zz.b);
    }
 
    @Override
-   public zi<abx> a() {
-      return agg.e;
+   public zm<abx> a() {
+      return abv.b;
    }
 
-   public void a(abu $$0) {
+   public void a(abw $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.g;
-   }
-
-   public int e() {
-      return this.h;
+   @Nullable
+   public byte[] e() {
+      return this.c;
    }
 }

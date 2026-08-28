@@ -1,111 +1,177 @@
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Queue;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.opengl.ARBDebugOutput;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLCapabilities;
+import org.lwjgl.opengl.GLDebugMessageARBCallback;
+import org.lwjgl.opengl.GLDebugMessageCallback;
+import org.lwjgl.opengl.KHRDebug;
+import org.slf4j.Logger;
 
-public class fbh implements AutoCloseable {
-   private final fbf.a a;
+public class fbh {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 10;
+   private static final Queue<fbh.a> c = EvictingQueue.create(10);
    @Nullable
-   private fbf.a b;
-   private final fbh.a c;
+   private static volatile fbh.a d;
+   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
+   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
+   private static boolean g;
 
-   public fbh(fbf.a $$0, fbh.a $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   private static String d(int $$0) {
+      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
    }
 
-   private static Vector3f[] a(ByteBuffer $$0, int $$1, fbn $$2) {
-      int $$3 = $$2.a(fbo.b);
-      if ($$3 == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
-      } else {
-         FloatBuffer $$4 = $$0.asFloatBuffer();
-         int $$5 = $$2.b() / 4;
-         int $$6 = $$5 * 4;
-         int $$7 = $$1 / 4;
-         Vector3f[] $$8 = new Vector3f[$$7];
+   public static String a(int $$0) {
+      switch ($$0) {
+         case 33350:
+            return "API";
+         case 33351:
+            return "WINDOW SYSTEM";
+         case 33352:
+            return "SHADER COMPILER";
+         case 33353:
+            return "THIRD PARTY";
+         case 33354:
+            return "APPLICATION";
+         case 33355:
+            return "OTHER";
+         default:
+            return d($$0);
+      }
+   }
 
-         for (int $$9 = 0; $$9 < $$7; $$9++) {
-            int $$10 = $$9 * $$6 + $$3;
-            int $$11 = $$10 + $$5 * 2;
-            float $$12 = $$4.get($$10 + 0);
-            float $$13 = $$4.get($$10 + 1);
-            float $$14 = $$4.get($$10 + 2);
-            float $$15 = $$4.get($$11 + 0);
-            float $$16 = $$4.get($$11 + 1);
-            float $$17 = $$4.get($$11 + 2);
-            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
+   public static String b(int $$0) {
+      switch ($$0) {
+         case 33356:
+            return "ERROR";
+         case 33357:
+            return "DEPRECATED BEHAVIOR";
+         case 33358:
+            return "UNDEFINED BEHAVIOR";
+         case 33359:
+            return "PORTABILITY";
+         case 33360:
+            return "PERFORMANCE";
+         case 33361:
+            return "OTHER";
+         case 33384:
+            return "MARKER";
+         default:
+            return d($$0);
+      }
+   }
+
+   public static String c(int $$0) {
+      switch ($$0) {
+         case 33387:
+            return "NOTIFICATION";
+         case 37190:
+            return "HIGH";
+         case 37191:
+            return "MEDIUM";
+         case 37192:
+            return "LOW";
+         default:
+            return d($$0);
+      }
+   }
+
+   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
+      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
+      fbh.a $$8;
+      synchronized (c) {
+         $$8 = d;
+         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
+            $$8.f++;
+         } else {
+            $$8 = new fbh.a($$0, $$1, $$2, $$3, $$7);
+            c.add($$8);
+            d = $$8;
+         }
+      }
+
+      a.info("OpenGL debug message: {}", $$8);
+   }
+
+   public static List<String> a() {
+      synchronized (c) {
+         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
+
+         for (fbh.a $$1 : c) {
+            $$0.add($$1 + " x " + $$1.f);
          }
 
-         return $$8;
+         return $$0;
       }
    }
 
-   public ByteBuffer a() {
-      return this.a.a();
+   public static boolean b() {
+      return g;
    }
 
-   @Nullable
-   public ByteBuffer b() {
-      return this.b != null ? this.b.a() : null;
-   }
+   public static void a(int $$0, boolean $$1) {
+      if ($$0 > 0) {
+         GLCapabilities $$2 = GL.getCapabilities();
+         if ($$2.GL_KHR_debug) {
+            g = true;
+            GL11.glEnable(37600);
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
 
-   public fbh.a c() {
-      return this.c;
-   }
+            for (int $$3 = 0; $$3 < e.size(); $$3++) {
+               boolean $$4 = $$3 < $$0;
+               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
+            }
 
-   @Nullable
-   public fbh.b a(fbf $$0, fbq $$1) {
-      if (this.c.d() != fbn.c.h) {
-         return null;
-      } else {
-         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
-         fbh.b $$3 = new fbh.b($$2, this.c.e());
-         this.b = $$3.a($$0, $$1);
-         return $$3;
-      }
-   }
+            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(fbh::a), fbe::a), 0L);
+         } else if ($$2.GL_ARB_debug_output) {
+            g = true;
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
 
-   @Override
-   public void close() {
-      this.a.close();
-      if (this.b != null) {
-         this.b.close();
-      }
-   }
+            for (int $$5 = 0; $$5 < f.size(); $$5++) {
+               boolean $$6 = $$5 < $$0;
+               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
+            }
 
-   public static record a(fbn a, int b, int c, fbn.c d, fbn.b e) {
-   }
-
-   public static record b(Vector3f[] a, fbn.b b) {
-      @Nullable
-      public fbf.a a(fbf $$0, fbq $$1) {
-         int[] $$2 = $$1.sort(this.a);
-         long $$3 = $$0.a($$2.length * 6 * this.b.d);
-         IntConsumer $$4 = this.a($$3, this.b);
-
-         for (int $$5 : $$2) {
-            $$4.accept($$5 * 4 + 0);
-            $$4.accept($$5 * 4 + 1);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 3);
-            $$4.accept($$5 * 4 + 0);
+            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(fbh::a), fbe::a), 0L);
          }
+      }
+   }
 
-         return $$0.a();
+   static class a {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final String e;
+      int f = 1;
+
+      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         this.a = $$2;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$3;
+         this.e = $$4;
       }
 
-      private IntConsumer a(long $$0, fbn.b $$1) {
-         MutableLong $$2 = new MutableLong($$0);
+      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
+      }
 
-         return switch ($$1) {
-            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
-            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
-         };
+      @Override
+      public String toString() {
+         return "id=" + this.a + ", source=" + fbh.a(this.b) + ", type=" + fbh.b(this.c) + ", severity=" + fbh.c(this.d) + ", message='" + this.e + "'";
       }
    }
 }

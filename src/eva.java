@@ -1,51 +1,25 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import java.util.List;
 
-public record eva(Optional<df> b, jd c) implements evc {
-   private static final MapCodec<jd> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(kh::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(kh::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(kh::w)
-            )
-            .apply($$0, jd::new)
-   );
+public class eva extends eug {
    public static final MapCodec<eva> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(df.a.optionalFieldOf("predicate").forGetter(eva::c), g.forGetter(eva::d)).apply($$0, eva::new)
+      $$0 -> a($$0).and(aky.a(lv.K).fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, eva::new)
    );
+   private final jn<cvg> b;
 
-   @Override
-   public evd b() {
-      return eve.n;
-   }
-
-   public boolean a(err $$0) {
-      exc $$1 = $$0.c(eun.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   private eva(List<ewe> $$0, jn<cvg> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<euk<?>> a() {
-      return Set.of(eun.f);
+   public eui<eva> b() {
+      return euj.f;
    }
 
-   public static evc.a a(df.a $$0) {
-      return () -> new eva(Optional.of($$0.b()), jd.c);
-   }
-
-   public static evc.a a(df.a $$0, jd $$1) {
-      return () -> new eva(Optional.of($$0.b()), $$1);
-   }
-
-   public Optional<df> c() {
-      return this.b;
-   }
-
-   public jd d() {
-      return this.c;
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      return $$0.a(this.b.a());
    }
 }

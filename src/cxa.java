@@ -1,37 +1,36 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.List;
 
-public record cxa(akr e, jm<cul> f, wz g, boolean h) {
-   public static final Codec<cxa> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               akr.a.fieldOf("asset_id").forGetter(cxa::a),
-               ako.a(lu.K).fieldOf("template_item").forGetter(cxa::b),
-               xb.a.fieldOf("description").forGetter(cxa::c),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(cxa::d)
-            )
-            .apply($$0, cxa::new)
-   );
-   public static final yx<wk, cxa> b = yx.a(akr.b, cxa::a, yv.b(lu.K), cxa::b, xb.b, cxa::c, yv.b, cxa::d, cxa::new);
-   public static final Codec<jm<cxa>> c = akn.a(lu.aX, a);
-   public static final yx<wk, jm<cxa>> d = yv.a(lu.aX, b);
+public class cxa extends cvg {
+   public static final int a = 160;
 
-   public wz a(jm<cwy> $$0) {
-      return this.g.f().c($$0.a().e().a());
+   public cxa(cvg.a $$0) {
+      super($$0);
    }
 
-   public akr a() {
-      return this.e;
+   @Override
+   public void a(cvl $$0, cvg.b $$1, List<xd> $$2, cxf $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$3.b()) {
+         List<bsq> $$4 = new ArrayList<>();
+         cyp $$5 = $$0.a(kr.J, cyp.a);
+
+         for (cyp.a $$6 : $$5.a()) {
+            $$4.add($$6.a());
+         }
+
+         cxn.a($$4, $$2::add, 1.0F, $$1.b());
+      }
    }
 
-   public jm<cul> b() {
-      return this.f;
-   }
+   @Override
+   public cvl a(cvl $$0, dds $$1, buf $$2) {
+      cyp $$3 = $$0.a(kr.J, cyp.a);
 
-   public wz c() {
-      return this.g;
-   }
+      for (cyp.a $$4 : $$3.a()) {
+         $$2.b($$4.a());
+      }
 
-   public boolean d() {
-      return this.h;
+      return super.a($$0, $$1, $$2);
    }
 }

@@ -1,13 +1,21 @@
-public abstract class goh<T extends bsr, M extends fvk<T>> extends gov<T, M> {
-   public goh(gmf<T, M> $$0) {
-      super($$0);
+public class goh extends gln<cgm, gud, fya> {
+   private static final alb a = alb.b("textures/entity/pig/pig.png");
+
+   public goh(gms.a $$0) {
+      super($$0, new fya($$0.a(gaa.bs)), new fya($$0.a(gaa.bt)), 0.7F);
+      this.a(new grg<>(this, new fya($$0.a(gaa.bu)), new fya($$0.a(gaa.bv)), alb.b("textures/entity/pig/pig_saddle.png")));
    }
 
-   @Override
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fbm $$10 = $$1.getBuffer(this.a());
-      this.c().a($$0, $$10, 15728640, gqc.d);
+   public alb a(gud $$0) {
+      return a;
    }
 
-   public abstract gfh a();
+   public gud c() {
+      return new gud();
+   }
+
+   public void a(cgm $$0, gud $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.i();
+   }
 }

@@ -1,59 +1,57 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dkc extends djn implements dkp {
+public class dkc extends dfq {
    public static final MapCodec<dkc> c = b(dkc::new);
-   protected static final exv g = dfy.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
-   private static final double h = 0.14;
 
    @Override
    public MapCodec<dkc> a() {
       return c;
    }
 
-   protected dkc(dtb.d $$0) {
-      super($$0, ji.b, g, true, 0.14);
+   protected dkc(dtz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean g(dtc $$0) {
-      return $$0.a(dga.G);
-   }
-
-   @Override
-   protected dfy b() {
-      return dga.md;
-   }
-
-   @Override
-   protected boolean m(dtc $$0) {
-      return !$$0.a(dga.kJ);
-   }
-
-   @Override
-   public boolean a(@Nullable cmx $$0, dcc $$1, jd $$2, dtc $$3, epd $$4) {
-      return false;
-   }
-
-   @Override
-   public boolean a(dcx $$0, jd $$1, dtc $$2, epe $$3) {
-      return false;
-   }
-
-   @Override
-   protected int a(ayw $$0) {
-      return 1;
+   public dre a(je $$0, dua $$1) {
+      return new dsc($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      return $$1.a(awk.a) && $$1.e() == 8 ? super.a($$0) : null;
+   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
+      return a($$0, $$2, drg.a);
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return epf.c.a(false);
+   protected void a(dds $$0, je $$1, cnp $$2) {
+      dre $$3 = $$0.c_($$1);
+      if ($$3 instanceof dsc) {
+         $$2.a((brm)$$3);
+         $$2.a(awn.am);
+      }
+   }
+
+   @Override
+   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awd.jZ, awe.e, 1.0F, 1.0F, false);
+         }
+
+         jj $$7 = $$0.c(a);
+         jj.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jj.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 6.0 / 16.0;
+         double $$13 = $$8 == jj.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ln.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+         $$1.a(ln.F, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

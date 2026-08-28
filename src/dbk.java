@@ -1,9 +1,6 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public interface dbk {
-   static MapCodec<? extends dbj> a(jz<MapCodec<? extends dbj>> $$0) {
-      jz.a($$0, "by_cost", dbl.b);
-      jz.a($$0, "by_cost_with_difficulty", dbm.c);
-      return jz.a($$0, "single", dbn.b);
-   }
+public record dbk() {
+   public static final dbk a = new dbk();
+   public static final Codec<dbk> b = Codec.unit(() -> a);
 }

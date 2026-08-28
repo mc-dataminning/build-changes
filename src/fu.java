@@ -6,18 +6,18 @@ import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class fu implements ArgumentType<akr> {
+public class fu implements ArgumentType<alb> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wz.b("advancement.advancementNotFound", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wz.b("recipe.notFound", $$0));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xd.b("advancement.advancementNotFound", $$0));
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xd.b("recipe.notFound", $$0));
 
    public static fu a() {
       return new fu();
    }
 
    public static ag a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      akr $$2 = c($$0, $$1);
-      ag $$3 = ((et)$$0.getSource()).l().aE().a($$2);
+      alb $$2 = c($$0, $$1);
+      ag $$3 = ((et)$$0.getSource()).l().aD().a($$2);
       if ($$3 == null) {
          throw b.create($$2);
       } else {
@@ -25,18 +25,18 @@ public class fu implements ArgumentType<akr> {
       }
    }
 
-   public static czb<?> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      czd $$2 = ((et)$$0.getSource()).l().aJ();
-      akr $$3 = c($$0, $$1);
+   public static czv<?> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      czx $$2 = ((et)$$0.getSource()).l().aI();
+      alb $$3 = c($$0, $$1);
       return $$2.a($$3).orElseThrow(() -> c.create($$3));
    }
 
-   public static akr c(CommandContext<et> $$0, String $$1) {
-      return (akr)$$0.getArgument($$1, akr.class);
+   public static alb c(CommandContext<et> $$0, String $$1) {
+      return (alb)$$0.getArgument($$1, alb.class);
    }
 
-   public akr a(StringReader $$0) throws CommandSyntaxException {
-      return akr.a($$0);
+   public alb a(StringReader $$0) throws CommandSyntaxException {
+      return alb.a($$0);
    }
 
    public Collection<String> getExamples() {

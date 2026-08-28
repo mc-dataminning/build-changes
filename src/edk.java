@@ -1,40 +1,46 @@
 import com.mojang.serialization.Codec;
 
-public class edk extends ece<ees> {
-   public edk(Codec<ees> $$0) {
+public class edk extends ece {
+   public edk(Codec<efi> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecg<ees> $$0) {
-      boolean $$1 = false;
-      ayw $$2 = $$0.d();
-      dds $$3 = $$0.b();
-      jd $$4 = $$0.e();
-      ees $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dyy.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      jd $$9 = new jd($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dga.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dtc $$11 = $$10 ? dga.bx.o() : dga.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dtc $$12 = $$11.a(dof.d, dty.a);
-               jd $$13 = $$9.d();
-               if ($$3.a_($$13).a(dga.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
-               }
-            } else {
-               $$3.a($$9, $$11, 2);
-            }
+   protected void a(ddt $$0, azk $$1, je $$2, int $$3, je.a $$4, efi $$5) {
+      int $$6 = $$5.d;
 
-            $$1 = true;
+      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
+         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
+            boolean $$9 = $$7 == -$$6;
+            boolean $$10 = $$7 == $$6;
+            boolean $$11 = $$8 == -$$6;
+            boolean $$12 = $$8 == $$6;
+            boolean $$13 = $$9 || $$10;
+            boolean $$14 = $$11 || $$12;
+            if (!$$13 || !$$14) {
+               $$4.a($$2, $$7, $$3, $$8);
+               if (!$$0.a_($$4).s()) {
+                  boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
+                  boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
+                  boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
+                  boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
+                  dua $$19 = $$5.b.a($$1, $$2);
+                  if ($$19.b(dks.e) && $$19.b(dks.c) && $$19.b(dks.b) && $$19.b(dks.d)) {
+                     $$19 = $$19.b(dks.e, Boolean.valueOf($$15))
+                        .b(dks.c, Boolean.valueOf($$16))
+                        .b(dks.b, Boolean.valueOf($$17))
+                        .b(dks.d, Boolean.valueOf($$18));
+                  }
+
+                  this.a($$0, $$4, $$19);
+               }
+            }
          }
       }
+   }
 
-      return $$1;
+   @Override
+   protected int a(int $$0, int $$1, int $$2, int $$3) {
+      return $$3 <= 3 ? 0 : $$2;
    }
 }

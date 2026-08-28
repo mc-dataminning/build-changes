@@ -1,70 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import java.util.Locale;
 
-public class esd extends esa {
-   public static final MapCodec<esd> a = a(esd::new);
+public interface esd {
+   je a();
 
-   esd(List<esh> $$0, List<evc> $$1) {
-      super($$0, $$1);
-   }
+   float b();
 
-   @Override
-   public esi a() {
-      return esf.i;
-   }
+   long c();
 
-   @Override
-   protected erz a(List<? extends erz> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (erz)$$0.get(0);
-         case 2 -> {
-            erz $$1 = $$0.get(0);
-            erz $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (erz $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
+   long d();
 
-         return true;
-      };
-      };
-   }
+   boolean g();
 
-   public static esd.a a(esh.a<?>... $$0) {
-      return new esd.a($$0);
-   }
+   boolean i();
 
-   public static class a extends esh.a<esd.a> {
-      private final Builder<esh> a = ImmutableList.builder();
+   void b(boolean var1);
 
-      public a(esh.a<?>... $$0) {
-         for (esh.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   boolean l();
 
-      protected esd.a a() {
-         return this;
-      }
+   ddo o();
 
-      @Override
-      public esd.a b(esh.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   brh q();
 
-      @Override
-      public esh b() {
-         return new esd(this.a.build(), this.f());
-      }
+   boolean r();
+
+   default void a(p $$0, ddu $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
    }
 }

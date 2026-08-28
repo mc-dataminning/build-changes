@@ -1,50 +1,39 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cdb extends ccz {
-   @Nullable
-   private jd p;
+public class cdb<T extends buh & buk> extends cbc {
+   private static final int a = 10;
+   private final T b;
+   private final boolean c;
+   private int d;
 
-   public cdb(btp $$0, dcw $$1) {
-      super($$0, $$1);
+   public cdb(T $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public eps a(jd $$0, int $$1) {
-      this.p = $$0;
-      return super.a($$0, $$1);
+   public boolean b() {
+      return this.b.dS().ac().b(ddo.O) && this.h();
+   }
+
+   private boolean h() {
+      return this.b.em() != null && this.b.em().ao() == btq.by && this.b.en() > this.d;
    }
 
    @Override
-   public eps a(bsr $$0, int $$1) {
-      this.p = $$0.do();
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(bsr $$0, double $$1) {
-      eps $$2 = this.a($$0, 0);
-      if ($$2 != null) {
-         return this.a($$2, $$1);
-      } else {
-         this.p = $$0.do();
-         this.d = $$1;
-         return true;
+   public void d() {
+      this.d = this.b.en();
+      this.b.ad_();
+      if (this.c) {
+         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (buk)$$0).forEach(buk::ad_);
       }
+
+      super.d();
    }
 
-   @Override
-   public void c() {
-      if (!this.l()) {
-         super.c();
-      } else {
-         if (this.p != null) {
-            if (!this.p.a(this.a.dm(), (double)this.a.dj())
-               && (!(this.a.dv() > (double)this.p.v()) || !jd.a((double)this.p.u(), this.a.dv(), (double)this.p.w()).a(this.a.dm(), (double)this.a.dj()))) {
-               this.a.J().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
-            } else {
-               this.p = null;
-            }
-         }
-      }
+   private List<? extends buh> i() {
+      double $$0 = this.b.h(bvm.m);
+      exz $$1 = exz.a(this.b.dq()).c($$0, 10.0, $$0);
+      return this.b.dS().a((Class<? extends buh>)this.b.getClass(), $$1, bto.f);
    }
 }

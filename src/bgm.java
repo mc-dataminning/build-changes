@@ -5,28 +5,48 @@ import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.types.templates.TaggedChoice.TaggedChoiceType;
+import com.mojang.datafixers.util.Pair;
 
 public class bgm extends DataFix {
    public bgm(Schema $$0) {
-      super($$0, true);
+      super($$0, false);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgr.B);
-      Type<?> $$1 = this.getOutputSchema().getType(bgr.B);
-      return this.fixTypeEverywhereTyped("Fix Arrow stored weapon", $$0, $$1, azy.a(this.a("minecraft:arrow"), this.a("minecraft:spectral_arrow")));
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(bhk.s);
+      Type<?> $$1 = this.getInputSchema().getType(bhk.t);
+      TaggedChoiceType<?> $$2 = this.getInputSchema().findChoiceType(bhk.s);
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bhk.D.typeName(), biw.a()));
+      OpticFinder<?> $$4 = $$0.findField("components");
+      OpticFinder<?> $$5 = $$1.findField("components");
+      return TypeRewriteRule.seq(this.fixTypeEverywhereTyped("Ominous Banner block entity common rarity to uncommon rarity fix", $$0, $$2x -> {
+         Object $$3x = ((Pair)$$2x.get($$2.finder())).getFirst();
+         return $$3x.equals("minecraft:banner") ? this.a($$2x, $$4) : $$2x;
+      }), this.fixTypeEverywhereTyped("Ominous Banner item stack common rarity to uncommon rarity fix", $$1, $$2x -> {
+         String $$3x = $$2x.getOptional($$3).<String>map(Pair::getSecond).orElse("");
+         return $$3x.equals("minecraft:white_banner") ? this.a($$2x, $$5) : $$2x;
+      }));
    }
 
-   private Function<Typed<?>, Typed<?>> a(String $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bgr.B, $$0);
-      Type<?> $$2 = this.getOutputSchema().getChoiceType(bgr.B, $$0);
-      return a($$0, $$1, $$2);
-   }
-
-   private static <T> Function<Typed<?>, Typed<?>> a(String $$0, Type<?> $$1, Type<T> $$2) {
-      OpticFinder<?> $$3 = DSL.namedChoice($$0, $$1);
-      return $$2x -> $$2x.updateTyped($$3, $$2, $$1xx -> ad.a($$1xx, $$2, UnaryOperator.identity()));
+   private Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1) {
+      return $$0.updateTyped(
+         $$1,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> {
+                  boolean $$1x = $$0xx.get("minecraft:item_name")
+                     .asString()
+                     .result()
+                     .flatMap(bak::a)
+                     .filter($$0xxx -> $$0xxx.equals("block.minecraft.ominous_banner"))
+                     .isPresent();
+                  return $$1x
+                     ? $$0xx.set("minecraft:rarity", $$0xx.createString("uncommon"))
+                        .set("minecraft:item_name", bak.b($$0xx.getOps(), "block.minecraft.ominous_banner"))
+                     : $$0xx;
+               }
+            )
+      );
    }
 }

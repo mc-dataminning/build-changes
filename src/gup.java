@@ -1,23 +1,4 @@
-public class gup {
-   private final String a;
-   private final String b;
-   private long c;
-
-   public gup(String $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = ad.c();
-   }
-
-   public String a() {
-      return this.a;
-   }
-
-   public String b() {
-      return this.b;
-   }
-
-   public void c() {
-      this.c = ad.c();
-   }
+public class gup extends gtk {
+   public boolean b;
+   public boolean c;
 }

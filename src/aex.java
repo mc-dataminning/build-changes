@@ -1,37 +1,29 @@
-public class aex implements zg<abu> {
-   public static final yx<vw, aex> a = zg.a(aex::a, aex::new);
-   private final jd b;
-   private final float c;
+public class aex implements zk<abz> {
+   public static final zb<wa, aex> a = zk.a(aex::a, aex::new);
+   private final int b;
 
-   public aex(jd $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public aex(dvr $$0) {
+      this.b = $$0.q();
    }
 
-   private aex(vw $$0) {
-      this.b = $$0.e();
-      this.c = $$0.readFloat();
+   private aex(wa $$0) {
+      this.b = $$0.l();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wa $$0) {
+      $$0.c(this.b);
    }
 
    @Override
-   public zi<aex> a() {
-      return agg.aA;
+   public zm<aex> a() {
+      return ago.av;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public jd b() {
+   public int b() {
       return this.b;
-   }
-
-   public float e() {
-      return this.c;
    }
 }

@@ -1,21 +1,16 @@
-public record acx(wz b, wv.a c) implements zg<abu> {
-   public static final yx<wk, acx> a = yx.a(xb.d, acx::b, wv.a.a, acx::e, acx::new);
+public record acx(cvg b, int c) implements zk<abz> {
+   public static final zb<wo, acx> a = zb.a(yz.a(lv.K), acx::b, yz.g, acx::e, acx::new);
 
    @Override
-   public zi<acx> a() {
-      return agg.C;
+   public zm<acx> a() {
+      return ago.x;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
-   }
-
-   public wv.a e() {
+   public int e() {
       return this.c;
    }
 }

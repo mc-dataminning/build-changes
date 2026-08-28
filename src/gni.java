@@ -1,28 +1,35 @@
-public class gni extends gki<cof> {
-   private static final float a = ayo.k(3.5F);
-   private static final akr g = akr.b("textures/entity/projectiles/wind_charge.png");
-   private final fxy h;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gni(gkj.a $$0) {
-      super($$0);
-      this.h = new fxy($$0.a(fyj.bU));
+public final class gni extends glj<cib, gtj, fxl> {
+   private static final Map<cii, alb> a = ad.a(Maps.newEnumMap(cii.class), $$0 -> {
+      $$0.put(cii.a, alb.b("textures/entity/horse/horse_white.png"));
+      $$0.put(cii.b, alb.b("textures/entity/horse/horse_creamy.png"));
+      $$0.put(cii.c, alb.b("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(cii.d, alb.b("textures/entity/horse/horse_brown.png"));
+      $$0.put(cii.e, alb.b("textures/entity/horse/horse_black.png"));
+      $$0.put(cii.f, alb.b("textures/entity/horse/horse_gray.png"));
+      $$0.put(cii.g, alb.b("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gni(gms.a $$0) {
+      super($$0, new fxl($$0.a(gaa.aP)), new fxl($$0.a(gaa.aQ)), 1.1F);
+      this.a(new gqu(this));
+      this.a(new gqt(this, $$0.f()));
    }
 
-   public void a(cof $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      if ($$0.ai >= 2 || !(this.d.b.g().g($$0) < (double)a)) {
-         float $$6 = (float)$$0.ai + $$2;
-         fbm $$7 = $$4.getBuffer(gfh.a(g, this.a($$6) % 1.0F, 0.0F));
-         this.h.a($$0, 0.0F, 0.0F, $$6, 0.0F, 0.0F);
-         this.h.a($$3, $$7, $$5, gqc.d);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   public alb a(gtj $$0) {
+      return a.get($$0.a);
    }
 
-   protected float a(float $$0) {
-      return $$0 * 0.03F;
+   public gtj c() {
+      return new gtj();
    }
 
-   public akr a(cof $$0) {
-      return g;
+   public void a(cib $$0, gtj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.q();
+      $$1.h = $$0.t();
+      $$1.i = $$0.fS().u();
    }
 }

@@ -1,37 +1,15 @@
-public class ahc implements zg<agi> {
-   public static final yx<vw, ahc> a = zg.a(ahc::a, ahc::new);
-   private final int b;
-   private final int c;
+import io.netty.buffer.ByteBuf;
 
-   public ahc(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   private ahc(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.l();
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.c(this.c);
-   }
+public record ahc() implements zk<agq> {
+   public static final ahc a = new ahc();
+   public static final zb<ByteBuf, ahc> b = zb.a(a);
 
    @Override
-   public zi<ahc> a() {
-      return agg.bx;
+   public zm<ahc> a() {
+      return ago.br;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int e() {
-      return this.c;
    }
 }

@@ -1,89 +1,56 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.stream.Collectors;
 
-public class cef {
-   public static final cef a = a();
-   private static final double b = 2.0;
-   private final boolean c;
-   private double d = -1.0;
-   private boolean e = true;
-   private boolean f = true;
-   @Nullable
-   private Predicate<btn> g;
+public class cef extends ceo<buh> {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final Long2LongMap d = new Long2LongOpenHashMap();
+   private int e;
+   private long f;
 
-   private cef(boolean $$0) {
-      this.c = $$0;
+   public cef() {
+      super(20);
    }
 
-   public static cef a() {
-      return new cef(true);
+   @Override
+   public Set<cdi<?>> a() {
+      return ImmutableSet.of(cdi.w);
    }
 
-   public static cef b() {
-      return new cef(false);
-   }
-
-   public cef c() {
-      cef $$0 = this.c ? a() : b();
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      return $$0;
-   }
-
-   public cef a(double $$0) {
-      this.d = $$0;
-      return this;
-   }
-
-   public cef d() {
-      this.e = false;
-      return this;
-   }
-
-   public cef e() {
-      this.f = false;
-      return this;
-   }
-
-   public cef a(@Nullable Predicate<btn> $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public boolean a(@Nullable btn $$0, btn $$1) {
-      if ($$0 == $$1) {
-         return false;
-      } else if (!$$1.eq()) {
-         return false;
-      } else if (this.g != null && !this.g.test($$1)) {
-         return false;
-      } else {
-         if ($$0 == null) {
-            if (this.c && (!$$1.ep() || $$1.dO().al() == bqo.a)) {
+   protected void a(arg $$0, buh $$1) {
+      if ($$1.o_()) {
+         this.e = 0;
+         this.f = $$0.aa() + (long)$$0.C_().a(20);
+         cfi $$2 = $$0.y();
+         Predicate<je> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.d.containsKey($$1x)) {
                return false;
-            }
-         } else {
-            if (this.c && (!$$0.c($$1) || !$$0.a($$1.am()) || $$0.s($$1))) {
+            } else if (++this.e >= 5) {
                return false;
+            } else {
+               this.d.put($$1x, this.f + 40L);
+               return true;
             }
-
-            if (this.d > 0.0) {
-               double $$2 = this.f ? $$1.B($$0) : 1.0;
-               double $$3 = Math.max(this.d * $$2, 2.0);
-               double $$4 = $$0.i($$1.dt(), $$1.dv(), $$1.dz());
-               if ($$4 > $$3 * $$3) {
-                  return false;
-               }
+         };
+         Set<Pair<jn<cfl>, je>> $$4 = $$2.b($$0x -> $$0x.a(cfm.n), $$3, $$1.ds(), 48, cfi.b.c).collect(Collectors.toSet());
+         eqp $$5 = bvq.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            je $$6 = $$5.l();
+            Optional<jn<cfl>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dX().a(cdi.w, $$6);
             }
-
-            if (this.e && $$0 instanceof btp $$5 && !$$5.O().a($$1)) {
-               return false;
-            }
+         } else if (this.e < 5) {
+            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
          }
-
-         return true;
       }
    }
 }

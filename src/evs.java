@@ -1,29 +1,36 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record evs(akr b) implements evq {
-   public static final MapCodec<evs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(akr.a.fieldOf("source").forGetter(evs::c)).apply($$0, evs::new));
+public class evs extends evu {
+   public static final MapCodec<evs> a = a(evs::new);
 
-   @Override
-   public evp a() {
-      return evr.b;
-   }
-
-   @Nullable
-   @Override
-   public uy a(err $$0) {
-      return $$0.d().o().aL().a(this.b);
+   evs(List<ewe> $$0) {
+      super($$0, ad.b($$0));
    }
 
    @Override
-   public Set<euk<?>> b() {
-      return ImmutableSet.of();
+   public ewf b() {
+      return ewg.b;
    }
 
-   public akr c() {
-      return this.b;
+   public static evs.a a(ewe.a... $$0) {
+      return new evs.a($$0);
+   }
+
+   public static class a extends evu.a {
+      public a(ewe.a... $$0) {
+         super($$0);
+      }
+
+      @Override
+      public evs.a or(ewe.a $$0) {
+         this.a($$0);
+         return this;
+      }
+
+      @Override
+      protected ewe a(List<ewe> $$0) {
+         return new evs($$0);
+      }
    }
 }

@@ -5,22 +5,22 @@ public interface er {
    er a = new er() {
       @Nullable
       @Override
-      public xp a(String $$0) {
+      public xt a(String $$0) {
          return null;
       }
    };
 
    @Nullable
-   xp a(String var1);
+   xt a(String var1);
 
-   public static record a(Map<String, xp> b) implements er {
+   public static record a(Map<String, xt> b) implements er {
       @Nullable
       @Override
-      public xp a(String $$0) {
+      public xt a(String $$0) {
          return this.b.get($$0);
       }
 
-      public Map<String, xp> a() {
+      public Map<String, xt> a() {
          return this.b;
       }
    }

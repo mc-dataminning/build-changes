@@ -1,30 +1,47 @@
 import com.mojang.serialization.Codec;
 
-public class edj extends ece<eed> {
-   public edj(Codec<eed> $$0) {
+public class edj extends edc<efn> {
+   public edj(Codec<efn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecg<eed> $$0) {
-      int $$1 = 0;
-      ayw $$2 = $$0.d();
-      dds $$3 = $$0.b();
-      jd $$4 = $$0.e();
-      int $$5 = $$0.f().a().a($$2);
+   public boolean a(ede<efn> $$0) {
+      dep $$1 = $$0.b();
+      je $$2 = $$0.e();
+      azk $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         dua $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dgx.dV) && !$$4.a(dgx.dY) && !$$4.a(dgx.pr)) {
+            return false;
+         } else {
+            $$1.a($$2, dgx.ec.o(), 2);
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         int $$7 = $$2.a(8) - $$2.a(8);
-         int $$8 = $$2.a(8) - $$2.a(8);
-         int $$9 = $$3.a(dyy.a.d, $$4.u() + $$7, $$4.w() + $$8);
-         jd $$10 = new jd($$4.u() + $$7, $$9, $$4.w() + $$8);
-         dtc $$11 = dga.mV.o().a(dmw.c, Integer.valueOf($$2.a(4) + 1));
-         if ($$3.a_($$10).a(dga.G) && $$11.a($$3, $$10)) {
-            $$3.a($$10, $$11, 2);
-            $$1++;
+            for (int $$5 = 0; $$5 < 1500; $$5++) {
+               je $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
+               if ($$1.a_($$6).l()) {
+                  int $$7 = 0;
+
+                  for (jj $$8 : jj.values()) {
+                     if ($$1.a_($$6.a($$8)).a(dgx.ec)) {
+                        $$7++;
+                     }
+
+                     if ($$7 > 1) {
+                        break;
+                     }
+                  }
+
+                  if ($$7 == 1) {
+                     $$1.a($$6, dgx.ec.o(), 2);
+                  }
+               }
+            }
+
+            return true;
          }
       }
-
-      return $$1 > 0;
    }
 }

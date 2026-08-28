@@ -1,80 +1,163 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class fnl extends fod {
-   private static final wz a = wz.c("addServer.enterName");
-   private static final wz b = wz.c("addServer.enterIp");
-   private fim c;
-   private final BooleanConsumer r;
-   private final fzt s;
-   private fiv u;
-   private fiv v;
-   private final fod w;
+public class fnl extends fnj {
+   private final fnl.b c;
+   private final List<fnl.a> d = new ArrayList<>();
+   private final fnr e = fnr.i();
 
-   public fnl(fod $$0, BooleanConsumer $$1, fzt $$2) {
-      super(wz.c("addServer.title"));
-      this.w = $$0;
-      this.r = $$1;
-      this.s = $$2;
+   public fnl(int $$0, int $$1, fnl.b $$2) {
+      this(0, 0, $$0, $$1, $$2);
+   }
+
+   public fnl(int $$0, int $$1, int $$2, int $$3, fnl.b $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
    }
 
    @Override
-   protected void aT_() {
-      this.v = new fiv(this.o, this.m / 2 - 100, 66, 200, 20, wz.c("addServer.enterName"));
-      this.v.a(this.s.a);
-      this.v.b($$0 -> this.C());
-      this.d(this.v);
-      this.u = new fiv(this.o, this.m / 2 - 100, 106, 200, 20, wz.c("addServer.enterIp"));
-      this.u.f(128);
-      this.u.a(this.s.b);
-      this.u.b($$0 -> this.C());
-      this.d(this.u);
-      this.c(
-         fit.a(fzt.a::a)
-            .a(fzt.a.values())
-            .a(this.s.b())
-            .a(this.m / 2 - 100, this.n / 4 + 72, 200, 20, wz.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
-      );
-      this.c = this.c(fim.a(wz.c("addServer.add"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 18, 200, 20).a());
-      this.c(fim.a(wy.e, $$0 -> this.r.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 18, 200, 20).a());
-      this.C();
+   public void a() {
+      super.a();
+      if (!this.d.isEmpty()) {
+         int $$0 = 0;
+         int $$1 = this.c.b(this);
+
+         for (fnl.a $$2 : this.d) {
+            $$0 += this.c.a($$2);
+            $$1 = Math.max($$1, this.c.b($$2));
+         }
+
+         int $$3 = this.c.a(this) - $$0;
+         int $$4 = this.c.c(this);
+         Iterator<fnl.a> $$5 = this.d.iterator();
+         fnl.a $$6 = $$5.next();
+         this.c.a($$6, $$4);
+         $$4 += this.c.a($$6);
+         if (this.d.size() >= 2) {
+            c $$7 = new c($$3, this.d.size() - 1);
+
+            while ($$7.hasNext()) {
+               $$4 += $$7.nextInt();
+               fnl.a $$8 = $$5.next();
+               this.c.a($$8, $$4);
+               $$4 += this.c.a($$8);
+            }
+         }
+
+         int $$9 = this.c.d(this);
+
+         for (fnl.a $$10 : this.d) {
+            this.c.a($$10, $$9, $$1);
+         }
+
+         switch (this.c) {
+            case a:
+               this.b = $$1;
+               break;
+            case b:
+               this.a = $$1;
+         }
+      }
    }
 
    @Override
-   protected void aI_() {
-      this.b(this.v);
+   public void b(Consumer<fnq> $$0) {
+      this.d.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   @Override
-   public void a(fgo $$0, int $$1, int $$2) {
-      String $$3 = this.u.a();
-      String $$4 = this.v.a();
-      this.b($$0, $$1, $$2);
-      this.u.a($$3);
-      this.v.a($$4);
+   public fnr b() {
+      return this.e.g();
    }
 
-   private void m() {
-      this.s.a = this.v.a();
-      this.s.b = this.u.a();
-      this.r.accept(true);
+   public fnr c() {
+      return this.e;
    }
 
-   @Override
-   public void d() {
-      this.l.a(this.w);
+   public <T extends fnq> T a(T $$0) {
+      return this.a($$0, this.b());
    }
 
-   private void C() {
-      this.c.j = gax.b(this.u.a()) && !this.v.a().isEmpty();
+   public <T extends fnq> T a(T $$0, fnr $$1) {
+      this.d.add(new fnl.a($$0, $$1));
+      return $$0;
    }
 
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 17, 16777215);
-      $$0.b(this.o, a, this.m / 2 - 100 + 1, 53, 10526880);
-      $$0.b(this.o, b, this.m / 2 - 100 + 1, 94, 10526880);
-      this.v.a($$0, $$1, $$2, $$3);
-      this.u.a($$0, $$1, $$2, $$3);
+   public <T extends fnq> T a(T $$0, Consumer<fnr> $$1) {
+      return this.a($$0, ad.a(this.b(), $$1));
+   }
+
+   static class a extends fnj.a {
+      protected a(fnq $$0, fnr $$1) {
+         super($$0, $$1);
+      }
+   }
+
+   public static enum b {
+      a,
+      b;
+
+      int a(fnq $$0) {
+         return switch (this) {
+            case a -> $$0.y();
+            case b -> $$0.w();
+         };
+      }
+
+      int a(fnl.a $$0) {
+         return switch (this) {
+            case a -> $$0.b();
+            case b -> $$0.a();
+         };
+      }
+
+      int b(fnq $$0) {
+         return switch (this) {
+            case a -> $$0.w();
+            case b -> $$0.y();
+         };
+      }
+
+      int b(fnl.a $$0) {
+         return switch (this) {
+            case a -> $$0.a();
+            case b -> $$0.b();
+         };
+      }
+
+      void a(fnl.a $$0, int $$1) {
+         switch (this) {
+            case a:
+               $$0.a($$1, $$0.b());
+               break;
+            case b:
+               $$0.b($$1, $$0.a());
+         }
+      }
+
+      void a(fnl.a $$0, int $$1, int $$2) {
+         switch (this) {
+            case a:
+               $$0.b($$1, $$2);
+               break;
+            case b:
+               $$0.a($$1, $$2);
+         }
+      }
+
+      int c(fnq $$0) {
+         return switch (this) {
+            case a -> $$0.D();
+            case b -> $$0.E();
+         };
+      }
+
+      int d(fnq $$0) {
+         return switch (this) {
+            case a -> $$0.E();
+            case b -> $$0.D();
+         };
+      }
    }
 }

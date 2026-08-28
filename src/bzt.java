@@ -1,84 +1,40 @@
-import java.util.EnumSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class bzt<T extends btn> extends cam {
-   protected final btw a;
-   private final double i;
-   private final double j;
-   @Nullable
-   protected T b;
-   protected final float c;
-   @Nullable
-   protected eps d;
-   protected final cda e;
-   protected final Class<T> f;
-   protected final Predicate<btn> g;
-   protected final Predicate<btn> h;
-   private final cef k;
+public class bzt extends bvx<cmt> {
+   private static final int c = 25;
+   private static final int d = 20;
 
-   public bzt(btw $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bsw.e::test);
+   public bzt() {
+      super(ImmutableMap.of(cdi.ay, cdj.a, cdi.o, cdj.b, cdi.aF, cdj.c, cdi.aD, cdj.c), cmu.b);
    }
 
-   public bzt(btw $$0, Class<T> $$1, Predicate<btn> $$2, float $$3, double $$4, double $$5, Predicate<btn> $$6) {
-      this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.c = $$3;
-      this.i = $$4;
-      this.j = $$5;
-      this.h = $$6;
-      this.e = $$0.N();
-      this.a(EnumSet.of(cam.a.a));
-      this.k = cef.a().a((double)$$3).a($$6.and($$2));
+   protected void a(arg $$0, cmt $$1, long $$2) {
+      bvg<cmt> $$3 = $$1.dX();
+      $$3.a(cdi.aD, bah.a, 25L);
+      $$3.b(cdi.m);
+      buf $$4 = $$1.dX().c(cdi.ay).get();
+      bvz.a($$1, $$4);
+      $$1.b(bur.l);
+      $$1.a($$4, 20, false);
    }
 
-   public bzt(btw $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<btn> $$5) {
-      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
+   protected boolean b(arg $$0, cmt $$1, long $$2) {
+      return true;
    }
 
-   @Override
-   public boolean b() {
-      this.b = this.a
-         .dO()
-         .a(this.a.dO().a(this.f, this.a.cK().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dt(), this.a.dv(), this.a.dz());
-      if (this.b == null) {
-         return false;
-      } else {
-         exc $$0 = cej.a(this.a, 16, 7, this.b.dm());
-         if ($$0 == null) {
-            return false;
-         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.g(this.a)) {
-            return false;
-         } else {
-            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
-            return this.d != null;
-         }
+   protected void c(arg $$0, cmt $$1, long $$2) {
+      if (!$$1.dX().a(cdi.aD) && !$$1.dX().a(cdi.aF)) {
+         $$1.dX().a(cdi.aF, bah.a, (long)(cmu.b - 25));
+         $$1.a(awd.Ca, 3.0F, 1.0F);
       }
    }
 
-   @Override
-   public boolean c() {
-      return !this.e.l();
-   }
-
-   @Override
-   public void d() {
-      this.e.a(this.d, this.i);
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
-   }
-
-   @Override
-   public void a() {
-      if (this.a.g((bsr)this.b) < 49.0) {
-         this.a.N().a(this.j);
-      } else {
-         this.a.N().a(this.i);
+   protected void d(arg $$0, cmt $$1, long $$2) {
+      if ($$1.c(bur.l)) {
+         $$1.b(bur.a);
       }
+
+      $$1.dX().c(cdi.ay).ifPresent($$1::j);
+      $$1.dX().b(cdi.ay);
    }
 }

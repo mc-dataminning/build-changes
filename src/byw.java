@@ -1,53 +1,53 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public interface byw<F extends K1, Value> {
-   ccs<Value> a();
+public class byw {
+   public static bvy<bun> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bzk.a(
+         (Function<bzk.b<bun>, ? extends App<bzk.c<bun>, bzn<bun>>>)($$3 -> $$3.group($$3.c(cdi.o), $$3.c(cdi.m), $$3.a(cdi.n))
+               .apply($$3, ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                     if ($$5x.b_($$6.ds()).a(awy.a)) {
+                        return false;
+                     } else if ($$7 < $$2.getValue()) {
+                        $$2.setValue($$7 + 20L + 2L);
+                        return true;
+                     } else {
+                        je $$8 = null;
+                        je $$9 = null;
+                        je $$10 = $$6.ds();
 
-   cct b();
+                        for (je $$12 : je.a($$10, $$0, $$0, $$0)) {
+                           if ($$12.u() != $$10.u() || $$12.w() != $$10.w()) {
+                              dua $$13 = $$6.dS().a_($$12.d());
+                              dua $$14 = $$6.dS().a_($$12);
+                              if ($$14.a(dgx.G)) {
+                                 if ($$13.l()) {
+                                    $$8 = $$12.j();
+                                    break;
+                                 }
 
-   @Nullable
-   byv<F, Value> a(buq<?> var1, Optional<Value> var2);
+                                 if ($$9 == null && !$$12.a($$6.dq(), 1.5)) {
+                                    $$9 = $$12.j();
+                                 }
+                              }
+                           }
+                        }
 
-   public static record a<Value>(ccs<Value> a) implements byw<Mu<Unit>, Value> {
-      @Override
-      public cct b() {
-         return cct.b;
-      }
+                        if ($$8 == null) {
+                           $$8 = $$9;
+                        }
 
-      @Override
-      public byv<Mu<Unit>, Value> a(buq<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new byv<>($$0, this.a, Const.create(Unit.INSTANCE));
-      }
-   }
+                        if ($$8 != null) {
+                           $$5.a(new bwa($$8));
+                           $$4.a(new cdl(new bwa($$8), $$1, 0));
+                        }
 
-   public static record b<Value>(ccs<Value> a) implements byw<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cct b() {
-         return cct.a;
-      }
-
-      @Override
-      public byv<com.mojang.datafixers.kinds.IdF.Mu, Value> a(buq<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new byv<>($$0, this.a, IdF.create($$1.get()));
-      }
-   }
-
-   public static record c<Value>(ccs<Value> a) implements byw<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cct b() {
-         return cct.c;
-      }
-
-      @Override
-      public byv<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(buq<?> $$0, Optional<Value> $$1) {
-         return new byv<>($$0, this.a, OptionalBox.create($$1));
-      }
+                        $$2.setValue($$7 + 40L);
+                        return true;
+                     }
+                  }))
+      );
    }
 }

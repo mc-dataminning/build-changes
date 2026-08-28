@@ -1,15 +1,4 @@
-public class gtm extends gtn {
-   public gtm(cff $$0) {
-      super($$0, avp.bR, avq.g);
-   }
-
-   @Override
-   protected gtj o() {
-      return new gtl(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return this.n.ad_();
-   }
+public class gtm extends gtl {
+   public eye[] a = new eye[0];
+   public boolean i;
 }

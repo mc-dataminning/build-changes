@@ -1,121 +1,68 @@
+import com.google.common.collect.ImmutableSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cnf extends cnd {
-   private static final int f = 600;
-   private static final int g = -1;
-   private static final ajw<Integer> h = aka.a(cnf.class, ajy.b);
-   private static final byte i = 0;
-
-   public cnf(bsx<? extends cnf> $$0, dcw $$1) {
-      super($$0, $$1);
-   }
-
-   public cnf(dcw $$0, double $$1, double $$2, double $$3, cuq $$4, @Nullable cuq $$5) {
-      super(bsx.e, $$1, $$2, $$3, $$0, $$4, $$5);
-      this.K();
-   }
-
-   public cnf(dcw $$0, btn $$1, cuq $$2, @Nullable cuq $$3) {
-      super(bsx.e, $$1, $$0, $$2, $$3);
-      this.K();
-   }
-
-   private cwu J() {
-      return this.y().a(kq.G, cwu.a);
-   }
-
-   private void a(cwu $$0) {
-      this.y().b(kq.G, $$0);
-      this.K();
-   }
+public record cnf(String q, Predicate<jn<cfl>> r, Predicate<jn<cfl>> s, ImmutableSet<cvg> t, ImmutableSet<dgv> u, @Nullable awc v) {
+   public static final Predicate<jn<cfl>> a = $$0 -> $$0.a(axd.a);
+   public static final cnf b = a("none", cfl.a, a, null);
+   public static final cnf c = a("armorer", cfm.a, awd.Bf);
+   public static final cnf d = a("butcher", cfm.b, awd.Bg);
+   public static final cnf e = a("cartographer", cfm.c, awd.Bh);
+   public static final cnf f = a("cleric", cfm.d, awd.Bi);
+   public static final cnf g = a("farmer", cfm.e, ImmutableSet.of(cvo.px, cvo.pw, cvo.vn, cvo.rz), ImmutableSet.of(dgx.cC), awd.Bj);
+   public static final cnf h = a("fisherman", cfm.f, awd.Bk);
+   public static final cnf i = a("fletcher", cfm.g, awd.Bl);
+   public static final cnf j = a("leatherworker", cfm.h, awd.Bm);
+   public static final cnf k = a("librarian", cfm.i, awd.Bn);
+   public static final cnf l = a("mason", cfm.j, awd.Bo);
+   public static final cnf m = a("nitwit", cfl.a, cfl.a, null);
+   public static final cnf n = a("shepherd", cfm.k, awd.Bp);
+   public static final cnf o = a("toolsmith", cfm.l, awd.Bq);
+   public static final cnf p = a("weaponsmith", cfm.m, awd.Br);
 
    @Override
-   protected void a(cuq $$0) {
-      super.a($$0);
-      this.K();
+   public String toString() {
+      return this.q;
    }
 
-   private void K() {
-      cwu $$0 = this.J();
-      this.ao.a(h, $$0.equals(cwu.a) ? -1 : $$0.b());
+   private static cnf a(String $$0, ala<cfl> $$1, @Nullable awc $$2) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2);
    }
 
-   public void a(brz $$0) {
-      this.a(this.J().a($$0));
+   private static cnf a(String $$0, Predicate<jn<cfl>> $$1, Predicate<jn<cfl>> $$2, @Nullable awc $$3) {
+      return a($$0, $$1, $$2, ImmutableSet.of(), ImmutableSet.of(), $$3);
    }
 
-   @Override
-   protected void a(aka.a $$0) {
-      super.a($$0);
-      $$0.a(h, -1);
+   private static cnf a(String $$0, ala<cfl> $$1, ImmutableSet<cvg> $$2, ImmutableSet<dgv> $$3, @Nullable awc $$4) {
+      return a($$0, $$1x -> $$1x.a($$1), $$1x -> $$1x.a($$1), $$2, $$3, $$4);
    }
 
-   @Override
-   public void l() {
-      super.l();
-      if (this.dO().B) {
-         if (this.b) {
-            if (this.c % 5 == 0) {
-               this.b(1);
-            }
-         } else {
-            this.b(2);
-         }
-      } else if (this.b && this.c != 0 && !this.J().equals(cwu.a) && this.c >= 600) {
-         this.dO().a(this, (byte)0);
-         this.a(new cuq(cut.ow));
-      }
+   private static cnf a(String $$0, Predicate<jn<cfl>> $$1, Predicate<jn<cfl>> $$2, ImmutableSet<cvg> $$3, ImmutableSet<dgv> $$4, @Nullable awc $$5) {
+      return ka.a(lu.x, alb.b($$0), new cnf($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   private void b(int $$0) {
-      int $$1 = this.F();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dO().a(lf.a(lm.u, $$1), this.d(0.5), this.dw(), this.g(0.5), 0.0, 0.0, 0.0);
-         }
-      }
+   public String a() {
+      return this.q;
    }
 
-   public int F() {
-      return this.ao.a(h);
+   public Predicate<jn<cfl>> b() {
+      return this.r;
    }
 
-   @Override
-   protected void a(btn $$0) {
-      super.a($$0);
-      bsr $$1 = this.H();
-      cwu $$2 = this.J();
-      if ($$2.e().isPresent()) {
-         for (brz $$3 : $$2.e().get().a().a()) {
-            $$0.b(new brz($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
-         }
-      }
-
-      for (brz $$4 : $$2.d()) {
-         $$0.b($$4, $$1);
-      }
+   public Predicate<jn<cfl>> c() {
+      return this.s;
    }
 
-   @Override
-   protected cuq x() {
-      return new cuq(cut.ow);
+   public ImmutableSet<cvg> d() {
+      return this.t;
    }
 
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.F();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
+   public ImmutableSet<dgv> e() {
+      return this.u;
+   }
 
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dO().a(lf.a(lm.u, $$2, $$3, $$4), this.d(0.5), this.dw(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
-         }
-      } else {
-         super.b($$0);
-      }
+   @Nullable
+   public awc f() {
+      return this.v;
    }
 }

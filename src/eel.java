@@ -1,40 +1,39 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eel implements eei {
-   public static final Codec<eel> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bpw.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bpu.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bpu.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bpu.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bpu.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, eel::new)
-   );
-   public final int b;
-   public final bpw c;
-   public final bpu d;
-   public final float e;
-   public final bpu f;
-   public final bpu g;
-   public final bpu h;
-   public final int i;
-   public final float j;
+public class eel extends edc<efn> {
+   public eel(Codec<efn> $$0) {
+      super($$0);
+   }
 
-   public eel(int $$0, bpw $$1, bpu $$2, float $$3, bpu $$4, bpu $$5, bpu $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   @Override
+   public boolean a(ede<efn> $$0) {
+      dep $$1 = $$0.b();
+      je $$2 = $$0.e();
+      je.a $$3 = new je.a();
+      je.a $$4 = new je.a();
+
+      for (int $$5 = 0; $$5 < 16; $$5++) {
+         for (int $$6 = 0; $$6 < 16; $$6++) {
+            int $$7 = $$2.u() + $$5;
+            int $$8 = $$2.w() + $$6;
+            int $$9 = $$1.a(dzw.a.e, $$7, $$8);
+            $$3.d($$7, $$9, $$8);
+            $$4.g($$3).c(jj.a, 1);
+            det $$10 = $$1.t($$3).a();
+            if ($$10.a($$1, $$4, false)) {
+               $$1.a($$4, dgx.dO.o(), 2);
+            }
+
+            if ($$10.b($$1, $$3)) {
+               $$1.a($$3, dgx.dN.o(), 2);
+               dua $$11 = $$1.a_($$4);
+               if ($$11.b(dog.c)) {
+                  $$1.a($$4, $$11.b(dog.c, Boolean.valueOf(true)), 2);
+               }
+            }
+         }
+      }
+
+      return true;
    }
 }

@@ -1,130 +1,100 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class gvo {
-   static final Map<String, gvo> h = new Object2ObjectLinkedOpenHashMap();
-   public static final Codec<gvo> a = Codec.STRING.comapFlatMap($$0 -> {
-      gvo $$1 = h.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No TelemetryEventType with key: '" + $$0 + "'");
-   }, gvo::a);
-   private static final List<gvq<?>> i = List.of(gvq.a, gvq.b, gvq.c, gvq.d, gvq.e, gvq.f, gvq.g, gvq.h, gvq.m, gvq.l);
-   private static final List<gvq<?>> j = Stream.concat(i.stream(), Stream.of(gvq.i, gvq.j, gvq.k)).toList();
-   public static final gvo b = a("world_loaded", "WorldLoaded").a(j).a(gvq.n).a(gvq.o).b();
-   public static final gvo c = a("performance_metrics", "PerformanceMetrics").a(j).a(gvq.r).a(gvq.s).a(gvq.t).a(gvq.u).a(gvq.v).a(gvq.w).a().b();
-   public static final gvo d = a("world_load_times", "WorldLoadTimes").a(j).a(gvq.x).a(gvq.y).a().b();
-   public static final gvo e = a("world_unloaded", "WorldUnloaded").a(j).a(gvq.p).a(gvq.q).b();
-   public static final gvo f = a("advancement_made", "AdvancementMade").a(j).a(gvq.D).a(gvq.E).a().b();
-   public static final gvo g = a("game_load_times", "GameLoadTimes").a(i).a(gvq.z).a(gvq.A).a(gvq.B).a(gvq.C).a().b();
-   private final String k;
-   private final String l;
-   private final List<gvq<?>> m;
-   private final boolean n;
-   private final MapCodec<gvk> o;
+public class gvo implements gvn {
+   public static final int a = 0;
+   private final gvo.b c = new gvo.b();
+   private final gvo.b d = new gvo.b();
+   public final gvo.a b;
 
-   gvo(String $$0, String $$1, List<gvq<?>> $$2, boolean $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
-      this.o = gvr.a($$2).xmap($$0x -> new gvk(this, $$0x), gvk::b);
-   }
-
-   public static gvo.a a(String $$0, String $$1) {
-      return new gvo.a($$0, $$1);
-   }
-
-   public String a() {
-      return this.k;
-   }
-
-   public List<gvq<?>> b() {
-      return this.m;
-   }
-
-   public MapCodec<gvk> c() {
-      return this.o;
-   }
-
-   public boolean d() {
-      return this.n;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0, gvr $$1) {
-      TelemetryEvent $$2 = $$0.createNewEvent(this.l);
-
-      for (gvq<?> $$3 : this.m) {
-         $$3.a($$1, $$2);
-      }
-
-      return $$2;
-   }
-
-   public <T> boolean a(gvq<T> $$0) {
-      return this.m.contains($$0);
+   public gvo(gvo.a $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public String toString() {
-      return "TelemetryEventType[" + this.k + "]";
+   public float unclampedCall(cvl $$0, @Nullable gax $$1, @Nullable buf $$2, int $$3) {
+      btj $$4 = (btj)($$2 != null ? $$2 : $$0.G());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
    }
 
-   public xn e() {
-      return this.a("title");
+   private float a(cvl $$0, gax $$1, int $$2, btj $$3) {
+      jm $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.aa();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
    }
 
-   public xn f() {
-      return this.a("description");
-   }
-
-   private xn a(String $$0) {
-      return wz.c("telemetry.event." + this.k + "." + $$0);
-   }
-
-   public static List<gvo> g() {
-      return List.copyOf(h.values());
-   }
-
-   public static class a {
-      private final String a;
-      private final String b;
-      private final List<gvq<?>> c = new ArrayList<>();
-      private boolean d;
-
-      a(String $$0, String $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
       }
 
-      public gvo.a a(List<gvq<?>> $$0) {
-         this.c.addAll($$0);
-         return this;
-      }
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return azc.b((float)$$2, 1.0F);
+   }
 
-      public <T> gvo.a a(gvq<T> $$0) {
-         this.c.add($$0);
-         return this;
-      }
-
-      public gvo.a a() {
-         this.d = true;
-         return this;
-      }
-
-      public gvo b() {
-         gvo $$0 = new gvo(this.a, this.b, List.copyOf(this.c), this.d);
-         if (gvo.h.putIfAbsent(this.a, $$0) != null) {
-            throw new IllegalStateException("Duplicate TelemetryEventType with key: '" + this.a + "'");
-         } else {
-            return $$0;
+   private float a(btj $$0, long $$1, je $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cnp $$5 && $$5.g() && $$5.dS().s().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
          }
+
+         double $$6 = $$3 + this.c.a;
+         return azc.b((float)$$6, 1.0F);
+      }
+
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return azc.b((float)$$7, 1.0F);
+   }
+
+   @Nullable
+   private gax a(btj $$0, @Nullable gax $$1) {
+      return $$1 == null && $$0.dS() instanceof gax ? (gax)$$0.dS() : $$1;
+   }
+
+   private boolean a(btj $$0, @Nullable jm $$1) {
+      return $$1 != null && $$1.a() == $$0.dS().ag() && !($$1.b().b($$0.dq()) < 1.0E-5F);
+   }
+
+   private double a(btj $$0, je $$1) {
+      eye $$2 = eye.b($$1);
+      return Math.atan2($$2.c() - $$0.dD(), $$2.a() - $$0.dx()) / (float) (Math.PI * 2);
+   }
+
+   private double a(btj $$0) {
+      return azc.c((double)($$0.dJ() / 360.0F), 1.0);
+   }
+
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
+
+   public interface a {
+      @Nullable
+      jm getPos(gax var1, cvl var2, btj var3);
+   }
+
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
+      }
+
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = azc.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = azc.c(this.a + this.b, 1.0);
       }
    }
 }

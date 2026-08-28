@@ -1,37 +1,36 @@
-public class aeo implements zg<abu> {
-   public static final yx<vw, aeo> a = zg.a(aeo::a, aeo::new);
-   private final double b;
-   private final double c;
+public record aeo(agl e, byte f) implements zk<abz> {
+   public static final zb<wo, aeo> a = zk.a(aeo::a, aeo::new);
+   public static final byte b = 1;
+   public static final byte c = 2;
+   public static final byte d = 3;
 
-   public aeo(dut $$0) {
-      this.b = $$0.a();
-      this.c = $$0.b();
+   private aeo(wo $$0) {
+      this(new agl($$0), $$0.readByte());
    }
 
-   private aeo(vw $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
+   private void a(wo $$0) {
+      this.e.a($$0);
+      $$0.l(this.f);
    }
 
    @Override
-   public zi<aeo> a() {
-      return agg.ar;
+   public zm<aeo> a() {
+      return ago.am;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public double b() {
-      return this.c;
+   public boolean a(byte $$0) {
+      return (this.f & $$0) != 0;
    }
 
-   public double e() {
-      return this.b;
+   public agl b() {
+      return this.e;
+   }
+
+   public byte e() {
+      return this.f;
    }
 }

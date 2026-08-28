@@ -1,119 +1,95 @@
-import java.util.EnumSet;
-import java.util.List;
+public abstract class cat extends cbc {
+   protected buh d;
+   protected je e = je.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class cat extends cam {
-   public final chl a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+   public cat(buh $$0) {
+      this.d = $$0;
+      if (!cfa.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
+   }
 
-   public cat(chl $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cam.a.a));
+   protected boolean h() {
+      if (!this.f) {
+         return false;
+      } else {
+         dua $$0 = this.d.dS().a_(this.e);
+         if (!($$0.b() instanceof djb)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(djb.c);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         dua $$1 = this.d.dS().a_(this.e);
+         if ($$1.b() instanceof djb) {
+            ((djb)$$1.b()).a(this.d, this.d.dS(), $$1, this.e, $$0);
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      if (!this.a.N_() && !this.a.gW()) {
-         List<bsr> $$0 = this.a.dO().a(this.a, this.a.cK().c(9.0, 4.0, 9.0), $$0x -> {
-            bsx<?> $$1x = $$0x.am();
-            return $$1x == bsx.an || $$1x == bsx.be;
-         });
-         chl $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (bsr $$3 : $$0) {
-            chl $$4 = (chl)$$3;
-            if ($$4.gW() && !$$4.gV()) {
-               double $$5 = this.a.g($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            for (bsr $$6 : $$0) {
-               chl $$7 = (chl)$$6;
-               if ($$7.N_() && !$$7.gV()) {
-                  double $$8 = this.a.g($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
+      if (!cfa.a(this.d)) {
+         return false;
+      } else if (!this.d.Q) {
+         return false;
+      } else {
+         cdp $$0 = (cdp)this.d.P();
+         eqp $$1 = $$0.k();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               eqn $$3 = $$1.a($$2);
+               this.e = new je($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dz(), (double)this.e.w()) > 2.25)) {
+                  this.f = djb.a(this.d.dS(), this.e);
+                  if (this.f) {
+                     return true;
                   }
                }
             }
-         }
 
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.N_() && !this.a($$1, 1)) {
-            return false;
+            this.e = this.d.ds().d();
+            this.f = djb.a(this.d.dS(), this.e);
+            return this.f;
          } else {
-            this.a.a($$1);
-            return true;
+            return false;
          }
-      } else {
-         return false;
       }
    }
 
    @Override
    public boolean c() {
-      if (this.a.gW() && this.a.gX().bE() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.gX());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
-            }
-         }
-
-         if (this.d > 0) {
-            this.d--;
-         }
-
-         return true;
-      } else {
-         return false;
-      }
+      return !this.a;
    }
 
    @Override
-   public void e() {
-      this.a.gy();
-      this.b = 2.1;
+   public void d() {
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dx());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dD());
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (this.a.gW()) {
-         if (!(this.a.A() instanceof cjb)) {
-            chl $$0 = this.a.gX();
-            double $$1 = (double)this.a.f($$0);
-            float $$2 = 2.0F;
-            exc $$3 = new exc($$0.dt() - this.a.dt(), $$0.dv() - this.a.dv(), $$0.dz() - this.a.dz()).d().a(Math.max($$1 - 2.0, 0.0));
-            this.a.N().a(this.a.dt() + $$3.c, this.a.dv() + $$3.d, this.a.dz() + $$3.e, this.b);
-         }
-      }
-   }
-
-   private boolean a(chl $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.gW()) {
-         return $$0.gX().N_() ? true : this.a($$0.gX(), ++$$1);
-      } else {
-         return false;
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dx());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dD());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
    }
 }

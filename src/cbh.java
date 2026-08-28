@@ -1,42 +1,36 @@
-import java.util.EnumSet;
+public class cbh extends cbc {
+   private final cgs a;
+   private arh b;
+   private boolean c;
 
-public class cbh extends cam {
-   private final btp a;
-   private double b;
-   private double c;
-   private int d;
-
-   public cbh(btp $$0) {
+   public cbh(cgs $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cam.a.a, cam.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.dR().i() < 0.02F;
+      arh $$0 = (arh)this.a.R_();
+      boolean $$1 = $$0 != null && !$$0.P_() && !$$0.gd().b && !$$0.bi() && !$$0.aw;
+      return !this.a.go() && $$1 && this.a.gE();
    }
 
    @Override
-   public boolean c() {
-      return this.d >= 0;
+   public boolean S_() {
+      return !this.c;
    }
 
    @Override
    public void d() {
-      double $$0 = (Math.PI * 2) * this.a.dR().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.dR().a(20);
-   }
-
-   @Override
-   public boolean V_() {
-      return true;
+      this.b = (arh)this.a.R_();
+      this.c = false;
    }
 
    @Override
    public void a() {
-      this.d--;
-      this.a.I().a(this.a.dt() + this.b, this.a.dx(), this.a.dz() + this.c);
+      if (!this.c && !this.a.y() && !this.a.K_()) {
+         if (this.a.cO().c(this.b.cO())) {
+            this.c = this.a.b(this.b);
+         }
+      }
    }
 }

@@ -1,31 +1,42 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
 
-public class elp extends ejr {
-   public static final MapCodec<elp> d = a(elp::new);
+public class elp extends elw {
+   public static final MapCodec<elp> a = MapCodec.unit(() -> elp.b);
+   public static final elp b = new elp();
 
-   public elp(ejr.c $$0) {
-      super($$0);
+   private elp() {
+      super(ely.a.a);
    }
 
    @Override
-   public Optional<ejr.b> a(ejr.a $$0) {
-      dmm $$1 = dmm.a($$0.f());
-      jd $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new ejr.b($$2, (Consumer<ekj>)($$3 -> this.a($$3, $$2, $$1, $$0))));
-   }
-
-   private void a(ekj $$0, jd $$1, dmm $$2, ejr.a $$3) {
-      List<ejv> $$4 = Lists.newArrayList();
-      elo.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   public ki a(eor $$0, dnj $$1) {
+      return ki.g;
    }
 
    @Override
-   public eka<?> e() {
-      return eka.c;
+   public List<eoq.c> a(eor $$0, je $$1, dnj $$2, azk $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public ekg a(eor $$0, je $$1, dnj $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(eor $$0, dep $$1, den $$2, dvx $$3, je $$4, je $$5, dnj $$6, ekg $$7, azk $$8, eoa $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public elx<?> a() {
+      return elx.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

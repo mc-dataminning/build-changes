@@ -1,48 +1,39 @@
-import java.util.Objects;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class fkp {
-   private final Consumer<fik> a;
-   private final Consumer<fik> b;
-   @Nullable
-   private fko c;
-   @Nullable
-   private fms d;
+public class fkp extends fjy {
+   private final fjl a;
 
-   public fkp(Consumer<fik> $$0, Consumer<fik> $$1) {
+   public fkp(fjl $$0, xd $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public void a(fms $$0) {
-      this.d = $$0;
-      fko $$1 = this.a();
-      if ($$1 != null) {
-         $$1.a($$0);
-      }
+   @Override
+   protected void b(fjn $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.y() / 2;
+      int $$5 = this.E() + this.w() / 2;
+      xd $$6 = this.z();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fpi.a(ad.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   public void a(fko $$0, boolean $$1) {
-      if (!Objects.equals(this.c, $$0)) {
-         if (this.c != null) {
-            this.c.a(this.b);
-         }
+   @Override
+   protected void a(fnx $$0) {
+   }
 
-         this.c = $$0;
-         $$0.a(this.a);
-         if (this.d != null) {
-            $$0.a(this.d);
-         }
+   @Override
+   public void a(hbj $$0) {
+   }
 
-         if ($$1) {
-            fgo.Q().aj().a(gtv.a(avp.Ar, 1.0F));
-         }
-      }
+   @Override
+   public boolean C() {
+      return false;
    }
 
    @Nullable
-   public fko a() {
-      return this.c;
+   @Override
+   public fjk a(fod $$0) {
+      return null;
    }
 }

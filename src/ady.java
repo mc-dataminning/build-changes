@@ -1,21 +1,37 @@
-public record ady(int b, wz c) implements zg<abu> {
-   public static final yx<wk, ady> a = yx.a(yv.g, ady::b, xb.d, ady::e, ady::new);
+public class ady implements zk<abz> {
+   public static final zb<wa, ady> a = zk.a(ady::a, ady::new);
+   private final je b;
+   private final boolean c;
 
-   @Override
-   public zi<ady> a() {
-      return agg.ad;
+   public ady(je $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(abu $$0) {
+   private ady(wa $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(wa $$0) {
+      $$0.a(this.b);
+      $$0.a(this.c);
+   }
+
+   @Override
+   public zm<ady> a() {
+      return ago.Y;
+   }
+
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean c() {
-      return true;
+   public je b() {
+      return this.b;
    }
 
-   public wz e() {
+   public boolean e() {
       return this.c;
    }
 }

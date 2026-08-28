@@ -1,36 +1,35 @@
-public class ary implements ajr {
-   private static final wz b = wz.c("multiplayer.status.request_handled");
-   private final ajq c;
-   private final vt d;
-   private boolean e;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-   public ary(ajq $$0, vt $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public record ary(String b, xh c) {
+   public static final ary a = a("");
+
+   public static ary a(String $$0) {
+      return new ary($$0, xh.c);
    }
 
-   @Override
-   public void a(vv $$0) {
+   public static ary b(String $$0) {
+      return new ary($$0, xh.b);
    }
 
-   @Override
+   @Nullable
+   public String a() {
+      return this.c.a(this.b);
+   }
+
+   public String b() {
+      return Objects.requireNonNullElse(this.a(), "");
+   }
+
    public boolean c() {
-      return this.d.i();
+      return !this.c.a();
    }
 
-   @Override
-   public void a(ajs $$0) {
-      if (this.e) {
-         this.d.a(b);
-      } else {
-         this.e = true;
-         this.d.a(new ajp(this.c));
-      }
+   public String d() {
+      return this.b;
    }
 
-   @Override
-   public void a(ajm $$0) {
-      this.d.a(new ajj($$0.b()));
-      this.d.a(b);
+   public xh e() {
+      return this.c;
    }
 }

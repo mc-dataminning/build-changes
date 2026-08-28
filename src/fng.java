@@ -1,31 +1,108 @@
-public class fng extends fod {
-   private fjf a;
-   private final Runnable b;
-   private final Runnable c;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.util.freetype.FT_Face;
+import org.lwjgl.util.freetype.FreeType;
 
-   public fng(Runnable $$0, Runnable $$1) {
-      super(wz.c("datapackFailure.title"));
-      this.a = fjf.a;
-      this.b = $$0;
-      this.c = $$1;
+public record fng(alb c, float d, float e, fng.a f, String g) implements fnd {
+   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
+   public static final MapCodec<fng> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alb.a.fieldOf("file").forGetter(fng::c),
+               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fng::d),
+               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fng::e),
+               fng.a.b.optionalFieldOf("shift", fng.a.a).forGetter(fng::f),
+               h.optionalFieldOf("skip", "").forGetter(fng::g)
+            )
+            .apply($$0, fng::new)
+   );
+
+   @Override
+   public fne a() {
+      return fne.b;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.a = fjf.a(this.o, this.n(), this.m - 50);
-      this.c(fim.a(wz.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.m / 2 - 155, this.n / 6 + 96, 150, 20).a());
-      this.c(fim.a(wy.k, $$0 -> this.b.run()).a(this.m / 2 - 155 + 160, this.n / 6 + 96, 150, 20).a());
+   public Either<fnd.b, fnd.c> b() {
+      return Either.left(this::a);
    }
 
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.m / 2, 70);
+   private fao a(aus $$0) throws IOException {
+      FT_Face $$1 = null;
+      ByteBuffer $$2 = null;
+
+      try {
+         far var20;
+         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
+            $$2 = TextureUtil.readResource($$3);
+            $$2.flip();
+            synchronized (fnc.a) {
+               MemoryStack $$4 = MemoryStack.stackPush();
+
+               try {
+                  PointerBuffer $$5 = $$4.mallocPointer(1);
+                  fnc.a(FreeType.FT_New_Memory_Face(fnc.a(), $$2, 0L, $$5), "Initializing font face");
+                  $$1 = FT_Face.create($$5.get());
+               } catch (Throwable var14) {
+                  if ($$4 != null) {
+                     try {
+                        $$4.close();
+                     } catch (Throwable var12) {
+                        var14.addSuppressed(var12);
+                     }
+                  }
+
+                  throw var14;
+               }
+
+               if ($$4 != null) {
+                  $$4.close();
+               }
+
+               String $$6 = FreeType.FT_Get_Font_Format($$1);
+               if (!"TrueType".equals($$6)) {
+                  throw new IOException("Font is not in TTF format, was " + $$6);
+               }
+
+               fnc.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
+               var20 = new far($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
+            }
+         }
+
+         return var20;
+      } catch (Exception var17) {
+         synchronized (fnc.a) {
+            if ($$1 != null) {
+               FreeType.FT_Done_Face($$1);
+            }
+         }
+
+         MemoryUtil.memFree($$2);
+         throw var17;
+      }
    }
 
-   @Override
-   public boolean aJ_() {
-      return false;
+   public static record a(float c, float d) {
+      public static final fng.a a = new fng.a(0.0F, 0.0F);
+      public static final Codec<fng.a> b = Codec.floatRange(-512.0F, 512.0F)
+         .listOf()
+         .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new fng.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+
+      public float a() {
+         return this.c;
+      }
+
+      public float b() {
+         return this.d;
+      }
    }
 }

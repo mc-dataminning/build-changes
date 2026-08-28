@@ -1,60 +1,37 @@
-import com.mojang.brigadier.context.StringRange;
-import com.mojang.brigadier.suggestion.Suggestion;
-import com.mojang.brigadier.suggestion.Suggestions;
-import java.util.List;
-import java.util.Optional;
+public class acm implements zk<abz> {
+   public static final zb<wa, acm> a = zk.a(acm::a, acm::new);
+   private final brh b;
+   private final boolean c;
 
-public record acm(int b, int c, int d, List<acm.a> e) implements zg<abu> {
-   public static final yx<wk, acm> a = yx.a(yv.g, acm::e, yv.g, acm::f, yv.g, acm::g, acm.a.a.a(yv.a()), acm::h, acm::new);
+   public acm(brh $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   public acm(int $$0, Suggestions $$1) {
-      this(
-         $$0,
-         $$1.getRange().getStart(),
-         $$1.getRange().getLength(),
-         $$1.getList().stream().map($$0x -> new acm.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xc::a))).toList()
-      );
+   private acm(wa $$0) {
+      this.b = brh.a($$0.readUnsignedByte());
+      this.c = $$0.readBoolean();
+   }
+
+   private void a(wa $$0) {
+      $$0.l(this.b.a());
+      $$0.a(this.c);
    }
 
    @Override
-   public zi<acm> a() {
-      return agg.r;
+   public zm<acm> a() {
+      return ago.m;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public Suggestions b() {
-      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
-      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
-   }
-
-   public int e() {
-      return this.b;
-   }
-
-   public int f() {
+   public boolean b() {
       return this.c;
    }
 
-   public int g() {
-      return this.d;
-   }
-
-   public List<acm.a> h() {
-      return this.e;
-   }
-
-   public static record a(String b, Optional<wz> c) {
-      public static final yx<wk, acm.a> a = yx.a(yv.l, acm.a::a, xb.e, acm.a::b, acm.a::new);
-
-      public String a() {
-         return this.b;
-      }
-
-      public Optional<wz> b() {
-         return this.c;
-      }
+   public brh e() {
+      return this.b;
    }
 }

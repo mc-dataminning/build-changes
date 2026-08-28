@@ -1,44 +1,80 @@
-public class gfp implements fbm {
-   private final fbm a;
-   private final gql b;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-   public gfp(fbm $$0, gql $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public abstract class gfp extends cnp {
+   @Nullable
+   private gbi cw;
+   protected eye b = eye.c;
+   public float c;
+   public float d;
+   public float e;
+   public final gax f;
+   public float g;
+   public float h;
+
+   public gfp(gax $$0, GameProfile $$1) {
+      super($$0, $$0.W(), $$0.X(), $$1);
+      this.f = $$0;
    }
 
    @Override
-   public fbm a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   public boolean P_() {
+      gbi $$0 = this.a();
+      return $$0 != null && $$0.e() == ddp.d;
    }
 
    @Override
-   public fbm a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public boolean f() {
+      gbi $$0 = this.a();
+      return $$0 != null && $$0.e() == ddp.b;
+   }
+
+   @Nullable
+   protected gbi a() {
+      if (this.cw == null) {
+         this.cw = fib.Q().L().a(this.cD());
+      }
+
+      return this.cw;
    }
 
    @Override
-   public fbm a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public void l() {
+      this.g = this.h;
+      this.b = this.dv();
+      super.l();
    }
 
-   @Override
-   public fbm a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public eye I(float $$0) {
+      return this.b.a(this.dv(), (double)$$0);
    }
 
-   @Override
-   public fbm b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
+   public gxl b() {
+      gbi $$0 = this.a();
+      return $$0 == null ? gxc.a(this.cD()) : $$0.g();
    }
 
-   @Override
-   public fbm b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
+   public float a(boolean $$0) {
+      float $$1 = 1.0F;
+      if (this.gd().b) {
+         $$1 *= 1.1F;
+      }
 
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+      float $$2 = this.gd().b();
+      if ($$2 != 0.0F) {
+         float $$3 = (float)this.h(bvm.v) / $$2;
+         $$1 *= ($$3 + 1.0F) / 2.0F;
+      }
+
+      if (this.fv()) {
+         if (this.fx().a(cvo.ow)) {
+            float $$4 = Math.min((float)this.fz() / 20.0F, 1.0F);
+            $$1 *= 1.0F - azc.k($$4) * 0.15F;
+         } else if ($$0 && this.gA()) {
+            return 0.1F;
+         }
+      }
+
+      return $$1;
    }
 }

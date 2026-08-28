@@ -1,44 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class edh extends ece<eeq> {
-   private static final int a = 7;
+public class edh implements efg {
+   public static final Codec<edh> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alb.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
+               alb.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
+               eop.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
+               eop.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, edh::new)
+   );
+   public final List<alb> b;
+   public final List<alb> c;
+   public final jn<eoo> d;
+   public final jn<eoo> e;
+   public final int f;
 
-   edh(Codec<eeq> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(ecg<eeq> $$0) {
-      dds $$1 = $$0.b();
-      ayw $$2 = $$0.d();
-      eeq $$3 = $$0.f();
-      jd $$4 = $$0.e();
-      int $$5 = $$2.a($$3.c + 1);
-      jd.a $$6 = new jd.a();
-
-      for (int $$7 = 0; $$7 < $$5; $$7++) {
-         this.a($$6, $$2, $$4, Math.min($$7, 7));
-         dtc $$8 = $$1.a_($$6);
-
-         for (eeq.a $$9 : $$3.b) {
-            if (ecz.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
-               $$1.a($$6, $$9.c, 2);
-               break;
-            }
-         }
+   public edh(List<alb> $$0, List<alb> $$1, jn<eoo> $$2, jn<eoo> $$3, int $$4) {
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
+      } else if ($$0.size() != $$1.size()) {
+         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
+      } else {
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
       }
-
-      return true;
-   }
-
-   private void a(jd.a $$0, ayw $$1, jd $$2, int $$3) {
-      int $$4 = this.a($$1, $$3);
-      int $$5 = this.a($$1, $$3);
-      int $$6 = this.a($$1, $$3);
-      $$0.a($$2, $$4, $$5, $$6);
-   }
-
-   private int a(ayw $$0, int $$1) {
-      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

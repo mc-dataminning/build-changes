@@ -1,41 +1,37 @@
-public class fzn {
-   private final geb a;
-   private final fzf b;
-   private final gex c;
-   private fzn.a d = fzn.a.a;
+public class fzn extends fxa<gsu> {
+   private static final int a = 16;
+   private final gab b;
+   private final gab c;
+   private final gab d;
 
-   public fzn(geb $$0, fzf $$1, gex $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public fzn(gab $$0) {
+      super(ghe::j);
+      this.b = $$0.b("bone");
+      this.d = this.b.b("wind");
+      this.c = this.b.b("wind_charge");
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            jd $$0 = this.a.do();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.b($$0) || this.a.R_() || !this.a.bE()) {
-               this.d = fzn.a.c;
-            }
-         case a:
-         case c:
-      }
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      gal $$2 = $$1.a("bone", gag.c(), gad.a(0.0F, 0.0F, 0.0F));
+      $$2.a(
+         "wind",
+         gag.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new gaf(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new gaf(0.0F)),
+         gad.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
+      );
+      $$2.a("wind_charge", gag.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new gaf(0.0F)), gad.a(0.0F, 0.0F, 0.0F));
+      return gah.a($$0, 64, 32);
    }
 
-   public boolean b() {
-      return this.d == fzn.a.c;
+   @Override
+   public void a(gsu $$0) {
+      this.c.f = -$$0.p * 16.0F * (float) (Math.PI / 180.0);
+      this.d.f = $$0.p * 16.0F * (float) (Math.PI / 180.0);
    }
 
-   public void c() {
-      if (this.d == fzn.a.a) {
-         this.d = fzn.a.b;
-      }
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public gab a() {
+      return this.b;
    }
 }

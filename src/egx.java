@@ -1,48 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egx extends eha {
-   public static final MapCodec<egx> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(egx::new, $$0 -> $$0.d);
-   private static final ji b = ji.d;
-   private static final ji[] c = ji.c.a.a().filter($$0 -> $$0 != b.g()).toArray(ji[]::new);
-   private final float d;
+public class egx extends egs {
+   public static final MapCodec<egx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bqp.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, egx::new)
+   );
+   private final bqp b;
+   private final int c;
 
-   public egx(float $$0) {
-      this.d = $$0;
+   public egx(bqp $$0, bqp $$1, bqp $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   protected ehb<?> a() {
-      return ehb.d;
+   protected egt<?> a() {
+      return egt.j;
    }
 
    @Override
-   public void a(eha.a $$0) {
-      ayw $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<jd> $$2 = $$0.d();
-         List<jd> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<jd> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<jd> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dga.pe.o().a(dfs.b, b));
-               $$0.a().a($$6.get(), dqj.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
+   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
+      je $$9 = $$5.a();
+      je.a $$10 = $$9.k();
 
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(dqe.c.a($$1.a(599)));
-                  }
-               });
-            }
-         }
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
       }
+   }
+
+   @Override
+   public int a(azk $$0, int $$1, egc $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

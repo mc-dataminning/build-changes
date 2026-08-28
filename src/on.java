@@ -1,7 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface on {
-   void a(akr var1, cyz<?> var2, @Nullable ag var3);
-
-   af.a a();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface on {
 }

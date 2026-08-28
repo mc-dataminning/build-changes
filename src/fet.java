@@ -1,31 +1,15 @@
-import javax.annotation.Nullable;
+import java.lang.Thread.UncaughtExceptionHandler;
+import org.slf4j.Logger;
 
-public class fet {
-   public final int a;
-   @Nullable
-   public final String b;
+public class fet implements UncaughtExceptionHandler {
+   private final Logger a;
 
-   fet(int $$0, String $$1) {
+   public fet(Logger $$0) {
       this.a = $$0;
-      this.b = $$1;
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
-
-      public fet.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fet.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fet a() {
-         return new fet(this.a, this.b);
-      }
+   @Override
+   public void uncaughtException(Thread $$0, Throwable $$1) {
+      this.a.error("Caught previously unhandled exception", $$1);
    }
 }

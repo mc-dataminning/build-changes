@@ -1,25 +1,21 @@
-public class glm extends gki<cno> {
-   private static final akr a = akr.b("textures/entity/llama/spit.png");
-   private final fwe<cno> g;
+public abstract class glm<T extends clo, S extends gvj, M extends fzr<S>> extends gnj<T, S, M> {
+   private static final alb a = alb.b("textures/entity/zombie/zombie.png");
 
-   public glm(gkj.a $$0) {
-      super($$0);
-      this.g = new fwe<>($$0.a(fyj.aA));
+   protected glm(gms.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new gqv<>(this, $$3, $$4, $$5, $$6, $$0.g()));
    }
 
-   public void a(cno $$0, float $$1, float $$2, fbi $$3, gez $$4, int $$5) {
-      $$3.a();
-      $$3.a(0.0F, 0.15F, 0.0F);
-      $$3.a(a.d.rotationDegrees(ayo.i($$2, $$0.O, $$0.dE()) - 90.0F));
-      $$3.a(a.f.rotationDegrees(ayo.i($$2, $$0.P, $$0.dG())));
-      this.g.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
-      fbm $$6 = $$4.getBuffer(this.g.a(a));
-      this.g.a($$3, $$6, $$5, gqc.d);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public akr a(cno $$0) {
+   public alb a(S $$0) {
       return a;
+   }
+
+   public void a(T $$0, S $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gs();
+   }
+
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

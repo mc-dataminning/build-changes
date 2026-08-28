@@ -1,71 +1,46 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class cyf {
-   @Nullable
-   private final cmx a;
-   private final bqq b;
-   private final ewy c;
-   private final dcw d;
-   private final cuq e;
+public record cyf(int d, List<cye> e) implements cyr {
+   public static final int a = 256;
+   public static final Codec<cyf> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayl.j.optionalFieldOf("flight_duration", 0).forGetter(cyf::a),
+               cye.c.sizeLimitedListOf(256).optionalFieldOf("explosions", List.of()).forGetter(cyf::b)
+            )
+            .apply($$0, cyf::new)
+   );
+   public static final zb<ByteBuf, cyf> c = zb.a(yz.g, cyf::a, cye.d.a(yz.c(256)), cyf::b, cyf::new);
 
-   public cyf(cmx $$0, bqq $$1, ewy $$2) {
-      this($$0.dO(), $$0, $$1, $$0.b($$1), $$2);
+   public cyf(int d, List<cye> e) {
+      if (e.size() > 256) {
+         throw new IllegalArgumentException("Got " + e.size() + " explosions, but maximum is 256");
+      } else {
+         this.d = d;
+         this.e = e;
+      }
    }
 
-   protected cyf(dcw $$0, @Nullable cmx $$1, bqq $$2, cuq $$3, ewy $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
+   @Override
+   public void a(cvg.b $$0, Consumer<xd> $$1, cxf $$2) {
+      if (this.d > 0) {
+         $$1.accept(xd.c("item.minecraft.firework_rocket.flight").b(xc.v).f(String.valueOf(this.d)).a(n.h));
+      }
+
+      for (cye $$3 : this.e) {
+         $$3.a($$1);
+         $$3.b($$1x -> $$1.accept(xd.b("  ").b($$1x)));
+      }
    }
 
-   protected final ewy j() {
-      return this.c;
-   }
-
-   public jd a() {
-      return this.c.a();
-   }
-
-   public ji k() {
-      return this.c.b();
-   }
-
-   public exc l() {
-      return this.c.e();
-   }
-
-   public boolean m() {
-      return this.c.d();
-   }
-
-   public cuq n() {
-      return this.e;
-   }
-
-   @Nullable
-   public cmx o() {
-      return this.a;
-   }
-
-   public bqq p() {
-      return this.b;
-   }
-
-   public dcw q() {
+   public int a() {
       return this.d;
    }
 
-   public ji g() {
-      return this.a == null ? ji.c : this.a.cH();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fN();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dE();
+   public List<cye> b() {
+      return this.e;
    }
 }

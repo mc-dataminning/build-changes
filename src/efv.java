@@ -1,28 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efv<P extends efu> {
-   public static final efv<efp> a = a("blob_foliage_placer", efp.a);
-   public static final efv<ega> b = a("spruce_foliage_placer", ega.a);
-   public static final efv<efy> c = a("pine_foliage_placer", efy.a);
-   public static final efv<efo> d = a("acacia_foliage_placer", efo.a);
-   public static final efv<efq> e = a("bush_foliage_placer", efq.c);
-   public static final efv<eft> f = a("fancy_foliage_placer", eft.c);
-   public static final efv<efw> g = a("jungle_foliage_placer", efw.a);
-   public static final efv<efx> h = a("mega_pine_foliage_placer", efx.a);
-   public static final efv<efs> i = a("dark_oak_foliage_placer", efs.a);
-   public static final efv<efz> j = a("random_spread_foliage_placer", efz.a);
-   public static final efv<efr> k = a("cherry_foliage_placer", efr.a);
-   private final MapCodec<P> l;
+public class efv implements efg {
+   public static final Codec<efv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               dua.a.fieldOf("target").forGetter($$0x -> $$0x.b),
+               dua.a.fieldOf("state").forGetter($$0x -> $$0x.c),
+               bqp.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+            )
+            .apply($$0, efv::new)
+   );
+   public final dua b;
+   public final dua c;
+   private final bqp d;
 
-   private static <P extends efu> efv<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.U, $$0, new efv<>($$1));
+   public efv(dua $$0, dua $$1, bqp $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private efv(MapCodec<P> $$0) {
-      this.l = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.l;
+   public bqp a() {
+      return this.d;
    }
 }

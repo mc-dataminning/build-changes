@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class ccl<T extends btp & btt> extends cam {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class ccl extends cbc {
+   private final cmx a;
 
-   public ccl(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public ccl(cmx $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cbc.a.c, cbc.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.b.dO().ab().b(dcs.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ei() != null && this.b.ei().am() == bsx.by && this.b.ej() > this.d;
+      if (!this.a.bI()) {
+         return false;
+      } else if (this.a.bi()) {
+         return false;
+      } else if (!this.a.aH()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cnp $$0 = this.a.go();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.ca != null;
+         }
+      }
    }
 
    @Override
    public void d() {
-      this.d = this.b.ej();
-      this.b.ae_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (btt)$$0).forEach(btt::ae_);
-      }
-
-      super.d();
+      this.a.P().o();
    }
 
-   private List<? extends btp> i() {
-      double $$0 = this.b.g(buw.m);
-      ewx $$1 = ewx.a(this.b.dm()).c($$0, 10.0, $$0);
-      return this.b.dO().a((Class<? extends btp>)this.b.getClass(), $$1, bsw.f);
+   @Override
+   public void e() {
+      this.a.a(null);
    }
 }

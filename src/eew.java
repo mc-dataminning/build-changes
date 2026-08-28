@@ -1,19 +1,20 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class eew implements eei {
+public class eew {
    public static final Codec<eew> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(eeq.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eew::new)
+      $$0 -> $$0.group(ejs.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
+            .apply($$0, eew::new)
    );
-   public final List<eeq.a> b;
+   public final jn<ejs> b;
+   public final float c;
 
-   public eew(dtc $$0, dtc $$1) {
-      this(ImmutableList.of(eeq.a(new emx($$0), $$1)));
+   public eew(jn<ejs> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public eew(List<eeq.a> $$0) {
-      this.b = $$0;
+   public boolean a(dep $$0, dvx $$1, azk $$2, je $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

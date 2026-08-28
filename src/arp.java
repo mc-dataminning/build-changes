@@ -1,30 +1,15 @@
-import net.minecraft.server.MinecraftServer;
+import javax.annotation.Nullable;
 
-public class arp implements aim {
-   private final MinecraftServer b;
-   private final vt c;
+public interface arp {
+   void a(dcy var1);
 
-   public arp(MinecraftServer $$0, vt $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
+   void a(dcy var1, @Nullable dwx var2);
 
-   @Override
-   public void a(aij $$0) {
-      if ($$0.g() != aii.b) {
-         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
-      } else {
-         this.c.a(aiv.b, new arw(this.b, this.c, false));
-         this.c.a(aiv.d);
-      }
-   }
+   void a();
 
-   @Override
-   public void a(vv $$0) {
-   }
+   void b();
 
-   @Override
-   public boolean c() {
-      return this.c.i();
+   static int a(int $$0) {
+      return 2 * $$0 + 1;
    }
 }

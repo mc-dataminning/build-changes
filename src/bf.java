@@ -8,7 +8,7 @@ public class bf extends dv<bf.a> {
       return bf.a.a;
    }
 
-   public void a(aqv $$0, cuq $$1) {
+   public void a(arh $$0, cvl $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,15 +21,15 @@ public class bf extends dv<bf.a> {
          return an.A.a(new bf.a(Optional.empty(), Optional.empty()));
       }
 
-      public static ao<bf.a> a(dcv $$0) {
-         return a(cs.a.a().a($$0.r()));
+      public static ao<bf.a> a(jo<cvg> $$0, ddr $$1) {
+         return a(cs.a.a().a($$0, $$1.r()));
       }
 
       public static ao<bf.a> a(cs.a $$0) {
          return an.A.a(new bf.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(cuq $$0) {
+      public boolean a(cvl $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

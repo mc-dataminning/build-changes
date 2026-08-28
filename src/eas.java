@@ -1,19 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-record eas(kh e) implements eaf {
-   public static MapCodec<eas> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kh.f.optionalFieldOf("offset", kh.g).forGetter(eas::g)).apply($$0, eas::new));
+public record eas(eau b, ear c) {
+   public static final Codec<eas> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eau.a.forGetter(eas::a), ear.a.forGetter(eas::b)).apply($$0, $$0.stable(eas::new))
+   );
 
-   @Override
-   public eag<?> a() {
-      return eag.m;
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, eau $$1, ear $$2) {
+      return a.encodeStart($$0, new eas($$1, $$2));
    }
 
-   public boolean a(dds $$0, jd $$1) {
-      return $$0.a(null, exs.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   public static <T> DataResult<T> a(DynamicOps<T> $$0, eau $$1, kb $$2) {
+      return a($$0, $$1, new ear($$2.d(lv.bb)));
    }
 
-   public kh g() {
-      return this.e;
+   public eau a() {
+      return this.b;
+   }
+
+   public ear b() {
+      return this.c;
    }
 }

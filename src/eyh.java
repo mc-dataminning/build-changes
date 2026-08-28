@@ -1,197 +1,219 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import java.util.BitSet;
 
-public class eyh extends eql {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final eyg c;
+public final class eyh extends eyn {
+   private final BitSet d;
+   private int e;
+   private int f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
 
-   public eyh(eyg $$0) {
-      this.c = $$0;
+   public eyh(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+      this.d = new BitSet($$0 * $$1 * $$2);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public eyh b(ub $$0, jo.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
+   public static eyh a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      eyh $$9 = new eyh($$0, $$1, $$2);
+      $$9.e = $$3;
+      $$9.f = $$4;
+      $$9.g = $$5;
+      $$9.h = $$6;
+      $$9.i = $$7;
+      $$9.j = $$8;
+
+      for (int $$10 = $$3; $$10 < $$6; $$10++) {
+         for (int $$11 = $$4; $$11 < $$7; $$11++) {
+            for (int $$12 = $$5; $$12 < $$8; $$12++) {
+               $$9.a($$10, $$11, $$12, false);
+            }
+         }
       }
 
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
+      return $$9;
    }
 
-   private void a(uh $$0, jo.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         ub $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         eyb $$5 = this.c.c($$4);
-         wz $$6 = wz.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
+   public eyh(eyn $$0) {
+      super($$0.a, $$0.b, $$0.c);
+      if ($$0 instanceof eyh) {
+         this.d = (BitSet)((eyh)$$0).d.clone();
+      } else {
+         this.d = new BitSet(this.a * this.b * this.c);
 
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
-
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
-
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$3.b("MemberNamePrefix", 8)) {
-            wz $$7 = wz.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
+         for (int $$1 = 0; $$1 < this.a; $$1++) {
+            for (int $$2 = 0; $$2 < this.b; $$2++) {
+               for (int $$3 = 0; $$3 < this.c; $$3++) {
+                  if ($$0.b($$1, $$2, $$3)) {
+                     this.d.set(this.a($$1, $$2, $$3));
+                  }
+               }
             }
-         }
-
-         if ($$3.b("MemberNameSuffix", 8)) {
-            wz $$8 = wz.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
-            }
-         }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            eyi.b $$9 = eyi.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            eyi.b $$10 = eyi.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            eyi.a $$11 = eyi.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
-      }
-   }
-
-   private void a(eyb $$0, uh $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
-   }
-
-   private void a(ub $$0) {
-      for (String $$1 : $$0.e()) {
-         exx $$2 = exx.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            exy $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
          }
       }
+
+      this.e = $$0.a(jj.a.a);
+      this.f = $$0.a(jj.a.b);
+      this.g = $$0.a(jj.a.c);
+      this.h = $$0.b(jj.a.a);
+      this.i = $$0.b(jj.a.b);
+      this.j = $$0.b(jj.a.c);
    }
 
-   private void b(uh $$0, jo.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         ub $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         eyj $$5 = eyj.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, eyj.b.d());
-            return eyj.b;
-         });
-         String $$6 = $$3.l("Name");
-         wz $$7 = wz.a.a($$3.l("DisplayName"), $$1);
-         eyj.a $$8 = eyj.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         yp $$10 = (yp)yr.b.parse($$1.a(up.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
+   protected int a(int $$0, int $$1, int $$2) {
+      return ($$0 * this.b + $$1) * this.c + $$2;
+   }
+
+   @Override
+   public boolean b(int $$0, int $$1, int $$2) {
+      return this.d.get(this.a($$0, $$1, $$2));
+   }
+
+   private void a(int $$0, int $$1, int $$2, boolean $$3) {
+      this.d.set(this.a($$0, $$1, $$2));
+      if ($$3) {
+         this.e = Math.min(this.e, $$0);
+         this.f = Math.min(this.f, $$1);
+         this.g = Math.min(this.g, $$2);
+         this.h = Math.max(this.h, $$0 + 1);
+         this.i = Math.max(this.i, $$1 + 1);
+         this.j = Math.max(this.j, $$2 + 1);
       }
    }
 
    @Override
-   public ub a(ub $$0, jo.a $$1) {
-      $$0.a("Objectives", this.b($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.a($$1));
-      this.b($$0);
-      return $$0;
+   public void c(int $$0, int $$1, int $$2) {
+      this.a($$0, $$1, $$2, true);
    }
 
-   private uh a(jo.a $$0) {
-      uh $$1 = new uh();
-
-      for (eyb $$3 : this.c.g()) {
-         ub $$4 = new ub();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", wz.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
-
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", wz.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", wz.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         uh $$5 = new uh();
-
-         for (String $$6 : $$3.g()) {
-            $$5.add(uw.a($$6));
-         }
-
-         $$4.a("Players", $$5);
-         $$1.add($$4);
-      }
-
-      return $$1;
+   @Override
+   public boolean a() {
+      return this.d.isEmpty();
    }
 
-   private void b(ub $$0) {
-      ub $$1 = new ub();
+   @Override
+   public int a(jj.a $$0) {
+      return $$0.a(this.e, this.f, this.g);
+   }
 
-      for (exx $$2 : exx.values()) {
-         exy $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
+   @Override
+   public int b(jj.a $$0) {
+      return $$0.a(this.h, this.i, this.j);
+   }
+
+   static eyh a(eyn $$0, eyn $$1, eyq $$2, eyq $$3, eyq $$4, eyi $$5) {
+      eyh $$6 = new eyh($$2.size() - 1, $$3.size() - 1, $$4.size() - 1);
+      int[] $$7 = new int[]{Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE, Integer.MIN_VALUE};
+      $$2.a(($$7x, $$8, $$9) -> {
+         boolean[] $$10 = new boolean[]{false};
+         $$3.a(($$10x, $$11, $$12) -> {
+            boolean[] $$13 = new boolean[]{false};
+            $$4.a(($$12x, $$13x, $$14) -> {
+               if ($$5.apply($$0.e($$7x, $$10x, $$12x), $$1.e($$8, $$11, $$13x))) {
+                  $$6.d.set($$6.a($$9, $$12, $$14));
+                  $$7[2] = Math.min($$7[2], $$14);
+                  $$7[5] = Math.max($$7[5], $$14);
+                  $$13[0] = true;
+               }
+
+               return true;
+            });
+            if ($$13[0]) {
+               $$7[1] = Math.min($$7[1], $$12);
+               $$7[4] = Math.max($$7[4], $$12);
+               $$10[0] = true;
+            }
+
+            return true;
+         });
+         if ($$10[0]) {
+            $$7[0] = Math.min($$7[0], $$9);
+            $$7[3] = Math.max($$7[3], $$9);
          }
-      }
 
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
+         return true;
+      });
+      $$6.e = $$7[0];
+      $$6.f = $$7[1];
+      $$6.g = $$7[2];
+      $$6.h = $$7[3] + 1;
+      $$6.i = $$7[4] + 1;
+      $$6.j = $$7[5] + 1;
+      return $$6;
+   }
+
+   protected static void a(eyn $$0, eyn.b $$1, boolean $$2) {
+      eyh $$3 = new eyh($$0);
+
+      for (int $$4 = 0; $$4 < $$3.b; $$4++) {
+         for (int $$5 = 0; $$5 < $$3.a; $$5++) {
+            int $$6 = -1;
+
+            for (int $$7 = 0; $$7 <= $$3.c; $$7++) {
+               if ($$3.e($$5, $$4, $$7)) {
+                  if ($$2) {
+                     if ($$6 == -1) {
+                        $$6 = $$7;
+                     }
+                  } else {
+                     $$1.consume($$5, $$4, $$7, $$5 + 1, $$4 + 1, $$7 + 1);
+                  }
+               } else if ($$6 != -1) {
+                  int $$8 = $$5;
+                  int $$9 = $$4;
+                  $$3.b($$6, $$7, $$5, $$4);
+
+                  while ($$3.a($$6, $$7, $$8 + 1, $$4)) {
+                     $$3.b($$6, $$7, $$8 + 1, $$4);
+                     $$8++;
+                  }
+
+                  while ($$3.a($$5, $$8 + 1, $$6, $$7, $$9 + 1)) {
+                     for (int $$10 = $$5; $$10 <= $$8; $$10++) {
+                        $$3.b($$6, $$7, $$10, $$9 + 1);
+                     }
+
+                     $$9++;
+                  }
+
+                  $$1.consume($$5, $$4, $$6, $$8 + 1, $$9 + 1, $$7);
+                  $$6 = -1;
+               }
+            }
+         }
       }
    }
 
-   private uh b(jo.a $$0) {
-      uh $$1 = new uh();
+   private boolean a(int $$0, int $$1, int $$2, int $$3) {
+      return $$2 < this.a && $$3 < this.b ? this.d.nextClearBit(this.a($$2, $$3, $$0)) >= this.a($$2, $$3, $$1) : false;
+   }
 
-      for (exy $$3 : this.c.c()) {
-         ub $$4 = new ub();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", wz.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         yp $$5 = $$3.f();
-         if ($$5 != null) {
-            yr.b.encodeStart($$0.a(up.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
+   private boolean a(int $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$0; $$5 < $$1; $$5++) {
+         if (!this.a($$2, $$3, $$5, $$4)) {
+            return false;
          }
-
-         $$1.add($$4);
       }
 
-      return $$1;
+      return true;
+   }
+
+   private void b(int $$0, int $$1, int $$2, int $$3) {
+      this.d.clear(this.a($$2, $$3, $$0), this.a($$2, $$3, $$1));
+   }
+
+   public boolean d(int $$0, int $$1, int $$2) {
+      boolean $$3 = $$0 > 0 && $$0 < this.a - 1 && $$1 > 0 && $$1 < this.b - 1 && $$2 > 0 && $$2 < this.c - 1;
+      return $$3
+         && this.b($$0, $$1, $$2)
+         && this.b($$0 - 1, $$1, $$2)
+         && this.b($$0 + 1, $$1, $$2)
+         && this.b($$0, $$1 - 1, $$2)
+         && this.b($$0, $$1 + 1, $$2)
+         && this.b($$0, $$1, $$2 - 1)
+         && this.b($$0, $$1, $$2 + 1);
    }
 }

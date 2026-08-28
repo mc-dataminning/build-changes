@@ -1,86 +1,61 @@
-public class bqj implements bqk {
-   private final bqk b;
-   private final bqk c;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public bqj(bqk $$0, bqk $$1) {
+public class bqj extends bqn {
+   public static final MapCodec<bqj> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.d),
+                  Codec.FLOAT.fieldOf("min").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("max").forGetter($$0x -> $$0x.f)
+               )
+               .apply($$0, bqj::new)
+      )
+      .validate($$0 -> $$0.f < $$0.e ? DataResult.error(() -> "Max must be larger than min: [" + $$0.e + ", " + $$0.f + "]") : DataResult.success($$0));
+   private final float b;
+   private final float d;
+   private final float e;
+   private final float f;
+
+   public static bqj a(float $$0, float $$1, float $$2, float $$3) {
+      return new bqj($$0, $$1, $$2, $$3);
+   }
+
+   private bqj(float $$0, float $$1, float $$2, float $$3) {
       this.b = $$0;
-      this.c = $$1;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
    @Override
-   public int b() {
-      return this.b.b() + this.c.b();
+   public float a(azk $$0) {
+      return a($$0, this.b, this.d, this.e, this.f);
+   }
+
+   public static float a(azk $$0, float $$1, float $$2, float $$3, float $$4) {
+      return azc.a(azc.c($$0, $$1, $$2), $$3, $$4);
    }
 
    @Override
-   public boolean c() {
-      return this.b.c() && this.c.c();
-   }
-
-   public boolean a(bqk $$0) {
-      return this.b == $$0 || this.c == $$0;
+   public float a() {
+      return this.e;
    }
 
    @Override
-   public cuq a(int $$0) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b()) : this.b.a($$0);
+   public float b() {
+      return this.f;
    }
 
    @Override
-   public cuq a(int $$0, int $$1) {
-      return $$0 >= this.b.b() ? this.c.a($$0 - this.b.b(), $$1) : this.b.a($$0, $$1);
+   public bqo<?> c() {
+      return bqo.c;
    }
 
    @Override
-   public cuq b(int $$0) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b()) : this.b.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cuq $$1) {
-      if ($$0 >= this.b.b()) {
-         this.c.a($$0 - this.b.b(), $$1);
-      } else {
-         this.b.a($$0, $$1);
-      }
-   }
-
-   @Override
-   public int al_() {
-      return this.b.al_();
-   }
-
-   @Override
-   public void e() {
-      this.b.e();
-      this.c.e();
-   }
-
-   @Override
-   public boolean a(cmx $$0) {
-      return this.b.a($$0) && this.c.a($$0);
-   }
-
-   @Override
-   public void d_(cmx $$0) {
-      this.b.d_($$0);
-      this.c.d_($$0);
-   }
-
-   @Override
-   public void c(cmx $$0) {
-      this.b.c($$0);
-      this.c.c($$0);
-   }
-
-   @Override
-   public boolean b(int $$0, cuq $$1) {
-      return $$0 >= this.b.b() ? this.c.b($$0 - this.b.b(), $$1) : this.b.b($$0, $$1);
-   }
-
-   @Override
-   public void a() {
-      this.b.a();
-      this.c.a();
+   public String toString() {
+      return "normal(" + this.b + ", " + this.d + ") in [" + this.e + "-" + this.f + "]";
    }
 }

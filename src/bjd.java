@@ -4,22 +4,20 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class bjd extends bid {
+public class bjd extends Schema {
    public bjd(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
-   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
-      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      a($$0, $$1, "minecraft:barrel");
-      a($$0, $$1, "minecraft:smoker");
-      a($$0, $$1, "minecraft:blast_furnace");
-      $$0.register($$1, "minecraft:lectern", $$1x -> DSL.optionalFields("Book", bgr.t.in($$0)));
-      $$0.registerSimple($$1, "minecraft:bell");
-      return $$1;
-   }
-
-   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
-      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bgr.t.in($$0))));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         false,
+         bhk.b,
+         () -> DSL.optionalFields(
+               "RootVehicle", DSL.optionalFields("Entity", bhk.A.in($$0)), "Inventory", DSL.list(bhk.t.in($$0)), "EnderItems", DSL.list(bhk.t.in($$0))
+            )
+      );
+      $$0.registerType(true, bhk.A, () -> DSL.optionalFields("Passengers", DSL.list(bhk.A.in($$0)), bhk.B.in($$0)));
    }
 }

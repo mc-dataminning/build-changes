@@ -1,22 +1,42 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class bym {
-   private static final int a = 36;
+   private static final int a = 200;
 
-   public static bvi<btn> a() {
-      return byu.a(
-         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$0 -> $$0.group($$0.a(ccs.x), $$0.a(ccs.y), $$0.a(ccs.A))
-               .apply($$0, ($$1, $$2, $$3) -> ($$4, $$5, $$6) -> {
-                     boolean $$7 = $$0.a($$1).isPresent() || $$0.a($$3).isPresent() || $$0.<btn>a($$2).filter($$1xx -> $$1xx.g((bsr)$$5) <= 36.0).isPresent();
-                     if (!$$7) {
-                        $$1.b();
-                        $$2.b();
-                        $$5.dT().a($$4.aa(), $$4.Z());
-                     }
+   public static <E extends buh> bvy<E> a(BiConsumer<E, buf> $$0) {
+      return a($$0x -> false, $$0, true);
+   }
 
+   public static <E extends buh> bvy<E> a(Predicate<buf> $$0) {
+      return a($$0, ($$0x, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends buh> bvy<E> a() {
+      return a($$0 -> false, ($$0, $$1) -> {
+      }, true);
+   }
+
+   public static <E extends buh> bvy<E> a(Predicate<buf> $$0, BiConsumer<E, buf> $$1, boolean $$2) {
+      return bzk.a(
+         (Function<bzk.b<E>, ? extends App<bzk.c<E>, bzn<E>>>)($$3 -> $$3.group($$3.b(cdi.o), $$3.a(cdi.E)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  buf $$9 = $$3.b($$4);
+                  if ($$7.c($$9) && (!$$2 || !a($$7, $$3.a($$5))) && $$9.bI() && $$9.dS() == $$7.dS() && !$$0.test($$9)) {
                      return true;
-                  }))
+                  } else {
+                     $$1.accept((E)$$7, $$9);
+                     $$4.b();
+                     return true;
+                  }
+               }))
       );
+   }
+
+   private static boolean a(buf $$0, Optional<Long> $$1) {
+      return $$1.isPresent() && $$0.dS().aa() - $$1.get() > 200L;
    }
 }

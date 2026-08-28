@@ -1,17 +1,11 @@
-public abstract class gtj extends gti implements gub {
-   private boolean n;
+public class gtj extends gsv {
+   public cii a;
+   public cid h;
+   public cvl i;
 
-   protected gtj(avo $$0, avq $$1, ayw $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   public gtj() {
+      this.a = cii.a;
+      this.h = cid.a;
+      this.i = cvl.k;
    }
 }

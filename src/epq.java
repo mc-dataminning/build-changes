@@ -1,143 +1,161 @@
 import javax.annotation.Nullable;
 
-public class epq {
-   public final int a;
-   public final int b;
-   public final int c;
-   private final int m;
-   public int d = -1;
-   public float e;
-   public float f;
-   public float g;
+public class epq implements ept {
+   public static final int b = 1;
+   public static final epq c = new epq();
+   protected final ddu d;
    @Nullable
-   public epq h;
-   public boolean i;
-   public float j;
-   public float k;
-   public epv l = epv.a;
+   private final eps<?, ?> a;
+   @Nullable
+   private final eps<?, ?> e;
 
-   public epq(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.m = b($$0, $$1, $$2);
+   public epq(dwj $$0, boolean $$1, boolean $$2) {
+      this.d = $$0.q();
+      this.a = $$1 ? new epj($$0) : null;
+      this.e = $$2 ? new epu($$0) : null;
    }
 
-   public epq a(int $$0, int $$1, int $$2) {
-      epq $$3 = new epq($$0, $$1, $$2);
-      $$3.d = this.d;
-      $$3.e = this.e;
-      $$3.f = this.f;
-      $$3.g = this.g;
-      $$3.h = this.h;
-      $$3.i = this.i;
-      $$3.j = this.j;
-      $$3.k = this.k;
-      $$3.l = this.l;
-      return $$3;
-   }
-
-   public static int b(int $$0, int $$1, int $$2) {
-      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
-   }
-
-   public float a(epq $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return ayo.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float b(epq $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.c - this.c);
-      return ayo.c($$1 * $$1 + $$2 * $$2);
-   }
-
-   public float a(jd $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return ayo.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
-   }
-
-   public float c(epq $$0) {
-      float $$1 = (float)($$0.a - this.a);
-      float $$2 = (float)($$0.b - this.b);
-      float $$3 = (float)($$0.c - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float b(jd $$0) {
-      float $$1 = (float)($$0.u() - this.a);
-      float $$2 = (float)($$0.v() - this.b);
-      float $$3 = (float)($$0.w() - this.c);
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
-   }
-
-   public float d(epq $$0) {
-      float $$1 = (float)Math.abs($$0.a - this.a);
-      float $$2 = (float)Math.abs($$0.b - this.b);
-      float $$3 = (float)Math.abs($$0.c - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public float c(jd $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.a);
-      float $$2 = (float)Math.abs($$0.v() - this.b);
-      float $$3 = (float)Math.abs($$0.w() - this.c);
-      return $$1 + $$2 + $$3;
-   }
-
-   public jd a() {
-      return new jd(this.a, this.b, this.c);
-   }
-
-   public exc b() {
-      return new exc((double)this.a, (double)this.b, (double)this.c);
+   private epq() {
+      this.d = ddu.e(0, 0);
+      this.a = null;
+      this.e = null;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return !($$0 instanceof epq $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   public void a(je $$0) {
+      if (this.a != null) {
+         this.a.a($$0);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0);
+      }
    }
 
    @Override
-   public int hashCode() {
-      return this.m;
-   }
-
-   public boolean c() {
-      return this.d >= 0;
+   public boolean I_() {
+      return this.e != null && this.e.I_() ? true : this.a != null && this.a.I_();
    }
 
    @Override
-   public String toString() {
-      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
+   public int a() {
+      int $$0 = 0;
+      if (this.a != null) {
+         $$0 += this.a.a();
+      }
+
+      if (this.e != null) {
+         $$0 += this.e.a();
+      }
+
+      return $$0;
    }
 
-   public void a(vw $$0) {
-      $$0.p(this.a);
-      $$0.p(this.b);
-      $$0.p(this.c);
-      $$0.a(this.j);
-      $$0.a(this.k);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      $$0.a(this.g);
+   @Override
+   public void a(kg $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
    }
 
-   public static epq b(vw $$0) {
-      epq $$1 = new epq($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   @Override
+   public void a(dcy $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.a($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.a($$0, $$1);
+      }
    }
 
-   protected static void a(vw $$0, epq $$1) {
-      $$1.j = $$0.readFloat();
-      $$1.k = $$0.readFloat();
-      $$1.i = $$0.readBoolean();
-      $$1.l = $$0.b(epv.class);
-      $$1.g = $$0.readFloat();
+   @Override
+   public void b(dcy $$0) {
+      if (this.a != null) {
+         this.a.b($$0);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0);
+      }
+   }
+
+   public epo a(deb $$0) {
+      if ($$0 == deb.b) {
+         return (epo)(this.a == null ? epo.a.a : this.a);
+      } else {
+         return (epo)(this.e == null ? epo.a.a : this.e);
+      }
+   }
+
+   public String a(deb $$0, kg $$1) {
+      if ($$0 == deb.b) {
+         if (this.a != null) {
+            return this.a.b($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.b($$1.s());
+      }
+
+      return "n/a";
+   }
+
+   public epp.b b(deb $$0, kg $$1) {
+      if ($$0 == deb.b) {
+         if (this.a != null) {
+            return this.a.c($$1.s());
+         }
+      } else if (this.e != null) {
+         return this.e.c($$1.s());
+      }
+
+      return epp.b.a;
+   }
+
+   public void a(deb $$0, kg $$1, @Nullable dwb $$2) {
+      if ($$0 == deb.b) {
+         if (this.a != null) {
+            this.a.a($$1.s(), $$2);
+         }
+      } else if (this.e != null) {
+         this.e.a($$1.s(), $$2);
+      }
+   }
+
+   public void b(dcy $$0, boolean $$1) {
+      if (this.a != null) {
+         this.a.b($$0, $$1);
+      }
+
+      if (this.e != null) {
+         this.e.b($$0, $$1);
+      }
+   }
+
+   public int a(je $$0, int $$1) {
+      int $$2 = this.e == null ? 0 : this.e.b($$0) - $$1;
+      int $$3 = this.a == null ? 0 : this.a.b($$0);
+      return Math.max($$3, $$2);
+   }
+
+   public boolean a(kg $$0) {
+      long $$1 = $$0.s();
+      return this.a == null || this.a.f.j($$1) && (this.e == null || this.e.f.j($$1));
+   }
+
+   public int c() {
+      return this.d.ao() + 2;
+   }
+
+   public int d() {
+      return this.d.ap() - 1;
+   }
+
+   public int e() {
+      return this.d() + this.c();
    }
 }

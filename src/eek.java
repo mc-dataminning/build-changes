@@ -1,22 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eek implements eei {
-   public static final Codec<eek> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egj.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               egj.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eek::new)
-   );
-   public final egj b;
-   public final egj c;
-   public final int d;
+public class eek extends edc<efz> {
+   public eek(Codec<efz> $$0) {
+      super($$0);
+   }
 
-   public eek(egj $$0, egj $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   public boolean a(ede<efz> $$0) {
+      azk $$1 = $$0.d();
+      efz $$2 = $$0.f();
+      dep $$3 = $$0.b();
+      je $$4 = $$0.e();
+      dvx $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      ejs $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

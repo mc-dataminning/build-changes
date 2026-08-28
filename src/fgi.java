@@ -1,29 +1,41 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record fgi(int a, wz b, @Nullable xl c, @Nullable fgj d) {
-   @Nullable
-   public fgj.a a() {
-      return this.d != null ? this.d.f() : null;
-   }
+public interface fgi {
+   fgi a = new fgi() {
+      @Override
+      public long a() {
+         return 1L;
+      }
 
-   public int b() {
-      return this.a;
-   }
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
 
-   public wz c() {
-      return this.b;
-   }
+   long a();
 
-   @Nullable
-   public xl d() {
-      return this.c;
-   }
+   long b();
 
-   @Nullable
-   public fgj e() {
-      return this.d;
-   }
+   static fgi a(final int $$0) {
+      return new fgi() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
 
-   public static record a(int a, aya b, @Nullable fgj c, boolean d) {
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

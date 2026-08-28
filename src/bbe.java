@@ -1,11 +1,12 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Either;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Dynamic;
 import java.util.Objects;
+import java.util.Optional;
 
 public class bbe extends DataFix {
    public bbe(Schema $$0, boolean $$1) {
@@ -13,16 +14,17 @@ public class bbe extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgr.C);
-      Type<?> $$1 = this.getOutputSchema().getType(bgr.C);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bgr.C.typeName(), DSL.or(DSL.intType(), bid.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(bgr.C.typeName(), bid.a());
-      if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
-         return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bbh::a, $$0xxxx -> bbh.a(bid.a($$0xxxx))))
-         );
-      } else {
-         throw new IllegalStateException("Expected and actual types don't match.");
-      }
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bhk.D.typeName(), biw.a()));
+      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bhk.t), $$1 -> {
+         Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
+         if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
+            Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
+            if ($$3.get("Damage").asInt(0) == 0) {
+               return $$1.set(DSL.remainderFinder(), $$3.set("Damage", $$3.createShort((short)14)));
+            }
+         }
+
+         return $$1;
+      });
    }
 }

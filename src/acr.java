@@ -1,55 +1,60 @@
-public class acr implements zg<abu> {
-   public static final yx<wk, acr> a = zg.a(acr::a, acr::new);
-   public static final int b = -1;
-   public static final int c = -2;
-   private final int d;
-   private final int e;
-   private final int f;
-   private final cuq g;
+import com.mojang.brigadier.context.StringRange;
+import com.mojang.brigadier.suggestion.Suggestion;
+import com.mojang.brigadier.suggestion.Suggestions;
+import java.util.List;
+import java.util.Optional;
 
-   public acr(int $$0, int $$1, int $$2, cuq $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3.s();
-   }
+public record acr(int b, int c, int d, List<acr.a> e) implements zk<abz> {
+   public static final zb<wo, acr> a = zb.a(yz.g, acr::e, yz.g, acr::f, yz.g, acr::g, acr.a.a.a(yz.a()), acr::h, acr::new);
 
-   private acr(wk $$0) {
-      this.d = $$0.readByte();
-      this.e = $$0.l();
-      this.f = $$0.readShort();
-      this.g = cuq.h.decode($$0);
-   }
-
-   private void a(wk $$0) {
-      $$0.k(this.d);
-      $$0.c(this.e);
-      $$0.l(this.f);
-      cuq.h.encode($$0, this.g);
+   public acr(int $$0, Suggestions $$1) {
+      this(
+         $$0,
+         $$1.getRange().getStart(),
+         $$1.getRange().getLength(),
+         $$1.getList().stream().map($$0x -> new acr.a($$0x.getText(), Optional.ofNullable($$0x.getTooltip()).map(xg::a))).toList()
+      );
    }
 
    @Override
-   public zi<acr> a() {
-      return agg.w;
+   public zm<acr> a() {
+      return ago.r;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.d;
+   public Suggestions b() {
+      StringRange $$0 = StringRange.between(this.c, this.c + this.d);
+      return new Suggestions($$0, this.e.stream().map($$1 -> new Suggestion($$0, $$1.a(), $$1.b().orElse(null))).toList());
    }
 
    public int e() {
-      return this.f;
+      return this.b;
    }
 
-   public cuq f() {
-      return this.g;
+   public int f() {
+      return this.c;
    }
 
    public int g() {
+      return this.d;
+   }
+
+   public List<acr.a> h() {
       return this.e;
+   }
+
+   public static record a(String b, Optional<xd> c) {
+      public static final zb<wo, acr.a> a = zb.a(yz.l, acr.a::a, xf.e, acr.a::b, acr.a::new);
+
+      public String a() {
+         return this.b;
+      }
+
+      public Optional<xd> b() {
+         return this.c;
+      }
    }
 }

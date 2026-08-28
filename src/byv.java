@@ -1,35 +1,46 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public final class byv<F extends K1, Value> {
-   private final buq<?> a;
-   private final ccs<Value> b;
-   private final App<F, Value> c;
+public class byv {
+   public static bvy<bun> a(int $$0, float $$1) {
+      MutableLong $$2 = new MutableLong(0L);
+      return bzk.a(
+         (Function<bzk.b<bun>, ? extends App<bzk.c<bun>, bzn<bun>>>)($$3 -> $$3.group($$3.c(cdi.o), $$3.c(cdi.m), $$3.a(cdi.n))
+               .apply(
+                  $$3,
+                  ($$3x, $$4, $$5) -> ($$5x, $$6, $$7) -> {
+                        if ($$5x.b_($$6.ds()).a(awy.a)) {
+                           return false;
+                        } else if ($$7 < $$2.getValue()) {
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        } else {
+                           eyj $$8 = eyj.a($$6);
+                           je $$9 = $$6.ds();
+                           je.a $$10 = new je.a();
 
-   public byv(buq<?> $$0, ccs<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+                           label45:
+                           for (je $$11 : je.a($$9, $$0, $$0, $$0)) {
+                              if (($$11.u() != $$9.u() || $$11.w() != $$9.w())
+                                 && $$5x.a_($$11).b($$5x, $$11, $$8).c()
+                                 && !$$5x.a_($$10.a($$11, jj.a)).b($$5x, $$11, $$8).c()) {
+                                 for (jj $$12 : jj.c.a) {
+                                    $$10.a($$11, $$12);
+                                    if ($$5x.a_($$10).l() && $$5x.a_($$10.c(jj.a)).a(dgx.G)) {
+                                       $$5.a(new bwa($$11));
+                                       $$4.a(new cdl(new bwa($$11), $$1, 0));
+                                       break label45;
+                                    }
+                                 }
+                              }
+                           }
 
-   public App<F, Value> a() {
-      return this.c;
-   }
-
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
-
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+                           $$2.setValue($$7 + 40L);
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

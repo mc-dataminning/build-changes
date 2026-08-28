@@ -1,57 +1,69 @@
-import java.util.BitSet;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class adg implements zg<abu> {
-   public static final yx<wk, adg> a = zg.a(adg::a, adg::new);
-   private final int b;
-   private final int c;
-   private final adf d;
-   private final adk e;
+public class adg implements zk<abz> {
+   public static final zb<wa, adg> a = zk.a(adg::a, adg::new);
+   public static final adg.a b = new adg.a(0);
+   public static final adg.a c = new adg.a(1);
+   public static final adg.a d = new adg.a(2);
+   public static final adg.a e = new adg.a(3);
+   public static final adg.a f = new adg.a(4);
+   public static final adg.a g = new adg.a(5);
+   public static final adg.a h = new adg.a(6);
+   public static final adg.a i = new adg.a(7);
+   public static final adg.a j = new adg.a(8);
+   public static final adg.a k = new adg.a(9);
+   public static final adg.a l = new adg.a(10);
+   public static final adg.a m = new adg.a(11);
+   public static final adg.a n = new adg.a(12);
+   public static final adg.a o = new adg.a(13);
+   public static final int p = 0;
+   public static final int q = 101;
+   public static final int r = 102;
+   public static final int s = 103;
+   public static final int t = 104;
+   private final adg.a u;
+   private final float v;
 
-   public adg(dvi $$0, eot $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
-      dcd $$4 = $$0.f();
-      this.b = $$4.e;
-      this.c = $$4.f;
-      this.d = new adf($$0);
-      this.e = new adk($$4, $$1, $$2, $$3);
+   public adg(adg.a $$0, float $$1) {
+      this.u = $$0;
+      this.v = $$1;
    }
 
-   private adg(wk $$0) {
-      this.b = $$0.readInt();
-      this.c = $$0.readInt();
-      this.d = new adf($$0, this.b, this.c);
-      this.e = new adk($$0, this.b, this.c);
+   private adg(wa $$0) {
+      this.u = (adg.a)adg.a.a.get($$0.readUnsignedByte());
+      this.v = $$0.readFloat();
    }
 
-   private void a(wk $$0) {
-      $$0.p(this.b);
-      $$0.p(this.c);
-      this.d.a($$0);
-      this.e.a($$0);
+   private void a(wa $$0) {
+      $$0.l(this.u.b);
+      $$0.a(this.v);
    }
 
    @Override
-   public zi<adg> a() {
-      return agg.K;
+   public zm<adg> a() {
+      return ago.G;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public adg.a b() {
+      return this.u;
    }
 
-   public int e() {
-      return this.c;
+   public float e() {
+      return this.v;
    }
 
-   public adf f() {
-      return this.d;
-   }
+   public static class a {
+      static final Int2ObjectMap<adg.a> a = new Int2ObjectOpenHashMap();
+      final int b;
 
-   public adk g() {
-      return this.e;
+      public a(int $$0) {
+         this.b = $$0;
+         a.put($$0, this);
+      }
    }
 }

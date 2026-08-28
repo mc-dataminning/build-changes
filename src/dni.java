@@ -1,124 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dni extends dfy {
-   public static final MapCodec<dni> a = b(dni::new);
-   public static final int b = 8;
-   public static final duc c = dts.aF;
-   protected static final exv[] d = new exv[]{
-      exs.a(),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
-   };
-   public static final int e = 5;
+public class dni extends dgv {
+   public static final MapCodec<dni> h = b(dni::new);
+   public static final duy<jj.a> i = duq.I;
 
    @Override
-   public MapCodec<dni> a() {
-      return a;
+   public MapCodec<? extends dni> a() {
+      return h;
    }
 
-   protected dni(dtb.d $$0) {
+   public dni(dtz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(c, Integer.valueOf(1)));
+      this.l(this.o().b(i, jj.a.b));
    }
 
    @Override
-   protected boolean a(dtc $$0, ept $$1) {
+   protected dua a(dua $$0, dnj $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dua b(dua $$0, dnj $$1) {
       switch ($$1) {
-         case a:
-            return $$0.c(c) < 5;
+         case d:
          case b:
-            return false;
-         case c:
-            return false;
+            switch ((jj.a)$$0.c(i)) {
+               case a:
+                  return $$0.b(i, jj.a.c);
+               case c:
+                  return $$0.b(i, jj.a.a);
+               default:
+                  return $$0;
+            }
          default:
-            return false;
+            return $$0;
       }
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return d[$$0.c(c)];
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return d[$$0.c(c) - 1];
-   }
-
-   @Override
-   protected exv b_(dtc $$0, dcc $$1, jd $$2) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected exv c(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return d[$$0.c(c)];
-   }
-
-   @Override
-   protected boolean f_(dtc $$0) {
-      return true;
-   }
-
-   @Override
-   protected float d(dtc $$0, dcc $$1, jd $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      dtc $$3 = $$1.a_($$2.e());
-      if ($$3.a(awe.cp)) {
-         return false;
-      } else {
-         return $$3.a(awe.cq) ? true : dfy.a($$3.k($$1, $$2.e()), ji.b) || $$3.a(this) && $$3.c(c) == 8;
-      }
-   }
-
-   @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      return !$$0.a($$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if ($$1.a(ddf.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
-      }
-   }
-
-   @Override
-   protected boolean a(dtc $$0, cyd $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.r()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == ji.b : true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.a(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(c);
+   public dua a(cyw $$0) {
+      return this.o().b(i, $$0.k().o());
    }
 }

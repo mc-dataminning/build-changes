@@ -1,29 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ebq<FC extends eei, F extends ece<FC>>(F d, FC e) {
-   public static final Codec<ebq<?, ?>> a = lt.O.r().dispatch($$0 -> $$0.d, ece::a);
-   public static final Codec<jm<ebq<?, ?>>> b = akn.a(lu.aI, a);
-   public static final Codec<jq<ebq<?, ?>>> c = kb.a(lu.aI, a);
-
-   public boolean a(dds $$0, duz $$1, ayw $$2, jd $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
-   }
-
-   public Stream<ebq<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
-   }
+record ebq(ki e) implements ebd {
+   public static MapCodec<ebq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ki.f.optionalFieldOf("offset", ki.g).forGetter(ebq::g)).apply($$0, ebq::new));
 
    @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
+   public ebe<?> a() {
+      return ebe.m;
    }
 
-   public F b() {
-      return this.d;
+   public boolean a(dep $$0, je $$1) {
+      return $$0.a(null, eyu.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
    }
 
-   public FC c() {
+   public ki g() {
       return this.e;
    }
 }

@@ -1,73 +1,56 @@
-import org.joml.Matrix4f;
+public class flh extends fjx {
+   private float a = 0.5F;
 
-public class flh {
-   private final flf a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+   public flh(xd $$0, fjl $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   }
 
-   public flh(flf $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+   public flh(int $$0, int $$1, xd $$2, fjl $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public flh(int $$0, int $$1, int $$2, int $$3, xd $$4, fjl $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
+   }
+
+   public flh b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private flh b(float $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+      return this;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fbm $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      float $$10 = $$1 + this.f;
-      float $$11 = $$1 + this.g;
-      float $$12 = $$2 + this.h;
-      float $$13 = $$2 + this.i;
-      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
-      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).c($$9);
-      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).c($$9);
-      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).c($$9);
-      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).c($$9);
+   public flh c() {
+      return this.b(0.0F);
    }
 
-   public void a(flh.a $$0, Matrix4f $$1, fbm $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).c($$3);
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).c($$3);
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).c($$3);
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).c($$3);
+   public flh e() {
+      return this.b(0.5F);
    }
 
-   public gfh a(fhx.a $$0) {
-      return this.a.a($$0);
+   public flh f() {
+      return this.b(1.0F);
    }
 
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
+   @Override
+   public void b(fjn $$0, int $$1, int $$2, float $$3) {
+      xd $$4 = this.z();
+      fjl $$5 = this.a();
+      int $$6 = this.y();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.D() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.E() + (this.w() - 9) / 2;
+      ayo $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
+   }
 
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
-      }
+   private ayo a(xd $$0, int $$1) {
+      fjl $$2 = this.a();
+      xi $$3 = $$2.a($$0, $$1 - $$2.a(xc.u));
+      return ua.a().a(xi.a($$3, xc.u));
    }
 }

@@ -1,53 +1,56 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class eeq implements eei {
-   public static final Codec<eeq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.list(eeq.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, eeq::new)
-   );
-   public final List<eeq.a> b;
-   public final int c;
-   public final float d;
-
-   public eeq(List<eeq.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = $$2;
+public class eeq extends edc<ege> {
+   public eeq(Codec<ege> $$0) {
+      super($$0);
    }
 
-   public eeq(List<eeq.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
-   }
-
-   public eeq(enn $$0, dtc $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new eeq.a($$0, $$1)), $$2, $$3);
-   }
-
-   public eeq(enn $$0, dtc $$1, int $$2) {
-      this(ImmutableList.of(new eeq.a($$0, $$1)), $$2, 0.0F);
-   }
-
-   public static eeq.a a(enn $$0, dtc $$1) {
-      return new eeq.a($$0, $$1);
-   }
-
-   public static class a {
-      public static final Codec<eeq.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(enn.c.fieldOf("target").forGetter($$0x -> $$0x.b), dtc.b.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, eeq.a::new)
-      );
-      public final enn b;
-      public final dtc c;
-
-      a(enn $$0, dtc $$1) {
-         this.b = $$0;
-         this.c = $$1;
+   @Override
+   public boolean a(ede<ege> $$0) {
+      dep $$1 = $$0.b();
+      je $$2 = $$0.e();
+      ege $$3 = $$0.f();
+      azk $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         je $$6 = $$2.h($$5.getAsInt());
+         ki $$7 = new ki($$3.c, $$3.c, $$3.c);
+         ekg $$8 = ekg.a($$6.b($$7), $$6.a($$7));
+         return je.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dgx.kJ.o(), 2);
+            return 1;
+         }).sum() > 0;
       }
+   }
+
+   private static OptionalInt a(dep $$0, je $$1, ege $$2) {
+      Predicate<dua> $$3 = $$0x -> $$0x.a(dgx.G);
+      Predicate<dua> $$4 = $$0x -> !$$0x.a(dgx.G);
+      Optional<dzm> $$5 = dzm.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(dzm::c).orElseGet(OptionalInt::empty);
+   }
+
+   private boolean b(dep $$0, je $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
+         for (jj $$2 : jj.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private boolean a(ddt $$0, je $$1) {
+      dua $$2 = $$0.a_($$1);
+      return $$2.a(dgx.G) || $$2.l();
    }
 }

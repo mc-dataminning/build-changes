@@ -1,21 +1,38 @@
-public class fqc extends fot<crn> {
-   private static final akr E = akr.b("textures/gui/container/shulker_box.png");
+public enum fqc {
+   a(
+      alb.b("advancements/box_obtained"),
+      alb.b("advancements/task_frame_obtained"),
+      alb.b("advancements/challenge_frame_obtained"),
+      alb.b("advancements/goal_frame_obtained")
+   ),
+   b(
+      alb.b("advancements/box_unobtained"),
+      alb.b("advancements/task_frame_unobtained"),
+      alb.b("advancements/challenge_frame_unobtained"),
+      alb.b("advancements/goal_frame_unobtained")
+   );
 
-   public fqc(crn $$0, cmw $$1, wz $$2) {
-      super($$0, $$1, $$2);
-      this.r++;
+   private final alb c;
+   private final alb d;
+   private final alb e;
+   private final alb f;
+
+   private fqc(final alb $$0, final alb $$1, final alb $$2, final alb $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public alb a() {
+      return this.c;
    }
 
-   @Override
-   protected void a(fhz $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.r) / 2;
-      $$0.a(E, $$4, $$5, 0, 0, this.c, this.r);
+   public alb a(am $$0) {
+      return switch ($$0) {
+         case a -> this.d;
+         case b -> this.e;
+         case c -> this.f;
+      };
    }
 }

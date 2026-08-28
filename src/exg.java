@@ -1,20 +1,31 @@
-public interface exg {
-   exg a = ($$0, $$1) -> false;
-   exg b = ($$0, $$1) -> !$$0 && !$$1;
-   exg c = ($$0, $$1) -> $$1 && !$$0;
-   exg d = ($$0, $$1) -> !$$0;
-   exg e = ($$0, $$1) -> $$0 && !$$1;
-   exg f = ($$0, $$1) -> !$$1;
-   exg g = ($$0, $$1) -> $$0 != $$1;
-   exg h = ($$0, $$1) -> !$$0 || !$$1;
-   exg i = ($$0, $$1) -> $$0 && $$1;
-   exg j = ($$0, $$1) -> $$0 == $$1;
-   exg k = ($$0, $$1) -> $$1;
-   exg l = ($$0, $$1) -> !$$0 || $$1;
-   exg m = ($$0, $$1) -> $$0;
-   exg n = ($$0, $$1) -> $$0 || !$$1;
-   exg o = ($$0, $$1) -> $$0 || $$1;
-   exg p = ($$0, $$1) -> true;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-   boolean apply(boolean var1, boolean var2);
+public record exg(est.b c) implements exj {
+   public static final MapCodec<exg> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(est.b.e.fieldOf("target").forGetter(exg::c)).apply($$0, exg::new));
+   public static final Codec<exg> b = est.b.e.xmap(exg::new, exg::c);
+
+   public static exj a(est.b $$0) {
+      return new exg($$0);
+   }
+
+   @Override
+   public exi a() {
+      return exk.c;
+   }
+
+   @Nullable
+   @Override
+   public ezh a(est $$0) {
+      return $$0.c(this.c.a());
+   }
+
+   @Override
+   public Set<evm<?>> b() {
+      return ImmutableSet.of(this.c.a());
+   }
 }

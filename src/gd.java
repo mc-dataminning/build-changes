@@ -14,8 +14,8 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-public class gd<T extends Enum<T> & azk> implements ArgumentType<T> {
-   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wz.b("argument.enum.invalid", $$0));
+public class gd<T extends Enum<T> & azy> implements ArgumentType<T> {
+   private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xd.b("argument.enum.invalid", $$0));
    private final Codec<T> b;
    private final Supplier<T[]> c;
 
@@ -30,11 +30,11 @@ public class gd<T extends Enum<T> & azk> implements ArgumentType<T> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ey.b(Arrays.<Enum>stream((Enum[])this.c.get()).map($$0x -> ((azk)$$0x).c()).map(this::a).collect(Collectors.toList()), $$1);
+      return ey.b(Arrays.<Enum>stream((Enum[])this.c.get()).map($$0x -> ((azy)$$0x).c()).map(this::a).collect(Collectors.toList()), $$1);
    }
 
    public Collection<String> getExamples() {
-      return Arrays.<Enum>stream((Enum[])this.c.get()).map($$0 -> ((azk)$$0).c()).map(this::a).limit(2L).collect(Collectors.toList());
+      return Arrays.<Enum>stream((Enum[])this.c.get()).map($$0 -> ((azy)$$0).c()).map(this::a).limit(2L).collect(Collectors.toList());
    }
 
    protected String a(String $$0) {

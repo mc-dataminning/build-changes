@@ -1,65 +1,118 @@
-public class gwd implements gwj {
-   private static final int a = 1200;
-   private static final wz b = wz.c("tutorial.craft_planks.title");
-   private static final wz c = wz.c("tutorial.craft_planks.description");
-   private final gwi d;
-   private fkx e;
-   private int f;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gwd(gwi $$0) {
+public class gwd extends gvv {
+   static final Logger e = LogUtils.getLogger();
+   protected final alb d;
+
+   public gwd(alb $$0) {
       this.d = $$0;
    }
 
    @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gwk.f);
+   public void a(aus $$0) throws IOException {
+      gwd.a $$1 = this.b($$0);
+      $$1.c();
+      gyi $$2 = $$1.a();
+      boolean $$3;
+      if ($$2 != null) {
+         this.c = $$2.a();
+         $$3 = $$2.b();
       } else {
-         if (this.f == 1) {
-            geb $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fY().a(awn.b)) {
-                  this.d.a(gwk.f);
-                  return;
-               }
+         this.c = false;
+         $$3 = false;
+      }
 
-               if (a($$0, awn.b)) {
-                  this.d.a(gwk.f);
-                  return;
-               }
+      fbp $$5 = $$1.b();
+      if (!RenderSystem.isOnRenderThreadOrInit()) {
+         RenderSystem.recordRenderCall(() -> this.a($$5, this.c, $$3));
+      } else {
+         this.a($$5, this.c, $$3);
+      }
+   }
+
+   private void a(fbp $$0, boolean $$1, boolean $$2) {
+      TextureUtil.prepareImage(this.a(), 0, $$0.a(), $$0.b());
+      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), $$1, $$2, false, true);
+   }
+
+   protected gwd.a b(aus $$0) {
+      return gwd.a.a($$0, this.d);
+   }
+
+   protected static class a implements Closeable {
+      @Nullable
+      private final gyi a;
+      @Nullable
+      private final fbp b;
+      @Nullable
+      private final IOException c;
+
+      public a(IOException $$0) {
+         this.c = $$0;
+         this.a = null;
+         this.b = null;
+      }
+
+      public a(@Nullable gyi $$0, fbp $$1) {
+         this.c = null;
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public static gwd.a a(aus $$0, alb $$1) {
+         try {
+            auq $$2 = $$0.getResourceOrThrow($$1);
+
+            fbp $$4;
+            try (InputStream $$3 = $$2.d()) {
+               $$4 = fbp.a($$3);
             }
-         }
 
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fkx(fkx.a.e, b, c, false);
-            this.d.e().aw().a(this.e);
-         }
-      }
-   }
+            gyi $$6 = null;
 
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
+            try {
+               $$6 = $$2.f().a(gyi.a).orElse(null);
+            } catch (RuntimeException var8) {
+               gwd.e.warn("Failed reading metadata of: {}", $$1, var8);
+            }
 
-   @Override
-   public void a(cuq $$0) {
-      if ($$0.a(awn.b)) {
-         this.d.a(gwk.f);
-      }
-   }
-
-   public static boolean a(geb $$0, awu<cul> $$1) {
-      for (jm<cul> $$2 : lt.g.c($$1)) {
-         if ($$0.j().a(avz.b.b($$2.a())) > 0) {
-            return true;
+            return new gwd.a($$6, $$4);
+         } catch (IOException var10) {
+            return new gwd.a(var10);
          }
       }
 
-      return false;
+      @Nullable
+      public gyi a() {
+         return this.a;
+      }
+
+      public fbp b() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         } else {
+            return this.b;
+         }
+      }
+
+      @Override
+      public void close() {
+         if (this.b != null) {
+            this.b.close();
+         }
+      }
+
+      public void c() throws IOException {
+         if (this.c != null) {
+            throw this.c;
+         }
+      }
    }
 }

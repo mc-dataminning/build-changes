@@ -1,60 +1,79 @@
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import java.util.List;
 
-public class acp implements zg<abu> {
-   public static final yx<wk, acp> a = zg.a(acp::a, acp::new);
-   private final int b;
-   private final int c;
-   private final List<cuq> d;
-   private final cuq e;
+public record acp(List<acp.a> b) implements zk<abz> {
+   public static final zb<wa, acp> a = zk.a(acp::a, acp::new);
+   private static final int c = 2097152;
 
-   public acp(int $$0, int $$1, jv<cuq> $$2, cuq $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = jv.a($$2.size(), cuq.l);
-
-      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
-         this.d.set($$4, $$2.get($$4).s());
-      }
-
-      this.e = $$3.s();
+   private acp(wa $$0) {
+      this($$0.a(acp.a::new));
    }
 
-   private acp(wk $$0) {
-      this.b = $$0.readUnsignedByte();
-      this.c = $$0.l();
-      this.d = cuq.j.decode($$0);
-      this.e = cuq.h.decode($$0);
+   public static acp a(List<dwg> $$0) {
+      return new acp($$0.stream().map(acp.a::new).toList());
    }
 
-   private void a(wk $$0) {
-      $$0.k(this.b);
-      $$0.c(this.c);
-      cuq.j.encode($$0, this.d);
-      cuq.h.encode($$0, this.e);
+   private void a(wa $$0) {
+      $$0.a(this.b, ($$0x, $$1) -> $$1.a($$0x));
    }
 
    @Override
-   public zi<acp> a() {
-      return agg.u;
+   public zm<acp> a() {
+      return ago.p;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
-   }
+   public static record a(dcy a, byte[] b) {
+      public a(dwg $$0) {
+         this($$0.f(), new byte[a($$0)]);
+         a(new wa(this.d()), $$0);
+      }
 
-   public List<cuq> e() {
-      return this.d;
-   }
+      public a(wa $$0) {
+         this($$0.f(), $$0.a(2097152));
+      }
 
-   public cuq f() {
-      return this.e;
-   }
+      private static int a(dwg $$0) {
+         int $$1 = 0;
 
-   public int g() {
-      return this.c;
+         for (dwh $$2 : $$0.d()) {
+            $$1 += $$2.i().c();
+         }
+
+         return $$1;
+      }
+
+      public wa a() {
+         return new wa(Unpooled.wrappedBuffer(this.b));
+      }
+
+      private ByteBuf d() {
+         ByteBuf $$0 = Unpooled.wrappedBuffer(this.b);
+         $$0.writerIndex(0);
+         return $$0;
+      }
+
+      public static void a(wa $$0, dwg $$1) {
+         for (dwh $$2 : $$1.d()) {
+            $$2.i().b($$0);
+         }
+      }
+
+      public void a(wa $$0) {
+         $$0.a(this.a);
+         $$0.a(this.b);
+      }
+
+      public dcy b() {
+         return this.a;
+      }
+
+      public byte[] c() {
+         return this.b;
+      }
    }
 }

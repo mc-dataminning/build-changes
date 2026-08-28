@@ -1,24 +1,8 @@
-import java.util.List;
-import java.util.function.Predicate;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dvo<T> {
-   int a(T var1);
-
-   boolean a(Predicate<T> var1);
-
-   T a(int var1);
-
-   void a(vw var1);
-
-   void b(vw var1);
-
-   int a();
-
-   int b();
-
-   dvo<T> c();
-
-   public interface a {
-      <A> dvo<A> create(int var1, jr<A> var2, dvp<A> var3, List<A> var4);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dvo {
 }

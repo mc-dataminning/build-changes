@@ -1,67 +1,62 @@
-public class cyx extends cyr {
-   public cyx(cyo $$0) {
-      super($$0);
-   }
+public class cyx extends cyw {
+   private final jj b;
 
-   public boolean a(cyp $$0, dcw $$1) {
-      int $$2 = 0;
-      cuq $$3 = cuq.l;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cut.rU)) {
-               if (!$$3.e()) {
-                  return false;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cut.uj)) {
-                  return false;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.e() && $$2 > 0;
-   }
-
-   public cuq a(cyp $$0, jo.a $$1) {
-      int $$2 = 0;
-      cuq $$3 = cuq.l;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuq $$5 = $$0.a($$4);
-         if (!$$5.e()) {
-            if ($$5.a(cut.rU)) {
-               if (!$$3.e()) {
-                  return cuq.l;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(cut.uj)) {
-                  return cuq.l;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.e() && $$2 >= 1 ? $$3.c($$2 + 1) : cuq.l;
+   public cyx(dds $$0, je $$1, jj $$2, cvl $$3, jj $$4) {
+      super($$0, null, brj.a, $$3, new eya(eye.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+   public je a() {
+      return this.j().a();
    }
 
    @Override
-   public cze<?> at_() {
-      return cze.e;
+   public boolean b() {
+      return this.q().a_(this.j().a()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jj d() {
+      return jj.a;
+   }
+
+   @Override
+   public jj[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jj[]{jj.a, jj.c, jj.f, jj.d, jj.e, jj.b};
+         case b:
+            return new jj[]{jj.a, jj.b, jj.c, jj.f, jj.d, jj.e};
+         case c:
+            return new jj[]{jj.a, jj.c, jj.f, jj.e, jj.b, jj.d};
+         case d:
+            return new jj[]{jj.a, jj.d, jj.f, jj.e, jj.b, jj.c};
+         case e:
+            return new jj[]{jj.a, jj.e, jj.d, jj.b, jj.c, jj.f};
+         case f:
+            return new jj[]{jj.a, jj.f, jj.d, jj.b, jj.c, jj.e};
+      }
+   }
+
+   @Override
+   public jj g() {
+      return this.b.o() == jj.a.b ? jj.c : this.b;
+   }
+
+   @Override
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

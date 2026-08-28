@@ -1,32 +1,61 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public class ewm implements ewn<MinecraftServer> {
-   final akr a;
+public record ewm(Optional<Long> b, ess c) implements ewe {
+   public static final MapCodec<ewm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(ewm::c), ess.a.fieldOf("value").forGetter(ewm::d)).apply($$0, ewm::new)
+   );
 
-   public ewm(akr $$0) {
-      this.a = $$0;
+   @Override
+   public ewf b() {
+      return ewg.q;
    }
 
-   public void a(MinecraftServer $$0, ewp<MinecraftServer> $$1, long $$2) {
-      alg $$3 = $$0.aF();
-
-      for (ig<et> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   @Override
+   public Set<evm<?>> a() {
+      return this.c.a();
    }
 
-   public static class a extends ewn.a<MinecraftServer, ewm> {
-      public a() {
-         super(akr.b("function_tag"), ewm.class);
+   public boolean a(est $$0) {
+      arg $$1 = $$0.d();
+      long $$2 = $$1.ab();
+      if (this.b.isPresent()) {
+         $$2 %= this.b.get();
       }
 
-      public void a(ub $$0, ewm $$1) {
-         $$0.a("Name", $$1.a.toString());
+      return this.c.b($$0, (int)$$2);
+   }
+
+   public static ewm.a a(ess $$0) {
+      return new ewm.a($$0);
+   }
+
+   public Optional<Long> c() {
+      return this.b;
+   }
+
+   public ess d() {
+      return this.c;
+   }
+
+   public static class a implements ewe.a {
+      private Optional<Long> a = Optional.empty();
+      private final ess b;
+
+      public a(ess $$0) {
+         this.b = $$0;
       }
 
-      public ewm a(ub $$0) {
-         akr $$1 = akr.a($$0.l("Name"));
-         return new ewm($$1);
+      public ewm.a a(long $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ewm a() {
+         return new ewm(this.a, this.b);
       }
    }
 }

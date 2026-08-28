@@ -1,88 +1,124 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
 
-public abstract class czo implements cyz<czp> {
-   protected final cyw a;
-   protected final cuq b;
-   private final czf<?> d;
-   private final cze<?> e;
-   protected final String c;
+public class czo extends czk {
+   private static final Map<cvg, cye.a> a = Map.of(
+      cvo.tY,
+      cye.a.b,
+      cvo.pu,
+      cye.a.e,
+      cvo.sj,
+      cye.a.c,
+      cvo.un,
+      cye.a.d,
+      cvo.uo,
+      cye.a.d,
+      cvo.ur,
+      cye.a.d,
+      cvo.up,
+      cye.a.d,
+      cvo.us,
+      cye.a.d,
+      cvo.uq,
+      cye.a.d,
+      cvo.ut,
+      cye.a.d
+   );
+   private static final czp b = czp.a(cvo.oA);
+   private static final czp c = czp.a(cvo.qZ);
+   private static final czp d = czp.a(cvo.pv);
 
-   public czo(czf<?> $$0, cze<?> $$1, String $$2, cyw $$3, cuq $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public czo(czh $$0) {
+      super($$0);
    }
 
-   @Override
-   public czf<?> e() {
-      return this.d;
+   public boolean a(czi $$0, dds $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
+
+      for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+         cvl $$8 = $$0.a($$7);
+         if (!$$8.f()) {
+            if (a.containsKey($$8.h())) {
+               if ($$4) {
+                  return false;
+               }
+
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
+
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
+
+               $$5 = true;
+            } else if (d.a($$8)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else {
+               if (!($$8.h() instanceof cuf)) {
+                  return false;
+               }
+
+               $$3 = true;
+            }
+         }
+      }
+
+      return $$2 && $$3;
    }
 
-   @Override
-   public cze<?> at_() {
-      return this.e;
-   }
+   public cvl a(czi $$0, jp.a $$1) {
+      cye.a $$2 = cye.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
 
-   @Override
-   public String c() {
-      return this.c;
-   }
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cvl $$7 = $$0.a($$6);
+         if (!$$7.f()) {
+            cye.a $$8 = a.get($$7.h());
+            if ($$8 != null) {
+               $$2 = $$8;
+            } else if (c.a($$7)) {
+               $$3 = true;
+            } else if (b.a($$7)) {
+               $$4 = true;
+            } else if ($$7.h() instanceof cuf) {
+               $$5.add(((cuf)$$7.h()).c().f());
+            }
+         }
+      }
 
-   @Override
-   public cuq a(jo.a $$0) {
-      return this.b;
-   }
-
-   @Override
-   public jv<cyw> a() {
-      jv<cyw> $$0 = jv.a();
-      $$0.add(this.a);
-      return $$0;
+      cvl $$9 = new cvl(cvo.ux);
+      $$9.b(kr.W, new cye($$2, $$5, IntList.of(), $$4, $$3));
+      return $$9;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return true;
+      return $$0 * $$1 >= 2;
    }
 
-   public cuq a(czp $$0, jo.a $$1) {
-      return this.b.s();
+   @Override
+   public cvl a(jp.a $$0) {
+      return new cvl(cvo.ux);
    }
 
-   public interface a<T extends czo> {
-      T create(String var1, cyw var2, cuq var3);
-   }
-
-   public static class b<T extends czo> implements cze<T> {
-      final czo.a<T> x;
-      private final MapCodec<T> y;
-      private final yx<wk, T> z;
-
-      protected b(czo.a<T> $$0) {
-         this.x = $$0;
-         this.y = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                     cyw.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cuq.d.fieldOf("result").forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.z = yx.a(yv.l, $$0x -> $$0x.c, cyw.b, $$0x -> $$0x.a, cuq.i, $$0x -> $$0x.b, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.y;
-      }
-
-      @Override
-      public yx<wk, T> b() {
-         return this.z;
-      }
+   @Override
+   public czy<?> as_() {
+      return czy.h;
    }
 }

@@ -1,32 +1,29 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import net.minecraft.server.MinecraftServer;
 
-public class exn implements exo {
-   private final DoubleList a;
+public class exn implements exp<MinecraftServer> {
+   final alb a;
 
-   public exn(DoubleList $$0) {
+   public exn(alb $$0) {
       this.a = $$0;
    }
 
-   @Override
-   public boolean a(exo.a $$0) {
-      int $$1 = this.a.size() - 1;
+   public void a(MinecraftServer $$0, exr<MinecraftServer> $$1, long $$2) {
+      alq $$3 = $$0.aE();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   }
 
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
+   public static class a extends exp.a<MinecraftServer, exn> {
+      public a() {
+         super(alb.b("function"), exn.class);
       }
 
-      return true;
-   }
+      public void a(uf $$0, exn $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+      public exn a(uf $$0) {
+         alb $$1 = alb.a($$0.l("Name"));
+         return new exn($$1);
+      }
    }
 }

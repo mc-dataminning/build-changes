@@ -1,80 +1,59 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
 
-public class ecf {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<aqu, ecf.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<aqu, ecf.b>() {
-         public ecf.b a(aqu $$0) {
-            return new ecf.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
+public class ecf extends edc<efq> {
+   private static final dua a = dgx.mZ.o().b(dfz.h, Integer.valueOf(1)).b(dfz.i, dum.a).b(dfz.j, Integer.valueOf(0));
+   private static final dua b = a.b(dfz.i, dum.c).b(dfz.j, Integer.valueOf(1));
+   private static final dua c = a.b(dfz.i, dum.c);
+   private static final dua d = a.b(dfz.i, dum.b);
 
-   public static void a(aqu $$0) {
-      try {
-         ((ecf.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+   public ecf(Codec<efq> $$0) {
+      super($$0);
    }
 
-   public static void a(aqu $$0, ebq<?, ?> $$1, Optional<eiv> $$2) {
-      try {
-         ((ecf.b)b.get($$0)).a().computeInt(new ecf.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
+   @Override
+   public boolean a(ede<efq> $$0) {
+      int $$1 = 0;
+      je $$2 = $$0.e();
+      dep $$3 = $$0.b();
+      azk $$4 = $$0.d();
+      efq $$5 = $$0.f();
+      je.a $$6 = $$2.k();
+      je.a $$7 = $$2.k();
+      if ($$3.u($$6)) {
+         if (dgx.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.af().a().toString();
-               boolean $$3 = $$0.o().x();
-               jz<eiv> $$4 = $$0.H_().d(lu.aQ);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<akr>map(akq::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dzw.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dgx.l.o(), 2);
+                        }
+                     }
+                  }
+               }
             }
-         );
-   }
 
-   static record a(ebq<?, ?> a, Optional<eiv> b) {
-   }
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jj.b, 1);
+            }
 
-   static record b(Object2IntMap<ecf.a> a, MutableInt b) {
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jj.a, 1), c, 2);
+               $$3.a($$6.c(jj.a, 1), d, 2);
+            }
+         }
+
+         $$1++;
+      }
+
+      return $$1 > 0;
    }
 }

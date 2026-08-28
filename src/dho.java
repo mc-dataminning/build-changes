@@ -1,43 +1,32 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dho extends dfg {
-   public static final MapCodec<dho> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dhn.a.forGetter($$0x -> $$0x.c), u()).apply($$0, dho::new));
-   private final dfy c;
+public class dho extends dgv {
+   public static final MapCodec<dho> a = b(dho::new);
+   private static final xd b = xd.c("container.cartography_table");
 
    @Override
    public MapCodec<dho> a() {
-      return b;
+      return a;
    }
 
-   protected dho(dfy $$0, dtb.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
-
-   @Override
-   protected void b(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      this.a($$0, (dcx)$$1, $$2);
+   protected dho(dtz.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.c.o().a(d, Boolean.valueOf(false)), 2);
+   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
+      if (!$$1.B) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awn.aw);
       }
+
+      return brk.a;
    }
 
+   @Nullable
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$1 == ji.a && !$$0.a($$3, $$4)) {
-         return dga.a.o();
-      } else {
-         this.a($$0, $$3, $$4);
-         if ($$0.c(d)) {
-            $$3.a($$4, epf.c, epf.c.a($$3));
-         }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   protected brm b(dua $$0, dds $$1, je $$2) {
+      return new brs(($$2x, $$3, $$4) -> new cqy($$2x, $$3, crd.a($$1, $$2)), b);
    }
 }

@@ -1,47 +1,116 @@
+import com.google.common.collect.Sets;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Set;
 
 public class apc {
-   private static final int a = -1;
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.tag.add.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xd.c("commands.tag.remove.failed"));
 
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("weather").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)eu.a("clear").executes($$0x -> a((et)$$0x.getSource(), -1)))
-                        .then(eu.a("duration", gi.a(1)).executes($$0x -> a((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-                  ))
-               .then(
-                  ((LiteralArgumentBuilder)eu.a("rain").executes($$0x -> b((et)$$0x.getSource(), -1)))
-                     .then(eu.a("duration", gi.a(1)).executes($$0x -> b((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
-               ))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               ((LiteralArgumentBuilder)eu.a("thunder").executes($$0x -> c((et)$$0x.getSource(), -1)))
-                  .then(eu.a("duration", gi.a(1)).executes($$0x -> c((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "duration"))))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("targets", fg.b())
+                        .then(
+                           eu.a("add")
+                              .then(
+                                 eu.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              )
+                        ))
+                     .then(
+                        eu.a("remove")
+                           .then(
+                              eu.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> ey.b(a(fg.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((et)$$0x.getSource(), fg.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                           )
+                     ))
+                  .then(eu.a("list").executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"))))
             )
       );
    }
 
-   private static int a(et $$0, int $$1, bpw $$2) {
-      return $$1 == -1 ? $$2.a($$0.l().I().E_()) : $$1;
-   }
+   private static Collection<String> a(Collection<? extends btj> $$0) {
+      Set<String> $$1 = Sets.newHashSet();
 
-   private static int a(et $$0, int $$1) {
-      $$0.l().I().a(a($$0, $$1, aqu.b), 0, false, false);
-      $$0.a(() -> wz.c("commands.weather.set.clear"), true);
+      for (btj $$2 : $$0) {
+         $$1.addAll($$2.aq());
+      }
+
       return $$1;
    }
 
-   private static int b(et $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, aqu.c), true, false);
-      $$0.a(() -> wz.c("commands.weather.set.rain"), true);
-      return $$1;
+   private static int a(et $$0, Collection<? extends btj> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (btj $$4 : $$1) {
+         if ($$4.a($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xd.a("commands.tag.add.success.single", $$2, $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> xd.a("commands.tag.add.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   private static int c(et $$0, int $$1) {
-      $$0.l().I().a(0, a($$0, $$1, aqu.d), true, true);
-      $$0.a(() -> wz.c("commands.weather.set.thunder"), true);
-      return $$1;
+   private static int b(et $$0, Collection<? extends btj> $$1, String $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (btj $$4 : $$1) {
+         if ($$4.b($$2)) {
+            $$3++;
+         }
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xd.a("commands.tag.remove.success.single", $$2, $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> xd.a("commands.tag.remove.success.multiple", $$2, $$1.size()), true);
+         }
+
+         return $$3;
+      }
+   }
+
+   private static int a(et $$0, Collection<? extends btj> $$1) {
+      Set<String> $$2 = Sets.newHashSet();
+
+      for (btj $$3 : $$1) {
+         $$2.addAll($$3.aq());
+      }
+
+      if ($$1.size() == 1) {
+         btj $$4 = $$1.iterator().next();
+         if ($$2.isEmpty()) {
+            $$0.a(() -> xd.a("commands.tag.list.single.empty", $$4.Q_()), false);
+         } else {
+            $$0.a(() -> xd.a("commands.tag.list.single.success", $$4.Q_(), $$2.size(), xg.a($$2)), false);
+         }
+      } else if ($$2.isEmpty()) {
+         $$0.a(() -> xd.a("commands.tag.list.multiple.empty", $$1.size()), false);
+      } else {
+         $$0.a(() -> xd.a("commands.tag.list.multiple.success", $$1.size(), $$2.size(), xg.a($$2)), false);
+      }
+
+      return $$2.size();
    }
 }

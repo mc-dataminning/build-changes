@@ -1,41 +1,43 @@
-import com.mojang.datafixers.Products.P4;
+import com.mojang.datafixers.Products.P3;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class egn extends egm {
-   public static final MapCodec<egn> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, egn::new));
-   protected final List<dtc> h;
+public class egn extends egs {
+   public static final MapCodec<egn> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egn::new));
+   protected final int b;
 
-   protected static <P extends egn> P4<Mu<P>, Long, eoh.a, Float, List<dtc>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dtc.b).fieldOf("states").forGetter($$0x -> $$0x.h));
+   protected static <P extends egn> P3<Mu<P>, bqp, bqp, Integer> a(Instance<P> $$0) {
+      return b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b));
    }
 
-   public egn(long $$0, eoh.a $$1, float $$2, List<dtc> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
-   }
-
-   @Override
-   protected egk<?> a() {
-      return egk.d;
+   public egn(bqp $$0, bqp $$1, int $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   public dtc a(ayw $$0, jd $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected egt<?> a() {
+      return egt.a;
    }
 
-   protected dtc a(List<dtc> $$0, jd $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = Math.max($$7 + $$5.b() - 1 - $$9 / 2, 0);
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
    }
 
-   protected dtc a(List<dtc> $$0, double $$1) {
-      double $$2 = ayo.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   public int a(azk $$0, int $$1, egc $$2) {
+      return this.b;
+   }
+
+   @Override
+   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && ($$0.a(2) == 0 || $$2 == 0);
    }
 }

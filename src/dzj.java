@@ -1,95 +1,150 @@
-public class dzj implements dcj {
-   private int a;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-   @Override
-   public int a(aqu $$0, boolean $$1, boolean $$2) {
-      if (!$$1) {
-         return 0;
-      } else if (!$$0.ab().b(dcs.K)) {
-         return 0;
-      } else {
-         ayw $$3 = $$0.z;
-         this.a--;
-         if (this.a > 0) {
-            return 0;
-         } else {
-            this.a = this.a + 12000 + $$3.a(1200);
-            long $$4 = $$0.aa() / 24000L;
-            if ($$4 < 5L || !$$0.R()) {
-               return 0;
-            } else if ($$3.a(5) != 0) {
-               return 0;
-            } else {
-               int $$5 = $$0.x().size();
-               if ($$5 < 1) {
-                  return 0;
-               } else {
-                  cmx $$6 = $$0.x().get($$3.a($$5));
-                  if ($$6.R_()) {
-                     return 0;
-                  } else if ($$0.a($$6.do(), 2)) {
-                     return 0;
-                  } else {
-                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
-                     jd.a $$9 = $$6.do().k().e($$7, 0, $$8);
-                     int $$10 = 10;
-                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
-                        return 0;
-                     } else {
-                        jm<ddw> $$11 = $$0.t($$9);
-                        if ($$11.a(awd.ag)) {
-                           return 0;
-                        } else {
-                           int $$12 = 0;
-                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
+public class dzj implements dzq.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ad.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<dzj.a> h;
+   private final ObjectListIterator<elr> i;
 
-                           for (int $$14 = 0; $$14 < $$13; $$14++) {
-                              $$12++;
-                              $$9.q($$0.a(dyy.a.f, $$9).v());
-                              if ($$14 == 0) {
-                                 if (!this.a($$0, $$9, $$3, true)) {
-                                    break;
-                                 }
-                              } else {
-                                 this.a($$0, $$9, $$3, false);
-                              }
+   public static dzj a(den $$0, dcy $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dzj.a> $$4 = new ObjectArrayList(10);
+      ObjectList<elr> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != ekz.a).forEach($$5x -> {
+         ekz $$6 = $$5x.h().d();
 
-                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
-                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
-                           }
+         for (eks $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof ekk) {
+                  ekk $$8 = (ekk)$$7;
+                  ely.a $$9 = $$8.b().f();
+                  if ($$9 == ely.a.b) {
+                     $$4.add(new dzj.a($$8.f(), $$6, $$8.d()));
+                  }
 
-                           return $$12;
-                        }
+                  for (elr $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
                      }
                   }
+               } else {
+                  $$4.add(new dzj.a($$7.f(), $$6, 0));
                }
             }
          }
+      });
+      return new dzj($$4.iterator(), $$5.iterator());
+   }
+
+   @VisibleForTesting
+   public dzj(ObjectListIterator<dzj.a> $$0, ObjectListIterator<elr> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   @Override
+   public double a(dzp.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         dzj.a $$5 = (dzj.a)this.h.next();
+         ekg $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         elr $$13 = (elr)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
+   }
+
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
+   }
+
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
+
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = azc.g($$0, $$1, $$2);
+      return azc.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
+
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = azc.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * azc.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
       }
    }
 
-   private boolean a(aqu $$0, jd $$1, ayw $$2, boolean $$3) {
-      dtc $$4 = $$0.a_($$1);
-      if (!ddh.a($$0, $$1, $$4, $$4.u(), bsx.aC)) {
-         return false;
-      } else if (!cke.b(bsx.aC, $$0, btr.p, $$1, $$2)) {
-         return false;
-      } else {
-         cke $$5 = bsx.aC.a((dcw)$$0);
-         if ($$5 != null) {
-            if ($$3) {
-               $$5.x(true);
-               $$5.gs();
-            }
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
 
-            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-            $$5.a($$0, $$0.d_($$1), btr.p, null);
-            $$0.a_($$5);
-            return true;
-         } else {
-            return false;
-         }
-      }
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
+
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = azc.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(ekg a, ekz b, int c) {
    }
 }

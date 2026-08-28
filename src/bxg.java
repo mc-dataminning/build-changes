@@ -1,34 +1,37 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
 public class bxg {
-   public static bvi<btn> a(btq $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.am().f()), $$1);
+   public static bxi<buf> a(float $$0) {
+      return bzk.a((Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$1 -> $$1.group($$1.c(cdi.m)).apply($$1, $$1x -> ($$2, $$3, $$4) -> {
+               if ($$2.h($$3.ds())) {
+                  return false;
+               } else {
+                  Optional<eye> $$5 = Optional.ofNullable(a($$2, $$3));
+                  $$5.ifPresent($$2x -> $$1x.a(new cdl($$2x, $$0, 0)));
+                  return true;
+               }
+            })));
    }
 
-   public static bws<btn> a(bsx<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.am()), $$1);
+   @Nullable
+   private static eye a(arg $$0, buf $$1) {
+      azk $$2 = $$1.dV();
+      je $$3 = $$1.ds();
+
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         je $$5 = $$3.b($$2.a(20) - 10, $$2.a(6) - 3, $$2.a(20) - 10);
+         if (a($$0, $$1, $$5)) {
+            return eye.c($$5);
+         }
+      }
+
+      return null;
    }
 
-   public static bws<btn> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bws<btn> a(Predicate<btn> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return byu.a(
-         (Function<byu.b<btn>, ? extends App<byu.c<btn>, byx<btn>>>)($$2x -> $$2x.group($$2x.c(ccs.n), $$2x.b(ccs.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<btn> $$8 = $$2x.<ccu>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bsr)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bvs($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   public static boolean a(arg $$0, buf $$1, je $$2) {
+      return $$0.h($$2) && (double)$$0.a(dzw.a.e, $$2).v() <= $$1.dz();
    }
 }

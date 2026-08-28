@@ -1,23 +1,30 @@
-import io.netty.buffer.ByteBuf;
+import java.util.Optional;
 
-public class afq implements zg<abu> {
-   public static final afq a = new afq();
-   public static final yx<ByteBuf, afq> b = yx.a(a);
-
-   private afq() {
-   }
+public record afq(String b, String c, int d, Optional<xd> e, Optional<yt> f) implements zk<abz> {
+   public static final zb<wo, afq> a = zb.a(yz.l, afq::b, yz.l, afq::e, yz.g, afq::f, xf.e, afq::g, yv.d, afq::h, afq::new);
 
    @Override
-   public zi<afq> a() {
-      return agg.aT;
+   public zm<afq> a() {
+      return ago.aM;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public boolean d() {
-      return true;
+   public String e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
+   }
+
+   public Optional<xd> g() {
+      return this.e;
+   }
+
+   public Optional<yt> h() {
+      return this.f;
    }
 }

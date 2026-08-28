@@ -1,8 +1,3 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@ezd
-@ezc
-interface ezr {
+public interface ezr<T> extends ezx<T> {
+   boolean b(je var1, T var2);
 }

@@ -1,68 +1,60 @@
-import java.util.Optional;
+import java.util.List;
 
-public record acu(int b, jm<brm> c, int d, int e, Optional<exc> f) implements zg<abu> {
-   public static final yx<wk, acu> a = zg.a(acu::a, acu::new);
+public class acu implements zk<abz> {
+   public static final zb<wo, acu> a = zk.a(acu::a, acu::new);
+   private final int b;
+   private final int c;
+   private final List<cvl> d;
+   private final cvl e;
 
-   public acu(bsr $$0, brk $$1) {
-      this($$0.an(), $$1.l(), $$1.d() != null ? $$1.d().an() : -1, $$1.c() != null ? $$1.c().an() : -1, Optional.ofNullable($$1.j()));
+   public acu(int $$0, int $$1, jw<cvl> $$2, cvl $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = jw.a($$2.size(), cvl.k);
+
+      for (int $$4 = 0; $$4 < $$2.size(); $$4++) {
+         this.d.set($$4, $$2.get($$4).u());
+      }
+
+      this.e = $$3.u();
    }
 
-   private acu(wk $$0) {
-      this($$0.l(), brm.c.decode($$0), a((vw)$$0), a((vw)$$0), $$0.b($$0x -> new exc($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+   private acu(wo $$0) {
+      this.b = $$0.x();
+      this.c = $$0.l();
+      this.d = cvl.j.decode($$0);
+      this.e = cvl.h.decode($$0);
    }
 
-   private static void a(vw $$0, int $$1) {
-      $$0.c($$1 + 1);
-   }
-
-   private static int a(vw $$0) {
-      return $$0.l() - 1;
-   }
-
-   private void a(wk $$0) {
-      $$0.c(this.b);
-      brm.c.encode($$0, this.c);
-      a($$0, this.d);
-      a($$0, this.e);
-      $$0.a(this.f, ($$0x, $$1) -> {
-         $$0x.a($$1.a());
-         $$0x.a($$1.b());
-         $$0x.a($$1.c());
-      });
+   private void a(wo $$0) {
+      $$0.f(this.b);
+      $$0.c(this.c);
+      cvl.j.encode($$0, this.d);
+      cvl.h.encode($$0, this.e);
    }
 
    @Override
-   public zi<acu> a() {
-      return agg.z;
+   public zm<acu> a() {
+      return ago.u;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public brk a(dcw $$0) {
-      if (this.f.isPresent()) {
-         return new brk(this.c, this.f.get());
-      } else {
-         bsr $$1 = $$0.a(this.d);
-         bsr $$2 = $$0.a(this.e);
-         return new brk(this.c, $$2, $$1);
-      }
+   public int b() {
+      return this.b;
    }
 
-   public jm<brm> e() {
-      return this.c;
-   }
-
-   public int f() {
+   public List<cvl> e() {
       return this.d;
    }
 
-   public int g() {
+   public cvl f() {
       return this.e;
    }
 
-   public Optional<exc> h() {
-      return this.f;
+   public int g() {
+      return this.c;
    }
 }

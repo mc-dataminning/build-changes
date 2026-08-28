@@ -1,147 +1,52 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-
 public class err {
-   private final eru a;
-   private final ayw b;
-   private final jn.a c;
-   private final Set<err.c<?>> d = Sets.newLinkedHashSet();
+   private static final int J = 12741452;
+   public static final jn<erq> a = a("player", "player", false, true);
+   public static final jn<erq> b = a("frame", "frame", true, true);
+   public static final jn<erq> c = a("red_marker", "red_marker", false, true);
+   public static final jn<erq> d = a("blue_marker", "blue_marker", false, true);
+   public static final jn<erq> e = a("target_x", "target_x", true, false);
+   public static final jn<erq> f = a("target_point", "target_point", true, false);
+   public static final jn<erq> g = a("player_off_map", "player_off_map", false, true);
+   public static final jn<erq> h = a("player_off_limits", "player_off_limits", false, true);
+   public static final jn<erq> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
+   public static final jn<erq> j = a("monument", "ocean_monument", true, 3830373, false, true);
+   public static final jn<erq> k = a("banner_white", "white_banner", true, true);
+   public static final jn<erq> l = a("banner_orange", "orange_banner", true, true);
+   public static final jn<erq> m = a("banner_magenta", "magenta_banner", true, true);
+   public static final jn<erq> n = a("banner_light_blue", "light_blue_banner", true, true);
+   public static final jn<erq> o = a("banner_yellow", "yellow_banner", true, true);
+   public static final jn<erq> p = a("banner_lime", "lime_banner", true, true);
+   public static final jn<erq> q = a("banner_pink", "pink_banner", true, true);
+   public static final jn<erq> r = a("banner_gray", "gray_banner", true, true);
+   public static final jn<erq> s = a("banner_light_gray", "light_gray_banner", true, true);
+   public static final jn<erq> t = a("banner_cyan", "cyan_banner", true, true);
+   public static final jn<erq> u = a("banner_purple", "purple_banner", true, true);
+   public static final jn<erq> v = a("banner_blue", "blue_banner", true, true);
+   public static final jn<erq> w = a("banner_brown", "brown_banner", true, true);
+   public static final jn<erq> x = a("banner_green", "green_banner", true, true);
+   public static final jn<erq> y = a("banner_red", "red_banner", true, true);
+   public static final jn<erq> z = a("banner_black", "black_banner", true, true);
+   public static final jn<erq> A = a("red_x", "red_x", true, false);
+   public static final jn<erq> B = a("village_desert", "desert_village", true, eqf.w.ak, false, true);
+   public static final jn<erq> C = a("village_plains", "plains_village", true, eqf.w.ak, false, true);
+   public static final jn<erq> D = a("village_savanna", "savanna_village", true, eqf.w.ak, false, true);
+   public static final jn<erq> E = a("village_snowy", "snowy_village", true, eqf.w.ak, false, true);
+   public static final jn<erq> F = a("village_taiga", "taiga_village", true, eqf.w.ak, false, true);
+   public static final jn<erq> G = a("jungle_temple", "jungle_temple", true, eqf.w.ak, false, true);
+   public static final jn<erq> H = a("swamp_hut", "swamp_hut", true, eqf.w.ak, false, true);
+   public static final jn<erq> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
 
-   err(eru $$0, ayw $$1, jn.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static jn<erq> a(ka<erq> $$0) {
+      return a;
    }
 
-   public boolean a(euk<?> $$0) {
-      return this.a.a($$0);
+   private static jn<erq> a(String $$0, String $$1, boolean $$2, boolean $$3) {
+      return a($$0, $$1, $$2, -1, $$3, false);
    }
 
-   public <T> T b(euk<T> $$0) {
-      return this.a.b($$0);
-   }
-
-   public void a(akr $$0, Consumer<cuq> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Nullable
-   public <T> T c(euk<T> $$0) {
-      return this.a.d($$0);
-   }
-
-   public boolean a(err.c<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public boolean b(err.c<?> $$0) {
-      return this.d.add($$0);
-   }
-
-   public void c(err.c<?> $$0) {
-      this.d.remove($$0);
-   }
-
-   public jn.a a() {
-      return this.c;
-   }
-
-   public ayw b() {
-      return this.b;
-   }
-
-   public float c() {
-      return this.a.b();
-   }
-
-   public aqu d() {
-      return this.a.a();
-   }
-
-   public static err.c<erw> a(erw $$0) {
-      return new err.c<>(ert.c, $$0);
-   }
-
-   public static err.c<evc> a(evc $$0) {
-      return new err.c<>(ert.a, $$0);
-   }
-
-   public static err.c<etf> a(etf $$0) {
-      return new err.c<>(ert.b, $$0);
-   }
-
-   public static class a {
-      private final eru a;
-      @Nullable
-      private ayw b;
-
-      public a(eru $$0) {
-         this.a = $$0;
-      }
-
-      public err.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = ayw.a($$0);
-         }
-
-         return this;
-      }
-
-      public err.a a(ayw $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public aqu a() {
-         return this.a.a();
-      }
-
-      public err a(Optional<akr> $$0) {
-         aqu $$1 = this.a();
-         MinecraftServer $$2 = $$1.o();
-         ayw $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
-         return new err(this.a, $$3, $$2.be().b());
-      }
-   }
-
-   public static enum b implements azk {
-      a("this", eun.a),
-      b("attacker", eun.d),
-      c("direct_attacker", eun.e),
-      d("attacking_player", eun.b);
-
-      public static final azk.a<err.b> e = azk.a(err.b::values);
-      private final String f;
-      private final euk<? extends bsr> g;
-
-      private b(final String $$0, final euk<? extends bsr> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public euk<? extends bsr> a() {
-         return this.g;
-      }
-
-      public static err.b a(String $$0) {
-         err.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static record c<T>(ert<T> a, T b) {
+   private static jn<erq> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+      ala<erq> $$6 = ala.a(lv.aD, alb.b($$0));
+      erq $$7 = new erq(alb.b($$1), $$2, $$3, $$5, $$4);
+      return ka.b(lu.as, $$6, $$7);
    }
 }

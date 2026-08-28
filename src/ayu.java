@@ -1,65 +1,65 @@
-import com.google.common.collect.HashMultimap;
-import com.google.common.collect.ImmutableMultimap;
-import com.google.common.collect.Multimap;
-import java.util.Optional;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public interface ayu {
-   ayu a(String var1);
+public record ayu<T extends Comparable<T>>(T b, T c) {
+   public static final Codec<ayu<Integer>> a = a(Codec.INT);
 
-   void b(String var1);
-
-   public static class a implements ayu {
-      private final Multimap<String, String> a;
-      private final Supplier<String> b;
-      @Nullable
-      private String c;
-
-      public a() {
-         this(HashMultimap.create(), () -> "");
+   public ayu(T b, T c) {
+      if (b.compareTo(c) > 0) {
+         throw new IllegalArgumentException("min_inclusive must be less than or equal to max_inclusive");
+      } else {
+         this.b = b;
+         this.c = c;
       }
+   }
 
-      private a(Multimap<String, String> $$0, Supplier<String> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public ayu(T $$0) {
+      this($$0, $$0);
+   }
 
-      private String c() {
-         if (this.c == null) {
-            this.c = this.b.get();
-         }
+   public static <T extends Comparable<T>> Codec<ayu<T>> a(Codec<T> $$0) {
+      return ayl.a($$0, "min_inclusive", "max_inclusive", ayu::a, ayu::a, ayu::b);
+   }
 
-         return this.c;
-      }
+   public static <T extends Comparable<T>> Codec<ayu<T>> a(Codec<T> $$0, T $$1, T $$2) {
+      return a($$0)
+         .validate(
+            $$2x -> {
+               if ($$2x.a().compareTo($$1) < 0) {
+                  return DataResult.error(() -> "Range limit too low, expected at least " + $$1 + " [" + $$2x.a() + "-" + $$2x.b() + "]");
+               } else {
+                  return $$2x.b().compareTo($$2) > 0
+                     ? DataResult.error(() -> "Range limit too high, expected at most " + $$2 + " [" + $$2x.a() + "-" + $$2x.b() + "]")
+                     : DataResult.success($$2x);
+               }
+            }
+         );
+   }
 
-      @Override
-      public ayu a(String $$0) {
-         return new ayu.a(this.a, () -> this.c() + $$0);
-      }
+   public static <T extends Comparable<T>> DataResult<ayu<T>> a(T $$0, T $$1) {
+      return $$0.compareTo($$1) <= 0
+         ? DataResult.success(new ayu($$0, $$1))
+         : DataResult.error(() -> "min_inclusive must be less than or equal to max_inclusive");
+   }
 
-      @Override
-      public void b(String $$0) {
-         this.a.put(this.c(), $$0);
-      }
+   public boolean a(T $$0) {
+      return $$0.compareTo(this.b) >= 0 && $$0.compareTo(this.c) <= 0;
+   }
 
-      public Multimap<String, String> a() {
-         return ImmutableMultimap.copyOf(this.a);
-      }
+   public boolean a(ayu<T> $$0) {
+      return $$0.a().compareTo(this.b) >= 0 && $$0.c.compareTo(this.c) <= 0;
+   }
 
-      public Optional<String> b() {
-         Multimap<String, String> $$0 = this.a();
-         if (!$$0.isEmpty()) {
-            String $$1 = $$0.asMap()
-               .entrySet()
-               .stream()
-               .map($$0x -> " at " + (String)$$0x.getKey() + ": " + String.join("; ", (Iterable<? extends CharSequence>)$$0x.getValue()))
-               .collect(Collectors.joining("\n"));
-            return Optional.of($$1);
-         } else {
-            return Optional.empty();
-         }
-      }
+   @Override
+   public String toString() {
+      return "[" + this.b + ", " + this.c + "]";
+   }
+
+   public T a() {
+      return this.b;
+   }
+
+   public T b() {
+      return this.c;
    }
 }

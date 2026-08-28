@@ -1,195 +1,165 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Collection;
 
-public class dmv extends dky implements dmp, dna {
-   public static final MapCodec<dmv> c = b(dmv::new);
-   private static final dtt d = dts.C;
-   private final dkz e = new dkz(new dmv.a(dkz.a));
-   private final dkz f = new dkz(new dmv.a(dkz.e.a));
+public class dmv extends dgk {
+   public static final MapCodec<dmv> d = b(dmv::new);
+   public static final duy<dve> e = duq.ag;
 
    @Override
    public MapCodec<dmv> a() {
-      return c;
+      return d;
    }
 
-   public dmv(dtb.d $$0) {
-      super($$0);
-      this.k(this.o().a(d, Boolean.valueOf(false)));
+   protected dmv(dtz.d $$0) {
+      super(false, $$0);
+      this.l(this.E.b().b(e, dve.a).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dkz c() {
-      return this.e;
-   }
-
-   public dkz m() {
-      return this.f;
-   }
-
-   public static boolean a(dcx $$0, jd $$1, dtc $$2, Collection<ji> $$3) {
-      boolean $$4 = false;
-      dtc $$5 = dga.qT.o();
-
-      for (ji $$6 : $$3) {
-         jd $$7 = $$1.a($$6);
-         if (a($$0, $$6, $$7, $$0.a_($$7))) {
-            $$5 = $$5.a(b($$6), Boolean.valueOf(true));
-            $$4 = true;
-         }
-      }
-
-      if (!$$4) {
-         return false;
-      } else {
-         if (!$$2.u().c()) {
-            $$5 = $$5.a(d, Boolean.valueOf(true));
-         }
-
-         $$0.a($$1, $$5, 3);
-         return true;
+   protected void a(dua $$0, dds $$1, je $$2, dgv $$3) {
+      if ($$3.o().p() && new dmw($$1, $$2, $$0).b() == 3) {
+         this.a($$1, $$2, $$0, false);
       }
    }
 
    @Override
-   public void a(dcx $$0, dtc $$1, jd $$2, ayw $$3) {
-      if ($$1.a(this)) {
-         for (ji $$4 : b) {
-            dtt $$5 = b($$4);
-            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(dga.qS)) {
-               $$1 = $$1.a($$5, Boolean.valueOf(false));
+   public dvd<dve> c() {
+      return e;
+   }
+
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      dve $$2 = $$0.c(e);
+
+      return $$0.b(e, switch ($$1) {
+         case c -> {
+            switch ($$2) {
+               case a:
+                  yield dve.a;
+               case b:
+                  yield dve.b;
+               case c:
+                  yield dve.d;
+               case d:
+                  yield dve.c;
+               case e:
+                  yield dve.f;
+               case f:
+                  yield dve.e;
+               case g:
+                  yield dve.i;
+               case h:
+                  yield dve.j;
+               case i:
+                  yield dve.g;
+               case j:
+                  yield dve.h;
+               default:
+                  throw new MatchException(null, null);
             }
          }
-
-         if (!n($$1)) {
-            epe $$6 = $$0.b_($$2);
-            $$1 = ($$6.c() ? dga.a : dga.G).o();
-         }
-
-         $$0.a($$2, $$1, 3);
-         dmp.super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   @Override
-   public int a(dmu.a $$0, dcx $$1, jd $$2, ayw $$3, dmu $$4, boolean $$5) {
-      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
-         return $$0.b() - 1;
-      } else {
-         return $$3.a($$4.f()) == 0 ? ayo.d((float)$$0.b() * 0.5F) : $$0.b();
-      }
-   }
-
-   private boolean a(dmu $$0, dcx $$1, jd $$2, ayw $$3) {
-      dtc $$4 = $$1.a_($$2);
-      awu<dfy> $$5 = $$0.c();
-
-      for (ji $$6 : ji.a($$3)) {
-         if (a($$4, $$6)) {
-            jd $$7 = $$2.a($$6);
-            dtc $$8 = $$1.a_($$7);
-            if ($$8.a($$5)) {
-               dtc $$9 = dga.qS.o();
-               $$1.a($$7, $$9, 3);
-               dfy.a($$8, $$9, $$1, $$7);
-               $$1.a(null, $$7, avp.vT, avq.e, 1.0F, 1.0F);
-               this.e.a($$9, $$1, $$7, $$0.h());
-               ji $$10 = $$6.g();
-
-               for (ji $$11 : b) {
-                  if ($$11 != $$10) {
-                     jd $$12 = $$7.a($$11);
-                     dtc $$13 = $$1.a_($$12);
-                     if ($$13.a(this)) {
-                        this.a($$1, $$13, $$12, $$3);
-                     }
-                  }
-               }
-
-               return true;
+         case d -> {
+            switch ($$2) {
+               case a:
+                  yield dve.b;
+               case b:
+                  yield dve.a;
+               case c:
+                  yield dve.e;
+               case d:
+                  yield dve.f;
+               case e:
+                  yield dve.d;
+               case f:
+                  yield dve.c;
+               case g:
+                  yield dve.j;
+               case h:
+                  yield dve.g;
+               case i:
+                  yield dve.h;
+               case j:
+                  yield dve.i;
+               default:
+                  throw new MatchException(null, null);
             }
          }
-      }
-
-      return false;
-   }
-
-   public static boolean a(dcx $$0, dtc $$1, jd $$2) {
-      if (!$$1.a(dga.qT)) {
-         return false;
-      } else {
-         for (ji $$3 : b) {
-            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(awe.bT)) {
-               return true;
+         case b -> {
+            switch ($$2) {
+               case a:
+                  yield dve.b;
+               case b:
+                  yield dve.a;
+               case c:
+                  yield dve.f;
+               case d:
+                  yield dve.e;
+               case e:
+                  yield dve.c;
+               case f:
+                  yield dve.d;
+               case g:
+                  yield dve.h;
+               case h:
+                  yield dve.i;
+               case i:
+                  yield dve.j;
+               case j:
+                  yield dve.g;
+               default:
+                  throw new MatchException(null, null);
             }
          }
-
-         return false;
-      }
+         default -> $$2;
+      });
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      super.a($$0);
-      $$0.a(d);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, cyd $$1) {
-      return !$$1.n().a(cut.gi) || super.a($$0, $$1);
-   }
-
-   @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(d) ? epf.c.a(false) : super.b_($$0);
-   }
-
-   class a extends dkz.a {
-      private final dkz.e[] b;
-
-      public a(final dkz.e... $$0) {
-         super(dmv.this);
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean a(dcc $$0, jd $$1, jd $$2, ji $$3, dtc $$4) {
-         dtc $$5 = $$0.a_($$2.a($$3));
-         if (!$$5.a(dga.qS) && !$$5.a(dga.qU) && !$$5.a(dga.bQ)) {
-            if ($$1.k($$2) == 2) {
-               jd $$6 = $$1.a($$3.g());
-               if ($$0.a_($$6).d($$0, $$6, $$3)) {
-                  return false;
-               }
+   protected dua a(dua $$0, dls $$1) {
+      dve $$2 = $$0.c(e);
+      switch ($$1) {
+         case b:
+            switch ($$2) {
+               case e:
+                  return $$0.b(e, dve.f);
+               case f:
+                  return $$0.b(e, dve.e);
+               case g:
+                  return $$0.b(e, dve.j);
+               case h:
+                  return $$0.b(e, dve.i);
+               case i:
+                  return $$0.b(e, dve.h);
+               case j:
+                  return $$0.b(e, dve.g);
+               default:
+                  return super.a($$0, $$1);
             }
-
-            epe $$7 = $$4.u();
-            if (!$$7.c() && !$$7.b(epf.c)) {
-               return false;
-            } else {
-               return $$4.a(awe.aL) ? false : $$4.r() || super.a($$0, $$1, $$2, $$3, $$4);
+         case c:
+            switch ($$2) {
+               case c:
+                  return $$0.b(e, dve.d);
+               case d:
+                  return $$0.b(e, dve.c);
+               case e:
+               case f:
+               default:
+                  break;
+               case g:
+                  return $$0.b(e, dve.h);
+               case h:
+                  return $$0.b(e, dve.g);
+               case i:
+                  return $$0.b(e, dve.j);
+               case j:
+                  return $$0.b(e, dve.i);
             }
-         } else {
-            return false;
-         }
       }
 
-      @Override
-      public dkz.e[] a() {
-         return this.b;
-      }
+      return super.a($$0, $$1);
+   }
 
-      @Override
-      public boolean a(dtc $$0) {
-         return !$$0.a(dga.qT);
-      }
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(e, c);
    }
 }

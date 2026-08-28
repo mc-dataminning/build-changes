@@ -1,122 +1,61 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
-
-public class epy extends epr {
-   private final boolean k;
-   private final Long2ObjectMap<epv> l = new Long2ObjectOpenHashMap();
-
-   public epy(boolean $$0) {
-      this.k = $$0;
+public class epy extends eqa {
+   @Override
+   public cvg a() {
+      return cvo.a;
    }
 
    @Override
-   public void a(ddj $$0, btp $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   public boolean a(eqb $$0, dcx $$1, je $$2, eqa $$3, jj $$4) {
+      return true;
    }
 
    @Override
-   public void b() {
-      super.b();
-      this.l.clear();
+   public eye a(dcx $$0, je $$1, eqb $$2) {
+      return eye.c;
    }
 
    @Override
-   public epq a() {
-      return this.c(ayo.a(this.b.cK().a), ayo.a(this.b.cK().b + 0.5), ayo.a(this.b.cK().c));
+   public int a(ddv $$0) {
+      return 0;
    }
 
    @Override
-   public epz a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
+   protected boolean b() {
+      return true;
    }
 
    @Override
-   public int a(epq[] $$0, epq $$1) {
-      int $$2 = 0;
-      Map<ji, epq> $$3 = Maps.newEnumMap(ji.class);
-
-      for (ji $$4 : ji.values()) {
-         epq $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
-
-      for (ji $$6 : ji.c.a) {
-         ji $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            epq $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   protected boolean a(@Nullable epq $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   private static boolean b(@Nullable epq $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
-   }
-
-   @Nullable
-   protected epq a(int $$0, int $$1, int $$2) {
-      epq $$3 = null;
-      epv $$4 = this.b($$0, $$1, $$2);
-      if (this.k && $$4 == epv.u || $$4 == epv.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.a().b_(new jd($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   protected epv b(int $$0, int $$1, int $$2) {
-      return (epv)this.l.computeIfAbsent(jd.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   protected float c() {
+      return 0.0F;
    }
 
    @Override
-   public epv a(epx $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   public float a(eqb $$0, dcx $$1, je $$2) {
+      return 0.0F;
    }
 
    @Override
-   public epv a(epx $$0, int $$1, int $$2, int $$3, btp $$4) {
-      jd.a $$5 = new jd.a();
+   public float a(eqb $$0) {
+      return 0.0F;
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               dtc $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               epe $$10 = $$9.u();
-               if ($$10.c() && $$9.a(ept.b) && $$9.i()) {
-                  return epv.u;
-               }
+   @Override
+   protected dua b(eqb $$0) {
+      return dgx.a.o();
+   }
 
-               if (!$$10.a(awk.a)) {
-                  return epv.a;
-               }
-            }
-         }
-      }
+   @Override
+   public boolean c(eqb $$0) {
+      return false;
+   }
 
-      dtc $$11 = $$0.a($$5);
-      return $$11.a(ept.b) ? epv.j : epv.a;
+   @Override
+   public int d(eqb $$0) {
+      return 0;
+   }
+
+   @Override
+   public eyx b(eqb $$0, dcx $$1, je $$2) {
+      return eyu.a();
    }
 }

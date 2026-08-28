@@ -1,53 +1,8 @@
-import java.util.Iterator;
+import io.netty.buffer.ByteBuf;
 
-public interface ake<T> {
-   default void a(int $$0, int $$1, int $$2, czb<?> $$3, Iterator<T> $$4, int $$5) {
-      int $$6 = $$0;
-      int $$7 = $$1;
-      if ($$3.b() instanceof czh $$9) {
-         $$6 = $$9.j();
-         $$7 = $$9.k();
-      }
-
-      int $$10 = 0;
-
-      for (int $$11 = 0; $$11 < $$1; $$11++) {
-         if ($$10 == $$2) {
-            $$10++;
-         }
-
-         boolean $$12 = (float)$$7 < (float)$$1 / 2.0F;
-         int $$13 = ayo.d((float)$$1 / 2.0F - (float)$$7 / 2.0F);
-         if ($$12 && $$13 > $$11) {
-            $$10 += $$0;
-            $$11++;
-         }
-
-         for (int $$14 = 0; $$14 < $$0; $$14++) {
-            if (!$$4.hasNext()) {
-               return;
-            }
-
-            $$12 = (float)$$6 < (float)$$0 / 2.0F;
-            $$13 = ayo.d((float)$$0 / 2.0F - (float)$$6 / 2.0F);
-            int $$15 = $$6;
-            boolean $$16 = $$14 < $$6;
-            if ($$12) {
-               $$15 = $$13 + $$6;
-               $$16 = $$13 <= $$14 && $$14 < $$13 + $$6;
-            }
-
-            if ($$16) {
-               this.a($$4.next(), $$10, $$5, $$14, $$11);
-            } else if ($$15 == $$14) {
-               $$10 += $$0 - $$14;
-               break;
-            }
-
-            $$10++;
-         }
-      }
-   }
-
-   void a(T var1, int var2, int var3, int var4, int var5);
+public class ake {
+   public static final wl.a<akb, ByteBuf> a = zp.a(vy.c, $$0 -> $$0.a(akd.b, akc.b).a(aju.b, ajw.a));
+   public static final wl<akb> b = a.a($$0 -> $$0);
+   public static final wl.a<ajy, wa> c = zp.b(vy.c, $$0 -> $$0.a(akd.a, ajz.a).a(aju.a, ajt.a));
+   public static final wl<ajy> d = c.a(wa::new);
 }

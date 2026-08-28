@@ -1,24 +1,33 @@
-public abstract class gog<T extends bsr & bub, M extends fvk<T>> extends gov<T, M> {
-   public gog(gmf<T, M> $$0) {
-      super($$0);
+public class gog extends gny<ckx, guc, fxz> {
+   private static final alb a = alb.b("textures/entity/phantom.png");
+
+   public gog(gms.a $$0) {
+      super($$0, new fxz($$0.a(gaa.br)), 0.75F);
+      this.a(new grd(this));
    }
 
-   @Override
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.a()) {
-         float $$10 = (float)$$3.ai + $$6;
-         fvk<T> $$11 = this.b();
-         $$11.a($$3, $$4, $$5, $$6);
-         this.c().a($$11);
-         fbm $$12 = $$1.getBuffer(gfh.b(this.a(), this.a($$10) % 1.0F, $$10 * 0.01F % 1.0F));
-         $$11.a($$3, $$4, $$5, $$7, $$8, $$9);
-         $$11.a($$0, $$12, $$2, gqc.d, -8355712);
-      }
+   public alb a(guc $$0) {
+      return a;
    }
 
-   protected abstract float a(float var1);
+   public guc c() {
+      return new guc();
+   }
 
-   protected abstract akr a();
+   public void a(ckx $$0, guc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.t() + $$1.p;
+      $$1.b = $$0.q();
+   }
 
-   protected abstract fvk<T> b();
+   protected void a(guc $$0, fcu $$1) {
+      float $$2 = 1.0F + 0.15F * (float)$$0.b;
+      $$1.b($$2, $$2, $$2);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
+   }
+
+   protected void a(guc $$0, fcu $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$1.a(a.b.rotationDegrees($$0.V));
+   }
 }

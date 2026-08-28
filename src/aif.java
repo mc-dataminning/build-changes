@@ -1,53 +1,29 @@
-public class aif implements zg<agi> {
-   public static final yx<vw, aif> a = zg.a(aif::a, aif::new);
-   private final bqq b;
-   private final int c;
-   private final float d;
-   private final float e;
+public class aif implements zk<agq> {
+   public static final zb<wa, aif> a = zk.a(aif::a, aif::new);
+   private final int b;
 
-   public aif(bqq $$0, int $$1, float $$2, float $$3) {
+   public aif(int $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
-   private aif(vw $$0) {
-      this.b = $$0.b(bqq.class);
-      this.c = $$0.l();
-      this.d = $$0.readFloat();
-      this.e = $$0.readFloat();
+   private aif(wa $$0) {
+      this.b = $$0.readShort();
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.c(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
+   private void a(wa $$0) {
+      $$0.m(this.b);
    }
 
    @Override
-   public zi<aif> a() {
-      return agg.cd;
+   public zm<aif> a() {
+      return ago.bW;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public bqq b() {
+   public int b() {
       return this.b;
-   }
-
-   public int e() {
-      return this.c;
-   }
-
-   public float f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
    }
 }

@@ -1,28 +1,12 @@
-public class gnk extends glp<ciu, fya<ciu>> {
-   private static final akr a = akr.b("textures/entity/wither/wither_invulnerable.png");
-   private static final akr i = akr.b("textures/entity/wither/wither.png");
+public class gnk extends gpy {
+   private static final alb a = alb.b("textures/entity/zombie/husk.png");
 
-   public gnk(gkj.a $$0) {
-      super($$0, new fya<>($$0.a(fyj.bW)), 1.0F);
-      this.a(new gpj(this, $$0.f()));
+   public gnk(gms.a $$0) {
+      super($$0, gaa.aT, gaa.aW, gaa.aU, gaa.aV, gaa.aX, gaa.aY);
    }
 
-   protected int a(ciu $$0, jd $$1) {
-      return 15;
-   }
-
-   public akr a(ciu $$0) {
-      int $$1 = $$0.x();
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : i;
-   }
-
-   protected void a(ciu $$0, fbi $$1, float $$2) {
-      float $$3 = 2.0F;
-      int $$4 = $$0.x();
-      if ($$4 > 0) {
-         $$3 -= ((float)$$4 - $$2) / 220.0F * 0.5F;
-      }
-
-      $$1.b($$3, $$3, $$3);
+   @Override
+   public alb a(gvj $$0) {
+      return a;
    }
 }

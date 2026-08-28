@@ -1,22 +1,30 @@
-import java.util.Optional;
-import java.util.function.Consumer;
 import net.minecraft.server.MinecraftServer;
 
-public class asc implements ark {
-   public static final ark.a a = new ark.a("server_resource_pack");
-   private final MinecraftServer.b b;
+public class asc implements aiw {
+   private final MinecraftServer b;
+   private final vx c;
 
-   public asc(MinecraftServer.b $$0) {
+   public asc(MinecraftServer $$0, vx $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public void a(Consumer<zg<?>> $$0) {
-      $$0.accept(new zt(this.b.a(), this.b.b(), this.b.c(), this.b.d(), Optional.ofNullable(this.b.e())));
+   public void a(ait $$0) {
+      if ($$0.g() != ais.b) {
+         throw new UnsupportedOperationException("Invalid intention " + $$0.g());
+      } else {
+         this.c.a(ajf.b, new ask(this.b, this.c, false));
+         this.c.a(ajf.d);
+      }
    }
 
    @Override
-   public ark.a a() {
-      return a;
+   public void a(vz $$0) {
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.i();
    }
 }

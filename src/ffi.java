@@ -1,53 +1,38 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class ffi extends hct {
+   private static final xd a = xd.c("mco.client.incompatible.title").b(-65536);
+   private static final xd b = xd.b(ab.b().c()).b(-65536);
+   private static final xd c = xd.a("mco.client.unsupported.snapshot.version", b);
+   private static final xd B = xd.a("mco.client.outdated.stable.version", b);
+   private final fpt C;
+   private final fno D = new fno(this);
 
-public class ffi extends ffn {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wz c = wz.c("mco.configure.world.closing");
-   private final fcp d;
-   private final fdx e;
-
-   public ffi(fcp $$0, fdx $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   public ffi(fpt $$0) {
+      super(a);
+      this.C = $$0;
    }
 
    @Override
-   public void run() {
-      fby $$0 = fby.a();
-
-      for (int $$1 = 0; $$1 < 25; $$1++) {
-         if (this.d()) {
-            return;
-         }
-
-         try {
-            boolean $$2 = $$0.g(this.d.a);
-            if ($$2) {
-               this.e.f();
-               this.d.e = fcp.c.a;
-               a(this.e);
-               break;
-            }
-         } catch (fdk var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Failed to close server", var5);
-            this.a(var5);
-         }
-      }
+   public void aT_() {
+      this.D.a(a, this.p);
+      this.D.c(new fku(this.D(), this.p).b(true));
+      this.D.b(fka.a(xc.k, $$0 -> this.d()).a(200).a());
+      this.D.a($$1 -> {
+         fjy var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public wz a() {
-      return c;
+   protected void c() {
+      this.D.a();
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.C);
+   }
+
+   private xd D() {
+      return ab.b().g() ? B : c;
    }
 }

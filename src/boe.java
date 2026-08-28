@@ -1,56 +1,91 @@
-import com.mojang.datafixers.util.Pair;
-import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.logging.LogUtils;
+import java.net.SocketAddress;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public final class boe<T> {
-   private final boe.a a;
-   private final List<Pair<T, boe.a>> b;
-   private final Duration c;
+public interface boe {
+   boe f = (boe)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bod.a() : new boe.a());
 
-   public boe(Duration $$0, List<Pair<T, boe.a>> $$1) {
-      this.c = $$0;
-      this.a = $$1.stream().<boe.a>map(Pair::getSecond).reduce(new boe.a(0L, 0L), boe.a::a);
-      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, boe.a.c)).limit(10L).toList();
-   }
+   boolean a(boc var1);
 
-   public double a() {
-      return (double)this.a.a / (double)this.c.getSeconds();
-   }
+   Path b();
 
-   public double b() {
-      return (double)this.a.b / (double)this.c.getSeconds();
-   }
+   boolean c();
 
-   public long c() {
-      return this.a.a;
-   }
+   boolean d();
 
-   public long d() {
-      return this.a.b;
-   }
+   void a(float var1);
 
-   public List<Pair<T, boe.a>> e() {
-      return this.b;
-   }
+   void a(vy var1, zm<?> var2, SocketAddress var3, int var4);
 
-   public static record a(long a, long b) {
-      static final Comparator<boe.a> c = Comparator.comparing(boe.a::c).thenComparing(boe.a::b).reversed();
+   void b(vy var1, zm<?> var2, SocketAddress var3, int var4);
 
-      boe.a a(boe.a $$0) {
-         return new boe.a(this.a + $$0.a, this.b + $$0.b);
+   void a(dxp var1, dcy var2, dxo var3, int var4);
+
+   void b(dxp var1, dcy var2, dxo var3, int var4);
+
+   @Nullable
+   boh e();
+
+   @Nullable
+   boh a(dcy var1, ala<dds> var2, String var3);
+
+   public static class a implements boe {
+      private static final Logger b = LogUtils.getLogger();
+      static final boh a = () -> {
+      };
+
+      @Override
+      public boolean a(boc $$0) {
+         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
+         return false;
       }
 
-      public float a() {
-         return (float)this.b / (float)this.a;
+      @Override
+      public Path b() {
+         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
       }
 
-      public long b() {
-         return this.a;
+      @Override
+      public boolean c() {
+         return false;
       }
 
-      public long c() {
-         return this.b;
+      @Override
+      public boolean d() {
+         return false;
+      }
+
+      @Override
+      public void a(vy $$0, zm<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void b(vy $$0, zm<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void a(dxp $$0, dcy $$1, dxo $$2, int $$3) {
+      }
+
+      @Override
+      public void b(dxp $$0, dcy $$1, dxo $$2, int $$3) {
+      }
+
+      @Override
+      public void a(float $$0) {
+      }
+
+      @Override
+      public boh e() {
+         return a;
+      }
+
+      @Nullable
+      @Override
+      public boh a(dcy $$0, ala<dds> $$1, String $$2) {
+         return null;
       }
    }
 }

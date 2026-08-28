@@ -1,44 +1,44 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class ecs extends ece<eep> {
-   public ecs(Codec<eep> $$0) {
+public class ecs extends ecq {
+   public ecs(Codec<efn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecg<eep> $$0) {
-      int $$1 = 0;
-      dds $$2 = $$0.b();
-      jd $$3 = $$0.e();
-      ayw $$4 = $$0.d();
-      int $$5 = $$2.a(dyy.a.d, $$3.u(), $$3.w());
-      jd $$6 = new jd($$3.u(), $$5, $$3.w());
-      if ($$2.a_($$6).a(dga.G)) {
-         dtc $$7 = dga.mc.o();
-         dtc $$8 = dga.md.o();
-         int $$9 = 1 + $$4.a(10);
+   protected boolean a(ddt $$0, azk $$1, je $$2, dua $$3) {
+      je.a $$4 = $$2.k();
+      int $$5 = $$1.a(3) + 1;
 
-         for (int $$10 = 0; $$10 <= $$9; $$10++) {
-            if ($$2.a_($$6).a(dga.G) && $$2.a_($$6.d()).a(dga.G) && $$8.a($$2, $$6)) {
-               if ($$10 == $$9) {
-                  $$2.a($$6, $$7.a(dkc.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               } else {
-                  $$2.a($$6, $$8, 2);
-               }
-            } else if ($$10 > 0) {
-               jd $$11 = $$6.e();
-               if ($$7.a($$2, $$11) && !$$2.a_($$11.e()).a(dga.mc)) {
-                  $$2.a($$11, $$7.a(dkc.e, Integer.valueOf($$4.a(4) + 20)), 2);
-                  $$1++;
-               }
-               break;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         if (!this.b($$0, $$1, $$4, $$3)) {
+            return true;
+         }
+
+         $$4.c(jj.b);
+      }
+
+      je $$7 = $$4.j();
+      int $$8 = $$1.a(3) + 2;
+      List<jj> $$9 = jj.c.a.c($$1);
+
+      for (jj $$11 : $$9.subList(0, $$8)) {
+         $$4.g($$7);
+         $$4.c($$11);
+         int $$12 = $$1.a(5) + 2;
+         int $$13 = 0;
+
+         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
+            $$13++;
+            $$4.c(jj.b);
+            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
+               $$4.c($$11);
+               $$13 = 0;
             }
-
-            $$6 = $$6.d();
          }
       }
 
-      return $$1 > 0;
+      return true;
    }
 }

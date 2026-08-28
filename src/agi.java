@@ -1,102 +1,59 @@
-public interface agi extends ajl, zz {
-   @Override
-   default vu b() {
-      return vu.b;
+import com.google.common.collect.Lists;
+import io.netty.buffer.ByteBuf;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+public class agi implements zk<abz> {
+   public static final zb<wo, agi> a = zb.a(yz.g, agi::b, agi.a.b.a(yz.a()), agi::e, agi::new);
+   private final int b;
+   private final List<agi.a> c;
+
+   public agi(int $$0, Collection<bvi> $$1) {
+      this.b = $$0;
+      this.c = Lists.newArrayList();
+
+      for (bvi $$2 : $$1) {
+         this.c.add(new agi.a($$2.a(), $$2.b(), $$2.c()));
+      }
    }
 
-   void a(aic var1);
+   private agi(int $$0, List<agi.a> $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   void a(agq var1);
+   @Override
+   public zm<agi> a() {
+      return ago.bc;
+   }
 
-   void a(ago var1);
+   public void a(abz $$0) {
+      $$0.a(this);
+   }
 
-   void a(agp var1);
+   public int b() {
+      return this.b;
+   }
 
-   void a(agn var1);
+   public List<agi.a> e() {
+      return this.c;
+   }
 
-   void a(agt var1);
+   public static record a(jn<bvh> c, double d, Collection<bvk> e) {
+      public static final zb<ByteBuf, bvk> a = zb.a(alb.b, bvk::b, yz.j, bvk::c, bvk.a.e, bvk::d, bvk::new);
+      public static final zb<wo, agi.a> b = zb.a(bvh.b, agi.a::a, yz.j, agi.a::b, a.a(yz.a(ArrayList::new)), agi.a::c, agi.a::new);
 
-   void a(agw var1);
+      public jn<bvh> a() {
+         return this.c;
+      }
 
-   void a(agx var1);
+      public double b() {
+         return this.d;
+      }
 
-   void a(ahk var1);
-
-   void a(agy var1);
-
-   void a(ahd var1);
-
-   void a(ahg var1);
-
-   void a(ahl var1);
-
-   void a(ahm var1);
-
-   void a(ahn var1);
-
-   void a(aho var1);
-
-   void a(ahv var1);
-
-   void a(ahy var1);
-
-   void a(aib var1);
-
-   void a(aie var1);
-
-   void a(aif var1);
-
-   void a(aid var1);
-
-   void a(ahi var1);
-
-   void a(ahh var1);
-
-   void a(agk var1);
-
-   void a(ahq var1);
-
-   void a(ahp var1);
-
-   void a(ahs var1);
-
-   void a(agu var1);
-
-   void a(ahw var1);
-
-   void a(ahx var1);
-
-   void a(ahj var1);
-
-   void a(ahr var1);
-
-   void a(ahu var1);
-
-   void a(aia var1);
-
-   void a(aht var1);
-
-   void a(ahb var1);
-
-   void a(ahc var1);
-
-   void a(agz var1);
-
-   void a(agl var1);
-
-   void a(ahz var1);
-
-   void a(ahe var1);
-
-   void a(agm var1);
-
-   void a(ahf var1);
-
-   void a(agr var1);
-
-   void a(agv var1);
-
-   void a(ags var1);
-
-   void a(aha var1);
+      public Collection<bvk> c() {
+         return this.e;
+      }
+   }
 }

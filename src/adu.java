@@ -1,88 +1,24 @@
-public class adu implements zg<abu> {
-   public static final yx<vw, adu> a = zg.a(adu::a, adu::new);
-   private static final int b = 1;
-   private static final int c = 2;
-   private static final int d = 4;
-   private static final int e = 8;
-   private final boolean f;
-   private final boolean g;
-   private final boolean h;
-   private final boolean i;
-   private final float j;
-   private final float k;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public adu(cmu $$0) {
-      this.f = $$0.a;
-      this.g = $$0.b;
-      this.h = $$0.c;
-      this.i = $$0.d;
-      this.j = $$0.a();
-      this.k = $$0.b();
-   }
-
-   private adu(vw $$0) {
-      byte $$1 = $$0.readByte();
-      this.f = ($$1 & 1) != 0;
-      this.g = ($$1 & 2) != 0;
-      this.h = ($$1 & 4) != 0;
-      this.i = ($$1 & 8) != 0;
-      this.j = $$0.readFloat();
-      this.k = $$0.readFloat();
-   }
-
-   private void a(vw $$0) {
-      byte $$1 = 0;
-      if (this.f) {
-         $$1 = (byte)($$1 | 1);
-      }
-
-      if (this.g) {
-         $$1 = (byte)($$1 | 2);
-      }
-
-      if (this.h) {
-         $$1 = (byte)($$1 | 4);
-      }
-
-      if (this.i) {
-         $$1 = (byte)($$1 | 8);
-      }
-
-      $$0.k($$1);
-      $$0.a(this.j);
-      $$0.a(this.k);
-   }
+public record adu(int b, List<cqa.a> c) implements zk<abz> {
+   public static final zb<wa, adu> a = zb.a(yz.g, adu::b, cqa.a.b.a(yz.a()), adu::e, adu::new);
 
    @Override
-   public zi<adu> a() {
-      return agg.Z;
+   public zm<adu> a() {
+      return ago.T;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
-      return this.f;
+   @Nullable
+   public btj a(dds $$0) {
+      return $$0.a(this.b);
    }
 
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public float h() {
-      return this.j;
-   }
-
-   public float i() {
-      return this.k;
+   public List<cqa.a> e() {
+      return this.c;
    }
 }

@@ -1,44 +1,39 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class afg implements zg<abu> {
-   public static final yx<vw, afg> a = zg.a(afg::a, afg::new);
+public class afg implements zk<abz> {
+   public static final zb<wa, afg> a = zk.a(afg::a, afg::new);
    private final int b;
-   private final int[] c;
+   private final int c;
 
-   public afg(bsr $$0) {
-      this.b = $$0.an();
-      List<bsr> $$1 = $$0.cS();
-      this.c = new int[$$1.size()];
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).an();
-      }
+   public afg(btj $$0, @Nullable btj $$1) {
+      this.b = $$0.ap();
+      this.c = $$1 != null ? $$1.ap() : 0;
    }
 
-   private afg(vw $$0) {
-      this.b = $$0.l();
-      this.c = $$0.c();
+   private afg(wa $$0) {
+      this.b = $$0.readInt();
+      this.c = $$0.readInt();
    }
 
-   private void a(vw $$0) {
-      $$0.c(this.b);
-      $$0.a(this.c);
+   private void a(wa $$0) {
+      $$0.q(this.b);
+      $$0.q(this.c);
    }
 
    @Override
-   public zi<afg> a() {
-      return agg.aJ;
+   public zm<afg> a() {
+      return ago.aD;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int[] b() {
-      return this.c;
+   public int b() {
+      return this.b;
    }
 
    public int e() {
-      return this.b;
+      return this.c;
    }
 }

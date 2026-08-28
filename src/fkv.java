@@ -1,37 +1,356 @@
-public interface fkv {
-   Object b = new Object();
-   int c = 32;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.function.Consumer;
 
-   fkv.a a(fhz var1, fkw var2, long var3);
+public class fkv {
+   public static final int a = Integer.MAX_VALUE;
+   private static final int b = 2;
+   private final fjl c;
+   private final List<fkv.a> d = Lists.newArrayList();
+   private String e;
+   private int f;
+   private int g;
+   private boolean h;
+   private int i = Integer.MAX_VALUE;
+   private final int j;
+   private Consumer<String> k = $$0x -> {
+   };
+   private Runnable l = () -> {
+   };
 
-   default Object e() {
-      return b;
+   public fkv(fjl $$0, int $$1) {
+      this.c = $$0;
+      this.j = $$1;
+      this.a("");
    }
 
-   default int a() {
-      return 160;
+   public int a() {
+      return this.i;
    }
 
-   default int b() {
-      return 32;
+   public void a(int $$0) {
+      if ($$0 < 0) {
+         throw new IllegalArgumentException("Character limit cannot be negative");
+      } else {
+         this.i = $$0;
+      }
    }
 
-   default int f() {
-      return ayo.e(this.b(), 32);
+   public boolean b() {
+      return this.i != Integer.MAX_VALUE;
    }
 
-   public static enum a {
-      a(avp.Ay),
-      b(avp.Az);
+   public void a(Consumer<String> $$0) {
+      this.k = $$0;
+   }
 
-      private final avo c;
+   public void a(Runnable $$0) {
+      this.l = $$0;
+   }
 
-      private a(final avo $$0) {
-         this.c = $$0;
+   public void a(String $$0) {
+      this.e = this.c($$0);
+      this.f = this.e.length();
+      this.g = this.f;
+      this.n();
+   }
+
+   public String c() {
+      return this.e;
+   }
+
+   public void b(String $$0) {
+      if (!$$0.isEmpty() || this.i()) {
+         String $$1 = this.d(azz.a($$0, true));
+         fkv.a $$2 = this.e();
+         this.e = new StringBuilder(this.e).replace($$2.a, $$2.b, $$1).toString();
+         this.f = $$2.a + $$1.length();
+         this.g = this.f;
+         this.n();
+      }
+   }
+
+   public void b(int $$0) {
+      if (!this.i()) {
+         this.g = azc.a(this.f + $$0, 0, this.e.length());
       }
 
-      public void a(gvf $$0) {
-         $$0.a(gtv.a(this.c, 1.0F, 1.0F));
+      this.b("");
+   }
+
+   public int d() {
+      return this.f;
+   }
+
+   public void a(boolean $$0) {
+      this.h = $$0;
+   }
+
+   public fkv.a e() {
+      return new fkv.a(Math.min(this.g, this.f), Math.max(this.g, this.f));
+   }
+
+   public int f() {
+      return this.d.size();
+   }
+
+   public int g() {
+      for (int $$0 = 0; $$0 < this.d.size(); $$0++) {
+         fkv.a $$1 = this.d.get($$0);
+         if (this.f >= $$1.a && this.f <= $$1.b) {
+            return $$0;
+         }
       }
+
+      return -1;
+   }
+
+   public fkv.a c(int $$0) {
+      return this.d.get(azc.a($$0, 0, this.d.size() - 1));
+   }
+
+   public void a(flm $$0, int $$1) {
+      switch ($$0) {
+         case a:
+            this.f = $$1;
+            break;
+         case b:
+            this.f += $$1;
+            break;
+         case c:
+            this.f = this.e.length() + $$1;
+      }
+
+      this.f = azc.a(this.f, 0, this.e.length());
+      this.l.run();
+      if (!this.h) {
+         this.g = this.f;
+      }
+   }
+
+   public void d(int $$0) {
+      if ($$0 != 0) {
+         int $$1 = this.c.b(this.e.substring(this.m().a, this.f)) + 2;
+         fkv.a $$2 = this.f($$0);
+         int $$3 = this.c.a(this.e.substring($$2.a, $$2.b), $$1).length();
+         this.a(flm.a, $$2.a + $$3);
+      }
+   }
+
+   public void a(double $$0, double $$1) {
+      int $$2 = azc.a($$0);
+      int $$3 = azc.a($$1 / 9.0);
+      fkv.a $$4 = this.d.get(azc.a($$3, 0, this.d.size() - 1));
+      int $$5 = this.c.a(this.e.substring($$4.a, $$4.b), $$2).length();
+      this.a(flm.a, $$4.a + $$5);
+   }
+
+   public boolean e(int $$0) {
+      this.h = fpt.t();
+      if (fpt.f($$0)) {
+         this.f = this.e.length();
+         this.g = 0;
+         return true;
+      } else if (fpt.e($$0)) {
+         fib.Q().p.a(this.j());
+         return true;
+      } else if (fpt.d($$0)) {
+         this.b(fib.Q().p.a());
+         return true;
+      } else if (fpt.c($$0)) {
+         fib.Q().p.a(this.j());
+         this.b("");
+         return true;
+      } else {
+         switch ($$0) {
+            case 257:
+            case 335:
+               this.b("\n");
+               return true;
+            case 259:
+               if (fpt.s()) {
+                  fkv.a $$3 = this.k();
+                  this.b($$3.a - this.f);
+               } else {
+                  this.b(-1);
+               }
+
+               return true;
+            case 261:
+               if (fpt.s()) {
+                  fkv.a $$4 = this.l();
+                  this.b($$4.a - this.f);
+               } else {
+                  this.b(1);
+               }
+
+               return true;
+            case 262:
+               if (fpt.s()) {
+                  fkv.a $$2 = this.l();
+                  this.a(flm.a, $$2.a);
+               } else {
+                  this.a(flm.b, 1);
+               }
+
+               return true;
+            case 263:
+               if (fpt.s()) {
+                  fkv.a $$1 = this.k();
+                  this.a(flm.a, $$1.a);
+               } else {
+                  this.a(flm.b, -1);
+               }
+
+               return true;
+            case 264:
+               if (!fpt.s()) {
+                  this.d(1);
+               }
+
+               return true;
+            case 265:
+               if (!fpt.s()) {
+                  this.d(-1);
+               }
+
+               return true;
+            case 266:
+               this.a(flm.a, 0);
+               return true;
+            case 267:
+               this.a(flm.c, 0);
+               return true;
+            case 268:
+               if (fpt.s()) {
+                  this.a(flm.a, 0);
+               } else {
+                  this.a(flm.a, this.m().a);
+               }
+
+               return true;
+            case 269:
+               if (fpt.s()) {
+                  this.a(flm.c, 0);
+               } else {
+                  this.a(flm.a, this.m().b);
+               }
+
+               return true;
+            default:
+               return false;
+         }
+      }
+   }
+
+   public Iterable<fkv.a> h() {
+      return this.d;
+   }
+
+   public boolean i() {
+      return this.g != this.f;
+   }
+
+   @VisibleForTesting
+   public String j() {
+      fkv.a $$0 = this.e();
+      return this.e.substring($$0.a, $$0.b);
+   }
+
+   private fkv.a m() {
+      return this.f(0);
+   }
+
+   private fkv.a f(int $$0) {
+      int $$1 = this.g();
+      if ($$1 < 0) {
+         throw new IllegalStateException("Cursor is not within text (cursor = " + this.f + ", length = " + this.e.length() + ")");
+      } else {
+         return this.d.get(azc.a($$1 + $$0, 0, this.d.size() - 1));
+      }
+   }
+
+   @VisibleForTesting
+   public fkv.a k() {
+      if (this.e.isEmpty()) {
+         return fkv.a.c;
+      } else {
+         int $$0 = azc.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 > 0 && Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         while ($$0 > 0 && !Character.isWhitespace(this.e.charAt($$0 - 1))) {
+            $$0--;
+         }
+
+         return new fkv.a($$0, this.g($$0));
+      }
+   }
+
+   @VisibleForTesting
+   public fkv.a l() {
+      if (this.e.isEmpty()) {
+         return fkv.a.c;
+      } else {
+         int $$0 = azc.a(this.f, 0, this.e.length() - 1);
+
+         while ($$0 < this.e.length() && !Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         while ($$0 < this.e.length() && Character.isWhitespace(this.e.charAt($$0))) {
+            $$0++;
+         }
+
+         return new fkv.a($$0, this.g($$0));
+      }
+   }
+
+   private int g(int $$0) {
+      int $$1 = $$0;
+
+      while ($$1 < this.e.length() && !Character.isWhitespace(this.e.charAt($$1))) {
+         $$1++;
+      }
+
+      return $$1;
+   }
+
+   private void n() {
+      this.o();
+      this.k.accept(this.e);
+      this.l.run();
+   }
+
+   private void o() {
+      this.d.clear();
+      if (this.e.isEmpty()) {
+         this.d.add(fkv.a.c);
+      } else {
+         this.c.b().a(this.e, this.j, ya.a, false, ($$0, $$1, $$2) -> this.d.add(new fkv.a($$1, $$2)));
+         if (this.e.charAt(this.e.length() - 1) == '\n') {
+            this.d.add(new fkv.a(this.e.length(), this.e.length()));
+         }
+      }
+   }
+
+   private String c(String $$0) {
+      return this.b() ? azz.a($$0, this.i, false) : $$0;
+   }
+
+   private String d(String $$0) {
+      if (this.b()) {
+         int $$1 = this.i - this.e.length();
+         return azz.a($$0, $$1, false);
+      } else {
+         return $$0;
+      }
+   }
+
+   protected static record a(int a, int b) {
+      static final fkv.a c = new fkv.a(0, 0);
    }
 }

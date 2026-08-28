@@ -1,2 +1,8 @@
-public record erc(erl a, dzt.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface erc {
 }

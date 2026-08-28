@@ -1,75 +1,49 @@
-public class kw implements kx {
-   private static final int c = 6;
+public class kw extends kx {
+   private final kx c = new kx();
+   private final cpo.b d;
+   private final boolean e;
 
-   @Override
-   public final cuq dispense(ku $$0, cuq $$1) {
-      cuq $$2 = this.a($$0, $$1);
-      this.a($$0);
-      this.a($$0, $$0.d().c(did.b));
-      return $$2;
+   public kw(cpo.b $$0) {
+      this($$0, false);
    }
 
-   protected cuq a(ku $$0, cuq $$1) {
-      ji $$2 = $$0.d().c(did.b);
-      jw $$3 = did.a($$0);
-      cuq $$4 = $$1.a(1);
-      a($$0.b(), $$4, 6, $$2, $$3);
+   public kw(cpo.b $$0, boolean $$1) {
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   @Override
+   public cvl a(kv $$0, cvl $$1) {
+      jj $$2 = $$0.d().c(dja.b);
+      arg $$3 = $$0.b();
+      eye $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)btq.k.l() / 2.0;
+      double $$6 = $$4.a() + (double)$$2.j() * $$5;
+      double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
+      double $$8 = $$4.c() + (double)$$2.l() * $$5;
+      je $$9 = $$0.c().a($$2);
+      double $$10;
+      if ($$3.b_($$9).a(awy.a)) {
+         $$10 = 1.0;
+      } else {
+         if (!$$3.a_($$9).l() || !$$3.b_($$9.e()).a(awy.a)) {
+            return this.c.dispense($$0, $$1);
+         }
+
+         $$10 = 0.0;
+      }
+
+      cpo $$13 = (cpo)(this.e ? new cpp($$3, $$6, $$7 + $$10, $$8) : new cpo($$3, $$6, $$7 + $$10, $$8));
+      btq.<cpo>a($$3, $$1, null).accept($$13);
+      $$13.a(this.d);
+      $$13.v($$2.p());
+      $$3.b($$13);
+      $$1.h(1);
       return $$1;
    }
 
-   public static void a(dcw $$0, cuq $$1, int $$2, ji $$3, jw $$4) {
-      double $$5 = $$4.a();
-      double $$6 = $$4.b();
-      double $$7 = $$4.c();
-      if ($$3.o() == ji.a.b) {
-         $$6 -= 0.125;
-      } else {
-         $$6 -= 0.15625;
-      }
-
-      cjh $$8 = new cjh($$0, $$5, $$6, $$7, $$1);
-      double $$9 = $$0.z.j() * 0.1 + 0.2;
-      $$8.n(
-         $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
-         $$0.z.a(0.2, 0.0172275 * (double)$$2),
-         $$0.z.a((double)$$3.l() * $$9, 0.0172275 * (double)$$2)
-      );
-      $$0.b($$8);
-   }
-
-   protected void a(ku $$0) {
-      b($$0);
-   }
-
-   protected void a(ku $$0, ji $$1) {
-      b($$0, $$1);
-   }
-
-   private static void b(ku $$0) {
+   @Override
+   protected void a(kv $$0) {
       $$0.b().c(1000, $$0.c(), 0);
-   }
-
-   private static void b(ku $$0, ji $$1) {
-      $$0.b().c(2000, $$0.c(), $$1.d());
-   }
-
-   protected cuq a(ku $$0, cuq $$1, cuq $$2) {
-      $$1.h(1);
-      if ($$1.e()) {
-         return $$2;
-      } else {
-         this.b($$0, $$2);
-         return $$1;
-      }
-   }
-
-   private void b(ku $$0, cuq $$1) {
-      cuq $$2 = $$0.e().b($$1);
-      if (!$$2.e()) {
-         ji $$3 = $$0.d().c(did.b);
-         a($$0.b(), $$2, 6, $$3, did.a($$0));
-         b($$0);
-         b($$0, $$3);
-      }
    }
 }

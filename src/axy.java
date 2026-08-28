@@ -1,97 +1,34 @@
+import com.mojang.util.UndashedUuid;
+import java.net.URI;
+import java.util.UUID;
+
 public class axy {
-   public static int a(float $$0) {
-      return ayo.d($$0 * 255.0F);
+   public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
+   public static final URI b = URI.create("https://aka.ms/MinecraftEULA");
+   public static final URI c = URI.create("http://go.microsoft.com/fwlink/?LinkId=521839");
+   public static final URI d = URI.create("https://aka.ms/MinecraftJavaAttribution");
+   public static final URI e = URI.create("https://aka.ms/MinecraftJavaLicenses");
+   public static final URI f = URI.create("https://aka.ms/BuyMinecraftJava");
+   public static final URI g = URI.create("https://aka.ms/JavaAccountSettings");
+   public static final URI h = URI.create("https://aka.ms/snapshotfeedback?ref=game");
+   public static final URI i = URI.create("https://aka.ms/javafeedback?ref=game");
+   public static final URI j = URI.create("https://aka.ms/snapshotbugs?ref=game");
+   public static final URI k = URI.create("https://aka.ms/Minecraft-Support");
+   public static final URI l = URI.create("https://aka.ms/MinecraftJavaAccessibility");
+   public static final URI m = URI.create("https://aka.ms/aboutjavareporting");
+   public static final URI n = URI.create("https://aka.ms/mcjavamoderation");
+   public static final URI o = URI.create("https://aka.ms/javablocking");
+   public static final URI p = URI.create("https://aka.ms/MinecraftSymLinks");
+   public static final URI q = URI.create("https://aka.ms/startjavarealmstrial");
+   public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
+   public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
+   public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
+
+   public static String a(String $$0, UUID $$1, boolean $$2) {
+      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   public static class a {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
-
-      public static int b(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int e(int $$0) {
-         return $$0 & 16777215;
-      }
-
-      public static int f(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
-      }
-
-      public static int g(int $$0) {
-         return $$0 & -16711936 | ($$0 & 0xFF0000) >> 16 | ($$0 & 0xFF) << 16;
-      }
-   }
-
-   public static class b {
-      public static int a(int $$0) {
-         return $$0 >>> 24;
-      }
-
-      public static int b(int $$0) {
-         return $$0 >> 16 & 0xFF;
-      }
-
-      public static int c(int $$0) {
-         return $$0 >> 8 & 0xFF;
-      }
-
-      public static int d(int $$0) {
-         return $$0 & 0xFF;
-      }
-
-      public static int a(int $$0, int $$1, int $$2, int $$3) {
-         return $$0 << 24 | $$1 << 16 | $$2 << 8 | $$3;
-      }
-
-      public static int a(int $$0, int $$1, int $$2) {
-         return a(255, $$0, $$1, $$2);
-      }
-
-      public static int a(int $$0, int $$1) {
-         return a(a($$0) * a($$1) / 255, b($$0) * b($$1) / 255, c($$0) * c($$1) / 255, d($$0) * d($$1) / 255);
-      }
-
-      public static int a(float $$0, int $$1, int $$2) {
-         int $$3 = ayo.a($$0, a($$1), a($$2));
-         int $$4 = ayo.a($$0, b($$1), b($$2));
-         int $$5 = ayo.a($$0, c($$1), c($$2));
-         int $$6 = ayo.a($$0, d($$1), d($$2));
-         return a($$3, $$4, $$5, $$6);
-      }
-
-      public static int e(int $$0) {
-         return $$0 | 0xFF000000;
-      }
-
-      public static int b(int $$0, int $$1) {
-         return $$0 << 24 | $$1 & 16777215;
-      }
-
-      public static int a(float $$0, float $$1, float $$2, float $$3) {
-         return a(axy.a($$0), axy.a($$1), axy.a($$2), axy.a($$3));
-      }
-
-      public static int c(int $$0, int $$1) {
-         return a((a($$0) + a($$1)) / 2, (b($$0) + b($$1)) / 2, (c($$0) + c($$1)) / 2, (d($$0) + d($$1)) / 2);
-      }
+   public static String a(String $$0, UUID $$1) {
+      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

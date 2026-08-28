@@ -1,54 +1,40 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import javax.annotation.Nullable;
 
 public class aox {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.spectate.self"));
+   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xd.b("commands.spectate.not_spectator", $$0));
+
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("time").requires($$0x -> $$0x.c(2)))
-                  .then(
-                     ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("set")
-                                    .then(eu.a("day").executes($$0x -> a((et)$$0x.getSource(), 1000))))
-                                 .then(eu.a("noon").executes($$0x -> a((et)$$0x.getSource(), 6000))))
-                              .then(eu.a("night").executes($$0x -> a((et)$$0x.getSource(), 13000))))
-                           .then(eu.a("midnight").executes($$0x -> a((et)$$0x.getSource(), 18000))))
-                        .then(eu.a("time", gi.a()).executes($$0x -> a((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))
-                  ))
-               .then(eu.a("add").then(eu.a("time", gi.a()).executes($$0x -> b((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time"))))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("spectate").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((et)$$0x.getSource(), null, ((et)$$0x.getSource()).h())))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("query")
-                        .then(eu.a("daytime").executes($$0x -> c((et)$$0x.getSource(), a(((et)$$0x.getSource()).e())))))
-                     .then(eu.a("gametime").executes($$0x -> c((et)$$0x.getSource(), (int)(((et)$$0x.getSource()).e().Z() % 2147483647L)))))
-                  .then(eu.a("day").executes($$0x -> c((et)$$0x.getSource(), (int)(((et)$$0x.getSource()).e().aa() / 24000L % 2147483647L))))
+               ((RequiredArgumentBuilder)eu.a("target", fg.a()).executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), ((et)$$0x.getSource()).h())))
+                  .then(eu.a("player", fg.c()).executes($$0x -> a((et)$$0x.getSource(), fg.a($$0x, "target"), fg.e($$0x, "player"))))
             )
       );
    }
 
-   private static int a(aqu $$0) {
-      return (int)($$0.aa() % 24000L);
-   }
+   private static int a(et $$0, @Nullable btj $$1, arh $$2) throws CommandSyntaxException {
+      if ($$2 == $$1) {
+         throw a.create();
+      } else if ($$2.e.b() != ddp.d) {
+         throw b.create($$2.Q_());
+      } else {
+         $$2.d($$1);
+         if ($$1 != null) {
+            $$0.a(() -> xd.a("commands.spectate.success.started", $$1.Q_()), false);
+         } else {
+            $$0.a(() -> xd.c("commands.spectate.success.stopped"), false);
+         }
 
-   private static int c(et $$0, int $$1) {
-      $$0.a(() -> wz.a("commands.time.query", $$1), false);
-      return $$1;
-   }
-
-   public static int a(et $$0, int $$1) {
-      for (aqu $$2 : $$0.l().K()) {
-         $$2.b((long)$$1);
+         return 1;
       }
-
-      $$0.a(() -> wz.a("commands.time.set", $$1), true);
-      return a($$0.e());
-   }
-
-   public static int b(et $$0, int $$1) {
-      for (aqu $$2 : $$0.l().K()) {
-         $$2.b($$2.aa() + (long)$$1);
-      }
-
-      int $$3 = a($$0.e());
-      $$0.a(() -> wz.a("commands.time.set", $$3), true);
-      return $$3;
    }
 }

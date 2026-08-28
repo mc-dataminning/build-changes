@@ -1,103 +1,263 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
+import org.slf4j.Logger;
 
-public enum dct implements azk {
-   a(0, "survival"),
-   b(1, "creative"),
-   c(2, "adventure"),
-   d(3, "spectator");
+public abstract class dct {
+   public static final String b = "SpawnData";
+   private static final Logger a = LogUtils.getLogger();
+   private static final int c = 1;
+   private int d = 20;
+   private bpu<del> e = bpu.b();
+   @Nullable
+   private del f;
+   private double g;
+   private double h;
+   private int i = 200;
+   private int j = 800;
+   private int k = 4;
+   @Nullable
+   private btj l;
+   private int m = 6;
+   private int n = 16;
+   private int o = 4;
 
-   public static final dct e = a;
-   public static final azk.a<dct> f = azk.a(dct::values);
-   private static final IntFunction<dct> g = axe.a(dct::a, values(), axe.a.a);
-   private static final int h = -1;
-   private final int i;
-   private final String j;
-   private final wz k;
-   private final wz l;
-
-   private dct(final int $$0, final String $$1) {
-      this.i = $$0;
-      this.j = $$1;
-      this.k = wz.c("selectWorld.gameMode." + $$1);
-      this.l = wz.c("gameMode." + $$1);
+   public void a(btq<?> $$0, @Nullable dds $$1, azk $$2, je $$3) {
+      this.a($$1, $$2, $$3).a().a("id", lu.f.b($$0).toString());
    }
 
-   public int a() {
-      return this.i;
+   private boolean c(dds $$0, je $$1) {
+      return $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, (double)this.n);
    }
 
-   public String b() {
-      return this.j;
+   public void a(dds $$0, je $$1) {
+      if (!this.c($$0, $$1)) {
+         this.h = this.g;
+      } else if (this.l != null) {
+         azk $$2 = $$0.C_();
+         double $$3 = (double)$$1.u() + $$2.j();
+         double $$4 = (double)$$1.v() + $$2.j();
+         double $$5 = (double)$$1.w() + $$2.j();
+         $$0.a(ln.ae, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         $$0.a(ln.F, $$3, $$4, $$5, 0.0, 0.0, 0.0);
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         this.h = this.g;
+         this.g = (this.g + (double)(1000.0F / ((float)this.d + 200.0F))) % 360.0;
+      }
    }
 
-   @Override
-   public String c() {
-      return this.j;
+   public void a(arg $$0, je $$1) {
+      if (this.c($$0, $$1)) {
+         if (this.d == -1) {
+            this.d($$0, $$1);
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         } else {
+            boolean $$2 = false;
+            azk $$3 = $$0.C_();
+            del $$4 = this.a($$0, $$3, $$1);
+
+            for (int $$5 = 0; $$5 < this.k; $$5++) {
+               uf $$6 = $$4.a();
+               Optional<btq<?>> $$7 = btq.a($$6);
+               if ($$7.isEmpty()) {
+                  this.d($$0, $$1);
+                  return;
+               }
+
+               ul $$8 = $$6.c("Pos", 6);
+               int $$9 = $$8.size();
+               double $$10 = $$9 >= 1 ? $$8.h(0) : (double)$$1.u() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               double $$11 = $$9 >= 2 ? $$8.h(1) : (double)($$1.v() + $$3.a(3) - 1);
+               double $$12 = $$9 >= 3 ? $$8.h(2) : (double)$$1.w() + ($$3.j() - $$3.j()) * (double)this.o + 0.5;
+               if ($$0.b($$7.get().a($$10, $$11, $$12))) {
+                  je $$13 = je.a($$10, $$11, $$12);
+                  if ($$4.b().isPresent()) {
+                     if (!$$7.get().f().d() && $$0.am() == brh.a) {
+                        continue;
+                     }
+
+                     del.a $$14 = $$4.b().get();
+                     if (!$$14.a($$13, $$0)) {
+                        continue;
+                     }
+                  } else if (!bva.a($$7.get(), $$0, btp.c, $$13, $$0.C_())) {
+                     continue;
+                  }
+
+                  btj $$15 = btq.a($$6, $$0, btp.c, $$3x -> {
+                     $$3x.b($$10, $$11, $$12, $$3x.dI(), $$3x.dK());
+                     return $$3x;
+                  });
+                  if ($$15 == null) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  int $$16 = $$0.a(
+                        dyl.b($$15.getClass()),
+                        new exz((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), (double)($$1.u() + 1), (double)($$1.v() + 1), (double)($$1.w() + 1))
+                           .g((double)this.o),
+                        bto.f
+                     )
+                     .size();
+                  if ($$16 >= this.m) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$15.b($$15.dx(), $$15.dz(), $$15.dD(), $$3.i() * 360.0F, 0.0F);
+                  if ($$15 instanceof buh $$17) {
+                     if ($$4.b().isEmpty() && !$$17.a($$0, btp.c) || !$$17.a($$0)) {
+                        continue;
+                     }
+
+                     boolean $$18 = $$4.a().f() == 1 && $$4.a().b("id", 8);
+                     if ($$18) {
+                        ((buh)$$15).a($$0, $$0.d_($$15.ds()), btp.c, null);
+                     }
+
+                     $$4.c().ifPresent($$17::a);
+                  }
+
+                  if (!$$0.e($$15)) {
+                     this.d($$0, $$1);
+                     return;
+                  }
+
+                  $$0.c(2004, $$1, 0);
+                  $$0.a($$15, dyx.t, $$13);
+                  if ($$15 instanceof buh) {
+                     ((buh)$$15).V();
+                  }
+
+                  $$2 = true;
+               }
+            }
+
+            if ($$2) {
+               this.d($$0, $$1);
+            }
+         }
+      }
    }
 
-   public wz d() {
+   private void d(dds $$0, je $$1) {
+      azk $$2 = $$0.z;
+      if (this.j <= this.i) {
+         this.d = this.i;
+      } else {
+         this.d = this.i + $$2.a(this.j - this.i);
+      }
+
+      this.e.b($$2).ifPresent($$2x -> this.a($$0, $$1, (del)$$2x.b()));
+      this.a($$0, $$1, 1);
+   }
+
+   public void a(@Nullable dds $$0, je $$1, uf $$2) {
+      this.d = $$2.g("Delay");
+      boolean $$3 = $$2.b("SpawnData", 10);
+      if ($$3) {
+         del $$4 = del.b.parse(ut.a, $$2.p("SpawnData")).resultOrPartial($$0x -> a.warn("Invalid SpawnData: {}", $$0x)).orElseGet(del::new);
+         this.a($$0, $$1, $$4);
+      }
+
+      boolean $$5 = $$2.b("SpawnPotentials", 9);
+      if ($$5) {
+         ul $$6 = $$2.c("SpawnPotentials", 10);
+         this.e = del.c.parse(ut.a, $$6).resultOrPartial($$0x -> a.warn("Invalid SpawnPotentials list: {}", $$0x)).orElseGet(bpu::b);
+      } else {
+         this.e = bpu.a(this.f != null ? this.f : new del());
+      }
+
+      if ($$2.b("MinSpawnDelay", 99)) {
+         this.i = $$2.g("MinSpawnDelay");
+         this.j = $$2.g("MaxSpawnDelay");
+         this.k = $$2.g("SpawnCount");
+      }
+
+      if ($$2.b("MaxNearbyEntities", 99)) {
+         this.m = $$2.g("MaxNearbyEntities");
+         this.n = $$2.g("RequiredPlayerRange");
+      }
+
+      if ($$2.b("SpawnRange", 99)) {
+         this.o = $$2.g("SpawnRange");
+      }
+
+      this.l = null;
+   }
+
+   public uf a(uf $$0) {
+      $$0.a("Delay", (short)this.d);
+      $$0.a("MinSpawnDelay", (short)this.i);
+      $$0.a("MaxSpawnDelay", (short)this.j);
+      $$0.a("SpawnCount", (short)this.k);
+      $$0.a("MaxNearbyEntities", (short)this.m);
+      $$0.a("RequiredPlayerRange", (short)this.n);
+      $$0.a("SpawnRange", (short)this.o);
+      if (this.f != null) {
+         $$0.a("SpawnData", (vc)del.b.encodeStart(ut.a, this.f).getOrThrow($$0x -> new IllegalStateException("Invalid SpawnData: " + $$0x)));
+      }
+
+      $$0.a("SpawnPotentials", (vc)del.c.encodeStart(ut.a, this.e).getOrThrow());
+      return $$0;
+   }
+
+   @Nullable
+   public btj b(dds $$0, je $$1) {
+      if (this.l == null) {
+         uf $$2 = this.a($$0, $$0.C_(), $$1).a();
+         if (!$$2.b("id", 8)) {
+            return null;
+         }
+
+         this.l = btq.a($$2, $$0, btp.c, Function.identity());
+         if ($$2.f() == 1 && this.l instanceof buh) {
+         }
+      }
+
       return this.l;
    }
 
-   public wz e() {
-      return this.k;
-   }
+   public boolean a(dds $$0, int $$1) {
+      if ($$1 == 1) {
+         if ($$0.B) {
+            this.d = this.i;
+         }
 
-   public void a(cmu $$0) {
-      if (this == b) {
-         $$0.c = true;
-         $$0.d = true;
-         $$0.a = true;
-      } else if (this == d) {
-         $$0.c = true;
-         $$0.d = false;
-         $$0.a = true;
-         $$0.b = true;
+         return true;
       } else {
-         $$0.c = false;
-         $$0.d = false;
-         $$0.a = false;
-         $$0.b = false;
+         return false;
       }
-
-      $$0.e = !this.f();
    }
 
-   public boolean f() {
-      return this == c || this == d;
+   protected void a(@Nullable dds $$0, je $$1, del $$2) {
+      this.f = $$2;
    }
 
-   public boolean g() {
-      return this == b;
+   private del a(@Nullable dds $$0, azk $$1, je $$2) {
+      if (this.f != null) {
+         return this.f;
+      } else {
+         this.a($$0, $$2, this.e.b($$1).map(bpw.b::b).orElseGet(del::new));
+         return this.f;
+      }
    }
 
-   public boolean h() {
-      return this == a || this == c;
+   public abstract void a(dds var1, je var2, int var3);
+
+   public double a() {
+      return this.g;
    }
 
-   public static dct a(int $$0) {
-      return g.apply($$0);
-   }
-
-   public static dct a(String $$0) {
-      return a($$0, a);
-   }
-
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static dct a(String $$0, @Nullable dct $$1) {
-      dct $$2 = f.a($$0);
-      return $$2 != null ? $$2 : $$1;
-   }
-
-   public static int a(@Nullable dct $$0) {
-      return $$0 != null ? $$0.i : -1;
-   }
-
-   @Nullable
-   public static dct b(int $$0) {
-      return $$0 == -1 ? null : a($$0);
+   public double b() {
+      return this.h;
    }
 }

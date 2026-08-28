@@ -1,30 +1,35 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
 
-public class bat extends bfn {
-   public bat(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBannerColorFix", bgr.s, "minecraft:banner");
+public class bat extends DataFix {
+   private final String a;
+   private final boolean b;
+   private final String c;
+   private final TypeReference d;
+
+   public bat(Schema $$0, TypeReference $$1, String $$2, boolean $$3) {
+      super($$0, true);
+      this.b = $$3;
+      this.c = $$2;
+      this.a = "AddFlagIfNotPresentFix_" + this.c + "=" + this.b + " for " + $$0.getVersionKey();
+      this.d = $$1;
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      $$0 = $$0.update("Base", $$0x -> $$0x.createInt(15 - $$0x.asInt(0)));
-      return $$0.update(
-         "Patterns",
-         $$0x -> (Dynamic)DataFixUtils.orElse(
-               $$0x.asStreamOpt()
-                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.update("Color", $$0xxxx -> $$0xxxx.createInt(15 - $$0xxxx.asInt(0)))))
-                  .map($$0x::createList)
-                  .result(),
-               $$0x
+   protected TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.d);
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         $$0,
+         $$0x -> $$0x.update(
+               DSL.remainderFinder(),
+               $$0xx -> $$0xx.set(this.c, (Dynamic)DataFixUtils.orElseGet($$0xx.get(this.c).result(), () -> $$0xx.createBoolean(this.b)))
             )
       );
-   }
-
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

@@ -1,59 +1,23 @@
 import com.mojang.serialization.MapCodec;
 
-public class dft extends dht {
+public class dft extends dgv {
    public static final MapCodec<dft> a = b(dft::new);
-   public static final int b = 3;
-   public static final duc c = dts.as;
-   private static final exv[] g = new exv[]{
-      dfy.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dfy.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
 
    @Override
-   public MapCodec<dft> a() {
+   public MapCodec<? extends dft> a() {
       return a;
    }
 
-   public dft(dtb.d $$0) {
+   public dft(dtz.d $$0) {
       super($$0);
    }
 
    @Override
-   protected duc b() {
-      return c;
-   }
-
-   @Override
-   public int c() {
-      return 3;
-   }
-
-   @Override
-   protected dcv d() {
-      return cut.vl;
-   }
-
-   @Override
-   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   protected void a(dds $$0, dua $$1, eya $$2, coi $$3) {
+      if (!$$0.B) {
+         je $$4 = $$2.a();
+         $$0.a(null, $$4, awd.G, awe.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
+         $$0.a(null, $$4, awd.E, awe.e, 1.0F, 0.5F + $$0.z.i() * 1.2F);
       }
-   }
-
-   @Override
-   protected int a(dcw $$0) {
-      return super.a($$0) / 3;
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(c);
-   }
-
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return g[this.g($$0)];
    }
 }

@@ -2,32 +2,32 @@ import java.util.Set;
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gk implements Predicate<dtg> {
-   private final dtc a;
-   private final Set<duf<?>> b;
+public class gk implements Predicate<due> {
+   private final dua a;
+   private final Set<dvd<?>> b;
    @Nullable
-   private final ub c;
+   private final uf c;
 
-   public gk(dtc $$0, Set<duf<?>> $$1, @Nullable ub $$2) {
+   public gk(dua $$0, Set<dvd<?>> $$1, @Nullable uf $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public dtc a() {
+   public dua a() {
       return this.a;
    }
 
-   public Set<duf<?>> b() {
+   public Set<dvd<?>> b() {
       return this.b;
    }
 
-   public boolean a(dtg $$0) {
-      dtc $$1 = $$0.a();
+   public boolean a(due $$0) {
+      dua $$1 = $$0.a();
       if (!$$1.a(this.a.b())) {
          return false;
       } else {
-         for (duf<?> $$2 : this.b) {
+         for (dvd<?> $$2 : this.b) {
             if ($$1.c($$2) != this.a.c($$2)) {
                return false;
             }
@@ -36,19 +36,19 @@ public class gk implements Predicate<dtg> {
          if (this.c == null) {
             return true;
          } else {
-            dqh $$3 = $$0.b();
-            return $$3 != null && uq.a(this.c, $$3.b($$0.c().H_()), true);
+            dre $$3 = $$0.b();
+            return $$3 != null && uu.a(this.c, $$3.b($$0.c().F_()), true);
          }
       }
    }
 
-   public boolean a(aqu $$0, jd $$1) {
-      return this.a(new dtg($$0, $$1, false));
+   public boolean a(arg $$0, je $$1) {
+      return this.a(new due($$0, $$1, false));
    }
 
-   public boolean a(aqu $$0, jd $$1, int $$2) {
-      dtc $$3 = dfy.b(this.a, $$0, $$1);
-      if ($$3.i()) {
+   public boolean a(arg $$0, je $$1, int $$2) {
+      dua $$3 = dgv.b(this.a, $$0, $$1);
+      if ($$3.l()) {
          $$3 = this.a;
       }
 
@@ -56,9 +56,9 @@ public class gk implements Predicate<dtg> {
          return false;
       } else {
          if (this.c != null) {
-            dqh $$4 = $$0.c_($$1);
+            dre $$4 = $$0.c_($$1);
             if ($$4 != null) {
-               $$4.c(this.c, $$0.H_());
+               $$4.c(this.c, $$0.F_());
             }
          }
 

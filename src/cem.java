@@ -1,58 +1,42 @@
-import java.util.function.ToDoubleFunction;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Set;
 
-public class cem {
-   @Nullable
-   public static exc a(btw $$0, int $$1, int $$2) {
-      return a($$0, $$1, $$2, $$0::c);
+public class cem extends ceo<cnc> {
+   private static final int a = 40;
+
+   public cem() {
+      super(40);
    }
 
-   @Nullable
-   public static exc a(btw $$0, int $$1, int $$2, ToDoubleFunction<jd> $$3) {
-      boolean $$4 = cek.a($$0, $$1);
-      return cen.a(() -> {
-         jd $$4x = cen.a($$0.dR(), $$1, $$2);
-         jd $$5 = a($$0, $$1, $$4, $$4x);
-         return $$5 == null ? null : a($$0, $$5);
-      }, $$3);
-   }
+   protected void a(arg $$0, cnc $$1) {
+      ala<dds> $$2 = $$0.ag();
+      je $$3 = $$1.ds();
+      List<jm> $$4 = Lists.newArrayList();
+      int $$5 = 4;
 
-   @Nullable
-   public static exc a(btw $$0, int $$1, int $$2, exc $$3) {
-      exc $$4 = $$3.a($$0.dt(), $$0.dv(), $$0.dz());
-      boolean $$5 = cek.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   public static exc b(btw $$0, int $$1, int $$2, exc $$3) {
-      exc $$4 = $$0.dm().d($$3);
-      boolean $$5 = cek.a($$0, $$1);
-      return a($$0, $$1, $$2, $$4, $$5);
-   }
-
-   @Nullable
-   private static exc a(btw $$0, int $$1, int $$2, exc $$3, boolean $$4) {
-      return cen.a($$0, () -> {
-         jd $$5 = cen.a($$0.dR(), $$1, $$2, 0, $$3.c, $$3.e, (float) (Math.PI / 2));
-         if ($$5 == null) {
-            return null;
-         } else {
-            jd $$6 = a($$0, $$1, $$4, $$5);
-            return $$6 == null ? null : a($$0, $$6);
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               je $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gy().b().e().contains($$0.a_($$9).b())) {
+                  $$4.add(jm.a($$2, $$9));
+               }
+            }
          }
-      });
+      }
+
+      bvg<?> $$10 = $$1.dX();
+      if (!$$4.isEmpty()) {
+         $$10.a(cdi.f, $$4);
+      } else {
+         $$10.b(cdi.f);
+      }
    }
 
-   @Nullable
-   public static jd a(btw $$0, jd $$1) {
-      $$1 = cen.a($$1, $$0.dO().am(), $$1x -> cek.c($$0, $$1x));
-      return !cek.a($$0, $$1) && !cek.b($$0, $$1) ? $$1 : null;
-   }
-
-   @Nullable
-   public static jd a(btw $$0, int $$1, boolean $$2, jd $$3) {
-      jd $$4 = cen.a($$0, $$1, $$0.dR(), $$3);
-      return !cek.a($$4, $$0) && !cek.a($$2, $$0, $$4) && !cek.a($$0.N(), $$4) ? $$4 : null;
+   @Override
+   public Set<cdi<?>> a() {
+      return ImmutableSet.of(cdi.f);
    }
 }

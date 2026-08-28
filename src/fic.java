@@ -1,147 +1,332 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import org.joml.Matrix4f;
+import com.mojang.logging.LogUtils;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import org.joml.Vector2i;
+import org.lwjgl.glfw.GLFWDropCallback;
+import org.slf4j.Logger;
 
-public class fic implements AutoCloseable {
-   private static final int a = 128;
-   private static final int b = 128;
-   final gqm c;
-   final gri d;
-   private final Int2ObjectMap<fic.a> e = new Int2ObjectOpenHashMap();
+public class fic {
+   private static final Logger a = LogUtils.getLogger();
+   private final fib b;
+   private boolean c;
+   private boolean d;
+   private boolean e;
+   private double f;
+   private double g;
+   private int h;
+   private int i = -1;
+   private boolean j = true;
+   private int k;
+   private double l;
+   private final azt m = new azt();
+   private final azt n = new azt();
+   private double o;
+   private double p;
+   private final fil q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
 
-   public fic(gqm $$0, gri $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fic(fib $$0) {
+      this.b = $$0;
+      this.q = new fil();
    }
 
-   public void a(eqr $$0, eqt $$1) {
-      this.b($$0, $$1).a();
-   }
-
-   public void a(fbi $$0, gez $$1, eqr $$2, eqt $$3, boolean $$4, int $$5) {
-      this.b($$2, $$3).a($$0, $$1, $$4, $$5);
-   }
-
-   private fic.a b(eqr $$0, eqt $$1) {
-      return (fic.a)this.e.compute($$0.b(), ($$1x, $$2) -> {
-         if ($$2 == null) {
-            return new fic.a($$1x, $$1);
-         } else {
-            $$2.a($$1);
-            return $$2;
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.b.aO().i()) {
+         this.b.aP().b();
+         if (this.b.z != null) {
+            this.b.a(fhy.b);
          }
-      });
+
+         boolean $$4 = $$2 == 1;
+         if (fib.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.h++;
+               }
+            } else if (this.h > 0) {
+               $$1 = 1;
+               this.h--;
+            }
+         }
+
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.b.n.ab().c() && this.k++ > 0) {
+               return;
+            }
+
+            this.i = $$5;
+            this.l = fac.b();
+         } else if (this.i != -1) {
+            if (this.b.n.ab().c() && --this.k > 0) {
+               return;
+            }
+
+            this.i = -1;
+         }
+
+         boolean[] $$6 = new boolean[]{false};
+         if (this.b.aM() == null) {
+            if (this.b.z == null) {
+               if (!this.s && $$4) {
+                  this.i();
+               }
+            } else {
+               double $$7 = this.f * (double)this.b.aO().p() / (double)this.b.aO().n();
+               double $$8 = this.g * (double)this.b.aO().q() / (double)this.b.aO().o();
+               fpt $$9 = this.b.z;
+               if ($$4) {
+                  $$9.x();
+                  fpt.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
+               } else {
+                  fpt.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
+               }
+            }
+         }
+
+         if (!$$6[0] && this.b.z == null && this.b.aM() == null) {
+            if ($$5 == 0) {
+               this.c = $$4;
+            } else if ($$5 == 2) {
+               this.d = $$4;
+            } else if ($$5 == 1) {
+               this.e = $$4;
+            }
+
+            fhz.a(fbk.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.b.t.P_() && $$5 == 2) {
+                  this.b.m.g().b();
+               } else {
+                  fhz.a(fbk.b.c.a($$5));
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == fib.Q().aO().i()) {
+         this.b.aP().b();
+         boolean $$3 = this.b.n.U().c();
+         double $$4 = this.b.n.G().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.b.aM() == null) {
+            if (this.b.z != null) {
+               double $$7 = this.f * (double)this.b.aO().p() / (double)this.b.aO().n();
+               double $$8 = this.g * (double)this.b.aO().q() / (double)this.b.aO().o();
+               this.b.z.a($$7, $$8, $$5, $$6);
+               this.b.z.x();
+            } else if (this.b.t != null) {
+               Vector2i $$9 = this.q.a($$5, $$6);
+               if ($$9.x == 0 && $$9.y == 0) {
+                  return;
+               }
+
+               int $$10 = $$9.y == 0 ? -$$9.x : $$9.y;
+               if (this.b.t.P_()) {
+                  if (this.b.m.g().a()) {
+                     this.b.m.g().b(-$$10);
+                  } else {
+                     float $$11 = azc.a(this.b.t.gd().a() + (float)$$9.y * 0.005F, 0.0F, 0.2F);
+                     this.b.t.gd().a($$11);
+                  }
+               } else {
+                  cno $$12 = this.b.t.gc();
+                  $$12.e(fil.a((double)$$10, $$12.j, cno.g()));
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, List<Path> $$1, int $$2) {
+      this.b.aP().b();
+      if (this.b.z != null) {
+         this.b.z.a($$1);
+      }
+
+      if ($$2 > 0) {
+         fmj.a(this.b, $$2);
+      }
+   }
+
+   public void a(long $$0) {
+      fbk.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            List<Path> $$3 = new ArrayList<>($$1);
+            int $$4 = 0;
+
+            for (int $$5 = 0; $$5 < $$1; $$5++) {
+               String $$6 = GLFWDropCallback.getName($$2, $$5);
+
+               try {
+                  $$3.add(Paths.get($$6));
+               } catch (InvalidPathException var11) {
+                  $$4++;
+                  a.error("Failed to parse path '{}'", $$6, var11);
+               }
+            }
+
+            if (!$$3.isEmpty()) {
+               int $$8 = $$4;
+               this.b.execute(() -> this.a($$0x, $$3, $$8));
+            }
+         }
+      );
+   }
+
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == fib.Q().aO().i()) {
+         if (this.j) {
+            this.f = $$1;
+            this.g = $$2;
+            this.j = false;
+         } else {
+            if (this.b.aB()) {
+               this.o = this.o + ($$1 - this.f);
+               this.p = this.p + ($$2 - this.g);
+            }
+
+            this.f = $$1;
+            this.g = $$2;
+         }
+      }
    }
 
    public void a() {
-      ObjectIterator var1 = this.e.values().iterator();
+      double $$0 = fac.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.b.aB()) {
+         fpt $$2 = this.b.z;
+         boolean $$3 = this.o != 0.0 || this.p != 0.0;
+         if ($$3) {
+            this.b.aP().b();
+         }
 
-      while (var1.hasNext()) {
-         fic.a $$0 = (fic.a)var1.next();
-         $$0.close();
+         if ($$2 != null && this.b.aM() == null && $$3) {
+            double $$4 = this.f * (double)this.b.aO().p() / (double)this.b.aO().n();
+            double $$5 = this.g * (double)this.b.aO().q() / (double)this.b.aO().o();
+            fpt.a(() -> $$2.f($$4, $$5), "mouseMoved event handler", $$2.getClass().getCanonicalName());
+            if (this.i != -1 && this.l > 0.0) {
+               double $$6 = this.o * (double)this.b.aO().p() / (double)this.b.aO().n();
+               double $$7 = this.p * (double)this.b.aO().q() / (double)this.b.aO().o();
+               fpt.a(() -> $$2.a($$4, $$5, this.i, $$6, $$7), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+            }
+
+            $$2.v();
+         }
+
+         if (this.h() && this.b.t != null) {
+            this.a($$1);
+         }
       }
 
-      this.e.clear();
+      this.o = 0.0;
+      this.p = 0.0;
    }
 
-   @Override
-   public void close() {
-      this.a();
+   private void a(double $$0) {
+      double $$1 = this.b.n.d().c() * 0.6F + 0.2F;
+      double $$2 = $$1 * $$1 * $$1;
+      double $$3 = $$2 * 8.0;
+      double $$6;
+      double $$7;
+      if (this.b.n.Z) {
+         double $$4 = this.m.a(this.o * $$3, $$0 * $$3);
+         double $$5 = this.n.a(this.p * $$3, $$0 * $$3);
+         $$6 = $$4;
+         $$7 = $$5;
+      } else if (this.b.n.aD().a() && this.b.t.gA()) {
+         this.m.a();
+         this.n.a();
+         $$6 = this.o * $$2;
+         $$7 = this.p * $$2;
+      } else {
+         this.m.a();
+         this.n.a();
+         $$6 = this.o * $$3;
+         $$7 = this.p * $$3;
+      }
+
+      int $$12 = 1;
+      if (this.b.n.T().c()) {
+         $$12 = -1;
+      }
+
+      this.b.aA().a($$6, $$7);
+      if (this.b.t != null) {
+         this.b.t.b($$6, $$7 * (double)$$12);
+      }
    }
 
-   class a implements AutoCloseable {
-      private eqt b;
-      private final gpy c;
-      private final gfh d;
-      private boolean e = true;
+   public boolean b() {
+      return this.c;
+   }
 
-      a(final int $$0, final eqt $$1) {
-         this.b = $$1;
-         this.c = new gpy(128, 128, true);
-         akr $$2 = fic.this.c.a("map/" + $$0, this.c);
-         this.d = gfh.t($$2);
-      }
+   public boolean c() {
+      return this.d;
+   }
 
-      void a(eqt $$0) {
-         boolean $$1 = this.b != $$0;
-         this.b = $$0;
-         this.e |= $$1;
-      }
+   public boolean d() {
+      return this.e;
+   }
 
-      public void a() {
-         this.e = true;
-      }
+   public double e() {
+      return this.f;
+   }
 
-      private void b() {
-         for (int $$0 = 0; $$0 < 128; $$0++) {
-            for (int $$1 = 0; $$1 < 128; $$1++) {
-               int $$2 = $$1 + $$0 * 128;
-               this.c.e().a($$1, $$0, epi.b(this.b.g[$$2]));
+   public double f() {
+      return this.g;
+   }
+
+   public void g() {
+      this.j = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.b.aB()) {
+         if (!this.s) {
+            if (!fib.a) {
+               fhz.a();
             }
-         }
 
-         this.c.d();
-      }
-
-      void a(fbi $$0, gez $$1, boolean $$2, int $$3) {
-         if (this.e) {
-            this.b();
-            this.e = false;
-         }
-
-         int $$4 = 0;
-         int $$5 = 0;
-         float $$6 = 0.0F;
-         Matrix4f $$7 = $$0.c().a();
-         fbm $$8 = $$1.getBuffer(this.d);
-         $$8.a($$7, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$3);
-         $$8.a($$7, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$3);
-         $$8.a($$7, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$3);
-         $$8.a($$7, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$3);
-         int $$9 = 0;
-
-         for (eqn $$10 : this.b.h()) {
-            if (!$$2 || $$10.b()) {
-               $$0.a();
-               $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F, -0.02F);
-               $$0.a(a.f.rotationDegrees((float)($$10.f() * 360) / 16.0F));
-               $$0.b(4.0F, 4.0F, 3.0F);
-               $$0.a(-0.125F, 0.125F, 0.0F);
-               Matrix4f $$11 = $$0.c().a();
-               float $$12 = -0.001F;
-               gql $$13 = fic.this.d.a($$10);
-               float $$14 = $$13.c();
-               float $$15 = $$13.g();
-               float $$16 = $$13.d();
-               float $$17 = $$13.h();
-               fbm $$18 = $$1.getBuffer(gfh.t($$13.i()));
-               $$18.a($$11, -1.0F, 1.0F, (float)$$9 * -0.001F).a(-1).a($$14, $$15).c($$3);
-               $$18.a($$11, 1.0F, 1.0F, (float)$$9 * -0.001F).a(-1).a($$16, $$15).c($$3);
-               $$18.a($$11, 1.0F, -1.0F, (float)$$9 * -0.001F).a(-1).a($$16, $$17).c($$3);
-               $$18.a($$11, -1.0F, -1.0F, (float)$$9 * -0.001F).a(-1).a($$14, $$17).c($$3);
-               $$0.b();
-               if ($$10.g().isPresent()) {
-                  fhx $$19 = fgo.Q().h;
-                  wz $$20 = $$10.g().get();
-                  float $$21 = (float)$$19.a($$20);
-                  float $$22 = ayo.a(25.0F / $$21, 0.0F, 6.0F / 9.0F);
-                  $$0.a();
-                  $$0.a(0.0F + (float)$$10.d() / 2.0F + 64.0F - $$21 * $$22 / 2.0F, 0.0F + (float)$$10.e() / 2.0F + 64.0F + 4.0F, -0.025F);
-                  $$0.b($$22, $$22, 1.0F);
-                  $$0.a(0.0F, 0.0F, -0.1F);
-                  $$19.a($$20, 0.0F, 0.0F, -1, false, $$0.c().a(), $$1, fhx.a.a, Integer.MIN_VALUE, $$3);
-                  $$0.b();
-               }
-
-               $$9++;
-            }
+            this.s = true;
+            this.f = (double)(this.b.aO().n() / 2);
+            this.g = (double)(this.b.aO().o() / 2);
+            fbk.a(this.b.aO().i(), 212995, this.f, this.g);
+            this.b.a(null);
+            this.b.x = 10000;
+            this.j = true;
          }
       }
+   }
 
-      @Override
-      public void close() {
-         this.c.close();
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.f = (double)(this.b.aO().n() / 2);
+         this.g = (double)(this.b.aO().o() / 2);
+         fbk.a(this.b.aO().i(), 212993, this.f, this.g);
       }
+   }
+
+   public void k() {
+      this.j = true;
    }
 }

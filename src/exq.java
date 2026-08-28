@@ -1,53 +1,49 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
-public class exq extends AbstractDoubleList implements exo {
-   private final DoubleList a;
-   private final DoubleList b;
-   private final boolean c;
+public class exq<C> {
+   private static final Logger b = LogUtils.getLogger();
+   public static final exq<MinecraftServer> a = new exq<MinecraftServer>().a(new exn.a()).a(new exo.a());
+   private final Map<alb, exp.a<C, ?>> c = Maps.newHashMap();
+   private final Map<Class<?>, exp.a<C, ?>> d = Maps.newHashMap();
 
-   protected exq(DoubleList $$0, DoubleList $$1, boolean $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size() + this.b.size();
-   }
-
-   @Override
-   public boolean a(exo.a $$0) {
-      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
-   }
-
-   private boolean b(exo.a $$0) {
-      int $$1 = this.a.size();
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, -1, $$2)) {
-            return false;
-         }
-      }
-
-      int $$3 = this.b.size() - 1;
-
-      for (int $$4 = 0; $$4 < $$3; $$4++) {
-         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   public double getDouble(int $$0) {
-      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
-   }
-
-   @Override
-   public DoubleList a() {
+   public exq<C> a(exp.a<C, ?> $$0) {
+      this.c.put($$0.a(), $$0);
+      this.d.put($$0.b(), $$0);
       return this;
+   }
+
+   private <T extends exp<C>> exp.a<C, T> a(Class<?> $$0) {
+      return (exp.a<C, T>)this.d.get($$0);
+   }
+
+   public <T extends exp<C>> uf a(T $$0) {
+      exp.a<C, T> $$1 = this.a($$0.getClass());
+      uf $$2 = new uf();
+      $$1.a($$2, $$0);
+      $$2.a("Type", $$1.a().toString());
+      return $$2;
+   }
+
+   @Nullable
+   public exp<C> a(uf $$0) {
+      alb $$1 = alb.c($$0.l("Type"));
+      exp.a<C, ?> $$2 = this.c.get($$1);
+      if ($$2 == null) {
+         b.error("Failed to deserialize timer callback: {}", $$0);
+         return null;
+      } else {
+         try {
+            return $$2.b($$0);
+         } catch (Exception var5) {
+            b.error("Failed to deserialize timer callback: {}", $$0, var5);
+            return null;
+         }
+      }
    }
 }

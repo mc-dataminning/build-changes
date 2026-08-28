@@ -1,19 +1,40 @@
-public class blt extends blp {
-   private final blq c;
-   private final bls d;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.function.Supplier;
 
-   public blt(int $$0, blq $$1, bls $$2) {
-      this($$0, $$1, $$2, new long[$$0]);
+public class blt extends biw {
+   public blt(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public blt(int $$0, blq $$1, bls $$2, long[] $$3) {
-      super($$0, $$3);
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   @Override
-   protected void a() {
-      this.c.a(new acv((long[])this.b.clone(), this.d));
+   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
+      super.registerTypes($$0, $$1, $$2);
+      $$0.registerType(
+         true,
+         bhk.w,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("minecraft:bees", DSL.list(DSL.optionalFields("entity_data", bhk.A.in($$0)))),
+                  Pair.of("minecraft:block_entity_data", bhk.s.in($$0)),
+                  Pair.of("minecraft:bundle_contents", DSL.list(bhk.t.in($$0))),
+                  Pair.of(
+                     "minecraft:can_break",
+                     DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bhk.C.in($$0), DSL.list(bhk.C.in($$0))))))
+                  ),
+                  Pair.of(
+                     "minecraft:can_place_on",
+                     DSL.optionalFields("predicates", DSL.list(DSL.optionalFields("blocks", DSL.or(bhk.C.in($$0), DSL.list(bhk.C.in($$0))))))
+                  ),
+                  Pair.of("minecraft:charged_projectiles", DSL.list(bhk.t.in($$0))),
+                  Pair.of("minecraft:container", DSL.list(DSL.optionalFields("item", bhk.t.in($$0)))),
+                  Pair.of("minecraft:entity_data", bhk.A.in($$0)),
+                  Pair.of("minecraft:pot_decorations", DSL.list(bhk.D.in($$0))),
+                  Pair.of("minecraft:food", DSL.optionalFields("using_converts_to", bhk.t.in($$0)))
+               }
+            )
+      );
    }
 }

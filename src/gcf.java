@@ -1,49 +1,73 @@
-public class gcf extends gdn {
-   private final gdi a;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-   protected gcf(fzf $$0, double $$1, double $$2, double $$3, double $$4, gdi $$5) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.t = 6 + this.r.a(4);
-      float $$6 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$6;
-      this.w = $$6;
-      this.x = $$6;
-      this.D = 2.0F * (1.0F - (float)$$4 * 0.5F);
-      this.a = $$5;
-      this.b($$5);
+public final class gcf {
+   private static final int a = 1024;
+   private final gbw b;
+   private final gcc c;
+   private final gbr d;
+   @Nullable
+   private gcb e;
+
+   public gcf(gbw $$0, gcc $$1, gbr $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   public static gcf a(gcc $$0, UserApiService $$1) {
+      gbr $$2 = new gbr(1024);
+      gbw $$3 = gbw.a($$0, $$1);
+      return new gcf($$3, $$0, $$2);
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
+   public void a(fib $$0, fpt $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gcb $$4 = this.e.b();
+         $$0.a(
+            new foq(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               xd.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               xd.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               xd.c("gui.abuseReport.draft.edit"),
+               xd.c("gui.abuseReport.draft.discard")
+            )
+         );
       } else {
-         this.b(this.a);
+         $$2.run();
       }
    }
 
-   @Override
-   public gcr b() {
-      return gcr.d;
+   public gbw a() {
+      return this.b;
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   public gbr b() {
+      return this.d;
+   }
 
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
+   public boolean a(gcc $$0) {
+      return Objects.equals(this.c, $$0);
+   }
 
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcf($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   public void a(@Nullable gcb $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
    }
 }

@@ -1,47 +1,41 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
-import java.util.function.Function;
+import java.util.Comparator;
 
-public record arl<T>(T a, Optional<T> b) {
-   public static <T> Codec<arl<T>> a(Codec<T> $$0) {
-      Codec<arl<T>> $$1 = RecordCodecBuilder.create(
-         $$1x -> $$1x.group($$0.fieldOf("raw").forGetter(arl::a), $$0.optionalFieldOf("filtered").forGetter(arl::b)).apply($$1x, arl::new)
-      );
-      Codec<arl<T>> $$2 = $$0.xmap(arl::a, arl::a);
-      return Codec.withAlternative($$1, $$2);
+public class arl<T> {
+   private final String h;
+   private final Comparator<T> i;
+   private final long j;
+   public static final arl<bah> a = a("start", ($$0, $$1) -> 0);
+   public static final arl<bah> b = a("dragon", ($$0, $$1) -> 0);
+   public static final arl<dcy> c = a("player", Comparator.comparingLong(dcy::a));
+   public static final arl<dcy> d = a("forced", Comparator.comparingLong(dcy::a));
+   public static final arl<je> e = a("portal", ki::i, 300);
+   public static final arl<Integer> f = a("post_teleport", Integer::compareTo, 5);
+   public static final arl<dcy> g = a("unknown", Comparator.comparingLong(dcy::a), 1);
+
+   public static <T> arl<T> a(String $$0, Comparator<T> $$1) {
+      return new arl<>($$0, $$1, 0L);
    }
 
-   public static <B extends ByteBuf, T> yx<B, arl<T>> a(yx<B, T> $$0) {
-      return yx.a($$0, arl::a, $$0.a(yv::a), arl::b, arl::new);
+   public static <T> arl<T> a(String $$0, Comparator<T> $$1, int $$2) {
+      return new arl<>($$0, $$1, (long)$$2);
    }
 
-   public static <T> arl<T> a(T $$0) {
-      return new arl<>($$0, Optional.empty());
+   protected arl(String $$0, Comparator<T> $$1, long $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   public static arl<String> a(arm $$0) {
-      return new arl<>($$0.d(), $$0.c() ? Optional.of($$0.b()) : Optional.empty());
+   @Override
+   public String toString() {
+      return this.h;
    }
 
-   public T a(boolean $$0) {
-      return $$0 ? this.b.orElse(this.a) : this.a;
+   public Comparator<T> a() {
+      return this.i;
    }
 
-   public <U> arl<U> a(Function<T, U> $$0) {
-      return new arl<>($$0.apply(this.a), this.b.map($$0));
-   }
-
-   public <U> Optional<arl<U>> b(Function<T, Optional<U>> $$0) {
-      Optional<U> $$1 = $$0.apply(this.a);
-      if ($$1.isEmpty()) {
-         return Optional.empty();
-      } else if (this.b.isPresent()) {
-         Optional<U> $$2 = $$0.apply(this.b.get());
-         return $$2.isEmpty() ? Optional.empty() : Optional.of(new arl<>($$1.get(), $$2));
-      } else {
-         return Optional.of(new arl<>($$1.get(), Optional.empty()));
-      }
+   public long b() {
+      return this.j;
    }
 }

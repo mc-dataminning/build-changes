@@ -1,23 +1,23 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bxz {
-   public static bvi<btw> a(ccs<jl> $$0, float $$1, int $$2, int $$3) {
-      MutableLong $$4 = new MutableLong(0L);
-      return byu.a(
-         (Function<byu.b<btw>, ? extends App<byu.c<btw>, byx<btw>>>)($$5 -> $$5.group($$5.a(ccs.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  jl $$10 = $$5.b($$6);
-                  if ($$7.af() != $$10.a() || !$$10.b().a($$8.dm(), (double)$$3)) {
-                     return false;
-                  } else if ($$9 <= $$4.getValue()) {
-                     return true;
-                  } else {
-                     $$5x.a(new ccv($$10.b(), $$1, $$2));
-                     $$4.setValue($$9 + 80L);
-                     return true;
-                  }
-               }))
+   public static bvy<buf> a(btq<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bzk.a(
+         (Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$2x -> $$2x.group($$2x.a(cdi.n), $$2x.c(cdi.q), $$2x.b(cdi.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<buf> $$9 = $$2x.<cdk>b($$5).a($$3xx -> $$3xx.g((btj)$$7) <= (double)$$2 && $$0.equals($$3xx.ao()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        buf $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bwi($$10, true));
+                        return true;
+                     }
+                  }))
       );
    }
 }

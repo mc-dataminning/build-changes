@@ -1,23 +1,31 @@
-import java.util.List;
+public record aaw(int c, eqp d, float e) implements aan {
+   public static final zb<wa, aaw> a = aan.a(aaw::a, aaw::new);
+   public static final aan.b<aaw> b = aan.a("debug/path");
 
-public record aaw(List<jd> c) implements aaj {
-   public static final yx<vw, aaw> a = aaj.a(aaw::a, aaw::new);
-   public static final aaj.b<aaw> b = aaj.a("debug/raids");
-
-   private aaw(vw $$0) {
-      this($$0.a(jd.b));
+   private aaw(wa $$0) {
+      this($$0.readInt(), eqp.b($$0), $$0.readFloat());
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.c, jd.b);
+   private void a(wa $$0) {
+      $$0.q(this.c);
+      this.d.a($$0);
+      $$0.a(this.e);
    }
 
    @Override
-   public aaj.b<aaw> a() {
+   public aan.b<aaw> a() {
       return b;
    }
 
-   public List<jd> b() {
+   public int b() {
       return this.c;
+   }
+
+   public eqp c() {
+      return this.d;
+   }
+
+   public float d() {
+      return this.e;
    }
 }

@@ -1,103 +1,270 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.Lifecycle;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
+import com.google.gson.JsonSerializationContext;
+import com.google.gson.JsonSerializer;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import io.netty.buffer.ByteBuf;
+import java.lang.reflect.Type;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class alb {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Gson b = new GsonBuilder().create();
-   private static final jy c = new jy(Optional.empty(), Lifecycle.experimental());
+public final class alb implements Comparable<alb> {
+   public static final Codec<alb> a = Codec.STRING.comapFlatMap(alb::d, alb::toString).stable();
+   public static final zb<ByteBuf, alb> b = yz.l.a(alb::a, alb::toString);
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(xd.c("argument.id.invalid"));
+   public static final char d = ':';
+   public static final String e = "minecraft";
+   public static final String f = "realms";
+   private final String h;
+   private final String i;
 
-   public static CompletableFuture<jt<ala>> a(jt<ala> $$0, aue $$1, Executor $$2) {
-      ka.b $$3 = $$0.b(ala.d);
-      akp<JsonElement> $$4 = new alb.a($$3).a(JsonOps.INSTANCE);
-      List<CompletableFuture<ki<?>>> $$5 = ert.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
-      CompletableFuture<List<ki<?>>> $$6 = ad.d($$5);
-      return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
+   private alb(String $$0, String $$1) {
+      assert j($$0);
+
+      assert i($$1);
+
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   private static <T> CompletableFuture<ki<?>> a(ert<T> $$0, akp<JsonElement> $$1, aue $$2, Executor $$3) {
-      return CompletableFuture.supplyAsync(() -> {
-         ki<T> $$3x = new ju<>($$0.b(), Lifecycle.experimental());
-         Map<akr, JsonElement> $$4 = new HashMap<>();
-         String $$5 = lu.c($$0.b());
-         aui.a($$2, $$5, b, $$4);
-         $$4.forEach(($$3xx, $$4x) -> $$0.a($$3xx, $$1, $$4x).ifPresent($$3xxx -> $$3x.a(akq.a($$0.b(), $$3xx), (T)$$3xxx, c)));
-         return $$3x;
-      }, $$3);
+   private static alb d(String $$0, String $$1) {
+      return new alb(e($$0, $$1), f($$0, $$1));
    }
 
-   private static jt<ala> a(jt<ala> $$0, List<ki<?>> $$1) {
-      jt<ala> $$2 = b($$0, $$1);
-      ayu.a $$3 = new ayu.a();
-      ka.b $$4 = $$2.a();
-      erx $$5 = new erx($$3, eum.q, $$4.b());
-      ert.a().forEach($$2x -> a($$5, $$2x, $$4));
-      $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
-      return $$2;
+   public static alb a(String $$0, String $$1) {
+      return d($$0, $$1);
    }
 
-   private static jt<ala> b(jt<ala> $$0, List<ki<?>> $$1) {
-      ka $$2 = new ka.c($$1);
-      ((ki)$$2.<erw>d(lu.bc)).a(ern.a, erw.a, c);
-      return $$0.a(ala.d, $$2.d());
+   public static alb a(String $$0) {
+      return a($$0, ':');
    }
 
-   private static <T> void a(erx $$0, ert<T> $$1, ka $$2) {
-      jz<T> $$3 = $$2.d($$1.b());
-      $$3.i().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
+   public static alb b(String $$0) {
+      return new alb("minecraft", f("minecraft", $$0));
    }
 
-   static class a implements jo.a {
-      private final ka a;
+   @Nullable
+   public static alb c(String $$0) {
+      return b($$0, ':');
+   }
 
-      a(ka $$0) {
-         this.a = $$0;
-      }
+   @Nullable
+   public static alb b(String $$0, String $$1) {
+      return j($$0) && i($$1) ? new alb($$0, $$1) : null;
+   }
 
-      @Override
-      public Stream<akq<? extends jz<?>>> a() {
-         return this.a.a();
-      }
-
-      @Override
-      public <T> Optional<jo.b<T>> a(akq<? extends jz<? extends T>> $$0) {
-         return this.a.c($$0).map(jz::v);
+   public static alb a(String $$0, char $$1) {
+      int $$2 = $$0.indexOf($$1);
+      if ($$2 >= 0) {
+         String $$3 = $$0.substring($$2 + 1);
+         if ($$2 != 0) {
+            String $$4 = $$0.substring(0, $$2);
+            return d($$4, $$3);
+         } else {
+            return b($$3);
+         }
+      } else {
+         return b($$0);
       }
    }
 
-   public static class b {
-      private final ka.b a;
+   @Nullable
+   public static alb b(String $$0, char $$1) {
+      int $$2 = $$0.indexOf($$1);
+      if ($$2 >= 0) {
+         String $$3 = $$0.substring($$2 + 1);
+         if (!i($$3)) {
+            return null;
+         } else if ($$2 != 0) {
+            String $$4 = $$0.substring(0, $$2);
+            return j($$4) ? new alb($$4, $$3) : null;
+         } else {
+            return new alb("minecraft", $$3);
+         }
+      } else {
+         return i($$0) ? new alb("minecraft", $$0) : null;
+      }
+   }
 
-      public b(ka.b $$0) {
-         this.a = $$0;
+   public static DataResult<alb> d(String $$0) {
+      try {
+         return DataResult.success(a($$0));
+      } catch (aa var2) {
+         return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
+      }
+   }
+
+   public String a() {
+      return this.i;
+   }
+
+   public String b() {
+      return this.h;
+   }
+
+   public alb e(String $$0) {
+      return new alb(this.h, f(this.h, $$0));
+   }
+
+   public alb a(UnaryOperator<String> $$0) {
+      return this.e($$0.apply(this.i));
+   }
+
+   public alb f(String $$0) {
+      return this.e($$0 + this.i);
+   }
+
+   public alb g(String $$0) {
+      return this.e(this.i + $$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.h + ":" + this.i;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof alb $$1) ? false : this.h.equals($$1.h) && this.i.equals($$1.i);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return 31 * this.h.hashCode() + this.i.hashCode();
+   }
+
+   public int a(alb $$0) {
+      int $$1 = this.i.compareTo($$0.i);
+      if ($$1 == 0) {
+         $$1 = this.h.compareTo($$0.h);
       }
 
-      public ka.b a() {
-         return this.a;
+      return $$1;
+   }
+
+   public String c() {
+      return this.toString().replace('/', '_').replace(':', '_');
+   }
+
+   public String d() {
+      return this.h + "." + this.i;
+   }
+
+   public String e() {
+      return this.h.equals("minecraft") ? this.i : this.d();
+   }
+
+   public String h(String $$0) {
+      return $$0 + "." + this.d();
+   }
+
+   public String c(String $$0, String $$1) {
+      return $$0 + "." + this.d() + "." + $$1;
+   }
+
+   private static String c(StringReader $$0) {
+      int $$1 = $$0.getCursor();
+
+      while ($$0.canRead() && a($$0.peek())) {
+         $$0.skip();
       }
 
-      public jn.a b() {
-         return this.a.b();
+      return $$0.getString().substring($$1, $$0.getCursor());
+   }
+
+   public static alb a(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+
+      try {
+         return a($$2);
+      } catch (aa var4) {
+         $$0.setCursor($$1);
+         throw c.createWithContext($$0);
+      }
+   }
+
+   public static alb b(StringReader $$0) throws CommandSyntaxException {
+      int $$1 = $$0.getCursor();
+      String $$2 = c($$0);
+      if ($$2.isEmpty()) {
+         throw c.createWithContext($$0);
+      } else {
+         try {
+            return a($$2);
+         } catch (aa var4) {
+            $$0.setCursor($$1);
+            throw c.createWithContext($$0);
+         }
+      }
+   }
+
+   public static boolean a(char $$0) {
+      return $$0 >= '0' && $$0 <= '9' || $$0 >= 'a' && $$0 <= 'z' || $$0 == '_' || $$0 == ':' || $$0 == '/' || $$0 == '.' || $$0 == '-';
+   }
+
+   public static boolean i(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!b($$0.charAt($$1))) {
+            return false;
+         }
       }
 
-      public Collection<akr> a(akq<? extends jz<?>> $$0) {
-         return this.a.c($$0).stream().flatMap($$0x -> $$0x.i().map($$0xx -> $$0xx.h().a())).toList();
+      return true;
+   }
+
+   public static boolean j(String $$0) {
+      for (int $$1 = 0; $$1 < $$0.length(); $$1++) {
+         if (!c($$0.charAt($$1))) {
+            return false;
+         }
       }
 
-      public erw b(akq<erw> $$0) {
-         return this.a.a(lu.bc).flatMap($$1 -> $$1.a($$0)).map(jm::a).orElse(erw.a);
+      return true;
+   }
+
+   private static String e(String $$0, String $$1) {
+      if (!j($$0)) {
+         throw new aa("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$0;
+      }
+   }
+
+   public static boolean b(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '/' || $$0 == '.';
+   }
+
+   private static boolean c(char $$0) {
+      return $$0 == '_' || $$0 == '-' || $$0 >= 'a' && $$0 <= 'z' || $$0 >= '0' && $$0 <= '9' || $$0 == '.';
+   }
+
+   private static String f(String $$0, String $$1) {
+      if (!i($$1)) {
+         throw new aa("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+      } else {
+         return $$1;
+      }
+   }
+
+   public static class a implements JsonDeserializer<alb>, JsonSerializer<alb> {
+      public alb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return alb.a(ays.a($$0, "location"));
+      }
+
+      public JsonElement a(alb $$0, Type $$1, JsonSerializationContext $$2) {
+         return new JsonPrimitive($$0.toString());
       }
    }
 }

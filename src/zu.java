@@ -1,15 +1,29 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
+public class zu implements zk<zq> {
+   public static final zb<wa, zu> a = zk.a(zu::a, zu::new);
+   private final long b;
 
-public record zu(List<alj.c> b) implements zg<zm> {
-   public static final yx<ByteBuf, zu> a = yx.a(alj.c, zu::b, zu::new);
-
-   @Override
-   public zi<zu> a() {
-      return zy.h;
+   public zu(long $$0) {
+      this.b = $$0;
    }
 
-   public void a(zm $$0) {
+   private zu(wa $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(wa $$0) {
+      $$0.b(this.b);
+   }
+
+   @Override
+   public zm<zu> a() {
+      return aac.d;
+   }
+
+   public void a(zq $$0) {
       $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

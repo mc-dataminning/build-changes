@@ -1,20 +1,39 @@
-import javax.annotation.Nullable;
+public class cjq extends cjs {
+   public cjq(btq<? extends cjs> $$0, dds $$1) {
+      super($$0, $$1);
+   }
 
-public interface cjq extends ckh {
-   void b(boolean var1);
+   public cjq(dds $$0, je $$1, jj $$2) {
+      super(btq.V, $$0, $$1, $$2);
+   }
 
-   @Nullable
-   btn p();
+   @Override
+   public awc t() {
+      return awd.kF;
+   }
 
-   void a();
+   @Override
+   public awc v() {
+      return awd.kD;
+   }
 
-   default void b(btn $$0, float $$1) {
-      bqq $$2 = cnr.a($$0, cut.vW);
-      cuq $$3 = $$0.b($$2);
-      if ($$3.g() instanceof ctc $$4) {
-         $$4.a($$0.dO(), $$0, $$2, $$3, $$1, (float)(14 - $$0.dO().al().a() * 4), this.p());
-      }
+   @Override
+   public awc w() {
+      return awd.kE;
+   }
 
-      this.a();
+   @Override
+   public awc x() {
+      return awd.kC;
+   }
+
+   @Override
+   public awc y() {
+      return awd.kG;
+   }
+
+   @Override
+   protected cvl z() {
+      return new cvl(cvo.uf);
    }
 }

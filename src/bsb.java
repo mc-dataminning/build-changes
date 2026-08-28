@@ -1,50 +1,125 @@
-public class bsb {
-   private static final int N = 22;
-   public static final jm<brx> a = a("speed", new brx(bry.a, 3402751).a(buw.v, akr.b("effect.speed"), 0.2F, buu.a.c));
-   public static final jm<brx> b = a("slowness", new brx(bry.b, 9154528).a(buw.v, akr.b("effect.slowness"), -0.15F, buu.a.c));
-   public static final jm<brx> c = a("haste", new brx(bry.a, 14270531).a(buw.e, akr.b("effect.haste"), 0.1F, buu.a.c));
-   public static final jm<brx> d = a("mining_fatigue", new brx(bry.b, 4866583).a(buw.e, akr.b("effect.mining_fatigue"), -0.1F, buu.a.c));
-   public static final jm<brx> e = a("strength", new brx(bry.a, 16762624).a(buw.c, akr.b("effect.strength"), 3.0, buu.a.a));
-   public static final jm<brx> f = a("instant_health", new brt(bry.a, 16262179, false));
-   public static final jm<brx> g = a("instant_damage", new brt(bry.b, 11101546, true));
-   public static final jm<brx> h = a("jump_boost", new brx(bry.a, 16646020).a(buw.x, akr.b("effect.jump_boost"), 1.0, buu.a.a));
-   public static final jm<brx> i = a("nausea", new brx(bry.b, 5578058));
-   public static final jm<brx> j = a("regeneration", new bsf(bry.a, 13458603));
-   public static final jm<brx> k = a("resistance", new brx(bry.a, 9520880));
-   public static final jm<brx> l = a("fire_resistance", new brx(bry.a, 16750848));
-   public static final jm<brx> m = a("water_breathing", new brx(bry.a, 10017472));
-   public static final jm<brx> n = a("invisibility", new brx(bry.a, 16185078));
-   public static final jm<brx> o = a("blindness", new brx(bry.b, 2039587));
-   public static final jm<brx> p = a("night_vision", new brx(bry.a, 12779366));
-   public static final jm<brx> q = a("hunger", new bru(bry.b, 5797459));
-   public static final jm<brx> r = a("weakness", new brx(bry.b, 4738376).a(buw.c, akr.b("effect.weakness"), -4.0, buu.a.a));
-   public static final jm<brx> s = a("poison", new bsd(bry.b, 8889187));
-   public static final jm<brx> t = a("wither", new bsj(bry.b, 7561558));
-   public static final jm<brx> u = a("health_boost", new brx(bry.a, 16284963).a(buw.s, akr.b("effect.health_boost"), 4.0, buu.a.a));
-   public static final jm<brx> v = a("absorption", new brr(bry.a, 2445989).a(buw.r, akr.b("effect.absorption"), 4.0, buu.a.a));
-   public static final jm<brx> w = a("saturation", new bsg(bry.a, 16262179));
-   public static final jm<brx> x = a("glowing", new brx(bry.c, 9740385));
-   public static final jm<brx> y = a("levitation", new brx(bry.b, 13565951));
-   public static final jm<brx> z = a("luck", new brx(bry.a, 5882118).a(buw.q, akr.b("effect.luck"), 1.0, buu.a.a));
-   public static final jm<brx> A = a("unluck", new brx(bry.b, 12624973).a(buw.q, akr.b("effect.unluck"), -1.0, buu.a.a));
-   public static final jm<brx> B = a("slow_falling", new brx(bry.a, 15978425));
-   public static final jm<brx> C = a("conduit_power", new brx(bry.a, 1950417));
-   public static final jm<brx> D = a("dolphins_grace", new brx(bry.a, 8954814));
-   public static final jm<brx> E = a("bad_omen", new brs(bry.c, 745784).a(avp.DQ));
-   public static final jm<brx> F = a("hero_of_the_village", new brx(bry.a, 4521796));
-   public static final jm<brx> G = a("darkness", new brx(bry.b, 2696993).a(22));
-   public static final jm<brx> H = a("trial_omen", new brx(bry.c, 1484454, lm.be).a(avp.DR));
-   public static final jm<brx> I = a("raid_omen", new bse(bry.c, 14565464, lm.bd).a(avp.DS));
-   public static final jm<brx> J = a("wind_charged", new bsi(bry.b, 12438015));
-   public static final jm<brx> K = a("weaving", new bsh(bry.b, 7891290, $$0 -> ayo.b($$0, 2, 3)));
-   public static final jm<brx> L = a("oozing", new bsc(bry.b, 10092451, $$0 -> 2));
-   public static final jm<brx> M = a("infested", new brv(bry.b, 9214860, 0.1F, $$0 -> ayo.b($$0, 1, 2)));
+import javax.annotation.Nullable;
 
-   private static jm<brx> a(String $$0, brx $$1) {
-      return jz.b(lt.d, akr.b($$0), $$1);
+public class bsb {
+   private final jn<bsd> a;
+   @Nullable
+   private final btj b;
+   @Nullable
+   private final btj c;
+   @Nullable
+   private final eye d;
+
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.k().a() + ")";
    }
 
-   public static jm<brx> a(jz<brx> $$0) {
-      return a;
+   public float a() {
+      return this.k().c();
+   }
+
+   public boolean b() {
+      return this.b == this.c;
+   }
+
+   private bsb(jn<bsd> $$0, @Nullable btj $$1, @Nullable btj $$2, @Nullable eye $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
+   }
+
+   public bsb(jn<bsd> $$0, @Nullable btj $$1, @Nullable btj $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public bsb(jn<bsd> $$0, eye $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bsb(jn<bsd> $$0, @Nullable btj $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bsb(jn<bsd> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public btj c() {
+      return this.c;
+   }
+
+   @Nullable
+   public btj d() {
+      return this.b;
+   }
+
+   @Nullable
+   public cvl e() {
+      return this.c != null ? this.c.dW() : null;
+   }
+
+   public xd a(buf $$0) {
+      String $$1 = "death.attack." + this.k().a();
+      if (this.b == null && this.c == null) {
+         buf $$5 = $$0.eP();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? xd.a($$6, $$0.Q_(), $$5.Q_()) : xd.a($$1, $$0.Q_());
+      } else {
+         xd $$2 = this.b == null ? this.c.Q_() : this.b.Q_();
+         cvl $$4 = this.b instanceof buf $$3 ? $$3.eW() : cvl.k;
+         return !$$4.f() && $$4.b(kr.g) ? xd.a($$1 + ".item", $$0.Q_(), $$2, $$4.H()) : xd.a($$1, $$0.Q_(), $$2);
+      }
+   }
+
+   public String f() {
+      return this.k().a();
+   }
+
+   public boolean g() {
+      return switch (this.k().b()) {
+         case a -> false;
+         case b -> this.b instanceof buf && !(this.b instanceof cnp);
+         case c -> true;
+      };
+   }
+
+   public boolean h() {
+      if (this.d() instanceof cnp $$0 && $$0.gd().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public eye i() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dq() : null;
+      }
+   }
+
+   @Nullable
+   public eye j() {
+      return this.d;
+   }
+
+   public boolean a(axi<bsd> $$0) {
+      return this.a.a($$0);
+   }
+
+   public boolean a(ala<bsd> $$0) {
+      return this.a.a($$0);
+   }
+
+   public bsd k() {
+      return this.a.a();
+   }
+
+   public jn<bsd> l() {
+      return this.a;
    }
 }

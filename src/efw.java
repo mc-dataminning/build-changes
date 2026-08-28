@@ -1,40 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efw extends efu {
-   public static final MapCodec<efw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> b($$0).and(Codec.intRange(0, 16).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, efw::new)
+public class efw implements efg {
+   public static final Codec<efw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ejs.b.fieldOf("feature").forGetter($$0x -> $$0x.b),
+               Codec.intRange(1, 64).fieldOf("required_vertical_space_for_tree").forGetter($$0x -> $$0x.c),
+               Codec.intRange(1, 64).fieldOf("root_radius").forGetter($$0x -> $$0x.d),
+               axi.b(lv.f).fieldOf("root_replaceable").forGetter($$0x -> $$0x.e),
+               ehh.a.fieldOf("root_state_provider").forGetter($$0x -> $$0x.f),
+               Codec.intRange(1, 256).fieldOf("root_placement_attempts").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 4096).fieldOf("root_column_max_height").forGetter($$0x -> $$0x.h),
+               Codec.intRange(1, 64).fieldOf("hanging_root_radius").forGetter($$0x -> $$0x.i),
+               Codec.intRange(0, 16).fieldOf("hanging_roots_vertical_span").forGetter($$0x -> $$0x.j),
+               ehh.a.fieldOf("hanging_root_state_provider").forGetter($$0x -> $$0x.k),
+               Codec.intRange(1, 256).fieldOf("hanging_root_placement_attempts").forGetter($$0x -> $$0x.l),
+               Codec.intRange(1, 64).fieldOf("allowed_vertical_water_for_tree").forGetter($$0x -> $$0x.n),
+               ebd.b.fieldOf("allowed_tree_position").forGetter($$0x -> $$0x.o)
+            )
+            .apply($$0, efw::new)
    );
-   protected final int b;
+   public final jn<ejs> b;
+   public final int c;
+   public final int d;
+   public final axi<dgv> e;
+   public final ehh f;
+   public final int g;
+   public final int h;
+   public final int i;
+   public final int j;
+   public final ehh k;
+   public final int l;
+   public final int n;
+   public final ebd o;
 
-   public efw(bpw $$0, bpw $$1, int $$2) {
-      super($$0, $$1);
-      this.b = $$2;
-   }
-
-   @Override
-   protected efv<?> a() {
-      return efv.g;
-   }
-
-   @Override
-   protected void a(ddc $$0, efu.b $$1, ayw $$2, efe $$3, int $$4, efu.a $$5, int $$6, int $$7, int $$8) {
-      int $$9 = $$5.c() ? $$6 : 1 + $$2.a(2);
-
-      for (int $$10 = $$8; $$10 >= $$8 - $$9; $$10--) {
-         int $$11 = $$7 + $$5.b() + 1 - $$10;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$11, $$10, $$5.c());
-      }
-   }
-
-   @Override
-   public int a(ayw $$0, int $$1, efe $$2) {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(ayw $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
+   public efw(jn<ejs> $$0, int $$1, int $$2, axi<dgv> $$3, ehh $$4, int $$5, int $$6, int $$7, int $$8, ehh $$9, int $$10, int $$11, ebd $$12) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.n = $$11;
+      this.o = $$12;
    }
 }

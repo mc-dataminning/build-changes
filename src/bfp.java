@@ -1,31 +1,25 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.DSL.TypeReference;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.Dynamic;
 
-public class bfp extends DataFix {
-   private final String a;
-   private final TypeReference b;
-   private final UnaryOperator<String> c;
-
-   public bfp(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+public class bfp extends bgf {
+   public bfp(Schema $$0, boolean $$1) {
+      super($$0, $$1, "JigsawPropertiesFix", bhk.s, "minecraft:jigsaw");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bid.a());
-      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
-         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
-      }
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      String $$1 = $$0.get("attachement_type").asString("minecraft:empty");
+      String $$2 = $$0.get("target_pool").asString("minecraft:empty");
+      return $$0.set("name", $$0.createString($$1))
+         .set("target", $$0.createString($$1))
+         .remove("attachement_type")
+         .set("pool", $$0.createString($$2))
+         .remove("target_pool");
+   }
+
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bfp::a);
    }
 }

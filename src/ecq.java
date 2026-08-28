@@ -1,89 +1,52 @@
 import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ecq extends ece<eep> {
-   public ecq(Codec<eep> $$0) {
+public abstract class ecq extends edc<efn> {
+   public ecq(Codec<efn> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ecg<eep> $$0) {
-      jd $$1 = $$0.e();
-      ayw $$2 = $$0.d();
-      dds $$3 = $$0.b();
+   public boolean a(ede<efn> $$0) {
+      azk $$1 = $$0.d();
+      dep $$2 = $$0.b();
+      je $$3 = $$0.e();
+      Optional<dgv> $$4 = lu.e.a(aws.ar, $$1).map(jn::a);
+      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   }
 
-      while ($$3.u($$1) && $$1.v() > $$3.I_() + 2) {
-         $$1 = $$1.e();
-      }
+   protected abstract boolean a(ddt var1, azk var2, je var3, dua var4);
 
-      if (!$$3.a_($$1).a(dga.dP)) {
-         return false;
-      } else {
-         $$1 = $$1.b($$2.a(4));
-         int $$4 = $$2.a(4) + 7;
-         int $$5 = $$4 / 4 + $$2.a(2);
-         if ($$5 > 1 && $$2.a(60) == 0) {
-            $$1 = $$1.b(10 + $$2.a(30));
+   protected boolean b(ddt $$0, azk $$1, je $$2, dua $$3) {
+      je $$4 = $$2.d();
+      dua $$5 = $$0.a_($$2);
+      if (($$5.a(dgx.G) || $$5.a(aws.au)) && $$0.a_($$4).a(dgx.G)) {
+         $$0.a($$2, $$3, 3);
+         if ($$1.i() < 0.25F) {
+            lu.e.a(aws.au, $$1).map(jn::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
+         } else if ($$1.i() < 0.05F) {
+            $$0.a($$4, dgx.mV.o().b(dnt.c, Integer.valueOf($$1.a(4) + 1)), 2);
          }
 
-         for (int $$6 = 0; $$6 < $$4; $$6++) {
-            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
-            int $$8 = ayo.f($$7);
-
-            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
-               float $$10 = (float)ayo.a($$9) - 0.25F;
-
-               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
-                  float $$12 = (float)ayo.a($$11) - 0.25F;
-                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
-                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
-                     dtc $$13 = $$3.a_($$1.b($$9, $$6, $$11));
-                     if ($$13.i() || b($$13) || $$13.a(dga.dP) || $$13.a(dga.dO)) {
-                        this.a($$3, $$1.b($$9, $$6, $$11), dga.iC.o());
+         for (jj $$6 : jj.c.a) {
+            if ($$1.i() < 0.2F) {
+               je $$7 = $$2.a($$6);
+               if ($$0.a_($$7).a(dgx.G)) {
+                  lu.e.a(aws.as, $$1).map(jn::a).ifPresent($$3x -> {
+                     dua $$4x = $$3x.o();
+                     if ($$4x.b(dgg.c)) {
+                        $$4x = $$4x.b(dgg.c, $$6);
                      }
 
-                     if ($$6 != 0 && $$8 > 1) {
-                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
-                        if ($$13.i() || b($$13) || $$13.a(dga.dP) || $$13.a(dga.dO)) {
-                           this.a($$3, $$1.b($$9, -$$6, $$11), dga.iC.o());
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         int $$14 = $$5 - 1;
-         if ($$14 < 0) {
-            $$14 = 0;
-         } else if ($$14 > 1) {
-            $$14 = 1;
-         }
-
-         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
-            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
-               jd $$17 = $$1.b($$15, -1, $$16);
-               int $$18 = 50;
-               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
-                  $$18 = $$2.a(5);
-               }
-
-               while ($$17.v() > 50) {
-                  dtc $$19 = $$3.a_($$17);
-                  if (!$$19.i() && !b($$19) && !$$19.a(dga.dP) && !$$19.a(dga.dO) && !$$19.a(dga.iC)) {
-                     break;
-                  }
-
-                  this.a($$3, $$17, dga.iC.o());
-                  $$17 = $$17.e();
-                  if (--$$18 <= 0) {
-                     $$17 = $$17.c($$2.a(5) + 1);
-                     $$18 = $$2.a(5);
-                  }
+                     $$0.a($$7, $$4x, 2);
+                  });
                }
             }
          }
 
          return true;
+      } else {
+         return false;
       }
    }
 }

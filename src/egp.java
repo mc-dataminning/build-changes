@@ -1,69 +1,70 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class egp extends egj {
-   public static final MapCodec<egp> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               egj.a.fieldOf("source").forGetter($$0x -> $$0x.c),
-               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
-               bpw.c.fieldOf("values").forGetter($$0x -> $$0x.f)
+public class egp extends egs {
+   public static final MapCodec<egp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bqp.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
             )
             .apply($$0, egp::new)
    );
-   private final egj c;
-   private final String d;
-   @Nullable
-   private duc e;
-   private final bpw f;
+   private final bqp b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public egp(egj $$0, duc $$1, bpw $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.d = $$1.f();
-      this.f = $$2;
-      Collection<Integer> $$3 = $$1.a();
-
-      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
-         if (!$$3.contains($$4)) {
-            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
-         }
-      }
-   }
-
-   public egp(egj $$0, String $$1, bpw $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
+   public egp(bqp $$0, bqp $$1, bqp $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   protected egk<?> a() {
-      return egk.g;
+   protected egt<?> a() {
+      return egt.k;
    }
 
    @Override
-   public dtc a(ayw $$0, jd $$1) {
-      dtc $$2 = this.c.a($$0, $$1);
-      if (this.e == null || !$$2.b(this.e)) {
-         duc $$3 = a($$2, this.d);
-         if ($$3 == null) {
-            return $$2;
-         }
+   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      je $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
 
-         this.e = $$3;
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
       }
 
-      return $$2.a(this.e, Integer.valueOf(this.f.a($$0)));
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
    }
 
-   @Nullable
-   private static duc a(dtc $$0, String $$1) {
-      Collection<duf<?>> $$2 = $$0.B();
-      Optional<duc> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof duc).map($$0x -> (duc)$$0x).findAny();
-      return $$3.orElse(null);
+   @Override
+   public int a(azk $$0, int $$1, egc $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
+         return true;
+      } else {
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
+      }
    }
 }

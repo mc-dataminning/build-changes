@@ -1,22 +1,30 @@
-import com.google.common.collect.ImmutableMap;
+public abstract class cgs extends bvb {
+   private static final int cd = 100;
+   private int ce;
 
-public class cgs extends bvh<cgq> {
-   public cgs() {
-      super(ImmutableMap.of(ccs.N, cct.a, ccs.y, cct.a), 200);
+   protected cgs(btq<? extends cgs> $$0, dds $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(aqu $$0, cgq $$1) {
-      return $$1.bi();
+   public boolean b(arh $$0) {
+      uf $$1 = new uf();
+      $$1.a("id", this.bH());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.as();
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   protected boolean a(aqu $$0, cgq $$1, long $$2) {
-      return $$1.bi() && $$1.dT().a(ccs.N);
+   @Override
+   public void l() {
+      this.ce++;
+      super.l();
    }
 
-   protected void b(aqu $$0, cgq $$1, long $$2) {
-      buq<cgq> $$3 = $$1.dT();
-      $$3.b(ccs.m);
-      $$3.b(ccs.n);
-      $$1.b(new brz(bsb.j, 200, 0));
+   public boolean gE() {
+      return this.ce > 100;
    }
 }

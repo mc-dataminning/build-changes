@@ -1,68 +1,22 @@
-public class bzr extends bzp {
-   private static final float l = 10.0F;
-   private static final float m = 60.0F;
-   private final int n;
-   private final int o;
-   private final float p;
-   private final float q;
-   private final boolean r;
+import com.google.common.collect.ImmutableMap;
 
-   public bzr(btp $$0, int $$1, int $$2, float $$3, float $$4, boolean $$5) {
-      super($$0);
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
+public class bzr<E extends cmt> extends bvx<E> {
+   public bzr(int $$0) {
+      super(ImmutableMap.of(cdi.aC, cdj.a, cdi.m, cdj.b, cdi.n, cdj.c), $$0);
    }
 
-   @Override
-   public void a() {
-      if (this.r && this.d.bf()) {
-         this.d.i(this.d.dr().b(0.0, 0.005, 0.0));
-      }
-
-      if (this.k == bzp.a.b && !this.d.N().l()) {
-         double $$0 = this.e - this.d.dt();
-         double $$1 = this.f - this.d.dv();
-         double $$2 = this.g - this.d.dz();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.E(0.0F);
-         } else {
-            float $$4 = (float)(ayo.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-            this.d.t(this.a(this.d.dE(), $$4, (float)this.o));
-            this.d.aY = this.d.dE();
-            this.d.ba = this.d.dE();
-            float $$5 = (float)(this.h * this.d.g(buw.v));
-            if (this.d.bf()) {
-               this.d.A($$5 * this.p);
-               double $$6 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-               if (Math.abs($$1) > 1.0E-5F || Math.abs($$6) > 1.0E-5F) {
-                  float $$7 = -((float)(ayo.d($$1, $$6) * 180.0F / (float)Math.PI));
-                  $$7 = ayo.a(ayo.g($$7), (float)(-this.n), (float)this.n);
-                  this.d.u(this.a(this.d.dG(), $$7, 5.0F));
-               }
-
-               float $$8 = ayo.b(this.d.dG() * (float) (Math.PI / 180.0));
-               float $$9 = ayo.a(this.d.dG() * (float) (Math.PI / 180.0));
-               this.d.bq = $$8 * $$5;
-               this.d.bp = -$$9 * $$5;
-            } else {
-               float $$10 = Math.abs(ayo.g(this.d.dE() - $$4));
-               float $$11 = a($$10);
-               this.d.A($$5 * this.q * $$11);
-            }
-         }
-      } else {
-         this.d.A(0.0F);
-         this.d.G(0.0F);
-         this.d.F(0.0F);
-         this.d.E(0.0F);
-      }
+   protected boolean a(arg $$0, E $$1, long $$2) {
+      return true;
    }
 
-   private static float a(float $$0) {
-      return 1.0F - ayo.a(($$0 - 10.0F) / 50.0F, 0.0F, 1.0F);
+   protected void b(arg $$0, E $$1, long $$2) {
+      $$1.b(bur.n);
+      $$1.a(awd.BS, 5.0F, 1.0F);
+   }
+
+   protected void c(arg $$0, E $$1, long $$2) {
+      if ($$1.c(bur.n)) {
+         $$1.b(bur.a);
+      }
    }
 }

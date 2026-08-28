@@ -1,45 +1,24 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ebk extends ece<eeb> {
-   public ebk(Codec<eeb> $$0) {
+class ebk extends ebo {
+   private final jr<eqa> e;
+   public static final MapCodec<ebk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(kc.a(lv.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, ebk::new)
+   );
+
+   public ebk(ki $$0, jr<eqa> $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public boolean a(ecg<eeb> $$0) {
-      jd $$1 = $$0.e();
-      dds $$2 = $$0.b();
-      ayw $$3 = $$0.d();
+   protected boolean a(dua $$0) {
+      return $$0.y().a(this.e);
+   }
 
-      eeb $$4;
-      for ($$4 = $$0.f(); $$1.v() > $$2.I_() + 3; $$1 = $$1.e()) {
-         if (!$$2.u($$1.e())) {
-            dtc $$5 = $$2.a_($$1.e());
-            if (b($$5) || a($$5)) {
-               break;
-            }
-         }
-      }
-
-      if ($$1.v() <= $$2.I_() + 3) {
-         return false;
-      } else {
-         for (int $$6 = 0; $$6 < 3; $$6++) {
-            int $$7 = $$3.a(2);
-            int $$8 = $$3.a(2);
-            int $$9 = $$3.a(2);
-            float $$10 = (float)($$7 + $$8 + $$9) * 0.333F + 0.5F;
-
-            for (jd $$11 : jd.c($$1.b(-$$7, -$$8, -$$9), $$1.b($$7, $$8, $$9))) {
-               if ($$11.j($$1) <= (double)($$10 * $$10)) {
-                  $$2.a($$11, $$4.b, 3);
-               }
-            }
-
-            $$1 = $$1.b(-1 + $$3.a(2), -$$3.a(2), -1 + $$3.a(2));
-         }
-
-         return true;
-      }
+   @Override
+   public ebe<?> a() {
+      return ebe.c;
    }
 }

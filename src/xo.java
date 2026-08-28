@@ -1,35 +1,23 @@
-public interface xo {
-   wz a();
+import java.util.UUID;
 
-   void a(aqv var1, boolean var2, wv.a var3);
-
-   static xo a(xp $$0) {
-      return (xo)($$0.h() ? new xo.a($$0.d()) : new xo.b($$0));
+public record xo(UUID a, cnr b) {
+   public static xo a(cnr $$0) {
+      return new xo(UUID.randomUUID(), $$0);
    }
 
-   public static record a(wz a) implements xo {
-      @Override
-      public void a(aqv $$0, boolean $$1, wv.a $$2) {
-         $$0.c.a(this.a, $$2);
-      }
+   public xx.c a(UUID $$0) {
+      return new xx($$0, this.a).a(azq.a(this.b.b(), "SHA256withRSA"));
    }
 
-   public static record b(xp a) implements xo {
-      @Override
-      public wz a() {
-         return this.a.d();
-      }
+   public xu a() {
+      return new xu(this.a, this.b.c());
+   }
 
-      @Override
-      public void a(aqv $$0, boolean $$1, wv.a $$2) {
-         xp $$3 = this.a.a($$1);
-         if (!$$3.j()) {
-            $$0.c.a($$3, $$2);
-         }
-      }
+   public UUID b() {
+      return this.a;
+   }
 
-      public xp b() {
-         return this.a;
-      }
+   public cnr c() {
+      return this.b;
    }
 }

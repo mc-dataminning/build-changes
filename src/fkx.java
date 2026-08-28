@@ -1,84 +1,143 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fkx implements fkv {
-   private static final akr g = akr.b("toast/tutorial");
-   public static final int a = 154;
-   public static final int d = 1;
-   public static final int e = 3;
-   public static final int f = 28;
-   private final fkx.a h;
-   private final wz i;
-   @Nullable
-   private final wz j;
-   private fkv.a k = fkv.a.a;
-   private long l;
-   private float m;
-   private float n;
-   private final boolean o;
+public class fkx extends fkg<fkx.a> {
+   private static final int a = 310;
+   private static final int m = 25;
+   private final fsw n;
 
-   public fkx(fkx.a $$0, wz $$1, @Nullable wz $$2, boolean $$3) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-      this.o = $$3;
+   public fkx(fib $$0, int $$1, fsw $$2) {
+      super($$0, $$1, $$2.s.d(), $$2.s.c(), 25);
+      this.e = false;
+      this.n = $$2;
+   }
+
+   public void a(fie<?> $$0) {
+      this.b(fkx.b.a(this.c.n, $$0, this.n));
+   }
+
+   public void a(fie<?>... $$0) {
+      for (int $$1 = 0; $$1 < $$0.length; $$1 += 2) {
+         fie<?> $$2 = $$1 < $$0.length - 1 ? $$0[$$1 + 1] : null;
+         this.b(fkx.b.a(this.c.n, $$0[$$1], $$2, this.n));
+      }
+   }
+
+   public void a(List<fjy> $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1 += 2) {
+         this.a($$0.get($$1), $$1 < $$0.size() - 1 ? $$0.get($$1 + 1) : null);
+      }
+   }
+
+   public void a(fjy $$0, @Nullable fjy $$1) {
+      this.b(fkx.a.a($$0, $$1, this.n));
    }
 
    @Override
-   public fkv.a a(fhz $$0, fkw $$1, long $$2) {
-      $$0.a(g, 0, 0, this.a(), this.b());
-      this.h.a($$0, 6, 6);
-      if (this.j == null) {
-         $$0.a($$1.b().h, this.i, 30, 12, -11534256, false);
-      } else {
-         $$0.a($$1.b().h, this.i, 30, 7, -11534256, false);
-         $$0.a($$1.b().h, this.j, 30, 18, -16777216, false);
-      }
+   public int b() {
+      return 310;
+   }
 
-      if (this.o) {
-         $$0.a(3, 28, 157, 29, -1);
-         float $$3 = ayo.b(this.m, this.n, (float)($$2 - this.l) / 100.0F);
-         int $$4;
-         if (this.n >= this.m) {
-            $$4 = -16755456;
-         } else {
-            $$4 = -11206656;
+   @Nullable
+   public fjy b(fie<?> $$0) {
+      for (fkx.a $$1 : this.aK_()) {
+         if ($$1 instanceof fkx.b $$2) {
+            fjy $$3 = $$2.a.get($$0);
+            if ($$3 != null) {
+               return $$3;
+            }
          }
-
-         $$0.a(3, 28, (int)(3.0F + 154.0F * $$3), 29, $$4);
-         this.m = $$3;
-         this.l = $$2;
       }
 
-      return this.k;
+      return null;
    }
 
    public void c() {
-      this.k = fkv.a.b;
+      for (fkx.a $$0 : this.aK_()) {
+         if ($$0 instanceof fkx.b) {
+            fkx.b $$1 = (fkx.b)$$0;
+
+            for (fjy $$2 : $$1.a.values()) {
+               if ($$2 instanceof fie.i<?> $$3) {
+                  $$3.c();
+               }
+            }
+         }
+      }
    }
 
-   public void a(float $$0) {
-      this.n = $$0;
-   }
-
-   public static enum a {
-      a(akr.b("toast/movement_keys")),
-      b(akr.b("toast/mouse")),
-      c(akr.b("toast/tree")),
-      d(akr.b("toast/recipe_book")),
-      e(akr.b("toast/wooden_planks")),
-      f(akr.b("toast/social_interactions")),
-      g(akr.b("toast/right_click"));
-
-      private final akr h;
-
-      private a(final akr $$0) {
-         this.h = $$0;
+   public Optional<flx> e(double $$0, double $$1) {
+      for (fkx.a $$2 : this.aK_()) {
+         for (flx $$3 : $$2.aK_()) {
+            if ($$3.c($$0, $$1)) {
+               return Optional.of($$3);
+            }
+         }
       }
 
-      public void a(fhz $$0, int $$1, int $$2) {
-         RenderSystem.enableBlend();
-         $$0.a(this.h, $$1, $$2, 20, 20);
+      return Optional.empty();
+   }
+
+   protected static class a extends fkg.a<fkx.a> {
+      private final List<fjy> a;
+      private final fpt b;
+      private static final int c = 160;
+
+      a(List<fjy> $$0, fpt $$1) {
+         this.a = ImmutableList.copyOf($$0);
+         this.b = $$1;
+      }
+
+      public static fkx.a a(List<fjy> $$0, fpt $$1) {
+         return new fkx.a($$0, $$1);
+      }
+
+      public static fkx.a a(fjy $$0, @Nullable fjy $$1, fpt $$2) {
+         return $$1 == null ? new fkx.a(ImmutableList.of($$0), $$2) : new fkx.a(ImmutableList.of($$0, $$1), $$2);
+      }
+
+      @Override
+      public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = 0;
+         int $$11 = this.b.n / 2 - 155;
+
+         for (fjy $$12 : this.a) {
+            $$12.c($$11 + $$10, $$2);
+            $$12.a($$0, $$6, $$7, $$9);
+            $$10 += 160;
+         }
+      }
+
+      @Override
+      public List<? extends flx> aK_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fnv> b() {
+         return this.a;
+      }
+   }
+
+   protected static class b extends fkx.a {
+      final Map<fie<?>, fjy> a;
+
+      private b(Map<fie<?>, fjy> $$0, fsw $$1) {
+         super(ImmutableList.copyOf($$0.values()), $$1);
+         this.a = $$0;
+      }
+
+      public static fkx.b a(fif $$0, fie<?> $$1, fsw $$2) {
+         return new fkx.b(ImmutableMap.of($$1, $$1.a($$0, 0, 0, 310)), $$2);
+      }
+
+      public static fkx.b a(fif $$0, fie<?> $$1, @Nullable fie<?> $$2, fsw $$3) {
+         fjy $$4 = $$1.a($$0);
+         return $$2 == null ? new fkx.b(ImmutableMap.of($$1, $$4), $$3) : new fkx.b(ImmutableMap.of($$1, $$4, $$2, $$2.a($$0)), $$3);
       }
    }
 }

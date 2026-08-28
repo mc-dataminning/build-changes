@@ -1,133 +1,113 @@
-public class dts {
-   public static final dtt a = dtt.a("attached");
-   public static final dtt b = dtt.a("bottom");
-   public static final dtt c = dtt.a("conditional");
-   public static final dtt d = dtt.a("disarmed");
-   public static final dtt e = dtt.a("drag");
-   public static final dtt f = dtt.a("enabled");
-   public static final dtt g = dtt.a("extended");
-   public static final dtt h = dtt.a("eye");
-   public static final dtt i = dtt.a("falling");
-   public static final dtt j = dtt.a("hanging");
-   public static final dtt k = dtt.a("has_bottle_0");
-   public static final dtt l = dtt.a("has_bottle_1");
-   public static final dtt m = dtt.a("has_bottle_2");
-   public static final dtt n = dtt.a("has_record");
-   public static final dtt o = dtt.a("has_book");
-   public static final dtt p = dtt.a("inverted");
-   public static final dtt q = dtt.a("in_wall");
-   public static final dtt r = dtt.a("lit");
-   public static final dtt s = dtt.a("locked");
-   public static final dtt t = dtt.a("occupied");
-   public static final dtt u = dtt.a("open");
-   public static final dtt v = dtt.a("persistent");
-   public static final dtt w = dtt.a("powered");
-   public static final dtt x = dtt.a("short");
-   public static final dtt y = dtt.a("signal_fire");
-   public static final dtt z = dtt.a("snowy");
-   public static final dtt A = dtt.a("triggered");
-   public static final dtt B = dtt.a("unstable");
-   public static final dtt C = dtt.a("waterlogged");
-   public static final dtt D = dtt.a("berries");
-   public static final dtt E = dtt.a("bloom");
-   public static final dtt F = dtt.a("shrieking");
-   public static final dtt G = dtt.a("can_summon");
-   public static final dua<ji.a> H = dua.a("axis", ji.a.class, ji.a.a, ji.a.c);
-   public static final dua<ji.a> I = dua.a("axis", ji.a.class);
-   public static final dtt J = dtt.a("up");
-   public static final dtt K = dtt.a("down");
-   public static final dtt L = dtt.a("north");
-   public static final dtt M = dtt.a("east");
-   public static final dtt N = dtt.a("south");
-   public static final dtt O = dtt.a("west");
-   public static final dtw P = dtw.a("facing", ji.c, ji.f, ji.d, ji.e, ji.b, ji.a);
-   public static final dtw Q = dtw.a("facing", $$0 -> $$0 != ji.b);
-   public static final dtw R = dtw.a("facing", ji.c.a);
-   public static final duc S = duc.a("flower_amount", 1, 4);
-   public static final dua<jk> T = dua.a("orientation", jk.class);
-   public static final dua<dtn> U = dua.a("face", dtn.class);
-   public static final dua<dtq> V = dua.a("attachment", dtq.class);
-   public static final dua<duo> W = dua.a("east", duo.class);
-   public static final dua<duo> X = dua.a("north", duo.class);
-   public static final dua<duo> Y = dua.a("south", duo.class);
-   public static final dua<duo> Z = dua.a("west", duo.class);
-   public static final dua<duh> aa = dua.a("east", duh.class);
-   public static final dua<duh> ab = dua.a("north", duh.class);
-   public static final dua<duh> ac = dua.a("south", duh.class);
-   public static final dua<duh> ad = dua.a("west", duh.class);
-   public static final dua<dty> ae = dua.a("half", dty.class);
-   public static final dua<dub> af = dua.a("half", dub.class);
-   public static final dua<dug> ag = dua.a("shape", dug.class);
-   public static final dua<dug> ah = dua.a("shape", dug.class, $$0 -> $$0 != dug.j && $$0 != dug.i && $$0 != dug.g && $$0 != dug.h);
-   public static final int ai = 1;
-   public static final int aj = 2;
-   public static final int ak = 3;
-   public static final int al = 4;
-   public static final int am = 5;
-   public static final int an = 7;
-   public static final int ao = 15;
-   public static final int ap = 25;
-   public static final duc aq = duc.a("age", 0, 1);
-   public static final duc ar = duc.a("age", 0, 2);
-   public static final duc as = duc.a("age", 0, 3);
-   public static final duc at = duc.a("age", 0, 4);
-   public static final duc au = duc.a("age", 0, 5);
-   public static final duc av = duc.a("age", 0, 7);
-   public static final duc aw = duc.a("age", 0, 15);
-   public static final duc ax = duc.a("age", 0, 25);
-   public static final duc ay = duc.a("bites", 0, 6);
-   public static final duc az = duc.a("candles", 1, 4);
-   public static final duc aA = duc.a("delay", 1, 4);
-   public static final int aB = 7;
-   public static final duc aC = duc.a("distance", 1, 7);
-   public static final duc aD = duc.a("eggs", 1, 4);
-   public static final duc aE = duc.a("hatch", 0, 2);
-   public static final duc aF = duc.a("layers", 1, 8);
-   public static final int aG = 0;
-   public static final int aH = 1;
-   public static final int aI = 3;
-   public static final int aJ = 8;
-   public static final duc aK = duc.a("level", 1, 3);
-   public static final duc aL = duc.a("level", 0, 8);
-   public static final duc aM = duc.a("level", 1, 8);
-   public static final duc aN = duc.a("honey_level", 0, 5);
-   public static final int aO = 15;
-   public static final duc aP = duc.a("level", 0, 15);
-   public static final duc aQ = duc.a("moisture", 0, 7);
-   public static final duc aR = duc.a("note", 0, 24);
-   public static final duc aS = duc.a("pickles", 1, 4);
-   public static final duc aT = duc.a("power", 0, 15);
-   public static final duc aU = duc.a("stage", 0, 1);
-   public static final int aV = 7;
-   public static final duc aW = duc.a("distance", 0, 7);
-   public static final int aX = 0;
-   public static final int aY = 4;
-   public static final duc aZ = duc.a("charges", 0, 4);
-   public static final duc ba = duc.a("rotation", 0, dui.a());
-   public static final dua<dtp> bb = dua.a("part", dtp.class);
-   public static final dua<dtu> bc = dua.a("type", dtu.class);
-   public static final dua<dtv> bd = dua.a("mode", dtv.class);
-   public static final dua<dtx> be = dua.a("hinge", dtx.class);
-   public static final dua<dud> bf = dua.a("instrument", dud.class);
-   public static final dua<due> bg = dua.a("type", due.class);
-   public static final dua<duk> bh = dua.a("type", duk.class);
-   public static final dua<dul> bi = dua.a("shape", dul.class);
-   public static final dua<dum> bj = dua.a("mode", dum.class);
-   public static final dua<dto> bk = dua.a("leaves", dto.class);
-   public static final dua<dun> bl = dua.a("tilt", dun.class);
-   public static final dtw bm = dtw.a("vertical_direction", ji.b, ji.a);
-   public static final dua<dtz> bn = dua.a("thickness", dtz.class);
-   public static final dua<duj> bo = dua.a("sculk_sensor_phase", duj.class);
-   public static final dtt bp = dtt.a("slot_0_occupied");
-   public static final dtt bq = dtt.a("slot_1_occupied");
-   public static final dtt br = dtt.a("slot_2_occupied");
-   public static final dtt bs = dtt.a("slot_3_occupied");
-   public static final dtt bt = dtt.a("slot_4_occupied");
-   public static final dtt bu = dtt.a("slot_5_occupied");
-   public static final duc bv = duc.a("dusted", 0, 3);
-   public static final dtt bw = dtt.a("cracked");
-   public static final dtt bx = dtt.a("crafting");
-   public static final dua<dsi> by = dua.a("trial_spawner_state", dsi.class);
-   public static final dua<dsp> bz = dua.a("vault_state", dsp.class);
-   public static final dtt bA = dtt.a("ominous");
+import com.mojang.serialization.MapCodec;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class dts extends dgh {
+   public static final MapCodec<dts> a = b(dts::new);
+   public static final duu b = dtu.a;
+   public static final duy<dvc> c = dtu.c;
+
+   @Override
+   public MapCodec<dts> a() {
+      return a;
+   }
+
+   public dts(dtz.d $$0) {
+      super($$0);
+      this.l(this.E.b().b(b, jj.c).b(c, dvc.a));
+   }
+
+   @Nullable
+   @Override
+   public dre a(je $$0, dua $$1) {
+      return null;
+   }
+
+   public static dre a(je $$0, dua $$1, dua $$2, jj $$3, boolean $$4, boolean $$5) {
+      return new dtw($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
+      return a($$2, drg.k, dtw::a);
+   }
+
+   @Override
+   protected void a(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         dre $$5 = $$1.c_($$2);
+         if ($$5 instanceof dtw) {
+            ((dtw)$$5).k();
+         }
+      }
+   }
+
+   @Override
+   public void a(ddt $$0, je $$1, dua $$2) {
+      je $$3 = $$1.a($$2.c(b).g());
+      dua $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof dtt && $$4.c(dtt.c)) {
+         $$0.a($$3, false);
+      }
+   }
+
+   @Override
+   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
+      if (!$$1.B && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return brk.c;
+      } else {
+         return brk.e;
+      }
+   }
+
+   @Override
+   protected List<cvl> a(dua $$0, esw.a $$1) {
+      dtw $$2 = this.a($$1.a(), je.a($$1.a(evp.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   }
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return eyu.a();
+   }
+
+   @Override
+   protected eyx b(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      dtw $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : eyu.a();
+   }
+
+   @Nullable
+   private dtw a(dcx $$0, je $$1) {
+      dre $$2 = $$0.c_($$1);
+      return $$2 instanceof dtw ? (dtw)$$2 : null;
+   }
+
+   @Override
+   public cvl a(ddv $$0, je $$1, dua $$2) {
+      return cvl.k;
+   }
+
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(dua $$0, eqq $$1) {
+      return false;
+   }
 }

@@ -1,23 +1,27 @@
+import com.mojang.authlib.GameProfile;
 import io.netty.buffer.ByteBuf;
 
-public class aja implements zg<aiw> {
-   public static final aja a = new aja();
-   public static final yx<ByteBuf, aja> b = yx.a(a);
-
-   private aja() {
-   }
+public record aja(GameProfile b, @Deprecated(forRemoval = true) boolean c) implements zk<aiy> {
+   public static final zb<ByteBuf, aja> a = zb.a(yz.v, aja::b, yz.b, aja::e, aja::new);
 
    @Override
-   public zi<aja> a() {
-      return aiu.i;
+   public zm<aja> a() {
+      return aje.b;
    }
 
-   public void a(aiw $$0) {
+   public void a(aiy $$0) {
       $$0.a(this);
    }
 
    @Override
    public boolean d() {
       return true;
+   }
+
+   @Deprecated(
+      forRemoval = true
+   )
+   public boolean e() {
+      return this.c;
    }
 }

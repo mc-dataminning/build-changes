@@ -1,14 +1,24 @@
-import com.mojang.serialization.MapCodec;
+import java.util.UUID;
+import java.util.stream.Stream;
 
-public interface dye<T extends dyd> {
-   dye<dxv> a = a("block", new dxv.a());
-   dye<dxx> b = a("entity", new dxx.a());
+public interface dye {
+   int ap();
 
-   MapCodec<T> a();
+   UUID cD();
 
-   yx<? super wk, T> b();
+   je ds();
 
-   static <S extends dye<T>, T extends dyd> S a(String $$0, S $$1) {
-      return jz.a(lt.t, $$0, $$1);
-   }
+   exz cO();
+
+   void a(dyf var1);
+
+   Stream<? extends dye> cY();
+
+   Stream<? extends dye> cZ();
+
+   void b(btj.c var1);
+
+   boolean dQ();
+
+   boolean dR();
 }

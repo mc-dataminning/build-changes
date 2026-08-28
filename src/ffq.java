@@ -1,13 +1,20 @@
-public class ffq extends ffs {
-   private final ffg b;
+public class ffq extends ffp {
+   private final fgz a;
 
-   public ffq(ffg $$0, long $$1, wz $$2, Runnable $$3) {
-      super($$1, $$2, $$3);
-      this.b = $$0;
+   public ffq(fpt $$0, fgz $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
    @Override
-   protected void a(fby $$0, long $$1) throws fdj {
-      $$0.a($$1, this.b);
+   public void e() {
+      super.e();
+      this.a.c();
+   }
+
+   @Override
+   protected void f() {
+      this.a.b();
+      super.f();
    }
 }

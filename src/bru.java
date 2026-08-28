@@ -1,19 +1,9 @@
-class bru extends brx {
-   protected bru(bry $$0, int $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   @Override
-   public boolean a(btn $$0, int $$1) {
-      if ($$0 instanceof cmx $$2) {
-         $$2.E(0.005F * (float)($$1 + 1));
-      }
+public interface bru extends brd {
+   int[] a(jj var1);
 
-      return true;
-   }
+   boolean a(int var1, cvl var2, @Nullable jj var3);
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+   boolean b(int var1, cvl var2, jj var3);
 }

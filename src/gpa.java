@@ -1,26 +1,30 @@
-public class gpa<T extends btn> extends gov<T, fxi<T>> {
-   private final fvk<T> a;
+public class gpa<T extends cgu> extends gln<T, gus, fzc> {
+   private static final alb a = alb.b("textures/entity/squid/squid.png");
 
-   public gpa(gmf<T, fxi<T>> $$0, fyg $$1) {
-      super($$0);
-      this.a = new fxi<>($$1.a(fyj.bu));
+   public gpa(gms.a $$0, fzc $$1, fzc $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      fgo $$10 = fgo.Q();
-      boolean $$11 = $$10.b($$3) && $$3.ci();
-      if (!$$3.ci() || $$11) {
-         fbm $$12;
-         if ($$11) {
-            $$12 = $$1.getBuffer(gfh.r(this.a($$3)));
-         } else {
-            $$12 = $$1.getBuffer(gfh.i(this.a($$3)));
-         }
+   public alb a(gus $$0) {
+      return a;
+   }
 
-         this.c().a(this.a);
-         this.a.a($$3, $$4, $$5, $$6);
-         this.a.a($$3, $$4, $$5, $$7, $$8, $$9);
-         this.a.a($$0, $$12, $$2, glk.c($$3, 0.0F));
-      }
+   public gus c() {
+      return new gus();
+   }
+
+   public void a(T $$0, gus $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = azc.h($$2, $$0.cg, $$0.cf);
+      $$1.b = azc.h($$2, $$0.ca, $$0.bZ);
+      $$1.c = azc.h($$2, $$0.cc, $$0.cb);
+   }
+
+   protected void a(gus $$0, fcu $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.ae ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.ae ? -0.6F : -1.2F, 0.0F);
    }
 }

@@ -1,113 +1,205 @@
-import java.util.function.Consumer;
+import com.google.common.base.MoreObjects;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.Writer;
+import java.nio.charset.CharacterCodingException;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Objects;
+import java.util.Properties;
 import java.util.function.Function;
+import java.util.function.IntFunction;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface aqc<T> {
-   static <T> aqc<T> a(T $$0) {
-      return new aqc.b<>($$0);
+public abstract class aqc<T extends aqc<T>> {
+   private static final Logger a = LogUtils.getLogger();
+   protected final Properties ac;
+
+   public aqc(Properties $$0) {
+      this.ac = $$0;
    }
 
-   static <T> aqc<T> a(String $$0) {
-      return a(() -> $$0);
+   public static Properties b(Path $$0) {
+      try {
+         try {
+            Properties var13;
+            try (InputStream $$1 = Files.newInputStream($$0)) {
+               CharsetDecoder $$2 = StandardCharsets.UTF_8
+                  .newDecoder()
+                  .onMalformedInput(CodingErrorAction.REPORT)
+                  .onUnmappableCharacter(CodingErrorAction.REPORT);
+               Properties $$3 = new Properties();
+               $$3.load(new InputStreamReader($$1, $$2));
+               var13 = $$3;
+            }
+
+            return var13;
+         } catch (CharacterCodingException var9) {
+            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
+
+            Properties var4;
+            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
+               Properties $$6 = new Properties();
+               $$6.load($$5);
+               var4 = $$6;
+            }
+
+            return var4;
+         }
+      } catch (IOException var10) {
+         a.error("Failed to load properties from file: {}", $$0, var10);
+         return new Properties();
+      }
    }
 
-   static <T> aqc<T> a(Supplier<String> $$0) {
-      return new aqc.a<>($$0);
+   public void c(Path $$0) {
+      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
+         this.ac.store($$1, "Minecraft server properties");
+      } catch (IOException var7) {
+         a.error("Failed to store properties to file: {}", $$0);
+      }
    }
 
-   boolean a();
+   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
+      return $$1 -> {
+         try {
+            return $$0.apply($$1);
+         } catch (NumberFormatException var3) {
+            return null;
+         }
+      };
+   }
+
+   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
+      return $$2 -> {
+         try {
+            return $$0.apply(Integer.parseInt($$2));
+         } catch (NumberFormatException var4) {
+            return $$1.apply($$2);
+         }
+      };
+   }
 
    @Nullable
-   T b(@Nullable T var1);
-
-   @Nullable
-   static <R> R a(aqc<? extends R> $$0, @Nullable R $$1) {
-      R $$2 = (R)$$0.b(null);
-      return $$2 != null ? $$2 : $$1;
+   private String c(String $$0) {
+      return (String)this.ac.get($$0);
    }
 
    @Nullable
-   String b();
-
-   aqc<T> a(Consumer<T> var1);
-
-   <R> aqc<R> a(Function<T, R> var1);
-
-   <E extends Throwable> T b(Supplier<E> var1) throws E;
-
-   public static record a<T>(Supplier<String> a) implements aqc<T> {
-      @Override
-      public boolean a() {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public T b(@Nullable T $$0) {
-         return $$0;
-      }
-
-      @Override
-      public String b() {
-         return this.a.get();
-      }
-
-      @Override
-      public aqc<T> a(Consumer<T> $$0) {
-         return this;
-      }
-
-      @Override
-      public <R> aqc<R> a(Function<T, R> $$0) {
-         return new aqc.a(this.a);
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         throw $$0.get();
-      }
-
-      public Supplier<String> c() {
-         return this.a;
-      }
-   }
-
-   public static record b<T>(T a) implements aqc<T> {
-      @Override
-      public boolean a() {
-         return true;
-      }
-
-      @Override
-      public T b(@Nullable T $$0) {
-         return this.a;
-      }
-
-      @Nullable
-      @Override
-      public String b() {
+   protected <V> V a(String $$0, Function<String, V> $$1) {
+      String $$2 = this.c($$0);
+      if ($$2 == null) {
          return null;
+      } else {
+         this.ac.remove($$0);
+         return $$1.apply($$2);
+      }
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return $$5;
+   }
+
+   protected <V> aqc<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
+      String $$4 = this.c($$0);
+      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
+      this.ac.put($$0, $$2.apply($$5));
+      return new aqc.a<>($$0, $$5, $$2);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
+      return this.a($$0, $$2x -> {
+         V $$3x = $$1.apply($$2x);
+         return $$3x != null ? $$2.apply($$3x) : null;
+      }, $$3, $$4);
+   }
+
+   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
+      return this.a($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected <V> aqc<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
+      return this.b($$0, $$1, Objects::toString, $$2);
+   }
+
+   protected String a(String $$0, String $$1) {
+      return this.a($$0, Function.identity(), Function.identity(), $$1);
+   }
+
+   @Nullable
+   protected String a(String $$0) {
+      return this.a($$0, Function.identity());
+   }
+
+   protected int a(String $$0, int $$1) {
+      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
+   }
+
+   protected aqc<T>.a<Integer> b(String $$0, int $$1) {
+      return this.b($$0, a(Integer::parseInt), $$1);
+   }
+
+   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
+      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
+   }
+
+   protected long a(String $$0, long $$1) {
+      return this.a($$0, a(Long::parseLong), $$1);
+   }
+
+   protected boolean a(String $$0, boolean $$1) {
+      return this.a($$0, Boolean::valueOf, $$1);
+   }
+
+   protected aqc<T>.a<Boolean> b(String $$0, boolean $$1) {
+      return this.b($$0, Boolean::valueOf, $$1);
+   }
+
+   @Nullable
+   protected Boolean b(String $$0) {
+      return this.a($$0, Boolean::valueOf);
+   }
+
+   protected Properties a() {
+      Properties $$0 = new Properties();
+      $$0.putAll(this.ac);
+      return $$0;
+   }
+
+   protected abstract T b(kb var1, Properties var2);
+
+   public class a<V> implements Supplier<V> {
+      private final String b;
+      private final V c;
+      private final Function<V, String> d;
+
+      a(final String $$1, final V $$2, final Function<V, String> $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
       }
 
       @Override
-      public aqc<T> a(Consumer<T> $$0) {
-         $$0.accept(this.a);
-         return this;
+      public V get() {
+         return this.c;
       }
 
-      @Override
-      public <R> aqc<R> a(Function<T, R> $$0) {
-         return new aqc.b<>($$0.apply(this.a));
-      }
-
-      @Override
-      public <E extends Throwable> T b(Supplier<E> $$0) throws E {
-         return this.a;
-      }
-
-      public T c() {
-         return this.a;
+      public T a(kb $$0, V $$1) {
+         Properties $$2 = aqc.this.a();
+         $$2.put(this.b, this.d.apply($$1));
+         return aqc.this.b($$0, $$2);
       }
    }
 }

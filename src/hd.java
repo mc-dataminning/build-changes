@@ -6,30 +6,30 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class hd {
-   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wz.b("arguments.item.overstacked", $$0, $$1));
-   private final jm<cul> b;
-   private final kn c;
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xd.b("arguments.item.overstacked", $$0, $$1));
+   private final jn<cvg> b;
+   private final ko c;
 
-   public hd(jm<cul> $$0, kn $$1) {
+   public hd(jn<cvg> $$0, ko $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public cul a() {
+   public cvg a() {
       return this.b.a();
    }
 
-   public cuq a(int $$0, boolean $$1) throws CommandSyntaxException {
-      cuq $$2 = new cuq(this.b, $$0);
+   public cvl a(int $$0, boolean $$1) throws CommandSyntaxException {
+      cvl $$2 = new cvl(this.b, $$0);
       $$2.b(this.c);
-      if ($$1 && $$0 > $$2.j()) {
-         throw a.create(this.b(), $$2.j());
+      if ($$1 && $$0 > $$2.k()) {
+         throw a.create(this.b(), $$2.k());
       } else {
          return $$2;
       }
    }
 
-   public String a(jo.a $$0) {
+   public String a(jp.a $$0) {
       StringBuilder $$1 = new StringBuilder(this.b());
       String $$2 = this.b($$0);
       if (!$$2.isEmpty()) {
@@ -41,17 +41,17 @@ public class hd {
       return $$1.toString();
    }
 
-   private String b(jo.a $$0) {
-      DynamicOps<uy> $$1 = $$0.a(up.a);
+   private String b(jp.a $$0) {
+      DynamicOps<vc> $$1 = $$0.a(ut.a);
       return this.c.b().stream().flatMap($$1x -> {
-         kp<?> $$2 = (kp<?>)$$1x.getKey();
-         akr $$3 = lt.aq.b($$2);
+         kq<?> $$2 = (kq<?>)$$1x.getKey();
+         alb $$3 = lu.ap.b($$2);
          if ($$3 == null) {
             return Stream.empty();
          } else {
             Optional<?> $$4 = (Optional<?>)$$1x.getValue();
             if ($$4.isPresent()) {
-               ks<?> $$5 = ks.a($$2, $$4.get());
+               kt<?> $$5 = kt.a($$2, $$4.get());
                return $$5.a($$1).result().stream().map($$1xx -> $$3.toString() + "=" + $$1xx);
             } else {
                return Stream.of("!" + $$3.toString());
@@ -61,6 +61,6 @@ public class hd {
    }
 
    private String b() {
-      return this.b.e().map(akq::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
+      return this.b.e().map(ala::a).orElseGet(() -> "unknown[" + this.b + "]").toString();
    }
 }

@@ -1,27 +1,52 @@
+import java.io.DataOutput;
+import java.io.IOException;
+
 public interface vc {
-   void a(uw var1);
+   int d = 8;
+   int e = 12;
+   int f = 4;
+   int g = 28;
+   byte h = 0;
+   byte i = 1;
+   byte j = 2;
+   byte k = 3;
+   byte l = 4;
+   byte m = 5;
+   byte n = 6;
+   byte o = 7;
+   byte p = 8;
+   byte q = 9;
+   byte r = 10;
+   byte s = 11;
+   byte t = 12;
+   byte u = 99;
+   int v = 512;
 
-   void a(tz var1);
+   void a(DataOutput var1) throws IOException;
 
-   void a(ut var1);
+   @Override
+   String toString();
 
-   void a(ug var1);
+   byte b();
 
-   void a(uj var1);
+   ve<?> c();
 
-   void a(ue var1);
+   vc d();
 
-   void a(uc var1);
+   int a();
 
-   void a(ty var1);
+   default String r_() {
+      return new vb().a(this);
+   }
 
-   void a(uf var1);
+   void a(vg var1);
 
-   void a(ui var1);
+   uz.b a(uz var1);
 
-   void a(uh var1);
-
-   void a(ub var1);
-
-   void a(ud var1);
+   default void b(uz $$0) {
+      uz.b $$1 = $$0.b(this.c());
+      if ($$1 == uz.b.a) {
+         this.a($$0);
+      }
+   }
 }

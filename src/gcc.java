@@ -1,57 +1,67 @@
-public class gcc extends gdn {
-   private final gdi a;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-   protected gcc(fzf $$0, double $$1, double $$2, double $$3, gdi $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$4;
-      this.b($$4);
-      this.t = 12 + this.r.a(4);
-      this.D = 1.0F;
-      this.b(1.0F, 1.0F);
+public record gcc(String a, @Nullable gcc.a b) {
+   public static gcc a() {
+      return a(null);
    }
 
-   @Override
-   public gcr b() {
-      return gcr.d;
+   public static gcc a(String $$0) {
+      return a(new gcc.a.b($$0));
    }
 
-   @Override
-   public int a(float $$0) {
-      return 15728880;
+   public static gcc a(feb $$0) {
+      return a(new gcc.a.a($$0));
    }
 
-   @Override
-   public void a() {
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.b(this.a);
-      }
+   public static gcc a(@Nullable gcc.a $$0) {
+      return new gcc(g(), $$0);
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
-
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcc($$1, $$2, $$3, $$4, this.a);
-      }
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
    }
 
-   public static class b implements gcq<lq> {
-      private final gdi a;
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gcc.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
 
-      public b(gdi $$0) {
-         this.a = $$0;
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gcc.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w33a");
+      if (fib.e().a()) {
+         $$0.append(" (modded)");
       }
 
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gcn $$8 = new gcc($$1, $$2, $$3, $$4, this.a);
-         $$8.d(0.15F);
-         return $$8;
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public gcc.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gcc.a {
+         public a(feb $$0) {
+            this($$0.a, $$0.n);
+         }
+      }
+
+      public static record b(String a) implements gcc.a {
       }
    }
 }

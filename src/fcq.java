@@ -1,27 +1,49 @@
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fcq extends fdc {
-   private static final Logger d = LogUtils.getLogger();
-   public String a;
-   public String b;
-   public String c;
+public class fcq {
+   @Nullable
+   private static fcx a;
 
-   public static fcq a(String $$0) {
-      JsonParser $$1 = new JsonParser();
-      fcq $$2 = new fcq();
-
-      try {
-         JsonObject $$3 = $$1.parse($$0).getAsJsonObject();
-         $$2.a = fez.b("address", $$3, null);
-         $$2.b = fez.b("resourcePackUrl", $$3, null);
-         $$2.c = fez.b("resourcePackHash", $$3, null);
-      } catch (Exception var4) {
-         d.error("Could not parse RealmsServerAddress: {}", var4.getMessage());
+   public static void a() {
+      if (a != null) {
+         b();
+         fcx.b();
       }
+   }
 
-      return $$2;
+   public static void b() {
+      a = null;
+   }
+
+   public static void a(fct $$0) {
+      RenderSystem.assertOnRenderThread();
+      fcx $$1 = c($$0);
+      $$1.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
+   }
+
+   public static void b(fct $$0) {
+      RenderSystem.assertOnRenderThread();
+      fcx $$1 = c($$0);
+      $$1.c();
+   }
+
+   private static fcx c(fct $$0) {
+      fcx $$1 = a($$0.c().a());
+      $$1.a($$0);
+      return $$1;
+   }
+
+   private static fcx a(fcz $$0) {
+      fcx $$1 = $$0.i();
+      a($$1);
+      return $$1;
+   }
+
+   private static void a(fcx $$0) {
+      if ($$0 != a) {
+         $$0.a();
+         a = $$0;
+      }
    }
 }

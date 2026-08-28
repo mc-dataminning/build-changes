@@ -1,25 +1,22 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Set;
 
-public class ceh {
-   @Nullable
-   public static exc a(btw $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
-      boolean $$7 = cek.a($$0, $$1);
-      return cen.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+public class ceh<T extends buf> extends ceo<T> {
+   @Override
+   protected void a(arg $$0, T $$1) {
+      double $$2 = $$1.h(bvm.m);
+      exz $$3 = $$1.cO().c($$2, $$2, $$2);
+      List<buf> $$4 = $$0.a(buf.class, $$3, $$1x -> $$1x != $$1 && $$1x.bI());
+      $$4.sort(Comparator.comparingDouble($$1::g));
+      bvg<?> $$5 = $$1.dX();
+      $$5.a(cdi.g, $$4);
+      $$5.a(cdi.h, new cdk($$1, $$4));
    }
 
-   @Nullable
-   public static jd a(btw $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      jd $$8 = cen.a($$0.dR(), $$1, $$2, $$3, $$4, $$5, $$6);
-      if ($$8 == null) {
-         return null;
-      } else {
-         jd $$9 = cen.a($$0, $$1, $$0.dR(), $$8);
-         if (!cek.a($$9, $$0) && !cek.a($$7, $$0, $$9)) {
-            $$9 = cen.a($$9, $$0.dO().am(), $$1x -> cek.c($$0, $$1x));
-            return cek.b($$0, $$9) ? null : $$9;
-         } else {
-            return null;
-         }
-      }
+   @Override
+   public Set<cdi<?>> a() {
+      return ImmutableSet.of(cdi.g, cdi.h);
    }
 }

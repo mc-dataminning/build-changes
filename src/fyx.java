@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public abstract class fyx extends fxv {
+   public fyx() {
+      super(ghe::j);
+   }
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fyx {
+   public abstract void a(float var1, float var2, float var3);
 }

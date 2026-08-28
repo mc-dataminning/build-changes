@@ -1,20 +1,32 @@
-public class gnu extends gov<ckz, fut<ckz>> {
-   private static final akr a = akr.b("textures/entity/breeze/breeze_wind.png");
-   private final fut<ckz> b;
+public class gnu extends gln<cic, gtt, fxs> {
+   private static final alb a = alb.b("textures/entity/llama/creamy.png");
+   private static final alb b = alb.b("textures/entity/llama/white.png");
+   private static final alb k = alb.b("textures/entity/llama/brown.png");
+   private static final alb l = alb.b("textures/entity/llama/gray.png");
 
-   public gnu(gkj.a $$0, gmf<ckz, fut<ckz>> $$1) {
-      super($$1);
-      this.b = new fut<>($$0.a(fyj.t));
+   public gnu(gms.a $$0, fzz $$1, fzz $$2) {
+      super($$0, new fxs($$0.a($$1)), new fxs($$0.a($$2)), 0.7F);
+      this.a(new gqz(this, $$0.f()));
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, ckz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      float $$10 = (float)$$3.ai + $$6;
-      fbm $$11 = $$1.getBuffer(gfh.a(a, this.a($$10) % 1.0F, 0.0F));
-      this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-      gjp.a(this.b, this.b.e()).a($$0, $$11, $$2, gqc.d);
+   public alb a(gtt $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+      };
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public gtt c() {
+      return new gtt();
+   }
+
+   public void a(cic $$0, gtt $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gB();
+      $$1.b = !$$0.o_() && $$0.t();
+      $$1.c = $$0.gC();
+      $$1.d = $$0.gr();
    }
 }

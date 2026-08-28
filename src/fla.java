@@ -1,110 +1,82 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.Arrays;
-import java.util.function.IntFunction;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public class fla<T> {
-   private static final int a = 8;
-   private static final int b = 256;
-   private static final int c = 255;
-   private static final int d = 4351;
-   private static final int e = 4352;
-   private final T[] f;
-   private final T[][] g;
-   private final IntFunction<T[]> h;
+public class fla extends fjy {
+   private static final float a = 0.0625F;
+   private static final float b = 2.125F;
+   private static final float c = 100.0F;
+   private static final float d = 2.5F;
+   private static final float e = -5.0F;
+   private static final float f = 30.0F;
+   private static final float m = 50.0F;
+   private final fla.a n;
+   private final Supplier<gxl> o;
+   private float p = -5.0F;
+   private float q = 30.0F;
 
-   public fla(IntFunction<T[]> $$0, IntFunction<T[][]> $$1) {
-      this.f = (T[])((Object[])$$0.apply(256));
-      this.g = (T[][])((Object[][])$$1.apply(4352));
-      Arrays.fill(this.g, this.f);
-      this.h = $$0;
+   public fla(int $$0, int $$1, fzx $$2, Supplier<gxl> $$3) {
+      super(0, 0, $$0, $$1, xc.a);
+      this.n = fla.a.a($$2);
+      this.o = $$3;
    }
 
-   public void a() {
-      Arrays.fill(this.g, this.f);
+   @Override
+   protected void b(fjn $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)this.D() + (float)this.y() / 2.0F, (float)(this.E() + this.w()), 100.0F);
+      float $$4 = (float)this.w() / 2.125F;
+      $$0.c().b($$4, $$4, $$4);
+      $$0.c().a(0.0F, -0.0625F, 0.0F);
+      $$0.c().a(a.b.rotationDegrees(this.p), 0.0F, -1.0625F, 0.0F);
+      $$0.c().a(a.d.rotationDegrees(this.q));
+      $$0.e();
+      fbl.a(a.b.rotationDegrees(this.p));
+      this.n.a($$0, this.o.get());
+      $$0.e();
+      fbl.d();
+      $$0.c().b();
    }
 
-   @Nullable
-   public T a(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      return this.g[$$1][$$2];
+   @Override
+   protected void b(double $$0, double $$1, double $$2, double $$3) {
+      this.p = azc.a(this.p - (float)$$3 * 2.5F, -50.0F, 50.0F);
+      this.q += (float)$$2 * 2.5F;
    }
 
-   @Nullable
-   public T a(int $$0, T $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      if ($$4 == this.f) {
-         $$4 = (T[])((Object[])this.h.apply(256));
-         this.g[$$2] = $$4;
-         $$4[$$3] = $$1;
-         return null;
-      } else {
-         T $$5 = $$4[$$3];
-         $$4[$$3] = $$1;
-         return $$5;
-      }
+   @Override
+   public void a(hbj $$0) {
    }
 
-   public T a(int $$0, IntFunction<T> $$1) {
-      int $$2 = $$0 >> 8;
-      int $$3 = $$0 & 0xFF;
-      T[] $$4 = this.g[$$2];
-      T $$5 = $$4[$$3];
-      if ($$5 != null) {
-         return $$5;
-      } else {
-         if ($$4 == this.f) {
-            $$4 = (T[])((Object[])this.h.apply(256));
-            this.g[$$2] = $$4;
-         }
+   @Override
+   protected void a(fnx $$0) {
+   }
 
-         T $$6 = $$1.apply($$0);
-         $$4[$$3] = $$6;
-         return $$6;
-      }
+   @Override
+   public boolean C() {
+      return false;
    }
 
    @Nullable
-   public T b(int $$0) {
-      int $$1 = $$0 >> 8;
-      int $$2 = $$0 & 0xFF;
-      T[] $$3 = this.g[$$1];
-      if ($$3 == this.f) {
-         return null;
-      } else {
-         T $$4 = $$3[$$2];
-         $$3[$$2] = null;
-         return $$4;
+   @Override
+   public fjk a(fod $$0) {
+      return null;
+   }
+
+   static record a(fyf a, fyf b) {
+      public static fla.a a(fzx $$0) {
+         fyf $$1 = new fyf($$0.a(gaa.bH), false);
+         fyf $$2 = new fyf($$0.a(gaa.bN), true);
+         return new fla.a($$1, $$2);
       }
-   }
 
-   public void a(fla.a<T> $$0) {
-      for (int $$1 = 0; $$1 < this.g.length; $$1++) {
-         T[] $$2 = this.g[$$1];
-         if ($$2 != this.f) {
-            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-               T $$4 = $$2[$$3];
-               if ($$4 != null) {
-                  int $$5 = $$1 << 8 | $$3;
-                  $$0.accept($$5, $$4);
-               }
-            }
-         }
+      public void a(fjn $$0, gxl $$1) {
+         $$0.c().a();
+         $$0.c().b(1.0F, 1.0F, -1.0F);
+         $$0.c().a(0.0F, -1.501F, 0.0F);
+         fyf $$2 = $$1.e() == gxl.a.a ? this.b : this.a;
+         ghe $$3 = $$2.a($$1.a());
+         $$2.a($$0.c(), $$0.d().getBuffer($$3), 15728880, gwb.d);
+         $$0.c().b();
       }
-   }
-
-   public IntSet b() {
-      IntOpenHashSet $$0 = new IntOpenHashSet();
-      this.a(($$1, $$2) -> $$0.add($$1));
-      return $$0;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      void accept(int var1, T var2);
    }
 }

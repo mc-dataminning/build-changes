@@ -1,20 +1,5 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
-
-public class th implements tu {
-   private static final Logger a = LogUtils.getLogger();
-
-   @Override
-   public void a(sx $$0) {
-      String $$1 = $$0.c().x();
-      if ($$0.q()) {
-         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ad.c($$0.m())});
-      } else {
-         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ad.c($$0.m())});
-      }
-   }
-
-   @Override
-   public void b(sx $$0) {
+public class th extends RuntimeException {
+   public th(String $$0) {
+      super($$0);
    }
 }

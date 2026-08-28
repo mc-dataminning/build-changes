@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class fi implements ArgumentType<fi.a> {
    private static final Collection<String> b = Arrays.asList("Player", "0123", "dd12be42-52a9-4a91-a8a1-11c01849e498", "@e");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("argument.player.unknown"));
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("argument.player.unknown"));
 
    public static Collection<GameProfile> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return ((fi.a)$$0.getArgument($$1, fi.a.class)).getNames((et)$$0.getSource());
@@ -52,7 +52,7 @@ public class fi implements ArgumentType<fi.a> {
 
          String $$5 = $$0.getString().substring($$4, $$0.getCursor());
          return $$1x -> {
-            Optional<GameProfile> $$2 = $$1x.l().au().a($$5);
+            Optional<GameProfile> $$2 = $$1x.l().at().a($$5);
             return Collections.singleton($$2.orElseThrow(a::create));
          };
       }
@@ -93,14 +93,14 @@ public class fi implements ArgumentType<fi.a> {
 
       @Override
       public Collection<GameProfile> getNames(et $$0) throws CommandSyntaxException {
-         List<aqv> $$1 = this.a.d($$0);
+         List<arh> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw fg.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (aqv $$3 : $$1) {
-               $$2.add($$3.fX());
+            for (arh $$3 : $$1) {
+               $$2.add($$3.gb());
             }
 
             return $$2;

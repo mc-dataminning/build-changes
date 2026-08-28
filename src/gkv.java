@@ -1,16 +1,41 @@
-public class gkv extends gmr<bte> {
-   private static final akr a = akr.b("textures/entity/squid/glow_squid.png");
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-   public gkv(gkj.a $$0, fxm<bte> $$1) {
-      super($$0, $$1);
+public class gkv implements gkq.a {
+   private final fib a;
+   private static final int b = 10;
+
+   public gkv(fib $$0) {
+      this.a = $$0;
    }
 
-   public akr a(bte $$0) {
-      return a;
-   }
+   @Override
+   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
+      dds $$5 = this.a.s;
+      je $$6 = je.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   protected int a(bte $$0, jd $$1) {
-      int $$2 = (int)ayo.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+      for (je $$8 : je.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(deb.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azc.g($$10, 0.9F, 0.9F);
+         long $$12 = kg.e($$8.a());
+         if ($$7.add($$12)) {
+            gkq.a(
+               $$0,
+               $$1,
+               $$5.P().p().a(deb.a, kg.a($$12)),
+               (double)kg.a(kg.b($$12), 8),
+               (double)kg.a(kg.c($$12), 8),
+               (double)kg.a(kg.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            gkq.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

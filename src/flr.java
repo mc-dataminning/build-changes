@@ -1,108 +1,40 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
+import java.util.Locale;
 
-public record flr(akr c, float d, float e, flr.a f, String g) implements flo {
-   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<flr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               akr.a.fieldOf("file").forGetter(flr::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(flr::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(flr::e),
-               flr.a.b.optionalFieldOf("shift", flr.a.a).forGetter(flr::f),
-               h.optionalFieldOf("skip", "").forGetter(flr::g)
-            )
-            .apply($$0, flr::new)
-   );
+public class flr extends flp {
+   private static final int f = 30;
+   private static final double g = 33.333333333333336;
 
-   @Override
-   public flp a() {
-      return flp.b;
+   public flr(fjl $$0, bmo $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public Either<flo.b, flo.c> b() {
-      return Either.left(this::a);
-   }
-
-   private ezm a(aue $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
-
-      try {
-         ezp var20;
-         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            synchronized (fln.a) {
-               MemoryStack $$4 = MemoryStack.stackPush();
-
-               try {
-                  PointerBuffer $$5 = $$4.mallocPointer(1);
-                  fln.a(FreeType.FT_New_Memory_Face(fln.a(), $$2, 0L, $$5), "Initializing font face");
-                  $$1 = FT_Face.create($$5.get());
-               } catch (Throwable var14) {
-                  if ($$4 != null) {
-                     try {
-                        $$4.close();
-                     } catch (Throwable var12) {
-                        var14.addSuppressed(var12);
-                     }
-                  }
-
-                  throw var14;
-               }
-
-               if ($$4 != null) {
-                  $$4.close();
-               }
-
-               String $$6 = FreeType.FT_Get_Font_Format($$1);
-               if (!"TrueType".equals($$6)) {
-                  throw new IOException("Font is not in TTF format, was " + $$6);
-               }
-
-               fln.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-               var20 = new ezp($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
-            }
-         }
-
-         return var20;
-      } catch (Exception var17) {
-         synchronized (fln.a) {
-            if ($$1 != null) {
-               FreeType.FT_Done_Face($$1);
-            }
-         }
-
-         MemoryUtil.memFree($$2);
-         throw var17;
+   protected void d(fjn $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
+      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
+      $$0.a(ghe.H(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
+      int $$4 = fib.Q().n.h().c();
+      if ($$4 > 0 && $$4 <= 250) {
+         $$0.a(ghe.H(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
       }
    }
 
-   public static record a(float c, float d) {
-      public static final flr.a a = new flr.a(0.0F, 0.0F);
-      public static final Codec<flr.a> b = Codec.floatRange(-512.0F, 512.0F)
-         .listOf()
-         .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new flr.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+   @Override
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   }
 
-      public float a() {
-         return this.c;
-      }
+   @Override
+   protected int b(double $$0) {
+      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   }
 
-      public float b() {
-         return this.d;
-      }
+   @Override
+   protected int a(long $$0) {
+      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   }
+
+   private static double c(double $$0) {
+      return $$0 / 1000000.0;
    }
 }

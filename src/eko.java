@@ -1,151 +1,232 @@
-import com.mojang.datafixers.Products.P5;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 public abstract class eko {
-   public static final Codec<eko> b = lt.P.r().dispatch(eko::e, ekp::codec);
-   private static final int a = 10387320;
-   private final kh c;
-   private final eko.c d;
-   private final float e;
-   private final int f;
-   private final Optional<eko.a> g;
+   public static final Codec<eko> a = lu.R.q().dispatch(eko::e, ekx::codec);
+   public static final Codec<jn<eko>> b = akx.a(lv.aR, a);
+   protected final eko.c c;
 
-   protected static <S extends eko> P5<Mu<S>, kh, eko.c, Float, Integer, Optional<eko.a>> a(Instance<S> $$0) {
-      return $$0.group(
-         kh.v(16).optionalFieldOf("locate_offset", kh.g).forGetter(eko::f),
-         eko.c.e.optionalFieldOf("frequency_reduction_method", eko.c.a).forGetter(eko::g),
-         Codec.floatRange(0.0F, 1.0F).optionalFieldOf("frequency", 1.0F).forGetter(eko::h),
-         axw.k.fieldOf("salt").forGetter(eko::i),
-         eko.a.a.optionalFieldOf("exclusion_zone").forGetter(eko::j)
-      );
+   public static <S extends eko> RecordCodecBuilder<S, eko.c> a(Instance<S> $$0) {
+      return eko.c.a.forGetter($$0x -> $$0x.c);
    }
 
-   protected eko(kh $$0, eko.c $$1, float $$2, int $$3, Optional<eko.a> $$4) {
+   public static <S extends eko> MapCodec<S> a(Function<eko.c, S> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(a($$1)).apply($$1, $$0));
+   }
+
+   protected eko(eko.c $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
    }
 
-   protected kh f() {
-      return this.c;
+   public jr<det> a() {
+      return this.c.b;
    }
 
-   protected eko.c g() {
-      return this.d;
+   public Map<bui, ekv> b() {
+      return this.c.c;
    }
 
-   protected float h() {
-      return this.e;
+   public dzs.a c() {
+      return this.c.d;
    }
 
-   protected int i() {
-      return this.f;
+   public ekz d() {
+      return this.c.e;
    }
 
-   protected Optional<eko.a> j() {
-      return this.g;
+   public ekg a(ekg $$0) {
+      return this.d() != ekz.a ? $$0.a(12) : $$0;
    }
 
-   public boolean b(dva $$0, int $$1, int $$2) {
-      return this.a($$0, $$1, $$2) && this.a($$1, $$2, $$0.d()) && this.c($$0, $$1, $$2);
+   public ekw a(kb $$0, dvx $$1, dex $$2, eak $$3, eor $$4, long $$5, dcy $$6, int $$7, ddu $$8, Predicate<jn<det>> $$9) {
+      eko.a $$10 = new eko.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, $$9);
+      Optional<eko.b> $$11 = this.b($$10);
+      if ($$11.isPresent()) {
+         elg $$12 = $$11.get().a();
+         ekw $$13 = new ekw(this, $$6, $$7, $$12.a());
+         if ($$13.b()) {
+            return $$13;
+         }
+      }
+
+      return ekw.b;
    }
 
-   public boolean a(int $$0, int $$1, long $$2) {
-      return !(this.e < 1.0F) || this.d.a($$2, this.f, $$0, $$1, this.e);
+   protected static Optional<eko.b> a(eko.a $$0, dzw.a $$1, Consumer<elg> $$2) {
+      dcy $$3 = $$0.h();
+      int $$4 = $$3.b();
+      int $$5 = $$3.c();
+      int $$6 = $$0.b().c($$4, $$5, $$1, $$0.i(), $$0.d());
+      return Optional.of(new eko.b(new je($$4, $$6, $$5), $$2));
    }
 
-   public boolean c(dva $$0, int $$1, int $$2) {
-      return !this.g.isPresent() || !this.g.get().a($$0, $$1, $$2);
+   private static boolean a(eko.b $$0, eko.a $$1) {
+      je $$2 = $$0.b();
+      return $$1.j.test($$1.b.d().getNoiseBiome(jy.a($$2.u()), jy.a($$2.v()), jy.a($$2.w()), $$1.d.b()));
    }
 
-   protected abstract boolean a(dva var1, int var2, int var3);
-
-   public jd a(dcd $$0) {
-      return new jd($$0.d(), 0, $$0.e()).a(this.f());
+   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, eld $$6) {
    }
 
-   public abstract ekp<?> e();
-
-   private static boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      dzx $$5 = new dzx(new dyz(0L));
-      $$5.a($$0, $$1, $$2, $$3);
-      return $$5.i() < $$4;
+   private static int[] c(eko.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      dvx $$5 = $$0.b();
+      ddu $$6 = $$0.i();
+      eak $$7 = $$0.d();
+      return new int[]{
+         $$5.c($$1, $$3, dzw.a.a, $$6, $$7),
+         $$5.c($$1, $$3 + $$4, dzw.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3, dzw.a.a, $$6, $$7),
+         $$5.c($$1 + $$2, $$3 + $$4, dzw.a.a, $$6, $$7)
+      };
    }
 
-   private static boolean b(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      dzx $$5 = new dzx(new dyz(0L));
-      $$5.c($$0, $$2, $$3);
-      return $$5.j() < (double)$$4;
+   public static int a(eko.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$2, $$3, $$4);
+      return ($$5[0] + $$5[1] + $$5[2] + $$5[3]) / 4;
    }
 
-   private static boolean c(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      dzx $$5 = new dzx(new dyz(0L));
-      $$5.a($$0, $$2, $$3, 10387320);
-      return $$5.i() < $$4;
+   protected static int a(eko.a $$0, int $$1, int $$2) {
+      dcy $$3 = $$0.h();
+      int $$4 = $$3.d();
+      int $$5 = $$3.e();
+      return b($$0, $$4, $$5, $$1, $$2);
    }
 
-   private static boolean d(long $$0, int $$1, int $$2, int $$3, float $$4) {
-      int $$5 = $$2 >> 4;
-      int $$6 = $$3 >> 4;
-      dzx $$7 = new dzx(new dyz(0L));
-      $$7.b((long)($$5 ^ $$6 << 4) ^ $$0);
-      $$7.f();
-      return $$7.a((int)(1.0F / $$4)) == 0;
+   protected static int b(eko.a $$0, int $$1, int $$2, int $$3, int $$4) {
+      int[] $$5 = c($$0, $$1, $$3, $$2, $$4);
+      return Math.min(Math.min($$5[0], $$5[1]), Math.min($$5[2], $$5[3]));
    }
 
    @Deprecated
-   public static record a(jm<ejx> b, int c) {
-      public static final Codec<eko.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(akn.a(lu.aT, ejx.a, false).fieldOf("other_set").forGetter(eko.a::a), Codec.intRange(1, 16).fieldOf("chunk_count").forGetter(eko.a::b))
-               .apply($$0, eko.a::new)
-      );
-
-      boolean a(dva $$0, int $$1, int $$2) {
-         return $$0.a(this.b, $$1, $$2, this.c);
+   protected je a(eko.a $$0, dnj $$1) {
+      int $$2 = 5;
+      int $$3 = 5;
+      if ($$1 == dnj.b) {
+         $$2 = -5;
+      } else if ($$1 == dnj.c) {
+         $$2 = -5;
+         $$3 = -5;
+      } else if ($$1 == dnj.d) {
+         $$3 = -5;
       }
 
-      public jm<ejx> a() {
+      dcy $$4 = $$0.h();
+      int $$5 = $$4.a(7);
+      int $$6 = $$4.b(7);
+      return new je($$5, b($$0, $$5, $$6, $$2, $$3), $$6);
+   }
+
+   protected abstract Optional<eko.b> a(eko.a var1);
+
+   public Optional<eko.b> b(eko.a $$0) {
+      return this.a($$0).filter($$1 -> a($$1, $$0));
+   }
+
+   public abstract ekx<?> e();
+
+   public static record a(kb a, dvx b, dex c, eak d, eor e, eav f, long g, dcy h, ddu i, Predicate<jn<det>> j) {
+
+      public a(kb $$0, dvx $$1, dex $$2, eak $$3, eor $$4, long $$5, dcy $$6, ddu $$7, Predicate<jn<det>> $$8) {
+         this($$0, $$1, $$2, $$3, $$4, a($$5, $$6), $$5, $$6, $$7, $$8);
+      }
+
+      private static eav a(long $$0, dcy $$1) {
+         eav $$2 = new eav(new dzx(0L));
+         $$2.c($$0, $$1.e, $$1.f);
+         return $$2;
+      }
+   }
+
+   public static record b(je a, Either<Consumer<elg>, elg> b) {
+      public b(je $$0, Consumer<elg> $$1) {
+         this($$0, Either.left($$1));
+      }
+
+      public elg a() {
+         return (elg)this.b.map($$0 -> {
+            elg $$1 = new elg();
+            $$0.accept($$1);
+            return $$1;
+         }, $$0 -> $$0);
+      }
+
+      public je b() {
+         return this.a;
+      }
+
+      public Either<Consumer<elg>, elg> c() {
+         return this.b;
+      }
+   }
+
+   public static record c(jr<det> b, Map<bui, ekv> c, dzs.a d, ekz e) {
+      static final eko.c f = new eko.c(jr.a(), Map.of(), dzs.a.e, ekz.a);
+      public static final MapCodec<eko.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  kc.a(lv.aF).fieldOf("biomes").forGetter(eko.c::a),
+                  Codec.simpleMap(bui.i, ekv.a, azy.a(bui.values())).fieldOf("spawn_overrides").forGetter(eko.c::b),
+                  dzs.a.l.fieldOf("step").forGetter(eko.c::c),
+                  ekz.f.optionalFieldOf("terrain_adaptation", f.e).forGetter(eko.c::d)
+               )
+               .apply($$0, eko.c::new)
+      );
+
+      public c(jr<det> $$0) {
+         this($$0, f.c, f.d, f.e);
+      }
+
+      public jr<det> a() {
          return this.b;
       }
 
-      public int b() {
+      public Map<bui, ekv> b() {
          return this.c;
       }
-   }
 
-   @FunctionalInterface
-   public interface b {
-      boolean shouldGenerate(long var1, int var3, int var4, int var5, float var6);
-   }
-
-   public static enum c implements azk {
-      a("default", eko::a),
-      b("legacy_type_1", eko::d),
-      c("legacy_type_2", eko::c),
-      d("legacy_type_3", eko::b);
-
-      public static final Codec<eko.c> e = azk.a(eko.c::values);
-      private final String f;
-      private final eko.b g;
-
-      private c(final String $$0, final eko.b $$1) {
-         this.f = $$0;
-         this.g = $$1;
+      public dzs.a c() {
+         return this.d;
       }
 
-      public boolean a(long $$0, int $$1, int $$2, int $$3, float $$4) {
-         return this.g.shouldGenerate($$0, $$1, $$2, $$3, $$4);
+      public ekz d() {
+         return this.e;
       }
 
-      @Override
-      public String c() {
-         return this.f;
+      public static class a {
+         private final jr<det> a;
+         private Map<bui, ekv> b = eko.c.f.c;
+         private dzs.a c = eko.c.f.d;
+         private ekz d = eko.c.f.e;
+
+         public a(jr<det> $$0) {
+            this.a = $$0;
+         }
+
+         public eko.c.a a(Map<bui, ekv> $$0) {
+            this.b = $$0;
+            return this;
+         }
+
+         public eko.c.a a(dzs.a $$0) {
+            this.c = $$0;
+            return this;
+         }
+
+         public eko.c.a a(ekz $$0) {
+            this.d = $$0;
+            return this;
+         }
+
+         public eko.c a() {
+            return new eko.c(this.a, this.b, this.c, this.d);
+         }
       }
    }
 }

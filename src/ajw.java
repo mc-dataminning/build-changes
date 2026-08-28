@@ -1,23 +1,31 @@
-public record ajw<T>(int a, ajx<T> b) {
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         ajw<?> $$1 = (ajw<?>)$$0;
-         return this.a == $$1.a;
-      } else {
-         return false;
-      }
+import io.netty.buffer.ByteBuf;
+
+public class ajw implements zk<ajv> {
+   public static final zb<ByteBuf, ajw> a = zk.a(ajw::a, ajw::new);
+   private final long b;
+
+   public ajw(long $$0) {
+      this.b = $$0;
+   }
+
+   private ajw(ByteBuf $$0) {
+      this.b = $$0.readLong();
+   }
+
+   private void a(ByteBuf $$0) {
+      $$0.writeLong(this.b);
    }
 
    @Override
-   public int hashCode() {
-      return this.a;
+   public zm<ajw> a() {
+      return aju.b;
    }
 
-   @Override
-   public String toString() {
-      return "<entity data: " + this.a + ">";
+   public void a(ajv $$0) {
+      $$0.a(this);
+   }
+
+   public long b() {
+      return this.b;
    }
 }

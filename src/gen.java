@@ -1,112 +1,40 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
+public class gen extends gfe {
+   private final gez a;
 
-public class gen {
-   private static final int a = 6;
-   private final akr[] b = new akr[6];
-
-   public gen(akr $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         this.b[$$1] = $$0.e($$0.a() + "_" + $$1 + ".png");
-      }
+   gen(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gez $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.5F);
+      this.n = false;
+      this.b($$7);
    }
 
-   public void a(fgo $$0, float $$1, float $$2, float $$3) {
-      fbk $$4 = fbk.b();
-      Matrix4f $$5 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aM().l() / (float)$$0.aM().m(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$5, fbq.a);
-      Matrix4fStack $$6 = RenderSystem.getModelViewStack();
-      $$6.pushMatrix();
-      $$6.rotationX((float) Math.PI);
-      RenderSystem.setShader(ges::r);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$7 = 2;
-
-      for (int $$8 = 0; $$8 < 4; $$8++) {
-         $$6.pushMatrix();
-         float $$9 = ((float)($$8 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$10 = ((float)($$8 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$11 = 0.0F;
-         $$6.translate($$9, $$10, 0.0F);
-         $$6.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$6.rotateY($$2 * (float) (Math.PI / 180.0));
-         RenderSystem.applyModelViewMatrix();
-
-         for (int $$12 = 0; $$12 < 6; $$12++) {
-            RenderSystem.setShaderTexture(0, this.b[$$12]);
-            fbd $$13 = $$4.a(fbn.c.h, fbg.j);
-            int $$14 = Math.round(255.0F * $$3) / ($$8 + 1);
-            if ($$12 == 0) {
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 1) {
-               $$13.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 2) {
-               $$13.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 3) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 4) {
-               $$13.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            if ($$12 == 5) {
-               $$13.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F).d($$14);
-               $$13.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F).d($$14);
-               $$13.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F).d($$14);
-            }
-
-            fbe.a($$13.b());
-         }
-
-         $$6.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
-      }
-
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.restoreProjectionMatrix();
-      $$6.popMatrix();
-      RenderSystem.applyModelViewMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
+   @Override
+   public int a(float $$0) {
+      return 240;
    }
 
-   public CompletableFuture<Void> a(gqm $$0, Executor $$1) {
-      CompletableFuture<?>[] $$2 = new CompletableFuture[6];
+   @Override
+   public gei b() {
+      return gei.c;
+   }
 
-      for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-         $$2[$$3] = $$0.a(this.b[$$3], $$1);
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   public static record a(gez a) implements geh<lp> {
+      public gee a(lp $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gen $$8 = new gen($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.A = $$0.b();
+         $$8.z = $$0.b();
+         $$8.a($$1.z.a(12) + 8);
+         return $$8;
       }
-
-      return CompletableFuture.allOf($$2);
    }
 }

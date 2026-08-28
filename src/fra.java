@@ -1,59 +1,108 @@
-public class fra extends frh {
-   public static final wz a = wz.c("options.accessibility.title");
+import com.google.common.collect.Ordering;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
-   private static fgr<?>[] a(fgs $$0) {
-      return new fgr[]{
-         $$0.as(),
-         $$0.W(),
-         $$0.t(),
-         $$0.H(),
-         $$0.p(),
-         $$0.r(),
-         $$0.Y(),
-         $$0.n(),
-         $$0.o(),
-         $$0.A(),
-         $$0.B(),
-         $$0.ab(),
-         $$0.ac(),
-         $$0.ad(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.al(),
-         $$0.ao(),
-         $$0.am(),
-         $$0.an(),
-         $$0.b(),
-         $$0.a(),
-         $$0.s(),
-         $$0.c(),
-         $$0.u()
-      };
-   }
+public abstract class fra<T extends cqq> extends fqi<T> {
+   private static final alb G = alb.b("container/inventory/effect_background_large");
+   private static final alb H = alb.b("container/inventory/effect_background_small");
 
-   public fra(fod $$0, fgs $$1) {
-      super($$0, $$1, a);
+   public fra(T $$0, cno $$1, xd $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      fik $$0 = this.r.b(this.c.t());
-      if ($$0 != null && !this.l.ac().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fjx.a(wz.c("options.accessibility.high_contrast.error.tooltip")));
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2);
+   }
+
+   public boolean J() {
+      int $$0 = this.C + this.s + 2;
+      int $$1 = this.n - $$0;
+      return $$1 >= 32;
+   }
+
+   private void c(fjn $$0, int $$1, int $$2) {
+      int $$3 = this.C + this.s + 2;
+      int $$4 = this.n - $$3;
+      Collection<bsq> $$5 = this.m.t.ex();
+      if (!$$5.isEmpty() && $$4 >= 32) {
+         boolean $$6 = $$4 >= 120;
+         int $$7 = 33;
+         if ($$5.size() > 5) {
+            $$7 = 132 / ($$5.size() - 1);
+         }
+
+         Iterable<bsq> $$8 = Ordering.natural().sortedCopy($$5);
+         this.a($$0, $$3, $$7, $$8, $$6);
+         this.b($$0, $$3, $$7, $$8, $$6);
+         if ($$6) {
+            this.a($$0, $$3, $$7, $$8);
+         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
+            int $$9 = this.D;
+            bsq $$10 = null;
+
+            for (bsq $$11 : $$8) {
+               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
+                  $$10 = $$11;
+               }
+
+               $$9 += $$7;
+            }
+
+            if ($$10 != null) {
+               List<xd> $$12 = List.of(this.a($$10), bsr.a($$10, 1.0F, this.m.s.s().f()));
+               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
+            }
+         }
       }
    }
 
-   @Override
-   protected void m() {
-      this.r.a(a(this.c));
+   private void a(fjn $$0, int $$1, int $$2, Iterable<bsq> $$3, boolean $$4) {
+      int $$5 = this.D;
+
+      for (bsq $$6 : $$3) {
+         if ($$4) {
+            $$0.a(ghe::C, G, $$1, $$5, 120, 32);
+         } else {
+            $$0.a(ghe::C, H, $$1, $$5, 32, 32);
+         }
+
+         $$5 += $$2;
+      }
    }
 
-   @Override
-   protected void C() {
-      fmd $$0 = this.s.b(fmd.e().a(8));
-      $$0.a(fim.a(wz.c("options.accessibility.link"), fna.b(this, axj.l)).a());
-      $$0.a(fim.a(wy.d, $$0x -> this.l.a(this.b)).a());
+   private void b(fjn $$0, int $$1, int $$2, Iterable<bsq> $$3, boolean $$4) {
+      gxj $$5 = this.m.aF();
+      int $$6 = this.D;
+
+      for (bsq $$7 : $$3) {
+         jn<bso> $$8 = $$7.c();
+         gwk $$9 = $$5.a($$8);
+         $$0.a(ghe::C, $$9, $$1 + ($$4 ? 6 : 7), $$6 + 7, 18, 18);
+         $$6 += $$2;
+      }
+   }
+
+   private void a(fjn $$0, int $$1, int $$2, Iterable<bsq> $$3) {
+      int $$4 = this.D;
+
+      for (bsq $$5 : $$3) {
+         xd $$6 = this.a($$5);
+         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
+         xd $$7 = bsr.a($$5, 1.0F, this.m.s.s().f());
+         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
+         $$4 += $$2;
+      }
+   }
+
+   private xd a(bsq $$0) {
+      xr $$1 = $$0.c().a().e().f();
+      if ($$0.e() >= 1 && $$0.e() <= 9) {
+         $$1.b(xc.v).b(xd.c("enchantment.level." + ($$0.e() + 1)));
+      }
+
+      return $$1;
    }
 }

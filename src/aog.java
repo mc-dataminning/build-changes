@@ -1,60 +1,82 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import java.nio.charset.StandardCharsets;
-import java.util.Optional;
-import java.util.UUID;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.Collections;
 
 public class aog {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.recipe.give.failed"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xd.c("commands.recipe.take.failed"));
+
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("serverpack").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("recipe").requires($$0x -> $$0x.c(2)))
                .then(
-                  eu.a("push")
+                  eu.a("give")
                      .then(
-                        ((RequiredArgumentBuilder)eu.a("url", StringArgumentType.string())
+                        ((RequiredArgumentBuilder)eu.a("targets", fg.d())
                               .then(
-                                 ((RequiredArgumentBuilder)eu.a("uuid", gj.a())
-                                       .then(
-                                          eu.a("hash", StringArgumentType.word())
-                                             .executes(
-                                                $$0x -> a(
-                                                      (et)$$0x.getSource(),
-                                                      StringArgumentType.getString($$0x, "url"),
-                                                      Optional.of(gj.a($$0x, "uuid")),
-                                                      Optional.of(StringArgumentType.getString($$0x, "hash"))
-                                                   )
-                                             )
-                                       ))
-                                    .executes(
-                                       $$0x -> a(
-                                             (et)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.of(gj.a($$0x, "uuid")), Optional.empty()
-                                          )
-                                    )
+                                 eu.a("recipe", fu.a())
+                                    .suggests(it.b)
+                                    .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), Collections.singleton(fu.b($$0x, "recipe"))))
                               ))
-                           .executes($$0x -> a((et)$$0x.getSource(), StringArgumentType.getString($$0x, "url"), Optional.empty(), Optional.empty()))
+                           .then(eu.a("*").executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), ((et)$$0x.getSource()).l().aI().f())))
                      )
                ))
-            .then(eu.a("pop").then(eu.a("uuid", gj.a()).executes($$0x -> a((et)$$0x.getSource(), gj.a($$0x, "uuid")))))
+            .then(
+               eu.a("take")
+                  .then(
+                     ((RequiredArgumentBuilder)eu.a("targets", fg.d())
+                           .then(
+                              eu.a("recipe", fu.a())
+                                 .suggests(it.b)
+                                 .executes($$0x -> b((et)$$0x.getSource(), fg.f($$0x, "targets"), Collections.singleton(fu.b($$0x, "recipe"))))
+                           ))
+                        .then(eu.a("*").executes($$0x -> b((et)$$0x.getSource(), fg.f($$0x, "targets"), ((et)$$0x.getSource()).l().aI().f())))
+                  )
+            )
       );
    }
 
-   private static void a(et $$0, zg<?> $$1) {
-      $$0.l().ai().e().forEach($$1x -> $$1x.a($$1));
+   private static int a(et $$0, Collection<arh> $$1, Collection<czv<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
+
+      for (arh $$4 : $$1) {
+         $$3 += $$4.a($$2);
+      }
+
+      if ($$3 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xd.a("commands.recipe.give.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> xd.a("commands.recipe.give.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 
-   private static int a(et $$0, String $$1, Optional<UUID> $$2, Optional<String> $$3) {
-      UUID $$4 = $$2.orElseGet(() -> UUID.nameUUIDFromBytes($$1.getBytes(StandardCharsets.UTF_8)));
-      String $$5 = $$3.orElse("");
-      zt $$6 = new zt($$4, $$1, $$5, false, null);
-      a($$0, $$6);
-      return 0;
-   }
+   private static int b(et $$0, Collection<arh> $$1, Collection<czv<?>> $$2) throws CommandSyntaxException {
+      int $$3 = 0;
 
-   private static int a(et $$0, UUID $$1) {
-      zs $$2 = new zs(Optional.of($$1));
-      a($$0, $$2);
-      return 0;
+      for (arh $$4 : $$1) {
+         $$3 += $$4.b($$2);
+      }
+
+      if ($$3 == 0) {
+         throw b.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xd.a("commands.recipe.take.success.single", $$2.size(), $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> xd.a("commands.recipe.take.success.multiple", $$2.size(), $$1.size()), true);
+         }
+
+         return $$3;
+      }
    }
 }

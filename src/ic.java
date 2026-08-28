@@ -1,13 +1,32 @@
-public class ic<T extends ev<T>> implements hr<T> {
-   private static final ic<? extends ev<?>> a = (ic<? extends ev<?>>)(new ic<>());
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 
-   public static <T extends ev<T>> hr<T> a() {
-      return (hr<T>)a;
+public class ic<T extends ev<T>> implements hx<T> {
+   private final String a;
+   private final ho b;
+   private final CommandContext<T> c;
+
+   public ic(String $$0, ho $$1, CommandContext<T> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public void execute(hs<T> $$0, hu $$1) {
-      $$1.a();
-      $$1.b();
+   public void a(T $$0, ht<T> $$1, hv $$2) {
+      $$1.c().a(() -> "execute " + this.a);
+
+      try {
+         $$1.e();
+         int $$3 = ContextChain.runExecutable(this.c, $$0, ev.b_(), this.b.a());
+         hw $$4 = $$1.b();
+         if ($$4 != null) {
+            $$4.a($$2.c(), this.a, $$3);
+         }
+      } catch (CommandSyntaxException var9) {
+         $$0.a(var9, this.b.a(), $$1.b());
+      } finally {
+         $$1.c().c();
+      }
    }
 }

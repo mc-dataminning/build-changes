@@ -1,28 +1,41 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class awa {
-   protected final Object2IntMap<avw<?>> a = Object2IntMaps.synchronize(new Object2IntOpenHashMap());
+   public static final Codec<awa> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awc.b.fieldOf("sound").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("min_delay").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("max_delay").forGetter($$0x -> $$0x.d),
+               Codec.BOOL.fieldOf("replace_current_music").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, awa::new)
+   );
+   private final jn<awc> b;
+   private final int c;
+   private final int d;
+   private final boolean e;
 
-   public awa() {
-      this.a.defaultReturnValue(0);
+   public awa(jn<awc> $$0, int $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
-   public void b(cmx $$0, avw<?> $$1, int $$2) {
-      int $$3 = (int)Math.min((long)this.a($$1) + (long)$$2, 2147483647L);
-      this.a($$0, $$1, $$3);
+   public jn<awc> a() {
+      return this.b;
    }
 
-   public void a(cmx $$0, avw<?> $$1, int $$2) {
-      this.a.put($$1, $$2);
+   public int b() {
+      return this.c;
    }
 
-   public <T> int a(avy<T> $$0, T $$1) {
-      return $$0.a($$1) ? this.a($$0.b($$1)) : 0;
+   public int c() {
+      return this.d;
    }
 
-   public int a(avw<?> $$0) {
-      return this.a.getInt($$0);
+   public boolean d() {
+      return this.e;
    }
 }

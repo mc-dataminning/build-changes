@@ -1,46 +1,53 @@
-public abstract class btd extends btp {
-   protected btd(bsx<? extends btd> $$0, dcw $$1) {
-      super($$0, $$1);
+import java.util.function.Consumer;
+
+public class btd {
+   private static final int a = Integer.MIN_VALUE;
+   private int b = Integer.MIN_VALUE;
+
+   public void a(int $$0) {
+      this.b = $$0;
    }
 
-   @Override
-   protected void a(double $$0, boolean $$1, dtc $$2, jd $$3) {
-   }
-
-   @Override
-   public void a(exc $$0) {
-      if (this.da()) {
-         if (this.bf()) {
-            this.a(0.02F, $$0);
-            this.a(bts.a, this.dr());
-            this.i(this.dr().a(0.8F));
-         } else if (this.bt()) {
-            this.a(0.02F, $$0);
-            this.a(bts.a, this.dr());
-            this.i(this.dr().a(0.5));
-         } else {
-            float $$1 = 0.91F;
-            if (this.aF()) {
-               $$1 = this.dO().a_(this.aL()).b().h() * 0.91F;
-            }
-
-            float $$2 = 0.16277137F / ($$1 * $$1 * $$1);
-            $$1 = 0.91F;
-            if (this.aF()) {
-               $$1 = this.dO().a_(this.aL()).b().h() * 0.91F;
-            }
-
-            this.a(this.aF() ? 0.1F * $$2 : 0.02F, $$0);
-            this.a(bts.a, this.dr());
-            this.i(this.dr().a((double)$$1));
-         }
+   public void b(int $$0) {
+      if (!this.b()) {
+         this.a($$0);
       }
-
-      this.s(false);
    }
 
-   @Override
-   public boolean p_() {
-      return false;
+   public void a(boolean $$0, int $$1) {
+      if ($$0) {
+         this.b($$1);
+      } else {
+         this.a();
+      }
+   }
+
+   public void a() {
+      this.b = Integer.MIN_VALUE;
+   }
+
+   public void a(Consumer<btd> $$0) {
+      if (this.b()) {
+         $$0.accept(this);
+      }
+   }
+
+   public void a(int $$0, float $$1) {
+      if (this.b()) {
+         this.b -= (int)((float)$$0 * $$1);
+      }
+   }
+
+   public long a(float $$0) {
+      float $$1 = $$0 - (float)this.b;
+      return (long)($$1 * 50.0F);
+   }
+
+   public boolean b() {
+      return this.b != Integer.MIN_VALUE;
+   }
+
+   public void a(btd $$0) {
+      this.b = $$0.b;
    }
 }

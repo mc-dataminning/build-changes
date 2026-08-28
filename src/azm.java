@@ -1,28 +1,59 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import org.slf4j.Logger;
+public class azm {
+   private final int a;
+   private final int b;
+   private final float c;
+   private final float d;
 
-@FunctionalInterface
-public interface azm {
-   Logger a = LogUtils.getLogger();
-
-   static azm immediate(final Executor $$0) {
-      return new azm() {
-         @Override
-         public <T> void append(CompletableFuture<T> $$0x, Consumer<T> $$1) {
-            $$0.thenAcceptAsync($$1, $$0).exceptionally($$0xx -> {
-               a.error("Task failed", $$0xx);
-               return null;
-            });
-         }
-      };
+   public azm(int $$0) {
+      if ($$0 < 2) {
+         throw new IllegalArgumentException("Precision cannot be less than 2 bits");
+      } else if ($$0 > 30) {
+         throw new IllegalArgumentException("Precision cannot be greater than 30 bits");
+      } else {
+         int $$1 = 1 << $$0;
+         this.a = $$1 - 1;
+         this.b = $$0;
+         this.c = (float)$$1 / 360.0F;
+         this.d = 360.0F / (float)$$1;
+      }
    }
 
-   default void append(Runnable $$0) {
-      this.append(CompletableFuture.completedFuture(null), $$1 -> $$0.run());
+   public boolean a(int $$0, int $$1) {
+      int $$2 = this.a() >> 1;
+      return ($$0 & $$2) == ($$1 & $$2);
    }
 
-   <T> void append(CompletableFuture<T> var1, Consumer<T> var2);
+   public int a(jj $$0) {
+      if ($$0.o().b()) {
+         return 0;
+      } else {
+         int $$1 = $$0.e();
+         return $$1 << this.b - 2;
+      }
+   }
+
+   public int a(float $$0) {
+      return Math.round($$0 * this.c);
+   }
+
+   public int b(float $$0) {
+      return this.c(this.a($$0));
+   }
+
+   public float a(int $$0) {
+      return (float)$$0 * this.d;
+   }
+
+   public float b(int $$0) {
+      float $$1 = this.a(this.c($$0));
+      return $$1 >= 180.0F ? $$1 - 360.0F : $$1;
+   }
+
+   public int c(int $$0) {
+      return $$0 & this.a;
+   }
+
+   public int a() {
+      return this.a;
+   }
 }

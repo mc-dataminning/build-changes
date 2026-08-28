@@ -1,65 +1,57 @@
-public class com {
-   public static final com a = a("core");
-   public static final com b = a("idle");
-   public static final com c = a("work");
-   public static final com d = a("play");
-   public static final com e = a("rest");
-   public static final com f = a("meet");
-   public static final com g = a("panic");
-   public static final com h = a("raid");
-   public static final com i = a("pre_raid");
-   public static final com j = a("hide");
-   public static final com k = a("fight");
-   public static final com l = a("celebrate");
-   public static final com m = a("admire_item");
-   public static final com n = a("avoid");
-   public static final com o = a("ride");
-   public static final com p = a("play_dead");
-   public static final com q = a("long_jump");
-   public static final com r = a("ram");
-   public static final com s = a("tongue");
-   public static final com t = a("swim");
-   public static final com u = a("lay_spawn");
-   public static final com v = a("sniff");
-   public static final com w = a("investigate");
-   public static final com x = a("roar");
-   public static final com y = a("emerge");
-   public static final com z = a("dig");
-   private final String A;
-   private final int B;
-
-   private com(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+public class com extends coc {
+   public com(btq<? extends com> $$0, dds $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
+   public com(dds $$0, buf $$1, eye $$2) {
+      super(btq.aQ, $$1, $$2, $$0);
    }
 
-   private static com a(String $$0) {
-      return jz.a(lt.C, $$0, new com($$0));
+   public com(dds $$0, double $$1, double $$2, double $$3, eye $$4) {
+      super(btq.aQ, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         com $$1 = (com)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   protected void a(eyb $$0) {
+      super.a($$0);
+      if (this.dS() instanceof arg $$1) {
+         btj var7 = $$0.a();
+         btj $$4 = this.s();
+         int $$5 = var7.aE();
+         var7.d(5.0F);
+         bsb $$6 = this.dT().a((coc)this, $$4);
+         if (!var7.a($$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            day.a($$1, var7, $$6);
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.B;
+   protected void a(eya $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         btj $$1 = this.s();
+         if (!($$1 instanceof buh) || this.dS().ac().b(ddo.c)) {
+            je $$2 = $$0.a().a($$0.b());
+            if (this.dS().u($$2)) {
+               this.dS().b($$2, dgi.a(this.dS(), $$2));
+            }
+         }
+      }
    }
 
    @Override
-   public String toString() {
-      return this.a();
+   protected void a(eyc $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         this.as();
+      }
+   }
+
+   @Override
+   public boolean a(bsb $$0, float $$1) {
+      return false;
    }
 }

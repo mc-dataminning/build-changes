@@ -1,113 +1,100 @@
-public class cje {
-   public static final akq<cjd> a = a("kebab");
-   public static final akq<cjd> b = a("aztec");
-   public static final akq<cjd> c = a("alban");
-   public static final akq<cjd> d = a("aztec2");
-   public static final akq<cjd> e = a("bomb");
-   public static final akq<cjd> f = a("plant");
-   public static final akq<cjd> g = a("wasteland");
-   public static final akq<cjd> h = a("pool");
-   public static final akq<cjd> i = a("courbet");
-   public static final akq<cjd> j = a("sea");
-   public static final akq<cjd> k = a("sunset");
-   public static final akq<cjd> l = a("creebet");
-   public static final akq<cjd> m = a("wanderer");
-   public static final akq<cjd> n = a("graham");
-   public static final akq<cjd> o = a("match");
-   public static final akq<cjd> p = a("bust");
-   public static final akq<cjd> q = a("stage");
-   public static final akq<cjd> r = a("void");
-   public static final akq<cjd> s = a("skull_and_roses");
-   public static final akq<cjd> t = a("wither");
-   public static final akq<cjd> u = a("fighters");
-   public static final akq<cjd> v = a("pointer");
-   public static final akq<cjd> w = a("pigscene");
-   public static final akq<cjd> x = a("burning_skull");
-   public static final akq<cjd> y = a("skeleton");
-   public static final akq<cjd> z = a("donkey_kong");
-   public static final akq<cjd> A = a("earth");
-   public static final akq<cjd> B = a("wind");
-   public static final akq<cjd> C = a("water");
-   public static final akq<cjd> D = a("fire");
-   public static final akq<cjd> E = a("baroque");
-   public static final akq<cjd> F = a("humble");
-   public static final akq<cjd> G = a("meditative");
-   public static final akq<cjd> H = a("prairie_ride");
-   public static final akq<cjd> I = a("unpacked");
-   public static final akq<cjd> J = a("backyard");
-   public static final akq<cjd> K = a("bouquet");
-   public static final akq<cjd> L = a("cavebird");
-   public static final akq<cjd> M = a("changing");
-   public static final akq<cjd> N = a("cotan");
-   public static final akq<cjd> O = a("endboss");
-   public static final akq<cjd> P = a("fern");
-   public static final akq<cjd> Q = a("finding");
-   public static final akq<cjd> R = a("lowmist");
-   public static final akq<cjd> S = a("orb");
-   public static final akq<cjd> T = a("owlemons");
-   public static final akq<cjd> U = a("passage");
-   public static final akq<cjd> V = a("pond");
-   public static final akq<cjd> W = a("sunflowers");
-   public static final akq<cjd> X = a("tides");
+import javax.annotation.Nullable;
 
-   public static void a(qq<cjd> $$0) {
-      a($$0, a, 1, 1);
-      a($$0, b, 1, 1);
-      a($$0, c, 1, 1);
-      a($$0, d, 1, 1);
-      a($$0, e, 1, 1);
-      a($$0, f, 1, 1);
-      a($$0, g, 1, 1);
-      a($$0, h, 2, 1);
-      a($$0, i, 2, 1);
-      a($$0, j, 2, 1);
-      a($$0, k, 2, 1);
-      a($$0, l, 2, 1);
-      a($$0, m, 1, 2);
-      a($$0, n, 1, 2);
-      a($$0, o, 2, 2);
-      a($$0, p, 2, 2);
-      a($$0, q, 2, 2);
-      a($$0, r, 2, 2);
-      a($$0, s, 2, 2);
-      a($$0, t, 2, 2);
-      a($$0, u, 4, 2);
-      a($$0, v, 4, 4);
-      a($$0, w, 4, 4);
-      a($$0, x, 4, 4);
-      a($$0, y, 4, 3);
-      a($$0, A, 2, 2);
-      a($$0, B, 2, 2);
-      a($$0, C, 2, 2);
-      a($$0, D, 2, 2);
-      a($$0, z, 4, 3);
-      a($$0, E, 2, 2);
-      a($$0, F, 2, 2);
-      a($$0, G, 1, 1);
-      a($$0, H, 1, 2);
-      a($$0, I, 4, 4);
-      a($$0, J, 3, 4);
-      a($$0, K, 3, 3);
-      a($$0, L, 3, 3);
-      a($$0, M, 4, 2);
-      a($$0, N, 3, 3);
-      a($$0, O, 3, 3);
-      a($$0, P, 3, 3);
-      a($$0, Q, 4, 2);
-      a($$0, R, 4, 2);
-      a($$0, S, 4, 4);
-      a($$0, T, 3, 3);
-      a($$0, U, 4, 2);
-      a($$0, V, 3, 4);
-      a($$0, W, 3, 3);
-      a($$0, X, 3, 3);
+public class cje extends civ {
+   private static final int b = 200;
+   private static final int c = 4;
+   private static final int d = 10;
+   private int e;
+   private int f;
+   @Nullable
+   private bte g;
+
+   public cje(cis $$0) {
+      super($$0);
    }
 
-   private static void a(qq<cjd> $$0, akq<cjd> $$1, int $$2, int $$3) {
-      $$0.a($$1, new cjd($$2, $$3, $$1.a()));
+   @Override
+   public void b() {
+      this.e++;
+      if (this.e % 2 == 0 && this.e < 10) {
+         eye $$0 = this.a.J(1.0F).d();
+         $$0.b((float) (-Math.PI / 4));
+         double $$1 = this.a.d.dx();
+         double $$2 = this.a.d.e(0.5);
+         double $$3 = this.a.d.dD();
+
+         for (int $$4 = 0; $$4 < 8; $$4++) {
+            double $$5 = $$1 + this.a.dV().k() / 2.0;
+            double $$6 = $$2 + this.a.dV().k() / 2.0;
+            double $$7 = $$3 + this.a.dV().k() / 2.0;
+
+            for (int $$8 = 0; $$8 < 6; $$8++) {
+               this.a.dS().a(ln.h, $$5, $$6, $$7, -$$0.d * 0.08F * (double)$$8, -$$0.e * 0.6F, -$$0.f * 0.08F * (double)$$8);
+            }
+
+            $$0.b((float) (Math.PI / 16));
+         }
+      }
    }
 
-   private static akq<cjd> a(String $$0) {
-      return akq.a(lu.X, akr.b($$0));
+   @Override
+   public void c() {
+      this.e++;
+      if (this.e >= 200) {
+         if (this.f >= 4) {
+            this.a.gl().a(cji.e);
+         } else {
+            this.a.gl().a(cji.g);
+         }
+      } else if (this.e == 10) {
+         eye $$0 = new eye(this.a.d.dx() - this.a.dx(), 0.0, this.a.d.dD() - this.a.dD()).d();
+         float $$1 = 5.0F;
+         double $$2 = this.a.d.dx() + $$0.d * 5.0 / 2.0;
+         double $$3 = this.a.d.dD() + $$0.f * 5.0 / 2.0;
+         double $$4 = this.a.d.e(0.5);
+         double $$5 = $$4;
+         je.a $$6 = new je.a($$2, $$4, $$3);
+
+         while (this.a.dS().u($$6)) {
+            if (--$$5 < 0.0) {
+               $$5 = $$4;
+               break;
+            }
+
+            $$6.b($$2, $$5, $$3);
+         }
+
+         $$5 = (double)(azc.a($$5) + 1);
+         this.g = new bte(this.a.dS(), $$2, $$5, $$3);
+         this.g.a(this.a);
+         this.g.a(5.0F);
+         this.g.a(200);
+         this.g.a(ln.h);
+         this.g.a(new bsq(bss.g));
+         this.a.dS().b(this.g);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.e = 0;
+      this.f++;
+   }
+
+   @Override
+   public void e() {
+      if (this.g != null) {
+         this.g.as();
+         this.g = null;
+      }
+   }
+
+   @Override
+   public cji<cje> i() {
+      return cji.f;
+   }
+
+   public void j() {
+      this.f = 0;
    }
 }

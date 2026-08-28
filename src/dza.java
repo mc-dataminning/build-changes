@@ -1,34 +1,34 @@
-public class dza {
-   public final ayw a;
-   private double b;
-   private boolean c;
-
-   public dza(ayw $$0) {
-      this.a = $$0;
-   }
-
-   public void a() {
-      this.c = false;
-   }
-
-   public double b() {
-      if (this.c) {
-         this.c = false;
-         return this.b;
-      } else {
-         double $$0;
-         double $$1;
-         double $$2;
-         do {
-            $$0 = 2.0 * this.a.j() - 1.0;
-            $$1 = 2.0 * this.a.j() - 1.0;
-            $$2 = ayo.k($$0) + ayo.k($$1);
-         } while ($$2 >= 1.0 || $$2 == 0.0);
-
-         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
-         this.b = $$1 * $$3;
-         this.c = true;
-         return $$0 * $$3;
+public interface dza {
+   dza a = new dza() {
+      @Override
+      public boolean a() {
+         return true;
       }
+
+      @Override
+      public void a(dyz $$0) {
+      }
+
+      @Override
+      public void b(dyz $$0) {
+      }
+
+      @Override
+      public boolean a(jn<dyx> $$0, eye $$1, dyx.a $$2, dza.a $$3) {
+         return false;
+      }
+   };
+
+   boolean a();
+
+   void a(dyz var1);
+
+   void b(dyz var1);
+
+   boolean a(jn<dyx> var1, eye var2, dyx.a var3, dza.a var4);
+
+   @FunctionalInterface
+   public interface a {
+      void visit(dyz var1, eye var2);
    }
 }

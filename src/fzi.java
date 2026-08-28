@@ -1,162 +1,65 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class fzi implements ey {
-   private final fzg a;
-   private final fgo b;
-   private int c = -1;
-   @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
+public class fzi extends fyk<gva> {
+   private static final String j = "egg_belly";
+   public static final gak a = new fwc(true, 120.0F, 0.0F, 9.0F, 6.0F, 120.0F, Set.of("head"));
+   private final gab k;
 
-   public fzi(fzg $$0, fgo $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fzi(gab $$0) {
+      super($$0);
+      this.k = $$0.b("egg_belly");
    }
 
-   @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      $$1.a("head", gag.c().a(3, 0).a(-3.0F, -1.0F, -3.0F, 6.0F, 5.0F, 6.0F), gad.a(0.0F, 19.0F, -10.0F));
+      $$1.a(
+         "body",
+         gag.c().a(7, 37).a("shell", -9.5F, 3.0F, -10.0F, 19.0F, 20.0F, 6.0F).a(31, 1).a("belly", -5.5F, 3.0F, -13.0F, 11.0F, 18.0F, 3.0F),
+         gad.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      $$1.a("egg_belly", gag.c().a(70, 33).a(-4.5F, 3.0F, -14.0F, 9.0F, 18.0F, 1.0F), gad.a(0.0F, 11.0F, -10.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 1;
+      $$1.a("right_hind_leg", gag.c().a(1, 23).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gad.a(-3.5F, 22.0F, 11.0F));
+      $$1.a("left_hind_leg", gag.c().a(1, 12).a(-2.0F, 0.0F, 0.0F, 4.0F, 1.0F, 10.0F), gad.a(3.5F, 22.0F, 11.0F));
+      $$1.a("right_front_leg", gag.c().a(27, 30).a(-13.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gad.a(-5.0F, 21.0F, -4.0F));
+      $$1.a("left_front_leg", gag.c().a(27, 24).a(0.0F, 0.0F, -2.0F, 13.0F, 1.0F, 5.0F), gad.a(5.0F, 21.0F, -4.0F));
+      return gah.a($$0, 128, 64);
+   }
 
-      for (fzq $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
+   public void a(gva $$0) {
+      super.a($$0);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      this.e.e = azc.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.f.e = azc.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.g.g = azc.b($$1 * 0.6662F * 0.6F + (float) Math.PI) * 0.5F * $$2;
+      this.i.g = azc.b($$1 * 0.6662F * 0.6F) * 0.5F * $$2;
+      this.g.e = 0.0F;
+      this.i.e = 0.0F;
+      this.g.f = 0.0F;
+      this.i.f = 0.0F;
+      this.e.f = 0.0F;
+      this.f.f = 0.0F;
+      if ($$0.a) {
+         float $$3 = $$0.b ? 4.0F : 1.0F;
+         float $$4 = $$0.b ? 2.0F : 1.0F;
+         float $$5 = 5.0F;
+         this.g.f = azc.b($$3 * $$1 * 5.0F + (float) Math.PI) * 8.0F * $$2 * $$4;
+         this.g.g = 0.0F;
+         this.i.f = azc.b($$3 * $$1 * 5.0F) * 8.0F * $$2 * $$4;
+         this.i.g = 0.0F;
+         this.e.f = azc.b($$1 * 5.0F + (float) Math.PI) * 3.0F * $$2;
+         this.e.e = 0.0F;
+         this.f.f = azc.b($$1 * 5.0F) * 3.0F * $$2;
+         this.f.e = 0.0F;
       }
 
-      return $$0;
-   }
-
-   @Override
-   public Collection<String> z() {
-      if (this.e.isEmpty()) {
-         return this.q();
-      } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
-      }
-   }
-
-   @Override
-   public Collection<String> A() {
-      return (Collection<String>)(this.b.v != null && this.b.v.c() == exa.a.c ? Collections.singleton(((ewz)this.b.v).a().cA()) : Collections.emptyList());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.a.y().f();
-   }
-
-   @Override
-   public Stream<akr> s() {
-      return this.b.aj().d().stream();
-   }
-
-   @Override
-   public Stream<akr> t() {
-      return this.a.j().e();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      geb $$1 = this.b.s;
-      return $$1 != null ? $$1.l($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(akq<? extends jz<?>> $$0, ey.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
-      }
-
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.b(new agu($$1, $$0.getInput()));
-      return this.d;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<ey.b> B() {
-      exa $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == exa.a.b) {
-         jd $$1 = ((ewy)$$0).a();
-         return Collections.singleton(new ey.b(a($$1.u()), a($$1.v()), a($$1.w())));
-      } else {
-         return ey.super.B();
-      }
-   }
-
-   @Override
-   public Collection<ey.b> C() {
-      exa $$0 = this.b.v;
-      if ($$0 != null && $$0.c() == exa.a.b) {
-         exc $$1 = $$0.e();
-         return Collections.singleton(new ey.b(a($$1.c), a($$1.d), a($$1.e)));
-      } else {
-         return ey.super.C();
-      }
-   }
-
-   @Override
-   public Set<akq<dcw>> u() {
-      return this.a.u();
-   }
-
-   @Override
-   public ka v() {
-      return this.a.v();
-   }
-
-   @Override
-   public cpl w() {
-      return this.a.x();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
-      }
-   }
-
-   public void a(act.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
+      this.k.k = $$0.c;
+      this.b.c();
+      if (this.k.k) {
+         this.b.c--;
       }
    }
 }

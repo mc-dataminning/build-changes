@@ -1,138 +1,145 @@
-import com.google.common.collect.Lists;
-import java.util.Collections;
-import java.util.List;
-import java.util.regex.Pattern;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class ux implements vc {
-   private static final Pattern a = Pattern.compile("[A-Za-z0-9._+-]+");
-   private final StringBuilder b = new StringBuilder();
+public class ux extends uv {
+   private static final int b = 10;
+   public static final ve<ux> a = new ve.a<ux>() {
+      public ux a(DataInput $$0, uo $$1) throws IOException {
+         return ux.a(d($$0, $$1));
+      }
 
-   public String a(uy $$0) {
+      @Override
+      public uz.b a(DataInput $$0, uz $$1, uo $$2) throws IOException {
+         return $$1.a(d($$0, $$2));
+      }
+
+      private static short d(DataInput $$0, uo $$1) throws IOException {
+         $$1.b(10L);
+         return $$0.readShort();
+      }
+
+      @Override
+      public int c() {
+         return 2;
+      }
+
+      @Override
+      public String a() {
+         return "SHORT";
+      }
+
+      @Override
+      public String b() {
+         return "TAG_Short";
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+   };
+   private final short c;
+
+   ux(short $$0) {
+      this.c = $$0;
+   }
+
+   public static ux a(short $$0) {
+      return $$0 >= -128 && $$0 <= 1024 ? ux.a.a[$$0 - -128] : new ux($$0);
+   }
+
+   @Override
+   public void a(DataOutput $$0) throws IOException {
+      $$0.writeShort(this.c);
+   }
+
+   @Override
+   public int a() {
+      return 10;
+   }
+
+   @Override
+   public byte b() {
+      return 2;
+   }
+
+   @Override
+   public ve<ux> c() {
+      return a;
+   }
+
+   public ux e() {
+      return this;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 ? true : $$0 instanceof ux && this.c == ((ux)$$0).c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c;
+   }
+
+   @Override
+   public void a(vg $$0) {
       $$0.a(this);
-      return this.b.toString();
    }
 
    @Override
-   public void a(uw $$0) {
-      this.b.append(uw.b($$0.s_()));
+   public long f() {
+      return (long)this.c;
    }
 
    @Override
-   public void a(tz $$0) {
-      this.b.append($$0.l()).append('b');
+   public int g() {
+      return this.c;
    }
 
    @Override
-   public void a(ut $$0) {
-      this.b.append($$0.l()).append('s');
+   public short h() {
+      return this.c;
    }
 
    @Override
-   public void a(ug $$0) {
-      this.b.append($$0.l());
+   public byte i() {
+      return (byte)(this.c & 255);
    }
 
    @Override
-   public void a(uj $$0) {
-      this.b.append($$0.l()).append('L');
+   public double j() {
+      return (double)this.c;
    }
 
    @Override
-   public void a(ue $$0) {
-      this.b.append($$0.k()).append('f');
+   public float k() {
+      return (float)this.c;
    }
 
    @Override
-   public void a(uc $$0) {
-      this.b.append($$0.j()).append('d');
+   public Number l() {
+      return this.c;
    }
 
    @Override
-   public void a(ty $$0) {
-      this.b.append("[B;");
-      byte[] $$1 = $$0.e();
+   public uz.b a(uz $$0) {
+      return $$0.a(this.c);
+   }
 
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
+   static class a {
+      private static final int b = 1024;
+      private static final int c = -128;
+      static final ux[] a = new ux[1153];
 
-         this.b.append($$1[$$2]).append('B');
+      private a() {
       }
 
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(uf $$0) {
-      this.b.append("[I;");
-      int[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
+      static {
+         for (int $$0 = 0; $$0 < a.length; $$0++) {
+            a[$$0] = new ux((short)(-128 + $$0));
          }
-
-         this.b.append($$1[$$2]);
       }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(ui $$0) {
-      this.b.append("[L;");
-      long[] $$1 = $$0.g();
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         if ($$2 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append($$1[$$2]).append('L');
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(uh $$0) {
-      this.b.append('[');
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         if ($$1 != 0) {
-            this.b.append(',');
-         }
-
-         this.b.append(new ux().a($$0.k($$1)));
-      }
-
-      this.b.append(']');
-   }
-
-   @Override
-   public void a(ub $$0) {
-      this.b.append('{');
-      List<String> $$1 = Lists.newArrayList($$0.e());
-      Collections.sort($$1);
-
-      for (String $$2 : $$1) {
-         if (this.b.length() != 1) {
-            this.b.append(',');
-         }
-
-         this.b.append(a($$2)).append(':').append(new ux().a($$0.c($$2)));
-      }
-
-      this.b.append('}');
-   }
-
-   protected static String a(String $$0) {
-      return a.matcher($$0).matches() ? $$0 : uw.b($$0);
-   }
-
-   @Override
-   public void a(ud $$0) {
-      this.b.append("END");
    }
 }

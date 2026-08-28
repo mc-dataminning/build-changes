@@ -1,24 +1,17 @@
-public class gne extends glp<cmk, fxv<cmk>> {
-   private static final akr a = akr.b("textures/entity/villager/villager.png");
+public class gne extends gpa<btx> {
+   private static final alb a = alb.b("textures/entity/squid/glow_squid.png");
 
-   public gne(gkj.a $$0) {
-      super($$0, new fxv<>($$0.a(fyj.bQ)), 0.5F);
-      this.a(new goa<>(this, $$0.f(), $$0.d()));
-      this.a(new gpg<>(this, $$0.e(), "villager"));
-      this.a(new gnz<>(this, $$0.d()));
+   public gne(gms.a $$0, fzc $$1, fzc $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public akr a(cmk $$0) {
+   @Override
+   public alb a(gus $$0) {
       return a;
    }
 
-   protected void a(cmk $$0, fbi $$1, float $$2) {
-      float $$3 = 0.9375F * $$0.ea();
-      $$1.b($$3, $$3, $$3);
-   }
-
-   protected float b(cmk $$0) {
-      float $$1 = super.b($$0);
-      return $$0.o_() ? $$1 * 0.5F : $$1;
+   protected int a(btx $$0, je $$1) {
+      int $$2 = (int)azc.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

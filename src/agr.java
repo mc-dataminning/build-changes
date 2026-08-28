@@ -1,20 +1,11 @@
-public record agr(xq.a b) implements zg<agi> {
-   public static final yx<vw, agr> a = zg.a(agr::a, agr::new);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private agr(vw $$0) {
-      this(xq.a.a($$0));
-   }
-
-   private void a(vw $$0) {
-      xq.a.a($$0, this.b);
-   }
+public interface agr extends wp {
+   Logger a = LogUtils.getLogger();
 
    @Override
-   public zi<agr> a() {
-      return agg.bm;
-   }
-
-   public void a(agi $$0) {
-      $$0.a(this);
+   default void a(zk $$0, Exception $$1) throws z {
+      a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
    }
 }

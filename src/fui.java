@@ -1,80 +1,78 @@
-public class fui extends fue<cgn> {
-   private static final float a = 16.02F;
-   private static final float b = 25.0F;
-   private static final float f = 22.5F;
-   private static final float g = 16.5F;
-   private static final float h = 2.5F;
-   private static final String i = "head_cube";
-   private static final String j = "right_ear_cube";
-   private static final String k = "left_ear_cube";
-   private final fyk l;
-   private final fyk m;
-   private final fyk n;
-   private final fyk o;
-   private final fyk p;
-   private final fyk q;
-   private final fyk r;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Map;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-   public fui(fyk $$0) {
-      super(0.6F, 16.02F);
-      this.l = $$0;
-      this.m = $$0.b("body");
-      this.n = $$0.b("right_hind_leg");
-      this.o = $$0.b("left_hind_leg");
-      this.q = this.m.b("head");
-      this.r = this.m.b("tail");
-      this.p = $$0.b("cube");
+public class fui {
+   private final fib a;
+   private final Set<UUID> b = Sets.newHashSet();
+   private final UserApiService c;
+   private final Map<String, UUID> d = Maps.newHashMap();
+   private boolean e;
+   private CompletableFuture<?> f = CompletableFuture.completedFuture(null);
+
+   public fui(fib $$0, UserApiService $$1) {
+      this.a = $$0;
+      this.c = $$1;
    }
 
-   public static fyq b() {
-      fys $$0 = new fys();
-      fyt $$1 = $$0.a();
-      fyt $$2 = $$1.a(
-         "body",
-         fyp.c().a(0, 20).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fyo(0.3F)).a(0, 40).a(-4.0F, -7.0F, -10.0F, 8.0F, 8.0F, 12.0F, new fyo(0.0F)),
-         fym.a(0.0F, 21.0F, 4.0F)
-      );
-      $$2.a("tail", fyp.c().a(44, 53).a(-0.5F, -0.0865F, 0.0933F, 1.0F, 6.0F, 1.0F, new fyo(0.0F)), fym.a(0.0F, -3.0F, 1.0F, 0.5061F, 0.0F, 0.0F));
-      fyt $$3 = $$2.a("head", fyp.c(), fym.a(0.0F, -2.0F, -11.0F));
-      $$3.a("head_cube", fyp.c().a(43, 15).a(-1.5F, -1.0F, -1.0F, 3.0F, 5.0F, 2.0F, new fyo(0.0F)), fym.a(0.0F, 0.0F, 0.0F, -0.3927F, 0.0F, 0.0F));
-      fyt $$4 = $$3.a("right_ear", fyp.c(), fym.a(-1.0F, -1.0F, 0.0F));
-      $$4.a("right_ear_cube", fyp.c().a(43, 10).a(-2.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fyo(0.0F)), fym.a(-0.5F, 0.0F, -0.6F, 0.1886F, -0.3864F, -0.0718F));
-      fyt $$5 = $$3.a("left_ear", fyp.c(), fym.a(1.0F, -2.0F, 0.0F));
-      $$5.a("left_ear_cube", fyp.c().a(47, 10).a(0.0F, -3.0F, 0.0F, 2.0F, 5.0F, 0.0F, new fyo(0.0F)), fym.a(0.5F, 1.0F, -0.6F, 0.1886F, 0.3864F, 0.0718F));
-      $$1.a("right_hind_leg", fyp.c().a(51, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(-2.0F, 21.0F, 4.0F));
-      $$1.a("left_hind_leg", fyp.c().a(42, 31).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(2.0F, 21.0F, 4.0F));
-      $$1.a("right_front_leg", fyp.c().a(51, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(-2.0F, 21.0F, -4.0F));
-      $$1.a("left_front_leg", fyp.c().a(42, 43).a(-1.0F, 0.0F, -1.0F, 2.0F, 3.0F, 2.0F, new fyo(0.0F)), fym.a(2.0F, 21.0F, -4.0F));
-      $$1.a("cube", fyp.c().a(0, 0).a(-5.0F, -10.0F, -6.0F, 10.0F, 10.0F, 10.0F, new fyo(0.0F)), fym.a(0.0F, 24.0F, 0.0F));
-      return fyq.a($$0, 64, 64);
+   public void a(UUID $$0) {
+      this.b.add($$0);
    }
 
-   @Override
-   public fyk a() {
-      return this.l;
+   public void b(UUID $$0) {
+      this.b.remove($$0);
    }
 
-   public void a(cgn $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a().e().forEach(fyk::c);
-      if ($$0.x()) {
-         this.m.l = true;
-         this.o.k = false;
-         this.n.k = false;
-         this.r.k = false;
-         this.p.k = true;
+   public boolean c(UUID $$0) {
+      return this.d($$0) || this.e($$0);
+   }
+
+   public boolean d(UUID $$0) {
+      return this.b.contains($$0);
+   }
+
+   public void a() {
+      this.e = true;
+      this.f = this.f.thenRunAsync(this.c::refreshBlockList, ad.h());
+   }
+
+   public void b() {
+      this.e = false;
+   }
+
+   public boolean e(UUID $$0) {
+      if (!this.e) {
+         return false;
       } else {
-         this.m.l = false;
-         this.o.k = true;
-         this.n.k = true;
-         this.r.k = true;
-         this.p.k = false;
-         this.q.e = ayo.a($$5, -22.5F, 25.0F) * (float) (Math.PI / 180.0);
-         this.q.f = ayo.a($$4, -32.5F, 32.5F) * (float) (Math.PI / 180.0);
+         this.f.join();
+         return this.c.isBlockedPlayer($$0);
       }
+   }
 
-      this.a(fhg.b, $$1, $$2, 16.5F, 2.5F);
-      this.a($$0.cg, fhg.d, $$3, 1.0F);
-      this.a($$0.ch, fhg.a, $$3, 1.0F);
-      this.a($$0.ci, fhg.c, $$3, 1.0F);
+   public Set<UUID> c() {
+      return this.b;
+   }
+
+   public UUID a(String $$0) {
+      return this.d.getOrDefault($$0, ad.e);
+   }
+
+   public void a(gbi $$0) {
+      GameProfile $$1 = $$0.a();
+      this.d.put($$1.getName(), $$1.getId());
+      if (this.a.z instanceof fuk $$2) {
+         $$2.a($$0);
+      }
+   }
+
+   public void f(UUID $$0) {
+      if (this.a.z instanceof fuk $$1) {
+         $$1.a($$0);
+      }
    }
 }

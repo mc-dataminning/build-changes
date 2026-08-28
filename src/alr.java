@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface alr {
+   String ae();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface alr {
+   String M();
+
+   int N();
+
+   int O();
 }

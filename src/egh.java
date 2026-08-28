@@ -1,18 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class egh<P extends egg> {
-   public static final egh<egf> a = a("mangrove_root_placer", egf.c);
-   private final MapCodec<P> b;
+public abstract class egh {
+   public static final Codec<egh> a = lu.Y.q().dispatch(egh::b, egi::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   private static <P extends egg> egh<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.W, $$0, new egh<>($$1));
+   protected static <S extends egh> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   private egh(MapCodec<P> $$0) {
-      this.b = $$0;
+   public egh(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   public MapCodec<P> a() {
-      return this.b;
+   protected abstract egi<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

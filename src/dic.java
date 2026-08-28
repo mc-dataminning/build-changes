@@ -1,55 +1,125 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dic extends dfy {
+public class dic extends dkr implements dgy {
    public static final MapCodec<dic> a = b(dic::new);
-   protected static final exv b = div.c;
+   public static final int b = 2;
+   public static final dva c = duq.ar;
+   protected static final int d = 4;
+   protected static final int e = 5;
+   protected static final int f = 2;
+   protected static final int g = 6;
+   protected static final int h = 7;
+   protected static final int i = 3;
+   protected static final int j = 8;
+   protected static final int k = 9;
+   protected static final int l = 4;
+   protected static final eyx[] m = new eyx[]{
+      dgv.a(11.0, 7.0, 6.0, 15.0, 12.0, 10.0), dgv.a(9.0, 5.0, 5.0, 15.0, 12.0, 11.0), dgv.a(7.0, 3.0, 4.0, 15.0, 12.0, 12.0)
+   };
+   protected static final eyx[] n = new eyx[]{
+      dgv.a(1.0, 7.0, 6.0, 5.0, 12.0, 10.0), dgv.a(1.0, 5.0, 5.0, 7.0, 12.0, 11.0), dgv.a(1.0, 3.0, 4.0, 9.0, 12.0, 12.0)
+   };
+   protected static final eyx[] o = new eyx[]{
+      dgv.a(6.0, 7.0, 1.0, 10.0, 12.0, 5.0), dgv.a(5.0, 5.0, 1.0, 11.0, 12.0, 7.0), dgv.a(4.0, 3.0, 1.0, 12.0, 12.0, 9.0)
+   };
+   protected static final eyx[] F = new eyx[]{
+      dgv.a(6.0, 7.0, 11.0, 10.0, 12.0, 15.0), dgv.a(5.0, 5.0, 9.0, 11.0, 12.0, 15.0), dgv.a(4.0, 3.0, 7.0, 12.0, 12.0, 15.0)
+   };
 
    @Override
    public MapCodec<dic> a() {
       return a;
    }
 
-   protected dic(dtb.d $$0) {
+   public dic(dtz.d $$0) {
       super($$0);
+      this.l(this.E.b().b(aE, jj.c).b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected boolean f_(dtc $$0) {
+   protected boolean f(dua $$0) {
+      return $$0.c(c) < 2;
+   }
+
+   @Override
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$1.z.a(5) == 0) {
+         int $$4 = $$0.c(c);
+         if ($$4 < 2) {
+            $$1.a($$2, $$0.b(c, Integer.valueOf($$4 + 1)), 2);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      dua $$3 = $$1.a_($$2.a($$0.c(aE)));
+      return $$3.a(aws.A);
+   }
+
+   @Override
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      int $$4 = $$0.c(c);
+      switch ((jj)$$0.c(aE)) {
+         case d:
+            return F[$$4];
+         case c:
+         default:
+            return o[$$4];
+         case e:
+            return n[$$4];
+         case f:
+            return m[$$4];
+      }
+   }
+
+   @Nullable
+   @Override
+   public dua a(cyw $$0) {
+      dua $$1 = this.o();
+      ddv $$2 = $$0.q();
+      je $$3 = $$0.a();
+
+      for (jj $$4 : $$0.f()) {
+         if ($$4.o().d()) {
+            $$1 = $$1.b(aE, $$4);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      return $$1 == $$0.c(aE) && !$$0.a($$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   public boolean b(ddv $$0, je $$1, dua $$2) {
+      return $$2.c(c) < 2;
+   }
+
+   @Override
+   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
       return true;
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      return !this.o().a((dcz)$$0.q(), $$0.a()) ? dfy.a(this.o(), dga.j.o(), $$0.q(), $$0.a()) : super.a($$0);
+   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
+      $$0.a($$2, $$3.b(c, Integer.valueOf($$3.c(c) + 1)), 2);
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$1 == ji.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(aE, c);
    }
 
    @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      div.a(null, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      dtc $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dix;
-   }
-
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
+   protected boolean a(dua $$0, eqq $$1) {
       return false;
    }
 }

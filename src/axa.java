@@ -1,22 +1,9 @@
-import java.util.function.Consumer;
+public interface axa {
+   axi<cvd> a = a("regular_goat_horns");
+   axi<cvd> b = a("screaming_goat_horns");
+   axi<cvd> c = a("goat_horns");
 
-@FunctionalInterface
-public interface axa<T> {
-   axa.a accept(T var1);
-
-   static <T> axa<T> forConsumer(Consumer<T> $$0) {
-      return $$1 -> {
-         $$0.accept($$1);
-         return axa.a.a;
-      };
-   }
-
-   public static enum a {
-      a,
-      b;
-
-      public boolean a() {
-         return this == b;
-      }
+   private static axi<cvd> a(String $$0) {
+      return axi.a(lv.I, alb.b($$0));
    }
 }

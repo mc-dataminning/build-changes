@@ -1,104 +1,91 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
-public class dxy implements dyc {
-   private final List<dyb> b = Lists.newArrayList();
-   private final Set<dyb> c = Sets.newHashSet();
-   private final List<dyb> d = Lists.newArrayList();
-   private boolean e;
-   private final aqu f;
-   private final int g;
-   private final dxy.a h;
+public enum dxy {
+   a {
+      @Override
+      public void a(arg $$0, dxz $$1, List<cir> $$2, int $$3, je $$4) {
+         je $$5 = new je(0, 128, 0);
 
-   public dxy(aqu $$0, int $$1, dxy.a $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
+         for (cir $$6 : $$2) {
+            $$6.a($$5);
+         }
 
-   @Override
-   public boolean a() {
-      return this.b.isEmpty();
-   }
-
-   @Override
-   public void a(dyb $$0) {
-      if (this.e) {
-         this.d.add($$0);
-      } else {
-         this.b.add($$0);
+         $$1.a(b);
       }
-
-      agf.a(this.f, $$0);
-   }
-
-   @Override
-   public void b(dyb $$0) {
-      if (this.e) {
-         this.c.add($$0);
-      } else {
-         this.b.remove($$0);
+   },
+   b {
+      @Override
+      public void a(arg $$0, dxz $$1, List<cir> $$2, int $$3, je $$4) {
+         if ($$3 < 100) {
+            if ($$3 == 0 || $$3 == 50 || $$3 == 51 || $$3 == 52 || $$3 >= 95) {
+               $$0.c(3001, new je(0, 128, 0), 0);
+            }
+         } else {
+            $$1.a(c);
+         }
       }
+   },
+   c {
+      @Override
+      public void a(arg $$0, dxz $$1, List<cir> $$2, int $$3, je $$4) {
+         int $$5 = 40;
+         boolean $$6 = $$3 % 40 == 0;
+         boolean $$7 = $$3 % 40 == 39;
+         if ($$6 || $$7) {
+            List<eem.a> $$8 = eem.a($$0);
+            int $$9 = $$3 / 40;
+            if ($$9 < $$8.size()) {
+               eem.a $$10 = $$8.get($$9);
+               if ($$6) {
+                  for (cir $$11 : $$2) {
+                     $$11.a(new je($$10.a(), $$10.d() + 1, $$10.b()));
+                  }
+               } else {
+                  int $$12 = 10;
 
-      if (this.b.isEmpty()) {
-         this.h.apply(this.g);
-      }
-   }
+                  for (je $$13 : je.c(new je($$10.a() - 10, $$10.d() - 10, $$10.b() - 10), new je($$10.a() + 10, $$10.d() + 10, $$10.b() + 10))) {
+                     $$0.a($$13, false);
+                  }
 
-   @Override
-   public boolean a(jm<dxz> $$0, exc $$1, dxz.a $$2, dyc.a $$3) {
-      this.e = true;
-      boolean $$4 = false;
-
-      try {
-         Iterator<dyb> $$5 = this.b.iterator();
-
-         while ($$5.hasNext()) {
-            dyb $$6 = $$5.next();
-            if (this.c.remove($$6)) {
-               $$5.remove();
-            } else {
-               Optional<exc> $$7 = a(this.f, $$1, $$6);
-               if ($$7.isPresent()) {
-                  $$3.visit($$6, $$7.get());
-                  $$4 = true;
+                  $$0.a(null, (double)((float)$$10.a() + 0.5F), (double)$$10.d(), (double)((float)$$10.b() + 0.5F), 5.0F, dds.a.b);
+                  ega $$14 = new ega(true, ImmutableList.of($$10), new je(0, 128, 0));
+                  edc.K.a($$14, $$0, $$0.l().g(), azk.a(), new je($$10.a(), 45, $$10.b()));
                }
+            } else if ($$6) {
+               $$1.a(d);
             }
          }
-      } finally {
-         this.e = false;
       }
+   },
+   d {
+      @Override
+      public void a(arg $$0, dxz $$1, List<cir> $$2, int $$3, je $$4) {
+         if ($$3 >= 100) {
+            $$1.a(e);
+            $$1.h();
 
-      if (!this.d.isEmpty()) {
-         this.b.addAll(this.d);
-         this.d.clear();
+            for (cir $$5 : $$2) {
+               $$5.a(null);
+               $$0.a($$5, $$5.dx(), $$5.dz(), $$5.dD(), 6.0F, dds.a.a);
+               $$5.as();
+            }
+         } else if ($$3 >= 80) {
+            $$0.c(3001, new je(0, 128, 0), 0);
+         } else if ($$3 == 0) {
+            for (cir $$6 : $$2) {
+               $$6.a(new je(0, 128, 0));
+            }
+         } else if ($$3 < 5) {
+            $$0.c(3001, new je(0, 128, 0), 0);
+         }
       }
-
-      if (!this.c.isEmpty()) {
-         this.b.removeAll(this.c);
-         this.c.clear();
+   },
+   e {
+      @Override
+      public void a(arg $$0, dxz $$1, List<cir> $$2, int $$3, je $$4) {
       }
+   };
 
-      return $$4;
-   }
-
-   private static Optional<exc> a(aqu $$0, exc $$1, dyb $$2) {
-      Optional<exc> $$3 = $$2.a().a($$0);
-      if ($$3.isEmpty()) {
-         return Optional.empty();
-      } else {
-         double $$4 = jd.a($$3.get()).j(jd.a((jw)$$1));
-         int $$5 = $$2.b() * $$2.b();
-         return $$4 > (double)$$5 ? Optional.empty() : $$3;
-      }
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void apply(int var1);
-   }
+   public abstract void a(arg var1, dxz var2, List<cir> var3, int var4, je var5);
 }

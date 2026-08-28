@@ -1,37 +1,40 @@
-public final class fyi {
-   private final akr a;
-   private final String b;
+public class fyi extends fxa<gsu> {
+   private final gab a;
+   private final gab b;
+   private final gab c;
 
-   public fyi(akr $$0, String $$1) {
+   public fyi(gab $$0) {
       this.a = $$0;
-      this.b = $$1;
+      this.b = $$0.b("left_blue_fin");
+      this.c = $$0.b("right_blue_fin");
    }
 
-   public akr a() {
+   public static gah b() {
+      gaj $$0 = new gaj();
+      gal $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gag.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), gad.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gag.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gad.a(-2.5F, 18.0F, -1.5F));
+      $$1.a("left_blue_fin", gag.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), gad.a(2.5F, 18.0F, -1.5F));
+      $$1.a("top_front_fin", gag.c().a(19, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gad.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", gag.c().a(11, 17).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 0.0F), gad.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gag.c().a(5, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gad.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", gag.c().a(9, 17).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gad.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gag.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gad.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gag.c().a(1, 17).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 0.0F), gad.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", gag.c().a(18, 20).a(0.0F, 0.0F, 0.0F, 5.0F, 1.0F, 0.0F), gad.a(-2.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", gag.c().a(17, 19).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), gad.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return gah.a($$0, 32, 32);
+   }
+
+   @Override
+   public gab a() {
       return this.a;
    }
 
-   public String b() {
-      return this.b;
-   }
-
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fyi $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.a.hashCode();
-      return 31 * $$0 + this.b.hashCode();
-   }
-
-   @Override
-   public String toString() {
-      return this.a + "#" + this.b;
+   public void a(gsu $$0) {
+      this.c.g = -0.2F + 0.4F * azc.a($$0.p * 0.2F);
+      this.b.g = 0.2F - 0.4F * azc.a($$0.p * 0.2F);
    }
 }

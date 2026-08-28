@@ -1,56 +1,126 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import java.util.Locale;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.Collection;
 import java.util.function.Function;
 
-public class apj implements apg {
-   static final SuggestionProvider<et> b = ($$0, $$1) -> ey.a(a($$0).a(), $$1);
-   public static final Function<String, aph.c> a = $$0 -> new aph.c() {
-         @Override
-         public apg a(CommandContext<et> $$0x) {
-            return new apj(apj.a($$0), fu.c($$0, $$0));
-         }
-
-         @Override
-         public ArgumentBuilder<et, ?> a(ArgumentBuilder<et, ?> $$0x, Function<ArgumentBuilder<et, ?>, ArgumentBuilder<et, ?>> $$1) {
-            return $$0.then(eu.a("storage").then($$1.apply(eu.a($$0, fu.a()).suggests(apj.b))));
-         }
-      };
-   private final eqw c;
-   private final akr d;
-
-   static eqw a(CommandContext<et> $$0) {
-      return ((et)$$0.getSource()).l().aL();
+public class apj {
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("title").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a(
+                                    "targets", fg.d()
+                                 )
+                                 .then(eu.a("clear").executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets")))))
+                              .then(eu.a("reset").executes($$0x -> b((et)$$0x.getSource(), fg.f($$0x, "targets")))))
+                           .then(
+                              eu.a("title")
+                                 .then(
+                                    eu.a("title", fc.a($$1))
+                                       .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), fc.a($$0x, "title"), "title", afu::new))
+                                 )
+                           ))
+                        .then(
+                           eu.a("subtitle")
+                              .then(
+                                 eu.a("title", fc.a($$1))
+                                    .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), fc.a($$0x, "title"), "subtitle", afs::new))
+                              )
+                        ))
+                     .then(
+                        eu.a("actionbar")
+                           .then(
+                              eu.a("title", fc.a($$1))
+                                 .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), fc.a($$0x, "title"), "actionbar", aet::new))
+                           )
+                     ))
+                  .then(
+                     eu.a("times")
+                        .then(
+                           eu.a("fadeIn", gi.a())
+                              .then(
+                                 eu.a("stay", gi.a())
+                                    .then(
+                                       eu.a("fadeOut", gi.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (et)$$0x.getSource(),
+                                                   fg.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
+                                    )
+                              )
+                        )
+                  )
+            )
+      );
    }
 
-   apj(eqw $$0, akr $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   private static int a(et $$0, Collection<arh> $$1) {
+      acq $$2 = new acq(false);
+
+      for (arh $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.cleared.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public void a(ub $$0) {
-      this.c.a(this.d, $$0);
+   private static int b(et $$0, Collection<arh> $$1) {
+      acq $$2 = new acq(true);
+
+      for (arh $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.reset.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public ub a() {
-      return this.c.a(this.d);
+   private static int a(et $$0, Collection<arh> $$1, xd $$2, String $$3, Function<xd, zk<?>> $$4) throws CommandSyntaxException {
+      for (arh $$5 : $$1) {
+         $$5.c.b($$4.apply(xg.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 
-   @Override
-   public wz b() {
-      return wz.a("commands.data.storage.modified", wz.a(this.d));
-   }
+   private static int a(et $$0, Collection<arh> $$1, int $$2, int $$3, int $$4) {
+      afv $$5 = new afv($$2, $$3, $$4);
 
-   @Override
-   public wz a(uy $$0) {
-      return wz.a("commands.data.storage.query", wz.a(this.d), uq.c($$0));
-   }
+      for (arh $$6 : $$1) {
+         $$6.c.b($$5);
+      }
 
-   @Override
-   public wz a(fl.g $$0, double $$1, int $$2) {
-      return wz.a("commands.data.storage.get", $$0.a(), wz.a(this.d), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.times.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

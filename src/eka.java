@@ -1,26 +1,40 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface eka<S extends ejr> {
-   eka<ell> a = a("buried_treasure", ell.d);
-   eka<eln> b = a("desert_pyramid", eln.d);
-   eka<elp> c = a("end_city", elp.d);
-   eka<ely> d = a("fortress", ely.e);
-   eka<elr> e = a("igloo", elr.d);
-   eka<els> f = a("jigsaw", els.i);
-   eka<elu> g = a("jungle_temple", elu.d);
-   eka<elw> h = a("mineshaft", elw.d);
-   eka<ema> i = a("nether_fossil", ema.d);
-   eka<emc> j = a("ocean_monument", emc.d);
-   eka<eme> k = a("ocean_ruin", eme.d);
-   eka<emg> l = a("ruined_portal", emg.d);
-   eka<emi> m = a("shipwreck", emi.d);
-   eka<emk> n = a("stronghold", emk.d);
-   eka<emm> o = a("swamp_hut", emm.d);
-   eka<emo> p = a("woodland_mansion", emo.d);
+public class eka extends eju {
+   public static final MapCodec<eka> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dzw.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eka::new)
+   );
+   private final dzw.a c;
+   private final int d;
+   private final int e;
 
-   MapCodec<S> codec();
+   private eka(dzw.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
 
-   private static <S extends ejr> eka<S> a(String $$0, MapCodec<S> $$1) {
-      return jz.a(lt.R, $$0, () -> $$1);
+   public static eka a(dzw.a $$0, int $$1, int $$2) {
+      return new eka($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(ejt $$0, azk $$1, je $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public ejw<?> b() {
+      return ejw.c;
    }
 }

@@ -1,26 +1,26 @@
-public record aav(jd c, int d) implements aaj {
-   public static final yx<vw, aav> a = aaj.a(aav::a, aav::new);
-   public static final aaj.b<aav> b = aaj.a("debug/poi_ticket_count");
+public record aav(long c, je d) implements aan {
+   public static final zb<wa, aav> a = aan.a(aav::a, aav::new);
+   public static final aan.b<aav> b = aan.a("debug/neighbors_update");
 
-   private aav(vw $$0) {
-      this($$0.e(), $$0.readInt());
+   private aav(wa $$0) {
+      this($$0.m(), $$0.e());
    }
 
-   private void a(vw $$0) {
+   private void a(wa $$0) {
       $$0.a(this.c);
-      $$0.p(this.d);
+      $$0.a(this.d);
    }
 
    @Override
-   public aaj.b<aav> a() {
+   public aan.b<aav> a() {
       return b;
    }
 
-   public jd b() {
+   public long b() {
       return this.c;
    }
 
-   public int c() {
+   public je c() {
       return this.d;
    }
 }

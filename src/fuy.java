@@ -1,33 +1,65 @@
-public class fuy<T extends chh> extends fvv<T> {
-   private final fyk g = this.b.b("left_chest");
-   private final fyk h = this.b.b("right_chest");
+import java.util.function.BiFunction;
+import java.util.function.UnaryOperator;
 
-   public fuy(fyk $$0) {
-      super($$0);
+public record fuy(eau a, ka<dxx> b, ear c, ju<alk> d, alm e, deo f) {
+   public fuy(eas $$0, ju<alk> $$1, alm $$2, deo $$3) {
+      this($$0.a(), $$0.b(), $$1, $$2, $$3);
    }
 
-   public static fyq c() {
-      fys $$0 = fvv.a(fyo.a);
-      fyt $$1 = $$0.a();
-      fyt $$2 = $$1.a("body");
-      fyp $$3 = fyp.c().a(26, 21).a(-4.0F, 0.0F, -2.0F, 8.0F, 8.0F, 3.0F);
-      $$2.a("left_chest", $$3, fym.a(6.0F, -8.0F, 0.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$2.a("right_chest", $$3, fym.a(-6.0F, -8.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      fyt $$4 = $$1.a("head_parts").a("head");
-      fyp $$5 = fyp.c().a(0, 12).a(-1.0F, -7.0F, 0.0F, 2.0F, 7.0F, 1.0F);
-      $$4.a("left_ear", $$5, fym.a(1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12)));
-      $$4.a("right_ear", $$5, fym.a(-1.25F, -10.0F, 4.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12)));
-      return fyq.a($$0, 64, 64);
+   public fuy(eau $$0, ear $$1, ju<alk> $$2, alm $$3, deo $$4) {
+      this($$0, $$2.a(alk.c).d(lv.bb), $$1, $$2.a(alk.c), $$3, $$4);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.t()) {
-         this.g.k = true;
-         this.h.k = true;
-      } else {
-         this.g.k = false;
-         this.h.k = false;
+   public fuy a(eau $$0, ear $$1) {
+      return new fuy($$0, this.b, $$1, this.d, this.e, this.f);
+   }
+
+   public fuy a(fuy.b $$0) {
+      return new fuy($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f);
+   }
+
+   public fuy a(fuy.a $$0) {
+      return new fuy(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f);
+   }
+
+   public kb.b a() {
+      return this.d.a();
+   }
+
+   public void b() {
+      for (dxx $$0 : this.d()) {
+         $$0.b().a();
       }
+   }
+
+   public eau c() {
+      return this.a;
+   }
+
+   public ka<dxx> d() {
+      return this.b;
+   }
+
+   public ear e() {
+      return this.c;
+   }
+
+   public ju<alk> f() {
+      return this.d;
+   }
+
+   public alm g() {
+      return this.e;
+   }
+
+   public deo h() {
+      return this.f;
+   }
+
+   @FunctionalInterface
+   public interface a extends BiFunction<kb.b, ear, ear> {
+   }
+
+   public interface b extends UnaryOperator<eau> {
    }
 }

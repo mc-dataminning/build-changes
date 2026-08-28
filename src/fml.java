@@ -1,88 +1,177 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Consumer;
+import com.google.common.collect.Queues;
+import java.util.ArrayList;
+import java.util.BitSet;
+import java.util.Deque;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class fml {
-   int a;
-   final Map<fml.a, fml.b> b = Maps.newTreeMap(Comparator.<fml.a, fmh>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+   private static final int a = 5;
+   private static final int b = -1;
+   final fib c;
+   private final List<fml.a<?>> d = new ArrayList<>();
+   private final BitSet e = new BitSet(5);
+   private final Deque<fmk> f = Queues.newArrayDeque();
 
-   public void a(Consumer<fmi> $$0) {
-      this.a++;
-      $$0.accept(new fml.c(0));
+   public fml(fib $$0) {
+      this.c = $$0;
    }
 
-   public String a(boolean $$0) {
-      final StringBuilder $$1 = new StringBuilder();
-      Consumer<String> $$2 = new Consumer<String>() {
-         private boolean b = true;
-
-         public void a(String $$0) {
-            if (!this.b) {
-               $$1.append(". ");
-            }
-
-            this.b = false;
-            $$1.append($$0);
-         }
-      };
-      this.b.forEach(($$2x, $$3) -> {
-         if ($$3.b == this.a && ($$0 || !$$3.c)) {
-            $$3.a.a($$2);
-            $$3.c = true;
+   public void a() {
+      this.d.removeIf($$0 -> {
+         $$0.c();
+         if ($$0.b()) {
+            this.e.clear($$0.d, $$0.d + $$0.e);
+            return true;
+         } else {
+            return false;
          }
       });
-      return $$1.toString();
-   }
-
-   static class a {
-      final fmh a;
-      final int b;
-
-      a(fmh $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
+      if (!this.f.isEmpty() && this.e() > 0) {
+         this.f.removeIf($$0 -> {
+            int $$1 = $$0.g();
+            int $$2 = this.a($$1);
+            if ($$2 == -1) {
+               return false;
+            } else {
+               this.d.add(new fml.a<>($$0, $$2, $$1));
+               this.e.set($$2, $$2 + $$1);
+               return true;
+            }
+         });
       }
    }
 
-   static class b {
-      fmk<?> a;
-      int b;
-      boolean c;
+   public void a(fjn $$0) {
+      if (!this.c.n.X) {
+         int $$1 = $$0.a();
 
-      b() {
-         this.a = fmk.a;
-         this.b = -1;
+         for (fml.a<?> $$2 : this.d) {
+            $$2.a($$0, $$1);
+         }
+      }
+   }
+
+   private int a(int $$0) {
+      if (this.e() >= $$0) {
+         int $$1 = 0;
+
+         for (int $$2 = 0; $$2 < 5; $$2++) {
+            if (this.e.get($$2)) {
+               $$1 = 0;
+            } else if (++$$1 == $$0) {
+               return $$2 + 1 - $$1;
+            }
+         }
       }
 
-      public fml.b a(int $$0, fmk<?> $$1) {
-         if (!this.a.equals($$1)) {
-            this.a = $$1;
-            this.c = false;
-         } else if (this.b + 1 != $$0) {
-            this.c = false;
+      return -1;
+   }
+
+   private int e() {
+      return 5 - this.e.cardinality();
+   }
+
+   @Nullable
+   public <T extends fmk> T a(Class<? extends T> $$0, Object $$1) {
+      for (fml.a<?> $$2 : this.d) {
+         if ($$2 != null && $$0.isAssignableFrom($$2.a().getClass()) && $$2.a().f().equals($$1)) {
+            return (T)$$2.a();
+         }
+      }
+
+      for (fmk $$3 : this.f) {
+         if ($$0.isAssignableFrom($$3.getClass()) && $$3.f().equals($$1)) {
+            return (T)$$3;
+         }
+      }
+
+      return null;
+   }
+
+   public void b() {
+      this.e.clear();
+      this.d.clear();
+      this.f.clear();
+   }
+
+   public void a(fmk $$0) {
+      this.f.add($$0);
+   }
+
+   public fib c() {
+      return this.c;
+   }
+
+   public double d() {
+      return this.c.n.C().c();
+   }
+
+   class a<T extends fmk> {
+      private static final long b = 600L;
+      private final T c;
+      final int d;
+      final int e;
+      private long f = -1L;
+      private long g = -1L;
+      private fmk.a h = fmk.a.a;
+      private long i;
+      private float j;
+      private boolean k;
+
+      a(final T $$0, final int $$1, final int $$2) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+      }
+
+      public T a() {
+         return this.c;
+      }
+
+      public boolean b() {
+         return this.k;
+      }
+
+      private void a(long $$0) {
+         float $$1 = azc.a((float)($$0 - this.f) / 600.0F, 0.0F, 1.0F);
+         $$1 *= $$1;
+         if (this.h == fmk.a.b) {
+            this.j = 1.0F - $$1;
+         } else {
+            this.j = $$1;
+         }
+      }
+
+      public void c() {
+         long $$0 = ad.c();
+         if (this.f == -1L) {
+            this.f = $$0;
+            this.h.a(fml.this.c.aj());
          }
 
-         this.b = $$0;
-         return this;
+         if (this.h == fmk.a.a && $$0 - this.f <= 600L) {
+            this.g = $$0;
+         }
+
+         this.i = $$0 - this.g;
+         this.a($$0);
+         this.c.a(fml.this, this.i);
+         fmk.a $$1 = this.c.a();
+         if ($$1 != this.h) {
+            this.f = $$0 - (long)((int)((1.0F - this.j) * 600.0F));
+            this.h = $$1;
+            this.h.a(fml.this.c.aj());
+         }
+
+         this.k = this.h == fmk.a.b && $$0 - this.f > 600L;
       }
-   }
 
-   class c implements fmi {
-      private final int b;
-
-      c(final int $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public void a(fmh $$0, fmk<?> $$1) {
-         fml.this.b.computeIfAbsent(new fml.a($$0, this.b), $$0x -> new fml.b()).a(fml.this.a, $$1);
-      }
-
-      @Override
-      public fmi a() {
-         return fml.this.new c(this.b + 1);
+      public void a(fjn $$0, int $$1) {
+         $$0.c().a();
+         $$0.c().a((float)$$1 - (float)this.c.b() * this.j, (float)(this.d * 32), 800.0F);
+         this.c.a($$0, fml.this.c.h, this.i);
+         $$0.c().b();
       }
    }
 }

@@ -1,26 +1,30 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
 
-public class bbk extends DataFix {
+public class bbk extends bgf {
    public bbk(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+      super($$0, $$1, "BlockEntityBannerColorFix", bhk.s, "minecraft:banner");
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result();
-      if ($$1.equals(Optional.of("minecraft:cauldron"))) {
-         Dynamic<?> $$2 = $$0.get("Properties").orElseEmptyMap();
-         return $$2.get("level").asString("0").equals("0") ? $$0.remove("Properties") : $$0.set("Name", $$0.createString("minecraft:water_cauldron"));
-      } else {
-         return $$0;
-      }
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      $$0 = $$0.update("Base", $$0x -> $$0x.createInt(15 - $$0x.asInt(0)));
+      return $$0.update(
+         "Patterns",
+         $$0x -> (Dynamic)DataFixUtils.orElse(
+               $$0x.asStreamOpt()
+                  .map($$0xx -> $$0xx.map($$0xxx -> $$0xxx.update("Color", $$0xxxx -> $$0xxxx.createInt(15 - $$0xxxx.asInt(0)))))
+                  .map($$0x::createList)
+                  .result(),
+               $$0x
+            )
+      );
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("cauldron_rename_fix", this.getInputSchema().getType(bgr.u), $$0 -> $$0.update(DSL.remainderFinder(), bbk::a));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

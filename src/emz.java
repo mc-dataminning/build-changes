@@ -1,45 +1,60 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Optional;
 
-public class emz extends enq {
-   public static final MapCodec<emz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dyy.a.g.fieldOf("heightmap").orElse(dyy.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, emz::new)
-   );
-   private final dyy.a b;
-   private final int c;
+public class emz extends eko {
+   public static final MapCodec<emz> d = a(emz::new);
 
-   public emz(dyy.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public emz(eko.c $$0) {
+      super($$0);
    }
 
-   @Nullable
    @Override
-   public ent.c a(dcz $$0, jd $$1, jd $$2, ent.c $$3, ent.c $$4, enp $$5) {
-      dyy.a $$6;
-      if ($$0 instanceof aqu) {
-         if (this.b == dyy.a.a) {
-            $$6 = dyy.a.b;
-         } else if (this.b == dyy.a.c) {
-            $$6 = dyy.a.d;
-         } else {
-            $$6 = this.b;
+   public Optional<eko.b> a(eko.a $$0) {
+      int $$1 = $$0.h().a(9);
+      int $$2 = $$0.h().b(9);
+
+      for (jn<det> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
+         if (!$$4.a(awr.X)) {
+            return Optional.empty();
          }
-      } else {
-         $$6 = this.b;
       }
 
-      jd $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new ent.c(new jd($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+      return a($$0, dzw.a.c, $$1x -> a($$1x, $$0));
+   }
+
+   private static eks a(dcy $$0, eav $$1) {
+      int $$2 = $$0.d() - 29;
+      int $$3 = $$0.e() - 29;
+      jj $$4 = jj.c.a.a($$1);
+      return new emy.h($$1, $$2, $$3, $$4);
+   }
+
+   private static void a(elg $$0, eko.a $$1) {
+      $$0.a(a($$1.h(), $$1.f()));
+   }
+
+   public static eld a(dcy $$0, long $$1, eld $$2) {
+      if ($$2.a()) {
+         return $$2;
+      } else {
+         eav $$3 = new eav(new dzx(eal.a()));
+         $$3.c($$1, $$0.e, $$0.f);
+         eks $$4 = $$2.c().get(0);
+         ekg $$5 = $$4.f();
+         int $$6 = $$5.h();
+         int $$7 = $$5.j();
+         jj $$8 = jj.c.a.a($$3);
+         jj $$9 = Objects.requireNonNullElse($$4.i(), $$8);
+         eks $$10 = new emy.h($$3, $$6, $$7, $$9);
+         elg $$11 = new elg();
+         $$11.a($$10);
+         return $$11.a();
+      }
    }
 
    @Override
-   protected ens<?> a() {
-      return ens.g;
+   public ekx<?> e() {
+      return ekx.j;
    }
 }

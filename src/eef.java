@@ -1,30 +1,44 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eef(egr b, eaf c, bpw d, int e) implements eei {
-   public static final Codec<eef> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egr.a.fieldOf("state_provider").forGetter(eef::a),
-               eaf.b.fieldOf("target").forGetter(eef::b),
-               bpw.b(0, 8).fieldOf("radius").forGetter(eef::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(eef::d)
-            )
-            .apply($$0, eef::new)
-   );
+public class eef extends edc<efo> {
+   private static final int a = 7;
 
-   public egr a() {
-      return this.b;
+   eef(Codec<efo> $$0) {
+      super($$0);
    }
 
-   public eaf b() {
-      return this.c;
+   @Override
+   public boolean a(ede<efo> $$0) {
+      dep $$1 = $$0.b();
+      azk $$2 = $$0.d();
+      efo $$3 = $$0.f();
+      je $$4 = $$0.e();
+      int $$5 = $$2.a($$3.c + 1);
+      je.a $$6 = new je.a();
+
+      for (int $$7 = 0; $$7 < $$5; $$7++) {
+         this.a($$6, $$2, $$4, Math.min($$7, 7));
+         dua $$8 = $$1.a_($$6);
+
+         for (efo.a $$9 : $$3.b) {
+            if (edx.a($$8, $$1::a_, $$2, $$3, $$9, $$6)) {
+               $$1.a($$6, $$9.c, 2);
+               break;
+            }
+         }
+      }
+
+      return true;
    }
 
-   public bpw c() {
-      return this.d;
+   private void a(je.a $$0, azk $$1, je $$2, int $$3) {
+      int $$4 = this.a($$1, $$3);
+      int $$5 = this.a($$1, $$3);
+      int $$6 = this.a($$1, $$3);
+      $$0.a($$2, $$4, $$5, $$6);
    }
 
-   public int d() {
-      return this.e;
+   private int a(azk $$0, int $$1) {
+      return Math.round(($$0.i() - $$0.i()) * (float)$$1);
    }
 }

@@ -1,146 +1,68 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class acz implements zg<abu> {
-   public static final yx<wk, acz> a = zg.a(acz::a, acz::new);
-   private final double b;
-   private final double c;
-   private final double d;
-   private final float e;
-   private final List<jd> f;
-   private final float g;
-   private final float h;
-   private final float i;
-   private final lk j;
-   private final lk k;
-   private final dco.a l;
-   private final jm<avo> m;
+public record acz(int b, jn<bsd> c, int d, int e, Optional<eye> f) implements zk<abz> {
+   public static final zb<wo, acz> a = zk.a(acz::a, acz::new);
 
-   public acz(double $$0, double $$1, double $$2, float $$3, List<jd> $$4, @Nullable exc $$5, dco.a $$6, lk $$7, lk $$8, jm<avo> $$9) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = Lists.newArrayList($$4);
-      this.m = $$9;
-      if ($$5 != null) {
-         this.g = (float)$$5.c;
-         this.h = (float)$$5.d;
-         this.i = (float)$$5.e;
-      } else {
-         this.g = 0.0F;
-         this.h = 0.0F;
-         this.i = 0.0F;
-      }
-
-      this.l = $$6;
-      this.j = $$7;
-      this.k = $$8;
+   public acz(btj $$0, bsb $$1) {
+      this($$0.ap(), $$1.l(), $$1.d() != null ? $$1.d().ap() : -1, $$1.c() != null ? $$1.c().ap() : -1, Optional.ofNullable($$1.j()));
    }
 
-   private acz(wk $$0) {
-      this.b = $$0.readDouble();
-      this.c = $$0.readDouble();
-      this.d = $$0.readDouble();
-      this.e = $$0.readFloat();
-      int $$1 = ayo.a(this.b);
-      int $$2 = ayo.a(this.c);
-      int $$3 = ayo.a(this.d);
-      this.f = $$0.a($$3x -> {
-         int $$4 = $$3x.readByte() + $$1;
-         int $$5 = $$3x.readByte() + $$2;
-         int $$6 = $$3x.readByte() + $$3;
-         return new jd($$4, $$5, $$6);
-      });
-      this.g = $$0.readFloat();
-      this.h = $$0.readFloat();
-      this.i = $$0.readFloat();
-      this.l = $$0.b(dco.a.class);
-      this.j = lm.bg.decode($$0);
-      this.k = lm.bg.decode($$0);
-      this.m = avo.d.decode($$0);
+   private acz(wo $$0) {
+      this($$0.l(), bsd.c.decode($$0), a((wa)$$0), a((wa)$$0), $$0.b($$0x -> new eye($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
-   private void a(wk $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c);
-      $$0.a(this.d);
-      $$0.a(this.e);
-      int $$1 = ayo.a(this.b);
-      int $$2 = ayo.a(this.c);
-      int $$3 = ayo.a(this.d);
-      $$0.a(this.f, ($$3x, $$4) -> {
-         int $$5 = $$4.u() - $$1;
-         int $$6 = $$4.v() - $$2;
-         int $$7 = $$4.w() - $$3;
-         $$3x.k($$5);
-         $$3x.k($$6);
-         $$3x.k($$7);
+   private static void a(wa $$0, int $$1) {
+      $$0.c($$1 + 1);
+   }
+
+   private static int a(wa $$0) {
+      return $$0.l() - 1;
+   }
+
+   private void a(wo $$0) {
+      $$0.c(this.b);
+      bsd.c.encode($$0, this.c);
+      a($$0, this.d);
+      a($$0, this.e);
+      $$0.a(this.f, ($$0x, $$1) -> {
+         $$0x.a($$1.a());
+         $$0x.a($$1.b());
+         $$0x.a($$1.c());
       });
-      $$0.a(this.g);
-      $$0.a(this.h);
-      $$0.a(this.i);
-      $$0.a(this.l);
-      lm.bg.encode($$0, this.j);
-      lm.bg.encode($$0, this.k);
-      avo.d.encode($$0, this.m);
    }
 
    @Override
-   public zi<acz> a() {
-      return agg.E;
+   public zm<acz> a() {
+      return ago.z;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public float b() {
-      return this.g;
+   public bsb a(dds $$0) {
+      if (this.f.isPresent()) {
+         return new bsb(this.c, this.f.get());
+      } else {
+         btj $$1 = $$0.a(this.d);
+         btj $$2 = $$0.a(this.e);
+         return new bsb(this.c, $$2, $$1);
+      }
    }
 
-   public float e() {
-      return this.h;
-   }
-
-   public float f() {
-      return this.i;
-   }
-
-   public double g() {
-      return this.b;
-   }
-
-   public double h() {
+   public jn<bsd> e() {
       return this.c;
    }
 
-   public double i() {
+   public int f() {
       return this.d;
    }
 
-   public float j() {
+   public int g() {
       return this.e;
    }
 
-   public List<jd> k() {
+   public Optional<eye> h() {
       return this.f;
-   }
-
-   public dco.a l() {
-      return this.l;
-   }
-
-   public lk m() {
-      return this.j;
-   }
-
-   public lk n() {
-      return this.k;
-   }
-
-   public jm<avo> o() {
-      return this.m;
    }
 }

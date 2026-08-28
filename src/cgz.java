@@ -1,139 +1,76 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-public class cgz {
-   private static final float a = 2.0F;
-   private static final float b = 1.0F;
-   private static final float c = 1.0F;
-   private static final float d = 0.75F;
-   private static final bqc e = bqc.a(100, 140);
-   private static final int f = 2;
-   private static final int g = 4;
-   private static final float h = 3.5714288F;
-   private static final float i = 1.25F;
-
-   protected static void a(cgy $$0, ayw $$1) {
-      $$0.dT().a(ccs.S, e.a($$1));
-   }
-
-   protected static buq<?> a(buq<cgy> $$0) {
-      b($$0);
-      c($$0);
-      d($$0);
-      e($$0);
-      g($$0);
-      f($$0);
-      $$0.a(ImmutableSet.of(com.a));
-      $$0.b(com.b);
-      $$0.f();
-      return $$0;
-   }
-
-   private static void b(buq<cgy> $$0) {
-      $$0.a(com.a, 0, ImmutableList.of(new bvc(2.0F), new bwn(45, 90), new bwr(), new bvn(ccs.P), new bvn(ccs.S)));
-   }
-
-   private static void c(buq<cgy> $$0) {
-      $$0.a(
-         com.b,
-         ImmutableList.of(
-            Pair.of(0, bxh.a(bsx.by, 6.0F, bqc.a(30, 60))),
-            Pair.of(0, new bvb(bsx.R)),
-            Pair.of(1, new bvu($$0x -> 1.25F)),
-            Pair.of(2, bxt.a(cgz::b, $$0x -> $$0x.dT().c(ccs.B))),
-            Pair.of(3, bye.a(6, 1.0F)),
-            Pair.of(
-               4,
-               new bxe(
-                  ImmutableMap.of(ccs.m, cct.b),
-                  ImmutableList.of(Pair.of(bwz.a(1.0F), 1), Pair.of(bxo.a(1.0F, 3), 1), Pair.of(new bvo(), 3), Pair.of(byu.a(bsr::aF), 2))
-               )
+public final class cgz {
+   public static final Codec<cgz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alb.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
+               alb.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
+               alb.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
+               kc.a(lv.aF).fieldOf("biomes").forGetter(cgz::d)
             )
-         ),
-         ImmutableSet.of(Pair.of(ccs.T, cct.b), Pair.of(ccs.X, cct.b))
-      );
+            .apply($$0, cgz::new)
+   );
+   public static final zb<wo, cgz> b = zb.a(alb.b, cgz::a, alb.b, cgz::b, alb.b, cgz::c, yz.c(lv.aF), cgz::d, cgz::new);
+   public static final Codec<jn<cgz>> c = akx.a(lv.m, a);
+   public static final zb<wo, jn<cgz>> d = yz.a(lv.m, b);
+   private final alb e;
+   private final alb f;
+   private final alb g;
+   private final alb h;
+   private final alb i;
+   private final alb j;
+   private final jr<det> k;
+
+   public cgz(alb $$0, alb $$1, alb $$2, jr<det> $$3) {
+      this.e = $$0;
+      this.h = a($$0);
+      this.f = $$1;
+      this.i = a($$1);
+      this.g = $$2;
+      this.j = a($$2);
+      this.k = $$3;
    }
 
-   private static void d(buq<cgy> $$0) {
-      $$0.a(
-         com.t,
-         ImmutableList.of(
-            Pair.of(0, bxh.a(bsx.by, 6.0F, bqc.a(30, 60))),
-            Pair.of(1, new bvu($$0x -> 1.25F)),
-            Pair.of(2, bxt.a(cgz::b, $$0x -> $$0x.dT().c(ccs.B))),
-            Pair.of(3, bye.a(8, 1.5F)),
-            Pair.of(
-               5,
-               new bvv(
-                  ImmutableMap.of(ccs.m, cct.b),
-                  ImmutableSet.of(),
-                  bvv.a.a,
-                  bvv.b.b,
-                  ImmutableList.of(Pair.of(bwz.c(0.75F), 1), Pair.of(bwz.a(1.0F, true), 1), Pair.of(bxo.a(1.0F, 3), 1), Pair.of(byu.a(bsr::bi), 5))
-               )
-            )
-         ),
-         ImmutableSet.of(Pair.of(ccs.T, cct.b), Pair.of(ccs.X, cct.a))
-      );
+   private static alb a(alb $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   private static void e(buq<cgy> $$0) {
-      $$0.a(
-         com.u,
-         ImmutableList.of(
-            Pair.of(0, bxh.a(bsx.by, 6.0F, bqc.a(30, 60))),
-            Pair.of(1, bxt.a(cgz::b, $$0x -> $$0x.dT().c(ccs.B))),
-            Pair.of(2, byf.a(8, 1.0F)),
-            Pair.of(3, byh.a(dga.tn)),
-            Pair.of(4, new bxe(ImmutableList.of(Pair.of(bwz.a(1.0F), 2), Pair.of(bxo.a(1.0F, 3), 1), Pair.of(new bvo(), 2), Pair.of(byu.a(bsr::aF), 1))))
-         ),
-         ImmutableSet.of(Pair.of(ccs.T, cct.b), Pair.of(ccs.Y, cct.a))
-      );
+   public alb a() {
+      return this.h;
    }
 
-   private static void f(buq<cgy> $$0) {
-      $$0.a(
-         com.q,
-         ImmutableList.of(Pair.of(0, new bwi(e, avp.jR)), Pair.of(1, new bwj<>(e, 2, 4, 3.5714288F, $$0x -> avp.jQ, awe.bS, 0.5F, cgz::a))),
-         ImmutableSet.of(Pair.of(ccs.O, cct.b), Pair.of(ccs.r, cct.b), Pair.of(ccs.S, cct.b), Pair.of(ccs.X, cct.b))
-      );
+   public alb b() {
+      return this.i;
    }
 
-   private static void g(buq<cgy> $$0) {
-      $$0.a(com.s, 0, ImmutableList.of(bxw.a(), new cha(avp.jS, avp.jN)), ccs.o);
+   public alb c() {
+      return this.j;
    }
 
-   private static <E extends btp> boolean a(E $$0, jd $$1) {
-      dcw $$2 = $$0.dO();
-      jd $$3 = $$1.e();
-      if ($$2.b_($$1).c() && $$2.b_($$3).c() && $$2.b_($$1.d()).c()) {
-         dtc $$4 = $$2.a_($$1);
-         dtc $$5 = $$2.a_($$3);
-         if (!$$4.a(awe.bS) && !$$5.a(awe.bS)) {
-            epx $$6 = new epx($$0.dO(), $$0);
-            epv $$7 = eqa.a($$6, $$1.k());
-            epv $$8 = eqa.a($$6, $$3.k());
-            return $$7 != epv.e && (!$$4.i() || $$8 != epv.e) ? bwk.a($$0, $$1) : true;
-         } else {
-            return true;
-         }
+   public jr<det> d() {
+      return this.k;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
       } else {
-         return false;
+         return !($$0 instanceof cgz $$1)
+            ? false
+            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
       }
    }
 
-   private static boolean b(cgy $$0) {
-      return !bvj.a($$0);
-   }
-
-   public static void a(cgy $$0) {
-      $$0.dT().a(ImmutableList.of(com.s, com.u, com.q, com.t, com.b));
-   }
-
-   public static Predicate<cuq> a() {
-      return $$0 -> $$0.a(awn.al);
+   @Override
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.e.hashCode();
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.k.hashCode();
    }
 }

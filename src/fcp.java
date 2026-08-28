@@ -1,357 +1,261 @@
-import com.google.common.collect.ComparisonChain;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.Map.Entry;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.slf4j.Logger;
+import org.lwjgl.system.MemoryUtil;
 
-public class fcp extends fdc {
-   private static final Logger v = LogUtils.getLogger();
-   private static final int w = -1;
-   public long a;
-   public String b;
-   public String c;
-   public String d;
-   public fcp.c e;
-   public String f;
-   public UUID g = ad.e;
-   public List<fcl> h;
-   public Map<Integer, fcu> i;
-   public boolean j;
-   public boolean k;
-   public int l;
-   public fcp.d m;
-   public int n;
-   @Nullable
-   public String o;
-   public int p;
-   public String q;
-   public long r = -1L;
-   @Nullable
-   public String s;
-   public String t = "";
-   public fcp.a u = fcp.a.a;
+public class fcp implements fcy {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fcr d;
+   private long e = -1L;
+   private int f;
+   private final fcz g;
+   private final fcz.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
 
-   public String a() {
-      return this.d;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   @Nullable
-   public String c() {
-      return this.o;
-   }
-
-   public void a(String $$0) {
-      this.c = $$0;
-   }
-
-   public void b(String $$0) {
-      this.d = $$0;
-   }
-
-   public static fcp a(JsonObject $$0) {
-      fcp $$1 = new fcp();
-
-      try {
-         $$1.a = fez.a("id", $$0, -1L);
-         $$1.b = fez.b("remoteSubscriptionId", $$0, null);
-         $$1.c = fez.b("name", $$0, null);
-         $$1.d = fez.b("motd", $$0, null);
-         $$1.e = f(fez.b("state", $$0, fcp.c.a.name()));
-         $$1.f = fez.b("owner", $$0, null);
-         if ($$0.get("players") != null && $$0.get("players").isJsonArray()) {
-            $$1.h = a($$0.get("players").getAsJsonArray());
-            a($$1);
-         } else {
-            $$1.h = Lists.newArrayList();
-         }
-
-         $$1.l = fez.a("daysLeft", $$0, 0);
-         $$1.j = fez.a("expired", $$0, false);
-         $$1.k = fez.a("expiredTrial", $$0, false);
-         $$1.m = g(fez.b("worldType", $$0, fcp.d.a.name()));
-         $$1.g = fez.a("ownerUUID", $$0, ad.e);
-         if ($$0.get("slots") != null && $$0.get("slots").isJsonArray()) {
-            $$1.i = b($$0.get("slots").getAsJsonArray());
-         } else {
-            $$1.i = j();
-         }
-
-         $$1.o = fez.b("minigameName", $$0, null);
-         $$1.n = fez.a("activeSlot", $$0, -1);
-         $$1.p = fez.a("minigameId", $$0, -1);
-         $$1.q = fez.b("minigameImage", $$0, null);
-         $$1.r = fez.a("parentWorldId", $$0, -1L);
-         $$1.s = fez.b("parentWorldName", $$0, null);
-         $$1.t = fez.b("activeVersion", $$0, "");
-         $$1.u = d(fez.b("compatibility", $$0, fcp.a.a.name()));
-      } catch (Exception var3) {
-         v.error("Could not parse McoServer: {}", var3.getMessage());
-      }
-
-      return $$1;
-   }
-
-   private static void a(fcp $$0) {
-      $$0.h
-         .sort(
-            ($$0x, $$1) -> ComparisonChain.start()
-                  .compareFalseFirst($$1.d(), $$0x.d())
-                  .compare($$0x.a().toLowerCase(Locale.ROOT), $$1.a().toLowerCase(Locale.ROOT))
-                  .result()
-         );
-   }
-
-   private static List<fcl> a(JsonArray $$0) {
-      List<fcl> $$1 = Lists.newArrayList();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            fcl $$4 = new fcl();
-            $$4.a(fez.b("name", $$3, null));
-            $$4.a(fez.a("uuid", $$3, ad.e));
-            $$4.a(fez.a("operator", $$3, false));
-            $$4.b(fez.a("accepted", $$3, false));
-            $$4.c(fez.a("online", $$3, false));
-            $$1.add($$4);
-         } catch (Exception var6) {
-         }
-      }
-
-      return $$1;
-   }
-
-   private static Map<Integer, fcu> b(JsonArray $$0) {
-      Map<Integer, fcu> $$1 = Maps.newHashMap();
-
-      for (JsonElement $$2 : $$0) {
-         try {
-            JsonObject $$3 = $$2.getAsJsonObject();
-            JsonParser $$4 = new JsonParser();
-            JsonElement $$5 = $$4.parse($$3.get("options").getAsString());
-            fcu $$6;
-            if ($$5 == null) {
-               $$6 = fcu.a();
-            } else {
-               $$6 = fcu.a($$5.getAsJsonObject());
-            }
-
-            int $$8 = fez.a("slotId", $$3, -1);
-            $$1.put($$8, $$6);
-         } catch (Exception var9) {
-         }
-      }
-
-      for (int $$9 = 1; $$9 <= 3; $$9++) {
-         if (!$$1.containsKey($$9)) {
-            $$1.put($$9, fcu.b());
-         }
-      }
-
-      return $$1;
-   }
-
-   private static Map<Integer, fcu> j() {
-      Map<Integer, fcu> $$0 = Maps.newHashMap();
-      $$0.put(1, fcu.b());
-      $$0.put(2, fcu.b());
-      $$0.put(3, fcu.b());
-      return $$0;
-   }
-
-   public static fcp c(String $$0) {
-      try {
-         return a(new JsonParser().parse($$0).getAsJsonObject());
-      } catch (Exception var2) {
-         v.error("Could not parse McoServer: {}", var2.getMessage());
-         return new fcp();
-      }
-   }
-
-   private static fcp.c f(String $$0) {
-      try {
-         return fcp.c.valueOf($$0);
-      } catch (Exception var2) {
-         return fcp.c.a;
-      }
-   }
-
-   private static fcp.d g(String $$0) {
-      try {
-         return fcp.d.valueOf($$0);
-      } catch (Exception var2) {
-         return fcp.d.a;
-      }
-   }
-
-   public static fcp.a d(@Nullable String $$0) {
-      try {
-         return fcp.a.valueOf($$0);
-      } catch (Exception var2) {
-         return fcp.a.a;
-      }
-   }
-
-   public boolean d() {
-      return this.u.a();
-   }
-
-   public boolean e() {
-      return this.u.b();
-   }
-
-   public boolean f() {
-      return this.u.c();
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.c, this.d, this.e, this.f, this.j);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0 == this) {
-         return true;
-      } else if ($$0.getClass() != this.getClass()) {
-         return false;
+   public fcp(fcr $$0, fcz.c $$1, fcz $$2) {
+      if (!$$2.b(fda.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
       } else {
-         fcp $$1 = (fcp)$$0;
-         return new EqualsBuilder()
-            .append(this.a, $$1.a)
-            .append(this.c, $$1.c)
-            .append(this.d, $$1.d)
-            .append(this.e, $$1.e)
-            .append(this.f, $$1.f)
-            .append(this.j, $$1.j)
-            .append(this.m, this.m)
-            .isEquals();
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~fda.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fcs.c;
+         boolean $$4 = $$2 == fcs.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
       }
    }
 
-   public fcp g() {
-      fcp $$0 = new fcp();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.h = this.h;
-      $$0.i = this.a(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      $$0.l = this.l;
-      $$0.m = this.m;
-      $$0.g = this.g;
-      $$0.o = this.o;
-      $$0.n = this.n;
-      $$0.p = this.p;
-      $$0.q = this.q;
-      $$0.s = this.s;
-      $$0.r = this.r;
-      $$0.t = this.t;
-      $$0.u = this.u;
+   @Nullable
+   public fct a() {
+      this.c();
+      this.f();
+      fct $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
       return $$0;
    }
 
-   public Map<Integer, fcu> a(Map<Integer, fcu> $$0) {
-      Map<Integer, fcu> $$1 = Maps.newHashMap();
-
-      for (Entry<Integer, fcu> $$2 : $$0.entrySet()) {
-         $$1.put($$2.getKey(), $$2.getValue().d());
-      }
-
-      return $$1;
-   }
-
-   public boolean h() {
-      return this.r != -1L;
-   }
-
-   public boolean i() {
-      return this.m == fcp.d.b;
-   }
-
-   public String a(int $$0) {
-      return this.c + " (" + this.i.get($$0).a($$0) + ")";
-   }
-
-   public fzt e(String $$0) {
-      return new fzt(this.c, $$0, fzt.c.b);
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f;
-
-      public boolean a() {
-         return this == f;
-      }
-
-      public boolean b() {
-         return this == e;
-      }
-
-      public boolean c() {
-         return this == d;
+   public fct b() {
+      fct $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
       }
    }
 
-   public static class b implements Comparator<fcp> {
-      private final String a;
-
-      public b(String $$0) {
-         this.a = $$0;
-      }
-
-      public int a(fcp $$0, fcp $$1) {
-         return ComparisonChain.start()
-            .compareTrueFirst($$0.h(), $$1.h())
-            .compareTrueFirst($$0.e == fcp.c.c, $$1.e == fcp.c.c)
-            .compareTrueFirst($$0.k, $$1.k)
-            .compareTrueFirst($$0.f.equals(this.a), $$1.f.equals(this.a))
-            .compareFalseFirst($$0.j, $$1.j)
-            .compareTrueFirst($$0.e == fcp.c.b, $$1.e == fcp.c.b)
-            .compare($$0.a, $$1.a)
-            .result();
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
       }
    }
 
-   public static enum c {
-      a,
-      b,
-      c;
+   @Nullable
+   private fct d() {
+      if (this.f == 0) {
+         return null;
+      } else {
+         fcr.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
+         } else {
+            int $$1 = this.h.a(this.f);
+            fcz.b $$2 = fcz.b.a(this.f);
+            return new fct($$0, new fct.a(this.g, this.f, $$1, this.h, $$2));
+         }
+      }
    }
 
-   public static enum d {
-      a,
-      b,
-      c,
-      d,
-      e;
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
+   }
+
+   private long a(fda $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
+      }
+   }
+
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = fda.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fcz.c.a || this.h == fcz.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
+   }
+
+   private static void a(long $$0, int $$1) {
+      int $$2 = axn.i($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
+
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
+      }
+   }
+
+   @Override
+   public fcy a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[fda.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
+   }
+
+   @Override
+   public fcy a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(fda.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fcy a(int $$0) {
+      long $$1 = this.a(fda.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fcy a(float $$0, float $$1) {
+      long $$2 = this.a(fda.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fcy a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fda.f);
+   }
+
+   @Override
+   public fcy b(int $$0) {
+      long $$1 = this.a(fda.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fcy b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fda.g);
+   }
+
+   @Override
+   public fcy c(int $$0) {
+      long $$1 = this.a(fda.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private fcy a(short $$0, short $$1, fda $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fcy b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(fda.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(azc.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
+         }
+
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fcy.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
    }
 }

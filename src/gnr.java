@@ -1,24 +1,30 @@
-public class gnr<T extends btn, M extends fwp<T>> extends gpe<T, M> {
-   private final gkh a;
+public class gnr extends gmr<cjt, gsu> {
+   private static final alb a = alb.b("textures/entity/lead_knot.png");
+   private final fxr b;
 
-   public gnr(gkj.a $$0, glk<T, M> $$1) {
-      super($$1);
-      this.a = $$0.a();
+   public gnr(gms.a $$0) {
+      super($$0);
+      this.b = new fxr($$0.a(gaa.bb));
    }
 
    @Override
-   protected int a(T $$0) {
-      return $$0.eP();
+   public void a(gsu $$0, fcu $$1, ggv $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      fcy $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gwb.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(fbi $$0, gez $$1, int $$2, bsr $$3, float $$4, float $$5, float $$6, float $$7) {
-      float $$8 = ayo.c($$4 * $$4 + $$6 * $$6);
-      cnf $$9 = new cnf($$3.dO(), $$3.dt(), $$3.dv(), $$3.dz(), cuq.l, null);
-      $$9.t((float)(Math.atan2((double)$$4, (double)$$6) * 180.0F / (float)Math.PI));
-      $$9.u((float)(Math.atan2((double)$$5, (double)$$8) * 180.0F / (float)Math.PI));
-      $$9.O = $$9.dE();
-      $$9.P = $$9.dG();
-      this.a.a($$9, 0.0, 0.0, 0.0, 0.0F, $$7, $$0, $$1, $$2);
+   public alb a(gsu $$0) {
+      return a;
+   }
+
+   @Override
+   public gsu b() {
+      return new gsu();
    }
 }

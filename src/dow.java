@@ -1,87 +1,87 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class dow extends dep {
-   public static final MapCodec<dow> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cti.q.fieldOf("color").forGetter(dep::b), u()).apply($$0, dow::new));
-   public static final dtw b = dju.aE;
-   private static final Map<ji, exv> c = Maps.newEnumMap(
-      ImmutableMap.of(
-         ji.c,
-         dfy.a(0.0, 0.0, 14.0, 16.0, 12.5, 16.0),
-         ji.d,
-         dfy.a(0.0, 0.0, 0.0, 16.0, 12.5, 2.0),
-         ji.e,
-         dfy.a(14.0, 0.0, 0.0, 16.0, 12.5, 16.0),
-         ji.f,
-         dfy.a(0.0, 0.0, 0.0, 2.0, 12.5, 16.0)
-      )
-   );
+public class dow extends dgv {
+   public static final MapCodec<dow> a = b(dow::new);
+   public static final dva b = duq.aw;
+   protected static final float c = 6.0F;
+   protected static final eyx d = dgv.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0);
 
    @Override
    public MapCodec<dow> a() {
       return a;
    }
 
-   public dow(cti $$0, dtb.d $$1) {
-      super($$0, $$1);
-      this.k(this.E.b().a(b, ji.c));
+   protected dow(dtz.d $$0) {
+      super($$0);
+      this.l(this.E.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   public String g() {
-      return this.r().a();
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return d;
    }
 
    @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      return $$1.a_($$2.a($$0.c(b).g())).e();
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      return $$1 == $$0.c(b).g() && !$$0.a($$3, $$4) ? dga.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      if ($$1.u($$2.d())) {
+         int $$4 = 1;
 
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return c.get($$0.c(b));
-   }
+         while ($$1.a_($$2.c($$4)).a(this)) {
+            $$4++;
+         }
 
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = this.o();
-      dcz $$2 = $$0.q();
-      jd $$3 = $$0.a();
-      ji[] $$4 = $$0.f();
-
-      for (ji $$5 : $$4) {
-         if ($$5.o().d()) {
-            ji $$6 = $$5.g();
-            $$1 = $$1.a(b, $$6);
-            if ($$1.a($$2, $$3)) {
-               return $$1;
+         if ($$4 < 3) {
+            int $$5 = $$0.c(b);
+            if ($$5 == 15) {
+               $$1.b($$2.d(), this.o());
+               $$1.a($$2, $$0.b(b, Integer.valueOf(0)), 4);
+            } else {
+               $$1.a($$2, $$0.b(b, Integer.valueOf($$5 + 1)), 4);
             }
          }
       }
-
-      return null;
    }
 
    @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if (!$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      dua $$3 = $$1.a_($$2.e());
+      if ($$3.a(this)) {
+         return true;
+      } else {
+         if ($$3.a(aws.ag) || $$3.a(aws.I)) {
+            je $$4 = $$2.e();
+
+            for (jj $$5 : jj.c.a) {
+               dua $$6 = $$1.a_($$4.a($$5));
+               eqb $$7 = $$1.b_($$4.a($$5));
+               if ($$7.a(awy.a) || $$6.a(dgx.kI)) {
+                  return true;
+               }
+            }
+         }
+
+         return false;
+      }
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
+   protected void a(dub.a<dgv, dua> $$0) {
       $$0.a(b);
    }
 }

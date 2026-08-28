@@ -1,10 +1,18 @@
-public interface abk extends zz {
-   @Override
-   default vu b() {
-      return vu.e;
+import io.netty.buffer.ByteBuf;
+
+public class abk implements zk<abh> {
+   public static final abk a = new abk();
+   public static final zb<ByteBuf, abk> b = zb.a(a);
+
+   private abk() {
    }
 
-   void a(abl var1);
+   @Override
+   public zm<abk> a() {
+      return abn.e;
+   }
 
-   void a(abm var1);
+   public void a(abh $$0) {
+      $$0.a(this);
+   }
 }

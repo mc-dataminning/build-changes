@@ -1,32 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bwe {
-   public static <T extends btn> bvi<btn> a(bsx<? extends T> $$0, int $$1, ccs<T> $$2, float $$3, int $$4) {
-      return a($$0, $$1, $$0x -> true, $$0x -> true, $$2, $$3, $$4);
+public class bwe extends bvx<chp> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bwe() {
+      super(ImmutableMap.of(cdi.m, cdj.b), 100);
    }
 
-   public static <E extends btn, T extends btn> bvi<E> a(bsx<? extends T> $$0, int $$1, Predicate<E> $$2, Predicate<T> $$3, ccs<T> $$4, float $$5, int $$6) {
-      int $$7 = $$1 * $$1;
-      Predicate<btn> $$8 = $$2x -> $$0.equals($$2x.am()) && $$3.test((T)$$2x);
-      return byu.a(
-         (Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$6x -> $$6x.group($$6x.a($$4), $$6x.a(ccs.n), $$6x.c(ccs.m), $$6x.b(ccs.h))
-               .apply($$6x, ($$6xx, $$7x, $$8x, $$9) -> ($$10, $$11, $$12) -> {
-                     ccu $$13 = $$6x.b($$9);
-                     if ($$2.test((E)$$11) && $$13.d($$8)) {
-                        Optional<btn> $$14 = $$13.a($$3xxxx -> $$3xxxx.g((bsr)$$11) <= (double)$$7 && $$8.test($$3xxxx));
-                        $$14.ifPresent($$5xxxx -> {
-                           $$6xx.a($$5xxxx);
-                           $$7x.a(new bvs($$5xxxx, true));
-                           $$8x.a(new ccv(new bvs($$5xxxx, false), $$5, $$6));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   protected boolean a(arg $$0, chp $$1) {
+      return $$1.av() == bur.a;
+   }
+
+   protected boolean a(arg $$0, chp $$1, long $$2) {
+      return this.e < 60;
+   }
+
+   protected void b(arg $$0, chp $$1, long $$2) {
+      if (!$$1.bm()) {
+         $$1.b(bur.i);
+         this.e = 0;
+      }
+   }
+
+   protected void c(arg $$0, chp $$1, long $$2) {
+      $$1.b(bur.a);
+   }
+
+   protected void d(arg $$0, chp $$1, long $$2) {
+      this.e++;
    }
 }

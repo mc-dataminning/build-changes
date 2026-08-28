@@ -1,29 +1,28 @@
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 
-public class egt extends egj {
-   public static final MapCodec<egt> b = bpb.b(dtc.b).comapFlatMap(egt::a, $$0 -> $$0.c).fieldOf("entries");
-   private final bpb<dtc> c;
+public class egt<P extends egs> {
+   public static final egt<egn> a = a("blob_foliage_placer", egn.a);
+   public static final egt<egy> b = a("spruce_foliage_placer", egy.a);
+   public static final egt<egw> c = a("pine_foliage_placer", egw.a);
+   public static final egt<egm> d = a("acacia_foliage_placer", egm.a);
+   public static final egt<ego> e = a("bush_foliage_placer", ego.c);
+   public static final egt<egr> f = a("fancy_foliage_placer", egr.c);
+   public static final egt<egu> g = a("jungle_foliage_placer", egu.a);
+   public static final egt<egv> h = a("mega_pine_foliage_placer", egv.a);
+   public static final egt<egq> i = a("dark_oak_foliage_placer", egq.a);
+   public static final egt<egx> j = a("random_spread_foliage_placer", egx.a);
+   public static final egt<egp> k = a("cherry_foliage_placer", egp.a);
+   private final MapCodec<P> l;
 
-   private static DataResult<egt> a(bpb<dtc> $$0) {
-      return $$0.d() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new egt($$0));
+   private static <P extends egs> egt<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.U, $$0, new egt<>($$1));
    }
 
-   public egt(bpb<dtc> $$0) {
-      this.c = $$0;
+   private egt(MapCodec<P> $$0) {
+      this.l = $$0;
    }
 
-   public egt(bpb.a<dtc> $$0) {
-      this($$0.a());
-   }
-
-   @Override
-   protected egk<?> a() {
-      return egk.b;
-   }
-
-   @Override
-   public dtc a(ayw $$0, jd $$1) {
-      return this.c.a($$0).orElseThrow(IllegalStateException::new);
+   public MapCodec<P> a() {
+      return this.l;
    }
 }

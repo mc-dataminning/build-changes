@@ -1,45 +1,71 @@
-public class sj {
-   public static final akq<eiv> a = sg.a("pile_hay");
-   public static final akq<eiv> b = sg.a("pile_melon");
-   public static final akq<eiv> c = sg.a("pile_snow");
-   public static final akq<eiv> d = sg.a("pile_ice");
-   public static final akq<eiv> e = sg.a("pile_pumpkin");
-   public static final akq<eiv> f = sg.a("oak");
-   public static final akq<eiv> g = sg.a("acacia");
-   public static final akq<eiv> h = sg.a("spruce");
-   public static final akq<eiv> i = sg.a("pine");
-   public static final akq<eiv> j = sg.a("patch_cactus");
-   public static final akq<eiv> k = sg.a("flower_plain");
-   public static final akq<eiv> l = sg.a("patch_taiga_grass");
-   public static final akq<eiv> m = sg.a("patch_berry_bush");
+import java.util.List;
 
-   public static void a(qq<eiv> $$0) {
-      jn<ebq<?, ?>> $$1 = $$0.a(lu.aI);
-      jm<ebq<?, ?>> $$2 = $$1.b(rv.a);
-      jm<ebq<?, ?>> $$3 = $$1.b(rv.b);
-      jm<ebq<?, ?>> $$4 = $$1.b(rv.c);
-      jm<ebq<?, ?>> $$5 = $$1.b(rv.d);
-      jm<ebq<?, ?>> $$6 = $$1.b(rv.e);
-      jm<ebq<?, ?>> $$7 = $$1.b(rw.g);
-      jm<ebq<?, ?>> $$8 = $$1.b(rw.j);
-      jm<ebq<?, ?>> $$9 = $$1.b(rw.k);
-      jm<ebq<?, ?>> $$10 = $$1.b(rw.l);
-      jm<ebq<?, ?>> $$11 = $$1.b(rx.r);
-      jm<ebq<?, ?>> $$12 = $$1.b(rx.w);
-      jm<ebq<?, ?>> $$13 = $$1.b(rx.i);
-      jm<ebq<?, ?>> $$14 = $$1.b(rx.h);
-      sg.a($$0, a, $$2);
-      sg.a($$0, b, $$3);
-      sg.a($$0, c, $$4);
-      sg.a($$0, d, $$5);
-      sg.a($$0, e, $$6);
-      sg.a($$0, f, $$7, sg.a(dga.x));
-      sg.a($$0, g, $$8, sg.a(dga.B));
-      sg.a($$0, h, $$9, sg.a(dga.y));
-      sg.a($$0, i, $$10, sg.a(dga.y));
-      sg.a($$0, j, $$11);
-      sg.a($$0, k, $$12);
-      sg.a($$0, l, $$13);
-      sg.a($$0, m, $$14);
+public class sj {
+   public static final ejv a = ejo.a(dzw.a.e);
+   public static final ejv b = ejo.a(dzw.a.c);
+   public static final ejv c = ejo.a(dzw.a.a);
+   public static final ejv d = ejo.a(dzw.a.d);
+   public static final ejv e = ejn.a(eaq.a(), eaq.b());
+   public static final ejv f = ejn.a(eaq.b(10), eaq.c(10));
+   public static final ejv g = ejn.a(eaq.b(8), eaq.c(8));
+   public static final ejv h = ejn.a(eaq.b(4), eaq.c(4));
+   public static final ejv i = ejn.a(eaq.a(), eaq.a(256));
+
+   public static void a(qt<ejs> $$0) {
+      sd.a($$0);
+      se.a($$0);
+      sf.a($$0);
+      sg.a($$0);
+      sh.a($$0);
+      si.a($$0);
+      sk.a($$0);
+      sl.a($$0);
+      sm.a($$0);
+   }
+
+   public static ala<ejs> a(String $$0) {
+      return ala.a(lv.aQ, alb.b($$0));
+   }
+
+   public static void a(qt<ejs> $$0, ala<ejs> $$1, jn<eco<?, ?>> $$2, List<ejv> $$3) {
+      $$0.a($$1, new ejs($$2, List.copyOf($$3)));
+   }
+
+   public static void a(qt<ejs> $$0, ala<ejs> $$1, jn<eco<?, ?>> $$2, ejv... $$3) {
+      a($$0, $$1, $$2, List.of($$3));
+   }
+
+   public static ejv a(int $$0, float $$1, int $$2) {
+      float $$3 = 1.0F / $$1;
+      if (Math.abs($$3 - (float)((int)$$3)) > 1.0E-5F) {
+         throw new IllegalStateException("Chance data cannot be represented as list weight");
+      } else {
+         bpu<bqp> $$4 = bpu.<bqp>a().a(bqm.a($$0), (int)$$3 - 1).a(bqm.a($$0 + $$2), 1).a();
+         return ejk.a(new bqw($$4));
+      }
+   }
+
+   public static eju a() {
+      return ejh.a(ebd.c);
+   }
+
+   public static ejh a(dgv $$0) {
+      return ejh.a(ebd.a($$0.o(), je.c));
+   }
+
+   public static jn<ejs> a(jn<eco<?, ?>> $$0, ejv... $$1) {
+      return jn.a(new ejs($$0, List.of($$1)));
+   }
+
+   public static <FC extends efg, F extends edc<FC>> jn<ejs> a(F $$0, FC $$1, ejv... $$2) {
+      return a(jn.a(new eco($$0, $$1)), $$2);
+   }
+
+   public static <FC extends efg, F extends edc<FC>> jn<ejs> a(F $$0, FC $$1) {
+      return a($$0, $$1, ebd.c);
+   }
+
+   public static <FC extends efg, F extends edc<FC>> jn<ejs> a(F $$0, FC $$1, ebd $$2) {
+      return a($$0, $$1, ejh.a($$2));
    }
 }

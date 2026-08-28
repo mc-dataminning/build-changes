@@ -1,44 +1,106 @@
-import java.time.Instant;
-import javax.annotation.Nullable;
-
-public record agq(String b, Instant c, long d, @Nullable xl e, xg.b f) implements zg<agi> {
-   public static final yx<vw, agq> a = zg.a(agq::a, agq::new);
-
-   private agq(vw $$0) {
-      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xl::a), new xg.b($$0));
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b, 256);
-      $$0.a(this.c);
-      $$0.b(this.d);
-      $$0.a(this.e, xl::a);
-      this.f.a($$0);
-   }
-
+public interface agq extends aad, ajv {
    @Override
-   public zi<agq> a() {
-      return agg.bl;
+   default vy b() {
+      return vy.b;
    }
 
-   public void a(agi $$0) {
-      $$0.a(this);
-   }
+   void a(aim var1);
 
-   public Instant e() {
-      return this.c;
-   }
+   void a(agy var1);
 
-   public long f() {
-      return this.d;
-   }
+   void a(agw var1);
 
-   @Nullable
-   public xl g() {
-      return this.e;
-   }
+   void a(agx var1);
 
-   public xg.b h() {
-      return this.f;
-   }
+   void a(agv var1);
+
+   void a(ahb var1);
+
+   void a(ahf var1);
+
+   void a(ahg var1);
+
+   void a(aht var1);
+
+   void a(ahh var1);
+
+   void a(ahm var1);
+
+   void a(ahp var1);
+
+   void a(ahu var1);
+
+   void a(ahv var1);
+
+   void a(ahw var1);
+
+   void a(ahx var1);
+
+   void a(aif var1);
+
+   void a(aii var1);
+
+   void a(ail var1);
+
+   void a(aio var1);
+
+   void a(aip var1);
+
+   void a(ain var1);
+
+   void a(ahr var1);
+
+   void a(ahq var1);
+
+   void a(ags var1);
+
+   void a(ahz var1);
+
+   void a(aic var1);
+
+   void a(ahy var1);
+
+   void a(aib var1);
+
+   void a(ahd var1);
+
+   void a(aig var1);
+
+   void a(aih var1);
+
+   void a(ahs var1);
+
+   void a(aia var1);
+
+   void a(aie var1);
+
+   void a(aik var1);
+
+   void a(aid var1);
+
+   void a(ahk var1);
+
+   void a(ahl var1);
+
+   void a(ahi var1);
+
+   void a(agt var1);
+
+   void a(aij var1);
+
+   void a(ahn var1);
+
+   void a(agu var1);
+
+   void a(aho var1);
+
+   void a(agz var1);
+
+   void a(ahe var1);
+
+   void a(aha var1);
+
+   void a(ahj var1);
+
+   void a(ahc var1);
 }

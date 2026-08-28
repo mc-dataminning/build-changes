@@ -1,110 +1,89 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public record cpr(int c, float d, boolean e, float f, Optional<cuq> g, List<cpr.b> h) {
-   private static final float i = 1.6F;
-   public static final Codec<cpr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axw.k.fieldOf("nutrition").forGetter(cpr::b),
-               Codec.FLOAT.fieldOf("saturation").forGetter(cpr::c),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cpr::d),
-               axw.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cpr::e),
-               cuq.c.optionalFieldOf("using_converts_to").forGetter(cpr::f),
-               cpr.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cpr::g)
-            )
-            .apply($$0, cpr::new)
-   );
-   public static final yx<wk, cpr> b = yx.a(yv.g, cpr::b, yv.i, cpr::c, yv.b, cpr::d, yv.i, cpr::e, cuq.i.a(yv::a), cpr::f, cpr.b.b.a(yv.a()), cpr::g, cpr::new);
-
-   public int a() {
-      return (int)(this.f * 20.0F);
+public class cpr {
+   public static int[][] a(jj $$0) {
+      jj $$1 = $$0.h();
+      jj $$2 = $$1.g();
+      jj $$3 = $$0.g();
+      return new int[][]{
+         {$$1.j(), $$1.l()},
+         {$$2.j(), $$2.l()},
+         {$$3.j() + $$1.j(), $$3.l() + $$1.l()},
+         {$$3.j() + $$2.j(), $$3.l() + $$2.l()},
+         {$$0.j() + $$1.j(), $$0.l() + $$1.l()},
+         {$$0.j() + $$2.j(), $$0.l() + $$2.l()},
+         {$$3.j(), $$3.l()},
+         {$$0.j(), $$0.l()}
+      };
    }
 
-   public int b() {
-      return this.c;
+   public static boolean a(double $$0) {
+      return !Double.isInfinite($$0) && $$0 < 1.0;
    }
 
-   public float c() {
-      return this.d;
+   public static boolean a(ddb $$0, buf $$1, exz $$2) {
+      for (eyx $$4 : $$0.e($$1, $$2)) {
+         if (!$$4.c()) {
+            return false;
+         }
+      }
+
+      return $$0.A_().a($$2);
    }
 
-   public boolean d() {
-      return this.e;
+   public static boolean a(ddb $$0, eye $$1, buf $$2, bur $$3) {
+      return a($$0, $$2, $$2.f($$3).c($$1));
    }
 
-   public float e() {
-      return this.f;
+   public static eyx a(dcx $$0, je $$1) {
+      dua $$2 = $$0.a_($$1);
+      return !$$2.a(aws.aQ) && (!($$2.b() instanceof dpj) || !$$2.c(dpj.b)) ? $$2.g($$0, $$1) : eyu.a();
    }
 
-   public Optional<cuq> f() {
-      return this.g;
+   public static double a(je $$0, int $$1, Function<je, eyx> $$2) {
+      je.a $$3 = $$0.k();
+      int $$4 = 0;
+
+      while ($$4 < $$1) {
+         eyx $$5 = $$2.apply($$3);
+         if (!$$5.c()) {
+            return (double)($$0.v() + $$4) + $$5.b(jj.a.b);
+         }
+
+         $$4++;
+         $$3.c(jj.b);
+      }
+
+      return Double.POSITIVE_INFINITY;
    }
 
-   public List<cpr.b> g() {
-      return this.h;
-   }
+   @Nullable
+   public static eye a(btq<?> $$0, ddb $$1, je $$2, boolean $$3) {
+      if ($$3 && $$0.a($$1.a_($$2))) {
+         return null;
+      } else {
+         double $$4 = $$1.a(a((dcx)$$1, $$2), () -> a((dcx)$$1, $$2.e()));
+         if (!a($$4)) {
+            return null;
+         } else if ($$3 && $$4 <= 0.0 && $$0.a($$1.a_($$2.e()))) {
+            return null;
+         } else {
+            eye $$5 = eye.a($$2, $$4);
+            exz $$6 = $$0.n().a($$5);
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private float d = 1.6F;
-      private Optional<cuq> e = Optional.empty();
-      private final Builder<cpr.b> f = ImmutableList.builder();
+            for (eyx $$8 : $$1.e(null, $$6)) {
+               if (!$$8.c()) {
+                  return null;
+               }
+            }
 
-      public cpr.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public cpr.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cpr.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public cpr.a b() {
-         this.d = 0.8F;
-         return this;
-      }
-
-      public cpr.a a(brz $$0, float $$1) {
-         this.f.add(new cpr.b($$0, $$1));
-         return this;
-      }
-
-      public cpr.a a(dcv $$0) {
-         this.e = Optional.of(new cuq($$0));
-         return this;
-      }
-
-      public cpr c() {
-         float $$0 = cpp.a(this.a, this.b);
-         return new cpr(this.a, $$0, this.c, this.d, this.e, this.f.build());
-      }
-   }
-
-   public static record b(brz c, float d) {
-      public static final Codec<cpr.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(brz.d.fieldOf("effect").forGetter(cpr.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cpr.b::b))
-               .apply($$0, cpr.b::new)
-      );
-      public static final yx<wk, cpr.b> b = yx.a(brz.e, cpr.b::a, yv.i, cpr.b::b, cpr.b::new);
-
-      public brz a() {
-         return new brz(this.c);
-      }
-
-      public float b() {
-         return this.d;
+            if ($$0 != btq.by || !$$1.a_($$2).a(aws.cr) && !$$1.a_($$2.d()).a(aws.cr)) {
+               return !$$1.A_().a($$6) ? null : $$5;
+            } else {
+               return null;
+            }
+         }
       }
    }
 }

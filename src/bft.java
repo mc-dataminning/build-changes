@@ -1,27 +1,28 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.Optional;
+import com.mojang.serialization.OptionalDynamic;
 
-public class bft extends bfn {
-   public bft(Schema $$0, boolean $$1) {
-      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bgr.s, "minecraft:banner");
+public class bft extends DataFix {
+   public bft(Schema $$0) {
+      super($$0, false);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return $$0.update("ExitPortalLocation", ban::a);
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("CustomName").asString().result();
-      if ($$1.isPresent()) {
-         String $$2 = $$1.get();
-         $$2 = $$2.replace("\"translate\":\"block.minecraft.illager_banner\"", "\"translate\":\"block.minecraft.ominous_banner\"");
-         return $$0.set("CustomName", $$0.createString($$2));
-      } else {
-         return $$0;
-      }
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bhk.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
+            if ($$1.result().isPresent()) {
+               return $$0x;
+            } else {
+               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
+               return $$0x.set("DragonFight", a($$2));
+            }
+         }));
    }
 }

@@ -1,50 +1,159 @@
-import java.util.List;
+import com.mojang.blaze3d.platform.GlStateManager;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.IntSupplier;
 
-public class fpj {
-   private static final int a = 30;
-   private static final int b = 16;
-   private static final int c = 4;
-   private final int d;
-   private List<akr> e = List.of();
-   private int f;
-   private int g;
+public class fpj extends fpn {
+   public static final alb a = alb.b("textures/gui/title/mojangstudios.png");
+   private static final int d = axn.a(255, 239, 50, 61);
+   private static final int e = axn.a(255, 0, 0, 0);
+   private static final IntSupplier f = () -> fib.Q().n.a().c() ? e : d;
+   private static final int g = 240;
+   private static final float h = 60.0F;
+   private static final int i = 60;
+   private static final int j = 120;
+   private static final float k = 0.0625F;
+   private static final float l = 0.95F;
+   public static final long b = 1000L;
+   public static final long c = 500L;
+   private final fib m;
+   private final auo n;
+   private final Consumer<Optional<Throwable>> o;
+   private final boolean p;
+   private float q;
+   private long r = -1L;
+   private long s = -1L;
 
-   public fpj(int $$0) {
-      this.d = $$0;
+   public fpj(fib $$0, auo $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
+      this.m = $$0;
+      this.n = $$1;
+      this.o = $$2;
+      this.p = $$3;
    }
 
-   public void a(List<akr> $$0) {
-      if (!this.e.equals($$0)) {
-         this.e = $$0;
-         this.g = 0;
-      }
-
-      if (!this.e.isEmpty() && ++this.f % 30 == 0) {
-         this.g = (this.g + 1) % this.e.size();
-      }
+   public static void a(fib $$0) {
+      $$0.aa().a(a, new fpj.a());
    }
 
-   public void a(cpu $$0, fhz $$1, float $$2, int $$3, int $$4) {
-      crq $$5 = $$0.b(this.d);
-      if (!this.e.isEmpty() && !$$5.h()) {
-         boolean $$6 = this.e.size() > 1 && this.f >= 30;
-         float $$7 = $$6 ? this.a($$2) : 1.0F;
-         if ($$7 < 1.0F) {
-            int $$8 = Math.floorMod(this.g - 1, this.e.size());
-            this.a($$5, this.e.get($$8), 1.0F - $$7, $$1, $$3, $$4);
+   private static int a(int $$0, int $$1) {
+      return $$0 & 16777215 | $$1 << 24;
+   }
+
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      int $$4 = $$0.a();
+      int $$5 = $$0.b();
+      long $$6 = ad.c();
+      if (this.p && this.s == -1L) {
+         this.s = $$6;
+      }
+
+      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
+      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
+      float $$10;
+      if ($$7 >= 1.0F) {
+         if (this.m.z != null) {
+            this.m.z.a($$0, 0, 0, $$3);
          }
 
-         this.a($$5, this.e.get(this.g), $$7, $$1, $$3, $$4);
+         int $$9 = azc.f((1.0F - azc.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
+         $$0.a(ghe.H(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
+         $$10 = 1.0F - azc.a($$7 - 1.0F, 0.0F, 1.0F);
+      } else if (this.p) {
+         if (this.m.z != null && $$8 < 1.0F) {
+            this.m.z.a($$0, $$1, $$2, $$3);
+         }
+
+         int $$11 = azc.c(azc.a((double)$$8, 0.15, 1.0) * 255.0);
+         $$0.a(ghe.H(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
+         $$10 = azc.a($$8, 0.0F, 1.0F);
+      } else {
+         int $$13 = f.getAsInt();
+         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
+         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
+         float $$16 = (float)($$13 & 0xFF) / 255.0F;
+         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
+         GlStateManager._clear(16384);
+         $$10 = 1.0F;
+      }
+
+      int $$18 = (int)((double)$$0.a() * 0.5);
+      int $$19 = (int)((double)$$0.b() * 0.5);
+      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
+      int $$21 = (int)($$20 * 0.5);
+      double $$22 = $$20 * 4.0;
+      int $$23 = (int)($$22 * 0.5);
+      int $$24 = axn.a($$10);
+      $$0.a($$0x -> ghe.L(), a, $$18 - $$23, $$19 - $$21, -0.0625F, 0.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
+      $$0.a($$0x -> ghe.L(), a, $$18, $$19 - $$21, 0.0625F, 60.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
+      int $$25 = (int)((double)$$0.b() * 0.8325);
+      float $$26 = this.n.b();
+      this.q = azc.a(this.q * 0.95F + $$26 * 0.050000012F, 0.0F, 1.0F);
+      if ($$7 < 1.0F) {
+         this.a($$0, $$4 / 2 - $$23, $$25 - 5, $$4 / 2 + $$23, $$25 + 5, 1.0F - azc.a($$7, 0.0F, 1.0F));
+      }
+
+      if ($$7 >= 2.0F) {
+         this.m.a(null);
+      }
+
+      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
+         try {
+            this.n.d();
+            this.o.accept(Optional.empty());
+         } catch (Throwable var24) {
+            this.o.accept(Optional.of(var24));
+         }
+
+         this.r = ad.c();
+         if (this.m.z != null) {
+            this.m.z.b(this.m, $$0.a(), $$0.b());
+         }
       }
    }
 
-   private void a(crq $$0, akr $$1, float $$2, fhz $$3, int $$4, int $$5) {
-      gql $$6 = fgo.Q().a(gqk.e).apply($$1);
-      $$3.a($$4 + $$0.e, $$5 + $$0.f, 0, 16, 16, $$6, 1.0F, 1.0F, 1.0F, $$2);
+   private void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
+      int $$6 = azc.f((float)($$3 - $$1 - 2) * this.q);
+      int $$7 = Math.round($$5 * 255.0F);
+      int $$8 = axn.a($$7, 255, 255, 255);
+      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
+      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
+      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
+      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
+      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
    }
 
-   private float a(float $$0) {
-      float $$1 = (float)(this.f % 30) + $$0;
-      return Math.min($$1, 4.0F) / 4.0F;
+   @Override
+   public boolean a() {
+      return true;
+   }
+
+   static class a extends gwd {
+      public a() {
+         super(fpj.a);
+      }
+
+      @Override
+      protected gwd.a b(aus $$0) {
+         ati $$1 = fib.Q().ad();
+         auk<InputStream> $$2 = $$1.a(atg.a, fpj.a);
+         if ($$2 == null) {
+            return new gwd.a(new FileNotFoundException(fpj.a.toString()));
+         } else {
+            try {
+               gwd.a var5;
+               try (InputStream $$3 = $$2.get()) {
+                  var5 = new gwd.a(new gyi(true, true), fbp.a($$3));
+               }
+
+               return var5;
+            } catch (IOException var9) {
+               return new gwd.a(var9);
+            }
+         }
+      }
    }
 }

@@ -1,61 +1,67 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class esm extends esj {
-   public static final MapCodec<esm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(awu.a(lu.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, esm::new)
-   );
-   private final awu<cul> j;
-   private final boolean k;
+public interface esm extends eso {
+   @Override
+   String e();
 
-   private esm(awu<cul> $$0, boolean $$1, int $$2, int $$3, List<evc> $$4, List<etf> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public esi a() {
-      return esf.f;
+   default void a(p $$0, ddu $$1) {
+      eso.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   @Override
-   public void a(Consumer<cuq> $$0, err $$1) {
-      lt.g.c(this.j).forEach($$1x -> $$0.accept(new cuq($$1x)));
-   }
+   int f();
 
-   private boolean a(err $$0, Consumer<esg> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jm<cul> $$2 : lt.g.c(this.j)) {
-            $$1.accept(new esj.c() {
-               @Override
-               public void a(Consumer<cuq> $$0, err $$1) {
-                  $$0.accept(new cuq($$2));
-               }
-            });
-         }
+   void a(int var1);
 
-         return true;
-      }
-   }
+   int t();
 
-   @Override
-   public boolean expand(err $$0, Consumer<esg> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
-   }
+   void d(int var1);
 
-   public static esj.a<?> a(awu<cul> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new esm($$0, false, $$1, $$2, $$3, $$4));
-   }
+   int u();
 
-   public static esj.a<?> b(awu<cul> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new esm($$0, true, $$1, $$2, $$3, $$4));
-   }
+   void e(int var1);
+
+   @Nullable
+   UUID v();
+
+   void a(UUID var1);
+
+   ddp k();
+
+   void a(dvr.c var1);
+
+   dvr.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(ddp var1);
+
+   exr<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
 }

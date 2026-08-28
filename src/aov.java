@@ -1,20 +1,28 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 
 public class aov {
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
+   public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("tellraw").requires($$0x -> $$0x.c(2)))
-            .then(eu.a("targets", fg.d()).then(eu.a("message", fc.a($$1)).executes($$0x -> {
-               int $$1x = 0;
-
-               for (aqv $$2 : fg.f($$0x, "targets")) {
-                  $$2.b(xc.a((et)$$0x.getSource(), fc.a($$0x, "message"), $$2, 0), false);
-                  $$1x++;
-               }
-
-               return $$1x;
-            })))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("setworldspawn").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((et)$$0x.getSource(), je.a((jx)((et)$$0x.getSource()).d()), 0.0F)))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("pos", gp.a()).executes($$0x -> a((et)$$0x.getSource(), gp.c($$0x, "pos"), 0.0F)))
+                  .then(eu.a("angle", ez.a()).executes($$0x -> a((et)$$0x.getSource(), gp.c($$0x, "pos"), ez.a($$0x, "angle"))))
+            )
       );
+   }
+
+   private static int a(et $$0, je $$1, float $$2) {
+      arg $$3 = $$0.e();
+      if ($$3.ag() != dds.h) {
+         $$0.b(xd.c("commands.setworldspawn.failure.not_overworld"));
+         return 0;
+      } else {
+         $$3.a($$1, $$2);
+         $$0.a(() -> xd.a("commands.setworldspawn.success", $$1.u(), $$1.v(), $$1.w(), $$2), true);
+         return 1;
+      }
    }
 }

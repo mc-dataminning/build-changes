@@ -1,65 +1,77 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.AbstractCollection;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class axu {
-   final LoadingCache<axu.a<?, ?>, DataResult<?>> a;
+public class axu<T> extends AbstractCollection<T> {
+   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
+   private final Class<T> b;
+   private final List<T> c = Lists.newArrayList();
 
-   public axu(int $$0) {
-      this.a = CacheBuilder.newBuilder().maximumSize((long)$$0).concurrencyLevel(1).softValues().build(new CacheLoader<axu.a<?, ?>, DataResult<?>>() {
-         public DataResult<?> a(axu.a<?, ?> $$0) {
-            return $$0.a();
-         }
-      });
+   public axu(Class<T> $$0) {
+      this.b = $$0;
+      this.a.put($$0, this.c);
    }
 
-   public <A> Codec<A> a(final Codec<A> $$0) {
-      return new Codec<A>() {
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1) {
-            return $$0.decode($$0, $$1);
-         }
+   @Override
+   public boolean add(T $$0) {
+      boolean $$1 = false;
 
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1, T $$2) {
-            return ((DataResult)axu.this.a.getUnchecked(new axu.a($$0, $$0, $$1))).map($$0xx -> $$0xx instanceof uy $$1x ? $$1x.d() : $$0xx);
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            $$1 |= $$2.getValue().add($$0);
          }
-      };
+      }
+
+      return $$1;
    }
 
-   static record a<A, T>(Codec<A> a, A b, DynamicOps<T> c) {
-      public DataResult<T> a() {
-         return this.a.encodeStart(this.c, this.b);
-      }
+   @Override
+   public boolean remove(Object $$0) {
+      boolean $$1 = false;
 
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else {
-            return !($$0 instanceof axu.a<?, ?> $$1) ? false : this.a == $$1.a && this.b.equals($$1.b) && this.c.equals($$1.c);
+      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
+         if ($$2.getKey().isInstance($$0)) {
+            List<T> $$3 = $$2.getValue();
+            $$1 |= $$3.remove($$0);
          }
       }
 
-      @Override
-      public int hashCode() {
-         int $$0 = System.identityHashCode(this.a);
-         $$0 = 31 * $$0 + this.b.hashCode();
-         return 31 * $$0 + this.c.hashCode();
-      }
+      return $$1;
+   }
 
-      public Codec<A> b() {
-         return this.a;
-      }
+   @Override
+   public boolean contains(Object $$0) {
+      return this.a($$0.getClass()).contains($$0);
+   }
 
-      public A c() {
-         return this.b;
+   public <S> Collection<S> a(Class<S> $$0) {
+      if (!this.b.isAssignableFrom($$0)) {
+         throw new IllegalArgumentException("Don't know how to search for " + $$0);
+      } else {
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ad.b()));
+         return (Collection<S>)Collections.unmodifiableCollection($$1);
       }
+   }
 
-      public DynamicOps<T> d() {
-         return this.c;
-      }
+   @Override
+   public Iterator<T> iterator() {
+      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
+   }
+
+   public List<T> a() {
+      return ImmutableList.copyOf(this.c);
+   }
+
+   @Override
+   public int size() {
+      return this.c.size();
    }
 }

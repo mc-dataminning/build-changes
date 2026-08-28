@@ -1,33 +1,29 @@
-import java.util.List;
+public class act implements zk<abz> {
+   public static final zb<wa, act> a = zk.a(act::a, act::new);
+   private final int b;
 
-public record act(act.a b, List<String> c) implements zg<abu> {
-   public static final yx<vw, act> a = zg.a(act::a, act::new);
-
-   private act(vw $$0) {
-      this($$0.b(act.a.class), $$0.a(vw::p));
+   public act(int $$0) {
+      this.b = $$0;
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b);
-      $$0.a(this.c, vw::a);
+   private act(wa $$0) {
+      this.b = $$0.x();
+   }
+
+   private void a(wa $$0) {
+      $$0.f(this.b);
    }
 
    @Override
-   public zi<act> a() {
-      return agg.y;
+   public zm<act> a() {
+      return ago.t;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public List<String> e() {
-      return this.c;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
+   public int b() {
+      return this.b;
    }
 }

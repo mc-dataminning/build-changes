@@ -1,56 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class djl extends dfy {
-   protected final ji a;
-   protected final boolean b;
-   protected final exv d;
+public class djl extends dnf {
+   public static final MapCodec<djl> b = b(djl::new);
 
-   protected djl(dtb.d $$0, ji $$1, exv $$2, boolean $$3) {
+   @Override
+   public MapCodec<djl> a() {
+      return b;
+   }
+
+   protected djl(dtz.d $$0) {
       super($$0);
-      this.a = $$1;
-      this.d = $$2;
-      this.b = $$3;
+      this.l(this.E.b().b(a, jj.b));
    }
 
    @Override
-   protected abstract MapCodec<? extends djl> a();
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      dtc $$1 = $$0.q().a_($$0.a().a(this.a));
-      return !$$1.a(this.c()) && !$$1.a(this.b()) ? this.a($$0.q()) : this.b().o();
-   }
-
-   public dtc a(dcx $$0) {
-      return this.o();
+   public dua a(cyw $$0) {
+      jj $$1 = $$0.k();
+      dua $$2 = $$0.q().a_($$0.a().a($$1.g()));
+      return $$2.a(this) && $$2.c(a) == $$1 ? this.o().b(a, $$1.g()) : this.o().b(a, $$1);
    }
 
    @Override
-   protected boolean a(dtc $$0, dcz $$1, jd $$2) {
-      jd $$3 = $$2.a(this.a.g());
-      dtc $$4 = $$1.a_($$3);
-      return !this.m($$4) ? false : $$4.a(this.c()) || $$4.a(this.b()) || $$4.d($$1, $$3, this.a);
-   }
-
-   @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if (!$$0.a($$1, $$2)) {
-         $$1.b($$2, true);
+   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
+      jj $$4 = $$0.c(a);
+      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
+      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
+      if ($$3.a(5) == 0) {
+         $$1.a(ln.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
       }
    }
 
-   protected boolean m(dtc $$0) {
-      return true;
-   }
-
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return this.d;
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(a);
    }
-
-   protected abstract djn c();
-
-   protected abstract dfy b();
 }

@@ -1,157 +1,107 @@
+import com.google.common.collect.Maps;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.FloatArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Arrays;
+import com.mojang.datafixers.util.Pair;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.function.ToIntFunction;
 
 public class aow {
-   private static final float a = 10000.0F;
-   private static final String b = String.valueOf(20);
+   private static final Map<Pair<jn<ctd>, btr>, cvg> a = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(Pair.of(cte.b, btr.f), cvo.pD);
+      $$0.put(Pair.of(cte.b, btr.e), cvo.pE);
+      $$0.put(Pair.of(cte.b, btr.d), cvo.pF);
+      $$0.put(Pair.of(cte.b, btr.c), cvo.pG);
+      $$0.put(Pair.of(cte.c, btr.f), cvo.pH);
+      $$0.put(Pair.of(cte.c, btr.e), cvo.pI);
+      $$0.put(Pair.of(cte.c, btr.d), cvo.pJ);
+      $$0.put(Pair.of(cte.c, btr.c), cvo.pK);
+      $$0.put(Pair.of(cte.d, btr.f), cvo.pP);
+      $$0.put(Pair.of(cte.d, btr.e), cvo.pQ);
+      $$0.put(Pair.of(cte.d, btr.d), cvo.pR);
+      $$0.put(Pair.of(cte.d, btr.c), cvo.pS);
+      $$0.put(Pair.of(cte.g, btr.f), cvo.pT);
+      $$0.put(Pair.of(cte.g, btr.e), cvo.pU);
+      $$0.put(Pair.of(cte.g, btr.d), cvo.pV);
+      $$0.put(Pair.of(cte.g, btr.c), cvo.pW);
+      $$0.put(Pair.of(cte.e, btr.f), cvo.pL);
+      $$0.put(Pair.of(cte.e, btr.e), cvo.pM);
+      $$0.put(Pair.of(cte.e, btr.d), cvo.pN);
+      $$0.put(Pair.of(cte.e, btr.c), cvo.pO);
+      $$0.put(Pair.of(cte.f, btr.f), cvo.op);
+   });
+   private static final List<ala<cxt>> b = List.of(
+      cxu.a, cxu.b, cxu.c, cxu.d, cxu.e, cxu.f, cxu.g, cxu.h, cxu.i, cxu.j, cxu.k, cxu.l, cxu.m, cxu.n, cxu.o, cxu.p, cxu.q, cxu.r
+   );
+   private static final List<ala<cxr>> c = List.of(cxs.a, cxs.b, cxs.c, cxs.d, cxs.e, cxs.f, cxs.g, cxs.h, cxs.i, cxs.j);
+   private static final ToIntFunction<ala<cxt>> d = ad.g(b);
+   private static final ToIntFunction<ala<cxr>> e = ad.g(c);
 
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a(
-                                 "tick"
-                              )
-                              .requires($$0x -> $$0x.c(3)))
-                           .then(eu.a("query").executes($$0x -> a((et)$$0x.getSource()))))
-                        .then(
-                           eu.a("rate")
-                              .then(
-                                 eu.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> ey.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((et)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
-                              )
-                        ))
-                     .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("step").executes($$0x -> b((et)$$0x.getSource(), 1)))
-                              .then(eu.a("stop").executes($$0x -> b((et)$$0x.getSource()))))
-                           .then(
-                              eu.a("time", gi.a(1))
-                                 .suggests(($$0x, $$1) -> ey.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                           )
-                     ))
-                  .then(
-                     ((LiteralArgumentBuilder)eu.a("sprint").then(eu.a("stop").executes($$0x -> c((et)$$0x.getSource()))))
-                        .then(
-                           eu.a("time", gi.a(1))
-                              .suggests(($$0x, $$1) -> ey.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((et)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
-                        )
-                  ))
-               .then(eu.a("unfreeze").executes($$0x -> a((et)$$0x.getSource(), false))))
-            .then(eu.a("freeze").executes($$0x -> a((et)$$0x.getSource(), true)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("spawn_armor_trims").requires($$0x -> $$0x.c(2)))
+            .executes($$0x -> a((et)$$0x.getSource(), ((et)$$0x.getSource()).h()))
       );
    }
 
-   private static String a(long $$0) {
-      return String.format("%.1f", (float)$$0 / (float)azp.b);
-   }
+   private static int a(et $$0, cnp $$1) {
+      dds $$2 = $$1.dS();
+      jw<cxq> $$3 = jw.a();
+      ka<cxt> $$4 = $$2.F_().d(lv.aX);
+      ka<cxr> $$5 = $$2.F_().d(lv.aW);
+      $$4.s()
+         .sorted(Comparator.comparing($$1x -> d.applyAsInt($$4.d($$1x).orElse(null))))
+         .forEachOrdered(
+            $$3x -> $$5.s()
+                  .sorted(Comparator.comparing($$1xx -> e.applyAsInt($$5.d($$1xx).orElse(null))))
+                  .forEachOrdered($$4x -> $$3.add(new cxq($$5.e($$4x), $$4.e($$3x))))
+         );
+      je $$6 = $$1.ds().a($$1.cL(), 5);
+      ka<ctd> $$7 = $$0.v().d(lv.az);
+      int $$8 = $$7.c() - 1;
+      double $$9 = 3.0;
+      int $$10 = 0;
+      int $$11 = 0;
 
-   private static int a(et $$0, float $$1) {
-      all $$2 = $$0.l().aQ();
-      $$2.a($$1);
-      String $$3 = String.format("%.1f", $$1);
-      $$0.a(() -> wz.a("commands.tick.rate.success", $$3), true);
-      return (int)$$1;
-   }
+      for (cxq $$12 : $$3) {
+         for (ctd $$13 : $$7) {
+            if ($$13 != cte.a.a()) {
+               double $$14 = (double)$$6.u() + 0.5 - (double)($$10 % $$5.c()) * 3.0;
+               double $$15 = (double)$$6.v() + 0.5 + (double)($$11 % $$8) * 3.0;
+               double $$16 = (double)$$6.w() + 0.5 + (double)($$10 / $$5.c() * 10);
+               cjo $$17 = new cjo($$2, $$14, $$15, $$16);
+               $$17.v(180.0F);
+               $$17.f(true);
 
-   private static int a(et $$0) {
-      all $$1 = $$0.l().aQ();
-      String $$2 = a($$0.l().aR());
-      float $$3 = $$1.f();
-      String $$4 = String.format("%.1f", $$3);
-      if ($$1.a()) {
-         $$0.a(() -> wz.c("commands.tick.status.sprinting"), false);
-         $$0.a(() -> wz.a("commands.tick.query.rate.sprinting", $$4, $$2), false);
-      } else {
-         if ($$1.l()) {
-            $$0.a(() -> wz.c("commands.tick.status.frozen"), false);
-         } else if ($$1.h() < $$0.l().aR()) {
-            $$0.a(() -> wz.c("commands.tick.status.lagging"), false);
-         } else {
-            $$0.a(() -> wz.c("commands.tick.status.running"), false);
+               for (btr $$18 : btr.values()) {
+                  cvg $$19 = a.get(Pair.of($$13, $$18));
+                  if ($$19 != null) {
+                     cvl $$20 = new cvl($$19);
+                     $$20.b(kr.M, $$12);
+                     $$17.a($$18, $$20);
+                     if ($$19 instanceof ctc) {
+                        ctc $$21 = (ctc)$$19;
+                        if ($$21.h().a(cte.f)) {
+                           $$17.b($$12.a().a().a($$12.b()).f().f(" ").b($$12.b().a().e()));
+                           $$17.p(true);
+                           continue;
+                        }
+                     }
+
+                     $$17.k(true);
+                  }
+               }
+
+               $$2.b($$17);
+               $$11++;
+            }
          }
 
-         String $$5 = a($$1.h());
-         $$0.a(() -> wz.a("commands.tick.query.rate.running", $$4, $$2, $$5), false);
+         $$10++;
       }
 
-      long[] $$6 = Arrays.copyOf($$0.l().aS(), $$0.l().aS().length);
-      Arrays.sort($$6);
-      String $$7 = a($$6[$$6.length / 2]);
-      String $$8 = a($$6[(int)((double)$$6.length * 0.95)]);
-      String $$9 = a($$6[(int)((double)$$6.length * 0.99)]);
-      $$0.a(() -> wz.a("commands.tick.query.percentiles", $$7, $$8, $$9, $$6.length), false);
-      return (int)$$3;
-   }
-
-   private static int a(et $$0, int $$1) {
-      boolean $$2 = $$0.l().aQ().b($$1);
-      if ($$2) {
-         $$0.a(() -> wz.c("commands.tick.sprint.stop.success"), true);
-      }
-
-      $$0.a(() -> wz.c("commands.tick.status.sprinting"), true);
+      $$0.a(() -> xd.b("Armorstands with trimmed armor spawned around you"), true);
       return 1;
-   }
-
-   private static int a(et $$0, boolean $$1) {
-      all $$2 = $$0.l().aQ();
-      if ($$1) {
-         if ($$2.a()) {
-            $$2.c();
-         }
-
-         if ($$2.j()) {
-            $$2.b();
-         }
-      }
-
-      $$2.a($$1);
-      if ($$1) {
-         $$0.a(() -> wz.c("commands.tick.status.frozen"), true);
-      } else {
-         $$0.a(() -> wz.c("commands.tick.status.running"), true);
-      }
-
-      return $$1 ? 1 : 0;
-   }
-
-   private static int b(et $$0, int $$1) {
-      all $$2 = $$0.l().aQ();
-      boolean $$3 = $$2.a($$1);
-      if ($$3) {
-         $$0.a(() -> wz.a("commands.tick.step.success", $$1), true);
-      } else {
-         $$0.b(wz.c("commands.tick.step.fail"));
-      }
-
-      return 1;
-   }
-
-   private static int b(et $$0) {
-      all $$1 = $$0.l().aQ();
-      boolean $$2 = $$1.b();
-      if ($$2) {
-         $$0.a(() -> wz.c("commands.tick.step.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(wz.c("commands.tick.step.stop.fail"));
-         return 0;
-      }
-   }
-
-   private static int c(et $$0) {
-      all $$1 = $$0.l().aQ();
-      boolean $$2 = $$1.c();
-      if ($$2) {
-         $$0.a(() -> wz.c("commands.tick.sprint.stop.success"), true);
-         return 1;
-      } else {
-         $$0.b(wz.c("commands.tick.sprint.stop.fail"));
-         return 0;
-      }
    }
 }

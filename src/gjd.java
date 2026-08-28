@@ -1,13 +1,50 @@
-public abstract class gjd<T extends chi, M extends fvv<T>> extends glp<T, M> {
-   private final float a;
+@FunctionalInterface
+public interface gjd<T extends dre> {
+   gjc<T> create(gjd.a var1);
 
-   public gjd(gkj.a $$0, M $$1, float $$2) {
-      super($$0, $$1, 0.75F);
-      this.a = $$2;
-   }
+   public static class a {
+      private final gjb a;
+      private final ghu b;
+      private final gnq c;
+      private final gmq d;
+      private final fzx e;
+      private final fjl f;
 
-   protected void a(T $$0, fbi $$1, float $$2) {
-      $$1.b(this.a, this.a, this.a);
-      super.a($$0, $$1, $$2);
+      public a(gjb $$0, ghu $$1, gnq $$2, gmq $$3, fzx $$4, fjl $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
+
+      public gjb a() {
+         return this.a;
+      }
+
+      public ghu b() {
+         return this.b;
+      }
+
+      public gmq c() {
+         return this.d;
+      }
+
+      public gnq d() {
+         return this.c;
+      }
+
+      public fzx e() {
+         return this.e;
+      }
+
+      public gab a(fzz $$0) {
+         return this.e.a($$0);
+      }
+
+      public fjl f() {
+         return this.f;
+      }
    }
 }

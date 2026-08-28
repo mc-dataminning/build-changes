@@ -1,173 +1,252 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class ftj extends fkw<ftj.a> {
+   static final alb a = alb.b("transferable_list/select_highlighted");
+   static final alb m = alb.b("transferable_list/select");
+   static final alb n = alb.b("transferable_list/unselect_highlighted");
+   static final alb o = alb.b("transferable_list/unselect");
+   static final alb p = alb.b("transferable_list/move_up_highlighted");
+   static final alb q = alb.b("transferable_list/move_up");
+   static final alb r = alb.b("transferable_list/move_down_highlighted");
+   static final alb s = alb.b("transferable_list/move_down");
+   static final xd u = xd.c("pack.incompatible");
+   static final xd v = xd.c("pack.incompatible.confirm.title");
+   private final xd w;
+   final fti x;
 
-class ftj {
-   private static final int a = 44;
-   private final List<ftj.c> b;
-
-   ftj(List<ftj.c> $$0) {
-      this.b = $$0;
+   public ftj(fib $$0, fti $$1, int $$2, int $$3, xd $$4) {
+      super($$0, $$2, $$3, 33, 36);
+      this.x = $$1;
+      this.w = $$4;
+      this.e = false;
+      this.a(true, (int)(9.0F * 1.5F));
    }
 
-   public void a() {
-      this.b.forEach(ftj.c::a);
+   @Override
+   protected void a(fjn $$0, int $$1, int $$2) {
+      xd $$3 = xd.i().b(this.w).a(n.t, n.r);
+      $$0.a(this.c.h, $$3, $$1 + this.g / 2 - this.c.h.a($$3) / 2, Math.min(this.E() + 3, $$2), -1, false);
    }
 
-   public static ftj.a a(int $$0) {
-      return new ftj.a($$0);
+   @Override
+   public int b() {
+      return this.g;
    }
 
-   public static class a {
-      final int a;
-      private final List<ftj.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<ftj.b> f = Optional.empty();
+   @Override
+   protected int q() {
+      return this.F() - 6;
+   }
 
-      public a(int $$0) {
+   @Override
+   protected void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      if (this.m()) {
+         int $$6 = 2;
+         int $$7 = this.s() - 2;
+         int $$8 = this.F() - 6 - 1;
+         int $$9 = $$1 - 2;
+         int $$10 = $$1 + $$3 + 2;
+         $$0.a($$7, $$9, $$8, $$10, $$4);
+         $$0.a($$7 + 1, $$9 + 1, $$8 - 1, $$10 - 1, $$5);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.h() != null) {
+         switch ($$0) {
+            case 32:
+            case 257:
+               this.h().c();
+               return true;
+            default:
+               if (fpt.t()) {
+                  switch ($$0) {
+                     case 264:
+                        this.h().f();
+                        return true;
+                     case 265:
+                        this.h().e();
+                        return true;
+                  }
+               }
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   public static class a extends fkw.a<ftj.a> {
+      private static final int b = 157;
+      private static final int c = 157;
+      private static final String d = "...";
+      private final ftj e;
+      protected final fib a;
+      private final fth.a f;
+      private final ayo g;
+      private final fkt h;
+      private final ayo i;
+      private final fkt j;
+
+      public a(fib $$0, ftj $$1, fth.a $$2) {
          this.a = $$0;
+         this.f = $$2;
+         this.e = $$1;
+         this.g = a($$0, $$2.d());
+         this.h = b($$0, $$2.g());
+         this.i = a($$0, ftj.u);
+         this.j = b($$0, $$2.b().b());
       }
 
-      void a() {
-         this.e++;
-      }
-
-      public ftj.d a(wz $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         ftj.d $$3 = new ftj.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public ftj.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ftj.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ftj a(Consumer<fmb> $$0) {
-         fly $$1 = new fly().b(this.d);
-         $$1.a(fme.a(this.a - 44), 0, 0);
-         $$1.a(fme.a(44), 0, 1);
-         List<ftj.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (ftj.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         ftj $$4 = new ftj($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public ftj.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new ftj.b($$0, $$1));
-         return this;
-      }
-   }
-
-   static record b(int a, boolean b) {
-   }
-
-   static record c(fit<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public fit<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
-      }
-   }
-
-   public static class d {
-      private final wz a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private wz d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
-
-      d(wz $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
-      }
-
-      public ftj.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ftj.d a(wz $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      ftj.c a(ftj.a $$0, fly $$1, int $$2) {
-         $$0.a();
-         fjt $$3 = new fjt(this.a, fgo.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<ftj.b> $$4 = $$0.f;
-         fit.a<Boolean> $$5 = fit.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fjx $$7 = fjx.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
-
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> wy.a(this.a, $$0x.c(), this.d));
+      private static ayo a(fib $$0, xd $$1) {
+         int $$2 = $$0.h.a($$1);
+         if ($$2 > 157) {
+            xi $$3 = xi.a($$0.h.a($$1, 157 - $$0.h.b("...")), xi.e("..."));
+            return ua.a().a($$3);
          } else {
-            $$5.a($$0x -> wy.a(this.a, $$0x.c()));
+            return $$1.g();
+         }
+      }
+
+      private static fkt b(fib $$0, xd $$1) {
+         return fkt.a($$0.h, 157, 2, $$1);
+      }
+
+      @Override
+      public xd a() {
+         return xd.a("narrator.select", this.f.d());
+      }
+
+      @Override
+      public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         aub $$10 = this.f.b();
+         if (!$$10.a()) {
+            int $$11 = $$3 + $$4 - 3 - (this.e.m() ? 7 : 0);
+            $$0.a($$3 - 1, $$2 - 1, $$11, $$2 + $$5 + 1, -8978432);
          }
 
-         fit<Boolean> $$8 = $$5.a(0, 0, this.f, 20, wz.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
+         $$0.a(ghe::C, this.f.a(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
+         ayo $$12 = this.g;
+         fkt $$13 = this.h;
+         if (this.d() && (this.a.n.ab().c() || $$8 || this.e.h() == this && this.e.aO_())) {
+            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
+            int $$14 = $$6 - $$3;
+            int $$15 = $$7 - $$2;
+            if (!this.f.b().a()) {
+               $$12 = this.i;
+               $$13 = this.j;
+            }
+
+            if (this.f.o()) {
+               if ($$14 < 32) {
+                  $$0.a(ghe::C, ftj.a, $$3, $$2, 32, 32);
+               } else {
+                  $$0.a(ghe::C, ftj.m, $$3, $$2, 32, 32);
+               }
+            } else {
+               if (this.f.p()) {
+                  if ($$14 < 16) {
+                     $$0.a(ghe::C, ftj.n, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(ghe::C, ftj.o, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.q()) {
+                  if ($$14 < 32 && $$14 > 16 && $$15 < 16) {
+                     $$0.a(ghe::C, ftj.p, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(ghe::C, ftj.q, $$3, $$2, 32, 32);
+                  }
+               }
+
+               if (this.f.r()) {
+                  if ($$14 < 32 && $$14 > 16 && $$15 > 16) {
+                     $$0.a(ghe::C, ftj.r, $$3, $$2, 32, 32);
+                  } else {
+                     $$0.a(ghe::C, ftj.s, $$3, $$2, 32, 32);
+                  }
+               }
+            }
          }
 
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               wz $$4x = this.d.f().a(n.h);
-               fhx $$5x = fgo.Q().h;
-               fjg $$6x = new fjg($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
+         $$0.b(this.a.h, $$12, $$3 + 32 + 2, $$2 + 1, 16777215);
+         $$13.b($$0, $$3 + 32 + 2, $$2 + 12, 10, -8355712);
+      }
+
+      public String b() {
+         return this.f.c();
+      }
+
+      private boolean d() {
+         return !this.f.h() || !this.f.i();
+      }
+
+      public void c() {
+         if (this.f.o() && this.h()) {
+            this.e.x.a(this.e);
+         } else if (this.f.p()) {
+            this.f.k();
+            this.e.x.a(this.e);
+         }
+      }
+
+      void e() {
+         if (this.f.q()) {
+            this.f.l();
+         }
+      }
+
+      void f() {
+         if (this.f.r()) {
+            this.f.m();
+         }
+      }
+
+      private boolean h() {
+         if (this.f.b().a()) {
+            this.f.j();
+            return true;
+         } else {
+            xd $$0 = this.f.b().c();
+            this.a.a(new foq($$0x -> {
+               this.a.a(this.e.x);
+               if ($$0x) {
+                  this.f.j();
+               }
+            }, ftj.v, $$0));
+            return false;
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         double $$3 = $$0 - (double)this.e.s();
+         double $$4 = $$1 - (double)this.e.g(this.e.aK_().indexOf(this));
+         if (this.d() && $$3 <= 32.0) {
+            this.e.x.m();
+            if (this.f.o()) {
+               this.h();
+               return true;
+            }
+
+            if ($$3 < 16.0 && this.f.p()) {
+               this.f.k();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 < 16.0 && this.f.q()) {
+               this.f.l();
+               return true;
+            }
+
+            if ($$3 > 16.0 && $$4 > 16.0 && this.f.r()) {
+               this.f.m();
+               return true;
+            }
          }
 
-         return new ftj.c($$8, this.b, this.e);
+         return super.a($$0, $$1, $$2);
       }
    }
 }

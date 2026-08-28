@@ -1,44 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class gqo<S extends gtk, M extends fxa<S>> extends grf<S, M> {
+   private static final alb a = alb.b("textures/entity/elytra.png");
+   private final fww b;
+   private final fww c;
 
-@FunctionalInterface
-public interface gqo {
-   Logger a = LogUtils.getLogger();
-
-   static gqo create(Collection<atd<?>> $$0) {
-      return ($$1, $$2) -> {
-         aug $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         faj $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = faj.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         grw $$11 = $$3.a(grw.a).orElse(grw.e);
-         gry $$12 = $$11.a($$7.a(), $$7.b());
-         if (ayo.c($$7.a(), $$12.a()) && ayo.c($$7.b(), $$12.b())) {
-            return new gqf($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   public gqo(goo<S, M> $$0, fzx $$1) {
+      super($$0);
+      this.b = new fww($$1.a(gaa.ar));
+      this.c = new fww($$1.a(gaa.as));
    }
 
-   @Nullable
-   gqf loadSprite(akr var1, auc var2);
+   public void a(fcu $$0, ggv $$1, int $$2, S $$3, float $$4, float $$5) {
+      if ($$3.Q.a(cvo.nU)) {
+         alb $$8;
+         if ($$3 instanceof guf $$6) {
+            gxl $$7 = $$6.a;
+            if ($$7.d() != null) {
+               $$8 = $$7.d();
+            } else if ($$7.c() != null && $$6.aw) {
+               $$8 = $$7.c();
+            } else {
+               $$8 = a;
+            }
+         } else {
+            $$8 = a;
+         }
+
+         fww $$12 = $$3.ae ? this.c : this.b;
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         $$12.a($$3);
+         fcy $$13 = gnq.a($$1, ghe.a($$8), $$3.Q.z());
+         $$12.a($$0, $$13, $$2, gwb.d);
+         $$0.b();
+      }
+   }
 }

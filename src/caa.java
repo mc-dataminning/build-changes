@@ -1,45 +1,59 @@
-public class caa extends caz {
-   private final cfh g;
+public class caa implements cab {
+   private final buh a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-   public caa(cfh $$0, double $$1) {
-      super($$0, $$1, 8);
-      this.g = $$0;
+   public caa(buh $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public boolean b() {
-      return this.g.s() && !this.g.gk() && super.b();
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.y(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.y(false);
-   }
-
-   @Override
    public void a() {
-      super.a();
-      this.g.y(this.m());
-   }
-
-   @Override
-   protected boolean a(dcz $$0, jd $$1) {
-      if (!$$0.u($$1.d())) {
-         return false;
+      if (this.f()) {
+         this.a.aU = this.a.dI();
+         this.c();
+         this.f = this.a.aW;
+         this.e = 0;
       } else {
-         dtc $$2 = $$0.a_($$1);
-         if ($$2.a(dga.cv)) {
-            return dqo.a($$0, $$1) < 1;
-         } else {
-            return $$2.a(dga.cD) && $$2.c(djf.b) ? true : $$2.a(awe.S, $$0x -> $$0x.d(dfr.b).map($$0xx -> $$0xx != dtp.a).orElse(true));
+         if (this.e()) {
+            if (Math.abs(this.a.aW - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aW;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
       }
+   }
+
+   private void b() {
+      this.a.aU = azc.c(this.a.aU, this.a.aW, (float)this.a.ag());
+   }
+
+   private void c() {
+      this.a.aW = azc.c(this.a.aW, this.a.aU, (float)this.a.ag());
+   }
+
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = azc.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ag() * (1.0F - $$1);
+      this.a.aU = azc.c(this.a.aU, this.a.aW, $$2);
+   }
+
+   private boolean e() {
+      return !(this.a.cX() instanceof buh);
+   }
+
+   private boolean f() {
+      double $$0 = this.a.dx() - this.a.L;
+      double $$1 = this.a.dD() - this.a.N;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

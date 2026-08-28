@@ -1,8 +1,7 @@
 import javax.annotation.Nullable;
 
-public interface gsr {
-   gsy a(akr var1);
-
+public class gsr extends gsu {
+   public boolean a = true;
    @Nullable
-   gsm a(akr var1, gsv var2);
+   public eye b;
 }

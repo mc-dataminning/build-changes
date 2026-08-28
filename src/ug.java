@@ -2,36 +2,37 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class ug extends ur {
-   private static final int b = 12;
-   public static final va<ug> a = new va.a<ug>() {
-      public ug a(DataInput $$0, uk $$1) throws IOException {
+public class ug extends uv {
+   private static final int c = 16;
+   public static final ug a = new ug(0.0);
+   public static final ve<ug> b = new ve.a<ug>() {
+      public ug a(DataInput $$0, uo $$1) throws IOException {
          return ug.a(d($$0, $$1));
       }
 
       @Override
-      public uv.b a(DataInput $$0, uv $$1, uk $$2) throws IOException {
+      public uz.b a(DataInput $$0, uz $$1, uo $$2) throws IOException {
          return $$1.a(d($$0, $$2));
       }
 
-      private static int d(DataInput $$0, uk $$1) throws IOException {
-         $$1.b(12L);
-         return $$0.readInt();
+      private static double d(DataInput $$0, uo $$1) throws IOException {
+         $$1.b(16L);
+         return $$0.readDouble();
       }
 
       @Override
       public int c() {
-         return 4;
+         return 8;
       }
 
       @Override
       public String a() {
-         return "INT";
+         return "DOUBLE";
       }
 
       @Override
       public String b() {
-         return "TAG_Int";
+         return "TAG_Double";
       }
 
       @Override
@@ -39,34 +40,34 @@ public class ug extends ur {
          return true;
       }
    };
-   private final int c;
+   private final double w;
 
-   ug(int $$0) {
-      this.c = $$0;
+   private ug(double $$0) {
+      this.w = $$0;
    }
 
-   public static ug a(int $$0) {
-      return $$0 >= -128 && $$0 <= 1024 ? ug.a.a[$$0 - -128] : new ug($$0);
+   public static ug a(double $$0) {
+      return $$0 == 0.0 ? a : new ug($$0);
    }
 
    @Override
    public void a(DataOutput $$0) throws IOException {
-      $$0.writeInt(this.c);
+      $$0.writeDouble(this.w);
    }
 
    @Override
    public int a() {
-      return 12;
+      return 16;
    }
 
    @Override
    public byte b() {
-      return 3;
+      return 6;
    }
 
    @Override
-   public va<ug> c() {
-      return a;
+   public ve<ug> c() {
+      return b;
    }
 
    public ug e() {
@@ -75,71 +76,57 @@ public class ug extends ur {
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0 ? true : $$0 instanceof ug && this.c == ((ug)$$0).c;
+      return this == $$0 ? true : $$0 instanceof ug && this.w == ((ug)$$0).w;
    }
 
    @Override
    public int hashCode() {
-      return this.c;
+      long $$0 = Double.doubleToLongBits(this.w);
+      return (int)($$0 ^ $$0 >>> 32);
    }
 
    @Override
-   public void a(vc $$0) {
+   public void a(vg $$0) {
       $$0.a(this);
    }
 
    @Override
    public long f() {
-      return (long)this.c;
+      return (long)Math.floor(this.w);
    }
 
    @Override
    public int g() {
-      return this.c;
+      return azc.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(this.c & 65535);
+      return (short)(azc.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(this.c & 0xFF);
+      return (byte)(azc.a(this.w) & 0xFF);
    }
 
    @Override
    public double j() {
-      return (double)this.c;
+      return this.w;
    }
 
    @Override
    public float k() {
-      return (float)this.c;
+      return (float)this.w;
    }
 
    @Override
    public Number l() {
-      return this.c;
+      return this.w;
    }
 
    @Override
-   public uv.b a(uv $$0) {
-      return $$0.a(this.c);
-   }
-
-   static class a {
-      private static final int b = 1024;
-      private static final int c = -128;
-      static final ug[] a = new ug[1153];
-
-      private a() {
-      }
-
-      static {
-         for (int $$0 = 0; $$0 < a.length; $$0++) {
-            a[$$0] = new ug(-128 + $$0);
-         }
-      }
+   public uz.b a(uz $$0) {
+      return $$0.a(this.w);
    }
 }

@@ -1,18 +1,22 @@
-public class gnf extends glc<cks> {
-   private static final akr a = akr.b("textures/entity/illager/vindicator.png");
+public class gnf extends gln<chv, gtg, fxh> {
+   private static final alb a = alb.b("textures/entity/goat/goat.png");
 
-   public gnf(gkj.a $$0) {
-      super($$0, new fvy<>($$0.a(fyj.bR)), 0.5F);
-      this.a(new goo<cks, fvy<cks>>(this, $$0.d()) {
-         public void a(fbi $$0, gez $$1, int $$2, cks $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-            if ($$3.gb()) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-            }
-         }
-      });
+   public gnf(gms.a $$0) {
+      super($$0, new fxh($$0.a(gaa.aJ)), new fxh($$0.a(gaa.aK)), 0.7F);
    }
 
-   public akr a(cks $$0) {
+   public alb a(gtg $$0) {
       return a;
+   }
+
+   public gtg c() {
+      return new gtg();
+   }
+
+   public void a(chv $$0, gtg $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.go();
+      $$1.b = $$0.gp();
+      $$1.c = $$0.gB();
    }
 }

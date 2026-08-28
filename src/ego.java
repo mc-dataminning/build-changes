@@ -1,49 +1,28 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ego extends egm {
-   public static final MapCodec<ego> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dtc.b.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dtc.b).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dtc.b).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, ego::new)
-   );
-   private final float g;
-   private final float h;
-   private final dtc i;
-   private final List<dtc> j;
-   private final List<dtc> k;
+public class ego extends egn {
+   public static final MapCodec<ego> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ego::new));
 
-   public ego(long $$0, eoh.a $$1, float $$2, float $$3, float $$4, dtc $$5, List<dtc> $$6, List<dtc> $$7) {
+   public ego(bqp $$0, bqp $$1, int $$2) {
       super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
    }
 
    @Override
-   protected egk<?> a() {
-      return egk.c;
+   protected egt<?> a() {
+      return egt.e;
    }
 
    @Override
-   public dtc a(ayw $$0, jd $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ad.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ad.a(this.k, $$0) : this.i;
+   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
       }
+   }
+
+   @Override
+   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

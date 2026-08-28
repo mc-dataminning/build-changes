@@ -1,11 +1,7 @@
-public interface ayv {
-   void a(wz var1);
+import com.mojang.serialization.MapCodec;
 
-   void b(wz var1);
-
-   void c(wz var1);
-
-   void a(int var1);
-
-   void a();
+public record ayv<A>(MapCodec<A> a) {
+   public static <A> ayv<A> a(MapCodec<A> $$0) {
+      return new ayv<>($$0);
+   }
 }

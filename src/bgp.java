@@ -1,13 +1,34 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.serialization.Dynamic;
 
-public class bgp {
-   public static final Map<String, String> a = ImmutableMap.builder()
-      .put("minecraft:acacia_bark", "minecraft:acacia_wood")
-      .put("minecraft:birch_bark", "minecraft:birch_wood")
-      .put("minecraft:dark_oak_bark", "minecraft:dark_oak_wood")
-      .put("minecraft:jungle_bark", "minecraft:jungle_wood")
-      .put("minecraft:oak_bark", "minecraft:oak_wood")
-      .put("minecraft:spruce_bark", "minecraft:spruce_wood")
-      .build();
+public class bgp extends DataFix {
+   public bgp(Schema $$0, boolean $$1) {
+      super($$0, $$1);
+   }
+
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped(
+         "OptionsAddTextBackgroundFix",
+         this.getInputSchema().getType(bhk.e),
+         $$0 -> $$0.update(
+               DSL.remainderFinder(),
+               $$0x -> (Dynamic)DataFixUtils.orElse(
+                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
+                  )
+            )
+      );
+   }
+
+   private double a(String $$0) {
+      try {
+         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
+         return $$1 / 2.0;
+      } catch (NumberFormatException var4) {
+         return 0.5;
+      }
+   }
 }

@@ -1,82 +1,57 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+public class bug extends btj {
+   private static final String b = "data";
+   private uf c = new uf();
 
-public interface bug {
-   bug a = new bug() {
-      @Override
-      public cuq a() {
-         return cuq.l;
-      }
-
-      @Override
-      public boolean a(cuq $$0) {
-         return false;
-      }
-   };
-
-   static bug a(final Supplier<cuq> $$0, final Consumer<cuq> $$1) {
-      return new bug() {
-         @Override
-         public cuq a() {
-            return $$0.get();
-         }
-
-         @Override
-         public boolean a(cuq $$0x) {
-            $$1.accept($$0);
-            return true;
-         }
-      };
+   public bug(btq<?> $$0, dds $$1) {
+      super($$0, $$1);
+      this.ae = true;
    }
 
-   static bug a(final bqk $$0, final int $$1, final Predicate<cuq> $$2) {
-      return new bug() {
-         @Override
-         public cuq a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cuq $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+   @Override
+   public void l() {
    }
 
-   static bug a(bqk $$0, int $$1) {
-      return a($$0, $$1, $$0x -> true);
+   @Override
+   protected void a(akk.a $$0) {
    }
 
-   static bug a(final btn $$0, final bsy $$1, final Predicate<cuq> $$2) {
-      return new bug() {
-         @Override
-         public cuq a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cuq $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+   @Override
+   protected void a(uf $$0) {
+      this.c = $$0.p("data");
    }
 
-   static bug a(btn $$0, bsy $$1) {
-      return a($$0, $$1, $$0x -> true);
+   @Override
+   protected void b(uf $$0) {
+      $$0.a("data", this.c.i());
    }
 
-   cuq a();
+   @Override
+   public zk<abz> a(arf $$0) {
+      throw new IllegalStateException("Markers should never be sent");
+   }
 
-   boolean a(cuq var1);
+   @Override
+   protected boolean r(btj $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean bO() {
+      return false;
+   }
+
+   @Override
+   protected void p(btj $$0) {
+      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
+   }
+
+   @Override
+   public eqg j_() {
+      return eqg.d;
+   }
+
+   @Override
+   public boolean q_() {
+      return true;
+   }
 }

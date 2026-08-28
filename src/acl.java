@@ -1,29 +1,14 @@
-public class acl implements zg<abu> {
-   public static final yx<vw, acl> a = zg.a(acl::a, acl::new);
-   private final boolean b;
-
-   public acl(boolean $$0) {
-      this.b = $$0;
-   }
-
-   private acl(vw $$0) {
-      this.b = $$0.readBoolean();
-   }
-
-   private void a(vw $$0) {
-      $$0.a(this.b);
+public class acl extends zi<abz> {
+   public acl(Iterable<zk<? super abz>> $$0) {
+      super($$0);
    }
 
    @Override
-   public zi<acl> a() {
-      return agg.q;
+   public zm<acl> a() {
+      return ago.a;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
-   }
-
-   public boolean b() {
-      return this.b;
    }
 }

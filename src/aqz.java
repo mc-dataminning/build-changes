@@ -1,41 +1,30 @@
-import java.util.Comparator;
+import java.util.function.IntFunction;
 
-public class aqz<T> {
-   private final String h;
-   private final Comparator<T> i;
-   private final long j;
-   public static final aqz<azs> a = a("start", ($$0, $$1) -> 0);
-   public static final aqz<azs> b = a("dragon", ($$0, $$1) -> 0);
-   public static final aqz<dcd> c = a("player", Comparator.comparingLong(dcd::a));
-   public static final aqz<dcd> d = a("forced", Comparator.comparingLong(dcd::a));
-   public static final aqz<jd> e = a("portal", kh::i, 300);
-   public static final aqz<Integer> f = a("post_teleport", Integer::compareTo, 5);
-   public static final aqz<dcd> g = a("unknown", Comparator.comparingLong(dcd::a), 1);
+public enum aqz implements azf {
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
 
-   public static <T> aqz<T> a(String $$0, Comparator<T> $$1) {
-      return new aqz<>($$0, $$1, 0L);
-   }
+   private static final IntFunction<aqz> d = axt.a(aqz::b, values(), axt.a.b);
+   private final int e;
+   private final String f;
 
-   public static <T> aqz<T> a(String $$0, Comparator<T> $$1, int $$2) {
-      return new aqz<>($$0, $$1, (long)$$2);
-   }
-
-   protected aqz(String $$0, Comparator<T> $$1, long $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
+   private aqz(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
-   public String toString() {
-      return this.h;
+   public String a() {
+      return this.f;
    }
 
-   public Comparator<T> a() {
-      return this.i;
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   public long b() {
-      return this.j;
+   public static aqz a(int $$0) {
+      return d.apply($$0);
    }
 }

@@ -1,47 +1,26 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public abstract class fjx extends fjy {
+   private final fjl a;
+   private int b = 16777215;
 
-public class fjx implements fmj {
-   private static final int a = 170;
-   private final wz b;
-   @Nullable
-   private List<aya> c;
-   @Nullable
-   private tw d;
-   @Nullable
-   private final wz e;
-
-   private fjx(wz $$0, @Nullable wz $$1) {
-      this.b = $$0;
-      this.e = $$1;
-   }
-
-   public static fjx a(wz $$0, @Nullable wz $$1) {
-      return new fjx($$0, $$1);
-   }
-
-   public static fjx a(wz $$0) {
-      return new fjx($$0, $$0);
+   public fjx(int $$0, int $$1, int $$2, int $$3, xd $$4, fjl $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
    }
 
    @Override
-   public void b(fmi $$0) {
-      if (this.e != null) {
-         $$0.a(fmh.c, this.e);
-      }
+   protected void a(fnx $$0) {
    }
 
-   public List<aya> a(fgo $$0) {
-      tw $$1 = tw.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
-      }
-
-      return this.c;
+   public fjx a(int $$0) {
+      this.b = $$0;
+      return this;
    }
 
-   public static List<aya> a(fgo $$0, wz $$1) {
-      return $$0.h.c($$1, 170);
+   protected final fjl a() {
+      return this.a;
+   }
+
+   protected final int b() {
+      return this.b;
    }
 }

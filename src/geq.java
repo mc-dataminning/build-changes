@@ -1,51 +1,53 @@
-public enum geq {
-   a(new geq.b(geq.a.f, geq.a.e, geq.a.a), new geq.b(geq.a.f, geq.a.e, geq.a.d), new geq.b(geq.a.c, geq.a.e, geq.a.d), new geq.b(geq.a.c, geq.a.e, geq.a.a)),
-   b(new geq.b(geq.a.f, geq.a.b, geq.a.d), new geq.b(geq.a.f, geq.a.b, geq.a.a), new geq.b(geq.a.c, geq.a.b, geq.a.a), new geq.b(geq.a.c, geq.a.b, geq.a.d)),
-   c(new geq.b(geq.a.c, geq.a.b, geq.a.d), new geq.b(geq.a.c, geq.a.e, geq.a.d), new geq.b(geq.a.f, geq.a.e, geq.a.d), new geq.b(geq.a.f, geq.a.b, geq.a.d)),
-   d(new geq.b(geq.a.f, geq.a.b, geq.a.a), new geq.b(geq.a.f, geq.a.e, geq.a.a), new geq.b(geq.a.c, geq.a.e, geq.a.a), new geq.b(geq.a.c, geq.a.b, geq.a.a)),
-   e(new geq.b(geq.a.f, geq.a.b, geq.a.d), new geq.b(geq.a.f, geq.a.e, geq.a.d), new geq.b(geq.a.f, geq.a.e, geq.a.a), new geq.b(geq.a.f, geq.a.b, geq.a.a)),
-   f(new geq.b(geq.a.c, geq.a.b, geq.a.a), new geq.b(geq.a.c, geq.a.e, geq.a.a), new geq.b(geq.a.c, geq.a.e, geq.a.d), new geq.b(geq.a.c, geq.a.b, geq.a.d));
+public class geq extends gfe {
+   protected final gez a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
 
-   private static final geq[] g = ad.a(new geq[6], $$0 -> {
-      $$0[geq.a.e] = a;
-      $$0[geq.a.b] = b;
-      $$0[geq.a.d] = c;
-      $$0[geq.a.a] = d;
-      $$0[geq.a.f] = e;
-      $$0[geq.a.c] = f;
-   });
-   private final geq.b[] h;
-
-   public static geq a(ji $$0) {
-      return g[$$0.d()];
+   protected geq(gax $$0, double $$1, double $$2, double $$3, gez $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
    }
 
-   private geq(final geq.b... $$0) {
-      this.h = $$0;
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
    }
 
-   public geq.b a(int $$0) {
-      return this.h[$$0];
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
    }
 
-   public static final class a {
-      public static final int a = ji.d.d();
-      public static final int b = ji.b.d();
-      public static final int c = ji.f.d();
-      public static final int d = ji.c.d();
-      public static final int e = ji.a.d();
-      public static final int f = ji.e.d();
+   @Override
+   public gei b() {
+      return gei.c;
    }
 
-   public static class b {
-      public final int a;
-      public final int b;
-      public final int c;
-
-      b(int $$0, int $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
+         }
       }
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

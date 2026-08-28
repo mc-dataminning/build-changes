@@ -18,11 +18,11 @@ public interface ev<T extends ev<T>> {
 
    CommandDispatcher<T> x();
 
-   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hv var4);
+   void a(CommandExceptionType var1, Message var2, boolean var3, @Nullable hw var4);
 
    boolean y();
 
-   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hv $$2) {
+   default void a(CommandSyntaxException $$0, boolean $$1, @Nullable hw $$2) {
       this.a($$0.getType(), $$0.getRawMessage(), $$1, $$2);
    }
 

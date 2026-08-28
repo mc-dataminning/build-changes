@@ -1,50 +1,34 @@
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class ddn extends dcp {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<jq<dfy>> d;
+public class ddn extends ern {
+   public static final String a = "chunks";
+   private static final String b = "Forced";
+   private final LongSet c;
 
-   public ddn(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jq<dfy>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   public static ern.a<ddn> a() {
+      return new ern.a<>(ddn::new, ddn::b, bal.i);
+   }
+
+   private ddn(LongSet $$0) {
+      this.c = $$0;
+   }
+
+   public ddn() {
+      this(new LongOpenHashSet());
+   }
+
+   public static ddn b(uf $$0, jp.a $$1) {
+      return new ddn(new LongOpenHashSet($$0.o("Forced")));
    }
 
    @Override
-   public Optional<Float> a(dco $$0, dcc $$1, jd $$2, dtc $$3, epe $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
-      } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
-      }
+   public uf a(uf $$0, jp.a $$1) {
+      $$0.a("Forced", this.c.toLongArray());
+      return $$0;
    }
 
-   @Override
-   public boolean a(dco $$0, dcc $$1, jd $$2, dtc $$3, float $$4) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(dco $$0, bsr $$1) {
-      return this.b;
-   }
-
-   @Override
-   public float a(bsr $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof cmx $$1 && $$1.fZ().b) {
-            var10000 = true;
-            break label17;
-         }
-
-         var10000 = false;
-      }
-
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
+   public LongSet b() {
+      return this.c;
    }
 }

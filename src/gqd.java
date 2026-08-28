@@ -1,39 +1,13 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import javax.annotation.Nullable;
+public class gqd extends grf<gsj, fwl> {
+   private static final ghe a = ghe.r(alb.b("textures/entity/breeze/breeze_eyes.png"));
 
-public class gqd extends gqe {
-   @Nullable
-   private CompletableFuture<gqe.a> f;
-
-   public gqd(aue $$0, akr $$1, Executor $$2) {
-      super($$1);
-      this.f = CompletableFuture.supplyAsync(() -> gqe.a.a($$0, $$1), $$2);
+   public gqd(goo<gsj, fwl> $$0) {
+      super($$0);
    }
 
-   @Override
-   protected gqe.a b(aue $$0) {
-      if (this.f != null) {
-         gqe.a $$1 = this.f.join();
-         this.f = null;
-         return $$1;
-      } else {
-         return gqe.a.a($$0, this.e);
-      }
-   }
-
-   public CompletableFuture<Void> d() {
-      return this.f == null ? CompletableFuture.completedFuture(null) : this.f.thenApply($$0 -> null);
-   }
-
-   @Override
-   public void a(gqm $$0, aue $$1, akr $$2, Executor $$3) {
-      this.f = CompletableFuture.supplyAsync(() -> gqe.a.a($$1, this.e), ad.g());
-      this.f.thenRunAsync(() -> $$0.a(this.e, this), a($$3));
-   }
-
-   private static Executor a(Executor $$0) {
-      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
+   public void a(fcu $$0, ggv $$1, int $$2, gsj $$3, float $$4, float $$5) {
+      fcy $$6 = $$1.getBuffer(a);
+      fwl $$7 = this.d();
+      gly.a($$7, $$7.b(), $$7.c()).a($$0, $$6, $$2, gwb.d);
    }
 }

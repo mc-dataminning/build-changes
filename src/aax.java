@@ -1,57 +1,31 @@
-import java.util.List;
+public record aax(je c, String d, int e) implements aan {
+   public static final zb<wa, aax> a = aan.a(aax::a, aax::new);
+   public static final aan.b<aax> b = aan.a("debug/poi_added");
 
-public record aax(akq<dcw> c, ejj d, List<aax.a> e) implements aaj {
-   public static final yx<vw, aax> a = aaj.a(aax::a, aax::new);
-   public static final aaj.b<aax> b = aaj.a("debug/structures");
-
-   private aax(vw $$0) {
-      this($$0.a(lu.ba), b($$0), $$0.a(aax.a::new));
+   private aax(wa $$0) {
+      this($$0.e(), $$0.p(), $$0.readInt());
    }
 
-   private void a(vw $$0) {
-      $$0.b(this.c);
-      a($$0, this.d);
-      $$0.a(this.e, ($$1, $$2) -> $$2.a($$0));
+   private void a(wa $$0) {
+      $$0.a(this.c);
+      $$0.a(this.d);
+      $$0.q(this.e);
    }
 
    @Override
-   public aaj.b<aax> a() {
+   public aan.b<aax> a() {
       return b;
    }
 
-   static ejj b(vw $$0) {
-      return new ejj($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
-   }
-
-   static void a(vw $$0, ejj $$1) {
-      $$0.p($$1.h());
-      $$0.p($$1.i());
-      $$0.p($$1.j());
-      $$0.p($$1.k());
-      $$0.p($$1.l());
-      $$0.p($$1.m());
-   }
-
-   public akq<dcw> b() {
+   public je b() {
       return this.c;
    }
 
-   public ejj c() {
+   public String c() {
       return this.d;
    }
 
-   public List<aax.a> d() {
+   public int d() {
       return this.e;
-   }
-
-   public static record a(ejj a, boolean b) {
-      public a(vw $$0) {
-         this(aax.b($$0), $$0.readBoolean());
-      }
-
-      public void a(vw $$0) {
-         aax.a($$0, this.a);
-         $$0.a(this.b);
-      }
    }
 }

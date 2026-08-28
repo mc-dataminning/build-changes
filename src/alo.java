@@ -1,89 +1,69 @@
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.JsonOps;
+import java.util.Collection;
+import java.util.Map;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class alo {
+public class alo extends auw {
    private static final Logger a = LogUtils.getLogger();
+   private static final Gson b = new GsonBuilder().create();
+   private Map<alb, ag> c = Map.of();
+   private al d = new al();
+   private final jp.a e;
 
-   public static <D, R> CompletableFuture<R> a(alo.c $$0, alo.f<D> $$1, alo.e<D, R> $$2, Executor $$3, Executor $$4) {
-      try {
-         Pair<ddr, atu> $$5 = $$0.a.a();
-         atu $$6 = (atu)$$5.getSecond();
-         jt<ala> $$7 = ala.a();
-         jt<ala> $$8 = b($$6, $$7, ala.b, akm.a);
-         ka.b $$9 = $$8.b(ala.c);
-         ka.b $$10 = akm.a($$6, $$9, akm.b);
-         ddr $$11 = (ddr)$$5.getFirst();
-         alo.b<D> $$12 = $$1.get(new alo.a($$6, $$11, $$9, $$10));
-         jt<ala> $$13 = $$8.a(ala.c, $$12.b);
-         return alc.a($$6, $$13, $$11.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
-            if ($$2x != null) {
-               $$6.close();
-            }
-         }).thenApplyAsync($$4x -> {
-            $$4x.g();
-            return $$2.create($$6, $$4x, $$13, $$12.a);
-         }, $$4);
-      } catch (Exception var14) {
-         return CompletableFuture.failedFuture(var14);
-      }
+   public alo(jp.a $$0) {
+      super(b, lv.c(lv.bf));
+      this.e = $$0;
    }
 
-   private static ka.b a(aue $$0, jt<ala> $$1, ala $$2, List<akm.c<?>> $$3) {
-      ka.b $$4 = $$1.b($$2);
-      return akm.a($$0, $$4, $$3);
-   }
+   protected void a(Map<alb, JsonElement> $$0, aus $$1, bny $$2) {
+      akz<JsonElement> $$3 = this.e.a(JsonOps.INSTANCE);
+      Builder<alb, ag> $$4 = ImmutableMap.builder();
+      $$0.forEach(($$2x, $$3x) -> {
+         try {
+            af $$4x = (af)af.a.parse($$3, $$3x).getOrThrow(JsonParseException::new);
+            this.a($$2x, $$4x);
+            $$4.put($$2x, new ag($$2x, $$4x));
+         } catch (Exception var6x) {
+            a.error("Parsing error loading custom advancement {}: {}", $$2x, var6x.getMessage());
+         }
+      });
+      this.c = $$4.buildOrThrow();
+      al $$5 = new al();
+      $$5.a(this.c.values());
 
-   private static jt<ala> b(aue $$0, jt<ala> $$1, ala $$2, List<akm.c<?>> $$3) {
-      ka.b $$4 = a($$0, $$1, $$2, $$3);
-      return $$1.a($$2, $$4);
-   }
-
-   public static record a(aue a, ddr b, ka.b c, ka.b d) {
-   }
-
-   public static record b<D>(D a, ka.b b) {
-   }
-
-   public static record c(alo.d a, eu.a b, int c) {
-   }
-
-   public static record d(atp a, ddr b, boolean c, boolean d) {
-      public Pair<ddr, atu> a() {
-         ddr $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
-         List<asq> $$1 = this.a.g();
-         atu $$2 = new atx(ass.b, $$1);
-         return Pair.of($$0, $$2);
+      for (ah $$6 : $$5.b()) {
+         if ($$6.b().b().c().isPresent()) {
+            at.a($$6);
+         }
       }
 
-      public atp b() {
-         return this.a;
-      }
-
-      public ddr c() {
-         return this.b;
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+      this.d = $$5;
    }
 
-   @FunctionalInterface
-   public interface e<D, R> {
-      R create(atu var1, alc var2, jt<ala> var3, D var4);
+   private void a(alb $$0, af $$1) {
+      azi.a $$2 = new azi.a();
+      $$1.a($$2, this.e.c());
+      $$2.b().ifPresent($$1x -> a.warn("Found validation problems in advancement {}: \n{}", $$0, $$1x));
    }
 
-   @FunctionalInterface
-   public interface f<D> {
-      alo.b<D> get(alo.a var1);
+   @Nullable
+   public ag a(alb $$0) {
+      return this.c.get($$0);
+   }
+
+   public al a() {
+      return this.d;
+   }
+
+   public Collection<ag> b() {
+      return this.c.values();
    }
 }

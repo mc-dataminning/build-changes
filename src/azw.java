@@ -1,76 +1,67 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.DSL.TypeReference;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Set;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public enum azw {
-   a(bgr.a),
-   b(bgr.b),
-   c(bgr.c),
-   d(bgr.d),
-   e(bgr.e),
-   f(bgr.f),
-   g(bgr.g),
-   h(bgr.h),
-   i(bgr.i),
-   j(bgr.j),
-   k(bgr.k),
-   l(bgr.l),
-   m(bgr.m),
-   n(bgr.o),
-   o(bgr.n),
-   p(bgr.p),
-   q(bgr.q),
-   r(bgr.M),
-   s(bgr.r);
+public class azw<T> {
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final Object[] e;
 
-   public static final Set<TypeReference> t;
-   private final TypeReference u;
-
-   private azw(final TypeReference $$0) {
-      this.u = $$0;
+   public static <T> azw<T> a(int $$0, int $$1, int $$2, azw.a<T> $$3) {
+      int $$4 = $$0 - $$2;
+      int $$5 = $$1 - $$2;
+      int $$6 = 2 * $$2 + 1;
+      return new azw<>($$4, $$5, $$6, $$6, $$3);
    }
 
-   static int a() {
-      return ab.b().d().c();
-   }
+   private azw(int $$0, int $$1, int $$2, int $$3, azw.a<T> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = new Object[this.c * this.d];
 
-   public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {
-      return new Codec<A>() {
-         public <T> DataResult<T> encode(A $$0x, DynamicOps<T> $$1x, T $$2x) {
-            return $$0.encode($$0, $$1, $$2).flatMap($$1xxx -> $$1.mergeToMap($$1xxx, $$1.createString("DataVersion"), $$1.createInt(azw.a())));
+      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
+         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
+            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
          }
-
-         public <T> DataResult<Pair<A, T>> decode(DynamicOps<T> $$0x, T $$1x) {
-            int $$2 = $$0.get($$1, "DataVersion").flatMap($$0::getNumberValue).map(Number::intValue).result().orElse($$2);
-            Dynamic<T> $$3 = new Dynamic($$0, $$0.remove($$1, "DataVersion"));
-            Dynamic<T> $$4 = azw.this.a($$1, $$3, $$2);
-            return $$0.decode($$4);
-         }
-      };
+      }
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2, int $$3) {
-      return $$0.update(this.u, $$1, $$2, $$3);
+   public void a(Consumer<T> $$0) {
+      for (Object $$1 : this.e) {
+         $$0.accept((T)$$1);
+      }
    }
 
-   public <T> Dynamic<T> a(DataFixer $$0, Dynamic<T> $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
+   public T a(int $$0, int $$1) {
+      if (!this.b($$0, $$1)) {
+         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
+      } else {
+         return (T)this.e[this.c($$0, $$1)];
+      }
    }
 
-   public ub a(DataFixer $$0, ub $$1, int $$2, int $$3) {
-      return (ub)this.a($$0, new Dynamic(up.a, $$1), $$2, $$3).getValue();
+   public boolean b(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
    }
 
-   public ub a(DataFixer $$0, ub $$1, int $$2) {
-      return this.a($$0, $$1, $$2, a());
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
    }
 
-   static {
-      t = Set.of(a.u);
+   private int c(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      return $$2 * this.d + $$3;
+   }
+
+   @FunctionalInterface
+   public interface a<T> {
+      T get(int var1, int var2);
    }
 }

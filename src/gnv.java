@@ -1,46 +1,35 @@
-public class gnv extends gov<gdy, fwp<gdy>> {
-   public gnv(gmf<gdy, fwp<gdy>> $$0) {
+public class gnv extends gmr<coh, gtu> {
+   private static final alb a = alb.b("textures/entity/llama/spit.png");
+   private final fxt b;
+
+   public gnv(gms.a $$0) {
       super($$0);
+      this.b = new fxt($$0.a(gaa.bg));
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, gdy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ci() && $$3.a(cmy.a)) {
-         grl $$10 = $$3.b();
-         if ($$10.c() != null) {
-            cuq $$11 = $$3.a(bsy.e);
-            if (!$$11.a(cut.nT)) {
-               $$0.a();
-               $$0.a(0.0F, 0.0F, 0.125F);
-               double $$12 = ayo.d((double)$$6, $$3.cj, $$3.cm) - ayo.d((double)$$6, $$3.L, $$3.dt());
-               double $$13 = ayo.d((double)$$6, $$3.ck, $$3.cn) - ayo.d((double)$$6, $$3.M, $$3.dv());
-               double $$14 = ayo.d((double)$$6, $$3.cl, $$3.co) - ayo.d((double)$$6, $$3.N, $$3.dz());
-               float $$15 = ayo.j($$6, $$3.aZ, $$3.aY);
-               double $$16 = (double)ayo.a($$15 * (float) (Math.PI / 180.0));
-               double $$17 = (double)(-ayo.b($$15 * (float) (Math.PI / 180.0)));
-               float $$18 = (float)$$13 * 10.0F;
-               $$18 = ayo.a($$18, -6.0F, 32.0F);
-               float $$19 = (float)($$12 * $$16 + $$14 * $$17) * 100.0F;
-               $$19 = ayo.a($$19, 0.0F, 150.0F);
-               float $$20 = (float)($$12 * $$17 - $$14 * $$16) * 100.0F;
-               $$20 = ayo.a($$20, -20.0F, 20.0F);
-               if ($$19 < 0.0F) {
-                  $$19 = 0.0F;
-               }
+   public void a(gtu $$0, fcu $$1, ggv $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.15F, 0.0F);
+      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.b));
+      this.b.a($$0);
+      fcy $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gwb.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
 
-               float $$21 = ayo.i($$6, $$3.cg, $$3.ch);
-               $$18 += ayo.a(ayo.i($$6, $$3.Y, $$3.Z) * 6.0F) * 32.0F * $$21;
-               if ($$3.cb()) {
-                  $$18 += 25.0F;
-               }
+   public alb a(gtu $$0) {
+      return a;
+   }
 
-               $$0.a(a.b.rotationDegrees(6.0F + $$19 / 2.0F + $$18));
-               $$0.a(a.f.rotationDegrees($$20 / 2.0F));
-               $$0.a(a.d.rotationDegrees(180.0F - $$20 / 2.0F));
-               fbm $$22 = $$1.getBuffer(gfh.c($$10.c()));
-               this.c().c($$0, $$22, $$2, gqc.d);
-               $$0.b();
-            }
-         }
-      }
+   public gtu a() {
+      return new gtu();
+   }
+
+   public void a(coh $$0, gtu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.j($$2);
+      $$1.a = $$0.k($$2);
    }
 }

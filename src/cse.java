@@ -1,58 +1,73 @@
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
-public class cse extends csf {
-   private final akr j;
+public class cse extends brr {
    @Nullable
-   private final akr k;
-   private final cse.a l;
+   private dsa b;
 
-   public cse(jm<csg> $$0, cse.a $$1, boolean $$2, cul.a $$3) {
-      super($$0, csf.a.e, $$3);
-      this.l = $$1;
-      akr $$4 = $$1.c.apply($$0.e().orElseThrow().a());
-      this.j = $$4.g(".png");
-      if ($$2) {
-         this.k = $$4.g("_overlay.png");
-      } else {
-         this.k = null;
-      }
+   public cse() {
+      super(27);
    }
 
-   public akr b() {
-      return this.j;
+   public void a(dsa $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   public akr c() {
-      return this.k;
-   }
-
-   public cse.a d() {
-      return this.l;
+   public boolean b(dsa $$0) {
+      return this.b == $$0;
    }
 
    @Override
-   public avo e() {
-      return this.l.d;
+   public void a(ul $$0, jp.a $$1) {
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         this.a($$2, cvl.k);
+      }
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         uf $$4 = $$0.a($$3);
+         int $$5 = $$4.f("Slot") & 255;
+         if ($$5 >= 0 && $$5 < this.b()) {
+            this.a($$5, cvl.a($$1, (vc)$$4).orElse(cvl.k));
+         }
+      }
    }
 
    @Override
-   public boolean a(cuq $$0) {
-      return false;
+   public ul a(jp.a $$0) {
+      ul $$1 = new ul();
+
+      for (int $$2 = 0; $$2 < this.b(); $$2++) {
+         cvl $$3 = this.a($$2);
+         if (!$$3.f()) {
+            uf $$4 = new uf();
+            $$4.a("Slot", (byte)$$2);
+            $$1.add($$3.b($$0, $$4));
+         }
+      }
+
+      return $$1;
    }
 
-   public static enum a {
-      a($$0 -> $$0.a((UnaryOperator<String>)($$0x -> "textures/entity/horse/armor/horse_armor_" + $$0x)), avp.nB),
-      b($$0 -> $$0.e("textures/entity/wolf/wolf_armor"), avp.CI);
+   @Override
+   public boolean a(cnp $$0) {
+      return this.b != null && !this.b.c($$0) ? false : super.a($$0);
+   }
 
-      final Function<akr, akr> c;
-      final avo d;
-
-      private a(final Function<akr, akr> $$0, final avo $$1) {
-         this.c = $$0;
-         this.d = $$1;
+   @Override
+   public void d_(cnp $$0) {
+      if (this.b != null) {
+         this.b.a($$0);
       }
+
+      super.d_($$0);
+   }
+
+   @Override
+   public void c(cnp $$0) {
+      if (this.b != null) {
+         this.b.b($$0);
+      }
+
+      super.c($$0);
+      this.b = null;
    }
 }

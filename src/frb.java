@@ -1,34 +1,96 @@
-public class frb extends frh {
-   private static final wz a = wz.c("options.chat.title");
+public class frb {
+   private static final alb a = alb.b("alt");
+   private static final ya b = ya.a.a(a);
+   private static final frb c = new frb();
+   private final azk d = azk.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
+   };
 
-   private static fgr<?>[] a(fgs $$0) {
-      return new fgr[]{
-         $$0.m(),
-         $$0.K(),
-         $$0.L(),
-         $$0.M(),
-         $$0.n(),
-         $$0.r(),
-         $$0.w(),
-         $$0.o(),
-         $$0.A(),
-         $$0.x(),
-         $$0.z(),
-         $$0.y(),
-         $$0.as(),
-         $$0.J(),
-         $$0.ae(),
-         $$0.V(),
-         $$0.ag()
-      };
+   private frb() {
    }
 
-   public frb(fod $$0, fgs $$1) {
-      super($$0, $$1, a);
+   public static frb a() {
+      return c;
    }
 
-   @Override
-   protected void m() {
-      this.r.a(a(this.c));
+   public xi a(fjl $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
+
+         $$2.append(ad.a(this.e, this.d));
+      }
+
+      return $$0.b().a(xd.b($$2.toString()).c(b), $$1, ya.a);
+   }
+
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

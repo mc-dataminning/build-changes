@@ -1,13 +1,7 @@
-public class cwq extends cul {
-   public cwq(cul.a $$0) {
-      super($$0);
-   }
+public interface cwq {
+   boolean a(dds var1, dsq var2, boolean var3, cnp var4);
 
-   @Override
-   public bqs<cuq> a(dcw $$0, cmx $$1, bqq $$2) {
-      cuq $$3 = $$1.b($$2);
-      $$1.a($$3, $$2);
-      $$1.b(avz.c.b(this));
-      return bqs.a($$3, $$0.x_());
+   default boolean a(dsr $$0, cnp $$1) {
+      return $$0.a($$1);
    }
 }

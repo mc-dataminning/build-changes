@@ -1,85 +1,36 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.Optional;
 
-public record eux(Map<String, erq> b, err.b c) implements evc {
+public class eux extends eug {
    public static final MapCodec<eux> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, erq.a).fieldOf("scores").forGetter(eux::c), err.b.e.fieldOf("entity").forGetter(eux::d))
-            .apply($$0, eux::new)
+      $$0 -> a($$0).and(axi.b(lv.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eux::new)
    );
+   private final axi<cvd> b;
 
-   @Override
-   public evd b() {
-      return eve.h;
+   private eux(List<ewe> $$0, axi<cvd> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public Set<euk<?>> a() {
-      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   public eui<eux> b() {
+      return euj.G;
    }
 
-   public boolean a(err $$0) {
-      bsr $$1 = $$0.c(this.c.a());
-      if ($$1 == null) {
-         return false;
-      } else {
-         eyg $$2 = $$0.d().f();
-
-         for (Entry<String, erq> $$3 : this.b.entrySet()) {
-            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   protected boolean a(err $$0, bsr $$1, eyg $$2, String $$3, erq $$4) {
-      exy $$5 = $$2.a($$3);
-      if ($$5 == null) {
-         return false;
-      } else {
-         eyc $$6 = $$2.d($$1, $$5);
-         return $$6 == null ? false : $$4.b($$0, $$6.a());
-      }
-   }
-
-   public static eux.a a(err.b $$0) {
-      return new eux.a($$0);
-   }
-
-   public Map<String, erq> c() {
-      return this.b;
-   }
-
-   public err.b d() {
-      return this.c;
-   }
-
-   public static class a implements evc.a {
-      private final Builder<String, erq> a = ImmutableMap.builder();
-      private final err.b b;
-
-      public a(err.b $$0) {
-         this.b = $$0;
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      ka<cvd> $$2 = $$1.d().F_().d(lv.I);
+      Optional<jn<cvd>> $$3 = $$2.a(this.b, $$1.b());
+      if ($$3.isPresent()) {
+         $$0.b(kr.R, $$3.get());
       }
 
-      public eux.a a(String $$0, erq $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
+      return $$0;
+   }
 
-      @Override
-      public evc build() {
-         return new eux(this.a.build(), this.b);
-      }
+   public static eug.a<?> a(axi<cvd> $$0) {
+      return a($$1 -> new eux($$1, $$0));
    }
 }

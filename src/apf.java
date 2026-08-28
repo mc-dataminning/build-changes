@@ -1,62 +1,219 @@
-import com.mojang.brigadier.builder.ArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Locale;
-import java.util.function.Function;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class apf implements apg {
-   static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wz.c("commands.data.block.invalid"));
-   public static final Function<String, aph.c> a = $$0 -> new aph.c() {
-         @Override
-         public apg a(CommandContext<et> $$0x) throws CommandSyntaxException {
-            jd $$1 = gp.a($$0, $$0 + "Pos");
-            dqh $$2 = ((et)$$0.getSource()).e().c_($$1);
-            if ($$2 == null) {
-               throw apf.b.create();
-            } else {
-               return new apf($$2, $$1);
+public class apf {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.teleport.invalidPosition"));
+
+   public static void a(CommandDispatcher<et> $$0) {
+      LiteralCommandNode<et> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("teleport").requires($$0x -> $$0x.c(2)))
+                  .then(
+                     eu.a("location", gw.a())
+                        .executes(
+                           $$0x -> a(
+                                 (et)$$0x.getSource(),
+                                 Collections.singleton(((et)$$0x.getSource()).g()),
+                                 ((et)$$0x.getSource()).e(),
+                                 gw.b($$0x, "location"),
+                                 gy.d(),
+                                 null
+                              )
+                        )
+                  ))
+               .then(
+                  eu.a("destination", fg.a())
+                     .executes($$0x -> a((et)$$0x.getSource(), Collections.singleton(((et)$$0x.getSource()).g()), fg.a($$0x, "destination")))
+               ))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("targets", fg.b())
+                     .then(
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("location", gw.a())
+                                 .executes(
+                                    $$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"), ((et)$$0x.getSource()).e(), gw.b($$0x, "location"), null, null)
+                                 ))
+                              .then(
+                                 eu.a("rotation", gt.a())
+                                    .executes(
+                                       $$0x -> a(
+                                             (et)$$0x.getSource(),
+                                             fg.b($$0x, "targets"),
+                                             ((et)$$0x.getSource()).e(),
+                                             gw.b($$0x, "location"),
+                                             gt.a($$0x, "rotation"),
+                                             null
+                                          )
+                                    )
+                              ))
+                           .then(
+                              ((LiteralArgumentBuilder)eu.a("facing")
+                                    .then(
+                                       eu.a("entity")
+                                          .then(
+                                             ((RequiredArgumentBuilder)eu.a("facingEntity", fg.a())
+                                                   .executes(
+                                                      $$0x -> a(
+                                                            (et)$$0x.getSource(),
+                                                            fg.b($$0x, "targets"),
+                                                            ((et)$$0x.getSource()).e(),
+                                                            gw.b($$0x, "location"),
+                                                            null,
+                                                            new apf.b(fg.a($$0x, "facingEntity"), ff.a.a)
+                                                         )
+                                                   ))
+                                                .then(
+                                                   eu.a("facingAnchor", ff.a())
+                                                      .executes(
+                                                         $$0x -> a(
+                                                               (et)$$0x.getSource(),
+                                                               fg.b($$0x, "targets"),
+                                                               ((et)$$0x.getSource()).e(),
+                                                               gw.b($$0x, "location"),
+                                                               null,
+                                                               new apf.b(fg.a($$0x, "facingEntity"), ff.a($$0x, "facingAnchor"))
+                                                            )
+                                                      )
+                                                )
+                                          )
+                                    ))
+                                 .then(
+                                    eu.a("facingLocation", gw.a())
+                                       .executes(
+                                          $$0x -> a(
+                                                (et)$$0x.getSource(),
+                                                fg.b($$0x, "targets"),
+                                                ((et)$$0x.getSource()).e(),
+                                                gw.b($$0x, "location"),
+                                                null,
+                                                new apf.c(gw.a($$0x, "facingLocation"))
+                                             )
+                                       )
+                                 )
+                           )
+                     ))
+                  .then(eu.a("destination", fg.a()).executes($$0x -> a((et)$$0x.getSource(), fg.b($$0x, "targets"), fg.a($$0x, "destination"))))
+            )
+      );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
+   }
+
+   private static int a(et $$0, Collection<? extends btj> $$1, btj $$2) throws CommandSyntaxException {
+      for (btj $$3 : $$1) {
+         a($$0, $$3, (arg)$$2.dS(), $$2.dx(), $$2.dz(), $$2.dD(), EnumSet.noneOf(bus.class), $$2.dI(), $$2.dK(), null);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.teleport.success.entity.single", $$1.iterator().next().Q_(), $$2.Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.teleport.success.entity.multiple", $$1.size(), $$2.Q_()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(et $$0, Collection<? extends btj> $$1, arg $$2, gr $$3, @Nullable gr $$4, @Nullable apf.a $$5) throws CommandSyntaxException {
+      eye $$6 = $$3.a($$0);
+      eyd $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<bus> $$8 = EnumSet.noneOf(bus.class);
+      if ($$3.a()) {
+         $$8.add(bus.a);
+      }
+
+      if ($$3.b()) {
+         $$8.add(bus.b);
+      }
+
+      if ($$3.c()) {
+         $$8.add(bus.c);
+      }
+
+      if ($$4 == null) {
+         $$8.add(bus.e);
+         $$8.add(bus.d);
+      } else {
+         if ($$4.a()) {
+            $$8.add(bus.e);
+         }
+
+         if ($$4.b()) {
+            $$8.add(bus.d);
+         }
+      }
+
+      for (btj $$9 : $$1) {
+         if ($$4 == null) {
+            a($$0, $$9, $$2, $$6.d, $$6.e, $$6.f, $$8, $$9.dI(), $$9.dK(), $$5);
+         } else {
+            a($$0, $$9, $$2, $$6.d, $$6.e, $$6.f, $$8, $$7.j, $$7.i, $$5);
+         }
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.teleport.success.location.single", $$1.iterator().next().Q_(), a($$6.d), a($$6.e), a($$6.f)), true);
+      } else {
+         $$0.a(() -> xd.a("commands.teleport.success.location.multiple", $$1.size(), a($$6.d), a($$6.e), a($$6.f)), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%f", $$0);
+   }
+
+   private static void a(et $$0, btj $$1, arg $$2, double $$3, double $$4, double $$5, Set<bus> $$6, float $$7, float $$8, @Nullable apf.a $$9) throws CommandSyntaxException {
+      je $$10 = je.a($$3, $$4, $$5);
+      if (!dds.l($$10)) {
+         throw a.create();
+      } else {
+         float $$11 = azc.g($$7);
+         float $$12 = azc.g($$8);
+         if ($$1.a($$2, $$3, $$4, $$5, $$6, $$11, $$12, true)) {
+            if ($$9 != null) {
+               $$9.perform($$0, $$1);
+            }
+
+            if (!($$1 instanceof buf $$13) || !$$13.fE()) {
+               $$1.h($$1.dv().d(1.0, 0.0, 1.0));
+               $$1.d(true);
+            }
+
+            if ($$1 instanceof bun $$14) {
+               $$14.P().o();
             }
          }
+      }
+   }
 
-         @Override
-         public ArgumentBuilder<et, ?> a(ArgumentBuilder<et, ?> $$0x, Function<ArgumentBuilder<et, ?>, ArgumentBuilder<et, ?>> $$1) {
-            return $$0.then(eu.a("block").then($$1.apply(eu.a($$0 + "Pos", gp.a()))));
+   @FunctionalInterface
+   interface a {
+      void perform(et var1, btj var2);
+   }
+
+   static record b(btj a, ff.a b) implements apf.a {
+      @Override
+      public void perform(et $$0, btj $$1) {
+         if ($$1 instanceof arh $$2) {
+            $$2.a($$0.m(), this.a, this.b);
+         } else {
+            $$1.a($$0.m(), this.b.a(this.a));
          }
-      };
-   private final dqh c;
-   private final jd d;
-
-   public apf(dqh $$0, jd $$1) {
-      this.c = $$0;
-      this.d = $$1;
+      }
    }
 
-   @Override
-   public void a(ub $$0) {
-      dtc $$1 = this.c.i().a_(this.d);
-      this.c.c($$0, this.c.i().H_());
-      this.c.e();
-      this.c.i().a(this.d, $$1, $$1, 3);
-   }
-
-   @Override
-   public ub a() {
-      return this.c.b(this.c.i().H_());
-   }
-
-   @Override
-   public wz b() {
-      return wz.a("commands.data.block.modified", this.d.u(), this.d.v(), this.d.w());
-   }
-
-   @Override
-   public wz a(uy $$0) {
-      return wz.a("commands.data.block.query", this.d.u(), this.d.v(), this.d.w(), uq.c($$0));
-   }
-
-   @Override
-   public wz a(fl.g $$0, double $$1, int $$2) {
-      return wz.a("commands.data.block.get", $$0.a(), this.d.u(), this.d.v(), this.d.w(), String.format(Locale.ROOT, "%.2f", $$1), $$2);
+   static record c(eye a) implements apf.a {
+      @Override
+      public void perform(et $$0, btj $$1) {
+         $$1.a($$0.m(), this.a);
+      }
    }
 }

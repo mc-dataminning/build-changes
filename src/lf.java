@@ -1,49 +1,30 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import io.netty.buffer.ByteBuf;
 
-public class lf implements lk {
-   private final ll<lf> a;
-   private final int b;
+public class lf implements ll {
+   private static final Codec<dua> a = Codec.withAlternative(dua.a, lu.e.q(), dgv::o);
+   private final lm<lf> b;
+   private final dua c;
 
-   public static MapCodec<lf> a(ll<lf> $$0) {
-      return axw.i.xmap($$1 -> new lf($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
+   public static MapCodec<lf> a(lm<lf> $$0) {
+      return a.xmap($$1 -> new lf($$0, $$1), $$0x -> $$0x.c).fieldOf("block_state");
    }
 
-   public static yx<? super ByteBuf, lf> b(ll<lf> $$0) {
-      return yv.f.a($$1 -> new lf($$0, $$1), $$0x -> $$0x.b);
+   public static zb<? super wo, lf> b(lm<lf> $$0) {
+      return yz.a(dgv.q).a($$1 -> new lf($$0, $$1), $$0x -> $$0x.c);
    }
 
-   private lf(ll<lf> $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public lf(lm<lf> $$0, dua $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public ll<lf> a() {
-      return this.a;
+   public lm<lf> a() {
+      return this.b;
    }
 
-   public float b() {
-      return (float)axy.b.b(this.b) / 255.0F;
-   }
-
-   public float c() {
-      return (float)axy.b.c(this.b) / 255.0F;
-   }
-
-   public float d() {
-      return (float)axy.b.d(this.b) / 255.0F;
-   }
-
-   public float e() {
-      return (float)axy.b.a(this.b) / 255.0F;
-   }
-
-   public static lf a(ll<lf> $$0, int $$1) {
-      return new lf($$0, $$1);
-   }
-
-   public static lf a(ll<lf> $$0, float $$1, float $$2, float $$3) {
-      return a($$0, axy.b.a(1.0F, $$1, $$2, $$3));
+   public dua b() {
+      return this.c;
    }
 }

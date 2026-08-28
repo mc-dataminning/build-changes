@@ -1,30 +1,37 @@
-import javax.annotation.Nullable;
+public enum cnq {
+   a(0, "cape"),
+   b(1, "jacket"),
+   c(2, "left_sleeve"),
+   d(3, "right_sleeve"),
+   e(4, "left_pants_leg"),
+   f(5, "right_pants_leg"),
+   g(6, "hat");
 
-@FunctionalInterface
-public interface cnq {
-   cnq a = ($$0, $$1, $$2) -> {
-   };
-   cnq b = ($$0, $$1, $$2) -> {
-      float $$3 = 170.0F + $$2.i() * 20.0F;
-      $$0.i($$0.dr().a(-0.5));
-      $$0.t($$0.dE() + $$3);
-      $$0.O += $$3;
-      $$0.av = true;
-   };
-   cnq c = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         exc $$3 = $$1.bM().d();
-         $$0.i($$3);
-         $$0.av = true;
-      }
-   };
-   cnq d = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         exc $$3 = $$1.dr().d();
-         $$0.i($$3);
-         $$0.av = true;
-      }
-   };
+   private final int h;
+   private final int i;
+   private final String j;
+   private final xd k;
 
-   void deflect(cnp var1, @Nullable bsr var2, ayw var3);
+   private cnq(final int $$0, final String $$1) {
+      this.h = $$0;
+      this.i = 1 << $$0;
+      this.j = $$1;
+      this.k = xd.c("options.modelPart." + $$1);
+   }
+
+   public int a() {
+      return this.i;
+   }
+
+   public int b() {
+      return this.h;
+   }
+
+   public String c() {
+      return this.j;
+   }
+
+   public xd d() {
+      return this.k;
+   }
 }

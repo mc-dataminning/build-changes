@@ -1,108 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class doi extends dfy {
+public class doi extends dgv {
    public static final MapCodec<doi> a = b(doi::new);
-   public static final dtt b = dts.B;
+   protected static final eyx b = dgv.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<doi> a() {
       return a;
    }
 
-   public doi(dtb.d $$0) {
+   public doi(dtz.d $$0) {
       super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         if ($$1.C($$2)) {
-            a($$1, $$2);
-            $$1.a($$2, false);
-         }
-      }
+   protected eyx b(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dfy $$3, jd $$4, boolean $$5) {
-      if ($$1.C($$2)) {
-         a($$1, $$2);
-         $$1.a($$2, false);
-      }
+   protected eyx b_(dua $$0, dcx $$1, je $$2) {
+      return eyu.b();
    }
 
    @Override
-   public dtc a(dcw $$0, jd $$1, dtc $$2, cmx $$3) {
-      if (!$$0.x_() && !$$3.f() && $$2.c(b)) {
-         a($$0, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
+   protected eyx c(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return eyu.b();
    }
 
    @Override
-   public void a(dcw $$0, jd $$1, dco $$2) {
-      if (!$$0.B) {
-         cji $$3 = new cji($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2.f());
-         int $$4 = $$3.t();
-         $$3.b((short)($$0.z.a($$4 / 4) + $$4 / 8));
-         $$0.b($$3);
-      }
-   }
-
-   public static void a(dcw $$0, jd $$1) {
-      a($$0, $$1, null);
-   }
-
-   private static void a(dcw $$0, jd $$1, @Nullable btn $$2) {
-      if (!$$0.B) {
-         cji $$3 = new cji($$0, (double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, $$2);
-         $$0.b($$3);
-         $$0.a(null, $$3.dt(), $$3.dv(), $$3.dz(), avp.zy, avq.e, 1.0F, 1.0F);
-         $$0.a($$2, dxz.I, $$1);
-      }
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      dhb.b($$1, $$2.d(), $$0);
    }
 
    @Override
-   protected bqt a(cuq $$0, dtc $$1, dcw $$2, jd $$3, cmx $$4, bqq $$5, ewy $$6) {
-      if (!$$0.a(cut.os) && !$$0.a(cut.tX)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else {
-         a($$2, $$3, $$4);
-         $$2.a($$3, dga.a.o(), 11);
-         cul $$7 = $$0.g();
-         if ($$0.a(cut.os)) {
-            $$0.a(1, $$4, btn.d($$5));
-         } else {
-            $$0.a(1, $$4);
-         }
-
-         $$4.b(avz.c.b($$7));
-         return bqt.a($$2.B);
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$1 == jj.b && $$2.a(dgx.G)) {
+         $$3.a($$4, this, 20);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dcw $$0, dtc $$1, ewy $$2, cnp $$3) {
-      if (!$$0.B) {
-         jd $$4 = $$2.a();
-         bsr $$5 = $$3.s();
-         if ($$3.bR() && $$3.a($$0, $$4)) {
-            a($$0, $$4, $$5 instanceof btn ? (btn)$$5 : null);
-            $$0.a($$4, false);
-         }
-      }
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
    }
 
    @Override
-   public boolean a(dco $$0) {
+   protected boolean a(dua $$0, eqq $$1) {
       return false;
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b);
+   protected float c(dua $$0, dcx $$1, je $$2) {
+      return 0.2F;
    }
 }

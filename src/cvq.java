@@ -1,60 +1,48 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class cvq extends cso {
-   public cvq(dfy $$0, cul.a $$1) {
-      super($$0, $$1);
+public record cvq(jn<awc> e, xd f, float g, int h) {
+   public static final Codec<cvq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               awc.b.fieldOf("sound_event").forGetter(cvq::b),
+               xf.a.fieldOf("description").forGetter(cvq::c),
+               ayl.m.fieldOf("length_in_seconds").forGetter(cvq::d),
+               ayl.a(0, 15).fieldOf("comparator_output").forGetter(cvq::e)
+            )
+            .apply($$0, cvq::new)
+   );
+   public static final zb<wo, cvq> b = zb.a(awc.d, cvq::b, xf.b, cvq::c, yz.i, cvq::d, yz.g, cvq::e, cvq::new);
+   public static final Codec<jn<cvq>> c = aky.a(lv.L);
+   public static final zb<wo, jn<cvq>> d = yz.a(lv.L, b);
+   private static final int i = 20;
+
+   public int a() {
+      return azc.f(this.g * 20.0F);
    }
 
-   @Nullable
-   @Override
-   public cyd b(cyd $$0) {
-      jd $$1 = $$0.a();
-      dcw $$2 = $$0.q();
-      dtc $$3 = $$2.a_($$1);
-      dfy $$4 = this.d();
-      if (!$$3.a($$4)) {
-         return dmo.a($$2, $$1) == 7 ? null : $$0;
-      } else {
-         ji $$5;
-         if ($$0.h()) {
-            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
-         } else {
-            $$5 = $$0.k() == ji.b ? $$0.g() : ji.b;
-         }
-
-         int $$7 = 0;
-         jd.a $$8 = $$1.k().c($$5);
-
-         while ($$7 < 7) {
-            if (!$$2.B && !$$2.k($$8)) {
-               cmx $$9 = $$0.o();
-               int $$10 = $$2.am();
-               if ($$9 instanceof aqv && $$8.v() >= $$10) {
-                  ((aqv)$$9).b(wz.a("build.tooHigh", $$10 - 1).a(n.m), true);
-               }
-               break;
-            }
-
-            $$3 = $$2.a_($$8);
-            if (!$$3.a(this.d())) {
-               if ($$3.a($$0)) {
-                  return cyd.a($$0, $$8, $$5);
-               }
-               break;
-            }
-
-            $$8.c($$5);
-            if ($$5.o().d()) {
-               $$7++;
-            }
-         }
-
-         return null;
-      }
+   public boolean a(long $$0) {
+      return $$0 >= (long)(this.a() + 20);
    }
 
-   @Override
-   protected boolean c() {
-      return false;
+   public static Optional<jn<cvq>> a(jp.a $$0, cvl $$1) {
+      cvp $$2 = $$1.a(kr.T);
+      return $$2 != null ? $$2.a().a($$0) : Optional.empty();
+   }
+
+   public jn<awc> b() {
+      return this.e;
+   }
+
+   public xd c() {
+      return this.f;
+   }
+
+   public float d() {
+      return this.g;
+   }
+
+   public int e() {
+      return this.h;
    }
 }

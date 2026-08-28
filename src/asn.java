@@ -1,208 +1,257 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.internal.Streams;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Enumeration;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 
-public class asn extends ash {
-   static final Logger c = LogUtils.getLogger();
-   private final asn.b d;
-   private final String e;
+public abstract class asn implements AutoCloseable {
+   protected static final Logger a = LogUtils.getLogger();
+   private static final AtomicInteger b = new AtomicInteger(1);
+   private static final ThreadFactory c = $$0 -> {
+      Thread $$1 = new Thread($$0);
+      $$1.setName("Chat-Filter-Worker-" + b.getAndIncrement());
+      return $$1;
+   };
+   private final URL d;
+   private final asn.b e;
+   final asn.a f;
+   final ExecutorService g;
 
-   asn(asp $$0, asn.b $$1, String $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   protected static ExecutorService a(int $$0) {
+      return Executors.newFixedThreadPool($$0, c);
    }
 
-   private static String b(ass $$0, akr $$1) {
-      return String.format(Locale.ROOT, "%s/%s/%s", $$0.a(), $$1.b(), $$1.a());
+   protected asn(URL $$0, asn.b $$1, asn.a $$2, ExecutorService $$3) {
+      this.f = $$2;
+      this.g = $$3;
+      this.d = $$0;
+      this.e = $$1;
+   }
+
+   protected static URL a(URI $$0, @Nullable JsonObject $$1, String $$2, String $$3) throws MalformedURLException {
+      String $$4 = a($$1, $$2, $$3);
+      return $$0.resolve("/" + $$4).toURL();
+   }
+
+   protected static String a(@Nullable JsonObject $$0, String $$1, String $$2) {
+      return $$0 != null ? ays.a($$0, $$1, $$2) : $$2;
    }
 
    @Nullable
-   @Override
-   public atw<InputStream> a(String... $$0) {
-      return this.b(String.join("/", $$0));
-   }
-
-   @Override
-   public atw<InputStream> a(ass $$0, akr $$1) {
-      return this.b(b($$0, $$1));
-   }
-
-   private String a(String $$0) {
-      return this.e.isEmpty() ? $$0 : this.e + "/" + $$0;
-   }
-
-   @Nullable
-   private atw<InputStream> b(String $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
+   public static asn a(apz $$0) {
+      String $$1 = $$0.R;
+      if (azz.h($$1)) {
          return null;
       } else {
-         ZipEntry $$2 = $$1.getEntry(this.a($$0));
-         return $$2 == null ? null : atw.create($$1, $$2);
+         return switch ($$0.S) {
+            case 0 -> asb.a($$1);
+            case 1 -> ase.a($$1);
+            default -> {
+               a.warn("Could not create text filter - unsupported text filtering version used");
+               yield null;
+            }
+         };
       }
    }
 
-   @Override
-   public Set<String> a(ass $$0) {
-      ZipFile $$1 = this.d.a();
-      if ($$1 == null) {
-         return Set.of();
-      } else {
-         Enumeration<? extends ZipEntry> $$2 = $$1.entries();
-         Set<String> $$3 = Sets.newHashSet();
-         String $$4 = this.a($$0.a() + "/");
+   protected CompletableFuture<ary> a(GameProfile $$0, String $$1, asn.a $$2, Executor $$3) {
+      return $$1.isEmpty() ? CompletableFuture.completedFuture(ary.a) : CompletableFuture.supplyAsync(() -> {
+         JsonObject $$3x = this.e.encode($$0, $$1);
 
-         while ($$2.hasMoreElements()) {
-            ZipEntry $$5 = $$2.nextElement();
-            String $$6 = $$5.getName();
-            String $$7 = a($$4, $$6);
-            if (!$$7.isEmpty()) {
-               if (akr.j($$7)) {
-                  $$3.add($$7);
-               } else {
-                  c.warn("Non [a-z0-9_.-] character in namespace {} in pack {}, ignoring", $$7, this.d.a);
-               }
-            }
+         try {
+            JsonObject $$4 = this.b($$3x, this.d);
+            return this.a($$1, $$2, $$4);
+         } catch (Exception var6) {
+            a.warn("Failed to validate message '{}'", $$1, var6);
+            return ary.b($$1);
+         }
+      }, $$3);
+   }
+
+   protected abstract ary a(String var1, asn.a var2, JsonObject var3);
+
+   protected xh a(String $$0, JsonArray $$1, asn.a $$2) {
+      if ($$1.isEmpty()) {
+         return xh.c;
+      } else if ($$2.shouldIgnore($$0, $$1.size())) {
+         return xh.b;
+      } else {
+         xh $$3 = new xh($$0.length());
+
+         for (int $$4 = 0; $$4 < $$1.size(); $$4++) {
+            $$3.a($$1.get($$4).getAsInt());
          }
 
          return $$3;
       }
    }
 
-   @VisibleForTesting
-   public static String a(String $$0, String $$1) {
-      if (!$$1.startsWith($$0)) {
-         return "";
-      } else {
-         int $$2 = $$0.length();
-         int $$3 = $$1.indexOf(47, $$2);
-         return $$3 == -1 ? $$1.substring($$2) : $$1.substring($$2, $$3);
-      }
-   }
-
    @Override
    public void close() {
-      this.d.close();
+      this.g.shutdownNow();
    }
 
-   @Override
-   public void a(ass $$0, String $$1, String $$2, asq.a $$3) {
-      ZipFile $$4 = this.d.a();
-      if ($$4 != null) {
-         Enumeration<? extends ZipEntry> $$5 = $$4.entries();
-         String $$6 = this.a($$0.a() + "/" + $$1 + "/");
-         String $$7 = $$6 + $$2 + "/";
+   protected void a(InputStream $$0) throws IOException {
+      byte[] $$1 = new byte[1024];
 
-         while ($$5.hasMoreElements()) {
-            ZipEntry $$8 = $$5.nextElement();
-            if (!$$8.isDirectory()) {
-               String $$9 = $$8.getName();
-               if ($$9.startsWith($$7)) {
-                  String $$10 = $$9.substring($$6.length());
-                  akr $$11 = akr.b($$1, $$10);
-                  if ($$11 != null) {
-                     $$3.accept($$11, atw.create($$4, $$8));
-                  } else {
-                     c.warn("Invalid path in datapack: {}:{}, ignoring", $$1, $$10);
-                  }
-               }
-            }
-         }
+      while ($$0.read($$1) != -1) {
       }
    }
 
-   public static class a implements atm.c {
-      private final File a;
+   private JsonObject b(JsonObject $$0, URL $$1) throws IOException {
+      HttpURLConnection $$2 = this.a($$0, $$1);
 
-      public a(Path $$0) {
-         this($$0.toFile());
+      JsonObject var5;
+      try (InputStream $$3 = $$2.getInputStream()) {
+         if ($$2.getResponseCode() == 204) {
+            return new JsonObject();
+         }
+
+         try {
+            var5 = Streams.parse(new JsonReader(new InputStreamReader($$3, StandardCharsets.UTF_8))).getAsJsonObject();
+         } finally {
+            this.a($$3);
+         }
       }
 
-      public a(File $$0) {
-         this.a = $$0;
-      }
+      return var5;
+   }
 
-      @Override
-      public asq a(asp $$0) {
-         asn.b $$1 = new asn.b(this.a);
-         return new asn($$0, $$1, "");
-      }
+   protected HttpURLConnection a(JsonObject $$0, URL $$1) throws IOException {
+      HttpURLConnection $$2 = this.a($$1);
+      this.a($$2);
+      OutputStreamWriter $$3 = new OutputStreamWriter($$2.getOutputStream(), StandardCharsets.UTF_8);
 
-      @Override
-      public asq a(asp $$0, atm.a $$1) {
-         asn.b $$2 = new asn.b(this.a);
-         asq $$3 = new asn($$0, $$2, "");
-         List<String> $$4 = $$1.d();
-         if ($$4.isEmpty()) {
-            return $$3;
-         } else {
-            List<asq> $$5 = new ArrayList<>($$4.size());
+      try {
+         JsonWriter $$4 = new JsonWriter($$3);
 
-            for (String $$6 : $$4) {
-               $$5.add(new asn($$0, $$2, $$6));
+         try {
+            Streams.write($$0, $$4);
+         } catch (Throwable var10) {
+            try {
+               $$4.close();
+            } catch (Throwable var9) {
+               var10.addSuppressed(var9);
             }
 
-            return new asj($$3, $$5);
+            throw var10;
          }
+
+         $$4.close();
+      } catch (Throwable var11) {
+         try {
+            $$3.close();
+         } catch (Throwable var8) {
+            var11.addSuppressed(var8);
+         }
+
+         throw var11;
+      }
+
+      $$3.close();
+      int $$5 = $$2.getResponseCode();
+      if ($$5 >= 200 && $$5 < 300) {
+         return $$2;
+      } else {
+         throw new asn.d($$5 + " " + $$2.getResponseMessage());
       }
    }
 
-   static class b implements AutoCloseable {
-      final File a;
-      @Nullable
-      private ZipFile b;
-      private boolean c;
+   protected abstract void a(HttpURLConnection var1);
 
-      b(File $$0) {
-         this.a = $$0;
+   protected int a() {
+      return 2000;
+   }
+
+   protected HttpURLConnection a(URL $$0) throws IOException {
+      HttpURLConnection $$1 = (HttpURLConnection)$$0.openConnection();
+      $$1.setConnectTimeout(15000);
+      $$1.setReadTimeout(this.a());
+      $$1.setUseCaches(false);
+      $$1.setDoOutput(true);
+      $$1.setDoInput(true);
+      $$1.setRequestMethod("POST");
+      $$1.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+      $$1.setRequestProperty("Accept", "application/json");
+      $$1.setRequestProperty("User-Agent", "Minecraft server" + ab.b().c());
+      return $$1;
+   }
+
+   public aso a(GameProfile $$0) {
+      return new asn.c($$0);
+   }
+
+   @FunctionalInterface
+   public interface a {
+      asn.a a = ($$0, $$1) -> false;
+      asn.a b = ($$0, $$1) -> $$0.length() == $$1;
+
+      static asn.a ignoreOverThreshold(int $$0) {
+         return ($$1, $$2) -> $$2 >= $$0;
       }
 
-      @Nullable
-      ZipFile a() {
-         if (this.c) {
-            return null;
-         } else {
-            if (this.b == null) {
-               try {
-                  this.b = new ZipFile(this.a);
-               } catch (IOException var2) {
-                  asn.c.error("Failed to open pack {}", this.a, var2);
-                  this.c = true;
-                  return null;
-               }
-            }
+      static asn.a select(int $$0) {
+         return switch ($$0) {
+            case -1 -> a;
+            case 0 -> b;
+            default -> ignoreOverThreshold($$0);
+         };
+      }
 
-            return this.b;
-         }
+      boolean shouldIgnore(String var1, int var2);
+   }
+
+   @FunctionalInterface
+   protected interface b {
+      JsonObject encode(GameProfile var1, String var2);
+   }
+
+   protected class c implements aso {
+      protected final GameProfile b;
+      protected final Executor c;
+
+      protected c(final GameProfile $$1) {
+         this.b = $$1;
+         bqd<Runnable> $$2 = bqd.a(asn.this.g, "chat stream for " + $$1.getName());
+         this.c = $$2::a;
       }
 
       @Override
-      public void close() {
-         if (this.b != null) {
-            IOUtils.closeQuietly(this.b);
-            this.b = null;
-         }
+      public CompletableFuture<List<ary>> a(List<String> $$0) {
+         List<CompletableFuture<ary>> $$1 = $$0.stream().map($$0x -> asn.this.a(this.b, $$0x, asn.this.f, this.c)).collect(ImmutableList.toImmutableList());
+         return ad.e($$1).exceptionally($$0x -> ImmutableList.of());
       }
 
       @Override
-      protected void finalize() throws Throwable {
-         this.close();
-         super.finalize();
+      public CompletableFuture<ary> a(String $$0) {
+         return asn.this.a(this.b, $$0, asn.this.f, this.c);
+      }
+   }
+
+   protected static class d extends RuntimeException {
+      protected d(String $$0) {
+         super($$0);
       }
    }
 }

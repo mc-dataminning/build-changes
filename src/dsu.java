@@ -1,113 +1,74 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class dsu extends dfk {
-   public static final MapCodec<dsu> a = b(dsu::new);
-   public static final dtw b = dsw.a;
-   public static final dua<due> c = dsw.c;
+public class dsu extends dre implements dem {
+   private final dct a = new dct() {
+      @Override
+      public void a(dds $$0, je $$1, int $$2) {
+         $$0.a($$1, dgx.ct, $$2, 0);
+      }
 
-   @Override
-   public MapCodec<dsu> a() {
-      return a;
-   }
-
-   public dsu(dtb.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, ji.c).a(c, due.a));
-   }
-
-   @Nullable
-   @Override
-   public dqh a(jd $$0, dtc $$1) {
-      return null;
-   }
-
-   public static dqh a(jd $$0, dtc $$1, dtc $$2, ji $$3, boolean $$4, boolean $$5) {
-      return new dsy($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dqh> dqi<T> a(dcw $$0, dtc $$1, dqj<T> $$2) {
-      return a($$2, dqj.k, dsy::a);
-   }
-
-   @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dqh $$5 = $$1.c_($$2);
-         if ($$5 instanceof dsy) {
-            ((dsy)$$5).k();
+      @Override
+      public void a(@Nullable dds $$0, je $$1, del $$2) {
+         super.a($$0, $$1, $$2);
+         if ($$0 != null) {
+            dua $$3 = $$0.a_($$1);
+            $$0.a($$1, $$3, $$3, 4);
          }
       }
+   };
+
+   public dsu(je $$0, dua $$1) {
+      super(drg.j, $$0, $$1);
    }
 
    @Override
-   public void a(dcx $$0, jd $$1, dtc $$2) {
-      jd $$3 = $$1.a($$2.c(b).g());
-      dtc $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dsv && $$4.c(dsv.c)) {
-         $$0.a($$3, false);
-      }
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.a.a(this.o, this.p, $$0);
    }
 
    @Override
-   protected bqr a(dtc $$0, dcw $$1, jd $$2, cmx $$3, ewy $$4) {
-      if (!$$1.B && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return bqr.c;
-      } else {
-         return bqr.e;
-      }
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      this.a.a($$0);
+   }
+
+   public static void a(dds $$0, je $$1, dua $$2, dsu $$3) {
+      $$3.a.a($$0, $$1);
+   }
+
+   public static void b(dds $$0, je $$1, dua $$2, dsu $$3) {
+      $$3.a.a((arg)$$0, $$1);
+   }
+
+   public acg b() {
+      return acg.a(this);
    }
 
    @Override
-   protected List<cuq> a(dtc $$0, eru.a $$1) {
-      dsy $$2 = this.a($$1.a(), jd.a($$1.a(eun.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   public uf a(jp.a $$0) {
+      uf $$1 = this.e($$0);
+      $$1.r("SpawnPotentials");
+      return $$1;
    }
 
    @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return exs.a();
+   public boolean a_(int $$0, int $$1) {
+      return this.a.a(this.o, $$0) ? true : super.a_($$0, $$1);
    }
 
    @Override
-   protected exv b(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      dsy $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : exs.a();
-   }
-
-   @Nullable
-   private dsy a(dcc $$0, jd $$1) {
-      dqh $$2 = $$0.c_($$1);
-      return $$2 instanceof dsy ? (dsy)$$2 : null;
+   public boolean p() {
+      return true;
    }
 
    @Override
-   public cuq a(dcz $$0, jd $$1, dtc $$2) {
-      return cuq.l;
+   public void a(btq<?> $$0, azk $$1) {
+      this.a.a($$0, this.o, $$1, this.p);
+      this.e();
    }
 
-   @Override
-   protected dtc a(dtc $$0, dmm $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dtc a(dtc $$0, dkv $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   public dct c() {
+      return this.a;
    }
 }

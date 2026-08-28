@@ -1,38 +1,78 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.Map;
+import org.slf4j.Logger;
 
-public interface eld {
-   Codec<eld> b = lt.ah.r().dispatch(eld::b, Function.identity());
+public record eld(List<eks> a) {
+   private static final Logger b = LogUtils.getLogger();
+   private static final alb c = alb.b("jigsaw");
+   private static final Map<alb, alb> d = ImmutableMap.builder()
+      .put(alb.b("nvi"), c)
+      .put(alb.b("pcp"), c)
+      .put(alb.b("bastionremnant"), c)
+      .put(alb.b("runtime"), c)
+      .build();
 
-   void a(ayw var1, BiConsumer<akq<elb>, akq<elb>> var2);
-
-   Stream<akq<elb>> a();
-
-   static elc a(String $$0, String $$1) {
-      return a(qx.a($$0), qx.a($$1));
+   public eld(final List<eks> a) {
+      this.a = List.copyOf(a);
    }
 
-   static elc a(akq<elb> $$0, akq<elb> $$1) {
-      return new elc($$0, $$1);
+   public boolean a() {
+      return this.a.isEmpty();
    }
 
-   static elg a(String $$0, bpb<String> $$1) {
-      bpb.a<akq<elb>> $$2 = bpb.a();
-      $$1.e().forEach($$1x -> $$2.a(qx.a((String)$$1x.b()), $$1x.a().a()));
-      return a(qx.a($$0), $$2.a());
+   public boolean a(je $$0) {
+      for (eks $$1 : this.a) {
+         if ($$1.f().b($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   static elg a(akq<elb> $$0, bpb<akq<elb>> $$1) {
-      return new elg($$0, $$1);
+   public vc a(ele $$0) {
+      ul $$1 = new ul();
+
+      for (eks $$2 : this.a) {
+         $$1.add($$2.a($$0));
+      }
+
+      return $$1;
    }
 
-   static elh a(bpb<List<eld>> $$0) {
-      return new elh($$0);
+   public static eld a(ul $$0, ele $$1) {
+      List<eks> $$2 = Lists.newArrayList();
+
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         uf $$4 = $$0.a($$3);
+         String $$5 = $$4.l("id").toLowerCase(Locale.ROOT);
+         alb $$6 = alb.a($$5);
+         alb $$7 = d.getOrDefault($$6, $$6);
+         elf $$8 = lu.Q.a($$7);
+         if ($$8 == null) {
+            b.error("Unknown structure piece id: {}", $$7);
+         } else {
+            try {
+               eks $$9 = $$8.load($$1, $$4);
+               $$2.add($$9);
+            } catch (Exception var10) {
+               b.error("Exception loading structure piece with id {}", $$7, var10);
+            }
+         }
+      }
+
+      return new eld($$2);
    }
 
-   MapCodec<? extends eld> b();
+   public ekg b() {
+      return eks.a(this.a.stream());
+   }
+
+   public List<eks> c() {
+      return this.a;
+   }
 }

@@ -1,23 +1,54 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class eec implements eei {
-   public static final Codec<eec> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bpw.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bpw.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, eec::new)
-   );
-   private final bpw b;
-   private final bpw c;
-
-   public eec(bpw $$0, bpw $$1) {
-      this.b = $$0;
-      this.c = $$1;
+public class eec extends edc<efv> {
+   public eec(Codec<efv> $$0) {
+      super($$0);
    }
 
-   public bpw a() {
-      return this.b;
+   @Override
+   public boolean a(ede<efv> $$0) {
+      efv $$1 = $$0.f();
+      dep $$2 = $$0.b();
+      azk $$3 = $$0.d();
+      dgv $$4 = $$1.b.b();
+      je $$5 = a($$2, $$0.e().k().a(jj.a.b, $$2.G_() + 1, $$2.an() - 1), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (je $$11 : je.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
+
+            dua $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
+         }
+
+         return $$10;
+      }
    }
 
-   public bpw b() {
-      return this.c;
+   @Nullable
+   private static je a(ddt $$0, je.a $$1, dgv $$2) {
+      while ($$1.v() > $$0.G_() + 1) {
+         dua $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(jj.a);
+      }
+
+      return null;
    }
 }

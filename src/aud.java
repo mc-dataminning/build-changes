@@ -1,23 +1,120 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
 public class aud {
-   private static final Codec<aud> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.list(ayx.a).fieldOf("block").forGetter($$0x -> $$0x.c)).apply($$0, aud::new)
-   );
-   public static final ate<aud> a = ate.a("filter", b);
-   private final List<ayx> c;
+   private final Set<auf> a;
+   private Map<String, aua> b = ImmutableMap.of();
+   private List<aua> c = ImmutableList.of();
 
-   public aud(List<ayx> $$0) {
-      this.c = List.copyOf($$0);
+   public aud(auf... $$0) {
+      this.a = ImmutableSet.copyOf($$0);
+   }
+
+   public static String a(Collection<aua> $$0) {
+      return $$0.stream().map($$0x -> $$0x.g() + ($$0x.d().a() ? "" : " (incompatible)")).collect(Collectors.joining(", "));
+   }
+
+   public void a() {
+      List<String> $$0 = this.c.stream().map(aua::g).collect(ImmutableList.toImmutableList());
+      this.b = this.h();
+      this.c = this.c($$0);
+   }
+
+   private Map<String, aua> h() {
+      Map<String, aua> $$0 = Maps.newTreeMap();
+
+      for (auf $$1 : this.a) {
+         $$1.loadPacks($$1x -> $$0.put($$1x.g(), $$1x));
+      }
+
+      return ImmutableMap.copyOf($$0);
+   }
+
+   public void b(Collection<String> $$0) {
+      this.c = this.c($$0);
    }
 
    public boolean a(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.a().test($$0));
+      aua $$1 = this.b.get($$0);
+      if ($$1 != null && !this.c.contains($$1)) {
+         List<aua> $$2 = Lists.newArrayList(this.c);
+         $$2.add($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
    }
 
    public boolean b(String $$0) {
-      return this.c.stream().anyMatch($$1 -> $$1.b().test($$0));
+      aua $$1 = this.b.get($$0);
+      if ($$1 != null && this.c.contains($$1)) {
+         List<aua> $$2 = Lists.newArrayList(this.c);
+         $$2.remove($$1);
+         this.c = $$2;
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private List<aua> c(Collection<String> $$0) {
+      List<aua> $$1 = this.d($$0).collect(ad.b());
+
+      for (aua $$2 : this.b.values()) {
+         if ($$2.i() && !$$1.contains($$2)) {
+            $$2.k().a($$1, $$2, aua::h, false);
+         }
+      }
+
+      return ImmutableList.copyOf($$1);
+   }
+
+   private Stream<aua> d(Collection<String> $$0) {
+      return $$0.stream().map(this.b::get).filter(Objects::nonNull);
+   }
+
+   public Collection<String> b() {
+      return this.b.keySet();
+   }
+
+   public Collection<aua> c() {
+      return this.b.values();
+   }
+
+   public Collection<String> d() {
+      return this.c.stream().map(aua::g).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public cqh e() {
+      return this.f().stream().map(aua::e).reduce(cqh::c).orElse(cqh.a());
+   }
+
+   public Collection<aua> f() {
+      return this.c;
+   }
+
+   @Nullable
+   public aua c(String $$0) {
+      return this.b.get($$0);
+   }
+
+   public boolean d(String $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public List<ate> g() {
+      return this.c.stream().map(aua::f).collect(ImmutableList.toImmutableList());
    }
 }

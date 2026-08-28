@@ -1,61 +1,81 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.google.gson.JsonParser;
 import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
-import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
-import java.util.function.UnaryOperator;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
 
-public class bak extends DataFix {
-   private final String a;
-   private final UnaryOperator<String> b;
+public class bak {
+   private static final String a = b("");
 
-   public bak(Schema $$0, String $$1, UnaryOperator<String> $$2) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      String $$2 = b($$1);
+      return new Dynamic($$0, $$0.createString($$2));
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgr.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
-         new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bgr.B), this::b),
-            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bgr.b), this::b)
+   public static <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      return new Dynamic($$0, $$0.createString(a));
+   }
+
+   private static String b(String $$0) {
+      JsonObject $$1 = new JsonObject();
+      $$1.addProperty("text", $$0);
+      return ays.e($$1);
+   }
+
+   public static <T> Dynamic<T> b(DynamicOps<T> $$0, String $$1) {
+      JsonObject $$2 = new JsonObject();
+      $$2.addProperty("translate", $$1);
+      return new Dynamic($$0, $$0.createString(ays.e($$2)));
+   }
+
+   public static <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return (Dynamic<T>)DataFixUtils.orElse($$0.asString().map($$1 -> a($$0.getOps(), $$1)).result(), $$0);
+   }
+
+   public static Dynamic<?> b(Dynamic<?> $$0) {
+      Optional<String> $$1 = $$0.asString().result();
+      if ($$1.isEmpty()) {
+         return $$0;
+      } else {
+         String $$2 = $$1.get();
+         if (!$$2.isEmpty() && !$$2.equals("null")) {
+            char $$3 = $$2.charAt(0);
+            char $$4 = $$2.charAt($$2.length() - 1);
+            if ($$3 == '"' && $$4 == '"' || $$3 == '{' && $$4 == '}' || $$3 == '[' && $$4 == ']') {
+               try {
+                  JsonElement $$5 = JsonParser.parseString($$2);
+                  if ($$5.isJsonPrimitive()) {
+                     return a($$0.getOps(), $$5.getAsString());
+                  }
+
+                  return $$0.createString(ays.e($$5));
+               } catch (JsonParseException var6) {
+               }
+            }
+
+            return a($$0.getOps(), $$2);
+         } else {
+            return a($$0.getOps());
          }
-      );
+      }
    }
 
-   private Dynamic<?> a(Dynamic<?> $$0) {
-      return (Dynamic<?>)DataFixUtils.orElse($$0.asString().result().map(this.b).map($$0::createString), $$0);
-   }
+   public static Optional<String> a(String $$0) {
+      try {
+         JsonElement $$1 = JsonParser.parseString($$0);
+         if ($$1.isJsonObject()) {
+            JsonObject $$2 = $$1.getAsJsonObject();
+            JsonElement $$3 = $$2.get("translate");
+            if ($$3 != null && $$3.isJsonPrimitive()) {
+               return Optional.of($$3.getAsString());
+            }
+         }
+      } catch (JsonParseException var4) {
+      }
 
-   private Typed<?> a(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "AttributeModifiers",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("AttributeName", this::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
-   }
-
-   private Typed<?> b(Typed<?> $$0) {
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$0x -> $$0x.update(
-               "Attributes",
-               $$0xx -> (Dynamic)DataFixUtils.orElse(
-                     $$0xx.asStreamOpt().result().map($$0xxx -> $$0xxx.map($$0xxxx -> $$0xxxx.update("Name", this::a))).map($$0xx::createList), $$0xx
-                  )
-            )
-      );
+      return Optional.empty();
    }
 }

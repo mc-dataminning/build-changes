@@ -1,39 +1,51 @@
-import com.google.common.collect.Maps;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cop {
-   public static final int a = 2000;
-   public static final int b = 7000;
-   public static final cop c = a("empty").a(0, com.b).a();
-   public static final cop d = a("simple").a(5000, com.c).a(11000, com.e).a();
-   public static final cop e = a("villager_baby").a(10, com.b).a(3000, com.d).a(6000, com.b).a(10000, com.d).a(12000, com.e).a();
-   public static final cop f = a("villager_default").a(10, com.b).a(2000, com.c).a(9000, com.f).a(11000, com.b).a(12000, com.e).a();
-   private final Map<com, cor> g = Maps.newHashMap();
+public class cop extends cnw {
+   private int f = 200;
 
-   protected static coq a(String $$0) {
-      cop $$1 = jz.a(lt.B, $$0, new cop());
-      return new coq($$1);
+   public cop(btq<? extends cop> $$0, dds $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(com $$0) {
-      if (!this.g.containsKey($$0)) {
-         this.g.put($$0, new cor());
+   public cop(dds $$0, buf $$1, cvl $$2, @Nullable cvl $$3) {
+      super(btq.aV, $$1, $$0, $$2, $$3);
+   }
+
+   public cop(dds $$0, double $$1, double $$2, double $$3, cvl $$4, @Nullable cvl $$5) {
+      super(btq.aV, $$1, $$2, $$3, $$0, $$4, $$5);
+   }
+
+   @Override
+   public void l() {
+      super.l();
+      if (this.dS().B && !this.b) {
+         this.dS().a(ln.R, this.dx(), this.dz(), this.dD(), 0.0, 0.0, 0.0);
       }
    }
 
-   protected cor b(com $$0) {
-      return this.g.get($$0);
+   @Override
+   protected void a(buf $$0) {
+      super.a($$0);
+      bsq $$1 = new bsq(bss.x, this.f, 0);
+      $$0.b($$1, this.E());
    }
 
-   protected List<cor> c(com $$0) {
-      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   @Override
+   public void a(uf $$0) {
+      super.a($$0);
+      if ($$0.e("Duration")) {
+         this.f = $$0.h("Duration");
+      }
    }
 
-   public com a(int $$0) {
-      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(com.b);
+   @Override
+   public void b(uf $$0) {
+      super.b($$0);
+      $$0.a("Duration", this.f);
+   }
+
+   @Override
+   protected cvl v() {
+      return new cvl(cvo.vr);
    }
 }

@@ -1,37 +1,53 @@
-public class ach implements zg<abu> {
-   public static final yx<vw, ach> a = zg.a(ach::a, ach::new);
-   private final bqo b;
-   private final boolean c;
+public class ach implements zk<abz> {
+   public static final zb<wo, ach> a = zk.a(ach::a, ach::new);
+   private final je b;
+   private final int c;
+   private final int d;
+   private final dgv e;
 
-   public ach(bqo $$0, boolean $$1) {
+   public ach(je $$0, dgv $$1, int $$2, int $$3) {
       this.b = $$0;
-      this.c = $$1;
+      this.e = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   private ach(vw $$0) {
-      this.b = bqo.a($$0.readUnsignedByte());
-      this.c = $$0.readBoolean();
+   private ach(wo $$0) {
+      this.b = $$0.e();
+      this.c = $$0.readUnsignedByte();
+      this.d = $$0.readUnsignedByte();
+      this.e = yz.a(lv.f).decode($$0);
    }
 
-   private void a(vw $$0) {
-      $$0.k(this.b.a());
-      $$0.a(this.c);
+   private void a(wo $$0) {
+      $$0.a(this.b);
+      $$0.l(this.c);
+      $$0.l(this.d);
+      yz.a(lv.f).encode($$0, this.e);
    }
 
    @Override
-   public zi<ach> a() {
-      return agg.m;
+   public zm<ach> a() {
+      return ago.j;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public boolean b() {
+   public je b() {
+      return this.b;
+   }
+
+   public int e() {
       return this.c;
    }
 
-   public bqo e() {
-      return this.b;
+   public int f() {
+      return this.d;
+   }
+
+   public dgv g() {
+      return this.e;
    }
 }

@@ -1,19 +1,64 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.security.PrivateKey;
-import java.time.Instant;
+import javax.annotation.Nullable;
 
-public record cmz(PrivateKey b, cna c, Instant d) {
-   public static final Codec<cmz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               axl.g.fieldOf("private_key").forGetter(cmz::b),
-               cna.c.fieldOf("public_key").forGetter(cmz::c),
-               axw.o.fieldOf("refreshed_after").forGetter(cmz::d)
-            )
-            .apply($$0, cmz::new)
-   );
+public class cmz implements dco {
+   private final cnp a;
+   private dcq b = new dcq();
+   private int c;
 
-   public boolean a() {
-      return this.d.isBefore(Instant.now());
+   public cmz(cnp $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public cnp go() {
+      return this.a;
+   }
+
+   @Override
+   public void a(@Nullable cnp $$0) {
+   }
+
+   @Override
+   public dcq gq() {
+      return this.b;
+   }
+
+   @Override
+   public void a(dcq $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(dcp $$0) {
+      $$0.l();
+   }
+
+   @Override
+   public void o(cvl $$0) {
+   }
+
+   @Override
+   public boolean gw() {
+      return this.a.dS().B;
+   }
+
+   @Override
+   public int t() {
+      return this.c;
+   }
+
+   @Override
+   public void t(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gr() {
+      return true;
+   }
+
+   @Override
+   public awc gs() {
+      return awd.Be;
    }
 }

@@ -1,167 +1,97 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
+import java.util.Objects;
 
-public class frl extends frh {
-   private static final wz a = wz.c("options.videoTitle");
-   private static final wz u = wz.c("options.graphics.fabulous").a(n.u);
-   private static final wz v = wz.a("options.graphics.warning.message", u, u);
-   private static final wz w = wz.c("options.graphics.warning.title").a(n.m);
-   private static final wz x = wz.c("options.graphics.warning.accept");
-   private static final wz y = wz.c("options.graphics.warning.cancel");
-   private final get z;
-   private final int A;
-
-   private static fgr<?>[] a(fgs $$0) {
-      return new fgr[]{
-         $$0.j(),
-         $$0.e(),
-         $$0.l(),
-         $$0.f(),
-         $$0.k(),
-         $$0.h(),
-         $$0.N(),
-         $$0.ab(),
-         $$0.aq(),
-         $$0.D(),
-         $$0.ap(),
-         $$0.i(),
-         $$0.aa(),
-         $$0.ar(),
-         $$0.C(),
-         $$0.O(),
-         $$0.aj(),
-         $$0.g(),
-         $$0.ak(),
-         $$0.af(),
-         $$0.am(),
-         $$0.an(),
-         $$0.p()
-      };
-   }
-
-   public frl(fod $$0, fgo $$1, fgs $$2) {
-      super($$0, $$2, a);
-      this.z = $$1.ai();
-      this.z.i();
-      if ($$2.j().c() == fgh.c) {
-         this.z.e();
+public class frl extends fqp implements frn<crw> {
+   private final crw y;
+   private final cre z = new cre() {
+      @Override
+      public void a(cqq $$0, int $$1, cvl $$2) {
+         frl.this.L();
       }
 
-      this.A = $$2.C().c();
+      @Override
+      public void a(cqq $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            frl.this.M();
+         }
+      }
+   };
+
+   public frl(crw $$0, cno $$1, xd $$2) {
+      this.y = $$0;
+   }
+
+   public crw K() {
+      return this.y;
    }
 
    @Override
-   protected void m() {
-      int $$0 = -1;
-      fam $$1 = this.l.aM();
-      fah $$2 = $$1.u();
-      int $$3;
-      if ($$2 == null) {
-         $$3 = -1;
-      } else {
-         Optional<fal> $$4 = $$1.g();
-         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
-      }
-
-      fgr<Integer> $$6 = new fgr<>("options.fullscreen.resolution", fgr.a(), ($$1x, $$2x) -> {
-         if ($$2 == null) {
-            return wz.c("options.fullscreen.unavailable");
-         } else if ($$2x == -1) {
-            return fgs.a($$1x, wz.c("options.fullscreen.current"));
-         } else {
-            fal $$3x = $$2.a($$2x);
-            return fgs.a($$1x, wz.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
-         }
-      }, new fgr.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
-         if ($$2 != null) {
-            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
-         }
-      });
-      this.r.a($$6);
-      this.r.a(this.c.E());
-      this.r.a(a(this.c));
+   protected void aT_() {
+      super.aT_();
+      this.y.a(this.z);
    }
 
    @Override
    public void d() {
-      this.l.aM().h();
+      this.m.t.s();
       super.d();
    }
 
    @Override
    public void j() {
-      if (this.c.C().c() != this.A) {
-         this.l.b(this.c.C().c());
-         this.l.R();
-      }
-
       super.j();
+      this.y.b(this.z);
    }
 
    @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (super.a($$0, $$1, $$2)) {
-         if (this.z.g()) {
-            List<wz> $$3 = Lists.newArrayList(new wz[]{v, wy.s});
-            String $$4 = this.z.j();
-            if ($$4 != null) {
-               $$3.add(wy.s);
-               $$3.add(wz.a("options.graphics.warning.renderer", $$4).a(n.h));
-            }
+   protected void m() {
+      if (this.m.t.go()) {
+         this.c(fka.a(xc.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 98, 20).a());
+         this.c(fka.a(xd.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.m();
+      }
+   }
 
-            String $$5 = this.z.l();
-            if ($$5 != null) {
-               $$3.add(wy.s);
-               $$3.add(wz.a("options.graphics.warning.vendor", $$5).a(n.h));
-            }
+   @Override
+   protected void F() {
+      this.g(1);
+   }
 
-            String $$6 = this.z.k();
-            if ($$6 != null) {
-               $$3.add(wy.s);
-               $$3.add(wz.a("options.graphics.warning.version", $$6).a(n.h));
-            }
+   @Override
+   protected void G() {
+      this.g(2);
+   }
 
-            this.l.a(new frk(w, $$3, ImmutableList.of(new frk.a(x, $$0x -> {
-               this.c.j().a(fgh.c);
-               fgo.Q().f.f();
-               this.z.e();
-               this.l.a(this);
-            }), new frk.a(y, $$0x -> {
-               this.z.f();
-               this.l.a(this);
-            }))));
-         }
-
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.y.m()) {
+         this.g(100 + $$0);
          return true;
       } else {
          return false;
       }
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (fod.r()) {
-         fgr<Integer> $$4 = this.c.aq();
-         if ($$4.e() instanceof fgr.c $$5) {
-            int $$6 = $$4.c();
-            int $$7 = $$6 == 0 ? $$5.b() + 1 : $$6;
-            int $$8 = $$7 + (int)Math.signum($$3);
-            if ($$8 != 0 && $$8 <= $$5.b() && $$8 >= $$5.d()) {
-               fit<Integer> $$9 = (fit<Integer>)this.r.b($$4);
-               if ($$9 != null) {
-                  $$4.a($$8);
-                  $$9.a($$8);
-                  this.r.b(0.0);
-                  return true;
-               }
-            }
-         }
+   private void g(int $$0) {
+      this.m.r.a(this.y.l, $$0);
+   }
 
-         return false;
-      } else {
-         return super.a($$0, $$1, $$2, $$3);
-      }
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   void L() {
+      cvl $$0 = this.y.l();
+      this.a(Objects.requireNonNullElse(fqp.a.a($$0), fqp.d));
+   }
+
+   void M() {
+      this.a(this.y.m());
+   }
+
+   @Override
+   protected void J() {
+      this.m.t.s();
    }
 }

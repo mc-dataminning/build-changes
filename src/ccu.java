@@ -1,60 +1,102 @@
-import com.google.common.collect.Iterables;
-import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.EnumSet;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class ccu {
-   private static final ccu a = new ccu();
-   private final List<btn> b;
-   private final Predicate<btn> c;
+public class ccu extends cdc {
+   private static final cev a = cev.a().d().e();
+   private static final int b = 10;
+   private boolean c;
+   private int d;
+   private final Class<?>[] i;
+   @Nullable
+   private Class<?>[] j;
 
-   private ccu() {
-      this.b = List.of();
-      this.c = $$0 -> false;
+   public ccu(bun $$0, Class<?>... $$1) {
+      super($$0, true);
+      this.i = $$1;
+      this.a(EnumSet.of(cbc.a.d));
    }
 
-   public ccu(btn $$0, List<btn> $$1) {
-      this.b = $$1;
-      Object2BooleanOpenHashMap<btn> $$2 = new Object2BooleanOpenHashMap($$1.size());
-      Predicate<btn> $$3 = $$1x -> cdy.b($$0, $$1x);
-      this.c = $$2x -> $$2.computeIfAbsent($$2x, $$3);
-   }
+   @Override
+   public boolean b() {
+      int $$0 = this.e.en();
+      buf $$1 = this.e.em();
+      if ($$0 != this.d && $$1 != null) {
+         if ($$1.ao() == btq.by && this.e.dS().ac().b(ddo.O)) {
+            return false;
+         } else {
+            for (Class<?> $$2 : this.i) {
+               if ($$2.isAssignableFrom($$1.getClass())) {
+                  return false;
+               }
+            }
 
-   public static ccu a() {
-      return a;
-   }
-
-   public Optional<btn> a(Predicate<btn> $$0) {
-      for (btn $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return Optional.of($$1);
+            return this.a($$1, a);
          }
+      } else {
+         return false;
+      }
+   }
+
+   public ccu a(Class<?>... $$0) {
+      this.c = true;
+      this.j = $$0;
+      return this;
+   }
+
+   @Override
+   public void d() {
+      this.e.h(this.e.em());
+      this.g = this.e.m();
+      this.d = this.e.en();
+      this.h = 300;
+      if (this.c) {
+         this.h();
       }
 
-      return Optional.empty();
+      super.d();
    }
 
-   public Iterable<btn> b(Predicate<btn> $$0) {
-      return Iterables.filter(this.b, $$1 -> $$0.test($$1) && this.c.test($$1));
-   }
+   protected void h() {
+      double $$0 = this.l();
+      exz $$1 = exz.a(this.e.dq()).c($$0, 10.0, $$0);
+      List<? extends buh> $$2 = this.e.dS().a((Class<? extends buh>)this.e.getClass(), $$1, bto.f);
+      Iterator var5 = $$2.iterator();
 
-   public Stream<btn> c(Predicate<btn> $$0) {
-      return this.b.stream().filter($$1 -> $$0.test($$1) && this.c.test($$1));
-   }
+      while (true) {
+         buh $$3;
+         while (true) {
+            if (!var5.hasNext()) {
+               return;
+            }
 
-   public boolean a(btn $$0) {
-      return this.b.contains($$0) && this.c.test($$0);
-   }
+            $$3 = (buh)var5.next();
+            if (this.e != $$3 && $$3.m() == null && (!(this.e instanceof bvb) || ((bvb)this.e).R_() == ((bvb)$$3).R_()) && !$$3.s(this.e.em())) {
+               if (this.j == null) {
+                  break;
+               }
 
-   public boolean d(Predicate<btn> $$0) {
-      for (btn $$1 : this.b) {
-         if ($$0.test($$1) && this.c.test($$1)) {
-            return true;
+               boolean $$4 = false;
+
+               for (Class<?> $$5 : this.j) {
+                  if ($$3.getClass() == $$5) {
+                     $$4 = true;
+                     break;
+                  }
+               }
+
+               if (!$$4) {
+                  break;
+               }
+            }
          }
-      }
 
-      return false;
+         this.a($$3, this.e.em());
+      }
+   }
+
+   protected void a(buh $$0, buf $$1) {
+      $$0.h($$1);
    }
 }

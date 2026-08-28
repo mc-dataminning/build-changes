@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public interface dck {
+   ala<dce> a = a("mob_spawn_equipment");
+   ala<dce> b = a("pillager_spawn_crossbow");
+   ala<dce> c = a("raid/pillager_post_wave_3");
+   ala<dce> d = a("raid/pillager_post_wave_5");
+   ala<dce> e = a("raid/vindicator");
+   ala<dce> f = a("raid/vindicator_post_wave_5");
+   ala<dce> g = a("enderman_loot_drop");
 
-public class dck {
-   public static final dck a = new dck(ImmutableList.of("vanilla"), ImmutableList.of());
-   public static final Codec<dck> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.STRING.listOf().fieldOf("Enabled").forGetter($$0x -> $$0x.c), Codec.STRING.listOf().fieldOf("Disabled").forGetter($$0x -> $$0x.d))
-            .apply($$0, dck::new)
-   );
-   private final List<String> c;
-   private final List<String> d;
-
-   public dck(List<String> $$0, List<String> $$1) {
-      this.c = ImmutableList.copyOf($$0);
-      this.d = ImmutableList.copyOf($$1);
+   static void a(qt<dce> $$0) {
+      jo<daw> $$1 = $$0.a(lv.aL);
+      $$0.a(a, new dch($$1.b(awv.l), 5, 17));
+      $$0.a(b, new dci($$1.b(dbb.K), bqm.a(1)));
+      $$0.a(c, new dci($$1.b(dbb.J), bqm.a(1)));
+      $$0.a(d, new dci($$1.b(dbb.J), bqm.a(2)));
+      $$0.a(e, new dci($$1.b(dbb.n), bqm.a(1)));
+      $$0.a(f, new dci($$1.b(dbb.n), bqm.a(2)));
+      $$0.a(g, new dci($$1.b(dbb.v), bqm.a(1)));
    }
 
-   public List<String> a() {
-      return this.c;
-   }
-
-   public List<String> b() {
-      return this.d;
+   static ala<dce> a(String $$0) {
+      return ala.a(lv.aM, alb.b($$0));
    }
 }

@@ -1,51 +1,53 @@
-public class bzm extends bzp {
-   private final int l;
-   private final boolean m;
+import com.mojang.datafixers.kinds.Const;
+import com.mojang.datafixers.kinds.IdF;
+import com.mojang.datafixers.kinds.K1;
+import com.mojang.datafixers.kinds.OptionalBox;
+import com.mojang.datafixers.kinds.Const.Mu;
+import com.mojang.datafixers.util.Unit;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public bzm(btp $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public interface bzm<F extends K1, Value> {
+   cdi<Value> a();
+
+   cdj b();
+
+   @Nullable
+   bzl<F, Value> a(bvg<?> var1, Optional<Value> var2);
+
+   public static record a<Value>(cdi<Value> a) implements bzm<Mu<Unit>, Value> {
+      @Override
+      public cdj b() {
+         return cdj.b;
+      }
+
+      @Override
+      public bzl<Mu<Unit>, Value> a(bvg<?> $$0, Optional<Value> $$1) {
+         return $$1.isPresent() ? null : new bzl<>($$0, this.a, Const.create(Unit.INSTANCE));
+      }
    }
 
-   @Override
-   public void a() {
-      if (this.k == bzp.a.b) {
-         this.k = bzp.a.a;
-         this.d.f(true);
-         double $$0 = this.e - this.d.dt();
-         double $$1 = this.f - this.d.dv();
-         double $$2 = this.g - this.d.dz();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.F(0.0F);
-            this.d.E(0.0F);
-            return;
-         }
+   public static record b<Value>(cdi<Value> a) implements bzm<com.mojang.datafixers.kinds.IdF.Mu, Value> {
+      @Override
+      public cdj b() {
+         return cdj.a;
+      }
 
-         float $$4 = (float)(ayo.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.t(this.a(this.d.dE(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aF()) {
-            $$5 = (float)(this.h * this.d.g(buw.v));
-         } else {
-            $$5 = (float)(this.h * this.d.g(buw.l));
-         }
+      @Override
+      public bzl<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bvg<?> $$0, Optional<Value> $$1) {
+         return $$1.isEmpty() ? null : new bzl<>($$0, this.a, IdF.create($$1.get()));
+      }
+   }
 
-         this.d.A($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(ayo.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.u(this.a(this.d.dG(), $$8, (float)this.l));
-            this.d.F($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.f(false);
-         }
+   public static record c<Value>(cdi<Value> a) implements bzm<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
+      @Override
+      public cdj b() {
+         return cdj.c;
+      }
 
-         this.d.F(0.0F);
-         this.d.E(0.0F);
+      @Override
+      public bzl<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bvg<?> $$0, Optional<Value> $$1) {
+         return new bzl<>($$0, this.a, OptionalBox.create($$1));
       }
    }
 }

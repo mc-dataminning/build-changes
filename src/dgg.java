@@ -1,44 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dgg extends dew {
+public class dgg extends dgd {
    public static final MapCodec<dgg> b = b(dgg::new);
-   public static final int c = 5;
-   private static final ji[] d = ji.values();
+   public static final duu c = dkr.aE;
+   private static final Map<jj, eyx> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         jj.c,
+         dgv.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         jj.d,
+         dgv.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         jj.e,
+         dgv.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         jj.f,
+         dgv.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
    @Override
-   public MapCodec<dgg> a() {
+   public MapCodec<? extends dgg> a() {
       return b;
    }
 
-   public dgg(dtb.d $$0) {
+   protected dgg(dtz.d $$0) {
       super($$0);
+      this.l(this.E.b().b(c, jj.c).b(d, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void b(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if ($$3.a(5) == 0) {
-         ji $$4 = d[$$3.a(d.length)];
-         jd $$5 = $$2.a($$4);
-         dtc $$6 = $$1.a_($$5);
-         dfy $$7 = null;
-         if (g($$6)) {
-            $$7 = dga.qy;
-         } else if ($$6.a(dga.qy) && $$6.c(dex.d) == $$4) {
-            $$7 = dga.qx;
-         } else if ($$6.a(dga.qx) && $$6.c(dex.d) == $$4) {
-            $$7 = dga.qw;
-         } else if ($$6.a(dga.qw) && $$6.c(dex.d) == $$4) {
-            $$7 = dga.qv;
-         }
-
-         if ($$7 != null) {
-            dtc $$8 = $$7.o().a(dex.d, $$4).a(dex.c, Boolean.valueOf($$6.u().a() == epf.c));
-            $$1.b($$5, $$8);
-         }
-      }
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return e.get($$0.c(c));
    }
 
-   public static boolean g(dtc $$0) {
-      return $$0.i() || $$0.a(dga.G) && $$0.u().e() == 8;
+   @Override
+   protected dua a(dua $$0, dnj $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected dua a(dua $$0, dls $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eqc.c, eqc.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? dgx.a.o() : $$0;
+   }
+
+   @Override
+   protected boolean a(dua $$0, ddv $$1, je $$2) {
+      jj $$3 = $$0.c(c);
+      je $$4 = $$2.a($$3.g());
+      dua $$5 = $$1.a_($$4);
+      return $$5.c($$1, $$4, $$3);
+   }
+
+   @Nullable
+   @Override
+   public dua a(cyw $$0) {
+      dua $$1 = super.a($$0);
+      ddv $$2 = $$0.q();
+      je $$3 = $$0.a();
+      jj[] $$4 = $$0.f();
+
+      for (jj $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.b(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
+      }
+
+      return null;
    }
 }

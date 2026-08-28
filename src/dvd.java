@@ -1,141 +1,110 @@
-import java.util.Arrays;
+import com.google.common.base.MoreObjects;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collection;
+import java.util.Optional;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dvd {
-   public static final int a = 16;
-   public static final int b = 128;
-   public static final int c = 2048;
-   private static final int e = 4;
+public abstract class dvd<T extends Comparable<T>> {
+   private final Class<T> a;
+   private final String b;
    @Nullable
-   protected byte[] d;
-   private int f;
+   private Integer c;
+   private final Codec<T> d = Codec.STRING
+      .comapFlatMap(
+         $$0x -> this.b($$0x)
+               .<DataResult>map(DataResult::success)
+               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
+         this::a
+      );
+   private final Codec<dvd.a<T>> e = this.d.xmap(this::b, dvd.a::b);
 
-   public dvd() {
-      this(0);
+   protected dvd(String $$0, Class<T> $$1) {
+      this.a = $$1;
+      this.b = $$0;
    }
 
-   public dvd(int $$0) {
-      this.f = $$0;
+   public dvd.a<T> b(T $$0) {
+      return new dvd.a<>(this, $$0);
    }
 
-   public dvd(byte[] $$0) {
-      this.d = $$0;
-      this.f = 0;
-      if ($$0.length != 2048) {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("DataLayer should be 2048 bytes not: " + $$0.length));
-      }
+   public dvd.a<T> a(duc<?, ?> $$0) {
+      return new dvd.a<>(this, $$0.c(this));
    }
 
-   public int a(int $$0, int $$1, int $$2) {
-      return this.d(b($$0, $$1, $$2));
+   public Stream<dvd.a<T>> c() {
+      return this.a().stream().map(this::b);
    }
 
-   public void a(int $$0, int $$1, int $$2, int $$3) {
-      this.a(b($$0, $$1, $$2), $$3);
-   }
-
-   private static int b(int $$0, int $$1, int $$2) {
-      return $$1 << 8 | $$2 << 4 | $$0;
-   }
-
-   private int d(int $$0) {
-      if (this.d == null) {
-         return this.f;
-      } else {
-         int $$1 = f($$0);
-         int $$2 = e($$0);
-         return this.d[$$1] >> 4 * $$2 & 15;
-      }
-   }
-
-   private void a(int $$0, int $$1) {
-      byte[] $$2 = this.a();
-      int $$3 = f($$0);
-      int $$4 = e($$0);
-      int $$5 = ~(15 << 4 * $$4);
-      int $$6 = ($$1 & 15) << 4 * $$4;
-      $$2[$$3] = (byte)($$2[$$3] & $$5 | $$6);
-   }
-
-   private static int e(int $$0) {
-      return $$0 & 1;
-   }
-
-   private static int f(int $$0) {
-      return $$0 >> 1;
-   }
-
-   public void a(int $$0) {
-      this.f = $$0;
-      this.d = null;
-   }
-
-   private static byte g(int $$0) {
-      byte $$1 = (byte)$$0;
-
-      for (int $$2 = 4; $$2 < 8; $$2 += 4) {
-         $$1 = (byte)($$1 | $$0 << $$2);
-      }
-
-      return $$1;
-   }
-
-   public byte[] a() {
-      if (this.d == null) {
-         this.d = new byte[2048];
-         if (this.f != 0) {
-            Arrays.fill(this.d, g(this.f));
-         }
-      }
-
+   public Codec<T> d() {
       return this.d;
    }
 
-   public dvd b() {
-      return this.d == null ? new dvd(this.f) : new dvd((byte[])this.d.clone());
+   public Codec<dvd.a<T>> e() {
+      return this.e;
    }
+
+   public String f() {
+      return this.b;
+   }
+
+   public Class<T> g() {
+      return this.a;
+   }
+
+   public abstract Collection<T> a();
+
+   public abstract String a(T var1);
+
+   public abstract Optional<T> b(String var1);
 
    @Override
    public String toString() {
-      StringBuilder $$0 = new StringBuilder();
+      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   }
 
-      for (int $$1 = 0; $$1 < 4096; $$1++) {
-         $$0.append(Integer.toHexString(this.d($$1)));
-         if (($$1 & 15) == 15) {
-            $$0.append("\n");
-         }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof dvd<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
+      }
+   }
 
-         if (($$1 & 0xFF) == 255) {
-            $$0.append("\n");
+   @Override
+   public final int hashCode() {
+      if (this.c == null) {
+         this.c = this.b();
+      }
+
+      return this.c;
+   }
+
+   public int b() {
+      return 31 * this.a.hashCode() + this.b.hashCode();
+   }
+
+   public <U, S extends duc<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
+      DataResult<T> $$3 = this.d.parse($$0, $$2);
+      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
+   }
+
+   public static record a<T extends Comparable<T>>(dvd<T> a, T b) {
+      public a(dvd<T> a, T b) {
+         if (!a.a().contains(b)) {
+            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
+         } else {
+            this.a = a;
+            this.b = b;
          }
       }
 
-      return $$0.toString();
-   }
-
-   @azt
-   public String b(int $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (int $$2 = 0; $$2 < 256; $$2++) {
-         $$1.append(Integer.toHexString(this.d($$2)));
-         if (($$2 & 15) == 15) {
-            $$1.append("\n");
-         }
+      @Override
+      public String toString() {
+         return this.a.f() + "=" + this.a.a(this.b);
       }
-
-      return $$1.toString();
-   }
-
-   public boolean c() {
-      return this.d == null;
-   }
-
-   public boolean c(int $$0) {
-      return this.d == null && this.f == $$0;
-   }
-
-   public boolean d() {
-      return this.d == null && this.f == 0;
    }
 }

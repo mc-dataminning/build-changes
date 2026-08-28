@@ -1,25 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public record evw(daj b) implements evy {
-   public static final MapCodec<evw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(daj.b.fieldOf("amount").forGetter(evw::c)).apply($$0, evw::new));
+public interface evw<T extends evw<T>> {
+   T b(ewe.a var1);
 
-   @Override
-   public float b(err $$0) {
-      int $$1 = $$0.b(eun.k);
-      return this.b.a($$1);
+   default <E> T a_(Iterable<E> $$0, Function<E, ewe.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public evx b() {
-      return evz.g;
-   }
-
-   public static evw a(daj $$0) {
-      return new evw($$0);
-   }
-
-   public daj c() {
-      return this.b;
-   }
+   T d();
 }

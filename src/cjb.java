@@ -1,125 +1,69 @@
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class cjb extends cix {
-   public static final double c = 0.375;
+public class cjb extends ciu {
+   @Nullable
+   private eye b;
 
-   public cjb(bsx<? extends cjb> $$0, dcw $$1) {
-      super($$0, $$1);
-   }
-
-   public cjb(dcw $$0, jd $$1) {
-      super(bsx.al, $$0, $$1);
-      this.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+   public cjb(cis $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(aka.a $$0) {
-   }
+   public void b() {
+      eye $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.d.dx();
+      double $$2 = this.a.d.e(0.5);
+      double $$3 = this.a.d.dD();
 
-   @Override
-   protected void p() {
-      this.o((double)this.b.u() + 0.5, (double)this.b.v() + 0.375, (double)this.b.w() + 0.5);
-      double $$0 = (double)this.am().l() / 2.0;
-      double $$1 = (double)this.am().m();
-      this.a(new ewx(this.dt() - $$0, this.dv(), this.dz() - $$0, this.dt() + $$0, this.dv() + $$1, this.dz() + $$0));
-   }
-
-   @Override
-   public boolean a(double $$0) {
-      return $$0 < 1024.0;
-   }
-
-   @Override
-   public void b(@Nullable bsr $$0) {
-      this.a(avp.nS, 1.0F, 1.0F);
-   }
-
-   @Override
-   public void b(ub $$0) {
-   }
-
-   @Override
-   public void a(ub $$0) {
-   }
-
-   @Override
-   public bqr a(cmx $$0, bqq $$1) {
-      if (this.dO().B) {
-         return bqr.a;
-      } else {
-         boolean $$2 = false;
-         List<btk> $$3 = cuz.a(this.dO(), this.t(), $$1x -> {
-            bsr $$2x = $$1x.A();
-            return $$2x == $$0 || $$2x == this;
-         });
-
-         for (btk $$4 : $$3) {
-            if ($$4.A() == $$0) {
-               $$4.b(this, true);
-               $$2 = true;
-            }
-         }
-
-         boolean $$5 = false;
-         if (!$$2) {
-            this.aq();
-            if ($$0.fZ().d) {
-               for (btk $$6 : $$3) {
-                  if ($$6.N_() && $$6.A() == this) {
-                     $$6.a(true, false);
-                     $$5 = true;
-                  }
-               }
-            }
-         }
-
-         if ($$2 || $$5) {
-            this.a(dxz.b, $$0);
-         }
-
-         return bqr.c;
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azk $$5 = this.a.dV();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         eye $$9 = this.a.dv();
+         this.a.dS().a(ln.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
       }
    }
 
    @Override
-   public boolean s() {
-      return this.dO().a_(this.b).a(awe.T);
-   }
-
-   public static cjb b(dcw $$0, jd $$1) {
-      int $$2 = $$1.u();
-      int $$3 = $$1.v();
-      int $$4 = $$1.w();
-
-      for (cjb $$6 : $$0.a(cjb.class, new ewx((double)$$2 - 1.0, (double)$$3 - 1.0, (double)$$4 - 1.0, (double)$$2 + 1.0, (double)$$3 + 1.0, (double)$$4 + 1.0))) {
-         if ($$6.t().equals($$1)) {
-            return $$6;
-         }
+   public void c() {
+      if (this.b == null) {
+         this.b = eye.c(this.a.dS().a(dzw.a.f, edb.a(this.a.q())));
       }
 
-      cjb $$7 = new cjb($$0, $$1);
-      $$0.b($$7);
-      return $$7;
+      if (this.b.c(this.a.dx(), this.a.dz(), this.a.dD()) < 1.0) {
+         this.a.gl().b(cji.f).j();
+         this.a.gl().a(cji.g);
+      }
    }
 
    @Override
-   public void v() {
-      this.a(avp.nT, 1.0F, 1.0F);
+   public float f() {
+      return 1.5F;
    }
 
    @Override
-   public zg<abu> a(aqt $$0) {
-      return new abv(this, 0, this.t());
+   public float h() {
+      float $$0 = (float)this.a.dv().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
    }
 
    @Override
-   public exc s(float $$0) {
-      return this.m($$0).b(0.0, 0.2, 0.0);
+   public void d() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public eye g() {
+      return this.b;
    }
 
    @Override
-   public cuq dB() {
-      return new cuq(cut.uK);
+   public cji<cjb> i() {
+      return cji.d;
    }
 }

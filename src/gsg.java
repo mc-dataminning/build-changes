@@ -1,8 +1,11 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gsg {
+public class gsg extends gso {
+   @Nullable
+   public bth.b.a a;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

@@ -1,193 +1,22 @@
-public final class awe {
-   public static final awu<dfy> a = a("wool");
-   public static final awu<dfy> b = a("planks");
-   public static final awu<dfy> c = a("stone_bricks");
-   public static final awu<dfy> d = a("wooden_buttons");
-   public static final awu<dfy> e = a("stone_buttons");
-   public static final awu<dfy> f = a("buttons");
-   public static final awu<dfy> g = a("wool_carpets");
-   public static final awu<dfy> h = a("wooden_doors");
-   public static final awu<dfy> i = a("mob_interactable_doors");
-   public static final awu<dfy> j = a("wooden_stairs");
-   public static final awu<dfy> k = a("wooden_slabs");
-   public static final awu<dfy> l = a("wooden_fences");
-   public static final awu<dfy> m = a("pressure_plates");
-   public static final awu<dfy> n = a("wooden_pressure_plates");
-   public static final awu<dfy> o = a("stone_pressure_plates");
-   public static final awu<dfy> p = a("wooden_trapdoors");
-   public static final awu<dfy> q = a("doors");
-   public static final awu<dfy> r = a("saplings");
-   public static final awu<dfy> s = a("logs_that_burn");
-   public static final awu<dfy> t = a("overworld_natural_logs");
-   public static final awu<dfy> u = a("logs");
-   public static final awu<dfy> v = a("dark_oak_logs");
-   public static final awu<dfy> w = a("oak_logs");
-   public static final awu<dfy> x = a("birch_logs");
-   public static final awu<dfy> y = a("acacia_logs");
-   public static final awu<dfy> z = a("cherry_logs");
-   public static final awu<dfy> A = a("jungle_logs");
-   public static final awu<dfy> B = a("spruce_logs");
-   public static final awu<dfy> C = a("mangrove_logs");
-   public static final awu<dfy> D = a("crimson_stems");
-   public static final awu<dfy> E = a("warped_stems");
-   public static final awu<dfy> F = a("bamboo_blocks");
-   public static final awu<dfy> G = a("wart_blocks");
-   public static final awu<dfy> H = a("banners");
-   public static final awu<dfy> I = a("sand");
-   public static final awu<dfy> J = a("smelts_to_glass");
-   public static final awu<dfy> K = a("stairs");
-   public static final awu<dfy> L = a("slabs");
-   public static final awu<dfy> M = a("walls");
-   public static final awu<dfy> N = a("anvil");
-   public static final awu<dfy> O = a("rails");
-   public static final awu<dfy> P = a("leaves");
-   public static final awu<dfy> Q = a("trapdoors");
-   public static final awu<dfy> R = a("small_flowers");
-   public static final awu<dfy> S = a("beds");
-   public static final awu<dfy> T = a("fences");
-   public static final awu<dfy> U = a("tall_flowers");
-   public static final awu<dfy> V = a("flowers");
-   public static final awu<dfy> W = a("piglin_repellents");
-   public static final awu<dfy> X = a("gold_ores");
-   public static final awu<dfy> Y = a("iron_ores");
-   public static final awu<dfy> Z = a("diamond_ores");
-   public static final awu<dfy> aa = a("redstone_ores");
-   public static final awu<dfy> ab = a("lapis_ores");
-   public static final awu<dfy> ac = a("coal_ores");
-   public static final awu<dfy> ad = a("emerald_ores");
-   public static final awu<dfy> ae = a("copper_ores");
-   public static final awu<dfy> af = a("candles");
-   public static final awu<dfy> ag = a("dirt");
-   public static final awu<dfy> ah = a("terracotta");
-   public static final awu<dfy> ai = a("badlands_terracotta");
-   public static final awu<dfy> aj = a("concrete_powder");
-   public static final awu<dfy> ak = a("completes_find_tree_tutorial");
-   public static final awu<dfy> al = a("flower_pots");
-   public static final awu<dfy> am = a("enderman_holdable");
-   public static final awu<dfy> an = a("ice");
-   public static final awu<dfy> ao = a("valid_spawn");
-   public static final awu<dfy> ap = a("impermeable");
-   public static final awu<dfy> aq = a("underwater_bonemeals");
-   public static final awu<dfy> ar = a("coral_blocks");
-   public static final awu<dfy> as = a("wall_corals");
-   public static final awu<dfy> at = a("coral_plants");
-   public static final awu<dfy> au = a("corals");
-   public static final awu<dfy> av = a("bamboo_plantable_on");
-   public static final awu<dfy> aw = a("standing_signs");
-   public static final awu<dfy> ax = a("wall_signs");
-   public static final awu<dfy> ay = a("signs");
-   public static final awu<dfy> az = a("ceiling_hanging_signs");
-   public static final awu<dfy> aA = a("wall_hanging_signs");
-   public static final awu<dfy> aB = a("all_hanging_signs");
-   public static final awu<dfy> aC = a("all_signs");
-   public static final awu<dfy> aD = a("dragon_immune");
-   public static final awu<dfy> aE = a("dragon_transparent");
-   public static final awu<dfy> aF = a("wither_immune");
-   public static final awu<dfy> aG = a("wither_summon_base_blocks");
-   public static final awu<dfy> aH = a("beehives");
-   public static final awu<dfy> aI = a("crops");
-   public static final awu<dfy> aJ = a("bee_growables");
-   public static final awu<dfy> aK = a("portals");
-   public static final awu<dfy> aL = a("fire");
-   public static final awu<dfy> aM = a("nylium");
-   public static final awu<dfy> aN = a("beacon_base_blocks");
-   public static final awu<dfy> aO = a("soul_speed_blocks");
-   public static final awu<dfy> aP = a("wall_post_override");
-   public static final awu<dfy> aQ = a("climbable");
-   public static final awu<dfy> aR = a("fall_damage_resetting");
-   public static final awu<dfy> aS = a("shulker_boxes");
-   public static final awu<dfy> aT = a("hoglin_repellents");
-   public static final awu<dfy> aU = a("soul_fire_base_blocks");
-   public static final awu<dfy> aV = a("strider_warm_blocks");
-   public static final awu<dfy> aW = a("campfires");
-   public static final awu<dfy> aX = a("guarded_by_piglins");
-   public static final awu<dfy> aY = a("prevent_mob_spawning_inside");
-   public static final awu<dfy> aZ = a("fence_gates");
-   public static final awu<dfy> ba = a("unstable_bottom_center");
-   public static final awu<dfy> bb = a("mushroom_grow_block");
-   public static final awu<dfy> bc = a("infiniburn_overworld");
-   public static final awu<dfy> bd = a("infiniburn_nether");
-   public static final awu<dfy> be = a("infiniburn_end");
-   public static final awu<dfy> bf = a("base_stone_overworld");
-   public static final awu<dfy> bg = a("stone_ore_replaceables");
-   public static final awu<dfy> bh = a("deepslate_ore_replaceables");
-   public static final awu<dfy> bi = a("base_stone_nether");
-   public static final awu<dfy> bj = a("overworld_carver_replaceables");
-   public static final awu<dfy> bk = a("nether_carver_replaceables");
-   public static final awu<dfy> bl = a("candle_cakes");
-   public static final awu<dfy> bm = a("cauldrons");
-   public static final awu<dfy> bn = a("crystal_sound_blocks");
-   public static final awu<dfy> bo = a("inside_step_sound_blocks");
-   public static final awu<dfy> bp = a("combination_step_sound_blocks");
-   public static final awu<dfy> bq = a("camel_sand_step_sound_blocks");
-   public static final awu<dfy> br = a("occludes_vibration_signals");
-   public static final awu<dfy> bs = a("dampens_vibrations");
-   public static final awu<dfy> bt = a("dripstone_replaceable_blocks");
-   public static final awu<dfy> bu = a("cave_vines");
-   public static final awu<dfy> bv = a("moss_replaceable");
-   public static final awu<dfy> bw = a("lush_ground_replaceable");
-   public static final awu<dfy> bx = a("azalea_root_replaceable");
-   public static final awu<dfy> by = a("small_dripleaf_placeable");
-   public static final awu<dfy> bz = a("big_dripleaf_placeable");
-   public static final awu<dfy> bA = a("snow");
-   public static final awu<dfy> bB = a("mineable/axe");
-   public static final awu<dfy> bC = a("mineable/hoe");
-   public static final awu<dfy> bD = a("mineable/pickaxe");
-   public static final awu<dfy> bE = a("mineable/shovel");
-   public static final awu<dfy> bF = a("sword_efficient");
-   public static final awu<dfy> bG = a("needs_diamond_tool");
-   public static final awu<dfy> bH = a("needs_iron_tool");
-   public static final awu<dfy> bI = a("needs_stone_tool");
-   public static final awu<dfy> bJ = a("incorrect_for_netherite_tool");
-   public static final awu<dfy> bK = a("incorrect_for_diamond_tool");
-   public static final awu<dfy> bL = a("incorrect_for_iron_tool");
-   public static final awu<dfy> bM = a("incorrect_for_stone_tool");
-   public static final awu<dfy> bN = a("incorrect_for_gold_tool");
-   public static final awu<dfy> bO = a("incorrect_for_wooden_tool");
-   public static final awu<dfy> bP = a("features_cannot_replace");
-   public static final awu<dfy> bQ = a("lava_pool_stone_cannot_replace");
-   public static final awu<dfy> bR = a("geode_invalid_blocks");
-   public static final awu<dfy> bS = a("frog_prefer_jump_to");
-   public static final awu<dfy> bT = a("sculk_replaceable");
-   public static final awu<dfy> bU = a("sculk_replaceable_world_gen");
-   public static final awu<dfy> bV = a("ancient_city_replaceable");
-   public static final awu<dfy> bW = a("vibration_resonators");
-   public static final awu<dfy> bX = a("animals_spawnable_on");
-   public static final awu<dfy> bY = a("armadillo_spawnable_on");
-   public static final awu<dfy> bZ = a("axolotls_spawnable_on");
-   public static final awu<dfy> ca = a("goats_spawnable_on");
-   public static final awu<dfy> cb = a("mooshrooms_spawnable_on");
-   public static final awu<dfy> cc = a("parrots_spawnable_on");
-   public static final awu<dfy> cd = a("polar_bears_spawnable_on_alternate");
-   public static final awu<dfy> ce = a("rabbits_spawnable_on");
-   public static final awu<dfy> cf = a("foxes_spawnable_on");
-   public static final awu<dfy> cg = a("wolves_spawnable_on");
-   public static final awu<dfy> ch = a("frogs_spawnable_on");
-   public static final awu<dfy> ci = a("azalea_grows_on");
-   public static final awu<dfy> cj = a("convertable_to_mud");
-   public static final awu<dfy> ck = a("mangrove_logs_can_grow_through");
-   public static final awu<dfy> cl = a("mangrove_roots_can_grow_through");
-   public static final awu<dfy> cm = a("dead_bush_may_place_on");
-   public static final awu<dfy> cn = a("snaps_goat_horn");
-   public static final awu<dfy> co = a("replaceable_by_trees");
-   public static final awu<dfy> cp = a("snow_layer_cannot_survive_on");
-   public static final awu<dfy> cq = a("snow_layer_can_survive_on");
-   public static final awu<dfy> cr = a("invalid_spawn_inside");
-   public static final awu<dfy> cs = a("sniffer_diggable_block");
-   public static final awu<dfy> ct = a("sniffer_egg_hatch_boost");
-   public static final awu<dfy> cu = a("trail_ruins_replaceable");
-   public static final awu<dfy> cv = a("replaceable");
-   public static final awu<dfy> cw = a("enchantment_power_provider");
-   public static final awu<dfy> cx = a("enchantment_power_transmitter");
-   public static final awu<dfy> cy = a("maintains_farmland");
-   public static final awu<dfy> cz = a("blocks_wind_charge_explosions");
-   public static final awu<dfy> cA = a("does_not_block_hoppers");
-   public static final awu<dfy> cB = a("air");
+public enum awe {
+   a("master"),
+   b("music"),
+   c("record"),
+   d("weather"),
+   e("block"),
+   f("hostile"),
+   g("neutral"),
+   h("player"),
+   i("ambient"),
+   j("voice");
 
-   private awe() {
+   private final String k;
+
+   private awe(final String $$0) {
+      this.k = $$0;
    }
 
-   private static awu<dfy> a(String $$0) {
-      return awu.a(lu.f, akr.b($$0));
+   public String a() {
+      return this.k;
    }
 }

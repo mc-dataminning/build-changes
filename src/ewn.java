@@ -1,26 +1,36 @@
-@FunctionalInterface
-public interface ewn<T> {
-   void handle(T var1, ewp<T> var2, long var3);
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-   public abstract static class a<T, C extends ewn<T>> {
-      private final akr a;
-      private final Class<?> b;
+public record ewn(exa b, ess c) implements ewe {
+   public static final MapCodec<ewn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(exb.a.fieldOf("value").forGetter(ewn::c), ess.a.fieldOf("range").forGetter(ewn::d)).apply($$0, ewn::new)
+   );
 
-      public a(akr $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   @Override
+   public ewf b() {
+      return ewg.r;
+   }
 
-      public akr a() {
-         return this.a;
-      }
+   @Override
+   public Set<evm<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
 
-      public Class<?> b() {
-         return this.b;
-      }
+   public boolean a(est $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
 
-      public abstract void a(ub var1, C var2);
+   public static ewe.a a(exa $$0, ess $$1) {
+      return () -> new ewn($$0, $$1);
+   }
 
-      public abstract C b(ub var1);
+   public exa c() {
+      return this.b;
+   }
+
+   public ess d() {
+      return this.c;
    }
 }

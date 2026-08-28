@@ -1,47 +1,29 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
-import java.util.Collection;
-import java.util.Collections;
+import net.minecraft.server.MinecraftServer;
 
 public class amz {
-   public static final int a = 2;
-
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("gamemode").requires($$0x -> $$0x.c(2)))
-            .then(
-               ((RequiredArgumentBuilder)eu.a("gamemode", fh.a())
-                     .executes($$0x -> a($$0x, Collections.singleton(((et)$$0x.getSource()).h()), fh.a($$0x, "gamemode"))))
-                  .then(eu.a("target", fg.d()).executes($$0x -> a($$0x, fg.f($$0x, "target"), fh.a($$0x, "gamemode"))))
-            )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
+            .then(eu.a("gamemode", fh.a()).executes($$0x -> a((et)$$0x.getSource(), fh.a($$0x, "gamemode"))))
       );
    }
 
-   private static void a(et $$0, aqv $$1, dct $$2) {
-      wz $$3 = wz.c("gameMode." + $$2.b());
-      if ($$0.f() == $$1) {
-         $$0.a(() -> wz.a("commands.gamemode.success.self", $$3), true);
-      } else {
-         if ($$0.e().ab().b(dcs.p)) {
-            $$1.a(wz.a("gameMode.changed", $$3));
-         }
-
-         $$0.a(() -> wz.a("commands.gamemode.success.other", $$1.S_(), $$3), true);
-      }
-   }
-
-   private static int a(CommandContext<et> $$0, Collection<aqv> $$1, dct $$2) {
-      int $$3 = 0;
-
-      for (aqv $$4 : $$1) {
-         if ($$4.a($$2)) {
-            a((et)$$0.getSource(), $$4, $$2);
-            $$3++;
+   private static int a(et $$0, ddp $$1) {
+      int $$2 = 0;
+      MinecraftServer $$3 = $$0.l();
+      $$3.a($$1);
+      ddp $$4 = $$3.be();
+      if ($$4 != null) {
+         for (arh $$5 : $$3.ag().t()) {
+            if ($$5.a($$4)) {
+               $$2++;
+            }
          }
       }
 
-      return $$3;
+      $$0.a(() -> xd.a("commands.defaultgamemode.success", $$1.d()), true);
+      return $$2;
    }
 }

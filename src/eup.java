@@ -1,42 +1,30 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eup extends eus {
-   public static final MapCodec<eup> a = a(eup::new);
-   public static final Codec<eup> b = b(eup::new);
+public class eup extends eug {
+   public static final MapCodec<eup> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(ko.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, eup::new)
+   );
+   private final ko b;
 
-   eup(List<evc> $$0) {
-      super($$0, ad.a($$0));
-   }
-
-   public static eup a(List<evc> $$0) {
-      return new eup(List.copyOf($$0));
+   private eup(List<ewe> $$0, ko $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public evd b() {
-      return eve.c;
+   public eui<eup> b() {
+      return euj.k;
    }
 
-   public static eup.a a(evc.a... $$0) {
-      return new eup.a($$0);
+   @Override
+   public cvl a(cvl $$0, est $$1) {
+      $$0.a(this.b);
+      return $$0;
    }
 
-   public static class a extends eus.a {
-      public a(evc.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public eup.a and(evc.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected evc a(List<evc> $$0) {
-         return new eup($$0);
-      }
+   public static <T> eug.a<?> a(kq<T> $$0, T $$1) {
+      return a($$2 -> new eup($$2, ko.a().a($$0, $$1).a()));
    }
 }

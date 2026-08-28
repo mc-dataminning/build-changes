@@ -8,9 +8,9 @@ public class bi extends dv<bi.a> {
       return bi.a.a;
    }
 
-   public void a(aqv $$0, ckw $$1, cmk $$2) {
-      err $$3 = bv.b($$0, $$1);
-      err $$4 = bv.b($$0, $$2);
+   public void a(arh $$0, clo $$1, cnc $$2) {
+      est $$3 = bv.b($$0, $$1);
+      est $$4 = bv.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -28,7 +28,7 @@ public class bi extends dv<bi.a> {
          return an.s.a(new bi.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(err $$0, err $$1) {
+      public boolean a(est $$0, est $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

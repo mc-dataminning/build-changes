@@ -1,18 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class eed implements eei {
-   public static final Codec<eed> a = bpw.b(0, 256).fieldOf("count").xmap(eed::new, eed::a).codec();
-   private final bpw b;
-
-   public eed(int $$0) {
-      this.b = bpt.a($$0);
+public class eed extends edc<efu> {
+   public eed(Codec<efu> $$0) {
+      super($$0);
    }
 
-   public eed(bpw $$0) {
-      this.b = $$0;
-   }
+   @Override
+   public boolean a(ede<efu> $$0) {
+      dep $$1 = $$0.b();
+      je $$2 = $$0.e();
+      efu $$3 = $$0.f();
 
-   public bpw a() {
-      return this.b;
+      for (efo.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
+
+      return true;
    }
 }

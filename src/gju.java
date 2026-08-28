@@ -1,17 +1,41 @@
-public class gju extends glp<cfj, fuz<cfj>> {
-   private static final akr a = akr.b("textures/entity/chicken.png");
+public class gju extends gjv<dsw> {
+   private static final alb c = alb.b("textures/entity/end_gateway_beam.png");
 
-   public gju(gkj.a $$0) {
-      super($$0, new fuz<>($$0.a(fyj.A)), 0.3F);
+   public gju(gjd.a $$0) {
+      super($$0);
    }
 
-   public akr a(cfj $$0) {
-      return a;
+   public void a(dsw $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
+      if ($$0.b() || $$0.c()) {
+         float $$6 = $$0.b() ? $$0.a($$1) : $$0.b($$1);
+         double $$7 = $$0.b() ? (double)$$0.i().an() : 50.0;
+         $$6 = azc.a($$6 * (float) Math.PI);
+         int $$8 = azc.a((double)$$6 * $$7);
+         int $$9 = $$0.b() ? cue.c.d() : cue.k.d();
+         long $$10 = $$0.i().aa();
+         giy.a($$2, $$3, c, $$1, $$6, $$10, -$$8, $$8 * 2, $$9, 0.15F, 0.175F);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   protected float a(cfj $$0, float $$1) {
-      float $$2 = ayo.i($$1, $$0.cg, $$0.cc);
-      float $$3 = ayo.i($$1, $$0.ce, $$0.cd);
-      return (ayo.a($$2) + 1.0F) * $$3;
+   @Override
+   protected float b() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
+
+   @Override
+   protected ghe d() {
+      return ghe.v();
+   }
+
+   @Override
+   public int aW_() {
+      return 256;
    }
 }

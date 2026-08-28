@@ -1,45 +1,11 @@
-import java.util.Optional;
-import java.util.function.Function;
-import org.joml.Vector3f;
-
-public abstract class fvt<E extends bsr> extends fvk<E> {
-   private static final Vector3f a = new Vector3f();
-
-   public fvt() {
-      this(gfh::e);
-   }
-
-   public fvt(Function<akr, gfh> $$0) {
+public abstract class fvt<S extends gvj> extends fxn<S> {
+   protected fvt(gab $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(fbi $$0, fbm $$1, int $$2, int $$3, int $$4) {
-      this.a().a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public abstract fyk a();
-
-   public Optional<fyk> a(String $$0) {
-      return $$0.equals("root") ? Optional.of(this.a()) : this.a().e().filter($$1 -> $$1.a($$0)).findFirst().map($$1 -> $$1.b($$0));
-   }
-
-   protected void a(bsm $$0, fhd $$1, float $$2) {
-      this.a($$0, $$1, $$2, 1.0F);
-   }
-
-   protected void a(fhd $$0, float $$1, float $$2, float $$3, float $$4) {
-      long $$5 = (long)($$1 * 50.0F * $$3);
-      float $$6 = Math.min($$2 * $$4, 1.0F);
-      fhf.a(this, $$0, $$5, $$6, a);
-   }
-
-   protected void a(bsm $$0, fhd $$1, float $$2, float $$3) {
-      $$0.a($$2, $$3);
-      $$0.a($$1x -> fhf.a(this, $$1, $$1x.b(), 1.0F, a));
-   }
-
-   protected void a(fhd $$0) {
-      fhf.a(this, $$0, 0L, 1.0F, a);
+   public void a(S $$0) {
+      super.a($$0);
+      float $$1 = $$0.C;
+      fvv.a(this.s, this.r, $$0.a, $$1, $$0.p);
    }
 }

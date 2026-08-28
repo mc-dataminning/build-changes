@@ -1,31 +1,111 @@
-public class fnm extends fod {
-   private final wz a;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-   public fnm(wz $$0, wz $$1) {
-      super($$0);
-      this.a = $$1;
+public class fnm extends fnj {
+   private final List<fnm.a> c = new ArrayList<>();
+   private int d;
+   private int e;
+   private final fnr f = fnr.i().a(0.5F, 0.5F);
+
+   public fnm() {
+      this(0, 0, 0, 0);
+   }
+
+   public fnm(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
+   }
+
+   public fnm(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a($$2, $$3);
+   }
+
+   public fnm a(int $$0, int $$1) {
+      return this.b($$0).a($$1);
+   }
+
+   public fnm a(int $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public fnm b(int $$0) {
+      this.d = $$0;
+      return this;
+   }
+
+   public fnr b() {
+      return this.f.g();
+   }
+
+   public fnr c() {
+      return this.f;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.c(fim.a(wy.e, $$0 -> this.l.a(null)).a(this.m / 2 - 100, 140, 200, 20).a());
+   public void a() {
+      super.a();
+      int $$0 = this.d;
+      int $$1 = this.e;
+
+      for (fnm.a $$2 : this.c) {
+         $$0 = Math.max($$0, $$2.b());
+         $$1 = Math.max($$1, $$2.a());
+      }
+
+      for (fnm.a $$3 : this.c) {
+         $$3.a(this.D(), $$0);
+         $$3.b(this.E(), $$1);
+      }
+
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public <T extends fnq> T a(T $$0) {
+      return this.a($$0, this.b());
+   }
+
+   public <T extends fnq> T a(T $$0, fnr $$1) {
+      this.c.add(new fnm.a($$0, $$1));
+      return $$0;
+   }
+
+   public <T extends fnq> T a(T $$0, Consumer<fnr> $$1) {
+      return this.a($$0, ad.a(this.b(), $$1));
    }
 
    @Override
-   public void a(fhz $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 90, 16777215);
-      $$0.a(this.o, this.a, this.m / 2, 110, 16777215);
+   public void b(Consumer<fnq> $$0) {
+      this.c.forEach($$1 -> $$0.accept($$1.a));
    }
 
-   @Override
-   public void b(fhz $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.m, this.n, -12574688, -11530224);
+   public static void a(fnq $$0, int $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, 0.5F, 0.5F);
    }
 
-   @Override
-   public boolean aJ_() {
-      return false;
+   public static void a(fnq $$0, foh $$1) {
+      a($$0, $$1.f().a(), $$1.f().b(), $$1.g(), $$1.h());
+   }
+
+   public static void a(fnq $$0, foh $$1, float $$2, float $$3) {
+      a($$0, $$1.d(), $$1.b(), $$1.g(), $$1.h(), $$2, $$3);
+   }
+
+   public static void a(fnq $$0, int $$1, int $$2, int $$3, int $$4, float $$5, float $$6) {
+      a($$1, $$3, $$0.y(), $$0::m, $$5);
+      a($$2, $$4, $$0.w(), $$0::n, $$6);
+   }
+
+   public static void a(int $$0, int $$1, int $$2, Consumer<Integer> $$3, float $$4) {
+      int $$5 = (int)azc.h($$4, 0.0F, (float)($$1 - $$2));
+      $$3.accept($$0 + $$5);
+   }
+
+   static class a extends fnj.a {
+      protected a(fnq $$0, fnr $$1) {
+         super($$0, $$1);
+      }
    }
 }

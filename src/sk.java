@@ -1,8 +1,95 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface sk {
+public class sk {
+   public static final ala<ejs> a = sj.a("crimson_fungi");
+   public static final ala<ejs> b = sj.a("warped_fungi");
+   public static final ala<ejs> c = sj.a("oak_checked");
+   public static final ala<ejs> d = sj.a("dark_oak_checked");
+   public static final ala<ejs> e = sj.a("birch_checked");
+   public static final ala<ejs> f = sj.a("acacia_checked");
+   public static final ala<ejs> g = sj.a("spruce_checked");
+   public static final ala<ejs> h = sj.a("mangrove_checked");
+   public static final ala<ejs> i = sj.a("cherry_checked");
+   public static final ala<ejs> j = sj.a("pine_on_snow");
+   public static final ala<ejs> k = sj.a("spruce_on_snow");
+   public static final ala<ejs> l = sj.a("pine_checked");
+   public static final ala<ejs> m = sj.a("jungle_tree");
+   public static final ala<ejs> n = sj.a("fancy_oak_checked");
+   public static final ala<ejs> o = sj.a("mega_jungle_tree_checked");
+   public static final ala<ejs> p = sj.a("mega_spruce_checked");
+   public static final ala<ejs> q = sj.a("mega_pine_checked");
+   public static final ala<ejs> r = sj.a("tall_mangrove_checked");
+   public static final ala<ejs> s = sj.a("jungle_bush");
+   public static final ala<ejs> t = sj.a("super_birch_bees_0002");
+   public static final ala<ejs> u = sj.a("super_birch_bees");
+   public static final ala<ejs> v = sj.a("oak_bees_0002");
+   public static final ala<ejs> w = sj.a("oak_bees_002");
+   public static final ala<ejs> x = sj.a("birch_bees_0002");
+   public static final ala<ejs> y = sj.a("birch_bees_002");
+   public static final ala<ejs> z = sj.a("fancy_oak_bees_0002");
+   public static final ala<ejs> A = sj.a("fancy_oak_bees_002");
+   public static final ala<ejs> B = sj.a("fancy_oak_bees");
+   public static final ala<ejs> C = sj.a("cherry_bees_005");
+
+   public static void a(qt<ejs> $$0) {
+      jo<eco<?, ?>> $$1 = $$0.a(lv.aI);
+      jn<eco<?, ?>> $$2 = $$1.b(rz.a);
+      jn<eco<?, ?>> $$3 = $$1.b(rz.c);
+      jn<eco<?, ?>> $$4 = $$1.b(rz.g);
+      jn<eco<?, ?>> $$5 = $$1.b(rz.h);
+      jn<eco<?, ?>> $$6 = $$1.b(rz.i);
+      jn<eco<?, ?>> $$7 = $$1.b(rz.j);
+      jn<eco<?, ?>> $$8 = $$1.b(rz.k);
+      jn<eco<?, ?>> $$9 = $$1.b(rz.x);
+      jn<eco<?, ?>> $$10 = $$1.b(rz.z);
+      jn<eco<?, ?>> $$11 = $$1.b(rz.l);
+      jn<eco<?, ?>> $$12 = $$1.b(rz.m);
+      jn<eco<?, ?>> $$13 = $$1.b(rz.n);
+      jn<eco<?, ?>> $$14 = $$1.b(rz.p);
+      jn<eco<?, ?>> $$15 = $$1.b(rz.q);
+      jn<eco<?, ?>> $$16 = $$1.b(rz.r);
+      jn<eco<?, ?>> $$17 = $$1.b(rz.y);
+      jn<eco<?, ?>> $$18 = $$1.b(rz.v);
+      jn<eco<?, ?>> $$19 = $$1.b(rz.s);
+      jn<eco<?, ?>> $$20 = $$1.b(rz.t);
+      jn<eco<?, ?>> $$21 = $$1.b(rz.A);
+      jn<eco<?, ?>> $$22 = $$1.b(rz.B);
+      jn<eco<?, ?>> $$23 = $$1.b(rz.D);
+      jn<eco<?, ?>> $$24 = $$1.b(rz.E);
+      jn<eco<?, ?>> $$25 = $$1.b(rz.G);
+      jn<eco<?, ?>> $$26 = $$1.b(rz.H);
+      jn<eco<?, ?>> $$27 = $$1.b(rz.J);
+      jn<eco<?, ?>> $$28 = $$1.b(rz.K);
+      sj.a($$0, a, $$2, ejj.a(8), ejg.a());
+      sj.a($$0, b, $$3, ejj.a(8), ejg.a());
+      sj.a($$0, c, $$4, sj.a(dgx.x));
+      sj.a($$0, d, $$5, sj.a(dgx.D));
+      sj.a($$0, e, $$6, sj.a(dgx.z));
+      sj.a($$0, f, $$7, sj.a(dgx.B));
+      sj.a($$0, g, $$8, sj.a(dgx.y));
+      sj.a($$0, h, $$9, sj.a(dgx.E));
+      sj.a($$0, i, $$10, sj.a(dgx.C));
+      ebd $$29 = ebd.a(jj.a.q(), dgx.dP, dgx.qP);
+      List<ejv> $$30 = List.of(ejl.a(jj.b, ebd.a(ebd.a(dgx.qP)), 8), ejh.a($$29));
+      sj.a($$0, j, $$11, $$30);
+      sj.a($$0, k, $$8, $$30);
+      sj.a($$0, l, $$11, sj.a(dgx.y));
+      sj.a($$0, m, $$12, sj.a(dgx.A));
+      sj.a($$0, n, $$13, sj.a(dgx.x));
+      sj.a($$0, o, $$14, sj.a(dgx.A));
+      sj.a($$0, p, $$15, sj.a(dgx.y));
+      sj.a($$0, q, $$16, sj.a(dgx.y));
+      sj.a($$0, r, $$17, sj.a(dgx.E));
+      sj.a($$0, s, $$18, sj.a(dgx.x));
+      sj.a($$0, t, $$19, sj.a(dgx.z));
+      sj.a($$0, u, $$20, sj.a(dgx.z));
+      sj.a($$0, v, $$21, sj.a(dgx.x));
+      sj.a($$0, w, $$22, sj.a(dgx.x));
+      sj.a($$0, x, $$23, sj.a(dgx.z));
+      sj.a($$0, y, $$24, sj.a(dgx.z));
+      sj.a($$0, z, $$25, sj.a(dgx.x));
+      sj.a($$0, A, $$26, sj.a(dgx.x));
+      sj.a($$0, B, $$27, sj.a(dgx.x));
+      sj.a($$0, C, $$28, sj.a(dgx.C));
+   }
 }

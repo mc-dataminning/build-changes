@@ -1,166 +1,48 @@
+import java.util.BitSet;
 import javax.annotation.Nullable;
 
-public abstract class ado implements zg<abu> {
-   protected final int a;
-   protected final short b;
-   protected final short c;
-   protected final short d;
-   protected final byte e;
-   protected final byte f;
-   protected final boolean g;
-   protected final boolean h;
-   protected final boolean i;
+public class ado implements zk<abz> {
+   public static final zb<wa, ado> a = zk.a(ado::a, ado::new);
+   private final int b;
+   private final int c;
+   private final adp d;
 
-   protected ado(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6, boolean $$7, boolean $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public ado(dcy $$0, epq $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+      this.b = $$0.e;
+      this.c = $$0.f;
+      this.d = new adp($$0, $$1, $$2, $$3);
+   }
+
+   private ado(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = new adp($$0, this.b, this.c);
+   }
+
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      this.d.a($$0);
    }
 
    @Override
-   public abstract zi<? extends ado> a();
+   public zm<ado> a() {
+      return ago.N;
+   }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   @Override
-   public String toString() {
-      return "Entity_" + super.toString();
-   }
-
-   @Nullable
-   public bsr a(dcw $$0) {
-      return $$0.a(this.a);
-   }
-
-   public short b() {
+   public int b() {
       return this.b;
    }
 
-   public short e() {
+   public int e() {
       return this.c;
    }
 
-   public short f() {
+   public adp f() {
       return this.d;
-   }
-
-   public byte g() {
-      return this.e;
-   }
-
-   public byte h() {
-      return this.f;
-   }
-
-   public boolean i() {
-      return this.h;
-   }
-
-   public boolean j() {
-      return this.i;
-   }
-
-   public boolean k() {
-      return this.g;
-   }
-
-   public static class a extends ado {
-      public static final yx<vw, ado.a> j = zg.a(ado.a::b, ado.a::a);
-
-      public a(int $$0, short $$1, short $$2, short $$3, boolean $$4) {
-         super($$0, $$1, $$2, $$3, (byte)0, (byte)0, $$4, false, true);
-      }
-
-      private static ado.a a(vw $$0) {
-         int $$1 = $$0.l();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         boolean $$5 = $$0.readBoolean();
-         return new ado.a($$1, $$2, $$3, $$4, $$5);
-      }
-
-      private void b(vw $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zi<ado.a> a() {
-         return agg.R;
-      }
-   }
-
-   public static class b extends ado {
-      public static final yx<vw, ado.b> j = zg.a(ado.b::b, ado.b::a);
-
-      public b(int $$0, short $$1, short $$2, short $$3, byte $$4, byte $$5, boolean $$6) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, true, true);
-      }
-
-      private static ado.b a(vw $$0) {
-         int $$1 = $$0.l();
-         short $$2 = $$0.readShort();
-         short $$3 = $$0.readShort();
-         short $$4 = $$0.readShort();
-         byte $$5 = $$0.readByte();
-         byte $$6 = $$0.readByte();
-         boolean $$7 = $$0.readBoolean();
-         return new ado.b($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      private void b(vw $$0) {
-         $$0.c(this.a);
-         $$0.l(this.b);
-         $$0.l(this.c);
-         $$0.l(this.d);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zi<ado.b> a() {
-         return agg.S;
-      }
-   }
-
-   public static class c extends ado {
-      public static final yx<vw, ado.c> j = zg.a(ado.c::b, ado.c::a);
-
-      public c(int $$0, byte $$1, byte $$2, boolean $$3) {
-         super($$0, (short)0, (short)0, (short)0, $$1, $$2, $$3, true, false);
-      }
-
-      private static ado.c a(vw $$0) {
-         int $$1 = $$0.l();
-         byte $$2 = $$0.readByte();
-         byte $$3 = $$0.readByte();
-         boolean $$4 = $$0.readBoolean();
-         return new ado.c($$1, $$2, $$3, $$4);
-      }
-
-      private void b(vw $$0) {
-         $$0.c(this.a);
-         $$0.k(this.e);
-         $$0.k(this.f);
-         $$0.a(this.g);
-      }
-
-      @Override
-      public zi<ado.c> a() {
-         return agg.T;
-      }
    }
 }

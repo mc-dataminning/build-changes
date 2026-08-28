@@ -1,40 +1,34 @@
-import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.types.templates.Hook.HookFunction;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public class bif extends Schema {
-   public bif(int $$0, Schema $$1) {
-      super($$0, $$1);
+public class bif extends bgg {
+   public bif(Schema $$0) {
+      super($$0, false, "TippedArrowPotionToItemFix", bhk.B, "minecraft:arrow");
    }
 
-   public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
-      super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         true,
-         bgr.t,
-         () -> DSL.hook(
-               DSL.optionalFields(
-                  "id",
-                  bgr.D.in($$0),
-                  "tag",
-                  DSL.optionalFields(
-                     new Pair[]{
-                        Pair.of("EntityTag", bgr.A.in($$0)),
-                        Pair.of("BlockEntityTag", bgr.s.in($$0)),
-                        Pair.of("CanDestroy", DSL.list(bgr.C.in($$0))),
-                        Pair.of("CanPlaceOn", DSL.list(bgr.C.in($$0))),
-                        Pair.of("Items", DSL.list(bgr.t.in($$0))),
-                        Pair.of("ChargedProjectiles", DSL.list(bgr.t.in($$0)))
-                     }
-                  )
-               ),
-               bln.b,
-               HookFunction.IDENTITY
-            )
-      );
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Potion").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("custom_potion_effects").result();
+      Optional<Dynamic<T>> $$3 = $$0.get("Color").result();
+      return $$1.isEmpty() && $$2.isEmpty() && $$3.isEmpty()
+         ? $$0
+         : $$0.remove("Potion").remove("custom_potion_effects").remove("Color").update("item", $$3x -> {
+            Dynamic<?> $$4 = $$3x.get("tag").orElseEmptyMap();
+            if ($$1.isPresent()) {
+               $$4 = $$4.set("Potion", $$1.get());
+            }
+
+            if ($$2.isPresent()) {
+               $$4 = $$4.set("custom_potion_effects", $$2.get());
+            }
+
+            if ($$3.isPresent()) {
+               $$4 = $$4.set("CustomPotionColor", $$3.get());
+            }
+
+            return $$3x.set("tag", $$4);
+         });
    }
 }

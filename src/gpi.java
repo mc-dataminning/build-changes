@@ -1,23 +1,47 @@
-public class gpi<T extends btn> extends gnz<T, fxz<T>> {
-   public gpi(gmf<T, fxz<T>> $$0, gev $$1) {
-      super($$0, $$1);
+public class gpi extends gmr<cka, guy> {
+   private final ghu a;
+
+   public gpi(gms.a $$0) {
+      super($$0);
+      this.f = 0.5F;
+      this.a = $$0.d();
    }
 
-   @Override
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cuq $$10 = $$3.eT();
-      $$0.a();
-      if ($$10.a(cut.sk)) {
-         this.c().d().a($$0);
-         this.c().e().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
+   public void a(guy $$0, fcu $$1, ggv $$2, int $$3) {
+      $$1.a();
+      $$1.a(0.0F, 0.5F, 0.0F);
+      float $$4 = $$0.a;
+      if ($$0.a < 10.0F) {
+         float $$5 = 1.0F - $$0.a / 10.0F;
+         $$5 = azc.a($$5, 0.0F, 1.0F);
+         $$5 *= $$5;
+         $$5 *= $$5;
+         float $$6 = 1.0F + $$5 * 0.3F;
+         $$1.b($$6, $$6, $$6);
       }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-      $$0.b();
+      $$1.a(a.d.rotationDegrees(-90.0F));
+      $$1.a(-0.5F, -0.5F, 0.5F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      if ($$0.b != null) {
+         gph.a(this.a, $$0.b, $$1, $$2, $$3, (int)$$4 / 5 % 2 == 0);
+      }
+
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public alb a(guy $$0) {
+      return gwj.d;
+   }
+
+   public guy a() {
+      return new guy();
+   }
+
+   public void a(cka $$0, guy $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.o() - $$2 + 1.0F;
+      $$1.b = $$0.q();
    }
 }

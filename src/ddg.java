@@ -1,50 +1,46 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class ddg {
-   private final Long2ObjectMap<List<aqv>> a = new Long2ObjectOpenHashMap();
-   private final Map<aqv, ddg.a> b = Maps.newHashMap();
-   private final aqb c;
+public enum ddg implements dcu {
+   a;
 
-   public ddg(aqb $$0) {
-      this.c = $$0;
+   @Override
+   public float a(jj $$0, boolean $$1) {
+      return 1.0F;
    }
 
-   private List<aqv> a(dcd $$0) {
-      return (List<aqv>)this.a.computeIfAbsent($$0.a(), $$1 -> this.c.c($$0));
+   @Override
+   public epq x_() {
+      return epq.c;
    }
 
-   public void a(dcd $$0, btq $$1) {
-      for (aqv $$2 : this.a($$0)) {
-         this.b.computeIfAbsent($$2, $$0x -> new ddg.a()).a($$1);
-      }
+   @Override
+   public int a(je $$0, ddc $$1) {
+      return -1;
    }
 
-   public boolean a(btq $$0, dcd $$1) {
-      for (aqv $$2 : this.a($$1)) {
-         ddg.a $$3 = this.b.get($$2);
-         if ($$3 == null || $$3.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   @Nullable
+   @Override
+   public dre c_(je $$0) {
+      return null;
    }
 
-   static class a {
-      private final Object2IntMap<btq> a = new Object2IntOpenHashMap(btq.values().length);
+   @Override
+   public dua a_(je $$0) {
+      return dgx.a.o();
+   }
 
-      public void a(btq $$0) {
-         this.a.computeInt($$0, ($$0x, $$1) -> $$1 == null ? 1 : $$1 + 1);
-      }
+   @Override
+   public eqb b_(je $$0) {
+      return eqc.a.g();
+   }
 
-      public boolean b(btq $$0) {
-         return this.a.getOrDefault($$0, 0) < $$0.b();
-      }
+   @Override
+   public int H_() {
+      return 0;
+   }
+
+   @Override
+   public int G_() {
+      return 0;
    }
 }

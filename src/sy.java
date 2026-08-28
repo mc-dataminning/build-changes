@@ -1,9 +1,9 @@
-public interface sy {
-   void a(sx var1);
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-   void a(sx var1, ta var2);
-
-   void b(sx var1, ta var2);
-
-   void a(sx var1, sx var2, ta var3);
+@Target({ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+public @interface sy {
 }

@@ -1,6 +1,7 @@
-import java.util.function.Consumer;
+import com.google.gson.JsonObject;
 
-@FunctionalInterface
-public interface atr {
-   void loadPacks(Consumer<atm> var1);
+public interface atr<T> {
+   String a();
+
+   T a(JsonObject var1);
 }

@@ -1,29 +1,24 @@
-public class agk implements zg<agi> {
-   public static final yx<vw, agk> a = zg.a(agk::a, agk::new);
-   private final int b;
+import java.util.Collection;
+import java.util.List;
 
-   public agk(int $$0) {
-      this.b = $$0;
-   }
+public class agk implements zk<abz> {
+   public static final zb<wo, agk> a = zb.a(czv.a.a(yz.a()), $$0 -> $$0.b, agk::new);
+   private final List<czv<?>> b;
 
-   private agk(vw $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   public agk(Collection<czv<?>> $$0) {
+      this.b = List.copyOf($$0);
    }
 
    @Override
-   public zi<agk> a() {
-      return agg.bf;
+   public zm<agk> a() {
+      return ago.be;
    }
 
-   public void a(agi $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public int b() {
+   public List<czv<?>> b() {
       return this.b;
    }
 }

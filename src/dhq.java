@@ -1,43 +1,62 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dhq extends dfj {
-   public static final MapCodec<dhq> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dhn.a.forGetter($$0x -> $$0x.f), u()).apply($$0, dhq::new));
-   private final dfy f;
+public class dhq extends dfo {
+   public static final MapCodec<dhq> d = b(dhq::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
    @Override
    public MapCodec<dhq> a() {
-      return e;
+      return d;
    }
 
-   protected dhq(dfy $$0, dtb.d $$1) {
-      super($$1);
-      this.f = $$0;
-   }
-
-   @Override
-   protected void b(dtc $$0, dcw $$1, jd $$2, dtc $$3, boolean $$4) {
-      this.a($$0, (dcx)$$1, $$2);
+   public dhq(dtz.d $$0) {
+      super($$0, kk.c);
    }
 
    @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if (!e($$0, $$1, $$2)) {
-         $$1.a($$2, this.f.o().a(d, Boolean.valueOf(false)).a(c, $$0.c(c)), 2);
+   public boolean d(dua $$0) {
+      return false;
+   }
+
+   protected static boolean a(dds $$0, det.c $$1) {
+      if ($$1 == det.c.b) {
+         return $$0.C_().i() < 0.05F;
+      } else {
+         return $$1 == det.c.c ? $$0.C_().i() < 0.1F : false;
       }
    }
 
    @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$1.g() == $$0.c(c) && !$$0.a($$3, $$4)) {
-         return dga.a.o();
-      } else {
-         if ($$0.c(d)) {
-            $$3.a($$4, epf.c, epf.c.a($$3));
+   public void a(dua $$0, dds $$1, je $$2, det.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == det.c.b) {
+            $$1.b($$2, dgx.fu.o());
+            $$1.a(null, dyx.c, $$2);
+         } else if ($$3 == det.c.c) {
+            $$1.b($$2, dgx.fw.o());
+            $$1.a(null, dyx.c, $$2);
          }
+      }
+   }
 
-         this.a($$0, $$3, $$4);
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   @Override
+   protected boolean a(eqa $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dua $$0, dds $$1, je $$2, eqa $$3) {
+      if ($$3 == eqc.c) {
+         dua $$4 = dgx.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dyx.c, $$2, dyx.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == eqc.e) {
+         dua $$5 = dgx.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dyx.c, $$2, dyx.a.a($$5));
+         $$1.c(1046, $$2, 0);
       }
    }
 }

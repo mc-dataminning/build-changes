@@ -1,27 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bwb {
-   public static bvi<btn> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+public class bwb extends bvx<cnc> {
+   @Nullable
+   private cpc c;
+
+   public bwb(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   public static <E extends btn> bvi<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return byu.a((Function<byu.b<E>, ? extends App<byu.c<E>, byx<E>>>)($$4 -> {
-         byu<E, ? extends byv<? extends K1, ccv>> $$5 = $$2 ? $$4.a(ccs.m) : $$4.c(ccs.m);
-         return $$4.group($$4.a(ccs.n), $$5, $$4.b(ccs.L), $$4.a(ccs.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               cjh $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dO().C_().a($$11.do())) {
-                  ccv $$12 = new ccv(new bvs($$11, false), $$1, 0);
-                  $$4x.a(new bvs($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   protected boolean a(arg $$0, cnc $$1) {
+      je $$2 = $$1.ds();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && bxg.a($$0, $$1, $$2);
+   }
+
+   protected boolean a(arg $$0, cnc $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(arg $$0, cnc $$1, long $$2) {
+      this.c = null;
+      $$1.dX().a($$0.ab(), $$0.aa());
+   }
+
+   protected void c(arg $$0, cnc $$1, long $$2) {
+      azk $$3 = $$1.dV();
+      if ($$3.a(100) == 0) {
+         $$1.gt();
+      }
+
+      if ($$3.a(200) == 0 && bxg.a($$0, $$1, $$1.ds())) {
+         cue $$4 = ad.a(cue.values(), $$3);
+         int $$5 = $$3.a(3);
+         cvl $$6 = this.a($$4, $$5);
+         coi.a(new cod($$1.dS(), $$1, $$1.dx(), $$1.dB(), $$1.dD(), $$6), $$0, $$6);
+      }
+   }
+
+   private cvl a(cue $$0, int $$1) {
+      cvl $$2 = new cvl(cvo.uw);
+      $$2.b(kr.X, new cyf((byte)$$1, List.of(new cye(cye.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

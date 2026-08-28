@@ -1,135 +1,165 @@
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Lifecycle;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
+import java.util.function.Supplier;
+import org.apache.commons.lang3.Validate;
+import org.slf4j.Logger;
 
 public class lu {
-   public static final akr a = akr.b("root");
-   public static final akq<jz<com>> b = a("activity");
-   public static final akq<jz<bur>> c = a("attribute");
-   public static final akq<jz<dpx>> d = a("banner_pattern");
-   public static final akq<jz<MapCodec<? extends dea>>> e = a("worldgen/biome_source");
-   public static final akq<jz<dfy>> f = a("block");
-   public static final akq<jz<MapCodec<? extends dfy>>> g = a("block_type");
-   public static final akq<jz<dqj<?>>> h = a("block_entity_type");
-   public static final akq<jz<eag<?>>> i = a("block_predicate_type");
-   public static final akq<jz<egk<?>>> j = a("worldgen/block_state_provider_type");
-   public static final akq<jz<ebe<?>>> k = a("worldgen/carver");
-   public static final akq<jz<cfi>> l = a("cat_variant");
-   public static final akq<jz<cgi>> m = a("wolf_variant");
-   public static final akq<jz<MapCodec<? extends duz>>> n = a("worldgen/chunk_generator");
-   public static final akq<jz<dvz>> o = a("chunk_status");
-   public static final akq<jz<io<?, ?>>> p = a("command_argument_type");
-   public static final akq<jz<cta>> q = a("creative_mode_tab");
-   public static final akq<jz<akr>> r = a("custom_stat");
-   public static final akq<jz<brm>> s = a("damage_type");
-   public static final akq<jz<MapCodec<? extends dyr>>> t = a("worldgen/density_function_type");
-   public static final akq<jz<MapCodec<? extends das>>> u = a("enchantment_entity_effect_type");
-   public static final akq<jz<MapCodec<? extends daj>>> v = a("enchantment_level_based_value_type");
-   public static final akq<jz<MapCodec<? extends dat>>> w = a("enchantment_location_based_effect_type");
-   public static final akq<jz<MapCodec<? extends dbj>>> x = a("enchantment_provider_type");
-   public static final akq<jz<MapCodec<? extends dau>>> y = a("enchantment_value_effect_type");
-   public static final akq<jz<bsx<?>>> z = a("entity_type");
-   public static final akq<jz<ece<?>>> A = a("worldgen/feature");
-   public static final akq<jz<efk<?>>> B = a("worldgen/feature_size_type");
-   public static final akq<jz<bpv<?>>> C = a("float_provider_type");
-   public static final akq<jz<epd>> D = a("fluid");
-   public static final akq<jz<efv<?>>> E = a("worldgen/foliage_placer_type");
-   public static final akq<jz<cfp>> F = a("frog_variant");
-   public static final akq<jz<dxz>> G = a("game_event");
-   public static final akq<jz<ehy<?>>> H = a("height_provider_type");
-   public static final akq<jz<cui>> I = a("instrument");
-   public static final akq<jz<bpx<?>>> J = a("int_provider_type");
-   public static final akq<jz<cul>> K = a("item");
-   public static final akq<jz<cuv>> L = a("jukebox_song");
-   public static final akq<jz<evd>> M = a("loot_condition_type");
-   public static final akq<jz<etg<?>>> N = a("loot_function_type");
-   public static final akq<jz<evp>> O = a("loot_nbt_provider_type");
-   public static final akq<jz<evx>> P = a("loot_number_provider_type");
-   public static final akq<jz<esi>> Q = a("loot_pool_entry_type");
-   public static final akq<jz<ewg>> R = a("loot_score_provider_type");
-   public static final akq<jz<MapCodec<? extends dzp.f>>> S = a("worldgen/material_condition");
-   public static final akq<jz<MapCodec<? extends dzp.o>>> T = a("worldgen/material_rule");
-   public static final akq<jz<ccs<?>>> U = a("memory_module_type");
-   public static final akq<jz<crc<?>>> V = a("menu");
-   public static final akq<jz<brx>> W = a("mob_effect");
-   public static final akq<jz<cjd>> X = a("painting_variant");
-   public static final akq<jz<ll<?>>> Y = a("particle_type");
-   public static final akq<jz<eiz<?>>> Z = a("worldgen/placement_modifier_type");
-   public static final akq<jz<cev>> aa = a("point_of_interest_type");
-   public static final akq<jz<dye<?>>> ab = a("position_source_type");
-   public static final akq<jz<enh<?>>> ac = a("pos_rule_test");
-   public static final akq<jz<cws>> ad = a("potion");
-   public static final akq<jz<cze<?>>> ae = a("recipe_serializer");
-   public static final akq<jz<czf<?>>> af = a("recipe_type");
-   public static final akq<jz<egh<?>>> ag = a("worldgen/root_placer_type");
-   public static final akq<jz<eno<?>>> ah = a("rule_test");
-   public static final akq<jz<eoc<?>>> ai = a("rule_block_entity_modifier");
-   public static final akq<jz<cop>> aj = a("schedule");
-   public static final akq<jz<cdz<?>>> ak = a("sensor_type");
-   public static final akq<jz<avo>> al = a("sound_event");
-   public static final akq<jz<avy<?>>> am = a("stat_type");
-   public static final akq<jz<eki>> an = a("worldgen/structure_piece");
-   public static final akq<jz<ekp<?>>> ao = a("worldgen/structure_placement");
-   public static final akq<jz<ela<?>>> ap = a("worldgen/structure_pool_element");
-   public static final akq<jz<MapCodec<? extends eld>>> aq = a("worldgen/pool_alias_binding");
-   public static final akq<jz<ens<?>>> ar = a("worldgen/structure_processor");
-   public static final akq<jz<eka<?>>> as = a("worldgen/structure_type");
-   public static final akq<jz<ehb<?>>> at = a("worldgen/tree_decorator_type");
-   public static final akq<jz<ehn<?>>> au = a("worldgen/trunk_placer_type");
-   public static final akq<jz<cmn>> av = a("villager_profession");
-   public static final akq<jz<cmp>> aw = a("villager_type");
-   public static final akq<jz<dqy>> ax = a("decorated_pot_pattern");
-   public static final akq<jz<yq<?>>> ay = a("number_format_type");
-   public static final akq<jz<csg>> az = a("armor_material");
-   public static final akq<jz<kp<?>>> aA = a("data_component_type");
-   public static final akq<jz<MapCodec<? extends bw>>> aB = a("entity_sub_predicate_type");
-   public static final akq<jz<ct.a<?>>> aC = a("item_sub_predicate_type");
-   public static final akq<jz<eqo>> aD = a("map_decoration_type");
-   public static final akq<jz<kp<?>>> aE = a("enchantment_effect_component_type");
-   public static final akq<jz<ddw>> aF = a("worldgen/biome");
-   public static final akq<jz<wv>> aG = a("chat_type");
-   public static final akq<jz<ebc<?>>> aH = a("worldgen/configured_carver");
-   public static final akq<jz<ebq<?, ?>>> aI = a("worldgen/configured_feature");
-   public static final akq<jz<dyr>> aJ = a("worldgen/density_function");
-   public static final akq<jz<dwy>> aK = a("dimension_type");
-   public static final akq<jz<dac>> aL = a("enchantment");
-   public static final akq<jz<dbj>> aM = a("enchantment_provider");
-   public static final akq<jz<ehr>> aN = a("worldgen/flat_level_generator_preset");
-   public static final akq<jz<dzd>> aO = a("worldgen/noise_settings");
-   public static final akq<jz<eoh.a>> aP = a("worldgen/noise");
-   public static final akq<jz<eiv>> aQ = a("worldgen/placed_feature");
-   public static final akq<jz<ejr>> aR = a("worldgen/structure");
-   public static final akq<jz<enr>> aS = a("worldgen/processor_list");
-   public static final akq<jz<ejx>> aT = a("worldgen/structure_set");
-   public static final akq<jz<elb>> aU = a("worldgen/template_pool");
-   public static final akq<jz<aq<?>>> aV = a("trigger_type");
-   public static final akq<jz<cwy>> aW = a("trim_material");
-   public static final akq<jz<cxa>> aX = a("trim_pattern");
-   public static final akq<jz<ejg>> aY = a("worldgen/world_preset");
-   public static final akq<jz<dek>> aZ = a("worldgen/multi_noise_biome_source_parameter_list");
-   public static final akq<jz<dcw>> ba = a("dimension");
-   public static final akq<jz<dwz>> bb = a("dimension");
-   public static final akq<jz<erw>> bc = a("loot_table");
-   public static final akq<jz<etf>> bd = a("item_modifier");
-   public static final akq<jz<evc>> be = a("predicate");
-   public static final akq<jz<af>> bf = a("advancement");
-   public static final akq<jz<cyz<?>>> bg = a("recipe");
+   private static final Logger aA = LogUtils.getLogger();
+   private static final Map<alb, Supplier<?>> aB = Maps.newLinkedHashMap();
+   private static final kj<kj<?>> aC = new jv<>(ala.a(lv.a), Lifecycle.stable());
+   public static final ji<dyx> a = a(lv.G, "step", dyx::a);
+   public static final ka<awc> b = a(lv.al, $$0 -> awd.nD);
+   public static final ji<eqa> c = b(lv.D, "empty", $$0 -> eqc.a);
+   public static final ka<bso> d = a(lv.W, bss::a);
+   public static final ji<dgv> e = b(lv.f, "air", $$0 -> dgx.a);
+   public static final ji<btq<?>> f = b(lv.z, "pig", $$0 -> btq.az);
+   public static final ji<cvg> g = b(lv.K, "air", $$0 -> cvo.a);
+   public static final ka<cxl> h = a(lv.ad, cxo::a);
+   public static final ka<lm<?>> i = a(lv.Y, $$0 -> ln.b);
+   public static final ka<drg<?>> j = b(lv.h, $$0 -> drg.a);
+   public static final ka<alb> k = a(lv.r, $$0 -> awn.E);
+   public static final ji<dwx> l = a(lv.o, "empty", $$0 -> dwx.c);
+   public static final ka<eol<?>> m = a(lv.ah, $$0 -> eol.a);
+   public static final ka<eoz<?>> n = a(lv.ai, $$0 -> eoz.b);
+   public static final ka<eoe<?>> o = a(lv.ac, $$0 -> eoe.a);
+   public static final ka<crz<?>> p = a(lv.V, $$0 -> crz.i);
+   public static final ka<czz<?>> q = a(lv.af, $$0 -> czz.a);
+   public static final ka<czy<?>> r = a(lv.ae, $$0 -> czy.b);
+   public static final ka<bvh> s = a(lv.c, bvm::a);
+   public static final ka<dzc<?>> t = a(lv.ab, $$0 -> dzc.a);
+   public static final ka<ip<?, ?>> u = a(lv.p, iq::a);
+   public static final ka<awm<?>> v = a(lv.am, $$0 -> awn.c);
+   public static final ji<cnh> w = a(lv.aw, "plains", $$0 -> cnh.c);
+   public static final ji<cnf> x = a(lv.av, "none", $$0 -> cnf.b);
+   public static final ka<cfl> y = a(lv.aa, cfm::a);
+   public static final ji<cdi<?>> z = a(lv.U, "dummy", $$0 -> cdi.a);
+   public static final ji<cep<?>> A = a(lv.ak, "dummy", $$0 -> cep.a);
+   public static final ka<cpi> B = a(lv.aj, $$0 -> cpi.c);
+   public static final ka<cpg> C = a(lv.b, $$0 -> cpg.b);
+   public static final ka<etk> D = a(lv.Q, $$0 -> eth.b);
+   public static final ka<eui<?>> E = a(lv.N, $$0 -> euj.e);
+   public static final ka<ewf> F = a(lv.M, $$0 -> ewg.a);
+   public static final ka<ewz> G = a(lv.P, $$0 -> exb.b);
+   public static final ka<ewr> H = a(lv.O, $$0 -> ewt.c);
+   public static final ka<exi> I = a(lv.R, $$0 -> exk.c);
+   public static final ka<bqo<?>> J = a(lv.C, $$0 -> bqo.a);
+   public static final ka<bqq<?>> K = a(lv.J, $$0 -> bqq.a);
+   public static final ka<eiw<?>> L = a(lv.H, $$0 -> eiw.a);
+   public static final ka<ebe<?>> M = a(lv.i, $$0 -> ebe.k);
+   public static final ka<ecc<?>> N = a(lv.k, $$0 -> ecc.a);
+   public static final ka<edc<?>> O = a(lv.A, $$0 -> edc.I);
+   public static final ka<elm<?>> P = a(lv.ao, $$0 -> elm.a);
+   public static final ka<elf> Q = a(lv.an, $$0 -> elf.c);
+   public static final ka<ekx<?>> R = a(lv.as, $$0 -> ekx.f);
+   public static final ka<ejw<?>> S = a(lv.Z, $$0 -> ejw.f);
+   public static final ka<ehi<?>> T = a(lv.j, $$0 -> ehi.a);
+   public static final ka<egt<?>> U = a(lv.E, $$0 -> egt.a);
+   public static final ka<eil<?>> V = a(lv.au, $$0 -> eil.a);
+   public static final ka<ehf<?>> W = a(lv.ag, $$0 -> ehf.a);
+   public static final ka<ehz<?>> X = a(lv.at, $$0 -> ehz.b);
+   public static final ka<egi<?>> Y = a(lv.B, $$0 -> egi.a);
+   public static final ka<MapCodec<? extends dex>> Z = a(lv.e, dey::a);
+   public static final ka<MapCodec<? extends dvx>> aa = a(lv.n, dvz::a);
+   public static final ka<MapCodec<? extends ean.f>> ab = a(lv.S, ean.f::a);
+   public static final ka<MapCodec<? extends ean.o>> ac = a(lv.T, ean.o::a);
+   public static final ka<MapCodec<? extends dzp>> ad = a(lv.t, dzq::a);
+   public static final ka<MapCodec<? extends dgv>> ae = a(lv.g, dgw::a);
+   public static final ka<eop<?>> af = a(lv.ar, $$0 -> eop.e);
+   public static final ka<elx<?>> ag = a(lv.ap, $$0 -> elx.d);
+   public static final ka<MapCodec<? extends ema>> ah = a(lv.aq, emb::a);
+   public static final ka<cfz> ai = a(lv.l, cfz::a);
+   public static final ka<cgg> aj = a(lv.F, cgg::a);
+   public static final ka<drv> ak = a(lv.ax, drw::a);
+   public static final ka<ctw> al = a(lv.q, ctx::a);
+   public static final ka<aq<?>> am = a(lv.aV, an::a);
+   public static final ka<yu<?>> an = a(lv.ay, yv::a);
+   public static final ka<ctd> ao = a(lv.az, cte::a);
+   public static final ka<kq<?>> ap = a(lv.aA, kr::a);
+   public static final ka<MapCodec<? extends bw>> aq = a(lv.aB, bx::a);
+   public static final ka<ct.a<?>> ar = a(lv.aC, cu::a);
+   public static final ka<erq> as = a(lv.aD, err::a);
+   public static final ka<kq<?>> at = a(lv.aE, dax::a);
+   public static final ka<MapCodec<? extends dbd>> au = a(lv.v, dbd::a);
+   public static final ka<MapCodec<? extends dbn>> av = a(lv.u, dbn::a);
+   public static final ka<MapCodec<? extends dbo>> aw = a(lv.w, dbo::b);
+   public static final ka<MapCodec<? extends dbp>> ax = a(lv.y, dbp::a);
+   public static final ka<MapCodec<? extends dce>> ay = a(lv.x, dcf::a);
+   public static final ka<? extends ka<?>> az = aC;
 
-   public static akq<dcw> a(akq<dwz> $$0) {
-      return akq.a(ba, $$0.a());
+   private static <T> ka<T> a(ala<? extends ka<T>> $$0, lu.a<T> $$1) {
+      return a($$0, new jv<>($$0, Lifecycle.stable(), false), $$1);
    }
 
-   public static akq<dwz> b(akq<dcw> $$0) {
-      return akq.a(bb, $$0.a());
+   private static <T> ka<T> b(ala<? extends ka<T>> $$0, lu.a<T> $$1) {
+      return a($$0, new jv<>($$0, Lifecycle.stable(), true), $$1);
    }
 
-   private static <T> akq<jz<T>> a(String $$0) {
-      return akq.a(akr.b($$0));
+   private static <T> ji<T> a(ala<? extends ka<T>> $$0, String $$1, lu.a<T> $$2) {
+      return a($$0, new jh<>($$1, $$0, Lifecycle.stable(), false), $$2);
    }
 
-   public static String c(akq<? extends jz<?>> $$0) {
-      return $$0.a().a();
+   private static <T> ji<T> b(ala<? extends ka<T>> $$0, String $$1, lu.a<T> $$2) {
+      return a($$0, new jh<>($$1, $$0, Lifecycle.stable(), true), $$2);
    }
 
-   public static String d(akq<? extends jz<?>> $$0) {
-      return "tags/" + $$0.a().a();
+   private static <T, R extends kj<T>> R a(ala<? extends ka<T>> $$0, R $$1, lu.a<T> $$2) {
+      ald.a(() -> "registry " + $$0);
+      alb $$3 = $$0.a();
+      aB.put($$3, () -> $$2.run($$1));
+      aC.a((ala<kj<?>>)$$0, $$1, jz.a);
+      return $$1;
+   }
+
+   public static void a() {
+      b();
+      c();
+      b(az);
+   }
+
+   private static void b() {
+      aB.forEach(($$0, $$1) -> {
+         if ($$1.get() == null) {
+            aA.error("Unable to bootstrap registry '{}'", $$0);
+         }
+      });
+   }
+
+   private static void c() {
+      az.l();
+
+      for (ka<?> $$0 : az) {
+         c($$0);
+         $$0.l();
+      }
+   }
+
+   private static <T extends ka<?>> void b(ka<T> $$0) {
+      $$0.forEach($$1 -> {
+         if ($$1.f().isEmpty()) {
+            ad.b("Registry '" + $$0.b((T)$$1) + "' was empty after loading");
+         }
+
+         if ($$1 instanceof ji) {
+            alb $$2 = ((ji)$$1).b();
+            Validate.notNull($$1.a($$2), "Missing default of DefaultedMappedRegistry: " + $$2, new Object[0]);
+         }
+      });
+   }
+
+   public static <T> jo<T> a(ka<T> $$0) {
+      return ((kj)$$0).n();
+   }
+
+   private static void c(ka<?> $$0) {
+      ((jv)$$0).m();
+   }
+
+   @FunctionalInterface
+   interface a<T> {
+      Object run(ka<T> var1);
    }
 }

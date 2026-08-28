@@ -1,38 +1,16 @@
-import com.google.common.math.IntMath;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public final class exk implements exo {
-   private final exi a;
-   private final int b;
-   private final int c;
+public class exk {
+   private static final Codec<exj> d = lu.I.q().dispatch(exj::a, exi::a);
+   public static final Codec<exj> a = Codec.lazyInitialized(
+      () -> Codec.either(exg.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof exg $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final exi b = a("fixed", exh.a);
+   public static final exi c = a("context", exg.a);
 
-   exk(int $$0, int $$1) {
-      this.a = new exi((int)exs.a($$0, $$1));
-      int $$2 = IntMath.gcd($$0, $$1);
-      this.b = $$0 / $$2;
-      this.c = $$1 / $$2;
-   }
-
-   @Override
-   public boolean a(exo.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2 / this.c, $$2 / this.b, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   private static exi a(String $$0, MapCodec<? extends exj> $$1) {
+      return ka.a(lu.I, alb.b($$0), new exi($$1));
    }
 }

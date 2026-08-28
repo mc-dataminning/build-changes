@@ -1,30 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class etr extends ete {
-   static final MapCodec<etr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(evz.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, etr::new));
-   private final evy b;
+public class etr extends eug {
+   public static final MapCodec<etr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, etr::new));
 
-   private etr(List<evc> $$0, evy $$1) {
+   private etr(List<ewe> $$0) {
       super($$0);
-      this.b = $$1;
    }
 
    @Override
-   public Set<euk<?>> a() {
-      return this.b.a();
+   public eui<etr> b() {
+      return euj.z;
    }
 
    @Override
-   public etg<etr> b() {
-      return eth.R;
-   }
+   public cvl a(cvl $$0, est $$1) {
+      Float $$2 = $$1.c(evp.j);
+      if ($$2 != null) {
+         azk $$3 = $$1.b();
+         float $$4 = 1.0F / $$2;
+         int $$5 = $$0.J();
+         int $$6 = 0;
 
-   @Override
-   public cuq a(cuq $$0, err $$1) {
-      $$0.b(kq.o, new cxi(this.b.a($$1)));
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            if ($$3.i() <= $$4) {
+               $$6++;
+            }
+         }
+
+         $$0.e($$6);
+      }
+
       return $$0;
+   }
+
+   public static eug.a<?> c() {
+      return a(etr::new);
    }
 }

@@ -1,38 +1,70 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import io.netty.buffer.ByteBuf;
+import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
-public class dyv {
-   public final egj a;
-   public final egj b;
-   public final egj c;
-   public final egj d;
-   public final egj e;
-   public final List<dtc> f;
-   public final awu<dfy> g;
-   public final awu<dfy> h;
-   public static final Codec<dyv> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               egj.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               egj.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               egj.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               egj.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               egj.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               axw.a(dtc.b.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               awu.b(lu.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               awu.b(lu.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, dyv::new)
+public class dyv implements dzb {
+   public static final MapCodec<dyv> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kh.a.fieldOf("source_entity").forGetter(dyv::b), Codec.FLOAT.fieldOf("y_offset").orElse(0.0F).forGetter($$0x -> $$0x.f))
+            .apply($$0, ($$0x, $$1) -> new dyv(Either.right(Either.left($$0x)), $$1))
    );
+   public static final zb<ByteBuf, dyv> b = zb.a(yz.g, dyv::c, yz.i, $$0 -> $$0.f, ($$0, $$1) -> new dyv(Either.right(Either.right($$0)), $$1));
+   private Either<btj, Either<UUID, Integer>> e;
+   private final float f;
 
-   public dyv(egj $$0, egj $$1, egj $$2, egj $$3, egj $$4, List<dtc> $$5, awu<dfy> $$6, awu<dfy> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public dyv(btj $$0, float $$1) {
+      this(Either.left($$0), $$1);
+   }
+
+   private dyv(Either<btj, Either<UUID, Integer>> $$0, float $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public Optional<eye> a(dds $$0) {
+      if (this.e.left().isEmpty()) {
+         this.b($$0);
+      }
+
+      return this.e.left().map($$0x -> $$0x.dq().b(0.0, (double)this.f, 0.0));
+   }
+
+   private void b(dds $$0) {
+      ((Optional)this.e.map(Optional::of, $$1 -> Optional.ofNullable((btj)$$1.map($$1x -> $$0 instanceof arg $$2 ? $$2.a($$1x) : null, $$0::a))))
+         .ifPresent($$0x -> this.e = Either.left($$0x));
+   }
+
+   private UUID b() {
+      return (UUID)this.e.map(btj::cD, $$0 -> (UUID)$$0.map(Function.identity(), $$0x -> {
+            throw new RuntimeException("Unable to get entityId from uuid");
+         }));
+   }
+
+   private int c() {
+      return (Integer)this.e.map(btj::ap, $$0 -> (Integer)$$0.map($$0x -> {
+            throw new IllegalStateException("Unable to get entityId from uuid");
+         }, Function.identity()));
+   }
+
+   @Override
+   public dzc<dyv> a() {
+      return dzc.b;
+   }
+
+   public static class a implements dzc<dyv> {
+      @Override
+      public MapCodec<dyv> a() {
+         return dyv.a;
+      }
+
+      @Override
+      public zb<ByteBuf, dyv> b() {
+         return dyv.b;
+      }
    }
 }

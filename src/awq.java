@@ -1,26 +1,20 @@
-public interface awq {
-   awu<ejr> a = a("eye_of_ender_located");
-   awu<ejr> b = a("dolphin_located");
-   awu<ejr> c = a("on_woodland_explorer_maps");
-   awu<ejr> d = a("on_ocean_explorer_maps");
-   awu<ejr> e = a("on_savanna_village_maps");
-   awu<ejr> f = a("on_desert_village_maps");
-   awu<ejr> g = a("on_plains_village_maps");
-   awu<ejr> h = a("on_taiga_village_maps");
-   awu<ejr> i = a("on_snowy_village_maps");
-   awu<ejr> j = a("on_jungle_explorer_maps");
-   awu<ejr> k = a("on_swamp_explorer_maps");
-   awu<ejr> l = a("on_treasure_maps");
-   awu<ejr> m = a("on_trial_chambers_maps");
-   awu<ejr> n = a("cats_spawn_in");
-   awu<ejr> o = a("cats_spawn_as_black");
-   awu<ejr> p = a("village");
-   awu<ejr> q = a("mineshaft");
-   awu<ejr> r = a("shipwreck");
-   awu<ejr> s = a("ruined_portal");
-   awu<ejr> t = a("ocean_ruin");
+public class awq {
+   public static final axi<dqu> a = a("no_item_required");
+   public static final axi<dqu> b = a("pattern_item/flower");
+   public static final axi<dqu> c = a("pattern_item/creeper");
+   public static final axi<dqu> d = a("pattern_item/skull");
+   public static final axi<dqu> e = a("pattern_item/mojang");
+   public static final axi<dqu> f = a("pattern_item/globe");
+   public static final axi<dqu> g = a("pattern_item/piglin");
+   public static final axi<dqu> h = a("pattern_item/flow");
+   public static final axi<dqu> i = a("pattern_item/guster");
+   public static final axi<dqu> j = a("pattern_item/field_masoned");
+   public static final axi<dqu> k = a("pattern_item/bordure_indented");
 
-   private static awu<ejr> a(String $$0) {
-      return awu.a(lu.aR, akr.b($$0));
+   private awq() {
+   }
+
+   private static axi<dqu> a(String $$0) {
+      return axi.a(lv.d, alb.b($$0));
    }
 }

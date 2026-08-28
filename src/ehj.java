@@ -1,44 +1,51 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiConsumer;
 
-public class ehj extends ehm {
-   public static final MapCodec<ehj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehj::new));
+public class ehj extends ehl {
+   public static final MapCodec<ehj> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ayu.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
+               epe.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
+               ayl.m.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
+            )
+            .and(b($$0))
+            .apply($$0, ehj::new)
+   );
+   private final ayu<Integer> i;
+   private final epe.a j;
+   private final float k;
+   private final epe l;
 
-   public ehj(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public ehj(ayu<Integer> $$0, epe.a $$1, float $$2, long $$3, epe.a $$4, float $$5, List<dua> $$6) {
+      super($$3, $$4, $$5, $$6);
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.l = epe.b(new eav(new dzx($$3)), $$1);
    }
 
    @Override
-   protected ehn<?> a() {
-      return ehn.c;
+   protected ehi<?> a() {
+      return ehi.e;
    }
 
    @Override
-   public List<efu.a> a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, int $$3, jd $$4, efe $$5) {
-      jd $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      jd.a $$7 = new jd.a();
+   public dua a(azk $$0, je $$1) {
+      double $$2 = this.a($$1);
+      int $$3 = (int)azc.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
+      List<dua> $$4 = Lists.newArrayListWithCapacity($$3);
 
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
-         }
+      for (int $$5 = 0; $$5 < $$3; $$5++) {
+         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
       }
 
-      return ImmutableList.of(new efu.a($$4.b($$3), 0, true));
+      return this.a($$4, $$1, (double)this.e);
    }
 
-   private void a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, jd.a $$3, efe $$4, jd $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+   protected double a(je $$0) {
+      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
    }
 }

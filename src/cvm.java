@@ -1,57 +1,20 @@
-import java.util.OptionalInt;
+import it.unimi.dsi.fastutil.Hash.Strategy;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenCustomHashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public interface cvm {
-   cnp a(dcw var1, jw var2, cuq var3, ji var4);
-
-   default cvm.a c() {
-      return cvm.a.a;
-   }
-
-   default void a(cnp $$0, double $$1, double $$2, double $$3, float $$4, float $$5) {
-      $$0.c($$1, $$2, $$3, $$4, $$5);
-   }
-
-   public static record a(cvm.b b, float c, float d, OptionalInt e) {
-      public static final cvm.a a = a().a();
-
-      public static cvm.a.a a() {
-         return new cvm.a.a();
+public class cvm {
+   private static final Strategy<? super cvl> a = new Strategy<cvl>() {
+      public int a(@Nullable cvl $$0) {
+         return cvl.a($$0);
       }
 
-      public static class a {
-         private cvm.b a = ($$0, $$1) -> did.a($$0, 0.7, new exc(0.0, 0.1, 0.0));
-         private float b = 6.0F;
-         private float c = 1.1F;
-         private OptionalInt d = OptionalInt.empty();
-
-         public cvm.a.a a(cvm.b $$0) {
-            this.a = $$0;
-            return this;
-         }
-
-         public cvm.a.a a(float $$0) {
-            this.b = $$0;
-            return this;
-         }
-
-         public cvm.a.a b(float $$0) {
-            this.c = $$0;
-            return this;
-         }
-
-         public cvm.a.a a(int $$0) {
-            this.d = OptionalInt.of($$0);
-            return this;
-         }
-
-         public cvm.a a() {
-            return new cvm.a(this.a, this.b, this.c, this.d);
-         }
+      public boolean a(@Nullable cvl $$0, @Nullable cvl $$1) {
+         return $$0 == $$1 || $$0 != null && $$1 != null && $$0.f() == $$1.f() && cvl.c($$0, $$1);
       }
-   }
+   };
 
-   @FunctionalInterface
-   public interface b {
-      jw getDispensePosition(ku var1, ji var2);
+   public static Set<cvl> a() {
+      return new ObjectLinkedOpenCustomHashSet(a);
    }
 }

@@ -1,64 +1,40 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
-
-public class ged {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = cmw.g();
-   public static final Codec<ged> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ad.a($$0, c)).xmap(ged::new, $$0 -> $$0.f);
-   private static final DynamicOps<uy> d = up.a;
-   private static final Dynamic<?> e = new Dynamic(d, (uy)cuq.f.encodeStart(d, cuq.l).getOrThrow());
-   private List<Dynamic<?>> f;
-
-   private ged(List<Dynamic<?>> $$0) {
-      this.f = $$0;
+public class ged extends gfe {
+   ged(gax $$0, double $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.66F;
+      this.C = true;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.2;
+      this.v = Math.max(0.0F, azc.a(((float)$$4 + 0.0F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.w = Math.max(0.0F, azc.a(((float)$$4 + 0.33333334F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.x = Math.max(0.0F, azc.a(((float)$$4 + 0.6666667F) * (float) (Math.PI * 2)) * 0.65F + 0.35F);
+      this.D *= 1.5F;
+      this.t = 6;
    }
 
-   public ged() {
-      this(Collections.nCopies(c, e));
+   @Override
+   public gei b() {
+      return gei.b;
    }
 
-   public List<cuq> a(jo.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> cuq.f.parse(akp.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(cuq.l))
-         .toList();
+   @Override
+   public float b(float $$0) {
+      return this.D * azc.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
-   public void a(cmw $$0, ka $$1) {
-      akp<uy> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
+   public static class a implements geh<lr> {
+      private final gez a;
 
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         cuq $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = cuq.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+      public a(gez $$0) {
+         this.a = $$0;
       }
 
-      this.f = $$3.build();
-   }
-
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
-         }
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ged $$8 = new ged($$1, $$2, $$3, $$4, $$5);
+         $$8.a(this.a);
+         return $$8;
       }
-
-      return true;
-   }
-
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
    }
 }

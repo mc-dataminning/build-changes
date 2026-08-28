@@ -1,130 +1,61 @@
-import com.google.common.collect.Lists;
-import java.util.EnumSet;
+import com.mojang.datafixers.DataFixUtils;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cay extends cam {
-   protected final btw a;
-   private final double b;
-   @Nullable
-   private eps c;
-   private jd d;
-   private final boolean e;
-   private final List<jd> f = Lists.newArrayList();
-   private final int g;
-   private final BooleanSupplier h;
+public class cay extends cbc {
+   private static final int a = 200;
+   private final cft b;
+   private int c;
+   private int d;
 
-   public cay(btw $$0, double $$1, boolean $$2, int $$3, BooleanSupplier $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.e = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.a(EnumSet.of(cam.a.a));
-      if (!cek.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob for MoveThroughVillageGoal");
-      }
+   public cay(cft $$0) {
+      this.b = $$0;
+      this.d = this.a($$0);
+   }
+
+   protected int a(cft $$0) {
+      return b(200 + $$0.dV().a(200) % 20);
    }
 
    @Override
    public boolean b() {
-      if (!cek.a(this.a)) {
+      if (this.b.gu()) {
+         return false;
+      } else if (this.b.gr()) {
+         return true;
+      } else if (this.d > 0) {
+         this.d--;
          return false;
       } else {
-         this.h();
-         if (this.e && this.a.dO().R()) {
-            return false;
-         } else {
-            aqu $$0 = (aqu)this.a.dO();
-            jd $$1 = this.a.do();
-            if (!$$0.a($$1, 6)) {
-               return false;
-            } else {
-               exc $$2 = cem.a(this.a, 15, 7, $$2x -> {
-                  if (!$$0.c($$2x)) {
-                     return Double.NEGATIVE_INFINITY;
-                  } else {
-                     Optional<jd> $$3x = $$0.y().d($$0xx -> $$0xx.a(awp.b), this::a, $$2x, 10, ces.b.b);
-                     return $$3x.<Double>map($$1xx -> -$$1xx.j($$1)).orElse(Double.NEGATIVE_INFINITY);
-                  }
-               });
-               if ($$2 == null) {
-                  return false;
-               } else {
-                  Optional<jd> $$3 = $$0.y().d($$0x -> $$0x.a(awp.b), this::a, jd.a((jw)$$2), 10, ces.b.b);
-                  if ($$3.isEmpty()) {
-                     return false;
-                  } else {
-                     this.d = $$3.get().j();
-                     ccz $$4 = (ccz)this.a.N();
-                     boolean $$5 = $$4.f();
-                     $$4.b(this.h.getAsBoolean());
-                     this.c = $$4.a(this.d, 0);
-                     $$4.b($$5);
-                     if (this.c == null) {
-                        exc $$6 = cej.a(this.a, 10, 7, exc.c(this.d), (float) (Math.PI / 2));
-                        if ($$6 == null) {
-                           return false;
-                        }
-
-                        $$4.b(this.h.getAsBoolean());
-                        this.c = this.a.N().a($$6.c, $$6.d, $$6.e, 0);
-                        $$4.b($$5);
-                        if (this.c == null) {
-                           return false;
-                        }
-                     }
-
-                     for (int $$7 = 0; $$7 < this.c.e(); $$7++) {
-                        epq $$8 = this.c.a($$7);
-                        jd $$9 = new jd($$8.a, $$8.b + 1, $$8.c);
-                        if (die.a(this.a.dO(), $$9)) {
-                           this.c = this.a.N().a((double)$$8.a, (double)$$8.b, (double)$$8.c, 0);
-                           break;
-                        }
-                     }
-
-                     return this.c != null;
-                  }
-               }
-            }
-         }
+         this.d = this.a(this.b);
+         Predicate<cft> $$0 = $$0x -> $$0x.gt() || !$$0x.gr();
+         List<? extends cft> $$1 = this.b.dS().a((Class<? extends cft>)this.b.getClass(), this.b.cO().c(8.0, 8.0, 8.0), $$0);
+         cft $$2 = (cft)DataFixUtils.orElse($$1.stream().filter(cft::gt).findAny(), this.b);
+         $$2.a($$1.stream().filter($$0x -> !$$0x.gr()));
+         return this.b.gr();
       }
    }
 
    @Override
    public boolean c() {
-      return this.a.N().l() ? false : !this.d.a(this.a.dm(), (double)(this.a.dj() + (float)this.g));
+      return this.b.gr() && this.b.gv();
    }
 
    @Override
    public void d() {
-      this.a.N().a(this.c, this.b);
+      this.c = 0;
    }
 
    @Override
    public void e() {
-      if (this.a.N().l() || this.d.a(this.a.dm(), (double)this.g)) {
-         this.f.add(this.d);
-      }
+      this.b.gs();
    }
 
-   private boolean a(jd $$0) {
-      for (jd $$1 : this.f) {
-         if (Objects.equals($$0, $$1)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   private void h() {
-      if (this.f.size() > 15) {
-         this.f.remove(0);
+   @Override
+   public void a() {
+      if (--this.c <= 0) {
+         this.c = this.a(10);
+         this.b.gw();
       }
    }
 }

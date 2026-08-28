@@ -1,8 +1,8 @@
-public interface ajr extends agj, ajl {
-   @Override
-   default vu b() {
-      return vu.c;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(ajs var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ajr {
 }

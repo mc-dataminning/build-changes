@@ -1,71 +1,69 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Optional;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+public class jg {
+   public static final int a = 0;
+   public static final int b = 1;
+   public static final int c = 2;
+   public static final int d = 3;
+   private final int e;
+   private final int f;
+   private final int g;
+   private final int h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private int l;
+   private int m;
+   private int n;
+   private int o;
 
-public class jg<T> extends ju<T> implements jh<T> {
-   private final akr b;
-   private jm.c<T> c;
-
-   public jg(String $$0, akq<? extends jz<T>> $$1, Lifecycle $$2, boolean $$3) {
-      super($$1, $$2, $$3);
-      this.b = akr.a($$0);
+   public jg(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3 - $$0 + 1;
+      this.i = $$4 - $$1 + 1;
+      this.j = $$5 - $$2 + 1;
+      this.k = this.h * this.i * this.j;
    }
 
-   @Override
-   public jm.c<T> a(akq<T> $$0, T $$1, jy $$2) {
-      jm.c<T> $$3 = super.a($$0, $$1, $$2);
-      if (this.b.equals($$0.a())) {
-         this.c = $$3;
+   public boolean a() {
+      if (this.l == this.k) {
+         return false;
+      } else {
+         this.m = this.l % this.h;
+         int $$0 = this.l / this.h;
+         this.n = $$0 % this.i;
+         this.o = $$0 / this.i;
+         this.l++;
+         return true;
+      }
+   }
+
+   public int b() {
+      return this.e + this.m;
+   }
+
+   public int c() {
+      return this.f + this.n;
+   }
+
+   public int d() {
+      return this.g + this.o;
+   }
+
+   public int e() {
+      int $$0 = 0;
+      if (this.m == 0 || this.m == this.h - 1) {
+         $$0++;
       }
 
-      return $$3;
-   }
+      if (this.n == 0 || this.n == this.i - 1) {
+         $$0++;
+      }
 
-   @Override
-   public int a(@Nullable T $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == -1 ? super.a(this.c.a()) : $$1;
-   }
+      if (this.o == 0 || this.o == this.j - 1) {
+         $$0++;
+      }
 
-   @Nonnull
-   @Override
-   public akr b(T $$0) {
-      akr $$1 = super.b($$0);
-      return $$1 == null ? this.b : $$1;
-   }
-
-   @Nonnull
-   @Override
-   public T a(@Nullable akr $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<T> b(@Nullable akr $$0) {
-      return Optional.ofNullable(super.a($$0));
-   }
-
-   @Override
-   public Optional<jm.c<T>> a() {
-      return Optional.ofNullable(this.c);
-   }
-
-   @Nonnull
-   @Override
-   public T a(int $$0) {
-      T $$1 = super.a($$0);
-      return $$1 == null ? this.c.a() : $$1;
-   }
-
-   @Override
-   public Optional<jm.c<T>> a(ayw $$0) {
-      return super.a($$0).or(() -> Optional.of(this.c));
-   }
-
-   @Override
-   public akr b() {
-      return this.b;
+      return $$0;
    }
 }

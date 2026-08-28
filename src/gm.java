@@ -10,10 +10,10 @@ import java.util.concurrent.CompletableFuture;
 
 public class gm implements ArgumentType<gk> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "foo{bar=baz}");
-   private final jo<dfy> b;
+   private final jp<dgv> b;
 
    public gm(ep $$0) {
-      this.b = $$0.b(lu.f);
+      this.b = $$0.b(lv.f);
    }
 
    public static gm a(ep $$0) {

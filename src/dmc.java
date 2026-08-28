@@ -1,49 +1,57 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmc extends dfy {
+public class dmc extends dhe {
    public static final MapCodec<dmc> a = b(dmc::new);
-   public static final dtt b = dmd.d;
+   public static final int b = 3;
+   public static final dva c = duq.as;
+   private static final eyx[] d = new eyx[]{
+      dgv.a(0.0, 0.0, 0.0, 16.0, 5.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 11.0, 16.0),
+      dgv.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)
+   };
 
    @Override
    public MapCodec<dmc> a() {
       return a;
    }
 
-   public dmc(dtb.d $$0) {
+   protected dmc(dtz.d $$0) {
       super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dtc a(cyd $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().C($$0.a())));
+      this.l(this.E.b().b(c, Integer.valueOf(0)));
    }
 
    @Override
-   protected void a(dtc $$0, dcw $$1, jd $$2, dfy $$3, jd $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$0.c(b);
-         if ($$6 != $$1.C($$2)) {
-            if ($$6) {
-               $$1.a($$2, this, 4);
-            } else {
-               $$1.a($$2, $$0.a(b), 2);
-            }
-         }
+   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+      return d[$$0.c(c)];
+   }
+
+   @Override
+   protected boolean b(dua $$0, dcx $$1, je $$2) {
+      return $$0.a(dgx.dW);
+   }
+
+   @Override
+   protected boolean f(dua $$0) {
+      return $$0.c(c) < 3;
+   }
+
+   @Override
+   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
+      int $$4 = $$0.c(c);
+      if ($$4 < 3 && $$3.a(10) == 0) {
+         $$0 = $$0.b(c, Integer.valueOf($$4 + 1));
+         $$1.a($$2, $$0, 2);
       }
    }
 
    @Override
-   protected void a(dtc $$0, aqu $$1, jd $$2, ayw $$3) {
-      if ($$0.c(b) && !$$1.C($$2)) {
-         $$1.a($$2, $$0.a(b), 2);
-      }
+   public cvl a(ddv $$0, je $$1, dua $$2) {
+      return new cvl(cvo.sk);
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(b);
+   protected void a(dub.a<dgv, dua> $$0) {
+      $$0.a(c);
    }
 }

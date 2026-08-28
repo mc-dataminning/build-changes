@@ -1,49 +1,52 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class ewo<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final ewo<MinecraftServer> a = new ewo<MinecraftServer>().a(new ewl.a()).a(new ewm.a());
-   private final Map<akr, ewn.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, ewn.a<C, ?>> d = Maps.newHashMap();
+public record ewo(Optional<Boolean> b, Optional<Boolean> c) implements ewe {
+   public static final MapCodec<ewo> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("raining").forGetter(ewo::d), Codec.BOOL.optionalFieldOf("thundering").forGetter(ewo::e))
+            .apply($$0, ewo::new)
+   );
 
-   public ewo<C> a(ewn.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   @Override
+   public ewf b() {
+      return ewg.o;
    }
 
-   private <T extends ewn<C>> ewn.a<C, T> a(Class<?> $$0) {
-      return (ewn.a<C, T>)this.d.get($$0);
+   public boolean a(est $$0) {
+      arg $$1 = $$0.d();
+      return this.b.isPresent() && this.b.get() != $$1.ae() ? false : !this.c.isPresent() || this.c.get() == $$1.ad();
    }
 
-   public <T extends ewn<C>> ub a(T $$0) {
-      ewn.a<C, T> $$1 = this.a($$0.getClass());
-      ub $$2 = new ub();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
+   public static ewo.a c() {
+      return new ewo.a();
    }
 
-   @Nullable
-   public ewn<C> a(ub $$0) {
-      akr $$1 = akr.c($$0.l("Type"));
-      ewn.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
+   public Optional<Boolean> d() {
+      return this.b;
+   }
+
+   public Optional<Boolean> e() {
+      return this.c;
+   }
+
+   public static class a implements ewe.a {
+      private Optional<Boolean> a = Optional.empty();
+      private Optional<Boolean> b = Optional.empty();
+
+      public ewo.a a(boolean $$0) {
+         this.a = Optional.of($$0);
+         return this;
+      }
+
+      public ewo.a b(boolean $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      public ewo a() {
+         return new ewo(this.a, this.b);
       }
    }
 }

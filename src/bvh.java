@@ -1,101 +1,59 @@
-import java.util.Map;
-import java.util.Map.Entry;
+import com.mojang.serialization.Codec;
 
-public abstract class bvh<E extends btn> implements bvi<E> {
-   public static final int a = 60;
-   protected final Map<ccs<?>, cct> b;
-   private bvh.a c = bvh.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bvh {
+   public static final Codec<jn<bvh>> a = lu.s.r();
+   public static final zb<wo, jn<bvh>> b = yz.b(lv.c);
+   private final double c;
+   private boolean d;
+   private final String e;
+   private bvh.a f = bvh.a.a;
 
-   public bvh(Map<ccs<?>, cct> $$0) {
-      this($$0, 60);
+   protected bvh(String $$0, double $$1) {
+      this.c = $$1;
+      this.e = $$0;
    }
 
-   public bvh(Map<ccs<?>, cct> $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public bvh(Map<ccs<?>, cct> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
-
-   @Override
-   public bvh.a a() {
+   public double a() {
       return this.c;
    }
 
-   @Override
-   public final boolean e(aqu $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bvh.a.b;
-         int $$3 = this.e + $$0.E_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
+   public boolean b() {
+      return this.d;
    }
 
-   protected void d(aqu $$0, E $$1, long $$2) {
+   public bvh a(boolean $$0) {
+      this.d = $$0;
+      return this;
    }
 
-   @Override
-   public final void f(aqu $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
+   public bvh a(bvh.a $$0) {
+      this.f = $$0;
+      return this;
    }
 
-   protected void c(aqu $$0, E $$1, long $$2) {
+   public double a(double $$0) {
+      return $$0;
    }
 
-   @Override
-   public final void g(aqu $$0, E $$1, long $$2) {
-      this.c = bvh.a.a;
-      this.b($$0, $$1, $$2);
+   public String c() {
+      return this.e;
    }
 
-   protected void b(aqu $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(aqu $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(aqu $$0, E $$1) {
-      return true;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
-   }
-
-   protected boolean a(E $$0) {
-      for (Entry<ccs<?>, cct> $$1 : this.b.entrySet()) {
-         ccs<?> $$2 = $$1.getKey();
-         cct $$3 = $$1.getValue();
-         if (!$$0.dT().a($$2, $$3)) {
-            return false;
-         }
-      }
-
-      return true;
+   public n b(boolean $$0) {
+      return this.f.a($$0);
    }
 
    public static enum a {
       a,
-      b;
+      b,
+      c;
+
+      public n a(boolean $$0) {
+         return switch (this) {
+            case a -> $$0 ? n.j : n.m;
+            case b -> n.h;
+            case c -> $$0 ? n.m : n.j;
+         };
+      }
    }
 }

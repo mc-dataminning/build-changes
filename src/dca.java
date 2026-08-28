@@ -1,80 +1,161 @@
-import com.google.common.collect.AbstractIterator;
-import java.util.function.BiFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dca<T> extends AbstractIterator<T> {
-   private final ewx a;
-   private final exh b;
-   private final jf c;
-   private final jd.a d;
-   private final exv e;
-   private final dcg f;
-   private final boolean g;
-   @Nullable
-   private dcc h;
-   private long i;
-   private final BiFunction<jd.a, exv, T> j;
+public record dca(ll d, dca.a e, dca.a f, dca.c g, dca.c h, bqn i) implements dbn {
+   public static final MapCodec<dca> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ln.bf.fieldOf("particle").forGetter(dca::c),
+               dca.a.a.fieldOf("horizontal_position").forGetter(dca::d),
+               dca.a.a.fieldOf("vertical_position").forGetter(dca::e),
+               dca.c.a.fieldOf("horizontal_velocity").forGetter(dca::f),
+               dca.c.a.fieldOf("vertical_velocity").forGetter(dca::g),
+               bqn.c.optionalFieldOf("speed", bql.a).forGetter(dca::h)
+            )
+            .apply($$0, dca::new)
+   );
 
-   public dca(dcg $$0, @Nullable bsr $$1, ewx $$2, boolean $$3, BiFunction<jd.a, exv, T> $$4) {
-      this.b = $$1 == null ? exh.a() : exh.a($$1);
-      this.d = new jd.a();
-      this.e = exs.a($$2);
-      this.f = $$0;
-      this.a = $$2;
-      this.g = $$3;
-      this.j = $$4;
-      int $$5 = ayo.a($$2.a - 1.0E-7) - 1;
-      int $$6 = ayo.a($$2.d + 1.0E-7) + 1;
-      int $$7 = ayo.a($$2.b - 1.0E-7) - 1;
-      int $$8 = ayo.a($$2.e + 1.0E-7) + 1;
-      int $$9 = ayo.a($$2.c - 1.0E-7) - 1;
-      int $$10 = ayo.a($$2.f + 1.0E-7) + 1;
-      this.c = new jf($$5, $$7, $$9, $$6, $$8, $$10);
+   public static dca.a a(float $$0) {
+      return new dca.a(dca.b.a, $$0, 1.0F);
    }
 
-   @Nullable
-   private dcc a(int $$0, int $$1) {
-      int $$2 = kf.a($$0);
-      int $$3 = kf.a($$1);
-      long $$4 = dcd.c($$2, $$3);
-      if (this.h != null && this.i == $$4) {
-         return this.h;
-      } else {
-         dcc $$5 = this.f.c($$2, $$3);
-         this.h = $$5;
-         this.i = $$4;
-         return $$5;
+   public static dca.a b() {
+      return new dca.a(dca.b.b, 0.0F, 1.0F);
+   }
+
+   public static dca.c b(float $$0) {
+      return new dca.c($$0, bql.a);
+   }
+
+   public static dca.c a(bqn $$0) {
+      return new dca.c(0.0F, $$0);
+   }
+
+   @Override
+   public void a(arg $$0, int $$1, dav $$2, btj $$3, eye $$4) {
+      azk $$5 = $$3.dV();
+      eye $$6 = $$3.ai();
+      float $$7 = $$3.dn();
+      float $$8 = $$3.do();
+      $$0.a(
+         this.d,
+         this.e.a($$4.a(), $$4.a(), $$7, $$5),
+         this.f.a($$4.b(), $$4.b() + (double)($$8 / 2.0F), $$8, $$5),
+         this.e.a($$4.c(), $$4.c(), $$7, $$5),
+         0,
+         this.g.a($$6.a(), $$5),
+         this.h.a($$6.b(), $$5),
+         this.g.a($$6.c(), $$5),
+         (double)this.i.a($$5)
+      );
+   }
+
+   @Override
+   public MapCodec<dca> a() {
+      return a;
+   }
+
+   public ll c() {
+      return this.d;
+   }
+
+   public dca.a d() {
+      return this.e;
+   }
+
+   public dca.a e() {
+      return this.f;
+   }
+
+   public dca.c f() {
+      return this.g;
+   }
+
+   public dca.c g() {
+      return this.h;
+   }
+
+   public bqn h() {
+      return this.i;
+   }
+
+   public static record a(dca.b b, float c, float d) {
+      public static final MapCodec<dca.a> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     dca.b.c.fieldOf("type").forGetter(dca.a::a),
+                     Codec.FLOAT.optionalFieldOf("offset", 0.0F).forGetter(dca.a::b),
+                     ayl.m.optionalFieldOf("scale", 1.0F).forGetter(dca.a::c)
+                  )
+                  .apply($$0, dca.a::new)
+         )
+         .validate(
+            $$0 -> $$0.a() == dca.b.a && $$0.c() != 1.0F
+                  ? DataResult.error(() -> "Cannot scale an entity position coordinate source")
+                  : DataResult.success($$0)
+         );
+
+      public double a(double $$0, double $$1, float $$2, azk $$3) {
+         return this.b.a($$0, $$1, $$2 * this.d, $$3) + (double)this.c;
+      }
+
+      public dca.b a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
       }
    }
 
-   protected T computeNext() {
-      while (this.c.a()) {
-         int $$0 = this.c.b();
-         int $$1 = this.c.c();
-         int $$2 = this.c.d();
-         int $$3 = this.c.e();
-         if ($$3 != 3) {
-            dcc $$4 = this.a($$0, $$2);
-            if ($$4 != null) {
-               this.d.d($$0, $$1, $$2);
-               dtc $$5 = $$4.a_(this.d);
-               if ((!this.g || $$5.o($$4, this.d)) && ($$3 != 1 || $$5.f()) && ($$3 != 2 || $$5.a(dga.bQ))) {
-                  exv $$6 = $$5.b(this.f, this.d, this.b);
-                  if ($$6 == exs.b()) {
-                     if (this.a.a((double)$$0, (double)$$1, (double)$$2, (double)$$0 + 1.0, (double)$$1 + 1.0, (double)$$2 + 1.0)) {
-                        return this.j.apply(this.d, $$6.a((double)$$0, (double)$$1, (double)$$2));
-                     }
-                  } else {
-                     exv $$7 = $$6.a((double)$$0, (double)$$1, (double)$$2);
-                     if (!$$7.c() && exs.c($$7, this.e, exg.i)) {
-                        return this.j.apply(this.d, $$7);
-                     }
-                  }
-               }
-            }
-         }
+   public static enum b implements azy {
+      a("entity_position", ($$0, $$1, $$2, $$3) -> $$0),
+      b("in_bounding_box", ($$0, $$1, $$2, $$3) -> $$1 + ($$3.j() - 0.5) * (double)$$2);
+
+      public static final Codec<dca.b> c = azy.a(dca.b::values);
+      private final String d;
+      private final dca.b.a e;
+
+      private b(final String $$0, final dca.b.a $$1) {
+         this.d = $$0;
+         this.e = $$1;
       }
 
-      return (T)this.endOfData();
+      public double a(double $$0, double $$1, float $$2, azk $$3) {
+         return this.e.getCoordinate($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
+
+      @FunctionalInterface
+      interface a {
+         double getCoordinate(double var1, double var3, float var5, azk var6);
+      }
+   }
+
+   public static record c(float b, bqn c) {
+      public static final MapCodec<dca.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.FLOAT.optionalFieldOf("movement_scale", 0.0F).forGetter(dca.c::a), bqn.c.optionalFieldOf("base", bql.a).forGetter(dca.c::b))
+               .apply($$0, dca.c::new)
+      );
+
+      public double a(double $$0, azk $$1) {
+         return $$0 * (double)this.b + (double)this.c.a($$1);
+      }
+
+      public float a() {
+         return this.b;
+      }
+
+      public bqn b() {
+         return this.c;
+      }
    }
 }

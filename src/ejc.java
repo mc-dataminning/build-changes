@@ -1,11 +1,16 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public abstract class ejc extends eiy {
-   protected abstract int a(ayw var1, jd var2);
-
+public record ejc(eaa.c[] a) implements eaa.c {
+   @Nullable
    @Override
-   public Stream<jd> a_(eiw $$0, ayw $$1, jd $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   public dua calculate(dzp.b $$0) {
+      for (eaa.c $$1 : this.a) {
+         dua $$2 = $$1.calculate($$0);
+         if ($$2 != null) {
+            return $$2;
+         }
+      }
+
+      return null;
    }
 }

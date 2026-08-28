@@ -1,29 +1,20 @@
-public class ahj implements zg<agi> {
-   public static final yx<vw, ahj> a = zg.a(ahj::a, ahj::new);
-   private final int b;
+public record ahj(bml b) implements zk<agq> {
+   public static final zb<wa, ahj> a = zk.a(ahj::a, ahj::new);
 
-   public ahj(int $$0) {
-      this.b = $$0;
+   private ahj(wa $$0) {
+      this($$0.b(bml.class));
    }
 
-   private ahj(vw $$0) {
-      this.b = $$0.l();
-   }
-
-   private void a(vw $$0) {
-      $$0.c(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zi<ahj> a() {
-      return agg.bH;
+   public zm<ahj> a() {
+      return ago.by;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
-   }
-
-   public int b() {
-      return this.b;
    }
 }

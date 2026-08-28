@@ -1,11 +1,33 @@
-public interface zz extends abr, agj {
-   void a(aac var1);
+import io.netty.buffer.ByteBuf;
 
-   void a(aad var1);
+public record zz(alb c, byte[] d) implements zk<zq> {
+   public static final zb<wa, zz> a = zk.a(zz::a, zz::new);
+   private static final int e = 5120;
+   public static final zb<ByteBuf, byte[]> b = yz.a(5120);
 
-   void a(aab var1);
+   private zz(wa $$0) {
+      this($$0.q(), b.decode($$0));
+   }
 
-   void a(aae var1);
+   private void a(wa $$0) {
+      $$0.a(this.c);
+      b.encode($$0, this.d);
+   }
 
-   void a(aaa var1);
+   @Override
+   public zm<zz> a() {
+      return aac.i;
+   }
+
+   public void a(zq $$0) {
+      $$0.a(this);
+   }
+
+   public alb b() {
+      return this.c;
+   }
+
+   public byte[] e() {
+      return this.d;
+   }
 }

@@ -1,14 +1,11 @@
-import java.time.Duration;
-import jdk.jfr.consumer.RecordedEvent;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
 
-public record bnz(Duration a, dcd b, aqi c, dvz d, String e) implements boi {
-   public static bnz a(RecordedEvent $$0) {
-      return new bnz(
-         $$0.getDuration(),
-         new dcd($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
-         new aqi($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
-         dvz.a($$0.getString("status")),
-         $$0.getString("level")
-      );
-   }
+public interface bnz {
+   long a();
+
+   long b();
+
+   long c();
+
+   Object2LongMap<String> d();
 }

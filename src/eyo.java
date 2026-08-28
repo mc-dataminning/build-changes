@@ -1,126 +1,105 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class eyo<T> implements eyu<T>, eyw<T> {
-   private final Queue<eyt<T>> a = new PriorityQueue<>(eyt.a);
+public class eyo implements eyj {
+   protected static final eyj a = new eyo(false, -Double.MAX_VALUE, cvl.k, $$0 -> false, null) {
+      @Override
+      public boolean a(eyx $$0, je $$1, boolean $$2) {
+         return $$2;
+      }
+   };
+   private final boolean b;
+   private final double c;
+   private final cvl d;
+   private final Predicate<eqb> e;
    @Nullable
-   private List<eys<T>> b;
-   private final Set<eyt<?>> c = new ObjectOpenCustomHashSet(eyt.c);
-   @Nullable
-   private BiConsumer<eyo<T>, eyt<T>> d;
+   private final btj f;
 
-   public eyo() {
-   }
-
-   public eyo(List<eys<T>> $$0) {
+   protected eyo(boolean $$0, double $$1, cvl $$2, Predicate<eqb> $$3, @Nullable btj $$4) {
       this.b = $$0;
-
-      for (eys<T> $$1 : $$0) {
-         this.c.add(eyt.a($$1.a(), $$1.b()));
-      }
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public void a(@Nullable BiConsumer<eyo<T>, eyt<T>> $$0) {
-      this.d = $$0;
+   @Deprecated
+   protected eyo(btj $$0, boolean $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:627)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: aload 1
+      // 02: invokevirtual btj.ce ()Z
+      // 05: aload 1
+      // 06: invokevirtual btj.dz ()D
+      // 09: aload 1
+      // 0a: instanceof buf
+      // 0d: ifeq 1a
+      // 10: aload 1
+      // 11: checkcast buf
+      // 14: invokevirtual buf.eW ()Lcvl;
+      // 17: goto 1d
+      // 1a: getstatic cvl.k Lcvl;
+      // 1d: iload 2
+      // 1e: ifeq 29
+      // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, eyo.b (Leqb;)Z, (Leqb;)Z ]
+      // 26: goto 46
+      // 29: aload 1
+      // 2a: instanceof buf
+      // 2d: ifeq 41
+      // 30: aload 1
+      // 31: checkcast buf
+      // 34: dup
+      // 35: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 38: pop
+      // 39: invokedynamic test (Lbuf;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, buf.a (Leqb;)Z, (Leqb;)Z ]
+      // 3e: goto 46
+      // 41: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, eyo.a (Leqb;)Z, (Leqb;)Z ]
+      // 46: aload 1
+      // 47: invokespecial eyo.<init> (ZDLcvl;Ljava/util/function/Predicate;Lbtj;)V
+      // 4a: return
+   }
+
+   @Override
+   public boolean a(cvg $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public boolean a(eqb $$0, eqb $$1) {
+      return this.e.test($$1) && !$$0.a().a($$1.a());
+   }
+
+   @Override
+   public boolean b() {
+      return this.b;
+   }
+
+   @Override
+   public boolean a(eyx $$0, je $$1, boolean $$2) {
+      return this.c > (double)$$1.v() + $$0.c(jj.a.b) - 1.0E-5F;
    }
 
    @Nullable
-   public eyt<T> b() {
-      return this.a.peek();
-   }
-
-   @Nullable
-   public eyt<T> c() {
-      eyt<T> $$0 = this.a.poll();
-      if ($$0 != null) {
-         this.c.remove($$0);
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public void a(eyt<T> $$0) {
-      if (this.c.add($$0)) {
-         this.b($$0);
-      }
-   }
-
-   private void b(eyt<T> $$0) {
-      this.a.add($$0);
-      if (this.d != null) {
-         this.d.accept(this, $$0);
-      }
-   }
-
-   @Override
-   public boolean a(jd $$0, T $$1) {
-      return this.c.contains(eyt.a($$1, $$0));
-   }
-
-   public void a(Predicate<eyt<T>> $$0) {
-      Iterator<eyt<T>> $$1 = this.a.iterator();
-
-      while ($$1.hasNext()) {
-         eyt<T> $$2 = $$1.next();
-         if ($$0.test($$2)) {
-            $$1.remove();
-            this.c.remove($$2);
-         }
-      }
-   }
-
-   public Stream<eyt<T>> d() {
-      return this.a.stream();
-   }
-
-   @Override
-   public int a() {
-      return this.a.size() + (this.b != null ? this.b.size() : 0);
-   }
-
-   public uh a(long $$0, Function<T, String> $$1) {
-      uh $$2 = new uh();
-      if (this.b != null) {
-         for (eys<T> $$3 : this.b) {
-            $$2.add($$3.a($$1));
-         }
-      }
-
-      for (eyt<T> $$4 : this.a) {
-         $$2.add(eys.a($$4, $$1, $$0));
-      }
-
-      return $$2;
-   }
-
-   public void a(long $$0) {
-      if (this.b != null) {
-         int $$1 = -this.b.size();
-
-         for (eys<T> $$2 : this.b) {
-            this.b($$2.a($$0, (long)($$1++)));
-         }
-      }
-
-      this.b = null;
-   }
-
-   public static <T> eyo<T> a(uh $$0, Function<String, Optional<T>> $$1, dcd $$2) {
-      Builder<eys<T>> $$3 = ImmutableList.builder();
-      eys.a($$0, $$1, $$2, $$3::add);
-      return new eyo<>($$3.build());
+   public btj c() {
+      return this.f;
    }
 }

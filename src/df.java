@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record df(
    Optional<df.b> b,
-   Optional<jq<ddw>> c,
-   Optional<jq<ejr>> d,
-   Optional<akq<dcw>> e,
+   Optional<jr<det>> c,
+   Optional<jr<eko>> d,
+   Optional<ala<dds>> e,
    Optional<Boolean> f,
    Optional<dc> g,
    Optional<aw> h,
@@ -16,9 +16,9 @@ public record df(
    public static final Codec<df> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                df.b.a.optionalFieldOf("position").forGetter(df::a),
-               kb.a(lu.aF).optionalFieldOf("biomes").forGetter(df::b),
-               kb.a(lu.aR).optionalFieldOf("structures").forGetter(df::c),
-               akq.a(lu.ba).optionalFieldOf("dimension").forGetter(df::d),
+               kc.a(lv.aF).optionalFieldOf("biomes").forGetter(df::b),
+               kc.a(lv.aR).optionalFieldOf("structures").forGetter(df::c),
+               ala.a(lv.ba).optionalFieldOf("dimension").forGetter(df::d),
                Codec.BOOL.optionalFieldOf("smokey").forGetter(df::e),
                dc.a.optionalFieldOf("light").forGetter(df::f),
                aw.a.optionalFieldOf("block").forGetter(df::g),
@@ -28,17 +28,17 @@ public record df(
             .apply($$0, df::new)
    );
 
-   public boolean a(aqu $$0, double $$1, double $$2, double $$3) {
+   public boolean a(arg $$0, double $$1, double $$2, double $$3) {
       if (this.b.isPresent() && !this.b.get().a($$1, $$2, $$3)) {
          return false;
-      } else if (this.e.isPresent() && this.e.get() != $$0.af()) {
+      } else if (this.e.isPresent() && this.e.get() != $$0.ag()) {
          return false;
       } else {
-         jd $$4 = jd.a($$1, $$2, $$3);
+         je $$4 = je.a($$1, $$2, $$3);
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dgm.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dhj.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record df(
       return this.b;
    }
 
-   public Optional<jq<ddw>> b() {
+   public Optional<jr<det>> b() {
       return this.c;
    }
 
-   public Optional<jq<ejr>> c() {
+   public Optional<jr<eko>> c() {
       return this.d;
    }
 
-   public Optional<akq<dcw>> d() {
+   public Optional<ala<dds>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record df(
       private dh.c a;
       private dh.c b;
       private dh.c c;
-      private Optional<jq<ddw>> d;
-      private Optional<jq<ejr>> e;
-      private Optional<akq<dcw>> f;
+      private Optional<jr<det>> d;
+      private Optional<jr<eko>> e;
+      private Optional<ala<dds>> f;
       private Optional<Boolean> g;
       private Optional<dc> h;
       private Optional<aw> i;
@@ -125,16 +125,16 @@ public record df(
          return new df.a();
       }
 
-      public static df.a a(jm<ddw> $$0) {
-         return a().a(jq.a($$0));
+      public static df.a a(jn<det> $$0) {
+         return a().a(jr.a($$0));
       }
 
-      public static df.a a(akq<dcw> $$0) {
+      public static df.a a(ala<dds> $$0) {
          return a().b($$0);
       }
 
-      public static df.a b(jm<ejr> $$0) {
-         return a().b(jq.a($$0));
+      public static df.a b(jn<eko> $$0) {
+         return a().b(jr.a($$0));
       }
 
       public static df.a a(dh.c $$0) {
@@ -156,17 +156,17 @@ public record df(
          return this;
       }
 
-      public df.a a(jq<ddw> $$0) {
+      public df.a a(jr<det> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public df.a b(jq<ejr> $$0) {
+      public df.a b(jr<eko> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public df.a b(akq<dcw> $$0) {
+      public df.a b(ala<dds> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

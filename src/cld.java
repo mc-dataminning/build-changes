@@ -1,79 +1,114 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableMap;
+public class cld extends ckd {
+   private static final int c = 300;
+   private static final akg<Boolean> d = akk.a(cld.class, aki.k);
+   public static final String b = "StrayConversionTime";
+   private int e;
+   private int bZ;
 
-public class cld extends bvh<ckz> {
-   private static final int c = 4;
-   private static final int d = 256;
-   private static final int e = 5;
-   private static final int f = 4;
-   private static final float g = 0.7F;
-   private static final int h = Math.round(15.0F);
-   private static final int i = Math.round(4.0F);
-   private static final int j = Math.round(10.0F);
-
-   @VisibleForTesting
-   public cld() {
-      super(ImmutableMap.of(ccs.o, cct.a, ccs.aY, cct.b, ccs.aW, cct.b, ccs.aX, cct.b, ccs.aV, cct.a, ccs.m, cct.b, ccs.ba, cct.b), h + 1 + i);
+   public cld(btq<? extends cld> $$0, dds $$1) {
+      super($$0, $$1);
    }
 
-   protected boolean a(aqu $$0, ckz $$1) {
-      return $$1.at() != bua.a ? false : $$1.dT().c(ccs.o).map($$1x -> b($$1, $$1x)).map($$1x -> {
-         if (!$$1x) {
-            $$1.dT().b(ccs.aV);
-         }
-
-         return $$1x;
-      }).orElse(false);
+   @Override
+   protected void a(akk.a $$0) {
+      super.a($$0);
+      $$0.a(d, false);
    }
 
-   protected boolean a(aqu $$0, ckz $$1, long $$2) {
-      return $$1.dT().a(ccs.o) && $$1.dT().a(ccs.aV);
+   public boolean gr() {
+      return this.at().a(d);
    }
 
-   protected void b(aqu $$0, ckz $$1, long $$2) {
-      $$1.dT().c(ccs.o).ifPresent($$1x -> $$1.b(bua.q));
-      $$1.dT().a(ccs.aW, azs.a, (long)h);
-      $$1.a(avp.cG, 1.0F, 1.0F);
+   public void x(boolean $$0) {
+      this.am.a(d, $$0);
    }
 
-   protected void c(aqu $$0, ckz $$1, long $$2) {
-      if ($$1.at() == bua.q) {
-         $$1.b(bua.a);
-      }
-
-      $$1.dT().a(ccs.aY, azs.a, (long)j);
-      $$1.dT().b(ccs.aV);
+   @Override
+   public boolean gq() {
+      return this.gr();
    }
 
-   protected void d(aqu $$0, ckz $$1, long $$2) {
-      buq<ckz> $$3 = $$1.dT();
-      btn $$4 = $$3.c(ccs.o).orElse(null);
-      if ($$4 != null) {
-         $$1.a(ff.a.b, $$4.dm());
-         if (!$$3.c(ccs.aW).isPresent() && !$$3.c(ccs.aX).isPresent()) {
-            $$3.a(ccs.aX, azs.a, (long)i);
-            if (a($$1, $$4)) {
-               double $$5 = $$4.dt() - $$1.dt();
-               double $$6 = $$4.e($$4.bS() ? 0.8 : 0.3) - $$1.e(0.5);
-               double $$7 = $$4.dz() - $$1.dz();
-               cog $$8 = new cog($$1, $$0);
-               $$1.a(avp.cJ, 1.5F, 1.0F);
-               $$8.c($$5, $$6, $$7, 0.7F, (float)(5 - $$0.al().a() * 4));
-               $$0.b($$8);
+   @Override
+   public void l() {
+      if (!this.dS().B && this.bI() && !this.gd()) {
+         if (this.aw) {
+            if (this.gr()) {
+               this.bZ--;
+               if (this.bZ < 0) {
+                  this.gs();
+               }
+            } else {
+               this.e++;
+               if (this.e >= 140) {
+                  this.b(300);
+               }
             }
+         } else {
+            this.e = -1;
+            this.x(false);
          }
+      }
+
+      super.l();
+   }
+
+   @Override
+   public void b(uf $$0) {
+      super.b($$0);
+      $$0.a("StrayConversionTime", this.gr() ? this.bZ : -1);
+   }
+
+   @Override
+   public void a(uf $$0) {
+      super.a($$0);
+      if ($$0.b("StrayConversionTime", 99) && $$0.h("StrayConversionTime") > -1) {
+         this.b($$0.h("StrayConversionTime"));
       }
    }
 
-   @VisibleForTesting
-   public static boolean a(ckz $$0, btn $$1) {
-      exc $$2 = $$0.g(1.0F);
-      exc $$3 = $$1.dm().d($$0.dm()).d();
-      return $$2.b($$3) > 0.5;
+   private void b(int $$0) {
+      this.bZ = $$0;
+      this.x(true);
    }
 
-   private static boolean b(ckz $$0, btn $$1) {
-      double $$2 = $$0.dm().g($$1.dm());
-      return $$2 > 4.0 && $$2 < 256.0;
+   protected void gs() {
+      this.a(btq.aY, true);
+      if (!this.ba()) {
+         this.dS().a(null, 1048, this.ds(), 0);
+      }
+   }
+
+   @Override
+   public boolean dG() {
+      return false;
+   }
+
+   @Override
+   protected awc w() {
+      return awd.xc;
+   }
+
+   @Override
+   protected awc d(bsb $$0) {
+      return awd.xn;
+   }
+
+   @Override
+   protected awc n_() {
+      return awd.xe;
+   }
+
+   @Override
+   awc t() {
+      return awd.xp;
+   }
+
+   @Override
+   protected void a(arg $$0, bsb $$1, boolean $$2) {
+      super.a($$0, $$1, $$2);
+      if ($$1.d() instanceof ckh $$4 && $$4.gq()) {
+         $$4.gr();
+         this.a(cvo.un);
+      }
    }
 }

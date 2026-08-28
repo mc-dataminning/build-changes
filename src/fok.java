@@ -1,125 +1,107 @@
-enum fok {
-   a(
-      new fok.a(akr.b("advancements/tab_above_left_selected"), akr.b("advancements/tab_above_middle_selected"), akr.b("advancements/tab_above_right_selected")),
-      new fok.a(akr.b("advancements/tab_above_left"), akr.b("advancements/tab_above_middle"), akr.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fok.a(akr.b("advancements/tab_below_left_selected"), akr.b("advancements/tab_below_middle_selected"), akr.b("advancements/tab_below_right_selected")),
-      new fok.a(akr.b("advancements/tab_below_left"), akr.b("advancements/tab_below_middle"), akr.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fok.a(akr.b("advancements/tab_left_top_selected"), akr.b("advancements/tab_left_middle_selected"), akr.b("advancements/tab_left_bottom_selected")),
-      new fok.a(akr.b("advancements/tab_left_top"), akr.b("advancements/tab_left_middle"), akr.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fok.a(akr.b("advancements/tab_right_top_selected"), akr.b("advancements/tab_right_middle_selected"), akr.b("advancements/tab_right_bottom_selected")),
-      new fok.a(akr.b("advancements/tab_right_top"), akr.b("advancements/tab_right_middle"), akr.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   private final fok.a e;
-   private final fok.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fok extends fpt {
+   private static final xd a = xd.c("accessibility.onboarding.screen.title");
+   private static final xd b = xd.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final fkr s;
+   private final fif u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
+   @Nullable
+   private fkl z;
+   private final fno A = new fno(this, this.m(), 33);
 
-   private fok(final fok.a $$0, final fok.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fok(fif $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new fkr(true);
+      this.v = fib.Q().aY().a();
    }
 
-   public int a() {
-      return this.i;
+   @Override
+   public void aT_() {
+      fns $$0 = this.A.c(fns.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fkl(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      if (this.u.au().a(this.u) instanceof fkh $$1) {
+         this.q = $$1;
+         this.q.j = this.v;
+         $$0.a(this.q);
+      }
+
+      $$0.a(fke.b(150, $$0x -> this.a(new fsp(this, this.m.n)), false));
+      $$0.a(fke.a(150, $$0x -> this.a(new fss(this, this.m.n, this.m.ag())), false));
+      this.A.b(fka.a(xc.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
-   public void a(fhz $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fok.a $$5 = $$3 ? this.e : this.f;
-      akr $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   protected void c() {
+      if (this.z != null) {
+         this.z.b(this.n);
+      }
+
+      this.A.a();
+   }
+
+   @Override
+   protected void aI_() {
+      if (this.v && this.q != null) {
+         this.b(this.q);
       } else {
-         $$6 = $$5.b();
-      }
-
-      $$0.a($$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(fhz $$0, int $$1, int $$2, int $$3, cuq $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
-      }
-
-      $$0.b($$4, $$5, $$6);
-   }
-
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+         super.aI_();
       }
    }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   private int m() {
+      return 90;
+   }
+
+   @Override
+   public void d() {
+      this.a(true, this.y);
+   }
+
+   private void a(fpt $$0) {
+      this.a(false, () -> this.m.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.aw();
       }
+
+      Narrator.getNarrator().clear();
+      $$1.run();
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Override
+   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.D();
+      this.s.a($$0, this.n, 1.0F);
    }
 
-   static record a(akr a, akr b, akr c) {
+   @Override
+   protected void a(fjn $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void D() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.m.aB()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.w = true;
+         }
+      }
    }
 }

@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@ezb
+@fad
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static String cpuInfo;
@@ -31,9 +31,9 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(fam $$0) {
+   public static int _getRefreshRate(fbs $$0) {
       RenderSystem.assertOnRenderThread();
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.j());
+      long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
       if ($$1 == 0L) {
          $$1 = GLFW.glfwGetPrimaryMonitor();
       }
@@ -47,7 +47,7 @@ public class GLX {
    }
 
    public static LongSupplier _initGlfw() {
-      fam.a(($$0x, $$1x) -> {
+      fbs.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -76,8 +76,8 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(fam $$0) {
-      return GLFW.glfwWindowShouldClose($$0.j());
+   public static boolean _shouldClose(fbs $$0) {
+      return GLFW.glfwWindowShouldClose($$0.i());
    }
 
    public static void _init(int $$0, boolean $$1) {
@@ -87,7 +87,7 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      fab.a($$0, $$1);
+      fbh.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
@@ -99,9 +99,9 @@ public class GLX {
          RenderSystem.assertOnRenderThread();
          GlStateManager._depthMask(false);
          GlStateManager._disableCull();
-         RenderSystem.setShader(ges::an);
-         fbk $$4 = RenderSystem.renderThreadTesselator();
-         fbd $$5 = $$4.a(fbn.c.a, fbg.g);
+         RenderSystem.setShader(ggl::an);
+         fcw $$4 = RenderSystem.renderThreadTesselator();
+         fcp $$5 = $$4.a(fcz.c.a, fcs.g);
          RenderSystem.lineWidth(4.0F);
          if ($$1) {
             $$5.a(0.0F, 0.0F, 0.0F).a(-16777216).b(1.0F, 0.0F, 0.0F);
@@ -118,9 +118,9 @@ public class GLX {
             $$5.a(0.0F, 0.0F, (float)$$0).a(-16777216).b(0.0F, 0.0F, 1.0F);
          }
 
-         fbe.a($$5.b());
+         fcq.a($$5.b());
          RenderSystem.lineWidth(2.0F);
-         $$5 = $$4.a(fbn.c.a, fbg.g);
+         $$5 = $$4.a(fcz.c.a, fcs.g);
          if ($$1) {
             $$5.a(0.0F, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
             $$5.a((float)$$0, 0.0F, 0.0F).a(-65536).b(1.0F, 0.0F, 0.0F);
@@ -136,7 +136,7 @@ public class GLX {
             $$5.a(0.0F, 0.0F, (float)$$0).a(-8421377).b(0.0F, 0.0F, 1.0F);
          }
 
-         fbe.a($$5.b());
+         fcq.a($$5.b());
          RenderSystem.lineWidth(1.0F);
          GlStateManager._enableCull();
          GlStateManager._depthMask(true);

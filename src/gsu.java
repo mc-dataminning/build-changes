@@ -1,32 +1,43 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public record gsu(akr b, String c) {
-   public static final String a = "inventory";
+public class gsu {
+   public double m;
+   public double n;
+   public double o;
+   public float p;
+   public float q;
+   public float r;
+   public float s;
+   public double t;
+   public boolean u;
+   public boolean v;
+   public boolean w;
+   @Nullable
+   public eye x;
+   @Nullable
+   public xd y;
+   @Nullable
+   public eye z;
+   @Nullable
+   public gsu.a A;
 
-   public gsu(akr b, String c) {
-      c = a(c);
-      this.b = b;
-      this.c = c;
-   }
+   public static class a {
+      public eye a;
+      public eye b;
+      public eye c;
+      public int d;
+      public int e;
+      public int f;
+      public int g;
 
-   public static gsu a(String $$0, String $$1) {
-      return new gsu(akr.b($$0), $$1);
-   }
-
-   public static gsu a(akr $$0) {
-      return new gsu($$0, "inventory");
-   }
-
-   private static String a(String $$0) {
-      return $$0.toLowerCase(Locale.ROOT);
-   }
-
-   public String a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return this.b + "#" + this.c;
+      public a() {
+         this.a = eye.c;
+         this.b = eye.c;
+         this.c = eye.c;
+         this.d = 0;
+         this.e = 0;
+         this.f = 15;
+         this.g = 15;
+      }
    }
 }

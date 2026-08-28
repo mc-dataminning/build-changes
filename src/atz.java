@@ -1,73 +1,31 @@
-import com.google.common.base.Stopwatch;
-import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
+import io.netty.buffer.ByteBuf;
 
-public class atz extends auk<atz.a> {
-   private static final Logger c = LogUtils.getLogger();
-   private final Stopwatch d = Stopwatch.createUnstarted();
+public record atz(String c, String d, String e) {
+   public static final zb<ByteBuf, atz> a = zb.a(yz.l, atz::b, yz.l, atz::c, yz.l, atz::d, atz::new);
+   public static final String b = "minecraft";
 
-   public atz(aue $$0, List<aty> $$1, Executor $$2, Executor $$3, CompletableFuture<azs> $$4) {
-      super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
-         AtomicLong $$6 = new AtomicLong();
-         AtomicLong $$7 = new AtomicLong();
-         bmy $$8 = new bmy(ad.c, () -> 0, false);
-         bmy $$9 = new bmy(ad.c, () -> 0, false);
-         CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
-               long $$2xxx = ad.d();
-               $$2xx.run();
-               $$6.addAndGet(ad.d() - $$2xxx);
-            }), $$2xx -> $$5.execute(() -> {
-               long $$2xxx = ad.d();
-               $$2xx.run();
-               $$7.addAndGet(ad.d() - $$2xxx);
-            }));
-         return $$10.thenApplyAsync($$5x -> {
-            c.debug("Finished reloading " + $$3x.c());
-            return new atz.a($$3x.c(), $$8.d(), $$9.d(), $$6, $$7);
-         }, $$3);
-      }, $$4);
-      this.d.start();
-      this.b = this.b.thenApplyAsync(this::a, $$3);
+   public static atz a(String $$0) {
+      return new atz("minecraft", $$0, ab.b().b());
    }
 
-   private List<atz.a> a(List<atz.a> $$0) {
-      this.d.stop();
-      long $$1 = 0L;
-      c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
-
-      for (atz.a $$2 : $$0) {
-         bne $$3 = $$2.b;
-         bne $$4 = $$2.c;
-         long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
-         long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
-         long $$7 = $$5 + $$6;
-         String $$8 = $$2.a;
-         c.info("{} took approximately {} ms ({} ms preparing, {} ms applying)", new Object[]{$$8, $$7, $$5, $$6});
-         $$1 += $$6;
-      }
-
-      c.info("Total blocking time: {} ms", $$1);
-      return $$0;
+   public boolean a() {
+      return this.c.equals("minecraft");
    }
 
-   public static class a {
-      final String a;
-      final bne b;
-      final bne c;
-      final AtomicLong d;
-      final AtomicLong e;
+   @Override
+   public String toString() {
+      return this.c + ":" + this.d + ":" + this.e;
+   }
 
-      a(String $$0, bne $$1, bne $$2, AtomicLong $$3, AtomicLong $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
+   public String b() {
+      return this.c;
+   }
+
+   public String c() {
+      return this.d;
+   }
+
+   public String d() {
+      return this.e;
    }
 }

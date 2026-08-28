@@ -1,30 +1,56 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.List;
-import java.util.Map;
+public class gfk extends gfe {
+   private float a;
 
-public class gfk implements AutoCloseable {
-   private static final List<gfh> b = gfh.I();
-   public static final int a = b.stream().mapToInt(gfh::J).sum();
-   private final Map<gfh, fbf> c = ad.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
-      for (gfh $$1 : b) {
-         $$0.put($$1, new fbf($$1.J()));
-      }
-   });
-
-   public fbf a(gfh $$0) {
-      return this.c.get($$0);
-   }
-
-   public void a() {
-      this.c.values().forEach(fbf::b);
-   }
-
-   public void b() {
-      this.c.values().forEach(fbf::c);
+   gfk(gax $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.t = (int)(Math.random() * 60.0) + 30;
+      this.n = false;
+      this.j = 0.0;
+      this.k = -0.05;
+      this.l = 0.0;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.u = 0.002F;
    }
 
    @Override
-   public void close() {
-      this.c.values().forEach(fbf::close);
+   public gei b() {
+      return gei.b;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = 0.6F;
+         this.j = this.j + (double)(0.6F * azc.b(this.a));
+         this.l = this.l + (double)(0.6F * azc.a(this.a));
+         this.j *= 0.07;
+         this.l *= 0.07;
+         this.a(this.j, this.k, this.l);
+         if (!this.c.b_(je.a(this.g, this.h, this.i)).a(awy.a) || this.m) {
+            this.k();
+         }
+
+         this.a += 0.08F;
+      }
+   }
+
+   public static class a implements geh<lr> {
+      private final gez a;
+
+      public a(gez $$0) {
+         this.a = $$0;
+      }
+
+      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gfk $$8 = new gfk($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

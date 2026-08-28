@@ -1,17 +1,41 @@
-public class gbd extends gbf {
-   protected gbd(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gdi $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+public class gbd {
+   private final aud a = aug.c();
+   private final Map<atz, String> b;
+
+   public gbd() {
+      this.a.a();
+      Builder<atz, String> $$0 = ImmutableMap.builder();
+      this.a.c().forEach($$1 -> {
+         atd $$2 = $$1.a();
+         $$2.d().ifPresent($$2x -> $$0.put($$2x, $$2.a()));
+      });
+      this.b = $$0.build();
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
+   public List<atz> a(List<atz> $$0) {
+      List<atz> $$1 = new ArrayList<>($$0.size());
+      List<String> $$2 = new ArrayList<>($$0.size());
 
-      public a(gdi $$0) {
-         this.a = $$0;
+      for (atz $$3 : $$0) {
+         String $$4 = this.b.get($$3);
+         if ($$4 != null) {
+            $$2.add($$4);
+            $$1.add($$3);
+         }
       }
 
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gbd($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
-      }
+      this.a.b($$2);
+      return $$1;
+   }
+
+   public aui a() {
+      List<ate> $$0 = this.a.g();
+      return new aul(atg.b, $$0);
    }
 }

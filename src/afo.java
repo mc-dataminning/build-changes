@@ -1,69 +1,16 @@
-public class afo implements zg<abu> {
-   public static final yx<wk, afo> a = zg.a(afo::a, afo::new);
-   private final jm<avo> b;
-   private final avq c;
-   private final int d;
-   private final float e;
-   private final float f;
-   private final long g;
-
-   public afo(jm<avo> $$0, avq $$1, bsr $$2, float $$3, float $$4, long $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.an();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-   }
-
-   private afo(wk $$0) {
-      this.b = avo.d.decode($$0);
-      this.c = $$0.b(avq.class);
-      this.d = $$0.l();
-      this.e = $$0.readFloat();
-      this.f = $$0.readFloat();
-      this.g = $$0.readLong();
-   }
-
-   private void a(wk $$0) {
-      avo.d.encode($$0, this.b);
-      $$0.a(this.c);
-      $$0.c(this.d);
-      $$0.a(this.e);
-      $$0.a(this.f);
-      $$0.b(this.g);
-   }
+public record afo(int b, cvl c) implements zk<abz> {
+   public static final zb<wo, afo> a = zb.a(yz.g, afo::b, cvl.i, afo::e, afo::new);
 
    @Override
-   public zi<afo> a() {
-      return agg.aR;
+   public zm<afo> a() {
+      return ago.cl;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   public jm<avo> b() {
-      return this.b;
-   }
-
-   public avq e() {
+   public cvl e() {
       return this.c;
-   }
-
-   public int f() {
-      return this.d;
-   }
-
-   public float g() {
-      return this.e;
-   }
-
-   public float h() {
-      return this.f;
-   }
-
-   public long i() {
-      return this.g;
    }
 }

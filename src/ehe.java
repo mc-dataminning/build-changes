@@ -1,69 +1,61 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.Optional;
 import java.util.function.BiConsumer;
 
-public class ehe extends ehm {
-   public static final MapCodec<ehe> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  axw.l.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bpw.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
-               )
-            )
-            .apply($$0, ehe::new)
-   );
-   private final int b;
-   private final bpw h;
+public abstract class ehe {
+   public static final Codec<ehe> d = lu.W.q().dispatch(ehe::a, ehf::a);
+   protected final bqp e;
+   protected final ehh f;
+   protected final Optional<ehb> g;
 
-   public ehe(int $$0, int $$1, int $$2, int $$3, bpw $$4) {
-      super($$0, $$1, $$2);
-      this.b = $$3;
-      this.h = $$4;
+   protected static <P extends ehe> P3<Mu<P>, bqp, ehh, Optional<ehb>> a(Instance<P> $$0) {
+      return $$0.group(
+         bqp.c.fieldOf("trunk_offset_y").forGetter($$0x -> $$0x.e),
+         ehh.a.fieldOf("root_provider").forGetter($$0x -> $$0x.f),
+         ehb.a.optionalFieldOf("above_root_placement").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   @Override
-   protected ehn<?> a() {
-      return ehn.g;
+   public ehe(bqp $$0, ehh $$1, Optional<ehb> $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Override
-   public List<efu.a> a(ddc $$0, BiConsumer<jd, dtc> $$1, ayw $$2, int $$3, jd $$4, efe $$5) {
-      ji $$6 = ji.c.a.a($$2);
-      int $$7 = $$3 - 1;
-      jd.a $$8 = $$4.k();
-      jd $$9 = $$8.e();
-      a($$0, $$1, $$2, $$9, $$5);
-      List<efu.a> $$10 = Lists.newArrayList();
+   protected abstract ehf<?> a();
 
-      for (int $$11 = 0; $$11 <= $$7; $$11++) {
-         if ($$11 + 1 >= $$7 + $$2.a(2)) {
-            $$8.c($$6);
+   public abstract boolean a(ddy var1, BiConsumer<je, dua> var2, azk var3, je var4, je var5, egc var6);
+
+   protected boolean a(ddy $$0, je $$1) {
+      return eeo.c($$0, $$1);
+   }
+
+   protected void a(ddy $$0, BiConsumer<je, dua> $$1, azk $$2, je $$3, egc $$4) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, this.a($$0, $$3, this.f.a($$2, $$3)));
+         if (this.g.isPresent()) {
+            ehb $$5 = this.g.get();
+            je $$6 = $$3.d();
+            if ($$2.i() < $$5.b() && $$0.a($$6, dtz.a::l)) {
+               $$1.accept($$6, this.a($$0, $$6, $$5.a().a($$2, $$6)));
+            }
          }
-
-         if (edq.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         if ($$11 >= this.b) {
-            $$10.add(new efu.a($$8.j(), 0, false));
-         }
-
-         $$8.c(ji.b);
       }
+   }
 
-      int $$12 = this.h.a($$2);
-
-      for (int $$13 = 0; $$13 <= $$12; $$13++) {
-         if (edq.c($$0, $$8)) {
-            this.b($$0, $$1, $$2, $$8, $$5);
-         }
-
-         $$10.add(new efu.a($$8.j(), 0, false));
-         $$8.c($$6);
+   protected dua a(ddy $$0, je $$1, dua $$2) {
+      if ($$2.b(duq.C)) {
+         boolean $$3 = $$0.b($$1, $$0x -> $$0x.a(awy.a));
+         return $$2.b(duq.C, Boolean.valueOf($$3));
+      } else {
+         return $$2;
       }
+   }
 
-      return $$10;
+   public je a(je $$0, azk $$1) {
+      return $$0.b(this.e.a($$1));
    }
 }

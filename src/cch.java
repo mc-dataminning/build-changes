@@ -1,37 +1,44 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.EnumSet;
 
-public class cch<T extends btn> extends ccf<T> {
-   private static final int i = 200;
-   private int j = 0;
+public class cch extends cbc {
+   private final bvb a;
 
-   public cch(coj $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btn> $$3) {
-      super($$0, $$1, 500, $$2, false, $$3);
+   public cch(bvb $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cbc.a.c, cbc.a.a));
    }
 
-   public int i() {
-      return this.j;
-   }
-
-   public void k() {
-      this.j--;
+   @Override
+   public boolean c() {
+      return this.a.go();
    }
 
    @Override
    public boolean b() {
-      if (this.j > 0 || !this.e.dR().h()) {
+      if (!this.a.q()) {
          return false;
-      } else if (!((coj)this.e).gB()) {
+      } else if (this.a.bl()) {
+         return false;
+      } else if (!this.a.aH()) {
          return false;
       } else {
-         this.h();
-         return this.c != null;
+         buf $$0 = this.a.R_();
+         if ($$0 == null) {
+            return true;
+         } else {
+            return this.a.g((btj)$$0) < 144.0 && $$0.em() != null ? false : this.a.go();
+         }
       }
    }
 
    @Override
    public void d() {
-      this.j = b(200);
-      super.d();
+      this.a.P().o();
+      this.a.y(true);
+   }
+
+   @Override
+   public void e() {
+      this.a.y(false);
    }
 }

@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gtb {
+public class gtb extends gsu {
+   public boolean a;
+   @Nullable
+   public gym b;
+   public cvl c = cvl.k;
 }

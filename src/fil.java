@@ -1,163 +1,44 @@
-import com.google.common.collect.Maps;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.Map;
-import java.util.UUID;
+import org.joml.Vector2i;
 
 public class fil {
-   private static final int a = 182;
-   private static final int b = 5;
-   private static final akr[] c = new akr[]{
-      akr.b("boss_bar/pink_background"),
-      akr.b("boss_bar/blue_background"),
-      akr.b("boss_bar/red_background"),
-      akr.b("boss_bar/green_background"),
-      akr.b("boss_bar/yellow_background"),
-      akr.b("boss_bar/purple_background"),
-      akr.b("boss_bar/white_background")
-   };
-   private static final akr[] d = new akr[]{
-      akr.b("boss_bar/pink_progress"),
-      akr.b("boss_bar/blue_progress"),
-      akr.b("boss_bar/red_progress"),
-      akr.b("boss_bar/green_progress"),
-      akr.b("boss_bar/yellow_progress"),
-      akr.b("boss_bar/purple_progress"),
-      akr.b("boss_bar/white_progress")
-   };
-   private static final akr[] e = new akr[]{
-      akr.b("boss_bar/notched_6_background"),
-      akr.b("boss_bar/notched_10_background"),
-      akr.b("boss_bar/notched_12_background"),
-      akr.b("boss_bar/notched_20_background")
-   };
-   private static final akr[] f = new akr[]{
-      akr.b("boss_bar/notched_6_progress"), akr.b("boss_bar/notched_10_progress"), akr.b("boss_bar/notched_12_progress"), akr.b("boss_bar/notched_20_progress")
-   };
-   private final fgo g;
-   final Map<UUID, fja> h = Maps.newLinkedHashMap();
+   private double a;
+   private double b;
 
-   public fil(fgo $$0) {
-      this.g = $$0;
-   }
+   public Vector2i a(double $$0, double $$1) {
+      if (this.a != 0.0 && Math.signum($$0) != Math.signum(this.a)) {
+         this.a = 0.0;
+      }
 
-   public void a(fhz $$0) {
-      if (!this.h.isEmpty()) {
-         this.g.aH().a("bossHealth");
-         int $$1 = $$0.a();
-         int $$2 = 12;
+      if (this.b != 0.0 && Math.signum($$1) != Math.signum(this.b)) {
+         this.b = 0.0;
+      }
 
-         for (fja $$3 : this.h.values()) {
-            int $$4 = $$1 / 2 - 91;
-            this.a($$0, $$4, $$2, $$3);
-            wz $$6 = $$3.i();
-            int $$7 = this.g.h.a($$6);
-            int $$8 = $$1 / 2 - $$7 / 2;
-            int $$9 = $$2 - 9;
-            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
-            $$2 += 10 + 9;
-            if ($$2 >= $$0.b() / 3) {
-               break;
-            }
-         }
-
-         this.g.aH().c();
+      this.a += $$0;
+      this.b += $$1;
+      int $$2 = (int)this.a;
+      int $$3 = (int)this.b;
+      if ($$2 == 0 && $$3 == 0) {
+         return new Vector2i(0, 0);
+      } else {
+         this.a -= (double)$$2;
+         this.b -= (double)$$3;
+         return new Vector2i($$2, $$3);
       }
    }
 
-   private void a(fhz $$0, int $$1, int $$2, bqh $$3) {
-      this.a($$0, $$1, $$2, $$3, 182, c, e);
-      int $$4 = ayo.b($$3.j(), 0, 182);
-      if ($$4 > 0) {
-         this.a($$0, $$1, $$2, $$3, $$4, d, f);
-      }
-   }
+   public static int a(double $$0, int $$1, int $$2) {
+      int $$3 = (int)Math.signum($$0);
+      $$1 -= $$3;
+      $$1 = Math.max(-1, $$1);
 
-   private void a(fhz $$0, int $$1, int $$2, bqh $$3, int $$4, akr[] $$5, akr[] $$6) {
-      RenderSystem.enableBlend();
-      $$0.a($$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
-      if ($$3.l() != bqh.b.a) {
-         $$0.a($$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      while ($$1 < 0) {
+         $$1 += $$2;
       }
 
-      RenderSystem.disableBlend();
-   }
-
-   public void a(ace $$0) {
-      $$0.a(new ace.b() {
-         @Override
-         public void a(UUID $$0, wz $$1, float $$2, bqh.a $$3, bqh.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-            fil.this.h.put($$0, new fja($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
-         }
-
-         @Override
-         public void a(UUID $$0) {
-            fil.this.h.remove($$0);
-         }
-
-         @Override
-         public void a(UUID $$0, float $$1) {
-            fil.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, wz $$1) {
-            fil.this.h.get($$0).a($$1);
-         }
-
-         @Override
-         public void a(UUID $$0, bqh.a $$1, bqh.b $$2) {
-            fja $$3 = fil.this.h.get($$0);
-            $$3.a($$1);
-            $$3.a($$2);
-         }
-
-         @Override
-         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
-            fja $$4 = fil.this.h.get($$0);
-            $$4.a($$1);
-            $$4.b($$2);
-            $$4.c($$3);
-         }
-      });
-   }
-
-   public void a() {
-      this.h.clear();
-   }
-
-   public boolean b() {
-      if (!this.h.isEmpty()) {
-         for (bqh $$0 : this.h.values()) {
-            if ($$0.n()) {
-               return true;
-            }
-         }
+      while ($$1 >= $$2) {
+         $$1 -= $$2;
       }
 
-      return false;
-   }
-
-   public boolean c() {
-      if (!this.h.isEmpty()) {
-         for (bqh $$0 : this.h.values()) {
-            if ($$0.m()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public boolean d() {
-      if (!this.h.isEmpty()) {
-         for (bqh $$0 : this.h.values()) {
-            if ($$0.o()) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+      return $$1;
    }
 }

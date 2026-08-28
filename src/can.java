@@ -1,132 +1,62 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.EnumMap;
 import java.util.EnumSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
-public class can {
-   private static final cca a = new cca(Integer.MAX_VALUE, new cam() {
-      @Override
-      public boolean b() {
-         return false;
-      }
-   }) {
-      @Override
-      public boolean h() {
-         return false;
-      }
-   };
-   private final Map<cam.a, cca> b = new EnumMap<>(cam.a.class);
-   private final Set<cca> c = new ObjectLinkedOpenHashSet();
-   private final Supplier<bnf> d;
-   private final EnumSet<cam.a> e = EnumSet.noneOf(cam.a.class);
+public class can extends cbc {
+   private final bun a;
 
-   public can(Supplier<bnf> $$0) {
-      this.d = $$0;
+   public can(bun $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cbc.a.a, cbc.a.b));
    }
 
-   public void a(int $$0, cam $$1) {
-      this.c.add(new cca($$0, $$1));
+   @Override
+   public boolean b() {
+      return this.a.cq() < 140;
    }
 
-   @VisibleForTesting
-   public void a(Predicate<cam> $$0) {
-      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   @Override
+   public boolean c() {
+      return this.b();
    }
 
-   public void a(cam $$0) {
-      for (cca $$1 : this.c) {
-         if ($$1.k() == $$0 && $$1.h()) {
-            $$1.e();
-         }
-      }
-
-      this.c.removeIf($$1x -> $$1x.k() == $$0);
-   }
-
-   private static boolean a(cca $$0, EnumSet<cam.a> $$1) {
-      for (cam.a $$2 : $$0.j()) {
-         if ($$1.contains($$2)) {
-            return true;
-         }
-      }
-
+   @Override
+   public boolean S_() {
       return false;
    }
 
-   private static boolean a(cca $$0, Map<cam.a, cca> $$1) {
-      for (cam.a $$2 : $$0.j()) {
-         if (!$$1.getOrDefault($$2, a).a($$0)) {
-            return false;
+   @Override
+   public void d() {
+      this.h();
+   }
+
+   private void h() {
+      Iterable<je> $$0 = je.b(
+         azc.a(this.a.dx() - 1.0), this.a.dy(), azc.a(this.a.dD() - 1.0), azc.a(this.a.dx() + 1.0), azc.a(this.a.dz() + 8.0), azc.a(this.a.dD() + 1.0)
+      );
+      je $$1 = null;
+
+      for (je $$2 : $$0) {
+         if (this.a(this.a.dS(), $$2)) {
+            $$1 = $$2;
+            break;
          }
       }
 
-      return true;
+      if ($$1 == null) {
+         $$1 = je.a(this.a.dx(), this.a.dz() + 8.0, this.a.dD());
+      }
+
+      this.a.P().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
+   @Override
    public void a() {
-      bnf $$0 = this.d.get();
-      $$0.a("goalCleanup");
-
-      for (cca $$1 : this.c) {
-         if ($$1.h() && (a($$1, this.e) || !$$1.c())) {
-            $$1.e();
-         }
-      }
-
-      this.b.entrySet().removeIf($$0x -> !((cca)$$0x.getValue()).h());
-      $$0.c();
-      $$0.a("goalUpdate");
-
-      for (cca $$2 : this.c) {
-         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.b()) {
-            for (cam.a $$3 : $$2.j()) {
-               cca $$4 = this.b.getOrDefault($$3, a);
-               $$4.e();
-               this.b.put($$3, $$2);
-            }
-
-            $$2.d();
-         }
-      }
-
-      $$0.c();
-      this.a(true);
+      this.h();
+      this.a.a(0.02F, new eye((double)this.a.bl, (double)this.a.bm, (double)this.a.bn));
+      this.a.a(buj.a, this.a.dv());
    }
 
-   public void a(boolean $$0) {
-      bnf $$1 = this.d.get();
-      $$1.a("goalTick");
-
-      for (cca $$2 : this.c) {
-         if ($$2.h() && ($$0 || $$2.V_())) {
-            $$2.a();
-         }
-      }
-
-      $$1.c();
-   }
-
-   public Set<cca> b() {
-      return this.c;
-   }
-
-   public void a(cam.a $$0) {
-      this.e.add($$0);
-   }
-
-   public void b(cam.a $$0) {
-      this.e.remove($$0);
-   }
-
-   public void a(cam.a $$0, boolean $$1) {
-      if ($$1) {
-         this.b($$0);
-      } else {
-         this.a($$0);
-      }
+   private boolean a(ddv $$0, je $$1) {
+      dua $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dgx.nd)) && $$2.a(eqq.a);
    }
 }

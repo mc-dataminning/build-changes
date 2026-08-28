@@ -1,34 +1,36 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.List;
+import java.util.Optional;
 
 public class bfw extends DataFix {
-   public bfw(Schema $$0, boolean $$1) {
-      super($$0, $$1);
+   private static final String a = "WorldGenSettings";
+   private static final List<String> b = List.of(
+      "RandomSeed", "generatorName", "generatorOptions", "generatorVersion", "legacy_custom_options", "MapFeatures", "BonusChest"
+   );
+
+   public bfw(Schema $$0) {
+      super($$0, false);
    }
 
-   public TypeRewriteRule makeRule() {
+   protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsAddTextBackgroundFix",
-         this.getInputSchema().getType(bgr.e),
-         $$0 -> $$0.update(
-               DSL.remainderFinder(),
-               $$0x -> (Dynamic)DataFixUtils.orElse(
-                     $$0x.get("chatOpacity").asString().map($$1 -> $$0x.set("textBackgroundOpacity", $$0x.createDouble(this.a($$1)))).result(), $$0x
-                  )
-            )
-      );
-   }
+         "LevelLegacyWorldGenSettingsFix", this.getInputSchema().getType(bhk.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+               Dynamic<?> $$1 = $$0x.get("WorldGenSettings").orElseEmptyMap();
 
-   private double a(String $$0) {
-      try {
-         double $$1 = 0.9 * Double.parseDouble($$0) + 0.1;
-         return $$1 / 2.0;
-      } catch (NumberFormatException var4) {
-         return 0.5;
-      }
+               for (String $$2 : b) {
+                  Optional<? extends Dynamic<?>> $$3 = $$0x.get($$2).result();
+                  if ($$3.isPresent()) {
+                     $$0x = $$0x.remove($$2);
+                     $$1 = $$1.set($$2, $$3.get());
+                  }
+               }
+
+               return $$0x.set("WorldGenSettings", $$1);
+            })
+      );
    }
 }

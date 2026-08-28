@@ -1,111 +1,40 @@
-import javax.annotation.Nullable;
+public abstract class fjr extends fjy {
+   protected static final int e = 2;
+   private static final fln a = new fln(alb.b("widget/button"), alb.b("widget/button_disabled"), alb.b("widget/button_highlighted"));
 
-public abstract class fjr extends fim {
-   protected final akr a;
-   protected final int b;
-   protected final int c;
-
-   fjr(int $$0, int $$1, wz $$2, int $$3, int $$4, akr $$5, fim.c $$6, @Nullable fim.b $$7) {
-      super(0, 0, $$0, $$1, $$2, $$6, $$7 == null ? q : $$7);
-      this.b = $$3;
-      this.c = $$4;
-      this.a = $$5;
+   public fjr(int $$0, int $$1, int $$2, int $$3, xd $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
    }
 
-   public static fjr.a a(wz $$0, fim.c $$1, boolean $$2) {
-      return new fjr.a($$0, $$1, $$2);
+   public abstract void b();
+
+   @Override
+   protected void b(fjn $$0, int $$1, int $$2, float $$3) {
+      fib $$4 = fib.Q();
+      $$0.a(ghe::C, a.a(this.j, this.B()), this.D(), this.E(), this.y(), this.w(), axn.a(this.l));
+      int $$5 = this.j ? 16777215 : 10526880;
+      this.a($$0, $$4.h, $$5 | azc.f(this.l * 255.0F) << 24);
    }
 
-   public static class a {
-      private final wz b;
-      private final fim.c c;
-      private final boolean d;
-      private int e = 150;
-      private int f = 20;
-      @Nullable
-      private akr g;
-      private int h;
-      private int i;
-      @Nullable
-      fim.b a;
-
-      public a(wz $$0, fim.c $$1, boolean $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      public fjr.a a(int $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public fjr.a a(int $$0, int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-         return this;
-      }
-
-      public fjr.a a(akr $$0, int $$1, int $$2) {
-         this.g = $$0;
-         this.h = $$1;
-         this.i = $$2;
-         return this;
-      }
-
-      public fjr.a a(fim.b $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fjr a() {
-         if (this.g == null) {
-            throw new IllegalStateException("Sprite not set");
-         } else {
-            return (fjr)(this.d
-               ? new fjr.b(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a)
-               : new fjr.c(this.e, this.f, this.b, this.h, this.i, this.g, this.c, this.a));
-         }
-      }
+   public void a(fjn $$0, fjl $$1, int $$2) {
+      this.a($$0, $$1, 2, $$2);
    }
 
-   public static class b extends fjr {
-      protected b(int $$0, int $$1, wz $$2, int $$3, int $$4, akr $$5, fim.c $$6, @Nullable fim.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fhz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() / 2 - this.b / 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fhz $$0, fhx $$1, int $$2) {
-      }
+   @Override
+   public void a(double $$0, double $$1) {
+      this.b();
    }
 
-   public static class c extends fjr {
-      protected c(int $$0, int $$1, wz $$2, int $$3, int $$4, akr $$5, fim.c $$6, @Nullable fim.b $$7) {
-         super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
-
-      @Override
-      public void b(fhz $$0, int $$1, int $$2, float $$3) {
-         super.b($$0, $$1, $$2, $$3);
-         int $$4 = this.D() + this.y() - this.b - 2;
-         int $$5 = this.E() + this.w() / 2 - this.c / 2;
-         $$0.a(this.a, $$4, $$5, this.b, this.c);
-      }
-
-      @Override
-      public void a(fhz $$0, fhx $$1, int $$2) {
-         int $$3 = this.D() + 2;
-         int $$4 = this.D() + this.y() - this.b - 4;
-         int $$5 = this.D() + this.y() / 2;
-         a($$0, $$1, this.z(), $$5, $$3, this.E(), $$4, this.E() + this.w(), $$2);
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (!this.j || !this.k) {
+         return false;
+      } else if (foc.a($$0)) {
+         this.a(fib.Q().aj());
+         this.b();
+         return true;
+      } else {
+         return false;
       }
    }
 }

@@ -1,30 +1,45 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class agd implements zk<abz> {
+   public static final zb<wa, agd> a = zk.a(agd::a, agd::new);
+   private final int b;
+   private final int c;
+   private final int d;
 
-public record agd(jm<dwy> a, akq<dcw> b, long c, dct d, @Nullable dct e, boolean f, boolean g, Optional<jl> h, int i) {
-   public agd(wk $$0) {
-      this(
-         dwy.i.decode($$0),
-         $$0.a(lu.ba),
-         $$0.readLong(),
-         dct.a($$0.readByte()),
-         dct.b($$0.readByte()),
-         $$0.readBoolean(),
-         $$0.readBoolean(),
-         $$0.b(vw::h),
-         $$0.l()
-      );
+   public agd(int $$0, int $$1, int $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public void a(wk $$0) {
-      dwy.i.encode($$0, this.a);
-      $$0.b(this.b);
-      $$0.b(this.c);
-      $$0.k(this.d.a());
-      $$0.k(dct.a(this.e));
-      $$0.a(this.f);
-      $$0.a(this.g);
-      $$0.a(this.h, vw::a);
-      $$0.c(this.i);
+   private agd(wa $$0) {
+      this.b = $$0.l();
+      this.c = $$0.l();
+      this.d = $$0.l();
+   }
+
+   private void a(wa $$0) {
+      $$0.c(this.b);
+      $$0.c(this.c);
+      $$0.c(this.d);
+   }
+
+   @Override
+   public zm<agd> a() {
+      return ago.aZ;
+   }
+
+   public void a(abz $$0) {
+      $$0.a(this);
+   }
+
+   public int b() {
+      return this.b;
+   }
+
+   public int e() {
+      return this.c;
+   }
+
+   public int f() {
+      return this.d;
    }
 }

@@ -1,5 +1,8 @@
-public class axm extends Exception {
-   public axm(Throwable $$0) {
-      super($$0);
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface axm {
 }

@@ -1,44 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
 
-public record cxr(Map<String, cxr.a> c) {
-   public static final cxr a = new cxr(Map.of());
-   public static final Codec<cxr> b = Codec.unboundedMap(Codec.STRING, cxr.a.a).xmap(cxr::new, cxr::a);
+public record cxr(String e, jn<cvg> f, float g, Map<jn<ctd>, String> h, xd i) {
+   public static final Codec<cxr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayl.A.fieldOf("asset_name").forGetter(cxr::a),
+               aky.a(lv.K).fieldOf("ingredient").forGetter(cxr::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cxr::c),
+               Codec.unboundedMap(ctd.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cxr::d),
+               xf.a.fieldOf("description").forGetter(cxr::e)
+            )
+            .apply($$0, cxr::new)
+   );
+   public static final zb<wo, cxr> b = zb.a(
+      yz.l, cxr::a, yz.b(lv.K), cxr::b, yz.i, cxr::c, yz.a(Object2ObjectOpenHashMap::new, yz.b(lv.az), yz.l), cxr::d, xf.b, cxr::e, cxr::new
+   );
+   public static final Codec<jn<cxr>> c = akx.a(lv.aW, a);
+   public static final zb<wo, jn<cxr>> d = yz.a(lv.aW, b);
 
-   public cxr a(String $$0, cxr.a $$1) {
-      return new cxr(ad.a(this.c, $$0, $$1));
+   public static cxr a(String $$0, cvg $$1, float $$2, xd $$3, Map<jn<ctd>, String> $$4) {
+      return new cxr($$0, lu.g.e($$1), $$2, $$4, $$3);
    }
 
-   public Map<String, cxr.a> a() {
-      return this.c;
+   public String a() {
+      return this.e;
    }
 
-   public static record a(jm<eqo> b, double c, double d, float e) {
-      public static final Codec<cxr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  eqo.b.fieldOf("type").forGetter(cxr.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(cxr.a::b),
-                  Codec.DOUBLE.fieldOf("z").forGetter(cxr.a::c),
-                  Codec.FLOAT.fieldOf("rotation").forGetter(cxr.a::d)
-               )
-               .apply($$0, cxr.a::new)
-      );
+   public jn<cvg> b() {
+      return this.f;
+   }
 
-      public jm<eqo> a() {
-         return this.b;
-      }
+   public float c() {
+      return this.g;
+   }
 
-      public double b() {
-         return this.c;
-      }
+   public Map<jn<ctd>, String> d() {
+      return this.h;
+   }
 
-      public double c() {
-         return this.d;
-      }
-
-      public float d() {
-         return this.e;
-      }
+   public xd e() {
+      return this.i;
    }
 }

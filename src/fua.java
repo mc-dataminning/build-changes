@@ -1,96 +1,71 @@
-import com.mojang.authlib.properties.PropertyMap;
-import java.io.File;
-import java.net.Proxy;
-import java.nio.file.Path;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class fua {
-   public final fua.d a;
-   public final faa b;
-   public final fua.a c;
-   public final fua.b d;
-   public final fua.c e;
+   private final gbr a;
+   private final gbz b;
+   private final Predicate<gbu.a> c;
+   @Nullable
+   private xy d = null;
+   private int e;
+   private int f;
+   @Nullable
+   private xt g;
 
-   public fua(fua.d $$0, faa $$1, fua.a $$2, fua.b $$3, fua.c $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   public fua(gcf $$0, Predicate<gbu.a> $$1) {
+      this.a = $$0.b();
+      this.b = new gbz($$0.a().b().leadingContextMessageCount());
+      this.c = $$1;
+      this.e = this.a.b();
    }
 
-   public static class a {
-      public final File a;
-      public final File b;
-      public final File c;
-      @Nullable
-      public final String d;
+   public void a(int $$0, fua.a $$1) {
+      int $$2 = 0;
 
-      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+      while ($$2 < $$0) {
+         gbt $$3 = this.a.b(this.e);
+         if ($$3 == null) {
+            break;
+         }
 
-      public Path a() {
-         return this.d == null ? this.c.toPath() : grg.a(this.c.toPath(), this.d);
-      }
-   }
+         int $$4 = this.e--;
+         if ($$3 instanceof gbu.a $$5 && !$$5.g().equals(this.g)) {
+            if (this.a($$1, $$5)) {
+               if (this.f > 0) {
+                  $$1.a(xd.a("gui.chatSelection.fold", this.f));
+                  this.f = 0;
+               }
 
-   public static class b {
-      public final boolean a;
-      public final String b;
-      public final String c;
-      public final boolean d;
-      public final boolean e;
+               $$1.a($$4, $$5);
+               $$2++;
+            } else {
+               this.f++;
+            }
 
-      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
+            this.g = $$5.g();
+         }
       }
    }
 
-   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
-      public boolean a() {
-         return !azl.h(this.b) || !azl.h(this.c) || !azl.h(this.d);
-      }
+   private boolean a(fua.a $$0, gbu.a $$1) {
+      xt $$2 = $$1.g();
+      boolean $$3 = this.b.b($$2);
+      if (this.c.test($$1)) {
+         this.b.a($$2);
+         if (this.d != null && !this.d.a($$2.k())) {
+            $$0.a(xd.a("gui.chatSelection.join", $$1.f().getName()).a(n.o));
+         }
 
-      @Nullable
-      public String b() {
-         return this.a;
-      }
-
-      @Nullable
-      public String c() {
-         return this.b;
-      }
-
-      @Nullable
-      public String d() {
-         return this.c;
-      }
-
-      @Nullable
-      public String e() {
-         return this.d;
+         this.d = $$2.k();
+         return true;
+      } else {
+         return $$3;
       }
    }
 
-   public static class d {
-      public final fhb a;
-      public final PropertyMap b;
-      public final PropertyMap c;
-      public final Proxy d;
+   public interface a {
+      void a(int var1, gbu.a var2);
 
-      public d(fhb $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
+      void a(xd var1);
    }
 }

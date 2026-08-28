@@ -1,0 +1,124 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
+
+public class gwy implements gwo {
+   static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<gwy> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alb.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
+               ayl.a(gwy.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
+               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, gwy::new)
+   );
+   private final alb d;
+   private final List<gwy.a> e;
+   private final double f;
+   private final double g;
+
+   public gwy(alb $$0, List<gwy.a> $$1, double $$2, double $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
+   }
+
+   @Override
+   public void a(aus $$0, gwo.a $$1) {
+      alb $$2 = a.a(this.d);
+      Optional<auq> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         gwu $$4 = new gwu($$2, $$3.get(), this.e.size());
+
+         for (gwy.a $$5 : this.e) {
+            $$1.a($$5.b, new gwy.b($$4, $$5, this.f, this.g));
+         }
+      } else {
+         c.warn("Missing sprite: {}", $$2);
+      }
+   }
+
+   @Override
+   public gwq a() {
+      return gwr.d;
+   }
+
+   static record a(alb b, double c, double d, double e, double f) {
+      public static final Codec<gwy.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alb.a.fieldOf("sprite").forGetter(gwy.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(gwy.a::b),
+                  Codec.DOUBLE.fieldOf("y").forGetter(gwy.a::c),
+                  Codec.DOUBLE.fieldOf("width").forGetter(gwy.a::d),
+                  Codec.DOUBLE.fieldOf("height").forGetter(gwy.a::e)
+               )
+               .apply($$0, gwy.a::new)
+      );
+
+      public alb a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public double d() {
+         return this.e;
+      }
+
+      public double e() {
+         return this.f;
+      }
+   }
+
+   static class b implements gwo.b {
+      private final gwu a;
+      private final gwy.a b;
+      private final double c;
+      private final double d;
+
+      b(gwu $$0, gwy.a $$1, double $$2, double $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public gwe a(gwn $$0) {
+         try {
+            fbp $$1 = this.a.a();
+            double $$2 = (double)$$1.a() / this.c;
+            double $$3 = (double)$$1.b() / this.d;
+            int $$4 = azc.a(this.b.c * $$2);
+            int $$5 = azc.a(this.b.d * $$3);
+            int $$6 = azc.a(this.b.e * $$2);
+            int $$7 = azc.a(this.b.f * $$3);
+            fbp $$8 = new fbp(fbp.a.a, $$6, $$7, false);
+            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
+            return new gwe(this.b.b, new gxy($$6, $$7), $$8, auu.a);
+         } catch (Exception var16) {
+            gwy.c.error("Failed to unstitch region {}", this.b.b, var16);
+         } finally {
+            this.a.b();
+         }
+
+         return gwa.a();
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
+   }
+}

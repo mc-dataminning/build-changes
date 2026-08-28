@@ -1,46 +1,42 @@
-import it.unimi.dsi.fastutil.doubles.DoubleArrayList;
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-import java.util.Arrays;
+import com.google.common.collect.Sets;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class exe extends exv {
-   private final DoubleList b;
-   private final DoubleList c;
-   private final DoubleList d;
+public record exe(exa b, exa c) implements exa {
+   public static final MapCodec<exe> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(exb.a.fieldOf("min").forGetter(exe::c), exb.a.fieldOf("max").forGetter(exe::d)).apply($$0, exe::new)
+   );
 
-   protected exe(exl $$0, double[] $$1, double[] $$2, double[] $$3) {
-      this(
-         $$0,
-         DoubleArrayList.wrap(Arrays.copyOf($$1, $$0.b() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$2, $$0.c() + 1)),
-         DoubleArrayList.wrap(Arrays.copyOf($$3, $$0.d() + 1))
-      );
+   @Override
+   public ewz b() {
+      return exb.c;
    }
 
-   exe(exl $$0, DoubleList $$1, DoubleList $$2, DoubleList $$3) {
-      super($$0);
-      int $$4 = $$0.b() + 1;
-      int $$5 = $$0.c() + 1;
-      int $$6 = $$0.d() + 1;
-      if ($$4 == $$1.size() && $$5 == $$2.size() && $$6 == $$3.size()) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      } else {
-         throw (IllegalArgumentException)ad.b(new IllegalArgumentException("Lengths of point arrays must be consistent with the size of the VoxelShape."));
-      }
+   public static exe a(float $$0, float $$1) {
+      return new exe(ewx.a($$0), ewx.a($$1));
    }
 
    @Override
-   public DoubleList a(ji.a $$0) {
-      switch ($$0) {
-         case a:
-            return this.b;
-         case b:
-            return this.c;
-         case c:
-            return this.d;
-         default:
-            throw new IllegalArgumentException();
-      }
+   public int a(est $$0) {
+      return azc.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   }
+
+   @Override
+   public float b(est $$0) {
+      return azc.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<evm<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public exa c() {
+      return this.b;
+   }
+
+   public exa d() {
+      return this.c;
    }
 }

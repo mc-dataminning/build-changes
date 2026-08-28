@@ -1,127 +1,181 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public final class dzm {
-   final dzl a;
-   private final jn<eoh.a> b;
-   private final dze c;
-   private final def.f d;
-   private final dzq e;
-   private final dzl f;
-   private final dzl g;
-   private final Map<akq<eoh.a>, eoh> h;
-   private final Map<akr, dzl> i;
-
-   public static dzm a(jn.a $$0, akq<dzd> $$1, long $$2) {
-      return a($$0.b(lu.aO).b($$1).a(), $$0.b(lu.aP), $$2);
+public abstract class dzm {
+   public static dzm.b a(int $$0, int $$1) {
+      return new dzm.b($$0 - 1, $$1 + 1);
    }
 
-   public static dzm a(dzd $$0, jn<eoh.a> $$1, long $$2) {
-      return new dzm($$0, $$1, $$2);
+   public static dzm.b b(int $$0, int $$1) {
+      return new dzm.b($$0, $$1);
    }
 
-   private dzm(dzd $$0, jn<eoh.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(akr.b("aquifer")).e();
-      this.g = this.a.a(akr.b("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new dzq(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
+   public static dzm a(int $$0) {
+      return new dzm.c($$0, false);
+   }
 
-      class a implements dyr.f {
-         private final Map<dyr, dyr> d = new HashMap<>();
+   public static dzm b(int $$0) {
+      return new dzm.c($$0 + 1, false);
+   }
 
-         private ayw a(long $$0) {
-            return new dyz($$2 + $$0);
-         }
+   public static dzm c(int $$0) {
+      return new dzm.c($$0, true);
+   }
 
-         @Override
-         public dyr.c a(dyr.c $$0) {
-            jm<eoh.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(dzh.a)) {
-                  eoh $$2 = eoh.a(this.a(0L), new eoh.a(-7, 1.0, 1.0));
-                  return new dyr.c($$1, $$2);
-               }
+   public static dzm d(int $$0) {
+      return new dzm.c($$0 - 1, true);
+   }
 
-               if ($$1.a(dzh.b)) {
-                  eoh $$3 = eoh.a(this.a(1L), new eoh.a(-7, 1.0, 1.0));
-                  return new dyr.c($$1, $$3);
-               }
+   public static dzm a() {
+      return dzm.a.a;
+   }
 
-               if ($$1.a(dzh.j)) {
-                  eoh $$4 = eoh.b(dzm.this.a.a(dzh.j.a()), new eoh.a(0, 0.0));
-                  return new dyr.c($$1, $$4);
-               }
-            }
+   public static dzm a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
 
-            eoh $$5 = dzm.this.a($$1.e().orElseThrow());
-            return new dyr.c($$1, $$5);
-         }
+   public abstract OptionalInt b();
 
-         private dyr a(dyr $$0) {
-            if ($$0 instanceof eoe $$1) {
-               ayw $$2 = $$3 ? this.a(0L) : dzm.this.a.a(akr.b("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dyr)($$0 instanceof dys.i ? new dys.i($$2) : $$0);
-            }
-         }
+   public abstract OptionalInt c();
 
-         @Override
-         public dyr apply(dyr $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
+   public abstract OptionalInt d();
+
+   public dzm a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public dzm b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<dzm> a(ddy $$0, je $$1, int $$2, Predicate<dua> $$3, Predicate<dua> $$4) {
+      je.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jj.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jj.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(ddy $$0, int $$1, Predicate<dua> $$2, Predicate<dua> $$3, je.a $$4, int $$5, jj $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends dzm {
+      static final dzm.a a = new dzm.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dzm {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
       }
 
-      this.c = $$0.i().a(new a());
-      dyr.f $$4 = new dyr.f() {
-         private final Map<dyr, dyr> a = new HashMap<>();
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
 
-         private dyr a(dyr $$0) {
-            if ($$0 instanceof dys.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dys.l $$2 ? $$2.k() : $$0;
-            }
-         }
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
 
-         @Override
-         public dyr apply(dyr $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new def.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   public eoh a(akq<eoh.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> dzh.a(this.b, this.a, $$0));
-   }
+   public static final class c extends dzm {
+      private final int a;
+      private final boolean b;
 
-   public dzl a(akr $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   public dze a() {
-      return this.c;
-   }
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
 
-   public def.f b() {
-      return this.d;
-   }
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
 
-   public dzq c() {
-      return this.e;
-   }
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
 
-   public dzl d() {
-      return this.f;
-   }
-
-   public dzl e() {
-      return this.g;
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

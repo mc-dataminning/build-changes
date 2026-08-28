@@ -1,51 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public enum fgw {
-   a(new cuq(cut.qS)),
-   b(new cuq(dga.cj)),
-   c(new cuq(cut.lH)),
-   d(new cuq(cut.pe), new cuq(cut.oW)),
-   e(new cuq(cut.qA), new cuq(cut.ou)),
-   f(new cuq(cut.qS)),
-   g(new cuq(cut.pX)),
-   h(new cuq(dga.b)),
-   i(new cuq(cut.qA), new cuq(cut.oA)),
-   j(new cuq(cut.qS)),
-   k(new cuq(dga.dI)),
-   l(new cuq(cut.pc), new cuq(cut.pQ)),
-   m(new cuq(cut.qS)),
-   n(new cuq(cut.pX)),
-   o(new cuq(cut.fF)),
-   p(new cuq(cut.pT)),
-   q(new cuq(cut.pX)),
-   r(new cuq(cut.hB));
+public class fgw extends fgz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xd c = xd.c("mco.snapshot.creating");
+   private final long d;
+   private final fgs e;
+   private final String f;
+   private final String g;
+   private final fdf h;
+   @Nullable
+   private fhb i;
+   @Nullable
+   private fhc j;
 
-   public static final List<fgw> s = ImmutableList.of(m, n);
-   public static final List<fgw> t = ImmutableList.of(j, k, l);
-   public static final List<fgw> u = ImmutableList.of(f, g, h, i);
-   public static final List<fgw> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<fgw, List<fgw>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cuq> x;
-
-   private fgw(final cuq... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   public fgw(fdf $$0, long $$1, fgs $$2, String $$3, String $$4) {
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$0;
    }
 
-   public static List<fgw> a(crj $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   @Override
+   public void run() {
+      fdk $$0 = fdk.a();
+
+      try {
+         feb $$1 = $$0.a(Long.valueOf(this.d));
+         this.i = new fhb($$1.a, this.f, this.g);
+         this.j = new fhc(this.e, $$1.a, ffx.a, () -> fib.Q().execute(() -> fdf.a($$1, this.h, true)));
+         if (this.d()) {
+            return;
+         }
+
+         this.i.run();
+         if (this.d()) {
+            return;
+         }
+
+         this.j.run();
+      } catch (fev var3) {
+         b.error("Couldn't create snapshot world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Couldn't create snapshot world", var4);
+         this.a(var4);
+      }
    }
 
-   public List<cuq> a() {
-      return this.x;
+   @Override
+   public xd a() {
+      return c;
+   }
+
+   @Override
+   public void b() {
+      super.b();
+      if (this.i != null) {
+         this.i.b();
+      }
+
+      if (this.j != null) {
+         this.j.b();
+      }
    }
 }

@@ -1,338 +1,188 @@
-import com.google.common.collect.Lists;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.context.ContextChain;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
+import com.mojang.datafixers.util.Pair;
 import java.util.Collection;
-import java.util.List;
+import javax.annotation.Nullable;
 
 public class anj {
-   public static final SuggestionProvider<et> a = ($$0, $$1) -> {
-      alb.b $$2 = ((et)$$0.getSource()).l().be();
-      return ey.a($$2.a(lu.bc), $$1);
+   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xd.b("commands.function.error.argument_not_compound", $$0));
+   static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xd.b("commands.function.scheduled.no_functions", $$0));
+   @VisibleForTesting
+   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> xd.b("commands.function.instantiationFailure", $$0, $$1));
+   public static final SuggestionProvider<et> b = ($$0, $$1) -> {
+      alq $$2 = ((et)$$0.getSource()).l().aE();
+      ey.a($$2.e(), $$1, "#");
+      return ey.a($$2.d(), $$1);
    };
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wz.b("commands.drop.no_held_items", $$0));
-   private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> wz.b("commands.drop.no_loot_table", $$0));
+   static final anj.b<et> e = new anj.b<et>() {
+      public void a(et $$0, alb $$1, int $$2) {
+         $$0.a(() -> xd.a("commands.function.result", xd.a($$1), $$2), true);
+      }
+   };
 
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
+   public static void a(CommandDispatcher<et> $$0) {
+      LiteralArgumentBuilder<et> $$1 = eu.a("with");
+
+      for (aps.c $$2 : aps.c) {
+         $$2.a($$1, $$1x -> $$1x.executes(new anj.c() {
+               @Override
+               protected uf a(CommandContext<et> $$0) throws CommandSyntaxException {
+                  return $$2.a($$0).a();
+               }
+            }).then(eu.a("path", fl.a()).executes(new anj.c() {
+               @Override
+               protected uf a(CommandContext<et> $$0) throws CommandSyntaxException {
+                  return anj.a(fl.a($$0, "path"), $$2.a($$0));
+               }
+            })));
+      }
+
       $$0.register(
-         a(
-            (LiteralArgumentBuilder)eu.a("loot").requires($$0x -> $$0x.c(2)),
-            ($$1x, $$2) -> $$1x.then(
-                     eu.a("fish")
-                        .then(
-                           eu.a("loot_table", fv.a($$1))
-                              .suggests(a)
-                              .then(
-                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("pos", gp.a())
-                                             .executes($$1xx -> a($$1xx, fv.a($$1xx, "loot_table"), gp.a($$1xx, "pos"), cuq.l, $$2)))
-                                          .then(
-                                             eu.a("tool", hc.a($$1))
-                                                .executes(
-                                                   $$1xx -> a($$1xx, fv.a($$1xx, "loot_table"), gp.a($$1xx, "pos"), hc.a($$1xx, "tool").a(1, false), $$2)
-                                                )
-                                          ))
-                                       .then(
-                                          eu.a("mainhand")
-                                             .executes($$1xx -> a($$1xx, fv.a($$1xx, "loot_table"), gp.a($$1xx, "pos"), a((et)$$1xx.getSource(), bsy.a), $$2))
-                                       ))
-                                    .then(
-                                       eu.a("offhand")
-                                          .executes($$1xx -> a($$1xx, fv.a($$1xx, "loot_table"), gp.a($$1xx, "pos"), a((et)$$1xx.getSource(), bsy.b), $$2))
-                                    )
-                              )
-                        )
-                  )
-                  .then(eu.a("loot").then(eu.a("loot_table", fv.a($$1)).suggests(a).executes($$1xx -> a($$1xx, fv.a($$1xx, "loot_table"), $$2))))
-                  .then(eu.a("kill").then(eu.a("target", fg.a()).executes($$1xx -> a($$1xx, fg.a($$1xx, "target"), $$2))))
-                  .then(
-                     eu.a("mine")
-                        .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("pos", gp.a())
-                                       .executes($$1xx -> a($$1xx, gp.a($$1xx, "pos"), cuq.l, $$2)))
-                                    .then(eu.a("tool", hc.a($$1)).executes($$1xx -> a($$1xx, gp.a($$1xx, "pos"), hc.a($$1xx, "tool").a(1, false), $$2))))
-                                 .then(eu.a("mainhand").executes($$1xx -> a($$1xx, gp.a($$1xx, "pos"), a((et)$$1xx.getSource(), bsy.a), $$2))))
-                              .then(eu.a("offhand").executes($$1xx -> a($$1xx, gp.a($$1xx, "pos"), a((et)$$1xx.getSource(), bsy.b), $$2)))
-                        )
-                  )
-         )
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("function").requires($$0x -> $$0x.c(2)))
+            .then(((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("name", hb.a()).suggests(b).executes(new anj.c() {
+               @Nullable
+               @Override
+               protected uf a(CommandContext<et> $$0) {
+                  return null;
+               }
+            })).then(eu.a("arguments", fd.a()).executes(new anj.c() {
+               @Override
+               protected uf a(CommandContext<et> $$0) {
+                  return fd.a($$0, "arguments");
+               }
+            }))).then($$1))
       );
    }
 
-   private static <T extends ArgumentBuilder<et, T>> T a(T $$0, anj.c $$1) {
-      return (T)$$0.then(
-            ((LiteralArgumentBuilder)eu.a("replace")
-                  .then(
-                     eu.a("entity")
-                        .then(
-                           eu.a("entities", fg.b())
-                              .then(
-                                 $$1.construct(eu.a("slot", gb.a()), ($$0x, $$1x, $$2) -> a(fg.b($$0x, "entities"), gb.a($$0x, "slot"), $$1x.size(), $$1x, $$2))
-                                    .then(
-                                       $$1.construct(
-                                          eu.a("count", IntegerArgumentType.integer(0)),
-                                          ($$0x, $$1x, $$2) -> a(
-                                                fg.b($$0x, "entities"), gb.a($$0x, "slot"), IntegerArgumentType.getInteger($$0x, "count"), $$1x, $$2
-                                             )
-                                       )
-                                    )
-                              )
-                        )
-                  ))
-               .then(
-                  eu.a("block")
-                     .then(
-                        eu.a("targetPos", gp.a())
-                           .then(
-                              $$1.construct(
-                                    eu.a("slot", gb.a()),
-                                    ($$0x, $$1x, $$2) -> a((et)$$0x.getSource(), gp.a($$0x, "targetPos"), gb.a($$0x, "slot"), $$1x.size(), $$1x, $$2)
-                                 )
-                                 .then(
-                                    $$1.construct(
-                                       eu.a("count", IntegerArgumentType.integer(0)),
-                                       ($$0x, $$1x, $$2) -> a(
-                                             (et)$$0x.getSource(),
-                                             gp.a($$0x, "targetPos"),
-                                             IntegerArgumentType.getInteger($$0x, "slot"),
-                                             IntegerArgumentType.getInteger($$0x, "count"),
-                                             $$1x,
-                                             $$2
-                                          )
-                                    )
-                                 )
-                           )
-                     )
-               )
-         )
-         .then(eu.a("insert").then($$1.construct(eu.a("targetPos", gp.a()), ($$0x, $$1x, $$2) -> a((et)$$0x.getSource(), gp.a($$0x, "targetPos"), $$1x, $$2))))
-         .then(eu.a("give").then($$1.construct(eu.a("players", fg.d()), ($$0x, $$1x, $$2) -> a(fg.f($$0x, "players"), $$1x, $$2))))
-         .then(eu.a("spawn").then($$1.construct(eu.a("targetPos", gw.a()), ($$0x, $$1x, $$2) -> a((et)$$0x.getSource(), gw.a($$0x, "targetPos"), $$1x, $$2))));
-   }
-
-   private static bqk a(et $$0, jd $$1) throws CommandSyntaxException {
-      dqh $$2 = $$0.e().c_($$1);
-      if (!($$2 instanceof bqk)) {
-         throw and.a.create($$1.u(), $$1.v(), $$1.w());
+   static uf a(fl.g $$0, apr $$1) throws CommandSyntaxException {
+      vc $$2 = aps.a($$0, $$1);
+      if ($$2 instanceof uf) {
+         return (uf)$$2;
       } else {
-         return (bqk)$$2;
+         throw c.create($$2.c().a());
       }
    }
 
-   private static int a(et $$0, jd $$1, List<cuq> $$2, anj.a $$3) throws CommandSyntaxException {
-      bqk $$4 = a($$0, $$1);
-      List<cuq> $$5 = Lists.newArrayListWithCapacity($$2.size());
-
-      for (cuq $$6 : $$2) {
-         if (a($$4, $$6.s())) {
-            $$4.e();
-            $$5.add($$6);
-         }
-      }
-
-      $$3.accept($$5);
-      return $$5.size();
+   public static et a(et $$0) {
+      return $$0.a().b(2);
    }
 
-   private static boolean a(bqk $$0, cuq $$1) {
-      boolean $$2 = false;
-
-      for (int $$3 = 0; $$3 < $$0.b() && !$$1.e(); $$3++) {
-         cuq $$4 = $$0.a($$3);
-         if ($$0.b($$3, $$1)) {
-            if ($$4.e()) {
-               $$0.a($$3, $$1);
-               $$2 = true;
-               break;
-            }
-
-            if (a($$4, $$1)) {
-               int $$5 = $$1.j() - $$4.H();
-               int $$6 = Math.min($$1.H(), $$5);
-               $$1.h($$6);
-               $$4.g($$6);
-               $$2 = true;
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   private static int a(et $$0, jd $$1, int $$2, int $$3, List<cuq> $$4, anj.a $$5) throws CommandSyntaxException {
-      bqk $$6 = a($$0, $$1);
-      int $$7 = $$6.b();
-      if ($$2 >= 0 && $$2 < $$7) {
-         List<cuq> $$8 = Lists.newArrayListWithCapacity($$4.size());
-
-         for (int $$9 = 0; $$9 < $$3; $$9++) {
-            int $$10 = $$2 + $$9;
-            cuq $$11 = $$9 < $$4.size() ? $$4.get($$9) : cuq.l;
-            if ($$6.b($$10, $$11)) {
-               $$6.a($$10, $$11);
-               $$8.add($$11);
-            }
-         }
-
-         $$5.accept($$8);
-         return $$8.size();
+   public static <T extends ev<T>> void a(Collection<ih<T>> $$0, @Nullable uf $$1, T $$2, T $$3, hu<T> $$4, anj.b<T> $$5, ho $$6) throws CommandSyntaxException {
+      if ($$6.c()) {
+         a($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
-         throw and.c.create($$2);
+         b($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   private static boolean a(cuq $$0, cuq $$1) {
-      return $$0.H() <= $$0.j() && cuq.c($$0, $$1);
+   private static <T extends ev<T>> void a(@Nullable uf $$0, hu<T> $$1, CommandDispatcher<T> $$2, T $$3, ih<T> $$4, alb $$5, eq $$6, boolean $$7) throws CommandSyntaxException {
+      try {
+         ij<T> $$8 = $$4.a($$0, $$2);
+         $$1.a(new ia<>($$8, $$6, $$7).bind($$3));
+      } catch (ew var9) {
+         throw a.create($$5, var9.a());
+      }
    }
 
-   private static int a(Collection<aqv> $$0, List<cuq> $$1, anj.a $$2) throws CommandSyntaxException {
-      List<cuq> $$3 = Lists.newArrayListWithCapacity($$1.size());
+   private static <T extends ev<T>> eq a(T $$0, anj.b<T> $$1, alb $$2, eq $$3) {
+      return $$0.y() ? $$3 : ($$4, $$5) -> {
+         $$1.a($$0, $$2, $$5);
+         $$3.onResult($$4, $$5);
+      };
+   }
 
-      for (cuq $$4 : $$1) {
-         for (aqv $$5 : $$0) {
-            if ($$5.fY().f($$4.s())) {
-               $$3.add($$4);
+   private static <T extends ev<T>> void a(Collection<ih<T>> $$0, @Nullable uf $$1, T $$2, T $$3, hu<T> $$4, anj.b<T> $$5) throws CommandSyntaxException {
+      CommandDispatcher<T> $$6 = $$2.x();
+      T $$7 = $$3.a_();
+      eq $$8 = eq.chain($$2.p(), $$4.b().d());
+
+      for (ih<T> $$9 : $$0) {
+         alb $$10 = $$9.a();
+         eq $$11 = a($$2, $$5, $$10, $$8);
+         a($$1, $$4, $$6, $$7, $$9, $$10, $$11, true);
+      }
+
+      $$4.a(id.a());
+   }
+
+   private static <T extends ev<T>> void b(Collection<ih<T>> $$0, @Nullable uf $$1, T $$2, T $$3, hu<T> $$4, anj.b<T> $$5) throws CommandSyntaxException {
+      CommandDispatcher<T> $$6 = $$2.x();
+      T $$7 = $$3.a_();
+      eq $$8 = $$2.p();
+      if (!$$0.isEmpty()) {
+         if ($$0.size() == 1) {
+            ih<T> $$9 = $$0.iterator().next();
+            alb $$10 = $$9.a();
+            eq $$11 = a($$2, $$5, $$10, $$8);
+            a($$1, $$4, $$6, $$7, $$9, $$10, $$11, false);
+         } else if ($$8 == eq.a) {
+            for (ih<T> $$12 : $$0) {
+               alb $$13 = $$12.a();
+               eq $$14 = a($$2, $$5, $$13, $$8);
+               a($$1, $$4, $$6, $$7, $$12, $$13, $$14, false);
             }
-         }
-      }
-
-      $$2.accept($$3);
-      return $$3.size();
-   }
-
-   private static void a(bsr $$0, List<cuq> $$1, int $$2, int $$3, List<cuq> $$4) {
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         cuq $$6 = $$5 < $$1.size() ? $$1.get($$5) : cuq.l;
-         bug $$7 = $$0.a_($$2 + $$5);
-         if ($$7 != bug.a && $$7.a($$6.s())) {
-            $$4.add($$6);
-         }
-      }
-   }
-
-   private static int a(Collection<? extends bsr> $$0, int $$1, int $$2, List<cuq> $$3, anj.a $$4) throws CommandSyntaxException {
-      List<cuq> $$5 = Lists.newArrayListWithCapacity($$3.size());
-
-      for (bsr $$6 : $$0) {
-         if ($$6 instanceof aqv $$7) {
-            a($$6, $$3, $$1, $$2, $$5);
-            $$7.cd.d();
          } else {
-            a($$6, $$3, $$1, $$2, $$5);
+            class a {
+               boolean a;
+               int b;
+
+               public void a(int $$0) {
+                  this.a = true;
+                  this.b += $$0;
+               }
+            }
+
+            a $$15 = new a();
+            eq $$16 = ($$1x, $$2x) -> $$15.a($$2x);
+
+            for (ih<T> $$17 : $$0) {
+               alb $$18 = $$17.a();
+               eq $$19 = a($$2, $$5, $$18, $$16);
+               a($$1, $$4, $$6, $$7, $$17, $$18, $$19, false);
+            }
+
+            $$4.a(($$2x, $$3x) -> {
+               if ($$15.a) {
+                  $$8.onSuccess($$15.b);
+               }
+            });
          }
       }
-
-      $$4.accept($$5);
-      return $$5.size();
    }
 
-   private static int a(et $$0, exc $$1, List<cuq> $$2, anj.a $$3) throws CommandSyntaxException {
-      aqu $$4 = $$0.e();
-      $$2.forEach($$2x -> {
-         cjh $$3x = new cjh($$4, $$1.c, $$1.d, $$1.e, $$2x.s());
-         $$3x.v();
-         $$4.b($$3x);
-      });
-      $$3.accept($$2);
-      return $$2.size();
+   public interface b<T> {
+      void a(T var1, alb var2, int var3);
    }
 
-   private static void a(et $$0, List<cuq> $$1) {
-      if ($$1.size() == 1) {
-         cuq $$2 = $$1.get(0);
-         $$0.a(() -> wz.a("commands.drop.success.single", $$2.H(), $$2.F()), false);
-      } else {
-         $$0.a(() -> wz.a("commands.drop.success.multiple", $$1.size()), false);
-      }
-   }
+   abstract static class c extends hq.b<et> implements hq.a<et> {
+      @Nullable
+      protected abstract uf a(CommandContext<et> var1) throws CommandSyntaxException;
 
-   private static void a(et $$0, List<cuq> $$1, akq<erw> $$2) {
-      if ($$1.size() == 1) {
-         cuq $$3 = $$1.get(0);
-         $$0.a(() -> wz.a("commands.drop.success.single_with_table", $$3.H(), $$3.F(), wz.a($$2.a())), false);
-      } else {
-         $$0.a(() -> wz.a("commands.drop.success.multiple_with_table", $$1.size(), wz.a($$2.a())), false);
-      }
-   }
+      public void a(et $$0, ContextChain<et> $$1, ho $$2, hu<et> $$3) throws CommandSyntaxException {
+         CommandContext<et> $$4 = $$1.getTopContext().copyFor($$0);
+         Pair<alb, Collection<ih<et>>> $$5 = hb.c($$4, "name");
+         Collection<ih<et>> $$6 = (Collection<ih<et>>)$$5.getSecond();
+         if ($$6.isEmpty()) {
+            throw anj.d.create(xd.a((alb)$$5.getFirst()));
+         } else {
+            uf $$7 = this.a($$4);
+            et $$8 = anj.a($$0);
+            if ($$6.size() == 1) {
+               $$0.a(() -> xd.a("commands.function.scheduled.single", xd.a($$6.iterator().next().a())), true);
+            } else {
+               $$0.a(() -> xd.a("commands.function.scheduled.multiple", xg.b($$6.stream().map(ih::a).toList(), xd::a)), true);
+            }
 
-   private static cuq a(et $$0, bsy $$1) throws CommandSyntaxException {
-      bsr $$2 = $$0.g();
-      if ($$2 instanceof btn) {
-         return ((btn)$$2).a($$1);
-      } else {
-         throw b.create($$2.S_());
-      }
-   }
-
-   private static int a(CommandContext<et> $$0, jd $$1, cuq $$2, anj.b $$3) throws CommandSyntaxException {
-      et $$4 = (et)$$0.getSource();
-      aqu $$5 = $$4.e();
-      dtc $$6 = $$5.a_($$1);
-      dqh $$7 = $$5.c_($$1);
-      eru.a $$8 = new eru.a($$5).a(eun.f, exc.b($$1)).a(eun.g, $$6).b(eun.h, $$7).b(eun.a, $$4.f()).a(eun.i, $$2);
-      List<cuq> $$9 = $$6.a($$8);
-      return $$3.accept($$0, $$9, $$2x -> a($$4, $$2x, $$6.b().v()));
-   }
-
-   private static int a(CommandContext<et> $$0, bsr $$1, anj.b $$2) throws CommandSyntaxException {
-      if (!($$1 instanceof btn)) {
-         throw c.create($$1.S_());
-      } else {
-         akq<erw> $$3 = ((btn)$$1).eA();
-         et $$4 = (et)$$0.getSource();
-         eru.a $$5 = new eru.a($$4.e());
-         bsr $$6 = $$4.f();
-         if ($$6 instanceof cmx $$7) {
-            $$5.a(eun.b, $$7);
+            anj.a($$6, $$7, $$0, $$8, $$3, anj.e, $$2);
          }
-
-         $$5.a(eun.c, $$1.dP().p());
-         $$5.b(eun.e, $$6);
-         $$5.b(eun.d, $$6);
-         $$5.a(eun.a, $$1);
-         $$5.a(eun.f, $$4.d());
-         eru $$8 = $$5.a(eum.g);
-         erw $$9 = $$4.l().be().b($$3);
-         List<cuq> $$10 = $$9.a($$8);
-         return $$2.accept($$0, $$10, $$2x -> a($$4, $$2x, $$3));
       }
-   }
-
-   private static int a(CommandContext<et> $$0, jm<erw> $$1, anj.b $$2) throws CommandSyntaxException {
-      et $$3 = (et)$$0.getSource();
-      eru $$4 = new eru.a($$3.e()).b(eun.a, $$3.f()).a(eun.f, $$3.d()).a(eum.c);
-      return a($$0, $$1, $$4, $$2);
-   }
-
-   private static int a(CommandContext<et> $$0, jm<erw> $$1, jd $$2, cuq $$3, anj.b $$4) throws CommandSyntaxException {
-      et $$5 = (et)$$0.getSource();
-      eru $$6 = new eru.a($$5.e()).a(eun.f, exc.b($$2)).a(eun.i, $$3).b(eun.a, $$5.f()).a(eum.f);
-      return a($$0, $$1, $$6, $$4);
-   }
-
-   private static int a(CommandContext<et> $$0, jm<erw> $$1, eru $$2, anj.b $$3) throws CommandSyntaxException {
-      et $$4 = (et)$$0.getSource();
-      List<cuq> $$5 = $$1.a().a($$2);
-      return $$3.accept($$0, $$5, $$1x -> a($$4, $$1x));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void accept(List<cuq> var1) throws CommandSyntaxException;
-   }
-
-   @FunctionalInterface
-   interface b {
-      int accept(CommandContext<et> var1, List<cuq> var2, anj.a var3) throws CommandSyntaxException;
-   }
-
-   @FunctionalInterface
-   interface c {
-      ArgumentBuilder<et, ?> construct(ArgumentBuilder<et, ?> var1, anj.b var2);
    }
 }

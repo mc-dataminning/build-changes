@@ -1,20 +1,26 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record dal(daj c) implements dau {
-   public static final MapCodec<dal> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(daj.b.fieldOf("value").forGetter(dal::b)).apply($$0, dal::new));
-
+public interface dal extends czt<dam> {
    @Override
-   public float a(int $$0, ayw $$1, float $$2) {
-      return $$2 + this.c.a($$0);
+   default czz<?> e() {
+      return czz.g;
    }
 
    @Override
-   public MapCodec<dal> a() {
-      return a;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
-   public daj b() {
-      return this.c;
+   @Override
+   default cvl g() {
+      return new cvl(dgx.ob);
    }
+
+   default boolean a(dam $$0, dds $$1) {
+      return this.a($$0.c()) && this.b($$0.d()) && this.c($$0.e());
+   }
+
+   boolean a(cvl var1);
+
+   boolean b(cvl var1);
+
+   boolean c(cvl var1);
 }

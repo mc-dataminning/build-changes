@@ -1,29 +1,44 @@
-public class agy implements zg<agi> {
-   public static final yx<vw, agy> a = zg.a(agy::a, agy::new);
-   private final int b;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-   public agy(int $$0) {
-      this.b = $$0;
+public record agy(String b, Instant c, long d, @Nullable xp e, xk.b f) implements zk<agq> {
+   public static final zb<wa, agy> a = zk.a(agy::a, agy::new);
+
+   private agy(wa $$0) {
+      this($$0.d(256), $$0.t(), $$0.readLong(), $$0.c(xp::a), new xk.b($$0));
    }
 
-   private agy(vw $$0) {
-      this.b = $$0.readByte();
-   }
-
-   private void a(vw $$0) {
-      $$0.k(this.b);
+   private void a(wa $$0) {
+      $$0.a(this.b, 256);
+      $$0.a(this.c);
+      $$0.b(this.d);
+      $$0.a(this.e, xp::a);
+      this.f.a($$0);
    }
 
    @Override
-   public zi<agy> a() {
-      return agg.bt;
+   public zm<agy> a() {
+      return ago.bn;
    }
 
-   public void a(agi $$0) {
+   public void a(agq $$0) {
       $$0.a(this);
    }
 
-   public int b() {
-      return this.b;
+   public Instant e() {
+      return this.c;
+   }
+
+   public long f() {
+      return this.d;
+   }
+
+   @Nullable
+   public xp g() {
+      return this.e;
+   }
+
+   public xk.b h() {
+      return this.f;
    }
 }

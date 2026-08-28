@@ -1,11 +1,37 @@
-public class awl {
-   public static final awu<dxz> a = a("vibrations");
-   public static final awu<dxz> b = a("warden_can_listen");
-   public static final awu<dxz> c = a("shrieker_can_listen");
-   public static final awu<dxz> d = a("ignore_vibrations_sneaking");
-   public static final awu<dxz> e = a("allay_can_listen");
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-   private static awu<dxz> a(String $$0) {
-      return awu.a(lu.G, akr.b($$0));
-   }
+public interface awl {
+   DecimalFormat a = ad.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   awl b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   awl c = $$0 -> a.format((double)$$0 * 0.1);
+   awl d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   awl e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " min" : $$1 + " s";
+      }
+   };
+
+   String format(int var1);
 }

@@ -1,11 +1,11 @@
-public class awy {
-   public static final awu<ejg> a = a("normal");
-   public static final awu<ejg> b = a("extended");
+public final class awy {
+   public static final axi<eqa> a = a("water");
+   public static final axi<eqa> b = a("lava");
 
    private awy() {
    }
 
-   private static awu<ejg> a(String $$0) {
-      return awu.a(lu.aY, akr.b($$0));
+   private static axi<eqa> a(String $$0) {
+      return axi.a(lv.D, alb.b($$0));
    }
 }

@@ -1,43 +1,53 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efh implements eei {
-   public static final Codec<efh> a = RecordCodecBuilder.create(
+public class efh implements efg {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<efh> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               awu.b(lu.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
-               egj.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
-               eiv.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
-               eil.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
-               bpw.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
-               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
-               bpw.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+               dzt.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               dzv.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               dzu.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               bqp.b(1, 20).fieldOf("outer_wall_distance").orElse(bqv.a(4, 5)).forGetter($$0x -> $$0x.i),
+               bqp.b(1, 20).fieldOf("distribution_points").orElse(bqv.a(3, 4)).forGetter($$0x -> $$0x.j),
+               bqp.b(0, 10).fieldOf("point_offset").orElse(bqv.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, efh::new)
    );
-   public final awu<dfy> b;
-   public final egj c;
-   public final jm<eiv> d;
-   public final eil e;
-   public final bpw f;
-   public final float g;
-   public final int h;
-   public final float i;
-   public final bpw j;
-   public final float k;
+   public final dzt c;
+   public final dzv d;
+   public final dzu e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final bqp i;
+   public final bqp j;
+   public final bqp k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   public efh(awu<dfy> $$0, egj $$1, jm<eiv> $$2, eil $$3, bpw $$4, float $$5, int $$6, float $$7, bpw $$8, float $$9) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
-      this.k = $$9;
+   public efh(dzt $$0, dzv $$1, dzu $$2, double $$3, double $$4, boolean $$5, bqp $$6, bqp $$7, bqp $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

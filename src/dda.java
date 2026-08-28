@@ -1,78 +1,76 @@
-import com.mojang.serialization.Dynamic;
+import java.util.function.Predicate;
 
-public final class dda {
-   private final String a;
-   private final dct b;
-   private final boolean c;
-   private final bqo d;
-   private final boolean e;
-   private final dcs f;
-   private final ddr g;
+public class dda {
+   private final eye a;
+   private final eye b;
+   private final dda.a c;
+   private final dda.b d;
+   private final eyj e;
 
-   public dda(String $$0, dct $$1, boolean $$2, bqo $$3, boolean $$4, dcs $$5, ddr $$6) {
+   public dda(eye $$0, eye $$1, dda.a $$2, dda.b $$3, btj $$4) {
+      this($$0, $$1, $$2, $$3, eyj.a($$4));
+   }
+
+   public dda(eye $$0, eye $$1, dda.a $$2, dda.b $$3, eyj $$4) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
       this.d = $$3;
       this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
    }
 
-   public static dda a(Dynamic<?> $$0, ddr $$1) {
-      dct $$2 = dct.a($$0.get("GameType").asInt(0));
-      return new dda(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bqo.a($$0x.byteValue())).result().orElse(bqo.c),
-         $$0.get("allowCommands").asBoolean($$2 == dct.b),
-         new dcs($$0.get("GameRules")),
-         $$1
-      );
-   }
-
-   public String a() {
-      return this.a;
-   }
-
-   public dct b() {
+   public eye a() {
       return this.b;
    }
 
-   public boolean c() {
-      return this.c;
+   public eye b() {
+      return this.a;
    }
 
-   public bqo d() {
-      return this.d;
+   public eyx a(dua $$0, dcx $$1, je $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   public boolean e() {
-      return this.e;
+   public eyx a(eqb $$0, dcx $$1, je $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : eyu.a();
    }
 
-   public dcs f() {
-      return this.f;
+   public static enum a implements dda.c {
+      a(dtz.a::b),
+      b(dtz.a::a),
+      c(dtz.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(aws.aR) ? eyu.b() : eyu.a());
+
+      private final dda.c e;
+
+      private a(final dda.c $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public eyx get(dua $$0, dcx $$1, je $$2, eyj $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
+      }
    }
 
-   public ddr g() {
-      return this.g;
+   public static enum b {
+      a($$0 -> false),
+      b(eqb::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(awy.a));
+
+      private final Predicate<eqb> e;
+
+      private b(final Predicate<eqb> $$0) {
+         this.e = $$0;
+      }
+
+      public boolean a(eqb $$0) {
+         return this.e.test($$0);
+      }
    }
 
-   public dda a(dct $$0) {
-      return new dda(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public dda a(bqo $$0) {
-      return new dda(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public dda a(ddr $$0) {
-      return new dda(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public dda h() {
-      return new dda(this.a, this.b, this.c, this.d, this.e, this.f.b(), this.g);
+   public interface c {
+      eyx get(dua var1, dcx var2, je var3, eyj var4);
    }
 }

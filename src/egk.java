@@ -1,24 +1,40 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.OptionalInt;
 
-public class egk<P extends egj> {
-   public static final egk<egs> a = a("simple_state_provider", egs.b);
-   public static final egk<egt> b = a("weighted_state_provider", egt.b);
-   public static final egk<ego> c = a("noise_threshold_provider", ego.b);
-   public static final egk<egn> d = a("noise_provider", egn.g);
-   public static final egk<egl> e = a("dual_noise_provider", egl.b);
-   public static final egk<egq> f = a("rotated_block_provider", egq.b);
-   public static final egk<egp> g = a("randomized_int_state_provider", egp.b);
-   private final MapCodec<P> h;
+public class egk extends egh {
+   public static final MapCodec<egk> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.intRange(0, 81).fieldOf("limit").orElse(1).forGetter($$0x -> $$0x.e),
+               Codec.intRange(0, 16).fieldOf("lower_size").orElse(0).forGetter($$0x -> $$0x.f),
+               Codec.intRange(0, 16).fieldOf("upper_size").orElse(1).forGetter($$0x -> $$0x.g),
+               a()
+            )
+            .apply($$0, egk::new)
+   );
+   private final int e;
+   private final int f;
+   private final int g;
 
-   private static <P extends egj> egk<P> a(String $$0, MapCodec<P> $$1) {
-      return jz.a(lt.T, $$0, new egk<>($$1));
+   public egk(int $$0, int $$1, int $$2) {
+      this($$0, $$1, $$2, OptionalInt.empty());
    }
 
-   private egk(MapCodec<P> $$0) {
-      this.h = $$0;
+   public egk(int $$0, int $$1, int $$2, OptionalInt $$3) {
+      super($$3);
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public MapCodec<P> a() {
-      return this.h;
+   @Override
+   protected egi<?> b() {
+      return egi.a;
+   }
+
+   @Override
+   public int a(int $$0, int $$1) {
+      return $$1 < this.e ? this.f : this.g;
    }
 }

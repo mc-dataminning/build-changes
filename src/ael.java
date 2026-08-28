@@ -1,33 +1,36 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
 
-public class ael implements zg<abu> {
-   public static final yx<vw, ael> a = zg.a(ael::a, ael::new);
-   @Nullable
-   private final akr b;
+public class ael implements zk<abz> {
+   public static final zb<wa, ael> a = zk.a(ael::a, ael::new);
+   private final IntList b;
 
-   public ael(@Nullable akr $$0) {
-      this.b = $$0;
+   public ael(IntList $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private ael(vw $$0) {
-      this.b = $$0.c(vw::q);
+   public ael(int... $$0) {
+      this.b = new IntArrayList($$0);
    }
 
-   private void a(vw $$0) {
-      $$0.a(this.b, vw::a);
+   private ael(wa $$0) {
+      this.b = $$0.a();
+   }
+
+   private void a(wa $$0) {
+      $$0.a(this.b);
    }
 
    @Override
-   public zi<ael> a() {
-      return agg.ao;
+   public zm<ael> a() {
+      return ago.ak;
    }
 
-   public void a(abu $$0) {
+   public void a(abz $$0) {
       $$0.a(this);
    }
 
-   @Nullable
-   public akr b() {
+   public IntList b() {
       return this.b;
    }
 }

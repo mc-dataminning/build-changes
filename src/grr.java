@@ -1,26 +1,22 @@
-import java.util.IllegalFormatException;
-
-public class grr {
-   private static volatile tw a = tw.a();
-
-   private grr() {
+public class grr extends gqj<gvf, fzo> {
+   public grr(goo<gvf, fzo> $$0, gnq $$1) {
+      super($$0, $$1);
    }
 
-   static void a(tw $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
-      try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+   public void a(fcu $$0, ggv $$1, int $$2, gvf $$3, float $$4, float $$5) {
+      $$0.a();
+      if ($$3.ar.a(cvo.sl)) {
+         this.d().a().a($$0);
+         this.d().c().a($$0);
+         this.d().d().a($$0);
+         $$0.a(0.0625F, 0.25F, 0.0F);
+         $$0.a(a.f.rotationDegrees(180.0F));
+         $$0.a(a.b.rotationDegrees(140.0F));
+         $$0.a(a.f.rotationDegrees(10.0F));
+         $$0.a(0.0F, -0.4F, 0.4F);
       }
-   }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$0.b();
    }
 }

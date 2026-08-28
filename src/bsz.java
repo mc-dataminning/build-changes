@@ -1,55 +1,16 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-
-public enum bsz implements azk {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bsy.a),
-   c(2, "offhand", bsy.b),
-   d(3, "hand", $$0 -> $$0.a() == bsy.a.a),
-   e(4, "feet", bsy.c),
-   f(5, "legs", bsy.d),
-   g(6, "chest", bsy.e),
-   h(7, "head", bsy.f),
-   i(8, "armor", bsy::f),
-   j(9, "body", bsy.g);
-
-   public static final IntFunction<bsz> k = axe.a($$0 -> $$0.n, values(), axe.a.a);
-   public static final Codec<bsz> l = azk.a(bsz::values);
-   public static final yx<ByteBuf, bsz> m = yv.a(k, $$0 -> $$0.n);
-   private final int n;
-   private final String o;
-   private final Predicate<bsy> p;
-
-   private bsz(final int $$0, final String $$1, final Predicate<bsy> $$2) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
-   }
-
-   private bsz(final int $$0, final String $$1, final bsy $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
-   }
-
-   public static bsz a(bsy $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> c;
-         case c -> e;
-         case d -> f;
-         case e -> g;
-         case f -> h;
-         case g -> j;
-      };
+class bsz extends bso {
+   protected bsz(bsp $$0, int $$1) {
+      super($$0, $$1, ln.y);
    }
 
    @Override
-   public String c() {
-      return this.o;
-   }
-
-   public boolean b(bsy $$0) {
-      return this.p.test($$0);
+   public void a(buf $$0, int $$1, btj.c $$2) {
+      if ($$2 == btj.c.a && $$0.dS() instanceof arg $$3) {
+         double $$4 = $$0.dx();
+         double $$5 = $$0.dz() + (double)($$0.do() / 2.0F);
+         double $$6 = $$0.dD();
+         float $$7 = 3.0F + $$0.dV().i() * 2.0F;
+         $$3.a($$0, null, coz.e, $$4, $$5, $$6, $$7, false, dds.a.e, ln.A, ln.z, awd.cQ);
+      }
    }
 }

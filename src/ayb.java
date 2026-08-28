@@ -1,4 +1,5 @@
-@FunctionalInterface
-public interface ayb {
-   boolean accept(int var1, xw var2, int var3);
+public class ayb extends Exception {
+   public ayb(Throwable $$0) {
+      super($$0);
+   }
 }

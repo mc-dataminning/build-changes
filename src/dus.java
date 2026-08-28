@@ -1,15 +1,24 @@
-public enum dus {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dus implements azy {
+   a("single"),
+   b("left"),
+   c("right");
 
-   private final int d;
+   private final String d;
 
-   private dus(final int $$0) {
+   private dus(final String $$0) {
       this.d = $$0;
    }
 
-   public int a() {
+   @Override
+   public String c() {
       return this.d;
+   }
+
+   public dus a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
+      };
    }
 }

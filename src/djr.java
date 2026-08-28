@@ -1,51 +1,54 @@
 import com.mojang.serialization.MapCodec;
 
-public class djr extends dfy implements dna {
-   public static final MapCodec<djr> a = b(djr::new);
-   private static final exv b = dfy.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
-
-   public djr(dtb.d $$0) {
+public abstract class djr extends dgv implements djq {
+   public djr(dtz.d $$0) {
       super($$0);
-      this.k(this.E.b().a(dts.C, Boolean.valueOf(false)));
    }
 
    @Override
-   public MapCodec<djr> a() {
-      return a;
+   protected abstract MapCodec<? extends djr> a();
+
+   @Override
+   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected void a(dtd.a<dfy, dtc> $$0) {
-      $$0.a(dts.C);
-   }
-
-   @Override
-   protected dtc a(dtc $$0, ji $$1, dtc $$2, dcx $$3, jd $$4, jd $$5) {
-      if ($$0.c(dts.C)) {
-         $$3.a($$4, epf.c, epf.c.a($$3));
-      }
-
+   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
+      $$3.a($$4, this, this.b());
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected epe b_(dtc $$0) {
-      return $$0.c(dts.C) ? epf.c.a(false) : super.b_($$0);
+   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
+      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
+         cjy $$4 = cjy.a($$1, $$2, $$0);
+         this.a($$4);
+      }
+   }
+
+   protected void a(cjy $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean n(dua $$0) {
+      return $$0.l() || $$0.a(aws.aL) || $$0.n() || $$0.v();
    }
 
    @Override
-   public dtc a(cyd $$0) {
-      epe $$1 = $$0.q().b_($$0.a());
-      return this.o().a(dts.C, Boolean.valueOf($$1.b(epf.c)));
+   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
+      if ($$3.a(16) == 0) {
+         je $$4 = $$2.e();
+         if (n($$1.a_($$4))) {
+            azg.a($$1, $$2, $$3, new lf(ln.C, $$0));
+         }
+      }
    }
 
-   @Override
-   protected exv a(dtc $$0, dcc $$1, jd $$2, exh $$3) {
-      return b;
-   }
-
-   @Override
-   protected boolean a(dtc $$0, ept $$1) {
-      return false;
+   public int b(dua $$0, dcx $$1, je $$2) {
+      return -16777216;
    }
 }

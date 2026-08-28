@@ -1,70 +1,169 @@
-public class gbl extends gdn {
-   gbl(fzf $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, boolean $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.d(3.0F);
-      this.b(0.25F, 0.25F);
-      if ($$7) {
-         this.t = this.r.a(50) + 280;
-      } else {
-         this.t = this.r.a(50) + 80;
-      }
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-      this.u = 3.0E-6F;
-      this.j = $$4;
-      this.k = $$5 + (double)(this.r.i() / 500.0F);
-      this.l = $$6;
+public class gbl {
+   private static final Logger j = LogUtils.getLogger();
+   private static final int k = 1024;
+   public String a;
+   public String b;
+   public xd c;
+   public xd d;
+   @Nullable
+   public aka.b e;
+   public long f;
+   public int g = ab.b().e();
+   public xd h = xd.b(ab.b().c());
+   public List<xd> i = Collections.emptyList();
+   private gbl.a l = gbl.a.c;
+   @Nullable
+   private byte[] m;
+   private gbl.c n;
+   private gbl.b o = gbl.b.a;
+
+   public gbl(String $$0, String $$1, gbl.c $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.n = $$2;
    }
 
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ < this.t && !(this.y <= 0.0F)) {
-         this.j = this.j + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.l = this.l + (double)(this.r.i() / 5000.0F * (float)(this.r.h() ? 1 : -1));
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         if (this.s >= this.t - 60 && this.y > 0.01F) {
-            this.y -= 0.015F;
+   public uf a() {
+      uf $$0 = new uf();
+      $$0.a("name", this.a);
+      $$0.a("ip", this.b);
+      if (this.m != null) {
+         $$0.a("icon", Base64.getEncoder().encodeToString(this.m));
+      }
+
+      if (this.l == gbl.a.a) {
+         $$0.a("acceptTextures", true);
+      } else if (this.l == gbl.a.b) {
+         $$0.a("acceptTextures", false);
+      }
+
+      return $$0;
+   }
+
+   public gbl.a b() {
+      return this.l;
+   }
+
+   public void a(gbl.a $$0) {
+      this.l = $$0;
+   }
+
+   public static gbl a(uf $$0) {
+      gbl $$1 = new gbl($$0.l("name"), $$0.l("ip"), gbl.c.c);
+      if ($$0.b("icon", 8)) {
+         try {
+            byte[] $$2 = Base64.getDecoder().decode($$0.l("icon"));
+            $$1.a(b($$2));
+         } catch (IllegalArgumentException var3) {
+            j.warn("Malformed base64 server icon", var3);
+         }
+      }
+
+      if ($$0.b("acceptTextures", 99)) {
+         if ($$0.q("acceptTextures")) {
+            $$1.a(gbl.a.a);
+         } else {
+            $$1.a(gbl.a.b);
          }
       } else {
-         this.k();
+         $$1.a(gbl.a.c);
+      }
+
+      return $$1;
+   }
+
+   @Nullable
+   public byte[] c() {
+      return this.m;
+   }
+
+   public void a(@Nullable byte[] $$0) {
+      this.m = $$0;
+   }
+
+   public boolean d() {
+      return this.n == gbl.c.a;
+   }
+
+   public boolean e() {
+      return this.n == gbl.c.b;
+   }
+
+   public gbl.c f() {
+      return this.n;
+   }
+
+   public void a(gbl $$0) {
+      this.b = $$0.b;
+      this.a = $$0.a;
+      this.m = $$0.m;
+   }
+
+   public void b(gbl $$0) {
+      this.a($$0);
+      this.a($$0.b());
+      this.n = $$0.n;
+   }
+
+   public gbl.b g() {
+      return this.o;
+   }
+
+   public void a(gbl.b $$0) {
+      this.o = $$0;
+   }
+
+   @Nullable
+   public static byte[] b(@Nullable byte[] $$0) {
+      if ($$0 != null) {
+         try {
+            azh $$1 = azh.a($$0);
+            if ($$1.a() <= 1024 && $$1.b() <= 1024) {
+               return $$0;
+            }
+         } catch (IOException var2) {
+            j.warn("Failed to decode server icon", var2);
+         }
+      }
+
+      return null;
+   }
+
+   public static enum a {
+      a("enabled"),
+      b("disabled"),
+      c("prompt");
+
+      private final xd d;
+
+      private a(final String $$0) {
+         this.d = xd.c("addServer.resourcePack." + $$0);
+      }
+
+      public xd a() {
+         return this.d;
       }
    }
 
-   @Override
-   public gcr b() {
-      return gcr.c;
+   public static enum b {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   public static class a implements gcq<lq> {
-      private final gdi a;
-
-      public a(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbl $$8 = new gbl($$1, $$2, $$3, $$4, $$5, $$6, $$7, false);
-         $$8.e(0.9F);
-         $$8.a(this.a);
-         return $$8;
-      }
-   }
-
-   public static class b implements gcq<lq> {
-      private final gdi a;
-
-      public b(gdi $$0) {
-         this.a = $$0;
-      }
-
-      public gcn a(lq $$0, fzf $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbl $$8 = new gbl($$1, $$2, $$3, $$4, $$5, $$6, $$7, true);
-         $$8.e(0.95F);
-         $$8.a(this.a);
-         return $$8;
-      }
+   public static enum c {
+      a,
+      b,
+      c;
    }
 }

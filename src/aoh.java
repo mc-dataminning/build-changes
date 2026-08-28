@@ -1,65 +1,47 @@
+import com.google.common.collect.Lists;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import net.minecraft.server.MinecraftServer;
+import org.slf4j.Logger;
 
 public class aoh {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wz.c("commands.setblock.failed"));
+   private static final Logger a = LogUtils.getLogger();
 
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("setblock").requires($$0x -> $$0x.c(2)))
-            .then(
-               eu.a("pos", gp.a())
-                  .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("block", gm.a($$1))
-                                 .executes($$0x -> a((et)$$0x.getSource(), gp.a($$0x, "pos"), gm.a($$0x, "block"), aoh.b.a, null)))
-                              .then(eu.a("destroy").executes($$0x -> a((et)$$0x.getSource(), gp.a($$0x, "pos"), gm.a($$0x, "block"), aoh.b.b, null))))
-                           .then(
-                              eu.a("keep")
-                                 .executes($$0x -> a((et)$$0x.getSource(), gp.a($$0x, "pos"), gm.a($$0x, "block"), aoh.b.a, $$0xx -> $$0xx.c().u($$0xx.d())))
-                           ))
-                        .then(eu.a("replace").executes($$0x -> a((et)$$0x.getSource(), gp.a($$0x, "pos"), gm.a($$0x, "block"), aoh.b.a, null)))
-                  )
-            )
-      );
+   public static void a(Collection<String> $$0, et $$1) {
+      $$1.l().a($$0).exceptionally($$1x -> {
+         a.warn("Failed to execute reload", $$1x);
+         $$1.b(xd.c("commands.reload.failure"));
+         return null;
+      });
    }
 
-   private static int a(et $$0, jd $$1, gk $$2, aoh.b $$3, @Nullable Predicate<dtg> $$4) throws CommandSyntaxException {
-      aqu $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dtg($$5, $$1, true))) {
-         throw a.create();
-      } else {
-         boolean $$6;
-         if ($$3 == aoh.b.b) {
-            $$5.b($$1, true);
-            $$6 = !$$2.a().i() || !$$5.a_($$1).i();
-         } else {
-            dqh $$7 = $$5.c_($$1);
-            bqi.a_($$7);
-            $$6 = true;
-         }
+   private static Collection<String> a(aud $$0, esn $$1, Collection<String> $$2) {
+      $$0.a();
+      Collection<String> $$3 = Lists.newArrayList($$2);
+      Collection<String> $$4 = $$1.D().a().b();
 
-         if ($$6 && !$$2.a($$5, $$1, 2)) {
-            throw a.create();
-         } else {
-            $$5.b($$1, $$2.a().b());
-            $$0.a(() -> wz.a("commands.setblock.success", $$1.u(), $$1.v(), $$1.w()), true);
-            return 1;
+      for (String $$5 : $$0.b()) {
+         if (!$$4.contains($$5) && !$$3.contains($$5)) {
+            $$3.add($$5);
          }
       }
+
+      return $$3;
    }
 
-   public interface a {
-      @Nullable
-      gk filter(ejj var1, jd var2, gk var3, aqu var4);
-   }
-
-   public static enum b {
-      a,
-      b;
+   public static void a(CommandDispatcher<et> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("reload").requires($$0x -> $$0x.c(2))).executes($$0x -> {
+         et $$1 = (et)$$0x.getSource();
+         MinecraftServer $$2 = $$1.l();
+         aud $$3 = $$2.aF();
+         esn $$4 = $$2.ba();
+         Collection<String> $$5 = $$3.d();
+         Collection<String> $$6 = a($$3, $$4, $$5);
+         $$1.a(() -> xd.c("commands.reload.success"), true);
+         a($$6, $$1);
+         return 0;
+      }));
    }
 }

@@ -1,45 +1,49 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+public abstract class coq extends cor implements cof {
+   private static final akg<cvl> b = akk.a(coq.class, aki.h);
 
-public class coq {
-   private final cop a;
-   private final List<coq.a> b = Lists.newArrayList();
-
-   public coq(cop $$0) {
-      this.a = $$0;
+   public coq(btq<? extends coq> $$0, dds $$1) {
+      super($$0, $$1);
    }
 
-   public coq a(int $$0, com $$1) {
-      this.b.add(new coq.a($$0, $$1));
-      return this;
+   public coq(btq<? extends coq> $$0, double $$1, double $$2, double $$3, dds $$4, cvl $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a($$5);
    }
 
-   public cop a() {
-      this.b.stream().map(coq.a::b).collect(Collectors.toSet()).forEach(this.a::a);
-      this.b.forEach($$0 -> {
-         com $$1 = $$0.b();
-         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
-         this.a.b($$1).a($$0.a(), 1.0F);
-      });
-      return this.a;
+   public coq(btq<? extends coq> $$0, buf $$1, dds $$2, cvl $$3) {
+      this($$0, $$1.dx(), $$1.dB() - 0.1F, $$1.dD(), $$2, $$3);
+      this.c($$1);
    }
 
-   static class a {
-      private final int a;
-      private final com b;
+   public void a(cvl $$0) {
+      this.at().a(b, $$0.c(1));
+   }
 
-      public a(int $$0, com $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   protected abstract cvg o();
 
-      public int a() {
-         return this.a;
-      }
+   @Override
+   public cvl m() {
+      return this.at().a(b);
+   }
 
-      public com b() {
-         return this.b;
+   @Override
+   protected void a(akk.a $$0) {
+      $$0.a(b, new cvl(this.o()));
+   }
+
+   @Override
+   public void b(uf $$0) {
+      super.b($$0);
+      $$0.a("Item", this.m().a(this.dU()));
+   }
+
+   @Override
+   public void a(uf $$0) {
+      super.a($$0);
+      if ($$0.b("Item", 10)) {
+         this.a(cvl.a(this.dU(), (vc)$$0.p("Item")).orElseGet(() -> new cvl(this.o())));
+      } else {
+         this.a(new cvl(this.o()));
       }
    }
 }

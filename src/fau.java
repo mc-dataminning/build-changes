@@ -1,40 +1,13 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.io.IOException;
-import java.io.InputStream;
+public interface fau {
+   <T> fcb<T> a(String var1, fca<T> var2);
 
-public class fau extends faw {
-   private static final fap a = new fap() {
-      @Override
-      public String a(boolean $$0, String $$1) {
-         return "#error Import statement not supported";
-      }
-   };
-   private int b;
+   <T> void a(fcb<T> var1);
 
-   private fau(faw.a $$0, int $$1, String $$2) {
-      super($$0, $$1, $$2);
-   }
+   <T> fcb<T> b(fcb<T> var1);
 
-   public void a(fat $$0) {
-      RenderSystem.assertOnRenderThread();
-      this.b++;
-      this.a($$0);
-   }
+   void a(fau var1);
 
-   @Override
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      this.b--;
-      if (this.b <= 0) {
-         super.a();
-      }
-   }
+   void a();
 
-   public static fau a(faw.a $$0, String $$1, InputStream $$2, String $$3) throws IOException {
-      RenderSystem.assertOnRenderThread();
-      int $$4 = b($$0, $$1, $$2, $$3, a);
-      fau $$5 = new fau($$0, $$4, $$1);
-      $$0.c().put($$1, $$5);
-      return $$5;
-   }
+   void a(Runnable var1);
 }

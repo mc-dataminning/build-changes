@@ -1,12 +1,20 @@
-public class akh {
-   public static final akq<dfy> a = a("pumpkin");
-   public static final akq<dfy> b = a("pumpkin_stem");
-   public static final akq<dfy> c = a("attached_pumpkin_stem");
-   public static final akq<dfy> d = a("melon");
-   public static final akq<dfy> e = a("melon_stem");
-   public static final akq<dfy> f = a("attached_melon_stem");
+public interface akh<T> {
+   zb<? super wo, T> codec();
 
-   private static akq<dfy> a(String $$0) {
-      return akq.a(lu.f, akr.b($$0));
+   default akg<T> a(int $$0) {
+      return new akg<>($$0, this);
+   }
+
+   T copy(T var1);
+
+   static <T> akh<T> a(zb<? super wo, T> $$0) {
+      return () -> $$0;
+   }
+
+   public interface a<T> extends akh<T> {
+      @Override
+      default T copy(T $$0) {
+         return $$0;
+      }
    }
 }

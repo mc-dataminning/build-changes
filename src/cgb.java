@@ -1,30 +1,30 @@
-public abstract class cgb extends bul {
-   private static final int cg = 100;
-   private int ch;
-
-   protected cgb(bsx<? extends cgb> $$0, dcw $$1) {
+public class cgb extends cft {
+   public cgb(btq<? extends cgb> $$0, dds $$1) {
       super($$0, $$1);
    }
 
-   public boolean b(aqv $$0) {
-      ub $$1 = new ub();
-      $$1.a("id", this.bD());
-      this.f($$1);
-      if ($$0.h($$1)) {
-         this.aq();
-         return true;
-      } else {
-         return false;
-      }
+   @Override
+   public cvl V_() {
+      return new cvl(cvo.qI);
    }
 
    @Override
-   public void l() {
-      this.ch++;
-      super.l();
+   protected awc w() {
+      return awd.fo;
    }
 
-   public boolean gy() {
-      return this.ch > 100;
+   @Override
+   protected awc n_() {
+      return awd.fp;
+   }
+
+   @Override
+   protected awc d(bsb $$0) {
+      return awd.fr;
+   }
+
+   @Override
+   protected awc gp() {
+      return awd.fq;
    }
 }

@@ -1,46 +1,47 @@
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.Collections;
-import java.util.Map;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class eya extends eyc {
+   private final jj b;
+   private final je c;
+   private final boolean d;
+   private final boolean e;
 
-class eya {
-   private final Reference2ObjectOpenHashMap<exy, eyd> a = new Reference2ObjectOpenHashMap(16, 0.5F);
-
-   @Nullable
-   public eyd a(exy $$0) {
-      return (eyd)this.a.get($$0);
+   public static eya a(eye $$0, jj $$1, je $$2) {
+      return new eya(true, $$0, $$1, $$2, false);
    }
 
-   public eyd a(exy $$0, Consumer<eyd> $$1) {
-      return (eyd)this.a.computeIfAbsent($$0, $$1x -> {
-         eyd $$2 = new eyd();
-         $$1.accept($$2);
-         return $$2;
-      });
+   public eya(eye $$0, jj $$1, je $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3);
    }
 
-   public boolean b(exy $$0) {
-      return this.a.remove($$0) != null;
+   private eya(boolean $$0, eye $$1, jj $$2, je $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
    }
 
-   public boolean a() {
-      return !this.a.isEmpty();
+   public eya a(jj $$0) {
+      return new eya(this.d, this.a, $$0, this.c, this.e);
    }
 
-   public Object2IntMap<exy> b() {
-      Object2IntMap<exy> $$0 = new Object2IntOpenHashMap();
-      this.a.forEach(($$1, $$2) -> $$0.put($$1, $$2.a()));
-      return $$0;
+   public eya a(je $$0) {
+      return new eya(this.d, this.a, this.b, $$0, this.e);
    }
 
-   void a(exy $$0, eyd $$1) {
-      this.a.put($$0, $$1);
+   public je a() {
+      return this.c;
    }
 
-   Map<exy, eyd> c() {
-      return Collections.unmodifiableMap(this.a);
+   public jj b() {
+      return this.b;
+   }
+
+   @Override
+   public eyc.a c() {
+      return this.d ? eyc.a.a : eyc.a.b;
+   }
+
+   public boolean d() {
+      return this.e;
    }
 }

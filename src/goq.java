@@ -1,52 +1,25 @@
-public class goq<T extends cfr> extends gov<T, fvd<T>> {
-   private final gft a;
+public class goq extends gln<cgr, gum, fyq> {
+   private static final alb a = alb.b("textures/entity/sheep/sheep.png");
 
-   public goq(gmf<T, fvd<T>> $$0, gft $$1) {
-      super($$0);
-      this.a = $$1;
+   public goq(gms.a $$0) {
+      super($$0, new fyq($$0.a(gaa.cc)), new fyq($$0.a(gaa.cd)), 0.7F);
+      this.a(new grh(this, $$0.f()));
    }
 
-   public void a(fbi $$0, gez $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.o_()) {
-         fgo $$10 = fgo.Q();
-         boolean $$11 = $$10.b($$3) && $$3.ci();
-         if (!$$3.ci() || $$11) {
-            dtc $$12 = $$3.t().a();
-            int $$13 = glk.c($$3, 0.0F);
-            gsm $$14 = this.a.a($$12);
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            $$0.a(0.2F, -0.35F, 0.5F);
-            $$0.a(a.d.rotationDegrees(42.0F));
-            $$0.a(0.1F, 0.0F, -0.6F);
-            $$0.a(a.d.rotationDegrees(-48.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-            $$0.a();
-            this.c().d().a($$0);
-            $$0.a(0.0F, -0.7F, -0.2F);
-            $$0.a(a.d.rotationDegrees(-78.0F));
-            $$0.b(-1.0F, -1.0F, 1.0F);
-            $$0.a(-0.5F, -0.5F, -0.5F);
-            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
-            $$0.b();
-         }
-      }
+   public alb a(gum $$0) {
+      return a;
    }
 
-   private void a(fbi $$0, gez $$1, int $$2, boolean $$3, dtc $$4, int $$5, gsm $$6) {
-      if ($$3) {
-         this.a.b().a($$0.c(), $$1.getBuffer(gfh.r(gqk.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
-      } else {
-         this.a.a($$4, $$0, $$1, $$2, $$5);
-      }
+   public gum c() {
+      return new gum();
+   }
+
+   public void a(cgr $$0, gum $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.y();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ap();
    }
 }

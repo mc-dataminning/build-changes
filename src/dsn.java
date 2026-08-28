@@ -1,124 +1,124 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dsn {
-   static final String a = "server_data";
-   static Codec<dsn> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kg.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cuq.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dsn::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cuq> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public class dsn extends dre implements dyz.b<dzg.b>, dzg {
+   private static final Logger b = LogUtils.getLogger();
+   private dzg.a c;
+   private final dzg.b d;
+   private final dzg.d e = this.b();
+   private int h;
 
-   dsn(Set<UUID> $$0, long $$1, List<cuq> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   protected dsn(drg<?> $$0, je $$1, dua $$2) {
+      super($$0, $$1, $$2);
+      this.c = new dzg.a();
+      this.d = new dzg.b(this);
    }
 
-   dsn() {
+   public dsn(je $$0, dua $$1) {
+      this(drg.I, $$0, $$1);
    }
 
-   void a(long $$0) {
-      this.h = $$0;
+   public dzg.d b() {
+      return new dsn.a(this.aD_());
    }
 
-   long a() {
-      return this.h;
+   @Override
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.h = $$0.h("last_vibration_frequency");
+      akz<vc> $$2 = $$1.a(ut.a);
+      if ($$0.b("listener", 10)) {
+         dzg.a.a
+            .parse($$2, $$0.p("listener"))
+            .resultOrPartial($$0x -> b.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
+            .ifPresent($$0x -> this.c = $$0x);
+      }
    }
 
-   Set<UUID> b() {
+   @Override
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("last_vibration_frequency", this.h);
+      akz<vc> $$2 = $$1.a(ut.a);
+      dzg.a.a
+         .encodeStart($$2, this.c)
+         .resultOrPartial($$0x -> b.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
+         .ifPresent($$1x -> $$0.a("listener", $$1x));
+   }
+
+   @Override
+   public dzg.a gq() {
+      return this.c;
+   }
+
+   @Override
+   public dzg.d gr() {
       return this.e;
    }
 
-   boolean a(cmx $$0) {
-      return this.e.contains($$0.cz());
+   public int d() {
+      return this.h;
    }
 
-   @VisibleForTesting
-   public void b(cmx $$0) {
-      this.e.add($$0.cz());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
+   public void a(int $$0) {
+      this.h = $$0;
+   }
+
+   public dzg.b f() {
+      return this.d;
+   }
+
+   protected class a implements dzg.d {
+      public static final int b = 8;
+      protected final je c;
+      private final dzb a;
+
+      public a(final je $$1) {
+         this.c = $$1;
+         this.a = new dyt($$1);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public dzb b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(arg $$0, je $$1, jn<dyx> $$2, @Nullable dyx.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(dyx.f) && !$$2.a(dyx.i) ? dnp.q(dsn.this.m()) : false;
+      }
+
+      @Override
+      public void a(arg $$0, je $$1, jn<dyx> $$2, @Nullable btj $$3, @Nullable btj $$4, float $$5) {
+         dua $$6 = dsn.this.m();
+         if (dnp.q($$6)) {
+            dsn.this.a(dzg.a_($$2));
+            int $$7 = dzg.a_($$5, this.a());
+            if ($$6.b() instanceof dnp $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dsn.this.d());
+            }
          }
       }
 
-      this.i();
-   }
-
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<cuq> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<cuq> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   cuq f() {
-      return this.g.isEmpty() ? cuq.l : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cuq.l);
-   }
-
-   cuq g() {
-      if (this.g.isEmpty()) {
-         return cuq.l;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cuq.l);
+      @Override
+      public void e() {
+         dsn.this.e();
       }
-   }
 
-   void a(dsn $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - ayo.g((float)this.d().size(), 1.0F, (float)this.i);
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }
